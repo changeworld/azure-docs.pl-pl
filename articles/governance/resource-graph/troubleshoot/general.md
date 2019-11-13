@@ -1,17 +1,14 @@
 ---
 title: Rozwiązywanie typowych problemów
 description: Dowiedz się, jak rozwiązywać problemy z badaniem zasobów platformy Azure za pomocą usługi Azure Resource Graph.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: troubleshooting
-ms.service: resource-graph
-ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e8f42650265b1ca400731365203408eeb22a4e4c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389704"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958518"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Rozwiązywanie problemów z błędami przy użyciu grafu zasobów platformy Azure
 
@@ -33,7 +30,7 @@ Klienci mający dostęp do ponad 1000 subskrypcji, w tym subskrypcji między dzi
 
 Interfejs wiersza polecenia platformy Azure i program PowerShell przesyłają dalej tylko pierwsze subskrypcje 1000 do grafu zasobów platformy Azure. Interfejs API REST dla usługi Azure Resource Graph akceptuje maksymalną liczbę subskrypcji, na które należy wykonać zapytanie.
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Żądania usługi Batch dotyczące zapytania z podzbiorem subskrypcji w ramach limitu subskrypcji 1000. Rozwiązanie korzysta z parametru **subskrypcji** w programie PowerShell.
 
@@ -70,7 +67,7 @@ Klienci wysyłający zapytanie do interfejsu API REST usługi Azure Resource Gra
 
 Interfejs API REST usługi Azure Resource Graph obsługuje tylko `Content-Type` **aplikacji/JSON**. Niektóre narzędzia lub agenci REST są domyślnie **tekstem/zwykłym**, co nie jest obsługiwane przez interfejs API REST.
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Sprawdź, czy narzędzie lub Agent używany do wysyłania zapytań do grafu zasobów platformy Azure ma nagłówek interfejsu API REST `Content-Type` skonfigurowany dla **aplikacji/JSON**.
 
@@ -84,7 +81,7 @@ Klienci, którzy jawnie przekazują listę subskrypcji za pomocą zapytania graf
 
 Jeśli klient nie ma uprawnienia do odczytu wszystkich podanych subskrypcji, żądanie zostanie odrzucone z powodu braku odpowiednich praw zabezpieczeń.
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Uwzględnij co najmniej jedną subskrypcję na liście subskrypcji, do której klient uruchamia kwerendę ma co najmniej dostęp do odczytu. Aby uzyskać więcej informacji, zobacz [uprawnienia na wykresie zasobów platformy Azure](../overview.md#permissions-in-azure-resource-graph).
 

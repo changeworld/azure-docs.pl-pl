@@ -1,19 +1,19 @@
 ---
-title: Tworzenie tabeli tras wirtualnego centrum sieci WAN platformy Azure w celu kierowania do urządzenie WUS | Microsoft Docs
+title: 'Wirtualna sieć WAN: Tworzenie tabeli tras koncentratora wirtualnego do urządzenie WUS: Azure PowerShell'
 description: Tabela tras wirtualnego koncentratora sieci WAN do kierowania ruchu do sieciowego urządzenia wirtualnego.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 18af56f6924484c6267871cf3fed34f80a8f12a4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2d8922084dbe30c2dbe494028f2e5a1497fb3759
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744700"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014995"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Tworzenie tabeli tras koncentratora wirtualnego w celu kierowania ruchu do sieciowego urządzenia wirtualnego
 
@@ -43,7 +43,7 @@ Sprawdź, czy zostały spełnione następujące kryteria:
 5. Sprawdź, czy utworzono już 2 sieci wirtualnych. Zostaną one użyte jako szprych sieci wirtualnych. W tym artykule przestrzenie adresowe sieci wirtualnej szprych to 10.0.2.0/24 i 10.0.3.0/24. Jeśli potrzebujesz informacji na temat sposobu tworzenia sieci wirtualnej, zobacz [Create a Virtual Network using PowerShell](../virtual-network/quick-create-powershell.md).
 6. Upewnij się, że w żadnym sieci wirtualnych nie ma żadnych bram sieci wirtualnej.
 
-## <a name="signin"></a>1. Logowanie
+## <a name="signin"></a>1. Zaloguj się
 
 Upewnij się, że zainstalowano najnowszą wersję Menedżer zasobów poleceń cmdlet programu PowerShell. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps). Jest to ważne, ponieważ wcześniejsze wersje poleceń cmdlet nie zawierają bieżących wartości potrzebnych w tym ćwiczeniu.
 
@@ -63,7 +63,7 @@ Upewnij się, że zainstalowano najnowszą wersję Menedżer zasobów poleceń c
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. Utwórz zasoby
+## <a name="rg"></a>2. Tworzenie zasobów
 
 1. Utwórz grupę zasobów.
 
@@ -81,7 +81,7 @@ Upewnij się, że zainstalowano najnowszą wersję Menedżer zasobów poleceń c
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. Tworzenie połączeń
+## <a name="connections"></a>3. Utwórz połączenia
 
 Utwórz centra połączeń sieci wirtualnej z pośrednią satelitą i sieć wirtualną DMZ do koncentratora wirtualnego.
 

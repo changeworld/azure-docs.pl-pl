@@ -1,134 +1,134 @@
 ---
-title: Ponownie zapisuje nagłówki żądania i odpowiedzi HTTP przy użyciu usługi Azure Application Gateway — witryna Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować usługi Azure Application Gateway do przepisania nagłówków HTTP żądania i odpowiedzi na przekazywanie za pośrednictwem bramy za pomocą witryny Azure portal
+title: Ponowne zapisywanie nagłówków żądań i odpowiedzi HTTP w portalu — Application Gateway platformy Azure
+description: Dowiedz się, jak za pomocą Azure Portal skonfigurować Application Gateway platformy Azure do ponownego zapisywania nagłówków HTTP w żądaniach i odpowiedziach przesyłanych przez bramę
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: e144214a58f9fe383cf4edd878554792d9d6a6f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64947163"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012856"
 ---
-# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Ponownie zapisuje nagłówki żądania i odpowiedzi HTTP przy użyciu usługi Azure Application Gateway — witryna Azure portal
+# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Ponowne zapisywanie nagłówków żądań i odpowiedzi HTTP przy użyciu usługi Azure Application Gateway — Azure Portal
 
-W tym artykule opisano sposób konfigurowania przy użyciu witryny Azure portal [jednostek SKU v2 Application Gateway](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) wystąpienia do przepisania nagłówków HTTP żądania i odpowiedzi.
+W tym artykule opisano sposób użycia Azure Portal w celu skonfigurowania wystąpienia [jednostki SKU Application Gateway v2](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) w celu ponownego zapisania nagłówków HTTP w żądaniach i odpowiedziach.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Musisz mieć wystąpienia bramy Application Gateway jednostkę SKU v2 wykonanie czynności opisanych w tym artykule. Ponowne napisanie nagłówków nie jest obsługiwana w ramach jednostki SKU v1. Jeśli nie masz jednostki SKU w wersji 2, Utwórz [jednostek SKU v2 Application Gateway](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) wystąpienia przed przystąpieniem do wykonywania.
+Aby wykonać kroki opisane w tym artykule, musisz mieć wystąpienie jednostki SKU Application Gateway v2. Ponowne zapisywanie nagłówków nie jest obsługiwane w jednostce SKU v1. Jeśli nie masz jednostki SKU w wersji 2, przed rozpoczęciem Utwórz wystąpienie [jednostki sku Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) .
 
-## <a name="create-required-objects"></a>Utwórz wymagany obiekt
+## <a name="create-required-objects"></a>Tworzenie wymaganych obiektów
 
-Aby skonfigurować ponownego napisania nagłówka HTTP, należy wykonać następujące czynności.
+Aby skonfigurować ponowne zapisywanie nagłówka HTTP, należy wykonać te kroki.
 
-1. Tworzenie obiektów, które są wymagane do ponownego napisania nagłówka HTTP:
+1. Utwórz obiekty wymagane do ponownego zapisania nagłówka HTTP:
 
-   - **Ponowne zapisywanie adresów akcji**: Służy do określania żądania i pola nagłówka żądania, które planujesz ponownego zapisywania i nową wartość dla nagłówków. Można skojarzyć jedną lub więcej warunków za pomocą akcji ponownego napisania ponowne zapisywanie adresów.
+   - **Akcja ponownego zapisu**: służy do określania pól żądania i nagłówka żądania, które mają być ponownie zapisane, oraz do nowej wartości nagłówków. Możliwe jest skojarzenie jednego lub więcej warunków ponownego zapisu z akcją ponownego zapisu.
 
-   - **Ponowne zapisywanie adresów warunek**: Konfiguracja opcjonalna. Ponowne zapisywanie adresów warunki zostaną obliczone treści żądania HTTP (S) i odpowiedzi. Akcja ponownego napisania wystąpi, jeśli żądania HTTP (S) lub odpowiedzi dopasowuje warunek ponownego zapisywania.
+   - **Warunek ponownego zapisu**: opcjonalna konfiguracja. Warunki ponownego zapisu sprawdzają zawartość żądań i odpowiedzi HTTP (S). Akcja ponownego zapisu zostanie wykonana, jeśli żądanie HTTP (S) lub odpowiedź pasuje do warunku ponownego zapisu.
 
-     Jeśli więcej niż jeden warunek jest skojarzona z akcją, akcja jest wykonywana tylko wtedy, gdy są spełnione wszystkie warunki. Innymi słowy operacja jest operacją i logicznych.
+     Jeśli powiążesz więcej niż jeden warunek z akcją, Akcja występuje tylko wtedy, gdy wszystkie warunki są spełnione. Innymi słowy, operacja jest operacją logiczną i.
 
-   - **Napisz ponownie reguły**: Zawiera wiele akcji ponownego napisania / ponownego zapisywania kombinacje warunku.
+   - **Reguła ponownego zapisywania**: zawiera kilka kombinacji warunku akcji ponownego zapisu/ponownego zapisywania.
 
-   - **Reguła sekwencji**: Ułatwia określenie kolejności, w którym wykonywanie reguły ponownego zapisywania. Ta konfiguracja jest przydatne, jeśli masz wiele reguł ponownego zapisywania w zestawie ponownego zapisywania. Reguły ponownego pisania, który ma mniejszą wartość kolejności reguły jest uruchamiany w pierwszy. Jeśli przypiszesz taką samą wartość w sekwencji regułę na dwie reguły ponownego zapisywania kolejność wykonywania jest niedeterministyczny.
+   - **Sekwencja reguł**: pomaga określić kolejność wykonywania reguł ponownego zapisywania. Ta konfiguracja jest przydatna, jeśli masz wiele reguł ponownego zapisywania w zestawie do wielokrotnego zapisu. Reguła ponownego zapisu, która ma niższą wartość sekwencji reguł, jest uruchamiana jako pierwsza. Jeśli ta sama wartość sekwencji reguł zostanie przypisana do dwóch reguł ponownego zapisywania, kolejność wykonywania nie jest deterministyczna.
 
-   - **Napisz ponownie zestaw**: Zawiera wiele reguł ponownego zapisywania, które mają zostać skojarzone z regułą routingu żądania.
+   - **Zestaw do ponownego zapisu**: zawiera wiele reguł ponownego zapisywania, które zostaną skojarzone z regułą routingu żądania.
 
-2. Dołącz Napisz ponownie ustawić reguły routingu. Konfiguracja ponownego zapisywania jest dołączony do odbiornika źródła za pomocą reguły routingu. Korzystając z podstawową regułę routingu, konfiguracja ponownego napisania nagłówka jest skojarzony z odbiornika źródła i nadpisania globalnego nagłówka. Gdy używasz regułę routingu opartego na ścieżkach, konfiguracja ponownego napisania nagłówka został zdefiniowany w Mapa ścieżki adresu URL. W takim przypadku zastosowanie tylko do określonej ścieżki obszaru lokacji.
+2. Dołącz zestaw ponownych zapisów do reguły routingu. Konfiguracja ponownego zapisywania jest dołączona do odbiornika źródłowego za pośrednictwem reguły routingu. W przypadku korzystania z podstawowej reguły routingu, konfiguracja ponownego zapisywania nagłówka jest skojarzona z odbiornikiem źródłowym i jest ponownym zapisem nagłówka globalnego. W przypadku korzystania z reguły routingu opartej na ścieżce, konfiguracja ponownego zapisywania nagłówka jest definiowana na mapie ścieżki URL. W takim przypadku ma zastosowanie tylko do obszaru określonej ścieżki w lokacji.
 
-Można utworzyć wiele zestawów ponownego napisania nagłówka HTTP i stosować każdego Napisz ponownie ustawić do wielu odbiorników. Jednak można zastosować tylko do jednego ponownego zapisywania zestawu do określonego odbiornika.
+Można utworzyć wiele zestawów wielokrotnego zapisu nagłówka HTTP i zastosować każdy ponowny zapis ustawiony dla wielu odbiorników. Można jednak zastosować tylko jeden wielokrotny zapis do określonego odbiornika.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) przy użyciu danych konta Azure.
 
-## <a name="configure-header-rewrite"></a>Konfigurowanie nagłówka ponownego napisania
+## <a name="configure-header-rewrite"></a>Konfigurowanie ponownego zapisywania nagłówka
 
-W tym przykładzie zmodyfikujemy adresem URL przekierowania, zapisując je ponownie nagłówek lokalizacji, w odpowiedzi HTTP wysłanej przez aplikację do zaplecza.
+W tym przykładzie zmodyfikujemy adres URL przekierowania przez ponowne zapisanie nagłówka lokalizacji w odpowiedzi HTTP wysyłanej przez aplikację zaplecza.
 
-1. Wybierz **wszystkie zasoby**, a następnie wybierz pozycję Twojej bramy application gateway.
+1. Wybierz pozycję **wszystkie zasoby**, a następnie wybierz bramę aplikacji.
 
-2. Wybierz **ponownie zapisuje** w okienku po lewej stronie.
+2. Wybierz pozycję **Zapisz ponownie** w lewym okienku.
 
-3. Wybierz **Nadpisz zestaw**:
+3. Wybierz pozycję **Zapisz ponownie zestaw**:
 
-   ![Dodaj zestaw ponownego napisania](media/rewrite-http-headers-portal/add-rewrite-set.png)
+   ![Dodaj zestaw do ponownego zapisu](media/rewrite-http-headers-portal/add-rewrite-set.png)
 
-4. Podaj nazwę dla zestawu ponownego zapisywania i skojarzyć ją z reguły routingu:
+4. Podaj nazwę zestawu do ponownego zapisu i skojarz go z regułą routingu:
 
-   - Wprowadź nazwę dla poprawione w **nazwa** pole.
-   - Zaznacz jedną lub więcej reguł na liście **skojarzone reguły routingu** listy. Można wybrać tylko te zasady, które nie zostały skojarzone z innymi zestawami ponownego zapisywania. Reguły, które zostały już skojarzone z innymi zestawami ponownego zapisywania są niedostępne.
+   - Wprowadź nazwę zestawu do ponownego zapisu w polu **Nazwa** .
+   - Wybierz co najmniej jedną regułę podaną na liście **skojarzone reguły routingu** . Można wybrać tylko reguły, które nie zostały skojarzone z innymi zestawami ponownego zapisywania. Reguły, które zostały już skojarzone z innymi zestawami ponownego zapisywania, są wygaszone.
    - Wybierz opcję **Dalej**.
    
-     ![Dodaj nazwę i skojarzenia](media/rewrite-http-headers-portal/name-and-association.png)
+     ![Dodaj nazwę i skojarzenie](media/rewrite-http-headers-portal/name-and-association.png)
 
-5. Tworzenie reguły ponownego zapisywania:
+5. Utwórz regułę ponownego zapisywania:
 
-   - Wybierz **Dodawanie reguły ponownego zapisywania**.
+   - Wybierz pozycję **Dodaj regułę ponownego zapisywania**.
 
-     ![Dodawanie reguły ponownego zapisywania](media/rewrite-http-headers-portal/add-rewrite-rule.png)
+     ![Dodaj regułę ponownego zapisu](media/rewrite-http-headers-portal/add-rewrite-rule.png)
 
-   - Wprowadź nazwę reguły ponownego pisania w **Nazwa reguły ponownego zapisywania** pole. Wprowadź numer w **reguły sekwencji** pole.
+   - Wprowadź nazwę reguły ponownego zapisu w polu **Nazwa reguły ponownego zapisywania** . Wprowadź liczbę w polu **sekwencja reguł** .
 
-     ![Dodaj nazwę reguły ponownego zapisywania](media/rewrite-http-headers-portal/rule-name.png)
+     ![Dodaj nazwę reguły ponownego zapisu](media/rewrite-http-headers-portal/rule-name.png)
 
-6. W tym przykładzie firma Microsoft będzie ponownie zapisać nagłówek location tylko wtedy, gdy zawiera on odwołanie do azurewebsites.net. Aby to zrobić, Dodaj warunek do oceny, czy nagłówek lokalizacji, w odpowiedzi zawiera azurewebsites.net:
+6. W tym przykładzie zapiszemy nagłówek lokalizacji tylko wtedy, gdy zawiera odwołanie do azurewebsites.net. W tym celu Dodaj warunek, aby sprawdzić, czy nagłówek lokalizacji w odpowiedzi zawiera azurewebsites.net:
 
-   - Wybierz **Dodaj warunek** , a następnie wybierz pole, zawierający **Jeśli** instrukcjami, aby ją rozwinąć.
+   - Wybierz pozycję **Dodaj warunek** , a następnie zaznacz pole zawierające instrukcje **if** , aby je rozwinąć.
 
-     ![Dodaj warunek](media/rewrite-http-headers-portal/add-condition.png)
+     ![Dodawanie warunku](media/rewrite-http-headers-portal/add-condition.png)
 
-   - W **typ zmiennej, aby sprawdzić** listy wybierz **nagłówka HTTP**.
+   - Na liście **Typ zmiennej do sprawdzenia** wybierz pozycję **nagłówek HTTP**.
 
-   - W **typu nagłówka** listy wybierz **odpowiedzi**.
+   - Na liście **Typ nagłówka** wybierz pozycję **odpowiedź**.
 
-   - Ponieważ w tym przykładzie firma Microsoft oceniania nagłówek lokalizacji, która jest typowego nagłówka, wybierz **typowego nagłówka** w obszarze **nazwę nagłówka**.
+   - Ponieważ w tym przykładzie oceniamy nagłówek lokalizacji, który jest wspólnym nagłówkiem, w obszarze **Nazwa nagłówka**wybierz pozycję **wspólny nagłówek** .
 
-   - W **typowego nagłówka** listy wybierz **lokalizacji**.
+   - Na liście **wspólny nagłówek** wybierz pozycję **Lokalizacja**.
 
-   - W obszarze **liter**, wybierz opcję **nie**.
+   - W obszarze **uwzględnianie wielkości**liter wybierz pozycję **nie**.
 
-   - W **Operator** listy wybierz **równości (=)** .
+   - Na liście **operator** wybierz pozycję **równe (=)** .
 
    - Wprowadź wzorzec wyrażenia regularnego. W tym przykładzie użyjemy wzorca `(https?):\/\/.*azurewebsites\.net(.*)$`.
 
    - Kliknij przycisk **OK**.
 
-     ![Konfigurowanie If warunku](media/rewrite-http-headers-portal/condition.png)
+     ![Konfigurowanie warunku if](media/rewrite-http-headers-portal/condition.png)
 
-7. Dodawanie akcji do przepisania nagłówek lokalizacji:
+7. Dodaj akcję w celu ponownego zapisania nagłówka lokalizacji:
 
-   - W **typ akcji** listy wybierz **ustaw**.
+   - Na liście **Typ akcji** wybierz pozycję **Ustaw**.
 
-   - W **typu nagłówka** listy wybierz **odpowiedzi**.
+   - Na liście **Typ nagłówka** wybierz pozycję **odpowiedź**.
 
-   - W obszarze **nazwę nagłówka**, wybierz opcję **typowego nagłówka**.
+   - W obszarze **Nazwa nagłówka**wybierz pozycję **wspólny nagłówek**.
 
-   - W **typowego nagłówka** listy wybierz **lokalizacji**.
+   - Na liście **wspólny nagłówek** wybierz pozycję **Lokalizacja**.
 
-   - Wprowadź wartość nagłówka. W tym przykładzie użyjemy `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako wartość nagłówka. Ta wartość spowoduje zastąpienie *azurewebsites.net* z *contoso.com* w nagłówku location.
+   - Wprowadź wartość nagłówka. W tym przykładzie użyjemy `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako wartości nagłówka. Ta wartość spowoduje zamienienie *azurewebsites.NET* z *contoso.com* w nagłówku lokalizacji.
 
    - Kliknij przycisk **OK**.
 
      ![Dodawanie akcji](media/rewrite-http-headers-portal/action.png)
 
-8. Wybierz **Utwórz** utworzyć poprawione zestaw:
+8. Wybierz pozycję **Utwórz** , aby utworzyć zestaw do ponownego zapisywania:
 
    ![Wybierz pozycję Utwórz](media/rewrite-http-headers-portal/create.png)
 
-9. Spowoduje to otwarcie widoku zestawu ponownego zapisywania. Sprawdź, czy zestaw ponowne zapisywanie adresów, który został utworzony na liście zestawów ponownego zapisywania:
+9. Zostanie otwarty widok ponowne zapisywanie zestawu. Sprawdź, czy utworzony zestaw do ponownego zapisywania znajduje się na liście zestawów do ponownego zapisu:
 
-   ![Widok zestawu ponownego napisania](media/rewrite-http-headers-portal/rewrite-set-list.png)
+   ![Zapisz ponownie widok zestawu](media/rewrite-http-headers-portal/rewrite-set-list.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat sposobu konfigurowania niektórych typowych przypadków użycia, zobacz [typowego nagłówka Nadpisz scenariuszy](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Aby dowiedzieć się więcej o konfigurowaniu niektórych typowych przypadków użycia, zobacz [typowe scenariusze ponownego zapisywania nagłówka](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).

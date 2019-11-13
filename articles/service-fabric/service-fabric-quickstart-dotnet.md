@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji platformy .NET w usłudze Service Fabric na platformie Azure | Microsoft Docs
+title: Szybkie tworzenie aplikacji platformy .NET na Service Fabric na platformie Azure
 description: W ramach tego przewodnika Szybki start utworzysz aplikację .NET dla platformy Azure za pomocą aplikacji przykładowej niezawodnych usług usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225191"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013215"
 ---
-# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: Wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi.
 
@@ -173,7 +173,7 @@ Aby uaktualnić aplikację, wykonaj następujące czynności:
 
     ![Okno dialogowe publikowania — ustawienie uaktualnienia](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
-10. Kliknij przycisk **publikowania**.
+10. Kliknij przycisk **Opublikuj**.
 
     Podczas uaktualniania można nadal korzystać z aplikacji. Ponieważ masz dwa wystąpienia usługi uruchomione w klastrze, niektóre żądania mogą trafiać do uaktualnionej wersji aplikacji, podczas gdy inne mogą nadal otrzymywać starą wersję.
 

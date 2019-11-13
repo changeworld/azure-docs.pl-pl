@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 594534f64c984f4afb986d3366f388e412bde27c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620830"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961462"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -81,9 +81,9 @@ Usługa ExpressRoute systemu Azure | Tak | Tak
 ILB | Tak | Tak
 ELB | Tak | Tak
 Azure Traffic Manager | Tak | Tak
-Wiele kart sieciowych | Tak | Tak
+Multi-NIC | Tak | Tak
 Zastrzeżony adres IP | Tak | Tak
-Adresów | Tak | Tak
+IPv4 | Tak | Tak
 Zachowaj źródłowy adres IP | Tak | Tak
 Punkty końcowe usługi Azure Virtual Network<br/> (bez zapór usługi Azure Storage) | Tak | Tak
 Accelerated Networking | Nie | Nie
@@ -91,21 +91,21 @@ Accelerated Networking | Nie | Nie
 
 ## <a name="hyper-v-host-storage"></a>Magazyn hosta funkcji Hyper-V
 
-**Magazyn** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
+**Storage** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | --- 
 NFS | Nie dotyczy | Nie dotyczy
 SMB 3.0 | Tak | Tak
-SIEĆ SAN (ISCSI) | Tak | Tak
-Wiele ścieżek (MPIO). Przetestowano przy użyciu:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4<br/><br/> EMC PowerPath DSM dla CLARiiON | Tak | Tak
+SAN (ISCSI) | Tak | Tak
+Wiele ścieżek (MPIO). Przetestowano przy użyciu:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM for CLARiiON | Tak | Tak
 
 ## <a name="hyper-v-vm-guest-storage"></a>Magazyn maszyny wirtualnej funkcji Hyper-V
 
-**Magazyn** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
+**Storage** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nie dotyczy | Nie dotyczy
-DYSK VHD/VHDX | Tak | Tak
+VHD/VHDX | Tak | Tak
 Maszyna wirtualna generacji 2 | Tak | Tak
-INTERFEJS EFI/UEFI| Tak | Tak
+EFI/UEFI<br></br>Migrowana maszyna wirtualna na platformie Azure zostanie automatycznie przekonwertowana na maszynę wirtualną rozruchową w systemie BIOS. Na maszynie wirtualnej powinien działać system Windows Server 2012 lub nowszy. Dysk systemu operacyjnego powinien mieć maksymalnie pięć partycji lub mniej, a rozmiar dysku systemu operacyjnego musi być mniejszy niż 300 GB.| Tak | Tak
 Udostępniony dysk klastra | Nie | Nie
 Zaszyfrowany dysk | Nie | Nie
 NFS | Nie dotyczy | Nie dotyczy
@@ -132,6 +132,7 @@ Chłodny magazyn | Nie | Nie
 Magazyn gorąca| Nie | Nie
 Blokowe obiekty blob | Nie | Nie
 Szyfrowanie w spoczynku (SSE)| Tak | Tak
+Szyfrowanie w spoczynku (CMK)| Nie | Nie
 Premium Storage | Tak | Tak
 Usługa importu/eksportu | Nie | Nie
 Konta usługi Azure Storage z włączoną zaporą | Tak. Dla magazynu docelowego i pamięci podręcznej. | Tak. Dla magazynu docelowego i pamięci podręcznej.
@@ -143,7 +144,7 @@ Modyfikowanie konta magazynu | Nie. Nie można zmodyfikować docelowego konta us
 **Funkcja** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 Zestawy dostępności | Tak | Tak
-Centralny | Tak | Tak  
+HUB | Tak | Tak  
 Dyski zarządzane | Tak, w przypadku trybu failover.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwany. | Tak, w przypadku trybu failover.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwany.
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure
@@ -161,7 +162,7 @@ Rozmiar dysku VHD z danymi | Do 4 095 GB | Sprawdzanie wymagań wstępnych końc
 Karty sieciowe | Obsługiwana jest konfiguracja z wieloma kartami sieciowymi |
 Udostępniony wirtualny dysk twardy | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
 Dysk FC | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
-Format dysku twardego | VHD <br/><br/> DYSKU | W przypadku przełączenia w tryb failover na platformie Azure Site Recovery automatycznie konwertuje plik VHDX na dysk VHD. Po powrocie po awarii do lokalnego programu maszyny wirtualne nadal używają formatu VHDX.
+Format dysku twardego | VHD <br/><br/> VHDX | W przypadku przełączenia w tryb failover na platformie Azure Site Recovery automatycznie konwertuje plik VHDX na dysk VHD. Po powrocie po awarii do lokalnego programu maszyny wirtualne nadal używają formatu VHDX.
 BitLocker | Nieobsługiwane | Aby włączyć replikację dla maszyny wirtualnej, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków. Ograniczone do liter, cyfr i łączników. Nazwa maszyny wirtualnej musi zaczynać się i kończyć literą lub cyfrą. | Zaktualizuj wartość we właściwościach maszyny wirtualnej w Site Recovery.
 Typ maszyny wirtualnej | Generacja 1<br/><br/> Generacja 2 — Windows | Maszyny wirtualne generacji 2 z typem dysku systemu operacyjnego Basic (zawierającym jeden lub dwa woluminy danych sformatowane jako VHDX) i mniej niż 300 GB miejsca na dysku są obsługiwane.<br></br>Maszyny wirtualne 2. generacji systemu Linux nie są obsługiwane. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|

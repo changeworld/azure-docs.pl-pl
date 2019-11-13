@@ -1,6 +1,7 @@
 ---
-title: Przewodnik dotyczący szkoleń rejestracji aplikacji portalu rejestracji w programie — Platforma tożsamości firmy Microsoft | Azure
-description: Rejestracje aplikacji w Azure Portal dla użytkowników zaznajomionych z portalem rejestracji aplikacji
+title: Przejście z portalu rejestracji aplikacji do nowego środowiska Rejestracje aplikacji w Azure Portal
+titleSuffix: Microsoft identity platform
+description: Wprowadzenie do nowego środowiska rejestracji aplikacji w Azure Portal
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -17,14 +18,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1974616c0331203a803e4f13a19297940fb5d42e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905474"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013024"
 ---
-# <a name="training-guide-using-app-registrations-in-the-azure-portal-instead-of-application-registration-portal"></a>Przewodnik dotyczący szkoleń: używanie Rejestracje aplikacji w Azure Portal zamiast portalu rejestracji aplikacji
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Przejście z portalu rejestracji aplikacji do nowego środowiska Rejestracje aplikacji w Azure Portal
 
 Istnieje wiele ulepszeń w nowych [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowiska Azure Portal. Jeśli masz więcej informacji na temat korzystania z portalu rejestracji aplikacji (apps.dev.microsoft.com) do rejestrowania aplikacji i zarządzania nimi, nazywanego starym doświadczeniem, ten przewodnik szkoleniowy umożliwi rozpoczęcie pracy przy użyciu nowego środowiska.
 
@@ -83,7 +84,7 @@ Nowe środowisko Azure Portal reprezentuje te funkcje na oddzielnych stronach. T
 
 W nowym środowisku **klucze tajne aplikacji** zostały zmienione na **Certyfikaty & wpisy tajne**. Ponadto **klucze publiczne** nazywa się **certyfikatami** i **hasłami** są określane jako wpisy **tajne klienta**. Wybrano, aby nie dopełnić tej funkcji w nowym środowisku ze względów bezpieczeństwa, dlatego nie można już wygenerować nowej pary kluczy.
 
-## <a name="platformsauthentication---reply-urlsredirect-uris"></a>Platformy/uwierzytelnianie — adresy URL odpowiedzi/identyfikatory URI przekierowania
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformy/uwierzytelnianie: adresy URL odpowiedzi/identyfikatory URI przekierowania
 W starym doświadczeniu aplikacja zawierała sekcję platforms dla sieci Web, natywnej i internetowego interfejsu API w celu skonfigurowania adresów URL przekierowania, adresu URL wylogowywania i przepływu niejawnego.
 
 W nowym środowisku adresów URL odpowiedzi można znaleźć w sekcji uwierzytelnianie\'s aplikacji. Ponadto są one określane jako identyfikatory URI przekierowania, a format identyfikatorów URI przekierowania został zmieniony. Muszą być skojarzone z typem aplikacji (Klient internetowy lub publiczny — Mobile i Desktop). [Dowiedz się więcej](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)

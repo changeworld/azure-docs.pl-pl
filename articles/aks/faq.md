@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e68ce5a198165c4187cbad9e86ce61f67694a82d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472848"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961602"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -68,7 +68,7 @@ Aby włączyć tę architekturę, każde wdrożenie AKS obejmuje dwie grupy zaso
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Czy mogę podać moją własną nazwę grupy zasobów węzła AKS?
 
-Tak. Domyślnie AKS będzie nazwać węzeł grupy zasobów *MC_resourcegroupname_clustername_location*, ale można również podać własną nazwę.
+Tak. Domyślnie AKS będzie nazwać węzeł grupy zasobów *MC_resourcegroupname_clustername_location*, ale możesz również podać własną nazwę.
 
 Aby określić własną nazwę grupy zasobów, zainstaluj rozszerzenie [AKS-Preview][aks-preview-cli] interfejsu wiersza polecenia platformy Azure w wersji *0.3.2* lub nowszej. Podczas tworzenia klastra AKS za pomocą polecenia [AZ AKS Create][az-aks-create] należy użyć parametru *--Node-Resource-Group* i określić nazwę grupy zasobów. W przypadku wdrażania klastra AKS za pomocą [szablonu Azure Resource Manager][aks-rm-template] można zdefiniować nazwę grupy zasobów za pomocą właściwości *nodeResourceGroup* .
 
@@ -129,7 +129,7 @@ W AKS można ustawić wartość `maxPods` podczas tworzenia klastra przy użyciu
 | Azure CNI | 30 | 250 |
 | Korzystającą wtyczki kubenet | 30 | 110 |
 
-Ponieważ AKS jest usługą zarządzaną, wdrażamy Dodatki i zasobniki oraz zarządzają nimi w ramach klastra. W przeszłości użytkownicy mogą definiować wartość `maxPods` niższą niż wartość, którą muszą używać zarządzane zasobniki (na przykład 30). AKS teraz oblicza minimalną liczbę zasobników przy użyciu tej formuły: (((maxPods lub (maxPods * vm_count)) >.
+Ponieważ AKS jest usługą zarządzaną, wdrażamy Dodatki i zasobniki oraz zarządzają nimi w ramach klastra. W przeszłości użytkownicy mogą definiować wartość `maxPods` niższą niż wartość, którą muszą używać zarządzane zasobniki (na przykład 30). AKS teraz oblicza minimalną liczbę zasobników przy użyciu tej formuły: (((maxPods lub (maxPods * vm_count)), > minimalnym zarządzanym zasobnikiem.
 
 Użytkownicy nie mogą zastąpić minimalnej `maxPods` weryfikacji.
 
@@ -194,7 +194,6 @@ Chociaż AKS ma mechanizmy odporności, aby wytrzymać takie konfiguracje i odzy
 [aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
-[virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md

@@ -3,7 +3,7 @@ title: Raporty dotyczące logowań w portalu usługi Azure Active Directory | Mi
 description: Wprowadzenie do raportów dotyczących logowań w portalu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553d882600203d0fa01cd876562d9ced7985d7a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043804"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014489"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
 Architektura raportowania w Azure Active Directory (Azure AD) składa się z następujących składników:
 
-- **Działanie** 
+- **Aktywność** 
     - **Logowania** — informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników.
     - **Dzienniki inspekcji** - [dzienniki inspekcji](concept-audit-logs.md) zapewniają informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami, zarządzane aplikacje i działania w katalogu.
-- **Bezpieczeństwo** 
+- **Zabezpieczenia** 
     - **Ryzykowne logowania** — [ryzykowne logowanie](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania przez kogoś, kto nie jest uprawnionym właścicielem konta użytkownika.
     - **Użytkownicy oflagowani do ryzyka** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, które mogło zostać naruszone.
 
@@ -105,13 +105,13 @@ Filtr **Aplikacja** umożliwia określenie nazwy wybranej aplikacji.
 
 Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 
-- Wszystko
+- Wszystkie
 - Powodzenie
 - Niepowodzenie
 
 Filtr **dostępu warunkowego** umożliwia wybranie stanu zasad urzędu certyfikacji dla logowania:
 
-- Wszystko
+- Wszystkie
 - Nie zastosowano
 - Powodzenie
 - Niepowodzenie
@@ -144,7 +144,7 @@ Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie do
         Pakiet Office 2013, gdzie Biblioteka ADAL jest włączona i używa interfejsu MAPI.
     - **Stara klienci pakietu Office**  
         Pakiet Office 2013 w konfiguracji domyślnej, gdzie Biblioteka ADAL nie jest włączona i używa interfejsu MAPI lub pakietu Office 2016, gdzie ADAL została wyłączona.
-    - **SKAKUJĄC**  
+    - **POP**  
         Starsza wersja klienta poczty używającej protokołu POP3 do pobierania poczty e-mail.
     - **SMTP**  
         Starszego klienta poczty e-mail korzystającego z protokołu SMTP do wysyłania wiadomości.
@@ -153,7 +153,7 @@ Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie do
 
 Kliknij opcję **Pobierz** , aby utworzyć plik CSV lub kod JSON z najnowszych rekordów 250 000. Rozpocznij od [pobrania danych logowania,](quickstart-download-sign-in-report.md) Jeśli chcesz korzystać z nich poza Azure Portal.  
 
-![Pobieranie](./media/concept-sign-ins/71.png "Pobierz")
+![Pobieranie](./media/concept-sign-ins/71.png "Do pobrania")
 
 > [!IMPORTANT]
 > Liczba rekordów, które można pobrać, jest ograniczona przez [zasady przechowywania raportów Azure Active Directory](reference-reports-data-retention.md).  
@@ -193,7 +193,7 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Klient
 - Lokalizacja
 - Adres IP
-- Data
+- Date
 - Wymagane uwierzytelnianie wieloskładnikowe
 - Stan logowania
 

@@ -1,20 +1,20 @@
 ---
-title: Rozwiązywanie problemów z błędami instalacji wypychanej usługi mobilności podczas włączania replikacji na potrzeby odzyskiwania po awarii | Microsoft Docs
-description: Rozwiązywanie problemów z błędami instalacji usług mobilności podczas włączania replikacji na potrzeby odzyskiwania po awarii
+title: Rozwiązywanie problemów z instalacją wypychaną usługi mobilności za pomocą Azure Site Recovery f
+description: Rozwiązywanie problemów z instalacją usług mobilności podczas włączania replikacji na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 09/11/2019
-ms.openlocfilehash: 4aa18379962c289f5094795988a247f4c7e35df2
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 3646499ad2104566cb82f3f26c6b55d05f84dc7d
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910640"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953773"
 ---
-# <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
+# <a name="troubleshoot-mobility-service-push-installation"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności 
 
 Instalacja usługi mobilności to kluczowy krok podczas włączania replikacji. Powodzenie tego kroku zależy wyłącznie od wymagań wstępnych dotyczących spotkań i pracy z obsługiwanymi konfiguracjami. Najczęstsze problemy występujące podczas instalacji usługi mobilności są następujące:
 
@@ -38,7 +38,7 @@ Po włączeniu replikacji Azure Site Recovery próbuje wypychania instalacji age
 * Azure Site Recovery wymaga konta **głównego** lub konta użytkownika z **uprawnieniami administratora** do przeprowadzenia instalacji wypychanej. W przeciwnym razie instalacja wypychana zostanie zablokowana na maszynie źródłowej.
   * W przypadku systemu Windows (**błąd 95107**) należy sprawdzić, czy konto użytkownika ma dostęp administracyjny na maszynie źródłowej.
   * Jeśli nie korzystasz z konta domeny, musisz wyłączyć kontrolę dostępu użytkowników zdalnych na komputerze lokalnym.
-    * Aby wyłączyć kontrolę dostępu użytkowników zdalnych, w obszarze klucz rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj nową wartość DWORD: LocalAccountTokenFilterPolicy. Ustaw wartość na 1. Aby wykonać ten krok, uruchom następujące polecenie w wierszu polecenia:
+    * Aby wyłączyć kontrolę dostępu użytkowników zdalnych, w obszarze HKEY_LOCAL_MACHINE klucz rejestru \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System, Dodaj nową wartość DWORD: LocalAccountTokenFilterPolicy. Ustaw wartość na 1. Aby wykonać ten krok, uruchom następujące polecenie w wierszu polecenia:
 
          `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
   * W przypadku systemu Linux (**błąd 95108**) należy wybrać konto główne do pomyślnej instalacji agenta mobilności. Ponadto usługi SFTP powinny być uruchomione. Aby włączyć podsystem SFTP i uwierzytelnianie hasłem w pliku sshd_config:
@@ -69,7 +69,7 @@ Jeśli chcesz zmodyfikować poświadczenia wybranego konta użytkownika, postęp
 Konto użytkownika wybrane podczas włączania replikacji zostało wyłączone. Aby włączyć konto użytkownika, zapoznaj się z artykułem [tutaj](https://aka.ms/enable_login_user) lub uruchom następujące polecenie, *zastępując tekstową nazwę użytkownika wartością* rzeczywistą.
 `net user 'username' /active:yes`
 
-### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Poświadczenia są zablokowane z powodu wielu nieudanych prób zalogowania (ErrorID: 95520)
+### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Poświadczenia zostały zablokowane z powodu wielu nieudanych prób zalogowania (ErrorID: 95520)
 
 Wiele nieudanych prób uzyskania dostępu do maszyny spowoduje zablokowanie konta użytkownika. Przyczyną błędu może być:
 
@@ -80,7 +80,7 @@ Zmodyfikuj wybrane poświadczenia, postępując zgodnie z instrukcjami podanymi 
 
 ### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Serwery logowania nie są dostępne na maszynie źródłowej (ErrorID: 95521)
 
-Ten błąd występuje, gdy serwery logowania nie są dostępne na maszynie źródłowej. Niedostępność serwerów logowania spowoduje niepowodzenie żądania logowania, a tym samym nie można zainstalować agenta mobilności. W celu pomyślnego zalogowania się upewnij się, że serwery logowania są dostępne na maszynie źródłowej i uruchom usługę logowania. Aby uzyskać szczegółowe instrukcje, zobacz artykuł KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) ERR MSG: Obecnie nie ma dostępnych serwerów logowania.
+Ten błąd występuje, gdy serwery logowania nie są dostępne na maszynie źródłowej. Niedostępność serwerów logowania spowoduje niepowodzenie żądania logowania, a tym samym nie można zainstalować agenta mobilności. W celu pomyślnego zalogowania się upewnij się, że serwery logowania są dostępne na maszynie źródłowej i uruchom usługę logowania. Aby uzyskać szczegółowe instrukcje, zobacz artykuł KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) ERR MSG: nie ma obecnie dostępnych serwerów logowania.
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Usługa logowania nie jest uruchomiona na maszynie źródłowej (ErrorID: 95522)
 
@@ -97,7 +97,7 @@ Serwer konfiguracji/serwer przetwarzania skalowalnego w poziomie próbuje nawią
 * Ponadto w przypadku **maszyny wirtualnej z systemem Linux**
   * Sprawdź, czy są zainstalowane najnowsze pakiety OpenSSH, OpenSSH-Server i OpenSSL.
   * Sprawdź i upewnij się, że Secure Shell (SSH) jest włączony i jest uruchomiony na porcie 22.
-  * Usługa SFTP powinna być uruchomiona. Aby włączyć podsystem SFTP i uwierzytelnianie hasłem w pliku sshd_config,
+  * Usługa SFTP powinna być uruchomiona. Aby włączyć podsystem SFTP i uwierzytelnianie hasła w pliku sshd_config,
     * Zaloguj się jako katalog główny.
     * Przejdź do pliku/etc/ssh/sshd_config, Znajdź wiersz zaczynający się od PasswordAuthentication.
     * Usuń komentarz z wiersza i zmień wartość na tak
@@ -121,7 +121,7 @@ W przypadku **systemu windows 2008 R2 i wcześniejszych wersji**,
   * Zlokalizuj reguły udostępniania plików i drukarek (NB — sesja-in) i udostępnianie plików i drukarek (ruch przychodzący SMB). Dla każdej reguły kliknij prawym przyciskiem myszy regułę, a następnie kliknij polecenie **Włącz regułę**.
 * Aby włączyć udostępnianie plików zasady grupy,
   * Przejdź do menu Start, wpisz GPMC. msc i Search.
-  * W okienku nawigacji otwórz następujące foldery: Lokalne zasady komputera, Konfiguracja użytkownika, Szablony administracyjne, składniki systemu Windows i udostępnianie sieciowe.
+  * W okienku nawigacji otwórz następujące foldery: lokalne zasady komputera, Konfiguracja użytkownika, Szablony administracyjne, składniki systemu Windows i udostępnianie sieciowe.
   * W okienku szczegółów kliknij dwukrotnie pozycję **uniemożliwiaj użytkownikom udostępnianie plików w ramach ich profilu**. Aby wyłączyć ustawienie zasady grupy i umożliwić użytkownikowi udostępnianie plików, kliknij pozycję wyłączone. Kliknij przycisk OK, aby zapisać zmiany. Aby dowiedzieć się więcej, zobacz [Włączanie lub wyłączanie udostępniania plików przy użyciu zasady grupy](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
 W przypadku **nowszych wersji**postępuj zgodnie z instrukcjami podanymi w temacie [Instalowanie usługi mobilności na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych](vmware-azure-install-mobility-service.md) , aby włączyć udostępnianie plików i drukarek.
@@ -134,7 +134,7 @@ Po sprawdzeniu usług plików i drukarek Włącz usługę WMI dla profilów pryw
 * Kliknij pozycję Zmień ustawienia, a następnie kliknij kartę Wyjątki.
 * W oknie wyjątki zaznacz pole wyboru dla Instrumentacja zarządzania Windows (WMI), aby włączyć ruch usługi WMI przez zaporę. 
 
-Ruch usługi WMI można także włączyć przez zaporę w wierszu polecenia. Użyj następującego polecenia`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+Ruch usługi WMI można także włączyć przez zaporę w wierszu polecenia. Użyj poniższego polecenia `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
 Inne artykuły dotyczące rozwiązywania problemów z usługą WMI można znaleźć w następujących artykułach.
 
 * [Podstawowe testowanie WMI](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
@@ -148,7 +148,7 @@ Aby wyświetlić listę systemów operacyjnych i wersje jądra obsługiwane prze
 
 ## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Nieobsługiwane konfiguracje dysków rozruchowych (ErrorID: 95309, 95310, 95311)
 
-### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Woluminy rozruchowe i partycje systemowe nie są tym samym dyskiem (ErrorID: 95309)
+### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Woluminy rozruchowe i systemowe nie są tym samym dyskiem (ErrorID: 95309)
 
 Przed 9,20 wersja, partycje rozruchowe i systemowe na różnych dyskach były nieobsługiwaną konfiguracją. W [wersji 9,20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ta konfiguracja jest obsługiwana. Użyj najnowszej wersji, aby uzyskać pomoc techniczną.
 
@@ -175,7 +175,7 @@ Pliki konfiguracji GRUB ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/Boot/gr
 
 
 - Następujący wiersz pochodzi z pliku GRUB **/boot/grub/menu.lst**
-  *jądra/Boot/vmlinuz-3.0.101-63-default **root =/dev/sda2** **Resume =/dev/sda1** powitalnego = Silent crashkernel = 256M-: 128M showopts VGA = 0x314*
+  *jądra/Boot/vmlinuz-3.0.101-63-default **root =/dev/sda2** **Resume =/dev/sda1** powitalnego = ciche crashkernel = 256M-: 128M showopts VGA = 0x314*
 
 Jeśli zobaczysz pogrubiony ciąg powyżej, GRUB ma rzeczywiste nazwy urządzeń dla parametrów "root" i "resume" zamiast identyfikatora UUID.
  
@@ -268,7 +268,7 @@ Aby określić przyczynę błędu, należy wykonać poniższą procedurę.
 
     Trwa wyrejestrowywanie istniejącej aplikacji...  Tworzenie obiektu katalogu pobieranie kolekcji aplikacji 
 
-    PORN
+    Porn
 
     - Kod błędu:-2147164145 [0x8004E00F]
     - Kod zakończenia: 802
@@ -279,7 +279,7 @@ Skontaktuj się z [zespołem platformy Microsoft Windows](https://aka.ms/Windows
 
 Po rozwiązaniu problemu z modelem DCOM ponownie zainstaluj Azure Site Recovery dostawcę usługi VSS przy użyciu następującego polecenia:
  
-**C:\Program Files (x86) \Microsoft Azure Site Recovery\agent > "C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
+**C:\Program Files (x86) \Microsoft Azure Site Recovery\agent > "C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Install. cmd**
   
 Jeśli spójność aplikacji nie jest krytyczna dla wymagań związanych z odzyskiwaniem po awarii, można ominąć instalację dostawcy usługi VSS. 
 
@@ -293,7 +293,7 @@ Aby obejść Azure Site Recovery instalację dostawcy usługi VSS i ręcznie zai
    1. Otwórz katalog instalacji usługi mobilności Azure Site Recovery znajdujący się w lokalizacji:
    
       C:\Program Files (x86) \Microsoft Azure Site Recovery\agent
-   2. Zmodyfikuj Azure Site Recovery skrypty instalacji dostawcy VSS **nMageVSSProvider_Install** i **InMageVSSProvider_Uninstall. cmd** , aby zawsze kończyły się powodzeniem, dodając następujące wiersze:
+   2. Zmodyfikuj Azure Site Recovery skrypty instalacji dostawcy usługi VSS **nMageVSSProvider_Install** i **InMageVSSProvider_Uninstall. cmd** , aby zawsze kończyły się powodzeniem, dodając następujące wiersze:
     
       ```     
       rem @echo off
@@ -305,7 +305,7 @@ Aby obejść Azure Site Recovery instalację dostawcy usługi VSS i ręcznie zai
 4. Po pomyślnym zakończeniu instalacji i przeniesieniu do następnego kroku **Skonfiguruj**, Usuń wiersze, które zostały dodane.
 5. Aby zainstalować dostawcę usługi VSS, Otwórz wiersz polecenia jako administrator i uruchom następujące polecenie:
    
-    **C:\Program Files (x86) \Microsoft Azure Site Recovery\agent > .\InMageVSSProvider_Install.cmd**
+    **C:\Program Files (x86) \Microsoft Azure Site Recovery\agent >. \ InMageVSSProvider_Install. cmd**
 
 9. Sprawdź, czy dostawca usługi VSS ASR jest zainstalowany jako usługa w usługach systemu Windows i Otwórz konsolę MMC usługi składnika, aby sprawdzić, czy jest wyświetlany Dostawca usługi VSS ASR.
 10. Jeśli instalacja dostawcy usługi VSS kończy się niepowodzeniem, należy skontaktować się z CX, aby rozwiązać błędy uprawnień w CAPI2.
@@ -316,9 +316,9 @@ Ten problem powoduje niepowodzenie instalacji agenta mobilności Azure Site Reco
  
 ### <a name="to-identify-the-issue"></a>Aby zidentyfikować problem
 
-W dzienniku znajdującym się na serwerze konfiguracji o\<godzinie C:\ProgramData\ASRSetupLogs\UploadedLogs Data/godzina > UA_InstallLogFile. log wystąpił następujący wyjątek:
+W dzienniku znajdującym się na serwerze konfiguracji w lokalizacji C:\ProgramData\ASRSetupLogs\UploadedLogs\<Data/godzina > UA_InstallLogFile. log zostanie wyszukany następujący wyjątek:
 
-Model COM+ nie może skontaktować się z Distributed Transaction Coordinatorem firmy Microsoft (wyjątek od HRESULT: 0x8004E00F)
+Model COM+ nie może skontaktować się z Distributed Transaction Coordinatorem firmy Microsoft (wyjątek z HRESULT: 0x8004E00F)
 
 Aby rozwiązać ten problem:
 
@@ -332,7 +332,7 @@ Jeśli instalacja agenta mobilności nie powiedzie się, Sprawdź dzienniki w ob
 Aby rozwiązać ten problem:
   
 1. Korzystając z edytora rejestru, takiego jak regedit. msc, Otwórz Rejestr.
-2. Otwórz węzeł HKEY_LOCAL_MACHINE\SYSTEM.
+2. Otwórz HKEY_LOCAL_MACHINE węzeł \SYSTEM.
 3. W węźle SYSTEM Zlokalizuj zestawy kontrolek.
 4. Otwórz każdy zestaw kontrolek i sprawdź, czy są obecne następujące sterowniki systemu Windows:
 

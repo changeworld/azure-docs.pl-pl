@@ -1,6 +1,6 @@
 ---
 title: Najlepsze rozwiązania dotyczące automatycznego skalowania
-description: Wzorce skalowania automatycznego na platformie Azure dla aplikacji sieci Web, zestawy skalowania maszyn wirtualnych i usług w chmurze
+description: Automatyczne skalowanie wzorców na platformie Azure dla Web Apps, zestawów skalowania maszyn wirtualnych i Cloud Services
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,146 +8,146 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 604cf0564039a542ec117612bcbf74601388c0f7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61063396"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007624"
 ---
 # <a name="best-practices-for-autoscale"></a>Najlepsze rozwiązania dotyczące automatycznego skalowania
-Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Automatyczne skalowanie Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)i [usług API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="autoscale-concepts"></a>Pojęcia dotyczące skalowania automatycznego
-* Zasób może mieć tylko *jeden* ustawienie skalowania automatycznego
-* Ustawienia automatycznego skalowania może zawierać jeden lub więcej profilów, a każdy profil może mieć jedną lub więcej reguł skalowania automatycznego.
-* Ustawienia automatycznego skalowania umożliwia skalowanie wystąpienia w poziomie, który jest *się* , zwiększając wystąpienia i *w* przez zmniejszenie liczby wystąpień.
-  Ustawienie skalowania automatycznego zawiera maksymalną, minimum i wartość domyślna wystąpień.
-* Zadanie automatycznego skalowania ma zawsze wartość skojarzona metrykę, aby skalować, sprawdzania, czy ma ona przekroczyła skonfigurowany próg dla skalowalnego w poziomie lub w skali. Można wyświetlić listę metryk tej Skalowanie automatyczne pozwala skalować przez na [typowe metryki automatycznego skalowania usługi Azure Monitor](autoscale-common-metrics.md).
-* Wszystkie Progi są obliczane na poziomie wystąpienia. Na przykład "skalowanie na zewnątrz o jedno wystąpienie gdy średni procesora CPU > 80%, gdy liczba wystąpień to 2", oznacza skalowalnego w poziomie, gdy średnie użycie procesora CPU we wszystkich wystąpieniach jest większy niż 80%.
-* Wszystkie błędy automatycznego skalowania są rejestrowane w dzienniku aktywności. Następnie możesz skonfigurować [alertu dziennika aktywności](./../../azure-monitor/platform/activity-log-alerts.md) , dzięki czemu użytkownik może zostać poinformowany za pośrednictwem poczty e-mail, wiadomości SMS lub elementów webhook, zawsze, gdy występuje błąd automatycznego skalowania.
-* Podobnie wszystkie akcje skalowania pomyślnie są ogłaszane w dzienniku aktywności. Następnie należy skonfigurować alertu dziennika aktywności, dzięki czemu użytkownik może zostać poinformowany za pośrednictwem poczty e-mail, wiadomości SMS lub elementów webhook, zawsze wtedy, gdy ma akcji automatycznego skalowania pomyślnie. Można również skonfigurować adres e-mail lub elementu webhook powiadomienia otrzymywania powiadomień o akcjach skalowania pomyślnie za pomocą karty powiadomienia w ustawieniu skalowania automatycznego.
+* Zasób może mieć tylko *jedno* ustawienie automatycznego skalowania
+* Ustawienie automatycznego skalowania może mieć co najmniej jeden profil, a każdy profil może mieć co najmniej jedną regułę skalowania automatycznego.
+* Ustawienie skalowania automatycznego skaluje wystąpienia w poziomie, *co jest spowodowane* zwiększeniem wystąpień i *w* wyniku zmniejszenia liczby wystąpień.
+  Ustawienie skalowania automatycznego ma wartość maksymalną, minimalną i domyślną dla wystąpień.
+* Zadanie automatycznego skalowania zawsze odczytuje skojarzoną metrykę do skalowania przez, sprawdzając, czy przekroczy skonfigurowany próg skalowania w poziomie lub w poziomie. Możesz wyświetlić listę metryk, które Skalowanie automatyczne może skalować, w [Azure monitor często spotykane metryki](autoscale-common-metrics.md).
+* Wszystkie progi są obliczane na poziomie wystąpienia. Na przykład "Skaluj w poziomie o jedno wystąpienie, gdy średniej procesora > 80%, gdy liczba wystąpień wynosi 2", oznacza skalowanie w poziomie, gdy średni czas CPU we wszystkich wystąpieniach jest większy niż 80%.
+* Wszystkie błędy automatycznego skalowania są rejestrowane w dzienniku aktywności. Następnie można skonfigurować [alert dziennika aktywności](./../../azure-monitor/platform/activity-log-alerts.md) , aby można było otrzymywać powiadomienia za pośrednictwem poczty e-mail, wiadomości SMS lub elementów webhook, gdy występuje błąd automatycznego skalowania.
+* Podobnie wszystkie pomyślne akcje skalowania są ogłaszane w dzienniku aktywności. Następnie można skonfigurować alert dziennika aktywności, aby można było otrzymywać powiadomienia za pośrednictwem poczty e-mail, wiadomości SMS lub elementów webhook, gdy istnieje pomyślna akcja automatycznego skalowania. Możesz również skonfigurować powiadomienia e-mail lub elementy webhook, aby otrzymywać powiadomienia o pomyślnych akcjach skalowania za pośrednictwem karty powiadomienia w ustawieniu Skalowanie automatyczne.
 
-## <a name="autoscale-best-practices"></a>Najlepszych praktykach dotyczących skalowania
-Zgodnie z używania funkcji automatycznego skalowania, należy użyć następujących najlepszych rozwiązań.
+## <a name="autoscale-best-practices"></a>Najlepsze rozwiązania dotyczące skalowania automatycznego
+Użyj następujących najlepszych rozwiązań w przypadku korzystania z funkcji automatycznego skalowania.
 
-### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Upewnij się, maksymalne i minimalne wartości są różne i masz odpowiedni poziom między nimi
-W przypadku ustawienia, który ma co najmniej = 2, maksymalna = 2, a bieżąca liczba wystąpień to 2, nie akcji skalowania może wystąpić. Zachowaj odpowiedni poziom między liczby wystąpienie maksymalne i minimalne, które są włącznie. Między tymi limitami zawsze skalowania automatycznego.
+### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Upewnij się, że wartości maksymalne i minimalne są różne i mają odpowiedni margines między nimi
+Jeśli istnieje ustawienie o wartości minimum = 2, maksimum = 2, a bieżąca liczba wystąpień to 2, nie można wykonać akcji skalowania. Zachowaj odpowiedni margines między maksymalną i minimalną liczbą wystąpień, które są włącznie. Automatyczne skalowanie jest zawsze skalowane między tymi limitami.
 
-### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Skalowanie ręczne jest resetowany przez automatyczne skalowanie, min i max
-Jeśli liczba wystąpień jest ręcznie zaktualizować wartość powyżej lub poniżej wartości maksymalnej, aparat skalowania automatycznego jest automatycznie skalowany do minimalnej (Jeśli poniżej) lub maksymalną (jeśli powyżej). Na przykład możesz ustawić z zakresu od 3 do 6. W przypadku jedno uruchomione wystąpienie aparatu automatycznego skalowania można skalować do trzech wystąpień po jego następnym uruchomieniu. Podobnie jeśli ręcznie ustawisz skalowania do ośmiu wystąpień, na następnej uruchamiania automatycznego skalowania będzie przeskalujesz ją do sześć wystąpień po jego następnym uruchomieniu.  Skalowanie ręczne jest tymczasowy, o ile nie zostanie zresetowane przez reguły skalowania automatycznego.
+### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Skalowanie ręczne jest resetowane przez automatyczne skalowanie min i Max
+Jeśli ręcznie zaktualizujesz liczbę wystąpień do wartości powyższej lub mniejszej niż wartość maksymalna, aparat automatycznego skalowania automatycznie skaluje się z powrotem do minimum (jeśli poniżej) lub maksymalnego (Jeśli powyżej). Na przykład należy ustawić zakres od 3 do 6. Jeśli masz jedno uruchomione wystąpienie, aparat skalowania automatycznego skaluje się do trzech wystąpień w następnym uruchomieniu. Podobnie, jeśli ręcznie ustawisz skalę na osiem wystąpień, podczas następnego uruchomienia automatyczne skalowanie zostanie przeskalowane z powrotem do sześciu wystąpień.  Ręczne skalowanie jest tymczasowe, chyba że zostaną zresetowane także reguły skalowania automatycznego.
 
-### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Zawsze używaj kombinacji reguła skalowania w poziomie i skalowania na zewnątrz, którą wykonuje zwiększyć i zmniejszyć
-Jeśli używasz tylko jednej części zestawu, automatycznego skalowania zajmie tylko akcji w jednym kierunku (skala out ani in), dopóki nie osiągnie maksymalnej lub wystąpienia minimalną liczbę, zdefiniowaną w profilu. To nie jest optymalne, optymalnym rozwiązaniem jest zasób skalowanie w górę w czasie wysokiego użycia, aby zapewnić dostępność. Podobnie czasami z o niskim użyciu ma zasobu w taki sposób, aby skalować w dół tak, jakie możesz uzyskać oszczędności.
+### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Zawsze używaj kombinacji reguł skalowania w poziomie i skalowalności, która wykonuje zwiększenie i zmniejszenie
+Jeśli używasz tylko jednej części kombinacji, funkcja automatycznego skalowania podejmie akcję tylko w jednym kierunku (skalowanie w poziomie lub w) do momentu osiągnięcia maksymalnej lub minimalnej liczby wystąpień zdefiniowanej w profilu. Nie jest to optymalny sposób, co jest potrzebne do skalowania zasobów w górę w celu zapewnienia dostępności. Podobnie w przypadku niskiego użycia zasób ma być skalowany w dół, dzięki czemu możesz zrealizować oszczędności.
 
-### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wybierz odpowiednie statystyki dla swojej metryki diagnostyki
-Na metrykę diagnostyki można wybierać spośród *średni*, *co najmniej*, *maksymalna* i *łączna liczba* jako metrykę, aby skalować. Najbardziej typowe Statystyka jest *średni*.
+### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wybierz odpowiednią statystykę dla metryki diagnostyki
+W przypadku metryk diagnostycznych można wybrać wartość *średnia*, *minimum*, *maksimum* i *Suma* jako metrykę do skalowania przez. Najbardziej typowa Statystyka jest *średnia*.
 
-### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Wybierz wartości progowe dokładnie dla wszystkich typów metryki
-Firma Microsoft zaleca, starannie wybierając progi różnią się dla skalowalnego w poziomie i skalowanie w oparciu o sytuacjach praktycznych.
+### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Ostrożnie wybieraj progi dla wszystkich typów metryk
+Zalecamy staranne wybranie różnych progów skalowania w poziomie i skalowania w zależności od praktycznych sytuacji.
 
-Firma Microsoft *nie zaleca się* ustawień automatycznego skalowania, takich jak poniższych przykładów, przy użyciu tych samych lub bardzo podobnych progu wartości, a w warunkach:
+*Nie zalecamy* ustawień automatycznego skalowania, takich jak poniższe przykłady, z tymi samymi lub bardzo podobnymi wartościami progowymi w warunkach:
 
-* Zwiększ wystąpień o 1 Jeśli liczba Liczba wątków < = 600
-* Zmniejsz wystąpień o 1 Jeśli liczba Liczba wątków > = 600
+* Zwiększ wystąpienia o 1 licznik, gdy liczba wątków > = 600
+* Zmniejsz wystąpienia o 1 licznik, gdy liczba wątków < = 600
 
-Spójrzmy na przykład co może prowadzić do zachowania, które mogą wydawać się niejasne. Należy wziąć pod uwagę następujące sekwencji.
+Przyjrzyjmy się przykładowi, co może prowadzić do zachowania, które może wydawać się mylące. Weź pod uwagę poniższą sekwencję.
 
-1. Przyjęto założenie, istnieją dwa wystąpienia rozpoczynać się i następnie wzrośnie 625, średnia liczba wątków dla każdego wystąpienia.
-2. Limit dodawania trzecie wystąpienie skalowania automatycznego.
-3. Następnie przyjęto założenie, że liczba wątków średnia na wystąpienie mieści się 575.
-4. Przed skalowania w dół prób skalowania automatycznego można oszacować, na jakie stan końcowy będzie, jeśli go przeskalować w pionie. Na przykład 575 x 3 (bieżąca liczba wystąpień) = 1,725 / 2 (końcowej liczby wystąpień podczas skalowania w dół) = 862.5 wątków. Oznacza to, że automatyczne skalowanie, musi natychmiast skalowalnego w poziomie ponownie mimo skalowania, jeśli liczba wątków średni pozostają bez zmian lub nawet znajduje się tylko niewielką ilość. Jednak jeśli on skalowany w górę ponownie całego procesu powtórzysz, co prowadzi do wejścia w nieskończoną pętlę.
-5. Aby uniknąć tej sytuacji (określane jako "niestabilny"), skalowanie automatyczne nie skalować w dół w ogóle. Zamiast tego należy pomija i reevaluates warunek ponownie przy kolejnym uruchomieniu wykonuje zadania usługi. Może zdezorientować wiele osób, ponieważ automatyczne skalowanie nie pojawi się działają, gdy liczba wątków średni został 575.
+1. Załóżmy, że istnieją dwa wystąpienia, które zaczynają się od, a następnie średnia liczba wątków na wystąpienie rośnie do 625.
+2. Skalowanie automatyczne w poziomie dodaje trzecie wystąpienie.
+3. Następnie założono, że średnia liczba wątków w wystąpieniu spadnie do 575.
+4. Przed skalowaniem w dół funkcja automatycznego skalowania próbuje oszacować stan końcowy w przypadku jego skalowania w poziomie. Na przykład 575 x 3 (bieżąca liczba wystąpień) = 1 725/2 (końcowa liczba wystąpień podczas skalowania w dół) = 862,5 wątki. Oznacza to, że automatyczne skalowanie będzie musiało natychmiast skalować w poziomie nawet po skalowaniu w, jeśli średnia liczba wątków pozostanie taka sama lub nawet zostanie wyświetlona tylko niewielka ilość. Jeśli jednak skalowanie zostanie ponowione, cały proces zostanie powtórzony, co prowadzi do nieskończonej pętli.
+5. Aby uniknąć tej sytuacji ("niestabilny"), Skalowanie automatyczne nie jest skalowane w dół. Zamiast tego pomija i ponownie oblicza warunek przy następnym uruchomieniu zadania usługi. Może to mylić wiele osób, ponieważ automatyczne skalowanie nie będzie działało, gdy średnia liczba wątków była 575.
 
-Szacowanie podczas skalowania w jest przeznaczona do uniknięcia "niestabilny" sytuacje, gdzie akcji skalowania na zewnątrz i skalowalnego w poziomie stale go i z powrotem. Zachowaj to zachowanie, należy pamiętać, w przypadku wybrania tej samej wartości progowe dla skalowalnego w poziomie i w.
+Szacowanie w trakcie skalowania w poziomie ma na celu uniknięcie sytuacji "niestabilny", w przypadku których akcje skalowania i skalowania w poziomie są ciągle wycofywane. Zachowanie tego zachowania należy mieć na uwadze w przypadku wybrania tych samych progów dla skalowania w poziomie i w.
 
-Firma Microsoft zaleca, wybierając odpowiedni poziom między skalowalne w poziomie i progów. Na przykład należy wziąć pod uwagę następujące lepsze połączenie reguły.
+Zalecamy wybranie odpowiedniego marginesu między skalowaniem w poziomie i w progach. Na przykład rozważmy następującą ulepszoną kombinację reguł.
 
-* Zwiększ wystąpień o 1 count, gdy procent użycia procesora CPU > = 80
-* Zmniejsz wystąpień o 1 count, gdy procent użycia procesora CPU < = 60
+* Zwiększ wystąpienia o 1 licznik, gdy procesor% > = 80
+* Zmniejsz wystąpienia o 1 licznik, gdy procesor% < = 60
 
 W tym przypadku  
 
-1. Załóżmy, że istnieją 2 wystąpienia zaczynać.
-2. Jeśli średni procent procesora CPU na wystąpieniach przechodzi do 80, skalowania automatycznego skalowania Dodawanie trzecie wystąpienie.
-3. Teraz założenie, że wraz z upływem czasu procent użycia procesora CPU spadnie do 60.
-4. Automatyczne skalowanie przez reguły skalowania szacuje stan końcowy, gdyby do skalowania na zewnątrz. Na przykład 60 x 3 (bieżąca liczba wystąpień) = 180 / 2 (końcowej liczby wystąpień podczas skalowania w dół) = 90. Aby funkcja automatycznego skalowania nie skalowania w ponieważ musiałaby skalowalnego w poziomie natychmiast ponownie. Zamiast tego pomija, skalowanie w dół.
-5. Umożliwia sprawdzenie dalej skalowania automatycznego czasu procesora CPU w dalszym ciągu wchodzą do 50. Ponownie - szacuje wystąpienia 50 x 3 = 150 / 2 wystąpienia = 75, czyli poniżej progu skalowalnego w poziomie 80, więc zostanie przeprowadzone skalowanie w pomyślnie do 2 wystąpienia.
+1. Załóżmy, że istnieją 2 wystąpienia, z którymi można zacząć.
+2. Jeśli średni czas procesora CPU (%) między wystąpieniami przekroczy 80, Skalowanie automatyczne jest skalowane w celu dodania trzeciego wystąpienia.
+3. Teraz Załóżmy, że w czasie CPU% spadnie do 60.
+4. Reguła skalowania automatycznego skalowania szacuje stan końcowy w przypadku skalowania w poziomie. Na przykład 60 x 3 (bieżąca liczba wystąpień) = 180/2 (końcowa liczba wystąpień podczas skalowania w dół) = 90. Dlatego Skalowanie automatyczne nie jest skalowane, ponieważ będzie musiało być od razu skalowane. Zamiast tego pomija skalowanie w dół.
+5. W następnym czasie kontrole automatycznego skalowania procesora CPU w dalszym ciągu spadnie do 50. To polecenie szacuje się ponownie — 50 x 3 wystąpienie = 150/2 wystąpień = 75, które jest poniżej progu skalowania w poziomie wynoszącym 80, dlatego skaluje się w pomyślnie do 2 wystąpień.
 
-### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Zagadnienia dotyczące skalowania wartości progowe dla specjalnych metryk
- Dla specjalnych metryki, takie jak metryki długość magazynu lub kolejki usługi Service Bus próg wynosi średnia liczba komunikatów dostępnych na bieżącą liczbę wystąpień. Starannie wybrać wartość progowa dla tej metryki.
+### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Zagadnienia dotyczące skalowania wartości progowych dla metryk specjalnych
+ W przypadku metryk specjalnych, takich jak magazyn lub Service Bus długość kolejki, próg to średnia liczba komunikatów dostępnych na bieżącą liczbę wystąpień. Starannie wybieraj wartość progową dla tej metryki.
 
-Teraz pokazują je z przykładem, aby upewnić się, że rozumiesz lepsze zachowanie.
+Ilustrujemy przykład, aby lepiej zrozumieć zachowanie.
 
-* Zwiększać wystąpień według liczby 1, gdy kolejka magazynu komunikatów liczba > = 50
-* Zmniejsz wystąpień według liczby 1, gdy kolejka magazynu komunikatów liczba < = 10
+* Zwiększ wystąpienia o 1 licznik, gdy liczba komunikatów w kolejce magazynu > = 50
+* Zmniejsz wystąpienia o 1 licznik, gdy liczba komunikatów w kolejce magazynu < = 10
 
-Należy wziąć pod uwagę następującej sekwencji:
+Rozważ poniższą sekwencję:
 
 1. Istnieją dwa wystąpienia kolejki magazynu.
-2. Zachowaj mieszczących się komunikaty i podczas przeglądania kolejki magazynu, łączna liczba odczytuje 50. Można zakładać, że automatyczne skalowanie na początek akcji skalowania do wewnątrz. Jednak należy pamiętać, że nadal 50/2 = 25 komunikaty dla każdego wystąpienia. Dlatego skalowalnego w poziomie nie występuje. Pierwszy skalowalne w poziomie do wykonania całkowita liczba wiadomości w kolejce magazynu powinna być 100.
-3. Następnie przyjęto założenie, że całkowita liczba wiadomości osiągnie 100.
-4. 3 wystąpienie kolejki magazynu jest dodawana z powodu akcji skalowania do wewnątrz.  Następnej akcji skalowania do wewnątrz nie nastąpi aż całkowita liczba wiadomości w kolejce osiągnie 150, ponieważ 150/3 = 50.
-5. Teraz zawężona liczbę komunikatów w kolejce. Za pomocą trzech wystąpień pierwszej akcji skalowania na zewnątrz się dzieje, gdy łączna liczba wiadomości we wszystkich kolejkach dodać maksymalnie 30, ponieważ 30/3 = 10 wiadomości dla każdego wystąpienia, która jest próg skalowania na zewnątrz.
+2. Komunikaty są zachowywane i podczas przeglądania kolejki magazynu łączna liczba odczytuje 50. Można założyć, że funkcja automatycznego skalowania powinna uruchamiać akcję skalowania w poziomie. Należy jednak pamiętać, że nadal 50/2 = 25 komunikatów na wystąpienie. Tak więc skalowanie w poziomie nie następuje. Aby pierwsze skalowanie w poziomie miało miejsce, Łączna liczba komunikatów w kolejce magazynu powinna wynosić 100.
+3. Następnie Załóżmy, że całkowita liczba komunikatów osiągnie 100.
+4. Wystąpienie kolejki magazynu trzeciego jest dodawane z powodu akcji skalowania w poziomie.  Kolejna akcja skalowania w poziomie nie zostanie wykonana do momentu, aż całkowita liczba komunikatów w kolejce osiągnie 150, ponieważ 150/3 = 50.
+5. Teraz liczba komunikatów w kolejce jest mniejsza. W przypadku trzech wystąpień pierwsza akcja skalowania odbywa się, gdy całkowita liczba komunikatów we wszystkich kolejkach zostanie dodana do 30, ponieważ 30/3 = 10 komunikatów na wystąpienie, czyli próg skalowania w poziomie.
 
-### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Zagadnienia dotyczące skalowania, jeśli skonfigurowano wiele profilów w ustawieniu skalowania automatycznego
-W ustawieniu skalowania automatycznego można wybrać profil domyślny, który jest zawsze włączana bez wszelkich zależności od harmonogramu lub czasu, lub można wybrać profil cyklicznego na czas za pomocą zakres dat i godzin.
+### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Zagadnienia dotyczące skalowania w przypadku skonfigurowania wielu profilów w ustawieniu automatycznego skalowania
+W ustawieniu automatycznego skalowania można wybrać profil domyślny, który jest zawsze stosowany bez żadnej zależności od harmonogramu lub czasu, lub wybrać profil cykliczny lub profil dla stałego okresu z zakresem dat i godzin.
 
-Podczas automatycznego skalowania, usługa przetwarza je, zawsze sprawdzają w następującej kolejności:
+Gdy usługa skalowania automatycznego przetwarza je, zawsze sprawdza w następującej kolejności:
 
-1. Naprawiono profilu daty
-2. Profil cykliczne
-3. Domyślny profil ("Always")
+1. Profil daty ustalonej
+2. Profil cykliczny
+3. Domyślny profil ("zawsze")
 
-Spełnieniu warunku profilu skalowania automatycznego nie sprawdza warunek profilu dalej poniżej. Automatyczne skalowanie przetwarza tylko jeden profil w danym momencie. Oznacza to, jeśli chcesz również zawierać warunek przetwarzania z niższego rzędu profilu, te reguły musi zawierać również w bieżącym profilu.
+Jeśli warunek profilu zostanie spełniony, funkcja automatycznego skalowania nie sprawdza następnego warunku profilu poniżej. Skalowanie automatyczne przetwarza tylko jeden profil w danym momencie. Oznacza to, że jeśli chcesz również uwzględnić warunek przetwarzania z poziomu profilu niższej warstwy, musisz uwzględnić te reguły również w bieżącym profilu.
 
-Podsumujmy to przy użyciu przykładu:
+Zapoznaj się z przykładem:
 
-Na poniższym obrazie przedstawiono ustawienia automatycznego skalowania przy użyciu profilu domyślnego minimalne wystąpień = 2 do maksymalnej wystąpień = 10. W tym przykładzie reguły są skonfigurowane do skalowania w poziomie, gdy liczba komunikatów w kolejce jest większa niż 10 i skalowania w pionie, gdy liczba komunikatów w kolejce jest mniejszy niż 3. Teraz skalować zasób od 2 do 10 wystąpień.
+Na poniższej ilustracji przedstawiono ustawienie automatycznego skalowania z domyślnym profilem minimalnych wystąpień = 2 i Maksymalna liczba wystąpień = 10. W tym przykładzie reguły są skonfigurowane do skalowania w poziomie, gdy liczba komunikatów w kolejce jest większa niż 10 i skalowanie, gdy liczba komunikatów w kolejce jest mniejsza niż 3. Teraz zasób można skalować między dwoma i dziesięciu wystąpieniami.
 
-Ponadto jest cykliczny profilu, ustaw dla kalendarza poniedziałek. Jest ustawiona dla wystąpień minimalne = 3 i maksymalne wystąpień = 10. Oznacza to, że w poniedziałek, sprawdza ten warunek skalowania automatycznego po raz pierwszy, jeśli liczba wystąpień jest dwóch, zostanie przeprowadzone skalowanie do nowego przynajmniej trzy. Tak długo, jak skalowanie automatyczne w dalszym ciągu Znajdź ten warunek profilu dopasowane (poniedziałek), on przetwarzał tylko dla komputerów z procesorem CPU scale-out/w skonfigurowanych reguł dla tego profilu. W tej chwili nie sprawdza ona, długość kolejki. Jednak jeśli chcesz również warunek długość kolejki do sprawdzenia, możesz powinna zawierać te reguły z domyślnego profilu również w Twoim profilu od poniedziałku.
+Ponadto istnieje powtarzalny profil ustawiony dla poniedziałku. Jest ustawiany dla minimalnych wystąpień = 3 i Maksymalna liczba wystąpień = 10. Oznacza to, że w poniedziałek pierwszy raz podczas pierwszego skalowania sprawdza się w przypadku tego warunku, jeśli liczba wystąpień jest równa 2, jest skalowana do nowej wartości minimum trzy. Tak długo, jak funkcja automatycznego skalowania nadal znajdzie ten warunek profilu dopasowany (poniedziałek), tylko przetwarza oparte na PROCESORAch reguł skalowanie w poziomie i w ustawieniach dla tego profilu. W tej chwili nie sprawdza długości kolejki. Jeśli jednak chcesz również sprawdzić warunek długości kolejki, należy uwzględnić te reguły z profilu domyślnego, jak również w profilu w poniedziałek.
 
-Podobnie gdy automatyczne skalowanie przełącza się do domyślnego profilu, najpierw sprawdza, jeśli są spełnione warunki minimalną i maksymalną. Jeśli liczba wystąpień w czasie jest 12, zostanie przeprowadzone skalowanie w 10, maksymalną dozwoloną dla profilu domyślnego.
+Podobnie, gdy automatyczne skalowanie przełącza się z powrotem do domyślnego profilu, najpierw sprawdza, czy spełnione są minimalne i maksymalne warunki. Jeśli liczba wystąpień w danym momencie wynosi 12, skaluje się do 10, maksymalną dozwoloną dla profilu domyślnego.
 
-![Ustawienia automatycznego skalowania](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
+![Ustawienia skalowania automatycznego](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
-### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Zagadnienia dotyczące skalowania, jeśli skonfigurowano wiele reguł w profilu
-Istnieją przypadki, gdzie trzeba ustawić wiele reguł w profilu. Następujący zestaw reguł skalowania automatycznego są używane przy użyciu usługi, gdy wiele reguł.
+### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Zagadnienia dotyczące skalowania w przypadku skonfigurowania wielu reguł w profilu
+Istnieją przypadki, w których może być konieczne ustawienie wielu reguł w profilu. Następujący zestaw reguł skalowania automatycznego jest używany przez usługi używane w przypadku ustawienia wielu reguł.
 
-Na *skalowanie w poziomie*, automatycznego skalowania jest uruchamiany, jeśli wszystkie reguły jest spełniony.
-Na *skalowania na zewnątrz*, automatycznego skalowania wymagają wszystkich reguł, które muszą być spełnione.
+W przypadku *skalowania w poziomie*funkcja automatycznego skalowania jest uruchamiana, jeśli dowolna reguła zostanie spełniona.
+W przypadku *skalowania w*poziomie Funkcja automatycznego skalowania wymaga spełnienia wszystkich reguł.
 
-Aby zilustrować, założono, że masz następujące cztery reguły skalowania automatycznego:
+Aby zilustrować, założono, że masz cztery następujące reguły automatycznego skalowania:
 
-* Jeśli Procesor < 30%, skalowanie w 1
-* Jeśli pamięci < 50%, skalowanie w 1
-* Jeśli Procesor > 75%, skalowalnego w poziomie przez 1
-* Jeśli pamięć > 75%, skalowalnego w poziomie przez 1
+* Jeśli procesor CPU < 30%, skalowanie w górę o 1
+* Jeśli pamięć < 50%, skalowanie w poziomie o 1
+* Jeśli procesor CPU > 75%, skalowanie w poziomie o 1
+* Jeśli pamięć > 75%, skalowanie w poziomie o 1
 
-Następnie odbywa się działaniami:
+Następnie następuje:
 
-* Jeśli pamięć wynosi 50% procesora CPU jest 76%, firma Microsoft skalowalnego w poziomie.
-* Jeśli procesora CPU wynosi 50%, a ilość pamięci jest 76% możemy skalowalnego w poziomie.
+* Jeśli procesor CPU wynosi 76%, a pamięć to 50%, skalowanie w poziomie.
+* Jeśli procesor CPU wynosi 50%, a pamięć wynosi 76% skalowanie w poziomie.
 
-Z drugiej strony, jeśli procesora CPU jest 25%, a pamięci jest 51% automatyczne skalowanie odbywa się **nie** skalowania na zewnątrz. W celu skalowania w procesora CPU musi być 29% i pamięci 49%.
+Z drugiej strony, jeśli procesor CPU wynosi 25%, a pamięć jest 51, Skalowanie automatyczne nie **jest skalowane.** Aby można było skalować w poziomie, procesor musi mieć 29% i pamięć 49%.
 
-### <a name="always-select-a-safe-default-instance-count"></a>Zawsze wybierać bezpieczne domyślna liczba wystąpień
-Domyślna liczba wystąpień jest ważne, że usługi do tej liczby skalowania automatycznego, gdy metryki są niedostępne. W związku z tym wybierz domyślną liczbę wystąpień, który jest bezpieczny dla obciążeń.
+### <a name="always-select-a-safe-default-instance-count"></a>Zawsze wybieraj bezpieczną domyślną liczbę wystąpień
+Domyślna liczba wystąpień to ważne automatyczne skalowanie usługi do tej liczby, gdy metryki są niedostępne. W związku z tym wybierz domyślną liczbę wystąpień, która jest bezpieczna dla obciążeń.
 
 ### <a name="configure-autoscale-notifications"></a>Konfigurowanie powiadomień dotyczących automatycznego skalowania
-Automatyczne skalowanie opublikuje tweet dziennika aktywności, jeśli wystąpi dowolne z następujących warunków:
+Automatyczne skalowanie będzie ogłaszane w dzienniku aktywności w przypadku wystąpienia dowolnego z następujących warunków:
 
-* Automatyczne skalowanie wystawia operacji skalowania
-* Automatyczne skalowanie usługi pomyślnym ukończeniu akcji skalowania
-* Automatyczne skalowanie usługi nie powiedzie się wykonać akcji skalowania.
-* Metryki nie są dostępne dla usługi skalowania automatycznego do podjęcia decyzji skali.
-* Metryki są dostępne (odzyskiwania) ponownie, aby podjąć decyzję skali.
+* Automatyczne skalowanie problemów z operacją skalowania
+* Usługa automatycznego skalowania pomyślnie ukończy akcję skalowania
+* Usługa automatycznego skalowania nie może wykonać akcji skalowania.
+* Metryki nie są dostępne dla usługi automatycznego skalowania, aby podejmować decyzje dotyczące skalowania.
+* Metryki są dostępne ponownie (Odzyskiwanie), aby przeprowadzić decyzję skalowania.
 
-Umożliwia także alertu dziennika aktywności do monitorowania prawidłowości aparat skalowania automatycznego. Poniżej przedstawiono przykłady [utworzyć działanie dziennika alertów można monitorować wszystkie operacje aparat skalowania automatycznego w ramach subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) lub [utworzyć działanie dziennika alertów można monitorować wszystkie skalowania automatycznego skalowania nie powiodło się w / skalowania w poziomie operacje usługi Subskrypcja](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+Możesz również użyć alertu dziennika aktywności do monitorowania kondycji aparatu skalowania automatycznego. Poniżej przedstawiono przykłady [tworzenia alertu dziennika aktywności w celu monitorowania wszystkich operacji aparatu automatycznego skalowania w ramach subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) lub [tworzenia alertu dziennika aktywności w celu monitorowania wszystkich niezakończonych operacji skalowania automatycznego w poziomie w ramach subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
 
-Oprócz używania alertów dziennika aktywności, można również skonfigurować adres e-mail lub elementu webhook powiadomienia otrzymywania powiadomień o akcjach skalowania pomyślnie za pomocą karty powiadomienia w ustawieniu skalowania automatycznego.
+Oprócz korzystania z alertów dziennika aktywności można także skonfigurować powiadomienia e-mail lub elementy webhook w celu uzyskania powiadomień o pomyślnych akcjach skalowania za pomocą karty powiadomienia w ustawieniu Skalowanie automatyczne.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Utwórz działanie dziennika alertów można monitorować wszystkie operacje aparat skalowania automatycznego w ramach subskrypcji.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Utwórz działanie dziennika alertów można monitorować wszystkie skalowania automatycznego skalowania nie powiodło się w / skalowanie w poziomie operacje w ramach subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Utwórz alert dziennika aktywności, aby monitorować wszystkie operacje aparatu automatycznego skalowania w ramach subskrypcji.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Tworzenie alertu dziennika aktywności w celu monitorowania wszystkich niezakończonych operacji skalowania automatycznego w poziomie w ramach subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

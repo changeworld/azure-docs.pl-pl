@@ -1,51 +1,51 @@
 ---
-title: Tworzenie sieci platformy Azure z wirtualnych WAN tabeli tras koncentratora wirtualnego — witryna Azure portal | Dokumentacja firmy Microsoft
-description: Wirtualne sieci WAN koncentrator wirtualny tabelę tras w celu kierowania ruchu do wirtualnego urządzenia sieciowego za pomocą portalu.
+title: 'Wirtualna sieć WAN: Tworzenie tabeli tras koncentratora wirtualnego do urządzenie WUS: Azure Portal'
+description: Tabela tras wirtualnego koncentratora sieci WAN do kierowania ruchu do sieciowego urządzenia wirtualnego przy użyciu portalu.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 2c8b3b4671fd14f9b10b8491861ae2c652f0188b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8f24b94226daffb769993c9f6659909fdff039b6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461658"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014979"
 ---
-# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Tworzenie wirtualnej sieci WAN tabeli tras Centrum dla urządzeń WUS: Azure Portal
+# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Tworzenie tabeli tras wirtualnego centrum sieci WAN dla urządzeń WUS: Azure Portal
 
-W tym artykule przedstawiono sposób kierowania ruchu z poziomu Centrum do wirtualnego urządzenia sieciowego (WUS).
+W tym artykule opisano sposób kierowania ruchu z koncentratora do sieciowego urządzenia wirtualnego (urządzenie WUS).
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Sprawdź, czy są spełnione następujące kryteria:
+Sprawdź, czy zostały spełnione następujące kryteria:
 
-*  Masz wirtualnego urządzenia sieciowego (WUS). Wirtualne urządzenie sieciowe jest oprogramowanie innych firm wybranych przez użytkownika jest zazwyczaj zainicjowanym do obsługi administracyjnej z witryny Azure Marketplace w sieci wirtualnej.
+*  Masz wirtualne urządzenie sieciowe (urządzenie WUS). Sieciowe urządzenie wirtualne to oferowane przez siebie oprogramowanie innych firm, które jest zazwyczaj inicjowane z portalu Azure Marketplace w sieci wirtualnej.
 
-    * Prywatny adres IP muszą być przypisane do interfejsu sieciowego urządzenia WUS.
+    * Prywatny adres IP musi być przypisany do interfejsu sieciowego urządzenie WUS.
 
-    * Urządzenie WUS nie została wdrożona w koncentrator wirtualny. Musi zostać wdrożony w oddzielnych sieci wirtualnej.
+    * URZĄDZENIE WUS nie jest wdrożona w koncentratorze wirtualnym. Należy ją wdrożyć w oddzielnej sieci wirtualnej.
 
-    *  Sieć wirtualna urządzenia WUS może zawierać jeden lub wiele sieci wirtualnych połączonych z nim. W tym artykule nazywamy sieci wirtualnej urządzenie WUS "pośrednich sieć wirtualną będącą szprychą". Te sieci wirtualne można połączyć w sieci wirtualnej urządzenie WUS za pomocą komunikacji równorzędnej sieci wirtualnych.
-*  Utworzono sieci wirtualne 2. Będą one służyć jako sieci wirtualne będące szprychami.
+    *  Do sieci wirtualnej urządzenie WUS może być połączona co najmniej jedna sieć wirtualna. W tym artykule odwołujemy się do sieci wirtualnej urządzenie WUS jako "pośrednia Sieć wirtualna". Te sieci wirtualnych mogą być połączone z siecią wirtualną urządzenie WUS przy użyciu komunikacji równorzędnej sieci wirtualnych.
+*  Utworzono 2 sieci wirtualnych. Będą one używane jako szprychy sieci wirtualnych.
 
-    * Na potrzeby tego ćwiczenia przestrzenie adresów sieci wirtualnej szprychy są: VNet1: 10.0.2.0/24 i VNet2: 10.0.3.0/24. Jeśli potrzebujesz informacji na temat tworzenia sieci wirtualnej, zobacz [tworzenie sieci wirtualnej](../virtual-network/quick-create-portal.md).
+    * W tym ćwiczeniu przestrzenie adresowe sieci wirtualnej szprych są następujące: VNet1:10.0.2.0/24 i VNet2:10.0.3.0/24. Jeśli potrzebujesz informacji na temat sposobu tworzenia sieci wirtualnej, zobacz [Create a Virtual Network](../virtual-network/quick-create-portal.md).
 
-    * Upewnij się, że nie ma żadnych bram sieci wirtualnej w żadnym z sieciami wirtualnymi.
-    * W przypadku tej konfiguracji tych sieciach wirtualnych nie wymagają podsieć bramy.
+    * Upewnij się, że w żadnym z sieci wirtualnych nie ma żadnych bram sieci wirtualnej.
+    * W przypadku tej konfiguracji te sieci wirtualnych nie wymagają podsieci bramy.
 
-## <a name="signin"></a>1. Logowanie
+## <a name="signin"></a>1. Zaloguj się
 
 Przejdź w przeglądarce do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
 ## <a name="vwan"></a>2. Tworzenie wirtualnej sieci WAN
 
-Tworzenie wirtualnej sieci WAN. Na potrzeby tego ćwiczenia można użyć następujących wartości:
+Utwórz wirtualną sieć WAN. Na potrzeby tego ćwiczenia można użyć następujących wartości:
 
 * **Nazwa wirtualnej sieci WAN:** myVirtualWAN
 * **Grupa zasobów:** testRG
@@ -53,43 +53,43 @@ Tworzenie wirtualnej sieci WAN. Na potrzeby tego ćwiczenia można użyć nastę
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="hub"></a>3. Tworzenie koncentratora
+## <a name="hub"></a>3. Tworzenie centrum
 
-Utwórz koncentrator. Na potrzeby tego ćwiczenia można użyć następujących wartości:
+Utwórz centrum. Na potrzeby tego ćwiczenia można użyć następujących wartości:
 
 * **Lokalizacja:** Zachodnie stany USA
 * **Nazwa:** westushub
-* **Centrum prywatną przestrzeń adresową:** 10.0.1.0/24
+* **Prywatna przestrzeń adresowa centrum:** 10.0.1.0/24
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="route"></a>4. Tworzenie i stosowanie tabelę tras Centrum
+## <a name="route"></a>4. Tworzenie i stosowanie tabeli tras centrum
 
-Zaktualizuj Centrum z tabelą tras koncentratora. Na potrzeby tego ćwiczenia można użyć następujących wartości:
+Zaktualizuj centrum za pomocą tabeli tras centrum. Na potrzeby tego ćwiczenia można użyć następujących wartości:
 
-* **Pośrednie szprychy przestrzenie adresów sieci wirtualnej:** 10.0.2.0/24 (VNet1 i VNet2) i 10.0.3.0/24
-* **Urządzenie WUS w strefie DMZ sieci interfejs prywatny adres IP:** 10.0.4.5
+* **Bezpośrednie przestrzenie adresowe sieci wirtualnej szprych:** (VNet1 i VNet2) 10.0.2.0/24 i 10.0.3.0/24
+* **Prywatny adres IP interfejsu sieciowego urządzenie WUS DMZ:** 10.0.4.5
 
-1. Przejdź do swojej wirtualna sieć WAN.
-2. Kliknij Centrum, dla której chcesz utworzyć tabelę tras.
-3. Kliknij przycisk **...** , a następnie kliknij przycisk **koncentrator wirtualny edycji**.
-4. Na **koncentrator wirtualny edycji** strony, przewiń w dół i wybierz pole wyboru **użycia tabeli routingu**.
-5. W **jeśli prefiks lokalizacji docelowej** kolumny, Dodaj przestrzenie adresowe. W **wysłać do miejsca docelowego następnego skoku** kolumny, Dodaj urządzenie WUS w strefie DMZ sieci interfejs prywatny adres IP.
-6. Kliknij przycisk **Potwierdź** aktualizowania zasobów Centrum przy użyciu ustawienia tabeli tras.
+1. Przejdź do wirtualnej sieci WAN.
+2. Kliknij centrum, dla którego chcesz utworzyć tabelę tras.
+3. Kliknij przycisk **...** , a następnie kliknij pozycję **Edytuj centrum wirtualne**.
+4. Na stronie **Edytowanie wirtualnego centrum** przewiń w dół i zaznacz pole wyboru **Użyj tabeli do routingu**.
+5. W kolumnie **jeśli prefiks lokalizacji docelowej jest** kolumną Dodaj przestrzenie adresowe. W kolumnie **Wyślij do następnego przeskoku** Dodaj prywatny adres IP urządzenie WUS strefy DMZ.
+6. Kliknij przycisk **Potwierdź** , aby zaktualizować zasób centrum przy użyciu ustawień tabeli tras.
 
-## <a name="connections"></a>5. Tworzenie połączenia sieci wirtualnej
+## <a name="connections"></a>5. Tworzenie połączeń sieci wirtualnej
 
-Utwórz połączenie z każdej szprysze pośrednich sieci wirtualnej (sieć VNet1 i VNet2) do koncentratora. Następnie utwórz połączenie z sieci wirtualnej urządzenie WUS z koncentratorem.
+Utwórz połączenie z każdej pośredniej sieci wirtualnej szprychy (VNet1 i VNet2) do centrum. Następnie utwórz połączenie z sieci wirtualnej urządzenie WUS do centrum.
 
  W tym kroku można użyć następujących wartości:
 
 | Nazwa sieci wirtualnej| Nazwa połączenia|
 | --- | --- |
 | VNet1 | testconnection1 |
-| Sieć VNet2 | testconnection2 |
+| VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Powtórz procedurę dla każdej sieci wirtualnej, który chcesz się połączyć.
+Powtórz poniższą procedurę dla każdej sieci wirtualnej, która ma zostać nawiązane połączenie.
 
 1. Na stronie sieci wirtualnej WAN kliknij pozycję **Połączenia sieci wirtualnych**.
 2. Na stronie połączenia sieci wirtualnej kliknij polecenie **+ Dodaj połączenie**.
@@ -99,8 +99,8 @@ Powtórz procedurę dla każdej sieci wirtualnej, który chcesz się połączyć
     * **Koncentratory** — wybierz koncentrator, z którym chcesz skojarzyć to połączenie.
     * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
     * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć istniejącej bramy sieci wirtualnej.
-4. Kliknij przycisk **OK** do utworzenia połączenia.
+4. Kliknij przycisk **OK** , aby utworzyć połączenie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz stronę [Omówienie usługi Virtual WAN](virtual-wan-about.md).

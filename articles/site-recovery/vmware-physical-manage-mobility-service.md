@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie agentem mobilności na serwerach na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych za pomocą Azure Site Recovery | Microsoft Docs
+title: Zarządzanie agentem mobilności na serwerach fizycznych i VMware za pomocą Azure Site Recovery
 description: Zarządzaj agentem usługi mobilności na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure przy użyciu usługi Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972125"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953643"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>Zarządzanie agentem mobilności na chronionych maszynach
+# <a name="manage-the-mobility-agent"></a>Zarządzanie agentem mobilności 
 
 Agenta mobilności konfiguruje się na serwerze, korzystając z Azure Site Recovery na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure. Agent mobilności koordynuje komunikację między komputerem chronionym, serwerem konfiguracji/skalowalnym w poziomie serwerem przetwarzania i zarządza replikacją danych. Ten artykuł zawiera podsumowanie typowych zadań związanych z zarządzaniem agentem mobilności po jego wdrożeniu.
 
@@ -24,7 +24,7 @@ Agenta mobilności konfiguruje się na serwerze, korzystając z Azure Site Recov
 ## <a name="update-mobility-service-from-azure-portal"></a>Aktualizuj usługę mobilności z Azure Portal
 
 1. Przed rozpoczęciem upewnij się, że serwer konfiguracji, serwery przetwarzania skalowalnego w poziomie i wszystkie główne serwery docelowe, które są częścią wdrożenia, są aktualizowane przed aktualizacją usługi mobilności na chronionych maszynach.
-2. W portalu otwórz magazyn > zreplikowanych **elementów**.
+2. W portalu otwórz magazyn > **zreplikowanych elementów**.
 3. Jeśli jest to Najnowsza wersja serwera konfiguracji, zobaczysz powiadomienie z informacją, że dostępna jest nowa aktualizacja agenta replikacji Site Recovery. Kliknij, aby zainstalować ".
 
      ![Okno zreplikowane elementy](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
@@ -53,8 +53,8 @@ Po wdrożeniu Site Recovery, w celu włączenia instalacji wypychanej usługi mo
 
 Odinstaluj z interfejsu użytkownika lub z wiersza polecenia.
 
-- **Z poziomu interfejsu użytkownika**: W panelu sterowania maszyny wybierz pozycję **programy**. Wybierz pozycję **Microsoft Azure Site Recovery usługi mobilności/Odinstaluj główny serwer** > docelowy.
-- **W wierszu polecenia**: Otwórz okno wiersza polecenia jako administrator na komputerze. Uruchom następujące polecenie: 
+- **Z poziomu interfejsu użytkownika**: w panelu sterowania maszyny wybierz pozycję **programy**. Wybierz pozycję **Microsoft Azure Site Recovery usługa mobilności/główny serwer docelowy** > **Odinstaluj**.
+- W **wierszu polecenia**: Otwórz okno wiersza polecenia jako administrator na komputerze. Uruchom następujące polecenie: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```

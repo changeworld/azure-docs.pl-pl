@@ -1,31 +1,28 @@
 ---
-title: Tworzenie bramy aplikacji za pomocą opartego na ścieżkach reguł routingu adresów URL — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć oparty na ścieżkach reguł routingu adresów URL dla aplikacji bramy i maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure.
+title: Reguły routingu oparte na ścieżkach URL przy użyciu interfejsu wiersza polecenia platformy Azure Application Gateway
+description: Informacje o sposobie tworzenia reguł routingu opartych na ścieżkach URL dla bramy aplikacji i zestawu skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7198e68530a51e6c2002b3beb08f14615a5c70fb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135665"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012321"
 ---
-# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą opartego na ścieżkach reguł routingu adresów URL przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu reguł routingu opartych na ścieżce URL za pomocą interfejsu wiersza polecenia platformy Azure
 
-Za pomocą interfejsu wiersza polecenia platformy Azure podczas tworzenia [bramy aplikacji](application-gateway-introduction.md) możesz skonfigurować [reguły routingu oparte na ścieżkach URL](application-gateway-url-route-overview.md). W tym samouczku utworzysz pule zaplecza przy użyciu [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Następnie można utworzyć reguły routingu, które upewnij się, że ruch w sieci web dociera do odpowiednich serwerów w puli.
+Za pomocą interfejsu wiersza polecenia platformy Azure podczas tworzenia [bramy aplikacji](application-gateway-url-route-overview.md) możesz skonfigurować [reguły routingu oparte na ścieżkach URL](application-gateway-introduction.md). W tym samouczku utworzysz pule zaplecza przy użyciu [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Następnie utworzysz reguły routingu, aby zapewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
-> * Tworzenie bramy aplikacji przy użyciu adresu URL mapy
+> * Tworzenie bramy aplikacji z użyciem mapy URL
 > * Tworzenie zestawów skalowania maszyn wirtualnych z pulami zaplecza
 
 ![Przykład routingu adresów URL](./media/application-gateway-create-url-route-cli/scenario.png)
@@ -99,7 +96,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Dodawanie pul zaplecza i portu na potrzeby obsługi obrazów i wideo
 
-Możesz dodać pule zaplecza o nazwie *imagesBackendPool* i *videoBackendPool* do Twojej bramy application gateway przy użyciu [az bramy application gateway puli adresów sieciowych — tworzenie](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create). Port frontonu możesz dodać do pul za pomocą polecenia [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create). 
+Pule zaplecza o nazwie *imagesBackendPool* i *videoBackendPool* można dodać do bramy aplikacji za pomocą polecenia [AZ Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create). Port frontonu możesz dodać do pul za pomocą polecenia [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create). 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -157,7 +154,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-routing-rule"></a>Dodawanie reguły routingu
 
-Reguła routingu kojarzy mapę adresów URL z utworzonym odbiornikiem. Można dodać reguły o nazwie *reguły rule2* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+Reguła routingu kojarzy mapę adresów URL z utworzonym odbiornikiem. Można dodać regułę o nazwie *ograniczeniem zakresu wystąpień* przy użyciu polecenia [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -220,7 +217,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, lub `http://40.121.222.19:8080/video/test.htm`.
+Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`lub `http://40.121.222.19:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -232,21 +229,21 @@ az network public-ip show \
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-Zmień adres URL do `http://<ip-address>:8080/video/test.html` -to-end podstawowy adres URL i powinny zostać wyświetlone informacje jak w poniższym przykładzie:
+Zmień adres URL na `http://<ip-address>:8080/video/test.html` na końcu podstawowego adresu URL, a powinien wyglądać podobnie do następującego przykładu:
 
 ![Testowanie adresu URL obrazów w bramie aplikacji](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-Zmień adres URL do `http://<ip-address>:8080/video/test.html` powinien zostać wyświetlony coś tak jak w poniższym przykładzie.
+Zmień adres URL na `http://<ip-address>:8080/video/test.html`, a powinien wyglądać podobnie do poniższego przykładu.
 
 ![Testowanie adresu URL wideo w bramie aplikacji](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
-> * Tworzenie bramy aplikacji przy użyciu adresu URL mapy
+> * Tworzenie bramy aplikacji z użyciem mapy URL
 > * Tworzenie zestawów skalowania maszyn wirtualnych z pulami zaplecza
 
-Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.
+Aby dowiedzieć się więcej na temat bram aplikacji i skojarzonych z nimi zasobów, przejdź do artykułów z krokami.

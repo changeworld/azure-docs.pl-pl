@@ -3,7 +3,7 @@ title: Raporty dotyczące inspekcji w portalu usługi Azure Active Directory | M
 description: Wprowadzenie do raportów dotyczących inspekcji w portalu usługi Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 07/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907189"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008539"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -30,10 +30,10 @@ Za pomocą raportów usługi Azure Active Directory (Azure AD) możesz uzyskać 
 
 Architektura raportowania składa się z następujących składników:
 
-- **Działanie** 
+- **Aktywność** 
     - **Logowania** — [raport logowania](concept-sign-ins.md) zawiera informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników.
     - **Dzienniki inspekcji** — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. Przykłady dzienników inspekcji obejmują zmiany wprowadzone w zasobach w usłudze Azure AD, takie jak dodawanie lub usuwanie użytkowników, aplikacji, grup, ról i zasad.
-- **Bezpieczeństwo** 
+- **Zabezpieczenia** 
     - **Ryzykowne logowania** — [ryzykowne logowanie](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania, które mogło zostać wykonane przez kogoś, kto nie jest uprawnionym właścicielem konta użytkownika. 
     - **Użytkownicy oflagowani do ryzyka** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, które mogło zostać naruszone.
 
@@ -42,7 +42,6 @@ Ten artykuł zawiera omówienie raportu inspekcji.
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 
 * Użytkownicy w rolach **administrator zabezpieczeń**, **czytelnik zabezpieczeń**, **czytelnik raportu** lub **administrator globalny**
-* Ponadto wszyscy użytkownicy (inni niż administratorzy) mogą zobaczyć własne działania związane z logowaniem
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 

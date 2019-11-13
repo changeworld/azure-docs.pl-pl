@@ -1,17 +1,14 @@
 ---
 title: Eksplorowanie zasobów platformy Azure
 description: Dowiedz się, jak używać języka zapytań grafu zasobów do eksplorowania zasobów i dowiedzieć się, jak są one połączone.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622661"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959233"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
 
@@ -150,7 +147,7 @@ Teraz możemy sprawdzić liczbę maszyn wirtualnych w każdym regionie świadcze
 
 ### <a name="virtual-machines-by-sku"></a>Maszyny wirtualne według jednostki SKU
 
-Powracając do właściwości oryginalnej maszyny wirtualnej, spróbuj znaleźć wszystkie maszyny wirtualne o rozmiarze SKU **Standard_B2s**. Po zwróconym kodzie JSON zobaczymy, że jest on przechowywany w **właściwości. — obiekt hardwareprofile. VmSize**. Zaktualizujemy zapytanie, aby znaleźć wszystkie maszyny wirtualne, które pasują do tego rozmiaru i zwracają tylko nazwę maszyny wirtualnej i regionu.
+Powracając do właściwości oryginalnej maszyny wirtualnej, spróbuj znaleźć wszystkie maszyny wirtualne mające rozmiar jednostki SKU **Standard_B2s**. Po zwróconym kodzie JSON zobaczymy, że jest on przechowywany w **właściwości. — obiekt hardwareprofile. VmSize**. Zaktualizujemy zapytanie, aby znaleźć wszystkie maszyny wirtualne, które pasują do tego rozmiaru i zwracają tylko nazwę maszyny wirtualnej i regionu.
 
 ```kusto
 Resources
@@ -168,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Maszyny wirtualne połączone z dyskami zarządzanymi w warstwie Premium
 
-Jeśli chcemy uzyskać szczegóły dotyczące dysków zarządzanych w warstwie Premium, które są dołączone do tych maszyn wirtualnych **Standard_B2s** , można rozszerzyć zapytanie w celu przekazania nam identyfikatora zasobu dla tych dysków zarządzanych.
+Jeśli chcemy uzyskać szczegóły dotyczące dysków zarządzanych w warstwie Premium, które są dołączone do tych **Standard_B2s** maszyn wirtualnych, możemy rozszerzyć zapytanie w celu udostępnienia nam identyfikatora zasobu dla tych dysków zarządzanych.
 
 ```kusto
 Resources

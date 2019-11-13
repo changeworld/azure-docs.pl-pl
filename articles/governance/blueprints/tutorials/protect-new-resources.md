@@ -1,17 +1,14 @@
 ---
 title: Ochrona nowych zasobów przy użyciu blokad planów
 description: W ramach tego samouczka nauczysz się używać opcji blokowania zasobów usługi Azure Plans tylko do odczytu i nie usuwaj, aby chronić nowo wdrożone zasoby.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297013"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960249"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Samouczek: Ochrona nowych zasobów przy użyciu blokad zasobów usługi Azure Plans
 
@@ -190,7 +187,7 @@ Przypisanie tworzy _TestingBPLocks_ grupy zasobów i konto magazynu wdrożone pr
 
 1. Zaznacz pozycję Odmów przypisania, a następnie wybierz stronę **odmowa uprawnień** po lewej stronie.
 
-   Przypisanie Odmów uniemożliwia wszystkie operacje z konfiguracją **\*** i **akcją** , ale zezwala na dostęp do odczytu przez wykluczenie **\*/odczyt** za pośrednictwem **nonaruszone**.
+   Przypisanie odmowy uniemożliwia wszystkie operacje z **\*ą** i konfiguracją **akcji** , ale zezwala na dostęp do odczytu przez wykluczenie **\*/Read** za pośrednictwem **nonaruszone**.
 
 1. Na stronie nawigacyjnej Azure Portal wybierz pozycję **Kontrola dostępu TestingBPLocks (IAM)** . Następnie wybierz stronę **Przegląd** po lewej stronie, a następnie przycisk **Usuń grupę zasobów** . Wprowadź nazwę **TestingBPLocks** , aby potwierdzić usunięcie, a następnie wybierz pozycję **Usuń** w dolnej części okienka.
 

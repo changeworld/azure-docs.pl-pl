@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 26cd2ffc12dfb93f07c2e1755a0dc41cc90da252
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472884"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961633"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -81,7 +81,7 @@ Aby szybko skalować klaster AKS, możesz zintegrować z usługą Azure Containe
 
 ![Kubernetes skalowanie serii ACI](media/concepts-scale/burst-scaling.png)
 
-ACI umożliwia szybkie wdrażanie wystąpień kontenerów bez dodatkowych obciążeń związanych z infrastrukturą. Po nawiązaniu połączenia z usługą AKS ACI staną się zabezpieczonym, logicznym rozszerzeniem klastra AKS. Wirtualny składnik Kubelet jest instalowany w klastrze AKS, który przedstawia ACI jako wirtualny węzeł Kubernetes. Kubernetes może następnie zaplanować wystąpienia, które są uruchamiane jako instancje ACI za poorednictwem węzłów wirtualnych, a nie jako zasobników w węzłach maszyn wirtualnych bezpośrednio w klastrze AKS. Węzły wirtualne są obecnie dostępne w wersji zapoznawczej w AKS.
+ACI umożliwia szybkie wdrażanie wystąpień kontenerów bez dodatkowych obciążeń związanych z infrastrukturą. Po nawiązaniu połączenia z usługą AKS ACI staną się zabezpieczonym, logicznym rozszerzeniem klastra AKS. Składnik [węzłów wirtualnych][virtual-nodes-cli] , który jest oparty na [wirtualnej Kubelet][virtual-kubelet], jest instalowany w klastrze AKS, który przedstawia ACI jako wirtualny węzeł Kubernetes. Kubernetes może następnie zaplanować wystąpienia, które są uruchamiane jako instancje ACI za poorednictwem węzłów wirtualnych, a nie jako zasobników w węzłach maszyn wirtualnych bezpośrednio w klastrze AKS. Węzły wirtualne są obecnie dostępne w wersji zapoznawczej w AKS.
 
 Aplikacja nie wymaga modyfikacji, aby używać węzłów wirtualnych. Wdrożenia mogą skalować między AKS i ACI i bez opóźnień, ponieważ automatyczne skalowanie klastra wdraża nowe węzły w klastrze AKS.
 
@@ -104,6 +104,7 @@ Aby uzyskać więcej informacji na temat podstawowych pojęć związanych z Kube
 - [Magazyn Kubernetes/AKS][aks-concepts-storage]
 
 <!-- LINKS - external -->
+[virtual-kubelet]: https://virtual-kubelet.io/
 
 <!-- LINKS - internal -->
 [aks-quickstart]: kubernetes-walkthrough.md
@@ -117,3 +118,4 @@ Aby uzyskać więcej informacji na temat podstawowych pojęć związanych z Kube
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-network]: concepts-network.md
+[virtual-nodes-cli]: virtual-nodes-cli.md

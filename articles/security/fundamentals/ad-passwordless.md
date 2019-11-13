@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820509"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007276"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Świat bez hasła przy użyciu Azure Active Directory
 
@@ -24,7 +24,7 @@ Trzy typy ataków często używanych do naruszenia zabezpieczeń kont użytkowni
 
 Ten artykuł jest początek podróży, aby pomóc Ci zrozumieć i wdrożyć rozwiązania bezhaseł firmy Microsoft, a także wybrać jedną z następujących opcji:
 
-* Funkcja **Windows Hello dla firm**. W systemie Windows 10 funkcja Windows Hello dla firm zastępuje hasła silnym uwierzytelnianiem dwuskładnikowym na komputerach i urządzeniach przenośnych. To uwierzytelnianie składa się z nowego typu poświadczeń użytkownika, który jest powiązany z urządzeniem i używa biometrycznych lub PIN.
+* Funkcja **Windows Hello dla firm**. W systemie Windows 10 funkcja Windows Hello dla firm zastępuje hasła silnym uwierzytelnianiem dwuskładnikowym na komputerach i urządzeniach przenośnych. To uwierzytelnianie składa się z nowego typu poświadczeń użytkownika, który jest powiązany z urządzeniem i używa rozpoznawania biometrycznego lub numeru PIN.
 
 * **Logowanie bez hasła przy użyciu Microsoft Authenticator**. Aplikacja Microsoft Authenticator może służyć do logowania się do konta usługi Azure AD bez użycia hasła. Podobnie jak w przypadku technologii Windows Hello dla firm, Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby umożliwić poświadczenie użytkownika powiązanego z urządzeniem i używa biometrycznych lub PIN.
 

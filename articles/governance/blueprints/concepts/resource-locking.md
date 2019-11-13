@@ -1,17 +1,14 @@
 ---
 title: Zrozumienie blokowania zasobów
 description: Zapoznaj się z opcjami blokowania, aby chronić zasoby podczas przypisywania planu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981046"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960483"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania zasobów w planach platformy Azure
 
@@ -54,10 +51,10 @@ Akcja Odmów [przypisania](../../../role-based-access-control/deny-assignments.m
 
 [Właściwości przypisania Odmów](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) dla każdego trybu są następujące:
 
-|Tryb |Uprawnienia. akcje |Uprawnienia. nonaruszone |Podmioty zabezpieczeń [i]. Wprowadź |ExcludePrincipals [i]. #C1 | DoNotApplyToChildScopes |
+|Tryb |Uprawnienia. akcje |Uprawnienia. nonaruszone |Podmioty zabezpieczeń [i]. Wprowadź |ExcludePrincipals [i]. # | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Tylko do odczytu |**\*** |**\*/odczyt** |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
-|Nie usuwaj |**\*/Usuń** | |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
+|Tylko do odczytu |**\*** |**\*/Read** |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
+|Nie usuwaj |**\*/Delete** | |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager buforuje Szczegóły przydziału roli przez maksymalnie 30 minut. W związku z tym odmowa akcji Odmów przypisań na zasoby strategii może nie być od razu całkowicie w pełni funkcjonalna. W tym czasie może być możliwe usunięcie zasobu przeznaczonego do ochrony przez blokady planu.
@@ -110,8 +107,8 @@ Jest to przykład treści żądania, która zawiera **excludedPrincipals**:
 ## <a name="next-steps"></a>Następne kroki
 
 - Postępuj zgodnie z samouczkiem [Ochrona nowych zasobów](../tutorials/protect-new-resources.md) .
-- Dowiedz się więcej o [cyklu życia](lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](sequencing-order.md).
-- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).

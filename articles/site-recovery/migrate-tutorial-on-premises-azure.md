@@ -1,21 +1,21 @@
 ---
-title: Migrowanie maszyn lokalnych na platformę Azure za pomocą Azure Site Recovery
+title: Migrowanie maszyn lokalnych przy użyciu Azure Site Recovery
 description: W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053048"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73939634"
 ---
-# <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych na platformę Azure
+# <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
 
 W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md). Ogólnie rzecz biorąc, Site Recovery jest używany do zarządzania odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure. Można go również użyć do migracji. Migracja używa tych samych kroków co w przypadku odzyskiwania po awarii z jednym wyjątkiem. W przypadku migracji maszyny przełączone do trybu failover z lokacji lokalnej są ostatnim krokiem. W przeciwieństwie do odzyskiwania po awarii, nie można wrócić do trybu failover w scenariuszu migracji.

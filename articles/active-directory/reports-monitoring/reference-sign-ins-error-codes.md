@@ -3,7 +3,7 @@ title: Kody błędów w portalu Azure Active Directory | Microsoft Docs
 description: Dokumentacja dotycząca kodów błędów w raportach działań związanych z logowaniem.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 08/08/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809820"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014293"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 

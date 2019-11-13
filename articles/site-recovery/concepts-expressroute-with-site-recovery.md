@@ -1,5 +1,5 @@
 ---
-title: Informacje o korzystaniu z usługi Azure ExpressRoute z Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji | Microsoft Docs
+title: Informacje o korzystaniu z programu ExpressRoute z Azure Site Recovery
 description: Opisuje sposób korzystania z usługi Azure ExpressRoute z usługą Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333066"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954069"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Usługa Azure ExpressRoute z Azure Site Recovery
 
@@ -23,7 +23,7 @@ W tym artykule opisano, jak można użyć usługi Azure ExpressRoute z Azure Sit
 
 ## <a name="expressroute-circuits"></a>Obwody usługi ExpressRoute
 
-Obwód usługi ExpressRoute reprezentuje połączenie logiczne między infrastrukturą lokalną i usługami w chmurze firmy Microsoft przez dostawcę połączenia. Można zamówić wiele obwodów usługi ExpressRoute. Każdy obwód może znajdować się w tym samym lub różnych regionach i może być połączony z Twoim lokalem za pośrednictwem różnych dostawców łączności. Więcej informacji na temat obwodów usługi ExpressRoute znajduje się [tutaj](../expressroute/expressroute-circuit-peerings.md).
+Obwód usługi ExpressRoute reprezentuje połączenie logiczne między lokalną infrastrukturą i usługami chmurowymi firmy Microsoft za pośrednictwem dostawcy łączności. Może zamówić łączność obejmującą wiele obwodów usługi ExpressRoute. Każdy obwód może znajdować się w tej samej lub różnych regionach i mogą być połączone z lokalnym za pośrednictwem połączenia różnych dostawców. Więcej informacji na temat obwodów usługi ExpressRoute znajduje się [tutaj](../expressroute/expressroute-circuit-peerings.md).
 
 Obwód usługi ExpressRoute ma skojarzone wiele domen routingu. Dowiedz się więcej o domenach routingu ExpressRoute i porównaj je [tutaj](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
@@ -46,7 +46,7 @@ Zapewni to, że ruch związany z replikacją odbywa się za pomocą ExpressRoute
 
 Gdy maszyny wirtualne lub serwery zostaną przełączone w tryb failover do sieci wirtualnej platformy Azure, możesz uzyskać do nich dostęp przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Połączony scenariusz jest przedstawiony na poniższym diagramie: ![On-premises-to-Azure z ExpressRoute @ no__t-1
+Połączony scenariusz jest przedstawiony na poniższym diagramie: ![lokalne na platformę Azure za pomocą ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replikacja z platformy Azure do platformy Azure za pomocą ExpressRoute
 

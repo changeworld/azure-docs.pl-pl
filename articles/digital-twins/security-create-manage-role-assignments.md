@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949821"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014003"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -38,11 +38,11 @@ W poniższej tabeli opisano każdy atrybut:
 
 | Atrybut | Nazwa | Wymagane | Typ | Opis |
 | --- | --- | --- | --- | --- |
-| roleId | Identyfikator definicji roli | Tak | String | Unikatowy identyfikator żądanego przypisania roli. Znajdź definicje ról i ich identyfikatory, wykonując zapytania dotyczące systemowego interfejsu API lub tabeli przeglądu poniżej. |
-| Obiektu | Identyfikator obiektu | Tak | String | Identyfikator Azure Active Directory, identyfikator obiektu jednostki usługi lub nazwa domeny. Do czego jest przypisane przypisanie roli. Przypisanie roli musi być sformatowane zgodnie ze skojarzonym z nim typem. Dla `DomainName` objectIdtype identyfikator objectId musi rozpoczynać się od znaku `“@”`. |
-| objectIdtype | Typ identyfikatora obiektu | Tak | String | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
-| ścieżka | Ścieżka miejsca | Tak | String | Pełna ścieżka dostępu do obiektu `Space`. Przykładem jest `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, określ `"/"`. Ten znak określa katalog główny, ale jego użycie nie jest zalecane. Zawsze stosuj zasadę najniższych uprawnień. |
-| tenantId | Identyfikator dzierżawy | Różni się | String | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
+| roleId | Identyfikator definicji roli | Tak | Ciąg | Unikatowy identyfikator żądanego przypisania roli. Znajdź definicje ról i ich identyfikatory, wykonując zapytania dotyczące systemowego interfejsu API lub tabeli przeglądu poniżej. |
+| Identyfikator obiektu | Identyfikator obiektu | Tak | Ciąg | Identyfikator Azure Active Directory, identyfikator obiektu jednostki usługi lub nazwa domeny. Do czego jest przypisane przypisanie roli. Przypisanie roli musi być sformatowane zgodnie ze skojarzonym z nim typem. Identyfikator obiektu `DomainName` objectIdtype musi rozpoczynać się od znaku `“@”`. |
+| objectIdtype | Typ identyfikatora obiektu | Tak | Ciąg | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
+| ścieżka | Ścieżka miejsca | Tak | Ciąg | Pełna ścieżka dostępu do obiektu `Space`. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, określ `"/"`. Ten znak określa katalog główny, ale jego użycie nie jest zalecane. Zawsze stosuj zasadę najniższych uprawnień. |
+| tenantId | Identyfikator dzierżawy | Różna | Ciąg | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
 
 ### <a name="supported-role-definition-identifiers"></a>Obsługiwane Identyfikatory definicji ról
 
@@ -60,7 +60,7 @@ Wcześniej wprowadzono atrybut **objectidtype** .
 
 Usługa Azure Digital bliźniaczych reprezentacji obsługuje pełne operacje *tworzenia*, *odczytywania*i *usuwania* dla przypisań ról. Operacje *aktualizacji* są obsługiwane przez dodawanie przypisań ról, usuwanie przypisań ról lub modyfikowanie węzłów [wykresu analizy przestrzennej](./concepts-objectmodel-spatialgraph.md) , do których przypisań ról daje dostęp.
 
-[punkty końcowe przypisania @no__t 1Role](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[punkty końcowe przypisywania ról ![](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 Podana dokumentacja referencyjna struktury Swagger zawiera dodatkowe informacje na temat wszystkich dostępnych punktów końcowych interfejsu API, operacji żądań i definicji.
 
@@ -112,7 +112,7 @@ Z następującą treścią JSON:
 
 ### <a name="retrieve-all-roles"></a>Pobierz wszystkie role
 
-[@no__t — role 1System](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[![ról systemu](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 Aby wyświetlić listę wszystkich dostępnych ról (definicje ról), wykonaj uwierzytelnione żądanie HTTP GET:
 
@@ -161,14 +161,14 @@ Aby sprawdzić konkretne przypisanie roli, wykonaj uwierzytelnione żądanie HTT
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Wartość parametru** | **Wymagane** |  **Wprowadź** |  **Opis** |
+| **Wartość parametru** | **Wymagane** |  **Typ** |  **Opis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Oznacza | String |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
-| YOUR_PATH | Oznacza | String |   Wybrana ścieżka do sprawdzenia dostępu. |
-| YOUR_ACCESS_TYPE |  Oznacza | String |   *Odczytaj*, *Utwórz*, *zaktualizuj*lub *Usuń* |
-| YOUR_RESOURCE_TYPE | Oznacza | String |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *rozszerzonytype*, *punkt końcowy*, *Magazyn*kluczy, *odpowiednika*, *Ontology*, *raport*,  *Definicji*, *czujnik*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *system* , *UerDefinedFunction*, *User*, *UserBlobMetadata*lub *UserExtendedProperty* |
+| YOUR_USER_ID |  Prawda | Ciąg |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
+| YOUR_PATH | Prawda | Ciąg |   Wybrana ścieżka do sprawdzenia dostępu. |
+| YOUR_ACCESS_TYPE |  Prawda | Ciąg |   *Odczytaj*, *Utwórz*, *zaktualizuj*lub *Usuń* |
+| YOUR_RESOURCE_TYPE | Prawda | Ciąg |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *rozszerzonytype*, *punkt końcowy*, *Magazyn*kluczy, *odpowiednika*, *Ontology*, *raport*, *definicji*, *czujnik*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *system*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*lub *UserExtendedProperty* |
 
-Pomyślne żądanie zwróci wartość logiczną `true` lub `false` w celu wskazania, czy typ dostępu został przypisany do użytkownika dla danej ścieżki i zasobu.
+Pomyślne żądanie zwróci wartość logiczną `true` lub `false`, aby wskazać, czy typ dostępu został przypisany do użytkownika dla danej ścieżki i zasobu.
 
 ### <a name="get-role-assignments-by-path"></a>Pobieranie przypisań ról według ścieżki
 

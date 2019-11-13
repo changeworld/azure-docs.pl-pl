@@ -1,5 +1,5 @@
 ---
-title: Przykłady manifestu aplikacji kontenera Service Fabric platformy Azure | Microsoft Docs
+title: Przykłady manifestu aplikacji Service Fabric platformy Azure
 description: Dowiedz się, jak skonfigurować ustawienia manifestu aplikacji i usługi dla aplikacji Service Fabric.
 services: service-fabric
 documentationcenter: na
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: dc3384821ddfba0a137a74297bc44903b6ed5d1d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 969f15ecb45164e3b3f26c22f756a022e55782ed
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650574"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013175"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric przykłady manifestów aplikacji i usług
 Ta sekcja zawiera przykłady manifestów aplikacji i usług. Te przykłady nie są przeznaczone do wyświetlania ważnych scenariuszy, ale do wyświetlania różnych dostępnych ustawień i sposobu ich używania. 
 
 Poniżej znajduje się indeks widocznych funkcji i przykładowe manifesty, których są częścią.
 
-|Cecha|Manifest|
+|Funkcja|Manifest|
 |---|---|
 |[Resource governance (Zarządzanie zasobami)](service-fabric-resource-governance.md)|[Manifest aplikacji Reliable Services](service-fabric-manifest-example-reliable-services-app.md#application-manifest), [manifest aplikacji kontenera](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Uruchamianie usługi jako konta administratora lokalnego](service-fabric-application-runas-security.md)|[Reliable Services manifest aplikacji](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

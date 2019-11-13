@@ -3,7 +3,7 @@ title: Znajdowanie raportów aktywności użytkowników w Azure Portal | Microso
 description: Dowiedz się, gdzie Azure Active Directory raporty aktywności użytkowników znajdują się w Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7fdf8c17c8dcbdc8203cb46342c8474b3d9832f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820926"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008210"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdź raporty aktywności w Azure Portal
 
@@ -52,10 +52,10 @@ Możesz użyć filtrowania zaawansowanego w raporcie inspekcji, aby uzyskać dos
 
 Kategorie obejmują:
 
-- Wszystko
+- Wszystkie
 - AdministrativeUnit
 - ApplicationManagement
-- Uwierzytelnianie
+- Authentication
 - Autoryzacja
 - Kontakt
 - Urządzenie
@@ -73,7 +73,7 @@ Możesz również filtrować określoną usługę za pomocą filtru listy rozwij
 
 Usługi to:
 
-- Wszystko
+- Wszystkie
 - Przeglądy dostępu
 - Aprowizacja kont 
 - Logowanie jednokrotne aplikacji
@@ -82,7 +82,7 @@ Usługi to:
 - Dostęp warunkowy
 - Katalog podstawowy
 - Zarządzanie upoważnieniami
-- Ochrona tożsamości
+- Identity Protection
 - Zaproszeni użytkownicy
 - PROGRAMÓW
 - Samoobsługowe zarządzanie grupami
@@ -108,7 +108,7 @@ Możesz użyć raportu logowania, aby wyświetlić szczegółowe informacje o u�
 
 ![Strona filtrowania zdarzeń logowania](./media/howto-find-activity-reports/07.png "Strona filtrowania zdarzeń logowania")
 
-## <a name="security-reports"></a>Raporty zabezpieczeń
+## <a name="security-reports"></a>Raporty dotyczące zabezpieczeń
 
 ### <a name="anomalous-activity-reports"></a>Raporty o nietypowych działaniach
 
@@ -139,7 +139,7 @@ Można uzyskać dostęp do raportów dotyczących wykrywania wykrytych zagroże�
 - [Narażeni użytkownicy](concept-user-at-risk.md)
 - [Ryzykowne logowania](concept-risky-sign-ins.md)
 
-    ![Raporty dotyczące zabezpieczeń](./media/howto-find-activity-reports/04.png "Raporty zabezpieczeń")
+    ![Raporty dotyczące zabezpieczeń](./media/howto-find-activity-reports/04.png "Raporty dotyczące zabezpieczeń")
 
 ## <a name="troubleshoot-issues-with-activity-reports"></a>Rozwiązywanie problemów z raportami aktywności
 
@@ -155,7 +155,7 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
 
 Po pobraniu dzienników aktywności w Azure Portal ograniczamy do 250000 rekordów, posortowanych według ostatnio używanych elementów. 
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu.
 
@@ -176,7 +176,7 @@ Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej ta
 | Inspekcja katalogu | &nbsp; | 2 min | 5 min |
 | Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
 
@@ -197,7 +197,7 @@ Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej ta
 | Inspekcja katalogu | &nbsp; | 2 min | 5 min |
 | Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
 
@@ -220,7 +220,7 @@ W zależności od licencji w obszarze akcji usługi Azure Active Directory rapor
 
 Aby uzyskać więcej informacji, zobacz [Azure Active Directory report retention policies (Zasady przechowywania raportów w usłudze Azure Active Directory)](reference-reports-data-retention.md).  
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Dostępne są dwie opcje przechowywania danych przez czas dłuższy niż 30 dni. Możesz użyć [interfejsów API raportowania usługi Azure AD](concept-reporting-api.md) do programowego pobierania danych i przechowywania ich w bazie danych. Alternatywnie możesz zintegrować dzienniki inspekcji w systemie SIEM innej firmy, takim jak Splunk lub SumoLogic.
 

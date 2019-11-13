@@ -1,5 +1,5 @@
 ---
-title: Uaktualnianie klastra usługi Azure Service Fabric | Microsoft Docs
+title: Uaktualnij wersję Service Fabric platformy Azure w klastrze
 description: Uaktualnij Service Fabric kod i/lub konfigurację, w której działa klaster Service Fabric, w tym Ustawianie trybu aktualizacji klastra, uaktualnianie certyfikatów, Dodawanie portów aplikacji, wykonywanie poprawek systemu operacyjnego i tak dalej. Czego można oczekiwać w przypadku wykonywania uaktualnień?
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 03fd5f2950349f0dc76021d28845e383c0ba6a64
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 067bf654928240ffe9651d4acf1933a81e631146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599816"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013355"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Uaktualnianie Service Fabric wersji klastra
 
@@ -119,7 +119,7 @@ Output:
                 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak dostosować niektóre [Ustawienia sieci szkieletowej klastra usługi Service Fabric](service-fabric-cluster-fabric-settings.md)
 * Dowiedz się [, jak skalować klaster w i na zewnątrz](service-fabric-cluster-scale-up-down.md)
 * Informacje o [uaktualnieniach aplikacji](service-fabric-application-upgrade.md)

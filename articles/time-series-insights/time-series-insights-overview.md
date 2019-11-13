@@ -1,5 +1,5 @@
 ---
-title: 'Przegląd: co to jest Azure Time Series Insights? | Microsoft Docs'
+title: 'Przegląd: co to jest Azure Time Series Insights? -Azure Time Series Insights | Microsoft Docs'
 description: Wprowadzenie do usługi Azure Time Series Insights — nowej usługi do analizy danych szeregów czasowych i obsługi rozwiązań IoT.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 15674d995036d11e1b4ec0ceda5aa4bbf4952906
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: aa15e9c50cb5cd694a7a6adad352459536292b85
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990023"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012587"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
 Azure Time Series Insights jest zbudowana do przechowywania, wizualizowania i wykonywania zapytań dotyczących dużych ilości danych szeregów czasowych, takich jak te wygenerowane przez urządzenia IoT. Jeśli chcesz przechowywać, odpytywać i wizualizować dane szeregów czasowych w chmurze oraz zarządzać nimi, usługa Time Series Insights będzie prawdopodobnie odpowiednia dla Ciebie. 
 
-[Schemat blokowy Time Series Insights![](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
+[Schemat blokowy Time Series Insights ![](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
 
 Usługa Time Series Insights ma cztery kluczowe zadania:
 
@@ -37,11 +37,11 @@ Dane szeregów czasowych przedstawiają, jak zasób lub proces zmienia się wraz
 Może być wyzwaniem do przechowywania, indeksowania, wykonywania zapytań, analizowania i wizualizowania danych szeregów czasowych w dużych woluminach.
 Azure Time Series Insights przechwytuje i zapisuje każde nowe zdarzenie jako wiersz, a zmiana jest efektywnie mierzona w czasie. W związku z tym możesz odszukać szczegółowe informacje od przeszłości, aby ułatwić prognozowanie przyszłych zmian.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Dowiedz się więcej o Azure Time Series Insights, opartej na chmurze platformie IoT Analytics.</br>
 
-[FILM wideo![](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
+[FILM wideo ![](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Podstawowe scenariusze
 
@@ -75,7 +75,7 @@ Azure Time Series Insights przechwytuje i zapisuje każde nowe zdarzenie jako wi
 
 - **Skalowalność**: usługa Time Series Insights obsługuje urządzenia IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możesz wizualizować i analizować strumienie danych na żywo niemal w czasie rzeczywistym, obok danych historycznych.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Aby rozpocząć, wykonaj następujące kroki.
 

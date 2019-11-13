@@ -1,5 +1,5 @@
 ---
-title: Uruchom przechodzenie do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej przy użyciu Azure Site Recovery | Microsoft Docs
+title: Uruchom przechodzenie do szczegółów odzyskiwania po awarii NHyper-V do lokacji dodatkowej za pomocą Azure Site Recovery
 description: Dowiedz się, jak uruchomić przechodzenie po awarii dla maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do dodatkowego lokalnego centrum danych przy użyciu Azure Site Recovery.
 author: rajani-janaki-ram
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: ef8504f3f79d23fa0d59493c06cfbe133e1c4113
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933460"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961392"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Wykonaj drążenie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
 
@@ -47,9 +47,9 @@ Uruchamiasz test pracy w trybie failover z poziomu podstawowego do lokacji dodat
 
 Po uruchomieniu testowej pracy w trybie failover zostanie wyświetlony monit o wybranie ustawień sieci dla maszyn z repliką testową, jak zostało to podsumowane w tabeli.
 
-| **Opcja** | **Szczegóły** | |
+| **Option** | **Szczegóły** | |
 | --- | --- | --- |
-| **Dawaj** | Testowa maszyna wirtualna jest tworzona na hoście, na którym znajduje się replika maszyny wirtualnej. Nie jest on dodawany do chmury i nie jest połączony z żadną siecią.<br/><br/> Komputer można połączyć z siecią maszyny wirtualnej po jej utworzeniu.| |
+| **Brak** | Testowa maszyna wirtualna jest tworzona na hoście, na którym znajduje się replika maszyny wirtualnej. Nie jest on dodawany do chmury i nie jest połączony z żadną siecią.<br/><br/> Komputer można połączyć z siecią maszyny wirtualnej po jej utworzeniu.| |
 | **Użyj istniejącej** | Testowa maszyna wirtualna jest tworzona na hoście, na którym znajduje się replika maszyny wirtualnej. Nie została dodana do chmury.<br/><br/>Utwórz sieć maszyny wirtualnej, która jest odizolowana od sieci produkcyjnej.<br/><br/>Jeśli używasz sieci opartej na sieci VLAN, zalecamy utworzenie oddzielnej sieci logicznej (nieużywanej w środowisku produkcyjnym) w tym celu. Ta sieć logiczna służy do tworzenia sieci maszyn wirtualnych na potrzeby testowania pracy w trybie failover.<br/><br/>Sieć logiczna powinna być skojarzona z co najmniej jedną kartą sieciową wszystkich serwerów funkcji Hyper-V obsługujących maszyny wirtualne.<br/><br/>W przypadku sieci logicznych VLAN lokacje sieciowe dodawane do sieci logicznej powinny być izolowane.<br/><br/>Jeśli używasz sieci logicznej opartej na wirtualizacji sieci systemu Windows, Azure Site Recovery automatycznie tworzy izolowane sieci maszyn wirtualnych. | |
 | **Tworzenie sieci** | Tymczasowa sieć testowa jest tworzona automatycznie na podstawie ustawienia określonego w **sieci logicznej** i powiązanych lokacjach sieciowych.<br/><br/> Przełączenie w tryb failover umożliwia tworzenie maszyn wirtualnych.<br/><br/> Tej opcji należy użyć, jeśli plan odzyskiwania używa więcej niż jednej sieci VMNETWORK.<br/><br/> W przypadku korzystania z sieci wirtualizacji sieci systemu Windows ta opcja umożliwia automatyczne tworzenie sieci maszyn wirtualnych z tymi samymi ustawieniami (podsieciami i pulami adresów IP) w sieci maszyny wirtualnej repliki. Te sieci maszyn wirtualnych są czyszczone automatycznie po zakończeniu testowego przejścia w tryb failover.<br/><br/> Testowa maszyna wirtualna jest tworzona na hoście, na którym istnieje maszyna wirtualna repliki. Nie została dodana do chmury.|
 

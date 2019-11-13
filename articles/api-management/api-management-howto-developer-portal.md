@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796019"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011477"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
@@ -27,7 +27,7 @@ W tym artykule opisano różnice między samodzielnymi i zarządzanymi wersjami 
 
 > [!WARNING]
 > Nowy portal dla deweloperów jest obecnie wdrażany w usługach API Management Services.
-> Jeśli usługa jest nowo utworzona lub jest usługą warstwy dewelopera, należy mieć już najnowszą wersję. W przeciwnym razie mogą wystąpić problemy (na przykład przy użyciu funkcji publikowania). Wprowadzanie funkcji zakończy się w dniu od poniedziałku do 11 listopada, 2019.
+> Jeśli usługa jest nowo utworzona lub jest usługą warstwy dewelopera, należy mieć już najnowszą wersję. W przeciwnym razie mogą wystąpić problemy (na przykład przy użyciu funkcji publikowania). Oczekiwanie na zakończenie wdrażania funkcji w piątek, 22 listopada, 2019.
 >
 > [Dowiedz się, jak przeprowadzić migrację z wersji zapoznawczej do ogólnie dostępnej wersji](#preview-to-ga) portalu dla deweloperów.
 

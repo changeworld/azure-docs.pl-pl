@@ -8,110 +8,109 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183215"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014549"
 ---
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Tworzenie kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych przy użyciu migawek przyrostowych
 ## <a name="overview"></a>Omówienie
-Usługa Azure Storage zapewnia możliwość robienia migawek obiektów blob. Migawki przechwytują stan obiektu blob w danym momencie. W tym artykule opisano scenariusz, w którym można zachować kopii zapasowych dysków maszyny wirtualnej przy użyciu migawek. Możesz użyć tej metody, możesz zrezygnować z używania usługi Azure Backup i Recovery Service, gdy chcesz utworzyć niestandardowe strategii tworzenia kopii zapasowych dysków maszyny wirtualnej.
+Usługa Azure Storage oferuje możliwość tworzenia migawek obiektów BLOB. Migawki przechwytują stan obiektu BLOB w tym momencie. W tym artykule opisano scenariusz, w którym można zachować kopie zapasowe dysków maszyny wirtualnej za pomocą migawek. Tej metody można użyć w przypadku wybrania opcji nie używać usługi Azure Backup i odzyskiwania oraz chcesz utworzyć niestandardową strategię tworzenia kopii zapasowych dla dysków maszyny wirtualnej.
 
-Dyski maszyny wirtualnej platformy Azure są przechowywane jako stronicowe obiekty BLOB w usłudze Azure Storage. Ponieważ firma Microsoft zawierająca opis strategii tworzenia kopii zapasowej dla dysków maszyny wirtualnej, w tym artykule nazywamy migawki w kontekście stronicowych obiektów blob. Aby dowiedzieć się więcej na temat migawek, zobacz [Tworzenie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+Dyski maszyny wirtualnej platformy Azure są przechowywane jako stronicowe obiekty blob w usłudze Azure Storage. Ze względu na to, że w tym artykule opisano strategię tworzenia kopii zapasowych dla dysków maszyny wirtualnej, odwołujemy się do migawek w kontekście stronicowych obiektów BLOB. Aby dowiedzieć się więcej na temat migawek, zobacz [Tworzenie migawki obiektu BLOB](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
-## <a name="what-is-a-snapshot"></a>Co to jest migawkę?
-Migawki obiektu blob jest w wersji tylko do odczytu obiektu blob, która jest przechwytywana w punkcie w czasie. Po utworzeniu migawki go można odczytać, kopiowana, lub usunięte, ale nie zostały zmodyfikowane. Migawki zapewniają sposób, aby utworzyć kopię zapasową obiektu blob, jak pojawia się na moment w czasie. Do chwili REST w wersji 2015-04-05 trzeba było możliwość kopiowania pełnej migawki. Za pomocą architektury REST w wersji 2015-07-08 i powyżej, można również skopiować migawek przyrostowych.
+## <a name="what-is-a-snapshot"></a>Co to jest migawka?
+Migawka obiektu BLOB to wersja obiektu BLOB tylko do odczytu, która jest przechwytywana w punkcie w czasie. Po utworzeniu migawki można ją odczytywać, kopiować lub usuwać, ale nie modyfikować. Migawki umożliwiają utworzenie kopii zapasowej obiektu BLOB, który pojawia się w momencie. Do momentu, w którym jest w wersji 2015-04-05, masz możliwość kopiowania pełnych migawek. W przypadku wersji REST 2015-07-08 i nowszych można także skopiować migawki przyrostowe.
 
-## <a name="full-snapshot-copy"></a>Pełna migawka kopii
-Migawki można skopiować do innego konta magazynu jako obiekt blob można przechowywać kopie zapasowe podstawowego obiektu blob. Możesz również skopiować migawki za pośrednictwem jego podstawowy obiekt blob, co przypomina Przywracanie obiektu blob do starszej wersji. Jeśli migawka jest kopiowana z jednego konta magazynu do innego, zajmuje się tą samą przestrzenią jako obiekt blob strony podstawowej Dlatego kopiowanie migawek całego z jednego konta magazynu do innego działa wolno i zużywa dużo miejsce docelowe konto magazynu.
+## <a name="full-snapshot-copy"></a>Pełna kopia migawek
+Migawki można skopiować na inne konto magazynu jako obiekt BLOB, aby zachować kopie zapasowe podstawowego obiektu BLOB. Migawkę można także skopiować na jej bazowy obiekt BLOB, co przypomina przywrócenie obiektu BLOB do wcześniejszej wersji. Gdy migawka jest kopiowana z jednego konta magazynu do innego, zajmuje to samo miejsce, co obiekt BLOB strony podstawowej. W związku z tym kopiowanie całych migawek z jednego konta magazynu do innego jest wolne i zużywa dużo miejsca na docelowym koncie magazynu.
 
 > [!NOTE]
-> Jeśli kopiujesz podstawowego obiektu blob do innego miejsca docelowego migawki obiektu blob nie są kopiowane zapotrzebowaniu. Podobnie Jeśli zastąpisz podstawowego obiektu blob przy użyciu kopii migawki związane z podstawowego obiektu blob nie ulegają zmianom i pozostają niezmienione pod nazwą podstawowego obiektu blob.
+> Jeśli skopiujesz podstawowy obiekt BLOB do innego miejsca docelowego, migawki obiektu BLOB nie zostaną skopiowane razem z nim. Podobnie, jeśli zastąpisz podstawowy obiekt BLOB z kopią, nie ma to zmian dla migawek skojarzonych z podstawowym obiektem BLOB, a ich nie pozostanie bez zmian w nazwie podstawowego obiektu BLOB.
 > 
 > 
 
-### <a name="back-up-disks-using-snapshots"></a>Wykonywanie kopii zapasowych dysków przy użyciu migawek
-Jako strategii tworzenia kopii zapasowej dla dysków maszyny wirtualnej może potrwać okresowe migawki obiektu blob dysku lub na stronie, a kopia je do innego magazynu konta przy użyciu narzędzi takich jak [obiektu Blob kopiowania](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) operacji lub [AzCopy](../articles/storage/common/storage-use-azcopy.md). Migawki można skopiować do stronicowych obiektów blob docelowy o innej nazwie. Wynikowy obiekt blob typu page docelowy jest zapisywalna stronicowe obiekty blob i nie migawki. W dalszej części tego artykułu opisano kroki, aby wykonać kopie zapasowe dysków maszyn wirtualnych przy użyciu migawek.
+### <a name="back-up-disks-using-snapshots"></a>Tworzenie kopii zapasowych dysków przy użyciu migawek
+Jako strategia tworzenia kopii zapasowych dla dysków maszyny wirtualnej można okresowo tworzyć migawki dysku lub stronicowego obiektu BLOB oraz kopiować je do innego konta magazynu za pomocą narzędzi, takich jak [copy BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) Operation lub [AzCopy](../articles/storage/common/storage-use-azcopy.md). Migawkę można skopiować do docelowego obiektu BLOB strony z inną nazwą. Docelowy obiekt BLOB strony docelowej jest zapisywalnym obiektem BLOB strony, a nie z migawką. W dalszej części tego artykułu opisano kroki tworzenia kopii zapasowych dysków maszyny wirtualnej za pomocą migawek.
 
-### <a name="restore-disks-using-snapshots"></a>Przywróć dyski przy użyciu migawek
-Gdy nadejdzie czas, aby przywrócić stabilną wersję, wcześniej przechwycone w jednym z migawkami kopii zapasowych na dysku, można skopiować migawki obiektu blob strony podstawowej. Po migawki zostanie podwyższony do strony podstawowej blob pozostanie migawki, ale jego źródło zostały zastąpione kopię, którą można zarówno Odczyt i zapis. W dalszej części tego artykułu opisano kroki, aby przywrócić poprzednią wersję dysku z jej migawek.
+### <a name="restore-disks-using-snapshots"></a>Przywracanie dysków przy użyciu migawek
+Gdy czas przywracania dysku do stabilnej wersji, która została wcześniej przechwycona w jednej z migawek kopii zapasowych, można skopiować migawkę za pośrednictwem obiektu BLOB strony podstawowej. Po podwyższeniu poziomu migawki do obiektu BLOB strony podstawowej migawka pozostaje, ale jego źródło jest zastępowane kopią, którą można odczytać i zapisać. W dalszej części tego artykułu opisano kroki umożliwiające przywrócenie poprzedniej wersji dysku z jego migawki.
 
-### <a name="implementing-full-snapshot-copy"></a>Implementowanie pełna migawka kopii
-Pełna migawka kopii można wdrożyć, wykonując następujące polecenie,
+### <a name="implementing-full-snapshot-copy"></a>Implementowanie pełnej kopii migawek
+Możesz zaimplementować pełną kopię migawki, wykonując następujące czynności:
 
-* Najpierw należy utworzyć migawkę do podstawowego obiektu blob przy użyciu [wykonanie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) operacji.
-* Następnie skopiuj do docelowego konta magazynu za pomocą migawki [obiektu Blob kopiowania](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob).
-* Powtórz ten proces, do obsługi kopii zapasowych podstawowy obiekt blob.
+* Najpierw utwórz migawkę podstawowego obiektu BLOB przy użyciu operacji [obiektu BLOB migawki](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) .
+* Następnie skopiuj migawkę na docelowe konto magazynu przy użyciu polecenia [copy BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob).
+* Powtórz ten proces, aby zachować kopie zapasowe podstawowego obiektu BLOB.
 
-## <a name="incremental-snapshot-copy"></a>Kopiowanie migawek przyrostowych
-Nowa funkcja w [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) interfejs API zapewnia znacznie lepszą sposobem wykonania kopii zapasowej migawki stronicowych obiektów blob lub dysków. Interfejs API zwraca listę zmian między podstawowego obiektu blob i migawki, co zmniejsza ilość miejsca do magazynowania używane na koncie kopii zapasowej. Interfejs API obsługuje stronicowych obiektów blob na usługę Premium Storage, a także magazynu w warstwie standardowa. Za pomocą tego interfejsu API, można utworzyć szybsze i wydajniejsze rozwiązania tworzenia kopii zapasowych maszyn wirtualnych platformy Azure. Ten interfejs API będą dostępne w wersji REST 2015-07-08 lub nowszy.
+## <a name="incremental-snapshot-copy"></a>Przyrostowa kopia migawek
+Nowa funkcja w interfejsie API [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) zapewnia znacznie lepszy sposób tworzenia kopii zapasowej migawek obiektów blob lub dysków stron. Interfejs API zwraca listę zmian między bazowym obiektem blob a migawkami, co zmniejsza ilość miejsca do magazynowania używanego na koncie kopii zapasowej. Interfejs API obsługuje stronicowe obiekty blob na Premium Storage jak również w przypadku magazynu w warstwie Standardowa. Korzystając z tego interfejsu API, można tworzyć szybsze i wydajniejsze rozwiązania do tworzenia kopii zapasowych dla maszyn wirtualnych platformy Azure. Ten interfejs API będzie dostępny w wersji REST 2015-07-08 lub nowszej.
 
-Przyrostowe Kopiowanie migawki umożliwia kopiowanie z jednego konta magazynu do innego różnicy między,
+Przyrostowa kopia migawek umożliwia skopiowanie z jednego konta magazynu do innej różnicy między,
 
-* Podstawowy obiekt blob i jego migawki lub
-* Wszystkie dwóch migawki obiektu blob podstawowy
+* Podstawowy obiekt BLOB i jego migawka lub
+* Wszystkie dwie migawki podstawowego obiektu BLOB
 
-Pod warunkiem, że są spełnione następujące warunki,
+Pod warunkiem spełnienia następujących warunków:
 
-* Obiekt blob został utworzony w sty-1-2016 lub nowszym.
-* Obiekt blob nie został zastąpiony [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) lub [obiektu Blob kopiowania](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) między dwiema migawkami.
+* Obiekt BLOB został utworzony w sty-1-2016 lub nowszej.
+* Obiekt BLOB nie został zastąpiony [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) lub [Kopiuj obiekt BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) między dwiema migawkami.
 
-**Uwaga**: Ta funkcja jest dostępna dla wersji Premium i standardowa usługi Azure stronicowe obiekty BLOB.
+**Uwaga**: Ta funkcja jest dostępna dla obiektów BLOB w warstwie Premium i Standardowa platformy Azure.
 
-W przypadku strategii tworzenia kopii zapasowej niestandardowych przy użyciu migawek Kopiowanie migawki z jednego konta magazynu do innego może działać powoli i może używać dużej ilości miejsca do magazynowania. Zamiast kopiować całą migawkę do konta magazynu kopii zapasowej, można napisać różnią się kolejne migawki kopii zapasowej stronicowy obiekt blob. W ten sposób znacznie zmniejszyć czas do skopiowania i miejsce do przechowywania kopii zapasowych.
+Jeśli masz niestandardową strategię tworzenia kopii zapasowych przy użyciu migawek, kopiowanie migawek z jednego konta magazynu do innego może być wolne i może zużywać dużo miejsca w magazynie. Zamiast kopiować całą migawkę do konta magazynu kopii zapasowych, można napisać różnicę między kolejnymi migawkami do obiektu BLOB strony kopii zapasowej. W ten sposób czas kopiowania i miejsce do przechowywania kopii zapasowych znacznie zmniejsza się.
 
-### <a name="implementing-incremental-snapshot-copy"></a>Implementowanie kopiowanie migawek przyrostowych
-Kopiowanie migawek przyrostowych można wdrożyć, wykonując następujące polecenie,
+### <a name="implementing-incremental-snapshot-copy"></a>Implementowanie przyrostowej kopii migawek
+Można zaimplementować przyrostową kopię migawki, wykonując następujące czynności:
 
-* Utwórz migawkę do podstawowego obiektu blob przy użyciu [wykonanie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
-* Kopiowanie migawki do docelowego konta magazynu kopii zapasowych w tej samej lub dowolnym innym regionie świadczenia usługi Azure przy użyciu [obiektu Blob kopiowania](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Jest to kopii zapasowej stronicowych obiektów blob. Utworzenie migawki kopii zapasowej stronicowych obiektów blob i zapisz go w kopii zapasowej konta.
-* Utwórz kolejną migawkę obiektu blob podstawowej za pomocą migawki obiektu Blob.
-* Pobierz różnica między pierwszym i drugim migawki do podstawowego obiektu blob przy użyciu [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Użyj nowego parametru **prevsnapshot**, aby określić wartości daty/godziny migawki w celu uzyskania różnica między. Jeśli ten parametr jest obecny, odpowiedź REST zawiera tylko strony, które zostały zmienione między migawki docelowej i poprzedniej migawki, w tym wyczyść stron.
-* Użyj [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) Aby zastosować te zmiany do tworzenia kopii zapasowej stronicowych obiektów blob.
-* Na koniec warto zrobić migawkę kopii zapasowej stronicowych obiektów blob i zapisz go na koncie magazynu kopii zapasowych.
+* Utwórz migawkę podstawowego obiektu BLOB przy użyciu [obiektu BLOB migawki](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
+* Skopiuj migawkę do docelowego konta magazynu kopii zapasowych w tym samym lub innym regionie świadczenia usługi Azure przy użyciu funkcji [kopiowania obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). To jest obiekt BLOB strony kopii zapasowej. Utwórz migawkę obiektu BLOB strony kopii zapasowej i Zapisz go na koncie kopii zapasowej.
+* Zrób kolejną migawkę podstawowego obiektu BLOB przy użyciu obiektu BLOB Snapshot.
+* Pobierz różnicę między pierwszą i drugą migawką podstawowego obiektu BLOB przy użyciu [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Użyj nowego parametru **prevsnapshot**, aby określić wartość DateTime migawki, z którą chcesz uzyskać różnicę. Gdy ten parametr jest obecny, odpowiedź REST obejmuje tylko strony, które zostały zmienione między migawką docelową i poprzednią migawką, w tym jasne strony.
+* Użyj [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) , aby zastosować te zmiany do obiektu BLOB strony kopii zapasowej.
+* Na koniec Utwórz migawkę obiektu BLOB strony kopii zapasowej i Zapisz go na koncie magazynu kopii zapasowej.
 
-W następnej sekcji firma Microsoft będzie szczegółowo opisano sposób umożliwiający obsługę kopii zapasowych dysków przy użyciu przyrostowej kopii migawki
+W następnej sekcji opisano szczegółowo, jak można zachować kopie zapasowe dysków przy użyciu przyrostowej kopii migawek
 
 ## <a name="scenario"></a>Scenariusz
-W tej sekcji opisano scenariusz, który obejmuje niestandardowe strategia tworzenia kopii zapasowych dysków maszyny wirtualnej przy użyciu migawek.
+W tej sekcji opisano scenariusz, który obejmuje niestandardową strategię tworzenia kopii zapasowych dla dysków maszyny wirtualnej za pomocą migawek.
 
-Należy wziąć pod uwagę maszyny Wirtualnej platformy Azure serii DS, razem z dyskiem premium storage P30 dołączone. Wywołuje się, dysk P30 *mypremiumdisk* znajduje się konto magazynu premium storage o nazwie *mypremiumaccount*. Konto magazynu w warstwie standardowa o nazwie *mybackupstdaccount* służy do przechowywania kopii zapasowej *mypremiumdisk*. Chcemy zapewnić migawkę *mypremiumdisk* co 12 godzin.
+Rozważmy maszynę wirtualną platformy Azure z serii DS z dołączonym dyskiem usługi Premium Storage P30. Dysk P30 o nazwie *mypremiumdisk* jest przechowywany w ramach konta magazynu w warstwie Premium o nazwie *mypremiumaccount*. Konto magazynu w warstwie Standardowa o nazwie *mybackupstdaccount* jest używane do przechowywania kopii zapasowych *mypremiumdisk*. Chcemy zachować migawkę *mypremiumdisk* co 12 godzin.
 
 Aby dowiedzieć się więcej na temat tworzenia konta magazynu, zobacz [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
-Aby uzyskać informacje dotyczące tworzenia kopii zapasowych maszyn wirtualnych platformy Azure, zapoznaj się [kopii zapasowych maszyn wirtualnych platformy Azure dla planu](../articles/backup/backup-azure-vms-introduction.md).
+Aby dowiedzieć się więcej o tworzeniu kopii zapasowych maszyn wirtualnych platformy Azure, zobacz [Planowanie kopii zapasowych maszyn wirtualnych platformy Azure](../articles/backup/backup-azure-vms-introduction.md)
 
-## <a name="steps-to-maintain-backups-of-a-disk-using-incremental-snapshots"></a>Kroki, aby zachowywać kopie zapasowe na dysku przy użyciu migawek przyrostowych
-W poniższych krokach opisano sposób wykonania migawki *mypremiumdisk* i zachowywać kopie zapasowe w *mybackupstdaccount*. Kopia zapasowa jest standardowa stronicowy obiekt blob o nazwie *mybackupstdpageblob*. Kopii zapasowej stronicowych obiektów blob jest zawsze odzwierciedla takiego samego stanu, która jako ostatnia migawka o *mypremiumdisk*.
+## <a name="steps-to-maintain-backups-of-a-disk-using-incremental-snapshots"></a>Procedura obsługi kopii zapasowych dysku przy użyciu migawek przyrostowych
+W poniższych krokach opisano sposób tworzenia migawek *mypremiumdisk* i zarządzania kopiami zapasowymi w *mybackupstdaccount*. Kopia zapasowa jest standardowym obiektem BLOB na stronie o nazwie *mybackupstdpageblob*. Obiekt BLOB strony kopii zapasowej zawsze odzwierciedla ten sam stan co Ostatnia migawka *mypremiumdisk*.
 
-1. Tworzenie kopii zapasowej stronicowych obiektów blob dla dysku magazynu premium, wykonując migawkę *mypremiumdisk* o nazwie *mypremiumdisk_ss1*.
-2. Skopiuj tę migawkę służącą do mybackupstdaccount jako stronicowy obiekt blob o nazwie *mybackupstdpageblob*.
-3. Utwórz migawkę *mybackupstdpageblob* o nazwie *mybackupstdpageblob_ss1*przy użyciu [wykonanie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) i zapisać ją w *mybackupstdaccount*.
-4. Podczas okna tworzenia kopii zapasowej, należy utworzyć migawkę innej *mypremiumdisk*, załóżmy, że *mypremiumdisk_ss2*i zapisz go w *mypremiumaccount*.
-5. Pobieranie przyrostowych zmian między dwiema migawkami *mypremiumdisk_ss2* i *mypremiumdisk_ss1*przy użyciu [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) na *mypremiumdisk_ ss2* z **prevsnapshot** parametr wartość sygnatury czasowej *mypremiumdisk_ss1*. Zapisać tych zmian przyrostowych kopii zapasowych stronicowych obiektów blob *mybackupstdpageblob* w *mybackupstdaccount*. W przypadku usuniętej zakresów w zmiany przyrostowe, muszą zostać wyczyszczone z kopii zapasowej stronicowych obiektów blob. Użyj [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) do zapisywania zmian przyrostowych kopii zapasowych stronicowych obiektów blob.
-6. Utworzenie migawki kopii zapasowej stronicowych obiektów blob *mybackupstdpageblob*, co jest nazywane *mybackupstdpageblob_ss2*. Usunąć poprzednią migawkę *mypremiumdisk_ss1* z konta usługi premium storage.
-7. Powtórz kroki od 4 do 6 każdego okna tworzenia kopii zapasowej. W ten sposób można zachować kopie zapasowe *mypremiumdisk* na koncie magazynu w warstwie standardowa.
+1. Utwórz obiekt BLOB strony kopii zapasowej dla dysku magazynu Premium, pobierając migawkę *mypremiumdisk* o nazwie *mypremiumdisk_ss1*.
+2. Skopiuj tę migawkę do mybackupstdaccount jako obiekt BLOB stronicowania o nazwie *mybackupstdpageblob*.
+3. Utwórz migawkę *mybackupstdpageblob* o nazwie *Mybackupstdpageblob_ss1*przy użyciu [obiektu BLOB migawki](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) i Zapisz ją w *mybackupstdaccount*.
+4. W oknie Kopia zapasowa Utwórz kolejną migawkę *mypremiumdisk*, powiedz *mypremiumdisk_ss2*i Zapisz ją w *mypremiumaccount*.
+5. Pobierz przyrostowe zmiany między dwiema migawkami, *mypremiumdisk_ss2* i *Mypremiumdisk_ss1*, używając [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) na *mypremiumdisk_ss2* z parametrem **prevsnapshot** ustawionym na sygnaturę czasową *mypremiumdisk_ss1*. Zapisuj te zmiany przyrostowe w obiekcie blob *mybackupstdpageblob* na stronie kopia zapasowa w *mybackupstdaccount*. Jeśli w przyrostowych zmianach zostały usunięte zakresy, muszą one zostać wyczyszczone z obiektu BLOB strony kopii zapasowej. Użyj [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) , aby napisać przyrostowe zmiany do obiektu BLOB strony kopii zapasowej.
+6. Utwórz migawkę obiektu BLOB *mybackupstdpageblob*na stronie kopii zapasowej o nazwie *mybackupstdpageblob_ss2*. Usuń poprzednią *mypremiumdisk_ss1* migawki z konta magazynu w warstwie Premium.
+7. Powtórz kroki 4-6 dla każdego okna kopii zapasowej. W ten sposób można zachować kopie zapasowe *mypremiumdisk* na koncie magazynu w warstwie Standardowa.
 
 ![Tworzenie kopii zapasowej dysku przy użyciu migawek przyrostowych](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-1.png)
 
-## <a name="steps-to-restore-a-disk-from-snapshots"></a>Kroki w celu przywrócenia dysku z migawki
-W poniższych krokach opisano sposób przywracania dysku w warstwie premium *mypremiumdisk* do wcześniejszej migawki z konta magazynu kopii zapasowych *mybackupstdaccount*.
+## <a name="steps-to-restore-a-disk-from-snapshots"></a>Procedura przywracania dysku z migawek
+Poniższe kroki opisują sposób przywracania dysku Premium, *mypremiumdisk* do wcześniejszej migawki z konta magazynu kopii zapasowych *mybackupstdaccount*.
 
-1. Identyfikowania punktu w czasie, który chcesz przywrócić dysk premium. Załóżmy, że jej migawki *mybackupstdpageblob_ss2*, który jest przechowywany na koncie magazynu kopii zapasowych *mybackupstdaccount*.
-2. W mybackupstdaccount, podwyższanie poziomu migawki *mybackupstdpageblob_ss2* jako nowy obiekt blob kopii zapasowej strony podstawowej *mybackupstdpageblobrestored*.
-3. Utworzenie migawki tej przywróconej kopii zapasowej stronicowych obiektów blob, o nazwie *mybackupstdpageblobrestored_ss1*.
-4. Skopiuj przywróconej stronicowych obiektów blob *mybackupstdpageblobrestored* z *mybackupstdaccount* do *mypremiumaccount* jako nowego dysku w warstwie premium  *mypremiumdiskrestored*.
-5. Utwórz migawkę *mypremiumdiskrestored*, co jest nazywane *mypremiumdiskrestored_ss1* składania przyszłych przyrostowych kopii zapasowych.
-6. Wskaż serię DS, maszyny Wirtualnej przywróconego dysku *mypremiumdiskrestored* i odłączanie starego *mypremiumdisk* z maszyny Wirtualnej.
-7. Rozpocznij proces tworzenia kopii zapasowej opisanych w poprzedniej sekcji dotyczącej przywróconego dysku *mypremiumdiskrestored*przy użyciu *mybackupstdpageblobrestored* jako kopii zapasowej stronicowych obiektów blob.
+1. Zidentyfikuj punkt w czasie, do którego chcesz przywrócić dysk w warstwie Premium. Załóżmy, że jest to migawka *mybackupstdpageblob_ss2*, która jest przechowywana na koncie magazynu kopii zapasowej *mybackupstdaccount*.
+2. W programie mybackupstdaccount Podwyższ poziom migawki *mybackupstdpageblob_ss2* jako nowy obiekt BLOB strony podstawowej kopii zapasowej *mybackupstdpageblobrestored*.
+3. Utwórz migawkę obiektu BLOB przywróconej strony kopii zapasowej o nazwie *mybackupstdpageblobrestored_ss1*.
+4. Skopiuj przywrócony obiekt BLOB Page *mybackupstdpageblobrestored* z *mybackupstdaccount* do *mypremiumaccount* jako nowy dysk w warstwie Premium *mypremiumdiskrestored*.
+5. Utwórz migawkę *mypremiumdiskrestored*o nazwie *mypremiumdiskrestored_ss1* do tworzenia przyszłych przyrostowych kopii zapasowych.
+6. Wskaż maszynę wirtualną z serii DS przywróconego dysku *mypremiumdiskrestored* i odłącz stare *mypremiumdisk* z maszyny wirtualnej.
+7. Rozpocznij proces tworzenia kopii zapasowej opisany w poprzedniej sekcji dla przywróconego dysku *mypremiumdiskrestored*, używając *mybackupstdpageblobrestored* jako obiektu BLOB strony kopii zapasowej.
 
-![Przywracanie dysku z migawki](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
+![Przywróć dysk z migawek](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Użyj następujących linków, aby dowiedzieć się więcej na temat tworzenia migawek obiektu blob i Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej.
+Skorzystaj z poniższych linków, aby dowiedzieć się więcej o tworzeniu migawek obiektu BLOB i planowaniu infrastruktury kopii zapasowych maszyny wirtualnej.
 
-* [Trwa tworzenie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
-* [Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej](../articles/backup/backup-azure-vms-introduction.md)
+* [Tworzenie migawki obiektu BLOB](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
+* [Planowanie infrastruktury kopii zapasowych maszyny wirtualnej](../articles/backup/backup-azure-vms-introduction.md)
 

@@ -1,19 +1,18 @@
 ---
-title: Często zadawane pytania — funkcja Hyper-V do odzyskiwania po awarii platformy Azure z Azure Site Recovery | Microsoft Docs
+title: Często zadawane pytania dotyczące odzyskiwania po awarii funkcji Hyper-V z Azure Site Recovery
 description: W tym artykule podsumowano typowe pytania dotyczące konfigurowania odzyskiwania po awarii dla lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure przy użyciu witryny Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928206"
+ms.locfileid: "73954057"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcja Hyper-V do odzyskiwania po awarii platformy Azure
 
@@ -180,7 +179,7 @@ Dyski dynamiczne mogą być replikowane. Dysk systemu operacyjnego musi być dys
 
 
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="what-access-does-site-recovery-need-to-hyper-v-hosts"></a>Jakiego dostępu Site Recovery potrzeba na hostach Hyper-V
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718729"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958259"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Zapasowe dzienniki kondycji i diagnostyczne dla Application Gateway
 
@@ -33,7 +33,7 @@ Application Gateway zapewnia możliwość monitorowania kondycji poszczególnych
 Raport kondycji zaplecza odzwierciedla dane wyjściowe sondy kondycji Application Gateway do wystąpień zaplecza. Po pomyślnym przeprowadzeniu sondowania i zaplecze może odbierać ruch, jest on traktowany jako zdrowy. W przeciwnym razie jest uznawane za złej kondycji.
 
 > [!IMPORTANT]
-> Jeśli w podsieci Application Gateway istnieje sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń), Otwórz zakres portów 65503-65534 w podsieci Application Gateway dla ruchu przychodzącego. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez odpowiednich certyfikatów, jednostki zewnętrzne, w tym klienci tych bram, nie będą mogły inicjować żadnych zmian w tych punktach końcowych.
+> Jeśli w podsieci Application Gateway istnieje sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń), Otwórz zakres portów 65503-65534 dla jednostek SKU w wersji 1 i 65200-65535 dla wersji 2 jednostek SKU w podsieci Application Gateway dla ruchu przychodzącego. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez odpowiednich certyfikatów, jednostki zewnętrzne, w tym klienci tych bram, nie będą mogły inicjować żadnych zmian w tych punktach końcowych.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Wyświetlanie kondycji zaplecza za pomocą portalu
@@ -166,13 +166,13 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono go na każdym wyst
 |requestUri     | Identyfikator URI odebranego żądania.        |
 |RequestQuery     | **Serwer — rozesłane**: wystąpienie puli zaplecza, które wysłało żądanie.</br>**X-AzureApplicationGateway-log-ID**: identyfikator korelacji używany dla żądania. Może służyć do rozwiązywania problemów z ruchem na serwerach zaplecza. </br>**Serwer-stan**: kod odpowiedzi HTTP otrzymany Application Gateway od zaplecza.       |
 |UserAgent     | Agent użytkownika z nagłówka żądania HTTP.        |
-|Wartości httpStatus     | Kod stanu HTTP zwrócony do klienta z Application Gateway.       |
+|httpStatus     | Kod stanu HTTP zwrócony do klienta z Application Gateway.       |
 |httpVersion     | Wersja protokołu HTTP żądania.        |
 |Hmaster     | Rozmiar odebranego pakietu w bajtach.        |
 |Hmaster| Rozmiar wysłanego pakietu, w bajtach.|
 |timeTaken| Czas (w milisekundach), przez jaki trwa przetwarzanie żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako interwał od momentu, gdy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że pole czas wykonania zazwyczaj obejmuje czas, w którym żądania i pakiety odpowiedzi są przesyłane przez sieć. |
 |sslEnabled| Czy komunikacja z pulami zaplecza korzysta z protokołu SSL. Prawidłowe wartości są włączone i wyłączone.|
-|Host| Nazwa hosta, za pomocą którego żądanie zostało wysłane do serwera wewnętrznej bazy danych. Jeśli nazwa hosta zaplecza jest zastępowana, będzie to miało odzwierciedlenie.|
+|host| Nazwa hosta, za pomocą którego żądanie zostało wysłane do serwera wewnętrznej bazy danych. Jeśli nazwa hosta zaplecza jest zastępowana, będzie to miało odzwierciedlenie.|
 |originalHost| Nazwa hosta, za pomocą którego żądanie zostało odebrane przez Application Gateway od klienta.|
 ```json
 {
@@ -209,7 +209,7 @@ W przypadku Application Gateway i WAF v2 dzienniki zawierają nieco więcej info
 |httpMethod     | Metoda HTTP używana przez żądanie.       |
 |requestUri     | Identyfikator URI odebranego żądania.        |
 |UserAgent     | Agent użytkownika z nagłówka żądania HTTP.        |
-|Wartości httpStatus     | Kod stanu HTTP zwrócony do klienta z Application Gateway.       |
+|httpStatus     | Kod stanu HTTP zwrócony do klienta z Application Gateway.       |
 |httpVersion     | Wersja protokołu HTTP żądania.        |
 |Hmaster     | Rozmiar odebranego pakietu w bajtach.        |
 |Hmaster| Rozmiar wysłanego pakietu, w bajtach.|
@@ -220,7 +220,7 @@ W przypadku Application Gateway i WAF v2 dzienniki zawierają nieco więcej info
 |serverRouted| Serwer zaplecza, do którego Brama aplikacji kieruje żądanie.|
 |serverStatus| Kod stanu HTTP serwera wewnętrznej bazy danych.|
 |serverResponseLatency| Opóźnienie odpowiedzi z serwera wewnętrznej bazy danych.|
-|Host| Adres podany w nagłówku hosta żądania.|
+|host| Adres podany w nagłówku hosta żądania.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -261,7 +261,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy włączono go na każdym w
 |healthyHostCount     | Liczba hostów w dobrej kondycji w puli zaplecza.        |
 |unHealthyHostCount     | Liczba hostów w złej kondycji w puli zaplecza.        |
 |requestCount     | Liczba obsłużonych żądań.        |
-|Opóźnienie | Średnie opóźnienie (w milisekundach) żądań z wystąpienia do zaplecza, który obsługuje żądania. |
+|opóźnienie | Średnie opóźnienie (w milisekundach) żądań z wystąpienia do zaplecza, który obsługuje żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
 |Przepływność| Średnia przepływność od ostatniego dziennika, mierzona w bajtach na sekundę.|
 
@@ -298,18 +298,18 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono go dla każdej bramy
 |clientIp     |   Adres IP pochodzący od żądania.      |
 |clientPort     |  Port źródłowy żądania.       |
 |requestUri     | Adres URL otrzymanego żądania.       |
-|Element rulesettype     | Typ zestawu reguł. Dostępna wartość to OWASP.        |
+|ruleSetType     | Typ zestawu reguł. Dostępna wartość to OWASP.        |
 |Element rulesetversion     | Używana wersja zestawu reguł. Dostępne wartości to 2.2.9 i 3,0.     |
 |ruleId     | Identyfikator reguły zdarzenia wyzwalającego.        |
 |message     | Przyjazny dla użytkownika komunikat dla zdarzenia wyzwalającego. Więcej szczegółowych informacji znajduje się w sekcji Szczegóły.        |
 |action     |  Akcja podjęta na żądaniu. Dostępne wartości są blokowane i dozwolone.      |
 |lokacji     | Lokacja, dla której został wygenerowany dziennik. Obecnie tylko globalne są wyświetlane, ponieważ reguły są globalne.|
-|Uzyskać     | Szczegóły zdarzenia wyzwalającego.        |
+|details informacje     | Szczegóły zdarzenia wyzwalającego.        |
 |details. Message     | Opis reguły.        |
-|Szczegóły. dane     | Określone dane Znalezione w żądaniu, które pasują do reguły.         |
+|details.data     | Określone dane Znalezione w żądaniu, które pasują do reguły.         |
 |details. File     | Plik konfiguracji, który zawiera regułę.        |
 |Szczegóły. wiersz     | Numer wiersza w pliku konfiguracji, który wyzwolił zdarzenie.       |
-|Nazw   | Nazwa hosta lub adres IP Application Gateway.    |
+|nazw   | Nazwa hosta lub adres IP Application Gateway.    |
 |transactionId  | Unikatowy identyfikator danej transakcji, który pomaga grupować wiele naruszeń reguł, które wystąpiły w ramach tego samego żądania.   |
 
 ```json

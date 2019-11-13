@@ -1,5 +1,5 @@
 ---
-title: Tworzenie połączenia lokacja-lokacja z platformą Azure w usłudze Azure Virtual WAN | Microsoft Docs
+title: 'Wirtualna sieć WAN platformy Azure: tworzenie połączeń lokacja-lokacja'
 description: Z tego samouczka dowiesz się, jak utworzyć połączenie lokacja-lokacja VPN z platformą Azure w usłudze Azure Virtual WAN.
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8824111edff23b8bdc93a64707cf5198288b3a6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 82f662dd00805cf53c0581fb0a2b3322a0207a11
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488976"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005710"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: tworzenie połączenia lokacja-lokacja przy użyciu usługi Azure Virtual WAN
 

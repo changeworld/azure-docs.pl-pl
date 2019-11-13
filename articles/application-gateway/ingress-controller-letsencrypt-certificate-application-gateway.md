@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795916"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957986"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Używanie certyfikatów z LetsEncrypt.org na Application Gateway dla klastrów AKS
 
@@ -130,8 +130,12 @@ Wykonaj poniższe kroki, aby zainstalować [Menedżera certyfikatów](https://do
     Po kilku sekundach można uzyskać dostęp do usługi `guestbook` za pośrednictwem adresu URL HTTPS Application Gateway przy użyciu automatycznie wystawionego certyfikatu `Lets Encrypt` **przemieszczania** .
     Przeglądarka może ostrzec użytkownika o nieprawidłowym urzędzie certyfikacji. Certyfikat przemieszczania jest wystawiony przez `CN=Fake LE Intermediate X1`. Wskazuje to, że system działał zgodnie z oczekiwaniami i jest gotowy do certyfikatu produkcyjnego.
 
-4. Certyfikat produkcyjny po pomyślnym skonfigurowaniu certyfikatu przemieszczania można przełączyć się na produkcyjny serwer xyz:
+4. Certyfikat produkcyjny
+
+    Po pomyślnym skonfigurowaniu certyfikatu przemieszczania można przełączyć się na produkcyjny serwer xyz:
     1. Zastąp adnotację przemieszczania w zasobie transferu danych przychodzących przy użyciu: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
     1. Usuń istniejące `ClusterIssuer` przemieszczania utworzone w poprzednim kroku i Utwórz nowe, zastępując serwer XYZ z ClusterIssuer YAML powyżej z `https://acme-v02.api.letsencrypt.org/directory`
 
-5. Wygaśnięcie i odnowienie certyfikatu przed wygaśnięciem `Lets Encrypt` certyfikat `cert-manager` automatycznie zaktualizuje certyfikat w magazynie Kubernetes Secret. W tym momencie Application Gateway kontroler transferu danych przychodzących będzie stosował zaktualizowany klucz tajny, do którego odwołuje się zasób transferu danych przychodzących, za pomocą którego można skonfigurować Application Gateway.
+5. Wygaśnięcie i odnowienie certyfikatu
+
+    Przed wygaśnięciem `Lets Encrypt` certyfikat `cert-manager` automatycznie zaktualizuje certyfikat w magazynie Kubernetes Secret. W tym momencie Application Gateway kontroler transferu danych przychodzących będzie stosował zaktualizowany klucz tajny, do którego odwołuje się zasób transferu danych przychodzących, za pomocą którego można skonfigurować Application Gateway.

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722654"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957999"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrycie ruchu
 
 Azure Maps zapewnia rozbudowane informacje o ruchu w postaci **przepływu** ruchu i **zdarzeń**. Te dane można wizualizować w usłudze Maps lub wykorzystać do generowania inteligentniejszych tras, które są czynnikiem rzeczywistym w rzeczywistych warunkach.
 
-Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystkich regionów. Poniższa tabela zawiera informacje o rodzaju informacji o ruchu, które można zażądać od poszczególnych regionów: 
+Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystkich krajów lub regionów. Poniższa tabela zawiera informacje o rodzaju informacji o ruchu, które można zażądać z każdego kraju lub regionu: 
 
 ## <a name="americas"></a>Ameryki
 
@@ -53,7 +53,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 |Singapur     |✓         |✓         |
 |Tajwan     |✓         |✓        |
 |Tajlandia     |✓         |✓        |
-|Vietnam   |✓         |✓         |
+|Wietnam   |✓         |✓         |
 
 
 ## <a name="europe"></a>Europa
@@ -67,7 +67,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 |Bośnia i Hercegowina    |✓         |✓         |
 |Bułgaria     |✓         |✓         |
 |Chorwacja     |✓         |✓         |
-|Czechy     |✓         |✓         |
+|Republika Czeska     |✓         |✓         |
 |Dania     |✓         |✓         |
 |Estonia     |         | ✓        |
 |Finlandia     |✓         |✓         |
@@ -80,9 +80,9 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 |Islandia     |✓         |✓         |
 |Irlandia     |✓         |✓         |
 |Włochy     |✓         |✓        |
-|Kazakhstan    |✓         |✓        |
+|Kazachstan    |✓         |✓        |
 |Łotwa     |✓         |✓         |
-|Lesoto     |✓         |✓         |
+|Lesotho     |✓         |✓         |
 |Liechtenstein      |✓         |✓         |
 |Litwa     |✓         |✓         |
 |Luksemburg     |✓         |✓         |
@@ -129,9 +129,9 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 |Oman     |✓         |✓         |
 |Katar     |✓         |✓         |
 |Arabia Saudyjska     |✓         |✓         |
-|RPA     |✓         |✓         |
+|Republika Południowej Afryki     |✓         |✓         |
 |Zjednoczone Emiraty Arabskie  |✓         |✓         |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat Azure Maps danych o ruchu, zobacz strony referencyjne [ruchu](https://docs.microsoft.com/rest/api/maps/traffic) .

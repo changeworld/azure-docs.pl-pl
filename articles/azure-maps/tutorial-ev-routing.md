@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243298"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011114"
 ---
 # <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
 
@@ -41,13 +41,13 @@ Aby ukończyć ten samouczek, musisz najpierw utworzyć konto Azure Maps i uzysk
 
 Aby utworzyć subskrypcję konta Azure Maps w warstwie cenowej S1, postępuj zgodnie z instrukcjami podanymi w temacie [Zarządzanie kontem usługi Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account). 
 
-Aby uzyskać podstawowy klucz subskrypcji dla konta, postępuj zgodnie z instrukcjami w temacie [wyszukiwanie pobliskich punktów zainteresowania przy użyciu Azure Maps](./tutorial-search-location.md#getkey) .
+Aby uzyskać podstawowy klucz subskrypcji dla konta, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta i pobieranie klucza](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key).
 
 ## <a name="create-an-azure-notebook"></a>Tworzenie notesu platformy Azure
 
 Aby wykonać czynności opisane w tym samouczku, należy utworzyć projekt notesu platformy Azure i pobrać i uruchomić plik notesu Jupyter. Plik notesu zawiera kod języka Python, który implementuje scenariusz w tym samouczku. Aby utworzyć projekt notesu platformy Azure i przekazać do niego dokument notesu Jupyter, wykonaj następujące czynności:
 
-1. Przejdź do [Azure Notebooks](https://notebooks.azure.com) i zaloguj się. Aby uzyskać więcej informacji, zobacz [Szybki Start: Logowanie i Ustawianie identyfikatora użytkownika](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Przejdź do [notesów usługi Azure](https://notebooks.azure.com) i zaloguj się. Aby uzyskać więcej informacji, zobacz [Szybki Start: Logowanie i Ustawianie identyfikatora użytkownika](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. W górnej części strony profilu publicznego wybierz pozycję **Moje projekty**.
 
     ![Przycisk moje projekty](./media/tutorial-ev-routing/myproject.png)
@@ -76,12 +76,12 @@ W celu lepszego zrozumienia funkcji zaimplementowanych w pliku notesu zalecamy u
 
   ![Przycisk Uruchom](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Zainstaluj pakiety na poziomie projektu
+## <a name="install-project-level-packages"></a>Instalowanie pakietów na poziomie projektu
 
 Aby uruchomić kod w notesie, zainstaluj pakiety na poziomie projektu, wykonując następujące czynności:
 
 1. Pobierz plik [*Requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [repozytorium Azure Maps Jupyter Notes](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), a następnie Przekaż go do projektu.
-1. Na pulpicie nawigacyjnym projektu wybierz pozycję **Ustawienia projektu**. 
+1. Na pulpicie nawigacyjnym projektu wybierz **ustawienia projektu**. 
 1. W okienku **Ustawienia projektu** wybierz kartę **środowisko** , a następnie wybierz pozycję **Dodaj**.
 1. W obszarze **czynności konfiguracyjne środowiska**wykonaj następujące czynności:   
     a. Z pierwszej listy rozwijanej wybierz pozycję **Requirements. txt**.  
@@ -89,7 +89,7 @@ Aby uruchomić kod w notesie, zainstaluj pakiety na poziomie projektu, wykonują
     d. Z trzeciej listy rozwijanej wybierz **wersję 3,6 języka Python** jako wersję.
 1. Wybierz pozycję **Zapisz**.
 
-    ![Zainstaluj pakiety](./media/tutorial-ev-routing/install-packages.png)
+    ![Instalowanie pakietów](./media/tutorial-ev-routing/install-packages.png)
 
 ## <a name="load-the-required-modules-and-frameworks"></a>Załaduj wymagane moduły i struktury
 
@@ -281,7 +281,7 @@ display(Image(poiRangeMap))
 
 Po ustaleniu wszystkich potencjalnych stacji ładowania do dostępnego zakresu należy wiedzieć, które z nich można osiągnąć w minimalnym czasie. 
 
-Poniższy skrypt wywołuje [interfejs API routingu Azure Maps Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview), który zwraca dla określonej lokalizacji pojazdu czas podróży i odległość do każdej stacji ładowania. Skrypt w następnej komórce analizuje odpowiedź w celu zlokalizowania najbliższej dostępnej stacji ładowania w odniesieniu do czasu.
+Poniższy skrypt wywołuje [interfejs API routingu Azure Maps Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix), który zwraca dla określonej lokalizacji pojazdu czas podróży i odległość do każdej stacji ładowania. Skrypt w następnej komórce analizuje odpowiedź w celu zlokalizowania najbliższej dostępnej stacji ładowania w odniesieniu do czasu.
 
 Aby znaleźć najbliższą osiągalną stację ładowania, którą można osiągnąć w czasie najmniejszej ilości czasu, uruchom skrypt w następującej komórce:
 
@@ -395,7 +395,7 @@ Aby poznać Azure Maps interfejsów API, które są używane w tym samouczku, zo
 * [Opublikuj wyszukiwanie w geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Przekazywanie danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
 * [Renderowanie — Pobieranie obrazu mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Macierz po trasie](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
+* [Macierz po trasie](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Pobierz wskazówki dotyczące trasy](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
 Aby uzyskać pełną listę Azure Maps interfejsów API REST, zobacz [Azure Maps interfejsów API REST](https://docs.microsoft.com/azure/azure-maps/#reference).

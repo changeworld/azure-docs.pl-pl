@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612140"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008565"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
-
 W tym artykule przedstawiono kilka często zadawanych pytań dotyczących usługi Azure Managed Disks i Azure SSD w warstwie Premium Disks.
 
 ## <a name="managed-disks"></a>Dyski zarządzane
@@ -151,7 +149,7 @@ SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługu
 Rezerwacja dysku to opcja zakupu jednego roku magazynu dyskowego z wyprzedzeniem i zmniejszenia łącznego kosztu.
 
 **Jakie opcje oferuje oferta rezerwacji dysku platformy Azure?**
-Rezerwacja dysku platformy Azure udostępnia opcję zakupu dysków SSD Premium w określonych jednostkach SKU z P30 (1 TiB) do P80 (32 TiB) przez okres jednego roku. Nie ma ograniczenia dotyczącego minimalnej ilości dysków koniecznych do zakupu rezerwacji dysku. Ponadto możesz wybrać opcję płacenia z jedną, z góry płatnością lub miesięczną płatnością. Managed Disks SSD w warstwie Premium nie ma dodatkowych kosztów transakcyjnych.
+Rezerwacja dysku platformy Azure udostępnia opcję zakupu dysków SSD Premium w określonych jednostkach SKU z P30 (1 TiB) do P80 (32 TiB) przez okres jednego roku. Nie ma ograniczenia dotyczącego minimalnej ilości dysków koniecznych do zakupu rezerwacji dysku. Ponadto możesz wybrać jednorazową zapłatę z góry lub płatności miesięczne. Managed Disks SSD w warstwie Premium nie ma dodatkowych kosztów transakcyjnych.
 
 Rezerwacje są wykonywane w postaci dysków, a nie pojemności. Innymi słowy, gdy zarezerwujesz dysk z systemem P80 (32 TiB), otrzymujesz jeden dysk P80, ale nie można go Divvy do dwóch mniejszych dysków P70 (16 TiB). Można oczywiście zarezerwować dowolną liczbę lub kilka dysków, w tym dwa oddzielne dyski P70 (16 TiB).
 
@@ -350,18 +348,6 @@ Nie. Jednak w przypadku eksportowania dysku VHD na zaszyfrowane konto magazynu z
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Dyski w warstwie Premium: zarządzane i niezarządzane
 
-**Jakie regiony obsługują możliwości tworzenia pojemności dla odpowiedniego rozmiaru dysku SSD w warstwie Premium?**
-
-Możliwość tworzenia serii jest obecnie obsługiwana w systemie Azure zachodnio-środkowe stany USA.
-
-**Które regiony są 4/8/16 GiB rozmiary dysków zarządzanych (P1/P2/P3, E1/E2/E3) obsługiwane w?**
-
-Te nowe rozmiary dysków są obecnie obsługiwane w systemie Azure zachodnio-środkowe stany USA.
-
-**Czy rozmiary dysków P1/P2/P3 są obsługiwane dla dysków niezarządzanych lub stronicowych obiektów BLOB?**
-
-Nie, jest on obsługiwany tylko w SSD w warstwie Premium Managed Disks. 
-
 **Jeśli maszyna wirtualna korzysta z serii rozmiarów, która obsługuje SSD w warstwie Premium dysków, takich jak DSv2, czy można dołączyć dyski danych w warstwie Premium i Standardowa?** 
 
 Tak.
@@ -392,6 +378,22 @@ Na dyskach w warstwie Premium lub standard nie ma Minusem do użycia opcji TRIM 
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nowe rozmiary dysków: zarządzane i niezarządzane
 
+**Jakie regiony obsługują możliwości tworzenia pojemności dla odpowiedniego rozmiaru dysku SSD w warstwie Premium?**
+
+Możliwość tworzenia serii jest obecnie obsługiwana w systemie Azure zachodnio-środkowe stany USA.
+
+**Które regiony są 4/8/16 GiB rozmiary dysków zarządzanych (P1/P2/P3, E1/E2/E3) obsługiwane w?**
+
+Te nowe rozmiary dysków są obecnie obsługiwane w systemie Azure zachodnio-środkowe stany USA.
+
+**Czy rozmiary dysków P1/P2/P3 są obsługiwane dla dysków niezarządzanych lub stronicowych obiektów BLOB?**
+
+Nie, jest obsługiwana tylko w przypadku dysków zarządzanych SSD w warstwie Premium. 
+
+**Czy rozmiary dysków E1/E2/E3 są obsługiwane dla dysków niezarządzanych lub stronicowych obiektów BLOB?**
+
+Nie, nie można używać standardowego dysku Managed SSD o dowolnym rozmiarze z dyskami niezarządzanymi ani stronicowymi obiektami BLOB.
+
 **Jaki jest największy obsługiwany rozmiar dysku zarządzanego dla systemu operacyjnego i dysków z danymi?**
 
 Typ partycji obsługiwanej przez platformę Azure dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). Format MBR obsługuje rozmiar dysku do 2 TiB. Największym rozmiarem obsługiwanym przez platformę Azure w przypadku dysku z systemem operacyjnym jest 2 TiB. Platforma Azure obsługuje do 32 TiB dla zarządzanych dysków danych w globalnej platformie Azure, 4 TiB w ramach suwerennych chmur platformy Azure.
@@ -410,7 +412,7 @@ Nie musisz uaktualniać istniejących narzędzi platformy Azure, aby tworzyć, d
 
 |Narzędzia platformy Azure      | Obsługiwane wersje                                |
 |-----------------|---------------------------------------------------|
-|Program Azure PowerShell | Numer wersji 4.1.0: wydanie 2017 czerwca lub nowszej|
+|Azure PowerShell | Numer wersji 4.1.0: wydanie 2017 czerwca lub nowszej|
 |Interfejs wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13:2017 maja lub nowszej|
 |Interfejs wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: wydanie 2017 lipca lub nowszej|
 |Narzędzie AzCopy           | Numer wersji 6.1.0: wydanie 2017 czerwca lub nowszej|

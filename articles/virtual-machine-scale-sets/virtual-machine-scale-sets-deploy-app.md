@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166204"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960726"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych
 
@@ -37,7 +37,7 @@ Aby zmniejszyć liczbę zarządzania konfiguracją i czas na zainicjowanie obsł
 
 
 ## <a name="already-provisioned"></a>Instalowanie aplikacji z rozszerzeniem niestandardowego skryptu
-Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub GitHub bądź można je dostarczyć do witryny Azure Portal w czasie wykonywania rozszerzenia. Aby uzyskać więcej informacji na temat tworzenia i używania niestandardowego obrazu maszyny wirtualnej z zestawem skalowania, zobacz następujące samouczki:
+Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub GitHub bądź można je dostarczyć do witryny Azure Portal w czasie wykonywania rozszerzenia. Aby uzyskać więcej informacji na temat sposobu instalowania aplikacji z rozszerzeniem niestandardowego skryptu, zobacz następujące samouczki:
 
 - [Interfejs wiersza polecenia platformy Azure](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -45,11 +45,11 @@ Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wi
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalowanie aplikacji na maszynie wirtualnej z systemem Windows przy użyciu programu PowerShell DSC
-[Konfiguracja żądanego stanu programu PowerShell (DSC)](/powershell/scripting/dsc/overview/overview) to platforma zarządzania służąca do definiowania konfiguracji maszyn docelowych. Konfiguracje DSC definiują, co należy zainstalować na komputerze i jak skonfigurować hosta. Lokalny aparat Configuration Manager (LCM) działa na każdym węźle docelowym, który przetwarza żądane akcje w oparciu o wypychaną konfigurację.
+[Program PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) to platforma zarządzania, aby zdefiniować konfigurację komputerów docelowych. Konfiguracje DSC definiują, co należy zainstalować na komputerze oraz sposób konfigurowania hosta. Aparat lokalnego Configuration Manager (LCM) działa w każdym węźle docelowym, która przetwarza żądane akcje na podstawie konfiguracji wypychanie.
 
 Rozszerzenie DSC programu PowerShell umożliwia dostosowywanie wystąpień maszyn wirtualnych w zestawie skalowania przy użyciu programu PowerShell. Poniższy przykład:
 
-- Powoduje, że wystąpienia maszyn wirtualnych pobierają pakiet DSC z usługi GitHub- *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Powoduje, że wystąpienia maszyn wirtualnych pobierają pakiet DSC z usługi GitHub *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Ustawia rozszerzenie do uruchamiania skryptu instalacji — `configure-http.ps1`
 - Pobiera informacje o zestawie skalowania za pomocą [Get-AzVmss](/powershell/module/az.compute/get-azvmss)
 - Stosuje rozszerzenie do wystąpień maszyny wirtualnej za pomocą [Update-AzVmss](/powershell/module/az.compute/update-azvmss)

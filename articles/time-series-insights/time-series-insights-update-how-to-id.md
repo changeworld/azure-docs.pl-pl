@@ -1,6 +1,6 @@
 ---
-title: Najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych w wersji zapoznawczej Azure Time Series Insights | Microsoft Docs
-description: Zrozumienie najlepszych rozwiązań w przypadku wybrania identyfikatora szeregów czasowych w wersji zapoznawczej Azure Time Series Insights.
+title: Najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się więcej o najlepszych rozwiązaniach dotyczących wybierania identyfikatora szeregów czasowych w wersji zapoznawczej Azure Time Series Insights.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,20 +10,20 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48f1fb542f5e28c7b8130d03cd86442390a8ad56
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989939"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012492"
 ---
-# <a name="best-practices-for-choosing-a-time-series-id"></a>Najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych
+# <a name="best-practices-for-choosing-a-time-series-id"></a>Najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu
 
 Ten artykuł podsumowuje ważność identyfikatora szeregów czasowych dla środowiska Azure Time Series Insights w wersji zapoznawczej oraz najlepsze rozwiązania dotyczące ich wyboru.
 
 ## <a name="choose-a-time-series-id"></a>Wybieranie identyfikatora szeregów czasowych
 
-Wybór identyfikatora szeregów czasowych jest taki sam jak wybór klucza partycji dla bazy danych. Należy ją wybrać podczas tworzenia środowiska Time Series Insights w wersji zapoznawczej. Jest to *niezmienna* właściwość. Oznacza to, że po utworzeniu środowiska Time Series Insights w wersji zapoznawczej przy użyciu identyfikatora szeregów czasowych nie można zmienić go dla tego środowiska. 
+Wybieranie Identyfikatora serii czasu przypomina wybór klucza partycji dla bazy danych. Należy ją wybrać podczas tworzenia środowiska Time Series Insights w wersji zapoznawczej. Jest to *niezmienna* właściwość. Oznacza to, że po utworzeniu środowiska Time Series Insights w wersji zapoznawczej przy użyciu identyfikatora szeregów czasowych nie można zmienić go dla tego środowiska. 
 
 > [!IMPORTANT]
 > W IDENTYFIKATORze szeregów czasowych jest rozróżniana wielkość liter.
@@ -31,7 +31,7 @@ Wybór identyfikatora szeregów czasowych jest taki sam jak wybór klucza partyc
 Wybór odpowiedniego identyfikatora szeregów czasowych ma krytyczne znaczenie. Poniżej przedstawiono niektóre najlepsze rozwiązania, które można wykonać:
 
 * Wybierz klucz partycji z wieloma unikatowymi wartościami (na przykład setki lub tysiące). W wielu przypadkach może to być identyfikator urządzenia, identyfikator czujnika lub identyfikator tagu w formacie JSON.
-* Identyfikator szeregów czasowych musi być unikatowy na poziomie węzła liścia [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
+* Identyfikator serii czasu powinna być unikatowa na poziomie liścia węzła usługi [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
 * Jeśli źródłem zdarzenia jest centrum IoT, identyfikator szeregów czasowych najprawdopodobniej będzie *iothub-Connection-ID*.
 * Limit znaków dla ciągu nazwy właściwości identyfikatora szeregów czasowych to 128. W przypadku wartości właściwości identyfikator szeregów czasowych limit znaków to 1 024.
 * Jeśli brakuje unikatowej wartości właściwości identyfikatora szeregów czasowych, jest ona traktowana jako wartość null i zgodna z tą samą regułą ograniczenia unikatowości.
@@ -51,7 +51,7 @@ W poniższych scenariuszach opisano wybieranie więcej niż jednej właściwośc
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Przykład 2: Identyfikator szeregów czasowych z kluczem złożonym
 
-* Wymagane jest, aby wiele właściwości była unikatowa w ramach tej samej floty zasobów. 
+* Wymagane jest wiele właściwości, aby być unikatowe w obrębie tego samego jej zasobów. 
 * Jesteś producentem inteligentnych budynków i wdrażaj czujniki w każdym pokoju. W każdym pokoju zwykle są te same wartości dla **sensorId**. Przykłady to **sensor1**, **Sensor2**i **sensor3**.
 * Budynek zawiera nakładające się numery podłóg i pomieszczeń między lokacjami we właściwości **flrRm**. Te liczby zawierają wartości, takie jak **1a**, **2b**i **3a**.
 * Istnieje właściwość, **Lokalizacja**, która zawiera wartości, takie jak **Redmond**, **Barcelona**i **Tokio**. Aby utworzyć unikatowość, należy wyznaczyć następujące trzy właściwości jako klucze identyfikatorów szeregów czasowych: **sensorId**, **flrRm**i **Location**.

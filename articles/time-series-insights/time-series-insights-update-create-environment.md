@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować środowisko wersji zapoznawczej usługi Azure Time Series Insights.
+title: 'Samouczek: Konfigurowanie środowiska w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować środowisko Azure Time Series Insights w wersji zapoznawczej.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25571dbd87e4d01645a3a7a991588a3a943b3e4d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 2dd08af518be9b3fec84e756edf9532ef669f22f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719458"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012675"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -380,7 +380,7 @@ Wiesz już, jak utworzyć własne środowisko wersji zapoznawczej usługi Azure 
 Zapoznaj się z konfiguracją magazynu usługi Azure Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Magazyn i ruch przychodzący usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-storage-ingress.md)
+> [Usługi Azure storage czasu Series Insights w wersji zapoznawczej i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md)
 
 Dowiedz się więcej o modelach szeregów czasowych:
 

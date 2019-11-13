@@ -1,20 +1,19 @@
 ---
-title: Usługa IoT DevKit do chmury — łączenie usługi IoT DevKit AZ3166 z platformą Azure IoT Hub | Microsoft Docs
+title: Łączenie usługi IoT DevKit AZ3166 z usługą Azure IoT Hub
 description: W tym samouczku dowiesz się, jak skonfigurować i połączyć usługę IoT DevKit AZ3166 z platformą Azure IoT Hub, aby mogła ona wysyłać dane do platformy chmury platformy Azure.
 author: wesmc7777
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: e8a186fbcb04dc29fcf57a2353adcf89ce46b119
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3cdeecd5b7698274b899832d7a66a5572a114e4b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677933"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954515"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Łączenie usługi IoT DevKit AZ3166 z platformą Azure IoT Hub
 
@@ -83,7 +82,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
     ```
 
    > [!NOTE]
-   > Jeśli wystąpi błąd z uruchomionym `device-identity`, zainstaluj [rozszerzenie Azure IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) , aby uzyskać więcej informacji.
+   > Jeśli wystąpi błąd podczas uruchamiania `device-identity`, zainstaluj [rozszerzenie Azure IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) , aby uzyskać więcej informacji.
   
 1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
 
@@ -208,7 +207,7 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla De
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-6. Kliknij `F1` Aby otworzyć paletę poleceń, wpisz i wybierz **Arduino: Board Manager**. Wyszukaj **AZ3166** i zainstaluj najnowszą wersję.
+6. Kliknij przycisk `F1`, aby otworzyć paletę poleceń, wpisz i wybierz pozycję **Arduino: Board Manager**. Wyszukaj **AZ3166** i zainstaluj najnowszą wersję.
 
     ![Zainstaluj zestaw DevKit SDK](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-az3166-sdk.png)
 
@@ -250,7 +249,7 @@ Usługa IoT DevKit zawiera obszerną galerię przykładów, których można uży
 
 Zamiast inicjowania obsługi IoT Hub i urządzeń z platformą Azure za pomocą Azure Portal można wykonać ją w VS Code bez opuszczania środowiska deweloperskiego.
 
-1. W oknie Nowy otwarty projekt kliknij pozycję `F1`, aby otworzyć paletę poleceń, wpisz i wybierz pozycję **Azure IoT Device Workbench: Inicjowanie usług platformy Azure.** ... Postępuj zgodnie z przewodnikiem krok po kroku, aby zakończyć Inicjowanie obsługi administracyjnej IoT Hub platformy Azure i utworzyć urządzenie IoT Hub.
+1. W oknie Nowy otwarty projekt kliknij pozycję `F1`, aby otworzyć paletę poleceń, wpisz i wybierz pozycję **Azure IoT Device Workbench: Udostępnianie usług platformy Azure.** ... Postępuj zgodnie z przewodnikiem krok po kroku, aby zakończyć Inicjowanie obsługi administracyjnej IoT Hub platformy Azure i utworzyć urządzenie IoT Hub.
 
     ![Polecenie aprowizacji](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)
 
@@ -293,13 +292,13 @@ Zamiast inicjowania obsługi IoT Hub i urządzeń z platformą Azure za pomocą 
 
     ![Wybierz tablicę i model COM](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. Kliknij `F1`, aby otworzyć paletę poleceń, wpisz i wybierz pozycję **Azure IoT Device Workbench: Konfigurowanie ustawień urządzenia...** , a następnie wybierz pozycję **Parametry połączenia urządzenia konfiguracji > wybierz pozycję parametry połączenia urządzenia IoT Hub**.
+1. Kliknij przycisk `F1`, aby otworzyć paletę poleceń, wpisz i wybierz pozycję **Azure IoT Device Workbench: Konfigurowanie ustawień urządzenia...** , a następnie wybierz pozycję **Konfiguracja parametry połączenia urządzenia > wybierz IoT Hub parametry połączenia urządzenia**.
 
 1. W DevKit, naciśnij **przycisk a**, wypchnij i zwolnij przycisk **Reset** , a następnie zwolnij **przycisk a**. DevKit wprowadza tryb konfiguracji i zapisuje parametry połączenia.
 
     ![Parametry połączenia](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
 
-1. Kliknij ponownie pozycję `F1`, wpisz i wybierz pozycję **Azure IoT Device Workbench: Przekaż kod urządzenia**. Rozpocznie Kompilowanie i przekazywanie kodu do DevKit.
+1. Kliknij ponownie przycisk `F1`, wpisz i wybierz pozycję **Azure IoT Device Workbench: Przekaż kod urządzenia**. Rozpocznie Kompilowanie i przekazywanie kodu do DevKit.
 
     ![Arduino przekazywanie](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
@@ -349,13 +348,13 @@ Za pomocą [narzędzi Azure IoT Tools](https://marketplace.visualstudio.com/item
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-@No__t-0 to główny plik konspektu Arduino.
+`GetStarted.ino` to główny plik konspektu Arduino.
 
 ![D2C komunikat](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/code.png)
 
 Aby zobaczyć, jak dane telemetryczne urządzeń są wysyłane do IoT Hub platformy Azure, Otwórz plik `utility.cpp` w tym samym folderze. Wyświetl [Informacje o interfejsie API](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) , aby dowiedzieć się, jak używać czujników i urządzeń peryferyjnych w usłudze IoT DevKit.
 
-Używany `DevKitMQTTClient` to otoka **iothub_client** [Microsoft Azure z zestawów SDK i bibliotek IoT dla języka C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) , które współdziałają z usługą Azure IoT Hub.
+Używane `DevKitMQTTClient` to otoka **iothub_client** z [bibliotek Microsoft Azure IoT SDK dla języka C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) w celu współdziałania z usługą Azure IoT Hub.
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 

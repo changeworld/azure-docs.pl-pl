@@ -12,16 +12,16 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f4e8750497fc1ae9875caeb60de65b5f6cd808
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e993ad17a07ff741ff33073304ed774dcf30203d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896034"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961658"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurowanie logowania jednokrotnego opartego na protokole SAML w aplikacjach bez galerii
 
-Po [dodaniu aplikacji galerii](add-gallery-app.md) lub [aplikacji sieci Web bez galerii](add-non-gallery-app.md) do aplikacji usługi Azure AD Enterprise jedna z opcji logowania jednokrotnego jest dostępna przy użyciu [protokołu SAML](what-is-single-sign-on.md#saml-sso). Wybierz pozycję SAML wszędzie tam, gdzie to możliwe, dla aplikacji, które uwierzytelniają się przy użyciu jednego z protokołów SAML. Za pomocą logowania jednokrotnego SAML usługa Azure AD uwierzytelnia się w aplikacji przy użyciu konta usługi Azure AD użytkownika. Usługa Azure AD komunikuje informacje logowania do aplikacji za pomocą protokołu połączenia. Użytkowników można mapować na określone role aplikacji na podstawie reguł zdefiniowanych w oświadczeniach SAML. W tym artykule opisano sposób konfigurowania logowania jednokrotnego opartego na protokole SAML dla aplikacji spoza galerii. 
+Po [dodaniu aplikacji galerii](add-gallery-app.md) lub [aplikacji sieci Web bez galerii](add-non-gallery-app.md) do aplikacji usługi Azure AD Enterprise jedna z opcji logowania jednokrotnego jest dostępna przy użyciu [protokołu SAML](what-is-single-sign-on.md#saml-sso). Wybierz pozycję SAML wszędzie tam, gdzie to możliwe, dla aplikacji, które uwierzytelniają się przy użyciu jednego z protokołów SAML. Za pomocą logowania jednokrotnego SAML usługa Azure AD uwierzytelnia się w aplikacji przy użyciu konta usługi Azure AD użytkownika. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Użytkowników można mapować na określone role aplikacji na podstawie reguł zdefiniowanych w oświadczeniach SAML. W tym artykule opisano sposób konfigurowania logowania jednokrotnego opartego na protokole SAML dla aplikacji spoza galerii. 
 
 > [!NOTE]
 > Dodawanie aplikacji galerii? Instrukcje dotyczące instalacji krok po kroku znajdują się na [liście samouczków aplikacji SaaS](../saas-apps/tutorial-list.md)
@@ -55,8 +55,8 @@ Jeśli aplikacja nie została dodana do dzierżawy usługi Azure AD, zobacz [Dod
     | **Identyfikator (identyfikator jednostki)** | Wymagane w przypadku niektórych aplikacji | Wymagane w przypadku niektórych aplikacji | Jednoznacznie identyfikuje aplikację. Usługa Azure AD wysyła identyfikator do aplikacji jako parametr odbiorców tokenu SAML. Aplikacja powinna go zweryfikować. Ta wartość jest widoczna również jako identyfikator jednostki w dowolnych metadanych SAML udostępnianych przez aplikację. *Tę wartość można znaleźć jako element **Issuer** w **AuthnRequest** (żądanie SAML) wysyłanej przez aplikację.* |
     | **Adres URL odpowiedzi** | Wymagane | Wymagane | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). Aby określić wiele adresów URL odpowiedzi, można użyć pól dodatkowych adresów URL odpowiedzi. Na przykład mogą być potrzebne dodatkowe adresy URL odpowiedzi dla wielu poddomen. Lub w celach testowych można jednocześnie określić wiele adresów URL odpowiedzi (lokalnego hosta i publicznych adresów URL). |
     | **Adres URL logowania** | Wymagane | Nie podawaj | Gdy użytkownik otwiera ten adres URL, dostawca usługi przekierowuje go do usługi Azure AD w celu uwierzytelnienia i zalogowania. Usługa Azure AD używa adresu URL do uruchomienia aplikacji z usługi Office 365 lub panelu dostępu usługi Azure AD. Gdy to pole jest puste, usługa Azure AD wykonuje logowanie zainicjowane przez dostawcy tożsamości, gdy użytkownik uruchomi aplikację z pakietu Office 365, panelu dostępu usługi Azure AD lub adresu URL rejestracji jednokrotnej usługi Azure AD.|
-    | **Stan przekazywania** | Opcjonalne | Opcjonalne | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zazwyczaj wartość jest prawidłowym adresem URL dla aplikacji. Jednak niektóre aplikacje używają tego pola inaczej. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
-    | **Adres URL wylogowywania** | Opcjonalne | Opcjonalne | Służy do wysyłania odpowiedzi na wylogowanie SAML z powrotem do aplikacji.
+    | **Stan przekazywania** | Optional (Opcjonalność) | Optional (Opcjonalność) | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zazwyczaj wartość jest prawidłowym adresem URL dla aplikacji. Jednak niektóre aplikacje używają tego pola inaczej. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
+    | **Adres URL wylogowywania** | Optional (Opcjonalność) | Optional (Opcjonalność) | Służy do wysyłania odpowiedzi na wylogowanie SAML z powrotem do aplikacji.
 
 Aby uzyskać więcej informacji, zobacz Logowanie jednokrotne [protokołu SAML](../develop/single-sign-on-saml-protocol.md).
 

@@ -1,0 +1,64 @@
+---
+title: Utwórz & usunąć Azure AD B2C konta użytkowników w Azure Portal
+description: Dowiedz się, jak używać Azure Portal do tworzenia i usuwania użytkowników w katalogu Azure AD B2C.
+services: active-directory-b2c
+author: mmacy
+manager: celestedg
+ms.service: active-directory
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 11/09/2019
+ms.author: marsma
+ms.subservice: B2C
+ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961990"
+---
+# <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Użyj Azure Portal, aby tworzyć i usuwać użytkowników w programie Azure AD B2C
+
+Mogą istnieć scenariusze, w których chcesz ręcznie utworzyć konta konsumentów w katalogu Azure Active Directory B2C (Azure AD B2C). Mimo że konta konsumentów w katalogu Azure AD B2C są najczęściej tworzone, gdy użytkownicy logują się w celu korzystania z jednej z aplikacji, można je tworzyć programowo i przy użyciu Azure Portal. Ten artykuł koncentruje się na Azure Portal metodzie tworzenia i usuwania użytkowników.
+
+Aby dodać lub usunąć użytkowników, Twoje konto musi mieć przypisaną rolę *administrator użytkownika* lub *administrator globalny* .
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="types-of-user-accounts"></a>Typy kont użytkowników
+
+Zgodnie z opisem w temacie [Omówienie kont użytkowników w Azure AD B2C](user-overview.md), istnieją trzy typy kont użytkowników, które można utworzyć w katalogu Azure AD B2C:
+
+* Sieciowych
+* Gość
+* Klient
+
+Ten artykuł koncentruje się na pracy z **kontami konsumentów** w Azure Portal. Aby uzyskać informacje na temat tworzenia i usuwania kont służbowych i gościa, zobacz [Dodawanie lub usuwanie użytkowników przy użyciu Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
+
+## <a name="create-a-consumer-user"></a>Tworzenie użytkownika odbiorcy
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik**.
+1. Wybierz pozycję **utwórz Azure AD B2C użytkownika**.
+1. Wybierz **metodę logowania** , a następnie wprowadź adres **E-mail** lub **nazwę użytkownika** dla nowego użytkownika. Wybrana tutaj metoda logowania musi być zgodna z ustawieniem określonym dla dostawcy tożsamości *konta lokalnego* Azure AD B2C dzierżawy (zobacz **Zarządzanie** **dostawcami tożsamości** > w dzierżawie Azure AD B2C).
+1. Wprowadź **nazwę** użytkownika. Jest to zazwyczaj pełna nazwa (imię i nazwisko) użytkownika.
+1. Obowiązkowe Możesz **zablokować logowanie** , jeśli chcesz opóźnić możliwość logowania się użytkownika. Logowanie można włączyć później, edytując **profil** użytkownika w Azure Portal.
+1. Wybierz opcję **Automatyczne generowanie hasła** lub **pozwól mi tworzyć hasło**.
+1. Określ **imię** **i nazwisko**użytkownika.
+1. Wybierz pozycję **Utwórz**.
+
+Jeśli nie wybrano opcji **Zablokuj logowanie**, użytkownik może teraz zalogować się przy użyciu podanej metody logowania (adresu e-mail lub nazwy użytkownika).
+
+## <a name="delete-a-consumer-user"></a>Usuwanie użytkownika odbiorcy
+
+1. W katalogu Azure AD B2C wybierz pozycję **Użytkownicy**, a następnie wybierz użytkownika, który chcesz usunąć.
+1. Wybierz pozycję **Usuń**, a następnie przycisk **tak** , aby potwierdzić usunięcie.
+
+Aby uzyskać szczegółowe informacje na temat przywracania użytkownika w ciągu pierwszych 30 dni od usunięcia lub trwałego usunięcia użytkownika, zobacz [przywracanie lub usuwanie ostatnio usuniętego użytkownika przy użyciu Azure Active Directory](../active-directory/fundamentals/active-directory-users-restore.md).
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby zapoznać się z automatycznymi scenariuszami zarządzania użytkownikami, na przykład Migrowanie użytkowników z innego dostawcy tożsamości do katalogu Azure AD B2C, zobacz [Azure AD B2C: migracja użytkownika](active-directory-b2c-user-migration.md).

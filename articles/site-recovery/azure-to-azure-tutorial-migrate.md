@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie maszyn wirtualnych IaaS platformy Azure do innego regionu platformy Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+title: Przenoszenie maszyn wirtualnych platformy Azure do innego regionu za pomocą Azure Site Recovery
 description: Używanie usługi Azure Site Recovery do przenoszenia maszyn wirtualnych IaaS platformy Azure z jednego regionu świadczenia usługi Azure do innego.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933878"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954101"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -99,7 +99,7 @@ Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypcją i gr
 
 1. W następnym kroku Wybierz maszynę wirtualną, którą chcesz przenieść, a następnie wybierz pozycję **OK**.
 1. W obszarze **Ustawienia**wybierz pozycję **odzyskiwanie po awarii**.
-1. W obszarze **Konfigurowanie odzyskiwania po awarii** > **regionie docelowym**wybierz region docelowy, do którego zostanie zreplikowana replikacja.
+1. W obszarze **Konfigurowanie odzyskiwania po awarii** > **Region docelowy** wybierz region docelowy, w którym maszyna będzie replikowana.
 1. Dla celów tego samouczka zaakceptuj inne ustawienia domyślne.
 1. Wybierz pozycję **Włącz replikację**. Ten krok umożliwia uruchomienie zadania w celu włączenia replikacji dla maszyny wirtualnej.
 

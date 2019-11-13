@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure IoT Hub i z użyciem sznurka modułu (Node. js) Microsoft Docs
+title: Rozpoczynanie pracy z usługą Azure IoT Hub Identity & module (Node. js)
 description: Informacje o tworzeniu tożsamości modułu i aktualizacji sznurka modułu przy użyciu zestawów SDK IoT dla środowiska Node. js.
 author: wesmc7777
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bf80925a2dc5c6d06ba14fe1c0d72a2fc1f88d51
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165905"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953871"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Rozpoczynanie pracy z modułem IoT Hub Identity i module (Node. js)
 
@@ -56,7 +56,7 @@ W tej sekcji utworzysz aplikację Node. js, która tworzy tożsamość urządzen
 
 2. W tym katalogu należy najpierw uruchomić **npm init-y** , aby utworzyć pusty plik Package. JSON z wartościami domyślnymi. Jest to plik projektu dla kodu.
 
-3. Uruchom **npm Install-S Azure-iothub @ no__t-1modules-Preview** , aby zainstalować zestaw SDK usługi w podkatalogu **node_modules** .
+3. Uruchom **npm Install-S Azure-iothub modułów\@— wersja zapoznawcza** , aby zainstalować zestaw SDK usługi w podkatalogu **node_modules** .
 
     > [!NOTE]
     > Nazwa podkatalogu node_modules używa modułu Word do oznaczania "biblioteki węzłów". W tym miejscu nie ma nic do zrobienia z modułami IoT Hub.
@@ -133,7 +133,7 @@ W tej sekcji utworzysz aplikację Node. js na symulowanym urządzeniu, która ak
 
    ![Szczegóły modułu w witrynie Azure Portal](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Podobnie jak w powyższym kroku, Utwórz katalog dla kodu urządzenia i użyj NPM do jego zainicjowania i zainstalowania zestawu SDK urządzenia (**npm Install-S Azure-IoT-Device-AMQP @ no__t-1modules-Preview**).
+2. Podobnie jak w powyższym kroku, Utwórz katalog dla kodu urządzenia i użyj NPM, aby go zainicjować i zainstalować zestaw SDK urządzenia (**npm Install-S Azure-IoT-Device-amqp\@modules-Preview**).
 
    > [!NOTE]
    > Polecenie instalacji npm może być spowolnione. Poczekaj, trwa ściąganie wielu kodów z repozytorium pakietu.

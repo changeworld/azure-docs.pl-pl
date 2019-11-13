@@ -1,18 +1,18 @@
 ---
-title: Przygotowywanie lokalnych serwerów funkcji Hyper-V na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure
-description: Dowiedz się, jak przygotować lokalne maszyny wirtualne funkcji Hyper-V na potrzeby odzyskiwania po awarii na platformie Azure za pomocą usługi Azure Site Recovery.
+title: Przygotuj się do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure za pomocą Azure Site Recovery
+description: Dowiedz się, jak przygotować lokalne maszyny wirtualne funkcji Hyper-V na potrzeby odzyskiwania po awarii na platformie Azure przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813714"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954003"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów funkcji Hyper-V na potrzeby odzyskiwania po awarii na platformie Azure
 
@@ -94,5 +94,5 @@ Po przejściu w tryb failover możesz uzyskiwać dostęp do maszyn wirtualnych p
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych](tutorial-hyper-v-to-azure.md)
-> funkcji Hyper-v[Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-v w chmurach programu VMM](tutorial-hyper-v-vmm-to-azure.md)
+> [Skonfiguruj odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-v](tutorial-hyper-v-to-azure.md)
+> [skonfigurować odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-v w chmurach programu VMM](tutorial-hyper-v-vmm-to-azure.md)

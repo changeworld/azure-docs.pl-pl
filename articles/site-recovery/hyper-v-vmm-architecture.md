@@ -1,18 +1,18 @@
 ---
-title: Architektura odzyskiwania po awarii funkcji Hyper-V do pomocniczej lokacji lokalnej z Azure Site Recovery
+title: Architektura — odzyskiwanie po awarii funkcji Hyper-V do lokacji dodatkowej z Azure Site Recovery
 description: Ten artykuł zawiera omówienie architektury odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V do lokacji pomocniczej programu System Center VMM z Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 716f8e053ad05ba701b3415946cd8d3a56044e62
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933501"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953976"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektura — replikacja funkcji Hyper-V do lokacji dodatkowej
 

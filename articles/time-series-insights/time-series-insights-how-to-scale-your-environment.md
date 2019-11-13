@@ -1,6 +1,6 @@
 ---
-title: Jak skalować środowisko Azure Time Series Insights | Microsoft Docs
-description: W tym artykule opisano sposób skalowania środowiska Azure Time Series Insightsowego. Użyj Azure Portal, aby dodać lub odjąć pojemność w ramach jednostki SKU cenowej.
+title: Jak skalować środowisko — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak skalować środowisko Azure Time Series Insights przy użyciu Azure Portal.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f03f5ed75c720c9b0daf30d721ef4d2aee9749c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991159"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006802"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowisko Time Series Insights
 
@@ -40,7 +40,7 @@ Jednak zmiana jednostki SKU warstwy cenowej jest niedozwolona. Na przykład śro
 
 1. Dostosuj suwak **pojemności** , aby wybrać pojemność, która spełnia wymagania dotyczące stawek za transfer danych przychodzących i pojemności magazynu. Zwróć uwagę, że **szybkość**transferu danych przychodzących, **pojemność magazynu**i **Szacowana aktualizacja kosztu** są dynamiczne, aby pokazać wpływ zmiany.
 
-   [Suwak![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [Suwak ![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    Alternatywnie można wpisać liczbę mnożnika pojemności do pola tekstowego po prawej stronie suwaka.
 

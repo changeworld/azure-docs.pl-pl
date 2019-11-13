@@ -1,17 +1,14 @@
 ---
 title: Rozwiązywanie typowych problemów
 description: Dowiedz się, jak rozwiązywać problemy z tworzeniem, przypisywaniem i usuwaniem planów.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
-ms.service: blueprints
-ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978222"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960286"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów z błędami przy użyciu planów platformy Azure
 
@@ -46,7 +43,7 @@ Zasady mogą powodować konflikt z wdrożeniem z kilku powodów:
 - Tworzony zasób jest ograniczony przez zasady (zazwyczaj ograniczenia jednostki SKU lub lokalizacji)
 - Wdrożenie jest ustawieniem pól skonfigurowanych za pomocą zasad (wspólne ze znacznikami)
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 Zmień plan, aby nie powodował konfliktu z zasadami w szczegółach błędu. Jeśli ta zmiana nie jest możliwa, alternatywna opcja polega na tym, że zakres przypisania zasad został zmieniony, w związku z czym plan nie jest już w konflikcie z zasadami.
 
@@ -60,9 +57,9 @@ Parametry planu, które są funkcjami są przetwarzane przed przekazaniem do art
 
 Przekazywanie parametru planu, który używa funkcji, takiej jak `[resourceGroup().tags.myTag]`, do artefaktu skutkuje przetworzonym wynikiem funkcji ustawionej dla artefaktu zamiast funkcji dynamicznej.
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
-Aby przekazać funkcję przez parametr, należy wypróbować cały ciąg z `[`, aby parametr strategii wyglądał jak `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że plany traktują wartość jako ciąg podczas przetwarzania planu. Plany następnie umieszczają funkcję na artefaktie, umożliwiając jej dynamiczne działanie zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [składnia i wyrażenia w szablonach Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
+Aby przekazać funkcję przez parametr, należy wypróbować cały ciąg z `[` w taki sposób, aby parametr strategii wyglądał jak `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że plany traktują wartość jako ciąg podczas przetwarzania planu. Plany następnie umieszczają funkcję na artefaktie, umożliwiając jej dynamiczne działanie zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [składnia i wyrażenia w szablonach Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

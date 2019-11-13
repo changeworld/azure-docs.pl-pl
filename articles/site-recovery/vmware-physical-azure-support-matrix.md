@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2cda2c4e640c48d712ea5ebc8534cf5a4e35da7a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 9125c69f9d2f4d7289120f86059ffab3b7f9228a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620543"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961295"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -64,6 +64,9 @@ Porty | 443 używane na potrzeby aranżacji kanału kontroli<br/>9443 do transpo
 
 Site Recovery obsługuje replikację wszystkich obciążeń uruchomionych na obsługiwanej maszynie.
 
+> [!Note]
+> W poniższej tabeli przedstawiono obsługę maszyn z rozruchem systemu BIOS. Zapoznaj się z sekcją [Magazyn](#storage) , aby uzyskać pomoc techniczną dotyczącą komputerów z interfejsem UEFI.
+
 **Składnik** | **Szczegóły**
 --- | ---
 Ustawienia maszyny | Maszyny, które są replikowane na platformę Azure, muszą spełniać [wymagania dotyczące platformy Azure](#azure-vm-requirements).
@@ -76,12 +79,12 @@ Windows Server 2008 z dodatkiem SP2 lub nowszym (64-bitowy/32-bitowy) |  Obsług
 Windows 10, Windows 8.1, Windows 8 | Obsługiwane.
 Windows 7 z dodatkiem SP1 64 — bit | Obsługiwane przez [pakiet zbiorczy aktualizacji 36](https://support.microsoft.com/help/4503156) (wersja 9,22 usługi mobilności) lub nowszy. </br></br> Z wersji 9.30. x. x (oczekiwana wersja rozpoczyna się od listopada 2019) agenta usługi mobilności potrzebna jest aktualizacja [stosu aktualizacji (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) zainstalowane na komputerach z systemem Windows 7 z dodatkiem SP1.  Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu algorytmu SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
 Linux | Obsługiwany jest tylko system 64-bitowy. 32 — system bitowy nie jest obsługiwany.<br/><br/>Każdy serwer z systemem Linux powinien mieć zainstalowane [składniki systemu Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Jest to wymagane do uruchomienia serwera na platformie Azure po przetestowaniu trybu failover/przejścia w tryb failover. Jeśli brakuje składników usługi LIS, należy zainstalować [składniki](https://www.microsoft.com/download/details.aspx?id=55106) przed włączeniem replikacji dla maszyn na platformie Azure. <br/><br/> Site Recovery organizuje przejście w tryb failover na potrzeby uruchamiania serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux mogą ograniczyć obsługę tylko wersji dystrybucji, które nie dotarły do końca cyklu życia.<br/><br/> W przypadku dystrybucji systemu Linux obsługiwane są tylko jądra, które są częścią wersji pomocniczej dystrybucji/aktualizacji.<br/><br/> Uaktualnianie chronionych maszyn w ramach głównych wersji dystrybucji systemu Linux nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny, a następnie ponownie Włącz replikację.<br/><br/> [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o pomocy technicznej dla systemów Linux i technologii open source na platformie Azure.
-Linux Red Hat Enterprise | 5,2 do 5,11</b><br/> 6,1 do 6,10</b><br/> 7,0 do 7,7. </br>Wersja 7,7 jest obsługiwana przez [agenta mobilności 9,29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)<br/> <br/> Serwery z systemem Red Hat Enterprise Linux 5.2 — 5.11 & 6.1-6.10 nie mają wstępnie zainstalowanych [składników systemu Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Przed włączeniem replikacji maszyn na platformie Azure upewnij się, że zostały zainstalowane [składniki](https://www.microsoft.com/download/details.aspx?id=55106) .
+Linux Red Hat Enterprise | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Serwery z systemem Red Hat Enterprise Linux 5.2 — 5.11 & 6.1-6.10 nie mają wstępnie zainstalowanych [składników systemu Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Przed włączeniem replikacji maszyn na platformie Azure upewnij się, że zostały zainstalowane [składniki](https://www.microsoft.com/download/details.aspx?id=55106) .
 Linux: CentOS | 5,2 do 5,11</b><br/> 6,1 do 6,10</b><br/> 7,0 do 7,6<br/> <br/> Serwery z systemem CentOS 5.2-5.11 & 6.1-6.10 nie mają wstępnie zainstalowanych [składników usług integracji systemu Linux (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Przed włączeniem replikacji maszyn na platformie Azure upewnij się, że zostały zainstalowane [składniki](https://www.microsoft.com/download/details.aspx?id=55106) .
 Ubuntu | Serwer Ubuntu 14,04 LTS [(Przejrzyj obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16,04 LTS [(Przejrzyj obsługiwane wersje jądra)](#ubuntu-kernel-versions) </br> Serwer Ubuntu 18,04 LTS [(Przejrzyj obsługiwane wersje jądra)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(Przejrzyj obsługiwane wersje jądra)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, SP3 i SP4 [(Przejrzyj obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Uaktualnianie zreplikowanych maszyn z programu SUSE Linux Enterprise Server 11 z dodatkiem SP3 do wersji SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz ją ponownie po uaktualnieniu.
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7<br/><br/> Uruchamianie jądra zgodnego z systemem Red Hat lub nieprzerwane wydanie jądra 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Uruchamianie jądra zgodnego z systemem Red Hat lub nieprzerwane wydanie jądra 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
 
 ### <a name="ubuntu-kernel-versions"></a>Wersje jądra Ubuntu
@@ -91,15 +94,17 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 14,04 LTS | [9,28][9.28 UR]| 3.13.0-24-ogólny do 3.13.0-170-Generic,<br/>3.16.0-25-ogólny do 3.16.0-77-Generic,<br/>3.19.0-18-Generic do 3.19.0-80-Generic,<br/>4.2.0-18-Generic do 4.2.0-42-Generic,<br/>4.4.0-21-Generic to 4.4.0-148-Generic,<br/>4.15.0-1023-Azure do 4.15.0-1045 — Azure |
 14,04 LTS | [9,27][9.27 UR]| 3.13.0-24-ogólny do 3.13.0-170-Generic,<br/>3.16.0-25-ogólny do 3.16.0-77-Generic,<br/>3.19.0-18-Generic do 3.19.0-80-Generic,<br/>4.2.0-18-Generic do 4.2.0-42-Generic,<br/>4.4.0-21-Generic to 4.4.0-148-Generic,<br/>4.15.0-1023-Azure do 4.15.0-1045 — Azure |
 14,04 LTS | [9.26][9.26 UR]| 3.13.0-24-ogólny do 3.13.0-170-Generic,<br/>3.16.0-25-ogólny do 3.16.0-77-Generic,<br/>3.19.0-18-Generic do 3.19.0-80-Generic,<br/>4.2.0-18-Generic do 4.2.0-42-Generic,<br/>4.4.0-21-Generic to 4.4.0-148-Generic,<br/>4.15.0-1023-Azure do 4.15.0-1045 — Azure |
-14,04 LTS | [9,25][9.25 UR]  | 3.13.0-24-ogólny do 3.13.0-169-Generic,<br/>3.16.0-25-ogólny do 3.16.0-77-Generic,<br/>3.19.0-18-Generic do 3.19.0-80-Generic,<br/>4.2.0-18-Generic do 4.2.0-42-Generic,<br/>4.4.0-21-Generic to 4.4.0-146-Generic,<br/>4.15.0-1023-Azure do 4.15.0-1042 — Azure |
+14,04 LTS | [9.25][9.25 UR]  | 3.13.0-24-ogólny do 3.13.0-169-Generic,<br/>3.16.0-25-ogólny do 3.16.0-77-Generic,<br/>3.19.0-18-Generic do 3.19.0-80-Generic,<br/>4.2.0-18-Generic do 4.2.0-42-Generic,<br/>4.4.0-21-Generic to 4.4.0-146-Generic,<br/>4.15.0-1023-Azure do 4.15.0-1042 — Azure |
 |||
+16,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21-Generic to 4.4.0-166-Generic,<br/>4.8.0-34-Generic do 4.8.0-58-Generic,<br/>4.10.0-14-Generic to 4.10.0-42-Generic,<br/>4.11.0-13-Generic do 4.11.0-14-Generic,<br/>4.13.0-16-ogólny do 4.13.0-45-Generic,<br/>4.15.0-13-Generic to 4.15.0-66-Generic<br/>4.11.0-1009-Azure to 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure to 4.13.0-1018-Azure <br/>4.15.0-1012-Azure to 4.15.0-1061-Azure|
 16,04 LTS | [9,28][9.28 UR] | 4.4.0-21-Generic to 4.4.0-159-Generic,<br/>4.8.0-34-Generic do 4.8.0-58-Generic,<br/>4.10.0-14-Generic to 4.10.0-42-Generic,<br/>4.11.0-13-Generic do 4.11.0-14-Generic,<br/>4.13.0-16-ogólny do 4.13.0-45-Generic,<br/>4.15.0-13-Generic do 4.15.0-58-Generic<br/>4.11.0-1009-Azure to 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure to 4.13.0-1018-Azure <br/>4.15.0-1012-Azure to 4.15.0-1055-Azure|
 16,04 LTS | [9,27][9.27 UR] | 4.4.0-21-Generic to 4.4.0-154-Generic,<br/>4.8.0-34-Generic do 4.8.0-58-Generic,<br/>4.10.0-14-Generic to 4.10.0-42-Generic,<br/>4.11.0-13-Generic do 4.11.0-14-Generic,<br/>4.13.0-16-ogólny do 4.13.0-45-Generic,<br/>4.15.0-13-Generic do 4.15.0-54-Generic<br/>4.11.0-1009-Azure to 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure to 4.13.0-1018-Azure <br/>4.15.0-1012-Azure to 4.15.0-1050-Azure|
 16,04 LTS | [9.26][9.26 UR] | 4.4.0-21-Generic to 4.4.0-148-Generic,<br/>4.8.0-34-Generic do 4.8.0-58-Generic,<br/>4.10.0-14-Generic to 4.10.0-42-Generic,<br/>4.11.0-13-Generic do 4.11.0-14-Generic,<br/>4.13.0-16-ogólny do 4.13.0-45-Generic,<br/>4.15.0-13-Generic do 4.15.0-50-Generic<br/>4.11.0-1009-Azure to 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure to 4.13.0-1018-Azure <br/>4.15.0-1012-Azure to 4.15.0-1045-Azure|
-16,04 LTS | [9,25][9.25 UR] | 4.4.0-21-Generic to 4.4.0-146-Generic,<br/>4.8.0-34-Generic do 4.8.0-58-Generic,<br/>4.10.0-14-Generic to 4.10.0-42-Generic,<br/>4.11.0-13-Generic do 4.11.0-14-Generic,<br/>4.13.0-16-ogólny do 4.13.0-45-Generic,<br/>4.15.0-13-Generic to 4.15.0-48-Generic<br/>4.11.0-1009-Azure to 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure to 4.13.0-1018-Azure <br/>4.15.0-1012-Azure to 4.15.0-1042-Azure|
+16,04 LTS | [9.25][9.25 UR] | 4.4.0-21-Generic to 4.4.0-146-Generic,<br/>4.8.0-34-Generic do 4.8.0-58-Generic,<br/>4.10.0-14-Generic to 4.10.0-42-Generic,<br/>4.11.0-13-Generic do 4.11.0-14-Generic,<br/>4.13.0-16-ogólny do 4.13.0-45-Generic,<br/>4.15.0-13-Generic to 4.15.0-48-Generic<br/>4.11.0-1009-Azure to 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure to 4.13.0-1018-Azure <br/>4.15.0-1012-Azure to 4.15.0-1042-Azure|
 16,04 LTS | [9,24][9.24 UR] | 4.4.0-21-Generic to 4.4.0-143-Generic,<br/>4.8.0-34-Generic do 4.8.0-58-Generic,<br/>4.10.0-14-Generic to 4.10.0-42-Generic,<br/>4.11.0-13-Generic do 4.11.0-14-Generic,<br/>4.13.0-16-ogólny do 4.13.0-45-Generic,<br/>4.15.0-13-Generic do 4.15.0-46-Generic<br/>4.11.0-1009-Azure to 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure to 4.13.0-1018-Azure <br/>4.15.0-1012-Azure to 4.15.0-1040-Azure|
 |||
 18,04 LTS | [9,29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-ogólny do 4.15.0-62-Generic </br> 4.18.0-13-Generic to 4.18.0-25-Generic </br> 5.0.0-15-ogólny do 5.0.0-27-Generic </br> 4.15.0-1009-Azure to 4.15.0-1037-Azure </br> 4.18.0-1006-Azure do 4.18.0-1025-Azure </br> 5.0.0-1012-Azure to 5.0.0-1018-Azure
+18,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-ogólny do 4.15.0-66-Generic </br> 4.18.0-13-Generic to 4.18.0-25-Generic </br> 5.0.0-15-ogólny do 5.0.0-32-generyczny </br> 4.15.0-1009-Azure to 4.15.0-1037-Azure </br> 4.18.0-1006-Azure do 4.18.0-1025-Azure </br> 5.0.0-1012-Azure to 5.0.0-1023-Azure
 
 
 ### <a name="debian-kernel-versions"></a>Wersje jądra Debian
@@ -120,7 +125,7 @@ Debian 8 | [9,25][9.25 UR], [9,26][9.26 UR] | 3.16.0-4-amd64 do 3.16.0-8-amd64, 
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,28][9.28 UR] | SP1 3.12.49-11 — domyślnie 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45 — domyślnie 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-domyślnie 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73 — domyślnie 4.4.121-92.117-default</br></br>SP3 4.4.73-5 — domyślnie 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-domyślnie 4.12.14-95.29-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.23-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,27][9.27 UR] | SP1 3.12.49-11 — domyślnie 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45 — domyślnie 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-domyślnie 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73 — domyślnie 4.4.121-92.114-default</br></br>SP3 4.4.73-5 — domyślnie 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-domyślnie 4.12.14-95.19-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.15-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.26][9.26 UR] | SP1 3.12.49-11 — domyślnie 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45 — domyślnie 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-domyślnie 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73 — domyślnie 4.4.121-92.109-default</br></br>SP3 4.4.73-5 — domyślnie 4.4.178-94.91-default</br></br>SP3 4.4.138-4,7-Azure to 4.4.178-4.28-Azure</br></br>SP4 4.12.14-94.41-domyślnie 4.12.14-95.16-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6,9-Azure |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.12.49-11 — domyślnie 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45 — domyślnie 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-domyślnie 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73 — domyślnie 4.4.121-92.104-default</br></br>SP3 4.4.73-5 — domyślnie 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.176-4.25-Azure</br></br>SP4 4.12.14-94.41-domyślnie 4.12.14-95.13-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6,9-Azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.12.49-11 — domyślnie 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45 — domyślnie 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-domyślnie 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73 — domyślnie 4.4.121-92.104-default</br></br>SP3 4.4.73-5 — domyślnie 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.176-4.25-Azure</br></br>SP4 4.12.14-94.41-domyślnie 4.12.14-95.13-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6,9-Azure |
 
 ## <a name="linux-file-systemsguest-storage"></a>Systemy plików Linux/magazyn gościa
 
@@ -169,9 +174,9 @@ Usługa ExpressRoute systemu Azure | Tak
 ILB | Tak
 ELB | Tak
 Azure Traffic Manager | Tak
-Wiele kart sieciowych | Tak
+Multi-NIC | Tak
 Zastrzeżony adres IP | Tak
-Adresów | Tak
+IPv4 | Tak
 Zachowaj źródłowy adres IP | Tak
 Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Tak
 Wydajniejsze sieci | Nie
@@ -183,7 +188,7 @@ Dysk dynamiczny | Dysk systemu operacyjnego musi być dyskiem podstawowym. <br/>
 Konfiguracja dysku platformy Docker | Nie
 System plików NFS hosta | Tak dla oprogramowania VMware<br/><br/> Nie dla serwerów fizycznych
 Sieć SAN hosta (iSCSI/FC) | Tak
-Sieci vSAN hosta | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
+Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
 Wielościeżkowa hosta (MPIO) | Tak, przetestowano przy użyciu modułu Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualne hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
 Gość/serwer VMDK | Tak
@@ -203,7 +208,7 @@ Gość/serwer — wykluczanie dysku | Tak
 Wielościeżkowa gość/serwer (MPIO) | Nie
 Partycje typu GPT/serwer | Z [pakietem zbiorczym aktualizacji 37](https://support.microsoft.com/help/4508614/) są obsługiwane pięć partycji (wersja 9,25 usługi mobilności). Poprzednia wersja obsługiwała cztery.
 System | System plików jest odporny na błędy w wersji 9,23 lub nowszej
-Gość/serwer EFI/rozruch UEFI | — Obsługiwane w przypadku korzystania z usługi mobilności w wersji 9,13 lub nowszej.<br/> -Obsługiwane w przypadku migrowania maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows Server 2012 lub nowszym na platformę Azure.<br/> — Maszyny wirtualne można replikować tylko na potrzeby migracji. Powrót po awarii do lokalnego nie jest obsługiwany.<br/> Obsługiwane są tylko systemy plików NTFS <br/> -Bezpieczny typ rozruchu UEFI nie jest obsługiwany. <br/> — Rozmiar sektora dysku powinien wynosić 512 bajtów na sektor fizyczny.
+Gość/serwer EFI/rozruch UEFI | -Obsługiwane dla systemu Windows Server 2012 lub nowszego, SLES SP4 i RHEL 8,0 <br/> -Bezpieczny typ rozruchu UEFI nie jest obsługiwany. 
 
 ## <a name="replication-channels"></a>Kanały replikacji
 
@@ -224,6 +229,7 @@ Chłodny magazyn | Nie
 Magazyn gorąca| Nie
 Blokowe obiekty blob | Nie
 Szyfrowanie — w spoczynku (SSE)| Tak
+Szyfrowanie na poziomie spoczynku (CMK)| Nie
 Premium Storage | Tak
 Usługa importu/eksportu | Nie
 Zapory usługi Azure Storage dla sieci wirtualnych | Tak.<br/> Skonfigurowane na docelowym koncie magazynu/pamięci podręcznej (używane do przechowywania danych replikacji).
@@ -235,7 +241,7 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (warstwy gorąca i chłodna) |
 --- | ---
 Zestawy dostępności | Tak
 Strefy dostępności | Nie
-Centralny | Tak
+HUB | Tak
 Dyski zarządzane | Tak
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure

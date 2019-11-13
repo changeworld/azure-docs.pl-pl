@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747293"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012934"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
@@ -37,10 +37,10 @@ Azure Backup Server chroni następujące Azure Stack obciążeń maszyn wirtualn
 | Windows Server 2008 R2 — Datacenter/Enterprise/Standard | Woluminy, pliki, foldery |
 | SQL Server 2016 | Database (Baza danych) |
 | SQL Server 2014 | Database (Baza danych) |
-| SQL Server 2012 z dodatkiem SP1 | Database (Baza danych) |
+| SQL Server 2012 SP1 | Database (Baza danych) |
 | Program SharePoint 2016 | Farma, baza danych, fronton, serwer sieci Web |
 | SharePoint 2013 | Farma, baza danych, fronton, serwer sieci Web |
-| Program SharePoint 2010 | Farma, baza danych, fronton, serwer sieci Web |
+| SharePoint 2010 | Farma, baza danych, fronton, serwer sieci Web |
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Wymagania wstępne dotyczące środowiska Azure Backup Server
 
@@ -124,7 +124,7 @@ Aby edytować ustawienia replikacji magazynu:
 
 ## <a name="download-azure-backup-server-installer"></a>Pobierz instalatora Azure Backup Server
 
-Istnieją dwa sposoby pobrania instalatora Azure Backup Server. Instalatora Azure Backup Server można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=55269). Możesz również pobrać Instalatora Azure Backup Server podczas konfigurowania magazynu Recovery Services. Poniższe kroki przeprowadzą Cię przez proces pobierania instalatora z Azure Portal podczas konfigurowania magazynu Recovery Services.
+Istnieją dwa sposoby pobrania instalatora Azure Backup Server. Instalatora Azure Backup Server można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=55269). Możesz również pobrać Instalatora Azure Backup Server podczas konfigurowania magazynu Recovery Services. Poniższe kroki przeprowadzą Cię przez proces pobierania instalatora z Azure Portal podczas konfigurowania magazynu Recovery Services.
 
 1. Na maszynie wirtualnej Azure Stack Zaloguj się [do subskrypcji platformy Azure w Azure Portal](https://portal.azure.com/).
 2. W menu po lewej stronie wybierz pozycję **wszystkie usługi**.
@@ -346,7 +346,7 @@ Jeśli zapora lub serwer proxy uniemożliwia dostęp do platformy Azure, Dodaj n
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
-- \*.microsoftonline.com
+- \*. microsoftonline.com
 - \*.windows.net
 
 Po przywróceniu łączności z platformą Azure do Azure Backup Server stan subskrypcji platformy Azure określa operacje, które można wykonać. Po **nawiązaniu połączenia**z serwerem Użyj tabeli w obszarze [łączność sieciowa](backup-mabs-install-azure-stack.md#network-connectivity) , aby wyświetlić dostępne operacje.

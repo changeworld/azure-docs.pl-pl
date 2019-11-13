@@ -1,21 +1,21 @@
 ---
 title: Tworzenie Azure Cosmos DB przy użyciu szablonów Azure Resource Manager i zarządzanie nimi
 description: Używanie szablonów Azure Resource Manager do tworzenia i konfigurowania interfejsu API Azure Cosmos DB for SQL (rdzeń)
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 5babcadee02da0ba3e112f75e8b4d1aed5f3339f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/12/2019
+ms.author: thvankra
+ms.openlocfilehash: 0cb6e80bafca3bb0bfc339552facae5bd16aced4
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721075"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960544"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API Azure Cosmos DB SQL (Core) przy użyciu szablonów Azure Resource Manager
 
-W tym artykule opisano sposób wykonywania różnych operacji w celu zautomatyzowania zarządzania kontami Azure Cosmos DB, bazami danych i kontenerami przy użyciu szablonów Azure Resource Manager. W tym artykule przedstawiono przykłady tylko dla kont interfejsu API SQL, aby znaleźć przykłady dla innych kont typu interfejsu API, zobacz: korzystanie z szablonów Menedżer zasobów z interfejsem API Azure Cosmos DB dla [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)i [tabel](manage-table-with-resource-manager.md) .
+W tym artykule opisano sposób wykonywania różnych operacji w celu zautomatyzowania zarządzania kontami Azure Cosmos DB, bazami danych i kontenerami przy użyciu szablonów Azure Resource Manager. W tym artykule przedstawiono przykłady tylko dla kont interfejsu API SQL, aby znaleźć przykłady dla innych kont typu interfejsu API, zobacz: korzystanie z szablonów Azure Resource Manager z interfejsem API Azure Cosmos DB dla [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)i [tabel](manage-table-with-resource-manager.md) .
 
 Tworzenie i zarządzanie kontami Cosmos DB, bazami danych i kontenerami dla MongoDB, Gremlin, Cassandra i interfejs API tabel.
 
@@ -26,7 +26,7 @@ Tworzenie Azure Cosmos DB zasobów przy użyciu szablonu Azure Resource Manager.
 > [!NOTE]
 >
 > - Nie można jednocześnie dodawać ani usuwać lokalizacji do konta usługi Azure Cosmos i modyfikować innych właściwości. Należy je wykonać jako osobne operacje.
-> - Nazwy kont muszą zawierać małe litery i < 44 znaków.
+> - Nazwy kont muszą zawierać małe litery i 44 lub mniej znaków.
 > - Aby zaktualizować RU/s, ponownie prześlij szablon ze zaktualizowanymi wartościami właściwości przepływności.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
@@ -36,7 +36,7 @@ Tworzenie Azure Cosmos DB zasobów przy użyciu szablonu Azure Resource Manager.
 
 ### <a name="deploy-via-powershell"></a>Wdrażanie za pomocą programu PowerShell
 
-Aby wdrożyć szablon Menedżer zasobów przy użyciu programu PowerShell, **Skopiuj** skrypt i wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
+Aby wdrożyć szablon Azure Resource Manager przy użyciu programu PowerShell, **Skopiuj** skrypt i wybierz opcję **Wypróbuj** , aby otworzyć Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurepowershell-interactive
 
@@ -70,11 +70,11 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-W przypadku wybrania opcji używania lokalnie zainstalowanej wersji programu PowerShell zamiast programu z usługi Azure Cloud Shell należy [zainstalować](/powershell/azure/install-az-ps) moduł Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana.
+W przypadku wybrania opcji używania lokalnie zainstalowanej wersji programu PowerShell zamiast z Azure Cloud Shell należy [zainstalować](/powershell/azure/install-az-ps) moduł Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana.
 
 ### <a name="deploy-via-azure-cli"></a>Wdrażanie za pomocą interfejsu wiersza polecenia platformy Azure
 
-Aby wdrożyć szablon Menedżer zasobów przy użyciu interfejsu wiersza polecenia platformy Azure, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
+Aby wdrożyć szablon Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure, wybierz pozycję **Wypróbuj** , aby otworzyć Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -115,7 +115,7 @@ Utwórz kontener Azure Cosmos DB z procedurą składowaną, wyzwalaczem i funkcj
 
 ### <a name="deploy-stored-procedure-template-via-powershell"></a>Wdróż szablon procedury składowanej za pośrednictwem programu PowerShell
 
-Aby wdrożyć szablon Menedżer zasobów przy użyciu programu PowerShell, **Skopiuj** skrypt i wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
+Aby wdrożyć szablon Menedżer zasobów przy użyciu programu PowerShell, **Skopiuj** skrypt i wybierz opcję **Wypróbuj** , aby otworzyć Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurepowershell-interactive
 
@@ -141,11 +141,11 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-W przypadku wybrania opcji używania lokalnie zainstalowanej wersji programu PowerShell zamiast programu z usługi Azure Cloud Shell należy [zainstalować](/powershell/azure/install-az-ps) moduł Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana.
+W przypadku wybrania opcji używania lokalnie zainstalowanej wersji programu PowerShell zamiast z Azure Cloud Shell należy [zainstalować](/powershell/azure/install-az-ps) moduł Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana.
 
 ### <a name="deploy-stored-procedure-template-via-azure-cli"></a>Wdróż szablon procedury składowanej za pośrednictwem interfejsu wiersza polecenia platformy Azure
 
-Aby wdrożyć szablon Menedżer zasobów przy użyciu interfejsu wiersza polecenia platformy Azure, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
+Aby wdrożyć szablon Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure, wybierz pozycję **Wypróbuj** , aby otworzyć Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName

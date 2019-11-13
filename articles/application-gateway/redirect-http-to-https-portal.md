@@ -1,18 +1,18 @@
 ---
-title: Tworzenie bramy aplikacji za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu witryny Azure portal
+title: Przekierowywanie protokołu HTTP do protokołu HTTPS w portalu — Application Gateway platformy Azure
 description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu przekierowanego ruchu z protokołu HTTP do HTTPS przy użyciu witryny Azure portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/7/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 17eef2fc2608ca4ccbabff8179cd63798d275582
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101465"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012879"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Tworzenie bramy aplikacji za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu witryny Azure portal
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ten samouczek wymaga modułu Wersja 1.0.0 programu Azure PowerShell lub nowszej, aby utworzyć certyfikat i zainstalować usługi IIS. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Aby uruchamiać polecenia w tym samouczku, trzeba będzie również uruchomić `Login-AzAccount` do utworzenia połączenia z platformą Azure.
+Ten samouczek wymaga modułu Azure PowerShell w wersji 1.0.0 lub nowszej, aby można było utworzyć certyfikat i zainstalować usługi IIS. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Aby uruchamiać polecenia w tym samouczku, trzeba będzie również uruchomić `Login-AzAccount` do utworzenia połączenia z platformą Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 
@@ -223,6 +223,6 @@ Na stronie Przegląd bramy aplikacji, można uzyskać publicznego adresu IP apli
 
    ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak [Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania](redirect-internal-site-powershell.md).

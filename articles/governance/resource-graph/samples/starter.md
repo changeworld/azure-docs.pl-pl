@@ -1,17 +1,14 @@
 ---
 title: Przykłady zapytań podstawowych
 description: Przy użyciu usługi Azure Resource Graph uruchom kilka zapytań dla początkujących, obejmujących zliczanie i porządkowanie zasobów lub grupowanie według określonego tagu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f98ef101b53af4f595d31670d2af5aee66170487
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622501"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958627"
 ---
 # <a name="starter-resource-graph-queries"></a>Zapytania usługi Resource Graph dla początkujących
 

@@ -1,5 +1,5 @@
 ---
-title: Platforma Azure IoT Hub opracowywanie w przypadku urządzeń z ograniczeniami przy użyciu zestawu SDK IoT Hub C | Microsoft Docs
+title: Platforma Azure IoT Hub opracowywanie w przypadku urządzeń z ograniczeniami przy użyciu zestawu SDK IoT Hub C
 description: Przewodnik dla deweloperów — wskazówki dotyczące sposobu tworzenia aplikacji przy użyciu zestawów SDK usługi Azure IoT dla urządzeń z ograniczeniami.
 author: robinsh
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880967"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954700"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Programowanie dla urządzeń z ograniczeniami przy użyciu zestawu SDK języka C usługi Azure IoT
 
@@ -77,9 +77,9 @@ Zestaw C SDK zawiera opcjonalny [serializator zestawu SDK języka c](https://git
 
 Zestaw SDK języka C obsługuje dwa modele programowania. Jeden zestaw ma interfejsy API z wrostkoweami _ll_ , co oznacza niższą warstwę. Ten zestaw interfejsów API jest jaśniejszy i nie można uruchomić wątków roboczych, co oznacza, że użytkownik musi ręcznie kontrolować planowanie. Na przykład dla klienta urządzenia interfejsy API _szystkie_ można znaleźć w tym [pliku nagłówkowym](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h). 
 
-Inny zestaw interfejsów API bez indeksu są nazywane warstwą wygodną, gdzie wątek roboczy jest automatycznie Spuninst. Na przykład wygodne interfejsy API dla klienta urządzenia znajdują się w tym [pliku nagłówkowym klienta urządzenia IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h). W przypadku urządzeń z ograniczeniami, w których każdy dodatkowy wątek może uzyskać znaczną część zasobów systemowych, należy rozważyć użycie interfejsów API _ll_ .
+Inny zestaw interfejsów API _bez indeksu są_ nazywane warstwą wygodną, gdzie wątek roboczy jest automatycznie Spuninst. Na przykład wygodne interfejsy API dla klienta urządzenia znajdują się w tym [pliku nagłówkowym klienta urządzenia IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h). W przypadku urządzeń z ograniczeniami, w których każdy dodatkowy wątek może uzyskać znaczną część zasobów systemowych, należy rozważyć użycie interfejsów API _ll_ .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o architekturze zestawu SDK języka C dla usługi Azure IoT:
 -   [Kod źródłowy zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/)

@@ -10,12 +10,12 @@ author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/07/2019
-ms.openlocfilehash: 976c849f9cb48e1c197f70d10e911216a6a7425c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 744ac9f8526b7d65709d3627a5f90b31d234b2cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822844"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009076"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>Uczenie maszynowe i AI z ONNX w wersji zapoznawczej SQL Database Edge
 
@@ -25,27 +25,22 @@ Usługa Machine Learning w Azure SQL Database Edge w wersji zapoznawczej obsług
 
 Aby wywnioskować modele uczenia maszynowego w Azure SQL Database Edge, najpierw musisz uzyskać model. Może to być model wstępnie szkolony lub model niestandardowy szkolony z Twoją platformą. Azure SQL Database Edge obsługuje format ONNX i należy przekonwertować model na ten format. Nie powinno mieć wpływu na dokładność modelu i po utworzeniu modelu ONNX można wdrożyć model w Azure SQL Database Edge i użyć [natywnego oceniania z przewidywaną funkcją T-SQL](/sql/advanced-analytics/sql-native-scoring/).
 
-## <a name="get-onnx-models"></a>Pobierz modele ONNX
+## <a name="get-onnx-models"></a>Modele ONNX
 
-Istnieje kilka sposobów uzyskania modelu w formacie ONNX:
+Aby uzyskać model w formacie ONNX:
 
-- [ONNX model Zoo](https://github.com/onnx/models): zawiera wiele wstępnie przeszkolonych modeli ONNX dla różnych typów zadań, które można pobrać i są gotowe do użycia.
+- **Usługi do kompilowania modeli**: usługi takie jak [Funkcja automatycznego Machine Learning w systemach Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) i [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) obsługują bezpośrednio eksportowanie przeszkolonego modelu w formacie ONNX.
 
-- [Natywne eksporty z platform szkoleniowych ml](https://onnx.ai/supported-tools): kilka platform szkoleniowych obsługuje natywną funkcję eksportu ONNX, co pozwala na zapisywanie przeszkolonego modelu w określonej wersji formatu ONNX, w tym [PyTorch](https://pytorch.org/docs/stable/onnx.html), łańcucher i Caffe2. Ponadto usługi do kompilowania modeli, takie jak [Funkcja automatycznego Machine Learning w systemach Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) i [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) udostępniają eksport ONNX.
+- [**Konwertowanie i/lub eksportowanie istniejących modeli**](https://github.com/onnx/tutorials#converting-to-onnx-format): kilka platform szkoleniowych (np. [PyTorch](https://pytorch.org/docs/stable/onnx.html), łańcucher i Caffe2) obsługuje natywne funkcje eksportu do ONNX, co pozwala na zapisywanie przeszkolonego modelu w określonej wersji formatu ONNX. W przypadku struktur, które nie obsługują eksportu natywnego, istnieją Autonomiczne pakiety instalowalne konwertera ONNX, które umożliwiają konwersję modeli przeszkolonych z różnych platform uczenia maszynowego w formacie ONNX.
 
-- [Konwertuj istniejące modele](https://github.com/onnx/tutorials#converting-to-onnx-format): dla struktur, które nie obsługują eksportu natywnego, istnieją Autonomiczne pakiety umożliwiające konwersję modeli do formatu ONNX. Aby zapoznać się z przykładami i samouczkami, zobacz [konwertowanie do formatu ONNX](https://github.com/onnx/tutorials#converting-to-onnx-format). 
-
-### <a name="supported-frameworks"></a>Obsługiwane struktury
-
-Konwertery ONNX umożliwiają konwertowanie modeli przeszkolonych z różnych platform uczenia maszynowego w formacie ONNX. Popularne konwertery obejmują: 
-
-* [PyTorch](http://pytorch.org/docs/master/onnx.html)
-* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
-* [Keras](https://github.com/onnx/keras-onnx)
-* [Scikit-learn](https://github.com/onnx/sklearn-onnx)
-* [CoreML](https://github.com/onnx/onnxmltools)
-
-Aby zapoznać się z pełną listą obsługiwanych platform, zobacz [konwertowanie do formatu ONNX](https://github.com/onnx/tutorials#converting-to-onnx-format).
+     **Obsługiwane struktury**
+   * [PyTorch](http://pytorch.org/docs/master/onnx.html)
+   * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+   * [Keras](https://github.com/onnx/keras-onnx)
+   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [CoreML](https://github.com/onnx/onnxmltools)
+    
+    Aby zapoznać się z pełną listą obsługiwanych platform i przykładów, zobacz [konwertowanie do formatu ONNX](https://github.com/onnx/tutorials#converting-to-onnx-format).
 
 ## <a name="limitations"></a>Ograniczenia
 

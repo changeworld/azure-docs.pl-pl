@@ -1,6 +1,6 @@
 ---
-title: Udostępnianie widoków niestandardowych usługi Azure Time Series Insights za pomocą sparametryzowanych adresów URL | Microsoft Docs
-description: W tym artykule opisano sposób opracowywania sparametryzowanych adresów URL w usłudze Azure Time Series Insights na potrzeby łatwego udostępniania widoku klienta.
+title: Udostępnianie widoków niestandardowych z sparametryzowanymi adresami URL — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak opracowywać sparametryzowane adresy URL w Azure Time Series Insights, aby łatwo udostępniać niestandardowe widoki.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991114"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006371"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
@@ -33,7 +33,7 @@ Parametr `environmentId=<guid>` określa identyfikator środowiska docelowego. J
 
 Przykładowy parametr identyfikatora środowiska to `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Czas
+## <a name="time"></a>Time
 
 Za pomocą sparametryzowanego adresu URL możesz określać bezwzględne lub względne wartości czasu.
 
@@ -69,7 +69,7 @@ Akceptowane wartości odpowiadają menu **szybkiego czasu** Eksploratora Time Se
 
 | Parametr | Element adresu URL | Opis |
 | --- | --- | --- |
-| **Nazwij** | `\<string>` | Nazwa *terminu*. |
+| **name** | `\<string>` | Nazwa *terminu*. |
 | **splitBy** | `\<string>` | Nazwa kolumny, według której ma zostać wykonany *podział*. |
 | **measureName** | `\<string>` | Nazwa kolumny *miary*. |
 | **predykatu** | `\<string>` | Klauzula *where* na potrzeby filtrowania po stronie serwera. |
@@ -117,7 +117,7 @@ Powyższy adres URL opisuje i kompiluje widok Eksploratora Time Series Insights:
 
 Widok pełny (łącznie z wykresem):
 
-[Widok wykresu![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[Widok wykresu ![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 

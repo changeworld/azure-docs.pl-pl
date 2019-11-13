@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/17/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 565620f477382ff81f854336dbee7bdb1ad06f01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 781203cec8d85abd74aa439b5595e8d00ed36745
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469716"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961685"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal
 
@@ -24,11 +24,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu danych konta Azure.
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
+## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Zostanie wyświetlone okno **Nowe**.
 
@@ -65,7 +65,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu da
 
 1. Na karcie **frontony** Sprawdź, czy **Typ adresu IP frontonu** jest ustawiony na wartość **Public**. <br>Adres IP frontonu można skonfigurować tak, aby był publiczny lub prywatny jak w przypadku użycia. W tym przykładzie wybrano publiczny adres IP frontonu.
    > [!NOTE]
-   > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Konfiguracja prywatnego adresu IP frontonu nie jest obecnie włączona dla tej jednostki SKU w wersji 2.
+   > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Dla tej jednostki SKU w wersji 2 nie jest obecnie włączona tylko konfiguracja prywatnego adresu IP frontonu. Można skonfigurować publiczną i prywatną konfigurację adresu IP frontonu.
 
 2. Wybierz opcję **Utwórz nowy** dla **publicznego adresu IP** i wprowadź *MYAGPUBLICIPADDRESS* dla nazwy publicznego adresu IP, a następnie wybierz przycisk **OK**. 
 
@@ -196,7 +196,7 @@ W tym przykładzie należy zainstalować usługi IIS tylko na maszynach wirtualn
 
 Mimo że zainstalowanie usług IIS nie jest wymagane do utworzenia bramy aplikacji, zainstalowano je w ramach tego przewodnika Szybki start, aby sprawdzić, czy platforma Azure pomyślnie utworzyła bramę aplikacji. Użyj usług do przetestowania bramy aplikacji:
 
-1. Na stronie **przeglądowej** Znajdź publiczny adres IP bramy aplikacji.![zarejestrować publicznego adresu IP bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) lub, możesz wybrać pozycję **wszystkie zasoby**, wpisać *myAGPublicIPAddress* w polu wyszukiwania, a następnie wybrać ją w wynikach wyszukiwania. Platforma Azure wyświetla publiczny adres IP na stronie **Omówienie**.
+1. Znajdź publiczny adres IP bramy aplikacji. **a stronie**  przeglądowej ![Zarejestruj publiczny adres](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) wybierz pozycję **wszystkie zasoby**, wpisz *myAGPublicIPAddress* w polu wyszukiwania, a następnie wybierz go w wynikach wyszukiwania. Platforma Azure wyświetla publiczny adres IP na stronie **Omówienie**.
 2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 3. Sprawdź odpowiedź. Prawidłowa odpowiedź weryfikuje, czy Brama aplikacji została pomyślnie utworzona i może pomyślnie nawiązać połączenie z zapleczem.![Testowanie bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 

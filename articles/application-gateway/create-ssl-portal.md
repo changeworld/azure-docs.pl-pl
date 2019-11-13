@@ -1,18 +1,18 @@
 ---
-title: Samouczek — Konfigurowanie bramy aplikacji z zakończeniem SSL — Azure Portal
+title: 'Samouczek: Konfigurowanie zakończenia protokołu SSL w portalu — Application Gateway platformy Azure'
 description: W tym samouczku dowiesz się, jak skonfigurować bramę aplikacji i dodać certyfikat do zakończenia protokołu SSL przy użyciu Azure Portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/27/2019
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470037"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012306"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Samouczek: Konfigurowanie bramy aplikacji z zakończeniem SSL przy użyciu Azure Portal
 
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com)
 
@@ -69,7 +69,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
+## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 1. Wybierz pozycję **Utwórz zasób** w menu po lewej stronie w witrynie Azure Portal. Zostanie wyświetlone okno **Nowe**.
 

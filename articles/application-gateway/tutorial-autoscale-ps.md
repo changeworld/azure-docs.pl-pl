@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: Tworzenie automatycznie skalowanej, strefowo nadmiarowej bramy aplikacji z zastrzeżonym adresem IP — Azure PowerShell'
+title: 'Samouczek: ulepszanie dostępu do aplikacji sieci Web — Application Gateway platformy Azure'
 description: W tym samouczku dowiesz się, jak utworzyć automatycznie skalowaną, strefowo nadmiarową bramę aplikacji z zastrzeżonym adresem IP przy użyciu programu Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 2/14/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947147"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011361"
 ---
-# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Samouczek: Tworzenie bramy aplikacji, która usprawnia dostęp do aplikacji internetowych
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Samouczek: Tworzenie bramy aplikacji, która usprawnia dostęp do aplikacji sieci Web
 
 Jeśli jesteś administratorem IT i chcesz poprawić dostęp do aplikacji internetowych, możesz zoptymalizować bramę aplikacji, aby była skalowana na podstawie potrzeb klientów i obejmowała wiele stref dostępności. Ten samouczek pomoże Ci skonfigurować funkcje usługi Azure App Gateway pod kątem skalowania automatycznego, nadmiarowości stref i zastrzeżonych wirtualnych adresów IP (statycznych adresów IP). Aby rozwiązać problem, użyjesz poleceń cmdlet programu Azure PowerShell i modelu wdrażania usługi Azure Resource Manager.
 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ten samouczek wymaga, aby program Azure PowerShell działał lokalnie. Musi mieć Azure modułu PowerShell w wersji 1.0.0 lub nowszy. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+Ten samouczek wymaga, aby program Azure PowerShell działał lokalnie. Musisz mieć zainstalowany moduł Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -180,7 +180,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Użyj Get AzPublicIPAddress, aby pobrać publiczny adres IP bramy aplikacji. Skopiuj publiczny adres IP (lub nazwę DNS), a następnie wklej go na pasku adresu przeglądarki.
+Użyj Get-AzPublicIPAddress, aby uzyskać publiczny adres IP bramy aplikacji. Skopiuj publiczny adres IP (lub nazwę DNS), a następnie wklej go na pasku adresu przeglądarki.
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
@@ -190,7 +190,7 @@ Najpierw zapoznaj się z zasobami utworzonymi przy użyciu bramy aplikacji. Nast
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie bramy aplikacji za pomocą reguł routingu bazujących na ścieżce adresu URL](./tutorial-url-route-powershell.md)

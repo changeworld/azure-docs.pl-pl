@@ -1,32 +1,32 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu programu PowerShell w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować replikację i tryb failover na platformę Azure do odzyskiwania po awarii maszyn wirtualnych programu VMware przy użyciu programu PowerShell w usłudze Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii oprogramowania VMware przy użyciu programu PowerShell w usłudze Azure Site revoery
+description: Dowiedz się, jak skonfigurować replikację i przejście w tryb failover na platformie Azure na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware przy użyciu programu PowerShell w Azure Site Recovery.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 06/30/2019
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 7c13bb8586995a82ee240df39a9c95a67743e2a8
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 9546ae590918cdf6f3a6a95b9a68e9208054dcee
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503339"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953928"
 ---
-# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu programu PowerShell
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu programu PowerShell
 
-W tym artykule zobaczysz, jak replikować i trybu failover maszyny wirtualne VMware na platformę Azure przy użyciu programu Azure PowerShell.
+W tym artykule opisano sposób replikowania maszyn wirtualnych VMware i pracy w trybie failover na platformie Azure przy użyciu Azure PowerShell.
 
 Omawiane kwestie:
 
 > [!div class="checklist"]
-> - Utwórz magazyn usługi Recovery Services i Ustaw kontekst magazynu.
+> - Utwórz magazyn Recovery Services i ustaw kontekst magazynu.
 > - Sprawdź poprawność rejestracji serwera w magazynie.
-> - Skonfiguruj replikację, łącznie z zasadami replikacji. Dodawanie serwera vCenter i odnajdywanie maszyn wirtualnych.
-> - Dodawanie serwera vCenter i odnajdywanie
-> - Tworzenie konta magazynu do przechowywania dzienników replikacji lub dane i zreplikować maszyny wirtualne.
-> - Wykonaj przejście w tryb failover. Konfigurowanie ustawień trybu failover, wykonaj ustawienia dotyczące replikowania maszyn wirtualnych.
+> - Skonfiguruj replikację, w tym zasady replikacji. Dodaj serwer vCenter i odnajdź maszyny wirtualne.
+> - Dodawanie serwera vCenter i odnajdowanie
+> - Utwórz konta magazynu, aby przechowywać dzienniki replikacji lub dane oraz replikować maszyny wirtualne.
+> - Wykonaj przejście w tryb failover. Skonfiguruj ustawienia trybu failover, aby przeprowadzić replikację maszyn wirtualnych.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -37,7 +37,7 @@ Przed rozpoczęciem:
 
 - Przeanalizuj informacje o [składnikach i architekturze scenariusza](vmware-azure-architecture.md).
 - Zapoznaj się z [wymaganiami dotyczącymi obsługi](site-recovery-support-matrix-to-azure.md) wszystkich składników.
-- Masz programu Azure PowerShell `Az` modułu. Jeśli potrzebujesz zainstalować lub uaktualnić programu Azure PowerShell, postępuj zgodnie z tym [Przewodnik instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/install-az-ps).
+- Masz moduł `Az` Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić Azure PowerShell, postępuj zgodnie [z tym przewodnikiem, aby zainstalować i skonfigurować Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Logowanie się do platformy Azure
 
@@ -46,14 +46,14 @@ Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia cmdlet Connec
 ```azurepowershell
 Connect-AzAccount
 ```
-Wybierz subskrypcję platformy Azure, o których mają być replikowane do maszyn wirtualnych VMware. Aby uzyskać listę subskrypcji platformy Azure, do których masz dostęp do, użyj polecenia cmdlet Get-AzSubscription. Wybierz subskrypcję platformy Azure, które chcesz pracować przy użyciu polecenia cmdlet Select AzSubscription.
+Wybierz subskrypcję platformy Azure, do której chcesz replikować maszyny wirtualne VMware. Użyj polecenia cmdlet Get-AzSubscription, aby uzyskać listę subskrypcji platformy Azure, do których masz dostęp. Wybierz subskrypcję platformy Azure, z którą chcesz korzystać przy użyciu polecenia cmdlet Select-AzSubscription.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 ```
 ## <a name="set-up-a-recovery-services-vault"></a>Konfigurowanie magazynu usługi Recovery Services
 
-1. Utwórz grupę zasobów, w której chcesz utworzyć magazyn usługi Recovery Services. W poniższym przykładzie grupa zasobów nosi nazwę VMwareDRtoAzurePS i jest tworzone w regionie Azja Wschodnia.
+1. Utwórz grupę zasobów, w której ma zostać utworzony magazyn Recovery Services. W poniższym przykładzie grupa zasobów ma nazwę VMwareDRtoAzurePS i jest tworzona w regionie Azja Wschodnia.
 
    ```azurepowershell
    New-AzResourceGroup -Name "VMwareDRtoAzurePS" -Location "East Asia"
@@ -66,7 +66,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
    ```
 
-2. Utwórz magazyn usługi Recovery services. W poniższym przykładzie magazynu usługi Recovery services o nazwie VMwareDRToAzurePs i jest tworzona w regionie Azja Wschodnia i grupy zasobów utworzonej w poprzednim kroku.
+2. Utwórz magazyn usługi Recovery Services. W poniższym przykładzie magazyn usługi Recovery Services nosi nazwę VMwareDRToAzurePs i jest tworzony w regionie Azja Wschodnia i w grupie zasobów utworzonej w poprzednim kroku.
 
    ```azurepowershell
    New-AzRecoveryServicesVault -Name "VMwareDRToAzurePs" -Location "East Asia" -ResourceGroupName "VMwareDRToAzurePs"
@@ -81,7 +81,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
    ```
 
-3. Pobierz klucz rejestracji magazynu dla magazynu. Klucz rejestracji magazynu umożliwia rejestrowanie serwera konfiguracji w środowisku lokalnym, w tym magazynie. Rejestracja jest częścią procesu instalacji oprogramowania serwera konfiguracji.
+3. Pobierz klucz rejestracji magazynu dla magazynu. Klucz rejestracji magazynu jest używany do rejestrowania lokalnego serwera konfiguracji w tym magazynie. Rejestracja jest częścią procesu instalacji oprogramowania serwera konfiguracji.
 
    ```azurepowershell
    #Get the vault object by name and resource group and save it to the $vault PowerShell variable 
@@ -96,18 +96,18 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials
    ```
 
-4. Użyj klucza rejestracji pobranego magazynu i wykonaj kroki opisane w artykułach z podanych poniżej w celu ukończenia instalacji i rejestracji serwera konfiguracji.
-   - [Wybranie celów ochrony](vmware-azure-set-up-source.md#choose-your-protection-goals)
+4. Użyj pobranego klucza rejestracji magazynu i postępuj zgodnie z instrukcjami podanym poniżej w celu przeprowadzenia instalacji i rejestracji serwera konfiguracji.
+   - [Wybierz cele ochrony](vmware-azure-set-up-source.md#choose-your-protection-goals)
    - [Konfigurowanie środowiska źródłowego](vmware-azure-set-up-source.md#set-up-the-configuration-server)
 
 ### <a name="set-the-vault-context"></a>Ustaw kontekst magazynu
 
-Ustaw kontekst magazynu za pomocą polecenia cmdlet Set-ASRVaultContext. Po ustawieniu kolejne operacje usługi Azure Site Recovery w sesji programu PowerShell są wykonywane w kontekście wybranego magazynu.
+Ustaw kontekst magazynu za pomocą polecenia cmdlet Set-ASRVaultContext. Po ustawieniu kolejne Azure Site Recovery operacje w sesji programu PowerShell są wykonywane w kontekście wybranego magazynu.
 
 > [!TIP]
-> Moduł Azure PowerShell odzyskiwania lokacji (moduł Az.RecoveryServices) jest dostarczany za pomocą łatwych w użyciu aliasów dla większości poleceń cmdlet. Polecenia cmdlet w module mieć postać  *\<operacji >-**AzRecoveryServicesAsr**\<obiektu >* i mieć równoważne aliasy, które będzie mieć postać  *\< Operacja >-**ASR**\<obiektu >* . Możesz zastąpić aliasy polecenia cmdlet w celu ułatwienia.
+> Azure Site Recovery module programu PowerShell (AZ. RecoveryServices module) zawiera łatwe do użycia aliasy dla większości poleceń cmdlet. Polecenia cmdlet w module przyjmują postać *\<operacji >-**AzRecoveryServicesAsr**\<obiektu >* i mają równoważne aliasy, które przyjmują formularz *\<> operacji-**ASR**\<obiektu*>. Aliasy poleceń cmdlet można zastąpić, aby ułatwić korzystanie z programu.
 
-W poniższym przykładzie, szczegóły magazynu z $vault zmienna służy do określania kontekst magazynu dla sesji programu PowerShell.
+W poniższym przykładzie szczegóły magazynu ze zmiennej $vault są używane do określania kontekstu magazynu dla sesji programu PowerShell.
 
    ```azurepowershell
    Set-ASRVaultContext -Vault $vault
@@ -118,23 +118,23 @@ W poniższym przykładzie, szczegóły magazynu z $vault zmienna służy do okre
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Jako alternatywę do polecenia cmdlet Set-ASRVaultContext jeden również użyć polecenia cmdlet Import AzRecoveryServicesAsrVaultSettingsFile, aby ustawić kontekst magazynu. Określ ścieżkę, w którym plik klucza rejestracji magazynu znajduje się jako parametru - path, do polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Na przykład:
+Zamiast polecenia cmdlet Set-ASRVaultContext, można również użyć polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile, aby ustawić kontekst magazynu. Określ ścieżkę, w której znajduje się plik klucza rejestracji magazynu jako parametr-path polecenia cmdlet Import-AzRecoveryServicesAsrVaultSettingsFile. Na przykład:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
    Import-AzRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
    ```
-Kolejne sekcje w tym artykule przyjęto założenie, czy kontekst magazynu dla operacji usługi Azure Site Recovery został ustawiony.
+W kolejnych sekcjach tego artykułu przyjęto założenie, że kontekst magazynu dla operacji Azure Site Recovery został ustawiony.
 
-## <a name="validate-vault-registration"></a>Sprawdź poprawność rejestracji w magazynie
+## <a name="validate-vault-registration"></a>Weryfikowanie rejestracji magazynu
 
-W tym przykładzie mamy następujące czynności:
+W tym przykładzie mamy następujące elementy:
 
 - Serwer konfiguracji (**ConfigurationServer**) został zarejestrowany w tym magazynie.
-- Dodatkowym serwerze przetwarzania (**ProcessServer skalowania**) został zarejestrowany do *ConfigurationServer*
-- Konta (**vCenter_account**, **WindowsAccount**, **LinuxAccount**) zostało skonfigurowane na serwerze konfiguracji. Te konta są używane do dodawania serwera vCenter, aby odnaleźć maszyny wirtualne i instalacji wypychanej oprogramowania usługi mobilności na serwerach Windows i Linux, które mają być replikowane.
+- Dodatkowy serwer przetwarzania (**skalowania-ProcessServer**) został zarejestrowany w usłudze *ConfigurationServer*
+- Konta (**vCenter_account**, **WindowsAccount**, **LinuxAccount**) zostały skonfigurowane na serwerze konfiguracji. Te konta są używane do dodawania serwera vCenter, do odnajdywania maszyn wirtualnych oraz do wypychania oprogramowania usługi mobilności na serwerach z systemem Windows i Linux, które mają być replikowane.
 
-1. Konfiguracja zarejestrowane serwery są reprezentowane przez obiekt sieci szkieletowej w usłudze Site Recovery. Pobierz listę sieci szkieletowej obiektów w magazynie i identyfikowanie serwera konfiguracji.
+1. Zarejestrowane serwery konfiguracji są reprezentowane przez obiekt sieci szkieletowej w Site Recovery. Pobierz listę obiektów sieci szkieletowej w magazynie i Zidentyfikuj serwer konfiguracji.
 
    ```azurepowershell
    # Verify that the Configuration server is successfully registered to the vault
@@ -159,7 +159,7 @@ W tym przykładzie mamy następujące czynności:
    FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
    ```
 
-2. Określenie serwerów przetwarzania, które mogą służyć do replikowania maszyn.
+2. Zidentyfikuj serwery przetwarzania, których można użyć do replikowania maszyn.
 
    ```azurepowershell
    $ProcessServers = $ASRFabrics[0].FabricSpecificDetails.ProcessServers
@@ -172,9 +172,9 @@ W tym przykładzie mamy następujące czynności:
    1     ConfigurationServer
    ```
 
-   W powyższych danych wyjściowych ***$ProcessServers [0]*** odpowiada *ProcessServer skalowania* i ***$ProcessServers [1]*** odnosi się do roli serwera przetwarzania na *ConfigurationServer*
+   Z danych wyjściowych powyżej ***$ProcessServers [0]*** odpowiada *skalowania-ProcessServer* , a ***$ProcessServers [1]*** odpowiada roli serwera przetwarzania na *ConfigurationServer*
 
-3. Określ konta, które zostały skonfigurowane na serwerze konfiguracji.
+3. Zidentyfikuj konta, które zostały skonfigurowane na serwerze konfiguracji.
 
    ```azurepowershell
    $AccountHandles = $ASRFabrics[0].FabricSpecificDetails.RunAsAccounts
@@ -189,16 +189,16 @@ W tym przykładzie mamy następujące czynności:
    3         LinuxAccount
    ```
 
-   W powyższych danych wyjściowych ***$AccountHandles [0]*** odnosi się do konta *vCenter_account*, ***$AccountHandles [1]*** kontu *WindowsAccount*, i ***$AccountHandles [2]*** kontu *LinuxAccount*
+   Z danych wyjściowych powyżej ***$AccountHandles [0]*** odpowiada konto *vCenter_account*, ***$AccountHandles [1]*** do konta *WindowsAccount*, a ***$AccountHandles [2]*** do konta *LinuxAccount*
 
 ## <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
-W tym kroku tworzone są dwie zasady replikacji. Jedne zasady, aby replikować maszyny wirtualne VMware do platformy Azure, a druga do replikowania przełączone w tryb failover maszyn wirtualnych działających na platformie Azure z powrotem do lokacji programu VMware w środowisku lokalnym.
+W tym kroku zostaną utworzone dwie zasady replikacji. Jedną z zasad w celu replikowania maszyn wirtualnych VMware na platformę Azure, a druga — w przypadku maszyn wirtualnych uruchomionych na platformie Azure z powrotem do lokalnej lokacji programu VMware.
 
 > [!NOTE]
-> Większość operacji usługi Azure Site Recovery są wykonywane asynchronicznie. Po zainicjowaniu operacji przesyłania zadania usługi Azure Site Recovery i zwracany jest zadaniem śledzenia obiektu. To zadanie obiektowi śledzenia może służyć do monitorowania stanu operacji.
+> Większość Azure Site Recovery operacji jest wykonywanych asynchronicznie. Po zainicjowaniu operacji zostanie przesłane zadanie Azure Site Recovery i zostanie zwrócony obiekt śledzenia zadań. Ten obiekt śledzenia zadań może służyć do monitorowania stanu operacji.
 
-1. Tworzenie zasad replikacji o nazwie *ReplicationPolicy* na maszyny wirtualne VMware można replikować na platformę Azure przy użyciu określonej właściwości.
+1. Utwórz zasady replikacji o nazwie *ReplicationPolicy* , aby replikować maszyny wirtualne VMware na platformę Azure przy użyciu określonych właściwości.
 
    ```azurepowershell
    $Job_PolicyCreate = New-AzRecoveryServicesAsrPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
@@ -232,15 +232,15 @@ W tym kroku tworzone są dwie zasady replikacji. Jedne zasady, aby replikować m
    Errors           : {}
    ```
 
-2. Tworzenie zasad replikacji na potrzeby powrotu po awarii z platformy Azure do lokacji programu VMware w środowisku lokalnym.
+2. Utwórz zasady replikacji, które mają być używane na potrzeby powrotu po awarii z platformy Azure do lokalnej lokacji programu VMware.
 
    ```azurepowershell
    $Job_FailbackPolicyCreate = New-AzRecoveryServicesAsrPolicy -AzureToVMware -Name "ReplicationPolicy-Failback" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
    ```
 
-   Szczegóły zadania w *$Job_FailbackPolicyCreate* do śledzenia zakończenia operacji.
+   Aby śledzić operację do ukończenia, użyj szczegółów zadania w *_FailbackPolicyCreate $Job* .
 
-   * Utwórz mapowanie kontenera ochrony, aby zamapować zasady replikacji z serwerem konfiguracji.
+   * Utwórz mapowanie kontenera ochrony, aby mapować zasady replikacji z serwerem konfiguracji.
 
    ```azurepowershell
    #Get the protection container corresponding to the Configuration Server
@@ -279,7 +279,7 @@ W tym kroku tworzone są dwie zasady replikacji. Jedne zasady, aby replikować m
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>Dodawanie serwera vCenter i odnajdywanie maszyn wirtualnych
 
-Dodaj serwer vCenter za pomocą adresu IP lub nazwy hosta. **— Port** parametr określa port, na serwerze vCenter, aby nawiązać połączenie, **— nazwa** parametr określa przyjazną nazwę dla serwera vCenter i **— konta** parametr określa uchwyt konta na serwerze konfiguracji, można użyć do odnalezienia maszyn wirtualnych zarządzanych przez serwer vCenter.
+Dodaj vCenter Server według adresu IP lub nazwy hosta. Parametr **-port** określa port serwera vCenter, z którym ma zostać nawiązane połączenie, parametr **-name** określa przyjazną nazwę, która ma być używana dla serwera vCenter, a parametr **-Account** określa uchwyt konta na serwerze konfiguracji, który będzie używany do odnajdywania maszyn wirtualnych zarządzanych przez serwer vCenter.
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -314,14 +314,14 @@ Tasks            : {Adding vCenter server}
 Errors           : {}
 ```
 
-## <a name="create-storage-accounts-for-replication"></a>Tworzenie konta usługi storage dla replikacji
+## <a name="create-storage-accounts-for-replication"></a>Tworzenie kont magazynu na potrzeby replikacji
 
-**Do zapisu do dysków zarządzanych, należy użyć [modułu programu Powershell Az.RecoveryServices 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) lub nowszy.** Wymaga on tylko tworzenie konta magazynu dziennika. Zalecane jest używanie konta standardowego typu i nadmiarowości magazynu LRS, ponieważ jest on używany do przechowywania tylko tymczasowe dzienników. Upewnij się, że utworzeniu konta magazynu, w tym samym regionie platformy Azure co magazyn.
+**Aby zapisać na dysku zarządzanym, użyj polecenia [AZ. RecoveryServices module 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) lub nowszego.** Wymagane jest tylko utworzenie konta magazynu dzienników. Zaleca się użycie standardowego typu konta i nadmiarowości LRS, ponieważ jest on używany do przechowywania tylko dzienników tymczasowych. Upewnij się, że konto magazynu jest tworzone w tym samym regionie świadczenia usługi Azure co magazyn.
 
-Jeśli używasz wersji modułu Az.RecoveryServices starsze niż 2.0.0 umożliwia utworzenie konta usługi storage następujące kroki. Te konta magazynu są używane później do replikowania maszyn wirtualnych. Upewnij się, że konta magazynu są tworzone w tym samym regionie platformy Azure co magazyn. Możesz pominąć ten krok, jeśli planujesz użyć istniejącego konta magazynu na potrzeby replikacji.
+Jeśli używasz wersji programu AZ. RecoveryServices module starszej niż 2.0.0, wykonaj następujące kroki, aby utworzyć konta magazynu. Te konta magazynu są używane później do replikowania maszyn wirtualnych. Upewnij się, że konta magazynu są tworzone w tym samym regionie świadczenia usługi Azure co magazyn. Możesz pominąć ten krok, jeśli planujesz użyć istniejącego konta magazynu na potrzeby replikacji.
 
 > [!NOTE]
-> Podczas replikowania lokalnych maszyn wirtualnych do konta magazynu premium storage, należy określić dodatkowy magazyn standardowy konto (konto magazynu dzienników). Konto magazynu dzienników przechowuje jako pośredni magazyn dzienników replikacji, dopóki Dzienniki mogą być stosowane w elemencie docelowym magazynu premium.
+> Podczas replikowania lokalnych maszyn wirtualnych do konta magazynu w warstwie Premium należy określić dodatkowe konto magazynu w warstwie Standardowa (konto magazynu dzienników). Konto magazynu dzienników przechowuje dzienniki replikacji jako magazyn pośredni do momentu zastosowania dzienników w docelowym magazynie Premium Storage.
 >
 
 ```azurepowershell
@@ -333,29 +333,29 @@ $LogStorageAccount = New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs"
 $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "replicationstdstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
 ```
 
-## <a name="replicate-vmware-vms"></a>Replikacja maszyn wirtualnych VMware
+## <a name="replicate-vmware-vms"></a>Replikowanie maszyn wirtualnych VMware
 
-Trwa około 15 – 20 minut dla maszyn wirtualnych, które mają zostać odnalezione z serwera vCenter. Po odnalezieniu obiekt elementu z możliwością objęcia ochroną jest tworzony w usłudze Azure Site Recovery dla każdej odnalezionej maszyny wirtualnej. W tym kroku trzech spośród odnalezionych maszyn wirtualnych są replikowane do kont usługi Azure Storage utworzonej w poprzednim kroku.
+Wykrycie maszyn wirtualnych z serwera vCenter trwa około 15-20 minut. Po wykryciu, w Azure Site Recovery dla każdej wykrytej maszyny wirtualnej jest tworzony obiekt elementu z ochroną. W tym kroku zostaną zreplikowane trzy wykryte maszyny wirtualne do kont usługi Azure Storage utworzonych w poprzednim kroku.
 
-Potrzebne są następujące szczegóły, aby chronić odnalezione maszyny wirtualnej:
+Aby chronić odnalezioną maszynę wirtualną, potrzebne są następujące szczegóły:
 
-* Element z możliwością ochrony powinny być replikowane.
-* Konto magazynu do replikowania maszyny wirtualnej (tylko wtedy, gdy jest replikowana do konta magazynu). 
-* Przechowywanie dziennika jest potrzebny do ochrony maszyn wirtualnych do konta magazynu premium storage lub dysku zarządzanego.
-* Serwer przetwarzania, który ma być używany do replikacji. Na liście serwerów dostępnych proces został pobierane i zapisywane w ***$ProcessServers [0]***  *(skalowania ProcessServer)* i ***$ProcessServers [1]*** *(ConfigurationServer)* zmiennych.
-* Konto na potrzeby instalacji wypychanej oprogramowania usługi mobilności na maszynach. Lista dostępnych kont została pobrane i przechowywane w ***$AccountHandles*** zmiennej.
-* Mapowanie kontenera ochrony grupy replikacji ma być używany do replikacji.
-* Grupa zasobów, w którym należy utworzyć maszyny wirtualne w trybie failover.
-* Opcjonalnie sieć wirtualną platformy Azure i podsieć, z którą nieudane przez maszynę wirtualną powinien być połączony.
+* Element objęty ochroną do replikacji.
+* Konto magazynu, do którego należy replikować maszynę wirtualną (tylko w przypadku replikowania do konta magazynu). 
+* Magazyn dzienników jest wymagany do ochrony maszyn wirtualnych na koncie magazynu w warstwie Premium lub na dysku zarządzanym.
+* Serwer przetwarzania, który ma być używany na potrzeby replikacji. Na liście serwerów dostępnych proces został pobierane i zapisywane w ***$ProcessServers [0]***  *(skalowania ProcessServer)* i ***$ProcessServers [1]*** *(ConfigurationServer)* zmiennych.
+* Konto używane do wypychania instalacji oprogramowania usługi mobilności na maszynach. Lista dostępnych kont została pobrana i zapisana w zmiennej ***$AccountHandles*** .
+* Mapowanie kontenera ochrony dla zasad replikacji, które ma być używane na potrzeby replikacji.
+* Grupa zasobów, w której maszyny wirtualne muszą zostać utworzone w trybie failover.
+* Opcjonalnie Sieć wirtualna platformy Azure i podsieć, do której powinna być połączona maszyna wirtualna w trybie failover.
 
-Replikuj teraz następujące maszyny wirtualne przy użyciu ustawień określonych w tej tabeli
+Teraz Replikuj następujące maszyny wirtualne przy użyciu ustawień określonych w tej tabeli
 
 
-|Maszyna wirtualna  |Serwer przetwarzania        |Konto magazynu              |Konto magazynu dzienników  |Zasady           |Konto instalacji usługi Mobility|Docelowa grupa zasobów  | Docelowa sieć wirtualna  |Podsieć docelowa  |
+|Maszyna wirtualna  |Serwer przetwarzania        |Konto magazynu              |Konto magazynu dzienników  |Zasady           |Konto do instalacji usługi mobilności|Docelowa Grupa zasobów  | Docelowa sieć wirtualna  |Podsieć docelowa  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |ND| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
+|CentOSVM1       |ConfigurationServer   |Nie dotyczy| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| ND                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Nie dotyczy                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
 ```azurepowershell
@@ -390,7 +390,7 @@ $Job_EnableReplication3 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 
 ```
 
-Po pomyślnym ukończeniu działania Zadanie włączania replikacji, Replikacja początkowa została uruchomiona dla maszyn wirtualnych. Początkowa replikacja może zająć trochę czasu w zależności od ilości danych do replikacji oraz przepustowość dostępną dla replikacji. Po zakończeniu replikacji początkowej, maszyna wirtualna zostanie przeniesiona do stanu chronionego. Gdy maszyna wirtualna osiągnie stanu chronionego, które można wykonać test trybu failover dla maszyny wirtualnej, należy go dodać do planów odzyskiwania itp.
+Po pomyślnym zakończeniu zadania włączania replikacji początkowa replikacja jest uruchamiana dla maszyn wirtualnych. Replikacja początkowa może zająć trochę czasu w zależności od ilości danych, które mają być replikowane, oraz przepustowości dostępnej na potrzeby replikacji. Po zakończeniu replikacji początkowej maszyna wirtualna przechodzi do stanu chronionego. Gdy maszyna wirtualna osiągnie stan chroniony, można wykonać test pracy w trybie failover dla maszyny wirtualnej, dodać go do planów odzyskiwania itp.
 
 Można sprawdzić stan replikacji i kondycję replikacji maszyny wirtualnej za pomocą polecenia cmdlet Get-ASRReplicationProtectedItem.
 
@@ -407,15 +407,15 @@ Win2K12VM1   Protected                       Normal
 
 ## <a name="configure-failover-settings"></a>Konfigurowanie ustawień trybu failover
 
-Ustawienia trybu failover dla chronionych maszyn może zostać zaktualizowana przy użyciu polecenia cmdlet Set-ASRReplicationProtectedItem. Niektóre ustawienia, które mogą być aktualizowane za pomocą tego polecenia cmdlet są:
-* Nazwa maszyny wirtualnej, która ma zostać utworzony w trybie failover
-* Rozmiar maszyny wirtualnej, która ma zostać utworzony w trybie failover maszyny Wirtualnej
-* Sieć wirtualna platformy Azure i podsieć, która powinna być połączona kart sieciowych maszyny wirtualnej w trybie failover
-* Tryb failover do usługi managed disks
+Ustawienia trybu failover dla chronionych maszyn można aktualizować za pomocą polecenia cmdlet Set-ASRReplicationProtectedItem. Niektóre z ustawień, które można zaktualizować za pomocą tego polecenia cmdlet, to:
+* Nazwa maszyny wirtualnej, która ma zostać utworzona w trybie failover
+* Rozmiar maszyny wirtualnej, która ma zostać utworzona w trybie failover
+* Sieć wirtualna platformy Azure i podsieć, z którą powinny być połączone karty sieciowe maszyny wirtualnej w trybie failover
+* Przełączenie w tryb failover do dysków zarządzanych
 * Zastosuj korzyść użycia hybrydowego platformy Azure
-* Przypisz statyczny adres IP z docelowa sieć wirtualna ma być przypisane do maszyny wirtualnej w trybie failover.
+* Przypisz statyczny adres IP z docelowej sieci wirtualnej, która ma zostać przypisana do maszyny wirtualnej w trybie failover.
 
-W tym przykładzie firma Microsoft aktualizuje rozmiar maszyny Wirtualnej maszyny wirtualnej, która ma zostać utworzony w trybie failover dla maszyny wirtualnej *Win2K12VM1* i określić, że użycie maszyny wirtualnej zarządzane dyski w tryb failover.
+W tym przykładzie aktualizujemy rozmiar maszyny wirtualnej w celu utworzenia w trybie failover dla maszyny wirtualnej *Win2K12VM1* i określ, że maszyna wirtualna będzie używać dysków zarządzanych w trybie failover.
 
 ```azurepowershell
 $ReplicatedVM1 = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "Win2K12VM1" -ProtectionContainer $ProtectionContainer
@@ -444,7 +444,7 @@ Errors           : {}
 
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
 
-1. Uruchamianie próbnego odzyskiwania po awarii (test trybu failover) w następujący sposób:
+1. Uruchom przechodzenie do trybu failover w następujący sposób:
 
    ```azurepowershell
    #Test failover of Win2K12VM1 to the test virtual network "V2TestNetwork"
@@ -455,19 +455,19 @@ Errors           : {}
    #Start the test failover operation
    $TFOJob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
    ```
-2. Po zadania testowego trybu failover zakończy się pomyślnie, można zauważyć, że maszyna wirtualna sufiks *"-Test"* (w tym przypadku Win2K12VM1-Test) do jego nazwa jest tworzony na platformie Azure.
-3. Można teraz nawiązać połączenia testowego w trybie Failover maszyny wirtualnej i sprawdź poprawność testowy tryb failover.
-4. Wyczyść test pracy awaryjnej, za pomocą polecenia cmdlet Start-ASRTestFailoverCleanupJob. Ta operacja usuwa maszynę wirtualną utworzoną w ramach operacji trybu failover testu.
+2. Po pomyślnym ukończeniu zadania testowego przejścia w tryb failover można zauważyć, że maszyna wirtualna z sufiksem *"-test"* (Win2K12VM1-test w tym przypadku) została utworzona na platformie Azure.
+3. Teraz można nawiązać połączenie z testem zakończonym niepowodzeniem za pomocą maszyny wirtualnej i zweryfikować test pracy w trybie failover.
+4. Oczyść test pracy w trybie failover przy użyciu polecenia cmdlet Start-ASRTestFailoverCleanupJob. Ta operacja usuwa maszynę wirtualną utworzoną w ramach operacji testowej pracy w trybie failover.
 
    ```azurepowershell
    $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicatedVM1
    ```
 
-## <a name="fail-over-to-azure"></a>Failover na platformie Azure
+## <a name="fail-over-to-azure"></a>Przechodzenie w tryb failover na platformie Azure
 
-W tym kroku, możemy przełączyć w tryb failover maszyny wirtualnej Win2K12VM1 określony punkt odzyskiwania.
+W tym kroku przejdziemy do trybu failover maszyny wirtualnej Win2K12VM1 do określonego punktu odzyskiwania.
 
-1. Pobierz listę dostępnych punktów odzyskiwania na potrzeby pracy w trybie failover:
+1. Pobierz listę dostępnych punktów odzyskiwania do użycia w trybie failover:
    ```azurepowershell
    # Get the list of available recovery points for Win2K12VM1
    $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicatedVM1
@@ -490,7 +490,7 @@ W tym kroku, możemy przełączyć w tryb failover maszyny wirtualnej Win2K12VM1
    Succeeded
    ```
 
-2. Po przełączone w tryb failover pomyślnie, należy można Zatwierdź operację trybu failover i skonfiguruj replikacja odwrotna z platformy Azure z powrotem do lokacji programu VMware w środowisku lokalnym.
+2. Po pomyślnym przełączeniu w tryb failover możesz zatwierdzić operację pracy awaryjnej i skonfigurować replikację odwrotną z platformy Azure z powrotem do lokalnej lokacji programu VMware.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak zautomatyzować większej liczby zadań przy użyciu [dokumentacja programu PowerShell odzyskiwania witryn Azure](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się, jak zautomatyzować więcej zadań przy użyciu programu [Azure Site Recovery PowerShell](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).

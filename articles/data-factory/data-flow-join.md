@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675912"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961837"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Przekształcenie łączenia w przepływie danych mapowania
 
@@ -36,7 +36,7 @@ Prawe sprzężenie zewnętrzne zwraca wszystkie wiersze z odpowiedniego strumien
 
 ### <a name="full-outer"></a>Pełny zewnętrzny
 
-Pełne sprzężenie zewnętrzne wyprowadza wszystkie kolumny i wiersze z obu stron z wartościami NULL dla kolumn, które nie pasują do siebie.
+Pełne sprzężenie zewnętrzne wyprowadza wszystkie kolumny i wiersze z obu stron z wartościami NULL dla kolumn, które nie pasują.
 
 ### <a name="cross-join"></a>Sprzężenie krzyżowe
 

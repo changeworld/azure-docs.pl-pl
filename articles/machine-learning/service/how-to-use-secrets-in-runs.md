@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e2074cec65ea4c1df803999c6a995f73ea4227ee
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f4420824192ff3fd967cb6676cbe1de81ce7ad4c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796687"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953915"
 ---
 # <a name="use-secrets-in-training-runs"></a>Korzystanie z wpisów tajnych w przebiegach szkoleniowych
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Podstawowym przepływem korzystania z kluczy tajnych jest:
  1. Na komputerze lokalnym Zaloguj się do platformy Azure i Połącz się z obszarem roboczym.
  2. Na komputerze lokalnym Ustaw klucz tajny w obszarze roboczym Key Vault.
  3. Prześlij zdalne uruchomienie.
- 4. W ramach uruchomienia zdalnego Pobierz klucz tajny z wartości klucza i użyj go.
+ 4. W ramach przebiegu zdalnego Pobierz klucz tajny z wartości klucza i użyj go.
 
 ## <a name="set-secrets"></a>Ustaw wpisy tajne
 
@@ -47,13 +47,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 Nie należy umieszczać wartości tajnych w kodzie języka Python, ponieważ jest ona niezabezpieczona, aby można było ją zapisać w pliku jako zwykły tekst. Zamiast tego należy uzyskać wartość klucza tajnego ze zmiennej środowiskowej, na przykład Azure DevOps Build Secret lub z interakcyjnych danych wejściowych użytkownika.
 
-Można wyświetlić listę wpisów tajnych za pomocą metody [list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) . Metoda __set_secret__ aktualizuje wartość klucza tajnego, jeśli nazwa już istnieje.
+Nazwy wpisów tajnych można wyświetlić za pomocą metody [list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) . Metoda __set_secret__ aktualizuje wartość klucza tajnego, jeśli nazwa już istnieje.
 
 ## <a name="get-secrets"></a>Pobierz wpisy tajne
 
-W kodzie lokalnym można użyć [magazynu kluczy. Pobierz metodę _secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) , aby uzyskać wartość klucza tajnego według nazwy.
+W kodzie lokalnym można użyć metody[magazynu kluczy. get_secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) , aby uzyskać wartość klucza tajnego według nazwy.
 
-W przebiegach przesłano za pomocą [eksperymentu. Prześlij](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-), użyj metody [Run. Get _secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) . Ze względu na to, że przesłany przebieg ma świadomość swojego obszaru roboczego, ta metoda skrótów tworzy Tworzenie wystąpienia obszaru roboczego i zwraca wartość tajną bezpośrednio.
+W obszarze uruchomienia przesłane przy użyciu [eksperymentu. Prześlij](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-)Użyj metody [Run. get_secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) . Ze względu na to, że przesłany przebieg ma świadomość swojego obszaru roboczego, ta metoda skrótów tworzy Tworzenie wystąpienia obszaru roboczego i zwraca wartość tajną bezpośrednio.
 
 ```python
 # Code in submitted run
@@ -65,7 +65,7 @@ secret_value = run.get_secret(name="mysecret")
 
 Należy zachować ostrożność, aby nie ujawniać wartości klucza tajnego przez zapisanie lub wydrukowanie.
 
-Metody Set i Get mają również wersje usługi Batch [set_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) i [get_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secrets-secrets-) umożliwiające dostęp do wielu wpisów tajnych jednocześnie.
+Metody Set i Get mają również wersje usługi Batch [set_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) i [get_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secrets-secrets-) do uzyskiwania dostępu do wielu wpisów tajnych jednocześnie.
 
 ## <a name="next-steps"></a>Następne kroki
 

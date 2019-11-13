@@ -1,71 +1,72 @@
 ---
-title: Zarządzanie interfejsami sieciowymi w usłudze Azure Site Recovery dla lokalnego odzyskiwania po awarii na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób zarządzania interfejsów sieciowych dla środowiska lokalnego odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery
+title: Zarządzanie kartami sieciowymi lokalnego odzyskiwania po awarii przy użyciu Azure Site Recovery
+description: Opisuje sposób zarządzania interfejsami sieciowymi na potrzeby lokalnego odzyskiwania po awarii na platformie Azure przy użyciu Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471778"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954604"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Zarządzanie interfejsami sieciowymi maszyn wirtualnych do środowiska lokalnego odzyskiwania po awarii na platformie Azure
-Maszynę wirtualną (VM) na platformie Azure musi mieć co najmniej jeden interfejs sieciowy dołączony do niego. Może mieć wiele sieci interfejsów dołączone do niego jako obsługuje rozmiar maszyny Wirtualnej.
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Zarządzanie interfejsami sieciowymi maszyn wirtualnych na potrzeby lokalnego odzyskiwania po awarii na platformie Azure
 
-Domyślnie pierwszy interfejs sieciowy dołączony do maszyny wirtualnej platformy Azure jest zdefiniowany jako podstawowy interfejs sieciowy. Wszystkie inne interfejsy sieciowe w maszynie wirtualnej są dodatkowych interfejsów sieciowych. Również domyślnie cały ruch wychodzący z maszyny wirtualnej jest wysyłane adres IP, który jest przypisany do podstawowa konfiguracja adresów IP głównego interfejsu sieciowego.
+Maszyna wirtualna na platformie Azure musi mieć dołączony co najmniej jeden interfejs sieciowy. Może mieć dołączoną liczbę interfejsów sieciowych, ponieważ rozmiar maszyny wirtualnej obsługuje.
 
-W środowisku lokalnych maszyn wirtualnych lub serwerach może mieć wiele interfejsów sieciowych do różnych sieci w środowisku. Różnych sieci są zwykle używane do wykonywania określonych operacji, takich jak uaktualnienia, konserwacją i dostępem do Internetu. Podczas migracji lub przejść w tryb failover na platformie Azure ze środowiska lokalnego, należy pamiętać o tym, że interfejsy sieciowe w tej samej maszyny wirtualnej musi połączone z tej samej sieci wirtualnej.
+Domyślnie pierwszy interfejs sieciowy dołączony do maszyny wirtualnej platformy Azure jest zdefiniowany jako podstawowy interfejs sieciowy. Wszystkie inne interfejsy sieciowe w maszynie wirtualnej są dodatkowymi interfejsami sieciowymi. Domyślnie cały ruch wychodzący z maszyny wirtualnej jest wysyłany przy użyciu adresu IP przypisanego do podstawowej konfiguracji adresu IP podstawowego interfejsu sieciowego.
 
-Domyślnie usługa Azure Site Recovery tworzy wiele sieci interfejsy na maszynie wirtualnej platformy Azure, jak są połączone z lokalnym serwerem. Można uniknąć, tworząc interfejsy sieciowe nadmiarowe podczas migracji lub pracy awaryjnej, edytując ustawienia interfejsu sieciowego, w obszarze Ustawienia dla zreplikowanej maszyny wirtualnej.
+W środowisku lokalnym maszyny wirtualne lub serwery mogą mieć wiele interfejsów sieciowych dla różnych sieci w środowisku. Różne sieci są zwykle używane do wykonywania określonych operacji, takich jak uaktualnienia, konserwacja i dostęp do Internetu. W przypadku migrowania lub przejścia w tryb failover na platformę Azure z środowiska lokalnego należy pamiętać, że interfejsy sieciowe na tej samej maszynie wirtualnej muszą być połączone z tą samą siecią wirtualną.
 
-## <a name="select-the-target-network"></a>Wybierz sieć docelowa
+Domyślnie Azure Site Recovery tworzy jako wiele interfejsów sieciowych na maszynie wirtualnej platformy Azure, które są podłączone do serwera lokalnego. Można uniknąć tworzenia nadmiarowych interfejsów sieciowych podczas migracji lub przejścia w tryb failover, edytując ustawienia interfejsu sieciowego w ustawieniach dla zreplikowanej maszyny wirtualnej.
 
-Dla programu VMware i maszyn fizycznych i maszyn wirtualnych funkcji Hyper-V (bez System Center Virtual Machine Manager) można określić docelowa sieć wirtualna dla poszczególnych maszyn wirtualnych. W przypadku maszyn wirtualnych funkcji Hyper-V zarządzanych za pomocą programu Virtual Machine Manager, użyj [mapowania sieci](site-recovery-network-mapping.md) do mapowania sieci maszyn wirtualnych na serwerze źródłowym programu Virtual Machine Manager i docelowymi sieciami platformy Azure.
+## <a name="select-the-target-network"></a>Wybierz sieć docelową
 
-1. W obszarze **zreplikowane elementy** w magazynie usługi Recovery Services, wybierz dowolny replikowanych element, aby uzyskać dostęp do ustawień dla tego replikowanego elementu.
+W przypadku maszyn wirtualnych VMware i fizycznych oraz dla funkcji Hyper-V (bez System Center Virtual Machine Manager) można określić docelową sieć wirtualną dla poszczególnych maszyn wirtualnych. W przypadku maszyn wirtualnych funkcji Hyper-V zarządzanych przy użyciu Virtual Machine Manager należy użyć [mapowania sieci](site-recovery-network-mapping.md) do mapowania sieci maszyn wirtualnych na źródłowym serwerze Virtual Machine Manager i docelowych sieci platformy Azure.
 
-2. Wybierz **obliczenia i sieć** kartę, aby uzyskać dostęp do ustawień sieci dla replikowanego elementu.
+1. W obszarze **zreplikowane elementy** w magazynie Recovery Services wybierz dowolny replikowany element, aby uzyskać dostęp do ustawień dla tego zreplikowanego elementu.
 
-3. W obszarze **właściwości sieci**, wybierz sieć wirtualną z listy dostępnych interfejsów sieciowych.
+2. Wybierz kartę **obliczenia i sieć** , aby uzyskać dostęp do ustawień sieci dla zreplikowanego elementu.
+
+3. W obszarze **właściwości sieci**wybierz sieć wirtualną z listy dostępnych interfejsów sieciowych.
 
     ![Ustawienia sieci](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 
-Modyfikowanie Sieć docelowa ma wpływ na wszystkie interfejsy sieciowe dla tej konkretnej maszyny wirtualnej.
+Modyfikacja sieci docelowej ma wpływ na wszystkie interfejsy sieciowe dla tej konkretnej maszyny wirtualnej.
 
-Dla chmur programu Virtual Machine Manager modyfikując mapowanie sieci ma wpływ na wszystkie maszyny wirtualne oraz ich interfejsów sieciowych.
+W przypadku chmur Virtual Machine Manager modyfikowanie mapowania sieci ma wpływ na wszystkie maszyny wirtualne i ich interfejsy sieciowe.
 
-## <a name="select-the-target-interface-type"></a>Wybierz docelowy typ interfejsu
+## <a name="select-the-target-interface-type"></a>Wybierz typ interfejsu docelowego
 
-W obszarze **interfejsy sieciowe** części **obliczenia i sieć** okienku można wyświetlać i edytować ustawienia interfejsu sieciowego. Można również określić docelowy typ interfejsu sieciowego.
+W sekcji **interfejsy sieciowe** okienka **obliczenia i sieć** można wyświetlać i edytować ustawienia interfejsu sieciowego. Możesz również określić docelowy typ interfejsu sieciowego.
 
-- A **głównej** interfejs sieciowy jest wymagany dla trybu failover.
-- Interfejsy innej wybranej sieci, jeśli dowolny, **dodatkowej** interfejsy sieciowe.
-- Wybierz **nie należy używać** do wykluczenia z interfejsem sieciowym z tworzenia w trybie failover.
+- **Podstawowy** interfejs sieciowy jest wymagany do przejścia w tryb failover.
+- Wszystkie inne wybrane interfejsy sieciowe (jeśli istnieją) są **dodatkowymi** interfejsami sieciowymi.
+- Wybierz pozycję nie **Używaj** , aby wykluczyć interfejs sieciowy z tworzenia w trybie failover.
 
-Domyślnie gdy w przypadku włączenia replikacji, Site Recovery wybiera wszystkie interfejsy sieciowe wykryte na lokalnym serwerze. Oznacza jedną jako **podstawowego** i wszystkie inne jako **dodatkowej**. Żadnych kolejnych interfejsów, które dodano na serwer w środowisku lokalnym są oznaczone **nie należy używać** domyślnie. Podczas dodawania większej liczby interfejsów sieciowych, upewnij się, że wybrano rozmiar docelowej poprawne maszyny wirtualnej platformy Azure, aby pomieścić wszystkie interfejsy sieciowe wymagane.
+Domyślnie podczas włączania replikacji Site Recovery wybiera wszystkie wykryte interfejsy sieciowe na serwerze lokalnym. Oznacza jedną jako **podstawową** i wszystkie inne jako **pomocnicze**. Wszystkie kolejne interfejsy dodane na serwerze lokalnym są oznaczane jako **nieużywane** domyślnie. Gdy dodajesz więcej interfejsów sieciowych, upewnij się, że wybrany jest prawidłowy rozmiar docelowy maszyny wirtualnej platformy Azure, aby uwzględnić wszystkie wymagane interfejsy sieciowe.
 
-## <a name="modify-network-interface-settings"></a>Zmodyfikuj ustawienia interfejsu sieciowego
+## <a name="modify-network-interface-settings"></a>Modyfikowanie ustawień interfejsu sieciowego
 
-Można zmodyfikować podsieci i adresu IP dla interfejsów sieciowych replikowanego elementu. Jeśli nie określono adresu IP, Usługa Site Recovery przypisze następnym dostępnym adresem IP z podsieci interfejsu sieciowego w trybie failover.
+Można zmodyfikować podsieć i adres IP dla interfejsów sieciowych zreplikowanego elementu. Jeśli nie określono adresu IP, Site Recovery przypisze następnego dostępnego adresu IP z podsieci do interfejsu sieciowego w trybie failover.
 
-1. Zaznacz każdy interfejs sieciowy dostępne, aby otworzyć ustawienia interfejsu sieciowego.
+1. Wybierz dowolny dostępny interfejs sieciowy, aby otworzyć ustawienia interfejsu sieciowego.
 
-2. Wybierz odpowiednią podsieć z listy dostępnych podsieci.
+2. Wybierz żądaną podsieć z listy dostępnych podsieci.
 
-3. Wprowadź żądane adres IP (w zależności od potrzeb).
+3. Wprowadź żądany adres IP (zgodnie z potrzebami).
 
     ![Ustawienia interfejsu sieciowego](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
 
-4. Wybierz **OK** Zakończ edycję, a następnie wróć do **obliczenia i sieć** okienka.
+4. Wybierz **przycisk OK** , aby zakończyć edycję i wrócić do okienka **obliczenia i sieć** .
 
-5. Powtórz kroki 1 – 4 dla innych interfejsów sieciowych.
+5. Powtórz kroki 1-4 dla innych interfejsów sieciowych.
 
-6. Wybierz **Zapisz** Aby zapisać wszystkie zmiany.
+6. Wybierz pozycję **Zapisz** , aby zapisać wszystkie zmiany.
 
-## <a name="next-steps"></a>Kolejne kroki
-  [Dowiedz się więcej](../virtual-network/virtual-network-network-interface-vm.md) o interfejsach sieciowych maszyn wirtualnych platformy Azure.
+## <a name="next-steps"></a>Następne kroki
+  [Dowiedz się więcej](../virtual-network/virtual-network-network-interface-vm.md) o interfejsach sieciowych dla maszyn wirtualnych platformy Azure.

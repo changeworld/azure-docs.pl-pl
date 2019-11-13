@@ -1,19 +1,18 @@
 ---
-title: Przenieś maszyny wirtualne IaaS platformy Azure między Azure Government a publicznymi regionami przy użyciu usługi Azure Site Recovery | Microsoft Docs
-description: Użyj Azure Site Recovery, aby przenieść maszyny wirtualne IaaS platformy Azure między Azure Government & regiony publiczne.
-services: site-recovery
+title: Przenoszenie maszyn wirtualnych platformy Azure między regionami rządowymi i publicznymi przy użyciu Azure Site Recovery
+description: Użyj Azure Site Recovery, aby przenieść maszyny wirtualne platformy Azure między rządem i regionami publicznymi platformy Azure.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376120"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961413"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Przenoszenie maszyn wirtualnych platformy Azure między Azure Government i regionami publicznymi 
 
@@ -79,8 +78,8 @@ Skonfiguruj [konto usługi Azure Storage](../storage/common/storage-quickstart-c
 Na każdym serwerze, który ma zostać zreplikowany, musi być zainstalowana usługa mobilności. Site Recovery automatycznie instaluje tę usługę po włączeniu replikacji dla serwera. Aby automatycznie zainstalować program, należy przygotować konto, które będzie używane przez Site Recovery do uzyskiwania dostępu do serwera.
 
 - Możesz użyć domeny lub konta lokalnego
-- W przypadku maszyn wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym. W tym celu w rejestrze w obszarze **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**Dodaj wpis DWORD **LocalAccountTokenFilterPolicy**o wartości 1.
-- Aby dodać wpis rejestru w celu wyłączenia ustawienia z interfejsu wiersza polecenia, wpisz:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- W przypadku maszyn wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym. W tym celu w rejestrze w obszarze **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**Dodaj wpis DWORD **LocalAccountTokenFilterPolicy**o wartości 1.
+- Aby dodać wpis rejestru w celu wyłączenia ustawienia z interfejsu wiersza polecenia, wpisz: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - W przypadku systemu Linux konto powinno być kontem głównym na źródłowym serwerze z systemem Linux.
 
 
@@ -115,15 +114,15 @@ Poniżej przedstawiono procedurę kopiowania danych do regionu docelowego przy u
 3. W polu **Nazwa** podaj przyjazną nazwę **ContosoVMVault**. Jeśli masz więcej niż jedną subskrypcję, wybierz odpowiednią z nich.
 4. Utwórz grupę zasobów **ContosoRG**.
 5. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. W obszarze magazyny Recovery Services kliknij pozycję **Przegląd** > **ConsotoVMVault** >  **+ replikacja**
-7.  > Wybierz **platformę Azure, która** **nie jest Zwirtualizowana/inna**.
+6. W obszarze magazyny Recovery Services kliknij pozycję **przegląd** > **ConsotoVMVault** >  **+ replikacja**
+7. wybierz kolejno pozycje **Na platformę Azure** > **Niezwirtualizowane/inne**.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Skonfiguruj serwer konfiguracji w celu odnajdywania maszyn wirtualnych.
 
 
 Skonfiguruj serwer konfiguracji, zarejestruj go w magazynie i odnajdź maszyny wirtualne.
 
-1. Kliknij pozycję **Site Recovery** > **Przygotuj** > **Źródło**infrastruktury.
+1. Kliknij **Site Recovery** > **przygotuj infrastrukturę** > **Źródło**.
 2. Jeśli nie masz serwera konfiguracji, kliknij przycisk **+ serwer konfiguracji**.
 3. W obszarze **Dodawanie serwera**Sprawdź, czy **serwer konfiguracji** jest wyświetlany w polu **Typ serwera**.
 4. Pobierz plik instalacyjny programu Site Recovery Unified Setup.
@@ -154,7 +153,7 @@ Uruchom ujednoliconą konfigurację jako administrator lokalny, aby zainstalowa�
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Po zakończeniu rejestracji serwer konfiguracji zostanie wyświetlony na stronie **Ustawienia** > **serwery** w magazynie.
+Po zakończeniu rejestracji serwer konfiguracji zostanie wyświetlony na stronie **ustawienia** > **serwery** w magazynie.
 
 ### <a name="configure-target-settings-for-replication"></a>Skonfiguruj ustawienia docelowe dla replikacji
 
@@ -164,7 +163,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 2. Określ docelowy model wdrażania.
 3. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure.
 
-   ![Cel](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Środowisko docelowe](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
@@ -198,12 +197,12 @@ Zasady zostaną automatycznie skojarzone z serwerem konfiguracji. Domyślnie są
    > [!WARNING]
    > Należy wprowadzić adres IP maszyny wirtualnej platformy Azure, która ma zostać przeniesiona
 
-10. W obszarze **Właściwości** > **Konfigurowanie właściwości**wybierz konto, które będzie używane przez serwer przetwarzania w celu automatycznego zainstalowania usługi mobilności na maszynie.
+10. W oknie **właściwości** > **Konfiguruj właściwości**, wybierz konto, które będzie używane przez serwer przetwarzania w celu automatycznego zainstalowania usługi mobilności na komputerze.
 11. W obszarze **Ustawienia replikacji** > **Konfigurowanie ustawień replikacji** sprawdź, czy wybrano właściwe zasady replikacji. 
 12. Kliknij pozycję **Włącz replikację**. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 
 
-Aby monitorować dodawane serwery, można sprawdzić czas ostatniego wykrycia dla nich w obszarze **serwery** > konfiguracji**ostatni kontakt na stronie**. Aby dodać maszyny bez oczekiwania na zaplanowaną godzinę odnajdywania, wyróżnij serwer konfiguracji (nie klikaj go), a następnie kliknij przycisk **Odśwież**.
+Aby monitorować dodawane serwery, można sprawdzić czas ostatniego wykrycia dla nich na **serwerach konfiguracji** > **ostatnim kontakcie na stronie**. Aby dodać maszyny bez oczekiwania na zaplanowaną godzinę odnajdywania, wyróżnij serwer konfiguracji (nie klikaj go), a następnie kliknij przycisk **Odśwież**.
 
 ## <a name="test-the-configuration"></a>Testowanie konfiguracji
 

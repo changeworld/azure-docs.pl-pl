@@ -1,19 +1,19 @@
 ---
-title: Skonfiguruj odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware przy użyciu Azure Site Recovery
+title: Konfigurowanie odzyskiwania po awarii maszyny wirtualnej VMware na platformie Azure za pomocą Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cfdb39fd3585eeeb2afb27749b42b0eaed1dfc33
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488456"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953623"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Włącz replikację maszyny wirtualnej VMware.
 
 > [!NOTE]
-> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli jest to możliwe, są używane opcje domyślne, i nie są przedstawione wszystkie ustawienia i ścieżki. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 

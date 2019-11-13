@@ -1,17 +1,14 @@
 ---
 title: Szczegóły struktury przypisania zasad
 description: Zawiera opis definicji przypisania zasad używanej przez Azure Policy do powiązania definicji zasad i parametrów z zasobami do oceny.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255896"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960033"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura przypisań usługi Azure Policy
 
@@ -52,7 +49,7 @@ Na przykład poniższy kod JSON przedstawia przypisanie zasad w trybie _DoNotEnf
 
 Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../samples/index.md).
 
-## <a name="display-name-and-description"></a>Nazwa wyświetlana i opis
+## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
 
 Użyj **DisplayName** i **Description** , aby zidentyfikować przypisanie zasad i zapewnić kontekst do użycia z określonym zestawem zasobów. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
 
@@ -64,15 +61,15 @@ Ta właściwość ma następujące wartości:
 
 |Tryb |Wartość JSON |Typ |Koryguj ręcznie |Wpis dziennika aktywności |Opis |
 |-|-|-|-|-|-|
-|Enabled (Włączony) |Domyślne |string |Tak |Tak |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
-|Disabled (Wyłączony) |DoNotEnforce |string |Tak |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Enabled (Włączony) |Domyślne |ciąg |Tak |Tak |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Disabled (Wyłączony) |DoNotEnforce |ciąg |Tak |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
 
 Jeśli w definicji zasad lub inicjatywy nie określono **wymuszania** , używana jest wartość _Domyślna_ . [Zadania korygowania](../how-to/remediate-resources.md) można uruchamiać dla zasad [deployIfNotExists](./effects.md#deployifnotexists) , nawet jeśli ustawienie **wymuszania** ma wartość _DoNotEnforce_.
 
 ## <a name="policy-definition-id"></a>Identyfikator definicji zasad
 
 To pole musi zawierać pełną nazwę ścieżki definicji zasad lub definicji inicjatywy.
-`policyDefinitionId` to ciąg, a nie tablica. Zaleca się, aby w zamian była często przypisywanych wielu zasad w celu użycia [inicjatywy](./definition-structure.md#initiatives) .
+`policyDefinitionId` jest ciągiem, a nie tablicą. Zaleca się, aby w zamian była często przypisywanych wielu zasad w celu użycia [inicjatywy](./definition-structure.md#initiatives) .
 
 ## <a name="parameters"></a>Parametry
 
@@ -90,7 +87,7 @@ Dzięki temu projektowi można ponownie używać zasad lub definicji inicjatywy 
 }
 ```
 
-W tym przykładzie parametry wcześniej zdefiniowane w definicji zasad są `prefix` i `suffix`. Ten konkretny zestaw przypisań zasad `prefix` do **działu** i `suffix` do **-LC**. Ta sama definicja zasad jest wielokrotnego użytku z innym zestawem parametrów dla innego działu, zmniejszając duplikowanie i złożoność definicji zasad przy jednoczesnym zapewnianiu elastyczności.
+W tym przykładzie parametry wcześniej zdefiniowane w definicji zasad są `prefix` i `suffix`. To konkretne przypisanie zasad ustawia `prefix` na **Wydział** i `suffix` do **-LC**. Ta sama definicja zasad jest wielokrotnego użytku z innym zestawem parametrów dla innego działu, zmniejszając duplikowanie i złożoność definicji zasad przy jednoczesnym zapewnianiu elastyczności.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: Ponowne włączanie ochrony maszyn wirtualnych z platformy Azure do lokacji lokalnej podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych | Microsoft Docs
+title: Ponowne włączanie ochrony maszyn wirtualnych VMware/serwerów fizycznych do lokacji lokalnej przy użyciu Azure Site Recovery
 description: Po przejściu w tryb failover na platformę Azure podczas odzyskiwania po awarii maszyn wirtualnych i serwerów fizycznych programu VMware należy dowiedzieć się, jak wrócić po awarii z platformy Azure do lokacji lokalnej.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3d5f38d940b99c6a74d784f174c91d4127353dc
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791798"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961342"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ponowne włączanie ochrony maszyn wirtualnych i ich przywracanie do lokacji lokalnej po przejściu do trybu failover na platformie Azure
 
@@ -81,7 +81,7 @@ Po utworzeniu głównego serwera docelowego wykonaj następujące zadania:
     - Domyślnym woluminem przechowywania dla systemu Linux jest/mnt/Retention.
 - Nowy dysk należy dodać w przypadku korzystania z istniejącej maszyny serwera przetwarzania/serwera konfiguracji lub skali lub serwera przetwarzania/głównego serwera docelowego. Nowy dysk musi spełniać powyższe wymagania. Jeśli dysk przechowywania nie istnieje, nie jest wyświetlany na liście rozwijanej wyboru w portalu. Po dodaniu dysku do lokalnego głównego serwera docelowego potrwa to 15 minut, zanim dysk zostanie wyświetlony w wybranym portalu. Można również odświeżyć serwer konfiguracji, jeśli dysk nie jest wyświetlany po 15 minutach.
 - Zainstaluj narzędzia VMware lub narzędzia Otwórz maszynę wirtualną na głównym serwerze docelowym. Bez narzędzi nie można wykryć magazynów danych na hoście ESXi głównego elementu docelowego.
-- Ustaw ustawienie `disk.EnableUUID=true` w parametrach konfiguracji głównej docelowej maszyny wirtualnej w oprogramowaniu VMware. Jeśli ten wiersz nie istnieje, Dodaj go. To ustawienie jest wymagane, aby zapewnić spójny identyfikator UUID w VMDK, tak aby był poprawnie instalowany.
+- Ustaw ustawienie `disk.EnableUUID=true` w parametrach konfiguracyjnych docelowej maszyny wirtualnej w oprogramowaniu VMware. Jeśli ten wiersz nie istnieje, Dodaj go. To ustawienie jest wymagane, aby zapewnić spójny identyfikator UUID w VMDK, tak aby był poprawnie instalowany.
 - Na hoście ESX, na którym tworzony jest główny element docelowy, musi być dołączony co najmniej jeden magazyn danych maszyny wirtualnej (VMFS). Jeśli nie są dołączone żadne magazyny danych VMFS, dane wejściowe ze **sklepu datastore** na stronie ponownej ochrony są puste i nie będzie można ich wykonać.
 - Główny serwer docelowy nie może mieć migawek na dyskach. Jeśli istnieją migawki, reochrona i powrót po awarii, zakończy się niepowodzeniem.
 - Główny element docelowy nie może mieć kontrolera SCSI Paravirtual. Kontroler może być tylko kontrolerem logiki LSI. W przypadku braku kontrolera logiki LSI nie jest przeprowadzana ochrona.
@@ -93,7 +93,7 @@ Po utworzeniu głównego serwera docelowego wykonaj następujące zadania:
 Po uruchomieniu maszyny wirtualnej na platformie Azure program Agent może zarejestrować się ponownie na serwerze konfiguracji (do 15 minut). W tym czasie nie będzie można ponownie włączyć ochrony i zostanie wyświetlony komunikat o błędzie informujący, że Agent nie jest zainstalowany. W takim przypadku poczekaj kilka minut, a następnie spróbuj ponownie wykonać ponowną ochronę:
 
 
-1. Wybierz **magazyn** > **zreplikowane elementy**. Kliknij prawym przyciskiem myszy maszynę wirtualną, która przełączona w tryb failover, a następnie wybierz pozycję **Włącz ponownie ochronę**. Lub z przycisków poleceń wybierz maszynę, a następnie wybierz pozycję **Włącz ponownie ochronę**.
+1. Wybierz pozycję **magazyn** > **zreplikowane elementy**. Kliknij prawym przyciskiem myszy maszynę wirtualną, która przełączona w tryb failover, a następnie wybierz pozycję **Włącz ponownie ochronę**. Lub z przycisków poleceń wybierz maszynę, a następnie wybierz pozycję **Włącz ponownie ochronę**.
 2. Upewnij się, że wybrano kierunek ochrony na **platformie Azure do lokalnego** .
 3. Na **głównym serwerze docelowym** i **serwerze przetwarzania**wybierz lokalny główny serwer docelowy i serwer przetwarzania.  
 4. W obszarze **Magazyn**danych wybierz magazyn danych, do którego chcesz odzyskać dyski lokalnie. Ta opcja jest używana, gdy lokalna maszyna wirtualna jest usuwana i konieczne jest utworzenie nowych dysków. Ta opcja jest ignorowana, jeśli dyski już istnieją. Nadal trzeba określić wartość.

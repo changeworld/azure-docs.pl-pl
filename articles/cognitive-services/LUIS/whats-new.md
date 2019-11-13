@@ -1,7 +1,7 @@
 ---
 title: Co nowego — Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera informacje o Language Understanding.
+description: Ten artykuł jest regularnie aktualizowany za pomocą wiadomości o interfejs API usługi Language Understanding usługi Azure Cognitive Services.
 author: diberry
 manager: nitinme
 ms.custom: experiment-luis-0519
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e32d0f4906dea69d6eab27faca4a2e41106ed73
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 62ce0ac36223098d013cc75b7f62fc2c68e358ed
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836839"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953383"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
 
@@ -82,7 +82,7 @@ Następujące funkcje zostały wydane na konferencji Build 2019:
 
 [Bot Framework](https://blog.botframework.com/)
 
-## <a name="videos"></a>Filmy wideo
+## <a name="videos"></a>Wideo
 
 ### <a name="2019-build-videos"></a>wideo kompilacji 2019
 

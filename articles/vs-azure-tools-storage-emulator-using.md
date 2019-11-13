@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie i używanie emulatora magazynu w programie Visual Studio | Microsoft Docs
-description: Konfigurowanie i używanie emulatora magazynu w programie Visual Studio
+description: Konfigurowanie i używanie emulatora magazynu, narzędzia, które symuluje usługi obiektów blob, kolejek i tabel dostępne na platformie Azure na lokalnym komputerze deweloperskim.
 services: visual-studio-online
 author: ghogen
 manager: jillfra
@@ -12,17 +12,17 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: 08e3f5d5bb32d15b9d8d164c898d2b8d7a90108c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: aca4bf5017a4ee23d69016b937673443c1a0e200
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969711"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73935846"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurowanie i używanie emulatora magazynu w programie Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Środowisko deweloperskie zestawu Azure SDK obejmuje emulator magazynu, narzędzie, które symuluje usługi obiektów blob, kolejek i tabel, które są dostępne na platformie Azure na lokalnym komputerze deweloperskim. Jeśli tworzysz usługę w chmurze korzystającą z usług Azure Storage lub pisząc dowolną aplikację zewnętrzną, która wywołuje usługi magazynu, możesz testować kod lokalnie na emulator magazynu. Narzędzia platformy Azure dla Microsoft Visual Studio integrują zarządzanie emulatorem magazynu w programie Visual Studio. Narzędzia platformy Azure inicjują bazę danych emulatora magazynu przy pierwszym użyciu, uruchamiają usługę emulatora magazynu podczas uruchamiania lub debugowania kodu z programu Visual Studio i zapewniają dostęp tylko do odczytu do danych emulatora magazynu za pośrednictwem Eksplorator usługi Azure Storage.
 
 Aby uzyskać szczegółowe informacje na temat emulatora magazynu, w tym wymagania systemowe i instrukcje dotyczące konfiguracji niestandardowej, zobacz [Używanie emulatora usługi Azure Storage do programowania i testowania](storage/common/storage-use-emulator.md).

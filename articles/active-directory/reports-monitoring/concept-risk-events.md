@@ -3,7 +3,7 @@ title: Azure Active Directory wykrywania ryzyka | Microsoft Docs
 description: Ten artice zawiera szczegółowy przegląd czynników ryzyka, które są wykrywalne.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, bezpieczeństwo, ryzyko, poziom ryzyka, usterka, zasady zabezpieczeń
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127317"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014477"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory wykrywania ryzyka
 
-Większość naruszeń zabezpieczeń odbywa się, gdy osoby atakujące uzyskują dostęp do środowiska przez kradzież tożsamości użytkownika. Odnajdywanie zagrożonych tożsamości nie jest łatwe. Azure Active Directory używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z kontami użytkowników. Każda wykryte podejrzane działania są przechowywane w rekordzie nazywanym wykryciem **ryzyka**.
+Większość naruszeń zabezpieczeń odbywa się, gdy osoby atakujące uzyskują dostęp do środowiska przez kradzież tożsamości użytkownika. Odnajdywanie zagrożonych tożsamości nie jest łatwe. Azure Active Directory używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z kontami użytkowników. Każda wykryte podejrzane działania są przechowywane w rekordzie nazywanym **wykryciem ryzyka**.
 
 Istnieją dwa miejsca, w których można przejrzeć zgłoszone wykrywania zagrożeń:
 
- - **Raportowanie usługi Azure AD** — wykrywanie ryzyka są częścią raportów zabezpieczeń usługi Azure AD. Aby uzyskać więcej informacji, zapoznaj się z raportem o zabezpieczeniach dotyczące [użytkowników](concept-user-at-risk.md) i [ryzykownych](concept-risky-sign-ins.md)logowań.
+ - **Raportowanie usługi Azure AD** — wykrywanie ryzyka są częścią raportów zabezpieczeń usługi Azure AD. Aby uzyskać więcej informacji, zapoznaj się z [raportem](concept-user-at-risk.md) o zabezpieczeniach dotyczące użytkowników i [ryzykownych](concept-risky-sign-ins.md)logowań.
 
  - Wykrycia ryzyka **Azure AD Identity Protection** są również częścią funkcji raportowania [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
@@ -47,7 +47,7 @@ Obecnie Azure Active Directory wykrywa sześć typów wykrycia ryzyka:
 ![Wykrywanie ryzyka](./media/concept-risk-events/91.png)
 
 > [!IMPORTANT]
-> Czasami może się okazać, że wykrywanie ryzyka nie ma odpowiedniego wpisu logowania w [raporcie logowania](concept-sign-ins.md). Wynika to z faktu, że usługa Identity Protection szacuje ryzyko dla logowania interaktywnego i nieinterakcyjnego, podczas gdy raport logowania zawiera tylko interakcyjne logowania.
+> Czasami może się okazać, że wykrywanie ryzyka nie ma odpowiedniego wpisu logowania w [raporcie logowania](concept-sign-ins.md). Wynika to z faktu, że usługa Identity Protection szacuje ryzyko dla logowania **interaktywnego** i **nieinterakcyjnego** , podczas gdy raport logowania zawiera tylko interakcyjne logowania.
 
 Szczegółowe informacje na temat wykrytego wykrywania ryzyka są powiązane z subskrypcją usługi Azure AD. 
 
@@ -65,7 +65,7 @@ Ciągłe inwestycje firmy Microsoft w proces wykrywania prowadzą do:
 - Poprawa dokładności wykrywania istniejących wykryć ryzyka 
 - Nowe typy wykrywania ryzyka, które zostaną dodane w przyszłości
 
-### <a name="leaked-credentials"></a>Ujawnione poświadczenia
+### <a name="leaked-credentials"></a>Nieujawnione poświadczenia
 
 Gdy cybernetycznymi naruszają prawidłowe hasła dla uprawnionych użytkowników, często udostępniają te poświadczenia. Jest to zwykle realizowane przez zaksięgowanie ich publicznie w ciemnych witrynach sieci Web lub wklejanie lub przez handel lub sprzedawanie poświadczeń na czarnym rynku. Usługa Microsoft wycieka poświadczeń uzyskuje pary nazw użytkowników i haseł, monitorując publiczne i ciemne witryny sieci Web i wykonując następujące działania:
 
@@ -129,17 +129,17 @@ Właściwość poziomu ryzyka wykrywania ryzyka jest wskaźnikiem (**wysoki**, *
 
 Ważność wykrywania ryzyka reprezentuje siłę sygnału jako predykcyjny kompromis dotyczący naruszenia tożsamości. Wiarygodność jest wskaźnikiem dla możliwości fałszywych wartości dodatnich. 
 
-Na przykład 
+Na przykład: 
 
-* **Wysoka**: Wykrywanie ryzyka o wysokim poziomie pewności i o wysokim stopniu ważności. Te zdarzenia są silnymi wskaźnikami, w przypadku których zabezpieczenia tożsamości zostały naruszone, a wszystkie konta użytkowników, których to dotyczy, powinny być natychmiast korygowane.
+* **Wysoki**: wysoki poziom zaufania i wysoka ważność. Te zdarzenia są silnymi wskaźnikami, w przypadku których zabezpieczenia tożsamości zostały naruszone, a wszystkie konta użytkowników, których to dotyczy, powinny być natychmiast korygowane.
 
-* **Średni**: Wysoka ważność, ale niższe ryzyko związane z zaufaniem lub na odwrót. Zdarzenia te są potencjalnie ryzykowne i należy skorygować wszystkie konta użytkowników, których dotyczy problem.
+* **Średni**: wysoka ważność, ale niższe ryzyko związane z zaufaniem lub na odwrót. Zdarzenia te są potencjalnie ryzykowne i należy skorygować wszystkie konta użytkowników, których dotyczy problem.
 
-* **Niska**: Wykrywanie ryzyka o niskim poziomie pewności i niskim poziomie ważności. To zdarzenie może nie wymagać natychmiastowego działania, ale w połączeniu z innymi wykryciami ryzyka może zapewnić silne wskazanie naruszenia bezpieczeństwa tożsamości.
+* **Niski**: wykrywanie ryzyka niskiego zaufania i niskiego poziomu ważności. To zdarzenie może nie wymagać natychmiastowego działania, ale w połączeniu z innymi wykryciami ryzyka może zapewnić silne wskazanie naruszenia bezpieczeństwa tożsamości.
 
 ![Poziom ryzyka](./media/concept-risk-events/01.png)
 
-### <a name="leaked-credentials"></a>Ujawnione poświadczenia
+### <a name="leaked-credentials"></a>Nieujawnione poświadczenia
 
 Wykrywanie ryzyka przecieków poświadczeń są klasyfikowane jako **wysokie**, ponieważ zapewniają jasne wskazanie, że nazwa użytkownika i hasło są dostępne dla osoby atakującej.
 

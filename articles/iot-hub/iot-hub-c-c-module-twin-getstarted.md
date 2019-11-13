@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure IoT Hub i sznurem modułowym (C) Microsoft Docs
+title: Rozpoczynanie pracy z usługą Azure IoT Hub Identity & module (C)
 description: Informacje o tworzeniu tożsamości modułu i aktualizacji sznurka modułu przy użyciu zestawów SDK IoT dla języka C.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 9bc64a2eefbd268c5d7eae9b32a992ed29151f61
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813847"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954221"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Rozpoczynanie pracy z modułem IoT Hub tożsamość modułu i sznurki modułowe (C)
 
@@ -177,7 +177,7 @@ int main(void)
 }
 ```
 
-Ta aplikacja tworzy tożsamość urządzenia o IDENTYFIKATORze **myFirstDevice** oraz tożsamość modułu o identyfikatorze **myFirstModule** w obszarze Device **myFirstDevice**. (Jeśli ten identyfikator modułu już istnieje w rejestrze tożsamości, kod po prostu pobiera informacje o istniejącym module). Aplikacja następnie wyświetla klucz podstawowy dla tej tożsamości. Tego klucza używa się w symulowanej aplikacji modułu, aby nawiązać połączenie z centrum IoT.
+Ta aplikacja tworzy tożsamość urządzenia o IDENTYFIKATORze **myFirstDevice** oraz tożsamość modułu o identyfikatorze **myFirstModule** w obszarze Device **myFirstDevice**. (Jeśli ten identyfikator modułu już istnieje w rejestrze tożsamości, kod po prostu pobiera istniejące informacje o module). Następnie aplikacja wyświetli klucz podstawowy dla tej tożsamości. Tego klucza używa się w symulowanej aplikacji modułu, aby nawiązać połączenie z centrum IoT.
 
 > [!NOTE]
 > Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia i modułu tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. W rejestrze tożsamości są przechowywane identyfikatory urządzeń i klucze służące jako poświadczenia zabezpieczeń. W rejestrze tożsamości są także przechowywane flagi włączenia/wyłączenia dla każdego urządzenia, za pomocą których można wyłączyć dostęp do danego urządzenia. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Nie istnieje flaga włączenia/wyłączenia tożsamości modułów. Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera IoT Hub](iot-hub-devguide-identity-registry.md).
@@ -190,7 +190,7 @@ W tej sekcji utworzysz aplikację C na symulowanym urządzeniu, która aktualizu
 
     ![Szczegóły modułu w witrynie Azure Portal](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Tworzenie aplikacji UpdateModuleTwinReportedProperties** Dodaj następujące `using` instrukcje w górnej części pliku **program.cs** :
+2. **Tworzenie aplikacji UpdateModuleTwinReportedProperties** Dodaj następujące instrukcje `using` w górnej części pliku **program.cs** :
 
     ```C
     #include <stdio.h>

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wdrażanie usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
+title: 'Samouczek: wdrażanie wykresu przestrzennego — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
 description: Dowiedz się, jak wdrożyć wystąpienie usługi Azure Digital Twins i skonfigurować zasoby przestrzenne przy użyciu kroków opisanych w tym samouczku.
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/17/2019
-ms.openlocfilehash: 54afe8ea67996562c88a2ade2ec16c4eaa89cdee
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 481e38df0855eddd7e050afad0fd0220b3c66690
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949778"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014038"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: wdrażanie usługi Azure Digital bliźniaczych reprezentacji Preview i Konfigurowanie wykresu przestrzennego
 
@@ -52,7 +52,7 @@ Wykonaj kroki opisane w tej sekcji, aby utworzyć nowe wystąpienie usługi Azur
 
 ## <a name="grant-permissions-to-your-app"></a>Udzielanie uprawnień dla Twojej aplikacji
 
-Usługa Digital Twins steruje [dostępem do odczytu/zapisu](../active-directory/develop/v1-permissions-and-consent.md) w usłudze, korzystając z usługi [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD). Każda aplikacja, która wymaga połączenia z wystąpieniem usługi Digital Twins, musi być zarejestrowana w usłudze Azure AD. W tej sekcji opisano procedurę rejestrowania przykładowej aplikacji.
+Usługa Digital Twins steruje [dostępem do odczytu/zapisu](../active-directory/fundamentals/active-directory-whatis.md) w usłudze, korzystając z usługi [Azure Active Directory](../active-directory/develop/v1-permissions-and-consent.md) (Azure AD). Każda aplikacja, która wymaga połączenia z wystąpieniem usługi Digital Twins, musi być zarejestrowana w usłudze Azure AD. W tej sekcji opisano procedurę rejestrowania przykładowej aplikacji.
 
 Jeśli już masz zarejestrowaną aplikację, możesz wykorzystać ją jako przykład. Jednak przejrzyj tę sekcję, aby upewnić się, że Twoja rejestracja aplikacji jest poprawnie skonfigurowana.
 
@@ -150,7 +150,7 @@ Plik **provisionSample.yaml** zawiera następujące węzły:
 
 - **devices**: miejsca mogą zawierać urządzenia (`devices`) będące jednostkami fizycznymi lub wirtualnymi, które zarządzają pewną liczbą czujników. Na przykład urządzeniem może być telefon użytkownika, zasobnik czujników urządzenia Raspberry Pi lub brama. W wymyślonym budynku z Twojego przykładu zwróć uwagę na sposób umieszczenia urządzenia **Raspberry Pi 3 A1** w pomieszczeniu **Focus Room**. Każdy węzeł urządzenia jest identyfikowany przez unikatowy identyfikator `hardwareId` trwale zakodowany w przykładzie. Aby skonfigurować ten przykład na potrzeby rzeczywistego środowiska produkcyjnego, zamień te wartości na wartości z Twojej konfiguracji.  
 
-- **sensors**: urządzenie może zawierać wiele czujników (`sensors`). Umożliwiają one wykrywanie i rejestrowanie zmian fizycznych, takich jak temperatura, ruch i poziom naładowania baterii. Każdy węzeł czujnika jest jednoznacznie identyfikowany przez `hardwareId`, stałe tutaj. Na potrzeby rzeczywistej aplikacji zamień te identyfikatory, używając unikatowych identyfikatorów czujników z Twojej konfiguracji. Plik provisionSample.yaml ma dwa czujniki umożliwiające rejestrowanie ruchu (*Motion*) i dwutlenku węgla (*CarbonDioxide*). Dodaj kolejny czujnik, aby rejestrować temperaturę (*Temperature*), dodając poniższe wiersze pod wierszami dotyczącymi czujnika CarbonDioxide. Zauważ, że w pliku provisionSample.yaml są one ujęte w wierszach komentarzy. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
+- **sensors**: urządzenie może zawierać wiele czujników (`sensors`). Umożliwiają one wykrywanie i rejestrowanie zmian fizycznych, takich jak temperatura, ruch i poziom naładowania baterii. Każdy węzeł czujnika jest unikatowo identyfikowany za pomocą identyfikatora `hardwareId` trwale zapisanego w tym miejscu. Na potrzeby rzeczywistej aplikacji zamień te identyfikatory, używając unikatowych identyfikatorów czujników z Twojej konfiguracji. Plik provisionSample.yaml ma dwa czujniki umożliwiające rejestrowanie ruchu (*Motion*) i dwutlenku węgla (*CarbonDioxide*). Dodaj kolejny czujnik, aby rejestrować temperaturę (*Temperature*), dodając poniższe wiersze pod wierszami dotyczącymi czujnika CarbonDioxide. Zauważ, że w pliku provisionSample.yaml są one ujęte w wierszach komentarzy. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
 
     ```yaml
             - dataType: Temperature

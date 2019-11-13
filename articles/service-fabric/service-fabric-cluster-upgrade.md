@@ -1,5 +1,5 @@
 ---
-title: Uaktualnianie klastra usługi Azure Service Fabric | Microsoft Docs
+title: Uaktualnianie klastra usługi Azure Service Fabric
 description: Dowiedz się więcej na temat uaktualniania wersji lub konfiguracji klastra Service Fabric platformy Azure.  W tym artykule opisano konfigurowanie trybu aktualizacji klastra, uaktualnianie certyfikatów, Dodawanie portów aplikacji, tworzenie poprawek systemu operacyjnego i ich oczekiwanie podczas przeprowadzania uaktualnień
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 161c720fbcc9370aaf273b241e88a7184f47371b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599785"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013321"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Uaktualnianie i aktualizowanie klastra Service Fabric platformy Azure
 
@@ -36,7 +36,7 @@ Można ustawić, aby klaster odbierał automatyczne uaktualnienia sieci szkielet
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Zachowanie podczas uaktualniania sieci szkieletowej podczas automatycznych uaktualnień
 Firma Microsoft utrzymuje kod sieci szkieletowej i konfigurację, która działa w klastrze platformy Azure. Przeprowadzamy automatyczne monitorowanie uaktualnień do oprogramowania zgodnie z wymaganiami. Mogą to być kod, konfiguracja lub oba te uaktualnienia. Aby upewnić się, że aplikacja nie ma wpływu ani nie ma minimalnych skutków wynikających z tych uaktualnień, przeprowadzamy uaktualnienia w następujących fazach:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Faza 1: Uaktualnienie jest wykonywane przy użyciu wszystkich zasad dotyczących kondycji klastra
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Faza 1: uaktualnienie jest wykonywane przy użyciu wszystkich zasad dotyczących kondycji klastra
 W tej fazie uaktualnienia są kontynuowane w jednej domenie uaktualnienia, a aplikacje, które działały w klastrze, nadal działają bez żadnych przestojów. Zasady kondycji klastra (połączenie kondycji węzła i kondycji wszystkich aplikacji działających w klastrze) są przestrzegane podczas uaktualniania.
 
 Jeśli zasady kondycji klastra nie są spełnione, uaktualnienie jest wycofywane. Następnie do właściciela subskrypcji jest wysyłana wiadomość e-mail. Wiadomość e-mail zawiera następujące informacje:
@@ -49,7 +49,7 @@ Podjęto próbę wykonania tego samego uaktualnienia na wypadek niepowodzenia ua
 
 Jeśli zasady kondycji klastra są spełnione, uaktualnienie jest uznawane za pomyślne i oznaczone jako ukończone. Taka sytuacja może wystąpić podczas wstępnego uaktualniania lub dowolnego uruchomienia procesu uaktualniania w tej fazie. Nie ma potwierdzenia pomyślnego uruchomienia wiadomości e-mail. Ma to na celu uniknięcie wysyłania zbyt wielu wiadomości e-mail — otrzymanie wiadomości e-mail powinna być traktowana jako wyjątek normalny. Oczekujemy, że większość uaktualnień klastra zakończy się pomyślnie bez wpływu na dostępność aplikacji.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Faza 2: Uaktualnienie jest wykonywane tylko przy użyciu domyślnych zasad dotyczących kondycji
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Faza 2: uaktualnienie jest przeprowadzane tylko przy użyciu domyślnych zasad dotyczących kondycji
 Zasady dotyczące kondycji w tej fazie są ustawiane w taki sposób, że liczba aplikacji, które były w dobrej kondycji na początku uaktualnienia, pozostaje taka sama dla czasu trwania procesu uaktualniania. Podobnie jak w przypadku fazy 1, uaktualnienia fazy 2 są kontynuowane w jednej domenie uaktualnienia, a aplikacje, które były uruchomione w klastrze, nadal działają bez żadnych przestojów. Zasady kondycji klastra (połączenie kondycji węzła i kondycji wszystkich aplikacji działających w klastrze) są zgodne z czasem trwania uaktualnienia.
 
 Jeśli zasady kondycji klastra nie są spełnione, uaktualnienie jest wycofywane. Następnie do właściciela subskrypcji jest wysyłana wiadomość e-mail. Wiadomość e-mail zawiera następujące informacje:
@@ -62,7 +62,7 @@ Podjęto próbę wykonania tego samego uaktualnienia na wypadek niepowodzenia ua
 
 Jeśli zasady kondycji klastra są spełnione, uaktualnienie jest uznawane za pomyślne i oznaczone jako ukończone. Taka sytuacja może wystąpić podczas wstępnego uaktualniania lub dowolnego uruchomienia procesu uaktualniania w tej fazie. Nie ma potwierdzenia pomyślnego uruchomienia wiadomości e-mail.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Faza 3: Uaktualnienie jest wykonywane przy użyciu agresywnych zasad dotyczących kondycji
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Faza 3: uaktualnienie jest przeprowadzane przy użyciu agresywnych zasad dotyczących kondycji
 Te zasady kondycji w tej fazie są ukierunkowane na zakończenie uaktualniania, a nie na kondycję aplikacji. Niektóre uaktualnienia klastra kończą się w tej fazie. Jeśli klaster przechodzi do tej fazy, istnieje dobry szansa, że aplikacja stanie się zła i/lub utraci dostęp.
 
 Podobnie jak w przypadku innych dwóch faz, uaktualnienia fazy 3 przechodzą w jedną domenę uaktualnienia jednocześnie.

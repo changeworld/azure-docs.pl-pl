@@ -1,17 +1,14 @@
 ---
 title: Tworzenie zasad inspekcji zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Używając interfejsu wiersza polecenia platformy Azure, utwórz przypisanie usługi Azure Policy, aby zidentyfikować niezgodne zasoby.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
-ms.service: azure-policy
-ms.openlocfilehash: a7e65e304039c266f92f8068b796323197058cc1
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 589038bb2b5e96c252e19fc0552d4f9ac19dc83a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255946"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960225"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 

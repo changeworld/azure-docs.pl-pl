@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523533"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005589"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: projektowanie pod kątem wysokiej wydajności
-
 Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Możesz użyć instrukcji przedstawionych w tym dokumencie wraz z najlepszymi rozwiązaniami dotyczącymi wydajności mającymi zastosowanie do technologii używanych przez aplikację. Aby zilustrować wskazówki, firma Microsoft użyła SQL Server działającego na Premium Storage na przykład w tym dokumencie.
 
 Chociaż w tym artykule opisano scenariusze wydajności dla warstwy magazynowania, należy zoptymalizować warstwę aplikacji. Na przykład w przypadku hostowania farmy programu SharePoint w usłudze Azure Premium Storage można użyć przykładów SQL Server z tego artykułu, aby zoptymalizować serwer bazy danych. Ponadto Zoptymalizuj serwer sieci Web i serwer aplikacji farmy programu SharePoint w celu uzyskania najwyższej wydajności.

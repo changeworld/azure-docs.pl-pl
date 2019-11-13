@@ -1,20 +1,19 @@
 ---
-title: Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii programu VMware i serwera fizycznego przy użyciu Azure Site Recovery | Microsoft Docs
-description: W tym artykule opisano, jak zarządzać istniejącym serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu Azure Site Recovery.
+title: Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii za pomocą Azure Site Recovery
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791815"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954361"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej lub serwera fizycznego
 
 Lokalny serwer konfiguracji można skonfigurować w przypadku korzystania z [Azure Site Recovery](site-recovery-overview.md) na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure. Serwer konfiguracji koordynuje komunikację między lokalnym programem VMware i platformą Azure i zarządza replikacją danych. Ten artykuł zawiera podsumowanie typowych zadań związanych z zarządzaniem serwerem konfiguracji po jego wdrożeniu.
 
@@ -72,7 +71,7 @@ Jeśli pominięto Dodawanie poświadczeń podczas OVF wdrażania serwera konfigu
 
 1. Po [zalogowaniu](#access-configuration-server)wybierz pozycję **Zarządzaj poświadczeniami maszyny wirtualnej**.
 2. Kliknij pozycję **Dodaj poświadczenia maszyny wirtualnej**.
-    ![dodawania](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Wprowadź nowe poświadczenia i kliknij przycisk **Dodaj**.
 
 Możesz również dodać poświadczenia za poorednictwem CSPSConfigtool. exe.
@@ -197,12 +196,12 @@ Uruchom plik instalacyjny w następujący sposób:
 |/PSIP|Wymagane|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
 |/CSIP|Wymagane|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
 |/PassphraseFilePath|Wymagane|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
-|/BypassProxy|Opcjonalne|Określa, że serwer konfiguracji łączy się z platformą Azure bez serwera proxy|Należy uzyskać tę wartość z Venu|
-|/ProxySettingsFilePath|Opcjonalne|Ustawienia serwera proxy (domyślny serwer proxy wymaga uwierzytelniania lub niestandardowy serwer proxy)|Plik powinien mieć format określony poniżej|
-|DataTransferSecurePort|Opcjonalne|Numer portu dla protokołu PSIP do użytku z danymi replikacji| Prawidłowy numer portu (wartość domyślna to 9433)|
-|/SkipSpaceCheck|Opcjonalne|Pomiń sprawdzanie miejsca dla dysku pamięci podręcznej| |
+|/BypassProxy|Optional (Opcjonalność)|Określa, że serwer konfiguracji łączy się z platformą Azure bez serwera proxy|Należy uzyskać tę wartość z Venu|
+|/ProxySettingsFilePath|Optional (Opcjonalność)|Ustawienia serwera proxy (domyślny serwer proxy wymaga uwierzytelniania lub niestandardowy serwer proxy)|Plik powinien mieć format określony poniżej|
+|DataTransferSecurePort|Optional (Opcjonalność)|Numer portu dla protokołu PSIP do użytku z danymi replikacji| Prawidłowy numer portu (wartość domyślna to 9433)|
+|/SkipSpaceCheck|Optional (Opcjonalność)|Pomiń sprawdzanie miejsca dla dysku pamięci podręcznej| |
 |/AcceptThirdpartyEULA|Wymagane|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
-|/ShowThirdpartyEULA|Opcjonalne|Wyświetla umowę licencyjną innej firmy. Jeśli zostanie podany w danych wejściowych, wszystkie inne parametry są ignorowane| |
+|/ShowThirdpartyEULA|Optional (Opcjonalność)|Wyświetla umowę licencyjną innej firmy. Jeśli zostanie podany w danych wejściowych, wszystkie inne parametry są ignorowane| |
 
 
 

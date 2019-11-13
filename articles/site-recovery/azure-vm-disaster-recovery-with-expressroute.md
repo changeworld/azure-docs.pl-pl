@@ -1,5 +1,5 @@
 ---
-title: Integruj platformę Azure ExpressRoute z odzyskiwaniem po awarii dla maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+title: Integrowanie odzyskiwania po awarii maszyny wirtualnej platformy Azure ExpressRoute Azure z usługą Azure Site Recovery
 description: Opisuje sposób konfigurowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu usług Azure Site Recovery i Azure ExpressRoute
 services: site-recovery
 author: mayurigupta13
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722100"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954081"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute z odzyskiwaniem po awarii dla maszyn wirtualnych platformy Azure
+# <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie ExpressRoute z odzyskiwaniem po awarii dla maszyn wirtualnych platformy Azure
 
 
 W tym artykule opisano sposób integrowania usługi Azure ExpressRoute z usługą [Azure Site Recovery](site-recovery-overview.md)podczas konfigurowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure.
@@ -28,8 +28,8 @@ Site Recovery umożliwia odzyskiwanie po awarii maszyn wirtualnych platformy Azu
 
 Usługa ExpressRoute umożliwia rozszerzonie sieci lokalnych do chmury Microsoft Azure przez połączenie prywatne przez dostawcę połączenia. Jeśli skonfigurowano ExpressRoute, integruje się z Site Recovery w następujący sposób:
 
-- **Podczas replikacji między regionami platformy Azure**: Ruch związany z replikacją na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure jest tylko na platformie Azure i ExpressRoute nie jest wymagany ani używany do replikacji. Jednak w przypadku łączenia się z lokacji lokalnej z maszynami wirtualnymi platformy Azure w podstawowej lokacji platformy Azure istnieje wiele problemów, które należy wziąć pod uwagę podczas konfigurowania odzyskiwania po awarii dla tych maszyn wirtualnych platformy Azure.
-- **Przejście w tryb failover między regionami platformy Azure**: Gdy wystąpi awaria, maszyny wirtualne platformy Azure są przełączane do trybu failover z poziomu podstawowego do pomocniczego regionu platformy Azure. Po przejściu w tryb failover do regionu pomocniczego należy wykonać kilka czynności w celu uzyskania dostępu do maszyn wirtualnych platformy Azure w regionie pomocniczym przy użyciu ExpressRoute.
+- **Podczas replikacji między regionami platformy Azure**: ruch związany z replikacją na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure jest tylko na platformie Azure i ExpressRoute nie jest wymagany ani używany do replikacji. Jednak w przypadku łączenia się z lokacji lokalnej z maszynami wirtualnymi platformy Azure w podstawowej lokacji platformy Azure istnieje wiele problemów, które należy wziąć pod uwagę podczas konfigurowania odzyskiwania po awarii dla tych maszyn wirtualnych platformy Azure.
+- **Przejście w tryb failover między regionami platformy Azure**: gdy wystąpi awaria, maszyny wirtualne platformy Azure są przełączane do pracy awaryjnej z regionu podstawowego do pomocniczego. Po przejściu w tryb failover do regionu pomocniczego należy wykonać kilka czynności w celu uzyskania dostępu do maszyn wirtualnych platformy Azure w regionie pomocniczym przy użyciu ExpressRoute.
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -89,8 +89,8 @@ Zazwyczaj wdrożenia korporacyjne mają podział obciążeń na wiele sieci wirt
 - **Sieci wirtualnych szprych**. Aplikacje są wdrażane w dwóch szprychach sieci wirtualnych:
     - **VNet1 źródłowa**: 10.1.0.0/24.
     - **VNet2 źródłowa**: 10.2.0.0/24.
-    - Każda sieć wirtualna szprych jest połączonaz koncentratorem sieci wirtualnej.
-- **Sieć wirtualna centrum**. Istnieje **Sieć wirtualna**koncentratora sieci wirtualnej koncentratora: 10.10.10.0/24.
+    - Każda sieć wirtualna szprych jest połączona z **koncentratorem**sieci wirtualnej.
+- **Sieć wirtualna centrum**. Istnieje **Sieć**wirtualna koncentratora sieci wirtualnej z koncentratorem: 10.10.10.0/24.
   - Ta sieć wirtualna centrum działa jako strażnik.
   - Cała komunikacja między podsieciami odbywa się za pośrednictwem tego centrum.
     - **Podsieci sieci wirtualnej centrum**. Sieć wirtualna centrum ma dwie podsieci:
@@ -106,10 +106,10 @@ Zazwyczaj wdrożenia korporacyjne mają podział obciążeń na wiele sieci wirt
 
 **Kierunek** | **Ustawienie** | **State**
 --- | --- | ---
-Szprycha do piasty | Zezwalaj na adres sieci wirtualnej | Włączono
-Szprycha do piasty | Zezwalaj na ruch przesłany dalej | Włączono
-Szprycha do piasty | Zezwalaj na tranzyt bramy | Wyłączone
-Szprycha do piasty | Użyj usuwania bram | Włączono
+Szprycha do piasty | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
+Szprycha do piasty | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
+Szprycha do piasty | Zezwalaj na tranzyt bramy | Disabled (Wyłączony)
+Szprycha do piasty | Użyj usuwania bram | Enabled (Włączony)
 
  ![Konfiguracja komunikacji równorzędnej z usługą Hub](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,10 +117,10 @@ Szprycha do piasty | Użyj usuwania bram | Włączono
 
 **Kierunek** | **Ustawienie** | **State**
 --- | --- | ---
-Piasta do szprychy | Zezwalaj na adres sieci wirtualnej | Włączono
-Piasta do szprychy | Zezwalaj na ruch przesłany dalej | Włączono
-Piasta do szprychy | Zezwalaj na tranzyt bramy | Włączono
-Piasta do szprychy | Użyj usuwania bram | Wyłączone
+Piasta do szprychy | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
+Piasta do szprychy | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
+Piasta do szprychy | Zezwalaj na tranzyt bramy | Enabled (Włączony)
+Piasta do szprychy | Użyj usuwania bram | Disabled (Wyłączony)
 
  ![Konfiguracja komunikacji równorzędnej między centrami](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
@@ -164,11 +164,11 @@ Ta konfiguracja pomaga chronić przed awarią podstawowego obwodu usługi Expres
 
 ### <a name="access-with-a-single-circuit"></a>Dostęp za pomocą pojedynczego obwodu
 
-W tej konfiguracji istnieje tylko jeden obwód ExpressRoute. Chociaż obwód ma nadmiarowe połączenie na wypadek awarii, jeden obwód trasy nie zapewni odporności, jeśli region komunikacji równorzędnej ulegnie awarii. Należy pamiętać o następujących kwestiach:
+W tej konfiguracji istnieje tylko jeden obwód ExpressRoute. Chociaż obwód ma nadmiarowe połączenie na wypadek awarii, jeden obwód trasy nie zapewni odporności, jeśli region komunikacji równorzędnej ulegnie awarii. Należy pamiętać, że:
 
-- Maszyny wirtualne platformy Azure można replikować do dowolnego regionu świadczenia usługi Azure w [tej samej lokalizacji](azure-to-azure-support-matrix.md#region-support)geograficznej. Jeśli docelowy region platformy Azure nie znajduje się w tej samej lokalizacji co źródło, musisz włączyć usługę ExpressRoute Premium, jeśli używasz pojedynczego obwodu usługi ExpressRoute. Dowiedz się więcej o [lokalizacjach ExpressRoute](../expressroute/expressroute-locations.md) i [cenach ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
+- Maszyny wirtualne platformy Azure można replikować do dowolnego regionu świadczenia usługi Azure w [tej samej lokalizacji geograficznej](azure-to-azure-support-matrix.md#region-support). Jeśli docelowy region platformy Azure nie znajduje się w tej samej lokalizacji co źródło, musisz włączyć usługę ExpressRoute Premium, jeśli używasz pojedynczego obwodu usługi ExpressRoute. Dowiedz się więcej o [lokalizacjach ExpressRoute](../expressroute/expressroute-locations.md) i [cenach ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 - Nie można nawiązać połączenia ze źródłem i docelowa sieci wirtualnych jednocześnie do obwodu, jeśli ta sama przestrzeń adresów IP jest używana w regionie docelowym. W tym scenariuszu:    
-    -  Odłącz połączenie po stronie źródłowej, a następnie nawiąż połączenie po stronie docelowej. Ta zmiana połączenia może być inicjowana przez skrypt jako część planu odzyskiwania Site Recovery. Należy pamiętać o następujących kwestiach:
+    -  Odłącz połączenie po stronie źródłowej, a następnie nawiąż połączenie po stronie docelowej. Ta zmiana połączenia może być inicjowana przez skrypt jako część planu odzyskiwania Site Recovery. Należy pamiętać, że:
         - W przypadku awarii regionalnej, jeśli region podstawowy jest niedostępny, operacja rozłączenia może zakończyć się niepowodzeniem. Może to mieć wpływ na tworzenie połączenia z regionem docelowym.
         - Jeśli połączenie zostało utworzone w regionie docelowym, a region podstawowy odzyskuje później, może wystąpić porzucanie pakietów, jeśli dwa jednoczesne połączenia próbują nawiązać połączenie z tą samą przestrzenią adresową.
         - Aby tego uniknąć, należy natychmiast przerwać połączenie podstawowe.
@@ -185,7 +185,7 @@ W naszym przykładzie używamy następującej topologii:
 - Docelowy region odzyskiwania to Azja Południowo-Wschodnia platformy Azure.
 - Pomocnicze połączenie obwodu usługi ExpressRoute jest nawiązywane za pomocą krawędzi partnera w Singapurze.
 
-W przypadku prostej topologii korzystającej z pojedynczego obwodu usługi ExpressRoute z tym samym adresem IP po przejściu do trybu failover zapoznaj się z [tym artykułem](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover).
+W przypadku prostej topologii korzystającej z pojedynczego obwodu usługi ExpressRoute z tym samym adresem IP po przejściu do trybu failover [zapoznaj się z tym artykułem](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover).
 
 ### <a name="example-steps"></a>Przykładowe kroki
 Aby zautomatyzować odzyskiwanie w tym przykładzie, należy wykonać następujące czynności:
@@ -197,7 +197,7 @@ Aby zautomatyzować odzyskiwanie w tym przykładzie, należy wykonać następuj�
 
     b. Utwórz połączenie z docelowej sieci wirtualnej z koncentratorem do docelowego obwodu usługi ExpressRoute.
 
-    c. Skonfiguruj komunikację równorzędną wirtualnych między koncentratorem a sieciami wirtualnymi w regionie docelowym. Właściwości komunikacji równorzędnej w regionie docelowym będą takie same, jak w regionie źródłowym.
+    d. Skonfiguruj komunikację równorzędną wirtualnych między koncentratorem a sieciami wirtualnymi w regionie docelowym. Właściwości komunikacji równorzędnej w regionie docelowym będą takie same, jak w regionie źródłowym.
 
     d. Skonfiguruj UDR w sieci wirtualnej centrum i dwa szprychy sieci wirtualnych.
 

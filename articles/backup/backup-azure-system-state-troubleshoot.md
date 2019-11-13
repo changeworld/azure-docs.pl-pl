@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb8bf1891f5ce96507c20e196d20ae499f30fe34
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747310"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012131"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopią zapasową stanu systemu
 
@@ -45,9 +45,9 @@ Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu
 - Odzyskiwanie na inny komputer przy użyciu funkcji odzyskiwania stanu systemu nie jest zalecane przez firmę Microsoft.
 - Kopia zapasowa stanu systemu obsługuje obecnie serwery z systemem Windows "lokalne", ale ta funkcja nie jest dostępna dla maszyn wirtualnych platformy Azure.
 
-## <a name="pre-requisite"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem rozwiązywania problemów z wykonywaniem kopii zapasowych stanu systemu za pomocą Azure Backup wykonaj poniższe sprawdzanie wymagań wstępnych.  
+Przed rozpoczęciem rozwiązywania problemów z tworzeniem kopii zapasowej stanu systemu za pomocą Azure Backup wykonaj poniższe czynności.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Sprawdź, czy Kopia zapasowa systemu Windows Server jest zainstalowana
 
@@ -87,7 +87,7 @@ Aby zainstalować Kopia zapasowa systemu Windows Server przy użyciu Menedżer s
 5. Na karcie **potwierdzenie** kliknij przycisk **Zainstaluj** , aby rozpocząć proces instalacji.
 6. Na karcie **wyniki** zostanie wyświetlona funkcja kopia zapasowa systemu Windows Server pomyślnie zainstalowana na serwerze z systemem Windows.
 
-    ![wynika](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![wynik](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Uprawnienie do informacji o woluminie systemowym
 
@@ -99,11 +99,11 @@ Upewnij się, że poniższe usługi są w stanie uruchomienia:
 
 **Nazwa usługi** | **Typ uruchomienia**
 --- | ---
-Zdalne wywołanie procedury (RPC) | Automatyczny
-System zdarzeń modelu COM+ (EventSystem) | Automatyczny
-Usługa powiadamiania o zdarzeniach systemowych (SENS) | Automatyczny
-Kopiowanie woluminów w tle (VSS) | Ręczna
-Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręczna
+Zdalne wywołanie procedury (RPC) | Automatyczne
+System zdarzeń modelu COM+ (EventSystem) | Automatyczne
+Usługa powiadamiania o zdarzeniach systemowych (SENS) | Automatyczne
+Kopiowanie woluminów w tle (VSS) | Ręcznie
+Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręcznie
 
 ### <a name="validate-windows-server-backup-status"></a>Weryfikuj stan Kopia zapasowa systemu Windows Server
 

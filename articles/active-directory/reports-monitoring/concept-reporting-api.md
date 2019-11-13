@@ -3,7 +3,7 @@ title: Wprowadzenie do interfejsu API raportowania usługi Azure AD | Microsoft 
 description: Jak rozpocząć pracę z interfejsem API raportowania Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127359"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008355"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Wprowadzenie do interfejsu API raportowania Azure Active Directory
 
@@ -39,7 +39,7 @@ Jeśli występują problemy, zobacz [jak uzyskać pomoc techniczną dotyczącą 
 Aby uzyskać dostęp do interfejsu API raportowania, z interwencją użytkownika lub bez niego, należy wykonać następujące działania:
 
 1. Przypisywanie ról (czytelnik zabezpieczeń, administrator zabezpieczeń, Administrator globalny)
-2. Zarejestruj aplikację
+2. Rejestrowanie aplikacji
 3. Udzielenie uprawnień
 4. Zbierz ustawienia konfiguracji
 
@@ -47,12 +47,12 @@ Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne dotyczące uzy
 
 ## <a name="api-endpoints"></a>Punkty końcowe interfejsu API 
 
-Punkt końcowy interfejsu API Microsoft Graph dla dzienników inspekcji `https://graph.microsoft.com/beta/auditLogs/directoryAudits` jest i punkt końcowy interfejsu API Microsoft Graph dla `https://graph.microsoft.com/beta/auditLogs/signIns`logowań. Aby uzyskać więcej informacji, zobacz Dokumentacja [interfejsu API inspekcji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) i [Dokumentacja interfejsu API logowania](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
+Punkt końcowy Microsoft Graph interfejsu API dla dzienników inspekcji jest `https://graph.microsoft.com/beta/auditLogs/directoryAudits`, a punkt końcowy interfejsu API Microsoft Graph dla logowań jest `https://graph.microsoft.com/beta/auditLogs/signIns`. Aby uzyskać więcej informacji, zobacz Dokumentacja [interfejsu API inspekcji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) i [Dokumentacja interfejsu API logowania](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Ponadto można użyć [interfejsu API wykrywania ryzyka ochrony tożsamości](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) , aby uzyskać programowy dostęp do wykrywania zabezpieczeń przy użyciu Microsoft Graph. Aby uzyskać więcej informacji, zobacz [wprowadzenie do Azure Active Directory Identity Protection i Microsoft Graph](../identity-protection/graph-get-started.md). 
 
 > [!NOTE]
->  Punkt **końcowy raportów\/\<\/\/nazwy\/dzierżawy https: Graph.Windows.NET jest przestarzały.\>\/** Użyj nowych punktów końcowych interfejsu API opisanych powyżej, aby programowo uzyskać dostęp do raportów o działaniach i zabezpieczeniach.
+>  **Https:\/\/graph.windows.net\/\<nazwa dzierżawcy\>\/raportów**\/punkt końcowy jest przestarzały. Użyj nowych punktów końcowych interfejsu API opisanych powyżej, aby programowo uzyskać dostęp do raportów o działaniach i zabezpieczeniach.
   
 ## <a name="apis-with-graph-explorer"></a>Interfejsy API z Eksploratorem grafów
 

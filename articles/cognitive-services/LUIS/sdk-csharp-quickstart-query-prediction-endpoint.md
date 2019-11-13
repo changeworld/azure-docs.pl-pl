@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start C# : punkt końcowy przewidywania zapytań zestawu SDK — Luis'
 titleSuffix: Azure Cognitive Services
-description: Użyj zestawu SDK języka C# w celu wysłania wypowiedzi użytkownika do usługi LUIS i odebrania przewidywania.
+description: W tym artykule pokazano, jak za pomocą C# zestawu SDK wysyłać wypowiedź użytkownika do aplikacji Luis platformy Azure Cognitive Services i otrzymywać prognozowanie.
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f4612f7b3f76cbbfc0deac98668770f92ff054bc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837075"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953424"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Szybki Start: zapytanie dotyczące punktu końcowego C# przewidywania wersji 2 z zestawem SDK platformy .NET
 

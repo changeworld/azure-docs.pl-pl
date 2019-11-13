@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Eksplorowanie środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights | Microsoft Docs'
-description: Przewodnik Szybki Start dotyczący środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights.
+title: 'Szybki Start: Eksplorowanie środowiska demonstracyjnego w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs'
+description: Więcej informacji na temat Azure Time Series Insights środowiska demonstracyjne w wersji zapoznawczej za pomocą przykładowego samouczka
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/24/2019
-ms.openlocfilehash: 25d6d1aa1cf7db0f448ec22ed7b5c84d840af3f5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579649"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014752"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki Start: Eksplorowanie środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights
 

@@ -1,17 +1,14 @@
 ---
 title: Omówienie zasad platformy Azure
 description: Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie definicji zasad oraz zarządzanie nimi w środowisku platformy Azure.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
-ms.service: azure-policy
-ms.openlocfilehash: 46d78ca9f82017e1a11642af6e5dcdc68e239c8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e6b74eb2ffe15256523e46f0c246ba9f4d399c4d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498278"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959323"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Przegląd usługi Azure Policy
 

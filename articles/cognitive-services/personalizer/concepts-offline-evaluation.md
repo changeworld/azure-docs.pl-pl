@@ -1,7 +1,7 @@
 ---
 title: Użycie metody oceny w trybie offline — Personalizacja
 titleSuffix: Azure Cognitive Services
-description: Utwórz pętlę opinii w C# tym przewodniku szybki start za pomocą usługi personalizacji.
+description: W tym artykule wyjaśniono, jak za pomocą oceny w trybie offline mierzyć efektywność aplikacji i analizować pętlę uczenia.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515585"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953087"
 ---
 # <a name="offline-evaluation"></a>Ocena w trybie offline
 
@@ -98,5 +98,5 @@ Zalecamy zapoznanie się z ocenami funkcji i pytaniami:
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Konfigurowanie narzędzia personalizacji](how-to-settings.md) 
+[Konfigurowanie narzędzia personalizacji](how-to-settings.md)
 [uruchamiania ocen w trybie offline](how-to-offline-evaluation.md) zrozumieć, [jak działa program Personalizuj](how-personalizer-works.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71279891"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73999290"
 ---
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -26,7 +26,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for PostgreSQL:
 1. W lewym górnym rogu witryny Azure Portal kliknij polecenie **Utwórz zasób**.
 2. Na stronie **Nowy** wybierz pozycję **Bazy danych**, a następnie na stronie **Bazy danych** wybierz pozycję **Azure Database for PostgreSQL**.
-3. W przypadku opcji wdrożenie kliknij przycisk **Utwórz** w obszarze **Grupa serwerów Citus (moja skala) — wersja zapoznawcza.**
+3. Dla opcji wdrożenie kliknij przycisk **Utwórz** w obszarze **Grupa serwerów Citus.**
 4. Wypełnij formularz szczegółów nowego serwera, używając następujących informacji:
    - Grupa zasobów: kliknij link **Utwórz nowe** poniżej pola tekstowego dla tego pola. Wprowadź nazwę, taką jak moja **resourceName**.
    - Nazwa grupy serwerów: Wprowadź unikatową nazwę nowej grupy serwerów, która będzie również używana dla domeny podrzędnej serwera.
@@ -38,12 +38,12 @@ Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for Pos
    > Hasło administratora serwera określone w tym miejscu jest wymagane do logowania się do serwera i jego baz danych. Zapamiętaj lub zapisz te informacje do wykorzystania w przyszłości.
 
 5. Kliknij pozycję **Konfiguruj grupę serwerów**. Pozostaw ustawienia w tej sekcji bez zmian i kliknij przycisk **Zapisz**.
-6. Kliknij przycisk **Dalej: >** Sieci w dolnej części ekranu.
+6. Kliknij przycisk **Dalej: sieć >** w dolnej części ekranu.
 
 7. Na karcie **Sieć** kliknij przycisk radiowy **publiczny punkt końcowy** .
-   ![Wybrano publiczny punkt końcowy](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
+   wybrano ![publicznego punktu końcowego](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
 8. Kliknij link **+ Dodaj bieżący adres IP klienta**.
-   ![Dodano adres IP klienta](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
+   ![dodano](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png) IP klienta
 
    > [!NOTE]
    > Serwer Azure PostgreSQL komunikuje się przez port 5432. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 5432 może być zablokowany przez zaporę sieciową. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 5432.
@@ -63,7 +63,7 @@ Podczas tworzenia serwera Azure Database for PostgreSQL zostanie utworzona domy�
    host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
    ```
 
-   Skopiuj ciąg. Należy zastąpić "{\_hasło}" wybranym wcześniej hasłem administracyjnym. System nie przechowuje hasła w postaci zwykłego tekstu i dlatego nie może wyświetlić go w parametrach połączenia.
+   Skopiuj ciąg. Należy zastąpić "{Twoje hasło\_}" wybranym wcześniej hasłem administracyjnym. System nie przechowuje hasła w postaci zwykłego tekstu i dlatego nie może wyświetlić go w parametrach połączenia.
 
 2. Otwórz okno terminalu na komputerze lokalnym.
 

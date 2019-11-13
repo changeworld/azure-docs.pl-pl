@@ -7,18 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: c30b918be5e4185d6fb4fdd2fcfc47f8dd4d25ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969162"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012135"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
 W tym artykule znajdują się odpowiedzi na często zadawane pytania abound tworzenia kopii zapasowych plików i folderów za pomocą agenta Microsoft Azure Recovery Services (MARS) w usłudze [Azure Backup](backup-overview.md) .
-
-## <a name="general"></a>Ogólne
 
 ## <a name="configure-backups"></a>Skonfiguruj kopie zapasowe
 
@@ -113,11 +111,11 @@ Rozmiar folderu pamięci podręcznej określa ilość danych, które można umie
 
 1. Uruchom to polecenie w wierszu polecenia z podwyższonym poziomem uprawnień, aby zatrzymać aparat kopii zapasowych:
 
-    ```PS C:\> Net stop obengine```
+    ```Net stop obengine```
 
 2. Jeśli skonfigurowano kopię zapasową stanu systemu, Otwórz przystawkę Zarządzanie dyskami i Odinstaluj dyski z nazwami w formacie `"CBSSBVol_<ID>"`.
 3. Nie przenoś plików. Zamiast tego Skopiuj folder miejsce w pamięci podręcznej na inny dysk, na którym jest wystarczająca ilość miejsca.
-4. Zaktualizuj następujące wpisy rejestru przy użyciu ścieżki nowego folderu pamięci podręcznej.<br/>
+4. Zaktualizuj następujące wpisy rejestru przy użyciu ścieżki nowego folderu pamięci podręcznej.
 
     | Ścieżka rejestru | Klucz rejestru | Wartość |
     | --- | --- | --- |
@@ -126,9 +124,11 @@ Rozmiar folderu pamięci podręcznej określa ilość danych, które można umie
 
 5. Uruchom ponownie aparat kopii zapasowej w wierszu polecenia z podwyższonym poziomem uprawnień:
 
-    ```PS C:\> Net stop obengine```
+  ```command
+  Net stop obengine
 
-    ```PS C:\> Net start obengine```
+  Net start obengine
+  ```
 
 6. Uruchom kopię zapasową ad-hoc. Po pomyślnym zakończeniu tworzenia kopii zapasowej za pomocą nowej lokalizacji można usunąć oryginalny folder pamięci podręcznej.
 
@@ -143,7 +143,7 @@ Nie zaleca się używać następujących lokalizacji dla folderu pamięci podrę
 
 Następujące atrybuty folderu pamięci podręcznej ani ich kombinacje nie są obsługiwane:
 
-* Szyfrowane
+* Zaszyfrowane
 * Deduplikowane
 * Skompresowane
 * Rozrzedzone

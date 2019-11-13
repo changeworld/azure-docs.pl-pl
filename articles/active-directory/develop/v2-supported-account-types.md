@@ -17,14 +17,14 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852037"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73942169"
 ---
-# <a name="supported-account-types"></a>Obsługiwane typy kont
+# <a name="supported-account-types"></a>Obsługiwane typy konta
 
 W tym artykule wyjaśniono, jakie typy kont (czasami nazwanych odbiorców) są obsługiwane w aplikacjach
 
@@ -37,11 +37,11 @@ W Microsoft Azure chmurze publicznej większość typów aplikacji może logowa�
 - Jeśli piszesz aplikację biznesową, możesz zalogować użytkowników w swojej organizacji. Taka aplikacja jest czasami nazywana **pojedynczym dzierżawcą**.
 - Jeśli jesteś niezależnym dostawcą oprogramowania, możesz napisać aplikację, która loguje użytkowników:
 
-  - W każdej organizacji. Taka aplikacja jest nazywana wielodostępną aplikacją sieci Web. Czasami odczytasz użytkowników, którzy logują się przy użyciu swoich kont służbowych.
+  - W każdej organizacji. Taka aplikacja jest nazywana **wielodostępną** aplikacją sieci Web. Czasami odczytasz użytkowników, którzy logują się przy użyciu swoich kont służbowych.
   - Wraz z konto Microsoftami służbowymi lub osobistymi.
   - Tylko konto Microsoft osobiste.
     > [!NOTE]
-    > Obecnie platforma tożsamości firmy Microsoft obsługuje osobiste konta Microsoft tylko przez zarejestrowanie aplikacji dla **kont służbowych lub służbowych firmy Microsoft**, a następnie ograniczenie logowania w kodzie aplikacji przez określenie urzędu usługi Azure AD. podczas kompilowania aplikacji, `https://login.onmicrosoftonline.com/consumers`na przykład.
+    > Obecnie platforma tożsamości firmy Microsoft obsługuje osobiste konta Microsoft tylko przez zarejestrowanie aplikacji dla **kont służbowych lub służbowych firmy Microsoft**, a następnie ograniczenie logowania w kodzie aplikacji przez określenie urzędu usługi Azure AD podczas kompilowania aplikacji, takiej jak `https://login.microsoftonline.com/consumers`.
 
 - Jeśli piszesz aplikację biznesową dla odbiorców, możesz także zalogować użytkowników przy użyciu ich tożsamości społecznościowych, korzystając z Azure AD B2C.
 
@@ -61,4 +61,4 @@ Niektórych typów kont nie można używać w przypadku niektórych przepływów
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [dzierżawie w Azure Active Directory](./single-and-multi-tenant-apps.md)
-- Dowiedz się [](./authentication-national-cloud.md) więcej o chmurach narodowych
+- Dowiedz się więcej o [chmurach narodowych](./authentication-national-cloud.md)

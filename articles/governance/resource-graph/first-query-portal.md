@@ -1,17 +1,14 @@
 ---
 title: Uruchamianie pierwszego zapytania za pomocą Eksploratora Azure Resource Graph
 description: W tym artykule omówiono procedurę uruchamiania pierwszego zapytania z Azure Portal przy użyciu Eksploratora Azure Resource Graph.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-ms.openlocfilehash: 14615d596c1b673a234ccef541fecfbfce9d5f27
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 9cb8fdfcc68e2ef8e19a8fce2545d2939ac13e06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622602"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958825"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu Eksploratora Azure Resource Graph
 

@@ -1,18 +1,18 @@
 ---
-title: Skonfiguruj odzyskiwanie po awarii dla lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do platformy Azure przy użyciu Site Recovery
+title: Konfigurowanie funkcji Hyper-V (z programem VMM) odzyskiwanie awaryjne przy użyciu Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu System Center VMM do platformy Azure przy użyciu Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f686a02e363025daa5d0c3b3d4e53e07da636544
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933836"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953970"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM na platformie Azure
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w sekcji **przewodniki** z instrukcjami w [dokumentacji Site Recovery](https://docs.microsoft.com/azure/site-recovery).
 
 > [!WARNING]
-> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
+> Obsługa odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V przy użyciu programu System Center VMM będzie przestarzała w najbliższej przyszłości. Przed kontynuowaniem zalecamy odczytanie szczegółów [wycofania](scvmm-site-recovery-deprecation.md) .
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem

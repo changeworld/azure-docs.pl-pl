@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 91dc87cd6bda93663fb4b4eae3d498ae56ba4b3e
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169598"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961553"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów & ograniczenia Azure Cloud Shell
 
@@ -41,7 +41,7 @@ Znane rozwiązania dotyczące rozwiązywania problemów w Azure Cloud Shell obej
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Okno dialogowe magazynu — błąd: 403 RequestDisallowedByPolicy
 
-- **Szczegóły**: podczas tworzenia konta magazynu za pomocą Cloud Shell, nie powiedzie się z powodu zasady platformy Azure umieszczonej przez administratora. Komunikat o błędzie będzie zawierać następujące: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Szczegóły**: podczas tworzenia konta magazynu za pomocą Cloud Shell, nie powiedzie się z powodu zasady platformy Azure umieszczonej przez administratora. Komunikat o błędzie będzie zawierać: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **Rozwiązanie**: skontaktuj się z administratorem platformy Azure, aby usunąć lub zaktualizować zasady platformy Azure odrzucające tworzenie magazynu.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Okno dialogowe magazynu — błąd: 400 DisallowedOperation
@@ -80,18 +80,24 @@ Znane rozwiązania dotyczące rozwiązywania problemów w Azure Cloud Shell obej
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` nie aktualizuje wyniku na dysku platformy Azure
 
-- **Szczegóły**: domyślnie aby zoptymalizować środowisko użytkownika, wyniki `dir` są zapisywane w pamięci podręcznej na dysku platformy Azure.
-- **Rozwiązanie**: po utworzeniu, aktualizacji lub usunięciu zasobu platformy Azure uruchom polecenie `dir -force`, aby zaktualizować wyniki na dysku platformy Azure.
+- **Szczegóły**: domyślnie aby zoptymalizować środowisko użytkownika, wyniki `dir` są przechowywane w pamięci podręcznej na dysku platformy Azure.
+- **Rozwiązanie**: po utworzeniu, aktualizacji lub usunięciu zasobu platformy azure Uruchom `dir -force`, aby zaktualizować wyniki na dysku platformy Azure.
 
 ## <a name="general-limitations"></a>Ogólne ograniczenia
 
 Azure Cloud Shell ma następujące znane ograniczenia:
 
+### <a name="quota-limitations"></a>Ograniczenia limitu przydziału
+
+Azure Cloud Shell ma limit 20 współbieżnych użytkowników na dzierżawcę na region. Jeśli spróbujesz otworzyć więcej równoczesnych sesji niż limit, zobaczysz błąd "użytkownik dzierżawy przekroczył limit przydziału". Jeśli masz uzasadnioną potrzebę posiadania większej liczby sesji (na przykład w przypadku sesji szkoleniowych), skontaktuj się z pomocą techniczną z wyprzedzeniem, aby zażądać zwiększenia limitu przydziału.
+
+Cloud Shell jest świadczona jako bezpłatna usługa i jest przeznaczona do użycia w celu konfigurowania środowiska platformy Azure, a nie jako platformy obliczeniowej ogólnego przeznaczenia. Nadmierne użycie może być brane pod uwagę w przypadku warunków świadczenia usługi na platformie Azure i może prowadzić do zablokowania dostępu Cloud Shell.
+
 ### <a name="system-state-and-persistence"></a>Stan i trwałość systemu
 
 Komputer, na którym jest dostępna sesja Cloud Shell, jest tymczasowy i jest odtwarzany po upływie 20 minut aktywności. Cloud Shell wymaga zainstalowania udziału plików platformy Azure. W związku z tym subskrypcja musi mieć możliwość skonfigurowania zasobów magazynu w celu uzyskania dostępu do Cloud Shell. Inne zagadnienia obejmują:
 
-- W przypadku zainstalowanego magazynu utrwalane są tylko modyfikacje znajdujące się w katalogu `clouddrive`. W bash katalog `$HOME` jest również utrwalany.
+- W przypadku zainstalowanego magazynu utrwalane są tylko modyfikacje znajdujące się w katalogu `clouddrive`. W programie bash katalog `$HOME` również został utrwalony.
 - Udziały plików platformy Azure można instalować tylko z poziomu [przypisanego regionu](persisting-shell-storage.md#mount-a-new-clouddrive).
   - W bash Uruchom `env`, aby znaleźć swój region ustawiony jako `ACC_LOCATION`.
 - Azure Files obsługuje tylko Magazyn lokalnie nadmiarowy i konta magazynu geograficznie nadmiarowego.
@@ -101,7 +107,7 @@ Komputer, na którym jest dostępna sesja Cloud Shell, jest tymczasowy i jest od
 Cloud Shell obsługuje najnowsze wersje następujących przeglądarek:
 
 - Microsoft Edge
-- Program Microsoft Internet Explorer
+- Microsoft Internet Explorer
 - Google Chrome
 - Mozilla Firefox
 - Apple Safari
@@ -129,11 +135,11 @@ Należy zachować ostrożność podczas edytowania. bashrc, co może spowodować
 
 ### <a name="preview-version-of-azuread-module"></a>Wersja zapoznawcza modułu AzureAD
 
-Obecnie dostępna jest `AzureAD.Standard.Preview` — wersja zapoznawcza modułu .NET Standard-based. Ten moduł zapewnia te same funkcje co `AzureAD`.
+Obecnie dostępna jest wersja zapoznawcza modułu opartego na .NET Standard, `AzureAD.Standard.Preview`. Ten moduł zapewnia te same funkcje co `AzureAD`.
 
-### <a name="sqlserver-module-functionality"></a>Funkcja modułu `SqlServer`
+### <a name="sqlserver-module-functionality"></a>funkcje modułu `SqlServer`
 
-Moduł `SqlServer` zawarty w Cloud Shell ma tylko wstępne wsparcie dla programu PowerShell Core. W szczególności `Invoke-SqlCmd` nie jest jeszcze dostępna.
+Moduł `SqlServer` objęty Cloud Shell ma tylko wstępne wsparcie dla programu PowerShell Core. W szczególności `Invoke-SqlCmd` nie jest jeszcze dostępna.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Domyślna lokalizacja pliku podczas tworzenia z dysku platformy Azure
 
@@ -145,7 +151,7 @@ Jeśli użytkownik PSReadline EditMode ma ustawioną wartość Emacs:, użytkown
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Duża przerwa po wyświetleniu paska postępu
 
-Jeśli akcja polecenia lub użytkownika wyświetla pasek postępu, na przykład kartę kończącą się na dysku `Azure:`, możliwe jest, że kursor nie jest prawidłowo ustawiony i pojawia się przerwy, gdzie pasek postępu był wcześniej.
+Jeśli akcja polecenia lub użytkownika wyświetla pasek postępu, na przykład kartę kończącą się na dysku `Azure:`, istnieje możliwość, że kursor nie jest ustawiony prawidłowo i pojawia się odstęp, gdzie pasek postępu był wcześniej.
 
 ### <a name="random-characters-appear-inline"></a>Znaki losowe pojawiają się w tekście
 
@@ -157,10 +163,10 @@ Azure Cloud Shell poważnie potraktuje dane osobowe, dane przechwycone i przecho
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Eksportuj
+### <a name="export"></a>Eksportowanie
 W celu **wyeksportowania** ustawień użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell uruchamiania")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Uruchom następujące polecenia w programie bash lub PowerShell:
 
 Bash
@@ -177,13 +183,13 @@ Program PowerShell:
   ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
-### <a name="delete"></a>Usuń
+### <a name="delete"></a>Usuwanie
 Aby **usunąć** ustawienia użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia. Przy następnym uruchomieniu Cloud Shell zostanie wyświetlony monit o ponowne dołączenie udziału plików. 
 
 >[!Note]
 > Po usunięciu ustawień użytkownika rzeczywisty udział Azure Files nie zostanie usunięty. Przejdź do Azure Files, aby zakończyć tę akcję.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell uruchamiania")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Uruchom następujące polecenia w programie bash lub PowerShell:
 
 Bash

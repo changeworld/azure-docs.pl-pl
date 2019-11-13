@@ -1,5 +1,5 @@
 ---
-title: Dodawanie identyfikatorów korelacji do komunikatów IoT przy użyciu rozproszonego śledzenia (wersja zapoznawcza)
+title: Dodawanie identyfikatorów korelacji do komunikatów IoT w ramach śledzenia rozproszonego (pre)
 description: Dowiedz się, jak śledzić komunikaty IoT w ramach usług platformy Azure używanych przez rozwiązanie przy użyciu funkcji śledzenia rozproszonego.
 author: jlian
 manager: briz
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889445"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953153"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów z urządzenia do chmury w usłudze Azure IoT z rozproszonym śledzeniem (wersja zapoznawcza)
 
@@ -240,7 +240,7 @@ Aby zaktualizować konfigurację próbkowania śledzenia rozproszonego dla wielu
 }
 ```
 
-| Nazwa elementu | Wymagany | Typ | Opis |
+| Nazwa elementu | Wymagane | Typ | Opis |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Tak | Liczba całkowita | Dwie wartości trybu są obecnie obsługiwane do włączania i wyłączania próbkowania. `1` jest włączona i `2` jest wyłączona. |
 | `sampling_rate` | Tak | Liczba całkowita | Ta wartość jest wartością procentową. Dozwolone są tylko wartości z `0` do `100` (włącznie).  |
@@ -265,9 +265,9 @@ Przykładowe dzienniki, jak pokazano w Log Analytics:
 
 | TimeGenerated | OperationName | Kategoria | Poziom | CorrelationId | Milisekundach) | Właściwości |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018 R-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018 r-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018 r-02-22T03:27:28.687 Z"} |
+| 2018 R-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
 | 2018 R-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
-| 2018 R-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"EndpointType": "EventHub", "EndpointName": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
+| 2018 R-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
 Aby poznać różne typy dzienników, zapoznaj się z [dziennikami diagnostycznymi usługi Azure IoT Hub](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
 

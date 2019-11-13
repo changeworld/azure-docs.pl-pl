@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679588"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953947"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Skonfiguruj przyspieszenie procesora graficznego (GPU) dla pulpitu wirtualnego systemu Windows
 
@@ -35,9 +35,6 @@ Pulpit wirtualny systemu Windows obsługuje renderowanie i kodowanie procesora G
 
 Należy również skonfigurować grupę aplikacji lub użyć domyślnej grupy aplikacji pulpitu (o nazwie "aplikacja klasyczna"), która jest tworzona automatycznie podczas tworzenia nowej puli hostów. Aby uzyskać instrukcje, zobacz [Samouczek: Zarządzanie grupami aplikacji dla pulpitu wirtualnego systemu Windows](/azure/virtual-desktop/manage-app-groups).
 
->[!NOTE]
->Pulpit wirtualny systemu Windows obsługuje tylko typ grupy aplikacji "Desktop" dla pul hostów z obsługą procesora GPU. Grupy aplikacji typu "RemoteApp" nie są obsługiwane w przypadku pul hostów obsługujących procesor GPU.
-
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Instaluj obsługiwane sterowniki grafiki na maszynie wirtualnej
 
 Aby skorzystać z możliwości procesora GPU maszyn wirtualnych z serii N w systemie Windows, należy zainstalować sterowniki graficzne firmy NVIDIA. Postępuj zgodnie z instrukcjami podanymi w [tematach Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych serii N z systemem Windows](/azure/virtual-machines/windows/n-series-driver-setup) , aby zainstalować sterowniki ręcznie lub przy użyciu [rozszerzenia sterownika NVIDIA GPU](/azure/virtual-machines/extensions/hpccompute-gpu-windows).
@@ -52,7 +49,7 @@ Domyślnie aplikacje i komputery stacjonarne działające w konfiguracjach wielo
 
 1. Połącz się z pulpitem maszyny wirtualnej przy użyciu konta z uprawnieniami administratora lokalnego.
 2. Otwórz menu Start i wpisz "gpedit. msc", aby otworzyć Edytor zasady grupy.
-3. Przejdź do węzła **Konfiguracja komputera** > **Szablony administracyjne** > **składników systemu Windows** > **Usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** > **zdalnego Środowisko sesji**.
+3. Przejdź do węzła **Konfiguracja komputera** > **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego** > pulpit zdalny **Host sesji** > **środowisko sesji zdalnej**.
 4. Wybierz pozycję zasady **Użyj domyślnej karty graficznej sprzętowej dla wszystkich sesji usługi pulpitu zdalnego** i **Ustaw dla tych** zasad włączenie renderowania procesora GPU w sesji zdalnej.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurowanie kodowania ramek z przyspieszeniem procesora GPU
@@ -77,7 +74,7 @@ Pulpit zdalny koduje wszystkie grafiki renderowane przez aplikacje i komputery s
 
 Aby sprawdzić, czy aplikacje używają procesora GPU do renderowania, spróbuj wykonać jedną z następujących czynności:
 
-* Użyj narzędzia `nvidia-smi` zgodnie z opisem w temacie [Weryfikowanie instalacji sterowników](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) , aby sprawdzić użycie procesora GPU podczas uruchamiania aplikacji.
+* Użyj narzędzia `nvidia-smi`, zgodnie z opisem w temacie [Weryfikowanie instalacji sterowników](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) , aby sprawdzić użycie procesora GPU podczas uruchamiania aplikacji.
 * W przypadku obsługiwanych wersji systemu operacyjnego można użyć Menedżera zadań do sprawdzenia użycia procesora GPU. Wybierz procesor GPU na karcie "Performance" (wydajność), aby sprawdzić, czy aplikacje korzystają z procesora GPU.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>Weryfikowanie przyspieszanego procesora GPU

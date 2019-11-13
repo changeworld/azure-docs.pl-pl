@@ -1,18 +1,14 @@
 ---
 title: Uzyskiwanie zmian zasobów
 description: Dowiedz się, jak znaleźć, kiedy zasób został zmieniony i uzyskać listę właściwości, które uległy zmianie.
-services: resource-graph
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 25d900276518e51e80021d1fdb1ac80945eb2d5c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622572"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958757"
 ---
 # <a name="get-resource-changes"></a>Uzyskiwanie zmian zasobów
 
@@ -48,7 +44,7 @@ Punkt końcowy **resourceChanges** akceptuje następujące parametry w treści �
 - **interwał** \[wymagany\]: Właściwość z datą _początkową_ i _końcową_ , przy której ma zostać wyszukane zdarzenie zmiany przy użyciu **strefy czasowej Zulu (Z)** .
 - **fetchPropertyChanges** (opcjonalnie): właściwość logiczna, która ustawia, czy obiekt odpowiedzi zawiera zmiany właściwości.
 
-Przykład treści żądania:
+Przykład treść żądania:
 
 ```json
 {
@@ -167,7 +163,7 @@ Punkt końcowy **resourceChangeDetails** wymaga dwóch parametrów w treści ż�
 - **ResourceID**: zasób platformy Azure, w którym mają zostać porównane zmiany.
 - **changeId**: unikatowe zdarzenie zmiany dla elementu **ResourceID** zebrane z **resourceChanges**.
 
-Przykład treści żądania:
+Przykład treść żądania:
 
 ```json
 {

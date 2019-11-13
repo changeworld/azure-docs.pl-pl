@@ -1,6 +1,6 @@
 ---
-title: Model szeregów czasowych w wersji zapoznawczej Azure Time Series Insights | Microsoft Docs
-description: Zrozumienie Azure Time Series Insights modelu szeregów czasowych.
+title: Model szeregów czasowych — Azure Time Series Insights | Microsoft Docs
+description: Informacje o modelu szeregów czasowych w wersji zapoznawczej Azure Time Series Insights.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585245"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014691"
 ---
-# <a name="time-series-model"></a>Model szeregów czasowych
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model szeregów czasowych w wersji zapoznawczej Azure Time Series Insights
 
 W tym artykule opisano model szeregów czasowych, możliwości i sposób rozpoczynania kompilowania i aktualizowania własnych modeli w środowisku Azure Time Series Insights w wersji zapoznawczej.
 
@@ -223,7 +223,7 @@ Inne są klasyfikowane jako *nienadrzędne wystąpienia* , ponieważ nie są zgo
 
 *Typy* modeli szeregów czasowych pomagają definiować zmienne lub formuły do wykonywania obliczeń. Typy są skojarzone z określonym wystąpieniem Time Series Insights.
 
-Typ może mieć co najmniej jedną zmienną. Na przykład wystąpienie modelu szeregów czasowych może być typu *czujnika temperatury*, który składa się z *średniej temperatury*, *temperatury minimalnej*i *maksymalnej temperatury*.
+Typ może mieć co najmniej jednej zmiennej. Na przykład wystąpienie modelu szeregów czasowych może być typu *czujnika temperatury*, który składa się z *średniej temperatury*, *temperatury minimalnej*i *maksymalnej temperatury*.
 
 [Demonstracja farmy wiatrów firmy Contoso](https://insights.timeseries.azure.com/preview/samples) umożliwia wizualizację kilku typów modelu szeregów czasowych skojarzonych z odpowiednimi wystąpieniami.
 

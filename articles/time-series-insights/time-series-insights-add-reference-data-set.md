@@ -1,5 +1,5 @@
 ---
-title: Jak dodać zestaw danych referencyjnych do środowiska Azure Time Series Insights | Microsoft Docs
+title: Jak dodać zestaw danych referencyjnych do środowiska — Azure Time Series Insights | Microsoft Docs
 description: W tym artykule opisano sposób dodawania zestawu danych referencyjnych do rozszerzania danych w środowisku Azure Time Series Insightsu.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3aca1f64d469ce228a4b2738c72c0b4bc1956051
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 31ae271a4ad6aa1370828640884a54eb2669804d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991288"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012719"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Utwórz zestaw danych referencyjnych dla środowiska Time Series Insights przy użyciu Azure Portal
 
@@ -26,7 +26,7 @@ Zestaw danych referencyjnych to kolekcja elementów, które rozszerzają zdarzen
 
 Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżące i przyszłe dane przychodzące są dopasowywane i dołączane do zestawu dat odwołania po jego skonfigurowaniu i przekazaniu.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Dowiedz się więcej o modelu danych referencyjnych usługi Time Series Insights.</br>
 
@@ -34,7 +34,7 @@ Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżąc
 
 ## <a name="add-a-reference-data-set"></a>Dodawanie zestawu danych referencyjnych
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Znajdź istniejące środowisko Azure Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
 
@@ -66,7 +66,7 @@ Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżąc
 
    Na przykład wklej dane tablicy JSON: [![wkleić dane JSON](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
 
-   Jeśli wystąpi błąd podczas analizowania wartości danych, błąd pojawia się na czerwono w dolnej części strony, na przykład `CSV parsing error, no rows extracted`.
+   Jeśli wystąpi błąd podczas analizowania wartości danych, błąd pojawia się na czerwono u dołu strony, na przykład `CSV parsing error, no rows extracted`.
 
 1. Po pomyślnym przeanalizowaniu danych zostanie wyświetlona siatka danych wyświetlająca kolumny i wiersze reprezentujące dane.  Przejrzyj siatkę danych, aby upewnić się, że jest to prawidłowa.
 
@@ -94,7 +94,7 @@ Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżąc
 
 1. Aby przekazać dane, wybierz przycisk **Przekaż wiersze** .
 
-    [Przekazywanie![](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [Przekazywanie ![](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
     Strona potwierdza ukończone przekazywanie i wyświetla komunikat **pomyślnie przekazano zestaw danych**.
 

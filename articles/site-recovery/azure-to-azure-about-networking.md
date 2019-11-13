@@ -1,5 +1,5 @@
 ---
-title: Informacje o sieci na platformie Azure do odzyskiwania po awarii platformy Azure przy użyciu Azure Site Recovery | Microsoft Docs
+title: Informacje o sieci w usłudze odzyskiwania po awarii maszyny wirtualnej platformy Azure z Azure Site Recovery
 description: Zawiera omówienie sieci na potrzeby replikacji maszyn wirtualnych platformy Azure przy użyciu Azure Site Recovery.
 services: site-recovery
 author: sujayt
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5c2cd96ccfa3a26a9009188ad424eefaaeb7ce48
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906846"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954210"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>Informacje o sieci na platformie Azure do replikacji platformy Azure
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informacje o sieci w usłudze odzyskiwania po awarii maszyny wirtualnej platformy Azure
 
 
 
@@ -60,8 +60,8 @@ Jeśli używasz serwera proxy zapory opartego na protokole IP lub reguł sieciow
 - Wszystkie zakresy adresów IP, które odpowiadają kontom magazynu w regionie źródłowym
     - Utwórz opartą na [znaczniku usługi magazynu](../virtual-network/security-overview.md#service-tags) regułę sieciowej grupy zabezpieczeń dla regionu źródłowego.
     - Zezwalaj na te adresy, aby dane mogły być zapisywane na koncie magazynu pamięci podręcznej z poziomu maszyny wirtualnej.
-- Utwórz opartą na [usłudze Azure Active Directory regułę sieciowej grupy zabezpieczeń (AAD)](../virtual-network/security-overview.md#service-tags) , aby umożliwić dostęp do wszystkich adresów IP odpowiadających usłudze AAD
-    - Jeśli nowe adresy są dodawane do Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
+- Tworzenie [tag usługi Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na podstawie reguły sieciowej grupy zabezpieczeń do zezwalania na dostęp do wszystkich adresów IP odpowiadającej usługi AAD
+    - Nowe adresy zostaną dodane do usługi Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
 - Site Recovery adresy IP punktów końcowych usługi — dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips) i zależą od lokalizacji docelowej. 
 - Zalecamy utworzenie wymaganych reguł sieciowej grupy zabezpieczeń na testowym sieciowej grupy zabezpieczeń i sprawdzenie, czy nie ma żadnych problemów przed utworzeniem reguł na sieciowej grupy zabezpieczeń produkcyjnej.
 

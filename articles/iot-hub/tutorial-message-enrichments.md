@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8b74621f2c5a9c91ece58c8118cd2bc952c3a464
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809700"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005772"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Samouczek: korzystanie z wzbogacania komunikatów IoT Hub platformy Azure (wersja zapoznawcza)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Samouczek: korzystanie z wzbogacania komunikatów IoT Hub platformy Azure
 
 *Wzbogacanie komunikatów* polega na tym, że IoT Hub *sygnatury* wiadomości z dodatkowymi informacjami przed wysłaniem komunikatów do określonego punktu końcowego. Jednym z powodów użycia wzbogacania komunikatów jest dołączenie danych, które mogą być używane do uproszczenia przetwarzania podrzędnego. Na przykład wzbogacanie komunikatów telemetrycznych urządzeń za pomocą znacznika sznurka urządzenia może zmniejszyć obciążenie klientów, aby umożliwić wywoływanie interfejsu API z użyciem urządzeń z systemem dla tych informacji. Aby uzyskać więcej informacji, zobacz [Omówienie wzbogacania komunikatów](iot-hub-message-enrichments-overview.md).
 
@@ -34,7 +34,7 @@ Poniżej przedstawiono zadania, które należy wykonać w celu wykonania tego sa
 
 * Wymagana jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Instalacja programu [Visual Studio](https://www.visualstudio.com/).
+* Zainstalować program [Visual Studio](https://www.visualstudio.com/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +42,7 @@ Poniżej przedstawiono zadania, które należy wykonać w celu wykonania tego sa
 
 Pobierz [symulację urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) i rozpakuj go. To repozytorium zawiera kilka aplikacji, w tym te, które będą używane do wysyłania komunikatów do centrum IoT.
 
-Ten pobieranie zawiera również skrypt służący do tworzenia zasobów używanych do testowania wzbogacania komunikatów. Skrypt jest w/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli. Na razie możesz sprawdzić skrypt i użyć go. Możesz również skopiować skrypt bezpośrednio z artykułu.
+Ten pobieranie zawiera również skrypt służący do tworzenia zasobów używanych do testowania wzbogacania komunikatów. Skrypt znajduje się w/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. Na razie możesz sprawdzić skrypt i użyć go. Możesz również skopiować skrypt bezpośrednio z artykułu.
 
 Gdy wszystko będzie gotowe do rozpoczęcia testowania, użyjesz aplikacji symulacji urządzenia z tego pobrania, aby wysłać wiadomość do centrum IoT.
 
@@ -251,7 +251,7 @@ W tym momencie wszystkie zasoby są skonfigurowane i skonfigurowano Routing. Kon
 
 2. Dodaj te wartości do listy dla punktu końcowego ContosoStorageEndpointEnriched.
 
-   | Nazwa | Wartość | Punkt końcowy (lista rozwijana) |
+   | Klucz | Wartość | Punkt końcowy (lista rozwijana) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | deviceLocation | $twin. Tags. Location | AzureStorageContainers > ContosoStorageEndpointEnriched |

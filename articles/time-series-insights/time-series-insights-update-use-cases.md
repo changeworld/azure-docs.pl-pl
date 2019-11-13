@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights wersji zapoznawczej — przypadki użycia | Microsoft Docs
-description: Informacje na temat Azure Time Series Insights przypadków użycia wersji zapoznawczej.
+title: Podgląd przypadków użycia — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się więcej na temat Azure Time Series Insights przypadków użycia wersji zapoznawczej.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 175fbf598ae2224d1e1ee0e9c9a3f9ba446965c3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492065"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014670"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Podgląd przypadków użycia
 
@@ -66,7 +66,7 @@ Istnieją trzy podstawowe sposoby współpracy z danymi przechowywanymi w Time S
 
 Użyj Time Series Insights do monitorowania kondycji, użycia i wydajności sprzętu w odpowiedniej skali. Time Series Insights zapewnia łatwy sposób mierzenia wydajności operacyjnej. Usługa Time Series Insights pomaga zarządzać zróżnicowanymi i nieprzewidywalnymi obciążeniami IoT bez pogarszania wydajności procesów pozyskiwania danych i wykonywania zapytań.
 
-[Przegląd ![](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Przegląd](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Przesyłanie strumieniowe i ciągłe przetwarzanie danych pochodzących z procesów operacyjnych może pomyślnie przekształcić każdą firmę, jeśli jest ona połączona z odpowiednią technologią lub rozwiązaniem. Często te rozwiązania są kombinacją wielu systemów. Umożliwiają one eksplorację i analizę danych, które są stale zmieniane, szczególnie w obszarze IoT, i dzielą się wspólnym wzorcem.
 

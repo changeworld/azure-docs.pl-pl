@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 1f98e4ac6bdc0a9b7a5982b58677732ede1911f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503605"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961185"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,7 +53,7 @@ Typowy projekt HelloWorld zawiera implementacje niezależne od platformy dla apl
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabandroid"></a>[Android](#tab/android)
+#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Dodawanie przykładowego kodu dla projektu `helloworld.Android`
 
 Teraz Dodaj C# kod definiujący część aplikacji dla systemu Android.
@@ -99,7 +99,7 @@ Teraz Dodaj C# kod definiujący część aplikacji określoną dla systemu iOS. 
 
 1. Jeśli tworzysz na komputerze z systemem Windows, nawiąż połączenie z urządzeniem Mac, aby skompilować za pośrednictwem **narzędzi** > **iOS** > **para do komputerów Mac**. Aby włączyć połączenie z urządzeniem Mac, postępuj zgodnie z instrukcjami wyświetlanymi przez program Visual Studio.
 
-#### <a name="uwptabhelloworlduwp"></a>[PLATFORMY UWP](#tab/helloworlduwp)
+#### <a name="uwptabhelloworlduwp"></a>[PLATFORMY UNIWERSALNEJ SYSTEMU WINDOWS](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodawanie przykładowego kodu dla projektu `helloworld.UWP`
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodaj przykładowy kod dla HelloWorld. Projekt platformy UWP

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891703"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013143"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -101,28 +101,6 @@ Uruchom to polecenie, aby określić układ startowy dla komputerów z systemem 
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
-```
-
-### <a name="configure-session-timeout-policies"></a>Konfigurowanie zasad limitu czasu sesji
-
-Zasady sesji zdalnej można wymusić na poziomie zasady grupy, ponieważ wszystkie maszyny wirtualne w puli hostów są częścią tej samej grupy zabezpieczeń.
-
-Aby skonfigurować zasady sesji zdalnej:
-
-1. Przejdź do **Szablony administracyjne** > **składników systemu Windows** > **usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** > **limitów czasu sesji**.
-2. W panelu po prawej stronie wybierz pozycję **Ustaw limit czasu dla aktywnych, ale bezczynnych zasad sesji usługi pulpitu zdalnego** .
-3. Po wyświetleniu okna modalnego Zmień opcję zasad z **Nieskonfigurowane** na wartość **włączone** , aby aktywować zasady.
-4. W menu rozwijanym poniżej opcji zasady Ustaw ilość czasu na **3 godziny**.
-
-Zasady sesji zdalnej można także skonfigurować ręcznie, uruchamiając następujące polecenia:
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Konfigurowanie przekierowania strefy czasowej

@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 48bf2cc3feb9ea3983200a2ef778669b5cfe36fa
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521594"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960693"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integracja Azure Security Center z centrum administracyjnym systemu Windows
+# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>Integracja Azure Security Center z centrum administracyjnym systemu Windows (wersja zapoznawcza)
 
 Centrum administracyjne systemu Windows to narzędzie do zarządzania dla serwerów z systemem Windows. Jest to jedna lokalizacja dla administratorów systemu, aby uzyskać dostęp do większości najczęściej używanych narzędzi administracyjnych. Z poziomu Centrum administracyjnego systemu Windows możesz bezpośrednio dołączyć serwery z systemem Premium do Azure Security Center. Możesz wyświetlić podsumowanie zaleceń dotyczących zabezpieczeń i alertów bezpośrednio w środowisku centrum administracyjnego systemu Windows.
 

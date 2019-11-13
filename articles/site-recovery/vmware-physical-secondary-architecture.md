@@ -1,23 +1,22 @@
 ---
-title: Architektura odzyskiwania po awarii oprogramowania VMware/serwera fizycznego do lokacji dodatkowej z Azure Site Recovery | Microsoft Docs
+title: Architektura — odzyskiwanie oprogramowania VMware/Physical do lokacji dodatkowej z Azure Site Recovery
 description: Ten artykuł zawiera omówienie składników i architektury używanych podczas odzyskiwania po awarii lokalnych maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows/Linux do pomocniczej lokacji programu VMware z Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972110"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954573"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura replikacji oprogramowania VMware/serwera fizycznego do pomocniczej lokacji lokalnej
 
-W tym artykule opisano architekturę i procesy używane podczas konfigurowania replikacji odzyskiwania po awarii, trybu failover i odzyskiwania lokalnych maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows/Linux do pomocniczej lokacji programu VMware przy użyciu [Azure Site Recovery ](site-recovery-overview.md).
+W tym artykule opisano architekturę i procesy używane podczas konfigurowania replikacji odzyskiwania po awarii, trybu failover i odzyskiwania lokalnych maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows/Linux do pomocniczej lokacji programu VMware przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Składniki architektury
@@ -38,7 +37,7 @@ W tym artykule opisano architekturę i procesy używane podczas konfigurowania r
 2. Po początkowej replikacji agent na każdej maszynie wysyła zmiany replikacji przyrostowej na serwer przetwarzania.
 3. Serwer przetwarzania optymalizuje dane i transferuje je na główny serwer docelowy w lokacji dodatkowej. Serwer konfiguracji zarządza procesem replikacji.
 
-**Rysunek 6. Replikacja oprogramowania VMware do programu VMware**
+**Rysunek 6: Replikacja z programu VMware do programu VMware**
 
 ![Z programu VMware do programu VMware](./media/site-recovery-components/vmware-to-vmware.png)
 

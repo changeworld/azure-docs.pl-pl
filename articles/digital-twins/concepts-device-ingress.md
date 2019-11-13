@@ -1,6 +1,6 @@
 ---
 title: Łączność urządzeń i dane telemetryczne — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Omówienie sposobu przenoszenia urządzenia do usługi Azure Digital bliźniaczych reprezentacji
+description: Dowiedz się, jak nawiązać połączenie i dołączyć urządzenie w usłudze Azure Digital bliźniaczych reprezentacji.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930390"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010126"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
 
@@ -69,10 +69,10 @@ Można dostosować Format komunikatów i ładunek urządzenia, aby odpowiadały 
 
 | Nazwa właściwości | Wartość | Wymagane | Opis |
 |---|---|---|---|
-| **DigitalTwins — Telemetria** | 1.0 | Yes | Stała wartość, która identyfikuje komunikat w systemie. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | Yes | Unikatowy identyfikator czujnika, który wysyła **komunikat**. Ta wartość musi być zgodna z właściwością **HardwareId** obiektu dla systemu, aby przetworzyć go. Na przykład `00FF0643BE88-CO2`. |
+| **DigitalTwins-Telemetry** | 1.0 | Tak | Stała wartość, która identyfikuje komunikat w systemie. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Tak | Unikatowy identyfikator czujnika, który wysyła **komunikat**. Ta wartość musi być zgodna z właściwością **HardwareId** obiektu dla systemu, aby przetworzyć go. Na przykład `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nie | Ciąg daty w formacie [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , który identyfikuje czas próbkowania ładunku. Na przykład `2018-09-20T07:35:00.8587882-07:00`. |
-| **Korelacj** | `string` | Nie | Identyfikator UUID używany do śledzenia zdarzeń w systemie. Na przykład `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **CorrelationId** | `string` | Nie | Identyfikator UUID używany do śledzenia zdarzeń w systemie. Na przykład `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Wyślij wiadomość do bliźniaczych reprezentacji Digital
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7c2866441c7439008fad27ced9b9b1dddea848ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492833"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961937"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Zmiany przewidywanych punktów końcowych dla wersji 3
 
@@ -63,7 +63,7 @@ Jeśli używasz platformy bot Framework, sprawdzanie pisowni Bing wersji 7 lub c
 
 Jeśli nie znasz żadnej aplikacji klienckiej ani integracji (bot Framework i sprawdzanie pisowni Bing wersji 7), to na pewno chcesz migrować Tworzenie aplikacji LUIS i punkt końcowy przewidywania w tym samym czasie, zacznij korzystać z punktu końcowego przewidywania v3. Punkt końcowy przewidywania w wersji 2 nadal będzie dostępny i jest to dobra strategia obniżenia poziomu. 
 
-## <a name="not-supported"></a>Brak obsługi
+## <a name="not-supported"></a>Nieobsługiwane
 
 * Interfejs sprawdzanie pisowni Bing API nie jest obsługiwany w punkcie końcowym przewidywania v3 — Kontynuuj korzystanie z punktu końcowego przewidywania interfejsu API V2 na potrzeby poprawek pisowni
 
@@ -73,7 +73,7 @@ Kontynuuj korzystanie z punktu końcowego przewidywania interfejsu API v2 do mom
 
 ## <a name="v2-api-deprecation"></a>Przestarzałe interfejsy API v2 
 
-Interfejs API przewidywania w wersji 2 nie będzie przestarzały przez co najmniej 9 miesięcy od wersji 3 – 2020 czerwca 8RD. 
+Interfejs API przewidywania w wersji 2 nie będzie przestarzały przez co najmniej 9 miesięcy od wersji zapoznawczej v3, 8 czerwca 2020. 
 
 ## <a name="endpoint-url-changes"></a>Zmiany adresu URL punktu końcowego 
 
@@ -85,10 +85,10 @@ Jeśli chcesz wykonać zapytanie według wersji, musisz najpierw [opublikować z
 
 |WERSJA INTERFEJSU API PRZEWIDYWANIA|METHOD|Adres URL|
 |--|--|--|
-|Czytanie|GET|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>prognozowanie</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? Query =<b>{Query}</b>|
-|Czytanie|POUBOJOWEGO|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>prognozowanie</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
+|V3|GET|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>prognozowanie</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? Query =<b>{Query}</b>|
+|V3|POST|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>prognozowanie</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
 |Wersja 2|GET|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>prognozowanie</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict? Query =<b>{Query}</b>|
-|Wersja 2|POUBOJOWEGO|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>prognozowanie</b><b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
+|Wersja 2|POST|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>prognozowanie</b><b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
 
 |Prawidłowe wartości dla `SLOT-NAME`|
 |--|
@@ -108,7 +108,7 @@ Interfejs API v3 ma inne parametry ciągu zapytania.
 |`show-all-intents`|wartość logiczna|Tylko wersja 3|false|Zwróć wszystkie intencje z odpowiednim wynikiem w obiekcie **przewidywania. intencje** . Intencje są zwracane jako obiekty w obiekcie nadrzędnym `intents`. Pozwala to na dostęp programistyczny bez potrzeby znajdowania zamiaru w tablicy: `prediction.intents.give`. W wersji 2 te zostały zwrócone w tablicy. |
 |`verbose`|wartość logiczna|Wersja 2 & v3|false|**W wersji 2**, gdy ustawiono wartość true, wszystkie przewidywane intencje zostały zwrócone. Jeśli potrzebujesz wszystkich przewidywanych intencji, użyj parametru v3 `show-all-intents`.<br><br>**W wersji 3**ten parametr zawiera tylko szczegóły metadanych jednostki przewidywania jednostek.  |
 |`timezoneOffset`|ciąg|Wersja 2|-|Strefa czasowa zastosowana do jednostek datetimeV2.|
-|`datetimeReference`|ciąg|Czytanie|-|[Strefa czasowa](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) zastosowana do jednostek datetimeV2. Zastępuje `timezoneOffset` w wersji 2.|
+|`datetimeReference`|ciąg|V3|-|[Strefa czasowa](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) zastosowana do jednostek datetimeV2. Zastępuje `timezoneOffset` w wersji 2.|
 
 
 ### <a name="v3-post-body"></a>Treść wpisu v3
@@ -127,8 +127,8 @@ Interfejs API v3 ma inne parametry ciągu zapytania.
 
 |Właściwość|Typ|Wersja|Domyślne|Przeznaczenie|
 |--|--|--|--|--|
-|`dynamicLists`|tablica|Tylko wersja 3|Niewymagane.|[Listy dynamiczne](#dynamic-lists-passed-in-at-prediction-time) umożliwiają rozbudowa istniejącej, przeszkolonej i opublikowanej jednostki listy, już w aplikacji Luis.|
-|`externalEntities`|tablica|Tylko wersja 3|Niewymagane.|[Jednostki zewnętrzne](#external-entities-passed-in-at-prediction-time) zapewniają aplikacji Luis możliwość identyfikowania i etykietowania jednostek podczas środowiska uruchomieniowego, które mogą być używane jako funkcje istniejących jednostek. |
+|`dynamicLists`|tablica|Tylko wersja 3|Nie jest wymagane.|[Listy dynamiczne](#dynamic-lists-passed-in-at-prediction-time) umożliwiają rozbudowa istniejącej, przeszkolonej i opublikowanej jednostki listy, już w aplikacji Luis.|
+|`externalEntities`|tablica|Tylko wersja 3|Nie jest wymagane.|[Jednostki zewnętrzne](#external-entities-passed-in-at-prediction-time) zapewniają aplikacji Luis możliwość identyfikowania i etykietowania jednostek podczas środowiska uruchomieniowego, które mogą być używane jako funkcje istniejących jednostek. |
 |`options.datetimeReference`|ciąg|Tylko wersja 3|Brak domyślnego|Służy do określania [przesunięcia datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Format datetimeReference to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|wartość logiczna|Tylko wersja 3|false|Określa, czy jest używana [Jednostka zewnętrzna użytkownika (o takiej samej nazwie jak istniejąca jednostka)](#override-existing-model-predictions) lub istniejąca jednostka w modelu jest używana do przewidywania. |
 |`query`|ciąg|Tylko wersja 3|Wymagany.|**W wersji 2**wypowiedź do przewidywania jest parametrem `q`. <br><br>**W wersji 3**funkcja jest przenoszona w parametrze `query`.|
@@ -408,7 +408,7 @@ Jeśli `preferExternalEntities` jest ustawiona na `true`, LUIS zwraca odpowiedź
 
 
 
-#### <a name="resolution"></a>Rozdzielczość
+#### <a name="resolution"></a>Rozwiązanie
 
 _Opcjonalna_ Właściwość `resolution` zwraca w odpowiedzi predykcyjnej, co pozwala na przekazywanie metadanych skojarzonych z jednostką zewnętrzną, a następnie otrzymywanie jej z powrotem w odpowiedzi. 
 
@@ -416,7 +416,7 @@ Podstawowym celem jest rozszerzanie wstępnie utworzonych jednostek, ale nie jes
 
 Właściwość `resolution` może być liczbą, ciągiem, obiektem lub tablicą:
 
-* Dallas
+* "Dallas"
 * {"text": "value"}
 * 12345 
 * ["a", "b", "c"]

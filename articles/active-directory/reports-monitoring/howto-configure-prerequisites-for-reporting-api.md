@@ -3,7 +3,7 @@ title: Wymagania wstępne dotyczące interfejsu API raportowania Azure Active Di
 description: Informacje o wymaganiach wstępnych dotyczących uzyskiwania dostępu do interfejsu API raportowania usługi Azure AD
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 08/30/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5e198a900241bc7bb0b6aff9a57eed59d1cd86
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895229"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014437"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dotyczące uzyskiwania dostępu do interfejsu API raportowania Azure Active Directory
 
@@ -183,7 +183,7 @@ Te wartości są potrzebne podczas konfigurowania wywołań do interfejsu API ra
 
     b. Zgodnie z **wygaśnięciem**wybierz pozycję **za 2 lata**.
 
-    d. Kliknij przycisk **Save** (Zapisz).
+    d. Kliknij pozycję **Zapisz**.
 
     d. Skopiuj wartość klucza.
 

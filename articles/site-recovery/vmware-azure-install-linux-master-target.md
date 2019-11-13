@@ -1,5 +1,5 @@
 ---
-title: Zainstaluj główny serwer docelowy z systemem Linux na potrzeby powrotu po awarii do lokacji lokalnej | Microsoft Docs
+title: Zainstaluj główny serwer docelowy na potrzeby powrotu po awarii maszyny wirtualnej z systemem Linux przy użyciu Azure Site Recovery
 description: Dowiedz się, jak skonfigurować główny serwer docelowy z systemem Linux na potrzeby powrotu po awarii do lokacji lokalnej podczas odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery.
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904413"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954377"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Zainstaluj główny serwer docelowy z systemem Linux na potrzeby powrotu po awarii
 Po przełączeniu maszyn wirtualnych w tryb failover na platformę Azure można wrócić do trybu failover maszyn wirtualnych w lokacji lokalnej. Aby powrócić po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. W przypadku tego procesu wymagany jest lokalny główny serwer docelowy do odbierania ruchu. 
@@ -24,7 +24,7 @@ Jeśli chroniona maszyna wirtualna jest maszyną wirtualną z systemem Windows, 
 > Począwszy od wersji głównego serwera docelowego 9.10.0, najnowszy główny serwer docelowy można zainstalować tylko na serwerze Ubuntu 16,04. Nowe instalacje nie są dozwolone na serwerach CentOS 16,8. Można jednak kontynuować uaktualnianie starych głównych serwerów docelowych przy użyciu wersji 9.10.0.
 > Główny serwer docelowy w systemie LVM nie jest obsługiwany.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten artykuł zawiera instrukcje dotyczące instalowania głównego elementu docelowego systemu Linux.
 
 Zamieszczaj komentarze lub pytania na końcu tego artykułu lub na [Forum Recovery Services platformy Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
@@ -41,7 +41,7 @@ Zamieszczaj komentarze lub pytania na końcu tego artykułu lub na [Forum Recove
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Wskazówki dotyczące ustalania wielkości na potrzeby tworzenia głównego serwera docelowego
 
 Utwórz główny obiekt docelowy zgodnie z następującymi wskazówkami dotyczącymi ustalania wielkości:
-- **PAMIĘĆ RAM**: 6 GB lub więcej
+- **Pamięć RAM**: 6 GB lub więcej
 - **Rozmiar dysku systemu operacyjnego**: 100 GB lub więcej (aby zainstalować system operacyjny)
 - **Dodatkowy rozmiar dysku dla dysku przechowywania**: 1 TB
 - **Rdzenie procesora CPU**: 4 rdzenie lub więcej
@@ -160,7 +160,7 @@ Aby uzyskać identyfikator dla każdego dysku twardego SCSI na maszynie wirtualn
 
 3. Wybierz kartę **Opcje** .
 
-4. W okienku po lewej stronie wybierz pozycję **Zaawansowane** > **Ogólne**, a następnie wybierz przycisk **Parametry konfiguracji** w prawej dolnej części ekranu.
+4. W lewym okienku wybierz pozycję **Advanced** > **General**, a następnie wybierz przycisk **Parametry konfiguracji** w prawej dolnej części ekranu.
 
     ![Otwórz parametr konfiguracji](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -240,11 +240,11 @@ Wykonaj następujące kroki, aby utworzyć dysk przechowywania:
 
 1. Dołącz nowy dysk o pojemności 1 TB do głównej maszyny wirtualnej z systemem Linux, a następnie uruchom maszynę.
 
-2. Użyj wielościeżkowego polecenia, aby poznać identyfikator wielościeżkowy dysku przechowywania: wielościeżkowy **— wszystkie**
+2. Użyj **wielościeżkowego** polecenia, aby poznać identyfikator wielościeżkowy dysku przechowywania: **wielościeżkowy — wszystkie**
 
     ![Identyfikator wielu ścieżek](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Sformatuj dysk, a następnie utwórz system plików na nowym dysku: **mkfs. ext4/dev/mapper/\<identyfikator wielościeżkowy dysku przechowywania >** .
+3. Sformatuj dysk, a następnie utwórz system plików na nowym dysku: **mkfs. ext4/dev/mapper/\<identyfikator wielościeżkowego dysku przechowywania >** .
     
     ![System plików](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ Wykonaj następujące kroki, aby utworzyć dysk przechowywania:
     
     Wybierz pozycję **Wstaw** , aby rozpocząć edycję pliku. Utwórz nowy wiersz, a następnie Wstaw poniższy tekst. Edytuj identyfikator wielościeżkowy dysku na podstawie wyróżnionego identyfikatora wielościeżkowego z poprzedniego polecenia.
 
-    **Identyfikator\<wielościeżkowego przechowywania/dev/mapper/>/mnt/Retention ext4 RW 0 0**
+    **/dev/mapper/\<identyfikator wielościeżkowy >/mnt/Retention ext4 RW 0 0**
 
     Wybierz **klawisz ESC**, a następnie wpisz **: WQ** (Zapisz i Wyjdź), aby zamknąć okno edytora.
 

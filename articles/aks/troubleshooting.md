@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604726"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012968"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
@@ -23,7 +23,7 @@ W przypadku tworzenia klastrów usługi Azure Kubernetes Service (AKS) lub zarz�
 Wypróbuj [oficjalny przewodnik dotyczący rozwiązywania problemów z klastrami Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Istnieje również [Przewodnik rozwiązywania problemów](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)Opublikowany przez inżyniera firmy Microsoft w celu rozwiązywania problemów z planami, węzłami, klastrami i innymi funkcjami.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Otrzymuję błąd "Przekroczono limit przydziału" podczas tworzenia lub uaktualniania. Co mamy zrobić? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Otrzymuję błąd "Przekroczono limit przydziału" podczas tworzenia lub uaktualniania. Co mam zrobić? 
 
 Musisz [zażądać rdzeni](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
@@ -32,7 +32,7 @@ Musisz [zażądać rdzeni](https://docs.microsoft.com/azure/azure-supportability
 Ustawienie Maksymalna liczba sztuk na węzeł domyślnie jest 30, Jeśli klaster AKS jest wdrażany w Azure Portal.
 Ustawienie maksymalny rozmiar poszczególnych węzłów domyślnie 110 w przypadku wdrażania klastra AKS w interfejsie wiersza polecenia platformy Azure. (Upewnij się, że używasz najnowszej wersji interfejsu wiersza polecenia platformy Azure). To ustawienie domyślne można zmienić przy użyciu flagi `–-max-pods` w poleceniu `az aks create`.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra AKS przy użyciu zaawansowanej sieci. Co mamy zrobić?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra AKS przy użyciu zaawansowanej sieci. Co mam zrobić?
 
 Jeśli używana jest usługa Azure CNI (Advanced Network), AKS przydziela adresy IP na podstawie skonfigurowanego węzła "Max-Binding". W oparciu o skonfigurowaną maksymalną liczbę zasobników na węzeł rozmiar podsieci musi być większy niż iloczyn liczby węzłów i maksymalne ustawienie pod na węzeł. Poniższe równanie zawiera opis:
 
@@ -40,7 +40,7 @@ Rozmiar podsieci > liczbę węzłów w klastrze (biorąc pod uwagę przyszłe wy
 
 Aby uzyskać więcej informacji, zobacz [Planowanie adresów IP w klastrze](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mój pod jest zablokowany w trybie CrashLoopBackOff. Co mamy zrobić?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mój pod jest zablokowany w trybie CrashLoopBackOff. Co mam zrobić?
 
 Może istnieć różne przyczyny zablokowania w tym trybie. Możesz zajrzeć do:
 
@@ -53,17 +53,17 @@ Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz [debu
 
 Niestety włączenie kontroli dostępu opartej na rolach (RBAC) w istniejących klastrach nie jest obecnie obsługiwane. Należy jawnie utworzyć nowe klastry. W przypadku korzystania z interfejsu wiersza polecenia RBAC jest domyślnie włączone. Jeśli używasz portalu AKS, przycisk przełączania umożliwiający włączenie RBAC jest dostępny w przepływie pracy tworzenia.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Po utworzeniu klastra z włączoną funkcją RBAC przy użyciu interfejsu wiersza polecenia platformy Azure z wartościami domyślnymi lub Azure Portal, a teraz widzimy wiele ostrzeżeń na pulpicie nawigacyjnym Kubernetes. Pulpit nawigacyjny służący do pracy bez żadnych ostrzeżeń. Co mamy zrobić?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Po utworzeniu klastra z włączoną funkcją RBAC przy użyciu interfejsu wiersza polecenia platformy Azure z wartościami domyślnymi lub Azure Portal, a teraz widzimy wiele ostrzeżeń na pulpicie nawigacyjnym Kubernetes. Pulpit nawigacyjny służący do pracy bez żadnych ostrzeżeń. Co mam zrobić?
 
 Przyczyną ostrzeżeń na pulpicie nawigacyjnym jest to, że klaster jest teraz włączony przy użyciu RBAC i dostęp do niego jest domyślnie wyłączony. Ogólnie rzecz biorąc, to podejście jest dobrym rozwiązaniem, ponieważ domyślne narażenie pulpitu nawigacyjnego na wszystkich użytkowników klastra może prowadzić do zagrożeń bezpieczeństwa. Jeśli nadal chcesz włączyć pulpit nawigacyjny, postępuj zgodnie z instrukcjami w [tym wpisie w blogu](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nie można nawiązać połączenia z pulpitem nawigacyjnym. Co mamy zrobić?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nie można nawiązać połączenia z pulpitem nawigacyjnym. Co mam zrobić?
 
 Najprostszym sposobem uzyskania dostępu do usługi poza klastrem jest uruchomienie `kubectl proxy`, które serwery proxy żądania wysyłane do portu localhost 8001 do serwera interfejsu API Kubernetes. Z tego miejsca serwer interfejsu API może być serwerem proxy usługi: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Jeśli pulpit nawigacyjny Kubernetes nie jest widoczny, sprawdź, czy `kube-proxy` pod działaniem w przestrzeni nazw `kube-system`. Jeśli nie jest w stanie uruchomionym, Usuń element pod, a zostanie uruchomiony ponownie.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę pobrać dzienników przy użyciu dzienników polecenia kubectl lub nie mogę nawiązać połączenia z serwerem interfejsu API. Otrzymuję komunikat "błąd z serwera: błąd podczas wybierania numeru zaplecza: wybierz TCP...". Co mamy zrobić?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę pobrać dzienników przy użyciu dzienników polecenia kubectl lub nie mogę nawiązać połączenia z serwerem interfejsu API. Otrzymuję komunikat "błąd z serwera: błąd podczas wybierania numeru zaplecza: wybierz TCP...". Co mam zrobić?
 
 Upewnij się, że domyślna grupa zabezpieczeń sieci nie jest modyfikowana i że dla połączenia z serwerem interfejsu API jest otwarty zarówno port 22, jak i 9000. Sprawdź, czy `tunnelfront` pod jest uruchomiony w przestrzeni nazw *polecenia-system* przy użyciu polecenia `kubectl get pods --namespace kube-system`. Jeśli tak nie jest, Wymuś usunięcie elementu pod i zostanie on ponownie uruchomiony.
 
@@ -118,6 +118,7 @@ Postępuj zgodnie z instrukcjami *przed rozpoczęciem* w odpowiednim dokumencie,
 
 Ograniczenia nazewnictwa są implementowane przez platformę Azure i AKS. Jeśli nazwa zasobu lub parametr przerywa jedno z tych ograniczeń, zwracany jest błąd, który prosi o podanie innych danych wejściowych. Stosuje się następujące typowe wskazówki dotyczące nazewnictwa:
 
+* Nazwy klastrów muszą składać się z 1-63 znaków. Jedyne dozwolone znaki to litery, cyfry, łączniki i podkreślenia. Pierwszy i ostatni znak musi być literą lub cyfrą.
 * Nazwa grupy zasobów AKS *MC_* łączy nazwę grupy zasobów i nazwę zasobu. Automatycznie wygenerowana składnia `MC_resourceGroupName_resourceName_AzureRegion` nie może być większa niż 80 znaków. W razie konieczności Zmniejsz długość nazwy grupy zasobów lub nazwę klastra AKS.
 * *DnsPrefix* musi rozpoczynać się i kończyć wartościami alfanumerycznymi. Prawidłowe znaki to wartości alfanumeryczne i łączniki (-). *DnsPrefix* nie może zawierać znaków specjalnych, takich jak kropka (.).
 

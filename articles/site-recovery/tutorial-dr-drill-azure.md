@@ -1,20 +1,19 @@
 ---
-title: Uruchamianie próbnego odzyskiwania po awarii maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
-description: Informacje o uruchamianiu próbnego odzyskiwania po awarii ze środowiska lokalnego na platformę Azure przy użyciu usługi Azure Site Recovery
+title: Wykonaj drążenie odzyskiwania po awarii do platformy Azure za pomocą Azure Site Recovery
+description: Dowiedz się, jak przeprowadzić drążenie odzyskiwania po awarii z lokalizacji lokalnej na platformę Azure przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 14ef3bf8420acf03f5c8329c6c78834dbc16ae40
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814279"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954432"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure
 
@@ -23,7 +22,7 @@ W tym artykule opisano sposób uruchamiania przechodzenia do odzyskiwania po awa
 
 Jest to czwarty samouczek z serii, który pokazuje, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla maszyn lokalnych.
 
-W tym samouczku pokazano, jak:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci izolowanej do testowego przełączania w tryb failover
@@ -81,13 +80,13 @@ Uruchom testowe przełączenie w tryb failover w następujący sposób:
 
 W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, którego przeprowadzenie zajmuje około 8–10 minut. Dłuższy czas testowego przełączania w tryb failover może występować w przypadku maszyn VMware z systemem Linux, maszyn wirtualnych VMware, które nie mają włączonej usługi DHCP, oraz maszyn wirtualnych VMware, które nie mają następujących sterowników rozruchowych: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="connect-after-failover"></a>Połącz po zakończeniu pracy w trybie failover
+## <a name="connect-after-failover"></a>Połącz po przejściu w tryb failover
 
 Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure przy użyciu protokołu RDP/SSH po przejściu w tryb failover, [Przygotuj się do połączenia](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Jeśli występują problemy z łącznością po przejściu do trybu failover, postępuj zgodnie z przewodnikiem [rozwiązywania problemów](site-recovery-failover-to-azure-troubleshoot.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Uruchamianie trybu failover i powrotu po awarii dla maszyn wirtualnych](vmware-azure-tutorial-failover-failback.md)
-> VMware
-> [Uruchamianie trybu failover i powrotu po awarii dla maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-failover-failback-tutorial.md)[Uruchamianie trybu failover i powrotu po awarii dla komputerów fizycznych](physical-to-azure-failover-failback.md)
+> [Uruchamianie trybu failover i powrotu po awarii dla maszyn wirtualnych VMware](vmware-azure-tutorial-failover-failback.md)
+> [Uruchamianie trybu failover i powrotu po awarii dla maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-failover-failback-tutorial.md)
+> [Uruchamianie trybu failover i powrotu po awarii dla maszyn fizycznych](physical-to-azure-failover-failback.md)

@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748373"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953119"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Tworzenie kontenerów i baz danych usługi Azure Cosmos w trybie autopilotażu (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Oprócz ręcznego inicjowania obsługi przepływności można teraz skonfigurowa
 
 Nie trzeba już ręcznie zarządzać zainicjowaną przepływność lub obsłużyć problemów z ograniczaniem szybkości. Kontenery usługi Azure Cosmos skonfigurowane w trybie autopilotażu mogą być natychmiast skalowane w odpowiedzi na obciążenie, bez wywierania wpływu na dostępność, opóźnienia, przepływność lub wydajność obciążeń globalnie. W przypadku wysokiego użycia kontenery usługi Azure Cosmos skonfigurowane w trybie autopilotażu można skalować w górę lub w dół bez wywierania wpływu na bieżące operacje.
 
-Podczas konfigurowania kontenerów i baz danych w trybie autopilotażu należy określić maksymalną przepływność, `Tmax` nie można jej przekroczyć. Kontenery mogą następnie szybko skalować w oparciu o potrzeby związane z obciążeniem w zakresie `0.1*Tmax < T < Tmax`. Innymi słowy, kontenery i bazy danych są skalowane szybko w zależności od potrzeb związanych z obciążeniem, od najmniej do 10% maksymalnej skonfigurowanej przepływności oraz do skonfigurowanej maksymalnej wartości przepływności. W dowolnym momencie można zmienić ustawienie maksymalnej przepływności (Tmax) dla bazy danych lub kontenera w systemie.
+Podczas konfigurowania kontenerów i baz danych w trybie autopilotażu należy określić maksymalną przepływność, `Tmax` nie można jej przekroczyć. Kontenery mogą następnie szybko skalować w oparciu o potrzeby związane z obciążeniem w zakresie `0.1*Tmax < T < Tmax`. Innymi słowy, kontenery i bazy danych są skalowane szybko w zależności od potrzeb związanych z obciążeniem, od najmniej do 10% maksymalnej skonfigurowanej przepływności oraz do skonfigurowanej maksymalnej wartości przepływności. W dowolnym momencie można zmienić ustawienie maksymalnej przepływności (Tmax) dla bazy danych lub kontenera w systemie. W przypadku opcji autopilota 400 RU/s minimalna przepływność na kontener lub baza danych nie mają już zastosowania.
 
 W trakcie korzystania z wersji zapoznawczej autopilotażu dla określonej maksymalnej przepływności w kontenerze lub w bazie danych system umożliwia działanie w ramach obliczonego limitu magazynu. W przypadku przekroczenia limitu magazynowania maksymalna przepływność jest automatycznie dostosowywana do wyższej wartości. W przypadku korzystania z przepływności poziomu bazy danych z trybem autopilotażu liczba kontenerów dozwolona w ramach bazy danych jest obliczana jako: (0,001 * maksymalna przepływność). Na przykład jeśli zainicjujesz 20 000 autopilotaż RU/s, baza danych może mieć 20 kontenerów.
 

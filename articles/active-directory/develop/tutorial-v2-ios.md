@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cfb61f417597abe52910b012ce3fb79ba48ce97
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e3892a03ffe097a51f294e698168f00e1359f92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902842"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960660"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Logowanie użytkowników i wywoływanie Microsoft Graph z aplikacji dla systemu iOS lub macOS
 
@@ -105,13 +105,13 @@ github "AzureAD/microsoft-authentication-library-for-objc" "master"
 
 W oknie terminalu w tym samym katalogu, w którym Zaktualizowano `Cartfile`, uruchom następujące polecenie, aby Carthage zaktualizować zależności w projekcie.
 
-Wykonane
+iOS:
 
 ```bash
 carthage update --platform iOS
 ```
 
-MacOS
+macOS:
 
 ```bash
 carthage update --platform macOS
@@ -142,7 +142,7 @@ let kScopes: [String] = ["https://graph.microsoft.com/user.read"] // request per
 let kAuthority = "https://login.microsoftonline.com/common" // this authority allows a personal Microsoft account and a work or school account in any organization’s Azure AD tenant to sign in
 var accessToken = String()
 var applicationContext : MSALPublicClientApplication?
-var webViewParamaters : MSALWebviewParameters?
+var webViewParameters : MSALWebviewParameters?
 ```
 
 Jedyną wartością, którą należy zmodyfikować, jest wartość przypisana do `kClientID`jako [Identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id). Ta wartość jest częścią danych konfiguracji MSAL, które zostały zapisane w ramach kroku na początku tego samouczka, aby zarejestrować aplikację w Azure Portal.
@@ -322,7 +322,7 @@ Dodaj następujące elementy po metodzie `initMSAL` do klasy `ViewController`.
 
 ```swift
 func initWebViewParams() {
-        self.webViewParamaters = MSALWebviewParameters(parentViewController: self)
+        self.webViewParameters = MSALWebviewParameters(parentViewController: self)
     }
 ```
 
@@ -330,8 +330,8 @@ func initWebViewParams() {
 
 ```swift
 func initWebViewParams() {
-        self.webViewParamaters = MSALWebviewParameters()
-        self.webViewParamaters?.webviewType = .wkWebView
+        self.webViewParameters = MSALWebviewParameters()
+        self.webViewParameters?.webviewType = .wkWebView
     }
 ```
 
@@ -425,7 +425,7 @@ Dodaj następujący kod do klasy `ViewController`.
 func acquireTokenInteractively() {
         
     guard let applicationContext = self.applicationContext else { return }
-    guard let webViewParameters = self.webViewParamaters else { return }
+    guard let webViewParameters = self.webViewParameters else { return }
         
     // #1
     let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParameters: webViewParameters)

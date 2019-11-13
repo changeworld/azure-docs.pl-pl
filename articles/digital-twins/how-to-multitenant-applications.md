@@ -1,5 +1,5 @@
 ---
-title: Włączanie wielodostępnych aplikacji za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+title: Włączanie aplikacji wielodostępnych — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Jak skonfigurować wielodostępne Azure Active Directory aplikacje dla usługi Azure Digital bliźniaczych reprezentacji.
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6394d519b93b55358ef9d528f89978d5a3cf3007
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958780"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005918"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Włączanie wielodostępnych aplikacji za pomocą usługi Azure Digital bliźniaczych reprezentacji
 
@@ -57,13 +57,13 @@ Aby rozwiązać poprzedni scenariusz problemu, należy wykonać następujące cz
   1. Otwórz **subskrypcje**.
   1. Wybierz subskrypcję mającą dzierżawę Azure Active Directory, która ma być używana w aplikacji **dewelopera**.
 
-     [@no__t — subskrypcje Active Directory 1Azure](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
+     [subskrypcje Azure Active Directory ![](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. Wybierz pozycję **dostawcy zasobów**.
   1. Wyszukaj ciąg **Microsoft. IoTSpaces**.
   1. Wybierz pozycję **Zarejestruj**.
 
-     [@no__t — 1Azure Active Directory dostawcy zasobów](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
+     [dostawcy zasobów Azure Active Directory ![](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>Następne kroki
 

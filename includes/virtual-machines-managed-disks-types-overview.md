@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601385"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012418"
 ---
-# <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
-
 Usługa Azure Managed disks obecnie oferuje cztery typy dysków, a każdy typ jest skierowany do określonych scenariuszy klientów.
 
 ## <a name="disk-comparison"></a>Porównanie dysków
@@ -29,7 +27,7 @@ Poniższa tabela zawiera porównanie dysków twardych, dysków półprzewodnikow
 |Scenariusz   |Obciążenia intensywnie korzystające z operacji we/wy, takie jak [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), baz danych najwyższej warstwy (na przykład SQL, Oracle) i innych obciążeń intensywnie korzystających z transakcji.   |Obciążenia produkcyjne i wrażliwe na wydajność   |Serwery sieci Web, lekko używane aplikacje dla przedsiębiorstw i tworzenie/testowanie   |Kopia zapasowa, niekrytyczny, rzadko występujący dostęp   |
 |Maksymalny rozmiar dysku   |65 536 nazywana gigabajtem i (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
 |Maksymalna przepływność   |2 000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maksymalna liczba IOPS   |160 000    |20 000   |6 000   |2 000   |
+|Maksymalna liczba IOPS   |160 000    |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-disk"></a>Ultra Disk
 
@@ -50,15 +48,15 @@ Niektóre kluczowe możliwości Ultra disks to:
 
 |Rozmiar dysku (GiB)  |Limit operacji we/wy  |Limit przepływności (MB/s)  |
 |---------|---------|---------|
-|4     |1 200         |300         |
-|8     |2 400         |600         |
-|16     |4 800         |1 200         |
-|32     |9 600         |2 000         |
-|64     |19 200         |2 000         |
-|128     |38 400         |2 000         |
-|256     |76 800         |2 000         |
-|512     |80 000         |2 000         |
-|1024-65536 (rozmiary w tym zakresie zwiększają się w przyrostach 1 TiB)     |160 000         |2 000         |
+|4     |1,200         |300         |
+|8     |2,400         |600         |
+|16     |4,800         |1,200         |
+|32     |9 600         |2,000         |
+|64     |19 200         |2,000         |
+|128     |38 400         |2,000         |
+|256     |76 800         |2,000         |
+|512     |80,000         |2,000         |
+|1024-65536 (rozmiary w tym zakresie zwiększają się w przyrostach 1 TiB)     |160 000         |2,000         |
 
 ### <a name="ga-scope-and-limitations"></a>Zakres i ograniczenia dotyczące GA
 

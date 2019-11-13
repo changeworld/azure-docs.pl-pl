@@ -1,104 +1,104 @@
 ---
-title: Usługa Azure zarządzanie urządzeniami IoT za pomocą narzędzia IoT platformy Azure dla programu Visual Studio Code | Dokumentacja firmy Microsoft
-description: Narzędzia usługi Azure IoT dla programu Visual Studio Code do zarządzania urządzeniami Azure IoT Hub, metod bezpośrednich i opcje zarządzania żądane właściwości bliźniaczej reprezentacji.
+title: Zarządzanie urządzeniami Azure IoT za pomocą narzędzi Azure IoT Tools for programu vscode
+description: Skorzystaj z narzędzi Azure IoT Tools for Visual Studio Code for Azure IoT Hub Device Management, korzystając z metod bezpośrednich i opcji zarządzania żądanymi właściwościami sznurka.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838720"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953206"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Użyj narzędzia IoT platformy Azure dla programu Visual Studio Code do zarządzania urządzeniami Azure IoT Hub
+# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Korzystanie z narzędzi Azure IoT Tools for Visual Studio Code na potrzeby zarządzania urządzeniami IoT Hub platformy Azure
 
-![Diagram end-to-end](media/iot-hub-get-started-e2e-diagram/2.png)
+![Diagram kompleksowy](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) jest przydatne rozszerzenia programu Visual Studio Code, które ułatwia usługi IoT Hub zarządzania i programowania aplikacji IoT. Chodzi o opcje zarządzania, które służą do wykonywania różnych zadań.
+[Narzędzia Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) to przydatne Visual Studio Code rozszerzenie, które ułatwia tworzenie IoT Hub zarządzania aplikacjami i tworzeniem aplikacji IoT. Zawiera opcje zarządzania, których można użyć do wykonywania różnych zadań.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 | Opcja zarządzania          | Zadanie                    |
 |----------------------------|--------------------------------|
-| Metody bezpośrednie             | Należy skonfigurować urządzenie działania, takie jak uruchamianie lub zatrzymywanie wysyłanie wiadomości lub ponowne uruchamianie urządzenia.                                        |
-| Bliźniacza reprezentacja urządzenia odczytu           | Pobierz stan zgłoszonego urządzenia. Na przykład urządzenie zgłasza diody LED jest teraz migające.                                    |
-| Zaktualizować bliźniaczej reprezentacji urządzenia         | Urządzenia należy umieścić w określonych stanach, takie jak ustawienie DIODĘ zielony lub ustawienie interwału wysyłania danych telemetrycznych do 30 minut.         |
-| Komunikaty z chmury do urządzenia   | Wysyłanie powiadomienia do urządzenia. Na przykład "jest bardzo prawdopodobne deszczowa już dziś. Nie zapomnij przenieść parasola."              |
+| Metody bezpośrednie             | Nadawanie urządzeniu działania takie jak uruchamianie lub zatrzymywanie wysyłania komunikatów lub ponowne uruchamianie urządzenia.                                        |
+| Odczytaj sznurki urządzenia           | Pobierz zgłoszony stan urządzenia. Na przykład urządzenie raportuje diodę LED teraz.                                    |
+| Aktualizacja sznurka urządzenia         | Umieść urządzenie w określonych stanach, takich jak ustawienie diody LED na zieloną lub ustawienie interwału wysyłania danych telemetrycznych na 30 minut.         |
+| Komunikaty z chmury do urządzenia   | Wyślij powiadomienia do urządzenia. Na przykład "bardzo prawdopodobnie jest to deszcz. Nie zapomnij przenieść parasola ".              |
 
-Aby uzyskać bardziej szczegółowe objaśnienia na temat różnic oraz wskazówki na temat korzystania z tych opcji, zobacz [wskazówki dotyczące komunikacji urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) i [wskazówki dotyczące komunikacji chmury do urządzenia](iot-hub-devguide-c2d-guidance.md).
+Aby uzyskać bardziej szczegółowe wyjaśnienie różnic i wskazówek dotyczących korzystania z tych opcji, zobacz [wskazówki dotyczące komunikacji między urządzeniami i chmurą](iot-hub-devguide-d2c-guidance.md) oraz [wskazówki dotyczące komunikacji między chmurą i urządzeniem](iot-hub-devguide-c2d-guidance.md).
 
-Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Usługa IoT Hub utrzymuje bliźniaczą reprezentację urządzenia dla każdego urządzenia, który nawiązuje z nim połączenie. Aby uzyskać więcej informacji dotyczących bliźniaczych reprezentacji urządzeń, zobacz [wprowadzenie do bliźniaków urządzeń](iot-hub-node-node-twin-getstarted.md).
+Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). IoT Hub utrzymuje sznurki urządzenia dla każdego urządzenia, które nawiązuje z nim połączenie. Aby uzyskać więcej informacji na temat bliźniaczych reprezentacji urządzeń, zobacz [wprowadzenie do usługi Device bliźniaczych reprezentacji](iot-hub-node-node-twin-getstarted.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
-Dowiesz się, za pomocą narzędzia IoT platformy Azure dla programu Visual Studio Code z różnymi opcjami zarządzania na komputerze deweloperskim.
+Dowiesz się, jak korzystać z narzędzi Azure IoT Tools for Visual Studio Code z różnymi opcjami zarządzania na komputerze deweloperskim.
 
-## <a name="what-you-do"></a>Co należy zrobić
+## <a name="what-you-do"></a>Co robisz
 
-Uruchom narzędzia IoT platformy Azure dla programu Visual Studio Code z różnymi opcjami zarządzania.
+Uruchom narzędzia Azure IoT Tools dla Visual Studio Code z różnymi opcjami zarządzania.
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
 * Aktywna subskrypcja platformy Azure.
-* Usługi Azure IoT hub w ramach Twojej subskrypcji.
+* Usługa Azure IoT Hub w ramach Twojej subskrypcji.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Narzędzia IoT platformy Azure dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) lub [otwierania tego linku w programie Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
+* [Narzędzia usługi Azure IoT dla vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) lub [Otwórz ten link w Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Zaloguj się do dostępu do usługi IoT hub
 
-1. W **Explorer** widoku programu VS Code, rozwiń **Azure IoT Hub Devices** sekcji w lewym dolnym rogu.
+1. W widoku **eksploratora** vs Code rozwiń sekcję **urządzenia IoT Hub platformy Azure** w lewym dolnym rogu.
 
-2. Kliknij przycisk **wybierz Centrum IoT Hub** w menu kontekstowym.
+2. Kliknij pozycję **wybierz IoT Hub** w menu kontekstowym.
 
-3. Okno podręczne będzie wyświetlana w prawym dolnym rogu w umożliwia logowanie do platformy Azure po raz pierwszy.
+3. W prawym dolnym rogu zostanie wyświetlone okno podręczne, które umożliwi zalogowanie się do platformy Azure po raz pierwszy.
 
-4. Po zalogowaniu się w Twoja lista subskrypcji platformy Azure zostaną wyświetlone, a następnie wybierz subskrypcję platformy Azure i usługa IoT Hub.
+4. Po zalogowaniu zostanie wyświetlona lista subskrypcji platformy Azure, a następnie wybrana subskrypcja platformy Azure i IoT Hub.
 
-5. Na liście będą wyświetlane w **Azure IoT Hub Devices** kartę w ciągu kilku sekund.
+5. Lista urządzeń zostanie wyświetlona na karcie **urządzenia usługi Azure IoT Hub** w ciągu kilku sekund.
 
    > [!Note]
-   > Można również ukończyć konfigurację, wybierając pozycję **Ustaw parametry połączenia centrum IoT Hub**. Wprowadź **iothubowner** zasad parametry połączenia dla Centrum IoT, które urządzenia IoT, łączy w oknie podręcznym.
+   > Można również ukończyć konfigurację, wybierając pozycję **Ustaw parametry połączenia centrum IoT Hub**. Wprowadź parametry połączenia zasad **iothubowner** dla Centrum IoT Hub, z którym urządzenie IoT łączy się w oknie podręcznym.
 
 ## <a name="direct-methods"></a>Metody bezpośrednie
 
-1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **wywoływanie metody bezpośredniej**. 
+1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz polecenie **Wywołaj metodę bezpośrednią**. 
 
-2. Wprowadź nazwę metody oraz ładunek w polu wejściowym.
+2. Wprowadź nazwę metody i ładunek w polu wejściowym.
 
-3. Wyniki będą wyświetlane w **dane wyjściowe** > **Azure IoT Hub Toolkit** widoku.
+3. Wyniki będą wyświetlane w **danych wyjściowych** > widoku **zestawu narzędzi platformy Azure IoT Hub** .
 
-## <a name="read-device-twin"></a>Bliźniacza reprezentacja urządzenia odczytu
+## <a name="read-device-twin"></a>Odczytaj sznurki urządzenia
 
-1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **Edytuj bliźniaczą reprezentację urządzenia**. 
+1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **Edytuj sznurek urządzeń**. 
 
-2. **Azure-iot urządzenie twin.json** plik zostanie otwarty z zawartością bliźniaczej reprezentacji urządzenia.
+2. Plik **Azure-IoT-Device-splot. JSON** zostanie otwarty z zawartością sznurka urządzenia.
 
-## <a name="update-device-twin"></a>Zaktualizować bliźniaczej reprezentacji urządzenia
+## <a name="update-device-twin"></a>Aktualizacja sznurka urządzenia
 
-1. Niektóre zmiany edycyjne z **tagi** lub **properties.desired** pola.
+1. Wprowadź edycję **tagów** lub **właściwości. żądane** pole.
 
-2. Kliknij prawym przyciskiem myszy **azure-iot urządzenie twin.json** pliku.
+2. Kliknij prawym przyciskiem myszy plik **Azure-IoT-Device-splot. JSON** .
 
-3. Wybierz **aktualizacji bliźniaczej reprezentacji urządzenia** można zaktualizować bliźniaczej reprezentacji urządzenia.
+3. Wybierz pozycję **Aktualizuj sznurek urządzenia** , aby zaktualizować sznurek urządzeń.
 
 ## <a name="send-cloud-to-device-messages"></a>Wysyłanie komunikatów z chmury do urządzeń
 
-Aby wysłać wiadomość z usługi IoT hub do urządzenia, wykonaj następujące kroki:
+Aby wysłać komunikat z usługi IoT Hub do urządzenia, wykonaj następujące kroki:
  
-1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **wysyłania komunikatu C2D urządzeniu**. 
+1. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz polecenie **Wyślij wiadomość C2D do urządzenia**. 
 
 2. Wprowadź komunikat w polu wejściowym.
 
-3. Wyniki będą wyświetlane w **dane wyjściowe** > **Azure IoT Hub Toolkit** widoku.
+3. Wyniki będą wyświetlane w **danych wyjściowych** > widoku **zestawu narzędzi platformy Azure IoT Hub** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wyjaśniono sposób używania rozszerzenia narzędzia IoT platformy Azure dla programu Visual Studio Code z różnymi opcjami zarządzania.
+Wiesz już, jak używać rozszerzenia narzędzi Azure IoT Tools dla Visual Studio Code z różnymi opcjami zarządzania.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

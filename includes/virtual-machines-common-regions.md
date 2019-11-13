@@ -8,14 +8,13 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6cd721fdd7841df279bbe24cab1057ea5e16e0e2
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850472"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008441"
 ---
-# <a name="regions-for-virtual-machines-in-azure"></a>Regiony maszyn wirtualnych na platformie Azure
 Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
 
 
@@ -45,7 +44,7 @@ Przykłady par regionów:
 
 | Podstawowy | Pomocniczy |
 |:--- |:--- |
-| Zachodnie stany USA |East US |
+| Zachodnie stany USA |Wschodnie stany USA |
 | Europa Północna |Europa Zachodnia |
 | Azja Południowo-Wschodnia |Azja Wschodnia |
 
@@ -75,7 +74,7 @@ W poniższej tabeli przedstawiono krótkie podsumowanie różnic między typami 
 
 | Strategia replikacji | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Dane są replikowane między wieloma obiektami. |Nie |Yes |Yes |Tak |
+| Dane są replikowane między wieloma obiektami. |Nie |Tak |Tak |Tak |
 | Dane mogą być odczytywane z lokalizacji pomocniczej i z lokalizacji podstawowej. |Nie |Nie |Nie |Tak |
 | Liczba kopii danych obsługiwanych w osobnych węzłach. |3 |3 |6 |6 |
 

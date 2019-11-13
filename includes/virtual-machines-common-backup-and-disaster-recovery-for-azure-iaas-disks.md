@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302336"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012539"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Tworzenie kopii zapasowych i odzyskiwanie po awarii dla dysków usługi Azure IaaS
-
 W tym artykule wyjaśniono, jak planować tworzenie kopii zapasowych i odzyskiwanie po awarii (DR) maszyn wirtualnych IaaS i dysków na platformie Azure. Ten dokument dotyczy zarówno dysków zarządzanych, jak i niezarządzanych.
 
 Najpierw omówiono wbudowane możliwości odporności na uszkodzenia na platformie Azure, które pomagają chronić przed awariami lokalnymi. Następnie omawiamy scenariusze awaryjne, które nie są w pełni objęte wbudowanymi funkcjami. Przedstawiono również kilka przykładów scenariuszy obciążeń, w których można zastosować różne zagadnienia dotyczące kopii zapasowych i odzyskiwania po awarii. Następnie analizujemy możliwe rozwiązania dla dysków odzyskiwania po awarii IaaS.
@@ -123,7 +121,7 @@ Opcje wysokiej dostępności, tworzenia kopii zapasowych i odzyskiwania po awari
 
 | Poziom |   Wysoka dostępność   | Kopia zapasowa lub odzyskiwanie po awarii |
 | --- | --- | --- |
-| Aplikacja | SQL Server AlwaysOn | Usługa Azure Backup |
+| Aplikacja | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Zestaw dostępności  | Magazyn Geograficznie nadmiarowy ze spójnymi migawkami |
 
 ### <a name="using-azure-backup"></a>Używanie Azure Backup 
@@ -148,7 +146,7 @@ Wykonaj następujące kroki, aby włączyć tworzenie kopii zapasowych maszyn wi
 
     b. W menu **magazyny Recovery Services** kliknij pozycję **Dodaj** i postępuj zgodnie z instrukcjami, aby utworzyć nowy magazyn w tym samym regionie co maszyna wirtualna. Na przykład jeśli maszyna wirtualna znajduje się w regionie zachodnie stany USA, wybierz pozycję zachodnie stany USA dla magazynu.
 
-1.  Sprawdź replikację magazynu dla nowo utworzonego magazynu. Uzyskaj dostęp do magazynu w obszarze **magazyny Recovery Services** i przejdź do pozycji **Właściwości** > **Backup Configuration** > **Update**. Upewnij się, że opcja **Magazyn Geograficznie nadmiarowy** jest zaznaczona domyślnie. Ta opcja zapewnia, że magazyn zostanie automatycznie zreplikowany do dodatkowego centrum danych. Na przykład magazyn w regionie zachodnie stany USA jest automatycznie replikowany do regionu Wschodnie stany USA.
+1.  Sprawdź replikację magazynu dla nowo utworzonego magazynu. Uzyskaj dostęp do magazynu w obszarze **magazyny Recovery Services** i przejdź do pozycji **Właściwości** > **Konfiguracja kopii zapasowej** > **Update**. Upewnij się, że opcja **Magazyn Geograficznie nadmiarowy** jest zaznaczona domyślnie. Ta opcja zapewnia, że magazyn zostanie automatycznie zreplikowany do dodatkowego centrum danych. Na przykład magazyn w regionie zachodnie stany USA jest automatycznie replikowany do regionu Wschodnie stany USA.
 
 1.  Skonfiguruj zasady tworzenia kopii zapasowych i wybierz maszynę wirtualną z tego samego interfejsu użytkownika.
 

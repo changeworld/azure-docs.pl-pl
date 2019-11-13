@@ -4,15 +4,15 @@ description: Dowiedz się, jak opublikować ofertę usługi zarządzanej, która
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ee8f0f88f1e60c6e8b5da34a165757694f52dcbb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615463"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005391"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace
 
@@ -81,10 +81,10 @@ Na koniec Dodaj jeden lub więcej wpisów **autoryzacji** do planu. Autoryzacje 
 
 Dla każdej **autoryzacji**należy podać następujące dane. Następnie można wybrać **nową autoryzację** dowolną liczbę razy, aby dodać więcej użytkowników i definicje ról.
 
-  - **Identyfikator obiektu usługi Azure AD**: identyfikator usługi Azure AD użytkownika, grupy użytkowników lub aplikacji, do której zostaną przyznane określone uprawnienia (zgodnie z opisem w definicji roli) do zasobów klientów.
-  - **Nazwa wyświetlana obiektu usługi Azure AD**: przyjazna nazwa, która pomaga klientowi zrozumieć cel tej autoryzacji. Klient zobaczy tę nazwę podczas delegowania zasobów.
-  - **Definicja roli**: Wybierz jedną z dostępnych ról wbudowanych usługi Azure AD z listy. Ta rola określi uprawnienia, które użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mieć w zasobach klientów. Opisy tych ról można znaleźć w temacie [wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) i [Obsługa ról dla delegowanego zarządzania zasobami platformy Azure](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) .
-  - **Role**możliwe do przypisania: jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji została wybrana wartość administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role możliwe do **przypisania** do [tożsamości zarządzanych](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), które są wymagane w celu [wdrożenia zasad, które można skorygować](deploy-policy-remediation.md). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
+- **Identyfikator obiektu usługi Azure AD**: identyfikator usługi Azure AD użytkownika, grupy użytkowników lub aplikacji, do której zostaną przyznane określone uprawnienia (zgodnie z opisem w definicji roli) do zasobów klientów.
+- **Nazwa wyświetlana obiektu usługi Azure AD**: przyjazna nazwa, która pomaga klientowi zrozumieć cel tej autoryzacji. Klient zobaczy tę nazwę podczas delegowania zasobów.
+- **Definicja roli**: Wybierz jedną z dostępnych ról wbudowanych usługi Azure AD z listy. Ta rola określi uprawnienia, które użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mieć w zasobach klientów. Opisy tych ról można znaleźć w temacie [wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) i [Obsługa ról dla delegowanego zarządzania zasobami platformy Azure](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) .
+- **Role**możliwe do przypisania: jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji została wybrana wartość administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role możliwe do **przypisania** do [tożsamości zarządzanych](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), które są wymagane w celu [wdrożenia zasad, które można skorygować](deploy-policy-remediation.md). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
 
 > [!TIP]
 > W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu. Aby uzyskać dodatkowe zalecenia, zobacz [dzierżawy, role i użytkowników w scenariuszach usługi Azure Lighthouse](../concepts/tenants-users-roles.md).
@@ -143,62 +143,15 @@ Po zakończeniu wszystkich sekcji następnym krokiem jest opublikowanie oferty w
 
 ## <a name="the-customer-onboarding-process"></a>Proces dołączania klienta
 
-Po dodaniu oferty przez klienta będzie można [delegować jedną lub więcej określonych subskrypcji lub grup zasobów](view-manage-service-providers.md#delegate-resources) , które zostaną następnie dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, w górnej części **strony dostawcy** [**usług**](view-manage-service-providers.md) w Azure Portal zostanie wyświetlona Uwaga. Jeśli użytkownik w dzierżawie klienta nie będzie w stanie wykonać tego delegowania, prawdopodobnie nie ma roli właściciela dla subskrypcji. Aby znaleźć użytkowników, którzy mogą delegować subskrypcję, użytkownik może wybrać subskrypcję w Azure Portal, otworzyć funkcję **Kontrola dostępu (IAM)** i [wyświetlić wszystkich użytkowników z rolą właściciela](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+Po dodaniu oferty przez klienta będzie można [delegować co najmniej jedną określoną subskrypcję lub grupę zasobów](view-manage-service-providers.md#delegate-resources), która następnie zostanie dołączona do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, w górnej części **strony dostawcy** [**usług**](view-manage-service-providers.md) w Azure Portal zostanie wyświetlona Uwaga.
 
-Aby można było dołączyć subskrypcję (lub grupy zasobów w ramach subskrypcji), subskrypcja musi być autoryzowana do dołączenia przez ręczne zarejestrowanie dostawcy zasobów **Microsoft. ManagedServices** . Użytkownik w dzierżawie klienta z rolą współautor lub właściciela może wykonać tę czynność, wykonując czynności opisane w temacie [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/resource-manager-supported-services.md).
+> [!IMPORTANT]
+> Delegowanie musi odbywać się przez konto niebędące Gośćmi w dzierżawie klienta, które ma [wbudowaną rolę właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) dla dołączanej subskrypcji (lub która zawiera grupy zasobów, które są dołączane). Aby wyświetlić wszystkich użytkowników, którzy mogą delegować subskrypcję, użytkownik w dzierżawie może wybrać subskrypcję w Azure Portal, otworzyć funkcję **Kontrola dostępu (IAM)** i [wyświetlić wszystkich użytkowników z rolą właściciela](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-Klient może następnie potwierdzić, że subskrypcja jest gotowa do dołączenia w jeden z następujących sposobów.
+Po oddelegowaniu subskrypcji (lub jednej lub większej liczby grup zasobów w ramach subskrypcji przez klienta) dostawca zasobów **Microsoft. ManagedServices** zostanie zarejestrowany dla tej subskrypcji, a użytkownicy w Twojej dzierżawie będą mogli uzyskiwać dostęp do zasobów delegowanych zgodnie z autoryzacjami w ofercie.
 
-### <a name="azure-portal"></a>Azure Portal
-
-1. W Azure Portal wybierz subskrypcję.
-1. Wybierz pozycję **Dostawcy zasobów**.
-1. Upewnij się, że **program Microsoft. ManagedServices** jest wyświetlany jako **zarejestrowany**.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Powinno to zwracać wyniki podobne do następujących:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Powinno to zwracać wyniki podobne do następujących:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> W tej chwili nie można delegować subskrypcji (lub grup zasobów w ramach subskrypcji), jeśli subskrypcja używa Azure Databricks. Podobnie, jeśli masz już delegowaną subskrypcję (lub grupy zasobów w ramach subskrypcji), obecnie nie jest możliwe tworzenie obszarów roboczych dla tej subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 

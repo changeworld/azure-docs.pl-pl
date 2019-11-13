@@ -1,6 +1,6 @@
 ---
-title: Zmodyfikuj prefiksy adresów IP bramy sieci lokalnej i adres IP bramy sieci VPN | Azure | Portal | Dokumentacja firmy Microsoft
-description: Ten artykuł przeprowadzi zmiana prefiksy adresów IP dla bramy sieci lokalnej za pomocą witryny Azure portal.
+title: 'VPN Gateway: modyfikowanie ustawień adresu IP bramy: Azure Portal'
+description: W tym artykule pokazano, jak zmienić prefiksy adresów IP bramy sieci lokalnej przy użyciu Azure Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 12f1f8bbcb103d0882059cadc12bc1a8b9d40bdb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a59f618536d44e838bf840264e70b0b2a43cced
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419604"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014907"
 ---
-# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Modyfikowanie ustawień lokalnej bramy sieci przy użyciu witryny Azure portal
+# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Modyfikowanie ustawień bramy sieci lokalnej przy użyciu Azure Portal
 
-Czasami zmienić ustawienia dla bramy sieci lokalnej, prefiks adresu lub klasy GatewayIPAddress. W tym artykule przedstawiono sposób modyfikowania ustawień bramy sieci lokalnej. Można również zmodyfikować te ustawienia przy użyciu innej metody, wybierając inną opcję z następującej listy:
+Czasami ustawienia AddressPrefix lub GatewayIPAddress bramy sieci lokalnej. W tym artykule opisano sposób modyfikowania ustawień bramy sieci lokalnej. Możesz również zmodyfikować te ustawienia przy użyciu innej metody, wybierając inną opcję z następującej listy:
 
-Zanim usuniesz połączenie, można pobrać konfiguracji dla urządzeń łączących Aby uzyskać zdefiniowanego klucza Wstępnego. Dzięki temu nie trzeba przedefiniować go po drugiej stronie.
+Przed usunięciem połączenia warto pobrać konfigurację dla podłączonych urządzeń w celu uzyskania zdefiniowanego klucza PSK. W ten sposób nie trzeba ponownie definiować go po drugiej stronie.
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -36,18 +36,18 @@ Zanim usuniesz połączenie, można pobrać konfiguracji dla urządzeń łączą
 >
 
 
-## <a name="ipaddprefix"></a>Modyfikowanie prefiksów adresów IP
+## <a name="ipaddprefix"></a>Modyfikuj prefiksy adresów IP
 
-Podczas modyfikowania prefiksów adresów IP, kroki, które należy wykonać są zależne od tego, czy brama sieci lokalnej z połączeniem.
+Podczas modyfikowania prefiksów adresów IP, kroki, które należy wykonać, zależą od tego, czy Brama sieci lokalnej ma połączenie.
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
 ## <a name="gwip"></a>Modyfikowanie adresu IP bramy
 
-W przypadku zmiany publicznego adresu IP urządzenia sieci VPN, z którym chcesz nawiązać połączenie, musisz zmodyfikować bramę sieci lokalnej w celu odzwierciedlenia tej zmiany. Zmiana publicznego adresu IP, kroki, które należy wykonać są zależne od tego, czy brama sieci lokalnej z połączeniem.
+W przypadku zmiany publicznego adresu IP urządzenia sieci VPN, z którym chcesz nawiązać połączenie, musisz zmodyfikować bramę sieci lokalnej w celu odzwierciedlenia tej zmiany. Gdy zmienisz publiczny adres IP, kroki, które należy wykonać, zależą od tego, czy Brama sieci lokalnej ma połączenie.
 
 [!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można sprawdzić połączenie bramy. Zobacz [Weryfikowanie połączenia z bramą](vpn-gateway-verify-connection-resource-manager.md).
+Możesz zweryfikować połączenie z bramą. Zobacz [Weryfikowanie połączenia bramy](vpn-gateway-verify-connection-resource-manager.md).

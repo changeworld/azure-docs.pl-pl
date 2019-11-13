@@ -1,10 +1,10 @@
 ---
-title: Przykładowy skrypt programu PowerShell Azure — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji | Dokumentacja firmy Microsoft
-description: Przykładowy skrypt programu PowerShell Azure — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji
+title: Kierowanie ruchu dla dużej liczby aplikacji — Azure PowerShell-Traffic Manager
+description: Przykładowy skrypt Azure PowerShell — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
-manager: twooley
+manager: kumudD
 editor: ''
 tags: azure-infrastructure
 ms.assetid: ''
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: allensu
-ms.openlocfilehash: 1c04859e2fe8841eb679f0b3e22b54ce71f88230
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd81ef459d4b3a60d5da3dff9fff4119392ac8cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050974"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014636"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Kierowanie ruchem w celu zapewnienia wysokiej dostępności aplikacji przy użyciu programu Azure PowerShell
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji przy użyciu Azure PowerShell
 
-Ten skrypt tworzy grupę zasobów, dwóch planów usługi app service, dwie aplikacje internetowe, profilu usługi traffic manager i dwa punkty końcowe Menedżer ruchu. Usługa Traffic Manager kieruje ruch do aplikacji w jednym regionie w postaci regionu podstawowego, a także do regionu pomocniczego, gdy aplikacji w regionie głównym jest niedostępne. Przed wykonaniem skryptu, możesz zmienić wartości MyWebApp, MyWebAppL1 i MyWebAppL2 unikatowych wartości na platformie Azure. Po uruchomieniu skryptu dostęp do aplikacji w regionie podstawowym z mywebapp.trafficmanager.net adresu URL.
+Ten skrypt tworzy grupę zasobów, dwa plany usługi App Service, dwie aplikacje sieci Web, profil programu Traffic Manager i dwa punkty końcowe Menedżera ruchu. Traffic Manager kieruje ruch do aplikacji w jednym regionie jako region podstawowy i do regionu pomocniczego, gdy aplikacja w regionie podstawowym jest niedostępna. Przed wykonaniem skryptu należy zmienić wartości MyWebApp, MyWebAppL1 i MyWebAppL2 na unikatowe wartości na platformie Azure. Po uruchomieniu skryptu możesz uzyskać dostęp do aplikacji w regionie podstawowym przy użyciu adresu URL mywebapp.trafficmanager.net.
 
 W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
@@ -52,13 +52,13 @@ W tym skrypcie użyto następujących poleceń do utworzenia grupy zasobów, apl
 | Polecenie | Uwagi |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Tworzy plan usługi App Service. Przypomina farmę serwerów dla aplikacji sieci web platformy Azure. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
-| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Tworzy plan usługi App Service. Jest to podobne do farmy serwerów dla Twojej aplikacji sieci Web platformy Azure. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową platformy Azure w ramach planu App Service. |
+| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Tworzy aplikację internetową platformy Azure w ramach planu App Service. |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | Tworzy profil usługi Azure Traffic Manager. |
 | [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Dodaje punkt końcowy do profilu usługi Azure Traffic Manager. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 

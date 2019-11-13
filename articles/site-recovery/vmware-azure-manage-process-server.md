@@ -1,18 +1,18 @@
 ---
-title: Zarządzanie serwerem przetwarzania używanym do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
-description: W tym artykule opisano zarządzanie serwerem przetwarzania skonfigurowanym na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu Azure Site Recovery.
+title: Zarządzanie serwerem przetwarzania maszyn wirtualnych VMware/odzyskiwanie awaryjne serwera fizycznego w Azure Site Recovery
+description: W tym artykule opisano zarządzanie serwerem przetwarzania na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware/serwerów fizycznych przy użyciu Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 509b9aed9f5daebb70a18336837da2152667a458
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242841"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954345"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 

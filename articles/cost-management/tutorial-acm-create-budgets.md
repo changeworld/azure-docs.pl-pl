@@ -1,31 +1,31 @@
 ---
-title: Samouczek — Tworzenie budżetów platformy Azure i zarządzanie nimi | Microsoft Docs
-description: Ten samouczek ułatwia planowanie i uwzględnianie kosztów używanych usług platformy Azure.
+title: Samouczek — tworzenie i zarządzanie nimi budżetów platformy Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek ułatwia planu i konta koszty usług systemu Azure, które zostaną zużyte.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8c3c0574389fc9808af3cd70c928ede82d375076
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c4de8b0d78d66709d13526c69f9d33b16dbad1dc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720712"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010233"
 ---
-# <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
+# <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie i zarządzanie nimi budżetów platformy Azure
 
-Budżety w usłudze Cost Management ułatwiają planowanie poprawy odpowiedzialności organizacji. Za pomocą budżetów możesz obserwować koszt wykorzystywanych lub subskrybowanych usług platformy Azure w określonym czasie. Ułatwiają one informowanie innych o wydatkach o proaktywnie zarządzanie kosztami oraz monitorowanie postępu w czasie. Po przekroczeniu progów budżetu zostaną wyzwolone tylko powiadomienia. Nie ma to żadnego oddziaływania i Twoje użycie nie zostało zatrzymane. Budżetów można używać do porównywania i śledzenia wydatków podczas analizowania kosztów.
+Budżety w usłudze Cost Management ułatwiają planowanie poprawy odpowiedzialności organizacji. Za pomocą budżetów możesz obserwować koszt wykorzystywanych lub subskrybowanych usług platformy Azure w określonym czasie. Ułatwiają one poinformować inne osoby o ich wydatków, aby aktywnie zarządzać kosztami i monitorować, jak wydatków w miarę wraz z upływem czasu. Po przekroczeniu progów budżetu, który został utworzony, są wyzwalane tylko powiadomienia. Wpływają na żaden z zasobów i nie zostanie ono zatrzymane swoje użycie. Budżetów służy do porównywania i śledzić wydatki jako analizując koszty.
 
 Dane dotyczące kosztów i użycia są zwykle dostępne w ciągu 12-16 godzin, a budżety są oceniane względem tych kosztów co cztery godziny. Powiadomienia e-mail są zwykle odbierane w ciągu 12-16 godzin.
 
-Budżety są automatycznie resetowane na koniec okresu (co miesiąc, co kwartał lub co rok) dla tej samej kwoty budżetu w przypadku wybrania w przyszłości daty wygaśnięcia. Ponieważ resetuje się z tą samą kwotą budżetu, należy utworzyć oddzielne budżety, gdy budżetowane kwoty waluty różnią się w przyszłości.
+Budżetów automatycznie resetować na końcu okresu (co miesiąc, co kwartał lub rocznie) na tym samym kwotę budżetu po wybraniu przyszłą datę wygaśnięcia. Ponieważ są one resetowane sama kwota budżetu, musisz utworzyć oddzielne budżety, gdy budżet kwot różnią się w przyszłych okresach.
 
-Przykłady w tym samouczku przeprowadzą Cię przez proces tworzenia i edytowania budżetu dla subskrypcji usługi Azure Umowa Enterprise (EA).
+W przykładach w tym samouczku prowadzą użytkownika przez proces tworzenia i edytowania budżetu w celu uzyskania subskrypcji Azure Enterprise Agreement (EA).
 
 Obejrzyj, [jak utworzyć budżet do monitorowania wydatków dzięki Azure Cost Management](https://www.youtube.com/watch?v=ExIVG_Gr45A) wideo, aby dowiedzieć się, jak tworzyć budżety na platformie Azure w celu monitorowania wydatków.
 
@@ -33,42 +33,42 @@ Obejrzyj, [jak utworzyć budżet do monitorowania wydatków dzięki Azure Cost M
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Utwórz budżet w Azure Portal
-> * Edytuj budżet
+> * Tworzenie budżetu w witrynie Azure portal
+> * Edytuj budżetu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Budżety są obsługiwane dla różnych typów kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlić budżety, wymagany jest co najmniej dostęp do odczytu dla Twojego konta platformy Azure.
 
- W przypadku subskrypcji Azure EA należy mieć dostęp do odczytu w celu wyświetlenia budżetów. Aby tworzyć budżety i zarządzać nimi, musisz mieć uprawnienie współautor. Można tworzyć poszczególne budżety dla subskrypcji EA i grup zasobów. Nie można jednak tworzyć budżetów dla kont z rozliczeniami EA.
+ W przypadku subskrypcji Azure EA należy mieć dostęp do odczytu w celu wyświetlenia budżetów. Tworzenie i zarządzanie nimi budżety, musi mieć uprawnienia współautora. Można utworzyć indywidualne budżetów dla subskrypcji EA i grupy zasobów. Jednak nie można utworzyć budżetów dla rozliczeń konta EA.
 
 Następujące uprawnienia lub zakresy platformy Azure są obsługiwane na subskrypcję dla budżetów przez użytkownika i grupę. Aby uzyskać więcej informacji na temat zakresów, zobacz [Opis i współpraca z zakresami](understand-work-scopes.md).
 
 - Właściciel — może tworzyć, modyfikować i usuwać budżety dla subskrypcji.
-- Współautor współautora i Cost Management — umożliwia tworzenie, modyfikowanie i usuwanie własnych budżetów. Może też modyfikować kwoty budżetów utworzonych przez innych użytkowników.
-- Czytnik i Cost Management Reader — mogą wyświetlać budżety, do których mają uprawnienia.
+- Współautor i współautor Cost Management — można utworzyć, zmodyfikować lub usunąć swoje własne budżetów. Może też modyfikować kwoty budżetów utworzonych przez innych użytkowników.
+- Czytnik i czytnika Cost Management — można wyświetlić budżety, które mają uprawnienia.
 
-Aby uzyskać więcej informacji na temat przypisywania uprawnień do Cost Management danych, zobacz [Przypisywanie dostępu do Cost Management danych](assign-access-acm-data.md).
+Aby uzyskać więcej informacji na temat przypisywania uprawnień do danych rozwiązania Cost Management, zobacz [przypisywanie dostępu do danych rozwiązania Cost Management](assign-access-acm-data.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 - Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
-## <a name="create-a-budget-in-the-azure-portal"></a>Utwórz budżet w Azure Portal
+## <a name="create-a-budget-in-the-azure-portal"></a>Tworzenie budżetu w witrynie Azure portal
 
-Budżet subskrypcji platformy Azure można utworzyć co miesiąc, co kwartał lub przez okres roczny. Zawartość nawigacyjna w Azure Portal określa, czy należy utworzyć budżet dla subskrypcji lub grupy zarządzania.
+W okresie miesięczne, kwartałów lub można utworzyć budżet subskrypcji platformy Azure. Zawartość nawigacyjna w Azure Portal określa, czy należy utworzyć budżet dla subskrypcji lub grupy zarządzania.
 
 Aby utworzyć lub wyświetlić budżet, otwórz żądany zakres w Azure Portal a następnie wybierz pozycję **budżety** w menu. Na przykład przejdź do **subskrypcji**, wybierz subskrypcję z listy, a następnie wybierz pozycję **budżety** w menu. Użyj **zakresu** pill, aby przełączyć się do innego zakresu, takiego jak grupa zarządzania, w obszarze budżetów. Aby uzyskać więcej informacji na temat zakresów, zobacz [Opis i współpraca z zakresami](understand-work-scopes.md).
 
-Po utworzeniu budżetów pokazuje prosty Widok bieżących wydatków.
+Po utworzeniu budżetów pokazują widok prosty bieżące wydatki względem nich.
 
-Kliknij pozycję **Dodaj**.
+Kliknij pozycję **Add** (Dodaj).
 
 ![Przykład przedstawiający już utworzoną listę budżetów](./media/tutorial-acm-create-budgets/budgets01.png)
 
 Upewnij się, że w oknie **Tworzenie budżetu** podano prawidłowy zakres. Wybierz wszystkie filtry, które chcesz dodać. Filtry umożliwiają tworzenie budżetów dla określonych kosztów, takich jak grupy zasobów w ramach subskrypcji lub usługi, takie jak maszyny wirtualne. Dowolny filtr, którego można użyć w analizie kosztów, można również zastosować do budżetu.
 
-Po zidentyfikowaniu zakresu i filtrów wpisz nazwę budżetu. Następnie wybierz miesięczny, kwartalny lub roczny okres resetowania budżetu. Ten okres resetowania określa przedział czasu, który jest analizowany przez budżet. Koszt oceniany przez budżet rozpoczyna się od zera na początku każdego nowego okresu. Podczas tworzenia budżetu kwartalnego działa on w ten sam sposób co miesięczny budżet. Różnica polega na tym, że kwota budżetu kwartału jest równomiernie dzielona między trzy miesiące kwartału. Roczna kwota budżetu jest równomiernie dzielona między wszystkie 12 miesięcy roku kalendarzowego.
+Po zidentyfikowaniu zakresu i filtrów wpisz nazwę budżetu. Następnie wybierz miesięczny, kwartalny lub roczny okres resetowania budżetu. Ten okres resetowania określa przedział czasu, który jest analizowany przez budżet. Koszt oceniany przez budżet rozpoczyna się od zera na początku każdego nowego okresu. Po utworzeniu co kwartał budżetu działa w taki sam sposób jak miesięcznego budżetu. Różnica polega na tym, że kwota budżetu na kwartał jest równomiernie podzielone między trzy miesiące kwartału. Roczna kwota budżetu jest równomiernie dzielona między wszystkie 12 miesięcy roku kalendarzowego.
 
 Jeśli masz subskrypcję z płatnością zgodnie z rzeczywistym użyciem, MSDN lub Visual Studio, okres rozliczeniowy faktury może nie być wyrównany do miesiąca kalendarzowego. Dla tych typów subskrypcji i grup zasobów można utworzyć budżet wyrównany do okresu faktury lub miesięcy kalendarzowych. Aby utworzyć budżet wyrównany do okresu faktury, wybierz okres resetowania **miesiąca rozliczeniowego**, **kwartału rozliczeniowego**lub **roku rozliczeniowego**. Aby utworzyć budżet wyrównany do miesiąca kalendarzowego, wybierz okres resetowania **co miesiąc**, **co kwartał**lub co **rok**.
 
@@ -78,19 +78,21 @@ W oparciu o pola wybrane w budżecie do tej pory wykres jest widoczny, aby ułat
 
 ![Przykład przedstawiający tworzenie budżetu z danymi kosztu miesięcznego ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Po skonfigurowaniu kwoty budżetu kliknij przycisk **dalej** , aby skonfigurować alerty budżetu. Budżety wymagają co najmniej jednego progu kosztu (% budżetu) i odpowiadającego mu adresu e-mail. Opcjonalnie możesz uwzględnić maksymalnie pięć progów i pięć adresów e-mail w ramach jednego budżetu. Po spełnieniu progu budżetowego powiadomienia e-mail są zwykle odbierane w czasie krótszym niż 20 godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Korzystanie z alertów dotyczących kosztów](cost-mgt-alerts-monitor-usage-spending.md). W poniższym przykładzie zostanie wygenerowany alert e-mail, gdy zostanie osiągnięty limit 90% budżetu. W przypadku tworzenia budżetu za pomocą interfejsu API budżetów można także przypisać role do osób, które będą otrzymywać alerty. Przypisywanie ról do osób nie jest obsługiwane w Azure Portal. Aby uzyskać więcej informacji o interfejsie API budżetów platformy Azure, zobacz temat [budżety interfejsu API](/rest/api/consumption/budgets).
+Po skonfigurowaniu kwoty budżetu kliknij przycisk **dalej** , aby skonfigurować alerty budżetu. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu progu budżetowego powiadomienia e-mail są zwykle odbierane w czasie krótszym niż 20 godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Korzystanie z alertów dotyczących kosztów](cost-mgt-alerts-monitor-usage-spending.md). W poniższym przykładzie zostanie wygenerowany alert e-mail, gdy zostanie osiągnięty limit 90% budżetu. W przypadku tworzenia budżetu za pomocą interfejsu API budżetów można także przypisać role do osób, które będą otrzymywać alerty. Przypisywanie ról do osób nie jest obsługiwane w Azure Portal. Aby uzyskać więcej informacji o interfejsie API budżetów platformy Azure, zobacz temat [budżety interfejsu API](/rest/api/consumption/budgets).
 
 ![Przykład pokazujący warunki alertu](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Po utworzeniu budżetu jest on pokazywany w analizie kosztów. Wyświetlanie budżetu w odniesieniu do trendu wydatków jest jednym z pierwszych kroków po rozpoczęciu [analizy kosztów i wydatków](quick-acm-cost-analysis.md).
+Po utworzeniu budżetu, jest wyświetlana na analizy kosztów. Przeglądanie budżetu względem Twojej trendu wydatków jest jednym z pierwszych kroków, gdy rozpocznie się [analizowanie koszty i wydatki](quick-acm-cost-analysis.md).
 
-![Przykład budżetu i wydatków przedstawionych w analizie kosztów](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![Przykład budżetu i wydatków objętego analiza kosztów](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-W poprzednim przykładzie utworzono budżet dla subskrypcji. Można jednak również utworzyć budżet dla grupy zasobów. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **Cost Management i Rozliczeń** &gt; **subskrypcje** &gt; wybierz subskrypcję > **grupy zasobów** > Wybierz grupę zasobów > **budżety** > a następnie **Dodaj** budżet.
+W powyższym przykładzie utworzono budżetu na subskrypcję. Jednak można również utworzyć budżetu dla grupy zasobów. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **Zarządzanie kosztami i rozliczenia** &gt; **subskrypcje** &gt; wybrać subskrypcję > **zasobów grupy** > Wybierz grupę zasobów > **budżetów** > a następnie **Dodaj** budżetu.
 
 ## <a name="trigger-an-action-group"></a>Wyzwalanie grupy akcji
 
-Podczas tworzenia lub edytowania budżetu dla zakresu subskrypcji lub grupy zasobów można skonfigurować go do wywoływania grupy akcji. Grupa akcji może wykonywać różne różne akcje po spełnieniu progu budżetu. Aby uzyskać więcej informacji na temat grup akcji, zobacz [Tworzenie grup akcji i zarządzanie nimi w Azure Portal](../azure-monitor/platform/action-groups.md). Aby uzyskać więcej informacji na temat używania automatyzacji opartego na budżecie z grupami akcji, zobacz [Zarządzanie kosztami przy użyciu budżetów platformy Azure](../billing/billing-cost-management-budget-scenario.md).
+Podczas tworzenia lub edytowania budżetu dla zakresu subskrypcji lub grupy zasobów można skonfigurować go do wywoływania grupy akcji. Grupa akcji może wykonywać różne różne akcje po spełnieniu progu budżetu. Grupy akcji są obecnie obsługiwane tylko w przypadku zakresów subskrypcji i grup zasobów. Aby uzyskać więcej informacji na temat grup akcji, zobacz [Tworzenie grup akcji i zarządzanie nimi w Azure Portal](../azure-monitor/platform/action-groups.md). Aby uzyskać więcej informacji na temat używania automatyzacji opartego na budżecie z grupami akcji, zobacz [Zarządzanie kosztami przy użyciu budżetów platformy Azure](../billing/billing-cost-management-budget-scenario.md).
+
+
 
 Aby utworzyć lub zaktualizować grupy akcji, kliknij przycisk **Zarządzaj grupami akcji** podczas tworzenia lub edytowania budżetu.
 
@@ -119,10 +121,10 @@ Integracja budżetu z grupami akcji działa tylko dla grup akcji, dla których j
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Utwórz budżet w Azure Portal
-> * Edytuj budżet
+> * Tworzenie budżetu w witrynie Azure portal
+> * Edytuj budżetu
 
-Przejdź do następnego samouczka, aby utworzyć cykliczny eksport danych związanych z zarządzaniem kosztami.
+Przejdź do następnego samouczka, aby utworzyć cykliczne eksportu dla usługi danych rozwiązania cost management.
 
 > [!div class="nextstepaction"]
-> [Tworzenie eksportowanych danych i zarządzanie nimi](tutorial-export-acm-data.md)
+> [Tworzenie i zarządzanie nimi wyeksportowanych danych](tutorial-export-acm-data.md)

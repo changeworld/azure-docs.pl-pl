@@ -1,17 +1,14 @@
 ---
 title: Tworzenie zasad inspekcji zasobów przy użyciu programu PowerShell
 description: Używając programu Azure PowerShell, utwórz przypisanie usługi Azure Policy, aby zidentyfikować niezgodne zasoby.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
-ms.service: azure-policy
-ms.openlocfilehash: 55b7d8509fcf681438b377aa43f5f8aa9bac158d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 796606e1e34e753e49a9083fca5a441cacf6d03c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255916"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960128"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu Azure PowerShell
 

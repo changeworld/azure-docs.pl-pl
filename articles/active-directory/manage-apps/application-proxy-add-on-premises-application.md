@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883977"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73943812"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej dla dostępu zdalnego przy użyciu serwera proxy aplikacji w Azure Active Directory
 
@@ -40,14 +40,14 @@ Aby dodać aplikację lokalną do usługi Azure AD, potrzebne są:
 * Konto administratora aplikacji
 * Tożsamości użytkowników muszą być synchronizowane z katalogu lokalnego lub tworzone bezpośrednio w dzierżawach usługi Azure AD. Synchronizacja tożsamości umożliwia usłudze Azure AD wstępne uwierzytelnienie użytkowników przed udzieleniem im dostępu do opublikowanych aplikacji serwera proxy aplikacji i posiadanie informacji o identyfikatorze użytkownika w celu przeprowadzenia rejestracji jednokrotnej (SSO).
 
-### <a name="windows-server"></a>Server systemu Windows
+### <a name="windows-server"></a>Windows server
 
 Aby użyć serwera proxy aplikacji, potrzebujesz serwera systemu Windows z systemem Windows Server 2012 R2 lub nowszym. Na serwerze zainstalujesz łącznik serwera proxy aplikacji. Serwer łącznika musi się łączyć z usługami serwera proxy aplikacji na platformie Azure oraz aplikacjami lokalnymi, które zamierzasz opublikować.
 
 Aby zapewnić wysoką dostępność w środowisku produkcyjnym, zalecamy użycie więcej niż jednego serwera systemu Windows. W tym samouczku wystarczy nam jeden serwer systemu Windows.
 
 > [!IMPORTANT]
-> W przypadku instalowania łącznika w systemie Windows Server 2019 istnieje ograniczenie HTTP2. Aby pomyślnie używać łącznika w tej wersji, Dodaj następujący klucz rejestru i uruchom ponownie serwer:
+> W przypadku instalowania łącznika w systemie Windows Server 2019 istnieje ograniczenie HTTP2. Obejście użycia łącznika w tej wersji powoduje dodanie następującego klucza rejestru i ponowne uruchomienie serwera. Pamiętaj, że jest to kluczowy rejestr maszynowy. 
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
@@ -103,7 +103,7 @@ Zezwól na dostęp do następujących adresów URL:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Na platformie Azure są wykorzystywane te adresy URL do weryfikowania certyfikatów. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Łącznik używa tych adresów URL podczas procesu rejestracji. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*. microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Łącznik używa tych adresów URL podczas procesu rejestracji. |
 
 Można zezwolić na połączenia z \*. msappproxy.net i \*. servicebus.windows.net, Jeśli zapora lub serwer proxy umożliwia skonfigurowanie list dozwolonych DNS. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP i tagów usług platformy Azure — chmury publicznej](https://www.microsoft.com/download/details.aspx?id=56519). Zakresy adresów IP są aktualizowane co tydzień.
 

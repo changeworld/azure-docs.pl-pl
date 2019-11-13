@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi Azure IoT Hub (platforma .NET) | Microsoft Docs
+title: Wprowadzenie do usługi Azure IoT Hub Identity & module (.NET)
 description: Dowiedz się, jak utworzyć tożsamość modułu i zaktualizować bliźniaczą reprezentację modułu przy użyciu zestawów SDK IoT dla platformy .NET.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147757"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73947682"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Rozpoczynanie pracy z modułem IoT Hub Identity and module (.NET)
 
@@ -57,7 +57,7 @@ Przed rozpoczęciem Pobierz parametry połączenia modułu. Zaloguj się w witry
 
    ![Szczegóły modułu w witrynie Azure Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. W programie Visual Studio Dodaj nowy projekt do rozwiązania, wybierając pozycję **plik** > **Nowy** > **projekt**. W obszarze Utwórz nowy projekt wybierz pozycję **aplikacja konsoli (.NET Framework)** , a następnie wybierz pozycję **dalej**.
+1. W programie Visual Studio Dodaj nowy projekt do rozwiązania, wybierając kolejno pozycje **plik** > **Nowy** > **projekt**. W obszarze Utwórz nowy projekt wybierz pozycję **aplikacja konsoli (.NET Framework)** , a następnie wybierz pozycję **dalej**.
 
 1. Nadaj projektowi nazwę *UpdateModuleTwinReportedProperties*. W obszarze **rozwiązanie**wybierz pozycję **Dodaj do rozwiązania**. Upewnij się, że program .NET Framework jest w wersji 4.6.1 lub nowszej.
 
@@ -65,7 +65,7 @@ Przed rozpoczęciem Pobierz parametry połączenia modułu. Zaloguj się w witry
 
 1. Wybierz pozycję **Utwórz** , aby utworzyć projekt.
 
-1. W programie Visual Studio Otwórz pozycję **Narzędzia** > **Menedżer** > pakietów NuGet**Zarządzanie pakietami NuGet dla rozwiązania**. Wybierz kartę **Przeglądaj**.
+1. W programie Visual Studio Otwórz **narzędzia** > **menedżer pakietów NuGet** > **Zarządzanie pakietami NuGet dla rozwiązania**. Wybierz kartę **Przeglądaj**.
 
 1. Wyszukaj i wybierz pozycję **Microsoft. Azure. Devices. Client**, a następnie wybierz pozycję **Zainstaluj**.
 
@@ -151,7 +151,7 @@ Przed rozpoczęciem Pobierz parametry połączenia modułu. Zaloguj się w witry
 
     Ten przykładowy kod przedstawia sposób pobierania bliźniaczej reprezentacji modułu i aktualizacji zgłoszonych właściwości za pomocą protokołu AMQP. W publicznej wersji zapoznawczej na potrzeby operacji bliźniaczych reprezentacji modułów obsługujemy tylko protokół AMQP.
 
-1. Opcjonalnie można dodać te instrukcje do metody **Main** , aby wysłać zdarzenie do IoT Hub z modułu. Umieść te wiersze poniżej `try catch` bloku.
+1. Opcjonalnie można dodać te instrukcje do metody **Main** , aby wysłać zdarzenie do IoT Hub z modułu. Umieść te wiersze poniżej bloku `try catch`.
 
     ```csharp
     Byte[] bytes = new Byte[2];

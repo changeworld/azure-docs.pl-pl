@@ -3,7 +3,7 @@ title: Schemat dziennika logowania w Azure Monitor | Microsoft Docs
 description: Opisz logowanie do usługi Azure AD w schemacie rejestrowania do użycia w Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4259a23778db175de2a0331e692e878df39d0a07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895020"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014313"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretuj schemat dzienników logowania usługi Azure AD w Azure Monitor
 
@@ -145,7 +145,7 @@ W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure
 
 | Nazwa pola | Opis |
 |------------|-------------|
-| Czas | Data i godzina w formacie UTC. |
+| Time | Data i godzina w formacie UTC. |
 | ResourceId | Ta wartość jest niezamapowana i można bezpiecznie zignorować to pole.  |
 | OperationName | W przypadku logowania ta wartość jest zawsze *aktywność logowania*. |
 | OperationVersion | Wersja interfejsu API REST, która jest wymagana przez klienta programu. |

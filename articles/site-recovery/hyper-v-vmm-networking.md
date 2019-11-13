@@ -1,18 +1,18 @@
 ---
-title: Skonfiguruj adresowanie IP w celu nawiązania połączenia z dodatkową lokacją lokalną po przejściu w tryb failover przy użyciu Azure Site Recovery
+title: Skonfiguruj adresowanie IP po przejściu w tryb failover do lokacji dodatkowej za pomocą Azure Site Recovery
 description: Opisuje sposób konfigurowania adresowania IP na potrzeby nawiązywania połączenia z maszynami wirtualnymi w dodatkowej lokacji lokalnej po odzyskiwaniu po awarii i przejściu do trybu failover za pomocą Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813687"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961424"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Konfigurowanie adresowania IP w celu nawiązania połączenia z dodatkową lokacją lokalną po przejściu do trybu failover
 
@@ -22,8 +22,8 @@ Po przełączeniu w tryb failover maszyn wirtualnych funkcji Hyper-V w chmurach 
 
 Po przejściu w tryb failover istnieje kilka sposobów obsługi adresowania IP dla maszyn wirtualnych repliki: 
 
-- **Zachowaj ten sam adres IP po przejściu w tryb failover**: W tym scenariuszu replikowana maszyna wirtualna ma ten sam adres IP co podstawowa maszyna wirtualna. Upraszcza to problemy związane z siecią po przejściu w tryb failover, ale wymaga pewnego działania infrastruktury.
-- **Użyj innego adresu IP po przejściu do trybu failover**: W tym scenariuszu maszyna wirtualna Pobiera nowy adres IP po przejściu do trybu failover. 
+- **Zachowaj ten sam adres IP po**przejściu w tryb failover: w tym scenariuszu REPLIKOWANA maszyna wirtualna ma ten sam adres IP co podstawowa maszyna wirtualna. Upraszcza to problemy związane z siecią po przejściu w tryb failover, ale wymaga pewnego działania infrastruktury.
+- **Użyj innego adresu IP po**przejściu w tryb failover: w tym SCENARIUSZU maszyna wirtualna Pobiera nowy adres IP po przejściu do trybu failover. 
  
 
 ## <a name="retain-the-ip-address"></a>Zachowywanie adresu IP

@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt Azure PowerShell — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji | Microsoft Docs
+title: Kierowanie ruchu dla dużej liczby aplikacji — Azure PowerShell-Traffic Manager
 description: Przykładowy skrypt Azure PowerShell — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 2f3b4ef9abdfae2c0400f54a90694db468470c94
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 99768afa9de22767d73576143a5c747be6a3bef9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889496"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013370"
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>Kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji
 

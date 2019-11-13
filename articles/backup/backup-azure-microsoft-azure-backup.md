@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747426"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012932"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 
@@ -48,7 +48,7 @@ Pierwszym krokiem w celu uzyskania Azure Backup Server pracy jest skonfigurowani
 
 ### <a name="using-a-server-in-azure"></a>Korzystanie z serwera na platformie Azure
 
-W przypadku wybrania serwera do uruchamiania Azure Backup Server zaleca się rozpoczęcie od obrazu galerii systemu Windows Server 2016 Datacenter lub Windows Server 2019 centrum danych. W tym artykule opisano [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w Azure Portal, w](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)której znajduje się samouczek dotyczący rozpoczynania pracy z zalecaną maszyną wirtualną na platformie Azure, nawet jeśli wcześniej nie korzystano z platformy Azure. Zalecanymi minimalnymi wymaganiami dla maszyny wirtualnej serwera (VM) powinna być: Standard_A4_v2 z czterema rdzeniami i 8 GB pamięci RAM.
+W przypadku wybrania serwera do uruchamiania Azure Backup Server zaleca się rozpoczęcie od obrazu galerii systemu Windows Server 2016 Datacenter lub Windows Server 2019 centrum danych. W tym artykule opisano [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w Azure Portal, w](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)której znajduje się samouczek dotyczący rozpoczynania pracy z zalecaną maszyną wirtualną na platformie Azure, nawet jeśli wcześniej nie korzystano z platformy Azure. Zalecane minimalne wymagania dotyczące maszyny wirtualnej serwera: Standard_A4_v2 z czterema rdzeniami i 8 GB pamięci RAM.
 
 Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegóły. W tym artykule [Zainstaluj program DPM jako maszynę wirtualną platformy Azure, a także](https://technet.microsoft.com/library/jj852163.aspx)Wyjaśnij te wszystkie szczegóły. Przed wdrożeniem maszyny zapoznaj się z tym artykułem całkowicie.
 
@@ -185,14 +185,14 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
 
     W przypadku konfiguracji usług SSRS należy użyć następujących wartości:
     * Konto usługi: "Użyj wbudowanego konta" powinno być usługą sieciową
-    * Adres URL usługi sieci Web: "katalog wirtualny" powinien być ReportServer_<SQLInstanceName>
-    * Baza danych: DatabaseName powinna być ReportServer $<SQLInstanceName>
-    * Adres URL portalu sieci Web: "katalog wirtualny" powinien być Reports_<SQLInstanceName>
+    * Adres URL usługi sieci Web: "katalog wirtualny" powinien być ReportServer_\<sqlinstancename >
+    * Baza danych: DatabaseName powinna być ReportServer $\<sqlinstancename >
+    * Adres URL portalu sieci Web: "katalog wirtualny" powinien być Reports_\<sqlinstancename >
 
     [Dowiedz się więcej](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguracji usług SSRS.
 
     > [!NOTE]
-    > Licencjonowanie SQL Server używane jako baza danych dla serwera usługi MAB podlega [warunkom usług online firmy Microsoft](https://www.microsoft.com/en-us/licensing/product-licensing/products) (ost). Zgodnie z elementem OST SQL Server powiązany z serwera usługi MAB może być używany tylko jako baza danych serwera usługi MAB.
+    > Licencjonowanie SQL Server używane jako baza danych dla serwera usługi MAB podlega [warunkom usług online firmy Microsoft](https://www.microsoft.com/licensing/product-licensing/products) (ost). Zgodnie z elementem OST SQL Server powiązany z serwera usługi MAB może być używany tylko jako baza danych serwera usługi MAB.
 
 4. Podaj lokalizację instalacji plików serwera Microsoft Azure Backup i kliknij przycisk **dalej**.
 
@@ -304,7 +304,7 @@ Jeśli masz zaporę lub serwer proxy, który uniemożliwia dostęp do platformy 
 * `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
 * \*.WindowsAzure.com
-* \*.microsoftonline.com
+* \*. microsoftonline.com
 * \*.windows.net
 
 Po przywróceniu łączności z platformą Azure do maszyny Azure Backup Server operacje, które można wykonać, są określane przez stan subskrypcji platformy Azure. Powyższa tabela zawiera szczegółowe informacje o operacjach dozwolonych, gdy maszyna jest "połączona".
@@ -336,7 +336,7 @@ Wykonaj następujące kroki, aby uaktualnić program serwera usługi MAB:
    >
    > Nie zamykaj, gdy wystąpienie programu SQL jest uaktualniane, zakończenie spowoduje odinstalowanie wystąpienia raportowania SQL, a w związku z tym próba ponownego uaktualnienia serwera usługi MAB zakończy się niepowodzeniem.
 
-   Ważne rzeczy do zanotowania:
+
 
    > [!IMPORTANT]
    >

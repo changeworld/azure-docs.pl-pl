@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803349"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013058"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Instrukcje: Konfigurowanie domeny wydawcy aplikacji (wersja zapoznawcza)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Instrukcje: Konfigurowanie domeny wydawcy aplikacji
 
 Domena wydawcy aplikacji jest wyświetlana użytkownikom z [monitem o zgodę aplikacji](application-consent-experience.md) , aby poinformować użytkowników o tym, gdzie są wysyłane dane. Aplikacje z wieloma dzierżawcami, które są zarejestrowane po 21 maja 2019, które nie mają domeny wydawcy, są wyświetlane jako **niezweryfikowane**. Aplikacje wielodostępne są aplikacjami, które obsługują konta poza pojedynczym katalogiem organizacji; na przykład obsługują wszystkie konta usługi Azure AD lub obsługują wszystkie konta usługi Azure AD i osobiste konta Microsoft.
 
@@ -40,7 +40,7 @@ Poniższa tabela zawiera podsumowanie domyślnego zachowania wartości domeny wy
 | Domeny zweryfikowane przez dzierżawcę | Domyślna wartość domeny wydawcy |
 |-------------------------|----------------------------|
 | null | null |
-| *. onmicrosoft.com | *. onmicrosoft.com |
+| *.onmicrosoft.com | *.onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (podstawowy) | domain2.com |
 
 Jeśli domena wydawcy aplikacji wielodostępnej nie została ustawiona lub jeśli jest ustawiona na domenę kończącą się na. onmicrosoft.com, monit o zgodę aplikacji będzie zawierał **niezweryfikowane** miejsce w domenie wydawcy.

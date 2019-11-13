@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470109"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958046"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w Azure App Service
 ## <a name="overview"></a>Omówienie
@@ -26,7 +26,7 @@ Platforma Azure udostępnia wbudowaną diagnostykę, która pomaga w debugowaniu
 W tym artykule są wykorzystywane [Azure Portal](https://portal.azure.com) i interfejs wiersza polecenia platformy Azure do pracy z dziennikami diagnostycznymi. Aby uzyskać informacje dotyczące pracy z dziennikami diagnostycznymi przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformą Azure w programie Visual Studio](troubleshoot-dotnet-visual-studio.md)
 
 > [!NOTE]
-> Oprócz instrukcji dotyczących rejestrowania w tym artykule istnieją nowe, zintegrowane możliwości rejestrowania przy użyciu monitorowania platformy Azure. Tę możliwość znajdziesz na [stronie dzienniki i stronie ustawień diagnostycznych (wersja zapoznawcza)](https://aka.ms/appsvcblog-azmon). 
+> Oprócz instrukcji dotyczących rejestrowania w tym artykule istnieją nowe, zintegrowane możliwości rejestrowania przy użyciu monitorowania platformy Azure. Więcej informacji na ten temat można znaleźć w sekcji [wysyłanie dzienników do Azure monitor (wersja zapoznawcza)](#send-logs-to-azure-monitor-preview) . 
 >
 >
 
@@ -67,9 +67,9 @@ Wybierz **poziom**lub poziom szczegółów do zarejestrowania. W poniższej tabe
 | Poziom | Uwzględnione kategorie |
 |-|-|
 |**Disabled (Wyłączone)** | Brak |
-|**Porn** | Błąd, krytyczny |
-|**Wyświetlania** | Ostrzeżenie, błąd, krytyczny|
-|**Zawartych** | Informacje, ostrzeżenie, błąd, krytyczne|
+|**Error** | Błąd, krytyczny |
+|**Ostrzeżenie** | Ostrzeżenie, błąd, krytyczny|
+|**Informacje o** | Informacje, ostrzeżenie, błąd, krytyczne|
 |**Pełne** | Trace, Debug, info, Warning, Error, krytyczny (wszystkie kategorie) |
 
 Po zakończeniu wybierz pozycję **Zapisz**.
@@ -178,7 +178,28 @@ W przypadku aplikacji systemu Windows plik ZIP zawiera zawartość katalogu *D:\
 | **Dzienniki serwera sieci Web** | */LogFiles/http/RawLogs/* | Zawiera pliki tekstowe sformatowane przy użyciu [rozszerzonego formatu W3C plików dziennika](/windows/desktop/Http/w3c-logging). Te informacje można odczytać za pomocą edytora tekstu lub narzędzia, takiego jak [parser dzienników](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service nie obsługuje pól `s-computername`, `s-ip`lub `cs-version`. |
 | **Dzienniki wdrożenia** | */LogFiles/git/* i */Deployments/* | Zawiera dzienniki wygenerowane przez wewnętrzne procesy wdrażania, a także dzienniki wdrożeń usługi git. |
 
+## <a name="send-logs-to-azure-monitor-preview"></a>Wyślij dzienniki do Azure Monitor (wersja zapoznawcza)
+
+Przy użyciu nowej [integracji Azure monitor](https://aka.ms/appsvcblog-azmon)można [utworzyć ustawienia diagnostyczne (wersja zapoznawcza)](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting) w celu wysyłania dzienników do kont magazynu, Event Hubs i log Analytics. 
+
+> [!div class="mx-imgBorder"]
+> Ustawienia diagnostyki ![(wersja zapoznawcza)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+
+### <a name="supported-log-types"></a>Obsługiwane typy dzienników
+
+W poniższej tabeli przedstawiono obsługiwane typy i opisy dzienników: 
+
+| Typ dziennika | Obsługa systemu Windows | Obsługa systemu Linux | Opis |
+|-|-|-|
+| AppServiceConsoleLogs | TBA | Tak | Standardowe wyjście i standardowy błąd |
+| AppServiceHTTPLogs | Tak | Tak | Dzienniki serwera sieci Web |
+| AppServiceEnvironmentPlatformLogs | Tak | Tak | App Service Environment: skalowanie, zmiany konfiguracji i dzienniki stanu|
+| AppServiceAuditLogs | Tak | Tak | Działanie logowania za pośrednictwem protokołu FTP i kudu |
+| AppServiceFileAuditLogs | TBA | TBA | Zmiany plików za pośrednictwem protokołu FTP i kudu |
+| AppServiceAppLogs | TBA | Java SE & Tomcat | Dzienniki aplikacji |
+
 ## <a name="nextsteps"></a> Następne kroki
+* [Wysyłanie zapytań do dzienników przy użyciu Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Jak monitorować Azure App Service](web-sites-monitor.md)
 * [Rozwiązywanie problemów Azure App Service w programie Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [Analizowanie dzienników aplikacji w usłudze HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

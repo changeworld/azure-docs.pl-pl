@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/08/2019
+ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: b13b809b04f6cf878d68311b756ed2ca826f9697
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935310"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73935884"
 ---
-**Ostatnia aktualizacja dokumentu**: 9 sierpnia 2019 10:00 AM.
+**Ostatnia aktualizacja dokumentu**: 12 listopada 2019 10:00 am.
 
 Ujawnienie [nowej klasy luk w zabezpieczeniach procesora](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) znanych jako ataki z kanału po stronie wykonywania spekulacyjnego spowodowało problemy od klientów poszukujących większej przejrzystości.  
 
@@ -28,17 +28,12 @@ Więcej informacji o tym, jak zabezpieczenia są zintegrowane z każdym aspektem
 > [!NOTE] 
 > Ponieważ ten dokument został po raz pierwszy opublikowany, ujawniono wiele wariantów tej klasy luk w zabezpieczeniach. Firma Microsoft jest w dalszym ciągu silnie zainwestowana w ochronę naszych klientów i zapewnia wskazówki. Ta strona zostanie zaktualizowana, ponieważ będziemy nadal mogli zwolnić dalsze poprawki. 
 > 
-> 14 maja 2019, firma [Intel ujawniła](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) nowy zestaw znanych luk w zabezpieczeniach w kanale po stronie firmy Microsoft (MDS), które zostały przypisane do wielu [](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)CVEs: 
-> - CVE-2019-11091-mikroarchitekturze próbkowanie pamięci (MDSUM)
-> - CVE-2018-12126-próbkowanie danych buforu magazynu mikroarchitektury (MSBDS) 
-> - CVE-2018-12127 — próbkowanie danych portu ładowania mikroarchitektury (MLPDS)
-> - CVE-2018-12130 — próbkowanie danych buforu z mikroarchitekturą (MFBDS)
+> 12 listopada 2019, [Intel opublikował](https://software.intel.com/security-software-guidance/insights/deep-dive-intel-transactional-synchronization-extensions-intel-tsx-asynchronous-abort) Poradnik techniczny dotyczący luki w zabezpieczeniach rozszerzenia synchronizacji transakcyjnej Intel® (Intel® TSX) (TAA), do których przypisano [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135). Ta luka w zabezpieczeniach dotyczy procesorów Intel® Core® i procesorów Intel® Xeon®.  W Microsoft Azure wydano aktualizacje systemu operacyjnego i wdrażamy nowe włączenia mikrokodu, ponieważ są one udostępniane przez firmę Intel, w ramach naszej floty do ochrony naszych klientów przed nowymi lukami w zabezpieczeniach.   Platforma Azure ściśle współpracuje z technologią Intel, aby testować i weryfikować nowe włączenia mikrokodu przed opublikowaniem jej oficjalną wersją na platformie. 
 >
-> Ta luka w zabezpieczeniach dotyczy procesorów Intel® Core® i procesorów Intel® Xeon®.  W Microsoft Azure wydano aktualizacje systemu operacyjnego i wdrażamy nowe włączenia mikrokodu, ponieważ są one udostępniane przez firmę Intel, w ramach naszej floty do ochrony naszych klientów przed nowymi lukami w zabezpieczeniach.   Platforma Azure ściśle współpracuje z technologią Intel, aby testować i weryfikować nowe włączenia mikrokodu przed opublikowaniem jej oficjalną wersją na platformie. 
->
-> **Klienci, którzy uruchamiali niezaufany kod w ramach swojej maszyny wirtualnej** , muszą podejmować działania w celu ochrony przed tymi lukami, czytając poniższe informacje, aby uzyskać dodatkowe wskazówki dotyczące wszystkich luk w zabezpieczeniach w kanale zwykłego wykonania (Microsoft Advisors przeciwko ADV [ 180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), [180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)i [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)).
+> **Klienci, którzy uruchamiali niezaufany kod w ramach maszyny wirtualnej,** muszą podejmować działania w celu ochrony przed tymi usterkami, czytając poniżej, aby uzyskać dodatkowe wskazówki dotyczące wszystkich luk w zabezpieczeniach w kanale zwykłego wykonania (Microsoft advisor ADV [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), [180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)i [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)).
 >
 > Inni klienci powinni przeznaczyć te luki w zabezpieczeniach w perspektywie z głębokością i wziąć pod uwagę wpływ wybranej konfiguracji na bezpieczeństwo i wydajność.
+> 
 
 
 
@@ -48,8 +43,8 @@ Chociaż Aktualizacja systemu operacyjnego nie jest wymagana do izolowania aplik
 
 | Oferty | Zalecana akcja  |
 |----------|---------------------|
-| Usług Azure Cloud Services  | Włącz [](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) funkcję autoaktualizowania lub upewnij się, że korzystasz z najnowszego systemu operacyjnego gościa. |
-| Azure Linux Virtual Machines | Zainstaluj aktualizacje z dostawcy systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Linux](#linux) w dalszej części tego dokumentu. |
+| usług Azure Cloud Services  | Włącz funkcję [autoaktualizowania](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) lub upewnij się, że korzystasz z najnowszego systemu operacyjnego gościa. |
+| Linux Virtual Machines platformy Azure | Zainstaluj aktualizacje z dostawcy systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Linux](#linux) w dalszej części tego dokumentu. |
 | Windows Virtual Machines platformy Azure  | Zainstaluj najnowszą wersję zbiorczą zabezpieczeń.
 | Inne usługi Azure PaaS | W przypadku klientów korzystających z tych usług nie jest wymagana żadna akcja. Platforma Azure automatycznie zachowuje aktualność wersji systemu operacyjnego. |
 
@@ -77,9 +72,9 @@ Jeśli używasz niezaufanego kodu, możesz włączyć dodatkowe funkcje zabezpie
 Docelowy system operacyjny musi być aktualny, aby umożliwić korzystanie z tych dodatkowych funkcji zabezpieczeń. Chociaż liczne środki zaradcze są domyślnie włączone, dodatkowe funkcje opisane w tym miejscu muszą być włączone ręcznie i mogą spowodować wpływ na wydajność. 
 
 
-**Krok 1. Wyłącz funkcję wielowątkowości na maszynie wirtualnej** — klienci z uruchomionym niezaufanym kodem na maszynie wirtualnej z funkcją Hyper-Threading będą musieli wyłączyć funkcję Hyper-Threading lub przenieść do rozmiaru maszyny wirtualnej bez funkcji Hyper-in. Odwołuje się do [tego dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/acu) , aby uzyskać listę rozmiarów maszyn wirtualnych z funkcją Hyper-Threading (stosunek vCPU do rdzeń to 2:1). Aby sprawdzić, czy maszyna wirtualna ma włączone wielowątkowość, zapoznaj się z poniższym skryptem przy użyciu wiersza polecenia systemu Windows z poziomu maszyny wirtualnej.
+**Krok 1. wyłączenie funkcji wielowątkowości na maszynie wirtualnej** — klienci z uruchomionym niezaufanym kodem na maszynie wirtualnej z funkcją Hyper-Threading będą musieli wyłączyć funkcję Hyper-Threading lub przenieść ją do rozmiaru maszyny wirtualnej bez funkcji Hyper-Threading. Odwołuje się do [tego dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/acu) , aby uzyskać listę rozmiarów maszyn wirtualnych z funkcją Hyper-Threading (stosunek vCPU do rdzeń to 2:1). Aby sprawdzić, czy maszyna wirtualna ma włączone wielowątkowość, zapoznaj się z poniższym skryptem przy użyciu wiersza polecenia systemu Windows z poziomu maszyny wirtualnej.
 
-Wpisz `wmic` , aby wprowadzić interfejs interaktywny. Następnie wpisz poniższe polecenie, aby wyświetlić ilość procesorów fizycznych i logicznych na maszynie wirtualnej.
+Wpisz `wmic`, aby wprowadzić interfejs interaktywny. Następnie wpisz poniższe polecenie, aby wyświetlić ilość procesorów fizycznych i logicznych na maszynie wirtualnej.
 
 ```console
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
@@ -88,7 +83,7 @@ CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 Jeśli liczba procesorów logicznych jest większa niż procesorów fizycznych (rdzenie), funkcja Hyper-Threading jest włączona.  W przypadku korzystania z maszyny wirtualnej z funkcją Hyper-Threading należy [skontaktować się z pomocą techniczną platformy Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) w celu wyłączenia funkcji Hyper-Threading.  Gdy funkcja Hyper-Threading zostanie wyłączona, **Obsługa będzie wymagała pełnego ponownego uruchomienia maszyny wirtualnej**. Zapoznaj się z artykułem [Core Count](#core-count) , aby dowiedzieć się, dlaczego liczba rdzeni maszyny wirtualnej zmniejszyła się.
 
 
-**Krok 2**: Równolegle z krok 1, postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) , aby sprawdzić, czy ochrona jest włączona przy użyciu modułu [SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell.
+**Krok 2**. równolegle z krok 1, postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) , aby sprawdzić, czy ochrona jest włączona przy użyciu modułu [SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell.
 
 > [!NOTE]
 > Jeśli wcześniej pobrano ten moduł, konieczne będzie zainstalowanie najnowszej wersji.
@@ -103,19 +98,20 @@ Windows OS support for kernel VA shadow is enabled: True
 Windows OS support for speculative store bypass disable is enabled system-wide: False
 Windows OS support for L1 terminal fault mitigation is enabled: True
 Windows OS support for MDS mitigation is enabled: True
+Windows OS support for TAA mitigation is enabled: True
 ```
 
-Jeśli dane wyjściowe są `MDS mitigation is enabled: False`widoczne, [skontaktuj się z pomocą techniczną platformy Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) , aby uzyskać dostępne opcje zaradcze.
+Jeśli dane wyjściowe są wyświetlane `MDS mitigation is enabled: False`, [skontaktuj się z pomocą techniczną platformy Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) , aby uzyskać dostępne opcje zaradcze.
 
 
 
-**Krok 3**. Aby włączyć obsługę systemu operacyjnego jądra (Kvas) i system operacyjny wtrysku docelowej gałęzi (BTI), postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) , aby włączyć ochronę `Session Manager` przy użyciu kluczy rejestru. Wymagany jest ponowny rozruch.
+**Krok 3**. Aby włączyć obsługę systemu operacyjnego jądra (Kvas) i system operacyjny wtrysku docelowej gałęzi (BTI), postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) , aby włączyć ochronę przy użyciu kluczy rejestru `Session Manager`. Wymagany jest ponowny rozruch.
 
 
-**Krok 4**. W przypadku wdrożeń korzystających z [wirtualizacji zagnieżdżonej](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (tylko D3 i E3): Te instrukcje mają zastosowanie do maszyny wirtualnej, która jest używana jako host funkcji Hyper-V.
+**Krok 4**. w przypadku wdrożeń korzystających z [wirtualizacji zagnieżdżonej](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (tylko D3 i E3): te instrukcje są stosowane w ramach maszyny wirtualnej, która jest używana jako host funkcji Hyper-V.
 
-1.  Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) , aby włączyć ochronę `MinVmVersionForCpuBasedMitigations` przy użyciu kluczy rejestru.
-2.  Ustaw typ `Core` harmonogramu funkcji hypervisor, postępując zgodnie z instrukcjami znajdującymi się [tutaj](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
+1.  Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) , aby włączyć ochronę przy użyciu kluczy rejestru `MinVmVersionForCpuBasedMitigations`.
+2.  Ustaw typ harmonogramu funkcji hypervisor na `Core`, postępując zgodnie z instrukcjami znajdującymi się [tutaj](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
 
 
 ### <a name="linux"></a>Linux
@@ -123,11 +119,11 @@ Jeśli dane wyjściowe są `MDS mitigation is enabled: False`widoczne, [skontakt
 <a name="linux"></a>Włączenie zestawu dodatkowych funkcji zabezpieczeń w programie wymaga pełnej Aktualności systemu operacyjnego. Niektóre środki zaradcze zostaną domyślnie włączone. W poniższej sekcji opisano funkcje, które są domyślnie wyłączone i/lub oparte na obsłudze sprzętu (włączenia mikrokodu). Włączenie tych funkcji może spowodować wpływ na wydajność. Dodatkowe instrukcje zawiera dokumentacja dostawcy systemu operacyjnego
 
 
-**Krok 1. Wyłączenie funkcji Hyper-Threading na maszynie** wirtualnej — klienci z uruchomionym niezaufanym kodem na maszynie wirtualnej z funkcją Hyper-Threading będą musieli wyłączyć funkcję Hyper-Threading lub przenieść ją na maszynę wirtualną, która nie jest wielowątkowa.  Odwołuje się do [tego dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/acu) , aby uzyskać listę rozmiarów maszyn wirtualnych z funkcją Hyper-Threading (stosunek vCPU do rdzeń to 2:1). Aby sprawdzić, czy uruchomiono maszynę wirtualną z funkcją Hyper-threaded `lscpu` , uruchom polecenie na maszynie wirtualnej z systemem Linux. 
+**Krok 1. wyłączenie funkcji wielowątkowości na maszynie wirtualnej** — klienci z uruchomionym niezaufanym kodem na maszynie wirtualnej z funkcją Hyper-Threading będą musieli wyłączyć funkcję Hyper-Threading lub przenieść ją na maszynę wirtualną, która nie jest wielowątkowa.  Odwołuje się do [tego dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/acu) , aby uzyskać listę rozmiarów maszyn wirtualnych z funkcją Hyper-Threading (stosunek vCPU do rdzeń to 2:1). Aby sprawdzić, czy uruchomiono maszynę wirtualną z funkcją Hyper-threaded, uruchom polecenie `lscpu` na maszynie wirtualnej z systemem Linux. 
 
-Jeśli `Thread(s) per core = 2`funkcja Hyper-Threading została włączona. 
+Jeśli `Thread(s) per core = 2`, funkcja Hyper-Threading została włączona. 
 
-Jeśli `Thread(s) per core = 1`funkcja Hyper-Threading została wyłączona. 
+Jeśli `Thread(s) per core = 1`, funkcja Hyper-Threading została wyłączona. 
 
  
 Przykładowe dane wyjściowe dla maszyny wirtualnej z włączonym wielowątkowością: 
@@ -149,7 +145,7 @@ W przypadku korzystania z maszyny wirtualnej z funkcją Hyper-Threading należy 
 
 
 
-**Krok 2**: Aby wyeliminować te luki w zabezpieczeniach, należy zapoznać się z dokumentacją dostawcy systemu operacyjnego:   
+**Krok 2**. Aby wyeliminować poniższe luki w zabezpieczeniach, Skorzystaj z dokumentacji dostawcy systemu operacyjnego:   
  
 - [RedHat i CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
@@ -180,6 +176,9 @@ Ten artykuł zawiera wskazówki dotyczące poniższych ataków na kanał po stro
 - CVE-2018-12126-próbkowanie danych buforu magazynu mikroarchitektury (MSBDS)
 - CVE-2018-12127 — próbkowanie danych portu ładowania mikroarchitektury (MLPDS)
 - CVE-2018-12130 — próbkowanie danych buforu z mikroarchitekturą (MFBDS)
+
+Asynchroniczne przerywanie transakcji rozszerzeń synchronizacji transakcyjnej (Intel® TSX):  
+- [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) – TSX asynchroniczne przerwanie transakcji (TAA)
 
 
 

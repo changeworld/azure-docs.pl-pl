@@ -4,18 +4,18 @@ description: Opisuje, w jaki sposób należy określić, czy ma być używany pe
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881637"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953243"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager tryby wdrażania
 
-Podczas wdrażania zasobów należy określić, że wdrożenie jest aktualizacją przyrostową, albo pełną aktualizacją.  Podstawowa różnica między tymi dwoma trybami polega na tym, że Menedżer zasobów obsługuje istniejące zasoby w grupie zasobów, która nie znajduje się w szablonie. Domyślnym trybem jest przyrostowy.
+Podczas wdrażania zasobów należy określić, że wdrożenie jest aktualizacją przyrostową, albo pełną aktualizacją.  Różnica między tymi dwoma trybami polega na tym, że Menedżer zasobów obsługuje istniejące zasoby w grupie zasobów, która nie znajduje się w szablonie. Domyślnym trybem jest przyrostowy.
 
 W przypadku obu trybów Menedżer zasobów próbuje utworzyć wszystkie zasoby określone w szablonie. Jeśli zasób już istnieje w grupie zasobów, a jego ustawienia nie są zmieniane, nie jest wykonywana żadna operacja dla tego zasobu. W przypadku zmiany wartości właściwości zasobu zasób zostanie zaktualizowany o te nowe wartości. Jeśli spróbujesz zaktualizować lokalizację lub typ istniejącego zasobu, wdrożenie nie powiedzie się z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z wymaganą lokalizacją lub typem.
 
@@ -26,6 +26,8 @@ W trybie kompletnym Menedżer zasobów **usuwa** zasoby, które istnieją w grup
 Jeśli szablon zawiera zasób, który nie został wdrożony, ponieważ [warunek](conditional-resource-deployment.md) ma wartość false, wynik zależy od używanej wersji interfejsu API REST do wdrożenia szablonu. W przypadku używania wersji wcześniejszej niż 2019-05-10 zasób nie zostanie **usunięty**. W przypadku 2019-05-10 lub nowszych zasób **jest usuwany**. Najnowsze wersje Azure PowerShell i interfejsu wiersza polecenia platformy Azure usuwają zasób.
 
 Należy zachować ostrożność przy użyciu trybu kompletnego z [pętlami kopiowania](resource-group-create-multiple.md). Wszystkie zasoby, które nie są określone w szablonie po rozwiązaniu pętli kopiowania, są usuwane.
+
+W przypadku wdrożenia w [więcej niż jednej grupie zasobów w szablonie](resource-manager-cross-resource-group-deployment.md)zasoby w grupie zasobów określonej w operacji wdrażania mogą zostać usunięte. Zasoby w dodatkowych grupach zasobów nie są usuwane.
 
 Istnieją pewne różnice w sposobie, w jaki typy zasobów obsługują operacje usuwania w trybie pełnym. Zasoby nadrzędne są automatycznie usuwane, gdy nie znajdują się w szablonie, który został wdrożony w trybie kompletnym. Niektóre zasoby podrzędne nie są automatycznie usuwane, gdy nie znajdują się w szablonie. Jednak te zasoby podrzędne zostaną usunięte, jeśli zasób nadrzędny zostanie usunięty. 
 

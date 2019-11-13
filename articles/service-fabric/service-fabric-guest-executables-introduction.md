@@ -1,5 +1,5 @@
 ---
-title: Wdróż istniejący plik wykonywalny na platformie Azure Service Fabric | Microsoft Docs
+title: Pakowanie istniejącego pliku wykonywalnego na platformę Azure Service Fabric | Microsoft Docs
 description: Dowiedz się więcej o pakowaniu istniejącej aplikacji jako pliku wykonywalnego gościa, dzięki czemu można ją wdrożyć w klastrze Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 521c7a198d9085cdc93d325e63ad9d46cc4c7928
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: bd6984db67a8a7b9c38988558ada51e12d337f52
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599462"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013257"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Wdróż istniejący plik wykonywalny w Service Fabric
 Można uruchomić dowolny typ kodu, taki jak Node. js, Java lub C++ na platformie Azure Service Fabric jako usługa. Service Fabric odnosi się do tych typów usług jako plików wykonywalnych gościa.
@@ -33,7 +33,7 @@ Istnieje kilka zalet, aby uruchomić plik wykonywalny gościa w klastrze Service
 * Monitorowanie kondycji. Service Fabric monitorowania kondycji wykrywa, czy aplikacja jest uruchomiona i zawiera informacje diagnostyczne w przypadku wystąpienia błędu.   
 * Zarządzanie cyklem życia aplikacji. Oprócz udostępniania uaktualnień bez przestojów Service Fabric zapewnia automatyczne wycofanie do poprzedniej wersji, jeśli podczas uaktualniania zgłoszono złe zdarzenie kondycji.    
 * Gęstooci. W klastrze można uruchamiać wiele aplikacji, co eliminuje konieczność uruchamiania poszczególnych aplikacji na własnym sprzęcie.
-* Możliwości odnajdywania Przy użyciu REST można wywołać usługę nazewnictwa Service Fabric, aby znaleźć inne usługi w klastrze. 
+* Wykrywalność: przy użyciu REST można wywołać usługę nazewnictwa Service Fabric, aby znaleźć inne usługi w klastrze. 
 
 ## <a name="samples"></a>Przykłady
 * [Przykład dla pakowania i wdrażania pliku wykonywalnego gościa](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -69,7 +69,7 @@ ApplicationPackageRoot zawiera plik ApplicationManifest. XML, który definiuje a
 * *Dane*. Jest to dodatkowy katalog do przechowywania dodatkowych danych lokalnych, których może potrzebować usługa. Dane powinny być używane do przechowywania tylko danych tymczasowych. Service Fabric nie kopiuje ani nie replikuje zmian do katalogu danych, jeśli usługa musi zostać przeniesiona (na przykład podczas pracy w trybie failover).
 
 > [!NOTE]
-> Nie trzeba tworzyć `config` katalogów i `data` , jeśli nie są one potrzebne.
+> Nie trzeba tworzyć katalogów `config` i `data`, jeśli nie są one potrzebne.
 >
 >
 

@@ -1,6 +1,6 @@
 ---
-title: Jak monitorować i zmniejszać ograniczenia w Azure Time Series Insights | Microsoft Docs
-description: W tym artykule opisano sposób monitorowania, diagnozowania i rozwiązywania problemów z wydajnością, które powodują opóźnienia i ograniczanie przepustowości w Azure Time Series Insights.
+title: Jak monitorować i zmniejszać ograniczenie przepustowości — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak monitorować, diagnozować i ograniczać problemy z wydajnością, które powodują opóźnienia i ograniczanie przepustowości w Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990145"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012654"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczanie ograniczania przepustowości w celu zmniejszenia opóźnień w Azure Time Series Insights
 
@@ -32,7 +32,7 @@ Najprawdopodobniej napotkasz opóźnienia i ograniczanie przepustowości, gdy:
 - Wypchnij duże ilości zdarzeń historycznych do źródła zdarzeń, co spowodowało zwłokę (Time Series Insights będzie konieczne przechwycenie).
 - Dołącz dane referencyjne do telemetrii, co skutkuje większym rozmiarem zdarzenia.  Z punktu widzenia ograniczenia przepustowości pakiet danych ingressed o rozmiarze pakietu 32 KB jest traktowany jako zdarzenia 32 o wielkości 1 KB. Maksymalny dozwolony rozmiar zdarzenia to 32 KB; pakiety danych o rozmiarze większym niż 32 KB są obcinane.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Dowiedz się więcej na temat Time Series Insights zachowania związanego z transferem danych przychodzących i sposobu ich planowania.</br>
 
@@ -44,7 +44,7 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 1. W Azure Portal wybierz pozycję **alerty**.
 
-   [Alerty![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [Alerty ![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Zostanie wyświetlony panel **Utwórz regułę** . Wybierz pozycję **Dodaj** w obszarze **warunek**.
 
@@ -52,7 +52,7 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 1. Następnie skonfiguruj dokładne warunki logiki sygnału.
 
-   [Konfiguracja logiki sygnałów![](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [Konfiguracja logiki sygnałów ![](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    W tym miejscu możesz skonfigurować alerty przy użyciu następujących warunków:
 
@@ -62,9 +62,9 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
    |**Odebrano nieprawidłowe komunikaty dotyczące transferu danych przychodzących**     | Liczba nieprawidłowych komunikatów odczytywanych ze wszystkich Event Hubs platformy Azure lub źródeł zdarzeń platformy Azure IoT Hub.      |
    |**Odebrane komunikaty transferu danych przychodzących**   | Liczba komunikatów odczytywanych ze wszystkich Event Hubs lub źródeł zdarzeń usługi IoT Hub.        |
    |**Bajty przechowywane w ruchu przychodzącym**     | Łączny rozmiar zdarzeń przechowywanych i dostępnych dla zapytania. Rozmiar jest obliczany tylko na wartości właściwości.        |
-   |**Zdarzenia** związane z transferem danych przychodzących     |   Liczba zdarzeń spłaszczonych przechowywanych i dostępnych dla kwerendy.      |
-   |**Zwłoka czasu odebranych komunikatów** przychodzących    |  Różnica w sekundach między upływem czasu, w którym komunikat jest przełączany w źródle zdarzenia i czas przetwarzania w danych wejściowych.      |
-   |**Opóźnienie liczby odebranych komunikatów** przychodzących    |  Różnica między numerem sekwencyjnym ostatnio zarejestrowanego komunikatu w partycji źródłowej zdarzenia i numerem sekwencyjnym komunikatu przetwarzanego w ramach ruchu przychodzącego.      |
+   |**Zdarzenia związane** z transferem danych przychodzących     |   Liczba zdarzeń spłaszczonych przechowywanych i dostępnych dla kwerendy.      |
+   |    **opóźnienia czasu odbierania komunikatu przychodzącego**|  Różnica w sekundach między upływem czasu, w którym komunikat jest przełączany w źródle zdarzenia i czas przetwarzania w danych wejściowych.      |
+   |    **opóźnienia liczby odebranych komunikatów** przychodzących|  Różnica między numerem sekwencyjnym ostatnio zarejestrowanego komunikatu w partycji źródłowej zdarzenia i numerem sekwencyjnym komunikatu przetwarzanego w ramach ruchu przychodzącego.      |
 
    Wybierz pozycję **Done** (Gotowe).
 
@@ -74,7 +74,7 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 ## <a name="throttling-and-ingress-management"></a>Ograniczanie i zarządzanie ruchem przychodzącym
 
-* W przypadku ograniczania przepustowości zostanie wyświetlona wartość *opóźnienia czasu komunikatu*związanego z transferem danych przychodzących, informujący o tym, ile sekund w środowisku usługi Time Series Insights jest rzeczywisty czas, jaki komunikat trafi do źródła zdarzenia (z wyłączeniem czasu indeksowania). pakietu APPX. 30-60 sekund).  
+* W przypadku ograniczania przepustowości zostanie wyświetlona wartość *opóźnienia czasu komunikatu przychodzącego*, informująca o tym, ile sekund w środowisku usługi Time Series Insights jest rzeczywisty czas, który komunikat trafi do źródła zdarzenia (z wyłączeniem czasu indeksowania modułu APPX). 30-60 sekund).  
 
   *Opóźnienie liczby przychodzących komunikatów* przychodzących powinno również mieć wartość, co pozwala określić liczbę komunikatów znajdujących się za Ciebie.  Najprostszym sposobem na przezwyciężenie jest zwiększenie pojemności środowiska do rozmiaru, który umożliwi pokonanie różnic.  
 

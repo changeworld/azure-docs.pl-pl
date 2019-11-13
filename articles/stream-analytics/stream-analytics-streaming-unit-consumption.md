@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d9c4169176707f98181f2a479e470cf89ff2e04f
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988233"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961276"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Zrozumienie i Dostosowywanie jednostek przesyłania strumieniowego
 
@@ -62,10 +62,10 @@ Należy pamiętać, że zadanie ze złożoną logiką zapytań może mieć wysok
 
 Użycie SU% może nagle porzucić do 0 przez krótki czas przed powrotem do oczekiwanego poziomu. Dzieje się tak z powodu błędów przejściowych lub uaktualnień inicjowanych przez system. Zwiększenie liczby jednostek przesyłania strumieniowego dla zadania może nie zmniejszyć użycia elementu SU%, jeśli zapytanie nie jest w [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Logika zapytań stanowych w elementach czasowych
-Jedną z unikatowych możliwości Azure Stream Analytics zadania jest wykonywanie przetwarzania stanowego, takiego jak agregacje okienkowe, sprzężenia czasowe i funkcje analityczne. Każdy z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Logiki zapytania stanowych w elementach danych czasowych
+Jednym z unikatowych możliwości zadania usługi Azure Stream Analytics jest wykonanie stanowych przetwarzania, takich jak okresowymi danych czasowych sprzężeń i funkcji analitycznych danych czasowych. Każdy z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 
 
-Koncepcja okna danych czasowych pojawia się w kilku Stream Analytics elementach zapytania:
+Koncepcja okno danych czasowych pojawia się w kilku elementów zapytań usługi Stream Analytics:
 1. Zagregowane okna: Grupuj według wirowania, przeskoku i ruchomych okien
 
 2. Sprzężenia czasowe: SPRZĘŻENIe z funkcją DATEDIFF
@@ -86,7 +86,7 @@ Na przykład w poniższym zapytaniu liczba skojarzona z `clusterid` jest kardyna
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Aby uniknąć problemów spowodowanych przez dużą Kardynalność w poprzedniej kwerendzie, można wysyłać zdarzenia do centrum zdarzeń partycjonowane przez `clusterid`i skalować zapytanie, umożliwiając systemowi przetworzenie każdej partycji wejściowej osobno przy użyciu **partycji przez** pokazanej w poniższym przykładzie:
+Aby uniknąć problemów spowodowanych przez dużą Kardynalność w poprzedniej kwerendzie, można wysyłać zdarzenia do centrum zdarzeń partycjonowane przez `clusterid`i skalować zapytanie, umożliwiając systemowi przetworzenie każdej partycji wejściowej osobno przy użyciu **partycji przez** , jak pokazano w poniższym przykładzie:
 
    ```sql
    SELECT count(*) 
@@ -99,7 +99,7 @@ Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W zwi
 Partycje centrum zdarzeń należy podzielić przez klucz grupowania, aby uniknąć konieczności zmniejszenia kroku. Aby uzyskać więcej informacji, zobacz [Event Hubs przegląd](../event-hubs/event-hubs-what-is-event-hubs.md). 
 
 ## <a name="temporal-joins"></a>Sprzężenia czasowe
-Użycie pamięci (rozmiar stanu) dołączania danych czasowych jest proporcjonalne do liczby zdarzeń w pokoju wiggle czasowym sprzężenia, co jest wskaźnikiem nakładu danych pomnożyć przez rozmiar pokoju wiggle. Innymi słowy, pamięć wykorzystywana przez sprzężenia jest proporcjonalna do zakresu czasu DateDiff pomnożonego przez średni współczynnik zdarzeń.
+Zajęta pamięć (rozmiar stanu) sprzężenia danych czasowych jest proporcjonalna do liczby zdarzeń w pokoju wiggle czasowego przyłączenia, który jest wskaźnikiem nakładu zdarzeń pomnożonym przez rozmiar pokoju wiggle. Innymi słowy, pamięć wykorzystywana przez sprzężenia jest proporcjonalna do zakresu czasu DateDiff pomnożonego przez średni współczynnik zdarzeń.
 
 Liczba niedopasowanych zdarzeń w sprzężeniu wpływa na użycie pamięci przez zapytanie. Następujące zapytanie służy do znajdowania wyświetleń reklam, które generują kliknięcia:
 

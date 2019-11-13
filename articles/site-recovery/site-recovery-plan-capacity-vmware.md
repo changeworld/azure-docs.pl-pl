@@ -1,5 +1,5 @@
 ---
-title: Planowanie pojemności i skalowanie na potrzeby odzyskiwania po awarii oprogramowania VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+title: Planowanie wydajności odzyskiwania po awarii programu VMware przy użyciu Azure Site Recovery
 description: Ten artykuł ułatwia planowanie pojemności i skalowania podczas konfigurowania odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery.
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747901"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961356"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie pojemności i skalowanie na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure
 
@@ -24,7 +24,7 @@ Aby dowiedzieć się więcej o wymaganiach dotyczących infrastruktury Azure Sit
 
 Site Recovery Planista wdrażania zawiera raport, który zawiera pełne informacje o zgodnych i niezgodnych maszynach wirtualnych, dyskach na maszynę wirtualną oraz o postępach danych na dysku. Narzędzie podsumowuje także wymagania dotyczące przepustowości sieci w celu spełnienia docelowego celu punktu odzyskiwania i infrastruktury platformy Azure, która jest wymagana do pomyślnej replikacji i testowego przejścia w tryb failover.
 
-## <a name="capacity-considerations"></a>Zagadnienia dotyczące pojemności
+## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
 
 Składnik | Szczegóły
 --- | ---
@@ -42,7 +42,7 @@ Procesor CPU | Memory (Pamięć) | Rozmiar dysku pamięci podręcznej | Szybkoś
 12 procesorów wirtualnych vCPU (2 gniazda * 6 rdzeni \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB do 1 TB | Służy do replikowania 100 do 150 maszyn.
 16 procesorów wirtualnych vCPU (2 gniazda * 8 rdzeni \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB do 2 TB | Służy do replikowania 151 do 200 maszyn.
 Wdróż inny serwer konfiguracji przy użyciu [szablonu OVF](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). | | | | Wdróż nowy serwer konfiguracji, jeśli wykonujesz replikację więcej niż 200 maszyn.
-Wdróż inny [serwer przetwarzania](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | > 2 TB| Wdróż nowy serwer przetwarzania skalowalnego w poziomie, jeśli ogólna liczba codziennych zmian danych jest większa niż 2 TB.
+Wdróż inny [serwer przetwarzania](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Wdróż nowy serwer przetwarzania skalowalnego w poziomie, jeśli ogólna liczba codziennych zmian danych jest większa niż 2 TB.
 
 W tych konfiguracjach:
 
@@ -79,8 +79,8 @@ Po użyciu [Planista wdrażania Site Recovery](site-recovery-deployment-planner.
 
 * **Ograniczanie przepustowości**: ruch VMware replikowany do platformy Azure odbywa się za pomocą określonego serwera przetwarzania. Przepustowość można ograniczyć na maszynach, na których działają jako serwery przetwarzania.
 * **Wpływ na przepustowość**: można mieć wpływ na przepustowość używaną do replikacji przy użyciu kilku kluczy rejestru:
-  * Wartość rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows platformy Azure Backup\Replication\UploadThreadsPerVM** określa liczbę wątków używanych na potrzeby transferu danych (replikacja początkowa lub różnicowa) dysku. Wyższa wartość zwiększa przepustowość sieci używaną podczas replikacji.
-  * Wartość rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows usługi Azure Backup\Replication\DownloadThreadsPerVM** określa liczbę wątków, które są używane na potrzeby transferu danych podczas powrotu po awarii.
+  * Wartość rejestru **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\UploadThreadsPerVM** określa liczbę wątków używanych na potrzeby transferu danych (replikacja początkowa lub różnicowa) dysku. Wyższa wartość zwiększa przepustowość sieci używaną podczas replikacji.
+  * Wartość rejestru **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** określa liczbę wątków, które są używane na potrzeby transferu danych podczas powrotu po awarii.
 
 ### <a name="throttle-bandwidth"></a>Ograniczanie przepustowości
 
@@ -102,7 +102,7 @@ Możesz też użyć polecenia cmdlet [Set-OBMachineSetting](https://technet.micr
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>Zmiana przepustowości sieci dla maszyny wirtualnej
 
-1. W rejestrze maszyny wirtualnej przejdź do obszaru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+1. W rejestrze maszyny wirtualnej przejdź do **HKEY_LOCAL_MACHINE \Software\microsoft\windows Backup\Replication Azure**.
    * Aby zmienić ruch związany z przepustowością na dysku replikacji, należy zmodyfikować wartość **UploadThreadsPerVM**. Utwórz klucz, jeśli nie istnieje.
    * Aby zmienić przepustowość dla ruchu powrotu po awarii z platformy Azure, zmodyfikuj wartość **DownloadThreadsPerVM**.
 2. Wartość domyślna dla każdego klucza to **4**. W sieci „o nadmiarowych zasobach” należy zmienić wartości domyślne tych kluczy rejestru. Maksymalna wartość, której można użyć, to **32**. Monitoruj ruch, aby zoptymalizować tę wartość.

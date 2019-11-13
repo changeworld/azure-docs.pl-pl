@@ -1,5 +1,5 @@
 ---
-title: Jak zdiagnozować błędy za pomocą usługi połączonej Azure Active Directory
+title: Diagnozowanie błędów za pomocą usługi połączonej Azure Active Directory
 description: Usługa połączona z usługą Active Directory wykryła niezgodny typ uwierzytelniania
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e544942029532fdbe998c36917e688d70ce4ed5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851991"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941382"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnozowanie błędów za pomocą połączonej usługi Azure Active Directory
 
@@ -27,7 +27,7 @@ Aby poprawnie wykryć poprzedni kod uwierzytelniania w projekcie, należy skompi
 
 ## <a name="project-types"></a>Typy projektów
 
-Połączona usługa sprawdza typ projektu, który jest opracowywany, dzięki czemu może wstrzyknąć właściwą logikę uwierzytelniania do projektu. Jeśli istnieje jakikolwiek kontroler pochodzący z `ApiController` projektu, projekt jest traktowany jako projekt WebApi. Jeśli istnieją tylko kontrolery, które pochodzą z `MVC.Controller` projektu, projekt jest traktowany jako projekt MVC. Połączona usługa nie obsługuje żadnego innego typu projektu.
+Połączona usługa sprawdza typ projektu, który jest opracowywany, dzięki czemu może wstrzyknąć właściwą logikę uwierzytelniania do projektu. Jeśli istnieje jakikolwiek kontroler, który pochodzi od `ApiController` w projekcie, projekt jest traktowany jako projekt WebAPI. Jeśli istnieją tylko kontrolery, które pochodzą z `MVC.Controller` w projekcie, projekt jest traktowany jako projekt MVC. Połączona usługa nie obsługuje żadnego innego typu projektu.
 
 ## <a name="compatible-authentication-code"></a>Zgodny kod uwierzytelniania
 
@@ -54,7 +54,7 @@ Na koniec usługa połączona próbuje wykryć wersje kodu uwierzytelniania, kt�
 * Indywidualne konta użytkowników
 * Konta organizacyjne
 
-Aby wykryć uwierzytelnianie systemu Windows w projekcie MVC, podłączany szuka `authentication` elementu `web.config` w pliku.
+W celu wykrycia uwierzytelniania systemu Windows w projekcie MVC, połączenie szuka elementu `authentication` w pliku `web.config`.
 
 ```xml
 <configuration>
@@ -64,7 +64,7 @@ Aby wykryć uwierzytelnianie systemu Windows w projekcie MVC, podłączany szuka
 </configuration>
 ```
 
-Aby wykryć uwierzytelnianie systemu Windows w projekcie interfejsu API sieci Web, połączona usługa szuka `IISExpressWindowsAuthentication` elementu w `.csproj` pliku projektu:
+Aby wykryć uwierzytelnianie systemu Windows w projekcie interfejsu API sieci Web, połączona usługa szuka elementu `IISExpressWindowsAuthentication` w pliku `.csproj` projektu:
 
 ```xml
 <Project>
@@ -74,7 +74,7 @@ Aby wykryć uwierzytelnianie systemu Windows w projekcie interfejsu API sieci We
 </Project>
 ```
 
-Aby wykryć uwierzytelnianie poszczególnych kont użytkowników, połączona usługa szuka elementu pakietu w `packages.config` pliku.
+Aby wykryć uwierzytelnianie poszczególnych kont użytkowników, połączona usługa szuka elementu Package w pliku `packages.config`.
 
 ```xml
 <packages>

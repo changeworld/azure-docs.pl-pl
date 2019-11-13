@@ -1,6 +1,6 @@
 ---
-title: Zaplanuj skalę środowiska Azure Time Series Insights | Microsoft Docs
-description: W tym artykule opisano sposób postępowania z najlepszymi rozwiązaniami w przypadku planowania środowiska Azure Time Series Insights. Obszary, które są objęte usługą, obejmują pojemność magazynu, przechowywanie danych, wydajność, monitorowanie i ciągłość działania oraz odzyskiwanie po awarii (BCDR).
+title: Zaplanuj środowisko o wysokiej dostępności — Azure Time Series Insights | Microsoft Docs
+description: Zapoznaj się z najlepszymi rozwiązaniami, które należy wykonać podczas planowania środowiska w środowisku.
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 649ff31e40bf612f1b70f81e895920f7fc21f082
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991255"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006953"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Zaplanuj środowisko Azure Time Series Insights GA
 
 W tym artykule opisano sposób planowania środowiska Azure Time Series Insights ogólnej dostępności (GA) w oparciu o oczekiwany współczynnik ruchu przychodzącego i wymagania dotyczące przechowywania danych.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 **Obejrzyj ten film wideo, aby dowiedzieć się więcej na temat przechowywania danych w Azure Time Series Insights i jak planować go**:<br /><br />
 

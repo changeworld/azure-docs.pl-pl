@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c118a74e273e153746240465692b1c712bd25f47
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499428"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953608"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Samouczek: wyodrębnianie danych z dowolnego formularza ze wzorcem. dowolna jednostka
 
@@ -31,7 +31,7 @@ W tym samouczku używamy jednostki Pattern.any do wyodrębniania danych z wypowi
 > * Dodawanie przykładowych wypowiedzi do istniejącej jednostki
 > * Tworzenie jednostki Pattern.any
 > * Tworzenie wzorca
-> * Szkolenie
+> * Uczenie
 > * Testowanie nowego wzorca
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
@@ -138,7 +138,7 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 ## <a name="using-an-explicit-list"></a>Korzystanie z listy jawnej
 
-Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](luis-concept-patterns.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem.
+Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](reference-pattern-syntax.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem.
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi Azure IoT Hub (portal i platforma .NET) | Microsoft Docs
+title: Tożsamość modułu IoT Hub platformy Azure &a sznurki modułowe (Portal i .NET)
 description: Dowiedz się, jak utworzyć tożsamość modułu i zaktualizować bliźniaczą reprezentację modułu przy użyciu portalu i platformy.NET.
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 395b1fd3301925db0607f775c6b7367979ba367b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147432"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954617"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi IoT Hub przy użyciu portalu i urządzenia platformy .NET
 
@@ -56,7 +56,7 @@ W ramach jednej tożsamości urządzenia możesz utworzyć maksymalnie 20 tożsa
 
 1. Wprowadź nazwę *myFirstModule*. Zapisz tożsamość modułu.
 
-    ![Dodawanie tożsamości modułu](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
+    ![Dodaj tożsamość modułu](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
 
     Nowa tożsamość modułu pojawia się u dołu ekranu. Wybierz go, aby wyświetlić szczegóły tożsamości modułu.
 
@@ -82,7 +82,7 @@ Aby utworzyć aplikację, która aktualizuje raportowane właściwości w module
 
 Tożsamość modułu i sznurki modułu są w publicznej wersji zapoznawczej. Jest on dostępny tylko w zestawach SDK urządzeń IoT Hub w wersji wstępnej. Aby go zainstalować, wykonaj następujące kroki:
 
-1. W programie Visual Studio Otwórz pozycję **Narzędzia** > **Menedżer** > pakietów NuGet**Zarządzanie pakietami NuGet dla rozwiązania**.
+1. W programie Visual Studio Otwórz **narzędzia** > **menedżer pakietów NuGet** > **Zarządzanie pakietami NuGet dla rozwiązania**.
 
 1. Wybierz pozycję **Przeglądaj**, a następnie wybierz pozycję **Uwzględnij wersję wstępną**. Wyszukaj ciąg *Microsoft. Azure. Devices. Client*. Wybierz najnowszą wersję i zainstaluj.
 

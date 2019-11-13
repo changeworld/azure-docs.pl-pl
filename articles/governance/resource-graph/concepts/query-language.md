@@ -1,17 +1,14 @@
 ---
 title: Opis języka zapytań
 description: Opisuje tabele grafu zasobów i dostępne typy danych Kusto, operatory i funkcje możliwe do użycia w usłudze Azure Resource Graph.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: baef46f4ba6f899c2c0a1392f87006223d75a4e1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622632"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959048"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informacje o języku zapytań grafu zasobów platformy Azure
 
@@ -77,13 +74,13 @@ Poniżej znajduje się lista operatorów tabelarycznych KQL obsługiwanych przez
 |[granice](/azure/kusto/query/limitoperator) |[Lista wszystkich publicznych adresów IP](../samples/starter.md#list-publicip) |Synonim `take` |
 |[MV — rozwiń](/azure/kusto/query/mvexpandoperator) |[Wyświetlanie listy Cosmos DB z określonymi lokalizacjami zapisu](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max z 400 |
 |[porządek](/azure/kusto/query/orderoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) |Synonim `sort` |
-|[projektu](/azure/kusto/query/projectoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) | |
+|[project](/azure/kusto/query/projectoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) | |
 |[projekt — poza](/azure/kusto/query/projectawayoperator) |[Usuń kolumny z wyników](../samples/advanced.md#remove-column) | |
-|[porządku](/azure/kusto/query/sortoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) |Synonim `order` |
+|[sort](/azure/kusto/query/sortoperator) |[Lista zasobów posortowana według nazwy](../samples/starter.md#list-resources) |Synonim `order` |
 |[Podsumuj](/azure/kusto/query/summarizeoperator) |[Liczba zasobów platformy Azure](../samples/starter.md#count-resources) |Uproszczona tylko pierwsza strona |
-|[czasochłonn](/azure/kusto/query/takeoperator) |[Lista wszystkich publicznych adresów IP](../samples/starter.md#list-publicip) |Synonim `limit` |
+|[take](/azure/kusto/query/takeoperator) |[Lista wszystkich publicznych adresów IP](../samples/starter.md#list-publicip) |Synonim `limit` |
 |[Do góry](/azure/kusto/query/topoperator) |[Pokaż pierwsze pięć maszyn wirtualnych według nazwy i ich typu systemu operacyjnego](../samples/starter.md#show-sorted) | |
-|[Unii](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Limit 3 `union`ych etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel nogi `union` nie jest dozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
+|[union](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Limit 3 `union`ych etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel nogi `union` nie jest dozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
 |[miejscu](/azure/kusto/query/whereoperator) |[Pokaż zasoby, które zawierają magazyn](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Znaki ucieczki
@@ -110,7 +107,7 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
   - **cmd** — nie należy wyznaczać znaku `$`.
 
-  - ``` ` ``` - **programu PowerShell**
+  - **PowerShell** - ``` ` ```
 
     Przykładowe zapytanie, które wyprowadza Właściwość _\$Type_ w programie PowerShell:
 

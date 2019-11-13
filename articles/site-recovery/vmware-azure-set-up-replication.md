@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj zasady replikacji dla odzyskiwania po awarii oprogramowania VMware na platformie Azure i zarządzaj nimi przy użyciu Azure Site Recovery | Microsoft Docs
+title: Skonfiguruj zasady replikacji dla odzyskiwania po awarii programu VMware przy użyciu Azure Site Recovery | Microsoft Docs
 description: Opisuje sposób konfigurowania ustawień replikacji dla odzyskiwania po awarii programu VMware na platformie Azure przy użyciu Azure Site Recovery.
 author: sujayt
 manager: rochakm
@@ -7,14 +7,15 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231442"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954322"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurowanie zasad replikacji dla odzyskiwania po awarii programu VMware na platformie Azure i zarządzanie nimi
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Konfigurowanie zasad replikacji dla odzyskiwania po awarii oprogramowania VMware i zarządzanie nimi
+
 W tym artykule opisano sposób konfigurowania zasad replikacji w przypadku replikowania maszyn wirtualnych VMware na platformę Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
 ## <a name="create-a-policy"></a>Tworzenie zasad
@@ -48,11 +49,11 @@ Możesz zmodyfikować zasady replikacji po jej utworzeniu.
 - Jeśli chcesz skojarzyć zreplikowane maszyny z innymi zasadami replikacji, musisz wyłączyć i ponownie włączyć ochronę odpowiednich maszyn.
 
 Edytuj zasady w następujący sposób:
-1. Wybierz pozycję **Zarządzaj** > **zasadami replikacji** **Site Recovery infrastruktura** > .
+1. Wybierz kolejno pozycje **zarządzaj** > **Site Recovery infrastruktura** > **zasady replikacji**.
 2. Wybierz zasady replikacji, które chcesz zmodyfikować.
 3. Kliknij pozycję **Edytuj ustawienia**, a następnie w razie potrzeby zaktualizuj odpowiednie pola próg/czas przechowywania punktu odzyskiwania/częstotliwość migawek dla aplikacji.
 4. Jeśli chcesz wyłączyć generowanie punktów spójności aplikacji, wybierz wartość "off" na liście rozwijanej **częstotliwości migawek spójnej na poziomie aplikacji**.
-5. Kliknij polecenie **Zapisz**. Zasady powinny zostać zaktualizowane w ciągu 30 do 60 sekund.
+5. Kliknij pozycję **Zapisz**. Zasady powinny zostać zaktualizowane w ciągu 30 do 60 sekund.
 
 
 

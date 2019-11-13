@@ -1,77 +1,74 @@
 ---
-title: Utwórz niestandardową definicję zasad
-description: Utwórz niestandardową definicję zasad Azure Policy, aby wymusić niestandardowe reguły biznesowe.
-author: DCtheGeek
-ms.author: dacoulte
+title: Tworzenie niestandardowej definicji zasad
+description: Opracuj niestandardową definicję zasad usługi Azure Policy, aby wymusić niestandardowe reguły biznesowe.
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 240d0fa388fbdfdd3d29d735aed708a096440740
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1a5be5a3e81dec6f4369e6b01dcda3d5de5f6dac
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980354"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959263"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Samouczek: Tworzenie definicji zasad niestandardowych
 
-Niestandardowa definicja zasad pozwala klientom definiować własne reguły korzystania z platformy Azure. Te reguły często wymuszają:
+Niestandardowa definicja zasad umożliwia klientom definiowanie własnych reguł dotyczących korzystania z platformy Azure. Te reguły często wymuszają:
 
-- Praktyki dotyczące zabezpieczeń
+- Rozwiązania z zakresu bezpieczeństwa
 - Zarządzanie kosztami
-- Reguły specyficzne dla organizacji (takie jak nazewnictwo lub lokalizacje)
+- Reguły specyficzne dla organizacji (np. dotyczące nazewnictwa lub lokalizacji)
 
-Niezależnie od tego, jaki jest sterownik biznesowy do tworzenia zasad niestandardowych, kroki te są takie same dla definiowania nowych zasad niestandardowych.
+Niezależnie od potrzeb biznesowych wymagających utworzenia zasad niestandardowych, kroki definiowania nowych zasad niestandardowych są takie same.
 
-Przed utworzeniem zasad niestandardowych zapoznaj się z [przykładami zasad](../samples/index.md) , aby sprawdzić, czy zasady zgodne z potrzebami już istnieją.
+Przed utworzeniem zasad niestandardowych sprawdź [przykłady zasad](../samples/index.md), aby określić, czy zasady pasujące do potrzeb już istnieją.
 
-Podejście do tworzenia zasad niestandardowych wykonuje następujące czynności:
+Proces tworzenia zasad niestandardowych obejmuje następujące kroki:
 
 > [!div class="checklist"]
-> - Określ wymagania biznesowe
-> - Mapuj każde wymaganie na Właściwość zasobów platformy Azure
+> - Określanie wymagań biznesowych
+> - Mapowanie każdego wymagania na właściwość zasobu platformy Azure
 > - Mapowanie właściwości na alias
-> - Określ, którego efektu użyć
-> - Redagowanie definicji zasad
+> - Określanie efektu do użycia
+> - Tworzenie definicji zasad
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="identify-requirements"></a>Identyfikowanie wymagań
+## <a name="identify-requirements"></a>Określanie wymagań
 
-Przed utworzeniem definicji zasad należy zapoznać się z intencjami zasad. W tym samouczku użyjemy typowego wymagania dotyczącego zabezpieczeń przedsiębiorstwa, co ma na celu zilustrowanie pożądanych czynności:
+Ważne jest, aby przed utworzeniem definicji zasad poznać przeznaczenie zasad. W tym samouczku jako celu użyjemy typowego wymagania dotyczącego zabezpieczeń w przedsiębiorstwie, aby przedstawić wykonywane kroki:
 
-- Każde konto magazynu musi być włączone dla protokołu HTTPS
-- Każde konto magazynu musi być wyłączone dla protokołu HTTP
+- Każde konto magazynu musi mieć włączoną obsługę protokołu HTTPS
+- Każde konto magazynu musi mieć wyłączoną obsługę protokołu HTTP
 
-Wymagania powinny jasno identyfikować zarówno Stany zasobów "to", jak i "nie do".
+Wymagania powinny wyraźnie definiować zarówno „poprawne”, jak i „zakazane” stany zasobów.
 
-Mimo że został zdefiniowany oczekiwany stan zasobu, nie zdefiniowano jeszcze tego, co chcemy zrobić z niezgodnymi zasobami. Azure Policy obsługuje wiele [efektów](../concepts/effects.md). W tym samouczku zdefiniujemy wymóg biznesowy, który uniemożliwia tworzenie zasobów, jeśli nie są one zgodne z regułami biznesowymi. Aby osiągnąć ten cel, użyjemy efektu [odmowy](../concepts/effects.md#deny) . Chcemy również zawiesić zasady dla określonych przypisań. W związku z tym użyjemy [wyłączonego](../concepts/effects.md#disabled) efektu i ustaw go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
+Chociaż zdefiniowaliśmy oczekiwany stan zasobu, nie zdefiniowaliśmy jeszcze, co chcemy zrobić z niezgodnymi zasobami. Azure Policy obsługuje wiele [efektów](../concepts/effects.md). W tym samouczku zdefiniujemy wymaganie biznesowe, które zakazuje tworzenia zasobów, jeśli nie są one zgodne z regułami firmy. Aby osiągnąć ten cel, użyjemy efektu [Deny](../concepts/effects.md#deny) (Odmów). Chcemy również mieć możliwość wstrzymania zasad dla określonych przypisań. Dlatego użyjemy efektu [Disabled](../concepts/effects.md#disabled) (Wyłączone) i określimy go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
 
 ## <a name="determine-resource-properties"></a>Określanie właściwości zasobów
 
-Zgodnie z wymaganiami biznesowymi zasób platformy Azure do inspekcji przy użyciu Azure Policy jest kontem magazynu. Nie wiemy jednak o właściwościach do użycia w definicji zasad. Azure Policy oblicza względem reprezentacji JSON zasobu, dlatego musimy zrozumieć właściwości dostępne dla tego zasobu.
+Zgodnie z wymaganiami biznesowymi zasób platformy Azure do inspekcji przy użyciu Azure Policy jest kontem magazynu. Jednak nie znamy właściwości do użycia w definicji zasad. Azure Policy oblicza względem reprezentacji JSON zasobu, dlatego musimy zrozumieć właściwości dostępne dla tego zasobu.
 
-Istnieje wiele sposobów na określenie właściwości zasobu platformy Azure. Zapoznajemy się z każdym z tych samouczków:
+Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
-- Szablony Menedżer zasobów
-  - Eksportuj istniejący zasób
+- Szablony usługi Resource Manager
+  - Eksportowanie istniejącego zasobu
   - Środowisko tworzenia
-  - Szablony szybkiego startu (GitHub)
-  - Dokumentacja szablonu dokumentacji
-- Azure Resource Explorer
+  - Szablony Szybki start (GitHub)
+  - Dokumentacja szablonu
+- Eksplorator zasobów Azure
 
-### <a name="resource-manager-templates"></a>Szablony Menedżer zasobów
+### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
-Istnieje kilka sposobów, aby zapoznać się z [szablonem Menedżer zasobów](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) zawierającym właściwość, którą chcesz zarządzać.
+[Szablon usługi Resource Manager](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) zawierający szukaną właściwość w celu zarządzania nią można sprawdzić na kilka sposobów.
 
 #### <a name="existing-resource-in-the-portal"></a>Istniejący zasób w portalu
 
-Najprostszym sposobem znajdowania właściwości jest wyszukanie istniejącego zasobu tego samego typu. Zasoby zostały już skonfigurowane z ustawieniem, które chcesz wymusić, a także podać wartość do porównania.
+Najprostszym sposobem na znalezienie właściwości jest przyjrzenie się istniejącemu zasobowi tego samego typu. Zasoby już skonfigurowane za pomocą ustawienia, które ma być wymuszane, służą także do porównywania wartości.
 Przyjrzyj się stronie **Eksportuj szablon** (w obszarze **ustawienia**) w Azure Portal dla tego konkretnego zasobu.
 
 ![Eksportuj stronę szablonu do istniejącego zasobu](../media/create-custom-policy-definition/export-template.png)
 
-W takim przypadku konto magazynu ujawnia szablon podobny do tego przykładu:
+Wykonanie tego działania dla konta magazynu spowoduje wyświetlenie szablonu podobnego do następującego przykładu:
 
 ```json
 ...
@@ -115,13 +112,13 @@ W takim przypadku konto magazynu ujawnia szablon podobny do tego przykładu:
 ...
 ```
 
-W obszarze **Właściwości** jest wartość o nazwie **supportsHttpsTrafficOnly** ustawiona na **wartość false**. Ta właściwość wygląda na to, że może to być właściwość, której szukamy. Ponadto **typem** zasobu jest **Microsoft. Storage/storageAccounts**. Typ pozwala nam ograniczyć zasady tylko do zasobów tego typu.
+W obszarze **properties** znajduje się właściwość o nazwie **supportsHttpsTrafficOnly** ustawiona na wartość **false**. Ta właściwość prawdopodobnie jest właściwością, której szukamy. Ponadto właściwość **type** zasobu ma wartość **Microsoft.Storage/storageAccounts**. Ten typ umożliwia ograniczenie zasad do zasobów tylko tego typu.
 
 #### <a name="create-a-resource-in-the-portal"></a>Tworzenie zasobu w portalu
 
-Innym sposobem korzystania z portalu jest środowisko tworzenia zasobów. Podczas tworzenia konta magazynu za pomocą portalu, opcja na karcie **Zaawansowane** jest **wymagana**. Ta właściwość ma _wyłączone_ i _włączone_ opcje. Ikona informacji zawiera dodatkowy tekst potwierdzający, że ta opcja jest prawdopodobnie żądaną właściwością. Jednak Portal nie powiedzie nam nazwy właściwości na tym ekranie.
+Innym sposobem użycia portalu jest środowisko tworzenia zasobu. Podczas tworzenia konta magazynu za pośrednictwem portalu na karcie **Zaawansowane** znajduje się pozycja **Wymagany transfer zabezpieczeń**. Ta właściwość ma opcje _Wyłączone_ i _Włączone_. Ikona informacji zawiera dodatkowy tekst, który potwierdza, że ta opcja jest prawdopodobnie odpowiednia. Jednak portal nie podaje nazwy właściwości na tym ekranie.
 
-Na karcie **Recenzja + tworzenie** w dolnej części strony znajduje się link umożliwiający **pobranie szablonu do automatyzacji**. Po wybraniu linku zostanie otwarty szablon tworzący skonfigurowany zasób. W tym przypadku zobaczymy dwie kluczowe informacje:
+W dolnej części karty **Przeglądanie + tworzenie** znajduje się link **Pobierz szablon automatyzacji**. Wybranie linku otwiera szablon, który tworzy skonfigurowany zasób. W tym przypadku są widoczne dwie kluczowe informacje:
 
 ```json
 ...
@@ -136,36 +133,36 @@ Na karcie **Recenzja + tworzenie** w dolnej części strony znajduje się link u
 ...
 ```
 
-Te informacje informują nas o typie właściwości, a także potwierdza **supportsHttpsTrafficOnly** jest właściwością, której szukamy.
+Te informacje określają typ właściwości i potwierdzają, że właściwość **supportsHttpsTrafficOnly** jest tą, której szukamy.
 
-#### <a name="quickstart-templates-on-github"></a>Szablony szybkiego startu w usłudze GitHub
+#### <a name="quickstart-templates-on-github"></a>Szablony Szybki start w usłudze GitHub
 
-[Szablony szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates) w usłudze GitHub mają setki szablonów Menedżer zasobów utworzonych dla różnych zasobów. Te szablony mogą być doskonałym sposobem znalezienia właściwości zasobu, którego szukasz. Niektóre właściwości mogą wyglądać na to, czego szukasz, ale kontrolują coś innego.
+[Szablony Szybki start platformy Azure](https://github.com/Azure/azure-quickstart-templates) w usłudze GitHub obejmują setki szablonów usługi Resource Manager stworzonych z myślą o różnych zasobach. Szablony te mogą być doskonałym sposobem na znalezienie szukanej właściwości zasobu. Niektóre właściwości mogą wydawać się odpowiednie, lecz kontrolują coś innego.
 
-#### <a name="resource-reference-docs"></a>Dokumentacja dokumentacji zasobów
+#### <a name="resource-reference-docs"></a>Dokumentacja zasobu
 
-Aby sprawdzić poprawność właściwości **supportsHttpsTrafficOnly** , sprawdź informacje dotyczące szablonu Menedżer zasobów dla [zasobu konta magazynu](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) w dostawcy magazynu.
-Obiekt Properties ma listę prawidłowych parametrów. Wybranie linku [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) pokazuje tabelę akceptowalnych właściwości. **supportsHttpsTrafficOnly** jest obecny i opis jest zgodny z tym, czego szukasz, aby spełnić wymagania biznesowe.
+Aby zwalidować, czy właściwość**supportsHttpsTrafficOnly** jest poprawna, sprawdź dokumentację szablonu usługi Resource Manager dla [zasobu konta magazynu](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) u dostawcy magazynu.
+Obiekt właściwości zawiera listę prawidłowych parametrów. Wybranie linku [Obiekt StorageAccountPropertiesCreateParameters](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) umożliwia wyświetlenie tabeli dopuszczalnych właściwości. Właściwość **supportsHttpsTrafficOnly** jest obecna i jej opis odpowiada naszym wymaganiom biznesowym.
 
-### <a name="azure-resource-explorer"></a>Azure Resource Explorer
+### <a name="azure-resource-explorer"></a>Eksplorator zasobów Azure
 
-Innym sposobem eksplorowania zasobów platformy Azure jest użycie [Azure Resource Explorer](https://resources.azure.com) (wersja zapoznawcza). To narzędzie używa kontekstu subskrypcji, więc musisz uwierzytelnić się w witrynie sieci Web przy użyciu poświadczeń platformy Azure. Po uwierzytelnieniu można przeglądać według dostawców, subskrypcji, grup zasobów i zasobów.
+Innym sposobem eksplorowania zasobów platformy Azure jest użycie usługi [Azure Resource Explorer](https://resources.azure.com) (wersja zapoznawcza). To narzędzie używa kontekstu subskrypcji, więc musisz uwierzytelnić się w witrynie internetowej przy użyciu poświadczeń platformy Azure. Po uwierzytelnieniu możesz przeglądać pozycje według dostawców, subskrypcji, grup zasobów i zasobów.
 
-Znajdź zasób konta magazynu i sprawdź właściwości. Tutaj zobaczymy Właściwość **supportsHttpsTrafficOnly** . Po wybraniu karty **Dokumentacja** zobaczymy, że opis właściwości jest zgodny z informacjami znajdującymi się w dokumentacji referencyjnej wcześniej.
+Znajdź zasób konta magazynu i poszukaj właściwości. Tutaj także znajduje się właściwość **supportsHttpsTrafficOnly**. Po wybraniu karty **Dokumentacja** widać, że opis właściwości pasuje do tego, co znaleźliśmy wcześniej w dokumentacji.
 
 ## <a name="find-the-property-alias"></a>Znajdowanie aliasu właściwości
 
-Określono właściwość zasobu, ale musimy zmapować tę właściwość na [alias](../concepts/definition-structure.md#aliases).
+Zidentyfikowaliśmy właściwość zasobu, ale musimy zamapować tę właściwość na [alias](../concepts/definition-structure.md#aliases).
 
-Istnieje kilka sposobów określenia aliasów dla zasobu platformy Azure. Zapoznajemy się z każdym z tych samouczków:
+Istnieje kilka sposobów określenia aliasów dla zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
 - Interfejs wiersza polecenia platformy Azure
 - Azure PowerShell
-- Wykres zasobów platformy Azure
+- Azure Resource Graph
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-W interfejsie wiersza polecenia platformy Azure Grupa poleceń `az provider` służy do wyszukiwania aliasów zasobów. Przefiltruje przestrzeń nazw **Microsoft. Storage** na podstawie szczegółowych informacji o zasobie platformy Azure.
+W interfejsie wiersza polecenia platformy Azure polecenie `az provider` służy do wyszukiwania aliasów zasobu. Przefiltrujemy przestrzeń nazw **Microsoft.Storage** za pomocą uzyskanych wcześniej szczegółów dotyczących zasobu platformy Azure.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,11 +171,11 @@ W interfejsie wiersza polecenia platformy Azure Grupa poleceń `az provider` sł
 az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
 ```
 
-W wynikach zobaczymy alias obsługiwany przez konta magazynu o nazwie **supportsHttpsTrafficOnly**. Ta obecność aliasu oznacza, że możemy napisać zasady w celu wymuszenia spełnienia wymagań firmy.
+W wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu. Istnienie tego aliasu oznacza, że możemy zapisać zasady, aby wymuszać nasze wymagania biznesowe!
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-W Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania aliasów zasobów. Przefiltruje przestrzeń nazw **Microsoft. Storage** na podstawie szczegółowych informacji o zasobie platformy Azure.
+W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania aliasów zasobu. Przefiltrujemy przestrzeń nazw **Microsoft.Storage** za pomocą uzyskanych wcześniej szczegółów dotyczących zasobu platformy Azure.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -187,11 +184,11 @@ W Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania 
 (Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Storage').Aliases
 ```
 
-Podobnie jak w przypadku interfejsu wiersza polecenia platformy Azure, wyniki przedstawiają alias obsługiwany przez konta magazynu o nazwie **supportsHttpsTrafficOnly**.
+Podobnie jak w przypadku interfejsu wiersza polecenia platformy Azure, w wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu.
 
-### <a name="azure-resource-graph"></a>Wykres zasobów platformy Azure
+### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) to nowa usługa w wersji zapoznawczej. Umożliwia ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Oto przykładowe zapytanie dotyczące wyszukiwania na jednym koncie magazynu przy użyciu grafu zasobów:
+[Azure Resource Graph](../../resource-graph/overview.md) to nowa usługa dostępna w wersji zapoznawczej. Oferuje ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -206,7 +203,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Wyniki wyglądają podobnie jak te widoczne w szablonach Menedżer zasobów i przez Azure Resource Explorer. Jednak wyniki wykresu zasobów platformy Azure mogą również zawierać szczegóły [aliasu](../concepts/definition-structure.md#aliases) przez _projekcję_ tablicy _aliasów_ :
+Wyniki są podobne do wyników uzyskanych za pomocą szablonów usługi Resource Manager i usługi Azure Resource Explorer. Jednak wyniki wykresu zasobów platformy Azure mogą również zawierać szczegóły [aliasu](../concepts/definition-structure.md#aliases) przez _projekcję_ tablicy _aliasów_ :
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -222,7 +219,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | p
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
-Oto przykładowe dane wyjściowe z konta magazynu dla aliasów:
+Tutaj przedstawiono przykładowe dane wyjściowe dla konta magazynu dotyczące aliasów:
 
 ```json
 "aliases": {
@@ -304,18 +301,18 @@ Oto przykładowe dane wyjściowe z konta magazynu dla aliasów:
 }
 ```
 
-Usługa Azure Resource Graph (wersja zapoznawcza) może być używana w [Cloud Shell](https://shell.azure.com), co umożliwia szybkie i łatwe Eksplorowanie właściwości zasobów.
+Usługi Azure Resource Graph (wersja zapoznawcza) można używać za pośrednictwem usługi [Cloud Shell](https://shell.azure.com), co ułatwia i przyspiesza eksplorowanie właściwości zasobów.
 
-## <a name="determine-the-effect-to-use"></a>Określ efekt do użycia
+## <a name="determine-the-effect-to-use"></a>Określanie efektu do użycia
 
-Podejmowanie decyzji o tym, co należy zrobić w przypadku niezgodnych zasobów, jest niemal ważne, aby zdecydować, co należy oszacować w pierwszym miejscu. Każda możliwa odpowiedź do niezgodnego zasobu jest nazywana [efektem](../concepts/effects.md).
-Efekt kontroluje, czy niezgodny zasób jest rejestrowany, blokowany, ma dołączone dane, czy też ma skojarzone z nim wdrożenie w celu przełączenia go z powrotem do stanu zgodności.
+Określenie, co należy zrobić z niezgodnymi zasobami, jest niemal tak ważne, jak zdecydowanie, co należy ocenić w pierwszej kolejności. Każda możliwa odpowiedź na niezgodny zasób jest nazywana [efektem](../concepts/effects.md).
+Efekt kontroluje, czy niezgodny zasób jest rejestrowany, blokowany, czy są dołączane do niego dane lub czy jest z nim kojarzone wdrożenie przywracające zasób do stanu zgodności.
 
-W naszym przykładzie odmowa ma wpływ na to, co chcemy zrobić, ponieważ nie chcemy, aby niezgodne zasoby zostały utworzone w środowisku platformy Azure. Inspekcja jest dobrym wyborem dla efektu zasad, aby określić, jaki wpływ zasad jest przed jego ustawieniem na Odmów. Jednym ze sposobów, aby zwiększyć wpływ na przydział, jest łatwiejsze Sparametryzuj efektu. Aby uzyskać szczegółowe informacje na temat tego, zobacz poniższe [Parametry](#parameters) .
+W naszym przykładzie efekt to Deny (Odmów), ponieważ nie chcemy tworzenia niezgodnych zasobów w naszym środowisku platformy Azure. Audit (Inspekcja) jest dobrym pierwszym wyborem dla efektu zasad, umożliwiając określenie wpływu zasad przed ustawieniem dla nich efektu Deny (Odmów). Jednym ze sposobów na ułatwienie modyfikowania efektu dla przypisania jest sparametryzowanie efektu. Zobacz [Parametry](#parameters) poniżej, aby uzyskać szczegółowe informacje na ten temat.
 
-## <a name="compose-the-definition"></a>Redagowanie definicji
+## <a name="compose-the-definition"></a>Tworzenie definicji
 
-Mamy teraz szczegóły właściwości i alias dla elementów, które planujemy zarządzać. Następnie utworzymy samą regułę zasad. Jeśli nie znasz jeszcze języka zasad, [Struktura definicji zasad](../concepts/definition-structure.md) referencyjnych dla struktury definicji zasad. Oto pusty szablon definicji zasad:
+Teraz mamy szczegóły i alias właściwości, którą chcemy zarządzać. Następnie utworzymy samą regułę zasad. Jeśli jeszcze nie znasz języka zasad, zapoznaj się z artykułem dotyczącym [struktury definicji zasad](../concepts/definition-structure.md), aby dowiedzieć się, jak określić strukturę definicji zasad. Pusty szablon z definicją zasad wygląda następująco:
 
 ```json
 {
@@ -340,7 +337,7 @@ Mamy teraz szczegóły właściwości i alias dla elementów, które planujemy z
 
 ### <a name="metadata"></a>Metadane
 
-Pierwsze trzy składniki są metadanymi zasad. Te składniki są łatwe w udostępnianiu wartości, ponieważ wiemy, dla czego tworzysz regułę. [Tryb](../concepts/definition-structure.md#mode) dotyczy głównie tagów i lokalizacji zasobów. Ponieważ nie trzeba ograniczać oceny do zasobów, które obsługują Tagi, będziemy używać wartości _All_ dla **mode**.
+Pierwsze trzy składniki to metadane zasad. Łatwo jest podać wartości dla tych składników, ponieważ wiemy, jaki jest cel tworzenia reguły. [Tryb](../concepts/definition-structure.md#mode) dotyczy przede wszystkim tagów i lokalizacji zasobu. Ponieważ nie potrzebujemy ograniczać oceny do zasobów obsługujących tagi, użyjemy wartości _all_ (wszystko) dla parametru **mode** (tryb).
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -350,7 +347,7 @@ Pierwsze trzy składniki są metadanymi zasad. Te składniki są łatwe w udost�
 
 ### <a name="parameters"></a>Parametry
 
-Chociaż nie używamy parametru do zmiany oceny, chcemy użyć parametru, aby umożliwić zmianę **wpływu** na rozwiązywanie problemów. Zdefiniujemy parametr **effecttype** i Ogranicz go tylko do **Odmów** i **wyłączenia**. Te dwie opcje odpowiadają wymaganiom biznesowym. Blok parametrów zakończonych wygląda podobnie do tego przykładu:
+Mimo że nie użyliśmy parametru do zmiany oceny, chcemy użyć parametru, aby zezwolić na zmienianie **efektu** na potrzeby rozwiązywania problemów. Zdefiniujemy parametr **effectType** (typEfektu) i ograniczymy go tylko do opcji **Deny** (Odmów) i **Disabled** (Wyłączone). Te dwie opcje pasują do naszych wymagań biznesowych. Ukończony blok parametrów wygląda jak w następującym przykładzie:
 
 ```json
 "parameters": {
@@ -371,12 +368,12 @@ Chociaż nie używamy parametru do zmiany oceny, chcemy użyć parametru, aby um
 
 ### <a name="policy-rule"></a>Reguła zasad
 
-Tworzenie [reguły zasad](../concepts/definition-structure.md#policy-rule) jest ostatnim krokiem w tworzeniu naszej definicji zasad niestandardowych. Zidentyfikowano dwie instrukcje do przetestowania:
+Utworzenie [reguły zasad](../concepts/definition-structure.md#policy-rule) to ostatni krok tworzenia niestandardowej definicji zasad. Określiliśmy dwa warunki do testowania:
 
-- **Typ** konta magazynu to **Microsoft. Storage/storageAccounts**
-- Czy konto magazynu **supportsHttpsTrafficOnly** nie jest **prawdziwe**
+- Właściwość **type** konta magazynu to **Microsoft.Storage/storageAccounts**
+- Właściwość **supportsHttpsTrafficOnly** konta magazynu nie ma wartości **true**
 
-Ponieważ obie te instrukcje muszą być prawdziwe, użyjemy [operatora logicznego](../concepts/definition-structure.md#logical-operators) **allOf** . Przekażemy do skutku parametr **effecttype** zamiast tworzenia deklaracji statycznej. Nasza ukończona reguła wygląda podobnie do tego przykładu:
+Ponieważ oba te warunki muszą być spełnione, użyjemy opcji **allOf** (wszystkie) jako [operatora logicznego](../concepts/definition-structure.md#logical-operators). Przekażemy parametr **effectType** (typEfektu) do efektu zamiast określania deklaracji statycznej. Ukończona reguła wygląda podobnie do następującego przykładu:
 
 ```json
 "if": {
@@ -396,9 +393,9 @@ Ponieważ obie te instrukcje muszą być prawdziwe, użyjemy [operatora logiczne
 }
 ```
 
-### <a name="completed-definition"></a>Zakończona definicja
+### <a name="completed-definition"></a>Ukończona definicja
 
-Wszystkie trzy części zdefiniowanych zasad są następujące:
+Oto kompletna definicja zawierająca wszystkie trzy części zasad:
 
 ```json
 {
@@ -441,22 +438,22 @@ Wszystkie trzy części zdefiniowanych zasad są następujące:
 }
 ```
 
-Zakończona definicja może służyć do tworzenia nowych zasad. Portal i każdy zestaw SDK (interfejs wiersza polecenia platformy Azure, Azure PowerShell i API REST) akceptują definicję w różny sposób, więc Przejrzyj polecenia dla każdego z nich, aby sprawdzić poprawność użycia. Następnie przypisz go przy użyciu sparametryzowanego efektu do odpowiednich zasobów, aby zarządzać zabezpieczeniami kont magazynu.
+Ukończonej definicji można użyć do utworzenia nowych zasad. Portal i każdy z zestawów SDK (interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell i interfejsu API REST) przyjmuje definicję w inny sposób, więc należy przejrzeć polecenia dla każdego z nich, aby zwalidować poprawność składni. Następnie przypisz ją za pomocą sparametryzowanego efektu do odpowiednich zasobów w celu zarządzania zabezpieczeniami kont magazynu.
 
 ## <a name="review"></a>Przegląd
 
-W tym samouczku pomyślnie wykonano następujące zadania:
+W tym samouczku pomyślnie wykonano następujące czynności:
 
 > [!div class="checklist"]
-> - Zidentyfikowanie wymagań firmy
-> - Zamapowane każde wymaganie do właściwości zasobów platformy Azure
-> - Zamapowana właściwość na alias
+> - Określono wymagania biznesowe
+> - Zamapowano każde wymaganie na właściwość zasobu platformy Azure
+> - Zamapowano właściwości na alias
 > - Określono efekt do użycia
-> - Składanie definicji zasad
+> - Utworzono definicję zasad
 
 ## <a name="next-steps"></a>Następne kroki
 
-Następnie utwórz zasady i przypisz je za pomocą niestandardowej definicji zasad:
+Następnie za pomocą niestandardowej definicji zasad utwórz i przypisz zasady:
 
 > [!div class="nextstepaction"]
 > [Tworzenie i przypisywanie definicji zasad](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)

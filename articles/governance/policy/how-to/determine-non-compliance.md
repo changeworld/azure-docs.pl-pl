@@ -1,19 +1,16 @@
 ---
-title: Określanie przyczyn braku zgodności
+title: Ustalanie przyczyn niezgodności
 description: Jeśli zasób nie jest zgodny, istnieje wiele możliwych przyczyn. Dowiedz się, co spowodowało niezgodność.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 556a8029b9b5f831ac3ace7ed0fcc474fb2e262e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 6f113080ab84fe7d159766e6543ff61b28f4ead2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978114"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959611"
 ---
-# <a name="determine-causes-of-non-compliance"></a>Określanie przyczyn braku zgodności
+# <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
 Jeśli zasób platformy Azure jest określony jako niezgodny z regułą zasad, warto zrozumieć, która część reguły nie jest zgodna z zasobem. Warto również zrozumieć, jakie zmiany zmieniły wcześniej zgodne zasoby, aby nie były zgodne. Istnieją dwa sposoby znajdowania tych informacji:
 
@@ -34,7 +31,7 @@ Jeśli zasób nie jest zgodny, szczegóły zgodności dla tego zasobu są dostę
 
 Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
 
-1. Uruchom usługę Azure Policy w Azure Portal, klikając pozycję **wszystkie usługi**, a następnie wyszukując i wybierając pozycję **zasady**.
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając opcję **Wszystkie usługi** i następnie wyszukując i wybierając opcję **Zasada**.
 
 1. Na stronie **Przegląd** lub **zgodność** wybierz zasady w **stanie zgodności** , które _nie są zgodne_.
 
@@ -93,7 +90,7 @@ Poniższa macierz odwzorowuje każdy możliwy _powód_ do [warunku](../concepts/
 |Bieżąca wartość musi być większa lub równa wartości docelowej. |greaterOrEquals lub **nie** mniej |
 |Bieżąca wartość musi być większa niż wartość docelowa. |większe lub **nie** lessOrEquals |
 |Bieżąca wartość nie może być większa niż wartość docelowa. |lessOrEquals lub **nie jest** większa |
-|Bieżąca wartość musi istnieć. |istniejący |
+|Bieżąca wartość musi istnieć. |Istniejący |
 |Bieżąca wartość musi należeć do wartości docelowej. |w programie **lub notIn** |
 |Bieżąca wartość musi być taka sama jak wartość docelowa. |Podobnie jak **notLike** |
 |Bieżąca wartość musi uwzględniać wielkość liter, dopasowując wartość docelową. |dopasowanie lub **notMatch** |
@@ -191,11 +188,11 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a>@no__t — historia 0Change (wersja zapoznawcza)
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>historię zmian (wersja zapoznawcza)
 
 W ramach nowej **publicznej wersji zapoznawczej**historia zmian jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [usuwanie w trybie pełnym](../../../azure-resource-manager/complete-mode-deletion.md). Historia zmian zawiera szczegółowe informacje o tym, kiedy wykryto zmianę i _różnicą wizualną_ dla każdej zmiany. Wykrywanie zmian jest wyzwalane po dodaniu, usunięciu lub zmianie Menedżer zasobów właściwości.
 
-1. Uruchom usługę Azure Policy w Azure Portal, klikając pozycję **wszystkie usługi**, a następnie wyszukując i wybierając pozycję **zasady**.
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając opcję **Wszystkie usługi** i następnie wyszukując i wybierając opcję **Zasada**.
 
 1. Na stronie **Przegląd** lub **zgodność** wybierz zasady w dowolnym **stanie zgodności**.
 
@@ -216,8 +213,8 @@ Dane historii zmian są udostępniane przez [usługę Azure Resource Graph](../.
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
-- Zapoznaj się ze [strukturą definicji Azure Policy](../concepts/definition-structure.md).
-- Przejrzyj [Informacje o skutkach zasad](../concepts/effects.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
 - Dowiedz się, jak [uzyskać dane zgodności](getting-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](remediate-resources.md).

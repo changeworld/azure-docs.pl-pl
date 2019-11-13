@@ -7,20 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.custom: include file
-ms.openlocfilehash: 92b9a4754769566feb3658e07081e9fdae78fcfc
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903798"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014095"
 ---
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Na stronie głównej wybierz pozycję **+ Utwórz zasób**. Wyszukaj ciąg **Digital bliźniaczych reprezentacji**i wybierz pozycję **Digital bliźniaczych reprezentacji**. Wybierz przycisk **Utwórz**, aby rozpocząć proces wdrażania.
+1. Wybierz pasek boczny po stronie głównej, a następnie pozycję **+ Utwórz zasób**. 
+
+   [![Rozwiń pasek po stronie głównej, a następnie wybierz pozycję + Utwórz zasób](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+
+1. Wyszukaj ciąg **Digital bliźniaczych reprezentacji**i wybierz pozycję **Digital bliźniaczych reprezentacji**. 
 
    [![wybór dla tworzenia nowego wystąpienia bliźniaczych reprezentacji Digital](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+
+   Alternatywnie wybierz pozycję **Internet rzeczy**i wybierz pozycję **Digital bliźniaczych reprezentacji (wersja zapoznawcza)** .
+
+1. Wybierz przycisk **Utwórz**, aby rozpocząć proces wdrażania.
+
+   [![utworzyć i potwierdzić wdrożenie zasobu](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
 
 1. W okienku **Digital Twins** wprowadź następujące informacje:
    * **Nazwa zasobu**: utwórz unikatową nazwę dla wystąpienia usługi Digital Twins.
@@ -32,10 +42,18 @@ ms.locfileid: "73903798"
 
 1. Przejrzyj informacje dotyczące usługi Digital Twins, a następnie wybierz pozycję **Utwórz**. Tworzenie wystąpienia usługi Digital Twins może potrwać kilka minut. Postępy możesz monitorować w okienku **Powiadomienia**.
 
-1. Otwórz okienko **Przegląd** wystąpienia usługi Digital Twins. Zwróć uwagę na link w obszarze **Interfejs API zarządzania**.
+1. Otwórz okienko **Przegląd** wystąpienia usługi Digital Twins. Zwróć uwagę na link w obszarze **Interfejs API zarządzania**. Adres URL **interfejsu API zarządzania** jest sformatowany jako: 
+   
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger
+   ```
+   
+   Ten adres URL prowadzi do dokumentacji interfejsu API REST usługi Azure Digital Twins dotyczącej Twojego wystąpienia. Przeczytaj artykuł [Jak używać struktury Swagger w usłudze Digital Twins](../articles/digital-twins/how-to-use-swagger.md), aby dowiedzieć się, jak odczytać tę dokumentację interfejsu API i korzystać z niej. Skopiuj i zmodyfikuj adres URL **interfejsu API zarządzania** do tego formatu: 
+    
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/
+   ```
+    
+   Aplikacja uzyska dostęp do Twojego wystąpienia, używając zmodyfikowanego adresu URL jako podstawowego adresu URL. Skopiuj ten zmodyfikowany adres URL do pliku tymczasowego. Będzie potrzebny w następnej sekcji.
 
-   Adres URL **interfejsu API zarządzania** ma następujący format: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`. Ten adres URL prowadzi do dokumentacji interfejsu API REST usługi Azure Digital Twins dotyczącej Twojego wystąpienia. Przeczytaj artykuł [Jak używać struktury Swagger w usłudze Digital Twins](../articles/digital-twins/how-to-use-swagger.md), aby dowiedzieć się, jak odczytać tę dokumentację interfejsu API i korzystać z niej.
-
-    Skopiuj i zmodyfikuj adres URL **interfejsu API zarządzania** do tego formatu: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Aplikacja uzyska dostęp do Twojego wystąpienia, używając zmodyfikowanego adresu URL jako podstawowego adresu URL. Skopiuj ten zmodyfikowany adres URL do pliku tymczasowego. Będzie potrzebny w następnej sekcji.
-
-    [Interfejs API zarządzania ![](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)
+   [Omówienie interfejsu API zarządzania ![](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)

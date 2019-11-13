@@ -1,17 +1,14 @@
 ---
 title: Tworzenie zasad dla właściwości tablicy zasobów
 description: Dowiedz się, jak utworzyć parametry tablicy, utworzyć reguły dla wyrażeń języka tablicy, oszacować alias [*] i dołączyć elementy do istniejącej tablicy z regułami definicji Azure Policy.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255814"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959712"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Tworzenie zasad dla właściwości tablicy zasobów platformy Azure
 
@@ -19,7 +16,7 @@ Właściwości Azure Resource Manager są zwykle określane jako ciągi i warto�
 
 - Typ [parametru definicji](../concepts/definition-structure.md#parameters)w celu zapewnienia wielu opcji
 - Część [reguły zasad](../concepts/definition-structure.md#policy-rule) z zastosowaniem warunków **w** lub **notIn**
-- Część reguły zasad, która oblicza [alias \[ @ no__t-2 @ no__t-3](../concepts/definition-structure.md#understanding-the--alias) do oszacowania konkretnych scenariuszy, takich jak **none**, **any**lub **All**
+- Część reguły zasad, która szacuje [\[\*alias \]](../concepts/definition-structure.md#understanding-the--alias) do oszacowania konkretnych scenariuszy, takich jak **none**, **any**lub **All**
 - W [efekcie dołączania](../concepts/effects.md#append) , aby zastąpić lub dodać do istniejącej tablicy
 
 W tym artykule opisano każde użycie programu według Azure Policy i przedstawiono kilka przykładów definicji.
@@ -105,7 +102,7 @@ Aby użyć tego ciągu z każdym zestawem SDK, użyj następujących poleceń:
 ### <a name="array-conditions"></a>Warunki tablicy
 
 [Warunki](../concepts/definition-structure.md#conditions) reguły zasad, które mogą być używane w _tablicy_
-**typu** parametru, są ograniczone do `in` i `notIn`. Wykonaj następującą definicję zasad z warunkiem `equals` jako przykład:
+**Typ** parametru, są ograniczone do `in` i `notIn`. Wykonaj następującą definicję zasad z warunkiem `equals` na przykład:
 
 ```json
 {
@@ -137,14 +134,14 @@ Próba utworzenia tej definicji zasad za pomocą Azure Portal prowadzi do błęd
 
 - "Zasad" {GUID} "nie można sparametryzowane z powodu błędów walidacji. Sprawdź, czy parametry zasad są prawidłowo zdefiniowane. Wynik oceny wyjątku wewnętrznego "[Parameters (" allowedLocations ")]" jest typem "Array", oczekiwano typu "String". "."
 
-Oczekiwany **Typ** warunku `equals` jest _ciągiem_. Ponieważ **allowedLocations** jest zdefiniowany jako _Tablica_typów, aparat zasad szacuje wyrażenie języka i zgłosi błąd. Z warunkiem `in` i `notIn` aparat zasad oczekuje _tablicy_ **typów** w wyrażeniu języka. Aby rozwiązać ten komunikat o błędzie, Zmień wartość `equals` na `in` lub `notIn`.
+Oczekiwany **Typ** warunku `equals` to _ciąg_. Ponieważ **allowedLocations** jest zdefiniowany jako _Tablica_typów, aparat zasad szacuje wyrażenie języka i zgłosi błąd. Ze warunkiem `in` i `notIn` aparat zasad oczekuje _tablicy_ **typów** w wyrażeniu języka. Aby rozwiązać ten komunikat o błędzie, Zmień `equals` na `in` lub `notIn`.
 
 ### <a name="evaluating-the--alias"></a>Ocenianie aliasu [*]
 
-Aliasy, które mają **[\*]** dołączone do ich nazwy wskazują, że **Typ** jest _tablicą_. Zamiast oceniać wartość całej tablicy, **[\*]** , umożliwia ocenę każdego elementu tablicy. Istnieją trzy scenariusze, które mogą być używane na potrzeby oceny elementu: brak, any i wszystkie.
+Aliasy, które mają **[\*]** dołączone do ich nazwy wskazują, że **Typ** jest _tablicą_. Zamiast oceniać wartość całej tablicy, **[\*]** umożliwia ocenę każdego elementu tablicy. Istnieją trzy scenariusze, które mogą być używane na potrzeby oceny elementu: brak, any i wszystkie.
 
 Aparat zasad wyzwala **efekt** w **then** tylko wtedy, gdy reguła **if** ma wartość true.
-Ten fakt jest ważne, aby zrozumieć w kontekście sposobu **[\*]** szacuje każdy pojedynczy element tablicy.
+Ten fakt jest ważne, aby zrozumieć, w kontekście, jak **[\*]** szacuje każdy pojedynczy element tablicy.
 
 Przykładowa reguła zasad dla poniższej tabeli scenariusza:
 
@@ -197,9 +194,9 @@ Poniższe wyniki są wynikiem kombinacji warunku i przykładową regułę zasad 
 
 ## <a name="the-append-effect-and-arrays"></a>Efekt dołączania i tablice
 
-[Efekt dołączania](../concepts/effects.md#append) zachowuje się inaczej w zależności od tego, czy **pole Details** ma wartość aliasu **[\*]** .
+[Efekt dołączania](../concepts/effects.md#append) zachowuje się inaczej w zależności od tego, czy **pole Details** jest aliasem **[\*]** .
 
-- Gdy nie jest alias **[\*]** , Dołącz zastępuje całą tablicę właściwością **Value**
+- W przypadku braku aliasu **[\*]** dołączenie zastępuje całą tablicę właściwością **Value**
 - Gdy alias **[\*]** , Append dodaje właściwość **Value** do istniejącej tablicy lub tworzy nową tablicę
 
 Aby uzyskać więcej informacji, zobacz [przykłady dołączania](../concepts/effects.md#append-examples).

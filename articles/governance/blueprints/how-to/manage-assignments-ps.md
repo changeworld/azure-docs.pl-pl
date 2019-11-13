@@ -1,17 +1,14 @@
 ---
 title: Zarządzanie przypisaniami przy użyciu programu PowerShell
 description: Dowiedz się, jak zarządzać przypisaniami planów przy użyciu oficjalnego modułu programu PowerShell platformy Azure, AZ. plan.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 98c2173568f65d029b00ca6c8b25d2195094a5e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755938"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961619"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Zarządzanie przypisaniami przy użyciu programu PowerShell
 
@@ -52,7 +49,7 @@ Moduł planów dla programu PowerShell to **AZ. plan**.
 ## <a name="get-blueprint-definitions"></a>Pobierz definicje planów
 
 Pierwszym krokiem do pracy z przypisaniem jest często pobranie odwołania do definicji planu.
-@No__t_0 polecenie cmdlet pobiera co najmniej jedną definicję planu. Polecenie cmdlet może pobrać definicje planów z grupy zarządzania z `-ManagementGroupId {mgId}` lub subskrypcją z `-SubscriptionId {subId}`. Parametr **name** pobiera definicję planu, ale musi być używany z **ManagementGroupId** lub identyfikatorem **subskrypcji**. **Wersja** może być używana z **nazwą** , aby być bardziej jawna, na której jest zwracana definicja planu. Zamiast **wersji**, przełącznik `-LatestPublished` korzysta z ostatnio opublikowanej wersji.
+`Get-AzBlueprint` polecenie cmdlet pobiera co najmniej jedną definicję planu. Polecenie cmdlet może pobrać definicje planów z grupy zarządzania z `-ManagementGroupId {mgId}` lub subskrypcją z `-SubscriptionId {subId}`. Parametr **name** pobiera definicję planu, ale musi być używany z **ManagementGroupId** lub identyfikatorem **subskrypcji**. **Wersja** może być używana z **nazwą** , aby być bardziej jawna, na której jest zwracana definicja planu. Zamiast **wersji**, przełącznik `-LatestPublished` korzysta z ostatnio opublikowanej wersji.
 
 Poniższy przykład używa `Get-AzBlueprint`, aby pobrać wszystkie wersje definicji planu o nazwie "101-Plans-Definition-Subscription" z określonej subskrypcji reprezentowanej jako `{subId}`:
 
@@ -171,7 +168,7 @@ Jeśli przypisanie planu nie istnieje jeszcze, można je utworzyć za pomocą po
 
 ### <a name="example-1-provide-parameters"></a>Przykład 1: podaj parametry
 
-Poniższy przykład tworzy nowe przypisanie do wersji "1,1" definicji planu "My-strategii" pobranej z `Get-AzBlueprint`, ustawia lokalizację zarządzaną i tożsamość obiektu przypisania na "westus2", blokuje zasoby z _AllResourcesReadOnly_, i ustawia tabele skrótów dla **parametrów** i **ResourceGroupParameter** w określonej subskrypcji reprezentowanej jako `{subId}`:
+Poniższy przykład tworzy nowe przypisanie wersji "1,1" definicji planu "My-plan" pobranej z `Get-AzBlueprint`, ustawia lokalizację zarządzaną tożsamości i obiektu przypisania na "westus2", blokuje zasoby z _AllResourcesReadOnly_i ustawia tabele skrótów dla **parametrów** i **ResourceGroupParameter** dla określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -252,7 +249,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 
 ## <a name="update-blueprint-assignments"></a>Aktualizowanie przypisań planów
 
-Czasami trzeba zaktualizować przypisanie planu, które zostało już utworzone. @No__t_0 polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet pobiera większość z tych samych parametrów, które są używane przez polecenie cmdlet `New-AzBlueprintAssignment`, co umożliwia zaktualizowanie wszystkich elementów ustawionych w przypisaniu. Wyjątkami są _nazwy_, _plany_i identyfikator _subskrypcji_. Tylko podane wartości są aktualizowane.
+Czasami trzeba zaktualizować przypisanie planu, które zostało już utworzone. `Set-AzBlueprintAssignment` polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet pobiera większość z tych samych parametrów, które są używane przez polecenie cmdlet `New-AzBlueprintAssignment`, co umożliwia zaktualizowanie wszystkich elementów ustawionych w przypisaniu. Wyjątkami są _nazwy_, _plany_i identyfikator _subskrypcji_. Tylko podane wartości są aktualizowane.
 
 Aby zrozumieć, co się dzieje w przypadku aktualizowania przypisania planu, zobacz [reguły dotyczące aktualizowania przypisań](./update-existing-assignments.md#rules-for-updating-assignments).
 

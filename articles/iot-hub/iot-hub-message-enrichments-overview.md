@@ -1,6 +1,6 @@
 ---
 title: Omówienie wzbogacania komunikatów IoT Hub platformy Azure
-description: Omówienie wzbogacania komunikatów dla komunikatów usługi Azure IoT Hub
+description: Ten artykuł zawiera informacje o wzbogacaniu komunikatów, które dają IoT Hub możliwość sygnatury wiadomości z dodatkowymi informacjami przed wysłaniem komunikatów do określonego punktu końcowego.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177990"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005829"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Wzbogacanie komunikatów dla komunikatów IoT Hub między urządzeniami a chmurą (wersja zapoznawcza)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Wzbogacanie komunikatów dla komunikatów IoT Hub między urządzeniami a chmurą
 
 *Wzbogacanie komunikatów* polega na tym, że IoT Hub *sygnatury* wiadomości z dodatkowymi informacjami przed wysłaniem komunikatów do określonego punktu końcowego. Jednym z powodów użycia wzbogacania komunikatów jest dołączenie danych, które mogą być używane do uproszczenia przetwarzania podrzędnego. Na przykład wzbogacanie komunikatów telemetrycznych urządzeń za pomocą znacznika sznurka urządzenia może zmniejszyć obciążenie klientów, aby umożliwić wywoływanie interfejsu API z użyciem urządzeń z systemem dla tych informacji.
 
@@ -81,10 +81,6 @@ Aby dowiedzieć się, jak wypróbować wzbogacanie komunikatów, zobacz [Samoucz
 ## <a name="pricing"></a>Cennik
 
 Wzbogacanie komunikatów są dostępne bez dodatkowych opłat. Obecnie opłata jest naliczana w przypadku wysyłania komunikatu do IoT Hub. Opłata jest naliczana tylko raz dla tego komunikatu, nawet jeśli komunikat przejdzie do wielu punktów końcowych.
-
-## <a name="availability"></a>Dostępność
-
-Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem Wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure Government](/azure/azure-government/documentation-government-welcome), [chiński (Chiny](/azure/china)) i [Azure (Niemcy](https://azure.microsoft.com/global-infrastructure/germany/)).
 
 ## <a name="next-steps"></a>Następne kroki
 

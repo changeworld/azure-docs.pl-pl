@@ -1,19 +1,19 @@
 ---
-title: Zaplanuj wydajność odzyskiwania po awarii funkcji Hyper-V za pomocą Azure Site Recovery | Microsoft Docs
+title: Zaplanuj wydajność odzyskiwania po awarii funkcji Hyper-V za pomocą Azure Site Recovery
 description: Ten artykuł służy do oceny pojemności podczas konfigurowania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972567"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936041"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planowanie pojemności na potrzeby odzyskiwania po awarii maszyny wirtualnej funkcji Hyper-V 
 
@@ -33,8 +33,8 @@ Użyj Planista wydajności Site Recovery, aby analizować środowisko źródłow
 
 Narzędzie można uruchomić w dwóch trybach:
 
-* **Szybkie planowanie**: Oferuje projekcje sieci i serwera na podstawie średniej liczby maszyn wirtualnych, dysków, magazynu i szybkości zmian.
-* **Szczegółowe planowanie**: Zawiera szczegółowe informacje o każdym obciążeniu na poziomie maszyny wirtualnej. Analizowanie zgodności maszyn wirtualnych i pobieranie projekcji sieci i serwera.
+* **Szybkie planowanie**: zapewnia projekcję sieci i serwera na podstawie średniej liczby maszyn wirtualnych, dysków, magazynu i szybkości zmian.
+* **Szczegółowe planowanie**: zawiera szczegółowe informacje o każdym obciążeniu na poziomie maszyny wirtualnej. Analizowanie zgodności maszyn wirtualnych i pobieranie projekcji sieci i serwera.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -47,7 +47,7 @@ Narzędzie można uruchomić w dwóch trybach:
 
 2. W polu listy **Wybierz typ planisty** wybierz pozycję **Quick Planner**.
 
-   ![Wprowadzenie](./media/site-recovery-capacity-planner/getting-started.png)
+   ![Rozpoczęcie pracy](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. W arkuszu **planista wydajności** wprowadź wymagane informacje. Wypełnij wszystkie pola wyróżnione czerwonymi na poniższym zrzucie ekranu:
 
@@ -55,7 +55,7 @@ Narzędzie można uruchomić w dwóch trybach:
 
    b. W polu **Średni dzienny współczynnik zmian danych (%)** wprowadź informacje zbierane przy użyciu [narzędzia planowania pojemności funkcji Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) lub [planista wdrażania Site Recovery](./site-recovery-deployment-planner.md).
 
-   c. Ustawienie **kompresji** nie jest używane w przypadku replikowania maszyn wirtualnych funkcji Hyper-V do platformy Azure. W przypadku kompresji Użyj urządzenia innej firmy, takiego jak Riverbed.
+   d. Ustawienie **kompresji** nie jest używane w przypadku replikowania maszyn wirtualnych funkcji Hyper-V do platformy Azure. W przypadku kompresji Użyj urządzenia innej firmy, takiego jak Riverbed.
 
    d. W polu **przechowywanie w dniach**Określ czas przechowywania replik w dniach.
 
@@ -65,19 +65,19 @@ Narzędzie można uruchomić w dwóch trybach:
 
 4. Po wprowadzeniu wartości dla środowiska źródłowego wyświetlane dane wyjściowe obejmują:
 
-   * **Przepustowość wymagana na potrzeby replikacji różnicowej (w megabitach/s)** : Przepustowość sieci na potrzeby replikacji różnicowej jest obliczana na podstawie średniego dziennego współczynnika zmian danych.
-   * **Przepustowość wymagana na potrzeby replikacji początkowej (w megabitach/s)** : Przepustowość sieci na potrzeby replikacji początkowej jest obliczana na wprowadzonych wartości początkowej replikacji.
-   * **Wymagany magazyn (w GB)** : Łączna wymagana ilość miejsca w magazynie platformy Azure.
-   * **Łączna liczba operacji we/wy w magazynie w warstwie Standardowa**: Liczba jest obliczana na podstawie rozmiaru jednostki IOPS 8K na łącznym koncie magazynu w warstwie Standardowa. W przypadku szybkiego planisty liczba jest obliczana na podstawie wszystkich źródłowych dysków maszyny wirtualnej i dziennego współczynnika zmian danych. W przypadku szczegółowego planisty liczba jest obliczana na podstawie łącznej liczby maszyn wirtualnych mapowanych na standardowe maszyny wirtualne platformy Azure, a szybkość zmian danych na tych maszynach wirtualnych.
-   * **Wymagana liczba kont magazynu w warstwie Standardowa**: Łączna liczba kont magazynu w warstwie Standardowa, które są konieczne do ochrony maszyn wirtualnych. Konto magazynu w warstwie Standardowa może zawierać maksymalnie 20 000 operacji we/wy na wszystkie maszyny wirtualne w magazynie w warstwie Standardowa. Maksymalna liczba operacji we/wy 500 jest obsługiwana na dysku.
-   * **Wymagana liczba dysków BLOB**: Liczba dysków tworzonych w usłudze Azure Storage.
-   * **Wymagana liczba kont Premium**: Łączna liczba kont magazynu w warstwie Premium wymaganych do ochrony maszyn wirtualnych. Źródłowa maszyna wirtualna o dużej liczbie operacji we/wy (ponad 20 000) wymaga konta magazynu w warstwie Premium. Konto magazynu w warstwie Premium może zawierać maksymalnie 80 000 operacji we/wy na sekundę.
-   * **Łączna liczba operacji we/wy na Premium Storage**: Liczba jest obliczana na podstawie rozmiaru jednostki IOPS 256 K na łącznym koncie magazynu w warstwie Premium. W przypadku szybkiego planisty liczba jest obliczana na podstawie wszystkich źródłowych dysków maszyny wirtualnej i dziennego współczynnika zmian danych. W przypadku szczegółowego planisty liczba jest obliczana na podstawie łącznej liczby maszyn wirtualnych mapowanych na maszyny wirtualne platformy Azure w warstwie Premium (seria DS i GS) oraz szybkość zmian danych na tych maszynach wirtualnych.
-   * **Wymagana liczba serwerów konfiguracji**: Pokazuje, ile serwerów konfiguracji jest wymaganych do wdrożenia.
-   * **Wymagana liczba dodatkowych serwerów przetwarzania**: Pokazuje, czy oprócz serwera przetwarzania, który jest domyślnie uruchomiony na serwerze konfiguracji, jest wymagane dodatkowe serwery przetwarzania.
-   * **100% dodatkowego magazynu w źródle**: Wskazuje, czy w lokalizacji źródłowej jest wymagany dodatkowy magazyn.
+   * **Przepustowość wymagana na potrzeby replikacji różnicowej (w megabitach/s)** : przepustowość sieci na potrzeby replikacji różnicowej jest obliczana na podstawie średniego dziennego współczynnika zmian danych.
+   * **Przepustowość wymagana dla replikacji początkowej (w megabitach/s)** : przepustowość sieci na potrzeby replikacji początkowej jest obliczana na wprowadzonych wartościach replikacji początkowej.
+   * **Wymagane miejsce do magazynowania (w GB)** : Łączna ilość wymaganych magazynów platformy Azure.
+   * **Łączna liczba operacji we/wy w magazynie w warstwie Standardowa**: liczba jest obliczana na podstawie rozmiaru jednostki IOPS 8K na łącznym koncie magazynu w warstwie Standardowa. W przypadku szybkiego planisty liczba jest obliczana na podstawie wszystkich źródłowych dysków maszyny wirtualnej i dziennego współczynnika zmian danych. W przypadku szczegółowego planisty liczba jest obliczana na podstawie łącznej liczby maszyn wirtualnych mapowanych na standardowe maszyny wirtualne platformy Azure, a szybkość zmian danych na tych maszynach wirtualnych.
+   * **Wymagana liczba kont magazynu w warstwie Standardowa**: Łączna liczba kont magazynu w warstwie Standardowa potrzebna do ochrony maszyn wirtualnych. Konto magazynu w warstwie Standardowa może zawierać maksymalnie 20 000 operacji we/wy na wszystkie maszyny wirtualne w magazynie w warstwie Standardowa. Maksymalna liczba operacji we/wy 500 jest obsługiwana na dysku.
+   * **Wymagana liczba dysków BLOB**: liczba dysków tworzonych w usłudze Azure Storage.
+   * **Wymagana liczba kont Premium**: Łączna liczba kont magazynu w warstwie Premium potrzebnych do ochrony maszyn wirtualnych. Źródłowa maszyna wirtualna o dużej liczbie operacji we/wy (ponad 20 000) wymaga konta magazynu w warstwie Premium. Konto magazynu w warstwie Premium może zawierać maksymalnie 80 000 operacji we/wy na sekundę.
+   * **Łączna liczba operacji we/wy na Premium Storage**: liczba jest obliczana na podstawie rozmiaru jednostki IOPS 256 k na łącznym koncie magazynu w warstwie Premium. W przypadku szybkiego planisty liczba jest obliczana na podstawie wszystkich źródłowych dysków maszyny wirtualnej i dziennego współczynnika zmian danych. W przypadku szczegółowego planisty liczba jest obliczana na podstawie łącznej liczby maszyn wirtualnych mapowanych na maszyny wirtualne platformy Azure w warstwie Premium (seria DS i GS) oraz szybkość zmian danych na tych maszynach wirtualnych.
+   * **Liczba wymaganych serwerów konfiguracji**: pokazuje, ile serwerów konfiguracji jest wymaganych do wdrożenia.
+   * **Liczba dodatkowych wymaganych serwerów przetwarzania**: wskazuje, czy oprócz serwera przetwarzania, który jest domyślnie uruchomiony na serwerze konfiguracji, jest wymagane dodatkowe serwery przetwarzania.
+   * **100% dodatkowego magazynu w źródle**: wskazuje, czy w lokalizacji źródłowej jest wymagany dodatkowy magazyn.
 
-      ![Output](./media/site-recovery-capacity-planner/output.png)
+      ![Dane wyjściowe](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>Uruchamianie szczegółowego planisty
 
@@ -93,9 +93,9 @@ Narzędzie można uruchomić w dwóch trybach:
 
    b. W obszarze **alokacja pamięci (w MB)** Określ rozmiar pamięci RAM serwera źródłowego.
 
-   c. W obszarze **Liczba kart interfejsu**sieciowego Określ liczbę karty sieciowych na serwerze źródłowym.
+   d. W obszarze **Liczba kart interfejsu**sieciowego Określ liczbę karty sieciowych na serwerze źródłowym.
 
-   d. W obszarze łączny rozmiar **magazynu (w GB)** Określ łączną ilość miejsca w magazynie maszyn wirtualnych. Jeśli na przykład serwer źródłowy ma trzy dyski z 500 GB każdy, łączny rozmiar magazynu to 1 500 GB.
+   d. W obszarze **łączny rozmiar magazynu (w GB)** Określ łączną ilość miejsca w magazynie maszyn wirtualnych. Jeśli na przykład serwer źródłowy ma trzy dyski z 500 GB każdy, łączny rozmiar magazynu to 1 500 GB.
 
    e. W polu **liczba podłączonych dysków**Określ łączną liczbę dysków serwera źródłowego.
 
@@ -144,7 +144,7 @@ Po wprowadzeniu wszystkich informacji wybierz pozycję **Prześlij dane do narz�
 
 2. Jeśli chcesz wprowadzić zmiany, musisz zmodyfikować arkusz **kwalifikacji obciążeń** . Następnie wybierz ponownie polecenie **Prześlij dane do narzędzia Planner** .
 
-   ![Planista pojemności](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![Planista wydajności](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Następne kroki
 [Dowiedz się, jak uruchomić](site-recovery-capacity-planning-for-hyper-v-replication.md) narzędzie planowania pojemności.

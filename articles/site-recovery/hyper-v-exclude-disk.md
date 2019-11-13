@@ -1,19 +1,18 @@
 ---
-title: Wykluczanie dysków z replikacji, podczas konfigurowania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak wykluczać dyski maszyny Wirtualnej z replikacji podczas odzyskiwania po awarii na platformie Azure.
+title: Wykluczanie dysków z replikacji w ramach odzyskiwania po awarii za pomocą Azure Site Recovery
+description: Opisuje sposób wykluczania dysków maszyny wirtualnej z replikacji podczas odzyskiwania po awarii na platformie Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 11/12/2019
 ms.author: mayg
-ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12304067e1a92559c2313fd7382f271249a8c784
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773937"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961452"
 ---
 # <a name="exclude-disks-from-replication"></a>Wykluczanie dysków z replikacji
 W tym artykule opisano sposób wykluczania dysków z replikacji. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski.
@@ -22,7 +21,7 @@ W tym artykule opisano sposób wykluczania dysków z replikacji. Takie wykluczen
 
 **Funkcja** | **Z programu VMware do platformy Azure** | **Z funkcji Hyper-V do platformy Azure** | **Z platformy Azure do platformy Azure**| **Z funkcji Hyper-V do funkcji Hyper-V** 
 --|--|--|--|--
-Wykluczanie dysku | Tak | Yes | Nie | Nie
+Wykluczanie dysku | Tak | Tak | Nie | Nie
 
 ## <a name="why-exclude-disks-from-replication"></a>Dlaczego wykluczać dyski z replikacji?
 Wykluczenie dysków z replikacji jest często konieczne, ponieważ:
@@ -60,7 +59,7 @@ Rozważmy dwa scenariusze, aby zrozumieć funkcję wykluczania dysku:
 - Dysk bazy danych tempdb programu SQL Server
 - Dysk pliku stronicowania (pagefile.sys)
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Przykład 1: Wykluczanie dysku bazy danych tempdb programu SQL Server
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Przykład 1. Wykluczanie dysku bazy danych tempdb programu SQL Server
 Rozważmy maszynę wirtualną programu SQL Server z bazą danych tempdb, którą można wykluczyć.
 
 Nazwa dysku wirtualnego to SalesDB.
@@ -73,7 +72,7 @@ Na źródłowej maszynie wirtualnej są następujące dyski:
 DB-Disk0-OS | DYSK0 | C:\ | Dysk systemu operacyjnego
 DB-Disk1| Dysk1 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 DB-Disk2 (wykluczono dysk z ochrony) | Dysk2 | E:\ | Pliki tymczasowe
-DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) <br /> <br />Zanotuj ścieżkę folderu przed włączeniem trybu failover.
+DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) <br /> <br />Zapisz ścieżkę folderu przed przejściem w tryb failover.
 DB-Disk4 | Dysk4 |G:\ |Baza danych użytkownika 2
 
 Ponieważ zmiany danych na dwóch dyskach maszyny wirtualnej dotyczą danych tymczasowych, podczas włączania ochrony maszyny wirtualnej bazy danych SalesDB, wyklucz dyski Dysk2 i Dysk3 z replikacji. Usługa Azure Site Recovery nie będzie replikować tych dysków. Po przełączeniu w tryb failover te dyski nie będą istnieć na maszynie wirtualnej w trybie failover na platformie Azure.
@@ -83,7 +82,7 @@ Dyski na maszynie wirtualnej platformy Azure po przełączeniu w tryb failover b
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -147,7 +146,7 @@ W poprzednim przykładzie konfiguracja dysków maszyny wirtualnej platformy Azur
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -163,12 +162,12 @@ DB-Disk2 (dysk wykluczony) | Dysk2 | E:\ | Pliki tymczasowe
 DB-Disk3 (dysk wykluczony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\)
 DB-Disk4 | Dysk4 | G:\ | Baza danych użytkownika 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Przykład 2: Wykluczanie dysku pliku stronicowania (pagefile.sys)
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>Przykład 2. Wykluczanie dysku pliku stronicowania (pagefile.sys)
 
 Rozważmy maszynę wirtualną zawierającą dysk z plikiem stronicowania, który można wykluczyć.
 Są dwa przypadki.
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Przypadek 1: Plik stronicowania skonfigurowano na dysku D:
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Przypadek 1. Plik stronicowania skonfigurowano na dysku D:
 Konfiguracja dysków:
 
 **Nazwa dysku** | **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
@@ -197,7 +196,7 @@ Poniżej przedstawiono ustawienia pliku stronicowania na maszynie wirtualnej pla
 
 ![Ustawienia pliku stronicowania na maszynie wirtualnej platformy Azure](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Przypadek 2: Plik stronicowania skonfigurowano na innym dysku (innym niż d:)
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Przypadek 2. Plik stronicowania skonfigurowano na innym dysku (innym niż D:)
 
 Poniżej przedstawiono konfigurację dysków źródłowej maszyny wirtualnej:
 
@@ -227,5 +226,5 @@ Poniżej przedstawiono ustawienia pliku stronicowania na maszynie wirtualnej pla
 
 ![Ustawienia pliku stronicowania na maszynie wirtualnej platformy Azure](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po skonfigurowaniu i uruchomieniu wdrożenia [dowiedz się więcej](site-recovery-failover.md) o różnych typach trybu failover.

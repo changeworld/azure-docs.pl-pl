@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c4f9334a91e99c92e74af060d84308a8aaccc6e7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671275"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005411"
 ---
-# <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Często zadawane pytania dotyczące migracji z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
-
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Czy ten plan migracji wpływa na moje istniejące usługi lub aplikacje uruchomione na maszynach wirtualnych platformy Azure? 
 
 Nie. Maszyny wirtualne (klasyczne) to w pełni obsługiwane usługi w ramach ogólnej dostępności. Możesz nadal używać tych zasobów do zwiększenia Twojej obecności na platformie Microsoft Azure.
@@ -49,24 +47,24 @@ Nie. Ostatnio umożliwiliśmy [przenoszenie obwodów usługi ExpressRoute z klas
 
 Podczas migracji zasoby są przekształcane z klasycznych na zasoby usługi Resource Manager. Dlatego zalecamy zaplanowanie aktualizacji zasad RBAC, które należy wykonać po migracji.
 
-## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Mam utworzone kopie zapasowe moich klasycznych maszyn wirtualnych w magazynie. Czy mogę migrować maszyny wirtualne z trybu klasycznego do trybu usługi Resource Manager i chronić je w magazynie usługi Recovery Services?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Utworzono kopię zapasową moich klasycznych maszyn wirtualnych w magazynie. Czy mogę migrować maszyny wirtualne z trybu klasycznego do trybu usługi Resource Manager i chronić je w magazynie usługi Recovery Services?
 
-<a name="vault">Gdy</a> przenoszenie maszyny Wirtualnej z modelu klasycznego do trybu usługi Resource Manager, kopie zapasowe wykonane przed migracją nie zostaną zmigrowane do nowo zmigrowaną maszynę Wirtualną usługi Resource Manager. Jednak jeśli chcesz przechowywać kopie zapasowe klasycznych maszyn wirtualnych, należy wykonać te kroki przed migracją. 
+<a name="vault">Po</a> przeniesieniu maszyny wirtualnej z klasycznej do Menedżer zasobów trybu kopie zapasowe wykonane przed migracją nie zostaną zmigrowane do nowo zmigrowanej Menedżer zasobów maszyny wirtualnej. Jeśli jednak chcesz zachować kopie zapasowe klasycznych maszyn wirtualnych, wykonaj następujące kroki przed migracją. 
 
-1. W magazynie usługi Recovery Services, przejdź do **chronione elementy** karcie, a następnie wybierz maszynę Wirtualną. 
+1. W magazynie Recovery Services przejdź do karty **elementy chronione** i wybierz maszynę wirtualną. 
 2. Kliknij przycisk Zatrzymaj ochronę. Pozostaw opcję *Usuń powiązane dane kopii zapasowych* **niezaznaczoną**.
 
 > [!NOTE]
-> Opłata wyniesie koszt wystąpienia kopii zapasowych do momentu zachowania danych. Kopie zapasowe będą usuwane zgodnie z zakresem przechowywania. Jednak ostatnia kopia zapasowa jest zawsze przechowywana aż jawnie usuniesz dane kopii zapasowej. Zaleca się, aby sprawdzić odpowiedni zakres przechowywania maszyny wirtualnej i wyzwalacza "Usuń dane kopii zapasowej" chronionego elementu w magazynie, gdy zakres przechowywania wynosi za pośrednictwem. 
+> Podczas zachowywania danych będzie naliczana opłata za wystąpienie kopii zapasowej. Kopie zapasowe będą oczyszczane zgodnie z zakresem przechowywania. Jednakże Ostatnia kopia zapasowa jest zawsze zachowywana do momentu, gdy jawnie usuniesz dane kopii zapasowej. Zalecane jest sprawdzenie zakresu przechowywania maszyny wirtualnej i wyzwolenie "Usuń dane kopii zapasowej" z chronionego elementu w magazynie po przekroczeniu zakresu przechowywania. 
 >
 >
 
-Aby przeprowadzić migrację maszyny wirtualnej do trybu usługi Resource Manager 
+Aby przeprowadzić migrację maszyny wirtualnej do trybu Menedżer zasobów, 
 
 1. Usuń rozszerzenie kopii zapasowej/migawki z maszyny wirtualnej.
 2. Przeprowadź migrację maszyny wirtualnej z trybu klasycznego do trybu usługi Resource Manager. Upewnij się, że informacje o magazynie i sieci odpowiadające maszynie wirtualnej również zostały zmigrowane do trybu usługi Resource Manager.
 
-Ponadto, jeśli chcesz utworzyć kopię zapasową zmigrowanych maszyn wirtualnych, przejdź do bloku zarządzania maszyną wirtualną, aby [Włącz wykonywanie kopii zapasowej](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Ponadto jeśli chcesz utworzyć kopię zapasową zmigrowanej maszyny wirtualnej, przejdź do bloku zarządzanie maszynami wirtualnymi, aby [włączyć tworzenie kopii zapasowej](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Czy mogę zwalidować moją subskrypcję lub moje zasoby, aby sprawdzić, czy można je zmigrować? 
 
@@ -88,6 +86,6 @@ Wszystkie zasoby z nazwami jawnie podanymi w klasycznym modelu wdrażania zostan
 
 Obwodów usługi ExpressRoute używających łącz autoryzacji między subskrypcjami nie można zmigrować automatycznie bez przestoju. Udostępniamy przewodnik z opisem wykonywania takiej migracji ręcznie. Kroki i więcej informacji zawiera temat [Migrate ExpressRoute circuits and associated virtual networks from the classic to the Resource Manager deployment model](../articles/expressroute/expressroute-migration-classic-resource-manager.md) (Migrowanie obwodów usługi ExpressRoute i skojarzonych sieci wirtualnych z modelu wdrażania klasycznego do modelu usługi Resource Manager).
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Otrzymuję komunikat *"maszyny Wirtualnej zgłasza ogólny stan agenta jako nie jest gotowy. Z tego powodu nie można migrować maszyny wirtualnej. Upewnij się, że Agent maszyny Wirtualnej zgłasza ogólny stan agenta jako gotowy"* lub *"maszyna wirtualna zawiera rozszerzenie, którego stan nie jest zgłaszany z maszyny Wirtualnej. Z tego powodu tej maszyny Wirtualnej nie można migrować."*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Po otrzymaniu komunikatu *"maszyna wirtualna zgłasza ogólny stan agenta jako niegotowy. W związku z tym nie można migrować maszyny wirtualnej. Upewnij się, że Agent maszyny wirtualnej zgłasza ogólny stan agenta jako gotowy "* lub *" maszyna wirtualna zawiera rozszerzenie, którego stan nie jest raportowany przez maszynę wirtualną. W związku z tym nie można migrować tej maszyny wirtualnej.*
 
 Ten komunikat jest zgłaszany, jeśli maszyna wirtualna nie ma połączenia wychodzącego do Internetu. Agent maszyny wirtualnej używa połączenia wychodzącego, aby uzyskać dostęp do konta usługi Azure Storage na potrzeby aktualizacji stanu agenta co pięć minut.

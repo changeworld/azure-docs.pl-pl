@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3781b71237f97cfd004805846f7c30f8cfe9b9f5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607483"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013165"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ Istnieje kilka rzeczy potrzebnych do skonfigurowania pulpitu wirtualnego systemu
 
 Planujemy dodanie obsługi następujących systemów operacyjnych, więc upewnij się, że masz [odpowiednie licencje](https://azure.microsoft.com/pricing/details/virtual-desktop/) dla użytkowników na podstawie pulpitu i aplikacji, które planujesz wdrożyć:
 
-|System operacyjny|Wymagana licencja|
+|OS|Wymagana licencja|
 |---|---|
 |Wiele sesji systemu Windows 10 Enterprise lub Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
@@ -73,11 +73,9 @@ Planujemy dodanie obsługi następujących systemów operacyjnych, więc upewnij
 Aby zapewnić obsługę pulpitu wirtualnego systemu Windows, Twoja infrastruktura wymaga następujących czynności:
 
 * [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* Active Directory systemu Windows Server synchronizacja z Azure Active Directory. Można to zrobić w następujący sposób:
-  * Azure AD Connect
-  * Usługi domenowe Azure AD
-     >[!NOTE]
-     >Jeśli używasz Azure AD Domain Services, użytkownicy muszą pochodzić z Azure Active Directory. W tej chwili nie jest obsługiwane używanie Azure AD Domain Services z użytkownikami z systemem Windows Server AD.
+* Active Directory systemu Windows Server synchronizacja z Azure Active Directory. Można to skonfigurować przy użyciu jednego z następujących elementów:
+  * Azure AD Connect (dla organizacji hybrydowych)
+  * Azure AD Domain Services (dla organizacji hybrydowych lub w chmurze)
 * Subskrypcja platformy Azure zawierająca sieć wirtualną, która zawiera lub jest połączona z systemem Windows Server Active Directory
   
 Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windows muszą być:
@@ -92,7 +90,7 @@ Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windo
 
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
-* *. core.windows.net
+* *.core.windows.net
 * *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
@@ -100,7 +98,7 @@ Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windo
 >[!NOTE]
 >Otwieranie tych adresów URL jest niezbędne dla niezawodnego wdrożenia pulpitu wirtualnego systemu Windows. Blokowanie dostępu do tych adresów URL nie jest obsługiwane i wpłynie na funkcjonalność usługi. Te adresy URL odnoszą się tylko do witryn i zasobów pulpitu wirtualnego systemu Windows, a nie obejmują adresów URL dla innych usług, takich jak Azure AD.
 
-Pulpit wirtualny systemu Windows składa się z komputerów stacjonarnych i aplikacji z systemem Windows dostarczanych użytkownikom i rozwiązanie do zarządzania, które jest hostowane jako usługa na platformie Azure przez firmę Microsoft. Komputery stacjonarne i aplikacje można wdrażać na maszynach wirtualnych w dowolnym regionie świadczenia usługi Azure, a rozwiązanie do zarządzania i dane dla tych maszyn wirtualnych będą znajdować się w Stany Zjednoczone (region Wschodnie stany USA 2). Może to spowodować transfer danych do Stany Zjednoczone.
+Pulpit wirtualny systemu Windows składa się z komputerów stacjonarnych i aplikacji z systemem Windows dostarczanych użytkownikom i rozwiązanie do zarządzania, które jest hostowane jako usługa na platformie Azure przez firmę Microsoft. Komputery stacjonarne i aplikacje można wdrażać na maszynach wirtualnych w dowolnym regionie świadczenia usługi Azure, a rozwiązanie do zarządzania i dane dla tych maszyn wirtualnych będą znajdować się w Stany Zjednoczone. Może to spowodować transfer danych do Stany Zjednoczone.
 
 W celu uzyskania optymalnej wydajności upewnij się, że sieć spełnia następujące wymagania:
 
@@ -117,7 +115,7 @@ Następujący klienci Pulpit zdalny obsługują pulpit wirtualny systemu Windows
 
 ## <a name="supported-virtual-machine-os-images"></a>Obsługiwane obrazy systemu operacyjnego maszyny wirtualnej
 
-Pulpit wirtualny systemu Windows obsługuje następujące obrazy systemu operacyjnego:
+Pulpit wirtualny systemu Windows obsługuje następujące obrazy systemu operacyjnego x64:
 
 * Wiele sesji systemu Windows 10 Enterprise
 * Windows 10 Enterprise
@@ -126,18 +124,20 @@ Pulpit wirtualny systemu Windows obsługuje następujące obrazy systemu operacy
 * Windows Server 2016
 * Windows Server 2012 R2
 
+Pulpit wirtualny systemu Windows nie obsługuje obrazów systemu operacyjnego x86 (32-bitowych).
+
 Dostępne opcje automatyzacji i wdrażania zależą od wybranego systemu operacyjnego i wersji, jak pokazano w poniższej tabeli: 
 
 |System operacyjny|Galeria obrazów platformy Azure|Ręczne wdrożenie maszyny wirtualnej|Integracja z szablonem Azure Resource Manager|Inicjowanie obsługi pul hostów w witrynie Azure Marketplace|Aktualizacje agenta pulpitu wirtualnego systemu Windows|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Wiele sesji systemu Windows 10, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
-|Wiele sesji systemu Windows 10, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows 10 Enterprise, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
-|Windows 10 Enterprise, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręczna|
-|Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczny|
-|Windows Server 2012 R2|Tak|Tak|Nie|Nie|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1903|Tak|Tak|Tak|Tak|Automatyczne|
+|Wiele sesji systemu Windows 10, wersja 1809|Tak|Tak|Nie|Nie|Automatyczne|
+|Windows 10 Enterprise, wersja 1903|Tak|Tak|Tak|Tak|Automatyczne|
+|Windows 10 Enterprise, wersja 1809|Tak|Tak|Nie|Nie|Automatyczne|
+|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręcznie|
+|Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczne|
+|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczne|
+|Windows Server 2012 R2|Tak|Tak|Nie|Nie|Automatyczne|
 
 ## <a name="next-steps"></a>Następne kroki
 

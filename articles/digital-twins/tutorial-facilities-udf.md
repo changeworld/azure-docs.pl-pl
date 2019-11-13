@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Monitorowanie obszaru za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
+title: 'Samouczek: monitorowanie miejsca — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
 description: Dowiedz się, jak aprowizować zasoby przestrzenne i monitorować warunki pracy za pomocą usługi Azure Digital Twins, wykonując czynności opisane w tym samouczku.
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: 74e3c46b2b1427c27923ed91846755797b8da690
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 4e7136c5689bf37e0ca1db33f4838373d59a0901
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949083"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013923"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Samouczek: udostępnianie warunków roboczych tworzenia i monitorowania za pomocą usługi Azure Digital bliźniaczych reprezentacji Preview
 
@@ -54,7 +54,7 @@ Dodaj następujący element matcher poniżej istniejących elementów matcher. U
         dataTypeValue: Temperature
 ```
 
-Ten dopasowany element będzie śledził czujnik `SAMPLE_SENSOR_TEMPERATURE` dodany w [pierwszym samouczku](tutorial-facilities-setup.md). 
+Ten dopasowany element będzie śledził czujnik `SAMPLE_SENSOR_TEMPERATURE`, który został dodany w [pierwszym samouczku](tutorial-facilities-setup.md). 
 
 ## <a name="create-a-user-defined-function"></a>Tworzenie funkcji zdefiniowanej przez użytkownika
 
@@ -185,7 +185,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
 
 1. Z danych wyjściowych w oknie polecenia skopiuj wartość elementu `ConnectionString` w sekcji `Devices` do schowka. Ta wartość będzie potrzebna do symulowania połączenia urządzenia w następnej sekcji.
 
-    [@no__t — przykład 1Provision](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [przykład udostępniania ![](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Jeśli podczas aprowizowania zostanie wyświetlony komunikat podobny do następującego „Operacja We/Wy została przerwana z powodu zakończenia wątku lub żądania aplikacji”, spróbuj ponownie uruchomić polecenie. Może się to zdarzyć, jeśli klient HTTP przekroczy limit czasu ze względu na problem z siecią.
@@ -206,7 +206,7 @@ W tej sekcji będziesz korzystać z projektu o nazwie *device-connectivity* w ra
 
    a. **DeviceConnectionString**: przypisz wartość `ConnectionString` w oknie danych wyjściowych z poprzedniej sekcji. Skopiuj cały ciąg między cudzysłowami, aby symulator mógł poprawnie nawiązać połączenie z centrum IoT Hub.
 
-   b. **HardwareId** w tablicy **czujników** : ponieważ symulujesz zdarzenia z czujników, które są obsługiwane w wystąpieniu usługi Azure Digital bliźniaczych reprezentacji, identyfikator sprzętu i nazwy czujników w tym pliku powinny być zgodne z węzłem *`sensors` plik provisionSample. YAML* .
+   b. **HardwareId** w tablicy **czujników** : ponieważ symulujesz zdarzenia z czujników, które są obsługiwane w wystąpieniu usługi Azure Digital bliźniaczych reprezentacji, identyfikator sprzętu i nazwy czujników w tym pliku powinny być zgodne z węzłem `sensors` pliku *provisionSample. YAML* .
 
       Dodaj nowy wpis dla czujnika temperatury. Węzeł **czujników** w pliku *appSettings. JSON* powinien wyglądać następująco:
 
@@ -246,7 +246,7 @@ Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy w
 
 W oknie danych wyjściowych będzie widoczne wykonywanie funkcji zdefiniowanej przez użytkownika oraz przechwytywanie zdarzeń z symulacji urządzenia. 
 
-   [![Output dla UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [Dane wyjściowe ![dla UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 W przypadku spełnienia monitorowanego warunku funkcja zdefiniowana przez użytkownika ustawi wartość dla przestrzeni, zwracając odpowiedni komunikat, jak pokazano [wyżej](#create-a-user-defined-function). Funkcja `GetAvailableAndFreshSpaces` wyświetla komunikat w konsoli.
 

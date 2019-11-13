@@ -1,19 +1,19 @@
 ---
-title: Migrowanie lokalnych serwerów z systemem Windows Server 2008 na platformę Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+title: Migrowanie serwerów z systemem Windows Server 2008 do platformy Azure za pomocą Azure Site Recovery
 description: W tym artykule opisano sposób migrowania maszyn lokalnych z systemem Windows Server 2008 na platformę Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814503"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936137"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrowanie serwerów z systemem Windows Server 2008 na platformę Azure
 
@@ -147,7 +147,7 @@ Możesz przeprowadzić test pracy w trybie failover serwerów replikacji po uko�
 
 Uruchom [testowanie trybu failover](tutorial-dr-drill-azure.md), aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
 
-   ![Testowe przełączenie w tryb failover](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Testowanie pracy w trybie failover](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ## <a name="migrate-to-azure"></a>Migracja na platformę Azure
@@ -163,8 +163,8 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
     - Powoduje zakończenie procesu migracji, zatrzymanie replikacji serwera oraz zatrzymanie naliczania opłat za usługę Site Recovery dla serwera.
     - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne.
 
-   ![Zakończ migrację](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Kończenie migracji](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Nie anuluj trybu failover, który jest w toku**: Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja serwera. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale replikowanie serwera nie będzie kontynuowane.
+> **Nie Anuluj trybu failover w toku**: replikacja serwera została zatrzymana przed rozpoczęciem pracy w trybie failover. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale replikowanie serwera nie będzie kontynuowane.

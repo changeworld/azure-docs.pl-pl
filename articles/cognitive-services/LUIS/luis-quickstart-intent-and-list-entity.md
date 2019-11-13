@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8021885bf51ab6d44bc8576b9fdd69f1bdd270a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492718"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953717"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Samouczek: uzyskiwanie dokładnych danych dopasowanych do tekstu z wypowiedź
 
@@ -31,7 +31,7 @@ W tym samouczku dowiesz się, jak uzyskać dane jednostki zgodne ze wstępnie zd
 > * Tworzenie aplikacji
 > * Dodawanie intencji
 > * Dodawanie jednostki listy 
-> * Szkolenie 
+> * Uczenie 
 > * Publikowanie
 > * Pobieranie intencji i jednostek z punktu końcowego
 
@@ -49,7 +49,7 @@ Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
 * Wartości danych należą do znanego zestawu.
 * Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Analiza słowotwórcza, liczba mnoga i inne wariacje nie są rozpoznawane przy użyciu tylko jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu. 
+* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Analiza słowotwórcza, liczba mnoga i inne wariacje nie są rozpoznawane przy użyciu tylko jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu. 
 
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
@@ -104,7 +104,7 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady syn
 
 1. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę).
 
-1. W oknie podręcznym jednostki wprowadź `Department` jako nazwę jednostki i **Lista** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
+1. W oknie podręcznym jednostki wprowadź ciąg `Department` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
 
     [![Zrzut ekranu przedstawiający tworzenie nowego okna podręcznego jednostki](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Zrzut ekranu przedstawiający tworzenie nowego okna podręcznego jednostki")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 

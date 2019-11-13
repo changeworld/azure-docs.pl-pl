@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815736"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73945751"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identyfikowanie i rozwiązywanie problemów z przypisaniem licencji dla grupy w Azure Active Directory
 
@@ -29,11 +29,6 @@ Licencjonowanie oparte na grupach w Azure Active Directory (Azure AD) wprowadza 
 Po przypisaniu licencji bezpośrednio do poszczególnych użytkowników bez korzystania z licencjonowania opartego na grupach operacja przypisania może zakończyć się niepowodzeniem. Na przykład po wykonaniu polecenia cmdlet programu PowerShell `Set-MsolUserLicense` w systemie użytkownika polecenie cmdlet może się nie powieść z wielu powodów związanych z logiką biznesową. Na przykład może być niewystarczająca liczba licencji lub występuje konflikt między dwoma planami usług, których nie można przypisać w tym samym czasie. Problem jest natychmiast raportowany do Ciebie.
 
 W przypadku korzystania z licencjonowania opartego na grupach te same błędy mogą wystąpić, ale występują w tle, podczas gdy usługa Azure AD przypisuje licencje. Z tego powodu błędy nie mogą być od razu przekazane. Zamiast tego są one rejestrowane w obiekcie użytkownika, a następnie raportowane za pośrednictwem portalu administracyjnego. Oryginalny cel licencji użytkownika nigdy nie jest tracony, ale jest rejestrowany w stanie błędu w celu przyszłego zbadania i rozwiązania problemu.
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException w dziennikach inspekcji
-
-**Problem:** Użytkownik ma LicenseAssignmentAttributeConcurrencyException do przypisania licencji w dziennikach inspekcji.
-Gdy Licencjonowanie oparte na grupach próbuje przetworzyć współbieżne przypisanie licencji tej samej licencji do użytkownika, ten wyjątek jest rejestrowany na użytkowniku. Zwykle dzieje się tak, gdy użytkownik jest członkiem więcej niż jednej grupy z tą samą przypisaną licencją. Usługa AZure AD podejmie ponowną próbę przetworzenia licencji użytkownika i rozwiąże ten problem. Klient nie wymaga żadnych działań w celu rozwiązania tego problemu.
 
 ## <a name="find-license-assignment-errors"></a>Znajdowanie błędów przypisywania licencji
 
@@ -122,6 +117,11 @@ Po rozwiązaniu problemów z adresem serwera proxy dla użytkowników, których 
 
 Aktualizacja przypisania licencji dla użytkownika powoduje, że Obliczanie adresu serwera proxy jest wyzwalane, co może spowodować zmianę atrybutów użytkownika. Aby zrozumieć dokładną przyczynę zmiany i rozwiązać problem, zobacz ten artykuł dotyczący [sposobu wypełnienia atrybutu proxyAddresses w usłudze Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException w dziennikach inspekcji
+
+**Problem:** Użytkownik ma LicenseAssignmentAttributeConcurrencyException do przypisania licencji w dziennikach inspekcji.
+Gdy Licencjonowanie oparte na grupach próbuje przetworzyć współbieżne przypisanie licencji tej samej licencji do użytkownika, ten wyjątek jest rejestrowany na użytkowniku. Zwykle dzieje się tak, gdy użytkownik jest członkiem więcej niż jednej grupy z tą samą przypisaną licencją. Usługa AZure AD podejmie ponowną próbę przetworzenia licencji użytkownika i rozwiąże ten problem. Klient nie wymaga żadnych działań w celu rozwiązania tego problemu.
+
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Do grupy przypisano więcej niż jedną licencję produktu
 
 Do grupy można przypisać więcej niż jedną licencję produktu. Na przykład możesz przypisać do grupy pakiet Office 365 Enterprise E3 i Enterprise Mobility + Security, aby łatwo włączyć wszystkie dołączone usługi dla użytkowników.
@@ -180,6 +180,6 @@ Aby dowiedzieć się więcej o innych scenariuszach związanych z zarządzaniem 
 * [Co to jest Licencjonowanie oparte na grupach w Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
-* [Jak migrować użytkowników między licencjami produktu przy użyciu licencjonowania opartego na grupach w programie Azure Active Directory](licensing-groups-change-licenses.md)
+* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
 * [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
-* [Przykłady programu PowerShell dla licencjonowania opartego na grupach w Azure Active Directory](licensing-ps-examples.md)
+* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-ps-examples.md)

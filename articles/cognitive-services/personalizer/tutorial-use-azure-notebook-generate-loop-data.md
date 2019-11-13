@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Notes platformy Azure — Personalizacja'
 titleSuffix: Azure Cognitive Services
-description: Ten samouczek symuluje pętlę personalizacji _SYSTEM w notesie platformy Azure, która sugeruje, który typ kawy powinien być zamówiony przez klienta. Użytkownicy i ich preferencje są przechowywane w zestawie danych użytkownika. Informacje o kawy są również dostępne i przechowywane w zestawie danych kawy.
+description: Ten samouczek symuluje pętlę personalizacji _system w notesie platformy Azure, która sugeruje, jaki typ kawy powinien zamówić. Użytkownicy i ich preferencje są przechowywane w zestawie danych użytkownika. Informacje o kawy są również dostępne i przechowywane w zestawie danych kawy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467250"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007600"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Samouczek: używanie programu Personalizujer w notesie platformy Azure
 
@@ -29,13 +29,13 @@ Notes wybiera losowego użytkownika, godzinę dnia i typ pogody z zestawu danych
 
 |Klienci — funkcje kontekstu|Razy dziennie|Typy pogodowe|
 |--|--|--|
-|Robert<br>Wiadomość<br>Cathy<br>Dave|Dobry<br>Południe<br>Wieczorem|Sunny<br>Rainy<br>Sosna| 
+|Alicja<br>Bob<br>Cathy<br>Dave|Dobry<br>Południe<br>Wieczorem|Sunny<br>Rainy<br>Sosna| 
 
 Aby ułatwić spersonalizowanie naukę, w miarę upływu czasu, poprawna opcja kawy dla każdej osoby, _system_ wie również o pozostałej odniesieniu do kawy.
 
-|Funkcje działania kawy|Typy temperatur|Miejsca pochodzenia|Typy palone|Ekologiczn|
+|Funkcje działania kawy|Typy temperatury|Miejsca pochodzenia|Typy palone|Ekologiczn|
 |--|--|--|--|--|
-|Cappacino|Gorąca|Kenia|Ciemny|Ekologiczn|
+|Cappacino|Gorąca|Kenya|Ciemny|Ekologiczn|
 |Zimna rozwiązania brew|Chłodn|Brazylia|Jasny|Ekologiczn|
 |Iced środowiska Mocha|Chłodn|Etiopia|Jasny|Nie organiczny|
 |Latte|Gorąca|Brazylia|Ciemny|Nie organiczny|
@@ -589,7 +589,7 @@ Aby znaleźć lepsze zasady uczenia na podstawie danych do interfejsu API rangi,
 1. Wprowadź wymagane dane nazwy oceny i zakres dat dla oceny pętli. Zakres dat powinien zawierać tylko dni, w których użytkownik koncentruje się na potrzeby oceny. 
     ![w Azure Portal Otwórz stronę oceny zasobów personalizacji. Wybierz pozycję Utwórz ocenę. Wprowadź nazwę ewaluacyjną i zakres dat.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Celem tej oceny w trybie offline jest ustalenie, czy istnieją lepsze zasady uczenia dotyczące funkcji i akcji używanych w tej pętli. Aby znaleźć lepsze zasady uczenia, upewnij się, że **zasady optymalizacji** są włączone.
+    Celem tej oceny w trybie offline jest ustalenie, czy istnieją lepsze zasady uczenia dotyczące funkcji i akcji używanych w tej pętli. Aby znaleźć lepsze zasady uczenia, upewnij się, że **Funkcja odnajdywania optymalizacji** jest włączona.
 
 1. Wybierz **przycisk OK** , aby rozpocząć obliczanie. 
 1. Na tej stronie **oceny** są wyświetlane nowe oceny i ich bieżący stan. W zależności od ilości danych, ta Ocena może zająć trochę czasu. Możesz wrócić do tej strony po kilku minutach, aby zobaczyć wyniki. 

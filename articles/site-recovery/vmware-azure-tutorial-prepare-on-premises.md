@@ -1,19 +1,19 @@
 ---
-title: Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure| Microsoft Docs
+title: Przygotowywanie do odzyskiwania po awarii maszyny wirtualnej VMware z Azure Site Recovery
 description: Dowiedz się, jak przygotować lokalne serwery VMware do odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147803"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953746"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure
 
@@ -68,8 +68,8 @@ Przygotuj konto w następujący sposób:
 
 Przygotuj domenę lub konto lokalne z uprawnieniami do instalowania na maszynie wirtualnej.
 
-- **Maszyny wirtualne z systemem Windows**: Aby przeprowadzić instalację na maszynach wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym. Aby to zrobić, w kluczu rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** dodaj wpis DWORD **LocalAccountTokenFilterPolicy** o wartości 1.
-- **Maszyny wirtualne z systemem Linux**: Aby zainstalować na maszynach wirtualnych z systemem Linux, przygotuj konto superużytkownika na serwerze źródłowym z systemem Linux.
+- **Maszyny wirtualne Windows**: Aby zainstalować na maszynach wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na komputerze lokalnym. Aby to zrobić, w kluczu rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** dodaj wpis DWORD **LocalAccountTokenFilterPolicy** o wartości 1.
+- **Maszyny wirtualne Linux**: Aby zainstalować na maszynach wirtualnych z systemem Linux, przygotuj konto superużytkownika na serwerze źródłowym z systemem Linux.
 
 
 ## <a name="check-vmware-requirements"></a>Sprawdzanie wymagań dotyczących programu VMware
@@ -116,5 +116,5 @@ Jeśli planujesz powrót po awarii do lokacji lokalnej, istnieje kilka [wymagań
 
 Skonfiguruj odzyskiwanie po awarii. Jeśli wykonujesz replikację wielu maszyn wirtualnych, Zaplanuj pojemność.
 > [!div class="nextstepaction"]
-> [Skonfiguruj odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych](vmware-azure-tutorial.md)
-> VMware, które[wykonują planowanie pojemności](site-recovery-deployment-planner.md).
+> [Skonfiguruj odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych VMware](vmware-azure-tutorial.md)
+> [przeprowadzić planowanie pojemności](site-recovery-deployment-planner.md).

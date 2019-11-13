@@ -1,17 +1,14 @@
 ---
 title: Tworzenie strategii przy użyciu programu PowerShell
 description: Korzystając z planów platformy Azure, można tworzyć, definiować i wdrażać artefakty przy użyciu programu PowerShell.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: 6a1ef5aece030ac359e9c5811c815bec5ed57d27
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4cc181a7e0b07448d6dd538cfb1621d1efa43a80
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978514"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960425"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu programu PowerShell
 
@@ -316,7 +313,7 @@ Wartość zmiennej `{BlueprintVersion}` jest ciągiem liter, cyfr i łączników
 
 Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji. Parametr **strategii określa plan do** przypisania. Aby podać nazwę, lokalizację, tożsamość, blokadę i parametry planu, użyj pasujących parametrów programu PowerShell w poleceniu cmdlet `New-AzBlueprintAssignment` lub podaj je w pliku JSON parametrów **AssignmentFile** .
 
-1. Uruchom wdrażanie strategii, przypisując ją do subskrypcji. Ponieważ parametry **współautorów** i **właścicieli** wymagają tablicy obiektów objectid, aby można było przydzielić przypisanie roli, użyj [interfejs API programu Graph Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md) , aby gromadzić identyfikatory objectid do użycia w **AssignmentFile** dla własnych użytkowników, grup lub podmiotów usługi.
+1. Uruchom wdrażanie strategii, przypisując ją do subskrypcji. Ponieważ parametry **współautorów** i **właścicieli** wymagają tablicy obiektów objectid, aby otrzymać przypisanie roli, użyj [Azure Active Directory interfejs API programu Graph](../../active-directory/develop/active-directory-graph-api.md) do zbierania obiektów objectid do użycia w **AssignmentFile** dla własnych użytkowników, grup lub jednostek usługi.
 
    - Plik JSON — blueprintAssignment. JSON
 
@@ -371,7 +368,7 @@ Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do 
    - Tożsamość zarządzana przypisana przez użytkownika
 
      W przypisaniu strategii można również użyć [tożsamości zarządzanej przypisanej przez użytkownika](../../active-directory/managed-identities-azure-resources/overview.md).
-     W takim przypadku części **Identity** pliku przypisania JSON zmienia się w następujący sposób. Zastąp wartości `{tenantId}`, `{subscriptionId}`, `{yourRG}` i `{userIdentity}` tenantId, Identyfikator subskrypcji, nazwę grupy zasobów i nazwę tożsamości zarządzanej przypisanej przez użytkownika odpowiednio.
+     W takim przypadku części **Identity** pliku przypisania JSON zmienia się w następujący sposób. Zastąp wartości `{tenantId}`, `{subscriptionId}`, `{yourRG}`i `{userIdentity}` z tenantId, identyfikatorem subskrypcji, nazwą grupy zasobów i nazwą tożsamości zarządzanej przypisanej przez użytkownika odpowiednio.
 
      ```json
      "identity": {
@@ -390,7 +387,7 @@ Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do 
 
 ## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
-Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, gdy zasoby artefaktu przestają być potrzebne. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie planu, należy użyć polecenia cmdlet `Remove-AzBlueprintAssignment`:
+Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, gdy zasoby artefaktu przestają być potrzebne. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie planu, użyj `Remove-AzBlueprintAssignment` polecenia cmdlet:
 
 assignMyBlueprint
 

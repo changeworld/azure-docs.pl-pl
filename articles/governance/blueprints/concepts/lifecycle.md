@@ -1,17 +1,14 @@
 ---
-title: Zapoznaj się z cyklem życia planu
+title: Omówienie cyklu życia strategii
 description: Dowiedz się więcej na temat cyklu życia i szczegółów dotyczących poszczególnych etapów.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 154e66366d4a687e60d7bddd28278414e3a4ccd7
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d071a2af985d294bc87a5363d9e7566762e0fd8a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981026"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960492"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Zapoznaj się z cyklem życia Azure Blueprint
 
@@ -65,7 +62,7 @@ Każda wersja planu jest unikatowym obiektem i może być indywidualnie **opubli
 > [!NOTE]
 > Nie można usunąć planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie Usuń wersję, którą chcesz usunąć.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz pozycję **definicje** strategii ze strony po lewej stronie, a następnie użyj opcji filtru, aby zlokalizować plan, dla którego chcesz usunąć wersję. Kliknij go, aby otworzyć stronę Edycja.
 
@@ -82,7 +79,7 @@ Można również usunąć podstawowe plany. Usunięcie podstawowego planu spowod
 
 Usuń plan z [Azure portalem](../create-blueprint-portal.md#delete-a-blueprint) lub [interfejsem API REST](../create-blueprint-rest-api.md#delete-a-blueprint).
 
-## <a name="assignments"></a>Przypisani
+## <a name="assignments"></a>Przypisania
 
 W trakcie cyklu życia można przypisać plan do subskrypcji. Po **opublikowaniu**trybu wersji planu ta wersja może być przypisana do subskrypcji. Ten cykl życia umożliwia korzystanie z wersji planu i aktywnie przypisywania podczas tworzenia nowszej wersji.
 
@@ -112,7 +109,7 @@ Jeśli plan nie jest już wymagany, można go przypisać do grupy zarządzania l
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów](resource-locking.md)planu.
-- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).

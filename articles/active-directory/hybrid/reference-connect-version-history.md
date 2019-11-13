@@ -2,26 +2,22 @@
 title: 'Azure AD Connect: historia wersji | Microsoft Docs'
 description: W tym artykule wymieniono wszystkie wersje Azure AD Connect i Azure AD Sync
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52e15aa62043ba394ae6e8cfe2cc7f27709c7d33
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927457"
+ms.locfileid: "73944222"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -35,24 +31,23 @@ Temat |  Szczegóły
 --------- | --------- |
 Procedura uaktualniania z programu Azure AD Connect | Różne metody [uaktualniania z poprzedniej wersji do najnowszego](how-to-upgrade-previous-version.md) wydania Azure AD Connect.
 Wymagane uprawnienia | Aby uzyskać uprawnienia wymagane do zastosowania aktualizacji, zobacz [konta i uprawnienia](reference-connect-accounts-permissions.md#upgrade).
-
-Pobierz | [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Do pobrania| [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Wydanie nowej wersji Azure AD Connect to proces, który wymaga kilku kroków kontroli jakości, aby zapewnić działanie usługi i przechodząc przez ten proces, numer wersji nowej wersji, a także stan wydania zostanie zaktualizowany. Aby odzwierciedlić najnowszy stan.
 W trakcie tego procesu numer wersji wersji będzie wyświetlany jako "X" w pozycji pomocniczej numer wersji, jak w "1.3. X. 0" — oznacza to, że informacje o wersji w tym dokumencie są prawidłowe dla wszystkich wersji zaczynających się od "1,3". Po sfinalizowaniu procesu wydania numer wersji zostanie zaktualizowany do ostatnio wydanej wersji, a stan wydania zostanie zaktualizowany na "zwolnione do pobrania i Autouaktualnianie".
-Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania. Stan wersji wskazuje, czy wersja jest udostępniona do autouaktualnienia, czy tylko do pobrania. Jeśli automatyczne uaktualnianie zostało włączone na serwerze Azure AD Connect, serwer zostanie automatycznie uaktualniony do najnowszej wersji Azure AD Connect wydanej na potrzeby automatycznego uaktualniania. Należy pamiętać, że nie wszystkie konfiguracje Azure AD Connect mogą być stosowane do autouaktualnienia. Skorzystaj z tego linku, aby dowiedzieć się więcej na temat [autouaktualniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania. Stan wersji wskazuje, czy wersja jest udostępniona do autouaktualnienia, czy tylko do pobrania. Jeśli automatyczne uaktualnianie zostało włączone na serwerze Azure AD Connect, serwer zostanie automatycznie uaktualniony do najnowszej wersji Azure AD Connect wydanej na potrzeby automatycznego uaktualniania. Należy pamiętać, że nie wszystkie konfiguracje Azure AD Connect mogą być stosowane do autouaktualnienia. Skorzystaj z tego linku, aby dowiedzieć się więcej na temat [autouaktualniania](how-to-connect-install-automatic-upgrade.md)
 
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Stan wydania
-08/11/2019: wydano do pobrania. Niedostępne do autouaktualnienia
+11/08/2019: wydano do pobrania. Niedostępne do autouaktualnienia
 
 >[!IMPORTANT]
 >Ze względu na wewnętrzną zmianę schematu w tej wersji Azure AD Connect, jeśli ustawienia konfiguracji relacji zaufania usług AD FS są zarządzane za pomocą programu MSOnline PowerShell, należy zaktualizować moduł MSOnline PowerShell do wersji 1.1.183.57 lub nowszej
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
 Ta wersja rozwiązuje problem z istniejącymi urządzeniami hybrydowymi z usługą Azure AD. Ta wersja zawiera nową regułę synchronizacji urządzeń, która rozwiązuje ten problem.
-Ta zmiana reguły może spowodować usunięcie przestarzałych urządzeń z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te obiekty urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. W przypadku niektórych klientów liczba urządzeń, które zostaną usunięte przez tę zmianę reguły, może przekroczyć próg usuwania. Jeśli w usłudze Azure AD jest widoczne usuwanie obiektów urządzeń przekraczających próg usuwania eksportu, zaleca się zezwolenie na przechodzenie przez operacje usuwania. [Jak zezwolić na usuwanie przepływów po przekroczeniu progu usuwania](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes)
+Ta zmiana reguły może spowodować usunięcie przestarzałych urządzeń z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te obiekty urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. W przypadku niektórych klientów liczba urządzeń, które zostaną usunięte przez tę zmianę reguły, może przekroczyć próg usuwania. Jeśli w usłudze Azure AD jest widoczne usuwanie obiektów urządzeń przekraczających próg usuwania eksportu, zaleca się zezwolenie na przechodzenie przez operacje usuwania. [Jak zezwolić na usuwanie przepływów po przekroczeniu progu usuwania](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="14250"></a>1.4.25.0
 
@@ -129,7 +124,7 @@ W pewnych okolicznościach serwery, które były automatycznie uaktualnione do w
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy 
 
-- Usunięto lukę w zabezpieczeniach, która istnieje w Microsoft Azure Active Directory Connect kompilacja 1.3.20.0.  Ta luka w zabezpieczeniach w pewnych warunkach może pozwolić osobie atakującej na wykonywanie dwóch poleceń cmdlet programu PowerShell w kontekście konta uprzywilejowanego i wykonywanie uprzywilejowanych akcji.  Ta aktualizacja zabezpieczeń rozwiązuje ten problem, wyłączając te polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [Aktualizacja zabezpieczeń](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
+- Usunięto lukę w zabezpieczeniach, która istnieje w Microsoft Azure Active Directory Connect kompilacja 1.3.20.0.  Ta luka w zabezpieczeniach w pewnych warunkach może pozwolić osobie atakującej na wykonywanie dwóch poleceń cmdlet programu PowerShell w kontekście konta uprzywilejowanego i wykonywanie uprzywilejowanych akcji.  Ta aktualizacja zabezpieczeń rozwiązuje ten problem, wyłączając te polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [Aktualizacja zabezpieczeń](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -398,9 +393,9 @@ Stan: wydano, aby wybrać klientów
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Rozwiązane problemy
-* Naprawianie okna chronometrażu zadań w tle dla strony filtrowania partycji podczas przełączania na następną stronę.
+* Usuń okna czasowego na zadania w tle dla strony filtrowanie partycji, podczas przełączania do następnej strony.
 
-* Rozwiązano błąd, który spowodował naruszenie zasad dostępu podczas akcji niestandardowej ConfigDB.
+* Naprawiono usterkę, który spowodował naruszenie zasad dostępu podczas ConfigDB akcji niestandardowej.
 
 * Rozwiązano usterkę do odzyskania z limitu czasu połączenia SQL.
 
@@ -420,7 +415,7 @@ Stan: wydano, aby wybrać klientów
 * Telemetria aplikacji — administrator może włączyć/wyłączyć tę klasę danych na
 
 * Dane kondycji usługi Azure AD — administrator musi odwiedzić portal kondycji, aby kontrolować jego ustawienia kondycji.
-   Po zmianie zasad usługi Agenty będą je odczytywać i wymuszać.
+   Po zmianie zasad usługi agentami odczytu, a jej wymusić.
 
 * Dodano akcje konfiguracji zapisywania i wycofywania urządzenia oraz pasek postępu dla inicjowania strony
 
@@ -439,9 +434,9 @@ Zmiany będą następujące:
 
 * Dodano nowe narzędzie do rozwiązywania problemów z synchronizacją dla określonego obiektu. Jest on dostępny w opcji "Rozwiązywanie problemów z synchronizacją obiektów" kreatora Azure AD Connect rozwiązywania problemów z dodatkowym zadaniem. Obecnie narzędzie sprawdza następujące elementy:
 
-  * Niezgodność UserPrincipalName między zsynchronizowanym obiektem użytkownika a kontem użytkownika w dzierżawie usługi Azure AD.
-  * Jeśli obiekt jest filtrowany z synchronizacji z powodu filtrowania domeny
-  * Jeśli obiekt jest filtrowany z synchronizacji z powodu filtrowania jednostki organizacyjnej (OU)
+  * UserPrincipalName niezgodność między obiektów synchronizowanych użytkowników i konta użytkownika w dzierżawy usługi Azure AD.
+  * Jeśli obiekt został odfiltrowany z synchronizacji z powodu filtrowanie domeny
+  * Jeśli obiekt został odfiltrowany z synchronizacji z powodu jednostki organizacyjnej (OU), filtrowanie
 
 * Dodano nowe narzędzie do synchronizacji bieżącego skrótu hasła przechowywanego w Active Directory lokalnym dla określonego konta użytkownika.
 
@@ -476,7 +471,7 @@ Zablokuj dostęp do konta AD DS, implementując następujące zmiany uprawnień 
 
 Typ     | Nazwa                          | Access               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
-Zezwalaj    | SYSTEMAMI                        | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
@@ -813,8 +808,8 @@ CBool(
     | --- | --- | --- |
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
-    |CertSubjectNameOid|CertIssuerDN|Iscert|
-    |CertFriendlyName|certThumbprint|CertExtensionOids|
+    |CertSubjectNameOid|CertIssuerDN|IsCert|
+    |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Wybierz pozycję|
@@ -830,13 +825,13 @@ CBool(
     * Osoba: wyróżniająca
 
   * Następujące atrybuty zostały dodane do schematu łącznika usługi Azure AD:
-    * Grupa: nazwy pospolitej onpremisessamaccountname
-    * Grupa: system Biosname
+    * Group: OnPremisesSamAccountName
+    * Group: NetBiosName
     * Grupa: NazwaDomenyDNS
     * Użytkownik: OnPremisesDistinguishedName
 
 * Skrypt poleceń cmdlet ADSyncDomainJoinedComputerSync ma teraz nowy opcjonalny parametr o nazwie AzureEnvironment. Ten parametr służy do określania regionu, w którym jest hostowana odpowiednia dzierżawa Azure Active Directory. Prawidłowe wartości to:
-  * AzureCloud (domyślnie)
+  * AzureCloud (default)
   * AzureChinaCloud
   * AzureGermanyCloud
   * USGovernment
@@ -962,7 +957,7 @@ Logowanie jednokrotne na komputerze
 
 * Kreator Azure AD Connect nie wymaga już otwarcia portu 9090 w sieci podczas konfigurowania uwierzytelniania przekazywanego i logowania jednokrotnego na pulpicie. Wymagany jest tylko port 443. 
 
-## <a name="114430"></a>wersji 1.1.443.0
+## <a name="114430"></a>1.1.443.0
 Wydanie: marzec 2017
 
 **Rozwiązano problemy:**
@@ -1052,7 +1047,7 @@ Wydanie: listopad 2016
 * Rozwiązano problem polegający na tym, że reguły dołączania nie są ponownie oceniane, gdy obiekt w przestrzeni łącznika jednocześnie staje się poza zakresem dla jednej reguły sprzężenia i staje się zakresem innym. Taka sytuacja może wystąpić, jeśli masz co najmniej dwie reguły sprzężenia, których warunki sprzężenia wykluczają się wzajemnie.
 * Rozwiązano problem polegający na tym, że reguły synchronizacji ruchu przychodzącego (z usługi Azure AD), które nie zawierają reguł sprzężenia, nie są przetwarzane, jeśli mają niższe wartości pierwszeństwa niż te zawierające reguły sprzężenia.
 
-**Poprawek**
+**Ulepszenia:**
 
 * Dodano obsługę instalowania Azure AD Connect w systemie Windows Server 2016 Standard lub nowszym.
 * Dodano obsługę SQL Server 2016 jako zdalnej bazy danych dla Azure AD Connect.
@@ -1071,7 +1066,7 @@ Wydanie: sierpień 2016
 * Kreator Azure AD Connect nie pokazuje rzeczywistej synchronizacji haseł i konfiguracji zapisywania zwrotnego haseł, gdy serwer jest w trybie przejściowym. Są one zawsze wyświetlane jako wyłączone.
 * Zmiany konfiguracji synchronizacji haseł i zapisywania zwrotnego haseł nie są utrwalane przez kreatora Azure AD Connect, gdy serwer jest w trybie przejściowym.
 
-**Poprawek**
+**Ulepszenia:**
 
 * Zaktualizowano polecenie cmdlet Start-ADSyncSyncCycle, aby wskazać, czy można pomyślnie uruchomić nowy cykl synchronizacji, czy nie.
 * Dodano polecenie cmdlet Stop-ADSyncSyncCycle, aby przerwać cykl synchronizacji i operację, które są obecnie w toku.
@@ -1186,7 +1181,7 @@ Wydanie: listopad 2015
 
 **Nowy obsługiwany scenariusz:**
 
-* Obsługuje wiele lokalnych organizacji programu Exchange. Aby uzyskać więcej informacji, zobacz [wdrażanie hybrydowe z wieloma lasami Active Directory](https://technet.microsoft.com/library/jj873754.aspx).
+* Obsługuje wiele lokalnych organizacji programu Exchange. Aby uzyskać więcej informacji, zobacz [wdrażanie hybrydowe z wieloma lasami Active Directory](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150)).
 
 **Rozwiązano problemy:**
 
@@ -1279,7 +1274,7 @@ Opublikowano: kwiecień 2015
 ## <a name="104850222"></a>1.0.485.0222
 Wydanie: luty 2015
 
-**Poprawek**
+**Ulepszenia:**
 
 * Ulepszona wydajność importowania.
 

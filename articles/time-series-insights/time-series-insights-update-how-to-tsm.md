@@ -1,6 +1,6 @@
 ---
-title: Modelowanie danych w wersji zapoznawczej Azure Time Series Insights | Microsoft Docs
-description: Zrozumienie modelowania danych w wersji zapoznawczej Azure Time Series Insights.
+title: Modelowanie danych w środowiskach w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się więcej na temat modelowania danych w wersji zapoznawczej Azure Time Series Insights.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063982"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006458"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelowanie danych w wersji zapoznawczej Azure Time Series Insights
 
@@ -23,7 +23,7 @@ W tym artykule opisano sposób pracy z modelem szeregów czasowych w wersji zapo
 
 Aby dowiedzieć się więcej na temat sposobu korzystania z aktualizacji, przeczytaj artykuł [Azure Time Series Insights Explorer w wersji zapoznawczej](./time-series-insights-update-explorer.md).
 
-## <a name="types"></a>Typ
+## <a name="types"></a>Typy
 
 ### <a name="create-a-single-type"></a>Tworzenie pojedynczego typu
 
@@ -58,7 +58,7 @@ Aby dowiedzieć się więcej na temat sposobu korzystania z aktualizacji, przecz
 
     [![przycisk "Usuń"](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
 
-## <a name="hierarchies"></a>Zlokalizowan
+## <a name="hierarchies"></a>Hierarchie
 
 ### <a name="create-a-single-hierarchy"></a>Utwórz pojedynczą hierarchię
 
@@ -76,7 +76,7 @@ Aby dowiedzieć się więcej na temat sposobu korzystania z aktualizacji, przecz
 
 1. Wprowadź szczegóły hierarchii i wybierz pozycję **Utwórz**.
 
-    [![szczegóły hieararchy i przycisk "Utwórz"](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
+    [![szczegóły hierarchii i przycisk "Utwórz"](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Przekaż zbiorczo co najmniej jedną hierarchię
 

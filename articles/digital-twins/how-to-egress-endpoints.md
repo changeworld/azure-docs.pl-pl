@@ -1,6 +1,6 @@
 ---
-title: Wyjście i punkty końcowe w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Wskazówki dotyczące sposobu tworzenia punktów końcowych za pomocą usługi Azure Digital bliźniaczych reprezentacji.
+title: Wyjście i punkty końcowe — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Dowiedz się, jak tworzyć i wychodzące punkty końcowe zdarzeń w usłudze Azure Digital bliźniaczych reprezentacji.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822269"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010050"
 ---
-# <a name="egress-and-endpoints"></a>Wyjście i punkty końcowe
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Wyjście i punkty końcowe w usłudze Azure Digital bliźniaczych reprezentacji
 
 *Punkty końcowe* usługi Azure Digital bliźniaczych reprezentacji reprezentują komunikat lub brokera zdarzeń w ramach subskrypcji platformy Azure użytkownika. Zdarzenia i komunikaty mogą być wysyłane do tematów Event Hubs, Azure Event Grid i Azure Service Bus platformy Azure.
 
@@ -50,8 +50,8 @@ Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do 
 | Atrybut | Typ | Opis |
 | --- | --- | --- |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
-| Temat | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
-| Data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
 | eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
 | dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |

@@ -3,7 +3,7 @@ title: Jak zainstalować widoki usługi log Analytics i korzystać z nich | Micr
 description: Dowiedz się, jak zainstalować widoki usługi log Analytics i korzystać z nich Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00bca8bca19f9a71c4eeb639017845987682661f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820915"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014415"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalowanie i Używanie widoków usługi log Analytics na potrzeby Azure Active Directory
 
@@ -51,7 +51,7 @@ Aby można było korzystać z widoków usługi log Analytics, potrzebne są:
 
 2. Gdy jesteś w obszarze roboczym, wybierz opcję **Podsumowanie obszaru roboczego**. Powinny zostać wyświetlone następujące trzy widoki:
 
-    * **Zdarzenia aprowizacji konta usługi Azure AD**: ten widok przedstawia raporty dotyczące aktywności związanej z obsługą inspekcji, na przykład liczbę nowych użytkowników i niepowodzenia aprowizacji, liczbę zaktualizowanych użytkowników i błędy aktualizacji oraz liczbę użytkowników dezaktywowane i odpowiadające błędy.    
+    * **Zdarzenia aprowizacji konta usługi Azure AD**: ten widok przedstawia raporty dotyczące aktywności związanej z obsługą inspekcji, takie jak liczba nowych użytkowników i niepowodzenia aprowizacji, liczba zaktualizowanych użytkowników i aktualizacja niepowodzeń oraz liczba użytkowników, którym cofnięto Inicjowanie obsługi administracyjnej i odpowiadające im błędy.    
     * **Zdarzenia logowania**: ten widok przedstawia najbardziej odpowiednie raporty związane z monitorowaniem aktywności, takie jak logowania według aplikacji, użytkownika, urządzenia, a także widok podsumowania, który śledzi liczbę logowań w czasie.
 
 3. Wybierz jeden z tych widoków, aby przejść do poszczególnych raportów. Możesz również ustawić alerty dla dowolnego parametru raportu. Na przykład Skonfigurujmy alert za każdym razem, gdy wystąpi błąd logowania. Aby to zrobić, najpierw wybierz widok **zdarzenia logowania** , wybierz pozycję **Błędy logowania** w raporcie czas, a następnie wybierz pozycję **Analiza** , aby otworzyć stronę szczegóły z rzeczywistym zapytaniem za raport. 

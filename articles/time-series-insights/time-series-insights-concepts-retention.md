@@ -1,5 +1,5 @@
 ---
-title: Informacje o przechowywaniu danych w środowisku Azure Time Series Insights | Microsoft Docs
+title: Informacje o przechowywaniu danych w środowisku — usługa Azure Time Series Insights | Microsoft Docs
 description: W tym artykule opisano dwa ustawienia kontrolujące przechowywanie danych w środowisku Azure Time Series Insightsu.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9dd771d44452ddc36913caf04f3c3a2d15ff1f08
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990122"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012700"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Informacje o przechowywaniu danych w Azure Time Series Insights
 
 W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku Azure Time Series Insightsu.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Poniższe wideo podsumowuje Time Series Insights przechowywanie danych i sposób ich planowania.</br>
 
@@ -90,7 +90,7 @@ W Event Hubs, których dotyczy problem, Rozważ zmianę właściwości **przecho
 
 [![przechowywanie komunikatów centrum zdarzeń.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Jeśli nie skonfigurowano żadnych właściwości dla źródła zdarzeń (`timeStampPropertyName`), Time Series Insights domyślnie do sygnatury czasowej przybycia w centrum zdarzeń jako oś X. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanego `timeStampPropertyName` w pakiecie danych podczas analizowania zdarzeń.
+Jeśli nie skonfigurowano żadnych właściwości dla źródła zdarzeń (`timeStampPropertyName`), Time Series Insights wartość domyślna sygnatury czasowej przybycia w centrum zdarzeń jako oś X. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanych `timeStampPropertyName` w pakiecie danych podczas analizowania zdarzeń.
 
 Zapoznaj się z artykułem [Jak skalować środowisko Time Series Insights](time-series-insights-how-to-scale-your-environment.md) , aby skalować środowisko w celu zwiększenia pojemności lub zwiększyć czas przechowywania.
 

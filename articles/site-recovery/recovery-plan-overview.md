@@ -1,19 +1,18 @@
 ---
-title: Korzystanie z planów odzyskiwania w ramach odzyskiwania po awarii z Azure Site Recovery
+title: Plany odzyskiwania w programie Azure Site Recovery — informacje
 description: Dowiedz się więcej o korzystaniu z planów odzyskiwania na potrzeby odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 640f7258821718c5d406dd581d1f9c503e0d41c2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331915"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953886"
 ---
 # <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
@@ -84,7 +83,7 @@ Można użyć planu odzyskiwania, aby wyzwolić test pracy w trybie failover. Na
 
     ![Zrzut ekranu przykładowego planu odzyskiwania testowego w Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Obejrzyj wideo
+## <a name="watch-the-video"></a>Obejrzyj film
 
 Obejrzyj szybki przykład wideo pokazujący przejście w tryb failover na potrzeby dwuwarstwowej aplikacji WordPress.
     

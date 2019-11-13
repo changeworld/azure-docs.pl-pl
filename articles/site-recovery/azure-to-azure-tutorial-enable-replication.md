@@ -1,20 +1,19 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery
+title: Konfigurowanie odzyskiwania po awarii maszyny wirtualnej platformy Azure za pomocą Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w innym regionie świadczenia usługi Azure za pomocą usługi Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468032"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961493"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -23,7 +22,7 @@ Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do real
 W tym samouczku pokazano, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przez replikowanie ich z jednego regionu świadczenia usługi Azure do innego. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie magazynu Usług odzyskiwania
+> * Tworzenie magazynu usługi Recovery Services
 > * Sprawdzanie ustawień zasobów docelowych
 > * Konfigurowanie wychodzącej łączności sieciowej dla maszyn wirtualnych
 > * Włączanie replikacji maszyny wirtualnej
@@ -38,7 +37,7 @@ W celu ukończenia tego samouczka:
 - Zapoznaj się ze [składnikami i architekturą scenariusza](concepts-azure-to-azure-architecture.md).
 - Zapoznaj się z wymaganiami dotyczącymi [obsługi](site-recovery-support-matrix-azure-to-azure.md) przed rozpoczęciem.
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
 Magazyn można utworzyć w dowolnym regionie, z wyjątkiem regionu źródłowego.
 

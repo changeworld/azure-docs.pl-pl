@@ -1,18 +1,18 @@
 ---
-title: Monitoruj Azure Site Recovery z dziennikami Azure Monitor (Log Analytics) | Microsoft Docs
+title: Monitorowanie Azure Site Recovery przy użyciu dzienników Azure Monitor
 description: Informacje na temat monitorowania Azure Site Recovery z dziennikami Azure Monitor (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/13/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331922"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936086"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorowanie usługi Site Recovery przy użyciu dzienników usługi Azure Monitor
 
@@ -61,7 +61,7 @@ Dzienniki Site Recovery rozpoczynają się do tabeli (**AzureDiagnostics**) w wy
 Pobieranie danych z dzienników przy użyciu zapytań dzienników utworzonych przy użyciu [języka zapytań Kusto](../azure-monitor/log-query/get-started-queries.md). Ta sekcja zawiera kilka przykładów typowych zapytań, których można użyć do monitorowania Site Recovery.
 
 > [!NOTE]
-> W niektórych przykładach użyto **replicationProviderName_s** ustawionych do **— A2A**. Spowoduje to pobranie maszyn wirtualnych platformy Azure replikowanych do regionu pomocniczego platformy Azure przy użyciu Site Recovery. W tych przykładach można zastąpić **— A2A** z **InMageAzureV2**, jeśli chcesz pobrać lokalne maszyny wirtualne VMware lub serwery fizyczne replikowane do platformy Azure przy użyciu Site Recovery.
+> Niektóre przykłady używają **replicationProviderName_s** ustawione na **— A2A**. Spowoduje to pobranie maszyn wirtualnych platformy Azure replikowanych do regionu pomocniczego platformy Azure przy użyciu Site Recovery. W tych przykładach można zastąpić **— A2A** z **InMageAzureV2**, jeśli chcesz pobrać lokalne maszyny wirtualne VMware lub serwery fizyczne replikowane do platformy Azure przy użyciu Site Recovery.
 
 
 ### <a name="query-replication-health"></a>Kondycja replikacji zapytań
@@ -223,7 +223,7 @@ AzureDiagnostics 
 Można skonfigurować alerty Site Recovery w oparciu o dane Azure Monitor. [Dowiedz się więcej](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) o konfigurowaniu alertów dziennika. 
 
 > [!NOTE]
-> W niektórych przykładach użyto **replicationProviderName_s** ustawionych do **— A2A**. Powoduje to ustawienie alertów dla maszyn wirtualnych platformy Azure, które są replikowane do pomocniczego regionu platformy Azure. W tych przykładach można zastąpić **— A2A** z **InMageAzureV2** , jeśli chcesz ustawić alerty dla lokalnych maszyn wirtualnych VMware lub serwerów fizycznych replikowanych do platformy Azure.
+> Niektóre przykłady używają **replicationProviderName_s** ustawione na **— A2A**. Powoduje to ustawienie alertów dla maszyn wirtualnych platformy Azure, które są replikowane do pomocniczego regionu platformy Azure. W tych przykładach można zastąpić **— A2A** z **InMageAzureV2** , jeśli chcesz ustawić alerty dla lokalnych maszyn wirtualnych VMware lub serwerów fizycznych replikowanych do platformy Azure.
 
 ### <a name="multiple-machines-in-a-critical-state"></a>Wiele maszyn w stanie krytycznym
 

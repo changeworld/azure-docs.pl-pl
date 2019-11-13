@@ -4,18 +4,18 @@ description: Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszyna
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
-keywords: Azure Backup; Server
+keywords: Azure Backup; SQL;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969092"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012815"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -24,6 +24,7 @@ W tym artykule opisano sposób użycia Azure PowerShell do tworzenia kopii zapas
 W tym samouczku wyjaśniono:
 
 > [!div class="checklist"]
+>
 > * Skonfiguruj program PowerShell i zarejestruj dostawcę usługi Azure Recovery Services.
 > * Utwórz magazyn usługi Recovery Services.
 > * Skonfiguruj kopię zapasową bazy danych SQL na maszynie wirtualnej platformy Azure.
@@ -270,8 +271,8 @@ Po podaniu opcji autoochrony zapytanie do maszyny w celu pobrania nowo dodanej b
 
 Azure Backup można przywrócić SQL Server baz danych uruchomionych na maszynach wirtualnych platformy Azure w następujący sposób:
 
-1. Przywracanie do określonej daty lub czasu (w drugim) przy użyciu kopii zapasowych dziennika transakcji. Azure Backup automatycznie określa odpowiednią pełną, różnicową kopię zapasową i łańcuch kopii zapasowych dziennika, które są wymagane do przywrócenia w oparciu o wybrany czas.
-2. Przywróć określoną pełną lub różnicową kopię zapasową w celu przywrócenia do określonego punktu odzyskiwania.
+* Przywracanie do określonej daty lub czasu (w drugim) przy użyciu kopii zapasowych dziennika transakcji. Azure Backup automatycznie określa odpowiednią pełną, różnicową kopię zapasową i łańcuch kopii zapasowych dziennika, które są wymagane do przywrócenia w oparciu o wybrany czas.
+* Przywróć określoną pełną lub różnicową kopię zapasową w celu przywrócenia do określonego punktu odzyskiwania.
 
 Przed przywróceniem programu SQL baz danych Sprawdź wymagania wstępne wymienione w [tym miejscu](restore-sql-database-azure-vm.md#prerequisites) .
 
@@ -335,9 +336,9 @@ Powyższe dane wyjściowe oznacza, że użytkownik może przywrócić wszystkie 
 
 W przypadku przywracania bazy danych SQL obsługiwane są następujące scenariusze przywracania.
 
-1. Zastępowanie kopii zapasowej bazy danych SQL z innym punktem odzyskiwania — OriginalWorkloadRestore
-2. Przywracanie bazy danych SQL jako nowej bazy danych w tym samym wystąpieniu SQL — AlternateWorkloadRestore
-3. Przywracanie bazy danych SQL jako nowej bazy danych w innym wystąpieniu SQL w innej maszynie wirtualnej SQL — AlternateWorkloadRestore
+* Zastępowanie kopii zapasowej bazy danych SQL z innym punktem odzyskiwania — OriginalWorkloadRestore
+* Przywracanie bazy danych SQL jako nowej bazy danych w tym samym wystąpieniu SQL — AlternateWorkloadRestore
+* Przywracanie bazy danych SQL jako nowej bazy danych w innym wystąpieniu SQL w innej maszynie wirtualnej SQL — AlternateWorkloadRestore
 
 Po pobraniu odpowiedniego punktu odzyskiwania (oddzielnego lub dziennika w czasie) Użyj polecenia cmdlet [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS, aby pobrać obiekt konfiguracji odzyskiwania zgodnie z żądanym planem odzyskiwania.
 
@@ -560,12 +561,12 @@ W przypadku zawsze dostępnych grup dostępności SQL upewnij się, że [zarejes
 
 Załóżmy na przykład, że w przypadku usługi SQL AG istnieją dwa węzły: "SQL-Server-0" i "SQL-Server-1" oraz 1 SQL AG DB. Po zarejestrowaniu obu tych węzłów, jeśli użytkownik [wyświetla listę elementów podlegających ochronie](#fetching-sql-dbs), wyświetla następujące składniki
 
-1. Typ elementu, który umożliwia ochronę obiektów SQL AG jako element sqlavailability
-2. Typ elementu chronionego za pomocą bazy danych SQL w formacie SQLDatabase
-3. SQL-Server-0 — typ elementu do ochrony jako SQLInstance
-4. Typ elementu z ochroną SQL-Server-1 jako SQLInstance
-5. Wszystkie domyślne baz danych języka SQL (Master, model, msdb) w ramach typu "SQL-Server-0" objętego ochroną jako SQLDatabase
-6. Wszystkie domyślne baz danych języka SQL (Master, model, msdb) w ramach typu "SQL-Server-1" objętego ochroną jako SQLDatabase
+* Typ elementu, który umożliwia ochronę obiektów SQL AG jako element sqlavailability
+* Typ elementu chronionego za pomocą bazy danych SQL w formacie SQLDatabase
+* SQL-Server-0 — typ elementu do ochrony jako SQLInstance
+* Typ elementu z ochroną SQL-Server-1 jako SQLInstance
+* Wszystkie domyślne baz danych języka SQL (Master, model, msdb) w ramach typu "SQL-Server-0" objętego ochroną jako SQLDatabase
+* Wszystkie domyślne baz danych języka SQL (Master, model, msdb) w ramach typu "SQL-Server-1" objętego ochroną jako SQLDatabase
 
 SQL-Server-0, SQL-Server-1 również będzie wyświetlana jako "AzureVMAppContainer", gdy [są wyświetlane kontenery kopii zapasowych](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 

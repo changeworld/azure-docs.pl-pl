@@ -1,17 +1,14 @@
 ---
 title: Tworzenie strategii w portalu
 description: Za pomocą planów platformy Azure można tworzyć, definiować i wdrażać artefakty za pomocą Azure Portal.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1c2d619a0383cc9542bc6dc3a5f5822f0477237c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978557"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960458"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki Start: Definiowanie i Przypisywanie planu w portalu
 
@@ -256,7 +253,7 @@ Po opublikowaniu planu można go przypisać do subskrypcji. Przypisz utworzony p
    > Dla każdego artefaktu dodanego w ramach grupy zasobów podczas definiowania planu, ten artefakt jest wcięty do dopasowania do grupy zasobów lub obiektu, w którym zostanie wdrożony.
    > Artefakty, które nie przyjmują parametrów lub nie mają parametrów, które mają być zdefiniowane podczas przypisywania, są wyświetlane tylko dla informacji kontekstowych.
 
-1. Na **StorageAccount**szablonu Azure Resource Manager wybierz pozycję **Standard_GRS** dla parametru **storageAccountType** .
+1. Na **StorageAccount**szablonu Azure Resource Manager wybierz **Standard_GRS** dla parametru **storageAccountType** .
 
 1. Zapoznaj się z polem informacji w dolnej części strony, a następnie wybierz pozycję **Przypisz**.
 

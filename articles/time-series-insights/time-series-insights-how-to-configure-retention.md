@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować przechowywanie w środowisku Azure Time Series Insights | Microsoft Docs
-description: W tym artykule opisano sposób konfigurowania przechowywania w środowisku Azure Time Series Insights.
+title: Jak skonfigurować przechowywanie w środowisku — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak skonfigurować przechowywanie w środowisku Azure Time Series Insightsu.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990057"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012596"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurowanie przechowywania w Time Series Insights
 
@@ -34,9 +34,9 @@ Aby uzyskać szczegółowe informacje dotyczące lepszego zrozumienia tych ustaw
 
 ## <a name="configure-data-retention"></a>Konfigurowanie przechowywania danych
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Znajdź istniejące środowisko Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
+1. Znajdź istniejącego środowiska usługi Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
 
 1. W obszarze **Ustawienia** wybierz pozycję **Konfiguruj**.
 

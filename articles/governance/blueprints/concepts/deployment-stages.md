@@ -1,19 +1,16 @@
 ---
-title: Etapy wdrożenia planu
+title: Etapy wdrażania strategii
 description: Zapoznaj się z instrukcjami Azure Blueprint usług, które przechodzą przez proces wdrażania.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978536"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960521"
 ---
-# <a name="stages-of-a-blueprint-deployment"></a>Etapy wdrożenia planu
+# <a name="stages-of-a-blueprint-deployment"></a>Etapy wdrażania strategii
 
 Gdy plan zostanie wdrożony, do wdrożenia zasobów zdefiniowanych w planie jest wykonywana seria akcji podejmowana przez usługę plany platformy Azure. Ten artykuł zawiera szczegółowe informacje o tym, co obejmuje każdy krok.
 
@@ -60,7 +57,7 @@ Po zakończeniu wdrożeń plany odwołują prawa do zarządzanej tożsamości **
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów](resource-locking.md)planu.
-- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).

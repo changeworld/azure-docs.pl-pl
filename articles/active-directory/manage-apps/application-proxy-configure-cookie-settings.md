@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5f1b41e345caafdc465872c948be76c31d55e8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7287e32fbeff751bddf91bed32afeeae84f9378c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928877"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014517"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Ustawienia plików cookie do uzyskiwania dostępu do aplikacji lokalnych w Azure Active Directory
 
@@ -34,9 +34,9 @@ Azure Active Directory (Azure AD) zawiera pliki cookie dostępu i sesji do uzysk
 | Użyj trwałego pliku cookie | **Nie** | **Wartość tak** umożliwia serwerowi proxy aplikacji ustawianie plików cookie dostępu, które nie wygasną po zamknięciu przeglądarki sieci Web. Trwałość obowiązuje do momentu wygaśnięcia tokenu dostępu lub do momentu ręcznego usunięcia trwałych plików cookie przez użytkownika. | **Nie** należy używać ze względu na zagrożenie bezpieczeństwa związane z uwierzytelnianiem użytkowników.<br></br><br></br>Sugerujemy używanie **tak** dla starszych aplikacji, które nie mogą udostępniać plików cookie między procesami. Lepiej jest zaktualizować swoją aplikację, aby obsługiwała udostępnianie plików cookie między procesami zamiast korzystać z trwałych plików cookie. Można na przykład potrzebować trwałych plików cookie, aby użytkownicy mogli otwierać dokumenty pakietu Office w widoku Eksploratora z witryny programu SharePoint. Bez trwałych plików cookie ta operacja może zakończyć się niepowodzeniem, jeśli pliki cookie dostępu nie są współużytkowane przez przeglądarkę, proces Eksploratora i proces biura. |
 
 ## <a name="samesite-cookies"></a>Pliki cookie SameSite
-Począwszy od wersji [Chrome 80](https://support.google.com/chrome/a/answer/7679408?hl=en) i ostatecznie w przeglądarkach wykorzystujących [chrom](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html), pliki cookie, które nie określają atrybutu [SameSite](https://web.dev/samesite-cookies-explained) , będą traktowane tak, jakby były ustawione na **SameSite = swobodny**. Atrybut SameSite deklaruje, jak pliki cookie powinny być ograniczone do kontekstu w tym samym miejscu. Po ustawieniu na swobodny plik cookie jest wysyłany tylko do tych samych żądań witryny lub nawigacji najwyższego poziomu. Jednak serwer proxy aplikacji wymaga zachowania tych plików cookie w kontekście innej firmy, aby zapewnić użytkownikom prawidłowe logowanie w trakcie sesji. Z tego powodu wprowadzamy aktualizacje plików cookie dostępu do serwera proxy aplikacji i sesji w celu uniknięcia niekorzystnego wpływu na tę zmianę. Aktualizacje obejmują:
+Począwszy od wersji Chrome 80 i ostatecznie w przeglądarkach wykorzystujących chrom, pliki cookie, które nie określają atrybutu [SameSite](https://web.dev/samesite-cookies-explained) , będą traktowane tak, jakby były ustawione na **SameSite = swobodny**. Atrybut SameSite deklaruje, jak pliki cookie powinny być ograniczone do kontekstu w tym samym miejscu. Po ustawieniu na swobodny plik cookie jest wysyłany tylko do tych samych żądań witryny lub nawigacji najwyższego poziomu. Jednak serwer proxy aplikacji wymaga zachowania tych plików cookie w kontekście innej firmy, aby zapewnić użytkownikom prawidłowe logowanie w trakcie sesji. Z tego powodu wprowadzamy aktualizacje plików cookie dostępu do serwera proxy aplikacji i sesji w celu uniknięcia niekorzystnego wpływu na tę zmianę. Aktualizacje obejmują:
 
-* Ustawienie atrybutu **SameSite** na **wartość None**— umożliwia poprawne wysyłanie plików cookie dotyczących dostępu do serwera proxy aplikacji i sesji w kontekście innych firm.
+* Ustawianie atrybutu **SameSite** na **none**. Pozwala to na prawidłowe wysyłanie plików cookie do serwera proxy aplikacji i sesji w kontekście innej firmy.
 * Ustawienie opcji **Użyj bezpiecznego pliku cookie** do użycia **tak** jako domyślnego. Program Chrome wymaga również plików cookie, aby można było określić flagę Secure lub zostanie odrzucona. Ta zmiana będzie miała zastosowanie do wszystkich istniejących aplikacji publikowanych za poorednictwem serwera proxy aplikacji. Należy pamiętać, że pliki cookie dostępu do serwera proxy aplikacji mają zawsze ustawioną wartość Secure i są przesyłane tylko za pośrednictwem protokołu HTTPS. Ta zmiana będzie dotyczyć tylko plików cookie sesji.
 
 Te zmiany w plikach cookie aplikacji są uwzględniane w ciągu następnych kilku tygodni przed datą wydania Chrome 80.
@@ -48,12 +48,12 @@ Ponadto, jeśli aplikacja zaplecza zawiera pliki cookie, które muszą być dost
 ## <a name="set-the-cookie-settings---azure-portal"></a>Ustawianie ustawień plików cookie — Azure Portal
 Aby ustawić ustawienia plików cookie przy użyciu Azure Portal:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 2. Przejdź do **Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 3. Wybierz aplikację, dla której chcesz włączyć ustawienie plików cookie.
 4. Kliknij pozycję **serwer proxy aplikacji**.
 5. W obszarze **Ustawienia dodatkowe**Ustaw dla ustawienia plik cookie **wartość tak** lub **nie**.
-6. Kliknij przycisk **Zapisz** , aby zastosować zmiany. 
+6. Kliknij przycisk **Zapisz** Aby zastosować zmiany. 
 
 ## <a name="view-current-cookie-settings---powershell"></a>Wyświetlanie bieżących ustawień plików cookie — PowerShell
 

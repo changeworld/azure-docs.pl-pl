@@ -1,17 +1,14 @@
 ---
 title: Utwórz przypisanie przy użyciu szablonu Menedżer zasobów
 description: W tym artykule omówiono procedurę tworzenia przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu szablonu Menedżer zasobów.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/13/2019
 ms.topic: quickstart
-ms.service: azure-policy
-ms.openlocfilehash: 842b29160e3abaea5edc4bfb4f2e1c345e3ffc85
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0695f0b5993f996ff35296be609d9978f57907f1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254804"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960146"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu szablonu Menedżer zasobów
 
@@ -36,14 +33,14 @@ Oto kopia szablonu:
 
 1. Wybierz następujący obraz, aby zalogować się do Azure Portal i otworzyć szablon:
 
-   [@no__t — 1Deploy szablonu zasad na platformie Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![wdrożyć szablon zasad na platformie Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Wybierz lub wprowadź następujące wartości:
 
    | Nazwa | Wartość |
    |------|-------|
    | Subskrypcja | Wybierz swoją subskrypcję platformy Azure. |
-   | Grupa zasobów | Wybierz pozycję **Utwórz nowy**, określ nazwę, a następnie wybierz przycisk **OK**. Na zrzucie ekranu nazwa grupy zasobów to *mypolicyquickstart @ no__t-1Date w MMDD > RG*. |
+   | Grupa zasobów | Wybierz pozycję **Utwórz nowy**, określ nazwę, a następnie wybierz przycisk **OK**. Na zrzucie ekranu nazwa grupy zasobów to *mypolicyquickstart\<Data w MMDD > RG*. |
    | Lokalizacja | Wybierz region. Na przykład **Środkowe stany USA**. |
    | Nazwa przypisania zasad | Określ nazwę przydziału zasad. Jeśli chcesz, możesz użyć wyświetlania definicji zasad. Na przykład **Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych**. |
    | Nazwa RG | Określ nazwę grupy zasobów, do której chcesz przypisać zasady. W tym przewodniku szybki start Użyj wartości domyślnej **[resourceName (). Name]** . **[resourceing ()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** to funkcja szablonu, która pobiera grupę zasobów. |

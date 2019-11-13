@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815672"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013012"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Bezpieczny dostęp do serwera interfejsu API za pomocą zakresów autoryzowanych adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ W programie Kubernetes serwer interfejsu API odbiera żądania wykonania akcji w
 W tym artykule pokazano, jak używać zakresów adresów IP autoryzowanych przez serwer interfejsu API do ograniczania, które adresy IP i CIDR mogą uzyskać dostęp do płaszczyzny kontroli.
 
 > [!IMPORTANT]
-> W nowych klastrach zakresy adresów IP autoryzowanych przez serwer interfejsu API są obsługiwane tylko przez moduł równoważenia obciążenia *standardowej* jednostki SKU. Istniejące klastry z modułem równoważenia obciążenia *podstawowej* jednostki SKU oraz skonfigurowanymi zakresami autoryzowanych adresów IP serwera interfejsu API będą nadal działały zgodnie z oczekiwaniami. Te istniejące clusers można także uaktualnić i nadal będą działać.
+> W nowych klastrach zakresy adresów IP autoryzowanych przez serwer interfejsu API są obsługiwane tylko przez moduł równoważenia obciążenia *standardowej* jednostki SKU. Istniejące klastry z modułem równoważenia obciążenia *podstawowej* jednostki SKU oraz skonfigurowanymi zakresami autoryzowanych adresów IP serwera interfejsu API będą nadal działały zgodnie z oczekiwaniami. Te istniejące klastry można również uaktualnić i nadal będą działać.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

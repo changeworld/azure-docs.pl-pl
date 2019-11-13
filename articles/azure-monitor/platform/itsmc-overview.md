@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 54f3d76704a1f9bf7fec2f3c6c68c88fffd993b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932267"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936206"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Łączenie platformy Azure z narzędziami narzędzia ITSM przy użyciu łącznik zarządzania usługami IT
 
@@ -66,7 +66,7 @@ Aby można było utworzyć połączenie, należy dodać rozwiązanie łącznik I
    >[!NOTE]
    >W ramach trwającego przejścia z Microsoft Operations Management Suite (OMS) do Azure Monitor, obszary robocze OMS są teraz określane jako Log Analytics obszary robocze.
 
-5. Kliknij przycisk **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 
 Gdy zasób rozwiązania zostanie wdrożony, w prawym górnym rogu okna pojawi się powiadomienie.
 
@@ -91,7 +91,7 @@ Po jego narzędzi Narzędzia ITSM wykonaj następujące kroki, aby utworzyć po�
    ![połączenia narzędzia ITSM](media/itsmc-overview/itsm-connections.png)
 
    Na tej stronie zostanie wyświetlona lista połączeń.
-3. Kliknij pozycję **Dodaj połączenie**.
+3. Kliknij przycisk **Dodaj połączenie**.
 
    ![Dodaj połączenie narzędzia ITSM](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -173,21 +173,21 @@ Poniższe informacje przedstawiają przykłady danych zebranych przez ITSMC:
 > W zależności od typu elementu pracy zaimportowanego do Log Analytics, **ServiceDesk_CL** zawiera następujące pola:
 
 **Element roboczy:** **zdarzenia**  
-ServiceDeskWorkItemType_s = "zdarzenie"
+ServiceDeskWorkItemType_s="Incident"
 
 **Pola**
 
 - ServiceDeskConnectionName
 - Identyfikator działu obsługi
 - Stan
-- Uwagę
+- Pilność
 - Wpływ
 - Priorytet
 - Eskalacja
 - Utworzone przez
 - Rozwiązane przez
 - Zamknięte przez
-- Źródło
+- Element źródłowy
 - Przypisano do
 - Kategoria
 - Tytuł
@@ -196,19 +196,19 @@ ServiceDeskWorkItemType_s = "zdarzenie"
 - Data zamknięcia
 - Data rozwiązania
 - Data ostatniej modyfikacji
-- Computer
+- Computer (Komputer)
 
 
 **Element roboczy:** **żądania zmiany**
 
-ServiceDeskWorkItemType_s = "ChangeRequest"
+ServiceDeskWorkItemType_s="ChangeRequest"
 
 **Pola**
 - ServiceDeskConnectionName
 - Identyfikator działu obsługi
 - Utworzone przez
 - Zamknięte przez
-- Źródło
+- Element źródłowy
 - Przypisano do
 - Tytuł
 - Typ
@@ -216,7 +216,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Stan
 - Eskalacja
 - Stan konfliktu
-- Uwagę
+- Pilność
 - Priorytet
 - Ryzyko
 - Wpływ
@@ -230,7 +230,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Data rozpoczęcia pracy
 - Data zakończenia pracy
 - Opis
-- Computer
+- Computer (Komputer)
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Dane wyjściowe dla zdarzenia usługi ServiceNow
 
@@ -238,7 +238,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 |:--- |:--- |
 | ServiceDeskId_s| Liczba |
 | IncidentState_s | Stan |
-| Urgency_s |Uwagę |
+| Urgency_s |Pilność |
 | Impact_s |Wpływ|
 | Priority_s | Priorytet |
 | CreatedBy_s | Otwarte przez |
@@ -250,9 +250,9 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | Title_s|  Krótki opis |
 | Description_s|  Uwagi |
 | CreatedDate_t|  Otworzyć |
-| ClosedDate_t| napis|
+| ClosedDate_t| Zamknięte|
 | ResolvedDate_t|Klienta|
-| Computer  | Element konfiguracji |
+| Computer (Komputer)  | Element konfiguracji |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Dane wyjściowe żądania zmiany usługi ServiceNow
 
@@ -266,7 +266,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | Type_s|  Typ |
 | Category_s|  Kategoria |
 | CRState_s|  Stan|
-| Urgency_s|  Uwagę |
+| Urgency_s|  Pilność |
 | Priority_s| Priorytet|
 | Risk_s| Ryzyko|
 | Impact_s| Wpływ|
@@ -277,7 +277,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | WorkStartDate_t  | Rzeczywista data rozpoczęcia |
 | WorkEndDate_t | Rzeczywista data zakończenia|
 | Description_s | Opis |
-| Computer  | Element konfiguracji |
+| Computer (Komputer)  | Element konfiguracji |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Rozwiązywanie problemów z połączeniami narzędzia ITSM
@@ -290,8 +290,8 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 2. Jeśli dane z usługi ServiceNow nie są synchronizowane do Log Analytics, upewnij się, że wystąpienie usługi ServiceNow nie jest w stanie uśpienia. Wystąpienia dev usługi ServiceNow czasami przechodzą w stan uśpienia, gdy jest on bezczynny przez długi czas. W przeciwnym razie Zgłoś problem.
 3. Jeśli alerty Log Analytics wyzwalane, ale elementy robocze nie są tworzone w produkcie narzędzia ITSM lub elementy konfiguracji nie są tworzone/połączone z elementami roboczymi lub innymi informacjami ogólnymi, należy poszukać w następujących miejscach:
-   -  ITSMC: rozwiązanie pokazuje podsumowanie połączeń/elementów roboczych/komputerów itp. Kliknij kafelek ze **stanem łącznika**, który przeprowadzi Cię przez **Wyszukiwanie** przy użyciu odpowiedniego zapytania. Aby uzyskać więcej informacji, zobacz rekordy dziennika z LogType_S jako błąd.
-   - Strona **przeszukiwania dzienników** : Wyświetl błędy/powiązane informacje bezpośrednio przy użyciu zapytania `*`ServiceDeskLog_CL`*`.
+   -  ITSMC: rozwiązanie pokazuje podsumowanie połączeń/elementów roboczych/komputerów itp. Kliknij kafelek ze **stanem łącznika**, który przeprowadzi Cię przez **Wyszukiwanie** przy użyciu odpowiedniego zapytania. Aby uzyskać więcej informacji, sprawdź rekordy dziennika z LogType_S jako błąd.
+   - Strona **przeszukiwania dzienników** : Wyświetl błędy/powiązane informacje bezpośrednio przy użyciu `*`kwerendy ServiceDeskLog_CL`*`.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Rozwiązywanie problemów z wdrażaniem aplikacji sieci Web Service Manager
 1.  W przypadku problemów z wdrażaniem aplikacji sieci Web upewnij się, że masz wystarczające uprawnienia w ramach subskrypcji wymienionej do tworzenia/wdrażania zasobów.
@@ -301,7 +301,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
 
-W przypadku dowolnych zapytań lub informacji zwrotnych dotyczących łącznik zarządzania usługami IT skontaktuj się z nami pod adresem [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
+W przypadku dowolnych zapytań lub informacji zwrotnych dotyczących łącznik zarządzania usługami IT skontaktuj się z nami na [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>Następne kroki
 [Dodaj narzędzia ITSM produkty/usługi do łącznik zarządzania usługami IT](../../azure-monitor/platform/itsmc-connections.md).

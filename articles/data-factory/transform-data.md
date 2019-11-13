@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b91d22454d6023094f269b184c845047092b4fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683799"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954265"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w Azure Data Factory
 > [!div class="op_single_selector"]
+> * [Mapowanie przepływu danych](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,7 +35,7 @@ ms.locfileid: "73683799"
 > * [Niestandardowe środowisko .NET](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Omówienie
-W tym artykule opisano działania przekształcania danych w Azure Data Factory, które umożliwiają przekształcanie i przetwarzanie danych pierwotnych w przewidywania i szczegółowe informacje. Działanie transformacji jest wykonywane w środowisku obliczeniowym, takim jak klaster usługi Azure HDInsight lub Azure Batch. Zawiera łącza do artykułów ze szczegółowymi informacjami na temat poszczególnych działań transformacji.
+W tym artykule opisano działania przekształcania danych w Azure Data Factory, które umożliwiają przekształcanie i przetwarzanie danych pierwotnych w przewidywania i szczegółowe informacje na dużą skalę. Działanie transformacji jest wykonywane w środowisku obliczeniowym, takim jak Azure Databricks lub Azure HDInsight. Zawiera łącza do artykułów ze szczegółowymi informacjami na temat poszczególnych działań transformacji.
 
 Data Factory obsługuje następujące działania przekształcania danych, które można dodać do [potoków](concepts-pipelines-activities.md) pojedynczo lub łączyć z innymi działaniami.
 
@@ -49,6 +50,8 @@ Mapowanie przepływów danych to wizualnie zaprojektowane przekształcenia danyc
 Przetwarzanie przepływy danych w Azure Data Factory umożliwiają iteracyjne wykonywanie bezobsługowego przygotowywania danych w skali chmury. Przetwarzanie przepływy danych integrują się z usługą [Power Query online](https://docs.microsoft.com/power-query/) i udostępniają funkcje Power Query M dla danych przetwarzanie w skali chmury za pośrednictwem wykonywania platformy Spark. Aby uzyskać więcej informacji, zobacz [Przetwarzanie Data](wrangling-data-flow-overview.md)Flows.
 
 ## <a name="external-transformations"></a>Przekształcenia zewnętrzne
+
+Opcjonalnie możesz ręcznie przekształceń kodu i zarządzać zewnętrznym środowiskiem obliczeniowym.
 
 ### <a name="hdinsight-hive-activity"></a>Działanie programu Hive w usłudze HDInsight
 Działanie programu Hive w usłudze HDInsight w potoku Data Factory wykonuje zapytania Hive na własnym lub lokalnym klastrze usługi HDInsight opartym na systemie Windows/Linux. Aby uzyskać szczegółowe informacje o tym działaniu, zobacz artykuł dotyczący [działań Hive](transform-data-using-hadoop-hive.md) . 

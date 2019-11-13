@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zabezpieczeń w celu uzyskania dostępu do wersji zapoznawczej Azure Time Series Insights i zarządzania nią | Microsoft Docs
-description: W tym artykule opisano sposób konfigurowania zabezpieczeń i uprawnień jako zasad dostępu do zarządzania i zasad dostępu do danych w celu zabezpieczenia Azure Time Series Insights wersji zapoznawczej.
+title: Konfigurowanie zabezpieczeń w celu udzielenia dostępu do danych — wersja zapoznawcza Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak skonfigurować zabezpieczenia, uprawnienia i zarządzać zasadami dostępu do danych w środowisku Azure Time Series Insights w wersji zapoznawczej.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d835916ab1a9d99149800a50690876080a8c5fd
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f49567b8060be2bf2a9ca2b8a1bdee23f58fdd6b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990165"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012684"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Przyznawanie dostępu do danych w środowisku
 
@@ -24,7 +24,7 @@ W tym artykule omówiono dwa typy zasad dostępu w wersji zapoznawczej Azure Tim
 
 ## <a name="sign-in-to-time-series-insights"></a>Zaloguj się do Time Series Insights
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Znajdź środowisko Time Series Insights. Wprowadź `Time Series` w polu **wyszukiwania** . Wybierz pozycję **środowisko szeregów czasowych** w wynikach wyszukiwania.
 1. Wybierz środowisko usługi Time Series Insights z listy.
 

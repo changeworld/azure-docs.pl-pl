@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489317"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957841"
 ---
-# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Twórz środowiska wielokrotnego użytku i zarządzaj nimi w celu szkolenia i wdrażania za pomocą Azure Machine Learning.
+# <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Ponownie Użyj środowisk do szkolenia & wdrożenia z Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak tworzyć [środowiska](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) Azure Machine Learning i zarządzać nimi, aby umożliwić śledzenie i odtwarzanie zależności oprogramowania w trakcie ich rozwoju.
@@ -41,7 +41,7 @@ Poniżej przedstawiono, że ten sam obiekt środowiska może być używany zaró
 
 ![Diagram środowiska w przepływie pracy uczenia maszynowego](./media/how-to-use-environments/ml-environment.png)
 
-### <a name="types-of-environments"></a>Typy środowisk
+### <a name="types-of-environments"></a>Typy środowiska
 
 Środowiska mogą być szeroko podzielone na trzy kategorie: **nadzorowane**, **zarządzane przez użytkownika** i **zarządzane przez system**.
 
@@ -121,7 +121,7 @@ myenv = Environment.from_pip_requirements(name = "myenv"
 
 Jeśli masz istniejące środowisko Conda na komputerze lokalnym, usługa oferuje rozwiązanie do tworzenia obiektu środowiska. W ten sposób można ponownie użyć lokalnego środowiska interaktywnego na zdalnych uruchomieniach.
 
-Poniższy kod tworzy obiekt środowiska poza istniejącym środowiskiem Conda `mycondaenv` za pomocą metody [from_existing_conda_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) .
+Poniższy kod tworzy obiekt środowiska poza istniejącym środowiskiem Conda `mycondaenv` z metodą [from_existing_conda_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) .
 
 ``` python
 myenv = Environment.from_existing_conda_environment(name = "myenv",
@@ -305,7 +305,7 @@ run = exp.submit(runconfig)
 
 Jeśli nie określisz środowiska w konfiguracji uruchomieniowej, usługa utworzy środowisko domyślne podczas przesyłania przebiegu.
 
-### <a name="train-with-an-estimator"></a>Uczenie z szacowania
+### <a name="train-with-an-estimator"></a>Szkolenie przy użyciu narzędzie do szacowania
 
 Jeśli używasz [szacowania](how-to-train-ml-models.md) do szkolenia, możesz po prostu przesłać wystąpienie szacowania bezpośrednio, ponieważ już hermetyzuje środowisko i element docelowy obliczeń.
 
@@ -359,7 +359,7 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>Przykładowe notesy
+## <a name="example-notebooks"></a>Przykład notesów
 
 Ten [przykładowy Notes](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) rozwija się wraz z pojęciami i metodami pokazanymi w tym artykule.
 

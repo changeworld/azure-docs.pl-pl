@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
-ms.date: 06/28/2019
-ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/08/2019
+ms.openlocfilehash: fc8159b3deba373948f513cb11540695362ecaf1
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574290"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954560"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Wizualizuj przebiegi eksperymentu i metryki za pomocą TensorBoard i Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,16 +41,18 @@ Sposób uruchamiania programu TensorBoard z Azure Machine Learning eksperymenty 
 
         * Ukończ [Samouczek: Zainstaluj środowisko i obszar roboczy](tutorial-1st-experiment-sdk-setup.md) , aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
 
-        * W folderze Samples na serwerze notesu Znajdź dwa ukończone i rozwinięte notesy, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning-uczenie**.
-        * Export-Run-History-to-Run-History. ipynb
-        * tensorboard. ipynb
+        * W folderze Samples na serwerze notesu Znajdź dwa ukończone i rozwinięte notesy, przechodząc do następujących katalogów:
+            * **jak to zrobić — Uczenie maszynowe > uczenie — w przypadku głębokiej nauki > eksportu-Run-History-to-tensorboard > Export-Run-History-to-tensorboard. ipynb**
+
+            * **Instrukcje-to-use-Azure > śledzenie i monitorowanie eksperymentów > tensorboard. ipynb**
 
     * Własny serwer notesu Juptyer
-          * [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) z dodatkowymi `tensorboard`
-          * [Utwórz obszar roboczy Azure Machine Learning](how-to-manage-workspace.md).  
-          * [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
+       * [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) z dodatkowymi `tensorboard`
+        * [Utwórz obszar roboczy Azure Machine Learning](how-to-manage-workspace.md).  
+        * [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
+
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Opcja 1: bezpośrednie wyświetlanie historii uruchamiania w TensorBoard
 
 Ta opcja działa w przypadku eksperymentów, które natywnie wyprowadzają pliki dzienników TensorBoard, takie jak PyTorch, Łańcucher i eksperymenty TensorFlow. Jeśli nie jest to przypadek eksperymentu, zamiast tego użyj [metody `export_to_tensorboard()`](#export) .
@@ -85,7 +87,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-W pliku MNIST ręcznie z kodem mnist_with_summaries. PR należy zauważyć, że istnieją linie, które wywołują `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` itd. Te metody grupują i rejestrują kluczowe metryki dotyczące eksperymentów w historii uruchamiania. `tf.summary.FileWriter()` jest szczególnie ważna w przypadku serializacji danych z zarejestrowanych metryk eksperymentów, co umożliwia TensorBoard wygenerowanie wizualizacji z nich.
+W pliku kodu MNIST ręcznie mnist_with_summaries. PR Zwróć uwagę, że istnieją linie, które wywołują `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` itp. Te metody grupują i rejestrują kluczowe metryki dotyczące eksperymentów w historii uruchamiania. `tf.summary.FileWriter()` jest szczególnie ważna w przypadku serializacji danych z zarejestrowanych metryk eksperymentów, co umożliwia TensorBoard wygenerowanie wizualizacji z nich.
 
  ### <a name="configure-experiment"></a>Konfigurowanie eksperymentu
 
@@ -243,7 +245,7 @@ for alpha in tqdm(alphas):
 
 ### <a name="export-runs-to-tensorboard"></a>Eksportuj przebiegi do TensorBoard
 
-Za pomocą metody [export_to_tensorboard ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py) zestawu SDK możemy wyeksportować historię uruchamiania naszego eksperymentu usługi Azure Machine Learning do dzienników tensorboard, aby można było je wyświetlić za pośrednictwem usługi tensorboard.  
+Dzięki metodzie [export_to_tensorboard ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py) zestawu SDK możemy wyeksportować historię uruchamiania naszego eksperymentu usługi Azure Machine Learning do dzienników tensorboard, aby można było wyświetlić je za pośrednictwem tensorboard.  
 
 W poniższym kodzie tworzymy folder `logdir` w naszym bieżącym katalogu roboczym. Ten folder umożliwia wyeksportowanie historii uruchamiania eksperymentu i dzienników z `root_run` a następnie oznaczenie tego przebiegu jako zakończone. 
 

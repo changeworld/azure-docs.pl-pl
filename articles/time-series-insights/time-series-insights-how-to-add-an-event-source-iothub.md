@@ -1,6 +1,6 @@
 ---
-title: Jak dodać źródło zdarzeń centrum IoT Hub do Azure Time Series Insights | Microsoft Docs
-description: W tym artykule opisano sposób dodawania źródła zdarzeń połączonego z Centrum IoT Hub do środowiska Time Series Insightsowego.
+title: Jak dodać źródło zdarzeń centrum IoT Hub — Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak dodać źródło zdarzeń centrum IoT Hub do środowiska Time Series Insightsowego.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9dd79bacf2d21e0c7e7681e5217d5e874b2b30e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: e564bb6be22b3cee07fca2acd8a4d3ef91698111
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991192"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006894"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń centrum IoT Hub do środowiska Time Series Insights
 
@@ -30,7 +30,7 @@ W tym artykule opisano, jak za pomocą Azure Portal dodać Źródło zdarzenia, 
 * Utwórz [środowisko Azure Time Series Insights](time-series-insights-update-create-environment.md).
 * Utwórz [Centrum IoT Hub przy użyciu Azure Portal](../iot-hub/iot-hub-create-through-portal.md).
 * Usługa IoT Hub musi mieć aktywne zdarzenia komunikatów wysyłane w usłudze.
-* Utwórz dedykowaną grupę odbiorców w centrum IoT Hub, aby można było używać środowiska Time Series Insights. Każde źródło zdarzeń Time Series Insights musi mieć własną dedykowaną grupę odbiorców, która nie jest współużytkowana z żadnym innym klientem. Jeśli wielu czytników zużywa zdarzenia z tej samej grupy odbiorców, wszystkie czytelnicy mogą zobaczyć błędy. Aby uzyskać szczegółowe informacje, zobacz [Przewodnik dla deweloperów platformy Azure IoT Hub](../iot-hub/iot-hub-devguide.md).
+* Utwórz dedykowaną grupę odbiorców w centrum IoT Hub, aby można było używać środowiska Time Series Insights. Każdego źródła zdarzeń usługi Time Series Insights musi mieć swój własny dedykowanej grupy klientów, które nie zostały udostępnione innych odbiorców. Jeśli wielu elementów odczytujących korzystanie ze zdarzeń z tej samej grupy konsumentów, wszystkich czytelników prawdopodobnie błędy. Aby uzyskać szczegółowe informacje, zobacz [Przewodnik dla deweloperów platformy Azure IoT Hub](../iot-hub/iot-hub-devguide.md).
 
 ### <a name="add-a-consumer-group-to-your-iot-hub"></a>Dodawanie grupy odbiorców do centrum IoT Hub
 
@@ -48,13 +48,13 @@ Aby dodać nową grupę odbiorców do centrum IoT:
 
 1. Wybierz pozycję **Zapisz**.
 
-## <a name="add-a-new-event-source"></a>Dodaj nowe źródło zdarzenia
+## <a name="add-a-new-event-source"></a>Dodaj nowe źródło zdarzeń
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. W menu po lewej stronie wybierz pozycję **Wszystkie zasoby**. Wybierz środowisko usługi Time Series Insights.
 
-1. W obszarze **topologia środowiska**wybierz pozycję **źródła zdarzeń**, a następnie wybierz pozycję **Dodaj**.
+1. W obszarze **topologii środowiska**, wybierz opcję **źródła zdarzeń**, a następnie wybierz pozycję **Dodaj**.
 
    [![wybierz źródła zdarzeń, a następnie wybierz przycisk Dodaj](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
 
@@ -64,7 +64,7 @@ Aby dodać nową grupę odbiorców do centrum IoT:
 
 1. Wybierz wartość **opcji importowania**:
 
-   * Jeśli masz już Centrum IoT Hub w jednej z subskrypcji, wybierz opcję **użyj IoT Hub z dostępnych subskrypcji**. Ta opcja jest najprostszym podejściem.
+   * Jeśli masz już Centrum IoT Hub w jednej z subskrypcji, wybierz opcję **użyj IoT Hub z dostępnych subskrypcji**. Ta opcja jest to najłatwiejsza metoda.
    
      [![Wybieranie opcji w okienku Nowy Źródło zdarzenia](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
 
@@ -95,9 +95,9 @@ Aby dodać nową grupę odbiorców do centrum IoT:
 
        | Właściwość | Opis |
        | --- | --- |
-       | Grupa konsumentów Centrum IoT Hub | Grupa konsumentów, która odczytuje zdarzenia z Centrum IoT Hub. Zdecydowanie zalecamy użycie dedykowanej grupy odbiorców dla źródła zdarzeń. |
-       | Format serializacji zdarzeń | Obecnie kod JSON jest jedynym dostępnym formatem serializacji. Komunikaty zdarzeń muszą mieć ten format lub nie można odczytać danych. |
-       | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości przesyłanych do centrum IoT Hub. Ta wartość jest **nazwą** konkretnej właściwości zdarzenia w danych komunikatu, która ma być używana jako sygnatura czasowa zdarzenia. W tej wartości jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas kolejki zdarzeń** w źródle zdarzenia jest używany jako sygnatura czasowa zdarzenia. |
+       | Grupa konsumentów Centrum IoT Hub | Grupa konsumentów, która odczytuje zdarzenia z Centrum IoT Hub. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia. |
+       | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty zdarzeń muszą mieć ten format lub nie można odczytać danych. |
+       | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości przesyłanych do centrum IoT Hub. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
 
 
 1. Dodaj dedykowaną nazwę grupy konsumentów Time Series Insights, która została dodana do centrum IoT Hub.
@@ -108,8 +108,8 @@ Aby dodać nową grupę odbiorców do centrum IoT:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zdefiniuj zasady dostępu do danych](time-series-insights-data-access.md) w celu zabezpieczenia danych.
+* [Zdefiniuj zasady dostępu do danych](time-series-insights-data-access.md) do zabezpieczania danych.
 
-* [Wyślij zdarzenia](time-series-insights-send-events.md) do źródła zdarzeń.
+* [Wysyłanie zdarzeń](time-series-insights-send-events.md) do źródła zdarzenia.
 
-* Dostęp do środowiska w [eksploratorze Time Series Insights](https://insights.timeseries.azure.com).
+* Dostęp do środowiska w [Eksploratora usługi Time Series Insights](https://insights.timeseries.azure.com).

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 9dc26e50e1c0f43e816e422f0fee91a246ea04a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e91a475c7fd7f207c8b38d3da8abe7affd668b2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487596"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013495"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Jednostki i ich cele w LUIS
 
@@ -29,7 +29,7 @@ Istnieją dwa typy jednostek:
 
 Zawsze zaczyna się od jednostki uczeniej maszynowego, ponieważ zapewnia szeroką gamę opcji wyodrębniania danych.
 
-## <a name="entity-compared-to-intent"></a>Jednostka porównana z intencją
+## <a name="entity-compared-to-intent"></a>Jednostki w porównaniu do intencji
 
 Jednostka reprezentuje koncepcję danych w wypowiedź, który ma zostać wyodrębniony. 
 
@@ -41,7 +41,7 @@ Weź pod uwagę następujące 3 wyrażenia długości:
 |`Send Bob a present`|Robert, obecny|Robert jest ważne, aby zakończyć zadanie. Obecny może być wystarczająca informacja lub bot może być konieczne wyjaśnienie, co jest obecne z pytaniem.|
 |`Send Bob a box of chocolates.`|Dwie ważne fragmenty danych, Robert i pudełka czekolady są ważne do zakończenia żądania użytkownika.|
 
-Wypowiedź może zawierać wiele jednostek lub wcale nie. Aplikacja kliencka _może_ potrzebować jednostky do wykonania zadania. 
+Wypowiedź może zawierać wiele jednostek lub brak wcale. Aplikacja kliencka _może_ potrzebować jednostky do wykonania zadania. 
 
 Zgodnie z porównaniem _wymagana_ jest prognoza zamiaru wypowiedź i reprezentuje cały Wypowiedź. LUIS wymaga przykładowego wyrażenia długości zawartego w zamierzeniu. Jeśli podstawowy zamiar wypowiedź nie jest istotny dla aplikacji klienckiej, Dodaj wszystkie wyrażenia długości do zamiaru brak. 
 
@@ -49,20 +49,20 @@ Jeśli okaże się, że w dalszej części cyklu życia aplikacji chcesz przerwa
 
 Nie ma potrzeby korzystania z przewidywanych zamierzeń w aplikacji klienckiej, ale jest ona zwracana jako część odpowiedzi dotyczącej punktu końcowego przewidywania.
 
-## <a name="entities-represent-data"></a>Jednostki reprezentują dane
+## <a name="entities-represent-data"></a>Jednostki reprezentujące dane
 
-Jednostki są danymi, które chcesz ściągnąć z wypowiedź. Może to być nazwa, Data, nazwa produktu lub dowolna Grupa wyrazów. 
+Jednostki są dane, które chcesz ściągnąć z wypowiedź. Może to być nazwy, daty, nazwa produktu lub dowolną grupę słów. 
 
 |Wypowiedź|Jednostka|Dane|
 |--|--|--|
-|Kup 3 bilety do Nowego Jorku|Wstępnie zbudowany numer<br>Location. Destination|3<br>Nowy Jork|
-|Kup bilet od Nowego Jorku do Londyn w dniu 5 marca|Lokalizacja. Źródło<br>Location. Destination<br>Wstępnie zbudowany datetimeV2|Nowy Jork<br>Londyn<br>5 marca 2018 r.|
+|Kup 3 bilety w Nowym Jorku|Liczbę wstępnie<br>Location.Destination|3<br>Nowy Jork|
+|Kup biletu z nowego Jorku do Londynu na 5 marca|Location.Origin<br>Location.Destination<br>Wstępnie utworzone datetimeV2|Nowy Jork<br>Londyn<br>5 marca 2018 r.|
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Jednostki są opcjonalne, ale zdecydowanie zalecane
 
-Podczas gdy wymagane są wymagania, jednostki są opcjonalne. Nie trzeba tworzyć jednostek dla każdej koncepcji w aplikacji, ale tylko dla tych, które są wymagane do podjęcia działania przez aplikację kliencką. 
+Mimo że intencjami wymagane, jednostki są opcjonalne. Nie trzeba tworzyć jednostek dla każdej koncepcji w aplikacji, ale tylko dla tych, które są wymagane do podjęcia działania przez aplikację kliencką. 
 
-Jeśli wyrażenia długości nie mają szczegółowych informacji, bot należy kontynuować, nie trzeba ich dodawać. Gdy Twoja aplikacja została dojrzała, możesz dodać je później. 
+Swoje wypowiedzi nie ma szczegółów, czego potrzebuje bota, aby kontynuować, nie muszą je dodać. Jak dojrzewa aplikacji, możesz je dodać później. 
 
 Jeśli nie masz pewności, jak korzystać z tych informacji, Dodaj kilka typowych wstępnie utworzonych jednostek, takich jak [datetimeV2](luis-reference-prebuilt-datetimev2.md), [porządkowa](luis-reference-prebuilt-ordinal.md), [adres e-mail](luis-reference-prebuilt-email.md)i [numer telefonu](luis-reference-prebuilt-phonenumber.md).
 
@@ -91,11 +91,11 @@ Wybierz jednostkę na podstawie sposobu wyodrębniania danych i sposobu ich repr
 
 |Typ jednostki|Przeznaczenie|
 |--|--|
-|[**Komputer — informacje**](#composite-entity)|Nadrzędne grupowanie jednostek, niezależnie od typu jednostki. Jednostki poznanie maszyn są zgodne z kontekstem w wypowiedź. Sprawia to, że zmiany położenia w przykładzie wyrażenia długości są istotne. |
-|[**Staw**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z **dokładnym dopasowaniem do tekstu**.|
-|[**Wzorzec. any**](#patternany-entity)|Obiekt, na którym koniec jednostki jest trudny do określenia. |
-|[**Wstępnie utworzonych**](#prebuilt-entity)|Jest już szkolony do wyodrębniania określonego rodzaju danych, takich jak adres URL lub wiadomość e-mail. Niektóre z tych wstępnie skompilowanych jednostek są zdefiniowane w projekcie typu "Open Source [" — tekst](https://github.com/Microsoft/Recognizers-Text) . Jeśli określona kultura lub jednostka nie jest obecnie obsługiwana, współtworzy projekt.|
-|[**Wyrażenie regularne**](#regular-expression-entity)|Używa wyrażenia regularnego do **dokładnego dopasowania tekstu**.|
+|[**Komputer — informacje**](tutorial-machine-learned-entity.md)|Nadrzędne grupowanie jednostek, niezależnie od typu jednostki. Jednostki poznanie maszyn są zgodne z kontekstem w wypowiedź. Sprawia to, że zmiany położenia w przykładzie wyrażenia długości są istotne. |
+|[**Staw**](reference-entity-list.md)|Lista elementów i ich synonimy wyodrębnione z **dokładnym dopasowaniem do tekstu**.|
+|[**Wzorzec. any**](reference-entity-pattern-any.md)|Obiekt, na którym koniec jednostki jest trudny do określenia. |
+|[**Prebuilt**](luis-reference-prebuilt-entities.md)|Jest już szkolony do wyodrębniania określonego rodzaju danych, takich jak adres URL lub wiadomość e-mail. Niektóre z tych wstępnie skompilowanych jednostek są zdefiniowane w projekcie typu "Open Source [" — tekst](https://github.com/Microsoft/Recognizers-Text) . Jeśli z określoną kulturę lub jednostki nie jest obecnie obsługiwane, przyczyniają się do projektu.|
+|[**Wyrażenie regularne**](reference-entity-regular-expression.md)|Używa wyrażenia regularnego do **dokładnego dopasowania tekstu**.|
 
 ### <a name="entity-role-defines-context"></a>Rola jednostki definiuje kontekst
 
@@ -111,9 +111,9 @@ W wypowiedź może istnieć wiele jednostek i można go wyodrębnić bez użycia
 
 Jeśli wypowiedź zawiera listę lokalizacji `I want to travel to Seattle, Cairo, and London.`, jest to lista, w której każdy element nie ma dodatkowego znaczenia. 
 
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Jeśli potrzebujesz więcej niż maksymalnej liczby jednostek 
+## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Jeśli potrzebujesz więcej niż maksymalna liczba jednostek 
 
-Jeśli potrzebujesz więcej niż limit, skontaktuj się z pomocą techniczną. Aby to zrobić, Zbierz szczegółowe informacje o systemie, przejdź do witryny sieci Web [Luis](luis-reference-regions.md#luis-website) , a następnie wybierz pozycję **Pomoc techniczna**. Jeśli Twoja subskrypcja platformy Azure obejmuje usługi pomocy technicznej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/). 
+Jeśli potrzebujesz więcej niż limit, skontaktuj się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="entity-prediction-status"></a>Stan przewidywania jednostek
 
@@ -121,6 +121,6 @@ Portal LUIS pokazuje, kiedy jednostka, w przykładzie wypowiedź, ma inne przewi
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z pojęciami dotyczącymi dobrego [wyrażenia długości](luis-concept-utterance.md). 
+Pojęcia dotyczące dobrze [wypowiedzi](luis-concept-utterance.md). 
 
-Zobacz [Dodawanie jednostek](luis-how-to-add-entities.md) , aby dowiedzieć się więcej na temat dodawania jednostek do aplikacji Luis.
+Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.

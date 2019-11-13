@@ -1,17 +1,14 @@
 ---
 title: Importowanie i eksportowanie definicji planów przy użyciu programu PowerShell
 description: Dowiedz się, jak korzystać z definicji planu jako kodu. Udostępnianie, kontrola źródła i zarządzanie nimi za pomocą poleceń eksportu i importu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978441"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960371"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importowanie i eksportowanie definicji planów przy użyciu programu PowerShell
 
@@ -43,7 +40,7 @@ Przed rozpoczęciem eksportowania i importowania planów Przyjrzyjmy się, jak p
 > [!IMPORTANT]
 > Jeśli żadna wartość nie jest przenoszona do parametru **name** polecenia cmdlet `Import-AzBlueprintWithArtifact`, używana jest nazwa folderu, w którym jest przechowywana definicja planu.
 
-Wraz z definicją planu, która musi mieć nazwę `blueprint.json`, są artefaktami, które składają się z definicji planu. Każdy artefakt musi znajdować się w podfolderze o nazwie `artifacts`.
+Wraz z definicją planu, która musi mieć nazwę `blueprint.json`, to artefakty, które składają się z definicji planu. Każdy artefakt musi znajdować się w podfolderze o nazwie `artifacts`.
 Ze sobą struktura definicji planu jako plików JSON w folderach powinna wyglądać następująco:
 
 ```text

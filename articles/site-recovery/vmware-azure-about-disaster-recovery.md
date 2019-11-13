@@ -1,18 +1,17 @@
 ---
-title: Informacje na temat odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+title: Odzyskiwanie po awarii programu VMware z Azure Site Recovery
 description: Ten artykuł zawiera omówienie odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu usługi Azure Site Recovery.
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814311"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954390"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informacje na temat odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure
 
@@ -88,16 +87,16 @@ W tym miejscu należy wykonać następujące czynności:
 Po włączeniu platformy Azure i infrastruktury lokalnej można skonfigurować odzyskiwanie po awarii.
 
 1. Aby zrozumieć składniki, które należy wdrożyć, przejrzyj [architekturę programu VMware i platformy Azure](vmware-azure-architecture.md)oraz [architekturę fizyczną z platformą Azure](physical-azure-architecture.md). Istnieje kilka składników, dlatego ważne jest, aby zrozumieć, jak wszystkie te elementy pasują do siebie.
-2. **Środowisko źródłowe**: Pierwszym krokiem we wdrożeniu jest skonfigurowanie środowiska źródłowego replikacji. Określ, co chcesz replikować, i miejsce, w którym chcesz przeprowadzić replikację.
-3. **Serwer konfiguracji**: Musisz skonfigurować serwer konfiguracji w lokalnym środowisku źródłowym:
+2. **Środowisko źródłowe**: pierwszy krok wdrożenia to skonfigurowanie środowiska źródłowego replikacji. Określ, co chcesz replikować, i miejsce, w którym chcesz przeprowadzić replikację.
+3. **Serwer konfiguracji**: należy skonfigurować serwer konfiguracji w lokalnym środowisku źródłowym:
     - Serwer konfiguracji jest pojedynczą maszyną lokalną. W przypadku odzyskiwania po awarii programu VMware zalecamy wdrożenie go jako maszyny wirtualnej VMware, którą można wdrożyć przy użyciu szablonu OVF do pobrania.
     - Serwer konfiguracji koordynuje komunikację między środowiskiem lokalnym i platformą Azure
     - Kilka innych składników działa na komputerze serwera konfiguracji.
         - Serwer przetwarzania odbiera, optymalizuje i wysyła dane replikacji do konta magazynu pamięci podręcznej na platformie Azure. Obsługuje ona również automatyczną instalację usługi mobilności na maszynach, które mają być replikowane, i przeprowadza automatyczne odnajdowanie maszyn wirtualnych na serwerach VMware.
         - Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
     - Konfiguracja obejmuje rejestrowanie serwera konfiguracji w magazynie, pobieranie serwera MySQL i programu VMware PowerCLI oraz określanie kont utworzonych na potrzeby instalacji automatycznego odnajdywania i usługi mobilności.
-4. **Środowisko docelowe**: Możesz skonfigurować docelowe środowisko platformy Azure, określając subskrypcję platformy Azure i ustawienia sieci.
-5. **Zasady replikacji**: Należy określić sposób replikacji. Ustawienia obejmują między innymi tworzenie i przechowywanie punktów odzyskiwania oraz możliwość tworzenia migawek spójnych na poziomie aplikacji.
+4. **Środowisko docelowe**: skonfigurujesz docelowe środowisko platformy Azure, określając subskrypcję platformy Azure i ustawienia sieci.
+5. **Zasady replikacji**: Określ sposób replikacji. Ustawienia obejmują między innymi tworzenie i przechowywanie punktów odzyskiwania oraz możliwość tworzenia migawek spójnych na poziomie aplikacji.
 6. **Włącz replikację**. Należy włączyć replikację dla maszyn lokalnych. Jeśli utworzono konto w celu zainstalowania usługi mobilności, zostanie ona zainstalowana po włączeniu replikacji dla maszyny. 
 
 *Potrzebujesz dalszej pomocy?*

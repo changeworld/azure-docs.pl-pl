@@ -1,5 +1,5 @@
 ---
-title: Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio | Azure
+title: Dodawanie Azure Active Directory przy użyciu usług połączonych | Azure
 description: Dodawanie Azure Active Directory przy użyciu okna dialogowego Dodawanie usług połączonych programu Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04c8b6bfeaabfa20b9b9b884584d40de7f09e9ac
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 36827401060e330d57b6afac3db0abbde0c27dc2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802477"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941942"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
 
@@ -65,7 +65,7 @@ W tej chwili usługa połączona Active Directory nie obsługuje aplikacji ASP.N
 
 1. Na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)można także zobaczyć domenę Active Directory.
 
-## <a name="how-your-project-is-modified"></a>Jak projekt jest modyfikowany
+## <a name="how-your-project-is-modified"></a>Jak jest modyfikowana projektu
 
 Po dodaniu połączonej usługi Kreator programu Visual Studio dodaje Azure Active Directory i skojarzone odwołania do projektu. Pliki konfiguracji i pliki kodu w projekcie są również modyfikowane w celu dodania obsługi usługi Azure AD. Konkretne modyfikacje wprowadzane przez program Visual Studio zależą od typu projektu. Szczegółowe informacje znajdują się w następujących artykułach:
 

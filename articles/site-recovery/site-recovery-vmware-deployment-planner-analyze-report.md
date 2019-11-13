@@ -1,20 +1,20 @@
 ---
-title: Analizowanie raportu Planista wdrażania usługi Azure Site Recovery na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure | Microsoft Docs
-description: W tym artykule opisano sposób analizowania raportu wygenerowanego przez Planista wdrażania usługi Azure Site Recovery na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure.
+title: Analizuj Planista wdrażania raport dotyczący odzyskiwania po awarii programu VMware z Azure Site Recovery
+description: W tym artykule opisano sposób analizowania raportu wygenerowanego przez Planista wdrażania odzyskiwania na potrzeby odzyskiwania po awarii oprogramowania VMware na platformie Azure przy użyciu Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690723"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961375"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planista wdrażania usługi Azure Site Recovery na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planista wdrażania na potrzeby odzyskiwania po awarii oprogramowania VMware na platformę Azure
 
 Wygenerowany raport programu Microsoft Excel zawiera następujące arkusze:
 ## <a name="on-premises-summary"></a>Podsumowanie środowiska lokalnego
@@ -178,7 +178,7 @@ Może wystąpić sytuacja, w której nie można ustawić przepustowości większ
 
 **Nazwa maszyny wirtualnej**: nazwa lub adres IP maszyny wirtualnej używany w pliku VMListFile podczas generowania raportu. Ta kolumna obejmuje też dyski (VMDK) dołączone do maszyn wirtualnych. Aby wyróżnić maszyny wirtualne vCenter o zduplikowanych nazwach lub adresach IP, nazwy zawierają nazwę hosta ESXi. Wymieniony host ESXi to host, na którym umieszczono maszynę wirtualną odnaleziono w trakcie okresu profilowania.
 
-**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak**\*. **Tak** \* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o dużym współczynniku zmian lub dużej liczbie operacji we/wy należy do kategorii P20 lub P30, ale z powodu swojego rozmiaru jest mapowany w dół do kategorii P10 lub P20. Decyzja o tym, do którego typu dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu. Na przykład:
+**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak**\*. **Tak**\* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o dużym współczynniku zmian lub dużej liczbie operacji we/wy należy do kategorii P20 lub P30, ale z powodu swojego rozmiaru jest mapowany w dół do kategorii P10 lub P20. Decyzja o tym, do którego typu dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu. Na przykład:
 * Mniej niż 128 GB — P10.
 * 128 GB do 256 GB — P15.
 * 256 GB do 512 GB — P20.
@@ -232,8 +232,6 @@ Na przykład jeśli charakterystyki obciążenia dysku powodują umieszczenie go
 * Źródłowe operacje we/wy na sekundę przekraczają obsługiwany limit operacji we/wy na sekundę maszyny wirtualnej wynoszący 80 000 operacji na dysk.
 
 * Średni współczynnik zmian danych przekracza obsługiwane Site Recovery limit liczby zmian danych równy 20 MB/s dla średniego rozmiaru operacji we/wy dysku.
-
-* Średni współczynnik zmian danych przekracza obsługiwany limit współczynnika zmian danych usługi Site Recovery wynoszący 25 MB/s dla średniego rozmiaru operacji we/wy dla maszyny wirtualnej (suma współczynników zmian na wszystkich dyskach).
 
 * Szczytowy współczynnik zmian danych dla wszystkich dysków na maszynie wirtualnej przekracza maksymalny obsługiwany limit szczytowego współczynnika zmian danych usługi Site Recovery wynoszący 54 MB/s na maszynę wirtualną.
 

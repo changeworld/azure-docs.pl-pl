@@ -1,6 +1,6 @@
 ---
-title: Diagnozowanie, rozwiązywanie problemów i rozwiązywanie problemów w Azure Time Series Insights | Microsoft Docs
-description: W tym artykule opisano, jak zdiagnozować, rozwiązać problemy i rozwiązać typowe problemy, które mogą wystąpić w środowisku Azure Time Series Insightsu.
+title: Diagnozowanie, rozwiązywanie problemów i rozwiązywanie problemów — Azure Time Series Insights | Microsoft Docs
+description: W tym artykule opisano sposób diagnozowania i rozwiązywania typowych problemów w środowisku Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991274"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007063"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w środowisku Time Series Insights
 
 W tym artykule opisano niektóre problemy, które mogą wystąpić w środowisku Azure Time Series Insights. Artykuł zawiera potencjalne przyczyny i rozwiązania do rozwiązania.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Dowiedz się więcej na temat typowych wyzwań i rozwiązań związanych z Time Series Insights klientami.</br>
 
@@ -34,13 +34,13 @@ W tym artykule opisano niektóre problemy, które mogą wystąpić w środowisku
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Przyczyna: dane źródłowe zdarzenia nie są w formacie JSON
 
-Azure Time Series Insights obsługuje tylko dane JSON. Aby zapoznać się z przykładami JSON, zobacz [obsługiwane kształty JSON](./how-to-shape-query-json.md).
+Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady kodu JSON, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Przyczyna B: klucz źródła zdarzenia nie ma wymaganego uprawnienia
 
 * W przypadku usługi IoT Hub w usłudze Azure IoT Hub należy podać klucz z uprawnieniami do **łączenia usług** . **Iothubowner** lub zasady **usługi** będą działały, ponieważ oba mają uprawnienia do **łączenia usług** .
 
-   [uprawnienia![IoT Hub usługi Connect](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [uprawnienia ![IoT Hub usługi Connect](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * W przypadku centrum zdarzeń w usłudze Azure Event Hubs należy podać klucz, który ma uprawnienia do **nasłuchiwania** . Każda z zasad **odczytu** lub **zarządzania** będzie działała, ponieważ obie osoby mają uprawnienia do **nasłuchiwania** .
 
@@ -69,7 +69,7 @@ Limit ograniczania jest wymuszany na podstawie typu i pojemności jednostki SKU 
 
 Na poniższej ilustracji przedstawiono środowisko Time Series Insights, które ma jednostkę SKU S1 i pojemność 3. Może on przypadać na 3 000 000 zdarzeń dziennie.
 
-[Bieżąca pojemność jednostki SKU środowiska![](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[Bieżąca pojemność jednostki SKU środowiska ![](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Załóżmy na przykład, że środowisko przejmuje komunikaty z centrum zdarzeń. Dzienny współczynnik transferu danych przychodzących to ~ 67 000 komunikatów. Ta częstotliwość tłumaczy na około 46 komunikatów co minutę. 
 

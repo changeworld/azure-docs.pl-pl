@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620433"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012903"
 ---
 # <a name="access-and-customize-developer-portal"></a>Dostęp i dostosowywanie portalu dla deweloperów
 
@@ -38,7 +38,7 @@ Więcej szczegółowych informacji można znaleźć w portalu dla deweloperów w
 
 > [!WARNING]
 > Portal dla deweloperów jest obecnie wdrażany w usługach API Management Services.
-> Jeśli usługa jest nowo utworzona lub jest usługą warstwy dewelopera, należy mieć już najnowszą wersję. W przeciwnym razie mogą wystąpić problemy (na przykład przy użyciu funkcji publikowania). Wprowadzanie funkcji zakończy się w dniu od poniedziałku do 11 listopada, 2019. 
+> Jeśli usługa jest nowo utworzona lub jest usługą warstwy dewelopera, należy mieć już najnowszą wersję. W przeciwnym razie mogą wystąpić problemy (na przykład przy użyciu funkcji publikowania). Oczekiwanie na zakończenie wdrażania funkcji w piątek, 22 listopada, 2019. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -84,9 +84,9 @@ Przewodnik po stylu jest panelem utworzonym z projektantami. Pozwala na wyświet
 
 Aby edytować wariant, kliknij go i wybierz ikonę ołówka, która pojawia się na górze. Po wprowadzeniu zmian w oknie podręcznym zamknij je.
 
-### <a name="save-button"></a>Przycisk Save (Zapisz)
+### <a name="save-button"></a>Przycisk Zapisz
 
-![Przycisk Save (Zapisz)](media/api-management-howto-developer-portal-customize/save-button.png)
+![Przycisk Zapisz](media/api-management-howto-developer-portal-customize/save-button.png)
 
 Za każdym razem, gdy wprowadzisz zmiany w portalu, musisz zapisać je ręcznie, naciskając przycisk **Zapisz** w menu u dołu. Po zapisaniu zmian zmodyfikowana zawartość jest automatycznie przekazywana do usługi API Management.
 
@@ -101,7 +101,7 @@ Przed udostępnieniem portalu Gościom należy spersonalizować automatycznie wy
 
 Domyślna strona **główna** jest wypełniana zawartością fikcyjną. Można usunąć całe sekcje z zawartością lub zachować strukturę i dostosować elementy po jednym. Zamień wygenerowany tekst i obrazy na własne i upewnij się, że linki wskazują wybrane lokalizacje.
 
-### <a name="layouts"></a>Proponowa
+### <a name="layouts"></a>Układy
 
 Zastąp automatycznie wygenerowany logo na pasku nawigacyjnym własnym obrazem.
 

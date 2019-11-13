@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie replikacji funkcji miejsca do magazynowania bezpośrednie maszyn wirtualnych (S2d) w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania replikacji dla maszyn wirtualnych mających S2D, między regionami platformy Azure do innego za pomocą Site Recovery.
+title: Replikowanie maszyn wirtualnych platformy Azure z systemem Bezpośrednie miejsca do magazynowania przy użyciu Azure Site Recovery
+description: W tym artykule opisano sposób replikowania maszyn wirtualnych platformy Azure z systemem Bezpośrednie miejsca do magazynowania przy użyciu Azure Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,93 +8,93 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
-ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790337"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954462"
 ---
-# <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>Replikowanie maszyn wirtualnych platformy Azure przy użyciu przez bezpośrednie miejsca do magazynowania magazynu do innego regionu platformy Azure
+# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikowanie maszyn wirtualnych platformy Azure z systemem Bezpośrednie miejsca do magazynowania do innego regionu
 
-W tym artykule opisano, jak włączyć odzyskiwanie po awarii maszyn wirtualnych platformy Azure uruchomionej funkcji miejsca do magazynowania bezpośrednich.
+W tym artykule opisano sposób włączania odzyskiwania po awarii maszyn wirtualnych platformy Azure z uruchomioną funkcją bezpośrednie miejsca do magazynowania.
 
 >[!NOTE]
->Tylko punkty odzyskiwania spójnego na poziomie awarii są obsługiwane dla klastrów bezpośrednich miejsc do magazynowania magazynu.
+>W przypadku klastrów bezpośrednich miejsc do magazynowania są obsługiwane tylko spójne punkty odzyskiwania.
 >
 
 ## <a name="introduction"></a>Wprowadzenie 
-[Miejsca do magazynowania bezpośrednie (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) jest magazynu zdefiniowanego programowo, która umożliwia tworzenie [klastrów gościa](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) na platformie Azure.  Klaster gościa w systemie Microsoft Azure jest klaster trybu Failover składające się z maszyn wirtualnych IaaS. Umożliwia ona hostowana obciążenia maszyn wirtualnych do trybu failover w klastrach gości, osiągnięcie wyższej dostępności umowy SLA dla aplikacji niż jednej maszyny Wirtualnej platformy Azure może zapewnić. Jest to przydatne w scenariuszach, w którym maszyny Wirtualnej obsługującego aplikacja o krytycznym znaczeniu, takich jak bazy danych SQL lub skalowania serwer plików itp.
+[Bezpośrednie miejsca do magazynowania (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) to magazyn zdefiniowany przez oprogramowanie, który umożliwia tworzenie [klastrów Gości](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) na platformie Azure.  Klaster gościa w Microsoft Azure to klaster trybu failover składający się z maszyn wirtualnych IaaS. Umożliwia obsługę obciążeń hostowanych maszyn wirtualnych w trybie failover w przypadku klastrów gościa o najwyższej dostępności dla aplikacji niż w przypadku pojedynczej maszyny wirtualnej platformy Azure. Jest to przydatne w scenariuszach, w których maszyna wirtualna obsługuje krytyczne aplikacje, takie jak SQL lub serwer plików skalowalny w poziomie itp.
 
-## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Bezpośrednimi miejscami do magazynowania po awarii odzyskiwania usługi Azure Virtual Machines przy użyciu magazynu
-W typowym scenariuszu może być maszyn wirtualnych klastra gościa na platformie Azure pod kątem odporności wyższe aplikacji takich jak skalowanie w poziomie serwer plików. Chociaż może to zapewnić wyższą dostępność Twojej aplikacji, chcesz chronić te aplikacje przy użyciu Site Recovery dla jakiekolwiek niepowodzenie poziomu regionu. Usługa Site Recovery replikuje dane z jednego regionu do innego regionu platformy Azure i zapewnia klaster w regionie odzyskiwania po awarii w przypadku przejścia w tryb failover.
+## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Odzyskiwanie po awarii platformy Azure Virtual Machines przy użyciu funkcji bezpośrednie miejsca do magazynowania
+Typowym scenariuszem może być klaster gościa maszyn wirtualnych na platformie Azure w celu uzyskania większej odporności aplikacji, takiej jak serwer plików skalowalny w poziomie. Chociaż może to zapewnić wysoką dostępność aplikacji, należy chronić te aplikacje przy użyciu Site Recovery dla dowolnego błędu poziomu regionu. Site Recovery replikuje dane z jednego regionu do innego regionu platformy Azure i łączy klaster w regionie odzyskiwania po awarii w przypadku przejścia w tryb failover.
 
-Poniższy diagram przedstawia graficznie przedstawiają dwa klastra trybu failover maszyny wirtualne platformy Azure przy użyciu magazynu spacje bezpośrednich.
+Na poniższym diagramie przedstawiono reprezentację obrazu dwóch klastrów trybu failover maszyn wirtualnych platformy Azure przy użyciu funkcji bezpośrednie miejsca do magazynowania.
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
  
-- Dwie maszyny wirtualne platformy Azure w klastrze pracy awaryjnej Windows i każda maszyna wirtualna ma co najmniej dwóch dysków z danymi.
-- S2D synchronizuje dane na dysku danych i prezentuje zsynchronizowane magazynu jako puli magazynów.
-- Pula magazynów przedstawia jako udostępniony wolumin klastra (CSV) do klastra trybu failover.
-- Klaster trybu Failover używa CSV dla dysków z danymi.
+- Dwie maszyny wirtualne platformy Azure w klastrze trybu failover systemu Windows i każda maszyna wirtualna mają co najmniej dwa dyski danych.
+- Funkcja S2D synchronizuje dane na dysku danych i przedstawia zsynchronizowany magazyn jako pulę magazynów.
+- Pula magazynów prezentuje jako udostępniony wolumin klastra (CSV) klaster trybu failover.
+- Klaster trybu failover używa woluminu CSV dla dysków danych.
 
 **Zagadnienia dotyczące odzyskiwania po awarii**
 
-1. Gdy konfigurujesz [monitora w chmurze](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) klastra, należy zachować monitora w regionie odzyskiwania po awarii.
-2. Jeśli w tryb failover maszyn wirtualnych do podsieci w regionie odzyskiwania po awarii, który jest inny niż region źródłowy adres IP klastra musi można zmienić po zakończeniu trybu failover.  Aby zmienić adres IP klastra, należy użyć usługi ASR [skryptu planu odzyskiwania.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
-[Przykładowy skrypt](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) można wykonać polecenia wewnątrz maszyny Wirtualnej przy użyciu rozszerzenia niestandardowego skryptu 
+1. Podczas konfigurowania [monitora chmury](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) dla klastra należy zachować monitor w regionie odzyskiwania po awarii.
+2. Jeśli przejdziesz do trybu failover maszyny wirtualne w podsieci w regionie odzyskiwania po awarii, który różni się od regionu źródłowego, należy zmienić adres IP klastra po przejściu w tryb pracy awaryjnej.  Aby zmienić adres IP klastra, należy użyć [skryptu planu odzyskiwania](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation) usługi ASR.</br>
+[Przykładowy skrypt](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) służący do wykonywania polecenia wewnątrz maszyny wirtualnej przy użyciu rozszerzenia niestandardowego skryptu 
 
-### <a name="enabling-site-recovery-for-s2d-cluster"></a>Włączanie Site Recovery dla klastra S2D:
+### <a name="enabling-site-recovery-for-s2d-cluster"></a>Włączanie Site Recovery dla klastra programu S2D:
 
-1. Wewnątrz odzyskiwania usługi magazynu, kliknij przycisk "+ Replikuj"
-1. Zaznacz wszystkie węzły w klastrze i uczynić je częścią [grupa spójności wielu maszyn wirtualnych](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
-1. Wybierz zasady replikacji z spójność aplikacji poza * (tylko Obsługa spójności awarii jest dostępna)
-1. Włączanie replikacji
+1. W magazynie usługi Recovery Services kliknij pozycję "+ Replikuj"
+1. Zaznacz wszystkie węzły w klastrze i uczyń je częścią [grupy spójności z obsługą wiele maszyn wirtualnych](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
+1. Wybierz zasady replikacji z zachowaniem spójności aplikacji * (dostępna jest tylko Obsługa spójności awarii)
+1. Włącz replikację
 
    ![Ochrona storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. Przejdź do zreplikowane elementy i zobaczyć stan maszyny wirtualnej. 
-3. Maszyny wirtualne są wprowadzenie chronione i są także wyświetlane jako część grupy spójności wielu maszyn wirtualnych.
+2. Przejdź do pozycji zreplikowane elementy i zobaczysz stan maszyny wirtualnej. 
+3. Obie maszyny wirtualne są chronione i są również wyświetlane jako część grupy spójności z obsługą kilku maszyn wirtualnych.
 
    ![Ochrona storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
-## <a name="creating-a-recovery-plan"></a>Trwa tworzenie planu odzyskiwania
-Plan odzyskiwania obsługuje sekwencjonowania różnych warstw w aplikacji wielowarstwowej podczas przejścia w tryb failover. Sekwencjonowanie pomaga w utrzymaniu spójności aplikacji. Po utworzeniu planu odzyskiwania w przypadku aplikacji sieci web w wielowarstwowych pełną kroki opisane w [utworzyć plan odzyskiwania przy użyciu usługi Site Recovery](site-recovery-create-recovery-plans.md).
+## <a name="creating-a-recovery-plan"></a>Tworzenie planu odzyskiwania
+Plan odzyskiwania obsługuje sekwencjonowanie różnych warstw w aplikacji wielowarstwowej podczas pracy w trybie failover. Sekwencjonowanie pomaga zachować spójność aplikacji. Po utworzeniu planu odzyskiwania dla wielowarstwowej aplikacji sieci Web wykonaj kroki opisane w temacie [Tworzenie planu odzyskiwania przy użyciu Site Recovery](site-recovery-create-recovery-plans.md).
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grupy trybu failover
+### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grup trybu failover
 
-1.  Tworzenie planu odzyskiwania, dodając maszyny wirtualne.
-2.  Kliknij przycisk "Dostosuj", aby pogrupować maszyny wirtualne. Domyślnie wszystkie maszyny wirtualne są częścią "Grupa 1".
+1.  Utwórz plan odzyskiwania, dodając maszyny wirtualne.
+2.  Kliknij przycisk "Dostosuj", aby zgrupować maszyny wirtualne. Domyślnie wszystkie maszyny wirtualne są częścią grupy 1.
 
 
-### <a name="add-scripts-to-the-recovery-plan"></a>Dodaj skrypty do planu odzyskiwania
-Dla Twoich aplikacji działać poprawnie konieczne może być czy niektóre operacje na maszynach wirtualnych Azure po przełączeniu w tryb failover lub podczas testowania trybu failover. Można zautomatyzować niektóre operacje po przejściu do trybu failover. Na przykład w tym miejscu jest podłączany modułu równoważenia obciążenia i zmiana adres IP klastra.
+### <a name="add-scripts-to-the-recovery-plan"></a>Dodawanie skryptów do planu odzyskiwania
+Aby aplikacje działały prawidłowo, może być konieczne wykonanie pewnych operacji na maszynach wirtualnych platformy Azure po przejściu do trybu failover lub w trakcie testu pracy w trybie failover. Można zautomatyzować niektóre operacje wykonywane po przejściu w tryb failover. Można na przykład dołączać moduł równoważenia obciążenia i zmieniać adres IP klastra.
 
 
 ### <a name="failover-of-the-virtual-machines"></a>Tryb failover maszyn wirtualnych 
-Węzły maszyn wirtualnych musi być w trybie Failover przy użyciu [planu odzyskiwania usługi ASR](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) 
+Oba węzły maszyn wirtualnych muszą przełączać się w tryb failover przy użyciu [planu odzyskiwania usługi ASR](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) . 
 
 ![Ochrona storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
-1.  W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
-2.  Wybierz plan odzyskiwania, który został utworzony.
+1.  W Azure Portal wybierz swój magazyn Recovery Services.
+2.  Wybierz utworzony plan odzyskiwania.
 3.  Wybierz pozycję **Test pracy w trybie failover**.
-4.  Aby rozpocząć proces testu trybu failover, wybierz punkt odzyskiwania i usługa Azure virtual network.
-5.  Po skonfigurowaniu dodatkowej środowiska wykonywać operacji sprawdzania poprawności.
-6.  Po zakończeniu walidacji można wyczyścić środowisko trybu failover wybierz **wyczyść test pracy awaryjnej**.
+4.  Aby rozpocząć proces testowego przełączania do trybu failover, wybierz punkt odzyskiwania i sieć wirtualną platformy Azure.
+5.  Gdy środowisko pomocnicze jest w pełni, wykonaj walidację.
+6.  Po zakończeniu walidacji w celu oczyszczenia środowiska trybu failover wybierz pozycję **Oczyść test pracy w trybie failover**.
 
-Aby uzyskać więcej informacji, zobacz [testowy tryb failover na platformie Azure w usłudze Site Recovery](site-recovery-test-failover-to-azure.md).
+Aby uzyskać więcej informacji, zobacz [test pracy w trybie failover na platformie Azure w Site Recovery](site-recovery-test-failover-to-azure.md).
 
 ## <a name="run-a-failover"></a>Uruchamianie trybu failover
 
-1.  W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
+1.  W Azure Portal wybierz swój magazyn Recovery Services.
 2.  Wybierz plan odzyskiwania, który został utworzony dla aplikacji SAP.
 3.  Wybierz pozycję **Tryb failover**.
-4.  Aby rozpocząć proces pracy awaryjnej, wybierz punkt odzyskiwania.
+4.  Aby rozpocząć proces trybu failover, wybierz punkt odzyskiwania.
 
-Aby uzyskać więcej informacji, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).
-## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej informacji, zobacz [tryb failover w Site Recovery](site-recovery-failover.md).
+## <a name="next-steps"></a>Następne kroki
 
 [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) o uruchamianiu powrotu po awarii.

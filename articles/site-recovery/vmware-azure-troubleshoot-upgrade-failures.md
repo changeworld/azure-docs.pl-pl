@@ -1,18 +1,18 @@
 ---
-title: Rozwiązywanie problemów z błędami uaktualniania dostawcy Site Recovery Microsoft Azure | Microsoft Docs
-description: Zrozumienie i
+title: Rozwiązywanie problemów z aktualizacją dostawcy Site Recovery Microsoft Azure
+description: Rozwiązywanie typowych problemów podczas uaktualniania dostawcy Site Recovery Microsoft Azure
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 02/05/2019
+ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 6bb8263e7291506be6af7d5af7eda5786274d73c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 73309103d422391aae3d72e3b0267d5d5a85515a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972618"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953770"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Rozwiązywanie problemów z błędami uaktualniania dostawcy Microsoft Azure Site Recovery
 
@@ -30,11 +30,11 @@ Aby przeprowadzić uaktualnienie, wykonaj następujące czynności:
    1. W sekcji "linki do obecnie obsługiwanych pakietów zbiorczych aktualizacji" [aktualizacji usługi w Azure Site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) artykule wybierz dostawcę, do którego chcesz przeprowadzić uaktualnienie.
    2. Na stronie zbiorczej Znajdź sekcję **Informacje o aktualizacji** i Pobierz pakiet zbiorczy aktualizacji dla Microsoft Azure Site Recovery Unified Setup.
 
-2. Otwórz wiersz polecenia i przejdź do folderu, do którego został pobrany plik ujednoliconej konfiguracji. Wyodrębnij pliki Instalatora z pobrania przy użyciu następującego polecenia, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;folder Path dla wyodrębnionych plików @ no__t-1.
+2. Otwórz wiersz polecenia i przejdź do folderu, do którego został pobrany plik ujednoliconej konfiguracji. Wyodrębnij pliki Instalatora z pobrania przy użyciu następującego polecenia, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ścieżka folderu dla wyodrębnionych plików&gt;.
     
     Przykładowe polecenie:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 
 3. W wierszu polecenia przejdź do folderu, do którego wyodrębniono pliki, i uruchom następujące polecenia instalacji:
    
@@ -48,16 +48,16 @@ Aby uaktualnienie zakończyło się pomyślnie, nie można zmienić nazwy folder
 
 Aby rozwiązać ten problem.
 
-1. Uruchom Edytor rejestru (regedit. exe) i Otwórz gałąź HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
-1. Sprawdź wartość klucza `Build_Version`. Jeśli jest ustawiona na najnowszą wersję, Zmniejsz numer wersji. Na przykład jeśli Najnowsza wersja to 9,22. \* i ustawionym kluczem `Build_Version` na tę wartość, Zmniejsz ją do 9,21. \*.
+1. Uruchom Edytor rejestru (regedit. exe) i Otwórz gałąź HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
+1. Sprawdź wartość klucza `Build_Version`. Jeśli jest ustawiona na najnowszą wersję, Zmniejsz numer wersji. Na przykład jeśli Najnowsza wersja to 9,22.\* i klucz `Build_Version` ustawiony na tę wartość, a następnie Zmniejsz go do 9,21.\*.
 1. Pobierz najnowszą Microsoft Azure Site Recovery ujednoliconą konfigurację:
    1. W sekcji "linki do obecnie obsługiwanych pakietów zbiorczych aktualizacji" [aktualizacji usługi w Azure Site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) artykule wybierz dostawcę, do którego chcesz przeprowadzić uaktualnienie.
    2. Na stronie zbiorczej Znajdź sekcję **Informacje o aktualizacji** i Pobierz pakiet zbiorczy aktualizacji dla Microsoft Azure Site Recovery Unified Setup.
-1. Otwórz wiersz polecenia i przejdź do folderu, do którego pobrano plik ujednoliconej konfiguracji i Wyodrębnij pliki instalacji z pobrania przy użyciu następującego polecenia, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;folder Path dla wyodrębnionego Pliki @ no__t-1.
+1. Otwórz wiersz polecenia i przejdź do folderu, do którego pobrano plik ujednoliconej konfiguracji i Wyodrębnij pliki instalacji z pobrania przy użyciu następującego polecenia, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ścieżka folderu dla wyodrębnionych plików&gt;.
 
     Przykładowe polecenie:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 
 1. W wierszu polecenia przejdź do folderu, do którego wyodrębniono pliki, i uruchom następujące polecenia instalacji:
    

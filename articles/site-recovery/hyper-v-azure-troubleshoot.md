@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z funkcją Hyper-V do odzyskiwania po awarii platformy Azure przy użyciu Azure Site Recovery | Microsoft Docs
+title: Rozwiązywanie problemów z odzyskiwaniem po awarii funkcji Hyper-V za pomocą Azure Site Recovery
 description: Opisuje sposób rozwiązywania problemów z odzyskiwaniem po awarii za pomocą funkcji Hyper-V do replikacji platformy Azure przy użyciu Azure Site Recovery
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 2cf43f8a235b112cfcf1fc6c9dba626a5a0c9b7e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828392"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961482"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z replikacją i trybem failover funkcji Hyper-V
 
@@ -42,7 +42,7 @@ Rozwiązywanie problemów ze wstępną i trwającą replikacją:
 1. Upewnij się, że korzystasz z [najnowszej wersji](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) usług Site Recovery Services.
 2. Sprawdź, czy replikacja została wstrzymana:
    - Sprawdź stan kondycji maszyny wirtualnej w konsoli Menedżera funkcji Hyper-V.
-   - Jeśli jest to krytyczne, kliknij prawym przyciskiem myszy maszynę wirtualną, >**kondycja replikacji widoku** **replikacji** > .
+   - Jeśli jest to krytyczne, kliknij prawym przyciskiem myszy maszynę wirtualną > **replikacja** > **Wyświetl kondycję replikacji**.
    - Jeśli replikacja jest wstrzymana, kliknij pozycję **Wznów replikację**.
 3. Sprawdź, czy są uruchomione wymagane usługi. Jeśli nie, uruchom je ponownie.
     - W przypadku replikacji funkcji Hyper-V bez programu VMM Sprawdź, czy te usługi są uruchomione na hoście funkcji Hyper-V:
@@ -80,7 +80,7 @@ Ograniczenia przepustowości sieci mogą mieć wpływ na replikację. Rozwiązyw
 
 2. Kliknij pozycję **Wyświetl kondycję replikacji** , aby wyświetlić szczegóły:
 
-    - Jeśli replikacja jest wstrzymana, kliknij prawym przyciskiem myszy maszynę wirtualną > > replikacja**Wznów replikację**.
+    - Jeśli replikacja jest wstrzymana, kliknij prawym przyciskiem myszy maszynę wirtualną > **replikacja** > **Wznów replikację**.
     - Jeśli maszyna wirtualna na hoście funkcji Hyper-V skonfigurowana w Site Recovery jest migrowana do innego hosta funkcji Hyper-V w tym samym klastrze lub do komputera autonomicznego, nie ma to wpływu na replikację maszyny wirtualnej. Po prostu Sprawdź, czy nowy host funkcji Hyper-V spełnia wszystkie wymagania wstępne i czy jest skonfigurowany w Site Recovery.
 
 ## <a name="app-consistent-snapshot-issues"></a>Problemy dotyczące migawek spójnych na poziomie aplikacji
@@ -107,12 +107,12 @@ Migawka spójna na poziomie aplikacji to migawka danych aplikacji znajdujących 
     ![Dysk dynamiczny](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. Sprawdź, czy dysk iSCSI nie jest podłączony do maszyny wirtualnej. Ta funkcja nie jest obsługiwana.
-5. Sprawdź, czy usługa tworzenia kopii zapasowych jest włączona. Sprawdź, czy jest włączona w**usługach integracji** >  **ustawień funkcji Hyper-V**.
+5. Sprawdź, czy usługa tworzenia kopii zapasowych jest włączona. Sprawdź, czy jest ona włączona w **ustawieniach funkcji Hyper-V** > **usług integracji**.
 6. Upewnij się, że nie ma żadnych konfliktów z aplikacjami korzystającymi z migawek VSS. Jeśli wiele aplikacji próbuje wykonać migawki VSS w tym samym czasie, mogą wystąpić konflikty. Jeśli na przykład aplikacja kopii zapasowej pobiera migawki usługi VSS, gdy Site Recovery jest zaplanowana przez zasady replikacji w celu utworzenia migawki.   
 7. Sprawdź, czy maszyna wirtualna ma dużą szybkość zmian:
     - Można zmierzyć dzienny współczynnik zmian danych dla maszyn wirtualnych gościa przy użyciu liczników wydajności na hoście funkcji Hyper-V. Aby zmierzyć współczynnik zmian danych, Włącz następujący licznik. Agreguj próbkę tej wartości na dyskach maszyn wirtualnych przez 5-15 minut, aby uzyskać zmiany w maszynie wirtualnej.
-        - Kategorii "Wirtualne urządzenie magazynujące funkcji Hyper-V"
-        - Przeciw "Bajty zapisu/s"</br>
+        - Kategoria: "wirtualne urządzenie magazynujące funkcji Hyper-V"
+        - Licznik: "Bajty zapisu/s"</br>
         - Ta częstotliwość zmian danych zostanie zwiększona lub pozostanie na wysokim poziomie, w zależności od tego, jak zajęta jest maszyna wirtualna lub jej aplikacje.
         - Średni współczynnik zmian danych na dysku źródłowym to 2 MB/s dla magazynu w warstwie Standardowa dla Site Recovery. [Dowiedz się więcej](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Dodatkowo można [sprawdzić cele skalowalności magazynu](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
@@ -123,29 +123,29 @@ Migawka spójna na poziomie aplikacji to migawka danych aplikacji znajdujących 
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>Usługa VSS kończy się niepowodzeniem wewnątrz hosta funkcji Hyper-V
 
 1. Sprawdź dzienniki zdarzeń pod kątem błędów i zaleceń usługi VSS:
-    - Na serwerze hosta funkcji Hyper-v Otwórz dziennik zdarzeń administratora funkcji Hyper-v w **Podgląd zdarzeń** >  > **Dzienniki aplikacji i usług** **Microsoft** > **Windows** > **Hyper-v**  >  **Administrator**.
+    - Na serwerze hosta funkcji Hyper-V Otwórz dziennik zdarzeń administratora funkcji Hyper-V w **Podgląd zdarzeń** > **Dzienniki aplikacji i usług** > **Microsoft** > **Windows** > **funkcji Hyper-V** > **administrator**.
     - Sprawdź, czy istnieją jakieś zdarzenia wskazujące na błędy migawek spójnych na poziomie aplikacji.
-    - Typowy błąd to: "Funkcja Hyper-V nie może wygenerować zestawu migawek VSS dla maszyny wirtualnej" XYZ ": W składniku zapisywania Wystąpił błąd nieprzejściowy. Ponowne uruchomienie usługi VSS może rozwiązać problemy, jeśli usługa nie odpowiada. "
+    - Typowym błędem jest: "funkcja Hyper-V nie może wygenerować zestawu migawek VSS dla maszyny wirtualnej" XYZ ": moduł zapisujący napotkał błąd nieprzejściowy. Ponowne uruchomienie usługi VSS może rozwiązać problemy, jeśli usługa nie odpowiada. "
 
 2. Aby wygenerować migawki usługi VSS dla maszyny wirtualnej, sprawdź, czy usługi integracji funkcji Hyper-V są zainstalowane na maszynie wirtualnej i czy usługa integracji kopii zapasowej (VSS) jest włączona.
-    - Upewnij się, że usługi/demony VSS usług Integration Services są uruchomione na gościu i są w stanie prawidłowym.
-    - Można to sprawdzić w sesji programu PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V za pomocą polecenia **get\<-VMIntegrationService-VMName VMName >-Name VSS** można także uzyskać te informacje, logując się do maszyny wirtualnej gościa. [Dowiedz się więcej](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Upewnij się, że usługi/demony VSS usług Integration Services są uruchomione na gościu i są w **stanie** prawidłowym.
+    - Można to sprawdzić w sesji programu PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V za pomocą polecenia **Get-VMIntegrationService-VMName\<VMName >-Name VSS** można także uzyskać te informacje, logując się do maszyny wirtualnej gościa. [Dowiedz się więcej](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Upewnij się, że usługi integracji kopii zapasowej/VSS na maszynie wirtualnej są uruchomione i w dobrej kondycji. W przeciwnym razie uruchom ponownie te usługi i usługę żądającą kopiowania woluminów w tle funkcji Hyper-V na serwerze hosta funkcji Hyper-V.
 
 ### <a name="common-errors"></a>Typowe błędy
 
 **Kod błędu:** | **Komunikat** | **Szczegóły**
 --- | --- | ---
-**0x800700EA** | "Funkcja Hyper-V nie może wygenerować zestawu migawek VSS dla maszyny wirtualnej: Dostępne są więcej danych. (0x800700EA). Generowanie zestawu migawek VSS może zakończyć się niepowodzeniem, jeśli operacja tworzenia kopii zapasowej jest w toku.<br/><br/> Operacja replikacji maszyny wirtualnej nie powiodła się: Dostępne są więcej danych ". | Sprawdź, czy na maszynie wirtualnej jest włączony dysk dynamiczny. Ta funkcja nie jest obsługiwana.
+**0x800700EA** | "Funkcja Hyper-V nie może wygenerować zestawu migawek VSS dla maszyny wirtualnej: dostępne są więcej danych. (0x800700EA). Generowanie zestawu migawek VSS może zakończyć się niepowodzeniem, jeśli operacja tworzenia kopii zapasowej jest w toku.<br/><br/> Operacja replikacji maszyny wirtualnej nie powiodła się: dostępne są więcej danych ". | Sprawdź, czy na maszynie wirtualnej jest włączony dysk dynamiczny. Ta funkcja nie jest obsługiwana.
 **0x80070032** | "Obiekt żądający kopiowania woluminów w tle funkcji Hyper-V nie może nawiązać połączenia z maszyną wirtualną <./VMname >, ponieważ wersja nie jest zgodna z wersją oczekiwaną przez funkcję Hyper-V | Sprawdź, czy są zainstalowane najnowsze aktualizacje systemu Windows.<br/><br/> [Uaktualnij](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) do najnowszej wersji usług Integration Services.
 
 
 
 ## <a name="collect-replication-logs"></a>Zbieranie dzienników replikacji
 
-Wszystkie zdarzenia replikacji funkcji Hyper-V są rejestrowane w dzienniku Hyper-V-VMMS\Admin, który znajduje się w dziennikach **aplikacji i usług** > **Microsoft** > **Windows**. Ponadto można włączyć dziennik analityczny dla usługi zarządzania maszynami wirtualnymi funkcji Hyper-V w następujący sposób:
+Wszystkie zdarzenia replikacji funkcji Hyper-V są rejestrowane w dzienniku Hyper-V-VMMS\Admin znajdującym się w dziennikach **aplikacji i usług** > **Microsoft** > **Windows**. Ponadto można włączyć dziennik analityczny dla usługi zarządzania maszynami wirtualnymi funkcji Hyper-V w następujący sposób:
 
-1. Udostępnij dzienniki analityczne i debugowania w Podgląd zdarzeń. Aby udostępnić dzienniki, w Podgląd zdarzeń kliknij pozycję **Wyświetl** > **Pokaż dzienniki analityczne i debugowania.** Dziennik analityczny jest wyświetlany w obszarze **Hyper-V — usługa zarządzania**kluczami.
+1. Udostępnij dzienniki analityczne i debugowania w Podgląd zdarzeń. Aby udostępnić dzienniki, w Podgląd zdarzeń kliknij pozycję **wyświetl** > **Pokaż dzienniki analityczne i debugowania.** Dziennik analityczny jest wyświetlany w obszarze **Hyper-V — usługa zarządzania**kluczami.
 2. W okienku **Akcje** kliknij pozycję **Włącz dziennik**. 
 
     ![Włącz dziennik](media/hyper-v-azure-troubleshoot/enable-log.png)
@@ -158,10 +158,10 @@ Wszystkie zdarzenia replikacji funkcji Hyper-V są rejestrowane w dzienniku Hype
 
 **Dziennik zdarzeń** | **Szczegóły** |
 --- | ---
-**Dzienniki aplikacji i usług/Microsoft/VirtualMachineManager/serwer/administrator** (Serwer programu VMM) | Dzienniki służące do rozwiązywania problemów z programem VMM.
-**Dzienniki aplikacji i usług/MicrosoftAzureRecoveryServices/replikacja** (Host funkcji Hyper-V) | Dzienniki umożliwiające rozwiązywanie problemów z agentem Microsoft Azure Recovery Services. 
-**Dzienniki aplikacji i usług/Microsoft/Azure Site Recovery/dostawca/operacyjny** (Host funkcji Hyper-V)| Dzienniki służące do rozwiązywania problemów z usługą Microsoft Azure Site Recovery.
-**Dzienniki aplikacji i usług/Microsoft/Windows/Hyper-V — usługa zarządzania usługami/Administracja** (Host funkcji Hyper-V) | Dzienniki umożliwiające rozwiązywanie problemów z zarządzaniem MASZYNami wirtualnymi funkcji Hyper-V.
+**Dzienniki aplikacji i usług/Microsoft/VirtualMachineManager/serwer/administrator** (serwer VMM) | Dzienniki służące do rozwiązywania problemów z programem VMM.
+**Dzienniki aplikacji i usług/MicrosoftAzureRecoveryServices/replikacja** (host funkcji Hyper-V) | Dzienniki umożliwiające rozwiązywanie problemów z agentem Microsoft Azure Recovery Services. 
+**Dzienniki aplikacji i usług/Microsoft/Azure Site Recovery/dostawca/operacyjny** (host funkcji Hyper-V)| Dzienniki służące do rozwiązywania problemów z usługą Microsoft Azure Site Recovery.
+**Dzienniki aplikacji i usług/Microsoft/Windows/Hyper-V — usługa zarządzania** usługami (host funkcji Hyper-v) | Dzienniki umożliwiające rozwiązywanie problemów z zarządzaniem MASZYNami wirtualnymi funkcji Hyper-V.
 
 ### <a name="log-collection-for-advanced-troubleshooting"></a>Zbieranie dzienników w celu zaawansowania rozwiązywania problemów
 

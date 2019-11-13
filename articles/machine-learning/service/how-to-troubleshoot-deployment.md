@@ -11,44 +11,54 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489368"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961659"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Rozwiązywanie problemów Azure Machine Learning usługi Azure Kubernetes i wdrożenia Azure Container Instances
 
 Dowiedz się, jak obejść typowe błędy wdrażania platformy Docker i rozwiązać je za pomocą usług Azure Container Instances (ACI) i Azure Kubernetes Service (AKS) przy użyciu Azure Machine Learning.
 
-W przypadku wdrażania modelu w Azure Machine Learning system wykonuje wiele zadań. Zadania wdrażania są następujące:
+W przypadku wdrażania modelu w Azure Machine Learning system wykonuje wiele zadań. Dostępne są następujące zadania wdrażania:
 
-1. Zarejestruj model w rejestrze modelu obszaru roboczego.
+1. W rejestrze modelu obszaru roboczego, należy zarejestrować model.
 
-2. Tworzenie obrazu platformy Docker, w tym:
-    1. Pobierz zarejestrowany model z rejestru. 
-    2. Utwórz pliku dockerfile z użyciem środowiska języka Python na podstawie zależności określonych w pliku YAML środowiska.
-    3. Dodaj pliki modelu i skrypt oceniający, który podasz w pliku dockerfile.
-    4. Utwórz nowy obraz platformy Docker przy użyciu pliku dockerfile.
-    5. Zarejestruj obraz platformy Docker za pomocą Azure Container Registry skojarzonego z obszarem roboczym.
+2. Zbuduj obraz Docker, w tym:
+    1. Pobierz zarejestrowanego modelu z rejestru. 
+    2. Utwórz plik dockerfile, za pomocą środowiska Python na podstawie zależności, określonych w pliku yaml środowiska.
+    3. Dodawanie plików modelu, a skrypt oceniania, które należy podać w pliku dockerfile.
+    4. Twórz nowy obraz platformy Docker przy użyciu pliku dockerfile.
+    5. Zarejestruj obrazu platformy Docker za pomocą usługi Azure Container Registry, skojarzone z obszarem roboczym.
 
     > [!IMPORTANT]
     > W zależności od kodu Tworzenie obrazu odbywa się automatycznie bez wprowadzania danych przez użytkownika.
 
-3. Wdróż obraz platformy Docker w usłudze Azure Container Instance (ACI) lub w usłudze Azure Kubernetes Service (AKS).
+3. Wdrażanie obrazu platformy Docker do usługi Azure Container wystąpienia (ACI) lub do usługi Azure Kubernetes Service (AKS).
 
-4. Rozpocznij nowy kontener (lub kontenery) w ACI lub AKS. 
+4. Uruchom nowy kontener (lub kontenery) w usłudze ACI i AKS. 
 
-Dowiedz się więcej o tym procesie w [Zarządzanie modelami](concept-model-management-and-deployment.md) wprowadzenie.
+Dowiedz się więcej na temat tego procesu w [zarządzania modelami](concept-model-management-and-deployment.md) wprowadzenie.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* **Subskrypcji platformy Azure**. Jeśli go nie masz, wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+* [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Rozszerzenie interfejsu wiersza polecenia dla Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* Aby debugować lokalnie, musisz mieć działającą instalację platformy Docker w systemie lokalnym.
+
+    Aby zweryfikować instalację platformy Docker, użyj polecenia `docker run hello-world` z terminalu lub wiersza polecenia. Informacje dotyczące instalowania platformy Docker lub rozwiązywania problemów z błędami platformy Docker znajdują się w [dokumentacji platformy Docker](https://docs.docker.com/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W przypadku wystąpienia dowolnego problemu najpierw należy podzielić zadanie wdrożenia (opisane wcześniej) na poszczególne kroki, aby wyizolować problem.
+Jeśli napotkasz problem z dowolnym najpierw musisz jest podzielenie zadania wdrożenia (opisany poprzedniego) na poszczególne kroki, aby ustalić przyczynę problemu.
 
 Rozdzielenie wdrożenia na zadania jest przydatne, jeśli używasz interfejsu API usługi [WebService. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) lub usługi [WebService. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) , ponieważ obie te funkcje wykonują wyżej wymienione kroki jako pojedynczą akcję. Zwykle te interfejsy API są wygodne, ale ułatwiają rozbicie czynności podczas rozwiązywania problemów przez zastąpienie ich przy użyciu poniższych wywołań interfejsu API.
 
-1. Zarejestruj model. Oto przykładowy kod:
+1. Należy zarejestrować model. Poniżej przedstawiono przykładowy kod:
 
     ```python
     # register a model out of a run record
@@ -58,7 +68,7 @@ Rozdzielenie wdrożenia na zadania jest przydatne, jeśli używasz interfejsu AP
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Utwórz obraz. Oto przykładowy kod:
+2. Tworzenie obrazu. Poniżej przedstawiono przykładowy kod:
 
     ```python
     # configure the image
@@ -73,7 +83,7 @@ Rozdzielenie wdrożenia na zadania jest przydatne, jeśli używasz interfejsu AP
     image.wait_for_creation(show_output=True)
     ```
 
-3. Wdróż obraz jako usługę. Oto przykładowy kod:
+3. Obraz, który można wdrożyć jako usługę. Poniżej przedstawiono przykładowy kod:
 
     ```python
     # configure an ACI-based deployment
@@ -86,11 +96,11 @@ Rozdzielenie wdrożenia na zadania jest przydatne, jeśli używasz interfejsu AP
     aci_service.wait_for_deployment(show_output=True)    
     ```
 
-Po przeprowadzeniu procesu wdrażania do poszczególnych zadań można wyszukać najbardziej typowe błędy.
+Gdy zostały podzielone procesu wdrażania na poszczególne zadania, można przyjrzymy się niektóre z najbardziej typowych błędów.
 
-## <a name="image-building-fails"></a>Kompilacja obrazu kończy się niepowodzeniem
+## <a name="image-building-fails"></a>Obraz tworzenia kończy się niepowodzeniem
 
-Jeśli nie można skompilować obrazu platformy Docker, wywołanie [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) lub [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) kończy się niepowodzeniem z komunikatami o błędach, które mogą oferować pewne wskazówki. Więcej informacji o błędach można znaleźć w dzienniku kompilacji obrazu. Poniżej przedstawiono przykładowy kod pokazujący sposób odnajdywania identyfikatora URI dziennika kompilacji obrazu.
+Jeśli nie można skompilować obrazu platformy Docker, wywołanie [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) lub [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) zakończy się niepowodzeniem z komunikatami o błędach, które mogą oferować pewne wskazówki. Można także znaleźć więcej szczegółowych informacji o błędach w dzienniku kompilacji obrazu. Poniżej przykładowy kod pokazuje sposób odnajdowania identyfikator uri dziennika kompilacji obrazu.
 
 ```python
 # if you already have the image object handy
@@ -104,7 +114,7 @@ for name, img in ws.images.items():
     print(img.name, img.version, img.image_build_log_uri)
 ```
 
-Identyfikator URI dziennika obrazu to adres URL sygnatury dostępu współdzielonego wskazujący plik dziennika zapisany w magazynie obiektów blob platformy Azure. Po prostu skopiuj i wklej identyfikator URI do okna przeglądarki i możesz pobrać i wyświetlić plik dziennika.
+Identyfikator uri dziennika obrazu jest adres URL sygnatury dostępu Współdzielonego do pliku dziennika przechowywanych w usłudze Azure blob storage. Po prostu skopiuj i wklej identyfikator uri do okna przeglądarki i możesz pobrać i przejrzeć plik dziennika.
 
 ### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault zasad dostępu i szablonów Azure Resource Manager
 
@@ -155,9 +165,6 @@ Aby uniknąć tego problemu, zalecamy zastosowanie jednej z następujących meto
 ## <a name="debug-locally"></a>Debuguj lokalnie
 
 Jeśli wystąpią problemy ze wdrożeniem modelu do ACI lub AKS, spróbuj wdrożyć go jako lokalny. Korzystanie z lokalizacji lokalnej ułatwia rozwiązywanie problemów. Obraz platformy Docker zawierający model zostanie pobrany i uruchomiony w systemie lokalnym.
-
-> [!IMPORTANT]
-> Lokalne wdrożenia wymagają instalacji działającej platformy Docker w systemie lokalnym. Program Docker musi być uruchomiony przed wdrożeniem lokalnego. Aby uzyskać informacje na temat instalowania i używania platformy Docker, zobacz [https://www.docker.com/](https://www.docker.com/).
 
 > [!WARNING]
 > Lokalne wdrożenia nie są obsługiwane w scenariuszach produkcyjnych.
@@ -227,7 +234,7 @@ Aby usunąć usługę, użyj polecenie [delete ()](https://docs.microsoft.com/py
 
 ### <a id="dockerlog"></a>Inspekcja dziennika platformy Docker
 
-Można wydrukować szczegółowe komunikaty dziennika aparatu Docker z obiektu usługi. Dziennik można wyświetlić w przypadku wdrożeń ACI, AKS i lokalnych. Poniższy przykład ilustruje sposób drukowania dzienników.
+Można wydrukować szczegółowe komunikaty dziennika aparat platformy Docker z obiektu usługi. Dziennik można wyświetlić w przypadku wdrożeń ACI, AKS i lokalnych. Poniższy przykład ilustruje sposób drukowania dzienników.
 
 ```python
 # if you already have the service object handy
@@ -237,15 +244,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-## <a name="service-launch-fails"></a>Uruchamianie usługi nie powiodło się
+## <a name="service-launch-fails"></a>Uruchomienie usługi nie powiedzie się.
 
-Po pomyślnym skompilowaniu obrazu system podejmie próbę uruchomienia kontenera przy użyciu konfiguracji wdrożenia. W ramach procesu uruchamiania kontenera, funkcja `init()` w skrypcie oceniania jest wywoływana przez system. Jeśli w funkcji `init()` występują nieprzechwycone wyjątki, w komunikacie o błędzie może pojawić się błąd **CrashLoopBackOff** .
+Po pomyślnym skompilowaniu obrazu system podejmie próbę uruchomienia kontenera przy użyciu konfiguracji wdrożenia. Jako część procesu rozruchu kontenera `init()` funkcji oceniania skryptu zostanie wywołany przez system. Jeśli istnieją nieobsłużone wyjątki w `init()` funkcji, można napotkać **CrashLoopBackOff** błąd w komunikacie o błędzie.
 
 Skorzystaj z informacji w sekcji [sprawdzanie dziennika platformy Docker](#dockerlog) , aby sprawdzić dzienniki.
 
-## <a name="function-fails-get_model_path"></a>Niepowodzenie funkcji: get_model_path ()
+## <a name="function-fails-get_model_path"></a>Funkcja kończy się niepowodzeniem: get_model_path()
 
-Często w funkcji `init()` w skrypcie oceniania jest wywoływana funkcja [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) w celu zlokalizowania pliku modelu lub folderu plików modelu w kontenerze. Jeśli nie można znaleźć pliku lub folderu modelu, funkcja kończy się niepowodzeniem. Najprostszym sposobem debugowania tego błędu jest uruchomienie poniższego kodu w języku Python w ramach powłoki kontenera:
+Często w funkcji `init()` w skrypcie oceniania funkcja [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) jest wywoływana w celu zlokalizowania pliku modelu lub folderu plików modelu w kontenerze. Jeśli nie można znaleźć pliku lub folderu modelu, funkcja kończy się niepowodzeniem. Najprostszym sposobem, aby debugować ten błąd jest uruchomienie poniższego kodu języka Python w powłoce kontenera:
 
 ```python
 from azureml.core.model import Model
@@ -254,13 +261,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Ten przykład drukuje ścieżkę lokalną (względem `/var/azureml-app`) w kontenerze, w którym skrypt oceniania oczekuje na znalezienie pliku lub folderu modelu. Następnie można sprawdzić, czy plik lub folder jest naprawdę tam, gdzie jest oczekiwany.
+Ten przykład drukuje ścieżkę lokalną (względem `/var/azureml-app`) w kontenerze, w którym skrypt oceniania oczekuje na znalezienie pliku lub folderu modelu. Następnie można sprawdzić, czy plik lub folder jest w rzeczywistości których oczekuje się, można.
 
 Ustawienie poziomu rejestrowania na debugowanie może spowodować zarejestrowanie dodatkowych informacji, co może być przydatne podczas identyfikowania błędu.
 
-## <a name="function-fails-runinput_data"></a>Niepowodzenie funkcji: Run (input_data)
+## <a name="function-fails-runinput_data"></a>Funkcja kończy się niepowodzeniem: run(input_data)
 
-Jeśli usługa została pomyślnie wdrożona, ale ulega awarii, gdy dane są ogłaszane w punkcie końcowym oceniania, można dodać instrukcję przechwytywania błędów w funkcji `run(input_data)`, tak aby zamiast tego zwracała szczegółowy komunikat o błędzie. Na przykład:
+Jeśli usługa została pomyślnie wdrożona, ale jej ulega awarii, gdy opublikujesz danych do punktu końcowego oceniania, można dodać błąd Przechwytywanie instrukcji w swojej `run(input_data)` funkcji tak, aby zamiast tego zwraca szczegółowy komunikat o błędzie. Na przykład:
 
 ```python
 def run(input_data):
@@ -275,7 +282,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Uwaga**: Zwracanie komunikatów o błędach z wywołania `run(input_data)` powinno odbywać się tylko do celów debugowania. Ze względów bezpieczeństwa nie należy zwracać komunikatów o błędach w ten sposób w środowisku produkcyjnym.
+**Uwaga**: zwracanie komunikaty o błędach z `run(input_data)` wywołanie powinno się odbywać tylko do celów debugowania. Ze względów bezpieczeństwa nie należy zwracać komunikatów o błędach w ten sposób w środowisku produkcyjnym.
 
 ## <a name="http-status-code-503"></a>Kod stanu HTTP 503
 
@@ -325,8 +332,8 @@ W niektórych przypadkach może być konieczne interaktywne Debugowanie kodu w j
 
 > [!IMPORTANT]
 > Ta metoda debugowania nie działa w przypadku używania `Model.deploy()` i `LocalWebservice.deploy_configuration` do lokalnego wdrożenia modelu. Zamiast tego należy utworzyć obraz przy użyciu klasy [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) . 
->
-> Lokalne wdrożenia wymagają instalacji działającej platformy Docker w systemie lokalnym. Program Docker musi być uruchomiony przed wdrożeniem lokalnego. Aby uzyskać informacje na temat instalowania i używania platformy Docker, zobacz [https://www.docker.com/](https://www.docker.com/).
+
+Lokalne wdrożenia wymagają instalacji działającej platformy Docker w systemie lokalnym. Aby uzyskać więcej informacji na temat korzystania z platformy Docker, zapoznaj się z [dokumentacją platformy Docker](https://docs.docker.com/).
 
 ### <a name="configure-development-environment"></a>Konfigurowanie środowiska programowania
 
@@ -531,5 +538,5 @@ docker stop debug
 
 Dowiedz się więcej o wdrażaniu:
 
-* [Jak wdrożyć i gdzie](how-to-deploy-and-where.md)
-* [Samouczek: uczenie & Wdrażanie modeli](tutorial-train-models-with-aml.md)
+* [Jak wdrażać i którym](how-to-deploy-and-where.md)
+* [Samouczek: Uczenie i wdrażanie modeli](tutorial-train-models-with-aml.md)

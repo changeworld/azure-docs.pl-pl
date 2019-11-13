@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee30e52561a5560e572e33fb3bc7d191559bf5d6
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0c9a194dcd2ccb353f11aa939200213f0db1c2ea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927125"
+ms.locfileid: "73942935"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -159,7 +159,7 @@ Aplikacje muszą być reprezentowane przez obiekt aplikacji w Azure Active Direc
 
 Kod jest zorganizowany w fragmenty, które pokazują, jak napisać jedną i wiele kont aplikacji MSAL. Pliki kodu są zorganizowane w następujący sposób:
 
-| Plik  | Pokazuje  |
+| Plik  | Demonstracje  |
 |---------|---------|
 | MainActivity | Zarządza interfejsem użytkownika |
 | MSGraphRequestWrapper  | Wywołuje interfejs API Microsoft Graph przy użyciu tokenu dostarczonego przez MSAL |
@@ -214,9 +214,9 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
             @Override
             public void onCreated(ISingleAccountPublicClientApplication application) {
                 /**
-                    * This test app assumes that the app is only going to support one account.
-                    * This requires "account_mode" : "SINGLE" in the config json file.
-                    **/
+                 * This test app assumes that the app is only going to support one account.
+                 * This requires "account_mode" : "SINGLE" in the config json file.
+                 **/
                 mSingleAccountApp = application;
                 loadAccount();
             }
@@ -283,7 +283,7 @@ Kod umożliwiający interaktywny dostęp do tokenu, który jest z INTERFEJSem u�
  *  - password change
  *  - the resource you're acquiring a token for has a stricter set of requirement than your Single Sign-On refresh token.
  *  - you're introducing a new scope which the user has never consented for.
- */
+ **/
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
@@ -291,9 +291,9 @@ Jeśli użytkownik został już zalogowany, `acquireTokenSilentAsync()` zezwala 
 
 ```java
 /**
-  * Once you've signed the user in,
-  * you can perform acquireTokenSilent to obtain resources without interrupting the user.
-  */
+ * Once you've signed the user in,
+ * you can perform acquireTokenSilent to obtain resources without interrupting the user.
+ **/
   mSingleAccountApp.acquireTokenSilentAsync(getScopes(), AUTHORITY, getAuthSilentCallback());
 ```
 
@@ -394,7 +394,7 @@ Przykładem aplikacji z wieloma kontami jest aplikacja poczty, która umożliwia
 W pliku `MultipleAccountModeFragment.java`, w `onCreateView()`, zostanie utworzony obiekt aplikacji z wieloma kontami (`IMultipleAccountPublicClientApplication`) za pomocą informacji konfiguracyjnych przechowywanych w `auth_config_multiple_account.json file`:
 
 ```java
-// Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
+// Creates a PublicClientApplication object with res/raw/auth_config_multiple_account.json
 PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(),
         R.raw.auth_config_multiple_account,
         new IPublicClientApplication.IMultipleAccountApplicationCreatedListener() {
@@ -419,8 +419,8 @@ Wiele aplikacji konta zazwyczaj wywołuje `getAccounts()`, aby wybrać konto, kt
 
 ```java
 /**
-     * Load currently signed-in accounts, if there's any.
-    */
+ * Load currently signed-in accounts, if there's any.
+ **/
 private void loadAccounts() {
     if (mMultipleAccountApp == null) {
         return;
@@ -466,7 +466,7 @@ Wiele aplikacji konta powinna zwykle uzyskiwać tokeny interaktywnie, czyli inte
  *  - password change
  *  - the resource you're acquiring a token for has a stricter set of requirement than your SSO refresh token.
  *  - you're introducing a new scope which the user has never consented for.
- */
+ **/
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
@@ -487,12 +487,12 @@ mMultipleAccountApp.acquireTokenSilentAsync(getScopes(),
 
 #### <a name="remove-an-account"></a>Usuwanie konta
 
-Kod służący do usuwania konta i wszystkie tokeny w pamięci podręcznej dla konta, znajduje się w pliku `MultipleAccountModeFragment.java` w `initializeUI()` w programie obsługi dla przycisku Usuń konto. Aby można było usunąć konto, musisz mieć obiekt konta, który uzyskano z funkcji MSAL, takich jak `getAccounts()` i `acquireToken()`. Ponieważ usunięcie konta jest operacją asynchroniczną, do zaktualizowania interfejsu użytkownika jest dostarczane `onRemoved` wywołanie zwrotne.
+Kod służący do usuwania konta i wszystkie tokeny w pamięci podręcznej dla konta, znajduje się w pliku `MultipleAccountModeFragment.java` w `initializeUI()` w programie obsługi dla przycisku Usuń konto. Aby można było usunąć konto, musisz mieć obiekt konta, który uzyskano z metod MSAL, takich jak `getAccounts()` i `acquireToken()`. Ponieważ usunięcie konta jest operacją asynchroniczną, do zaktualizowania interfejsu użytkownika jest dostarczane `onRemoved` wywołanie zwrotne.
 
 ```java
 /**
-  * Removes the selected account and cached tokens from this app (or device, if the device is in shared mode).
-  */
+ * Removes the selected account and cached tokens from this app (or device, if the device is in shared mode).
+ **/
 mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelectedItemPosition()),
         new IMultipleAccountPublicClientApplication.RemoveAccountCallback() {
             @Override

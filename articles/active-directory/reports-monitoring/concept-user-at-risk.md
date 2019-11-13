@@ -2,7 +2,7 @@
 title: Raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory | Microsoft Docs
 description: Dowiedz się więcej o raporcie o zabezpieczeniach dotyczącym użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 894d8dfb7f870ec4a2a11f1d75ee0376b25d8c7f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127651"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014446"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Użytkownicy oflagowani w związku z raportem dotyczącym narażonych użytkowników w witrynie Azure Portal
 
@@ -61,7 +61,7 @@ Wybranie użytkownika powoduje podanie informacji logowania. W przypadku narażo
 To okno dialogowe oferuje opcję:
 
 - Pobierania raportu
-- Wyszukaj użytkowników
+- Wyszukiwania użytkowników
 
     ![Ryzykowne logowania](./media/concept-user-at-risk/16.png)
 
@@ -77,7 +77,7 @@ Raport dotyczący użytkowników oflagowanych w związku z ryzykiem w usłudze A
 
 - Opcja pobrania raportu
 
-- Opcja skonfigurowania [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md)  
+- Skonfigurowanie [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md).  
 
 ![Ryzykowne logowania](./media/concept-user-at-risk/71.png)
 
@@ -87,7 +87,7 @@ Po wybraniu użytkownika jest dla niego wyświetlany szczegółowy widok raportu
 
 - Resetowanie hasła użytkownika.
 
-- Odrzuć wszystkie zdarzenia
+- Odrzucanie wszystkich zdarzeń.
 
 - Zbadaj zgłoszone wykrywania ryzyka dla użytkownika. 
 

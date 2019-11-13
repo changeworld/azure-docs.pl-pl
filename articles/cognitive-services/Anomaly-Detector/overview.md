@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934877"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012057"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co to jest interfejs API narzędzia do wykrywania anomalii?
 
@@ -29,14 +29,14 @@ Korzystanie z detektora anomalii nie wymaga wcześniejszego doświadczenia w ucz
 
 Dzięki detektorowi anomalii można automatycznie wykrywać anomalie w danych szeregów czasowych lub w miarę ich występowania w czasie rzeczywistym. 
 
-|Cecha  |Opis  |
+|Funkcja  |Opis  |
 |---------|---------|
 |Wykrywaj anomalie w czasie rzeczywistym. | Wykrywaj anomalie w danych przesyłanych strumieniowo, używając wcześniej zaobserwowanych punktów danych w celu ustalenia, czy Najnowsza z nich jest nieaktualna. Ta operacja generuje model przy użyciu wysyłanych punktów danych i określa, czy punkt docelowy jest anomalią. Wywołując interfejs API z każdym wygenerowanym nowym punktem danych, można monitorować dane w miarę ich tworzenia. |
 |Wykrywaj anomalie w zestawie danych jako Partia zadań. | Skorzystaj z szeregów czasowych, aby wykryć ewentualne anomalie, które mogą istnieć w danych. Ta operacja generuje model przy użyciu wszystkich danych szeregów czasowych, przy czym każdy punkt jest analizowany z tym samym modelem.         |
 | Uzyskaj dodatkowe informacje na temat danych. | Uzyskaj przydatne szczegóły dotyczące danych i wszelkich obserwowanych anomalii, w tym oczekiwanych wartości, granic anomalii i pozycji. |
 | Dostosuj granice wykrywania anomalii. | Interfejs API wykrywania anomalii automatycznie tworzy granice na potrzeby wykrywania anomalii. Dostosuj te granice, aby zwiększyć lub zmniejszyć czułość interfejsu API na anomalie danych i lepiej dopasować dane. |
 
-## <a name="demo"></a>Pokaz
+## <a name="demo"></a>Demonstracja
 
 Zapoznaj się z tą [interaktywną prezentacją](https://aka.ms/adDemo) , aby dowiedzieć się, jak działa detektor anomalii.
 Aby uruchomić demonstrację, należy utworzyć zasób wykrywania anomalii i uzyskać klucz interfejsu API i punkt końcowy.
@@ -52,8 +52,8 @@ Aby uruchomić Notes, wykonaj następujące czynności:
 1. Usuń zaznaczenie opcji "publiczny" w oknie dialogowym przed ukończeniem operacji klonowania, w przeciwnym razie Notes, w tym wszystkie klucze subskrypcji, będzie publiczny.
 1. Kliknij pozycję **Uruchom przy bezpłatnej obliczeń**
 1. Wybierz jeden z notesów.
-1. Dodaj do `subscription_key` zmiennej prawidłowy klucz subskrypcji interfejsu API wykrywania anomalii. 
-1. `endpoint` Zmień zmienną na punkt końcowy. Na przykład: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. Dodaj prawidłowy klucz subskrypcji interfejsu API wykrywania anomalii do zmiennej `subscription_key`. 
+1. Zmień zmienną `endpoint` na punkt końcowy. Na przykład: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. Na górnym pasku menu kliknij **komórkę**, a następnie **Uruchom wszystkie**.
 
 ## <a name="workflow"></a>Przepływ pracy
@@ -72,18 +72,18 @@ Po zarejestrowaniu:
 
 ## <a name="algorithms"></a>Algorytmy
 
-* Zapoznaj się z tym blogiem technicznym dotyczącym [interfejsu API wykrywania anomalii platformy Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) na temat algorytmów pod okapem.
+* Zapoznaj się z blogami technicznymi dotyczącymi [interfejsu API wykrywania anomalii platformy Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) i [Omówienie algorytmu SR-CNN w usłudze Azure anomalie wykrywania](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) na temat algorytmów pod okapem.
 * Zapoznaj się z tym papierem [usługi wykrywania anomalii w szeregach czasowych w firmie Microsoft](https://arxiv.org/abs/1906.03821) (zaakceptowanej przez KDD 2019) dla algorytmów SR-CNN opracowanych przez firmę Microsoft.
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
-## <a name="join-the-anomaly-detector-community"></a>Dołącz do społeczności wykrywania anomalii
+## <a name="join-the-anomaly-detector-community"></a>Dołączanie do społeczności narzędzia do wykrywania anomalii
 
 * Dołącz do [grupy doradcy wykrywania anomalii w usłudze Microsoft Teams](https://aka.ms/AdAdvisorsJoin)
 * Zobacz wybraną [zawartość wygenerowaną przez użytkownika](user-generated-content.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Szybki start: Wykrywaj anomalie w danych szeregów czasowych przy użyciu interfejsu API REST usługi wykrywania anomalii](quickstarts/detect-data-anomalies-csharp.md)
+* [Szybki Start: wykrywanie anomalii w danych szeregów czasowych przy użyciu interfejsu API REST usługi wykrywania anomalii](quickstarts/detect-data-anomalies-csharp.md)
 * [Demonstracja online](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) interfejsu API wykrywania anomalii
 * [Dokumentacja interfejsu API REST](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) usługi wykrywania anomalii

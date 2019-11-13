@@ -1,5 +1,5 @@
 ---
-title: Raspberry Pi do chmury (Node. js) — łączenie Raspberry Pi z platformą Azure IoT Hub | Microsoft Docs
+title: Łączenie Raspberry Pi z platformą Azure IoT Hub w chmurze (Node. js)
 description: Dowiedz się, jak skonfigurować i połączyć Raspberry Pi z platformą IoT Hub Azure w celu wysyłania danych do platformy Azure w chmurze w tym samouczku.
 author: wesmc7777
 manager: philmea
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266150"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954541"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Łączenie Raspberry Pi z platformą Azure IoT Hub (Node. js)
 
@@ -23,7 +23,7 @@ ms.locfileid: "71266150"
 
 W tym samouczku przedstawiono podstawowe informacje dotyczące pracy z Raspberry Pi, na którym uruchomiono raspbian. Następnie dowiesz się, jak bezproblemowo połączyć swoje urządzenia z chmurą przy użyciu [usługi Azure IoT Hub](about-iot-hub.md). W przypadku przykładów systemu Windows 10 IoT Core przejdź do [Centrum deweloperów systemu Windows](https://www.windowsondevices.com/).
 
-Nie masz jeszcze zestawu? Wypróbuj [symulator online Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Lub Kup nowy zestaw. [](https://azure.microsoft.com/develop/iot/starter-kits)
+Nie masz jeszcze zestawu? Wypróbuj [symulator online Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Lub Kup [Nowy zestaw.](https://azure.microsoft.com/develop/iot/starter-kits)
 
 ## <a name="what-you-do"></a>Co robisz
 
@@ -104,7 +104,7 @@ Przygotuj kartę microSD na potrzeby instalacji obrazu raspbian.
 
    b. Uruchom wytrawioner i wybierz obraz raspbian wyodrębniony w kroku 1.
 
-   c. Wybierz dysk karty microSD. Program wytrawiony mógł już wybrać prawidłowy dysk.
+   d. Wybierz dysk karty microSD. Program wytrawiony mógł już wybrać prawidłowy dysk.
 
    d. Kliknij przycisk Flash, aby zainstalować raspbian na karcie microSD.
 
@@ -116,9 +116,9 @@ Przygotuj kartę microSD na potrzeby instalacji obrazu raspbian.
 
 1. Połącz pi z monitorem, klawiaturą i myszą.
 
-2. Rozpocznij Pi, a następnie zaloguj się do raspbian `pi` przy użyciu nazwy użytkownika i `raspberry` hasła.
+2. Rozpocznij Pi, a następnie zaloguj się do raspbian przy użyciu `pi` jako nazwy użytkownika i `raspberry` jako hasło.
 
-3. Kliknij ikonę Raspberry > **Preferencje** > **Raspberry Pi Configuration**.
+3. Kliknij ikonę Raspberry > **preferences** > **Raspberry Pi Configuration**.
 
    ![Menu preferencji raspbian](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -171,7 +171,7 @@ Włącz opcję pi przy użyciu kabla micro USB i zasilacza. Podłącz PI do siec
 
    **Użytkownicy systemu Windows**
 
-   a. Pobierz i zainstaluj [](https://www.putty.org/) system Windows.
+   a. Pobierz [i zainstaluj system](https://www.putty.org/) Windows.
 
    b. Skopiuj adres IP liczby pi do sekcji Nazwa hosta (lub adres IP) i wybierz pozycję SSH jako typ połączenia.
 
@@ -179,10 +179,10 @@ Włącz opcję pi przy użyciu kabla micro USB i zasilacza. Podłącz PI do siec
 
    **Użytkownicy komputerów Mac i Ubuntu**
 
-   Użyj wbudowanego klienta SSH w systemie Ubuntu lub macOS. Może być konieczne uruchomienie `ssh pi@<ip address of pi>` programu w celu nawiązania połączenia pi za pośrednictwem protokołu SSH.
+   Użyj wbudowanego klienta SSH w systemie Ubuntu lub macOS. Może być konieczne uruchomienie `ssh pi@<ip address of pi>`, aby nawiązać połączenie pi za pośrednictwem protokołu SSH.
 
    > [!NOTE]
-   > Domyślna nazwa użytkownika to `pi` , a hasło to `raspberry`.
+   > Domyślna nazwa użytkownika to `pi`, a hasło jest `raspberry`.
 
 2. Zainstaluj program Node. js i NPM na potrzeby języka pi.
 
@@ -225,11 +225,11 @@ Włącz opcję pi przy użyciu kabla micro USB i zasilacza. Podłącz PI do siec
 
    ![Plik konfiguracji](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
-   W tym pliku znajdują się dwa elementy, które można skonfigurować. Pierwszy z nich to `interval`, który definiuje przedział czasu (w milisekundach) między komunikatami wysyłanymi do chmury. Druga z nich to `simulatedData`, czyli wartość logiczna określająca, czy użyć symulowanych danych czujników, czy nie.
+   W tym pliku znajdują się dwa elementy, które można skonfigurować. Pierwszy z nich jest `interval`, który definiuje interwał czasu (w milisekundach) między komunikatami wysyłanymi do chmury. Druga `simulatedData`, która jest wartością logiczną określającą, czy użyć symulowanych danych czujników, czy nie.
 
-   Jeśli **nie masz czujnika**, ustaw `simulatedData` wartość tak, aby `true` aplikacja Przykładowa utworzyła i używała symulowanych danych czujników.
+   Jeśli **nie masz czujnika**, ustaw wartość `simulatedData` na `true`, aby aplikacja Przykładowa utworzyła i używała symulowanych danych czujników.
 
-   *Uwaga: Adres I2C używany w tym samouczku jest domyślnie 0x77. W zależności od konfiguracji może być również 0x76: Jeśli wystąpi błąd I2C, spróbuj zmienić wartość na 118 i sprawdź, czy działa lepiej. Aby zobaczyć, jaki adres jest używany przez czujnik, uruchom `sudo i2cdetect -y 1` polecenie w powłoce na Raspberry Pi*
+   *Uwaga: adres I2C używany w tym samouczku jest domyślnie 0x77. W zależności od konfiguracji może być również 0x76: Jeśli wystąpi błąd I2C, spróbuj zmienić wartość na 118 i sprawdź, czy działa lepiej. Aby zobaczyć, jaki adres jest używany przez czujnik, uruchom `sudo i2cdetect -y 1` w powłoce na Raspberry Pi*
 
 2. Zapisz i wyjdź, wpisując Control-O > Enter > Control-X.
 

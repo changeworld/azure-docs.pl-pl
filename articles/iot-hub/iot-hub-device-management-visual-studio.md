@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie urządzeniami Azure IoT za pomocą programu Cloud Explorer dla programu Visual Studio | Microsoft Docs
+title: Zarządzanie urządzeniami w usłudze Azure IoT w programie Visual Studio Cloud Explorer
 description: Użyj programu Cloud Explorer dla programu Visual Studio dla usługi Azure IoT Hub zarządzanie urządzeniami, w tym metod bezpośrednich i opcji zarządzania żądanymi właściwościami sznurka.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048705"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953178"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Korzystanie z Eksploratora chmury dla programu Visual Studio dla usługi Azure IoT Hub zarządzanie urządzeniami
 
@@ -29,7 +29,7 @@ ms.locfileid: "70048705"
 | Aktualizacja sznurka urządzenia         | Umieść urządzenie w określonych stanach, takich jak ustawienie diody LED na zieloną lub ustawienie interwału wysyłania danych telemetrycznych na 30 minut.         |
 | Komunikaty z chmury do urządzenia   | Wyślij powiadomienia do urządzenia. Na przykład "bardzo prawdopodobnie jest to deszcz. Nie zapomnij przenieść parasola ".              |
 
-Aby uzyskać bardziej szczegółowe wyjaśnienie różnic i wskazówek dotyczących korzystania z tych opcji, zobacz [wskazówki dotyczące komunikacji między urządzeniami](iot-hub-devguide-d2c-guidance.md) i chmurą oraz [wskazówki dotyczące komunikacji między chmurą i urządzeniem](iot-hub-devguide-c2d-guidance.md).
+Aby uzyskać bardziej szczegółowe wyjaśnienie różnic i wskazówek dotyczących korzystania z tych opcji, zobacz [wskazówki dotyczące komunikacji między urządzeniami i chmurą](iot-hub-devguide-d2c-guidance.md) oraz [wskazówki dotyczące komunikacji między chmurą i urządzeniem](iot-hub-devguide-c2d-guidance.md).
 
 Bliźniaczych reprezentacji urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia, w tym metadane, konfiguracje i warunki. IoT Hub utrzymuje sznurki urządzenia dla każdego urządzenia, które nawiązuje z nim połączenie. Aby uzyskać więcej informacji na temat bliźniaczych reprezentacji urządzeń, zobacz [wprowadzenie do usługi Device bliźniaczych reprezentacji](iot-hub-node-node-twin-getstarted.md).
 
@@ -59,7 +59,7 @@ Składnik Cloud Explorer Instalator programu Visual Studio dla programu Visual S
 
 ## <a name="sign-in-to-access-your-hub"></a>Zaloguj się, aby uzyskać dostęp do centrum
 
-1. W programie Visual Studio wybierz pozycję **Wyświetl** > program**Cloud Explorer** , aby otworzyć Eksploratora chmury.
+1. W programie Visual Studio wybierz pozycję **wyświetl** > **Cloud Explorer** , aby otworzyć Eksploratora chmury.
 
 1. Wybierz ikonę Zarządzanie kontem, aby wyświetlić subskrypcje.
 

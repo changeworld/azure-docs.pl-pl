@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji Service Fabric platformy Azure | Microsoft Docs
+title: Wdrażanie Service Fabric platformy Azure za pomocą programu PowerShell
 description: Jak wdrażać i usuwać aplikacje w Service Fabric przy użyciu programu PowerShell.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 3cfebadf6dadeb81b1b57e671b19594b75645e31
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0080ba0807a4cb31fedeb132932e2e08137dd40b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599615"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013288"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell
 
@@ -31,7 +31,7 @@ ms.locfileid: "68599615"
 
 <br/>
 
-Gdy [Typ aplikacji][10]zostanie spakowany, jest gotowy do wdrożenia w klastrze Service Fabric platformy Azure. Wdrożenie obejmuje następujące trzy kroki:
+Gdy [Typ aplikacji zostanie spakowany][10], jest gotowy do wdrożenia w klastrze Service Fabric platformy Azure. Wdrożenie obejmuje następujące trzy kroki:
 
 1. Przekaż pakiet aplikacji do magazynu obrazów.
 2. Zarejestruj typ aplikacji z ścieżką względną magazynu obrazu.
@@ -45,9 +45,9 @@ Gdy wdrożona aplikacja nie jest już potrzebna, można usunąć wystąpienie ap
 
 Jeśli używasz programu Visual Studio do wdrażania i debugowania aplikacji w lokalnym klastrze programistycznym, wszystkie powyższe kroki są obsługiwane automatycznie za pomocą skryptu programu PowerShell.  Ten skrypt znajduje się w folderze *skryptów* projektu aplikacji. Ten artykuł zawiera informacje o tym, co robi skrypt, aby można było wykonywać te same operacje poza programem Visual Studio. 
 
-Innym sposobem wdrożenia aplikacji jest użycie zewnętrznej obsługi administracyjnej. Pakiet aplikacji można [spakować jako `sfpkg` ](service-fabric-package-apps.md#create-an-sfpkg) i przekazać do magazynu zewnętrznego. W takim przypadku przekazywanie do magazynu obrazów nie jest konieczne. Wdrożenie wymaga następujących kroków:
+Innym sposobem wdrożenia aplikacji jest użycie zewnętrznej obsługi administracyjnej. Pakiet aplikacji może być [spakowany jako `sfpkg`](service-fabric-package-apps.md#create-an-sfpkg) i przekazywany do magazynu zewnętrznego. W takim przypadku przekazywanie do magazynu obrazów nie jest konieczne. Wdrożenie wymaga następujących kroków:
 
-1. `sfpkg` Przekaż do magazynu zewnętrznego. Magazyn zewnętrzny może być dowolnym magazynem, który uwidacznia punkt końcowy HTTP lub https.
+1. Przekaż `sfpkg` do magazynu zewnętrznego. Magazyn zewnętrzny może być dowolnym magazynem, który uwidacznia punkt końcowy HTTP lub https.
 2. Zarejestruj typ aplikacji przy użyciu zewnętrznego identyfikatora URI pobierania i informacji o typie aplikacji.
 2. Utwórz wystąpienie aplikacji.
 
@@ -66,7 +66,7 @@ Przed uruchomieniem jakichkolwiek poleceń programu PowerShell w tym artykule, n
 Connect-ServiceFabricCluster
 ```
 
-Aby zapoznać się z przykładami łączenia się ze zdalnym klastrem lub klastrem zabezpieczonym przy użyciu Azure Active Directory, certyfikatów x509 lub Windows Active Directory zobacz [łączenie](service-fabric-connect-to-secure-cluster.md)z bezpiecznym klastrem.
+Aby zapoznać się z przykładami łączenia się ze zdalnym klastrem lub klastrem zabezpieczonym przy użyciu Azure Active Directory, certyfikatów x509 lub Windows Active Directory zobacz [łączenie z bezpiecznym klastrem](service-fabric-connect-to-secure-cluster.md).
 
 ## <a name="upload-the-application-package"></a>Przekaż pakiet aplikacji
 
@@ -75,7 +75,7 @@ Jeśli chcesz zweryfikować pakiet aplikacji lokalnie, użyj polecenia cmdlet [t
 
 Polecenie [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) przekazuje pakiet aplikacji do magazynu obrazów klastra.
 
-Załóżmy, że tworzysz aplikację i pakujesz ją *w programie* Visual Studio 2015. Domyślnie nazwa typu aplikacji wymieniona w ApplicationManifest. XML to "webapplicationtype".  Pakiet aplikacji, który zawiera wymagany manifest aplikacji, manifesty usługi i pakiety danych/config/dane, znajduje się w lokalizacji *C:\Users\<username\>\Documents\Visual Studio 2015 \ Projects\MyApplication\ MyApplication\pkg\Debug*. 
+Załóżmy, że tworzysz aplikację i pakujesz ją *w programie* Visual Studio 2015. Domyślnie nazwa typu aplikacji wymieniona w ApplicationManifest. XML to "webapplicationtype".  Pakiet aplikacji, który zawiera wymagany manifest aplikacji, manifesty usługi i pakiety danych/config/dane, znajduje się w lokalizacji *C:\Users\<username\>\Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*. 
 
 Następujące polecenie wyświetla zawartość pakietu aplikacji:
 
@@ -113,10 +113,10 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 Jeśli pakiet aplikacji jest duży i/lub zawiera wiele plików, można [go skompresować](service-fabric-package-apps.md#compress-a-package). Kompresja zmniejsza rozmiar i liczbę plików.
 Efekt uboczny polega na tym, że rejestrowanie i Wyrejestrowanie typu aplikacji jest szybsze. Czas przekazywania może być obecnie wolniejszy, szczególnie w przypadku dołączenia czasu do skompresowania pakietu. 
 
-Aby skompresować pakiet, użyj tego samego polecenia [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) . Kompresję można wykonać niezależnie od przekazywania, przy użyciu `SkipCopy` flagi lub razem z operacją przekazywania. Zastosowanie kompresji w skompresowanym pakiecie to no-op.
-Aby zdekompresować skompresowany pakiet, użyj tego samego polecenia [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) z `UncompressPackage` przełącznikiem.
+Aby skompresować pakiet, użyj tego samego polecenia [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) . Kompresję można wykonać niezależnie od przekazywania, używając flagi `SkipCopy` lub razem z operacją przekazywania. Zastosowanie kompresji w skompresowanym pakiecie to no-op.
+Aby zdekompresować skompresowany pakiet, użyj tego samego polecenia [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) z przełącznikiem `UncompressPackage`.
 
-Poniższe polecenie cmdlet kompresuje pakiet bez kopiowania go do magazynu obrazów. Pakiet zawiera teraz pliki spakowane dla `Code` pakietów i. `Config` Aplikacje i manifesty usług nie są spakowane, ponieważ są one zbędne w przypadku wielu operacji wewnętrznych (takich jak udostępnianie pakietów, nazwa typu aplikacji i wyodrębnianie wersji dla pewnych walidacji). Zapakowywanie manifestów spowodowałoby niewydajne wykonywanie tych operacji.
+Poniższe polecenie cmdlet kompresuje pakiet bez kopiowania go do magazynu obrazów. Pakiet zawiera teraz pliki spakowane dla `Code` i `Config` pakietów. Aplikacje i manifesty usług nie są spakowane, ponieważ są one zbędne w przypadku wielu operacji wewnętrznych (takich jak udostępnianie pakietów, nazwa typu aplikacji i wyodrębnianie wersji dla pewnych walidacji). Zapakowywanie manifestów spowodowałoby niewydajne wykonywanie tych operacji.
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -CompressPackage -SkipCopy
@@ -202,7 +202,7 @@ Register application type succeeded
 
 ### <a name="register-the-application-package-copied-to-an-external-store"></a>Rejestrowanie pakietu aplikacji skopiowanego do magazynu zewnętrznego
 
-Service Fabric począwszy od wersji 6,1, Inicjowanie obsługi administracyjnej obsługuje pobieranie pakietu z magazynu zewnętrznego. Identyfikator URI pobierania reprezentuje ścieżkę do [ `sfpkg` pakietu aplikacji](service-fabric-package-apps.md#create-an-sfpkg) , z którego można pobrać pakiet aplikacji przy użyciu protokołów HTTP lub https. Pakiet musi zostać wcześniej przekazany do tej lokalizacji zewnętrznej. Identyfikator URI musi zezwalać na dostęp do odczytu, aby Service Fabric mógł pobrać plik. `sfpkg` Plik musi mieć rozszerzenie ". sfpkg". Operacja aprowizacji powinna obejmować informacje o typie aplikacji, jak zostało to Znalezione w manifeście aplikacji.
+Service Fabric począwszy od wersji 6,1, Inicjowanie obsługi administracyjnej obsługuje pobieranie pakietu z magazynu zewnętrznego. Identyfikator URI pobierania reprezentuje ścieżkę do [pakietu aplikacji`sfpkg`](service-fabric-package-apps.md#create-an-sfpkg) , z którego można pobrać pakiet aplikacji przy użyciu protokołów HTTP lub https. Pakiet musi zostać wcześniej przekazany do tej lokalizacji zewnętrznej. Identyfikator URI musi zezwalać na dostęp do odczytu, aby Service Fabric mógł pobrać plik. Plik `sfpkg` musi mieć rozszerzenie ". sfpkg". Operacja aprowizacji powinna obejmować informacje o typie aplikacji, jak zostało to Znalezione w manifeście aplikacji.
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
@@ -302,7 +302,7 @@ Get-ServiceFabricApplication
 
 ## <a name="unregister-an-application-type"></a>Wyrejestrowywanie typu aplikacji
 
-Jeśli określona wersja typu aplikacji nie jest już wymagana, należy wyrejestrować typ aplikacji za pomocą polecenia cmdlet Unregister [-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) . Wyrejestrowywanie nieużywanych typów aplikacji zwalnia miejsce w magazynie używane przez magazyn obrazów przez usunięcie plików typu aplikacji. Wyrejestrowanie typu aplikacji nie powoduje usunięcia pakietu aplikacji skopiowanego do lokalizacji tymczasowej magazynu obrazu, jeśli użyto kopiowania do magazynu obrazów. Typ aplikacji może zostać wyrejestrowany, o ile nie są dla nich tworzone żadne aplikacje i nie odwołuje się do niego oczekujące uaktualnienia aplikacji.
+Jeśli określona wersja typu aplikacji nie jest już wymagana, należy wyrejestrować typ aplikacji za pomocą polecenia cmdlet [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) . Wyrejestrowywanie nieużywanych typów aplikacji zwalnia miejsce w magazynie używane przez magazyn obrazów przez usunięcie plików typu aplikacji. Wyrejestrowanie typu aplikacji nie powoduje usunięcia pakietu aplikacji skopiowanego do lokalizacji tymczasowej magazynu obrazu, jeśli użyto kopiowania do magazynu obrazów. Typ aplikacji może zostać wyrejestrowany, o ile nie są dla nich tworzone żadne aplikacje i nie odwołuje się do niego oczekujące uaktualnienia aplikacji.
 
 Uruchom [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) , aby wyświetlić typy aplikacji aktualnie zarejestrowane w klastrze:
 
@@ -357,18 +357,18 @@ Zobacz [opis parametrów połączenia magazynu obrazu](service-fabric-image-stor
 
 ### <a name="deploy-large-application-package"></a>Wdróż pakiet dużej aplikacji
 
-Problem: [Kopiowanie-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) limit czasu dla dużego pakietu aplikacji (kolejność GB).
+Problem: [ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) dla dużego pakietu aplikacji (kolejność GB).
 Wypróbuj:
-- Określ większy limit czasu dla polecenia [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) z `TimeoutSec` parametrem. Domyślnie limit czasu to 30 minut.
+- Określ większy limit czasu dla polecenia [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) z parametrem `TimeoutSec`. Domyślnie limit czasu to 30 minut.
 - Sprawdź połączenie sieciowe między maszyną źródłową a klastrem. Jeśli połączenie jest powolne, rozważ użycie komputera z lepszym połączeniem sieciowym.
 Jeśli komputer kliencki znajduje się w innym regionie niż klaster, rozważ użycie komputera klienckiego w tym samym lub tym samym regionie co klaster.
 - Sprawdź, czy używasz ograniczania zewnętrznego. Na przykład jeśli magazyn obrazów jest skonfigurowany do korzystania z usługi Azure Storage, przekazywanie może być ograniczone.
 
-Problem: Przekazywanie pakietu zakończyło się pomyślnie, ale ServiceFabricApplicationType limit czasu [rejestru](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) . Wypróbuj:
+Problem: pakiet przekazywania został zakończony pomyślnie, ale ServiceFabricApplicationType limit czasu [rejestru](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) . Spróbował
 - [Kompresuj pakiet](service-fabric-package-apps.md#compress-a-package) przed skopiowaniem do magazynu obrazów.
 Kompresja zmniejsza rozmiar i liczbę plików, co z kolei zmniejsza ilość ruchu i pracy, które Service Fabric muszą zostać wykonane. Operacje przekazywania mogą być wolniejsze (zwłaszcza w przypadku dołączenia czasu kompresji), ale rejestrowanie i Wyrejestrowanie typu aplikacji jest szybsze.
-- Określ większy limit czasu dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) z `TimeoutSec` parametrem.
-- Określ `Async` przełącznik dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Polecenie zwraca wartość, gdy klaster akceptuje polecenie, a rejestracja typu aplikacji jest kontynuowana asynchronicznie. Z tego powodu nie ma potrzeby określania wyższego limitu czasu w tym przypadku. Polecenie [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) wyświetla listę wszystkich pomyślnie zarejestrowanych wersji typu aplikacji i ich stan rejestracji. Możesz użyć tego polecenia, aby określić, kiedy rejestracja jest gotowa.
+- Określ większy limit czasu dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) z parametrem `TimeoutSec`.
+- Określ przełącznik `Async` dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Polecenie zwraca wartość, gdy klaster akceptuje polecenie, a rejestracja typu aplikacji jest kontynuowana asynchronicznie. Z tego powodu nie ma potrzeby określania wyższego limitu czasu w tym przypadku. Polecenie [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) wyświetla listę wszystkich pomyślnie zarejestrowanych wersji typu aplikacji i ich stan rejestracji. Możesz użyć tego polecenia, aby określić, kiedy rejestracja jest gotowa.
 
 ```powershell
 Get-ServiceFabricApplicationType
@@ -383,11 +383,11 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 
 ### <a name="deploy-application-package-with-many-files"></a>Wdróż pakiet aplikacji z wieloma plikami
 
-Problem: [Zarejestruj-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) limit czasu dla pakietu aplikacji z wieloma plikami (kolejność tysięcy).
+Problem: [ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) limit czasu dla pakietu aplikacji z wieloma plikami (kolejność tysięcy).
 Wypróbuj:
 - [Kompresuj pakiet](service-fabric-package-apps.md#compress-a-package) przed skopiowaniem do magazynu obrazów. Kompresja zmniejsza liczbę plików.
-- Określ większy limit czasu dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) z `TimeoutSec` parametrem.
-- Określ `Async` przełącznik dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Polecenie zwraca wartość, gdy klaster akceptuje polecenie, a rejestracja typu aplikacji jest kontynuowana asynchronicznie.
+- Określ większy limit czasu dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) z parametrem `TimeoutSec`.
+- Określ przełącznik `Async` dla elementu [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Polecenie zwraca wartość, gdy klaster akceptuje polecenie, a rejestracja typu aplikacji jest kontynuowana asynchronicznie.
 Z tego powodu nie ma potrzeby określania wyższego limitu czasu w tym przypadku. Polecenie [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) wyświetla listę wszystkich pomyślnie zarejestrowanych wersji typu aplikacji i ich stan rejestracji. Możesz użyć tego polecenia, aby określić, kiedy rejestracja jest gotowa.
 
 ```powershell
@@ -401,7 +401,7 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie pakietu aplikacji](service-fabric-package-apps.md)
 

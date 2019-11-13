@@ -1,43 +1,43 @@
 ---
-title: Konfigurowanie środowiska docelowego dla odzyskiwania po awarii lokalnych serwerów fizycznych do platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania docelowego środowiska platformy Azure na potrzeby odzyskiwania po awarii serwerów fizycznych przy użyciu usługi Azure Site Recovery.
+title: Konfigurowanie środowiska docelowego dla serwerów fizycznych w Azure Site Recovery
+description: W tym artykule opisano sposób konfigurowania docelowego środowiska platformy Azure na potrzeby odzyskiwania po awarii serwerów fizycznych przy użyciu Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60949081"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953900"
 ---
-# <a name="prepare-target-vmware-to-azure"></a>Przygotowywanie celu (program VMware do platformy Azure)
+# <a name="prepare-target-vmware-to-azure"></a>Przygotowywanie celu (VMware do platformy Azure)
 
-W tym artykule opisano sposób przygotowania środowiska platformy Azure do uruchamiania replikacji serwerów fizycznych (x 64) systemem Windows lub Linux na platformie Azure.
+W tym artykule opisano, jak przygotować środowisko platformy Azure do uruchamiania replikacji serwerów fizycznych (x64) z systemem Windows lub Linux do platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Artykuł zakłada:
-- Utworzono magazyn usługi Recovery Services można chronić swoje serwery fizyczne. Można utworzyć magazyn usługi Recovery Services z [witryny Azure portal](https://portal.azure.com "witryny Azure portal").
-- Masz [konfiguracji środowiska lokalnego](physical-azure-disaster-recovery.md) replikowania serwerów fizycznych do platformy Azure.
+W tym artykule przyjęto:
+- Utworzono magazyn Recovery Services, aby chronić serwery fizyczne. Magazyn Recovery Services można utworzyć przy użyciu [Azure Portal](https://portal.azure.com "Azure Portal").
+- [Środowisko lokalne zostało skonfigurowane](physical-azure-disaster-recovery.md) w celu replikowania serwerów fizycznych na platformę Azure.
 
 ## <a name="prepare-target"></a>Przygotowywanie celu
 
-Po zakończeniu **cel ochrony 1 kroku** i **krok 2: przygotowanie źródłowego**, nastąpi przekierowanie do **krok 3: Docelowy**
+Po wykonaniu **kroku 1: Wybierz cel ochrony** i **krok 2: przygotowanie źródła**, nastąpi **przejście do kroku 3: cel**
 
 ![Przygotowywanie celu](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
-1. **Subskrypcja:** Z menu rozwijanego Wybierz subskrypcję, którą chcesz replikować serwery fizyczne do.
-2. **Model wdrażania:** Wybierz model wdrażania (Model Klasyczny lub usługi Resource Manager)
+1. **Subskrypcja:** Z menu rozwijanego wybierz subskrypcję, do której chcesz replikować serwery fizyczne.
+2. **Model wdrażania:** Wybierz model wdrażania (klasyczny lub Menedżer zasobów)
 
-Oparte na modelu wdrażania wybranego, uruchomiono aby upewnić się, że masz co najmniej jedno zgodne konto magazynu i sieć wirtualną w subskrypcji docelowej replikacji i trybu failover serwerów fizycznych do weryfikacji.
+W oparciu o wybrany model wdrażania zostanie uruchomiona Walidacja, aby upewnić się, że w subskrypcji docelowej istnieje co najmniej jedno zgodne konto magazynu i Sieć wirtualna do replikacji serwerów fizycznych do programu i przełączania ich w tryb failover.
 
-Po operacje sprawdzania poprawności zakończy się pomyślnie, kliknij przycisk OK, aby przejść do następnego kroku.
+Po pomyślnym ukończeniu walidacji kliknij przycisk OK, aby przejść do następnego kroku.
 
-Jeśli nie masz zgodne konto magazynu usługi Resource Manager lub sieć wirtualną można utworzyć jeden, klikając **+ konto magazynu** lub **+ sieć** przyciski w górnej części strony.
+Jeśli nie masz zgodnego konta magazynu Menedżer zasobów lub sieci wirtualnej, możesz je utworzyć, klikając przycisk **+ konto magazynu** lub **+ sieci** w górnej części strony.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Konfigurowanie ustawień replikacji](vmware-azure-set-up-replication.md).
+## <a name="next-steps"></a>Następne kroki
+[Skonfiguruj ustawienia replikacji](vmware-azure-set-up-replication.md).
