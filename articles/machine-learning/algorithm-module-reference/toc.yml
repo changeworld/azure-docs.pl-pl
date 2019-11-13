@@ -1,147 +1,142 @@
-- name: Odwołanie do modułu projektanta usługi Azure Machine Learning
+- name: Moduły i algorytmy projektanta
   href: module-reference.md
-- name: Dokumentacja usługi Azure Machine Learning
-  href: ../index.yml
-- name: Kategorie modułów
-  expanded: true
+- name: Wprowadzanie i wyprowadzanie danych
   items:
-    - name: Wprowadzanie i wyprowadzanie danych
+    - name: Importowanie danych
+      href: import-data.md
+    - name: Ręczne wprowadzanie danych
+      href: enter-data-manually.md
+    - name: Eksportowanie danych
+      href: export-data.md
+- name: Transformacja danych
+  items:
+    - name: Dodawanie kolumn
+      href: add-columns.md
+    - name: Dodawanie wierszy
+      href: add-rows.md
+    - name: Stosowanie przekształcenia SQL
+      href: apply-sql-transformation.md
+    - name: Konwertowanie na plik CSV
+      href: convert-to-csv.md
+    - name: Konwertowanie na zestaw danych
+      href: convert-to-dataset.md
+    - name: Czyszczenie brakujących danych
+      href: clean-missing-data.md
+    - name: Edytowanie metadanych
+      href: edit-metadata.md
+    - name: Łączenie danych
+      href: join-data.md
+    - name: Normalizowanie danych
+      href: normalize-data.md
+    - name: Usuwanie zduplikowanych wierszy
+      href: remove-duplicate-rows.md
+    - name: Wybieranie przekształcenia kolumn
+      href: select-columns-transform.md
+    - name: Wybieranie kolumn w zestawie danych
+      href: select-columns-in-dataset.md
+- name: Próbkowanie
+  items:
+    - name: Krzyżowa weryfikacja modelu
+      href: cross-validate-model.md
+    - name: Partycjonowanie i próbkowanie
+      href: partition-and-sample.md
+    - name: SMOTE
+      href: smote.md
+    - name: Dzielenie danych
+      href: split-data.md
+- name: Wybieranie funkcji
+  items:
+    - name: Wybór funkcji oparty na filtrze
+      href: filter-based-feature-selection.md
+    - name: Ważność funkcji permutacji
+      href: permutation-feature-importance.md
+- name: Języki Python i R
+  items:
+    - name: Tworzenie modelu języka Python
+      href: create-python-model.md
+    - name: Wykonywanie skryptu w języku Python
+      href: execute-python-script.md
+    - name: Wykonywanie skryptu języka R
+      href: execute-r-script.md
+- name: Analiza tekstu
+  items:
+    - name: Wyodrębnianie cech n-gramów z tekstu
+      href: extract-n-gram-features-from-text.md
+    - name: Tworzenie skrótów funkcji
+      href: feature-hashing.md
+    - name: Wstępne przetwarzanie tekstu
+      href: preprocess-text.md
+- name: Algorytmy uczenia maszynowego
+  items:
+    - name: Klasyfikacja
       items:
-        - name: Importowanie danych
-          href: import-data.md
-        - name: Ręczne wprowadzanie danych
-          href: enter-data-manually.md
-        - name: Eksportowanie danych
-          href: export-data.md
-    - name: Transformacja danych
+        - name: Wieloklasowy las decyzyjny
+          href: multiclass-decision-forest.md
+        - name: Wieloklasowe wzmocnione drzewo decyzyjne
+          href: multiclass-boosted-decision-tree.md
+        - name: Wieloklasowa regresja logistyczna
+          href: multiclass-logistic-regression.md
+        - name: Wieloklasowa sieć neuronowa
+          href: multiclass-neural-network.md
+        - name: Jeden przeciw wszystkim — moduł wieloklasowy
+          href: one-vs-all-multiclass.md
+        - name: Dwuklasowa regresja logistyczna
+          href: two-class-logistic-regression.md
+        - name: Dwuklasowy uśredniony perceptron
+          href: two-class-averaged-perceptron.md
+        - name: Two-Class Boosted Decision Tree (Dwuklasowe wzmocnione drzewo decyzyjne)
+          href: two-class-boosted-decision-tree.md
+        - name: Dwuklasowy las decyzyjny
+          href: two-class-decision-forest.md
+        - name: Dwuklasowa sieć neuronowa
+          href: two-class-neural-network.md
+        - name: Dwuklasowa maszyna wektorów nośnych
+          href: two-class-support-vector-machine.md
+    - name: Klastrowanie
       items:
-        - name: Dodawanie kolumn
-          href: add-columns.md
-        - name: Dodawanie wierszy
-          href: add-rows.md
-        - name: Stosowanie przekształcenia SQL
-          href: apply-sql-transformation.md
-        - name: Konwertowanie na plik CSV
-          href: convert-to-csv.md
-        - name: Konwertowanie na zestaw danych
-          href: convert-to-dataset.md
-        - name: Czyszczenie brakujących danych
-          href: clean-missing-data.md
-        - name: Edytowanie metadanych
-          href: edit-metadata.md
-        - name: Łączenie danych
-          href: join-data.md
-        - name: Normalizowanie danych
-          href: normalize-data.md
-        - name: Usuwanie zduplikowanych wierszy
-          href: remove-duplicate-rows.md
-        - name: Wybieranie przekształcenia kolumn
-          href: select-columns-transform.md
-        - name: Wybieranie kolumn w zestawie danych
-          href: select-columns-in-dataset.md
-    - name: Próbkowanie
+        - name: Klastrowanie metodą k-średnich
+          href: k-means-clustering.md
+    - name: Regresja
       items:
-        - name: Krzyżowa weryfikacja modelu
-          href: cross-validate-model.md
-        - name: Partycjonowanie i próbkowanie
-          href: partition-and-sample.md
-        - name: SMOTE
-          href: smote.md
-        - name: Dzielenie danych
-          href: split-data.md
-    - name: Wybieranie funkcji
+        - name: Regresja wzmocnionego drzewa decyzyjnego
+          href: boosted-decision-tree-regression.md
+        - name: Regresja lasu decyzyjnego
+          href: decision-forest-regression.md
+        - name: Regresja liniowa
+          href: linear-regression.md
+        - name: Regresja sieci neuronowej
+          href: neural-network-regression.md
+    - name: Moduł poleceń
       items:
-        - name: Wybór funkcji oparty na filtrze
-          href: filter-based-feature-selection.md
-        - name: Ważność funkcji permutacji
-          href: permutation-feature-importance.md
-    - name: Języki Python i R
-      items:
-        - name: Tworzenie modelu języka Python
-          href: create-python-model.md
-        - name: Wykonywanie skryptu w języku Python
-          href: execute-python-script.md
-        - name: Wykonywanie skryptu języka R
-          href: execute-r-script.md
-    - name: Analiza tekstu
-      items:
-        - name: Wyodrębnianie cech n-gramów z tekstu
-          href: extract-n-gram-features-from-text.md
-        - name: Tworzenie skrótów funkcji
-          href: feature-hashing.md
-        - name: Wstępne przetwarzanie tekstu
-          href: preprocess-text.md
-    - name: Algorytmy uczenia maszynowego
-      items:
-        - name: Klasyfikacja
-          items:
-            - name: Wieloklasowy las decyzyjny
-              href: multiclass-decision-forest.md
-            - name: Wieloklasowe wzmocnione drzewo decyzyjne
-              href: multiclass-boosted-decision-tree.md
-            - name: Wieloklasowa regresja logistyczna
-              href: multiclass-logistic-regression.md
-            - name: Wieloklasowa sieć neuronowa
-              href: multiclass-neural-network.md
-            - name: Jeden przeciw wszystkim — moduł wieloklasowy
-              href: one-vs-all-multiclass.md
-            - name: Dwuklasowa regresja logistyczna
-              href: two-class-logistic-regression.md
-            - name: Dwuklasowy uśredniony perceptron
-              href: two-class-averaged-perceptron.md
-            - name: Two-Class Boosted Decision Tree (Dwuklasowe wzmocnione drzewo decyzyjne)
-              href: two-class-boosted-decision-tree.md
-            - name: Dwuklasowy las decyzyjny
-              href: two-class-decision-forest.md
-            - name: Dwuklasowa sieć neuronowa
-              href: two-class-neural-network.md
-            - name: Dwuklasowa maszyna wektorów nośnych
-              href: two-class-support-vector-machine.md
-        - name: Klastrowanie
-          items:
-            - name: Klastrowanie metodą k-średnich
-              href: k-means-clustering.md
-        - name: Regresja
-          items:
-            - name: Regresja wzmocnionego drzewa decyzyjnego
-              href: boosted-decision-tree-regression.md
-            - name: Regresja lasu decyzyjnego
-              href: decision-forest-regression.md
-            - name: Regresja liniowa
-              href: linear-regression.md
-            - name: Regresja sieci neuronowej
-              href: neural-network-regression.md
-        - name: Moduł poleceń
-          items:
-            - name: Trenowanie modułu poleceń SVD
-              href: train-svd-recommender.md
+        - name: Trenowanie modułu poleceń SVD
+          href: train-svd-recommender.md
+- name: Trenowanie modelu
+  items:
     - name: Trenowanie modelu
-      items:
-        - name: Trenowanie modelu
-          href: train-model.md
-        - name: Trenowanie modelu klastrowania
-          href: train-clustering-model.md
-        - name: Dostrajanie hiperparametrów modelu
-          href: tune-model-hyperparameters.md
+      href: train-model.md
+    - name: Trenowanie modelu klastrowania
+      href: train-clustering-model.md
+    - name: Dostrajanie hiperparametrów modelu
+      href: tune-model-hyperparameters.md
+- name: Ocena modelu
+  items:
     - name: Ocena modelu
-      items:
-        - name: Ocena modelu
-          href: evaluate-model.md
-        - name: Ocena modułu poleceń
-          href: evaluate-recommender.md
+      href: evaluate-model.md
+    - name: Ocena modułu poleceń
+      href: evaluate-recommender.md
+- name: Klasyfikacja modelu
+  items:
+    - name: Stosowanie przekształcenia
+      href: apply-transformation.md
+    - name: Przypisywanie danych do klastrów
+      href: assign-data-to-clusters.md
     - name: Klasyfikacja modelu
-      items:
-        - name: Stosowanie przekształcenia
-          href: apply-transformation.md
-        - name: Przypisywanie danych do klastrów
-          href: assign-data-to-clusters.md
-        - name: Klasyfikacja modelu
-          href: score-model.md
-        - name: Wynik modułu poleceń SVD
-          href: score-svd-recommender.md
-    - name: Funkcje statystyczne
-      items:
-        - name: Stosowanie operacji matematycznej
-          href: apply-math-operation.md
-        - name: Podsumowywanie danych
-          href: summarize-data.md
+      href: score-model.md
+    - name: Wynik modułu poleceń SVD
+      href: score-svd-recommender.md
+- name: Funkcje statystyczne
+  items:
+    - name: Stosowanie operacji matematycznej
+      href: apply-math-operation.md
+    - name: Podsumowywanie danych
+      href: summarize-data.md
