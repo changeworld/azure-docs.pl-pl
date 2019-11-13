@@ -154,6 +154,8 @@
         - name: Wdrażanie — interfejs API REST
           displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: Wdrożenie warunkowe
+          href: template-deploy-what-if.md
         - name: Ponowne wdrażanie w przypadku błędu
           displayName: rollback
           href: rollback-on-error.md

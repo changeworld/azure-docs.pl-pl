@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: Wydajność przepływu danych
               href: concepts-data-flow-performance.md
-            - name: Przenoszenie węzłów
-              href: concepts-data-flow-move-nodes.md
+            - name: Zarządzanie grafem
+              href: concepts-data-flow-manage-graph.md
             - name: Konstruktor wyrażeń
               href: concepts-data-flow-expression-builder.md
             - name: Język wyrażeń
@@ -616,6 +616,8 @@
           href: connector-troubleshoot-guide.md
         - name: Rozwiązywanie problemów z zarządzaniem środowiskiem Azure-SSIS IR
           href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Rozwiązywanie problemów z własnym środowiskiem IR
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
         - name: Rozwiązywanie problemów z przepływami danych
@@ -646,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Dokumentacja
   items:
+    - name: Skrypt przepływu danych
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

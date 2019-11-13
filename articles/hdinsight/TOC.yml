@@ -35,6 +35,8 @@
       items:
         - name: Składniki usługi Apache Hadoop w usłudze HDInsight
           href: ./hdinsight-component-versioning.md
+        - name: Składniki wysokiej dostępności
+          href: ./hdinsight-high-availability-components.md
         - name: Uczenie maszynowe w usłudze HDInsight
           href: ./hdinsight-machine-learning-overview.md
         - name: Przesyłanie strumieniowe na dużą skalę w usłudze HDInsight

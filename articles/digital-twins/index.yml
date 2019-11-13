@@ -3,7 +3,7 @@ title: Dokumentacja usługi Azure Digital Twins (wersja zapoznawcza)
 summary: Dowiedz się, jak używać usługi Azure Digital Twins do łączenia osób, miejsc i rzeczy oraz tworzenia rozwiązań IoT za pomocą analizy przestrzennej. Wykonaj kroki opisane w przewodniku Szybki start i samouczkach, aby monitorować symulowany budynek inteligentny, poznać szczegółowe pojęcia i utworzyć rozwiązanie IoT następnej generacji, które modeluje środowisko fizyczne.
 metadata:
   title: Dokumentacja usługi Azure Digital Twins (wersja zapoznawcza) — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Tworzenie inteligentnych rozwiązań przestrzennych za pomocą usługi Azure Digital Twins.
+  description: Dowiedz się, jak używać usługi Azure Digital Twins do łączenia osób, miejsc i rzeczy oraz tworzenia rozwiązań IoT za pomocą analizy przestrzennej.
   services: digital-twins
   ms.service: digital-twins
   ms.subservice: digital-twins
@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/03/2019
-  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 3d55dcfc4b57d0179ca6e02bae50bf3d37dc70f3
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71219735"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74009303"
 landingContent:
 - title: Informacje o usłudze Azure Digital Twins
   linkLists:

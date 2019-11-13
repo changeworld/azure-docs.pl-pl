@@ -62,6 +62,18 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
         - name: Node.js
           href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: Blogi techniczne
+      items:
+        - name: Wprowadzenie do interfejsu API narzędzia do wykrywania anomalii platformy Azure
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: Omówienie algorytmu SR-CNN
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+    - name: Demonstracja
+      items:
+        - name: Interaktywny pokaz
+          href: 'https://aka.ms/adDemo'
+        - name: W aplikacji Jupyter Notebook
+          href: 'https://aka.ms/adNotebook'
     - name: Artykuł na temat algorytmu SR-CNN z konferencji KDD 2019
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Zasoby

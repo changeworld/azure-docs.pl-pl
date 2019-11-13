@@ -1183,19 +1183,17 @@
               href: platform/autoscale-webhook-email.md
         - name: PowerShell
           items:
-            - name: Przykłady programu Azure PowerShell
+            - name: Zarządzanie przy użyciu programu PowerShell
               href: platform/powershell-quickstart-samples.md
-            - name: Polecenia cmdlet programu PowerShell
+            - name: Tworzenie alertów
+              href: app/powershell-alerts.md
+            - name: Zarządzanie usługą Log Analytics
               href: platform/powershell-workspace-configuration.md
-            - name: Aplikacje
+            - name: Application Insights
               items:
-                - name: Tworzenie zasobów usługi Application Insights
+                - name: Zarządzanie usługą Application Insights
                   href: app/powershell.md
-                - name: Tworzenie zasobów
-                  href: app/powershell-script-create-resource.md
-                - name: Ustawianie alertów
-                  href: app/powershell-alerts.md
-                - name: Uzyskiwanie diagnostyki platformy Azure
+                - name: Zarządzanie usługą Azure Cloud Services
                   href: app/powershell-azure-diagnostics.md
         - name: Przykłady interfejsu wiersza polecenia platformy Azure
           href: platform/cli-samples.md

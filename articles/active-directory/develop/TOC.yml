@@ -392,9 +392,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Konfiguracja aplikacji
           items:
-            - name: Przewodnik szkoleniowy na temat rejestracji aplikacji w witrynie Azure Portal (starsza wersja)
+            - name: Przejście z rejestracji aplikacji (starszej wersji) do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Przewodnik po rejestracji aplikacji w portalu rejestracji aplikacji
+            - name: Przejście z portalu rejestracji aplikacji do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
               href: app-registration-portal-training-guide.md
             - name: Konwertowanie aplikacji z jedną dzierżawą na aplikację z wieloma dzierżawami
               href: howto-convert-app-to-be-multi-tenant.md

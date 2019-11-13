@@ -166,9 +166,7 @@
       items:
         - name: Dodawanie intencji
           href: luis-how-to-add-intents.md
-        - name: Dodawanie jednostki do wypowiedzi
-          href: luis-how-to-add-example-utterances.md
-        - name: Dodawanie jednostki bez wypowiedzi
+        - name: Dodawanie jednostki w celu wyodrębniania danych
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Korzystanie ze wstępnie utworzonych modeli
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Dokumentacja jednostek niestandardowych
       items:
+        - name: Jednostka nauczona maszynowo
+          href: reference-entity-machine-learned-entity.md
         - name: Jednostka złożona
           href: reference-entity-composite.md
         - name: Jednostka listy
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: Prosta jednostka
           href: reference-entity-simple.md
+    - name: Składnia wzorca
+      href: reference-pattern-syntax.md
     - name: Opinia
       href: luis-reference-prebuilt-sentiment.md
     - name: Zasoby deweloperów

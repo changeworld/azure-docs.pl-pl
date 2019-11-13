@@ -307,8 +307,8 @@
               href: concepts-gating-overview.md
             - name: Wdrażanie technologii syntetycznej
               href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Uwaga dotycząca przejrzystości dla głosu niestandardowego
-              href: 'https://aka.ms/neural-tts-transparency-note'
+            - name: Ujawnianie dotyczące aktorów głosowych
+              href: 'https://aka.ms/disclosure-voice-talent'
             - name: Wytyczne dotyczące projektowania ujawniania
               href: concepts-disclosure-guidelines.md
             - name: Wzorce projektowania ujawniania
