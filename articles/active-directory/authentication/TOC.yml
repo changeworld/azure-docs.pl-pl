@@ -139,8 +139,6 @@
           href: howto-authentication-passwordless-security-key.md
         - name: Windows 10 bez hasła
           href: howto-authentication-passwordless-security-key-windows.md
-        - name: Środowisko lokalne bez hasła
-          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Logowanie za pomocą telefonu bez hasła
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello dla firm

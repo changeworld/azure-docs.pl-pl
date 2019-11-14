@@ -1,5 +1,5 @@
 ---
-title: Tworzenie udostępnionych obrazów maszyn wirtualnych przy użyciu Azure PowerShell | Microsoft Docs
+title: Tworzenie udostępnionych obrazów maszyn wirtualnych za pomocą Azure PowerShell
 description: Dowiedz się, jak za pomocą Azure PowerShell utworzyć obraz udostępnionej maszyny wirtualnej na platformie Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 01e6d9dff0ea2c2b60d8e2ab42e39e36d998be83
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390578"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066239"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Tworzenie udostępnionej galerii obrazów przy użyciu Azure PowerShell 
 

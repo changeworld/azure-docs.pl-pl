@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: ec21c26c705dab94b15c1f76be5e62207b9f206f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6fc17f08db5951a3d693c7a5e3d5556d848d2efb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815667"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075045"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować obsługę Virtual Network w przypadku pamięci podręcznej Premium platformy Azure dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. Sieć wirtualna jest siecią prywatną w chmurze. Gdy usługa Azure cache for Redis jest skonfigurowana przy użyciu sieci wirtualnej, nie jest ona publicznie adresowana i można uzyskać do niej dostęp tylko z maszyn wirtualnych i aplikacji w sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej na potrzeby wystąpienia usługi Redis w warstwie Premium.
@@ -39,7 +39,7 @@ Obsługa Virtual Network (VNet) jest konfigurowana w **nowym bloku Azure cache f
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Po wybraniu warstwy cenowej Premium można skonfigurować integrację sieci wirtualnej Redis, wybierając sieć wirtualną znajdującą się w tej samej subskrypcji i lokalizacji co pamięć podręczna. Aby użyć nowej sieci wirtualnej, należy ją najpierw utworzyć, wykonując kroki opisane w temacie [Utwórz sieć wirtualną przy użyciu Azure Portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) lub [Utwórz sieć wirtualną (klasyczną) przy użyciu Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) , a następnie wróć do **nowego bloku Azure cache for Redis** , aby utworzyć i Skonfiguruj pamięć podręczną Premium.
+Po wybraniu warstwy cenowej Premium można skonfigurować integrację sieci wirtualnej Redis, wybierając sieć wirtualną znajdującą się w tej samej subskrypcji i lokalizacji co pamięć podręczna. Aby użyć nowej sieci wirtualnej, należy ją najpierw utworzyć, wykonując czynności opisane w temacie [Create a Virtual Network przy użyciu Azure Portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) lub [Utwórz sieć wirtualną (klasyczną) za pomocą Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a następnie wróć do **nowego bloku Azure cache for Redis** , aby utworzyć i skonfigurować pamięć podręczną Premium.
 
 Aby skonfigurować sieć wirtualną dla nowej pamięci podręcznej, kliknij pozycję **Virtual Network** w **nowym bloku Azure cache for Redis** i wybierz żądaną sieć wirtualną z listy rozwijanej.
 
@@ -104,24 +104,27 @@ Gdy pamięć podręczna platformy Azure dla usługi Redis jest hostowana w sieci
 
 #### <a name="outbound-port-requirements"></a>Wymagania dotyczące portów wychodzących
 
-Istnieją siedem wymagań portu wychodzącego.
+Istnieją dziewięć wymagań portu wychodzącego.
 
 - Wszystkie połączenia wychodzące do Internetu można wykonać za pomocą lokalnego urządzenia do inspekcji klienta.
 - Trzy porty kierują ruch do punktów końcowych platformy Azure obsługujących usługę Azure Storage i Azure DNS.
 - Pozostałe zakresy portów i wewnętrzna komunikacja z podsiecią Redis. Nie są wymagane żadne reguły sieciowej grupy zabezpieczeń podsieci dla wewnętrznej komunikacji z podsiecią Redis.
 
-| Porty | Kierunek | Protokół transportowy | Cel | Lokalny adres IP | Zdalny adres IP |
+| Porty | Kierunek | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Wyjściowy |TCP |Redis zależności w usłudze Azure Storage/PKI (Internet) | (Podsieć Redis) |* |
-| 53 |Wyjściowy |TCP/UDP |Redis zależności w systemie DNS (Internet/Sieć wirtualna) | (Podsieć Redis) | 168.63.129.16 i 169.254.169.254 <sup>1</sup> oraz dowolny niestandardowy serwer DNS dla podsieci <sup>3</sup> |
-| 8443 |Wyjściowy |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) | (Podsieć Redis) |
-| 10221-10231 |Wyjściowy |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) | (Podsieć Redis) |
-| 20226 |Wyjściowy |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
-| 13000-13999 |Wyjściowy |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
-| 15000-15999 |Wyjściowy |TCP |Komunikacja wewnętrzna Redis i replikacja geograficzna | (Podsieć Redis) |(Podsieć Redis) (Podsieć równorzędna repliki geograficznej) |
-| 6379-6380 |Wyjściowy |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
+| 80, 443 |Wychodzący |TCP |Redis zależności w usłudze Azure Storage/PKI (Internet) | (Podsieć Redis) |* |
+| 443 | Wychodzący | TCP | Redis zależność od Azure Key Vault | (Podsieć Redis) | AzureKeyVault <sup>1</sup> |
+| 53 |Wychodzący |TCP/UDP |Redis zależności w systemie DNS (Internet/Sieć wirtualna) | (Podsieć Redis) | 168.63.129.16 i 169.254.169.254 <sup>2</sup> oraz dowolny niestandardowy serwer DNS dla podsieci <sup>3</sup> |
+| 8443 |Wychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) | (Podsieć Redis) |
+| 10221-10231 |Wychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) | (Podsieć Redis) |
+| 20226 |Wychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
+| 13000-13999 |Wychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
+| 15000-15999 |Wychodzący |TCP |Komunikacja wewnętrzna Redis i replikacja geograficzna | (Podsieć Redis) |(Podsieć Redis) (Podsieć równorzędna repliki geograficznej) |
+| 6379-6380 |Wychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
 
-<sup>1</sup> te adresy IP należące do firmy Microsoft są używane do ADRESOWANIA maszyny wirtualnej hosta, która obsługuje Azure DNS.
+<sup>1</sup> możesz użyć znacznika usługi "AzureKeyVault" z grupami zabezpieczeń sieci Menedżer zasobów.
+
+<sup>2</sup> te adresy IP należące do firmy Microsoft są używane do ADRESOWANIA maszyny wirtualnej hosta, która obsługuje Azure DNS.
 
 <sup>3</sup> nie jest wymagana w przypadku podsieci bez NIESTANDARDOWEGO serwera DNS lub nowszych pamięci podręcznych Redis, które ignorują niestandardowy serwer DNS.
 
@@ -133,18 +136,18 @@ W przypadku używania georeplikacji między pamięciami podręcznymi w sieciach 
 
 Istnieją osiem wymagań zakresu portów przychodzących. Żądania przychodzące w tych zakresach są przychodzące z innych usług hostowanych w tej samej sieci wirtualnej lub wewnętrznych dla komunikacji podsieci Redis.
 
-| Porty | Kierunek | Protokół transportowy | Cel | Lokalny adres IP | Zdalny adres IP |
+| Porty | Kierunek | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Dotycząc |TCP |Komunikacja z klientem do Redis, równoważenie obciążenia platformy Azure | (Podsieć Redis) | (Podsieć Redis), Virtual Network, Azure Load Balancer <sup>2</sup> |
-| 8443 |Dotycząc |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
-| 8500 |Dotycząc |TCP/UDP |Równoważenie obciążenia platformy Azure | (Podsieć Redis) |Azure Load Balancer |
-| 10221-10231 |Dotycząc |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis), Azure Load Balancer |
-| 13000-13999 |Dotycząc |TCP |Komunikacja klienta z klastrami Redis, usługa równoważenia obciążenia platformy Azure | (Podsieć Redis) |Virtual Network, Azure Load Balancer |
-| 15000-15999 |Dotycząc |TCP |Komunikacja z klientem do klastrów Redis, równoważenia obciążenia platformy Azure i replikacji geograficznej | (Podsieć Redis) |Virtual Network, Azure Load Balancer, (podsieć równorzędna z repliką geograficzną) |
-| 16001 |Dotycząc |TCP/UDP |Równoważenie obciążenia platformy Azure | (Podsieć Redis) |Azure Load Balancer |
-| 20226 |Dotycząc |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
+| 6379, 6380 |Przychodzący |TCP |Komunikacja z klientem do Redis, równoważenie obciążenia platformy Azure | (Podsieć Redis) | (Podsieć Redis), Virtual Network, Azure Load Balancer <sup>1</sup> |
+| 8443 |Przychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
+| 8500 |Przychodzący |TCP/UDP |Równoważenie obciążenia platformy Azure | (Podsieć Redis) |Azure Load Balancer |
+| 10221-10231 |Przychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis), Azure Load Balancer |
+| 13000-13999 |Przychodzący |TCP |Komunikacja klienta z klastrami Redis, usługa równoważenia obciążenia platformy Azure | (Podsieć Redis) |Virtual Network, Azure Load Balancer |
+| 15000-15999 |Przychodzący |TCP |Komunikacja z klientem do klastrów Redis, równoważenia obciążenia platformy Azure i replikacji geograficznej | (Podsieć Redis) |Virtual Network, Azure Load Balancer, (podsieć równorzędna z repliką geograficzną) |
+| 16001 |Przychodzący |TCP/UDP |Równoważenie obciążenia platformy Azure | (Podsieć Redis) |Azure Load Balancer |
+| 20226 |Przychodzący |TCP |Komunikacja wewnętrzna dla Redis | (Podsieć Redis) |(Podsieć Redis) |
 
-<sup>2</sup> do tworzenia reguł sieciowej grupy zabezpieczeń można użyć znacznika usługi "AzureLoadBalancer" (Menedżer zasobów) (lub elementu "AZURE_LOADBALANCER" dla klasycznego).
+<sup>1</sup> do tworzenia reguł sieciowej grupy zabezpieczeń można użyć znacznika usługi "AzureLoadBalancer Menedżer zasobów" (lub "AZURE_LOADBALANCER" dla klasycznego).
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>Dodatkowe wymagania dotyczące łączności sieci wirtualnej
 
@@ -170,7 +173,7 @@ Po skonfigurowaniu wymagań dotyczących portów zgodnie z opisem w poprzedniej 
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
-    Jeśli narzędzie `tcping` zgłasza, że port jest otwarty, pamięć podręczna jest dostępna do połączenia z klientów w sieci wirtualnej.
+    Jeśli narzędzie `tcping` raportuje, że port jest otwarty, pamięć podręczna jest dostępna do połączenia z klientów w sieci wirtualnej.
 
   - Innym sposobem na przetestowanie jest utworzenie klienta testowej pamięci podręcznej (który może być prostą aplikacją konsolową przy użyciu StackExchange. Redis), który łączy się z pamięcią podręczną i dodaje i pobiera niektóre elementy z pamięci podręcznej. Zainstaluj przykładową aplikację kliencką na maszynie wirtualnej znajdującej się w tej samej sieci wirtualnej, w której znajduje się pamięć podręczna, i uruchom ją w celu sprawdzenia łączności z pamięcią podręczną.
 
@@ -189,7 +192,7 @@ Należy unikać używania adresu IP podobnego do następujących parametrów po�
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Jeśli nie można rozpoznać nazwy DNS, niektóre biblioteki klienta obejmują opcje konfiguracji, takie jak `sslHost`, który jest dostarczany przez klienta StackExchange. Redis. Pozwala to zastąpić nazwę hosta używaną do sprawdzania poprawności certyfikatu. Na przykład:
+Jeśli nie można rozpoznać nazwy DNS, niektóre biblioteki klienta obejmują opcje konfiguracji, takie jak `sslHost` zapewniane przez klienta StackExchange. Redis. Pozwala to zastąpić nazwę hosta używaną do sprawdzania poprawności certyfikatu. Na przykład:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -254,4 +257,3 @@ Dowiedz się, jak korzystać z większej liczby funkcji pamięci podręcznej Pre
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
-

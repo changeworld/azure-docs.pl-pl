@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wysoka dostępność dla maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Samouczek — wysoka dostępność dla maszyn wirtualnych z systemem Windows na platformie Azure
 description: Z tego samouczka dowiesz się, jak za pomocą programu Azure PowerShell wdrażać maszyny wirtualne o wysokiej dostępności w zestawach dostępności
 documentationcenter: ''
 services: virtual-machines-windows
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b943a4476a6b0d639353816337deea96eb14fe24
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101701"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068132"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Samouczek: tworzenie i wdrażanie maszyn wirtualnych o wysokiej dostępności za pomocą programu Azure PowerShell
 

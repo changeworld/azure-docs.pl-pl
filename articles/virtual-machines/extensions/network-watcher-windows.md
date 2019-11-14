@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenie maszyny wirtualnej usługi Azure Network Watcher Agent dla systemu Windows | Microsoft Docs
+title: Rozszerzenie maszyny wirtualnej usługi Azure Network Watcher Agent dla systemu Windows
 description: Wdróż agenta Network Watcher na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 77685fd6549906cfb050e12d53ec151c964fda42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084413"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073686"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej agenta Network Watcher dla systemu Windows
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) to usługa monitorowania wydajności sieci, diagnostyki i analizy, która umożliwia monitorowanie sieci platformy Azure. Rozszerzenie maszyny wirtualnej agenta Network Watcher jest wymaganiem do przechwytywania ruchu sieciowego na żądanie oraz innych zaawansowanych funkcji na maszynach wirtualnych platformy Azure.
 
@@ -64,7 +64,7 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta Network Watcher. Rozs
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład |
+| Nazwa | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
@@ -78,7 +78,7 @@ Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać za pomocą szab
 
 ## <a name="powershell-deployment"></a>Wdrażanie programu PowerShell
 
-`Set-AzVMExtension` Użyj polecenia, aby wdrożyć rozszerzenie maszyny wirtualnej agenta Network Watcher na istniejącej maszynie wirtualnej:
+Użyj `Set-AzVMExtension` polecenie, aby wdrożyć rozszerzenie maszyny wirtualnej agenta Network Watcher do istniejącej maszyny wirtualnej:
 
 ```powershell
 Set-AzVMExtension `

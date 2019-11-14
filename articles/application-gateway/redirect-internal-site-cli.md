@@ -1,35 +1,31 @@
 ---
-title: Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w wewnętrznej sieci web do odpowiedniej puli przy użyciu wiersza polecenia platformy Azure.
+title: Przekierowanie wewnętrzne przy użyciu interfejsu wiersza polecenia
+titleSuffix: Azure Application Gateway
+description: Dowiedz się, jak utworzyć bramę aplikacji, która przekierowuje wewnętrzny ruch internetowy do odpowiedniej puli przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 25c50d400a68cdbfb9110a9e8e9d66477ad4710a
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513368"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074552"
 ---
-# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji z przekierowaniami wewnętrznymi przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Można użyć wiersza polecenia platformy Azure, aby skonfigurować [przekierowywanie ruchu w sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym samouczku zdefiniujesz puli zaplecza przy użyciu zestawu skalowania maszyn wirtualnych. Następnie należy skonfigurować detektory i reguły na podstawie domen, których jesteś właścicielem, aby upewnić się, że ruch w sieci web dociera do odpowiedniej puli. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www\.contoso.com* i *www\.contoso.org*.
+Przy użyciu interfejsu wiersza polecenia platformy Azure można skonfigurować [przekierowywanie ruchu internetowego](multiple-site-overview.md) podczas tworzenia [bramy aplikacji](overview.md). W tym samouczku zdefiniujesz pulę zaplecza przy użyciu zestawu skalowania maszyn wirtualnych. Następnie należy skonfigurować detektory i reguły oparte na domenach, aby upewnić się, że ruch internetowy dociera do odpowiedniej puli. W tym samouczku przyjęto założenie, że posiadasz wiele domen i używasz przykładów *sieci web\.contoso.com* i *www\.contoso.org*.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Dodaj regułę przekierowywania i odbiorników
-> * Tworzenie maszyny wirtualnej zestawu skalowania z puli zaplecza
+> * Dodaj odbiorniki i regułę przekierowania
+> * Tworzenie zestawu skalowania maszyn wirtualnych z pulą zaplecza
 > * Tworzenie rekordu CNAME w domenie
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -50,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane przez pulę zaplecza serwerów przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet). Następnie można dodać podsieć o nazwie *myBackendSubnet* , która jest wymagana przez pulę zaplecza serwerów za pomocą polecenia [AZ Network VNET Subnet Create](/cli/azure/network/vnet/subnet). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -101,7 +97,7 @@ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplika
 
 ## <a name="add-listeners-and-rules"></a>Dodawanie odbiorników i reguł 
 
-Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen z *www\.contoso.com* i *www\.contoso.org*.
+Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie są tworzone odbiorniki dla domen *www\.contoso.com* i *www\.contoso.org*.
 
 Dodaj odbiorniki zaplecza, które są wymagane do kierowania ruchu, używając polecenia [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
 
@@ -122,9 +118,9 @@ az network application-gateway http-listener create \
   --host-name www.contoso.org   
   ```
 
-### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
+### <a name="add-the-redirection-configuration"></a>Dodawanie konfiguracji przekierowania
 
-Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z *www\.consoto.org* do odbiornika dla *www\.contoso.com* w usłudze application gateway przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Dodaj konfigurację przekierowania, która wysyła ruch z *sieci web\.consoto.org* do odbiornika dla *sieci www\.contoso.com* w bramie aplikacji za pomocą polecenia [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -139,9 +135,9 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-routing-rules"></a>Dodawanie reguł routingu
 
-Reguły są przetwarzane w kolejności, w którym są tworzone, a ruch jest kierowany za pomocą pierwszej reguły, który jest zgodny z adresem URL wysłanych do usługi application gateway. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
+Reguły są przetwarzane w kolejności, w której zostały utworzone, a ruch jest kierowany przy użyciu pierwszej reguły, która pasuje do adresu URL wysyłanego do bramy aplikacji. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
 
-W tym przykładzie utworzenie dwóch nowych reguł i usunąć domyślnej reguły, który został utworzony.  Regułę możesz dodać przy użyciu polecenia [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+W tym przykładzie utworzysz dwie nowe reguły i usuniesz utworzoną regułę domyślną.  Regułę możesz dodać przy użyciu polecenia [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -166,7 +162,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Tworzenie zestawów skalowania maszyn wirtualnych
 
-W tym przykładzie utworzysz zestaw skalowania maszyn wirtualnych, który obsługuje puli zaplecza, który został utworzony. Nosi nazwę zestawu skalowania, którą tworzysz *myvmss* i zawiera dwa wystąpienia maszyn wirtualnych, na których możesz zainstalować rozwiązanie NGINX.
+W tym przykładzie utworzysz zestaw skalowania maszyn wirtualnych obsługujący utworzoną pulę zaplecza. Utworzony zestaw skalowania ma nazwę *myvmss* i zawiera dwa wystąpienia maszyn wirtualnych, na których jest instalowany program Nginx.
 
 ```azurecli-interactive
 az vmss create \
@@ -186,7 +182,7 @@ az vmss create \
 
 ### <a name="install-nginx"></a>Instalowanie serwera NGINX
 
-Uruchom następujące polecenie w oknie powłoki:
+Uruchom to polecenie w oknie powłoki:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -213,18 +209,18 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Takich jak http:\//www.contoso.com.
+Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http:\//www.contoso.com.
 
 ![Testowanie witryny contoso w bramie aplikacji](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Zmień adres na inne domeny, na przykład http:\//www.contoso.org i powinien zostać wyświetlony, że ruch został przekierowany do odbiornika dla www\.contoso.com.
+Zmień adres na inną domenę, na przykład http:\//www.contoso.org, i sprawdź, czy ruch został przekierowany z powrotem do odbiornika dla sieci www\.contoso.com.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Dodaj regułę przekierowywania i odbiorników
-> * Tworzenie maszyny wirtualnej zestawu skalowania z puli zaplecza
+> * Dodaj odbiorniki i regułę przekierowania
+> * Tworzenie zestawu skalowania maszyn wirtualnych z pulą zaplecza
 > * Tworzenie rekordu CNAME w domenie

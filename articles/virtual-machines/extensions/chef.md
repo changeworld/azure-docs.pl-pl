@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenie Chef dla maszyn wirtualnych platformy Azure | Microsoft Docs
+title: Rozszerzenie Chef dla maszyn wirtualnych platformy Azure
 description: Wdróż klienta Chef na maszynie wirtualnej przy użyciu rozszerzenia maszyny wirtualnej Chef.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169146"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073201"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Rozszerzenie maszyny wirtualnej Chef dla systemów Linux i Windows
 
@@ -36,7 +36,7 @@ Rozszerzenie maszyny wirtualnej Chef wymaga, aby docelowa maszyna wirtualna był
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej Chef. Rozszerzenie wymaga co najmniej adresu URL serwera Chef, nazwy klienta weryfikacji i klucza weryfikacji dla serwera Chef; te wartości można znaleźć w `knife.rb` pliku Starter-Kit. zip, który jest pobierany podczas instalowania [Chef automatyzuje](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) lub autonomicznego [serwera Chef](https://downloads.chef.io/chef-server). Ponieważ klucz weryfikacji powinien być traktowany jako dane poufne, powinien być skonfigurowany w ramach elementu **protectedSettings** , co oznacza, że zostanie on odszyfrowany tylko na docelowej maszynie wirtualnej.
+Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej Chef. Rozszerzenie wymaga co najmniej adresu URL serwera Chef, nazwy klienta weryfikacji i klucza weryfikacji dla serwera Chef; te wartości można znaleźć w pliku `knife.rb` Starter-Kit. zip, który jest pobierany podczas instalowania [Chef automatyzuje](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) lub autonomicznego [serwera Chef](https://downloads.chef.io/chef-server). Ponieważ klucz weryfikacji powinien być traktowany jako dane poufne, powinien być skonfigurowany w ramach elementu **protectedSettings** , co oznacza, że zostanie on odszyfrowany tylko na docelowej maszynie wirtualnej.
 
 ```json
 {
@@ -67,26 +67,26 @@ Poniższy kod JSON przedstawia schemat rozszerzenia maszyny wirtualnej Chef. Roz
 
 ### <a name="core-property-values"></a>Podstawowe wartości właściwości
 
-| Name | Wartość / przykład | Typ danych
+| Nazwa | Wartość / przykład | Typ danych
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | ciąg |
-| type | `LinuxChefClient`(Linux), `ChefClient` (system Windows) | ciąg |
+| type | `LinuxChefClient` (Linux), `ChefClient` (system Windows) | ciąg |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Ustawienia
 
-| Name | Wartość / przykład | Typ danych | Wymagana?
+| Nazwa | Wartość / przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | T |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | ciąg | T |
-| Ustawienia/runlist | `recipe[mycookbook::default]` | ciąg | T |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Tak |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | ciąg | Tak |
+| Ustawienia/runlist | `recipe[mycookbook::default]` | ciąg | Tak |
 
 ### <a name="protected-settings"></a>Ustawienia chronione
 
-| Name | Przykład | Typ danych | Wymagana?
+| Nazwa | Przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | ciąg | T |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | ciąg | Tak |
 
 <!--
 ### Linux-specific settings
@@ -110,7 +110,7 @@ Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone 
 
 ## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure może służyć do wdrożenia rozszerzenia maszyny wirtualnej Chef na istniejącej maszynie wirtualnej. Zastąp **validation_key** zawartością klucza weryfikacji (ten plik jako `.pem` rozszerzenie).  Zastąp wartości **validation_client_name**, **chef_server_url** i **run_list** tymi wartościami z `knife.rb` pliku w zestawie startowym.
+Interfejs wiersza polecenia platformy Azure może służyć do wdrożenia rozszerzenia maszyny wirtualnej Chef na istniejącej maszynie wirtualnej. Zastąp **validation_key** zawartością klucza weryfikacji (ten plik jako rozszerzenie `.pem`).  Zastąp **validation_client_name**, **chef_server_url** i **run_list** tymi wartościami z pliku `knife.rb` w twoim zestawie startowym.
 
 ```azurecli
 az vm extension set \

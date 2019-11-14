@@ -1,7 +1,7 @@
 ---
 title: Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux
 titlesuffix: Azure Load Balancer
-description: Jak skonfigurować protokołu DHCPv6 dla maszyn wirtualnych systemu Linux.
+description: W tym artykule dowiesz się, jak skonfigurować protokół DHCPv6 dla maszyn wirtualnych z systemem Linux.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1eea6d71b06bac47dcc4fdca9302ee937e0fd54d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274927"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077029"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux
 
@@ -56,7 +56,7 @@ Ten dokument opisuje sposób włączania protokołu DHCPv6, tak aby maszyny wirt
     ```
 Począwszy od Ubuntu 17,10, domyślnym mechanizmem konfiguracji sieci jest [Plan]( https://netplan.io).  W czasie instalacji/tworzenia wystąpienia, PLAN sieciowy odczytuje konfigurację sieci z plików konfiguracji YAML w tej lokalizacji:/{lib, itp., uruchom}/netplan/*. YAML.
 
-Dołącz instrukcję *dhcp6: true* dla każdego interfejsu Ethernet w konfiguracji.  Przykład:
+Dołącz instrukcję *dhcp6: true* dla każdego interfejsu Ethernet w konfiguracji.  Na przykład:
   
         network:
           version: 2
@@ -64,7 +64,7 @@ Dołącz instrukcję *dhcp6: true* dla każdego interfejsu Ethernet w konfigurac
             eno1:
               dhcp6: true
 
-Podczas wczesnego rozruchu, plan sieci "moduł renderowania sieciowego" zapisuje konfigurację, aby można było usunąć kontrolę nad urządzeniami do określonego demona sieci, aby uzyskać informacje referencyjne na https://netplan.io/reference temat planu, zobacz.
+Podczas wczesnego rozruchu, plan sieci "moduł renderowania sieciowego" zapisuje konfigurację, aby można było usunąć kontrolę nad urządzeniami do określonego demona sieci, aby uzyskać informacje referencyjne na temat planu sieciowego, zobacz https://netplan.io/reference.
  
 ## <a name="debian"></a>Debian
 

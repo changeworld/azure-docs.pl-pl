@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 356eab6122272162f20e1516a9ef7f4ea0127084
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049047"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068896"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
@@ -27,9 +27,9 @@ W tym artykule przedstawiono sposób tworzenia zasobu bramy platformy Azure dla 
 
 Aby uzyskać informacje o sposobach korzystania z bramy z innymi usługami, zobacz następujące artykuły:
 
-* [Lokalna Brama danych Power BI firmy Microsoft](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Automatyzacja lokalnej bramy danych](/power-automate/gateway-reference)
-* [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Microsoft energia — lokalna Brama danych](/power-automate/gateway-reference)
+* [Lokalna Brama danych Power BI firmy Microsoft](/power-bi/service-gateway-onprem)
+* [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>

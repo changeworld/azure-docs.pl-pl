@@ -9,17 +9,18 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: e9c7d5f79f2af77554122b607aeae470a1145954
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6f00b51cc5ac23aa8d1d39202ca79a9f5d762cbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827289"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074802"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Informacje o wersji programu Microsoft Azure Backup Server
+
 W tym artykule przedstawiono znane problemy i rozwiązania dla programu Microsoft Azure Backup Server (serwera usługi MAB) v3.
 
-##  <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Tworzenie kopii zapasowych i odzyskiwanie nie powiedzie się w przypadku obciążeń klastrowanych
+## <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Tworzenie kopii zapasowych i odzyskiwanie nie powiedzie się w przypadku obciążeń klastrowanych
 
 **Opis:** Tworzenie kopii zapasowej/przywracanie nie powiedzie się w przypadku klastrowanych źródeł danych, takich jak klaster funkcji Hyper-V lub klaster SQL (zawsze włączone) lub program Exchange w grupie dostępności bazy danych (DAG) po uaktualnieniu serwera usługi MAB v2 do wersji serwera usługi MAB v3.
 
@@ -52,29 +53,28 @@ Obejście **:** Aby temu zapobiec, Otwórz SQL Server Management Studio (SSMS)) 
     GO
 ```
 
-
-##  <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Uaktualnianie do programu serwera usługi MAB V3 nie powiodło się w ustawieniach regionalnych rosyjskich
+## <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Uaktualnianie do programu serwera usługi MAB V3 nie powiodło się w ustawieniach regionalnych rosyjskich
 
 **Opis:** Uaktualnianie z wersji serwera usługi MAB v2 do serwera usługi MAB V3 w rosyjskich ustawieniach regionalnych kończy się niepowodzeniem z kodem błędu **4387**.
 
 Obejście **:** Wykonaj następujące kroki, aby uaktualnić program do wersji serwera usługi MAB v3 przy użyciu pakietu instalacji Rosyjskiej:
 
-1.  [Utwórz kopię zapasową](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) bazy danych SQL i odinstaluj serwera usługi MAB v2 (Wybierz, aby zachować chronione dane podczas odinstalowywania).
-2.  Uaktualnij do wersji SQL 2017 (Enterprise) i Odinstaluj raportowanie w ramach uaktualnienia.
+1. [Utwórz kopię zapasową](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) bazy danych SQL i odinstaluj serwera usługi MAB v2 (Wybierz, aby zachować chronione dane podczas odinstalowywania).
+2. Uaktualnij do wersji SQL 2017 (Enterprise) i Odinstaluj raportowanie w ramach uaktualnienia.
 3. [Zainstaluj](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) program SQL Server Reporting Services (SSRS).
-4.  [Zainstaluj](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) program SQL Server Management Studio (SSMS).
-5.  Skonfiguruj raportowanie przy użyciu parametrów zgodnie z opisem w temacie [Konfiguracja usług SSRS w programie SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
-6.  [Zainstaluj](backup-azure-microsoft-azure-backup.md) program SERWERA USŁUGI MAB V3.
+4. [Zainstaluj](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) program SQL Server Management Studio (SSMS).
+5. Skonfiguruj raportowanie przy użyciu parametrów zgodnie z opisem w temacie [Konfiguracja usług SSRS w programie SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
+6. [Zainstaluj](backup-azure-microsoft-azure-backup.md) program SERWERA USŁUGI MAB V3.
 7. [Przywróć](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL za pomocą programu SSMS i uruchom narzędzie synchronizacji programu DPM zgodnie z opisem w [tym miejscu](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)).
-8.  Zaktualizuj Właściwość "bazy" w tabeli dbo. tbl _DLS_GlobalSetting przy użyciu następującego polecenia:
+8. Zaktualizuj Właściwość "bazy" w tabeli dbo. tbl_DLS_GlobalSetting przy użyciu następującego polecenia:
+
 ```sql
         UPDATE dbo.tbl_DLS_GlobalSetting
         set PropertyValue = '13.0.415.0'
         where PropertyName = 'DatabaseVersion'
 ```
 
-9.  Uruchom usługę MSDPM.
-
+9. Uruchom usługę MSDPM.
 
 ## <a name="next-steps"></a>Następne kroki
 

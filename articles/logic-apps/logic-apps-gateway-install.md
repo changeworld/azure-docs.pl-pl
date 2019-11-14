@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 6daf9351e48603824aa6cec30adb4a6b82349784
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049036"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076933"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
 Przed [nawiązaniem połączenia z lokalnymi źródłami danych z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)Pobierz i zainstaluj lokalną [bramę danych](https://aka.ms/on-premises-data-gateway-installer) na komputerze lokalnym. Brama działa jako most, który zapewnia szybkie przesyłanie i szyfrowanie danych między źródłami danych w środowisku lokalnym i aplikacjami logiki. Możesz użyć tej samej instalacji bramy z innymi usługami w chmurze, takich jak Power BI, Automatyzacja, aplikacje i Azure Analysis Services. Aby uzyskać informacje o sposobach korzystania z bramy za pomocą tych usług, zobacz następujące artykuły:
 
-* [Lokalna Brama danych Power BI firmy Microsoft](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Automatyzacja lokalnej bramy danych](/power-automate/gateway-reference)
+* [Microsoft energia — lokalna Brama danych](/power-automate/gateway-reference)
+* [Lokalna Brama danych Power BI firmy Microsoft](/power-bi/service-gateway-onprem)
+* [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
 
 W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną bramę danych, aby można było uzyskać dostęp do lokalnych źródeł danych z Azure Logic Apps. Możesz również dowiedzieć się więcej o tym [, jak Brama danych działa](#gateway-cloud-service) w dalszej części tego tematu. Aby uzyskać więcej informacji na temat bramy, zobacz [co to jest brama lokalna](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a24f670314d2f6679e37b438a74421e0e84604e2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973438"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075482"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Zarządzanie zaszyfrowanymi wpisami tajnymi w aplikacjach Service Fabric
 Ten przewodnik przeprowadzi Cię przez kroki związane z zarządzaniem wpisami tajnymi w aplikacji Service Fabric. Wpisy tajne mogą być dowolnymi informacjami poufnymi, takimi jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być obsługiwane w postaci zwykłego tekstu.
@@ -105,13 +105,13 @@ Aby zastąpić wartości w pliku Settings. XML, zadeklaruj parametr przesłonię
 
 Teraz można określić wartość jako *parametr aplikacji* podczas tworzenia wystąpienia aplikacji. Tworzenie wystąpienia aplikacji może być inicjowane za pomocą programu PowerShell lub w C#celu ułatwienia integracji w procesie kompilacji.
 
-Przy użyciu programu PowerShell parametr jest dostarczany do `New-ServiceFabricApplication` polecenia jako [tabeli skrótów](https://technet.microsoft.com/library/ee692803.aspx):
+Przy użyciu programu PowerShell parametr jest dostarczany do `New-ServiceFabricApplication` polecenia jako [Tablica skrótów](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-W C#przypadku używania parametrów aplikacji są określone w `ApplicationDescription` jako `NameValueCollection`:
+Za C#pomocą, parametry aplikacji są określone w `ApplicationDescription` jako `NameValueCollection`:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -147,10 +147,12 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [zabezpieczeniach aplikacji i usługi](service-fabric-application-and-service-security.md)
+* [Magazyn danych tajnych](service-fabric-application-secret-store.md) Service Fabric 
+* Dowiedz się więcej o [zabezpieczeniach aplikacji i usługi](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-linux-specific-link]: service-fabric-application-secret-management-linux.md
+[service fabric secrets store]: service-fabric-application-secret-store.md

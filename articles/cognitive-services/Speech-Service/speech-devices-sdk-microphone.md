@@ -1,7 +1,7 @@
 ---
 title: Zestaw SDK urządzeń mowy zalecenia dotyczące tablicy mikrofonów — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Zalecenia dotyczące tablicy mikrofonów zestawu SDK urządzeń mowy. Poniższe geometrie tablicowe są zalecane do użycia z stosem audio firmy Microsoft. Lokalizacja źródeł dźwięku i odrzucanie szumów otoczenia jest ulepszona z większą liczbą mikrotelefonów z zależnościami od konkretnych aplikacji, scenariuszy użytkowników i współczynnika formularza urządzenia.
+description: Zalecenia dotyczące tablicy mikrofonów zestawu SDK urządzeń mowy. Te geometrie tablicy są zalecane do użycia z stosem audio firmy Microsoft.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: b110e9ddc42d07c8356eb25b9ea2294e470d5fdc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0a0bbbb59d09d35d0153f56f65b2ee1d9438e49d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558947"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072397"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Zestaw SDK urządzenia mowy zalecenia dotyczące tablicy mikrofonów
 
@@ -27,13 +27,13 @@ Zestaw SDK urządzeń mowy działa najlepiej z tablicą mikrofonu, która zosta�
 
 Poniższe geometrie tablicowe są zalecane do użycia z stosem audio firmy Microsoft. Lokalizacja źródeł dźwięku i odrzucanie szumów otoczenia jest ulepszona z większą liczbą mikrotelefonów z zależnościami od konkretnych aplikacji, scenariuszy użytkowników i współczynnika formularza urządzenia.
 
-|          | Tablica cykliczna    |       |  Tablica liniowa              |                |
-|----------|-------------------|-------------------|----------------|----------------|
-|          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
-| \#Mics  | 7                 | 4                 | 4              | 2              |
-| Geometrii | 6 zewnętrznych, 1 centrum, promień = 42,5 mm, równomiernie rozmieszczone| 3 zewnętrzne, 1 centrum, promień = 42,5 mm, równomiernie rozmieszczone | Długość = 120 mm, odstępy = 40 mm | Odstępy = 40 mm |
+|     | Tablica cykliczna |     | Tablica liniowa |     |
+| --- | -------------- | --- | ------------ | --- |
+|     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
+| \# MICS | 7 | 4 | 4 | 2 |
+| Geometrii | 6 zewnętrznych, 1 centrum, promień = 42,5 mm, równomiernie rozmieszczone | 3 zewnętrzne, 1 centrum, promień = 42,5 mm, równomiernie rozmieszczone | Długość = 120 mm, odstępy = 40 mm | Odstępy = 40 mm |
 
-Kanały mikrofonu powinny być uporządkowane zgodnie z numerami przedstawionymi dla każdej z powyższych tablic i zwiększają się od 0.  Stos audio firmy Microsoft wymaga dodatkowego strumienia referencyjnego odtwarzania audio do wykonywania anulowania echa.
+Kanały mikrofonu powinny być uporządkowane zgodnie z numerami przedstawionymi dla każdej z powyższych tablic i zwiększają się od 0. Stos audio firmy Microsoft wymaga dodatkowego strumienia referencyjnego odtwarzania audio do wykonywania anulowania echa.
 
 ## <a name="component-selection"></a>Wybór składników
 
@@ -41,18 +41,18 @@ Należy wybrać składniki mikrofonu, aby dokładnie odtworzyć sygnał bez szum
 
 Zalecane właściwości w przypadku wybrania mikrotelefonu są następujące:
 
-| Parametr                         | Zalecane                       |
-|-----------------------------------|-----------------------------------|
-| SNR                               | \>= 65 dB (1 kHz sygnał 94 dBSPL, szum ważony)   |
-| Dopasowanie amplitudy                | ± 1 dB @ 1 kHz                     |
-| Dopasowanie fazy                    | 2 ° @ 1 kHz                       |
-| Punkt przeciążenia akustycznego (AOP)     | \>= 120 dBSPL (THD = 10%)          |
-| Szybkość transmisji bitów                          | Minimum 24-bitowe                    |
-| Częstotliwość próbkowania                     | Minimum 16 kHz\*                   |
-| Odpowiedź dotycząca częstotliwości                | ± 3 dB, 200-8000 Hz maska zmiennoprzecinkowa\*|
-| Niezawodność                       | Zakres temperatury magazynu — 40 °C do 70 °C<br />Zakres temperatury działania — od 20 °C do 55 °C  |
+| Parametr                     | Zalecane                                         |
+| ----------------------------- | --------------------------------------------------- |
+| SNR                           | \>= 65 dB (1 kHz sygnał 94 dBSPL, szum ważony) |
+| Dopasowanie amplitudy            | ± 1 dB @ 1 kHz                                      |
+| Dopasowanie fazy                | 2 ° @ 1 kHz                                        |
+| Punkt przeciążenia akustycznego (AOP) | \>= 120 dBSPL (THD = 10%)                           |
+| Szybkość transmisji bitów                      | Minimum 24-bitowe                                      |
+| Częstotliwość próbkowania                 | Minimum 16 kHz\*                                    |
+| Odpowiedź dotycząca częstotliwości            | ± 3 dB, 200-8000 Hz maska zmiennoprzecinkowa\*                 |
+| Niezawodność                   | Zakres temperatury magazynu — 40 °C do 70 °C<br />Zakres temperatury działania — od 20 °C do 55 °C |
 
-*\*W przypadku aplikacji do obsługi wysokiej jakości (VoIP) mogą być potrzebne wyższe szybkości próbkowania lub zakresy częstotliwości "szersze"*
+_w przypadku aplikacji do obsługi wysokiej jakości (VoIP) mogą być wymagane \*wyższe stawki za próbkowanie lub zakresy częstotliwości "szerszych"._
 
 Dobry wybór składnika musi być sparowany z dobrą integracją Electroacoustic, aby uniknąć utraty wydajności użytych składników. Unikatowe przypadki użycia mogą również wymagać dodatkowych wymagań (na przykład zakresów temperatury działania).
 
@@ -60,46 +60,46 @@ Dobry wybór składnika musi być sparowany z dobrą integracją Electroacoustic
 
 Wydajność macierzy mikrofonu, gdy jest ona zintegrowana z urządzeniem, różni się od specyfikacji składnika. Należy upewnić się, że mikrofony są dobrze dopasowane po integracji. W związku z tym wydajność urządzenia mierzona po jakichkolwiek stałych zyskach lub EQ powinna spełniać następujące zalecenia:
 
-|  Parametr        |    Zalecane |
-|--------------------|----------------------------------------------------|
-|  SNR                 | \>63 dB (1 kHz sygnał 94 dBSPL, szum ważony) |
-|  Czułość wyjściowa  | -26 dBFS/PA @ 1 kHz (zalecane) |
-|  Dopasowanie amplitudy  | 2 dB, 200-8000 Hz |
-| THD%\*                 | ≤ 1%, 200-8000 Hz, 94 dBSPL, piąty porządek |
-|  Odpowiedź dotycząca częstotliwości  | ± 6 dB, 200-8000 Hz maska zmiennoprzecinkowa\*\* |
+| Parametr          | Zalecane                                        |
+| ------------------ | -------------------------------------------------- |
+| SNR                | \> 63 dB (1 kHz sygnał 94 dBSPL, szum ważony) |
+| Czułość wyjściowa | -26 dBFS/PA @ 1 kHz (zalecane)                  |
+| Dopasowanie amplitudy | 2 dB, 200-8000 Hz                                |
+| THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, piąty porządek             |
+| Odpowiedź dotycząca częstotliwości | 200-8000 Hz,\*a maska zmiennoprzecinkowa, \*              |
 
-*\*\*Do mierzenia THD (np. Neumann KH120) wymagany jest głośnik o niskim zniekształceniu.*
+_aby mierzyć THD (np. Neumann KH120), musi być wymagany głośnik o niskim zniekształceniu._ \*
 
-*\*\*Zakres częstotliwości "szerszy" może być wymagany w przypadku aplikacji do komunikacji z wysoką jakością (VoIP)*
+_w przypadku aplikacji do obsługi wysokiej jakości (VoIP) mogą być wymagane zakresy częstotliwości \*\*"szerszym"_
 
 ## <a name="speaker-integration-recommendations"></a>Zalecenia dotyczące integracji głośników
 
 Ponieważ w przypadku urządzeń rozpoznawania mowy, które zawierają głośniki, jest wymagane anulowanie ECHA, dostępne są dodatkowe zalecenia dotyczące wyboru głośników i integracji.
 
-| Parametr                         | Zalecane                       |
-|-----------------------------------|-----------------------------------|
-| Uwagi dotyczące liniowości          | Bez przetwarzania nieliniowego po odwołaniu się do osoby mówiącej, w przeciwnym razie wymagany jest strumień referencyjny pętli sprzężenia zwrotnego  |
-| Sprzężenie zwrotne głośników                  | Udostępniane za pośrednictwem WASAPI, prywatnych interfejsów API, wtyczki niestandardowej ALSA (Linux) lub dostarczonych za pośrednictwem kanału oprogramowania układowego      |
-| THD%                              | 5\.3.630-5000 5. rzędów o minimalnym przepięciu, 315-500 6,3 0,8 70                 |
-| Echo sprzęgania z mikrotelefonami      | \>-10 dB TCLw z użyciem ITU-T G. 122 załącznik B. 4 Metoda, znormalizowana do poziomu mikrofonu<br />TCLw = TCLwmeasured \+ (zmierzony poziom — czułość wyjściowa)<br />TCLw = TCLwmeasured \+ (poziom zmierzony-(-26)) |
+| Parametr | Zalecane |
+| --------- | ----------- |
+| Uwagi dotyczące liniowości | Bez przetwarzania nieliniowego po odwołaniu się do osoby mówiącej, w przeciwnym razie wymagany jest strumień referencyjny pętli sprzężenia zwrotnego |
+| Sprzężenie zwrotne głośników | Udostępniane za pośrednictwem WASAPI, prywatnych interfejsów API, wtyczki niestandardowej ALSA (Linux) lub dostarczonych za pośrednictwem kanału oprogramowania układowego |
+| THD% | 5\.3.630-5000 5. rzędów o minimalnym przepięciu, 315-500 6,3 0,8 70 |
+| Echo sprzęgania z mikrotelefonami | \>-10 dB TCLw przy użyciu ITU-T G. 122 załącznik B. 4 Metoda, znormalizowana do poziomu mikrofonu<br />TCLw = TCLwmeasured \+ (poziom docelowa — czułość wyjściowa)<br />TCLw = TCLwmeasured \+ (zmierzony poziom-(-26)) |
 
 ## <a name="integration-design-architecture"></a>Architektura projektowania integracji
 
 Następujące wskazówki dotyczące architektury są niezbędne podczas integrowania urządzeń z urządzeniami:
 
-| Parametr                         | Zalecenie                    |
-|-----------------------------------|-----------------------------------|
-| Podobieństwo portów mikrofonu               | Wszystkie porty mikrofonu mają tę samą długość w tablicy    |
-| Wymiary portów MIC               | Rozmiar portu o 0,8 – 1,0 mm. Długość portu/średnica \< portu 2              |
-| Pieczętowanie mikrofonu                       | Pieczętowanie gaskets jednolicie zaimplementowane w stosie. Zalecany \> współczynnik kompresji na 70% dla gaskets piany     |
-| Niezawodność mikrofonu                   | Siatka powinna być używana w celu zapobiegania pył i ruchu przychodzącego (między PCB w przypadku końcowych portów z portami i pieczętowania Gasket/górnej okładki)  |
-| Izolacja MIC                     | Gaskets gumowe i wibracje dzięki strukturze, szczególnie w przypadku izolowania wszelkich ścieżek wibracji ze względu na zintegrowane głośniki      |
-| Zegar próbkowania                    | Dźwięk urządzenia musi być bezpłatny i rozwijany z niską dryfem    |
-| Możliwość rejestrowania                 | Urządzenie musi mieć możliwość równoczesnego rejestrowania pojedynczych strumieni nieprzetworzonych kanałów |
-| USB                               | Wszystkie urządzenia wejściowe audio USB muszą ustawić deskryptory zgodnie z [specyfikacją rev3 urządzeń audio USB](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) |
-| Geometria mikrofonu               | Sterowniki muszą implementować poprawnie [deskryptory geometrii macierzy mikrofonu](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry)  |
-| Możliwości odnajdywania                   | Urządzenia nie mogą mieć żadnych niewykrywalnych lub niekontrolowanych sprzętu, oprogramowania układowego ani nieliniowych algorytmów przetwarzania audio na/z urządzenia|
-| Format przechwytywania                    | Formaty przechwytywania muszą mieć minimalną częstotliwość próbkowania wynoszącą 16 kHz i zalecaną 24-bitową głębię      |
+| Parametr | Zalecenie |
+| --------- | -------------- |
+| Podobieństwo portów mikrofonu | Wszystkie porty mikrofonu mają tę samą długość w tablicy |
+| Wymiary portów MIC | Rozmiar portu o 0,8 – 1,0 mm. Długość portu/numer portu \< 2 |
+| Pieczętowanie mikrofonu         | Pieczętowanie gaskets jednolicie zaimplementowane w stosie. Zalecane \> 70% współczynnik kompresji dla piany gaskets |
+| Niezawodność mikrofonu     | Siatka powinna być używana w celu zapobiegania pył i ruchu przychodzącego (między PCB w przypadku końcowych portów z portami i pieczętowania Gasket/górnej okładki) |
+| Izolacja MIC       | Gaskets gumowe i wibracje dzięki strukturze, szczególnie w przypadku izolowania wszelkich ścieżek wibracji ze względu na zintegrowane głośniki |
+| Zegar próbkowania      | Dźwięk urządzenia musi być bezpłatny i rozwijany z niską dryfem |
+| Możliwość rejestrowania   | Urządzenie musi mieć możliwość równoczesnego rejestrowania pojedynczych strumieni nieprzetworzonych kanałów |
+| USB                 | Wszystkie urządzenia wejściowe audio USB muszą ustawić deskryptory zgodnie z [specyfikacją rev3 urządzeń audio USB](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) |
+| Geometria mikrofonu | Sterowniki muszą implementować poprawnie [deskryptory geometrii macierzy mikrofonu](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
+| Możliwości odnajdywania     | Urządzenia nie mogą mieć żadnych niewykrywalnych lub niekontrolowanych sprzętu, oprogramowania układowego ani nieliniowych algorytmów przetwarzania audio na/z urządzenia |
+| Format przechwytywania      | Formaty przechwytywania muszą mieć minimalną częstotliwość próbkowania wynoszącą 16 kHz i zalecaną 24-bitową głębię |
 
 ## <a name="electrical-architecture-considerations"></a>Zagadnienia dotyczące architektury elektrycznej
 

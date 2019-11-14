@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019070"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074823"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Dodawanie magazynu do usługi Azure Backup Server
 
@@ -27,19 +27,19 @@ Azure Backup Server v2 i nowszych obsługuje Nowoczesny magazyn kopii zapasowych
 
 Serwer kopii zapasowej w wersji 2 lub nowszej akceptuje woluminy magazynu. Po dodaniu woluminu serwer kopii zapasowej sformatuje wolumin do systemu plików ReFS, który wymaga Nowoczesny magazyn kopii zapasowych. Aby dodać wolumin i rozszerzyć go później, jeśli jest to konieczne, zalecamy użycie tego przepływu pracy:
 
-1.  Skonfiguruj serwer kopii zapasowej na maszynie wirtualnej.
-2.  Utwórz wolumin na dysku wirtualnym w puli magazynów:
-    1.  Dodaj dysk do puli magazynów i Utwórz dysk wirtualny przy użyciu układu prostego.
-    2.  Dodaj dodatkowe dyski i rozwiń dysk wirtualny.
-    3.  Utwórz woluminy na dysku wirtualnym.
-3.  Dodaj woluminy do serwera zapasowego.
-4.  Skonfiguruj magazyn obsługujący obciążenie.
+1. Skonfiguruj serwer kopii zapasowej na maszynie wirtualnej.
+2. Utwórz wolumin na dysku wirtualnym w puli magazynów:
+    1. Dodaj dysk do puli magazynów i Utwórz dysk wirtualny przy użyciu układu prostego.
+    2. Dodaj dodatkowe dyski i rozwiń dysk wirtualny.
+    3. Utwórz woluminy na dysku wirtualnym.
+3. Dodaj woluminy do serwera zapasowego.
+4. Skonfiguruj magazyn obsługujący obciążenie.
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>Tworzenie woluminu dla Nowoczesny magazyn kopii zapasowych
 
 Użycie serwera zapasowego w wersji 2 lub nowszej z woluminami jako magazyn dyskowy może ułatwić zachowanie kontroli nad magazynem. Wolumin może być pojedynczym dyskiem. Jeśli jednak chcesz w przyszłości zwiększyć magazyn, Utwórz wolumin poza dyskiem utworzonym przy użyciu funkcji miejsca do magazynowania. Może to pomóc w rozwinięciu woluminu dla magazynu kopii zapasowych. Ta sekcja zawiera najlepsze rozwiązania dotyczące tworzenia woluminów przy użyciu tej konfiguracji.
 
-1. W Menedżer serwera wybierz > pozycję **usługi plików i magazynowania** **woluminy** > **Pule magazynów**. W obszarze **dyski fizyczne**wybierz pozycję **Nowa pula magazynu**.
+1. W Menedżer serwera wybierz pozycję **usługi plików i magazynowania** > **woluminy** > **Pule magazynów**. W obszarze **dyski fizyczne**wybierz pozycję **Nowa pula magazynu**.
 
     ![Utwórz nową pulę magazynów](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -75,7 +75,7 @@ W przypadku magazynu z obsługą obciążeń można wybrać woluminy, które umo
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Magazyn obsługujący obciążenia można skonfigurować za pomocą polecenia cmdlet programu PowerShell Update-DPMDiskStorage, które aktualizuje właściwości woluminu w puli magazynów na Azure Backup Server. 
+Magazyn obsługujący obciążenia można skonfigurować za pomocą polecenia cmdlet programu PowerShell Update-DPMDiskStorage, które aktualizuje właściwości woluminu w puli magazynów na Azure Backup Server.
 
 Obowiązuje
 
@@ -84,6 +84,7 @@ Obowiązuje
 ```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 Poniższy zrzut ekranu przedstawia polecenie cmdlet Update-DPMDiskStorage w oknie programu PowerShell.
 
 ![Polecenie Update-DPMDiskStorage w oknie programu PowerShell](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,8 +93,8 @@ Zmiany wprowadzane przy użyciu programu PowerShell są odzwierciedlone na serwe
 
 ![Dyski i woluminy w konsola administratora](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Migrowanie starszej wersji magazynu do Nowoczesny magazyn kopii zapasowych
+
 Po przeprowadzeniu uaktualnienia do programu Backup Server v2 lub instalacji systemu operacyjnego w systemie Windows Server 2016 zaktualizuj grupy ochrony, aby użyć Nowoczesny magazyn kopii zapasowych. Domyślnie grupy ochrony nie są zmieniane. Są one nadal działać, ponieważ zostały początkowo skonfigurowane.
 
 Aktualizowanie grup ochrony do użycia Nowoczesny magazyn kopii zapasowych jest opcjonalne. Aby zaktualizować grupę ochrony, Zatrzymaj ochronę wszystkich źródeł danych przy użyciu opcji Zachowaj dane. Następnie Dodaj źródła danych do nowej grupy ochrony.
@@ -116,15 +117,16 @@ Jeśli chcesz używać starszej wersji magazynu z serwerem kopii zapasowych, mo�
 
 Aby dodać magazyn dyskowy:
 
-1. W Konsola administratora wybierz pozycję **Zarządzanie** > **Disk Storage** > **Dodaj**.
+1. W konsola administratora wybierz pozycję **zarządzanie** > **Disk Storage** > **Dodaj**.
 
     ![Okno dialogowe Dodawanie Disk Storage](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. W oknie dialogowym **dodawanie Disk Storage** wybierz pozycję **Dodaj dyski**.
+2. W oknie dialogowym **dodawanie Disk Storage** wybierz pozycję **Dodaj dyski**.
 
-5. Na liście dostępnych dysków wybierz dyski, które chcesz dodać, wybierz pozycję **Dodaj**, a następnie wybierz przycisk **OK**.
+3. Na liście dostępnych dysków wybierz dyski, które chcesz dodać, wybierz pozycję **Dodaj**, a następnie wybierz przycisk **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
+
 Po zainstalowaniu serwera kopii zapasowej należy dowiedzieć się, jak przygotować serwer lub rozpocząć ochronę obciążeń.
 
 - [Przygotowywanie obciążeń serwera kopii zapasowej](backup-azure-microsoft-azure-backup.md)

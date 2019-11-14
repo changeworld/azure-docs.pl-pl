@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4932089b7315f2756f3760b252c7257868f640fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569871"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066029"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
 Ten artykuł ułatwia zarządzanie ustawieniami Multi-Factor Authentication w Azure Portal. Obejmuje ona różne tematy, które ułatwiają maksymalne wykorzystanie Multi-Factor Authentication platformy Azure. Nie wszystkie funkcje są dostępne w każdej wersji platformy Azure Multi-Factor Authentication.
 
-Możesz uzyskać dostęp do ustawień związanych z usługą Azure Multi-Factor Authentication z poziomu Azure Portal, przechodząc do **Azure Active Directory** > **MFA**.
+Możesz uzyskać dostęp do ustawień związanych z usługą Azure Multi-Factor Authentication z poziomu Azure Portal, przechodząc do **Azure Active Directory** > **Security** > **MFA**.
 
 ![Azure Portal — ustawienia Multi-Factor Authentication usługi Azure AD](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -62,7 +62,7 @@ Użyj funkcji _Blokuj i Odblokuj użytkowników_ , aby uniemożliwić użytkowni
 ### <a name="block-a-user"></a>Blokuj użytkownika
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > **MFA** > **blokowanie/odblokowywanie użytkowników**.
+2. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **MFA** > **blokowanie/odblokowywanie użytkowników**.
 3. Wybierz pozycję **Dodaj** , aby zablokować użytkownika.
 4. Wybierz **grupę replikacji**. Wprowadź nazwę użytkownika dla zablokowanego użytkownika jako **nazwę użytkownika\@Domain.com**. Wprowadź komentarz w polu **Przyczyna** .
 5. Wybierz pozycję **Dodaj** , aby zakończyć blokowanie użytkownika.
@@ -70,19 +70,19 @@ Użyj funkcji _Blokuj i Odblokuj użytkowników_ , aby uniemożliwić użytkowni
 ### <a name="unblock-a-user"></a>Odblokuj użytkownika
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > **MFA** > **blokowanie/odblokowywanie użytkowników**.
+2. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **MFA** > **blokowanie/odblokowywanie użytkowników**.
 3. Wybierz opcję **Odblokuj** w kolumnie **Akcja** obok użytkownika, aby odblokować.
 4. Wprowadź komentarz w **przyczynie odblokowania** pola.
 5. Wybierz opcję **Odblokuj** , aby zakończyć Odblokowywanie użytkownika.
 
-## <a name="fraud-alert"></a>Alert dotyczący oszustwa
+## <a name="fraud-alert"></a>Alert dotyczący wykrycia oszustwa
 
 Skonfiguruj funkcję _alertu oszustwa_ , aby umożliwić użytkownikom zgłaszanie fałszywych prób dostępu do zasobów. Użytkownicy mogą raportować próby oszustwa przy użyciu aplikacji mobilnej lub za pośrednictwem telefonu.
 
 ### <a name="turn-on-fraud-alerts"></a>Włącz alerty oszustwa
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > **alertu**dotyczącego oszustwa > usługi **MFA** .
+2. Przejdź do **Azure Active Directory** > **zabezpieczeń** > alert > **oszustwo**usługi **MFA** .
 3. Dla opcji **Zezwalaj użytkownikom na przesyłanie alertów oszustw** ustaw wartość **włączone**.
 4. Wybierz pozycję **Zapisz**.
 
@@ -124,7 +124,7 @@ Możesz użyć własnych nagrań lub powitań na potrzeby weryfikacji dwuetapowe
 Przed rozpoczęciem należy pamiętać o następujących ograniczeniach:
 
 * Obsługiwane formaty plików to WAV i MP3.
-* Limit rozmiaru pliku wynosi 5 MB.
+* Limit rozmiaru pliku wynosi 1 MB.
 * Komunikaty uwierzytelniania powinny być krótsze niż 20 sekund. Komunikaty dłuższe niż 20 sekund mogą spowodować niepowodzenie weryfikacji. Użytkownik może nie odpowiadać, zanim zakończy się komunikat i zostanie przeprowadzony limit czasu weryfikacji.
 
 ### <a name="custom-message-language-behavior"></a>Niestandardowe zachowanie języka komunikatów
@@ -145,7 +145,7 @@ Na przykład jeśli istnieje tylko jeden komunikat niestandardowy z językiem ni
 ### <a name="set-up-a-custom-message"></a>Konfigurowanie wiadomości niestandardowej
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-1. Przejdź do **Azure Active Directory** > usługi **MFA** > **ustawień połączeń telefonicznych**.
+1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > usługi **MFA** > **ustawień połączenia telefonicznego**.
 1. Wybierz pozycję **Dodaj powitanie**.
 1. Wybierz typ pozdrowienia.
 1. Wybierz język.
@@ -184,7 +184,7 @@ Funkcja _jednorazowe obejście_ umożliwia użytkownikowi uwierzytelnianie pojed
 ### <a name="create-a-one-time-bypass"></a>Utwórz jednorazowe obejście
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > usługi **MFA** > **jednorazowe obejście**.
+2. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **MFA** > **jednorazowe obejście**.
 3. Wybierz pozycję **Dodaj**.
 4. W razie potrzeby wybierz grupę replikacji dla obejścia.
 5. Wprowadź nazwę użytkownika jako **nazwę użytkownika\@Domain.com**. Wprowadź liczbę sekund, przez jaką obejście ma być ostatnie. Wprowadź przyczynę obejścia.
@@ -193,7 +193,7 @@ Funkcja _jednorazowe obejście_ umożliwia użytkownikowi uwierzytelnianie pojed
 ### <a name="view-the-one-time-bypass-report"></a>Wyświetl raport jednorazowego obejścia
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Przejdź do **Azure Active Directory** > usługi **MFA** > **jednorazowe obejście**.
+2. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **MFA** > **jednorazowe obejście**.
 
 ## <a name="caching-rules"></a>Reguły buforowania
 
@@ -205,7 +205,7 @@ Można ustawić okres, aby zezwolić na próby uwierzytelniania po uwierzytelnie
 ### <a name="set-up-caching"></a>Konfigurowanie buforowania
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > **reguł buforowania** > **MFA** .
+2. Przejdź do **Azure Active Directory** > **zabezpieczenia** > uwierzytelnianie **MFA** > **reguł buforowania**.
 3. Wybierz pozycję **Dodaj**.
 4. Z listy rozwijanej wybierz **Typ pamięci podręcznej** . Wprowadź maksymalną liczbę sekund w **pamięci podręcznej**.
 5. W razie potrzeby wybierz typ uwierzytelniania i Określ aplikację.
@@ -213,9 +213,11 @@ Można ustawić okres, aby zezwolić na próby uwierzytelniania po uwierzytelnie
 
 ## <a name="mfa-service-settings"></a>Ustawienia usługi MFA
 
-Ustawienia dotyczące haseł aplikacji, zaufanych adresów IP, opcji weryfikacji i zapamiętania usługi uwierzytelniania wieloskładnikowego dla systemu Azure Multi-Factor Authentication można znaleźć w obszarze Ustawienia usług. Ustawienia usługi są dostępne z poziomu Azure Portal, przechodząc do **Azure Active Directory** > **MFA** > **wprowadzenie** > **skonfigurować** > **dodatkowe ustawienia usługi MFA oparte na chmurze**.
+Ustawienia dotyczące haseł aplikacji, zaufanych adresów IP, opcji weryfikacji i zapamiętania usługi uwierzytelniania wieloskładnikowego dla systemu Azure Multi-Factor Authentication można znaleźć w obszarze Ustawienia usług. Dostęp do ustawień usługi można uzyskać z poziomu Azure Portal, przechodząc do **Azure Active Directory** > **zabezpieczenia** >  usługi **MFA** > **Konfigurowanie** > **dodatkowych ustawień usługi MFA opartych na chmurze**. > 
 
 ![Ustawienia usługi Azure Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
+
+Zakresy zaufanych adresów IP mogą być prywatne lub publiczne.
 
 ## <a name="app-passwords"></a>Hasła aplikacji
 

@@ -1,21 +1,22 @@
 ---
-title: 'Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure PowerShell | Microsoft Docs'
+title: 'Szybki Start: bezpośredni ruch internetowy przy użyciu programu PowerShell'
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak za pomocą Azure PowerShell utworzyć Application Gateway platformy Azure, która kieruje ruch internetowy do maszyn wirtualnych w puli zaplecza.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a55f602833cacd27cd82adafd888c67c544564c2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d5b0ebc2d1b64dd4be677c38de30af7f7a954637
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359980"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075098"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure PowerShell
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Szybki Start: bezpośredni ruch internetowy za pomocą usługi Azure Application Gateway przy użyciu Azure PowerShell
 
 W tym przewodniku szybki start pokazano, jak za pomocą Azure PowerShell szybko utworzyć bramę aplikacji.  Po utworzeniu bramy aplikacji przetestuj ją, aby upewnić się, że działa prawidłowo. Dzięki usłudze Azure Application Gateway kierowanie ruchu sieci Web aplikacji do określonych zasobów przez przypisanie odbiorników do portów, tworzenie reguł i Dodawanie zasobów do puli zaplecza. Dla uproszczenia w tym artykule użyto prostej konfiguracji z publicznym adresem IP frontonu, podstawowego odbiornika do hostowania pojedynczej lokacji w tej bramie aplikacji, dwóch maszyn wirtualnych używanych dla puli zaplecza i podstawowej reguły routingu żądań.
 
@@ -34,7 +35,7 @@ Jeśli zdecydujesz się zainstalować program Azure PowerShell i używać go lok
 1. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable Az`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). 
 2. Aby utworzyć połączenie z platformą Azure, uruchom polecenie `Login-AzAccount`.
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>Grupa zasobów
 
 Na platformie Azure możesz przydzielić powiązane zasoby do grupy zasobów. Możesz użyć istniejącej grupy zasobów lub utworzyć nową. W tym przykładzie utworzysz nową grupę zasobów za pomocą polecenia cmdlet [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) w następujący sposób: 
 
@@ -239,7 +240,7 @@ Aby usunąć grupę zasobów, wywołaj polecenie cmdlet [Remove-AzResourceGroup]
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zarządzanie ruchem internetowym przy użyciu bramy aplikacji za pomocą programu Azure PowerShell](./tutorial-manage-web-traffic-powershell.md)

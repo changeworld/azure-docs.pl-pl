@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1ea7ec0444ba80d3494afba77ad9d7fdabd5f982
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086425"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074399"
 ---
 # <a name="using-the-azure-function-return-value"></a>Korzystanie z wartości zwracanej przez funkcję platformy Azure
 
@@ -23,21 +23,13 @@ W tym artykule opisano sposób działania zwracanych wartości wewnątrz funkcji
 W językach, które mają wartość zwracaną, można powiązać [powiązanie danych wyjściowych](./functions-triggers-bindings.md#binding-direction) funkcji z wartością zwracaną:
 
 * W bibliotece C# klas zastosuj atrybut wynik powiązania do wartości zwracanej przez metodę.
-* W innych językach Ustaw `name` właściwość w *Function. JSON* na. `$return`
+* W innych językach ustaw właściwość `name` w *Function. JSON* na `$return`.
 
 Jeśli istnieje wiele powiązań wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
 
 W C# skryptach i C# alternatywnym sposobem wysyłania danych do powiązania wyjściowego są `out` parametry i [obiekty modułów zbierających](functions-reference-csharp.md#writing-multiple-output-values).
 
-Zobacz przykład specyficzny dla języka przedstawiający użycie wartości zwracanej:
-
-* [C#](#c-example)
-* [Skryptu C# (csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-## <a name="c-example"></a>C#przyklad
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Tutaj można C# znaleźć kod, który używa wartości zwracanej dla powiązania danych wyjściowych, po którym następuje asynchroniczny przykład:
 
@@ -63,7 +55,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>C#przykład skryptu
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
@@ -96,7 +88,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F#przyklad
+# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
 
 Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
@@ -118,7 +110,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-## <a name="javascript-example"></a>Przykład JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
@@ -141,7 +133,7 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Przykład języka Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
@@ -163,6 +155,8 @@ def main(input: azure.functions.InputStream) -> str:
         'content': input.read().decode('utf-8')
     })
 ```
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

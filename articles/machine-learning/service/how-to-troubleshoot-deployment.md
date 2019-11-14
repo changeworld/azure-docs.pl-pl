@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961659"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076907"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Rozwiązywanie problemów Azure Machine Learning usługi Azure Kubernetes i wdrożenia Azure Container Instances
 
@@ -164,12 +164,12 @@ Aby uniknąć tego problemu, zalecamy zastosowanie jednej z następujących meto
 
 ## <a name="debug-locally"></a>Debuguj lokalnie
 
-Jeśli wystąpią problemy ze wdrożeniem modelu do ACI lub AKS, spróbuj wdrożyć go jako lokalny. Korzystanie z lokalizacji lokalnej ułatwia rozwiązywanie problemów. Obraz platformy Docker zawierający model zostanie pobrany i uruchomiony w systemie lokalnym.
+Jeśli wystąpią problemy ze wdrożeniem modelu do ACI lub AKS, spróbuj wdrożyć go jako lokalną usługę sieci Web. Korzystanie z lokalnej usługi sieci Web ułatwia rozwiązywanie problemów. Obraz platformy Docker zawierający model zostanie pobrany i uruchomiony w systemie lokalnym.
 
 > [!WARNING]
-> Lokalne wdrożenia nie są obsługiwane w scenariuszach produkcyjnych.
+> Lokalne wdrożenia usługi sieci Web nie są obsługiwane w scenariuszach produkcyjnych.
 
-Aby wdrożyć lokalnie, zmodyfikuj swój kod, aby użyć `LocalWebservice.deploy_configuration()` do utworzenia konfiguracji wdrożenia. Następnie użyj `Model.deploy()`, aby wdrożyć usługę. Poniższy przykład służy do wdrażania modelu (zawartego w zmiennej `model`) jako lokalnego:
+Aby wdrożyć lokalnie, zmodyfikuj swój kod, aby użyć `LocalWebservice.deploy_configuration()` do utworzenia konfiguracji wdrożenia. Następnie użyj `Model.deploy()`, aby wdrożyć usługę. W poniższym przykładzie jest wdrażany model (zawarty w zmiennej `model`) jako lokalna usługa sieci Web:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -180,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -297,7 +297,7 @@ Istnieją dwie rzeczy, które mogą pomóc w zapobieganiu kodów stanu 503:
     > [!IMPORTANT]
     > Ta zmiana nie powoduje *szybszego*tworzenia replik. Zamiast tego są tworzone przy niższym progu wykorzystania. Zamiast czekać, aż usługa zostanie wykorzystana przez 70%, zmiana wartości na 30% powoduje utworzenie replik w przypadku wystąpienia 30%.
     
-    Jeśli już korzystasz z bieżącej maksymalnej liczby replik i nadal widzisz 503 kodów stanu, zwiększ wartość `autoscale_max_replicas`, aby zwiększyć maksymalną liczbę replik.
+    Jeśli usługa sieci Web już korzysta z bieżącej maksymalnej liczby replik i nadal widzisz 503 kodów stanu, zwiększ wartość `autoscale_max_replicas`, aby zwiększyć maksymalną liczbę replik.
 
 * Zmień minimalną liczbę replik. Zwiększenie minimalnych replik zapewnia większą pulę do obsługi przychodzących skoków.
 
@@ -333,7 +333,7 @@ W niektórych przypadkach może być konieczne interaktywne Debugowanie kodu w j
 > [!IMPORTANT]
 > Ta metoda debugowania nie działa w przypadku używania `Model.deploy()` i `LocalWebservice.deploy_configuration` do lokalnego wdrożenia modelu. Zamiast tego należy utworzyć obraz przy użyciu klasy [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) . 
 
-Lokalne wdrożenia wymagają instalacji działającej platformy Docker w systemie lokalnym. Aby uzyskać więcej informacji na temat korzystania z platformy Docker, zapoznaj się z [dokumentacją platformy Docker](https://docs.docker.com/).
+Lokalne wdrożenia usługi sieci Web wymagają pracy instalacji platformy Docker w systemie lokalnym. Aby uzyskać więcej informacji na temat korzystania z platformy Docker, zapoznaj się z [dokumentacją platformy Docker](https://docs.docker.com/).
 
 ### <a name="configure-development-environment"></a>Konfigurowanie środowiska programowania
 

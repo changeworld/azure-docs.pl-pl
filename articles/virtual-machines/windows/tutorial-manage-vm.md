@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą programu Azure PowerShell | Microsoft Docs
+title: Samouczek — Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą Azure PowerShell
 description: Z tego samouczka dowiesz się, jak używać programu Azure PowerShell w celu tworzenia maszyn wirtualnych z systemem Windows na platformie Azure i zarządzania nimi.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101590"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067811"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Samouczek: Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą programu Azure PowerShell
 
@@ -180,7 +180,7 @@ Rozmiar maszyny wirtualnej określa ilość zasobów obliczeniowych, takich jak 
 
 W poniższej tabeli przedstawiono kategorie rozmiarów podzielone według przypadków użycia.  
 
-| Type                     | Typowe rozmiary           |    Opis       |
+| Typ                     | Typowe rozmiary           |    Opis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Zastosowania ogólne](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Zrównoważona moc procesora CPU w stosunku do pamięci. Opcja idealna w przypadku tworzenia i testowania, małych i średnich aplikacji oraz rozwiązań dotyczących danych.  |
 | [Optymalizacja pod kątem obliczeń](sizes-compute.md)   | Fsv2          | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
@@ -243,7 +243,7 @@ Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów
 
 | Stan zasilania | Opis
 |----|----|
-| Rozpoczęcie | Maszyna wirtualna jest uruchamiana. |
+| Uruchamianie | Maszyna wirtualna jest uruchamiana. |
 | Działanie | Maszyna wirtualna została uruchomiona. |
 | Zatrzymywanie | Maszyna wirtualna jest zatrzymywana. |
 | Zatrzymano | Maszyna wirtualna została zatrzymana. Opłaty za operacje obliczeniowe są także naliczane w przypadku maszyn wirtualnych w stanie Zatrzymano.  |
@@ -293,7 +293,7 @@ Start-AzVM `
    -Name "myVM"
 ```
 
-### <a name="delete-resource-group"></a>Usuń grupę zasobów
+### <a name="delete-resource-group"></a>Usuwanie grupy zasobów
 
 Wszystkie elementy znajdujące się wewnątrz grupy zasobów zostaną usunięte podczas usuwania tej grupy.
 

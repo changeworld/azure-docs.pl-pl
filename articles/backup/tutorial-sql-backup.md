@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747027"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074660"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Tworzenie kopii zapasowej bazy danych SQL Server na maszynie wirtualnej platformy Azure
 
@@ -23,7 +23,7 @@ W tym samouczku pokazano, jak utworzyć kopię zapasową bazy danych SQL Server 
 > * Tworzenie i konfigurowanie magazynu.
 > * Odnajdywanie baz danych i konfigurowanie kopii zapasowych.
 > * Konfigurowanie ochrony automatycznej dla baz danych.
-> * Uruchom kopię zapasową ad-hoc.
+> * Uruchom kopię zapasową na żądanie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +44,7 @@ Podczas wszystkich operacji maszyna wirtualna programu SQL Server musi mieć ł�
 
 Każda opcja ma zalety i wady
 
-**Opcja** | **Zalety** | **Wady**
+**Option** | **Zalety** | **Wady**
 --- | --- | ---
 Zezwolenie na zakresy adresów IP | Brak dodatkowych kosztów. | Skomplikowane zarządzanie, ponieważ zakresy adresów IP zmieniają się z upływem czasu. <br/><br/> Zapewnia dostęp do całej platformy Azure, nie tylko do usługi Azure Storage.
 Używanie serwera proxy HTTP   | Na serwerze jest dozwolona szczegółowa kontrola adresów URL magazynu. <br/><br/> Pojedynczy punkt dostępu do maszyn wirtualnych w Internecie. <br/><br/> Nie podlega zmianom adresów IP platformy Azure. | Dodatkowe koszty uruchamiania maszyny wirtualnej przy użyciu oprogramowania serwera proxy.
@@ -102,7 +102,7 @@ Odnajdź bazy danych uruchomione na maszynie wirtualnej.
 
     ![Komunikat o powodzeniu wdrożenia](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Usługa Azure Backup odnajduje wszystkie bazy danych programu SQL Server na maszynie wirtualnej. Podczas odnajdywania Poniższy problem występuje w tle:
+8. Usługa Azure Backup odnajduje wszystkie bazy danych programu SQL Server na maszynie wirtualnej. Podczas odnajdywania są wykonywane następujące operacje w tle:
 
     * Usługa Azure Backup rejestruje maszynę wirtualną w magazynie na potrzeby kopii zapasowych obciążenia. Dla wszystkich baz danych na zarejestrowanej maszynie wirtualnej można tworzyć kopie zapasowe tylko w tym magazynie.
     * Usługa Azure Backup instaluje rozszerzenie **AzureBackupWindowsWorkload** na maszynie wirtualnej. Żaden agent nie jest instalowany w bazie danych SQL.
@@ -215,7 +215,7 @@ Aby utworzyć nowe zasady kopii zapasowych:
 
 14. Po zakończeniu edycji zasad kopii zapasowych wybierz pozycję **OK**.
 
-## <a name="run-an-ad-hoc-backup"></a>Uruchamianie kopii zapasowej ad hoc
+## <a name="run-an-on-demand-backup"></a>Uruchamianie kopii zapasowej na żądanie
 
 1. W magazynie Recovery Services wybierz pozycję elementy kopii zapasowej.
 2. Kliknij pozycję "SQL na maszynie wirtualnej platformy Azure".
@@ -233,7 +233,7 @@ Podczas pracy z tym samouczkiem wykonano następujące czynności przy użyciu w
 > * Tworzenie i konfigurowanie magazynu.
 > * Odnajdywanie baz danych i konfigurowanie kopii zapasowych.
 > * Konfigurowanie ochrony automatycznej dla baz danych.
-> * Uruchom kopię zapasową ad-hoc.
+> * Uruchom kopię zapasową na żądanie.
 
 Przejdź do następnego samouczka, aby przywrócić maszynę wirtualną platformy Azure z dysku.
 

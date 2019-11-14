@@ -1,5 +1,5 @@
 ---
-title: vCPU przydziały dla platformy Azure | Microsoft Docs
+title: vCPU przydziały dla platformy Azure
 description: Dowiedz się więcej na temat przydziałów vCPU dla platformy Azure.
 keywords: ''
 services: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 15773ce54370c4557bd760249d4490896f3f5dea
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 29eaad9835b74e9867454dffb35799a01bbb03e1
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749280"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073437"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Limity przydziału procesorów wirtualnych maszyny wirtualnej
 
@@ -79,7 +79,7 @@ Premium Storage Managed Disks                1 10000 Count
 
 
 ## <a name="reserved-vm-instances"></a>Wystąpienia zarezerwowane maszyn wirtualnych
-Wystąpienia zarezerwowane maszyn wirtualnych, które są objęte zakresem pojedynczej subskrypcji bez elastyczności rozmiaru maszyny wirtualnej, spowodują dodanie nowego aspektu do przydziałów vCPU. Te wartości opisują liczbę wystąpień określonego rozmiaru, które muszą być wdrożone w subskrypcji. Działają jako symbol zastępczy w systemie przydziału, aby zapewnić, że przydział jest zarezerwowany w celu zapewnienia, że zarezerwowane wystąpienia maszyn wirtualnych są wdrażane w ramach subskrypcji. Na przykład jeśli określona subskrypcja ma 10 Standard_D1 zarezerwowanych maszyn wirtualnych, ograniczenie użycia dla wystąpień zarezerwowanych maszyn wirtualnych Standard_D1 będzie 10. Spowoduje to, że platforma Azure będzie mieć pewność, że w łącznej liczbie miejscowej przydziału procesorów wirtualnych vCPU jest dostępna co najmniej 10 procesorów wirtualnych vCPU, a w przypadku wystąpień Standard_D1 dostępnych jest co najmniej 10 procesorów wirtualnych vCPU.
+Wystąpienia zarezerwowane maszyn wirtualnych, które są objęte zakresem pojedynczej subskrypcji bez elastyczności rozmiaru maszyny wirtualnej, spowodują dodanie nowego aspektu do przydziałów vCPU. Te wartości opisują liczbę wystąpień określonego rozmiaru, które muszą być wdrożone w subskrypcji. Działają jako symbol zastępczy w systemie przydziału, aby zapewnić, że przydział jest zarezerwowany w celu zapewnienia, że zarezerwowane wystąpienia maszyn wirtualnych są wdrażane w ramach subskrypcji. Na przykład jeśli określona subskrypcja ma 10 Standard_D1 zarezerwowanych wystąpień maszyn wirtualnych limit użycia dla Standard_D1 zarezerwowane wystąpienia maszyn wirtualnych będą 10. Spowoduje to, że platforma Azure będzie mieć pewność, że w łącznej liczbie miejscowej przydziału procesorów wirtualnych vCPU będzie dostępna co najmniej 10 procesorów wirtualnych vCPU, które mają być używane dla wystąpień Standard_D1, a w przypadku wystąpień Standard_D1 będzie dostępnych co najmniej 10 procesorów wirtualnych vCPU.
 
 Jeśli do zakupu pojedynczej subskrypcji RI wymagane jest zwiększenie limitu przydziału, można [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) w ramach subskrypcji.
 

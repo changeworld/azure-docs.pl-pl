@@ -1,7 +1,7 @@
 ---
 title: Zamiana tekstu na mowę — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Funkcja zamiany tekstu na mowę w usłudze mowy to funkcja, która umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na rozpoznawanie mowy w postaci zwykłej. Wybieraj spośród standardowych i neuronowychych głosów lub twórz własny niestandardowy głos unikatowy dla danego produktu lub marki. 75 standardowych głosów jest dostępnych w więcej niż 45 językach i ustawieniach regionalnych oraz 5 neuronowych głosów jest dostępnych w 4 językach i ustawieniach regionalnych.
+description: Funkcja zamiany tekstu na mowę w usłudze mowy umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na rozpoznawanie mowy przez człowieka. Wybierz wstępnie ustawione głosy lub Utwórz własny niestandardowy głos.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468665"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075711"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiana tekstu na mowę?
 
 Zamiana tekstu na mowę z usługi Azure Speech Services to usługa, która umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na rozpoznawanie mowy w postaci zwykłej, podobnej do ludzkiej. Wybieraj spośród standardowych i neuronowychych głosów lub twórz własny niestandardowy głos unikatowy dla danego produktu lub marki. 75 standardowych głosów jest dostępnych w więcej niż 45 językach i ustawieniach regionalnych oraz 5 neuronowych głosów jest dostępnych w 4 językach i ustawieniach regionalnych. Aby zapoznać się z pełną listą, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
 Technologia zamiany tekstu na mowę umożliwia twórcom zawartości współpracującie z użytkownikami na różne sposoby. Zamiana tekstu na mowę może zwiększyć dostępność, dostarczając użytkownikom możliwość korzystania z audibly zawartości. Bez względu na to, czy użytkownik ma niedowidzącość wizualną, nie ma możliwości uczenia się, czy wymaga informacji nawigacyjnych podczas prowadzenia pracy, funkcja zamiany tekstu na mowę może poprawić istniejące środowisko. Funkcja zamiany tekstu na mowę jest również cennym dodatkiem dla botów głosu i asystentów głosowych.
-
 
 Korzystając z języka SSML (Speech Syntezing Language), języka znaczników opartych na języku XML, deweloperzy korzystający z usługi zamiany tekstu na mowę mogą określić, jak tekst wejściowy jest konwertowany na mowę. Dzięki SSML można dostosować wysokość, wymowę, częstotliwość mówienia, głośność i wiele więcej. Aby uzyskać więcej informacji, zobacz [SSML](#speech-synthesis-markup-language-ssml).
 
@@ -54,10 +53,10 @@ Wszystkie dane wejściowe wysyłane do usługi zamiany tekstu na mowę muszą by
 
 W przypadku korzystania z usługi zamiany tekstu na mowę naliczane są opłaty za każdy znak konwertowany na mowę, w tym znaki interpunkcyjne. Chociaż sam dokument SSML nie jest rozliczany, opcjonalne elementy, które są używane do dostosowywania sposobu konwersji tekstu na mowę, takie jak fonemów i gęstość, są zliczane jako znaki rozliczeniowe. Poniżej znajduje się lista rzeczy, które są rozliczane:
 
-* Tekst przesłany do usługi zamiany tekstu na mowę w treści SSML żądania
-* Wszystkie znaczniki w polu tekstowym treści żądania w formacie SSML, z wyjątkiem tagów `<speak>` i `<voice>`
-* Litery, interpunkcja, spacje, tabulatory, znaczniki i wszystkie znaki odstępu
-* Każdy punkt kodowy zdefiniowany w kodzie Unicode
+- Tekst przesłany do usługi zamiany tekstu na mowę w treści SSML żądania
+- Wszystkie znaczniki w polu tekstowym treści żądania w formacie SSML, z wyjątkiem tagów `<speak>` i `<voice>`
+- Litery, interpunkcja, spacje, tabulatory, znaczniki i wszystkie znaki odstępu
+- Każdy punkt kodowy zdefiniowany w kodzie Unicode
 
 Aby uzyskać szczegółowe informacje, zobacz [Cennik](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
@@ -68,16 +67,16 @@ Aby uzyskać szczegółowe informacje, zobacz [Cennik](https://azure.microsoft.c
 
 W tej tabeli przedstawiono podstawowe funkcje zamiany tekstu na mowę:
 
-| Przypadek użycia | SDK | REST |
-|----------|-----|------|
-| Konwertuj tekst na mowę. | Tak | Tak |
-| Przekazywanie zestawów danych do adaptacji głosowej. | Nie | Tak\* |
-| Twórz modele czcionek głosowych i zarządzaj nimi. | Nie | Tak\* |
-| Twórz wdrożenia czcionek głosowych i zarządzaj nimi. | Nie | Tak\* |
-| Twórz i Zarządzaj testami czcionek głosowych. | Nie | Tak\* |
-| Zarządzanie subskrypcjami. | Nie | Tak\* |
+| Przypadek użycia                                  | SDK | REST  |
+| ----------------------------------------- | --- | ----- |
+| Konwertuj tekst na mowę.                   | Yes | Yes   |
+| Przekazywanie zestawów danych do adaptacji głosowej.     | Nie  | Tak\* |
+| Twórz modele czcionek głosowych i zarządzaj nimi.      | Nie  | Tak\* |
+| Twórz wdrożenia czcionek głosowych i zarządzaj nimi. | Nie  | Tak\* |
+| Twórz i Zarządzaj testami czcionek głosowych.       | Nie  | Tak\* |
+| Zarządzanie subskrypcjami.                     | Nie  | Tak\* |
 
-\* *te usługi są dostępne za pomocą punktu końcowego CRIS.AI. Zobacz [Dokumentacja struktury Swagger](https://westus.cris.ai/swagger/ui/index). Te niestandardowe interfejsy API szkolenia i zarządzania umożliwiają wdrożenie ograniczenia ograniczające liczbę żądań do 25 na 5 sekund, natomiast interfejs API syntezy mowy implementuje ograniczenie, które umożliwia 200 żądań na sekundę. W przypadku ograniczenia przepustowości użytkownik zostanie powiadomiony o nagłówkach wiadomości.*
+\*_te usługi są dostępne za pomocą punktu końcowego CRIS.AI. Zobacz [Dokumentacja struktury Swagger](https://westus.cris.ai/swagger/ui/index). Te niestandardowe interfejsy API szkolenia i zarządzania umożliwiają wdrożenie ograniczenia ograniczające liczbę żądań do 25 na 5 sekund, natomiast interfejs API syntezy mowy implementuje ograniczenie, które umożliwia 200 żądań na sekundę. W przypadku ograniczenia przepustowości użytkownik zostanie powiadomiony o nagłówkach wiadomości._
 
 ## <a name="get-started-with-text-to-speech"></a>Wprowadzenie do zamiany tekstu na mowę
 
@@ -86,45 +85,45 @@ Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej n
 ### <a name="sdk-quickstarts"></a>Przewodniki Szybki Start dotyczące zestawu SDK
 
 | Szybki Start (SDK) | Platforma | Dokumentacja interfejsu API |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
-| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
-| [C#, Platformy UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
-| [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Przycisku](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Przycisku](https://aka.ms/csspeech/cppref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Przycisku](https://aka.ms/csspeech/cppref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Przycisku](https://aka.ms/csspeech/javaref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Przycisku](https://aka.ms/csspeech/javaref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
-| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window, Linux, macOS | [Przycisku](https://aka.ms/csspeech/pythonref) |
+| ---------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, Platformy UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Przeglądaj](https://aka.ms/csspeech/cppref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Przeglądaj](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Przeglądaj](https://aka.ms/csspeech/objectivecref) |
+| Adres (~/articles/Cognitive-Services/Speech-Service/QuickStarts/text-to-Speech-langs/SWIFT-MacOS.MD | macOS | [Przeglądaj](https://aka.ms/csspeech/objectivecref) |
+| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Przeglądaj](https://aka.ms/csspeech/objectivecref) |
+| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window, Linux, macOS | [Przeglądaj](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>Przewodniki Szybki Start
 
-| Szybki Start (REST) | Platforma | Dokumentacja interfejsu API |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Przycisku](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Przycisku](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Przycisku](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| Szybki Start (REST) | Platforma | Dokumentacja interfejsów API |
+| ----------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
 Przykładowy kod dla zamiany tekstu na mowę jest dostępny w witrynie GitHub. Te przykłady obejmują konwersję zamiany tekstu na mowę w najpopularniejszych językach programowania.
 
-* [Przykłady zamiany tekstu na mowę (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Przykłady zamiany tekstu na mowę (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>Dokumentacja
 
-* [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
-* [Zestaw SDK urządzeń mowy](speech-devices-sdk.md)
-* [Interfejs API REST: zamiana mowy na tekst](rest-speech-to-text.md)
-* [Interfejs API REST: zamiana tekstu na mowę](rest-text-to-speech.md)
-* [Interfejs API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
+- [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
+- [Zestaw SDK urządzeń mowy](speech-devices-sdk.md)
+- [Interfejs API REST: zamiana mowy na tekst](rest-speech-to-text.md)
+- [Interfejs API REST: zamiana tekstu na mowę](rest-text-to-speech.md)
+- [Interfejs API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uzyskaj bezpłatną subskrypcję usługi Speech Services](get-started.md)
-* [Tworzenie niestandardowych czcionek głosowych](how-to-customize-voice-font.md)
+- [Uzyskaj bezpłatną subskrypcję usługi Speech Services](get-started.md)
+- [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)

@@ -1,25 +1,23 @@
 ---
-title: Tworzenie bramy aplikacji za pomocą zestawu skalowania maszyn wirtualnych — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure.
+title: Używanie zaplecza zestawu skalowania maszyn wirtualnych — interfejs wiersza polecenia
+titleSuffix: Azure Application Gateway
+description: Dowiedz się, jak utworzyć bramę aplikacji z zestawem skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 792d6da36851f74429d97a9779aff1727e8f64db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec1837419390fc29e53565881e41fd4265914f78
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133646"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074520"
 ---
-# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Tworzenie bramy aplikacji z zestawem skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Można użyć wiersza polecenia platformy Azure, aby utworzyć [bramy application gateway](application-gateway-introduction.md) , który używa [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla serwerów wewnętrznej bazy danych. W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
+Możesz użyć interfejsu wiersza polecenia platformy Azure, aby utworzyć [bramę aplikacji](application-gateway-introduction.md) korzystającą z [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla serwerów zaplecza. W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -140,7 +138,7 @@ az network public-ip show \
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/tutorial-create-vmss-cli/tutorial-nginxtest.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
@@ -149,4 +147,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie bramy aplikacji
 > * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
-Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.
+Aby dowiedzieć się więcej na temat bram aplikacji i skojarzonych z nimi zasobów, przejdź do artykułów z krokami.

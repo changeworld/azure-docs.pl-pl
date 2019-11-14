@@ -1,7 +1,7 @@
 ---
 title: Co to jest platforma Azure usługa Load Balancer w warstwie Standardowa?
 titlesuffix: Azure Load Balancer
-description: Omówienie funkcji usługi Azure usługa Load Balancer w warstwie Standardowa
+description: Korzystając z tej ścieżki szkoleniowej, Rozpocznij pracę z omówieniem funkcji usługa Load Balancer w warstwie Standardowa platformy Azure.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: allensu
-ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c14cf572410d02892aa8a2b3e9f0f42fce46d411
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274397"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068776"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure usługa Load Balancer w warstwie Standardowa
 
@@ -68,7 +68,7 @@ Biorąc pod uwagę sposób projektowania puli zaplecza, można projektować dla 
   
 Usługa Load Balancer w warstwie Standardowa dodaje obsługę [sond kondycji protokołu HTTPS](load-balancer-custom-probe-overview.md#httpprobe) (sondowanie http z otoką Transport Layer Security (TLS)) w celu dokładnego monitorowania aplikacji https.  
 
-Ponadto, gdy cała sonda puli zaplecza nie [działa](load-balancer-custom-probe-overview.md#probedown), usługa Load Balancer w warstwie Standardowa zezwala na kontynuowanie wszystkich ustanowionych połączeń TCP. (Podstawowa Load Balancer zakończy wszystkie połączenia TCP ze wszystkimi wystąpieniami).
+Ponadto, gdy cała [sonda](load-balancer-custom-probe-overview.md#probedown)puli zaplecza nie działa, usługa Load Balancer w warstwie Standardowa zezwala na kontynuowanie wszystkich ustanowionych połączeń TCP. (Podstawowa Load Balancer zakończy wszystkie połączenia TCP ze wszystkimi wystąpieniami).
 
 Szczegółowe informacje znajdują się w [Load Balancer sondy kondycji](load-balancer-custom-probe-overview.md) .
 
@@ -227,20 +227,20 @@ Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warst
 - Zasób autonomicznej maszyny wirtualnej, zasób zestawu dostępności lub zasób zestawu skalowania maszyn wirtualnych może odwoływać się do jednej jednostki SKU, nigdy nie obu.
 - Reguła Load Balancer nie może obejmować dwóch sieci wirtualnych.  Frontony i powiązane z nimi wystąpienia zaplecza muszą znajdować się w tej samej sieci wirtualnej.  
 - [Operacje przenoszenia subskrypcji](../azure-resource-manager/resource-group-move-resources.md) nie są obsługiwane w przypadku zasobów w warstwie Standardowa i PIP.
-- Role procesów roboczych sieci Web bez sieci wirtualnej i innych usług platformy firmy Microsoft mogą być dostępne, gdy jest używany tylko wewnętrzny usługa Load Balancer w warstwie Standardowa ze względu na efekt uboczny od sposobu, w jaki działają usługi frontonu i inne usługi platformy. Nie należy polegać na tym, ponieważ sama usługa lub podstawowa platforma może ulec zmianie bez powiadomienia. Zawsze należy założyć, że konieczne jest utworzenie [połączenia](load-balancer-outbound-connections.md) wychodzącego jawnie, jeśli jest to potrzebne, przy użyciu tylko wewnętrznego usługa Load Balancer w warstwie Standardowa.
+- Role procesów roboczych sieci Web bez sieci wirtualnej i innych usług platformy firmy Microsoft mogą być dostępne, gdy jest używany tylko wewnętrzny usługa Load Balancer w warstwie Standardowa ze względu na efekt uboczny od sposobu, w jaki działają usługi frontonu i inne usługi platformy. Nie należy polegać na tym, ponieważ sama usługa lub podstawowa platforma może ulec zmianie bez powiadomienia. Zawsze należy założyć, że konieczne jest utworzenie [połączenia wychodzącego](load-balancer-outbound-connections.md) jawnie, jeśli jest to potrzebne, przy użyciu tylko wewnętrznego usługa Load Balancer w warstwie Standardowa.
 - Moduł równoważenia obciążenia to produkt protokołu TCP lub UDP służący do równoważenia obciążenia i przekierowania portów na potrzeby tych konkretnych protokołów IP.  Reguły równoważenia obciążenia i reguły NAT dla ruchu przychodzącego są obsługiwane dla protokołów TCP i UDP, ale nie są obsługiwane dla innych protokołów IP, w tym protokołu ICMP. Moduł równoważenia obciążenia nie kończy, nie odpowiada ani w żaden inny sposób nie wchodzi w interakcję z ładunkiem przepływu protokołu UDP ani TCP. Nie jest to serwer proxy. Pomyślne zweryfikowanie łączności z frontonem musi odbywać się w paśmie przy użyciu tego samego protokołu, który jest używany w ramach równoważenia obciążenia lub przychodzącej reguły NAT (TCP lub UDP) _, a_ co najmniej jedna maszyna wirtualna musi generować odpowiedź dla klienta, aby zobaczyć odpowiedź z frontonu.  Nieodebrana odpowiedź w paśmie z frontonu Load Balancer nie wskazuje, że żadne maszyny wirtualne nie mogły odpowiedzieć.  Nie jest możliwe korzystanie z Load Balancer frontonu bez możliwości reagowania maszyny wirtualnej.  Dotyczy to również połączeń wychodzących, dla których [translator adresów sieciowych opartych na źródle na potrzeby maskowania portów](load-balancer-outbound-connections.md#snat) jest obsługiwany tylko w przypadku protokołów TCP i UDP; dla wszystkich innych protokołów IP, w tym ICMP, również zakończy się to niepowodzeniem.  Przypisz publiczny adres IP na poziomie wystąpienia, aby rozwiązać ten problem.
-- W przeciwieństwie do publicznych modułów równoważenia obciążenia, które zapewniają [połączenia](load-balancer-outbound-connections.md) wychodzące w przypadku przechodzenia z prywatnych adresów IP w sieci wirtualnej do publicznych adresów IP, wewnętrzne moduły równoważenia obciążenia nie przekładają się na wychodzące połączenia przychodzące do frontonu wewnętrzny Load Balancer, jako oba znajdują się w prywatnej przestrzeni adresów IP.  Pozwala to uniknąć potencjalnych wyczerpania adresów IP wewnątrz unikatowej wewnętrznej przestrzeni adresowej, w której tłumaczenie nie jest wymagane.  Efekt uboczny polega na tym, że jeśli przepływ wychodzący z maszyny wirtualnej w puli zaplecza próbuje przepływ do frontonu wewnętrznego Load Balancer, w którym znajduje się ta pula, _i_ jest mapowany do samego siebie, oba etapy przepływu nie są zgodne i przepływ zakończy się niepowodzeniem.  Jeśli przepływ nie został zmapowany z powrotem do tej samej maszyny wirtualnej w puli zaplecza, która utworzyła przepływ na fronton, przepływ zakończy się pomyślnie.   Gdy przepływ zamapuje się z powrotem do samego siebie, wydaje się, że przepływ wychodzący pochodzi z maszyny wirtualnej do frontonu, a odpowiedni przepływ przychodzący wydaje się pochodzić z maszyny wirtualnej do samej siebie. Z punktu widzenia systemu operacyjnego gościa części dotyczące ruchu przychodzącego i wychodzącego tego samego przepływu nie są zgodne w ramach maszyny wirtualnej. Stos TCP nie rozpozna tych części jednego przepływu jako należących do tego samego przepływu, ponieważ elementy źródłowe i docelowe nie będą zgodne.  Gdy przepływ jest mapowany na dowolną inną maszynę wirtualną w puli zaplecza, połowy przepływu będą zgodne, a maszyna wirtualna może pomyślnie odpowiedzieć na przepływ.  Objawem tego scenariusza jest sporadyczne przekroczenie limitu czasu połączenia. Istnieje kilka typowych obejść dla niezawodnej realizacji tego scenariusza (przepływy pochodzące z puli zaplecza do pul zaplecza z wewnętrznymi Load Balancer frontonu), które obejmują Wstawianie serwera proxy innej firmy pod obciążeniem wewnętrznym Moduł równoważenia lub [reguły stylu DSR](load-balancer-multivip-overview.md).  Użycie publicznego modułu równoważenia obciążenia jest możliwe w celu rozwiązania tego problemu, ale wynikowy scenariusz jest podatny na [wyczerpanie translatora adresów sieciowych opartych na źródle](load-balancer-outbound-connections.md#snat) i należy tego unikać lub starannie kontrolować.
+- W przeciwieństwie do publicznych modułów równoważenia obciążenia, które zapewniają [połączenia wychodzące](load-balancer-outbound-connections.md) w przypadku przejścia z prywatnych adresów IP w sieci wirtualnej do publicznych adresów IP, wewnętrzne moduły równoważenia obciążenia nie tłumaczą wychodzących połączeń przychodzących na fronton Load Balancer wewnętrznego, tak jak w przypadku elementów prywatnych.  Pozwala to uniknąć potencjalnych wyczerpania adresów IP wewnątrz unikatowej wewnętrznej przestrzeni adresowej, w której tłumaczenie nie jest wymagane.  Efekt uboczny polega na tym, że jeśli przepływ wychodzący z maszyny wirtualnej w puli zaplecza próbuje przepływ do frontonu wewnętrznego Load Balancer, w którym znajduje się ta pula, _i_ jest mapowany do samego siebie, oba etapy przepływu nie są zgodne i przepływ zakończy się niepowodzeniem.  Jeśli przepływ nie został zmapowany z powrotem do tej samej maszyny wirtualnej w puli zaplecza, która utworzyła przepływ na fronton, przepływ zakończy się pomyślnie.   Gdy przepływ zamapuje się z powrotem do samego siebie, wydaje się, że przepływ wychodzący pochodzi z maszyny wirtualnej do frontonu, a odpowiedni przepływ przychodzący wydaje się pochodzić z maszyny wirtualnej do samej siebie. Z punktu widzenia systemu operacyjnego gościa części dotyczące ruchu przychodzącego i wychodzącego tego samego przepływu nie są zgodne w ramach maszyny wirtualnej. Stos TCP nie rozpozna tych części jednego przepływu jako należących do tego samego przepływu, ponieważ elementy źródłowe i docelowe nie będą zgodne.  Gdy przepływ jest mapowany na dowolną inną maszynę wirtualną w puli zaplecza, połowy przepływu będą zgodne, a maszyna wirtualna może pomyślnie odpowiedzieć na przepływ.  Objawem tego scenariusza jest sporadyczne przekroczenie limitu czasu połączenia. Istnieje kilka typowych obejść do niezawodnego osiągania tego scenariusza (przepływy pochodzące z puli zaplecza do pul zaplecza z wewnętrznymi Load Balancer frontonu), które obejmują Wstawianie serwera proxy innej firmy za wewnętrzną Load Balancer lub [przy użyciu reguł stylu DSR](load-balancer-multivip-overview.md).  Użycie publicznego modułu równoważenia obciążenia jest możliwe w celu rozwiązania tego problemu, ale wynikowy scenariusz jest podatny na [wyczerpanie translatora adresów sieciowych opartych na źródle](load-balancer-outbound-connections.md#snat) i należy tego unikać lub starannie kontrolować.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o korzystaniu z [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](load-balancer-standard-availability-zones.md).
-- Dowiedz [](load-balancer-custom-probe-overview.md)się więcej o sondach kondycji.
+- Dowiedz się więcej o [sondach kondycji](load-balancer-custom-probe-overview.md).
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md).
 - Dowiedz się więcej na temat [diagnostyki usługa Load Balancer w warstwie Standardowa](load-balancer-standard-diagnostics.md).
 - Dowiedz się więcej na temat [obsługiwanych metryk wielowymiarowych](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) dla diagnostyki w [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
-- Poznaj [reguły ruchu](load-balancer-outbound-rules-overview.md)wychodzącego.
-- Więcej informacji [na temat resetowania protokołu TCP w](load-balancer-tcp-reset.md)trybie bezczynności.
+- Poznaj [reguły ruchu wychodzącego](load-balancer-outbound-rules-overview.md).
+- Więcej informacji [na temat resetowania protokołu TCP w trybie bezczynności](load-balancer-tcp-reset.md).
 - Dowiedz się więcej o [Usługa Load Balancer w warstwie Standardowa z regułami równoważenia obciążenia dla portów ha](load-balancer-ha-ports-overview.md).
 - Dowiedz się więcej o korzystaniu [z Load Balancer z wieloma frontonami](load-balancer-multivip-overview.md).
 - Dowiedz się więcej o [sieciach wirtualnych](../virtual-network/virtual-networks-overview.md).

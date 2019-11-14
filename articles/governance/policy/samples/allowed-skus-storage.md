@@ -1,17 +1,14 @@
 ---
 title: Przykładowe dozwolone konto magazynu i jednostki SKU maszyny wirtualnej
 description: Te przykładowe definicje zasad wymagają, aby konta magazynu i maszyny wirtualne korzystały z zatwierdzonych jednostek SKU.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: bfa6fd7bf812da352e074c0ed4df855043a27971
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: fa66dde7c8b6656bb78a7b27ab72cad157029d3b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255857"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74071838"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
 
@@ -27,7 +24,7 @@ Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -72,4 +69,4 @@ az policy set-definition delete --name "skus-for-multiple-types"
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

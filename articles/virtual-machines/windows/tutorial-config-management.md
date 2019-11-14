@@ -1,5 +1,5 @@
 ---
-title: Samouczek — zarządzanie konfiguracją maszyny wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
+title: Samouczek — zarządzanie konfiguracją maszyny wirtualnej z systemem Windows na platformie Azure
 description: W tym samouczku dowiesz się, jak identyfikować zmiany i zarządzać aktualizacjami pakietów na maszynie wirtualnej z systemem Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 13a9534920f936287109a451b542c81a007c3a4c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027902"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064796"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Samouczek: monitorowanie zmian i aktualizowanie maszyny wirtualnej z systemem Windows na platformie Azure
 

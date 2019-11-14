@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a02d9f42242b9a762c58ef65a798ff6ab8f53914
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210169"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074791"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Uruchom instalację nienadzorowaną Azure Backup Server
 
@@ -55,11 +55,12 @@ Te kroki nie mają zastosowania, Jeśli instalujesz Azure Backup Server v1.
 
 Możesz użyć tych flag do instalacji:</br>
 **/f**:. ini ścieżka pliku</br>
-**/l**: Ścieżka dziennika</br>
-**/i**: Ścieżka instalacji</br>
-**/x**: Ścieżka odinstalowania</br>
+**/l**: ścieżka dziennika</br>
+**/i**: ścieżka instalacji</br>
+**/x**: ścieżka odinstalowania</br>
 
 ## <a name="next-steps"></a>Następne kroki
+
 Po zainstalowaniu serwera kopii zapasowej należy dowiedzieć się, jak przygotować serwer lub rozpocząć ochronę obciążeń.
 
 - [Przygotowywanie obciążeń serwera kopii zapasowej](backup-azure-microsoft-azure-backup.md)

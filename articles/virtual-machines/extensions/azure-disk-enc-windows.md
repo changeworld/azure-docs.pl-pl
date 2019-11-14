@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption dla systemu Windows | Microsoft Docs
+title: Azure Disk Encryption dla systemu Windows
 description: Wdraża Azure Disk Encryption na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901333"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073209"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption dla systemu Windows (Microsoft. Azure. Security. AzureDiskEncryption)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Azure Disk Encryption wykorzystuje funkcję BitLocker, aby zapewnić pełne szyfrowanie dysków na maszynach wirtualnych platformy Azure z systemem Windows.  To rozwiązanie jest zintegrowane z usługą Azure Key Vault w celu zarządzania kluczami i wpisami tajnymi dysków w ramach subskrypcji magazynu kluczy. 
 
@@ -134,32 +134,32 @@ Używanie `AADClientCertificate`:
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Nazwa | Wartość/przykład | Typ danych |
+| Nazwa | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| dawc | Microsoft. Azure. Security | string |
-| type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 1,1, 2,2 | string |
-| (schemat 1,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Ident | 
-| (schemat 1,1) AADClientSecret | hasło | string |
-| (schemat 1,1) AADClientCertificate | odcisk palca | string |
+| publisher | Microsoft.Azure.Security | ciąg |
+| type | AzureDiskEncryptionForLinux | ciąg |
+| typeHandlerVersion | 1,1, 2,2 | ciąg |
+| (schemat 1,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schemat 1,1) AADClientSecret | hasło | ciąg |
+| (schemat 1,1) AADClientCertificate | thumbprint | ciąg |
 | DiskFormatQuery | {"dev_path": "", "name": "", "file_system": ""} | Słownik JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | string |
-| keyEncryptionKeyURL | url | string |
-| keyVaultURL | url | string |
-| obowiązkowe Danym | hasło | string | 
-| sequenceVersion | uniqueidentifier | string |
-| liczba woluminów | System operacyjny, dane, wszystkie | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | ciąg | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | ciąg |
+| KeyEncryptionKeyURL | url | ciąg |
+| KeyVaultURL | url | ciąg |
+| obowiązkowe Danym | hasło | ciąg | 
+| SequenceVersion | uniqueidentifier | ciąg |
+| Liczba woluminów | System operacyjny, dane, wszystkie | ciąg |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 Aby zapoznać się z przykładem wdrożenia szablonów, zobacz [Tworzenie nowej zaszyfrowanej maszyny wirtualnej z systemem Windows na podstawie obrazu z galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
 
-## <a name="azure-cli-deployment"></a>Wdrożenie interfejsu wiersza polecenia platformy Azure
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
 Instrukcje znajdują się w najnowszej [dokumentacji interfejsu wiersza polecenia platformy Azure](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomoc techniczna
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
@@ -167,7 +167,7 @@ Zapoznaj się z [przewodnikiem rozwiązywania problemów Azure Disk Encryption](
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie możesz zaplikować zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat rozszerzeń, zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows](features-windows.md).

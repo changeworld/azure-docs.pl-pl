@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci wirtualnej z obwodem usługi ExpressRoute: CLI: Azure| Microsoft Docs'
+title: 'Azure ExpressRoute: łączenie sieci wirtualnej z obwodem: interfejs wiersza polecenia'
 description: W tym artykule pokazano, jak połączyć sieci wirtualne (Vnet) obwodów usługi ExpressRoute przy użyciu modelu wdrażania usługi Resource Manager i interfejsu wiersza polecenia.
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.custom: seodec18
-ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621058"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076536"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą interfejsu wiersza polecenia
 
@@ -154,11 +152,11 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 
 Zakres *RoutingWeight* 0 do 32 000. Wartość domyślna to 0.
 
-## <a name="configure-expressroute-fastpath"></a>Konfigurowanie usługi ExpressRoute FastPath 
-Możesz włączyć [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Jeśli obwód usługi ExpressRoute znajduje się na [ExpressRoute bezpośrednio](expressroute-erdirect-about.md) i bramy sieci wirtualnej newtork jest największa wydajność lub ErGw3AZ. FastPath zwiększa preformance ścieżki danych, takich jak pakietów na sekundę i połączeń na sekundę między siecią lokalną i siecią wirtualną. 
+## <a name="configure-expressroute-fastpath"></a>Konfigurowanie ExpressRoute FastPath 
+Możesz włączyć [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , jeśli obwód ExpressRoute jest na [ExpressRoute Direct](expressroute-erdirect-about.md) , a wirtualna Brama sieć to Ultra Performance lub ErGw3AZ. FastPath poprawia zgodność ścieżki danych, takie jak pakiety na sekundę i połączenia na sekundę między siecią lokalną i siecią wirtualną. 
 
 > [!NOTE] 
-> Jeśli masz już połączenia sieci wirtualnej, ale nie zostały włączone FastPath musisz usunąć połączenie z siecią wirtualną i Utwórz nowe. 
+> Jeśli masz już połączenie z siecią wirtualną, ale nie włączono FastPath, musisz usunąć połączenie z siecią wirtualną i utworzyć nowe. 
 > 
 >  
 
@@ -167,6 +165,6 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).

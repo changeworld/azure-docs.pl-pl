@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bf79957bec4b330ca9acce3f8b92aab1a0944440
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747262"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074856"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
@@ -118,12 +118,12 @@ Dostępne opcje to:
 
 | Opcja | Szczegóły | Domyślne |
 | --- | --- | --- |
-| parametru |Instalacja cicha |- |
+| /q |Instalacja cicha |- |
 | /p: "Location" |Ścieżka do folderu instalacji agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: "lokalizacja" |Ścieżka do folderu pamięci podręcznej dla agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| parametr |Zezwól na Microsoft Update |- |
+| /m |Zezwól na Microsoft Update |- |
 | /nu |Nie sprawdzaj, czy są aktualizacje po zakończeniu instalacji |- |
-| parametr |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
+| /d |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
 | /pH Generuj dyrektywę |Adres hosta serwera proxy |- |
 | /po |Numer portu hosta serwera proxy |- |
 | /pu |Nazwa użytkownika hosta serwera proxy |- |
@@ -547,9 +547,9 @@ IsExclude : True
 IsRecursive : True
 ```
 
-### <a name="performing-an-ad-hoc-backup"></a>Wykonywanie kopii zapasowej ad hoc
+### <a name="performing-an-on-demand-backup"></a>Wykonywanie kopii zapasowej na żądanie
 
-Po ustawieniu zasad tworzenia kopii zapasowej kopie zapasowe będą wykonywane zgodnie z harmonogramem. Tworzenie kopii zapasowej ad hoc jest również możliwe za pomocą polecenia cmdlet [Start-OBBackup](https://technet.microsoft.com/library/hh770426) :
+Po ustawieniu zasad tworzenia kopii zapasowej kopie zapasowe będą wykonywane zgodnie z harmonogramem. Wyzwalanie kopii zapasowej na żądanie jest również możliwe za pomocą polecenia cmdlet [Start-OBBackup](https://technet.microsoft.com/library/hh770426) :
 
 ```powershell
 Get-OBPolicy | Start-OBBackup

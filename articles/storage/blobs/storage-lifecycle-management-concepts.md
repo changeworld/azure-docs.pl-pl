@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 5cf4689534a813d778c25a7a712b983aafe6f5a9
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881581"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077115"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu usługi Azure Blob Storage
 
@@ -32,7 +32,7 @@ Rozważmy scenariusz, w którym dane są często dostępne podczas wczesnych eta
 
 ## <a name="storage-account-support"></a>Obsługa kont magazynu
 
-Zasady zarządzania cyklem życia są dostępne z kontami Ogólnego przeznaczenia v2 (GPv2), kontami magazynu obiektów blob i blokami Premium BLOB Storage. W Azure Portal można uaktualnić istniejące konto Ogólnego przeznaczenia (GPv1) do konta GPv2. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](../common/storage-account-overview.md).  
+Zasady zarządzania cyklem życia są dostępne z kontami Ogólnego przeznaczenia v2 (GPv2), kontami magazynu obiektów blob i blokami Premium BLOB Storage. W Azure Portal można uaktualnić istniejące konto Ogólnego przeznaczenia (GPv1) do konta GPv2. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).  
 
 ## <a name="pricing"></a>Cennik
 
@@ -65,7 +65,7 @@ Istnieją dwa sposoby dodawania zasad za pomocą Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Widok listy Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje konto magazynu.
 
@@ -86,7 +86,7 @@ Istnieją dwa sposoby dodawania zasad za pomocą Azure Portal.
 9. Wybierz pozycję **Dodaj** , aby dodać nowe zasady.
 
 #### <a name="azure-portal-code-view"></a>Widok kodu Azure Portal
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje konto magazynu.
 
@@ -233,7 +233,7 @@ Każda reguła w ramach zasad ma kilka parametrów:
 | Nazwa parametru | Typ parametru | Uwagi | Wymagane |
 |----------------|----------------|-------|----------|
 | `name`         | Ciąg |Nazwa reguły może zawierać do 256 znaków alfanumerycznych. W nazwie reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | Prawda |
-| `enabled`      | Wartość logiczna | Opcjonalna wartość logiczna zezwalająca na tymczasowe wyłączenie reguły. Wartość domyślna to true, jeśli nie została ustawiona. | Fałsz | 
+| `enabled`      | Wartość logiczna | Opcjonalna wartość logiczna zezwalająca na tymczasowe wyłączenie reguły. Wartość domyślna to true, jeśli nie została ustawiona. | False | 
 | `type`         | Wartość wyliczenia | Bieżący prawidłowy typ to `Lifecycle`. | Prawda |
 | `definition`   | Obiekt, który definiuje regułę cyklu życia | Każda definicja składa się z zestawu filtrów i zestawu akcji. | Prawda |
 
@@ -286,7 +286,7 @@ Filtry obejmują:
 
 | Nazwa filtru | Typ filtru | Uwagi | Jest wymagana |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Tak |
+| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Yes |
 | prefixMatch | Tablica ciągów dla prefiksów, które mają być zgodne. Każda reguła może definiować do 10 prefiksów. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład jeśli chcesz dopasować wszystkie obiekty blob w obszarze `https://myaccount.blob.core.windows.net/container1/foo/...` dla reguły, prefixMatch jest `container1/foo`. | Jeśli nie zdefiniujesz prefixMatch, reguła będzie stosowana do wszystkich obiektów BLOB w ramach konta magazynu.  | Nie |
 
 ### <a name="rule-actions"></a>Akcje reguły
@@ -295,10 +295,10 @@ Akcje są stosowane do filtrowanych obiektów blob, gdy spełniony jest warunek 
 
 Zarządzanie cyklem życia obsługuje warstwowe i usuwanie obiektów blob oraz usuwanie migawek obiektów BLOB. Zdefiniuj co najmniej jedną akcję dla każdej reguły dla obiektów blob lub migawek obiektów BLOB.
 
-| Działanie        | Podstawowy obiekt BLOB                                   | Migawka      |
+| Akcja        | Podstawowy obiekt BLOB                                   | Migawka      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Obsługa obiektów BLOB obecnie w warstwie gorąca         | Brak obsługi |
-| tierToArchive | Obsługa obiektów BLOB obecnie w warstwie gorąca lub chłodna | Brak obsługi |
+| tierToCool    | Obsługa obiektów BLOB obecnie w warstwie gorąca         | Nieobsługiwane |
+| tierToArchive | Obsługa obiektów BLOB obecnie w warstwie gorąca lub chłodna | Nieobsługiwane |
 | delete        | Obsługiwane                                   | Obsługiwane     |
 
 >[!NOTE]
@@ -431,6 +431,9 @@ W przypadku danych, które są regularnie modyfikowane i dostępne przez cały o
 
 **Po utworzeniu nowych zasad nie są one uruchamiane natychmiast?**  
 Na platformie są uruchamiane zasady cyklu życia raz dziennie. Po skonfigurowaniu zasad może upłynąć nawet 24 godziny, aby niektóre akcje działały po raz pierwszy.  
+
+**Kiedy aktualizujesz istniejące zasady, jak długo trwa wykonywanie akcji?**  
+Zastosowanie zaktualizowanych zasad może zająć do 24 godzin. Gdy zasady będą obowiązywać, wykonanie akcji może potrwać do 24 godzin. W związku z tym zasady mogą trwać do 48 godzin.   
 
 **Ręcznie ponownie odwodniono zarchiwizowany obiekt BLOB, jak zapobiegać przenoszeniu go z powrotem do warstwy Archiwum?**  
 Gdy obiekt BLOB jest przenoszony z jednej warstwy dostępu do innej, jego Ostatnia modyfikacja nie zmienia się. W przypadku ręcznego ponownego przełączenia zarchiwizowanego obiektu BLOB do warstwy gorąca można go przenieść z powrotem do warstwy archiwum przez aparat zarządzania cyklem życia. Wyłącz regułę, która ma wpływ na ten obiekt BLOB tymczasowo, aby uniemożliwić jego ponowne zarchiwizowanie. Włącz ponownie regułę, gdy obiekt BLOB będzie można bezpiecznie przenieść z powrotem do warstwy archiwum. Możesz również skopiować obiekt BLOB do innej lokalizacji, jeśli musi on pozostać w warstwie gorąca lub chłodna.

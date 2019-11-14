@@ -1,22 +1,22 @@
 ---
-title: Samouczek — Tworzenie i wdrażanie pierwszego szablonu Azure Resource Manager
-description: W tym artykule opisano kroki tworzenia pierwszego szablonu Azure Resource Manager. Dowiesz się więcej na temat składni pliku szablonu i sposobu wdrażania konta magazynu.
+title: Samouczek — Tworzenie szablonu & Wdróż Azure Resource Manager
+description: Utwórz pierwszy szablon Azure Resource Manager. Samouczek zawiera informacje na temat składni pliku szablonu i sposobu wdrażania konta magazynu.
 author: mumian
 manager: carmonmills
 ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029540"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074370"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Samouczek: Tworzenie i wdrażanie pierwszego szablonu Azure Resource Manager
 
-W tym samouczku przedstawiono Menedżer zasobów szablonów. Pokazuje, jak utworzyć początkowy szablon i wdrożyć go na platformie Azure. Poznasz strukturę szablonu i narzędzia potrzebne do pracy z szablonami. Ukończenie tego samouczka zajmuje około **12 minut** , ale rzeczywisty czas będzie różny w zależności od liczby narzędzi, które należy zainstalować.
+W tym samouczku przedstawiono Azure Resource Manager szablonów. Pokazuje, jak utworzyć początkowy szablon i wdrożyć go na platformie Azure. Poznasz strukturę szablonu i narzędzia potrzebne do pracy z szablonami. Ukończenie tego samouczka zajmuje około **12 minut** , ale rzeczywisty czas będzie różny w zależności od liczby narzędzi, które należy zainstalować.
 
 Ten samouczek jest pierwszą częścią serii. W miarę postępów przez serię należy zmodyfikować szablon startowy krok po kroku do momentu zbadania wszystkich podstawowych części szablonu Menedżer zasobów. Elementy te są blokami konstrukcyjnymi dla znacznie bardziej złożonych szablonów. Mamy nadzieję, że na końcu serii masz pewność, że tworzysz własne szablony i chcesz zautomatyzować wdrożenia przy użyciu szablonów.
 
@@ -77,7 +77,7 @@ Teraz możesz zacząć uczenie się o szablonach.
 
 Gratulacje, utworzono pierwszy szablon.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Aby rozpocząć pracę z interfejsem wiersza polecenia Azure PowerShell/Azure, zaloguj się przy użyciu poświadczeń platformy Azure.
 
@@ -158,7 +158,7 @@ Polecenie wdrożenia zwraca wyniki. Poszukaj `ProvisioningState`, aby sprawdzić
 
 Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 

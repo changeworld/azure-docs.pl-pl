@@ -1,7 +1,7 @@
 ---
 title: Uczenie modelu dla usługi Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
-description: Szkolenie zamiany mowy na tekst jest niezbędne w celu zwiększenia dokładności rozpoznawania dla modelu linii bazowej firmy Microsoft lub modelu niestandardowego, który ma zostać utworzony. Model jest szkolony z zastosowaniem transkrypcji i powiązanego tekstu. Te zestawy danych wraz z wcześniej przekazanymi danymi audio są używane do udoskonalania i uczenia modelu zamiany mowy na tekst w celu rozpoznawania wyrazów, fraz, akronimów, nazw i innych warunków specyficznych dla produktu.
+description: Uczenie modelu zamiany mowy na tekst może poprawić dokładność rozpoznawania dla modelu linii bazowej firmy Microsoft lub modelu niestandardowego. Model jest szkolony z zastosowaniem transkrypcji i powiązanego tekstu.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,26 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801463"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072501"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Uczenie modelu dla Custom Speech
 
-Szkolenie zamiany mowy na tekst jest niezbędne w celu zwiększenia dokładności rozpoznawania dla modelu linii bazowej firmy Microsoft lub modelu niestandardowego, który ma zostać utworzony. Model jest szkolony z zastosowaniem transkrypcji i powiązanego tekstu. Te zestawy danych wraz z wcześniej przekazanymi danymi audio są używane do udoskonalania i uczenia modelu zamiany mowy na tekst w celu rozpoznawania wyrazów, fraz, akronimów, nazw i innych warunków specyficznych dla produktu. Im bardziej szczegółowe zestawy danych w domenie, które zapewniasz (dane związane z tym, co użytkownicy będą wiedzieć i jakie są oczekiwane do rozpoznania), to dokładniejszy model, który będzie wynikiem ulepszonego rozpoznawania. Należy pamiętać, że przez podawanie niepowiązanych danych do szkolenia, można zmniejszyć lub obniżyć dokładność modelu.
+Uczenie modelu zamiany mowy na tekst może poprawić dokładność rozpoznawania dla modelu linii bazowej firmy Microsoft lub niestandardowego modelu, który ma zostać utworzony. Model jest szkolony z zastosowaniem transkrypcji i powiązanego tekstu. Te zestawy danych wraz z wcześniej przekazanymi danymi audio są używane do udoskonalania i uczenia modelu zamiany mowy na tekst w celu rozpoznawania wyrazów, fraz, akronimów, nazw i innych warunków specyficznych dla produktu. Im bardziej szczegółowe zestawy danych w domenie, które zapewniasz (dane związane z tym, co użytkownicy będą wiedzieć i jakie są oczekiwane do rozpoznania), to dokładniejszy model, który będzie wynikiem ulepszonego rozpoznawania. Należy pamiętać, że przez podawanie niepowiązanych danych do szkolenia, można zmniejszyć lub obniżyć dokładność modelu.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Rozwiązywanie problemów z dokładnością przy użyciu szkoleń
 
 Jeśli napotykasz problemy z rozpoznawaniem z modelem, używanie transkrypcji z etykietami i powiązane dane dla dodatkowego szkolenia może pomóc poprawić dokładność. Użyj tej tabeli, aby określić zestaw danych, który ma być używany do rozwiązywania problemów:
 
 | Przypadek użycia | Typ danych |
-|----------|-----------|
-| Poprawianie dokładności rozpoznawania w przypadku słownictwa i gramatyki właściwych dla branży, takich jak Terminologia medyczna lub żargon IT | Pokrewny tekst (zdania/wyrażenia długości) |
+| -------- | --------- |
+| Popraw dokładność rozpoznawania w przypadku słownictwa i gramatyki właściwych dla branży, takich jak Terminologia medyczna lub żargon IT. | Pokrewny tekst (zdania/wyrażenia długości) |
 | Zdefiniuj tekst fonetyczny i wyświetloną wyrazu lub terminu, który ma niestandardową wymowę, taką jak nazwy produktów lub akronimy. | Pokrewny tekst (wymowa) |
-| Poprawianie dokładności rozpoznawania w przypadku stylów, akcentów lub określonych szumów tła | Zapisy audio + oznakowane przez człowieka |
+| Popraw dokładność rozpoznawania w przypadku stylów, akcentów lub określonych szumów w tle. | Zapisy audio + oznakowane przez człowieka |
+
 > [!IMPORTANT]
 > Jeśli zestaw danych nie został przekazany, zapoznaj się [z tematem przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md). Ten dokument zawiera instrukcje dotyczące przekazywania danych oraz wskazówki dotyczące tworzenia zestawów danych o wysokiej jakości.
 
@@ -46,25 +47,24 @@ Pierwszym krokiem do uczenia modelu jest przekazanie danych szkoleniowych. Użyj
 7. Po zakończeniu szkolenia możesz wybrać przeprowadzenie testowania dokładności dla nowo nauczonego modelu. Ten krok jest opcjonalny.
 8. Wybierz pozycję **Utwórz** , aby skompilować niestandardowy model.
 
-W tabeli szkoleń zostanie wyświetlony nowy wpis, który odnosi się do nowo utworzonego modelu. W tabeli jest również wyświetlany stan:  Przetwarzanie zakończone powodzeniem, zakończone niepowodzeniem.
+W tabeli szkoleń zostanie wyświetlony nowy wpis, który odnosi się do nowo utworzonego modelu. W tabeli jest również wyświetlany stan: przetwarzanie, zakończone powodzeniem, zakończone niepowodzeniem.
 
 ## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Oceń dokładność przeszkolonego modelu
 
 Możesz sprawdzić dane i oszacować dokładność modeli przy użyciu tych dokumentów:
 
-* [Inspekcja danych](how-to-custom-speech-inspect-data.md)
-* [Oceń dane](how-to-custom-speech-evaluate-data.md)
-
+- [Inspekcja danych](how-to-custom-speech-inspect-data.md)
+- [Oceń dane](how-to-custom-speech-evaluate-data.md)
 
 Jeśli zdecydowano się na przetestowanie dokładności, ważne jest, aby wybrać akustyczny zestaw danych, który różni się od tego, który był używany z modelem w celu uzyskania realistycznego sensu wydajności modelu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
+- [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
-* [Inspekcja danych](how-to-custom-speech-inspect-data.md)
-* [Oceń dane](how-to-custom-speech-evaluate-data.md)
-* [Uczenie modelu](how-to-custom-speech-train-model.md)
+- [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
+- [Inspekcja danych](how-to-custom-speech-inspect-data.md)
+- [Oceń dane](how-to-custom-speech-evaluate-data.md)
+- [Uczenie modelu](how-to-custom-speech-train-model.md)

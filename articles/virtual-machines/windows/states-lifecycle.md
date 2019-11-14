@@ -1,5 +1,5 @@
 ---
-title: Cykl życia i Stany maszyny wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
+title: Cykl życia i Stany maszyny wirtualnej z systemem Windows na platformie Azure
 description: Omówienie cyklu życia maszyny wirtualnej z systemem Windows na platformie Azure, w tym opisy różnych stanów, w których maszyna wirtualna może znajdować się w dowolnym momencie.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 12ef055c94c25d27414e910a1ec1f53f6252d623
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f7823d0e34fb6a79e79e9feab8eea77785b3d0da
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101811"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068225"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Cykl życia i Stany maszyn wirtualnych
 

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Windows na podstawie szablonu na platformie Azure | Microsoft Docs
+title: Tworzenie maszyny wirtualnej z systemem Windows na podstawie szablonu na platformie Azure
 description: Użyj szablonu Menedżer zasobów i programu PowerShell, aby łatwo utworzyć nową maszynę wirtualną z systemem Windows.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e1f50753f155d1583de3a1e8426975e1b0d6aee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 99e292930414ae027c9cbbf3a901d550041899d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102515"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065548"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Tworzenie maszyny wirtualnej z systemem Windows na podstawie szablonu Menedżer zasobów
 
 Dowiedz się, jak utworzyć maszynę wirtualną z systemem Windows przy użyciu szablonu Azure Resource Manager i Azure PowerShell z usługi Azure Cloud Shell. Szablon używany w tym artykule wdraża pojedynczą maszynę wirtualną z systemem Windows Server w nowej sieci wirtualnej z jedną podsiecią. Aby utworzyć maszynę wirtualną z systemem Linux, zobacz [How to Create a Virtual Machine Machine z szablonami Azure Resource Manager](../linux/create-ssh-secured-vm-from-template.md).
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 Tworzenie maszyny wirtualnej platformy Azure zwykle obejmuje dwa kroki:
 
@@ -60,7 +60,7 @@ New-AzResourceGroupDeployment `
 
 Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, a nie z poziomu usługi Azure Cloud Shell, ten samouczek wymaga modułu Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
-W poprzednim przykładzie określono szablon przechowywany w serwisie GitHub. Możesz również pobrać lub utworzyć szablon i określić ścieżkę lokalną za pomocą `--template-file` parametru.
+W poprzednim przykładzie określono szablon przechowywany w serwisie GitHub. Możesz również pobrać lub utworzyć szablon i określić ścieżkę lokalną za pomocą parametru `--template-file`.
 
 Oto kilka dodatkowych zasobów:
 

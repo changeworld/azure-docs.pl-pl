@@ -1,26 +1,19 @@
 ---
-title: Tworzenie niestandardowej sondy — Application Gateway platformy Azure — Azure Portal | Microsoft Docs
+title: Tworzenie niestandardowej sondy przy użyciu portalu
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak utworzyć niestandardową sondę dla Application Gateway przy użyciu portalu
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/14/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 18799d928f7239eea311aa39159bfa0b5416ca1a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821101"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074605"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Tworzenie niestandardowej sondy dla Application Gateway przy użyciu portalu
 
@@ -41,7 +34,7 @@ Sondy są konfigurowane w procesie dwuetapowym za pomocą portalu. Pierwszym kro
 
 ### <a name="createprobe"></a>Wprowadzanie właściwości sondy
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Jeśli nie masz jeszcze konta, możesz zarejestrować się w celu uzyskania [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/free)
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Jeśli nie masz jeszcze konta, możesz zarejestrować się w celu uzyskania [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/free)
 
 2. W okienku Ulubione Azure Portal kliknij pozycję wszystkie zasoby. Kliknij pozycję Brama aplikacji w bloku wszystkie zasoby. Jeśli wybrana subskrypcja zawiera kilka zasobów, możesz wpisać partners.contoso.net w polu Filtruj według nazwy... aby łatwo uzyskać dostęp do bramy aplikacji.
 
@@ -90,7 +83,7 @@ Sondy są konfigurowane w procesie dwuetapowym za pomocą portalu. Pierwszym kro
 
 ### <a name="createprobe"></a>Tworzenie sondy
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Jeśli nie masz jeszcze konta, możesz zarejestrować się w celu uzyskania [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/free)
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Jeśli nie masz jeszcze konta, możesz zarejestrować się w celu uzyskania [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/free)
 
 2. W okienku Azure Portal ulubione wybierz pozycję **wszystkie zasoby**. Na stronie **wszystkie zasoby** Wybierz bramę aplikacji. Jeśli wybrana subskrypcja zawiera kilka zasobów, możesz wpisać partners.contoso.net w polu Filtruj według nazwy... aby łatwo uzyskać dostęp do bramy aplikacji.
 

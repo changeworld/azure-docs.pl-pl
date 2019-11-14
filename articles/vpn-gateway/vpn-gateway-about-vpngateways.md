@@ -1,19 +1,19 @@
 ---
-title: Azure VPN Gateway | Microsoft Docs
+title: Informacje o usłudze Azure VPN Gateway
 description: Dowiedz się, co to jest brama sieci VPN i jak za jej pomocą możesz nawiązać połączenie z sieciami wirtualnymi platformy Azure. W tym z rozwiązaniami IPsec/IKE typu lokacja-lokacja obejmującymi wiele lokalizacji oraz sieć wirtualna-sieć wirtualna, a także z sieciami VPN typu punkt lokacja.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495690"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075435"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -53,7 +53,10 @@ W poniższej tabeli znajdują się informacje pomocne podczas podejmowania decyz
 
 ## <a name="gwsku"></a>Jednostki SKU bramy
 
-Podczas tworzenia bramy sieci wirtualnej określa się jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. Aby uzyskać więcej informacji o jednostkach SKU bramy, w tym obsługiwanych funkcjach, środowisku produkcyjnym i procesie tworzenia i konfigurowania, zapoznaj się z artykułem [VPN Gateway Settings-Gateway SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) . Aby uzyskać informacje o starszych jednostkach SKU, zobacz [Praca ze starszymi wersjami SKU](vpn-gateway-about-skus-legacy.md).
+Podczas tworzenia bramy sieci wirtualnej określa się jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA.
+
+* Aby uzyskać więcej informacji o jednostkach SKU bramy, w tym obsługiwanych funkcjach, środowisku produkcyjnym i procesie tworzenia i konfigurowania, zapoznaj się z artykułem [VPN Gateway Settings-Gateway SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) .
+* Aby uzyskać informacje o starszych jednostkach SKU, zobacz [Praca ze starszymi wersjami SKU](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Jednostki SKU bramy według tunelowania, połączenia i przepływności
 
@@ -92,7 +95,6 @@ Ten typ połączenia jest odmianą połączenia typu lokacja-lokacja. W tym przy
 Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne połączenie z siecią wirtualną z indywidualnego komputera klienckiego. Połączenie typu punkt-lokacja jest ustanawiane przez uruchomienie z komputera klienckiego. To rozwiązanie jest przydatne dla osób pracujących zdalnie, które chcą łączyć się z sieciami wirtualnymi platformy Azure z lokalizacji zdalnej, na przykład z domu lub sali konferencyjnej. Połączenie sieci VPN typu punkt-lokacja jest również przydatne zamiast połączenia sieci VPN typu lokacja-lokacja w przypadku niewielkiej liczby klientów, którzy muszą się łączyć z siecią wirtualną.
 
 W przeciwieństwie do połączeń S2S połączenia P2S nie wymagają lokalnego, publicznego adresu IP ani urządzenia sieci VPN. Połączenia typu punkt-lokacja mogą być używane z połączeniami typu lokacja-lokacja z użyciem tej samej bramy sieci VPN, pod warunkiem że wszystkie wymagania dotyczące konfiguracji dla obu połączeń są zgodne. Aby uzyskać więcej informacji na temat połączeń punkt-lokacja, zobacz [About Point-to-Site VPN](point-to-site-about.md) (Informacje o sieci VPN typu punkt-lokacja).
-
 
 ![Przykład połączenia typu punkt-lokacja w usłudze Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie usługi ExpressRoute, zasięgu globalnym: interfejs wiersza polecenia platformy Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: Konfigurowanie ExpressRoute Global Reach: interfejs wiersza polecenia'
 description: Ten artykuł pomoże Ci połączyć obwodów usługi ExpressRoute razem w celu zapewnienia prywatnych sieci między sieci lokalnych i włączanie zasięgu globalnym.
 services: expressroute
 author: jaredr80
@@ -7,40 +7,39 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eda0011ea4d259d0e60cb894c2b42325ddfc2eb7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869982"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076628"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurowanie usługi ExpressRoute zasięgu globalnym, przy użyciu wiersza polecenia platformy Azure
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurowanie Global Reach ExpressRoute przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Ten artykuł pomoże Ci skonfigurować zasięgu globalnym usługi ExpressRoute platformy Azure przy użyciu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [ExpressRoute Global Reach](expressroute-global-reach.md).
+W tym artykule opisano sposób konfigurowania Global Reach Azure ExpressRoute za pomocą interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [ExpressRoute Global Reach](expressroute-global-reach.md).
  
-Przed rozpoczęciem konfiguracji należy wykonać następujące wymagania:
+Przed rozpoczęciem konfiguracji należy spełnić następujące wymagania:
 
 * Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure. Zobacz artykuły [Install the Azure CLI (Instalowanie interfejsu wiersza polecenia platformy Azure) ](/cli/azure/install-azure-cli) i [Get started with Azure CLI (Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure)](/cli/azure/get-started-with-azure-cli).
-* Omówienie usługi ExpressRoute — aprowizacji obwodu [przepływy pracy](expressroute-workflows.md).
-* Upewnij się, że obwodów usługi ExpressRoute znajdują się w stanie Aprowizowana.
+* Poznaj [przepływy pracy](expressroute-workflows.md)inicjowania obsługi obwodu ExpressRoute.
+* Upewnij się, że obwody usługi ExpressRoute są w stanie aprowizacji.
 * Upewnij się, że prywatnej komunikacji równorzędnej Azure jest skonfigurowany na obwodów usługi ExpressRoute.  
 
 ### <a name="sign-in-to-your-azure-account"></a>Zaloguj się do swojego konta platformy Azure
 
-Aby uruchomić konfigurację, zaloguj się do konta platformy Azure. Następujące polecenie spowoduje otwarcie domyślnej przeglądarki i wyświetli monit o podanie poświadczeń logowania dla konta platformy Azure:  
+Aby rozpocząć konfigurację, zaloguj się do konta platformy Azure. Następujące polecenie otwiera domyślną przeglądarkę i wyświetla prośbę o poświadczenia logowania do konta platformy Azure:  
 
 ```azurecli
 az login
 ```
 
-Jeśli masz wiele subskrypcji platformy Azure, sprawdź subskrypcje dla konta:
+Jeśli masz wiele subskrypcji platformy Azure, sprawdź subskrypcje konta:
 
 ```azurecli
 az account list
 ```
 
-Określ subskrypcję, dla której chcesz użyć:
+Określ subskrypcję, której chcesz użyć:
 
 ```azurecli
 az account set --subscription <your subscription ID>
@@ -48,17 +47,17 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Identyfikowanie obwodów usługi ExpressRoute dla konfiguracji
 
-Zasięgu globalnym usługi ExpressRoute można włączyć między wszystkie dwa obwody usługi ExpressRoute, tak długo, jak one znajdują się w obsługiwane kraje/regiony i zostały utworzone w różnych lokalizacjach komunikacji równorzędnej. Jeśli Twoja subskrypcja jest właścicielem zarówno obwody, można wybrać obu obwodu, Uruchom konfigurację, zgodnie z opisem w dalszej części tego artykułu. Jeśli dwa obwody należą do różnych subskrypcji platformy Azure, musisz mieć autoryzacji z jedną subskrypcją platformy Azure i musi upłynąć w jego klucza autoryzacji, po uruchomieniu polecenia konfiguracji w ramach subskrypcji platformy Azure.
+Można włączyć ExpressRoute Global Reach między dowolnymi dwoma obwodami ExpressRoute, o ile znajdują się one w obsługiwanych krajach/regionach i zostały utworzone w różnych lokalizacjach komunikacji równorzędnej. Jeśli Twoja subskrypcja jest właścicielem obu obwodów, możesz wybrać opcję obwód, aby uruchomić konfigurację zgodnie z opisem w dalszej części tego artykułu. Jeśli dwa obwody znajdują się w różnych subskrypcjach platformy Azure, użytkownik musi mieć autoryzację z jednej subskrypcji platformy Azure i musi przekazać swój klucz autoryzacji po uruchomieniu polecenia konfiguracji w innej subskrypcji platformy Azure.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Włącz łączność między sieci lokalnej
 
-Uruchamiając polecenie, aby umożliwić łączność, należy uwzględnić następujące wymagania o wprowadzenie wartości parametrów:
+Po uruchomieniu polecenia, aby włączyć łączność, należy zwrócić uwagę na następujące wymagania dotyczące wartości parametrów:
 
-* *obwodu równorzędnego* powinien być identyfikator zasobu pełne. Na przykład:
+* *obwód równorzędny* powinien być pełnym identyfikatorem zasobu. Na przykład:
 
   > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *Prefiks adresu* musi być "/ 29" podsieć IPv4 (na przykład "10.0.0.0/29"). Używamy adresów IP w tej podsieci, można ustanowić łączności między dwa obwody usługi ExpressRoute. Nie można używać adresów w tej podsieci w sieci wirtualnej platformy Azure lub w sieci lokalnej.
+* *prefiks adresu* musi być podsiecią IPv4 "/29" (na przykład "10.0.0.0/29"). Adresy IP w tej podsieci są używane do nawiązywania łączności między dwoma obwodami usługi ExpressRoute. Nie należy używać adresów w tej podsieci w sieciach wirtualnych platformy Azure ani w sieciach lokalnych.
 
 Uruchom następujące polecenie interfejsu wiersza polecenia, aby połączyć dwa obwody usługi ExpressRoute:
 
@@ -66,7 +65,7 @@ Uruchom następujące polecenie interfejsu wiersza polecenia, aby połączyć dw
 az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29>
 ```
 
-Dane wyjściowe interfejsu wiersza polecenia wygląda następująco:
+Dane wyjściowe interfejsu wiersza polecenia wyglądają następująco:
 
 ```azurecli
 {
@@ -90,19 +89,19 @@ Dane wyjściowe interfejsu wiersza polecenia wygląda następująco:
 }
 ```
 
-Po zakończeniu tej operacji, będziesz mieć łączność między sieci lokalnej po obu stronach za pośrednictwem dwóch obwodów usługi ExpressRoute.
+Po zakończeniu tej operacji będziesz mieć łączność między sieciami lokalnymi po obu stronach za pośrednictwem dwóch obwodów usługi ExpressRoute.
 
-## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>Włącz łączność między obwodów usługi ExpressRoute w innej subskrypcji platformy Azure
+## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>Włączanie łączności między obwodami usługi ExpressRoute w różnych subskrypcjach platformy Azure
 
-Jeśli dwa obwody nie są w tej samej subskrypcji platformy Azure, konieczne będzie autoryzacji. Następująca konfiguracja służy do generowania autoryzacji w ramach subskrypcji z obwodem 2 i polega na przekazaniu klucza autoryzacji do circuit 1.
+Jeśli dwa obwody nie znajdują się w tej samej subskrypcji platformy Azure, musisz mieć autoryzację. W poniższej konfiguracji można wygenerować autoryzację w ramach subskrypcji obwodu 2 i przekazać klucz autoryzacji do obwodu 1.
 
-1. Generowanie klucza autoryzacji:
+1. Generuj klucz autoryzacji:
 
    ```azurecli
    az network express-route auth create --circuit-name <Circuit2Name> -g <Circuit2ResourceGroupName> -n <AuthorizationName>
    ```
 
-   Dane wyjściowe interfejsu wiersza polecenia wygląda następująco:
+   Dane wyjściowe interfejsu wiersza polecenia wyglądają następująco:
 
    ```azurecli
    {
@@ -117,40 +116,40 @@ Jeśli dwa obwody nie są w tej samej subskrypcji platformy Azure, konieczne bę
    }
    ```
 
-1. Zanotuj identyfikator zasobu i klucza autoryzacji dla obwodu. 2.
+1. Zanotuj zarówno identyfikator zasobu, jak i klucz autoryzacji obwodu 2.
 
-1. Uruchom następujące polecenie przed obwodu 1, przekazując obwodu 2 zasobów Identyfikatora i klucza autoryzacji:
+1. Uruchom następujące polecenie w stosunku do obwodu 1, przekazując identyfikator zasobu obwodu 2 i klucz autoryzacji:
 
    ```azurecli
    az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29> --authorization-key <authorizationKey>
    ```
 
-Po zakończeniu tej operacji, będziesz mieć łączność między sieci lokalnej po obu stronach za pośrednictwem dwóch obwodów usługi ExpressRoute.
+Po zakończeniu tej operacji będziesz mieć łączność między sieciami lokalnymi po obu stronach za pośrednictwem dwóch obwodów usługi ExpressRoute.
 
 ## <a name="get-and-verify-the-configuration"></a>Pobierz i Zweryfikuj konfigurację
 
-Użyj następującego polecenia aby zweryfikować konfigurację w ramach obwodu, w którym konfiguracji dokonano (obwód 1 w powyższym przykładzie):
+Użyj poniższego polecenia, aby zweryfikować konfigurację obwodu, w którym została wprowadzona konfiguracja (obwód 1 w poprzednim przykładzie):
 
 ```azurecli
 az network express-route show -n <CircuitName> -g <ResourceGroupName>
 ```
 
-W danych wyjściowych interfejsu wiersza polecenia, zobaczysz *CircuitConnectionStatus*. Informuje, czy jest łączność między dwa obwody nawiązać ("połączone") lub nie ustanowić ("Disconnected"). 
+W danych wyjściowych interfejsu wiersza polecenia zobaczysz *CircuitConnectionStatus*. Informuje o tym, czy połączenie między dwoma obwodami zostało nawiązane ("połączone"), czy nie ("Rozłączono"). 
 
 ## <a name="disable-connectivity-between-your-on-premises-networks"></a>Wyłącz łączność między sieci lokalnej
 
-Aby wyłączyć połączenie, uruchom następujące polecenie względem obwodu, w którym konfiguracji dokonano (obwód 1 we wcześniejszym przykładzie).
+Aby wyłączyć łączność, uruchom następujące polecenie w stosunku do obwodu, w którym została wprowadzona konfiguracja (obwód 1 w poprzednim przykładzie).
 
 ```azurecli
 az network express-route peering connection delete -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName>
 ```
 
-Użyj ```show``` polecenie, aby sprawdzić stan.
+Aby sprawdzić stan, użyj polecenia ```show```.
 
-Po zakończeniu tej operacji będzie nie masz już połączenie między sieci lokalnej za pośrednictwem obwodów usługi ExpressRoute.
+Po zakończeniu tej operacji nie będziesz już mieć łączności między sieciami lokalnymi za pośrednictwem obwody usługi ExpressRoute.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się więcej o zasięgu globalnym usługi ExpressRoute](expressroute-global-reach.md)
 * [Sprawdź łączność usługi ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
-* [Połącz obwodu usługi ExpressRoute z sieci wirtualnej](expressroute-howto-linkvnet-arm.md)
+* [Łączenie obwodu ExpressRoute z siecią wirtualną](expressroute-howto-linkvnet-arm.md)

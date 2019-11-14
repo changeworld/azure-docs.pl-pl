@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c65c04a67b92642d3664293dd666236919142f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012135"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074191"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
@@ -130,7 +130,7 @@ Rozmiar folderu pamięci podręcznej określa ilość danych, które można umie
   Net start obengine
   ```
 
-6. Uruchom kopię zapasową ad-hoc. Po pomyślnym zakończeniu tworzenia kopii zapasowej za pomocą nowej lokalizacji można usunąć oryginalny folder pamięci podręcznej.
+6. Uruchom kopię zapasową na żądanie. Po pomyślnym zakończeniu tworzenia kopii zapasowej za pomocą nowej lokalizacji można usunąć oryginalny folder pamięci podręcznej.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Gdzie ma znajdować się folder pamięci podręcznej?
 

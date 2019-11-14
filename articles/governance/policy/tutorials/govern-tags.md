@@ -1,17 +1,14 @@
 ---
-title: Zarządzaj nadzorem tagów
+title: Zarządzanie ładem tagów
 description: Użyj efektu Modyfikuj Azure Policy, aby utworzyć i wymusić model ładu znacznika dla nowych i istniejących zasobów.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 780dbf02fbdb0a607f29c710da9a6320a8626f7b
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643758"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069659"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Samouczek: Zarządzanie zarządzaniem tagów przy użyciu Azure Policy
 

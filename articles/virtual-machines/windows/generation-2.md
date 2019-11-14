@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: f17ec7179413bebb8260089abc46856412b78ab5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6fcbcb7f5d1b6bb25840ad1bddc5327b068c15d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038647"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075471"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji na platformie Azure
 
@@ -92,7 +92,7 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 | Dysk systemu operacyjnego > 2 TB                    | y                | :heavy_check_mark: |
 | Niestandardowy dysk/obraz/system operacyjny wymiany         | :heavy_check_mark: | :heavy_check_mark: |
 | Obsługa zestawu skalowania maszyn wirtualnych | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | y                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Tworzenie kopii zapasowej/przywracanie                    | :heavy_check_mark: | :heavy_check_mark: |
 | Galeria obrazów udostępnionych              | :heavy_check_mark: | :heavy_check_mark: |
 | Szyfrowanie dysków Azure             | :heavy_check_mark: | y                |

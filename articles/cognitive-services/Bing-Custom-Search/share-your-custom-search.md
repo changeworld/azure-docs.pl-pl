@@ -1,7 +1,7 @@
 ---
 title: Udostępnianie niestandardowego wyszukiwania — wyszukiwanie niestandardowe Bing
 titleSuffix: Azure Cognitive Services
-description: Opisuje sposób udostępniania wystąpienia wyszukiwania niestandardowego.
+description: Łatwo Zezwalaj na wspólne edytowanie i testowanie wystąpienia, udostępniając je członkom zespołu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: d016fbed07fa31ac92ac804d6b4d63692834b42c
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404972"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072696"
 ---
 # <a name="share-your-custom-search-instance"></a>Udostępnianie niestandardowego wystąpienia wyszukiwania
 
@@ -34,6 +34,6 @@ Aby dodać wiadomość e-mail innej osoby do listy, nie jest to konieczne w przy
 
 Aby zatrzymać udostępnianie wystąpienia innemu użytkownikowi, użyj ikony Usuń, aby usunąć swój adres e-mail z listy. Spowoduje to również usunięcie wystąpienia z listy wystąpień.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Skonfiguruj niestandardowe środowisko automatycznego sugerowania](define-custom-suggestions.md)

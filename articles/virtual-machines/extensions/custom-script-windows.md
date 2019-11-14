@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenie niestandardowego skryptu platformy Azure dla systemu Windows | Microsoft Docs
+title: Rozszerzenie niestandardowego skryptu platformy Azure dla systemu Windows
 description: Automatyzowanie zadań konfiguracyjnych maszyn wirtualnych z systemem Windows przy użyciu rozszerzenia niestandardowego skryptu
 services: virtual-machines-windows
 manager: carmonm
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204204"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073823"
 ---
 # <a name="custom-script-extension-for-windows"></a>Niestandardowe rozszerzenie skryptu dla systemu Windows
 
@@ -106,13 +106,13 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład | Typ danych |
+| Nazwa | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | ciąg |
 | type | CustomScriptExtension | ciąg |
 | typeHandlerVersion | 1.9 | int |
-| fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tablica |
 | timestamp (np.) | 123456789 | 32-bitowa liczba całkowita |
 | Sekcji commandtoexecute (np.) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | ciąg |
 | storageAccountName (np.) | examplestorageacct | ciąg |
@@ -123,10 +123,10 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 
 #### <a name="property-value-details"></a>Szczegóły wartości właściwości
 
-* `commandToExecute`: (**wymagane**, ciąg) skrypt punktu wejścia do wykonania. Użyj tego pola zamiast tego, jeśli polecenie zawiera wpisy tajne, takie jak hasła, lub fileUris są poufne.
-* `fileUris`: (opcjonalne, tablica ciągów) adresy URL dla plików do pobrania.
-* `timestamp`(opcjonalnie, 32-bitową liczbę całkowitą) Użyj tego pola tylko do wyzwalania ponownego uruchomienia skryptu przez zmianę wartości tego pola.  Dopuszczalna jest dowolna wartość całkowita; musi on być inny niż Poprzednia wartość.
-* `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. W przypadku określenia poświadczeń magazynu wszystkie `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
+* `commandToExecute`: (**Required**, String) skrypt punktu wejścia do wykonania. Użyj tego pola zamiast tego, jeśli polecenie zawiera wpisy tajne, takie jak hasła, lub fileUris są poufne.
+* `fileUris`: (opcjonalnie tablica ciągów) adresy URL dla plików do pobrania.
+* `timestamp` (opcjonalnie, 32-bitową liczbę całkowitą) Użyj tego pola tylko do wyzwalania ponownego uruchomienia skryptu przez zmianę wartości tego pola.  Dopuszczalna jest dowolna wartość całkowita; musi on być inny niż Poprzednia wartość.
+* `storageAccountName`: (opcjonalnie, String) nazwa konta magazynu. W przypadku określenia poświadczeń magazynu wszystkie `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
 * `storageAccountKey`: (opcjonalnie, String) klucz dostępu konta magazynu
 
 Następujące wartości można ustawić w ustawieniach publicznych lub chronionych, rozszerzenie odrzuci każdą konfigurację, w której poniższe wartości są ustawione zarówno w ustawieniach publicznych, jak i chronionych.
@@ -141,12 +141,12 @@ Ustawienia publiczne są wysyłane w postaci zwykłego tekstu do maszyny wirtual
 
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON, który jest szczegółowo opisany w poprzedniej sekcji, można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie niestandardowego skryptu podczas wdrażania. W poniższych przykładach pokazano, jak używać niestandardowego rozszerzenia skryptu:
 
-* [Samouczek: Wdróż rozszerzenia maszyny wirtualnej za pomocą szablonów Azure Resource Manager](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Samouczek: Wdrażanie rozszerzeń maszyny wirtualnej za pomocą szablonów Azure Resource Manager](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Wdrażanie aplikacji dwuwarstwowej w systemie Windows i usłudze Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Wdrażanie programu PowerShell
 
-`Set-AzVMCustomScriptExtension` Polecenie może służyć do dodawania niestandardowego rozszerzenia skryptu do istniejącej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
+Polecenie `Set-AzVMCustomScriptExtension` może służyć do dodawania niestandardowego rozszerzenia skryptu do istniejącej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
@@ -157,11 +157,11 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
     -Name DemoScriptExtension
 ```
 
-## <a name="additional-examples"></a>Więcej przykładów
+## <a name="additional-examples"></a>Dodatkowe przykłady
 
 ### <a name="using-multiple-scripts"></a>Korzystanie z wielu skryptów
 
-W tym przykładzie masz trzy skrypty, które są używane do tworzenia serwera. **Sekcji commandtoexecute** wywołuje pierwszy skrypt, a następnie dysponuje się opcjami dotyczącymi wywoływania innych metod. Na przykład można mieć skrypt główny, który kontroluje wykonywanie, z odpowiednią obsługą błędów, rejestrowaniem i zarządzaniem stanem. Skrypty są pobierane na komputer lokalny na potrzeby uruchamiania programu. Na przykład w `1_Add_Tools.ps1` przypadku wywołania `2_Add_Features.ps1` przez dodanie `.\2_Add_Features.ps1` do skryptu i powtórz ten proces dla innych skryptów zdefiniowanych w programie `$settings`.
+W tym przykładzie masz trzy skrypty, które są używane do tworzenia serwera. **Sekcji commandtoexecute** wywołuje pierwszy skrypt, a następnie dysponuje się opcjami dotyczącymi wywoływania innych metod. Na przykład można mieć skrypt główny, który kontroluje wykonywanie, z odpowiednią obsługą błędów, rejestrowaniem i zarządzaniem stanem. Skrypty są pobierane na komputer lokalny na potrzeby uruchamiania programu. Na przykład w `1_Add_Tools.ps1` można wywołać `2_Add_Features.ps1` przez dodanie `.\2_Add_Features.ps1` do skryptu i powtórz ten proces dla innych skryptów zdefiniowanych w `$settings`.
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -215,7 +215,7 @@ Alternatywnie można ustawić **wartość true**dla właściwości [ForceUpdateT
 
 ### <a name="using-invoke-webrequest"></a>Korzystanie z metody Invoke-WebRequest
 
-Jeśli używasz polecenia [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) w skrypcie, musisz określić parametr `-UseBasicParsing` lub w przeciwnym razie zostanie wyświetlony następujący komunikat o błędzie podczas sprawdzania szczegółowego stanu:
+W przypadku korzystania z [żądania Invoke-](/powershell/module/microsoft.powershell.utility/invoke-webrequest) Webw skrypcie należy określić parametr `-UseBasicParsing` lub w przeciwnym razie zostanie wyświetlony następujący komunikat o błędzie podczas sprawdzania szczegółowego stanu:
 
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
@@ -273,17 +273,17 @@ Określone pliki zostaną pobrane do następującego folderu na docelowej maszyn
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-gdzie `<n>` jest dziesiętną liczbą całkowitą, która może ulec zmianie między wykonaniami rozszerzenia.  Wartość `1.*` jest zgodna z rzeczywistą, `typeHandlerVersion` bieżącą wartością rozszerzenia.  Na przykład faktyczny katalog może być `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+gdzie `<n>` jest dziesiętną liczbą całkowitą, która może ulec zmianie między wykonaniami rozszerzenia.  Wartość `1.*` jest zgodna z rzeczywistą, bieżącą wartością `typeHandlerVersion` rozszerzenia.  Na przykład faktyczny katalog może być `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
 
-Po wykonaniu `commandToExecute` polecenia rozszerzenie ustawia ten katalog (na `...\Downloads\2`przykład) jako bieżący katalog roboczy. Ten proces umożliwia lokalizowanie plików pobranych za pośrednictwem `fileURIs` właściwości przy użyciu ścieżek względnych. Przykłady można znaleźć w poniższej tabeli.
+Podczas wykonywania polecenia `commandToExecute` rozszerzenie ustawia ten katalog (na przykład `...\Downloads\2`) jako bieżący katalog roboczy. Ten proces umożliwia lokalizowanie plików pobranych za pośrednictwem właściwości `fileURIs` przy użyciu ścieżek względnych. Przykłady można znaleźć w poniższej tabeli.
 
-Ze względu na to, że absolutna ścieżka pobierania może się różnić w miarę upływu czasu, lepiej jest wybrać `commandToExecute` względne ścieżki skryptów/plików w ciągu, jeśli jest to możliwe. Na przykład:
+Ze względu na to, że absolutna ścieżka pobierania może się różnić w miarę upływu czasu, lepiej jest wybrać względne ścieżki skryptów/plików w ciągu `commandToExecute`, jeśli jest to możliwe. Na przykład:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Informacje o ścieżce po pierwszym segmencie identyfikatora URI są przechowywane dla plików pobranych za `fileUris` pośrednictwem listy właściwości.  Jak pokazano w poniższej tabeli, pobrane pliki są mapowane do podkatalogów pobierania, aby odzwierciedlały strukturę `fileUris` wartości.  
+Informacje o ścieżce po pierwszym segmencie identyfikatora URI są przechowywane dla plików pobranych za pośrednictwem listy właściwości `fileUris`.  Jak pokazano w poniższej tabeli, pobrane pliki są mapowane do podkatalogów pobierania, aby odzwierciedlały strukturę wartości `fileUris`.  
 
 #### <a name="examples-of-downloaded-files"></a>Przykłady pobranych plików
 

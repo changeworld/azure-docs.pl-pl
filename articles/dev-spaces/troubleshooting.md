@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 0afdc0ac246e4cacbd4f45cca36c3c57b1c26e02
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005992"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072189"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -94,9 +94,13 @@ Oprócz komunikatu o błędzie podczas uruchamiania `az aks use-dev-spaces` z we
 
 Aby rozwiązać ten problem, zaktualizuj instalację [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) do 2.0.63 lub nowszego. Ta aktualizacja rozwiązuje komunikat o błędzie, który pojawia się podczas uruchamiania `az aks use-dev-spaces`. Alternatywnie można nadal używać bieżącej wersji interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia Azure Dev Spaces.
 
-### <a name="aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Klastry AKS z włączonymi zakresami adresów IP autoryzowanych przez serwer interfejsu API
+### <a name="error-unable-to-reach-kube-apiserver"></a>Błąd "nie można nawiązać połączenia z polecenia-apiserver"
 
-Jeśli masz włączone [zakresy dozwolonych adresów IP serwera interfejsu API](../aks/api-server-authorized-ip-ranges.md) dla klastra AKS, musisz również [utworzyć](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) lub [zaktualizować](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) klaster, aby [zezwolić na dodatkowe zakresy w zależności od regionu](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+Ten błąd może pojawić się, gdy Azure Dev Spaces nie może nawiązać połączenia z serwerem interfejsu API klastra AKS. 
+
+Jeśli dostęp do serwera interfejsu API klastra AKS jest zablokowany lub jeśli masz włączone [zakresy dozwolonych adresów IP serwera interfejsu API](../aks/api-server-authorized-ip-ranges.md) dla klastra AKS, należy również [utworzyć](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) lub [zaktualizować](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) klaster, aby zezwolić na [dodatkowe zakresy w oparciu o region](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+
+Upewnij się, że serwer interfejsu API jest dostępny, uruchamiając polecenia polecenia kubectl. Jeśli serwer interfejsu API jest niedostępny, skontaktuj się z pomocą techniczną usługi AKS i spróbuj ponownie, gdy działa serwer interfejsu API.
 
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Typowe problemy podczas przygotowywania projektu dla Azure Dev Spaces
 

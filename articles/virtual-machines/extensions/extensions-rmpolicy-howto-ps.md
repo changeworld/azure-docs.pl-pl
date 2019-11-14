@@ -1,5 +1,5 @@
 ---
-title: Użyj Azure Policy, aby ograniczyć instalację rozszerzenia maszyny wirtualnej | Microsoft Docs
+title: Używanie Azure Policy do ograniczania instalacji rozszerzenia maszyny wirtualnej
 description: Użyj Azure Policy, aby ograniczyć wdrożenia rozszerzeń.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 599417131f228c95168641c54ffbb947e3682f7b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750008"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073110"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Użyj Azure Policy, aby ograniczyć instalację rozszerzeń na maszynach wirtualnych z systemem Windows
 

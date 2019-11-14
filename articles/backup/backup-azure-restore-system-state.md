@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: beac49585239a1ecc15588a6c8160bc34c84c6ad
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 5fc9eb5a85b5ce834060f3f35e89ebc2acea2244
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210314"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074208"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywróć stan systemu do systemu Windows Server
 
@@ -25,8 +25,8 @@ W tym artykule wyjaśniono, jak przywrócić kopie zapasowe stanu systemu Window
 
 2. Zastosuj przywrócone pliki stanu systemu do systemu Windows Server.
 
-
 ## <a name="recover-system-state-files-to-the-same-server"></a>Odzyskaj pliki stanu systemu na ten sam serwer
+
 Poniższe kroki wyjaśniają, jak wycofać konfigurację systemu Windows Server do poprzedniego stanu. Przywrócenie konfiguracji serwera z powrotem do znanego, stabilnego stanu może być niezwykle cenne. Poniższe kroki przywracają stan systemu serwera z magazynu Recovery Services.
 
 1. Otwórz przystawkę **Microsoft Azure Backup**. Jeśli nie wiesz, gdzie zainstalowano przystawkę, przeszukaj komputer lub serwer pod kątem **Microsoft Azure Backup**.
@@ -37,7 +37,7 @@ Poniższe kroki wyjaśniają, jak wycofać konfigurację systemu Windows Server 
 
     ![Odzyskaj dane](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Aby przywrócić dane na tym samym serwerze lub komputerze, w okienku **wprowadzenie** wybierz pozycję **ten serwer`<server name>`()** , a następnie kliknij przycisk **dalej**.
+3. W okienku **wprowadzenie** , aby przywrócić dane na ten sam serwer lub na tym samym serwerze, wybierz pozycję **ten serwer (`<server name>`)** , a następnie kliknij przycisk **dalej**.
 
     ![Wybierz tę opcję serwera, aby przywrócić dane na ten sam komputer](./media/backup-azure-restore-system-state/samemachine.png)
 
@@ -47,7 +47,7 @@ Poniższe kroki wyjaśniają, jak wycofać konfigurację systemu Windows Server 
 
 5. W kalendarzu w oknie **Wybieranie woluminu i daty** wybierz punkt odzyskiwania.
 
-    Można przywrócić z dowolnego punktu odzyskiwania w czasie. Pogrubione daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
+    Można przywrócić z dowolnego punktu odzyskiwania w czasie. **Pogrubione** daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
 
     ![Wolumin i Data](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -59,7 +59,7 @@ Poniższe kroki wyjaśniają, jak wycofać konfigurację systemu Windows Server 
 
     ![Opcje odzyskiwania](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-8. Sprawdź szczegóły odzyskiwania w okienku **potwierdzenia** i kliknij przycisk Odzyskaj.
+8. Sprawdź szczegóły odzyskiwania w okienku **potwierdzenia** i kliknij przycisk **Odzyskaj**.
 
    ![Kliknij przycisk Odzyskaj, aby potwierdzić akcję odzyskania](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -73,16 +73,16 @@ Jeśli system Windows Server jest uszkodzony lub niedostępny i chcesz przywróc
 
 Terminologia użyta w tych krokach obejmuje:
 
-- *Maszyna źródłowa* — oryginalna maszyna, z której wykonano kopię zapasową, która jest obecnie niedostępna.
-- *Maszyna* docelowa — maszyna, do której dane są odzyskiwane.
-- *Przykładowy magazyn* — magazyn Recovery Services, do którego zarejestrowano *maszynę źródłową* i maszynę docelową. <br/>
+* *Maszyna źródłowa* — oryginalna maszyna, z której wykonano kopię zapasową, która jest obecnie niedostępna.
+* *Maszyna docelowa* — maszyna, do której dane są odzyskiwane.
+* *Przykładowy magazyn* — magazyn Recovery Services, do którego zarejestrowano *maszynę źródłową* i *maszynę docelową* . <br/>
 
 > [!NOTE]
 > Kopie zapasowe wykonane z jednego komputera nie mogą zostać przywrócone do maszyny z wcześniejszą wersją systemu operacyjnego. Na przykład kopie zapasowe wykonane z komputera z systemem Windows Server 2016 nie mogą zostać przywrócone do systemu Windows Server 2012 R2. Jednak jest możliwe odwracanie. Do przywrócenia systemu Windows Server 2016 można użyć kopii zapasowych z systemu Windows Server 2012 R2.
 >
 
 1. Otwórz przystawkę **Microsoft Azure Backup** na *maszynie docelowej*.
-2. Upewnij się, że *maszyna* docelowa i *maszyna źródłowa* są zarejestrowani do tego samego magazynu Recovery Services.
+2. Upewnij się, że *maszyna docelowa* i *maszyna źródłowa* są zarejestrowani do tego samego magazynu Recovery Services.
 3. Kliknij pozycję **Odzyskaj dane** , aby zainicjować przepływ pracy.
 4. Wybierz **inny serwer**
 
@@ -93,9 +93,9 @@ Terminologia użyta w tych krokach obejmuje:
 6. W okienku wybierz serwer kopii zapasowej wybierz *maszynę źródłową* z listy wyświetlanych maszyn.
 7. W okienku wybierz tryb odzyskiwania wybierz pozycję **stan systemu** i kliknij przycisk **dalej**.
 
-    ![Wyszukaj](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Wyszukiwanie](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. W kalendarzu w okienku **Wybierz wolumin i datę** wybierz punkt odzyskiwania. Można przywrócić z dowolnego punktu odzyskiwania w czasie. Pogrubione daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
+8. W kalendarzu w okienku **Wybierz wolumin i datę** wybierz punkt odzyskiwania. Można przywrócić z dowolnego punktu odzyskiwania w czasie. **Pogrubione** daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
 
     ![Wyszukaj elementy](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -107,16 +107,13 @@ Terminologia użyta w tych krokach obejmuje:
 
     Opcja **Utwórz kopie, aby mieć obie wersje**, tworzy kopie poszczególnych plików w istniejącym archiwum plików stanu systemu zamiast tworzyć kopię całego archiwum stanu systemu.
 
-11. Sprawdź szczegóły odzyskiwania w okienku potwierdzenia i kliknij przycisk Odzyskaj.
+11. Sprawdź szczegóły odzyskiwania w okienku potwierdzenia i kliknij przycisk **Odzyskaj**.
 
     ![Kliknij przycisk Odzyskaj, aby potwierdzić proces odzyskiwania](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. Skopiuj katalog *WindowsImageBackup* do niekrytycznego woluminu serwera (na przykład D:\). Zwykle wolumin systemu operacyjnego Windows jest woluminem krytycznym.
 
 13. Aby zakończyć proces odzyskiwania, należy skorzystać z poniższej sekcji, aby [zastosować przywrócone pliki stanu systemu w systemie Windows Server](#apply-restored-system-state-on-a-windows-server).
-
-
-
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>Stosowanie przywróconego stanu systemu w systemie Windows Server
 
@@ -147,7 +144,7 @@ Po odzyskaniu stanu systemu jako plików przy użyciu usługi Azure Recovery Ser
 
     ![Wybierz, czy chcesz przeprowadzić odzyskiwanie z serwera lokalnego czy innego](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-7. Wprowadź ścieżkę do katalogu *WindowsImageBackup* lub wybierz dysk lokalny zawierający ten katalog (na przykład D:\WindowsImageBackup) odzyskany jako część odzyskiwania plików stanu systemu za pomocą usługi Azure Recovery Services Agent i kliknij przycisk **Dalej.** .
+7. Wprowadź ścieżkę do katalogu *WindowsImageBackup* lub wybierz dysk lokalny zawierający ten katalog (na przykład D:\WindowsImageBackup) odzyskany jako część odzyskiwania plików stanu systemu za pomocą usługi Azure Recovery Services Agent i kliknij przycisk **dalej**.
 
     ![ścieżka do pliku udostępnionego](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 
@@ -157,7 +154,7 @@ Po odzyskaniu stanu systemu jako plików przy użyciu usługi Azure Recovery Ser
 
 10. W polu Lokalizacja odzyskiwania stanu systemu wybierz opcję **Oryginalna lokalizacja**, a następnie kliknij przycisk **dalej**.
 
-11. Przejrzyj szczegóły potwierdzenia, sprawdź ustawienia ponownego rozruchu, a następnie kliknij przycisk Odzyskaj, aby zastosować przywrócone pliki stanu systemu.
+11. Przejrzyj szczegóły potwierdzenia, sprawdź ustawienia ponownego rozruchu, a następnie kliknij przycisk **Odzyskaj** , aby zastosować przywrócone pliki stanu systemu.
 
     ![Uruchom pliki stanu systemu przywracania](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
@@ -167,7 +164,6 @@ Kopia zapasowa stanu systemu zawiera Active Directory danych. Wykonaj następuj�
 
 1. Uruchom ponownie kontroler domeny w trybie przywracania usług katalogowych (DSRM).
 2. Wykonaj kroki opisane [tutaj](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) , aby użyć poleceń cmdlet kopia zapasowa systemu Windows Server do odzyskania AD DS.
-
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Rozwiązywanie problemów z przywróceniem stanu systemu zakończone niepowodzeniem
 
@@ -192,6 +188,7 @@ Jeśli poprzedni proces stosowania stanu systemu nie zakończy się pomyślnie, 
     ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
+
     ![Pobierz wersje kopii zapasowej stanu systemu](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. Uruchom następujące polecenie, aby uzyskać wszystkie woluminy dostępne w kopii zapasowej.
@@ -207,9 +204,9 @@ Jeśli poprzedni proces stosowania stanu systemu nie zakończy się pomyślnie, 
     ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
+
      ![Pobierz wersje kopii zapasowej stanu systemu](./media/backup-azure-restore-system-state/winre-6.png)
 
-
-
 ## <a name="next-steps"></a>Następne kroki
+
 * Teraz, gdy odzyskasz pliki i foldery, możesz [zarządzać kopiami zapasowymi](backup-azure-manage-windows-server.md).

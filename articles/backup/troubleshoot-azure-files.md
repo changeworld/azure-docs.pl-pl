@@ -7,18 +7,21 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a6914fadcc69db534bb8476bbd8c89aa716a8bcb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637580"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074691"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej udziałów plików platformy Azure
+
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej udziałów plików platformy Azure.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
+
 Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Obsługiwane są udziały plików platformy Azure na kontach magazynu ogólnego przeznaczenia w wersji 1 i 2. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
+
 - Nie ma dostępnego interfejsu wiersza polecenia do ochrony usługi Azure Files z poziomu usługi Azure Backup.
 - Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
 - Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
@@ -29,6 +32,7 @@ Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dost�
 Tworzenie kopii zapasowej udziałów plików platformy Azure w ramach kont magazynu za pomocą replikacji [magazynu strefowo nadmiarowego](../storage/common/storage-redundancy-zrs.md) (ZRS) jest obecnie dostępne tylko w regionach Środkowe stany USA (CUS), Wschodnie stany USA (EUS), Wschodnie stany USA 2 (EUS2), Europa Północna (NE), Azja Południowo-Wschodniej (SEA), Europa Zachodnia (WE) i Zachodnie stany USA 2 (WUS2).
 
 ## <a name="configuring-backup"></a>Konfigurowanie kopii zapasowej
+
 Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 
 | Komunikaty o błędach | Wskazówki dotyczące obejść lub rozwiązań |
@@ -39,7 +43,6 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | Nie można wyświetlić lub odnaleźć udziałów plików w ramach wybranego konta magazynu. | <ul><li> Sprawdź, czy konto magazynu istnieje w grupie zasobów i nie zostało usunięte ani przeniesione po ostatniej weryfikacji lub rejestracji w magazynie.<li>Sprawdź, czy udział plików, który chcesz chronić, nie został usunięty. <li>Sprawdź, czy dla konta magazynu obsługiwane jest tworzenie kopii zapasowej udziału plików.<li>Sprawdź, czy udział plików nie jest już chroniony w tym samym magazynie usługi Recovery Services.|
 | Konfiguracja kopii zapasowej udziału plików (lub konfiguracja zasad ochrony) kończy się niepowodzeniem. | <ul><li>Spróbuj ponownie wykonać operację, aby sprawdzić, czy problem nadal występuje. <li> Sprawdź, czy udział plików, który chcesz chronić, nie został usunięty. <li> Jeśli próbujesz chronić wiele udziałów plików jednocześnie, a niektóre udziały plików kończą się niepowodzeniem, ponów próbę skonfigurowania kopii zapasowej dla udziałów plików zakończonych niepowodzeniem. |
 | Nie można usunąć magazynu usługi Recovery Services po wyłączeniu ochrony udziału plików. | W witrynie Azure Portal otwórz swój magazyn, wybierz pozycję **Infrastruktura kopii zapasowych** > **Konta magazynu**, a następnie kliknij pozycję **Wyrejestruj**, aby usunąć konto magazynu z magazynu usługi Recovery Services.|
-
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>Komunikaty o błędach dotyczących zadań tworzenia kopii zapasowej lub przywracania
 
@@ -59,15 +62,16 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | Operacja przywrócenia nie powiodła się, ponieważ wystąpił błąd podczas wykonywania operacji przywracania wstępnego dla zasobów usługi File Sync skojarzonych z docelowym udziałem plików. | Spróbuj ponownie za jakiś czas. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
 | Odzyskanie co najmniej jednego pliku zakończyło się niepowodzeniem. Aby uzyskać więcej informacji, sprawdź listę plików zakończonych niepowodzeniem w ramach podanej powyżej ścieżki. | <ul> <li> Przyczyny niepowodzenia odzyskiwania są wymienione w pliku (ścieżka jest podana w szczegółach zadania). Usuń przyczyny niepowodzenia, a następnie spróbuj ponownie wykonać operację przywracania tylko dla plików zakończonych niepowodzeniem. <li> Typowe przyczyny błędów przywracania plików: <br/> - pliki zakończone niepowodzeniem są używane <br/> -w katalogu nadrzędnym istnieje katalog o tej samej nazwie, co plik zakończony niepowodzeniem |
 
-
 ## <a name="modify-policy"></a>Modyfikowanie zasad
+
 | Komunikaty o błędach | Wskazówki dotyczące obejść lub rozwiązań |
 | ------------------ | ----------------------------- |
 | Inna operacja konfiguracji ochrony jest w toku dla tego elementu. | Poczekaj na zakończenie poprzedniej operacji modyfikowania zasad, a następnie spróbuj ponownie po pewnym czasie.|
 | Inna operacja jest w toku dla wybranego elementu. | Poczekaj na ukończenie innej operacji w toku, a następnie spróbuj ponownie po pewnym czasie |
 
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="see-also"></a>Zobacz też
-Aby uzyskać dodatkowe informacje na temat tworzenia kopii zapasowej udziałów plików platformy Azure, zobacz:
+Aby uzyskać więcej informacji na temat tworzenia kopii zapasowych udziałów plików platformy Azure, zobacz:
+
 - [Tworzenie kopii zapasowej udziałów plików platformy Azure](backup-azure-files.md)
 - [Tworzenie kopii zapasowej udziałów plików platformy Azure — często zadawane pytania](backup-azure-files-faq.md)

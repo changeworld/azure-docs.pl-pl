@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption dla systemu Linux | Microsoft Docs
+title: Azure Disk Encryption dla systemu Linux
 description: Wdraża Azure Disk Encryption dla systemu Linux na maszynie wirtualnej przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 1801ca8bd59153de81ef680253da229e2bd4a338
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4fa7f7d1419a8cd1006a632ba67587ab3434bf5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597873"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073806"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption dla systemu Linux (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Azure Disk Encryption korzysta z podsystemu dm-crypt w systemie Linux, aby zapewnić pełne szyfrowanie dysków w przypadku [wybrania dystrybucji systemu Azure Linux](https://aka.ms/adelinux).  To rozwiązanie jest zintegrowane z usługą Azure Key Vault w celu zarządzania kluczami i wpisami tajnymi dysków.
 
@@ -132,33 +132,33 @@ Używanie `AADClientCertificate`:
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Nazwa | Wartość/przykład | Typ danych |
+| Nazwa | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| dawc | Microsoft. Azure. Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| publisher | Microsoft.Azure.Security | ciąg |
+| type | AzureDiskEncryptionForLinux | ciąg |
 | typeHandlerVersion | 0,1, 1,1 | int |
-| (schemat 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Ident | 
-| (schemat 0,1) AADClientSecret | hasło | string |
-| (schemat 0,1) AADClientCertificate | odcisk palca | string |
+| (schemat 0.1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schemat 0,1) AADClientSecret | hasło | ciąg |
+| (schemat 0,1) AADClientCertificate | thumbprint | ciąg |
 | DiskFormatQuery | {"dev_path": "", "name": "", "file_system": ""} | Słownik JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | string |
-| keyEncryptionKeyURL | url | string |
-| obowiązkowe KeyVaultURL | url | string |
-| Danym | hasło | string | 
-| sequenceVersion | uniqueidentifier | string |
-| liczba woluminów | System operacyjny, dane, wszystkie | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | ciąg | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | ciąg |
+| KeyEncryptionKeyURL | url | ciąg |
+| obowiązkowe KeyVaultURL | url | ciąg |
+| Passphrase | hasło | ciąg | 
+| SequenceVersion | uniqueidentifier | ciąg |
+| Liczba woluminów | System operacyjny, dane, wszystkie | ciąg |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
 Przykład wdrażania szablonów można znaleźć [w temacie Włączanie szyfrowania na działającej maszynie wirtualnej z systemem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
-## <a name="azure-cli-deployment"></a>Wdrożenie interfejsu wiersza polecenia platformy Azure
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
 Instrukcje znajdują się w najnowszej [dokumentacji interfejsu wiersza polecenia platformy Azure](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomoc techniczna
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
@@ -166,7 +166,7 @@ Rozwiązywanie problemów można znaleźć w [przewodniku rozwiązywania problem
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie możesz zaplikować zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Następne kroki
 

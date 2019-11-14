@@ -1,5 +1,5 @@
 ---
-title: Aktualizowanie agenta systemu Linux platformy Azure z witryny GitHub | Microsoft Docs
+title: Aktualizowanie agenta systemu Linux platformy Azure z usługi GitHub
 description: Dowiedz się, jak zaktualizować agenta systemu Linux dla maszyny wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: akjosh
-ms.openlocfilehash: 1ae3c3a74d1a46a98fa6676e18ffe71a4d6937a1
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2215136c02d9cf967e0184af7588ce8d48362009
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168773"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072936"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Jak zaktualizować agenta systemu Linux dla platformy Azure na maszynie wirtualnej
 
@@ -351,7 +351,7 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 i 7
 
-W przypadku Oracle Linux upewnij się, że `Addons` repozytorium jest włączone. Wybierz, aby edytować plik `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux), a następnie w tym `enabled=0` pliku `enabled=1` Zmień wiersz na **[ol6_addons]** lub **[ol7_addons]** .
+W przypadku Oracle Linux upewnij się, że repozytorium `Addons` jest włączone. Wybierz, aby edytować plik `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux), a następnie zmień wiersz `enabled=0` na `enabled=1` w obszarze **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
 
 Następnie, aby zainstalować najnowszą wersję agenta systemu Azure Linux, wpisz:
 
@@ -389,7 +389,7 @@ Następnie wpisz:
 sudo yum update WALinuxAgent
 ```
 
-Zwykle jest to potrzebne, ale jeśli z https://github.com jakiegoś powodu należy koniecznie zainstalować ją bezpośrednio, wykonaj następujące czynności.
+Zwykle jest to potrzebne, ale jeśli z jakiegoś powodu musisz zainstalować go bezpośrednio z https://github.com, wykonaj następujące czynności.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Aktualizacja agenta systemu Linux, gdy żaden pakiet agenta nie istnieje na potrzeby dystrybucji
@@ -414,10 +414,10 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>2. Instalowanie agenta platformy Azure dla systemu Linux
+### <a name="2-install-the-azure-linux-agent"></a>2. Zainstaluj agenta systemu Linux platformy Azure
 
 #### <a name="for-version-22x-use"></a>W przypadku wersji 2.2. x Użyj:
-Może być konieczne zainstalowanie pakietu `setuptools` najpierw — zobacz [tutaj](https://pypi.python.org/pypi/setuptools). Następnie uruchom polecenie:
+Może być konieczne zainstalowanie pakietu `setuptools` pierwsze — zobacz [tutaj](https://pypi.python.org/pypi/setuptools). Następnie uruchom polecenie:
 
 ```bash
 sudo python setup.py install

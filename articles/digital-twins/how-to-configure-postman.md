@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/13/2019
+ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014177"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072270"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -58,14 +58,9 @@ Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego 
 
     [![zatwierdzenie zgody administratora](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+1. Skonfiguruj drugi **Identyfikator URI przekierowania** do `https://www.getpostman.com/oauth2/callback`.
 
-1. Wybierz pozycję **manifest** , aby otworzyć manifest aplikacji dla aplikacji. Ustaw *oauth2AllowImplicitFlow* na `true`.
-
-    [![Azure Active Directory niejawny przepływ](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
-
-1. Skonfiguruj **adres URL odpowiedzi** na `https://www.getpostman.com/oauth2/callback`.
-
-    [adres URL odpowiedzi Azure Active Directory ![](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [![dodać identyfikatora URI przekierowania programu Poster](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. Skopiuj i Zachowaj **Identyfikator aplikacji** Azure Active Directory aplikacji. Jest on używany w kolejnych krokach.
 
@@ -106,10 +101,6 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
     [przykład ![klienta końcowego](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Wybierz **token żądania**.
-
-    >[!TIP]
-    >Jeśli zostanie wyświetlony komunikat o błędzie "nie można ukończyć uwierzytelniania OAuth 2", spróbuj wykonać następujące czynności:
-    > * Zamknij program Poster i otwórz go ponownie i ponów próbę.
   
 1. Przewiń w dół i wybierz pozycję **Użyj tokenu**.
 
@@ -117,13 +108,13 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
 
 Po wykonaniu powyższych kroków Skonfiguruj program do ogłaszania w celu wypróbowania uwierzytelnionego żądania protokołu HTTP wieloczęściowego:
 
-1. Na karcie **nagłówek** Dodaj **Typ zawartości** klucz nagłówka żądania HTTP z wartością `multipart/mixed`.
+1. Na karcie **nagłówki** Dodaj **Typ zawartości** klucz nagłówka żądania HTTP z wartością `multipart/mixed`.
 
    [Typ zawartości ![wieloczęściowy/mieszany](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serializacja danych nietekstowych w plikach. Dane JSON zostałyby zapisane jako plik JSON.
 1. Na karcie **treść** wybierz pozycję `form-data`. 
-1. Dodaj każdy plik, przypisując nazwę **klucza** , wybierając pozycję `file`.
+1. Dodaj każdy plik, przypisując nazwę **klucza** , wybierając pozycję `File`.
 1. Następnie zaznacz każdy plik za pomocą przycisku **Wybierz plik** .
 
    [przykład ![klienta końcowego](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -133,7 +124,7 @@ Po wykonaniu powyższych kroków Skonfiguruj program do ogłaszania w celu wypr�
    > * Nie trzeba określać tych nagłówków dla każdej części.
    > * Musisz wybrać `multipart/mixed` lub inny odpowiedni **Typ zawartości** dla całego żądania.
 
-1. Na koniec wybierz pozycję **Wyślij** , aby przesłać wieloczęściowe żądanie HTTP POST.
+1. Na koniec wybierz pozycję **Wyślij** , aby przesłać wieloczęściowe żądanie HTTP POST. Kod stanu `200` lub `201` wskazuje pomyślne żądanie. Zobaczysz również odpowiedni komunikat odpowiedzi.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,11 +1,11 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu przy użyciu protokołu IPv6 — PowerShell
-titlesuffix: Azure Load Balancer
+title: Tworzenie modułu równoważenia obciążenia dostępnego z Internetu przy użyciu protokołu IPv6 Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć moduł równoważenia obciążenia połączony z Internetem przy użyciu protokołu IPv6 dla Menedżer zasobów
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, moduł równoważenia obciążenia platformy Azure, podwójny stos, publiczny adres IP, natywny protokół IPv6, urządzenia przenośne, IoT
+keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025802"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077050"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Wprowadzenie do tworzenia modułu równoważenia obciążenia połączonego z Internetem przy użyciu protokołu IPv6 dla Menedżer zasobów
 
@@ -28,7 +28,7 @@ ms.locfileid: "73025802"
 > * [Interfejs wiersza polecenia platformy Azure](load-balancer-ipv6-internet-cli.md)
 > * [Szablon](load-balancer-ipv6-internet-template.md)
 
->[! Uwaga: zmiana w ramach najlepszych rozwiązań dotyczących protokołu IPv6] w tym artykule opisano wprowadzaną funkcję IPv6, która umożliwia podstawowym usługom równoważenia obciążenia zapewnienie łączności z protokołami IPv4 i IPv6.  Bardziej kompleksowa łączność z protokołem IPv6 jest teraz dostępna w [przypadku protokołu IPv6 dla usługi Azure sieci wirtualnych](../virtual-network/ipv6-overview.md) , która integruje łączność IPv6 z sieciami wirtualnymi i zawiera najważniejsze funkcje, takie jak reguły sieciowej grupy zabezpieczeń IPv6, routing zdefiniowany przez użytkownika IPv6, podstawowy protokół IPv6 i Standardowe Równoważenie obciążenia i nie tylko.  Protokół IPv6 dla usługi Azure sieci wirtualnych jest zalecanym najlepszym rozwiązaniem dla aplikacji IPv6 na platformie Azure. 
+>[! Uwaga: zmiana w ramach najlepszych rozwiązań dotyczących protokołu IPv6] w tym artykule opisano wprowadzaną funkcję IPv6, która umożliwia podstawowym usługom równoważenia obciążenia zapewnienie łączności z protokołami IPv4 i IPv6.  Bardziej kompleksowa łączność z protokołem IPv6 jest teraz dostępna w [przypadku protokołu IPv6 dla usługi Azure sieci wirtualnych](../virtual-network/ipv6-overview.md) , która integruje łączność IPv6 z sieciami wirtualnymi i zawiera najważniejsze funkcje, takie jak reguły sieciowej grupy zabezpieczeń IPv6, routing zdefiniowany przez użytkownika IPv6, podstawowe i standardowe Równoważenie obciążenia.  Protokół IPv6 dla usługi Azure sieci wirtualnych jest zalecanym najlepszym rozwiązaniem dla aplikacji IPv6 na platformie Azure. 
 >Zapoznaj się z artykułem [IPv6 dla wdrożenia programu PowerShell sieci wirtualnej platformy Azure](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Usługa Azure Load Balancer to moduł równoważenia obciążenia w warstwie 4 (TCP, UDP). Moduł równoważenia obciążenia zapewnia wysoką dostępność, dystrybuując ruch przychodzący w wystąpieniach usług o dobrej kondycji w usługach w chmurze lub na maszynach wirtualnych w zestawie modułu równoważenia obciążenia. Usługa Azure Load Balancer może także prezentować te usługi na wielu portach i/lub wielu adresach IP.

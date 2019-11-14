@@ -1,7 +1,7 @@
 ---
 title: Tworzenie wewnętrznego podstawowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure
 titlesuffix: Azure Load Balancer
-description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
+description: W tym artykule dowiesz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: e38cc4e6da574e0c3be490cf5d9cd929624343e5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8492ce820a31183b0b3078b1fb366c25a39b7639
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275447"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076065"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -60,7 +60,7 @@ W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następ
 
 ### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Utwórz wewnętrzną Load Balancer za pomocą [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **myLoadBalancer** , która zawiera konfigurację adresu IP frontonu o nazwie Moja **fronton**, pulę zaplecza o nazwie **myBackEndPool** , która jest skojarzona z prywatnym adresem IP * 10.0.0.7.
+Utwórz wewnętrzną Load Balancer za pomocą [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **myLoadBalancer** , która zawiera konfigurację adresu IP frontonu o nazwie Moja **fronton**, pulę zaplecza o nazwie **myBackEndPool** , która jest skojarzona z prywatnym adresem IP * * 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \

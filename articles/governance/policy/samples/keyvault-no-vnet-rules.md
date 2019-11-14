@@ -1,28 +1,25 @@
 ---
 title: Magazyny kluczy przykładowych bez punktów końcowych sieci wirtualnej
 description: Te przykładowe definicje zasad przeprowadzają inspekcję magazynów usługi Key Vault w celu wykrycia wystąpień, które nie mają punktów końcowych usługi dla sieci wirtualnej.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 078a781ca96df421d52179f5e8d25650def8a2f3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255727"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076203"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Przykład — Magazyny usługi Key Vault niemające punktów końcowych sieci wirtualnej
 
-Te zasady umożliwiają przeprowadzenie inspekcji magazynów usługi Key Vault, które nie mają punktów końcowych sieci wirtualnej. Należy ich używać w celu wymuszenia wymagań dotyczących zabezpieczeń. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [punktów końcowych usługi dla sieci wirtualnej w usłudze Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
+Ten przykład [integracji Key Vault z Azure Policy](../../../key-vault/azure-policy.md) inspekcji dla magazynów kluczy, które nie mają punktów końcowych sieci wirtualnej. Należy ich używać w celu wymuszenia wymagań dotyczących zabezpieczeń. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [punktów końcowych usługi dla sieci wirtualnej w usłudze Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
 
 Te przykładowe zasady możesz wdrożyć przy użyciu następujących narzędzi:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Interfejs wiersza polecenia platformy Azure](#azure-cli)
-- [Interfejs API REST](#rest-api)
+- [REST API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,10 +46,10 @@ Ta przykładowa definicja zasad nie ma zdefiniowanych parametrów.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Deploy przykładową zasadą do platformy azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
-[@no__t 4Deploy zasad na platformie Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![wdrożyć przykład zasad na platformie azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![wdrożyć przykład zasad na platformie Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
 
-## <a name="azure-powershell"></a>Program Azure PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -187,4 +184,5 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
 ## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj dodatkowe [przykłady zasad Azure Policy](index.md)
+- Dowiedz się, jak [zintegrować Azure Key Vault z Azure Policy](../../../key-vault/azure-policy.md).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md)

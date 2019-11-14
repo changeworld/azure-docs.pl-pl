@@ -1,7 +1,7 @@
 ---
 title: Dostępność scenariusza — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Dokumentacja dotycząca regionów usługi mowy.
+description: Zestaw Speech SDK oferuje wiele scenariuszy w różnych językach programowania i środowiskach. Nie wszystkie scenariusze są jeszcze dostępne we wszystkich językach programowania lub w wszystkich środowiskach. Poniżej przedstawiono dostępność każdego scenariusza.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02632e5bc84c7406ce3a42eb4be71cf6aaf75c15
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491339"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075755"
 ---
 # <a name="scenario-availability"></a>Dostępność scenariusza
 
-Zestaw SDK usługi mowy zawiera wiele scenariuszy obejmujących różne języki programowania i środowiska.  Nie wszystkie scenariusze są obecnie dostępne we wszystkich językach programowania lub w wszystkich środowiskach.  Poniżej przedstawiono dostępność każdego scenariusza.
+Zestaw Speech SDK oferuje wiele scenariuszy w różnych językach programowania i środowiskach. Nie wszystkie scenariusze są jeszcze dostępne we wszystkich językach programowania lub w wszystkich środowiskach. Poniżej przedstawiono dostępność każdego scenariusza.
 
 - **Rozpoznawanie mowy (SR), lista fraz, intencje, tłumaczenia i kontenery lokalne**
   - Wszystkie języki programowania/środowiska, w których znajduje się łącze do strzałki <img src="media/index/link.jpg" height="15" width="15"></img> w [tabeli szybkiego](https://aka.ms/csspeech)startu.

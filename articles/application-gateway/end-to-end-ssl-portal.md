@@ -1,19 +1,20 @@
 ---
-title: Szybki Start — Konfigurowanie kompleksowego szyfrowania SSL przy użyciu usługi Azure Application Gateway — Azure Portal | Microsoft Docs
+title: Konfigurowanie kompleksowego szyfrowania SSL przy użyciu portalu
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak używać Azure Portal do tworzenia bramy aplikacji z kompleksowym szyfrowaniem SSL.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: ba31b5ebf83edcd08060a2acc3b5639a521e2729
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243667"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075141"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Konfigurowanie kompleksowego protokołu SSL przy użyciu Application Gateway z portalem
 
@@ -60,7 +61,7 @@ Aby dowiedzieć się więcej, zobacz [Włączanie zakończenia protokołu SSL po
 
    ![Dodawanie certyfikatu](./media/end-to-end-ssl-portal/addcert.png)
 
-   W przypadku bram aplikacji Standard_v2 i WAF_v2 należy przekazać certyfikat główny certyfikatu serwera zaplecza w formacie CER. Jeśli certyfikat zaplecza jest wystawiany przez dobrze znany urząd certyfikacji, można zaznaczyć pole wyboru **Użyj dobrego certyfikatu urzędu certyfikacji** , a następnie nie trzeba przekazywać certyfikatu.
+   W przypadku Standard_v2 i WAF_v2 bram aplikacji należy przekazać certyfikat główny certyfikatu serwera zaplecza w formacie CER. Jeśli certyfikat zaplecza jest wystawiany przez dobrze znany urząd certyfikacji, można zaznaczyć pole wyboru **Użyj dobrego certyfikatu urzędu certyfikacji** , a następnie nie trzeba przekazywać certyfikatu.
 
    ![Dodaj zaufany certyfikat główny](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
@@ -114,7 +115,7 @@ W przypadku wybrania tej opcji należy zastosować kroki opisane w poniższej pr
 
    ![Dodawanie certyfikatu](./media/end-to-end-ssl-portal/addcert.png)
 
-   W przypadku bram aplikacji Standard_v2 i WAF_v2 należy przekazać certyfikat główny certyfikatu serwera zaplecza w formacie CER. Jeśli certyfikat zaplecza jest wystawiony przez dobrze znany urząd certyfikacji, można zaznaczyć pole wyboru **Użyj certyfikatu dobrze znanego urzędu certyfikacji** , a następnie nie trzeba przekazywać certyfikatu.
+   W przypadku Standard_v2 i WAF_v2 bram aplikacji należy przekazać certyfikat główny certyfikatu serwera zaplecza w formacie CER. Jeśli certyfikat zaplecza jest wystawiony przez dobrze znany urząd certyfikacji, można zaznaczyć pole wyboru **Użyj certyfikatu dobrze znanego urzędu certyfikacji** , a następnie nie trzeba przekazywać certyfikatu.
 
    ![Dodaj zaufany certyfikat główny](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 

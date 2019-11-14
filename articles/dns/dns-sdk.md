@@ -1,10 +1,11 @@
 ---
-title: Tworzenie stref DNS i zestawów rekordów w usłudze Azure DNS przy użyciu zestawu .NET SDK | Dokumentacja firmy Microsoft
-description: Jak utworzyć strefy DNS i zestawami rekordów w usłudze Azure DNS przy użyciu zestawu .NET SDK.
+title: Tworzenie stref DNS i zestawów rekordów przy użyciu zestawu .NET SDK
+titleSuffix: Azure DNS
+description: Jak utworzyć strefy DNS i zestawy rekordów w Azure DNS przy użyciu zestawu .NET SDK.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: asudbring
+manager: kumudD
 ms.assetid: eed99b87-f4d4-4fbf-a926-263f7e30b884
 ms.service: dns
 ms.devlang: na
@@ -12,40 +13,40 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
-ms.author: victorh
-ms.openlocfilehash: a06d629087e853c2578e6d35a2ea90c5a8eff840
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: b51dd4ea3b36a9d0420a60883ebc29276a7d6b8a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308947"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076722"
 ---
-# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie strefy DNS i zestawów rekordów przy użyciu zestawu .NET SDK
+# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie stref DNS i zestawów rekordów przy użyciu zestawu .NET SDK
 
-Można automatyzować operacje, aby utworzyć, usunąć lub aktualizacji strefy, zestawów rekordów i rekordów DNS przy użyciu zestawu SDK DNS za pomocą biblioteki .NET — Zarządzanie DNS. Pełny projekt programu Visual Studio jest dostępny [tutaj.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
+Można zautomatyzować operacje tworzenia, usuwania lub aktualizowania stref DNS, zestawów rekordów i rekordów przy użyciu zestawu SDK systemu DNS z biblioteką zarządzania usługi DNS platformy .NET. Pełny projekt programu Visual Studio jest dostępny [tutaj.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
 
-## <a name="create-a-service-principal-account"></a>Utwórz konto jednostki usługi
+## <a name="create-a-service-principal-account"></a>Tworzenie konta nazwy głównej usługi
 
-Zazwyczaj udzielany jest dostęp programowy do zasobów platformy Azure za pomocą dedykowanego konta, a nie poświadczeń użytkownika. Te dedykowanego konta noszą nazwę kont "jednostki usługi". Aby korzystać z projektem przykładowym i zestawu SDK usługi Azure DNS, należy najpierw utworzyć konto dla nazwy głównej usługi i przypisać jej odpowiednie uprawnienia.
+Zazwyczaj dostęp programistyczny do zasobów platformy Azure uzyskuje się za pośrednictwem dedykowanego konta, a nie poświadczeń użytkownika. Te dedykowane konta są nazywane kontami podmiotu usługi. Aby użyć przykładowego projektu Azure DNS SDK, należy najpierw utworzyć konto głównej usługi i przypisać mu odpowiednie uprawnienia.
 
-1. Postępuj zgodnie z [w instrukcjach](../active-directory/develop/howto-authenticate-service-principal-powershell.md) można utworzyć konta nazwy głównej usługi (przykładowy projekt zestawu SDK usługi Azure DNS przy założeniu uwierzytelniania opartego na hasłach).
-2. Utwórz grupę zasobów ([Oto jak](../azure-resource-manager/resource-group-template-deploy-portal.md)).
-3. Uprawnienia konta głównego usługi "Współautor strefy DNS" w grupie zasobów przy użyciu kontroli RBAC platformy Azure ([Oto jak](../role-based-access-control/role-assignments-portal.md).)
-4. Jeśli używasz zestawu SDK usługi Azure DNS przykładowy projekt, przeprowadź edycję pliku "program.cs" w następujący sposób:
+1. Postępuj zgodnie z [tymi instrukcjami](../active-directory/develop/howto-authenticate-service-principal-powershell.md) , aby utworzyć konto nazwy głównej usługi (projekt Azure DNS SDK przykład zakłada uwierzytelnianie oparte na hasłach).
+2. Utwórz grupę zasobów ([jak to opisano w tym miejscu](../azure-resource-manager/resource-group-template-deploy-portal.md)).
+3. Użyj usługi Azure RBAC, aby przyznać uprawnienia współautora strefy DNS konta głównego usługi do grupy zasobów ([Oto jak to zrobić](../role-based-access-control/role-assignments-portal.md)).
+4. Jeśli używasz przykładowego projektu Azure DNS zestawu SDK, edytuj plik "program. cs" w następujący sposób:
 
-   * Wstaw poprawne wartości dla `tenantId`, `clientId` (znany także jako identyfikator konta), `secret` (hasło konta nazwy głównej usługi) i `subscriptionId` w przypadku użycia w kroku 1.
-   * Wprowadź nazwę grupy zasobów, wybrana w kroku 2.
+   * Wstaw poprawne wartości `tenantId`, `clientId` (znany również jako identyfikator konta), `secret` (hasło konta nazwy głównej usługi) i `subscriptionId` jako używane w kroku 1.
+   * Wprowadź nazwę grupy zasobów wybraną w kroku 2.
    * Wprowadź wybraną nazwę strefy DNS.
 
-## <a name="nuget-packages-and-namespace-declarations"></a>Pakiety NuGet i deklaracje przestrzeni nazw
+## <a name="nuget-packages-and-namespace-declarations"></a>Deklaracje pakietów NuGet i przestrzeni nazw
 
-Aby użyć zestawu .NET SDK usługi Azure DNS, musisz zainstalować **biblioteki zarządzania usługi Azure DNS** pakietu NuGet i inne wymagane pakiety platformy Azure.
+Aby użyć Azure DNS .NET SDK, należy zainstalować pakiet NuGet **biblioteki zarządzania Azure DNS** i inne wymagane pakiety platformy Azure.
 
-1. W **programu Visual Studio**, otwórz projekt lub nowy projekt.
-2. Przejdź do **narzędzia** **>** **Menedżera pakietów NuGet** **>** **Zarządzaj pakietami NuGet dla Rozwiązanie...** .
-3. Kliknij przycisk **Przeglądaj**, Włącz **Uwzględnij wersję wstępną** zaznacz pole wyboru i wpisz **Microsoft.Azure.Management.Dns** w polu wyszukiwania.
-4. Wybierz pakiet, a następnie kliknij przycisk **zainstalować** Aby dodać go do projektu programu Visual Studio.
-5. Powtórz proces powyżej, aby również Zainstaluj następujące pakiety: **Microsoft.Rest.ClientRuntime.Azure.Authentication** i **Microsoft.Azure.Management.ResourceManager**.
+1. W programie **Visual Studio**Otwórz projekt lub nowy projekt.
+2. Przejdź do **narzędzia** **>** **Menedżer pakietów NuGet** **>** **Zarządzaj pakietami NuGet dla rozwiązania.** ..
+3. Kliknij przycisk **Przeglądaj**, zaznacz pole wyboru **Uwzględnij wersję wstępną** i wpisz **Microsoft. Azure. Management. DNS** w polu wyszukiwania.
+4. Wybierz pakiet i kliknij pozycję **Zainstaluj** , aby dodać go do projektu programu Visual Studio.
+5. Powtórz ten proces, aby zainstalować również następujące pakiety: **Microsoft. Rest. ClientRuntime. Azure. Authentication** i **Microsoft. Azure. Management. ResourceManager**.
 
 ## <a name="add-namespace-declarations"></a>Dodawanie deklaracji przestrzeni nazw
 
@@ -57,9 +58,9 @@ using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
 ```
 
-## <a name="initialize-the-dns-management-client"></a>Inicjowanie klienta zarządzania DNS
+## <a name="initialize-the-dns-management-client"></a>Inicjowanie klienta zarządzania usługą DNS
 
-`DnsManagementClient` Zawiera metody i właściwości niezbędne do zarządzania rekordami i zestawami stref DNS.  Poniższy kod loguje się do konta głównego usługi i tworzy `DnsManagementClient` obiektu.
+`DnsManagementClient` zawiera metody i właściwości niezbędne do zarządzania strefami i zestawami rekordów DNS.  Poniższy kod loguje się do konta głównego usługi i tworzy obiekt `DnsManagementClient`.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -68,16 +69,16 @@ var dnsClient = new DnsManagementClient(serviceCreds);
 dnsClient.SubscriptionId = subscriptionId;
 ```
 
-## <a name="create-or-update-a-dns-zone"></a>Utwórz lub zaktualizuj strefę DNS
+## <a name="create-or-update-a-dns-zone"></a>Tworzenie lub aktualizowanie strefy DNS
 
-Aby utworzyć strefę DNS, najpierw "Strefa" tworzony jest obiekt zawiera parametry strefy DNS. Ponieważ stref DNS nie są połączone w określonym regionie, lokalizacja jest ustawiona na "global". W tym przykładzie [usługi Azure Resource Manager "tag"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) jest także dodawane do strefy.
+Aby utworzyć strefę DNS, najpierw tworzony jest obiekt "Zone" zawierający parametry strefy DNS. Ze względu na to, że strefy DNS nie są połączone z określonym regionem, lokalizacja jest ustawiona na wartość "globalna". W tym przykładzie dodano również [Azure Resource Manager "tag"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) do strefy.
 
-Do faktycznie tworzenia lub aktualizacji strefy w usłudze Azure DNS, strefy obiekt zawierający parametry strefy jest przekazywany do `DnsManagementClient.Zones.CreateOrUpdateAsyc` metody.
+Aby w rzeczywistości utworzyć lub zaktualizować strefę w Azure DNS, obiekt strefy zawierający parametry strefy jest przesyłany do metody `DnsManagementClient.Zones.CreateOrUpdateAsyc`.
 
 > [!NOTE]
-> DnsManagementClient obsługuje trzy tryby działania: synchroniczne ("CreateOrUpdate"), asynchroniczny ("CreateOrUpdateAsync"), lub asynchroniczna dzięki dostępowi do odpowiedzi HTTP (CreateOrUpdateWithHttpMessagesAsync).  W zależności od potrzeb aplikacji można wybrać dowolny z następujących trybów.
+> DnsManagementClient obsługuje trzy tryby działania: synchroniczne ("metodę createorupdate"), asynchroniczne ("CreateOrUpdateAsync") lub asynchroniczne z dostępem do odpowiedzi HTTP ("CreateOrUpdateWithHttpMessagesAsync").  Możesz wybrać dowolny z tych trybów, w zależności od potrzeb aplikacji.
 
-Usługa Azure DNS obsługuje optymistycznej współbieżności, o nazwie [elementów etag](dns-getstarted-create-dnszone.md). W tym przykładzie określenie "*" dla "If-None-Match" Nagłówek informuje o usłudze Azure DNS, aby utworzyć strefę DNS, jeśli już nie istnieje.  Wywołanie zakończy się niepowodzeniem, jeśli strefa o podanej nazwie już istnieje w grupie danego zasobu.
+Azure DNS obsługuje optymistyczną współbieżność, nazywaną [ETag](dns-getstarted-create-dnszone.md). W tym przykładzie Określanie znaku "*" dla nagłówka "If-None-Match" oznacza Azure DNS, aby utworzyć strefę DNS, jeśli taka jeszcze nie istnieje.  Wywołanie kończy się niepowodzeniem, jeśli strefa o podaną nazwie już istnieje w danej grupie zasobów.
 
 ```cs
 // Create zone parameters
@@ -94,13 +95,13 @@ dnsZoneParams.Tags.Add("dept", "finance");
 var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneName, dnsZoneParams, null, "*");
 ```
 
-## <a name="create-dns-record-sets-and-records"></a>Tworzenie zestawów rekordów DNS i rekordów
+## <a name="create-dns-record-sets-and-records"></a>Tworzenie zestawów rekordów i rekordów DNS
 
-Rekordy DNS są zarządzane jako zestaw rekordów. Zestaw rekordów to zestaw rekordów o tej samej nazwie i typie rekordu w strefie.  Nazwa zestawu rekordów jest określana względem nazwę strefy, a nie w pełni kwalifikowanej nazwy DNS.
+Rekordy DNS są zarządzane jako zestaw rekordów. Zestaw rekordów jest zestawem rekordów o tej samej nazwie i typie rekordu w obrębie strefy.  Nazwa zestawu rekordów jest względna w stosunku do nazwy strefy, a nie w pełni kwalifikowanej nazwy DNS.
 
-Aby utworzyć lub zaktualizować zestawu rekordów, jest utworzony i przekazany do obiektu parametrów "Zestawu rekordów" `DnsManagementClient.RecordSets.CreateOrUpdateAsync`. Zgodnie ze strefami DNS są dostępne trzy tryby działania: synchroniczne ("CreateOrUpdate"), asynchroniczny ("CreateOrUpdateAsync"), lub asynchroniczna dzięki dostępowi do odpowiedzi HTTP (CreateOrUpdateWithHttpMessagesAsync).
+Aby utworzyć lub zaktualizować zestaw rekordów, tworzony jest obiekt parametrów "RecordSet" i przeszedł do `DnsManagementClient.RecordSets.CreateOrUpdateAsync`. Podobnie jak w przypadku stref DNS, istnieją trzy tryby działania: synchroniczne ("metodę createorupdate"), asynchroniczne ("CreateOrUpdateAsync") lub asynchroniczne z dostępem do odpowiedzi HTTP ("CreateOrUpdateWithHttpMessagesAsync").
 
-Podobnie jak w przypadku stref DNS, operacje na zestawach rekordów obejmują obsługę optymistycznej współbieżności.  W tym przykładzie ponieważ określono "If-Match" ani "If-None-Match" zestawu rekordów zawsze jest tworzony.  To wywołanie spowoduje zastąpienie dowolnego istniejącego zestawu rekordów z taką samą nazwę i typ rekordu w tej strefie DNS.
+Podobnie jak w przypadku stref DNS, operacje na zestawach rekordów obejmują obsługę optymistycznej współbieżności.  W tym przykładzie, ponieważ nie określono opcji "If-Match" ani "If-None-Match", zestaw rekordów jest zawsze tworzony.  To wywołanie zastępuje wszystkie istniejące zestawy rekordów o tej samej nazwie i typie rekordu w tej strefie DNS.
 
 ```cs
 // Create record set parameters
@@ -120,9 +121,9 @@ recordSetParams.Metadata.Add("user", "Mary");
 var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zoneName, recordSetName, RecordType.A, recordSetParams);
 ```
 
-## <a name="get-zones-and-record-sets"></a>Strefami i zestawami rekordów
+## <a name="get-zones-and-record-sets"></a>Pobierz strefy i zestawy rekordów
 
-`DnsManagementClient.Zones.Get` i `DnsManagementClient.RecordSets.Get` metody pobierania poszczególnych stref rekordami i zestawami, odpowiednio. Zestawy rekordów są identyfikowane przez ich typu, nazwy i strefy i grupę zasobów, które istnieją w. Strefy są identyfikowane przez ich nazwy i grupę zasobów, które istnieją w.
+Metody `DnsManagementClient.Zones.Get` i `DnsManagementClient.RecordSets.Get` pobierają odpowiednio poszczególne strefy i zestawy rekordów. Zestawy rekordów są identyfikowane według ich typu, nazwy i strefy oraz grupy zasobów, w których istnieją. Strefy są identyfikowane przez ich nazwę i grupę zasobów, w której istnieją.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -130,7 +131,7 @@ var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetN
 
 ## <a name="update-an-existing-record-set"></a>Aktualizowanie istniejącego zestawu rekordów
 
-Do aktualizowania istniejącego zestawu rekordów DNS, najpierw pobrać zestawu rekordów, a następnie zaktualizować zawartość zestawu rekordów, a następnie przesłać zmiany.  W tym przykładzie określamy "Etag" z zestawu rekordów pobrane w parametrze "If-Match". Wywołanie zakończy się niepowodzeniem, jeśli wykonywana równolegle operacja został zmodyfikowany w międzyczasie zestawu rekordów.
+Aby zaktualizować istniejący zestaw rekordów DNS, najpierw Pobierz zestaw rekordów, a następnie zaktualizuj zawartość zestawu rekordów, a następnie prześlij zmianę.  W tym przykładzie określimy element "ETag" z pobranego zestawu rekordów w parametrze "If-Match". Wywołanie nie powiedzie się, jeśli w międzyczasie operacja współbieżna zmodyfikował zestaw rekordów.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -145,9 +146,9 @@ recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zo
 
 ## <a name="list-zones-and-record-sets"></a>Wyświetlanie listy stref i zestawów rekordów
 
-Aby wyświetlić listę stref, użyj *DnsManagementClient.Zones.List...*  metody, które obsługują wyświetlanie listy wszystkich stref w danej grupy zasobów albo wszystkie strefy w ramach danej subskrypcji platformy Azure (między grupami zasobów.) Aby wyświetlić listę zestawów rekordów, użyj *DnsManagementClient.RecordSets.List...*  metody, które obsługują, albo listę wszystkich zestawów rekordów w określonej strefy lub tylko te zestawy rekordów określonego typu.
+Aby wyświetlić listę stref, należy użyć metod *DnsManagementClient. Zones. list...* , które obsługują wyświetlanie wszystkich stref w danej grupie zasobów lub wszystkich stref w danej subskrypcji platformy Azure (między grupami zasobów). Aby wyświetlić listę zestawów rekordów, użyj metod *DnsManagementClient. Recordsets. list...* , które obsługują listę wszystkich zestawów rekordów w danej strefie lub tylko zestawy rekordów określonego typu.
 
-Należy pamiętać podczas wyświetlania stref i zestawy rekordów, które wyniki mogą być z podziałem na strony.  Poniższy przykład pokazuje, jak do iterowania po stronach wyników. (Rozmiar sztucznie strony "2" jest używany do wymuszania stronicowania; w praktyce należy pominąć ten parametr i domyślny rozmiar strony używany)
+Należy pamiętać, że podczas wyświetlania listy stref i zestawów rekordów może być podzielony na strony.  Poniższy przykład pokazuje, jak wykonać iterację stron wyników. (Sztucznie niewielki rozmiar strony "2") służy do wymuszania stronicowania. w tym celu należy pominąć ten parametr i użyć domyślnego rozmiaru strony).
 
 ```cs
 // Note: in this demo, we'll use a very small page size (2 record sets) to demonstrate paging
@@ -163,6 +164,6 @@ while (page.NextPageLink != null)
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz [Azure DNS z zestawu .NET SDK przykładowy projekt](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), która obejmuje dalsze przykłady dotyczące używania usługi Azure DNS zestawu .NET SDK, wraz z przykładami dla innych typów rekordów DNS.
+Pobierz [przykładowy projekt Azure DNS .NET SDK](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), który zawiera dalsze przykłady dotyczące korzystania z zestawu SDK Azure DNS .NET, w tym przykłady dla innych typów rekordów DNS.

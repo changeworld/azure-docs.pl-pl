@@ -1,5 +1,5 @@
 ---
-title: Samouczek — korzystanie z usługi Azure Security Center na potrzeby maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Samouczek — używanie Azure Security Center na potrzeby maszyn wirtualnych z systemem Windows na platformie Azure
 description: W tym samouczku przedstawiono funkcje usługi Azure Security Center ułatwiające ochronę i zabezpieczanie maszyn wirtualnych z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e65e9670facdfcbf9d1aac04fa25ee53996a9c4b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100306"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064951"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Samouczek: Monitorowanie maszyn wirtualnych z systemem Windows za pomocą usługi Azure Security Center
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Windows za pomocą usługi Azure Security Center
 
 Usługa Azure Security Center ułatwia wgląd w rozwiązania z zakresu zabezpieczeń zasobów platformy Azure. Usługa Security Center oferuje zintegrowane monitorowanie zabezpieczeń. Potrafi wykrywać zagrożenia, które inaczej mogłyby ujść uwadze. W tym samouczku poznasz usługę Azure Security Center oraz następujące zagadnienia:
 
@@ -135,4 +135,4 @@ W tym samouczku skonfigurowano usługę Azure Security Center, a następnie spra
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zainstalować stos rozwiązania SQL&#92;IIS&#92;.NET na dwóch maszynach wirtualnych z systemem Windows.
 
 > [!div class="nextstepaction"]
-> [Stos SQL&#92;IIS&#92;.NET](tutorial-iis-sql.md)
+> [SQL&#92;IIS&#92;.NET stack](tutorial-iis-sql.md)

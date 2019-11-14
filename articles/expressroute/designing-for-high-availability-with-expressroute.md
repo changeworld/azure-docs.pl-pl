@@ -1,21 +1,18 @@
 ---
-title: Projektowanie pod kątem wysokiej dostępności dzięki usłudze Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: projektowanie pod kątem wysokiej dostępności'
 description: Ta strona zawiera zalecenia dotyczące architektury w celu zapewnienia wysokiej dostępności podczas korzystania z usługi Azure ExpressRoute.
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67466645"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076679"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Projektowanie pod kątem wysokiej dostępności dzięki ExpressRoute
 
@@ -54,7 +51,7 @@ Alternatywnie, uruchamianie podstawowych i pomocniczych połączeń obwodu usłu
 
 Komunikacja równorzędna firmy Microsoft jest przeznaczona do komunikacji między publicznymi punktami końcowymi. Często lokalne, prywatne punkty końcowe to adresy sieci tłumaczone (z identyfikatorem firmy) z publicznym adresem IP w sieci klienta lub partnera, zanim będą komunikować się za pośrednictwem komunikacji równorzędnej firmy Microsoft. Zakładając, że używane są zarówno podstawowe, jak i pomocnicze połączenia w trybie aktywny-aktywny, gdzie i w jaki sposób translator adresów sieciowych ma wpływ na sposób szybkiego odzyskiwania po awarii w jednym z połączeń ExpressRoute. Dwie różne opcje NAT przedstawiono na poniższej ilustracji:
 
-[![r.3]][3]
+[![3]][3]
 
 W opcji 1 jest stosowane translator adresów sieciowych po rozdzieleniu ruchu między podstawowymi i pomocniczymi połączeniami ExpressRoute. Aby spełnić wymagania stanowe dotyczące translatora adresów sieciowych, na urządzeniach podstawowych i pomocniczych są używane niezależne pule NAT, dzięki czemu ruch powrotny dociera do tego samego urządzenia brzegowego, za pomocą którego przepływ egressed.
 

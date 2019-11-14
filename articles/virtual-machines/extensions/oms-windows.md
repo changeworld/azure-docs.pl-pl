@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows | Microsoft Docs
+title: Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
 description: Wdróż agenta Log Analytics na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168914"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073674"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
 
@@ -38,9 +38,9 @@ Poniższa tabela zawiera mapowanie wersji rozszerzenia maszyny wirtualnej z syst
 
 | Wersja pakietu Log Analytics Windows Agent | Azure Monitor wersja rozszerzenia maszyny wirtualnej z systemem Windows | Data wydania | Informacje o wersji |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18011 | 1.0.18011 | Lipiec 2019 | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Zwiększono MaxExpressionDepth do 10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | Czerwiec 2019 | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Dodano możliwość wyłączania poświadczeń domyślnych podczas nawiązywania połączenia z serwerem proxy (Obsługa programu WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
-| 10.19.13515 | 1.0.13515 | Marzec 2019 | <ul><li>Niewielkie poprawki stabilizacji </li></ul> |
+| 10.20.18011 | 1.0.18011 | Lipiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Zwiększono MaxExpressionDepth do 10000 </li></ul> |
+| 10.20.18001 | 1.0.18001 | Czerwiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Dodano możliwość wyłączania poświadczeń domyślnych podczas nawiązywania połączenia z serwerem proxy (obsługa WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
+| 10.19.13515 | 1.0.13515 | Marzec 2019 r. | <ul><li>Niewielkie poprawki stabilizacji </li></ul> |
 | 10.19.10006 | Nie dotyczy | Dec 2018 | <ul><li> Niewielkie poprawki stabilizacji </li></ul> | 
 | 8.0.11136 | Nie dotyczy | Września 2018 |  <ul><li> Dodano obsługę wykrywania zmiany identyfikatora zasobu podczas przenoszenia maszyny wirtualnej </li><li> Dodano obsługę identyfikatora zasobu raportowania podczas korzystania z instalacji niezwiązanej z rozszerzeniem </li></ul>| 
 | 8.0.11103 | Nie dotyczy |  Kwiecień 2018 r. | |
@@ -84,7 +84,7 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta Log Analytics. Rozsze
 ```
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład |
+| Nazwa | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -93,7 +93,7 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta Log Analytics. Rozsze
 | workspaceId (np.)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
-\*Identyfikator obszaru roboczego jest nazywana consumerId w interfejsie API Log Analytics.
+\* identyfikator obszaru roboczego jest nazywany consumerId w interfejsie API Log Analytics.
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
@@ -159,7 +159,7 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 
 ## <a name="powershell-deployment"></a>Wdrażanie programu PowerShell
 
-Za `Set-AzVMExtension` pomocą polecenia można wdrożyć rozszerzenie maszyny wirtualnej agenta log Analytics na istniejącej maszynie wirtualnej. Przed uruchomieniem polecenia należy zapisać konfigurację publiczną i prywatną w tabeli skrótów programu PowerShell. 
+Za pomocą polecenia `Set-AzVMExtension` można wdrożyć rozszerzenie maszyny wirtualnej agenta Log Analytics do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia należy zapisać konfigurację publiczną i prywatną w tabeli skrótów programu PowerShell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}

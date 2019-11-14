@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813190"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075520"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnego portalu Marketplace w centrum partnerskim
 
-Dowiedz się, jak uzyskiwać dostęp do raportów analitycznych w centrum partnerskim firmy Microsoft w celu monitorowania sprzedaży, oceny wydajności i optymalizowania ofert w portalu Marketplace. Jako partner możesz monitorować swoje oferty za pomocą wizualizacji danych i grafów szczegółowych obsługiwanych przez centrum partnerskie oraz znaleźć sposoby maksymalizowania sprzedaży. Udoskonalone narzędzia analityczne umożliwiają wykonywanie działań na wynikach wydajności i obsługę lepszych relacji z klientami i odsprzedawcami. 
+Dowiedz się, jak uzyskiwać dostęp do raportów analitycznych w centrum partnerskim firmy Microsoft w celu monitorowania sprzedaży, oceny wydajności i optymalizowania ofert w portalu Marketplace. Jako partner możesz monitorować swoje oferty za pomocą wizualizacji danych i grafów szczegółowych obsługiwanych przez centrum partnerskie oraz znaleźć sposoby maksymalizowania sprzedaży. Udoskonalone narzędzia analityczne umożliwiają wykonywanie działań na wynikach wydajności i obsługę lepszych relacji z klientami i odsprzedawcami.
 
 Aby uzyskać dostęp do narzędzi do analiz Centrum partnerskiego, Otwórz pulpit nawigacyjny **[Analizuj](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** w obszarze komercyjny Portal Marketplace.
 
@@ -141,7 +141,7 @@ Na wykresie **Typ licencji w portalu Marketplace** jest wyświetlana liczba zam�
 - **Rozliczanie za pomocą platformy Azure**: Firma Microsoft rozlicza klientów w Twoim imieniu w przypadku wybrania [sprzedaży oferty przez firmę Microsoft](./create-new-saas-offer.md#sell-through-microsoft) przy użyciu tego typu licencji. Typy płatności obejmują płatność zgodnie z rzeczywistym użyciem za pośrednictwem karty kredytowej lub fakturowania w przedsiębiorstwie.
 - **Bring Your Own License**: Firma Microsoft nie rozlicza klientów za korzystanie z tego typu oferty portalu Marketplace. Wymienione jako **[Pobierz teraz (bezpłatnie)](./create-new-saas-offer.md#get-it-now-free)** w portalu Marketplace.
 - **Bezpłatna**: Firma Microsoft nie nalicza opłat za użycie tego typu oferty portalu Marketplace. Wymienione jako **[bezpłatna wersja próbna](./create-new-saas-offer.md##free-trial-listing)** w portalu Marketplace.
-- **Firma Microsoft jako odsprzedawca**: reprezentuje oferty sprzedane przez odsprzedawców firmy Microsoft jako część **[programu dostawcy rozwiązań w chmurze (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
+- **Firma Microsoft jako odsprzedawca**: reprezentuje oferty sprzedane przez odsprzedawców firmy Microsoft jako część **[programu dostawcy rozwiązań w chmurze (CSP)](./create-new-saas-offer.md)** .
 
 ![Centrum partnerskie — analizowanie zamówień według typu licencji](./media/analyze-license-type.png)
 
@@ -234,7 +234,7 @@ Otrzymasz powiadomienie wyskakujące i wiadomość e-mail zawierającą link **d
 
 ### <a name="dictionary-of-data-terms"></a>Słownik terminów dotyczących danych
 
-| Nazwa atrybutu | Reports | Definicja|
+| Nazwa atrybutu | Raporty | Definicja|
 |---|---|---|
 | Typ licencji platformy Azure | Klient, zamówienie | Typ umowy licencyjnej używanej przez klientów do kupowania platformy Azure. Znany również jako kanał |
 | Typ licencji platformy Azure: dostawca rozwiązań w chmurze | Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę portalu Marketplace za pomocą swojego dostawcy rozwiązań w chmurze, który działa jako odsprzedawca.|

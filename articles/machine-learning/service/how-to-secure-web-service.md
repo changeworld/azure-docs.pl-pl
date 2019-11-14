@@ -11,39 +11,39 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f6a6f50a86dc58299a1c1b5994dd1d19cc915e6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048604"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076877"
 ---
-# <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Użyj protokołu SSL do zabezpieczenia za pośrednictwem Azure Machine Learning
+# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Użyj protokołu SSL, aby zabezpieczyć usługę sieci Web za pośrednictwem Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule opisano sposób zabezpieczenia wdrożenia wdrożonego za pomocą Azure Machine Learning.
+W tym artykule opisano sposób zabezpieczania usługi sieci Web, która jest wdrażana za pomocą Azure Machine Learning.
 
-Używasz [protokołu HTTPS](https://en.wikipedia.org/wiki/HTTPS) , aby ograniczyć dostęp do s i zabezpieczyć dane przesyłane przez klientów. Protokół HTTPS pomaga zabezpieczyć komunikację między klientem a a przez szyfrowanie komunikacji między nimi. Szyfrowanie używa [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokół TLS jest czasami nazywany *SSL* (SSL), który był POPRZEDNIKIEM protokołu TLS.
+Używasz [protokołu HTTPS](https://en.wikipedia.org/wiki/HTTPS) , aby ograniczyć dostęp do usług sieci Web i zabezpieczyć dane przesyłane przez klientów. Protokół HTTPS pomaga w zabezpieczeniu komunikacji między klientem a usługą sieci Web przez szyfrowanie komunikacji między nimi. Szyfrowanie używa [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokół TLS jest czasami nazywany *SSL* (SSL), który był POPRZEDNIKIEM protokołu TLS.
 
 > [!TIP]
-> Zestaw Azure Machine Learning SDK używa terminu "SSL" dla właściwości, które są związane z bezpieczną komunikacją. Nie oznacza to, że *protokół TLS*nie jest używany. Protokół SSL jest zaledwie częściej uznawany za okres.
+> Zestaw Azure Machine Learning SDK używa terminu "SSL" dla właściwości, które są związane z bezpieczną komunikacją. Nie oznacza to, że usługa sieci Web nie korzysta z *protokołu TLS*. Protokół SSL jest zaledwie częściej uznawany za okres.
 
 Protokoły TLS i SSL są zależne od *certyfikatów cyfrowych*, które pomagają w szyfrowaniu i weryfikacji tożsamości. Aby uzyskać więcej informacji na temat sposobu działania certyfikatów cyfrowych, zobacz temat [infrastruktura kluczy publicznych](https://en.wikipedia.org/wiki/Public_key_infrastructure)tematu witryny Wikipedia.
 
 > [!WARNING]
-> Jeśli nie używasz protokołu HTTPS, dane wysyłane do i z usługi mogą być widoczne dla innych osób w Internecie.
+> Jeśli nie używasz protokołu HTTPS dla usługi sieci Web, dane wysyłane do i z usługi mogą być widoczne dla innych osób w Internecie.
 >
 > Protokół HTTPS umożliwia również klientowi zweryfikowanie autentyczności serwera, z którym jest nawiązywane połączenie. Ta funkcja chroni klientów przed atakami typu [man-in-the-Middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) .
 
-Jest to ogólny proces zabezpieczania:
+Jest to ogólny proces zabezpieczania usługi sieci Web:
 
 1. Pobierz nazwę domeny.
 
 2. Pobierz certyfikat cyfrowy.
 
-3. Wdróż lub zaktualizuj włączony protokół SSL.
+3. Wdróż lub zaktualizuj usługę sieci Web z włączonym protokołem SSL.
 
-4. Zaktualizuj system DNS, aby wskazywał.
+4. Zaktualizuj serwer DNS, aby wskazać usługę sieci web.
 
 > [!IMPORTANT]
 > W przypadku wdrażania w usłudze Azure Kubernetes Service (AKS) można zakupić własny certyfikat lub użyć certyfikatu dostarczonego przez firmę Microsoft. Jeśli używasz certyfikatu od firmy Microsoft, nie musisz uzyskać nazwy domeny ani certyfikatu SSL. Aby uzyskać więcej informacji, zobacz sekcję [Włączanie protokołu SSL i wdrażania](#enable) w tym artykule.
@@ -52,7 +52,7 @@ Istnieją niewielkie różnice w przypadku zabezpieczania serwerów docelowych w
 
 ## <a name="get-a-domain-name"></a>Pobierz nazwę domeny
 
-Jeśli nie masz jeszcze nazwy domeny, Kup ją w *rejestratorze nazw domen*. Proces i cena różnią się między Rejestratorami. Rejestrator udostępnia narzędzia do zarządzania nazwą domeny. Te narzędzia służą do mapowania w pełni kwalifikowanej nazwy domeny (FQDN) (takiej jak www\.contoso.com) na adres IP, który hostuje.
+Jeśli nie masz jeszcze nazwy domeny, Kup ją w *rejestratorze nazw domen*. Proces i cena różnią się między Rejestratorami. Rejestrator udostępnia narzędzia do zarządzania nazwą domeny. Te narzędzia służą do mapowania w pełni kwalifikowanej nazwy domeny (FQDN) (takiej jak www\.contoso.com) na adres IP, który hostuje usługę sieci Web.
 
 ## <a name="get-an-ssl-certificate"></a>Uzyskaj certyfikat protokołu SSL
 
@@ -61,7 +61,7 @@ Istnieje wiele sposobów uzyskiwania certyfikatu SSL (certyfikatu cyfrowego). Na
 * A **certyfikatu**. Certyfikat musi zawierać pełny łańcuch certyfikatów i musi być "zakodowany przez PEM".
 * A **klucz**. Klucz musi być również zakodowany przez PEM.
 
-W przypadku żądania certyfikatu należy podać nazwę FQDN adresu, który ma być używany dla programu (na przykład www\.contoso.com). Adres, który jest opatrzony sygnaturą i adresem używanym przez klientów, jest porównywany w celu zweryfikowania tożsamości. Jeśli te adresy nie są zgodne, klient otrzymuje komunikat o błędzie.
+W przypadku żądania certyfikatu należy podać nazwę FQDN adresu, który ma być używany przez usługę sieci Web (na przykład www\.contoso.com). Adres, który jest umieszczony w certyfikacie i adres używany przez klientów, jest porównywany w celu zweryfikowania tożsamości usługi sieci Web. Jeśli te adresy nie są zgodne, klient otrzymuje komunikat o błędzie.
 
 > [!TIP]
 > Jeśli urząd certyfikacji nie może dostarczyć certyfikatu i klucza jako plików zakodowanych przez PEM, można użyć narzędzia, takiego jak [OpenSSL](https://www.openssl.org/) , aby zmienić format.
@@ -76,7 +76,7 @@ Aby wdrożyć (lub ponownie wdrożyć) usługę z włączonym protokołem SSL, n
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Wdróż w AKS i programowalnej bramie (FPGA)
 
   > [!NOTE]
-  > Informacje przedstawione w tej sekcji dotyczą również wdrażania bezpiecznego dla projektanta. Jeśli nie masz doświadczenia w korzystaniu z zestawu SDK języka Python, zobacz artykuł [co to jest zestaw Azure Machine Learning SDK dla języka Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+  > Informacje przedstawione w tej sekcji dotyczą również wdrażania bezpiecznej usługi sieci Web dla projektanta. Jeśli nie masz doświadczenia w korzystaniu z zestawu SDK języka Python, zobacz artykuł [co to jest zestaw Azure Machine Learning SDK dla języka Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 Podczas wdrażania programu do AKS można utworzyć nowy klaster AKS lub dołączyć istniejący. Aby uzyskać więcej informacji na temat tworzenia lub dołączania klastra, zobacz [Wdrażanie modelu w klastrze usługi Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md).
   
@@ -145,7 +145,7 @@ Aby uzyskać więcej informacji, zobacz [AciWebservice. deploy_configuration ()]
 
 ## <a name="update-your-dns"></a>Zaktualizuj serwer DNS
 
-Następnie należy zaktualizować system DNS, aby wskazywał.
+Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
 + **Dla Container Instances:**
 
@@ -160,7 +160,7 @@ Następnie należy zaktualizować system DNS, aby wskazywał.
 
   Zaktualizuj serwer DNS publicznego adresu IP klastra AKS na karcie **Konfiguracja** w obszarze **Ustawienia** w okienku po lewej stronie. (Zobacz poniższy obraz). Publiczny adres IP to typ zasobu, który jest tworzony w ramach grupy zasobów zawierającej węzły agenta AKS i inne zasoby sieciowe.
 
-  [![Azure Machine Learning: Zabezpieczanie s przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Zabezpieczanie usług sieci Web za pomocą protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Aktualizowanie certyfikatu SSL
 
@@ -257,5 +257,5 @@ aks_target.update(update_config)
 
 ## <a name="next-steps"></a>Następne kroki
 Instrukcje:
-+ [Korzystanie z modelu uczenia maszynowego wdrożonego jako](how-to-consume-web-service.md)
++ [Korzystanie z modelu uczenia maszynowego wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 + [Bezpieczne uruchamianie eksperymentów i wnioskowania wewnątrz sieci wirtualnej platformy Azure](how-to-enable-virtual-network.md)

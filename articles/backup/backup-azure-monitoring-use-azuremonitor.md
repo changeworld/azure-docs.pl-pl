@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f162b9dc84b863c54d92313307ef4abca76ebb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792840"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074238"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -209,7 +209,7 @@ Wykresy domyślne dają Kusto zapytania dotyczące podstawowych scenariuszy, w k
 Dane diagnostyczne z magazynu są napompowane do obszaru roboczego Log Analytics z pewnym opóźnieniem. Każde zdarzenie dociera do obszaru roboczego Log Analytics od *20 do 30 minut* po wypchnięciu z magazynu Recovery Services. Poniżej znajdują się dalsze szczegółowe informacje na temat opóźnienia:
 
 - W przypadku wszystkich rozwiązań alerty wbudowane w usłudze Backup są wypychane po ich utworzeniu. Tak więc zazwyczaj pojawiają się w obszarze roboczym Log Analytics po 20 – 30 minutach.
-- W przypadku wszystkich rozwiązań zadania tworzenia kopii zapasowych ad hoc i zadania przywracania są wypychane zaraz po *zakończeniu*.
+- W przypadku wszystkich rozwiązań zadania tworzenia kopii zapasowej na żądanie i zadania przywracania są wypychane po ich *zakończeniu*.
 - W przypadku wszystkich rozwiązań z wyjątkiem kopii zapasowej SQL zaplanowane zadania tworzenia kopii zapasowej są wypychane zaraz po *zakończeniu*.
 - W przypadku kopii zapasowej SQL, ponieważ kopie zapasowe dzienników mogą odbywać się co 15 minut, informacje dotyczące wszystkich ukończonych zadań tworzenia kopii zapasowej, w tym dzienników, są przetwarzane wsadowe i wypychane co 6 godzin.
 - W przypadku wszystkich rozwiązań, inne informacje, takie jak element kopii zapasowej, zasady, punkty odzyskiwania, magazyn itd., są wypychane co najmniej *raz dziennie.*

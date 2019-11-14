@@ -1,5 +1,5 @@
 ---
-title: 'Przenoszenie obwodów z klasycznej do usługi Resource Manager — usługi ExpressRoute: Azure | Microsoft Docs'
+title: 'ExpressRoute: Przenieś obwody z klasycznego do Azure Resource Manager'
 description: Przegląd łączenie klasycznej sieci wirtualnej i modelem wdrażania usługi Resource Manager.
 services: expressroute
 author: ganesr
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: dfa2bbc735a79555da0421f64ca644adbd7a1701
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60363848"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076638"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Przenoszenie obwodów usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager | Microsoft Azure
 W tym artykule wyjaśniono przenoszenie obwodu usługi Azure ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager.
@@ -88,10 +87,10 @@ W tej sekcji opisano, jakie operacje nie są obsługiwane dla obwodów usługi E
 * Zarządzanie cyklem życia obwodu usługi ExpressRoute z klasycznego modelu wdrażania.
 * Obsługa kontroli dostępu opartej na rolach (RBAC) dla klasycznego modelu wdrażania. W klasycznym modelu wdrażania nie można wykonywać kontrolek RBAC do obwodu. Dowolny administrator/współadministrator subskrypcji może połączyć sieci wirtualne z obwodem lub je od niego odłączyć.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 Wykonaj instrukcje opisane w artykule [Move an ExpressRoute circuit from the classic to the Resource Manager deployment model](expressroute-howto-move-arm.md) (Przenoszenie obwodu usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Migrowanie sieci wirtualnych połączonych z obwodem usługi ExpressRoute z modelu klasycznego do modelu usługi Azure Resource Manager](expressroute-migration-classic-resource-manager.md)
 * Informacje o przepływach pracy można znaleźć w artykule [ExpressRoute circuit provisioning workflows and circuit states](expressroute-workflows.md) (Przepływy pracy inicjowania obsługi obwodu i stany obwodu usługi ExpressRoute).
 * Konfigurowanie połączenia usługi ExpressRoute:
