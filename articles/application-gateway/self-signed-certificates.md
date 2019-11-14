@@ -1,5 +1,6 @@
 ---
-title: Generowanie certyfikatu z podpisem własnym na platformie Azure Application Gateway przy użyciu niestandardowego głównego urzędu certyfikacji
+title: Generowanie certyfikatu z podpisem własnym przy użyciu niestandardowego głównego urzędu certyfikacji
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak wygenerować certyfikat z podpisem własnym platformy Azure Application Gateway przy użyciu niestandardowego głównego urzędu certyfikacji
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833365"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075085"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generowanie certyfikatu z podpisem własnym na platformie Azure Application Gateway przy użyciu niestandardowego głównego urzędu certyfikacji
 
@@ -23,7 +24,7 @@ Application Gateway domyślnie ufa certyfikatowi witryny sieci Web, jeśli jest 
 > [!NOTE]
 > Certyfikaty z podpisem własnym nie są domyślnie zaufane i mogą być trudne do utrzymania. Ponadto mogą używać przestarzałych algorytmów skrótu i szyfrowania, które mogą nie być silne. Aby zapewnić lepsze zabezpieczenia, należy zakupić certyfikat podpisany przez dobrze znany urząd certyfikacji.
 
-W tym artykule dowiesz się, jak:
+W tym artykule dowiesz się jak:
 
 - Tworzenie własnego niestandardowego urzędu certyfikacji
 - Tworzenie certyfikatu z podpisem własnym podpisanego przez niestandardowy urząd certyfikacji
@@ -184,7 +185,7 @@ Aby przekazać zaufany certyfikat główny z portalu, wybierz **Ustawienia proto
 
 ![Dodawanie certyfikatu przy użyciu portalu](media/self-signed-certificates/portal-cert.png)
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Możesz też użyć interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby przekazać certyfikat główny. Poniższy kod jest przykładem Azure PowerShell.
 

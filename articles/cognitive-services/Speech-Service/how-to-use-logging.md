@@ -1,7 +1,7 @@
 ---
 title: Rejestrowanie zestawu mowy SDK — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Włącz rejestrowanie w zestawie mowy SDK.
+description: Dowiedz się, jak włączyć rejestrowanie w zestawie mowy SDKC++( C#,, Python, celu-C, Java).
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f6c97ac819947f84735bc0bc4c125b43db58dc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559480"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075797"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Włączanie rejestrowania w zestawie mowy SDK
 
-Logowanie do pliku to opcjonalna funkcja dla zestawu Speech SDK. Podczas rejestrowania programistycznego są dostępne dodatkowe informacje i Diagnostyka z podstawowych składników zestawu Speech SDK. Można ją włączyć, ustawiając właściwość `Speech_LogFilename` obiektu konfiguracji mowy na lokalizację i nazwę pliku dziennika. Rejestrowanie zostanie uaktywnione globalnie, gdy aparat rozpoznawania zostanie utworzony na podstawie tej konfiguracji i nie będzie można go wyłączyć później. Nie można zmienić nazwy pliku dziennika podczas uruchamiania sesji rejestrowania.
+Logowanie do pliku to opcjonalna funkcja dla zestawu Speech SDK. Podczas rejestrowania programistycznego są dostępne dodatkowe informacje i Diagnostyka z podstawowych składników zestawu Speech SDK. Można ją włączyć, ustawiając właściwość `Speech_LogFilename` w obiekcie konfiguracji mowy na lokalizację i nazwę pliku dziennika. Rejestrowanie zostanie uaktywnione globalnie, gdy aparat rozpoznawania zostanie utworzony na podstawie tej konfiguracji i nie będzie można go wyłączyć później. Nie można zmienić nazwy pliku dziennika podczas uruchamiania sesji rejestrowania.
 
 > [!NOTE]
 > Funkcja rejestrowania jest dostępna, ponieważ zestaw SDK mowy w wersji 1.4.0 we wszystkich obsługiwanych językach programowania zestawu SDK mowy, z wyjątkiem języka JavaScript.
 
-## <a name="sample"></a>Próbka
+## <a name="sample"></a>Sample
 
-Nazwa pliku dziennika jest określona w obiekcie konfiguracji. Przy użyciu przykładu i przy założeniu, że utworzono wystąpienie o nazwie `config`: `SpeechConfig`
+Nazwa pliku dziennika jest określona w obiekcie konfiguracji. Pobieranie `SpeechConfig` na przykład przy założeniu, że utworzono wystąpienie o nazwie `config`:
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,7 +51,7 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 Aparat rozpoznawania można utworzyć przy użyciu obiektu konfiguracji. Spowoduje to włączenie rejestrowania dla wszystkich aparatów rozpoznawania.
 
 > [!NOTE]
-> Jeśli utworzysz `SpeechSynthesizer` obiekt z obiektu konfiguracji, nie będzie on włączał rejestrowania. Jeśli rejestrowanie jest włączone, otrzymasz również diagnostykę z `SpeechSynthesizer`.
+> W przypadku utworzenia `SpeechSynthesizer` z obiektu konfiguracji nie zostanie włączona Rejestracja. Jeśli rejestrowanie jest włączone, otrzymasz również diagnostykę z `SpeechSynthesizer`.
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Utwórz plik dziennika na różnych platformach
 
@@ -79,9 +79,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Powyższy kod zapisze plik dziennika do magazynu zewnętrznego w katalogu głównym katalogu specyficznego dla aplikacji. Użytkownik może uzyskać dostęp do pliku za pomocą Menedżera plików (zazwyczaj w `Android/data/ApplicationName/logfile.txt`programie). Plik zostanie usunięty, gdy aplikacja zostanie odinstalowana.
+Powyższy kod zapisze plik dziennika do magazynu zewnętrznego w katalogu głównym katalogu specyficznego dla aplikacji. Użytkownik może uzyskać dostęp do pliku za pomocą Menedżera plików (zazwyczaj w `Android/data/ApplicationName/logfile.txt`). Plik zostanie usunięty, gdy aplikacja zostanie odinstalowana.
 
-Musisz również zażądać `WRITE_EXTERNAL_STORAGE` uprawnień w pliku manifestu:
+Musisz również zażądać uprawnień `WRITE_EXTERNAL_STORAGE` w pliku manifestu:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +104,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Aby uzyskać dostęp do utworzonego pliku, Dodaj następujące właściwości do `Info.plist` listy właściwości aplikacji:
+Aby uzyskać dostęp do utworzonego pliku, Dodaj następujące właściwości do listy właściwości `Info.plist` aplikacji:
 
 ```xml
 <key>UIFileSharingEnabled</key>

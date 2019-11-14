@@ -1,5 +1,5 @@
 ---
-title: Przykłady konfiguracji routera — usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
+title: 'Azure ExpressRoute: przykłady konfiguracji routera'
 description: Ta strona zawiera przykłady konfiguracji routera dla routerów Cisco i Juniper.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367476"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076664"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Przykłady konfiguracji routera, aby skonfigurować routingu oraz zarządzanie nim
 Ta strona zawiera interfejs i przykłady konfiguracji routingu dla Cisco IOS-XE i Juniper MX serii routerów, podczas pracy z usługą ExpressRoute. Te powinny być przykłady tylko do celów informacyjnych i nie może być używany, ponieważ jest. Możesz pracować z dostawcą, co pozwoli uzyskać odpowiednich konfiguracji sieci. 
@@ -33,7 +32,7 @@ Poniższe przykłady konfiguracji routera mają zastosowanie do wszystkich poł�
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE na podstawie routery
 Przykłady w tej sekcji mają zastosowanie w przypadku dowolnego router, na którym uruchomiono rodziny systemów operacyjnych XE dla systemu IOS.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurowanie w interfejsach i podrzędne
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurowanie interfejsów i interfejsów podrzędnych
 Będzie wymagać interfejsu sub, na połączenie komunikacji równorzędnej każdego routera, który możesz połączyć się z firmą Microsoft. Interfejs podsieci, mogą zostać zidentyfikowane z Identyfikatorem sieci VLAN lub pary skumulowany identyfikatorów sieci VLAN i adresu IP.
 
 **Definicja interfejsu Dot1Q**
@@ -52,7 +51,7 @@ W tym przykładzie przedstawiono definicję interfejsu podrzędną podrzędny in
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Konfigurowanie sesje eBGP
+### <a name="2-setting-up-ebgp-sessions"></a>2. Konfigurowanie sesji eBGP
 Należy skonfigurować sesji protokołu BGP dla każdego wystąpienia komunikacji równorzędnej z firmą Microsoft. Poniższy przykład umożliwia konfigurowanie sesji protokołu BGP z firmą Microsoft. Jeśli adres IPv4, używane dla interfejsu sub a.b.c.d, adres IP sąsiada protokołu BGP (Microsoft) będzie podsieci a.b.c.d+1. Ostatni oktet adres IPv4 sąsiada protokołu BGP będą zawsze liczbą parzystą.
 
     router bgp <Customer_ASN>
@@ -64,7 +63,7 @@ Należy skonfigurować sesji protokołu BGP dla każdego wystąpienia komunikacj
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Konfigurowanie prefiksów do anonsowania za pośrednictwem sesji protokołu BGP
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Konfigurowanie prefiksów do anonsowania za pośrednictwem sesji BGP
 Można skonfigurować router w taki sposób, aby anonsować wybierz prefiksów do firmy Microsoft. Możesz to zrobić korzystając z poniższego przykładu.
 
     router bgp <Customer_ASN>
@@ -77,7 +76,7 @@ Można skonfigurować router w taki sposób, aby anonsować wybierz prefiksów d
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4. Mapuje trasy
+### <a name="4-route-maps"></a>4. mapy tras
 Możesz użyć mapy tras i listy prefiks prefiksy filtrowania rozpropagowane w Twojej sieci. Poniższy przykład służy do wykonania zadania. Upewnij się, że Instalator wyświetla odpowiedni prefiks.
 
     router bgp <Customer_ASN>
@@ -98,7 +97,7 @@ Możesz użyć mapy tras i listy prefiks prefiksy filtrowania rozpropagowane w T
 ## <a name="juniper-mx-series-routers"></a>Routery serii juniper MX
 Przykłady w tej sekcji dotyczą wszystkie routery z serii Juniper MX.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurowanie w interfejsach i podrzędne
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurowanie interfejsów i interfejsów podrzędnych
 
 **Definicja interfejsu Dot1Q**
 
@@ -133,7 +132,7 @@ W tym przykładzie przedstawiono definicję interfejsu podrzędną podrzędny in
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Konfigurowanie sesje eBGP
+### <a name="2-setting-up-ebgp-sessions"></a>2. Konfigurowanie sesji eBGP
 Należy skonfigurować sesji protokołu BGP dla każdego wystąpienia komunikacji równorzędnej z firmą Microsoft. Poniższy przykład umożliwia konfigurowanie sesji protokołu BGP z firmą Microsoft. Jeśli adres IPv4, używane dla interfejsu sub a.b.c.d, adres IP sąsiada protokołu BGP (Microsoft) będzie podsieci a.b.c.d+1. Ostatni oktet adres IPv4 sąsiada protokołu BGP będą zawsze liczbą parzystą.
 
     routing-options {
@@ -149,7 +148,7 @@ Należy skonfigurować sesji protokołu BGP dla każdego wystąpienia komunikacj
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Konfigurowanie prefiksów do anonsowania za pośrednictwem sesji protokołu BGP
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Konfigurowanie prefiksów do anonsowania za pośrednictwem sesji BGP
 Można skonfigurować router w taki sposób, aby anonsować wybierz prefiksów do firmy Microsoft. Możesz to zrobić korzystając z poniższego przykładu.
 
     policy-options {
@@ -174,7 +173,7 @@ Można skonfigurować router w taki sposób, aby anonsować wybierz prefiksów d
     }
 
 
-### <a name="4-route-maps"></a>4. Mapuje trasy
+### <a name="4-route-maps"></a>4. mapy tras
 Możesz użyć mapy tras i listy prefiks prefiksy filtrowania rozpropagowane w Twojej sieci. Poniższy przykład służy do wykonania zadania. Upewnij się, że Instalator wyświetla odpowiedni prefiks.
 
     policy-options {

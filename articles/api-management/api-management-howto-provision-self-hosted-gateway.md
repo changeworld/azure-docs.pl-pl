@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ee9594e7aa3b55f7eb6fc7ba41783708555bd15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513772"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075286"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Inicjowanie obsługi administracyjnej bramy na platformie Azure API Management
 
@@ -32,13 +32,14 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="provision-a-self-hosted-gateway"></a>Inicjowanie obsługi administracyjnej bramy
+## <a name="provision-a-self-hosted-gateway"></a>Aprowizowanie własnej bramy
 
 1. Wybierz **bramy** z sekcji **Ustawienia**.
 2. Kliknij pozycję **+ Dodaj**.
 3. Wprowadź **nazwę** i **region** bramy.
 > [!TIP]
 > **Region** określa zamierzoną lokalizację węzłów bramy, które będą skojarzone z tym zasobem bramy. Jest ona semantycznie równoważna z podobną właściwością skojarzoną z dowolnym zasobem platformy Azure, ale można ją przypisać do dowolnej wartości ciągu.
+
 4. Opcjonalnie wprowadź **Opis** zasobu bramy.
 5. Opcjonalnie wybierz **+** w obszarze **interfejsy API** , aby skojarzyć jeden lub więcej interfejsów API z tym zasobem bramy.
 > [!TIP]
@@ -46,7 +47,8 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
 
 > [!IMPORTANT]
 > Domyślnie żaden z istniejących interfejsów API nie zostanie skojarzony z nowym zasobem bramy. W związku z tym próby wywołania ich za pośrednictwem nowej bramy spowodują `404 Resource Not Found` odpowiedzi.
-6. Kliknij pozycję **Dodaj**.
+
+6. Kliknij pozycję **Add** (Dodaj).
 
 Teraz zasób bramy został zainicjowany w wystąpieniu API Management. Możesz rozpocząć wdrażanie bramy.
 

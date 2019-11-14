@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b038eca3d4e6beb6b1d226a4a7b1e20bfe3bb55a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: fa22b46dabcc5c8b2db5997ffc9b2f2480846d6f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121417"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074635"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Lesson.ly
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą Lesson.ly
 
 W tym samouczku dowiesz się, jak zintegrować usługę Lesson.ly z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi Lesson.ly z usługą Azure AD można:
 
@@ -65,11 +65,11 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Lesso
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Lesson.ly, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj Logowanie jednokrotne](#configure-lessonly-sso)** w usłudze Lesson.ly, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego Lesson.ly](#create-lessonly-test-user)** , aby dysponować odpowiednikiem B. Simon w Lesson.ly, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+    * **[Utwórz użytkownika testowego Lesson.ly](#create-lessonly-test-user)** , aby dysponować odpowiednikiem B. Simon w Lesson.ly, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -88,10 +88,23 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > [!NOTE]
     > Podczas odwoływania się do nazwy ogólnej, pole **nazwa_firmy** musi zostać zastąpione przez rzeczywistą nazwę.
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<companyname>.lessonly.com/auth/saml/metadata`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.lessonly.com/auth/saml/metadata`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Lessonly.com](mailto:support@lessonly.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Lessonly.com](mailto:support@lessonly.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+
+1. Aplikacja Lesson.ly oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
+
+    ![image](common/default-attributes.png)
+
+1. Oprócz powyższych, aplikacja Lesson.ly oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
+
+    | Nazwa | Atrybut źródłowy|
+    | ---------------  | ----------------|
+    | urn:oid:2.5.4.42 | user.givenname |
+    | urn:oid:2.5.4.4  | user.surname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 | user.objectid |
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
@@ -106,10 +119,10 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij pozycję **Utwórz**.
 
@@ -121,7 +134,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **Lesson.ly**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -137,7 +150,7 @@ Aby skonfigurować Logowanie jednokrotne na stronie **Lesson.ly** , musisz wysł
 
 ### <a name="create-lessonly-test-user"></a>Utwórz użytkownika testowego Lesson.ly
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w aplikacji Lessonly.com. Aplikacja Lessonly.com obsługuje aprowizację typu just in time, która jest domyślnie włączona.
+Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w Lessonly.com. Aplikacja Lessonly.com obsługuje aprowizację typu just in time, która jest domyślnie włączona.
 
 W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby uzyskania dostępu do aplikacji Lessonly.com, jeśli jeszcze nie istnieje.
 

@@ -1,7 +1,7 @@
 ---
 title: Wysyłanie żądań do interfejs API automatycznego sugerowania Bing
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wysyłać żądania do interfejs API automatycznego sugerowania Bing.
+description: Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania w polu wyszukiwania. Dowiedz się więcej o wysyłaniu żądań.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: dbc8e2ccbd0a9d8c395a3b4e8a95e4e51f152792
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882422"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072862"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Wysyłanie żądań do interfejs API automatycznego sugerowania Bing.
 
@@ -25,9 +25,9 @@ Jeśli aplikacja wysyła zapytania do dowolnego z interfejsów API wyszukiwania 
 
 **Interfejs API automatycznego sugerowania Bing** zawiera jeden punkt końcowy, który zwraca listę sugerowanych zapytań z częściowego terminu wyszukiwania.
 
-Aby uzyskać sugerowane zapytania przy użyciu interfejsu API Bing, `GET` Wyślij żądanie do poniższego punktu końcowego. Użyj nagłówków i parametrów adresu URL, aby zdefiniować dalsze specyfikacje.
+Aby uzyskać sugerowane zapytania przy użyciu interfejsu API Bing, Wyślij żądanie `GET` do poniższego punktu końcowego. Użyj nagłówków i parametrów adresu URL, aby zdefiniować dalsze specyfikacje.
 
-**Punktu końcowego** Zwraca sugestie wyszukiwania jako wyniki JSON, które są istotne dla danych wejściowych użytkownika zdefiniowanych przez `?q=""`.
+**Punkt końcowy:** Zwraca sugestie wyszukiwania jako wyniki JSON, które są istotne dla danych wejściowych użytkownika zdefiniowanych przez `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -57,7 +57,7 @@ Zalecamy, aby wszystkie żądania pochodziły z serwera. Dystrybuowanie klucza j
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
 - [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
-Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracania zawartości odpowiedniej dla danej lokalizacji.
+Nagłówki lokalizacji i adresu IP klienta są ważne w przypadku, gdy ma być zwracana zawartość zależna od lokalizacji.
 
 Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
 
@@ -95,11 +95,11 @@ W poniższym przykładzie przedstawiono żądanie, które zwraca sugerowane cią
 
 Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Nagłówek identyfikatora klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
 
-Następująca grupa sugestii sieci Web jest odpowiedzią na powyższe żądanie. Grupa zawiera listę sugestii zapytania wyszukiwania, z każdą sugestią, w tym `displayText`pole `query`, i `url` .
+Następująca grupa sugestii sieci Web jest odpowiedzią na powyższe żądanie. Grupa zawiera listę sugestii zapytania wyszukiwania, z każdą sugestią obejmującą pola `displayText`, `query`i `url`.
 
 Pole `displayText` zawiera sugerowane zapytanie, używane do wypełnienia listy rozwijanej w polu wyszukiwania. Należy wyświetlić wszystkie sugestie, które zawiera odpowiedź, w podanej kolejności.  
 
-Jeśli użytkownik wybierze zapytanie z listy rozwijanej, można użyć go do wywołania jednego z [interfejsy API wyszukiwania Bing](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) i wyświetlić wyniki samodzielnie lub wysłać użytkownika do strony wyników Bing przy użyciu zwróconego `url` pola.
+Jeśli użytkownik wybierze zapytanie z listy rozwijanej, można użyć go do wywołania jednego z [interfejsy API wyszukiwania Bing](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) i wyświetlić wyniki samodzielnie lub wysłać użytkownika do strony wyników Bing przy użyciu zwróconego pola `url`.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 5a95350b8ac846f6db5288d1328d049f3e1c1aa8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 795ca6f1ee45f11fe44f9c14efda1d3463dc9e7c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609595"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076809"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Przedpłata za Azure Database for PostgreSQL zasoby obliczeniowe z zarezerwowaną pojemnością
 
@@ -35,7 +35,7 @@ Szczegółowe informacje na temat tego, w jaki sposób Klienci korporacyjni i kl
 
 Rozmiar rezerwacji powinien opierać się na łącznej ilości obliczeń używanych przez istniejące lub wkrótce wdrożone serwery w określonym regionie oraz przy użyciu tej samej warstwy wydajności i generowania sprzętu.</br>
 
-Załóżmy na przykład, że korzystasz z jednego ogólnego celu, 5 rdzeń – 32 rdzeń wirtualny PostgreSQL Database i dwóch zoptymalizowanych pod kątem pamięci, 5 rdzeń – 16 rdzeń wirtualny PostgreSQL baz danych. Ponadto Załóżmy, że planujesz wdrożenie w następnym miesiącu, w ramach dodatkowego celu ogólnego przeznaczenia, 5 rdzeń – 32 rdzeń wirtualny elastycznej puli i jednej pamięci zoptymalizowanej pod kątem 5 rdzeń – 16 rdzeń wirtualny bazy danych. Załóżmy, że wiesz, że te zasoby będą potrzebne przez co najmniej 1 rok. W takim przypadku należy zakupić 64 (2x32) rdzeni wirtualnych, 1-letnią rezerwację dla jednej bazy danych ogólnego przeznaczenia-5 rdzeń i 48 (2x16 + 16) rdzeń wirtualny 1 roku dla jednolitej pamięci bazy danych zoptymalizowanej-5 rdzeń
+Załóżmy na przykład, że korzystasz z jednego ogólnego celu, 5 rdzeń – 32 rdzeń wirtualny PostgreSQL Database i dwóch zoptymalizowanych pod kątem pamięci, 5 rdzeń – 16 rdzeń wirtualny PostgreSQL baz danych. Ponadto Załóżmy, że planujesz wdrożenie w następnym miesiącu, dodatkowym celu ogólnego przeznaczenia, 5 rdzeń – 32 rdzeń wirtualny bazy danych i jednej pamięci zoptymalizowanej jako serwer bazy danych 5 rdzeń-16 rdzeń wirtualny. Załóżmy, że wiesz, że te zasoby będą potrzebne przez co najmniej 1 rok. W takim przypadku należy zakupić 64 (2x32) rdzeni wirtualnych, 1-letnią rezerwację dla jednej bazy danych ogólnego przeznaczenia-5 rdzeń i 48 (2x16 + 16) rdzeń wirtualny 1 roku dla jednolitej pamięci bazy danych zoptymalizowanej-5 rdzeń
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Kupowanie Azure Database for PostgreSQL zarezerwowanej pojemności
@@ -61,7 +61,7 @@ W poniższej tabeli opisano wymagane pola.
 | Termin | Jeden rok
 | Liczba | Ilość zasobów obliczeniowych zakupionych w ramach rezerwacji Azure Database for PostgreSQL zarezerwowanej. Ilość to liczba rdzeni wirtualnych w wybranym regionie i warstwie wydajności platformy Azure, które są zarezerwowane i pobierają rabat rozliczeń. Na przykład w przypadku uruchamiania programu lub planowania uruchamiania serwerów Azure Database for PostgreSQL z łączną pojemnością obliczeniową 5 rdzeń 16 rdzeni wirtualnych w regionie Wschodnie stany USA należy określić liczbę jako 16, aby zmaksymalizować korzyść dla wszystkich serwerów.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot rezerwacji
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot kosztów rezerwacji
 
 Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 
@@ -78,11 +78,11 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 Rabat rezerwacji rdzeń wirtualny jest automatycznie stosowany do liczby serwerów Azure Database for PostgreSQL, które pasują do Azure Database for PostgreSQL zakres rezerwacji zarezerwowanej pojemności i atrybuty. Możesz zaktualizować zakres rezerwacji zarezerwowanej pojemności usługi Azure Database for PostgreSQL za pomocą Azure Portal, programu PowerShell, interfejsu wiersza polecenia lub interfejsu API. </br></br>
 Aby dowiedzieć się, jak zarządzać zarezerwowaną Azure Database for PostgreSQL pojemności, zobacz Zarządzanie Azure Database for PostgreSQL zarezerwowaną pojemnością.
 
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
 
 * [Co to są Azure Reservations](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
 * [Zarządzanie usługą Azure Reservations](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 * [Informacje na temat rabatu na rezerwacje platformy Azure](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
 * [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](https://docs.microsoft.com/partner-center/azure-reservations) (Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim)
+* [Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim](https://docs.microsoft.com/partner-center/azure-reservations)

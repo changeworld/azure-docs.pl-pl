@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b88983b4941143e5323ee795908cb332bdd79817
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fa2876b88a520480813ebfb8af8219d53c32057a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678415"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075559"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w Azure Data Factory
 
@@ -40,11 +40,11 @@ Aby skopiować dane ze źródła do ujścia, usługa, która uruchamia działani
 
 1. Odczytuje dane z magazynu danych źródłowych.
 2. Wykonuje serializacji/deserializacji, kompresję/dekompresowanie, Mapowanie kolumn i tak dalej. Wykonuje te operacje na podstawie konfiguracji wejściowego zestawu danych, wyjściowego zestawu danych i działania kopiowania.
-3. Zapisuje dane w magazynie danych ujścia/docelowy.
+3. Zapisuje dane w magazynie danych będących ujściem/docelowym.
 
 ![Omówienie działania kopiowania](media/copy-activity-overview/copy-activity-overview.png)
 
-## <a name="supported-data-stores-and-formats"></a>Obsługiwane magazyny i formaty danych
+## <a name="supported-data-stores-and-formats"></a>Formaty i obsługiwane magazyny danych
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
 
@@ -52,20 +52,7 @@ Aby skopiować dane ze źródła do ujścia, usługa, która uruchamia działani
 
 Możesz użyć działania kopiowania, aby skopiować pliki w postaci między dwoma magazynami danych opartymi na plikach. W takim przypadku dane są kopiowane efektywnie bez serializacji ani deserializacji.
 
-Działanie kopiowania może również odczytywać i zapisywać pliki w następujących formatach:
-- Tekst
-- JSON
-- Avro
-- ORC
-- Parquet
-
-Działanie kopiowania umożliwia kompresowanie i dekompresowanie plików za pomocą tych koderów-dekoder: 
-- Gzip
-- Wklęśnięcie
-- Bzip2
-- ZipDeflate
-
-Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kompresji](supported-file-formats-and-compression-codecs.md).
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
 Można na przykład wykonać następujące działania kopiowania:
 
@@ -77,7 +64,7 @@ Można na przykład wykonać następujące działania kopiowania:
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Usługa, która umożliwia działanie kopiowania, jest dostępna globalnie w regionach i lokalizacje geograficzne na liście [lokalizacji w usłudze Azure Integration Runtime](concepts-integration-runtime.md#integration-runtime-location). Topologia dostępna globalnie zapewnia wydajne przenoszenie danych, które zwykle pozwala uniknąć przeskoków między regionami. Zobacz [produkty według regionów](https://azure.microsoft.com/regions/#services) , aby sprawdzić dostępność Data Factory i przenoszenia danych w określonym regionie.
+Usługa, która umożliwia działanie kopiowania, jest dostępna globalnie w regionach i lokalizacje geograficzne na liście [lokalizacji w usłudze Azure Integration Runtime](concepts-integration-runtime.md#integration-runtime-location). Dostępnie topologii zapewnia efektywne przenoszenia, zazwyczaj pozwala uniknąć przeskoków między regionami. Zobacz [produkty według regionów](https://azure.microsoft.com/regions/#services) , aby sprawdzić dostępność Data Factory i przenoszenia danych w określonym regionie.
 
 ## <a name="configuration"></a>Konfiguracja
 
@@ -89,7 +76,7 @@ Aby użyć działania kopiowania w Azure Data Factory, należy wykonać następu
 
 ### <a name="syntax"></a>Składnia
 
-Następujący szablon działania kopiowania zawiera pełną listę obsługiwanych właściwości. Określ te, które pasują do Twojego scenariusza.
+Następujący szablon działania kopiowania zawiera pełną listę obsługiwanych właściwości. Określ te, które dopasowania ich do scenariusza.
 
 ```json
 "activities":[
@@ -141,13 +128,13 @@ Następujący szablon działania kopiowania zawiera pełną listę obsługiwanyc
 
 | Właściwość | Opis | Wymagana? |
 |:--- |:--- |:--- |
-| type | Dla działania kopiowania ustaw wartość `Copy` | Tak |
-| danych wejściowych | Określ utworzony zestaw danych, który wskazuje na dane źródłowe. Działanie kopiowania obsługuje tylko pojedyncze dane wejściowe. | Tak |
-| wydajności | Określ utworzony zestaw danych, który wskazuje na dane ujścia. Działanie kopiowania obsługuje tylko pojedyncze dane wyjściowe. | Tak |
-| typeProperties | Określ właściwości, aby skonfigurować działanie kopiowania. | Tak |
-| source | Określ typ źródła kopiowania i odpowiednie właściwości do pobierania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
-| fotografii | Określ typ ujścia kopiowania i odpowiadające im właściwości zapisywania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
-| Translator | Określ jawne mapowania kolumn ze źródła do ujścia. Ta właściwość ma zastosowanie, gdy domyślne zachowanie kopiowania nie spełnia Twoich potrzeb.<br/><br/>Aby uzyskać więcej informacji, zobacz [Mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md). | Nie |
+| type | Dla działania kopiowania ustaw wartość `Copy` | Yes |
+| inputs | Określ utworzony zestaw danych, który wskazuje na dane źródłowe. Działanie kopiowania obsługuje tylko pojedyncze dane wejściowe. | Yes |
+| outputs | Określ utworzony zestaw danych, który wskazuje na dane ujścia. Działanie kopiowania obsługuje tylko pojedyncze dane wyjściowe. | Yes |
+| typeProperties | Określ właściwości, aby skonfigurować działanie kopiowania. | Yes |
+| source | Określ typ źródła kopiowania i odpowiednie właściwości do pobierania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Yes |
+| sink | Określ typ ujścia kopiowania i odpowiadające im właściwości zapisywania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Yes |
+| translator | Określ mapowania kolumn jawne ze źródła do ujścia. Ta właściwość ma zastosowanie, gdy domyślne zachowanie kopiowania nie spełnia Twoich potrzeb.<br/><br/>Aby uzyskać więcej informacji, zobacz [Mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md). | Nie |
 | dataIntegrationUnits | Określ miarę, która przedstawia ilość mocy używanej przez [środowisko Azure Integration Runtime](concepts-integration-runtime.md) do kopiowania danych. Te jednostki były wcześniej znane jako jednostki przenoszenia danych w chmurze (DMU). <br/><br/>Aby uzyskać więcej informacji, zobacz [jednostki integracji danych](copy-activity-performance.md#data-integration-units). | Nie |
 | parallelCopies | Określ równoległość, która ma być używana przez działanie kopiowania podczas odczytywania danych ze źródła i zapisywania danych do ujścia.<br/><br/>Aby uzyskać więcej informacji, zobacz [Kopiowanie równoległe](copy-activity-performance.md#parallel-copy). | Nie |
 | enableStaging<br/>stagingSettings | Określ, czy przemieścić dane tymczasowe w magazynie obiektów blob, zamiast bezpośrednio kopiować dane ze źródła do ujścia.<br/><br/>Aby uzyskać informacje na temat przydatnych scenariuszy i szczegółów konfiguracji, zobacz [przygotowane kopie](copy-activity-performance.md#staged-copy). | Nie |
@@ -178,21 +165,21 @@ Wybierz przycisk **szczegóły** w kolumnie **Akcje** , aby wyświetlić szczeg�
 **Przykład: Kopiuj z Azure SQL Database do Azure SQL Data Warehouse za pomocą kopii etapowej**
 szczegóły uruchomienia działania monitorowania ![](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
 
-### <a name="monitor-programmatically"></a>Monitoruj programowo
+### <a name="monitor-programmatically"></a>Programowe monitorowanie
 
 Szczegóły wykonania działania kopiowania i charakterystyki wydajności są również zwracane w sekcji **wynik uruchomienia działania kopiowania** > **danych wyjściowych** . Poniżej znajduje się kompletna lista właściwości, które mogą zostać zwrócone. Zobaczysz tylko właściwości, które mają zastosowanie do Twojego scenariusza kopiowania. Aby uzyskać informacje o sposobie monitorowania przebiegów działań, zobacz [monitorowanie uruchomienia potoku](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
 | Nazwa właściwości  | Opis | Jednostka |
 |:--- |:--- |:--- |
-| Odczyt DataReady | Ilość danych odczytanych ze źródła. | Wartość Int64, w bajtach |
-| Zapisywana | Ilość danych zapisywana w zlewie. | Wartość Int64, w bajtach |
-| filesRead | Liczba plików skopiowanych podczas kopiowania z magazynu plików. | Wartość Int64 (brak jednostki) |
-| filesWritten | Liczba plików skopiowanych podczas kopiowania do magazynu plików. | Wartość Int64 (brak jednostki) |
-| sourcePeakConnections | Szczytowa liczba jednoczesnych połączeń ustanowionych w źródłowym magazynie danych podczas uruchomienia działania kopiowania. | Wartość Int64 (brak jednostki) |
-| sinkPeakConnections | Szczytowa liczba jednoczesnych połączeń ustanowionych do magazynu danych ujścia podczas uruchomienia działania kopiowania. | Wartość Int64 (brak jednostki) |
-| rowsRead | Liczba wierszy odczytanych ze źródła (nie dotyczy kopiowania binarnego). | Wartość Int64 (brak jednostki) |
-| rowsCopied | Liczba wierszy skopiowanych do ujścia (nie dotyczy kopiowania binarnego). | Wartość Int64 (brak jednostki) |
-| rowsSkipped | Liczba niezgodnych wierszy, które zostały pominięte. Aby można było pominąć niezgodne wiersze, należy ustawić `enableSkipIncompatibleRow` na true. | Wartość Int64 (brak jednostki) |
+| dataRead | Ilość danych odczytanych ze źródła. | Wartość Int64, w bajtach |
+| dataWritten | Ilość danych zapisywana w zlewie. | Wartość Int64, w bajtach |
+| filesRead | Liczba plików skopiowanych podczas kopiowania z magazynu plików. | Wartość Int64 (Brak jednostki) |
+| filesWritten | Liczba plików skopiowanych podczas kopiowania do magazynu plików. | Wartość Int64 (Brak jednostki) |
+| sourcePeakConnections | Szczytowa liczba jednoczesnych połączeń ustanowionych w źródłowym magazynie danych podczas uruchomienia działania kopiowania. | Wartość Int64 (Brak jednostki) |
+| sinkPeakConnections | Szczytowa liczba jednoczesnych połączeń ustanowionych do magazynu danych ujścia podczas uruchomienia działania kopiowania. | Wartość Int64 (Brak jednostki) |
+| rowsRead | Liczba wierszy odczytanych ze źródła (nie dotyczy kopiowania binarnego). | Wartość Int64 (Brak jednostki) |
+| rowsCopied | Liczba wierszy skopiowanych do ujścia (nie dotyczy kopiowania binarnego). | Wartość Int64 (Brak jednostki) |
+| rowsSkipped | Liczba niezgodnych wierszy, które zostały pominięte. Aby można było pominąć niezgodne wiersze, należy ustawić `enableSkipIncompatibleRow` na true. | Wartość Int64 (Brak jednostki) |
 | copyDuration | Czas trwania kopiowania. | Wartość Int32 (w sekundach) |
 | Przepływność | Szybkość transferu danych. | Liczba zmiennoprzecinkowa w KB/s |
 | sourcePeakConnections | Szczytowa liczba jednoczesnych połączeń ustanowionych w źródłowym magazynie danych podczas uruchomienia działania kopiowania. | Wartość Int32 (brak jednostki) |
@@ -201,8 +188,8 @@ Szczegóły wykonania działania kopiowania i charakterystyki wydajności są r�
 | redshiftUnload | Czy ZWALNIAnie jest używane, gdy dane są kopiowane z RedShift. | Wartość logiczna |
 | hdfsDistcp | Określa, czy pomocą distcp jest używany, gdy dane są kopiowane z systemu plików HDFS. | Wartość logiczna |
 | effectiveIntegrationRuntime | Środowisko Integration Runtime (IR) lub środowisko uruchomieniowe służące do włączania uruchomienia działania w formacie `<IR name> (<region if it's Azure IR>)`. | Tekst (ciąg) |
-| usedDataIntegrationUnits | Efektywna jednostka integracji danych podczas kopiowania. | Wartość Int32 |
-| usedParallelCopies | Efektywna parallelCopies podczas kopiowania. | Wartość Int32 |
+| usedDataIntegrationUnits | Skuteczne jednostek integracji danych podczas kopiowania. | Wartość Int32 |
+| usedParallelCopies | Skuteczne parallelCopies podczas kopiowania. | Wartość Int32 |
 | redirectRowPath | Ścieżka do dziennika pominiętych niezgodnych wierszy w magazynie obiektów BLOB skonfigurowanym we właściwości `redirectIncompatibleRowSettings`. Zobacz [odporność na uszkodzenia](#fault-tolerance) w dalszej części tego artykułu. | Tekst (ciąg) |
 | executionDetails | Więcej szczegółów na temat etapów działania kopiowania oraz odpowiednich czynności, czasów trwania, konfiguracji itd. Nie zalecamy przeanalizowania tej sekcji, ponieważ może ona ulec zmianie.<br/><br/>Data Factory również zgłasza szczegółowe czasy trwania (w sekundach) poświęcane na różne etapy w obszarze `detailedDurations`. Czas trwania tych kroków ma charakter wyłączny. Wyświetlane są tylko czasy trwania mające zastosowanie do danego uruchomienia działania kopiowania:<br/>**Czas trwania kolejkowania** (`queuingDuration`): ilość czasu przed rozpoczęciem działania kopiowania w programie Integration Runtime. Jeśli używasz własnego środowiska IR i ta wartość jest duża, sprawdź pojemność i użycie IR oraz Skaluj w górę lub w dół zgodnie z obciążeniem. <br/>**Czas trwania skryptu przed kopiowaniem** (`preCopyScriptDuration`): czas, który upłynął od momentu uruchomienia działania kopiowania w środowisku IR i kiedy działanie kopiowania zakończy uruchamianie skryptu sprzed kopiowania w magazynie danych ujścia. Ma zastosowanie podczas konfigurowania skryptu poprzedzającego kopiowanie. <br/>**Czas do pierwszego bajtu** (`timeToFirstByte`): czas, który upłynął między końcem poprzedniego kroku a czasem, gdy środowisko IR odbierze pierwszy bajt ze źródłowego magazynu danych. Dotyczy źródeł nieopartych na plikach. Jeśli ta wartość jest duża, należy sprawdzić i zoptymalizować zapytanie lub serwer.<br/>**Czas trwania transferu** (`transferDuration`): czas, który upłynął między końcem poprzedniego kroku a czasem, gdy środowisko IR przeniesie wszystkie dane ze źródła do ujścia. | Tablica |
 | perfRecommendation | Kopiuj wskazówki dotyczące dostrajania wydajności. Aby uzyskać szczegółowe informacje [, zobacz wydajność i dostrajanie](#performance-and-tuning) . | Tablica |
@@ -252,7 +239,7 @@ Szczegóły wykonania działania kopiowania i charakterystyki wydajności są r�
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>Mapowanie schematu i typu danych
+## <a name="schema-and-data-type-mapping"></a>Mapowanie typu danych i schematu
 
 Zobacz [Mapowanie schematu i typu danych,](copy-activity-schema-and-type-mapping.md) Aby uzyskać informacje o tym, jak działanie kopiowania mapuje dane źródłowe do ujścia.
 
@@ -272,11 +259,11 @@ W tym przykładzie podczas wykonywania kopii Data Factory śledzi wysokie wykorz
 
 ![Kopiuj monitorowanie ze wskazówkami dotyczącymi dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Kopia przyrostowa
+## <a name="incremental-copy"></a>Przyrostowa kopia
 Data Factory umożliwia przyrostowe kopiowanie danych różnicowych z magazynu danych źródłowych do magazynu danych ujścia. Aby uzyskać szczegółowe informacje, zobacz [Samouczek: przyrostowo Kopiuj dane](tutorial-incremental-copy-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
-Zobacz następujące Przewodniki Szybki Start, samouczki i przykłady:
+Zobacz następujące Przewodniki Szybki Start, samouczków i przykładów:
 
 - [Skopiuj dane z jednej lokalizacji do innej lokalizacji na tym samym koncie usługi Azure Blob Storage](quickstart-create-data-factory-dot-net.md)
 - [Kopiowanie danych z usługi Azure Blob Storage do Azure SQL Database](tutorial-copy-data-dot-net.md)

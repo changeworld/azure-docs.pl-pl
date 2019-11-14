@@ -1,7 +1,7 @@
 ---
 title: Szybki Start — wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing przy użyciu języka Java
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego artykułu, aby rozpocząć korzystanie z interfejsu API wyszukiwania lokalnego firmy Bing w języku Java.
+description: Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań do lokalnego interfejsu API wyszukiwania biznesowego Bing, który jest usługą poznawczej platformy Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 3e71268004ca8fd171835adf289436a65d866fdc
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: eee5bc8d9d2587251b5564ecbd9f0ab1eaa44fcc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994412"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075678"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Szybki start: Wyślij zapytanie do lokalnego interfejsu API wyszukiwania biznesowego Bing przy użyciu języka Java
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Szybki Start: wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing przy użyciu języka Java
 
 Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań do lokalnego interfejsu API wyszukiwania biznesowego Bing, który jest usługą poznawczej platformy Azure. Chociaż ta prosta aplikacja jest zapisywana w języku Java, interfejs API jest usługą sieci Web RESTful zgodną z dowolnym językiem programowania, który umożliwia wykonywanie żądań HTTP i analizowanie kodu JSON.
 
-Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z interfejsu API dla zapytania `hotel in Bellevue`wyszukiwania.
+Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z interfejsu API dla zapytania wyszukiwania `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

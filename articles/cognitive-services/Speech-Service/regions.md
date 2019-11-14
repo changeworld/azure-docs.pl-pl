@@ -1,7 +1,7 @@
 ---
 title: Regiony — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Dokumentacja dotycząca regionów usługi mowy.
+description: Lista dostępnych regionów i punktów końcowych usługi mowy, w tym zamiany mowy na tekst, zamiany tekstu na mowę i Tłumaczenie mowy.
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 469dab093ed7a62171d232695af3258cc874b5f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481316"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072456"
 ---
-# <a name="speech-service-supported-regions"></a>Obsługiwane regiony usługi Speech
+# <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
-Usługa mowy umożliwia aplikacji Konwertowanie dźwięku na tekst, wykonywanie tłumaczeń mowy i przekonwertować tekstu na mowę. Usługa jest dostępna w wielu regionach z unikatowymi punktami końcowymi zestawu Speech SDK i interfejsów API REST.
+Usługa mowy umożliwia aplikacji konwertowanie dźwięku na tekst, wykonać tłumaczenie mowy i konwertowania tekstu na mowę. Usługa jest dostępna w wielu regionach za pomocą punktów końcowych unikatowy zestaw SDK rozpoznawania mowy i interfejsów API REST.
 
-Upewnij się, że używasz punktu końcowego, który jest zgodny z regionem subskrypcji.
+Należy upewnić się, że punkt końcowy, który odpowiada regionie dla Twojej subskrypcji.
 
 ## <a name="speech-sdk"></a>Zestaw SDK usługi Mowa
 
@@ -32,67 +32,67 @@ W [zestawie mowy SDK](speech-sdk.md)regiony są określane jako ciąg (na przyk�
 
 Zestaw Speech SDK jest dostępny w tych regionach na potrzeby **rozpoznawania mowy**, zamiany **tekstu na mowę**i **tłumaczenia**:
 
-  Region | Parametr zestawu Speech SDK | Portal dostosowania mowy
- ------|-------|--------
- Zachodnie stany USA | `westus` | https://westus.cris.ai
- Zachodnie stany USA 2 | `westus2` | https://westus2.cris.ai
- Wschodnie stany USA | `eastus` | https://eastus.cris.ai
- Wschodnie stany USA 2 | `eastus2` | https://eastus2.cris.ai
- Środkowe stany USA | `centralus` | https://centralus.cris.ai
- Północno-środkowe stany USA | `northcentralus` | https://northcentralus.cris.ai
- Środkowo-południowe stany USA | `southcentralus` | https://southcentralus.cris.ai
- Indie Środkowe | `centralindia` | https://centralindia.cris.ai
- Azja Wschodnia | `eastasia` | https://eastasia.cris.ai
- Azja Południowo-Wschodnia | `southeastasia` | https://southeastasia.cris.ai
- Japonia Wschodnia | `japaneast` | https://japaneast.cris.ai
- Korea Środkowa | `koreacentral` | https://koreacentral.cris.ai
- Australia Wschodnia | `australiaeast` | https://australiaeast.cris.ai
- Kanada Środkowa | `canadacentral` | https://canadacentral.cris.ai
- Europa Północna | `northeurope` | https://northeurope.cris.ai
- Europa Zachodnia | `westeurope` | https://westeurope.cris.ai
- Południowe Zjednoczone Królestwo | `uksouth` | https://uksouth.cris.ai
- Francja Środkowa | `francecentral` | https://francecentral.cris.ai
+| Region           | Parametr zestaw SDK rozpoznawania mowy | Portal dostosowania mowy    |
+| ---------------- | -------------------- | ------------------------------ |
+| Zachodnie stany USA          | `westus`             | https://westus.cris.ai         |
+| Zachodnie stany USA 2        | `westus2`            | https://westus2.cris.ai        |
+| Wschodnie stany USA          | `eastus`             | https://eastus.cris.ai         |
+| Wschodnie stany USA 2        | `eastus2`            | https://eastus2.cris.ai        |
+| Środkowe stany USA       | `centralus`          | https://centralus.cris.ai      |
+| Środkowo-północne stany USA | `northcentralus`     | https://northcentralus.cris.ai |
+| Środkowo-południowe stany USA | `southcentralus`     | https://southcentralus.cris.ai |
+| Indie Środkowe    | `centralindia`       | https://centralindia.cris.ai   |
+| Azja Wschodnia        | `eastasia`           | https://eastasia.cris.ai       |
+| Azja Południowo-Wschodnia   | `southeastasia`      | https://southeastasia.cris.ai  |
+| Japonia Wschodnia       | `japaneast`          | https://japaneast.cris.ai      |
+| Korea Środkowa    | `koreacentral`       | https://koreacentral.cris.ai   |
+| Australia Wschodnia   | `australiaeast`      | https://australiaeast.cris.ai  |
+| Kanada Środkowa   | `canadacentral`      | https://canadacentral.cris.ai  |
+| Europa Północna     | `northeurope`        | https://northeurope.cris.ai    |
+| Europa Zachodnia      | `westeurope`         | https://westeurope.cris.ai     |
+| Południowe Zjednoczone Królestwo         | `uksouth`            | https://uksouth.cris.ai        |
+| Francja Środkowa   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>Rozpoznawanie intencji
 
 Dostępne regiony do **rozpoznawania intencji** za pośrednictwem zestawu Speech SDK są następujące:
 
- Region globalny | Region | Parametr zestawu Speech SDK
- ------|-------|--------
- Azja | Azja Wschodnia | `eastasia`
- Azja | Azja Południowo-Wschodnia | `southeastasia`
- Australia | Australia Wschodnia | `australiaeast`
- Europa | Europa Północna | `northeurope`
- Europa | Europa Zachodnia | `westeurope`
- Ameryka Północna | Wschodnie stany USA | `eastus`
- Ameryka Północna | Wschodnie stany USA 2 | `eastus2`
- Ameryka Północna | Środkowo-południowe stany USA | `southcentralus`
- Ameryka Północna | Zachodnio-środkowe stany USA | `westcentralus`
- Ameryka Północna | Zachodnie stany USA | `westus`
- Ameryka Północna | Zachodnie stany USA 2 | `westus2`
- Ameryka Południowa | Brazylia Południowa | `brazilsouth`
+| Globalne regionu | Region           | Parametr zestaw SDK rozpoznawania mowy |
+| ------------- | ---------------- | -------------------- |
+| Azja          | Azja Wschodnia        | `eastasia`           |
+| Azja          | Azja Południowo-Wschodnia   | `southeastasia`      |
+| Australia     | Australia Wschodnia   | `australiaeast`      |
+| Europa        | Europa Północna     | `northeurope`        |
+| Europa        | Europa Zachodnia      | `westeurope`         |
+| Ameryka Północna | Wschodnie stany USA          | `eastus`             |
+| Ameryka Północna | Wschodnie stany USA 2        | `eastus2`            |
+| Ameryka Północna | Środkowo-południowe stany USA | `southcentralus`     |
+| Ameryka Północna | Środkowo-zachodnie stany USA  | `westcentralus`      |
+| Ameryka Północna | Zachodnie stany USA          | `westus`             |
+| Ameryka Północna | Zachodnie stany USA 2        | `westus2`            |
+| Ameryka Południowa | Brazylia Południowa     | `brazilsouth`        |
 
 Jest to podzestaw regionów publikowania obsługiwanych przez [usługę Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
 
-### <a name="voice-assistants"></a>Asystenci głosu
+### <a name="voice-assistants"></a>Asystenci głosowi
 
 [Zestaw Speech SDK](speech-sdk.md) obsługuje funkcje **asystenta głosowego** w następujących regionach:
 
-Region | Parametr zestawu Speech SDK
--------|---------------------
-Zachodnie stany USA | `westus`
-Zachodnie stany USA 2 | `westus2`
-Wschodnie stany USA | `eastus`
-Wschodnie stany USA 2 | `eastus2`
-Europa Zachodnia | `westeurope`
-Europa Północna | `northeurope`
-Azja Południowo-Wschodnia | `southeastasia`
+| Region         | Parametr zestaw SDK rozpoznawania mowy |
+| -------------- | -------------------- |
+| Zachodnie stany USA        | `westus`             |
+| Zachodnie stany USA 2      | `westus2`            |
+| Wschodnie stany USA        | `eastus`             |
+| Wschodnie stany USA 2      | `eastus2`            |
+| Europa Zachodnia    | `westeurope`         |
+| Europa Północna   | `northeurope`        |
+| Azja Południowo-Wschodnia | `southeastasia`      |
 
 ## <a name="rest-apis"></a>Interfejsy API REST
 
-Usługa mowy udostępnia również punkty końcowe REST dla żądań zamiany mowy na tekst i zamiany tekstu na mowę.
+Usługa rozpoznawania mowy udostępnia również punkty końcowe REST dla żądania zamiany mowy na tekst i zamiany tekstu na mowę.
 
-### <a name="speech-to-text"></a>Zamiana mowy na tekst
+### <a name="speech-to-text"></a>Zamiany mowy na tekst
 
 Aby zapoznać się z dokumentacją dotyczącą zamiany mowy na tekst, zobacz [interfejs API REST zamiany mowy na tekst](rest-speech-to-text.md).
 

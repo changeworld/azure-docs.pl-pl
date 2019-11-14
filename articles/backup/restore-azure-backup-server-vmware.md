@@ -7,79 +7,77 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7d267fcd27a96c5ee7820a5d9fb73c6bbdb80695
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 909274fc9b30d5d6a4caf8d2019bbcecddf2a3c7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210148"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073960"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Przywróć maszyny wirtualne VMware
 
 W tym artykule wyjaśniono, jak używać Microsoft Azure Backup Server (serwera usługi MAB) do przywracania punktów odzyskiwania maszyn wirtualnych programu VMware. Aby zapoznać się z omówieniem dotyczącym korzystania z usługi serwera usługi MAB do odzyskiwania danych, zobacz [odzyskiwanie chronionych danych](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server). W konsola administratora serwera usługi MAB istnieją dwa sposoby znajdowania odzyskiwalnych danych — wyszukiwanie i przeglądanie. Podczas odzyskiwania danych można lub nie chcieć przywracać danych ani maszyn wirtualnych do tej samej lokalizacji. Z tego powodu serwera usługi MAB obsługuje trzy opcje odzyskiwania kopii zapasowych maszyn wirtualnych VMware:
 
-• **Odzyskiwanie do oryginalnej lokalizacji (OLR)** — Użyj OLR do przywrócenia chronionej maszyny wirtualnej do jej oryginalnej lokalizacji. Maszynę wirtualną można przywrócić do jej oryginalnej lokalizacji tylko wtedy, gdy nie dodano ani nie usunięto dysków, ponieważ wystąpiła kopia zapasowa. Jeśli dyski zostały dodane lub usunięte, musisz użyć odzyskiwania do lokalizacji alternatywnej.
+* **Odzyskiwanie do oryginalnej lokalizacji (OLR)** — umożliwia przywrócenie chronionej maszyny wirtualnej do jej oryginalnej lokalizacji przy użyciu funkcji OLR. Maszynę wirtualną można przywrócić do jej oryginalnej lokalizacji tylko wtedy, gdy nie dodano ani nie usunięto dysków, ponieważ wystąpiła kopia zapasowa. Jeśli dyski zostały dodane lub usunięte, musisz użyć odzyskiwania do lokalizacji alternatywnej.
 
-• **Odzyskiwanie do lokalizacji alternatywnej (ALR)** — gdy brakuje oryginalnej maszyny wirtualnej lub nie chcesz przeszkadzać oryginalnej maszynie wirtualnej, ODZYSKAj maszynę wirtualną do innej lokalizacji. Aby odzyskać maszynę wirtualną do lokalizacji alternatywnej, należy podać lokalizację hosta ESXi, puli zasobów, folderu oraz magazynu danych magazynu i ścieżki. Aby ułatwić odróżnienie przywróconej maszyny wirtualnej od oryginalnej maszyny wirtualnej, serwera usługi MAB dołącza "-odzyskany" do nazwy maszyny wirtualnej.
+* **Odzyskiwanie do lokalizacji alternatywnej (ALR)** — gdy brakuje oryginalnej maszyny wirtualnej lub nie chcesz zakłócać oryginalnej maszyny wirtualnej, ODZYSKAj maszynę wirtualną do lokalizacji alternatywnej. Aby odzyskać maszynę wirtualną do lokalizacji alternatywnej, należy podać lokalizację hosta ESXi, puli zasobów, folderu oraz magazynu danych magazynu i ścieżki. Aby ułatwić odróżnienie przywróconej maszyny wirtualnej od oryginalnej maszyny wirtualnej, serwera usługi MAB dołącza "-odzyskany" do nazwy maszyny wirtualnej.
 
-• **Odzyskiwanie poszczególnych lokalizacji plików (ILR)** — Jeśli chroniona maszyna wirtualna jest maszyną wirtualną z systemem Windows Server, można odzyskać poszczególne pliki/foldery w ramach maszyny wirtualnej za pomocą funkcji ILR serwera usługi MAB. Aby odzyskać poszczególne pliki, zapoznaj się z procedurą w dalszej części tego artykułu.
-
+* **Odzyskiwanie poszczególnych lokalizacji plików (ILR)** — Jeśli chroniona maszyna wirtualna jest maszyną wirtualną z systemem Windows Server, można odzyskać pojedyncze pliki/foldery w ramach maszyny wirtualnej za pomocą funkcji ILR serwera usługi MAB. Aby odzyskać poszczególne pliki, zapoznaj się z procedurą w dalszej części tego artykułu.
 
 ## <a name="restore-a-recovery-point"></a>Przywracanie punktu odzyskiwania
 
-1.  W konsola administratora serwera usługi MAB kliknij pozycję Widok odzyskiwania.
+1. W konsola administratora serwera usługi MAB kliknij pozycję Widok odzyskiwania.
 
-2.  Za pomocą okienka przeglądania Przeglądaj lub Filtruj, aby znaleźć maszynę wirtualną, którą chcesz odzyskać. Po wybraniu maszyny wirtualnej lub folderu punkty odzyskiwania w okienku zostaną wyświetlone dostępne punkty odzyskiwania. 
+2. Za pomocą okienka przeglądania Przeglądaj lub Filtruj, aby znaleźć maszynę wirtualną, którą chcesz odzyskać. Po wybraniu maszyny wirtualnej lub folderu punkty odzyskiwania w okienku zostaną wyświetlone dostępne punkty odzyskiwania.
 
     ![Dostępne punkty odzyskiwania](./media/restore-azure-backup-server-vmware/recovery-points.png)
 
-3.  W polu **punkty odzyskiwania dla** Użyj menu kalendarz i listy rozwijanej, aby wybrać datę utworzenia punktu odzyskiwania. Pogrubienie dat kalendarza ma dostępne punkty odzyskiwania.
+3. W polu **punkty odzyskiwania dla** Użyj menu kalendarz i listy rozwijanej, aby wybrać datę utworzenia punktu odzyskiwania. Pogrubienie dat kalendarza ma dostępne punkty odzyskiwania.
 
-4.  Na Wstążce narzędzi kliknij polecenie **Odzyskaj** , aby otworzyć **Kreatora odzyskiwania**. 
+4. Na Wstążce narzędzi kliknij polecenie **Odzyskaj** , aby otworzyć **Kreatora odzyskiwania**.
 
     ![Kreator odzyskiwania, przeglądanie wyboru odzyskiwania](./media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-5.  Kliknij przycisk **dalej** , aby przejść do ekranu **Określanie opcji odzyskiwania** .
+5. Kliknij przycisk **dalej** , aby przejść do ekranu **Określanie opcji odzyskiwania** .
 
-6.  Aby włączyć ograniczanie przepustowości sieci, na ekranie **Określ opcje odzyskiwania** kliknij przycisk **Modyfikuj**. Aby wyłączyć funkcję ograniczania przepustowości sieci, kliknij przycisk **dalej**. Dla maszyn wirtualnych VMware nie są dostępne żadne inne opcje na tym ekranie kreatora. Jeśli zdecydujesz się zmodyfikować przepustowość sieci, w oknie dialogowym ograniczenia wybierz opcję **Włącz ograniczenie przepustowości sieci** , aby je włączyć. Po włączeniu Skonfiguruj **Ustawienia** i **harmonogram pracy**.
+6. Aby włączyć ograniczanie przepustowości sieci, na ekranie **Określ opcje odzyskiwania** kliknij przycisk **Modyfikuj**. Aby wyłączyć funkcję ograniczania przepustowości sieci, kliknij przycisk **dalej**. Dla maszyn wirtualnych VMware nie są dostępne żadne inne opcje na tym ekranie kreatora. Jeśli zdecydujesz się zmodyfikować przepustowość sieci, w oknie dialogowym ograniczenia wybierz opcję **Włącz ograniczenie przepustowości sieci** , aby je włączyć. Po włączeniu Skonfiguruj **Ustawienia** i **harmonogram pracy**.
 
-7.  Na ekranie **Wybieranie typu odzyskiwania** wybierz, czy chcesz odzyskać do oryginalnego wystąpienia, czy też do nowej lokalizacji, a następnie kliknij przycisk **dalej**.
+7. Na ekranie **Wybieranie typu odzyskiwania** wybierz, czy chcesz odzyskać do oryginalnego wystąpienia, czy też do nowej lokalizacji, a następnie kliknij przycisk **dalej**.
 
      * W przypadku wybrania opcji **Odzyskaj do oryginalnego wystąpienia**nie trzeba wprowadzać więcej opcji w kreatorze. Dane dla oryginalnego wystąpienia są używane.
 
-    * Jeśli wybierzesz opcję **Odzyskaj jako maszynę wirtualną na dowolnym hoście**, na ekranie **określ miejsce docelowe** podaj informacje dotyczące **hosta ESXi, puli zasobów, folderu** i **ścieżki**. 
+     * Jeśli wybierzesz opcję **Odzyskaj jako maszynę wirtualną na dowolnym hoście**, na ekranie **określ miejsce docelowe** podaj informacje dotyczące **hosta ESXi, puli zasobów, folderu** i **ścieżki**.
 
       ![Wybierz typ odzyskiwania](./media/restore-azure-backup-server-vmware/recovery-type.png)
 
-8.    Na ekranie **Podsumowanie** przejrzyj ustawienia, a następnie kliknij przycisk **Odzyskaj** , aby rozpocząć proces odzyskiwania. Ekran **stan odzyskiwania** pokazuje postęp operacji odzyskiwania.
+8. Na ekranie **Podsumowanie** przejrzyj ustawienia, a następnie kliknij przycisk **Odzyskaj** , aby rozpocząć proces odzyskiwania. Ekran **stan odzyskiwania** pokazuje postęp operacji odzyskiwania.
 
 ## <a name="restore-an-individual-file-from-a-vm"></a>Przywracanie pojedynczego pliku z maszyny wirtualnej
 
 Można przywrócić pojedyncze pliki z chronionego punktu odzyskiwania maszyny wirtualnej. Ta funkcja jest dostępna tylko dla maszyn wirtualnych z systemem Windows Server. Przywracanie pojedynczych plików jest podobne do przywracania całej maszyny wirtualnej, z tą różnicą, że przed rozpoczęciem procesu odzyskiwania przejdziesz do dysku VMDK i wyszukasz żądane pliki. Aby odzyskać pojedynczy plik lub wybrać pliki z maszyny wirtualnej z systemem Windows Server:
 
-1.  W konsola administratora serwera usługi MAB kliknij pozycję Widok **odzyskiwania** .
+1. W konsola administratora serwera usługi MAB kliknij pozycję Widok **odzyskiwania** .
 
-2.  Za pomocą okienka **przeglądania** Przeglądaj lub Filtruj, aby znaleźć maszynę wirtualną, którą chcesz odzyskać. Po wybraniu maszyny wirtualnej lub folderu punkty odzyskiwania w okienku zostaną wyświetlone dostępne punkty odzyskiwania.
+2. Za pomocą okienka **przeglądania** Przeglądaj lub Filtruj, aby znaleźć maszynę wirtualną, którą chcesz odzyskać. Po wybraniu maszyny wirtualnej lub folderu punkty odzyskiwania w okienku zostaną wyświetlone dostępne punkty odzyskiwania.
 
     ![Dostępne punkty odzyskiwania](./media/restore-azure-backup-server-vmware/recovery-points.png)
- 
-3.  W okienku **punkty odzyskiwania dla:** Użyj kalendarza, aby wybrać datę zawierającą żądane punkty odzyskiwania. W zależności od sposobu skonfigurowania zasad tworzenia kopii zapasowych daty mogą mieć więcej niż jeden punkt odzyskiwania. Po wybraniu dnia, w którym wykonano punkt odzyskiwania, upewnij się, że wybrano prawidłowy **czas odzyskiwania**. Jeśli wybrana data ma wiele punktów odzyskiwania, wybierz punkt odzyskiwania, wybierając go z menu rozwijanego godzina odzyskiwania. Po wybraniu punktu odzyskiwania zostanie wyświetlona lista elementów możliwych do odzyskania w okienku **ścieżka:** .
 
-4.  Aby znaleźć pliki do odzyskania, w okienku **ścieżki** kliknij dwukrotnie element w kolumnie **element** możliwy do odzyskania, aby go otworzyć. Wybierz plik, pliki lub foldery, które chcesz odzyskać. Aby zaznaczyć wiele elementów, naciśnij klawisz **Ctrl** podczas zaznaczania każdego elementu. Użyj okienka **ścieżka** , aby przeszukać listę plików lub folderów wyświetlanych w kolumnie **element** możliwy do odzyskania. **Poniższa lista wyszukiwania** nie przeszukuje podfolderów. Aby przeszukać podfoldery, kliknij dwukrotnie folder. Użyj przycisku do **góry** , aby przejść z folderu podrzędnego do folderu nadrzędnego. Można wybrać wiele elementów (plików i folderów), ale muszą one znajdować się w tym samym folderze nadrzędnym. Nie można odzyskać elementów z wielu folderów w ramach tego samego zadania odzyskiwania.
+3. W okienku **punkty odzyskiwania dla:** Użyj kalendarza, aby wybrać datę zawierającą żądane punkty odzyskiwania. W zależności od sposobu skonfigurowania zasad tworzenia kopii zapasowych daty mogą mieć więcej niż jeden punkt odzyskiwania. Po wybraniu dnia, w którym wykonano punkt odzyskiwania, upewnij się, że wybrano prawidłowy **czas odzyskiwania**. Jeśli wybrana data ma wiele punktów odzyskiwania, wybierz punkt odzyskiwania, wybierając go z menu rozwijanego godzina odzyskiwania. Po wybraniu punktu odzyskiwania zostanie wyświetlona lista elementów możliwych do odzyskania w okienku **ścieżka:** .
 
-5.  Po wybraniu elementów do odzyskania na Wstążce narzędzia konsola administratora kliknij przycisk Odzyskaj, aby otworzyć **Kreatora odzyskiwania**. W Kreatorze odzyskiwania ekran **Przegląd opcji odzyskiwania** pokazuje wybrane elementy do odzyskania. 
-    ![Przegląd wyboru odzyskiwania](./media/restore-azure-backup-server-vmware/review-recovery.png)
+4. Aby znaleźć pliki do odzyskania, w okienku **ścieżki** kliknij dwukrotnie element w kolumnie element możliwy do **odzyskania** , aby go otworzyć. Wybierz plik, pliki lub foldery, które chcesz odzyskać. Aby zaznaczyć wiele elementów, naciśnij klawisz **Ctrl** podczas zaznaczania każdego elementu. Użyj okienka **ścieżka** , aby przeszukać listę plików lub folderów wyświetlanych w kolumnie element możliwy do **odzyskania** . **Poniższa lista wyszukiwania** nie przeszukuje podfolderów. Aby przeszukać podfoldery, kliknij dwukrotnie folder. Użyj przycisku do **góry** , aby przejść z folderu podrzędnego do folderu nadrzędnego. Można wybrać wiele elementów (plików i folderów), ale muszą one znajdować się w tym samym folderze nadrzędnym. Nie można odzyskać elementów z wielu folderów w ramach tego samego zadania odzyskiwania.
 
-6.  Aby włączyć ograniczanie przepustowości sieci, na ekranie **Określ opcje odzyskiwania** kliknij przycisk **Modyfikuj**. Aby wyłączyć funkcję ograniczania przepustowości sieci, kliknij przycisk **dalej**. Dla maszyn wirtualnych VMware nie są dostępne żadne inne opcje na tym ekranie kreatora. Jeśli zdecydujesz się zmodyfikować przepustowość sieci, w oknie dialogowym ograniczenia wybierz opcję **Włącz ograniczenie przepustowości sieci** , aby je włączyć. Po włączeniu Skonfiguruj **Ustawienia** i **harmonogram pracy**.
-7.  Na ekranie **Wybieranie typu odzyskiwania** kliknij przycisk **dalej**. Pliki lub foldery można odzyskiwać tylko do folderu sieciowego.
-8.  Na ekranie **określ miejsce docelowe** kliknij przycisk **Przeglądaj** , aby znaleźć lokalizację sieciową dla plików lub folderów. SERWERA usługi MAB tworzy folder, w którym są kopiowane wszystkie odzyskane elementy. Nazwa folderu ma prefiks MABS_day-miesiąc-Year. W przypadku wybrania lokalizacji odzyskiwanych plików lub folderów zostaną podane szczegóły dotyczące tej lokalizacji (lokalizacji docelowej, ścieżki docelowej i dostępnego miejsca). 
+5. Po wybraniu elementów do odzyskania na Wstążce narzędzia konsola administratora kliknij przycisk **Odzyskaj** , aby otworzyć **Kreatora odzyskiwania**. W Kreatorze odzyskiwania ekran **Przegląd opcji odzyskiwania** pokazuje wybrane elementy do odzyskania.
+    ![sprawdzić](./media/restore-azure-backup-server-vmware/review-recovery.png) odzyskiwania
 
-       ![Określ lokalizację do odzyskania plików](./media/restore-azure-backup-server-vmware/specify-destination.png)
+6. Aby włączyć ograniczanie przepustowości sieci, na ekranie **Określ opcje odzyskiwania** kliknij przycisk **Modyfikuj**. Aby wyłączyć funkcję ograniczania przepustowości sieci, kliknij przycisk **dalej**. Dla maszyn wirtualnych VMware nie są dostępne żadne inne opcje na tym ekranie kreatora. Jeśli zdecydujesz się zmodyfikować przepustowość sieci, w oknie dialogowym ograniczenia wybierz opcję **Włącz ograniczenie przepustowości sieci** , aby je włączyć. Po włączeniu Skonfiguruj **Ustawienia** i **harmonogram pracy**.
+7. Na ekranie **Wybieranie typu odzyskiwania** kliknij przycisk **dalej**. Pliki lub foldery można odzyskiwać tylko do folderu sieciowego.
+8. Na ekranie **określ miejsce docelowe** kliknij przycisk **Przeglądaj** , aby znaleźć lokalizację sieciową dla plików lub folderów. SERWERA usługi MAB tworzy folder, w którym są kopiowane wszystkie odzyskane elementy. Nazwa folderu ma prefiks, MABS_day-miesiąc — rok. W przypadku wybrania lokalizacji odzyskiwanych plików lub folderów zostaną podane szczegóły dotyczące tej lokalizacji (lokalizacji docelowej, ścieżki docelowej i dostępnego miejsca).
 
-9.  Na stronie **Określ opcje odzyskiwania** wybierz ustawienia zabezpieczeń, które mają zostać zastosowane. Można wybrać opcję modyfikacji ograniczenia przepustowości sieci, ale ograniczenie przepustowości jest domyślnie wyłączone. Ponadto odzyskiwanie i powiadamianie **sieci San** nie są włączone.
+       ![Specify location to recover files](./media/restore-azure-backup-server-vmware/specify-destination.png)
+
+9. Na stronie **Określ opcje odzyskiwania** wybierz ustawienia zabezpieczeń, które mają zostać zastosowane. Można wybrać opcję modyfikacji ograniczenia przepustowości sieci, ale ograniczenie przepustowości jest domyślnie wyłączone. Ponadto odzyskiwanie i **powiadamianie** **sieci San** nie są włączone.
 10. Na ekranie **Podsumowanie** przejrzyj ustawienia, a następnie kliknij przycisk **Odzyskaj** , aby rozpocząć proces odzyskiwania. Ekran **stan odzyskiwania** pokazuje postęp operacji odzyskiwania.
 
-
 ## <a name="next-steps"></a>Następne kroki
-Informacje dotyczące rozwiązywania problemów podczas korzystania z Azure Backup Server można znaleźć w [przewodniku rozwiązywania problemów dotyczących Azure Backup Server](./backup-azure-mabs-troubleshoot.md).
 
+Informacje dotyczące rozwiązywania problemów podczas korzystania z Azure Backup Server można znaleźć w [przewodniku rozwiązywania problemów dotyczących Azure Backup Server](./backup-azure-mabs-troubleshoot.md).

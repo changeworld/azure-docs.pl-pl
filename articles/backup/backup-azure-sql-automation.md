@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 85d6b9e00798926bee2d5050767ba47512fc9e86
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012815"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074112"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -460,7 +460,7 @@ $endDate = (Get-Date).AddDays(60).ToUniversalTime()
 Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ````
 
-Polecenie kopii zapasowej ad hoc zwraca zadanie, które ma być śledzone.
+Polecenie kopia zapasowa na żądanie zwraca zadanie, które ma być śledzone.
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -541,13 +541,13 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Należy pamiętać, że Azure Backup śledzi tylko zadania wyzwalane przez użytkownika w usłudze Kopia zapasowa SQL. Zaplanowane kopie zapasowe (w tym kopie zapasowe dzienników) nie są widoczne w portalu/programie PowerShell. Jednak w przypadku niepowodzenia zaplanowanych zadań zostanie wygenerowany [alert dotyczący tworzenia kopii zapasowej](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) , który będzie wyświetlany w portalu. [Użyj Azure monitor](backup-azure-monitoring-use-azuremonitor.md) , aby śledzić wszystkie zaplanowane zadania i inne istotne informacje.
 
-Użytkownicy mogą śledzić operacje wyzwalane przez użytkownika z identyfikatorem JobID, które są zwracane w [danych wyjściowych](#on-demand-backup) zadań asynchronicznych, takich jak kopia zapasowa. Użyj polecenia cmdlet [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS, aby śledzić zadanie i jego szczegóły.
+Użytkownicy mogą śledzić operacje wyzwalane na żądanie/użytkownika z identyfikatorem JobID, który jest zwracany w [danych wyjściowych](#on-demand-backup) zadań asynchronicznych, takich jak kopia zapasowa. Użyj polecenia cmdlet [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS, aby śledzić zadanie i jego szczegóły.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ````
 
-Aby uzyskać listę zadań ad hoc i ich Stanów z usługi Azure Backup, należy użyć polecenia cmdlet [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS. Poniższy przykład zwraca wszystkie zadania SQL w toku.
+Aby uzyskać listę zadań na żądanie i ich Stanów z usługi Azure Backup, należy użyć polecenia cmdlet [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS. Poniższy przykład zwraca wszystkie zadania SQL w toku.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
@@ -570,4 +570,4 @@ Załóżmy na przykład, że w przypadku usługi SQL AG istnieją dwa węzły: "
 
 SQL-Server-0, SQL-Server-1 również będzie wyświetlana jako "AzureVMAppContainer", gdy [są wyświetlane kontenery kopii zapasowych](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 
-Po prostu pobierz odpowiednią bazę danych SQL, aby [włączyć tworzenie kopii zapasowych](#configuring-backup) i [wykonywanie kopii zapasowych](#on-demand-backup) i [przywracanie](#restore-sql-dbs) danych ad hoc są identyczne.
+Po prostu pobierz odpowiednią bazę danych SQL, aby [włączyć tworzenie kopii zapasowych](#configuring-backup) , a [](#restore-sql-dbs) [kopie zapasowe i przywracanie na żądanie](#on-demand-backup) są identyczne.

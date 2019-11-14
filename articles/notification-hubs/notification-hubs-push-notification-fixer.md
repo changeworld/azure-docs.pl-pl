@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213151"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076848"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnozuj opuszczone powiadomienia w usłudze Azure Notification Hubs
 
@@ -31,9 +31,9 @@ Ważne jest, aby najpierw zrozumieć, jak Notification Hubs wypychania powiadomi
 
 ![Architektura Notification Hubs][0]
 
-W typowym przepływie powiadomień wysyła komunikat z *zaplecza aplikacji* do Notification Hubs. Notification Hubs przetwarza wszystkie rejestracje. Uwzględnia on skonfigurowane Tagi i wyrażenia tagów, aby określić cele. Cele są rejestracjami, które muszą odebrać Powiadomienie wypychane. Te rejestracje mogą obejmować dowolne z naszych obsługiwanych platform: Android, Baidu (urządzenia z systemem Android w Chinach), ogień systemu iOS (Amazon), system Windows i Windows Phone.
+W typowym przepływie powiadomień wysyła komunikat z *zaplecza aplikacji* do Notification Hubs. Notification Hubs przetwarza wszystkie rejestracje. Uwzględnia on skonfigurowane Tagi i wyrażenia tagów, aby określić cele. Cele są rejestracjami, które muszą odebrać Powiadomienie wypychane. Te rejestracje mogą obejmować dowolne z naszych obsługiwanych platform: Android, Baidu (urządzenia z systemem Android w Chinach), system pożaru (Amazon) iOS, Windows i Windows Phone.
 
-Mając ustanowione cele, Notification Hubs wypychanie powiadomień do *usługi powiadomień wypychanych* dla platformy urządzeń. Przykładami mogą być usługi Apple Push Notification Service (APNs) dla firm Apple i Firebase Cloud Messaging (FCM) dla usługi Google. Notification Hubs wypychania powiadomień w wielu partiach rejestracji. Jest on uwierzytelniany przy użyciu odpowiedniej usługi powiadomień wypychanych na podstawie poświadczeń ustawionych w Azure Portal, w obszarze **Konfigurowanie centrum powiadomień**. Następnie usługa powiadomień wypychanych przekazuje powiadomienia do odpowiednich *urządzeń klienckich*.
+Mając ustanowione cele, Notification Hubs wypychanie powiadomień do *usługi powiadomień wypychanych* dla platformy urządzeń. Przykładami mogą być usługi Apple Push Notification Service (APNs) dla systemów iOS i macOS oraz Firebase Cloud Messaging (FCM) dla urządzeń z systemem Android. Notification Hubs wypychania powiadomień w wielu partiach rejestracji. Jest on uwierzytelniany przy użyciu odpowiedniej usługi powiadomień wypychanych na podstawie poświadczeń ustawionych w Azure Portal, w obszarze **Konfigurowanie centrum powiadomień**. Następnie usługa powiadomień wypychanych przekazuje powiadomienia do odpowiednich *urządzeń klienckich*.
 
 Końcowy etap dostarczania powiadomień jest między usługą powiadomień wypychanych platformy a urządzeniem. Dostarczanie powiadomień może zakończyć się niepowodzeniem na dowolnym z czterech etapów procesu powiadomień wypychanych (klienta, zaplecza aplikacji, Notification Hubs i usługi powiadomień wypychanych platformy). Aby uzyskać więcej informacji na temat architektury Notification Hubs, zobacz [Przegląd Notification Hubs].
 
@@ -103,7 +103,7 @@ Każda partia jest wysyłana do usługi powiadomień wypychanych, która z kolei
 
 W takim przypadku Rejestracja błędów zostanie usunięta z bazy danych. Następnie ponów próbę dostarczenia powiadomienia dla pozostałych urządzeń w tej partii.
 
-Aby uzyskać więcej informacji o błędach dotyczących nieudanej próby dostarczenia na rejestrację, można użyć Notification Hubs interfejsów API [REST na potrzeby telemetrii komunikatów: Pobierz dane telemetryczne](https://msdn.microsoft.com/library/azure/mt608135.aspx) komunikatów powiadomień i [PNS Opinie](https://msdn.microsoft.com/library/azure/mt705560.aspx). Aby uzyskać przykładowy kod, zobacz [przykład wysyłania w dalszej części](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Aby uzyskać więcej informacji o błędach dotyczących nieudanej próby dostarczenia na rejestrację, można użyć Notification Hubs interfejsów API REST [na potrzeby telemetrii komunikatów: Pobierz dane telemetryczne komunikatów powiadomień](https://msdn.microsoft.com/library/azure/mt608135.aspx) i [PNS opinię](https://msdn.microsoft.com/library/azure/mt705560.aspx). Aby uzyskać przykładowy kod, zobacz [przykład wysyłania w dalszej części](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Problemy z usługą powiadomień wypychanych
 
@@ -125,7 +125,7 @@ Poniżej przedstawiono ścieżki umożliwiające zdiagnozowanie głównej przycz
 
 #### <a name="push-notification-service-developer-portal"></a>Portal dla deweloperów usługi powiadomień wypychanych ####
 
-Sprawdź poświadczenia w odpowiednim portalu dla deweloperów usługi powiadomień wypychanych (APNs, FCM, usługa powiadomień systemu Windows itd.). Aby uzyskać więcej informacji, zobacz [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Sprawdź poświadczenia w odpowiednim portalu dla deweloperów usługi powiadomień wypychanych (APNs, FCM, usługa powiadomień systemu Windows itd.). Aby uzyskać więcej informacji, zobacz [Samouczek: wysyłanie powiadomień do platforma uniwersalna systemu Windows aplikacji przy użyciu usługi Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
 #### <a name="azure-portal"></a>Azure Portal ####
 
@@ -145,7 +145,7 @@ Można wyświetlać wszystkie rejestracje w centrum i zarządzać nimi. Rejestra
 
 Kliknij prawym przyciskiem myszy centrum powiadomień w **Eksplorator serwera**i wybierz polecenie **Diagnozuj**. 
 
-![Eksplorator serwera programu Visual Studio: Menu Diagnozuj](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Visual Studio Eksplorator serwera: menu Diagnozuj](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
 Zostanie wyświetlona następująca strona:
 
@@ -153,14 +153,14 @@ Zostanie wyświetlona następująca strona:
 
 Przejdź do strony **rejestracji urządzeń** :
 
-![Visual Studio: Rejestracje urządzeń](./media/notification-hubs-diagnosing/VSRegistrations.png)
+![Visual Studio: rejestracje urządzeń](./media/notification-hubs-diagnosing/VSRegistrations.png)
 
 Przy użyciu strony **wysyłania testowe** można wysłać testową wiadomość e-mail:
 
-![Visual Studio: Wysyłanie testowe](./media/notification-hubs-diagnosing/test-send-vs.png)
+![Visual Studio: wysyłanie testowe](./media/notification-hubs-diagnosing/test-send-vs.png)
 
 > [!NOTE]
-> Program Visual Studio umożliwia edytowanie rejestracji tylko podczas tworzenia i testowania oraz ograniczoną liczbę rejestracji. Jeśli trzeba edytować rejestracje zbiorczo, należy rozważyć użycie funkcji rejestracji eksportu i importu opisanej w [temacie How to: Eksportować i modyfikować rejestracje zbiorczo](https://msdn.microsoft.com/library/dn790624.aspx).
+> Program Visual Studio umożliwia edytowanie rejestracji tylko podczas tworzenia i testowania oraz ograniczoną liczbę rejestracji. Jeśli trzeba edytować rejestracje zbiorczo, należy rozważyć użycie funkcji rejestracji eksportu i importu opisanej w artykule [jak: eksportować i modyfikować rejestracje zbiorczo](https://msdn.microsoft.com/library/dn790624.aspx).
 
 #### <a name="service-bus-explorer"></a>Eksplorator usługi Service Bus ####
 
@@ -196,7 +196,7 @@ Jeśli Twoje powiadomienie nie dotarło do urządzenia klienckiego, może wystą
 
 Aby uzyskać wgląd w błędy usługi powiadomień wypychanych, można użyć właściwości [EnableTestSend] . Ta właściwość jest włączana automatycznie podczas wysyłania wiadomości testowych z portalu lub klienta programu Visual Studio. Tej właściwości można użyć, aby wyświetlić szczegółowe informacje o debugowaniu, a także za pośrednictwem interfejsów API. Obecnie można używać go w zestawie SDK platformy .NET. Zostanie ona dodana do wszystkich zestawów SDK klienta ostatecznie.
 
-Aby użyć `EnableTestSend` właściwości z wywołaniem REST, Dołącz parametr ciągu zapytania o nazwie *test* do końca wywołania wysyłania. Na przykład:
+Aby użyć właściwości `EnableTestSend` z wywołaniem REST, Dołącz parametr ciągu zapytania o nazwie *test* do końca wywołania wysyłania. Na przykład:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -212,9 +212,9 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-Po zakończeniu wykonywania — `result.State` po prostu Stany. `Enqueued` Wyniki nie zapewniają wglądu w to, co się stało z powiadomieniem wypychanym.
+Po zakończeniu wykonywania `result.State` po prostu Stany `Enqueued`. Wyniki nie zapewniają wglądu w to, co się stało z powiadomieniem wypychanym.
 
-Następnie można użyć `EnableTestSend` właściwości Boolean. Użyj właściwości podczas inicjowania `NotificationHubClient` , aby uzyskać szczegółowy stan błędów usługi powiadomień wypychanych, które występują podczas wysyłania powiadomienia. `EnableTestSend` Wysyłanie wywołania trwa dodatkowy czas, ponieważ najpierw musi Notification Hubs dostarczyć powiadomienia do usługi powiadomień wypychanych.
+Następnie można użyć właściwości logicznej `EnableTestSend`. Użyj właściwości `EnableTestSend` podczas inicjowania `NotificationHubClient`, aby uzyskać szczegółowy stan informacji o błędach usługi powiadomień wypychanych, które wystąpiły podczas wysyłania powiadomienia. Wysyłanie wywołania trwa dodatkowy czas, ponieważ najpierw musi Notification Hubs dostarczyć powiadomienia do usługi powiadomień wypychanych.
 
 ```csharp
     bool enableTestSend = true;
@@ -241,7 +241,7 @@ The Token obtained from the Token Provider is wrong
 Ten komunikat oznacza, że poświadczenia skonfigurowane w Notification Hubs są nieprawidłowe lub wystąpił problem z rejestracjami w centrum. Usuń tę rejestrację i pozwól klientowi ponownie utworzyć rejestrację przed wysłaniem wiadomości.
 
 > [!NOTE]
-> `EnableTestSend` Użycie właściwości jest silnie ograniczone. Tej opcji należy używać tylko w środowisku deweloperskim/testowym i z ograniczonym zestawem rejestracji. Powiadomienia debugowania są wysyłane tylko do 10 urządzeń. Istnieje również limit przetwarzania wysyłanych danych debugowania przy 10 na minutę.
+> Użycie właściwości `EnableTestSend` jest silnie ograniczone. Tej opcji należy używać tylko w środowisku deweloperskim/testowym i z ograniczonym zestawem rejestracji. Powiadomienia debugowania są wysyłane tylko do 10 urządzeń. Istnieje również limit przetwarzania wysyłanych danych debugowania przy 10 na minutę.
 
 ### <a name="review-telemetry"></a>Przejrzyj dane telemetryczne ###
 

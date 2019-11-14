@@ -7,19 +7,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 486033ef4120d721458add7f23cdf9b78a44a388
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8decf4622c4043cbac0f2e2f6e2ad59f1b5baaae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928351"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074009"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Ciągłe dostarczanie za pomocą akcji GitHub
 
 [Akcje GitHub](https://github.com/features/actions) umożliwiają zdefiniowanie przepływu pracy w celu automatycznego kompilowania i wdrażania kodu funkcji w aplikacji funkcji na platformie Azure. 
-
-> [!IMPORTANT]  
-> Akcje usługi GitHub są obecnie dostępne w wersji beta. Musisz najpierw [utworzyć konto, aby dołączyć do wersji zapoznawczej](https://github.com/features/actions) przy użyciu konta usługi GitHub.
 
 W akcjach usługi GitHub [przepływ pracy](https://help.github.com/articles/about-github-actions#workflow) to zautomatyzowany proces zdefiniowany w repozytorium GitHub. Ten proces zawiera informacje dotyczące kompilowania i wdrażania projektu aplikacji usługi Functions w witrynie GitHub. 
 
@@ -30,7 +27,7 @@ W przypadku przepływu pracy Azure Functions plik ma trzy sekcje:
 | Sekcja | Zadania |
 | ------- | ----- |
 | **Uwierzytelnianie** | <ol><li>Zdefiniuj nazwę główną usługi.</li><li>Pobierz profil publikowania.</li><li>Utwórz wpis tajny usługi GitHub.</li></ol>|
-| **Utworzenia** | <ol><li>Skonfiguruj środowisko.</li><li>Kompiluj aplikację funkcji.</li></ol> |
+| **Kompilacja** | <ol><li>Skonfiguruj środowisko.</li><li>Kompiluj aplikację funkcji.</li></ol> |
 | **Wdrażanie** | <ol><li>Wdróż aplikację funkcji.</li></ol>|
 
 > [!NOTE]

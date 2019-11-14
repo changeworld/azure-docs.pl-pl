@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenia i funkcje maszyny wirtualnej platformy Azure dla systemu Linux | Microsoft Docs
+title: Rozszerzenia i funkcje maszyny wirtualnej platformy Azure dla systemu Linux
 description: Dowiedz się, jakie rozszerzenia są dostępne dla usługi Azure Virtual Machines, pogrupowane według ich udostępniania lub usprawnienia.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169000"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073761"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia i funkcje maszyny wirtualnej dla systemu Linux
 
@@ -85,7 +85,7 @@ Poniższe metody mogą służyć do uruchamiania rozszerzenia dla istniejącej m
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Rozszerzenia maszyny wirtualnej platformy Azure można uruchamiać dla istniejącej maszyny wirtualnej za pomocą polecenia [AZ VM Extension Set](/cli/azure/vm/extension#az-vm-extension-set) . W poniższym przykładzie zostanie uruchomione niestandardowe rozszerzenie skryptu dla maszyny wirtualnej o nazwie *myVM* w grupie zasobów o nazwie Moja *resourceName*. Zastąp przykładową nazwę grupy zasobów, nazwę maszyny wirtualnej i skrypt do uruchomienia (\/https:/RAW.githubusercontent.com/Me/Project/Hello.sh) przy użyciu własnych informacji. 
+Rozszerzenia maszyny wirtualnej platformy Azure można uruchamiać dla istniejącej maszyny wirtualnej za pomocą polecenia [AZ VM Extension Set](/cli/azure/vm/extension#az-vm-extension-set) . W poniższym przykładzie zostanie uruchomione niestandardowe rozszerzenie skryptu dla maszyny wirtualnej o nazwie *myVM* w grupie zasobów o nazwie Moja *resourceName*. Zastąp przykładową nazwę grupy zasobów, nazwę maszyny wirtualnej i skrypt do uruchomienia (https:\//raw.githubusercontent.com/me/project/hello.sh) przy użyciu własnych informacji. 
 
 ```azurecli
 az vm extension set `
@@ -241,7 +241,7 @@ Po zainstalowaniu agenta zostanie utworzony demon nadrzędny. Ten element nadrz�
 
 Nie można zaktualizować procesu nadrzędnego. Element nadrzędny może zostać zaktualizowany tylko przez aktualizację pakietu dystrybucji.
 
-Aby sprawdzić, która wersja jest uruchomiona, sprawdź `waagent` następujące informacje:
+Aby sprawdzić, która wersja jest uruchomiona, sprawdź `waagent` w następujący sposób:
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ Poniższe kroki rozwiązywania problemów dotyczą wszystkich rozszerzeń maszyn
 
 1. Aby sprawdzić dziennik agenta systemu Linux, zapoznaj się z działaniem w przypadku aprowizacji rozszerzenia w */var/log/waagent.log*
 
-2. Zapoznaj się z rzeczywistymi dziennikami rozszerzeń, aby uzyskać więcej szczegółów w */var/log/Azure/\<ExtensionName >*
+2. Zapoznaj się z rzeczywistymi dziennikami rozszerzeń, aby uzyskać więcej szczegółów w */var/log/azure/\<extensionname >*
 
 3. Sprawdź sekcje dotyczące rozwiązywania problemów z dokumentacją, aby zapoznać się z kodami błędów, znanymi problemami itp.
 

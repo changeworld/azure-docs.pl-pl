@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 6dadb84b5323568ff736d9e39a1297515f33368c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9a70ecacdf10c985cabca8fa3ddf4314bf266afe
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681166"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075608"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopiowanie danych do i z Azure SQL Database wystąpienia zarządzanego przy użyciu Azure Data Factory
 
 W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych do i z Azure SQL Database wystąpienia zarządzanego. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Ten Azure SQL Database łącznika wystąpienia zarządzanego jest obsługiwany dla następujących działań:
 
@@ -57,20 +57,20 @@ Aby uzyskać dostęp do prywatnego punktu końcowego Azure SQL Database wystąpi
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Azure Data Factory specyficznych dla łącznika wystąpienia zarządzanego Azure SQL Database.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Dla połączonej usługi wystąpienia zarządzanego Azure SQL Database są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi być ustawiona na wartość **AzureSqlMI**. | Tak |
-| Przekształcon |Ta właściwość określa informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z wystąpieniem zarządzanym przy użyciu uwierzytelniania SQL. Więcej informacji można znaleźć w poniższych przykładach. <br/>Domyślnym portem jest 1433. Jeśli używasz Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym, jawnie określ port 3342.<br>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| type | Właściwość Type musi być ustawiona na wartość **AzureSqlMI**. | Yes |
+| connectionString |Ta właściwość określa informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z wystąpieniem zarządzanym przy użyciu uwierzytelniania SQL. Więcej informacji można znaleźć w poniższych przykładach. <br/>Domyślny port to 1433. Jeśli używasz Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym, jawnie określ port 3342.<br>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Azure Data Factory lub [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
-| dzierżaw | Określ informacje o dzierżawie, takie jak nazwa domeny lub identyfikator dzierżawy, w której znajduje się aplikacja. Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
-| Właściwością connectvia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Możesz użyć własnego środowiska Integration Runtime lub środowiska Azure Integration Runtime, jeśli zarządzane wystąpienie ma publiczny punkt końcowy i umożliwia Azure Data Factory dostępu do niego. Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Tak |
+| tenant | Określ informacje o dzierżawie, takie jak nazwa domeny lub identyfikator dzierżawy, w której znajduje się aplikacja. Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
+| connectVia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Możesz użyć własnego środowiska Integration Runtime lub środowiska Azure Integration Runtime, jeśli zarządzane wystąpienie ma publiczny punkt końcowy i umożliwia Azure Data Factory dostępu do niego. Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Yes |
 
-W przypadku różnych typów uwierzytelniania zapoznaj się z poniższymi sekcjami dotyczącymi wymagań wstępnych i próbek JSON odpowiednio:
+Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotyczących wymagań wstępnych i przykłady kodu JSON odpowiednio:
 
 - [Uwierzytelnianie SQL](#sql-authentication)
 - [Uwierzytelnianie tokenu aplikacji usługi Azure AD: Nazwa główna usługi](#service-principal-authentication)
@@ -134,7 +134,7 @@ Aby skorzystać z uwierzytelniania tokena aplikacji opartego na jednostce usług
 
 1. Postępuj zgodnie z instrukcjami, aby [zainicjować obsługę administracyjną Azure Active Directory administratora wystąpienia zarządzanego](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-2. [Utwórz aplikację Azure Active Directoryową](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) z Azure Portal. Zanotuj nazwę aplikacji oraz następujące wartości, które definiują połączoną usługę:
+2. [Utwórz aplikację Azure Active Directoryową](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) z Azure Portal. Zanotuj nazwę aplikacji i następujące wartości, które definiują połączonej usługi:
 
     - Identyfikator aplikacji
     - Klucz aplikacji
@@ -152,7 +152,7 @@ Aby skorzystać z uwierzytelniania tokena aplikacji opartego na jednostce usług
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-5. Przyznaj Data Factoryj zarządzanej tożsamości, które są potrzebne w zwykły sposób dla użytkowników SQL i innych. Uruchom następujący kod. Aby uzyskać więcej informacji, zobacz [ten dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+5. Przyznaj Data Factoryj zarządzanej tożsamości, które są potrzebne w zwykły sposób dla użytkowników SQL i innych. Uruchom poniższy kod. Aby uzyskać więcej informacji, zobacz [ten dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
@@ -187,7 +187,7 @@ Aby skorzystać z uwierzytelniania tokena aplikacji opartego na jednostce usług
 }
 ```
 
-### <a name="managed-identity"></a>Zarządzane tożsamości na potrzeby uwierzytelniania zasobów platformy Azure
+### <a name="managed-identity"></a> Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure
 
 Fabryka danych może być skojarzona z [zarządzaną tożsamością dla zasobów platformy Azure](data-factory-service-identity.md) , które reprezentują określoną fabrykę danych. Tej tożsamości zarządzanej można użyć do Azure SQL Database uwierzytelniania wystąpienia zarządzanego. Wydaną fabrykę mogą uzyskać dostęp do danych z lub do bazy danych lub z niej kopiować przy użyciu tej tożsamości.
 
@@ -207,7 +207,7 @@ Aby korzystać z uwierzytelniania tożsamości zarządzanej, wykonaj następują
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-4. Przyznaj Data Factoryj zarządzanej tożsamości, które są potrzebne w zwykły sposób dla użytkowników SQL i innych. Uruchom następujący kod. Aby uzyskać więcej informacji, zobacz [ten dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+4. Przyznaj Data Factoryj zarządzanej tożsamości, które są potrzebne w zwykły sposób dla użytkowników SQL i innych. Uruchom poniższy kod. Aby uzyskać więcej informacji, zobacz [ten dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
@@ -242,12 +242,12 @@ Pełną listę sekcji i właściwości dostępnych do definiowania zestawów dan
 
 Aby skopiować dane do i z Azure SQL Database wystąpienia zarządzanego, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość **AzureSqlMITable**. | Tak |
-| schematy | Nazwa schematu. |Nie dla źródła, tak dla ujścia  |
-| tabele | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
-| tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Nie dla źródła, tak dla ujścia |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość **AzureSqlMITable**. | Yes |
+| schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
+| table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
+| tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
 
 **Przykład**
 
@@ -278,12 +278,12 @@ Aby zapoznać się z pełną listą sekcji i właściwości dostępnych do defin
 
 Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, w sekcji Źródło działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **SqlMISource**. | Tak |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **SqlMISource**. | Yes |
 | sqlReaderQuery |Ta właściwość używa niestandardowego zapytania SQL do odczytywania danych. Może to być na przykład `select * from MyTable`. |Nie |
-| sqlReaderStoredProcedureName |Ta właściwość jest nazwą procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnia instrukcja SQL musi być instrukcją SELECT w procedurze składowanej. |Nie |
-| storedProcedureParameters |Te parametry dotyczą procedury składowanej.<br/>Dozwolone wartości to pary nazw lub wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
+| sqlReaderStoredProcedureName |Ta właściwość jest nazwą procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
+| storedProcedureParameters |Te parametry dotyczą procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
 
 **Pamiętaj o następujących kwestiach:**
 
@@ -384,16 +384,16 @@ GO
 
 Aby skopiować dane do Azure SQL Database wystąpienia zarządzanego, w sekcji ujścia działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SqlMISink**. | Tak |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SqlMISink**. | Yes |
 | writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL *na partię*.<br/>Dozwolone wartości to liczby całkowite dla liczby wierszy. Domyślnie Azure Data Factory dynamicznie określa odpowiedni rozmiar wsadu na podstawie rozmiaru wiersza.  |Nie |
 | writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie operacji wstawiania wsadowego przed upływem limitu czasu.<br/>Dozwolone wartości są dla przedziału czasu. Przykładem jest "00:30:00", co to 30 minut. |Nie |
 | preCopyScript |Ta właściwość określa zapytanie SQL do uruchomienia działania kopiowania przed zapisaniem danych w zarządzanym wystąpieniu. Jest on wywoływany tylko raz dla każdego przebiegu kopiowania. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. |Nie |
 | sqlWriterStoredProcedureName | Nazwa procedury składowanej, która definiuje sposób zastosowania danych źródłowych do tabeli docelowej. <br/>Ta procedura składowana jest *wywoływana na partię*. W przypadku operacji, które są uruchamiane tylko raz i nie mają niczego do wykonania z danymi źródłowymi, na przykład Usuń lub Obetnij, użyj właściwości `preCopyScript`. | Nie |
 | storedProcedureTableTypeParameterName |Nazwa parametru typu tabeli określona w procedurze składowanej.  |Nie |
 | sqlWriterTableType |Nazwa typu tabeli, która ma zostać użyta w procedurze składowanej. Działanie kopiowania sprawia, że dane są dostępne w tabeli tymczasowej z tym typem tabeli. Kod procedury składowanej może następnie scalić dane, które są kopiowane z istniejącymi danymi. |Nie |
-| storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw i wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. | Nie |
+| storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw i wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. | Nie |
 | tableOption | Określa, czy tabela ujścia ma być automatycznie tworzona, jeśli nie istnieje na podstawie schematu źródłowego. Funkcja autotworzenia tabeli nie jest obsługiwana, gdy obiekt ujścia określa procedurę przechowywaną lub kopię etapową skonfigurowaną w działaniu kopiowania. Dozwolone wartości to: `none` (wartość domyślna), `autoCreate`. |Nie |
 
 **Przykład 1: Dołączanie danych**
@@ -548,7 +548,7 @@ Poniższy przykład przedstawia sposób użycia procedury składowanej do wykona
     )
     ```
 
-2. W bazie danych Zdefiniuj procedurę składowaną o takiej samej nazwie jak **SqlWriterStoredProcedureName**. Obsługuje dane wejściowe z określonego źródła i scala do tabeli danych wyjściowych. Nazwa parametru typu tabeli w procedurze składowanej jest taka sama jak **tabelaname** zdefiniowana w zestawie danych.
+2. W bazie danych Zdefiniuj procedurę składowaną o takiej samej nazwie jak **sqlWriterStoredProcedureName**. Obsługuje dane wejściowe z określonego źródła i scala do tabeli danych wyjściowych. Nazwa parametru typu tabeli w procedurze składowanej jest taka sama jak **tabelaname** zdefiniowana w zestawie danych.
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -570,9 +570,9 @@ Poniższy przykład przedstawia sposób użycia procedury składowanej do wykona
     ```json
     "sink": {
         "type": "SqlMISink",
-        "SqlWriterStoredProcedureName": "spOverwriteMarketing",
+        "sqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
-        "SqlWriterTableType": "MarketingType",
+        "sqlWriterTableType": "MarketingType",
         "storedProcedureParameters": {
             "category": {
                 "value": "ProductA"
@@ -588,37 +588,37 @@ Gdy dane są kopiowane do i z Azure SQL Database wystąpienia zarządzanego, nas
 | Azure SQL Database typ danych wystąpienia zarządzanego | Azure Data Factory typ danych pośrednich |
 |:--- |:--- |
 | bigint |Int64 |
-| Binarny |Byte [] |
+| binary |Byte[] |
 | bit |Wartość logiczna |
-| delikatn |String, Char [] |
+| char |String, Char[] |
 | date |DateTime |
-| Datę |DateTime |
+| Data i godzina |DateTime |
 | datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
-| Dokładności |Dokładności |
-| FILESTREAM — atrybut (varbinary (max)) |Byte [] |
-| Float |Double |
-| image |Byte [] |
-| int |Elementem |
-| finansowego |Dokładności |
-| nchar |String, Char [] |
-| ntext |String, Char [] |
-| przypada |Dokładności |
-| nvarchar |String, Char [] |
-| czasie rzeczywistym |Pojedyncze |
-| rowversion |Byte [] |
+| Datetimeoffset |DateTimeOffset |
+| Dziesiętna |Dziesiętna |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Podwójne |
+| image |Byte[] |
+| int |Int32 |
+| money |Dziesiętna |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Dziesiętna |
+| nvarchar |String, Char[] |
+| real |Pojedyncze |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Dokładności |
+| smallmoney |Dziesiętna |
 | sql_variant |Obiekt |
-| tekst |String, Char [] |
-| time |Czasu |
-| sygnatura czasowa |Byte [] |
+| tekst |String, Char[] |
+| time |TimeSpan |
+| sygnatura czasowa |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Identyfikator GUID |
-| liczby |Byte [] |
-| varchar |String, Char [] |
-| xml |dokument |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 >[!NOTE]
 > W przypadku typów danych, które są mapowane na typ pośredni dziesiętny, obecnie Azure Data Factory obsługuje precyzję do 28. Jeśli masz dane wymagające dokładności większej niż 28, Rozważ przekonwertowanie na ciąg w zapytaniu SQL.

@@ -1,23 +1,24 @@
 ---
-title: Samouczek — tworzenie bramy aplikacji z przekierowywaniem na podstawie ścieżki URL — interfejs wiersza polecenia platformy Azure
+title: 'Samouczek: przekierowywanie oparte na ścieżce URL przy użyciu interfejsu wiersza polecenia'
+titleSuffix: Azure Application Gateway
 description: Z tego samouczka dowiesz się, jak utworzyć bramę aplikacji z obsługą przekierowywania ruchu na podstawie ścieżki URL za pomocą interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 7/30/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b2a06e47eec52d860aecdd2d9b57310cce5aeb27
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 23ddbdc62b2592a8fbfb7cdccaca52cbfe9aee62
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315953"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074442"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Samouczek: tworzenie bramy aplikacji z przekierowywaniem na podstawie ścieżki URL za pomocą interfejsu wiersza polecenia platformy Azure
 
-Za pomocą interfejsu wiersza polecenia platformy Azure podczas tworzenia [bramy aplikacji](application-gateway-introduction.md) możesz skonfigurować [reguły routingu oparte na ścieżkach URL](tutorial-url-route-cli.md). Podczas pracy z tym samouczkiem utworzysz pule zaplecza z użyciem [zestawów skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Następnie utworzysz reguły routingu na podstawie adresów URL, aby zapewnić przekierowywanie ruchu internetowego do odpowiedniej puli zaplecza.
+Za pomocą interfejsu wiersza polecenia platformy Azure podczas tworzenia [bramy aplikacji](tutorial-url-route-cli.md) możesz skonfigurować [reguły routingu oparte na ścieżkach URL](application-gateway-introduction.md). Podczas pracy z tym samouczkiem utworzysz pule zaplecza z użyciem [zestawów skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Następnie utworzysz reguły routingu na podstawie adresów URL, aby zapewnić przekierowywanie ruchu internetowego do odpowiedniej puli zaplecza.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -106,7 +107,7 @@ az network application-gateway create \
 
 ### <a name="add-backend-pools-and-ports"></a>Dodawanie pul zaplecza i portów
 
-Korzystając z polecenia [az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool), możesz dodać do bramy aplikacji pule adresów zaplecza o nazwach *imagesBackendPool* i *videoBackendPool*. Porty frontonu możesz dodać do pul za pomocą polecenia [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port). 
+Korzystając z polecenia *az network application-gateway address-pool create*, możesz dodać do bramy aplikacji pule adresów zaplecza o nazwach *imagesBackendPool* i [videoBackendPool](/cli/azure/network/application-gateway/address-pool). Porty frontonu możesz dodać do pul za pomocą polecenia [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port). 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -209,7 +210,7 @@ az network application-gateway url-path-map create \
 
 ### <a name="add-routing-rules"></a>Dodawanie reguł routingu
 
-Reguły routingu kojarzą mapy ścieżek URL z utworzonymi odbiornikami. Przy użyciu polecenia [az network application-gateway rule create](/cli/azure/network/application-gateway/rule) możesz dodać reguły o nazwach *defaultRule* i *redirectedRule*.
+Reguły routingu kojarzą mapy ścieżek URL z utworzonymi odbiornikami. Przy użyciu polecenia *az network application-gateway rule create* możesz dodać reguły o nazwach *defaultRule* i [redirectedRule](/cli/azure/network/application-gateway/rule).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -283,7 +284,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, użyj polecenia [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8081/images/test.htm`, ,lub.`http://40.121.222.19:8080/video/test.htm`
+Aby uzyskać publiczny adres IP bramy aplikacji, użyj polecenia [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`lub `http://40.121.222.19:8081/images/test.htm`.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -295,15 +296,15 @@ az network public-ip show \
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-Zmień adres URL na http://&lt;IP-Address&gt;: 8080/images/test.html, &lt;zastępując&gt;adres IP adresem IP i powinien wyglądać podobnie do następującego przykładu:
+Zmień adres URL na http://&lt;adres IP&gt;: 8080/images/test.html, zastępując adres IP &lt;&gt;adresu IP, a powinien wyglądać podobnie do następującego przykładu:
 
 ![Testowanie adresu URL obrazów w bramie aplikacji](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-Zmień adres URL na http://&lt;IP-Address&gt;: 8080/Video/test.html, &lt;zastępując&gt;adres IP adresem IP i powinien wyglądać podobnie do następującego przykładu:
+Zmień adres URL na http://&lt;adres IP&gt;: 8080/video/test.html, zastępując adres IP &lt;&gt;adresu IP, a powinien wyglądać podobnie do następującego przykładu:
 
 ![Testowanie adresu URL wideo w bramie aplikacji](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Teraz zmień&lt;adres URL na http://IP-Address&gt;: 8081/images/test.htm, &lt;zastępując&gt;adres IP adresem IP i powinien zostać wyświetlony ruch przekierowany z powrotem do puli zaplecza obrazów w http://&lt;IP-Address&gt;: 8080/images.
+Teraz należy zmienić adres URL http://&lt;IP-Address&gt;: 8081/images/test.htm, zastępując adres IP &lt;&gt;adresu IP, a następnie zobaczyć ruch przekierowany z powrotem do puli zaplecza obrazów w http://&lt;IP-Address&gt;: 8080/images.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

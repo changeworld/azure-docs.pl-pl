@@ -1,19 +1,20 @@
 ---
-title: Tworzenie bramy aplikacji z terminacją SSL — Azure PowerShell
+title: Kończenie protokołu SSL przy użyciu programu PowerShell
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu programu Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 70447e01fc248e889662c5ec15cb65b1c0cc4848
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2ce5b8472fe10b51cff34677c9ce5a89888bdc01
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688104"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075060"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Tworzenie bramy aplikacji z terminacją SSL przy użyciu programu Azure PowerShell
 
@@ -146,7 +147,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym przykładzie utworzysz podstawowy odbiornik, który nasłuchuje ruchu HTTPS pod głównym adresem URL. 
 
-Utwórz obiekt certyfikatu za pomocą polecenia [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) , a następnie utwórz odbiornik o nazwie *mydefaultListener* przy użyciu polecenia [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) z konfiguracją frontonu, portem frontonu i certyfikat, który został wcześniej utworzony. Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz podstawową regułę o nazwie *RULE1* przy użyciu polecenia [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Utwórz obiekt certyfikatu za pomocą polecenia [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) , a następnie utwórz odbiornik o nazwie *mydefaultListener* przy użyciu polecenia [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) z konfiguracją frontonu, portem frontonu i certyfikatem, który został wcześniej utworzony. Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz podstawową regułę o nazwie *RULE1* przy użyciu polecenia [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -176,7 +177,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-certificate"></a>Tworzenie bramy aplikacji z certyfikatem
 
-Teraz, gdy zostały utworzone niezbędne zasoby pomocnicze, określ parametry bramy aplikacji o nazwie *myAppGateway* przy użyciu polecenia [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku), a następnie utwórz je za pomocą polecenia [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) z użyciem certyfikatu.
+Po utworzeniu niezbędnych zasobów pomocniczych Określ parametry bramy aplikacji o nazwie *myAppGateway* przy użyciu polecenia [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku), a następnie utwórz go przy użyciu polecenia [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) z certyfikatem.
 
 ### <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160392"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074083"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Samouczek: integracja MyWorkDrive z usługą Azure Active Directory
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację programu MyWorkDrive z usługą Azure AD, musisz 
 1. W sekcji **Dodaj z galerii** wpisz **MyWorkDrive** w polu wyszukiwania.
 1. Wybierz pozycję **MyWorkDrive** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą MyWorkDrive przy użyciu użytkownika testowego o nazwie **Britta Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w MyWorkDrive.
 
@@ -62,8 +62,8 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Skonfiguruj Logowanie jednokrotne](#configure-myworkdrive-sso)** w usłudze MyWorkDrive, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Utwórz użytkownika testowego MyWorkDrive](#create-myworkdrive-test-user)** , aby uzyskać odpowiednik Britta Simon w MyWorkDrive, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
@@ -96,13 +96,21 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** do Schowka.
 
-    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="configure-myworkdrive-sso"></a>Konfigurowanie logowania jednokrotnego MyWorkDrive
 
-1. W innym oknie przeglądarki sieci Web Zaloguj się, aby MyWorkDrive jako administrator zabezpieczeń.
+1. Aby zautomatyzować konfigurację w programie MyWorkDrive, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-2. Na serwerze MyWorkDrive w panelu administratora kliknij pozycję **Enterprise** i wykonaj następujące czynności:
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+1. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję **Setup MyWorkDrive** , aby skierować do aplikacji MyWorkDrive. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do usługi MyWorkDrive. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-4.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+1. Jeśli chcesz ręcznie skonfigurować MyWorkDrive, w innym oknie przeglądarki sieci Web Zaloguj się do MyWorkDrive jako administrator zabezpieczeń.
+
+1. Na serwerze MyWorkDrive w panelu administratora kliknij pozycję **Enterprise** i wykonaj następujące czynności:
 
     ![Administrator](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
@@ -127,7 +135,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie Britta Sim
    1. W polu **Nazwa** wprowadź wartość `Britta Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -149,13 +157,13 @@ W tej sekcji włączysz usługę Britta Simon do korzystania z logowania jednokr
 
 ### <a name="create-myworkdrive-test-user"></a>Utwórz użytkownika testowego MyWorkDrive
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MyWorkDrive. Aby dodać użytkowników na platformie MyWorkDrive, Pracuj z [zespołem pomocy technicznej MyWorkDrive](mailto:support@myworkdrive.com) . Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MyWorkDrive. Aby dodać użytkowników na platformie MyWorkDrive, Pracuj z [zespołem pomocy technicznej MyWorkDrive](mailto:support@myworkdrive.com) . Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 Po wybraniu kafelka MyWorkDrive w panelu dostępu należy automatycznie zalogować się do MyWorkDrive, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
