@@ -482,6 +482,8 @@
               href: service-fabric-tutorial-deploy-api-management.md
             - name: Zarządzanie wpisami tajnymi aplikacji
               href: service-fabric-application-secret-management.md
+            - name: Korzystanie z magazynu wpisów tajnych usługi Service Fabric
+              href: service-fabric-application-secret-store.md
               items:
                 - name: Konfigurowanie certyfikatu szyfrowania i szyfrowanie wpisów tajnych w systemie Windows
                   href: service-fabric-application-secret-management-windows.md

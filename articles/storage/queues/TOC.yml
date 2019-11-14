@@ -206,12 +206,16 @@
       items:
         - name: Kolejki (wersja 11.x)
           href: /dotnet/api/microsoft.azure.storage.queue
+        - name: Kolejki (wersja 12.x)
+          href: /dotnet/api/azure.storage.queues
         - name: Dostawca zasobów magazynu
           href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
         - name: Kolejki (wersja 8.x)
           href: /java/api/com.microsoft.azure.storage.queue
+        - name: Kolejki (wersja 12.x)
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html'
         - name: Dostawca zasobów magazynu
           href: /java/api/overview/azure/storage/management
     - name: JavaScript (wersja 12.x)
@@ -267,11 +271,11 @@
       items:
         - name: Microsoft.Azure.Storage.Common (wersja 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-        - name: Azure.Storage.Common (wersja 12.x — zapoznawcza)
+        - name: Azure.Storage.Common (wersja 12.x)
           href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
         - name: Microsoft.Azure.Storage.Queue (wersja 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/'
-        - name: Azure.Storage.Queue (wersja 12.x — zapoznawcza)
+        - name: Azure.Storage.Queue (wersja 12.x)
           href: 'https://www.nuget.org/packages/Azure.Storage.Queues/'
         - name: Azure Configuration Manager
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
@@ -283,7 +287,7 @@
           items:
             - name: Biblioteka klienta usługi Azure Storage
               items:
-                - name: Wersja 12.x (zapoznawcza)
+                - name: Wersja 12.x
                   href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
                 - name: Wersja 11.x i starsze
                   href: 'https://github.com/Azure/azure-storage-net'
@@ -293,7 +297,7 @@
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
           items:
-            - name: Biblioteka klienta usługi Azure Storage w wersji 12.x (zapoznawczej)
+            - name: Biblioteka klienta usługi Azure Storage w wersji 12.x
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: 'Obiekty blob, kolejki i pliki (wersja 8)'
               href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
@@ -301,13 +305,13 @@
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js
           items:
-            - name: Biblioteka klienta usługi Azure Storage w wersji 12.x (zapoznawczej)
+            - name: Biblioteka klienta usługi Azure Storage w wersji 12.x
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
             - name: Biblioteka klienta usługi Azure Storage w wersji 10.x
               href: 'https://github.com/Azure/azure-storage-node'
         - name: Python
           items:
-            - name: Biblioteka klienta usługi Azure Storage w wersji 12.x (zapoznawczej)
+            - name: Biblioteka klienta usługi Azure Storage w wersji 12.x
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
             - name: Biblioteka klienta usługi Azure Storage w wersji 2.1
               href: 'https://github.com/Azure/azure-storage-python'

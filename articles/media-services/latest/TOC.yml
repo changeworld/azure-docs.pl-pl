@@ -109,7 +109,7 @@
     - name: Ochrona zawartości
       items:
         - name: Szyfrowanie dynamiczne i dostarczanie kluczy
-          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
+          displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
         - name: Projektowanie systemu z wieloma mechanizmami DRM
           displayName: 'drm, access control'
@@ -138,6 +138,8 @@
         - name: Przesuwanie czasu i rejestracja transmisji na żywo do odtwarzania na żądanie
           displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
+        - name: Transkrypcja na żywo
+          href: live-transcription.md
         - name: Porównanie funkcji
           href: live-event-types-comparison.md
         - name: Stany i rozliczenia

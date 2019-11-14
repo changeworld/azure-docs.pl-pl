@@ -229,8 +229,6 @@
       href: migrate-v1-v2.md
 - name: Dokumentacja
   items:
-    - name: Reguły CRS
-      href: application-gateway-crs-rulegroups-rules.md
     - name: Ruch przychodzący dla adnotacji usługi AKS
       href: ingress-controller-annotations.md
     - name: Interfejs wiersza polecenia platformy Azure

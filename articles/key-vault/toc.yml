@@ -114,6 +114,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Kierowanie powiadomień magazynu kluczy za pomocą usługi Event Grid
       href: event-grid-tutorial.md
+    - name: Integracja z usługą Azure Policy
+      href: azure-policy.md
     - name: Funkcja rejestrowania usługi Azure Key Vault
       href: key-vault-logging.md
     - name: Uzyskiwanie dostępu za zaporami
