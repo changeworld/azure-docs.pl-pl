@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048782"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066874"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane za pomocą usługi Azure Notification Hubs: często zadawane pytania
 
@@ -30,9 +30,7 @@ ms.locfileid: "74048782"
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Co to jest struktura zasobów Notification Hubs?
 
-Usługa Azure Notification Hubs ma dwa poziomy zasobów: centra i przestrzenie nazw. Centrum to pojedynczy zasób wypychania, który może zawierać Międzyplatformowe informacje wypychane jednej aplikacji. Przestrzeń nazw jest kolekcją centrów w jednym regionie.
-
-Zalecane mapowanie pasuje do jednej przestrzeni nazw z jedną aplikacją. W ramach przestrzeni nazw można korzystać z centrum produkcyjnego, które współpracuje z aplikacją produkcyjną, centrum testowania, które współpracuje z aplikacją testową i tak dalej.
+Usługa Azure Notification Hubs ma dwa poziomy zasobów: centra i przestrzenie nazw. Centrum to pojedynczy zasób wypychania, który może zawierać Międzyplatformowe informacje wypychane jednej aplikacji. Przestrzeń nazw jest kolekcją centrów w jednym regionie. Zalecane mapowanie pasuje do jednej przestrzeni nazw z jedną aplikacją. W ramach przestrzeni nazw można korzystać z centrum produkcyjnego, które współpracuje z aplikacją produkcyjną, centrum testowania, które współpracuje z aplikacją testową i tak dalej.
 
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>Jaki jest model cen dla Notification Hubs?
 
@@ -54,7 +52,7 @@ Funkcje warstwy standardowej:
 W przypadku warstw Podstawowa i Standardowa Notification Hubs prawidłowo skonfigurowane aplikacje mogą wysyłać powiadomienia wypychane lub wykonywać operacje zarządzania rejestracją przez co najmniej 99,9% czasu. Aby dowiedzieć się więcej na temat umowy SLA, przejdź do strony [Notification Hubs umów SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) .
 
 > [!NOTE]
-> Ponieważ powiadomienia wypychane są zależne od systemów powiadomień platformy innej firmy (takich jak Apple APNS i Google FCM), nie ma gwarancji umowy SLA dotyczącej dostarczania tych komunikatów. Gdy program Notification Hubs wyśle partie do systemów powiadomień platformy (gwarantowanych przez umowę SLA), jest odpowiedzialny za systemy powiadomień platformy o dostarczenie wypchnięcia (bez gwarancji SLA).
+> Ponieważ powiadomienia wypychane są zależne od systemów powiadomień platformy innych firm, takich jak usługa wypychania powiadomień firmy Apple (APNs) i Google Firebase Cloud Messaging (FCM), nie ma gwarancji SLA przy dostarczaniu tych komunikatów. Gdy program Notification Hubs wyśle partie do systemów powiadomień platformy (gwarantowanych przez umowę SLA), jest odpowiedzialny za systemy powiadomień platformy o dostarczenie wypchnięcia (bez gwarancji SLA).
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Jak mogę uaktualnić lub obniżyć poziom mojego centrum lub przestrzeni nazw do innej warstwy?
 
@@ -75,13 +73,7 @@ Powiadomienia wypychane są obsługiwane [dla systemów iOS](notification-hubs-i
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Czy są obsługiwane wiadomości tekstowe, wiadomości e-mail lub powiadomienia w sieci Web?
 
-Notification Hubs jest przeznaczony głównie do wysyłania powiadomień do aplikacji mobilnych. Nie udostępnia ona wiadomości e-mail ani wiadomości SMS. Jednak platformy innych firm, które zapewniają te możliwości, można zintegrować z Notification Hubs w celu wysyłania natywnych powiadomień wypychanych przy użyciu [Mobile Apps].
-
-Notification Hubs również nie zapewnia usługi dostarczania powiadomień wypychanych w przeglądarce. Klienci mogą zaimplementować tę funkcję przy użyciu programu sygnalizującego na obsługiwanych platformach po stronie serwera. 
-
-### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Jak są Mobile Apps i usługi Azure Notification Hubs powiązane i kiedy ich używać?
-
-Jeśli masz istniejące zaplecze aplikacji mobilnej i chcesz dodać tylko możliwość wysyłania powiadomień wypychanych, możesz użyć usługi Azure Notification Hubs. Jeśli chcesz skonfigurować zaplecze aplikacji mobilnej od podstaw, rozważ użycie funkcji Mobile Apps Azure App Service. Aplikacja mobilna automatycznie inicjuje centrum powiadomień, dzięki czemu można łatwo wysyłać powiadomienia wypychane z zaplecza aplikacji mobilnej. Cennik Mobile Apps obejmuje opłaty podstawowe za centrum powiadomień. Płacisz tylko za przekroczenie uwzględnionych wypchnięciów. Aby uzyskać więcej informacji na temat kosztów, przejdź na stronę [Cennik usługi App Service] .
+Notification Hubs wysyła powiadomienia do urządzeń, na których działają aplikacje mobilne. Nie udostępnia ona wiadomości e-mail ani wiadomości SMS. Notification Hubs również nie zapewnia usługi dostarczania powiadomień wypychanych w przeglądarce. Klienci mogą zaimplementować tę funkcję przy użyciu programu sygnalizującego na obsługiwanych platformach po stronie serwera. 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Ile urządzeń można obsługiwać w przypadku wysyłania powiadomień wypychanych za pośrednictwem Notification Hubs?
 
@@ -94,7 +86,7 @@ Jeśli potrzebujesz pomocy technicznej dotyczącej ponad 10 000 000 zarejestrowa
 W zależności od wybranej warstwy platforma Azure Notification Hubs automatycznie skaluje się w zależności od liczby powiadomień przepływających przez system.
 
 > [!NOTE]
-> Całkowity koszt użycia może wzrosnąć w zależności od liczby obsługiwanych powiadomień wypychanych. Upewnij się, że masz świadomość ograniczeń warstwy przedstawionych na stronie z [Cennik Notification Hubs] .
+> Całkowity koszt użycia może wzrosnąć w zależności od liczby wysłanych powiadomień wypychanych. Upewnij się, że masz świadomość ograniczeń warstwy przedstawionych na stronie z [Cennik Notification Hubs] .
 
 Nasi klienci używają Notification Hubs do wysyłania milionów powiadomień wypychanych codziennie. Nie trzeba wykonywać żadnych specjalnych czynności, aby skalować zasięg powiadomień wypychanych, o ile korzystasz z usługi Azure Notification Hubs.
 
@@ -135,7 +127,7 @@ Przestrzenie nazw mogą być używane do grupowania wdrożenia. Mogą one równi
 
 #### <a name="geo-distribution"></a>Dystrybucja geograficzna
 
-Dystrybucja geograficzna nie zawsze ma krytyczne znaczenie w scenariuszach powiadomień wypychanych. Różne PNSes (na przykład APNS lub FCM), które dostarczają powiadomienia wypychane do urządzeń nie są równomiernie dystrybuowane.
+Dystrybucja geograficzna nie zawsze ma krytyczne znaczenie w scenariuszach powiadomień wypychanych. Różne PNSes (na przykład APNs lub FCM), które dostarczają powiadomienia wypychane do urządzeń nie są równomiernie dystrybuowane.
 
 Jeśli masz aplikację, która jest używana globalnie, możesz utworzyć centra w różnych obszarach nazw za pomocą usługi Notification Hubs w różnych regionach świadczenia usługi Azure na całym świecie.
 
@@ -157,7 +149,7 @@ Wszystkie powiadomienia są dostarczane do urządzeń docelowych za pomocą PNS 
 Wszystkie połączenia, od nadawcy do usługi Azure Notification Hubs do PNS, używają protokołu HTTPS.
 
 > [!NOTE]
-> Usługa Azure Notification Hubs nie rejestruje w żaden sposób ładunku komunikatów.
+> Usługa Azure Notification Hubs nie rejestruje ładunku komunikatów.
 
 Aby wysyłać poufne ładunki, zalecamy użycie bezpiecznego wzorca wypychania. Nadawca dostarcza powiadomienie ping z identyfikatorem komunikatu do urządzenia bez poufnego ładunku. Gdy aplikacja na urządzeniu odbiera ładunek, aplikacja wywołuje bezpieczny interfejs API bezpośrednio, aby pobrać szczegóły komunikatu. Aby zapoznać się z przewodnikiem dotyczącym implementowania tego wzorca, przejdź do strony [Samouczek bezpiecznego wypychania Notification Hubs] .
 
@@ -207,9 +199,8 @@ Możesz również programowo uzyskać dostęp do metryk. Aby uzyskać więcej in
 - [Pobieranie metryk i dzienników aktywności dla zasobu](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Przewodnik po interfejsie API REST usługi Azure Monitoring](../azure-monitor/platform/rest-api-walkthrough.md)
 
-
 > [!NOTE]
-> Pomyślne powiadomienia oznaczają, że powiadomienia wypychane zostały dostarczone do zewnętrznego PNS (na przykład APN dla firmy Apple lub FCM for Google). Jest odpowiedzialny za PNS do dostarczania powiadomień do urządzeń docelowych. Zazwyczaj PNS nie ujawnia metryk dostarczania podmiotom trzecim.  
+> Pomyślne powiadomienia oznaczają, że powiadomienia wypychane zostały dostarczone do zewnętrznego PNS (na przykład APN dla systemów iOS i macOS lub FCM dla urządzeń z systemem Android). Jest odpowiedzialny za PNS do dostarczania powiadomień do urządzeń docelowych. Zazwyczaj PNS nie ujawnia metryk dostarczania podmiotom trzecim.  
 
 [Azure Portal]: https://portal.azure.com
 [Cennik Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
@@ -226,5 +217,4 @@ Możesz również programowo uzyskać dostęp do metryk. Aby uzyskać więcej in
 [Eksportowanie/Importowanie rejestracji]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
-[Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[Cennik usługi App Service]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

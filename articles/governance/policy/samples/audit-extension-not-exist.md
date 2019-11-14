@@ -1,21 +1,18 @@
 ---
-title: Próbkowanie — Inspekcja, jeśli rozszerzenie nie istnieje
-description: Ta przykładowa definicja zasad przeprowadza inspekcję, jeśli rozszerzenie nie zostało wdrożone z maszyną wirtualną.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
+title: Przykład — sprawdzanie, czy rozszerzenie nie istnieje
+description: Te przykładowe definicje zasad sprawdzają, czy rozszerzenie nie zostało wdrożone z maszyną wirtualną.
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 04f4a65eb0e029800868650e64489d82e919c6c0
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 72d7728ef89678998a5fc3726d643142e3842635
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977422"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74071447"
 ---
-# <a name="sample---audit-if-extension-does-not-exist"></a>Próbkowanie — Inspekcja, jeśli rozszerzenie nie istnieje
+# <a name="sample---audit-if-extension-does-not-exist"></a>Przykład — sprawdzanie, czy rozszerzenie nie istnieje
 
-Ta zasada przeprowadza inspekcję, jeśli rozszerzenie nie zostało wdrożone z maszyną wirtualną. Należy określić wydawcę rozszerzenia i typ, aby sprawdzić, czy został on wdrożony.
+Te zasady sprawdzają, czy rozszerzenie nie zostało wdrożone z maszyną wirtualną. Należy określić typ i wydawcę rozszerzenia, aby sprawdzić, czy zostało ono wdrożone.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,11 +20,11 @@ Ta zasada przeprowadza inspekcję, jeśli rozszerzenie nie zostało wdrożone z 
 
 [!code-json[main](../../../../policy-templates/samples/compute/audit-vm-extension/azurepolicy.json "Audit if extension does not exist")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Faudit-vm-extension%2Fazurepolicy.json)
+[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Faudit-vm-extension%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -40,7 +37,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -pub
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +55,7 @@ az policy definition create --name 'audit-vm-extension' --display-name 'Audit if
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-vm-extension"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
