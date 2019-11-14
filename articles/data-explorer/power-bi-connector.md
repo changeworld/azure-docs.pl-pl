@@ -3,16 +3,16 @@ title: Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azur
 description: 'W tym artykule dowiesz się, jak użyć jednej z trzech opcji wizualizacji danych w Power BI: Łącznik Power BI dla platformy Azure Eksplorator danych.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349144"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024210"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla Power BI
 
@@ -69,7 +69,7 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
 
 1. Na ekranie **Nawigator** rozwiń bazę danych **Samples**, wybierz pozycję **StormEvents**, a następnie pozycję **Edytuj**.
 
-    ![Wybierz tabelę](media/power-bi-connector/select-table.png)
+    ![Wybieranie tabeli](media/power-bi-connector/select-table.png)
 
     W edytorze Power Query zostanie otwarta tabela, w której przed zaimportowaniem danych można edytować wiersze i kolumny.
 

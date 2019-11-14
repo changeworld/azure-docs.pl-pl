@@ -1,14 +1,14 @@
 ---
 title: Etapy wdrażania strategii
 description: Zapoznaj się z instrukcjami Azure Blueprint usług, które przechodzą przez proces wdrażania.
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960521"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048609"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Etapy wdrażania strategii
 
@@ -25,7 +25,7 @@ Wdrożenie planu jest wyzwalane przez przypisanie planu do subskrypcji lub [zakt
 
 ## <a name="blueprints-granted-owner-rights"></a>Plany przyznane praw właściciela
 
-Nazwa główna usługi planów platformy Azure otrzymuje prawa właściciela do przypisanej subskrypcji lub subskrypcji. Przyznana rola pozwala na tworzenie i późniejsze odwoływanie się do [tożsamości zarządzanej przypisanej do systemu](../../../active-directory/managed-identities-azure-resources/overview.md).
+Nazwa główna usługi planów platformy Azure ma uprawnienia właściciela przypisanej subskrypcji lub subskrypcji, gdy zostanie użyta tożsamość zarządzana [tożsamości zarządzanej przez system](../../../active-directory/managed-identities-azure-resources/overview.md) . Przyznana rola pozwala na tworzenie i późniejsze odwoływanie się do tożsamości zarządzanej **przypisanej do systemu** . Jeśli jest używana tożsamość zarządzana **przypisana przez użytkownika** , jednostka usługi Azure Planes nie jest pobierana i nie wymaga praw właściciela subskrypcji.
 
 Prawa są przyznawane automatycznie, jeśli przypisanie odbywa się za pomocą portalu. Jednak jeśli przypisanie odbywa się za pomocą interfejsu API REST, przyznanie praw musi zostać wykonane przy użyciu oddzielnego wywołania interfejsu API. Identyfikator AppId Azure Blueprint jest `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale jednostka usługi różni się w zależności od dzierżawy. Aby uzyskać nazwę główną usługi, użyj [Azure Active Directory interfejs API programu Graph](../../../active-directory/develop/active-directory-graph-api.md) i [serviceprincipals](/graph/api/resources/serviceprincipal) punktu końcowego. Następnie należy przydzielić roli _właściciela_ na platformę Azure za pomocą [portalu](../../../role-based-access-control/role-assignments-portal.md), [interfejsu](../../../role-based-access-control/role-assignments-rest.md) [wiersza polecenia platformy Azure](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)lub [szablonu Menedżer zasobów](../../../role-based-access-control/role-assignments-template.md).
 
@@ -35,7 +35,7 @@ Usługa plany nie wdraża bezpośrednio zasobów.
 
 Użytkownik, Grupa lub jednostka usługi przypisuje plan do subskrypcji. Obiekt przypisania istnieje na poziomie subskrypcji, do którego przypisano plan. Zasoby utworzone przez wdrożenie nie są wykonywane w kontekście wdrożenia jednostki.
 
-Podczas tworzenia przypisania planu jest wybierany typ [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) . Wartością domyślną jest tożsamość zarządzana **przypisana przez system** . Można wybrać tożsamość zarządzaną **przypisaną przez użytkownika** . W przypadku korzystania z tożsamości zarządzanej **przypisanej przez użytkownika** przed utworzeniem przypisania strategii należy zdefiniować i przyznać uprawnienia.
+Podczas tworzenia przypisania planu jest wybierany typ [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) . Wartością domyślną jest tożsamość zarządzana **przypisana przez system** . Można wybrać tożsamość zarządzaną **przypisaną przez użytkownika** . W przypadku korzystania z tożsamości zarządzanej **przypisanej przez użytkownika** przed utworzeniem przypisania strategii należy zdefiniować i przyznać uprawnienia. Role wbudowanego operatora [i](../../../role-based-access-control/built-in-roles.md#owner) [operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) planu mają uprawnienia `blueprintAssignment/write` niezbędne do utworzenia przypisania, które korzysta z tożsamości zarządzanej **przypisanej przez użytkownika** .
 
 ## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Opcjonalne-plany tworzą tożsamość zarządzaną przypisaną przez system
 

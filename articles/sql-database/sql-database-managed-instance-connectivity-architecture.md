@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1f5f5f2064baa4b2821ccb7b9a2237e6aeeb86f5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820476"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048772"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
 
@@ -110,7 +110,7 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 |mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
 
 > [!IMPORTANT]
-> Upewnij się, że istnieje tylko jedna Reguła ruchu przychodzącego dla portów 9000, 9003, 1438, 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Inicjowanie obsługi administracyjnej wystąpienia zarządzanego przy użyciu wdrożeń Azure Resource Manager zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są konfigurowane osobno dla każdego portu. Jeśli te porty są w oddzielnych regułach, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
+> Upewnij się, że istnieje tylko jedna Reguła ruchu przychodzącego dla portów 9000, 9003, 1438, 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 443, 12000. Inicjowanie obsługi administracyjnej wystąpienia zarządzanego przy użyciu wdrożeń Azure Resource Manager zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są konfigurowane osobno dla każdego portu. Jeśli te porty są w oddzielnych regułach, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI podsieć odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
 

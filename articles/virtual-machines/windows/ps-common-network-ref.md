@@ -1,5 +1,5 @@
 ---
-title: Typowe polecenia programu PowerShell dla sieci wirtualnych platformy Azure | Microsoft Docs
+title: Typowe polecenia programu PowerShell dla usługi Azure Virtual Networks
 description: Typowe polecenia programu PowerShell umożliwiające rozpoczęcie tworzenia sieci wirtualnej i skojarzonych z nią zasobów maszyn wirtualnych.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: d7ab705291b8705994aed96f1d270f792e4b2fb0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3abde706ddff297094c7fbb1579b534894b349d2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102543"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032919"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Typowe polecenia programu PowerShell dla usługi Azure Virtual Networks
 
@@ -45,7 +45,7 @@ Niektóre zmienne mogą być przydatne w przypadku uruchamiania więcej niż jed
 | Tworzenie sondy |$healthProbe = [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) -Name "RequestPath" healthProbe. aspx "-Protocol HTTP-port 80-IntervalInSeconds 15-ProbeCount 2<BR><BR>Zawiera sondy kondycji używane do sprawdzania dostępności wystąpień maszyn wirtualnych w puli adresów zaplecza. |
 | Tworzenie reguły równoważenia obciążenia |$lbRule = [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80<BR><BR>Zawiera reguły przypisujące port publiczny modułu równoważenia obciążenia do portu w puli adresów zaplecza. |
 | Tworzenie reguły NAT dla ruchu przychodzącego |$inboundNATRule = [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) -Name "myInboundRule1"-elementu frontendipconfiguration $FrontendIP-Protocol TCP-FrontendPort 3441-BackendPort 3389<BR><BR>Zawiera reguły mapowania portu publicznego modułu równoważenia obciążenia na port określonej maszyny wirtualnej w puli adresów zaplecza. |
-| Tworzenie modułu równoważenia obciążenia |$loadBalancer = [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $MyResourceGroup-Name "myLoadBalancer"-Location $Location-elementu frontendipconfiguration $FrontendIP-InboundNatRule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $ beAddressPool $healthProbe sondy |
+| Tworzenie modułu równoważenia obciążenia |$loadBalancer = [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $MyResourceGroup-Name "myLoadBalancer" $location-elementu frontendipconfiguration $FrontendIP-InboundNatRule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $BeAddressPool-probe $healthProbe |
 | Tworzenie interfejsu sieciowego |$nic 1 = [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-Name "myNIC" — Lokalizacja $Location-PrivateIpAddress XX. X. X. X-Subnet $subnet 2-LoadBalancerBackendAddressPool $loadBalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $loadBalancer. InboundNatRules [0]<BR><BR>Utwórz interfejs sieciowy przy użyciu publicznego adresu IP i podsieci sieci wirtualnej, która została wcześniej utworzona. |
 
 ## <a name="get-information-about-network-resources"></a>Uzyskaj informacje o zasobach sieciowych

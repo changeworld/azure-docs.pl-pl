@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820634"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049026"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Programowanie przy użyciu interfejsów API Media Services v3
 
@@ -122,7 +122,7 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 |[Zestaw SDK platformy .NET](https://aka.ms/ams-v3-dotnet-sdk)|[Dokumentacja platformy .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Zestaw SDK Java](https://aka.ms/ams-v3-java-sdk)|[Dokumentacja języka Java](https://aka.ms/ams-v3-java-ref)|
 |[Zestaw SDK dla języka Python](https://aka.ms/ams-v3-python-sdk)|[Dokumentacja języka Python](https://aka.ms/ams-v3-python-ref)|
-|[Zestaw SDK dla platformy Node.js](https://aka.ms/ams-v3-nodejs-sdk) |[Dokumentacja środowiska Node.js](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Zestaw SDK dla platformy Node.js](https://aka.ms/ams-v3-nodejs-sdk) |[Dokumentacja środowiska Node.js](/javascript/api/overview/azure/mediaservices/management)| 
 |[Zestaw SDK dla języka Go](https://aka.ms/ams-v3-go-sdk) |[Dokumentacja języka Go](https://aka.ms/ams-v3-go-ref)|
 |[Zestaw SDK dla języka Ruby](https://aka.ms/ams-v3-ruby-sdk)||
 

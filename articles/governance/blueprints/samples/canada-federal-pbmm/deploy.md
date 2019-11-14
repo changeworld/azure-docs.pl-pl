@@ -1,18 +1,14 @@
 ---
 title: Przykładowa strategia Federal PBMM Canada — wdrażanie kroków
 description: Wdróż kroki dla przykładu Federalnej usługi PBMM w Kanadzie, w tym szczegóły parametru artefaktu.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 22806f497283c1885446eadd5f444dacf3769c12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 788c52ee9a2bf9a0a2c506c2a34d221ff08bd0af
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163324"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038411"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Wdróż przykłady planu PBMM federalnego Kanady
 
@@ -97,10 +93,10 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 
 Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux |Przypisywanie zasad |Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Linux |Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu |Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: `[]` |
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu |Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: `[]` |
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows |Przypisywanie zasad |Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Windows |Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux |Przypisywanie zasad |Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Linux |Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu |Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: `[]` |
+|\[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu |Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: `[]` |
+|\[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs |Przypisywanie zasad |Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Windows |Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 |\[wersja zapoznawcza\]: Inspekcja federalnych kontrolek PBMM w Kanadzie i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji |Przypisywanie zasad |Log Analytics identyfikator obszaru roboczego, dla którego należy skonfigurować maszyny wirtualne |To jest identyfikator (GUID) obszaru roboczego Log Analytics, dla którego należy skonfigurować maszyny wirtualne. |
 |\[wersja zapoznawcza\]: Inspekcja federalnych kontrolek PBMM w Kanadzie i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji |Przypisywanie zasad |Lista typów zasobów, dla których włączono obsługę dzienników diagnostycznych |Lista typów zasobów, które mają być objęte inspekcją, jeśli ustawienie dziennika diagnostycznego nie jest włączone. Akceptowalne wartości można znaleźć Azure Monitor w obszarze [schematy dzienników diagnostycznych](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
 |\[wersja zapoznawcza\]: Inspekcja federalnych kontrolek PBMM w Kanadzie i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji |Przypisywanie zasad |Grupa administratorów |Group. Przykład: `Administrator; myUser1; myUser2` |
@@ -116,10 +112,10 @@ Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 Po przejrzeniu kroków związanych z wdrożeniem przykładowej PBMM Federalnej Kanady zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat mapowania i kontroli:
 
 > [!div class="nextstepaction"]
-> [Plany federalnego PBMMego Kanady — omówienie](./index.md)
-> [Kanada Federal PBMM Planes-Control Mapping](./control-mapping.md)
+> [Plany federalnych PBMMów Kanady — omówienie](./index.md)
+> [Kanady federalnych planów PBMM — Mapowanie formantów](./control-mapping.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

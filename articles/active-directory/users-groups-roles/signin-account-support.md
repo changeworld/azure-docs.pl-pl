@@ -1,39 +1,39 @@
 ---
-title: Jak sprawdzić, jeśli na stronie logowania usługi Azure AD akceptuje kont Microsoft | Dokumentacja firmy Microsoft
-description: Jak na ekranie komunikatów odzwierciedla wyszukiwanie nazwy użytkownika podczas logowania
+title: Czy moja strona logowania do usługi Azure AD akceptuje konta Microsoft | Microsoft Docs
+description: Jak komunikaty na ekranie odzwierciedlają wyszukiwanie nazw użytkowników podczas logowania
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 221ab7c50a84650f1b2adf3fdb2b284365795f42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468221"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024280"
 ---
-# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Opcje logowania dla konta Microsoft w usłudze Azure Active Directory
+# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Opcje logowania dla kont Microsoft w Azure Active Directory
 
-Strony logowania usługi Microsoft 365 dla usługi Azure Active Directory (Azure AD) obsługuje konta służbowe ani służbowych i kont Microsoft, ale w zależności od ewentualne problemy użytkownika, może to być jednej lub drugiej lub oba. Na przykład strony logowania usługi Azure AD obsługuje:
+Strona logowania Microsoft 365 dla Azure Active Directory (Azure AD) obsługuje konta służbowe i konta Microsoft, ale w zależności od sytuacji użytkownika może to być jeden lub drugi lub oba te elementy. Na przykład strona logowania usługi Azure AD obsługuje:
 
-* Aplikacje, które akceptują logowania z obu typów kont
-* Organizacje, które akceptują gości
+* Aplikacje akceptujące logowania z obu typów kont
+* Organizacje akceptujące Gości
 
-## <a name="identification"></a>Identyfikacja
-Aby sprawdzić, czy strony logowania, której używa Twoja organizacja obsługuje konta Microsoft, analizując tekst wskazówki w polu Nazwa użytkownika. Jeśli tekst wskazówki mówi "Wiadomości E-mail, telefon lub Skype", strona logowania obsługuje konta Microsoft.
+## <a name="identification"></a>Identyfikatora
+Możesz określić, czy strona logowania używana przez organizację obsługuje konta Microsoft, przeglądając tekst wskazówki w polu Nazwa użytkownika. Jeśli tekst wskazówki brzmi "Poczta E-mail, telefon lub Skype", Strona logowania obsługuje konta Microsoft.
 
-![Różnica między strony logowania konta](./media/signin-account-support/ui-prompt.png)
+![Różnica między stronami logowania na koncie](./media/signin-account-support/ui-prompt.png)
 
-[Dodatkowe opcje logowania działają tylko w przypadku osobistych kont Microsoft](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , ale nie można użyć do logowania do zasobów konta służbowego.
+[Dodatkowe opcje logowania działają tylko dla osobistych kont Microsoft](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , ale nie można ich używać do logowania się do zasobów konta służbowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dostosowywanie logowania znakowanie](../fundamentals/add-custom-domain.md)
+[Dostosuj znakowanie logowania](../fundamentals/add-custom-domain.md)

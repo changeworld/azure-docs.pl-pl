@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa — program Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu PowerShell
+title: 'Szybki Start: Tworzenie usługa Load Balancer w warstwie Standardowa-Azure PowerShell'
+titleSuffix: Azure Load Balancer
+description: Ten przewodnik Szybki Start przedstawia sposób tworzenia usługa Load Balancer w warstwie Standardowa przy użyciu Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 0e00728e091a7d7d96cb624135519b17524d2227
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274110"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049109"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell
+# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Szybki Start: Tworzenie usługa Load Balancer w warstwie Standardowa przy użyciu Azure PowerShell
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell. Aby przetestować moduł równoważenia obciążenia, należy wdrożyć trzy maszyny wirtualne z systemem Windows Server i zrównoważyć obciążenie aplikacji sieci Web między maszynami wirtualnymi. Aby dowiedzieć się więcej na temat usługi Load Balancer w warstwie Standardowa, zobacz [Co to jest usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
@@ -298,7 +298,7 @@ Utworzenie i skonfigurowanie trzech maszyn wirtualnych może potrwać kilka minu
 
 Zainstaluj usługi IIS przy użyciu niestandardowej strony internetowej na obu maszynach wirtualnych zaplecza w następujący sposób:
 
-1. Pobierz publiczne adresy IP z trzech maszyn wirtualnych przy użyciu `Get-AzPublicIPAddress`programu.
+1. Pobierz publiczne adresy IP z trzech maszyn wirtualnych przy użyciu `Get-AzPublicIPAddress`.
 
    ```azurepowershell
      $vm1_rdp_ip = (Get-AzPublicIPAddress -ResourceGroupName $rgName -Name "RdpPublicIP_1").IpAddress

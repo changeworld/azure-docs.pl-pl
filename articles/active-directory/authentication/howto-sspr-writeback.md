@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a16ad3c571086a73a2aae192fb2d00bce4d5f9
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808155"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021775"
 ---
 # <a name="how-to-configure-password-writeback"></a>Instrukcje: Konfigurowanie zapisywania zwrotnego haseł
 
@@ -99,7 +99,7 @@ Aby skonfigurować odpowiednie uprawnienia do zapisywania zwrotnego haseł, wyko
     * **PwdLastSet zapisu**
 9. Wybierz pozycję **Zastosuj/OK** , aby zastosować zmiany i zamknąć wszystkie otwarte okna dialogowe.
 
-Ze względu na to, że źródło urzędu jest lokalnie, zasady złożoności haseł są stosowane z tego samego połączonego źródła danych. Upewnij się, że zostały zmienione istniejące zasady grupy dla "Minimalna długość hasła". Zasady grupy nie powinny mieć wartości 1, co oznacza, że hasło powinno mieć co najmniej dzień starego, zanim będzie można je zaktualizować. Musisz upewnić się, że jest ustawiona na 0. Te ustawienia można znaleźć w `gpmc.msc` w obszarze **Konfiguracja komputera > zasady > ustawienia systemu Windows > ustawienia zabezpieczeń > zasad konta**. Uruchom `gpupdate /force`, aby upewnić się, że zmiana zacznie obowiązywać. 
+Ze względu na to, że źródło urzędu jest lokalnie, zasady złożoności haseł są stosowane z tego samego połączonego źródła danych. Upewnij się, że zostały zmienione istniejące zasady grupy dla "minimalnego wieku hasła". Zasady grupy nie powinny mieć wartości 1, co oznacza, że hasło powinno mieć co najmniej dzień starego, zanim będzie można je zaktualizować. Musisz upewnić się, że jest ustawiona na 0. Te ustawienia można znaleźć w `gpmc.msc` w obszarze **Konfiguracja komputera > zasady > ustawienia systemu Windows > ustawienia zabezpieczeń > zasad konta**. Uruchom `gpupdate /force`, aby upewnić się, że zmiana zacznie obowiązywać. 
 
 ## <a name="next-steps"></a>Następne kroki
 

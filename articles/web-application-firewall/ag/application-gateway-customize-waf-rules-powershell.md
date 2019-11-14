@@ -1,20 +1,21 @@
 ---
-title: Dostosowywanie reguł zapory aplikacji sieci Web w usłudze Azure Application Gateway — PowerShell
+title: Dostosowywanie reguł przy użyciu programu PowerShell
+titleSuffix: Azure Web Application Firewall
 description: Ten artykuł zawiera informacje dotyczące sposobu dostosowywania reguł zapory aplikacji sieci Web w Application Gateway przy użyciu programu PowerShell.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 2930204cd322f3a8ba25eb6f3455a51f1d3d2ee9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516957"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048504"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>Dostosowywanie reguł zapory aplikacji internetowych za poorednictwem programu PowerShell
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>Dostosowywanie reguł zapory aplikacji sieci Web przy użyciu programu PowerShell
 
 Zapora aplikacji sieci Web Application Gateway Azure (WAF) zapewnia ochronę aplikacji sieci Web. Te zabezpieczenia są udostępniane przez zestaw reguł programu Open Web Application Security (OWASP) Core (KSR). Niektóre reguły mogą spowodować fałszywie dodatnie i blokować rzeczywisty ruch. Z tego powodu Application Gateway oferuje możliwość dostosowywania grup reguł i reguł. Aby uzyskać więcej informacji na temat określonych grup reguł i reguł, zobacz [Lista zasad i reguł reguł KSR aplikacji sieci Web](application-gateway-crs-rulegroups-rules.md).
 

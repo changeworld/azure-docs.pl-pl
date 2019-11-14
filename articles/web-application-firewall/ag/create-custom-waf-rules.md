@@ -1,18 +1,19 @@
 ---
-title: Tworzenie niestandardowych reguł zapory aplikacji sieci Web (WAF) v2 i korzystanie z nich
+title: Tworzenie i używanie reguł niestandardowych w wersji 2
+titleSuffix: Azure Web Application Firewall
 description: Ten artykuł zawiera informacje dotyczące sposobu tworzenia niestandardowych reguł zapory aplikacji sieci Web (WAF) v2 na platformie Azure Application Gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d8ba105e15a825b6b53d941ed2f3847fa597d538
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4efa60a48a540efdd835b106afa5872057ae3d53
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516658"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046412"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Tworzenie i używanie reguł niestandardowych zapory aplikacji sieci Web w wersji 2 na Application Gateway
 

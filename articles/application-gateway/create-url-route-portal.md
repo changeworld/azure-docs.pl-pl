@@ -1,18 +1,18 @@
 ---
-title: Samouczek — Tworzenie bramy aplikacji przy użyciu reguł routingu opartych na ścieżkach URL — Azure Portal
+title: 'Samouczek: Reguły routingu oparte na ścieżkach URL przy użyciu portalu — Application Gateway platformy Azure'
 description: W ramach tego samouczka nauczysz się tworzyć reguły routingu oparte na ścieżkach URL dla bramy aplikacji i zestawu skalowania maszyn wirtualnych przy użyciu Azure Portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2cb21eb98e698ab44d73ada195fdcb7d7aac8839
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bc810ac7901d83f03d3f3ac2199561225326d261
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844640"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048138"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Samouczek: Tworzenie bramy aplikacji z regułami routingu opartymi na ścieżce przy użyciu Azure Portal
 
@@ -47,7 +47,7 @@ W tym przykładzie utworzysz trzy maszyny wirtualne, które będą używane jako
 
     - W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową**, a następnie wpisz *myResourceGroupAG*.
     - **Nazwa maszyny wirtualnej**: *myVM1*
-    - **Region**: *Prześlij Wschodnie stany USA*
+    - **Region**: *(US) Wschodnie stany USA*
     - **Nazwa użytkownika**: *azureuser*
     - **Hasło**: *Azure123456!*
 
@@ -62,9 +62,9 @@ W tym przykładzie utworzysz trzy maszyny wirtualne, które będą używane jako
    - *10.0.1.0/24* — jako przestrzeni adresowej podsieci.
    - *myAGSubnet* — dla drugiej nazwy podsieci.
    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
-7. Kliknij przycisk **OK**.
+7. Wybierz **OK**.
 
-8. Upewnij się, że w obszarze **interfejs sieciowy**został wybrany **myBackendSubnet** dla podsieci, a następnie **wybierz pozycję Dalej: Zarządzanie**.
+8. Upewnij się, że w obszarze **interfejs sieciowy**został wybrany **myBackendSubnet** dla podsieci, a następnie wybierz pozycję **Dalej: Zarządzanie**.
 9. Wybierz pozycję **wyłączone** , aby wyłączyć diagnostykę rozruchu.
 10. Kliknij przycisk **Przegląd + Utwórz**, przejrzyj ustawienia na stronie Podsumowanie, a następnie wybierz pozycję **Utwórz**.
 11. Utwórz dwie więcej maszyn wirtualnych, *myVM2* i *myVM3* , a następnie umieść je w sieci wirtualnej *MyVNet* i w podsieci *myBackendSubnet* .
@@ -103,15 +103,15 @@ W tym przykładzie utworzysz trzy maszyny wirtualne, które będą używane jako
 
 1. Na karcie **podstawowe** wprowadź następujące wartości następujących ustawień bramy aplikacji:
 
-   - **Grupa zasobów**: wybierz **myResourceGroupAG** jako grupę zasobów.
+   - **Grupa zasobów**: wybierz pozycję **myResourceGroupAG** dla grupy zasobów.
    - **Nazwa bramy aplikacji**: wprowadź *myAppGateway* jako nazwę bramy aplikacji.
    - **Region** — wybierz pozycję **US (Stany Zjednoczone)** .
 
-        ![Utwórz nową bramę aplikacji: Ustawienia podstawowe](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+        ![Utwórz nową bramę aplikacji: podstawowe](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  W obszarze **Konfigurowanie sieci wirtualnej**wybierz pozycję **myVNet** , aby określić nazwę sieci wirtualnej.
 3. Wybierz pozycję **myAGSubnet** dla podsieci.
-3. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **dalej: Frontony**.
+3. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Next (dalej): frontony**.
 
 ### <a name="frontends-tab"></a>Karta frontonów
 
@@ -121,7 +121,7 @@ W tym przykładzie utworzysz trzy maszyny wirtualne, które będą używane jako
    > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Konfiguracja prywatnego adresu IP frontonu nie jest obecnie włączona dla tej jednostki SKU w wersji 2.
 
 2. Wybierz opcję **Utwórz nowy** dla **publicznego adresu IP** i wprowadź *MYAGPUBLICIPADDRESS* dla nazwy publicznego adresu IP, a następnie wybierz przycisk **OK**. 
-3. Wybierz opcję **Dalej: Zakończenie**.
+3. Wybierz pozycję **Dalej: nadkończenie**.
 
 ### <a name="backends-tab"></a>Karta zakończyła się
 
@@ -131,7 +131,7 @@ Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które obsł
 
 2. W otwartym oknie **Dodawanie puli zaplecza** wprowadź następujące wartości, aby utworzyć pustą pulę zaplecza:
 
-    - **Nazwa**: Wprowadź *myBackendPool* jako nazwę puli zaplecza.
+    - **Nazwa**: wprowadź *myBackendPool* jako nazwę puli zaplecza.
 3. W obszarze **obiekty docelowe zaplecza** **Wybierz**pozycję **maszyna wirtualna** z listy rozwijanej.
 
 5. W obszarze **cel** wybierz interfejs sieciowy dla **myVM1**.
@@ -139,7 +139,7 @@ Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które obsł
 7. Powtórz to polecenie, aby dodać do zestawu *obrazów* pulę zaplecza z *myVM2* jako element docelowy oraz pulę zaplecza *wideo* z *myVM3* jako obiektem docelowym.
 8. Wybierz pozycję **Dodaj** , aby zapisać konfigurację puli zaplecza i powrócić **do karty** zaplecze.
 
-4. Na karcie **nadkończenie** wybierz pozycję **dalej: Konfiguracja**.
+4. Na karcie **zakończyło** się wybierz pozycję **Dalej: Konfiguracja**.
 
 ### <a name="configuration-tab"></a>Karta Konfiguracja
 
@@ -151,9 +151,9 @@ Na karcie **Konfiguracja** zostanie nawiązane połączenie frontonu i puli zapl
 
 3. Reguła routingu wymaga odbiornika. Na karcie **odbiornik** w oknie **Dodawanie reguły routingu** wprowadź następujące wartości dla odbiornika:
 
-    - **Nazwa odbiornika**: Wprowadź *dla* nazwy odbiornika.
-    - **Adres IP frontonu**: Wybierz pozycję **Public (publiczny** ), aby wybrać publiczny adres IP utworzony dla frontonu.
-    - **Port**: Typ *8080*
+    - **Nazwa odbiornika** *: Wprowadź nazwę* odbiornika.
+    - **Adres IP frontonu**: wybierz opcję **publiczny** , aby wybrać publiczny adres IP utworzony dla frontonu.
+    - **Port**: type *8080*
   
         Zaakceptuj wartości domyślne pozostałych ustawień na karcie **odbiornik** , a następnie wybierz kartę **cele zaplecza** , aby skonfigurować resztę reguły routingu.
 
@@ -170,10 +170,10 @@ Na karcie **Konfiguracja** zostanie nawiązane połączenie frontonu i puli zapl
 12. Wybierz pozycję **Dodaj** , aby zapisać regułę ścieżki i wrócić do karty **Dodawanie reguły routingu** .
 13. Powtarzaj, aby dodać kolejną regułę dla filmu wideo.
 14. Wybierz pozycję **Dodaj** , aby dodać regułę routingu i powrócić do karty **Konfiguracja** .
-15. Wybierz opcję **Dalej: Tagi** , a **następnie następne: Przejrzyj i Utwórz**.
+15. Wybierz pozycję **Dalej: Tagi** , a następnie kliknij przycisk **Dalej: przegląd + Utwórz**.
 
 > [!NOTE]
-> Nie trzeba dodawać niestandardowej */* reguły ścieżki * do obsługi domyślnych przypadków. Jest to automatycznie obsługiwane przez domyślną pulę zaplecza.
+> Nie musisz dodawać niestandardowej reguły ścieżki */* *, aby obsługiwać domyślne przypadki. Jest to automatycznie obsługiwane przez domyślną pulę zaplecza.
 
 ### <a name="review--create-tab"></a>Przejrzyj i Utwórz kartę
 
@@ -192,13 +192,13 @@ Przejrzyj ustawienia na karcie **Przegląd + tworzenie** , a następnie wybierz 
 
    Odbiornik na porcie 8080 kieruje to żądanie do domyślnej puli zaplecza.
 
-3. Zmień adres URL na *http://&lt;IP-Address&gt;: 8080/images/test.htm*, zastępując &lt;adres&gt; IP adresem IP, a powinien wyglądać podobnie do następującego przykładu:
+3. Zmień adres URL *http://&lt;IP-address&gt;: 8080/images/test.htm*, zastępując &lt;adres IP&gt; adresem IP, a powinien wyglądać podobnie do poniższego przykładu:
 
     ![Testowanie adresu URL obrazów w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
    Odbiornik na porcie 8080 kieruje to żądanie do puli zaplecza *obrazów* .
 
-4. Zmień adres URL na *http://&lt;IP-Address&gt;: 8080/Video/test.htm*, zastępując &lt;adres&gt; IP adresem IP, a powinien wyglądać podobnie do następującego przykładu:
+4. Zmień adres URL *http://&lt;IP-address&gt;: 8080/Video/test.htm*, zastępując &lt;adres IP&gt; adresem IP, a powinien wyglądać podobnie do poniższego przykładu:
 
     ![Testowanie adresu URL wideo w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 

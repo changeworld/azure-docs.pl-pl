@@ -1,10 +1,11 @@
 ---
-title: Zarządzanie kontami administratorów dostępu awaryjnego — Azure Active Directory | Microsoft Docs
+title: Zarządzanie kontami administratorów dostępu awaryjnego — Azure AD | Microsoft Docs
 description: W tym artykule opisano sposób korzystania z kont dostępu awaryjnego w celu zapobiegania niezamierzonemu blokowaniu organizacji usługi Azure Active Directory (Azure AD).
 services: active-directory
 author: markwahl-msft
+manager: daveba
 ms.author: curtand
-ms.date: 09/09/2019
+ms.date: 11/08/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04016df86a9bed06f2cbb79d459b10486a9b7d67
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772438"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028125"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Zarządzanie kontami dostępu awaryjnego w usłudze Azure AD
 
@@ -38,7 +39,7 @@ Organizacja może potrzebować używania konta dostępu awaryjnego w następują
 
 ## <a name="create-emergency-access-accounts"></a>Tworzenie kont dostępu awaryjnego
 
-Utwórz dwa lub więcej kont dostępu awaryjnego. Konta te powinny być kontami tylko w chmurze, które \*korzystają z domeny. onmicrosoft.com, które nie są federacyjne ani synchronizowane z poziomu środowiska lokalnego.
+Utwórz dwa lub więcej kont dostępu awaryjnego. Konta te powinny być kontami tylko w chmurze, które korzystają z domeny \*. onmicrosoft.com, które nie są federacyjne ani synchronizowane z poziomu środowiska lokalnego.
 
 Podczas konfigurowania tych kont muszą zostać spełnione następujące wymagania:
 
@@ -51,7 +52,7 @@ Podczas konfigurowania tych kont muszą zostać spełnione następujące wymagan
 
 Aby zmniejszyć ryzyko ataku wynikającego z złamanego hasła, usługa Azure AD zaleca, aby wymagać uwierzytelniania wieloskładnikowego dla wszystkich poszczególnych użytkowników. Ta grupa zawiera administratorów i wszystkich innych użytkowników (na przykład funkcjonariuszy finansów), których naruszone konto miałoby znaczący wpływ.
 
-Co więcej, co najmniej jeden z kont dostępu awaryjnego nie powinien mieć tego samego mechanizmu usługi uwierzytelniania wieloskładnikowego co inne konta niekrytyczne. Obejmuje to rozwiązania do uwierzytelniania wieloskładnikowego innych firm. Jeśli masz zasady dostępu warunkowego, aby wymagać [uwierzytelniania wieloskładnikowego dla każdego administratora](../authentication/howto-mfa-userstates.md) usługi Azure AD i innych aplikacji połączonych oprogramowania jako usługi (SaaS), należy wykluczyć z tego wymagania konta dostępu awaryjnego i skonfigurować Zamiast tego inny mechanizm. Ponadto należy się upewnić, że konta nie mają zasad uwierzytelniania wieloskładnikowego dla poszczególnych użytkowników.
+Co więcej, co najmniej jeden z kont dostępu awaryjnego nie powinien mieć tego samego mechanizmu usługi uwierzytelniania wieloskładnikowego co inne konta niekrytyczne. Obejmuje to rozwiązania do uwierzytelniania wieloskładnikowego innych firm. Jeśli masz zasady dostępu warunkowego, aby wymagać [uwierzytelniania wieloskładnikowego dla każdego administratora](../authentication/howto-mfa-userstates.md) usługi Azure AD i innych aplikacji połączonych oprogramowania jako usługi (SaaS), należy wykluczyć z tego wymagania konta dostępu awaryjnego i skonfigurować inny mechanizm. Ponadto należy się upewnić, że konta nie mają zasad uwierzytelniania wieloskładnikowego dla poszczególnych użytkowników.
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Wyklucz co najmniej jedno konto z zasad dostępu warunkowego
 
@@ -78,7 +79,7 @@ Organizacje powinny monitorować aktywność logowania i rejestrowania inspekcji
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Uzyskaj identyfikatory obiektów dla kont szklanych
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta przypisanego do roli administratora użytkownika.
-1. Wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
+1. Wybierz **Azure Active Directory** > **użytkowników**.
 1. Wyszukaj konto ze szkła Break i wybierz nazwę użytkownika.
 1. Skopiuj i Zapisz atrybut identyfikatora obiektu, aby można było go później użyć.
 1. Powtórz poprzednie kroki dla drugiego konta ze szlifem.
@@ -88,7 +89,7 @@ Organizacje powinny monitorować aktywność logowania i rejestrowania inspekcji
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta przypisanego do roli współautor monitorowania w programie Azure monitor.
 1. Wybierz pozycję **wszystkie usługi**, wprowadź ciąg "log Analytics" w obszarze wyszukiwania, a następnie wybierz pozycję **log Analytics obszary robocze**.
 1. Wybierz obszar roboczy.
-1. W obszarze roboczym wybierz pozycję **alerty** > **Nowa reguła alertu**.
+1. W obszarze roboczym wybierz pozycję **alerty** > **nową regułę alertu**.
     1. W obszarze **zasób**Sprawdź, czy subskrypcja jest tą, z którą chcesz skojarzyć regułę alertu.
     1. W obszarze **warunek**wybierz pozycję **Dodaj**.
     1. Wybierz pozycję **niestandardowe wyszukiwanie w dzienniku** w obszarze **Nazwa sygnału**.
@@ -100,8 +101,8 @@ Organizacje powinny monitorować aktywność logowania i rejestrowania inspekcji
 
     1. W obszarze **logika alertu**wpisz następujące polecenie:
 
-        - Na podstawie: Liczba wyników
-        - Zakład Większe niż
+        - Na podstawie: liczba wyników
+        - Operator: większe niż
         - Wartość progowa: 0
 
     1. W obszarze **obliczane na podstawie**wybierz **okres (w minutach) okresu** działania zapytania oraz **częstotliwość (w minutach)** , z jaką ma być uruchamiana kwerenda. Częstotliwość powinna być mniejsza lub równa okresowi.
@@ -130,7 +131,7 @@ Organizacje powinny monitorować aktywność logowania i rejestrowania inspekcji
 1. Wybierz **Typ akcji** jako **adres e-mail/SMS/wypychanie/głos**.
 1. Wybierz pozycję **Edytuj szczegóły** , aby wybrać metody powiadamiania, które chcesz skonfigurować, i wprowadź wymagane informacje kontaktowe, a następnie wybierz przycisk **OK** , aby zapisać szczegóły.
 1. Dodaj wszelkie dodatkowe akcje, które mają zostać wyzwolone.
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
 
 ## <a name="validate-accounts-regularly"></a>Regularnie Weryfikuj konta
 

@@ -1,11 +1,10 @@
 ---
-title: Delegowanie najniższych ról uprzywilejowanych przez administratora zadania-Azure Active Directory | Microsoft Docs
+title: Delegowanie ról według zadania administratora — Azure Active Directory | Microsoft Docs
 description: Role delegowania zadań związanych z tożsamościami w Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
@@ -15,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5933fdd9932bd8c13ab0f231d677ce06112662ed
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: b8ccd98553b06ef3fcd2241c8223889c0a86e331
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169776"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024652"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów według zadania administratora w Azure Active Directory
 
@@ -73,7 +72,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie właściwości firmy | Administrator globalny | 
 
-## <a name="connect"></a>Łączenie
+## <a name="connect"></a>Połączenie
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -106,7 +105,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 Zarządzanie domenami | Administrator globalny | 
 Odczytaj całą konfigurację | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
-## <a name="domain-services"></a>Usługi domenowe
+## <a name="domain-services"></a>Domain Services
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -167,7 +166,7 @@ Aktualizowanie członkostwa w grupie | Właściciel grupy ([Zobacz dokumentację
 Aktualizowanie właścicieli grup | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 Aktualizuj właściwości grupy | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 
-## <a name="identity-protection"></a>Ochrona tożsamości
+## <a name="identity-protection"></a>Identity Protection
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------

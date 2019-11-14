@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: tworzenie publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal'
-titlesuffix: Azure Load Balancer
+title: 'Szybki Start: Tworzenie publicznego Load Balancer podstawowego — Azure Portal'
+titleSuffix: Azure Load Balancer
 description: W tym samouczku przedstawiono sposób tworzenia publicznego podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal.
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 9819111c8264493648233f40252db4fb4410aaf1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3cbb4271909cf739dc3ce13712e388f2fc8e20a5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274081"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048700"
 ---
-# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: Tworzenie podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Szybki Start: Tworzenie podstawowego Load Balancer przy użyciu Azure Portal
 
 Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między maszyny wirtualne. Za pomocą witryny Azure Portal można utworzyć moduł równoważenia obciążenia i równoważyć obciążenie wśród maszyn wirtualnych. W tym przewodniku Szybki start pokazano, jak utworzyć i skonfigurować moduł równoważenia obciążenia, serwery zaplecza i zasoby sieciowe w warstwie cenowej Podstawowa.
 
@@ -39,15 +39,15 @@ Najpierw utwórz publiczny podstawowy moduł równoważenia obciążenia przy u�
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
-    | Resource group         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
-    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
+    | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Type          | Wybierz pozycję **Publiczna**.                                        |
+    | Typ          | wybierz pozycję **Publiczny**.                                        |
     | SKU           | Wybierz pozycję **Podstawowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | *MyPublicIP*   |
-    | Przypisanie| Static|
+    | Przypisanie| Statyczny|
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.   
 
@@ -63,7 +63,7 @@ Następnie utwórz sieć wirtualną i dwie maszyny wirtualne w puli zaplecza pod
 1. W okienku **Tworzenie sieci wirtualnej** wpisz lub wybierz następujące wartości:
    
    - **Nazwa**: wpisz *MyVnet*.
-   - **Grupa zasobów**: rozwiń listę **Wybierz istniejącą**, a następnie wybierz pozycję **MyResourceGroupLB**. 
+   - **Grupa zasobów**: lista rozwijana **Wybierz istniejącą**, wybierz pozycję **MyResourceGroupLB**. 
    - **Podsieć** > **Nazwa**: wpisz *MyBackendSubnet*.
    
 1. Wybierz pozycję **Utwórz**.
@@ -112,10 +112,10 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń (NSG) dla maszyn wi
    
    - **Źródło**: wybierz pozycję **Tag usługi**.  
    - **Tag usługi źródłowej**: wybierz pozycję **Internet**. 
-   - **Zakresy portów docelowych**: wpisz wartość *80*.
+   - **Zakresy portów docelowych**: wpisz *80*.
    - **Protokół**: wybierz pozycję **TCP**. 
    - **Akcja**: wybierz pozycję **Zezwalaj**.  
-   - **Priorytet**: wpisz wartość *100*. 
+   - **Priorytet**: wpisz *100*. 
    - **Nazwa**: wpisz *MyHTTPRule*. 
    - **Opis**: wpisz *Zezwalaj na HTTP*. 
    
@@ -124,8 +124,8 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń (NSG) dla maszyn wi
    ![Tworzenie reguły sieciowej grupy zabezpieczeń](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
    
 1. Powtórz powyższe kroki dla reguły ruchu przychodzącego protokołu RDP z następującymi różnymi wartościami:
-   - **Zakresy portów docelowych**: wpisz wartość *3389*.
-   - **Priorytet**: wpisz wartość *200*. 
+   - **Zakresy portów docelowych**: wpisz *3389*.
+   - **Priorytet**: wpisz *200*. 
    - **Nazwa**: wpisz *MyRDPRule*. 
    - **Opis**: wpisz *Zezwalaj na RDP*. 
 
@@ -153,7 +153,7 @@ Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia
    1. Dodaj utworzone maszyny wirtualne (**MyVM1** i **MyVM2**) do puli zaplecza.
    2. Po dodaniu każdej maszyny otwórz listę rozwijaną i wybierz dla niej pozycję **Konfiguracja adresu IP sieci**. 
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie puli adresów zaplecza](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
    
@@ -173,12 +173,12 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
    
    - **Nazwa**: wpisz *MyHealthProbe*.
    - **Protokół**: rozwiń listę i wybierz pozycję **HTTP**. 
-   - **Port**: wpisz wartość *80*. 
+   - **Port**: wpisz *80*. 
    - **Ścieżka**: zaakceptuj */* dla domyślnego identyfikatora URI. Tę wartość można zastąpić dowolnym innym identyfikatorem URI. 
-   - **Interwał**: wpisz wartość *15*. Interwał to liczba sekund między próbami sondy.
-   - **Próg złej kondycji**: wpisz wartość *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
+   - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
+   - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie sondy](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
 
@@ -200,12 +200,12 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
    - **Nazwa**: wpisz *MyLoadBalancerRule*.
    - **Adres IP frontonu:** wpisz *LoadBalancerFrontend*.
    - **Protokół**: wybierz pozycję **TCP**.
-   - **Port**: wpisz wartość *80*.
-   - **Port zaplecza**: wpisz wartość *80*.
+   - **Port**: wpisz *80*.
+   - **Port zaplecza**: wpisz *80*.
    - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
    - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie reguły modułu równoważenia obciążenia](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 

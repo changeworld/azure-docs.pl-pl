@@ -1,24 +1,24 @@
 ---
-title: Przypisywanie ról niestandardowych z zakresem zasobów przy użyciu Azure PowerShell-Azure Active Directory | Microsoft Docs
+title: Przypisywanie ról niestandardowych przy użyciu Azure PowerShell — Azure AD | Microsoft Docs
 description: Zarządzaj członkami roli niestandardowej administratora usługi Azure AD przy użyciu Azure PowerShell.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/05/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd3f590659017d2bb79c7445f6896817b8432f41
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0a2096b7899039e7a9d3455bc0c6fb3ec84ebd1a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880732"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025319"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Przypisywanie ról niestandardowych z zakresem zasobów przy użyciu programu PowerShell w programie Azure Active Directory
 
@@ -47,7 +47,7 @@ get-module azureadpreview
   Binary     2.0.0.115    azureadpreview               {Add-AzureADMSAdministrati...}
 ```
 
-Teraz możesz zacząć korzystać z poleceń cmdlet w module. Aby zapoznać się z pełnymi opisami poleceń cmdlet w module usługi Azure AD, zobacz dokumentację referencyjną online [modułu usługi Azure AD w wersji](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)zapoznawczej.
+Teraz możesz zacząć korzystać z poleceń cmdlet w module. Aby zapoznać się z pełnymi opisami poleceń cmdlet w module usługi Azure AD, zobacz dokumentację referencyjną online [modułu usługi Azure AD w wersji zapoznawczej](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17).
 
 ## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>Przypisywanie roli do użytkownika lub nazwy głównej usługi z zakresem zasobów
 
@@ -160,7 +160,7 @@ Get-AzureADMSRoleAssignment -Filter "roleDefinitionId eq '355aed8a-864b-4e2b-b22
 Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-1'
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Podziel się z nami na [forum ról administracyjnych usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - Aby uzyskać więcej informacji o rolach i przypisaniach ról administratora usługi Azure AD, zobacz [Przypisywanie ról administratorów](directory-assign-admin-roles.md).

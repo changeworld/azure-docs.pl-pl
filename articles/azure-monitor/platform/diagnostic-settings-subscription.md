@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587981"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048204"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>Zbierz dziennik aktywności platformy Azure przy użyciu ustawień diagnostycznych (wersja zapoznawcza)
 [Dziennik aktywności platformy Azure](activity-logs-overview.md) to [Dziennik platformy](platform-logs-overview.md) , który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Do tej pory utworzono profil dziennika w celu wysyłania wpisów dziennika aktywności do [centrum zdarzeń lub konta magazynu](activity-log-export.md) i użycia łącznika w celu zebrania ich w [obszarze roboczym log Analytics](activity-log-collect.md).
@@ -22,6 +22,8 @@ Teraz można skonfigurować zbieranie dzienników aktywności platformy Azure pr
 - Spójna Metoda zbierania wszystkich dzienników platformy.
 - Zbieraj dziennik aktywności między wieloma subskrypcjami i dzierżawcami.
 - Filtruj kolekcję, aby zbierać dzienniki tylko dla określonych kategorii.
+- Zbierz wszystkie kategorie dziennika aktywności. Niektóre kategorie nie są zbierane przy użyciu poprzedniej metody.
+- Szybsze opóźnienie w przypadku pozyskiwania dziennika. Poprzednia metoda ma około 15 minut opóźnienia, podczas gdy ustawienia diagnostyczne są dodawane tylko o 1 minutę.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 Przed włączeniem tej funkcji należy wziąć pod uwagę następujące szczegóły dotyczące zbierania dzienników aktywności przy użyciu ustawień diagnostycznych.
@@ -55,7 +57,7 @@ Ustawienia diagnostyczne zbierają te same dane, jak poprzednie metody służąc
 
 Następujące właściwości zostały usunięte:
 
-- ActivityStatus
+- Element ActivityStatus
 - ActivitySubstatus
 - OperationName
 - ResourceProvider 

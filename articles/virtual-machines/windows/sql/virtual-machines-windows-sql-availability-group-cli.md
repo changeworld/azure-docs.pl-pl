@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z interfejsu wiersza polecenia platformy Azure w celu skonfigurowania zawsze włączonej grupy dostępności dla SQL Server na maszynie wirtualnej platformy Azure
+title: Konfigurowanie grupy dostępności (interfejs wiersza polecenia platformy Azure)
 description: Użyj interfejsu wiersza polecenia platformy Azure do utworzenia klastra trybu failover systemu Windows, odbiornika grupy dostępności i wewnętrznego modułu równoważenia obciążenia na SQL Server maszynie wirtualnej na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 58174704051709a720950ac51591a1d53b9d01bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a6600af353daf2bfa7b49196f48ba5b60e6c45fb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100564"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022366"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure w celu skonfigurowania zawsze włączonej grupy dostępności dla SQL Server na maszynie wirtualnej platformy Azure
 W tym artykule opisano, jak za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/sql/vm?view=azure-cli-latest/) wdrożyć klaster trybu failover systemu Windows, dodać SQL Server maszyny wirtualne do klastra i utworzyć wewnętrzny moduł równoważenia obciążenia i odbiornik dla zawsze włączonej grupy dostępności. Wdrożenie zawsze włączonych grup dostępności jest nadal wykonywane ręcznie za pomocą narzędzia SQL Server Management Studio (SSMS). 
@@ -37,7 +38,7 @@ Aby skonfigurować zawsze włączone grupy dostępności przy użyciu interfejsu
 - Istniejące konto użytkownika domeny, które ma uprawnienie **Tworzenie obiektu komputera** w domenie. Na przykład konto administratora domeny ma zwykle wystarczające uprawnienia (na przykład: account@domain.com). _To konto powinno być również częścią lokalnej grupy administratorów na każdej maszynie wirtualnej w celu utworzenia klastra._
 - Konto użytkownika domeny kontrolujące usługę SQL Server. 
  
-## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>Krok 1: Tworzenie konta magazynu jako monitora w chmurze
+## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>Krok 1. Tworzenie konta magazynu jako monitora chmury
 Klaster wymaga konta magazynu do działania jako monitor chmury. Możesz użyć dowolnego istniejącego konta magazynu lub utworzyć nowe konto magazynu. Jeśli chcesz użyć istniejącego konta magazynu, przejdź do następnej sekcji. 
 
 Poniższy fragment kodu tworzy konto magazynu: 
@@ -51,9 +52,9 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
 ```
 
 >[!TIP]
-> Jeśli używasz nieaktualnej `az sql: 'vm' is not in the 'az sql' command group` wersji interfejsu wiersza polecenia platformy Azure, może wystąpić błąd. Pobierz [najnowszą wersję interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) , aby uzyskać poprzedni błąd.
+> W przypadku korzystania z nieaktualnej wersji interfejsu wiersza polecenia platformy Azure może zostać wyświetlony komunikat o błędzie `az sql: 'vm' is not in the 'az sql' command group`. Pobierz [najnowszą wersję interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) , aby uzyskać poprzedni błąd.
 
-## <a name="step-2-define-windows-failover-cluster-metadata"></a>Krok 2: Definiowanie metadanych klastra trybu failover systemu Windows
+## <a name="step-2-define-windows-failover-cluster-metadata"></a>Krok 2. Definiowanie metadanych klastra trybu failover systemu Windows
 W interfejsie wiersza polecenia platformy Azure [AZ SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) Group (usługa) zarządza metadanymi usługi Windows Server failover Cluster (WSFC), która hostuje grupę dostępności. Metadane klastra obejmują domenę Active Directory, konta klastra, konta magazynu, które mają być używane jako monitor chmury i wersja SQL Server. Użyj [AZ SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) w celu zdefiniowania metadanych usługi WSFC, aby podczas dodawania pierwszej SQL SERVEREJ maszyny wirtualnej klaster został utworzony zgodnie z definicją. 
 
 Poniższy fragment kodu definiuje metadane klastra:
@@ -73,8 +74,8 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
   --storage-account '<ex:https://cloudwitness.blob.core.windows.net/>'
 ```
 
-## <a name="step-3-add-sql-server-vms-to-the-cluster"></a>Krok 3: Dodawanie SQL Server maszyn wirtualnych do klastra
-Dodanie do klastra pierwszej SQL Serverej maszyny wirtualnej spowoduje utworzenie klastra. Polecenie [AZ SQL VM Add-to-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) tworzy klaster o nazwie podaną wcześniej, instaluje rolę klastra na maszynach wirtualnych SQL Server i dodaje je do klastra. Kolejne zastosowania `az sql vm add-to-group` polecenia Dodaj więcej SQL Server maszyn wirtualnych do nowo utworzonego klastra. 
+## <a name="step-3-add-sql-server-vms-to-the-cluster"></a>Krok 3. Dodawanie SQL Server maszyn wirtualnych do klastra
+Dodanie do klastra pierwszej SQL Serverej maszyny wirtualnej spowoduje utworzenie klastra. Polecenie [AZ SQL VM Add-to-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) tworzy klaster o nazwie podaną wcześniej, instaluje rolę klastra na maszynach wirtualnych SQL Server i dodaje je do klastra. Kolejne zastosowania polecenia `az sql vm add-to-group` Dodaj więcej SQL Server maszyn wirtualnych do nowo utworzonego klastra. 
 
 Poniższy fragment kodu tworzy klaster i dodaje do niego pierwszą SQL Server maszynę wirtualną: 
 
@@ -90,9 +91,9 @@ az sql vm add-to-group -n <VM1 Name> -g <Resource Group Name> --sqlvm-group <clu
 az sql vm add-to-group -n <VM2 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
   -b <bootstrap account password> -p <operator account password> -s <service account password>
 ```
-Użyj tego polecenia, aby dodać do klastra wszystkie inne SQL Server maszyny wirtualne. Zmodyfikuj tylko `-n` parametr dla nazwy maszyny wirtualnej SQL Server. 
+Użyj tego polecenia, aby dodać do klastra wszystkie inne SQL Server maszyny wirtualne. Zmodyfikuj tylko parametr `-n` dla nazwy maszyny wirtualnej SQL Server. 
 
-## <a name="step-4-create-the-availability-group"></a>Krok 4: Utwórz grupę dostępności
+## <a name="step-4-create-the-availability-group"></a>Krok 4. Tworzenie grupy dostępności
 Ręcznie Utwórz grupę dostępności jak zwykle za pomocą [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)lub [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
 >[!IMPORTANT]
@@ -119,17 +120,17 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
 >[!IMPORTANT]
 > Zasób publicznego adresu IP dla każdej maszyny wirtualnej SQL Server powinien mieć standardową jednostkę SKU zgodną z usługą równoważenia obciążenia w warstwie Standardowa. Aby określić jednostkę SKU publicznego adresu IP maszyny wirtualnej, przejdź do pozycji **Grupa zasobów**, wybierz zasób **publicznego adresu ip** dla żądanej SQL Serverj maszyny wirtualnej i Znajdź wartość w obszarze **jednostka SKU** w okienku **Przegląd** .  
 
-## <a name="step-6-create-the-availability-group-listener"></a>Krok 6: Tworzenie odbiornika grupy dostępności
+## <a name="step-6-create-the-availability-group-listener"></a>Krok 6. Tworzenie odbiornika grupy dostępności
 Po ręcznym utworzeniu grupy dostępności odbiornik można utworzyć za pomocą polecenia [AZ SQL VM AG-Listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create). 
 
-*Identyfikator zasobu podsieci* jest wartością `/subnets/<subnetname>` dołączoną do identyfikatora zasobu zasobu sieci wirtualnej. Aby zidentyfikować identyfikator zasobu podsieci:
+*Identyfikator zasobu podsieci* to wartość `/subnets/<subnetname>` dołączona do identyfikatora zasobu zasobu sieci wirtualnej. Aby zidentyfikować identyfikator zasobu podsieci:
    1. Przejdź do grupy zasobów w [Azure Portal](https://portal.azure.com). 
    1. Wybierz zasób sieci wirtualnej. 
    1. W okienku **Ustawienia** wybierz pozycję **Właściwości** . 
-   1. Zidentyfikuj identyfikator zasobu dla sieci wirtualnej i Dołącz `/subnets/<subnetname>` go do końca, aby utworzyć identyfikator zasobu podsieci. Na przykład:
-      - Identyfikator zasobu sieci wirtualnej to:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
-      - Nazwa podsieci:`default`
-      - W związku z tym identyfikator zasobu podsieci:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
+   1. Zidentyfikuj identyfikator zasobu dla sieci wirtualnej i Dołącz `/subnets/<subnetname>` na końcu, aby utworzyć identyfikator zasobu podsieci. Na przykład:
+      - Identyfikator zasobu sieci wirtualnej to: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
+      - Nazwa podsieci to: `default`
+      - W związku z tym identyfikator zasobu podsieci to: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
 
 
 Poniższy fragment kodu tworzy odbiornik grupy dostępności:

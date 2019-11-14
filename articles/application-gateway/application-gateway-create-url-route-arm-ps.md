@@ -1,18 +1,19 @@
 ---
-title: Tworzenie bramy aplikacji przy użyciu reguł routingu opartych na ścieżkach URL — Azure PowerShell | Microsoft Docs
+title: Reguły routingu oparte na ścieżkach URL przy użyciu programu PowerShell
+titleSuffix: Azure Application Gateway
 description: Informacje o sposobie tworzenia reguł routingu opartych na ścieżkach URL dla bramy aplikacji i zestawu skalowania maszyn wirtualnych przy użyciu Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ebe09e2c10bed1779d9189755f66bbea9bca1d43
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e7934ba0b33bff7ffb8e89e7b56c5b998a232289
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306268"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048052"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Tworzenie bramy aplikacji przy użyciu reguł routingu opartych na ścieżce URL za pomocą Azure PowerShell
 
@@ -345,7 +346,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, można użyć [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`, lub `http://52.168.55.24:8080/video/test.htm`.
+Aby uzyskać publiczny adres IP bramy aplikacji, można użyć [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`lub `http://52.168.55.24:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -353,11 +354,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Zmień adres URL na `http://<ip-address>:8080/video/test.htm`, zastępując adres IP dla `<ip-address>`i powinien wyglądać podobnie do następującego przykładu:
+Zmień adres URL na `http://<ip-address>:8080/video/test.htm`, podstawiając adres IP dla `<ip-address>`i powinien wyglądać podobnie do następującego przykładu:
 
 ![Testowanie adresu URL obrazów w bramie aplikacji](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-Zmień adres URL na `http://<ip-address>:8080/video/test.htm` i powinien wyglądać podobnie do następującego przykładu:
+Zmień adres URL na `http://<ip-address>:8080/video/test.htm`, a powinien wyglądać podobnie do poniższego przykładu:
 
 ![Testowanie adresu URL wideo w bramie aplikacji](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 

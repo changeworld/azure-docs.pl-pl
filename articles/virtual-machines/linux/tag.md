@@ -1,5 +1,5 @@
 ---
-title: Jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure | Microsoft Docs
+title: Jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure
 description: Dowiedz się więcej na temat tagowania maszyny wirtualnej platformy Azure z systemem Linux utworzonej na platformie Azure przy użyciu modelu wdrażania Menedżer zasobów.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: c232fc80ea63cd2e1d37bc380fb09c512bb7a517
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cabebee7b10ef86486fb8296df44845429d7ebbe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081909"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034724"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure
 W tym artykule opisano różne sposoby tagowania maszyny wirtualnej z systemem Linux na platformie Azure za pomocą modelu wdrażania Menedżer zasobów. Tagi to zdefiniowane przez użytkownika pary klucz/wartość, które mogą być umieszczone bezpośrednio w ramach zasobu lub grupy zasobów. Platforma Azure obsługuje obecnie do 15 tagów na zasób i grupę zasobów. Tagi mogą być umieszczane na zasobie w momencie tworzenia lub dodawane do istniejącego zasobu. Należy pamiętać, że Tagi są obsługiwane tylko dla zasobów utworzonych za pośrednictwem modelu wdrażania Menedżer zasobów.
@@ -36,7 +36,7 @@ Można wyświetlić wszystkie właściwości danej maszyny wirtualnej, w tym Tag
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Aby dodać nowy tag maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure, można `azure vm update` użyć polecenia wraz z parametrem tag **--Set**:
+Aby dodać nowy tag maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure, można użyć polecenia `azure vm update` wraz z parametrem tag **--Set**:
 
 ```azurecli
 az vm update \
@@ -45,7 +45,7 @@ az vm update \
     --set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 ```
 
-Aby usunąć Tagi, można użyć parametru **--Remove** w `azure vm update` poleceniu.
+Aby usunąć Tagi, można użyć parametru **--Remove** w poleceniu `azure vm update`.
 
 ```azurecli
 az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNewTagName1

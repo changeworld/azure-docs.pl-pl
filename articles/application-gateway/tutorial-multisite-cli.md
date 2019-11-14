@@ -1,23 +1,18 @@
 ---
-title: Tworzenie bramy aplikacji z obsługą wielu witryn — interfejs wiersza polecenia platformy Azure | Microsoft Docs
+title: Hosting wielu witryn przy użyciu interfejsu wiersza polecenia platformy Azure Application Gateway
 description: Dowiedz się, jak utworzyć bramę aplikacji, która będzie hostować wiele witryn przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ce5701d4125123798c6b6a654e4fa4a4887778a3
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5edc2e5228146aee913027a83e495d94c003e237
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717264"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047331"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Tworzenie bramy aplikacji z obsługą wielu witryn przy użyciu interfejsu wiersza polecenia platformy Azure
 

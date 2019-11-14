@@ -1,5 +1,5 @@
 ---
-title: 'Notification Hubs platformy Azure: Często zadawane pytania | Microsoft Docs'
+title: 'Azure Notification Hubs: często zadawane pytania (FAQ) | Microsoft Docs'
 description: Często zadawane pytania dotyczące projektowania/implementowania rozwiązań na Notification Hubs
 services: notification-hubs
 documentationcenter: mobile
@@ -13,18 +13,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213136"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048782"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane za pomocą usługi Azure Notification Hubs: Często zadawane pytania
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane za pomocą usługi Azure Notification Hubs: często zadawane pytania
 
 ## <a name="general"></a>Ogólne
 
@@ -38,15 +38,15 @@ Zalecane mapowanie pasuje do jednej przestrzeni nazw z jedną aplikacją. W rama
 
 Najnowsze szczegóły cennika można znaleźć na stronie [Cennik Notification Hubs] . Notification Hubs jest rozliczana na poziomie przestrzeni nazw. (Aby zapoznać się z definicją przestrzeni nazw, zobacz "co to jest struktura zasobów Notification Hubs?"). Notification Hubs oferuje trzy warstwy:
 
-* **Bezpłatnie**: Ta warstwa jest dobrym punktem wyjścia do eksplorowania możliwości wypychania. Nie jest to zalecane w przypadku aplikacji produkcyjnych. Otrzymujesz 500 urządzeń i 1 000 000 wypchnięcia na przestrzeń nazw miesięcznie, bez gwarancji umowy dotyczącej poziomu usług (SLA).
+* **Bezpłatna**: Ta warstwa jest dobrym punktem wyjścia do eksplorowania funkcji wypychania. Nie jest to zalecane w przypadku aplikacji produkcyjnych. Otrzymujesz 500 urządzeń i 1 000 000 wypchnięcia na przestrzeń nazw miesięcznie, bez gwarancji umowy dotyczącej poziomu usług (SLA).
 * **Podstawowa**: Ta warstwa (lub warstwa standardowa) jest zalecana w przypadku mniejszych aplikacji produkcyjnych. Odbierasz 200 000 urządzeń i 10 000 000 wypchnięcia na przestrzeń nazw miesięcznie jako linia bazowa.
-* **Standard**: Ta warstwa jest zalecana dla średnich i dużych aplikacji produkcyjnych. Odbierasz 10 000 000 urządzeń i 10 000 000 wypchnięcia na przestrzeń nazw miesięcznie jako linia bazowa. Obejmuje rozbudowaną telemetrię (dodatkowe dane dotyczące podanego stanu wypychania).
+* **Standardowa**: Ta warstwa jest zalecana dla średnich i dużych aplikacji produkcyjnych. Odbierasz 10 000 000 urządzeń i 10 000 000 wypchnięcia na przestrzeń nazw miesięcznie jako linia bazowa. Obejmuje rozbudowaną telemetrię (dodatkowe dane dotyczące podanego stanu wypychania).
 
 Funkcje warstwy standardowej:
 
-* **Rozbudowana Telemetria**: Do śledzenia wszystkich żądań wypychania i system powiadomień platformy informacji zwrotnych dotyczących debugowania służy Notification Hubs na telemetrię komunikatów.
-* Wielodostępność: Można korzystać z poświadczeń system powiadomień platformy na poziomie przestrzeni nazw. Ta opcja umożliwia łatwe dzielenie dzierżawców w centrach w obrębie tej samej przestrzeni nazw.
-* **Zaplanowane wypychanie**: Możesz zaplanować wysyłanie powiadomień w dowolnym czasie.
+* **Rozbudowana Telemetria**: możesz użyć Notification Hubs poszczególnych komunikatów telemetrycznych do śledzenia żądań wypychania i system powiadomień platformy informacji zwrotnych na potrzeby debugowania.
+* **Wielodostępność**: można korzystać z poświadczeń system powiadomień platformy na poziomie przestrzeni nazw. Ta opcja umożliwia łatwe dzielenie dzierżawców w centrach w obrębie tej samej przestrzeni nazw.
+* **Zaplanowane wypychanie**: możesz zaplanować wysyłanie powiadomień w dowolnym czasie.
 * **Operacje zbiorcze**: Włącza funkcje eksportu/importu rejestracji zgodnie z opisem w dokumencie [Eksportowanie/Importowanie rejestracji] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Co to jest umowa SLA Notification Hubs?
@@ -58,7 +58,7 @@ W przypadku warstw Podstawowa i Standardowa Notification Hubs prawidłowo skonfi
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Jak mogę uaktualnić lub obniżyć poziom mojego centrum lub przestrzeni nazw do innej warstwy?
 
-Przejdź do obszaru**nazw Notification Hubs** **[Azure Portal]**  > lub **Notification Hubs**. Wybierz zasób, który chcesz zaktualizować, i przejdź do **warstwy cenowej**. Należy pamiętać o następujących wymaganiach:
+Przejdź do obszaru nazw **[Azure Portal]**  > **Notification Hubs** lub **Notification Hubs**. Wybierz zasób, który chcesz zaktualizować, i przejdź do **warstwy cenowej**. Należy pamiętać o następujących wymaganiach:
 
 * Zaktualizowana warstwa cenowa ma zastosowanie do *wszystkich* centrów w przestrzeni nazw, z którymi pracujesz.
 * Jeśli liczba urządzeń przekracza limit warstwy, do której należysz, należy usunąć urządzenia przed obniżeniem poziomu.
@@ -182,6 +182,10 @@ Mamy dwie rekomendacje dla zakończyłych się aplikacjami:
 Jeśli nie masz zaplecza, gdy aplikacja zostanie uruchomiona na urządzeniach docelowych, przeprowadzimy nową rejestrację w pomocniczym centrum powiadomień. Ostatecznie pomocnicze centrum powiadomień będzie miało wszystkie aktywne zarejestrowane urządzenia.
 
 W przypadku urządzeń z nieotwartymi aplikacjami nie będą odbierane powiadomienia.
+
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>Czy wszystkie dane są przechowywane w zaszyfrowanej formie?
+
+Usługa Azure Notification Hubs szyfruje wszystkie dane klientów w stanie spoczynku z wyjątkiem tagów rejestracyjnych. Z tego powodu nie należy przechowywać danych osobistych ani poufnych przy użyciu tagów.
 
 ### <a name="is-there-audit-log-capability"></a>Czy istnieje funkcja dziennika inspekcji?
 

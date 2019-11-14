@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-ms.date: 12/19/2018
-ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/12/2019
+ms.openlocfilehash: a113ea3fd4828a498d1f53ea7604df7bc8588eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811386"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048404"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Zalecenia dotyczące wydajności SQL Database
 
@@ -25,6 +25,17 @@ Azure SQL Database uczy się i dostosowuje do aplikacji. Zawiera niestandardowe 
 > [!TIP]
 > [Dostrajanie automatyczne](sql-database-automatic-tuning.md) jest zalecaną metodą automatycznego dostrajania niektórych najbardziej typowych problemów z wydajnością bazy danych. [Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) to zalecana metoda dla podstawowych potrzeb związanych z monitorowaniem wydajności Azure SQL Database. [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) jest zalecaną metodą zaawansowanego monitorowania wydajności bazy danych na dużą skalę z wbudowaną inteligencją w celu automatycznego rozwiązywania problemów z wydajnością.
 >
+
+## <a name="performance-recommendations-options"></a>Opcje zaleceń dotyczących wydajności
+
+Dostępne opcje rekomendacji wydajności Azure SQL Database są następujące:
+
+| Zalecenie dotyczące wydajności | Obsługa pojedynczej bazy danych i bazy danych w puli | Obsługa bazy danych wystąpień |
+| :----------------------------- | ----- | ----- |
+| **Tworzenie zaleceń dotyczących indeksów** — zalecane jest utworzenie indeksów, które mogą poprawić wydajność obciążeń. | Yes | Nie | 
+| **Porzuć zalecenia dotyczące indeksów** — zaleca się usunięcie nadmiarowych i zduplikowanych indeksów codziennie, z wyjątkiem indeksów unikatowych i indeksów, które nie były używane przez długi czas (> 90 dni). Należy pamiętać, że ta opcja nie jest zgodna z aplikacjami korzystającymi z przełączania partycji i wskazówek dotyczących indeksów. Usuwanie nieużywanych indeksów nie jest obsługiwane dla warstw usług premium i Krytyczne dla działania firmy. | Yes | Nie |
+| **Zalecenia dotyczące zapytań Sparametryzuj (wersja zapoznawcza)** — zalecane parametrization w przypadkach, gdy istnieje co najmniej jedno zapytanie, które jest stale ponownie kompilowane, ale kończy się na tym samym planie wykonywania zapytań. | Yes | Nie |
+| **Napraw zalecenia dotyczące problemów ze schematem (wersja zapoznawcza)** — zalecenia dotyczące korekcji schematu są wyświetlane, gdy usługa SQL Database wykryje anomalię w liczbie błędów SQL związanych ze schematami, które są wykonywane w bazie danych SQL. Firma Microsoft jest obecnie przestarzała zalecenia "Napraw problem ze schematem". | Yes | Nie |
 
 ## <a name="create-index-recommendations"></a>Tworzenie zaleceń dotyczących indeksów
 SQL Database stale monitoruje uruchomione zapytania i identyfikuje indeksy, które mogą poprawić wydajność. Po upływie wystarczającej pewności od braku określonego indeksu zostanie utworzony nowy zalecenie **tworzenia indeksu** .
@@ -50,8 +61,7 @@ Oprócz wykrywania brakujących indeksów SQL Database stale analizuje wydajnoś
 
 Zalecenia dotyczące usuwania indeksów również przechodzą przez weryfikację po wdrożeniu. W przypadku zwiększenia wydajności jest dostępny raport o wpływie. W przypadku obniżenia wydajności zaleca się przywrócenie zalecenia.
 
-
-## <a name="parameterize-queries-recommendations"></a>Zalecenia dotyczące zapytań Sparametryzuj
+## <a name="parameterize-queries-recommendations-preview"></a>Zalecenia dotyczące zapytań Sparametryzuj (wersja zapoznawcza)
 Zalecenia dotyczące *zapytań Sparametryzuj* pojawiają się, gdy istnieje co najmniej jedno zapytanie, które jest stale ponownie kompilowane, ale kończy się na tym samym planie wykonywania zapytań. Ten warunek umożliwia utworzenie możliwości zastosowania wymuszonych parametryzacja. Wymuszone parametryzacja, z kolei, umożliwia zalogowanie się i ponowne użycie planów zapytania w przyszłości, co zwiększa wydajność i zmniejsza wykorzystanie zasobów. 
 
 Każde zapytanie, które zostało wystawione dla SQL Server początkowo musi zostać skompilowane w celu wygenerowania planu wykonania. Każdy wygenerowany plan zostanie dodany do pamięci podręcznej planu. Kolejne wykonania tego samego zapytania mogą ponownie wykorzystać ten plan z pamięci podręcznej, co eliminuje konieczność tworzenia dodatkowej kompilacji. 
@@ -76,7 +86,7 @@ Po zastosowaniu tego zalecenia włącza wymuszone parametryzacja w ciągu kilku 
 
 Zalecenie "Rozwiąż problem ze schematem" pojawia się, gdy usługa Azure SQL Database wykryje anomalię w liczbie błędów SQL związanych ze schematami, które są wykonywane w bazie danych SQL. W poniższej tabeli przedstawiono błędy związane z problemami ze schematem:
 
-| Kod błędu SQL | Wiadomość |
+| Kod błędu SQL | Komunikat |
 | --- | --- |
 | 201 |Procedura lub funkcja " *" oczekuje parametru "* ", który nie został podany. |
 | 207 |Nieprawidłowa nazwa kolumny "*". |

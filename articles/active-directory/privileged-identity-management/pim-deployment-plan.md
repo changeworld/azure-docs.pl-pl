@@ -1,25 +1,25 @@
 ---
-title: Wdróż Privileged Identity Management (PIM) — Azure Active Directory | Microsoft Docs
+title: Wdrażanie Privileged Identity Management (PIM) — Azure AD | Microsoft Docs
 description: Opisuje sposób planowania wdrożenia programu Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/08/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1263d494ff26ff6ab87d39bc864271f14457b3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756279"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021848"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Wdróż Azure AD Privileged Identity Management (PIM)
 
@@ -44,7 +44,7 @@ Azure AD Privileged Identity Management ułatwia zarządzanie uprzywilejowanymi 
 
 **Zmniejsz koszty** — Zmniejsz koszty, eliminując nieefektywność, błąd ludzki i problemy z zabezpieczeniami, wdrażając Privileged Identity Management poprawnie. Wynikiem jest spadek cybernetycznymi zbrodni związanych z tożsamościami uprzywilejowanymi, które są kosztowne i trudne do odzyskania. Privileged Identity Management pomoże również ograniczyć koszty związane z inspekcją dostępu do informacji, gdy chodzi o przestrzeganie przepisów i standardów.
 
-Aby uzyskać więcej informacji, zobacz [co to jest Azure AD Privileged Identity Management?](pim-configure.md).
+Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure AD Privileged Identity Management?](pim-configure.md).
 
 ### <a name="licensing-requirements"></a>Wymagania dotyczące licencjonowania
 
@@ -75,7 +75,7 @@ Aby uzyskać więcej informacji, zobacz [terminologia](pim-configure.md#terminol
 1. Po pomyślnym aktywowaniu roli przez użytkownika otrzymasz rolę dla wstępnie skonfigurowanego okresu.
 1. Administratorzy mogą wyświetlić historię wszystkich działań Privileged Identity Management w dzienniku inspekcji. Mogą również dodatkowo zabezpieczyć swoje organizacje usługi Azure AD i spełnić wymagania przy użyciu funkcji Privileged Identity Management, takich jak przeglądy i alerty dostępu.
 
-Aby uzyskać więcej informacji, zobacz [co to jest Azure AD Privileged Identity Management?](pim-configure.md).
+Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure AD Privileged Identity Management?](pim-configure.md).
 
 ### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>Role, którymi można zarządzać za pomocą Privileged Identity Management
 
@@ -99,7 +99,7 @@ W poniższej sekcji znajdują się informacje ułatwiające zidentyfikowanie wsz
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Uczestnicy projektu: Privileged Identity Management dla ról usługi Azure AD
 
-| Nazwa | Rola | Działanie |
+| Nazwa | Rola | Akcja |
 | --- | --- | --- |
 | Nazwa i adres e-mail | **Architekt tożsamości lub Administrator globalny platformy Azure**<br/>Przedstawiciel zespołu ds. zarządzania tożsamościami odpowiedzialny za definiowanie sposobu wyrównywania tej zmiany z podstawową infrastrukturą zarządzania tożsamościami w organizacji. | SO/R/I |
 | Nazwa i adres e-mail | **Menedżer linii/właściciela usługi**<br/>Przedstawiciel od właścicieli IT usługi lub grupy usług. Są one kluczowym sposobem podejmowania decyzji i pomocy w rozwinięcia Privileged Identity Management dla zespołu. | SO/R/I |
@@ -109,7 +109,7 @@ W poniższej sekcji znajdują się informacje ułatwiające zidentyfikowanie wsz
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Uczestnicy projektu: Privileged Identity Management dla ról zasobów platformy Azure
 
-| Nazwa | Rola | Działanie |
+| Nazwa | Rola | Akcja |
 | --- | --- | --- |
 | Nazwa i adres e-mail | **Właściciel subskrypcji/zasobu**<br/>Przedstawiciel z właścicieli IT dla każdej subskrypcji lub zasobu, który ma zostać wdrożony Privileged Identity Management | SO/R/I |
 | Nazwa i adres e-mail | **Właściciel zabezpieczeń**<br/>Przedstawiciel zespołu ds. zabezpieczeń, który może się wylogować, aby plan spełniał wymagania dotyczące zabezpieczeń Twojej organizacji. | SO/R |
@@ -196,7 +196,7 @@ Ważne jest, aby wziąć pod uwagę, jakie dane i uprawnienia są najbardziej po
 Jeśli istnieją jakieś role z przypisanymi użytkownikami gościa, są one szczególnie narażone na ataki.
 
 > [!TIP]
-> : heavy_check_mark: **firma Microsoft zaleca** , aby zarządzać wszystkimi rolami z użytkownikami-gośćmi przy użyciu Privileged Identity Management, aby ograniczyć ryzyko związane z kontami użytkowników-Gości.
+> : heavy_check_mark: **firma Microsoft zaleca** zarządzanie wszystkimi rolami z użytkownikami-gośćmi przy użyciu Privileged Identity Management, aby zmniejszyć ryzyko związane z kontami użytkowników-Gości z naruszeniem zabezpieczeń.
 
 Role czytnika, takie jak czytniki katalogów, czytnik centrum komunikatów i czytelnik zabezpieczeń, są czasami uważane za mniej ważne w porównaniu z innymi rolami, ponieważ nie mają uprawnień do zapisu. Jednak niektórzy klienci widzą również ochronę tych ról, ponieważ osoby atakujące, którzy uzyskali dostęp do tych kont, mogą odczytywać dane poufne, takie jak dane osobowe. Należy to wziąć pod uwagę podczas decydowania, czy role czytnika w organizacji muszą być zarządzane przy użyciu Privileged Identity Management.
 
@@ -210,7 +210,7 @@ Podczas wybierania przypisań ról, które mają być zarządzane za pomocą Pri
 Jeśli jesteś administratorem globalnym, który ma problemy z wybraniem najważniejszych subskrypcji/zasobów, należy skontaktować się z właścicielami subskrypcji w organizacji w celu zebrania listy zasobów zarządzanych przez każdą subskrypcję. Następnie należy skontaktować się z właścicielami subskrypcji w celu pogrupowania zasobów na podstawie poziomu ważności w przypadku naruszenia zabezpieczeń (niski, średni, wysoki). Należy określić priorytety zarządzania zasobami przy użyciu Privileged Identity Management na podstawie tego poziomu ważności.
 
 > [!TIP]
-> : heavy_check_mark: **firma Microsoft zaleca** współpracę z subskrypcjami/właścicielami zasobów krytycznych usług w celu skonfigurowania Privileged Identity Management przepływ pracy dla wszystkich ról w poufnych subskrypcjach/zasobach.
+> : heavy_check_mark: **firma Microsoft zaleca** współpracę z subskrypcjami/właścicielami zasobów krytycznych usług w celu skonfigurowania Privileged Identity Management przepływu pracy dla wszystkich ról w poufnych subskrypcjach/zasobach.
 
 Privileged Identity Management dla zasobów platformy Azure obsługuje konta usług powiązane z czasem. Konta usług należy traktować dokładnie tak samo, jak w przypadku traktowania zwykłego konta użytkownika.
 
@@ -224,7 +224,7 @@ W przypadku subskrypcji/zasobów, które nie są uznawane za krytyczne, nie trze
 Po określeniu listy ról, które mają być zarządzane przez Privileged Identity Management, należy zdecydować, którzy użytkownicy powinni uzyskać kwalifikującą się rolę i trwale aktywną rolę. Stałe aktywne role są normalnymi rolami przypisanymi za pomocą Azure Active Directory i zasobami platformy Azure, podczas gdy kwalifikujące się role można przypisywać tylko w Privileged Identity Management.
 
 > [!TIP]
-> : heavy_check_mark: **firma Microsoft zaleca** , aby dla ról usługi Azure AD i ról zasobów platformy Azure nie było żadnych [stałych, które](../users-groups-roles/directory-emergency-access.md)są trwałe Rola administratora globalnego.
+> : heavy_check_mark: **firma Microsoft zaleca** , aby dla ról usługi Azure AD i ról zasobów platformy Azure nie było żadnych stałych, które są trwale [aktywne, a](../users-groups-roles/directory-emergency-access.md)które mają stałą rolę administratora globalnego.
 
 Mimo że firma Microsoft zaleca zero administratorów, czasami trudno jest uzyskać od tych organizacji. Poniżej przedstawiono kwestie, które należy wziąć pod uwagę podczas podejmowania tej decyzji:
 
@@ -250,9 +250,9 @@ Przed zaimplementowaniem rozwiązania Privileged Identity Management warto podwy
 
 | Rola | Wymaganie usługi MFA | Powiadomienia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administrator aktywny | Aktywne wygaśnięcie | Kwalifikujące się wygaśnięcie |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Właściciel krytycznych subskrypcji | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Inni właściciele subskrypcji | 1 godzina | Brak | nd. | 3 miesiące |
-| Administrator dostępu użytkowników z mniej krytycznymi subskrypcjami | :heavy_check_mark: | :heavy_check_mark: | y | Brak | 1 godzina | Brak | nd. | 3 miesiące |
-| Współautor maszyny wirtualnej | y | :heavy_check_mark: | y | Brak | 3 godziny | Brak | nd. | 6 miesięcy |
+| Właściciel krytycznych subskrypcji | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Inni właściciele subskrypcji | 1 godzina | Brak | Nie dotyczy | 3 miesiące |
+| Administrator dostępu użytkowników z mniej krytycznymi subskrypcjami | :heavy_check_mark: | :heavy_check_mark: | y | Brak | 1 godzina | Brak | Nie dotyczy | 3 miesiące |
+| Współautor maszyny wirtualnej | y | :heavy_check_mark: | y | Brak | 3 godziny | Brak | Nie dotyczy | 6 miesięcy |
 
 W poniższej tabeli opisano poszczególne ustawienia.
 
@@ -261,7 +261,7 @@ W poniższej tabeli opisano poszczególne ustawienia.
 | Rola | Nazwa roli, dla której są definiowane ustawienia. |
 | Wymaganie usługi MFA | Czy uprawniony użytkownik musi wykonać uwierzytelnianie wieloskładnikowe przed aktywowaniem roli.<br/><br/> : heavy_check_mark: **firma Microsoft zaleca** Wymuszanie uwierzytelniania wieloskładnikowego dla wszystkich ról administratora, szczególnie jeśli role mają użytkowników-Gości. |
 | Powiadomienia | Jeśli wartość jest równa true, Administrator globalny, administrator ról uprzywilejowanych i administrator zabezpieczeń w organizacji otrzyma powiadomienie e-mail, gdy uprawniony użytkownik aktywuje rolę.<br/><br/>**Uwaga:** Niektóre organizacje nie mają adresu e-mail powiązanego z kontami administratorów, aby otrzymywać powiadomienia e-mail, należy ustawić alternatywny adres e-mail, aby administratorzy otrzymywali te wiadomości e-mail. |
-| Bilet zdarzenia | Czy uprawniony użytkownik musi zarejestrować numer biletu zdarzenia podczas aktywowania ich roli. To ustawienie pomaga organizacji identyfikować każdą aktywację z wewnętrznym numerem zdarzenia w celu ograniczenia niepożądanej aktywacji.<br/><br/> : heavy_check_mark: **firma Microsoft zaleca** korzystanie z numerów biletów zdarzeń w celu powiązania Privileged Identity Management z systemem wewnętrznym. Jest to szczególnie przydatne w przypadku osób zatwierdzających, które wymagają kontekstu aktywacji. |
+| Bilet zdarzenia | Czy uprawniony użytkownik musi zarejestrować numer biletu zdarzenia podczas aktywowania ich roli. To ustawienie pomaga organizacji identyfikować każdą aktywację z wewnętrznym numerem zdarzenia w celu ograniczenia niepożądanej aktywacji.<br/><br/> : heavy_check_mark: **firma Microsoft zaleca** korzystanie z numerów biletów zdarzeń, aby powiązać Privileged Identity Management z systemem wewnętrznym. Jest to szczególnie przydatne w przypadku osób zatwierdzających, które wymagają kontekstu aktywacji. |
 | Wymagaj zatwierdzenia | Czy uprawniony użytkownik musi uzyskać zatwierdzenie, aby aktywować rolę.<br/><br/> : heavy_check_mark: **firma Microsoft zaleca** skonfigurowanie zatwierdzenia dla ról z największymi uprawnieniami. W oparciu o wzorce użycia wszystkich Privileged Identity Management klientów, administratorów globalnych, administratorów użytkowników, administratorów programu Exchange, administratora zabezpieczeń i administratora hasła są najczęściej używane role z konfiguracją zatwierdzania. |
 | Osoby zatwierdzającej | Jeśli wymagane jest zatwierdzenie w celu aktywowania kwalifikującej się roli, należy podać osoby, które powinny zatwierdzić żądanie. Domyślnie Privileged Identity Management ustawia osoby zatwierdzającej na wszystkich użytkowników, którzy są administratorami ról uprzywilejowanych, niezależnie od tego, czy są one trwałe, czy kwalifikujące się.<br/><br/>**Uwaga:** Jeśli użytkownik jest uprawniony do roli usługi Azure AD i osoby zatwierdzającej rolę, nie będzie w stanie zatwierdzić siebie.<br/><br/> : heavy_check_mark: **firma Microsoft zaleca** , aby wybrać osoby zatwierdzające, które są najbardziej znające konkretną rolę i jej częste użytkowników, a nie administratora globalnego. |
 | Czas trwania aktywacji | Długość czasu aktywacji użytkownika w roli przed jego wygaśnięciem. |
@@ -285,12 +285,12 @@ W tej tabeli Zidentyfikuj użytkowników testowych, którzy weryfikują, że ust
 
 | Nazwa roli | Użytkownicy testowi |
 | --- | --- |
-| Nazwa &lt;Role &gt; | &lt;Users, aby przetestować rolę &gt; |
-| Nazwa &lt;Role &gt; | &lt;Users, aby przetestować rolę &gt; |
+| Nazwa roli &lt;&gt; | &lt;użytkowników do testowania roli&gt; |
+| Nazwa roli &lt;&gt; | &lt;użytkowników do testowania roli&gt; |
 
 ### <a name="test-implementation"></a>Implementacja testowa
 
-Teraz, po zidentyfikowaniu użytkowników testowych, użyj tego kroku, aby skonfigurować Privileged Identity Management dla użytkowników testowych. Jeśli organizacja chce dołączyć przepływ pracy Privileged Identity Management do własnej aplikacji wewnętrznej zamiast używać Privileged Identity Management w Azure Portal, wszystkie operacje w Privileged Identity Management są również obsługiwane za poorednictwem naszego [interfejsu API programu Graph](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root).
+Teraz, po zidentyfikowaniu użytkowników testowych, użyj tego kroku, aby skonfigurować Privileged Identity Management dla użytkowników testowych. Jeśli organizacja chce dołączyć przepływ pracy Privileged Identity Management do własnej aplikacji wewnętrznej zamiast korzystać z Privileged Identity Management w Azure Portal, wszystkie operacje w Privileged Identity Management są również obsługiwane za pośrednictwem [interfejsu API programu Graph](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root).
 
 #### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>Konfigurowanie Privileged Identity Management dla ról usługi Azure AD
 
@@ -338,7 +338,7 @@ Wdrożenie Privileged Identity Management spowoduje wprowadzenie dodatkowych kro
 - Informacje kontaktowe lub pomoc techniczna dla wszystkich problemów związanych z usługą PIM
 
 > [!TIP]
-> : heavy_check_mark: **firma Microsoft zaleca** , aby skonfigurować czas pracy z zespołem pomocy technicznej/wsparcia technicznego w celu przechodzenia do nich za pomocą przepływu Privileged Identity Management (Jeśli organizacja ma wewnętrzny zespół pomocy technicznej IT). Podaj im odpowiednie dokumenty oraz informacje kontaktowe.
+> : heavy_check_mark: **firma Microsoft zaleca** , aby skonfigurować czas pracy z zespołem pomocy technicznej/wsparcia technicznego w celu przechodzenia przez proces Privileged Identity Managementy (Jeśli organizacja ma wewnętrzny zespół pomocy technicznej IT). Podaj im odpowiednie dokumenty oraz informacje kontaktowe.
 
 ### <a name="move-to-production"></a>Przenoszenie do środowiska produkcyjnego
 
@@ -350,7 +350,7 @@ Jeśli Privileged Identity Management nie zadziałała prawidłowo w środowisku
 
 #### <a name="azure-ad-roles"></a>Role usługi Azure AD
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Otwórz **Azure AD Privileged Identity Management**.
 1. Kliknij pozycję **role usługi Azure AD** , a następnie kliknij pozycję **role**.
 1. Dla każdej skonfigurowanej roli kliknij przycisk wielokropka ( **...** ) dla wszystkich użytkowników z uprawnionym przypisaniem.
@@ -358,7 +358,7 @@ Jeśli Privileged Identity Management nie zadziałała prawidłowo w środowisku
 
 #### <a name="azure-resource-roles"></a>Role zasobów platformy Azure
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Otwórz **Azure AD Privileged Identity Management**.
 1. Kliknij pozycję **zasoby platformy Azure** , a następnie kliknij subskrypcję lub zasób, które chcesz przywrócić.
 1. Kliknij pozycję **role**.
@@ -373,7 +373,7 @@ Pomyślnie wdrożono Privileged Identity Management w środowisku produkcyjnym t
 
 W celu lepszego zabezpieczenia dzierżawy należy używać wbudowanych funkcji alertów Privileged Identity Management. Aby uzyskać więcej informacji, zobacz [alerty zabezpieczeń](pim-how-to-configure-security-alerts.md#security-alerts). Te alerty obejmują: Administratorzy nie używają uprzywilejowanych ról, są przypisywane role poza Privileged Identity Management, role są aktywowane zbyt często i nie tylko. Aby w pełni chronić organizację, należy regularnie przechodzić przez listę alertów i rozwiązać problemy. Alerty można wyświetlać i usuwać w następujący sposób:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Otwórz **Azure AD Privileged Identity Management**.
 1. Kliknij pozycję **role usługi Azure AD** , a następnie kliknij pozycję **alerty**.
 
@@ -392,7 +392,7 @@ Przeglądy dostępu są najlepszym sposobem na zaproszenie użytkowników przypi
 W większości przypadków, osoba dokonująca przeglądu dla ról usługi Azure AD jest właścicielem subskrypcji, w której znajduje się rola zasobów platformy Azure. Jednak często zdarza się, że firmy mają uprzywilejowane konta, które nie są połączone z żadnym z adresów e-mail poszczególnych osób. W takich przypadkach nikt nie odczytuje ani nie przegląda dostępu.
 
 > [!TIP]
-> : heavy_check_mark: **firma Microsoft zaleca** dodanie pomocniczego adresu e-mail dla wszystkich kont z przypisaniami ról uprzywilejowanych, które nie są połączone z regularnie sprawdzonym adresem e-mail
+> : heavy_check_mark: **firma Microsoft zaleca** dodanie pomocniczego adresu e-mail dla wszystkich kont z przypisaniami ról uprzywilejowanych, które nie są połączone z regularnie sprawdzonym adresem e-mail.
 
 ### <a name="get-the-most-out-of-your-audit-log-to-improve-security-and-compliance"></a>Maksymalnie zapoznaj się z dziennikiem inspekcji, aby zwiększyć bezpieczeństwo i zgodność
 
@@ -407,7 +407,7 @@ Dziennik inspekcji jest miejscem, w którym można zachować aktualność i być
 Możesz uzyskać dostęp do tych dzienników inspekcji, jeśli jesteś administratorem globalnym lub administratorem roli uprzywilejowanej. Aby uzyskać więcej informacji, zobacz [historię inspekcji dla ról usługi Azure AD](pim-how-to-use-audit-log.md) i [historii inspekcji dla ról zasobów platformy Azure](azure-pim-resource-rbac.md).
 
 > [!TIP]
-> : heavy_check_mark: **firma Microsoft zaleca** , aby co najmniej jeden administrator odczytał wszystkie zdarzenia inspekcji co tydzień i regularnie eksportować zdarzenia inspekcji.
+> : heavy_check_mark: **firma Microsoft zaleca** , aby co najmniej jeden administrator odczytał przez wszystkie zdarzenia inspekcji co tydzień i regularnie eksportować zdarzenia inspekcji.
 
 Jeśli chcesz automatycznie przechowywać zdarzenia inspekcji przez dłuższy czas, Privileged Identity Management dziennik inspekcji zostanie automatycznie zsynchronizowany z dziennikami [inspekcji usługi Azure AD](../reports-monitoring/concept-audit-logs.md).
 

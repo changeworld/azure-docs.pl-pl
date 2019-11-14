@@ -1,11 +1,11 @@
 ---
 title: Wdrażanie modułu równoważenia obciążenia dostępnego z Internetu przy użyciu szablonu IPv6 — Azure
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Jak wdrożyć obsługę protokołu IPv6 dla Azure Load Balancer i maszyn wirtualnych o zrównoważonym obciążeniu.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, moduł równoważenia obciążenia platformy Azure, podwójny stos, publiczny adres IP, natywny protokół IPv6, urządzenia przenośne, IoT
+keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: bfecb2a57cf5f086b6c9f99c50b857c8c1183e3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: e5cfc980387b63701fb3ff36e7fa8ac43800ecce
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025593"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048442"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Wdrażanie rozwiązania równoważenia obciążenia dostępnego z Internetu za pomocą protokołu IPv6 przy użyciu szablonu
 
@@ -29,7 +29,7 @@ ms.locfileid: "73025593"
 > * [Szablon](load-balancer-ipv6-internet-template.md)
 
 
->[! Uwaga: zmiana w ramach najlepszych rozwiązań dotyczących protokołu IPv6] w tym artykule opisano wprowadzaną funkcję IPv6, która umożliwia podstawowym usługom równoważenia obciążenia zapewnienie łączności z protokołami IPv4 i IPv6.  Bardziej kompleksowa łączność z protokołem IPv6 jest teraz dostępna w [przypadku protokołu IPv6 dla usługi Azure sieci wirtualnych](../virtual-network/ipv6-overview.md) , która integruje łączność IPv6 z sieciami wirtualnymi i zawiera najważniejsze funkcje, takie jak reguły sieciowej grupy zabezpieczeń IPv6, routing zdefiniowany przez użytkownika IPv6, podstawowy protokół IPv6 i Standardowe Równoważenie obciążenia i nie tylko.  Protokół IPv6 dla usługi Azure sieci wirtualnych jest zalecanym najlepszym rozwiązaniem dla aplikacji IPv6 na platformie Azure. 
+>[! Uwaga: zmiana w ramach najlepszych rozwiązań dotyczących protokołu IPv6] w tym artykule opisano wprowadzaną funkcję IPv6, która umożliwia podstawowym usługom równoważenia obciążenia zapewnienie łączności z protokołami IPv4 i IPv6.  Bardziej kompleksowa łączność z protokołem IPv6 jest teraz dostępna w [przypadku protokołu IPv6 dla usługi Azure sieci wirtualnych](../virtual-network/ipv6-overview.md) , która integruje łączność IPv6 z sieciami wirtualnymi i zawiera najważniejsze funkcje, takie jak reguły sieciowej grupy zabezpieczeń IPv6, routing zdefiniowany przez użytkownika IPv6, podstawowe i standardowe Równoważenie obciążenia.  Protokół IPv6 dla usługi Azure sieci wirtualnych jest zalecanym najlepszym rozwiązaniem dla aplikacji IPv6 na platformie Azure. 
 >Zobacz [protokół IPv6 dla wdrożenia szablonów sieci wirtualnej platformy Azure](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)
 
 Usługa Azure Load Balancer to moduł równoważenia obciążenia w warstwie 4 (TCP, UDP). Moduł równoważenia obciążenia zapewnia wysoką dostępność, dystrybuując ruch przychodzący w wystąpieniach usług o dobrej kondycji w usługach w chmurze lub na maszynach wirtualnych w zestawie modułu równoważenia obciążenia. Usługa Azure Load Balancer może także prezentować te usługi na wielu portach i/lub wielu adresach IP.
@@ -55,36 +55,36 @@ Ten artykuł zawiera odwołania do szablonu opublikowanego w galerii [szablonów
 1. Otwórz Azure Portal i zaloguj się przy użyciu konta z uprawnieniami do tworzenia maszyn wirtualnych i zasobów sieciowych w ramach subskrypcji platformy Azure. Ponadto, jeśli nie korzystasz z istniejących zasobów, konto musi mieć uprawnienia do tworzenia grupy zasobów i konta magazynu.
 2. Kliknij pozycję "+ nowy" w menu, a następnie w polu wyszukiwania wpisz ciąg "template". Wybierz pozycję "Template deployment" z wyników wyszukiwania.
 
-    ![LB-IPv6-Portal — step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. W bloku wszystkiego kliknij pozycję "Template deployment".
 
-    ![LB-IPv6-Portal — step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Kliknij pozycję "Utwórz".
 
-    ![LB-IPv6-Portal — Step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Kliknij pozycję "Edytuj szablon". Usuń istniejącą zawartość i skopiuj/wklej zawartość do całej zawartości pliku szablonu (aby dołączyć początek i koniec {}), a następnie kliknij pozycję "Zapisz".
 
     > [!NOTE]
     > W przypadku korzystania z programu Microsoft Internet Explorer po wklejeniu zostanie wyświetlone okno dialogowe z prośbą o zezwolenie na dostęp do Schowka systemu Windows. Kliknij pozycję "Zezwalaj na dostęp".
 
-    ![LB-IPv6-Portal — Step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Kliknij pozycję "Edytuj parametry". W bloku parametry Określ wartości zgodnie ze wskazówkami w sekcji Parametry szablonu, a następnie kliknij przycisk "Zapisz", aby zamknąć Blok parametrów. W bloku wdrożenie niestandardowe wybierz swoją subskrypcję, istniejącą grupę zasobów lub utwórz ją. W przypadku tworzenia grupy zasobów wybierz lokalizację grupy zasobów. Następnie kliknij pozycję **postanowienia prawne**, a następnie kliknij pozycję **Kup** w przypadku postanowień prawnych. Platforma Azure rozpocznie wdrażanie zasobów. Wdrożenie wszystkich zasobów trwa kilka minut.
 
-    ![LB-IPv6-Portal — Step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Aby uzyskać więcej informacji na temat tych parametrów, zobacz sekcję [Parametry szablonu i zmienne](#template-parameters-and-variables) w dalszej części tego artykułu.
 
 7. Aby wyświetlić zasoby utworzone przez szablon, kliknij przycisk Przeglądaj, przewiń w dół listę do momentu wyświetlenia okna "grupy zasobów", a następnie kliknij je.
 
-    ![LB-IPv6-Portal — STEP7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. W bloku grupy zasobów kliknij nazwę grupy zasobów, która została określona w kroku 6. Zostanie wyświetlona lista wszystkich wdrożonych zasobów. Jeśli wszystko zostało wykonane prawidłowo, powinien powiedzieć "powodzenie" w "ostatnim wdrożeniu". Jeśli nie, upewnij się, że konto, którego używasz, ma uprawnienia do tworzenia niezbędnych zasobów.
 
-    ![LB-IPv6-Portal — step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > W przypadku przeglądania grup zasobów natychmiast po wykonaniu kroku 6 "ostatnie wdrożenie" spowoduje wyświetlenie stanu "wdrażanie" podczas wdrażania zasobów.

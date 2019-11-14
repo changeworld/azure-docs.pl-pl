@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Maszyny wirtualne usługi Load Balancer w różnych strefach dostępności — Azure Portal'
+title: 'Samouczek: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności — Azure Portal'
 titlesuffix: Azure Load Balancer
 description: Ten samouczek przedstawia sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu frontonu strefowo nadmiarowego w celu zrównoważenia obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu witryny Azure Portal
 services: load-balancer
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2079ec95b582ed724583112f7af4865af66eef9d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273473"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048866"
 ---
-# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
+# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
 Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żądań przychodzących pomiędzy wiele maszyn wirtualnych. W tym samouczku opisano kroki tworzenia publicznej usługi Load Balancer w warstwie Standardowa, która równoważy obciążenia maszyn wirtualnych w różnych strefach dostępności. Pomaga on chronić aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych. Dzięki nadmiarowości stref w co najmniej jednej strefie dostępności może wystąpić błąd, a ścieżka do danych będzie działać tak długo, jak jedna strefa w regionie pozostanie w dobrej kondycji. Omawiane kwestie:
 
@@ -52,13 +52,13 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
-    | Ustawienie                 | Value                                              |
+    | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
-    | Resource group         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
-    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
+    | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Type          | Wybierz pozycję **Publiczna**.                                        |
+    | Typ          | wybierz pozycję **Publiczny**.                                        |
     | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
@@ -179,7 +179,7 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
     - W menu rozwijanym w obszarze **Maszyna wirtualna** kliknij pozycję **myVM1**.
     - W menu rozwijanym w obszarze **Adres IP** kliknij pozycję myVM1.
 4. Kliknij pozycję **Dodaj nowy zasób zaplecza**, aby dodać wszystkie maszyny wirtualne (*myVM2* i *myVM3*) do dodania do puli zaplecza modułu równoważenia obciążenia.
-5. Kliknij przycisk **Dodaj**.
+5. Kliknij pozycję **Add** (Dodaj).
 
     ![Dodawanie do puli adresów zaplecza](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -231,6 +231,6 @@ Aby zobaczyć, jak moduł równoważenia obciążenia rozdziela ruch między mas
 
 Gdy grupa zasobów, moduł równoważenia obciążenia i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. Aby to zrobić, wybierz grupę zasobów zawierającą moduł równoważenia obciążenia, a następnie kliknij przycisk **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).

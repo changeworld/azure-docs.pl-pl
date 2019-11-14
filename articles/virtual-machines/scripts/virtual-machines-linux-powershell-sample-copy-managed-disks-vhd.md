@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — eksportowanie/kopiowanie wirtualnego dysku twardego dysku zarządzanego na konto magazynu w innym regionie |Microsoft Docs
+title: Przykładowy skrypt Azure PowerShell — Eksportuj/Kopiuj dysk VHD dysku zarządzanego do konta magazynu w innym regionie
 description: Przykładowy skrypt programu Azure PowerShell — eksportowanie/kopiowanie wirtualnego dysku twardego dysku zarządzanego na konto magazynu w tym samym lub innym regionie
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: abf32d857285de841fb12fb6f9d281afba5b2539
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 51da00a1e64c93275db893a252bc3d9a24951a9d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749999"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040227"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell"></a>Eksportowanie/kopiowanie wirtualnego dysku twardego dysku zarządzanego na konto magazynu w innym regionie przy użyciu programu PowerShell
 

@@ -1,23 +1,19 @@
 ---
-title: Tworzenie bramy aplikacji z obsługą wielu witryn — Azure PowerShell | Microsoft Docs
+title: Hostowanie wielu witryn przy użyciu programu PowerShell
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak utworzyć bramę aplikacji, która będzie hostować wiele witryn przy użyciu programu Azure PowerShell.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: e96579d52752f75b864c430ea0334a544606998c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 449095c92c30638b25836a2c7803176f7f0512e5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835572"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048061"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Tworzenie bramy aplikacji z obsługą wielu witryn przy użyciu Azure PowerShell
 

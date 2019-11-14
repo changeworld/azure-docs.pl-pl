@@ -3,16 +3,16 @@ title: Najlepsze rozwiązania dotyczące używania Power BI do wykonywania zapyt
 description: Ten artykuł zawiera informacje o najlepszych rozwiązaniach dotyczących używania Power BI do wykonywania zapytań i wizualizacji danych Eksplorator danych platformy Azure.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286753"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024036"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Najlepsze rozwiązania dotyczące używania Power BI do wykonywania zapytań i wizualizacji danych Eksplorator danych platformy Azure
 
@@ -78,8 +78,8 @@ Kusto zapytania zwracają domyślnie do 500 000 wierszy lub 64 MB, zgodnie z opi
 
 Te opcje umożliwiają [Ustawianie instrukcji](/azure/kusto/query/setstatement) przy użyciu zapytania, aby zmienić domyślne limity zapytania:
 
-  * **Limit rekordu wyniku zapytania** , który generuje `set truncationmaxrecords`
-  * **Limit rozmiaru danych wyniku zapytania w bajtach** generuje `set truncationmaxsize`
+  * **Limit rekordów wyników zapytania** , który generuje `set truncationmaxrecords`
+  * **Limit rozmiaru danych wyników zapytania w bajtach** generuje `set truncationmaxsize`
   * **Wyłącz obcinanie zestawu wyników** generuje `set notruncation`
 
 ### <a name="using-query-parameters"></a>Korzystanie z parametrów zapytania
@@ -90,7 +90,7 @@ Możesz użyć [parametrów zapytania](/azure/kusto/query/queryparametersstateme
 
 Użyj parametru zapytania, aby odfiltrować informacje w kwerendzie i zoptymalizować wydajność zapytań.
  
-W oknie **Edytowanie zapytań** , @no__t **Home**-2**Edytor zaawansowany**
+W oknie **Edytuj zapytania** , > **Home** **Edytor zaawansowany**
 
 1. Znajdź następującą sekcję zapytania:
 
@@ -106,7 +106,7 @@ W oknie **Edytowanie zapytań** , @no__t **Home**-2**Edytor zaawansowany**
 
 1. Zastąp odpowiednią część zapytania parametrem. Podziel zapytanie na wiele części i połącz je z powrotem przy użyciu znaku handlowego "i" (&) wraz z parametrem.
 
-   Na przykład w powyższym zapytaniu zajmiemy się częścią `State == 'ALABAMA'` i zostanie ona podzielona na: `State == '` i `'` i umieścimy między nimi parametr `State`:
+   Na przykład w powyższym zapytaniu zajmiemy się częścią `State == 'ALABAMA'` i dzieli ją na: `State == '` i `'` i umieścimy `State` parametr między nimi:
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"

@@ -1,18 +1,19 @@
 ---
-title: Certyfikaty wymagane do zalisty dozwolonych się z usługą Azure Application Gateway
-description: W tym artykule przedstawiono przykłady sposobu konwertowania certyfikatu SSL na certyfikat uwierzytelniania i zaufany certyfikat główny wymagany dla wystąpień zaplecza listy dozwolonych na platformie Azure Application Gateway
+title: Certyfikaty wymagane do zezwalania na serwery zaplecza
+titleSuffix: Azure Application Gateway
+description: W tym artykule przedstawiono przykłady sposobu konwertowania certyfikatu SSL na certyfikat uwierzytelniania i zaufany certyfikat główny wymagany do zezwalania na wystąpienia zaplecza na platformie Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774794"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048170"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Tworzenie certyfikatów w celu zezwalania na zaplecze przy użyciu usługi Azure Application Gateway
 
@@ -51,9 +52,9 @@ W certyfikacie SSL wyeksportuj plik. cer klucza publicznego (nie klucz prywatny)
 
    ![Base-64 — zakodowana](./media/certificates-for-backend-authentication/base64.png)
 
-5. W polu **plik do**wyeksportowania **Przejdź** do lokalizacji, do której chcesz wyeksportować certyfikat. Do pola **Nazwa pliku** wprowadź nazwę pliku certyfikatu. Następnie kliknij przycisk **Dalej**.
+5. W polu **plik do wyeksportowania** **Przejdź** do lokalizacji, do której chcesz wyeksportować certyfikat. Do pola **Nazwa pliku** wprowadź nazwę pliku certyfikatu. Następnie kliknij przycisk **Dalej**.
 
-   ![Przeglądaj](./media/certificates-for-backend-authentication/browse.png)
+   ![Browse](./media/certificates-for-backend-authentication/browse.png)
 
 6. Kliknij przycisk **Zakończ**, aby wyeksportować certyfikat.
 
@@ -65,7 +66,7 @@ W certyfikacie SSL wyeksportuj plik. cer klucza publicznego (nie klucz prywatny)
 
    Wyeksportowany certyfikat wygląda podobnie do tego:
 
-   ![Wyeksportowano](./media/certificates-for-backend-authentication/exported.png)
+   ![Możliwy](./media/certificates-for-backend-authentication/exported.png)
 
 8. Jeśli otworzysz wyeksportowany certyfikat przy użyciu Notatnika, zobaczysz coś podobnego do tego przykładu. Sekcja w kolorze niebieskim zawiera informacje przekazane do bramy Application Gateway. Jeśli otworzysz certyfikat przy użyciu programu Notepad i nie jest on podobny do tego, zazwyczaj oznacza to, że nie został on wyeksportowany przy użyciu Base-64 szyfrowanego X. 509 (. CER). Ponadto, jeśli chcesz użyć innego edytora tekstów, należy zrozumieć, że niektóre edytory mogą wprowadzić niezamierzone formatowanie w tle. Może to spowodować problemy podczas przekazywania tekstu z tego certyfikatu do platformy Azure.
 

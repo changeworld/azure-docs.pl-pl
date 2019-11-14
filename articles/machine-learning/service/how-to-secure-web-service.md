@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932055"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048604"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Użyj protokołu SSL do zabezpieczenia za pośrednictwem Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,12 +54,12 @@ Istnieją niewielkie różnice w przypadku zabezpieczania serwerów docelowych w
 
 Jeśli nie masz jeszcze nazwy domeny, Kup ją w *rejestratorze nazw domen*. Proces i cena różnią się między Rejestratorami. Rejestrator udostępnia narzędzia do zarządzania nazwą domeny. Te narzędzia służą do mapowania w pełni kwalifikowanej nazwy domeny (FQDN) (takiej jak www\.contoso.com) na adres IP, który hostuje.
 
-## <a name="get-an-ssl-certificate"></a>Pobierz certyfikat SSL
+## <a name="get-an-ssl-certificate"></a>Uzyskaj certyfikat protokołu SSL
 
 Istnieje wiele sposobów uzyskiwania certyfikatu SSL (certyfikatu cyfrowego). Najbardziej powszechnym celem jest zakupienie jednego z *urzędów* certyfikacji (CA). Bez względu na to, gdzie otrzymujesz certyfikat, potrzebne są następujące pliki:
 
-* **Certyfikat**. Certyfikat musi zawierać pełny łańcuch certyfikatów i musi być "zakodowany przez PEM".
-* **Klucz**. Klucz musi być również zakodowany przez PEM.
+* A **certyfikatu**. Certyfikat musi zawierać pełny łańcuch certyfikatów i musi być "zakodowany przez PEM".
+* A **klucz**. Klucz musi być również zakodowany przez PEM.
 
 W przypadku żądania certyfikatu należy podać nazwę FQDN adresu, który ma być używany dla programu (na przykład www\.contoso.com). Adres, który jest opatrzony sygnaturą i adresem używanym przez klientów, jest porównywany w celu zweryfikowania tożsamości. Jeśli te adresy nie są zgodne, klient otrzymuje komunikat o błędzie.
 
@@ -67,7 +67,7 @@ W przypadku żądania certyfikatu należy podać nazwę FQDN adresu, który ma b
 > Jeśli urząd certyfikacji nie może dostarczyć certyfikatu i klucza jako plików zakodowanych przez PEM, można użyć narzędzia, takiego jak [OpenSSL](https://www.openssl.org/) , aby zmienić format.
 
 > [!WARNING]
-> Używaj certyfikatów z podpisem *własnym* tylko do celów deweloperskich. Nie używaj ich w środowiskach produkcyjnych. Certyfikaty z podpisem własnym mogą spowodować problemy w aplikacjach klienckich. Aby uzyskać więcej informacji, zobacz dokumentację bibliotek sieciowych używanych przez aplikację kliencką.
+> Używaj certyfikatów z podpisem *własnym* tylko do celów deweloperskich. Nie używaj ich w środowiskach produkcyjnych. Certyfikaty z podpisem własnym może powodować problemy w swoim kliencie aplikacji. Aby uzyskać więcej informacji, zobacz dokumentację bibliotek sieciowych używanych przez aplikację kliencką.
 
 ## <a id="enable"></a>Włącz protokół SSL i Wdróż
 
@@ -85,7 +85,7 @@ Podczas wdrażania programu do AKS można utworzyć nowy klaster AKS lub dołąc
 
 Metoda **enable_ssl** może korzystać z certyfikatu dostarczonego przez firmę Microsoft lub zakupionego certyfikatu.
 
-  * Korzystając z certyfikatu firmy Microsoft, należy użyć parametru *leaf_domain_label* . Ten parametr generuje nazwę DNS usługi. Na przykład wartość "Moja usługa" tworzy nazwę domeny "WebService\<sześć znaków losowych >.\<azureregion >. cloudapp. Azure. com ", gdzie \<azureregion > to region, w którym znajduje się usługa. Opcjonalnie można użyć parametru *overwrite_existing_domain* , aby zastąpić istniejące *leaf_domain_label*.
+  * Korzystając z certyfikatu firmy Microsoft, należy użyć parametru *leaf_domain_label* . Ten parametr generuje nazwę DNS usługi. Na przykład wartość "contoso" tworzy nazwę domeny "contoso\<sześć znaków losowych >.\<azureregion >. cloudapp. Azure. com ", gdzie \<azureregion > to region, w którym znajduje się usługa. Opcjonalnie można użyć parametru *overwrite_existing_domain* , aby zastąpić istniejące *leaf_domain_label*.
 
     Aby wdrożyć (lub ponownie wdrożyć) usługę z włączonym protokołem SSL, należy ustawić parametr *ssl_enabled* na wartość "true" wszędzie tam, gdzie ma to zastosowanie. Dla parametru *ssl_certificate* ustaw wartość pliku *certyfikatu* . Ustaw *ssl_key* na wartość pliku *klucza* .
 
@@ -98,11 +98,19 @@ Metoda **enable_ssl** może korzystać z certyfikatu dostarczonego przez firmę 
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
     provisioning_config = AksCompute.provisioning_configuration()
-    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
-    attach_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
   * Korzystając z *zakupionego certyfikatu*, należy użyć parametrów *ssl_cert_pem_file*, *ssl_key_pem_file*i *ssl_cname* . Poniższy przykład ilustruje sposób użycia plików *PEM* do utworzenia konfiguracji korzystającej z zakupionego certyfikatu SSL:
@@ -135,7 +143,7 @@ aci_config = AciWebservice.deploy_configuration(
 
 Aby uzyskać więcej informacji, zobacz [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
 
-## <a name="update-your-dns"></a>Aktualizowanie systemu DNS
+## <a name="update-your-dns"></a>Zaktualizuj serwer DNS
 
 Następnie należy zaktualizować system DNS, aby wskazywał.
 

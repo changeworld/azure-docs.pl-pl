@@ -1,26 +1,26 @@
 ---
-title: Zatwierdzanie lub odrzucanie żądań dotyczących ról zasobów platformy Azure w Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Zatwierdzanie żądań dla ról zasobów platformy Azure w usłudze PIM — Azure AD | Microsoft Docs
 description: Dowiedz się, jak zatwierdzać lub odrzucać żądania dotyczące ról zasobów platformy Azure w programie Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c436a529ebaf15a3024f935c1b28327230da0ac0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e779f633efccf7b594c193e165a584d22b1d653b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895902"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021966"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>Zatwierdzanie lub odrzucanie żądań dotyczących ról zasobów platformy Azure w Privileged Identity Management
 
@@ -32,7 +32,7 @@ Wykonaj kroki opisane w tym artykule, aby zatwierdzić lub odrzucić żądania d
 
 W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli zasobu platformy Azure oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 

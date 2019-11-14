@@ -7,20 +7,23 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 02/06/2019
-ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b11671f20a7e3e6053f90a884777b31196232a38
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932894"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048306"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Zbieranie dzienników aktywności platformy Azure w Azure Monitor między dzierżawami Azure Active Directory
 
+> [!NOTE]
+> Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](activity-log-collect.md).
+
 W tym artykule opisano metodę zbierania dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w Azure Monitor za pomocą łącznika modułu zbierającego dane Log Analytics platformy Azure dla Logic Apps. Użyj procesu w tym artykule, gdy chcesz wysłać dzienniki do obszaru roboczego w innej Azure Active Directory dzierżawie. Jeśli na przykład jesteś dostawcą zarządzanej usługi, możesz zebrać dzienniki aktywności z subskrypcji klienta i przechować je w obszarze roboczym usługi Log Analytics we własnej subskrypcji.
 
-Jeśli obszar roboczy Log Analytics znajduje się w tej samej subskrypcji platformy Azure lub w innej subskrypcji, ale w tej samej Azure Active Directory, wykonaj kroki opisane w sekcji [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](activity-log-collect.md) do zbierania platformy Azure Dzienniki aktywności.
+Jeśli obszar roboczy Log Analytics znajduje się w tej samej subskrypcji platformy Azure lub w innej subskrypcji, ale w tej samej Azure Active Directory, wykonaj czynności opisane w sekcji [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](activity-log-collect.md) do zbierania dzienników aktywności platformy Azure.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Strategia używana w tym scenariuszu jest oparta na wysyłaniu zdarzeń przez dziennik aktywności platformy Azure do [centrum zdarzeń](../../event-hubs/event-hubs-about.md), skąd [aplikacja logiki](../../logic-apps/logic-apps-overview.md) wysyła je do obszaru roboczego usługi Log Analytics. 
 
@@ -288,7 +291,7 @@ Akcja [modułu zbierającego dane log Analytics platformy Azure](https://docs.mi
 
    ![Dodawanie akcji wysyłania danych analizy dzienników w usłudze Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Wprowadź nazwę połączenia i wklej **identyfikator obszaru roboczego** oraz **klucz obszaru roboczego** dla obszaru roboczego usługi Log Analytics.  Kliknij przycisk **Utwórz**.
+3. Wprowadź nazwę połączenia i wklej **identyfikator obszaru roboczego** oraz **klucz obszaru roboczego** dla obszaru roboczego usługi Log Analytics.  Kliknij pozycję **Utwórz**.
 
    ![Dodawanie połączenia analizy dzienników w usłudze Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 

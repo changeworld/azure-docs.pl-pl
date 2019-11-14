@@ -1,24 +1,24 @@
 ---
-title: Wyświetlanie uprawnień roli administratora w centrum administracyjnym — Azure Active Directory | Microsoft Docs
+title: Wyświetlanie przypisań ról niestandardowych w portalu usługi Azure AD | Microsoft Docs
 description: Teraz można wyświetlać członków roli administratora usługi Azure AD w centrum administracyjnym usługi Azure AD i zarządzać nimi.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbe3b0218b73649d40f27d17ee2c7de2853c6b7c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d989a515a1a3c1dc12ca357a3ab2126e78800ffa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025554"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024415"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Wyświetlanie przypisań ról niestandardowych w Azure Active Directory
 
@@ -31,7 +31,7 @@ W tym artykule opisano sposób wyświetlania ról niestandardowych przypisanych 
 
 Ta procedura opisuje Wyświetlanie przypisań roli z zakresem całej organizacji.
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com)@no__t 1with administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com) z uprawnieniami administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
 1. Wybierz pozycję **Azure Active Directory**, wybierz pozycję **role i Administratorzy**, a następnie wybierz rolę, aby ją otworzyć i wyświetlić jej właściwości.
 1. Wybierz pozycję **przypisania** , aby wyświetlić przypisania dla tej roli.
 
@@ -104,7 +104,7 @@ HTTP/1.1 200 OK
 
 W tej sekcji opisano Wyświetlanie przypisań roli z zakresem pojedynczej aplikacji. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com)@no__t 1with administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com) z uprawnieniami administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
 1. Wybierz pozycję **rejestracje aplikacji**, a następnie wybierz pozycję Rejestracja aplikacji, aby wyświetlić jej właściwości. Może być konieczne wybranie opcji **wszystkie aplikacje** , aby wyświetlić pełną listę rejestracji aplikacji w organizacji usługi Azure AD.
 
     ![Tworzenie lub edytowanie rejestracji aplikacji na stronie Rejestracje aplikacji](./media/roles-create-custom/appreg-all-apps.png)

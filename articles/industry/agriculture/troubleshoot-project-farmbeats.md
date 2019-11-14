@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ab0d3aac6944e331223d91eb98b50b3308be12c3
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797636"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048272"
 ---
 # <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -251,7 +251,7 @@ Na pulpicie nawigacyjnym grupy zasobów Wyszukaj konto magazynu (datahublogs....
 
 **Znaczenie**: Konfiguracja rejestracji aplikacji usługi Azure AD nie została prawidłowo wykonana.  
 
-**Akcja naprawcza**: poproszenie administratora IT (z dostępem do odczytu dzierżawy), aby użyć naszego [skryptu](https://aka.ms/PPCreateAADappregistration) do generowania rejestracji aplikacji usługi Azure AD. Ten skrypt automatycznie zajmie się również procedurami konfiguracji. definicj  
+**Akcja naprawcza**: poproszenie administratora IT (z dostępem do odczytu dzierżawy), aby użyć naszego [skryptu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) do generowania rejestracji aplikacji usługi Azure AD. Ten skrypt automatycznie zajmie się również procedurami konfiguracji.
 
 **Błąd**: nie można utworzyć nowej aplikacji Active Directory "fikcyjnej" w tej dzierżawie: inny obiekt o tej samej wartości identyfikatorów URI identyfikatora właściwości już istnieje
 

@@ -1,30 +1,30 @@
 ---
-title: Wizualizuj dane z Eksploratora danych Azure przy użyciu zapytania SQL w usłudze Power BI
-description: 'W tym artykule dowiesz się, jak używać jednej z trzech opcji do wizualizacji danych w usłudze Power BI: zapytania SQL względem klastra Eksploratora danych usługi Azure.'
+title: Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu zapytania SQL w Power BI
+description: 'W tym artykule dowiesz się, jak użyć jednej z trzech opcji wizualizacji danych w Power BI: zapytania SQL względem klastra Eksplorator danych platformy Azure.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806433"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024079"
 ---
-# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Wizualizuj dane z Eksploratora danych Azure przy użyciu zapytania SQL w usłudze Power BI
+# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu zapytania SQL w Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji.
 
-Usługa Azure Data Explorer oferuje trzy opcje łączenia się z danymi w usłudze Power BI: za pomocą wbudowanego łącznika, przez zaimportowanie zapytania z usługi Azure Data Explorer lub za pomocą zapytania SQL. Ten artykuł pokazuje, jak korzystać z zapytania SQL do danych i wizualizacji w raporcie usługi Power BI.
+Usługa Azure Data Explorer oferuje trzy opcje łączenia się z danymi w usłudze Power BI: za pomocą wbudowanego łącznika, przez zaimportowanie zapytania z usługi Azure Data Explorer lub za pomocą zapytania SQL. W tym artykule pokazano, jak za pomocą zapytania SQL pobrać dane i wizualizować je w raporcie Power BI.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebne są następujące polecenie, aby zakończyć w tym artykule:
+Aby ukończyć ten artykuł, potrzebne są następujące elementy:
 
 * Konto e-mail organizacji należące do usługi Azure Active Directory, aby możliwe było łączenie się z [klastrem pomocy usługi Azure Data Explorer](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
@@ -52,7 +52,7 @@ Zazwyczaj w usłudze Azure Data Explorer używasz natywnego języka zapytań, al
     |---|---|---|
     | Serwer | *help.kusto.windows.net* | Adres URL klastra pomocy (bez *https://* ). W przypadku innych klastrów adres URL ma postać *\<Nazwa_klastra\>.\<Region\>.kusto.windows.net*. |
     | Database (Baza danych) | *Przykłady* | Przykładowa baza danych hostowana w klastrze, z którą nawiązujesz połączenie. |
-    | Tryb łączności danych | *Importujuj* | Określa, czy usługa Power BI importuje dane, czy łączy się bezpośrednio ze źródłem danych. Korzystając z tego łącznika, możesz wybrać dowolną z tych opcji. |
+    | Tryb łączności danych | *Importowanie* | Określa, czy usługa Power BI importuje dane, czy łączy się bezpośrednio ze źródłem danych. Korzystając z tego łącznika, możesz wybrać dowolną z tych opcji. |
     | Limit czasu polecenia | Pozostaw puste | Czas działania zapytania, po jakim zgłaszany jest błąd przekroczenia limitu czasu. |
     | Instrukcja SQL | Skopiuj zapytanie znajdujące się pod tą tabelą | Instrukcja SQL, którą usługa Azure Data Explorer tłumaczy na zapytanie natywne. |
     | Inne opcje | Pozostaw wartości domyślne | Te opcje nie mają zastosowania w klastrach usługi Azure Data Explorer. |
@@ -68,7 +68,7 @@ Zazwyczaj w usłudze Azure Data Explorer używasz natywnego języka zapytań, al
 
     ![Logowanie](media/power-bi-sql-query/sign-in.png)
 
-1. Na **help.kusto.windows.net: Przykłady** ekranu, wybierz opcję **obciążenia**.
+1. Na ekranie **help.kusto.windows.net: Samples** wybierz przycisk **Załaduj**.
 
     ![Ładowanie danych](media/power-bi-sql-query/load-data.png)
 
@@ -80,8 +80,8 @@ Zazwyczaj w usłudze Azure Data Explorer używasz natywnego języka zapytań, al
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już raportu, który został utworzony w tym artykule, usuń plik programu Power BI Desktop (pbix).
+Jeśli raport utworzony w tym artykule nie jest już potrzebny, usuń plik Power BI Desktop (pbix).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI](power-bi-connector.md)
+[Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla Power BI](power-bi-connector.md)

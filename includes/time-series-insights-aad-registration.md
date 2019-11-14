@@ -9,24 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 09/24/2019
-ms.openlocfilehash: 7e67b9e1c611d14b78db53f8662fb4e1f493a8df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 1ed57e30273c9ba3feb110e0e5acbd3bcc7ffd40
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990196"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062909"
 ---
-> [!IMPORTANT]
-> * Nowy blok **Azure Active Directory** > **rejestracje aplikacji** zastępuje starszy blok **Azure Active Directory** > **Rejestracje aplikacji (starsza wersja)** może 2019.
-> * Rejestracje aplikacji utworzone lub wyświetlone w starszym bloku będą automatycznie wyświetlane w nowym bloku.
-> * Aby uzyskać wyczerpujące informacje na temat migracji do nowego środowiska rejestracji aplikacji platformy Azure, zapoznaj się z [przewodnikiem szkoleniowym dotyczącym platformy azure rejestracje aplikacji](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) i [Azure Active Directory szybki start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
-
 1. W [Azure Portal](https://ms.portal.azure.com/)wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **nową rejestrację**.
 
    [![rejestrację nowej aplikacji w Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-   > [!TIP]
-   > Nowy panel rejestracji aplikacji Azure Active Directory umożliwia filtrowanie wyświetlanych aplikacji przez wybranie **własnościowych aplikacji**.
 
     Aplikacja zostanie wyświetlona w tym miejscu po zarejestrowaniu.
 
@@ -51,7 +43,7 @@ ms.locfileid: "72990196"
 
    [![utworzyć nowego klucza tajnego klienta](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
-   Kliknij przycisk **Save** (Zapisz).
+   Kliknij pozycję **Zapisz**.
 
 1. Wybierz kolejno pozycje **certyfikaty &** wpisy tajne i **Nowy wpis tajny klienta** , aby utworzyć hasło aplikacji, za pomocą których klient może potwierdzić swoją tożsamość.
 

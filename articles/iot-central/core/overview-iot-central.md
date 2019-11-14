@@ -1,6 +1,6 @@
 ---
 title: Co to jest usługa Azure IoT Central | Microsoft Docs
-description: Usługa Azure IoT Central to kompleksowe rozwiązanie SaaS, którego można użyć do kompilowania niestandardowego rozwiązania IoT i zarządzania nim. Ten artykuł zawiera omówienie funkcji usługi Azure IoT Central.
+description: Azure IoT Central to platforma aplikacji IoT, która upraszcza tworzenie rozwiązań IoT. Ten artykuł zawiera omówienie funkcji usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/26/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0cb3ac836569c782d7b7d84917af276567e89c86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957706"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048671"
 ---
 <!---
 Purpose of an Overview article: 
@@ -70,7 +70,7 @@ Konstruktor może też dostosować interfejs użytkownika aplikacji usługi Azur
 - Konfigurowanie niestandardowych pulpitów nawigacyjnych ułatwiających operatorom odnajdywanie szczegółowych informacji i szybsze rozwiązywanie problemów.
 - Konfigurowanie niestandardowych analiz w celu eksplorowania danych serii czasu na połączonych urządzeniach.
 
-## <a name="connect-your-devices"></a>Podłącz swoje urządzenia
+## <a name="connect-your-devices"></a>Łączenie urządzeń
 
 Po zdefiniowaniu przez konstruktora typów urządzeń, które mogą łączyć się z aplikacją, deweloper urządzenia tworzy kod do uruchamiania na urządzeniach. Deweloper urządzenia tworzy kod urządzenia przy użyciu zestawów [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) typu „open source” firmy Microsoft. Te zestawy SDK oferują szeroką obsługę języków, platform i protokołów, aby umożliwić łączenie urządzeń z aplikacją usługi Azure IoT Central. Zestawy SDK ułatwiają zaimplementowanie następujących możliwości urządzeń:
 

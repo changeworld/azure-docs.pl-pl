@@ -1,61 +1,61 @@
 ---
-title: Użyj połączenia Open Database Connectivity (ODBC) do Eksploratora danych platformy Azure, aby Wizualizacja danych przy użyciu Tableau
-description: W tym artykule dowiesz się, jak Wizualizacja danych przy użyciu Tableau za pomocą połączenia Open Database Connectivity (ODBC) do połączenia Eksploratora danych usługi Azure.
+title: Użyj połączenia Open Database Connectivity (ODBC) z usługą Azure Eksplorator danych, aby wizualizować dane za pomocą Tableau
+description: W tym artykule dowiesz się, jak używać połączenia Open Database Connectivity (ODBC) z usługą Azure Eksplorator danych Connection do wizualizacji danych za pomocą Tableau.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a0948ae35a5c23768df117979db819861ac64529
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66499087"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023858"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Wizualizuj dane z Eksploratora danych platformy Azure w Tableau
+# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Wizualizuj dane z usługi Azure Eksplorator danych w Tableau
 
- [TABLEAU](https://www.tableau.com/) to platforma analizę graficzną do analizy biznesowej. Aby połączyć do Eksploratora danych usługi Azure z Tableau i wyświetlić dane z klastra z próbki, należy użyć sterownik programu SQL Server Open Database Connectivity (ODBC). 
+ [Tableau](https://www.tableau.com/) to platforma analityczna do analizy biznesowej. Aby nawiązać połączenie z usługą Azure Eksplorator danych z Tableau i wprowadzić dane z przykładowego klastra, użyj sterownika SQL Server Open Database Connectivity (ODBC). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebne są następujące polecenie, aby zakończyć w tym artykule:
+Aby ukończyć ten artykuł, potrzebne są następujące elementy:
 
-* [Łączenie do Eksploratora danych platformy Azure z ODBC](connect-odbc.md) nawiązać połączenia z Eksploratora danych platformy Azure z Tableau za pomocą sterownika SQL Server ODBC. 
+* [Połącz się z usługą azure Eksplorator danych za pomocą ODBC](connect-odbc.md) przy użyciu sterownika SQL Server ODBC, aby nawiązać połączenie z platformą Azure Eksplorator danych z Tableau. 
 
-* Desktop TABLEAU pełnego, lub [wersji próbnej](https://www.tableau.com/products/desktop/download) wersji.
+* Tableau Desktop, pełna lub wersja [próbna](https://www.tableau.com/products/desktop/download) .
 
-* Klastra, który zawiera StormEvents przykładowych danych. Aby uzyskać więcej informacji, zobacz [tworzenia klastra Azure Eksploratora danych i bazy danych](create-cluster-database-portal.md) i [pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure](ingest-sample-data.md).
+* Klaster zawierający przykładowe dane StormEvents. Aby uzyskać więcej informacji, zobacz [Tworzenie klastra Eksplorator danych i bazy danych platformy Azure](create-cluster-database-portal.md) oraz pobieranie [przykładowych danych do usługi Azure Eksplorator danych](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="visualize-data-in-tableau"></a>Wizualizowanie danych w Tableau 
 
-Po zakończeniu konfigurowania ODBC przykładowych danych może zapewnić Tableau.
+Po zakończeniu konfigurowania ODBC można przenieść przykładowe dane do Tableau.
 
-1. Na pulpicie Tableau, w menu po lewej stronie wybierz **inne bazy danych (ODBC)** .
+1. Na pulpicie Tableau, w menu po lewej stronie wybierz kolejno pozycje **inne bazy danych (ODBC)** .
 
     ![Łączenie z bazą danych ODBC](media/tableau/connect-odbc.png)
 
-1. Aby uzyskać **DSN**, wybierz źródło danych utworzone dla ODBC, a następnie wybierz **Sign In**.
+1. W polu **DSN**wybierz źródło danych utworzone dla ODBC, a następnie wybierz pozycję **Zaloguj się**.
 
-    ![Logowanie w ODBC](media/tableau/odbc-sign-in.png)
+    ![Logowanie za pośrednictwem ODBC](media/tableau/odbc-sign-in.png)
 
-1. Aby uzyskać **bazy danych**, wybierz bazę danych w klastrze przykładowe, takie jak *TestDatabase*. Dla **schematu**, wybierz opcję *dbo*oraz **tabeli**, wybierz opcję *StormEvents* przykładowej tabeli.
+1. W polu **baza danych**wybierz bazę danych w przykładowym klastrze, na przykład *TestDatabase*. W obszarze **schemat**wybierz pozycję *dbo*, a dla opcji **tabela**wybierz tabelę przykładową *StormEvents* .
 
-    ![Wybierz bazę danych i tabelę](media/tableau/select-database-table.png)
+    ![Wybieranie bazy danych i tabeli](media/tableau/select-database-table.png)
 
-1. TABLEAU są teraz wyświetlane schematu dla przykładowych danych. Wybierz **Aktualizuj teraz** do przenoszenia danych do firmy Tableau.
+1. Tableau teraz pokazuje schemat dla przykładowych danych. Wybierz pozycję **Aktualizuj teraz** , aby przenieść dane do Tableau.
 
     ![Aktualizowanie danych](media/tableau/update-data.png)
 
-    Po zaimportowaniu danych Tableau zawiera wiersze danych podobny do poniższej ilustracji.
+    Po zaimportowaniu danych Tableau wyświetla wiersze danych podobne do poniższej ilustracji.
 
     ![Zestaw wyników](media/tableau/result-set.png)
 
-1. Teraz możesz utworzyć wizualizacje w Tableau, w oparciu o dane pochodzące z Eksploratora danych usługi Azure. Aby uzyskać więcej informacji, zobacz [Tableau Learning](https://www.tableau.com/learn).
+1. Teraz można tworzyć wizualizacje w programie Tableau w oparciu o dane wprowadzone w ramach platformy Azure Eksplorator danych. Aby uzyskać więcej informacji, zobacz [Tableau Learning](https://www.tableau.com/learn).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)

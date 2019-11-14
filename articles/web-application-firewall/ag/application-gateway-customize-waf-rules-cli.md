@@ -1,18 +1,18 @@
 ---
-title: Dostosowywanie reguł zapory aplikacji sieci Web w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure
+title: Dostosowywanie reguł przy użyciu interfejsu wiersza polecenia — Zapora aplikacji sieci Web platformy Azure
 description: Ten artykuł zawiera informacje dotyczące sposobu dostosowywania reguł zapory aplikacji sieci Web w Application Gateway przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 58cc339e8f849a71fb01973e99dba936f6b53a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516944"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048531"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Dostosowywanie reguł zapory aplikacji sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure
 

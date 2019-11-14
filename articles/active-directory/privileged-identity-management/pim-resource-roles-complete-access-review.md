@@ -1,26 +1,26 @@
 ---
-title: Dokończ przegląd dostępu ról zasobów platformy Azure w Privileged Identity Management-Azure Active Directory | Microsoft Docs
-description: Dowiedz się, jak wykonać przegląd dostępu ról zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
+title: Kończenie przeglądu dostępu do ról zasobów platformy Azure w usłudze PIM — Azure AD | Microsoft Docs
+description: Dowiedz się, jak wykonać przegląd dostępu do ról zasobów platformy Azure Privileged Identity Management w Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6761d1d6aea796e0cca708676f69c47328642cc2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895811"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021994"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Dokończ przegląd dostępu ról zasobów platformy Azure w Privileged Identity Management
 
@@ -50,13 +50,13 @@ Wszystkie przeglądy dostępu mają datę zakończenia. Wybierz pozycję **Zatrz
 
 ### <a name="reset"></a>Reset
 
-Możesz zresetować przegląd dostępu, aby usunąć wszystkie podejmowane decyzje. Po zresetowaniu przeglądu dostępu wszyscy użytkownicy są domyślnie oznaczeni jako nieprzeglądany.
+Możesz zresetować przegląd dostępu, aby usunąć wszystkie podejmowane decyzje. Po zresetowaniu przeglądu dostępu wszyscy użytkownicy są oznaczeni jako Nieprzejrzane ponownie.
 
-### <a name="apply"></a>Składanie wniosku o przyjęcie do programu
+### <a name="apply"></a>Zastosuj
 
 Po zakończeniu przeglądu dostępu wybierz pozycję **Zastosuj** , aby zaimplementować wynik przeglądu. W przypadku odmowy dostępu użytkownika do przeglądu ten krok spowoduje usunięcie przypisania roli.  
 
-### <a name="delete"></a>Usuń
+### <a name="delete"></a>Usuwanie
 
 Jeśli nie chcesz dowiedzieć się więcej, usuń je. Wybierz pozycję **Usuń** yo Usuń przegląd z usługi Privileged Identity Management.
 

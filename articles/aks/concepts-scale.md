@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 26cd2ffc12dfb93f07c2e1755a0dc41cc90da252
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961633"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048192"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Obecnie nie można dostosowywać tych wartości cooldown z domyślnego.
 
 ## <a name="cluster-autoscaler"></a>Automatyczne skalowanie klastra
 
-Aby odpowiedzieć na zmieniające się zapotrzebowanie na żądanie, Kubernetes ma automatyczne skalowanie klastra, który jest obecnie w wersji zapoznawczej w AKS, który dostosowuje liczbę węzłów na podstawie żądanych zasobów obliczeniowych w puli węzłów. Domyślnie Automatyczne skalowanie klastra sprawdza serwer interfejsu API metryk co 10 sekund dla wszystkich wymaganych zmian w liczniku węzłów. Jeśli automatyczne skalowanie klastra ustali, że wymagana jest zmiana, liczba węzłów w klastrze AKS zostaje odpowiednio zwiększona lub obniżona. Automatyczne skalowanie klastra współpracuje z klastrami AKS z włączoną funkcją RBAC, które działają w Kubernetes 1.10. x lub nowszym.
+Aby odpowiedzieć na zmieniające się zapotrzebowanie na żądanie, Kubernetes ma automatyczne skalowanie klastra, który dostosowuje liczbę węzłów na podstawie żądanych zasobów obliczeniowych w puli węzłów. Domyślnie Automatyczne skalowanie klastra sprawdza serwer interfejsu API metryk co 10 sekund dla wszystkich wymaganych zmian w liczniku węzłów. Jeśli automatyczne skalowanie klastra ustali, że wymagana jest zmiana, liczba węzłów w klastrze AKS zostaje odpowiednio zwiększona lub obniżona. Automatyczne skalowanie klastra współpracuje z klastrami AKS z włączoną funkcją RBAC, które działają w Kubernetes 1.10. x lub nowszym.
 
 ![Automatyczne skalowanie klastra Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 

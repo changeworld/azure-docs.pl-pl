@@ -1,24 +1,24 @@
 ---
-title: Przyznaj indywidualną zgodę na przekroczenie ograniczeń rejestracji aplikacji — Azure Active Directory | Microsoft Docs
-description: Przypisz rolę niestandardową, aby udzielić nieograniczonej rejestracji aplikacji w usłudze Azure AD Active Directory.
+title: Usuwanie limitów dotyczących tworzenia rejestracji aplikacji — Azure AD | Microsoft Docs
+description: Przypisywanie roli niestandardowej w celu udzielenia nieograniczonej rejestracji aplikacji w usłudze Azure AD Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026286"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024409"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Szybki Start: Przyznawanie uprawnień do tworzenia nieograniczonej rejestracji aplikacji
 
@@ -26,13 +26,13 @@ W tym przewodniku szybki start utworzysz rolę niestandardową z uprawnieniem do
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
 Najmniej uprzywilejowana rola wymagana do tworzenia i przypisywania ról niestandardowych usługi Azure AD jest administratorem roli uprzywilejowanej.
 
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Tworzenie nowej roli niestandardowej przy użyciu portalu usługi Azure AD
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com)@no__t 1With administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com) z uprawnieniami administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
 1. Wybierz pozycję **Azure Active Directory**, wybierz pozycję **role i Administratorzy**, a następnie wybierz pozycję **Nowa rola niestandardowa**.
 
     ![Tworzenie lub edytowanie ról na stronie role i Administratorzy](./media/roles-create-custom/new-custom-role.png)
@@ -49,7 +49,7 @@ Najmniej uprzywilejowana rola wymagana do tworzenia i przypisywania ról niestan
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>Przypisywanie roli do użytkownika przy użyciu portalu usługi Azure AD
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com)@no__t 1with administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com) z uprawnieniami administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
 1. Wybierz pozycję **Azure Active Directory** a następnie wybierz pozycję **role i Administratorzy**.
 1. Wybierz rolę twórcę rejestracji aplikacji i wybierz pozycję **Dodaj przypisanie**.
 1. Wybierz żądanego użytkownika, a następnie kliknij pozycję **Wybierz** , aby dodać użytkownika do roli.
@@ -64,7 +64,7 @@ Gotowe! W tym przewodniku szybki start pomyślnie utworzono rolę niestandardow�
 Dostępne są dwa uprawnienia do przyznawania możliwości tworzenia rejestracji aplikacji, z których każdy ma inne zachowanie.
 
 - Microsoft. Directory/Applications/createAsOwner: przypisanie wyników tego uprawnienia do twórcy dodawanego jako pierwszy właściciel utworzonej rejestracji aplikacji, a rejestracja utworzonej aplikacji będzie liczona względem przydziału 250 obiektów utworzonych przez twórcę.
-- Microsoft. Directory/applicationPolicies/Create: przypisanie wyników tego uprawnienia do twórcy nie jest dodawany jako pierwszy właściciel utworzonej rejestracji aplikacji, a rejestracja utworzonej aplikacji nie będzie liczona względem utworzonych obiektów 250 przez twórcę działa. Należy dokładnie użyć tego uprawnienia, ponieważ nie ma możliwości uniemożliwienia sobie tworzenia rejestracji aplikacji, dopóki nie zostanie osiągnięty limit przydziału na poziomie katalogu. Jeśli przypisane są oba uprawnienia, ma to pierwszeństwo.
+- Microsoft. Directory/applicationPolicies/Create: przypisanie wyników tego uprawnienia do twórcy nie jest dodawany jako pierwszy właściciel utworzonej rejestracji aplikacji, a rejestracja utworzonej aplikacji nie będzie liczona względem przydziału 250 obiektów utworzonych przez twórcę. Należy dokładnie użyć tego uprawnienia, ponieważ nie ma możliwości uniemożliwienia sobie tworzenia rejestracji aplikacji, dopóki nie zostanie osiągnięty limit przydziału na poziomie katalogu. Jeśli przypisane są oba uprawnienia, ma to pierwszeństwo.
 
 ## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Tworzenie roli niestandardowej przy użyciu programu Azure AD PowerShell
 
@@ -135,7 +135,7 @@ $customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Displ
 
 Żądanie HTTP, aby utworzyć rolę niestandardową.
 
-POUBOJOWEGO
+POST
 
 ``` HTTP
 https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
@@ -172,7 +172,7 @@ Przypisanie roli łączy Identyfikator podmiotu zabezpieczeń (który może być
 
 Żądanie HTTP do przypisania roli niestandardowej.
 
-POUBOJOWEGO
+POST
 
 ``` HTTP
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments

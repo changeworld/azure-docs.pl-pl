@@ -1,24 +1,24 @@
 ---
-title: Tworzenie i przypisywanie roli niestandardowej w kontroli dostępu opartej na rolach usługi Azure AD — Azure Active Directory | Microsoft Docs
+title: Tworzenie ról niestandardowych w kontroli dostępu opartej na rolach usługi Azure AD | Microsoft Docs
 description: Utwórz i przypisz niestandardowe role usługi Azure AD z zakresem zasobów dla zasobów Azure Active Directory.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026398"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025272"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Tworzenie i przypisywanie roli niestandardowej w Azure Active Directory
 
@@ -30,8 +30,8 @@ Role niestandardowe można tworzyć na karcie [role i Administratorzy](https://p
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Utwórz nową rolę niestandardową, aby udzielić dostępu do zarządzania rejestracjami aplikacji
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com)@no__t 1with administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
-1. Wybierz **Azure Active Directory**role  > **i Administratorzy** > **Nowa rola niestandardowa**.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure ad](https://aad.portal.azure.com) z uprawnieniami administrator ról uprzywilejowanych lub administratora globalnego w organizacji usługi Azure AD.
+1. Wybierz pozycję **Azure Active Directory** > **role i Administratorzy** > **nową rolę niestandardową**.
 
    ![Tworzenie lub edytowanie ról na stronie role i Administratorzy](./media/roles-create-custom/new-custom-role.png)
 
@@ -44,7 +44,7 @@ Role niestandardowe można tworzyć na karcie [role i Administratorzy](https://p
 
       ![Wybierz uprawnienia roli niestandardowej na karcie uprawnienia](./media/roles-create-custom/permissions-tab.png)
 
-   1. Następnie wprowadź "podstawowe" na pasku wyszukiwania, zaznacz uprawnienie `microsoft.directory/applications/basic/update`, a następnie kliknij przycisk **dalej**.
+   1. Następnie wprowadź wartość "podstawowa" na pasku wyszukiwania, wybierz uprawnienie `microsoft.directory/applications/basic/update`, a następnie kliknij przycisk **dalej**.
 1. Na karcie **Recenzja + tworzenie** Przejrzyj uprawnienia i wybierz pozycję **Utwórz**.
 
 Rola niestandardowa zostanie wyświetlona na liście dostępnych ról do przypisania.
@@ -116,7 +116,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Żądanie HTTP, aby utworzyć niestandardową definicję roli.
 
-    POUBOJOWEGO
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
@@ -145,7 +145,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Żądanie HTTP, aby utworzyć niestandardową definicję roli.
 
-    POUBOJOWEGO
+    POST
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments

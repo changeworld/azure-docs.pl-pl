@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685462"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049131"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania tabel rozproszonych w Azure SQL Data Warehouse
 Zalecenia dotyczące projektowania tabel rozproszonych rozproszonych i rozmieszczonych w trybie okrężnym w Azure SQL Data Warehouse.
@@ -60,7 +60,7 @@ Należy rozważyć użycie rozkładu okrężnego dla tabeli w następujących sc
 
 - Gdy rozpoczynasz pracę jako prosty punkt początkowy, ponieważ jest to wartość domyślna
 - Jeśli nie istnieje oczywisty sprzężenie klucza
-- Jeśli nie ma odpowiedniej kolumny kandydatów do dystrybucji dla tej tabeli
+- Jeśli nie ma odpowiedniej kolumny kandydatów do dystrybucji dla tabeli
 - Jeśli tabela nie udostępnia wspólnego klucza sprzężenia z innymi tabelami
 - Jeśli sprzężenie jest mniej znaczące niż inne sprzężenia w zapytaniu
 - Gdy tabela jest tymczasową tabelą tymczasową

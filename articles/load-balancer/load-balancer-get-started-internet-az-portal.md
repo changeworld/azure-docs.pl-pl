@@ -1,11 +1,11 @@
 ---
 title: Tworzenie Load Balancer za pomocą Strefowo nadmiarowego frontonu — Azure Portal
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia standardowego przy użyciu strefowo nadmiarowy publiczny adres IP adres serwera sieci Web za pomocą witryny Azure portal
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: allensu
-ms.openlocfilehash: a875fc3446944b8a39f43b29440ab1d7179b847d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4896030b1980defc79ff7a7ccd24ee22202ce167
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275080"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049067"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowy za pomocą witryny Azure portal
 
@@ -46,7 +46,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
     > Publicznego adresu IP, utworzone w tym kroku jest dla standardowej jednostki SKU i strefowo nadmiarowe domyślnie. 
 8. W obszarze **lokalizacji**, wybierz opcję **wschodnie stany USA 2**, a następnie kliknij przycisk **OK**. Rozpocznie się wdrażanie modułu równoważenia obciążenia. Potrwa to kilka minut.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia i dostępność strefy](load-balancer-standard-availability-zones.md).
 
 

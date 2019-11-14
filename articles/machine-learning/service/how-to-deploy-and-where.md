@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4a0736267ca00b67f35abc7cf263e7cf19543d81
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6ab01cf42dac280e64470355f7ea5804cad669d7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932123"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048808"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Dowiedz się, jak wdrożyć model uczenia maszynowego jako usługę sieci Web w 
 
 Przepływ pracy jest podobny do tego, [gdzie wdrażasz](#target) model:
 
-1. Zarejestruj model.
+1. Należy zarejestrować model.
 1. Przygotuj się do wdrożenia. (Określ zasoby, użycie, cel obliczeń).
 1. Wdróż model do obiektu docelowego obliczeń.
 1. Przetestuj wdrożony model, nazywany również usługą sieci Web.
@@ -194,7 +194,7 @@ Skrypt zawiera dwie funkcje, które ładują i uruchamiają model:
 
 * `init()`: Zazwyczaj ta funkcja ładuje model do obiektu globalnego. Ta funkcja jest uruchamiana tylko raz, gdy zostanie uruchomiony kontener platformy Docker dla usługi sieci Web.
 
-* `run(input_data)`: Ta funkcja używa modelu do przewidywania wartości na podstawie danych wejściowych. Dane wejściowe i wyjściowe przebiegu zazwyczaj używają formatu JSON do serializacji i deserializacji. Możesz również korzystać z nieprzetworzonych danych binarnych. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem ich do klienta.
+* `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe przebiegu zazwyczaj używają formatu JSON do serializacji i deserializacji. Możesz również korzystać z nieprzetworzonych danych binarnych. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem ich do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Lokalizowanie plików modelu w skrypcie wprowadzania
 
@@ -233,7 +233,7 @@ Podczas rejestrowania modelu należy podać nazwę modelu, która jest używana 
 Po zarejestrowaniu modelu nadaj mu nazwę. Nazwa odnosi się do lokalizacji modelu, lokalnie lub podczas wdrażania usługi.
 
 > [!IMPORTANT]
-> Jeśli używasz automatycznej uczenia maszynowego do uczenia modelu, wartość `model_id` jest używana jako nazwa modelu. Aby zapoznać się z przykładem rejestrowania i wdrażania modelu przeszkolonego za pomocą automatycznego uczenia maszynowego, zobacz [Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) w witrynie GitHub.
+> Jeśli używasz automatycznej uczenia maszynowego do uczenia modelu, wartość `model_id` jest używana jako nazwa modelu. Aby zapoznać się z przykładem rejestrowania i wdrażania modelu przeszkolonego za pomocą automatycznego uczenia maszynowego, zobacz [Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features) w witrynie GitHub.
 
 Poniższy przykład zwróci ścieżkę do pojedynczego pliku o nazwie `sklearn_mnist_model.pkl` (który został zarejestrowany przy użyciu nazwy `sklearn_mnist`):
 
@@ -375,8 +375,8 @@ def run(data):
 
 Aby uzyskać więcej przykładów, zobacz następujące skrypty:
 
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
@@ -530,7 +530,7 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrożenia dla każdeg
 
 | Docelowy zasób obliczeniowy | Przykład konfiguracji wdrożenia |
 | ----- | ----- |
-| Lokalna | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Lokalny | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -572,7 +572,7 @@ Aby uzyskać informacje na temat korzystania z profilowania z interfejsu wiersza
 Aby uzyskać więcej informacji, zobacz następujące dokumenty:
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profil ()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
+* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 * [Schemat pliku konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Wdróż do celu
@@ -584,7 +584,7 @@ Wdrożenie używa konfiguracji wdrożenia konfiguracji wnioskowania do wdrożeni
 Aby lokalnie wdrożyć model, należy zainstalować platformę Docker na komputerze lokalnym.
 
 #### <a name="using-the-sdk"></a>Używanie zestawu SDK
-
+zzs
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
 
@@ -1137,8 +1137,8 @@ Uwaga: te zależności są zawarte we wstępnie skompilowanym kontenerze wniosko
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć wdrożoną usługę sieci Web, użyj `service.delete()`.
-Aby usunąć zarejestrowany model, użyj `model.delete()`.
+Aby usunąć wdrożonej usługi sieci web, użyj `service.delete()`.
+Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
 
 Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) i [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1146,7 +1146,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebSe
 
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Zabezpieczanie Azure Machine Learning usług sieci Web przy użyciu protokołu SSL](how-to-secure-web-service.md)
+* [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu Azure Machine Learning wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)

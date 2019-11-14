@@ -1,18 +1,19 @@
 ---
-title: Ograniczanie ruchu internetowego za pomocą zapory aplikacji sieci Web — Azure PowerShell
+title: Ograniczanie ruchu internetowego przy użyciu programu PowerShell
+titleSuffix: Azure Web Application Firewall
 description: Dowiedz się, jak ograniczyć ruch internetowy za pomocą zapory aplikacji sieci Web w bramie aplikacji przy użyciu Azure PowerShell.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: b96065b6551f604cfd817a00e6a39cec37c71377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.topic: conceptual
+ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502282"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046292"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Włącz zaporę aplikacji sieci Web przy użyciu Azure PowerShell
 
@@ -74,7 +75,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
+## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 W tej sekcji utworzysz zasoby obsługujące bramę aplikacji, a następnie utwórz ją i WAF. Zasoby, które utworzysz, obejmują:
 

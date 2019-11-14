@@ -1,6 +1,6 @@
 ---
-title: Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu interfejsu wiersza polecenia platformy Azure
-titlesuffix: Azure Load Balancer
+title: Usługa Load Balancer w warstwie Standardowa ze strefą frontonu — interfejs wiersza polecenia platformy Azure
+titleSuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny usługa Load Balancer w warstwie Standardowa ze strefą frontonu publicznego adresu IP przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274314"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048339"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -115,7 +115,7 @@ Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu r�
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Utwórz sieć wirtualną o nazwie *myVnet* z podsiecią  o nazwie Moja podsieć w liście zasobów przy użyciu polecenia [AZ Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create).
+Utwórz sieć wirtualną o nazwie *myVnet* z podsiecią o nazwie Moja *podsieć* w liście zasobów przy użyciu polecenia [AZ Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create).
 
 
 ```azurecli-interactive

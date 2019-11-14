@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 4ee3489ec9218411106fe28e6a747dffd3e007c2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7ae102e61c6241e071dccf26eb619f0ac29379d7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884489"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021159"
 ---
 > [!NOTE]
-> Obecnie jest wyświetlana dokumentacja IoT Central [szablonów aplikacji, które używają ogólnie dostępnych funkcji](../articles/iot-central/core/concepts-app-templates.md#preview-templates). Aby wyświetlić dokumentację [szablonów aplikacji korzystających z funkcji wersji zapoznawczej,](../articles/iot-central/core/concepts-app-templates.md#preview-templates) przejdź do [co to jest usługa Azure IoT Central (funkcje w wersji zapoznawczej)?](../articles/iot-central/preview/overview-iot-central.md).
+> Obecnie jest wyświetlana dokumentacja IoT Central [szablonów aplikacji](../articles/iot-central/core/concepts-app-templates.md#preview-templates) , które używają ogólnie dostępnych funkcji. Aby wyświetlić dokumentację [szablonów aplikacji](../articles/iot-central/core/concepts-app-templates.md#preview-templates) korzystających z funkcji wersji zapoznawczej, przejdź do [co to jest usługa Azure IoT Central (funkcje w wersji zapoznawczej)?](../articles/iot-central/preview/overview-iot-central.md).

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647144"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049173"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Wykrywanie dryfowania danych (wersja zapoznawcza) w zestawach DataSet
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,8 +135,8 @@ Ta tabela zawiera podstawowe ustawienia używane do monitorowania zestawu danych
 | Bazowy zestaw danych | Tabelaryczny zestaw danych, który będzie używany jako linia bazowa do porównania docelowego zestawu danych w czasie. | Zestaw danych bazowych musi mieć wspólne funkcje z docelowym zestawem danych. Ogólnie rzecz biorąc, linia bazowa powinna być ustawiona na zestaw danych szkoleniowych modelu lub do wycinka docelowego zestawu danych. | Nie |
 | Docelowy zestaw danych | Zestaw danych tabelarycznych z określoną kolumną sygnatur czasowych, który zostanie przeanalizowany pod kątem dryfowania danych | Docelowy zestaw danych musi mieć wspólne funkcje z bazowym zestawem danych, który powinien być `timeseries`m zestawem danych, do którego dodawane są nowe dane. Dane historyczne w docelowym zestawie danych mogą być analizowane lub można monitorować nowe dane. | Nie | 
 | Częstotliwość | Jest to częstotliwość, która zostanie użyta do zaplanowania zadania potoku i przeanalizowania danych historycznych w przypadku uruchamiania wypełniania. Dostępne opcje to codziennie, co tydzień lub co miesiąc. | Dostosuj to ustawienie, aby uwzględnić w linii bazowej porównywalny rozmiar danych. | Nie | 
-| Funkcje | Lista funkcji, które zostaną przeanalizowane pod kątem dryfowania danych w czasie | Ustaw na funkcje wyjściowe modelu, aby zmierzyć dryf koncepcji. Nie należy dołączać funkcji, które naturalnie dryfuje w czasie (miesiąc, rok, indeks itp.). Po dostosowaniu listy funkcji można wypełniać i śledzić istniejący monitor dryfowania danych. | Tak | 
-| Docelowy zasób obliczeniowy | Azure Machine Learning miejsce docelowe obliczeń, aby uruchomić zadania monitorowania zestawu danych. | | Tak | 
+| Funkcje | Lista funkcji, które zostaną przeanalizowane pod kątem dryfowania danych w czasie | Ustaw na funkcje wyjściowe modelu, aby zmierzyć dryf koncepcji. Nie należy dołączać funkcji, które naturalnie dryfuje w czasie (miesiąc, rok, indeks itp.). Po dostosowaniu listy funkcji można wypełniać i śledzić istniejący monitor dryfowania danych. | Yes | 
+| Docelowy zasób obliczeniowy | Azure Machine Learning miejsce docelowe obliczeń, aby uruchomić zadania monitorowania zestawu danych. | | Yes | 
 
 ### <a name="monitor-settings"></a>Ustawienia monitora
 
@@ -144,10 +144,10 @@ Te ustawienia dotyczą potoku monitora harmonogramu zestawu danych, który zosta
 
 | Ustawienie | Opis | Porady | Modyfikowalny | 
 | ------- | ----------- | ---- | ------- |
-| Włączanie | Włączanie lub wyłączanie harmonogramu dla potoku monitora zestawu danych | Wyłącz tę funkcję, aby analizować dane historyczne przy użyciu ustawienia wypełniania. Można ją włączyć po utworzeniu monitora zestawu danych. | Tak | 
+| Włączanie | Włączanie lub wyłączanie harmonogramu dla potoku monitora zestawu danych | Wyłącz tę funkcję, aby analizować dane historyczne przy użyciu ustawienia wypełniania. Można ją włączyć po utworzeniu monitora zestawu danych. | Yes | 
 | Opóźnienie | Czas, w godzinach, pobiera dane do zestawu danych. Na przykład jeśli dane mają być dostarczone przez trzy dni w postaci hermetyzacji zestawu danych SQL DB, ustaw opóźnienie na 72. | Nie można zmienić po utworzeniu monitora zestawu danych | Nie | 
-| Adresy e-mail | Adresy e-mail dla alertów na podstawie naruszenia progu procentu dryfu danych. | Wiadomości e-mail są wysyłane za poorednictwem Azure Monitor. | Tak | 
-| Próg | Próg procentowy dryfu danych dla alertów e-mail. | Więcej alertów i zdarzeń można ustawić dla wielu innych metryk w skojarzonym zasobie Application Insightsm obszaru roboczego. | Tak | 
+| Adresy e-mail | Adresy e-mail dla alertów na podstawie naruszenia progu procentu dryfu danych. | Wiadomości e-mail są wysyłane za poorednictwem Azure Monitor. | Yes | 
+| Próg | Próg procentowy dryfu danych dla alertów e-mail. | Więcej alertów i zdarzeń można ustawić dla wielu innych metryk w skojarzonym zasobie Application Insightsm obszaru roboczego. | Yes | 
 
 ### <a name="backfill-settings"></a>Ustawienia wypełniania
 
@@ -173,13 +173,13 @@ Po potwierdzeniu funkcjonalności obszaru roboczego przejdź do strony głównej
 
 Kliknij przycisk **+ Utwórz monitor** i Kontynuuj pracę kreatora, klikając przycisk **dalej**.
 
-![Kreatora](media/how-to-monitor-datasets/wizard.png)
+![Kreator](media/how-to-monitor-datasets/wizard.png)
 
 Ten monitor zestawu danych zostanie wyświetlony na liście. Wybierz go, aby przejść do strony szczegółów tego monitora.
 
 ### <a name="from-python-sdk"></a>Z zestawu SDK języka Python
 
-Aby uzyskać szczegółowe informacje, zobacz [dokumentację referencyjną języka Python SDK dotyczącą dryfowania danych](https://aka.ms/datadriftapi) . 
+Aby uzyskać szczegółowe informacje, zobacz [dokumentację referencyjną języka Python SDK dotyczącą dryfowania danych](/python/api/azureml-datadrift/azureml.datadrift) . 
 
 Poniżej przedstawiono przykład tworzenia monitora zestawu danych przy użyciu zestawu SDK języka Python
 
@@ -321,7 +321,7 @@ Kolumny lub funkcje w zestawie danych są klasyfikowane jako kategorii lub liczb
 | Typ funkcji | Typ danych | Warunek | Ograniczenia | 
 | ------------ | --------- | --------- | ----------- |
 | Podzielone na kategorie | String, bool, int, float | Liczba unikatowych wartości w funkcji jest mniejsza niż 100 i mniejsza niż 5% liczby wierszy. | Wartość null jest traktowana jako jej własna Kategoria. | 
-| Porządkow | int, float | Typu danych liczbowych i nie spełnia warunków funkcji kategorii. | Funkcja została porzucona, jeśli > 15% wartości ma wartość null. | 
+| Wartości liczbowych | int, float | Typu danych liczbowych i nie spełnia warunków funkcji kategorii. | Funkcja została porzucona, jeśli > 15% wartości ma wartość null. | 
 
 ## <a name="next-steps"></a>Następne kroki
 

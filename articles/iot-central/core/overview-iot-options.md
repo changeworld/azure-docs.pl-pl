@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f57d36f6f24aab44d13ea07d8706bf40b7dcf552
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2ec6e1d00d331a7bb8dd7182dd4b0c91dd3d25a7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958161"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049089"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Porównanie opcji usług Azure IoT Central i Azure IoT
 
 Usługa Microsoft Azure IoT Central i rozwiązanie Azure IoT oferują kilka opcji umożliwiających tworzenie rozwiązań IoT. Te opcje są odpowiednie dla różnych zestawów wymagań klientów:
 
-* [Azure IoT Central](overview-iot-central.md) to rozwiązanie typu „oprogramowanie jako usługa” (SaaS) korzystające z podejścia opartego na modelu w celu ułatwienia tworzenia rozwiązań IoT klasy korporacyjnej bez konieczności znajomości programowania rozwiązań w chmurze.
+* [Azure IoT Central](overview-iot-central.md) to platforma aplikacji IoT, która używa podejścia opartego na modelu, które ułatwia tworzenie rozwiązań IoT klasy korporacyjnej bez konieczności znajomości programowania rozwiązań w chmurze.
 
 * [Akceleratory rozwiązań Azure IoT](https://docs.microsoft.com/azure/iot-accelerators/) to zbiór [akceleratorów rozwiązań](../../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) klasy korporacyjnej opartych na ofercie typu „platforma jako usługa” (PaaS) dostępnej w ramach platformy Azure. Ułatwiają one szybsze rozwijanie niestandardowych rozwiązań IoT.
 
@@ -42,7 +42,7 @@ W poniższej tabeli przedstawiono podsumowanie najważniejszych różnic między
 |     | Azure IoT Central | Akceleratory rozwiązań Azure IoT |
 | --- | ----------- | --------- |
 | Podstawowe zastosowanie                      | Skrócenie czasu wprowadzenia na rynek prostych rozwiązań IoT, które nie wymagają znaczącego dostosowania usług.                                                    | Przyspieszenie opracowania niestandardowych rozwiązań IoT wymagających maksymalnej elastyczności.                                                                                                                             |
-| Dostęp do podstawowych usług PaaS | SaaS. Ponieważ jest to w pełni zarządzane rozwiązanie, podstawowe usługi nie są widoczne.                                                                                            | Dostęp do podstawowych usług platformy Azure, możliwość zarządzania nimi i zastępowania ich w razie potrzeb.                                                                                                                    |
+| Dostęp do podstawowych usług PaaS | Ponieważ jest to w pełni zarządzane rozwiązanie, podstawowe usługi nie są widoczne.                                                                                            | Dostęp do podstawowych usług platformy Azure, możliwość zarządzania nimi i zastępowania ich w razie potrzeb.                                                                                                                    |
 | Elastyczność                        | Średnia. Wbudowane, oparte na przeglądarce środowisko użytkownika umożliwia dostosowywanie modelu rozwiązania i aspektów interfejsu użytkownika. Infrastruktury nie można modyfikować, ponieważ poszczególne składniki nie są widoczne. | Wysoka. Kod mikrousług jest typu „open source” i można go modyfikować w dowolny sposób w celu dopasowania do własnych potrzeb. Ponadto można dostosować infrastrukturę wdrażania.                                               |
 | Poziom umiejętności                        | Niski. Wymagane jest posiadanie umiejętności modelowania w celu dostosowania rozwiązania. Nie są wymagane umiejętności programowania.                                                                          | Średnio wysoki. Konieczna jest znajomość języka Java lub .NET, aby móc dostosować zaplecze rozwiązania. Konieczna jest znajomość języka JavaScript w celu dostosowania wizualizacji.                                                                       |
 | Podstawowe umiejętności             | Szablony aplikacji i urządzeń udostępniają wstępnie wbudowane modele. Można je wdrożyć w kilka minut.                                                                                                  | Wstępnie skonfigurowane rozwiązania implementują typowe scenariusze IoT. Można je wdrożyć w kilka minut.                                                                                                                            |

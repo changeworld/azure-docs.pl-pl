@@ -1,5 +1,5 @@
 ---
-title: Opisy i uprawnienia roli administratora — Azure Active Directory | Microsoft Docs
+title: Opisy i uprawnienia roli administratora — Azure AD | Microsoft Docs
 description: Rola administratora może dodawać użytkowników, przypisywać role administracyjne, resetować hasła użytkowników, zarządzać licencjami użytkowników lub zarządzać domenami.
 services: active-directory
 author: curtand
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 11/06/2019
+ms.date: 11/12/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e4fe4c06833302ac3ef9794981ee4a47fa454b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5a53f2a0e5927a75c4d22ada5837da26bd8deeda
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747768"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028288"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -133,24 +133,24 @@ Użytkownicy w tej roli mogą włączać, wyłączać i usuwać urządzenia w us
 
 Użytkownicy z tą rolą mają uprawnienia do zarządzania funkcjami zgodności w centrum Microsoft 365 zgodności, Microsoft 365 centrum administracyjnego, platformy Azure i Centrum zabezpieczeń i zgodności pakietu Office 365. Osoby przydzielone mogą również zarządzać wszystkimi funkcjami w centrum administracyjnym programu Exchange i zespołami & centrami administracyjnymi Skype dla firm i tworzyć bilety pomocy technicznej dla platformy Azure i Microsoft 365. Więcej informacji można znaleźć w [tematach role administratorów pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Podczas | Można wykonać
+W | Można wykonać
 ----- | ----------
 [Microsoft 365 Centrum zgodności](https://protection.office.com) | Ochrona danych organizacji i zarządzanie nimi w ramach usług Microsoft 365 Services<br>Zarządzanie alertami zgodności
 [Menedżer zgodności](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Śledź, przypisuj i Weryfikuj działania dotyczące zgodności z przepisami organizacji
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zarządzanie nadzorem danych<br>Wykonaj badanie prawne i dane<br>Zarządzaj żądaniem podmiotu danych<br><br>Ta rola ma takie same uprawnienia, jak [rola Administrator zgodności](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) w pakiecie Office 365 Centrum zabezpieczeń i zgodności kontroli dostępu opartej na rolach.
-[Usługa](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetl wszystkie dane inspekcji usługi Intune
+[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetl wszystkie dane inspekcji usługi Intune
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Ma uprawnienia tylko do odczytu i może zarządzać alertami<br>Może tworzyć i modyfikować zasady dotyczące plików i zezwalać na akcje ładu plików<br>Może wyświetlać wszystkie wbudowane raporty w obszarze Zarządzanie danymi
 
 ### <a name="compliance-data-administratorcompliance-data-administrator-permissions"></a>[Administrator danych zgodności](#compliance-data-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia do śledzenia danych w centrum Microsoft 365 zgodności, Microsoft 365 centrum administracyjnego i na platformie Azure. Użytkownicy mogą również śledzić dane zgodności w centrum administracyjnym programu Exchange, w Menedżerze zgodności i zespołach & centrum administracyjnym usługi Skype dla firm i tworzyć bilety pomocy technicznej dla platformy Azure i Microsoft 365.
 
-Podczas | Można wykonać
+W | Można wykonać
 ----- | ----------
 [Microsoft 365 Centrum zgodności](https://protection.office.com) | Monitorowanie zasad związanych z zgodnością w ramach usług Microsoft 365 Services<br>Zarządzanie alertami zgodności
 [Menedżer zgodności](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Śledź, przypisuj i Weryfikuj działania dotyczące zgodności z przepisami organizacji
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zarządzanie nadzorem danych<br>Wykonaj badanie prawne i dane<br>Zarządzaj żądaniem podmiotu danych<br><br>Ta rola ma takie same uprawnienia jak w przypadku [roli administratora danych zgodności](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) w pakiecie Office 365 Centrum zabezpieczeń i zgodności kontroli dostępu opartej na rolach.
-[Usługa](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetl wszystkie dane inspekcji usługi Intune
+[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetl wszystkie dane inspekcji usługi Intune
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Ma uprawnienia tylko do odczytu i może zarządzać alertami<br>Może tworzyć i modyfikować zasady dotyczące plików i zezwalać na akcje ładu plików<br>Może wyświetlać wszystkie wbudowane raporty w obszarze Zarządzanie danymi
 
 ### <a name="conditional-access-administratorconditional-access-administrator-permissions"></a>[Administrator dostępu warunkowego](#conditional-access-administrator-permissions)
@@ -344,7 +344,7 @@ Użytkownicy w tej roli mogą tworzyć i usuwać zawartość usługi Microsoft S
 
 Użytkownicy z tą rolą mają uprawnienia do zarządzania funkcjami związanymi z zabezpieczeniami w programie Microsoft 365 Security Center, Azure Active Directory Identity Protection, Azure Information Protection i Centrum zabezpieczeń i zgodności pakietu Office 365. Więcej informacji o uprawnieniach pakietu Office 365 jest dostępnych w [uprawnieniach w centrum zabezpieczeń i zgodności pakietu office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
-Podczas | Można wykonać
+W | Można wykonać
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Monitorowanie zasad związanych z zabezpieczeniami w ramach usług Microsoft 365 Services<br>Zarządzanie zagrożeniami i alertami zabezpieczeń<br>Wyświetlanie raportów
 Centrum ochrony tożsamości | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Ponadto możliwość wykonywania wszystkich operacji usługi Identity Protection Center z wyjątkiem resetowania haseł
@@ -352,7 +352,7 @@ Centrum ochrony tożsamości | Wszystkie uprawnienia roli czytelnik zabezpiecze�
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zarządzanie zasadami zabezpieczeń<br>Wyświetlanie, badanie i reagowanie na zagrożenia bezpieczeństwa<br>Wyświetlanie raportów
 Azure Advanced Threat Protection | Monitoruj podejrzane działania zabezpieczeń i odpowiadaj na nie
 Windows Defender ATP i EDR | Przypisywanie ról<br>Zarządzanie grupami maszyn<br>Konfigurowanie wykrywania zagrożeń punktów końcowych i zautomatyzowanego korygowania<br>Wyświetlanie alertów, badanie ich i reagowanie na nie
-[Usługa](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetla informacje o użytkownikach, urządzeniach, rejestracji, konfiguracji i aplikacji<br>Nie można wprowadzać zmian w usłudze Intune
+[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetla informacje o użytkownikach, urządzeniach, rejestracji, konfiguracji i aplikacji<br>Nie można wprowadzać zmian w usłudze Intune
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Dodawanie administratorów, Dodawanie zasad i ustawień, przekazywanie dzienników i wykonywanie akcji ładu
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Może wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia
 [Kondycja usługi Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Wyświetlanie kondycji usług Office 365
@@ -361,14 +361,14 @@ Windows Defender ATP i EDR | Przypisywanie ról<br>Zarządzanie grupami maszyn<b
 
 Użytkownicy z tą rolą mogą zarządzać alertami i mieć globalny dostęp tylko do odczytu do funkcji związanych z zabezpieczeniami, w tym wszystkie informacje w Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management i Office 365 Centrum zabezpieczeń i zgodności. Więcej informacji o uprawnieniach pakietu Office 365 jest dostępnych w [uprawnieniach w centrum zabezpieczeń i zgodności pakietu office 365](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
-Podczas | Można wykonać
+W | Można wykonać
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Wyświetlanie alertów dotyczących zagrożeń zabezpieczeń, badanie ich i reagowanie na nie
 Centrum ochrony tożsamości | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Ponadto możliwość wykonywania wszystkich operacji usługi Identity Protection Center z wyjątkiem resetowania haseł
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Wszystkie uprawnienia roli czytelnik zabezpieczeń
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Wyświetlanie alertów zabezpieczeń, badanie ich i reagowanie na nie
 Windows Defender ATP i EDR | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Wyświetlanie alertów zabezpieczeń, badanie ich i reagowanie na nie
-[Usługa](https://docs.microsoft.com/intune/role-based-access-control) | Wszystkie uprawnienia roli czytelnik zabezpieczeń
+[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Wszystkie uprawnienia roli czytelnik zabezpieczeń
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Wszystkie uprawnienia roli czytelnik zabezpieczeń
 [Kondycja usługi Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Wyświetlanie kondycji usług Office 365
 
@@ -376,14 +376,14 @@ Windows Defender ATP i EDR | Wszystkie uprawnienia roli czytelnik zabezpieczeń<
 
 Użytkownicy z tą rolą mają globalny dostęp tylko do odczytu w funkcji związanych z zabezpieczeniami, w tym wszystkie informacje w Microsoft 365 Centrum zabezpieczeń, Azure Active Directory, Ochrona tożsamości, Privileged Identity Management, a także możliwość odczytywania usługi Azure Active Raporty logowania do katalogu i dzienniki inspekcji oraz w pakiecie Office 365 Centrum zabezpieczeń i zgodności. Więcej informacji o uprawnieniach pakietu Office 365 jest dostępnych w [uprawnieniach w centrum zabezpieczeń i zgodności pakietu office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
-Podczas | Można wykonać
+W | Można wykonać
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Wyświetlanie zasad związanych z zabezpieczeniami w ramach usług Microsoft 365 Services<br>Wyświetl zagrożenia i alerty zabezpieczeń<br>Wyświetlanie raportów
 Centrum ochrony tożsamości | Przeczytaj wszystkie raporty i ustawienia zabezpieczeń dotyczące funkcji zabezpieczeń<br><ul><li>Antyspam<li>Szyfrowanie<li>Ochrona przed utratą danych<li>Ochrona przed złośliwym oprogramowaniem<li>Zaawansowana ochrona przed zagrożeniami<li>Ochrona przed phishingiem<li>Reguły Mailflow
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Ma dostęp tylko do odczytu do wszystkich informacji podanych w Azure AD Privileged Identity Management: zasady i raporty dotyczące przypisań ról i przeglądów zabezpieczeń usługi Azure AD.<br>**Nie można** zarejestrować się w usłudze Azure AD Privileged Identity Management ani wprowadzać w niej żadnych zmian. W portalu Privileged Identity Management lub za pośrednictwem programu PowerShell ktoś w tej roli może aktywować dodatkowe role (na przykład administratorów globalnych lub administrator ról uprzywilejowanych), jeśli użytkownik jest uprawniony do korzystania z nich.
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Wyświetlanie zasad zabezpieczeń<br>Wyświetl i zbadaj zagrożenia bezpieczeństwa<br>Wyświetlanie raportów
 Windows Defender ATP i EDR | Wyświetlanie i badanie alertów. Po włączeniu kontroli dostępu opartej na rolach w usłudze Windows Defender ATP użytkownicy z uprawnieniami tylko do odczytu, takimi jak rola czytnika zabezpieczeń usługi Azure AD, tracą dostęp do momentu przypisania ich do roli usługi Windows Defender ATP.
-[Usługa](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetla informacje o użytkownikach, urządzeniach, rejestracji, konfiguracji i aplikacji. Nie można wprowadzać zmian w usłudze Intune.
+[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetla informacje o użytkownikach, urządzeniach, rejestracji, konfiguracji i aplikacji. Nie można wprowadzać zmian w usłudze Intune.
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Ma uprawnienia tylko do odczytu i może zarządzać alertami
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Może wyświetlać zalecenia i alerty, wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, ale nie mogą wprowadzać zmian
 [Kondycja usługi Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Wyświetlanie kondycji usług Office 365
@@ -460,11 +460,11 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 | Microsoft. Directory/Application/appProxyUrlSettings/Update | Zaktualizuj wewnętrzne i zewnętrzne adresy URL serwera proxy aplikacji w Azure Active Directory. |
 | Microsoft. Directory/Applications/applicationProxy/Read | Zapoznaj się ze wszystkimi właściwościami serwera proxy aplikacji. |
 | Microsoft. Directory/Applications/applicationProxy/Update | Zaktualizuj wszystkie właściwości serwera proxy aplikacji. |
-| Microsoft. katalog/aplikacje/odbiorcy/aktualizacja | Aktualizowanie właściwości Applications. odbiorców w Azure Active Directory. |
-| Microsoft. katalog/aplikacje/uwierzytelnianie/aktualizacja | Aktualizowanie właściwości Applications. Authentication w Azure Active Directory. |
+| microsoft.directory/applications/audience/update | Aktualizowanie właściwości Applications. odbiorców w Azure Active Directory. |
+| microsoft.directory/applications/authentication/update | Aktualizowanie właściwości Applications. Authentication w Azure Active Directory. |
 | Microsoft. Directory/Applications/Basic/Update | Zaktualizuj podstawowe właściwości aplikacji w Azure Active Directory. |
 | Microsoft. Directory/Applications/Create | Twórz aplikacje w Azure Active Directory. |
-| Microsoft. Directory/Applications/Credentials/Update | Zaktualizuj Właściwość Applications. Credentials w Azure Active Directory. |
+| microsoft.directory/applications/credentials/update | Zaktualizuj Właściwość Applications. Credentials w Azure Active Directory. |
 | Microsoft. katalog/aplikacje/usuwanie | Usuń aplikacje w Azure Active Directory. |
 | Microsoft. Directory/Applications/Owners/Update | Aktualizowanie właściwości Applications. Owners w Azure Active Directory. |
 | Microsoft. Directory/Applications/Permissions/Update | Aktualizowanie właściwości Applications. Permissions w Azure Active Directory. |
@@ -473,7 +473,7 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 | Microsoft. Directory/appRoleAssignments/odczyt | Odczytaj appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/appRoleAssignments/Update | Aktualizacja appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/appRoleAssignments/Delete | Usuń appRoleAssignments w Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
+| microsoft.directory/auditLogs/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
 | Microsoft. Directory/connectorGroups/wszystko/odczyt | Odczytaj właściwości grupy łączników serwera proxy aplikacji w Azure Active Directory. |
 | Microsoft. Directory/connectorGroups/wszystko/aktualizacja | Zaktualizuj wszystkie właściwości grupy łączników serwera proxy aplikacji w Azure Active Directory. |
 | Microsoft. Directory/connectorGroups/Create | Utwórz grupy łączników serwera proxy aplikacji w Azure Active Directory. |
@@ -487,22 +487,22 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 | Microsoft. Directory/policies/applicationConfiguration/właściciele/odczyt | Odczytaj Właściwość zasad. applicationConfiguration w Azure Active Directory. |
 | Microsoft. Directory/policies/applicationConfiguration/właściciele/aktualizacja | Zaktualizuj Właściwość policies. applicationConfiguration w Azure Active Directory. |
 | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/odczyt | Odczytaj Właściwość zasad. applicationConfiguration w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/appRoleAssignedTo/Update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/appRoleAssignments/Update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignments w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/odbiorcy/aktualizacja | Aktualizacja właściwości serviceprincipals. odbiorca w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Authentication/Update | Aktualizacja właściwości serviceprincipals. Authentication w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Basic/Update | Zaktualizuj podstawowe właściwości obiektów serviceprincipals w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignments/update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignments w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/audience/update | Aktualizacja właściwości serviceprincipals. odbiorca w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/authentication/update | Aktualizacja właściwości serviceprincipals. Authentication w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/basic/update | Zaktualizuj podstawowe właściwości obiektów serviceprincipals w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/Create | Tworzenie obiektów serviceprincipals w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Credentials/Update | Aktualizacja właściwości serviceprincipals. Credentials w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Delete | Usuwanie obiektów serviceprincipals w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Owners/Update | Aktualizacja właściwości serviceprincipals. Owners w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Permissions/Update | Aktualizacja właściwości serviceprincipals. Permissions w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/policies/Update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.directory/servicePrincipals/credentials/update | Aktualizacja właściwości serviceprincipals. Credentials w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/delete | Usuwanie obiektów serviceprincipals w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/owners/update | Aktualizacja właściwości serviceprincipals. Owners w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/permissions/update | Aktualizacja właściwości serviceprincipals. Permissions w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/policies/update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="application-developer-permissions"></a>Uprawnienia deweloperów aplikacji
 
@@ -523,11 +523,11 @@ Zezwolenie na wyświetlanie, ustawianie i Resetowanie informacji o metodach uwie
 | --- | --- |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Unieważnienie wszystkich tokenów odświeżania użytkownika w Azure Active Directory. |
 | Microsoft. Directory/Users/strongAuthentication/Update | Zaktualizuj właściwości silnego uwierzytelniania, takie jak informacje o poświadczeniach usługi MFA. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w organizacji pakietu Office 365. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
 
 ### <a name="azure-devops-administrator-permissions"></a>Uprawnienia administratora usługi Azure DevOps
@@ -554,11 +554,11 @@ Może zarządzać wszystkimi aspektami usługi Azure Information Protection.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. informationProtection/allEntities/allTasks | Zarządzaj wszystkimi aspektami Azure Information Protection. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.informationProtection/allEntities/allTasks | Zarządzaj wszystkimi aspektami Azure Information Protection. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="b2c-user-flow-administrator-permissions"></a>B2C uprawnień administratora przepływu użytkownika
 
@@ -566,7 +566,7 @@ Twórz wszystkie aspekty przepływów użytkowników i zarządzaj nimi.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. B2C/userFlows/allTasks | Odczytywanie i Konfigurowanie przepływów użytkowników w Azure Active Directory B2C. |
+| microsoft.aad.b2c/userFlows/allTasks | Odczytywanie i Konfigurowanie przepływów użytkowników w Azure Active Directory B2C. |
 
 ### <a name="b2c-user-flow-attribute-administrator-permissions"></a>Uprawnienia administratora atrybutu przepływu użytkownika B2C
 
@@ -574,7 +574,7 @@ Utwórz schemat atrybutów dostępny dla wszystkich przepływów użytkowników 
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. B2C/userAttributes/allTasks | Odczytywanie i Konfigurowanie atrybutów użytkownika w Azure Active Directory B2C. |
+| microsoft.aad.b2c/userAttributes/allTasks | Odczytywanie i Konfigurowanie atrybutów użytkownika w Azure Active Directory B2C. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>Uprawnienia administratora zestawu kluczy B2C IEF
 
@@ -582,7 +582,7 @@ Zarządzaj wpisami tajnymi Federacji i szyfrowania w strukturze środowiska toż
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. B2C/trustFramework/zestawy danych/allTasks | Odczytywanie i konfigurowanie zestawów kluczy w Azure Active Directory B2C. |
+| microsoft.aad.b2c/trustFramework/keySets/allTasks | Odczytywanie i konfigurowanie zestawów kluczy w Azure Active Directory B2C. |
 
 ### <a name="b2c-ief-policy-administrator-permissions"></a>Uprawnienia administratora zasad B2C IEF
 
@@ -590,7 +590,7 @@ Tworzenie zasad zaufania platformy i zarządzanie nimi w strukturze środowiska 
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. B2C/trustFramework/policies/allTasks | Odczytaj i skonfiguruj zasady niestandardowe w Azure Active Directory B2C. |
+| microsoft.aad.b2c/trustFramework/policies/allTasks | Odczytaj i skonfiguruj zasady niestandardowe w Azure Active Directory B2C. |
 
 ### <a name="billing-administrator-permissions"></a>Uprawnienia administratora rozliczeń
 
@@ -604,12 +604,12 @@ Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowa
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft. Directory/Organization/Basic/Update | Aktualizuj podstawowe właściwości organizacji w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
 | Microsoft. Commerce. rozliczenia/allEntities/allTasks | Zarządzaj wszystkimi aspektami rozliczeń pakietu Office 365. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="cloud-application-administrator-permissions"></a>Uprawnienia administratora aplikacji w chmurze
 
@@ -617,11 +617,11 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. katalog/aplikacje/odbiorcy/aktualizacja | Aktualizowanie właściwości Applications. odbiorców w Azure Active Directory. |
-| Microsoft. katalog/aplikacje/uwierzytelnianie/aktualizacja | Aktualizowanie właściwości Applications. Authentication w Azure Active Directory. |
+| microsoft.directory/applications/audience/update | Aktualizowanie właściwości Applications. odbiorców w Azure Active Directory. |
+| microsoft.directory/applications/authentication/update | Aktualizowanie właściwości Applications. Authentication w Azure Active Directory. |
 | Microsoft. Directory/Applications/Basic/Update | Zaktualizuj podstawowe właściwości aplikacji w Azure Active Directory. |
 | Microsoft. Directory/Applications/Create | Twórz aplikacje w Azure Active Directory. |
-| Microsoft. Directory/Applications/Credentials/Update | Zaktualizuj Właściwość Applications. Credentials w Azure Active Directory. |
+| microsoft.directory/applications/credentials/update | Zaktualizuj Właściwość Applications. Credentials w Azure Active Directory. |
 | Microsoft. katalog/aplikacje/usuwanie | Usuń aplikacje w Azure Active Directory. |
 | Microsoft. Directory/Applications/Owners/Update | Aktualizowanie właściwości Applications. Owners w Azure Active Directory. |
 | Microsoft. Directory/Applications/Permissions/Update | Aktualizowanie właściwości Applications. Permissions w Azure Active Directory. |
@@ -629,7 +629,7 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 | Microsoft. Directory/appRoleAssignments/Create | Utwórz appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/appRoleAssignments/Update | Aktualizacja appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/appRoleAssignments/Delete | Usuń appRoleAssignments w Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
+| microsoft.directory/auditLogs/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
 | Microsoft. Directory/policies/applicationConfiguration/Create | Utwórz zasady w Azure Active Directory. |
 | Microsoft. Directory/policies/applicationConfiguration/Basic/Read | Odczytaj Właściwość zasad. applicationConfiguration w Azure Active Directory. |
 | Microsoft. Directory/policies/applicationConfiguration/Basic/Update | Zaktualizuj Właściwość policies. applicationConfiguration w Azure Active Directory. |
@@ -637,22 +637,22 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 | Microsoft. Directory/policies/applicationConfiguration/właściciele/odczyt | Odczytaj Właściwość zasad. applicationConfiguration w Azure Active Directory. |
 | Microsoft. Directory/policies/applicationConfiguration/właściciele/aktualizacja | Zaktualizuj Właściwość policies. applicationConfiguration w Azure Active Directory. |
 | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/odczyt | Odczytaj Właściwość zasad. applicationConfiguration w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/appRoleAssignedTo/Update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/appRoleAssignments/Update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignments w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/odbiorcy/aktualizacja | Aktualizacja właściwości serviceprincipals. odbiorca w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Authentication/Update | Aktualizacja właściwości serviceprincipals. Authentication w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Basic/Update | Zaktualizuj podstawowe właściwości obiektów serviceprincipals w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignments/update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignments w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/audience/update | Aktualizacja właściwości serviceprincipals. odbiorca w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/authentication/update | Aktualizacja właściwości serviceprincipals. Authentication w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/basic/update | Zaktualizuj podstawowe właściwości obiektów serviceprincipals w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/Create | Tworzenie obiektów serviceprincipals w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Credentials/Update | Aktualizacja właściwości serviceprincipals. Credentials w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Delete | Usuwanie obiektów serviceprincipals w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Owners/Update | Aktualizacja właściwości serviceprincipals. Owners w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Permissions/Update | Aktualizacja właściwości serviceprincipals. Permissions w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/policies/Update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.directory/servicePrincipals/credentials/update | Aktualizacja właściwości serviceprincipals. Credentials w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/delete | Usuwanie obiektów serviceprincipals w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/owners/update | Aktualizacja właściwości serviceprincipals. Owners w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/permissions/update | Aktualizacja właściwości serviceprincipals. Permissions w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/policies/update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Uprawnienia administratora urządzenia w chmurze
 
@@ -660,14 +660,14 @@ Pełny dostęp do zarządzania urządzeniami w usłudze Azure AD.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Directory/auditLogs/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
+| microsoft.directory/auditLogs/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
 | Microsoft. katalog/urządzenia/usuwanie | Usuń urządzenia w Azure Active Directory. |
 | Microsoft. Directory/Devices/Disable | Wyłącz urządzenia w Azure Active Directory. |
 | Microsoft. Directory/devices/Włącz | Włącz urządzenia w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.directory/signInReports/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 
 ### <a name="company-administrator-permissions"></a>Uprawnienia administratora firmy
 
@@ -680,11 +680,11 @@ Może zarządzać wszystkimi aspektami usługi Azure AD i usługami firmy Micros
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. cloudAppSecurity/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. AAD. cloudAppSecurity. |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. AAD. cloudAppSecurity. |
 | Microsoft. Directory/administrativeUnits/allProperties/allTasks | Tworzenie i usuwanie administrativeUnits oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
 | Microsoft. Directory/Applications/allProperties/allTasks | Tworzenie i usuwanie aplikacji oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
 | Microsoft. Directory/appRoleAssignments/allProperties/allTasks | Tworzenie i usuwanie appRoleAssignments oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
+| microsoft.directory/auditLogs/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
 | Microsoft. Directory/Contacts/allProperties/allTasks | Tworzenie i usuwanie kontaktów oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
 | Microsoft. Directory/kontrakty/allProperties/allTasks | Tworzenie i usuwanie kontraktów oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
 | Microsoft. Directory/Devices/allProperties/allTasks | Tworzenie i usuwanie urządzeń oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
@@ -706,35 +706,35 @@ Może zarządzać wszystkimi aspektami usługi Azure AD i usługami firmy Micros
 | Microsoft. Directory/ServiceAction/enableDirectoryFeature | Może wykonać akcję usługi Enabledirectoryfeature w Azure Active Directory |
 | Microsoft. Directory/ServiceAction/getAvailableExtentionProperties | Może wykonać akcję usługi Getavailableextentionproperties w Azure Active Directory |
 | Microsoft. Directory/serviceprincipals/allProperties/allTasks | Tworzenie i usuwanie obiektów serviceprincipals oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
 | Microsoft. Directory/subscribedSkus/allProperties/allTasks | Tworzenie i usuwanie subscribedSkus oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
 | Microsoft. Directory/Users/allProperties/allTasks | Tworzenie i usuwanie użytkowników oraz odczytywanie i aktualizowanie wszystkich właściwości w Azure Active Directory. |
 | Microsoft. directorySync/allEntities/allTasks | Wykonaj wszystkie akcje w Azure AD Connect. |
-| Microsoft. AAD. identityProtection/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. AAD. identityProtection. |
-| Microsoft. AAD. privilegedIdentityManagement/allEntities/odczyt | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
-| Microsoft. Azure. advancedThreatProtection/allEntities/odczyt | Odczytaj wszystkie zasoby w Microsoft. Azure. advancedThreatProtection. |
-| Microsoft. Azure. informationProtection/allEntities/allTasks | Zarządzaj wszystkimi aspektami Azure Information Protection. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.aad.identityProtection/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. AAD. identityProtection. |
+| microsoft.aad.privilegedIdentityManagement/allEntities/read | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
+| microsoft.azure.advancedThreatProtection/allEntities/read | Odczytaj wszystkie zasoby w Microsoft. Azure. advancedThreatProtection. |
+| microsoft.azure.informationProtection/allEntities/allTasks | Zarządzaj wszystkimi aspektami Azure Information Protection. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
 | Microsoft. Commerce. rozliczenia/allEntities/allTasks | Zarządzaj wszystkimi aspektami rozliczeń pakietu Office 365. |
-| Microsoft. Intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
-| Microsoft. Office 365. zgodnośćmanager/allEntities/allTasks | Zarządzanie wszystkimi aspektami programu Office 365 — Menedżer zgodności |
-| Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Zarządzaj wszystkimi aspektami analizy pulpitu. |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
-| Microsoft. 365. skrytka/allEntities/allTasks | Zarządzaj wszystkimi aspektami pakietu Office 365 Skrytka klienta |
-| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. messageCenter/securityMessages/odczyt | Przeczytaj securityMessages w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. protectionCenter/allEntities/allTasks | Zarządzaj wszystkimi aspektami pakietu Office 365 Protection Center. |
-| Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. 365. securityComplianceCenter. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office. SharePoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. powerApps. dynamics365/allEntities/allTasks | Zarządzaj wszystkimi aspektami programu Dynamics 365. |
-| Microsoft. powerApps. powerBI/allEntities/allTasks | Zarządzaj wszystkimi aspektami Power BI. |
-| Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/odczyt | Odczytaj wszystkie zasoby w Microsoft. Windows. defenderAdvancedThreatProtection. |
+| microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
+| microsoft.office365.complianceManager/allEntities/allTasks | Zarządzanie wszystkimi aspektami programu Office 365 — Menedżer zgodności |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | Zarządzaj wszystkimi aspektami analizy pulpitu. |
+| microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
+| microsoft.office365.lockbox/allEntities/allTasks | Zarządzaj wszystkimi aspektami pakietu Office 365 Skrytka klienta |
+| microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.messageCenter/securityMessages/read | Przeczytaj securityMessages w Microsoft. 365. messageCenter. |
+| microsoft.office365.protectionCenter/allEntities/allTasks | Zarządzaj wszystkimi aspektami pakietu Office 365 Protection Center. |
+| microsoft.office365.securityComplianceCenter/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. 365. securityComplianceCenter. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.powerApps.dynamics365/allEntities/allTasks | Zarządzaj wszystkimi aspektami programu Dynamics 365. |
+| microsoft.powerApps.powerBI/allEntities/allTasks | Zarządzaj wszystkimi aspektami Power BI. |
+| microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Odczytaj wszystkie zasoby w Microsoft. Windows. defenderAdvancedThreatProtection. |
 
 ### <a name="compliance-administrator-permissions"></a>Uprawnienia administratora zgodności
 
@@ -747,15 +747,15 @@ Może odczytywać i zarządzać konfiguracją zgodności i raportami w usłudze 
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. zgodnośćmanager/allEntities/allTasks | Zarządzanie wszystkimi aspektami programu Office 365 — Menedżer zgodności |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office. SharePoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.complianceManager/allEntities/allTasks | Zarządzanie wszystkimi aspektami programu Office 365 — Menedżer zgodności |
+| microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Uprawnienia administratora danych zgodności
 
@@ -768,17 +768,17 @@ Tworzy i zarządza zawartością zgodności.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. cloudAppSecurity/allEntities/allTasks | Odczytaj i skonfiguruj Microsoft Cloud App Security. |
-| Microsoft. Azure. informationProtection/allEntities/allTasks | Zarządzaj wszystkimi aspektami Azure Information Protection. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. zgodnośćmanager/allEntities/allTasks | Zarządzanie wszystkimi aspektami programu Office 365 — Menedżer zgodności |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office. SharePoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Odczytaj i skonfiguruj Microsoft Cloud App Security. |
+| microsoft.azure.informationProtection/allEntities/allTasks | Zarządzaj wszystkimi aspektami Azure Information Protection. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.complianceManager/allEntities/allTasks | Zarządzanie wszystkimi aspektami programu Office 365 — Menedżer zgodności |
+| microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Uprawnienia administratora dostępu warunkowego
 
@@ -806,12 +806,12 @@ Może zarządzać wszystkimi aspektami produktu Dynamics 365.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. powerApps. dynamics365/allEntities/allTasks | Zarządzaj wszystkimi aspektami programu Dynamics 365. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.powerApps.dynamics365/allEntities/allTasks | Zarządzaj wszystkimi aspektami programu Dynamics 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="customer-lockbox-access-approver-permissions"></a>Uprawnienia osoby zatwierdzającej dostęp skrytki klienta
 
@@ -824,8 +824,8 @@ Może zatwierdzić żądania pomocy technicznej firmy Microsoft w celu uzyskania
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. 365. skrytka/allEntities/allTasks | Zarządzaj wszystkimi aspektami pakietu Office 365 Skrytka klienta |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.lockbox/allEntities/allTasks | Zarządzaj wszystkimi aspektami pakietu Office 365 Skrytka klienta |
 
 ### <a name="desktop-analytics-administrator-permissions"></a>Uprawnienia administratora usługi Desktop Analytics
 
@@ -838,12 +838,12 @@ Może zarządzać narzędziami do analizy pulpitu i dostosowywania pakietu Offic
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Zarządzaj wszystkimi aspektami analizy pulpitu. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | Zarządzaj wszystkimi aspektami analizy pulpitu. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="device-administrators-permissions"></a>Uprawnienia administratorów urządzeń
 
@@ -923,23 +923,23 @@ Używane przez usługę Azure AD Connect.
 | Microsoft. Directory/policies/policiesAppliedTo/Read | Odczytaj Właściwość zasad. policiesAppliedTo w Azure Active Directory. |
 | Microsoft. Directory/policies/tenantDefault/Update | Zaktualizuj Właściwość policies. tenantDefault w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/appRoleAssignedTo/Read | Odczytywanie właściwości serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/appRoleAssignedTo/Update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/appRoleAssignments/Read | Odczytywanie właściwości serviceprincipals. appRoleAssignments w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/appRoleAssignments/Update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignments w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/odbiorcy/aktualizacja | Aktualizacja właściwości serviceprincipals. odbiorca w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Authentication/Update | Aktualizacja właściwości serviceprincipals. Authentication w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignments/update | Zaktualizuj Właściwość serviceprincipals. appRoleAssignments w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/audience/update | Aktualizacja właściwości serviceprincipals. odbiorca w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/authentication/update | Aktualizacja właściwości serviceprincipals. Authentication w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/Basic/Read | Zapoznaj się z podstawowymi właściwościami obiektów serviceprincipals w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Basic/Update | Zaktualizuj podstawowe właściwości obiektów serviceprincipals w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/basic/update | Zaktualizuj podstawowe właściwości obiektów serviceprincipals w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/Create | Tworzenie obiektów serviceprincipals w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Credentials/Update | Aktualizacja właściwości serviceprincipals. Credentials w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/credentials/update | Aktualizacja właściwości serviceprincipals. Credentials w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/memberOf/Read | Odczytywanie właściwości serviceprincipals. memberOf w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/elementu oauth2permissiongrants/Basic/Read | Odczytywanie właściwości serviceprincipals. elementu oauth2permissiongrants w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/Owners/Read | Odczytywanie właściwości serviceprincipals. Owners w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Owners/Update | Aktualizacja właściwości serviceprincipals. Owners w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/owners/update | Aktualizacja właściwości serviceprincipals. Owners w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/ownedObjects/Read | Odczytywanie właściwości serviceprincipals. ownedObjects w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/Permissions/Update | Aktualizacja właściwości serviceprincipals. Permissions w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/permissions/update | Aktualizacja właściwości serviceprincipals. Permissions w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/policies/Read | Odczytywanie właściwości serviceprincipals. policies w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/policies/Update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
+| microsoft.directory/servicePrincipals/policies/update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
 | Microsoft. directorySync/allEntities/allTasks | Wykonaj wszystkie akcje w Azure AD Connect. |
 
 ### <a name="directory-writers-permissions"></a>Uprawnienia autorów katalogów
@@ -950,11 +950,11 @@ Może odczytywać & pisać podstawowe informacje o katalogu. Do udzielania dost�
 | --- | --- |
 | Microsoft. Directory/Groups/Create | Utwórz grupy w Azure Active Directory. |
 | Microsoft. Directory/Groups/createAsOwner | Utwórz grupy w Azure Active Directory. Twórca jest dodawany jako pierwszy właściciel, a tworzony obiekt jest liczony według przydziału 250 obiektów utworzonych przez twórcę. |
-| Microsoft. Directory/Groups/appRoleAssignments/Update | Zaktualizuj Właściwość groups. appRoleAssignments w Azure Active Directory. |
+| microsoft.directory/groups/appRoleAssignments/update | Zaktualizuj Właściwość groups. appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/Groups/Basic/Update | Zaktualizuj podstawowe właściwości dla grup w Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizowanie właściwości groups. Members w Azure Active Directory. |
 | Microsoft. Directory/Groups/Owners/Update | Aktualizacja właściwości groups. Owners w Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
+| microsoft.directory/groups/settings/update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
 | Microsoft. Directory/groupSettings/Basic/Update | Zaktualizuj podstawowe właściwości groupSettings w Azure Active Directory. |
 | Microsoft. Directory/groupSettings/Create | Utwórz groupSettings w Azure Active Directory. |
 | Microsoft. Directory/groupSettings/Delete | Usuń groupSettings w Azure Active Directory. |
@@ -982,12 +982,12 @@ Może zarządzać wszystkimi aspektami produktu Exchange.
 | Microsoft. Directory/Groups/Unified/Delete | Usuń grupy pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Members/Update | Aktualizowanie członkostwa w grupach pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizowanie własności grup pakietu Office 365. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Uprawnienia administratora zewnętrznego dostawcy tożsamości
 
@@ -995,7 +995,7 @@ Skonfiguruj dostawców tożsamości do użycia w Federacji bezpośredniej.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. B2C/skojarzeni/allTasks | Odczytaj i skonfiguruj dostawców tożsamości w Azure Active Directory B2C. |
+| microsoft.aad.b2c/identityProviders/allTasks | Odczytaj i skonfiguruj dostawców tożsamości w Azure Active Directory B2C. |
 
 ### <a name="global-reader-permissions"></a>Globalne uprawnienia czytelnika
 Może odczytywać wszystko, co Administrator globalny może, ale nie edytować niczego. 
@@ -1047,7 +1047,7 @@ Może odczytywać wszystko, co Administrator globalny może, ale nie edytować n
 | Microsoft. Directory/serviceprincipals/ownedObjects/Read   | Odczytywanie właściwości serviceprincipals. ownedObjects w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/Owners/Read | Odczytywanie właściwości serviceprincipals. Owners w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/policies/Read   | Odczytywanie właściwości serviceprincipals. policies w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt  | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read  | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
 | Microsoft. Directory/subscribedSkus/Basic/Read | Zapoznaj się z podstawowymi właściwościami subscribedSkus w Azure Active Directory. |
 | Microsoft. Directory/Users/appRoleAssignments/Read | Odczytywanie właściwości users. appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/Users/Basic/Read  | Zapoznaj się z podstawowymi właściwościami użytkowników w Azure Active Directory. |
@@ -1060,11 +1060,11 @@ Może odczytywać wszystko, co Administrator globalny może, ale nie edytować n
 | Microsoft. Directory/Users/registeredDevices/Read  | Odczytywanie właściwości users. registeredDevices w Azure Active Directory. |
 | Microsoft. Directory/Users/strongAuthentication/Read   | Odczytywanie właściwości silnego uwierzytelniania, takich jak informacje o poświadczeniach usługi MFA. |
 | Microsoft. Office 365. Exchange/allEntities/Read | Przeczytaj wszystkie aspekty usługi Exchange Online. |
-| Microsoft. Office 365. messageCenter/messages/Read   | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. messageCenter/securityMessages/odczyt   | Przeczytaj securityMessages w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. protectionCenter/allEntities/odczyt | Przeczytaj wszystkie aspekty Centrum ochrony pakietu Office 365. |
+| microsoft.office365.messageCenter/messages/read   | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.messageCenter/securityMessages/read   | Przeczytaj securityMessages w Microsoft. 365. messageCenter. |
+| microsoft.office365.protectionCenter/allEntities/read | Przeczytaj wszystkie aspekty Centrum ochrony pakietu Office 365. |
 | Microsoft. Office 365. securityComplianceCenter/allEntities/odczyt | Odczytaj wszystkie standardowe właściwości w Microsoft. 365. securityComplianceCenter. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | Microsoft. 365. webports/allEntities/Standard/Read   | Odczytywanie właściwości standardowych wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="group-administrator"></a>Administrator grupy
@@ -1080,14 +1080,14 @@ Może zarządzać wszystkimi aspektami grup i ustawień grup, takimi jak nazewni
 | Microsoft. Directory/Groups/hiddenMembers/Read | Odczytaj właściwości groups. hiddenMembers w Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizowanie właściwości groups. Members w Azure Active Directory. |
 | Microsoft. Directory/Groups/Owners/Update | Aktualizacja właściwości groups. Owners w Azure Active Directory. |
-| Microsoft. Directory/Groups/Restore | Przywróć grupy w Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.directory/groups/restore | Przywróć grupy w Azure Active Directory. |
+| microsoft.directory/groups/settings/update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 
 ### <a name="guest-inviter-permissions"></a>Uprawnienia osoby zapraszające gościa
 Może zapraszać użytkowników-Gości niezależnie od ustawienia "członkowie mogą zapraszać Gości".
@@ -1111,14 +1111,14 @@ Można resetować hasła dla administratorów nie będących administratorami i 
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Unieważnienie wszystkich tokenów odświeżania użytkownika w Azure Active Directory. |
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w Azure Active Directory. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="intune-service-administrator-permissions"></a>Uprawnienia administratora usługi Intune
 
@@ -1135,12 +1135,12 @@ Może zarządzać wszystkimi aspektami produktu usługi Intune.
 | Microsoft. Directory/Contacts/Create | Utwórz kontakty w Azure Active Directory. |
 | Microsoft. Directory/kontakty/usuwanie | Usuń kontakty w Azure Active Directory. |
 | Microsoft. Directory/Devices/podstawowa/aktualizacja | Zaktualizuj podstawowe właściwości na urządzeniach w Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
 | Microsoft. Directory/Devices/Create | Utwórz urządzenia w Azure Active Directory. |
 | Microsoft. katalog/urządzenia/usuwanie | Usuń urządzenia w Azure Active Directory. |
 | Microsoft. Directory/Devices/registeredOwners/Update | Zaktualizuj Właściwość Devices. registeredOwners w Azure Active Directory. |
 | Microsoft. Directory/Devices/registeredUsers/Update | Zaktualizuj Właściwość Devices. registeredUsers w Azure Active Directory. |
-| Microsoft. Directory/Groups/appRoleAssignments/Update | Zaktualizuj Właściwość groups. appRoleAssignments w Azure Active Directory. |
+| microsoft.directory/groups/appRoleAssignments/update | Zaktualizuj Właściwość groups. appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/Groups/Basic/Update | Zaktualizuj podstawowe właściwości dla grup w Azure Active Directory. |
 | Microsoft. Directory/Groups/Create | Utwórz grupy w Azure Active Directory. |
 | Microsoft. Directory/Groups/createAsOwner | Utwórz grupy w Azure Active Directory. Twórca jest dodawany jako pierwszy właściciel, a tworzony obiekt jest liczony według przydziału 250 obiektów utworzonych przez twórcę. |
@@ -1148,15 +1148,15 @@ Może zarządzać wszystkimi aspektami produktu usługi Intune.
 | Microsoft. Directory/Groups/hiddenMembers/Read | Odczytaj właściwości groups. hiddenMembers w Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizowanie właściwości groups. Members w Azure Active Directory. |
 | Microsoft. Directory/Groups/Owners/Update | Aktualizacja właściwości groups. Owners w Azure Active Directory. |
-| Microsoft. Directory/Groups/Restore | Przywróć grupy w Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
+| microsoft.directory/groups/restore | Przywróć grupy w Azure Active Directory. |
+| microsoft.directory/groups/settings/update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
 | Microsoft. Directory/Users/appRoleAssignments/Update | Zaktualizuj Właściwość Users. appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/Users/Basic/Update | Zaktualizuj podstawowe właściwości użytkowników w Azure Active Directory. |
 | Microsoft. Directory/Users/Manager/Update | Aktualizowanie właściwości users. Manager w Azure Active Directory. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. Intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="kaizala-administrator-permissions"></a>Uprawnienia administratora usługi kaizala
 
@@ -1169,9 +1169,9 @@ Może zarządzać ustawieniami programu Microsoft usługi kaizala.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Przeczytaj centrum administracyjne pakietu Office 365. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Przeczytaj centrum administracyjne pakietu Office 365. |
 
 ### <a name="license-administrator-permissions"></a>Uprawnienia administratora licencji
 
@@ -1181,9 +1181,9 @@ Może zarządzać licencjami produktów dla użytkowników i grup.
 | --- | --- |
 | Microsoft. Directory/Users/assignLicense | Zarządzanie licencjami użytkowników w Azure Active Directory. |
 | Microsoft. Directory/Users/usageLocation/Update | Zaktualizuj Właściwość Users. usageLocation w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 
 ### <a name="lync-service-administrator-permissions"></a>Uprawnienia administratora usługi Lync
 
@@ -1196,12 +1196,12 @@ Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Skype dla firm Online. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="message-center-privacy-reader-permissions"></a>Uprawnienia czytelnika do ochrony prywatności centrum wiadomości
 
@@ -1214,9 +1214,9 @@ Może odczytywać wpisy centrum wiadomości, komunikaty dotyczące prywatności 
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. messageCenter/securityMessages/odczyt | Przeczytaj securityMessages w Microsoft. 365. messageCenter. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.messageCenter/securityMessages/read | Przeczytaj securityMessages w Microsoft. 365. messageCenter. |
 
 ### <a name="message-center-reader-permissions"></a>Uprawnienia czytelnika centrum wiadomości
 Może odczytywać wiadomości i aktualizacje dla swojej organizacji tylko w centrum wiadomości pakietu Office 365. 
@@ -1228,8 +1228,8 @@ Może odczytywać wiadomości i aktualizacje dla swojej organizacji tylko w cent
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
 
 ### <a name="office-apps-administrator-permissions"></a>Uprawnienia administratora aplikacji pakietu Office
 Usługa umożliwia zarządzanie aplikacjami pakietu Office w chmurze, w tym zarządzaniem zasadami i ustawieniami, a także pozwala na wybór, usuwanie i publikowanie zawartości funkcji "co nowego" na urządzeniach użytkowników końcowych.
@@ -1241,14 +1241,14 @@ Usługa umożliwia zarządzanie aplikacjami pakietu Office w chmurze, w tym zarz
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | Microsoft. Office 365. userCommunication/allEntities/allTasks | Odczytuj i Aktualizuj informacje o nowościach. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="partner-tier1-support-permissions"></a>Uprawnienia do obsługi pomoc partnerów
 
@@ -1277,11 +1277,11 @@ Nie używaj — nie jest przeznaczony do użytku ogólnego.
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w Azure Active Directory. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
 | Microsoft. Directory/Users/Restore | Przywróć usuniętych użytkowników w Azure Active Directory. |
 | Microsoft. Directory/Users/userPrincipalName/Update | Zaktualizuj Właściwość Users. userPrincipalName w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="partner-tier2-support-permissions"></a>Uprawnienia do obsługi SVR partnerów
 
@@ -1301,7 +1301,7 @@ Nie używaj — nie jest przeznaczony do użytku ogólnego.
 | Microsoft. Directory/Groups/Create | Utwórz grupy w Azure Active Directory. |
 | Microsoft. Directory/Groups/Delete | Usuń grupy w Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizowanie właściwości groups. Members w Azure Active Directory. |
-| Microsoft. Directory/Groups/Restore | Przywróć grupy w Azure Active Directory. |
+| microsoft.directory/groups/restore | Przywróć grupy w Azure Active Directory. |
 | Microsoft. Directory/Organization/Basic/Update | Aktualizuj podstawowe właściwości organizacji w Azure Active Directory. |
 | Microsoft. Directory/Users/appRoleAssignments/Update | Zaktualizuj Właściwość Users. appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/Users/assignLicense | Zarządzanie licencjami użytkowników w Azure Active Directory. |
@@ -1312,11 +1312,11 @@ Nie używaj — nie jest przeznaczony do użytku ogólnego.
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w Azure Active Directory. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
 | Microsoft. Directory/Users/Restore | Przywróć usuniętych użytkowników w Azure Active Directory. |
 | Microsoft. Directory/Users/userPrincipalName/Update | Zaktualizuj Właściwość Users. userPrincipalName w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="password-administrator-permissions"></a>Uprawnienia administratora hasła
 
@@ -1325,7 +1325,7 @@ Można resetować hasła dla administratorów nie będących administratorami i 
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w Azure Active Directory. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="power-bi-service-administrator-permissions"></a>Uprawnienia administratora usługi Power BI
 
@@ -1338,12 +1338,12 @@ Może zarządzać wszystkimi aspektami produktu Power BI.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. powerApps. powerBI/allEntities/allTasks | Zarządzaj wszystkimi aspektami Power BI. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.powerApps.powerBI/allEntities/allTasks | Zarządzaj wszystkimi aspektami Power BI. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="privileged-authentication-administrator-permissions"></a>Uprawnienia administratora uwierzytelniania uprzywilejowanego
 
@@ -1353,11 +1353,11 @@ Zezwolenie na wyświetlanie, ustawianie i Resetowanie informacji o metodach uwie
 | --- | --- |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Unieważnienie wszystkich tokenów odświeżania użytkownika w Azure Active Directory. |
 | Microsoft. Directory/Users/strongAuthentication/Update | Zaktualizuj właściwości silnego uwierzytelniania, takie jak informacje o poświadczeniach usługi MFA. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w organizacji pakietu Office 365. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
 
 ### <a name="privileged-role-administrator-permissions"></a>Uprawnienia administratora ról uprzywilejowanych
@@ -1371,7 +1371,7 @@ Może zarządzać przypisaniami ról w usłudze Azure AD i wszystkimi aspektami 
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. privilegedIdentityManagement/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. AAD. privilegedIdentityManagement. |
+| microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. AAD. privilegedIdentityManagement. |
 | Microsoft. Directory/serviceprincipals/appRoleAssignedTo/allTasks | Odczytaj i skonfiguruj Właściwość serviceprincipals. appRoleAssignedTo w Azure Active Directory. |
 | Microsoft. Directory/serviceprincipals/elementu oauth2permissiongrants/allTasks | Odczytaj i skonfiguruj Właściwość serviceprincipals. elementu oauth2permissiongrants w Azure Active Directory. |
 | Microsoft. Directory/administrativeUnits/allProperties/allTasks | Tworzenie jednostek administracyjnych (w tym członków) i zarządzanie nimi |
@@ -1389,10 +1389,10 @@ Może odczytywać raporty logowania i inspekcji.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Directory/auditLogs/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.directory/auditLogs/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 
 ### <a name="search-administrator-permissions"></a>Wyszukaj uprawnienia administratora
 
@@ -1405,12 +1405,12 @@ Może tworzyć wszystkie aspekty ustawień wyszukiwania firmy Microsoft i zarzą
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
-| Microsoft. Office 365. Search/allEntities/allProperties/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie wszystkich właściwości w Microsoft. Office 365. Search. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.search/allEntities/allProperties/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie wszystkich właściwości w Microsoft. Office 365. Search. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="search-editor-permissions"></a>Uprawnienia edytora wyszukiwania
 
@@ -1423,9 +1423,9 @@ Może tworzyć i zarządzać zawartością redakcyjną, taką jak zakładki, Q i
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
-| Microsoft. 365. Search/Content/allProperties/allTasks | Tworzenie i usuwanie zawartości oraz odczytywanie i aktualizowanie wszystkich właściwości w Microsoft. Office 365. Search. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.office365.messageCenter/messages/read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| microsoft.office365.search/content/allProperties/allTasks | Tworzenie i usuwanie zawartości oraz odczytywanie i aktualizowanie wszystkich właściwości w Microsoft. Office 365. Search. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 
 ### <a name="security-administrator-permissions"></a>Uprawnienia administratora zabezpieczeń
 
@@ -1439,23 +1439,23 @@ Może odczytywać informacje o zabezpieczeniach i raporty oraz zarządzać konfi
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft. Directory/Applications/policies/Update | Zaktualizuj Właściwość Applications. policies w Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
+| microsoft.directory/auditLogs/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
 | Microsoft. katalog/zasady/podstawowa/aktualizacja | Zaktualizuj podstawowe właściwości zasad w Azure Active Directory. |
 | Microsoft. katalog/zasady/tworzenie | Utwórz zasady w Azure Active Directory. |
 | Microsoft. Directory/zasady/usuwanie | Usuń zasady w Azure Active Directory. |
 | Microsoft. katalog/zasady/właściciele/aktualizacja | Aktualizowanie właściwości policies. Owners w Azure Active Directory. |
 | Microsoft. Directory/policies/tenantDefault/Update | Zaktualizuj Właściwość policies. tenantDefault w Azure Active Directory. |
-| Microsoft. Directory/serviceprincipals/policies/Update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
-| Microsoft. AAD. identityProtection/allEntities/odczyt | Odczytuj wszystkie zasoby w Microsoft. AAD. identityProtection. |
+| microsoft.directory/servicePrincipals/policies/update | Aktualizacja właściwości serviceprincipals. policies w Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.aad.identityProtection/allEntities/read | Odczytuj wszystkie zasoby w Microsoft. AAD. identityProtection. |
 | Microsoft. AAD. identityProtection/allEntities/Update | Zaktualizuj wszystkie zasoby w usłudze Microsoft. AAD. identityProtection. |
-| Microsoft. AAD. privilegedIdentityManagement/allEntities/odczyt | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. protectionCenter/allEntities/odczyt | Przeczytaj wszystkie aspekty Centrum ochrony pakietu Office 365. |
-| Microsoft. Office 365. protectionCenter/allEntities/Update | Zaktualizuj wszystkie zasoby w Microsoft. 365. protectionCenter. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.aad.privilegedIdentityManagement/allEntities/read | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.protectionCenter/allEntities/read | Przeczytaj wszystkie aspekty Centrum ochrony pakietu Office 365. |
+| microsoft.office365.protectionCenter/allEntities/update | Zaktualizuj wszystkie zasoby w Microsoft. 365. protectionCenter. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 
 ### <a name="security-operator-permissions"></a>Uprawnienia operatora zabezpieczeń
 
@@ -1468,14 +1468,14 @@ Tworzy i zarządza zdarzeniami zabezpieczeń.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. AAD. cloudAppSecurity/allEntities/allTasks | Odczytaj i skonfiguruj Microsoft Cloud App Security. |
-| Microsoft. AAD. identityProtection/allEntities/odczyt | Odczytuj wszystkie zasoby w Microsoft. AAD. identityProtection. |
-| Microsoft. AAD. privilegedIdentityManagement/allEntities/odczyt | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
-| Microsoft. Azure. advancedThreatProtection/allEntities/odczyt | Przeczytaj i skonfiguruj zaawansowaną ochronę przed zagrożeniami w usłudze Azure AD. |
-| Microsoft. Intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
-| Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Odczytaj i skonfiguruj Centrum zabezpieczeń i zgodności. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
-| Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/odczyt | Odczytywanie i Konfigurowanie zaawansowanej ochrony przed zagrożeniami w usłudze Windows Defender. |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Odczytaj i skonfiguruj Microsoft Cloud App Security. |
+| microsoft.aad.identityProtection/allEntities/read | Odczytuj wszystkie zasoby w Microsoft. AAD. identityProtection. |
+| microsoft.aad.privilegedIdentityManagement/allEntities/read | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
+| microsoft.azure.advancedThreatProtection/allEntities/read | Przeczytaj i skonfiguruj zaawansowaną ochronę przed zagrożeniami w usłudze Azure AD. |
+| microsoft.intune/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Intune. |
+| microsoft.office365.securityComplianceCenter/allEntities/allTasks | Odczytaj i skonfiguruj Centrum zabezpieczeń i zgodności. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Odczytywanie i Konfigurowanie zaawansowanej ochrony przed zagrożeniami w usłudze Windows Defender. |
 
 ### <a name="security-reader-permissions"></a>Uprawnienia czytelnika zabezpieczeń
 
@@ -1488,15 +1488,15 @@ Może odczytywać informacje o zabezpieczeniach i raporty w usługach Azure AD i
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Directory/auditLogs/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/odczyt | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
-| Microsoft. AAD. identityProtection/allEntities/odczyt | Odczytuj wszystkie zasoby w Microsoft. AAD. identityProtection. |
-| Microsoft. AAD. privilegedIdentityManagement/allEntities/odczyt | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. protectionCenter/allEntities/odczyt | Przeczytaj wszystkie aspekty Centrum ochrony pakietu Office 365. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.directory/auditLogs/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie auditLogs w Azure Active Directory. |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Odczytaj Właściwość Devices. bitLockerRecoveryKeys w Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Odczytaj wszystkie właściwości (w tym właściwości uprzywilejowane) w witrynie signInReports w Azure Active Directory. |
+| microsoft.aad.identityProtection/allEntities/read | Odczytuj wszystkie zasoby w Microsoft. AAD. identityProtection. |
+| microsoft.aad.privilegedIdentityManagement/allEntities/read | Odczytuj wszystkie zasoby w Microsoft. AAD. privilegedIdentityManagement. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.protectionCenter/allEntities/read | Przeczytaj wszystkie aspekty Centrum ochrony pakietu Office 365. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 
 ### <a name="service-support-administrator-permissions"></a>Uprawnienia administratora usługi Service Support
 
@@ -1509,11 +1509,11 @@ Może odczytywać informacje o kondycji usługi i zarządzać biletami pomocy te
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="sharepoint-service-administrator-permissions"></a>Uprawnienia administratora usługi programu SharePoint
 
@@ -1532,12 +1532,12 @@ Może zarządzać wszystkimi aspektami usługi programu SharePoint.
 | Microsoft. Directory/Groups/Unified/Delete | Usuń grupy pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Members/Update | Aktualizowanie członkostwa w grupach pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizowanie własności grup pakietu Office 365. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office. SharePoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie standardowych właściwości w Microsoft. Office 365. SharePoint. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Zespoły — uprawnienia administratora
 
@@ -1550,12 +1550,12 @@ Może zarządzać funkcjami wywoływania i spotkań w usłudze Microsoft Teams.
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 
 ### <a name="teams-communications-support-engineer-permissions"></a>Zespoły — uprawnienia inżynierów pomocy technicznej
 
@@ -1568,9 +1568,9 @@ Program może rozwiązywać problemy z komunikacją w zespołach przy użyciu za
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 
 ### <a name="teams-communications-support-specialist-permissions"></a>Zespoły komunikacyjne obsługują uprawnienia specjalistyczne
 
@@ -1583,9 +1583,9 @@ Program może rozwiązywać problemy z komunikacją w zespołach przy użyciu po
 
 | **Akcje** | **Opis** |
 | --- | --- |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 
 ### <a name="teams-service-administrator-permissions"></a>Uprawnienia administratora usługi Teams
 
@@ -1605,12 +1605,12 @@ Może zarządzać usługą Microsoft Teams.
 | Microsoft. Directory/Groups/Unified/Delete | Usuń grupy pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Members/Update | Aktualizowanie członkostwa w grupach pakietu Office 365. |
 | Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizowanie własności grup pakietu Office 365. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
-| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 
 ### <a name="user-administrator-permissions"></a>Uprawnienia administratora użytkownika
 Może zarządzać wszystkimi aspektami użytkowników i grup, w tym resetowania haseł dla ograniczonych administratorów.
@@ -1623,7 +1623,7 @@ Może zarządzać wszystkimi aspektami użytkowników i grup, w tym resetowania 
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizowanie podstawowych właściwości kontaktów w Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Utwórz kontakty w Azure Active Directory. |
 | Microsoft. Directory/kontakty/usuwanie | Usuń kontakty w Azure Active Directory. |
-| Microsoft. Directory/Groups/appRoleAssignments/Update | Zaktualizuj Właściwość groups. appRoleAssignments w Azure Active Directory. |
+| microsoft.directory/groups/appRoleAssignments/update | Zaktualizuj Właściwość groups. appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/Groups/Basic/Update | Zaktualizuj podstawowe właściwości dla grup w Azure Active Directory. |
 | Microsoft. Directory/Groups/Create | Utwórz grupy w Azure Active Directory. |
 | Microsoft. Directory/Groups/createAsOwner | Utwórz grupy w Azure Active Directory. Twórca jest dodawany jako pierwszy właściciel, a tworzony obiekt jest liczony według przydziału 250 obiektów utworzonych przez twórcę. |
@@ -1631,8 +1631,8 @@ Może zarządzać wszystkimi aspektami użytkowników i grup, w tym resetowania 
 | Microsoft. Directory/Groups/hiddenMembers/Read | Odczytaj właściwości groups. hiddenMembers w Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizowanie właściwości groups. Members w Azure Active Directory. |
 | Microsoft. Directory/Groups/Owners/Update | Aktualizacja właściwości groups. Owners w Azure Active Directory. |
-| Microsoft. Directory/Groups/Restore | Przywróć grupy w Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
+| microsoft.directory/groups/restore | Przywróć grupy w Azure Active Directory. |
+| microsoft.directory/groups/settings/update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
 | Microsoft. Directory/Users/appRoleAssignments/Update | Zaktualizuj Właściwość Users. appRoleAssignments w Azure Active Directory. |
 | Microsoft. Directory/Users/assignLicense | Zarządzanie licencjami użytkowników w Azure Active Directory. |
 | Microsoft. Directory/Users/Basic/Update | Zaktualizuj podstawowe właściwości użytkowników w Azure Active Directory. |
@@ -1643,11 +1643,11 @@ Może zarządzać wszystkimi aspektami użytkowników i grup, w tym resetowania 
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w Azure Active Directory. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
 | Microsoft. Directory/Users/Restore | Przywróć usuniętych użytkowników w Azure Active Directory. |
 | Microsoft. Directory/Users/userPrincipalName/Update | Zaktualizuj Właściwość Users. userPrincipalName w Azure Active Directory. |
-| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
-| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
-| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 
 ## <a name="role-template-ids"></a>Identyfikatory szablonu roli
 
@@ -1694,8 +1694,8 @@ Administrator usługi Lync | Administrator programu Skype dla firm | 75941009-91
 Czytnik prywatności centrum wiadomości | Czytnik prywatności centrum wiadomości | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Czytelnik centrum wiadomości | Czytelnik centrum wiadomości | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Administrator aplikacji pakietu Office | Administrator aplikacji pakietu Office | 2b745bdf-0803-4d80-aa65-822c4493daac
-Obsługa pomoc partnera | Obsługa pomoc partnera | 4ba39ca4-527c-499a-b93d-d9b492c50246
-Obsługa SVR partnera | Obsługa SVR partnera | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+Pomoc techniczna dla partnerów (warstwa 1) | Obsługa pomoc partnera | 4ba39ca4-527c-499a-b93d-d9b492c50246
+Pomoc techniczna dla partnerów (warstwa 2) | Obsługa SVR partnera | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Administrator haseł | Administrator haseł | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Administrator usługi Power BI | Power BI administrator | a9ea8996-122f-4c74-9520-8edcd192826c
 Administrator uprzywilejowanego uwierzytelniania | Administrator uprzywilejowanego uwierzytelniania | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
@@ -1713,8 +1713,8 @@ Inżynierowie pomocy technicznej dla zespołów | Inżynierowie pomocy techniczn
 Zespoły ds. pomocy technicznej | Zespoły ds. pomocy technicznej | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Administrator usługi Teams | Administrator usługi Teams | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Użytkownik | Użytkownik | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Administrator konta użytkownika | Administrator użytkowników | fe930be7-5e62-47db-91af-98c3a49a38b1
-Dołączanie urządzenia w miejscu pracy | Dołączanie urządzenia w miejscu pracy | c34f683f-4d5a-4403-AFFD-6615e00e3a7f
+Administrator kont użytkowników | Administrator użytkowników | fe930be7-5e62-47db-91af-98c3a49a38b1
+Dołączanie urządzenia w miejscu pracy | Dołączanie urządzenia w miejscu pracy | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Przestarzałe role
 

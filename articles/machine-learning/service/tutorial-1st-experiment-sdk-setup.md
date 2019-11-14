@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582497"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049138"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Samouczek: wprowadzenie do tworzenia pierwszego eksperymentu z użyciem zestawu SDK języka Python
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 
 1. Na górnym pasku wybierz maszynę wirtualną notesu do użycia w celu uruchomienia notesu. Te maszyny wirtualne są wstępnie skonfigurowane z wszystko, czego potrzebujesz do uruchamiania Azure Machine Learning. Można wybrać maszynę wirtualną utworzoną przez dowolnego użytkownika obszaru roboczego. 
 
-1. Jeśli nie zostaną znalezione żadne maszyny wirtualne, wybierz pozycję **+ Dodaj obliczenia** , aby utworzyć maszynę wirtualną.
+1. Jeśli nie zostaną znalezione żadne maszyny wirtualne, wybierz pozycję **+ Dodaj maszynę wirtualną** , aby utworzyć maszynę wirtualną. 
 
     1. Podczas tworzenia maszyny wirtualnej Podaj nazwę.  Nazwa musi składać się z od 2 do 16 znaków. Prawidłowe znaki to litery, cyfry i znaki, a także muszą być unikatowe w ramach subskrypcji platformy Azure.
 

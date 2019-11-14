@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099486"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049006"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3
 
@@ -38,7 +38,7 @@ Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów 
 *  Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostępnia zarówno funkcje zarządzania, jak i operacji oparte na usłudze Azure Resource Manager. Przy użyciu szablonów Azure Resource Manager można tworzyć i wdrażać transformacje, punkty końcowe przesyłania strumieniowego, zdarzenia na żywo i wiele innych.
 * Dokument [specyfikacji openapi (dawniej: Swagger)](https://aka.ms/ams-v3-rest-sdk) .
     Uwidacznia schemat dla wszystkich składników usługi, w tym kodowania opartego na plikach.
-* Zestawy SDK dostępne dla [platform .NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node. js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [go](https://aka.ms/ams-v3-go-ref)i Ruby.
+* Zestawy SDK dostępne dla [platform .NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node. js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [go](https://aka.ms/ams-v3-go-ref)i Ruby.
 * Integracja [interfejsu wiersza polecenia platformy Azure](https://aka.ms/ams-v3-cli-ref) w celu obsługi prostych skryptów.
 
 ### <a name="new-features"></a>Nowe funkcje

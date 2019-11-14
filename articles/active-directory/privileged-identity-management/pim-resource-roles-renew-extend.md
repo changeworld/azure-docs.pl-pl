@@ -1,10 +1,10 @@
 ---
-title: Przedłuż lub Odnów przydziały ról zasobów platformy Azure w Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: Odnawianie przypisań ról zasobów platformy Azure w programie PIM-Azure AD | Microsoft Docs
 description: Dowiedz się, jak przedłużyć lub odnowić przypisania ról zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edfe6a545aa9acae8045e9c9756fc2711504d75d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 577c028582bc3b23d13e71522bb83db558065ee2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895550"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022913"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Przedłuż lub Odnów przypisania ról zasobów platformy Azure w Privileged Identity Management
 
@@ -43,7 +43,7 @@ Poniższe kroki przedstawiają proces żądania, rozwiązywania lub administrowa
 
 ### <a name="self-extend-expiring-assignments"></a>Przypisania wygasania samoobsługowego
 
-Użytkownicy lub grupy przypisane do roli mogą w większym zakresie wycofać przypisania ról bezpośrednio z karty **uprawniony** lub **aktywny** na stronie **Moje role** zasobu i na stronie **Moje role** w portalu Privileged Identity Management . Użytkownicy lub grupy mogą zażądać rozbudowania kwalifikujących się i aktywnych ról (przypisanych), których ważność wygaśnie w ciągu następnych 14 dni.
+Użytkownicy lub grupy przypisane do roli mogą w większym zakresie wycofać przypisania ról bezpośrednio z karty **uprawniony** lub **aktywny** na stronie **Moje role** zasobu i na stronie **Moje role** w portalu Privileged Identity Management. Użytkownicy lub grupy mogą zażądać rozbudowania kwalifikujących się i aktywnych ról (przypisanych), których ważność wygaśnie w ciągu następnych 14 dni.
 
 ![Zasoby platformy Azure — strony Moje role wyświetlają kwalifikujące się role z kolumną Action](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 

@@ -1,31 +1,31 @@
 ---
-title: Przykłady programu PowerShell do zarządzania grupami i zapisywania zwrotnego grup w trybie lokalnym — Azure Active Directory | Microsoft Docs
+title: Przykłady dla programu PowerShell w wersji 2 dotyczące zarządzania grupami — Azure AD | Microsoft Docs
 description: Na tej stronie przedstawiono przykłady programu PowerShell ułatwiające zarządzanie grupami w Azure Active Directory
 keywords: Azure AD, Azure Active Directory, PowerShell, grupy, zarządzanie grupami
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1aa696ccaecc24df700315962c1f01f3a298c56c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381849"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026696"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Polecenia cmdlet Azure Active Directory w wersji 2 dla zarządzania grupami
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> * [Program PowerShell](groups-settings-v2-cmdlets.md)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [Program PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
@@ -60,7 +60,7 @@ Przed rozpoczęciem zarządzania grupami przy użyciu poleceń cmdlet programu P
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-Polecenie cmdlet poprosi o poświadczenia, których chcesz użyć w celu uzyskania dostępu do katalogu. W tym przykładzie używamy karen@drumkit.onmicrosoft.com w celu uzyskania dostępu do katalogu demonstracyjnego. Polecenie cmdlet zwraca potwierdzenie, aby pokazać, że sesja została pomyślnie podłączona do katalogu:
+Polecenie cmdlet poprosi o poświadczenia, których chcesz użyć w celu uzyskania dostępu do katalogu. W tym przykładzie używamy karen@drumkit.onmicrosoft.com, aby uzyskać dostęp do katalogu demonstracyjnego. Polecenie cmdlet zwraca potwierdzenie, aby pokazać, że sesja została pomyślnie podłączona do katalogu:
 
 ```powershell
     Account                       Environment Tenant
@@ -199,7 +199,7 @@ Aby usunąć grupy z katalogu, należy użyć polecenia cmdlet Remove-AzureADGro
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 ```
 
-## <a name="manage-group-membership"></a>Zarządzaj członkostwem w grupach
+## <a name="manage-group-membership"></a>Zarządzanie członkostwem w grupie
 
 ### <a name="add-members"></a>Dodaj członków
 
@@ -270,7 +270,7 @@ Aby wyłączyć tworzenie grupy dla użytkowników niebędących administratoram
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Jeśli zwróci wartość `UsersPermissionToCreateGroupsEnabled : True`, użytkownicy niebędący administratorami mogą tworzyć grupy. Aby wyłączyć tę funkcję:
+2. Jeśli zwróci `UsersPermissionToCreateGroupsEnabled : True`, użytkownicy niebędący administratorami mogą tworzyć grupy. Aby wyłączyć tę funkcję:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
@@ -318,7 +318,7 @@ Po utworzeniu grupy niektóre punkty końcowe umożliwiają użytkownikowi końc
 * postmaster
 * root
 * bezpieczeństwo
-* zabezpieczenia
+* security
 * ssl-admin
 * wiadom
 
@@ -332,7 +332,7 @@ Aby uzyskać więcej informacji, zapoznaj się z dokumentacją [usługi synchron
 
 Funkcja zapisywania zwrotnego grup pakietu Office 365 jest publiczną funkcją w wersji zapoznawczej Azure Active Directory (Azure AD) i jest dostępna z dowolnym płatnym planem licencjonowania usługi Azure AD. Aby uzyskać pewne informacje prawne dotyczące wersji zapoznawczych, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczych Microsoft Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej Azure Active Directory dokumentacji programu PowerShell można znaleźć w [Azure Active Directory poleceniach cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0).
 

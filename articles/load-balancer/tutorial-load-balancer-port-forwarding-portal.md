@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie przekazywania portów w Azure Load Balancer przy użyciu Azure Portal'
-titlesuffix: Azure Load Balancer
+title: 'Samouczek: Konfigurowanie przekazywania portów — Azure Portal'
+titleSuffix: Azure Load Balancer
 description: W tym samouczku pokazano, jak skonfigurować przekierowanie portów przy użyciu usługi Azure Load Balancer w celu utworzenia połączeń z maszynami wirtualnymi w sieci wirtualnej platformy Azure.
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: aa4837ec1fd8ef19eb6d0c77f946ef358becd542
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6dda01543a6a7f447adefcc6cc3cfa3ea5da5492
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428230"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048845"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Samouczek: Konfigurowanie przekazywania portów w Azure Load Balancer przy użyciu portalu
 
@@ -53,8 +53,8 @@ Najpierw utwórz publiczny moduł równoważenia obciążenia w warstwie Standar
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | JSZ           | Wybierz pozycję **Standardowy**.                          |
+    | Typ          | wybierz pozycję **Publiczny**.                                        |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
@@ -172,7 +172,7 @@ Pulę zaplecza modułu równoważenia obciążenia utworzono i dodano do niej ma
    
 1. Na stronie **Pule zaplecza** rozwiń węzeł **MyBackendPool** i upewnij się, że na liście znajdują się obydwie maszyny wirtualne: **VM1** i **VM2**.
 
-1. Wybierz pozycję **MyBackendPool**. 
+1. wybierz pozycję **MyBackendPool**. 
    
    Na stronie **MyBackendPool** w obszarach **MASZYNA WIRTUALNA** i **ADRES IP** możesz usunąć lub dodać dostępne maszyny wirtualne do puli.
 
@@ -195,7 +195,7 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
    - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
    - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie sondy](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
 
@@ -218,7 +218,7 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
    - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
    - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie reguły modułu równoważenia obciążenia](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
@@ -239,7 +239,7 @@ Utwórz regułę translatora adresów sieciowych modułu równoważenia obciąż
    - **Mapowanie portów**: wybierz pozycję **niestandardowy**.
    - **Port docelowy**: wpisz *3389*.
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
 1. Powtórz kroki, aby dodać regułę NAT dla ruchu przychodzącego o nazwie *MyNATRuleVM2*, używając **portu**: *4222* i **docelowej maszyny wirtualnej**: **MyVM2**.
 

@@ -1,33 +1,28 @@
 ---
-title: Tworzenie bramy aplikacji za pomocą przekierowywanie ruchu zewnętrznego — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w wewnętrznej sieci web do odpowiedniej puli przy użyciu wiersza polecenia platformy Azure.
+title: Przekierowywanie ruchu zewnętrznego przy użyciu interfejsu wiersza polecenia platformy Azure Application Gateway
+description: Dowiedz się, jak utworzyć bramę aplikacji, która przekierowuje wewnętrzny ruch internetowy do odpowiedniej puli przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: bf3061509e08648aa63b843a4b1d7b8968f3e88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45b5dc9c73cc98d049d6eb02776f08f790e708eb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133667"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047598"
 ---
-# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą zewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji z przekierowaniami zewnętrznymi przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Można użyć wiersza polecenia platformy Azure, aby skonfigurować [przekierowywanie ruchu w sieci web](application-gateway-multi-site-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku skonfigurujesz odbiornik i regułę, która przekierowuje ruch w sieci web, która pojawi się na bramę aplikacji do zewnętrznej witryny.
+Przy użyciu interfejsu wiersza polecenia platformy Azure można skonfigurować [przekierowywanie ruchu internetowego](application-gateway-multi-site-overview.md) podczas tworzenia [bramy aplikacji](application-gateway-introduction.md). W tym samouczku skonfigurujesz odbiornik i regułę, która przekierowuje ruch internetowy, który dociera do bramy aplikacji do lokacji zewnętrznej.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
-> * Utwórz regułę odbiornik i Przekierowanie
+> * Tworzenie reguły odbiornika i przekierowywania
 > * Tworzenie bramy aplikacji
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -91,9 +86,9 @@ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplika
 - *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
 - *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
-### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
+### <a name="add-the-redirection-configuration"></a>Dodawanie konfiguracji przekierowania
 
-Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z bramy aplikacji do *bing.com* przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Dodaj konfigurację przekierowania, która wysyła ruch z bramy aplikacji do *Bing.com* przy użyciu polecenia [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -104,9 +99,9 @@ az network application-gateway redirect-config create \
   --target-url "https://bing.com"
 ```
 
-### <a name="add-a-listener-and-routing-rule"></a>Dodaj odbiornik i regułę routingu
+### <a name="add-a-listener-and-routing-rule"></a>Dodawanie odbiornika i reguły routingu
 
-Odbiornik jest wymagany do włączenia application gateway odpowiednio kierować ruchem. Utwórz odbiornik za pomocą [tworzenie az sieci application-gateway http-listener](/cli/azure/network/application-gateway) przy użyciu portu frontonu utworzonych za pomocą [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway). Wymagana jest reguła dla odbiornika wiedzieć, dokąd wysyłać ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway) z konfiguracją przekierowania.
+Odbiornik jest wymagany, aby umożliwić bramie aplikacji odpowiednie kierowanie ruchu sieciowego. Utwórz odbiornik za pomocą polecenia [AZ Network Application-Gateway HTTP-Listener Create](/cli/azure/network/application-gateway) z portem frontonu utworzonym za pomocą polecenia [AZ Network Application-Gateway fronton-port Create](/cli/azure/network/application-gateway). Dla odbiornika należy określić, gdzie ma być wysyłany ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu polecenia [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway) z konfiguracją przekierowania.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,14 +128,14 @@ az network application-gateway rule create \
 
 Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
-Powinien zostać wyświetlony *bing.com* są wyświetlane w przeglądarce.
+W przeglądarce powinny być widoczne *Bing.com* .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > * Konfigurowanie sieci
-> * Utwórz regułę odbiornik i Przekierowanie
+> * Tworzenie reguły odbiornika i przekierowywania
 > * Tworzenie bramy aplikacji
 
 > [!div class="nextstepaction"]

@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell — równoważenie obciążenia wielu witryn internetowych za pomocą programu Azure PowerShell | Microsoft Docs
+title: Równoważenie obciążenia wielu witryn sieci Web — Azure PowerShell Azure Load Balancer
 description: Ten przykładowy skrypt programu PowerShell przedstawia sposób równoważenia obciążenia wielu witryn internetowych do tej samej maszyny wirtualnej
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 82bd8a82418bad44786f009c75d742fcc0fc66e7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273609"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048905"
 ---
-# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Przykładowy skrypt programu Azure PowerShell: Równoważenie obciążenia wielu witryn internetowych
+# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Przykładowy skrypt programu PowerShell: równoważenie obciążenia wielu witryn internetowych
 
 Ten przykładowy skrypt programu PowerShell tworzy sieć wirtualną z 2 maszynami wirtualnymi, które są elementami członkowskimi zestawu dostępności. Moduł równoważenia obciążenia kieruje ruch dla 2 osobnych adresów IP do 2 maszyn wirtualnych. Po uruchomieniu skryptu możesz wdrożyć oprogramowanie serwera internetowego na maszynach wirtualnych i hostować wiele witryn internetowych, z których każda będzie miała własny adres IP.
 

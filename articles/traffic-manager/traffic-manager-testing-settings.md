@@ -1,6 +1,6 @@
 ---
-title: Sprawdź ustawienia usługi Azure Traffic Manager
-description: Ten artykuł pomoże Ci zweryfikować ustawień usługi Traffic Manager.
+title: Weryfikuj ustawienia usługi Azure Traffic Manager
+description: W tym artykule dowiesz się, jak weryfikować ustawienia Traffic Manager i testować metody routingu ruchu.
 services: traffic-manager
 author: asudbring
 ms.service: traffic-manager
@@ -10,64 +10,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: allensu
-ms.openlocfilehash: 19ef08a40d0a84aecb070e71bbb8c9b6a88ae059
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ad74e5c51d5939218ebb546993d416b3df1cd04b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070936"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023523"
 ---
 # <a name="verify-traffic-manager-settings"></a>Weryfikowanie ustawień usługi Traffic Manager
 
-Aby przetestować ustawień usługi Traffic Manager, musisz mieć wielu klientów w różnych miejscach, w których można uruchomić testy. Następnie przenieś punktów końcowych w profilu usługi Traffic Manager w dół po kolei.
+Aby przetestować ustawienia Traffic Manager, musisz mieć wielu klientów w różnych lokalizacjach, z których można uruchomić testy. Następnie umieść punkty końcowe w profilu Traffic Manager pojedynczo.
 
-* Wartość czasu wygaśnięcia DNS niski, aby zmiany Propagacja szybko (na przykład 30 sekund).
-* Znane adresy IP usługi Azure cloud services i witryny sieci Web w profilu, które testujesz.
-* Użyj narzędzi, które pozwalają rozwiązać nazwę DNS na adres IP i wyświetlać ten adres.
+* Ustaw niską wartość czasu wygaśnięcia DNS, aby zmiany były propagowane szybko (na przykład 30 sekund).
+* Sprawdź adresy IP usług i witryn sieci Web w chmurze platformy Azure w testowanym profilu.
+* Użyj narzędzi, które pozwalają rozpoznać nazwę DNS na adres IP i wyświetlić ten adres.
 
-Sprawdzasz, aby zobaczyć, że nazwy DNS rozpoznać adresami IP punktów końcowych w Twoim profilu. Nazwy powinna być rozpoznawana w sposób zgodny ze zdefiniowaną w profilu usługi Traffic Manager metody routingu ruchu. Możesz użyć narzędzi, takich jak **nslookup** lub **dig** do rozpoznawania nazw DNS.
+Sprawdzasz, czy nazwy DNS są rozpoznawane jako adresy IP punktów końcowych w Twoim profilu. Nazwy powinny być rozpoznawane w sposób zgodny z metodą routingu ruchu zdefiniowaną w profilu Traffic Manager. Aby rozpoznać nazwy DNS, można użyć narzędzi takich jak **nslookup** lub **Dig** .
 
-Poniższe przykłady ułatwiają Testowanie profilu usługi Traffic Manager.
+Poniższe przykłady ułatwiają przetestowanie profilu Traffic Manager.
 
-### <a name="check-traffic-manager-profile-using-nslookup-and-ipconfig-in-windows"></a>Sprawdź profil usługi Traffic Manager za pomocą nslookup i ipconfig w Windows
+### <a name="check-traffic-manager-profile-using-nslookup-and-ipconfig-in-windows"></a>Sprawdź profil Traffic Manager przy użyciu polecenia nslookup i ipconfig w systemie Windows
 
-1. Uruchom polecenia lub w wierszu polecenia programu Windows PowerShell jako administrator.
-2. Typ `ipconfig /flushdns` opróżnienia pamięci podręcznej programu rozpoznawania nazw DNS.
-3. Wpisz polecenie `nslookup <your Traffic Manager domain name>`. Na przykład poniższe polecenie sprawdza nazwę domeny z prefiksem *myapp.contoso*
+1. Otwórz wiersz polecenia lub programu Windows PowerShell jako administrator.
+2. Wpisz `ipconfig /flushdns`, aby opróżnić pamięć podręczną programu rozpoznawania nazw DNS.
+3. Wpisz polecenie `nslookup <your Traffic Manager domain name>`. Na przykład następujące polecenie sprawdza nazwę domeny z prefiksem *MojaApl. contoso*
 
         nslookup myapp.contoso.trafficmanager.net
 
     Typowy wynik zawiera następujące informacje:
 
-    + Nazwa DNS i adres IP serwera DNS, do którego uzyskiwany jest dostęp do rozwiązania tej nazwy domeny usługi Traffic Manager.
-    + Nazwa domeny usługi Traffic Manager można wpisać w wierszu polecenia po "nslookup" i adresu IP, do którego jest rozpoznawana jako domenę usługi Traffic Manager. Drugi adres IP jest najważniejsza, aby sprawdzić. Powinien on odpowiadać publiczny wirtualny adres IP (VIP) dla jednego z usług w chmurze lub witryn internetowych w profilu usługi Traffic Manager, które testujesz.
+    + Nazwa DNS i adres IP serwera DNS, do którego uzyskuje się dostęp do tej nazwy domeny Traffic Manager.
+    + Nazwa domeny Traffic Manager wpisana w wierszu polecenia po "nslookup" i adres IP, do którego jest rozpoznawana domena Traffic Manager. Drugi adres IP jest ważnym elementem do sprawdzenia. Powinien być zgodny z publicznym wirtualnym adresem IP (VIP) dla jednej z usług w chmurze lub witryn sieci Web w testowanym profilu Traffic Manager.
 
-## <a name="how-to-test-the-failover-traffic-routing-method"></a>Testowanie trybu failover metodę routingu ruchu
-
-1. Pozostaw wszystkie punkty końcowe w górę.
-2. Za pomocą jednego klienta, żądanie rozpoznawania nazw DNS dla nazwy domeny firmy przy użyciu podpolecenia lub podobnej użyteczności.
-3. Upewnij się, że rozpoznać adres IP odpowiada podstawowego punktu końcowego.
-4. Przenieś w dół do podstawowego punktu końcowego lub usuń plik monitorowania, więc w tym usługi Traffic Manager sądzą, że aplikacja nie działa.
-5. Poczekaj, aż DNS Time-to-Live (TTL) profil usługi Traffic Manager oraz kolejnych dwóch minut. Na przykład jeśli Twoja czasu wygaśnięcia DNS to 300 sekund (5 minut), należy poczekać siedem minut.
-6. Usuń z usługi DNS klienta pamięci podręcznej i żądania rozpoznawanie nazw DNS za pomocą polecenia nslookup. W Windows możesz opróżnić pamięć podręczną DNS za pomocą polecenia ipconfig/flushdns.
-7. Upewnij się, że rozpoznać adres IP jest zgodny z pomocniczego punktu końcowego.
-8. Powtórz ten proces trwa wyłączanie każdy punkt końcowy z osobna. Upewnij się, że na liście DNS zwracany jest adres IP następnego punktu końcowego. W przypadku wszystkich punktów końcowych w dół, należy ponownie uzyskać adres IP podstawowego punktu końcowego.
-
-## <a name="how-to-test-the-weighted-traffic-routing-method"></a>Jak przetestować metody routingu ważonego ruchu
+## <a name="how-to-test-the-failover-traffic-routing-method"></a>Testowanie metody routingu ruchu trybu failover
 
 1. Pozostaw wszystkie punkty końcowe w górę.
-2. Za pomocą jednego klienta, żądanie rozpoznawania nazw DNS dla nazwy domeny firmy przy użyciu podpolecenia lub podobnej użyteczności.
-3. Upewnij się, że rozpoznać adres IP odpowiada jednej z punktami końcowymi usługi.
-4. Opróżnienia pamięci podręcznej klienta DNS i powtórz kroki 2 i 3 dla każdego punktu końcowego. Powinieneś zobaczyć różne adresy IP zwrócona dla każdego z punktów końcowych.
+2. Przy użyciu jednego klienta należy zażądać rozpoznawania nazw DNS dla domeny firmowej przy użyciu narzędzia Nslookup lub podobnego.
+3. Upewnij się, że rozpoznany adres IP odpowiada podstawowemu punktowi końcowemu.
+4. Wywołaj podstawowy punkt końcowy lub usuń plik monitorowania, aby Traffic Manager uważać, że aplikacja nie działa.
+5. Poczekaj, aż upłynie czas wygaśnięcia (TTL) usługi DNS profilu Traffic Manager i dodatkowe dwie minuty. Na przykład jeśli czas wygaśnięcia usługi DNS wynosi 300 sekund (5 minut), należy poczekać siedem minut.
+6. Opróżnij pamięć podręczną klienta DNS i zażądaj rozpoznawania nazw DNS przy użyciu narzędzia Nslookup. W systemie Windows można opróżnić pamięć podręczną DNS za pomocą polecenia ipconfig/flushdns.
+7. Upewnij się, że rozpoznany adres IP pasuje do pomocniczego punktu końcowego.
+8. Powtórz ten proces, łącząc poszczególne punkty końcowe z kolei. Sprawdź, czy serwer DNS zwraca adres IP następnego punktu końcowego z listy. Gdy wszystkie punkty końcowe nie działają, należy ponownie uzyskać adres IP podstawowego punktu końcowego.
 
-## <a name="how-to-test-the-performance-traffic-routing-method"></a>Testowanie wydajności metodę routingu ruchu
+## <a name="how-to-test-the-weighted-traffic-routing-method"></a>Testowanie ważonej metody routingu ruchu
 
-Aby skutecznie przetestować wydajność metody routingu ruchu, konieczne jest posiadanie klienci znajdujący się w różnych częściach świata. Klientów można tworzyć w różnych regionach platformy Azure, które mogą służyć do testowania usługi. W przypadku globalnej sieci można zdalnie Zaloguj się do klientów w innych częściach świata i uruchomić testy z tego miejsca.
+1. Pozostaw wszystkie punkty końcowe w górę.
+2. Przy użyciu jednego klienta należy zażądać rozpoznawania nazw DNS dla domeny firmowej przy użyciu narzędzia Nslookup lub podobnego.
+3. Upewnij się, że rozpoznany adres IP odpowiada jednemu z punktów końcowych.
+4. Opróżnij pamięć podręczną klienta DNS i powtórz kroki 2 i 3 dla każdego punktu końcowego. Powinny zostać wyświetlone różne adresy IP, które są zwracane dla każdego z punktów końcowych.
 
-Alternatywnie istnieją wolne opartego na sieci web wyszukiwania DNS i szczegółowej dostępne usługi. Niektóre z tych narzędzi zapewniają możliwość sprawdzenia, rozpoznawanie nazw DNS z różnych lokalizacji na całym świecie. Czy na "Wyszukiwania DNS" Wyszukaj przykłady. Usługi innych firm, takich jak Gomez lub prezentacji, którą można potwierdzić profilów dystrybuujesz ruchu zgodnie z oczekiwaniami.
+## <a name="how-to-test-the-performance-traffic-routing-method"></a>Testowanie metody routingu ruchu wydajności
 
-## <a name="next-steps"></a>Kolejne kroki
+W celu efektywnego przetestowania metody routingu ruchu wydajności należy mieć klientów znajdujących się w różnych częściach świata. Możesz tworzyć klientów w różnych regionach świadczenia usługi Azure, których można użyć do testowania usług. Jeśli masz sieć globalną, możesz zdalnie zalogować się do klientów w innych częściach świata i uruchomić testy z tego miejsca.
 
-* [Metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md)
+Alternatywnie dostępne są bezpłatne wyszukiwanie i Dig usługi DNS oparte na sieci Web. Niektóre z tych narzędzi dają możliwość sprawdzania rozpoznawania nazw DNS z różnych lokalizacji na całym świecie. Aby zapoznać się z przykładami, wyszukaj ciąg "wyszukiwanie DNS". Usług innych firm, takich jak Gomez lub prezentację, można użyć do sprawdzenia, czy Twoje profile dystrybuują ruch zgodnie z oczekiwaniami.
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Informacje o metodach routingu ruchu Traffic Manager](traffic-manager-routing-methods.md)
 * [Zagadnienia dotyczące wydajności usługi Traffic Manager](traffic-manager-performance-considerations.md)
 * [Rozwiązywanie problemów ze stanem obniżonej wydajności usługi Traffic Manager](traffic-manager-troubleshooting-degraded.md)

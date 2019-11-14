@@ -1,26 +1,26 @@
 ---
-title: Aktywuj moje role zasobów platformy Azure w programie PIM-Azure Active Directory | Microsoft Docs
+title: Aktywowanie ról zasobów platformy Azure w programie PIM — Azure AD | Microsoft Docs
 description: Dowiedz się, jak aktywować role zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2062ece84676e0af37c79cf25d8662f186ab0a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808982"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023147"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Aktywuj moje role zasobów platformy Azure w Privileged Identity Management
 
@@ -32,7 +32,7 @@ Ten artykuł dotyczy członków, którzy muszą aktywować swoją rolę zasobów
 
 Gdy musisz przejąć rolę zasobów platformy Azure, możesz zażądać aktywacji przy użyciu opcji nawigacji **Moje role** w Privileged Identity Management.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Otwórz **Azure AD Privileged Identity Management**. Aby uzyskać informacje na temat dodawania kafelka Privileged Identity Management do pulpitu nawigacyjnego, zobacz [Rozpoczynanie korzystania z Privileged Identity Management](pim-getting-started.md).
 

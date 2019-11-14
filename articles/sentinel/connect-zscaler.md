@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515137"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048953"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Łączenie rozwiązania Zscaler dostępu do Internetu z platformą Azure — wskaźnik
 
@@ -106,7 +106,7 @@ W tym kroku należy wybrać maszynę z systemem Linux, która będzie pełnić r
     - Port = 514
     - Format = CEF
     - Adres IP — upewnij się, że wysłano komunikaty CEF na adres IP maszyny wirtualnej dedykowanej do tego celu.
- Aby uzyskać więcej informacji, zobacz [Przewodnik dotyczący integracji usługi Azure rozwiązania Zscaler](https://aka.ms/ZscalerCEFInstructions).
+ Aby uzyskać więcej informacji, zobacz [Przewodnik wdrażania programu rozwiązania Zscaler i platformy Azure](https://aka.ms/ZscalerCEFInstructions).
  
    > [!NOTE]
    > To rozwiązanie obsługuje dziennik systemowy RFC 3164 lub RFC 5424.

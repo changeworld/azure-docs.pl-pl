@@ -1,6 +1,6 @@
 ---
-title: Pomiary rzeczywistego użytkownika do usługi Azure Traffic Manager za pomocą programu Visual Studio Mobile Center | Dokumentacja firmy Microsoft
-description: Konfigurowanie aplikacji mobilnych opracowanych za pomocą programu Visual Studio Mobile Center wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Traffic Manager
+title: Pomiary rzeczywistego użytkownika z programem Visual Studio Mobile Center — Azure Traffic Manager
+description: Skonfiguruj aplikację mobilną opracowaną przy użyciu programu Visual Studio Mobile Center, aby wysyłać Pomiary rzeczywistego użytkownika do Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -13,55 +13,55 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 95207cea5988a22b0b3caa23be39b481f9fd687b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 734049a45eca2688b2ad309ee3245bbb7bf152de
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071255"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040316"
 ---
-# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Jak wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Traffic Manager za pomocą programu Visual Studio Mobile Center
+# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Jak wysyłać Pomiary rzeczywistego użytkownika do Traffic Manager za pomocą programu Visual Studio Mobile Center
 
-Można skonfigurować aplikację mobilną opracowanych za pomocą programu Visual Studio Mobile Center, aby wysyłanie pomiarów rzeczywistego użytkownika do usługi Traffic Manager, wykonując następujące kroki:
+Można skonfigurować aplikację mobilną opracowaną przy użyciu programu Visual Studio Mobile Center, aby wysyłać Pomiary rzeczywistego użytkownika do Traffic Manager, wykonując następujące czynności:
 
 >[!NOTE]
-> Obecnie wysyłanie pomiarów rzeczywistego użytkownika do usługi Traffic manager jest obsługiwana tylko dla systemu Android.
+> Obecnie wysyłanie Pomiary rzeczywistego użytkownika do usługi Traffic Manager jest obsługiwane tylko dla systemu Android.
 
-Aby skonfigurować pomiarów rzeczywistego użytkownika, należy uzyskać klucz i instrumentacji aplikacji za pomocą pakietu uruchamianie.
+Aby skonfigurować Pomiary rzeczywistego użytkownika, musisz uzyskać klucz i instrumentację aplikacji za pomocą pakietu RUM.
 
-## <a name="step-1-obtain-a-key"></a>Krok 1: Uzyskiwanie klucza
+## <a name="step-1-obtain-a-key"></a>Krok 1. Uzyskiwanie klucza
     
-Pomiary, pobrać i wysyłane do usługi Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę za pomocą unikatowy ciąg, nazywany kluczem rzeczywistego użytkownika pomiarów (RUM). Możesz uzyskać klucz uruchamianie przy użyciu witryny Azure portal, interfejsu API REST lub przy użyciu programu PowerShell / interfejsu wiersza polecenia, interfejsy.
+Pomiary wykonywane i wysyłane do Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę przy użyciu unikatowego ciągu, zwanego kluczem Pomiary rzeczywistego użytkownika (RUM). Klucz RUM można uzyskać przy użyciu Azure Portal, interfejsu API REST lub interfejsów CLI programu PowerShell.
 
-Aby uzyskać klucz RUM przy użyciu witryny Azure portal, korzystając z następującej procedury:
-1. Z poziomu przeglądarki Zaloguj się do witryny Azure portal. Jeśli nie masz jeszcze konta, możesz zarejestrować się w bezpłatnej wersji próbnej jednego miesiąca.
-2. Na pasku wyszukiwania portalu Wyszukaj nazwę profilu usługi Traffic Manager, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w taki sposób, w wynikach, wyświetlana.
-3. Na stronie profilu usługi Traffic Manager kliknij **pomiarów rzeczywistego użytkownika** w obszarze **ustawienia**.
-4. Kliknij przycisk **Wygeneruj klucz** można utworzyć nowego klucza (rum).
+Aby uzyskać klucz RUM przy użyciu Azure Portal przy użyciu następującej procedury:
+1. W przeglądarce Zaloguj się do Azure Portal. Jeśli jeszcze nie masz konta, możesz zarejestrować się w celu uzyskania bezpłatnej miesięcznej wersji próbnej.
+2. Na pasku wyszukiwania portalu Wyszukaj nazwę profilu Traffic Manager, która ma zostać zmodyfikowana, a następnie kliknij profil Traffic Manager w wyświetlonych wynikach.
+3. Na stronie profil Traffic Manager kliknij pozycję **pomiary rzeczywistego użytkownika** w obszarze **Ustawienia**.
+4. Kliknij przycisk **Generuj klucz** , aby utworzyć nowy klucz rum.
         
-   ![Wygeneruj klucz pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Generuj klucz Pomiary rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Rysunek 1: Rzeczywiste pomiary dotyczące prawdziwych użytkowników generowania kluczy**
+   **Rysunek 1: generowanie klucza Pomiary rzeczywistego użytkownika**
 
-5. Zostanie wyświetlona strona klucza (rum), który jest generowany i wstawki kodu JavaScript, który ma być osadzone w kodzie strony HTML.
+5. Na stronie jest wyświetlany wygenerowany klucz RUM i fragment kodu JavaScript, który musi zostać osadzony na stronie HTML.
  
-   ![Kod JavaScript dla klucza pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
+   ![Kod JavaScript dla klucza Pomiary rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **Rysunek 2: Klucz pomiarów rzeczywistego użytkownika oraz kod JavaScript pomiaru**
+   **Rysunek 2: Pomiary rzeczywistego użytkownika klucz i pomiar JavaScript**
  
-6. Kliknij przycisk **kopiowania** przycisk, aby skopiować klucz (rum). 
+6. Kliknij przycisk **Kopiuj** , aby SKOPIOWAĆ klucz rum. 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: Instrumentacja aplikacji przy użyciu uruchamianie pakiet zestawu SDK usługi Mobile Center
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2. Instrumentacja aplikacji za pomocą pakietu rumu programu Mobile Center SDK
 
-Jeśli jesteś nowym użytkownikiem programu Visual Studio Mobile Center, odwiedź stronę jego [witryny sieci Web](https://mobile.azure.com). Aby uzyskać szczegółowe instrukcje dotyczące integracji zestawu SDK, zobacz [wprowadzenie do zestawu SDK systemu Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Jeśli jesteś nowym w programie Visual Studio Mobile Center, odwiedź jego [witrynę internetową](https://mobile.azure.com). Aby uzyskać szczegółowe instrukcje dotyczące integracji z zestawem SDK, zobacz [wprowadzenie z Android SDK](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
 
-Aby użyć pomiarów rzeczywistego użytkownika, należy wykonać poniższą procedurę:
+Aby użyć Pomiary rzeczywistego użytkownika, wykonaj następującą procedurę:
 
-1.  Dodaj zestaw SDK do projektu
+1.  Dodawanie zestawu SDK do projektu
 
-    W trakcie okresu zapoznawczego ATM RUM SDK należy jawnie odwoływać się do repozytorium pakietów.
+    W wersji zapoznawczej zestawu SDK protokołu ATM, należy jawnie odwoływać się do repozytorium pakietu.
 
-    W swojej **app/build.gradle** pliku Dodaj następujące wiersze:
+    W pliku **App/Build. Gradle** Dodaj następujące wiersze:
 
     ```groovy
     repositories {
@@ -70,7 +70,7 @@ Aby użyć pomiarów rzeczywistego użytkownika, należy wykonać poniższą pro
         }
     }
     ```
-    W swojej **app/build.gradle** pliku Dodaj następujące wiersze:
+    W pliku **App/Build. Gradle** Dodaj następujące wiersze:
 
     ```groovy
     dependencies {
@@ -80,27 +80,27 @@ Aby użyć pomiarów rzeczywistego użytkownika, należy wykonać poniższą pro
     }
     ```
 
-2. Uruchom zestaw SDK
+2. Uruchamianie zestawu SDK
 
-    Otwórz klasą działania głównego aplikacji i dodaj następujące instrukcje importu:
+    Otwórz główną klasę działania aplikacji i Dodaj następujące instrukcje importu:
 
     ```java
     import com.microsoft.azure.mobile.MobileCenter;
     import com.microsoft.azure.mobile.rum.RealUserMeasurements;
     ```
 
-    Wyszukaj `onCreate` wywołania zwrotnego, w tym samym pliku i Dodaj następujący kod:
+    Poszukaj `onCreate` wywołania zwrotnego w tym samym pliku i Dodaj następujący kod:
 
     ```java
     RealUserMeasurements.setRumKey("<Your RUM Key>");
     MobileCenter.start(getApplication(), "<Your Mobile Center AppSecret>", RealUserMeasurements.class);
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [pomiarów rzeczywistego użytkownika](traffic-manager-rum-overview.md)
-- Dowiedz się, [jak działa usługa Traffic Manager](traffic-manager-overview.md)
-- Dowiedz się więcej o [Mobile Center](https://docs.microsoft.com/mobile-center/)
-- [Zarejestruj](https://mobile.azure.com) for Mobile Center
-- Dowiedz się więcej o [metody routingu ruchu](traffic-manager-routing-methods.md) obsługiwane przez usługę Traffic Manager
-- Dowiedz się, jak [Tworzenie profilu usługi Traffic Manager](traffic-manager-create-profile.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [pomiary rzeczywistego użytkownika](traffic-manager-rum-overview.md)
+- Dowiedz się, [jak działa Traffic Manager](traffic-manager-overview.md)
+- Dowiedz się więcej o usłudze [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- [Utwórz konto](https://mobile.azure.com) w usłudze Mobile Center
+- Dowiedz się więcej o [metodach routingu ruchu](traffic-manager-routing-methods.md) obsługiwanych przez Traffic Manager
+- Dowiedz się, jak [utworzyć profil Traffic Manager](traffic-manager-create-profile.md)
 

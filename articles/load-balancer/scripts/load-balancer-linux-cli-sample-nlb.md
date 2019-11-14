@@ -1,28 +1,24 @@
 ---
-title: Przykład interfejsu wiersza polecenia — równoważenie obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności — Azure | Microsoft Docs
+title: Równoważenie obciążenia ruchu z maszynami wirtualnymi na potrzeby usługi HA — interfejs wiersza polecenia platformy Azure — Azure Load Balancer
 description: Ten przykładowy skrypt wiersza polecenia platformy Azure przedstawia sposób równoważenia obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed3f0899d6a378285c9799b57e2aad76348c45d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273811"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048926"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Przykład skryptu interfejsu wiersza polecenia platformy Azure: Równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Przykładowy skrypt wiersza polecenia platformy Azure: równoważenie obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności
 
 Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure umożliwia utworzenie wszystkich elementów potrzebnych do uruchomienia kilku maszyn wirtualnych z systemem Ubuntu skonfigurowanych w ramach konfiguracji o wysokiej dostępności i zrównoważonym obciążeniu. Po uruchomieniu skryptu będziesz mieć trzy maszyny wirtualne dołączone do zestawu dostępności platformy Azure i dostępne za pośrednictwem usługi Azure Load Balancer. 
 

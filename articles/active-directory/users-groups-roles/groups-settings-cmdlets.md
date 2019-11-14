@@ -1,34 +1,34 @@
 ---
-title: Konfigurowanie ustawień grupy przy użyciu programu PowerShell-Azure Active Directory | Microsoft Docs
+title: Konfigurowanie ustawień grupy przy użyciu programu PowerShell — Azure AD | Microsoft Docs
 description: Jak zarządzać ustawieniami grup za pomocą poleceń cmdlet Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6a1b900d4a67390ae867d770c3b984c43fd501b5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263964"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026751"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
-Ten artykuł zawiera instrukcje dotyczące używania poleceń cmdlet programu PowerShell w usłudze Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko grup pakietu Office 365 (nazywanych czasami grupami ujednoliconymi). 
+
+Ten artykuł zawiera instrukcje dotyczące używania poleceń cmdlet programu PowerShell w usłudze Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko grup pakietu Office 365 (nazywanych czasami grupami ujednoliconymi).
 
 > [!IMPORTANT]
 > Niektóre ustawienia wymagają licencji na Azure Active Directory — wersja Premium P1. Aby uzyskać więcej informacji, zobacz tabela [ustawień szablonu](#template-settings) .
 
-Aby uzyskać więcej informacji na temat zapobiegania tworzeniu grup zabezpieczeń przez użytkowników niebędących administratorami, ustaw wartość @ no__t-0 zgodnie z opisem w temacie [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Aby uzyskać więcej informacji na temat zapobiegania tworzeniu grup zabezpieczeń przez użytkowników niebędących administratorami, ustaw `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` zgodnie z opisem w [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 Ustawienia grup pakietu Office 365 są konfigurowane przy użyciu obiektu Settings i obiektu SettingsTemplate. Początkowo nie widzisz żadnych obiektów Settings w katalogu, ponieważ katalog jest skonfigurowany z ustawieniami domyślnymi. Aby zmienić ustawienia domyślne, należy utworzyć nowy obiekt ustawień przy użyciu szablonu ustawień. Szablony ustawień są definiowane przez firmę Microsoft. Istnieje kilka różnych szablonów ustawień. Aby skonfigurować ustawienia grupy pakietu Office 365 dla katalogu, należy użyć szablonu o nazwie "Group. Unified". Aby skonfigurować ustawienia grupy pakietu Office 365 dla pojedynczej grupy, użyj szablonu o nazwie "Group. Unified. Guest". Ten szablon służy do zarządzania dostępem gościa do grupy programu Office 365. 
 
@@ -284,7 +284,7 @@ Ten krok powoduje usunięcie ustawień na poziomie katalogu, które mają zastos
 ## <a name="cmdlet-syntax-reference"></a>Dokumentacja składni poleceń cmdlet
 Więcej Azure Active Directory dokumentacji programu PowerShell można znaleźć w [Azure Active Directory poleceniach cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="additional-reading"></a>Dodatkowy odczyt
+## <a name="additional-reading"></a>Materiały uzupełniające
 
 * [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

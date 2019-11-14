@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie wieloskładnikowe (MFA) i Privileged Identity Management-Azure Active Directory | Microsoft Docs
+title: MFA lub funkcji 2FA i Privileged Identity Management — Azure AD | Microsoft Docs
 description: Dowiedz się, jak Azure AD Privileged Identity Management (PIM) sprawdza poprawność uwierzytelniania wieloskładnikowego (MFA).
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/31/2018
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa58c354198e648227b9b0b43d1f60546f87d32
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6df593909c3ae5962e413eb84e64196fade0326b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063062"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022152"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>Uwierzytelnianie wieloskładnikowe i Privileged Identity Management
 
@@ -36,7 +36,7 @@ Dostępne są dwie opcje weryfikacji uwierzytelniania wieloskładnikowego, gdy u
 
 Najprostsza opcja polega na tym, że usługa Azure Multi-Factor Authentication dla użytkowników, którzy aktywują rolę uprzywilejowaną. Aby to zrobić, najpierw sprawdź, czy Ci użytkownicy mają licencję, w razie potrzeby, i zarejestrowano w usłudze Azure Multi-Factor Authentication. Aby uzyskać więcej informacji na temat wdrażania usługi Azure Multi-Factor Authentication, zobacz [wdrażanie usługi azure Multi-Factor Authentication opartej na chmurze](../authentication/howto-mfa-getstarted.md). Zalecane jest, ale nie wymagane, skonfigurowanie usługi Azure AD w celu wymuszenia uwierzytelniania wieloskładnikowego dla tych użytkowników podczas logowania. Wynika to z faktu, że sprawdzanie uwierzytelniania wieloskładnikowego zostanie przeprowadzone przez Privileged Identity Management samego siebie.
 
-Alternatywnie, jeśli użytkownicy uwierzytelniają się lokalnie, dostawca tożsamości może być odpowiedzialny za uwierzytelnianie wieloskładnikowe. Jeśli na przykład skonfigurowano usługi federacyjne AD do wymagania uwierzytelniania opartego na karcie inteligentnej przed uzyskaniem dostępu do usługi Azure AD, [Zabezpieczanie zasobów w chmurze za pomocą usługi azure Multi-Factor Authentication i AD FS](../authentication/howto-mfa-adfs.md) zawiera instrukcje dotyczące konfigurowania AD FS do programu Wysyłanie oświadczeń do usługi Azure AD. Gdy użytkownik próbuje aktywować rolę, Privileged Identity Management zaakceptuje, że uwierzytelnianie wieloskładnikowe zostało już zweryfikowane dla użytkownika po odebraniu odpowiednich oświadczeń.
+Alternatywnie, jeśli użytkownicy uwierzytelniają się lokalnie, dostawca tożsamości może być odpowiedzialny za uwierzytelnianie wieloskładnikowe. Jeśli na przykład skonfigurowano usługi federacyjne usług AD, aby wymagały uwierzytelniania opartego na karcie inteligentnej przed uzyskaniem dostępu do usługi Azure AD, [Zabezpieczanie zasobów w chmurze za pomocą usługi azure Multi-Factor Authentication i AD FS](../authentication/howto-mfa-adfs.md) zawiera instrukcje dotyczące konfigurowania AD FS w celu wysyłania oświadczeń do usługi Azure AD. Gdy użytkownik próbuje aktywować rolę, Privileged Identity Management zaakceptuje, że uwierzytelnianie wieloskładnikowe zostało już zweryfikowane dla użytkownika po odebraniu odpowiednich oświadczeń.
 
 ## <a name="next-steps"></a>Następne kroki
 

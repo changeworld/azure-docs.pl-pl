@@ -1,12 +1,12 @@
 ---
-title: Omówienie użytkowników, grup, licencji i ról w usłudze Azure Active Directory | Microsoft Docs
+title: Omówienie użytkowników, grup, licencjonowania i ról — Azure AD | Microsoft Docs
 description: Relacje między użytkownikami i przypisanymi licencjami, role administratora oraz członkostwo w grupie w usłudze Azure Active Directory
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/28/2019
+ms.date: 11/08/2019
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083894"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027733"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Użytkownicy, grupy, licencje i role w dużych organizacjach
 
@@ -52,7 +52,7 @@ Wiele dużych organizacji chce, aby ich użytkownicy mogli uzyskiwać uprawnieni
 
  Nazwa roli | Podsumowanie uprawnień
  --------- | -------------------
- **Administrator aplikacji** | Może dodawać aplikacje przedsiębiorstwa i rejestracje aplikacji oraz zarządzać nimi, a także konfigurować ustawienia aplikacji serwera proxy. Administratorzy aplikacji można wyświetlać zasady dostępu warunkowego i urządzenia, ale nie zarządzać nimi.
+ **Administrator aplikacji** | Może dodawać aplikacje przedsiębiorstwa i rejestracje aplikacji oraz zarządzać nimi, a także konfigurować ustawienia aplikacji serwera proxy. Administratorzy aplikacji mogą wyświetlać zasady dostępu warunkowego i urządzenia, ale nie zarządzać nimi.
  **Administrator aplikacji w chmurze** | Może dodawać aplikacje przedsiębiorstwa i rejestracje aplikacji przedsiębiorstwa oraz zarządzać nimi. Ta rola ma wszystkie uprawnienia administratora aplikacji, ale nie może zarządzać ustawieniami serwera proxy aplikacji.
 **Deweloper aplikacji** | Może dodawać i aktualizować rejestracje aplikacji, ale nie może zarządzać aplikacjami przedsiębiorstwa ani konfigurować serwera proxy aplikacji.
 
@@ -70,7 +70,7 @@ Usługa Azure AD umożliwia również precyzyjną kontrolę danych przesyłanych
 * Uruchamianie i zatrzymywanie usługi aprowizacji Azure AD dla aplikacji, czyszczenie pamięci podręcznej aprowizacji oraz ponowne uruchamianie usługi
 * Wyświetlanie **raportu o działaniach aprowizacji**, który zawiera rejestr operacji tworzenia, aktualizowania i usuwania wszystkich użytkowników i grup między aplikacją a usługą Azure AD, oraz **raportu o błędach aprowizacji**, który zawiera bardziej szczegółowe komunikaty o błędach
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli dopiero zaczynasz administrować usługą Azure AD, zapoznaj się z [podstawową dokumentacją usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index).
 

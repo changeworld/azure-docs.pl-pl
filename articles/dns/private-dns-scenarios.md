@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3ac4db3a2d98e761183360c268d23efcc313cf09
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959327"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048500"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS scenariusze stref prywatnych
 
@@ -31,7 +31,7 @@ Ten scenariusz jest najpopularniejszym przypadkiem, w którym należy skojarzyć
 
 Na poniższym diagramie przedstawiono prostą wersję tego scenariusza, w której istnieją tylko dwie sieci wirtualne-A i B. A jest wyznaczeni jako sieć wirtualna rejestracji, a B jest wyznaczono jako sieć wirtualna rozpoznawania. Celem jest dla obu sieci wirtualnych udostępnienie wspólnej strefy contoso.com. Gdy strefa zostanie utworzona, a sieci wirtualne rozpoznawania i rejestracji są połączone ze strefą, platforma Azure automatycznie rejestruje rekordy DNS dla maszyn wirtualnych (VNETA-VM1 i VNETA-VM2) z sieci wirtualnej A. Rekordy DNS można także dodać ręcznie do strefy dla maszyn wirtualnych w sieci wirtualnej rozwiązania B. W przypadku tej konfiguracji zaobserwujesz następujące zachowanie zapytań DNS do przodu i wstecznego:
 * Zapytanie DNS z VNETC-VM1 w sieci wirtualnej rozpoznawania B, dla VNETA-VM1.contoso.com, otrzyma odpowiedź DNS zawierającą prywatny adres IP VNETA-VM1.
-* Odwrotna kwerenda DNS (PTR) od VNETC-VM2 w sieci wirtualnej rozpoznawania B, dla 10.1.0.1, otrzyma odpowiedź DNS zawierającą VNETB-VM1.contoso.com FQDN. Przyczyną jest to, że zapytania odwrotne DNS są ograniczone do tej samej sieci wirtualnej. 
+* Odwrotna kwerenda DNS (PTR) od VNETC-VM2 w sieci wirtualnej rozpoznawania B, dla 10.1.0.1, otrzyma odpowiedź DNS zawierającą VNETB-VM1.contoso.com FQDN.  
 * Zapytanie odwrotne DNS (PTR) od VNETC-VM3 w sieci wirtualnej rozpoznawania B, dla 10.0.0.1, będzie otrzymywać NXDOMAIN. Przyczyną jest to, że zapytania odwrotne DNS są ograniczone do tej samej sieci wirtualnej. 
 
 
@@ -48,7 +48,7 @@ Teraz, gdy klient internetowy wystawia zapytanie DNS w celu wyszukania VNETA-VM1
 ![Podziel Brian rozwiązanie](./media/private-dns-scenarios/split-brain-resolution.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej o prywatnych strefach DNS, zobacz [używanie Azure DNS w przypadku domen prywatnych](private-dns-overview.md).
+Aby uzyskać więcej informacji na temat prywatnych stref DNS, zobacz [Using Azure DNS for private domains (Używanie usługi Azure DNS dla domen prywatnych)](private-dns-overview.md).
 
 Dowiedz się, jak [utworzyć prywatną strefę DNS](./private-dns-getstarted-powershell.md) w Azure DNS.
 

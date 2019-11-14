@@ -1,5 +1,5 @@
 ---
-title: Przykład interfejsu wiersza polecenia — równoważenie obciążenia wielu witryn internetowych za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Równoważenie obciążenia wielu witryn sieci Web — interfejs wiersza polecenia platformy Azure — Azure Load Balancer
 description: Ten przykładowy skrypt wiersza polecenia platformy Azure przedstawia sposób równoważenia obciążenia wielu witryn internetowych do tej samej maszyny wirtualnej
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 63897da887230da74aaaddc464549e9c06ed9543
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 54258b5129e9804bfba4cc51f0d18770b8486280
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273884"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048934"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Przykład skryptu interfejsu wiersza polecenia platformy Azure: Równoważenie obciążenia wielu witryn internetowych
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Przykładowy skrypt interfejsu wiersza polecenia platformy Azure: równoważenie obciążenia wielu witryn internetowych
 
 Ten przykładowy skrypt wiersza polecenia platformy Azure tworzy sieć wirtualną z 2 maszynami wirtualnymi, które są elementami członkowskimi zestawu dostępności. Moduł równoważenia obciążenia kieruje ruch dla 2 osobnych adresów IP do 2 maszyn wirtualnych. Po uruchomieniu skryptu możesz wdrożyć oprogramowanie serwera internetowego na maszynach wirtualnych i hostować wiele witryn internetowych, z których każda będzie miała własny adres IP.
 
@@ -63,7 +63,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az-vm-availability-set-create) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

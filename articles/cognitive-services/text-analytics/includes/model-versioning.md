@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/25/2019
 ms.author: aahi
-ms.openlocfilehash: 5a06e26e5f1640024e343c714db3df134422115c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29850cb9cb40eae0829b5d8c2b58b5f9518f18d5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488630"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021149"
 ---
 Wersja 3 interfejs API analizy tekstu pozwala wybrać model analiza tekstu używany na danych. Użyj opcjonalnego parametru `model-version`, aby wybrać wersję modelu w żądaniach. Jeśli ten parametr nie jest określony, interfejs API będzie domyślnie `latest`, Najnowsza stabilna wersja modelu.
 
@@ -25,8 +25,8 @@ Każda odpowiedź z punktów końcowych v3 zawiera pole `model-version` określa
 
 ```json
 {
-    “documents”: […]
-    “errors”: []
-    “model-version”: “2019-10-01”
+    "documents": […]
+    "errors": []
+    "model-version": "2019-10-01"
 }
 ```

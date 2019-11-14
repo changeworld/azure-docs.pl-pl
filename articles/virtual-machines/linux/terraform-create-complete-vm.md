@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kompletnej maszyny wirtualnej z systemem Linux na platformie Azure za pomocą Terraform | Microsoft Docs
+title: Tworzenie kompletnej maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu programu Terraform
 description: Dowiedz się, jak za pomocą programu Terraform utworzyć i zarządzać kompletnym środowiskiem maszyn wirtualnych z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: bb4628477719d0aa2f176c466047531b42d7cfc3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924888"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034700"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Tworzenie kompletnej infrastruktury maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu usługi Terraform
 
@@ -30,7 +30,7 @@ Terraform umożliwia definiowanie i Tworzenie pełnych wdrożeń infrastruktury 
 
 Przejdźmy do każdej sekcji szablonu Terraform. Możesz również wyświetlić pełną wersję [szablonu Terraform](#complete-terraform-script) , który można skopiować i wkleić.
 
-Sekcja `provider` informuje Terraform o konieczności użycia dostawcy platformy Azure. Aby uzyskać wartości dla *subscription_id*, *client_id*, *Client_secret*i *tenant_id*, zobacz [Install and configure Terraform](terraform-install-configure.md). 
+Sekcja `provider` informuje Terraform o konieczności użycia dostawcy platformy Azure. Aby uzyskać wartości *subscription_id*, *client_id*, *Client_secret*i *tenant_id*, zobacz [Install and configure Terraform](terraform-install-configure.md). 
 
 > [!TIP]
 > Jeśli tworzysz zmienne środowiskowe dla wartości lub używają [Azure Cloud Shell środowiska bash](/azure/cloud-shell/overview) , nie musisz uwzględniać deklaracji zmiennych w tej sekcji.
@@ -57,7 +57,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-W dodatkowych sekcjach należy odwołać się do grupy zasobów z *$ {azurerm_resource_group. myterraformgroup. Name}* .
+W dodatkowych sekcjach należy odwołać się do grupy zasobów przy użyciu *$ {azurerm_resource_group. myterraformgroup. Name}* .
 
 ## <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
 W poniższej sekcji została utworzona sieć wirtualna o nazwie *myVnet* w przestrzeni adresowej *10.0.0.0/16* :

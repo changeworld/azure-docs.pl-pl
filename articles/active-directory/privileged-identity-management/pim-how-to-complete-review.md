@@ -1,25 +1,25 @@
 ---
-title: Dokończ przegląd dostępu ról usługi Azure AD w programie PIM-Azure Active Directory | Microsoft Docs
+title: Kończenie przeglądu dostępu ról usługi Azure AD w usłudze PIM — Azure AD | Microsoft Docs
 description: Dowiedz się, jak wykonać przegląd dostępu ról usługi Azure AD w Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 197abc0642d6abf1278a75c2101c195cafeb53b2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809130"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022278"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Dokończ przegląd dostępu ról usługi Azure AD w Privileged Identity Management
 
@@ -45,15 +45,15 @@ Jeśli przegląd dostępu zostanie skonfigurowany tak, aby użytkownicy sami prz
 
 Wszystkie przeglądy dostępu mają datę końcową, ale możesz użyć przycisku **Zatrzymaj** , aby zakończyć go na początku. Jeśli żaden użytkownik nie został przejrzany w tym czasie, nie będzie mógł po zatrzymywać przeglądu. Po zatrzymaniu nie można ponownie uruchomić recenzji.
 
-### <a name="apply"></a>Składanie wniosku o przyjęcie do programu
+### <a name="apply"></a>Zastosuj
 
 Po zakończeniu przeglądu dostępu, ponieważ osiągnięto datę końcową lub została zatrzymana ręcznie, przycisk **Zastosuj** implementuje wynik przeglądu. W przypadku odmowy dostępu użytkownika do przeglądu jest to krok, który spowoduje usunięcie przypisania roli.  
 
-### <a name="export"></a>Eksportuj
+### <a name="export"></a>Eksportowanie
 
 Jeśli chcesz zastosować wyniki przeglądu dostępu ręcznie, możesz wyeksportować przegląd. Przycisk **Eksportuj** rozpocznie pobieranie pliku CSV. Można zarządzać wynikami w programie Excel lub innych programach, które otwierają pliki CSV.
 
-### <a name="delete"></a>Usuń
+### <a name="delete"></a>Usuwanie
 
 Jeśli nie interesuje Cię przegląd, usuń go. Przycisk **Usuń** usuwa przegląd z usługi Privileged Identity Management.
 

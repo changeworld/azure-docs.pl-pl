@@ -1,21 +1,18 @@
 ---
-title: Tworzenie bramy aplikacji za pomocą kończenia żądań SSL — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+title: Kończenie protokołu SSL za pomocą interfejsu wiersza polecenia platformy Azure Application Gateway
 description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 188c252064028ccecc0fd4fe231cda190d2b4c08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d1decdda096fb902ff605205d7193e1264e5170
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135137"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047994"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>tworzenie bramy aplikacji z terminacją SSL przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -167,7 +164,7 @@ Aby zaakceptować ostrzeżenie o zabezpieczeniach, jeśli używasz certyfikatu z
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
@@ -177,4 +174,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie bramy aplikacji z certyfikatem
 > * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
-Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.
+Aby dowiedzieć się więcej na temat bram aplikacji i skojarzonych z nimi zasobów, przejdź do artykułów z krokami.

@@ -1,6 +1,6 @@
 ---
-title: Pomiarów rzeczywistego użytkownika usługi Azure Traffic Manager ze stronami sieci web | Dokumentacja firmy Microsoft
-description: Konfigurowanie stron sieci web, aby wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Traffic Manager
+title: Pomiary rzeczywistego użytkownika ze stronami sieci Web — Azure Traffic Manager
+description: W tym artykule dowiesz się, jak skonfigurować strony sieci Web do wysyłania Pomiary rzeczywistego użytkownika do usługi Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -13,60 +13,60 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 2d044457df80f16a6e8073e7f3253a611f74d8a8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e3cf5af5aaa894b1595d67c0056073a458b0a88
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071217"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040304"
 ---
-# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Azure Traffic Manager za pomocą stron sieci web
+# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak wysyłać Pomiary rzeczywistego użytkownika do usługi Azure Traffic Manager przy użyciu stron sieci Web
 
-Można skonfigurować stron sieci web w taki sposób, aby wysyłanie pomiarów rzeczywistego użytkownika do usługi Traffic Manager, uzyskując klucza rzeczywistego użytkownika pomiarów (RUM) i osadzanie wygenerowanego kodu do strony sieci web.
+Strony sieci Web można skonfigurować do wysyłania Pomiary rzeczywistego użytkownika do Traffic Manager przez uzyskanie klucza Pomiary rzeczywistego użytkownika (RUM) i osadzenie wygenerowanego kodu na stronie sieci Web.
 
-## <a name="obtain-a-real-user-measurements-key"></a>Uzyskaj klucz pomiarów rzeczywistego użytkownika
+## <a name="obtain-a-real-user-measurements-key"></a>Uzyskaj klucz Pomiary rzeczywistego użytkownika
 
-Pomiary zająć i wysyłanie do usługi Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę za pomocą unikatowy ciąg o nazwie **klucza rzeczywistego użytkownika pomiarów (RUM)** . Można uzyskać klucz uruchamianie przy użyciu witryny Azure portal, interfejsu API REST lub przy użyciu programu PowerShell lub wiersza polecenia platformy Azure.
+Pomiary wykonywane i wysyłane do Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę przy użyciu unikatowego ciągu, zwanego **kluczem pomiary rzeczywistego użytkownika (rum)** . Klucz RUM można uzyskać przy użyciu Azure Portal, interfejsu API REST lub polecenia programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-Aby uzyskać klucz RUM przy użyciu witryny Azure portal:
-1. Z poziomu przeglądarki Zaloguj się do witryny Azure portal. Jeśli nie masz jeszcze konta, możesz zarejestrować się w bezpłatnej wersji próbnej jednego miesiąca.
-2. Na pasku wyszukiwania portalu Wyszukaj nazwę profilu usługi Traffic Manager, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w taki sposób, w wynikach, wyświetlana.
-3. W bloku profilu usługi Traffic Manager, kliknij **pomiarów rzeczywistego użytkownika** w obszarze **ustawienia**.
-4. Kliknij przycisk **Wygeneruj klucz** można utworzyć nowego klucza (rum).
+Aby uzyskać klucz RUM przy użyciu Azure Portal:
+1. W przeglądarce Zaloguj się do Azure Portal. Jeśli jeszcze nie masz konta, możesz zarejestrować się w celu uzyskania bezpłatnej miesięcznej wersji próbnej.
+2. Na pasku wyszukiwania portalu Wyszukaj nazwę profilu Traffic Manager, która ma zostać zmodyfikowana, a następnie kliknij profil Traffic Manager w wyświetlonych wynikach.
+3. W bloku profil Traffic Manager kliknij pozycję **pomiary rzeczywistego użytkownika** w obszarze **Ustawienia**.
+4. Kliknij przycisk **Generuj klucz** , aby utworzyć nowy klucz rum.
  
-   ![Wygeneruj klucz pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Generuj klucz Pomiary rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Rysunek 1: Generowanie klucza pomiarów rzeczywistego użytkownika**
+   **Rysunek 1: generowanie klucza Pomiary rzeczywistego użytkownika**
 
-5. W tym bloku teraz wyświetlane generowania kluczy RUM i wstawki kodu JavaScript, który ma być osadzone w kodzie strony HTML.
+5. W bloku jest teraz wyświetlany wygenerowany klucz RUM i fragment kodu JavaScript, który musi zostać osadzony na stronie HTML.
  
-    ![Kod JavaScript dla klucza pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
+    ![Kod JavaScript dla klucza Pomiary rzeczywistego użytkownika](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    **Rysunek 2: Klucz pomiarów rzeczywistego użytkownika oraz kod JavaScript pomiaru**
+    **Rysunek 2: Pomiary rzeczywistego użytkownika klucz i pomiar JavaScript**
  
-6. Kliknij przycisk **kopiowania** przycisk, aby skopiować kod JavaScript. 
+6. Kliknij przycisk **Kopiuj** , aby skopiować kod JavaScript. 
 
 >[!IMPORTANT]
-> Użyj wygenerowanego kodu JavaScript dla funkcji pomiarów rzeczywistego użytkownika, aby działać prawidłowo. Wszelkie zmiany do tego skryptu lub skrypty używane przez pomiarów rzeczywistego użytkownika może spowodować nieprzewidywalne zachowanie.
+> Użyj wygenerowanej funkcji JavaScript do Pomiary rzeczywistego użytkownika, aby działać prawidłowo. Wszelkie zmiany w tym skrypcie lub skrypty używane przez Pomiary rzeczywistego użytkownika mogą prowadzić do nieprzewidywalnego zachowania.
 
-## <a name="embed-the-code-to-an-html-web-page"></a>Osadzanie kodu do strony internetowej HTML
+## <a name="embed-the-code-to-an-html-web-page"></a>Osadź kod na stronie sieci Web HTML
 
-Po uzyskaniu klucza uruchamianie, następnym krokiem jest osadzanie tego skopiowany JavaScript do strony HTML, które użytkownicy końcowi odwiedzać. Edytowanie kodu HTML może odbywać się na wiele sposobów i przy użyciu różnych narzędzi i przepływów pracy. Ten przykład przedstawia sposób aktualizacji na stronie HTML, aby dodać ten skrypt. Te wskazówki można użyć w celu dostosowania go do przepływu pracy zarządzania źródła HTML.
+Po uzyskaniu klucza RUM następnym krokiem jest osadzenie skopiowanego kodu JavaScript na stronę HTML, którą odwiedzają użytkownicy końcowi. Edytowanie HTML można wykonać na wiele sposobów i przy użyciu różnych narzędzi i przepływów pracy. Ten przykład pokazuje, jak zaktualizować stronę HTML, aby dodać ten skrypt. Możesz użyć tych wskazówek, aby dostosować je do przepływu pracy zarządzania źródłami HTML.
 
-1.  Otwórz stronę HTML w edytorze tekstu
-2.  Wklej kod JavaScript skopiowany w poprzednim kroku części treści pliku HTML (skopiowany kod jest w wierszu 8 i 9, zobacz rysunek 3).
+1.  Otwieranie strony HTML w edytorze tekstu
+2.  Wklej kod JavaScript skopiowany we wcześniejszym kroku do sekcji BODY HTML (skopiowany kod jest w wierszu 8 & 9, patrz rysunek 3).
  
-    ![Osadzanie kodu Javascript do strony sieci web dla pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
+    ![Osadź kod JavaScript na stronie sieci Web dla Pomiary rzeczywistego użytkownika](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    **Rysunek 3: Prosty kod HTML z osadzonych rzeczywistych JavaScript pomiary dotyczące prawdziwych użytkowników**
+    **Rysunek 3. prosty kod HTML z osadzonym Pomiary rzeczywistego użytkownika JavaScript**
 
-3.  Zapisz plik HTML i hosta go na serwerze sieci Web połączone z Internetem. 
-4. Następnym razem, gdy ta strona jest renderowany w przeglądarce sieci web, JavaScript, do których odwołuje się zostanie pobrany i skrypt będzie wykonywać pomiaru i operacje raportowania.
+3.  Zapisz plik HTML i Host go na serwerze webpodłączonym do Internetu. 
+4. Następnym razem, gdy ta strona jest renderowana w przeglądarce sieci Web, zostanie pobrane odwołanie do kodu JavaScript, a skrypt wykona operacje pomiarów i raportowania.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [pomiarów rzeczywistego użytkownika](traffic-manager-rum-overview.md)
-- Dowiedz się, [jak działa usługa Traffic Manager](traffic-manager-overview.md)
-- Dowiedz się więcej o [metody routingu ruchu](traffic-manager-routing-methods.md) obsługiwane przez usługę Traffic Manager
-- Dowiedz się, jak [Tworzenie profilu usługi Traffic Manager](traffic-manager-create-profile.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [pomiary rzeczywistego użytkownika](traffic-manager-rum-overview.md)
+- Dowiedz się, [jak działa Traffic Manager](traffic-manager-overview.md)
+- Dowiedz się więcej o [metodach routingu ruchu](traffic-manager-routing-methods.md) obsługiwanych przez Traffic Manager
+- Dowiedz się, jak [utworzyć profil Traffic Manager](traffic-manager-create-profile.md)
 
