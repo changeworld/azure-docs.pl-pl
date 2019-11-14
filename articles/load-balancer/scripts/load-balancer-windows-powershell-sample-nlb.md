@@ -1,6 +1,6 @@
 ---
-title: Przykład programu PowerShell — równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności — Azure
-titlesuffix: Azure Load Balancer
+title: Równoważenie obciążenia ruchu do maszyn wirtualnych na potrzeby Azure PowerShell HA
+titleSuffix: Azure Load Balancer
 description: Ten przykładowy skrypt programu PowerShell przedstawia sposób równoważenia obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 956a67897fa08fdd2c0d602ba514fcf58fabc292
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ccc9ed364ce7ec5b18d04a71a8215675f7876b81
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273534"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075921"
 ---
-# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Przykładowy skrypt programu Azure PowerShell: Równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności
+# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Przykładowy skrypt programu PowerShell: równoważenie obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności
 
 Ten przykładowy skrypt programu PowerShell umożliwia utworzenie wszystkich elementów potrzebnych do uruchomienia kilku maszyn wirtualnych z systemem Windows skonfigurowanych w ramach konfiguracji o wysokiej dostępności i zrównoważonym obciążeniu. Po uruchomieniu skryptu będziesz mieć trzy maszyny wirtualne dołączone do zestawu dostępności platformy Azure i dostępne za pośrednictwem usługi Azure Load Balancer.
 

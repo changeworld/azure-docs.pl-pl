@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenie maszyny wirtualnej usługi Azure Network Watcher Agent dla systemu Linux | Microsoft Docs
+title: Rozszerzenie maszyny wirtualnej usługi Azure Network Watcher Agent dla systemu Linux
 description: Wdróż agenta Network Watcher na maszynie wirtualnej z systemem Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: b59e4c570032bdd3341dc7d519f23f4cd86984c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084442"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073047"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej agenta Network Watcher dla systemu Linux
 
@@ -35,7 +35,7 @@ Ten artykuł zawiera szczegółowe informacje na temat obsługiwanych platform i
 
 Rozszerzenie agenta Network Watcher można skonfigurować dla następujących dystrybucji systemu Linux:
 
-| Dystrybucja | Version |
+| Dystrybucja | Wersja |
 |---|---|
 | Ubuntu | 12 + |
 | Debian | 7 i 8 |
@@ -75,7 +75,7 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta Network Watcher. Rozs
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład |
+| Nazwa | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |

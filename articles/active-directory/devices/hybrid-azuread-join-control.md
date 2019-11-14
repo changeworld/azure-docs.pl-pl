@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809224"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073628"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
 
@@ -33,7 +33,7 @@ Aby przeprowadzić kontrolowane sprawdzanie poprawności hybrydowego sprzężeni
 1. Wyczyść wpis punktu połączenia usługi (SCP) z Active Directory (AD), jeśli istnieje
 1. Konfigurowanie ustawienia rejestru po stronie klienta dla punktu połączenia usługi na komputerach przyłączonych do domeny przy użyciu obiektu zasady grupy (GPO)
 1. W przypadku korzystania z AD FS należy również skonfigurować ustawienia rejestru po stronie klienta dla punktu połączenia usługi na serwerze AD FS przy użyciu obiektu zasad grupy  
-
+1. Może być również konieczne [dostosowanie opcji synchronizacji](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) w Azure AD Connect, aby umożliwić synchronizację urządzeń. 
 
 
 ### <a name="clear-the-scp-from-ad"></a>Wyczyść punkt połączenia usługi w usłudze AD
@@ -82,7 +82,7 @@ Użyj poniższego przykładu, aby utworzyć obiekt zasady grupy (GPO) w celu wdr
 Jeśli używasz AD FS, najpierw musisz skonfigurować punkt połączenia usługi po stronie klienta, korzystając z instrukcji wymienionych powyżej, ale łącząc obiekt zasad grupy z serwerami AD FS. Obiekt SCP definiuje Źródło uprawnień dla obiektów urządzeń. Może być lokalna lub Azure AD. W przypadku skonfigurowania AD FS źródłem obiektów urządzeń jest usługa Azure AD.
 
 > [!NOTE]
-> Jeśli nie powiodło się skonfigurowanie punktu połączenia usługi po stronie klienta na serwerach AD FS, Źródło tożsamości urządzeń będzie uznawane za lokalne i jeśli masz funkcję zapisywania zwrotnego urządzeń, AD FS rozpocząć usuwanie obiektów urządzeń z lokalnego zarejestrowanego kontenera urządzeń po określony okres.
+> Jeśli nie powiodło się skonfigurowanie punktu połączenia usługi po stronie klienta na serwerach AD FS, Źródło tożsamości urządzeń będzie traktowane jako lokalne. Następnie Usługa AD FS rozpocznie usuwanie obiektów urządzeń z katalogu lokalnego po określonym okresie zdefiniowanym w atrybucie rejestracji urządzenia ADFS "MaximumInactiveDays". Obiekty rejestracji urządzeń ADFS można znaleźć za pomocą [polecenia cmdlet Get-AdfsDeviceRegistration](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Kontrolowana weryfikacja hybrydowego sprzężenia usługi Azure AD na urządzeniach niższego poziomu systemu Windows
 

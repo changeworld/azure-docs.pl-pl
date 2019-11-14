@@ -8,17 +8,19 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: ddbf2e5349a77a45155fafd07da5489d0073b093
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4dcf1e8a0ba9fd7c1e8d02ee8c8307dc63d9e231
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876395"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074680"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Przywracanie dysku i tworzenie odzyskanej maszyny wirtualnej na platformie Azure
+
 Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub poszczególne pliki. W tym artykule opisano sposób przywracania całej maszyny wirtualnej przy użyciu interfejsu wiersza polecenia. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
+>
 > * Wyświetlanie listy i wybieranie punktów odzyskiwania
 > * Przywracanie dysku z punktu odzyskiwania
 > * Tworzenie maszyny wirtualnej na podstawie przywróconego dysku
@@ -27,23 +29,23 @@ Aby uzyskać informacje na temat przywracania dysku i tworzenia odzyskanej maszy
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.18 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
-
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.18 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Do wykonania tego samouczka jest wymagana maszyna wirtualna z systemem Linux, chroniona przy użyciu usługi Azure Backup. Aby zasymulować proces przypadkowego usunięcia maszyny wirtualnej i jej odzyskania, utworzysz maszynę wirtualną na podstawie dysku w punkcie odzyskiwania. Jeśli potrzebujesz maszyny wirtualnej z systemem Linux chronionej przy użyciu usługi Azure Backup, zobacz [Tworzenie kopii zapasowej maszyny wirtualnej na platformie Azure za pomocą interfejsu wiersza polecenia](quick-backup-vm-cli.md).
 
-
 ## <a name="backup-overview"></a>Omówienie usługi Backup
+
 Po zainicjowaniu tworzenia kopii zapasowej przez platformę Azure rozszerzenie kopii zapasowej na maszynie wirtualnej tworzy migawkę punktu w czasie. Rozszerzenie kopii zapasowej jest instalowane na maszynie wirtualnej w momencie pierwszego żądania utworzenia kopii zapasowej. Usługa Azure Backup również może utworzyć migawkę bazowego magazynu, jeśli maszyna wirtualna nie jest uruchomiona w momencie tworzenia kopii zapasowej.
 
 Domyślnie usługa Azure Backup tworzy kopię zapasową spójną na poziomie systemu plików. Po utworzeniu migawki w usłudze Azure Backup dane są przesyłane do magazynu usługi Recovery Services. Aby zmaksymalizować wydajność, usługa Azure Backup rozpoznaje i przesyła jedynie te bloki danych, które uległy zmianie od czasu utworzenia poprzedniej kopii zapasowej.
 
 Po ukończeniu przesyłania danych migawka jest usuwana, a utworzony zostaje punkt odzyskiwania.
 
-
 ## <a name="list-available-recovery-points"></a>Wyświetlanie listy dostępnych punktów odzyskiwania
-Aby przywrócić dysk, należy wybrać punkt odzyskiwania będący źródłem danych do odzyskania. Domyślne zasady przewidują tworzenie punktów odzyskiwania codziennie i przechowywanie ich przez 30 dni, dzięki czemu możesz wybrać określony punkt w czasie do odzyskania z dostępnego zestawu punktów odzyskiwania. 
+
+Aby przywrócić dysk, należy wybrać punkt odzyskiwania będący źródłem danych do odzyskania. Domyślne zasady przewidują tworzenie punktów odzyskiwania codziennie i przechowywanie ich przez 30 dni, dzięki czemu możesz wybrać określony punkt w czasie do odzyskania z dostępnego zestawu punktów odzyskiwania.
 
 Aby wyświetlić listę dostępnych punktów odzyskiwania, użyj polecenia [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). Do odzyskiwania dysków używana jest **nazwa** punktu odzyskiwania. W tym samouczku użyjemy najnowszego dostępnego punktu odzyskiwania. Parametr `--query [0].name` wybiera nazwę najnowszego punktu odzyskiwania, jak pokazano poniżej:
 
@@ -57,8 +59,8 @@ az backup recoverypoint list \
     --output tsv
 ```
 
-
 ## <a name="restore-a-vm-disk"></a>Przywracanie dysku maszyny wirtualnej
+
 Aby przywrócić dysk z punktu odzyskiwania, należy najpierw utworzyć konto usługi Azure Storage. Jest to konto magazynu używane do przechowywania przywróconego dysku. Dodatkowe czynności obejmują tworzenie maszyny wirtualnej przy użyciu przywróconego dysku.
 
 1. Aby utworzyć konto magazynu, użyj polecenia [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Nazwa konta magazynu może zawierać tylko małe litery i musi być globalnie unikatowa. Zastąp ciąg *mystorageaccount* własną unikatową nazwą:
@@ -82,11 +84,11 @@ Aby przywrócić dysk z punktu odzyskiwania, należy najpierw utworzyć konto us
         --rp-name myRecoveryPointName
     ```
 
-
 ## <a name="monitor-the-restore-job"></a>Monitorowanie zadania przywracania
+
 Aby monitorować stan zadania przywracania, użyj polecenia [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup job list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
@@ -105,12 +107,12 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 Gdy w polu *Status* (Stan) zadania przywracania jest widoczna wartość *Completed* (Ukończono), oznacza to, że dysk został przywrócony na konto magazynu.
 
-
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>Konwertowanie przywróconego dysku na dysk zarządzany
+
 Zadanie przywracania tworzy dysk niezarządzany. Aby utworzyć maszynę wirtualną na podstawie tego dysku, należy najpierw przekonwertować go na dysk zarządzany.
 
 1. Aby uzyskać parametry połączenia dla konta magazynu, użyj polecenia [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string). Zastąp wartość *mystorageaccount* nazwą konta magazynu, jak pokazano poniżej:
-    
+
     ```azurecli-interactive
     export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
         --resource-group myResourceGroup \
@@ -143,8 +145,8 @@ Zadanie przywracania tworzy dysk niezarządzany. Aby utworzyć maszynę wirtualn
         --name mystorageaccount
     ```
 
-
 ## <a name="create-a-vm-from-the-restored-disk"></a>Tworzenie maszyny wirtualnej na podstawie przywróconego dysku
+
 Ostatnim krokiem jest utworzenie maszyny wirtualnej przy użyciu dysku zarządzanego.
 
 1. Aby utworzyć maszynę wirtualną przy użyciu dysku zarządzanego, użyj polecenia [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create), jak pokazano poniżej:
@@ -163,11 +165,12 @@ Ostatnim krokiem jest utworzenie maszyny wirtualnej przy użyciu dysku zarządza
     az vm list --resource-group myResourceGroup --output table
     ```
 
-
 ## <a name="next-steps"></a>Następne kroki
+
 Podczas pracy z tym samouczkiem przywrócono dysk z punktu odzyskiwania i utworzono na jego podstawie maszynę wirtualną. W tym samouczku omówiono:
 
 > [!div class="checklist"]
+>
 > * Wyświetlanie listy i wybieranie punktów odzyskiwania
 > * Przywracanie dysku z punktu odzyskiwania
 > * Tworzenie maszyny wirtualnej na podstawie przywróconego dysku
@@ -176,4 +179,3 @@ Przejdź do następnego samouczka, aby dowiedzieć się więcej o przywracaniu p
 
 > [!div class="nextstepaction"]
 > [Przywracanie plików na maszynę wirtualną na platformie Azure](tutorial-restore-files.md)
-

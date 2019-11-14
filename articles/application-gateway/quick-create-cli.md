@@ -1,19 +1,20 @@
 ---
-title: 'Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure | Microsoft Docs'
+title: 'Szybki Start: bezpośredni ruch internetowy przy użyciu interfejsu wiersza polecenia'
+titleSuffix: Azure Application Gateway
 description: Informacje dotyczące tworzenia Application Gateway platformy Azure, która kieruje ruch sieci Web do maszyn wirtualnych w puli zaplecza przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: de1f30d949509ab48999d0080ccc4df74321ce01
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314899"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075199"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure
 
@@ -29,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, uruchom interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby znaleźć wersję, uruchom polecenie **az --version**. Aby uzyskać informacje o instalowaniu lub uaktualnianiu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>Grupa zasobów
 
 Na platformie Azure możesz przydzielić powiązane zasoby do grupy zasobów. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). 
 
@@ -159,11 +160,11 @@ az network application-gateway create \
 
 Tworzenie bramy aplikacji na platformie Azure może potrwać do 30 minut. Po jej utworzeniu można wyświetlić następujące ustawienia w sekcji **Ustawienia** strony **Application Gateway**:
 
-- **appGatewayBackendPool**: Znajduje się na stronie **Pule zaplecza**. Określa wymaganą pulę zaplecza.
-- **appGatewayBackendHttpSettings**: Znajduje się na stronie **Ustawienia HTTP**. Określa, że brama aplikacji używa portu 80 i protokołu HTTP na potrzeby komunikacji.
-- **appGatewayHttpListener**: Znajduje się na stronie **Odbiorniki**. Określa domyślny odbiornik skojarzony z pulą **appGatewayBackendPool**.
-- **appGatewayFrontendIP**: Znajduje się na stronie **Konfiguracje adresu IP frontonu**. Przypisuje on adres *myAGPublicIPAddress* do odbiornika **appGatewayHttpListener**.
-- **rule1**: Znajduje się na stronie **Reguły**. Określa domyślną regułę rozsyłania skojarzoną z odbiornikiem **appGatewayHttpListener**.
+- **appGatewayBackendPool**: znajduje się na stronie **Pule zaplecza** . Określa wymaganą pulę zaplecza.
+- **appGatewayBackendHttpSettings**: znajduje się na stronie **ustawień http** . Określa, że brama aplikacji używa portu 80 i protokołu HTTP na potrzeby komunikacji.
+- **appGatewayHttpListener**: znajduje się na **stronie odbiorników**. Określa domyślny odbiornik skojarzony z pulą **appGatewayBackendPool**.
+- **appGatewayFrontendIP**: znajduje się na stronie **konfiguracje adresów IP frontonu** . Przypisuje on adres *myAGPublicIPAddress* do odbiornika **appGatewayHttpListener**.
+- **RULE1**: znajduje się na stronie **reguł** . Określa domyślną regułę rozsyłania skojarzoną z odbiornikiem **appGatewayHttpListener**.
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
@@ -191,7 +192,7 @@ Jeśli nie potrzebujesz już zasobów utworzonych za pomocą bramy aplikacji, us
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zarządzanie ruchem internetowym przy użyciu bramy aplikacji za pomocą interfejsu wiersza polecenia platformy Azure](./tutorial-manage-web-traffic-cli.md)

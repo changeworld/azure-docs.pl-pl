@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: tworzenie podstawowego modułu równoważenia obciążenia — program Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: W tym przewodniku Szybki start przedstawiono sposób tworzenia podstawowego modułu równoważenia obciążenia przy użyciu programu PowerShell
+title: 'Szybki Start: Tworzenie podstawowego Load Balancer — Azure PowerShell'
+titleSuffix: Azure Load Balancer
+description: W tym przewodniku szybki start Rozpocznij tworzenie podstawowego Load Balancer przy użyciu programu PowerShell.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 378904b139edb7fe5d7c4376102ca6b153d84fb6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0743c1aff07014e83d72c43bdf85ad2d36f31d0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129075"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075983"
 ---
-# <a name="get-started"></a>Szybki start: tworzenie publicznego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell
+# <a name="get-started"></a>Szybki start: tworzenie publicznego modułu równoważenia obciążenia przy użyciu interfejsu programu Azure PowerShell
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia podstawowego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Windows Server i zrównoważysz obciążenie aplikacji internetowej między maszynami wirtualnymi.
 
@@ -268,7 +268,7 @@ Ustaw nazwę użytkownika i hasło administratora maszyn wirtualnych przy użyci
 $cred = Get-Credential
 ```
 
-Następnie utwórz maszyny wirtualne za pomocą polecenia [New-AzVM](/powershell/module/az.compute/new-azvm). Poniższy przykład obejmuje tworzenie dwóch maszyn wirtualnych oraz wymaganych składników sieci wirtualnej, jeśli jeszcze nie istnieją. W tym przykładzie karty sieciowe (*VM1* i *VM2*) utworzone w poprzednim kroku są automatycznie przypisywane do maszyn wirtualnych *VM1* i *VM2* , ponieważ mają identyczne nazwy i są przypisane do tej samej sieci wirtualnej (*myVnet*) i podsieć. Ponadto, ponieważ karty sieciowe są skojarzone z pulą zaplecza modułu równoważenia obciążenia, maszyny wirtualne są automatycznie dodawane do puli zaplecza.
+Następnie utwórz maszyny wirtualne za pomocą polecenia [New-AzVM](/powershell/module/az.compute/new-azvm). Poniższy przykład obejmuje tworzenie dwóch maszyn wirtualnych oraz wymaganych składników sieci wirtualnej, jeśli jeszcze nie istnieją. W tym przykładzie karty sieciowe (*VM1* i *VM2*) utworzone w poprzednim kroku są automatycznie przypisywane do maszyn wirtualnych *VM1* i *VM2* , ponieważ mają identyczne nazwy i są przypisane do tej samej sieci wirtualnej (*myVnet*) i podsieci (moja*podsieć*). Ponadto, ponieważ karty sieciowe są skojarzone z pulą zaplecza modułu równoważenia obciążenia, maszyny wirtualne są automatycznie dodawane do puli zaplecza.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -319,7 +319,7 @@ Zainstaluj usługi IIS przy użyciu niestandardowej strony internetowej na obu m
           Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
     ```
 5. Zamknij połączenie protokołu RDP z maszyną wirtualną *myVM1*.
-6. **Utwórz połączenie RDP na maszynie lokalnej** z *myVM2* przez uruchomienie `mstsc /v:PublicIpAddress:4222` polecenia i powtórz krok 4 dla *VM2*.
+6. **Utwórz połączenie RDP na komputerze lokalnym** z *myVM2* , uruchamiając polecenie `mstsc /v:PublicIpAddress:4222` i powtórz krok 4 dla *VM2*.
 
 ## <a name="test-load-balancer"></a>Testowanie modułu równoważenia obciążenia
 Uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:

@@ -1,7 +1,6 @@
 ---
-title: Omówienie protokołu IPv6 dla Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Informacje o obsłudze protokołu IPv6 Azure Load Balancer i maszyn wirtualnych o zrównoważonym obciążeniu.
+title: Omówienie protokołu IPv6 Azure Load Balancer
+description: Korzystając z tej ścieżki szkoleniowej, Rozpocznij pracę z obsługą protokołu IPv6 dla Azure Load Balancer i maszyn wirtualnych o zrównoważonym obciążeniu.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147344"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077024"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Omówienie protokołu IPv6 dla Azure Load Balancer
 
 
 >[!NOTE] 
->Azure Load Balancer obsługuje dwa różne typy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat usługa Load Balancer w warstwie Standardowa, zobacz [Usługa Load Balancer w warstwie Standardowa Omówienie](load-balancer-standard-overview.md).
+>Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat usługi Load Balancer w warstwie Standardowa, zobacz [Standard Load Balancer overview (Omówienie usługi Load Balancer w warstwie Standardowa)](load-balancer-standard-overview.md).
 
 Usługi równoważenia obciążenia z podstawową jednostką SKU można wdrożyć przy użyciu adresu IPv6. Oprócz łączności IPv4, zapewnia to następujące możliwości:
 

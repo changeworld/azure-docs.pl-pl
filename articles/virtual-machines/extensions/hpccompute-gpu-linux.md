@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenie sterownika NVIDIA GPU — maszyny wirtualne platformy Azure z systemem Linux | Microsoft Docs
+title: Rozszerzenie sterownika NVIDIA GPU — maszyny wirtualne platformy Azure z systemem Linux
 description: Microsoft Azure rozszerzenia do instalowania sterowników NVIDIA GPU na maszynach wirtualnych obliczeniowych serii N z systemem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174007"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073745"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterownika GPU NVIDIA dla systemu Linux
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 To rozszerzenie powoduje zainstalowanie sterowników NVIDIA GPU na maszynach wirtualnych serii N z systemem Linux. W zależności od rodziny maszyn wirtualnych rozszerzenie instaluje sterowniki CUDA lub GRID. Jeśli instalujesz sterowniki firmy NVIDIA przy użyciu tego rozszerzenia, akceptujesz i wyrażasz zgodę na warunki [umowy licencyjnej użytkownika końcowego firmy NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Podczas instalacji maszyna wirtualna może zostać ponownie przetworzony w celu ukończenia instalacji sterownika.
 
-Instrukcje dotyczące ręcznej instalacji sterowników i aktualnie obsługiwanych wersji są dostępne [tutaj.](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)
+Instrukcje dotyczące ręcznej instalacji sterowników i aktualnie obsługiwanych wersji są dostępne [tutaj](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 Rozszerzenie jest również dostępne do zainstalowania sterowników NVIDIA GPU na [maszynach wirtualnych z serii N systemu Windows](hpccompute-gpu-windows.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -36,11 +36,11 @@ Rozszerzenie jest również dostępne do zainstalowania sterowników NVIDIA GPU 
 
 To rozszerzenie obsługuje następujący dystrybucje systemu operacyjnego, w zależności od obsługi sterowników dla konkretnej wersji systemu operacyjnego.
 
-| Dystrybucja | Version |
+| Dystrybucja | Wersja |
 |---|---|
-| W systemie Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
-| W systemie Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
-| W systemie Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
+| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
+| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
@@ -70,24 +70,24 @@ Poniższy kod JSON pokazuje schemat rozszerzenia.
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Właściwości
 
-| Name | Wartość / przykład | Typ danych |
+| Nazwa | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft. HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
+| publisher | Microsoft. HpcCompute | ciąg |
+| type | NvidiaGpuDriverLinux | ciąg |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Ustawienia
 
 Wszystkie ustawienia są opcjonalne. Domyślnym zachowaniem jest nieaktualizowanie jądra, jeśli nie jest to wymagane w przypadku instalacji sterownika, zainstaluj najnowszy obsługiwany sterownik i zestaw narzędzi CUDA (zgodnie z potrzebami).
 
-| Name | Opis | Default Value | Prawidłowe wartości | Typ danych |
+| Nazwa | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizowanie jądra nawet wtedy, gdy nie jest to wymagane na potrzeby instalacji sterownika | false | true, false | boolean |
-| driverVersion | MAGAZYN Wersja sterownika siatki<br> NC/ND: Wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla wybranych CUDA są instalowane automatycznie. | latest | SIATKI "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA "10.0.130", "9.2.88", "9.1.85" | string |
-| installCUDA | Zainstaluj zestaw narzędzi CUDA. Dotyczy tylko maszyn wirtualnych z serii NC/ND. | true | true, false | boolean |
+| updateOS | Aktualizowanie jądra nawet wtedy, gdy nie jest to wymagane na potrzeby instalacji sterownika | false | true, false | wartość logiczna |
+| driverVersion | NV: wersja sterownika siatki<br> NC/ND: wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla wybranych CUDA są instalowane automatycznie. | najnowsza | GRID: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | ciąg |
+| installCUDA | Zainstaluj zestaw narzędzi CUDA. Dotyczy tylko maszyn wirtualnych z serii NC/ND. | true | true, false | wartość logiczna |
 
 
 ## <a name="deployment"></a>Wdrożenie

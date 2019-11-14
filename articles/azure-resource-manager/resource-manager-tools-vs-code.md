@@ -6,18 +6,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
-ms.openlocfilehash: 8d2b818846eeae44ffe05b4546a333510c638621
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4c0fd0968ce52e50a9171eecb3dfaebd1e2a4c46
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196155"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075015"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Tworzenie Azure Resource Manager szablonów przy użyciu Visual Studio Code
 
 Visual Studio Code to lekki, wieloplatformowy Edytor typu open-source. Rozszerzenie narzędzi szablonu Azure Resource Manager to wtyczka do tworzenia szablonów Menedżer zasobów. Rozszerzenie dodaje obsługę języka dla szablonów, aby zapewnić funkcję IntelliSense, wyróżnianie składni, pomoc w wierszu i wiele innych funkcji językowych. Wspólnie udostępniają one środowisko programistyczne dla deweloperów.
 
-## <a name="install-visual-studio-code"></a>Zainstaluj kod programu Visual Studio
+## <a name="install-visual-studio-code"></a>Instalowanie programu Visual Studio Code
 
 Program Visual Studio Code obsługuje MacOS, Windows i Linux.  Można go zainstalować z [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -70,7 +70,7 @@ Po umieszczeniu wskaźnika myszy w nazwach funkcji rozszerzenie pokazuje pomoc d
 
 ### <a name="go-to-definition-for-variable-and-parameter-references"></a>Przejdź do definicji dla odwołań do zmiennych i parametrów
 
-Możesz przejść do definicji za pomocą **kombinacji klawiszy Ctrl + kliknięcie**lub za pomocą menu kontekstowego, jak pokazano na zrzucie ekranu: ![Rozszerzenia Visual Studio Code Menedżer zasobów Tools przejdź do definicji](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
+Możesz przejść do definicji za pomocą **kombinacji klawiszy CTRL + kliknięcia**lub za pomocą menu kontekstowego, jak pokazano na zrzucie ekranu: ![Visual Studio Code Menedżer zasobów rozszerzenia narzędzi przejdź do definicji](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
 
 Możesz otworzyć definicję po stronie przy użyciu **kombinacji klawiszy Ctrl + Alt i kliknięcia**.
 
@@ -121,5 +121,5 @@ Ostrzeżenia obejmują:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat szablonów Menedżer zasobów i Menedżer zasobów, zobacz [omówienie Azure Resource Manager](./resource-group-overview.md).
-- Aby przejść do przewodnika Szybki Start przy użyciu Visual Studio Code [, zobacz Szybki Start: Tworzenie szablonów Azure Resource Manager przy użyciu Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)
+- Aby dowiedzieć się więcej na temat tworzenia szablonów Azure Resource Manager, zobacz [Samouczek: Tworzenie i wdrażanie pierwszego szablonu Azure Resource Manager](template-tutorial-create-first-template.md).
+- Aby przejść do przewodnika Szybki Start przy użyciu Visual Studio Code, zobacz [Szybki Start: tworzenie Azure Resource Manager szablonów przy użyciu Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)

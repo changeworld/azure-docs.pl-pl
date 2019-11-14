@@ -1,18 +1,19 @@
 ---
-title: Konfigurowanie kończenia połączeń SSL z certyfikatami Key Vault przy użyciu Azure PowerShell
+title: Konfigurowanie kończenia połączeń SSL z certyfikatami Key Vault — PowerShell
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak zintegrować Application Gateway platformy Azure z Key Vault dla certyfikatów serwera, które są dołączone do odbiorników z włączonym protokołem HTTPS.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/22/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: b7408d6169e1cf42bcda8855a19076c739d086dd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c40c4cf9f25ce17bc7042191324aeb864696995f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001009"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074583"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurowanie kończenia połączeń SSL z certyfikatami Key Vault przy użyciu Azure PowerShell
 
@@ -22,7 +23,7 @@ Aby uzyskać więcej informacji, zobacz [kończenie połączeń SSL z certyfikat
 
 W tym artykule pokazano, jak za pomocą skryptu Azure PowerShell zintegrować Magazyn kluczy z bramą aplikacji dla certyfikatów zakończenia protokołu SSL.
 
-Ten artykuł wymaga Azure PowerShell module w wersji 1.0.0 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable Az`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Aby uruchomić polecenia z tego artykułu, należy również utworzyć połączenie z platformą Azure, uruchamiając `Connect-AzAccount`polecenie.
+Ten artykuł wymaga Azure PowerShell module w wersji 1.0.0 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable Az`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Aby uruchomić polecenia z tego artykułu, należy również utworzyć połączenie z platformą Azure, uruchamiając `Connect-AzAccount`.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

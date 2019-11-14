@@ -1,29 +1,30 @@
 ---
-title: Konfigurowanie usługi Azure Application Gateway przy użyciu prywatnego adresu IP frontonu
-description: Ten artykuł zawiera informacje na temat sposobu konfigurowania bramy aplikacji przy użyciu prywatnego adresu IP frontonu
+title: Konfigurowanie punktu końcowego wewnętrznego modułu równoważenia obciążenia (ILB)
+titleSuffix: Azure Application Gateway
+description: Ten artykuł zawiera informacje dotyczące sposobu konfigurowania Application Gateway przy użyciu prywatnego adresu IP frontonu
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9e3150a5382e4d690ddf66c43bbe51e125509d3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66134627"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075216"
 ---
-# <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurowanie bramy aplikacji z punktem końcowym usługi wewnętrznego load balancer (ILB)
+# <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurowanie bramy aplikacji za pomocą punktu końcowego wewnętrznego modułu równoważenia obciążenia (ILB)
 
-Usługa Azure Application Gateway można skonfigurować z wirtualnym adresem IP dostępnym z Internetu lub za pomocą wewnętrznego punktu końcowego nie jest połączone z Internetem (przy użyciu prywatnego adresu IP dla adresu IP frontonu), nazywany też wewnętrznego modułu równoważenia obciążenia (ILB) w punkcie końcowym. Konfigurowanie bramy przy użyciu prywatnego adresu IP frontonu jest przydatne w przypadku wewnętrznych aplikacji line-of-business, które nie są połączone z Internetem. Ta opcja jest również przydatna w przypadku usług i warstw w aplikacji wielowarstwowej, która znajduje się w granicach zabezpieczeń bez połączenia z Internetem, ale nadal wymaga dystrybucji obciążenia z działaniem okrężnym, lepkości sesji lub zakończenia protokołu SSL (Secure Sockets Layer).
+Usługę Azure Application Gateway można skonfigurować za pomocą internetowego adresu IP lub wewnętrznego punktu końcowego, który nie jest narażony na Internet (przy użyciu prywatnego adresu IP dla adresu IP frontonu), znanego również jako punkt końcowy wewnętrznego modułu równoważenia obciążenia (ILB). Konfigurowanie bramy przy użyciu prywatnego adresu IP frontonu jest przydatne w przypadku wewnętrznych aplikacji biznesowych, które nie są dostępne w Internecie. Ta opcja jest również przydatna w przypadku usług i warstw w aplikacji wielowarstwowej, która znajduje się w granicach zabezpieczeń bez połączenia z Internetem, ale nadal wymaga dystrybucji obciążenia z działaniem okrężnym, lepkości sesji lub zakończenia protokołu SSL (Secure Sockets Layer).
 
-W tym artykule przedstawiono kroki, aby skonfigurować bramę aplikacji przy użyciu prywatnego adresu IP frontonu z witryny Azure Portal.
+W tym artykule przedstawiono kroki konfigurowania bramy aplikacji przy użyciu prywatnego adresu IP frontonu w witrynie Azure Portal.
 
 W tym artykule dowiesz się jak:
 
-- Utwórz konfigurację adresu IP frontonu prywatne dla bramy aplikacji
-- Tworzenie bramy aplikacji przy użyciu konfiguracji adresu IP frontonu prywatne
+- Utwórz prywatną konfigurację adresu IP frontonu dla Application Gateway
+- Tworzenie bramy aplikacji z konfiguracją prywatnego adresu IP frontonu
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -34,34 +35,34 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Możesz utworzyć nową sieć wirtualną lub użyć istniejącego. W tym przykładzie zostanie utworzona nowa sieć wirtualna. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. Wystąpienia bramy aplikacji są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
+Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Można utworzyć nową sieć wirtualną lub użyć istniejącej. W tym przykładzie utworzymy nową sieć wirtualną. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. Wystąpienia Application Gateway są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
 
-1. Kliknij przycisk **New** w lewym górnym rogu witryny Azure portal.
+1. Kliknij przycisk **Nowy** znajdujący się w lewym górnym rogu Azure Portal.
 2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
-3. Wprowadź *myAppGateway* dla nazwy usługi application gateway i *myResourceGroupAG* dla nowej grupy zasobów.
+3. Wprowadź *myAppGateway* dla nazwy bramy aplikacji i *myResourceGroupAG* dla nowej grupy zasobów.
 4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
 5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
-   - myVNet * - dla nazwy sieci wirtualnej.
-   - 10.0.0.0/16* — do przestrzeni adresowej sieci wirtualnej.
+   - myVNet * — jako nazwę sieci wirtualnej.
+   - 10.0.0.0/16 * — dla przestrzeni adresów sieci wirtualnej.
    - *myAGSubnet* — jako nazwę podsieci.
    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.  
      ![private-frontendip-1](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
 6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
-7. Wybierz konfigurację adresu IP frontonu, prywatnych i domyślnie jest dynamiczne przypisywanie adresów IP. Pierwszy dostępny adres wybrana podsieć zostanie przypisany jako adres IP frontonu.
-8. Jeśli chcesz wybrać prywatny adres IP z zakresu adresów podsieci (alokacji statycznej), kliknij pole **wybierz konkretny prywatny adres IP** i określ adres IP.
+7. Wybierz konfigurację adresów IP frontonu jako prywatną i domyślnie jest to przypisanie dynamicznego adresu IP. Pierwszy dostępny adres wybranej podsieci zostanie przypisany jako adres IP frontonu.
+8. Jeśli chcesz wybrać prywatny adres IP z zakresu adresów podsieci (alokacja statyczna), kliknij pole **wyboru wybierz określony prywatny** i określ adres IP.
    > [!NOTE]
-   > Po przydzieleniu, typ adresu IP (statyczne lub dynamiczne) nie można zmienić później.
-9. Wybierz konfigurację odbiornika protokołu i portu, konfiguracji zapory aplikacji sieci Web (jeśli jest to konieczne), a następnie kliknij przycisk OK.
+   > Po przydzieleniu nie można później zmienić typu adresu IP (statycznego lub dynamicznego).
+9. Wybierz konfigurację odbiornika dla protokołu i portu, WAF konfigurację (w razie potrzeby), a następnie kliknij przycisk OK.
     ![private-frontendip-2](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-2.png)
-10. Przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **OK** do tworzenia zasobów sieciowych i bramy aplikacji. Może upłynąć kilka minut w usłudze application gateway można utworzyć, poczekaj na wdrożenie zakończy się pomyślnie przed przejściem do następnej sekcji.
+10. Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **OK** , aby utworzyć zasoby sieciowe i bramę aplikacji. Może upłynąć kilka minut w usłudze application gateway można utworzyć, poczekaj na wdrożenie zakończy się pomyślnie przed przejściem do następnej sekcji.
 
 ## <a name="add-backend-pool"></a>Dodawanie puli zaplecza
 
-Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej bazy danych, które będą obsługująca żądanie. Zaplecze może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure App Service. W tym przykładzie użyjemy maszyny wirtualne jako docelowego w wewnętrznej bazie danych. Możemy użyć istniejących maszyn wirtualnych lub utworzyć nowe. W tym przykładzie utworzymy dwie maszyny wirtualne, które platforma Azure używa jako serwery zaplecza w usłudze application gateway. Aby to zrobić, obejmuje następujące czynności:
+Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które będą obsługiwać żądania. Zaplecze może składać się z kart sieciowych, zestawów skalowania maszyn wirtualnych, publicznych adresów IP, wewnętrznych adresów IP, w pełni kwalifikowanych nazw domen (FQDN) i wielodostępnych zaplecza, takich jak Azure App Service. W tym przykładzie będziemy używać maszyn wirtualnych jako zaplecza docelowego. Możemy użyć istniejących maszyn wirtualnych lub utworzyć nowe. W tym przykładzie utworzymy dwie maszyny wirtualne używane przez platformę Azure jako serwery zaplecza dla bramy aplikacji. W tym celu będziemy:
 
-1. Tworzenie nowych maszyn wirtualnych 2, *myVM* i *myVM2*, który zostanie użyty jako serwery zaplecza.
-2. Zainstaluj usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
-3. Dodawanie serwerów wewnętrznej bazy danych do puli zaplecza.
+1. Utwórz 2 nowe maszyny wirtualne, *myVM* i *myVM2*, które mają być używane jako serwery zaplecza.
+2. Zainstaluj usługi IIS na maszynach wirtualnych, aby sprawdzić, czy Brama aplikacji została utworzona pomyślnie.
+3. Dodaj serwery zaplecza do puli zaplecza.
 
 ### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
@@ -73,7 +74,7 @@ Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej baz
    - *Azure123456!* jako hasło.
    - Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroupAG*.
 4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** dla rozmiaru maszyny wirtualnej i kliknij przycisk **wybierz**.
+5. Wybierz **DS1_V2** rozmiaru maszyny wirtualnej, a następnie kliknij przycisk **Wybierz**.
 6. Upewnij się, że wybrano sieć wirtualną **myVNet** i podsieć **myBackendSubnet**.
 7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
 8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.

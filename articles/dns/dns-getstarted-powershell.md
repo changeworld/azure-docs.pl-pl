@@ -1,20 +1,21 @@
 ---
-title: Szybki start — tworzenie strefy i rekordu usługi Azure DNS przy użyciu programu Azure PowerShell
+title: 'Szybki Start: Tworzenie strefy Azure DNS i rekordu — Azure PowerShell'
+titleSuffix: Azure DNS
 description: Dowiedz się, jak utworzyć strefę i rekord DNS w usłudze Azure DNS. W tym szczegółowym przewodniku Szybki start pokazano, jak po raz pierwszy utworzyć strefę i rekord DNS przy użyciu programu Azure PowerShell.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: ccf60a333dcc83e27702d572f922ef6aec741c14
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: 0d3852824702bbc88925981c3c665b1b3fda7404
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730308"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072184"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Szybki start: Tworzenie strefy i rekordu usługi Azure DNS przy użyciu programu Azure PowerShell
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Szybki start — tworzenie strefy i rekordu usługi Azure DNS przy użyciu programu Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,7 +39,7 @@ New-AzResourceGroup -name MyResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-zone"></a>Tworzenie strefy DNS
 
-Strefa DNS jest tworzona za pomocą polecenia cmdlet `New-AzDnsZone`. Poniższy przykład tworzy strefę DNS o nazwie *contoso.xyz* w grupie zasobów o nazwie *MyResourceGroup*. Skorzystaj z tego przykładu, aby utworzyć strefę DNS, podstawiając własne wartości.
+Strefa DNS jest tworzona za pomocą polecenia cmdlet `New-AzDnsZone`. Poniższy przykład tworzy strefę DNS o nazwie *contoso. xyz* w grupie zasobów o nazwie Moja *resourceName*. Skorzystaj z tego przykładu, aby utworzyć strefę DNS, podstawiając własne wartości.
 
 ```powershell
 New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
@@ -46,7 +47,7 @@ New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
 
 ## <a name="create-a-dns-record"></a>Tworzenie rekordu DNS
 
-Zestawy rekordów są tworzone za pomocą polecenia cmdlet `New-AzDnsRecordSet`. Poniższy przykład tworzy rekord o nazwie względnej "www" w strefie DNS "contoso.xyz" w grupie zasobów "MyResourceGroup". W pełni kwalifikowana nazwa zestawu rekordów jest "www.contoso.xyz". Typ rekordu to "A" z adresem IP "10.10.10.10", a czas wygaśnięcia wynosi 3600 sekund.
+Zestawy rekordów są tworzone za pomocą polecenia cmdlet `New-AzDnsRecordSet`. W poniższym przykładzie jest tworzony rekord o nazwie względnej "www" w strefie DNS "contoso. xyz" w grupie zasobów "Moje zasoby". W pełni kwalifikowana nazwa zestawu rekordów to "www. contoso. xyz". Typ rekordu to "A" z adresem IP "10.10.10.10", a czas wygaśnięcia wynosi 3600 sekund.
 
 ```powershell
 New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.10.10.10")
@@ -72,7 +73,7 @@ Po utworzeniu testowej strefy DNS z rekordem „A” możesz przetestować rozpo
    Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -RecordType ns
    ```
 
-1. Skopiuj jeden z nazw serwerów nazw z danych wyjściowych poprzedniego kroku.
+1. Skopiuj jedną z nazw serwerów nazw z danych wyjściowych poprzedniego kroku.
 
 1. Otwórz wiersz polecenia i uruchom następujące polecenie:
 
@@ -90,7 +91,7 @@ Po utworzeniu testowej strefy DNS z rekordem „A” możesz przetestować rozpo
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Nazwa hosta **www\.contoso.xyz** jest rozpoznawana jako **10.10.10.10**tak samo jak został skonfigurowany. Taki wynik potwierdza, że rozpoznawanie nazw działa poprawnie.
+Nazwa hosta **www\.contoso. xyz** jest rozpoznawana jako **10.10.10.10**, tak jak została skonfigurowana. Taki wynik potwierdza, że rozpoznawanie nazw działa poprawnie.
 
 ## <a name="delete-all-resources"></a>Usuwanie wszystkich zasobów
 

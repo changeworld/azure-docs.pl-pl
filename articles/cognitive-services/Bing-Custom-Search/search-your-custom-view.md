@@ -1,7 +1,7 @@
 ---
 title: Przeszukiwanie widoku niestandardowego — wyszukiwanie niestandardowe Bing
 titleSuffix: Azure Cognitive Services
-description: Opisuje sposób przeszukiwania niestandardowego widoku sieci Web.
+description: Po skonfigurowaniu niestandardowego środowiska wyszukiwania można je przetestować z poziomu portalu wyszukiwanie niestandardowe Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405005"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072743"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Wywoływanie wystąpienia wyszukiwanie niestandardowe Bing z portalu
 
@@ -44,8 +44,8 @@ Kliknięcie **dodatkowych parametrów** ujawnia następujące parametry:
 |---------|---------|
 |Safe Search     | Filtr używany do filtrowania stron sieci Web na potrzeby zawartości dla dorosłych. Dostępne tylko dla punktów końcowych sieci Web, obrazów, wideo i hostowanego interfejsu użytkownika.        |
 |Język interfejsu użytkownika    | Język używany dla ciągów interfejsu użytkownika. Na przykład jeśli włączysz obrazy i wideo w hostowanym interfejsie użytkownika, karty **obrazu** i **wideo** używają określonego języka.        |
-|Count     | Liczba wyników wyszukiwania do zwrócenia w odpowiedzi. Dostępne tylko dla punktów końcowych sieci Web, obrazów i wideo.         |
-|Offset    | Liczba wyników wyszukiwania do pominięcia przed zwróceniem wyników. Dostępne tylko dla punktów końcowych sieci Web, obrazów i wideo.        |
+|Liczba     | Liczba wyników wyszukiwania do zwrócenia w odpowiedzi. Dostępne tylko dla punktów końcowych sieci Web, obrazów i wideo.         |
+|Przesunięcie    | Liczba wyników wyszukiwania do pominięcia przed zwróceniem wyników. Dostępne tylko dla punktów końcowych sieci Web, obrazów i wideo.        |
     
 Po określeniu wszystkich wymaganych opcji kliknij pozycję **Połącz** , aby wyświetlić odpowiedź JSON w okienku po prawej stronie. W przypadku wybrania punktu końcowego hostowanego interfejsu użytkownika można testować środowisko wyszukiwania w dolnym okienku.
 
@@ -53,7 +53,7 @@ Po określeniu wszystkich wymaganych opcji kliknij pozycję **Połącz** , aby w
 
 Subskrypcję skojarzoną z wystąpieniem wyszukiwanie niestandardowe Bing można zmienić bez tworzenia nowego wystąpienia. Aby wywołania interfejsu API były wysyłane i obciążane do nowej subskrypcji, Utwórz nowy zasób wyszukiwanie niestandardowe Bing w Azure Portal. Użyj nowego klucza subskrypcji w żądaniach interfejsu API wraz z niestandardowym IDENTYFIKATORem konfiguracji wystąpienia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wywoływanie widoku niestandardowego zC#](./call-endpoint-csharp.md)
 - [Wywoływanie niestandardowego widoku przy użyciu języka Java](./call-endpoint-java.md)

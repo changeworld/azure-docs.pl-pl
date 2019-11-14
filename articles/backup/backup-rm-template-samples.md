@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: eac7f0050dd819a8ab8d8d453307c7d1ab190fb7
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 11f92e619f03f2e324125a6246d758ca99b5ce84
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737099"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074738"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Szablony usługi Azure Resource Manager dla usługi Azure Backup
 

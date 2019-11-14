@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969078"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074133"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: problemy z agentem lub rozszerzeniem
 
@@ -29,7 +29,7 @@ W tym artykule opisano kroki rozwiązywania problemów, które mogą pomóc w ro
 
 Agent maszyny wirtualnej platformy Azure może zostać zatrzymany, nieaktualny, w stanie niespójnym lub nie został zainstalowany i uniemożliwiał Azure Backup usługę do wyzwalania migawek.  
 
-- Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w stanie niespójnym, **Uruchom go ponownie** , a następnie spróbuj ponownie wykonać operację tworzenia kopii zapasowej (spróbuj utworzyć kopię zapasową ad hoc). Aby uzyskać instrukcje dotyczące ponownego uruchomienia agenta, zobacz maszyny [wirtualne z systemem Windows](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux.
+- Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w stanie niespójnym, **Uruchom go ponownie** , a następnie spróbuj ponownie wykonać operację tworzenia kopii zapasowej (spróbuj utworzyć kopię zapasową na żądanie). Aby uzyskać instrukcje dotyczące ponownego uruchamiania agenta, zobacz [maszyny wirtualne z systemem Windows](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) lub [maszyny wirtualne z systemem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
 - Jeśli Agent maszyny wirtualnej nie został zainstalowany lub jest przestarzały, zainstaluj/zaktualizuj agenta maszyny wirtualnej i spróbuj ponownie wykonać operację tworzenia kopii zapasowej. Aby uzyskać instrukcje dotyczące instalowania/aktualizowania agenta, zobacz maszyny [wirtualne z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux.  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError — nie można skomunikować się z agentem maszyny wirtualnej w celu uzyskania stanu migawki
@@ -58,7 +58,7 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup ba
 Zalecana akcja:<br>
 Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów maszyny wirtualnej, a następnie ponów operację, aby wyzwolić czyszczenie.
 > [!NOTE]
-> Usługa Backup tworzy oddzielną grupę zasobów niż grupa zasobów maszyny wirtualnej do przechowywania kolekcji punktów przywracania. Klienci nie mogą zablokować grupy zasobów utworzonej do użycia przez usługę kopii zapasowej. Format nazewnictwa grupy zasobów utworzonej przez usługę kopii zapasowej to: AzureBackupRG_`<Geo>`_`<number>` EG: AzureBackupRG_northeurope_1
+> Usługa Backup tworzy oddzielną grupę zasobów niż grupa zasobów maszyny wirtualnej do przechowywania kolekcji punktów przywracania. Klienci nie mogą zablokować grupy zasobów utworzonej do użycia przez usługę kopii zapasowej. Format nazewnictwa grupy zasobów utworzonej przez usługę kopii zapasowej to: AzureBackupRG_`<Geo>`_`<number>` np. AzureBackupRG_northeurope_1
 
 **Krok 1. [Usuwanie blokady z grupy zasobów punktu przywracania](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2. [czyszczenie kolekcji punktów przywracania](#clean_up_restore_point_collection)**<br>
@@ -179,7 +179,7 @@ Większość błędów związanych z agentami lub rozszerzeniami dla maszyn wirt
 3. [Skonfiguruj agenta autostartu](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Uruchom nową testową kopię zapasową. Jeśli błąd będzie się utrzymywał, Zbierz następujące dzienniki z maszyny wirtualnej:
 
-   - /var/lib/waagent/*. XML
+   - /var/lib/waagent/*.xml
    - /var/log/waagent.log
    - /var/log/azure/*
 
@@ -213,7 +213,7 @@ Odinstaluj rozszerzenie, aby wymusić ponowne załadowanie rozszerzenia VMSnapsh
 Aby odinstalować rozszerzenie:
 
 1. W [Azure Portal](https://portal.azure.com/)przejdź do maszyny wirtualnej, na której występuje błąd kopii zapasowej.
-2. Wybierz pozycję **Ustawienia**.
+2. Wybierz **ustawienia**.
 3. Wybierz pozycję **Rozszerzenia**.
 4. Wybierz **rozszerzenie VMSnapshot**.
 5. Wybierz pozycję **Odinstaluj**.
@@ -224,7 +224,7 @@ Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas kole
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Usuń blokadę z grupy zasobów punktu odzyskiwania
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Przejdź do **opcji wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_`<Geo>`_`<number>`.
 3. W sekcji **Ustawienia** wybierz pozycję **blokady** , aby wyświetlić blokady.
 4. Aby usunąć blokadę, wybierz wielokropek, a następnie kliknij przycisk **Usuń**.
@@ -239,22 +239,22 @@ Usunięcie grupy zasobów maszyny wirtualnej lub samej maszyny wirtualnej powodu
 
 Aby wyczyścić punkty przywracania, wykonaj dowolną z następujących metod:<br>
 
-- [Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej ad hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej na żądanie](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [Wyczyść kolekcję punktów przywracania z Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej ad hoc
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej na żądanie
 
-Po usunięciu blokady Wyzwalaj tworzenie kopii zapasowej ad hoc/ręcznie. Dzięki temu punkty przywracania zostaną automatycznie oczyszczone. Należy oczekiwać, że ta operacja w trybie ad hoc nie powiedzie się po raz pierwszy; jednak zapewni to automatyczne czyszczenie zamiast ręcznego usuwania punktów przywracania. Po oczyszczeniu Następna zaplanowana kopia zapasowa powinna zakończyć się powodzeniem.
+Po usunięciu blokady wykonaj kopię zapasową na żądanie. Dzięki temu punkty przywracania zostaną automatycznie oczyszczone. Należy oczekiwać, że operacja na żądanie kończy się niepowodzeniem po raz pierwszy; jednak zapewni to automatyczne czyszczenie zamiast ręcznego usuwania punktów przywracania. Po oczyszczeniu Następna zaplanowana kopia zapasowa powinna zakończyć się powodzeniem.
 
 > [!NOTE]
-> Automatyczne czyszczenie zostanie wykonane po kilku godzinach wyzwalania tworzenia kopii zapasowej ad hoc/ręcznej. Jeśli zaplanowana kopia zapasowa nadal kończy się niepowodzeniem, spróbuj ręcznie usunąć kolekcję punktów przywracania, wykonując kroki opisane [tutaj](#clean-up-restore-point-collection-from-azure-portal).
+> Automatyczne czyszczenie zostanie wykonane po kilku godzinach wyzwalania kopii zapasowej na żądanie. Jeśli zaplanowana kopia zapasowa nadal kończy się niepowodzeniem, spróbuj ręcznie usunąć kolekcję punktów przywracania, wykonując kroki opisane [tutaj](#clean-up-restore-point-collection-from-azure-portal).
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Wyczyść kolekcję punktów przywracania z Azure Portal <br>
 
 Aby ręcznie wyczyścić kolekcję punktów przywracania, która nie została wyczyszczona ze względu na blokadę grupy zasobów, spróbuj wykonać następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
-2. W menu **centrum** kliknij pozycję **wszystkie zasoby**, wybierz grupę zasobów z następującym formatem AzureBackupRG_`<Geo>`_`<number>` lokalizację maszyny wirtualnej.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+2. W menu **centrum** kliknij pozycję **wszystkie zasoby**, wybierz grupę zasobów o następującym formacie AzureBackupRG_`<Geo>`_`<number>` lokalizację maszyny wirtualnej.
 
     ![Usuń blokadę](./media/backup-azure-arm-vms-prepare/resource-group.png)
 

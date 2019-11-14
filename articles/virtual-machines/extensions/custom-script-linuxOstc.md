@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie skryptów niestandardowych na maszynach wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Uruchamianie skryptów niestandardowych na maszynach wirtualnych z systemem Linux na platformie Azure
 description: Automatyzowanie zadań konfiguracyjnych maszyn wirtualnych z systemem Linux przy użyciu rozszerzenia niestandardowego skryptu v1
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: e5ef1bde9420104b596c22837048b054f918b3cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b7dbabf5be8b1f223f6e39f294b9d7022b83c4f8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092622"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073180"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Korzystanie z rozszerzenia niestandardowego skryptu platformy Azure w wersji 1 z maszynami wirtualnymi z systemem Linux
 
@@ -37,7 +37,7 @@ Istnieją dwa rozszerzenia niestandardowego skryptu systemu Linux:
 
 * Wersja 2 — Microsoft. Azure. Extensions. CustomScript
 
-Przełącz nowe i istniejące wdrożenia, aby użyć zamiast niego nowej wersji ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)). Nowa wersja jest przeznaczona do zastąpienia. W związku z tym migracja jest tak łatwa jak zmiana nazwy i wersji, więc nie trzeba zmieniać konfiguracji rozszerzenia.
+Przełącz nowe i istniejące wdrożenia, aby użyć zamiast niego nowej wersji ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)). Nowa wersja jest przeznaczona do użycia bezpośrednio w miejsce starszej. Dlatego migracja jest tak łatwa jak zmiana nazwy i wersji — nie trzeba zmieniać konfiguracji rozszerzenia.
 
 ### <a name="operating-system"></a>System operacyjny
 
@@ -69,7 +69,7 @@ Jeśli skrypt znajduje się na serwerze lokalnym, może być konieczne otwarcie 
 * Upewnij się, że skrypty nie wymagają wprowadzania danych przez użytkownika po ich uruchomieniu.
 * Aby skrypt mógł zostać uruchomiony, może być 90 min, co spowoduje niepowodzenie aprowizacji rozszerzenia.
 * Nie należy umieszczać ponownych uruchomień wewnątrz skryptu, co spowoduje problemy z innymi zainstalowanymi rozszerzeniami i po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowane po ponownym uruchomieniu. 
-* Jeśli masz skrypt, który powoduje ponowne uruchomienie, zainstaluj aplikacje i uruchom skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania firmy CRONUS lub użyć narzędzi takich jak DSC lub Chef Puppet.
+* Jeśli masz skrypt, który spowoduje ponowne uruchomienie komputera, zainstaluj aplikacje i Uruchom skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania firmy CRONUS lub użyć narzędzi takich jak DSC lub Chef Puppet.
 * Rozszerzenie spowoduje uruchomienie skryptu tylko raz, aby uruchomić skrypt na każdym rozruchu, a następnie użyć [obrazu Cloud-init](../linux/using-cloud-init.md) i użyć [skryptów dla modułu rozruchu](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) . Alternatywnie możesz użyć skryptu, aby utworzyć systemową jednostkę usługi.
 * Jeśli chcesz zaplanować uruchomienie skryptu, użyj rozszerzenia, aby utworzyć zadanie firmy cronus.
 * W trakcie działania skryptu będziesz widzieć tylko stan „przechodzenie” z witryny Azure Portal lub interfejsu wiersza polecenia. Jeśli chcesz więcej częste aktualizacje stanu uruchomionego skryptu, musisz utworzyć własne rozwiązanie.
@@ -118,21 +118,21 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład | Typ danych |
+| Nazwa | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | ciąg |
 | type | CustomScriptForLinux | ciąg |
-| typeHandlerVersion | 1,5 | int |
-| fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| typeHandlerVersion | 1.5 | int |
+| fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
 | Sekcji commandtoexecute (np.) | python MyPythonScript.py \<my-param1\> | ciąg |
-| enableInternalDNSCheck | true | boolean |
+| enableInternalDNSCheck | true | wartość logiczna |
 | storageAccountName (np.) | examplestorageacct | ciąg |
 | storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
 
 ### <a name="property-value-details"></a>Szczegóły wartości właściwości
 
-* `fileUris`: (opcjonalnie, tablica ciągów) Lista identyfikatorów URI skryptów
+* `fileUris`: (opcjonalna, tablica ciągów) Lista identyfikatorów URI skryptów
 * `enableInternalDNSCheck`: (opcjonalnie, bool) domyślnie ma wartość true, ustawienie wartości false powoduje wyłączenie sprawdzania DNS.
 * `commandToExecute`: (opcjonalnie, String) skrypt punktu wejścia do wykonania
 * `storageAccountName`: (opcjonalnie, String) nazwa konta magazynu
@@ -260,7 +260,7 @@ az vm extension set
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Po uruchomieniu rozszerzenia skryptu niestandardowego skrypt jest tworzony lub pobierany do katalogu podobnego do poniższego przykładu. Dane wyjściowe polecenia są również zapisywane w tym katalogu w `stdout` plikach `stderr` i.
+Po uruchomieniu rozszerzenia skryptu niestandardowego skrypt jest tworzony lub pobierany do katalogu podobnego do poniższego przykładu. Dane wyjściowe polecenia są również zapisywane w tym katalogu w plikach `stdout` i `stderr`.
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
@@ -295,7 +295,7 @@ Niektóre punkty do uwagi:
 
 1. Wartość enable jest uruchamiana, gdy polecenie zostanie uruchomione.
 1. Pobieranie odnosi się do pobierania pakietu rozszerzenia CustomScript z platformy Azure, a nie plików skryptów określonych w fileUris.
-1. Możesz również sprawdzić, w którym pliku dziennika jest napisane`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. Możesz również sprawdzić, który plik dziennika jest zapisywany w `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Następnym krokiem jest sprawdzenie pliku dziennika, jest to format:
 

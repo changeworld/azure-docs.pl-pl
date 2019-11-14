@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e873980ce7aab1c5454a28e88df24bdb189c4860
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639720"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074846"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Włączanie tworzenia kopii zapasowej przy tworzeniu maszyny wirtualnej platformy Azure
 
@@ -36,7 +36,7 @@ Jeśli jeszcze nie zalogowano się na koncie, zaloguj się do [Azure Portal](htt
 
 3. Skonfiguruj maszynę wirtualną zgodnie z instrukcjami dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) .
 
-4. Na karcie **Zarządzanie** w obszarze **Włączanie kopii zapasowej**kliknij **pozycję**włączone.
+4. Na karcie **Zarządzanie** w obszarze **Włączanie kopii zapasowej**kliknij **pozycję włączone.**
 5. Azure Backup kopie zapasowe w magazynie Recovery Services. Kliknij przycisk **Utwórz nowy** , jeśli nie masz istniejącego magazynu.
 6. Zaakceptuj sugerowaną nazwę magazynu lub określ swoje własne.
 7. Określ lub Utwórz grupę zasobów, w której będzie znajdować się magazyn. Magazyn grupy zasobów może się różnić od grupy zasobów maszyny wirtualnej.
@@ -52,11 +52,8 @@ Jeśli jeszcze nie zalogowano się na koncie, zaloguj się do [Azure Portal](htt
 
       ![Domyślne zasady kopii zapasowych](./media/backup-during-vm-creation/daily-policy.png)
 
-
 > [!NOTE]
-> Usługa Azure Backup tworzy oddzielną grupę zasobów (inną niż grupa zasobów maszyny wirtualnej) do przechowywania migawki, przy użyciu formatu nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji *zachowywanie migawki odzyskiwania natychmiastowego* zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure.  Zastosowanie blokady do tej grupy zasobów może spowodować błędy kopii zapasowych.<br>
-Ta grupa zasobów powinna być również wykluczona z dowolnych ograniczeń nazw/tagów, ponieważ zasady ograniczeń blokują tworzenie kolekcji punktów zasobów w tym momencie, powodując błędy kopii zapasowych.
-
+> Usługa Azure Backup tworzy oddzielną grupę zasobów (inną niż grupa zasobów maszyny wirtualnej) do przechowywania migawki przy użyciu formatu nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji *zachowywanie migawki odzyskiwania natychmiastowego* zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure.  Zastosowanie blokady do tej grupy zasobów może spowodować błędy kopii zapasowych. <br> Ta grupa zasobów powinna być również wykluczona z dowolnych ograniczeń nazw/tagów, ponieważ zasady ograniczeń blokują tworzenie kolekcji punktów zasobów w tym momencie, powodując błędy kopii zapasowych.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Rozpocznij tworzenie kopii zapasowej po utworzeniu maszyny wirtualnej
 
@@ -72,8 +69,6 @@ Po utworzeniu maszyny wirtualnej wykonaj następujące czynności:
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Wdrażanie chronionej maszyny wirtualnej przy użyciu szablonu Menedżer zasobów
 
 W poprzednich krokach opisano, jak za pomocą Azure Portal utworzyć maszynę wirtualną i chronić ją w magazynie Recovery Services. Aby szybko wdrożyć co najmniej jedną maszynę wirtualną i chronić ją w magazynie Recovery Services, zapoznaj się z szablonem [Wdrażanie maszyny wirtualnej z systemem Windows i Włączanie kopii zapasowej](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 

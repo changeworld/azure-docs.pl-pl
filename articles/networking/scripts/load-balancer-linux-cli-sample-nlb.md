@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Równoważenie obciążenia ruchu do maszyn wirtualnych w celu zapewnienia wysokiej dostępności | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Równoważenie obciążenia ruchu do maszyn wirtualnych w celu zapewnienia wysokiej dostępności
+title: Równoważenie obciążenia ruchu z maszynami wirtualnymi na potrzeby usługi HA — interfejs wiersza polecenia platformy Azure — Azure Load Balancer
+description: Za pomocą tego przykładu Rozpocznij Równoważenie obciążenia ruchem do maszyn wirtualnych w celu zapewnienia wysokiej dostępności.
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: allensu
-ms.openlocfilehash: bf5f4bb6bd15fa1fd440e679913a370bbe30b663
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8712cd1cff9e3a6623b67e1b39a19df7c6d0172e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890311"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067058"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności
 

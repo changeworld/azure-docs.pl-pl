@@ -1,22 +1,23 @@
 ---
-title: Monitorowanie dzienników dostępu, dzienników wydajności, kondycji zaplecza i metryk dla Application Gateway platformy Azure
+title: Kondycja i dzienniki diagnostyczne zaplecza
+titleSuffix: Azure Application Gateway
 description: Dowiedz się, jak włączyć dzienniki dostępu i Dzienniki wydajności dla systemu Azure Application Gateway i zarządzać nimi
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 448e5bf798f5b1c3006888f846722e54fec46ef8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958259"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075303"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Zapasowe dzienniki kondycji i diagnostyczne dla Application Gateway
 
-Za pomocą usługi Azure Application Gateway można monitorować zasoby w następujący sposób:
+Zasoby usługi Azure Application Gateway można monitorować w następujący sposób:
 
 * [Kondycja zaplecza](#back-end-health): Application Gateway zapewnia możliwość monitorowania kondycji serwerów w pulach zaplecza za pomocą Azure Portal i za pomocą programu PowerShell. Kondycję pul zaplecza można również znaleźć za pomocą dzienników diagnostycznych wydajności.
 
@@ -302,7 +303,7 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono go dla każdej bramy
 |Element rulesetversion     | Używana wersja zestawu reguł. Dostępne wartości to 2.2.9 i 3,0.     |
 |ruleId     | Identyfikator reguły zdarzenia wyzwalającego.        |
 |message     | Przyjazny dla użytkownika komunikat dla zdarzenia wyzwalającego. Więcej szczegółowych informacji znajduje się w sekcji Szczegóły.        |
-|action     |  Akcja podjęta na żądaniu. Dostępne wartości są blokowane i dozwolone.      |
+|Akcja     |  Akcja podjęta na żądaniu. Dostępne wartości są blokowane i dozwolone.      |
 |lokacji     | Lokacja, dla której został wygenerowany dziennik. Obecnie tylko globalne są wyświetlane, ponieważ reguły są globalne.|
 |details informacje     | Szczegóły zdarzenia wyzwalającego.        |
 |details. Message     | Opis reguły.        |

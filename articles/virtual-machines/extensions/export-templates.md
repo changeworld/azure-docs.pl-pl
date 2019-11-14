@@ -1,5 +1,5 @@
 ---
-title: Eksportowanie grup zasobów platformy Azure zawierających rozszerzenia maszyn wirtualnych | Microsoft Docs
+title: Eksportowanie grup zasobów platformy Azure zawierających rozszerzenia maszyn wirtualnych
 description: Eksportowanie szablonów Menedżer zasobów zawierających rozszerzenia maszyn wirtualnych.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169064"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073123"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Eksportowanie grup zasobów zawierających rozszerzenia maszyn wirtualnych
 
@@ -78,7 +78,7 @@ Po wyeksportowaniu grupy zasobów tworzony jest jeden parametr szablonu, aby pod
 
 Ponieważ każde chronione ustawienie ma zestaw wymaganych właściwości, należy zebrać listę tych właściwości. Każdy parametr konfiguracji ustawień chronionych można znaleźć w [schemacie Azure Resource Manager w witrynie GitHub](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Ten schemat zawiera tylko zestawy parametrów dla rozszerzeń wymienionych w sekcji przegląd tego dokumentu. 
 
-W repozytorium schematów Wyszukaj odpowiednie rozszerzenie, w tym przykładzie `IaaSDiagnostics`. Po zlokalizowaniu `protectedSettings` obiektu rozszerzeń Zanotuj każdy parametr. W przykładzie `IaasDiagnostic` rozszerzenia wymagane są `storageAccountName`parametry, `storageAccountKey`i `storageAccountEndPoint`.
+W repozytorium schematów Wyszukaj żądane rozszerzenie, w tym przykładzie `IaaSDiagnostics`. Po zlokalizowaniu `protectedSettings` obiektu, zanotuj każdy z nich. W przykładzie rozszerzenia `IaasDiagnostic` wymagane parametry są `storageAccountName`, `storageAccountKey`i `storageAccountEndPoint`.
 
 ```json
 "protectedSettings": {
@@ -106,7 +106,7 @@ W repozytorium schematów Wyszukaj odpowiednie rozszerzenie, w tym przykładzie 
 
 W wyeksportowanym szablonie Wyszukaj `protectedSettings` i Zastąp wyeksportowany obiekt chronionego ustawienia nowym, który zawiera wymagane parametry rozszerzenia i wartość dla każdej z nich.
 
-W przykładzie `IaasDiagnostic` rozszerzenia Nowa konfiguracja chronionego ustawienia będzie wyglądać podobnie do poniższego przykładu:
+W przykładzie rozszerzenia `IaasDiagnostic` Nowa konfiguracja chronionego ustawienia będzie wyglądać następująco:
 
 ```json
 "protectedSettings": {
@@ -150,7 +150,7 @@ Końcowy zasób rozszerzenia wygląda podobnie do następującego przykładu JSO
 
 W przypadku używania parametrów szablonu do podania wartości właściwości należy je utworzyć. Podczas tworzenia parametrów szablonu dla wartości ustawień chronionych upewnij się, że używasz `SecureString` typu parametru, aby zabezpieczyć wartości poufne. Aby uzyskać więcej informacji na temat używania parametrów, zobacz [Tworzenie szablonów Azure Resource Manager](../../resource-group-authoring-templates.md).
 
-W przykładzie `IaasDiagnostic` rozszerzenia następujące parametry zostałyby utworzone w sekcji Parametry szablonu Menedżer zasobów.
+W przykładzie rozszerzenia `IaasDiagnostic` w sekcji Parametry szablonu Menedżer zasobów zostaną utworzone następujące parametry.
 
 ```json
 "storageAccountName": {

@@ -1,18 +1,19 @@
 ---
-title: Zasady i reguły usługi Azure Application Gateway zapory aplikacji sieci Web
+title: Grupy reguł i reguły dla KSR
+titleSuffix: Azure Web Application Firewall
 description: Ta strona zawiera informacje o grupach i regułach reguł KSR aplikacji sieci Web.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59e4203ca219802a95a09761b90c00a039b47631
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516970"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075370"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Zasady i reguły reguły KSR zapory aplikacji sieci Web
 
@@ -55,7 +56,7 @@ Program KSR 3,1 zawiera 13 grup reguł, jak pokazano w poniższej tabeli. Każda
 |**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-31)**|Ochrona przed atakami z wykorzystaniem utrwalania sesji|
 |**[ŻĄDANIE-944 — APLIKACJA-ATAK — SESJA — JAVA](#crs944-31)**|Ochrona przed atakami JAVA|
 
-### <a name="owasp-crs-30"></a>OWASP KSR 3,0
+### <a name="owasp-crs-30"></a>OWASP CRS 3.0
 
 Program KSR 3,0 obejmuje 12 grup reguł, jak pokazano w poniższej tabeli. Każda grupa zawiera wiele reguł, które można wyłączyć.
 
@@ -74,7 +75,7 @@ Program KSR 3,0 obejmuje 12 grup reguł, jak pokazano w poniższej tabeli. Każd
 |**[REQUEST-942-APPLICATION-ATTACK-SQLI](#crs942-30)**|Ochrona przed atakami polegającymi na iniekcji SQL|
 |**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-30)**|Ochrona przed atakami z wykorzystaniem utrwalania sesji|
 
-### <a name="owasp-crs-229"></a>OWASP KSR 2.2.9
+### <a name="owasp-crs-229"></a>OWASP CRS 2.2.9
 
 2\.2.9 KSR zawiera 10 grup reguł, jak pokazano w poniższej tabeli. Każda grupa zawiera wiele reguł, które można wyłączyć.
 
@@ -99,20 +100,20 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="general-31"></a> <p x-ms-format-detection="none">Ogólne</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |200004|Możliwa wieloczęściowa niezgodna granica.|
 
 ### <a name="crs911-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-911-METODA-WYMUSZANIE</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |911100|Metoda nie jest dozwolona przez zasady|
 
 
 ### <a name="crs913-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-913 — WYKRYWANIE SKANERA</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |913100|Znaleziono agenta użytkownika skojarzonego z skanerem zabezpieczeń|
 |913101|Znaleziono agenta użytkownika skojarzonego z skryptem/ogólnym klientem HTTP|
@@ -121,9 +122,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |913120|Znaleziono nazwę pliku żądania/argument skojarzony z skanerem zabezpieczeń|
 
 
-### <a name="crs920-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-920 — WYMUSZANIE PROTOKOŁU</p>
+### <a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |920100|Nieprawidłowy wiersz żądania HTTP|
 |920120|Próba wykonania wieloczęściowego/formularza — obejście danych|
@@ -173,9 +174,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |920470|Niedozwolony nagłówek Content-Type|
 |920480|Ogranicz Parametr charset w nagłówku Content-Type|
 
-### <a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATAKI</p>
+### <a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |921110|Atak na przemycie żądania HTTP|
 |921120|Atak dzielenia odpowiedzi HTTP|
@@ -187,27 +188,27 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |921170|Zanieczyszczenia parametrów HTTP|
 |921180|Zanieczyszczenia parametrów HTTP (% {TX. 1})|
 
-### <a name="crs930-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-930-APPLICATION-LFI</p>
+### <a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |930100|Atak przechodzenia do lokalizacji (/.. /)|
 |930110|Atak przechodzenia do lokalizacji (/.. /)|
 |930120|Próba dostępu do pliku systemu operacyjnego|
 |930130|Próba dostępu do pliku z ograniczeniami|
 
-### <a name="crs931-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-931-APPLICATION-RFI</p>
+### <a name="crs931-31"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |931100|Możliwy atak pliku zdalnego dołączania (RFI) = adres URL przy użyciu adresu IP|
 |931110|Możliwe ataki zdalnego dołączania plików (RFI) = wspólna RFI Nazwa parametru używana z ładunkiem w adresie URL|
 |931120|Możliwy atak na zdalny dołączenie do pliku (RFI) = ładunek adresu URL używany z końcowym znakiem zapytania (?)|
 |931130|Możliwy atak na zdalny dołączenie do pliku (RFI) = poza domenę odwołanie/łącze|
 
-### <a name="crs932-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-932-APPLICATION-RÓDŁOWY</p>
+### <a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |932100|Zdalne wykonywanie poleceń: iniekcja poleceń systemu UNIX|
 |932105|Zdalne wykonywanie poleceń: iniekcja poleceń systemu UNIX|
@@ -223,9 +224,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |932180|Próba przekazania pliku z ograniczeniami|
 |932190|Zdalne wykonywanie poleceń: próba wieloznacznej techniki obejścia|
 
-### <a name="crs933-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-933 — APLIKACJA-ATAK — PHP</p>
+### <a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |933100|Atak z iniekcją PHP = znaleziono tag otwierającego/zamykającego|
 |933110|Atak z iniekcją PHP = znaleziono plik skryptu PHP|
@@ -242,9 +243,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |933180|Atak z iniekcją PHP = znaleziono wywołanie funkcji zmiennej|
 |933190|Atak z iniekcją PHP: znaleziono tag zamykający PHP|
 
-### <a name="crs941-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-941 — APLIKACJA-ATAKI — XSS</p>
+### <a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |941100|Atak XSS wykryty za pośrednictwem libinjection|
 |941101|Atak XSS wykryty za pośrednictwem libinjection|
@@ -254,7 +255,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |941150|Filtr XSS — kategoria 5 = niedozwolone atrybuty HTML|
 |941160|NoScript XSS InjectionChecker: iniekcja kodu HTML|
 |941170|NoScript XSS InjectionChecker: iniekcja atrybutów|
-|941180|Słowa kluczowe do modułu sprawdzania poprawności węzła|
+|941180|Słowa kluczowe lista zablokowanych modułów weryfikacji węzła|
 |941190|XSS przy użyciu arkuszy stylów|
 |941200|XSS przy użyciu ramek VML|
 |941210|XSS przy użyciu zasłoniętego języka JavaScript|
@@ -274,9 +275,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |941350|Kodowanie UTF-7 IE XSS-atak wykryty.|
 
 
-### <a name="crs942-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-942-APPLICATION-SQLI</p>
+### <a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |942100|Atak na wstrzyknięcie kodu SQL został wykryty za pośrednictwem libinjection|
 |942110|Atak iniekcji kodu SQL: wykryto wspólne testowanie iniekcji|
@@ -296,7 +297,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |942251|Wykrywa iniekcje|
 |942260|Wykrywa podstawowe próby obejścia uwierzytelniania SQL 2/3|
 |942270|Wyszukiwanie podstawowej iniekcji kodu SQL. Typowy ciąg ataku dla programu MySQL Oracle i innych|
-|942280|Wykrywa iniekcję Postgres pg_sleep, ataki z opóźnieniem WAITFOR i próby zamknięcia bazy danych|
+|942280|Wykrywa Postgres pg_sleep, ataki opóźnień i zamknięcia bazy danych|
 |942290|Znajdowanie podstawowych prób iniekcji kodu SQL MongoDB|
 |942300|Wykrywa Komentarze programu MySQL, warunki i wstrzyknięcia języka r (a)|
 |942310|Wykrywa łańcuch prób iniekcji kodu SQL 2/2|
@@ -323,9 +324,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |942480|Atak iniekcji kodu SQL|
 |942490|Wykrywa badanie klasycznego wstrzykiwania kodu SQL 3/3|
 
-### <a name="crs943-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-943 — APLIKACJA-ATAK NA SESJĘ</p>
+### <a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |943100|Możliwy atak utrwalania sesji = Ustawianie wartości plików cookie w kodzie HTML|
 |943110|Możliwy atak utrwalania sesji = Nazwa parametru SessionID z odwołującym się poza domenę|
@@ -333,32 +334,32 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs944-31"></a> <p x-ms-format-detection="none">ŻĄDANIE-944 — APLIKACJA-ATAK — SESJA — JAVA</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |944120|Możliwe wykonanie ładunku i wykonanie polecenia zdalnego|
 |944130|Podejrzane klasy języka Java|
 |944200|Wykorzystanie deserializacji platformy Apache Commons Attribution|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3,0](#tab/owasp30)
+# <a name="owasp-30tabowasp30"></a>[OWASP 3.0](#tab/owasp30)
 
 ## <a name="owasp30"></a>Zestawy reguł
 
 ### <a name="general-30"></a> <p x-ms-format-detection="none">Ogólne</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |200004|Możliwa wieloczęściowa niezgodna granica.|
 
 ### <a name="crs911-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-911-METODA-WYMUSZANIE</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |911100|Metoda nie jest dozwolona przez zasady|
 
 
 ### <a name="crs913-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-913 — WYKRYWANIE SKANERA</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |913100|Znaleziono agenta użytkownika skojarzonego z skanerem zabezpieczeń|
 |913110|Znaleziono nagłówek żądania skojarzony ze skanerem zabezpieczeń|
@@ -366,9 +367,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |913101|Znaleziono agenta użytkownika skojarzonego z skryptem/ogólnym klientem HTTP|
 |913102|Znaleziono agenta użytkownika skojarzonego z przeszukiwarką sieci Web/bot|
 
-### <a name="crs920-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-920 — WYMUSZANIE PROTOKOŁU</p>
+### <a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |920100|Nieprawidłowy wiersz żądania HTTP|
 |920130|Nie można przeanalizować treści żądania.|
@@ -412,9 +413,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |920274|Nieprawidłowy znak w nagłówkach żądania (poza bardzo rygorystycznym zestawem)|
 |920460|Nietypowe znaki ucieczki|
 
-### <a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATAKI</p>
+### <a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |921100|Atak na żądanie HTTP.|
 |921110|Atak na przemycie żądania HTTP|
@@ -427,27 +428,27 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |921170|Zanieczyszczenia parametrów HTTP|
 |921180|Zanieczyszczenia parametrów HTTP (% @ {TX. 1})|
 
-### <a name="crs930-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-930-APPLICATION-LFI</p>
+### <a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |930100|Atak przechodzenia do lokalizacji (/.. /)|
 |930110|Atak przechodzenia do lokalizacji (/.. /)|
 |930120|Próba dostępu do pliku systemu operacyjnego|
 |930130|Próba dostępu do pliku z ograniczeniami|
 
-### <a name="crs931-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-931-APPLICATION-RFI</p>
+### <a name="crs931-30"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |931100|Możliwy atak pliku zdalnego dołączania (RFI) = adres URL przy użyciu adresu IP|
 |931110|Możliwe ataki zdalnego dołączania plików (RFI) = wspólna RFI Nazwa parametru używana z ładunkiem w adresie URL|
 |931120|Możliwy atak na zdalny dołączenie do pliku (RFI) = ładunek adresu URL używany z końcowym znakiem zapytania (?)|
 |931130|Możliwy atak na zdalny dołączenie do pliku (RFI) = poza domenę odwołanie/łącze|
 
-### <a name="crs932-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-932-APPLICATION-RÓDŁOWY</p>
+### <a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |932120|Zdalne wykonywanie poleceń = znaleziono polecenie programu Windows PowerShell|
 |932130|Wykonanie polecenia zdalnego = znaleziono wyrażenie powłoki systemu UNIX|
@@ -456,9 +457,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |932170|Wykonanie polecenia zdalnego = Shellshock (CVE-2014-6271)|
 |932171|Wykonanie polecenia zdalnego = Shellshock (CVE-2014-6271)|
 
-### <a name="crs933-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-933 — APLIKACJA-ATAK — PHP</p>
+### <a name="crs933-30"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |933100|Atak z iniekcją PHP = znaleziono tag otwierającego/zamykającego|
 |933110|Atak z iniekcją PHP = znaleziono plik skryptu PHP|
@@ -472,16 +473,16 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |933161|Atak z iniekcją PHP = znaleziono wywołanie funkcji PHP o niskiej wartości|
 |933111|Atak z iniekcją PHP = znaleziono plik skryptu PHP|
 
-### <a name="crs941-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-941 — APLIKACJA-ATAKI — XSS</p>
+### <a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |941100|Atak XSS wykryty za pośrednictwem libinjection|
 |941110|Filtr XSS — kategoria 1 = wektor tagów skryptu|
 |941130|Filtr XSS — Kategoria 3 = wektor atrybutu|
 |941140|Filtr XSS — Kategoria 4 = wektor identyfikatora URI JavaScript|
 |941150|Filtr XSS — kategoria 5 = niedozwolone atrybuty HTML|
-|941180|Słowa kluczowe do modułu sprawdzania poprawności węzła|
+|941180|Słowa kluczowe lista zablokowanych modułów weryfikacji węzła|
 |941190|XSS przy użyciu arkuszy stylów|
 |941200|XSS przy użyciu ramek VML|
 |941210|XSS przy użyciu zasłoniętego języka JavaScript|
@@ -499,9 +500,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |941350|Kodowanie UTF-7 IE XSS-atak wykryty.|
 |941320|Możliwe ataki XSS wykryto procedurę obsługi tagów HTML|
 
-### <a name="crs942-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-942-APPLICATION-SQLI</p>
+### <a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |942100|Atak na wstrzyknięcie kodu SQL został wykryty za pośrednictwem libinjection|
 |942110|Atak iniekcji kodu SQL: wykryto wspólne testowanie iniekcji|
@@ -531,9 +532,9 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 |942251|Wykrywa iniekcje|
 |942460|Alert wykrywania anomalii z nieprawidłowym znakiem — powtarzające się znaki niebędące słowami|
 
-### <a name="crs943-30"></a> <p x-ms-format-detection="none">ŻĄDANIE-943 — APLIKACJA-ATAK NA SESJĘ</p>
+### <a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |943100|Możliwy atak utrwalania sesji = Ustawianie wartości plików cookie w kodzie HTML|
 |943110|Możliwy atak utrwalania sesji = Nazwa parametru SessionID z odwołującym się poza domenę|
@@ -545,7 +546,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs20"></a>crs_20_protocol_violations
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |960911|Nieprawidłowy wiersz żądania HTTP|
 |981227|Błąd Apache = nieprawidłowy identyfikator URI w żądaniu.|
@@ -571,7 +572,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs21"></a>crs_21_protocol_anomalies
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |960008|W żądaniu brakuje nagłówka hosta|
 |960007|Pusty nagłówek hosta|
@@ -584,7 +585,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs23"></a>crs_23_request_limits
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |960209|Zbyt długa nazwa argumentu|
 |960208|Zbyt długa wartość argumentu|
@@ -595,7 +596,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs30"></a>crs_30_http_policy
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |960032|Metoda nie jest dozwolona przez zasady|
 |960010|Typ zawartości żądania nie jest dozwolony przez zasady|
@@ -605,7 +606,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs35"></a>crs_35_bad_robots
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |990002|Żądanie oznacza, że skaner zabezpieczeń przeskanował lokację|
 |990901|Żądanie oznacza, że skaner zabezpieczeń przeskanował lokację|
@@ -614,7 +615,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs40"></a>crs_40_generic_attacks
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |960024|Alert wykrywania anomalii z nieprawidłowym znakiem — powtarzające się znaki niebędące słowami|
 |950008|Iniekcja nieudokumentowanych tagów ColdFusion|
@@ -643,7 +644,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs41sql"></a>crs_41_sql_injection_attacks
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |981231|Wykryto sekwencję komentarzy SQL.|
 |981260|Zidentyfikowano kodowanie szesnastkowe języka SQL|
@@ -680,7 +681,7 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs41xss"></a>crs_41_xss_attacks
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |973336|Filtr XSS — kategoria 1 = wektor tagów skryptu|
 |973338|Filtr XSS — Kategoria 3 = wektor identyfikatora URI JavaScript|
@@ -785,13 +786,13 @@ Następujące grupy reguł i reguły są dostępne w przypadku używania zapory 
 
 ### <a name="crs42"></a>crs_42_tight_security
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |950103|Atak z przechodzeniem ścieżki|
 
 ### <a name="crs45"></a>crs_45_trojans
 
-|ruleId|Opis|
+|RuleId|Opis|
 |---|---|
 |950110|Dostęp tylne wejście|
 |950921|Dostęp tylne wejście|

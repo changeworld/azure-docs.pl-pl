@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie zestawów skalowania maszyn wirtualnych dla systemu Windows na platformie Azure | Microsoft Docs
+title: Samouczek — Tworzenie zestawu skalowania maszyn wirtualnych dla systemu Windows na platformie Azure
 description: Z tego samouczka dowiesz się, jak za pomocą programu Azure PowerShell utworzyć i wdrożyć aplikację o wysokiej dostępności na maszynach wirtualnych z systemem Windows przy użyciu zestawu skalowania maszyn wirtualnych
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 66b9099c8989b5ad3df1d8e27eb33a19ee6f23eb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6fcf0c14d58e70659ee5e21b03245b705294b445
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708073"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067892"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i wdrażanie aplikacji o wysokiej dostępności w systemie Windows za pomocą programu Azure PowerShell
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania można skalować ręcznie. Można też zdefiniować reguły skalowania automatycznego na podstawie użycia zasobów, takich jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. W tym samouczku wdrożysz zestaw skalowania maszyn wirtualnych na platformie Azure i dowiesz się, jak wykonać następujące zadania:
@@ -278,7 +278,7 @@ Add-AzAutoscaleSetting `
 Aby uzyskać więcej informacji dotyczących projektowania na temat korzystania ze skalowania automatycznego, zobacz [najlepsze rozwiązania w zakresie skalowania automatycznego](/azure/architecture/best-practices/auto-scaling).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku tworzony jest zestaw skalowania maszyn wirtualnych. W tym samouczku omówiono:
 
 > [!div class="checklist"]

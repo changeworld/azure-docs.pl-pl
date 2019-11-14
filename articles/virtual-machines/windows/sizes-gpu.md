@@ -1,5 +1,5 @@
 ---
-title: Rozmiary maszyn wirtualnych z systemem Windows Azure — procesor GPU | Microsoft Docs
+title: Rozmiary maszyn wirtualnych z systemem Windows Azure — procesor GPU
 description: Wyświetla różne rozmiary procesora GPU dostępne dla maszyn wirtualnych z systemem Windows na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 0e809690f0453806402c27773ad0029fc5f64be2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5b2da3076f3970d2f11301b3ea412ce52c257111
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102343"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075352"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowane pod kątem procesora GPU
 

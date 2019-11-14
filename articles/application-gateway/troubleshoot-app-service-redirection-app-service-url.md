@@ -1,18 +1,19 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure Application Gateway przy użyciu usługi App Service — przekierowanie do adresu URL App Service
+title: Rozwiązywanie problemów z przekierowaniem do adresu URL App Service
+titleSuffix: Azure Application Gateway
 description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z przekierowaniami, gdy usługa Azure Application Gateway jest używana z usługą Azure App Service
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ef2bbf8804e96a3e25f053d189c6d85bfa845b0b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d43efd6dbd344f666c23b1ad4414ceb29992e996
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833189"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074493"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Rozwiązywanie problemów z App Service w programie Application Gateway
 

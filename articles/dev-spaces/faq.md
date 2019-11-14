@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Znajdź odpowiedzi na niektóre często zadawane pytania dotyczące Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 317a942f94f3852cc11b8c0f004ed55097d05bc6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1f25ccd26aed832c068c04198486e769ec980380
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014222"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072213"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Często zadawane pytania dotyczące Azure Dev Spaces
 
@@ -44,7 +44,7 @@ Tak, można użyć Azure Dev Spaces w klastrze AKS, który używa CNI do obsług
 
 Obecnie Azure Dev Spaces ma być uruchamiany tylko w przypadku systemów Linux i w węzłach, ale można uruchomić Azure Dev Spaces w klastrze AKS z [istniejącymi kontenerami systemu Windows][windows-containers].
 
-### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Czy można używać Azure Dev Spaces w klastrach AKS z włączonymi zakresami adresów IP autoryzowanych serwerów interfejsu API?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Czy można używać Azure Dev Spaces w klastrach AKS z włączonymi zakresami adresów IP autoryzowanych serwerów interfejsu API?
 
 Tak, można użyć Azure Dev Spaces w klastrach AKS z włączonymi [zakresami adresów IP autoryzowanych przez serwer interfejsu API][aks-auth-range] . Podczas [tworzenia][aks-auth-range-create] klastra należy [zezwolić na dodatkowe zakresy w zależności od regionu][aks-auth-range-ranges]. Możesz również [zaktualizować][aks-auth-range-update] i istniejący klaster, aby zezwolić na te dodatkowe zakresy.
 

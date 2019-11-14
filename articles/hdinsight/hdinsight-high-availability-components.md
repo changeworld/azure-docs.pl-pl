@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 8aeef72c23f3ed40a7f187c976c67c2ae117189a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958494"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069628"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Usługi wysokiej dostępności obsługiwane przez usługę Azure HDInsight
 
@@ -123,7 +123,7 @@ Drugi kworum dozorcy jest niezależny od pierwszego kworum, więc aktywne NameNo
 
 Klastry usługi HDInsight oparte na Apache Hadoop 2,4 lub wyższej obsługują wysoką dostępność dla ResourceManager. Istnieją dwa ResourceManagers, RM1 i RM2, które działają odpowiednio na węzła głównego 0 i węzła głównego 1. Podobnie jak w przypadku NameNode, jest również skonfigurowany do automatycznego przełączania do trybu failover. Inny datasourcemanager jest automatycznie wybierany jako aktywny, gdy bieżące aktywne datasourcemanager wyjdzie lub nie odpowiada.
 
-Obiekt ResourceManager używa swojego osadzonego *ActiveStandbyElector* jako detektora błędów i wyborczyości lidera. W przeciwieństwie do elementu Nodemanager. datasourcemanager nie wymaga oddzielnego demona ZKFC. Aktywne datasourcemanager zapisuje swoje Stany w usłudze Apache dozorcy.
+Obiekt ResourceManager używa swojego osadzonego *ActiveStandbyElector* jako detektora błędów i wyborczyości lidera. W przeciwieństwie do NameNode HDFS, obiekt ResourceManager nie wymaga oddzielnego demona ZKFC. Aktywne datasourcemanager zapisuje swoje Stany w usłudze Apache dozorcy.
 
 Wysoka dostępność elementu ResourceManager jest niezależna od NameNode i innych usług HDInsight HA. Aktywna usługa ResourceManager może nie działać w aktywnym węzła głównego lub węzła głównego, gdzie działa aktywna usługa NameNode. Aby uzyskać więcej informacji o wysokiej dostępności usługi PRZĘDZy, zobacz temat [ResourceManager wysoka dostępność](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html).
 

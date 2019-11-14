@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja routera przykłady - NAT - Azure ExpressRoute | Dokumentacja firmy Microsoft
+title: 'Azure ExpressRoute: przykłady konfiguracji routera — translator adresów sieciowych'
 description: Ta strona zawiera przykłady konfiguracji routera dla routerów Cisco i Juniper.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: ccee0f0c01119ebbfb5ba9c5980ee006a555a399
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367612"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072109"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Przykłady konfiguracji routera, aby skonfigurować i zarządzać nimi translatora adresów Sieciowych
 
@@ -83,7 +82,7 @@ Polecenia translatora adresów Sieciowych:
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX serii routery
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Tworzenie nadmiarowego interfejsów Ethernet dla klastra
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Utwórz nadmiarowe interfejsy sieci Ethernet dla klastra
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -154,7 +153,7 @@ Polecenia translatora adresów Sieciowych:
     }
 
 
-### <a name="4-configure-nat-policies"></a>4. Konfigurowanie zasad translatora adresów Sieciowych
+### <a name="4-configure-nat-policies"></a>4. Skonfiguruj zasady NAT
 * Utwórz dwie pule translatora adresów Sieciowych. Jeden będzie służyć do NAT ruchu wychodzącego do firmy Microsoft i innych firmy Microsoft do klienta.
 * Tworzenie reguły NAT ruchu odpowiednich
   
@@ -213,10 +212,10 @@ Polecenia translatora adresów Sieciowych:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Konfigurowanie protokołu BGP, aby anonsować selektywne prefiksy w każdym kierunku
-Zobacz przykłady w [przykłady konfiguracji routingu](expressroute-config-samples-routing.md) strony.
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Skonfiguruj protokół BGP do anonsowania selektywnych prefiksów w każdym kierunku
+Zapoznaj się z przykładami na stronie Przykłady [konfiguracji routingu](expressroute-config-samples-routing.md) .
 
-### <a name="6-create-policies"></a>6. Tworzenie zasad
+### <a name="6-create-policies"></a>6. Utwórz zasady
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -311,6 +310,6 @@ Zobacz przykłady w [przykłady konfiguracji routingu](expressroute-config-sampl
         }
     }
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Szczegółowe informacje znajdują się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
 

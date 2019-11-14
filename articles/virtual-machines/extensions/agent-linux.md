@@ -1,5 +1,5 @@
 ---
-title: Omówienie agenta maszyny wirtualnej platformy Azure z systemem Linux | Microsoft Docs
+title: Omówienie agenta maszyny wirtualnej platformy Azure z systemem Linux
 description: Dowiedz się, jak zainstalować i skonfigurować agenta systemu Linux (waagent) w celu zarządzania interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bc28c7454296f32dda09894ad3dca2f4fae99b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169167"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073853"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Zrozumienie i używanie agenta systemu Linux platformy Azure
 
@@ -48,7 +48,7 @@ Agent Microsoft Azure Linux (waagent) zarządza obsługą systemu Linux & FreeBS
   * Zapewnia stabilność nazwy interfejsu sieciowego
 * **Kernel**
   
-  * Konfiguruje wirtualną architekturę NUMA (Wyłącz`2.6.37`dla jądra <)
+  * Konfiguruje wirtualną architekturę NUMA (Wyłącz dla jądra <`2.6.37`)
   * Zużywa entropię funkcji Hyper-V dla/dev/Random
   * Konfiguruje limity czasu SCSI dla urządzenia głównego (co może być zdalne)
 * **Diagnostyka**
@@ -60,7 +60,7 @@ Agent Microsoft Azure Linux (waagent) zarządza obsługą systemu Linux & FreeBS
 * **Rozszerzenie maszyny wirtualnej**
   
   * Wsuń składnik utworzony przez firmę Microsoft i partnerów na maszynę wirtualną z systemem Linux (IaaS) w celu umożliwienia automatyzacji oprogramowania i konfiguracji
-  * Implementacja odwołania do rozszerzenia maszyny wirtualnej na[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Implementacja odwołania do rozszerzenia maszyny wirtualnej na [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Komunikacja
 Przepływ informacji z platformy do agenta odbywa się za pośrednictwem dwóch kanałów:
@@ -72,7 +72,7 @@ Przepływ informacji z platformy do agenta odbywa się za pośrednictwem dwóch 
 Następujące systemy zostały przetestowane i wiadomo, że współpracują z agentem systemu Azure Linux:
 
 > [!NOTE]
-> Ta lista może się różnić od oficjalnej listy obsługiwanych systemów na platformie Microsoft Azure, zgodnie z opisem w tym miejscu:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Ta lista może się różnić od oficjalnych list obsługiwanych systemów na platformie Microsoft Azure, zgodnie z opisem w tym miejscu: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -107,12 +107,12 @@ Zapoznaj się z dokumentacją w [repozytorium agenta systemu Azure Linux w witry
 
 ## <a name="command-line-options"></a>Opcje wiersza polecenia
 ### <a name="flags"></a>flagi
-* pełne Zwiększ poziom szczegółowości określonego polecenia
-* moc Pomiń interaktywne potwierdzenie niektórych poleceń
+* verbose: Zwiększ poziom szczegółowości określonego polecenia
+* Wymuś: Pomiń interaktywne potwierdzenie niektórych poleceń
 
 ### <a name="commands"></a>Polecenia
 * Pomoc: Wyświetla listę obsługiwanych poleceń i flag.
-* Anulowanie aprowizacji Podjęto próbę wyczyszczenia systemu i upewnienia się, że jest on odpowiedni do ponownego inicjowania obsługi administracyjnej. Następująca operacja usuwa:
+* Cofanie aprowizacji: podjęto próbę oczyszczenia systemu i nastąpi jego ponowne udostępnienie. Następująca operacja usuwa:
   
   * Wszystkie klucze hosta SSH (jeśli inicjowanie obsługi. RegenerateSshHostKeyPair ma wartość "y" w pliku konfiguracyjnym)
   * Konfiguracja serwer nazw w/etc/resolv.conf
@@ -125,13 +125,13 @@ Zapoznaj się z dokumentacją w [repozytorium agenta systemu Azure Linux w witry
 > 
 > 
 
-* Cofanie aprowizacji i użytkownika: Wykonuje wszystkie czynności w ramach zastrzegania (powyżej), a także usuwa ostatnio zainicjowane konto użytkownika (uzyskane z/var/lib/waagent) i powiązane dane. Ten parametr jest niezależny od zainicjowania obsługi obrazu, który został wcześniej zainicjowany na platformie Azure, aby można go było przechwycić i ponownie użyć.
+* Anulowanie aprowizacji + użytkownik: wykonuje wszystkie czynności w ramach anulowania aprowizacji (powyżej), a także usuwa ostatnio zainicjowane konto użytkownika (uzyskane z/var/lib/waagent) i powiązane dane. Ten parametr jest niezależny od zainicjowania obsługi obrazu, który został wcześniej zainicjowany na platformie Azure, aby można go było przechwycić i ponownie użyć.
 * Wersja: Wyświetla wersję waagent
-* serialconsole: Konfiguruje GRUB, aby oznaczyć ttyS0 (pierwszy port szeregowy) jako konsolę rozruchową. Dzięki temu dzienniki rozruchu jądra są wysyłane do portu szeregowego i udostępniane do debugowania.
-* Demon Uruchom waagent jako demona, aby zarządzać interakcją z platformą. Ten argument jest określony do waagent w skrypcie init waagent.
-* Start Uruchom waagent jako proces w tle
+* serialconsole: konfiguruje GRUB, aby oznaczyć ttyS0 (pierwszy port szeregowy) jako konsolę rozruchową. Dzięki temu dzienniki rozruchu jądra są wysyłane do portu szeregowego i udostępniane do debugowania.
+* Demon: Uruchom waagent jako demona, aby zarządzać interakcją z platformą. Ten argument jest określony do waagent w skrypcie init waagent.
+* Uruchom: Uruchom waagent jako proces w tle
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 Plik konfiguracji (/etc/waagent.conf) kontroluje akcje waagent. Poniżej przedstawiono przykładowy plik konfiguracji:
 
     ```
@@ -170,7 +170,7 @@ Default: y
 Dzięki temu użytkownik może włączyć lub wyłączyć funkcję aprowizacji w agencie. Prawidłowe wartości to "y" lub "n". Jeśli Inicjowanie obsługi jest wyłączone, hosty SSH i klucze użytkownika w obrazie są zachowywane i jakakolwiek konfiguracja określona w interfejsie API aprowizacji platformy Azure zostanie zignorowana.
 
 > [!NOTE]
-> `Provisioning.Enabled` Parametr domyślnie ma wartość "n" w obrazach w chmurze Ubuntu, które korzystają z usługi Cloud-init na potrzeby aprowizacji.
+> Parametr `Provisioning.Enabled` domyślnie przyjmuje wartość "n" w obrazach w chmurze Ubuntu, które korzystają z inicjowania obsługi administracyjnej w chmurze.
 > 
 > 
 

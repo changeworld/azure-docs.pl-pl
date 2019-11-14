@@ -1,21 +1,18 @@
 ---
-title: Przykład — Wymuszaj tag i jego wartość
-description: Ta przykładowa definicja zasad wymaga nazwy i wartości tagu, każdy zestaw jako parametr.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
+title: Przykład — wymuszanie tagu i jego wartości
+description: Ta przykładowa definicja zasad wymaga nazwy i wartości tagu, ustawionych jako parametrów.
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: ec92fc13a97b6961d5adcd19603b8c8c3197170a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: b48bd1e38264bc98a2ec7b4c5b1a6a929babffaf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980493"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076249"
 ---
-# <a name="sample---enforce-tag-and-its-value"></a>Przykład — Wymuszaj tag i jego wartość
+# <a name="sample---enforce-tag-and-its-value"></a>Przykład — wymuszanie tagu i jego wartości
 
-Te zasady wymagają określonej nazwy i wartości tagu. Należy określić nazwę i wartość tagu do wymuszania.
+Ta zasada wymaga określonej nazwy i wartości tagu. Należy określić nazwę i wartość tagu do wymuszenia.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,11 +20,11 @@ Te zasady wymagają określonej nazwy i wartości tagu. Należy określić nazw�
 
 [!code-json[main](../../../../policy-templates/samples/built-in-policy/enforce-tag-value/azurepolicy.json "Enforce tag and its value")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
+[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -40,7 +37,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -tag
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +55,7 @@ az policy definition create --name 'enforce-tag-value' --display-name 'Enforce t
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-tag-value"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

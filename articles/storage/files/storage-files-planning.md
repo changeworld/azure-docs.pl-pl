@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 33fa474d719ec8a20142f35f56cc697c11e03e86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926633"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066340"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
-[Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
+[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
 
 ## <a name="management-concepts"></a>Pojęcia związane z zarządzaniem
 
@@ -47,7 +47,7 @@ Azure Files oferuje dwie wbudowane, wygodne metody dostępu do danych, których 
 
 W poniższej tabeli przedstawiono sposób, w jaki użytkownicy i aplikacje mogą uzyskiwać dostęp do udziału plików platformy Azure:
 
-| | Bezpośredni dostęp do chmury | Usługa Azure File Sync |
+| | Bezpośredni dostęp do chmury | Azure File Sync |
 |------------------------|------------|-----------------|
 | Jakich protokołów należy używać? | Azure Files obsługuje protokół SMB 2,1, protokół SMB 3,0 i interfejs API REST plików. | Uzyskaj dostęp do udziału plików platformy Azure za pomocą dowolnego obsługiwanego protokołu w systemie Windows Server (SMB, NFS, FTPS itp.) |  
 | Gdzie działa Twoje obciążenie? | **Na platformie Azure**: Azure Files oferuje bezpośredni dostęp do danych. | **W środowisku lokalnym z powolnej sieci**: klienci z systemami Windows, Linux i macOS mogą instalować lokalny udział plików systemu Windows jako szybką pamięć podręczną udziału plików platformy Azure. |
@@ -124,11 +124,11 @@ W poniższej tabeli przedstawiono kilka przykładów tych wzorów dla rozmiarów
 |---------|---------|---------|---------|---------|
 |100         | 100     | Do 300     | 66   | 44   |
 |500         | 500     | Do 1 500   | 90   | 60   |
-|1 024       | 1 024   | Do 3 072   | 122   | 81   |
+|1,024       | 1,024   | Do 3 072   | 122   | 81   |
 |5 120       | 5 120   | Do 15 360  | 368   | 245   |
 |10 240      | 10 240  | Do 30 720  | 675 | 450   |
 |33 792      | 33 792  | Do 100 000 | 2 088 | 1 392   |
-|51 200      | 51 200  | Do 100 000 | 3 132 | 2 088   |
+|51 200      | 51 200  | Do 100 000 | 3,132 | 2 088   |
 |102 400     | 100 000 | Do 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
@@ -208,14 +208,18 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Australia Wschodnia |LRS     |
 |Australia Południowo-Wschodnia|LRS |
 |Kanada Środkowa  |LRS     |
+|Kanada Wschodnia     |LRS     |
 |Indie Środkowe  |LRS     |
+|Środkowe stany USA *   |LRS     |
 |Azja Wschodnia      |LRS     |
 |Wschodnie stany USA *        |LRS     |
+|Wschodnie stany USA 2 *      |LRS     |
 |Francja Środkowa |LRS, ZRS|
 |Francja Południowa   |LRS     |
+|Europa Północna   |LRS     |
 |Indie Południowe    |LRS     |
 |Azja Południowo-Wschodnia |LRS, ZRS|
-|Zachodnio-środkowe stany USA|LRS     |
+|Środkowo-zachodnie stany USA|LRS     |
 |Europa Zachodnia *    |LRS, ZRS|
 |Zachodnie stany USA *        |LRS     |
 |Zachodnie stany USA 2      |LRS, ZRS|

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie dostępu do usługi WinRM dla maszyny wirtualnej platformy Azure | Microsoft Docs
+title: Konfigurowanie dostępu do usługi WinRM dla maszyny wirtualnej platformy Azure
 description: Skonfiguruj dostęp do usługi WinRM do użycia z maszyną wirtualną platformy Azure utworzoną w modelu wdrażania Menedżer zasobów.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ca52a458104b4de0f7b3ed2aa3f76109a5623c97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749057"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067313"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie dostępu do usługi WinRM dla Virtual Machines w Azure Resource Manager
 

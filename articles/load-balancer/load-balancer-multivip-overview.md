@@ -1,10 +1,9 @@
 ---
-title: Wiele frontonów dla Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Przegląd wielu frontonów na Azure Load Balancer
+title: Wiele frontonów — Azure Load Balancer
+description: Korzystając z tej ścieżki szkoleniowej, Rozpocznij pracę z omówieniem wielu frontonów na Azure Load Balancer
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
-ms.author: chkuhtz
-ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884207"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075947"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Wiele frontonów dla Azure Load Balancer
 
@@ -30,7 +29,7 @@ Podczas definiowania Azure Load Balancer konfiguracja frontonu i puli zaplecza s
 
 Poniższa tabela zawiera kilka przykładowych konfiguracji frontonu:
 
-| Fronton | Adres IP | protocol | port |
+| Frontonu | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -48,13 +47,13 @@ Azure Load Balancer umożliwia mieszanie obu typów reguł w tej samej konfigura
 
 Te scenariusze są bardziej szczegółowe, zaczynając od zachowania domyślnego.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>#1 typu reguły: Nie jest używany żaden port zaplecza
+## <a name="rule-type-1-no-backend-port-reuse"></a>#1 typu reguły: nie jest używany żaden port zaplecza
 
 ![Ilustracja przedstawiająca wiele frontonów z zielonym i fioletowym frontonem](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
 W tym scenariuszu frontony są konfigurowane w następujący sposób:
 
-| Fronton | Adres IP | protocol | port |
+| Frontonu | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | ![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Purpurowy fronton](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -66,11 +65,11 @@ Definiujemy dwie reguły:
 | Reguła | Fronton mapy | Do puli zaplecza |
 | --- | --- | --- |
 | 1 |![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 2 |![POWODZEŃ](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Pełne mapowanie w Azure Load Balancer jest teraz następujące:
 
-| Reguła | Adres IP frontonu | protocol | port | Miejsce docelowe | port |
+| Reguła | Adres IP frontonu | protocol | port | Element docelowy | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Zielona reguła](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Adres IP DIP |80 |
 | ![Reguła purpurowa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Adres IP DIP |81 |
@@ -104,21 +103,21 @@ W tym scenariuszu wszystkie maszyny wirtualne w puli zaplecza mają trzy interfe
 
 Załóżmy, że konfiguracja frontonu jest taka sama jak w poprzednim scenariuszu:
 
-| Fronton | Adres IP | protocol | port |
+| Frontonu | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | ![zielony fronton](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Purpurowy fronton](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 Definiujemy dwie reguły:
 
-| Reguła | Fronton | Mapowanie na pulę zaplecza |
+| Reguła | Frontonu | Mapowanie na pulę zaplecza |
 | --- | --- | --- |
 | 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (w VM1 i VM2) |
 | 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (w VM1 i VM2) |
 
 W poniższej tabeli przedstawiono pełne mapowanie modułu równoważenia obciążenia:
 
-| Reguła | Adres IP frontonu | protocol | port | Miejsce docelowe | port |
+| Reguła | Adres IP frontonu | protocol | port | Element docelowy | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Zielona reguła](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Analogicznie jak fronton (65.52.0.1) |Analogicznie jak fronton (80) |
 | ![Reguła purpurowa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Analogicznie jak fronton (65.52.0.2) |Analogicznie jak fronton (80) |
@@ -132,10 +131,10 @@ Typ reguły zmiennoprzecinkowy adres IP jest podstawą kilku wzorców konfigurac
 ## <a name="limitations"></a>Ograniczenia
 
 * Wiele konfiguracji frontonu jest obsługiwanych tylko z maszynami wirtualnymi IaaS.
-* W przypadku reguły zmiennoprzecinkowych adresów IP aplikacja musi używać podstawowej konfiguracji protokołu IP dla przepływów ruchu wychodzącego. Jeśli aplikacja jest powiązana z adresem IP frontonu skonfigurowanym w interfejsie sprzężenia zwrotnego w systemie operacyjnym gościa, ruch wychodzący z platformy Azure nie jest dostępny do ponownego zapisania przepływu wychodzącego i przepływ kończy się niepowodzeniem.  Przejrzyj [scenariusze](load-balancer-outbound-connections.md)wychodzące.
+* W przypadku reguły zmiennoprzecinkowych adresów IP aplikacja musi używać podstawowej konfiguracji protokołu IP dla przepływów ruchu wychodzącego. Jeśli aplikacja jest powiązana z adresem IP frontonu skonfigurowanym w interfejsie sprzężenia zwrotnego w systemie operacyjnym gościa, ruch wychodzący z platformy Azure nie jest dostępny do ponownego zapisania przepływu wychodzącego i przepływ kończy się niepowodzeniem.  Przejrzyj [scenariusze wychodzące](load-balancer-outbound-connections.md).
 * Publiczne adresy IP mają wpływ na rozliczenia. Aby uzyskać więcej informacji, zobacz [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Obowiązują limity subskrypcji. Aby uzyskać więcej informacji, zobacz [limity usług](../azure-subscription-service-limits.md#networking-limits) w celu uzyskania szczegółów.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj [połączenia](load-balancer-outbound-connections.md) wychodzące, aby zrozumieć wpływ wielu frontonów na zachowanie połączenia wychodzącego.
+- Przejrzyj [połączenia wychodzące](load-balancer-outbound-connections.md) , aby zrozumieć wpływ wielu frontonów na zachowanie połączenia wychodzącego.

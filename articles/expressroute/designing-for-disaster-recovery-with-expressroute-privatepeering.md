@@ -1,153 +1,150 @@
 ---
-title: Projektowanie pod kątem odzyskiwania po awarii przy użyciu usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
-description: Ta strona zawiera architektury zalecenia dotyczące odzyskiwania po awarii podczas korzystania z usługi Azure ExpressRoute.
-documentationcenter: na
-services: networking
+title: 'Azure ExpressRoute: projektowanie na potrzeby odzyskiwania po awarii'
+description: Ta strona zawiera zalecenia architektury dotyczące odzyskiwania po awarii podczas korzystania z usługi Azure ExpressRoute.
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: cf2b4e385de901254fde3c3d3e807feda98d5b41
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466070"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076700"
 ---
-# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Projektowanie pod kątem odzyskiwania po awarii za pomocą prywatnej komunikacji równorzędnej usługi ExpressRoute
+# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Projektowanie na potrzeby odzyskiwania po awarii za pomocą prywatnej komunikacji równorzędnej ExpressRoute
 
-Usługa ExpressRoute jest przeznaczona dla wysokiej dostępności zapewnić operatora połączenie sieci prywatnej klasy korporacyjnej z zasobami firmy Microsoft. Innymi słowy nie ma żadnego pojedynczego punktu awarii w ścieżce usługi ExpressRoute w sieci firmy Microsoft. Zagadnienia dotyczące projektowania w celu zapewnienia maksymalnej dostępności obwodu usługi ExpressRoute, można zobaczyć [projektowanie pod kątem wysokiej dostępności przy użyciu usługi ExpressRoute][HA].
+ExpressRoute jest przeznaczona do wysokiej dostępności w celu zapewnienia poufności łączności sieci prywatnej z zasobami firmy Microsoft. Innymi słowy, w ścieżce ExpressRoute w sieci firmy Microsoft nie ma single point of failure. Aby poznać zagadnienia dotyczące projektowania w celu zmaksymalizowania dostępności obwodu usługi ExpressRoute, zobacz [projektowanie pod kątem wysokiej dostępności dzięki ExpressRoute][HA].
 
-Jednak wykonanie firmy Murphy popularnych powiedzeniem —*Jeśli wszystko pójdzie źle, będzie*— pod uwagę, w tym artykule Daj nam skupić się na zastosowanie rozwiązań wykraczających poza błędy, które można rozwiązać za pomocą jednego obwodu usługi ExpressRoute. Innymi słowy w tym artykule Daj nam zapozna zagadnienia dotyczące architektury sieci do tworzenia niezawodnych zaplecza łącznością sieciową na potrzeby odzyskiwania po awarii przy użyciu magazynu geograficznie nadmiarowego obwodów usługi ExpressRoute.
+Jednak dzięki Murphy popularnej powiedzeniem —*Jeśli coś się nie powiedzie, w tym artykule zauważamy*, że firma Microsoft koncentruje się na rozwiązaniach, które wykraczają poza awarie, które można rozwiązać za pomocą pojedynczego obwodu usługi ExpressRoute. Innymi słowy, w tym artykule poinformuj nas o architekturze sieci dotyczącej tworzenia niezawodnej łączności sieciowej zaplecza na potrzeby odzyskiwania po awarii za pomocą obwodów ExpressRoute geograficznie nadmiarowych.
 
-## <a name="need-for-redundant-connectivity-solution"></a>Konieczność stosowania rozwiązań łączność nadmiarowa
+## <a name="need-for-redundant-connectivity-solution"></a>Potrzebna do nadmiarowego rozwiązania łączności
 
-Brak możliwości i wystąpienia, gdzie całą usługę regionalne (można go z firmy Microsoft, sieci dostawcy usług, klienta lub innych dostawców usług w chmurze) pobiera negatywny wpływ na dostępność. Główną przyczynę tego wpływu regionalna usługa szerokiego obejmują calamity fizycznych. W związku z tym ciągłość działalności biznesowej i misji kluczowych aplikacji biznesowych należy zaplanować odzyskiwanie po awarii.   
+Istnieją również możliwości i wystąpienia, w których cała usługa regionalna (powinna zostać obniżona przez firmę Microsoft, dostawców usług sieciowych, klientów lub innych dostawców usług w chmurze). Główną przyczyną takiego wpływu na obsługę wielu regionów jest naturalny Calamity. W związku z tym, aby uzyskać ciągłość biznesową i najważniejsze aplikacje, ważne jest, aby zaplanować odzyskiwanie po awarii.   
 
-Niezależnie od tego, czy uruchomić usługi dla aplikacji o znaczeniu w regionie platformy Azure lub lokalnie lub dowolnej innej lokalizacji można użyć innego regionu platformy Azure jako lokacji trybu failover. Następujące artykuły adresy odzyskiwania po awarii z aplikacji i perspektywy dostępu do serwera sieci Web:
+Bez względu na to, czy aplikacje o znaczeniu strategicznym są uruchamiane w regionie świadczenia usługi Azure, czy lokalnie czy w innym miejscu, możesz użyć innego regionu platformy Azure jako witryny trybu failover. Poniższe artykuły dotyczą odzyskiwania po awarii z aplikacji i perspektyw dostępu frontonu:
 
 - [Odzyskiwanie po awarii w skali przedsiębiorstwa][Enterprise DR]
-- [Odzyskiwanie po awarii SMB za pomocą usługi Azure Site Recovery][SMB DR]
+- [Odzyskiwanie po awarii SMB z Azure Site Recovery][SMB DR]
 
-Niezawodne połączenia usługi ExpressRoute między siecią lokalną i firmy Microsoft dotyczących krytycznych operacji o znaczeniu plan odzyskiwania po awarii powinny również obejmować łączności sieciowej geograficznie nadmiarowy. 
+Jeśli polegasz na ExpressRoute łączności między siecią lokalną i firmą Microsoft w celu wykonywania krytycznych operacji, plan odzyskiwania po awarii powinien również obejmować geograficznie nadmiarową łączność sieciową. 
 
-## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Wyzwania związane z przy użyciu wielu obwodów usługi ExpressRoute
+## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Wyzwania związane z korzystaniem z wielu obwodów usługi ExpressRoute
 
-Gdy połączenie jest ten sam zestaw sieci za pomocą więcej niż jedno połączenie, wprowadzasz równoległe ścieżek między tymi sieciami. Równoległe ścieżek, jeśli nie zostało prawidłowo zaprojektowana, może prowadzić do routingu asymetrycznego. Jeśli masz jednostek stanowe (na przykład translatora adresów Sieciowych, zapory) w ścieżce routingu asymetrycznego może zablokować przepływu ruchu.  Zazwyczaj za pośrednictwem ścieżki prywatnej komunikacji równorzędnej usługi ExpressRoute nie będzie trafisz na stanowe jednostki, takie jak translatora adresów Sieciowych lub zaporami. W związku z tym asymetryczny routing za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute nie zawsze blokuje przepływu ruchu.
+W przypadku łączenia tego samego zestawu sieci przy użyciu więcej niż jednego połączenia wprowadza się ścieżki równoległe między sieciami. Ścieżki równoległe, gdy nie są poprawnie zaprojektowane, mogą prowadzić do routingu asymetrycznego. Jeśli masz jednostki stanowe (na przykład translator adresów sieciowych, Zapora) w ścieżce, routing asymetryczny może blokować przepływ ruchu.  Zazwyczaj za pośrednictwem prywatnej ścieżki komunikacji równorzędnej ExpressRoute nie będziesz mieć między jednostkami stanowymi, takimi jak translator adresów sieciowych lub zapory. W związku z tym Routing asymetryczny za pośrednictwem prywatnej komunikacji równorzędnej ExpressRoute nie musi blokować przepływu ruchu.
  
-Jednak możesz Równoważenie obciążenia ruchem magazynu geograficznie nadmiarowego ścieżek równoległych, niezależnie od tego, czy masz stanowych jednostek lub nie będzie występować wydajność sieci niespójne. W tym artykule omówimy sposób rozwiązać te problemy.
+Jednak w przypadku równoważenia obciążenia ruchu między geograficznie nadmiarowymi ścieżkami równoległymi, niezależnie od tego, czy są to jednostki stanowe, czy nie, wystąpi niespójna wydajność sieci. W tym artykule omówiono sposoby rozwiązywania tych problemów.
 
-## <a name="small-to-medium-on-premises-network-considerations"></a>Małe i zagadnienia dotyczące sieci średniej w środowisku lokalnym
+## <a name="small-to-medium-on-premises-network-considerations"></a>Zagadnienia dotyczące małych i średnich sieci lokalnych
 
-Rozważmy przykładową sieć zilustrowane na poniższym diagramie. W tym przykładzie magazynu geograficznie nadmiarowego połączenia usługi ExpressRoute zostanie nawiązane między firmy Contoso na lokalizację lokalną a siecią wirtualną firmy Contoso, w regionie platformy Azure. Na diagramie linia ciągła zielony oznacza preferowaną ścieżkę (za pośrednictwem usługi ExpressRoute 1), a jeden kropkowana reprezentuje ścieżkę zapasowego (za pośrednictwem usługi ExpressRoute 2).
+Rozważmy przykładową sieć zilustrowaną na poniższym diagramie. W przykładzie geograficznie nadmiarowe połączenie ExpressRoute jest ustanawiane między lokalizacją lokalną firmy Contoso i siecią wirtualną firmy Contoso w regionie świadczenia usługi Azure. Na diagramie pełny zielony wiersz wskazuje preferowaną ścieżkę (za pośrednictwem ExpressRoute 1), a jeden z kropek reprezentuje ścieżkę "ścieżka do" (za pośrednictwem ExpressRoute 2).
 
 [![1]][1]
 
-Podczas projektowania połączenia usługi ExpressRoute na potrzeby odzyskiwania po awarii, należy wziąć pod uwagę:
+Podczas projektowania łączności ExpressRoute na potrzeby odzyskiwania po awarii należy rozważyć następujące kwestie:
 
-- za pomocą magazynu geograficznie nadmiarowego obwodów usługi ExpressRoute
-- za pomocą różnych usług dostawcy sieci dla innego obwodu usługi ExpressRoute
-- Każdy obwód usługi ExpressRoute dla projektowania [wysokiej dostępności][HA]
-- zakończenie innego obwodu usługi ExpressRoute w innej lokalizacji w sieci klientów
+- Używanie obwodów ExpressRoute geograficznie nadmiarowych
+- Używanie różnorodnych sieci usługodawców dla różnych obwodów usługi ExpressRoute
+- Projektowanie każdego obwodu usługi ExpressRoute w celu zapewnienia [wysokiej dostępności][HA]
+- Kończenie innego obwodu ExpressRoute w innej lokalizacji w sieci klienta
 
-Domyślnie jeśli identycznie anonsować trasy za pośrednictwem wszystkich ścieżek usługi ExpressRoute platformy Azure zostanie równoważyć obciążenie ruchem w środowisku lokalnym powiązany we wszystkich ścieżkach usługi ExpressRoute za pomocą routing wielościeżkowego (ECMP) równy kosztów.
+Domyślnie, jeśli Anonsy tras są identyczne na wszystkich ścieżkach ExpressRoute, platforma Azure będzie równoważyć obciążenie ruchu lokalnego między wszystkimi ścieżkami ExpressRoute przy użyciu routingu o podwójnej trasie (ECMP).
 
-Jednak z magazynu geograficznie nadmiarowego obwodów usługi ExpressRoute należy wziąć pod uwagę wykonań inną sieć z innymi ścieżkami sieciowymi (zwłaszcza w przypadku opóźnienia sieci). Aby uzyskać bardziej spójną wydajność sieci podczas normalnego działania, warto preferowany obwód usługi ExpressRoute, który zapewnia minimalne opóźnienia.
+Jednak w przypadku obwodów ExpressRoute geograficznie nadmiarowych musimy wziąć pod uwagę różne wydajności sieci z różnymi ścieżkami sieciowymi (szczególnie w przypadku opóźnień sieci). Aby zapewnić bardziej spójną wydajność sieci podczas normalnego działania, można preferować obwód ExpressRoute, który oferuje minimalne opóźnienia.
 
-Mogą mieć wpływ Azure preferowanie jeden obwód usługi ExpressRoute za pośrednictwem innej przy użyciu jednej z następujących technik (wymienione w kolejności skuteczności):
+Możesz mieć wpływ na platformę Azure, aby preferować jeden obwód ExpressRoute na inny przy użyciu jednej z następujących technik (wymienionych w kolejności skuteczności):
 
-- anonsowane dokładniej określoną trasę przez preferowany obwód usługi ExpressRoute w porównaniu do innych obwody usługi ExpressRoute
-- Konfigurowanie wyższa waga połączenia dla połączenia, które łączy sieć wirtualną preferowany obwód usługi ExpressRoute
-- anonsowanie tras za pośrednictwem mniej preferowany obwód usługi ExpressRoute za pomocą dłuższej ścieżki AS (jak ścieżki jest dołączana)
+- Anonsowanie bardziej konkretnej trasy przez preferowany obwód ExpressRoute w porównaniu do innych obwodów ExpressRoute
+- Konfigurowanie wyższych wag połączeń w połączeniu, które łączy sieć wirtualną z preferowanym obwodem usługi ExpressRoute
+- Anonsowanie tras za pośrednictwem mniej preferowanego obwodu ExpressRoute z dłuższą ścieżką (jako prefiks ścieżki)
 
-### <a name="more-specific-route"></a>Dokładniej określoną trasę
+### <a name="more-specific-route"></a>Bardziej konkretna trasa
 
-Na poniższym diagramie przedstawiono wywieranie wybór ścieżki usługi ExpressRoute przy użyciu bardziej szczegółowe anons trasy. W tym przykładzie przedstawiono Contoso lokalnych/24 zakres adresów IP są anonsowane jako zakresów adresów dwóch /25 za pośrednictwem preferowaną ścieżką (usługa ExpressRoute 1) i prefiksie/24, za pośrednictwem ścieżki rezerwowej (2 usługi ExpressRoute).
+Poniższy diagram ilustruje wpływ na wybór ścieżki ExpressRoute przy użyciu bardziej konkretnego anonsu trasy. W zilustrowanym przykładzie zakres adresów IP firmy Contoso w środowisku lokalnym/24 jest anonsowany jako dwa/25 zakresy adresowe za pośrednictwem preferowanej ścieżki (ExpressRoute 1) i jako/24 za pośrednictwem ścieżki pośredniej (ExpressRoute 2).
 
 [![2]][2]
 
-Ponieważ /25 jest bardziej szczegółowe, w porównaniu do prefiksie/24, Azure prześle ruch kierowany do 10.1.11.0/24 za pośrednictwem usługi ExpressRoute 1 w normalnym stanie. W przypadku połączeń usługi ExpressRoute 1 przestaną działać, następnie sieci wirtualnej widział anons trasy 10.1.11.0/24 wyłącznie za pośrednictwem usługi ExpressRoute 2; i w związku z tym obwodu rezerwy jest używany w tym stanie błędu.
+Ponieważ/25 jest bardziej szczegółowy, w porównaniu z/24, platforma Azure wyśle ruch do 10.1.11.0/24 za pośrednictwem ExpressRoute 1 w normalnym stanie. Jeśli oba połączenia ExpressRoute 1 przechodzą w dół, Sieć wirtualna zobaczy anons trasy 10.1.11.0/24 tylko za pośrednictwem ExpressRoute 2; w związku z tym w tym stanie awarii jest używany obwód gotowości.
 
 ### <a name="connection-weight"></a>Waga połączenia
 
-Poniższy zrzut ekranu przedstawia Konfigurowanie wagę połączenia usługi ExpressRoute za pośrednictwem witryny Azure portal.
+Poniższy zrzut ekranu ilustruje konfigurację wagi połączenia ExpressRoute za pośrednictwem Azure Portal.
 
 [![3]][3]
 
-Na poniższym diagramie przedstawiono wywieranie wybór ścieżki usługi ExpressRoute za pomocą wagi połączenia. Waga połączenia domyślne to 0. W poniższym przykładzie wagę połączenia dla usługi ExpressRoute 1 jest skonfigurowany jako 100. Gdy sieć wirtualną otrzymuje prefiks trasy anonsowane przez więcej niż jeden obwód usługi ExpressRoute, sieci wirtualnej zostanie wybrane połączenie o najwyższej wadze.
+Na poniższym diagramie przedstawiono wpływ wybierania ścieżki ExpressRoute przy użyciu wagi połączeń. Domyślna waga połączenia to 0. W poniższym przykładzie waga połączenia dla ExpressRoute 1 jest skonfigurowana jako 100. Gdy sieć wirtualna odbiera prefiks trasy anonsowany za pośrednictwem więcej niż jednego obwodu usługi ExpressRoute, Sieć wirtualna będzie preferować połączenie o najwyższej wadze.
 
 [![4]][4]
 
-W przypadku połączeń usługi ExpressRoute 1 przestaną działać, następnie sieci wirtualnej widział anons trasy 10.1.11.0/24 wyłącznie za pośrednictwem usługi ExpressRoute 2; i w związku z tym obwodu rezerwy jest używany w tym stanie błędu.
+Jeśli oba połączenia ExpressRoute 1 przechodzą w dół, Sieć wirtualna zobaczy anons trasy 10.1.11.0/24 tylko za pośrednictwem ExpressRoute 2; w związku z tym w tym stanie awarii jest używany obwód gotowości.
 
-### <a name="as-path-prepend"></a>JAKO ścieżki dołączana
+### <a name="as-path-prepend"></a>Ścieżka do ścieżki
 
-Na poniższym diagramie przedstawiono wywieranie wybór ścieżki usługi ExpressRoute przy użyciu ścieżki jest dołączana. Na diagramie anons trasy za pośrednictwem usługi ExpressRoute 1 wskazuje, domyślne zachowanie eBGP. Na anonsowanie trasy za pośrednictwem usługi ExpressRoute, 2 numer ASN w sieci lokalnej jest poprzedzona dodatkowo na trasie jako ścieżka. Po otrzymaniu tej samej trasie za pomocą wielu obwodów usługi ExpressRoute dla procesu wyboru eBGP trasy sieci wirtualnej wolisz trasa o najkrótszym jako ścieżka. 
+Na poniższym diagramie przedstawiono wpływ na wybór ścieżki ExpressRoute przy użyciu ścieżki do dołączania. Na diagramie anons trasy dla ExpressRoute 1 wskazuje domyślne zachowanie eBGP. W przypadku anonsu trasy dla ExpressRoute 2 numer ASN sieci lokalnej jest dołączany również do trasy jako ścieżki. Gdy ta sama trasa jest odbierana przez wiele obwodów usługi ExpressRoute, za pomocą procesu wyboru trasy eBGP, Sieć wirtualna będzie preferować trasy z najkrótszą ścieżką. 
 
 [![5]][5]
 
-W przypadku połączeń usługi ExpressRoute 1 przestaną działać, sieć wirtualna widział anons trasy 10.1.11.0/24 wyłącznie za pośrednictwem usługi ExpressRoute 2. Consequentially tym dłużej, ponieważ ścieżka staną się nieodpowiednie. W związku z tym wstrzymania obwód będzie używana w tym stanie błędu.
+Jeśli oba połączenia ExpressRoute 1 przechodzą w dół, Sieć wirtualna zobaczy anons trasy 10.1.11.0/24 tylko za pośrednictwem ExpressRoute 2. Z kolei, dłuższa ścieżka staje się nieistotna. W związku z tym w tym stanie niepowodzenia zostanie użyty obwód gotowości.
 
-Przy użyciu dowolnej z metod, jeśli mają wpływ na platformie Azure, aby wybrać jeden z usługi ExpressRoute za pośrednictwem innych, również należy upewnić się siecią lokalną również Preferuj tej samej ścieżce usługi ExpressRoute dla platformy Azure powiązane ruchu, aby uniknąć asymetrycznego przepływów. Zazwyczaj wartość preferencji lokalnej jest używana do wywierania wpływu na sieć lokalną preferowanie jeden obwód usługi ExpressRoute za pośrednictwem innych użytkowników. Preferencji lokalnej jest wewnętrzny metryki protokołu BGP (iBGP). Trasa protokołu BGP z najwyższą wartość preferencji lokalnej jest preferowana.
+Korzystając z dowolnych z tych technik, jeśli zamierzasz korzystać z platformy Azure w celu preferowania jednego z ExpressRoute na innych, musisz również upewnić się, że sieć lokalna również preferuje tę samą ścieżkę ExpressRoute dla ruchu związanego z platformą Azure, aby uniknąć przepływów asymetrycznych. Zazwyczaj lokalna wartość preferencji jest używana w celu wpływania sieci lokalnej w celu preferowania jednego obwodu ExpressRoute na inne. Preferencja lokalna to wewnętrzna Metryka BGP (iBGP). Preferowana jest trasa BGP o najwyższej wartości preferencji lokalnej.
 
 > [!IMPORTANT]
-> Gdy używasz pewnych obwodów usługi ExpressRoute jako zapasowego, musisz aktywnie zarządzać nimi i okresowo testować operacji trybu failover. 
+> W przypadku korzystania z pewnych obwodów usługi ExpressRoute jako usługi autonomicznej należy aktywnie zarządzać nimi i okresowo testować pracę w trybie failover. 
 > 
 
-## <a name="large-distributed-enterprise-network"></a>Duże przedsiębiorstwo rozproszonej sieci
+## <a name="large-distributed-enterprise-network"></a>Duże rozproszone sieci przedsiębiorstwa
 
-W przypadku sieci dużych przedsiębiorstw rozproszonych wszystko może mieć wiele obwodów usługi ExpressRoute. W tej sekcji Zobaczmy, jak projektować odzyskiwania po awarii przy użyciu obwodów usługi ExpressRoute aktywne aktywne, bez konieczności dodatkowego zapasowego obwodów. 
+W przypadku dużej rozproszonej sieci przedsiębiorstwa istnieje wiele obwodów usługi ExpressRoute. W tej sekcji Zobaczmy, jak projektować odzyskiwanie po awarii za pomocą obwodów usługi ExpressRoute w aktywnym miejscu, bez konieczności używania dodatkowych obwodów. 
 
-Rozważmy przykład zilustrowane na poniższym diagramie. W tym przykładzie firma Contoso ma dwa lokalizacjami lokalnymi połączyć dwa wdrożenia IaaS firmy Contoso w dwóch różnych regionach platformy Azure za pośrednictwem obwodów usługi ExpressRoute w dwóch różnych lokalizacjach komunikacji równorzędnej. 
+Rozważmy przykład przedstawiony na poniższym diagramie. W tym przykładzie firma Contoso ma dwie lokalizacje lokalne połączone z dwoma różnymi regionami platformy Azure za pośrednictwem obwodów usługi ExpressRoute w dwóch różnych lokalizacjach komunikacji równorzędnej. 
 
 [![6]][6]
 
-Jak tworzymy architekturę odzyskiwania po awarii ma wpływ na sposób krzyżowe regionalne do wielu lokalizacji (aby location2/location1 region1/region2) ruch jest kierowany. Rozważmy dwa architektur różnych po awarii, które kieruje ruchem między lokalizacja regionu inaczej.
+Sposób, w jaki oferujemy środowisko odzyskiwania po awarii, ma wpływ na to, jak odbywa się kierowanie ruchu między różnymi lokalizacjami (Region1/region2 do Location2/Location1). Rozważmy dwie różne architektury awaryjne, które przekierowują ruch między lokalizacjami między regionami.
 
 ### <a name="scenario-1"></a>Scenariusz 1
 
-W pierwszego scenariusza umożliwia projektowanie odzyskiwania po awarii, tak, aby cały ruch między siecią platformy Azure region i lokalnych przepływać przez lokalnym obwodem usługi ExpressRoute w stanie stabilności. Jeśli nie powiedzie się z lokalnym obwodem usługi ExpressRoute, następnie zdalnym obwodem usługi ExpressRoute jest używany dla wszystkich przepływów ruchu sieciowego między platformą Azure i sieci lokalnej.
+W pierwszym scenariuszu należy zaprojektować odzyskiwanie po awarii, aby cały ruch między regionem platformy Azure i przepływem sieci lokalnej przez lokalny obwód usługi ExpressRoute był w stanie stałym. Jeśli lokalny obwód usługi ExpressRoute nie powiedzie się, zostanie użyty zdalny obwód ExpressRoute dla wszystkich przepływów ruchu między platformą Azure i siecią lokalną.
 
-Scenariusz 1 przedstawiono na poniższym diagramie. Na diagramie zielony linie wskazują ścieżki dla przepływu ruchu sieci VNet1 i w środowisku lokalnym. Niebieskie linie wskazują ścieżki dla przepływu ruchu między sieciami VNet2 i lokalnych. Linia ciągła wskazać odpowiednią ścieżkę w stanie stabilności i linie przerywane wskazać ścieżkę ruchu odpowiedniego obwód usługi ExpressRoute, obsługująca przepływ ruchu stabilnym nie powiedzie się. 
+Scenariusz 1 przedstawiono na poniższym diagramie. Na diagramie zielone linie wskazują ścieżki ruchu sieciowego między VNet1 i sieciami lokalnymi. Niebieskie linie wskazują ścieżki ruchu sieciowego między VNet2 i sieciami lokalnymi. Linie kryjące wskazują pożądaną ścieżkę w stanie stałym i linie kreskowane wskazują ścieżkę ruchu w przypadku awarii odpowiedniego obwodu ExpressRoute, który przenosi przepływ ruchu stałego stanu. 
 
 [![7]][7]
 
-Można zaprojektować scenariusza za pomocą wagi połączenia do wywierania wpływu na sieci wirtualne preferowanie połączenia do lokalnej lokalizacji komunikacji równorzędnej usługi ExpressRoute między siecią lokalną powiązać ruchu. Aby wykonać to rozwiązanie, należy się upewnić przepływu symetryczne ruch powrotny. Możesz użyć preferencji lokalnej sesji iBGP między poszczególne routery BGP (na których obwodów usługi ExpressRoute kończą stronie lokalnych) preferowanie obwód usługi ExpressRoute. Rozwiązanie to zilustrowane na poniższym diagramie. 
+Możesz zaprojektować scenariusz przy użyciu wagi połączeń, aby mieć wpływ na sieci wirtualnych w celu nawiązania połączenia z lokalną lokalizacją komunikacji równorzędnej ExpressRoute dla ruchu w sieci lokalnej. Aby ukończyć rozwiązanie, należy zapewnić symetryczny przepływ ruchu odwrotnego. Możesz użyć preferencji lokalnych w sesji iBGP między routerami BGP (na których obwody ExpressRoute kończą się po stronie lokalnej), aby preferować obwód ExpressRoute. Rozwiązanie jest zilustrowane na poniższym diagramie. 
 
 [![8]][8]
 
 ### <a name="scenario-2"></a>Scenariusz 2
 
-2 scenariusz przedstawiono na poniższym diagramie. Na diagramie zielony linie wskazują ścieżki dla przepływu ruchu sieci VNet1 i w środowisku lokalnym. Niebieskie linie wskazują ścieżki dla przepływu ruchu między sieciami VNet2 i lokalnych. W stabilnym (linie ciągłe na diagramie) wszystkie ruchu między sieciami wirtualnymi i lokalnych lokalizacji przepływu za pośrednictwem sieci szkieletowej firmy Microsoft w większości przypadków i przechodzą przez wzajemne połączenie między lokalizacjami lokalnymi tylko w stanie awarii (linie kropkowana w diagram) z usługi ExpressRoute.
+Scenariusz 2 przedstawiono na poniższym diagramie. Na diagramie zielone linie wskazują ścieżki ruchu sieciowego między VNet1 i sieciami lokalnymi. Niebieskie linie wskazują ścieżki ruchu sieciowego między VNet2 i sieciami lokalnymi. W stanie stałym (pełne linie na diagramie) cały ruch między lokalizacjami sieci wirtualnych i lokalnymi odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, a następnie przechodzi przez połączenie między lokalizacjami lokalnymi tylko w stanie niepowodzenia (linie kropkowane w Diagram) ExpressRoute.
 
 [![9]][9]
 
-Rozwiązanie to zilustrowane na poniższym diagramie. Zgodnie z opisami, scenariusz można zaprojektować albo przy użyciu bardziej szczegółowe trasy (opcja 1) lub ścieżkę AS dołączana (opcja 2) w celu wywierania wpływu na wybór ścieżki sieci wirtualnej. Aby wpłynąć na wybór trasy sieci lokalnej dla ruchu związanego z platformy Azure, należy skonfigurować wzajemne połączenie między lokalizacją lokalną jako mniej preferowane. Howe połączeń łącza są konfigurowane jako preferowane jest zależna od protokół routingu używany w sieci lokalnej. Możesz użyć preferencji lokalnej za pomocą iBGP lub metryki za pomocą IGP (OSPF lub znajduje się).
+Rozwiązanie jest zilustrowane na poniższym diagramie. Jak widać, można zaprojektować scenariusz przy użyciu bardziej określonej trasy (opcja 1) lub ścieżki (opcja 2) w celu wpływu na wybór ścieżki sieci wirtualnej. Aby mieć wpływ na wybór trasy sieci lokalnej dla ruchu związanego z platformą Azure, należy skonfigurować połączenie między lokalizacją lokalną i bardziej preferowaną. Howe Konfigurowanie linku połączenia, zgodnie z preferowaną zależnością, zależy od protokołu routingu używanego w sieci lokalnej. Możesz użyć preferencji lokalnego z iBGP lub metryką z IGP (OSPF lub IS-IS).
 
 [![10]][10]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule omówiono sposób projektowania do odzyskiwania po awarii połączenia usługi ExpressRoute circuit prywatnej komunikacji równorzędnej. Następujące artykuły adresy odzyskiwania po awarii z aplikacji i perspektywy dostępu do serwera sieci Web:
+W tym artykule omówiono sposób projektowania na potrzeby odzyskiwania po awarii prywatnej komunikacji równorzędnej obwodu usługi ExpressRoute. Poniższe artykuły dotyczą odzyskiwania po awarii z aplikacji i perspektyw dostępu frontonu:
 
 - [Odzyskiwanie po awarii w skali przedsiębiorstwa][Enterprise DR]
-- [Odzyskiwanie po awarii SMB za pomocą usługi Azure Site Recovery][SMB DR]
+- [Odzyskiwanie po awarii SMB z Azure Site Recovery][SMB DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "małych i zagadnienia dotyczące sieci w środowisku lokalnym lub średnim rozmiarze"
-[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "wywieranie wpływu na wybór ścieżki przy użyciu bardziej szczegółowe trasy"
-[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "Konfigurowanie waga połączenia za pośrednictwem witryny Azure portal"
-[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "wywieranie wpływu na wybór ścieżki przy użyciu wagi połączenia"
-[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "wywieranie wpływu na wybór ścieżki przy użyciu jako ścieżka dołączana"
-[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "dużych rozproszonej sieci lokalnej zagadnienia"
+[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "zagadnienia dotyczące małych i średnich wielkości w sieci lokalnej"
+[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "wpływ na wybór ścieżki przy użyciu bardziej konkretnych tras"
+[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "Konfigurowanie wagi połączeń za pośrednictwem Azure Portal"
+[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "wpływ na wybór ścieżki przy użyciu wagi połączeń"
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "wpływanie na wybór ścieżki przy użyciu" prefiksu ścieżki
+[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "duże zagadnienia dotyczące rozproszonej sieci lokalnej"
 [7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "scenariusz 1"
-[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "aktywne aktywne ExpressRoute circuits rozwiązanie 1"
-[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png "Scenariusz 2"
-[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "aktywne aktywne ExpressRoute circuits rozwiązanie 2"
+[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "— rozwiązanie do obwody usługi ExpressRoute" w usłudze Active-Active
+[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png— "Scenariusz 2"
+[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "aktywne-aktywne obwody usługi ExpressRoute 2"
 
 <!--Link References-->
 [HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute

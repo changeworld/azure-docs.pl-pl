@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Windows i zarządzanie nią na platformie Azure przy użyciu języka Python | Microsoft Docs
+title: Tworzenie maszyny wirtualnej z systemem Windows i zarządzanie nią na platformie Azure przy użyciu języka Python
 description: Dowiedz się, jak za pomocą języka Python utworzyć maszynę wirtualną z systemem Windows i zarządzać nią na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102482"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065597"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure przy użyciu języka Python
 
@@ -29,7 +29,7 @@ ms.locfileid: "70102482"
 > * Tworzenie projektu programu Visual Studio
 > * Instalowanie pakietów
 > * Utwórz poświadczenia
-> * Utwórz zasoby
+> * Tworzenie zasobów
 > * Wykonywanie zadań zarządzania
 > * Usuwanie zasobów
 > * Uruchamianie aplikacji
@@ -40,7 +40,7 @@ Wykonanie tych kroków trwa około 20 minut.
 
 1. Jeśli jeszcze tego nie zrobiono, zainstaluj [program Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz pozycję Programowanie w języku **Python** na stronie obciążenia, a następnie kliknij przycisk **Zainstaluj**. Podsumowanie zawiera automatycznie wybrane dla Ciebie środowisko **Python 3 64-bit (3.6.0)** . Jeśli masz już zainstalowany program Visual Studio, możesz dodać obciążenie języka Python za pomocą programu Visual Studio.
 2. Po zainstalowaniu i uruchomieniu programu Visual Studio kliknij pozycję **plik** > **Nowy** > **projekt**.
-3. Kliknij kolejno pozycje **Szablony** > **Python** > **aplikacja**Python, wprowadź *myPythonProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
+3. Kliknij pozycję **szablony** > języku **Python** > **aplikacji języka Python**, wprowadź *myPythonProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
 
 ## <a name="install-packages"></a>Instalowanie pakietów
 
@@ -102,7 +102,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz [nazwę główną usługi 
     credentials = get_credentials()
     ```
 
-## <a name="create-resources"></a>Utwórz zasoby
+## <a name="create-resources"></a>Tworzenie zasobów
  
 ### <a name="initialize-management-clients"></a>Inicjowanie klientów zarządzania
 
@@ -439,7 +439,7 @@ Można zatrzymać maszynę wirtualną i zachować wszystkie jej ustawienia, ale 
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Jeśli chcesz cofnąć alokację maszyny wirtualnej, Zmień wywołanie power_off na ten kod:
+    Jeśli chcesz cofnąć alokację maszyny wirtualnej, Zmień wywołanie power_off w tym kodzie:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)

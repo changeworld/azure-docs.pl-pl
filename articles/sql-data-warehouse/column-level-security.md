@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049157"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077101"
 ---
 # <a name="column-level-security"></a>Zabezpieczenia na poziomie kolumny
 Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumn tabeli bazy danych na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy.
-Zaktualizuj do filmu wideo poniżej — ponieważ to wideo zostało ogłoszone, [zabezpieczenia na poziomie wiersza](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) są również dostępne w SQL Data Warehouse. 
+Zaktualizuj do filmu wideo poniżej — ponieważ to wideo zostało ogłoszone, [zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) są również dostępne w SQL Data Warehouse. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Specyfikacja CLS umożliwia implementowanie ograniczeń dostępu do kolumn w celu ochrony poufnych danych. Na przykład w celu zapewnienia, że określeni użytkownicy będą mieli dostęp tylko do niektórych kolumn tabeli odnoszących się do ich działu. Logika ograniczeń dostępu znajduje się w warstwie bazy danych, a nie na danych w innej warstwie aplikacji. Baza danych stosuje ograniczenia dostępu przy każdej próbie dostępu do danych z dowolnej warstwy. To ograniczenie sprawia, że system zabezpieczeń jest bardziej niezawodny i niezawodny poprzez zmniejszenie powierzchni ogólnego systemu zabezpieczeń. Ponadto CLS eliminuje również potrzebę wprowadzenia widoków do filtrowania kolumn w celu nakładania ograniczeń dostępu dla użytkowników.

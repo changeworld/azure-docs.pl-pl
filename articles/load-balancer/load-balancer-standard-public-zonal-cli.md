@@ -1,5 +1,5 @@
 ---
-title: Usługa Load Balancer w warstwie Standardowa ze strefą frontonu — interfejs wiersza polecenia platformy Azure
+title: Usługa Load Balancer w warstwie Standardowa z usługą frontonu publicznego adresu IP — interfejs wiersza polecenia platformy Azure
 titleSuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny usługa Load Balancer w warstwie Standardowa ze strefą frontonu publicznego adresu IP przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: b9c3a88df6801566bc927cfc18fda0adfa05a5ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048339"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076027"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu interfejsu wiersza polecenia platformy Azure
+#  <a name="create-a-standard-load-balancer-with-zonal-public-ip-address-frontend-using-azure-cli"></a>Tworzenie usługa Load Balancer w warstwie Standardowa z usługą frontonu publicznego adresu IP przy użyciu interfejsu wiersza polecenia platformy Azure
 
 W tym artykule opisano tworzenie publicznej [Usługa Load Balancer w warstwie Standardowa](https://aka.ms/azureloadbalancerstandard) z strefą frontonu przy użyciu publicznego adresu IP. W tym scenariuszu wybierzesz określoną strefę dla wystąpień frontonu i zaplecza, aby wyrównać zasoby i ścieżkę danych w określonej strefie.
 

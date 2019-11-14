@@ -7,14 +7,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.author: dacurwin
-ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d646cd40312765b11c711f4c63c0943c9e8555
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954874"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074338"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Przenoszenie długoterminowego magazynu z taśmy do chmury platformy Azure
+
 Klienci Azure Backup i System Center Data Protection Manager mogą:
 
 * Utwórz kopię zapasową danych w harmonogramach, które najlepiej odpowiadają potrzebom organizacji.
@@ -24,6 +25,7 @@ Klienci Azure Backup i System Center Data Protection Manager mogą:
 W tym artykule wyjaśniono, jak klienci mogą włączyć zasady tworzenia kopii zapasowych i przechowywania danych. Klienci, którzy wykorzystują taśmy do rozwiązywania długoterminowych potrzeb związanych z przechowywaniem, mają teraz zaawansowaną i wydajną alternatywę w zakresie dostępności tej funkcji. Ta funkcja jest włączona w najnowszej wersji Azure Backup (która jest dostępna w [tym miejscu](https://aka.ms/azurebackup_agent)). Przed rozpoczęciem korzystania z programu DPM z usługą Azure Backup klienci programu System Center DPM muszą zaktualizować program do wersji co najmniej programu DPM 2012 R2 UR5.
 
 ## <a name="what-is-the-backup-schedule"></a>Co to jest harmonogram tworzenia kopii zapasowych?
+
 Harmonogram tworzenia kopii zapasowych wskazuje częstotliwość operacji tworzenia kopii zapasowej. Na przykład ustawienia na poniższym ekranie wskazują, że kopie zapasowe są wykonywane codziennie o godzinie 18:00 i północy.
 
 ![Dzienny harmonogram](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
@@ -33,6 +35,7 @@ Klienci mogą również zaplanować cotygodniowe wykonywanie kopii zapasowych. N
 ![Harmonogram tygodniowy](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
 ## <a name="what-is-the-retention-policy"></a>Co to są zasady przechowywania?
+
 Zasady przechowywania określają czas przechowywania kopii zapasowej. Zamiast określania "zasad płaskich" dla wszystkich punktów kopii zapasowych, klienci mogą określić różne zasady przechowywania na podstawie czasu wykonywania kopii zapasowej. Na przykład punkt kopii zapasowej dziennie, który służy jako punkt odzyskiwania, jest zachowywany przez 90 dni. Punkt kopii zapasowej wykonany na końcu każdego kwartału na potrzeby inspekcji jest zachowywany przez dłuższy czas.
 
 ![Zasady przechowywania](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
@@ -40,12 +43,13 @@ Zasady przechowywania określają czas przechowywania kopii zapasowej. Zamiast o
 Łączna liczba "punktów przechowywania" określonych w tych zasadach to 90 (dzienne punkty) + 40 (jeden kwartał przez 10 lat) = 130.
 
 ## <a name="example--putting-both-together"></a>Przykład — umieszczenie obu jednocześnie
+
 ![Przykładowy ekran](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Zasady dziennego przechowywania**: Kopie zapasowe wykonywane codziennie są przechowywane przez siedem dni.
-2. **Zasady przechowywania tygodniowego**: Kopie zapasowe wykonywane codziennie o północy i 18:00 soboty są zachowywane przez cztery tygodnie
-3. **Zasady przechowywania miesięcznie**: Kopie zapasowe wykonane o północy i 18:00 w ostatniej sobotę każdego miesiąca są zachowywane przez 12 miesięcy
-4. **Zasady przechowywania rocznego**: Kopie zapasowe wykonane o północy w ostatniej sobotę każdej marca są zachowywane przez 10 lat
+1. **Dzienne zasady przechowywania**: kopie zapasowe wykonywane codziennie są przechowywane przez siedem dni.
+2. **Zasady przechowywania tygodniowego**: kopie zapasowe wykonywane codziennie o północy i 18:00 soboty są zachowywane przez cztery tygodnie
+3. **Zasady przechowywania miesięcznie**: kopie zapasowe wykonane o północy i 18:00 w ostatniej sobotę każdego miesiąca są zachowywane przez 12 miesięcy.
+4. **Zasady przechowywania rocznego**: kopie zapasowe wykonane o północy w ostatniej sobotę każdej marca są zachowywane przez 10 lat
 
 Całkowita liczba "punktów przechowywania" (punkty, z których klient może przywrócić dane) na powyższym diagramie jest obliczana w następujący sposób:
 
@@ -61,11 +65,13 @@ Całkowita liczba "punktów przechowywania" (punkty, z których klient może prz
 >
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
+
 Klikając przycisk **Modyfikuj** na poprzednim ekranie, klienci mają większą elastyczność w określaniu harmonogramów przechowywania.
 
 ![Modyfikuj](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Następne kroki
+
 Aby uzyskać więcej informacji na temat Azure Backup, zobacz:
 
 * [Wprowadzenie do usługi Azure Backup](backup-introduction-to-azure-backup.md)

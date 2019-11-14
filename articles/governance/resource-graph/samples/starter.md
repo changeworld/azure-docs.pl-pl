@@ -3,12 +3,12 @@ title: Przykłady zapytań podstawowych
 description: Przy użyciu usługi Azure Resource Graph uruchom kilka zapytań dla początkujących, obejmujących zliczanie i porządkowanie zasobów lub grupowanie według określonego tagu.
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: f98ef101b53af4f595d31670d2af5aee66170487
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ca7fc2ba3e952f93f85c677eb8a8a7322901c7d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958627"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076111"
 ---
 # <a name="starter-resource-graph-queries"></a>Zapytania usługi Resource Graph dla początkujących
 
@@ -250,7 +250,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ---
 
 > [!NOTE]
-> Pamiętaj, że o ile `=~` zezwala na dopasowanie bez uwzględniania wielkości liter, to użycie właściwości (takich jak **properties.storageProfile.osDisk.osType**) w zapytaniu wymaga prawidłowej wielkości liter. Jeśli właściwość ma nieprawidłową wielkość liter, nadal może zwracać wartość, ale grupowanie lub podsumowanie będą nieprawidłowe.
+> Pamiętaj, że o ile `=~` zezwala na dopasowanie bez uwzględniania wielkości liter, to użycie właściwości (takich jak **properties.storageProfile.osDisk.osType**) w zapytaniu wymaga prawidłowej wielkości liter. Jeśli właściwość jest w nieprawidłowym przypadku, zwracana jest wartość null lub jest niepoprawna, a grupowanie lub podsumowanie będzie nieprawidłowe.
 
 ## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a><a name="show-storage" />pokazać zasoby zawierające magazyn
 

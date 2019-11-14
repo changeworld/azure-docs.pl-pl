@@ -1,18 +1,19 @@
 ---
-title: Wprowadzenie do zapory aplikacji sieci Web platformy Azure w usłudze Azure Application Gateway
+title: Wprowadzenie do zapory aplikacji sieci Web platformy Azure
+titleSuffix: Azure Web Application Firewall
 description: Ten artykuł zawiera omówienie zapory aplikacji sieci Web (WAF) na Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4ba2772ffb89809c2262880385207a12c74882cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607307"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067144"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Zapora aplikacji sieci Web platformy Azure na platformie Azure Application Gateway
 
@@ -198,7 +199,7 @@ Application Gateway WAF udostępnia szczegółowe raporty dotyczące każdego wy
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Cena jednostki SKU zapory aplikacji sieci Web w usłudze Application Gateway
 
-Modele cen są różne dla jednostek SKU WAF_v1 i WAF_v2. Aby dowiedzieć się więcej, zobacz stronę z [cennikiem Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
+Modele cen są różne dla WAF_v1 i WAF_v2 jednostek SKU. Aby dowiedzieć się więcej, zobacz stronę z [cennikiem Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
 
 ## <a name="next-steps"></a>Następne kroki
 

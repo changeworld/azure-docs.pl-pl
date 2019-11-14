@@ -1,21 +1,18 @@
 ---
-title: Przykład — Wymuś dopasowanie do wzorca
-description: Ta przykładowa definicja zasad wymaga, aby zasoby spełniały wzorzec podobne do konwencji nazewnictwa.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
+title: Przykład — wymuszanie zgodności ze wzorcem like
+description: Ta przykładowa definicja zasad wymaga, aby zasoby były zgodne ze wzorcem podobieństwa konwencji nazewnictwa.
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 1bffa76c77fccd1f0ae9e724cf09597a289ca5a6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 34013753c18ad3b84a29b04fead9ea83aeb03d7b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980522"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076307"
 ---
-# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Przykład — Wymuś użycie wzorca do konwencji nazewnictwa
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Przykład — wymuszanie zgodności ze wzorcem podobieństwa konwencji nazewnictwa
 
-Wymagania nazw zasobów spełniają wzorzec podobne do konwencji nazewnictwa. Określ dozwolony wzorzec jako parametr.
+Ta zasada wymaga, aby nazwy zasobów były zgodne ze wzorcem like dla konwencji nazewnictwa. Dozwolony wzorzec like należy podać jako parametr.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,11 +20,11 @@ Wymagania nazw zasobów spełniają wzorzec podobne do konwencji nazewnictwa. Ok
 
 [!code-json[main](../../../../policy-templates/samples/TextPatterns/enforce-like-pattern/azurepolicy.json "enforce like pattern")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
+[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -40,7 +37,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope> -Poli
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +55,7 @@ az policy definition create --name 'enforce-like-pattern' --display-name 'Ensure
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-like-pattern" 
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

@@ -1,5 +1,5 @@
 ---
-title: Procedura obsługi rozszerzenia konfiguracji żądanego stanu platformy Azure | Microsoft Docs
+title: Procedura obsługi rozszerzenia konfiguracji żądanego stanu platformy Azure
 description: Przekazywanie i stosowanie konfiguracji DSC programu PowerShell na maszynie wirtualnej platformy Azure przy użyciu rozszerzenia DSC
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092377"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073783"
 ---
 # <a name="powershell-dsc-extension"></a>Rozszerzenie DSC programu PowerShell
 
@@ -97,34 +97,34 @@ Poniższy kod JSON przedstawia schemat części ustawień rozszerzenia DSC w sza
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład | Typ danych |
+| Nazwa | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| publisher | Microsoft. PowerShell. DSC | string |
-| type | DSC | string |
+| publisher | Microsoft. PowerShell. DSC | ciąg |
+| type | DSC | ciąg |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Wartości właściwości ustawień
 
-| Name | Typ danych | Opis
+| Nazwa | Typ danych | Opis
 | ---- | ---- | ---- |
-| settings.wmfVersion | string | Określa wersję platformy zarządzania systemem Windows, która ma zostać zainstalowana na maszynie wirtualnej. Ustawienie dla tej właściwości wartości "Najnowsza" spowoduje zainstalowanie najbardziej zaktualizowanej wersji programu WMF. Jedyne bieżące możliwe wartości tej właściwości to "4,0", "5,0" i "Najnowsza". Te możliwe wartości podlegają aktualizacjom. Wartość domyślna to "Najnowsza". |
-| settings.configuration.url | string | Określa lokalizację adresu URL, z którego ma zostać pobrany plik zip konfiguracji DSC. Jeśli podany adres URL wymaga tokenu sygnatury dostępu współdzielonego, należy ustawić właściwość protectedSettings. configurationUrlSasToken na wartość tokenu SAS. Ta właściwość jest wymagana, jeśli są zdefiniowane parametry Settings. Configuration. Script i/lub Settings. Configuration. Function.
-| settings.configuration.script | string | Określa nazwę pliku skryptu, który zawiera definicję konfiguracji DSC. Ten skrypt musi znajdować się w folderze głównym pliku zip pobranego z adresu URL określonego przez właściwość Configuration. URL. Ta właściwość jest wymagana, jeśli są zdefiniowane ustawienia. Configuration. URL i/lub Settings. Configuration. Script.
-| settings.configuration.function | string | Określa nazwę konfiguracji DSC. Konfiguracja musi być zawarta w skrypcie zdefiniowanym przez Configuration. Script. Ta właściwość jest wymagana, jeśli są zdefiniowane ustawienia. Configuration. URL i/lub Settings. Configuration. Function.
+| settings.wmfVersion | ciąg | Określa wersję platformy zarządzania systemem Windows, która ma zostać zainstalowana na maszynie wirtualnej. Ustawienie dla tej właściwości wartości "Najnowsza" spowoduje zainstalowanie najbardziej zaktualizowanej wersji programu WMF. Jedyne bieżące możliwe wartości tej właściwości to "4,0", "5,0" i "Najnowsza". Te możliwe wartości podlegają aktualizacjom. Wartość domyślna to "Najnowsza". |
+| settings.configuration.url | ciąg | Określa lokalizację adresu URL, z którego ma zostać pobrany plik zip konfiguracji DSC. Jeśli podany adres URL wymaga tokenu sygnatury dostępu współdzielonego, należy ustawić właściwość protectedSettings. configurationUrlSasToken na wartość tokenu SAS. Ta właściwość jest wymagana, jeśli są zdefiniowane parametry Settings. Configuration. Script i/lub Settings. Configuration. Function.
+| settings.configuration.script | ciąg | Określa nazwę pliku skryptu, który zawiera definicję konfiguracji DSC. Ten skrypt musi znajdować się w folderze głównym pliku zip pobranego z adresu URL określonego przez właściwość Configuration. URL. Ta właściwość jest wymagana, jeśli są zdefiniowane ustawienia. Configuration. URL i/lub Settings. Configuration. Script.
+| settings.configuration.function | ciąg | Określa nazwę konfiguracji DSC. Konfiguracja musi być zawarta w skrypcie zdefiniowanym przez Configuration. Script. Ta właściwość jest wymagana, jeśli są zdefiniowane ustawienia. Configuration. URL i/lub Settings. Configuration. Function.
 | settings.configurationArguments | Collection | Definiuje wszystkie parametry, które chcesz przekazać do konfiguracji DSC. Ta właściwość nie zostanie zaszyfrowana.
-| settings.configurationData.url | string | Określa adres URL, z którego należy pobrać plik danych konfiguracji (pds1), który ma być używany jako dane wejściowe dla konfiguracji DSC. Jeśli podany adres URL wymaga tokenu sygnatury dostępu współdzielonego, należy ustawić właściwość protectedSettings. configurationDataUrlSasToken na wartość tokenu SAS.
-| settings.privacy.dataEnabled | string | Włącza lub wyłącza zbieranie danych telemetrycznych. Jedyne możliwe wartości tej właściwości to "Enable", "Disable", "lub $null. Pozostawienie tej właściwości pustej lub wartości null spowoduje włączenie telemetrii
-| settings.advancedOptions.forcePullAndApply | Bool | To ustawienie ma na celu zwiększenie komfortu pracy z rozszerzeniem w celu rejestrowania węzłów za pomocą Azure Automation DSC.  Jeśli wartość to `$true`, rozszerzenie będzie oczekiwać na pierwsze uruchomienie konfiguracji pobranej z usługi przed zwróceniem powodzenia/niepowodzenia.  Jeśli wartość jest ustawiona na $false, stan zwrócony przez rozszerzenie będzie odnosić się tylko do tego, czy węzeł został zarejestrowany z konfiguracją stanu Azure Automation pomyślnie, a konfiguracja węzła nie zostanie uruchomiona podczas rejestracji.
+| settings.configurationData.url | ciąg | Określa adres URL, z którego należy pobrać plik danych konfiguracji (pds1), który ma być używany jako dane wejściowe dla konfiguracji DSC. Jeśli podany adres URL wymaga tokenu sygnatury dostępu współdzielonego, należy ustawić właściwość protectedSettings. configurationDataUrlSasToken na wartość tokenu SAS.
+| settings.privacy.dataEnabled | ciąg | Włącza lub wyłącza zbieranie danych telemetrycznych. Jedyne możliwe wartości tej właściwości to "Enable", "Disable", "lub $null. Pozostawienie tej właściwości pustej lub wartości null spowoduje włączenie telemetrii
+| settings.advancedOptions.forcePullAndApply | Bool | To ustawienie ma na celu zwiększenie komfortu pracy z rozszerzeniem w celu rejestrowania węzłów za pomocą Azure Automation DSC.  Jeśli wartość jest `$true`, rozszerzenie będzie oczekiwać na pierwsze uruchomienie konfiguracji pobranej z usługi przed zwróceniem powodzenia/niepowodzenia.  Jeśli wartość jest ustawiona na $false, stan zwrócony przez rozszerzenie będzie odnosić się tylko do tego, czy węzeł został zarejestrowany z konfiguracją stanu Azure Automation pomyślnie, a konfiguracja węzła nie zostanie uruchomiona podczas rejestracji.
 | settings.advancedOptions.downloadMappings | Collection | Definiuje alternatywne lokalizacje do pobierania zależności, takich jak WMF i .NET.
 
 ### <a name="protected-settings-property-values"></a>Wartości właściwości ustawień chronionych
 
-| Name | Typ danych | Opis
+| Nazwa | Typ danych | Opis
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | string | Definiuje wszystkie parametry, które chcesz przekazać do konfiguracji DSC. Ta właściwość zostanie zaszyfrowana. |
-| protectedSettings.configurationUrlSasToken | string | Określa token sygnatury dostępu współdzielonego, aby uzyskać dostęp do adresu URL zdefiniowanego przez wartość Configuration. URL. Ta właściwość zostanie zaszyfrowana. |
-| protectedSettings.configurationDataUrlSasToken | string | Określa token sygnatury dostępu współdzielonego, aby uzyskać dostęp do adresu URL zdefiniowanego przez configurationData. URL. Ta właściwość zostanie zaszyfrowana. |
+| protectedSettings.configurationArguments | ciąg | Definiuje wszystkie parametry, które chcesz przekazać do konfiguracji DSC. Ta właściwość zostanie zaszyfrowana. |
+| protectedSettings.configurationUrlSasToken | ciąg | Określa token sygnatury dostępu współdzielonego, aby uzyskać dostęp do adresu URL zdefiniowanego przez wartość Configuration. URL. Ta właściwość zostanie zaszyfrowana. |
+| protectedSettings.configurationDataUrlSasToken | ciąg | Określa token sygnatury dostępu współdzielonego, aby uzyskać dostęp do adresu URL zdefiniowanego przez configurationData. URL. Ta właściwość zostanie zaszyfrowana. |
 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu

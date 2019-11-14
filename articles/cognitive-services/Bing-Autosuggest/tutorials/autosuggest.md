@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Uzyskiwanie sugestii automatycznych przy użyciu interfejs API automatycznego sugerowania Bing'
+title: 'Samouczek: Uzyskiwanie automatycznych sugestii wyników przy użyciu interfejs API automatycznego sugerowania Bing'
 titleSuffix: Azure Cognitive Services
-description: Jak korzystać z automatycznego sugerowania Bing.
+description: W tym samouczku utworzysz stronę sieci Web, która umożliwia użytkownikom wysyłanie zapytań do interfejs API automatycznego sugerowania Bing i wyświetlanie wyników zapytania.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: d208187b7ba61fc0d217cef05a1bda559ca0c42b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996787"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072836"
 ---
-# <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Samouczek: Uzyskiwanie sugestii dotyczących wyszukiwania na stronie sieci Web
+# <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Samouczek: uzyskiwanie sugestii wyszukiwania na stronie sieci Web
 
 Podczas pracy z tym samouczkiem utworzysz stronę internetową umożliwiającą użytkownikom wysyłanie zapytań do interfejsu API automatycznego sugerowania Bing.
 

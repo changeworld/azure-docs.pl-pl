@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie zaplanowanych zdarzeń dla maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Monitorowanie zaplanowanych zdarzeń dla maszyn wirtualnych z systemem Windows na platformie Azure
 description: Dowiedz się, jak monitorować maszyny wirtualne platformy Azure pod kątem zaplanowanych zdarzeń.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376193"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073310"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorowania
 
@@ -61,7 +61,7 @@ New-AzVm `
 
 Pobierz plik zip instalacji projektu z usługi [GitHub](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Połącz się z usługą **myCollectorVM** i skopiuj plik zip na maszynę wirtualną i Wyodrębnij wszystkie pliki. Na maszynie wirtualnej Otwórz wiersz polecenia programu PowerShell. Przenieś monit do folderu zawierającego `SchService.ps1`, na przykład: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>` i skonfiguruj usługę.
+Połącz się z usługą **myCollectorVM** i skopiuj plik zip na maszynę wirtualną i Wyodrębnij wszystkie pliki. Na maszynie wirtualnej Otwórz wiersz polecenia programu PowerShell. Przenieś monit do folderu zawierającego `SchService.ps1`, na przykład: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, i skonfiguruj usługę.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -159,7 +159,7 @@ Po wypchnięciu zdarzeń do Log Analytics można uruchomić następujące [zapyt
 
 1. Wybierz pozycję **Nowa reguła alertu**. 
 1. Na stronie **Tworzenie reguły** pozostaw `collectorworkspace` jako **zasób**.
-1. W obszarze **warunek**wybierz wpis *za każdym razem, gdy wyszukiwanie w dzienniku klienta jest <login undefined>* . Zostanie otwarta strona **Konfigurowanie logiki sygnału** .
+1. W obszarze **warunek**wybierz wpis *za każdym razem, gdy zostanie <login undefined>wyszukiwanie w dzienniku klienta* . Zostanie otwarta strona **Konfigurowanie logiki sygnału** .
 1. W obszarze **wartość progowa**wprowadź *0* , a następnie wybierz pozycję **gotowe**.
 1. W obszarze **Akcje**wybierz pozycję **Utwórz grupę akcji**. Zostanie otwarta strona **Dodaj grupę akcji** .
 1. W polu **Nazwa grupy akcji**wpisz *Akcja*.

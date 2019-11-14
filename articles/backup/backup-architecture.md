@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888500"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074346"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -67,7 +67,7 @@ W poniższej tabeli objaśniono różne typy kopii zapasowych i używane:
 
 **Typ kopii zapasowej** | **Szczegóły** | **Użycie**
 --- | --- | ---
-**Szczegółowe** | Pełna kopia zapasowa zawiera całe źródło danych. Zwiększa przepustowość sieci niż różnicowe lub przyrostowe kopie zapasowe. | Używany do początkowej kopii zapasowej.
+**Full** | Pełna kopia zapasowa zawiera całe źródło danych. Zwiększa przepustowość sieci niż różnicowe lub przyrostowe kopie zapasowe. | Używany do początkowej kopii zapasowej.
 **Różnicy** |  Różnicowa kopia zapasowa przechowuje bloki, które uległy zmianie od początkowej pełnej kopii zapasowej. Program używa mniejszej ilości sieci i magazynu i nie zachowuje nadmiarowych kopii niezmienionych danych.<br/><br/> Niewydajne, ponieważ bloki danych, które nie są zmieniane między nowszymi kopiami zapasowymi, są transferowane i przechowywane. | Nieużywane przez Azure Backup.
 **Interlini** | Przyrostowa kopia zapasowa przechowuje tylko te bloki danych, które uległy zmianie od czasu utworzenia poprzedniej kopii zapasowej. Wysoka wydajność magazynu i sieci. <br/><br/> Dzięki przyrostowym kopiom zapasowym nie trzeba uzupełniać z pełnymi kopiami zapasowymi. | Używane przez program DPM/serwera usługi MAB do tworzenia kopii zapasowych na dyskach i używane we wszystkich kopiach zapasowych na platformie Azure. Nieużywany do SQL Server kopii zapasowej.
 
@@ -98,10 +98,10 @@ Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typó
 
 **Funkcja** | **Lokalne maszyny z systemem Windows Server (bezpośrednie)** | **Maszyny wirtualne platformy Azure** | **Maszyny lub aplikacje z programem DPM/serwera usługi MAB**
 --- | --- | --- | ---
-Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Tak][green] | ![Tak][green]
-Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Tak][green]
-Kompresuj dane wysyłane do kopii zapasowej | ![Tak][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Tak][green]
-Uruchom przyrostową kopię zapasową |![Tak][green] |![Tak][green] |![Tak][green]
+Tworzenie kopii zapasowej w magazynie | ![Yes][green] | ![Yes][green] | ![Yes][green]
+Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Yes][green]
+Kompresuj dane wysyłane do kopii zapasowej | ![Yes][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Yes][green]
+Uruchom przyrostową kopię zapasową |![Yes][green] |![Yes][green] |![Yes][green]
 Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> W przypadku serwerów DPM/serwera usługi MAB wdrożonych tylko lokalnie.
 
 ![Klucz tabeli](./media/backup-architecture/table-key.png)
@@ -134,7 +134,7 @@ Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń s
     - Agent MARS używa tylko operacji zapisu systemu Windows, aby przechwycić migawkę.
     - Ponieważ Agent nie używa żadnych składników zapisywania usługi VSS dla aplikacji, nie przechwytuje migawek spójnych na poziomie aplikacji.
 1. Po przeprowadzeniu migawki przy użyciu usługi VSS Agent MARS tworzy wirtualny dysk twardy (VHD) w folderze pamięci podręcznej określonym podczas konfigurowania kopii zapasowej. Agent przechowuje również sumy kontrolne dla każdego bloku danych.
-1. Przyrostowe kopie zapasowe są uruchamiane zgodnie z określonym harmonogramem, chyba że zostanie uruchomiona kopia zapasowa ad hoc.
+1. Przyrostowe kopie zapasowe są uruchamiane zgodnie z określonym harmonogramem, chyba że zostanie uruchomiona kopia zapasowa na żądanie.
 1. W przyrostowych kopiach zapasowych zostały zidentyfikowane zmienione pliki i zostanie utworzony nowy wirtualny dysk twardy. Wirtualny dysk twardy jest kompresowany i szyfrowany, a następnie wysyłany do magazynu.
 1. Po zakończeniu przyrostowej kopii zapasowej nowy wirtualny dysk twardy zostanie scalony z dyskiem VHD utworzonym po replikacji początkowej. Ten scalony wirtualny dysk twardy zawiera najnowszy stan, który będzie używany do porównywania ciągłej kopii zapasowej.
 
@@ -148,7 +148,7 @@ Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń s
     - Za pomocą programu DPM/serwera usługi MAB można chronić woluminy, udziały, pliki i foldery kopii zapasowej. Istnieje również możliwość ochrony stanu systemu maszyny (od zera) i można chronić konkretne aplikacje za pomocą ustawień kopii zapasowych obsługujących aplikacje.
 1. Po skonfigurowaniu ochrony dla komputera lub aplikacji w programie DPM/serwera usługi MAB należy wybrać opcję tworzenia kopii zapasowej na dysku lokalnym programu serwera usługi MAB/DPM do przechowywania krótkoterminowego oraz do platformy Azure w celu ochrony w trybie online. Należy również określić, kiedy ma być uruchomione tworzenie kopii zapasowej lokalnego magazynu programu DPM/serwera usługi MAB i kiedy ma zostać uruchomiona kopia zapasowa online na platformie Azure.
 1. Kopia zapasowa dysku chronionego obciążenia jest tworzona na lokalnym dysku serwera usługi MAB/DPM zgodnie z określonym harmonogramem.
-4. Kopie zapasowe dysków DPM/serwera usługi MAB są tworzone w magazynie przez agenta MARS uruchomionego na serwerze DPM/serwera usługi MAB.
+1. Kopie zapasowe dysków DPM/serwera usługi MAB są tworzone w magazynie przez agenta MARS uruchomionego na serwerze DPM/serwera usługi MAB.
 
 ![Tworzenie kopii zapasowych maszyn i obciążeń chronionych przez program DPM lub serwera usługi MAB](./media/backup-architecture/architecture-dpm-mabs.png)
 

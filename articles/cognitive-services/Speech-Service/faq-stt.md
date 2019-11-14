@@ -1,7 +1,7 @@
 ---
 title: Często zadawane pytania dotyczące usługi zamiany mowy na tekst na platformie Azure
 titleSuffix: Azure Cognitive Services
-description: Uzyskaj odpowiedzi na najpopularniejsze pytania dotyczące usługi zamiany mowy na tekst.
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi zamiany mowy na tekst.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f03a937aff17c6ee622f3b5ab6045f912b51bbf2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010658"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072576"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst często zadawanych pytań
 
@@ -25,7 +25,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tym często zadawane pytani
 
 **P: Jaka jest różnica między modelem linii bazowej i niestandardową zamianą mowy na model tekstu?**
 
-Odp **.: model**linii bazowej został przeszkolony przy użyciu danych należących do firmy Microsoft i jest już wdrożony w chmurze.  Możesz użyć niestandardowego modelu, aby dostosować model do lepszego dopasowania do określonego środowiska, które ma określony szum lub język otoczenia. Piętra fabryki, samochody i zakłócenia! wymagają dostosowania modelu akustycznego. Tematy, takie jak biologia, fizyka, Radiologia, nazwy produktów i niestandardowe akronimy, wymagają przystosowanego modelu języka.
+Odp **.: model**linii bazowej został przeszkolony przy użyciu danych należących do firmy Microsoft i jest już wdrożony w chmurze. Możesz użyć niestandardowego modelu, aby dostosować model do lepszego dopasowania do określonego środowiska, które ma określony szum lub język otoczenia. Piętra fabryki, samochody i zakłócenia! wymagają dostosowania modelu akustycznego. Tematy, takie jak biologia, fizyka, Radiologia, nazwy produktów i niestandardowe akronimy, wymagają przystosowanego modelu języka.
 
 **P: co mogę zrobić, jeśli chcę użyć modelu linii bazowej?**
 
@@ -123,13 +123,13 @@ Odp.: **w**przypadku przesłania każdego kanału osobno (każdego kanału w oso
 
 Odp **.: bieżący**limit zestawu danych wynosi 2 GB. Limit jest spowodowany przez ograniczenie rozmiaru pliku na potrzeby przekazywania HTTP.
 
-**P: Czy mogę zip moje pliki tekstowe, aby można było przekazać większy plik tekstowy?** 
+**P: Czy mogę zip moje pliki tekstowe, aby można było przekazać większy plik tekstowy?**
 
 Odp **.: nie**. Obecnie dozwolone są tylko nieskompresowane pliki tekstowe.
 
 **P: Raport dotyczący danych wskazuje, że wyrażenia długości nie powiodło się. Jaki jest problem?**
 
-Odp **.:** niepowodzenie przekazania 100 procent wyrażenia długości w pliku nie jest problemem. Jeśli większość wyrażenia długości w zestawie danych akustycznych lub w języku (na przykład więcej niż 95 procent) została pomyślnie zaimportowana, zestaw danych może być użyteczny. Zaleca się jednak, aby poznać przyczynę niepowodzenia wyrażenia długości i rozwiązać problemy. Najczęstsze problemy, takie jak błędy formatowania, są łatwe do naprawienia. 
+Odp **.:** niepowodzenie przekazania 100 procent wyrażenia długości w pliku nie jest problemem. Jeśli większość wyrażenia długości w zestawie danych akustycznych lub w języku (na przykład więcej niż 95 procent) została pomyślnie zaimportowana, zestaw danych może być użyteczny. Zaleca się jednak, aby poznać przyczynę niepowodzenia wyrażenia długości i rozwiązać problemy. Najczęstsze problemy, takie jak błędy formatowania, są łatwe do naprawienia.
 
 ## <a name="creating-an-acoustic-model"></a>Tworzenie modelu akustycznego
 
@@ -139,11 +139,11 @@ Odp **.: zalecamy**rozpoczęcie od 30 minut i godzinę akustyczną danych.
 
 **P: jakie dane należy zebrać?**
 
-Odp **.: Zbierz**dane, które są blisko scenariusza aplikacji i przypadku użycia, jak to możliwe. Zbieranie danych powinno być zgodne z aplikacją docelową i użytkownikami w odniesieniu do urządzeń lub urządzeń, środowisk i typów głośników. Ogólnie rzecz biorąc, należy zbierać dane z szerokiego zakresu głośników, jak to możliwe. 
+Odp **.: Zbierz**dane, które są blisko scenariusza aplikacji i przypadku użycia, jak to możliwe. Zbieranie danych powinno być zgodne z aplikacją docelową i użytkownikami w odniesieniu do urządzeń lub urządzeń, środowisk i typów głośników. Ogólnie rzecz biorąc, należy zbierać dane z szerokiego zakresu głośników, jak to możliwe.
 
 **P: jak zbierać dane akustyczne?**
 
-Odp.: możesz utworzyć autonomiczną **aplikację do zbierania**danych lub użyć oprogramowania do nagrywania dźwięku na półkę. Możesz również utworzyć wersję aplikacji, która rejestruje dane audio, a następnie używa tych danych. 
+Odp.: możesz utworzyć autonomiczną **aplikację do zbierania**danych lub użyć oprogramowania do nagrywania dźwięku na półkę. Możesz również utworzyć wersję aplikacji, która rejestruje dane audio, a następnie używa tych danych.
 
 **P: Czy muszę transkrypcja dane adaptacyjne?**
 
@@ -167,7 +167,7 @@ Odp **.: funkcja**raportowanie błędów systemu Windows to metryka oceny dla fu
 
 Odp **.: wyniki**zawierają porównanie między modelem linii bazowej i dostosowanym modelem. Należy dążyć do naniesienia poziomu modelu linii bazowej, aby wartościowa dostosowania.
 
-**P: Jak mogę ustalić wartości błędów dla modelu podstawowego, aby zobaczyć, czy nastąpiła poprawa?** 
+**P: Jak mogę ustalić wartości błędów dla modelu podstawowego, aby zobaczyć, czy nastąpiła poprawa?**
 
 Odp **.: wyniki**testu w trybie offline pokazują dokładność linii bazowej modelu niestandardowego i ulepszenie względem linii bazowej.
 
@@ -179,21 +179,21 @@ Odp **.: to**zależy od tego, jak różne słownictwo i frazy używane w aplikac
 
 **P: Czy mogę po prostu przekazać listę słów?**
 
-Odp **.:** przekazanie listy wyrazów spowoduje dodanie wyrazów do słownika, ale nie uczy się, w jaki sposób wyrazy są zwykle używane. Dostarczając pełne lub częściowe wyrażenia długości (zdania lub frazy, które użytkownicy mogą powiedzieć), model języka może poznać nowe wyrazy i sposób ich użycia. Niestandardowy model języka jest dobry nie tylko w przypadku dodawania nowych słów do systemu, ale również do dostosowywania prawdopodobieństwa znanych wyrazów dla aplikacji. Zapewnienie pełnej wyrażenia długości pomaga lepiej poznać system. 
+Odp **.:** przekazanie listy wyrazów spowoduje dodanie wyrazów do słownika, ale nie uczy się, w jaki sposób wyrazy są zwykle używane. Dostarczając pełne lub częściowe wyrażenia długości (zdania lub frazy, które użytkownicy mogą powiedzieć), model języka może poznać nowe wyrazy i sposób ich użycia. Niestandardowy model języka jest dobry nie tylko w przypadku dodawania nowych słów do systemu, ale również do dostosowywania prawdopodobieństwa znanych wyrazów dla aplikacji. Zapewnienie pełnej wyrażenia długości pomaga lepiej poznać system.
 
 ## <a name="tenant-model-custom-speech-with-office-365-data"></a>Model dzierżawców (Custom Speech z danymi pakietu Office 365)
 
 **P: jakie informacje znajdują się w modelu dzierżawców i jak zostało utworzone?**
 
-Odp **.:** Model dzierżawy jest tworzony przy użyciu [publicznych grup](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) wiadomości e-mail i dokumentów, które mogą być widoczne dla wszystkich użytkowników w organizacji. 
- 
+Odp **.:** Model dzierżawy jest tworzony przy użyciu [publicznych grup](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) wiadomości e-mail i dokumentów, które mogą być widoczne dla wszystkich użytkowników w organizacji.
+
 **P: jakie środowiska mowy zostały ulepszone przez model dzierżawców?**
 
-Odp **.:** Gdy model dzierżawy jest włączony, tworzony i publikowany, jest używany do ulepszania rozpoznawania dla dowolnych aplikacji przedsiębiorstwa utworzonych przy użyciu usługi Speech. spowoduje to również przekazanie tokenu usługi AAD użytkownika wskazującego na członkostwo w przedsiębiorstwie.
+Odp **.:** Gdy model dzierżawy jest włączony, tworzony i publikowany, jest używany do ulepszania rozpoznawania dla dowolnych aplikacji przedsiębiorstwa utworzonych przy użyciu usługi Speech. to również przekazanie tokenu usługi AAD użytkownika wskazującego na członkostwo w przedsiębiorstwie.
 
 Funkcje mowy wbudowane w pakiet Office 365, takie jak dyktowanie i podpisy programu PowerPoint, nie ulegają zmianie podczas tworzenia modelu dzierżawców dla aplikacji usługi Speech.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Rozwiązywanie problemów](troubleshooting.md)
-* [Informacje o wersji](releasenotes.md)
+- [Rozwiązywanie problemów](troubleshooting.md)
+- [Informacje o wersji](releasenotes.md)

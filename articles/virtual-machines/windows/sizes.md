@@ -1,5 +1,5 @@
 ---
-title: Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure
 description: Wyświetla różne rozmiary dostępne dla maszyn wirtualnych z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 0553255cdcdc37aad4e996e2c6cb22d17e336ef3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3a091b22e09c581f80f5de98ee06335faa596e56
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721512"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066076"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure
 

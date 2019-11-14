@@ -1,21 +1,18 @@
 ---
-title: Przykład — tworzenie maszyny wirtualnej przy użyciu dysku zarządzanego
-description: Ta przykładowa definicja zasad wymaga, aby maszyny wirtualne korzystały z dysków zarządzanych.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
+title: Przykład — tworzenie maszyny wirtualnej używającej dysku zarządzanego
+description: Te przykładowe definicje zasad wymagają używania przez maszyny wirtualne dysków zarządzanych.
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 8aada6149fc0c4eacd3c304db15657e6ffa164c1
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 0ad21e255e771cd94c6f2eb794e20dc9b67f49d5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981283"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069783"
 ---
-# <a name="sample---create-vm-using-managed-disk"></a>Przykład — tworzenie maszyny wirtualnej przy użyciu dysku zarządzanego
+# <a name="sample---create-vm-using-managed-disk"></a>Przykład — tworzenie maszyny wirtualnej używającej dysku zarządzanego
 
-Wymaga, aby maszyny wirtualne korzystały z dysków zarządzanych.
+Wymaga używania dysków zarządzanych przez maszyny wirtualne.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,11 +20,11 @@ Wymaga, aby maszyny wirtualne korzystały z dysków zarządzanych.
 
 [!code-json[main](../../../../policy-templates/samples/compute/use-managed-disk-vm/azurepolicy.json "Create VM using Managed Disk")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
+[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -40,7 +37,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -Pol
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +55,7 @@ az policy definition create --name 'use-managed-disk-vm' --display-name 'Create 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "use-managed-disk-vm"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) za pomocą klawisza F5 | Microsoft Docs'
+title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu klawisza F5 | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i F5.
 services: active-directory
 documentationCenter: na
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1411d64a6adc6f340b3ad49ca38ca30136bdef47
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104553"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074755"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu klawisza F5
 
@@ -75,7 +75,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj F5-SSO](#configure-f5-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz użytkownika testowego F5](#create-f5-test-user)** , aby dysponować odpowiednikiem B. Simon w F5, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -113,12 +113,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -128,7 +128,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **F5**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -188,9 +188,9 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
     >[!Note]
     >Konieczne będzie utworzenie i określenie konta delegowania protokołu Kerberos. Odwołaj się do KCD sekcji (zobacz dodatek dla odwołań do zmiennych)
 
-    • Źródło nazwy użytkownika`session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    • Źródłowa nazwa użytkownika `session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    • Źródło obszaru użytkownika`session.logon.last.domain`
+    • Źródło obszaru użytkownika `session.logon.last.domain`
 
     ![Konfiguracja F5 (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure11.png)
 
@@ -246,17 +246,24 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 >[!Note]
 >Więcej szczegółów można znaleźć [tutaj](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf)
 
-* **Krok 1. Utwórz konto delegowania**
+* **Krok 1. Tworzenie konta delegowania**
 
-    * Przykładowa nazwa domeny: niedemonstracyjna. nazwa konta sam na żywo: Big-ipuser
+    * Przykład
+    ```
+    Domain Name : superdemo.live
+    Sam Account Name : big-ipuser
 
-    * New-ADUser-Name "konto delegowania APM"- host/big-ipuser.superdemo.live@superdemo.live userPrincipalName-sAMAccountName "Big-ipuser"-PasswordNeverExpires $true-Enabled $true-AccountPassword (read-host-assecurestring "Password! 1234")
+    New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    ```
 
 * **Krok 2. Ustawianie nazwy SPN (na koncie delegowania APM)**
 
-    *  Przykład Setspn — Host/Big-ipuser. predemonstracja. Live Big-ipuser
+    *  Przykład
+    ```
+    setspn –A host/big-ipuser.superdemo.live big-ipuser
+    ```
 
-* **Krok 3. Delegowanie nazw SPN (dla konta App Service)**
+* **Krok 3: delegowanie nazwy SPN (dla konta App Service)**
 
     * Skonfiguruj odpowiednie delegowanie dla konta delegowania F5.
     * W poniższym przykładzie konto delegowania APM jest konfigurowane do KCD for FRP-APP1. predemonstracyjne. Live App.
@@ -276,38 +283,38 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 | | |
 | -- | -- |
-| eb46b6b6. Session. SAML. Last. assertionID | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
-| eb46b6b6. Session. SAML. Last. assertionIssueInstant  | 2019-06-16T19:18:03.054 Z |
+| eb46b6b6. Session. SAML. Last. assertionID | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. assertionIssueInstant  | `<ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/DisplayName | user0 |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/IdentityProvider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/EmailAddress | user0@superdemo.live |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenName | user0 |
-| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/Name | user0@superdemo.live |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.microsoft.com/identity/claims/displayname | user0 |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.microsoft.com/identity/claims/objectidentifier | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | `user0@superdemo.live` |
 | eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
 | eb46b6b6. Session. SAML. Last. odbiorca | `https://kerbapp.superdemo.live` |
 | eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: języka Oasis: names: TC: SAML: 2.0: AC: klasy: hasło |
-| eb46b6b6. Session. SAML. Last. authNInstant | 2019-06-16T19:18:00.318 Z |
-| eb46b6b6. Session. SAML. Last. Identity | user0@superdemo.live |
-| eb46b6b6. Session. SAML. Last. inResponseTo | _b9c67faa63a224d7a63f4f3cbb09f78dc05fab |
-| eb46b6b6. Session. SAML. Last. nameIDValue | user0@superdemo.live |
+| eb46b6b6. Session. SAML. Last. authNInstant | `<ID>` |
+| eb46b6b6. Session. SAML. Last. Identity | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. inResponseTo | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. nameIDValue | `user0@superdemo.live` |
 | eb46b6b6. Session. SAML. Last. nameIdFormat | urn: języka Oasis: names: TC: SAML: 1.1: NameID-format: emailAddress |
 | eb46b6b6. Session. SAML. Last. responseDestination | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
-| eb46b6b6. Session. SAML. Last. responseId | _a1eca95a-6c41-449e-bb53-1477ba106470 |
-| eb46b6b6. Session. SAML. Last. responseIssueInstant | 2019-06-16T19:18:03.070 Z |
+| eb46b6b6. Session. SAML. Last. responseId | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. responseIssueInstant | `<ID>` |
 | eb46b6b6. Session. SAML. Last. responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
 | eb46b6b6. Session. SAML. Last. Result | 1 |
 | eb46b6b6. Session. SAML. Last. samlVersion | 2.0 |
-| eb46b6b6. Session. SAML. Last. sessionIndex | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
+| eb46b6b6. Session. SAML. Last. sessionIndex | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. statusValue | urn: języka Oasis: names: TC: SAML: 2.0: status: sukces |
-| eb46b6b6. Session. SAML. Last. subjectConfirmDataNotOnOrAfter | 2019-06-16T19:23:03.054 Z |
+| eb46b6b6. Session. SAML. Last. subjectConfirmDataNotOnOrAfter | `<ID>` |
 | eb46b6b6. Session. SAML. Last. subjectConfirmDataRecipient | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
 | eb46b6b6. Session. SAML. Last. subjectConfirmMethod | urn: języka Oasis: names: TC: SAML: 2.0: cm: Bearer |
-| eb46b6b6. Session. SAML. Last. validityNotBefore | 2019-06-16T19:13:03.054 Z |
-| eb46b6b6. Session. SAML. Last. validityNotOnOrAfter | 2019-06-16T20:13:03.054 Z |
+| eb46b6b6. Session. SAML. Last. validityNotBefore | `<ID>` |
+| eb46b6b6. Session. SAML. Last. validityNotOnOrAfter | `<ID>` |
 
 ### <a name="create-f5-test-user"></a>Utwórz użytkownika testowego F5
 

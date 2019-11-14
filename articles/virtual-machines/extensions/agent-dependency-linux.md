@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Linux | Microsoft Docs
+title: Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Linux
 description: Wdróż agenta zależności Azure Monitor na maszynie wirtualnej z systemem Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 416b0c89105f97514efdfcc859a630d78f7ba7f5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46b0ddeeb70e263723b657ef3150dc5548fcc742
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084830"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073867"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Linux
 
@@ -73,7 +73,7 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta zależności maszyny 
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name | Wartość/przykład |
+| Nazwa | Wartość/przykład |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -86,7 +86,7 @@ Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać za pomocą szab
 
 Plik JSON rozszerzenia maszyny wirtualnej może być zagnieżdżony w ramach zasobu maszyny wirtualnej. Lub można ją umieścić na głównym lub najwyższego poziomu szablonu JSON Menedżer zasobów. Położenie pliku JSON wpływa na wartość nazwy zasobu i typu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/child-resource-name-type.md).
 
-W poniższym przykładzie przyjęto założenie, że rozszerzenie agenta zależności jest zagnieżdżone w ramach zasobu maszyny wirtualnej. W przypadku zagnieżdżania zasobu rozszerzenia kod JSON zostanie umieszczony w `"resources": []` obiekcie maszyny wirtualnej.
+W poniższym przykładzie przyjęto założenie, że rozszerzenie agenta zależności jest zagnieżdżone w ramach zasobu maszyny wirtualnej. Podczas zagnieżdżania zasobu rozszerzenia kod JSON zostanie umieszczony w obiekcie `"resources": []` maszyny wirtualnej.
 
 
 ```json

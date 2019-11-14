@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie kopii zapasowych maszyn wirtualnych z systemem Windows w witrynie Azure Portal | Microsoft Docs
+title: Samouczek — Tworzenie kopii zapasowych maszyn wirtualnych z systemem Windows w Azure Portal
 description: Z tego samouczka dowiesz się, jak za pomocą witryny Azure Portal chronić maszyny wirtualne z systemem Windows przy użyciu usługi Azure Backup.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8eaa96dd92ab0f18b590b284d59dd7b775738602
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 603bffe3d28214dbdcd51888925c3c653d0759e7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101736"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068179"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Samouczek: Tworzenie kopii zapasowych i przywracanie plików dla maszyn wirtualnych z systemem Windows na platformie Azure
+# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Samouczek: tworzenie kopii zapasowych i przywracanie plików dla maszyn wirtualnych z systemem Windows na platformie Azure
 
 Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub poszczególne pliki. W tym artykule opisano sposób przywracania pojedynczego pliku na maszynę wirtualną z systemem Windows Server i usługami IIS. Jeśli nie masz jeszcze maszyny wirtualnej gotowej do użycia, możesz ją utworzyć, korzystając z [przewodnika Szybki start dla systemu Windows](quick-create-portal.md). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -77,15 +77,15 @@ W tym przykładzie przedstawiono sposób odzyskiwania pliku obrazu używanego na
 1. W menu po lewej stronie wybierz pozycję **Maszyny wirtualne** i wybierz maszynę wirtualną z listy.
 1. W bloku maszyny wirtualnej w sekcji **Operacje** kliknij pozycję **Kopia zapasowa**. Zostanie otwarty blok **Kopia zapasowa**. 
 1. W menu w górnej części bloku wybierz opcję **Odzyskiwanie pliku**. Zostanie otwarty blok **Odzyskiwanie plików**.
-1. W **kroku 1: Wybierz pozycję punkt**odzyskiwania i wybierz z listy rozwijanej punkt odzyskiwania.
-1. W **kroku 2: Pobierz skrypt, aby przeglądać i odzyskiwać pliki**, kliknij przycisk **Pobierz plik wykonywalny** . Skopiuj hasło do pliku i Zapisz je w bezpiecznym miejscu.
+1. W obszarze **Krok 1. Wybieranie punktu odzyskiwania** wybierz punkt odzyskiwania z listy rozwijanej.
+1. W obszarze **Krok 2. Pobieranie skryptu na potrzeby przeglądania i odzyskiwania plików** kliknij przycisk **Pobierz plik wykonywalny**. Skopiuj hasło do pliku i Zapisz je w bezpiecznym miejscu.
 1. Na komputerze lokalnym otwórz **Eksploratora plików**, przejdź do folderu **Pobrane** i skopiuj pobrany plik exe. Nazwa pliku jest poprzedzona nazwą maszyny wirtualnej. 
 1. Na maszynie wirtualnej (przy użyciu połączenia RDP) Wklej plik. exe na pulpicie maszyny wirtualnej. 
 1. Przejdź do pulpitu maszyny wirtualnej i kliknij dwukrotnie plik exe. Zostanie uruchomiony wiersz polecenia. Program instaluje punkt odzyskiwania jako udział plików, do którego można uzyskać dostęp. Po zakończeniu tworzenia udziału wpisz **q**, aby zamknąć wiersz polecenia.
 1. Na maszynie wirtualnej otwórz **Eksploratora plików** i przejdź do dysku oznaczonego literą, której użyto na potrzeby udziału plików.
 1. Przejdź do folderu \inetpub\wwwroot, skopiuj plik **iisstart.png** z udziału plików i wklej go do folderu \inetpub\wwwroot. Na przykład skopiuj plik F:\inetpub\wwwroot\iisstart.png i wklej go do folderu C:\inetpub\wwwroot, aby odzyskać plik.
 1. Na komputerze lokalnym otwórz kartę przeglądarki, na której nawiązano połączenie z adresem IP maszyny wirtualnej i wyświetlono domyślną stronę usług IIS. Naciśnij klawisze CTRL + F5, aby odświeżyć stronę przeglądarki. Teraz można zobaczyć, że obraz został przywrócony.
-1. Na komputerze lokalnym Wróć do karty przeglądarki dla Azure Portal i w **kroku 3: Odinstaluj dyski po odzyskaniu** kliknij przycisk Odinstalowywanie **dysków** . Jeśli pominiesz ten krok, połączenie z punktem instalacji zostanie automatycznie zamknięte po 12 godzinach. Po upływie 12 godzin należy pobrać nowy skrypt, aby utworzyć nowy punkt instalacji.
+1. Na komputerze lokalnym wróć do karty przeglądarki internetowej z witryną Azure Portal i w obszarze **Krok 3. Odinstalowanie dysków po odzyskiwaniu** kliknij przycisk **Odinstaluj dyski**. Jeśli pominiesz ten krok, połączenie z punktem instalacji zostanie automatycznie zamknięte po 12 godzinach. Po upływie 12 godzin należy pobrać nowy skrypt, aby utworzyć nowy punkt instalacji.
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2 systemu Azure — magazyn | Microsoft Docs
+title: Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2 systemu Azure — magazyn
 description: Dowiedz się, jak zoptymalizować wydajność rozwiązania na maszynach wirtualnych z serii Lsv2.
 services: virtual-machines-windows
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a14e38cd93e7d6273282e209db8ce83ec99f16db
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101781"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068162"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2
 
@@ -39,7 +39,7 @@ Maszyny wirtualne z serii Lsv2 korzystają z procesorów AMD EYPC™ Server opar
 
 * Lsv2 użytkownicy nie mogą polegać na informacjach NUMA urządzenia (wszystkie 0) raportowanych z poziomu maszyny wirtualnej dla dysków danych w celu podjęcia decyzji o koligacji NUMA dla swoich aplikacji. Zalecanym sposobem zapewnienia lepszej wydajności jest rozłożenie obciążeń między procesorami, jeśli to możliwe. 
 
-* Maksymalna obsługiwana głębokość kolejki dla pary kolejek we/wy dla Lsv2 maszyny wirtualnej interfejsu NVMe to 1024 (a Limit i3 głębokość kolejki 32). Lsv2 użytkownicy powinni ograniczyć liczbę (syntetyczne) testu porównawczego do głębokości kolejki 1024 lub niższej, aby uniknąć wyzwalania pełnych warunków kolejki, co może zmniejszyć wydajność.
+* Maksymalna obsługiwana głębokość kolejki dla pary kolejek we/wy dla Lsv2 maszyny wirtualnej interfejsu NVMe to 1024 (a Amazon i3 głębokość kolejki 32). Lsv2 użytkownicy powinni ograniczyć liczbę (syntetyczne) testu porównawczego do głębokości kolejki 1024 lub niższej, aby uniknąć wyzwalania pełnych warunków kolejki, co może zmniejszyć wydajność.
 
 ## <a name="utilizing-local-nvme-storage"></a>Korzystanie z lokalnego magazynu interfejsu NVMe
 

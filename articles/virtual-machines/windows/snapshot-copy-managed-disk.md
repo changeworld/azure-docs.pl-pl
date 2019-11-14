@@ -1,5 +1,5 @@
 ---
-title: Tworzenie migawki wirtualnego dysku twardego na platformie Azure | Microsoft Docs
+title: Tworzenie migawki wirtualnego dysku twardego na platformie Azure
 description: Dowiedz się, jak utworzyć kopię maszyny wirtualnej platformy Azure, która ma być używana jako kopia zapasowa lub w celu rozwiązywania problemów.
 documentationcenter: ''
 author: roygara
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749151"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075334"
 ---
 # <a name="create-a-snapshot"></a>Tworzenie migawki
 

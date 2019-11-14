@@ -1,20 +1,16 @@
 ---
-title: Projektowanie zasad jako przepływów pracy kodu
+title: Projektowanie przepływów pracy typu zasady jako kod
 description: Dowiedz się, jak projektować przepływy pracy, aby wdrożyć definicje Azure Policy jako kod i automatycznie sprawdzać poprawność zasobów.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e3fcb9996266af7e952538c7c92c665929bb9492
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 935616145ee32bea8c3b514c495690ce4105cb80
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518699"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072070"
 ---
-# <a name="design-policy-as-code-workflows"></a>Projektowanie zasad jako przepływów pracy kodu
+# <a name="design-policy-as-code-workflows"></a>Projektowanie przepływów pracy typu zasady jako kod
 
 W miarę postępów związanych z zarządzaniem chmurą należy zmienić ręczną procedurę zarządzania wszystkimi definicjami zasad w Azure Portal lub za pośrednictwem różnych zestawów SDK, aby łatwiej zarządzać i powtarzać się w skali przedsiębiorstwa. Dwa z dominujących metod zarządzania systemami na dużą skalę w chmurze to:
 

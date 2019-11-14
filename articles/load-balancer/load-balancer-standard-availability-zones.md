@@ -1,7 +1,7 @@
 ---
 title: Azure usługa Load Balancer w warstwie Standardowa i Strefy dostępności
-titlesuffix: Azure Load Balancer
-description: Usługa Load Balancer w warstwie Standardowa i strefy dostępności
+titleSuffix: Azure Load Balancer
+description: Korzystając z tej ścieżki szkoleniowej, Rozpocznij pracę z usługą Azure usługa Load Balancer w warstwie Standardowa i Strefy dostępności.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 925e7857d337f7f2fd501e4e4467c05952b0da65
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882961"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076982"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 
@@ -37,7 +37,7 @@ W kontekście stref dostępności zachowanie i właściwości reguły Load Balan
 
 Zarówno publiczne, jak i wewnętrzne Load Balancer obsługują scenariusze nadmiarowe i strefowe, a oba mogą kierować ruchem między strefami w razie potrzeby (*równoważenie obciążenia między strefami*). 
 
-### <a name="frontend"></a>Fronton
+### <a name="frontend"></a>Frontonu
 
 Fronton Load Balancer jest konfiguracją adresów IP frontonu odwołującą się do zasobu publicznego adresu IP lub prywatnego adresu IP w podsieci zasobu sieci wirtualnej.  Tworzy punkt końcowy ze zrównoważonym obciążeniem, w którym jest udostępniana usługa.
 
@@ -88,11 +88,11 @@ Poniższy fragment przedstawia sposób definiowania Strefowo nadmiarowego adresu
                 ],
 ```
 
-Poprzedzające fragmenty nie są kompletnymi szablonami, ale mają na celu pokazanie sposobu prezentowania właściwości stref dostępności.  Musisz dołączyć te instrukcje do szablonów.
+Poprzednie fragmenty nie są kompletnymi szablonami, ale mają na celu pokazanie sposobu prezentowania właściwości stref dostępności.  Musisz dołączyć te instrukcje do szablonów.
 
 #### <a name="optional-zone-isolation"></a>Opcjonalna izolacja strefy
 
-Można zdecydować, aby fronton miał zagwarantowaną pojedynczą strefę, zwaną strefą *frontonu*.  Oznacza to, że każdy przepływ przychodzący lub wychodzący jest obsługiwany przez jedną strefę w regionie.  Fronton udostępnia losy z kondycją strefy.  Błędy w ścieżce danych nie mają wpływ na awarie w strefach innych niż to, w którym zostało zagwarantowane. Za pomocą stref frontonów można uwidocznić adres IP dla strefy dostępności.  
+Można zdecydować, aby fronton miał zagwarantowaną pojedynczą strefę, zwaną *strefą frontonu*.  Oznacza to, że każdy przepływ przychodzący lub wychodzący jest obsługiwany przez jedną strefę w regionie.  Fronton udostępnia losy z kondycją strefy.  Błędy w ścieżce danych nie mają wpływ na awarie w strefach innych niż to, w którym zostało zagwarantowane. Za pomocą stref frontonów można uwidocznić adres IP dla strefy dostępności.  
 
 Ponadto można korzystać z stref frontonów bezpośrednio dla punktów końcowych ze zrównoważonym obciążeniem w ramach każdej strefy. Można go również użyć do udostępnienia punktów końcowych ze zrównoważonym obciążeniem strefy, aby osobno monitorować każdą strefę.  Lub dla publicznych punktów końcowych można zintegrować je z produktem do równoważenia obciążenia DNS, takiego jak [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , i użyć pojedynczej nazwy DNS. Następnie klient rozwiąże tę nazwę DNS z wieloma adresami IP stref.  
 
@@ -151,7 +151,7 @@ Równoważenie obciążenia między strefami umożliwia Load Balancer dostępu d
 
 Należy zachować ostrożność konstruowania scenariusza w sposób, który wyraża koncepcję stref dostępności. Na przykład należy zagwarantowaniu wdrożenia maszyny wirtualnej w ramach jednej strefy lub wielu stref, a także wyrównania zasobów frontonu i stref wewnętrznej bazy danych do tej samej strefy.  W przypadku stref obejmujących wiele dostępności zawierających tylko zasoby strefowe scenariusz będzie działał, ale może nie mieć trybu niejawnego uszkodzenia w odniesieniu do stref dostępności. 
 
-### <a name="backend"></a>Zaplecze
+### <a name="backend"></a>Danych
 
 Load Balancer współpracuje z wystąpieniami maszyn wirtualnych.  Mogą to być autonomiczne, zestawy dostępności lub zestawy skalowania maszyn wirtualnych.  Każde wystąpienie maszyny wirtualnej w pojedynczej sieci wirtualnej może być częścią puli zaplecza, niezależnie od tego, czy została ona zagwarantowana do strefy, czy do której zagwarantowana jest strefa.
 
@@ -214,7 +214,7 @@ Nie ma ogólnych wskazówek, które są lepszym wyborem niż pozostałe, bez zna
 
 - Gdy płaszczyzna danych jest w pełni strefowo nadmiarowa (chyba że została określona gwarancja Zona), operacje płaszczyzny kontroli nie są w pełni nadmiarowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md)
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md)
 - Dowiedz się, jak [równoważyć obciążenie maszyn wirtualnych w strefie przy użyciu usługa Load Balancer w warstwie Standardowa z strefą frontonu](load-balancer-standard-public-zonal-cli.md)

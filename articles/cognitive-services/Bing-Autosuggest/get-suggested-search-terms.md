@@ -1,7 +1,7 @@
 ---
 title: Czym jest funkcja automatycznego sugerowania Bing?
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać interfejsu API automatycznego sugerowania Bing.
+description: Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania w polu wyszukiwania.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405372"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072868"
 ---
 # <a name="what-is-bing-autosuggest"></a>Czym jest funkcja automatycznego sugerowania Bing?
 
@@ -23,7 +23,7 @@ Jeśli aplikacja wysyła zapytania do dowolnego z interfejsów API wyszukiwania 
 
 ## <a name="bing-autosuggest-api-features"></a>Funkcje interfejsu API automatycznego sugerowania Bing
 
-| Cecha                                                                                                                                                                                 | Opis                                                                                                                                                            |
+| Funkcja                                                                                                                                                                                 | Opis                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Sugerowanie terminów wyszukiwania w czasie rzeczywistym](concepts/get-suggestions.md) | Ulepsz działanie aplikacji przy użyciu interfejsu API automatycznego sugerowania, aby wyświetlać sugerowane terminy wyszukiwania w miarę ich wpisywania. |
 
@@ -43,7 +43,7 @@ Poniższy przykład przedstawia pole wyszukiwania z listą rozwijaną sugerowany
 
 Gdy użytkownik wybierze sugestię z listy rozwijanej, możesz jej użyć, aby rozpocząć wyszukiwanie przy użyciu jednego z interfejsów API wyszukiwania Bing lub bezpośrednio przejść do strony wyników wyszukiwania Bing.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby szybko rozpocząć pracę z pierwszym żądaniem, zobacz [Making Your First Query](quickstarts/csharp.md) (Tworzenie pierwszego zapytania).
 

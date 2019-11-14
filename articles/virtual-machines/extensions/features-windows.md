@@ -1,5 +1,5 @@
 ---
-title: Rozszerzenia i funkcje maszyny wirtualnej platformy Azure dla systemu Windows | Microsoft Docs
+title: Rozszerzenia i funkcje maszyny wirtualnej platformy Azure dla systemu Windows
 description: Dowiedz się, jakie rozszerzenia są dostępne dla usługi Azure Virtual Machines, pogrupowane według ich udostępniania lub usprawnienia.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b99e919c396ebc3ef72c046fbe3fef1261050ad
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891593"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073079"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows
 

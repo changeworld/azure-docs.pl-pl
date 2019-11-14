@@ -1,5 +1,5 @@
 ---
-title: Omówienie agenta maszyny wirtualnej platformy Azure | Microsoft Docs
+title: Omówienie agenta maszyny wirtualnej platformy Azure
 description: Omówienie agenta maszyny wirtualnej platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 24c7f6c1488d7a78a16aafef88177f7045eb2492
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b1f627668c6bbd1d802eb3a4c11b6171e84887c8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244655"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073240"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Omówienie agenta maszyny wirtualnej platformy Azure
 Agent maszyny wirtualnej Microsoft Azure (Agent VM) to bezpieczny, lekki proces zarządzający interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure. Agent maszyny wirtualnej odgrywa podstawową rolę w procesie włączania i wykonywania rozszerzeń maszyny wirtualnej platformy Azure. Rozszerzenia maszyn wirtualnych umożliwiają konfigurację po wdrożeniu maszyny wirtualnej, taką jak instalowanie i Konfigurowanie oprogramowania. Rozszerzenia maszyn wirtualnych umożliwiają również włączenie funkcji odzyskiwania, takich jak resetowanie hasła administracyjnego maszyny wirtualnej. Bez agenta maszyny wirtualnej platformy Azure nie można uruchomić rozszerzeń maszyn wirtualnych.

@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie skryptów niestandardowych na maszynach wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Uruchamianie skryptów niestandardowych na maszynach wirtualnych z systemem Linux na platformie Azure
 description: Automatyzowanie zadań konfiguracyjnych maszyn wirtualnych z systemem Linux przy użyciu rozszerzenia niestandardowego skryptu v2
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87826b5bec4294ce45355ab0cfc4df373895563b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789955"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073225"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Korzystanie z rozszerzenia niestandardowego skryptu platformy Azure w wersji 2 z maszynami wirtualnymi z systemem Linux
 Rozszerzenie skryptu niestandardowego wersja 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalacji oprogramowania lub innych zadań związanych z konfiguracją/zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub innej dostępnej lokalizacji w Internecie lub można je udostępnić do środowiska uruchomieniowego rozszerzenia. 
@@ -70,7 +70,7 @@ Konfiguracja rozszerzenia niestandardowego skryptu określa elementy, takie jak 
 
 Poufne dane można przechowywać w chronionej konfiguracji, która jest szyfrowana i odszyfrowywana tylko wewnątrz maszyny wirtualnej. Konfiguracja chroniona jest przydatna, gdy polecenie wykonywania zawiera wpisy tajne, takie jak hasło.
 
-Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji ustawień chronionych przez rozszerzenia. Dane ustawienia chronionego rozszerzenia maszyny wirtualnej platformy Azure są szyfrowane i odszyfrowywane tylko na docelowej maszynie wirtualnej.
+Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji ustawień chronionych przez rozszerzenia. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej.
 
 ```json
 {
@@ -106,19 +106,19 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Nazwa | Wartość/przykład | Typ danych | 
+| Nazwa | Wartość / przykład | Typ danych | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| dawc | Microsoft. COMPUTE. Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft. COMPUTE. Extensions | ciąg |
+| type | CustomScript | ciąg |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
-| Sekcji commandtoexecute (np.) | środowisko Python MyPythonScript.py \<my-param1 > | string |
-| napisy | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | string |
+| Sekcji commandtoexecute (np.) | środowisko Python MyPythonScript.py \<my-param1 > | ciąg |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | ciąg |
 | skipDos2Unix (np.) | false | wartość logiczna |
-| Sygnatura czasowa (np.) | 123456789 | 32-bitowa liczba całkowita |
-| storageAccountName (np.) | examplestorageacct | string |
-| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
+| timestamp (np.) | 123456789 | 32-bitowa liczba całkowita |
+| storageAccountName (np.) | examplestorageacct | ciąg |
+| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
 
 ### <a name="property-value-details"></a>Szczegóły wartości właściwości
 * `skipDos2Unix`: (opcjonalne, wartość logiczna) pomija dos2unix konwersję adresów URL lub skryptu plików opartych na skrypcie.
@@ -201,7 +201,7 @@ CustomScript używa następującego algorytmu do wykonania skryptu.
 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
-Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać za pomocą szablonów Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie niestandardowego skryptu podczas wdrażania szablonu Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu, można znaleźć w witrynie [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie niestandardowego skryptu podczas wdrażania szablonu Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu, można znaleźć w witrynie [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
 ```json

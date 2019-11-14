@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie monitora wydajności sieci dla obwodów usługi ExpressRoute — Azure | Dokumentacja firmy Microsoft
+title: 'Azure ExpressRoute: Konfigurowanie NPM dla obwodów'
 description: Konfigurowanie monitorowania (NPM) dla obwodów usługi ExpressRoute platformy Azure sieci opartych na chmurze. W tym artykule opisano monitorowania za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute i komunikacji równorzędnej firmy Microsoft.
 services: expressroute
 author: cherylmc
@@ -7,17 +7,16 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60840323"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076588"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
 
-Ten artykuł pomoże Ci skonfigurować rozszerzenia programu Network Performance Monitor do monitorowania usługi ExpressRoute. Network Performance Monitor (NPM) jest sieci opartych na chmurze rozwiązanie monitorujące, które monitoruje łączność między wdrożeniami w chmurze platformy Azure i lokalizacjami lokalnymi (oddziałów, itp.). NPM jest częścią dzienniki usługi Azure Monitor. NPM oferuje rozszerzenie dla usługi ExpressRoute, która umożliwia monitorowanie wydajności sieci obwodach usługi ExpressRoute, które są skonfigurowane do korzystania z prywatnej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft. Po skonfigurowaniu NPM dla usługi ExpressRoute, można wykryć problemy z siecią, aby zidentyfikować i wyeliminować. Ta usługa jest również dostępny dla chmury dla instytucji rządowych platformy Azure.
+Ten artykuł pomoże Ci skonfigurować rozszerzenia programu Network Performance Monitor do monitorowania usługi ExpressRoute. Network Performance Monitor (NPM) to program do monitorowania sieci w chmurze, który monitoruje łączność między wdrożeniami w chmurze na platformie Azure a lokalizacjami lokalnymi (oddziałami firmy itp.). Program NPM jest częścią dzienników usługi Azure Monitor. Program NPM oferuje rozszerzenie dla usługi ExpressRoute, które pozwala monitorować wydajność sieci przez obwody usługi ExpressRoute skonfigurowane do korzystania z prywatnej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft. Po skonfigurowaniu programu NPM dla usługi ExpressRoute można wykrywać problemy z siecią, określać ich przyczyny i je eliminować. Ta usługa jest również dostępna dla platformy Azure Government Cloud.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -40,15 +39,15 @@ Możesz:
 Agentów monitorowania zainstalowanych na wielu serwerach, lokalnie i na platformie Azure. Agenci komunikują się ze sobą, ale nie wysyłaj danych, wysyłają pakiety uzgadnianie protokołu TCP. Komunikacja między agentami umożliwia platformie Azure do mapowania topologii sieci i ścieżki, może potrwać ruchu sieciowego.
 
 1. Tworzenie obszaru roboczego usługi NPM. To jest taka sama jak obszar roboczy usługi Log Analytics.
-2. Instalowanie i konfigurowanie agentów oprogramowania. (Jeśli chcesz monitorować za pośrednictwem Peering firmy Microsoft, nie trzeba zainstalować i skonfigurować oprogramowanie agents.): 
+2. Instalowanie i konfigurowanie agentów oprogramowania. (Jeśli chcesz monitorować tylko komunikację równorzędną firmy Microsoft, nie musisz instalować i konfigurować agentów oprogramowania): 
     * Zainstaluj agentów monitorowania na serwerach lokalnych i maszyn wirtualnych platformy Azure (dla prywatnej komunikacji równorzędnej).
     * Konfigurowanie ustawień na serwerach programu agent monitorowania, aby umożliwić agentów monitorowania do komunikowania się. (Otwórz porty zapory itp.)
 3. Skonfiguruj reguły Sieciowej grupy zabezpieczeń sieci, Zezwalaj na używanie agenta monitorowania, zainstalowane na maszynach wirtualnych platformy Azure do komunikowania się z lokalnymi agentów monitorowania.
-4. Konfigurowanie monitorowania: Wykryj automatycznie i zarządzania, które sieci są widoczne w NPM.
+4. Konfigurowanie monitorowania: automatycznie wykrywać i zarządzanie nimi w sieci, które są widoczne w NPM.
 
 Jeśli korzystasz już rozwiązania Network Performance Monitor do monitorowania innych obiektów lub usług, a jeszcze obszaru roboczego w jednym z obsługiwanych regionów, możesz pominąć krok 1 i 2 i rozpocząć konfigurację z kroku 3.
 
-## <a name="configure"></a>Krok 1. Tworzenie obszaru roboczego
+## <a name="configure"></a>Krok 1: Tworzenie obszaru roboczego
 
 Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtualnych obwody usługi ExpressRoute.
 
@@ -60,7 +59,7 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
 
    ![portal](./media/how-to-npm/3.png)<br><br>
 2. W dolnej części głównej **rozwiązania Network Performance Monitor** kliknij **Utwórz** otworzyć **rozwiązania Network Performance Monitor — Utwórz nowe rozwiązanie** strony. Kliknij przycisk **obszar roboczy usługi Analytics Log - wybierz obszar roboczy** aby otworzyć stronę obszarów roboczych. Kliknij przycisk **+ Utwórz nowy obszar roboczy** aby otworzyć stronę obszaru roboczego.
-3. Na **obszaru roboczego usługi Log Analytics** wybierz opcję **Utwórz nowy**, następnie skonfiguruj następujące ustawienia:
+3. Na stronie **obszar roboczy log Analytics** wybierz pozycję **Utwórz nową**, a następnie skonfiguruj następujące ustawienia:
 
    * Zaloguj się obszar roboczy usługi Analytics — wpisz nazwę obszaru roboczego.
    * Subskrypcja — Jeśli masz wiele subskrypcji, wybierz jedną, które chcesz skojarzyć z nowym obszarem roboczym.
@@ -78,7 +77,7 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
 
    ![dodatkowa konfiguracja](./media/how-to-npm/5.png)
 
-## <a name="agents"></a>Krok 2. Instalacja i konfiguracja agentów
+## <a name="agents"></a>Krok 2: Instalowanie i konfigurowanie agentów
 
 ### <a name="download"></a>2.1: Pobierz plik instalacyjny agenta
 
@@ -100,7 +99,7 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**.
 3. Na **postanowienia licencyjne** strony, zapoznaj się z licencyjnymi, a następnie kliknij **zgadzam się**.
 4. Na **Folder docelowy** strony, Zmień lub pozostaw domyślny folder instalacji, a następnie kliknij **dalej**.
-5. Na **opcje instalacji agenta** strony, możesz nawiązać połączenia z agentem dzienniki usługi Azure Monitor lub Operations Manager. Lub puste opcje wyboru Jeśli chcesz później skonfigurować agenta. Po wprowadzeniu dokonane wybory, kliknij przycisk **dalej**.
+5. Na stronie **Opcje instalacji agenta** można wybrać opcję połączenia agenta z dziennikami Azure Monitor lub Operations Manager. Lub puste opcje wyboru Jeśli chcesz później skonfigurować agenta. Po wprowadzeniu dokonane wybory, kliknij przycisk **dalej**.
 
    * Jeśli chcesz nawiązać połączenie z **usługi Azure Log Analytics**, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego** (klucz podstawowy) skopiowane do Notatnika w poprzedniej sekcji. Następnie kliknij przycisk **Dalej**.
 
@@ -113,7 +112,7 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
      ![Konto](./media/how-to-npm/10.png)
 6. Na **gotowy do instalacji** strony, przejrzyj wybrane opcje, a następnie kliknij przycisk **zainstalować**.
 7. Na stronie **Konfiguracja została zakończona pomyślnie** kliknij przycisk **Zakończ**.
-8. Po zakończeniu programu Microsoft Monitoring Agent zostanie wyświetlona w Panelu sterowania. Możesz tam przejrzeć konfigurację i sprawdzić, czy agent jest połączony do dzienników usługi Azure Monitor. Po nawiązaniu połączenia agent wyświetla komunikat z informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
+8. Po zakończeniu programu Microsoft Monitoring Agent zostanie wyświetlona w Panelu sterowania. Możesz sprawdzić swoją konfigurację i sprawdzić, czy Agent jest połączony z dziennikami Azure Monitor. Po nawiązaniu połączenia agent wyświetla komunikat z informacją: **program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
 
 9. Powtórz tę procedurę dla każdej sieci Wirtualnej, które muszą być monitorowane.
 
@@ -130,14 +129,14 @@ Aby skonfigurować ustawienia serwera proxy dla programu Microsoft Monitoring Ag
 
    ![Serwer proxy](./media/how-to-npm/11.png)
 
-### <a name="verifyagent"></a>2.4: Sprawdź łączność agenta
+### <a name="verifyagent"></a>2.4: sprawdzić połączenie agenta
 
 Można łatwo sprawdzić, czy komunikują się agentów.
 
 1. Na serwerze z agenta monitorowania, należy otworzyć **Panelu sterowania**.
 2. Otwórz **Microsoft Monitoring Agent**.
 3. Kliknij przycisk **usługi Azure Log Analytics** kartę.
-4. W **stan** kolumny, powinien zostać wyświetlony pomyślnie połączono agenta do dzienników usługi Azure Monitor.
+4. W kolumnie **stan** należy sprawdzić, czy Agent połączył się pomyślnie z Azure monitor dzienników.
 
    ![status](./media/how-to-npm/12.png)
 
@@ -158,7 +157,7 @@ Na serwerach programu agent Otwórz okno programu PowerShell z uprawnieniami adm
 
 ![PowerShell_Script](./media/how-to-npm/script.png)
 
-## <a name="opennsg"></a>Krok 3. Konfigurowanie reguł sieciowych grup zabezpieczeń
+## <a name="opennsg"></a>Krok 3: Konfigurowanie reguł sieciowych grup zabezpieczeń
 
 Aby monitorować serwery agenta, które są na platformie Azure, należy skonfigurować reguły Sieciowej grupy zabezpieczeń sieci zezwalającą na ruch TCP na porcie używana przez narzędzie NPM dla transakcji syntetycznych. Domyślnym portem jest port 8084. Dzięki temu agent monitorowania zainstalowane na maszynie Wirtualnej platformy Azure, nawiązać połączenia z usługą lokalną agenta monitorowania.
 
@@ -168,7 +167,7 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [
 >Upewnij się, zainstalowano agentów (lokalnego agenta serwera i agenta programu server platformy Azure) i uruchomiono skrypt programu PowerShell przed kontynuowaniem ten krok.
 >
 
-## <a name="setupmonitor"></a>Krok 4. Odkryj połączenia komunikacji równorzędnej
+## <a name="setupmonitor"></a>Krok 4: Odnajdywanie połączenia komunikacji równorzędnej
 
 1. Przejdź do kafelka przeglądu rozwiązania Network Performance Monitor, przechodząc do **wszystkie zasoby** stronie, a następnie kliknij pozycję na liście dozwolonych NPM w obszarze roboczym.
 
@@ -219,7 +218,7 @@ W przypadku komunikacji równorzędnej firmy Microsoft kliknij połączenia komu
 6. Zapisz ustawienia.
 7. Po Włączanie reguł i wybierając wartości i agentów, które chcesz monitorować, jest Poczekaj około 30 – 60 minut, zanim wartości rozpocząć wypełnianie i **monitorowania usługi ExpressRoute** Kafelki staną się dostępne.
 
-## <a name="explore"></a>Krok 6. Widok monitorowania kafelków
+## <a name="explore"></a>Krok 6: Wyświetlić Kafelki monitorowania
 
 Po wyświetleniu monitorowania Kafelki do obwodów usługi ExpressRoute i połączeń zasobów są monitorowane przez Menedżera NPM. Możesz kliknąć Kafelek Peering firmy Microsoft, aby przejść do szczegółów w kondycję połączeń Peering firmy Microsoft.
 

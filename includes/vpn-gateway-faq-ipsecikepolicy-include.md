@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73800025"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075411"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Czy niestandardowe zasady protokołu IPsec/IKE są obsługiwane na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
-Niestandardowe zasady protokołu IPsec/IKE są obsługiwane na bramach sieci VPN **VpnGw1, VpnGw2, VpnGw3, Standard** i **HighPerformance** na platformie Azure. **Podstawowa** jednostka SKU **nie** jest obsługiwana.
+Niestandardowe zasady protokołu IPsec/IKE są obsługiwane we wszystkich jednostkach SKU platformy Azure z wyjątkiem podstawowej jednostki SKU.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Ile zasad można określić dla połączenia?
 Można określić tylko ***jedną*** kombinację zasad dla danego połączenia.
@@ -27,22 +27,22 @@ Nie, należy określić wszystkie algorytmy i parametry zarówno dla protokołu 
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Jakie algorytmy i siły klucza są obsługiwane w zasadach niestandardowych?
 W poniższej tabeli wymieniono obsługiwane algorytmy kryptograficzne i siły klucza konfigurowalne przez klientów. Należy wybrać jedną opcję dla każdego pola.
 
-| **Protokół IPsec/IKEv1, IKEv2**  | **Opcje**                                                                   |
-| ---                     | ---                                                                           |
-| IKEv1, szyfrowanie IKEv2 | AES256, AES192, AES128, DES3, DES                                             |
-| Protokół IKEv1, integralność IKEv2  | SHA384, SHA256, SHA1, MD5                                                     |
-| Grupa DH                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Brak  |
-| Szyfrowanie IPsec        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Brak      |
-| Integralność IPsec         | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
-| Grupa PFS               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Brak                              |
-| Okres istnienia skojarzeń zabezpieczeń QM          | Sekundy (liczba całkowita; **min. 300**/wartość domyślna 27 000 sekund)<br>KB (liczba całkowita; **min. 1024**/wartość domyślna to 102 400 000 KB) |
-| Selektor ruchu        | UsePolicyBasedTrafficSelectors ($True/$False; wartość domyślna $False)                 |
-|                         |                                                                               |
+| **IPsec/IKEv2**  | **Opcje**                                                                   |
+| ---              | ---                                                                           |
+| Szyfrowanie IKEv2 | AES256, AES192, AES128, DES3, DES                                             |
+| Integralność IKEv2  | SHA384, SHA256, SHA1, MD5                                                     |
+| Grupa DH         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Brak |
+| Szyfrowanie IPsec | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Brak      |
+| Integralność IPsec  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
+| Grupa PFS        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Brak                              |
+| Okres istnienia skojarzeń zabezpieczeń QM   | Sekundy (liczba całkowita; **min. 300**/wartość domyślna 27 000 sekund)<br>KB (liczba całkowita; **min. 1024**/wartość domyślna to 102 400 000 KB)           |
+| Selektor ruchu | UsePolicyBasedTrafficSelectors ($True/$False; wartość domyślna $False)                 |
+|                  |                                                                               |
 
 > [!IMPORTANT]
 > 1. DHGroup2048 i PFS2048 są takie same jak grupa Diffie’ego-Hellmana**14** w funkcji PFS protokołów IKE i IPsec. Pełną listę mapowań można znaleźć w sekcji dotyczącej [grup Diffie’ego-Hellmana](#DH).
 > 2. W przypadku algorytmów GCMAES należy określić ten sam algorytm GCMAES i długość klucza na potrzeby integralności i szyfrowania IPsec.
-> 3. Okres istnienia skojarzenia zabezpieczeń trybu głównego protokołu IKEv1 i IKEv2 został ustalony o 28 800 sekund na bramach sieci VPN platformy Azure.
+> 3. Okres istnienia skojarzenia zabezpieczeń trybu głównego protokołu IKEv2 jest ustalony na 28 800 sekund na bramach sieci VPN platformy Azure.
 > 4. Okresy istnienia skojarzeń zabezpieczeń QM to parametry opcjonalne. Jeśli żaden nie został określony, są używane wartości domyślne 27 000 sekund (7,5 godz.) i 102400000 KB (102 GB).
 > 5. UsePolicyBasedTrafficSelector to parametr opcji połączenia. Zobacz kolejny element często zadawanych pytań dla elementu „UsePolicyBasedTrafficSelectors”
 

@@ -1,19 +1,19 @@
 ---
 title: Utwórz nową ofertę SaaS w portalu komercyjnym
 description: Jak utworzyć nową ofertę SaaS (Software as a Service) w celu uzyskania listy lub sprzedaży w witrynie Azure Marketplace, AppSource lub za pośrednictwem programu Cloud Solution Provider (CSP) za pomocą portalu Marketplace w witrynie Microsoft Partner Center.
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: a6694d094d185ad70cce8c546e12f48afb69f1ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825530"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076956"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -33,7 +33,6 @@ W przypadku wybrania innego typu oferty nastąpi przekierowanie do starszej [Por
 Zostanie wyświetlone okno dialogowe **Nowa oferta** . 
 
 ![Okno dialogowe Nowa oferta](./media/new-offer-popup.png)
-
 
 ## <a name="offer-id-and-alias"></a>Identyfikator oferty i alias
 
@@ -105,16 +104,6 @@ W poniższej tabeli przedstawiono przykład podziału kosztów i wypłaty w celu
 > [!NOTE]
 > **Zmniejszona opłata za usługę Marketplace**: w przypadku niektórych ofert SaaS opublikowanych na naszym rynku komercyjnym firma Microsoft obniży opłatę za usługę Marketplace z 20% (zgodnie z opisem w umowie Microsoft Publisher) do 10%. Aby oferta mogła zakwalifikować się, co najmniej jedna oferta musi zostać wystawiona przez firmę Microsoft, ponieważ jest to adres IP do współsprzedaży lub co do sprzedaży.  Przed końcem każdego miesiąca kalendarzowego należy spełnić co najmniej pięć (5) dni roboczych, aby uzyskać tę obniżoną opłatę za usługę Marketplace w danym miesiącu.  Zmniejszona opłata za usługę Marketplace nie dotyczy maszyn wirtualnych, zarządzanych aplikacji ani innych produktów udostępnianych za pośrednictwem komercyjnej witryny Marketplace.  Zmniejszona opłata za usługę Marketplace będzie dostępna tylko w przypadku ofert z tytułu licencji uzyskanych przez firmę Microsoft od 1 maja 2019 do 30 czerwca 2020.  Po tym czasie opłata za usługę Marketplace powróci do normalnej kwoty. 
 
-
-
-
-#### <a name="csp-program-opt-in"></a>Wybór programu CSP
-Program [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) umożliwia oferowanie oprogramowania w celu uzyskania dostępu do milionów uprawnionych klientów firmy Microsoft przy minimalnych inwestycjach marketingowych i sprzedaży.
-
-- **Kanały: Udostępnij moją ofertę w programie CSP** (pole wyboru)
-
-Wybranie oferty w programie CSP pozwala dostawcom rozwiązań w chmurze sprzedawać produkt w ramach rozwiązania do swoich klientów. 
-
 ### <a name="list-through-microsoft"></a>Wystaw za poorednictwem firmy Microsoft
 
 Promuj swoją firmę firmie Microsoft, tworząc listę Marketplace. Wybranie do wyświetlania listy tylko oferty, a nie w firmie Microsoft oznacza, że firma Microsoft nie uczestniczy bezpośrednio w transakcjach licencji na oprogramowanie. Nie ma żadnej powiązanej opłaty za transakcje, a wydawca utrzymuje 100% wszelkich opłat za Licencjonowanie oprogramowania zebranych od klienta. Jednak Wydawca jest odpowiedzialny za obsługę wszystkich aspektów transakcji związanych z licencją na oprogramowanie, w tym między innymi w kolejności realizacji, pomiaru, rozliczeń, fakturowania, płatności i kolekcji. 
@@ -141,7 +130,7 @@ Zbierz informacje kontaktowe klienta, łącząc system zarządzania relacjami z 
 
 Test jest doskonałym sposobem na pokazanie oferty potencjalnym klientom, dając im możliwość "Wypróbuj przed zakupem", co spowodowało zwiększenie konwersji i generowanie wysoce wykwalifikowanych klientów. [Dowiedz się więcej o testowaniu dysków.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-- **Włącz stację testową** (CheckBox) 
+- **Włącz stację testową** (CheckBox)
 
 Po włączeniu dysku testowego zostanie wyświetlony monit o skonfigurowanie środowiska demonstracyjnego dla klientów w celu wypróbowania oferty przez określony czas. 
 
@@ -331,7 +320,6 @@ Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 
 - [Najlepsze rozwiązania dotyczące aukcji z ofertą Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-
 ## <a name="preview"></a>Wersja zapoznawcza
 
 Karta **Podgląd** umożliwia zdefiniowanie ograniczonej liczby odbiorców w **wersji zapoznawczej** w celu udostępnienia oferty przed opublikowaniem oferty w szerszym gronie odbiorców w portalu Marketplace.
@@ -416,8 +404,7 @@ Aby uzyskać informacje o subskrypcjach klientów, które aktualnie uczestniczą
 
 - **Edytowanie rynków** (opcjonalnie)
 
-Każdy plan musi być dostępny na co najmniej jednym rynku. Zaznacz pole wyboru dla dowolnej lokalizacji rynkowej, w której chcesz udostępnić ten plan. Pole wyszukiwania i przycisk służący do wybierania krajów "z przekazaniem podatku", w których firma Microsoft dokonuje zakupu sprzedaży i używania podatków w Twoim imieniu, są dołączane do pomocy. 
-
+Każdy plan musi być dostępny na co najmniej jednym rynku. Zaznacz pole wyboru dla dowolnej lokalizacji rynkowej, w której chcesz udostępnić ten plan. Pole wyszukiwania i przycisk służący do wybierania krajów "z przekazaniem podatku", w których firma Microsoft dokonuje zakupu sprzedaży i używania podatków w Twoim imieniu, są dołączane do pomocy.
 
 Jeśli już ustawisz ceny dla planu w Stany Zjednoczone dolarów (USD) i dodasz kolejną lokalizację na rynku, cena nowego rynku zostanie obliczona zgodnie z bieżącymi stawkami za wymianę. Przed opublikowaniem należy zawsze sprawdzić cenę poszczególnych rynków. Cennik można przejrzeć przy użyciu linku "Eksport cen (xlsx)" po zapisaniu zmian.
 
@@ -475,11 +462,15 @@ Mimo że usługa SaaS oferuje identyfikatory dzierżawców do definiowania prywa
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
+## <a name="cloud-solution-provider-csp-reseller-audience"></a>Odbiorcy dostawcy rozwiązań w chmurze (CSP)
+
+Wybranie oferty w programie CSP pozwala dostawcom rozwiązań w chmurze sprzedawać produkt w ramach rozwiązania do swoich klientów. Aby uzyskać więcej informacji, zobacz [dostawca rozwiązań w chmurze (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers.md).
+
 ## <a name="publish"></a>Publikowanie
 
-#### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
+Po zakończeniu wszystkich wymaganych sekcji oferty wybierz pozycję **Publikuj** w prawym górnym rogu portalu. Nastąpi przekierowanie do strony **Recenzja i publikowanie** .
 
-Po zakończeniu wszystkich wymaganych sekcji oferty wybierz pozycję **Publikuj** w prawym górnym rogu portalu. Nastąpi przekierowanie do strony **Recenzja i publikowanie** . 
+#### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 
 Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
 

@@ -1,19 +1,19 @@
 ---
-title: Szablony usługi Azure Resource Manager
-description: Opisuje sposób używania szablonów Azure Resource Manager do wdrażania zasobów.
+title: Przegląd szablonów Azure Resource Manager
+description: Opisuje zalety korzystania z szablonów Azure Resource Manager na potrzeby wdrażania zasobów.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 956450e5a47e4d0e16de44b6bc72c6cb24d05889
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71300155"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074383"
 ---
-# <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
+# <a name="azure-resource-manager-templates-overview"></a>Przegląd szablonów Azure Resource Manager
 
 Dzięki przeniesieniu do chmury wiele zespołów przyjmuje metody programowania Agile. Te zespoły szybko iterą. Muszą one wielokrotnie wdrażać swoje rozwiązania w chmurze i wiedzieć, że ich infrastruktura jest w niezawodnym stanie. Ponieważ infrastruktura stała się częścią procesu iteracji, podział między operacjami i programowaniem zniknął. Zespoły muszą zarządzać infrastrukturą i kodem aplikacji za pomocą ujednoliconego procesu.
 
@@ -125,5 +125,6 @@ Informacje dotyczące szablonów zagnieżdżonych można znaleźć w temacie [Us
 
 ## <a name="next-steps"></a>Następne kroki
 
+* Aby zapoznać się z samouczkiem krok po kroku, który przeprowadzi Cię przez proces tworzenia szablonu, zobacz [Samouczek: Tworzenie i wdrażanie pierwszego szablonu Azure Resource Manager](template-tutorial-create-first-template.md).
 * Aby uzyskać informacje o właściwościach w plikach szablonów, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby dowiedzieć się więcej na temat eksportowania szablonów, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

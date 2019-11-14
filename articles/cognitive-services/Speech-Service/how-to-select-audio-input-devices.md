@@ -1,7 +1,7 @@
 ---
 title: Jak wybrać urządzenie wejściowe audio przy użyciu zestawu Speech SDK-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się więcej o wybieraniu urządzenia wejściowego audio w zestawie SDK usługi Mowa.
+description: Dowiedz się więcej na temat wybierania urządzeń wejściowych audio wC++zestawie C#mowy SDK (,, Python, celu-C, Java, JavaScript), uzyskując identyfikatory urządzeń audio podłączonych do systemu.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 8324f9fccbe46cf6fc0ce297aac29b0d8025b078
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 967e4fbc5484c152867fe5558040631d21e6c0b3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562730"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072433"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Wybieranie urządzenia wejściowego audio za pomocą zestawu SDK usługi Mowa
 
@@ -46,7 +46,8 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```JavaScript
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
->[!Note]
+
+> [!Note]
 > Użycie mikrofonu nie jest dostępne w przypadku języka JavaScript działającego w języku Node. js
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Identyfikatory urządzeń audio w aplikacjach klasycznych systemu Windows
@@ -374,14 +375,14 @@ umożliwia użycie zestawu słuchawkowego Bluetooth przez aplikację z obsługą
 
 ## <a name="audio-device-ids-in-javascript"></a>Identyfikatory urządzeń audio w języku JavaScript
 
-W języku JavaScript można użyć metody [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) w celu wyliczenia urządzeń multimedialnych i znalezienia identyfikatora urządzenia do przekazania `fromMicrophone(...)`.
+W języku JavaScript metoda [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) umożliwia Wyliczenie urządzeń multimedialnych i znalezienie identyfikatora urządzenia do przekazania do `fromMicrophone(...)`.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kopii zapasowych plików na maszynach wirtualnych Azure Stack
+title: Tworzenie kopii zapasowych plików w Azure Stack maszynach wirtualnych — Azure Backup
 description: Użyj Azure Backup, aby utworzyć kopię zapasową i odzyskać Azure Stack pliki i aplikacje w środowisku Azure Stack.
 ms.reviewer: adigan
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210216"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074089"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Tworzenie kopii zapasowych plików i aplikacji w usłudze Azure Stack
 
@@ -45,7 +45,7 @@ Aby skonfigurować Azure Backup Server ochrony plików w Azure Stack maszynach w
 
     ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. Na ekranie **Wybierz członków grupy** kliknij **+** , aby rozwinąć listę podelementów. Dla wszystkich elementów, które mają być chronione, zaznacz pole wyboru. Po wybraniu wszystkich elementów kliknij przycisk **dalej**.
+3. Na ekranie **Wybieranie członków grupy** kliknij przycisk **+** , aby rozwinąć listę podelementów. Dla wszystkich elementów, które mają być chronione, zaznacz pole wyboru. Po wybraniu wszystkich elementów kliknij przycisk **dalej**.
 
     ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
@@ -55,7 +55,7 @@ Aby skonfigurować Azure Backup Server ochrony plików w Azure Stack maszynach w
 
     ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Aby wybrać opcję chcę **chronić w trybie online**, musisz najpierw wybrać opcję **Chcę uzyskać krótkoterminową ochronę za pomocą:** 3,5. Azure Backup Server nie chroni na taśmie, więc dysk jest jedynym wyborem dla ochrony krótkoterminowej.
+    Aby wybrać opcję chcę **chronić w trybie online**, musisz najpierw wybrać opcję **Chcę uzyskać krótkoterminową ochronę przy użyciu:** dysk. Azure Backup Server nie chroni na taśmie, więc dysk jest jedynym wyborem dla ochrony krótkoterminowej.
 
 5. Na ekranie **Określ cele krótkoterminowe** wybierz, jak długo mają być przechowywane punkty odzyskiwania zapisane na dysku, oraz czas zapisywania przyrostowych kopii zapasowych. Kliknij przycisk **Dalej**.
 
@@ -109,7 +109,7 @@ Za pomocą konsoli Azure Backup Server można odzyskiwać dane na maszynę wirtu
 
 6. Określ opcje odzyskiwania:
 
-    * W przypadku **zachowania odzyskiwania istniejącej wersji**wybierz opcję **Utwórz kopię**, **Pomiń**lub Zastąp. Zastępowanie jest dostępne tylko w przypadku odzyskiwania do oryginalnej lokalizacji.
+    * W przypadku **zachowania odzyskiwania istniejącej wersji**wybierz opcję **Utwórz kopię**, **Pomiń**lub **Zastąp**. Zastępowanie jest dostępne tylko w przypadku odzyskiwania do oryginalnej lokalizacji.
     * W obszarze **zabezpieczenia przywracania**wybierz opcję **Zastosuj ustawienia komputera docelowego** lub **Zastosuj ustawienia zabezpieczeń wersji punktu odzyskiwania**.
     * Aby zapewnić **ograniczenie**przepustowości sieci, kliknij przycisk **Modyfikuj** , aby włączyć ograniczanie użycia przepustowości sieci.
     * **Powiadomienie** Kliknij przycisk **Wyślij wiadomość e-mail po zakończeniu odzyskiwania**i określ adresatów, którzy otrzymają powiadomienie. Oddziel adresy e-mail przecinkami.
@@ -134,7 +134,7 @@ Aby wyświetlić Azure Backup Server jednostki w Azure Portal, można wykonać n
 2. Kliknij pozycję Infrastruktura kopii zapasowych.
 3. Wyświetl serwery zarządzania kopiami zapasowymi.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 Aby uzyskać informacje na temat używania Azure Backup Server do ochrony innych obciążeń, zobacz jeden z następujących artykułów:
 

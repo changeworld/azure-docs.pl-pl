@@ -1,19 +1,19 @@
 ---
-title: Konfigurowanie zasad SSL na platformie Azure Application Gateway — PowerShell
+title: Konfigurowanie zasad SSL przy użyciu programu PowerShell
+titleSuffix: Azure Application Gateway
 description: Ten artykuł zawiera instrukcje dotyczące konfigurowania zasad protokołu SSL w usłudze Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/3/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018248"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075231"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Skonfiguruj wersje zasad protokołu SSL i mechanizmy szyfrowania na Application Gateway
 
@@ -23,7 +23,7 @@ Dowiedz się, jak skonfigurować wersje zasad protokołu SSL i mechanizmy szyfro
 
 ## <a name="get-available-ssl-options"></a>Pobierz dostępne opcje protokołu SSL
 
-`Get-AzApplicationGatewayAvailableSslOptions` Polecenie cmdlet zawiera listę dostępnych wstępnie zdefiniowanych zasad, dostępnych mechanizmów szyfrowania i wersji protokołów, które można skonfigurować. Poniższy przykład pokazuje przykładowe dane wyjściowe z uruchamiania polecenia cmdlet.
+`Get-AzApplicationGatewayAvailableSslOptions` polecenie cmdlet zawiera listę dostępnych wstępnie zdefiniowanych zasad, dostępnych mechanizmów szyfrowania i wersji protokołów, które można skonfigurować. Poniższy przykład pokazuje przykładowe dane wyjściowe z uruchamiania polecenia cmdlet.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -73,9 +73,9 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>Lista wstępnie zdefiniowanych zasad SSL
 
-Brama aplikacji zawiera trzy wstępnie zdefiniowane zasady, które mogą być używane. `Get-AzApplicationGatewaySslPredefinedPolicy` Polecenie cmdlet pobiera te zasady. Każda zasada ma inne wersje protokołu i włączono mechanizmy szyfrowania. Te wstępnie zdefiniowane zasady mogą służyć do szybkiego konfigurowania zasad protokołu SSL w bramie aplikacji. Domyślnie **AppGwSslPolicy20150501** jest wybierana, jeśli nie zdefiniowano określonych zasad SSL.
+Brama aplikacji zawiera trzy wstępnie zdefiniowane zasady, które mogą być używane. `Get-AzApplicationGatewaySslPredefinedPolicy` polecenie cmdlet pobiera te zasady. Każda zasada ma inne wersje protokołu i włączono mechanizmy szyfrowania. Te wstępnie zdefiniowane zasady mogą służyć do szybkiego konfigurowania zasad protokołu SSL w bramie aplikacji. Domyślnie **AppGwSslPolicy20150501** jest wybierana, jeśli nie zdefiniowano określonych zasad SSL.
 
-Oto przykład `Get-AzApplicationGatewaySslPredefinedPolicy`danych wyjściowych.
+Poniżej przedstawiono przykład działania `Get-AzApplicationGatewaySslPredefinedPolicy`.
 
 ```
 Name: AppGwSslPolicy20150501
@@ -108,7 +108,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>Konfigurowanie niestandardowych zasad protokołu SSL
 
-Podczas konfigurowania niestandardowych zasad protokołu SSL przekazywane są następujące parametry: PolicyType, MinProtocolVersion, CipherSuite i elementu applicationgateway. Jeśli próbujesz przekazać inne parametry, podczas tworzenia lub aktualizowania Application Gateway wystąpi błąd. 
+Podczas konfigurowania niestandardowych zasad protokołu SSL przekazywane są następujące parametry: policyType, MinProtocolVersion, CipherSuite i elementu applicationgateway. Jeśli próbujesz przekazać inne parametry, podczas tworzenia lub aktualizowania Application Gateway wystąpi błąd. 
 
 Poniższy przykład ustawia niestandardowe zasady protokołu SSL w bramie aplikacji. Ustawia minimalną wersję protokołu na `TLSv1_1` i włącza następujące mechanizmy szyfrowania:
 
@@ -116,7 +116,7 @@ Poniższy przykład ustawia niestandardowe zasady protokołu SSL w bramie aplika
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> TLS_RSA_WITH_AES_256_CBC_SHA256 należy wybrać podczas konfigurowania niestandardowych zasad protokołu SSL. Brama aplikacji używa tego pakietu szyfrowania do zarządzania zapleczem. Można go użyć w połączeniu z innymi zestawami, ale należy również wybrać tę opcję. 
+> Należy wybrać TLS_RSA_WITH_AES_256_CBC_SHA256 podczas konfigurowania niestandardowych zasad protokołu SSL. Brama aplikacji używa tego pakietu szyfrowania do zarządzania zapleczem. Można go użyć w połączeniu z innymi zestawami, ale należy również wybrać tę opcję. 
 
 ```powershell
 # get an application gateway resource
@@ -134,7 +134,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Tworzenie bramy aplikacji ze wstępnie zdefiniowanymi zasadami protokołu SSL
 
-Podczas konfigurowania wstępnie zdefiniowanych zasad SSL należy przekazać następujące parametry: PolicyType, PolicyName i elementu applicationgateway. Jeśli próbujesz przekazać inne parametry, podczas tworzenia lub aktualizowania Application Gateway wystąpi błąd.
+Podczas konfigurowania wstępnie zdefiniowanych zasad SSL przekazywane są następujące parametry: policyType, PolicyName i elementu applicationgateway. Jeśli próbujesz przekazać inne parametry, podczas tworzenia lub aktualizowania Application Gateway wystąpi błąd.
 
 Poniższy przykład tworzy nową bramę aplikacji ze wstępnie zdefiniowanymi zasadami protokołu SSL.
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Aktualizowanie istniejącej bramy aplikacji przy użyciu wstępnie zdefiniowanych zasad SSL
 
-Aby ustawić niestandardowe zasady protokołu SSL, należy przekazać następujące parametry: **PolicyType**, **MinProtocolVersion**, **CipherSuite**i **elementu applicationgateway**. Aby ustawić wstępnie zdefiniowane zasady protokołu SSL, należy przekazać następujące parametry: **PolicyType**, **PolicyName**i **elementu applicationgateway**. Jeśli próbujesz przekazać inne parametry, podczas tworzenia lub aktualizowania Application Gateway wystąpi błąd.
+Aby ustawić niestandardowe zasady protokołu SSL, należy przekazać następujące parametry: **policyType**, **MinProtocolVersion**, **CipherSuite**i **elementu applicationgateway**. Aby ustawić wstępnie zdefiniowane zasady protokołu SSL, należy przekazać następujące parametry: **policyType**, **PolicyName**i **elementu applicationgateway**. Jeśli próbujesz przekazać inne parametry, podczas tworzenia lub aktualizowania Application Gateway wystąpi błąd.
 
 W poniższym przykładzie istnieją przykłady kodu dla zasad niestandardowych i wstępnie zdefiniowanych zasad. Usuń komentarz z zasad, których chcesz użyć.
 

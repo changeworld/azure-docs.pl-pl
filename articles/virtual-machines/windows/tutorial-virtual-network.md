@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi na maszynach wirtualnych z systemem Windows | Microsoft Docs
+title: Samouczek — Tworzenie sieci wirtualnych platformy Azure dla maszyn wirtualnych z systemem Windows i zarządzanie nimi
 description: Z tego samouczka dowiesz się, jak tworzyć sieci wirtualne platformy Azure i zarządzać nimi za pomocą programu Azure PowerShell na maszynach wirtualnych z systemem Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5a780617b8f46c5ec5f00fbfc45b7d91c29a836
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67cfb04f67e3454bde25969b634116f2871cbeb5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100207"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064744"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Samouczek: tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi za pomocą programu Azure PowerShell na maszynach wirtualnych z systemem Windows
 

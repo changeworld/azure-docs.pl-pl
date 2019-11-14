@@ -1,7 +1,7 @@
 ---
 title: Punkt końcowy wyszukiwania niestandardowego Bing
 titleSuffix: Azure Cognitive Services
-description: Podsumowanie punktu końcowego interfejs API wyszukiwania niestandardowego Bing.
+description: Twórz dostosowane środowiska wyszukiwania dla interesujących Cię tematów. Użytkownicy widzą wyniki wyszukiwania dopasowane do zawartości, o której się interesują.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: e3b544d8d655b653383cc999de233e2163433d85
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405078"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072788"
 ---
 # <a name="custom-search"></a>Wyszukiwanie niestandardowe
 Wyszukiwanie niestandardowe Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów. Użytkownicy zobaczą wyniki wyszukiwania dostosowane do zawartości, która ich interesuje, zamiast przewijać kolejne strony ogólnych wyników wyszukiwania zawierające nieistotną zawartość.
 
 ## <a name="custom-search-endpoint"></a>Niestandardowy punkt końcowy wyszukiwania
-Aby uzyskać wyniki przy użyciu interfejs API wyszukiwania niestandardowego Bing, Wyślij `GET` żądanie do poniższego punktu końcowego. Użyj nagłówków i parametrów adresu URL, aby zdefiniować dalsze specyfikacje.
+Aby uzyskać wyniki przy użyciu interfejs API wyszukiwania niestandardowego Bing, Wyślij żądanie `GET` do poniższego punktu końcowego. Użyj nagłówków i parametrów adresu URL, aby zdefiniować dalsze specyfikacje.
 
-Punktu końcowego Zwraca sugestie wyszukiwania jako wyniki JSON, które są istotne dla danych wejściowych użytkownika zdefiniowanych przez `?q=""`.
+Punkt końcowy: zwraca sugestie wyszukiwania jako wyniki JSON, które są istotne dla danych wejściowych użytkownika zdefiniowanych przez `?q=""`.
 ```  
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
 
-Przykłady opisujące sposób konfigurowania niestandardowych źródeł wyszukiwania można znaleźć w samouczku. [](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page) Aby uzyskać szczegółowe informacje o nagłówkach, parametrach, kodach rynku, obiektach odpowiedzi, błędach itp., zobacz [interfejs API wyszukiwania niestandardowego Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) .
+Przykłady opisujące sposób konfigurowania niestandardowych źródeł wyszukiwania można znaleźć w [samouczku](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page). Aby uzyskać szczegółowe informacje o nagłówkach, parametrach, kodach rynku, obiektach odpowiedzi, błędach itp., zobacz [interfejs API wyszukiwania niestandardowego Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) .
 
 ## <a name="custom-search-response-json"></a>Niestandardowy kod JSON odpowiedzi wyszukiwania
 Niestandardowe żądanie wyszukiwania zwraca wyniki jako obiekty JSON, zobacz [obiekty odpowiedzi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects). 
 
-## <a name="custom-autosuggest"></a>Automatyczne sugerowanie
+## <a name="custom-autosuggest"></a>Niestandardowe automatyczne sugerowanie
 Niestandardowy interfejs API automatycznego sugerowania umożliwia wysyłanie częściowego terminu zapytania wyszukiwania do usługi Bing i powrót do listy sugerowanych zapytań, które można skonfigurować. Przy użyciu niestandardowego automatycznego sugerowania możesz dodać sugestie zwrócone przez interfejs API i opcjonalnie określić, czy mają być dołączane sugestie generowane przez usługę Bing.
 
 ## <a name="custom-autosuggest-endpoint"></a>Niestandardowy punkt końcowy automatycznego sugerowania

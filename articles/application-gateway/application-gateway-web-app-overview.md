@@ -1,18 +1,19 @@
 ---
-title: Omówienie wielodostępnych zaplecza, takich jak usługa Azure App Service, z platformą Azure Application Gateway
+title: Zaplecze z wieloma dzierżawcami
+titleSuffix: Azure Application Gateway
 description: Ta strona zawiera omówienie obsługi wielodostępnych zapleczy w usłudze Application Gateway.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 66e4a578e3f443f4cbc3f6e5467cf9a86adf05fe
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297043"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075189"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway obsługa zaplecza wielodostępnego, takiego jak usługa App Service
 
@@ -60,6 +61,6 @@ Mogą istnieć sytuacje, w których nazwa hosta w odpowiedzi z usługi App Servi
 
 Aby rozwiązać te problemy, zobacz [Rozwiązywanie problemów z adresem URL usługi App Service](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak skonfigurować bramę aplikacji za pomocą aplikacji wielodostępnej, takiej jak usługa Azure App Service Web App jako członek puli zaplecza, odwiedzając [konfigurowanie App Service Web Apps z Application Gateway](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)

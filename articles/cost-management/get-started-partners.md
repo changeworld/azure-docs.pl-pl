@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720749"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072347"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Wprowadzenie do Azure Cost Management dla partnerów
 
-Azure Cost Management jest natywnie dostępna dla partnerów, którzy zostali dołączeni do umowy klienta firmy Microsoft. W tym artykule wyjaśniono, w jaki sposób partnerzy używają funkcji [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) . Opisano w nim również, jak partnerzy zapewniają klientom Cost Management dostęp do nich. Klienci mogą korzystać z funkcji Cost Management, jeśli są włączone przez partnera CSP.
+Azure Cost Management jest natywnie dostępna dla partnerów, którzy zostali dołączeni do umowy klienta firmy Microsoft i kupili plan platformy Azure. W tym artykule wyjaśniono, w jaki sposób partnerzy używają funkcji [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) . Opisano w nim również, jak partnerzy zapewniają klientom Cost Management dostęp do nich. Klienci mogą korzystać z funkcji Cost Management, jeśli są włączone przez partnera CSP.
 
 Partnerzy programu CSP używają Cost Management do:
 

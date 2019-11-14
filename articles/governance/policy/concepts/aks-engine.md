@@ -1,17 +1,14 @@
 ---
 title: Uczenie Azure Policy aparatu AKS
 description: Dowiedz się, w jaki sposób Azure Policy CustomResourceDefinitions i Otwórz agenta zasad z strażnik v3, aby zarządzać klastrami z aparatem AKS.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 71f3f26b9ea7f24d674c911e18c785b0798a072c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512134"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072064"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Opis Azure Policy aparatu AKS
 
@@ -47,7 +44,7 @@ Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji us�
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
-   - Program Azure PowerShell
+   - Azure PowerShell
    
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell

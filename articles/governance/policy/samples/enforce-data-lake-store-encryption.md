@@ -1,21 +1,18 @@
 ---
-title: Przykład — Wymagaj szyfrowania dla Data Lake Store
-description: Ta przykładowa definicja zasad wymaga włączenia szyfrowania Data Lake Store.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
+title: Przykład — wymuszanie szyfrowania dla usługi Data Lake Store
+description: Ta przykładowa definicja zasad wymaga włączonego szyfrowania usługi Data Lake Store.
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 9cee9f2d94f822679acee0813471e271a38a38e3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: a8ed66e9b07e1fc15c8a1a3c8c33f0e218eb62b3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977193"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74070671"
 ---
-# <a name="sample---require-data-lake-store-encryption"></a>Przykład — Wymagaj szyfrowania Data Lake Store
+# <a name="sample---require-data-lake-store-encryption"></a>Przykład — Wymuszanie szyfrowania w usłudze Data Lake Store
 
-Te wbudowane zasady odmówią żadnych kont Data Lake Store, na których szyfrowanie nie jest włączone.
+Te wbudowane zasady nie zezwalają na korzystanie z kont usługi Data Lake Store, które nie mają włączonego szyfrowania.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,11 +38,11 @@ Te wbudowane zasady odmówią żadnych kont Data Lake Store, na których szyfrow
 }
 ```
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli). Aby uzyskać wbudowane zasady, użyj identyfikatora `a7ff3161-0087-490a-9ad9-ad6217f4f43a`.
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli). Aby uzyskać dostęp do wbudowanych zasad, użyj identyfikatora `a7ff3161-0087-490a-9ad9-ad6217f4f43a`.
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-Podczas przypisywania zasad wybierz pozycję **Wymuszaj szyfrowanie na kontach kontach datalakestore** z dostępnych wbudowanych definicji.
+Podczas przypisywania zasad wybierz pozycję **Wymuszaj szyfrowanie na kontach DataLakeStore** z dostępnych wbudowanych definicji.
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -57,7 +54,7 @@ $definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/poli
 New-AzPolicyAssignment -name "Data Lake Store encryption" -PolicyDefinition $definition -Scope <scope>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć przypisanie zasad.
 
@@ -73,7 +70,7 @@ Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 az policy assignment create --scope <scope> --name "Data Lake Store encryption" --policy a7ff3161-0087-490a-9ad9-ad6217f4f43a
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć przypisanie zasad.
 
@@ -83,4 +80,4 @@ az policy assignment delete --name "Data Lake Store encryption" --resource-group
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

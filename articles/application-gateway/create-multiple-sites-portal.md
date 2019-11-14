@@ -1,5 +1,6 @@
 ---
-title: Samouczek — Tworzenie bramy aplikacji, która hostuje wiele witryn sieci Web przy użyciu Azure Portal
+title: 'Samouczek: hostowanie wielu witryn sieci Web przy użyciu Azure Portal'
+titleSuffix: Azure Application Gateway
 description: W tym samouczku dowiesz się, jak utworzyć bramę aplikacji, która będzie hostować wiele witryn sieci Web przy użyciu Azure Portal.
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3b6818d68b62b574e49817b574450625c231506c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833573"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075146"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Samouczek: Tworzenie i Konfigurowanie bramy aplikacji na potrzeby hostowania wielu witryn sieci Web przy użyciu Azure Portal
 
@@ -21,7 +22,7 @@ Azure Portal służy do [konfigurowania hostingu wielu witryn sieci Web](multipl
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie bramy Application Gateway
+> * Tworzenie bramy aplikacji
 > * Tworzenie maszyn wirtualnych dla serwerów zaplecza
 > * Tworzenie pul zaplecza z serwerami zaplecza
 > * Tworzenie odbiorników zaplecza
@@ -32,11 +33,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com)
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
+## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 1. Wybierz pozycję **Utwórz zasób** w menu po lewej stronie w witrynie Azure Portal. Zostanie wyświetlone okno **Nowe**.
 

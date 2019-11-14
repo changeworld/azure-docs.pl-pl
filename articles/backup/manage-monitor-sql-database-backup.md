@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968365"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074784"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie kopiami zapasowymi baz danych SQL Server i ich monitorowanie
 
@@ -42,7 +42,7 @@ Ponieważ kopie zapasowe dzienników są wykonywane co 15 minut, monitorowanie z
 
 Aby monitorować alerty kopii zapasowej bazy danych:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Na pulpicie nawigacyjnym magazynu wybierz pozycję **alerty i zdarzenia**.
 
@@ -117,7 +117,7 @@ Można uruchamiać różne typy kopii zapasowych na żądanie:
 - Różnicowa kopia zapasowa
 - Kopia zapasowa dziennika
 
-Podczas gdy trzeba określić czas przechowywania dla pełnej kopii zapasowej, zakres przechowywania dla pełnej kopii zapasowej w trybie ad-hoc zostanie automatycznie ustawiony na 45 dni od bieżącego czasu.
+Podczas gdy trzeba określić czas przechowywania dla pełnej kopii zapasowej, zakres przechowywania dla pełnej kopii zapasowej na żądanie zostanie automatycznie ustawiony na 45 dni od bieżącego czasu.
 
 Aby uzyskać więcej informacji, zobacz [SQL Server typów kopii zapasowych](backup-architecture.md#sql-server-backup-types).
 

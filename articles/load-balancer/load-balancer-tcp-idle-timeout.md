@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie Load Balancer limitu czasu bezczynności protokołu TCP na platformie Azure
-titlesuffix: Azure Load Balancer
-description: Skonfiguruj limit czasu bezczynności protokołu TCP Load Balancer
+title: Konfigurowanie limitu czasu bezczynności protokołu TCP modułu równoważenia obciążenia na platformie Azure
+titleSuffix: Azure Load Balancer
+description: W tym artykule dowiesz się, jak skonfigurować Azure Load Balancer limit czasu bezczynności protokołu TCP.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: b3df1ead7a3164ffd9a4b4acf8820d0f5b82cee3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 530bfbe85a564b3dd517e14df819586dee332a78
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274178"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076964"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Skonfiguruj ustawienia limitu czasu bezczynności protokołu TCP dla Azure Load Balancer
 
@@ -26,7 +26,7 @@ ms.locfileid: "68274178"
 
 W konfiguracji domyślnej Azure Load Balancer ma ustawienie limitu czasu bezczynności wynoszące 4 minuty. Jeśli okres braku aktywności jest dłuższy niż wartość limitu czasu, nie ma gwarancji, że sesja TCP lub HTTP jest utrzymywana między klientem a usługą w chmurze.
 
-Gdy połączenie zostanie zamknięte, aplikacja kliencka może otrzymać następujący komunikat o błędzie: "Połączenie podstawowe zostało zamknięte: Połączenie, które miało być utrzymywane w stanie aktywności, zostało zamknięte przez serwer ".
+Gdy połączenie zostanie zamknięte, aplikacja kliencka może otrzymać następujący komunikat o błędzie: "Połączenie podstawowe zostało zamknięte: połączenie, które było oczekiwać aktywności, zostało zamknięte przez serwer".
 
 Typowym zastosowaniem jest utrzymywanie aktywności protokołu TCP. Ta metoda utrzymuje, że połączenie jest aktywne przez dłuższy czas. Aby uzyskać więcej informacji, zobacz te [przykłady dla platformy .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Gdy włączona jest funkcja Keep-Alive, pakiety są wysyłane w trakcie okresów braku aktywności w ramach połączenia. Te pakiety Keep-Alive zapewniają, że wartość limitu czasu bezczynności nigdy nie zostanie osiągnięta, a połączenie jest utrzymywane przez długi czas.
 
@@ -113,7 +113,7 @@ Zmiany w pliku cscfg dla ustawienia limitu czasu dla publicznych adresów IP to:
 
 ## <a name="rest-api-example"></a>Przykład interfejsu API REST
 
-Limit czasu bezczynności protokołu TCP można skonfigurować przy użyciu interfejsu API zarządzania usługami. Upewnij się, że `x-ms-version` nagłówek jest ustawiony na wersję `2014-06-01` lub nowszą. Zaktualizuj konfigurację określonych punktów końcowych ze zrównoważonym obciążeniem na wszystkich maszynach wirtualnych we wdrożeniu.
+Limit czasu bezczynności protokołu TCP można skonfigurować przy użyciu interfejsu API zarządzania usługami. Upewnij się, że nagłówek `x-ms-version` jest ustawiony na wersję `2014-06-01` lub nowszą. Zaktualizuj konfigurację określonych punktów końcowych ze zrównoważonym obciążeniem na wszystkich maszynach wirtualnych we wdrożeniu.
 
 ### <a name="request"></a>Żądanie
 
@@ -152,7 +152,7 @@ Limit czasu bezczynności protokołu TCP można skonfigurować przy użyciu inte
 </LoadBalancedEndpointList>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przegląd wewnętrznego modułu równoważenia obciążenia](load-balancer-internal-overview.md)
 

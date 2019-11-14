@@ -1,5 +1,5 @@
 ---
-title: Dodaj diagnostykę & monitorowania do maszyny wirtualnej platformy Azure | Microsoft Docs
+title: Dodaj diagnostykę & monitorowania do maszyny wirtualnej platformy Azure
 description: Użyj szablonu Azure Resource Manager, aby utworzyć nową maszynę wirtualną z systemem Windows przy użyciu rozszerzenia usługi Azure Diagnostics.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ba8fdba3b7283185920432b5b096b80b2e32021
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092544"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073838"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Używanie monitorowania i diagnostyki z MASZYNami wirtualnymi z systemem Windows i szablonami Azure Resource Manager
 Rozszerzenie Diagnostyka Azure zapewnia możliwości monitorowania i diagnostyki na maszynie wirtualnej platformy Azure opartej na systemie Windows. Te możliwości można włączyć na maszynie wirtualnej, dołączając rozszerzenie jako część szablonu Azure Resource Manager. Zobacz [Tworzenie szablonów Azure Resource Manager z rozszerzeniami maszyn wirtualnych](../windows/template-description.md#extensions) , aby uzyskać więcej informacji na temat dołączania dowolnego rozszerzenia w ramach szablonu maszyny wirtualnej. W tym artykule opisano sposób dodawania rozszerzenia Diagnostyka Azure do szablonu maszyny wirtualnej z systemem Windows.  
@@ -157,24 +157,24 @@ Wartość MetricAggregation *PT1M* i *PT1H* oznacza agregację na minutę i agre
 ## <a name="wadmetrics-tables-in-storage"></a>WADMetrics tabel w magazynie
 Powyższa konfiguracja metryk generuje tabele na koncie magazynu diagnostyki przy użyciu następujących konwencji nazewnictwa:
 
-* **WADMetrics**: Prefiks standardowy dla wszystkich tabel WADMetrics
-* **PT1H** lub **PT1M**: Oznacza, że tabela zawiera zagregowane dane przez 1 godzinę lub 1 minutę
-* **P10D**: Oznacza, że tabela będzie zawierać dane przez 10 dni od momentu rozpoczęcia zbierania danych przez tabelę
-* **V2S**: Stała ciąg
-* **yyyymmdd**: Data rozpoczęcia zbierania danych przez tabelę
+* **WADMetrics**: prefiks standardowy dla wszystkich tabel WADMetrics
+* **PT1H** lub **PT1M**: oznacza, że tabela zawiera zagregowane dane przez 1 godzinę lub 1 minutę
+* **P10D**: oznacza, że tabela będzie zawierać dane przez 10 dni od momentu rozpoczęcia zbierania danych przez tabelę
+* **V2S**: ciąg stałej
+* **RRRRMMDD**: Data rozpoczęcia zbierania danych przez tabelę
 
 Przykład: *WADMetricsPT1HP10DV2S20151108* zawiera dane metryk zagregowane w ciągu godziny przez 10 dni, począwszy od 11-lis-2015    
 
 Każda tabela WADMetrics zawiera następujące kolumny:
 
-* **PartitionKey**: Klucz partycji jest zbudowany na podstawie wartości *ResourceID* w celu jednoznacznego zidentyfikowania zasobu maszyny wirtualnej. Na przykład: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: Format `<Descending time tick>:<Performance Counter Name>`. Malejące obliczenie cykl czasu to maksymalne cykle czasu minus czas rozpoczęcia okresu agregacji. Na przykład jeśli okres próbny rozpoczęty 10-lis-2015 i 00:00Hrs UTC, obliczenia byłyby następujące: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. W przypadku licznika wydajności liczba bajtów dostępnej pamięci zostanie wyświetlona wartość klucza wiersza:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
-* **CounterName**: Jest nazwą licznika wydajności. Pasuje do *counterSpecifier* zdefiniowanego w konfiguracji XML.
-* Wartość **Maksymalna**: Maksymalna wartość licznika wydajności w okresie agregacji.
-* **Minimum**: Minimalna wartość licznika wydajności w okresie agregacji.
-* **Łącznie**: Suma wszystkich wartości licznika wydajności raportowanego w okresie agregacji.
-* **Liczba**: Całkowita liczba wartości zgłoszonych dla licznika wydajności.
-* **Średnia**: Średnia (całkowita/liczba) wartość licznika wydajności w okresie agregacji.
+* **PartitionKey**: klucz partycji jest zbudowany na podstawie wartości *ResourceID* w celu jednoznacznego zidentyfikowania zasobu maszyny wirtualnej. Na przykład: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **RowKey**: Postępuj zgodnie z formatem `<Descending time tick>:<Performance Counter Name>`. Malejące obliczenie cykl czasu to maksymalne cykle czasu minus czas rozpoczęcia okresu agregacji. Na przykład jeśli okres próbny rozpoczęty 10-lis-2015 i 00:00Hrs UTC, obliczenia byłyby następujące: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. W przypadku licznika wydajności liczba bajtów dostępnej pamięci zostanie wyświetlona wartość klucza wiersza: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **CounterName**: jest nazwą licznika wydajności. Pasuje do *counterSpecifier* zdefiniowanego w konfiguracji XML.
+* **Maksimum**: maksymalna wartość licznika wydajności w okresie agregacji.
+* **Minimum**: wartość minimalna licznika wydajności w okresie agregacji.
+* **Łącznie**: suma wszystkich wartości licznika wydajności raportowanego w okresie agregowania.
+* **Liczba**: całkowita liczba wartości zgłoszonych dla licznika wydajności.
+* **Średnia**: wartość średnia (całkowita/liczba) licznika wydajności w okresie agregacji.
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby zapoznać się z kompletnym przykładowym szablonem maszyny wirtualnej z systemem Windows z rozszerzeniem Diagnostics, zobacz [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   

@@ -1,5 +1,5 @@
 ---
-title: Rozmiary maszyn wirtualnych z systemem Windows Azure — HPC | Microsoft Docs
+title: Rozmiary maszyn wirtualnych z systemem Windows Azure — HPC
 description: Wyświetla różne rozmiary dostępne dla maszyn wirtualnych o wysokiej wydajności systemu Windows na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: 0c5398caf85566f78c7ebe9e8ba114a53d2f6271
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e96c74eb4b9b96459bb5de7db2faeb47ed99a82e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088519"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065454"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Rozmiary maszyn wirtualnych o wysokiej wydajności
 
@@ -73,7 +73,7 @@ Platforma Azure oferuje kilka opcji tworzenia klastrów maszyn wirtualnych z sys
 
 * **Maszyny wirtualne** — Wdróż maszyny wirtualne z obsługą funkcji RDMA w tym samym zestawie dostępności (w przypadku korzystania z Azure Resource Manager modelu wdrażania). W przypadku korzystania z klasycznego modelu wdrażania należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
 
-* **Zestawy skalowania maszyn wirtualnych** — w zestawie skalowania maszyn wirtualnych należy ograniczyć wdrożenie do pojedynczej grupy umieszczania. Na przykład w szablonie Menedżer zasobów Ustaw `singlePlacementGroup` właściwość na. `true` 
+* **Zestawy skalowania maszyn wirtualnych** — w zestawie skalowania maszyn wirtualnych należy ograniczyć wdrożenie do pojedynczej grupy umieszczania. Na przykład w szablonie Menedżer zasobów ustaw właściwość `singlePlacementGroup` na `true`. 
 
 * **MPI między maszynami wirtualnymi** — jeśli jest to wymagane między maszynami wirtualnymi, upewnij się, że maszyny wirtualne znajdują się w tym samym zestawie dostępności lub na maszynie wirtualnej tego samego zestawu skalowania.
 
@@ -81,7 +81,7 @@ Platforma Azure oferuje kilka opcji tworzenia klastrów maszyn wirtualnych z sys
 
 * **Azure Batch** — utwórz pulę [Azure Batch](/azure/batch/) do uruchamiania obciążeń MPI w węzłach obliczeniowych systemu Windows Server. Aby uzyskać więcej informacji, zobacz [Korzystanie z wystąpień obsługujących funkcję RDMA lub GPU w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz również projekt [stoczni usługi Batch](https://github.com/Azure/batch-shipyard) do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
 
-* **Pakiet Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zawiera środowisko uruchomieniowe dla MS-MPI, które używa sieci usługi Azure RDMA w przypadku wdrożenia na maszynach wirtualnych z systemem Windows z obsługą funkcji RDMA. Na przykład wdrożenia, zobacz [Konfigurowanie klastra funkcji Windows RDMA przy użyciu pakietu HPC Pack do uruchamiania aplikacji MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Pakiet **Microsoft HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zawiera środowisko uruchomieniowe dla MS-MPI, które korzysta z sieci usługi Azure RDMA w przypadku wdrożenia na maszynach wirtualnych z systemem Windows z obsługą funkcji RDMA. Na przykład wdrożenia, zobacz [Konfigurowanie klastra funkcji Windows RDMA przy użyciu pakietu HPC Pack do uruchamiania aplikacji MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="other-sizes"></a>Inne rozmiary
 - [Zastosowania ogólne](sizes-general.md)

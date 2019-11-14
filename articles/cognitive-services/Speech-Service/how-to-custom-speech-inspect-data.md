@@ -1,7 +1,7 @@
 ---
 title: Sprawdzanie jakości danych dla usługi Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
-description: Custom Speech udostępnia narzędzia umożliwiające wizualne badanie jakości rozpoznawania modelu przez porównanie danych audio z odpowiednim wynikiem rozpoznawania. Z poziomu portalu Custom Speech można odtworzyć załadowane audio i określić, czy podany wynik rozpoznawania jest poprawny.  To narzędzie umożliwia szybkie sprawdzenie jakości naszego modelu zamiany mowy na tekst linii bazowej lub przeszkolonego modelu niestandardowego bez konieczności transkrypcja jakichkolwiek danych audio.
+description: Custom Speech udostępnia narzędzia umożliwiające wizualne badanie jakości rozpoznawania modelu przez porównanie danych audio z odpowiednim wynikiem rozpoznawania. Możesz odtworzyć przekazany dźwięk i określić, czy podany wynik rozpoznawania jest poprawny.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801490"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072556"
 ---
 # <a name="inspect-custom-speech-data"></a>Inspekcja danych Custom Speech
 
@@ -37,24 +37,24 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć test:
 3. Kliknij przycisk **Dodaj test**.
 4. Wybierz pozycję **Inspekcja jakości (dane audio)** . Nadaj testowi nazwę, opis i wybierz zestaw danych audio.
 5. Wybierz maksymalnie dwa modele, które chcesz przetestować.
-6. Kliknij przycisk **Utwórz**.
+6. Kliknij pozycję **Utwórz**.
 
 Po pomyślnym utworzeniu testu można porównać modele obok siebie.
 
 ## <a name="side-by-side-model-comparisons"></a>Porównania modeli obok siebie
 
-Gdy test stanu zakończy *się pomyślnie*, kliknij w nazwie elementu testowego, aby zobaczyć szczegóły testu. Ta strona szczegółów zawiera listę wszystkich wyrażenia długości w zestawie danych, wskazując wyniki rozpoznawania dwóch modeli obok transkrypcji z przesłanego zestawu danych.
+Gdy test stanu zakończy _się pomyślnie_, kliknij w nazwie elementu testowego, aby zobaczyć szczegóły testu. Ta strona szczegółów zawiera listę wszystkich wyrażenia długości w zestawie danych, wskazując wyniki rozpoznawania dwóch modeli obok transkrypcji z przesłanego zestawu danych.
 
 Aby pomóc w sprawdzeniu porównania obok siebie, można przełączać różne typy błędów, w tym Wstawianie, usuwanie i podstawianie. Nasłuchiwanie dźwięku i porównywanie wyników rozpoznawania w każdej kolumnie (pokazującej transkrypcję i wyniki dwóch modeli zamiany mowy na tekst) można zdecydować, który model spełnia Twoje potrzeby i gdzie są potrzebne ulepszenia.
 
-Sprawdzanie jakości testowania jest przydatne w przypadku, gdy jakość punktu końcowego rozpoznawania mowy jest wystarczająca dla aplikacji.  Aby określić obiektywną miarę dokładności wymagającą uzyskanego audio, postępuj zgodnie z instrukcjami znajdującymi się w [ocenie dokładności](how-to-custom-speech-evaluate-data.md).
+Sprawdzanie jakości testowania jest przydatne w przypadku, gdy jakość punktu końcowego rozpoznawania mowy jest wystarczająca dla aplikacji. Aby określić obiektywną miarę dokładności wymagającą uzyskanego audio, postępuj zgodnie z instrukcjami znajdującymi się w [ocenie dokładności](how-to-custom-speech-evaluate-data.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Oceń dane](how-to-custom-speech-evaluate-data.md)
-* [Uczenie modelu](how-to-custom-speech-train-model.md)
-* [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
+- [Oceń dane](how-to-custom-speech-evaluate-data.md)
+- [Uczenie modelu](how-to-custom-speech-train-model.md)
+- [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Przygotuj dane testowe dla Custom Speech](how-to-custom-speech-test-data.md)
+- [Przygotuj dane testowe dla Custom Speech](how-to-custom-speech-test-data.md)

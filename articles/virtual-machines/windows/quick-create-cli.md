@@ -1,5 +1,5 @@
 ---
-title: Szybki Start — Tworzenie maszyny wirtualnej z systemem Windows przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Szybki Start — Tworzenie maszyny wirtualnej z systemem Windows przy użyciu interfejsu wiersza polecenia platformy Azure
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną z systemem Windows przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3ad81091fa93993f71c6d65175e50f6ee216757
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088855"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073463"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Szybki start: Tworzenie maszyny wirtualnej z systemem Windows za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Windows za pomocą interfejsu wiersza polecenia platformy Azure
 
 Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure wdrożyć na platformie Azure maszynę wirtualną z systemem Windows Server 2016. Aby zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu RDP i zainstalujesz serwer internetowy usług IIS.
 
@@ -46,8 +46,8 @@ az group create --name myResourceGroup --location eastus
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*. W tym przykładzie używa się *azureuser* dla nazwy użytkownika administracyjnego. 
 
-Należy zmienić wartość parametru `--admin-password` lub nie powiedzie się. Zmień go na hasło spełniające [wymagania dotyczące haseł dla maszyn wirtualnych](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-)platformy Azure. Nazwa użytkownika i hasło będą później używane podczas nawiązywania połączenia z maszyną wirtualną.
+Należy zmienić wartość `--admin-password` lub nie powiedzie się. Zmień go na hasło spełniające wymagania dotyczące [haseł dla maszyn wirtualnych platformy Azure](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+). Nazwa użytkownika i hasło będą później używane podczas nawiązywania połączenia z maszyną wirtualną.
 
 ```azurecli-interactive
 az vm create \
