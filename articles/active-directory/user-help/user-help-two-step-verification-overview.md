@@ -1,5 +1,5 @@
 ---
-title: Przegląd weryfikacji dwuskładnikowej i konta służbowego — Azure Active Directory | Microsoft Docs
+title: Weryfikacja zabezpieczeń & konta służbowego — Azure AD
 description: Dowiedz się więcej na temat sposobu konfigurowania metod weryfikacji zabezpieczeń w celu korzystania z weryfikacji dwuskładnikowej przy użyciu konta służbowego.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8cda4b04a4555ed7747bb9444c2a5ec2e266573
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615999"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028463"
 ---
-# <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>Przegląd weryfikacji dwuskładnikowej i konta służbowego
+# <a name="two-factor-verification-and-your-work-or-school-account"></a>Weryfikacja dwuskładnikowa i konto służbowe
 
 Dotarła do Ciebie wiadomość e-mail z działu IT lub przełożonego z informacją, że organizacja dodała dodatkową weryfikację zabezpieczeń do Twojego konta. Co to oznacza? Oznacza to, że Twoja organizacja podejmuje dodatkowe kroki, aby upewnić się, że jesteś osobą, za którą podajesz się podczas logowania. Ta dodatkowa weryfikacja, znana także jako weryfikacja dwuskładnikowa, odbywa się za pomocą kombinacji nazwy użytkownika, hasła oraz urządzenia przenośnego lub telefonu.
 
@@ -29,7 +29,7 @@ Weryfikacja dwuetapowa jest bezpieczniejsza niż tylko hasło, ponieważ opiera 
 >[!Important]
 >Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 >
->Ta zawartość jest również przeznaczona wyłącznie do użytku z kontem służbowym, które jest udostępniane przez organizację (na przykład alain@contoso.com). Jeśli masz problemy z weryfikacją dwuetapową i osobistą konto Microsoft, konto, które zostało skonfigurowane dla siebie (na przykład danielle@outlook.com), zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej dla konto Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Ta zawartość jest również przeznaczona wyłącznie do użytku z kontem służbowym, które jest udostępniane przez organizację (na przykład alain@contoso.com). Jeśli masz problemy z weryfikacją dwuetapową i osobistą konto Microsoft, konto skonfigurowane dla siebie (na przykład danielle@outlook.com), zobacz [Włączanie lub wyłączanie weryfikacji dwuskładnikowej w konto Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Kto decyduje o możliwości użycia tej funkcji?
 

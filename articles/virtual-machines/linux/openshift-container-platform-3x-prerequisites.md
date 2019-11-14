@@ -1,5 +1,5 @@
 ---
-title: OpenShift kontenerów platformy 3,11 w wymaganiach wstępnych platformy Azure | Microsoft Docs
+title: OpenShift kontenerów platformy 3,11 w wymaganiach wstępnych platformy Azure
 description: Wymagania wstępne dotyczące wdrażania OpenShift kontenera platform 3,11 na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882414"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035473"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Wspólne wymagania wstępne dotyczące wdrażania OpenShift Container platform 3,11 na platformie Azure
 
@@ -51,13 +51,13 @@ W tym przewodniku opisano sposób tworzenia artefaktów skojarzonych z wymagania
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure 
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie lub kliknij przycisk **Wypróbuj** , aby użyć Cloud Shell.
 
 ```azurecli 
 az login
 ```
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Należy użyć dedykowanej grupy zasobów, aby hostować Magazyn kluczy. Ta grupa jest oddzielona od grupy zasobów, w której wdrożone są zasoby klastra OpenShift.
 
@@ -97,7 +97,7 @@ Wdrożenie OpenShift korzysta z utworzonego klucza SSH w celu zabezpieczenia dos
 az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
-## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi 
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi 
 OpenShift komunikuje się z platformą Azure przy użyciu nazwy użytkownika i hasła lub nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń, której można używać z aplikacjami, usługami i narzędziami automatyzacji, takimi jak OpenShift. Użytkownik kontroluje i definiuje uprawnienia do działania, które może wykonywać jednostka usługi na platformie Azure. Najlepszym rozwiązaniem jest zakres uprawnień nazwy głównej usługi do określonych grup zasobów, a nie całej subskrypcji.
 
 Utwórz nazwę główną usługi za pomocą polecenia [AZ AD Sp Create-for-RBAC](/cli/azure/ad/sp) i Wyprowadź wymagane przez OpenShift poświadczenia.
@@ -139,7 +139,7 @@ Aby uzyskać więcej informacji o jednostkach usługi, zobacz [Tworzenie jednost
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Wymagania wstępne dotyczące Menedżer zasobów szablonu
 
-Należy utworzyć wpisy tajne dla prywatnego klucza SSH (**sshPrivateKey**), wpisu tajnego klienta usługi Azure AD (**AadClientSecret**), OpenShift administratora hasła (**OpenshiftPassword**) oraz hasła Menedżera subskrypcji Red Hat lub klucza aktywacji ( **rhsmPasswordOrActivationKey**).  Ponadto jeśli są używane niestandardowe certyfikaty SSL, należy utworzyć sześć dodatkowych kluczy tajnych — **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**i  **masterkeyfile**.  Te parametry zostaną omówione bardziej szczegółowo.
+Należy utworzyć wpisy tajne dla prywatnego klucza SSH (**sshPrivateKey**), klucza tajnego klienta usługi Azure AD (**aadClientSecret**), hasła administratora OpenShift (**OpenshiftPassword**) oraz hasła Menedżera subskrypcji Red Hat lub klucza aktywacji (**rhsmPasswordOrActivationKey**).  Ponadto jeśli są używane niestandardowe certyfikaty SSL, należy utworzyć sześć dodatkowych kluczy tajnych — **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**i **masterkeyfile**.  Te parametry zostaną omówione bardziej szczegółowo.
 
 Szablon odwołuje się do określonych nazw wpisów tajnych, więc **należy** użyć pogrubionych nazw wymienionych powyżej (z uwzględnieniem wielkości liter).
 

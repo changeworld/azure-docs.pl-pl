@@ -1,25 +1,25 @@
 ---
-title: 'Szybki start: zasady wygasania grup usługi Office 365 — Azure Active Directory | Microsoft Docs'
+title: Przewodnik Szybki Start dotyczący zasad wygasania grup — Azure AD | Microsoft Docs
 description: Wygasanie grup usługi Office 365 — Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 10/24/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d98dd0f4f9cdc506b8807932a255d14d3022d49
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024608"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026895"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Szybki start: konfigurowanie wygasania grup usługi Office 365 w usłudze Azure Active Directory
 
@@ -37,7 +37,7 @@ Zasady wygasania są proste:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
  Rola najniższych uprawnień wymagana do skonfigurowania wygaśnięcia grupy jest administratorem użytkownika w organizacji.
 

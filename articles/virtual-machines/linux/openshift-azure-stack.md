@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie OpenShift w Azure Stack | Microsoft Docs
+title: Wdróż OpenShift w Azure Stack
 description: Wdróż OpenShift w Azure Stack.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d6c73b8cd33aa85793a2ce839410065e03b97be7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390647"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035544"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Wdrażanie platformy kontenera OpenShift lub OKD w Azure Stack
 

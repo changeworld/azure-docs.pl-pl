@@ -1,5 +1,5 @@
 ---
-title: Samouczek — zarządzanie maszynami wirtualnymi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Samouczek — zarządzanie maszynami wirtualnymi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure zarządzać maszynami wirtualnymi platformy Azure, stosując kontrolę dostępu opartą na rolach, zasady, blokady i tagi
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 5fa14ef30d45a9a28cc690761ec33b5bfaaac6a7
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676503"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034539"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -64,7 +64,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Jeśli wystąpi błąd z informacją o **głównym \<guid > nie istnieje w katalogu**, Nowa grupa nie jest propagowana w całej Azure Active Directory. Spróbuj ponownie uruchomić polecenie.
+Jeśli zostanie wyświetlony błąd informujący o tym, że **identyfikator > guid \<podmiotu zabezpieczeń nie istnieje w katalogu**, Nowa grupa nie jest propagowana w całej Azure Active Directory. Spróbuj ponownie uruchomić polecenie.
 
 Zazwyczaj należy powtórzyć ten proces dla roli *Współautor sieci* i *Współautor konta magazynu*, aby upewnić się, że użytkownicy mogą zarządzać wdrożonymi zasobami. W tym artykule można pominąć te kroki.
 

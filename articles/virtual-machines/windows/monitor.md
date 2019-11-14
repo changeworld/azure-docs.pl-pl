@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie maszyn wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o monitorowaniu opcje dla maszyn wirtualnych Windows na platformie Azure.
+title: Monitorowanie maszyn wirtualnych z systemem Windows na platformie Azure
+description: Dowiedz się więcej na temat opcji monitorowania dla maszyn wirtualnych z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 6cc7a48bb11057f0cd6785d9d26e001ade896512
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b08c63d544ce40b439ce179621f323e99fcb55e5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720172"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033198"
 ---
 # <a name="how-to-monitor-virtual-machines-in-azure"></a>Jak monitorować maszyny wirtualne na platformie Azure
 

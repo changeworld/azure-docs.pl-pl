@@ -1,24 +1,24 @@
 ---
-title: Uprawnienia roli administratora niestandardowego dotyczące zarządzania rejestracją aplikacji — Azure Active Directory | Microsoft Docs
+title: Dostępne uprawnienia roli administratora niestandardowego — usługa Azure AD | Microsoft Docs
 description: Uprawnienia roli administratora niestandardowego do delegowania zarządzania tożsamościami.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ebffbc1c451404d93383a483eecdd4a25acf6b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928615"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025144"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Podtypy rejestracji aplikacji i uprawnienia w Azure Active Directory
 
@@ -101,7 +101,7 @@ Możliwość aktualizowania wszystkich właściwości w aplikacjach z pojedynczy
 
 Przyznaje takie same uprawnienia, jak Microsoft. Directory/Applications/allProperties/Update, ale tylko dla aplikacji z jedną dzierżawą.
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. katalog/aplikacje/odbiorcy/aktualizacja
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
 Możliwość aktualizacji właściwości obsługiwanego typu konta (signInAudience) w aplikacjach z pojedynczym katalogiem i aplikacjami wielokatalogowymi.
 
@@ -111,7 +111,7 @@ Możliwość aktualizacji właściwości obsługiwanego typu konta (signInAudien
 
 Przyznaje takie same uprawnienia, jak Microsoft. Directory/Applications/odbiorca/aktualizacja, ale tylko w przypadku aplikacji z jedną dzierżawą.
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>Microsoft. katalog/aplikacje/uwierzytelnianie/aktualizacja
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
 
 Możliwość aktualizowania adresu URL odpowiedzi, adresu URL logowania, przepływu niejawnego i właściwości domeny wydawcy w aplikacjach z jedną dzierżawą i wieloma dzierżawcami. Przyznaje dostęp do wszystkich pól na stronie uwierzytelniania rejestracji aplikacji, z wyjątkiem typów obsługiwanych kont:
 
@@ -131,7 +131,7 @@ Możliwość aktualizacji nazwy, logo, adresu URL strony głównej, adresu URL w
 
 Przyznaje takie same uprawnienia jak Microsoft. Directory/Applications/Basic/Update, ale tylko w przypadku aplikacji z jedną dzierżawą.
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>Microsoft. Directory/Applications/Credentials/Update
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft.directory/applications/credentials/update
 
 Możliwość aktualizowania certyfikatów i właściwości tajnych klienta w aplikacjach z jedną dzierżawą i wieloma dzierżawcami. Przyznaje dostęp do wszystkich pól na stronie certyfikatów rejestracji aplikacji & Secret:
 

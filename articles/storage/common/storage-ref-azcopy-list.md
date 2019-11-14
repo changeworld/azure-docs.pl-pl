@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b7348e3790166e1a1aecab422e571b8f2fc7cd5f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f02c1afadf18a7d3170eb178696487464e4a0bd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513524"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034094"
 ---
 # <a name="azcopy-list"></a>azcopy list
 
@@ -26,6 +26,13 @@ Tylko kontenery obiektów BLOB są obsługiwane w bieżącej wersji.
 ```azcopy
 azcopy list [containerURL] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Pokrewne artykuły koncepcyjne
+
+- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Przykłady
 
@@ -49,6 +56,6 @@ azcopy list [containerURL]
 |--Cap-MB/s UInt32|Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.|
 |--ciąg typu wyjściowego|Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text".|
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [AzCopy](storage-ref-azcopy.md)

@@ -1,26 +1,26 @@
 ---
-title: Dodatkowe scenariusze licencjonowania opartego na grupach — Azure Active Directory | Microsoft Docs
+title: Dodatkowe scenariusze licencjonowania opartego na grupach — Azure AD | Microsoft Docs
 description: Więcej scenariuszy Azure Active Directory licencjonowania opartego na grupach
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034182"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025945"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenariusze, ograniczenia i znane problemy przy użyciu grup do zarządzania licencjonowaniem w programie Azure Active Directory
 
@@ -28,7 +28,7 @@ Skorzystaj z poniższych informacji i przykładów, aby uzyskać bardziej zaawan
 
 ## <a name="usage-location"></a>Lokalizacja użycia
 
-Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość **Lokalizacja użycia** dla użytkownika. W [Azure Portal](https://portal.azure.com)można określić lokalizację użycia w **ustawieniach** **użytkownika** @no__t **profilu** &gt;.
+Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość **Lokalizacja użycia** dla użytkownika. W [Azure Portal](https://portal.azure.com)można określić lokalizację użycia w **ustawieniach**&gt; **profilu** &gt; **użytkownika** .
 
 W przypadku przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użycia dziedziczą lokalizację katalogu. Jeśli masz użytkowników w wielu lokalizacjach, upewnij się, że zostały one odzwierciedlone prawidłowo w zasobach użytkownika przed dodaniem użytkowników do grup z licencjami.
 
@@ -130,7 +130,7 @@ Możesz użyć skryptu programu PowerShell, aby sprawdzić, czy użytkownicy maj
 
 1. Uruchom polecenie cmdlet `connect-msolservice` w celu uwierzytelnienia i nawiązania połączenia z dzierżawcą.
 
-2. `Get-MsolAccountSku` może służyć do odnajdywania wszystkich zainicjowanych licencji na produkt w dzierżawie.
+2. `Get-MsolAccountSku` może służyć do wykrywania wszystkich licencji na produkty inicjowane w dzierżawie.
 
    ![Zrzut ekranu przedstawiający polecenie cmdlet Get-Msolaccountsku i sprawdź](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -193,7 +193,7 @@ To przykładowe dane wyjściowe przedstawiają początek przetwarzania, wszystki
 
 Nie można usunąć grupy z przypisaną aktywną licencją. Administrator może usunąć grupę niewykonującą, że spowoduje to usunięcie licencji z użytkowników. z tego powodu przed usunięciem tej grupy wymagane są wszystkie licencje.
 
-Podczas próby usunięcia grupy w Azure Portal może zostać wyświetlony komunikat o błędzie: @no__t — usunięcie grupy 0Screenshot nie powiodło się @ no__t-1
+Podczas próby usunięcia grupy w Azure Portal może zostać wyświetlony komunikat o błędzie: ![usunięcie grupy zrzutu ekranu nie powiodło się](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Przejdź do karty **licencje** w grupie i sprawdź, czy istnieją przypisane licencje. Jeśli tak, usuń te licencje i spróbuj ponownie usunąć grupę.
 
@@ -227,5 +227,5 @@ Aby dowiedzieć się więcej na temat innych scenariuszy zarządzania licencjami
 * [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
-* [Jak migrować użytkowników między licencjami produktu przy użyciu licencjonowania opartego na grupach w programie Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Przykłady programu PowerShell dla licencjonowania opartego na grupach w Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

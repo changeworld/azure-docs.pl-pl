@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fc23afb9a407fc2e6689c5c8766cb4beba868269
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513428"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034000"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -24,6 +24,13 @@ Usuwanie obiektów blob lub plików z konta usługi Azure Storage.
 ```azcopy
 azcopy remove [resourceURL] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Pokrewne artykuły koncepcyjne
+
+- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Przykłady
 
@@ -105,6 +112,6 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |--Cap-MB/s UInt32|Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.|
 |--ciąg typu wyjściowego|Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text".|
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [AzCopy](storage-ref-azcopy.md)

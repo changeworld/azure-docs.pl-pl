@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1b7f81c62217d9e113f3293a8f351d908a6a576
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887273"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023742"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Utwórz ustawienie diagnostyczne, aby zbierać dzienniki platformy i metryki na platformie Azure
 [Dzienniki platformy](resource-logs-overview.md) na platformie Azure zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure i platformy Azure, od których zależą. Ten artykuł zawiera szczegółowe informacje na temat tworzenia i konfigurowania ustawień diagnostycznych w celu zbierania dzienników platformy do różnych miejsc docelowych.
@@ -42,7 +42,8 @@ Dzienniki platformy można wysyłać do miejsc docelowych w poniższej tabeli. K
 | [Konto usługi Azure Storage](resource-logs-collect-storage.md) | Archiwizowanie dzienników na koncie usługi Azure Storage jest przydatne w przypadku inspekcji, analizy statycznej lub tworzenia kopii zapasowych. |
 
 
-
+> [!IMPORTANT]
+> Konta Azure Data Lake Storage Gen2 nie są obecnie obsługiwane jako miejsce docelowe dla ustawień diagnostycznych, mimo że mogą być wymienione jako prawidłowe opcje w Azure Portal.
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Tworzenie ustawień diagnostycznych w Azure Portal
 Ustawienia diagnostyczne można skonfigurować w Azure Portal z menu Azure Monitor lub z menu zasobów.
@@ -55,9 +56,9 @@ Ustawienia diagnostyczne można skonfigurować w Azure Portal z menu Azure Monit
 
     ![Ustawienia diagnostyczne](media/diagnostic-settings/menu-resource.png)
 
-2. Jeśli w wybranym zasobie nie ma żadnych ustawień, zostanie wyświetlony monit o utworzenie ustawienia. Kliknij pozycję **Włącz diagnostykę**.
+2. Jeśli ustawienia nie istnieje w zasobie wybrany, zostanie wyświetlony monit, aby utworzyć ustawienie. Kliknij pozycję **Włącz diagnostykę**.
 
-   ![Dodaj ustawienie diagnostyczne — brak istniejących ustawień](media/diagnostic-settings/add-setting.png)
+   ![Dodaj ustawienie diagnostyczne — nie istniejące ustawienia](media/diagnostic-settings/add-setting.png)
 
    Jeśli w zasobie istnieją istniejące ustawienia, zostanie wyświetlona lista ustawień, które zostały już skonfigurowane. Kliknij pozycję **Dodaj ustawienie diagnostyczne** , aby dodać nowe ustawienie lub **edytować ustawienie** , aby edytować istniejące. Każde ustawienie nie może mieć więcej niż jednego z typów docelowych.
 
@@ -72,7 +73,7 @@ Ustawienia diagnostyczne można skonfigurować w Azure Portal z menu Azure Monit
     | Konto magazynu | Nazwa konta magazynu. |
     | Przestrzeń nazw centrum zdarzeń | Przestrzeń nazw, w której jest tworzony centrum zdarzeń (jeśli jest to pierwsze dzienniki przesyłania strumieniowego) lub przesyłane strumieniowo do programu (jeśli istnieją już zasoby, które są przesyłane strumieniowo do tej przestrzeni nazw).
     | Nazwa centrum zdarzeń | Opcjonalnie można określić nazwę centrum zdarzeń, aby wysłać wszystkie dane w ustawieniu. Jeśli nie określisz nazwy, centrum zdarzeń zostanie utworzone dla każdej kategorii dzienników. W przypadku wysyłania wielu kategorii warto określić nazwę, aby ograniczyć liczbę utworzonych centrów zdarzeń. Szczegóły można znaleźć w temacie limity [przydziału i limity Event Hubs platformy Azure](../../event-hubs/event-hubs-quotas.md) . |
-    | Nazwa zasad centrum zdarzeń | Definiuje uprawnienia, które ma mechanizm przesyłania strumieniowego. |
+    | Nazwa zasad Centrum zdarzeń | Definiuje uprawnienia, które ma mechanizm przesyłania strumieniowego. |
 
     ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/diagnostic-settings/setting-details.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i przekazywanie wirtualnego dysku twardego Oracle Linux | Microsoft Docs
+title: Tworzenie i przekazywanie Oracle Linux wirtualnego dysku twardego
 description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure zawierającego Oracle Linux system operacyjny.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: ede12520fc6db089aea2d22b02dc32e72496830c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082457"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035370"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Linux w środowisku Oracle dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -36,7 +36,7 @@ W tym artykule założono, że zainstalowano już Oracle Linux system operacyjny
 * Architektura NUMA nie jest obsługiwana w przypadku większych rozmiarów maszyn wirtualnych ze względu na usterkę w wersjach jądra systemu Linux poniżej 2.6.37. Ten problem dotyczy głównie dystrybucji przy użyciu systemu Red Hat 2.6.32 jądro. Ręczna instalacja agenta systemu Linux (waagent) w systemie Azure spowoduje automatyczne wyłączenie architektury NUMA w konfiguracji GRUB jądra systemu Linux. Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Agenta systemu Linux można skonfigurować tak, aby utworzył plik wymiany na tymczasowym dysku zasobów.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Wszystkie wirtualne dyski twarde na platformie Azure muszą mieć rozmiar wirtualny wyrównany do 1 MB. Podczas konwertowania z dysku surowego na dysk VHD należy upewnić się, że rozmiar dysku surowego jest wielokrotnością 1 MB przed konwersją. Aby uzyskać więcej informacji, zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) .
-* Upewnij się, że `Addons` repozytorium jest włączone. `/etc/yum.repos.d/public-yum-ol6.repo`Edytuj plik (Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) i Zmień wiersz `enabled=0` na `enabled=1` **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
+* Upewnij się, że repozytorium `Addons` jest włączone. Edytuj plik `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7), a następnie zmień wiersz `enabled=0` na `enabled=1` w obszarze **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
 
 ## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
 Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, aby maszyna wirtualna mogła działać na platformie Azure.
@@ -48,11 +48,11 @@ Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, ab
         # sudo rpm -e --nodeps NetworkManager
    
     **Uwaga:** Jeśli pakiet nie jest jeszcze zainstalowany, to polecenie zakończy się niepowodzeniem z komunikatem o błędzie. Jest to oczekiwane.
-4. Utwórz plik o nazwie **Network** w `/etc/sysconfig/` katalogu zawierającym następujący tekst:
+4. Utwórz plik o nazwie **Sieć** w katalogu `/etc/sysconfig/`, który zawiera następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. Utwórz plik o nazwie **ifcfg-eth0** w `/etc/sysconfig/network-scripts/` katalogu zawierającym następujący tekst:
+5. Utwórz plik o nazwie **ifcfg-eth0** w katalogu `/etc/sysconfig/network-scripts/` zawierającym następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -83,7 +83,7 @@ Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, ab
    
    Rozruch graficzny i cichy nie są przydatne w środowisku chmury, w którym wszystkie dzienniki mają być wysyłane do portu szeregowego.
    
-   `crashkernel` Opcja może pozostać skonfigurowana w razie potrzeby, ale należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej o 128 MB/większej, co może powodować problemy w mniejszych rozmiarach maszyn wirtualnych.
+   Opcja `crashkernel` może pozostać skonfigurowana w razie potrzeby, ale należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej przez 128 MB lub więcej, co może powodować problemy w mniejszych rozmiarach maszyn wirtualnych.
 10. Upewnij się, że serwer SSH został zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zwykle jest to ustawienie domyślne.
 11. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie. Najnowsza wersja to 2.0.15.
     
@@ -92,7 +92,7 @@ Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, ab
     Należy pamiętać, że zainstalowanie pakietu WALinuxAgent spowoduje usunięcie pakietów sieciowych i programu NetworkManager-GNOME, jeśli nie zostały one jeszcze usunięte zgodnie z opisem w kroku 2.
 12. Nie należy tworzyć obszaru wymiany na dysku systemu operacyjnego.
     
-    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj odpowiednio następujące parametry w/etc/waagent.conf:
+    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem *tymczasowym* i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj odpowiednio następujące parametry w/etc/waagent.conf:
     
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -121,11 +121,11 @@ Przygotowywanie maszyny wirtualnej Oracle Linux 7 na platformie Azure jest bardz
 
 1. W Menedżerze funkcji Hyper-V wybierz maszynę wirtualną.
 2. Kliknij przycisk **Połącz** , aby otworzyć okno konsoli dla maszyny wirtualnej.
-3. Utwórz plik o nazwie **Network** w `/etc/sysconfig/` katalogu zawierającym następujący tekst:
+3. Utwórz plik o nazwie **Sieć** w katalogu `/etc/sysconfig/`, który zawiera następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. Utwórz plik o nazwie **ifcfg-eth0** w `/etc/sysconfig/network-scripts/` katalogu zawierającym następujący tekst:
+4. Utwórz plik o nazwie **ifcfg-eth0** w katalogu `/etc/sysconfig/network-scripts/` zawierającym następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -147,7 +147,7 @@ Przygotowywanie maszyny wirtualnej Oracle Linux 7 na platformie Azure jest bardz
    
         # sudo yum clean all
         # sudo yum -y update
-9. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz "/etc/default/grub" w edytorze tekstów i edytuj `GRUB_CMDLINE_LINUX` parametr, na przykład:
+9. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz "/etc/default/grub" w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`, na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -157,7 +157,7 @@ Przygotowywanie maszyny wirtualnej Oracle Linux 7 na platformie Azure jest bardz
    
    Rozruch graficzny i cichy nie są przydatne w środowisku chmury, w którym wszystkie dzienniki mają być wysyłane do portu szeregowego.
    
-   `crashkernel` Opcja może pozostać skonfigurowana w razie potrzeby, ale należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej o 128 MB/większej, co może powodować problemy w mniejszych rozmiarach maszyn wirtualnych.
+   Opcja `crashkernel` może pozostać skonfigurowana w razie potrzeby, ale należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej przez 128 MB lub więcej, co może powodować problemy w mniejszych rozmiarach maszyn wirtualnych.
 10. Po zakończeniu edycji "/etc/default/grub" powyżej, uruchom następujące polecenie, aby ponownie skompilować konfigurację grub:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -168,7 +168,7 @@ Przygotowywanie maszyny wirtualnej Oracle Linux 7 na platformie Azure jest bardz
         # sudo systemctl enable waagent
 13. Nie należy tworzyć obszaru wymiany na dysku systemu operacyjnego.
     
-    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj odpowiednio następujące parametry w/etc/waagent.conf:
+    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem *tymczasowym* i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj odpowiednio następujące parametry w/etc/waagent.conf:
     
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4

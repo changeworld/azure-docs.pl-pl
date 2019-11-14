@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 05/25/2017
+ms.date: 11/12/2019
 tags: active-directory
 ms.author: mimart
 author: v-miegge
@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6aee049f91aaa071595ab42e9bb4d6b2f5e8616d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795181"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021839"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów Azure Active Directory współpracy B2B
 
@@ -46,7 +46,7 @@ Jeśli ostatnio zmodyfikowano te ustawienia lub przypisano do użytkownika rolę
 
 ## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Użytkownik, który zaprosił, otrzymuje błąd podczas realizacji
 
-Typowe błędy obejmują:
+Typowe błędy:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Administrator osoby zaproszonej nie zezwolił na tworzenie EmailVerified użytkowników w swojej dzierżawie
 
@@ -62,7 +62,7 @@ Aby rozwiązać ten problem, administrator użytkownika zewnętrznego musi zsync
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak "\#", który nie jest zwykle prawidłowym znakiem, jest synchronizowany z usługą Azure AD?
 
-"\#" jest zastrzeżonym znakiem w UPN dla współpracy z usługą Azure AD B2B lub użytkownikami zewnętrznymi, ponieważ zaproszonym kontem user@contoso.com zostaje user_contoso. com # EXT #@fabrikam.onmicrosoft.com. W związku z tym \# w Upnch pochodzących z lokalnego nie może zalogować się do Azure Portal. 
+"\#" jest zastrzeżonym znakiem w UPN dla współpracy z usługą Azure AD B2B lub użytkownikami zewnętrznymi, ponieważ zaproszone konto user@contoso.com zostanie user_contoso. com # roz #@fabrikam.onmicrosoft.com. W związku z tym \# w Upnch pochodzących z lokalnego nie może zalogować się do Azure Portal. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Wystąpił błąd podczas dodawania użytkowników zewnętrznych do zsynchronizowanej grupy
 
@@ -94,6 +94,10 @@ Aby rozwiązać ten problem, musisz przejąć pozostałą dzierżawę. Zapoznaj 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Użytkownik-Gość z dzierżawcą "just in Time" lub "wirusowym" nie może zresetować hasła
 
 Jeśli dzierżawa tożsamości jest dzierżawą just-in-Time (JIT) lub wirusową (co oznacza, że jest to oddzielna, niezarządzana dzierżawa platformy Azure), tylko użytkownik-Gość może zresetować swoje hasło. Czasami organizacja zajmie się [zarządzaniem wirusami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , które są tworzone, gdy pracownicy używają służbowych adresów e-mail do rejestracji w usłudze. Gdy organizacja zajmie się wirusową dzierżawą, tylko administrator w tej organizacji może zresetować hasło użytkownika lub włączyć SSPR. Jeśli to konieczne, jako zapraszana organizacja możesz usunąć konto użytkownika-gościa z katalogu i ponownie wysłać zaproszenie.
+
+## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Użytkownik-Gość nie może użyć modułu AzureAD PowerShell v1
+
+Od 18 listopada 2019 użytkownicy-Goście w katalogu (zdefiniowani jako konta użytkowników, dla których właściwość **UserType** jest równa **gość**) są blokowani przy użyciu modułu AzureAD PowerShell v1. W przyszłości użytkownik musi być użytkownikiem będącym członkiem (w którym **element** **UserType** jest równy) lub używać modułu AzureAD PowerShell V2.
 
 ## <a name="next-steps"></a>Następne kroki
 

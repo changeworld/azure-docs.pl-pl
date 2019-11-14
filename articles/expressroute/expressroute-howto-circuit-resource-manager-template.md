@@ -1,19 +1,19 @@
 ---
-title: 'Utwórz ExpressRoute obwód Menedżer zasobów: Azure | Microsoft Docs'
+title: 'Szablon ExpressRoute platformy Azure: Tworzenie obwodu usługi ExpressRoute'
 description: Tworzenie, Inicjowanie obsługi, usuwanie i cofanie aprowizacji obwodu ExpressRoute.
-services: expressroute;azure-resource-manager
+services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
-ms.openlocfilehash: 103c61b6ad244bf4b140f897c070ce5bfd54cded
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: d6d9a3b472e2a40bfacf25a0b8fe0accb7d62cb8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849218"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031969"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Tworzenie obwodu usługi ExpressRoute przy użyciu szablonu Azure Resource Manager
 
@@ -101,7 +101,7 @@ $resourceGroupName = "${circuitName}rg"
 Remove-AzExpressRouteCircuit -ResourceGroupName $resourceGroupName -Name $circuitName
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po utworzeniu obwodu, Kontynuuj z następujących czynności:
 

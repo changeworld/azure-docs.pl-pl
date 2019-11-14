@@ -1,5 +1,5 @@
 ---
-title: Omówienie maszyn wirtualnych systemu Linux na platformie Azure | Microsoft Docs
+title: Omówienie maszyn wirtualnych z systemem Linux na platformie Azure
 description: W tym artykule opisano działanie usług Azure Compute, Storage i Networking z maszynami wirtualnymi systemu Linux.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -14,19 +14,19 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 14ed21efec47e15663724bd782ad931903fb8f13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dc0145e23b940f6aca9021186254b966592f343d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082421"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035359"
 ---
 # <a name="azure-and-linux"></a>Azure i Linux
 Platforma Microsoft Azure to rosnący zbiór zintegrowanych usług publicznych w chmurze, obejmujący maszyny wirtualne, usługi analityczne, bazodanowe, mobilne, sieciowe, magazynowe oraz internetowe &mdash; — idealne do hostowania rozwiązań.  Microsoft Azure to skalowalna platforma obliczeniowa, która pozwala na płacenie tylko za używane usługi, z których można korzystać w dowolnej chwili — bez konieczności inwestowania w sprzęt lokalny.  Platforma Azure jest gotowa wraz z Tobą do skalowania rozwiązań tak, aby sprostać wymaganiom klientów.
 
 Jeśli znasz różne funkcje usług Amazon Web Services, możesz porównać platformę Azure z [dokumentem mapowania definicji](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) usług AWS.
 
-## <a name="regions"></a>Regiony
+## <a name="regions"></a>Regions
 Zasoby na platformie Microsoft Azure są dystrybuowane w obrębie wielu regionów geograficznych na całym świecie.  „Region” oznacza wiele centrów danych w jednym obszarze geograficznym. Platforma Azure ma obecnie (stan na sierpień 2018) 42 ogólnie dostępne regiony. Ponadto ogłoszono plany dotyczące udostępnienia kolejnych 12 regionów — co będzie stanowić więcej globalnych regionów niż jakikolwiek inny dostawca chmury. Zaktualizowaną listę istniejących i nowo zapowiedzianych regionów można znaleźć na następującej stronie:
 
 * [Regiony platformy Azure](https://azure.microsoft.com/regions/)
@@ -120,7 +120,7 @@ Maszyna wirtualna działa teraz na platformie Azure, a Ty możesz już się zalo
 * [Otwieranie portów dla maszyny wirtualnej systemu Linux na platformie Azure](nsg-quickstart.md)
 * [Tworzenie w pełni kwalifikowanej nazwy domeny w witrynie Azure Portal](portal-create-fqdn.md)
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontenery
 * [Maszyny wirtualne i kontenery na platformie Azure](containers.md)
 * [Wprowadzenie do usługi Azure Container Service](../../container-service/container-service-intro.md)
 * [Wdrażanie klastra usługi Azure Container Service](../../container-service/dcos-swarm/container-service-deployment.md)

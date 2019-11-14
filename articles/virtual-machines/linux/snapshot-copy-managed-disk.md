@@ -1,6 +1,6 @@
 ---
-title: Tworzenie migawki dysku VHD na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie kopii wirtualnego dysku twardego na platformie Azure jako kopię w górę lub do rozwiązywania problemów.
+title: Tworzenie migawki wirtualnego dysku twardego na platformie Azure
+description: Dowiedz się, jak utworzyć kopię dysku VHD na platformie Azure jako kopię zapasową lub rozwiązać problemy.
 documentationcenter: ''
 author: roygara
 manager: twooley
@@ -14,24 +14,24 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 9f2f3ac3668f0e48716fc30fb69cd1782dbd4e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15696469ca3861586617e9f418f8a55a7ea90467
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706971"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034797"
 ---
 # <a name="create-a-snapshot"></a>Tworzenie migawki 
 
-Utworzenie migawki dysku systemu operacyjnego lub dane kopii zapasowej lub rozwiązywania problemów dotyczących maszyny Wirtualnej. Migawka jest pełna, tylko do odczytu kopię dysku VHD. 
+Utwórz migawkę dysku systemu operacyjnego lub danych do utworzenia kopii zapasowej lub Rozwiąż problemy z maszyną wirtualną. Migawka to pełna kopia tylko do odczytu dysku VHD. 
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
 
-Poniższy przykład wymaga użycia [Cloud Shell](https://shell.azure.com/bash) lub zainstalować interfejs wiersza polecenia platformy Azure.
+Poniższy przykład wymaga użycia [Cloud Shell](https://shell.azure.com/bash) lub zainstalowania interfejsu wiersza polecenia platformy Azure.
 
-Poniższe kroki pokazują, jak wykonać migawkę przy użyciu **Tworzenie migawki az** polecenia **— dysk źródłowy** parametru. W poniższym przykładzie założono, że istnieje Maszynę wirtualną o nazwie *myVM* w *myResourceGroup* grupy zasobów.
+Poniższe kroki pokazują, jak wykonać migawkę przy użyciu polecenia **AZ Snapshot Create** z parametrem **--Source-Disk** . W poniższym przykładzie przyjęto założenie, że istnieje maszyna wirtualna o nazwie *myVM* w grupie zasobów *WebResource* .
 
-Pobieranie przy użyciu Identyfikatora dysku [az vm show](/cli/azure/vm#az-vm-show).
+Pobierz identyfikator dysku za pomocą polecenia [AZ VM show](/cli/azure/vm#az-vm-show).
 
 ```azurecli-interactive
 osDiskId=$(az vm show \
@@ -41,7 +41,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-Utworzenie migawki o nazwie *kopii zapasowej osDisk* przy użyciu [Tworzenie migawki az](/cli/azure/snapshot#az-snapshot-create).
+Zrób migawkę o nazwie *osDisk-Backup* przy użyciu polecenia [AZ Snapshot Create](/cli/azure/snapshot#az-snapshot-create).
 
 ```azurecli-interactive
 az snapshot create \
@@ -51,9 +51,9 @@ az snapshot create \
 ```
 
 > [!NOTE]
-> Jeśli chcesz przechowywać migawek w strefie utworzenia niezawodnego magazynu, należy je utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i obejmują **— jednostka sku Standard_ZRS** parametru.
+> Jeśli chcesz przechowywać migawkę w magazynie odpornym na strefy, musisz ją utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) , i uwzględnić parametr **--SKU Standard_ZRS** .
 
-Można wyświetlić listę migawek przy użyciu [az snapshot list](/cli/azure/snapshot#az-snapshot-list).
+Listę migawek można wyświetlić za pomocą polecenia [AZ Snapshot list](/cli/azure/snapshot#az-snapshot-list).
 
 ```azurecli-interactive
 az snapshot list \
@@ -64,16 +64,16 @@ az snapshot list \
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Uruchamianie w lewym górnym rogu, kliknij przycisk **Utwórz zasób** i wyszukaj **migawki**. Wybierz **migawki** w wynikach wyszukiwania.
-3. W **migawki** bloku kliknij **Utwórz**.
-4. Wprowadź **nazwa** migawki.
-5. Wybierz istniejącą grupę zasobów lub wpisz nazwę dla nowego. 
-7. Aby uzyskać **dysku źródłowego**, wybierz dysku zarządzanego do migawki.
-8. Wybierz **typ konta** służące do przechowywania migawki. Użyj **standardowych dysków Twardych** chyba że potrzebne w udziale o wysokiej wydajności dysków SSD.
+2. Zaczynając od lewego górnego rogu, kliknij pozycję **Utwórz zasób** i Wyszukaj **migawkę**. Wybierz pozycję **migawka** z wyników wyszukiwania.
+3. W bloku **migawka** kliknij pozycję **Utwórz**.
+4. Wprowadź **nazwę** migawki.
+5. Wybierz istniejącą grupę zasobów lub wpisz nazwę nowej grupy. 
+7. W polu **dysk źródłowy**wybierz dysk zarządzany do utworzenia migawki.
+8. Wybierz **Typ konta** , który ma być używany do przechowywania migawki. Użyj **HDD w warstwie Standardowa** , chyba że będzie to konieczne w przypadku dysku SSD o wysokiej wydajności.
 9. Kliknij pozycję **Utwórz**.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
- Trwa tworzenie dysku zarządzanego z migawki, a następnie Dołączanie nowego dysku zarządzanego jako dysk systemu operacyjnego, utwórz maszynę wirtualną z migawki. Aby uzyskać więcej informacji, zobacz [tworzenie maszyny Wirtualnej na podstawie migawki](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) skryptu.
+ Utwórz maszynę wirtualną na podstawie migawki przez utworzenie dysku zarządzanego na podstawie migawki, a następnie dołączenie nowego dysku zarządzanego jako dysku systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej na podstawie skryptu migawki](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) .
 

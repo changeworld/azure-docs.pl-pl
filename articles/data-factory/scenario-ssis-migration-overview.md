@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 99b7de8c0e24fdbd12742b26394e61c956638525
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684410"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038272"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrowanie lokalnych obciążeń usług SSIS do usług SSIS w podajniku APD
 
@@ -42,13 +42,13 @@ Data Migration Assistant (DMA) to bezpłatnie dostępne narzędzie do pobrania, 
 ### <a name="four-storage-types-for-ssis-packages"></a>Cztery typy magazynów dla pakietów SSIS
 
 - Katalog SSIS (SSISDB). Wprowadzono ją w SQL Server 2012 i zawiera zestaw procedur składowanych, widoków i funkcji zwracających tabele służących do pracy z projektami/pakietami SSIS.
-- System plików.
+- File System.
 - Baza danych systemu SQL Server (MSDB).
 - Magazyn pakietów SSIS. To jest warstwa zarządzania pakietami na dwóch podtypów:
   - MSDB, która jest systemową bazą danych w SQL Server używany do przechowywania pakietów SSIS.
   - Zarządzany system plików, który jest określonym folderem w ścieżce instalacji SQL Server używany do przechowywania pakietów SSIS.
 
-System DMA obsługuje obecnie ocenę partii pakietów przechowywanych w typie magazynu **systemu plików** od momentu **DMA w wersji 4.5**.
+W usłudze DMA jest obecnie obsługiwana Ocena partii pakietów przechowywanych w **systemie plików**, **magazynie pakietów**i **katalogu usług SSIS** od czasu **DMA w wersji 2.0**.
 
 Uzyskaj [dostęp DMA](https://docs.microsoft.com/sql/dma/dma-overview)i [Przeprowadź ocenę pakietu](https://docs.microsoft.com/sql/dma/dma-assess-ssis).
 

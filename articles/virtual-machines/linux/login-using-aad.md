@@ -1,5 +1,5 @@
 ---
-title: Logowanie do maszyny wirtualnej z systemem Linux przy użyciu poświadczeń Azure Active Directory | Microsoft Docs
+title: Logowanie do maszyny wirtualnej z systemem Linux przy użyciu poświadczeń Azure Active Directory
 description: Dowiedz się, jak utworzyć i skonfigurować maszynę wirtualną z systemem Linux, aby zalogować się przy użyciu uwierzytelniania Azure Active Directory.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327093"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035926"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Wersja zapoznawcza: Logowanie do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania Azure Active Directory
 
@@ -48,7 +48,7 @@ Istnieje wiele zalet używania uwierzytelniania usługi Azure AD do logowania si
 
 Następujące dystrybucje systemu Linux są obecnie obsługiwane w ramach wersji zapoznawczej tej funkcji:
 
-| Dystrybucja | Version |
+| Dystrybucja | Wersja |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -106,8 +106,8 @@ az vm extension set \
 
 Zasady Access Control oparte na rolach (RBAC) na platformie Azure określają, kto może logować się do maszyny wirtualnej. Do autoryzacji logowania maszyn wirtualnych służą dwie role RBAC:
 
-- **Logowanie administratora maszyny wirtualnej**: Użytkownicy z przypisaną tą rolą mogą logować się do maszyny wirtualnej platformy Azure przy użyciu uprawnień administratora systemu Windows lub użytkownika root w systemie Linux.
-- **Logowanie użytkownika maszyny wirtualnej**: Użytkownicy z przypisaną tą rolą mogą logować się do maszyny wirtualnej platformy Azure przy użyciu zwykłych uprawnień użytkownika.
+- **Logowanie administratora maszyny wirtualnej**: Użytkownicy z przypisaną tą rolą mogą logować się do maszyny wirtualnej platformy Azure z uprawnieniami administratora systemu Windows lub użytkownika root w systemie Linux.
+- **Logowanie użytkownika maszyny wirtualnej**: Użytkownicy z przypisaną rolą mogą logować się do maszyny wirtualnej platformy Azure przy użyciu zwykłych uprawnień użytkownika.
 
 > [!NOTE]
 > Aby umożliwić użytkownikowi logowanie się do maszyny wirtualnej za pośrednictwem protokołu SSH, należy przypisać rolę logowania *administratora maszyny wirtualnej* lub *użytkownika maszyny wirtualnej* . Użytkownik platformy Azure z rolami *właściciela* lub *współautora* przypisany do maszyny wirtualnej nie ma automatycznie uprawnień do logowania się do maszyny wirtualnej za pośrednictwem protokołu SSH.
@@ -139,30 +139,30 @@ Najpierw Wyświetl publiczny adres IP maszyny wirtualnej za pomocą [AZ VM show]
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Zaloguj się do maszyny wirtualnej platformy Azure z systemem Linux przy użyciu poświadczeń usługi Azure AD. `-l` Parametr umożliwia określenie własnego adresu konta usługi Azure AD. Zastąp przykładowe konto własnym. Adresy kont należy wprowadzać w postaci tylko małych liter. Zastąp przykładowy adres IP publicznym adresem IP maszyny wirtualnej z poprzedniego polecenia.
+Zaloguj się do maszyny wirtualnej platformy Azure z systemem Linux przy użyciu poświadczeń usługi Azure AD. Parametr `-l` umożliwia określenie własnego adresu konta usługi Azure AD. Zastąp przykładowe konto własnym. Adresy kont należy wprowadzać w postaci tylko małych liter. Zastąp przykładowy adres IP publicznym adresem IP maszyny wirtualnej z poprzedniego polecenia.
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-Zostanie wyświetlony monit o zalogowanie się do usługi Azure AD za pomocą jednorazowego kodu w [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)usłudze. Skopiuj i wklej kod jednorazowego użycia na stronie logowania do urządzenia.
+Zostanie wyświetlony monit o zalogowanie się do usługi Azure AD za pomocą jednorazowego kodu w [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Skopiuj i wklej kod jednorazowego użycia na stronie logowania do urządzenia.
 
 Po wyświetleniu monitu wprowadź poświadczenia logowania usługi Azure AD na stronie logowania. 
 
-Po pomyślnym uwierzytelnieniu w przeglądarce internetowej zostanie wyświetlony następujący komunikat:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+Po pomyślnym uwierzytelnieniu w przeglądarce internetowej zostanie wyświetlony następujący komunikat: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 Zamknij okno przeglądarki, Wróć do wiersza polecenia SSH, a następnie naciśnij klawisz **Enter** . 
 
-Użytkownik jest zalogowany do maszyny wirtualnej platformy Azure z systemem Linux z uprawnieniami roli przypisanymi, takimi jak *użytkownik maszyny wirtualnej* lub *administrator maszyny wirtualnej*. Jeśli Twoje konto użytkownika ma przypisaną rolę *logowania administratora maszyny wirtualnej* , można użyć `sudo` programu do uruchamiania poleceń, które wymagają uprawnień głównych.
+Użytkownik jest zalogowany do maszyny wirtualnej platformy Azure z systemem Linux z uprawnieniami roli przypisanymi, takimi jak *użytkownik maszyny wirtualnej* lub *administrator maszyny wirtualnej*. Jeśli Twoje konto użytkownika ma przypisaną rolę *logowania administratora maszyny wirtualnej* , możesz użyć `sudo` do uruchamiania poleceń, które wymagają uprawnień głównych.
 
 ## <a name="sudo-and-aad-login"></a>Sudo i logowanie do usługi AAD
 
-Przy pierwszym uruchomieniu sudo zostanie wyświetlony monit o uwierzytelnienie w drugim czasie. Jeśli nie chcesz ponownie uwierzytelniać się w celu uruchomienia programu sudo, możesz edytować plik `/etc/sudoers.d/aad_admins` sudo i zastąpić ten wiersz:
+Przy pierwszym uruchomieniu sudo zostanie wyświetlony monit o uwierzytelnienie w drugim czasie. Jeśli nie chcesz ponownie uwierzytelniać się w celu uruchomienia programu sudo, możesz edytować plik sudo `/etc/sudoers.d/aad_admins` i zamienić ten wiersz:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-z tym wierszem:
+Z tym wierszem:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL
@@ -173,7 +173,7 @@ z tym wierszem:
 
 Niektóre typowe błędy podczas próby połączenia SSH z poświadczeniami usługi Azure AD nie obejmują żadnych przypisanych ról RBAC i powtarzające się polecenia logowania. Skorzystaj z poniższych sekcji, aby rozwiązać te problemy.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Odmowa dostępu: Rola RBAC nie została przypisana
+### <a name="access-denied-rbac-role-not-assigned"></a>Odmowa dostępu: rola RBAC nie została przypisana
 
 Jeśli w monicie SSH zostanie wyświetlony następujący błąd, sprawdź, czy skonfigurowano zasady RBAC dla maszyny wirtualnej, która przyznaje użytkownikowi uprawnienia do *logowania administratora maszyny wirtualnej* lub *użytkownika maszyny wirtualnej* :
 
@@ -190,7 +190,7 @@ Access denied
 
 Jeśli krok uwierzytelniania został pomyślnie ukończony w przeglądarce sieci Web, może zostać wyświetlony monit o ponowne zalogowanie się przy użyciu nowego kodu. Ten błąd jest zwykle spowodowany niezgodnością między nazwą logowania określoną w monicie SSH i kontem, z którego zalogowano się w usłudze Azure AD. Aby rozwiązać ten problem:
 
-- Sprawdź, czy nazwa logowania określona w monicie SSH jest poprawna. Literówka w nazwie logowania może spowodować niezgodność między nazwą logowania określoną w monicie SSH i kontem, które zostało zalogowane do usługi Azure AD. Na przykład wpisano *azuresuer\@contoso.onmicrosoft.com* zamiast *azureuser\@contoso.onmicrosoft.com*.
+- Sprawdź, czy nazwa logowania określona w monicie SSH jest poprawna. Literówka w nazwie logowania może spowodować niezgodność między nazwą logowania określoną w monicie SSH i kontem, które zostało zalogowane do usługi Azure AD. Na przykład wpisano *azuresuer\@contoso.onmicrosoft.com* , a nie *azureuser\@contoso.onmicrosoft.com*.
 - Jeśli masz wiele kont użytkowników, upewnij się, że w oknie przeglądarki nie jest dostępne inne konto użytkownika podczas logowania się do usługi Azure AD.
 - Linux to system operacyjny z uwzględnieniem wielkości liter. Istnieje różnica między elementami "Azureuser@contoso.onmicrosoft.com" i "azureuser@contoso.onmicrosoft.com", co może spowodować niezgodność. Upewnij się, że nazwa UPN ma poprawną wielkość liter w wierszu polecenia SSH.
 

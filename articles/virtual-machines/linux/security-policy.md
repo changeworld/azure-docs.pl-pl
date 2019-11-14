@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie i korzystać z zasad na maszynach wirtualnych systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o zabezpieczeń i zasad dla systemów Linux i maszynach wirtualnych platformy Azure.
+title: Zabezpieczanie i Używanie zasad na maszynach wirtualnych z systemem Linux na platformie Azure
+description: Dowiedz się więcej o zabezpieczeniach i zasadach dla systemów Linux i Virtual Machines na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 6f884d46db34dda5f3812efb3418bffdf3165941
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9cd31d39d2881aebf83d5b40aa826433de5d0993
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708308"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035056"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zabezpieczanie i korzystać z zasad na maszynach wirtualnych platformy Azure
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zabezpieczanie i Używanie zasad na maszynach wirtualnych na platformie Azure
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

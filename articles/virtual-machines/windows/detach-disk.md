@@ -1,5 +1,5 @@
 ---
-title: Odłączanie dysku danych z maszyny wirtualnej z systemem Windows — Azure | Microsoft Docs
+title: Odłączanie dysku danych z maszyny wirtualnej z systemem Windows — Azure
 description: Odłączanie dysku danych z maszyny wirtualnej na platformie Azure przy użyciu modelu wdrażania Menedżer zasobów.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: de33ed80055c26870a29b4c4393a9072ec8dda5e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93db2935fdc41787bb1820d1f8ce85ac05ef0863
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749475"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033341"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Jak odłączyć dysk danych z maszyny wirtualnej z systemem Windows
 

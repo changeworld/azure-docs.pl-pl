@@ -1,5 +1,5 @@
 ---
-title: Tworzenie obrazu zarządzanego na platformie Azure | Microsoft Docs
+title: Tworzenie obrazu zarządzanego na platformie Azure
 description: Utwórz zarządzany obraz uogólnionej maszyny wirtualnej lub wirtualnego dysku twardego na platformie Azure. Obrazy mogą służyć do tworzenia wielu maszyn wirtualnych korzystających z dysków zarządzanych.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 54743b191b0334c92c63f374d38870a7dbfd9a38
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749618"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033674"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure
 
@@ -50,7 +50,7 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
    
 4. W obszarze **Opcje zamykania**wybierz pozycję **Zamknij**.
    
-5. Kliknij przycisk **OK**.
+5. Wybierz **OK**.
    
     ![Uruchom program Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 

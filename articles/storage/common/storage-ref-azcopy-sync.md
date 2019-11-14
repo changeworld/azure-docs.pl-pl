@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513424"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023509"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -35,7 +35,14 @@ Polecenie Sync różni się od polecenia copy na kilka sposobów:
 2. Podczas synchronizowania katalogów wirtualnych Dodaj końcowy ukośnik do ścieżki (Zobacz przykłady), jeśli istnieje obiekt BLOB o takiej samej nazwie jak jeden z katalogów wirtualnych.
 3. Jeśli flaga "deleteDestination" ma wartość true lub Prompt, wówczas synchronizacja spowoduje usunięcie plików i obiektów BLOB w miejscu docelowym, które nie znajdują się w źródle.
 
-### <a name="advanced"></a>Advanced
+## <a name="related-conceptual-articles"></a>Pokrewne artykuły koncepcyjne
+
+- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
+
+### <a name="advanced"></a>Zaawansowane
 
 Jeśli nie określisz rozszerzenia pliku, AzCopy automatycznie wykryje typ zawartości plików podczas przekazywania z dysku lokalnego na podstawie rozszerzenia lub zawartości pliku (jeśli nie określono rozszerzenia).
 
@@ -48,7 +55,7 @@ Wbudowana tabela odnośnika jest mała, ale w systemie UNIX, została uzupełnio
 W systemie Windows typy MIME są wyodrębniane z rejestru.
 
 ```azcopy
-azcopy sync [flags]
+azcopy sync <source> <destination> [flags]
 ```
 
 ## <a name="examples"></a>Przykłady
@@ -152,6 +159,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--Cap-MB/s UInt32|Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.|
 |--ciąg typu wyjściowego|Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text".|
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [AzCopy](storage-ref-azcopy.md)

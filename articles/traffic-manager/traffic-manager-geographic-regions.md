@@ -1,6 +1,6 @@
 ---
-title: Hierarchia krajów/regionów używana przez usługi Azure Traffic Manager geograficznego routingu typ | Dokumentacja firmy Microsoft
-description: W tym artykule wymieniono hierarchia krajów/regionów używana przez usługi Azure Traffic Manager geograficznego routingu typ
+title: Hierarchia krajów/regionów używana przez Routing geograficzny — Traffic Manager platformy Azure
+description: W tym artykule wymieniono hierarchię kraju/regionu używaną przez typ routingu geograficznego Traffic Manager platformy Azure
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -12,86 +12,86 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: allensu
-ms.openlocfilehash: d16529e966fb2e16d1012f4aa0aafcff204a3093
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13f4101c17d78a59e8cde724863d237ba888e6a4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071164"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037207"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchia krajów/regionów używana przez usługę Azure Traffic Manager dla metody geograficznego routingu ruchu
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchia krajów/regionów używana przez usługę Azure Traffic Manager dla metody routingu ruchu geograficznego
 
-Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** metodę routingu ruchu w usłudze Azure Traffic Manager. Możesz również uzyskać te informacje programowo przez wywołanie metody [interfejsu API REST usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu **geograficznego** w usłudze Azure Traffic Manager. Te informacje można również programowo uzyskać, wywołując [interfejs API REST usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
-- WORLD(World)
+- ŚWIAT (świat)
 
-    - Geo-EU(Europe)
+    - Geograficzna — UE (Europa)
 
-        - AD(Andorra)
+        - AD (Andora)
 
         - AL(Albania)
 
         - AT(Austria)
 
-        - AX (Wyspy Alandzkie)
+        - AX (Wyspy Åland)
 
         - BA (Bośnia i Hercegowina)
 
-        - BE(Belgium)
+        - BYĆ (Belgia)
 
-        - BG(Bulgaria)
+        - BG (Bułgaria)
 
-        - BY(Belarus)
+        - WEDŁUG (Białoruś)
 
-        - CH(Switzerland)
+        - CH (Szwajcaria)
 
-        - CY(Cyprus)
+        - CY (Cypr)
 
-        - Czechy (Czechy)
+        - CZ (Czechy)
 
-        - DE(Germany)
+        - Niemcy (Niemcy)
 
-        - DK(Denmark)
+        - DK (Dania)
 
         - EE(Estonia)
 
-        - ES(Spain)
+        - ES (Hiszpania)
 
-        - Fi(Finland)
+        - FI (Finlandia)
 
         - FO (Wyspy Owcze)
 
-        - FR(France)
+        - FR (Francja)
 
-        - GB (Zjednoczone Królestwo)
+        - GB (Wielka Brytania)
 
-        - GG(Guernsey)
+        - GG (Guernsey)
 
         - GI(Gibraltar)
 
-        - GR(Greece)
+        - GR (Grecja)
 
-        - HR(Croatia)
+        - HR (Chorwacja)
 
-        - HU(Hungary)
+        - HU (Węgry)
 
-        - IE(Ireland)
+        - IE (Irlandia)
 
-        - Wiadomości Błyskawicznych (wyspie Man)
+        - KOMUNIKATOR (Wyspa Man)
 
-        - IS(Iceland)
+        - IS (Islandia)
 
-        - IT(Italy)
+        - IT (Włochy)
 
-        - JE(Jersey)
+        - JE (Jersey)
 
-        - LI(Liechtenstein)
+        - LI (Liechtenstein)
 
-        - LT(Lithuania)
+        - LT (Litwa)
 
-        - LU(Luxembourg)
+        - LU (Luksemburg)
 
-        - LV(Latvia)
+        - LV (Łotwa)
 
         - MC(Monaco)
 
@@ -99,146 +99,146 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - ME(Montenegro)
 
-        - MK (Północna Macedonii)
+        - MK (Ameryka Północna)
 
-        - MT(Malta)
+        - MT (Malta)
 
-        - NL(Netherlands)
+        - NL (Holandia)
 
-        - No(Norway)
+        - NIE (Norwegia)
 
-        - PL(poland)
+        - PL (Polska)
 
-        - PT(Portugal)
+        - PT (Portugalia)
 
-        - RO(Romania)
+        - RO (Rumunia)
 
         - RS(Serbia)
 
-        - RU(Russia)
+        - RU (Rosja)
 
-        - SE(Sweden)
+        - SE (Szwecja)
 
-        - SI(Slovenia)
+        - SI (Słowenia)
 
         - SJ(Svalbard)
 
-        - SK(Slovakia)
+        - SK (Słowacja)
 
-        - SM(San Marino)
+        - SM (San Marino)
 
-        - UA(Ukraine)
+        - UA (Ukraina)
             - Region Krym
 
-        - Oceny luk w zabezpieczeniach (Watykan)
+        - VA (Watykan)
 
         - XJ (Jan Mayen)
 
         - XK(Kosovo)
 
-    - ME(Middle East) geograficznie
+    - Geograficznie (Bliski Wschód)
 
         - AE (Zjednoczone Emiraty Arabskie)
 
-        - BH(Bahrain)
+        - BH (Bahrajn)
 
-        - IL(Israel)
+        - IL (Izrael)
 
-        - IQ(Iraq)
+        - IQ (Irak)
 
-        - IR(Iran)
+        - IR (Iran)
 
-        - Jo(Jordan)
+        - JO (Jordania)
 
-        - KW(Kuwait)
+        - KW (Kuwejt)
 
-        - LB(Lebanon)
+        - LB (Liban)
 
-        - OM(Oman)
+        - OM (Oman)
 
         - PS (Autonomia Palestyńska)
 
-        - QA(Qatar)
+        - Pytania i odpowiedzi (katar)
 
         - SY(Syria)
 
-        - SA(Saudi Arabia)
+        - SA (Arabia Saudyjska)
 
-        - TR(Turkey)
+        - TR (Turcja)
 
-        - YE(YEMEN)
+        - YE (Jemen)
 
-    - NA(North America / Central America / Caribbean) geograficznie
+    - Geograficzna (Ameryka Północna/Ameryka Środkowa/Karaiby)
 
-        - Grupy dostępności (Antigua i Barbuda)
+        - AG (Antigua i Barbuda)
 
         - AI(Anguilla)
 
         - AW(Aruba)
 
-        - BB(Barbados)
+        - BB (Barbados)
 
-        - Reklamy BL (Saint-Barthélemy)
+        - BL (Saint Barthélemy)
 
         - BM(Bermuda)
 
-        - BQ(Bonaire)
+        - BQ (Bonaire)
 
-        - BS(Bahamas)
+        - BS (Bahamy)
 
         - BZ(Belize)
 
-        - CA(Canada)
+        - Urząd certyfikacji (Kanada)
 
-            - CA-AB(Alberta)
+            - CA-AB (Alberta)
 
-            - BC(British Columbia) urzędu certyfikacji
+            - CA-BC (Kolumbia Brytyjska)
 
-            - CA-MB(Manitoba)
+            - CA-MB (Manitoba)
 
-            - NB(New Brunswick) urzędu certyfikacji
+            - CA-NB (Nowy Brunszwik)
 
-            - NL(Newfoundland and Labrador) urzędu certyfikacji
+            - CA — NL (Nowa Fundlandia i Labrador)
 
-            - CA-NS(Nova Scotia)
+            - CA-NS (Nowa Szkocja)
 
-            - NT(Northwest Territories) urzędu certyfikacji
+            - CA-NT (Terytoria Północno)
 
-            - CA-NU(Nunavut)
+            - CA-ni (Nunavut)
 
-            - CA-on(Ontario)
+            - Urząd certyfikacji (Ontario)
 
-            - PE(Prince Edward Island) urzędu certyfikacji
+            - CA-PE (Wyspa Księcia Edward)
 
-            - CA-QC(Québec)
+            - CA-QC (Québec)
 
-            - CA-SK(Saskatchewan)
+            - CA-SK (Saskatchewan)
 
-            - YT(Yukon Territory) urzędu certyfikacji
+            - CA-YT (Yukon terytorium)
 
         - CR (Kostaryka)
 
-        - CU(Cuba)
+        - CU (Kuba)
 
         - CW(CuraÃ§ao)
 
-        - DM(Dominica)
+        - DM (Dominika)
 
-        - CZY (Dominikana)
+        - Zrób (Dominikana)
 
         - GD(Grenada)
 
-        - GL(Greenland)
+        - GL (Grenlandia)
 
-        - GP(Guadeloupe)
+        - GP (Gwadelupa)
 
-        - GT(Guatemala)
+        - GT (Gwatemala)
 
-        - HN(Honduras)
+        - HN (Honduras)
 
-        - HT(Haiti)
+        - HT (Haiti)
 
-        - JM(Jamaica)
+        - JM (Jamajka)
 
         - KN (Saint Kitts i Nevis)
 
@@ -246,23 +246,23 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - LC(Saint Lucia)
 
-        - MF (Saint-Martin)
+        - MF (Saint Martin)
 
-        - MQ(Martinique)
+        - MQ (Martynika)
 
         - MS(Montserrat)
 
         - MX(Mexico)
 
-        - Ni(Nicaragua)
+        - NI (Nikaragua)
 
         - PA(Panama)
 
-        - PM (Saint Pierre i Miquelon)
+        - PM (Saint-Pierre i Miquelon)
 
-        - Żądania Ściągnięcia (Portoryko)
+        - PR (Portoryko)
 
-        - SV (Salwador)
+        - OHR (Salwador)
 
         - SX (Sint Maarten)
 
@@ -270,25 +270,25 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - TT (Trynidad i Tobago)
 
-        - UM(U.S. Odległe Mniejsze Wyspy)
+        - UM (odległe wyspy USA)
 
-        - US(United States)
+        - US (Stany Zjednoczone)
 
-            - US-AK(Alaska)
+            - US-klucza uwierzytelniania (Alaska)
 
             - US-AL(Alabama)
 
-            - US-AR(Arkansas)
+            - US-AR (Arkansas)
 
             - US-AZ(Arizona)
 
-            - US-CA(California)
+            - Stany Zjednoczone — CA (Kalifornia)
 
-            - US-co(Colorado)
+            - US-CO (Kolorado)
 
-            - US-CT(Connecticut)
+            - US-CT (Connecticut)
 
-            - DC(District of Columbia) Stanów Zjednoczonych
+            - US-DC (Dystrykt Kolumbii)
 
             - US-DE(Delaware)
 
@@ -296,111 +296,111 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
             - US-GA(Georgia)
 
-            - US-hi(hawaii)
+            - US-Witaj (Hawaje)
 
-            - US-IA(Iowa)
+            - US-IA (Iowa)
 
-            - US-ID(Idaho)
+            - US-ID (Idaho)
 
             - US-IL(Illinois)
 
-            - US-in(Indiana)
+            - US (Indiana)
 
-            - US-KS(Kansas)
+            - US-KS (Kansas)
 
             - US-KY(Kentucky)
 
-            - US-La(Louisiana)
+            - US-LA (Luizjana)
 
             - US-MA(Massachusetts)
 
-            - US-MD(Maryland)
+            - US-MD (Maryland)
 
-            - US-Me(Maine)
+            - US-ME (Maine)
 
-            - US-MI(Michigan)
+            - US-MI (Michigan)
 
             - US-MN(Minnesota)
 
-            - US-MO(Missouri)
+            - US-MO (Missouri)
 
-            - US-MS(Mississippi)
+            - US-MS (Mississippi)
 
-            - US-MT(Montana)
+            - US-MT (Montana)
 
-            - NC(North Carolina) Stanów Zjednoczonych
+            - US-NC (Karolinie Północna)
 
-            - ND(North Dakota) Stanów Zjednoczonych
+            - US-ND (Dakota Północna)
 
             - US-NE(Nebraska)
 
-            - NH(New Hampshire) Stanów Zjednoczonych
+            - US-NH (nowy Hampshire)
 
-            - NJ(New Jersey) Stanów Zjednoczonych
+            - US-NJ (Nowa Jersey)
 
-            - NM(New Mexico) Stanów Zjednoczonych
+            - US – NM (Nowy Meksyk)
 
             - US-NV(Nevada)
 
-            - NY(New York) Stanów Zjednoczonych
+            - US-NY (Nowy Jork)
 
-            - US-OH(Ohio)
+            - Stany USA (Ohio)
 
             - US-OK(Oklahoma)
 
-            - US-OR(oregon)
+            - US-lub (Oregon)
 
             - US-PA(Pennsylvania)
 
-            - RI(Rhode Island) Stanów Zjednoczonych
+            - US-RI (wyspa Rhode)
 
-            - US-SC(South Carolina)
+            - US-SC (południowe Karolinie)
 
-            - SD(South Dakota) Stanów Zjednoczonych
+            - US-SD (Dakota Południowa)
 
-            - US-TN(Tennessee)
+            - US-TN (Tennessee)
 
-            - US-TX(Texas)
+            - US-TX (Texas)
 
-            - US-ut(Utah)
+            - US-UT (Utah)
 
-            - US-VA(Virginia)
+            - Stany USA (Wirginia)
 
-            - US-VT(Vermont)
+            - US — VT (Vermont)
 
-            - US-wa(Washington)
+            - US-WA (Waszyngton)
 
-            - US-Wi(Wisconsin)
+            - US-WI (Wisconsin)
 
-            - WV(West Virginia) Stanów Zjednoczonych
+            - US-WV (zachodni Wirginia)
 
-            - US-Wy(Wyoming)
+            - US-WY (Wyoming)
 
         - VC (Saint Vincent i Grenadyny)
 
-        - VG (Brytyjskie Wyspy Dziewicze Stanów)
+        - VG (Brytyjskie Wyspy Dziewicze)
 
-        - VI(U.S. Wyspy Virgin)
+        - VI (Wyspy Dziewicze Stanów Zjednoczonych)
 
         - XE (Sint Eustatius)
 
         - XS(Saba)
 
-    - GEO-AS(Asia)
+    - Geograficznie (Azja)
 
-        - AF(Afghanistan)
+        - AF (Afganistan)
 
         - AM(Armenia)
 
-        - AZ(Azerbaijan)
+        - AZ (Azerbejdżan)
 
-        - BD(Bangladesh)
+        - BD (Bangladesz)
 
         - BN(Brunei)
 
-        - BT(Bhutan)
+        - BT (Bhutan)
 
-        - DW (Wyspy Kokosowe (Keelinga))
+        - CC (Wyspy Kokosowe)
 
         - CN(China)
 
@@ -410,53 +410,53 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - HK (SRA Hongkong)
 
-        - ID(Indonesia)
+        - Identyfikator (Indonezja)
 
-        - IN(India)
+        - IN (Indie)
 
-        - We/Wy (Brytyjskie Terytorium Oceanu Indyjskiego)
+        - We/wy (Brytyjskie Terytorium Oceanu Indyjskiego)
 
-        - JP(Japan)
+        - JP (Japonia)
 
-        - KG(Kyrgyzstan)
+        - KG (Kirgistan)
 
         - KH(Cambodia)
 
         - KP (Korea Północna)
 
-        - KR(Korea)
+        - KR (Korea)
 
         - KZ(Kazakhstan)
 
-        - LA(Laos)
+        - LA (Laos)
 
         - LK(Sri Lanka)
 
-        - MM(Myanmar)
+        - MM (Myanmar)
 
         - MN(Mongolia)
 
         - MO (SRA Makau)
 
-        - MV(Maldives)
+        - MV (Malediwy)
 
-        - My(Malaysia)
+        - MY (Malezja)
 
-        - NP(Nepal)
+        - NP. (Nepal)
 
-        - PH(Philippines)
+        - PH (Filipiny)
 
         - PK(Pakistan)
 
-        - SG(Singapore)
+        - SG (Singapur)
 
-        - TH(Thailand)
+        - TH (Tajlandia)
 
-        - TJ(Tajikistan)
+        - TJ (Tadżykistan)
 
-        - TL(Timor_Leste)
+        - PRZEŁĄCZNIK (Timor_Leste)
 
-        - TM(Turkmenistan)
+        - TM (Turkmenistan)
 
         - TW(Taiwan)
 
@@ -464,7 +464,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - VN(Vietnam)
 
-    - GEO-AF(Africa)
+    - GEO-AF (Afryka)
 
         - AO(Angola)
 
@@ -474,9 +474,9 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - BJ(Benin)
 
-        - BV (Wyspa Bouveta)
+        - BV (Wyspa Bouvet)
 
-        - BW(Botswana)
+        - BW (Botswany)
 
         - CD(Congo (DRC))
 
@@ -484,23 +484,23 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - CI (Wybrzeże Kości Słoniowej — Côte d’Ivoire)
 
-        - CM(Cameroon)
+        - CM (Kamerun)
 
-        - CV (Wyspy Zielonego Przylądka)
+        - CV (Cabo Verde)
 
-        - DJ(Djibouti)
+        - DJ (Dżibuti)
 
-        - DZ(Algeria)
+        - DZ (Algieria)
 
-        - EG(Egypt)
+        - NP. (Egipt)
 
-        - ER(Eritrea)
+        - ER (Erytrea)
 
-        - ET(Ethiopia)
+        - ET (Etiopia)
 
         - GA(Gabon)
 
-        - GH(Ghana)
+        - GH (Ghana)
 
         - GM(Gambia)
 
@@ -512,9 +512,9 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - KE(Kenya)
 
-        - KM(Comoros)
+        - KM (komory)
 
-        - LR(Liberia)
+        - LR (Liberia)
 
         - LS(Lesotho)
 
@@ -524,7 +524,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - MG(Madagascar)
 
-        - ML(Mali)
+        - ML (Mali)
 
         - MR(Mauritania)
 
@@ -538,19 +538,19 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - NE(Niger)
 
-        - NG(Nigeria)
+        - NG (Nigeria)
 
-        - RE(Réunion)
+        - RE (Réunion)
 
         - RW(Rwanda)
 
-        - SC(Seychelles)
+        - SC (Seszele)
 
-        - SD(Sudan)
+        - SD (Sudan)
 
-        - SH (Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha)
+        - SH (wyspa Świętej Heleny, Wyspa Wniebowstąpienia, Tristan da Cunha)
 
-        - SL(Sierra Leone)
+        - SL (Sierra Leone)
 
         - SN(Senegal)
 
@@ -562,113 +562,113 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - SZ(Swaziland)
 
-        - TD(Chad)
+        - TD (Czad)
 
-        - TF (Francuskie Terytoria Południowe i Antarktyczne)
+        - TF (Francuskie Terytoria Południowe)
 
-        - TG(Togo)
+        - TG (Togo)
 
         - TN(Tunisia)
 
         - TZ(Tanzania)
 
-        - UG(Uganda)
+        - G (Uganda)
 
-        - YT(Mayotte)
+        - YT (Majotta)
 
-        - ZA (Republika Południowej Afryki)
+        - Za (Republika Południowej Afryki)
 
         - ZM(Zambia)
 
         - ZW(Zimbabwe)
 
-    - GEO-AN(Antarctica)
+    - Geograficzna — a (Antarktyda)
 
-        - AQ(Antarctica)
+        - AQ (Antarktyda)
 
-    - SA(South America) geograficznie
+    - Geograficzna — skojarzenia zabezpieczeń (Ameryka Południowa)
 
-        - AR(Argentina)
+        - AR (Argentyna)
 
-        - BO(Bolivia)
+        - BO (Boliwia)
 
-        - BR(Brazil)
+        - BR (Brazylia)
 
         - CL(Chile)
 
-        - CO(Colombia)
+        - CO (Kolumbia)
 
-        - EC(Ecuador)
+        - EC (Ekwador)
 
-        - Klucza Obcego (Falklandy)
+        - FK (Falklandy)
 
         - GF (Gujana Francuska)
 
-        - GS (Georgia Południowa i Sandwich Południowy)
+        - GS (Wyspy Georgia Południowa i Sandwich Południowy)
 
-        - Gy(GUYANA)
+        - GY (Gujana)
 
         - PE(Peru)
 
-        - PY(Paraguay)
+        - Z PR (Paragwaj)
 
-        - SR(Suriname)
+        - SR (Surinam)
 
-        - UY(Uruguay)
+        - UY (Urugwaj)
 
-        - VE(VENEZUELA)
+        - VE (Wenezuela)
 
-    - AP(Australia / Pacific) geograficznie
+    - Lokalizacja geograficzna (Australia/Pacyfik)
 
         - AS(Samoa Amerykańskie)
 
         - AU(Australia)
 
-            - ACT(Australian Capital Territory) (Australia)
+            - AU-ACT (australijskie terytorium kapitałowe)
 
-            - NSW(New South Wales) (Australia)
+            - AU-NSW (Nowa Południowa Walia)
 
-            - NT(Northern Territory) (Australia)
+            - AU-NT (terytorium Północne)
 
-            - AU-QLD(Queensland)
+            - AU-QLD (Queensland)
 
-            - SA(South Australia) (Australia)
+            - AU-SA (Australia Południowa)
 
-            - AU-TAS(Tasmania)
+            - AU-zadania (Tasmania ()
 
-            - AU-VIC(Victoria)
+            - AU-VIC (stan Wiktoria)
 
-            - WA(Western Australia) (Australia)
+            - AU-WA (Zachodnia Australia)
 
-        - CK (Wyspy Cooka)
+        - Wkręt (Wyspy Cooka)
 
         - FJ(Fiji)
 
-        - FM(Micronesia)
+        - FM (Mikronezja)
 
         - GU(Guam)
 
-        - HM (Wyspy Heard i McDonalda)
+        - HM (Wyspy Heard i McDonald)
 
-        - KI(Kiribati)
+        - KI (Kiribati)
 
         - MH (Wyspy Marshalla)
 
-        - Pakiet administracyjny (Mariany Północne)
+        - MP (Mariany Północne)
 
-        - Kontroler sieci (Nowa Kaledonia)
+        - NC (Nowa Kaledonia)
 
         - NF (Wyspa Norfolk)
 
         - NR(Nauru)
 
-        - NU(Niue)
+        - NI (Niue)
 
         - NZ (Nowa Zelandia)
 
         - PF (Polinezja Francuska)
 
-        - PG (Papua-Nowa Gwinea)
+        - PG (Papua Nowa Gwinea)
 
         - PN (Wyspy Pitcairn)
 
@@ -678,16 +678,16 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - TK(Tokelau)
 
-        - TO(Tonga)
+        - DO (Tonga)
 
-        - TV(Tuvalu)
+        - Telewizja (Tuwalu)
 
-        - VU(Vanuatu)
+        - VU (Vanuatu)
 
         - WF (Wallis i Futuna)
 
         - WS(Samoa)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [Geographic metodę routingu ruchu w usłudze Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).
+- Dowiedz się więcej o [metodzie routingu ruchu geograficznego w usłudze Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).

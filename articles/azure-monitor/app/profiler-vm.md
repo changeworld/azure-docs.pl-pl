@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
-ms.date: 08/06/2018
+ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 44f45c53a12c7ac73c3de3f2734f024cb9bc6dd5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900001"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031010"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilowanie aplikacji sieci Web działających na maszynie wirtualnej platformy Azure lub zestawu skalowania maszyn wirtualnych przy użyciu Application Insights Profiler
 
@@ -21,7 +21,7 @@ ms.locfileid: "72900001"
 
 Możesz również wdrożyć usługę Azure Application Insights Profiler w ramach następujących usług:
 * [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
-* [usług Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Wdróż Profiler na maszynie wirtualnej lub w zestawie skalowania maszyn wirtualnych
@@ -89,15 +89,15 @@ Nie mamy jeszcze sposobu na ustawienie ujścia Application Insights Profiler w p
 
     ![Sprawdź, czy rozszerzenie funkcji wad jest zainstalowane][wadextension]
 
-1. Znajdź rozszerzenie diagnostyki maszyn wirtualnych dla maszyny wirtualnej. Rozwiń grupę zasobów, Microsoft. COMPUTE virtualMachines, nazwę maszyny wirtualnej i rozszerzenia.  
+2. Znajdź rozszerzenie diagnostyki maszyn wirtualnych dla maszyny wirtualnej. Przejdź do obszaru [https://resources.azure.com](https://resources.azure.com) (Ustawienia — Integracje i usługi). Rozwiń grupę zasobów, Microsoft. COMPUTE virtualMachines, nazwę maszyny wirtualnej i rozszerzenia.  
 
     ![Przejdź do funkcji wad config w Azure Resource Explorer][azureresourceexplorer]
 
-1. Dodaj ujścia Application Insights Profiler do węzła SinksConfig w obszarze WadCfg. Jeśli nie masz jeszcze sekcji SinksConfig, może być konieczne dodanie jednej z nich. Upewnij się, że określisz odpowiednie Application Insights iKey w ustawieniach. Musisz przełączyć tryb eksplorators na odczyt/zapis w prawym górnym rogu i naciśnij niebieski przycisk "Edytuj".
+3. Dodaj ujścia Application Insights Profiler do węzła SinksConfig w obszarze WadCfg. Jeśli nie masz jeszcze sekcji SinksConfig, może być konieczne dodanie jednej z nich. Upewnij się, że określisz odpowiednie Application Insights iKey w ustawieniach. Musisz przełączyć tryb eksplorators na odczyt/zapis w prawym górnym rogu i naciśnij niebieski przycisk "Edytuj".
 
     ![Dodawanie Application Insights Profiler ujścia][resourceexplorersinksconfig]
 
-1. Po zakończeniu edycji konfiguracji kliknij przycisk "Umieść". Jeśli umieszczenie zakończy się pomyślnie, w środku ekranu pojawi się zielony znacznik.
+4. Po zakończeniu edycji konfiguracji kliknij przycisk "Umieść". Jeśli umieszczenie zakończy się pomyślnie, w środku ekranu pojawi się zielony znacznik.
 
     ![Wyślij żądanie Put, aby zastosować zmiany][resourceexplorerput]
 

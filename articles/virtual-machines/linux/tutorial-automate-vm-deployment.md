@@ -1,5 +1,5 @@
 ---
-title: Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux za pomocą pakietu cloud-init na platformie Azure | Microsoft Docs
+title: Samouczek — Dostosowywanie maszyny wirtualnej z systemem Linux przy użyciu funkcji Cloud-init na platformie Azure
 description: W tym samouczku dowiesz się, jak za pomocą funkcji Cloud-init i Key Vault dostosować maszyny wirtualne z systemem Linux podczas pierwszego rozruchu na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8bc396611f2e6f611de5a41de9525ba71287b363
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595120"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034633"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 
-W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z maszyną wirtualną oraz ręcznego instalowania NGINX. Aby w szybki i spójny sposób utworzyć maszyny wirtualne, stosuje się na ogół jakąś formę automatyzacji. Typową metodą dostosowywania maszyny wirtualnej podczas pierwszego rozruchu jest użycie pakietu [cloud-init](https://cloudinit.readthedocs.io). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z maszyną wirtualną oraz ręcznego instalowania NGINX. Aby w szybki i spójny sposób utworzyć maszyny wirtualne, stosuje się na ogół jakąś formę automatyzacji. Typową metodą dostosowywania maszyny wirtualnej podczas pierwszego rozruchu jest użycie pakietu [cloud-init](https://cloudinit.readthedocs.io). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie pliku konfiguracji cloud-init
@@ -33,7 +33,7 @@ W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z ma
 > * Używanie usługi Key Vault do bezpiecznego przechowywania certyfikatów
 > * Automatyzacja bezpiecznych wdrożeń NGINX przy użyciu pakietu cloud-init
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="cloud-init-overview"></a>Omówienie pakietu cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest uruchamiany w trakcie początkowego rozruchu, więc do zastosowania konfiguracji nie są wymagane żadne dodatkowe kroki ani agenci.
@@ -42,7 +42,7 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 
 Wraz z partnerami pracujemy nad tym, aby pakiet cloud-init był uwzględniany i uruchamiany w obrazach, których dostarczają na platformie Azure. W poniższej tabeli przedstawiono bieżącą dostępność pakietu cloud-init w obrazach na platformie Azure:
 
-| Publisher | Oferta | JSZ | Wersja | Cloud-init gotowe |
+| Wydawca | Oferta | SKU | Wersja | gotowe pakietu cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
@@ -130,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Testowanie aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę internetową i wprowadzić *http: \/ \/ \<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana jak w poniższym przykładzie:
+Teraz możesz otworzyć przeglądarkę internetową i wprowadzić *http:\/\/\<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana jak w poniższym przykładzie:
 
 ![Wyświetlanie uruchomionej witryny serwera NGINX](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -261,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Testowanie bezpiecznej aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę sieci Web i wprowadzić *https: \/ \/ \<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP, widoczny w danych wyjściowych poprzedniego procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
+Teraz możesz otworzyć przeglądarkę sieci Web i wprowadzić *https:\/\/\<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP, widoczny w danych wyjściowych poprzedniego procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
 
 ![Akceptowanie ostrzeżenia dotyczącego zabezpieczeń w przeglądarce sieci Web](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

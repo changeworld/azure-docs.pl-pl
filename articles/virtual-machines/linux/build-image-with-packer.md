@@ -1,6 +1,6 @@
 ---
-title: Tworzenie obrazów maszyn wirtualnych platformy Azure z systemem Linux za pomocą usługi Packer | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzyć obrazy maszyn wirtualnych systemu Linux na platformie Azure za pomocą usługi Packer
+title: Tworzenie obrazów maszyn wirtualnych z systemem Linux przy użyciu programu Packer
+description: Dowiedz się, jak tworzyć obrazy maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu programu Packer
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 4dcf6f2e26a2cc589e350ee2b40c10b85786d4be
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a9f0750908123c236596683ec2ad6de505c46213
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671765"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036947"
 ---
-# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych z systemem Linux na platformie Azure za pomocą usługi Packer
-Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje dystrybucji systemu Linux i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace udostępnia wiele obrazów pierwszy i innych firm dla dystrybucje najbardziej typowe i środowiska aplikacji, lub możesz utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
+# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak używać programu pakujący do tworzenia obrazów maszyn wirtualnych z systemem Linux na platformie Azure
+Każda maszyna wirtualna na platformie Azure jest tworzona na podstawie obrazu, który definiuje dystrybucję i wersję systemu operacyjnego Linux. Obrazy mogą zawierać wstępnie zainstalowane aplikacje i konfiguracje. Portal Azure Marketplace udostępnia wiele obrazów pierwszej i innej firmy dla typowych dystrybucji i środowisk aplikacji. można też tworzyć własne niestandardowe obrazy dostosowane do Twoich potrzeb. W tym artykule szczegółowo opisano sposób użycia pakietu narzędzi open source [Pack](https://www.packer.io/) do definiowania i tworzenia obrazów niestandardowych na platformie Azure.
 
 > [!NOTE]
-> Platforma Azure zapewnia teraz usługę, Kreator obrazów platformy Azure (wersja zapoznawcza), definiowanie i tworzenie własnych niestandardowych obrazów. Kreator obrazów platformy Azure w oparciu Packer, więc nawet za pomocą istniejących skryptów administracyjnej powłoki usługi Packer go. Aby rozpocząć korzystanie z Kreatora obrazów platformy Azure, zobacz [tworzenie maszyny Wirtualnej z systemem Linux przy użyciu Kreatora obrazów platformy Azure](image-builder.md).
+> Platforma Azure ma teraz usługę, program Azure Image Builder (wersja zapoznawcza) służącą do definiowania i tworzenia własnych obrazów niestandardowych. Konstruktor obrazów platformy Azure jest oparty na programie Packer, dzięki czemu możesz nawet używać istniejących skryptów aprowizacji powłoki programu Packer. Aby rozpocząć pracę z konstruktorem obrazów platformy Azure, zobacz [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu programu Azure Image Builder](image-builder.md).
 
 
 ## <a name="create-azure-resource-group"></a>Utwórz grupę zasobów platformy Azure
-Podczas procesu kompilacji narzędzia Packer tworzy tymczasowy zasobów platformy Azure opiera się źródłowa maszyna wirtualna. Aby przechwycić tego źródła do użycia jako obraz maszyny Wirtualnej, należy zdefiniować grupy zasobów. Dane wyjściowe z procesu kompilacji narzędzia Packer znajduje się w tej grupie zasobów.
+W trakcie procesu kompilacji program Packer tworzy tymczasowe zasoby platformy Azure, ponieważ kompiluje źródłową maszynę wirtualną. Aby przechwycić źródłową maszynę wirtualną do użycia jako obraz, należy zdefiniować grupę zasobów. Dane wyjściowe procesu kompilacji programu Packer są przechowywane w tej grupie zasobów.
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
@@ -40,15 +40,15 @@ az group create -n myResourceGroup -l eastus
 
 
 ## <a name="create-azure-credentials"></a>Tworzenie poświadczeń platformy Azure
-Narzędzia packer uwierzytelnia się za pomocą platformy Azure przy użyciu nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń używanej z aplikacjami, usługami i narzędzia automatyzacji, takie jak usługi Packer. Ty określasz i zdefiniować uprawnienia dotyczące jakie operacje nazwy głównej usługi można wykonać na platformie Azure.
+Pakiet Pack jest uwierzytelniany na platformie Azure przy użyciu nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń, której można używać z aplikacjami, usługami i narzędziami automatyzacji, takimi jak pakujący. Użytkownik kontroluje i definiuje uprawnienia do działania, które może wykonywać jednostka usługi na platformie Azure.
 
-Tworzenie usługi podmiotu zabezpieczeń za pomocą [az ad sp create-for-rbac](/cli/azure/ad/sp) i dane wyjściowe poświadczenia, których potrzebuje Packer:
+Utwórz nazwę główną usługi za pomocą polecenia [AZ AD Sp Create-for-RBAC](/cli/azure/ad/sp) i Wyprowadź poświadczenia wymagane przez pakiet Pack:
 
 ```azurecli
 az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-Przykład danych wyjściowych z poprzedniego polecenia jest następująca:
+Przykład danych wyjściowych z poprzednich poleceń jest następujący:
 
 ```azurecli
 {
@@ -58,28 +58,28 @@ Przykład danych wyjściowych z poprzedniego polecenia jest następująca:
 }
 ```
 
-Aby uwierzytelniać się na platformie Azure, trzeba będzie również Uzyskaj identyfikator subskrypcji platformy Azure za pomocą [Pokaż konta az](/cli/azure/account):
+Aby uwierzytelnić się na platformie Azure, musisz również uzyskać identyfikator subskrypcji platformy Azure za pomocą [AZ Account show](/cli/azure/account):
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
 ```
 
-Dane wyjściowe z tych dwóch poleceń można użyć w następnym kroku.
+Dane wyjściowe z tych dwóch poleceń są używane w następnym kroku.
 
 
-## <a name="define-packer-template"></a>Definiowanie szablonu usługi Packer
-Aby skompilować obrazy, Utwórz szablon w formacie JSON. W szablonie i są definiowane Konstruktorzy provisioners wykonujących procesu rzeczywistej kompilacji. Zawiera narzędzia packer [administracyjnej dla platformy Azure](https://www.packer.io/docs/builders/azure.html) , pozwala na zdefiniowanie zasobów platformy Azure, takich jak poświadczenia nazwy głównej usługi, utworzony w poprzednim kroku.
+## <a name="define-packer-template"></a>Definiowanie szablonu pakietu Packer
+Aby tworzyć obrazy, należy utworzyć szablon jako plik JSON. W szablonie należy zdefiniować konstruktory i aprowizacji, które wykonują rzeczywisty proces kompilacji. Program Packer ma [provisioner dla platformy Azure](https://www.packer.io/docs/builders/azure.html) , który umożliwia definiowanie zasobów platformy Azure, takich jak poświadczenia nazwy głównej usługi utworzone w poprzednim kroku.
 
-Utwórz plik o nazwie *ubuntu.json* i wklej następującą zawartością. Wprowadź własne wartości dla następujących elementów:
+Utwórz plik o nazwie *Ubuntu. JSON* i wklej poniższą zawartość. Wprowadź własne wartości w następujący sposób:
 
-| Parametr                           | Gdzie można uzyskać |
+| Parametr                           | Skąd uzyskać |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Pierwszy wiersz danych wyjściowych z `az ad sp` utworzyć polecenie - *appId* |
-| *client_secret*                     | W wierszu danych wyjściowych z drugim `az ad sp` utworzyć polecenie - *hasła* |
-| *tenant_id*                         | Trzeci wiersz danych wyjściowych z `az ad sp` utworzyć polecenie - *dzierżawy* |
-| *subscription_id*                   | Dane wyjściowe z `az account show` polecenia |
-| *managed_image_resource_group_name* | Nazwa grupy zasobów, utworzonego w pierwszym kroku |
-| *managed_image_name*                | Nazwa obrazu dysku zarządzanego, który jest tworzony |
+| *client_id*                         | Pierwszy wiersz danych wyjściowych z `az ad sp` Create Command- *AppID* |
+| *client_secret*                     | Drugi wiersz danych wyjściowych z `az ad sp` Create Command- *Password* |
+| *tenant_id*                         | Trzeci wiersz danych wyjściowych z `az ad sp` tworzenia *dzierżawy* polecenia |
+| *subscription_id*                   | Dane wyjściowe polecenia `az account show` |
+| *managed_image_resource_group_name* | Nazwa grupy zasobów utworzonej w pierwszym kroku |
+| *managed_image_name*                | Nazwa tworzonego obrazu dysku zarządzanego |
 
 
 ```json
@@ -123,23 +123,23 @@ Utwórz plik o nazwie *ubuntu.json* i wklej następującą zawartością. Wprowa
 }
 ```
 
-Ten szablon tworzy obraz Ubuntu 16.04 LTS, instaluje serwer NGINX, a następnie deprovisions maszyny Wirtualnej.
+Ten szablon służy do kompilowania obrazu Ubuntu 16,04 LTS, instalowania NGINX, a następnie wyrezerwowania maszyny wirtualnej.
 
 > [!NOTE]
-> Po rozwinięciu na tym szablonie do poświadczeń użytkownika należy dostosować polecenia administracyjnej deprovisions agenta platformy Azure do odczytu `-deprovision` zamiast `deprovision+user`.
-> `+user` Flagi usuwa wszystkie konta użytkowników ze źródłowej maszyny Wirtualnej.
+> Po rozwinięciu tego szablonu, aby udostępnić poświadczenia użytkownika, Dostosuj polecenie aprowizacji, które powoduje odczytanie agenta platformy Azure w celu odczytania `-deprovision`, a nie `deprovision+user`.
+> Flaga `+user` usuwa wszystkie konta użytkowników ze źródłowej maszyny wirtualnej.
 
 
-## <a name="build-packer-image"></a>Tworzenie obrazu usługi Packer
-Jeśli nie masz jeszcze usługi Packer zainstalowane na komputerze lokalnym [postępuj zgodnie z instrukcjami instalacji narzędzia Packer](https://www.packer.io/docs/install/index.html).
+## <a name="build-packer-image"></a>Obraz pakietu Build Pack
+Jeśli nie masz jeszcze zainstalowanego programu Packer na komputerze lokalnym, [postępuj zgodnie z instrukcjami instalacji programu Packer](https://www.packer.io/docs/install/index.html).
 
-Tworzenie obrazu, określając usługi Packer pliku szablonu w następujący sposób:
+Utwórz obraz, określając plik szablonu programu Packer w następujący sposób:
 
 ```bash
 ./packer build ubuntu.json
 ```
 
-Przykład danych wyjściowych z poprzedniego polecenia jest następująca:
+Przykład danych wyjściowych z poprzednich poleceń jest następujący:
 
 ```bash
 azure-arm output will be in this color.
@@ -200,11 +200,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Trwa kilka minut, zanim Packer tworzenie maszyny Wirtualnej, uruchom provisioners i wyczyścić wdrożenia.
+Kompilowanie maszyny wirtualnej może zająć kilka minut, uruchomić program, a następnie wyczyścić wdrożenie.
 
 
-## <a name="create-vm-from-azure-image"></a>Tworzenie maszyny Wirtualnej na podstawie obrazów systemu Azure
-Teraz można utworzyć Maszynę wirtualną z obrazu za pomocą [tworzenie az vm](/cli/azure/vm). Określ obraz, który został utworzony z `--image` parametru. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z *myPackerImage* i generowanie kluczy SSH, jeśli jeszcze nie istnieje:
+## <a name="create-vm-from-azure-image"></a>Tworzenie maszyny wirtualnej na podstawie obrazu platformy Azure
+Teraz można utworzyć maszynę wirtualną na podstawie obrazu za pomocą [AZ VM Create](/cli/azure/vm). Określ obraz utworzony za pomocą parametru `--image`. Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* z *myPackerImage* i generuje klucze SSH, jeśli jeszcze nie istnieją:
 
 ```azurecli
 az vm create \
@@ -215,9 +215,9 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Jeśli chcesz utworzyć maszyny wirtualne w regionie niż obrazu usługi Packer lub innej grupy zasobów, należy określić identyfikator obrazu, a nie nazwę obrazu. Można uzyskać identyfikator obrazu z [az image show](/cli/azure/image#az-image-show).
+Jeśli chcesz utworzyć maszyny wirtualne w innej grupie zasobów lub regionie niż obraz programu Packer, określ identyfikator obrazu, a nie nazwę obrazu. Identyfikator obrazu można uzyskać za pomocą [AZ Image show](/cli/azure/image#az-image-show).
 
-Trwa kilka minut, aby utworzyć maszynę Wirtualną. Po utworzeniu maszyny Wirtualnej Zanotuj `publicIpAddress` wyświetlane w interfejsie wiersza polecenia platformy Azure. Ten adres jest używany na dostęp do witryny serwera NGINX za pośrednictwem przeglądarki internetowej.
+Utworzenie maszyny wirtualnej może potrwać kilka minut. Po utworzeniu maszyny wirtualnej Zanotuj `publicIpAddress` wyświetlane w interfejsie wiersza polecenia platformy Azure. Ten adres służy do uzyskiwania dostępu do witryny NGINX za pośrednictwem przeglądarki sieci Web.
 
 Aby zezwolić na ruch internetowy do maszyny wirtualnej, otwórz port 80 z Internetu za pomocą polecenia [az vm open-port](/cli/azure/vm):
 
@@ -228,11 +228,11 @@ az vm open-port \
     --port 80
 ```
 
-## <a name="test-vm-and-nginx"></a>Test maszyny Wirtualnej i serwera NGINX
-Teraz możesz otworzyć przeglądarkę internetową i wprowadzić ciąg `http://publicIpAddress` na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Jak w poniższym przykładzie jest wyświetlona domyślna strona serwera NGINX:
+## <a name="test-vm-and-nginx"></a>Testowanie maszyn wirtualnych i NGINX
+Teraz możesz otworzyć przeglądarkę internetową i wprowadzić ciąg `http://publicIpAddress` na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Domyślna strona NGINX jest wyświetlana jak w poniższym przykładzie:
 
 ![Domyślna witryna serwera NGINX](./media/build-image-with-packer/nginx.png) 
 
 
 ## <a name="next-steps"></a>Następne kroki
-Można również użyć istniejących skryptów administracyjnej narzędzia Packer za pomocą [kreatora obrazów platformy Azure](image-builder.md).
+Możesz również używać istniejących skryptów aprowizacji programu pakujący w programie [Azure Image Builder](image-builder.md).

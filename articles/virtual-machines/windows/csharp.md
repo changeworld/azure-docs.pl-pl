@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej platformy Azure i zarządzanie nią C# przy użyciu programu | Microsoft Docs
+title: Tworzenie maszyny wirtualnej platformy Azure i zarządzanie nią przy użyciu programuC#
 description: Użyj C# i Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie jej zasoby pomocnicze.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c6d092889deec934f1db1f1c93c06aa0dc217df5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079606"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032789"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure za pomocąC# #
 
@@ -29,7 +29,7 @@ ms.locfileid: "70079606"
 > * Tworzenie projektu programu Visual Studio
 > * Zainstaluj pakiet
 > * Utwórz poświadczenia
-> * Utwórz zasoby
+> * Tworzenie zasobów
 > * Wykonywanie zadań zarządzania
 > * Usuwanie zasobów
 > * Uruchamianie aplikacji
@@ -40,13 +40,13 @@ Wykonanie tych kroków trwa około 20 minut.
 
 1. Jeśli jeszcze tego nie zrobiono, zainstaluj [program Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz pozycję **Programowanie aplikacji klasycznych platformy .NET** na stronie obciążenia, a następnie kliknij przycisk **Zainstaluj**. W podsumowaniu można zobaczyć, że **.NET Framework narzędzia deweloperskie 4-4,6** są automatycznie wybierane. Jeśli masz już zainstalowany program Visual Studio, możesz dodać obciążenie .NET przy użyciu programu uruchamiania programu Visual Studio.
 2. W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
-3. W > obszarze**Visual C#** templates **(szablony) wybierz pozycję Aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
+3. W **obszarze Szablony** > **Wizualizacja C#** wybierz pozycję **aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
 
 ## <a name="install-the-package"></a>Zainstaluj pakiet
 
 Pakiety NuGet to najprostszy sposób instalacji bibliotek, które należy wykonać, aby zakończyć te kroki. Aby uzyskać biblioteki, które są potrzebne w programie Visual Studio, wykonaj następujące czynności:
 
-1. Kliknij kolejno pozycje **Narzędzia** > **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**.
+1. Kliknij kolejno pozycje **narzędzia** > **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**.
 2. Wpisz następujące polecenie w konsoli programu:
 
     ```
@@ -73,7 +73,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp  **&lt;identyfikator Subscription&gt; ID** identyfikatorem subskrypcji,  **&lt;identyfikatorem&gt; aplikacji** Active Directory identyfikatorem aplikacji, **&lt;kluczem uwierzytelniania przy&gt;** użyciu klucza aplikacji i  **&lt;identyfikatora&gt; dzierżawy** z identyfikatorem dzierżawy.
+    Zastąp **&lt;Identyfikator subskrypcji&gt;** identyfikatorem subskrypcji, **&lt;identyfikatorem aplikacji&gt;** z identyfikatorem aplikacji Active Directory, **&lt;klucz uwierzytelniania**&gt;z kluczem aplikacji, a **&lt;identyfikator dzierżawy&gt;** z identyfikatorem dzierżawy.
 
 3. Zapisz plik azureauth. Properties. 
 4. Ustaw zmienną środowiskową w systemie Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżką do pliku autoryzacji, który został utworzony. Na przykład można użyć następującego polecenia programu PowerShell:
@@ -107,7 +107,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
         .WithDefaultSubscription();
     ```
 
-## <a name="create-resources"></a>Utwórz zasoby
+## <a name="create-resources"></a>Tworzenie zasobów
 
 ### <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 

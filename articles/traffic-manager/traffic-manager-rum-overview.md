@@ -1,6 +1,6 @@
 ---
 title: Pomiary rzeczywistego użytkownika na platformie Azure Traffic Manager
-description: Wprowadzenie do Pomiary rzeczywistego użytkownika w Traffic Manager
+description: W tym wprowadzeniu dowiesz się, jak usługa Azure Traffic Manager Pomiary rzeczywistego użytkownika działa.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 4aa2649ba2e49e1fec1b9b124a9b82313280cee9
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1cb3bd1f4a665da4422d296641b193b1e45e45a2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333731"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037952"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Omówienie Pomiary rzeczywistego użytkownika Traffic Manager
 
@@ -75,7 +75,7 @@ Gdy używasz Pomiary rzeczywistego użytkownika, opłaty są naliczane na podsta
 
 * [Czy moja przepustowość platformy Azure zwiększa się, gdy używam Pomiary rzeczywistego użytkownika?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak używać [pomiary rzeczywistego użytkownika ze stronami sieci Web](traffic-manager-create-rum-web-pages.md)
 - Dowiedz się, [jak działa Traffic Manager](traffic-manager-overview.md)
 - Dowiedz się więcej o usłudze [Mobile Center](https://docs.microsoft.com/mobile-center/)

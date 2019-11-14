@@ -1,6 +1,6 @@
 ---
-title: 'Łączenie sieci wirtualnej z obwodem ExpressRoute: Azure Portal | Microsoft Docs'
-description: Łączenie sieci wirtualnej z obwodem usługi ExpressRoute platformy Azure. Instrukcje.
+title: 'ExpressRoute: Połącz sieć wirtualną z obwodem: Azure Portal'
+description: Łączenie sieci wirtualnej z obwodem usługi Azure ExpressRoute. Instrukcje.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088915"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022187"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą portalu
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Obwód usługi ExpressRoute można udostępniać w wielu subskrypcjach. Na poni�
 
 - Każdy z mniejszych chmury w chmurze dużych jest używana do reprezentowania subskrypcje, które należą do różnych działów w organizacji.
 - Każdego z działów w organizacji można użyć własnej subskrypcji do wdrażania ich usług, ale mogą oni udostępnić pojedynczego obwodu usługi ExpressRoute i połączyć się ponownie z Twojej sieci lokalnej.
-- Pojedynczy dział (w tym przykładzie: Może to być właściciel obwodu ExpressRoute. Inne subskrypcje w ramach organizacji, można użyć obwodu usługi ExpressRoute i autoryzacji skojarzone z obwodu, łącznie z subskrypcjami powiązanymi z innych dzierżaw usługi Azure Active Directory i rejestracji umowy Enterprise Agreement.
+- Jednego działu (w tym przykładzie: IT) mogą być właścicielami obwód usługi ExpressRoute. Inne subskrypcje w ramach organizacji, można użyć obwodu usługi ExpressRoute i autoryzacji skojarzone z obwodu, łącznie z subskrypcjami powiązanymi z innych dzierżaw usługi Azure Active Directory i rejestracji umowy Enterprise Agreement.
 
   > [!NOTE]
   > Połączeniami i przepustowością opłat za obwód dedykowany będą stosowane do właściciela obwodu usługi ExpressRoute. Wszystkie sieci wirtualne współdzielą ten sam przepustowość.
@@ -135,5 +135,5 @@ Autoryzacji można zwolnić, usuwając połączenia prowadzący obwód usługi E
 
 Można usunąć połączenia i odłączyć sieci wirtualnej z obwodem usługi ExpressRoute, wybierając **Usuń** ikonę na stronie połączenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).

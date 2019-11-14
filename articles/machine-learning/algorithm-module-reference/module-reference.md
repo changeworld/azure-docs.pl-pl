@@ -9,14 +9,14 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 11/11/2019
-ms.openlocfilehash: 938286f0dafdeb11473bef1b88f876d7918e76ca
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 21577936f2487313683ac763b0c6c661c6c1f958
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012756"
+ms.locfileid: "74039333"
 ---
-# <a name="algorithm--module-reference"></a>Dokumentacja algorytmów i modułów
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Informacje o algorytmach & module dla projektanta Azure Machine Learning
 
 Ta zawartość referencyjna zawiera informacje techniczne na temat każdego z algorytmów uczenia maszynowego i modułów dostępnych w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
@@ -43,7 +43,7 @@ Moduły są zorganizowane według funkcjonalności:
 | Regresji | Przewidywanie wartości. | [Regresja drzewa decyzyjnej](boosted-decision-tree-regression.md) <br/> [Regresja lasu decyzyjnego](decision-forest-regression.md) <br/> [Regresja liniowa](linear-regression.md)  <br/> [Regresja sieci neuronowych](neural-network-regression.md)  <br/> |
 | Polecania | Kompiluj modele rekomendacji. | [Oceń zalecaną](evaluate-recommender.md) <br/> [Polecający wskaźnik SVD](score-svd-recommender.md) <br/> [Polecający pociąg](train-SVD-recommender.md) |
 |  | **Kompiluj i Szacuj modele**: | |
-| Uczenie   | Uruchom dane za pomocą algorytmu. | [Model uczenia](train-model.md)  <br/> [Model klastra uczenia](train-clustering-model.md) <br/>  [Dostrajanie parametrów modelu](tune-model-hyperparameters.md) |
+| Szkolenie   | Uruchom dane za pomocą algorytmu. | [Model uczenia](train-model.md)  <br/> [Model klastra uczenia](train-clustering-model.md) <br/>  [Dostrajanie parametrów modelu](tune-model-hyperparameters.md) |
 | Ocena modelu | Zmierz dokładność nauczonego modelu. |  [Oceń model](evaluate-model.md) |
 | Wynik | Zyskaj przewidywania od modelu, który właśnie został przeszkolony. | [Zastosuj transformację](apply-transformation.md)<br/>[Przypisywanie danych do klastrów](assign-data-to-clusters.md) <br/>[Model oceny](score-model.md) |
 | Funkcje statystyczne | Zapewniają szeroką gamę metod statystycznych związanych z nauką danych. | [Zastosuj operacje matematyczne](apply-math-operation.md) <br/> [Podsumowywanie danych](summarize-data.md)|

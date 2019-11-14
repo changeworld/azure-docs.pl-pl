@@ -1,5 +1,5 @@
 ---
-title: OpenShift kontenerów platformy 3,11 w zadaniach po wdrożeniu platformy Azure | Microsoft Docs
+title: OpenShift kontenerów platformy 3,11 w zadaniach po wdrożeniu platformy Azure
 description: Dodatkowe zadania dla programu po wdrożeniu klastra OpenShift Container platform 3,11.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: c1e04f048c081da4777045e5bee43991c95b4625
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392776"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035505"
 ---
 # <a name="post-deployment-tasks"></a>Zadania po wdrożeniu
 
-Po wdrożeniu klastra OpenShift można skonfigurować dodatkowe elementy. W tym artykule omówiono następujące zagadnienia:
+Po wdrożeniu klastra OpenShift można skonfigurować dodatkowe elementy. W tym artykule omówiono:
 
 - Jak skonfigurować Logowanie jednokrotne przy użyciu Azure Active Directory (Azure AD)
 - Jak skonfigurować dzienniki Azure Monitor na potrzeby monitorowania OpenShift
@@ -74,7 +74,7 @@ Zanotuj Właściwość appId zwracaną z polecenia w celu wykonania kolejnego kr
 
 W witrynie Azure Portal:
 
-1. Wybierz **Azure Active Directory** > **rejestracji aplikacji**.
+1. Wybierz pozycję **Azure Active Directory** > **rejestracji aplikacji**.
 2. Wyszukaj rejestrację aplikacji (na przykład OCPAzureAD).
 3. W wynikach kliknij rejestrację aplikacji.
 4. W obszarze **Ustawienia**wybierz pozycję **wymagane uprawnienia**.

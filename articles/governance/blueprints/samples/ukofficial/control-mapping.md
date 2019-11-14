@@ -1,18 +1,14 @@
 ---
 title: OFICJALNE URZĘDOWe &e w Wielkiej Brytanii przykłady planów NHSe — Mapowanie formantów
 description: Kontrolowanie mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162956"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037767"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Kontrolowanie mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS w Wielkiej Brytanii
 
@@ -48,7 +44,7 @@ Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną kon
 
 ## <a name="52-vulnerability-management"></a>Zarządzanie lukami w zabezpieczeniach 5,2
 
-Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują brak programu Endpoint Protection, brakujące aktualizacje systemu operacyjnego, luki w zabezpieczeniach SQL i wirtualne luki w zabezpieczeniach komputera. Te szczegółowe dane zapewniają informacje o stanie zabezpieczeń wdrożonych zasobów i umożliwiają określanie priorytetów akcji korygowania.
+Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacyjnego przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują brak programu Endpoint Protection, brakujące aktualizacje systemu operacyjnego, luki w zabezpieczeniach programu SQL i luki w zabezpieczeniach maszyn wirtualnych. Te szczegółowe dane zapewniają informacje o stanie zabezpieczeń wdrożonych zasobów i umożliwiają określanie priorytetów akcji korygowania.
 
 - Monitoruj brakujące Endpoint Protection w Azure Security Center
 - Aktualizacje systemu powinny być zainstalowane na maszynach
@@ -67,7 +63,7 @@ Ten plan pomaga chronić zasoby systemu informacji przez przypisanie [Azure Poli
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 zarządzanie użytkownikami i tożsamość 10
 
-Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), aby ułatwić zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan pomaga ograniczyć i kontrolować prawa dostępu, przypisując definicje [Azure Policy](../../../policy/overview.md) do inspekcji kont zewnętrznych z uprawnieniami właściciela i/lub odczytu/zapisu i kontami z uprawnieniami właściciela, odczytu i/zapisu, które nie mają wieloskładnikowego włączono uwierzytelnianie.
+Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), aby ułatwić zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan pomaga ograniczyć i kontrolować prawa dostępu, przypisując definicje [Azure Policy](../../../policy/overview.md) do inspekcji kont zewnętrznych z uprawnieniami właściciela i/lub odczytu/zapisu i kontami z uprawnieniami właściciela, odczytu i/zapisu, które nie mają włączonej usługi uwierzytelniania wieloskładnikowego.
 
 - Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji
 - W ramach usługi MFA należy włączyć konta z uprawnieniami do zapisu w Twojej subskrypcji
@@ -124,7 +120,7 @@ W przypadku korzystania z więcej niż 25 zasad do odpowiedniego zarządzania be
 
 ## <a name="12-secure-service-administration"></a>12 administrowanie bezpieczną usługą
 
-Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), aby ułatwić zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego przez przypisanie pięciu [Azure Policy](../../../policy/overview.md) definicji w celu inspekcji kont zewnętrznych z uprawnieniami właściciela i/lub zapisu oraz kontami z uprawnieniami właściciela i/lub zapisu, które nie mają włączono uwierzytelnianie wieloskładnikowe.
+Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), aby ułatwić zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego przez przypisanie pięciu [Azure Policy](../../../policy/overview.md) definicji w celu inspekcji kont zewnętrznych z uprawnieniami właściciela i/lub zapisu oraz kontami z uprawnieniami właściciela i/lub zapisu, dla których nie włączono usługi uwierzytelniania wieloskładnikowego.
 
 Systemy używane do administrowania usługą w chmurze mają wysoce uprzywilejowany dostęp do tej usługi. Ich naruszenie miałoby znaczący wpływ, w tym środki do obejścia kontroli zabezpieczeń i kradzieży i manipulowania dużymi ilościami danych. Metody używane przez administratorów dostawcy usług do zarządzania usługą operacyjną powinny zostać zaprojektowane w celu ograniczenia ryzyka związanego z wykorzystaniem, które mogłyby nastąpić do naruszenia bezpieczeństwa usługi. Jeśli ta zasada nie jest zaimplementowana, osoba atakująca może mieć środki pozwalające ominąć kontrolę zabezpieczeń i wykraść lub manipulować dużymi ilościami danych.
 
@@ -156,8 +152,8 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Wdróż obserwatora sieciowego po utworzeniu sieci wirtualnych
 
 ## <a name="next-steps"></a>Następne kroki
@@ -165,10 +161,10 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 Po przejrzeniu mapowania kontroli w OFICJALNych i BRYTYJSKIch planach NHS, odwiedź następujące artykuły, aby dowiedzieć się więcej na temat omówienia i sposobu wdrażania tego przykładu:
 
 > [!div class="nextstepaction"]
-> [Krótkoterminowe i brytyjskie plany NHS — przegląd](./index.md)
-> [BRYTYJSKIe i brytyjskie plany NHS — wdrażanie kroków](./deploy.md)
+> [Plany NHS oficjalnego i Zjednoczonego Królestwa — omówienie](./index.md)
+> [BRYTYJSKIch i BRYTYJSKIch planów NHSych](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

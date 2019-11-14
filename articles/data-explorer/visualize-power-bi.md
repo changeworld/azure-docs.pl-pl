@@ -1,20 +1,20 @@
 ---
-title: 'Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI'
+title: 'Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI'
 description: Z tego samouczka dowiesz się, jak połączyć się z usługą Azure Data Explorer za pomocą usługi Power BI i zwizualizować swoje dane.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 70a06b75db9ff49222c2de4aa78519b32d863478
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775025"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037358"
 ---
-# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI
+# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji. Z tego samouczka na początku dowiesz się, jak renderować wizualizacje w usłudze Azure Data Explorer. Następnie połączysz się z usługą Azure Data Explorer za pomocą usługi Power BI, utworzysz raport na podstawie przykładowych danych i opublikujesz raport dla usługi Power BI.
 
@@ -85,7 +85,7 @@ Teraz połączysz się z usługą Azure Data Explorer w programie Power BI Deskt
 
     ![Pobieranie danych](media/visualize-power-bi/get-data-more.png)
 
-1. Wyszukaj pozycję *Azure Data Explorer*, wybierz pozycję **Azure Data Explorer (beta)**, a następnie pozycję **Połącz**.
+1. Wyszukaj pozycję *Azure Data Explorer*, wybierz pozycję **Azure Data Explorer (beta)** , a następnie pozycję **Połącz**.
 
     ![Wyszukiwanie i pobieranie danych](media/visualize-power-bi/search-get-data.png)
 
@@ -219,13 +219,13 @@ Jeśli nie chcesz zachować utworzonego raportu, po prostu usuń plik *storm-eve
 
 1. W obszarze **Mój obszar roboczy** przewiń w dół do pozycji **RAPORTY** i znajdź pozycję **storm-events**.
 
-1. Wybierz przycisk wielokropka (**. . .**) znajdujący się obok pozycji **storm-events**, a następnie wybierz pozycję **USUŃ**.
+1. Wybierz przycisk wielokropka ( **. . .** ) znajdujący się obok pozycji **storm-events**, a następnie wybierz pozycję **USUŃ**.
 
     ![Usuwanie raportu](media/visualize-power-bi/remove-report.png)
 
 1. Potwierdź usunięcie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Pisanie zapytań](write-queries.md)

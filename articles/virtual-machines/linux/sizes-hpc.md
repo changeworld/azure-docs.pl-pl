@@ -1,5 +1,5 @@
 ---
-title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — HPC | Microsoft Docs
+title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — HPC
 description: Wyświetla listę różnych rozmiarów dostępnych w przypadku maszyn wirtualnych o wysokiej wydajności z systemem Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: ee99869c2b7a7b3ab38fdd9eae0687862ea53819
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 214ab48b6b0dca37eff3b3f155aaa92afc7fee16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100875"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034892"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Wymiary maszyn wirtualnych o wysokiej wydajności obliczeniowej
 
@@ -88,7 +88,7 @@ System Azure oferuje kilka opcji tworzenia klastrów maszyn wirtualnych z system
 
 * **Maszyny wirtualne** — Wdróż maszyny wirtualne z obsługą funkcji RDMA w tym samym zestawie dostępności (w przypadku korzystania z Azure Resource Manager modelu wdrażania). W przypadku korzystania z klasycznego modelu wdrażania należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
 
-* **Zestawy skalowania maszyn wirtualnych** — w zestawie skalowania maszyn wirtualnych należy ograniczyć wdrożenie do pojedynczej grupy umieszczania. Na przykład w szablonie Menedżer zasobów Ustaw `singlePlacementGroup` właściwość na. `true` 
+* **Zestawy skalowania maszyn wirtualnych** — w zestawie skalowania maszyn wirtualnych należy ograniczyć wdrożenie do pojedynczej grupy umieszczania. Na przykład w szablonie Menedżer zasobów ustaw właściwość `singlePlacementGroup` na `true`. 
 
 * **MPI między maszynami wirtualnymi** — jeśli jest to wymagane między maszynami wirtualnymi, upewnij się, że maszyny wirtualne znajdują się w tym samym zestawie dostępności lub na maszynie wirtualnej tego samego zestawu skalowania.
 
@@ -96,7 +96,7 @@ System Azure oferuje kilka opcji tworzenia klastrów maszyn wirtualnych z system
 
 * **Azure Batch** — utwórz pulę [Azure Batch](/azure/batch/) do uruchamiania obciążeń MPI w węzłach obliczeniowych systemu Linux. Aby uzyskać więcej informacji, zobacz [Korzystanie z wystąpień obsługujących funkcję RDMA lub GPU w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz również projekt [stoczni usługi Batch](https://github.com/Azure/batch-shipyard) do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
 
-* **Pakiet Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) obsługuje kilka dystrybucji systemu Linux do uruchomienia w węzłach obliczeniowych wdrożonych na maszynach wirtualnych platformy Azure obsługujących funkcję RDMA zarządzanym przez węzeł główny systemu Windows Server. Aby zapoznać się z przykładowym wdrożeniem, zobacz [Tworzenie klastra programu HPC Pack w systemie Linux na platformie Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+* Pakiet **Microsoft HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) obsługuje kilka dystrybucji systemu Linux do uruchomienia w węzłach obliczeniowych wdrożonych na maszynach wirtualnych platformy Azure obsługujących funkcję RDMA zarządzanym przez węzeł główny systemu Windows Server. Aby zapoznać się z przykładowym wdrożeniem, zobacz [Tworzenie klastra programu HPC Pack w systemie Linux na platformie Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 
 ### <a name="network-considerations"></a>Zagadnienia dotyczące sieci

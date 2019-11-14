@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991908"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037238"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w Azure Data Lake Storage Gen2
 
@@ -25,9 +25,9 @@ Azure Data Lake Storage Gen2 implementuje model kontroli dostępu, który obsłu
 
 Funkcja RBAC używa przypisań ról do efektywnego stosowania zestawów uprawnień do *podmiotów zabezpieczeń*. *Podmiot zabezpieczeń* to obiekt, który reprezentuje użytkownika, grupę, jednostkę usługi lub tożsamość zarządzaną zdefiniowaną w Azure Active Directory (AD), która żąda dostępu do zasobów platformy Azure.
 
-Zazwyczaj te zasoby platformy Azure są ograniczone do zasobów najwyższego poziomu (na przykład: Konta usługi Azure Storage). W przypadku usługi Azure Storage, w Azure Data Lake Storage Gen2 związku z czym ten mechanizm został rozszerzony do zasobu kontenera (systemu plików).
+Zazwyczaj te zasoby platformy Azure są ograniczone do zasobów najwyższego poziomu (na przykład: konta usługi Azure Storage). W przypadku usługi Azure Storage, w Azure Data Lake Storage Gen2 związku z czym ten mechanizm został rozszerzony do zasobu kontenera (systemu plików).
 
-Aby dowiedzieć się, jak przypisać role do podmiotów zabezpieczeń w zakresie konta magazynu, zobacz Udzielanie [dostępu do obiektów blob platformy Azure i danych z kolejki RBAC w Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Aby dowiedzieć się, jak przypisać role do podmiotów zabezpieczeń w zakresie konta magazynu, zobacz [udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC w Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Wpływ przypisań ról na listy kontroli dostępu na poziomie plików i katalogów
 
@@ -36,7 +36,7 @@ W przypadku korzystania z przypisań ról RBAC jest zaawansowanym mechanizmem ko
 Gdy podmiot zabezpieczeń otrzymuje uprawnienia do danych RBAC za pomocą [wbudowanej roli](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)lub roli niestandardowej, te uprawnienia są oceniane jako pierwsze przy autoryzacji żądania. Jeśli żądana operacja jest autoryzowana przez przypisania kontroli RBAC podmiotu zabezpieczeń, wówczas Autoryzacja jest natychmiast rozwiązywana i nie są wykonywane żadne dodatkowe kontrole listy ACL. Alternatywnie, jeśli podmiot zabezpieczeń nie ma przypisania RBAC lub operacja żądania nie jest zgodna z przypisanym uprawnieniem, sprawdzenia listy ACL są wykonywane w celu ustalenia, czy podmiot zabezpieczeń jest autoryzowany do wykonywania żądanych operacji.
 
 > [!NOTE]
-> Jeśli podmiotowi zabezpieczeń przypisano przypisanie wbudowanej roli właściciela danych obiektu blob magazynu, podmiot zabezpieczeń jest traktowany jako *administrator* i uzyskuje pełny dostęp do wszystkich operacji związanych z operacjami, takich jak Ustawianie właściciela katalogu lub plik oraz listy ACL dla katalogów i plików, dla których nie są właścicielami. Dostęp administratora jest jedynym autoryzowanym sposobem zmiany właściciela zasobu.
+> Jeśli podmiotowi zabezpieczeń przypisano przypisanie wbudowanej roli właściciela danych obiektu blob magazynu, podmiot zabezpieczeń jest traktowany jako *administrator* i uzyskuje pełny dostęp do wszystkich operacji związanych z operacjami, takich jak Ustawianie właściciela katalogu lub pliku oraz list ACL dla katalogów i plików, dla których nie są właścicielami. Dostęp administratora jest jedynym autoryzowanym sposobem zmiany właściciela zasobu.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Uwierzytelnianie klucza wspólnego i sygnatury dostępu współdzielonego (SAS)
 
@@ -60,11 +60,11 @@ Aby ustawić uprawnienia na poziomie plików i katalogów, zobacz dowolny z nast
 
 |Jeśli chcesz użyć tego narzędzia:    |Zobacz ten artykuł:    |
 |--------|-----------|
-|Eksplorator usługi Azure Storage    |[Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksplorator usługi Azure Storage z Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
+|Eksplorator magazynu Azure    |[Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksplorator usługi Azure Storage z Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
 |Interfejs API REST    |[Ścieżka — aktualizacja](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Jeśli podmiot zabezpieczeń jest jednostką *usługi* , ważne jest użycie identyfikatora obiektu nazwy głównej usługi, a nie identyfikatora obiektu powiązanej rejestracji aplikacji. Aby uzyskać identyfikator obiektu jednostki usługi, Otwórz interfejs wiersza polecenia platformy Azure, a następnie użyj następujące polecenie: `az ad sp show --id <Your App ID> --query objectId`. Pamiętaj, `<Your App ID>` aby zastąpić symbol zastępczy identyfikatorem aplikacji rejestracji aplikacji.
+> Jeśli podmiot zabezpieczeń jest jednostką *usługi* , ważne jest użycie identyfikatora obiektu nazwy głównej usługi, a nie identyfikatora obiektu powiązanej rejestracji aplikacji. Aby uzyskać identyfikator obiektu jednostki usługi, Otwórz interfejs wiersza polecenia platformy Azure, a następnie użyj następujące polecenie: `az ad sp show --id <Your App ID> --query objectId`. Pamiętaj, aby zastąpić symbol zastępczy `<Your App ID>` IDENTYFIKATORem aplikacji rejestracji aplikacji.
 
 ### <a name="types-of-access-control-lists"></a>Typy list kontroli dostępu
 
@@ -81,7 +81,7 @@ Listy ACL dostępu i domyślne listy ACL mają tę samą strukturę.
 
 ### <a name="levels-of-permission"></a>Poziomy uprawnień
 
-Uprawnienia do obiektu kontenera są odczytywane, **zapisywane**i **wykonywane**oraz mogą być używane dla plików i katalogów, jak pokazano w poniższej tabeli:
+Uprawnienia do obiektu kontenera są **odczytywane**, **zapisywane**i **wykonywane**oraz mogą być używane dla plików i katalogów, jak pokazano w poniższej tabeli:
 
 |            |    Plik     |   Katalog |
 |------------|-------------|----------|
@@ -90,7 +90,7 @@ Uprawnienia do obiektu kontenera są odczytywane, **zapisywane**i **wykonywane**
 | **Wykonanie (X)** | Nie oznacza wszystkiego w kontekście Data Lake Storage Gen2 | Wymagane do przechodzenia między elementami podrzędnymi katalogu |
 
 > [!NOTE]
-> W przypadku przyznawania uprawnień przy użyciu tylko list ACL (bez RBAC), a następnie do udzielenia podmiotu usługi uprawnień do odczytu lub zapisu do pliku należy nadać jednostce usługi uprawnienia do **wykonywania** dla kontenera oraz do każdego folderu w hierarchii folderów, które prowadzić do pliku.
+> W przypadku przyznawania uprawnień przy użyciu tylko list kontroli dostępu (bez RBAC), a następnie udzielenia podmiotu zabezpieczeń uprawnienia do odczytu lub zapisu do pliku, należy przyznać podmiotowi zabezpieczeń uprawnienie do **wykonywania** względem kontenera oraz do każdego folderu w hierarchii folderów, które prowadzą do pliku.
 
 #### <a name="short-forms-for-permissions"></a>Krótkie formy uprawnień
 
@@ -154,8 +154,8 @@ Na listach kontroli dostępu POSIX każdy użytkownik jest skojarzony z *grupą 
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Przypisywanie grupy będącej właścicielem dla nowego pliku lub katalogu
 
-* **Przypadek 1**: Katalog główny "/". Ten katalog jest tworzony podczas tworzenia kontenera Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył kontener, jeśli został on wykonany przy użyciu protokołu OAuth. Jeśli kontener jest tworzony przy użyciu klucza współużytkowanego, SYGNATURy dostępu współdzielonego konta lub SYGNATURy dostępu współdzielonego usługi, właściciel i grupa będąca właścicielem są ustawiani na **$superuser**.
-* **Przypadek 2** (W każdym innym przypadku): Po utworzeniu nowego elementu grupa będąca właścicielem jest kopiowana z katalogu nadrzędnego.
+* **Przypadek 1**: katalog główny "/". Ten katalog jest tworzony podczas tworzenia kontenera Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył kontener, jeśli został on wykonany przy użyciu protokołu OAuth. Jeśli kontener jest tworzony przy użyciu klucza współużytkowanego, SYGNATURy dostępu współdzielonego konta lub SYGNATURy dostępu współdzielonego usługi, właściciel i grupa będąca właścicielem są ustawiani na **$superuser**.
+* **Przypadek 2** (każdy inny przypadek): gdy tworzony jest nowy element, grupa będąca właścicielem jest kopiowana z katalogu nadrzędnego.
 
 ##### <a name="changing-the-owning-group"></a>Zmiana grupy będącej właścicielem
 
@@ -309,7 +309,7 @@ Identyfikator GUID jest wyświetlany, Jeśli wpis reprezentuje użytkownika, a u
 
 Podczas definiowania list ACL dla nazw głównych usługi należy użyć identyfikatora obiektu (OID) jednostki *usługi* dla utworzonej rejestracji aplikacji. Należy pamiętać, że zarejestrowane aplikacje mają oddzielną jednostkę usługi w określonej dzierżawie usługi Azure AD. Zarejestrowane aplikacje mają identyfikator OID widoczny w Azure Portal, ale jednostka *usługi* ma inny identyfikator OID (różny).
 
-Aby uzyskać identyfikator OID dla jednostki usługi, która odnosi się do rejestracji aplikacji, możesz użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład uzyskiwania identyfikatora OID dla jednostki usługi, która odpowiada rejestracji aplikacji z IDENTYFIKATORem aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
+Aby uzyskać identyfikator OID dla jednostki usługi, która odnosi się do rejestracji aplikacji, można użyć polecenia `az ad sp show`. Określ identyfikator aplikacji jako parametr. Oto przykład uzyskiwania identyfikatora OID dla jednostki usługi, która odpowiada rejestracji aplikacji z IDENTYFIKATORem aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
 
 ```
 $ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
@@ -335,6 +335,6 @@ Listy ACL nie są dziedziczone. Jednak domyślne listy ACL mogą być używane d
 * [Listy ACL modelu POSIX w systemie Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Listy ACL korzystające z list kontroli dostępu w systemie Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Omówienie Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

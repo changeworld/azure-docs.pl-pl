@@ -1,25 +1,25 @@
 ---
-title: Dynamiczne reguły członkostwa grup automatycznych — Azure Active Directory | Microsoft Docs
+title: Reguły członkostwa w grupie dynamicznej — Azure AD | Microsoft Docs
 description: Sposób tworzenia reguł członkostwa w celu automatycznego wypełniania grup i odwołania do reguły.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050bc3cf6b81b9467d9947a4f611477e2fcbcd9a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885861"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027128"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -98,24 +98,24 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | city |Dowolna wartość ciągu lub wartość *null* |(User. City-EQ "wartość") |
 | trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
 | companyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
-| department |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
+| Dział |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
 | displayName |Dowolna wartość ciągu |(User. displayName-EQ "value") |
-| IDPracownika |Dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
+| employeeId |Dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
 | facsimileTelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. facsimileTelephoneNumber-EQ "wartość") |
 | givenName |Dowolna wartość ciągu lub wartość *null* |(User. podaną wartośćname-EQ ") |
-| Stanowiska |Dowolna wartość ciągu lub wartość *null* |(User. stanowiska-EQ "wartość") |
+| Stanowisko |Dowolna wartość ciągu lub wartość *null* |(User. stanowiska-EQ "wartość") |
 | mail (poczta) |Dowolna wartość ciągu lub wartość *null* (adres SMTP użytkownika) |(User. mail-EQ "wartość") |
 | mailNickName |Dowolna wartość ciągu (alias poczty użytkownika) |(User. mailNickName-EQ "wartość") |
-| urządzenie |Dowolna wartość ciągu lub wartość *null* |(User. Mobile-EQ "wartość") |
-| Obiektu |Identyfikator GUID obiektu użytkownika |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| Telefon komórkowy |Dowolna wartość ciągu lub wartość *null* |(User. Mobile-EQ "wartość") |
+| Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokalny identyfikator zabezpieczeń (SID) dla użytkowników, którzy zostali zsynchronizowani z lokalnego do chmury. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Brak DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Dowolna wartość ciągu lub wartość *null* |(User. physicalDeliveryOfficeName-EQ "wartość") |
-| Pocztowy |Dowolna wartość ciągu lub wartość *null* |(User. KodPocztowy-EQ "value") |
+| postalCode |Dowolna wartość ciągu lub wartość *null* |(User. KodPocztowy-EQ "value") |
 | preferredLanguage |Kod ISO 639-1 |(User. preferredLanguage-EQ "pl-US") |
 | sipProxyAddress |Dowolna wartość ciągu lub wartość *null* |(User. sipProxyAddress-EQ "wartość") |
 | state |Dowolna wartość ciągu lub wartość *null* |(User. State-EQ "value") |
-| streetAddress |Dowolna wartość ciągu lub wartość *null* |(User. streetAddress-EQ "wartość") |
+| Adres |Dowolna wartość ciągu lub wartość *null* |(User. streetAddress-EQ "wartość") |
 | surname |Dowolna wartość ciągu lub wartość *null* |(User. nazwisko-EQ "wartość") |
 | telephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. teletelefon-EQ "wartość") |
 | usageLocation |Dwubajtowy kod kraju |(User. usageLocation-EQ "US") |
@@ -145,7 +145,7 @@ W poniższej tabeli wymieniono wszystkie obsługiwane operatory i ich składnię
 | Contains |-zawiera |
 | Niezgodne |-notMatch |
 | Spełnić |-dopasowanie |
-| Podczas | -in |
+| W | -in |
 | Nie w | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>Używanie operatorów-in i-notIn
@@ -353,7 +353,7 @@ Przykładem reguły korzystającej z niestandardowej właściwości rozszerzenia
 user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Nazwę właściwości niestandardowej można znaleźć w katalogu, wykonując zapytania dotyczące właściwości użytkownika przy użyciu Eksploratora grafów i wyszukując nazwę właściwości. Ponadto można teraz wybrać łącze **Pobierz niestandardowe właściwości rozszerzenia** w konstruktorze reguły dynamicznej grupy użytkowników, aby wprowadzić unikatowy identyfikator aplikacji i otrzymać pełną listę niestandardowych właściwości rozszerzenia, które będą używane podczas tworzenia reguły członkostwa dynamicznego. Tę listę można również odświeżyć, aby uzyskać nowe niestandardowe właściwości rozszerzenia dla tej aplikacji.
+Nazwę właściwości niestandardowej można znaleźć w katalogu, wykonując zapytania dotyczące właściwości użytkownika przy użyciu Eksploratora grafów i wyszukując nazwę właściwości. Ponadto można teraz wybrać łącze **Pobierz niestandardowe właściwości rozszerzenia** w konstruktorze reguły dynamicznej grupy użytkowników, aby wprowadzić unikatowy identyfikator aplikacji i otrzymać pełną listę niestandardowych właściwości rozszerzenia, które będą używane podczas tworzenia reguły członkostwa dynamicznego. Tej listy można odświeżać w taki sposób, aby uzyskać nowe właściwości rozszerzenia niestandardowego dla danej aplikacji.
 
 ## <a name="rules-for-devices"></a>Reguły dla urządzeń
 
@@ -374,7 +374,7 @@ Można użyć następujących atrybutów urządzeń.
  accountEnabled | PRAWDA FAŁSZ | (Device. accountEnabled-EQ true)
  displayName | Dowolna wartość ciągu |(Device. displayName-EQ "Rob iPhone")
  deviceOSType | Dowolna wartość ciągu | (Device. deviceOSType-EQ "iPad") — lub (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-zawiera "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | Dowolna wartość ciągu | (Device. deviceOSVersion-EQ "9,1")
+ deviceOSVersion | Dowolna wartość ciągu | (device.deviceOSVersion -eq "9.1")
  deviceCategory | prawidłowa nazwa kategorii urządzeń | (Device. deviceCategory-EQ "BYOD")
  deviceManufacturer | Dowolna wartość ciągu | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | Dowolna wartość ciągu | (Device. deviceModel-EQ "iPad Air")
@@ -383,7 +383,7 @@ Można użyć następujących atrybutów urządzeń.
  isrootd | PRAWDA FAŁSZ | (Device. isrootd-EQ true)
  managementtype | MDM (dla urządzeń przenośnych)<br>Komputer PC (dla komputerów zarządzanych przez agenta komputera usługi Intune) | (Device. managementtype-EQ "MDM")
  deviceId | prawidłowy identyfikator urządzenia usługi Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Obiektu | prawidłowy identyfikator obiektu usługi Azure AD |  (Device. objectId-EQ "76ad43c9-32c5-45e8-A272-7b58b58f596d")
+ Identyfikator obiektu | prawidłowy identyfikator obiektu usługi Azure AD |  (Device. objectId-EQ "76ad43c9-32c5-45e8-A272-7b58b58f596d")
  devicePhysicalIds | dowolna wartość ciągu używana przez autopilotaż, taka jak wszystkie urządzenia autopilotażowe, IDZamówienia lub PurchaseOrderID  | (Device. devicePhysicalIDs-any _-zawiera "[ZTDId]") (Device. devicePhysicalIds-any _-EQ "[IDZamówienia]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | dowolny ciąg zgodny z właściwością urządzenia usługi Intune w celu tagowania nowoczesnych urządzeń w miejscu pracy | (Device. systemLabels-zawiera "M365Managed")
 

@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie trybu transportu IPsec dla komunikacji równorzędnej prywatnej hostów Windows: ExpressRoute: Azure | Microsoft Docs'
+title: 'Prywatna Komunikacja równorzędna Azure ExpressRoute: Konfigurowanie trybu transportu IPsec — hosty systemu Windows'
 description: Jak włączyć trybu transportu IPsec między maszynami wirtualnymi z Windows Azure i hostów Windows w środowisku lokalnym za pośrednictwem prywatnej komunikacji równorzędnej przy użyciu obiektów zasad grupy i jednostki organizacyjne usługi ExpressRoute.
 services: expressroute
 author: fabferri
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367275"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022010"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurowanie trybu transportu IPsec dla prywatnej komunikacji równorzędnej usługi ExpressRoute
 
@@ -43,17 +43,17 @@ Ten diagram przedstawia tuneli IPsec przesyłanych w prywatnej komunikacji równ
 ### <a name="working-with-ipsec-policy"></a>Praca z zasad protokołu IPsec
 
 W Windows szyfrowanie jest skojarzone z zasadami zabezpieczeń IPsec. Zasad protokołu IPsec określa, jaki ruch IP jest zabezpieczony i mechanizmu zabezpieczeń stosowane do pakietów IP.
-**Zasady protokołu IPSec** składają się z następujących elementów: **Filtrowanie list**, **akcji filtrowania**, i **reguły zabezpieczeń**.
+**Zasady protokołu IPSec** składają się z następujących elementów: **listy filtrów**, **akcji filtrowania**, i **reguły zabezpieczeń**.
 
 Podczas konfigurowania zasad protokołu IPsec, ważne jest zrozumienie następującą terminologią zasad protokołu IPsec:
 
-* **Zasady protokołu IPsec:** Kolekcja reguł. Tylko jedna zasada może być aktywne ("przypisany") w danym momencie. Każda zasada może mieć jedną lub więcej reguł, które mogą być aktywne jednocześnie. Komputer można przypisać tylko jedno aktywne zasady IPsec przy danym czasie. Jednak w ramach zasad protokołu IPsec można zdefiniować wiele akcji, które mogą zostać podjęte w różnych sytuacjach. Każdy zestaw reguł IPsec jest skojarzony z listy filtrów, który wpływa na typ ruchu sieciowego, do której ta reguła ma zastosowanie.
+* **Zasady protokołu IPsec:** kolekcji reguł. Tylko jedna zasada może być aktywne ("przypisany") w danym momencie. Każda zasada może mieć jedną lub więcej reguł, które mogą być aktywne jednocześnie. Komputer można przypisać tylko jedno aktywne zasady IPsec przy danym czasie. Jednak w ramach zasad protokołu IPsec można zdefiniować wiele akcji, które mogą zostać podjęte w różnych sytuacjach. Każdy zestaw reguł IPsec jest skojarzony z listy filtrów, który wpływa na typ ruchu sieciowego, do której ta reguła ma zastosowanie.
 
-* **Listy filtrów:** Listy filtrów są pakietu co najmniej jeden filtr. Jedna lista może zawierać wiele filtrów. Filtr definiuje, jeśli dozwolone, chronione lub zablokowane, zgodnie z zakresów adresów IP, protokołów lub nawet określonych portów komunikacji. Każdy filtr dopasowuje wartość do określonego zestawu warunków. na przykład pakiety wysyłane z określonej podsieci dla danego komputera, na określony port docelowy. Gdy się warunków sieciowych są zgodne, co najmniej jedną z tych filtrów, jest aktywowana lista filtrów. Każdy filtr zdefiniowano w obrębie listy określonego filtru. Filtry nie mogą być współdzielone listy filtrów. Jednak lista podanego filtra może być dołączany do kilku zasad protokołu IPsec. 
+* **Filtrowanie list:** listy filtrów są pakietu co najmniej jeden filtr. Jedna lista może zawierać wiele filtrów. Filtr definiuje, jeśli dozwolone, chronione lub zablokowane, zgodnie z zakresów adresów IP, protokołów lub nawet określonych portów komunikacji. Każdy filtr dopasowuje wartość do określonego zestawu warunków. na przykład pakiety wysyłane z określonej podsieci dla danego komputera, na określony port docelowy. Gdy się warunków sieciowych są zgodne, co najmniej jedną z tych filtrów, jest aktywowana lista filtrów. Każdy filtr zdefiniowano w obrębie listy określonego filtru. Filtry nie mogą być współdzielone listy filtrów. Jednak lista podanego filtra może być dołączany do kilku zasad protokołu IPsec. 
 
-* **Akcje filtru:** Metoda zabezpieczeń definiuje zestaw algorytmów zabezpieczeń, protokołów, i oferuje kluczy komputera podczas negocjacji protokołu IKE. Akcje filtru są listy metod zabezpieczeń, uporządkowanych według priorytetu.  Gdy komputer negocjuje sesję protokołu IPsec, akceptuje lub wysyła wniosków na podstawie ustawienia zabezpieczeń przechowywane na liście akcji filtrowania.
+* **Akcje filtru:** metoda zabezpieczeń definiuje zestaw algorytmów zabezpieczeń, protokołów, i oferuje kluczy komputera podczas negocjacji protokołu IKE. Akcje filtru są listy metod zabezpieczeń, uporządkowanych według priorytetu.  Gdy komputer negocjuje sesję protokołu IPsec, akceptuje lub wysyła wniosków na podstawie ustawienia zabezpieczeń przechowywane na liście akcji filtrowania.
 
-* **Reguły zabezpieczeń:** Reguły określające sposób i kiedy zasady IPsec chroni komunikacji. Używa ona **lista filtrów** i **akcji filtrowania** można utworzyć reguły protokołu IPsec do tworzenia połączenia IPsec. Każda zasada może mieć jedną lub więcej reguł, które mogą być aktywne jednocześnie. Każda reguła zawiera listę filtrów IP kolekcję akcji zabezpieczeń, które odbywają się na pasują do tej listy filtr:
+* **Reguły zabezpieczeń:** decydującymi o jak i kiedy zasady IPsec chroni komunikacji. Używa ona **lista filtrów** i **akcji filtrowania** można utworzyć reguły protokołu IPsec do tworzenia połączenia IPsec. Każda zasada może mieć jedną lub więcej reguł, które mogą być aktywne jednocześnie. Każda reguła zawiera listę filtrów IP kolekcję akcji zabezpieczeń, które odbywają się na pasują do tej listy filtr:
   * Akcje filtru IP
   * Metody uwierzytelniania
   * Ustawienia tunelu protokołu IP
@@ -93,13 +93,13 @@ Upewnij się, że spełniasz następujące wymagania wstępne:
 
 * **Nazwa domeny:** ipsectest.com
 
-* **JEDNOSTKI ORGANIZACYJNEJ:** IPSecOU
+* **Jednostki Organizacyjnej:** IPSecOU
 
 * **Komputer Windows w środowisku lokalnym:** host1
 
 * **Maszyny wirtualne Windows Azure:** maszyny vm1, vm2
 
-## <a name="creategpo"></a>1. Utwórz obiekt zasad grupy
+## <a name="creategpo"></a>1. Tworzenie obiektu zasad grupy
 
 1. Aby utworzyć nowy obiekt zasad grupy połączone z jednostką Organizacyjną, otwórz przystawkę Zarządzanie zasadami grupy, a następnie zlokalizuj jednostkę Organizacyjną, do którego zostanie połączony obiekt zasad grupy. W tym przykładzie nosi nazwę jednostki Organizacyjnej **IPSecOU**. 
 
@@ -120,7 +120,7 @@ Aby zastosować obiekt zasad grupy do jednostki Organizacyjnej, obiekt zasad gru
 
    [![12]][12]
 
-## <a name="filteraction"></a>3. Zdefiniuj akcję filtru IP
+## <a name="filteraction"></a>3. Zdefiniuj akcję filtrowania adresów IP
 
 1. Z listy rozwijanej, kliknij prawym przyciskiem myszy **zasady zabezpieczeń IP w usłudze Active Directory**, a następnie kliknij przycisk **Zarządzanie adresów IP listy filtrów i akcje filtru...** .
 
@@ -144,7 +144,7 @@ Aby zastosować obiekt zasad grupy do jednostki Organizacyjnej, obiekt zasad gru
 7. Na **ruch IP i zabezpieczenia** wybierz opcję **niestandardowe**, następnie kliknij przycisk **ustawień...** .
 
    [![21]][21]
-8. Na **niestandardowych ustawień metody zabezpieczeń** wybierz opcję **integralność danych i szyfrowanie (ESP): ALGORYTM SHA1, 3DES**. Następnie kliknij przycisk **OK**.
+8. Na **niestandardowych ustawień metody zabezpieczeń** wybierz opcję **integralność danych i szyfrowanie (ESP): SHA1, 3DES**. Następnie kliknij przycisk **OK**.
 
    [![22]][22]
 9. Na **Zarządzanie akcji filtrowania** stronie można zobaczyć które **myEncryption** filtr został pomyślnie dodany. Kliknij przycisk **Zamknij**.
@@ -158,7 +158,7 @@ Utwórz listę filtrów, który określa zaszyfrowany ruch HTTP do portu docelow
 1. Aby zakwalifikować się, jakie rodzaje ruchu muszą być szyfrowane, należy użyć **lista filtru IP**. W **Zarządzanie listami filtru IP** kliknij pozycję **Dodaj** Aby dodać nową listę filtrów IP.
 
    [![24]][24]
-2. W **Name:** wpisz nazwę dla listy filtrów. Na przykład **HTTP8080-azure opłacanie**. Następnie kliknij przycisk **Dodaj**.
+2. W **Name:** wpisz nazwę dla listy filtrów. Na przykład **HTTP8080-azure opłacanie**. Następnie kliknij przycisk **Add** (Dodaj).
 
    [![25]][25]
 3. Na **właściwości opisu filtru IP i dublowane** wybierz opcję **dublowane**. Dublowany ustawienie pasuje pakietów, możesz to zrobić w obu kierunkach, co pozwala uzyskać komunikacja dwukierunkowa. Następnie kliknij przycisk **Next** (Dalej).
@@ -170,7 +170,7 @@ Utwórz listę filtrów, który określa zaszyfrowany ruch HTTP do portu docelow
 5. Określ adres źródłowy **adresu IP lub podsieci:** ruch IP, następnie kliknij przycisk **dalej**.
 
    [![28]][28]
-6. Określ **adres docelowy:** Adres IP lub podsieci. Następnie kliknij przycisk **Dalej**.
+6. Określ **adres docelowy:** adresu IP lub podsieci. Następnie kliknij przycisk **Dalej**.
 
    [![29]][29]
 7. Na **typ protokołu IP** wybierz opcję **TCP**. Następnie kliknij przycisk **Dalej**.
@@ -224,7 +224,7 @@ Tworzenie zasad protokołu IPsec z zasadami zabezpieczeń.
 
    [![40]][40]
 
-## <a name="editipsec"></a>7. Edytuj zasady zabezpieczeń protokołu IPsec
+## <a name="editipsec"></a>7. Edytowanie zasad zabezpieczeń protokołu IPsec
 
 Dodawanie zasad IPsec **lista filtru IP** i **akcji filtrowania** skonfigurowaną wcześniej.
 
@@ -252,7 +252,7 @@ Dodawanie zasad IPsec **lista filtru IP** i **akcji filtrowania** skonfigurowan�
 6. Wybierz istniejącą akcję filtru **myEncryption** utworzonego wcześniej.
 
    [![46]][46]
-7. Windows obsługuje cztery różne rodzaje uwierzytelnienia: Protokół Kerberos, certyfikaty, NTLMv2 i klucz wstępny. Ponieważ pracujemy z hostami przyłączonych do domeny, wybierz **domyślne usługi Active Directory (protokół Kerberos V5)** , a następnie kliknij przycisk **dalej**.
+7. Windows obsługuje cztery różne typy uwierzytelnienia: protokołu Kerberos, certyfikaty, NTLMv2, a klucz wstępny. Ponieważ pracujemy z hostami przyłączonych do domeny, wybierz **domyślne usługi Active Directory (protokół Kerberos V5)** , a następnie kliknij przycisk **dalej**.
 
    [![47]][47]
 8. Nowe zasady tworzy reguły zabezpieczeń: **HTTP8080-azure opłacanie**. Kliknij przycisk **OK**.
@@ -261,7 +261,7 @@ Dodawanie zasad IPsec **lista filtru IP** i **akcji filtrowania** skonfigurowan�
 
 Zasady protokołu IPsec wymaga wszystkich połączeń HTTP na porcie 8080, aby użyć trybu transportu IPsec docelowym. HTTP jest protokół zwykłego tekstu, mających włączone zasady zabezpieczeń zapewnia, że dane są szyfrowane, gdy jest przesyłany za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute. Zasady zabezpieczeń IP dla usługi Active Directory jest bardziej złożona, aby skonfigurować niż Zapora Windows z zabezpieczeniami zaawansowanymi, ale umożliwiające większym stopniu połączenia IPsec.
 
-## <a name="assigngpo"></a>8. Przypisz IPsec obiektu zasad grupy do jednostki Organizacyjnej
+## <a name="assigngpo"></a>8. Przypisz obiekt zasad grupy IPsec do jednostki organizacyjnej
 
 1. Wyświetl zasady. Zasady grupy zabezpieczeń jest określony, ale nie została jeszcze przypisana.
 
@@ -312,7 +312,7 @@ Następujące przechwytywania sieci przedstawiono wyniki dla host1 w środowisku
 
 Po uruchomieniu programu powershell script na premisies (klienta HTTP) przechwytywania sieci w maszynie Wirtualnej platformy Azure zawiera podobne śledzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
 

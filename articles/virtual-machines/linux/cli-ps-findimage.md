@@ -1,6 +1,6 @@
 ---
-title: Wybieranie obrazów maszyn wirtualnych systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak określić wydawcy, oferty, jednostki SKU i wersji dla obrazów maszyn wirtualnych w portalu Marketplace za pomocą wiersza polecenia platformy Azure.
+title: Wybieranie obrazów maszyn wirtualnych z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure w celu określenia wydawcy, oferty, jednostki SKU i wersji obrazów maszyn wirtualnych z witryny Marketplace.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,32 +16,32 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbe98c4ad3a1b737b9df0d2ea53d53875f26ba54
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e4dd51640c4eeda2ec99c14812a534ee506faeda
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668365"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036863"
 ---
-# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Znajdowanie obrazów maszyny Wirtualnej systemu Linux w witrynie Azure Marketplace przy użyciu wiersza polecenia platformy Azure
+# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Znajdowanie obrazów maszyn wirtualnych z systemem Linux w portalu Azure Marketplace przy użyciu interfejsu wiersza polecenia platformy Azure
 
-W tym temacie opisano sposób używania interfejsu wiersza polecenia platformy Azure do obrazów maszyn wirtualnych można znaleźć w witrynie Azure Marketplace. Te informacje służą do określania obrazu z witryny Marketplace, gdy programowo utworzyć Maszynę wirtualną przy użyciu interfejsu wiersza polecenia, szablonów usługi Resource Manager lub innych narzędzi.
+W tym temacie opisano sposób używania interfejsu wiersza polecenia platformy Azure do znajdowania obrazów maszyn wirtualnych w portalu Azure Marketplace. Te informacje służą do określania obrazu z witryny Marketplace podczas programistycznego tworzenia maszyny wirtualnej przy użyciu interfejsu wiersza polecenia, szablonów Menedżer zasobów lub innych narzędzi.
 
-Również przeglądać dostępne obrazy i ofert przy użyciu [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) storefront, [witryny Azure portal](https://portal.azure.com), lub [programu Azure PowerShell](../windows/cli-ps-findimage.md). 
+Przeglądaj dostępne obrazy i oferty przy użyciu [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/) , [Azure Portal](https://portal.azure.com)lub [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Upewnij się, że jest zainstalowana najnowsza wersja [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i zalogować się do konta platformy Azure (`az login`).
+Upewnij się, że zainstalowano najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i zalogowano się na koncie platformy azure (`az login`).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="list-popular-images"></a>Listę popularnych obrazów
+## <a name="list-popular-images"></a>Wyświetlanie listy popularnych obrazów
 
-Uruchom [listy obrazów maszyn wirtualnych az](/cli/azure/vm/image) polecenia bez `--all` opcję, aby wyświetlić listę popularnych obrazów maszyn wirtualnych w witrynie Azure Marketplace. Na przykład uruchom następujące polecenie, aby wyświetlić pamięci podręcznej listę popularnych obrazów w formacie tabeli:
+Uruchom polecenie [AZ VM Image list](/cli/azure/vm/image) , bez opcji `--all`, aby wyświetlić listę popularnych obrazów maszyn wirtualnych w portalu Azure Marketplace. Na przykład uruchom następujące polecenie, aby wyświetlić buforowaną listę popularnych obrazów w formacie tabeli:
 
 ```azurecli
 az vm image list --output table
 ```
 
-Dane wyjściowe zawiera obraz URN (wartość w *Urn* kolumny). Podczas tworzenia maszyny Wirtualnej przy użyciu jednej z tych popularnych obrazów z portalu Marketplace, możesz też określić *UrnAlias*, takie jak skróconą *UbuntuLTS*.
+Dane wyjściowe zawierają nazwę URN obrazu (wartość w kolumnie *urn* ). Podczas tworzenia maszyny wirtualnej przy użyciu jednego z popularnych obrazów w portalu Marketplace można alternatywnie określić *UrnAlias*, skróconą postać, taką jak *UbuntuLTS*.
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -59,9 +59,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Znajdowanie określonych obrazów
 
-Aby znaleźć określonego obrazu maszyny Wirtualnej w portalu Marketplace, użyj `az vm image list` polecenia `--all` opcji. Ta wersja polecenia zajmuje trochę czasu, aby zakończyć i może zwrócić długich danych wyjściowych, dlatego zazwyczaj filtrować listę według `--publisher` lub innego parametru. 
+Aby znaleźć konkretny obraz maszyny wirtualnej w portalu Marketplace, użyj polecenia `az vm image list` z opcją `--all`. Ta wersja polecenia zajmuje trochę czasu i może zwracać długość danych wyjściowych, więc zwykle można filtrować listę według `--publisher` lub innego parametru. 
 
-Na przykład następujące polecenie wyświetla wszystkie oferty Debian (należy pamiętać, że bez `--all` przełączyć, przeszukuje tylko lokalną pamięć podręczną obrazów wspólnych):
+Na przykład następujące polecenie wyświetla wszystkie oferty Debian (należy pamiętać, że bez przełącznika `--all` przeszukuje tylko lokalną pamięć podręczną popularnych obrazów):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -108,11 +108,11 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-Zastosuj filtry podobne z `--location`, `--publisher`, i `--sku` opcje. Można przeprowadzić udanych dopasowań w filtrze, takie jak wyszukiwanie `--offer Deb` można znaleźć wszystkie obrazy Debian.
+Zastosuj podobne filtry z opcjami `--location`, `--publisher`i `--sku`. Można wykonać częściowe dopasowania filtru, takie jak wyszukiwanie `--offer Deb`, aby znaleźć wszystkie obrazy debian.
 
-Jeśli nie określisz danej lokalizacji przy użyciu `--location` opcji, zwracane są wartości domyślnej lokalizacji. (Ustaw lokalizację różne domyślne, uruchamiając `az configure --defaults location=<location>`.)
+Jeśli nie określisz określonej lokalizacji z opcją `--location`, zwracane są wartości domyślnej lokalizacji. (Ustaw inną lokalizację domyślną, uruchamiając `az configure --defaults location=<location>`).
 
-Na przykład następujące polecenie wyświetla listę wszystkich Debian 8 publikowania jednostek SKU w lokalizacji Europa Zachodnia:
+Na przykład następujące polecenie wyświetla listę wszystkich Debian 8 jednostek SKU w lokalizacji Europa Zachodnia:
 
 ```azurecli
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
@@ -150,15 +150,15 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 ...
 ```
 
-## <a name="navigate-the-images"></a>Nawigować po obrazach
+## <a name="navigate-the-images"></a>Nawigowanie po obrazach
  
-Innym sposobem, aby znaleźć obraz w lokalizacji jest uruchomienie [obrazu maszyny wirtualnej az list wydawców](/cli/azure/vm/image), [obrazu maszyny wirtualnej az list-offers](/cli/azure/vm/image), i [az vm list-jednostki SKU obrazów](/cli/azure/vm/image) poleceń w sekwencji. Za pomocą poniższych poleceń należy określić następujące wartości:
+Innym sposobem znalezienia obrazu w lokalizacji jest uruchomienie polecenia [AZ VM Image list-Wydawcas](/cli/azure/vm/image), [AZ VM Image list-offers](/cli/azure/vm/image)i [AZ VM Image list-reskus](/cli/azure/vm/image) w sekwencji. Za pomocą tych poleceń można określić następujące wartości:
 
 1. Wyświetl listę wydawców obrazów.
 2. Dla danego wydawcy wyświetl listę ofert.
 3. Dla danej oferty wyświetl listę wersji SKU.
 
-Następnie dla wybranej jednostki SKU, możesz wybrać wersję do wdrożenia.
+Następnie dla wybranej jednostki SKU można wybrać wersję do wdrożenia.
 
 Na przykład następujące polecenie wyświetla listę wydawców obrazów w lokalizacji zachodnie stany USA:
 
@@ -196,7 +196,7 @@ westus      akumina
 ...
 ```
 
-Dzięki tym informacjom można znaleźć oferty od określonego wydawcy. Na przykład w przypadku *Canonical* oferty znaleźć wydawcy w lokalizacji zachodnie stany USA, uruchamiając `azure vm image list-offers`. Przekaż, lokalizacji i wydawcy, jak w poniższym przykładzie:
+Użyj tych informacji, aby znaleźć oferty od określonego wydawcy. Na przykład w przypadku wydawcy *kanonicznego* w lokalizacji zachodnie stany USA Znajdź oferty przez uruchomienie `azure vm image list-offers`. Przekaż lokalizację i wydawcę, tak jak w poniższym przykładzie:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -213,7 +213,7 @@ westus      UbunturollingSnappy
 westus      UbuntuServer
 westus      Ubuntu_Core
 ```
-Zobaczysz, że w regionie zachodnie stany USA, Canonical publikuje *UbuntuServer* oferty na platformie Azure. Ale o jakie wersje SKU chodzi? Aby uzyskać te wartości, należy uruchomić `azure vm image list-skus` i Ustaw lokalizację, wydawcy i oferty, który zostanie odnalezione:
+Zobaczysz, że w regionie zachodnie stany USA publikuje ofertę *UbuntuServer* na platformie Azure. Ale o jakie wersje SKU chodzi? Aby uzyskać te wartości, uruchom `azure vm image list-skus` i ustaw wykrytą lokalizację, wydawcę i ofertę:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -244,7 +244,7 @@ westus      18.10-DAILY
 westus      19.04-DAILY
 ```
 
-Na koniec użyj `az vm image list` polecenia, można znaleźć określonej wersji jednostki SKU, na przykład *18.04 LTS*:
+Na koniec użyj polecenia `az vm image list`, aby znaleźć określoną wersję jednostki SKU, na przykład *18,04-LTS*:
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
@@ -278,17 +278,17 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-Teraz można dokładnie obrazu, którego chcesz użyć, biorąc pod uwagę na wartość URN. Przekazuje tę wartość za pomocą `--image` parametru podczas tworzenia maszyny Wirtualnej z [tworzenie az vm](/cli/azure/vm) polecenia. Należy pamiętać, że można opcjonalnie zastąpić numer wersji w URN "najnowszej"wersji. Ta wersja jest zawsze najnowszą wersję obrazu. 
+Teraz możesz wybrać dokładnie obraz, którego chcesz użyć, zwracając uwagę na wartość URN. Przekaż tę wartość przy użyciu parametru `--image` podczas tworzenia maszyny wirtualnej za pomocą polecenia [AZ VM Create](/cli/azure/vm) . Należy pamiętać, że opcjonalnie można zamienić numer wersji w nazwie URN na "Najnowsza". Ta wersja jest zawsze najnowszą wersją obrazu. 
 
-Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Manager, parametry obrazu należy ustawić indywidualnie w `imageReference` właściwości. Zobacz [dokumentację szablonu](/azure/templates/microsoft.compute/virtualmachines).
+W przypadku wdrożenia maszyny wirtualnej z szablonem Menedżer zasobów, parametry obrazu są ustawiane indywidualnie we właściwościach `imageReference`. Zobacz [dokumentację szablonu](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Wyświetl właściwości planu
 
-Aby wyświetlić informacje o planu zakupu z obrazu, uruchom [az vm image show](/cli/azure/image) polecenia. Jeśli `plan` właściwość w danych wyjściowych jest `null`, obraz, który ma warunki muszą zaakceptować przed przystąpieniem do wdrożenia programowego.
+Aby wyświetlić informacje o planie zakupu obrazu, uruchom polecenie [AZ VM Image show](/cli/azure/image) . Jeśli właściwość `plan` w danych wyjściowych nie jest `null`, obraz zawiera warunki, które należy zaakceptować przed wdrożeniem programistycznym.
 
-Na przykład obrazów Canonical Ubuntu LTS 18.04 serwera nie ma dodatkowe warunki, ponieważ `plan` informacje są `null`:
+Na przykład obraz kanoniczny Ubuntu Server 18,04 LTS nie ma dodatkowych warunków, ponieważ `plan` informacje są `null`:
 
 ```azurecli
 az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
@@ -310,7 +310,7 @@ Dane wyjściowe:
 }
 ```
 
-Uruchomiony podobne polecenie RabbitMQ certyfikowanych przez Bitnami obraz pokazuje następujące `plan` właściwości: `name`, `product`, i `publisher`. (Niektóre obrazy również mieć `promotion code` właściwości.) Aby wdrożyć ten obraz, zobacz poniższe sekcje, aby zaakceptować warunki i włączyć wdrożenia programowe.
+Uruchamianie podobnego polecenia dla obrazu RabbitMQ Certified by Bitnami wyświetla następujące właściwości `plan`: `name`, `product`i `publisher`. (Niektóre obrazy mają również właściwość `promotion code`). Aby wdrożyć ten obraz, zapoznaj się z następującymi sekcjami, aby zaakceptować warunki i włączyć wdrażanie programistyczne.
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -337,13 +337,13 @@ Dane wyjściowe:
 
 ### <a name="accept-the-terms"></a>Zaakceptuj warunki
 
-Aby wyświetlić i zaakceptować postanowienia licencyjne, należy użyć [az vm obraz zaakceptować terms](/cli/azure/vm/image?) polecenia. Jeśli akceptujesz jej warunki, możesz włączyć wdrożenia programowe w ramach subskrypcji. Musisz zaakceptować warunki raz na subskrypcję dla obrazu. Na przykład:
+Aby wyświetlić i zaakceptować postanowienia licencyjne, użyj polecenia [AZ VM Image Accept-terms](/cli/azure/vm/image?) . Po zaakceptowaniu postanowień można włączyć wdrożenie programistyczne w ramach subskrypcji. Musisz tylko raz zaakceptować warunki dla każdej subskrypcji obrazu. Na przykład:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
-Dane wyjściowe obejmują `licenseTextLink` do licencji warunki co oznacza, że wartość `accepted` jest `true`:
+Dane wyjściowe zawierają `licenseTextLink` do postanowień licencyjnych i wskazują, że wartość `accepted` jest `true`:
 
 ```
 {
@@ -364,7 +364,7 @@ Dane wyjściowe obejmują `licenseTextLink` do licencji warunki co oznacza, że 
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>Wdrażanie przy użyciu parametrów planu zakupu
 
-Po zaakceptowaniu warunków dla obrazu, możesz wdrożyć Maszynę wirtualną w subskrypcji. Aby wdrożyć obraz przy użyciu `az vm create` poleceń, podaj parametry dla planu zakupu z dodatkowo do URN dla obrazu. Na przykład, aby wdrożyć Maszynę wirtualną za pomocą certyfikowane oprogramowania RabbitMQ przez obraz Bitnami:
+Po zaakceptowaniu postanowień dotyczących obrazu można wdrożyć maszynę wirtualną w subskrypcji. Aby wdrożyć obraz przy użyciu polecenia `az vm create`, podaj parametry planu zakupów oprócz nazwy URN obrazu. Na przykład, aby wdrożyć maszynę wirtualną przy użyciu obrazu RabbitMQ Certified by Bitnami:
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus
@@ -373,4 +373,4 @@ az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabb
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby szybko utworzyć maszynę wirtualną przy użyciu informacji o obrazie, zobacz [tworzenie i zarządzanie maszynami wirtualnymi systemu Linux przy użyciu wiersza polecenia platformy Azure](tutorial-manage-vm.md).
+Aby szybko utworzyć maszynę wirtualną przy użyciu informacji o obrazie, zobacz [Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure](tutorial-manage-vm.md).

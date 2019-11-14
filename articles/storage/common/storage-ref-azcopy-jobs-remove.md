@@ -8,14 +8,14 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 82c399580322334e67c0c9c2b88d1edf6f175e0c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518293"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034157"
 ---
-# <a name="azcopy-jobs-remove"></a>AzCopy zadania usuwania
+# <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
 Usuń wszystkie pliki skojarzone z danym IDENTYFIKATORem zadania.
 
@@ -25,6 +25,13 @@ Usuń wszystkie pliki skojarzone z danym IDENTYFIKATORem zadania.
 ```
 azcopy jobs remove [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Pokrewne artykuły koncepcyjne
+
+- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Przykłady
 
@@ -42,6 +49,6 @@ azcopy jobs remove [jobID] [flags]
 
 **--** format ciągu typu danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text". (domyślny "tekst")
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [zadania AzCopy](storage-ref-azcopy-jobs.md)

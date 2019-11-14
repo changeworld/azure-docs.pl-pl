@@ -1,5 +1,5 @@
 ---
-title: Synchronizacja czasu dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Synchronizacja czasu dla maszyn wirtualnych z systemem Linux na platformie Azure
 description: Synchronizacja czasu dla maszyn wirtualnych z systemem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100785"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034658"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Synchronizacja czasu dla maszyn wirtualnych z systemem Linux na platformie Azure
 
@@ -67,7 +67,7 @@ Domyślnie większość obrazów w portalu Azure Marketplace dla systemu Linux j
 
 W przypadku nowszych dystrybucji systemu Linux usługa VMICTimeSync używa protokołu czasu (NTP), ale wcześniejsze dystrybucje mogą nie obsługiwać programu PTP i przewracają do NTP w celu uzyskania czasu od hosta.
 
-Aby potwierdzić, że `ntpq -p` NTP jest prawidłowo synchronizowana, uruchom polecenie.
+Aby potwierdzić, że NTP jest prawidłowo synchronizowana, uruchom polecenie `ntpq -p`.
 
 ### <a name="host-only"></a>Tylko Host 
 
@@ -143,7 +143,7 @@ Aby uzyskać więcej informacji na temat Red Hat i NTP, zobacz [Konfigurowanie N
 
 Aby uzyskać więcej informacji na temat chrony, zobacz [Korzystanie z chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
 
-Jeśli jednocześnie włączone są zarówno źródła chrony, jak i TimeSync, można oznaczyć jeden z nich jako preferowany, który ustawia inne źródło jako kopię zapasową. Ponieważ usługi NTP nie aktualizują zegara w przypadku dużych pochylenia, chyba że jest to długi czas, VMICTimeSync odzyska zegar od wstrzymanych zdarzeń maszyny wirtualnej znacznie szybciej niż w przypadku narzędzi opartych na protokole NTP.
+Jeśli jednocześnie włączone są zarówno źródła chrony, jak i TimeSync, można oznaczyć jeden z nich jako **preferowany** , który ustawia inne źródło jako kopię zapasową. Ponieważ usługi NTP nie aktualizują zegara w przypadku dużych pochylenia, chyba że jest to długi czas, VMICTimeSync odzyska zegar od wstrzymanych zdarzeń maszyny wirtualnej znacznie szybciej niż w przypadku narzędzi opartych na protokole NTP.
 
 
 ### <a name="systemd"></a>systemd 

@@ -1,5 +1,5 @@
 ---
-title: Infrastruktura aktualizacji systemu Red Hat | Dokumentacja firmy Microsoft
+title: Infrastruktura aktualizacji systemu Red Hat
 description: Dowiedz się więcej o Red Hat Update Infrastructure wystąpienia w systemie Red Hat Enterprise Linux na żądanie w systemie Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: 6b332af53f421230b3fb5401e525bd77c5e87ed9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b19ccad5254418092446aaf781d49fa7edf0e4f4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081388"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034320"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takich jak Azure duplikatów zawartości hostowanej w systemie Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i udostępnić go do maszyn wirtualnych przez użytkownika końcowego.
@@ -40,13 +40,13 @@ Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RH
 
 ## <a name="image-update-behavior"></a>Zachowanie aktualizacji obrazów
 
-Od kwietnia 2019 platforma Azure oferuje obrazy RHEL, które są połączone z repozytoriami z obsługą aktualizacji rozszerzonych (EUS) domyślnie i obrazy RHEL, które są domyślnie połączone z regularnymi repozytoriami (nie EUS). Więcej szczegółów na temat RHEL EUS są dostępne w dokumentacji dotyczącej [cyklu życia](https://access.redhat.com/support/policy/updates/errata) systemu Red Hat i [dokumentacji EUS](https://access.redhat.com/articles/rhel-eus). Domyślne zachowanie programu `sudo yum update` będzie się różnić w zależności od tego, który obraz RHEL został zainicjowany, ponieważ różne obrazy są połączone z różnymi repozytoriami.
+Od kwietnia 2019 platforma Azure oferuje obrazy RHEL, które są połączone z repozytoriami z obsługą aktualizacji rozszerzonych (EUS) domyślnie i obrazy RHEL, które są domyślnie połączone z regularnymi repozytoriami (nie EUS). Więcej szczegółów na temat RHEL EUS są dostępne w dokumentacji dotyczącej [cyklu życia](https://access.redhat.com/support/policy/updates/errata) systemu Red Hat i [dokumentacji EUS](https://access.redhat.com/articles/rhel-eus). Domyślne zachowanie `sudo yum update` będzie się różnić w zależności od tego, który obraz RHEL został zainicjowany, ponieważ różne obrazy są połączone z różnymi repozytoriami.
 
-Aby uzyskać pełną listę obrazów, uruchom `az vm image list --publisher redhat --all` polecenie przy użyciu interfejsu wiersza polecenia platformy Azure.
+Aby uzyskać pełną listę obrazów, uruchom `az vm image list --publisher redhat --all` przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Obrazy połączone z repozytoriami nieEUS
 
-Jeśli zainicjujesz maszynę wirtualną z obrazu RHEL, który jest połączony z repozytoriami nieEUS, podczas uruchamiania `sudo yum update`programu zostanie uaktualniona do najnowszej wersji pomocniczej RHEL. Na przykład jeśli zainicjujesz maszynę wirtualną na podstawie obrazu RHEL 7,4 PAYG i `sudo yum update`uruchamiania, będziesz kończyć maszynę wirtualną RHEL 7,7 (Najnowsza wersja pomocnicza w rodzinie RHEL7).
+Jeśli zainicjujesz maszynę wirtualną z obrazu RHEL, który jest połączony z repozytoriami nieEUS, podczas uruchamiania `sudo yum update`zostanie uaktualniona do najnowszej wersji pomocniczej RHEL. Na przykład jeśli zainicjujesz maszynę wirtualną na podstawie obrazu RHEL 7,4 PAYG i uruchomisz `sudo yum update`, będziesz kończyć maszynę wirtualną RHEL 7,7 (Najnowsza wersja pomocnicza w rodzinie RHEL7).
 
 Obrazy połączone z repozytoriami nieEUS nie będą zawierać pomocniczego numeru wersji w jednostce SKU. Jednostka SKU jest trzecią częścią nazwy URN (pełna nazwa obrazu). Na przykład wszystkie następujące obrazy są dołączone do repozytoriów innych niż EUS:
 
@@ -63,7 +63,7 @@ Należy pamiętać, że jednostki SKU to 7-LVM lub 7-RAW. Wersja pomocnicza jest
 
 ### <a name="images-connected-to-eus-repositories"></a>Obrazy połączone z repozytoriami EUS
 
-Jeśli zainicjujesz maszynę wirtualną z obrazu RHEL, który jest połączony z repozytoriami EUS, nie będziesz uaktualniać do najnowszej wersji pomocniczej RHEL podczas uruchamiania `sudo yum update`. Wynika to z faktu, że obrazy połączone z repozytoriami EUS są również zablokowane w wersji z określoną wersją pomocniczą.
+Jeśli zainicjujesz maszynę wirtualną z obrazu RHEL, który jest połączony z repozytoriami EUS, podczas uruchamiania `sudo yum update`nie zostanie uaktualniona do najnowszej wersji pomocniczej RHEL. Wynika to z faktu, że obrazy połączone z repozytoriami EUS są również zablokowane w wersji z określoną wersją pomocniczą.
 
 Obrazy połączone z repozytoriami EUS będą zawierać pomocniczy numer wersji w jednostce SKU. Na przykład wszystkie następujące obrazy są dołączone do repozytoriów EUS:
 
@@ -108,7 +108,7 @@ Skorzystaj z poniższych instrukcji, aby zablokować maszynę wirtualną RHEL do
     ```
 
     >[!NOTE]
-    > Powyższa instrukcja spowoduje zablokowanie wersji pomocniczej RHEL w bieżącej wersji pomocniczej. Wprowadź konkretną wersję pomocniczą, jeśli zamierzasz uaktualnić i zablokować nowszą wersję pomocniczą, która nie jest najnowsza. Na przykład `echo 7.5 > /etc/yum/vars/releasever` program zablokuje wersję RHEL do RHEL 7,5
+    > Powyższa instrukcja spowoduje zablokowanie wersji pomocniczej RHEL w bieżącej wersji pomocniczej. Wprowadź konkretną wersję pomocniczą, jeśli zamierzasz uaktualnić i zablokować nowszą wersję pomocniczą, która nie jest najnowsza. Na przykład `echo 7.5 > /etc/yum/vars/releasever` zablokuje wersję RHEL do RHEL 7,5
 
 1. Aktualizowanie maszyny wirtualnej RHEL
     ```bash
@@ -167,15 +167,15 @@ Jeśli używasz konfiguracji sieci bardziej ograniczyć dostęp z maszyn wirtual
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Aktualizacja wygasłego certyfikatu klienta usługi RHUI na maszynie Wirtualnej
 
-Jeśli używasz starszego obrazu maszyny wirtualnej RHEL, na przykład RHEL 7,4 (urn do obrazu: `RedHat:RHEL:7.4:7.4.2018010506`), wystąpią problemy z połączeniem z usługą RHUI z powodu wygasłego certyfikatu klienta SSL. Wyświetlany błąd może wyglądać podobnie do _"równorzędne SSL odrzucił certyfikat jako wygasły"_ lub _"błąd: Nie można pobrać metadanych repozytorium (repomd. xml) dla repozytorium:... Sprawdź swoją ścieżkę i spróbuj ponownie "_ . Aby rozwiązać ten problem, zaktualizuj pakiet klienta RHUI na maszynie wirtualnej przy użyciu następującego polecenia:
+Jeśli używasz starszego obrazu maszyny wirtualnej RHEL, na przykład RHEL 7,4 (nazwa URN obrazu: `RedHat:RHEL:7.4:7.4.2018010506`), wystąpią problemy z łącznością z usługą RHUI z powodu wygasłego certyfikatu klienta SSL. Wyświetlany błąd może wyglądać podobnie do _"element równorzędny protokołu SSL odrzucił certyfikat jako wygasły"_ lub _"błąd: nie można pobrać metadanych repozytorium (repomd. xml) dla repozytorium:... Sprawdź swoją ścieżkę i spróbuj ponownie "_ . Aby rozwiązać ten problem, zaktualizuj pakiet klienta RHUI na maszynie wirtualnej przy użyciu następującego polecenia:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-Alternatywnie, uruchomienie `sudo yum update` programu może także aktualizować pakiet certyfikatów klienta (w zależności od wersji RHEL), pomimo błędu "wygasły certyfikat SSL" będzie widoczny dla innych repozytoriów. Jeśli ta aktualizacja zakończyła się pomyślnie, należy przywrócić normalne połączenie z innymi repozytoriami RHUI, aby umożliwić pomyślne uruchomienie `sudo yum update` .
+Alternatywnie uruchomienie `sudo yum update` może także aktualizować pakiet certyfikatów klienta (w zależności od wersji programu RHEL), mimo błędów "wygasły certyfikat SSL", które będą widoczne dla innych repozytoriów. Jeśli ta aktualizacja zakończyła się pomyślnie, należy przywrócić normalne połączenie z innymi repozytoriami RHUI, dzięki czemu będzie można uruchamiać `sudo yum update` pomyślnie.
 
-Jeśli podczas uruchamiania programu `yum update`wystąpi błąd 404, spróbuj wykonać następujące czynności, aby odświeżyć pamięć podręczną Yum:
+Jeśli podczas uruchamiania `yum update`wystąpi błąd 404, spróbuj wykonać następujące czynności, aby odświeżyć pamięć podręczną Yum:
 ```bash
 sudo yum clean all;
 sudo yum makecache

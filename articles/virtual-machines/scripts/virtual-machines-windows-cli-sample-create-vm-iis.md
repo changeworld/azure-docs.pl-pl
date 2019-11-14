@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — instalowanie usług IIS | Microsoft Docs
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — instalowanie usług IIS
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — instalowanie usług IIS
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: cynthn
-ms.openlocfilehash: 6e9e54c164ed3112cddd7f92304eb44ee86abef6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1ec0ada9143d193f8ee976d53d0b9754904efbe5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708265"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039955"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Szybkie tworzenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -54,7 +54,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Dodaje rozszerzenie maszyny wirtualnej do maszyny wirtualnej i uruchamia je. W tym przykładzie do instalowania usług IIS jest używane rozszerzenie skryptu niestandardowego.|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

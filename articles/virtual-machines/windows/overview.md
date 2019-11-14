@@ -1,5 +1,5 @@
 ---
-title: Omówienie maszyn wirtualnych z systemem Windows — Azure | Microsoft Docs
+title: Przegląd Windows Virtual Machines — Azure
 description: Dowiedz się więcej na temat tworzenia maszyn wirtualnych z systemem Windows na platformie Azure oraz zarządzania nimi.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f2929218b3a304099b1eb009df8e93d0e43c103
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe62f67071b77c464d5b3b8649d16db597d9ab21
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839876"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033035"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -102,11 +102,11 @@ Zasoby wymienione w tej tabeli są używane przez maszynę wirtualną i muszą i
 
 | Zasób | Wymagany | Opis |
 | --- | --- | --- |
-| [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) |Tak |Maszyna wirtualna musi być zawarta w grupie zasobów. |
-| [Konto magazynu](../../storage/common/storage-create-storage-account.md) |Tak |Maszyna wirtualna wymaga konta magazynu do przechowywania wirtualnych dysków twardych. |
-| [Sieć wirtualna](../../virtual-network/virtual-networks-overview.md) |Tak |Maszyna wirtualna musi należeć do sieci wirtualnej. |
+| [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) |Yes |Maszyna wirtualna musi być zawarta w grupie zasobów. |
+| [Konto magazynu](../../storage/common/storage-create-storage-account.md) |Yes |Maszyna wirtualna wymaga konta magazynu do przechowywania wirtualnych dysków twardych. |
+| [Sieć wirtualna](../../virtual-network/virtual-networks-overview.md) |Yes |Maszyna wirtualna musi należeć do sieci wirtualnej. |
 | [Publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |Nie |Maszyna wirtualna może mieć przypisany publiczny adres IP umożliwiający uzyskiwanie do niej dostępu zdalnego. |
-| [Interfejs sieciowy](../../virtual-network/virtual-network-network-interface.md) |Tak |Maszyna wirtualna wymaga interfejsu sieciowego do komunikacji w sieci. |
+| [Interfejs sieciowy](../../virtual-network/virtual-network-network-interface.md) |Yes |Maszyna wirtualna wymaga interfejsu sieciowego do komunikacji w sieci. |
 | [Dyski danych](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nie |Maszyna wirtualna może zawierać dyski danych zwiększające jej pojemność. |
 
 ## <a name="how-do-i-create-my-first-vm"></a>Jak utworzyć maszynę wirtualną?

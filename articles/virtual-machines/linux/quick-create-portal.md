@@ -1,5 +1,5 @@
 ---
-title: Szybki start — tworzenie maszyny wirtualnej z systemem Linux w witrynie Azure Portal | Microsoft Docs
+title: Szybki Start — Tworzenie maszyny wirtualnej z systemem Linux w Azure Portal
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną z systemem Linux przy użyciu Azure Portal.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693324"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035213"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux w witrynie Azure Portal
 
@@ -43,7 +43,7 @@ Otwórz powłokę Bash i użyj polecenia [ssh-keygen](https://www.ssh.com/ssh/ke
 1. Polecenie `ssh-keygen` generuje klucze publiczne i prywatne z domyślną nazwą `id_rsa` w `~/.ssh directory`. Polecenie zwraca pełną ścieżkę do klucza publicznego. Użyj ścieżki do klucza publicznego, aby wyświetlić jej zawartość za pomocą `cat`, wpisując `cat ~/.ssh/id_rsa.pub`.
 1. Skopiuj dane wyjściowe tego polecenia i Zapisz je w dalszej części tego artykułu. Jest to Twój klucz publiczny, który będzie potrzebny podczas konfigurowania konta administratora, aby zalogować się do maszyny wirtualnej.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do [Azure Portal](https://portal.azure.com) , jeśli jeszcze tego nie zrobiono.
 
@@ -56,7 +56,7 @@ Zaloguj się do [Azure Portal](https://portal.azure.com) , jeśli jeszcze tego n
 
     ![Tworzenie nowej grupy zasobów dla maszyny wirtualnej](./media/quick-create-portal/project-details.png)
 
-1. W obszarze **szczegóły wystąpienia**wpisz *myVM* dla **nazwy maszyny wirtualnej**, wybierz *Wschodnie stany USA* dla **regionu**i wybierz *Ubuntu 18,04 LTS* dla Twojego **obrazu**. Inne wartości pozostaw domyślne.
+1. W obszarze **szczegóły wystąpienia**wpisz *myVM* dla **nazwy maszyny wirtualnej**, wybierz *Wschodnie stany USA* dla **regionu**i wybierz *Ubuntu 18,04 LTS* dla Twojego **obrazu**. Pozostaw inne wartości domyślne.
 
     ![Sekcja Szczegóły wystąpienia](./media/quick-create-portal/instance-details.png)
 
@@ -91,7 +91,7 @@ Utwórz połączenie SSH z maszyną wirtualną.
 
 3. Korzystając z tej samej powłoki bash, która została użyta do utworzenia pary kluczy SSH (możesz ponownie otworzyć Cloud Shell, wybierając `>_` lub przechodząc do https://shell.azure.com/bash), Wklej polecenie połączenia SSH do powłoki, aby utworzyć sesję SSH.
 
-## <a name="install-web-server"></a>Instalowanie serwera sieci Web
+## <a name="install-web-server"></a>Instalowanie serwera internetowego
 
 Aby zobaczyć działanie maszyny wirtualnej, zainstaluj serwer internetowy NGINX. Z poziomu sesji SSH zaktualizuj źródła pakietu, a następnie zainstaluj najnowszą wersję pakietu NGINX.
 
@@ -105,7 +105,7 @@ Gdy skończysz, wpisz polecenie `exit`, aby opuścić sesję SSH.
 
 ## <a name="view-the-web-server-in-action"></a>Oglądanie działającego serwera internetowego
 
-Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona powitalną serwera NGINX. Wpisz publiczny adres IP maszyny wirtualnej jako adres sieci Web. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub jako część wcześniej użytych parametrów połączenia SSH.
+Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona główną serwera NGINX. Wpisz publiczny adres IP maszyny wirtualnej jako adres sieci Web. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub jako część wcześniej użytych parametrów połączenia SSH.
 
 ![Domyślna witryna serwera NGINX](./media/quick-create-portal/nginx.png)
 

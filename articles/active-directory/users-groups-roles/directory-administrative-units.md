@@ -1,26 +1,25 @@
 ---
-title: Zarządzanie jednostkami administracyjnymi (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
+title: Zarządzanie jednostkami administracyjnymi (wersja zapoznawcza) — Azure AD | Microsoft Docs
 description: Korzystanie z jednostek administracyjnych na potrzeby bardziej szczegółowego delegowania uprawnień w Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/13/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b61186a876af90c812ec7faf41fa9f5b14bf4e
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 3c4958975a080a98fb900bf317229ba9eda795d5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336921"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028408"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Zarządzanie jednostkami administracyjnymi w Azure Active Directory (wersja zapoznawcza)
 
@@ -40,7 +39,7 @@ Aby korzystanie z jednostek administracyjnych wymagało Azure Active Directory �
 
 W tej wersji zapoznawczej jedynym sposobem tworzenia i zarządzania jednostkami administracyjnymi jest użycie modułu Azure Active Directory dla poleceń cmdlet programu Windows PowerShell, zgodnie z opisem w temacie [Praca z jednostkami administracyjnymi](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0) .
 
-Aby uzyskać więcej informacji na temat wymagań programowych i instalowania modułu usługi Azure AD oraz informacje referencyjne dotyczące poleceń cmdlet modułu usługi Azure AD do zarządzania jednostkami administracyjnymi, w tym składnią, opisami parametrów i przykładami, zobacz [Azure Active Katalog programu PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+Aby uzyskać więcej informacji na temat wymagań programowych i instalowania modułu usługi Azure AD oraz informacje referencyjne dotyczące poleceń cmdlet modułu usługi Azure AD do zarządzania jednostkami administracyjnymi, w tym składnią, opisami parametrów i przykładami, zobacz [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
 ## <a name="next-steps"></a>Następne kroki
 

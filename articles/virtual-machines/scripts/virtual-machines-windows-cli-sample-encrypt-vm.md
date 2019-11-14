@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — szyfrowanie maszyny wirtualnej z systemem Windows | Microsoft Docs
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — szyfrowanie maszyny wirtualnej z systemem Windows
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — szyfrowanie maszyny wirtualnej z systemem Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b6cf773069582e8164a86b37bdb669b71e2f2da
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f37288cb028a3965dfa5b880f0f8c7de35728ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703260"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039858"
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Szyfrowanie maszyny wirtualnej z systemem Windows na platformie Azure
 
@@ -58,7 +58,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | Wyświetla stan procesu szyfrowania maszyny wirtualnej. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 
