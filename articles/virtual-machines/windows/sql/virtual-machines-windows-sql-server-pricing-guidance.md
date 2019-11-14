@@ -1,10 +1,9 @@
 ---
-title: Efektywne zarządzanie kosztami SQL Server na maszynach wirtualnych platformy Azure | Microsoft Docs
+title: Wskazówki dotyczące cen & zarządzanie kosztami
 description: Zawiera najlepsze rozwiązania dotyczące wybierania odpowiednich SQL Server modelu cen maszyn wirtualnych.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028626"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038873"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>Wskazówki dotyczące cen dla SQL Server maszyn wirtualnych platformy Azure
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Wskazówki dotyczące cen maszyn wirtualnych platformy Azure SQL Server
 
 Ten artykuł zawiera wskazówki dotyczące cen dla [SQL Server maszyn wirtualnych](virtual-machines-windows-sql-server-iaas-overview.md) na platformie Azure. Istnieje kilka opcji, które mają wpływ na koszt i ważne jest wybranie odpowiedniego obrazu, który równoważy koszty związane z wymaganiami biznesowymi.
 
@@ -56,7 +56,7 @@ W przypadku nielekkiego obciążenia produkcyjnego należy użyć jednej z nast�
 
 | SQL Server Edition | Obciążenie |
 |-----|-----|
-| Web | Małe witryny sieci Web |
+| Sieć Web | Małe witryny sieci Web |
 | Standardowa (Standard) | Małe i średnie obciążenia |
 | Enterprise | Duże lub krytyczne dla działalności obciążenia|
 
@@ -139,19 +139,19 @@ Koszt licencjonowania SQL Server jest bezpośrednio związany z liczbą procesor
 
 Istnieją nowe rozmiary maszyn, które dobrze sprawdzają się w przypadku niektórych typów obciążeń SQL Server. Te maszyny zajmują dużo poziomów pamięci, magazynu i przepustowości we/wy, ale mają mniejszą liczbę rdzeni zwirtualizowanych. Rozważmy na przykład następujący przykład:
 
-| Rozmiar maszyny wirtualnej | Procesorów wirtualnych vCPU | Pamięć | Maksymalna liczba dysków | Maksymalna przepływność we/wy | Koszty licencji SQL | Łączne koszty (obliczeniowe + Licencjonowanie) |
+| Rozmiar maszyny wirtualnej | Procesorów wirtualnych vCPU | Memory (Pamięć) | Maksymalna liczba dysków | Maksymalna przepływność we/wy | Koszty licencji SQL | Łączne koszty (obliczeniowe + Licencjonowanie) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 operacji we/wy lub 768 MB/s | | |
-| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 operacji we/wy lub 768 MB/s | 75% Obniż | 57% Obniż |
+| **Standard_DS14 — 4v2** | 4 | 112 GB | 32 | 51 200 operacji we/wy lub 768 MB/s | 75% Obniż | 57% Obniż |
 
 > [!IMPORTANT]
 > To jest przykład do punktu w czasie. Najnowsze specyfikacje można znaleźć w artykułach o rozmiarach maszyn i na stronie z cennikiem platformy Azure dla [systemów Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) i [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-W poprzednim przykładzie widać, że specyfikacje dla **Standard_DS14v2** i **Standard_DS14-4v2** są identyczne, z wyjątkiem procesorów wirtualnych vCPU. Sufiks **-4v2** na końcu rozmiaru maszyny **Standard_DS14-4v2** wskazuje liczbę aktywnych procesorów wirtualnych vCPU. Ponieważ koszty licencjonowania SQL Server są powiązane z liczbą procesorów wirtualnych vCPU, znacznie zmniejsza to koszt maszyny wirtualnej w scenariuszach, w których dodatkowe procesorów wirtualnych vCPU nie są potrzebne. Jest to jeden przykład, a istnieje wiele rozmiarów maszyn z ograniczeniami procesorów wirtualnych vCPU, które są identyfikowane za pomocą tego wzorca sufiksu. Aby uzyskać więcej informacji, zapoznaj się z wpisem w blogu, który [ogłasza nowe rozmiary maszyn wirtualnych platformy Azure w celu uzyskania bardziej ekonomicznej pracy bazy danych](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+W poprzednim przykładzie można zobaczyć, że specyfikacje dla **Standard_DS14v2** i **Standard_DS14-4v2** są identyczne, z wyjątkiem procesorów wirtualnych vCPU. Sufiks **-4v2** na końcu rozmiaru maszyny **Standard_DS14-4v2** wskazuje liczbę aktywnych procesorów wirtualnych vCPU. Ponieważ koszty licencjonowania SQL Server są powiązane z liczbą procesorów wirtualnych vCPU, znacznie zmniejsza to koszt maszyny wirtualnej w scenariuszach, w których dodatkowe procesorów wirtualnych vCPU nie są potrzebne. Jest to jeden przykład, a istnieje wiele rozmiarów maszyn z ograniczeniami procesorów wirtualnych vCPU, które są identyfikowane za pomocą tego wzorca sufiksu. Aby uzyskać więcej informacji, zapoznaj się z wpisem w blogu, który [ogłasza nowe rozmiary maszyn wirtualnych platformy Azure w celu uzyskania bardziej ekonomicznej pracy bazy danych](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 ### <a name="shut-down-your-vm-when-possible"></a>Zamknij maszynę wirtualną, gdy jest to możliwe
 
-Jeśli używasz wszelkich obciążeń, które nie działają w sposób ciągły, rozważ wyłączenie maszyny wirtualnej w nieaktywnych okresach. Płacisz wyłącznie za użyte zasoby.
+Jeśli używasz wszelkich obciążeń, które nie działają w sposób ciągły, rozważ wyłączenie maszyny wirtualnej w nieaktywnych okresach. Płaci się wyłącznie za użyte zasoby.
 
 Jeśli na przykład po prostu próbujesz wypróbować SQL Server na maszynie wirtualnej platformy Azure, nie chcesz naliczać opłat przez przypadkowe pozostawienie jej w tygodniach. Jednym z rozwiązań jest użycie [funkcji automatycznego zamykania](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 

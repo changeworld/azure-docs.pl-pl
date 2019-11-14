@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu interfejsu wiersza polecenia | Microsoft Docs
+title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu interfejsu wiersza polecenia
 description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827294"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036400"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Wersja zapoznawcza: Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Podgląd: wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu interfejsu wiersza polecenia platformy Azure
  
 
 W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md) platformy Azure do hostowania maszyn wirtualnych. 
 
-Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.70 lub nowszej oraz że zalogowano `az login`się na koncie platformy Azure przy użyciu programu. 
+Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.70 lub nowszej oraz że zalogowano się na koncie platformy Azure przy użyciu `az login`. 
 
 > [!IMPORTANT]
 > Dedykowane hosty platformy Azure są obecnie dostępne w publicznej wersji zapoznawczej.
@@ -33,7 +33,7 @@ Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w we
 >
 > **Ograniczenia znanej wersji zapoznawczej**
 > - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-> - Początkowa wersja zapoznawcza obsługuje następującą serię maszyn wirtualnych: DSv3 i ESv3. 
+> - Początkowa wersja zapoznawcza obsługuje następujące serie maszyn wirtualnych: DSv3 i ESv3. 
  
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów 
@@ -104,7 +104,7 @@ az vm host create \
 
 
  
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną 
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej 
 Utwórz maszynę wirtualną na dedykowanym hoście za pomocą polecenia [AZ VM Create](/cli/azure/vm#az-vm-create). Jeśli podczas tworzenia grupy hostów została określona strefa dostępności, należy użyć tej samej strefy podczas tworzenia maszyny wirtualnej.
 
 ```bash
@@ -239,7 +239,7 @@ Możesz wyeksportować szablon, jeśli chcesz teraz utworzyć dodatkowe środowi
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-To polecenie tworzy `myDHResourceGroup.json` plik w bieżącym katalogu roboczym. Po utworzeniu środowiska na podstawie tego szablonu zostanie wyświetlony monit o podanie wszystkich nazw zasobów. Można wypełnić te nazwy w pliku szablonu, dodając `--include-parameter-default-value` parametr `az group export` do polecenia. Edytuj szablon JSON, aby określić nazwy zasobów, lub Utwórz plik Parameters. JSON, który określa nazwy zasobów.
+To polecenie tworzy plik `myDHResourceGroup.json` w bieżącym katalogu roboczym. Po utworzeniu środowiska na podstawie tego szablonu zostanie wyświetlony monit o podanie wszystkich nazw zasobów. Można wypełnić te nazwy w pliku szablonu, dodając parametr `--include-parameter-default-value` do polecenia `az group export`. Edytuj szablon JSON, aby określić nazwy zasobów, lub Utwórz plik Parameters. JSON, który określa nazwy zasobów.
  
 Aby utworzyć środowisko na podstawie szablonu, użyj [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create).
 
@@ -278,7 +278,7 @@ Możesz również usunąć całą grupę zasobów w pojedynczym poleceniu. Spowo
 az group delete -n myDHResourceGroup 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji, zobacz Omówienie [dedykowanych hostów](dedicated-hosts.md) .
 

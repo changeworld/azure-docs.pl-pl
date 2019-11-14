@@ -1,5 +1,5 @@
 ---
-title: Przykład dla interfejsu wiersza polecenia platformy Azure — kopiowanie migawki na konto magazynu w innym regionie | Microsoft Docs
+title: Przykład interfejsu wiersza polecenia platformy Azure — kopiowanie migawki do konta magazynu w innym regionie
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — eksportowanie/kopiowanie migawki jako dysku VHD na konto magazynu w tym samym lub innym regionie.
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 2ca70eae4a7ab14be9eba82324d41f9e5a24bcff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9390d6854ecfa43542d1713bae7d7e8fd8439ee
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302402"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038256"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Eksportowanie/kopiowanie migawki na konto magazynu w innym regionie przy użyciu interfejsu wiersza polecenia
 
@@ -46,7 +46,7 @@ Ten skrypt używa poniższych poleceń do generowania identyfikatora URI sygnatu
 | [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot) | Generuje sygnaturę dostępu współdzielonego tylko do odczytu, która jest używana do kopiowania odpowiedniego pliku VHD do konta magazynu lub pobierania go do środowiska lokalnego  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | Asynchronicznie kopiuje obiekt blob z jednego konta magazynu do innego |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie dysku zarządzanego na podstawie dysku VHD](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 

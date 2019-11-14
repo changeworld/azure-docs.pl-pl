@@ -1,5 +1,5 @@
 ---
-title: Przewodnik aprowizacji dla maszyn wirtualnych z systemem Windows SQL Server w Azure Portal | Microsoft Docs
+title: Udostępnianie maszyny wirtualnej za pomocą Azure Portal
 description: Ten przewodnik zawiera opis opcji tworzenia maszyn wirtualnych z systemem Windows SQL Server 2017 w Azure Portal.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 68fda45038da48660da0c29787b3a86e00d9b129
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828774"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033583"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak zainicjować obsługę administracyjną maszyny wirtualnej z systemem Windows SQL Server w Azure Portal
 
@@ -162,7 +163,7 @@ Ogólnie rzecz biorąc, można ulepszyć zabezpieczenia, wybierając łącznoś�
 
 
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Jeśli wymagane jest uwierzytelnianie SQL Server, kliknij pozycję **Włącz** w obszarze **uwierzytelnianie SQL** na karcie **Ustawienia SQL Server** .
 
@@ -186,7 +187,7 @@ Poniższa tabela zawiera listę parametrów wymaganych do skonfigurowania integr
 
 | PARAMETR | OPIS | PRZYKŁAD |
 | --- | --- | --- |
-| **Adres URL magazynu kluczy** |Lokalizacja magazynu kluczy. |https: \//contosokeyvault. magazyn. Azure. NET/ |
+| **Adres URL magazynu kluczy** |Lokalizacja magazynu kluczy. |https:\//contosokeyvault.vault.azure.net/ |
 | **Nazwa główna** |Nazwa główna usługi Azure Active Directory. Ta nazwa jest również nazywana identyfikatorem klienta. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Główny klucz tajny** |Główny klucz tajny usługi Azure Active Directory. Ten klucz tajny jest również nazywany kluczem tajnym klienta. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **Nazwa poświadczenia** |**Nazwa poświadczenia**: integracja usługi Azure Key Vault powoduje utworzenie poświadczenia w programie SQL Server, co umożliwia maszynie wirtualnej dostęp do magazynu kluczy. Wybierz nazwę tego poświadczenia. |moje_poświadczenie_1 |

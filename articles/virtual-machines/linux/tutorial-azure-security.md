@@ -1,5 +1,5 @@
 ---
-title: Samouczek — korzystanie z usługi Azure Security Center dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Samouczek — używanie Azure Security Center dla maszyn wirtualnych z systemem Linux na platformie Azure
 description: W tym samouczku przedstawiono funkcje usługi Azure Security Center ułatwiające ochronę i zabezpieczanie maszyn wirtualnych z systemem Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ac5c95fa51ca5032f5d3e057af2064f872ea15c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081711"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034602"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: Monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
 
 Usługa Azure Security Center ułatwia wgląd w rozwiązania z zakresu zabezpieczeń zasobów platformy Azure. Usługa Security Center oferuje zintegrowane monitorowanie zabezpieczeń. Potrafi wykrywać zagrożenia, które inaczej mogłyby ujść uwadze. W tym samouczku poznasz usługę Azure Security Center oraz następujące zagadnienia:
  

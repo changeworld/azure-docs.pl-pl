@@ -1,5 +1,5 @@
 ---
-title: Konserwacja i aktualizacje dla maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Konserwacja i aktualizacje dla maszyn wirtualnych z systemem Windows na platformie Azure
 description: Przegląd konserwacji i aktualizacji dla maszyn wirtualnych z systemem Windows działających na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 4fafca61fdee33a947f26203b39c8e681abfca12
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9d71eae0975c4cd799376588d933357222a417d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079217"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038191"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Konserwacja maszyn wirtualnych na platformie Azure
 

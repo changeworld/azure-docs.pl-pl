@@ -1,5 +1,5 @@
 ---
-title: Wdróż dedykowane hosty platformy Azure przy użyciu Azure PowerShell | Microsoft Docs
+title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu Azure PowerShell
 description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu Azure PowerShell.
 services: virtual-machines-windows
 author: cynthn
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261707"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033368"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wersja zapoznawcza: Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu Azure PowerShell
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu Azure PowerShell
 
 W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md) platformy Azure do hostowania maszyn wirtualnych. 
 
-Upewnij się, że zainstalowano Azure PowerShell w wersji 2.4.2 lub nowszej, i zalogujesz się do konta platformy Azure w `Connect-AzAccount`usłudze. Aby zainstalować wersję 2.4.2, Otwórz wiersz polecenia programu PowerShell i wpisz:
+Upewnij się, że zainstalowano Azure PowerShell wersji 2.4.2 lub nowszej, i zalogujesz się do konta platformy Azure w programie z dodatkiem `Connect-AzAccount`. Aby zainstalować wersję 2.4.2, Otwórz wiersz polecenia programu PowerShell i wpisz:
 
 ```powershell
 Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
@@ -42,7 +42,7 @@ Install-Module -Name PowerShellGet -Repository PSGallery -Force
 >
 > **Ograniczenia znanej wersji zapoznawczej**
 > - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-> - Początkowa wersja zapoznawcza obsługuje następującą serię maszyn wirtualnych: DSv3 i ESv3. 
+> - Początkowa wersja zapoznawcza obsługuje następujące serie maszyn wirtualnych: DSv3 i ESv3. 
 
 
 
@@ -115,7 +115,7 @@ New-AzVM `
 
 ## <a name="check-the-status-of-the-host"></a>Sprawdź stan hosta
 
-Można sprawdzić stan kondycji hosta oraz liczbę maszyn wirtualnych, które można wdrożyć na hoście przy użyciu [GetAzHost](/powershell/module/az.compute/get-azhost) z `-InstanceView` parametrem.
+Można sprawdzić stan kondycji hosta oraz liczbę maszyn wirtualnych, które można wdrożyć na hoście przy użyciu [GetAzHost](/powershell/module/az.compute/get-azhost) z parametrem `-InstanceView`.
 
 ```
 Get-AzHost `

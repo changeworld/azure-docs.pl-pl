@@ -1,25 +1,25 @@
 ---
-title: Utwórz grupę dynamiczną i sprawdź stan Azure Active Directory | Microsoft Docs
+title: Tworzenie grupy dynamicznej i sprawdzanie stanu — Azure AD | Microsoft Docs
 description: Jak utworzyć regułę członkostwa w grupie w Azure Portal, sprawdź stan.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193949"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027240"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utwórz grupę dynamiczną i sprawdź stan
 
@@ -35,7 +35,7 @@ Poniżej przedstawiono kilka przykładów zaawansowanych reguł lub składni, dl
 - Reguła z więcej niż pięcioma wyrażeniami
 - Reguła bezpośrednich podwładnych
 - Ustawianie [pierwszeństwa operatorów](groups-dynamic-membership.md#operator-precedence)
-- [Reguły z wyrażeniami złożonymi](groups-dynamic-membership.md#rules-with-complex-expressions); na przykład`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Reguły z wyrażeniami złożonymi](groups-dynamic-membership.md#rules-with-complex-expressions); na przykład `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Konstruktor reguł może nie być w stanie wyświetlić niektórych reguł skonstruowanych w polu tekstowym. Gdy Konstruktor reguł nie może wyświetlić reguły, może zostać wyświetlony komunikat. Konstruktor reguł nie zmienia obsługiwanej składni, walidacji lub przetwarzania reguł grupy dynamicznej w dowolny sposób.
@@ -76,17 +76,17 @@ Na stronie **Przegląd** dla grupy można zobaczyć stan przetwarzania członkos
 
 Na potrzeby stanu **przetwarzania członkostwa** można wyświetlić następujące komunikaty o stanie:
 
-- **Ocenianie**:  Odebrano zmianę grupy, a aktualizacje są oceniane.
-- **Przetwarzanie**: Trwa przetwarzanie aktualizacji.
-- **Aktualizacja zakończona**: Przetwarzanie zostało zakończone i wszystkie odpowiednie aktualizacje zostały wykonane.
-- **Błąd przetwarzania**:  Nie można ukończyć przetwarzania z powodu błędu oceny reguły członkostwa.
-- **Wstrzymano aktualizację**: Aktualizacje reguł członkostwa dynamicznego zostały wstrzymane przez administratora. MembershipRuleProcessingState jest ustawiona na "wstrzymany".
+- **Ocenianie**: Odebrano zmianę grupy, a aktualizacje są oceniane.
+- **Przetwarzanie**: aktualizacje są przetwarzane.
+- **Aktualizacja zakończona**: przetwarzanie zostało zakończone i wszystkie odpowiednie aktualizacje zostały wykonane.
+- **Błąd przetwarzania**: nie można ukończyć przetwarzania z powodu błędu podczas oceniania reguły członkostwa.
+- **Wstrzymano aktualizację**: aktualizacje reguł członkostwa dynamicznego zostały wstrzymane przez administratora. MembershipRuleProcessingState jest ustawiona na "wstrzymany".
 
 W przypadku **ostatniej zaktualizowanego stanu członkostwa** można wyświetlić następujące komunikaty o stanie:
 
-- &lt;**Data i godzina**&gt;: Ostatni raz, gdy członkostwo zostało zaktualizowane.
-- **W toku**: Aktualizacje są obecnie w toku.
-- **Nieznany**: Nie można pobrać czasu ostatniej aktualizacji. Grupa może być nowa.
+- &lt;**datę i godzinę**&gt;: podczas ostatniego aktualizowania członkostwa.
+- **W toku**: aktualizacje są obecnie w toku.
+- **Nieznane**: nie można pobrać czasu ostatniego aktualizowania. Grupa może być nowa.
 
 Jeśli wystąpi błąd podczas przetwarzania reguły członkostwa dla określonej grupy, w górnej części **strony Przegląd** dla grupy zostanie wyświetlony alert. Jeśli nie można przetworzyć oczekujących aktualizacji dynamicznego członkostwa dla wszystkich grup w ramach dzierżawy przez więcej niż 24 godziny, zostanie wyświetlony alert w górnej części **wszystkich grup**.
 

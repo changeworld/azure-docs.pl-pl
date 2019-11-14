@@ -1,17 +1,14 @@
 ---
 title: Przykładowy plan obciążeń ISO 27001 ASE/SQL — wdrażanie kroków
 description: Wdróż kroki przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database, w tym szczegóły parametru artefaktu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 4836287f5308ffb11bf145b715dfd6f73672c038
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: edcf9920f3a65c182240da735b1883b3d67da650
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163466"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032139"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Wdróż przykład planu obciążenia ISO 27001 App Service Environment/SQL Database
 
@@ -116,7 +113,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |-|-|-|-|
 |Grupa zasobów Log Analytics|Grupa zasobów|Nazwa|**Zablokowany** — łączy **nazwę organizacji** z `-workload-log-rg`, aby uczynić grupę zasobów unikatową.|
 |Grupa zasobów Log Analytics|Grupa zasobów|Lokalizacja|**Zablokowany** — używa parametru strategii.|
-|Szablon Log Analytics|Szablon usługi Resource Manager|Warstwa usługi|Ustawia warstwę obszaru roboczego Log Analytics. Wartość domyślna to _PerNode_.|
+|Szablon Log Analytics|Szablon usługi Resource Manager|Warstwa usług|Ustawia warstwę obszaru roboczego Log Analytics. Wartość domyślna to _PerNode_.|
 |Szablon Log Analytics|Szablon usługi Resource Manager|Przechowywanie dzienników w dniach|Przechowywanie danych w dniach. Wartość domyślna to _365_.|
 |Szablon Log Analytics|Szablon usługi Resource Manager|Lokalizacja|Region używany do tworzenia obszaru roboczego Log Analytics. Wartość domyślna to _zachodnie stany USA 2_.|
 |Grupa zasobów sieciowych|Grupa zasobów|Nazwa|**Zablokowany** — łączy **nazwę organizacji** z `-workload-net-rg`, aby uczynić grupę zasobów unikatową.|
@@ -136,7 +133,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Grupa zasobów Azure SQL Database|Grupa zasobów|Nazwa|**Zablokowany** — łączy **nazwę organizacji** z `-workload-azsql-rg`, aby uczynić grupę zasobów unikatową.|
 |Grupa zasobów Azure SQL Database|Grupa zasobów|Lokalizacja|**Zablokowany** — używa parametru strategii.|
 |Szablon Azure SQL Database|Szablon usługi Resource Manager|Nazwa użytkownika administratora usługi Azure SQL Server|Nazwa użytkownika dla SQL Server platformy Azure. Musi być zgodna z tą samą wartością właściwości w **szablonie Key Vault**. Wartość domyślna to _SQL-admin-User_.|
-|Szablon Azure SQL Database|Szablon usługi Resource Manager|Hasło administratora usługi Azure SQL Server (identyfikator zasobu Key Vault)|Identyfikator zasobu Key Vault. Użyj "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" i Zastąp `{subscriptionId}` IDENTYFIKATORem subskrypcji i `{orgName}` **nazwą organizacji** konstruktora.|
+|Szablon Azure SQL Database|Szablon usługi Resource Manager|Hasło administratora usługi Azure SQL Server (identyfikator zasobu Key Vault)|Identyfikator zasobu Key Vault. Użyj "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" i Zastąp `{subscriptionId}` IDENTYFIKATORem subskrypcji, a `{orgName}` z parametrem strategii **nazwy organizacji** .|
 |Szablon Azure SQL Database|Szablon usługi Resource Manager|Hasło administratora usługi Azure SQL Server (nazwa klucza tajnego Key Vault)|Nazwa użytkownika administratora SQL Server. Musi być zgodna wartość właściwości **szablonu Key Vault** **SQL Server Nazwa użytkownika administratora platformy Azure**.|
 |Szablon Azure SQL Database|Szablon usługi Resource Manager|Przechowywanie dzienników w dniach|Przechowywanie danych w dniach. Wartość domyślna to _365_.|
 |Szablon Azure SQL Database|Szablon usługi Resource Manager|Identyfikator obiektu administratora usługi AAD|Identyfikator obiektu usługi AAD, który zostanie przypisany jako administrator Active Directory. Brak wartości domyślnej i nie można jej pozostawić pustej. Aby zlokalizować tę wartość z Azure Portal, Wyszukaj i wybierz pozycję "Użytkownicy" w obszarze _usługi_. Użyj pola _Nazwa_ , aby odfiltrować nazwę konta, a następnie wybierz to konto. Na stronie _profil użytkownika_ wybierz ikonę "kliknij, aby skopiować" obok _identyfikatora obiektu_.|
@@ -152,10 +149,10 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 Po przejrzeniu kroków w celu wdrożenia przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i mapowaniu formantów:
 
 > [!div class="nextstepaction"]
-> [Plan obciążeń iso 27001 App Service Environment/SQL Database — omówienie](./index.md)
+> [Plan obciążeń iso 27001 App Service Environment/SQL Database-przegląd](./index.md)
 > [ISO 27001 App Service Environment/SQL Database plan obciążenia — mapowanie](./control-mapping.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

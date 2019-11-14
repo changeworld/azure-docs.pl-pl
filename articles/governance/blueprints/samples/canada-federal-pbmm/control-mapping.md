@@ -1,17 +1,14 @@
 ---
 title: Przykładowa założenia federalnego planu PBMM w Kanadzie
 description: Sterowanie mapowaniem przykładowych planów PBMMów federalnych Kanady. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: e74d3328e1ed41a7184569d30cc46ae7cd29a5ba
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163515"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039703"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Sterowanie mapowaniem przykładu Federal PBMM Canada
 
@@ -101,9 +98,9 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Odpowiedź na błędy przetwarzania inspekcji w usłudze AU-5
 
@@ -120,9 +117,9 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
 ## <a name="au-12-audit-generation"></a>Generowanie inspekcji w usłudze AU-12
 
@@ -130,9 +127,9 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
@@ -244,7 +241,7 @@ Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez 
 - Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Inspekcja serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
 - Wdróż wymagania w celu inspekcji serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
-- aplikacja funkcji powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć tylko bezpieczne połączenia z Redis Cache
 - Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć bezpieczny transfer do kont magazynu
@@ -294,9 +291,9 @@ Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie reje
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
@@ -316,7 +313,7 @@ Sprawdzono mapowanie kontroli dla przykładu Federal PBMM Canada. Następnie odw
 > [Kanada Federalna PBMM plan — omówienie](./control-mapping.md)
 > [Kanada Federal PBMM plan-Deploy kroki](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wdrażanie stosu LEMP na maszynie wirtualnej z systemem Linux na platformie Azure | Microsoft Docs
+title: Samouczek — wdrażanie LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 description: Z tego samouczka dowiesz się, jak zainstalować stos LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 06a009978d85f2ba0f10030aeb1344a1b84bf3c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299374"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034452"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Samouczek: instalowanie serwera internetowego LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 
-W tym artykule przedstawiono kroki wdrażania serwera internetowego NGINX oraz oprogramowania MySQL i PHP (stosu LEMP) na maszynie wirtualnej z systemem Ubuntu na platformie Azure. Stos LEMP, który stanowi alternatywę dla popularnego [stosu LAMP](tutorial-lamp-stack.md), również można zainstalować na platformie Azure. Aby zobaczyć, jak działa serwer LEMP, możesz opcjonalnie zainstalować i skonfigurować witrynę WordPress. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule przedstawiono kroki wdrażania serwera internetowego NGINX oraz oprogramowania MySQL i PHP (stosu LEMP) na maszynie wirtualnej z systemem Ubuntu na platformie Azure. Stos LEMP, który stanowi alternatywę dla popularnego [stosu LAMP](tutorial-lamp-stack.md), również można zainstalować na platformie Azure. Aby zobaczyć, jak działa serwer LEMP, możesz opcjonalnie zainstalować i skonfigurować witrynę WordPress. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej z systemem Ubuntu (oznaczonym literą „L” w stosie LEMP)
@@ -37,7 +37,7 @@ Ta konfiguracja umożliwia szybkie przeprowadzenie testów lub weryfikacji konce
 
 W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 

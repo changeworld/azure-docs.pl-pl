@@ -1,5 +1,5 @@
 ---
-title: Konsola szeregowa platformy Azure dla GRUB i tryb jednego użytkownika | Microsoft Docs
+title: Konsola szeregowa platformy Azure dla GRUB i tryb jednego użytkownika
 description: Korzystanie z konsoli szeregowej dla Grub w usłudze Azure Virtual Machines.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: cce4e558331cad0045772f53f7fc3c78aeed2bb7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 87f16ec615c8b47c93745b33be12d3acd6d9177a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082198"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035051"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Używanie konsoli szeregowej do uzyskiwania dostępu do GRUB i trybu jednego użytkownika
 GRUB to wielkie ujednolicone program inicjujący. Z usługi GRUB można zmodyfikować konfigurację rozruchową, aby przeprowadzić rozruch w trybie jednego użytkownika między innymi.
@@ -35,7 +35,7 @@ Aby uzyskać dostęp do programu GRUB, należy ponownie uruchomić maszynę wirt
 Upewnij się, że GRUB jest włączona na maszynie wirtualnej, aby można było uzyskać dostęp do trybu jednego użytkownika. W zależności od dystrybucji może istnieć kilka czynności konfiguracyjnych, aby upewnić się, że GRUB jest włączona. Informacje specyficzne dla dystrybucji są dostępne poniżej.
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Ponowne uruchamianie maszyny wirtualnej w celu uzyskania dostępu do GRUB w konsoli szeregowej
-Ponowny rozruch maszyny wirtualnej z otwartym blokiem konsoli szeregowej można wykonać przy użyciu `'b'` polecenia SysRq, jeśli [sysrq](./serial-console-nmi-sysrq.md) jest włączona, lub klikając przycisk Uruchom ponownie w bloku przegląd (Otwórz maszynę wirtualną na nowej karcie przeglądarki, aby uruchomić ponownie bez zamykania bloku konsoli szeregowej ). Postępuj zgodnie z poniższymi instrukcjami dystrybucji, aby dowiedzieć się, czego można oczekiwać od GRUB po ponownym uruchomieniu.
+Ponowny rozruch maszyny wirtualnej z otwartym blokiem konsoli szeregowej można wykonać przy użyciu polecenia SysRq `'b'`, jeśli [sysrq](./serial-console-nmi-sysrq.md) jest włączona, lub klikając przycisk Uruchom ponownie w bloku przegląd (Otwórz maszynę wirtualną na nowej karcie przeglądarki, aby ponownie uruchomić komputer bez zamykania bloku konsoli szeregowej). Postępuj zgodnie z poniższymi instrukcjami dystrybucji, aby dowiedzieć się, czego można oczekiwać od GRUB po ponownym uruchomieniu.
 
 ## <a name="general-single-user-mode-access"></a>Ogólny dostęp do trybu pojedynczego użytkownika
 W sytuacjach, w których nie skonfigurowano konta z uwierzytelnianiem przy użyciu hasła, może być wymagany ręczny dostęp do trybu jednego użytkownika. Należy zmodyfikować konfigurację GRUB, aby ręcznie wprowadzić tryb pojedynczego użytkownika. Po wykonaniu tej czynności Zobacz Użycie trybu jednego użytkownika, aby zresetować lub dodać hasło w celu uzyskania dalszych instrukcji.
@@ -44,17 +44,17 @@ W przypadkach, gdy maszyna wirtualna nie jest w stanie rozruchowym, dystrybucje 
 
 ### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Aby zresetować lub dodać hasło, użyj trybu jednego użytkownika
 Gdy jesteś w trybie jednego użytkownika, wykonaj następujące czynności, aby dodać nowego użytkownika z uprawnieniami sudo:
-1. Uruchom `useradd <username>` , aby dodać użytkownika
-1. Uruchom `sudo usermod -a -G sudo <username>` , aby udzielić nowemu użytkownikowi uprawnień
-1. Służy `passwd <username>` do ustawiania hasła dla nowego użytkownika. Następnie będzie można zalogować się jako nowy użytkownik
+1. Uruchom `useradd <username>`, aby dodać użytkownika
+1. Uruchom `sudo usermod -a -G sudo <username>`, aby przyznać nowemu użytkownikowi uprawnienia dostępu
+1. Użyj `passwd <username>`, aby ustawić hasło dla nowego użytkownika. Następnie będzie można zalogować się jako nowy użytkownik
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Dostęp do Red Hat Enterprise Linux (RHEL)
 RHEL powróci do trybu jednego użytkownika automatycznie, jeśli nie będzie można normalnie przeprowadzić rozruch. Niemniej jednak, jeśli nie skonfigurowano dostępu głównego do trybu jednego użytkownika, nie będziesz mieć hasła głównego i nie będzie można się zalogować. Istnieje obejście problemu (zobacz sekcję "ręczne wprowadzanie trybu pojedynczego użytkownika"), ale sugestia polega na wstępnym skonfigurowaniu dostępu do katalogu głównego.
 
 ### <a name="grub-access-in-rhel"></a>GRUB dostęp w RHEL
-RHEL jest GRUB z włączoną obsługą pola. Aby wprowadzić grub, uruchom ponownie maszynę `sudo reboot` wirtualną za pomocą i naciśnij dowolny klawisz. Zostanie wyświetlony ekran GRUB.
+RHEL jest GRUB z włączoną obsługą pola. Aby wprowadzić GRUB, uruchom ponownie maszynę wirtualną przy użyciu `sudo reboot` i naciśnij dowolny klawisz. Zostanie wyświetlony ekran GRUB.
 
-> Uwaga: W Red Hat dostępna jest również dokumentacja dotycząca rozruchu w trybie ratowniczym, tryb awaryjny, tryb debugowania i resetowanie hasła głównego. [Kliknij tutaj, aby uzyskać do niego dostęp](https://aka.ms/rhel7grubterminal).
+> Uwaga: w Red Hat dostępna jest również dokumentacja dotycząca rozruchu w trybie ratowniczym, tryb awaryjny, tryb debugowania i resetowanie hasła głównego. [Kliknij tutaj, aby uzyskać do niego dostęp](https://aka.ms/rhel7grubterminal).
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Konfigurowanie dostępu głównego do trybu jednego użytkownika w RHEL
 Tryb pojedynczego użytkownika w RHEL wymaga włączenia użytkownika root, który jest domyślnie wyłączony. Jeśli musisz włączyć tryb pojedynczego użytkownika, Skorzystaj z następujących instrukcji:
@@ -62,10 +62,10 @@ Tryb pojedynczego użytkownika w RHEL wymaga włączenia użytkownika root, któ
 1. Logowanie do systemu Red Hat za pośrednictwem protokołu SSH
 1. Przełącz do katalogu głównego
 1. Włącz hasło dla użytkownika root 
-    * `passwd root`(Ustaw silne hasło główne)
+    * `passwd root` (Ustawianie silnego hasła głównego)
 1. Upewnij się, że użytkownik główny może zalogować się tylko za pośrednictwem ttyS0
-    * `edit /etc/ssh/sshd_config`i upewnij się, że PermitRootLogIn jest ustawiony na wartość nie
-    * `edit /etc/securetty file`Zezwalaj tylko na logowanie za pośrednictwem ttyS0 
+    * `edit /etc/ssh/sshd_config` i upewnij się, że PermitRootLogIn jest ustawiony na wartość nie
+    * `edit /etc/securetty file` zezwalać tylko na logowanie za pośrednictwem ttyS0 
 
 Teraz, gdy system jest uruchamiany w trybie jednego użytkownika, możesz zalogować się za pomocą hasła głównego.
 
@@ -76,10 +76,10 @@ Jeśli skonfigurowano GRUB i dostęp do katalogu głównego z powyższymi instru
 
 1. Naciśnij klawisz "Esc" podczas ponownego uruchamiania maszyny wirtualnej, aby wprowadzić GRUB
 1. W GRUB naciśnij klawisz "e", aby edytować wybrany system operacyjny, do którego chcesz przeprowadzić rozruch (zazwyczaj pierwszy wiersz)
-1. Znajdź linię jądra na platformie Azure, która zaczyna się od`linux16`
+1. Znajdź linię jądra na platformie Azure, która rozpocznie się z `linux16`
 1. Naciśnij klawisze Ctrl + E, aby przejść do końca wiersza
-1. Dodaj następujący znak na końcu wiersza:`systemd.unit=rescue.target`
-    * Spowoduje to przerozruch użytkownika w trybie jednego użytkownika. Jeśli chcesz użyć trybu awaryjnego, Dodaj `systemd.unit=emergency.target` do końca wiersza zamiast`systemd.unit=rescue.target`
+1. Dodaj następujący znak na końcu wiersza: `systemd.unit=rescue.target`
+    * Spowoduje to przerozruch użytkownika w trybie jednego użytkownika. Jeśli chcesz użyć trybu awaryjnego, Dodaj `systemd.unit=emergency.target` na końcu wiersza zamiast `systemd.unit=rescue.target`
 1. Naciśnij klawisze Ctrl + X, aby wyjść i ponownie uruchomić przy użyciu zastosowanych ustawień
 1. Przed wprowadzeniem trybu pojedynczego użytkownika zostanie wyświetlony monit o podanie hasła administratora. jest to samo hasło, które zostało utworzone w powyższych instrukcjach.    
 
@@ -88,28 +88,28 @@ Jeśli skonfigurowano GRUB i dostęp do katalogu głównego z powyższymi instru
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Wprowadzanie trybu pojedynczego użytkownika bez włączonego konta głównego w RHEL
 Jeśli nie wykonano powyższych kroków w celu włączenia użytkownika root, można nadal zresetować hasło główne. Wykonaj następujące instrukcje:
 
-> Uwaga: Jeśli używasz SELinux, upewnij się, że zostały wykonane dodatkowe kroki opisane w dokumentacji Red Hat [tutaj](https://aka.ms/rhel7grubterminal) podczas resetowania hasła głównego.
+> Uwaga: Jeśli korzystasz z SELinux, upewnij się, że zostały wykonane dodatkowe kroki opisane w dokumentacji Red Hat [tutaj](https://aka.ms/rhel7grubterminal) podczas resetowania hasła głównego.
 
 1. Naciśnij klawisz "Esc" podczas ponownego uruchamiania maszyny wirtualnej, aby wprowadzić GRUB
 1. W GRUB naciśnij klawisz "e", aby edytować wybrany system operacyjny, do którego chcesz przeprowadzić rozruch (zazwyczaj pierwszy wiersz)
-1. Znajdź linię jądra na platformie Azure, która zaczyna się od`linux16`
-1. Dodaj `rd.break` do końca wiersza, aby upewnić się, że jest dostępna `rd.break` spacja (Zobacz przykład poniżej)
-    - Spowoduje to przerwanie procesu rozruchu przed przekazaniem kontroli `initramfs` z `systemd`do, zgodnie z opisem w dokumentacji Red Hat [tutaj](https://aka.ms/rhel7rootpassword).
+1. Znajdź linię jądra na platformie Azure, która rozpocznie się z `linux16`
+1. Dodaj `rd.break` na końcu wiersza, upewniając się, że istnieje odstęp przed `rd.break` (Zobacz przykład poniżej)
+    - Spowoduje to przerwanie procesu rozruchu przed przekazaniem kontroli z `initramfs` do `systemd`, zgodnie z opisem [w dokumentacji Red](https://aka.ms/rhel7rootpassword)Hat.
 1. Naciśnij klawisze Ctrl + X, aby wyjść i ponownie uruchomić przy użyciu zastosowanych ustawień
-1. Po rozruchu nastąpi przerwanie trybu awaryjnego z systemem plików tylko do odczytu. Wprowadź `mount -o remount,rw /sysroot` w powłoce, aby ponownie zainstalować główny system plików z uprawnieniami do odczytu i zapisu
-1. Po rozruchu w trybie jednego użytkownika wpisz `chroot /sysroot` polecenie, aby przełączyć `sysroot` się do złamanymi
-1. Jesteś teraz katalogiem głównym. Hasło główne można zresetować za pomocą `passwd` programu, a następnie użyć powyższych instrukcji, aby wprowadzić tryb pojedynczego użytkownika. Wpisz `reboot -f` , aby przeprowadzić ponowny rozruch po zakończeniu.
+1. Po rozruchu nastąpi przerwanie trybu awaryjnego z systemem plików tylko do odczytu. Wprowadź `mount -o remount,rw /sysroot` w powłoce, aby ponownie zainstalować główny system plików z uprawnieniami do odczytu/zapisu
+1. Po rozruchu w trybie jednego użytkownika wpisz `chroot /sysroot`, aby przełączyć się na `sysroot` złamanymi
+1. Jesteś teraz katalogiem głównym. Hasło główne można zresetować za pomocą `passwd` a następnie użyć powyższych instrukcji, aby wprowadzić tryb pojedynczego użytkownika. Wpisz `reboot -f`, aby przeprowadzić ponowny rozruch po zakończeniu.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Uwaga: Uruchomienie programu z powyższymi instrukcjami spowoduje przechodzenie do powłoki awaryjnej, dzięki czemu można także wykonywać zadania `fstab`, takie jak edytowanie. Jednak ogólnie przyjęta sugestia to zresetowanie hasła głównego i użycie go do wprowadzania trybu pojedynczego użytkownika. 
+> Uwaga: uruchomienie w powyższej instrukcji spowoduje przechodzenie do powłoki awaryjnej, dzięki czemu można także wykonywać zadania, takie jak edytowanie `fstab`. Jednak ogólnie przyjęta sugestia to zresetowanie hasła głównego i użycie go do wprowadzania trybu pojedynczego użytkownika. 
 
 
 ## <a name="access-for-centos"></a>Dostęp do CentOS
 Podobnie jak Red Hat Enterprise Linux, tryb jednego użytkownika w CentOS wymaga, aby GRUB i użytkownik główny był włączony. 
 
 ### <a name="grub-access-in-centos"></a>GRUB dostęp w CentOS
-CentOS jest GRUB z włączoną obsługą pola. Aby wprowadzić grub, uruchom ponownie maszynę `sudo reboot` wirtualną za pomocą i naciśnij dowolny klawisz. Zostanie wyświetlony ekran GRUB.
+CentOS jest GRUB z włączoną obsługą pola. Aby wprowadzić GRUB, uruchom ponownie maszynę wirtualną przy użyciu `sudo reboot` i naciśnij dowolny klawisz. Zostanie wyświetlony ekran GRUB.
 
 ### <a name="single-user-mode-in-centos"></a>Tryb pojedynczego użytkownika w CentOS
 Postępuj zgodnie z instrukcjami RHEL powyżej, aby włączyć tryb pojedynczego użytkownika w CentOS.
@@ -122,17 +122,17 @@ Aby uzyskać dostęp do GRUB, naciśnij i przytrzymaj klawisz "Esc" podczas uruc
 
 Domyślnie obrazy Ubuntu nie będą automatycznie wyświetlane na ekranie GRUB. Można to zmienić, wykonując następujące instrukcje:
 1. Otwórz `/etc/default/grub.d/50-cloudimg-settings.cfg` w wybranym edytorze tekstu
-1. `GRUB_TIMEOUT` Zmień wartość na wartość różną od zera.
+1. Zmień wartość `GRUB_TIMEOUT` na wartość różną od zera
 1. Otwórz `/etc/default/grub` w wybranym edytorze tekstu
-1. `GRUB_HIDDEN_TIMEOUT=1` Skomentuj wiersz
-1. Uruchom `sudo update-grub`
+1. Dodaj komentarz do wiersza `GRUB_HIDDEN_TIMEOUT=1`
+1. Uruchom polecenie `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Tryb pojedynczego użytkownika w Ubuntu
 Ubuntu powróci do trybu jednego użytkownika automatycznie, jeśli nie będzie można normalnie przeprowadzić rozruch. Aby ręcznie wprowadzić tryb pojedynczego użytkownika, wykonaj następujące instrukcje:
 
 1. W programie GRUB naciśnij pozycję "e", aby edytować swój wpis rozruchu (Ubuntu Entry)
-1. Wyszukaj wiersz rozpoczynający się od `linux`, a następnie wyszukaj`ro`
-1. Dodaj `single` po`ro`, aby upewnić się, że istnieje spacja przed i po`single`
+1. Wyszukaj wiersz zaczynający się od `linux`, a następnie wyszukaj `ro`
+1. Dodaj `single` po `ro`, upewniając się, że jest dostępna spacja przed i po `single`
 1. Naciśnij kombinację klawiszy Ctrl + X, aby przeprowadzić ponowny rozruch przy użyciu tych ustawień i wprowadzić tryb pojedynczego użytkownika.
 
 ## <a name="access-for-coreos"></a>Dostęp do CoreOS
@@ -145,7 +145,7 @@ Aby uzyskać dostęp do GRUB, naciśnij dowolny klawisz podczas uruchamiania mas
 CoreOS powróci do trybu jednego użytkownika automatycznie, jeśli nie będzie można normalnie przeprowadzić rozruch. Aby ręcznie wprowadzić tryb pojedynczego użytkownika, wykonaj następujące instrukcje:
 1. W programie GRUB naciśnij pozycję "e", aby edytować swój wpis rozruchu
 1. Wyszukaj wiersz rozpoczynający się od `linux$`. Powinna istnieć 2, hermetyzowane w różnych klauzulach if/else
-1. Dołącz `coreos.autologin=ttyS0` do końca obu `linux$` wierszy
+1. Dołącz `coreos.autologin=ttyS0` na końcu obu wierszy `linux$`
 1. Naciśnij kombinację klawiszy Ctrl + X, aby przeprowadzić ponowny rozruch przy użyciu tych ustawień i wprowadzić tryb pojedynczego użytkownika.
 
 ## <a name="access-for-suse-sles"></a>Dostęp do SLES SUSE
@@ -154,13 +154,13 @@ Nowsze obrazy z SLES 12 SP3 + zezwalają na dostęp za pośrednictwem konsoli sz
 ### <a name="grub-access-in-suse-sles"></a>GRUB dostęp w programie SUSE SLES
 Dostęp GRUB w SLES wymaga konfiguracji programu inicjującego za pośrednictwem YaST. Aby to zrobić, wykonaj następujące instrukcje:
 
-1. Użyj protokołu SSH na maszynie wirtualnej SLES `sudo yast bootloader`i uruchom system. Użyj klawiszy `enter` klucz, klucz i strzałka, aby nawigować po menu. `tab` 
-1. Przejdź do `Kernel Parameters`i sprawdź `Use serial console`. 
-1. Dodaj `serial --unit=0 --speed=9600 --parity=no` do argumentów konsoli
+1. Użyj protokołu SSH na maszynie wirtualnej SLES i uruchom `sudo yast bootloader`. Użyj klawisza `tab`, klucza `enter` i klawiszy strzałek, aby nawigować po menu. 
+1. Przejdź do `Kernel Parameters`i zaznacz pozycję `Use serial console`. 
+1. Dodawanie `serial --unit=0 --speed=9600 --parity=no` do argumentów konsoli
 
 1. Naciśnij klawisz F10, aby zapisać ustawienia i zakończyć
 1. Aby wprowadzić GRUB, uruchom ponownie maszynę wirtualną i naciśnij dowolny klawisz podczas sekwencji rozruchu, aby GRUB się na ekranie
-    - Domyślny limit czasu dla GRUB to 1. Można to zmienić, zmieniając `GRUB_TIMEOUT` zmienną w`/etc/default/grub`
+    - Domyślny limit czasu dla GRUB to 1. Można to zmienić, zmieniając zmienną `GRUB_TIMEOUT` w `/etc/default/grub`
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
@@ -168,16 +168,16 @@ Dostęp GRUB w SLES wymaga konfiguracji programu inicjującego za pośrednictwem
 Jeśli SLES nie będzie można normalnie uruchomić, zostanie automatycznie porzucony do powłoki awaryjnej. Aby ręcznie wprowadzić powłokę awaryjną, należy wykonać następujące instrukcje:
 
 1. W programie GRUB naciśnij pozycję "e", aby edytować swój wpis rozruchu (SLES Entry)
-1. Wyszukaj wiersz jądra, od którego zostanie uruchomiony program`linux`
+1. Wyszukaj wiersz jądra, który rozpocznie się z `linux`
 1. Dołącz `systemd.unit=emergency.target` na końcu wiersza
 1. Naciśnij kombinację klawiszy Ctrl + X, aby ponownie uruchomić te ustawienia, a następnie wprowadź powłokę awaryjną
-   > Należy pamiętać, że użytkownik zostanie porzucony do powłoki awaryjnej z systemem plików _tylko do odczytu_ . Aby dokonać edycji plików, należy ponownie zainstalować system plików z uprawnieniami do odczytu i zapisu. Aby to zrobić, wprowadź `mount -o remount,rw /` w powłoce
+   > Należy pamiętać, że użytkownik zostanie porzucony do powłoki awaryjnej z systemem plików _tylko do odczytu_ . Aby dokonać edycji plików, należy ponownie zainstalować system plików z uprawnieniami do odczytu i zapisu. W tym celu wprowadź `mount -o remount,rw /` w powłoce
 
 ## <a name="access-for-oracle-linux"></a>Dostęp do Oracle Linux
 Podobnie jak Red Hat Enterprise Linux, tryb jednego użytkownika w Oracle Linux wymaga włączenia GRUB oraz użytkownika root. 
 
 ### <a name="grub-access-in-oracle-linux"></a>Dostęp GRUB w Oracle Linux
-Oracle Linux jest dostępna z włączonym GRUB. Aby wprowadzić grub, uruchom ponownie maszynę `sudo reboot` wirtualną za pomocą i naciśnij klawisz "Esc". Zostanie wyświetlony ekran GRUB.
+Oracle Linux jest dostępna z włączonym GRUB. Aby wprowadzić GRUB, uruchom ponownie maszynę wirtualną przy użyciu `sudo reboot` i naciśnij klawisz "Esc". Zostanie wyświetlony ekran GRUB.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Tryb pojedynczego użytkownika w Oracle Linux
 Postępuj zgodnie z instrukcjami RHEL powyżej, aby włączyć tryb pojedynczego użytkownika w Oracle Linux.

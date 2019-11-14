@@ -1,17 +1,14 @@
 ---
 title: Przykład — SWIFT CSP-CSCF V2020 — Mapowanie formantów
 description: Kontrolowanie mapowania SWIFT przykładowego planu CSP-CSCF V2020. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 8ef32a2cf385c052437c5e5cbd7c95077a262e83
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0e5b45ec86acbe7c55aed0aa1611f499316e9118
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163008"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037837"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Sterowanie mapowaniem SWIFT programu CSP-CSCF V2020 plan
 
@@ -88,9 +85,9 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2,2, 2,7 i 6,4 odpowiedź na błędy przetwarzania inspekcji
 
@@ -106,9 +103,9 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 i 6.5 Generowanie inspekcji
 
@@ -116,9 +113,9 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
@@ -229,7 +226,7 @@ Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez 
 - Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Pokaż wyniki inspekcji z serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
 - Wdróż wymagania wstępne w celu inspekcji serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
-- aplikacja funkcji powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć tylko bezpieczne połączenia z Redis Cache
 - Należy włączyć bezpieczny transfer do kont magazynu
 - Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
@@ -275,9 +272,9 @@ Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie reje
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Zaawansowane ustawienia zabezpieczeń danych dla programu SQL Server powinny zawierać adres e-mail, aby otrzymywać alerty zabezpieczeń
 - Dzienniki diagnostyczne w Azure Stream Analytics powinny być włączone
@@ -303,7 +300,7 @@ Po przejrzeniu mapowania kontrolki SWIFT planu CSP-CSCF V2020, odwiedź następu
 > [SWIFT CSP-CSCF V2020 plan-Overview](./index.md)
 > [SWIFT CSP-CSCF V2020 plan-Deploy kroki](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

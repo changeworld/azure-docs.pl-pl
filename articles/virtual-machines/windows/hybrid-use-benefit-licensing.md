@@ -1,5 +1,5 @@
 ---
-title: Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server | Microsoft Docs
+title: Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 description: Dowiedz się, jak zmaksymalizować korzyści z pakietu Software Assurance dla systemu Windows, aby zapewnić lokalne licencje na platformę Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 1c16ebe1f0b07e5ee5ef73dc3dd4781161f934b6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749385"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038626"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 W przypadku klientów z programem Software Assurance Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server umożliwia korzystanie z lokalnych licencji systemu Windows Server i uruchamianie maszyn wirtualnych z systemem Windows na platformie Azure przy niższych kosztach. Za pomocą Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server można wdrożyć nowe maszyny wirtualne z systemem operacyjnym Windows. W tym artykule opisano procedurę wdrażania nowych maszyn wirtualnych przy użyciu programu Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server i sposobu aktualizowania istniejących uruchomionych maszyn wirtualnych. Aby uzyskać więcej informacji na temat Korzyść użycia hybrydowego platformy Azure licencjonowania i oszczędności w systemie Windows Server, zobacz [stronę licencjonowanie korzyść użycia hybrydowego platformy Azure dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).

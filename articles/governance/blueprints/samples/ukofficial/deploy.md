@@ -1,18 +1,14 @@
 ---
 title: OFICJALNE URZĘDOWe &e w Wielkiej Brytanii przykłady planu NHSe — wdrażanie kroków
 description: Wdróż kroki dla przykładów planów NHS publicznego i ZJEDNOCZONEgo Królestwa BRYTYJSKIego, w tym szczegóły parametrów artefaktu.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1905e5fee894575d5ee85ce1bffb536813d34287
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162936"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037751"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Wdróż przykłady planów NHS z OFICJALNymi i ZJEDNOCZONYmi Królestwem Zjednoczonego Królestwa
 
@@ -98,18 +94,18 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
 |Inicjatywa dotycząca strategii dla NHS publicznego lub ZJEDNOCZONEgo Królestwa|Przypisywanie zasad |Typy zasobów służące do inspekcji dzienników diagnostycznych (zasady: inicjatywa z inicjatywy dla OFICJALNych lub BRYTYJSKIch NHS) |Lista typów zasobów do inspekcji, jeśli jest włączona opcja dziennik diagnostyczny.  Aby uzyskać akceptowalne wartości, zobacz [obsługiwane usługi, schematy i kategorie dla dzienników diagnostycznych platformy Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu (zasady: \[wersja zapoznawcza\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux) |Obowiązkowe Wartość domyślna to _none_. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu (zasady: \[wersja zapoznawcza\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows) |Obowiązkowe Wartość domyślna to _none_. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu (zasady: \[wersja zapoznawcza\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux) |Obowiązkowe Wartość domyślna to _none_. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs |Przypisywanie zasad |Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu (zasady: \[wersja zapoznawcza\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows) |Obowiązkowe Wartość domyślna to _none_. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego log Analytics w Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
 ## <a name="next-steps"></a>Następne kroki
 
 Po przejrzeniu kroków związanych z wdrażaniem OFICJALNych i BRYTYJSKIch planów NHS w Wielkiej Brytanii zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat mapowania przeglądu i kontroli:
 
 > [!div class="nextstepaction"]
-> [Krótkoterminowe i brytyjskie plany NHS — przegląd](./index.md)
-> [BRYTYJSKIe i brytyjskie plany NHS — Mapowanie formantów](./control-mapping.md)
+> [Krótkoterminowe i brytyjskie plany NHS — omówienie](./index.md)
+> ych [OFICJALNych i BRYTYJSKIch planów NHSych](./control-mapping.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

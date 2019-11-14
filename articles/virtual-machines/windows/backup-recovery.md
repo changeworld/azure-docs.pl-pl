@@ -1,5 +1,5 @@
 ---
-title: Przegląd opcji tworzenia kopii zapasowych dla maszyn wirtualnych z systemem Windows Azure | Microsoft Docs
+title: Przegląd opcji tworzenia kopii zapasowych dla maszyn wirtualnych z systemem Windows Azure
 description: Przegląd opcji tworzenia kopii zapasowych dla maszyn wirtualnych platformy Azure z systemem Windows.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: f145ae8e32f361acc6ef22d7b05d1de8e87a295a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4216d14cfdbebabf912f8a407dbd8777150ff88f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089484"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039238"
 ---
 # <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Opcje tworzenia kopii zapasowych i przywracania dla maszyn wirtualnych na platformie Azure
 Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Dostępne są różne opcje tworzenia kopii zapasowych dla maszyn wirtualnych, w zależności od przypadków użycia.

@@ -1,5 +1,5 @@
 ---
-title: Szybki start — tworzenie maszyny wirtualnej z systemem Linux za pomocą programu Azure PowerShell | Microsoft Docs
+title: Szybki Start — Tworzenie maszyny wirtualnej z systemem Linux przy użyciu Azure PowerShell
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć maszynę wirtualną z systemem Linux za pomocą programu Azure PowerShell
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 88d028f48b75238e2123d939a832e3fa70fc0056
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1e336ad05d70341365b63d806b249740113724d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300868"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035206"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux za pomocą programu Azure PowerShell
 
@@ -48,7 +48,7 @@ Aby uzyskać bardziej szczegółowe informacje na temat tworzenia par kluczy SSH
 
 Jeśli utworzysz parę kluczy SSH przy użyciu usługi Cloud Shell, będzie ona przechowywana w obrazie kontenera w ramach [konta magazynu automatycznie tworzonego przez usługę Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Nie usuwaj tego konta magazynu ani znajdującego się w nim udziału plików, dopóki nie pobierzesz kluczy. W przeciwnym razie utracisz dostęp do maszyny wirtualnej. 
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi:
 
@@ -208,7 +208,7 @@ Gdy skończysz, wpisz polecenie `exit`, aby opuścić sesję SSH.
 
 ## <a name="view-the-web-server-in-action"></a>Oglądanie działającego serwera internetowego
 
-Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona powitalną serwera NGINX. Wprowadź publiczny adres IP maszyny wirtualnej jako adres internetowy. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub jako część wcześniej użytych parametrów połączenia SSH.
+Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona główną serwera NGINX. Wprowadź publiczny adres IP maszyny wirtualnej jako adres internetowy. Publiczny adres IP można znaleźć na stronie przeglądu maszyny wirtualnej lub jako część wcześniej użytych parametrów połączenia SSH.
 
 ![NGINX domyślna strona powitalna](./media/quick-create-cli/nginix-welcome-page.png)
 

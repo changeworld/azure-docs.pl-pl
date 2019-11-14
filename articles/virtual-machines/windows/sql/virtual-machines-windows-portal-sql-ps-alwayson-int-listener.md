@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie odbiorników z zawsze włączonymi grupami dostępności — Microsoft Azure | Microsoft Docs
+title: Konfigurowanie odbiorników grup dostępności & module równoważenia obciążenia (PowerShell)
 description: Skonfiguruj odbiorniki grup dostępności w modelu Azure Resource Manager przy użyciu wewnętrznego modułu równoważenia obciążenia z co najmniej jednym adresem IP.
 services: virtual-machines
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 7d6427e88960ec3ff550affb1624dd82e561a6bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102172"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037455"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden odbiornik grupy dostępności — Menedżer zasobów
 W tym temacie pokazano, jak:
@@ -67,7 +68,7 @@ W przykładach w tym artykule określono moduł równoważenia obciążenia w wa
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Aby utworzyć podstawowy moduł równoważenia obciążenia, Usuń `-sku Standard` z wiersza, który tworzy moduł równoważenia obciążenia. Przykład:
+Aby utworzyć podstawowy moduł równoważenia obciążenia, Usuń `-sku Standard` z wiersza, który tworzy moduł równoważenia obciążenia. Na przykład:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
@@ -78,7 +79,7 @@ $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $
 > [!NOTE]
 > Jeśli grupa dostępności została utworzona przy użyciu [szablonu Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), wewnętrzna usługa równoważenia obciążenia została już utworzona.
 
-Poniższy skrypt programu PowerShell tworzy wewnętrzny moduł równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP dla modułu równoważenia obciążenia. Aby uruchomić skrypt, Otwórz Windows PowerShell ISE i wklej skrypt w okienku Skrypt. Użyj `Connect-AzAccount` polecenia, aby zalogować się do programu PowerShell. Jeśli masz wiele subskrypcji platformy Azure, użyj `Select-AzSubscription` , aby ustawić subskrypcję. 
+Poniższy skrypt programu PowerShell tworzy wewnętrzny moduł równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP dla modułu równoważenia obciążenia. Aby uruchomić skrypt, Otwórz Windows PowerShell ISE i wklej skrypt w okienku Skrypt. Użyj `Connect-AzAccount`, aby zalogować się do programu PowerShell. Jeśli masz wiele subskrypcji platformy Azure, użyj `Select-AzSubscription`, aby ustawić subskrypcję. 
 
 ```powershell
 # Connect-AzAccount
@@ -188,7 +189,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Uruchom SQL Server Management Studio i Połącz się z repliką podstawową.
 
-1. Przejdź do funkcji AlwaysOn grup dostępności dla**grup** | dostępności **o wysokiej dostępności** | . 
+1. Przejdź do **grup dostępności** funkcji **AlwaysOn o wysokiej dostępności** |  | **odbiorników grup dostępności**. 
 
 1. Powinna zostać wyświetlona nazwa odbiornika utworzona w Menedżer klastra trybu failover. Kliknij prawym przyciskiem myszy nazwę odbiornika i kliknij polecenie **Właściwości**.
 

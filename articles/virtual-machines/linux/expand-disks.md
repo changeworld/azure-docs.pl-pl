@@ -1,5 +1,5 @@
 ---
-title: Rozszerzanie wirtualnych dysków twardych na maszynę wirtualną z systemem Linux na platformie Azure | Microsoft Docs
+title: Rozszerzanie wirtualnych dysków twardych na maszynę wirtualną z systemem Linux na platformie Azure
 description: Dowiedz się, jak rozszerzyć wirtualne dyski twarde na maszynę wirtualną z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828406"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036205"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozszerzanie wirtualnych dysków twardych na maszynę wirtualną z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -105,7 +105,7 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
         1      0.00B  107GB  107GB  ext4
     ```
 
-    s. Rozwiń partycję `resizepart`. Wprowadź numer partycji, *1*i rozmiar nowej partycji:
+    d. Rozwiń partycję `resizepart`. Wprowadź numer partycji, *1*i rozmiar nowej partycji:
 
     ```bash
     (parted) resizepart
@@ -113,7 +113,7 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
     End?  [107GB]? 215GB
     ```
 
-    Wykres. Aby wyjść, wprowadź `quit`.
+    d. Aby wyjść, wprowadź `quit`.
 
 1. Po zmianie rozmiaru partycji Sprawdź spójność partycji z `e2fsck`:
 
@@ -121,7 +121,7 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Zmień rozmiar systemu plików o `resize2fs`:
+1. Zmień rozmiar systemu plików przy użyciu `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1

@@ -1,5 +1,5 @@
 ---
-title: Instalowanie usługi Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB | Microsoft Docs
+title: Instalowanie usługi Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB
 description: Jak zainstalować usługę Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB i interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828397"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035655"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB
 
@@ -28,7 +28,7 @@ Usługa File Storage oferuje udziały plików w chmurze, które używają standa
 
 Przeniesienie plików z maszyny wirtualnej do instalacji SMB, która jest hostowana w usłudze File Storage, to doskonały sposób na Debugowanie dzienników. Ten sam udział SMB można zainstalować lokalnie na komputerze Mac, w systemie Linux lub na stacji roboczej z systemem Windows. Protokół SMB nie jest najlepszym rozwiązaniem do przesyłania strumieniowego dzienników systemu Linux lub aplikacji w czasie rzeczywistym, ponieważ nie jest on zbudowany w celu obsługi takich dużych obowiązków rejestrowania. Dedykowane, ujednolicone narzędzie do warstwy rejestrowania, takie jak Fluent, będzie lepszym rozwiązaniem niż SMB do zbierania danych wyjściowych systemu Linux i rejestrowania aplikacji.
 
-Ten przewodnik wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom **AZ--Version** , aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+Ten przewodnik wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Utwórz nowe konto magazynu w utworzonej grupie zasobów przy użyciu polecenia [AZ Storage account Create](/cli/azure/storage/account). Ten przykład tworzy konto magazynu o nazwie *ciąg mystorageacct @ no__t-1random number >* i umieszcza nazwę tego konta magazynu w zmiennej **STORAGEACCT**. Nazwa konta magazynu musi być unikatowa, przy użyciu `$RANDOM` dołącza liczbę do końca, aby była unikatowa.
+Utwórz nowe konto magazynu w utworzonej grupie zasobów przy użyciu polecenia [AZ Storage account Create](/cli/azure/storage/account). Ten przykład tworzy konto magazynu o nazwie *ciąg mystorageacct\<liczbę losową >* i umieszcza nazwę tego konta magazynu w zmiennej **STORAGEACCT**. Nazwa konta magazynu musi być unikatowa, przy użyciu `$RANDOM` dołącza liczbę do końca, aby była unikatowa.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -69,7 +69,7 @@ STORAGEKEY=$(az storage account keys list \
 
 Utwórz udział magazynu plików za pomocą polecenia [AZ Storage Share Create](/cli/azure/storage/share). 
 
-Nazwy udziałów muszą składać się z małych liter, cyfr i pojedynczych łączników, ale nie mogą rozpoczynać się od łącznika. Aby uzyskać szczegółowe informacje o nazewnictwie udziałów plików i plików, zobacz [nazewnictwo i odwoływanie się do udziałów, katalogów, plików i metadanych](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Nazwy udziałów muszą składać się z małych liter, cyfr i pojedynczych łączników, ale nie mogą rozpoczynać się od łącznika. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 W tym przykładzie tworzony jest udział *o nazwie GIB* z limitem przydziału 10. 
 
@@ -99,7 +99,7 @@ Zainstaluj udział plików platformy Azure w katalogu lokalnym.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Powyższe polecenie używa polecenia [Mount](https://linux.die.net/man/8/mount) do zainstalowania udziału plików platformy Azure i opcji specyficznych dla protokołu [CIFS](https://linux.die.net/man/8/mount.cifs). W odniesieniu do opcji file_mode i dir_mode można ustawić pliki i katalogi na uprawnienia `0777`. Uprawnienie `0777` udziela wszystkim użytkownikom uprawnień do odczytu, zapisu i wykonywania. Te uprawnienia można zmienić, zastępując wartości innymi [uprawnieniami chmod](https://en.wikipedia.org/wiki/Chmod). Można również użyć innych opcji [CIFS](https://linux.die.net/man/8/mount.cifs) , takich jak gid lub UID. 
+Powyższe polecenie używa polecenia [Mount](https://linux.die.net/man/8/mount) do zainstalowania udziału plików platformy Azure i opcji specyficznych dla protokołu [CIFS](https://linux.die.net/man/8/mount.cifs). W każdym przypadku opcje file_mode i dir_mode ustawiają `0777`plików i katalogów. Uprawnienie `0777` udziela wszystkim użytkownikom uprawnień do odczytu, zapisu i wykonywania. Te uprawnienia można zmienić, zastępując wartości innymi [uprawnieniami chmod](https://en.wikipedia.org/wiki/Chmod). Można również użyć innych opcji [CIFS](https://linux.die.net/man/8/mount.cifs) , takich jak gid lub UID. 
 
 
 ## <a name="persist-the-mount"></a>Utrwalanie instalacji

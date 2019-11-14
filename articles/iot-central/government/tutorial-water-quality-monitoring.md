@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji do monitorowania jakości wody przy użyciu usługi Azure IoT Central
+title: Tworzenie aplikacji do monitorowania jakości wody na platformie Azure IoT Central
 description: Dowiedz się, jak utworzyć aplikację do monitorowania jakości wody przy użyciu szablonów aplikacji IoT Central platformy Azure.
 author: miriambrus
 ms.author: miriamb
@@ -8,261 +8,250 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 51c84410de39516312d2058eeda575023dbe32ab
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bfa5234d17db32c459b5ff1d0252a65a5ba99a72
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890764"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039514"
 ---
-# <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania jakości wody w IoT Central
+# <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania jakości wody na platformie Azure IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-W tym samouczku przedstawiono tworzenie aplikacji do monitorowania jakości wody na platformie Azure IoT Central z szablonu aplikacji do monitorowania jakości wody IoT Central. 
+Ten samouczek przeprowadzi Cię przez proces tworzenia aplikacji do monitorowania jakości wody na platformie Azure IoT Central. Aplikację można utworzyć przy użyciu szablonu aplikacji do **monitorowania jakości wody** w systemie Azure IoT Central.
 
-W tym samouczku dowiesz się, jak: 
+Z tego samouczka dowiesz się, jak wykonać następujące czynności:
 
 > [!div class="checklist"]
-> * Tworzenie aplikacji do monitorowania jakości wody przy użyciu szablonu **monitorowania jakości wody** platformy Azure IoT Central
-> * Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora 
-> * Eksploruj szablon urządzenia monitora jakości wody
-> * Eksplorowanie symulowanych urządzeń
-> * Eksplorowanie i konfigurowanie reguł
-> * Konfigurowanie zadań
-> * Dostosowywanie oznakowania aplikacji za pomocą Whitelabeling
-
+> * Użyj szablonu **monitorowanie jakości wody** , aby utworzyć aplikację do monitorowania jakości wody.
+> * Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora.
+> * Eksploruj szablon urządzenia do monitorowania jakości wody.
+> * Eksploruj symulowane urządzenia.
+> * Eksplorowanie i konfigurowanie reguł.
+> * Konfigurowanie zadań.
+> * Dostosuj znakowanie aplikacji, używając białych etykiet.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, musisz:
--  Zalecana jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie rejestracji na platformie Azure](https://aka.ms/createazuresubscription).
+Zalecamy, aby masz subskrypcję platformy Azure do ukończenia tego samouczka. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie rejestracji na platformie Azure](https://aka.ms/createazuresubscription).
 
+## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Tworzenie aplikacji do monitorowania jakości wody na platformie Azure IoT Central
 
-## <a name="create-water-quality-monitoring-app-in-iot-central"></a>Tworzenie aplikacji do monitorowania jakości wody w IoT Central
+W tej sekcji użyjesz szablonu **monitorowania jakości wody** platformy Azure IoT Central, aby utworzyć aplikację do monitorowania jakości wody.
 
-W tej sekcji użyjemy **szablonu monitorowania jakości wody** platformy Azure IoT Central, aby utworzyć aplikację do monitorowania jakości wody w IoT Central.
+1. Przejdź do [strony głównej usługi Azure IoT Central](https://aka.ms/iotcentral).
 
+    Jeśli masz subskrypcję platformy Azure, zaloguj się przy użyciu poświadczeń, których używasz, aby uzyskać do niej dostęp. W przeciwnym razie zaloguj się przy użyciu konto Microsoft:
 
-Aby utworzyć nową aplikację do monitorowania jakości wody w systemie Azure IoT Central:  
+    ![Zaloguj się do konta organizacji](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-1. Przejdź do witryny sieci Web [strony głównej platformy Azure IoT Central](https://aka.ms/iotcentral) .
+1. Wybierz pozycję **Kompiluj** w okienku po lewej stronie IoT Central platformy Azure i wybierz pozycję Karta **rządowa** . W okienku instytucji rządowych są wyświetlane kilka szablonów aplikacji dla instytucji rządowych.
 
-      Jeśli masz subskrypcję platformy Azure, zaloguj się przy użyciu poświadczeń, których używasz, aby uzyskać do niej dostęp. w przeciwnym razie zaloguj się przy pomocy konto Microsoft:
+    ![Szablony aplikacji dla instytucji rządowych](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
-    ![Określanie konta organizacji](./media/tutorial-waterqualitymonitoring/sign-in.png)
+1. Wybierz szablon aplikacji do **monitorowania jakości wody** . Ten szablon aplikacji obejmuje szablon urządzenia z jakością wody, symulowane urządzenia, pulpit nawigacyjny operatora i wstępnie skonfigurowane reguły monitorowania.
 
-2. W lewym okienku kliknij pozycję **kompilacja** , a następnie wybierz pozycję Karta **rządowa** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
+1. Wybierz pozycję **Utwórz aplikację**. Zostanie otwarte okienko **Nowa aplikacja** z następującymi elementami:
 
-    ![Kompiluj szablony aplikacji dla instytucji rządowych](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
+    * **Nazwa aplikacji**: Domyślnie nazwa aplikacji to **monitorowanie jakości wody** , a po nim unikatowy ciąg identyfikacyjny generowany przez usługę Azure IoT Central. Jeśli chcesz, możesz wprowadzić nazwę wyświetlaną lub później zmienić nazwę aplikacji.
+    * **Adres URL**: możesz wprowadzić dowolny adres URL lub później zmienić wartość adresu URL.
+    * Jeśli masz subskrypcję platformy Azure, wprowadź wartości dla **katalogu**, **subskrypcji platformy Azure**i **regionu**. Jeśli nie masz subskrypcji, możesz włączyć **7-dniową bezpłatną wersję próbną** i uzupełnić wymagane informacje kontaktowe.
 
+    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zobacz [Tworzenie aplikacji](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) — Szybki Start.
 
-1. Wybierz szablon aplikacji do **monitorowania jakości wody** . Ten szablon obejmuje szablon urządzeń z jakością wody, symulowane urządzenie, pulpit nawigacyjny operatora i wstępnie skonfigurowane reguły monitorowania.    
+1. Wybierz przycisk **Utwórz** w lewej dolnej części strony.
 
-2. Kliknij pozycję **Utwórz aplikację**. spowoduje to otwarcie formularza tworzenia **nowej aplikacji** z następującymi polami:
-    * **Nazwa aplikacji**. Domyślnie aplikacja korzysta z *monitorowania jakości wody* , a następuje unikatowy ciąg identyfikatora, który IoT Central generowany. Opcjonalnie możesz wybrać przyjazną nazwę aplikacji. Nazwę aplikacji można zmienić później.
-    * **URL** — Opcjonalnie możesz wybrać żądany adres URL. Adres URL można zmienić później. 
-    * Jeśli masz subskrypcję platformy Azure, wprowadź swój *katalog, subskrypcję platformy Azure i region*. Jeśli nie masz subskrypcji, możesz włączyć **7-dniową bezpłatną wersję próbną** i uzupełnić wymagane informacje kontaktowe.  
+    ![Strona nowej aplikacji platformy Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
 
-    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../preview/quick-deploy-iot-central.md).
+Aplikacja do monitorowania jakości wody została teraz utworzona przy użyciu szablonu **monitorowania jakości wody** dla systemu Azure IoT Central.
 
-5. Kliknij przycisk **Utwórz** w dolnej części strony. 
+Twoja nowa aplikacja zawiera te wstępnie skonfigurowane składniki:
 
-    ![Strona Tworzenie aplikacji usługi Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+* Pulpity nawigacyjne operatorów
+* Szablony urządzeń do monitorowania jakości wody
+* Symulowane urządzenia do monitorowania jakości wody
+* Zasady i zadania
+* Znakowanie używające białych etykiet
 
+Aplikację można modyfikować w dowolnym momencie.
 
-6. Aplikacja do monitorowania jakości wody została już utworzona przy użyciu **szablonu monitorowania jakości wody**na platformie Azure IoT Central. 
+Następnie Eksploruj aplikację i wprowadzaj pewne dostosowania.
 
-Nowo utworzona aplikacja zawiera wstępnie skonfigurowane:
-* Przykładowe pulpity nawigacyjne operatorów
-* Przykładowy wstępnie zdefiniowany szablon urządzenia monitora jakości wody
-* Symulowane urządzenia monitora jakości wody
-* Wstępnie skonfigurowane reguły i zadania
-* Przykładowe oznakowanie przy użyciu białej etykietki 
+## <a name="explore-and-customize-the-operator-dashboard"></a>Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora
 
-Jest to Twoja aplikacja i możesz ją zmodyfikować w dowolnym momencie. Teraz eksplorujemy aplikację i wprowadzasz pewne dostosowania.  
-
-
-## <a name="explore-and-customize-operator-dashboard"></a>Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora 
-Po utworzeniu aplikacji na **pulpicie nawigacyjnym monitorowania jakości wody w szerokim**obszarze.
-
+Po utworzeniu aplikacji zostanie otwarte okienko **pulpitu nawigacyjnego szerokiej jakości wody** .
 
    ![Pulpit nawigacyjny monitorowania jakości wody](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
 
-Jako Konstruktor można tworzyć i dostosowywać widoki na pulpicie nawigacyjnym dla operatorów. Przed rozpoczęciem dostosowywania skontaktuj się z pulpitem nawigacyjnym. 
+Jako Konstruktor można tworzyć i dostosowywać widoki na pulpicie nawigacyjnym do użycia przez operatorów. Ale przed podjęciem próby dostosowania należy najpierw zapoznać się z pulpitem nawigacyjnym.
 
-Wszystkie dane wyświetlane na pulpicie nawigacyjnym są oparte na symulowanych danych urządzenia, które zostaną zbadane w następnej sekcji. 
+Wszystkie dane wyświetlane na pulpicie nawigacyjnym są oparte na symulowanych danych urządzenia, które omówiono w następnej sekcji.
 
-Pulpit nawigacyjny składa się z różnych rodzajów kafelków:
+Pulpit nawigacyjny zawiera następujące rodzaje kafelków:
 
-* **Kafelek obrazu narzędzia Wide World wodne**: pierwszy kafelek na pulpicie nawigacyjnym to kafelek obrazu fikcyjnej wody "Wide World". Możesz dostosować kafelek i umieścić własny obraz lub usunąć go. 
+* **Kafelek obrazu narzędzia Wide World wodne**: pierwszy kafelek w lewym górnym rogu pulpitu nawigacyjnego jest obrazem, który pokazuje fikcyjne narzędzie o nazwie Wide World. Kafelek można dostosować tak, aby używał własnego obrazu, lub można go usunąć.
 
-* **Średni kafelek wskaźnika KPI pH**: widzisz, że w **ciągu ostatnich 30 minut**znajdują się kafelki KPI, takie jak średnia pH. Można dostosować kafelki KPI i ustawić je na inny typ i zakres czasu.
+* **Średnia liczba kafelków kluczowych wskaźników wydajności**: wskaźniki KPI, takie jak **średnia pH w ciągu ostatnich 30 minut** , znajdują się u góry okienka pulpitu nawigacyjnego. Można dostosować kafelki KPI i ustawić je na inny typ i zakres czasu.
 
-*  **Mapa obszaru monitorowania wody**: IoT Central używa Azure Maps, które można ustawić bezpośrednio w aplikacji i wyświetlić lokalizację urządzenia. Możesz również zmapować informacje o lokalizacji na urządzenie z aplikacji i użyć Azure Maps, aby wyświetlić je na mapie. Spróbuj umieścić kursor na mapie i wypróbuj kontrolki na mapie. 
+* **Mapa obszaru monitorowania wody**: usługa Azure IoT Central używa Azure Maps, które można bezpośrednio ustawić w aplikacji, aby pokazać lokalizację urządzenia. Możesz również zmapować informacje o lokalizacji z aplikacji na urządzenie, a następnie użyć Azure Maps, aby wyświetlić informacje na mapie. Umieść kursor nad mapą i wypróbuj kontrolki.
 
-* **Średni wykres mapę cieplną rozkładu pH**: możesz wybrać różne wykresy wizualizacji, aby wyświetlić dane telemetryczne urządzenia w sposób najbardziej odpowiedni dla Twojej aplikacji. Mapę cieplną 
+* **Średni schemat dystrybucji cieplnej rozkładu pH**: możesz wybrać różne wykresy wizualizacji, aby wyświetlić dane telemetryczne urządzenia w sposób najbardziej odpowiedni dla Twojej aplikacji.
 
-* **Wykres liniowy wskaźników jakości krytycznych**: można wizualizować jeden lub wiele telemetrii urządzeń, które są kreślone jako wykres liniowy w żądanym zakresie czasu.  
+* **Wykres liniowy wskaźników jakości krytycznych**: można wizualizować dane telemetryczne urządzenia kreślone jako wykres liniowy w przedziale czasu.  
 
-* **Koncentracja wykresu słupkowego agentów chemicznych**: można wizualizować jedno lub wiele danych telemetrii urządzenia na wykresie słupkowym tak jak w przykładzie. 
+* **Koncentracja wykresu słupkowego agentów chemicznych**: można wizualizować dane telemetryczne urządzenia na wykresie słupkowym.
 
-* **Przycisk akcji**: pulpit nawigacyjny zawiera przykład kafelka akcji, który operator może zainicjować bezpośrednio z poziomu pulpitu nawigacyjnego monitorowania, takich jak inicjowanie akcji resetowania właściwości urządzenia. 
+* **Przycisk akcji**: pulpit nawigacyjny zawiera kafelek akcji, które operator może zainicjować bezpośrednio z poziomu pulpitu nawigacyjnego monitorowania. Przykładem takich akcji jest Resetowanie właściwości urządzenia.
 
-* **Kafelki listy właściwości**: pulpit nawigacyjny zawiera wiele właściwości, które reprezentują informacje o wartościach progowych, informacje o kondycji urządzenia i informacje o konserwacji. 
+* **Kafelki listy właściwości**: pulpit nawigacyjny zawiera wiele kafelków właściwości, które reprezentują informacje o wartościach progowych, informacje o kondycji urządzenia i informacje o konserwacji.
 
+### <a name="customize-the-dashboard"></a>Dostosowywanie pulpitu nawigacyjnego
 
-### <a name="customize-dashboard"></a>Dostosowywanie pulpitu nawigacyjnego 
+Jako Konstruktor można dostosować widoki na pulpicie nawigacyjnym do użycia przez operatorów.
 
-Jako Konstruktor można dostosować widoki na pulpicie nawigacyjnym dla operatorów. 
-1. Kliknij pozycję **Edytuj** , aby dostosować **pulpit nawigacyjny monitorowania jakości całego świata**. Możesz dostosować pulpit nawigacyjny, klikając menu **Edycja** . Gdy pulpit nawigacyjny jest w trybie **edycji** , możesz dodać nowe kafelki lub skonfigurować
+1. Wybierz pozycję **Edytuj** , aby dostosować okienko **pulpitu nawigacyjnego szerokiej jakości wody** . Możesz dostosować pulpit nawigacyjny, wybierając polecenie z menu **Edycja** . Gdy pulpit nawigacyjny jest w trybie edycji, można dodać nowe kafelki lub można skonfigurować istniejące pliki.
 
-    ![Edytuj pulpit nawigacyjny](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
+    ![Edytowanie pulpitu nawigacyjnego](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
 
-2. Kliknij pozycję **+ Nowy** , aby utworzyć nowy pulpit nawigacyjny i skonfigurować go od podstaw. Możesz mieć wiele pulpitów nawigacyjnych i można przechodzić między pulpitami nawigacyjnymi z menu Pulpit nawigacyjny.
+1. Wybierz pozycję **+ Nowy** , aby utworzyć nowy pulpit nawigacyjny, który można skonfigurować. Można mieć wiele pulpitów nawigacyjnych i nawigować między nimi z menu Pulpit nawigacyjny.
 
-## <a name="explore-water-quality-monitor-device-template"></a>Eksploruj szablon urządzenia monitora jakości wody
-Szablon urządzenia w usłudze Azure IoT Central definiuje możliwość urządzenia, które może być Telemetria, właściwości i poleceniami. Jako Konstruktor można definiować szablony urządzeń w IoT Central, które reprezentują możliwości urządzeń, które będą połączone. W IoT Central można także tworzyć symulowane urządzenia do testowania szablonu i aplikacji urządzenia. 
- 
+## <a name="explore-a-water-quality-monitoring-device-template"></a>Eksplorowanie szablonu urządzenia do monitorowania jakości wody
 
-Aplikacja do **monitorowania jakości wody** utworzona na podstawie szablonu aplikacji zawiera szablon urządzenia do monitorowania jakości wody referencyjnej.
+Szablon urządzenia w usłudze Azure IoT Central definiuje możliwości urządzenia. Dostępne możliwości to dane telemetryczne, właściwości i polecenia. Jako Konstruktor można definiować szablony urządzeń w usłudze Azure IoT Central, które reprezentują możliwości połączonych urządzeń. Można również tworzyć symulowane urządzenia do testowania szablonu i aplikacji urządzenia.
+
+Utworzona aplikacja do monitorowania jakości wody obejmuje szablon urządzenia do monitorowania jakości wody.
 
 Aby wyświetlić szablon urządzenia:
 
-1.  Kliknij pozycję **Szablony urządzeń** w lewym okienku nawigacji aplikacji w IoT Central. 
-2. Na liście szablony urządzeń zostanie wyświetlony **monitor jakość wody**. Otwórz program, klikając nazwę.
+1. Wybierz pozycję **Szablony urządzeń** w okienku po lewej stronie aplikacji na platformie Azure IoT Central.
+1. Z listy szablonów urządzeń wybierz pozycję **monitor jakości wody**. Ten szablon urządzenia zostanie otwarty.
 
     ![Szablon urządzenia](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
 
-### <a name="customizing-the-device-template"></a>Dostosowywanie szablonu urządzenia
+### <a name="customize-the-device-template"></a>Dostosowywanie szablonu urządzenia
 
-Spróbuj dostosować następujące elementy:
-1. Przejdź do **dostosowywania** z menu szablonu urządzenia
-2. Znajdź `Temperature` typ telemetrii
-3. Zaktualizuj **nazwę wyświetlaną** `Temperature` do `Reported temperature`
-4. Zaktualizuj jednostkę miary lub ustaw wartość *minimalną* oraz *wartość maksymalną* .
-5. **Zapisz** wszystkie zmiany 
+Zalecane jest dostosowanie następujących ustawień szablonu urządzenia:
 
-#### <a name="add-a-cloud-property"></a>Dodaj właściwość chmury 
-1. Przejdź do **właściwości chmury** z menu szablonu urządzenia
-2. Dodaj nową właściwość chmury, klikając pozycję **+ Dodaj właściwość chmury**. W IoT Central można dodać właściwość, która jest istotna dla urządzenia, ale nie powinna zostać wysłana przez urządzenie. Przykładowo Właściwość chmury może być progiem alertu specyficznym dla obszaru instalacji, informacji o zasobach lub informacji o konserwacji itp. 
-3. **Zapisz** wszystkie zmiany 
- 
-### <a name="views"></a>Widoki 
-Szablon urządzenia monitora jakości wody jest dostarczany ze wstępnie zdefiniowanymi widokami. Przejrzyj widoki i możesz wprowadzić aktualizacje. Widoki definiują sposób, w jaki operatory zobaczą dane urządzenia, ale również umieszczają właściwości chmury. 
+1. Z menu szablonu urządzenia wybierz pozycję **Dostosuj**.
+1. Przejdź do typu telemetrii **temperatury** .
+1. Zmień wartość **Nazwa wyświetlana** na **zgłoszoną temperaturę**.
+1. Zmień jednostkę miary lub ustaw wartość **minimalną** i **maksymalną**.
+1. Wybierz pozycję **Zapisz**.
+
+#### <a name="add-a-cloud-property"></a>Dodaj właściwość chmury
+
+1. W menu szablonu urządzenia wybierz pozycję **Właściwość chmury**.
+1. Aby dodać nową właściwość chmury, wybierz pozycję **+ Dodaj właściwość chmury**. Na platformie Azure IoT Central można dodać właściwość, która jest istotna dla urządzenia, ale nie powinna zostać wysłana przez urządzenie. Przykładem takiej właściwości jest próg alertu specyficzny dla obszaru instalacji, informacji o zasobach lub informacji o konserwacji.
+1. Wybierz pozycję **Zapisz**.
+
+### <a name="explore-views"></a>Eksploruj widoki
+
+Szablon urządzenia do monitorowania jakości wody jest dostępny ze wstępnie zdefiniowanymi widokami. Widoki definiują sposób, w jaki operatory widzą dane urządzenia i ustawiają właściwości chmury. Eksploruj widoki i ćwicz wprowadzanie zmian.
 
   ![Widoki szablonów urządzeń](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikowanie 
+### <a name="publish-the-device-template"></a>Publikowanie szablonu urządzenia
 
-Jeśli zostały wprowadzone jakiekolwiek zmiany, upewnij się, że szablon urządzenia jest **opublikowany** . 
+Jeśli wprowadzisz jakiekolwiek zmiany, pamiętaj o wybraniu opcji **Publikuj** w celu opublikowania szablonu urządzenia.
 
+### <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia
 
-### <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia 
-1. Wybierz pozycję **+ Nowy** , aby utworzyć nowy szablon urządzenia i postępuj zgodnie z procesem tworzenia. 
-2. Utwórz niestandardowy szablon urządzenia od podstaw lub wybierz szablon urządzenia z wykazu urządzeń platformy Azure. 
-
+1. Wybierz pozycję **+ Nowy** , aby utworzyć nowy szablon urządzenia i postępuj zgodnie z procesem tworzenia.
+1. Utwórz niestandardowy szablon urządzenia lub wybierz szablon urządzenia z wykazu urządzeń Azure IoT.
 
 ## <a name="explore-simulated-devices"></a>Eksplorowanie symulowanych urządzeń
 
-Aplikacja do **monitorowania jakości wody** utworzona na podstawie szablonu aplikacji ma dwa symulowane urządzenia, które zostały zamapowane na szablon urządzenia monitora jakości wody. 
+Aplikacja do monitorowania jakości wody utworzona na podstawie szablonu aplikacji ma dwa symulowane urządzenia. Te urządzenia są mapowane na szablon urządzenia do monitorowania jakości wody.
 
-### <a name="to-view-the-devices"></a>Aby wyświetlić urządzenia:
-1. Przejdź do **urządzenia** z IoT Central okienku nawigacji po lewej stronie. 
+### <a name="view-the-devices"></a>Wyświetlanie urządzeń
+
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie aplikacji.
 
    ![Urządzenia](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
 
+1. Wybierz jedno symulowane urządzenie.
 
-2. Wybierz i kliknij jedno symulowane urządzenie 
+    ![Wybierz urządzenie 1](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
 
-    ![Urządzenie 1](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
-
-3. Na karcie **właściwości chmury** spróbuj zaktualizować wartość `Acidity (pH) Threshold` z `8` do `9`. 
-4. Eksploruj kartę **Właściwości urządzenia** i kartę **pulpit nawigacyjny urządzenia** . 
+1. Na karcie **właściwości chmury** Zmień wartość **progową kwasowości (pH)** z **8** na **9**.
+1. Przejrzyj kartę **Właściwości urządzenia** i kartę **pulpit nawigacyjny urządzenia** .
 
 > [!NOTE]
-> Należy pamiętać, że wszystkie karty zostały skonfigurowane z **widoków szablonów urządzeń**.
-
+> Wszystkie karty zostały skonfigurowane z **widoków szablonów urządzeń**.
 
 ### <a name="add-new-devices"></a>Dodaj nowe urządzenia
-Nowe urządzenia można dodać, klikając pozycję **+ Nowy** na karcie **urządzenia** . 
 
+Na karcie **urządzenia** wybierz pozycję **+ Nowy** , aby dodać nowe urządzenie.
 
 ## <a name="explore-and-configure-rules"></a>Eksplorowanie i konfigurowanie reguł
 
-Na platformie Azure IoT Central można tworzyć reguły automatycznego monitorowania danych telemetrycznych urządzeń i wyzwalać akcję w przypadku spełnienia co najmniej jednego warunku. Akcje mogą obejmować wysyłanie powiadomień e-mail lub wyzwalanie akcji Microsoft Flow lub akcji elementu webhook w celu wysyłania danych do innych usług.
+Na platformie Azure IoT Central można utworzyć reguły, które automatycznie monitorują dane telemetryczne urządzenia. Te reguły wyzwalają akcję w przypadku spełnienia dowolnego z nich warunków. Jedną z możliwych czynności jest wysłanie powiadomień e-mail. Inne możliwości obejmują akcję Microsoft Flow lub akcję elementu webhook w celu wysyłania danych do innych usług.
 
-Utworzona przez Ciebie aplikacja do **monitorowania jakości wody** ma dwie wstępnie skonfigurowane reguły.
+Utworzona aplikacja do monitorowania jakości wody ma dwie wstępnie skonfigurowane reguły.
 
-### <a name="to-view-rules"></a>Aby wyświetlić reguły:
-1. Przejdź do **reguły** , IoT Central okienku nawigacji po lewej stronie. 
+### <a name="view-rules"></a>Wyświetl reguły
+
+1. Wybierz pozycję **reguły** w okienku po lewej stronie aplikacji.
 
    ![Reguły](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-rules.png)
 
+1. Wybierz **alert o wysokim poziomie pH**, który jest jednym ze wstępnie skonfigurowanych reguł w aplikacji.
 
-2. Wybierz i kliknij **alert o wysokim poziomie pH** , który jest jedną ze wstępnie skonfigurowanych reguł w aplikacji. 
+   ![Reguła alertu o wysokiej wartości pH](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
 
-     ![Alert o wysokim poziomie pH](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
+   Reguła **alertu o wysokiej wartości pH** jest skonfigurowana do sprawdzania stanu kwasowości (pH), która jest większa niż 8.
 
-    Reguła `High pH alert` jest skonfigurowana do sprawdzania pod kątem `Acidity (pH) is greater than 8`warunku.
+Następnie Dodaj akcję poczty e-mail do reguły:
 
-Teraz Utwórzmy akcję poczty e-mail.
+1. Wybierz pozycję **+ poczta e-mail**.
+1. W polu **Nazwa wyświetlana** wprowadź **alert o wysokim poziomie pH**.
+1. W polu **do** wprowadź adres e-mail skojarzony z kontem usługi Azure IoT Central.
+1. Opcjonalnie wprowadź notatkę, która ma zostać dołączona do tekstu wiadomości e-mail.
+1. Wybierz pozycję **gotowe** , aby zakończyć akcję.
+1. Wybierz pozycję **Zapisz** , aby zapisać i aktywować nową regułę.
 
-Aby dodać akcję do reguły:
-
-1. Wybierz pozycję **+ poczta e-mail**. 
-2.  Wprowadź *alert o wysokim poziomie pH* jako przyjazną **nazwę wyświetlaną** dla akcji.
-3. Wprowadź adres e-mail skojarzony z kontem IoT Central w programie **do**. 
-4. Opcjonalnie wprowadź notatkę, która ma zostać dołączona do tekstu wiadomości e-mail.
-5. Wybierz pozycję **gotowe** , aby zakończyć akcję.
-6. Wybierz pozycję **Zapisz** , aby zapisać i aktywować nową regułę. 
-
-W ciągu kilku minut powinna zostać wysłana wiadomość e-mail, gdy zostanie spełniony skonfigurowany **warunek** .
+W ciągu kilku minut powinna zostać wysłana wiadomość e-mail, gdy zostanie spełniony skonfigurowany warunek.
 
 > [!NOTE]
-> Aplikacja wyśle wiadomość e-mail za każdym razem, gdy warunek zostanie spełniony. **Wyłączenie** reguły w celu zatrzymania otrzymywania wiadomości e-mail z reguły zautomatyzowanej. 
+> Aplikacja wysyła wiadomość e-mail za każdym razem, gdy spełniony jest warunek. Wybierz opcję **Wyłącz** , aby zrezygnować z otrzymywania zautomatyzowanej wiadomości e-mail z tej reguły.
   
-Aby utworzyć nową regułę: 
-1. Wybierz pozycję **+ Nowy** w obszarze **reguły** w okienku nawigacji po lewej stronie.
+Aby utworzyć nową regułę, wybierz pozycję **reguły** w okienku po lewej stronie aplikacji, a następnie wybierz pozycję **+ Nowy**.
 
 ## <a name="configure-jobs"></a>Konfigurowanie zadań
 
-W IoT Central zadania umożliwiają wyzwalanie aktualizacji właściwości urządzenia lub chmury na wielu urządzeniach. Oprócz właściwości można także użyć zadań do wyzwalania poleceń urządzenia na wielu urządzeniach. IoT Central automatyzuje przepływ pracy. 
+Za pomocą zadań IoT Central platformy Azure można wyzwolić aktualizacje właściwości urządzenia lub chmury na wielu urządzeniach. Można również użyć zadań do wyzwalania poleceń urządzenia na wielu urządzeniach. Usługa Azure IoT Central automatyzuje przepływ pracy.
 
-1. Przejdź do obszaru **zadania** w okienku nawigacji po lewej stronie. 
-2. Kliknij pozycję **+ Nowy** i skonfiguruj co najmniej jedno zadanie. 
+1. Wybierz pozycję **zadania** w okienku po lewej stronie aplikacji.
+1. Wybierz pozycję **+ Nowy** i skonfiguruj co najmniej jedno zadanie.
 
+## <a name="customize-your-application"></a>Dostosowywanie aplikacji
 
-## <a name="customize-your-application"></a>Dostosowywanie aplikacji 
 Jako Konstruktor można zmienić kilka ustawień, aby dostosować środowisko użytkownika w aplikacji.
 
-1. Wybierz pozycję **administracja > Dostosuj aplikację**.
-2. Użyj przycisku **Zmień** , aby wybrać obraz do przekazania jako **logo aplikacji**.
-3.  Użyj przycisku **Zmień** , aby wybrać obraz **ikony przeglądarki** , który będzie wyświetlany na kartach przeglądarki.
-4. Możesz również zastąpić domyślne **kolory przeglądarki** , dodając szesnastkowe kody kolorów html.
-5. Zmień również **motyw** , klikając **Ustawienia** w czasopismu.
+1. Wybierz pozycję **administracja** > **Dostosuj aplikację**.
+1. W obszarze **logo aplikacji**wybierz pozycję **Zmień** , aby wybrać obraz do przekazania jako logo.
+1. W obszarze **ikona przeglądarki**wybierz pozycję **Zmień** , aby wybrać obraz wyświetlany na kartach przeglądarki.
+1. W obszarze **kolory przeglądarki**można zastąpić wartości domyślne kodami szesnastkowymi w formacie HTML.
+1. Wybierz pozycję **Ustawienia** , aby zmienić wartość **motywu**.
 
-   ![IoT Central dostosowywanie aplikacji przez platformę Azure](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
+   ![Dostosowywanie aplikacji](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
-### <a name="to-update-the-application-image"></a>Aby zaktualizować obraz aplikacji:
+### <a name="update-the-application-image"></a>Aktualizowanie obrazu aplikacji
 
-6.  Wybierz pozycję **administracja > Ustawienia aplikacji**.
+1. Wybierz pozycję **administracja** > **Ustawienia aplikacji**.
 
-7. Użyj przycisku **Wybierz obraz** , aby wybrać obraz do przekazania jako obraz aplikacji. 
+1. Użyj przycisku **Wybierz obraz** , aby wybrać obraz do przekazania jako obraz aplikacji.
 
-
-  
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń aplikację, wykonując następujące czynności:
+Jeśli nie chcesz nadal korzystać z aplikacji, Usuń aplikację, wykonując następujące czynności:
 
-1. Otwórz kartę Administracja w lewym okienku aplikacji IoT Central.
-2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony.
+1. Otwórz kartę **Administracja** w okienku po lewej stronie aplikacji.
+1. Wybierz pozycję **Ustawienia aplikacji** i wybierz przycisk **Usuń** .
 
-    ![Usuwanie aplikacji](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)        
-
-
+    ![Usuwanie aplikacji](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Więcej informacji o [pojęciach dotyczących monitorowania jakości wody](./concepts-waterqualitymonitoring-architecture.md)
+* Dowiedz się więcej o [pojęciach dotyczących monitorowania jakości wody](./concepts-waterqualitymonitoring-architecture.md).

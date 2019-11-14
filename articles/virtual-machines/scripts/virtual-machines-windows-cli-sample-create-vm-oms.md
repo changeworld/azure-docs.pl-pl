@@ -1,6 +1,6 @@
 ---
-title: Interfejs wiersza polecenia Azure przykładowy — tworzenie maszyny Wirtualnej platformy Azure, z usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Interfejs wiersza polecenia Azure przykładowy — tworzenie maszyny Wirtualnej platformy Azure z maszyny Wirtualnej systemu Windows Server 2016 i usługi Azure Monitor.
+title: Przykład interfejsu wiersza polecenia platformy Azure — Tworzenie maszyny wirtualnej platformy Azure z systemem Azure Monitor
+description: Przykład interfejsu wiersza polecenia platformy Azure — Tworzenie maszyny wirtualnej platformy Azure z systemem Windows Server 2016 VM i Azure Monitor.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: e5bee7a2b9d203909ccd11c4485ecc850688f4ff
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 77c5996a11b5223778bf0efbe33250f0db9f74f3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708234"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039908"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorowanie maszyny Wirtualnej przy użyciu dzienników usługi Azure Monitor
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorowanie maszyny wirtualnej za pomocą dzienników Azure Monitor
 
 Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w obszarze monitorowania platformy Azure.
 
@@ -54,7 +54,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Uruchamia rozszerzenie maszyny wirtualnej względem maszyny wirtualnej. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

@@ -1,5 +1,5 @@
 ---
-title: Zaloguj się do swoich kont przy użyciu aplikacji Microsoft Authenticator Azure Active Directory | Microsoft Docs
+title: Logowanie przy użyciu aplikacji Microsoft Authenticator — usługa Azure AD
 description: Użyj aplikacji Microsoft Authenticator, aby zalogować się do konta służbowego lub osobistego konta Microsoft i innych firm, przy użyciu weryfikacji dwuskładnikowej lub logowania za pomocą telefonu.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af3549984bd29a6e896e498bf4a2e6c67d7e0e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4cf9b92793d6c769751590dd0a375cbc8894759c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616013"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028983"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do swoich kont przy użyciu aplikacji Microsoft Authenticator
 
@@ -52,7 +52,7 @@ Logowanie przy użyciu telefonu jest dostępne tylko na urządzeniach z systemam
 
 - Otwórz aplikację Microsoft Authenticator, przejdź do swojego konta służbowego i Włącz logowanie za pomocą telefonu:
 
-    - **Jeśli zobaczysz, że ![jest wyświetlana ikona](media/user-help-auth-app-sign-in/icon.png)ikony.** Jeśli ta ikona jest wyświetlana obok nazwy konta służbowego, oznacza to, że już skonfigurowano logowanie za pomocą telefonu do konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
+    - **Jeśli zobaczysz tę ikonę ![ikona wyświetlania](media/user-help-auth-app-sign-in/icon.png).** Jeśli ta ikona jest wyświetlana obok nazwy konta służbowego, oznacza to, że już skonfigurowano logowanie za pomocą telefonu do konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
 
     - **Jeśli używasz aplikacji do weryfikacji dwuskładnikowej.** Jeśli używasz już aplikacji i weryfikacji dwuskładnikowej, możesz wybrać strzałkę listy rozwijanej obok nazwy konta, a następnie wybrać pozycję **Włącz logowanie za pomocą telefonu**.
 
@@ -85,7 +85,7 @@ Możesz włączyć logowanie za pomocą telefonu do osobistego konto Microsoft, 
 
 - Otwórz aplikację Microsoft Authenticator, przejdź do prywatnego konto Microsoft i Włącz logowanie za pomocą telefonu:
 
-    - **Jeśli zobaczysz, że ![jest wyświetlana ikona](media/user-help-auth-app-sign-in/icon.png)ikony.** Jeśli ta ikona jest wyświetlana obok nazwy Twojego konta, oznacza to, że już skonfigurowano logowanie za pomocą telefonu dla konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
+    - **Jeśli zobaczysz tę ikonę ![ikona wyświetlania](media/user-help-auth-app-sign-in/icon.png).** Jeśli ta ikona jest wyświetlana obok nazwy Twojego konta, oznacza to, że już skonfigurowano logowanie za pomocą telefonu dla konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
 
     - **Jeśli używasz aplikacji do weryfikacji dwuskładnikowej.** Jeśli używasz już aplikacji i weryfikacji dwuskładnikowej, możesz wybrać strzałkę listy rozwijanej obok nazwy konta, a następnie wybrać pozycję **Włącz logowanie za pomocą telefonu**.
 
@@ -101,7 +101,7 @@ Możesz włączyć logowanie za pomocą telefonu do osobistego konto Microsoft, 
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Zaloguj się przy użyciu weryfikacji dwuskładnikowej dla swojego konta
 
-Standardowa metoda weryfikacji dwuskładnikowej wymaga wprowadzenia nazwy użytkownika i hasła do urządzenia, do którego się logujesz, a następnie wybrania, czy aplikacja Microsoft Authenticator wysyła powiadomienie, czy wolisz skopiować powiązaną weryfikację kod na ekranie **konta** aplikacji Microsoft Authenticator. Należy włączyć weryfikację dwuskładnikową dla Twojego konta w ramach procesu dodawania konta do aplikacji Microsoft Authenticator.
+Standardowa metoda weryfikacji dwuskładnikowej wymaga wprowadzenia nazwy użytkownika i hasła do urządzenia, do którego się logujesz, a następnie wybrania, czy aplikacja Microsoft Authenticator wysyła powiadomienie, czy wolisz skopiować skojarzony kod weryfikacyjny z ekranu **konta** aplikacji Microsoft Authenticator. Należy włączyć weryfikację dwuskładnikową dla Twojego konta w ramach procesu dodawania konta do aplikacji Microsoft Authenticator.
 
 >[!Note]
 >Jeśli nie widzisz konta służbowego lub konta osobistego na ekranie **konta** aplikacji Microsoft Authenticator, oznacza to, że konto nie zostało dodane do aplikacji Microsoft Authenticator. Aby dodać konto, zobacz [Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md) lub [Dodawanie konta osobistego](user-help-auth-app-add-personal-ms-account.md).
@@ -122,10 +122,10 @@ Aby uzyskać instrukcje niezbędne do zalogowania się do konta służbowego lub
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli masz problemy z uzyskaniem kodu weryfikacyjnego dla konto Microsoft osobistych, zobacz sekcję Rozwiązywanie problemów z **kodem weryfikacyjnym** w artykule [konto Microsoft informacje zabezpieczające & kody weryfikacyjne](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
+- Jeśli masz problemy z uzyskaniem kodu weryfikacyjnego dla konto Microsoft osobistych, zobacz sekcję **Rozwiązywanie problemów z kodem weryfikacyjnym** w artykule [konto Microsoft informacje zabezpieczające & kody weryfikacyjne](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 
 - Jeśli masz więcej ogólnych pytań dotyczących aplikacji, zapoznaj się z tematem [Microsoft Authenticator FAQ](user-help-auth-app-faq.md)
 
-- Jeśli potrzebujesz więcej informacji na temat weryfikacji dwuetapowej, zobacz [Konfigurowanie mojego konta na potrzeby weryfikacji](multi-factor-authentication-end-user-first-time.md) dwuetapowej
+- Jeśli potrzebujesz więcej informacji na temat weryfikacji dwuetapowej, zobacz [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md)
 
 - Aby uzyskać więcej informacji na temat informacji zabezpieczających, zobacz [informacje zabezpieczające (wersja zapoznawcza) — Omówienie](user-help-security-info-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Samouczek — wysoka dostępność dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Samouczek — wysoka dostępność maszyn wirtualnych z systemem Linux na platformie Azure
 description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure wdrażać maszyny wirtualne o wysokiej dostępności w zestawach dostępności
 documentationcenter: ''
 services: virtual-machines-linux
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 10458e3c5f1e4dc9034206470fdfec19e13417fb
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cd0366a0029ccc4816308e280ac93b7c724bb82a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299455"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034626"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Samouczek: tworzenie i wdrażanie maszyn wirtualnych o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -35,7 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="high-availability-in-azure-overview"></a>Wysoka dostępność na platformie Azure — omówienie
 Wysoką dostępność na platformie Azure można utworzyć na wiele różnych sposobów. Dostępne są dwie opcje, które są zestawami dostępności i strefami dostępności. Korzystając z zestawów dostępności, maszyny wirtualne będą chronione przed awariami, które mogą wystąpić w centrum danych. Obejmuje to awarie sprzętu i błędy oprogramowania platformy Azure. Za pomocą stref dostępności maszyny wirtualne będą umieszczane w fizycznej osobnej infrastrukturze bez udostępnionych zasobów i w związku z tym będą chronione przed całymi awariami centrów danych.

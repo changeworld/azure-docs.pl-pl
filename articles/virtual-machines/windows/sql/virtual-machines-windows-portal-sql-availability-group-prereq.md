@@ -1,5 +1,5 @@
 ---
-title: SQL Server grupy dostępności — Azure Virtual Machines — wymagania wstępne | Microsoft Docs
+title: 'Samouczek: wymagania wstępne dotyczące grupy dostępności'
 description: W tym samouczku pokazano, jak skonfigurować wymagania wstępne dotyczące tworzenia grupy dostępności programu SQL Server zawsze włączone na maszynach wirtualnych platformy Azure.
 services: virtual-machines
 documentationCenter: na
@@ -9,24 +9,24 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 62232283fb0b2f499601615702fef3292bb88317
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 17b1f58a950f2e0589986e9f1da1295671599341
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100738"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037470"
 ---
-# <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Wykonaj wymagania wstępne dotyczące tworzenia zawsze dostępnych grup dostępności na maszynach wirtualnych platformy Azure
+# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Wymagania wstępne dotyczące tworzenia zawsze dostępnych grup dostępności na SQL Server na maszynach wirtualnych platformy Azure
 
 W tym samouczku pokazano, jak wykonać wymagania wstępne związane z tworzeniem [SQL Server zawsze włączone grupy dostępności na maszynach wirtualnych platformy Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md). Po zakończeniu wymagań wstępnych masz kontroler domeny, dwie SQL Server maszyny wirtualne i serwer monitora w jednej grupie zasobów.
 
-**Szacowany czas**: Ukończenie wymagań wstępnych może potrwać kilka godzin. Wiele z nich poświęca więcej czasu na tworzenie maszyn wirtualnych.
+**Szacowany czas**: ukończenie wymagań wstępnych może potrwać kilka godzin. Wiele z nich poświęca więcej czasu na tworzenie maszyn wirtualnych.
 
 Na poniższym diagramie przedstawiono sposób kompilowania w samouczku.
 
@@ -42,21 +42,21 @@ Musisz mieć konto platformy Azure. Możesz [otworzyć bezpłatne konto platform
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Kliknij **+** , aby utworzyć nowy obiekt w portalu.
+2. Kliknij przycisk **+** , aby utworzyć nowy obiekt w portalu.
 
    ![Nowy obiekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
 3. Wpisz **grupę zasobów** w oknie wyszukiwania w **portalu Marketplace** .
 
-   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
+   ![Grupa zasobów](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Kliknij pozycję **Grupa zasobów**.
-5. Kliknij przycisk **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 6. W polu **Nazwa grupy zasobów**wpisz nazwę grupy zasobów. Na przykład wpisz **SQL-ha-RG**.
 7. Jeśli masz wiele subskrypcji platformy Azure, sprawdź, czy subskrypcja jest subskrypcją platformy Azure, w której chcesz utworzyć grupę dostępności.
 8. Wybierz lokalizację. Lokalizacja jest regionem świadczenia usługi Azure, w którym chcesz utworzyć grupę dostępności. Ten artykuł kompiluje wszystkie zasoby w jednej lokalizacji platformy Azure.
 9. Sprawdź, czy jest zaznaczone pole wyboru **Przypnij do pulpitu nawigacyjnego** . To ustawienie opcjonalne umieszcza skrót dla grupy zasobów na pulpicie nawigacyjnym Azure Portal.
 
-   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
+   ![Grupa zasobów](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
 10. Kliknij pozycję **Utwórz**, aby utworzyć grupę zasobów.
 
@@ -74,13 +74,13 @@ Aby utworzyć sieć wirtualną:
    ![Nowy element](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
 2. Wyszukaj w **sieci wirtualnej**.
 
-     ![Szukaj sieci wirtualnej](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
+     ![Wyszukaj sieć wirtualną](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
 3. Kliknij pozycję **Sieć wirtualna**.
 4. W **sieci wirtualnej**kliknij **Menedżer zasobów** model wdrażania, a następnie kliknij przycisk **Utwórz**.
 
     W poniższej tabeli przedstawiono ustawienia sieci wirtualnej:
 
-   | **Pole** | Value |
+   | **Pole** | Wartość |
    | --- | --- |
    | **Nazwa** |autoHAVNET |
    | **Przestrzeń adresowa** |10.33.0.0/24 |
@@ -88,13 +88,13 @@ Aby utworzyć sieć wirtualną:
    | **Zakres adresów podsieci** |10.33.0.0/29 |
    | **Subskrypcja** |Określ subskrypcję, która ma zostać użyta. **Subskrypcja** jest pusta, jeśli masz tylko jedną subskrypcję. |
    | **Grupa zasobów** |Wybierz pozycję **Użyj istniejącej** i wybierz nazwę grupy zasobów. |
-   | **Location** |Określ lokalizację platformy Azure. |
+   | **Lokalizacja** |Określ lokalizację platformy Azure. |
 
    Przestrzeń adresowa i zakres adresów podsieci mogą różnić się od tabeli. W zależności od subskrypcji Portal sugeruje dostępną przestrzeń adresową i odpowiedni zakres adresów podsieci. Jeśli nie jest dostępna wystarczająca przestrzeń adresowa, użyj innej subskrypcji.
 
    W przykładzie jest użyta nazwa podsieci **administrator**. Ta podsieć jest dla kontrolerów domeny.
 
-5. Kliknij przycisk **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 
    ![Konfigurowanie sieci wirtualnej](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -113,14 +113,14 @@ Nowa sieć wirtualna ma jedną podsieć o nazwie **admin**. Kontrolery domeny u�
 
    ![Konfigurowanie sieci wirtualnej](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. Utwórz drugą podsieć. Kliknij pozycję **+ podsieć**.
-6. W obszarze **Dodaj podsieć**Skonfiguruj podsieć, wpisując w polu **Nazwa**wartość sqlsubnet. Platforma Azure automatycznie określa prawidłowy **zakres adresów**. Sprawdź, czy ten zakres adresów zawiera co najmniej 10 adresów. W środowisku produkcyjnym może być wymagane więcej adresów.
+6. W obszarze **Dodaj podsieć**Skonfiguruj podsieć, wpisując w polu **Nazwa**wartość **sqlsubnet** . Platforma Azure automatycznie określa prawidłowy **zakres adresów**. Sprawdź, czy ten zakres adresów zawiera co najmniej 10 adresów. W środowisku produkcyjnym może być wymagane więcej adresów.
 7. Kliknij przycisk **OK**.
 
     ![Konfigurowanie sieci wirtualnej](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
 
 Poniższa tabela zawiera podsumowanie ustawień konfiguracji sieci:
 
-| **Pole** | Value |
+| **Pole** | Wartość |
 | --- | --- |
 | **Nazwa** |**autoHAVNET** |
 | **Przestrzeń adresowa** |Ta wartość zależy od dostępnych przestrzeni adresowych w ramach subskrypcji. Typową wartością jest 10.0.0.0/16. |
@@ -130,7 +130,7 @@ Poniższa tabela zawiera podsumowanie ustawień konfiguracji sieci:
 | **Zakres adresów podsieci** |Ta wartość jest zależna od dostępnych zakresów adresów w Twojej subskrypcji. Typową wartością jest 10.0.1.0/24. |
 | **Subskrypcja** |Określ subskrypcję, która ma zostać użyta. |
 | **Grupa zasobów** |**SQL-HA-RG** |
-| **Location** |Określ tę samą lokalizację, którą wybrano dla grupy zasobów. |
+| **Lokalizacja** |Określ tę samą lokalizację, którą wybrano dla grupy zasobów. |
 
 ## <a name="create-availability-sets"></a>Tworzenie zestawów dostępności
 
@@ -157,7 +157,7 @@ Po utworzeniu sieci, podsieci, zestawów dostępności i dostępnego z Internetu
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Tworzenie maszyn wirtualnych dla kontrolerów domeny
 Aby utworzyć i skonfigurować kontrolery domeny, Wróć do grupy zasobów **SQL-ha-RG** .
 
-1. Kliknij przycisk **Dodaj**. 
+1. Kliknij pozycję **Add** (Dodaj). 
 2. Wpisz **Windows Server 2016 Datacenter**.
 3. Kliknij pozycję **Windows Server 2016 Datacenter**. W **systemie Windows Server 2016 Datacenter**Sprawdź, czy model wdrażania jest **Menedżer zasobów**, a następnie kliknij przycisk **Utwórz**. 
 
@@ -173,7 +173,7 @@ Powtórz powyższe kroki, aby utworzyć dwie maszyny wirtualne. Nadaj nazwę obu
 
 W poniższej tabeli przedstawiono ustawienia tych dwóch maszyn:
 
-| **Pole** | Value |
+| **Pole** | Wartość |
 | --- | --- |
 | **Nazwa** |Pierwszy kontroler domeny: *AD-Primary-DC*.</br>Drugi kontroler domeny *AD-pomocniczy — DC*. |
 | **Typ dysku maszyny wirtualnej** |SSD |
@@ -181,15 +181,15 @@ W poniższej tabeli przedstawiono ustawienia tych dwóch maszyn:
 | **Hasło** |Contoso! 0000 |
 | **Subskrypcja** |*Twoja subskrypcja* |
 | **Grupa zasobów** |SQL-HA-RG |
-| **Location** |*Twoja lokalizacja* |
+| **Lokalizacja** |*Twoja lokalizacja* |
 | **Rozmiar** |DS1_V2 |
-| **Storage** | **Użyj dysków** - zarządzanych**tak** |
+| **Storage** | **Użyj dysków zarządzanych** - **tak** |
 | **Sieć wirtualna** |autoHAVNET |
 | **Podsieć** |administratora |
 | **Publiczny adres IP** |*Taka sama nazwa jak maszyna wirtualna* |
 | **Sieciowa grupa zabezpieczeń** |*Taka sama nazwa jak maszyna wirtualna* |
 | **Zestaw dostępności** |adavailabilityset </br>**Domeny błędów**: 2 </br>**Domeny aktualizacji**: 2|
-| **Diagnostyka** |Włączono |
+| **Diagnostyka** |Enabled (Włączony) |
 | **Konto magazynu diagnostyki** |*Utworzone automatycznie* |
 
    >[!IMPORTANT]
@@ -220,21 +220,21 @@ W poniższych krokach skonfiguruj komputer **AD-Primary-DC** jako kontroler dome
 
     ![Okno dialogowe Dodawanie ról](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/23-addroles.png)
 7. Klikaj przycisk **dalej** , aż przejdziesz do sekcji **potwierdzenie** . Zaznacz pole wyboru **Automatycznie uruchom ponownie serwer docelowy, jeśli** jest to wymagane.
-8. Kliknij przycisk **Zainstaluj**.
+8. Kliknij pozycję **Zainstaluj**.
 9. Po zakończeniu instalacji funkcji Wróć do pulpitu nawigacyjnego **Menedżer serwera** .
 10. Wybierz opcję Nowy **AD DS** w okienku po lewej stronie.
 11. Kliknij link **więcej** na żółtym pasku ostrzegawczym.
 
     ![Okno dialogowe AD DS na maszynie wirtualnej serwera DNS](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/24-addsmore.png)
-12. W kolumnie **Akcja** okna dialogowego **wszystkie szczegóły zadania serwera** kliknij pozycję Podnieś **poziom tego serwera do poziomu kontrolera domeny**.
+12. W kolumnie **Akcja** okna dialogowego **wszystkie szczegóły zadania serwera** kliknij pozycję **Podnieś poziom tego serwera do poziomu kontrolera domeny**.
 13. W **Kreatorze konfiguracji Active Directory Domain Services**Użyj następujących wartości:
 
     | **Strona** | Ustawienie |
     | --- | --- |
     | **Konfiguracja wdrożenia** |**Dodawanie nowego lasu**<br/> **Nazwa domeny głównej** = Corp.contoso.com |
     | **Opcje kontrolera domeny** |**Hasło DSRM** = contoso! 0000<br/>**Potwierdź hasło** = contoso! 0000 |
-14. Kliknij przycisk **dalej** , aby przejść przez pozostałe strony kreatora. Na stronie **Sprawdzanie wymagań wstępnych** Sprawdź, czy jest wyświetlany następujący komunikat: **Wszystkie sprawdzanie wymagań wstępnych**zakończyło się pomyślnie. Możesz przejrzeć wszystkie odpowiednie komunikaty ostrzegawcze, ale można kontynuować instalację.
-15. Kliknij przycisk **Zainstaluj**. Maszyna wirtualna **AD-podstawowa-DC** automatycznie wykonuje ponowny rozruch.
+14. Kliknij przycisk **dalej** , aby przejść przez pozostałe strony kreatora. Na stronie **Sprawdzanie wymagań wstępnych** Sprawdź, czy jest wyświetlany następujący komunikat: **wszystkie testy wymagań wstępnych zostały pomyślnie zakończone**powodzeniem. Możesz przejrzeć wszystkie odpowiednie komunikaty ostrzegawcze, ale można kontynuować instalację.
+15. Kliknij pozycję **Zainstaluj**. Maszyna wirtualna **AD-podstawowa-DC** automatycznie wykonuje ponowny rozruch.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Zanotuj adres IP podstawowego kontrolera domeny
 
@@ -261,7 +261,7 @@ Po utworzeniu pierwszego kontrolera domeny i włączeniu usługi DNS na pierwszy
 
 3. Kliknij pozycję **niestandardowe**i wpisz prywatny adres IP podstawowego kontrolera domeny.
 
-4. Kliknij polecenie **Zapisz**.
+4. Kliknij pozycję **Zapisz**.
 
 ### <a name="configure-the-second-domain-controller"></a>Skonfiguruj drugi kontroler domeny
 Po ponownym uruchomieniu podstawowego kontrolera domeny można skonfigurować drugi kontroler domeny. Ten opcjonalny krok zapewnia wysoką dostępność. Wykonaj następujące kroki, aby skonfigurować drugi kontroler domeny:
@@ -289,10 +289,10 @@ Po ponownym uruchomieniu podstawowego kontrolera domeny można skonfigurować dr
 13. Po zakończeniu instalacji funkcji Wróć do pulpitu nawigacyjnego **Menedżer serwera** .
 14. Wybierz opcję Nowy **AD DS** w okienku po lewej stronie.
 15. Kliknij link **więcej** na żółtym pasku ostrzegawczym.
-16. W kolumnie **Akcja** okna dialogowego **wszystkie szczegóły zadania serwera** kliknij pozycję Podnieś **poziom tego serwera do poziomu kontrolera domeny**.
+16. W kolumnie **Akcja** okna dialogowego **wszystkie szczegóły zadania serwera** kliknij pozycję **Podnieś poziom tego serwera do poziomu kontrolera domeny**.
 17. W obszarze **Konfiguracja wdrożenia**wybierz pozycję **Dodaj kontroler domeny do istniejącej domeny**.
-    ![Konfiguracja wdrożenia](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
-18. Kliknij przycisk **wybierz**.
+    ![](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png) konfiguracji wdrożenia
+18. Kliknij pozycję **Wybierz**.
 19. Połącz się za pomocą konta administratora (**Corp. CONTOSO. COM\domainadmin**) i hasło (**contoso! 0000**).
 20. W **Wybierz domenę z lasu**, kliknij domenę, a następnie kliknij przycisk **OK**.
 21. W obszarze **Opcje kontrolera domeny**Użyj wartości domyślnych i ustaw hasło trybu DSRM.
@@ -342,7 +342,7 @@ Aby utworzyć każde konto, wykonaj następujące czynności.
 6. Zaznacz pole wyboru **Utwórz obiekty komputerów** .
 
      ![Uprawnienia użytkownika Corp](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
-7. Kliknij przycisk **OK**, a następnie ponownie kliknij przycisk **OK** . Zamknij okno właściwości firmowe.
+7. Kliknij przycisk **OK**, a następnie ponownie kliknij przycisk **OK** . Zamknij okno właściwości **firmowe** .
 
 Po zakończeniu konfigurowania Active Directory i obiektów użytkownika Utwórz dwie SQL Server maszyny wirtualne oraz maszynę wirtualną serwera monitora. Następnie Dołącz wszystkie trzy do domeny.
 
@@ -369,7 +369,7 @@ Następnie utwórz trzy maszyny wirtualne — dwie SQL Server maszyny wirtualne 
 | Wybierz odpowiedni element galerii |**Windows Server 2016 Datacenter** |**SQL Server 2016 z dodatkiem SP1 Enterprise w systemie Windows Server 2016** |**SQL Server 2016 z dodatkiem SP1 Enterprise w systemie Windows Server 2016** |
 | **Podstawowe informacje** o konfiguracji maszyny wirtualnej |**Nazwa** = Cluster-FSW<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = contoso! 0000<br/>**Subskrypcja** = subskrypcja<br/>**Grupa zasobów** = SQL-ha-RG<br/>**Lokalizacja** = Twoja lokalizacja na platformie Azure |**Nazwa** = SqlServer-0<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = contoso! 0000<br/>**Subskrypcja** = subskrypcja<br/>**Grupa zasobów** = SQL-ha-RG<br/>**Lokalizacja** = Twoja lokalizacja na platformie Azure |**Nazwa** = SqlServer-1<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = contoso! 0000<br/>**Subskrypcja** = subskrypcja<br/>**Grupa zasobów** = SQL-ha-RG<br/>**Lokalizacja** = Twoja lokalizacja na platformie Azure |
 | **Rozmiar** konfiguracji maszyny wirtualnej |**Size** = DS1\_v2 (1 vCPU, 3,5 GB) |**Size** = DS2\_v2 (2 procesorów wirtualnych vCPU, 7 GB)</br>Rozmiar musi obsługiwać magazyn SSD (Obsługa dysków w warstwie Premium). )) |**Size** = DS2\_v2 (2 procesorów wirtualnych vCPU, 7 GB) |
-| **Ustawienia** konfiguracji maszyny wirtualnej |**Magazyn**: Używaj dysków zarządzanych.<br/>**Virtual Network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Publiczny adres IP** generowany automatycznie.<br/>**Sieciowa Grupa zabezpieczeń** = brak<br/>**Monitorowanie diagnostyki** = włączone<br/>**Konto magazynu diagnostyki** = Użyj automatycznie wygenerowanego konta magazynu<br/>**Zestaw dostępności** = sqlAvailabilitySet<br/> |**Magazyn**: Używaj dysków zarządzanych.<br/>**Virtual Network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Publiczny adres IP** generowany automatycznie.<br/>**Sieciowa Grupa zabezpieczeń** = brak<br/>**Monitorowanie diagnostyki** = włączone<br/>**Konto magazynu diagnostyki** = Użyj automatycznie wygenerowanego konta magazynu<br/>**Zestaw dostępności** = sqlAvailabilitySet<br/> |**Magazyn**: Używaj dysków zarządzanych.<br/>**Virtual Network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Publiczny adres IP** generowany automatycznie.<br/>**Sieciowa Grupa zabezpieczeń** = brak<br/>**Monitorowanie diagnostyki** = włączone<br/>**Konto magazynu diagnostyki** = Użyj automatycznie wygenerowanego konta magazynu<br/>**Zestaw dostępności** = sqlAvailabilitySet<br/> |
+| **Ustawienia** konfiguracji maszyny wirtualnej |**Magazyn**: Użyj dysków zarządzanych.<br/>**Virtual Network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Publiczny adres IP** generowany automatycznie.<br/>**Sieciowa Grupa zabezpieczeń** = brak<br/>**Monitorowanie diagnostyki** = włączone<br/>**Konto magazynu diagnostyki** = Użyj automatycznie wygenerowanego konta magazynu<br/>**Zestaw dostępności** = sqlAvailabilitySet<br/> |**Magazyn**: Użyj dysków zarządzanych.<br/>**Virtual Network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Publiczny adres IP** generowany automatycznie.<br/>**Sieciowa Grupa zabezpieczeń** = brak<br/>**Monitorowanie diagnostyki** = włączone<br/>**Konto magazynu diagnostyki** = Użyj automatycznie wygenerowanego konta magazynu<br/>**Zestaw dostępności** = sqlAvailabilitySet<br/> |**Magazyn**: Użyj dysków zarządzanych.<br/>**Virtual Network** = autoHAVNET<br/>**Subnet** = sqlsubnet(10.1.1.0/24)<br/>**Publiczny adres IP** generowany automatycznie.<br/>**Sieciowa Grupa zabezpieczeń** = brak<br/>**Monitorowanie diagnostyki** = włączone<br/>**Konto magazynu diagnostyki** = Użyj automatycznie wygenerowanego konta magazynu<br/>**Zestaw dostępności** = sqlAvailabilitySet<br/> |
 | **Ustawienia SQL Server** konfiguracji maszyny wirtualnej |Nie dotyczy |**SQL Connectivity** = prywatny (w Virtual Network)<br/>**Port** = 1433<br/>**Uwierzytelnianie SQL** = wyłączone<br/>**Konfiguracja magazynu** = ogólne<br/>**Automatyczne stosowanie poprawek** = niedziela o 2:00<br/>**Automatyczne kopie zapasowe** = wyłączone</br>**Integracja Azure Key Vault** = wyłączona |**SQL Connectivity** = prywatny (w Virtual Network)<br/>**Port** = 1433<br/>**Uwierzytelnianie SQL** = wyłączone<br/>**Konfiguracja magazynu** = ogólne<br/>**Automatyczne stosowanie poprawek** = niedziela o 2:00<br/>**Automatyczne kopie zapasowe** = wyłączone</br>**Integracja Azure Key Vault** = wyłączona |
 
 <br/>
@@ -400,7 +400,7 @@ Po ponownym uruchomieniu każdej maszyny wirtualnej jako członka domeny Dodaj *
 
 1. Poczekaj na ponowne uruchomienie maszyny wirtualnej, a następnie ponownie uruchom plik RDP z podstawowego kontrolera domeny, aby zalogować się do programu **SqlServer-0** przy użyciu konta **CORP\DomainAdmin** .
    >[!TIP]
-   >Upewnij się, że logujesz się przy użyciu konta administratora domeny. W poprzednich krokach użyto WBUDOWANEgo konta administratora. Teraz, gdy serwer znajduje się w domenie, użyj konta domeny. W sesji RDP Określ*nazwę użytkownika* *domeny*\\.
+   >Upewnij się, że logujesz się przy użyciu konta administratora domeny. W poprzednich krokach użyto WBUDOWANEgo konta administratora. Teraz, gdy serwer znajduje się w domenie, użyj konta domeny. W sesji RDP Określ *domenę*\\*nazwy użytkownika*.
 
 2. W **Menedżer serwera**wybierz pozycję **Narzędzia**, a następnie kliknij pozycję **Zarządzanie komputerem**.
 3. W oknie **Zarządzanie komputerem** rozwiń węzeł **Użytkownicy i grupy lokalne**, a następnie wybierz pozycję **grupy**.
@@ -425,7 +425,7 @@ W przypadku grup dostępności SQL Server każda SQL Server maszyna wirtualna mu
 
 Aby skonfigurować grupę dostępności, użyj konta instalacji (CORP\install). To konto musi być członkiem stałej roli serwera **sysadmin** na każdej maszynie SQL Server VM. Poniższe kroki tworzą logowanie do konta instalacji:
 
-1. Połącz się z serwerem za pośrednictwem Remote Desktop Protocol (RDP) przy użyciu  *\<konta\>MachineName \DomainAdmin* .
+1. Połącz się z serwerem za pośrednictwem Remote Desktop Protocol (RDP) przy użyciu konta *\<MachineName\>\DomainAdmin* .
 
 1. Otwórz SQL Server Management Studio i Połącz się z lokalnym wystąpieniem SQL Server.
 
@@ -441,7 +441,7 @@ Aby skonfigurować grupę dostępności, użyj konta instalacji (CORP\install). 
 
 1. Użyj konta instalacji.
 
-1. Ustaw Logowanie jako należące do stałej roli serwera sysadmin.
+1. Ustaw Logowanie jako należące do stałej roli serwera **sysadmin** .
 
 1. Kliknij przycisk **OK**.
 
@@ -466,7 +466,7 @@ Powtórz kroki na drugiej maszynie wirtualnej SQL Server.
   > Ten krok wraz z przyłączaniem maszyn wirtualnych SQL Server do klastra trybu failover może być teraz zautomatyzowany przy użyciu [interfejsu wiersza polecenia maszyny wirtualnej Azure SQL](virtual-machines-windows-sql-availability-group-cli.md) i [szablonów szybkiego startu platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
-## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall">Skonfiguruj zaporę na każdej maszynie wirtualnej SQL Server
+## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> skonfigurować zaporę na każdej maszynie wirtualnej SQL Server
 
 Rozwiązanie wymaga otwarcia następujących portów TCP w zaporze:
 
@@ -483,7 +483,7 @@ Metoda otwierania portów zależy od używanego rozwiązania zapory. W następne
 
 ### <a name="open-a-tcp-port-in-the-firewall"></a>Otwieranie portu TCP w zaporze
 
-1. Na pierwszym ekranie startowym SQL Server uruchom **zaporę systemu Windows z zabezpieczeniami zaawansowanymi**.
+1. Na pierwszym ekranie **startowym** SQL Server uruchom **zaporę systemu Windows z zabezpieczeniami zaawansowanymi**.
 2. W okienku po lewej stronie wybierz pozycję **reguły ruchu przychodzącego**. W prawym okienku kliknij pozycję **Nowa reguła**.
 3. W obszarze **Typ reguły**wybierz pozycję **port**.
 4. Dla portu Określ wartość **TCP** i wpisz odpowiednie numery portów. Zobacz poniższy przykład:
@@ -501,7 +501,7 @@ Powtórz te kroki na drugiej maszynie wirtualnej SQL Server.
 
 Aby utworzyć konto dla konta System i udzielić odpowiednich uprawnień, wykonaj następujące czynności na każdym wystąpieniu SQL Server:
 
-1. Utwórz konto dla `[NT AUTHORITY\SYSTEM]` każdego wystąpienia SQL Server. Następujący skrypt tworzy to konto:
+1. Utwórz konto dla `[NT AUTHORITY\SYSTEM]` dla każdego wystąpienia SQL Server. Następujący skrypt tworzy to konto:
 
    ```sql
    USE [master]
@@ -510,7 +510,7 @@ Aby utworzyć konto dla konta System i udzielić odpowiednich uprawnień, wykona
    GO 
    ```
 
-1. `[NT AUTHORITY\SYSTEM]` W każdym wystąpieniu SQL Server Udziel następujących uprawnień:
+1. Przyznaj następujące uprawnienia `[NT AUTHORITY\SYSTEM]` na każdym wystąpieniu SQL Server:
 
    - `ALTER ANY AVAILABILITY GROUP`
    - `CONNECT SQL`

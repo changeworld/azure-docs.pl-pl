@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i przekazywanie obrazu maszyny wirtualnej OpenBSD na platformę Azure | Microsoft Docs
+title: Tworzenie i przekazywanie obrazu maszyny wirtualnej OpenBSD na platformę Azure
 description: Dowiedz się, jak utworzyć i przekazać wirtualny dysk twardy (VHD) zawierający system operacyjny OpenBSD, aby utworzyć maszynę wirtualną platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 53acab4128d01c92c54c8c01a5e611d313e617d4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083559"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036462"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Tworzenie i przekazywanie obrazu dysku OpenBSD na platformę Azure
 W tym artykule przedstawiono sposób tworzenia i przekazywania wirtualnego dysku twardego (VHD) zawierającego system operacyjny OpenBSD. Po przekazaniu można użyć go jako własnego obrazu do utworzenia maszyny wirtualnej na platformie Azure za pomocą interfejsu wiersza polecenia platformy Azure.
@@ -55,7 +55,7 @@ Na maszynie wirtualnej, na której zainstalowano system operacyjny OpenBSD 6,1, 
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Domyślnie `root` użytkownik jest wyłączony na maszynach wirtualnych na platformie Azure. Użytkownicy mogą uruchamiać polecenia z podwyższonym poziomem uprawnień przy `doas` użyciu polecenia na maszynie wirtualnej OpenBSD. DOAs jest domyślnie włączona. Aby uzyskać więcej informacji, zobacz [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
+4. Domyślnie użytkownik `root` jest wyłączony na maszynach wirtualnych na platformie Azure. Użytkownicy mogą uruchamiać polecenia z podwyższonym poziomem uprawnień przy użyciu polecenia `doas` na maszynie wirtualnej OpenBSD. DOAs jest domyślnie włączona. Aby uzyskać więcej informacji, zobacz [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Zainstaluj i skonfiguruj wymagania wstępne dla agenta platformy Azure w następujący sposób:
 
@@ -148,7 +148,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Tworzenie maszyny wirtualnej na podstawie wirtualnego dysku twardego
-Można utworzyć maszynę wirtualną z [przykładowym skryptem](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) lub bezpośrednio za pomocą [AZ VM Create](/cli/azure/vm). Aby określić OpenBSD wirtualny dysk twardy, użyj `--image` parametru w następujący sposób:
+Można utworzyć maszynę wirtualną z [przykładowym skryptem](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) lub bezpośrednio za pomocą [AZ VM Create](/cli/azure/vm). Aby określić OpenBSD wirtualny dysk twardy, użyj parametru `--image` w następujący sposób:
 
 ```azurecli
 az vm create \

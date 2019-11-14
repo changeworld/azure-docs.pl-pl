@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — tworzenie migawki z wirtualnego dysku twardego w celu utworzenia wielu identycznych dysków zarządzanych w krótkim czasie | Microsoft Docs
+title: Przykładowy skrypt programu Azure PowerShell — tworzenie migawki z wirtualnego dysku twardego w celu utworzenia wielu identycznych dysków zarządzanych w krótkim czasie
 description: Przykładowy skrypt programu Azure PowerShell — tworzenie migawki z wirtualnego dysku twardego w celu utworzenia wielu identycznych dysków zarządzanych w krótkim czasie
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 16b0c3963ca09f30e7eba8242083f00b66226220
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2cbb50ee7dcea75b1fb215a1cf32a75bd7caeb55
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749920"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033765"
 ---
 # <a name="create-a-snapshot-from-a-vhd-to-create-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>Tworzenie migawki z wirtualnego dysku twardego w celu utworzenia wielu takich samych dysków zarządzanych w krótkim czasie przy użyciu programu PowerShell
 

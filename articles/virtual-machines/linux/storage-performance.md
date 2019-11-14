@@ -1,5 +1,5 @@
 ---
-title: Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2 systemu Azure — magazyn | Microsoft Docs
+title: Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2 systemu Azure — magazyn
 description: Dowiedz się, jak zoptymalizować wydajność rozwiązania na maszynach wirtualnych z serii Lsv2.
 services: virtual-machines-linux
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d99f63ae084b4f1dae3c0125420eaecf5655e2d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081800"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034750"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2
 
@@ -45,7 +45,7 @@ Maszyny wirtualne z serii Lsv2 korzystają z procesorów AMD EYPC™ Server opar
 
 * Lsv2 użytkownicy nie mogą polegać na informacjach NUMA urządzenia (wszystkie 0) raportowanych z poziomu maszyny wirtualnej dla dysków danych w celu podjęcia decyzji o koligacji NUMA dla swoich aplikacji. Zalecanym sposobem zapewnienia lepszej wydajności jest rozłożenie obciążeń między procesorami, jeśli to możliwe.
 
-* Maksymalna obsługiwana głębokość kolejki dla pary kolejek we/wy dla Lsv2 maszyny wirtualnej interfejsu NVMe to 1024 (a Limit i3 głębokość kolejki 32). Lsv2 użytkownicy powinni ograniczyć liczbę (syntetyczne) testu porównawczego do głębokości kolejki 1024 lub niższej, aby uniknąć wyzwalania pełnych warunków kolejki, co może zmniejszyć wydajność.
+* Maksymalna obsługiwana głębokość kolejki dla pary kolejek we/wy dla Lsv2 maszyny wirtualnej interfejsu NVMe to 1024 (a Amazon i3 głębokość kolejki 32). Lsv2 użytkownicy powinni ograniczyć liczbę (syntetyczne) testu porównawczego do głębokości kolejki 1024 lub niższej, aby uniknąć wyzwalania pełnych warunków kolejki, co może zmniejszyć wydajność.
 
 ## <a name="utilizing-local-nvme-storage"></a>Korzystanie z lokalnego magazynu interfejsu NVMe
 
@@ -94,10 +94,10 @@ Aby dowiedzieć się więcej na temat opcji tworzenia kopii zapasowych danych w 
    Jeśli na węźle sprzęt zostanie wykryta awaria dysku, sprzęt jest w stanie awarii. W takim przypadku wszystkie maszyny wirtualne w węźle są automatycznie cofane i przenoszone do węzła w dobrej kondycji. W przypadku maszyn wirtualnych z serii Lsv2 oznacza to, że dane klienta w niepowodzeniem węźle są również bezpiecznie wymazane i konieczne będzie ich odtworzenie przez klienta w nowym węźle. Jak wspomniano, przed rozpoczęciem migracji na żywo w witrynie Lsv2, dane w węźle, który uległ awarii, zostaną aktywnie przeniesione z maszynami wirtualnymi w miarę ich przenoszenia do innego węzła.
 
 * **Czy muszę wprowadzić jakiekolwiek zmiany w rq_affinity na potrzeby wydajności?**  
-   Ustawienie rq_affinity to niewielkie dostosowanie w przypadku używania bezwzględnych maksymalnej liczby operacji wejścia/wyjścia na sekundę (IOPS). Gdy wszystko inne działa prawidłowo, spróbuj ustawić rq_affinity na 0, aby zobaczyć, czy ma ona różnicę.
+   Ustawienie rq_affinity to niewielkie dopasowanie w przypadku używania bezwzględnych maksymalnej liczby operacji wejścia/wyjścia na sekundę (IOPS). Gdy wszystko inne działa prawidłowo, spróbuj ustawić rq_affinity na 0, aby sprawdzić, czy ma ona różnicę.
 
 * **Czy muszę zmienić ustawienia blk_mq?**  
-   RHEL/CentOS 7. x automatycznie używa BLK-MQ dla urządzeń interfejsu NVMe. Nie są wymagane żadne zmiany ani ustawienia konfiguracji. Ustawienie scsi_mod. use _blk_mq dotyczy tylko interfejsu SCSI i zostało użyte podczas Lsv2 wersji zapoznawczej, ponieważ urządzenia interfejsu NVMe były widoczne na maszynach wirtualnych gościa jako urządzenia SCSI. Obecnie urządzenia interfejsu NVMe są widoczne jako urządzenia interfejsu NVMe, więc ustawienie SCSI BLK-MQ jest nieistotne.
+   RHEL/CentOS 7. x automatycznie używa BLK-MQ dla urządzeń interfejsu NVMe. Nie są wymagane żadne zmiany ani ustawienia konfiguracji. Ustawienie scsi_mod. use_blk_mq dotyczy tylko interfejsu SCSI i zostało użyte podczas korzystania z wersji zapoznawczej Lsv2, ponieważ urządzenia interfejsu NVMe były widoczne na maszynach wirtualnych gościa jako urządzenia SCSI. Obecnie urządzenia interfejsu NVMe są widoczne jako urządzenia interfejsu NVMe, więc ustawienie SCSI BLK-MQ jest nieistotne.
 
 * **Czy muszę zmienić "Fio"?**  
    Aby uzyskać maksymalną liczbę operacji we/wy z użyciem narzędzia do mierzenia wydajności, takiego jak "Fio" w rozmiarach maszyn wirtualnych L64v2 i L80v2, ustaw wartość "rq_affinity" na 0 na każdym urządzeniu interfejsu NVMe.  Na przykład ten wiersz polecenia ustawi wartość "rq_affinity" na zero dla wszystkich 10 urządzeń interfejsu NVMe na maszynie wirtualnej L80v2:
@@ -106,7 +106,7 @@ Aby dowiedzieć się więcej na temat opcji tworzenia kopii zapasowych danych w 
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Należy również pamiętać, że najlepszą wydajność uzyskuje się, gdy we/wy jest wykonywane bezpośrednio na wszystkich urządzeniach interfejsu NVMe bez partycjonowania, brak systemów plików, brak konfiguracji RAID 0 itd. Przed rozpoczęciem sesji testowania upewnij się, że konfiguracja jest w znanym stanie świeżym/czystym, uruchamiając `blkdiscard` polecenie na każdym z urządzeń interfejsu NVMe.
+   Należy również pamiętać, że najlepszą wydajność uzyskuje się, gdy we/wy jest wykonywane bezpośrednio na wszystkich urządzeniach interfejsu NVMe bez partycjonowania, brak systemów plików, brak konfiguracji RAID 0 itd. Przed rozpoczęciem sesji testowania upewnij się, że konfiguracja jest w znanym stanie świeżym/czystym, uruchamiając `blkdiscard` na każdym urządzeniu interfejsu NVMe.
    
 ## <a name="next-steps"></a>Następne kroki
 

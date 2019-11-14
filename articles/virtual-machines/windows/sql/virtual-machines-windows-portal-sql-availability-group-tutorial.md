@@ -1,5 +1,5 @@
 ---
-title: SQL Server grupy dostępności — Azure Virtual Machines — samouczek | Microsoft Docs
+title: 'Samouczek: Konfigurowanie grupy dostępności'
 description: W tym samouczku pokazano SQL Server, jak utworzyć grupę dostępności zawsze włączona na platformie Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
@@ -9,24 +9,24 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5c4eb5241cc5e50c11c05cac6909e37557ba106d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036528"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037513"
 ---
-# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Samouczek: Ręczne konfigurowanie zawsze włączonych grup dostępności na maszynie wirtualnej platformy Azure
+# <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Samouczek: Ręczne konfigurowanie grupy dostępności na platformie Azure SQL Server VM
 
 W tym samouczku pokazano SQL Server, jak utworzyć grupę dostępności zawsze włączona na platformie Azure Virtual Machines. Kompletny samouczek tworzy grupę dostępności z repliką bazy danych na dwóch serwerach SQL.
 
-**Szacowany czas**: Po spełnieniu wymagań wstępnych trwa około 30 minut.
+**Szacowany czas**: trwa około 30 minut, po spełnieniu wymagań wstępnych.
 
 Na diagramie przedstawiono elementy, które można skompilować w samouczku.
 
@@ -41,10 +41,10 @@ W poniższej tabeli wymieniono wymagania wstępne, które należy wykonać przed
 |  |Wymaganie |Opis |
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Dwa serwery SQL | — W zestawie dostępności platformy Azure <br/> — W pojedynczej domenie <br/> — Z zainstalowaną funkcją klaster trybu failover |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Udział plików dla monitora klastra |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Oprogramowanie Windows Server | Udział plików dla monitora klastra |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi SQL Server | Konto domeny |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto usługi SQL Server Agent | Konto domeny |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otwarte porty zapory | -SQL Server: **1433** dla wystąpienia domyślnego <br/> -Punkt końcowy dublowania bazy danych: **5022** lub dowolny dostępny port <br/> -Sonda kondycji adresu IP modułu równoważenia obciążenia grupy dostępności: **59999** lub dowolny dostępny port <br/> — Sonda kondycji adresu IP podstawowego modułu równoważenia obciążenia klastra: **58888** lub dowolny dostępny port |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otwarte porty zapory | -SQL Server: **1433** dla domyślnego wystąpienia <br/> -Punkt końcowy dublowania bazy danych: **5022** lub dowolny dostępny port <br/> -Sonda kondycji adresu IP modułu równoważenia obciążenia grupy dostępności: **59999** lub dowolny dostępny port <br/> — Sonda kondycji adresu IP podstawowego modułu równoważenia obciążenia klastra: **58888** lub dowolny dostępny port |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Dodawanie funkcji klaster trybu failover | Oba serwery SQL wymagają tej funkcji |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Konto domeny instalacji | -Administrator lokalny na każdym SQL Server <br/> -Składowa SQL Server stałej roli serwera sysadmin dla każdego wystąpienia SQL Server  |
 
@@ -69,21 +69,21 @@ Po zakończeniu wymagań wstępnych pierwszym krokiem jest utworzenie klastra tr
 
 2. Na pulpicie nawigacyjnym **Menedżer serwera** wybierz pozycję **Narzędzia**, a następnie kliknij pozycję **Menedżer klastra trybu failover**.
 3. W lewym okienku kliknij prawym przyciskiem myszy pozycję **Menedżer klastra trybu failover**, a następnie kliknij pozycję **Utwórz klaster**.
-   ![Tworzenie klastra](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
+   ![utworzyć klaster](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. W Kreatorze tworzenia klastra utwórz klaster z jednym węzłem, przechodząc przez strony z ustawieniami w poniższej tabeli:
 
    | Strona | Ustawienia |
    | --- | --- |
    | Przed rozpoczęciem |Użyj domyślnych |
    | Wybierz serwery |Wpisz nazwę pierwszej SQL Server w polu **Wprowadź nazwę serwera** , a następnie kliknij przycisk **Dodaj**. |
-   | Ostrzeżenie dotyczące walidacji |Wybierz **pozycję nie. nie wymagaj pomocy technicznej firmy Microsoft dla tego klastra i dlatego nie należy uruchamiać testów weryfikacyjnych. Po kliknięciu przycisku Dalej Kontynuuj tworzenie klastra**. |
+   | Ostrzeżenie dotyczące walidacji |Wybierz pozycję **nie. nie wymagaj pomocy technicznej firmy Microsoft dla tego klastra i dlatego nie należy uruchamiać testów weryfikacyjnych. Po kliknięciu przycisku Dalej Kontynuuj tworzenie klastra**. |
    | Punkt dostępu do administrowania klastrem |Wpisz nazwę klastra, na przykład **SQLAGCluster1** w polu **Nazwa klastra**.|
    | Potwierdzenie |Użyj wartości domyślnych, chyba że używasz funkcji miejsca do magazynowania. Zapoznaj się z uwagą poniżej tej tabeli. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Ustaw adres IP klastra trybu failover systemu Windows Server
 
   > [!NOTE]
-  > W systemie Windows Server 2019 klaster tworzy **rozproszoną nazwę serwera** zamiast **nazwy sieciowej klastra**. Jeśli używasz systemu Windows Server 2019, Pomiń wszystkie kroki odnoszące się do nazwy podstawowe klastra w tym samouczku. Nazwę sieci klastra można utworzyć przy użyciu [programu PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019). Przejrzyj klaster trybu [failover w blogu: Obiekt](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) sieci klastra, aby uzyskać więcej informacji. 
+  > W systemie Windows Server 2019 klaster tworzy **rozproszoną nazwę serwera** zamiast **nazwy sieciowej klastra**. Jeśli używasz systemu Windows Server 2019, Pomiń wszystkie kroki odnoszące się do nazwy podstawowe klastra w tym samouczku. Nazwę sieci klastra można utworzyć przy użyciu [programu PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019). Aby uzyskać więcej informacji, przejrzyj [klaster trybu failover w blogu: cluster network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
 
 1. W **Menedżer klastra trybu failover**przewiń w dół do **zasobów podstawowe klastra** i rozwiń Szczegóły klastra. Powinny pojawić się zarówno **nazwa** i **adres IP** **zasobów** w stanu. Nie można przełączyć zasobu adresu IP do trybu online, ponieważ klaster ma przypisany ten sam adres IP co komputer, w związku z czym jest to zduplikowany adres.
 
@@ -301,10 +301,10 @@ Teraz można przystąpić do konfigurowania grupy dostępności, wykonując nast
 
     ![Kreator nowej grupy, wybieranie początkowej synchronizacji danych](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Na stronie **Wybierz początkową synchronizację danych** wybierz pozycję **pełna** i określ udostępnioną lokalizację sieciową. Dla lokalizacji Użyj [utworzonego udziału kopii zapasowej](#backupshare). W przykładzie,  **\\ \\najpierwSQLServer\>\backup.\\ \<** Kliknij przycisk **Dalej**.
+8. Na stronie **Wybierz początkową synchronizację danych** wybierz pozycję **pełna** i określ udostępnioną lokalizację sieciową. Dla lokalizacji Użyj [utworzonego udziału kopii zapasowej](#backupshare). W tym przykładzie **\\\\\<pierwsze SQL Server\>\Backup\\** . Kliknij przycisk **Dalej**.
 
    >[!NOTE]
-   >Pełna synchronizacja pobiera pełną kopię zapasową bazy danych przy pierwszym wystąpieniu SQL Server i przywraca ją do drugiego wystąpienia. W przypadku dużych baz danych nie zaleca się stosowania pełnej synchronizacji, ponieważ może to zająć dużo czasu. Możesz skrócić ten czas, ręcznie pobierając kopię zapasową bazy danych i przywracając `NO RECOVERY`ją z. Jeśli baza danych została już przywrócona `NO RECOVERY` przy użyciu programu na drugim SQL Server przed skonfigurowaniem grupy dostępności, wybierz pozycję **tylko Dołącz**. Jeśli chcesz wykonać kopię zapasową po skonfigurowaniu grupy dostępności, wybierz pozycję **Pomiń początkową synchronizację danych**.
+   >Pełna synchronizacja pobiera pełną kopię zapasową bazy danych przy pierwszym wystąpieniu SQL Server i przywraca ją do drugiego wystąpienia. W przypadku dużych baz danych nie zaleca się stosowania pełnej synchronizacji, ponieważ może to zająć dużo czasu. Możesz skrócić ten czas, ręcznie pobierając kopię zapasową bazy danych i przywracając ją z `NO RECOVERY`. Jeśli baza danych została już przywrócona przy użyciu `NO RECOVERY` na drugim SQL Server przed skonfigurowaniem grupy dostępności, wybierz pozycję **tylko Dołącz**. Jeśli chcesz wykonać kopię zapasową po skonfigurowaniu grupy dostępności, wybierz pozycję **Pomiń początkową synchronizację danych**.
 
     ![Kreator nowej grupy, wybieranie początkowej synchronizacji danych](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/70-datasynchronization.png)
 
@@ -355,19 +355,19 @@ Azure Load Balancer może być usługa Load Balancer w warstwie Standardowa lub 
 
    ![AG w Menedżer klastra trybu failover](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 1. Skonfiguruj następujące parametry dla modułu równoważenia obciążenia.
 
    | Ustawienie | Pole |
    | --- | --- |
    | **Nazwa** |Użyj nazwy tekstowej dla modułu równoważenia obciążenia, na przykład **sqlLB**. |
-   | **Typ** |Wewnętrzne |
+   | **Typ** |Wewnętrzny |
    | **Sieć wirtualna** |Użyj nazwy sieci wirtualnej platformy Azure. |
    | **Podsieć** |Użyj nazwy podsieci, w której znajduje się maszyna wirtualna.  |
-   | **Przypisanie adresu IP** |Static |
+   | **Przypisanie adresu IP** |Statyczny |
    | **Adres IP** |Użyj dostępnego adresu z podsieci. Użyj tego adresu dla odbiornika grupy dostępności. Należy zauważyć, że różni się to od adresu IP klastra.  |
    | **Subskrypcja** |Użyj tej samej subskrypcji co maszyna wirtualna. |
-   | **Location** |Użyj tej samej lokalizacji co maszyna wirtualna. |
+   | **Lokalizacja** |Użyj tej samej lokalizacji co maszyna wirtualna. |
 
    Blok Azure Portal powinien wyglądać następująco:
 
@@ -404,10 +404,10 @@ Aby skonfigurować moduł równoważenia obciążenia, należy utworzyć pulę z
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Text | SQLAlwaysOnEndPointProbe |
+   | **Nazwa** | Tekst | SQLAlwaysOnEndPointProbe |
    | **Protokół** | Wybierz TCP | TCP |
    | **Port** | Dowolny nieużywany port | 59999 |
-   | **Interval**  | Czas między próbami sondy w sekundach |5 |
+   | **Interwał**  | Czas między próbami sondy w sekundach |5 |
    | **Próg złej kondycji** | Liczba kolejnych niepowodzeń sondy, które muszą wystąpić, aby maszyna wirtualna mogła zostać uznana za złą  | 2 |
 
 1. Kliknij przycisk **OK** , aby ustawić sondę kondycji.
@@ -420,7 +420,7 @@ Aby skonfigurować moduł równoważenia obciążenia, należy utworzyć pulę z
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Text | SQLAlwaysOnEndPointListener |
+   | **Nazwa** | Tekst | SQLAlwaysOnEndPointListener |
    | **Adres IP frontonu** | Wybierz adres |Użyj adresu utworzonego podczas tworzenia modułu równoważenia obciążenia. |
    | **Protokół** | Wybierz TCP |TCP |
    | **Port** | Użyj portu dla odbiornika grupy dostępności | 1433 |
@@ -428,7 +428,7 @@ Aby skonfigurować moduł równoważenia obciążenia, należy utworzyć pulę z
    | **Badane** |Nazwa określona dla sondy | SQLAlwaysOnEndPointProbe |
    | **Trwałość sesji** | Lista rozwijana | **Brak** |
    | **Limit czasu bezczynności** | Minuty, aby można było otworzyć połączenie TCP | 4 |
-   | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Włączono |
+   | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |
 
    > [!WARNING]
    > Bezpośredni zwrot serwera jest ustawiany podczas tworzenia. Nie można zmienić tej nazwy.
@@ -447,10 +447,10 @@ Adres IP usługi WSFC musi również znajdować się w usłudze równoważenia o
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Text | WSFCEndPointProbe |
+   | **Nazwa** | Tekst | WSFCEndPointProbe |
    | **Protokół** | Wybierz TCP | TCP |
    | **Port** | Dowolny nieużywany port | 58888 |
-   | **Interval**  | Czas między próbami sondy w sekundach |5 |
+   | **Interwał**  | Czas między próbami sondy w sekundach |5 |
    | **Próg złej kondycji** | Liczba kolejnych niepowodzeń sondy, które muszą wystąpić, aby maszyna wirtualna mogła zostać uznana za złą  | 2 |
 
 1. Kliknij przycisk **OK** , aby ustawić sondę kondycji.
@@ -461,7 +461,7 @@ Adres IP usługi WSFC musi również znajdować się w usłudze równoważenia o
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Text | WSFCEndPoint |
+   | **Nazwa** | Tekst | WSFCEndPoint |
    | **Adres IP frontonu** | Wybierz adres |Użyj adresu utworzonego podczas konfigurowania adresu IP usługi WSFC. Różni się to od adresu IP odbiornika |
    | **Protokół** | Wybierz TCP |TCP |
    | **Port** | Użyj portu dla adresu IP klastra. Jest to dostępny port, który nie jest używany przez port sondy odbiornika. | 58888 |
@@ -469,7 +469,7 @@ Adres IP usługi WSFC musi również znajdować się w usłudze równoważenia o
    | **Badane** |Nazwa określona dla sondy | WSFCEndPointProbe |
    | **Trwałość sesji** | Lista rozwijana | **Brak** |
    | **Limit czasu bezczynności** | Minuty, aby można było otworzyć połączenie TCP | 4 |
-   | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Włączono |
+   | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |
 
    > [!WARNING]
    > Bezpośredni zwrot serwera jest ustawiany podczas tworzenia. Nie można zmienić tej nazwy.
@@ -493,7 +493,7 @@ W SQL Server Management Studio Ustaw port odbiornika.
 
 1. Uruchom SQL Server Management Studio i Połącz się z repliką podstawową.
 
-1. Przejdź do funkcji AlwaysOn**grup dostępności**dla**grup** | dostępności **o wysokiej dostępności** | .
+1. Przejdź do **grup dostępności** funkcji **AlwaysOn o wysokiej dostępności** |  | **odbiorników grup dostępności**.
 
 1. Powinna zostać wyświetlona nazwa odbiornika utworzona w Menedżer klastra trybu failover. Kliknij prawym przyciskiem myszy nazwę odbiornika i kliknij polecenie **Właściwości**.
 

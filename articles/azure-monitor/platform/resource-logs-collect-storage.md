@@ -8,18 +8,23 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8a1802f0f24ba5ccad3ec1c45f3baa29dfe6909f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262559"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030873"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archiwizuj dzienniki zasobów platformy Azure na koncie magazynu
 [Dzienniki zasobów](resource-logs-overview.md) na platformie Azure zapewniają rozbudowane, częste dane dotyczące wewnętrznej operacji zasobu platformy Azure. W tym artykule opisano zbieranie dzienników zasobów na koncie usługi Azure Storage w celu zachowania danych do archiwizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli jeszcze tego nie zrobiono, musisz [utworzyć konto usługi Azure Storage](../../storage/common/storage-quickstart-create-account.md) . Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób wysyła dzienniki, dopóki użytkownik, który konfiguruje ustawienie, ma dostęp do obu subskrypcji.
+
+
+> [!IMPORTANT]
+> Konta Azure Data Lake Storage Gen2 nie są obecnie obsługiwane jako miejsce docelowe dla ustawień diagnostycznych, mimo że mogą być wymienione jako prawidłowe opcje w Azure Portal.
+
 
 Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jeśli przechowujesz również [Dziennik aktywności](activity-logs-overview.md) na koncie magazynu, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
 

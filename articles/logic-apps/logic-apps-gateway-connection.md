@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 356eab6122272162f20e1516a9ef7f4ea0127084
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796251"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049047"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
@@ -28,7 +28,7 @@ W tym artykule przedstawiono sposób tworzenia zasobu bramy platformy Azure dla 
 Aby uzyskać informacje o sposobach korzystania z bramy z innymi usługami, zobacz następujące artykuły:
 
 * [Lokalna Brama danych Power BI firmy Microsoft](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Automatyzacja lokalnej bramy danych](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Automatyzacja lokalnej bramy danych](/power-automate/gateway-reference)
 * [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
 
@@ -48,7 +48,7 @@ W Azure Logic Apps lokalna Brama danych obsługuje [Łączniki lokalne](../conne
 * PostgreSQL
 * SAP
 * Oprogramowanie SharePoint Server
-* SQL Server
+* Oprogramowanie SQL Server
 * Teradata
 
 Azure Logic Apps obsługuje operacje odczytu i zapisu za pomocą bramy danych. Jednak te operacje mają [limity rozmiaru ładunku](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). Mimo że sama Brama nie wiąże się z dodatkowymi kosztami, [model cenowy Logic Apps](../logic-apps/logic-apps-pricing.md) ma zastosowanie do tych łączników i innych operacji w Azure Logic Apps.

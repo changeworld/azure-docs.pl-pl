@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie z Cloud Foundry na Microsoft Azure | Microsoft Docs
+title: Wprowadzenie z Cloud Foundry na Microsoft Azure
 description: Uruchom Cloud Foundry OSS lub Pivoting na Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d91ad0bea7f79dd67edd4f0bb9e06a37a0f86bea
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091937"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036818"
 ---
 # <a name="cloud-foundry-on-azure"></a>Usługa Cloud Foundry na platformie Azure
 
@@ -47,7 +47,7 @@ Firma Microsoft zapewnia najlepszą pomoc techniczną dla usługi OSS CF przez n
 
 Cloud Foundry pivotd obejmuje tę samą platformę podstawową co dystrybucja OSS wraz z zestawem własnych narzędzi do zarządzania i pomocy technicznej dla przedsiębiorstw. Aby uruchomić program PCF na platformie Azure, musisz uzyskać licencję od firmy Pivot. Oferta PCF z portalu Azure Marketplace obejmuje 90-dniową licencję próbną.
 
-Narzędzia te obejmują [Operations Manager przestawne](https://docs.pivotal.io/pivotalcf/customizing/), aplikację sieci Web, która upraszcza wdrażanie i zarządzanie programem Cloud Foundry Foundation oraz menedżerem aplikacji [](https://docs.pivotal.io/pivotalcf/console/)sieci Web, który umożliwia zarządzanie użytkownikami i aplikacjami.
+Narzędzia te obejmują [Operations Manager przestawne](https://docs.pivotal.io/pivotalcf/customizing/), aplikację sieci Web, która upraszcza wdrażanie i zarządzanie programem Cloud Foundry Foundation oraz [menedżerem](https://docs.pivotal.io/pivotalcf/console/)aplikacji sieci Web, który umożliwia zarządzanie użytkownikami i aplikacjami.
 
 Oprócz kanałów pomocy technicznej wymienionych dla usługi OSS CF powyżej licencja PCF uprawnia do skontaktowania się z działem Pivot w celu uzyskania pomocy. Firma Microsoft i wystawcy mogą również obsługiwać przepływy pracy, które umożliwiają kontaktowanie się z każdą ze stron w celu uzyskania pomocy oraz odpowiednie kierowanie zapytań w zależności od tego, gdzie występuje problem.
 

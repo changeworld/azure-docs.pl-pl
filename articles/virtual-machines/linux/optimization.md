@@ -1,5 +1,5 @@
 ---
-title: Optymalizowanie maszyny wirtualnej z systemem Linux na platformie Azure | Microsoft Docs
+title: Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 description: Poznaj pewne porady dotyczące optymalizacji, aby upewnić się, że maszyna wirtualna z systemem Linux została skonfigurowana pod kątem optymalnej wydajności na platformie Azure
 keywords: Maszyna wirtualna z systemem Linux, maszyna wirtualna z systemem Linux, Ubuntu, maszyna wirtualna
 services: virtual-machines-linux
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eb5ef067d4c9be4debd1bdc98ac4eb57a89d1100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091681"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035387"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenie maszyny wirtualnej z systemem Linux jest proste z poziomu wiersza polecenia lub portalu. W tym samouczku pokazano, jak upewnić się, że został skonfigurowany, aby zoptymalizować jego wydajność na platformie Microsoft Azure. W tym temacie jest używana maszyna wirtualna serwera Ubuntu, ale można również utworzyć maszynę wirtualną z systemem Linux przy użyciu [własnych obrazów jako szablonów](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -37,9 +37,9 @@ Na podstawie rozmiaru maszyny wirtualnej można dołączyć do 16 dodatkowych dy
 
 Aby osiągnąć największą liczbę operacji we/wy na dyskach Premium Storage, w których ustawienia pamięci podręcznej zostały ustawione na wartość **ReadOnly** lub **Brak**, należy wyłączyć **bariery** podczas instalowania systemu plików w systemie Linux. Nie jest wymagana żadna bariera, ponieważ zapisy do Premium Storage dysków z kopią zapasową są trwałe dla tych ustawień pamięci podręcznej.
 
-* Jeśli używasz **reiserFS**, wyłącz bariery przy użyciu opcji `barrier=none` instalacji (w celu włączenia barier, użyj) `barrier=flush`
-* Jeśli używasz **ext3/ext4**, wyłącz bariery przy użyciu opcji `barrier=0` instalacji (aby włączyć bariery, użyj) `barrier=1`
-* Jeśli używasz **XFS**, wyłącz bariery przy użyciu opcji `nobarrier` instalacji (aby włączyć bariery, użyj opcji) `barrier`
+* Jeśli używasz **reiserFS**, wyłącz bariery przy użyciu opcji instalacji `barrier=none` (aby włączyć bariery, użyj `barrier=flush`)
+* Jeśli używasz **ext3/ext4**, wyłącz bariery przy użyciu opcji instalacji `barrier=0` (aby włączyć bariery, użyj `barrier=1`)
+* Jeśli używasz **XFS**, wyłącz bariery przy użyciu opcji instalacji `nobarrier` (aby włączyć bariery, użyj opcji `barrier`)
 
 ## <a name="unmanaged-storage-account-considerations"></a>Zagadnienia dotyczące kont magazynu niezarządzanego
 Domyślna akcja podczas tworzenia maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure to użycie usługi Azure Managed Disks.  Te dyski są obsługiwane przez platformę Azure i nie wymagają żadnego przygotowania ani lokalizacji do ich przechowywania.  Dyski niezarządzane wymagają konta magazynu i są dostępne dodatkowe zagadnienia dotyczące wydajności.  Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Omówienie usługi Azure Managed Disks](../windows/managed-disks-overview.md).  W poniższej sekcji omówiono zagadnienia związane z wydajnością tylko w przypadku korzystania z dysków niezarządzanych.  Ponownie domyślne i zalecane rozwiązanie magazynu to użycie dysków zarządzanych.
@@ -50,7 +50,7 @@ W przypadku obciążeń o dużej liczbie IOps i wybrania magazynu w warstwie Sta
  
 
 ## <a name="your-vm-temporary-drive"></a>Dysk tymczasowy maszyny wirtualnej
-Domyślnie podczas tworzenia maszyny wirtualnej platforma Azure udostępnia dysk systemu operacyjnego ( **/dev/SDA**) i dysk tymczasowy ( **/dev/sdb**).  Wszystkie dodane dyski są wyświetlane jako **/dev/SDC**, **/dev/SDD**, **/dev/SDE** i tak dalej. Wszystkie dane na dysku tymczasowym ( **/dev/sdb**) nie są trwałe i mogą zostać utracone, jeśli określone zdarzenia, takie jak zmiany rozmiarów maszyn wirtualnych, ponowne wdrożenie lub konserwacja, wymuszają ponowny uruchomienie maszyny wirtualnej.  Rozmiar i typ dysku tymczasowego są związane z wybranym rozmiarem maszyny wirtualnej w czasie wdrażania. Wszystkie maszyny wirtualne z rozmiarem w warstwie Premium (DS, G i DS_V2) są obsługiwane przez lokalny dysk SSD w celu uzyskania dodatkowej wydajności do 48K operacji we/wy na sekundę. 
+Domyślnie podczas tworzenia maszyny wirtualnej platforma Azure udostępnia dysk systemu operacyjnego ( **/dev/SDA**) i dysk tymczasowy ( **/dev/sdb**).  Wszystkie dodane dyski są wyświetlane jako **/dev/SDC**, **/dev/SDD**, **/dev/SDE** i tak dalej. Wszystkie dane na dysku tymczasowym ( **/dev/sdb**) nie są trwałe i mogą zostać utracone, jeśli określone zdarzenia, takie jak zmiany rozmiarów maszyn wirtualnych, ponowne wdrożenie lub konserwacja, wymuszają ponowny uruchomienie maszyny wirtualnej.  Rozmiar i typ dysku tymczasowego są związane z wybranym rozmiarem maszyny wirtualnej w czasie wdrażania. Wszystkie maszyny wirtualne w rozmiarze Premium (w ramach serii DS, G i DS_V2) są obsługiwane przez lokalny dysk SSD w celu uzyskania dodatkowej wydajności do 48K operacji we/wy na sekundę. 
 
 ## <a name="linux-swap-partition"></a>Partycja wymiany systemu Linux
 Jeśli maszyna wirtualna platformy Azure pochodzi z obrazu Ubuntu lub CoreOS, można użyć CustomData do wysłania pliku Cloud-config do usługi Cloud-init. W przypadku [przekazania niestandardowego obrazu systemu Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) korzystającego z usługi Cloud-init należy również skonfigurować partycje wymiany przy użyciu funkcji Cloud-init.
@@ -59,14 +59,14 @@ W przypadku obrazów w chmurze Ubuntu do skonfigurowania partycji wymiany należ
 
 W przypadku obrazów bez obsługi usługi Cloud-init obrazy maszyn wirtualnych wdrożone z poziomu portalu Azure Marketplace mają agenta maszyny wirtualnej z systemem Linux zintegrowany z systemem operacyjnym. Ten Agent umożliwia korzystanie z maszyn wirtualnych z różnymi usługami platformy Azure. Przy założeniu, że został wdrożony standardowy obraz z portalu Azure Marketplace, należy wykonać następujące czynności, aby poprawnie skonfigurować ustawienia pliku wymiany systemu Linux:
 
-Zlokalizuj i zmodyfikuj dwa wpisy w pliku **/etc/waagent.conf** . Kontrolują istnienie dedykowanego pliku wymiany i rozmiaru pliku wymiany. Parametry, które należy zweryfikować `ResourceDisk.EnableSwap` , są i`ResourceDisk.SwapSizeMB` 
+Zlokalizuj i zmodyfikuj dwa wpisy w pliku **/etc/waagent.conf** . Kontrolują istnienie dedykowanego pliku wymiany i rozmiaru pliku wymiany. Parametry, które należy zweryfikować, są `ResourceDisk.EnableSwap` i `ResourceDisk.SwapSizeMB` 
 
 Aby włączyć poprawnie włączony dysk i zainstalowany plik wymiany, upewnij się, że parametry mają następujące ustawienia:
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk. SwapSizeMB = {rozmiar w MB, aby spełnić Twoje potrzeby} 
 
-Po dokonaniu zmiany należy ponownie uruchomić waagent lub uruchomić ponownie maszynę wirtualną z systemem Linux w celu odzwierciedlenia tych zmian.  Wiadomo, że zmiany zostały zaimplementowane, a plik wymiany został utworzony, gdy użyjesz `free` polecenia, aby wyświetlić wolne miejsce. W poniższym przykładzie plik wymiany z 512 MB został utworzony w wyniku modyfikacji pliku **waagent. conf** :
+Po dokonaniu zmiany należy ponownie uruchomić waagent lub uruchomić ponownie maszynę wirtualną z systemem Linux w celu odzwierciedlenia tych zmian.  Wiadomo, że zmiany zostały zaimplementowane, a plik wymiany został utworzony, gdy użyjesz polecenia `free`, aby wyświetlić wolne miejsce. W poniższym przykładzie plik wymiany z 512 MB został utworzony w wyniku modyfikacji pliku **waagent. conf** :
 
 ```bash
 azuseruser@myVM:~$ free

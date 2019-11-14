@@ -1,5 +1,5 @@
 ---
-title: Omówienie dedykowanych hostów platformy Azure dla maszyn wirtualnych | Microsoft Docs
+title: Omówienie dedykowanych hostów platformy Azure dla maszyn wirtualnych
 description: Dowiedz się więcej o tym, jak można używać dedykowanych hostów platformy Azure do wdrażania maszyn wirtualnych.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 5f2b34b3acb559d74414ea622fba2769ede7f0a7
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: f4a5e78afdf774af056d7c9b8a108c3418c2caa4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976631"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036390"
 ---
-# <a name="preview-azure-dedicated-hosts"></a>Wersja zapoznawcza: Dedykowane hosty platformy Azure
+# <a name="preview-azure-dedicated-hosts"></a>Wersja zapoznawcza: dedykowane hosty platformy Azure
 
 Dedykowany Host platformy Azure to usługa, która zapewnia serwerom fizycznym możliwość hostowania co najmniej jednej maszyny wirtualnej — dedykowanej dla jednej subskrypcji platformy Azure. Dedykowane hosty to te same serwery fizyczne, które są używane w centrach danych, udostępniane jako zasób. Można udostępnić dedykowane hosty w obrębie regionu, strefy dostępności i domeny błędów. Następnie można umieścić maszyny wirtualne bezpośrednio na hostach, w których konfiguracja najlepiej odpowiada Twoim potrzebom.
 

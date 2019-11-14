@@ -1,5 +1,5 @@
 ---
-title: Wdróż maszynę wirtualną C# przy użyciu Menedżer zasobów szablonu | Microsoft Docs
+title: Wdróż maszynę wirtualną C# przy użyciu szablonu i Menedżer zasobów
 description: Dowiedz się, jak C# używać programu i szablonu Menedżer zasobów, aby wdrożyć maszynę wirtualną platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 65ce7711786e15a5455d91ce829a3bc0bdf4317d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c88b060104a4c17e3edad2e23cfb23a54661b969
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103226"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033812"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Wdróż maszynę wirtualną platformy Azure C# przy użyciu programu i szablonu Menedżer zasobów
 
@@ -35,13 +35,13 @@ W tym kroku upewnij się, że program Visual Studio jest zainstalowany i utworzy
 
 1. Jeśli jeszcze tego nie zrobiono, zainstaluj [program Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz pozycję **Programowanie aplikacji klasycznych platformy .NET** na stronie obciążenia, a następnie kliknij przycisk **Zainstaluj**. W podsumowaniu można zobaczyć, że **.NET Framework narzędzia deweloperskie 4-4,6** są automatycznie wybierane. Jeśli masz już zainstalowany program Visual Studio, możesz dodać obciążenie .NET przy użyciu programu uruchamiania programu Visual Studio.
 2. W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
-3. W > obszarze**Visual C#** templates **(szablony) wybierz pozycję Aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
+3. W **obszarze Szablony** > **Wizualizacja C#** wybierz pozycję **aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
 
 ## <a name="install-the-packages"></a>Zainstaluj pakiety
 
 Pakiety NuGet to najprostszy sposób instalacji bibliotek, które należy wykonać, aby zakończyć te kroki. Aby uzyskać biblioteki, które są potrzebne w programie Visual Studio, wykonaj następujące czynności:
 
-1. Kliknij kolejno pozycje **Narzędzia** > **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**.
+1. Kliknij kolejno pozycje **narzędzia** > **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**.
 2. Wpisz następujące polecenia w konsoli programu:
 
     ```powershell
@@ -201,7 +201,7 @@ Przed wdrożeniem szablonu upewnij się, że masz dostęp do jednostki [usługi 
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp  **&lt;identyfikator Subscription&gt; ID** identyfikatorem subskrypcji,  **&lt;identyfikatorem&gt; aplikacji** Active Directory identyfikatorem aplikacji, **&lt;kluczem uwierzytelniania przy&gt;** użyciu klucza aplikacji i  **&lt;identyfikatora&gt; dzierżawy** z identyfikatorem dzierżawy.
+    Zastąp **&lt;Identyfikator subskrypcji&gt;** identyfikatorem subskrypcji, **&lt;identyfikatorem aplikacji&gt;** z identyfikatorem aplikacji Active Directory, **&lt;klucz uwierzytelniania**&gt;z kluczem aplikacji, a **&lt;identyfikator dzierżawy&gt;** z identyfikatorem dzierżawy.
 
 3. Zapisz plik azureauth. Properties.
 4. Ustaw zmienną środowiskową w systemie Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżką do pliku autoryzacji, który został utworzony, na przykład możesz użyć następującego polecenia programu PowerShell:

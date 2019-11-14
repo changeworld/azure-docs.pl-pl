@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie plików do i z maszyn wirtualnych z systemem Linux platformy Azure przy użyciu usługi SCP | Microsoft Docs
+title: Przenoszenie plików do i z maszyn wirtualnych z systemem Linux platformy Azure przy użyciu usługi SCP
 description: Bezpieczne przenoszenie plików do i z maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu punktu połączenia usługi i pary kluczy SSH.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 56b264b61976607a3afdaa7a6ec7dc5da2091aba
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173940"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036594"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Przenoszenie plików do i z maszyny wirtualnej z systemem Linux przy użyciu usługi SCP
 
@@ -48,9 +48,9 @@ Przykładowo przenosimy plik konfiguracji platformy Azure do maszyny wirtualnej 
 
 ## <a name="ssh-key-pair-authentication"></a>Uwierzytelnianie pary kluczy SSH
 
-Punkt połączenia usługi używa protokołu SSH dla warstwy transportowej. Protokół SSH obsługuje uwierzytelnianie na hoście docelowym i przenosi plik w szyfrowanym tunelu udostępnianym domyślnie przy użyciu protokołu SSH. W przypadku uwierzytelniania SSH można używać nazw użytkowników i haseł. Jednak najlepszym rozwiązaniem w zakresie zabezpieczeń jest uwierzytelnianie klucza publicznego i prywatnego protokołu SSH. Po uwierzytelnieniu połączenia przez protokół SSH usługa SCP rozpocznie kopiowanie pliku. Za pomocą prawidłowo skonfigurowanych `~/.ssh/config` i prywatnych kluczy SSH, połączenie punktu połączenia usługi może być nawiązywane przy użyciu nazwy serwera (lub adresu IP). Jeśli masz tylko jeden klucz SSH, punkt połączenia `~/.ssh/` usługi szuka go w katalogu i domyślnie użyje go w celu zalogowania się do maszyny wirtualnej.
+Punkt połączenia usługi używa protokołu SSH dla warstwy transportowej. Protokół SSH obsługuje uwierzytelnianie na hoście docelowym i przenosi plik w szyfrowanym tunelu udostępnianym domyślnie przy użyciu protokołu SSH. W przypadku uwierzytelniania SSH można używać nazw użytkowników i haseł. Jednak najlepszym rozwiązaniem w zakresie zabezpieczeń jest uwierzytelnianie klucza publicznego i prywatnego protokołu SSH. Po uwierzytelnieniu połączenia przez protokół SSH usługa SCP rozpocznie kopiowanie pliku. Przy użyciu prawidłowo `~/.ssh/config` skonfigurowanego klucza publicznego i prywatnego protokołu SSH połączenie punktu połączenia usługi można nawiązać przy użyciu nazwy serwera (lub adresu IP). Jeśli masz tylko jeden klucz SSH, punkt połączenia usługi szuka go w katalogu `~/.ssh/` i domyślnie użyje go, aby zalogować się do maszyny wirtualnej.
 
-Aby uzyskać więcej informacji na temat `~/.ssh/config` konfigurowania kluczy publicznych i prywatnych SSH, zobacz [Tworzenie kluczy SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Aby uzyskać więcej informacji o konfigurowaniu `~/.ssh/config` i publicznych i prywatnych kluczy SSH, zobacz [Tworzenie kluczy SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>SCP pliku do maszyny wirtualnej z systemem Linux
 
@@ -72,7 +72,7 @@ Następujące polecenie kopiuje pliki z katalogu */Home/azureuser/Logs/* na masz
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-Flaga `-r` interfejsu wiersza polecenia nakazuje usłudze SCP cykliczne kopiowanie plików i katalogów z punktu katalogu wymienionego w poleceniu.  Zauważ również, że składnia wiersza polecenia jest podobna do `cp` polecenia copy.
+Flaga interfejsu wiersza polecenia `-r` instruuje punkt SCP, aby rekursywnie skopiował pliki i katalogi z punktu katalogu wymienionego w poleceniu.  Zauważ również, że składnia wiersza polecenia jest podobna do `cp` Kopiuj polecenie.
 
 ## <a name="next-steps"></a>Następne kroki
 

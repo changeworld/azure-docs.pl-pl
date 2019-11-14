@@ -1,5 +1,5 @@
 ---
-title: SQL Server grupy dostępności — Azure Virtual Machines — Omówienie | Microsoft Docs
+title: Przegląd grup dostępności
 description: W tym artykule wprowadzono SQL Server grup dostępności na maszynach wirtualnych platformy Azure.
 services: virtual-machines
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: d89e25b6a39649bb8421fd32b8842c3c76807268
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8119990ab4ab4a918e325976092100086a547aa4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102164"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037502"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Wprowadzenie SQL Server zawsze dostępnych grup dostępności na maszynach wirtualnych platformy Azure #
+# <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Wprowadzenie SQL Server grup dostępności na maszynach wirtualnych platformy Azure
 
 W tym artykule wprowadzono SQL Server grup dostępności na platformie Azure Virtual Machines. 
 
@@ -42,7 +43,7 @@ Aby zwiększyć nadmiarowość i wysoką dostępność, SQL Server maszyny wirtu
 | [INTERFEJS WIERSZA POLECENIA MASZYNY WIRTUALNEJ SQL](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Enterprise | Monitor w chmurze | Nie | Yes | Yes | Yes | Nie | Nie |
 | [Szablony szybkiego startu](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Enterprise | Monitor w chmurze | Nie | Yes | Yes | Yes | Nie | Nie |
 | [Szablon portalu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Enterprise | Udział plików | Nie | Nie | Nie | Nie | Nie | Nie |
-| [Ręcznie](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Wszyscy | Wszyscy | Wszyscy | Wszyscy | Tak | Yes | Yes | Yes | Yes | Tak |
+| [Ręcznie](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Wszystkie | Wszystkie | Wszystkie | Wszystkie | Yes | Yes | Yes | Yes | Yes | Yes |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
 
 Gdy wszystko będzie gotowe do tworzenia grupy dostępności SQL Server na platformie Azure Virtual Machines, zapoznaj się z tymi samouczkami.

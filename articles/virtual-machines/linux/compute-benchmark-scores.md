@@ -1,5 +1,5 @@
 ---
-title: Oblicz wyniki testów porównawczych dla maszyn wirtualnych systemu Linux platformy Azure | Microsoft Docs
+title: Oblicz wyniki testów porównawczych dla maszyn wirtualnych systemu Linux platformy Azure
 description: Porównaj wyniki testów porównawczych dla maszyn wirtualnych platformy Azure z systemem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: d91535c6f0daeac58a3005d94e19cbba3e781ebf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083850"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036688"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Oblicz wyniki testów porównawczych dla maszyn wirtualnych z systemem Linux
 Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w przypadku wysokiej wydajności zestawienia maszyn wirtualnych platformy Azure z systemem Ubuntu. Wyniki testów porównawczych obliczeń są również dostępne dla [maszyn wirtualnych z systemem Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -28,7 +28,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="av2---general-compute"></a>Av2 — ogólne obliczenia
 (3/15/2019 12:06:55 AM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_A1_v2 | Procesor Intel (R) Xeon (R) E5-2660 0 @ 2.20 GHz | 1 | 1 | 1.9 | 6 483 | 120 | 1,85% | 273 |
 | Standardowa_A1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 6 059 | 208 | 3,43% | 217 |
@@ -55,7 +55,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="b---burstable"></a>B — do serii
 (3/15/2019 12:27:08 AM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_B1ms | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 13 593 | 307 | 2,26% | 28 |
 | Standard_B1ms | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 1.9 | 14 069 | 495 | 3,52% | 672 |
@@ -73,12 +73,12 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 — ogólne obliczenia i Premium Storage
 (3/12/2019 6:52:03 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_D2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 153 | 838 | 4,16% | 147 |
-| Standard_D2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 903 | 1 324 | 6,33% | 553 |
-| Standard_D4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 15,7 | 39 502 | 1 257 | 3.18% | 189 |
-| Standard_D4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 40 547 | 1,935 | 4,77% | 511 |
+| Standardowa_D2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 153 | 838 | 4,16% | 147 |
+| Standardowa_D2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 903 | 1 324 | 6,33% | 553 |
+| Standardowa_D4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 15,7 | 39 502 | 1 257 | 3.18% | 189 |
+| Standardowa_D4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 40 547 | 1,935 | 4,77% | 511 |
 | Standardowa_D8s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 1 | 31,4 | 80 191 | 1 054 | 1,31% | 168 |
 | Standardowa_D8s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 31,4 | 79 884 | 3 073 | 3,85% | 532 |
 | Standardowa_D16s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 16 | 1 | 62,9 | 160 319 | 1 213 | 0,76% | 105 |
@@ -90,12 +90,12 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="dv3---general-compute"></a>Dv3 — ogólne obliczenia
 (3/12/2019 6:54:27 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Maszyna wirtualna Standard_D2_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 359 | 799 | 3,93% | 154 |
-| Maszyna wirtualna Standard_D2_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 737 | 1 422 | 6,86% | 546 |
-| Maszyna wirtualna Standard_D4_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 15,7 | 40 095 | 1 501 | 3,74% | 147 |
-| Maszyna wirtualna Standard_D4_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 41 147 | 2 706 | 6,58% | 546 |
+| Standardowa_D2_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 359 | 799 | 3,93% | 154 |
+| Standardowa_D2_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 737 | 1 422 | 6,86% | 546 |
+| Standardowa_D4_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 15,7 | 40 095 | 1 501 | 3,74% | 147 |
+| Standardowa_D4_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 41 147 | 2 706 | 6,58% | 546 |
 | Standardowa_D8_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 1 | 31,4 | 80 383 | 1 486 | 1,85% | 133 |
 | Standardowa_D8_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 31,4 | 80 511 | 3 916 | 4,86% | 560 |
 | Standardowa_D16_v3 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 16 | 1 | 62,9 | 160 932 | 2 200 | 1,37% | 140 |
@@ -107,7 +107,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="dsv2---storage-optimized"></a>DSv2 — zoptymalizowane pod kątem magazynu
 (3/15/2019 12:53:13 AM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_DS1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 3.4 | 14 642 | 600 | 4,10% | 259 |
 | Standardowa_DS1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 3.4 | 14 808 | 904 | 6,10% | 434 |
@@ -122,39 +122,39 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 | Standardowa_DS5_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 16 | 1 | 55,0 | 226 818 | 1 797 | 0,79% | 497 |
 | Standardowa_DS11_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 13,7 | 28 571 | 920 | 3,22% | 238 |
 | Standardowa_DS11_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 13,7 | 29 049 | 1 614 | 5,56% | 469 |
-| Standard_DS11-1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 13,7 | 14 594 | 617 | 4,23% | 287 |
-| Standard_DS11-1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 13,7 | 14 951 | 852 | 5,70% | 413 |
+| Standard_DS11 — 1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 13,7 | 14 594 | 617 | 4,23% | 287 |
+| Standard_DS11 — 1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 13,7 | 14 951 | 852 | 5,70% | 413 |
 | Standardowa_DS12_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 27,5 | 57 503 | 1 398 | 2,43% | 217 |
 | Standardowa_DS12_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 27,5 | 57 082 | 2 372 | 4,16% | 483 |
-| Standard_DS12-1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 27,5 | 14 698 | 564 | 3,84% | 238 |
-| Standard_DS12-1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 27,5 | 15 127 | 941 | 6,22% | 462 |
-| Standard_DS12-2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 27,5 | 28 711 | 981 | 3,42% | 259 |
-| Standard_DS12-2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 27,5 | 29 305 | 1 241 | 4,24% | 441 |
+| Standard_DS12 — 1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 27,5 | 14 698 | 564 | 3,84% | 238 |
+| Standard_DS12 — 1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 27,5 | 15 127 | 941 | 6,22% | 462 |
+| Standard_DS12 — 2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 27,5 | 28 711 | 981 | 3,42% | 259 |
+| Standard_DS12 — 2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 27,5 | 29 305 | 1 241 | 4,24% | 441 |
 | Standardowa_DS13_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 1 | 55,0 | 116 875 | 1 286 | 1,10% | 203 |
 | Standardowa_DS13_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 55,0 | 112 318 | 1 356 | 1,21% | 504 |
-| Standard_DS13-2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 55,0 | 29 105 | 1 154 | 3,97% | 224 |
-| Standard_DS13-2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 55,0 | 29 936 | 1 720 | 5,75% | 483 |
-| Standard_DS13-4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 55,0 | 56 992 | 1 814 | 3.18% | 280 |
-| Standard_DS13-4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 55,0 | 57 781 | 2 122 | 3,67% | 427 |
+| Standard_DS13 — 2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 55,0 | 29 105 | 1 154 | 3,97% | 224 |
+| Standard_DS13 — 2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 55,0 | 29 936 | 1 720 | 5,75% | 483 |
+| Standard_DS13 — 4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 55,0 | 56 992 | 1 814 | 3.18% | 280 |
+| Standard_DS13 — 4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 55,0 | 57 781 | 2 122 | 3,67% | 427 |
 | Standardowa_DS14_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 16 | 2 | 110,2 | 224 149 | 3 450 | 1,54% | 196 |
 | Standardowa_DS14_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 16 | 1 | 110,2 | 227 108 | 1 267 | 0,56% | 504 |
-| Standard_DS14-4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 2 | 110,2 | 56 211 | 2 154 | 3,83% | 189 |
-| Standard_DS14-4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 110,2 | 59 651 | 2 560 | 4,29% | 518 |
-| Standard_DS14-8_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 2 | 110,2 | 112 280 | 4 430 | 3,95% | 196 |
-| Standard_DS14-8_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 110,2 | 113 375 | 1 442 | 1,27% | 511 |
+| Standard_DS14 — 4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 2 | 110,2 | 56 211 | 2 154 | 3,83% | 189 |
+| Standard_DS14 — 4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 110,2 | 59 651 | 2 560 | 4,29% | 518 |
+| Standard_DS14 — 8_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 2 | 110,2 | 112 280 | 4 430 | 3,95% | 196 |
+| Standard_DS14 — 8_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 110,2 | 113 375 | 1 442 | 1,27% | 511 |
 | Standard_DS15_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 20 | 2 | 137,7 | 279 359 | 4 032 | 1,44% | 665 |
 
 ## <a name="dv2---general-compute"></a>Dv2 — ogólne obliczenia
 (3/12/2019 6:53:48 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_D1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 3.4 | 14 730 | 663 | 4,50% | 385 |
 | Standardowa_D1_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 3.4 | 15 057 | 1 319 | 8,76% | 322 |
-| Maszyna wirtualna Standard_D2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 6.8 | 29 395 | 1 073 | 3,65% | 329 |
-| Maszyna wirtualna Standard_D2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 6.8 | 29 564 | 2 145 | 7,26% | 378 |
-| Maszyna wirtualna Standard_D3_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 13,7 | 58 150 | 1 340 | 2,30% | 343 |
-| Maszyna wirtualna Standard_D3_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 13,7 | 57 820 | 2 944 | 5,09% | 364 |
+| Standardowa_D2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 2 | 1 | 6.8 | 29 395 | 1 073 | 3,65% | 329 |
+| Standardowa_D2_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 6.8 | 29 564 | 2 145 | 7,26% | 378 |
+| Standardowa_D3_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 4 | 1 | 13,7 | 58 150 | 1 340 | 2,30% | 343 |
+| Standardowa_D3_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 13,7 | 57 820 | 2 944 | 5,09% | 364 |
 | Standardowa_D4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 1 | 27,5 | 117 448 | 1 612 | 1,37% | 308 |
 | Standardowa_D4_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 27,5 | 114 082 | 3 369 | 2,95% | 399 |
 | Standardowa_D5_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 16 | 1 | 55,0 | 226 370 | 4 722 | 2,09% | 147 |
@@ -173,36 +173,36 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 — zoptymalizowane pod kątem pamięci + Premium Storage
 (3/12/2019 7:17:33 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_E2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 15,7 | 20 957 | 1,200 | 5,73% | 672 |
 | Standardowa_E4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 31,4 | 40 420 | 1 993 | 4,93% | 672 |
-| Standard_E4-2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 31,4 | 20 774 | 1 133 | 5,45% | 672 |
+| Standard_E4 — 2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 31,4 | 20 774 | 1 133 | 5,45% | 672 |
 | Standardowa_E8s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 62,9 | 80 153 | 3 308 | 4,13% | 665 |
-| Standard_E8-2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 62,9 | 21 178 | 1 334 | 6,30% | 665 |
-| Standard_E8-4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 62,9 | 40 614 | 2 216 | 5,46% | 672 |
+| Standard_E8 — 2s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 62,9 | 21 178 | 1 334 | 6,30% | 665 |
+| Standard_E8 — 4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 62,9 | 40 614 | 2 216 | 5,46% | 672 |
 | Standardowa_E16s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 16 | 1 | 125,9 | 156 137 | 2 160 | 1,38% | 672 |
-| Standard_E16-4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 125,9 | 41 950 | 2 309 | 5,50% | 637 |
-| Standard_E16-8s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 125,9 | 81 196 | 3 179 | 3,91% | 658 |
+| Standard_E16 — 4s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 125,9 | 41 950 | 2 309 | 5,50% | 637 |
+| Standard_E16 — 8s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 125,9 | 81 196 | 3 179 | 3,91% | 658 |
 | Standard_E20s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 20 | 1 | 157,4 | 196 619 | 1 325 | 0,67% | 672 |
 | Standardowa_E32s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 32 | 2 | 251,9 | 304 707 | 5 719 | 1,88% | 672 |
-| Standard_E32-8s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 2 | 251,9 | 83 576 | 3 693 | 4,42% | 672 |
-| Standard_E32-16s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 16 | 2 | 251,9 | 158 023 | 4 317 | 2,73% | 672 |
+| Standard_E32 — 8s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 2 | 251,9 | 83 576 | 3 693 | 4,42% | 672 |
+| Standard_E32 — 16s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 16 | 2 | 251,9 | 158 023 | 4 317 | 2,73% | 672 |
 | Standardowa_E64s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 64 | 2 | 425,2 | 628 540 | 3 982 | 0,63% | 49 |
-| Standard_E64-16s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 16 | 2 | 425,2 | 169 611 | 3 265 | 1,92% | 42 |
-| Standard_E64-32s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 32 | 2 | 425,2 | 307 584 | 3 569 | 1,16% | 56 |
+| Standard_E64 — 16s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 16 | 2 | 425,2 | 169 611 | 3 265 | 1,92% | 42 |
+| Standard_E64 — 32s_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 32 | 2 | 425,2 | 307 584 | 3 569 | 1,16% | 56 |
 
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3-Memory opt + Premium Storage (izolowany)
 (4/11/2019 10:07:29 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64is_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 64 | 2 | 425,2 | 627 745 | 4 062 | 0,65% | 196 |
 
 ## <a name="ev3---memory-optimized"></a>EV3 — zoptymalizowane pod kątem pamięci
 (3/12/2019 6:52:13 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_E2_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 2 | 1 | 15,7 | 21 171 | 1 772 | 8,37% | 693 |
 | Standardowa_E4_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 31,4 | 41 181 | 3 148 | 7,64% | 700 |
@@ -215,7 +215,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 — zoptymalizowane pod kątem pamięci (izolowany)
 (3/12/2019 6:57:51 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64i_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 64 | 2 | 425,2 | 625 855 | 4 881 | 0,78% | 7 |
 | Standard_E64i_v3 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 64 | 2 | 425,2 | 629 151 | 9 756 | 1,55% | 217 |
@@ -223,7 +223,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2-COMPUTE + magazyn zoptymalizowany
 (3/12/2019 6:51:35 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F2s_v2 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 2 | 1 | 3.9 | 28 219 | 1 843 | 6,53% | 700 |
 | Standard_F4s_v2 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 4 | 1 | 7.8 | 53 911 | 1 002 | 1,86% | 707 |
@@ -236,7 +236,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="fs---compute-and-storage-optimized"></a>FS — zoptymalizowane pod kątem obliczeń i magazynu
 (3/15/2019 12:12:51 AM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_F1s | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 14 552 | 504 | 3,46% | 350 |
 | Standardowa_F1s | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 1.9 | 14 784 | 858 | 5,80% | 357 |
@@ -253,7 +253,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="f---compute-optimized"></a>F — Optymalizacja obliczeń
 (3/12/2019 6:53:59 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_F1 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 14 937 | 593 | 3,97% | 350 |
 | Standardowa_F1 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 1 | 1 | 1.9 | 15 460 | 1 326 | 8,58% | 350 |
@@ -270,7 +270,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="gs---storage-optimized"></a>GS — zoptymalizowane pod kątem magazynu
 (3/12/2019 10:22:33 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_GS1 | Procesor Intel (R) Xeon (R) E5-2698B v3 @ 2,00 GHz | 2 | 1 | 27,5 | 28 835 | 2 222 | 7,71% | 287 |
 | Standardowa_GS2 | Procesor Intel (R) Xeon (R) E5-2698B v3 @ 2,00 GHz | 4 | 1 | 55,0 | 55 568 | 3 139 | 5,65% | 287 |
@@ -285,7 +285,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="g---compute-optimized"></a>G — Optymalizacja obliczeń
 (3/12/2019 10:23:51 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_G1 | Procesor Intel (R) Xeon (R) E5-2698B v3 @ 2,00 GHz | 2 | 1 | 27,5 | 32 808 | 2 679 | 8,17% | 287 |
 | Standardowa_G2 | Procesor Intel (R) Xeon (R) E5-2698B v3 @ 2,00 GHz | 4 | 1 | 55,0 | 62 907 | 4 465 | 7,10% | 287 |
@@ -296,7 +296,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="h---high-performance-compute-hpc"></a>Obliczenia o wysokiej wydajności (HPC)
 (3/12/2019 10:50:51 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_H8 | Procesor Intel (R) Xeon (R) E5-2667 V3 @ 3.20 GHz | 8 | 1 | 55,0 | 149 859 | 734 | 0,49% | 175 |
 | Standardowa_H8m | Procesor Intel (R) Xeon (R) E5-2667 V3 @ 3.20 GHz | 8 | 1 | 110,2 | 149 931 | 657 | 0,44% | 147 |
@@ -308,7 +308,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="lv2---storage-optimized"></a>Lv2 — zoptymalizowane pod kątem magazynu
 (3/14/2019 5:49:04 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_L8s_v2 | AMD EPYC 7551 32 — procesor Core | 8 | 1 | 62,9 | 80 528 | 404 | 0,50% | 119 |
 | Standard_L16s_v2 | AMD EPYC 7551 32 — procesor Core | 16 | 2 | 125,9 | 154 829 | 3 708 | 2,40% | 119 |
@@ -319,7 +319,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="ls---storage-optimized"></a>LS — magazyn zoptymalizowany pod kątem
 (3/12/2019 10:22:29 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_L4s | Procesor Intel (R) Xeon (R) E5-2698B v3 @ 2,00 GHz | 4 | 1 | 31,4 | 56 488 | 2 916 | 5,16% | 287 |
 | Standardowa_L8s | Procesor Intel (R) Xeon (R) E5-2698B v3 @ 2,00 GHz | 8 | 1 | 62,9 | 107 017 | 2 323 | 2,17% | 287 |
@@ -329,7 +329,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="m---memory-optimized"></a>M — zoptymalizowane pod kątem pamięci
 (4/11/2019 7:30:39 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_M8 — 2 MS | Procesor Intel (R) Xeon (R) E7-8890 v3 @ 2.50 GHz | 2 | 1 | 215,2 | 22 605 | 29 | 0,13% | 42 |
 | Standard_M8 — 4 MS | Procesor Intel (R) Xeon (R) E7-8890 v3 @ 2.50 GHz | 4 | 1 | 215,2 | 44 488 | 183 | 0,41% | 42 |
@@ -360,7 +360,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 — procesor GPU włączony
 (3/21/2019 5:48:37 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v3 | Procesor Intel (R) Xeon (R) E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110,2 | 106 929 | 353 | 0,33% | 49 |
 | Standard_NC12s_v3 | Procesor Intel (R) Xeon (R) E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220,4 | 213 585 | 875 | 0,41% | 42 |
@@ -370,7 +370,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2 — procesor GPU włączony
 (3/12/2019 11:19:19 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v2 | Procesor Intel (R) Xeon (R) E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110,2 | 107 115 | 321 | 0,30% | 63 |
 | Standard_NC12s_v2 | Procesor Intel (R) Xeon (R) E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220,4 | 213 814 | 656 | 0,31% | 63 |
@@ -380,7 +380,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="nc---gpu-enabled"></a>NC — procesor GPU włączony
 (3/12/2019 11:08:03 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_NC6 | Procesor Intel (R) Xeon (R) E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55,0 | 102 211 | 658 | 0,64% | 259 |
 | Standardowa_NC12 | Procesor Intel (R) Xeon (R) E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110,2 | 203 523 | 2 293 | 1,13% | 259 |
@@ -390,7 +390,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="nds--gpu-enabled"></a>NDs — włączono procesor GPU
 (3/12/2019 11:19:10 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_ND6s | Procesor Intel (R) Xeon (R) E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110,2 | 107 095 | 353 | 0,33% | 63 |
 | Standard_ND12s | Procesor Intel (R) Xeon (R) E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220,4 | 212 298 | 3 457 | 1,63% | 63 |
@@ -400,7 +400,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 ## <a name="nv---gpu-enabled"></a>NV — procesor GPU włączony
 (3/12/2019 11:08:13 PM PBI 3897709)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesorów wirtualnych vCPU | Węzły NUMA | Pamięć (GiB) | Średni wynik | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_NV6 | Procesor Intel (R) Xeon (R) E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55,0 | 101 728 | 2 094 | 2,06% | 259 |
 | Standardowa_NV12 | Procesor Intel (R) Xeon (R) E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110,2 | 203 903 | 1 724 | 0,85% | 252 |
@@ -408,7 +408,7 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 
 
 ## <a name="about-coremark"></a>Informacje o poduwagi
-Numery systemu Linux zostały obliczone [](https://www.eembc.org/coremark/faq.php) przez uruchomienie w systemie Ubuntu. Dla opcji inuwaga została skonfigurowana liczba wątków ustawionych na liczbę wirtualnych procesorów CPU, a współbieżność ustawiona na PThreads. Docelowa liczba iteracji została skorygowana na podstawie oczekiwanej wydajności, aby zapewnić środowisko uruchomieniowe co najmniej 20 sekund (zwykle znacznie dłużej). Końcowy wynik przedstawia liczbę iteracji zakończonych podziałem przez liczbę sekund trwania testu. Każdy test był uruchamiany co najmniej siedem razy na każdej maszynie wirtualnej. Pokazane powyżej daty przebiegu testu. Testy są uruchamiane na wielu maszynach wirtualnych w publicznych regionach platformy Azure, a maszyna wirtualna była obsługiwana w dniu uruchomienia. Seria podstawowa A i B (z możliwością szeregowania) nie jest wyświetlana, ponieważ wydajność jest zmienna. Seria N nie jest pokazywana, ponieważ są skoncentrowane na procesorach GPU i nie mierzy wydajności procesora GPU.
+Numery systemu Linux zostały obliczone przez uruchomienie [w systemie Ubuntu](https://www.eembc.org/coremark/faq.php) . Dla opcji inuwaga została skonfigurowana liczba wątków ustawionych na liczbę wirtualnych procesorów CPU, a współbieżność ustawiona na PThreads. Docelowa liczba iteracji została skorygowana na podstawie oczekiwanej wydajności, aby zapewnić środowisko uruchomieniowe co najmniej 20 sekund (zwykle znacznie dłużej). Końcowy wynik przedstawia liczbę iteracji zakończonych podziałem przez liczbę sekund trwania testu. Każdy test był uruchamiany co najmniej siedem razy na każdej maszynie wirtualnej. Pokazane powyżej daty przebiegu testu. Testy są uruchamiane na wielu maszynach wirtualnych w publicznych regionach platformy Azure, a maszyna wirtualna była obsługiwana w dniu uruchomienia. Seria podstawowa A i B (z możliwością szeregowania) nie jest wyświetlana, ponieważ wydajność jest zmienna. Seria N nie jest pokazywana, ponieważ są skoncentrowane na procesorach GPU i nie mierzy wydajności procesora GPU.
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać informacje na temat pojemności magazynu, szczegółów dysku i dodatkowych zagadnień związanych z wybieraniem rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyny wirtualnej](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

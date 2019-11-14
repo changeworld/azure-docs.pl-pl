@@ -1,5 +1,5 @@
 ---
-title: Pobieranie szablonu dla maszyny wirtualnej platformy Azure | Microsoft Docs
+title: Pobieranie szablonu dla maszyny wirtualnej platformy Azure
 description: Pobierz templatefor maszynę wirtualną, aby pomóc w automatyzowaniu wdrożeń w modelu wdrażania Menedżer zasobów
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898867"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033543"
 ---
 # <a name="download-the-template-for-a-vm"></a>Pobieranie szablonu dla maszyny wirtualnej
 Podczas tworzenia maszyny wirtualnej na platformie Azure przy użyciu portalu lub programu PowerShell automatycznie tworzony jest szablon Menedżer zasobów. Możesz użyć tego szablonu, aby szybko zduplikować wdrożenie. Szablon zawiera informacje na temat wszystkich zasobów w grupie zasobów. W przypadku maszyny wirtualnej oznacza to, że szablon zawiera wszystkie elementy, które są tworzone w ramach obsługi maszyny wirtualnej w tej grupie zasobów, w tym zasoby sieciowe.
@@ -33,7 +33,7 @@ Podczas tworzenia maszyny wirtualnej na platformie Azure przy użyciu portalu lu
 6. Otwórz plik zip i Wyodrębnij pliki do folderu. Plik. zip zawiera:
    
    * Parameters. JSON
-   * Template. JSON
+   * template.json
 
 Plik Template. JSON jest szablonem.
 

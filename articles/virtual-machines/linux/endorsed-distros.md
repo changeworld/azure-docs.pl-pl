@@ -1,5 +1,5 @@
 ---
-title: Dystrybucje systemu Linux zatwierdzone na platformie Azure | Microsoft Docs
+title: Dystrybucje systemu Linux zalecane na platformie Azure
 description: Dowiedz się więcej o dystrybucji z systemem Linux na platformie Azure, w tym wskazówki dotyczące Ubuntu, CentOS, Oracle i SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: szark
-ms.openlocfilehash: c9537ec39e58d5703ed3bc1774520a12b25147b0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 66717222b505b7dd91f7f270cab27ec4ca97038e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615584"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036216"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Zatwierdzone dystrybucje systemu Linux na platformie Azure
 Partnerzy udostępniają obrazy systemu Linux w portalu Azure Marketplace. Pracujemy z różnymi społecznościami systemu Linux w celu dodania jeszcze większej liczby wersji do listy rozpowszechnianych informacji. W międzyczasie w przypadku dystrybucji, które nie są dostępne w portalu Marketplace, zawsze można przenieść własne systemy Linux zgodnie z instrukcjami w temacie [Tworzenie i przekazywanie wirtualnego dysku twardego zawierającego system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -35,13 +35,13 @@ Agent platformy Azure dla systemu Linux jest już wstępnie zainstalowany w obra
 | Dystrybucja | Wersja | Sterowniki | Agent |
 | --- | --- | --- | --- |
 | CentOS |CentOS 6.3 +, 7.0 +, 8.0 + |CentOS 6,3: [pobieranie lis](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: w jądrze |Pakiet: w [repozytorium](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0 + |W jądrze |Kod źródłowy: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
+| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |W jądrze |Kod źródłowy: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7,9 +, 8.2 +, 9, 10 |W jądrze |Pakiet: w repozytorium w obszarze "waagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4 +, 7.0 + |W jądrze |Pakiet: w repozytorium w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Oracle Linux |6.4+, 7.0+ |W jądrze |Pakiet: w repozytorium w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6,7 +, 7.1 +, 8.0 + |W jądrze |Pakiet: w repozytorium w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES dla SAP<br>11 SP4<br>12 SP1 +<br>15|W jądrze |Pakiet:<p> 11 w [chmurze: repozytorium narzędzi](https://build.opensuse.org/project/show/Cloud:Tools)<br>w przypadku 12 uwzględnionych w module "chmura publiczna" w obszarze "Python-Azure-Agent"<br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE przestępny 42.2 + |W jądrze |Pakiet: w [chmurze: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium w obszarze "Python-Azure-Agent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |W jądrze |Pakiet: w repozytorium w obszarze "walinuxagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES dla SAP<br>11 SP4<br>12 SP1+<br>15|W jądrze |Pakiet:<p> 11 w [chmurze: repozytorium narzędzi](https://build.opensuse.org/project/show/Cloud:Tools)<br>w przypadku 12 uwzględnionych w module "chmura publiczna" w obszarze "Python-Azure-Agent"<br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE Leap 42.2+ |W jądrze |Pakiet: w [chmurze: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium w obszarze "Python-Azure-Agent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |W jądrze |Pakiet: w repozytorium w obszarze "walinuxagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
   - **<sup>1</sup>** informacje o rozszerzonej obsłudze Ubuntu 12,04 i 14,04 można znaleźć tutaj: [Ubuntu Extended Security Maintenance](https://www.ubuntu.com/esm).
 
@@ -73,7 +73,7 @@ Z witryny sieci Web CoreOS:
 
 *CoreOS jest zaprojektowana pod kątem bezpieczeństwa, spójności i niezawodności. Zamiast instalować pakiety za pośrednictwem yum lub apt, CoreOS używa kontenerów systemu Linux do zarządzania usługami na wyższym poziomie abstrakcji. Kod pojedynczej usługi i wszystkie zależności są umieszczane w kontenerze, który można uruchomić na jednym lub wielu maszynach CoreOS.*
 
-### <a name="credativ"></a>Credativ
+### <a name="credativ"></a>credativ
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credativ to niezależna firma konsultingowa i usług, która specjalizacje opracowywania i wdrażania profesjonalnych rozwiązań przy użyciu bezpłatnego oprogramowania. Jako wiodące specjaliści z branży Open Source credativ mają międzynarodowyą funkcję rozpoznawania wielu działów IT korzystających z pomocy technicznej. W połączeniu z firmą Microsoft credativ aktualnie przygotowuje odpowiednie obrazy Debian dla Debian 8 (Jessie) i Debian przed 7 (wheezy). Oba obrazy są specjalnie przeznaczone do uruchamiania na platformie Azure i mogą być łatwo zarządzane za pośrednictwem platformy. Credativ również będzie obsługiwał długoterminową konserwację i aktualizację obrazów Debian dla platformy Azure za pomocą Centrum pomocy technicznej typu open source.

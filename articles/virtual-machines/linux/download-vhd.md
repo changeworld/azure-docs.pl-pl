@@ -1,5 +1,5 @@
 ---
-title: Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure | Microsoft Docs
+title: Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure
 description: Pobierz dysk VHD z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure i Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: ed79df03a42c1558b975cd1c21c79716d50d4616
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083486"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036286"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure
 
@@ -65,7 +65,7 @@ Aby użyć dysku VHD jako dysku dla nowego wystąpienia istniejącej maszyny wir
 
 ## <a name="generate-sas-url"></a>Generuj adres URL SAS
 
-Aby pobrać plik VHD, należy wygenerować adres URL sygnatury [dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po wygenerowaniu adresu URL zostanie do niego przypisany czas wygaśnięcia.
+Aby pobrać plik VHD, należy wygenerować adres URL [sygnatury dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po wygenerowaniu adresu URL zostanie do niego przypisany czas wygaśnięcia.
 
 1.  W menu strony dla maszyny wirtualnej wybierz pozycję **dyski**.
 2.  Wybierz dysk systemu operacyjnego dla maszyny wirtualnej, a następnie wybierz pozycję **eksport dysku**.

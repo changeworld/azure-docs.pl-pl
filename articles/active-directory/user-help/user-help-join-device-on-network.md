@@ -1,6 +1,6 @@
 ---
-title: Dołącz swoje urządzenie pracy do sieci w organizacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak sprzęgać swoje urządzenie pracy z siecią organizacji.
+title: Dołączanie urządzenia służbowego do sieci organizacji — AD
+description: Dowiedz się, jak dołączać urządzenie służbowe do sieci organizacji.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,107 +13,107 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243271"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028542"
 ---
-# <a name="join-your-work-device-to-your-organizations-network"></a>Dołącz swoje urządzenie pracy do sieci organizacji
-Dołączanie urządzenia należące do pracy systemu Windows 10 do sieci w organizacji, aby dostęp do zasobów z potencjalnie ograniczeniami.
+# <a name="join-your-work-device-to-your-organizations-network"></a>Przyłącz urządzenie służbowe do sieci organizacji
+Dołącz do sieci swojej organizacji swoje urządzenie z systemem Windows 10, aby uzyskać dostęp do zasobów, które mogą być ograniczone.
 
-## <a name="what-happens-when-you-join-your-device"></a>Co się stanie po dołączeniu do urządzenia
-Gdy dołączasz urządzenia z systemem Windows 10 do sieci w organizacji, będzie miało miejsce następujące akcje:
+## <a name="what-happens-when-you-join-your-device"></a>Co się stanie po dołączeniu urządzenia
+Po dołączeniu urządzenia z systemem Windows 10 do sieci organizacji zostaną wykonane następujące akcje:
 
-- Windows wykonywana jest rejestracja urządzenia do sieci w organizacji, umożliwiając dostęp do zasobów przy użyciu konta osobistego. Po zarejestrowaniu urządzenia Windows następnie łączy urządzenie z siecią, aby można było używać nazwy użytkownika i hasła w organizacji mogą się zalogować, a dostęp do zasobów z ograniczeniami.
+- System Windows rejestruje urządzenie w sieci organizacji, umożliwiając dostęp do zasobów przy użyciu konta osobistego. Gdy urządzenie zostanie zarejestrowane, system Windows przyłączy urządzenie do sieci, dzięki czemu możesz zalogować się i uzyskać dostęp do zasobów z ograniczeniami, korzystając z nazwy użytkownika i hasła swojej organizacji.
 
-- Opcjonalnie, oparte na opcje Twojej organizacji, użytkownik może zostać poproszona o skonfigurowaną weryfikację dwuetapową, przy użyciu jednej [uwierzytelnianie wieloskładnikowe](multi-factor-authentication-end-user-first-time.md) lub [zabezpieczające](user-help-security-info-overview.md).
+- Opcjonalnie w zależności od opcji dostępnych w organizacji może zostać wyświetlony monit o skonfigurowanie weryfikacji dwuetapowej za pośrednictwem [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) lub [informacji zabezpieczających](user-help-security-info-overview.md).
 
-- Opcjonalnie oparte na opcje Twojej organizacji, użytkownik może automatycznej rejestracji w zarządzania urządzeniami przenośnymi, takie jak Microsoft Intune. Aby uzyskać więcej informacji na temat rejestrowania w programie Microsoft Intune, zobacz [zarejestrowania urządzenia w usłudze Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Opcjonalnie w zależności od opcji dostępnych w organizacji może być automatycznie rejestrowane w usłudze zarządzania urządzeniami przenośnymi, takie jak Microsoft Intune. Aby uzyskać więcej informacji na temat rejestrowania w Microsoft Intune, zobacz [Rejestrowanie urządzenia w usłudze Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
 
-- Będzie można przejść przez proces logowania przy użyciu automatyczne logowanie z Twoim kontem organizacyjnym.
+- Przejdziesz przez proces logowania, korzystając z automatycznego logowania przy użyciu konta organizacyjnego.
 
-## <a name="to-join-a-brand-new-windows-10-device"></a>Aby dołączanie zupełnie nowym urządzenia z systemem Windows 10
-Jeśli urządzenie jest całkowicie nowy i nie skonfigurowano jeszcze, możesz przejść przez proces Windows poza (tryb OOBE Box Experience), aby dołączyć urządzenie z siecią.
+## <a name="to-join-a-brand-new-windows-10-device"></a>Aby przyłączyć nowe urządzenie z systemem Windows 10 do marki
+Jeśli urządzenie jest marki nowe i nie zostało jeszcze skonfigurowane, możesz przejść przez proces Windows out of Box Experience (OOBE), aby dołączyć urządzenie do sieci.
 
-1. Uruchom nowe urządzenie i rozpocznij proces OOBE.
+1. Uruchom nowe urządzenie i Rozpocznij proces OOBE.
 
-2. Na **Zaloguj się przy użyciu Microsoft** ekranu, podaj swój służbowy adres e-mail.
+2. Na ekranie **Zaloguj się przy użyciu konta Microsoft** wpisz swój służbowy adres e-mail.
 
-    ![Zaloguj się na ekranie za pomocą adresu e-mail](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
+    ![Ekran logowania z adresem e-mail](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
 
-3. Na **wprowadź hasło** ekranu, wpisz swoje hasło.
+3. Na ekranie **Wprowadź hasło** wpisz hasło.
 
-    ![Wprowadź hasło ekranu](./media/user-help-join-device-on-network/join-device-oobe-password.png)
+    ![Wprowadzanie ekranu hasła](./media/user-help-join-device-on-network/join-device-oobe-password.png)
 
-4. Na urządzeniu przenośnym zatwierdzić urządzenia, więc może ona uzyskać dostępu do konta. 
+4. Na urządzeniu przenośnym Zatwierdź urządzenie, aby umożliwić mu dostęp do Twojego konta. 
 
-    ![Ekran powiadomienie na telefon komórkowy](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Ekran powiadomień mobilnych](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
-5. Zakończenie procesu OOBE, włącznie z ustawieniem ustawień prywatności i konfigurowania Windows Hello (jeśli jest to konieczne).
+5. Ukończ proces OOBE, w tym ustawienia prywatności i Konfigurowanie systemu Windows Hello (jeśli to konieczne).
 
-    Urządzenie jest przyłączone do sieci organizacji.
+    Urządzenie jest teraz przyłączone do sieci organizacji.
 
-## <a name="to-make-sure-youre-joined"></a>Aby upewnić się, są przyłączone do
-Należy upewnić się, że one przyłączone, sprawdzając ustawienia.
+## <a name="to-make-sure-youre-joined"></a>Aby upewnić się, że jesteś przyłączony
+Możesz upewnić się, że są one przyłączone do Twoich ustawień.
 
-1. Otwórz **ustawienia**, a następnie wybierz pozycję **kont**.
+1. Otwórz pozycję **Ustawienia**, a następnie wybierz pozycję **konta**.
 
     ![Konta na ekranie Ustawienia](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wybierz **dostęp do zasobów służbowych**i upewnij się, zostanie wyświetlony tekst, który jest wyświetlany komunikat podobny do, **połączone  *\<your_organization >* usługi Azure AD**.
+2. Wybierz pozycję **uzyskaj dostęp do**zasobów służbowych i upewnij się, że widzisz tekst podobny do tego, który jest wyświetlany **na *\<YOUR_ORGANIZATION >* usłudze Azure AD**.
 
-    ![Otwórz ekran służbowego przy użyciu konta z połączonych firmy contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Uzyskaj dostęp do ekranu służbowego z podłączonym kontem contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
-## <a name="to-join-an-already-configured-windows-10-device"></a>Aby dołączyć już skonfigurowanego urządzenia z systemem Windows 10
-Jeśli uzyskano wcześniej urządzenia pod kątem czasu i jest już został skonfigurowany, możesz wykonać następujące kroki, aby dołączyć urządzenie z siecią.
+## <a name="to-join-an-already-configured-windows-10-device"></a>Aby dołączyć już skonfigurowane urządzenie z systemem Windows 10
+Jeśli urządzenie zostało już przez pewien czas skonfigurowane, możesz wykonać następujące kroki, aby dołączyć urządzenie do sieci.
 
-1. Otwórz **ustawienia**, a następnie wybierz pozycję **kont**.
+1. Otwórz pozycję **Ustawienia**, a następnie wybierz pozycję **konta**.
 
-2. Wybierz **dostęp do zasobów służbowych**, a następnie wybierz pozycję **Connect**.
+2. Wybierz pozycję **dostęp do**zasobów służbowych, a następnie wybierz pozycję **Połącz**.
 
-    ![Dostęp do służbowego i połącz łącza](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
+    ![Dostęp do linków służbowych i połączeń](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
-3. Na **Konfigurowanie konta służbowego lub szkolnego** ekranu, wybierz opcję **Dołącz to urządzenie do usługi Azure Active Directory**.
+3. Na ekranie **Konfigurowanie konta służbowego** wybierz pozycję **Dołącz do tego urządzenia, aby Azure Active Directory**.
 
-    ![Konfigurowanie pracy lub szkołą ekranu konta](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
+    ![Konfigurowanie ekranu konta służbowego](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. Na **Zaloguj się** ekranu, wpisz swój adres e-mail (na przykład alain@contoso.com), a następnie wybierz pozycję **dalej**.
+4. Na ekranie **Zaloguj się,** wpisz swój adres e-mail (na przykład alain@contoso.com), a następnie wybierz przycisk **dalej**.
 
     ![Zaloguj się na ekranie](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. Na **wprowadź hasło** ekranu, wpisz hasło, a następnie wybierz **Zaloguj**.
+5. Na ekranie **wprowadzanie hasła** wpisz hasło, a następnie wybierz pozycję **Zaloguj się**.
 
     ![Wprowadź hasło](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
-6. Na urządzeniu przenośnym zatwierdzić urządzenia, więc może ona uzyskać dostępu do konta. 
+6. Na urządzeniu przenośnym Zatwierdź urządzenie, aby umożliwić mu dostęp do Twojego konta. 
 
-    ![Ekran powiadomienie na telefon komórkowy](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
+    ![Ekran powiadomień mobilnych](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. Na **upewnij się, czy Twoja organizacja jest to** ekranu, przejrzyj informacje, aby upewnić się, że jest on odpowiedni, a następnie wybierz pozycję **Dołącz**.
+7. Na ekranie **upewnij się, że jest to Twoja organizacja** , zapoznaj się z informacjami, aby upewnić się, że są odpowiednie, a następnie wybierz pozycję **Dołącz**.
 
-    ![Upewnij się, że na ekranie weryfikacji Twojej organizacji](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
+    ![Upewnij się, że jest ekran weryfikacji organizacji](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
-8. Na **wszystko jest gotowe** ekranu, kliknij przycisk **gotowe**.
+8. Na ekranie **wszystko** gotowe kliknij pozycję **gotowe**.
 
-    ![Teraz wszystkie ekranu zestawu](./media/user-help-join-device-on-network/join-device-setup-finish.png)
+    ![Wszystko jest ustawione na ekranie](./media/user-help-join-device-on-network/join-device-setup-finish.png)
 
-## <a name="to-make-sure-youre-joined"></a>Aby upewnić się, są przyłączone do
-Należy upewnić się, że one przyłączone, sprawdzając ustawienia.
+## <a name="to-make-sure-youre-joined"></a>Aby upewnić się, że jesteś przyłączony
+Możesz upewnić się, że są one przyłączone do Twoich ustawień.
 
-1. Otwórz **ustawienia**, a następnie wybierz pozycję **kont**.
+1. Otwórz pozycję **Ustawienia**, a następnie wybierz pozycję **konta**.
 
     ![Konta na ekranie Ustawienia](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wybierz **dostęp do zasobów służbowych**i upewnij się, zostanie wyświetlony tekst, który jest wyświetlany komunikat podobny do, **połączone  *\<your_organization >* usługi Azure AD**.
+2. Wybierz pozycję **uzyskaj dostęp do**zasobów służbowych i upewnij się, że widzisz tekst podobny do tego, który jest wyświetlany **na *\<YOUR_ORGANIZATION >* usłudze Azure AD**.
 
-    ![Otwórz ekran służbowego przy użyciu konta z połączonych firmy contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
+    ![Uzyskaj dostęp do ekranu służbowego z podłączonym kontem contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Po dołączeniu urządzenia do sieci w organizacji należy mogła uzyskać dostęp do wszystkich zasobów przy użyciu firmowego lub szkolnego informacje o koncie.
+## <a name="next-steps"></a>Następne kroki
+Po dołączeniu urządzenia do sieci organizacji powinno być możliwe uzyskanie dostępu do wszystkich zasobów przy użyciu informacji o koncie służbowym.
 
-- Jeśli Twoja organizacja chce, aby zarejestrować urządzenie osobiste, takie jak telefon, zobacz [zarejestrowania urządzenia osobistego w sieci organizacji](user-help-register-device-on-network.md).
+- Jeśli Twoja organizacja chce zarejestrować urządzenie osobiste, takie jak telefon, zobacz temat [Rejestrowanie urządzenia osobistego w sieci organizacji](user-help-register-device-on-network.md).
 
-- Jeśli Twoja organizacja jest zarządzana w usłudze Microsoft Intune i masz pytania dotyczące rejestracji, logowania lub dowolnego innego związanych z usługą Intune problemu, zapoznaj się z [zawartość pomocy użytkownika usługi Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Jeśli Twoja organizacja jest zarządzana przy użyciu Microsoft Intune i masz pytania dotyczące rejestracji, logowania lub dowolnego problemu związanego z usługą Intune, zobacz [zawartość pomocy użytkownika usługi Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

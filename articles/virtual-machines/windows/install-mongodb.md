@@ -1,5 +1,5 @@
 ---
-title: Instalowanie MongoDB na maszynie wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
+title: Instalowanie MongoDB na maszynie wirtualnej z systemem Windows na platformie Azure
 description: Dowiedz się, jak zainstalować MongoDB na maszynie wirtualnej platformy Azure z systemem Windows Server 2012 R2 utworzonym przy użyciu modelu wdrażania Menedżer zasobów.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 3cf1e6ba574fdafd8150212688475450e4cc2379
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 37c1b58d364e7eadb33803ce7eac1f2b956ec1b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103129"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038549"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalowanie i Konfigurowanie MongoDB na maszynie wirtualnej z systemem Windows na platformie Azure
 [MongoDB](https://www.mongodb.org) to popularna baza danych NoSQL typu open source o wysokiej wydajności. Ten artykuł przeprowadzi Cię przez proces instalowania i konfigurowania MongoDB na maszynie wirtualnej z systemem Windows Server 2016 na platformie Azure. Możesz również [zainstalować MongoDB na maszynie wirtualnej z systemem Linux na platformie Azure](../linux/install-mongodb.md).
@@ -56,7 +56,7 @@ Aby rozpocząć instalowanie i Konfigurowanie MongoDB, [Zaloguj się do maszyny 
 8. Na ostatnim ekranie kliknij przycisk **Instaluj**.
 
 ## <a name="configure-the-vm-and-mongodb"></a>Skonfiguruj maszynę wirtualną i MongoDB
-1. Zmienne ścieżki nie są aktualizowane przez Instalatora MongoDB. Bez lokalizacji MongoDB `bin` w zmiennej PATH należy określić pełną ścieżkę za każdym razem, gdy używasz pliku wykonywalnego MongoDB. Aby dodać lokalizację do zmiennej PATH:
+1. Zmienne ścieżki nie są aktualizowane przez Instalatora MongoDB. Bez lokalizacji `bin` MongoDB w zmiennej PATH należy określić pełną ścieżkę za każdym razem, gdy używasz pliku wykonywalnego MongoDB. Aby dodać lokalizację do zmiennej PATH:
    
    * Kliknij prawym przyciskiem myszy menu **Start** , a następnie wybierz pozycję **system**.
    * Kliknij pozycję **Zaawansowane ustawienia systemu**, a następnie kliknij pozycję **zmienne środowiskowe**.
@@ -64,14 +64,14 @@ Aby rozpocząć instalowanie i Konfigurowanie MongoDB, [Zaloguj się do maszyny 
      
      ![Konfiguruj zmienne ścieżki](./media/install-mongodb/configure-path-variables.png)
      
-     Dodaj ścieżkę do folderu MongoDB `bin` . MongoDB jest zazwyczaj instalowany w *katalogu C:\Program Files\MongoDB*. Sprawdź ścieżkę instalacji na maszynie wirtualnej. Poniższy przykład dodaje domyślną lokalizację instalacji MongoDB do `PATH` zmiennej:
+     Dodaj ścieżkę do folderu MongoDB `bin`. MongoDB jest zazwyczaj instalowany w *katalogu C:\Program Files\MongoDB*. Sprawdź ścieżkę instalacji na maszynie wirtualnej. Poniższy przykład dodaje domyślną lokalizację instalacji MongoDB do zmiennej `PATH`:
      
      ```
      ;C:\Program Files\MongoDB\Server\3.6\bin
      ```
      
      > [!NOTE]
-     > Pamiętaj, aby dodać wiodący średnik (`;`), aby wskazać, że dodajesz lokalizację `PATH` do zmiennej.
+     > Pamiętaj, aby dodać wiodący średnik (`;`), aby wskazać, że dodajesz lokalizację do zmiennej `PATH`.
 
 2. Utwórz MongoDB danych i katalogów dzienników na dysku z danymi. Z menu **Start** wybierz **polecenie Wiersz polecenia**. Poniższe przykłady tworzą katalogi na dysku F:
    
@@ -85,12 +85,12 @@ Aby rozpocząć instalowanie i Konfigurowanie MongoDB, [Zaloguj się do maszyny 
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    Przydzielenie plików dziennika przez MongoDB może potrwać kilka minut i rozpocząć nasłuchiwanie połączeń. Wszystkie komunikaty dziennika są kierowane do pliku *F:\MongoLogs\mongolog.log* , gdy `mongod.exe` serwer zostanie uruchomiony i przydzieli pliki dziennika.
+    Przydzielenie plików dziennika przez MongoDB może potrwać kilka minut i rozpocząć nasłuchiwanie połączeń. Wszystkie komunikaty dziennika są kierowane do pliku *F:\MongoLogs\mongolog.log* , ponieważ serwer `mongod.exe` uruchamia i przydziela pliki dziennika.
    
    > [!NOTE]
    > Wiersz polecenia pozostaje skoncentrowany na tym zadaniu, gdy wystąpienie MongoDB jest uruchomione. Pozostaw otwarte okno wiersza polecenia, aby kontynuować działanie MongoDB. Lub zainstaluj MongoDB jako usługę, jak opisano w następnym kroku.
 
-4. Aby uzyskać bardziej niezawodne środowisko MongoDB, zainstaluj je `mongod.exe` jako usługę. Tworzenie usługi oznacza, że nie musisz opuszczać wiersza polecenia uruchamianego za każdym razem, gdy chcesz użyć MongoDB. Utwórz usługę w następujący sposób, dostosowując ścieżkę do danych i katalogów dzienników odpowiednio:
+4. Aby uzyskać bardziej niezawodne środowisko MongoDB, zainstaluj `mongod.exe` jako usługę. Tworzenie usługi oznacza, że nie musisz opuszczać wiersza polecenia uruchamianego za każdym razem, gdy chcesz użyć MongoDB. Utwórz usługę w następujący sposób, dostosowując ścieżkę do danych i katalogów dzienników odpowiednio:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
@@ -98,9 +98,9 @@ Aby rozpocząć instalowanie i Konfigurowanie MongoDB, [Zaloguj się do maszyny 
    
     Poprzednie polecenie tworzy usługę o nazwie MongoDB, z opisem "Mongo DB". Określono również następujące parametry:
    
-   * `--dbpath` Opcja określa lokalizację katalogu danych.
-   * `--logpath` Opcja musi być użyta do określenia pliku dziennika, ponieważ uruchomiona usługa nie ma okna polecenia, aby wyświetlić dane wyjściowe.
-   * `--logappend` Opcja określa, że ponowne uruchomienie usługi powoduje dołączenie danych wyjściowych do istniejącego pliku dziennika.
+   * Opcja `--dbpath` określa lokalizację katalogu danych.
+   * Opcja `--logpath` musi być użyta do określenia pliku dziennika, ponieważ uruchomiona usługa nie ma okna polecenia, aby wyświetlić dane wyjściowe.
+   * Opcja `--logappend` określa, że ponowne uruchomienie usługi powoduje dołączenie danych wyjściowych do istniejącego pliku dziennika.
    
    Aby uruchomić usługę MongoDB, uruchom następujące polecenie:
    
@@ -117,7 +117,7 @@ Dzięki MongoDB uruchomionemu jako pojedynczemu wystąpieniu lub zainstalowanemu
 mongo  
 ```
 
-Możesz wyświetlić listę baz danych za pomocą `db` polecenia. Wstaw dane w następujący sposób:
+Można wyświetlić listę baz danych za pomocą polecenia `db`. Wstaw dane w następujący sposób:
 
 ```
 db.foo.insert( { a : 1 } )
@@ -135,7 +135,7 @@ Dane wyjściowe są podobne do poniższego przykładu:
 { "_id" : "ObjectId("57f6a86cee873a6232d74842"), "a" : 1 }
 ```
 
-`mongo` Zamknij konsolę w następujący sposób:
+Zamknij konsolę `mongo` w następujący sposób:
 
 ```
 exit
@@ -158,7 +158,7 @@ Regułę można także utworzyć przy użyciu narzędzia do zarządzania w trybi
 W razie potrzeby utwórz regułę sieciowej grupy zabezpieczeń, aby zezwolić na dostęp do MongoDB spoza istniejącej podsieci sieci wirtualnej platformy Azure. Reguły sieciowej grupy zabezpieczeń można utworzyć przy użyciu [Azure Portal](nsg-quickstart-portal.md) lub [Azure PowerShell](nsg-quickstart-powershell.md). Podobnie jak w przypadku reguł zapory systemu Windows, Zezwól na port TCP 27017 do interfejsu sieci wirtualnej maszyny wirtualnej MongoDB.
 
 > [!NOTE]
-> Port TCP 27017 jest domyślnym portem używanym przez MongoDB. Można zmienić ten port przy użyciu `--port` parametru podczas ręcznego uruchamiania `mongod.exe` lub z usługi. Jeśli zmienisz port, pamiętaj o zaktualizowaniu zasad zapory systemu Windows i sieciowych grup zabezpieczeń w powyższych krokach.
+> Port TCP 27017 jest domyślnym portem używanym przez MongoDB. Można zmienić ten port przy użyciu `--port` parametru podczas uruchamiania `mongod.exe` ręcznie lub z usługi. Jeśli zmienisz port, pamiętaj o zaktualizowaniu zasad zapory systemu Windows i sieciowych grup zabezpieczeń w powyższych krokach.
 
 
 ## <a name="next-steps"></a>Następne kroki

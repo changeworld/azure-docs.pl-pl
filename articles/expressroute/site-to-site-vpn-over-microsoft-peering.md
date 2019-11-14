@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie sieci VPN typu lokacja-lokacja za pośrednictwem komunikacji równorzędnej firmy Microsoft — ExpressRoute — Azure | Microsoft Docs
-description: Skonfiguruj połączenia IPsec/IKE na platformie Azure za pośrednictwem obwodu komunikacji równorzędnej firmy Microsoft ExpressRoute przy użyciu bramy sieci VPN typu lokacja-lokacja.
+title: 'Azure ExpressRoute: Konfigurowanie sieci VPN S2S za pośrednictwem komunikacji równorzędnej firmy Microsoft'
+description: Konfigurowanie połączeń protokołu IPsec/IKE z platformą Azure za pośrednictwem komunikacji równorzędnej obwodu usługi ExpressRoute firmy Microsoft przy użyciu bramy sieci VPN typu lokacja lokacja.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: d26210ab226f8e907aa845d51dca94f59badd6a3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748077"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038105"
 ---
-# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurowanie sieci VPN typu lokacja-lokacja za pośrednictwem komunikacji równorzędnej firmy Microsoft ExpressRoute
+# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurowanie sieci VPN lokacja lokacja za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute
 
-Ten artykuł pomaga skonfigurować bezpieczne szyfrowanie szyfrowane między siecią lokalną i sieciami wirtualnymi platformy Azure (sieci wirtualnych) za pośrednictwem połączenia prywatnego ExpressRoute. Komunikacji równorzędnej firmy Microsoft można użyć do ustanowienia tunelu sieci VPN IPsec/IKE typu lokacja-lokacja między wybranymi sieciami lokalnymi i usługą Azure sieci wirtualnych. Skonfigurowanie bezpiecznego tunelu za pośrednictwem usługi ExpressRoute umożliwia wymianę danych z poufnością, ochrona przed powtarzaniem, autentyczność i integralność.
+Ten artykuł pomaga skonfigurować bezpieczne zaszyfrowane połączenia między swoją siecią lokalną i sieci wirtualnych platformy Azure (Vnet) za pośrednictwem połączenia prywatnego usługi ExpressRoute. Możesz użyć programu Microsoft komunikację równorzędną, aby ustanowić tunel protokołu IPsec/IKE sieci VPN lokacja lokacja między sieciami wirtualnymi platformy Azure i wybranych dla sieci lokalnych. Konfigurowanie bezpieczny tunel za pośrednictwem usługi ExpressRoute umożliwia wymianę danych z poufności, powtarzaniu, autentyczności i integralności.
 
 >[!NOTE]
->Podczas konfigurowania sieci VPN typu lokacja-lokacja za pośrednictwem komunikacji równorzędnej firmy Microsoft jest naliczana opłata za ruch wychodzący bramy sieci VPN i sieci VPN. Aby uzyskać więcej informacji, zobacz [Cennik usługi VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway).
+>Po skonfigurowaniu sieci VPN typu lokacja lokacja za pośrednictwem firmy Microsoft komunikacji równorzędnej, opłaty są naliczane za bramą sieci VPN i sieci VPN ruch wychodzący. Aby uzyskać więcej informacji, zobacz [cennik bramy sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="architecture"></a>Będąc
+## <a name="architecture"></a>Architektura
 
 
-  ![Przegląd łączności](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
+  ![Omówienie połączenia](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 
 
-Aby zapewnić wysoką dostępność i nadmiarowość, można skonfigurować wiele tuneli przez dwie pary MSEE-PE obwodu usługi ExpressRoute i włączyć równoważenie obciążenia między tunelami.
+Wysoką dostępność i nadmiarowość można skonfigurować wiele tuneli za pośrednictwem dwóch par MSEE PE obwód usługi ExpressRoute i włączyć równoważenie obciążenia między tuneli.
 
   ![Opcje wysokiej dostępności](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
 
-Tunele sieci VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft można kończyć przy użyciu bramy sieci VPN lub przy użyciu odpowiedniego wirtualnego urządzenia sieciowego (urządzenie WUS) dostępnego za pośrednictwem portalu Azure Marketplace. Trasy można wymieniać statycznie lub dynamicznie za pośrednictwem szyfrowanych tuneli bez udostępniania wymiany tras do podstawowej komunikacji równorzędnej firmy Microsoft. W przykładach w tym artykule protokół BGP (inny niż sesja BGP użyta do utworzenia komunikacji równorzędnej firmy Microsoft) służy do dynamicznego wymieniania prefiksów przez zaszyfrowane tunele.
+Za pomocą bramy sieci VPN lub przy użyciu odpowiednich wirtualnego urządzenia sieciowego (WUS) dostępnych za pośrednictwem witryny Azure Marketplace można przerywać działanie tuneli sieci VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft. Użytkownik może wymieniać trasy statycznie lub dynamicznie za pośrednictwem tuneli zaszyfrowanych bez narażania wymiana tras do podstawowej komunikacji równorzędnej firmy Microsoft. W przykładach w niniejszym artykule protokołu BGP (niezależne od sesji protokołu BGP, umożliwiający utworzenie komunikacji równorzędnej firmy Microsoft) służy do dynamicznej wymiany prefiksów za pośrednictwem tuneli zaszyfrowane.
 
 >[!IMPORTANT]
->W przypadku sieci lokalnej zwykle jest przerywana komunikacja równorzędna firmy Microsoft w strefie DMZ, a prywatna Komunikacja równorzędna jest przerywana w ramach podstawowej strefy sieciowej. Dwie strefy byłyby segregowane przy użyciu zapór. W przypadku konfigurowania komunikacji równorzędnej firmy Microsoft przeznaczonej wyłącznie do włączania tunelowania zabezpieczonego za pośrednictwem ExpressRoute należy odfiltrować tylko publiczne adresy IP, które są anonsowane za pośrednictwem komunikacji równorzędnej firmy Microsoft.
+>Dla strony lokalnymi zwykle komunikacji równorzędnej firmy Microsoft jest został przerwany w sieci obwodowej i prywatnej komunikacji równorzędnej jest zakończony w strefie sieci podstawowej. Dwie strefy zostałby rozdzielony za pomocą zapory. Jeśli konfigurujesz komunikację równorzędną Microsoft wyłącznie dla włączania bezpiecznego tunelowania za pośrednictwem usługi ExpressRoute, pamiętaj, aby filtrować tylko publiczne adresy IP zainteresowania, które są wprowadzenie anonsowane za pośrednictwem komunikacji równorzędnej firmy Microsoft.
 >
 >
 
-## <a name="workflow"></a>Utworzonego
+## <a name="workflow"></a>Przepływ pracy
 
-1. Skonfiguruj komunikację równorzędną firmy Microsoft dla obwodu usługi ExpressRoute.
-2. Anonsowanie wybranych lokalnych prefiksów publicznych platformy Azure do sieci lokalnej za pośrednictwem komunikacji równorzędnej firmy Microsoft.
-3. Konfigurowanie bramy sieci VPN i ustanawianie tuneli IPsec
+1. Skonfiguruj komunikację równorzędną Microsoft dla obwodu usługi ExpressRoute.
+2. Anonsowanie wybranego Azure regionalnych prefiksy publiczne do sieci lokalnej za pośrednictwem komunikacji równorzędnej firmy Microsoft.
+3. Konfigurowanie bramy sieci VPN i ustanowienia tuneli IPsec
 4. Skonfiguruj lokalne urządzenie sieci VPN.
-5. Utwórz połączenie między lokacjami IPsec/IKE.
-6. Obowiązkowe Skonfiguruj zapory/filtrowanie na lokalnym urządzeniu sieci VPN.
-7. Testowanie i weryfikowanie komunikacji IPsec za pośrednictwem obwodu usługi ExpressRoute.
+5. Utwórz połączenie lokacja lokacja protokołu IPsec/IKE.
+6. (Opcjonalnie) Konfigurowanie zapór/filtrowania, wybierz lokalnego urządzenia sieci VPN.
+7. Testowanie i weryfikowanie Komunikacja IPsec w obwodzie usługi ExpressRoute.
 
 ## <a name="peering"></a>1. Skonfiguruj komunikację równorzędną firmy Microsoft
 
-Aby skonfigurować połączenie sieci VPN typu lokacja-lokacja za pośrednictwem usługi ExpressRoute, należy użyć komunikacji równorzędnej usługi ExpressRoute firmy Microsoft.
+Aby skonfigurować połączenia sieci VPN typu lokacja lokacja za pośrednictwem usługi ExpressRoute, możesz korzystać, komunikacja równorzędna firmy Microsoft usługi ExpressRoute.
 
-* Aby skonfigurować nowy obwód ExpressRoute, należy rozpocząć od artykułu [wymagania wstępne ExpressRoute](expressroute-prerequisites.md) , a następnie [utworzyć i zmodyfikować obwód ExpressRoute](expressroute-howto-circuit-arm.md).
+* Aby skonfigurować nowy obwód usługi ExpressRoute, zacznij od [wymagania wstępne usługi ExpressRoute](expressroute-prerequisites.md) artykułu, a następnie [tworzenie i modyfikowanie obwodu ExpressRoute](expressroute-howto-circuit-arm.md).
 
-* Jeśli masz już obwód usługi ExpressRoute, ale nie skonfigurowano komunikacji równorzędnej firmy Microsoft, skonfiguruj komunikację równorzędną firmy Microsoft przy użyciu funkcji [tworzenia i modyfikowania komunikacji równorzędnej dla obwodu usługi ExpressRoute](expressroute-howto-routing-arm.md#msft) .
+* Jeśli masz już obwodu usługi ExpressRoute, ale nie mają skonfigurowane komunikacji równorzędnej firmy Microsoft, można skonfigurować za pomocą komunikacji równorzędnej firmy Microsoft [Utwórz i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute](expressroute-howto-routing-arm.md#msft) artykułu.
 
-Po skonfigurowaniu obwodu i komunikacji równorzędnej firmy Microsoft można łatwo wyświetlić go przy użyciu strony **Przegląd** w Azure Portal.
+Po skonfigurowaniu obwodu i komunikacji równorzędnej firmy Microsoft można łatwo wyświetlić za pomocą **Przegląd** strony w witrynie Azure portal.
 
-![zwarci](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
+![obwód](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
 ## <a name="routefilter"></a>2. Konfigurowanie filtrów tras
 
@@ -71,21 +71,21 @@ Filtr tras umożliwia zidentyfikowanie usług, które mają być używane za po�
 
 ![filtr tras](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-W tym przykładzie wdrożenie jest tylko w regionie " *zachodnie stany USA 2* ". Reguła filtru trasy jest dodawana, aby zezwalać tylko na anonse prefiksów regionalnych w regionie zachodnie stany USA 2, które mają wartość wspólnotową BGP *12076:51026*. Określ prefiksy regionalne, których chcesz zezwolić, wybierając pozycję **Zarządzaj regułą**.
+W tym przykładzie wdrożenia znajduje się tylko w *Azure zachodnie stany USA 2* regionu. Reguły filtru trasy zostanie dodany do Zezwalaj tylko anons prefiksy regionalnych Azure zachodnie stany USA 2, który ma wartość społeczności BGP *12076:51026*. Określ regionalnych prefiksy, które chcesz zezwolić, wybierając **reguły Zarządzaj**.
 
-W filtrze trasy należy również wybrać obwody usługi ExpressRoute, których dotyczy filtr trasy. Możesz wybrać obwody usługi ExpressRoute, wybierając pozycję **Dodaj obwód**. Na powyższym rysunku filtr trasy jest skojarzony z przykładowym obwodem ExpressRoute.
+W ciągu filtru trasy, należy również wybrać obwodów usługi ExpressRoute, dla których ma zastosowanie filtru trasy. Obwody usługi ExpressRoute można wybrać, wybierając **dodać obwodu**. Na poprzednim rysunku filtru tras jest skojarzona z przykładu obwód usługi ExpressRoute.
 
-### <a name="configfilter"></a>2,1 Konfigurowanie filtru tras
+### <a name="configfilter"></a>2.1 Konfigurowanie filtru tras
 
-Skonfiguruj filtr tras. Aby uzyskać instrukcje, zobacz [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-portal.md).
+Konfigurowanie filtrów tras. Aby uzyskać instrukcje, zobacz [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-portal.md).
 
-### <a name="verifybgp"></a>2,2. Sprawdź trasy BGP
+### <a name="verifybgp"></a>2.2 Sprawdź trasy protokołu BGP
 
-Po pomyślnym utworzeniu komunikacji równorzędnej firmy Microsoft za pośrednictwem obwodu usługi ExpressRoute i przypisaniu filtru tras do obwodu można sprawdzić trasy protokołu BGP otrzymane z usługi MSEE na urządzeniach PE, które są połączone z MSEE. Polecenie weryfikacji różni się w zależności od systemu operacyjnego urządzeń PE.
+Po pomyślnie utworzono Microsoft komunikacji równorzędnej na obwód usługi ExpressRoute i skojarzony filtr tras obwodu, możesz sprawdzić trasy protokołu BGP otrzymane od Msee na urządzeniach PE, które są komunikacji równorzędnej z rozwiązaniami Msee. Polecenie weryfikacji różni się w zależności od systemu operacyjnego urządzenia PE.
 
-#### <a name="cisco-examples"></a>Przykłady Cisco
+#### <a name="cisco-examples"></a>Przykłady firmy Cisco
 
-Ten przykład używa polecenia Cisco IOS-XE. W tym przykładzie wystąpienie routingu wirtualnego i przesyłania dalej (VRF) służy do izolowania ruchu komunikacji równorzędnej.
+W tym przykładzie użyto polecenia Cisco IOS-XE. W tym przykładzie wirtualnego routingu i przekazywania wystąpień (VRF) jest używany do izolacji ruchu komunikacji równorzędnej.
 
 ```
 show ip bgp vpnv4 vrf 10 summary
@@ -100,13 +100,13 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 X.243.229.34    4        12076   17671   17650    25228    0    0 1w4d           68
 ```
 
-Aby wyświetlić listę prefiksów odebranych od sąsiada, Skorzystaj z następującego przykładu:
+Aby wyświetlić listę prefiksów odebranych z sąsiada, skorzystaj z następującego przykładu:
 
 ```
 sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 ```
 
-Aby potwierdzić, że otrzymujesz poprawny zestaw prefiksów, możesz zweryfikować krzyżowo. Następujące Azure PowerShell dane wyjściowe polecenia zawierają listę prefiksów anonsowanych za pośrednictwem komunikacji równorzędnej firmy Microsoft dla każdej usługi i każdego regionu platformy Azure:
+Aby upewnić się, otrzymują odpowiedni zestaw prefiksów, użytkownik może sprawdzać. Następujące dane wyjściowe polecenia programu Azure PowerShell Wyświetla listę prefiksów anonsowanych za pośrednictwem komunikacji równorzędnej dla poszczególnych usług i dla każdego regionu platformy Azure firmy Microsoft:
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
@@ -114,36 +114,36 @@ Get-AzBgpServiceCommunity
 
 ## <a name="vpngateway"></a>3. Skonfiguruj bramę sieci VPN i tunele IPsec
 
-W tej sekcji tunele sieci VPN IPsec są tworzone między bramą sieci VPN platformy Azure a lokalnym urządzeniem sieci VPN. Przykłady używają urządzeń sieci VPN Cisco Cloud Service router (CSR1000).
+W tej sekcji są tworzone Tunele IPsec sieci VPN, między bramą sieci VPN platformy Azure i lokalnym urządzeniem sieci VPN. W przykładach użyto urządzenia sieci VPN Cisco Cloud Service routera (CSR1000).
 
-Na poniższym diagramie przedstawiono tunele IPsec sieci VPN ustanowione między lokalnym urządzeniem sieci VPN 1 i pary wystąpień bramy sieci VPN platformy Azure. Dwa tunele IPsec sieci VPN ustanowione między lokalnym urządzeniem sieci VPN 2 i parą wystąpień bramy sieci VPN platformy Azure nie są zilustrowane na diagramie, a szczegóły konfiguracji nie są wymienione na liście. Jednak dodatkowe tunele sieci VPN zwiększają wysoką dostępność.
+Na poniższym diagramie przedstawiono sieci VPN IPsec tuneli określana pomiędzy lokalnym urządzeniem sieci VPN 1 i pary wystąpienie bramy sieci VPN platformy Azure. Dwa Tunele IPsec sieci VPN jest określana pomiędzy lokalnym urządzeniem sieci VPN 2 pary wystąpienie bramy sieci VPN platformy Azure nie jest przedstawione na diagramie i nie są wyświetlane szczegóły konfiguracji. Jednak mające tunele VPN dodatkowe zwiększa wysokiej dostępności.
 
-  ![Tunele sieci VPN](./media/site-to-site-vpn-over-microsoft-peering/EstablishTunnels.png)
+  ![Tuneli sieci VPN](./media/site-to-site-vpn-over-microsoft-peering/EstablishTunnels.png)
 
-Za pośrednictwem pary tunelu IPsec zostaje ustanowiona sesja eBGP do wymiany tras sieci prywatnych. Na poniższym diagramie przedstawiono sesję eBGP ustanowioną za pośrednictwem pary tunelu IPsec:
+Za pośrednictwem para tuneli protokołu IPsec zostanie utworzona sesja eBGP do wymiany tras sieci prywatnej. Na poniższym diagramie przedstawiono sesji eBGP odbywają się za pośrednictwem pary tunelu IPsec:
 
-  ![sesje eBGP przez parę tunelu](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
+  ![sesje eBGP za pośrednictwem tunelu parę](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
 
-Na poniższym diagramie przedstawiono streszczenie omówienia przykładowej sieci:
+Na poniższym diagramie przedstawiono omówienie abstrakcyjną przykładowej sieci:
 
-  ![Przykładowa sieć](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
+  ![przykład sieci](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
 
-### <a name="about-the-azure-resource-manager-template-examples"></a>Przykłady szablonów Azure Resource Manager
+### <a name="about-the-azure-resource-manager-template-examples"></a>Przykłady szablonów usługi Azure Resource Manager — informacje
 
-W tych przykładach Brama sieci VPN i zakończenia tunelu IPsec są konfigurowane przy użyciu szablonu Azure Resource Manager. Jeśli dopiero zaczynasz korzystać z szablonów Menedżer zasobów lub poznać podstawy szablonu Menedżer zasobów, zobacz [Opis struktury i składni szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablon w tej sekcji tworzy środowisko platformy Azure Greenfield (VNet). Jeśli jednak masz istniejącą sieć wirtualną, możesz odwoływać się do niej w szablonie. Jeśli nie masz doświadczenia w konfiguracjach IPsec/IKE bramy sieci VPN, zobacz [Tworzenie połączenia typu lokacja-lokacja](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+W przykładach bramy sieci VPN i zakończeń tunelu IPsec są skonfigurowane przy użyciu szablonu usługi Azure Resource Manager. Jeśli jesteś nowym użytkownikiem przy użyciu szablonów usługi Resource Manager, lub podstawy szablonu usługi Resource Manager, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Ten szablon w tej sekcji tworzy rozwiązanie środowiska platformy Azure (VNet). Jednak jeśli masz istniejącej sieci wirtualnej, można się odwołać je w szablonie. Jeśli użytkownik nie jest zaznajomiony z konfiguracjami lokacja lokacja protokołu IPsec/IKE bramy sieci VPN, zobacz [utworzyć połączenie lokacja lokacja](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
->Aby utworzyć tę konfigurację, nie trzeba używać szablonów Azure Resource Manager. Tę konfigurację można utworzyć przy użyciu Azure Portal lub programu PowerShell.
+>Nie trzeba za pomocą szablonów usługi Azure Resource Manager, aby można było utworzyć tej konfiguracji. Można utworzyć tej konfiguracji, za pomocą witryny Azure portal lub programu PowerShell.
 >
 >
 
-### <a name="variables3"></a>3,1. Zadeklaruj zmienne
+### <a name="variables3"></a>Wersji 3.1 Zadeklaruj zmienne w
 
-W tym przykładzie deklaracje zmiennych odpowiadają przykładowej sieci. Podczas deklarowania zmiennych należy zmodyfikować tę sekcję, aby odzwierciedlała Twoje środowisko.
+W tym przykładzie deklaracje zmiennych odpowiadają przykładową sieć. Podczas deklarowania zmiennych, zmodyfikuj tę sekcję, aby odzwierciedlać Twojego środowiska.
 
-* Zmienna **localAddressPrefix** jest tablicą lokalnych adresów IP, aby zakończyć tunele IPSec.
-* **GatewaySku** określa PRZEPŁYWNOŚĆ sieci VPN. Aby uzyskać więcej informacji na temat gatewaySku i vpnType, zobacz [VPN Gateway ustawień konfiguracji](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Aby uzyskać cennik, zobacz [Cennik usługi VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway).
-* Ustaw wartość **vpnType** na **RouteBased**.
+* Zmienna **localAddressPrefix** jest tablicą adresów IP w środowisku lokalnym, aby zakończyć tuneli IPsec.
+* **GatewaySku** Określa przepływność sieci VPN. Aby uzyskać więcej informacji na temat gatewaySku i vpnType zobacz [ustawienia konfiguracji bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Aby poznać ceny, zobacz [cennik bramy sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway).
+* Ustaw **vpnType** do **RouteBased**.
 
 ```json
 "variables": {
@@ -175,9 +175,9 @@ W tym przykładzie deklaracje zmiennych odpowiadają przykładowej sieci. Podcza
 },
 ```
 
-### <a name="vnet"></a>3,2 Utwórz sieć wirtualną (VNet)
+### <a name="vnet"></a>3.2 Tworzenie sieci wirtualnej (VNet)
 
-Jeśli kojarzy istniejącą sieć wirtualną z tunelami sieci VPN, możesz pominąć ten krok.
+Jeśli są kojarzenie istniejącej sieci wirtualnej przy użyciu tuneli sieci VPN, możesz pominąć ten krok.
 
 ```json
 {
@@ -210,7 +210,7 @@ Jeśli kojarzy istniejącą sieć wirtualną z tunelami sieci VPN, możesz pomin
 },
 ```
 
-### <a name="ip"></a>3,3 przypisanie publicznych adresów IP do wystąpień bramy sieci VPN
+### <a name="ip"></a>3.3 przydzielać publiczne adresy IP do wystąpienia bramy sieci VPN
  
 Przypisz publiczny adres IP dla każdego wystąpienia bramy sieci VPN.
 
@@ -237,9 +237,9 @@ Przypisz publiczny adres IP dla każdego wystąpienia bramy sieci VPN.
   },
 ```
 
-### <a name="termination"></a>3,4 określić zakończenie lokalnego tunelu VPN (Brama sieci lokalnej)
+### <a name="termination"></a>3.4 Określ zakończenie działania tunelu sieci VPN w środowisku lokalnym (Brama sieci lokalnej)
 
-Lokalne urządzenia sieci VPN są określane jako **Brama sieci lokalnej**. Poniższy fragment kodu JSON określa również szczegóły zdalnego elementu równorzędnego BGP:
+Lokalne urządzenia sieci VPN są określane jako **bramy sieci lokalnej**. Poniższy fragment kodu json określa również zdalnego szczegóły elementu równorzędnego protokołu BGP:
 
 ```json
 {
@@ -262,13 +262,13 @@ Lokalne urządzenia sieci VPN są określane jako **Brama sieci lokalnej**. Poni
 },
 ```
 
-### <a name="creategw"></a>3,5 Tworzenie bramy sieci VPN
+### <a name="creategw"></a>3.5 Tworzenie bramy sieci VPN
 
-Ta sekcja szablonu służy do konfigurowania bramy sieci VPN z wymaganymi ustawieniami konfiguracji Active-Active. Należy pamiętać o następujących wymaganiach:
+Ta sekcja szablonu konfiguruje bramy sieci VPN z wymaganymi ustawieniami w konfiguracji aktywny aktywny. Należy pamiętać, następujące wymagania:
 
-* Utwórz bramę sieci VPN za pomocą VpnType **"RouteBased"** . To ustawienie jest obowiązkowe, jeśli chcesz włączyć routing BGP między bramą sieci VPN i lokalną siecią VPN.
-* Aby ustanowić tunele sieci VPN między dwoma wystąpieniami bramy sieci VPN i danym urządzeniem lokalnym w trybie aktywny-aktywny, parametr **"activeActive"** ma **wartość "true** " w szablonie Menedżer zasobów. Aby dowiedzieć się więcej o bramach sieci VPN o wysokiej dostępności, zobacz [łączność z bramą VPN o wysokiej](../vpn-gateway/vpn-gateway-highlyavailable.md)dostępności.
-* Aby skonfigurować sesje eBGP między tunelami sieci VPN, należy określić dwa różne WPW po obu stronach. Preferowane jest określenie prywatnych numerów ASN. Aby uzyskać więcej informacji, zobacz [Omówienie usług BGP i bramy sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-bgp-overview.md).
+* Tworzenie bramy sieci VPN za pomocą **"RouteBased"** VpnType. To ustawienie jest wymagane, jeśli chcesz włączyć routing protokołu BGP między bramą sieci VPN i sieci VPN w środowisku lokalnym.
+* Aby ustanowić tuneli VPN między tymi wystąpieniami bramy sieci VPN i urządzenia podanego w środowisku lokalnym w trybie aktywny aktywny **"activeActive"** parametr ma wartość **true** w szablonie usługi Resource Manager . Aby dowiedzieć się więcej na temat bram sieci VPN o wysokiej dostępności, zobacz [o wysokiej dostępności połączenie bramy sieci VPN](../vpn-gateway/vpn-gateway-highlyavailable.md).
+* Aby skonfigurować sesje eBGP między tunele VPN, należy określić dwa różne numery ASN po obu stronach. Zaleca się, aby określić prywatnych numerów ASN. Aby uzyskać więcej informacji, zobacz [Omówienie protokołu BGP i sieci VPN platformy Azure bram](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 ```json
 {
@@ -324,9 +324,9 @@ Ta sekcja szablonu służy do konfigurowania bramy sieci VPN z wymaganymi ustawi
   },
 ```
 
-### <a name="ipsectunnel"></a>3,6 Ustanów tunele IPsec
+### <a name="ipsectunnel"></a>3.6 ustanowienia tuneli IPsec
 
-Ostatnia akcja skryptu tworzy tunele IPsec między bramą sieci VPN platformy Azure a lokalnym urządzeniem sieci VPN.
+Ostateczna akcja skryptu tworzy tuneli IPsec między bramą sieci VPN platformy Azure i lokalnym urządzeniem sieci VPN.
 
 ```json
 {
@@ -356,18 +356,18 @@ Ostatnia akcja skryptu tworzy tunele IPsec między bramą sieci VPN platformy Az
 
 ## <a name="device"></a>4. Skonfiguruj lokalne urządzenie sieci VPN
 
-Brama sieci VPN platformy Azure jest zgodna z wieloma urządzeniami sieci VPN od różnych dostawców. Informacje o konfiguracji i urządzeniach, które zostały sprawdzone pod kątem współpracy z bramą sieci VPN, znajdują się w temacie [Informacje o urządzeniach sieci VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
+Brama sieci VPN platformy Azure jest zgodna z wielu urządzeń sieci VPN od różnych dostawców. Aby uzyskać informacje o konfiguracji i urządzeń, które zostały zatwierdzone do pracy z usługą VPN gateway, zobacz [urządzenia sieci VPN o](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
-Podczas konfigurowania urządzenia sieci VPN potrzebne są następujące elementy:
+Podczas konfigurowania urządzenia sieci VPN, potrzebne są następujące elementy:
 
-* Klucz współużytkowany. Jest to ten sam klucz współużytkowany, który jest określany podczas tworzenia połączenia sieci VPN typu lokacja-lokacja. W przykładach użyto podstawowego klucza wspólnego. Zalecamy, aby do użycia wygenerować bardziej złożony klucz.
-* Publiczny adres IP bramy sieci VPN. Publiczny adres IP można wyświetlić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia. Aby znaleźć publiczny adres IP bramy sieci VPN przy użyciu Azure Portal, przejdź do opcji bramy sieci wirtualnej, a następnie kliknij nazwę bramy.
+* Klucz wspólny. Jest to ten sam klucz współużytkowany, którego należy określić podczas tworzenia połączenia sieci VPN typu lokacja lokacja. W przykładach użyto podstawowego klucza współużytkowanego. Zalecamy, aby do użycia wygenerować bardziej złożony klucz.
+* Publiczny adres IP bramy sieci VPN. Publiczny adres IP można wyświetlić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia. Aby znaleźć publiczny adres IP bramy sieci VPN przy użyciu witryny Azure portal, przejdź do bramy sieci wirtualnej, a następnie kliknij nazwę bramy.
 
-Zazwyczaj eBGP elementy równorzędne są połączone bezpośrednio (często za pośrednictwem połączenia sieci WAN). Jednak podczas konfigurowania eBGP przez tunele IPsec sieci VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft w usłudze ExpressRoute istnieje wiele domen routingu między elementami równorzędnymi eBGP. Użyj polecenia **eBGP-wieloskokowych** , aby określić relację sąsiada eBGP między dwoma niebezpośrednio połączonymi elementami równorzędnymi. Liczba całkowita, która następuje po eBGP-wieloskokowych polecenie określa wartość czasu wygaśnięcia w pakietach BGP. Polecenie **Maximum-Paths eibgp 2** umożliwia Równoważenie obciążenia ruchu między dwoma ścieżkami protokołu BGP.
+Zazwyczaj eBGP elementów równorzędnych były bezpośrednio podłączone (często w ciągu połączenia WAN). Konfigurując eBGP za pośrednictwem tuneli IPsec sieci VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute, istnieją jednak wiele domen routingu między komputerami równorzędnymi eBGP. Użyj **wielokrotnego przeskoku ebgp** polecenie, aby ustanowić relację sąsiada eBGP między tymi dwoma nie-bezpośrednio połączonych elementów równorzędnych. Liczba całkowita, która następuje po wielokrotnego przeskoku ebgp polecenia określa wartość czasu wygaśnięcia w pakiety protokołu BGP. Polecenie **eibgp ścieżki maksymalnie 2** umożliwia równoważenie obciążenia ruchem między tych dwóch ścieżek protokołu BGP.
 
-### <a name="cisco1"></a>Przykład Cisco CSR1000
+### <a name="cisco1"></a>Przykład CSR1000 Cisco
 
-W poniższym przykładzie przedstawiono konfigurację dla programu Cisco CSR1000 na maszynie wirtualnej funkcji Hyper-V jako lokalne urządzenie sieci VPN:
+Poniższy przykład przedstawia konfigurację Cisco CSR1000 na maszynie wirtualnej funkcji Hyper-V, lokalnych urządzeń sieci VPN:
 
 ```
 !
@@ -477,11 +477,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 
 ## <a name="firewalls"></a>5. Konfigurowanie filtrowania i zapory urządzeń sieci VPN (opcjonalnie)
 
-Skonfiguruj zaporę i filtrowanie zgodnie z wymaganiami.
+Konfigurowanie zapory i filtrowanie zgodnie z wymaganiami.
 
 ## <a name="testipsec"></a>6. testowanie i weryfikowanie tunelu IPsec
 
-Stan tuneli protokołu IPsec można zweryfikować w usłudze Azure VPN Gateway za pomocą poleceń programu PowerShell:
+Stan tuneli IPsec można sprawdzić w bramie sieci VPN platformy Azure za pomocą poleceń programu Powershell:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
@@ -495,7 +495,7 @@ EgressBytesTransferred  : 17734660
 IngressBytesTransferred : 10538211
 ```
 
-Aby sprawdzić stan tuneli w wystąpieniach usługi Azure VPN Gateway niezależnie, użyj następującego przykładu:
+Aby sprawdzić stan tuneli bramy sieci VPN Azure wystąpienia niezależnie, skorzystaj z następującego przykładu:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
@@ -517,9 +517,9 @@ EgressBytesTransferred           : 8980589
 LastConnectionEstablishedUtcTime : 11/04/2017 17:03:13
 ```
 
-Możesz również sprawdzić stan tunelu na lokalnym urządzeniu sieci VPN.
+Możesz również sprawdzić stan tunelu na urządzeniu sieci VPN w środowisku lokalnym.
 
-Przykład Cisco CSR1000:
+Przykład CSR1000 Cisco:
 
 ```
 show crypto session detail
@@ -571,7 +571,7 @@ Peer: 52.175.253.112 port 4500 fvrf: (none) ivrf: (none)
         Outbound: #pkts enc'ed 477 drop 0 life (KB/Sec) 4607953/437
 ```
 
-Protokół liniowy w interfejsie tunelu wirtualnego (VTI) nie zmienia się na "do" do momentu zakończenia operacji IKE fazy 2. Następujące polecenie weryfikuje skojarzenie zabezpieczeń:
+Protokół linii na wirtualnej interfejsu tunelu (VTI) nie zmienia się na "Konfigurowanie", dopóki nie zakończy się IKE Faza 2. Poniższe polecenie sprawdza skojarzenia zabezpieczeń:
 
 ```
 csr1#show crypto ikev2 sa
@@ -597,9 +597,9 @@ csr1#show crypto ipsec sa | inc encaps|decaps
     #pkts decaps: 746, #pkts decrypt: 746, #pkts verify: 746
 ```
 
-### <a name="verifye2e"></a>Weryfikowanie kompleksowej łączności między firmowymi sieciami lokalnymi i siecią wirtualną platformy Azure
+### <a name="verifye2e"></a>Sprawdź łączność end-to-end między wewnętrznej sieci lokalnej i sieci wirtualnej platformy Azure
 
-Jeśli tunele IPsec są skonfigurowane, a trasy statyczne są poprawnie ustawione, powinno być możliwe wysłanie polecenia ping do adresu IP zdalnego elementu równorzędnego BGP:
+Jeśli tuneli IPsec i trasy statyczne są poprawnie ustawione, należy wykonać polecenie ping na adres IP zdalnego elementu równorzędnego protokołu BGP:
 
 ```
 csr1#ping 10.2.0.228
@@ -615,9 +615,9 @@ Sending 5, 100-byte ICMP Echos to 10.2.0.229, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 ```
 
-### <a name="verifybgp"></a>Weryfikowanie sesji BGP za pośrednictwem protokołu IPsec
+### <a name="verifybgp"></a>Weryfikowanie sesje protokołu BGP za pośrednictwem protokołu IPsec
 
-Sprawdź stan elementu równorzędnego protokołu BGP w usłudze Azure VPN Gateway:
+Sprawdź stan elementu równorzędnego protokołu BGP, w bramie sieci VPN platformy Azure:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
@@ -633,13 +633,13 @@ Przykładowe dane wyjściowe:
 65000 07:13:51.0109601  10.2.0.228              507          500   10.2.0.229               6 Connected
 ```
 
-Aby sprawdzić listę prefiksów sieci odebranych za pośrednictwem eBGP z koncentratora sieci VPN w środowisku lokalnym, można filtrować według atrybutu "Origin":
+Aby sprawdzić listę prefiksy sieci odebranych za pośrednictwem eBGP VPN koncentrator lokalnie, można filtrować według atrybutów "Origin":
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
-W przykładowym wyjściu numer ASN 65010 jest numerem systemu autonomicznego protokołu BGP w środowisku sieci VPN lokalnym.
+W przykładowych danych wyjściowych 65010 numer ASN jest numer systemu autonomicznego BGP w sieci VPN w środowisku lokalnym.
 
 ```azurepowershell
 AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
@@ -648,7 +648,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 65010  10.2.0.228   10.0.0.0/24  172.16.0.10 EBgp   172.16.0.10  32768
 ```
 
-Aby wyświetlić listę anonsowanych tras:
+Aby wyświetlić listę trasy anonsowane:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
@@ -667,7 +667,7 @@ AsPath LocalAddress Network        NextHop    Origin SourcePeer Weight
 65010  10.2.0.229   10.0.0.0/24    10.2.0.229 Igp                  0
 ```
 
-Przykład lokalnej usługi Cisco CSR1000:
+Przykład dotyczący CSR1000 Cisco lokalnie:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 routes
@@ -688,7 +688,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 4
 ```
 
-Listę sieci anonsowanych z lokalnego programu Cisco CSR1000 do bramy sieci VPN platformy Azure można wyświetlić przy użyciu następującego polecenia:
+Na liście sieci anonsowane CSR1000 Cisco środowiska lokalnego do bramy sieci VPN platformy Azure mogą być wyświetlane za pomocą następującego polecenia:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 advertised-routes
@@ -711,4 +711,4 @@ Total number of prefixes 2
 
 * [Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute](how-to-npm.md)
 
-* [Dodawanie połączenia lokacja-lokacja do sieci wirtualnej z istniejącym połączeniem bramy sieci VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [Dodawanie połączenia lokacja lokacja z siecią wirtualną przy użyciu istniejącego połączenia bramy sieci VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

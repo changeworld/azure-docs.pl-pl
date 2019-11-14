@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux obrazów na platformie Azure | Microsoft Docs
+title: Red Hat Enterprise Linux obrazów na platformie Azure
 description: Dowiedz się więcej na temat Red Hat Enterprise Linux obrazów w Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: eaabe9da20c22dd3e4d924887adcbc7081857e91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764301"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035117"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux obrazów na platformie Azure
 W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące ich nazewnictwa i przechowywania.
@@ -42,7 +42,7 @@ az vm image list --publisher RedHat --all
 ## <a name="naming-convention"></a>Konwencja nazewnictwa
 Obrazy maszyn wirtualnych na platformie Azure są zorganizowane według wydawcy, oferty, jednostki SKU i wersji. Kombinacja wydawcy: Oferta: SKU: wersja to obraz URN i unikatowa identyfikacja obrazu do użycia.
 
-Na przykład `RedHat:RHEL:7-RAW:7.6.2018103108` odwołuje się do obrazu RHEL 7,6 RAW, utworzonego w dniu 31 października 2018.
+Na przykład `RedHat:RHEL:7-RAW:7.6.2018103108` odnosi się do obrazu RHEL 7,6 RAW, utworzonego w dniu 31 października 2018.
 
 Poniżej przedstawiono przykład sposobu tworzenia maszyny wirtualnej z systemem RHEL 7,6.
 ```azurecli-interactive
@@ -52,7 +52,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:7.6
 ### <a name="the-latest-moniker"></a>Krótka moniker
 Interfejs API REST platformy Azure umożliwia korzystanie z monikera "Najnowsza" w wersji zamiast określonej wersji. Użycie opcji "Najnowsza" spowoduje udostępnienie najnowszego dostępnego obrazu dla danego wydawcy, oferty i jednostki SKU.
 
-Na przykład `RedHat:RHEL:7-RAW:latest` odwołuje się do najnowszego obrazu z niesformatowaną partycją RHEL 7.
+Na przykład `RedHat:RHEL:7-RAW:latest` odnosi się do najnowszej dostępnej wersji obrazu z partycji raw RHEL 7.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:latest --no-wait
@@ -64,7 +64,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>Bieżąca Konwencja nazewnictwa
 Wszystkie aktualnie opublikowane obrazy RHEL używają modelu płatność zgodnie z rzeczywistym użyciem i są połączone z [usługą Red Hat Update Infrastructure (RHUI) na platformie Azure](https://aka.ms/rhui-update). Przyjęto nową konwencję nazewnictwa dla obrazów rodziny RHEL 7, w których schemat partycjonowania dysku (RAW, LVM) jest określony w jednostce SKU zamiast wersji. Wersja obrazu RHEL będzie zawierać 7-RAW lub 7-LVM. W tej chwili nie zmieniono nazewnictwa rodziny RHEL 6.
 
-W tej konwencji nazewnictwa będą dostępne 2 typy jednostek SKU obrazów RHEL 7: Jednostki SKU, które wyświetlają wersję pomocniczą i jednostki SKU, które nie są. Jeśli chcesz użyć jednostki SKU 7-RAW lub 7-LVM, możesz określić wersję pomocniczą RHEL, która ma zostać wdrożona w wersji. W przypadku wybrania "najnowszej wersji" zostanie zainicjowana Najnowsza wersja pomocnicza programu RHEL.
+W tej konwencji nazewnictwa będą dostępne 2 typy jednostek SKU obrazu RHEL 7: jednostki SKU, które wyświetlają wersję pomocniczą i jednostki SKU, które nie są. Jeśli chcesz użyć jednostki SKU 7-RAW lub 7-LVM, możesz określić wersję pomocniczą RHEL, która ma zostać wdrożona w wersji. W przypadku wybrania "najnowszej wersji" zostanie zainicjowana Najnowsza wersja pomocnicza programu RHEL.
 
 >[!NOTE]
 > W RHEL dla zestawu obrazów oprogramowania SAP wersja RHEL jest stała. W związku z tym ich Konwencja nazewnictwa obejmuje konkretną wersję w jednostce SKU.
@@ -88,7 +88,7 @@ Na przykład mogą zostać wyświetlone następujące 2 RHEL 7,4 obrazów:
 RedHat:RHEL:7-RAW:7.4.2018010506
 RedHat:RHEL:7.4:7.4.2019041718
 ```
-W tym przypadku `RedHat:RHEL:7.4:7.4.2019041718` zostanie on domyślnie dołączony do repozytoriów EUS i `RedHat:RHEL:7-RAW:7.4.2018010506` zostanie domyślnie dołączony do repozytoriów innych niż EUS.
+W takim przypadku `RedHat:RHEL:7.4:7.4.2019041718` zostanie domyślnie dołączony do repozytoriów EUS, a `RedHat:RHEL:7-RAW:7.4.2018010506` zostanie domyślnie dołączone do repozytoriów innych niż EUS.
 
 ### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Dla klientów, którzy nie chcą korzystać z obrazów EUS:
 Jeśli nie chcesz używać obrazu, który jest domyślnie połączony z EUS, wdróż go przy użyciu obrazu, który nie zawiera pomocniczego numeru wersji w jednostce SKU.
@@ -104,15 +104,15 @@ Poniższa tabela ma zastosowanie do obrazów RHEL zawierających wersję pomocni
 Wersja pomocnicza |Przykład obrazu EUS              |Stan EUS                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7,4      |RedHat:RHEL:7.4:7.4.2019041718 | Obrazy opublikowane w kwietniu 2019 i nowszych będą domyślnie EUS|
-RHEL W WERSJI 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Obrazy opublikowane czerwiec 2019 i nowsze będą domyślnie EUS |
+RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Obrazy opublikowane czerwiec 2019 i nowsze będą domyślnie EUS |
 RHEL 7,6      |RedHat:RHEL:7.6:7.6.2019052206 | Obrazy opublikowane z maja 2019 i nowsze będą domyślnie EUS  |
-RHEL 8,0      |ND                            | Brak EUS dostępnych w witrynie Red Hat                               |
+RHEL 8,0      |Nie dotyczy                            | Brak EUS dostępnych w witrynie Red Hat                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>Lista dostępnych obrazów RHEL
 Następujące oferty są obecnie dostępne do użytku ogólnego:
 
-Oferta| SKU | Partycjonowanie | Aprowizowanie | Uwagi
+Oferta| SKU | Partycjonowanie | Inicjowanie obsługi | Uwagi
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 7 — NIEPRZETWORZONY    | RAW    | Agent systemu Linux | Rodzina obrazów RHEL 7. x. <br> Nie dołączono do domyślnie repozytoriów EUS.
 |             | 7 — LVM    | LVM    | Agent systemu Linux | Rodzina obrazów RHEL 7. x. <br> Nie dołączono do domyślnie repozytoriów EUS.

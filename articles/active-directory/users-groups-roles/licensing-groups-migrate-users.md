@@ -1,31 +1,31 @@
 ---
-title: Dodawanie indywidualnie licencjonowanych użytkowników do licencjonowania opartego na grupach — Azure Active Directory | Microsoft Docs
+title: Dodawanie użytkowników z bezpośrednimi licencjami do licencjonowania grupowego — Azure AD | Microsoft Docs
 description: Jak przeprowadzić migrację z licencji poszczególnych użytkowników do licencjonowania opartego na grupach przy użyciu Azure Active Directory
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/26/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034762"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025678"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak migrować użytkowników z licencjami indywidualnymi do grup na potrzeby licencjonowania
 
-Możesz mieć istniejące licencje wdrożone dla użytkowników w organizacjach za pośrednictwem "bezpośredniego przypisania"; oznacza to, że za pomocą skryptów programu PowerShell lub innych narzędzi do przypisywania licencji poszczególnych użytkowników. Przed rozpoczęciem korzystania z licencjonowania opartego na grupach w celu zarządzania licencjami w organizacji można użyć tego planu migracji, aby bezproblemowo zamienić istniejące rozwiązania na Licencjonowanie oparte na grupach.
+Możesz mieć istniejące licencje wdrożone dla użytkowników w organizacjach za pośrednictwem bezpośredniego przypisywania. oznacza to, że za pomocą skryptów programu PowerShell lub innych narzędzi do przypisywania licencji poszczególnych użytkowników. Przed rozpoczęciem korzystania z licencjonowania opartego na grupach w celu zarządzania licencjami w organizacji można użyć tego planu migracji, aby bezproblemowo zamienić istniejące rozwiązania na Licencjonowanie oparte na grupach.
 
 Najważniejszym czynnikiem, które należy wziąć pod uwagę, jest uniknięcie sytuacji, w której migracja do licencjonowania opartego na grupach spowoduje tymczasowe utratę aktualnie przypisanych licencji. Wszelkie procesy, które mogą skutkować usunięciem licencji, powinny być nieuniknione w celu usunięcia ryzyka utraty dostępu do usług i ich danych.
 
@@ -84,6 +84,6 @@ Dowiedz się więcej na temat innych scenariuszy zarządzania licencjami grupy:
 - [Co to jest Licencjonowanie oparte na grupach w Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 - [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 - [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
-- [Jak migrować użytkowników między licencjami produktu przy użyciu licencjonowania opartego na grupach w programie Azure Active Directory](licensing-groups-change-licenses.md)
+- [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
 - [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
-- [Przykłady programu PowerShell dla licencjonowania opartego na grupach w Azure Active Directory](licensing-ps-examples.md)
+- [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-ps-examples.md)

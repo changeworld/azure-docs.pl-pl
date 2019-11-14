@@ -11,23 +11,23 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693084"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049157"
 ---
 # <a name="column-level-security"></a>Zabezpieczenia na poziomie kolumny
 Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumn tabeli bazy danych na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy.
-
+Zaktualizuj do filmu wideo poniżej — ponieważ to wideo zostało ogłoszone, [zabezpieczenia na poziomie wiersza](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) są również dostępne w SQL Data Warehouse. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Specyfikacja CLS umożliwia implementowanie ograniczeń dostępu do kolumn w celu ochrony poufnych danych. Na przykład w celu zapewnienia, że określeni użytkownicy będą mieli dostęp tylko do niektórych kolumn tabeli odnoszących się do ich działu. Logika ograniczeń dostępu znajduje się w warstwie bazy danych, a nie na danych w innej warstwie aplikacji. Baza danych stosuje ograniczenia dostępu przy każdej próbie dostępu do danych z dowolnej warstwy. To ograniczenie sprawia, że system zabezpieczeń jest bardziej niezawodny i niezawodny poprzez zmniejszenie powierzchni ogólnego systemu zabezpieczeń. Ponadto CLS eliminuje również potrzebę wprowadzenia widoków do filtrowania kolumn w celu nakładania ograniczeń dostępu dla użytkowników.
 
 Specyfikację CLS można zaimplementować przy użyciu instrukcji [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) języka T-SQL. Dzięki temu mechanizmowi obsługiwane jest uwierzytelnianie SQL i Azure Active Directory (AAD).
 
-![ze](./media/column-level-security/cls.png)
+![ze specyfikacją CLS](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Składnia
 

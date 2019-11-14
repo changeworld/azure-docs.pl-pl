@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej na podstawie obrazu zarządzanego na platformie Azure | Microsoft Docs
+title: Tworzenie maszyny wirtualnej na podstawie obrazu zarządzanego na platformie Azure
 description: Utwórz maszynę wirtualną z systemem Windows na podstawie uogólnionego obrazu zarządzanego przy użyciu Azure PowerShell lub Azure Portal w modelu wdrażania Menedżer zasobów.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 016b53660499b86de13855cfa994c84d6d9bc702
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749506"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037532"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Tworzenie maszyny wirtualnej na podstawie zarządzanego obrazu
 

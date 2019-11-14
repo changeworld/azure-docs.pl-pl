@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Tworzenie standardowego modułu równoważenia obciążenia — Azure Resource Manager szablonu'
-titlesuffix: Azure Load Balancer
+title: 'Szybki Start: Tworzenie standardowego modułu równoważenia obciążenia — szablon platformy Azure'
+titleSuffix: Azure Load Balancer
 description: Ten przewodnik Szybki Start przedstawia sposób tworzenia standardowego modułu równoważenia obciążenia przy użyciu szablonu Azure Resource Manager.
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ab55583d72297f2a1c72bac21e4414919f31b91b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 884ba1106e7b68fefaf91ee4e25cacd05bf96fc0
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161386"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048746"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Szybki start: Tworzenie standardowego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu szablonu Azure Resource Manager
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Szybki Start: Tworzenie standardowego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu szablonu Azure Resource Manager
 
 Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między wiele maszyn wirtualnych. W tym przewodniku szybki start przedstawiono sposób wdrażania szablonu Azure Resource Manager, który tworzy standardowy moduł równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych. Użycie szablonu Menedżer zasobów ma mniejszą liczbę kroków do porównania z innymi metodami wdrażania.
 
@@ -47,7 +47,7 @@ W szablonie zdefiniowano wiele zasobów platformy Azure:
 - **Microsoft. COMPUTE/virutalMachines** (3 z nich)
 - **Microsoft. Network/adresów publicipaddress** (3 z nich): dla każdej z trzech maszyn wirtualnych.
 - **Microsoft. Network/networkInterfaces** (3 z nich)
-- **Microsoft. COMPUTE/virtualMachine/rozszerzenia** (3 z nich): służy do konfigurowania usług IIS i stron sieci Web
+- **Microsoft. COMPUTE/virtualMachine/Extensions** (3 z nich): służy do konfigurowania usług IIS i stron sieci Web
 
 Aby znaleźć więcej szablonów związanych z Azure Load Balancer, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 

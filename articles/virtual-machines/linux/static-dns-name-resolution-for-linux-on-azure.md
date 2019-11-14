@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Używanie wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Jak utworzyć karty interfejsu sieci wirtualnej i używać wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: b143a28216d0d8417615ad2c40a3b66c9c5d1be2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: acfdfd4edf90b90998a913fa0c6479bedf0028b7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173868"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034743"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Tworzenie kart interfejsu sieci wirtualnej i używanie wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych na platformie Azure
 
@@ -37,7 +37,7 @@ Aby szybko wykonać zadanie, w poniższej sekcji znajdują się szczegółowe in
 Wymagania wstępne: Grupa zasobów, Sieć wirtualna i podsieć, sieciowa Grupa zabezpieczeń z protokołem SSH.
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Tworzenie karty interfejsu sieci wirtualnej ze statyczną wewnętrzną nazwą DNS
-Utwórz wirtualnej karty sieciowej za pomocą [AZ Network nic Create](/cli/azure/network/nic). Flaga `--internal-dns-name` interfejsu wiersza polecenia służy do ustawiania etykiety DNS, która zapewnia statyczną nazwę DNS karty interfejsu sieci wirtualnej (wirtualnej karty sieciowej). Poniższy przykład tworzy wirtualnej karty sieciowej o nazwie `myNic`, łączy go `myVnet` z siecią wirtualną i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
+Utwórz wirtualnej karty sieciowej za pomocą [AZ Network nic Create](/cli/azure/network/nic). Flaga interfejsu wiersza polecenia `--internal-dns-name` służy do ustawiania etykiety DNS, która zapewnia statyczną nazwę DNS karty interfejsu sieci wirtualnej (wirtualnej karty sieciowej). Poniższy przykład tworzy wirtualnej karty sieciowej o nazwie `myNic`, łączy go z siecią wirtualną `myVnet` i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>Wdróż maszynę wirtualną i Połącz wirtualnej karty sieciowej
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). `--nics` Flaga łączy wirtualnej karty sieciowej z maszyną wirtualną podczas wdrażania na platformie Azure. Poniższy przykład tworzy maszynę wirtualną o `myVM` nazwie przy użyciu usługi Azure Managed disks i dołącza wirtualnej karty sieciowej `myNic` o nazwie z poprzedniego kroku:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Flaga `--nics` łączy wirtualnej karty sieciowej z maszyną wirtualną podczas wdrażania na platformie Azure. Poniższy przykład tworzy maszynę wirtualną o nazwie `myVM` z platformą Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
 
 ```azurecli
 az vm create \
@@ -67,7 +67,7 @@ Infrastruktura z pełną integracją ciągłej integracji i ciągłego wdrażani
 
 Wewnętrzne nazwy DNS są rozpoznawane tylko w sieci wirtualnej platformy Azure. Ponieważ nazwy DNS są wewnętrzne, nie można ich rozpoznać do spoza Internetu, zapewniając dodatkowe zabezpieczenia infrastruktury.
 
-W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów obejmują `myResourceGroup`, `myNic`, i `myVM`.
+W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów obejmują `myResourceGroup`, `myNic`i `myVM`.
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 Najpierw utwórz grupę zasobów za pomocą polecenie [AZ Group Create](/cli/azure/group). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location westus
 
 Następnym krokiem jest skompilowanie sieci wirtualnej w celu uruchomienia maszyn wirtualnych. Sieć wirtualna zawiera jedną podsieć dla tego przewodnika. Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [Tworzenie sieci wirtualnej](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
-Utwórz sieć wirtualną za pomocą [AZ Network VNET Create](/cli/azure/network/vnet). Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` i podsieci o nazwie: `mySubnet`
+Utwórz sieć wirtualną za pomocą [AZ Network VNET Create](/cli/azure/network/vnet). Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` i podsieć o nazwie `mySubnet`:
 
 ```azurecli
 az network vnet create \
@@ -121,7 +121,7 @@ az network nsg rule create \
 ```
 
 ## <a name="associate-the-subnet-with-the-network-security-group"></a>Kojarzenie podsieci z grupą zabezpieczeń sieci
-Aby skojarzyć podsieć z grupą zabezpieczeń sieci, użyj polecenie [AZ Network VNET Subnet Update](/cli/azure/network/vnet/subnet). Poniższy przykład kojarzy nazwę `mySubnet` podsieci z grupą zabezpieczeń sieci o nazwie: `myNetworkSecurityGroup`
+Aby skojarzyć podsieć z grupą zabezpieczeń sieci, użyj polecenie [AZ Network VNET Subnet Update](/cli/azure/network/vnet/subnet). Poniższy przykład kojarzy nazwę podsieci `mySubnet` z grupą zabezpieczeń sieci o nazwie `myNetworkSecurityGroup`:
 
 ```azurecli
 az network vnet subnet update \
@@ -133,9 +133,9 @@ az network vnet subnet update \
 
 
 ## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Tworzenie karty interfejsu sieci wirtualnej i statycznych nazw DNS
-System Azure jest bardzo elastyczny, ale aby używać nazw DNS do rozpoznawania nazw maszyn wirtualnych, należy utworzyć karty interfejsu sieci wirtualnej (vNics), które zawierają etykietę DNS. vNics są ważne, ponieważ można je ponownie wykorzystać, łącząc je z różnymi maszynami wirtualnymi za pośrednictwem cyklu życia infrastruktury. Takie podejście utrzymuje wirtualnej karty sieciowej jako zasób statyczny, a maszyny wirtualne mogą być tymczasowe. Korzystając z etykiet DNS na wirtualnej karty sieciowej, możemy włączyć proste rozpoznawanie nazw z innych maszyn wirtualnych w sieci wirtualnej. Użycie nazw rozpoznawalnych umożliwia innym maszynom wirtualnym dostęp do serwera automatyzacji przez nazwę `Jenkins` DNS lub serwer git jako `gitrepo`.  
+System Azure jest bardzo elastyczny, ale aby używać nazw DNS do rozpoznawania nazw maszyn wirtualnych, należy utworzyć karty interfejsu sieci wirtualnej (vNics), które zawierają etykietę DNS. vNics są ważne, ponieważ można je ponownie wykorzystać, łącząc je z różnymi maszynami wirtualnymi za pośrednictwem cyklu życia infrastruktury. Takie podejście utrzymuje wirtualnej karty sieciowej jako zasób statyczny, a maszyny wirtualne mogą być tymczasowe. Korzystając z etykiet DNS na wirtualnej karty sieciowej, możemy włączyć proste rozpoznawanie nazw z innych maszyn wirtualnych w sieci wirtualnej. Użycie nazw rozpoznawalnych umożliwia innym maszynom wirtualnym dostęp do serwera automatyzacji przez nazwę DNS `Jenkins` lub serwer git jako `gitrepo`.  
 
-Utwórz wirtualnej karty sieciowej za pomocą [AZ Network nic Create](/cli/azure/network/nic). Poniższy przykład `myNic`tworzy wirtualnej karty sieciowej o nazwie, łączy go `myVnet` z siecią wirtualną o nazwie `myVnet`i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
+Utwórz wirtualnej karty sieciowej za pomocą [AZ Network nic Create](/cli/azure/network/nic). Poniższy przykład tworzy wirtualnej karty sieciowej o nazwie `myNic`, łączy go z siecią wirtualną `myVnet` o nazwie `myVnet`i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -149,7 +149,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Wdróż MASZYNę wirtualną w infrastrukturze sieci wirtualnej
 Mamy już sieć wirtualną i podsieć, czyli grupę zabezpieczeń sieci działającą jako Zapora do ochrony naszej podsieci, blokując cały ruch przychodzący z wyjątkiem portu 22 dla protokołu SSH i wirtualnej karty sieciowej. Teraz można wdrożyć maszynę wirtualną w ramach istniejącej infrastruktury sieciowej.
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy maszynę wirtualną o `myVM` nazwie przy użyciu usługi Azure Managed disks i dołącza wirtualnej karty sieciowej `myNic` o nazwie z poprzedniego kroku:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy maszynę wirtualną o nazwie `myVM` z platformą Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
 
 ```azurecli
 az vm create \

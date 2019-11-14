@@ -3,12 +3,12 @@ title: Wskazówki dotyczące ograniczonych żądań
 description: Dowiedz się, jak tworzyć lepsze zapytania, aby uniknąć ograniczania żądań do grafu zasobów platformy Azure.
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 46af11bfea47e37b97fa9492f71be8b5fe1817e3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 651a5daa9e7e19a5dc157ba0cfa17da2c8abe3db
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959205"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038323"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Wskazówki dotyczące żądań z ograniczeniami na wykresie zasobów platformy Azure
 
@@ -215,11 +215,11 @@ Ponieważ wykres zasobów platformy Azure zwraca co najwyżej 1000 wpisów w poj
   W przypadku korzystania z interfejsu wiersza polecenia platformy Azure lub Azure PowerShell zapytania do usługi Azure Resource Graph są automatycznie podzielone na strony, aby pobrać maksymalnie 5000 wpisów. Wyniki zapytania zwracają łączną listę wpisów ze wszystkich wywołań z podziałem na strony. W tym przypadku, w zależności od liczby wpisów w wyniku zapytania, pojedyncze zapytanie z podziałem na strony może zużywać więcej niż jeden przydział zapytania. Na przykład w poniższym przykładzie pojedynczy przebieg zapytania może zużywać do pięciu zasobów zapytania:
 
   ```azurecli-interactive
-  az graph query -q 'Resources | project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' --first 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'Resources | project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>Nadal masz ograniczone ograniczenia?

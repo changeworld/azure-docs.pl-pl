@@ -1,5 +1,5 @@
 ---
-title: Integracja Key Vault z SQL Server na maszynach wirtualnych z systemem Windows na platformie Azure (wersja klasyczna) | Microsoft Docs
+title: Integrowanie Key Vault z klasyczną maszyną wirtualną platformy Azure SQL Server
 description: Dowiedz się, jak zautomatyzować konfigurację szyfrowania SQL Server do użycia z Azure Key Vault. W tym temacie wyjaśniono, jak używać integracji Azure Key Vault z maszynami wirtualnymi SQL Server tworzyć w klasycznym modelu wdrażania.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 96d2dc567a4ccc96d33c2ccac233268a5b9148e4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: ddf23126154f5bc62c49f62ac4adf517d6987091
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100339"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033473"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurowanie integracji Azure Key Vault SQL Server na platformie Azure Virtual Machines (klasyczny)
 > [!div class="op_single_selector"]
@@ -29,11 +30,11 @@ ms.locfileid: "70100339"
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Istnieje wiele funkcji szyfrowania SQL Server, takich jak [przezroczyste szyfrowanie danych (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [szyfrowanie na poziomie kolumny (cle)](https://msdn.microsoft.com/library/ms173744.aspx)i [szyfrowanie kopii zapasowych](https://msdn.microsoft.com/library/dn449489.aspx). Te formy szyfrowania wymagają zarządzania kluczami kryptograficznymi używanymi do szyfrowania i ich przechowywania. Usługa Azure Key Vault (AKV) została zaprojektowana w celu poprawy bezpieczeństwa i zarządzania tymi kluczami w bezpiecznej i wysoce dostępnej lokalizacji. [SQL Server Connector](https://www.microsoft.com/download/details.aspx?id=45344) umożliwia SQL Server Korzystanie z tych kluczy z Azure Key Vault.
 
 > [!IMPORTANT] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Menedżer zasobów i klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 W przypadku uruchamiania SQL Server z maszynami lokalnymi istnieją [kroki, które można wykonać, aby uzyskać dostęp do Azure Key Vault z lokalnej maszyny SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Jednak w przypadku SQL Server na maszynach wirtualnych platformy Azure można zaoszczędzić czas, korzystając z funkcji *integracji Azure Key Vault* . Aby włączyć tę funkcję za pomocą kilku poleceń cmdlet Azure PowerShell, można zautomatyzować konfigurację niezbędną do uzyskania dostępu do magazynu kluczy w maszynie wirtualnej SQL.
 
@@ -52,12 +53,12 @@ Poniższa tabela zawiera listę parametrów wymaganych do uruchomienia skryptu p
 
 | Parametr | Opis | Przykład |
 | --- | --- | --- |
-| **$akvURL** |**Adres URL magazynu kluczy** |"https:\//contosokeyvault.Vault.Azure.NET/" |
+| **$akvURL** |**Adres URL magazynu kluczy** |"https:\//contosokeyvault.vault.azure.net/" |
 | **$spName** |**Nazwa główna usługi** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**Klucz tajny jednostki usługi** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
-| **$credName** |**Nazwa poświadczenia**: Integracja AKV tworzy poświadczenie w ramach SQL Server, umożliwiając maszynie wirtualnej dostęp do magazynu kluczy. Wybierz nazwę tego poświadczenia. |"mycred1" |
-| **$vmName** |**Nazwa maszyny wirtualnej**: Nazwa wcześniej utworzonej maszyny wirtualnej SQL. |"myvmname" |
-| **$serviceName** |**Nazwa usługi**: Nazwa usługi w chmurze skojarzona z maszyną wirtualną SQL. |"mycloudservicename" |
+| **$credName** |**Nazwa poświadczenia**: integracja usługi Azure Key Vault powoduje utworzenie poświadczenia w programie SQL Server, co umożliwia maszynie wirtualnej dostęp do magazynu kluczy. Wybierz nazwę tego poświadczenia. |"mycred1" |
+| **$vmName** |**Nazwa maszyny wirtualnej**: nazwa wcześniej utworzonej maszyny wirtualnej SQL. |"myvmname" |
+| **$serviceName** |**Nazwa usługi**: nazwa usługi w chmurze skojarzona z maszyną wirtualną SQL. |"mycloudservicename" |
 
 ### <a name="enable-akv-integration-with-powershell"></a>Włączanie integracji AKV z programem PowerShell
 Polecenie cmdlet **New-AzureVMSqlServerKeyVaultCredentialConfig** tworzy obiekt konfiguracji dla funkcji integracji Azure Key Vault. **Set-AzureVMSqlServerExtension** konfiguruje tę integrację z parametrem **KeyVaultCredentialSettings** . Poniższe kroki pokazują, jak używać tych poleceń.

@@ -1,5 +1,5 @@
 ---
-title: SQL Server grupy dostępności — Azure Virtual Machines — odzyskiwanie po awarii | Microsoft Docs
+title: Konfigurowanie grupy dostępności w różnych regionach
 description: W tym artykule wyjaśniono, jak skonfigurować SQL Server grupę dostępności na maszynach wirtualnych platformy Azure z repliką w innym regionie.
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159745"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037551"
 ---
-# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Skonfiguruj zawsze włączona Grupa dostępności na maszynach wirtualnych platformy Azure w różnych regionach
+# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Konfigurowanie grupy dostępności na platformie Azure SQL Server maszyny wirtualne w różnych regionach
 
 W tym artykule wyjaśniono, jak skonfigurować usługę SQL Server zawsze włączona replika grupy dostępności na maszynach wirtualnych platformy Azure w zdalnej lokalizacji platformy Azure. Ta konfiguracja służy do obsługi odzyskiwania po awarii.
 
@@ -166,9 +166,9 @@ Po przetestowaniu łączności należy przenieść replikę podstawową z powrot
 
 | Lokalizacja | Wystąpienie serwera | Rola | Tryb dostępności | Tryb pracy awaryjnej
 | ----- | ----- | ----- | ----- | -----
-| Podstawowe centrum danych | SQL — 1 | Podstawowy | Wykonywane | Automatyczny
-| Podstawowe centrum danych | SQL — 2 | Pomocniczy | Wykonywane | Automatyczny
-| Pomocnicze lub zdalne centrum danych | SQL — 3 | Pomocniczy | Komunikacji | Ręczna
+| Podstawowe centrum danych | SQL-1 | Podstawowy | Wykonywane | Automatyczny
+| Podstawowe centrum danych | SQL-2 | Pomocniczy | Wykonywane | Automatyczny
+| Pomocnicze lub zdalne centrum danych | SQL-3 | Pomocniczy | Komunikacji | Ręcznie
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Więcej informacji o planowanym i wymuszonym ręcznym przejściu w tryb failover

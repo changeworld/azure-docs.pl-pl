@@ -4,23 +4,23 @@ description: Dowiedz się, jak skonfigurować alerty zabezpieczeń dla ról zaso
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f191eac841bd9f79844a09cd25725de7ea8b154
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895774"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023086"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w Privileged Identity Management
 
@@ -36,11 +36,11 @@ Wybierz Alert, aby wyświetlić raport zawierający listę użytkowników lub r�
 
 ## <a name="alerts"></a>Alerty
 
-| Alert | Ważność | Wyzwalacz | Zalecenie |
+| Zgłoś alert | Ważność | Wyzwalacz | Zalecenie |
 | --- | --- | --- | --- |
-| **Zbyt wielu właścicieli przypisanych do zasobu** |Średnie |Zbyt wielu użytkowników ma rolę właściciela. |Zapoznaj się z użytkownikami na liście i przypisz je do mniej uprzywilejowanych ról. |
-| **Zbyt wiele stałych właścicieli przypisanych do zasobu** |Średnie |Zbyt wielu użytkowników jest trwale przypisanych do roli. |Przejrzyj użytkowników na liście i przypisz go ponownie, aby wymagać aktywacji do użycia przez rolę. |
-| **Utworzono zduplikowaną rolę** |Średnie |Wiele ról ma takie same kryteria. |Użyj tylko jednej z tych ról. |
+| **Zbyt wielu właścicieli przypisanych do zasobu** |Średni |Zbyt wielu użytkowników ma rolę właściciela. |Zapoznaj się z użytkownikami na liście i przypisz je do mniej uprzywilejowanych ról. |
+| **Zbyt wiele stałych właścicieli przypisanych do zasobu** |Średni |Zbyt wielu użytkowników jest trwale przypisanych do roli. |Przejrzyj użytkowników na liście i przypisz go ponownie, aby wymagać aktywacji do użycia przez rolę. |
+| **Utworzono zduplikowaną rolę** |Średni |Wiele ról ma takie same kryteria. |Użyj tylko jednej z tych ról. |
 
 ### <a name="severity"></a>Ważność
 

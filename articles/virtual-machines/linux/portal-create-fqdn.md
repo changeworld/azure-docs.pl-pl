@@ -1,5 +1,5 @@
 ---
-title: Tworzenie nazwy FQDN dla maszyny wirtualnej z systemem Linux w Azure Portal | Microsoft Docs
+title: Tworzenie nazwy FQDN dla maszyny wirtualnej z systemem Linux w Azure Portal
 description: Informacje na temat tworzenia w pełni kwalifikowanej nazwy domeny lub nazwy FQDN dla Menedżer zasobów maszyny wirtualnej opartej na Azure Portal.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7309f4be43c6b653f261e5de5fbe3e638e83294
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d30f5a60bf19e9185d992b973414f58942f9954
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082439"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035293"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Tworzenie w pełni kwalifikowanej nazwy domeny w Azure Portal dla maszyny wirtualnej z systemem Linux
 
@@ -31,7 +31,7 @@ W tym artykule przyjęto założenie, że maszyna wirtualna została już utworz
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Teraz można połączyć się zdalnie z maszyną wirtualną przy użyciu tej nazwy DNS, `ssh azureuser@mydns.westus.cloudapp.azure.com`na przykład z.
+Teraz można połączyć się zdalnie z maszyną wirtualną przy użyciu tej nazwy DNS, takiej jak z `ssh azureuser@mydns.westus.cloudapp.azure.com`.
 
 ## <a name="next-steps"></a>Następne kroki
 Teraz, gdy maszyna wirtualna ma publiczny adres IP i nazwę DNS, można wdrażać typowe struktury aplikacji lub usługi, takie jak Nginx, MongoDB, Docker itp.

@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej na podstawie migawki | Microsoft Docs
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej na podstawie migawki
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej na podstawie migawki
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 33f21786b1af4d169d184487a030b7e4ea321327
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92f56ef06583bbd59509337352e1509b35b449a6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304535"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032597"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Tworzenie maszyny wirtualnej na podstawie migawki za pomocą interfejsu wiersza polecenia
 
@@ -53,7 +53,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia dysku zarząd
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Tworzy dyski zarządzane na podstawie migawki przy użyciu identyfikatora migawki, nazwy dysku, typ magazynu i rozmiaru.  |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Tworzy maszynę wirtualną przy użyciu zarządzanego dysku systemu operacyjnego. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

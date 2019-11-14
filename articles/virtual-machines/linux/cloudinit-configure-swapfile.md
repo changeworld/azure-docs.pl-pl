@@ -1,5 +1,5 @@
 ---
-title: Używanie funkcji Cloud-init do konfigurowania partycji wymiany na maszynie wirtualnej z systemem Linux | Microsoft Docs
+title: Konfigurowanie partycji wymiany na maszynie wirtualnej z systemem Linux przy użyciu funkcji Cloud-init
 description: Jak używać funkcji Cloud-init do konfigurowania partycji wymiany na maszynie wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640767"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036768"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Konfigurowanie partycji wymiany na maszynie wirtualnej z systemem Linux przy użyciu funkcji Cloud-init
 W tym artykule przedstawiono sposób użycia usługi [Cloud-init](https://cloudinit.readthedocs.io) w celu skonfigurowania partycji wymiany dla różnych dystrybucji systemu Linux. Partycja wymiany jest tradycyjnie konfigurowana przez agenta systemu Linux (WALA) na podstawie tego, które z nich są wymagane.  W tym dokumencie opisano proces tworzenia partycji wymiany na żądanie podczas aprowizacji czasu przy użyciu funkcji Cloud-init.  Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)
@@ -54,7 +54,7 @@ Przed wdrożeniem tego obrazu należy utworzyć grupę zasobów za pomocą polec
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz Utwórz maszynę wirtualną za pomocą [AZ VM Create](/cli/azure/vm) i określ plik `--custom-data cloud_init_swappart.txt` Cloud-init w następujący sposób:
+Teraz Utwórz maszynę wirtualną za pomocą [AZ VM Create](/cli/azure/vm) i określ plik Cloud-init z `--custom-data cloud_init_swappart.txt` w następujący sposób:
 
 ```azurecli-interactive 
 az vm create \

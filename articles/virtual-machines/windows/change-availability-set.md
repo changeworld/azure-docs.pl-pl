@@ -1,5 +1,5 @@
 ---
-title: Zmiana zestawu dostępności maszyn wirtualnych | Microsoft Docs
+title: Zmiana zestawu dostępności maszyn wirtualnych
 description: Dowiedz się, jak zmienić zestaw dostępności dla maszyn wirtualnych przy użyciu Azure PowerShell i Menedżer zasobów model wdrażania.
 keywords: ''
 services: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 5390643723f2907301554e69a1142cef181deb13
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7d03d684edfded1450043b943fc188c7aa07dc16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749594"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039570"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Zmiana zestawu dostępności dla maszyny wirtualnej z systemem Windows
 W poniższych krokach opisano, jak zmienić zestaw dostępności maszyny wirtualnej przy użyciu Azure PowerShell. Maszynę wirtualną można dodać do zestawu dostępności tylko podczas jego tworzenia. Aby zmienić zestaw dostępności, należy usunąć i ponownie utworzyć maszynę wirtualną. 

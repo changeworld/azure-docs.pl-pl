@@ -1,5 +1,5 @@
 ---
-title: Elementy docelowe skalowalności i wydajności dla dysków maszyny wirtualnej w systemie Linux — Microsoft Azure | Microsoft Docs
+title: Elementy docelowe skalowalności i wydajności dla dysków maszyn wirtualnych w systemie Linux — Microsoft Azure
 description: Dowiedz się więcej o skalowalności i wydajności dla dysków maszyn wirtualnych podłączonych do maszyn wirtualnych z systemem Linux.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 5c1bdecdfc755db530be71a09b18542ade4519c5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8bc355c4658ae3f410fb8852008752cf4497751d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695882"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036338"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Elementy docelowe skalowalności i wydajności dla dysków maszyn wirtualnych w systemie Linux
 
@@ -31,6 +31,6 @@ Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej. Zobacz
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Azure subscription and service limits, quotas, and constraints (Limity subskrypcji i usług, limity przydziału oraz ograniczenia platformy Azure)](https://docs.microsoft.com/azure/azure-subscription-service-limits)

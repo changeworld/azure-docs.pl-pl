@@ -1,5 +1,5 @@
 ---
-title: Dołączanie dysku danych do maszyny wirtualnej z systemem Linux | Microsoft Docs
+title: Dołączanie dysku danych do maszyny wirtualnej z systemem Linux
 description: Użyj portalu, aby dołączyć nowy lub istniejący dysk danych do maszyny wirtualnej z systemem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036373"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037045"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny wirtualnej z systemem Linux przy użyciu portalu 
 W tym artykule opisano sposób dołączania nowych i istniejących dysków do maszyny wirtualnej z systemem Linux za pomocą Azure Portal. Możesz również [dołączyć dysk danych do maszyny wirtualnej z systemem Windows w Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -103,13 +103,13 @@ Jeśli używasz istniejącego dysku, który zawiera dane, Pomiń Instalowanie dy
 > [!NOTE]
 > Zalecane jest korzystanie z najnowszych wersji programu fdisk lub częściowo dostępnych dla Twojego dystrybucji.
 
-Podziel dysk na partycje za pomocą polecenia `fdisk`. Jeśli rozmiar dysku wynosi 2 tebibajtów (TIB) lub większy, należy użyć partycjonowania GPT, za pomocą `parted` którego można wykonać partycjonowanie GPT. Jeśli rozmiar dysku jest w obszarze 2TiB, można użyć partycji MBR lub GPT. Ustaw go jako dysk podstawowy na partycji 1 i zaakceptuj inne ustawienia domyślne. Poniższy przykład uruchamia `fdisk` proces w */dev/SDC*:
+Podziel dysk na partycje za pomocą polecenia `fdisk`. Jeśli rozmiar dysku wynosi 2 tebibajtów (TiB) lub większy, należy użyć partycjonowania GPT, można użyć `parted` do przeprowadzenia partycjonowania GPT. Jeśli rozmiar dysku jest w obszarze 2TiB, można użyć partycji MBR lub GPT. Ustaw go jako dysk podstawowy na partycji 1 i zaakceptuj inne ustawienia domyślne. Poniższy przykład uruchamia proces `fdisk` w */dev/SDC*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Użyj polecenia `n` , aby dodać nową partycję. W tym przykładzie wybieramy `p` również partycję podstawową i zaakceptujemy resztę wartości domyślnych. Dane wyjściowe będą podobne do następujących:
+Użyj `n` polecenie, aby dodać nową partycję. W tym przykładzie wybieramy również `p` dla partycji podstawowej i akceptuję resztę wartości domyślnych. Dane wyjściowe będą podobne do następujących:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -131,7 +131,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Wydrukuj tabelę partycji przez wpisanie `p` , a następnie użyj polecenia `w` , aby zapisać tabelę na dysku i zakończyć. Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
+Wydrukuj tabelę partycji, wpisując `p` a następnie używając `w`, aby zapisać tabelę na dysku i wyjść. Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
 
 ```bash
 Command (m for help): p
@@ -153,7 +153,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Teraz napisz system plików do partycji za pomocą `mkfs` polecenia. Określ typ systemu plików i nazwę urządzenia. Poniższy przykład tworzy system plików *ext4* na partycji */dev/sdc1* , który został utworzony w poprzednich krokach:
+Teraz napisz system plików do partycji za pomocą polecenia `mkfs`. Określ typ systemu plików i nazwę urządzenia. Poniższy przykład tworzy system plików *ext4* na partycji */dev/sdc1* , który został utworzony w poprzednich krokach:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -184,19 +184,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 ### <a name="mount-the-disk"></a>Instalowanie dysku
-Utwórz katalog służący do instalowania systemu plików przy `mkdir`użyciu programu. W poniższym przykładzie jest tworzony katalog o godzinie */datadrive*:
+Utwórz katalog służący do instalowania systemu plików przy użyciu `mkdir`. W poniższym przykładzie jest tworzony katalog o godzinie */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Służy `mount` do instalowania systemu plików. Poniższy przykład powoduje zainstalowanie partycji */dev/sdc1* w punkcie instalacji */datadrive* :
+Aby zainstalować system plików, użyj `mount`. Poniższy przykład powoduje zainstalowanie partycji */dev/sdc1* w punkcie instalacji */datadrive* :
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby upewnić się, że dysk zostanie automatycznie zainstalowany po ponownym uruchomieniu, należy dodać go do pliku */etc/fstab* . Zdecydowanie zaleca się również, aby identyfikator UUID (uniwersalny) był używany w */etc/fstab* , aby można było odwołać się do dysku, a nie tylko nazwy urządzenia (na przykład */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, użycie identyfikatora UUID pozwala uniknąć błędnego dysku instalowanego w danej lokalizacji. Do pozostałych dysków danych zostaną przypisane te same identyfikatory urządzeń. Aby znaleźć identyfikator UUID nowego dysku, użyj `blkid` narzędzia:
+Aby upewnić się, że dysk zostanie automatycznie zainstalowany po ponownym uruchomieniu, należy dodać go do pliku */etc/fstab* . Zdecydowanie zaleca się również, aby identyfikator UUID (uniwersalny) był używany w */etc/fstab* , aby można było odwołać się do dysku, a nie tylko nazwy urządzenia (na przykład */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, użycie identyfikatora UUID pozwala uniknąć błędnego dysku instalowanego w danej lokalizacji. Do pozostałych dysków danych zostaną przypisane te same identyfikatory urządzeń. Aby znaleźć identyfikator UUID nowego dysku, użyj narzędzia `blkid`:
 
 ```bash
 sudo -i blkid
@@ -235,12 +235,12 @@ Niektóre jądra systemu Linux obsługują operacje przycinania/mapowania do odr
 
 Istnieją dwa sposoby włączania obsługi przycinania na maszynie wirtualnej z systemem Linux. W zwykły sposób zapoznaj się z dystrybucją, aby uzyskać zalecane podejście:
 
-* Użyj opcji instalacji w/etc/fstab, na przykład: `discard`
+* Użyj opcji instalacji `discard` w */etc/fstab*, na przykład:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* W niektórych przypadkach opcja może `discard` mieć wpływ na wydajność. Alternatywnie można uruchomić `fstrim` polecenie ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
+* W niektórych przypadkach opcja `discard` może mieć wpływ na wydajność. Alternatywnie można uruchomić polecenie `fstrim` ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
   
     **Ubuntu**
   

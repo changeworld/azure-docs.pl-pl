@@ -1,6 +1,6 @@
 ---
-title: Dodawanie dysku danych do maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się dodać dysk danych trwałych do maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure
+title: Dodawanie dysku danych do maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Dowiedz się, jak dodać dysk danych trwałych do maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -16,20 +16,20 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 5d7ec2cbbc5cc1bf8bdc87d7f82a965b3bc8c267
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465837"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037102"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Dodawanie dysku do maszyny wirtualnej z systemem Linux
-W tym artykule pokazano, jak dołączyć dysk trwały z maszyną wirtualną tak, aby zachować swoje dane — nawet wtedy, gdy maszyna wirtualna jest aprowizowany ponownie z powodu konserwacji lub zmienianie jej rozmiaru.
+W tym artykule opisano sposób dołączania dysku trwałego do maszyny wirtualnej, dzięki czemu można zachować dane, nawet jeśli maszyna wirtualna jest ponownie inicjowana z powodu konserwacji lub zmiany rozmiarów.
 
 
-## <a name="attach-a-new-disk-to-a-vm"></a>Dołączyć nowy dysk do maszyny Wirtualnej
+## <a name="attach-a-new-disk-to-a-vm"></a>Dołączanie nowego dysku do maszyny wirtualnej
 
-Jeśli chcesz dodać dysk z danymi nową, pustą na maszynie Wirtualnej, użyj [dołączanie dysku maszyny wirtualnej az](/cli/azure/vm/disk?view=azure-cli-latest) polecenia `--new` parametru. Jeśli maszyna wirtualna jest w strefie dostępności, dysk jest automatycznie tworzony w innej strefie niż maszyna wirtualna. Aby uzyskać więcej informacji, zobacz [Przegląd stref dostępności](../../availability-zones/az-overview.md). W poniższym przykładzie tworzony jest dysk o nazwie *myDataDisk* oznacza to 50 Gb:
+Jeśli chcesz dodać nowy pusty dysk danych do maszyny wirtualnej, użyj polecenia [AZ VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) z parametrem `--new`. Jeśli maszyna wirtualna znajduje się w strefie dostępności, dysk jest automatycznie tworzony w tej samej strefie co maszyna wirtualna. Aby uzyskać więcej informacji, zobacz [omówienie strefy dostępności](../../availability-zones/az-overview.md). Poniższy przykład tworzy dysk o nazwie *myDataDisk* o rozmiarze 50 GB:
 
 ```azurecli
 az vm disk attach \
@@ -42,7 +42,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Dołączanie istniejącego dysku
 
-Można dołączyć istniejącego dysku, należy znaleźć identyfikator dysku i przekaż identyfikator, który ma [dołączanie dysku maszyny wirtualnej az](/cli/azure/vm/disk?view=azure-cli-latest) polecenia. Następujące przykładowe zapytania dla dysku o nazwie *myDataDisk* w *myResourceGroup*, dołącza go do maszyny Wirtualnej o nazwie *myVM*:
+Aby dołączyć istniejący dysk, Znajdź identyfikator dysku i przekaż identyfikator do polecenia [AZ VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) . W poniższym przykładzie zawarto zapytania dotyczące dysku o nazwie *myDataDisk* w liście *zasobów*, a następnie dołączenie go do maszyny wirtualnej o nazwie *myVM*:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -50,15 +50,15 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Łączenie z maszyną Wirtualną systemu Linux zainstaluj nowy dysk
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Nawiązywanie połączenia z maszyną wirtualną z systemem Linux w celu zainstalowania nowego dysku
 
-Partycjonowanie, formatowania i instalacji nowego dysku, dzięki czemu maszyny Wirtualnej systemu Linux można korzystać protokołu SSH z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz temat dotyczący [korzystania z protokołu SSH systemu Linux na platformie Azure](mac-create-ssh-keys.md). Poniższy przykład nawiązuje połączenie z maszyną wirtualną za pomocą publicznego wpis DNS *mypublicdns.westus.cloudapp.azure.com* nazwy użytkownika *azureuser*:
+Aby podzielić na partycje, sformatować i zainstalować nowy dysk, aby maszyna wirtualna z systemem Linux mogła go używać, Użyj protokołu SSH do maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz temat dotyczący [korzystania z protokołu SSH systemu Linux na platformie Azure](mac-create-ssh-keys.md). Poniższy przykład nawiązuje połączenie z maszyną wirtualną za pomocą publicznego wpisu DNS *mypublicdns.westus.cloudapp.Azure.com* z nazwą użytkownika *azureuser*:
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Po nawiązaniu połączenia z maszyną wirtualną, możesz przystąpić do dołączenia dysku. Po pierwsze Znajdź dysk przy użyciu `dmesg` (metody odnajdywania nowego dysku mogą się różnić). W poniższym przykładzie użyto dmesg do filtrowania *SCSI* dyski:
+Po nawiązaniu połączenia z maszyną wirtualną możesz dołączyć dysk. Najpierw Znajdź dysk przy użyciu `dmesg` (Metoda używana do odnajdywania nowego dysku może się różnić). Poniższy przykład używa dmesg do filtrowania na dyskach *SCSI* :
 
 ```bash
 dmesg | grep SCSI
@@ -75,15 +75,15 @@ Dane wyjściowe są podobne do poniższego przykładu:
 ```
 
 > [!NOTE]
-> Zalecane jest, możesz używać najnowszych wersji fdisk lub ulec, które są dostępne dla Twojej dystrybucji.
+> Zalecane jest korzystanie z najnowszych wersji programu fdisk lub częściowo dostępnych dla Twojego dystrybucji.
 
-W tym miejscu *sdc* to dysk, który chcemy. Określ partycję dysku za pomocą `parted`, jeśli rozmiar dysku wynosi 2 tebibajtów (TiB) lub większą, należy użyć partycji GPT, jeśli jest w obszarze 2TiB, wówczas można użyć partycji MBR lub GPT. Jeśli używasz partycji MBR, możesz użyć `fdisk`. Stał się podstawowym dysku na partycji 1, a następnie zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:
+W tym miejscu *SDC* jest dyskiem, który chcemy. Podziel dysk na partycje `parted`, jeśli rozmiar dysku wynosi 2 tebibajtów (TiB) lub większy, należy użyć partycjonowania GPT, jeśli znajduje się w obszarze 2TiB, można użyć partycji MBR lub GPT. Jeśli używasz partycjonowania MBR, możesz użyć `fdisk`. Ustaw go jako dysk podstawowy na partycji 1 i zaakceptuj inne ustawienia domyślne. Poniższy przykład uruchamia proces `fdisk` w */dev/SDC*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Użyj `n` polecenie, aby dodać nową partycję. W tym przykładzie mamy też `p` dla podstawowego Podziel na partycje i zaakceptuj pozostałe wartości domyślne. Dane wyjściowe będą podobne do poniższego przykładu:
+Użyj `n` polecenie, aby dodać nową partycję. W tym przykładzie wybieramy również `p` dla partycji podstawowej i akceptuję resztę wartości domyślnych. Dane wyjściowe będą podobne do następujących:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -105,7 +105,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Drukowanie tabeli partycji, wpisując `p` , a następnie użyj `w` można zapisać tabeli na dysku, a następnie zakończyć pracę. Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
+Wydrukuj tabelę partycji, wpisując `p` a następnie używając `w`, aby zapisać tabelę na dysku i wyjść. Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
 
 ```bash
 Command (m for help): p
@@ -126,12 +126,12 @@ The partition table has been altered!
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-Użyj poniższego polecenia, aby zaktualizować Jądro:
+Użyj poniższego polecenia, aby zaktualizować jądro:
 ```
 partprobe 
 ```
 
-Teraz Zapisz system plików z partycją `mkfs` polecenia. Określ typ swojego systemu plików, a nazwa urządzenia. Poniższy przykład tworzy *ext4* systemu plików na */dev/sdc1* partycji, który został utworzony w poprzednich krokach:
+Teraz napisz system plików do partycji za pomocą polecenia `mkfs`. Określ typ systemu plików i nazwę urządzenia. Poniższy przykład tworzy system plików *ext4* na partycji */dev/sdc1* , który został utworzony w poprzednich krokach:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -162,19 +162,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Teraz Utwórz katalog do instalacji systemu plików przy użyciu `mkdir`. Poniższy przykład tworzy katalog w */datadrive*:
+Teraz Utwórz katalog służący do instalowania systemu plików przy użyciu `mkdir`. W poniższym przykładzie jest tworzony katalog o godzinie */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Użyj `mount` następnie zainstalować w systemie plików. Poniższy przykład instaluje */dev/sdc1* partycji do */datadrive* punktu instalacji:
+Aby zainstalować system plików, użyj `mount`. Poniższy przykład powoduje zainstalowanie partycji */dev/sdc1* w punkcie instalacji */datadrive* :
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby upewnić się, że dysk zostanie ponownie zainstalowany automatycznie po ponownym uruchomieniu, należy dodać do */etc/fstab* pliku. Również zdecydowanie zaleca się, że identyfikator UUID (powszechnie Unikatowy identyfikator) jest używany w */etc/fstab* do odwoływania się do stacji, a nie tylko nazwy urządzenia (takich jak */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, za pomocą identyfikator UUID pozwala uniknąć nieprawidłową dysku montażu do danej lokalizacji. Pozostałe dyski danych będzie można przypisać te takich samych identyfikatorów urządzeń. Aby znaleźć identyfikator UUID nowy dysk, użyj `blkid` narzędzie:
+Aby upewnić się, że dysk zostanie automatycznie zainstalowany po ponownym uruchomieniu, należy dodać go do pliku */etc/fstab* . Zdecydowanie zaleca się również, aby identyfikator UUID (uniwersalny) był używany w */etc/fstab* , aby można było odwołać się do dysku, a nie tylko nazwy urządzenia (na przykład */dev/sdc1*). Jeśli system operacyjny wykryje błąd dysku podczas rozruchu, użycie identyfikatora UUID pozwala uniknąć błędnego dysku instalowanego w danej lokalizacji. Do pozostałych dysków danych zostaną przypisane te same identyfikatory urządzeń. Aby znaleźć identyfikator UUID nowego dysku, użyj narzędzia `blkid`:
 
 ```bash
 sudo blkid
@@ -189,38 +189,38 @@ Dane wyjściowe wyglądają podobnie do poniższego przykładu:
 ```
 
 > [!NOTE]
-> Nieprawidłowo edycji **/etc/fstab** plików nieraz powodowały rozruch systemu. Jeśli nie wiesz, zapoznaj się dokumentacją dystrybucji informacji na temat sposobu prawidłowo edytować ten plik. Zalecane jest również, czy kopia zapasowa pliku/etc/fstab został utworzony przed rozpoczęciem edycji.
+> Niewłaściwe edytowanie pliku **/etc/fstab** może spowodować, że system nie zostanie rozruchowy. W razie wątpliwości zapoznaj się z dokumentacją dystrybucji, aby uzyskać informacje o tym, jak prawidłowo edytować ten plik. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku/etc/fstab.
 
-Następnie otwórz */etc/fstab* plik w edytorze tekstów w następujący sposób:
+Następnie otwórz plik */etc/fstab* w edytorze tekstów w następujący sposób:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-W tym przykładzie, użyj wartości identyfikatora UUID dla */dev/sdc1* urządzenia, który został utworzony w poprzednich krokach, a punkt instalacji programu */datadrive*. Dodaj następujący wiersz na końcu */etc/fstab* pliku:
+W tym przykładzie Użyj wartości UUID dla urządzenia */dev/sdc1* , które zostało utworzone w poprzednich krokach, i mountpoint */datadrive*. Dodaj następujący wiersz na końcu pliku */etc/fstab* :
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Później usunięcie dysku danych bez konieczności edytowania fstab spowodować, że maszyna wirtualna może zakończyć się niepowodzeniem, rozruch. Większości dystrybucji zapewniają albo *nofail* i/lub *nobootwait* opcje fstab. Te opcje umożliwiają systemowi rozruchu, nawet w przypadku awarii dysku, należy zainstalować w czasie rozruchu. Zapoznaj się dokumentacją danej dystrybucji, aby uzyskać więcej informacji na temat tych parametrów.
+> Późniejsze usunięcie dysku z danymi bez edytowania fstab może spowodować niepowodzenie rozruchu maszyny wirtualnej. Większość dystrybucji oferuje opcje *nofail* i/lub *nobootwait* fstab. Te opcje umożliwiają rozruch systemu nawet wtedy, gdy instalacja dysku nie powiedzie się w czasie rozruchu. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
 >
-> *Nofail* opcja gwarantuje, że maszyna wirtualna zacznie nawet, jeśli system plików jest uszkodzony lub dysk nie istnieje w czasie rozruchu. Bez tej opcji, możesz napotkać zachowanie zgodnie z opisem w [nie SSH do maszyny Wirtualnej systemu Linux z powodu błędów FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+> Opcja *nofail* gwarantuje, że maszyna wirtualna jest uruchamiana, nawet jeśli system plików jest uszkodzony lub dysk nie istnieje w czasie rozruchu. Bez tej opcji może wystąpić sytuacja, zgodnie z opisem w artykule [nie można przeprowadzić protokołu SSH do maszyny wirtualnej z systemem Linux z powodu błędów fstab](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 >
-> Konsoli szeregowej maszyny Wirtualnej platformy Azure może służyć do dostępu do konsoli dla maszyny wirtualnej, jeśli modyfikowanie fstab spowodowało błąd rozruchu. Więcej szczegółów znajduje się w [dokumentację konsoli szeregowej](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
+> Za pomocą konsoli szeregowej maszyny wirtualnej platformy Azure można uzyskać dostęp do maszyny wirtualnej, jeśli modyfikacja fstab spowodowała awarię rozruchu. Więcej szczegółów można znaleźć w [dokumentacji konsoli szeregowej](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP obsługę systemu Linux na platformie Azure
-Niektóre jądra systemu Linux obsługuje TRIM/UNMAP operacji można odrzucić nieużywanych bloków na dysku. Ta funkcja jest szczególnie przydatne w magazynie standard storage platformy Azure, które usunięto strony nie są już prawidłowe i można odrzucać i może oszczędzać pieniądze, jeśli utworzysz dużych plików, a następnie je usunąć.
+### <a name="trimunmap-support-for-linux-in-azure"></a>Obsługa przycinania/mapowania dla systemu Linux na platformie Azure
+Niektóre jądra systemu Linux obsługują operacje przycinania/mapowania do odrzucania nieużywanych bloków na dysku. Ta funkcja jest szczególnie przydatna w przypadku magazynu w warstwie Standardowa, aby poinformować platformę Azure, że usunięte strony nie są już prawidłowe i mogą być odrzucone i mogą zaoszczędzić pieniądze w przypadku tworzenia dużych plików, a następnie ich usuwania.
 
-Istnieją dwa sposoby, aby umożliwić PRZYCINANIE obsługi w maszynie Wirtualnej systemu Linux. W zwykły sposób poszukaj dystrybucji Zalecanym podejściem:
+Istnieją dwa sposoby włączania obsługi przycinania na maszynie wirtualnej z systemem Linux. W zwykły sposób zapoznaj się z dystrybucją, aby uzyskać zalecane podejście:
 
-* Użyj `discard` instalacji opcji */etc/fstab*, na przykład:
+* Użyj opcji instalacji `discard` w */etc/fstab*, na przykład:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* W niektórych przypadkach `discard` opcji może mieć wpływ na wydajność. Alternatywnie, możesz uruchomić `fstrim` polecenie ręcznie z poziomu wiersza polecenia lub dodać do swojej crontab regularnego uruchamiania:
+* W niektórych przypadkach opcja `discard` może mieć wpływ na wydajność. Alternatywnie można uruchomić polecenie `fstrim` ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
 
     **Ubuntu**
 
@@ -240,7 +240,7 @@ Istnieją dwa sposoby, aby umożliwić PRZYCINANIE obsługi w maszynie Wirtualne
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby upewnić się, maszyny Wirtualnej systemu Linux jest prawidłowo skonfigurowany, zapoznaj się z [zoptymalizowania wydajności systemu Linux maszyny](optimization.md) zalecenia.
-* Zwiększyć pojemność przechowywania przez dodanie dodatkowych dysków i [konfigurowanie macierzy RAID](configure-raid.md) uzyskać wyższą wydajność.
+* Aby upewnić się, że maszyna wirtualna z systemem Linux została prawidłowo skonfigurowana, przejrzyj zalecenia dotyczące [wydajności maszyny z systemem Linux](optimization.md) .
+* Zwiększ pojemność magazynu, dodając dodatkowe dyski i [Skonfiguruj macierz RAID](configure-raid.md) pod kątem dodatkowej wydajności.

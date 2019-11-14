@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie maszyn wirtualnych platformy Azure przy użyciu usługi Chef | Microsoft Docs
+title: Wdrażanie maszyny wirtualnej platformy Azure za pomocą usługi Chef
 description: Dowiedz się, jak używać Chef do automatycznego wdrażania i konfigurowania maszyn wirtualnych na Microsoft Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58642cdbf164523390d5e4925290b43f6c05549b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080079"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039544"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatyzowanie wdrażania maszyny wirtualnej platformy Azure przy użyciu narzędzia Chef
 
@@ -36,7 +36,7 @@ Na poniższym diagramie przedstawiono architekturę Chef wysokiego poziomu.
 
 ![][2]
 
-Chef ma trzy główne składniki architektoniczne: Serwer Chef, klient Chef (Node) i Chef stacja robocza.
+Chef ma trzy główne składniki architektoniczne: Chef Server, Chef Client (Node) i Chef Workstation.
 
 Serwer Chef jest punktem zarządzania i dostępne są dwie opcje serwera Chef: rozwiązanie hostowane lub rozwiązanie lokalne.
 
@@ -97,17 +97,17 @@ Po utworzeniu organizacji Pobierz zestaw startowy.
 > Jeśli zostanie wyświetlony monit z ostrzeżeniem, że Twoje klucze zostaną zresetowane, nie będzie to możliwe, ponieważ nie skonfigurowano jeszcze istniejącej infrastruktury.
 >
 
-Ten plik zip zestawu startowego zawiera pliki konfiguracji organizacji i klucz użytkownika w `.chef` katalogu.
+Ten plik zip zestawu startowego zawiera pliki konfiguracji organizacji i klucz użytkownika w katalogu `.chef`.
 
-`organization-validator.pem` Muszą być pobrane oddzielnie, ponieważ jest kluczem prywatnym, a klucze prywatne nie powinny być przechowywane na serwerze Chef. W obszarze [Zarządzanie Chef](https://manage.chef.io/)przejdź do sekcji Administracja i wybierz pozycję "Resetuj klucz weryfikacji", która udostępnia plik do pobrania osobno. Zapisz plik w c:\chef.
+`organization-validator.pem` należy pobrać oddzielnie, ponieważ jest kluczem prywatnym, a klucze prywatne nie powinny być przechowywane na serwerze Chef. W obszarze [Zarządzanie Chef](https://manage.chef.io/)przejdź do sekcji Administracja i wybierz pozycję "Resetuj klucz weryfikacji", która udostępnia plik do pobrania osobno. Zapisz plik w c:\chef.
 
 ### <a name="configuring-your-chef-workstation"></a>Konfigurowanie stacji roboczej Chef
 
 Wyodrębnij zawartość pliku Chef-Starter. zip do c:\chef.
 
-Skopiuj wszystkie pliki w obszarze\.Chef-starter\chef-repo Chef do katalogu c:\chef.
+Skopiuj wszystkie pliki w obszarze Chef-starter\chef-repo\.Chef do katalogu c:\chef.
 
-`organization-validator.pem` Skopiuj plik do c:\chef, jeśli jest zapisany w c:\Downloads
+Skopiuj plik `organization-validator.pem` do c:\chef, jeśli jest on zapisany w c:\Downloads
 
 Katalog powinien teraz wyglądać podobnie do poniższego przykładu.
 
@@ -149,7 +149,7 @@ Dodaj następujące informacje do Twojego nóż. RB:
 
 validation_client_name "MyOrg-Walidator"
 
-validation_key "#{current_dir}/myorg.pem"
+validation_key "# {current_dir}/MyOrg.pem"
 
 Nóż [: azure_tenant_id] = "0000000-1111-AAAA-bbbb-222222222222"
 
@@ -193,9 +193,9 @@ knife[:azure_client_secret] = "#1234p$wdchef19"
 Następnie [Pobierz i zainstaluj](https://downloads.chef.io/chef-workstation/) stację roboczą Chef.
 Zainstaluj stację roboczą Chef w domyślnej lokalizacji. Ta instalacja może potrwać kilka minut.
 
-Na pulpicie zobaczysz "CW PowerShell", czyli środowisko załadowane za pomocą narzędzia potrzebnego do współdziałania z produktami Chef. W przypadku programu PowerShell dostępne są nowe polecenia ad hoc, takie `chef-run` jak, a także tradycyjne polecenia interfejsu CLI Chef, `chef`takie jak. Zapoznaj się z zainstalowaną wersją stacji roboczej Chef `chef -v`i narzędziami Chef w systemie. Możesz również sprawdzić wersję stacji roboczej, wybierając pozycję "informacje o Chef stacji roboczej" z aplikacji stacji roboczej Chef.
+Na pulpicie zobaczysz "CW PowerShell", czyli środowisko załadowane za pomocą narzędzia potrzebnego do współdziałania z produktami Chef. W przypadku programu PowerShell dostępne są nowe polecenia ad hoc, takie jak `chef-run`, a także tradycyjne polecenia interfejsu CLI Chef, takie jak `chef`. Zapoznaj się z zainstalowaną wersją stacji roboczej Chef i narzędziami Chef z `chef -v`. Możesz również sprawdzić wersję stacji roboczej, wybierając pozycję "informacje o Chef stacji roboczej" z aplikacji stacji roboczej Chef.
 
-`chef --version`powinien zwrócić podobny element:
+`chef --version` powinien zwrócić podobny element:
 
 ```
 Chef Workstation: 0.4.2
@@ -277,7 +277,7 @@ Uruchom następujące polecenie, aby wygenerować szablon:
 
     chef generate template webserver Default.htm
 
-Przejdź do `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` pliku. Edytuj plik, dodając prosty kod HTML "Hello world", a następnie Zapisz plik.
+Przejdź do pliku `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb`. Edytuj plik, dodając prosty kod HTML "Hello world", a następnie Zapisz plik.
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>Przekaż Cookbook do serwera Chef
 W tym kroku utworzysz kopię Cookbook utworzoną na komputerze lokalnym i przekażesz ją do hostowanego serwera Chef. Po przekazaniu Cookbook pojawia się na karcie **zasady** .
@@ -309,7 +309,7 @@ Przykład polecenia pojawia się dalej.
     -r "recipe[webserver]"
 
 
-W powyższym przykładzie zostanie utworzona maszyna wirtualna Standard_DS2_v2 z systemem Windows Server 2016 w regionie zachodnie stany USA. Zastąp określone zmienne i uruchom je.
+W powyższym przykładzie zostanie utworzona maszyna wirtualna Standard_DS2_v2 z systemem Windows Server 2016 zainstalowanym w regionie zachodnie stany USA. Zastąp określone zmienne i uruchom je.
 
 > [!NOTE]
 > Za pomocą wiersza polecenia mam również zautomatyzować reguły filtru sieci punktu końcowego przy użyciu parametru – TCP-Endpoints. Otwarto porty 80 i 3389 w celu zapewnienia dostępu do strony sieci Web i sesji RDP.
@@ -336,7 +336,7 @@ Możesz również wyświetlić stan węzła [Chef zarządzanie](https://manage.c
 
 Nie zapomnij, że można także nawiązać połączenie za pośrednictwem sesji RDP z Azure Portal za pośrednictwem portu 3389.
 
-Dziękuję! Zacznij pracę z infrastrukturą jako z platformą Azure już dzisiaj!
+Dziękujemy! Zacznij pracę z infrastrukturą jako z platformą Azure już dzisiaj!
 
 <!--Image references-->
 [2]: media/chef-automation/2.png

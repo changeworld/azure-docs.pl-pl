@@ -1,5 +1,5 @@
 ---
-title: 'Sprawdzanie ExpressRoute rozwiązywania problemów z łącznością: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: weryfikowanie łączności — Przewodnik rozwiązywania problemów'
 description: Ta strona zawiera instrukcje dotyczące rozwiązywania problemów i weryfikowania kompleksowej łączności obwodu usługi ExpressRoute.
 services: expressroute
 author: rambk
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580288"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033788"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Weryfikowanie połączenia usługi ExpressRoute
 Ten artykuł ułatwia sprawdzanie i rozwiązywanie problemów z łącznością ExpressRoute. ExpressRoute rozszerza sieć lokalną do chmury firmy Microsoft przez połączenie prywatne, które jest powszechnie obsługiwane przez dostawcę połączenia. ExpressRoute łączności tradycyjnie obejmuje trzy oddzielne strefy sieciowe w następujący sposób:
 
 -   Sieć klienta
 -   Sieć dostawcy
--   Centrum danych firmy Microsoft
+-   Microsoft Datacenter
 
 > [!NOTE]
 > W modelu łączności bezpośredniej ExpressRoute (oferowany z przepustowością 10/100 GB/s) cusomters może bezpośrednio łączyć się z portem routerów Microsoft Enterprise Edge (MSEE). W związku z tym w modelu łączności bezpośredniej istnieją tylko strefy klienta i sieci firmy Microsoft.
@@ -289,7 +289,7 @@ Przykładowe dane wyjściowe polecenia dla nieistniejącej komunikacji równorz�
     StatusCode: 400
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji i uzyskać pomoc, Skorzystaj z następujących linków:
+Aby uzyskać dodatkowe informacje lub pomoc zapoznaj się z następujących linków:
 
 - [pomoc techniczna firmy Microsoft][Support]
 - [Tworzenie i modyfikowanie obwodu usługi ExpressRoute][CreateCircuit]

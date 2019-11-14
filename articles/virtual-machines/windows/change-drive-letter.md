@@ -1,5 +1,5 @@
 ---
-title: 'Tworzenie dysku D: dysku z danymi na maszynie wirtualnej | Microsoft Docs'
+title: 'Tworzenie dysku D: dysku danych maszyny wirtualnej '
 description: 'Opisuje sposób zmiany liter dysku dla maszyny wirtualnej z systemem Windows, aby można było używać dysku D: jako dysku danych.'
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 491e7b7be084017cc370fe431c3175ac5b2673f9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079873"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033649"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Używanie dysku D: jako dysku z danymi na maszynie wirtualnej z systemem Windows
 Jeśli aplikacja musi używać dysku D do przechowywania danych, postępuj zgodnie z tymi instrukcjami, aby użyć innej litery dysku dla dysku tymczasowego. Nie należy używać dysku tymczasowego do przechowywania danych, które należy zachować.
 
-Jeśli zmienisz rozmiar lub zatrzymasz **(Cofnij przydział)** maszyny wirtualnej, może to spowodować umieszczenie maszyny wirtualnej w nowej funkcji hypervisor. Planowane lub nieplanowane zdarzenie konserwacji może również spowodować wyzwolenie tego położenia. W tym scenariuszu dysk tymczasowy zostanie ponownie przypisany do pierwszej dostępnej litery dysku. Jeśli masz aplikację, która odpowiednio wymaga dysku D:, należy wykonać następujące kroki, aby tymczasowo przenieść plik pagefile. sys, dołączyć nowy dysk z danymi i przypisać go literę D, a następnie przenieść plik pagefile. sys z powrotem do dysku tymczasowego. Po zakończeniu platforma Azure nie przejdzie z powrotem D: Jeśli maszyna wirtualna przejdzie do innej funkcji hypervisor.
+Jeśli zmienisz rozmiar lub **zatrzymasz (Cofnij przydział)** maszyny wirtualnej, może to spowodować umieszczenie maszyny wirtualnej w nowej funkcji hypervisor. Planowane lub nieplanowane zdarzenie konserwacji może również spowodować wyzwolenie tego położenia. W tym scenariuszu dysk tymczasowy zostanie ponownie przypisany do pierwszej dostępnej litery dysku. Jeśli masz aplikację, która odpowiednio wymaga dysku D:, należy wykonać następujące kroki, aby tymczasowo przenieść plik pagefile. sys, dołączyć nowy dysk z danymi i przypisać go literę D, a następnie przenieść plik pagefile. sys z powrotem do dysku tymczasowego. Po zakończeniu platforma Azure nie przejdzie z powrotem D: Jeśli maszyna wirtualna przejdzie do innej funkcji hypervisor.
 
 Aby uzyskać więcej informacji na temat sposobu korzystania z dysku tymczasowego przez platformę Azure, zobacz [opis dysku tymczasowego na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
@@ -63,5 +63,5 @@ Najpierw należy dołączyć dysk danych do maszyny wirtualnej. Aby to zrobić p
 9. Uruchom ponownie maszynę wirtualną.
 
 ## <a name="next-steps"></a>Następne kroki
-* Można zwiększyć ilość miejsca dostępnego dla maszyny wirtualnej przez dołączenie [dodatkowego dysku z danymi](attach-managed-disk-portal.md).
+* Można zwiększyć ilość miejsca dostępnego dla maszyny wirtualnej przez [dołączenie dodatkowego dysku z danymi](attach-managed-disk-portal.md).
 

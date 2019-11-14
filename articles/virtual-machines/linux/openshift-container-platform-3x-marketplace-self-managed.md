@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie oferty OpenShift Container platform 3,11 z własnym zarządzaniem na platformie Azure | Microsoft Docs
+title: Wdróż oferowaną w systemie Azure OpenShift kontenerów 3,11 platformy Microsoft
 description: Wdróż oferowaną w systemie Azure OpenShift kontenerów platformy Microsoft w platformie 3,11 z własnym zarządzaniem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d5028ff6378fec5939aee3218071fe6f4eb1e843
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791615"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035523"
 ---
 # <a name="configure-prerequisites"></a>Konfigurowanie wymagań wstępnych
 
@@ -89,7 +89,7 @@ Wprowadź wartości parametrów wejściowych, a następnie kliknij przycisk **OK
 | Nowe lub istniejące Virtual Network | Utwórz nową sieć wirtualną (domyślną) lub Użyj istniejącej sieci wirtualnej |
 | Wybierz domyślne ustawienia CIDR lub Dostosuj zakres adresów IP (CIDR) | Zaakceptuj domyślne zakresy CIDR lub wybierz **niestandardowy zakres adresów IP** , a następnie wprowadź informacje o niestandardowych CIDR.  Ustawienia domyślne spowodują utworzenie sieci wirtualnej z CIDR o wartości 10.0.0.0/14, podsieci głównej z 10.1.0.0ą/16, podsiecią infrastruktury z 10.2.0.0/16 i ilością podsieci obliczeniowych i CNS z 10.3.0.0/16 |
 | Nazwa grupy zasobów Key Vault | Nazwa grupy zasobów, która zawiera Key Vault |
-| Nazwa Key Vault | Nazwa Key Vault, która zawiera wpis tajny z kluczem prywatnym ssh.  Dozwolone są tylko znaki alfanumeryczne i łączniki oraz mają długość od 3 do 24 znaków |
+| Nazwa usługi Key Vault | Nazwa Key Vault, która zawiera wpis tajny z kluczem prywatnym ssh.  Dozwolone są tylko znaki alfanumeryczne i łączniki oraz mają długość od 3 do 24 znaków |
 | Nazwa wpisu tajnego | Nazwa wpisu tajnego, który zawiera klucz prywatny SSH.  Dozwolone są tylko znaki alfanumeryczne i łączniki |
 
    ![Blok infrastruktury oferty](media/openshift-marketplace-self-managed/ocp-inframain.png)  

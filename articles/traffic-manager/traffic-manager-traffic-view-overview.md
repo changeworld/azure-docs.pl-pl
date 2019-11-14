@@ -1,6 +1,6 @@
 ---
 title: Widok ruchu na platformie Azure Traffic Manager
-description: Wprowadzenie do Traffic Manager Widok ruchu
+description: W tym instruktażu dowiesz się, jak działa widok ruchu w usłudze Traffic Manager.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1cdad5873ea0f6d2fab129aef7be012ea11e8a60
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035447"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023242"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Widok ruchu
 
@@ -64,7 +64,7 @@ Regiony platformy Azure, w których znajdują się punkty końcowe, są wyświet
 
 ## <a name="tabular-listing-and-raw-data-download"></a>Wyświetlanie listy tabelarycznej i nieprzetworzonych danych
 
-Widok ruchu dane można wyświetlić w formacie tabelarycznym w Azure Portal. Istnieje wpis dla każdej pary IP/punktu końcowego programu rozpoznawania nazw DNS, który pokazuje adres IP programu rozpoznawania nazw DNS, nazwę i lokalizację geograficzną regionu świadczenia usługi Azure, w którym znajduje się punkt końcowy (jeśli jest dostępny), ilość żądań skojarzonych z tym programem rozpoznawania nazw DNS do Ten punkt końcowy i reprezentatywne opóźnienie skojarzone z użytkownikami końcowymi przy użyciu tego systemu DNS (jeśli jest dostępny). Możesz również pobrać Widok ruchu dane jako plik CSV, który może być używany jako część wybranego przepływu pracy analizy.
+Widok ruchu dane można wyświetlić w formacie tabelarycznym w Azure Portal. Istnieje wpis dla każdej pary IP/punktu końcowego programu rozpoznawania nazw DNS, który pokazuje adres IP programu rozpoznawania nazw DNS, nazwę i lokalizację geograficzną regionu świadczenia usługi Azure, w którym znajduje się punkt końcowy (jeśli jest dostępny), liczbę żądań skojarzonych z tym programem rozpoznawania nazw DNS do tego punktu końcowego oraz reprezentatywne opóźnienie skojarzone z użytkownikami końcowymi przy użyciu tego systemu DNS (jeśli jest dostępny). Możesz również pobrać Widok ruchu dane jako plik CSV, który może być używany jako część wybranego przepływu pracy analizy.
 
 ## <a name="billing"></a>Rozliczenia
 

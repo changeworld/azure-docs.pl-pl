@@ -1,5 +1,5 @@
 ---
-title: Wymuszanie zabezpieczeń przy użyciu zasad na maszynach wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Wymuś zabezpieczenia przy użyciu zasad na maszynach wirtualnych z systemem Linux na platformie Azure
 description: Jak zastosować zasady do maszyny wirtualnej z systemem Azure Resource Manager Linux
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: c0399044e1776d10a70cf4bcb1dca8d87e4981c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091593"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035316"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Stosowanie zasad do maszyn wirtualnych z systemem Linux przy użyciu Azure Resource Manager
 Korzystając z zasad, organizacja może wymusić różne konwencje i reguły w całym przedsiębiorstwie. Wymuszanie żądanego zachowania może pomóc w ograniczeniu ryzyka, a tym samym sukcesem organizacji. W tym artykule opisano sposób użycia zasad Azure Resource Managerymi w celu zdefiniowania żądanego zachowania Virtual Machines organizacji.

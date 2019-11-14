@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego wirtualnego dysku twardego w Azure Portal | Microsoft Docs
+title: Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego wirtualnego dysku twardego w Azure Portal
 description: Utwórz nową maszynę wirtualną z systemem Windows na podstawie dysku VHD w Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 587acd37f465dda7e514b595f8451afe3d259dea
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390504"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039142"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Tworzenie maszyny wirtualnej na podstawie dysku VHD przy użyciu Azure Portal
 

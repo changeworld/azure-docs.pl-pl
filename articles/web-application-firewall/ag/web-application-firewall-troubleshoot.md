@@ -1,18 +1,18 @@
 ---
-title: Rozwiązywanie problemów z zaporą aplikacji sieci Web dla platformy Azure Application Gateway
+title: Rozwiązywanie problemów — Zapora aplikacji sieci Web platformy Azure
 description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z zaporą aplikacji sieci Web (WAF) dla platformy Azure Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/22/2019
+ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: fff50417bd7944e125ce1d7c1e1ae52ec22f806f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516567"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046190"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Rozwiązywanie problemów z zaporą aplikacji sieci Web (WAF) dla platformy Azure Application Gateway
 
@@ -148,7 +148,7 @@ Aby podjąć świadomą decyzję dotyczącą obsługi fałszywych wartości doda
 
 Jedną z zalet korzystania z listy wykluczeń jest wyłączenie tylko określonej części żądania. Oznacza to jednak, że określone wykluczenie ma zastosowanie do całego ruchu przechodzącego przez WAF, ponieważ jest to ustawienie globalne. Na przykład może to prowadzić do problemu, jeśli *1 = 1* to prawidłowe żądanie w treści dla określonej aplikacji, ale nie dla innych. Kolejną zaletą jest to, że można wybrać między treścią, nagłówkami i plikami cookie, które mają być wykluczone w przypadku spełnienia określonego warunku, w przeciwieństwie do wykluczenia całego żądania.
 
-Sporadycznie istnieją przypadki, w których określone parametry są przenoszone do WAF w sposób, który może nie być intuicyjny. Na przykład istnieje token, który jest przesyłany podczas uwierzytelniania przy użyciu Azure Active Directory. Ten token, *__RequestVerificationToken*, zwykle otrzymuje się jako plik cookie żądania. Jednak w niektórych przypadkach, gdy pliki cookie są wyłączone, ten token jest również przenoszona jako atrybut żądania lub "ARG". Jeśli tak się stanie, należy się upewnić, że *__RequestVerificationToken* jest dodawany do listy wykluczeń jako **nazwę atrybutu żądania** .
+Sporadycznie istnieją przypadki, w których określone parametry są przenoszone do WAF w sposób, który może nie być intuicyjny. Na przykład istnieje token, który jest przesyłany podczas uwierzytelniania przy użyciu Azure Active Directory. Ten token, *__RequestVerificationToken*, zazwyczaj otrzymuje się jako plik cookie żądania. Jednak w niektórych przypadkach, gdy pliki cookie są wyłączone, ten token jest również przenoszona jako atrybut żądania lub "ARG". Jeśli tak się stanie, należy się upewnić, że *__RequestVerificationToken* zostanie dodany do listy wykluczeń jako **nazwa atrybutu żądania** .
 
 ![Wykluczenia](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 

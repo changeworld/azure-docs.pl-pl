@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie Azure Key Vault dla maszyn wirtualnych z systemem Linux | Microsoft Docs
+title: Konfigurowanie Azure Key Vault dla maszyn wirtualnych z systemem Linux
 description: Jak skonfigurować Key Vault do użycia z Azure Resource Manager maszyną wirtualną za pomocą interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: cbc8b6be09fcf4232636b580dc0c62482b83bd60
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 25ef1d43af9d37cebde4a28479010776cc148b6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002157"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035948"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Jak skonfigurować Key Vault dla maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -29,21 +29,21 @@ W stosie Azure Resource Manager klucze tajne/certyfikaty są modelowane jako zas
 Aby wykonać te kroki, należy zainstalować najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogować się na konto platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index).
 
 ## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
-Utwórz magazyn kluczy i przypisz zasady wdrażania za pomocą [AZ Key magazynu Create](/cli/azure/keyvault). Poniższy przykład tworzy magazyn kluczy o nazwie `myKeyVault` `myResourceGroup` w grupie zasobów:
+Utwórz magazyn kluczy i przypisz zasady wdrażania za pomocą [AZ Key magazynu Create](/cli/azure/keyvault). Poniższy przykład tworzy magazyn kluczy o nazwie `myKeyVault` w grupie zasobów `myResourceGroup`:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>Aktualizowanie Key Vault do użycia z maszynami wirtualnymi
-Ustaw zasady wdrażania dla istniejącego magazynu kluczy za pomocą opcji [AZ Key magazynu Update](/cli/azure/keyvault). Następujące aktualizuje Magazyn kluczy o nazwie `myKeyVault` `myResourceGroup` w grupie zasobów:
+Ustaw zasady wdrażania dla istniejącego magazynu kluczy za pomocą opcji [AZ Key magazynu Update](/cli/azure/keyvault). Następujące aktualizacje magazynu kluczy o nazwie `myKeyVault` w `myResourceGroup` grupie zasobów:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Użyj szablonów, aby skonfigurować Key Vault
-Korzystając z szablonu, należy ustawić `enabledForDeployment` właściwość na `true` dla zasobu Key Vault w następujący sposób:
+Korzystając z szablonu, należy ustawić właściwość `enabledForDeployment` na `true` dla zasobu Key Vault w następujący sposób:
 
 ```json
 {

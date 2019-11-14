@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie RAID oprogramowania na maszynie wirtualnej z systemem Linux | Microsoft Docs
+title: Konfigurowanie RAID oprogramowania na maszynie wirtualnej z systemem Linux
 description: Dowiedz się, jak skonfigurować macierz RAID w systemie Linux na platformie Azure przy użyciu mdadm.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: d0658af090d9a3f39bee69f5103a78a329fe189c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083806"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036660"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurowanie macierzy RAID oprogramowania w systemie Linux
 Typowym scenariuszem jest używanie oprogramowania RAID na maszynach wirtualnych z systemem Linux na platformie Azure, aby przedstawić wiele dołączonych dysków danych jako pojedyncze urządzenie RAID. Zwykle może to służyć do zwiększenia wydajności i zapewnienia lepszej przepływności w porównaniu z użyciem jednego dysku.
@@ -48,7 +48,7 @@ Do skonfigurowania urządzenia RAID potrzeba co najmniej dwóch pustych dysków 
 ## <a name="create-the-disk-partitions"></a>Utwórz partycje dysku
 W tym przykładzie tworzymy jedną partycję dysku na/dev/SDC. Nowa partycja dysku zostanie wywołana/dev/sdc1.
 
-1. Zacznij `fdisk` tworzyć partycje
+1. Rozpocznij `fdisk`, aby rozpocząć tworzenie partycji
 
     ```bash
     sudo fdisk /dev/sdc
@@ -82,14 +82,14 @@ W tym przykładzie tworzymy jedną partycję dysku na/dev/SDC. Nowa partycja dys
     Partition number (1-4): 1
     ```
 
-1. Wybierz punkt początkowy nowej partycji lub naciśnij przycisk `<enter>` , aby zaakceptować wartość domyślną, aby umieścić partycję na początku wolnego miejsca na dysku:
+1. Wybierz punkt początkowy nowej partycji lub naciśnij `<enter>`, aby zaakceptować wartość domyślną, aby umieścić partycję na początku wolnego miejsca na dysku:
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-1. Wybierz rozmiar partycji, na przykład wpisz "+ 10G", aby utworzyć partycję 10 gigabajtów. Lub naciśnij `<enter>` pozycję Utwórz jedną partycję obejmującą cały dysk:
+1. Wybierz rozmiar partycji, na przykład wpisz "+ 10G", aby utworzyć partycję 10 gigabajtów. Lub naciśnij `<enter>` utworzyć jedną partycję obejmującą cały dysk:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
@@ -112,7 +112,7 @@ W tym przykładzie tworzymy jedną partycję dysku na/dev/SDC. Nowa partycja dys
     ```
 
 ## <a name="create-the-raid-array"></a>Tworzenie macierzy RAID
-1. W poniższym przykładzie przedstawiono "Stripe" (poziom macierzy RAID 0) trzy partycje zlokalizowane na trzech oddzielnych dyskach danych (sdc1, sdd1, SDE1).  Po uruchomieniu tego polecenia zostanie utworzone nowe urządzenie RAID o nazwie **/dev/md127** . Należy również zauważyć, że jeśli te dyski danych były wcześniej częścią innej unieczynnionej macierzy RAID, może być konieczne `--force` dodanie parametru `mdadm` do polecenia:
+1. W poniższym przykładzie przedstawiono "Stripe" (poziom macierzy RAID 0) trzy partycje zlokalizowane na trzech oddzielnych dyskach danych (sdc1, sdd1, SDE1).  Po uruchomieniu tego polecenia zostanie utworzone nowe urządzenie RAID o nazwie **/dev/md127** . Należy również zauważyć, że jeśli te dyski danych były wcześniej częścią innej unieczynnionej macierzy RAID, może być konieczne dodanie `--force` parametru do polecenia `mdadm`:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
@@ -154,7 +154,7 @@ W tym przykładzie tworzymy jedną partycję dysku na/dev/SDC. Nowa partycja dys
     ```bash
     sudo mkdir /data
     ```
-1. Podczas edytowania/etc/fstab **identyfikator UUID** powinien być używany do odwoływania się do systemu plików, a nie nazwy urządzenia.  `blkid` Użyj narzędzia, aby określić identyfikator UUID dla nowego systemu plików:
+1. Podczas edytowania/etc/fstab **identyfikator UUID** powinien być używany do odwoływania się do systemu plików, a nie nazwy urządzenia.  Użyj narzędzia `blkid`, aby określić identyfikator UUID dla nowego systemu plików:
 
     ```bash   
     sudo /sbin/blkid
@@ -184,7 +184,7 @@ W tym przykładzie tworzymy jedną partycję dysku na/dev/SDC. Nowa partycja dys
 
     Jeśli to polecenie spowoduje komunikat o błędzie, należy sprawdzić składnię w pliku/etc/fstab.
    
-    Następnie uruchom polecenie `mount` , aby upewnić się, że system plików jest zainstalowany:
+    Następnie uruchom `mount` polecenie, aby upewnić się, że system plików jest zainstalowany:
 
     ```bash   
     mount
@@ -196,7 +196,7 @@ W tym przykładzie tworzymy jedną partycję dysku na/dev/SDC. Nowa partycja dys
    
     **Konfiguracja fstab**
    
-    Wiele dystrybucji obejmuje `nobootwait` `nofail` parametry instalacji, które mogą zostać dodane do pliku/etc/fstab. Te parametry zezwalają na błędy podczas instalowania określonego systemu plików i umożliwiają dalsze rozruch systemu Linux, nawet jeśli nie można poprawnie zainstalować systemu plików RAID. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
+    Wiele dystrybucji obejmuje parametry instalacji `nobootwait` lub `nofail`, które mogą zostać dodane do pliku/etc/fstab. Te parametry zezwalają na błędy podczas instalowania określonego systemu plików i umożliwiają dalsze rozruch systemu Linux, nawet jeśli nie można poprawnie zainstalować systemu plików RAID. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
    
     Przykład (Ubuntu):
 
@@ -206,26 +206,26 @@ W tym przykładzie tworzymy jedną partycję dysku na/dev/SDC. Nowa partycja dys
 
     **Parametry rozruchu systemu Linux**
    
-    Oprócz powyższych parametrów, parametr jądra "`bootdegraded=true`" może pozwolić na rozruch systemu nawet wtedy, gdy maszyna wirtualna jest traktowana jako uszkodzona lub obniżona, na przykład jeśli dysk danych został przypadkowo usunięty z maszyny wirtualnej. Domyślnie może to spowodować, że system nie rozruchowy.
+    Oprócz powyższych parametrów, parametr jądra "`bootdegraded=true`" może pozwolić na rozruch systemu nawet wtedy, gdy maszyna wirtualna jest traktowana jako uszkodzona lub obniżona, na przykład jeśli dysk danych zostanie przypadkowo usunięty z maszyny wirtualnej. Domyślnie może to spowodować, że system nie rozruchowy.
    
-    Zapoznaj się z dokumentacją dystrybucji dotyczącą sposobu prawidłowego edytowania parametrów jądra. Na przykład w wielu dystrybucjach (CentOS, Oracle Linux, SLES 11) te parametry można dodać ręcznie do pliku "`/boot/grub/menu.lst`".  W Ubuntu ten parametr można dodać do `GRUB_CMDLINE_LINUX_DEFAULT` zmiennej w "/etc/default/grub".
+    Zapoznaj się z dokumentacją dystrybucji dotyczącą sposobu prawidłowego edytowania parametrów jądra. Na przykład w wielu dystrybucjach (CentOS, Oracle Linux, SLES 11) te parametry można dodać ręcznie do pliku "`/boot/grub/menu.lst`".  W Ubuntu ten parametr można dodać do zmiennej `GRUB_CMDLINE_LINUX_DEFAULT` w "/etc/default/grub".
 
 
 ## <a name="trimunmap-support"></a>Obsługa przycinania/mapowania
 Niektóre jądra systemu Linux obsługują operacje przycinania/mapowania do odrzucania nieużywanych bloków na dysku. Te operacje są szczególnie przydatne w przypadku magazynu w warstwie Standardowa, aby poinformować platformę Azure, że usunięte strony nie są już prawidłowe i mogą zostać odrzucone. Odrzucanie stron może zaoszczędzić koszt w przypadku tworzenia dużych plików, a następnie ich usuwania.
 
 > [!NOTE]
-> RAID nie może wydać poleceń odrzucania, jeśli rozmiar fragmentu tablicy jest ustawiony na wartość mniejszą niż domyślna (512 KB). Wynika to z faktu, że stopień szczegółowości mapowania na hoście również jest 512 KB. W przypadku zmodyfikowania rozmiaru fragmentu tablicy za pośrednictwem `--chunk=` parametru mdadm, żądanie przycinania/mapowania może być ignorowane przez jądro.
+> RAID nie może wydać poleceń odrzucania, jeśli rozmiar fragmentu tablicy jest ustawiony na wartość mniejszą niż domyślna (512 KB). Wynika to z faktu, że stopień szczegółowości mapowania na hoście również jest 512 KB. W przypadku zmodyfikowania rozmiaru fragmentu tablicy za pomocą parametru `--chunk=` mdadm, żądania przycinania/mapowania mogą zostać zignorowane przez jądro.
 
 Istnieją dwa sposoby włączania obsługi przycinania na maszynie wirtualnej z systemem Linux. W zwykły sposób zapoznaj się z dystrybucją, aby uzyskać zalecane podejście:
 
-- `/etc/fstab`Użyj opcji `discard` instalacji w programie, na przykład:
+- Użyj opcji instalacji `discard` w `/etc/fstab`, na przykład:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- W niektórych przypadkach opcja `discard` może mieć wpływ na wydajność. Alternatywnie można uruchomić `fstrim` polecenie ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
+- W niektórych przypadkach opcja `discard` może mieć wpływ na wydajność. Alternatywnie można uruchomić polecenie `fstrim` ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
 
     **Ubuntu**
 

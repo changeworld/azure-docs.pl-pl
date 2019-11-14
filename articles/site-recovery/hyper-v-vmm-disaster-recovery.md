@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0fa4dbc336067ee3e3b2baa49ec872f65a3154b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d3fe578444b99cc7f8c762ae9e96766ca10aa305
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933529"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039670"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do dodatkowej lokacji lokalnej
 
@@ -30,7 +30,7 @@ W tym artykule pokazano, jak skonfigurować odzyskiwanie po awarii do lokacji do
 > * Włączanie replikacji maszyny wirtualnej
 
 > [!WARNING]
-> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
+> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](site-to-site-deprecation.md) przed kontynuowaniem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -118,7 +118,7 @@ Wybierz docelowy serwer VMM i chmurę:
 1. Kliknij pozycję **Przygotowanie infrastruktury** > **Docelowa**, a następnie wybierz docelowy serwer VMM.
 2. Zostaną wyświetlone chmury programu VMM, które są zsynchronizowane z usługą Site Recovery. Wybierz chmurę docelową.
 
-   ![Cel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Środowisko docelowe](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Konfigurowanie zasad replikacji

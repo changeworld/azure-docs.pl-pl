@@ -1,5 +1,5 @@
 ---
-title: Włączanie Transparent Data Encryption dla Stretch Database platformy Azure | Microsoft Docs
+title: Włącz Transparent Data Encryption dla Stretch Database
 description: Włącz Transparent Data Encryption (TDE) dla SQL Server Stretch Database na platformie Azure
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -13,12 +13,13 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 61f556476958484b78b9c3dff2583eb6db043637
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66003038"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034011"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Włącz Transparent Data Encryption (TDE) dla Stretch Database na platformie Azure
 > [!div class="op_single_selector"]
@@ -36,8 +37,8 @@ Aby włączyć TDE dla bazy danych platformy Azure, która przechowuje dane migr
 
 1. Otwórz bazę danych w [Azure Portal](https://portal.azure.com)
 2. W bloku baza danych kliknij przycisk **Ustawienia**
-3. Wybierz opcję **przezroczystego szyfrowania danych**![][1]
-4. Wybierz ustawienie **Włącz** , a następnie wybierz pozycję **Zapisz** .
+3. Wybierz opcję **przezroczystego szyfrowania danych** ![][1]
+4. Wybierz ustawienie **Włącz** , a następnie wybierz pozycję **Zapisz**
    ![][2]
 
 ## <a name="disabling-encryption"></a>Wyłączanie szyfrowania

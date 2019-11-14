@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie OpenShift kontenera platform 3,11 na platformie Azure | Microsoft Docs
+title: Wdrażanie OpenShift kontenera platform 3,11 na platformie Azure
 description: Wdróż OpenShift kontenerów platformy 3,11 na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4320105c5411e8a01ff6c69bf7d87057c786d092
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 56607de57939be769b1951f0eee9078c46d610c0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392750"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035461"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Wdrażanie OpenShift kontenera platform 3,11 na platformie Azure
 
@@ -250,14 +250,14 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 
 | Właściwość | Opis | Prawidłowe opcje | Wartość domyślna |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | Adres URL artefaktów (JSON, skrypty itp.) |  |  https: \//RAW. githubusercontent. com/Microsoft/OpenShift-Container-platform/Master  |
+| `_artifactsLocation`  | Adres URL artefaktów (JSON, skrypty itp.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | Region platformy Azure, do którego mają zostać wdrożone zasoby |  |  |
 | `masterVmSize` | Rozmiar głównej maszyny wirtualnej. Wybierz jeden z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy. JSON |  | Standardowa_E2s_v3 |
 | `infraVmSize` | Rozmiar infrastruktury maszyny wirtualnej. Wybierz jeden z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy. JSON |  | Standardowa_D4s_v3 |
 | `nodeVmSize` | Rozmiar maszyny wirtualnej węzła aplikacji. Wybierz jeden z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy. JSON |  | Standardowa_D4s_v3 |
 | `cnsVmSize` | Rozmiar maszyny wirtualnej węzła magazynu natywnego (CN) kontenera. Wybierz jeden z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy. JSON |  | Standardowa_E4s_v3 |
 | `osImageType` | Obraz RHEL do użycia. defaultgallery: na żądanie; Marketplace: obraz innej firmy | defaultgallery <br> Marketplace | defaultgallery |
-| `marketplaceOsImage` | Jeśli `osImageType` to Marketplace, wprowadź odpowiednie wartości dla opcji "Wydawca", "Oferta", "SKU", "wersja" oferty portalu Marketplace. Ten parametr jest typem obiektu |  |  |
+| `marketplaceOsImage` | Jeśli `osImageType` to Marketplace, wprowadź odpowiednie wartości dla "Wydawca", "Oferta", "SKU", "wersja" oferty portalu Marketplace. Ten parametr jest typem obiektu |  |  |
 | `storageKind` | Typ magazynu do użycia  | zarządzanych<br> niepodlegającą | zarządzanych |
 | `openshiftClusterPrefix` | Prefiks klastra używany do konfigurowania nazw hostów dla wszystkich węzłów.  Od 1 do 20 znaków |  | mycluster |
 | `minoVersion` | Pomocnicza wersja OpenShift kontenera platform 3,11 do wdrożenia |  | 69 |
@@ -285,10 +285,10 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 | `masterClusterDnsType` | Typ domeny dla konsoli sieci Web OpenShift. wartość "default" spowoduje użycie etykiety DNS publicznego adresu IP infrastruktury Master. element "Custom" umożliwia zdefiniowanie własnej nazwy | default <br> Celnej | default |
 | `masterClusterDns` | Niestandardowa nazwa DNS, która ma być używana do uzyskiwania dostępu do konsoli sieci Web OpenShift w przypadku wybrania elementu "Custom" dla `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Jeśli ustawiono wartość "nipio", `routingSubDomain` będzie używać nip.io.  Użyj elementu "Custom", jeśli masz własną domenę, która ma być używana do routingu | nipio <br> Celnej | nipio |
-| `routingSubDomain` | Symbol wieloznaczny DNS, który ma być używany na potrzeby routingu w przypadku wybrania elementu "Custom" dla `routingSubDomainType` |  | apps.contoso.com |
+| `routingSubDomain` | Symbol wieloznaczny DNS, który ma być używany do routingu w przypadku wybrania dla `routingSubDomainType` elementu "Custom" |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Wybierz, czy chcesz użyć istniejącego Virtual Network, czy utworzyć nowy Virtual Network | istniejącego <br> nowe | nowe |
-| `virtualNetworkResourceGroupName` | Nazwa grupy zasobów dla nowego Virtual Network w przypadku wybrania elementu "New" dla `virtualNetworkNewOrExisting` |  | resourceName (). Name |
-| `virtualNetworkName` | Nazwa nowego Virtual Network do utworzenia, jeśli wybrano wartość "New" dla `virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `virtualNetworkResourceGroupName` | Nazwa grupy zasobów dla nowego Virtual Network w przypadku wybrania elementu "New" dla `virtualNetworkNewOrExisting` |  | resourceGroup().name |
+| `virtualNetworkName` | Nazwa nowego Virtual Network, który ma zostać utworzony w przypadku wybrania dla `virtualNetworkNewOrExisting` elementu "New" |  | openshiftvnet |
 | `addressPrefixes` | Prefiks adresu nowej sieci wirtualnej |  | 10.0.0.0/14 |
 | `masterSubnetName` | Nazwa podsieci głównej |  | mastersubnet |
 | `masterSubnetPrefix` | CIDR używany dla podsieci głównej — musi być podzbiorem addressPrefix |  | 10.1.0.0/16 |
@@ -300,9 +300,9 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 | `existingInfraSubnetReference` | Pełne odwołanie do istniejącej podsieci dla węzłów infrastruktury. Niewymagane w przypadku tworzenia nowej sieci wirtualnej/podsieci |  |  |
 | `existingCnsSubnetReference` | Pełne odwołanie do istniejącej podsieci dla węzłów CNS. Niewymagane w przypadku tworzenia nowej sieci wirtualnej/podsieci |  |  |
 | `existingNodeSubnetReference` | Pełne odwołanie do istniejącej podsieci dla węzłów obliczeniowych. Niewymagane w przypadku tworzenia nowej sieci wirtualnej/podsieci |  |  |
-| `masterClusterType` | Określ, czy klaster ma używać prywatnych, jak i publicznych węzłów głównych. W przypadku wybrania opcji prywatne węzły główne nie będą uwidaczniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `masterPrivateClusterIp` | społeczeństwo <br> użytek | społeczeństwo |
+| `masterClusterType` | Określ, czy klaster ma używać prywatnych, jak i publicznych węzłów głównych. W przypadku wybrania opcji prywatne węzły główne nie będą uwidaczniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `masterPrivateClusterIp` | społeczeństwo <br> prywatna | społeczeństwo |
 | `masterPrivateClusterIp` | W przypadku wybrania prywatnych węzłów głównych należy określić prywatny adres IP do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów głównych. Ten statyczny adres IP musi znajdować się w bloku CIDR dla podsieci głównej i nie jest już używany. Jeśli wybrane są publiczne węzły główne, ta wartość nie zostanie użyta, ale nadal musi być określona |  | 10.1.0.200 |
-| `routerClusterType` | Określ, czy klaster ma używać prywatnych, czy publicznych węzłów infrastruktury. W przypadku wybrania opcji prywatne węzły infrastruktury nie będą ujawniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `routerPrivateClusterIp` | społeczeństwo <br> użytek | społeczeństwo |
+| `routerClusterType` | Określ, czy klaster ma używać prywatnych, czy publicznych węzłów infrastruktury. W przypadku wybrania opcji prywatne węzły infrastruktury nie będą ujawniane w Internecie za pośrednictwem publicznego adresu IP. Zamiast tego będzie używany prywatny adres IP określony w `routerPrivateClusterIp` | społeczeństwo <br> prywatna | społeczeństwo |
 | `routerPrivateClusterIp` | W przypadku wybrania prywatnych węzłów infrastruktury należy określić prywatny adres IP do użycia przez wewnętrzny moduł równoważenia obciążenia dla węzłów infrastruktury. Ten statyczny adres IP musi znajdować się w bloku CIDR dla podsieci głównej i nie jest już używany. Jeśli są wybrane węzły infrastruktury publicznej, ta wartość nie zostanie użyta, ale nadal musi być określona |  | 10.2.0.200 |
 | `routingCertType` | Użyj certyfikatu niestandardowego dla domeny routingu lub domyślnego certyfikatu z podpisem własnym — postępuj zgodnie z instrukcjami w sekcji **certyfikaty niestandardowe** | selfsigned <br> Celnej | selfsigned |
 | `masterCertType` | Użyj certyfikatu niestandardowego dla domeny głównej lub domyślnego certyfikatu z podpisem własnym — wykonaj instrukcje w sekcji **certyfikaty niestandardowe** | selfsigned <br> Celnej | selfsigned |
@@ -312,7 +312,7 @@ Różne wersje mogą mieć inne parametry, aby zweryfikować wymagane parametry 
 ### <a name="deploy-using-azure-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!NOTE] 
-> Następujące polecenie wymaga interfejsu wiersza polecenia platformy Azure 2.0.8 lub nowszego. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version`. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Następujące polecenie wymaga interfejsu wiersza polecenia platformy Azure 2.0.8 lub nowszego. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version` polecenie. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
 W poniższym przykładzie wdrożono klaster OpenShift i wszystkie powiązane zasoby w grupie zasobów o nazwie openshiftrg z nazwą wdrożenia myOpenShiftCluster. Szablon jest przywoływany bezpośrednio z repozytorium GitHub, a plik parametrów lokalnych o nazwie azuredeploy. Parameters. JSON jest używany.
 
@@ -331,7 +331,7 @@ Wdrożenie trwa co najmniej 60 minut na podstawie łącznej liczby wdrożonych w
 }
 ```
 
-Jeśli nie chcesz powiązać wiersza polecenia w celu oczekiwania na ukończenie wdrożenia, Dodaj `--no-wait` jako jedną z opcji wdrożenia grupy. Dane wyjściowe wdrożenia można pobrać z Azure Portal w sekcji Wdrażanie dla grupy zasobów.
+Jeśli nie chcesz powiązać wiersza polecenia podczas oczekiwania na zakończenie wdrażania, Dodaj `--no-wait` jako jedną z opcji wdrożenia grupy. Dane wyjściowe wdrożenia można pobrać z Azure Portal w sekcji Wdrażanie dla grupy zasobów.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Nawiązywanie połączenia z klastrem OpenShift
 

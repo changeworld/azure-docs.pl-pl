@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania dotyczące maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Często zadawane pytania dotyczące maszyn wirtualnych z systemem Windows na platformie Azure
 description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące maszyn wirtualnych z systemem Windows utworzonych przy użyciu modelu Menedżer zasobów.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 95b7644ab8e0254a53eb4a0872a5af98a0894aec
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0ebf4049827a4abd9cfcb2eda354d0c796cbdbdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839236"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039169"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Często zadawane pytania dotyczące Windows Virtual Machines
 W tym artykule opisano niektóre często zadawane pytania dotyczące maszyn wirtualnych z systemem Windows utworzonych na platformie Azure przy użyciu modelu wdrażania Menedżer zasobów. Aby uzyskać informacje na temat wersji systemu Linux tego tematu, zobacz [często zadawane pytania dotyczące Linux Virtual Machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -116,12 +116,12 @@ Następujące hasła są niedozwolone:
     <tr>
         <td>abc@123</td>
         <td>iloveyou!</td>
-        <td>P @ $ $w 0rd</td>
+        <td>P@ $ $w 0rd</td>
         <td>P@ssw0rd</td>
         <td>P@ssword123</td>
     </tr>
     <tr>
-        <td>PA $ $word</td>
+        <td>Pa$$word</td>
         <td>pass@word1</td>
         <td>Hasło!</td>
         <td>Password1</td>

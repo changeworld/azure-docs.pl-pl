@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z wdrożeniem platformy OpenShift Container platform 3,11 na platformie Azure | Microsoft Docs
+title: Rozwiązywanie problemów z wdrożeniem platformy OpenShift Container platform 3,11 na platformie Azure
 description: Rozwiązywanie problemów z wdrożeniem platformy OpenShift Container platform 3,11 na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4301d81a4d14c36c34d29a54bc146bc8985dfc00
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392763"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035488"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Rozwiązywanie problemów z wdrożeniem platformy OpenShift Container platform 3,11 na platformie Azure
 
@@ -41,7 +41,7 @@ SSH z hostem rozwiązania ansible element PlayBook. W przypadku szablonu OKD (we
 
 ## <a name="log-files"></a>Pliki dziennika
 
-Pliki dziennika (stderr i stdout) dla skryptów przygotowania hosta znajdują się w `/var/lib/waagent/custom-script/download/0` na wszystkich hostach. Jeśli wystąpił błąd podczas przygotowywania hosta, Wyświetl te pliki dziennika, aby określić błąd.
+Pliki dziennika (stderr i stdout) skryptów przygotowania hosta znajdują się w `/var/lib/waagent/custom-script/download/0` na wszystkich hostach. Jeśli wystąpił błąd podczas przygotowywania hosta, Wyświetl te pliki dziennika, aby określić błąd.
 
 Jeśli skrypty przygotowania zostały wykonane pomyślnie, należy sprawdzić pliki dziennika w katalogu `/var/lib/waagent/custom-script/download/1` hosta rozwiązania ansible element PlayBook. Jeśli wystąpił błąd podczas rzeczywistej instalacji OpenShift, zostanie wyświetlony komunikat o błędzie. Korzystając z tych informacji, skontaktuj się z pomocą techniczną, aby uzyskać dalszą pomoc.
 
@@ -118,5 +118,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 W przypadku niektórych błędów można także użyć następujących poleceń, aby uzyskać więcej informacji:
 
-1. stan systemctl \<Service >
+1. systemctl stanu usługi \<>
 2. journalctl — XE

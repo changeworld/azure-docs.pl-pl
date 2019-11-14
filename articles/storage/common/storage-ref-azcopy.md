@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0772446b0259b12d3f76b2020eeed4c9c2de1119
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882216"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038087"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -25,6 +25,13 @@ Ogólny format poleceń to: `azcopy [command] [arguments] --[flag-name]=[flag-va
 
 Aby zgłosić problemy lub dowiedzieć się więcej na temat narzędzia, zobacz [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
 
+## <a name="related-conceptual-articles"></a>Pokrewne artykuły koncepcyjne
+
+- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
+- [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
+
 ## <a name="options"></a>Opcje
 
 **--Cap-MB/s UInt32**   Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.
@@ -33,7 +40,7 @@ Aby zgłosić problemy lub dowiedzieć się więcej na temat narzędzia, zobacz 
       
 **--Typ danych wyjściowych**  Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text". (domyślny "tekst")
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
 - [AzCopy](storage-ref-azcopy-bench.md)

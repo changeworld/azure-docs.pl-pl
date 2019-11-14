@@ -1,18 +1,14 @@
 ---
 title: Przykład planu PCI-DSS v 3.2.1 plan kontroli
 description: Sterowanie mapowaniem z przykładowej strategii branżowej Data Security Standard v 3.2.1 do Azure Policy i RBAC.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163050"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037278"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu PCI-DSS v 3.2.1
 
@@ -34,7 +30,7 @@ Ten plan ułatwia zarządzanie sieciami i sterowanie nimi przez przypisanie [Azu
 
 Ten plan pomaga wymuszać zasady przy użyciu kontrolek cryptograph, przypisując definicje [Azure Policy](../../../policy/overview.md) , które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych. Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. W szczególnych przypadkach zasady przypisane przez ten plan wymagają przezroczystego szyfrowania danych w bazach danych SQL; Inspekcja braku szyfrowania na kontach magazynu i zmiennych konta usługi Automation. Istnieją również zasady, które umożliwiają przeprowadzenie inspekcji niezabezpieczonych połączeń z kontami magazynu, aplikacjami funkcji, WebApp, API Apps i Redis Cache i Przeprowadź inspekcję niezaszyfrowanej komunikacji Service Fabric.
 
-- aplikacja funkcji powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
 - Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć Transparent Data Encryption baz danych SQL
@@ -48,7 +44,7 @@ Ten plan pomaga wymuszać zasady przy użyciu kontrolek cryptograph, przypisują
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 i 11.2.1 luk w zabezpieczeniach oraz aktualizacje systemu
 
-Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacyjnego przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują brakujące aktualizacje systemu, luki w zabezpieczeniach systemu operacyjnego, luki SQL i luki w zabezpieczeniach maszyn wirtualnych na platformie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym.
+Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacyjnego przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują brakujące aktualizacje systemu, luki w zabezpieczeniach systemu operacyjnego i luki w zabezpieczeniach programu SQL Server w programie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym.
 
 - Monitoruj brakujące Endpoint Protection w Azure Security Center
 - Wdróż domyślne rozszerzenie Microsoft IaaSAntimalware dla systemu Windows Server
@@ -58,7 +54,7 @@ Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacyjnego 
 - Luki w zabezpieczeniach baz danych SQL należy skorygować
 - Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach
 
-## <a name="711-712-and-713-separation-of-duties"></a>ppkt. 7.1.2 i 7.1.3 separacja obowiązków
+## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. 7.1.2 i 7.1.3 separacja obowiązków
 
 Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie pozwala na nadmiarowość administracyjną. Bez względu na to, że zbyt wielu właścicieli subskrypcji platformy Azure może zwiększyć prawdopodobieństwo naruszenia za pośrednictwem konta właściciela z naruszeniem. Ten plan pomaga zachować odpowiednią liczbę właścicieli subskrypcji platformy Azure, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję liczby właścicieli subskrypcji platformy Azure. Zarządzanie uprawnieniami właściciela subskrypcji może pomóc w zaimplementowaniu odpowiedniego rozdzielenia obowiązków.
 
@@ -67,7 +63,7 @@ Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie pozwala n
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a i 8.3.1. b zarządzanie prawami dostępu uprzywilejowanego
 
-Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego, przypisując definicje [Azure Policy](../../../policy/overview.md) do inspekcji kont zewnętrznych z uprawnieniami właściciela, zapisu i/odczytu oraz kontami pracowników z uprawnieniami właściciela i/lub zapisu, które nie mają włączono uwierzytelnianie wieloskładnikowe. Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC) w celu zarządzania dostępem do zasobów platformy Azure. Zrozumienie, gdzie są zaimplementowane niestandardowe reguły RBAC, może pomóc w sprawdzeniu potrzeby i właściwej implementacji, ponieważ niestandardowe reguły RBAC są podatne na błędy. Ten plan przypisuje również definicje [Azure Policy](../../../policy/overview.md) do inspekcji użycia uwierzytelniania Azure Active Directory dla serwerów SQL. Korzystanie z uwierzytelniania Azure Active Directory upraszcza zarządzanie uprawnieniami i scentralizowanie Zarządzanie tożsamościami użytkowników baz danych i innych firmy Microsoft  
+Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego, przypisując definicje [Azure Policy](../../../policy/overview.md) do inspekcji kont zewnętrznych przy użyciu uprawnień właściciela, zapisu i/lub odczytu oraz kont pracowników z uprawnieniami właściciela i/lub zapisu, dla których nie włączono usługi uwierzytelniania wieloskładnikowego. Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC) w celu zarządzania dostępem do zasobów platformy Azure. Zrozumienie, gdzie są zaimplementowane niestandardowe reguły RBAC, może pomóc w sprawdzeniu potrzeby i właściwej implementacji, ponieważ niestandardowe reguły RBAC są podatne na błędy. Ten plan przypisuje również definicje [Azure Policy](../../../policy/overview.md) do inspekcji użycia uwierzytelniania Azure Active Directory dla serwerów SQL. Korzystanie z uwierzytelniania Azure Active Directory upraszcza zarządzanie uprawnieniami i scentralizowanie Zarządzanie tożsamościami użytkowników baz danych i innych firmy Microsoft  
 Services.
  
 - Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
@@ -134,7 +130,7 @@ Po przejrzeniu mapowania kontroli planu PCI-DSS v 3.2.1 zapoznaj się z następu
 > [Plan PCI-DSS v 3.2.1 — omówienie](./index.md)
 > [PCI-DSS v 3.2.1 plan — kroki wdrażania](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

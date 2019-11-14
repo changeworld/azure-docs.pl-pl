@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231019"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037868"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe na żywo z Azure Media Services v3
 
@@ -27,7 +27,7 @@ Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmur
 - Aparat, który jest używany do przechwytywania zdarzenia na żywo.<br/>Aby zapoznać się z pomysłami dotyczącymi konfiguracji, zapoznaj się z [konfiguracją prostego i przenośnego sprzętu wideo]( https://link.medium.com/KNTtiN6IeT).
 
     Jeśli nie masz dostępu do aparatu, narzędzia, takie jak [Wirecast](https://www.telestream.net/wirecast/overview.htm) , mogą służyć do generowania kanału informacyjnego na żywo z pliku wideo.
-- Koder wideo na żywo, który konwertuje sygnały z aparatu (lub innego urządzenia, takiego jak laptop) do kanału informacyjnego, który jest wysyłany do Media Services. Kanał informacyjny udziału może obejmować sygnały związane z reklamą, takie jak znaczniki SCTE-35.<br/>Aby zapoznać się z listą zalecanych koderów przesyłania strumieniowego na żywo, zobacz [kodery przesyłania strumieniowego na żywo](recommended-on-premises-live-encoders.md). Zapoznaj się również z tym blogiem: [Produkcja strumieniowa na żywo z obs](https://link.medium.com/ttuwHpaJeT).
+- Koder wideo na żywo, który konwertuje sygnały z aparatu (lub innego urządzenia, takiego jak laptop) do kanału informacyjnego, który jest wysyłany do Media Services. Kanał informacyjny udziału może obejmować sygnały związane z reklamą, takie jak znaczniki SCTE-35.<br/>Aby zapoznać się z listą zalecanych koderów przesyłania strumieniowego na żywo, zobacz [kodery przesyłania strumieniowego na żywo](recommended-on-premises-live-encoders.md). Zapoznaj się również z tym blogiem: [produkcja przesyłania strumieniowego na żywo z obs](https://link.medium.com/ttuwHpaJeT).
 - Składniki w Media Services, które umożliwiają pozyskiwanie, przeglądanie, pakowanie, nagrywanie, szyfrowanie i emitowanie wydarzenia na żywo do klientów lub do usługi CDN w celu dalszej dystrybucji.
 
 Ten artykuł zawiera omówienie i wskazówki dotyczące przesyłania strumieniowego na żywo z Media Services i linki do innych odpowiednich artykułów.
@@ -61,7 +61,14 @@ Korzystając ze zdarzenia Pass-through **Live**, można polegać na lokalnym kod
 
 ![Kodowanie na żywo](./media/live-streaming/live-encoding.svg)
 
-W przypadku korzystania z kodowania w chmurze z Media Services należy skonfigurować lokalny koder na żywo, aby wysyłał wideo o pojedynczej szybkości transmisji bitów, jako źródło strumieniowe (do 32Mbps agregowania) do zdarzenia na żywo (przy użyciu protokołu wejścia/wyjścia w formacie RTMP lub fragmentacji). Zdarzenie na żywo transkoduje strumień przychodzącej pojedynczej szybkości transmisji bitów do [wielu strumieni wideo o różnych szybkościach transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) w różnych rozdzielczościach w celu usprawnienia dostarczania i udostępnienia go do obsługi urządzeń do odtwarzania za pomocą standardowych protokołów branżowych, takich jak MPEG-kreska, Apple HTTP Live Streaming (HLS) i Microsoft Smooth Streaming. 
+W przypadku korzystania z kodowania w chmurze z Media Services należy skonfigurować lokalny koder na żywo, aby wysyłał wideo o pojedynczej szybkości transmisji bitów, jako źródło strumieniowe (do 32Mbps agregowania) do zdarzenia na żywo (przy użyciu protokołu wejścia/wyjścia w formacie RTMP lub fragmentacji). Zdarzenie na żywo transkoduje strumień przychodzącej pojedynczej szybkości transmisji bitów do [wielu strumieni wideo](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) o różnej szybkości transmisji bitów w różnych rozdzielczościach w celu usprawnienia dostarczania i udostępnienie go do dostarczania urządzeniom do odtwarzania za pośrednictwem standardowych protokołów branżowych, takich jak MPEG-kreska, Apple http Live Streaming (HLS) i Microsoft Smooth Streaming. 
+
+### <a name="live-transcription"></a>Transkrypcja dynamiczna
+
+Transkrypcja dynamiczna to funkcja, której można używać w przypadku wydarzeń na żywo, które są przekazywane lub kodowane na żywo. Aby uzyskać więcej informacji, zobacz [transkrypcja dynamiczna](live-transcription.md). Gdy ta funkcja jest włączona, usługa korzysta z funkcji [zamiany mowy na tekst](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services, aby transkrypcja słowa mówione w przychodzącym audio do tekstu. Ten tekst jest następnie udostępniany do dostarczania wraz z wideo i dźwiękiem w protokołach MPEG-KRESKowych i HLS.
+
+> [!NOTE]
+> Obecnie transkrypcja na żywo jest dostępna jako funkcja w wersji zapoznawczej w regionie zachodnie stany USA 2.
 
 ## <a name="live-streaming-workflow"></a>Przepływ pracy przesyłania strumieniowego na żywo
 

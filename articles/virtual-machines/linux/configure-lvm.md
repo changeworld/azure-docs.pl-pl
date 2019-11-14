@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie LVM na maszynie wirtualnej z systemem Linux | Microsoft Docs
+title: Konfigurowanie LVM na maszynie wirtualnej z systemem Linux
 description: Dowiedz się, jak skonfigurować LVM w systemie Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
-ms.openlocfilehash: 1ab545edf9b45e37082509452a858a154b361251
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083817"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036683"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurowanie LVM na maszynie wirtualnej z systemem Linux na platformie Azure
 W tym dokumencie omówiono sposób konfigurowania Menedżera woluminów logicznych (LVM) na maszynie wirtualnej platformy Azure. LVM mogą być używane na dysku systemu operacyjnego lub na dyskach z danymi na maszynach wirtualnych platformy Azure, jednak domyślnie większość obrazów w chmurze nie ma skonfigurowanych LVM na dysku systemu operacyjnego. Poniższe kroki zakoncentrują się na konfigurowaniu LVM dla dysków z danymi.
@@ -59,14 +59,14 @@ Jeden z nich będzie zazwyczaj miał być uruchamiany z co najmniej dwoma pustym
     sudo zypper install lvm2
     ```
 
-    W programie SLES11 należy również edytować `/etc/sysconfig/lvm` i ustawić wartość `LVM_ACTIVATED_ON_DISCOVERED` "Enable":
+    Na SLES11 należy również edytować `/etc/sysconfig/lvm` i ustawić `LVM_ACTIVATED_ON_DISCOVERED` na "Enable":
 
     ```sh   
     LVM_ACTIVATED_ON_DISCOVERED="enable" 
     ```
 
 ## <a name="configure-lvm"></a>Konfigurowanie maszyny wirtualnej z systemem Linux
-W tym przewodniku przyjęto założenie, że zostały dołączone trzy dyski danych, do których odnosimy `/dev/sde`się do `/dev/sdc` `/dev/sdd` i. Ścieżki te mogą być niezgodne z nazwami ścieżek dysków w maszynie wirtualnej. Aby wyświetlić dostępne dyski`sudo fdisk -l`, można uruchomić "" lub podobne polecenie.
+W tym przewodniku przyjęto założenie, że zostały dołączone trzy dyski danych, do których odnosi się `/dev/sdc`, `/dev/sdd` i `/dev/sde`. Ścieżki te mogą być niezgodne z nazwami ścieżek dysków w maszynie wirtualnej. Aby wyświetlić listę dostępnych dysków, można uruchomić "`sudo fdisk -l`" lub podobne polecenie.
 
 1. Przygotuj woluminy fizyczne:
 
@@ -77,14 +77,14 @@ W tym przewodniku przyjęto założenie, że zostały dołączone trzy dyski dan
     Physical volume "/dev/sde" successfully created
     ```
 
-2. Utwórz grupę woluminów. W tym przykładzie wywołujemy grupę `data-vg01`woluminów:
+2. Utwórz grupę woluminów. W tym przykładzie wywołujemy grupę woluminów `data-vg01`:
 
     ```bash    
     sudo vgcreate data-vg01 /dev/sd[cde]
     Volume group "data-vg01" successfully created
     ```
 
-3. Utwórz woluminy logiczne. Poniższe polecenie utworzy pojedynczy wolumin logiczny o nazwie `data-lv01` do rozdzielenia całej grupy woluminów, ale należy pamiętać, że jest również możliwe utworzenie wielu woluminów logicznych w grupie woluminów.
+3. Utwórz woluminy logiczne. Poniższe polecenie utworzy pojedynczy wolumin logiczny o nazwie `data-lv01` w celu rozdzielenia całej grupy woluminów, ale należy pamiętać, że jest również możliwe utworzenie wielu woluminów logicznych w grupie woluminów.
 
     ```bash   
     sudo lvcreate --extents 100%FREE --stripes 3 --name data-lv01 data-vg01
@@ -98,11 +98,11 @@ W tym przewodniku przyjęto założenie, że zostały dołączone trzy dyski dan
     ```
    
    > [!NOTE]
-   > Za pomocą SLES11 `-t ext3` zamiast ext4. SLES11 obsługuje tylko dostęp tylko do odczytu do systemów plików ext4.
+   > SLES11 używają `-t ext3` zamiast ext4. SLES11 obsługuje tylko dostęp tylko do odczytu do systemów plików ext4.
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Dodaj nowy system plików do/etc/fstab
 > [!IMPORTANT]
-> Niewłaściwe edytowanie `/etc/fstab` pliku może spowodować, że system nie zostanie rozruchowy. W razie wątpliwości zapoznaj się z dokumentacją dystrybucji, aby uzyskać informacje o tym, jak prawidłowo edytować ten plik. Zaleca się również utworzenie kopii zapasowej `/etc/fstab` pliku przed rozpoczęciem edycji.
+> Niewłaściwe edytowanie pliku `/etc/fstab` może spowodować nierozruchowy system. W razie wątpliwości zapoznaj się z dokumentacją dystrybucji, aby uzyskać informacje o tym, jak prawidłowo edytować ten plik. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku `/etc/fstab`.
 
 1. Utwórz żądany punkt instalacji dla nowego systemu plików, na przykład:
 
@@ -126,15 +126,15 @@ W tym przewodniku przyjęto założenie, że zostały dołączone trzy dyski dan
     ```   
     Następnie Zapisz i Zamknij `/etc/fstab`.
 
-4. Sprawdź, czy `/etc/fstab` wpis jest poprawny:
+4. Sprawdź, czy wpis `/etc/fstab` jest poprawny:
 
     ```bash    
     sudo mount -a
     ```
 
-    Jeśli to polecenie spowoduje komunikat o błędzie, Sprawdź składnię w `/etc/fstab` pliku.
+    Jeśli to polecenie spowoduje komunikat o błędzie, Sprawdź składnię w pliku `/etc/fstab`.
    
-    Następnie uruchom polecenie `mount` , aby upewnić się, że system plików jest zainstalowany:
+    Następnie uruchom `mount` polecenie, aby upewnić się, że system plików jest zainstalowany:
 
     ```bash    
     mount
@@ -142,9 +142,9 @@ W tym przewodniku przyjęto założenie, że zostały dołączone trzy dyski dan
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. Obowiązkowe Failsafe parametry rozruchu w`/etc/fstab`
+5. Obowiązkowe Parametry rozruchowe failsafe w `/etc/fstab`
    
-    Wiele dystrybucji zawiera `nobootwait` `nofail` parametry instalacji, które `/etc/fstab` mogą zostać dodane do pliku. Te parametry zezwalają na błędy podczas instalowania określonego systemu plików i umożliwiają dalsze rozruch systemu Linux, nawet jeśli nie można poprawnie zainstalować systemu plików RAID. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
+    Wiele dystrybucji obejmuje parametry instalacji `nobootwait` lub `nofail`, które mogą zostać dodane do pliku `/etc/fstab`. Te parametry zezwalają na błędy podczas instalowania określonego systemu plików i umożliwiają dalsze rozruch systemu Linux, nawet jeśli nie można poprawnie zainstalować systemu plików RAID. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
    
     Przykład (Ubuntu):
 
@@ -157,13 +157,13 @@ Niektóre jądra systemu Linux obsługują operacje przycinania/mapowania do odr
 
 Istnieją dwa sposoby włączania obsługi przycinania na maszynie wirtualnej z systemem Linux. W zwykły sposób zapoznaj się z dystrybucją, aby uzyskać zalecane podejście:
 
-- `/etc/fstab`Użyj opcji `discard` instalacji w programie, na przykład:
+- Użyj opcji instalacji `discard` w `/etc/fstab`, na przykład:
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2
     ```
 
-- W niektórych przypadkach opcja `discard` może mieć wpływ na wydajność. Alternatywnie można uruchomić `fstrim` polecenie ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
+- W niektórych przypadkach opcja `discard` może mieć wpływ na wydajność. Alternatywnie można uruchomić polecenie `fstrim` ręcznie z wiersza polecenia lub dodać je do crontab w celu regularnego uruchamiania:
 
     **Ubuntu**
 

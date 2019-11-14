@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1ce21ea6042bbe1191edede13f80455c8e669f3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933543"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030196"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii funkcji Hyper-V do platformy Azure
 
@@ -38,9 +38,6 @@ W poniższej tabeli i grafice przedstawiono ogólny widok składników służąc
 
 ![Architektura](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
-
-> [!WARNING]
-> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Składniki architektury — funkcja Hyper-V z programem VMM
 

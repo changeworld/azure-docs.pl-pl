@@ -1,6 +1,6 @@
 ---
-title: Przenieś Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Przenieś Maszynę wirtualną systemu Linux do innego systemu Azure subskrypcji lub grupy zasobów w modelu wdrażania usługi Resource Manager.
+title: Przenoszenie maszyny wirtualnej z systemem Linux na platformie Azure
+description: Przenieś maszynę wirtualną z systemem Linux do innej subskrypcji platformy Azure lub grupy zasobów w Menedżer zasobów model wdrażania.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,41 +15,41 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667285"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035643"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Przenieś Maszynę wirtualną systemu Linux do innej subskrypcji lub grupy zasobów
-W tym artykule przedstawiono sposób przenoszenia maszyny wirtualnej systemu Linux (VM) między grupami zasobów lub subskrypcji. Przenoszenie maszyny Wirtualnej między subskrypcjami może być przydatna, jeśli maszyna wirtualna została utworzona w ramach subskrypcji osobistych i teraz chcesz przenieść je do subskrypcji Twojej firmy.
+# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Przenoszenie maszyny wirtualnej z systemem Linux do innej subskrypcji lub grupy zasobów
+W tym artykule pokazano, jak przenieść maszynę wirtualną z systemem Linux między grupami zasobów lub subskrypcjami. Przenoszenie maszyny wirtualnej między subskrypcjami może być przydatne, jeśli utworzono maszynę wirtualną w osobistej subskrypcji, a teraz chcesz przenieść ją do subskrypcji firmy.
 
 > [!IMPORTANT]
->W tej chwili nie można przenieść usługę Azure Managed Disks. 
+>W tej chwili nie można przenieść Managed Disks platformy Azure. 
 >
->Nowych identyfikatorów zasobów są tworzone w ramach przejścia. Po przeniesieniu maszyny Wirtualnej należy zaktualizować narzędzia i skrypty do używania nowych identyfikatorów zasobów. 
+>Nowe identyfikatory zasobów są tworzone w ramach przenoszenia. Po przeniesieniu maszyny wirtualnej należy zaktualizować narzędzia i skrypty w celu użycia nowych identyfikatorów zasobów. 
 > 
 > 
 
-## <a name="use-the-azure-cli-to-move-a-vm"></a>Użyj wiersza polecenia platformy Azure, aby przenieść Maszynę wirtualną
+## <a name="use-the-azure-cli-to-move-a-vm"></a>Przenoszenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
 
-Przed można przenieść maszynę Wirtualną przy użyciu wiersza polecenia platformy Azure, należy się upewnić, że istnieją subskrypcje źródłowe i docelowe, w ramach tej samej dzierżawy. Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, użyj [Pokaż konta az](/cli/azure/account).
+Aby można było przenieść maszynę wirtualną przy użyciu interfejsu wiersza polecenia platformy Azure, należy upewnić się, że subskrypcje źródłowe i docelowe znajdują się w tej samej dzierżawie. Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, użyj polecenie [AZ Account show](/cli/azure/account).
 
 ```azurecli-interactive
 az account show --subscription mySourceSubscription --query tenantId
 az account show --subscription myDestinationSubscription --query tenantId
 ```
-Jeśli identyfikatorów dzierżawy subskrypcje źródłowe i docelowe nie są takie same, należy skontaktować się [obsługuje](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) przeniesienie zasobów do nowej dzierżawy.
+Jeśli identyfikatory dzierżawy dla subskrypcji źródłowej i docelowej nie są takie same, należy skontaktować się z [pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , aby przenieść zasoby do nowej dzierżawy.
 
-Aby pomyślnie przenieść Maszynę wirtualną, musisz przenieść maszynę Wirtualną i wszystkie jej zasoby pomocnicze. Użyj [az resource list](/cli/azure/resource) polecenie, aby wyświetlić listę wszystkich zasobów w grupie zasobów i ich identyfikatorów. Pomaga przekazać dane wyjściowe tego polecenia do pliku, dzięki czemu możesz skopiować i wkleić identyfikatorów do nowszego polecenia.
+Aby pomyślnie przenieść maszynę wirtualną, należy przenieść maszynę wirtualną i wszystkie jej zasoby pomocnicze. Użyj polecenia [AZ Resource list](/cli/azure/resource) , aby wyświetlić listę wszystkich zasobów w grupie zasobów i ich identyfikatorów. Pomaga w potoku danych wyjściowych tego polecenia do pliku, aby można było skopiować i wkleić identyfikatory do nowszych poleceń.
 
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
 
-Aby przenieść Maszynę wirtualną i jej zasobów do innej grupy zasobów, użyj [przenoszenia zasobów az](/cli/azure/resource). Poniższy przykład pokazuje, jak przenieść maszyny Wirtualnej i najbardziej typowych zasobów, których potrzebuje. Użyj **— identyfikatory** parametru i przekaż listę rozdzielanych przecinkami (bez spacji) identyfikatorów zasobów, aby przenieść.
+Aby przenieść maszynę wirtualną i jej zasoby do innej grupy zasobów, użyj [AZ Resource Move](/cli/azure/resource). Poniższy przykład pokazuje, jak przenieść maszynę wirtualną i najpopularniejsze zasoby, których wymaga. Użyj parametru **-ID** i przekaż listę oddzielonych przecinkami (bez spacji) identyfikatorów dla zasobów do przeniesienia.
 
 ```azurecli-interactive
 vm=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM
@@ -65,12 +65,12 @@ az resource move \
     --destination-group "myDestinationResourceGroup"
 ```
 
-Jeśli chcesz przenieść maszynę Wirtualną i jej zasobów do innej subskrypcji, należy dodać **— identyfikator subskrypcji docelowej** parametru do określenia subskrypcja docelowa.
+Jeśli chcesz przenieść maszynę wirtualną i jej zasoby do innej subskrypcji, Dodaj parametr **--Destination-** Subscription, aby określić subskrypcję docelową.
 
-Gdy zostanie wyświetlony monit upewnij się, że chcesz przenieść określonych zasobów, należy wprowadzić **Y** o potwierdzenie.
+Gdy zostanie wyświetlony monit o potwierdzenie, że chcesz przenieść określone zasoby, wpisz **Y** , aby potwierdzić.
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcji. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../resource-group-move-resources.md).    
+Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcjami. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../resource-group-move-resources.md).    
 

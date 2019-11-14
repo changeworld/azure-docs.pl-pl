@@ -1,5 +1,5 @@
 ---
-title: Automatyzowanie zadań zarządzania na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia agenta SQL Server IaaS | Microsoft Docs
+title: Automatyzowanie zadań zarządzania przy użyciu rozszerzenia agenta IaaS
 description: W tym artykule opisano sposób zarządzania rozszerzeniem SQL Server agenta IaaS, które automatyzuje określone SQL Server zadania administracyjne. Obejmują one automatyczne tworzenie kopii zapasowych, automatyczne stosowanie poprawek i integrację Azure Key Vault.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3240bb689447c16de8c62e9e8118b0b0df2b1ea3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9aae386e21df6711fc4984a7abfd34f418399f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259426"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034197"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatyzowanie zadań zarządzania na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia SQL Server IaaS Agent
 > [!div class="op_single_selector"]
@@ -120,7 +121,7 @@ Poprzednie polecenie potwierdza, że Agent jest zainstalowany i zawiera ogólne 
     $sqlext.AutoBackupSettings
    ```
 
-## <a name="removal"></a>Usunięcie
+## <a name="removal"></a>Praw
 W Azure Portal można odinstalować rozszerzenie, wybierając wielokropek w oknie **rozszerzenia** we właściwościach maszyny wirtualnej. Następnie wybierz pozycję **Usuń**.
 
 ![Odinstalowywanie rozszerzenia SQL Server Agent IaaS w Azure Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)

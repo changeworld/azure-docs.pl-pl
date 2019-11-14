@@ -1,6 +1,6 @@
 ---
-title: Użyj pakietu cloud-init do uruchomienia skryptu powłoki systemowej na maszynie wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak używać pakietu cloud-init do uruchomienia skryptu powłoki systemowej na maszynie Wirtualnej z systemem Linux podczas tworzenia przy użyciu wiersza polecenia platformy Azure
+title: Uruchamianie skryptu bash na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu funkcji Cloud-init
+description: Jak używać funkcji Cloud-init do uruchamiania skryptu bash na maszynie wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,35 +14,35 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 7a7d771023fabf8746ecb771e71a563daa5cb130
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0e18b740b9b656236bd1958dd191bc9b02283d67
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668309"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036801"
 ---
-# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Użyj pakietu cloud-init do uruchomienia skryptu powłoki systemowej na maszynie Wirtualnej z systemem Linux na platformie Azure
-W tym artykule dowiesz się, jak używać [pakietu cloud-init](https://cloudinit.readthedocs.io) uruchamianie istniejącego skryptu powłoki systemowej na maszynie wirtualnej systemu Linux (VM) lub zestawów skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji o tym, jak pakietu cloud-init działa natywnie na platformie Azure i obsługiwane dystrybucje systemu Linux, zobacz [Omówienie pakietu cloud-init](using-cloud-init.md)
+# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Uruchamianie skryptu bash na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu funkcji Cloud-init
+W tym artykule pokazano, jak za pomocą usługi [Cloud-init](https://cloudinit.readthedocs.io) uruchamiać istniejący skrypt bash na maszynie wirtualnej z systemem Linux lub w zestawach skalowania maszyn wirtualnych (VMSS) w czasie aprowizacji na platformie Azure. Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)
 
-## <a name="run-a-bash-script-with-cloud-init"></a>Uruchom skrypt powłoki bash przy użyciu pakietu cloud-init
-Za pomocą pakietu cloud-init jest konieczne konwertować istniejące skrypty konfiguracji chmury pakietu cloud-init akceptuje wiele typów danych wejściowych, z których jedna jest skrypt powłoki bash.
+## <a name="run-a-bash-script-with-cloud-init"></a>Uruchamianie skryptu bash przy użyciu funkcji Cloud-init
+Przy użyciu funkcji Cloud-init nie trzeba konwertować istniejących skryptów do pliku Cloud-config, ponieważ w chmurze-init są akceptowane wiele typów danych wejściowych, z których jeden jest skrypt bash.
 
-Jeśli korzystasz z rozszerzenia niestandardowego skryptu platformy Azure Linux można uruchamiać skrypty, można migrować je do korzystania z pakietu cloud-init. Jednak rozszerzenia Azure zintegrowano zgłoszenie alertu, błędy skryptu, wdrożenia obrazu pakietu cloud-init zakończy się niepowodzeniem, jeśli skrypt zakończy się niepowodzeniem.
+Jeśli do uruchamiania skryptów użyto rozszerzenia Azure Custom Script skrypt w systemie Linux, można je migrować do korzystania z funkcji Cloud-init. Rozszerzenia platformy Azure mają jednak zintegrowane raportowanie do alertów dotyczących błędów skryptów, więc wdrożenie obrazu w chmurze nie powiedzie się, jeśli wystąpi błąd skryptu.
 
-Aby wyświetlić tę funkcję w działaniu, utworzyć skrypt powłoki bash proste do testowania. Pakiet cloud-init, takich jak `#cloud-config` plik, ten skrypt musi być lokalny, na którym zostanie uruchomiona polecenia codziennych, aby aprowizować maszynę wirtualną.  W tym przykładzie należy utworzyć plik w usłudze Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor simple_bash.sh`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć **nano** edytora. Upewnij się, że poprawnie skopiować pliku całego pakietu cloud-init szczególnie pierwszy wiersz.  
+Aby wyświetlić tę funkcję w działaniu, Utwórz prosty skrypt bash na potrzeby testowania. Podobnie jak w przypadku pliku `#cloud-config` Cloud-init, ten skrypt musi być lokalny, w którym będą uruchamiane polecenia AzureCLI w celu aprowizacji maszyny wirtualnej.  Na potrzeby tego przykładu Utwórz plik w Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor simple_bash.sh`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć edytora **nano** . Upewnij się, że cały plik Cloud-init został poprawnie skopiowany, szczególnie w pierwszym wierszu.  
 
 ```bash
 #!/bin/sh
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Przed wdrożeniem tego obrazu, należy utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+Przed wdrożeniem tego obrazu należy utworzyć grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group) . Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz Utwórz maszynę Wirtualną z [tworzenie az vm](/cli/azure/vm) i określ plik skryptu powłoki bash, za pomocą `--custom-data simple_bash.sh` w następujący sposób:
+Teraz Utwórz maszynę wirtualną za pomocą [AZ VM Create](/cli/azure/vm) i określ `--custom-data simple_bash.sh` plik skryptu bash w następujący sposób:
 
 ```azurecli-interactive 
 az vm create \
@@ -52,23 +52,23 @@ az vm create \
   --custom-data simple_bash.sh \
   --generate-ssh-keys 
 ```
-## <a name="verify-bash-script-has-run"></a>Sprawdź skrypt powłoki bash zostało uruchomione.
-Protokół SSH z publicznego adresu IP maszyny Wirtualnej w danych wyjściowych z poprzedniego polecenia. Wprowadź własne **publicznego adresu IP** w następujący sposób:
+## <a name="verify-bash-script-has-run"></a>Sprawdź, czy skrypt bash został uruchomiony
+SSH do publicznego adresu IP maszyny wirtualnej wyświetlanej w danych wyjściowych poprzedniego polecenia. Wprowadź własne **publicIpAddress** w następujący sposób:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Zmień **tmp** katalogu i sprawdź plik myScript.txt istnieje i ma odpowiedni tekst wewnątrz niej.  Jeśli nie, możesz sprawdzić **/var/log/cloud-init.log** Aby uzyskać więcej informacji.  Wyszukaj następujący wpis:
+Przejdź do katalogu **/tmp** i upewnij się, że plik mój Script. txt istnieje i zawiera odpowiedni tekst w nim.  Jeśli tak nie jest, możesz sprawdzić **/var/log/Cloud-init.log** , aby uzyskać więcej szczegółów.  Wyszukaj następujący wpis:
 
 ```bash
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Przykłady dodatkowe pakietu cloud-init zmian konfiguracji zobacz następujące tematy:
+Aby uzyskać dodatkowe przykłady dotyczące zmian konfiguracji w chmurze, zobacz następujące tematy:
  
-- [Dodaj dodatkowe użytkownika w systemie Linux do maszyny Wirtualnej](cloudinit-add-user.md)
-- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety podczas pierwszego rozruchu](cloudinit-update-vm.md)
-- [Zmień lokalną nazwą hosta maszyny Wirtualnej](cloudinit-update-vm-hostname.md) 
-- [Zainstaluj pakiet aplikacji, zaktualizować pliki konfiguracji i wstawić kluczy](tutorial-automate-vm-deployment.md)
+- [Dodawanie dodatkowego użytkownika systemu Linux do maszyny wirtualnej](cloudinit-add-user.md)
+- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety przy pierwszym rozruchu](cloudinit-update-vm.md)
+- [Zmień lokalną nazwę hosta maszyny wirtualnej](cloudinit-update-vm-hostname.md) 
+- [Zainstaluj pakiet aplikacji, zaktualizuj pliki konfiguracji i klucze iniekcji](tutorial-automate-vm-deployment.md)

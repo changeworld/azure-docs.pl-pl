@@ -1,5 +1,5 @@
 ---
-title: Omówienie obsługi usługi Cloud-init dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Omówienie obsługi usługi Cloud-init dla maszyn wirtualnych z systemem Linux na platformie Azure
 description: Omówienie możliwości usługi Cloud-init w Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,24 +15,24 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: b0300dd91876b651015ae78c53dbc1e72bf8dd68
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285696"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034248"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Obsługa usługi Cloud-init dla maszyn wirtualnych w systemie Azure
 W tym artykule opisano obsługę funkcji [Cloud-init](https://cloudinit.readthedocs.io) w celu skonfigurowania maszyny wirtualnej lub zestawów skalowania maszyn wirtualnych w czasie aprowizacji na platformie Azure. Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure.  
 
 ## <a name="cloud-init-overview"></a>Omówienie pakietu cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Ponieważ usługa Cloud-init jest wywoływana podczas początkowego procesu rozruchu, nie ma dodatkowych kroków ani wymaganych agentów, aby zastosować konfigurację.  Aby uzyskać więcej informacji na temat prawidłowego formatowania plików `#cloud-config`, zobacz [witrynę dokumentacji Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  Pliki `#cloud-config` są zakodowane w formacie base64.
+[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnie sformatować swoje `#cloud-config` plików, zobacz [witrynie dokumentacji pakietu cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` są to pliki tekstowe zakodowane w formacie base64.
 
 Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie używa się poleceń **apt-get install** lub **yum install** do zainstalowania pakietu. Zamiast tego możesz zdefiniować listę pakietów do zainstalowania. Pakiet cloud-init automatycznie używa natywnego narzędzia do zarządzania pakietami dla wybranej dystrybucji.
 
-Aktywnie pracujemy z naszymi potwierdzonymi partnerami dystrybucji systemu Linux w celu udostępnienia obrazów z obsługą chmury w portalu Azure Marketplace. Te obrazy spowodują, że wdrożenia i konfiguracje usługi Cloud-init pracują bezproblemowo z maszynami wirtualnymi i zestawami skalowania maszyn wirtualnych. W poniższej tabeli przedstawiono bieżące dostępne obrazy z obsługą funkcji Cloud-init na platformie Azure:
+Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy spowodują, że wdrożenia i konfiguracje usługi Cloud-init pracują bezproblemowo z maszynami wirtualnymi i zestawami skalowania maszyn wirtualnych. W poniższej tabeli przedstawiono bieżącej dostępności obrazów pakietu cloud-init, włączone na platformie Azure:
 
-| Publisher | Oferta | JSZ | Wersja | Cloud-init gotowe |
+| Wydawca | Oferta | SKU | Wersja | gotowe pakietu cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
@@ -44,14 +44,14 @@ Aktywnie pracujemy z naszymi potwierdzonymi partnerami dystrybucji systemu Linux
     
 Obecnie Azure Stack nie obsługuje aprowizacji RHEL 7. x i CentOS 7. x przy użyciu funkcji Cloud-init.
 
-* Dla RHEL 7,6, pakiet Cloud-init, obsługiwany pakiet to: *18.2 -1. el7 _ 6.2* 
+* Dla RHEL 7,6, pakiet Cloud-init, obsługiwany pakiet to: *18.2-1. el7_6.2* 
 * W przypadku RHEL 7,7 (wersja zapoznawcza) pakiet Cloud-init jest pakietem w wersji zapoznawczej: *18.5 -3. el7*
 * W przypadku CentOS 7,7 (wersja zapoznawcza) pakiet Cloud-init jest pakietem w wersji zapoznawczej: *18.5 -3. el7. CentOS*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Czym różni się usługa Cloud-init i Agent systemu Linux (WALA)?
 WALA to Agent specyficzny dla platformy Azure służący do aprowizacji i konfigurowania maszyn wirtualnych oraz obsługi rozszerzeń platformy Azure. Ulepszamy zadanie konfigurowania maszyn wirtualnych do korzystania z usługi Cloud-init zamiast agenta systemu Linux, aby umożliwić istniejącym klientom korzystającym z usługi Cloud-init korzystanie z bieżących skryptów w chmurze.  Jeśli masz istniejące inwestycje w Skrypty inicjalizacji w chmurze do konfigurowania systemów z systemem Linux, **nie są wymagane żadne dodatkowe ustawienia** , aby je włączyć. 
 
-Jeśli nie dołączysz interfejsu wiersza polecenia platformy Azure @no__t przełącznika-0 w czasie aprowizacji, WALA przyjmuje minimalne parametry inicjowania obsługi maszyny wirtualnej wymagane do udostępnienia maszyny wirtualnej i ukończą wdrożenie przy użyciu ustawień domyślnych.  Jeśli odwołujesz się do przełącznika Cloud-init `--custom-data`, niezależnie od tego, jakie są zawarte w danych niestandardowych (poszczególne ustawienia lub pełny skrypt), zastąpią wartości domyślne WALA. 
+Jeśli nie dołączysz przełącznika `--custom-data` interfejsu wiersza polecenia platformy Azure w czasie aprowizacji, WALA przyjmuje minimalne parametry aprowizacji maszyny wirtualnej wymagane do zainicjowania obsługi maszyny wirtualnej i ukończą wdrożenie przy użyciu ustawień domyślnych.  Jeśli odwołujesz się do przełącznika Cloud-init `--custom-data`, każda z nich jest zawarta w danych niestandardowych (poszczególne ustawienia lub pełny skrypt) przesłania wartości domyślne WALA. 
 
 Konfiguracje WALA maszyn wirtualnych są ograniczone do czasu pracy w maksymalnym czasie aprowizacji maszyny wirtualnej.  Konfiguracje inicjowania usługi Cloud-init stosowane do maszyn wirtualnych nie mają ograniczeń czasowych i nie spowodują, że wdrożenie zakończy się niepowodzeniem. 
 
@@ -91,10 +91,10 @@ az vm create \
 Po utworzeniu maszyny wirtualnej interfejs wiersza polecenia platformy Azure wyświetli informacje specyficzne dla Twojego wdrożenia. Zwróć uwagę na element `publicIpAddress`. Ten adres jest używany na potrzeby uzyskiwania dostępu do maszyny wirtualnej.  Tworzenie maszyny wirtualnej trwa trochę czasu, pakiety do zainstalowania i aplikacja do uruchomienia. Pewne zadania w tle działają nadal po powrocie do wiersza polecenia w interfejsie wiersza polecenia platformy Azure. Do maszyny wirtualnej można użyć protokołu SSH i wykonać kroki opisane w sekcji Rozwiązywanie problemów w celu wyświetlenia dzienników usługi Cloud-init. 
 
 ## <a name="troubleshooting-cloud-init"></a>Rozwiązywanie problemów z usługą Cloud-init
-Po zainicjowaniu obsługi maszyny wirtualnej Usługa Cloud-init będzie działać za pomocą wszystkich modułów i skryptów zdefiniowanych w `--custom-data` w celu skonfigurowania maszyny wirtualnej.  Jeśli konieczne jest rozwiązanie błędów lub pominięć z konfiguracji, należy wyszukać nazwę modułu (`disk_setup` lub `runcmd` na przykład) w dzienniku inicjowania usługi Cloud-init w **/var/log/Cloud-init.log**.
+Po zainicjowaniu obsługi maszyny wirtualnej Usługa Cloud-init będzie działać za pomocą wszystkich modułów i skryptów zdefiniowanych w `--custom-data` w celu skonfigurowania maszyny wirtualnej.  Jeśli konieczne jest rozwiązanie błędów lub pominięć z konfiguracji, należy wyszukać nazwę modułu (na przykład`disk_setup` lub `runcmd`) w dzienniku inicjowania usługi Cloud-init w **/var/log/Cloud-init.log**.
 
 > [!NOTE]
-> Nie każdy błąd modułu powoduje krytyczny błąd konfiguracji w chmurze. Na przykład przy użyciu modułu `runcmd` Jeśli wykonanie skryptu nie powiedzie się, Usługa Cloud-init będzie w dalszym ciągu zgłaszana pomyślnie, ponieważ został wykonany moduł runcmd.
+> Nie każdy błąd modułu powoduje krytyczny błąd konfiguracji w chmurze. Na przykład przy użyciu modułu `runcmd`, jeśli skrypt nie powiedzie się, Usługa Cloud-init nadal zgłosi zgłoszenie, ponieważ moduł runcmd został uruchomiony.
 
 Więcej szczegółów dotyczących rejestrowania w usłudze Cloud-init można znaleźć w [dokumentacji usługi Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) . 
 

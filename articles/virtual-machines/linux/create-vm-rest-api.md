@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu API REST platformy Azure | Microsoft Docs
+title: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu API REST platformy Azure
 description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux na platformie Azure, która używa Managed Disks i uwierzytelniania SSH przy użyciu interfejsu API REST platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083472"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036443"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Tworzenie maszyny wirtualnej z systemem Linux korzystającej z uwierzytelniania SSH przy użyciu interfejsu API REST
 
@@ -33,9 +33,9 @@ W tym artykule pokazano, jak za pomocą interfejsu API REST utworzyć maszynę w
 
 Przed utworzeniem i przesłaniem żądania należy:
 
-* `{subscription-id}` Dla subskrypcji
+* `{subscription-id}` subskrypcji
   * Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
-* `{resourceGroupName}` Utworzony wcześniej czas
+* `{resourceGroupName}` utworzony wcześniej
 * [Interfejs sieci wirtualnej](../../virtual-network/virtual-network-network-interface.md) w tej samej grupie zasobów
 * Para kluczy SSH (możesz [wygenerować nowe](mac-create-ssh-keys.md) , jeśli nie masz takiego)
 
@@ -47,14 +47,14 @@ Aby utworzyć lub zaktualizować maszynę wirtualną, należy użyć następują
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-`{subscription-id}` Oprócz parametrów i `{resourceGroupName}` należy określić `{vmName}` `api-version=2017-12-01`(`api-version` jest opcjonalne, ale ten artykuł został przetestowany przy użyciu)
+Oprócz parametrów `{subscription-id}` i `{resourceGroupName}`, należy określić `{vmName}` (`api-version` jest opcjonalne, ale ten artykuł został przetestowany z `api-version=2017-12-01`)
 
 Wymagane są następujące nagłówki:
 
 | Nagłówek żądania   | Opis |
 |------------------|-----------------|
-| *Content-Type:*  | Wymagane. Ustaw wartość `application/json`. |
-| *Authorization:* | Wymagana. Ustaw prawidłowy `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Wymagany. Ustaw wartość `application/json`. |
+| *Authorization:* | Wymagany. Ustawiony na prawidłowy `Bearer`token dostępu[ ](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Aby uzyskać ogólne informacje na temat pracy z żądaniami interfejsu API REST, zobacz [składniki żądania/odpowiedzi interfejsu API REST](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -62,7 +62,7 @@ Aby uzyskać ogólne informacje na temat pracy z żądaniami interfejsu API REST
 
 Następujące typowe definicje są używane do kompilowania treści żądania:
 
-| Name                       | Wymagane | Typ                                                                                | Opis  |
+| Nazwa                       | Wymagany | Typ                                                                                | Opis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | Prawda     | ciąg                                                                              | Lokalizacja zasobu. |
 | name                       |          | ciąg                                                                              | Nazwa maszyny wirtualnej. |
@@ -71,7 +71,7 @@ Następujące typowe definicje są używane do kompilowania treści żądania:
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Określa ustawienia systemu operacyjnego dla maszyny wirtualnej. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Określa interfejsy sieciowe maszyny wirtualnej. |
 
-Przykładowa treść żądania jest poniżej. Upewnij się, że nazwa maszyny wirtualnej została określona `{computerName}` w `{name}` parametrach i, nazwa `networkInterfaces`interfejsu sieciowego, który został utworzony w programie, nazwa użytkownika `adminUsername` w `path`i i *publiczna* część Twojego SSH para kluczy (na przykład `~/.ssh/id_rsa.pub`) w. `keyData` Inne parametry, które warto zmodyfikować, obejmują `location` i `vmSize`.  
+Przykładowa treść żądania jest poniżej. Upewnij się, że nazwa maszyny wirtualnej została określona w parametrach `{computerName}` i `{name}`, nazwa interfejsu sieciowego utworzonego w obszarze `networkInterfaces`, nazwa użytkownika w `adminUsername` i `path`i *publiczna* część pary kluczy SSH (znajdująca się na przykład `~/.ssh/id_rsa.pub`) w `keyData`. Inne parametry, które warto zmodyfikować, obejmują `location` i `vmSize`.  
 
 ```json
 {
@@ -132,14 +132,14 @@ Aby uzyskać pełną listę dostępnych definicji w treści żądania, zobacz te
 
 Aby wysłać to żądanie HTTP, można użyć klienta z preferencją. Możesz również użyć [Narzędzia w przeglądarce](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) , klikając przycisk **Wypróbuj** .
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Odpowiedzi
 
 Istnieją dwie Pomyślne odpowiedzi na operację tworzenia lub aktualizowania maszyny wirtualnej:
 
-| Name        | Typ                                                                              | Opis |
+| Nazwa        | Typ                                                                              | Opis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 Utworzono | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Utworzono     |
+| 201 Utworzono | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Utworzone     |
 
 W przypadku zmniejszonej *201* odpowiedzi z poprzedniej przykładowej treści żądania, która tworzy maszynę wirtualną, zostanie przypisany *Identyfikator maszyny* wirtualnej, a *provisioningState* jest *tworzony*:
 
@@ -157,6 +157,6 @@ Aby uzyskać więcej informacji na temat odpowiedzi interfejsu API REST, zobacz 
 Aby uzyskać więcej informacji na temat interfejsów API REST platformy Azure lub innych narzędzi do zarządzania, takich jak interfejs wiersza polecenia platformy Azure lub Azure PowerShell, zobacz następujące tematy:
 
 - [Interfejs API REST dostawcy obliczeń platformy Azure](/rest/api/compute/)
-- [Wprowadzenie do interfejsu API REST platformy Azure](/rest/api/azure/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)
 - [Interfejs wiersza polecenia platformy Azure](/cli/azure/)
 - [Moduł Azure PowerShell](/powershell/azure/overview)

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: a930a22472dd4329c555539704747af9a2359c33
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837164"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031457"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: wykrywanie tonacji z analiza tekstu
 
@@ -36,7 +36,7 @@ Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodręb
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Publiczna wersja zapoznawcza analiza tonacji v3
 
-[Następna wersja analiza tonacji](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c9) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczącą poprawę dokładności i szczegółowości kategoryzacji tekstu interfejsu API i oceniania.
+[Następna wersja analiza tonacji](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczącą poprawę dokładności i szczegółowości kategoryzacji tekstu interfejsu API i oceniania.
 
 > [!NOTE]
 > * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
@@ -169,7 +169,7 @@ Format żądania jest taki sam jak w poprzedniej wersji, więc format odpowiedzi
 
 Przykładową C# aplikację, która wywołuje tę wersję analiza tonacji w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs), można znaleźć.
 
-## <a name="preparation"></a>Przygotowywanie
+## <a name="preparation"></a>Przygotowanie
 
 Analiza tonacji daje wynik wyższej jakości, gdy podajesz im mniejsze fragmenty tekstu do pracy. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 

@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć kopię maszyny Wirtualnej systemu Linux platformy Azure przy użyciu wiersza polecenia platformy Azure i dyski Managed Disks.
+title: Kopiowanie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Dowiedz się, jak utworzyć kopię maszyny wirtualnej z systemem Linux platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure i Managed Disks.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,31 +14,31 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 5a77152aea00ca094a78dc0173d48bc8e276cce5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a6a8b766efdc781df1fea29da81dc48090875ad7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668069"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036575"
 ---
-# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Utwórz kopię maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure i dyski Managed Disks
+# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Tworzenie kopii maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure i Managed Disks
 
-W tym artykule pokazano, jak utworzyć kopię sieci maszyn wirtualnych (VM) z systemem Linux przy użyciu wiersza polecenia platformy Azure i modelu wdrażania usługi Azure Resource Manager. 
+W tym artykule opisano sposób tworzenia kopii maszyny wirtualnej platformy Azure z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure i modelu wdrażania Azure Resource Manager. 
 
-Możesz również [przekazywanie i tworzenie maszyny Wirtualnej na podstawie wirtualnego dysku twardego](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Możesz również [przekazać i utworzyć maszynę wirtualną z dysku VHD](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 -   Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2).
 
--   Zaloguj się do konta platformy Azure za pomocą [az login](/cli/azure/reference-index#az-login).
+-   Zaloguj się do konta platformy Azure przy użyciu [AZ login](/cli/azure/reference-index#az-login).
 
--   Masz Maszynę wirtualną platformy Azure do użycia jako źródła kopii.
+-   Ma maszynę wirtualną platformy Azure, która będzie używana jako źródło kopii.
 
-## <a name="stop-the-source-vm"></a>Zatrzymaj źródłowej maszyny Wirtualnej
+## <a name="stop-the-source-vm"></a>Zatrzymaj źródłową maszynę wirtualną
 
-Cofnij Przydział źródłowej maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm#az-vm-deallocate).
-Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM* w grupie zasobów *myResourceGroup*:
+Cofnij przydział źródłowej maszyny wirtualnej przy użyciu polecenia [AZ VM deallocate](/cli/azure/vm#az-vm-deallocate).
+Poniższy przykład powoduje cofnięcie przydziału maszyny wirtualnej o nazwie *myVM* *w grupie zasobów zasób:*
 
 ```azurecli
 az vm deallocate \
@@ -46,13 +46,13 @@ az vm deallocate \
     --name myVM
 ```
 
-## <a name="copy-the-source-vm"></a>Skopiuj źródłowej maszyny Wirtualnej
+## <a name="copy-the-source-vm"></a>Kopiuj źródłową maszynę wirtualną
 
-Aby skopiować Maszynę wirtualną, należy utworzyć kopię podstawowego wirtualnego dysku twardego. Ten proces tworzy wyspecjalizowanego wirtualnego dysku twardego (VHD) jako dysk zarządzany, który zawiera tę samą konfigurację oraz ustawienia co źródłowa maszyna wirtualna.
+Aby skopiować maszynę wirtualną, należy utworzyć kopię bazowego wirtualnego dysku twardego. Ten proces umożliwia utworzenie wyspecjalizowanego wirtualnego dysku twardego (VHD) jako dysku zarządzanego, który zawiera tę samą konfigurację i ustawienia co źródłowa maszyna wirtualna.
 
 Aby uzyskać więcej informacji o dyskach funkcji Dyski zarządzane platformy Azure, zobacz [Omówienie funkcji Dyski zarządzane platformy Azure](../windows/managed-disks-overview.md). 
 
-1.  Listy każdej maszyny Wirtualnej i nazwę jej systemu operacyjnego na dysku z [az vm list](/cli/azure/vm#az-vm-list). Poniższy przykład wyświetla listę wszystkich maszyn wirtualnych w grupie zasobów o nazwie *myResourceGroup*:
+1.  Wyświetl listę każdej maszyny wirtualnej i nazwę jej dysku systemu operacyjnego za pomocą [AZ VM list](/cli/azure/vm#az-vm-list). Poniższy przykład wyświetla listę wszystkich maszyn wirtualnych w grupie zasobów o nazwie Moja *zasobów*:
     
     ```azurecli
     az vm list -g myResourceGroup \
@@ -68,14 +68,14 @@ Aby uzyskać więcej informacji o dyskach funkcji Dyski zarządzane platformy Az
     myVM    myDisk
     ```
 
-1.  Skopiuj dysk przez utworzenie nowego dysku zarządzanego i za pomocą [tworzenia dysku az](/cli/azure/disk#az-disk-create). W poniższym przykładzie tworzony jest dysk o nazwie *myCopiedDisk* z dysków zarządzanych, o nazwie *myDisk*:
+1.  Skopiuj dysk, tworząc nowy dysk zarządzany i używając polecenia [AZ Disk Create](/cli/azure/disk#az-disk-create). Poniższy przykład tworzy dysk o nazwie *myCopiedDisk* z dysku zarządzanego o nazwie Moja *dysk*:
 
     ```azurecli
     az disk create --resource-group myResourceGroup \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  Sprawdź dysków zarządzanych w grupie zasobów przy użyciu [listy dysków az](/cli/azure/disk#az-disk-list). Poniższy przykład wyświetla listę dysków zarządzanych w grupie zasobów o nazwie *myResourceGroup*:
+1.  Sprawdź teraz dyski zarządzane w grupie zasobów za pomocą polecenia [AZ Disk list](/cli/azure/disk#az-disk-list). Poniższy przykład zawiera listę dysków zarządzanych w grupie zasobów o nazwie Moja *zasobów*:
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
@@ -84,13 +84,13 @@ Aby uzyskać więcej informacji o dyskach funkcji Dyski zarządzane platformy Az
 
 ## <a name="set-up-a-virtual-network"></a>Konfigurowanie sieci wirtualnej
 
-Następujące opcjonalne czynności tworzenia nowej sieci wirtualnej, podsieci, publiczny adres IP i karty sieci wirtualnej (NIC).
+Następujące kroki opcjonalne tworzą nową sieć wirtualną, podsieć, publiczny adres IP i kartę sieci wirtualnej (NIC).
 
-Jeśli kopiujesz maszyny Wirtualnej rozwiązywania problemów z celów lub dodatkowe wdrożenia, możesz nie chcieć za pomocą maszyny Wirtualnej w istniejącej sieci wirtualnej.
+Jeśli kopiujesz maszynę wirtualną na potrzeby rozwiązywania problemów lub dodatkowych wdrożeń, możesz nie chcieć używać maszyny wirtualnej w istniejącej sieci wirtualnej.
 
-Jeśli chcesz utworzyć infrastrukturę sieci wirtualnej dla maszyn wirtualnych skopiowany wykonaj kilka następnych kroków. Jeśli nie chcesz utworzyć sieć wirtualną, przejdź do [Utwórz Maszynę wirtualną](#create-a-vm).
+Jeśli chcesz utworzyć infrastrukturę sieci wirtualnej dla skopiowanych maszyn wirtualnych, wykonaj kilka następnych kroków. Jeśli nie chcesz tworzyć sieci wirtualnej, Pomiń, aby [utworzyć maszynę](#create-a-vm)wirtualną.
 
-1.  Utwórz sieć wirtualną przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az-network-vnet-create). Poniższy przykład tworzy sieć wirtualną o nazwie *myVnet* i podsieć o nazwie *mySubnet*:
+1.  Utwórz sieć wirtualną za pomocą polecenia [AZ Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create). Poniższy przykład tworzy sieć wirtualną o nazwie *myVnet* oraz podsieć o nazwie Moja *podsieć*:
 
     ```azurecli
     az network vnet create --resource-group myResourceGroup \
@@ -100,7 +100,7 @@ Jeśli chcesz utworzyć infrastrukturę sieci wirtualnej dla maszyn wirtualnych 
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  Tworzenie publicznego adresu IP za pomocą [tworzenie sieci az public-ip](/cli/azure/network/public-ip#az-network-public-ip-create). Poniższy przykład tworzy publiczny adres IP o nazwie *myPublicIP* nazwą DNS *mypublicdns*. (Ponieważ nazwa DNS musi być unikatowa, Podaj unikatową nazwę).
+1.  Utwórz publiczny adres IP za pomocą polecenia [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create). Poniższy przykład tworzy publiczny adres IP o nazwie *myPublicIP* z nazwą DNS *mypublicdns*. (Ponieważ nazwa DNS musi być unikatowa, podaj unikatową nazwę).
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
@@ -108,8 +108,8 @@ Jeśli chcesz utworzyć infrastrukturę sieci wirtualnej dla maszyn wirtualnych 
         --allocation-method static --idle-timeout 4
     ```
 
-1.  Tworzenie karty Sieciowej przy użyciu [tworzenie az sieciowego](/cli/azure/network/nic#az-network-nic-create).
-    Poniższy przykład tworzy kartę Sieciową o nazwie *myNic* dołączona do *mySubnet* podsieci:
+1.  Utwórz kartę sieciową za pomocą polecenia [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create).
+    Poniższy przykład tworzy kartę sieciową o nazwie *myNic* , która jest dołączona do podsieci z *podsiecią* :
 
     ```azurecli
     az network nic create --resource-group myResourceGroup \
@@ -120,9 +120,9 @@ Jeśli chcesz utworzyć infrastrukturę sieci wirtualnej dla maszyn wirtualnych 
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Tworzenie maszyny Wirtualnej przy użyciu [tworzenie az vm](/cli/azure/vm#az-vm-create).
+Utwórz maszynę wirtualną za pomocą polecenia [AZ VM Create](/cli/azure/vm#az-vm-create).
 
-Określ skopiowany dysk zarządzany do użycia jako dysk systemu operacyjnego (`--attach-os-disk`), wykonując następujące czynności:
+Określ skopiowany dysk zarządzany do użycia jako dysk systemu operacyjnego (`--attach-os-disk`) w następujący sposób:
 
 ```azurecli
 az vm create --resource-group myResourceGroup \
@@ -131,6 +131,6 @@ az vm create --resource-group myResourceGroup \
     --attach-os-disk myCopiedDisk
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak zarządzać swojej nowej maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure, zobacz [poleceń interfejsu wiersza polecenia platformy Azure Resource Manager](../azure-cli-arm-commands.md).
+Aby dowiedzieć się, jak korzystać z interfejsu wiersza polecenia platformy Azure do zarządzania nową maszyną wirtualną, zobacz [polecenia interfejsu CLI platformy Azure dla Azure Resource Manager](../azure-cli-arm-commands.md).

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie odbiornika zewnętrznego dla zawsze włączonych grup dostępności | Microsoft Docs
+title: Konfigurowanie odbiornika zewnętrznego dla grup dostępności
 description: Ten samouczek przeprowadzi Cię przez kroki tworzenia odbiornika zawsze włączonych grup dostępności na platformie Azure, który jest dostępny zewnętrznie przy użyciu publicznego wirtualnego adresu IP skojarzonej usługi w chmurze.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 78881830d4e558daaad6e1929b30287e2731fb1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100409"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032719"
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurowanie odbiornika zewnętrznego dla zawsze włączonych grup dostępności na platformie Azure
+# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurowanie zewnętrznego odbiornika dla grup dostępności na maszynach wirtualnych platformy Azure SQL Server
 > [!div class="op_single_selector"]
 > * [Odbiornik wewnętrzny](../classic/ps-sql-int-listener.md)
 > * [Odbiornik zewnętrzny](../classic/ps-sql-ext-listener.md)
@@ -31,9 +32,9 @@ ms.locfileid: "70100409"
 W tym temacie opisano sposób konfigurowania odbiornika dla zawsze włączonych grup dostępności, które są dostępne zewnętrznie w Internecie. Jest to możliwe dzięki skojarzeniu **publicznego wirtualnego adresu IP (VIP)** usługi w chmurze z odbiornikiem.
 
 > [!IMPORTANT] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Menedżer zasobów i klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
-Grupa dostępności może zawierać repliki tylko lokalnie, tylko platformę Azure lub obejmować konfiguracje hybrydowe i platformy Azure. Repliki platformy Azure mogą znajdować się w tym samym regionie lub w wielu regionach, w których jest używana wiele sieci wirtualnych (sieci wirtualnych). W poniższych krokach przyjęto, że skonfigurowano już [grupę dostępności](../classic/portal-sql-alwayson-availability-groups.md) , ale nie skonfigurowano odbiornika.
+Grupa dostępności może zawierać repliki tylko lokalnie, tylko platformę Azure lub obejmować konfiguracje hybrydowe i platformy Azure. Repliki platformy Azure mogą znajdować się w tym samym regionie lub w wielu regionach, w których jest używana wiele sieci wirtualnych (sieci wirtualnych). W poniższych krokach przyjęto, że [skonfigurowano już grupę dostępności](../classic/portal-sql-alwayson-availability-groups.md) , ale nie skonfigurowano odbiornika.
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>Wskazówki i ograniczenia dotyczące zewnętrznych odbiorników
 Podczas wdrażania przy użyciu publicznego adresu VIP usługi w chmurze należy zwrócić uwagę na następujące wskazówki dotyczące odbiornika grupy dostępności na platformie Azure:
@@ -126,7 +127,7 @@ Aby uzyskać dostęp do odbiornika spoza sieci wirtualnej, należy użyć zewnę
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-W przeciwieństwie do poprzedniego przykładu należy użyć uwierzytelniania SQL, ponieważ obiekt wywołujący nie może używać uwierzytelniania systemu Windows przez Internet. Aby uzyskać więcej informacji, [Zobacz zawsze włączone grupy dostępności na maszynie wirtualnej platformy Azure: Scenariusze](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)łączności klienta. W przypadku korzystania z uwierzytelniania SQL upewnij się, że utworzono tę samą nazwę logowania w obu replikach. Aby uzyskać więcej informacji na temat rozwiązywania problemów z logowaniem przy użyciu grup dostępności, zobacz [Jak mapować nazwy logowania lub używać zawartego użytkownika bazy danych SQL Database do łączenia się z innymi replikami i mapować do baz danych dostępności](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+W przeciwieństwie do poprzedniego przykładu należy użyć uwierzytelniania SQL, ponieważ obiekt wywołujący nie może używać uwierzytelniania systemu Windows przez Internet. Aby uzyskać więcej informacji, zobacz [zawsze włączone grupy dostępności na maszynie wirtualnej platformy Azure: scenariusze łączności klienta](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). W przypadku korzystania z uwierzytelniania SQL upewnij się, że utworzono tę samą nazwę logowania w obu replikach. Aby uzyskać więcej informacji na temat rozwiązywania problemów z logowaniem przy użyciu grup dostępności, zobacz [Jak mapować nazwy logowania lub używać zawartego użytkownika bazy danych SQL Database do łączenia się z innymi replikami i mapować do baz danych dostępności](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
 Jeśli zawsze włączone repliki znajdują się w różnych podsieciach, klienci muszą określić **MultiSubnetFailover = true** w parametrach połączenia. Powoduje to próby połączenia równoległego z replikami w różnych podsieciach. Należy zauważyć, że w tym scenariuszu jest wdrażana Grupa dostępności obejmująca wiele regionów.
 

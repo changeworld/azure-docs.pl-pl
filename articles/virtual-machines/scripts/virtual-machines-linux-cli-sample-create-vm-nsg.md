@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie dwóch maszyn wirtualnych przy użyciu wewnętrznej i zewnętrznej sieciowej grupy zabezpieczeń | Microsoft Docs
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie dwóch maszyn wirtualnych przy użyciu wewnętrznych i zewnętrznych sieciowej grupy zabezpieczeń
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie dwóch maszyn wirtualnych przy użyciu wewnętrznej i zewnętrznej sieciowej grupy zabezpieczeń
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ed3ed5c3f44f9ddf912b420c4a89b6ca0fa94af
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709587"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039577"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>Bezpieczny ruch sieciowy między maszynami wirtualnymi
 
@@ -57,7 +57,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az network nsg rule update](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Aktualizuje regułę sieciowej grupy zabezpieczeń. W tym przykładzie reguła zaplecza jest aktualizowana w celu przekazywania ruchu tylko z podsieci frontonu. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

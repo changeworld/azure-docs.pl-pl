@@ -1,5 +1,5 @@
 ---
-title: Wskaż firmowej domeny internetowej nazwy domeny usługi Azure Traffic Manager
+title: Wskaż domenę internetową, aby Traffic Manager na platformie Azure Traffic Manager
 description: Ten artykuł pomoże Ci skonfigurować nazwę domeny firmowej w taki sposób, aby wskazywała nazwę domeny usługi Traffic Manager.
 services: traffic-manager
 author: asudbring
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: allensu
-ms.openlocfilehash: cd99d8829a8a7bb57b6affe98c1257eaa3ea8ce7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb656e5a8185951d203ed10ed819ff5ef11e8071
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070964"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038060"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Ustawianie firmowej domeny internetowej tak, aby wskazywała domenę usługi Azure Traffic Manager
 
@@ -25,12 +25,12 @@ Na przykład aby nazwa domeny `www.contoso.com` wskazywała nazwę DNS `contoso.
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Wszystkie żądania ruchu do *www\.contoso.com* będą kierowane do *contoso.trafficmanager.net*.
+Wszystkie żądania ruchu do *sieci www\.contoso.com* kierowane do *contoso.trafficmanager.NET*.
 
 > [!IMPORTANT]
 > Domena drugiego poziomu, na przykład *contoso.com*, nie może wskazywać domeny usługi Traffic Manager. Standardy protokołu DNS nie zezwalają na ustanawianie rekordów CNAME dla nazw domen drugiego poziomu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Metody routingu w usłudze Traffic Manager](traffic-manager-routing-methods.md)
 * [Traffic Manager — wyłączanie, włączanie lub usuwanie profilu](disable-enable-or-delete-a-profile.md)

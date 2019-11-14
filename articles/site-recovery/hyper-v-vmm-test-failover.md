@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961392"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039734"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Wykonaj drążenie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
 
@@ -22,7 +22,7 @@ W tym artykule opisano, jak przeprowadzić przechodzenie do szczegółów odzysk
 Uruchamiasz test pracy w trybie failover, aby zweryfikować strategię replikacji, i przeprowadź drążenie odzyskiwania po awarii bez utraty danych ani przestojów. Test pracy w trybie failover nie ma żadnego wpływu na bieżącą replikację ani w środowisku produkcyjnym. 
 
 > [!WARNING]
-> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
+> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](site-to-site-deprecation.md) przed kontynuowaniem.
 
 
 ## <a name="how-do-test-failovers-work"></a>Jak działa test pracy w trybie failover?

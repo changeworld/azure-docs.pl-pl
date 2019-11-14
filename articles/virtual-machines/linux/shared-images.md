@@ -1,5 +1,5 @@
 ---
-title: Tworzenie udostępnionych galerii obrazów przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Tworzenie udostępnionych galerii obrazów przy użyciu interfejsu wiersza polecenia platformy Azure
 description: W tym artykule dowiesz się, jak utworzyć udostępniony obraz maszyny wirtualnej na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: ea884b80698fb257106ef68d293f350b2f55dc06
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de1afa2367afcb78e8ca68e518acc93e33f61c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103558"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034962"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Tworzenie udostępnionej galerii obrazów przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -33,7 +33,7 @@ Galeria jest zasobem najwyższego poziomu, który zapewnia pełną kontrolę dos
 
 Funkcja galerii obrazów udostępnionych ma wiele typów zasobów. Firma Microsoft będzie używać tych aplikacji lub tworzyć je w tym artykule:
 
-| Resource | Opis|
+| Zasób | Opis|
 |----------|------------|
 | **Obraz zarządzany** | Jest to podstawowy obraz, którego można użyć samodzielnie lub użyć do utworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionych maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
 | **Galeria obrazów** | Podobnie jak w przypadku portalu Azure Marketplace, **Galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale ty kontrolujesz, kto ma dostęp. |
@@ -56,7 +56,7 @@ az vm create\
    --generate-ssh-keys
 ```
 
-Można również użyć określonej wersji, używając identyfikatora wersji obrazu dla `--image` parametru. Na przykład, aby użyć *1.0.0* wersji obrazu typu: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
+Można również użyć określonej wersji, używając identyfikatora wersji obrazu dla parametru `--image`. Na przykład, aby użyć *1.0.0* w wersji obrazu, wpisz: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 

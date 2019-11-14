@@ -1,5 +1,5 @@
 ---
-title: Wybieranie obrazów maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Wybieranie obrazów maszyn wirtualnych z systemem Windows na platformie Azure
 description: Użyj Azure PowerShell, aby określić wydawcę, ofertę, jednostkę SKU i wersję dla obrazów maszyn wirtualnych z witryny Marketplace.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 32264fc6c58dd1cb6c1514af1c07391ab0e9193d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749586"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039536"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Znajdź obrazy maszyn wirtualnych z systemem Windows w witrynie Azure Marketplace przy użyciu Azure PowerShell
 
@@ -41,13 +41,13 @@ W tej tabeli przedstawiono podzestaw dostępnych jednostek SKU dla wskazanych wy
 | MicrosoftWindowsServer |WindowsServer |2019 — centrum danych — rdzeń |
 | MicrosoftWindowsServer |WindowsServer |2019 — Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2016 — centrum danych |
-| MicrosoftWindowsServer |WindowsServer |2016 — Datacenter-Server-Core |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
 | MicrosoftWindowsServer |WindowsServer |2016 — Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
-| MicrosoftSQLServer |SQL2019 — WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
 | MicrosoftRServer |RServer — WS2016 |Enterprise |
 
 ## <a name="navigate-the-images"></a>Nawigowanie po obrazach

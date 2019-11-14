@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej przy użyciu dysku VHD | Microsoft Docs
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Tworzenie maszyny wirtualnej przy użyciu wirtualnego dysku twardego
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej przy użyciu wirtualnego dysku twardego.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 93a94e9a32b33ffd1f52231546d6aa6a71c78df0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 16f4e3e153cbc02f8626199d168d069add48e4b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841423"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037666"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Tworzenie maszyny wirtualnej przy użyciu wirtualnego dysku twardego
 

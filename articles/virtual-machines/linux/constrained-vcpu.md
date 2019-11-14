@@ -1,5 +1,5 @@
 ---
-title: Ograniczone rozmiary usługi Azure vCPU — system Linux | Microsoft Docs
+title: Ograniczone rozmiary usługi Azure vCPU — system Linux
 description: Wyświetla listę rozmiarów maszyn wirtualnych, które mogą mieć ograniczoną liczbę vCPU.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: 473db3ad0a31e66c6b8f148d5756978dab44ed27
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f4bb48bb4225d8ce19f577a7e4156aaa46ee065a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091963"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036636"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Ograniczone rozmiary maszyn wirtualnych z ograniczeniami vCPU
 

@@ -1,5 +1,5 @@
 ---
-title: Pomoc techniczna platformy Azure dla maszyn wirtualnych 2. generacji | Microsoft Docs
+title: Pomoc techniczna platformy Azure dla maszyn wirtualnych 2. generacji
 description: Omówienie pomocy technicznej platformy Azure dla maszyn wirtualnych 2. generacji
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 4cb6d684171ac6e7e9e1cb7da556250f857cf2af
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f17ec7179413bebb8260089abc46856412b78ab5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891482"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038647"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji na platformie Azure
 
@@ -53,7 +53,7 @@ Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn w
 
 Maszyny wirtualne 2. generacji obsługują następujące obrazy w portalu Marketplace:
 
-* System Windows Server 2019 Datacenter
+* Windows Server 2019 Datacenter
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter

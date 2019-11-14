@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie dostępnością maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+title: Zarządzanie dostępnością maszyn wirtualnych z systemem Linux na platformie Azure
 description: Dowiedz się, jak korzystać z wielu maszyn wirtualnych, aby zapewnić wysoką dostępność aplikacji systemu Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab269bcd56a5e60fdc8434a58b61163cb8769763
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5742ed346c6761dd443d6252e5c9e457fa952b87
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082922"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035900"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Zarządzanie dostępnością maszyn wirtualnych z systemem Linux
 

@@ -1,17 +1,14 @@
 ---
 title: Przykładowa kontrola nad planem NIST SP 800-53 R4
 description: Sterowanie mapowaniem przykładu programu NIST SP 800-53 R4. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 016d4a8e0f7bc71a7db01426eb514db32bd5624a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1197c6153c0252d8b6738f0e4909e32ca2ddf94e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161430"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037854"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Sterowanie mapowaniem przykładowego planu NIST SP 800-53 R4
 
@@ -100,11 +97,11 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Odpowiedź na błędy przetwarzania inspekcji w usłudze AU-5
 
@@ -121,11 +118,11 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
 ## <a name="au-12-audit-generation"></a>Generowanie inspekcji w usłudze AU-12
 
@@ -133,11 +130,11 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
@@ -258,7 +255,7 @@ Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez 
 - Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Inspekcja serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
 - Wdróż wymagania w celu inspekcji serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
-- aplikacja funkcji powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć tylko bezpieczne połączenia z Redis Cache
 - Należy włączyć bezpieczny transfer do kont magazynu
 - Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
@@ -308,11 +305,11 @@ Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie reje
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
@@ -336,9 +333,9 @@ Po przejrzeniu mapowania kontroli planu NIST SP 800-53 R4 zapoznaj się z nastę
 
 > [!div class="nextstepaction"]
 > [NIST sp 800-53 R4 plan — omówienie](./index.md)
-> [NIST SP 800-53 R4 plan-Deploy — kroki](./deploy.md)
+> [NIST SP 800-53 R4 plan-Deploy kroki](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

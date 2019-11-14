@@ -1,5 +1,5 @@
 ---
-title: Wdróż dedykowane hosty platformy Azure przy użyciu Azure Portal | Microsoft Docs
+title: Wdrażanie dedykowanych hostów platformy Azure przy użyciu Azure Portal
 description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu Azure Portal.
 services: virtual-machines-windows
 author: cynthn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/26/2019
 ms.author: cynthn
-ms.openlocfilehash: 0a3cb76d1e28559727957c1007b0992fb8e90f2b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7abfa00b01f2e5e32b2486d69f36ac62f844c5ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700563"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033831"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>Wersja zapoznawcza: Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu portalu
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu portalu
 
 W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md) platformy Azure do hostowania maszyn wirtualnych. 
 
@@ -36,7 +36,7 @@ W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md
 1. W obszarze **Konto administratora** podaj nazwę użytkownika, taką jak *azureuser*, oraz hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](faq.md#what-are-the-password-requirements-when-creating-a-vm).
 1. W obszarze **reguły portów ruchu przychodzącego**wybierz opcję **Zezwalaj na wybrane porty** , a następnie wybierz pozycję **RDP (3389)** z listy rozwijanej.
 1. W górnej części strony wybierz kartę **Zaawansowane** i w sekcji **host** wybierz pozycję Moja *host* dla **grupy hostów** *i hosta* dla **hosta**. 
-    ![Wybierz grupę hostów i hosta](./media/dedicated-hosts-portal/advanced.png)
+    ![wybierz grupę hostów i hosta](./media/dedicated-hosts-portal/advanced.png)
 1. Pozostaw pozostałe wartości domyślne, a następnie wybierz przycisk **Przejrzyj + utwórz** znajdujący się u dołu strony.
 1. Gdy zobaczysz komunikat, że Walidacja zakończyła się pomyślnie, wybierz pozycję **Utwórz**.
 

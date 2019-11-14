@@ -1,5 +1,5 @@
 ---
-title: Wdróż swoją pierwszą aplikację do Cloud Foundry na Microsoft Azure | Microsoft Docs
+title: Wdróż pierwszą aplikację do Cloud Foundry na Microsoft Azure
 description: Wdrażanie aplikacji do Cloud Foundry na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: c4088e593ca7d48a3e7a5c1a6699f316b57fff31
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083956"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036825"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Wdróż pierwszą aplikację do Cloud Foundry na Microsoft Azure
 
@@ -35,13 +35,13 @@ Istnieje kilka opcji tworzenia środowiska Cloud Foundry na platformie Azure:
 - [Wdróż pakiety Cloud Foundry typu "open source" bezpośrednio][oss-cf-bosh] przez skonfigurowanie programu [Bosh](https://bosh.io) Director, który koordynuje wdrożenie środowiska Cloud Foundry.
 
 > [!IMPORTANT] 
-> Jeśli wdrażasz PCF z poziomu portalu Azure Marketplace, zanotuj SYSTEMDOMAINURL i poświadczenia administratora wymagane do uzyskania dostępu do Menedżera aplikacji pivots, które zostały opisane w przewodniku wdrażania w portalu Marketplace. Są one konieczne do wykonania tego samouczka. W przypadku wdrożeń w witrynie Marketplace SYSTEMDOMAINURL jest w postaci https://system. *IP-Address*. CF.pcfazure.com.
+> Jeśli wdrażasz PCF z poziomu portalu Azure Marketplace, zanotuj SYSTEMDOMAINURL i poświadczenia administratora wymagane do uzyskania dostępu do Menedżera aplikacji pivots, które zostały opisane w przewodniku wdrażania w portalu Marketplace. Są one konieczne do wykonania tego samouczka. W przypadku wdrożeń w witrynie Marketplace SYSTEMDOMAINURL ma postać https://system. *IP-Address*. CF.pcfazure.com.
 
 ## <a name="connect-to-the-cloud-controller"></a>Nawiązywanie połączenia z kontrolerem chmury
 
 Kontroler chmury jest głównym punktem wejścia do środowiska Cloud Foundryego do wdrażania aplikacji i zarządzania nimi. Podstawowy interfejs API kontrolera chmury (CCAPI) jest interfejsem API REST, ale jest dostępny za pomocą różnych narzędzi. W takim przypadku współdziała z nim za pomocą [interfejsu wiersza polecenia Cloud Foundry][cf-cli]. Możesz zainstalować interfejs wiersza polecenia w systemie Linux, MacOS lub Windows, ale jeśli wolisz nie instalować go w ogóle, jest on dostępny wstępnie na [Azure Cloud Shell][cloudshell-docs].
 
-Aby się zalogować, `api` poprzedź do SYSTEMDOMAINURL uzyskanego w ramach wdrożenia w portalu Marketplace. Ponieważ domyślne wdrożenie używa certyfikatu z podpisem własnym, należy również uwzględnić `skip-ssl-validation` przełącznik.
+Aby się zalogować, poprzedź `api` do SYSTEMDOMAINURL uzyskanego w ramach wdrożenia w portalu Marketplace. Ponieważ domyślne wdrożenie używa certyfikatu z podpisem własnym, należy również uwzględnić przełącznik `skip-ssl-validation`.
 
 ```bash
 cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
@@ -56,7 +56,7 @@ Cloud Foundry udostępnia *organizacje* i *spacje* jako przestrzenie nazw do izo
 
 Jeśli wpiszesz `cf apps`, zobaczysz zestaw aplikacji systemowych, które zostały wdrożone w przestrzeni systemowej w organizacji systemowej. 
 
-Należy zachować zastrzeżoną organizacji systemową dla aplikacji systemowych, dlatego należy utworzyć organizacji i miejsce na potrzeby aplikacji przykładowej.
+Należy zachować zastrzeżoną organizacji *systemową* dla aplikacji systemowych, dlatego należy utworzyć organizacji i miejsce na potrzeby aplikacji przykładowej.
 
 ```bash
 cf create-org myorg
@@ -97,7 +97,7 @@ mvn clean package
 
 ### <a name="deploy-the-application-with-cf-push"></a>Wdrażanie aplikacji za pomocą polecenia CF push
 
-Większość aplikacji można wdrożyć do Cloud Foundry przy użyciu `push` polecenia:
+Większość aplikacji można wdrożyć do Cloud Foundry przy użyciu polecenia `push`:
 
 ```bash
 cf push
@@ -112,7 +112,7 @@ Aby wyświetlić aplikację Hello-wiosenną w chmurze, Otwórz podany adres URL 
 ![Domyślny interfejs użytkownika chmury wiosennej][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> Aby dowiedzieć się więcej na temat `cf push`tego, co się dzieje, zobacz [temat jak aplikacje są przemieszczane][cf-push-docs] w dokumentacji Cloud Foundry.
+> Aby dowiedzieć się więcej na temat tego, co się dzieje w trakcie `cf push`, zobacz [temat jak aplikacje są przemieszczane][cf-push-docs] w dokumentacji Cloud Foundry.
 
 ## <a name="view-application-logs"></a>Wyświetlanie dzienników aplikacji
 
@@ -122,9 +122,9 @@ Możesz użyć interfejsu wiersza polecenia Cloud Foundry, aby wyświetlić dzie
 cf logs hello-spring-cloud
 ```
 
-Domyślnie polecenie Logs używa ogona,który wyświetla nowe dzienniki podczas pisania. Aby wyświetlić nowe dzienniki, Odśwież aplikację Hello-wiosny w chmurze w przeglądarce.
+Domyślnie polecenie Logs używa *ogona*, który wyświetla nowe dzienniki podczas pisania. Aby wyświetlić nowe dzienniki, Odśwież aplikację Hello-wiosny w chmurze w przeglądarce.
 
-Aby wyświetlić dzienniki, które zostały już zapisane, Dodaj `recent` przełącznik:
+Aby wyświetlić dzienniki, które zostały już zapisane, dodaj przełącznik `recent`:
 
 ```bash
 cf logs --recent hello-spring-cloud
@@ -132,13 +132,13 @@ cf logs --recent hello-spring-cloud
 
 ## <a name="scale-the-application"></a>Skalowanie aplikacji
 
-Domyślnie `cf push` tylko tworzy pojedyncze wystąpienie aplikacji. Aby zapewnić wysoką dostępność i włączyć skalowanie w poziomie w celu uzyskania większej przepływności, zazwyczaj chcesz uruchomić więcej niż jedno wystąpienie aplikacji. Można łatwo skalować już wdrożone aplikacje za pomocą `scale` polecenia:
+Domyślnie `cf push` tworzy tylko pojedyncze wystąpienie aplikacji. Aby zapewnić wysoką dostępność i włączyć skalowanie w poziomie w celu uzyskania większej przepływności, zazwyczaj chcesz uruchomić więcej niż jedno wystąpienie aplikacji. Można łatwo skalować już wdrożone aplikacje za pomocą polecenia `scale`:
 
 ```bash
 cf scale -i 2 hello-spring-cloud
 ```
 
-`cf app` Uruchomienie polecenia w aplikacji pokazuje, że Cloud Foundry tworzy inne wystąpienie aplikacji. Po uruchomieniu aplikacji Cloud Foundry automatycznie uruchamia Równoważenie obciążenia ruchem.
+Uruchomienie polecenia `cf app` w aplikacji pokazuje, że Cloud Foundry tworzy inne wystąpienie aplikacji. Po uruchomieniu aplikacji Cloud Foundry automatycznie uruchamia Równoważenie obciążenia ruchem.
 
 
 ## <a name="next-steps"></a>Następne kroki

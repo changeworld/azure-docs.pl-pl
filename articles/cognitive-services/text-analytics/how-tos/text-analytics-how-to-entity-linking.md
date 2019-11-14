@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835661"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031422"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -33,7 +33,7 @@ Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania 
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Niestandardowa wersja próbna rozpoznawania jednostek v3
 
-[Następna wersja rozpoznawania nazwanych jednostek](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) jest teraz dostępna w publicznej wersji zapoznawczej. Udostępnia ona aktualizacje zarówno do łączenia jednostek, jak i nazwanego rozpoznawania jednostek. 
+[Następna wersja rozpoznawania nazwanych jednostek]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) jest teraz dostępna w publicznej wersji zapoznawczej. Udostępnia ona aktualizacje zarówno do łączenia jednostek, jak i nazwanego rozpoznawania jednostek. 
 
 :::row:::
     :::column span="":::
@@ -99,7 +99,7 @@ NER
 > [!NOTE]
 > Następujące jednostki są obsługiwane przez funkcję rozpoznawania jednostek nazwanych (NER) w wersji 2. [Ner v3](#named-entity-recognition-v3-public-preview) jest dostępna w publicznej wersji zapoznawczej i znacząco rozszerza liczbę i głębokość jednostek rozpoznawanych w tekście.   
 
-| Typ  | Podtyp | Przykład |
+| Typ  | SubType | Przykład |
 |:-----------   |:------------- |:---------|
 | Person (Osoba)        | Nie dotyczy\*         | "Jan", "bramy Bill"     |
 | Lokalizacja      | Nie dotyczy\*         | „Redmond, Washington”, „Paris”  |
@@ -127,7 +127,7 @@ NER
 
 Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej bazy wiedzy w każdym z języków. W przypadku łączenia jednostek w analiza tekstu oznacza to, że każdy język, który jest obsługiwany przez punkt końcowy `entities`, zostanie połączony z odpowiednim korpus witryny Wikipedia w tym języku. Ponieważ rozmiar korpusy różni się między językami, oczekuje się, że odwołanie do funkcji łączenia jednostki również będzie się różnić. Aby uzyskać więcej informacji, zobacz artykuł [Obsługa języka](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
-## <a name="preparation"></a>Przygotowywanie
+## <a name="preparation"></a>Przygotowanie
 
 Musisz mieć dokumenty JSON w tym formacie: ID, text, language
 

@@ -1,5 +1,5 @@
 ---
-title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — magazyn | Microsoft Docs
+title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — magazyn
 description: Wyświetla różne rozmiary zoptymalizowane pod kątem magazynowania dostępne dla maszyn wirtualnych z systemem Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: 7320acc3a00702b66800af5bfd9a240f4b146670
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 26fb9b285658b9bf3d3df67849e9ccd15b8b5f61
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100834"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034843"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowane pod kątem magazynu
 

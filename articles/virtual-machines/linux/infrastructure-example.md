@@ -1,5 +1,5 @@
 ---
-title: Przykład Przewodnik dotyczący infrastruktury platformy Azure | Microsoft Docs
+title: Przykład Przewodnik dotyczący infrastruktury platformy Azure
 description: Poznaj wytyczne dotyczące projektowania i wdrażania przykładowej infrastruktury na platformie Azure.
 documentationcenter: ''
 services: virtual-machines-linux
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71b0dd15d183f3209c7424c537dde1e3df29d097
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cf63db18dac5fa202bbf339723c6555c4acb2ca2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083137"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036030"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład Przewodnik dotyczący infrastruktury platformy Azure dla maszyn wirtualnych z systemem Linux
 W tym artykule omówiono Tworzenie przykładowej infrastruktury aplikacji. Szczegółowo projektujemy infrastrukturę dla prostego magazynu online, który łączy wszystkie wytyczne i decyzje dotyczące konwencji nazewnictwa, zestawów dostępności, sieci wirtualnych i modułów równoważenia obciążenia, a także w rzeczywistości wdrażają maszyny wirtualne.
@@ -44,7 +44,7 @@ Projekt wynikający z tego musi zawierać:
 
 * Subskrypcja i konto platformy Azure
 * Jedna grupa zasobów
-* Dyski zarządzane na platformie Azure
+* Dyski zarządzane platformy Azure
 * Sieć wirtualna z dwiema podsieciami
 * Zestawy dostępności dla maszyn wirtualnych z podobną rolą
 * Maszyny wirtualne
@@ -71,14 +71,14 @@ Ponieważ sieć wirtualna nie wymaga ciągłej łączności z siecią firmy Adve
 
 Tworzą one sieć wirtualną tylko w chmurze o następujących ustawieniach przy użyciu Azure Portal:
 
-* Nazwa: AZOS-USE-VN01
+* Name: AZOS-USE-VN01
 * Lokalizacja: Wschodnie stany USA 2
 * Przestrzeń adresowa sieci wirtualnej: 10.0.0.0/8
 * Pierwsza podsieć:
-  * Nazwa: Fronton
+  * Nazwa: fronton
   * Przestrzeń adresowa: 10.0.1.0/24
 * Druga podsieć:
-  * Nazwa: BackEnd
+  * Nazwa: zaplecze
   * Przestrzeń adresowa: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Zestawy dostępności

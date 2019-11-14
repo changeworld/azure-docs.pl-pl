@@ -1,18 +1,18 @@
 ---
-title: Samouczek — Tworzenie bramy aplikacji za pomocą zapory aplikacji sieci Web — Azure Portal
+title: 'Samouczek: tworzenie przy użyciu portalu — Zapora aplikacji sieci Web'
 description: W tym samouczku dowiesz się, jak utworzyć bramę aplikacji za pomocą zapory aplikacji sieci Web przy użyciu Azure Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d439703f1637282c73cd960923733460502c55bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501708"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049219"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Samouczek: Tworzenie bramy aplikacji za pomocą zapory aplikacji sieci Web przy użyciu Azure Portal
 
@@ -34,11 +34,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
+## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 Aby platforma Azure mogła komunikować się między zasobami, potrzebuje ona sieci wirtualnej. Można utworzyć nową sieć wirtualną lub użyć istniejącej. W tym przykładzie utworzysz nową sieć wirtualną. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. Wystąpienia Application Gateway są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
 

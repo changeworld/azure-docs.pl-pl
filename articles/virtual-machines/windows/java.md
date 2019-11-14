@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej platformy Azure i zarządzanie nią przy użyciu języka Java | Microsoft Docs
+title: Tworzenie maszyny wirtualnej platformy Azure i zarządzanie nią przy użyciu języka Java
 description: Użyj języka Java i Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie jej zasoby pomocnicze.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103022"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039717"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure przy użyciu języka Java
 
@@ -29,7 +29,7 @@ ms.locfileid: "70103022"
 > * Tworzenie projektu Maven
 > * Dodaj zależności
 > * Utwórz poświadczenia
-> * Utwórz zasoby
+> * Tworzenie zasobów
 > * Wykonywanie zadań zarządzania
 > * Usuwanie zasobów
 > * Uruchamianie aplikacji
@@ -51,7 +51,7 @@ Wykonanie tych kroków trwa około 20 minut.
 
 ## <a name="add-dependencies"></a>Dodaj zależności
 
-1. W folderze Otwórz plik i Dodaj konfigurację kompilacji do &lt;projektu&gt; , aby umożliwić Kompilowanie aplikacji: `pom.xml` `testAzureApp`
+1. W folderze `testAzureApp` Otwórz plik `pom.xml` i Dodaj konfigurację kompilacji do &lt;&gt; projektu, aby umożliwić Kompilowanie aplikacji:
 
     ```xml
     <build>
@@ -133,14 +133,14 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp  **&lt;identyfikator Subscription&gt; ID** identyfikatorem subskrypcji,  **&lt;identyfikatorem&gt; aplikacji** Active Directory identyfikatorem aplikacji, **&lt;kluczem uwierzytelniania przy&gt;** użyciu klucza aplikacji i  **&lt;identyfikatora&gt; dzierżawy** z identyfikatorem dzierżawy.
+    Zastąp **&lt;Identyfikator subskrypcji&gt;** identyfikatorem subskrypcji, **&lt;identyfikatorem aplikacji&gt;** z identyfikatorem aplikacji Active Directory, **&lt;klucz uwierzytelniania**&gt;z kluczem aplikacji, a **&lt;identyfikator dzierżawy&gt;** z identyfikatorem dzierżawy.
 
 2. Zapisz plik.
 3. Ustaw zmienną środowiskową o nazwie AZURE_AUTH_LOCATION w powłoce z pełną ścieżką do pliku uwierzytelniania.
 
 ### <a name="create-the-management-client"></a>Tworzenie klienta zarządzania
 
-1. Otwórz plik w obszarze `src\main\java\com\fabrikam` i upewnij się, że ta instrukcja pakietu znajduje się na górze: `App.java`
+1. Otwórz plik `App.java` w obszarze `src\main\java\com\fabrikam` i upewnij się, że ta instrukcja pakietu znajduje się na górze:
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -184,7 +184,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usł
 
     ```
 
-## <a name="create-resources"></a>Utwórz zasoby
+## <a name="create-resources"></a>Tworzenie zasobów
 
 ### <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 

@@ -1,5 +1,5 @@
 ---
-title: Odłączanie dysku danych z maszyny wirtualnej z systemem Linux — Azure | Microsoft Docs
+title: Odłączanie dysku danych z maszyny wirtualnej z systemem Linux — Azure
 description: Dowiedz się, jak odłączyć dysk danych z maszyny wirtualnej na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure Portal.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695876"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036368"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odłączyć dysk danych z maszyny wirtualnej z systemem Linux
 
@@ -82,7 +82,7 @@ W tym przykładzie należy usunąć następujący wiersz z pliku */etc/fstab* :
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-Użyj `umount` , aby odinstalować dysk. Poniższy przykład Odinstalowuje partycję */dev/sdc1* z punktu instalacji */datadrive* :
+Użyj `umount`, aby odinstalować dysk. Poniższy przykład Odinstalowuje partycję */dev/sdc1* z punktu instalacji */datadrive* :
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -109,7 +109,7 @@ Dysk pozostaje w magazynie, ale nie jest już dołączony do maszyny wirtualnej.
 2. Wybierz maszynę wirtualną zawierającą dysk danych, który chcesz odłączyć, a następnie kliknij przycisk **Zatrzymaj** , aby cofnąć przydział maszyny wirtualnej.
 3. W okienku maszyna wirtualna wybierz pozycję **dyski**.
 4. W górnej części okienka **dyski** wybierz pozycję **Edytuj**.
-5. W okienku **dyski** z prawej strony dysku z danymi, które chcesz odłączyć, kliknij ![przycisk Odłącz obraz](./media/detach-disk/detach.png) przycisku Odłącz.
+5. W okienku **dyski** z prawej strony dysku z danymi, który ma zostać odłączony, kliknij przycisk odłączania obrazu przycisku ![Odłącz](./media/detach-disk/detach.png).
 5. Po usunięciu dysku kliknij pozycję Zapisz w górnej części okienka.
 6. W okienku maszyna wirtualna kliknij pozycję **Przegląd** , a następnie kliknij przycisk **Uruchom** w górnej części okienka, aby ponownie uruchomić maszynę wirtualną.
 
