@@ -1,5 +1,5 @@
 ---
-title: Instalowanie bazy danych MySQL na maszynie wirtualnej OpenSUSE na platformie Azure | Microsoft Docs
+title: Instalowanie bazy danych MySQL na maszynie wirtualnej OpenSUSE na platformie Azure
 description: Dowiedz się, jak zainstalować program MySQL na maszynie wirtualnej z systemem OpenSUSE Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d5f2ef2d82cbcced6202ad2c09f23dd734d373b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300858"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035595"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalowanie bazy danych MySQL na maszynie wirtualnej z dystrybucją systemu OpenSUSE Linux na platformie Azure
 
@@ -102,7 +102,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>Hasło MySQL
 
-Po zakończeniu instalacji hasło główne programu MySQL jest domyślnie puste. Uruchom skrypt **MySQL @ no__t-1secure @ no__t-2installation** , aby zabezpieczyć MySQL. Skrypt poprosi o zmianę hasła głównego programu MySQL, usunięcie kont użytkowników anonimowych, wyłączenie zdalnego logowania się, usunięcie testów baz danych i ponowne załadowanie tabeli uprawnień. 
+Po zakończeniu instalacji hasło główne programu MySQL jest domyślnie puste. Uruchom skrypt **instalacji bezpiecznego\_\_MySQL** , aby zabezpieczyć MySQL. Skrypt poprosi o zmianę hasła głównego programu MySQL, usunięcie kont użytkowników anonimowych, wyłączenie zdalnego logowania się, usunięcie testów baz danych i ponowne załadowanie tabeli uprawnień. 
 
 Po ponownym uruchomieniu serwera należy ponownie przeprowadzić protokół SSH do maszyny wirtualnej.
 
@@ -137,7 +137,7 @@ CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ## <a name="create-a-database"></a>Tworzenie bazy danych
 
 
-Utwórz bazę danych i Udziel uprawnień użytkownika `mysqluser`.
+Utwórz bazę danych i Udziel `mysqluser` uprawnień użytkownika.
 
 ```sql
 CREATE DATABASE testdatabase;

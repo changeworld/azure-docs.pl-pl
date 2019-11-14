@@ -1,5 +1,5 @@
 ---
-title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — przyspieszone obliczenia | Microsoft Docs
+title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — przyspieszenie obliczeniowe
 description: Wyświetla różne rozmiary procesora GPU dostępne dla maszyn wirtualnych z systemem Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 983e85dc0ebefb27804c0f3a794360def6050ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082136"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034904"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowane pod kątem procesora GPU
 
@@ -37,7 +37,7 @@ W przypadku ręcznego instalowania sterowników procesora GPU firmy NVIDIA nale�
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Nie należy instalować X serwera ani innych systemów, które używają `Nouveau` sterownika na maszynach wirtualnych Ubuntu NC. Przed zainstalowaniem sterowników procesora GPU firmy NVIDIA należy wyłączyć `Nouveau` sterownik.  
+* Nie należy instalować X serwera ani innych systemów, które używają sterownika `Nouveau` na maszynach wirtualnych Ubuntu NC. Przed zainstalowaniem sterowników procesora GPU firmy NVIDIA należy wyłączyć sterownik `Nouveau`.  
 
 ## <a name="other-sizes"></a>Inne rozmiary
 - [Zastosowania ogólne](sizes-general.md)

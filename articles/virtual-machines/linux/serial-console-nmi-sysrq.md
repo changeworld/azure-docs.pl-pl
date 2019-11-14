@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure serial Console dla wywołań SysRq i NMI | Microsoft Docs
+title: Konsola szeregowa platformy Azure dla wywołań SysRq i NMI
 description: Korzystanie z konsoli szeregowej dla wywołań SysRq i NMI w usłudze Azure Virtual Machines.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 81fb9f99f4f7e4f77b39855445639369f65f0966
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5eba50e7cfc00c081622972ca09f305b34c19c47
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091310"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034999"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Korzystanie z konsoli szeregowej dla wywołań SysRq i NMI
 
 ## <a name="system-request-sysrq"></a>Żądanie systemowe (SysRq)
 SysRq to sekwencja kluczy zrozumiała dla jądra systemu operacyjnego Linux, która może wyzwalać zestaw wstępnie zdefiniowanych akcji. Te polecenia są często używane, gdy nie można przeprowadzić rozwiązywania problemów lub odzyskiwania maszyny wirtualnej za pomocą tradycyjnego administrowania (na przykład jeśli maszyna wirtualna nie odpowiada). Użycie funkcji SysRq usługi Azure serial Console spowoduje naśladowanie nacisku klawisza SysRq i znaków wprowadzonych na fizycznej klawiaturze.
 
-Po dostarczeniu sekwencji SysRq Konfiguracja jądra będzie kontrolować sposób reagowania systemu. Aby uzyskać informacje na temat włączania i wyłączania usługi SysRq, zobacz [tekst](https://aka.ms/kernelorgsysreqdoc) |  *przewodnika administratora sysrq* .[](https://aka.ms/linuxsysrq)  
+Po dostarczeniu sekwencji SysRq Konfiguracja jądra będzie kontrolować sposób reagowania systemu. Aby uzyskać informacje na temat włączania i wyłączania SysRq, zobacz [tekst](https://aka.ms/kernelorgsysreqdoc) *Podręcznika administratora sysrq* | j [promocji](https://aka.ms/linuxsysrq).  
 
 Konsoli szeregowej platformy Azure można użyć do wysyłania SysRq do maszyny wirtualnej platformy Azure przy użyciu ikony klawiatury na pasku poleceń przedstawionym poniżej.
 
@@ -59,16 +59,16 @@ W podręczniku administratora SysRq powyżej:
 |``e``  |   Wyślij SIGTERM do wszystkich procesów, z wyjątkiem init.
 |``f``  |   Wywoła OOM killer, aby skasować proces Hog pamięci, ale nie awaryjnego, jeśli nic nie może zostać zabite.
 |``g``  |   Używane przez KGDB (debuger jądra)
-|``h``  |   Wyświetla pomoc (wszystkie inne klucze niż wymienione w tym miejscu również wyświetlą pomoc, ale ``h`` łatwą do zapamiętania:-)
+|``h``  |   Wyświetla pomoc (wszystkie inne klucze niż wymienione w tym miejscu również wyświetlą pomoc, ale ``h`` można łatwo zapamiętać
 |``i``  |    Wyślij SIGKILL do wszystkich procesów, z wyjątkiem init.
 |``j``  |    Wymuś "po prostu rozmrożenie" — system plików zamrożony przez polecenie IOCTL FIFREEZE.
-|``k``  |    Klucz dostępu Secure (SAK) kasuje wszystkie programy w bieżącej konsoli wirtualnej. UWAGA: Zobacz ważne komentarze poniżej w sekcji SAK.
+|``k``  |    Klucz dostępu Secure (SAK) kasuje wszystkie programy w bieżącej konsoli wirtualnej. Uwaga: Zobacz ważne komentarze poniżej w sekcji SAK.
 |``l``  |    Pokazuje ślad stosu dla wszystkich aktywnych procesorów CPU.
 |``m``  |    Spowoduje zrzut informacji o bieżącej pamięci do konsoli programu.
 |``n``  |    Służy do zwiększania możliwości zadań RT
 |``o``  |    Program zamknie system (jeśli jest skonfigurowany i obsługiwany).
 |``p``  |    Spowoduje zrzut bieżących rejestrów i flag do konsoli programu.
-|``q``  |    Spowoduje zrzut na listę wszystkich procesorów hrtimers (ale nie zwykłych czasomierzy timer_list) i szczegółowe informacje o wszystkich urządzeniach clockevent.
+|``q``  |    Spowoduje zrzut na listę wszystkich procesorów hrtimers (ale nie zwykłych czasomierzy timer_list) i szczegółowych informacji o wszystkich urządzeniach clockevent.
 |``r``  |    Wyłącza tryb RAW klawiatury i ustawia go na XLATE.
 |``s``  |    Spróbuje zsynchronizować wszystkie zainstalowane systemy plików.
 |``t``  |    Spowoduje zrzut listy bieżących zadań i ich informacji do konsoli programu.
@@ -79,7 +79,7 @@ W podręczniku administratora SysRq powyżej:
 |``x``  |    Używany przez interfejs xmon na platformach PPC/PowerPC. Pokaż globalne rejestry PMU na sparc64. Zrzuć wszystkie wpisy TLB na MIPS.
 |``y``  |    Pokaż globalne rejestry procesora [SPARC-64 specyficzne]
 |``z``  |    Zrzuć bufor ftrace
-|``0``-``9`` | Ustawia poziom rejestrowania konsoli, kontrolując, które komunikaty jądra będą drukowane w konsoli programu. (``0``na przykład może to spowodować, że tylko wiadomości awaryjne, takie jak rozruchem lub zostałyby wprowadzone do konsoli).
+|``0``-``9`` | Ustawia poziom rejestrowania konsoli, kontrolując, które komunikaty jądra będą drukowane w konsoli programu. (``0``, na przykład zostałby tak, aby tylko wiadomości awaryjne, takie jak rozruchem lub niestety, uczynić je konsolą).
 
 ### <a name="distribution-specific-documentation"></a>Dokumentacja dotycząca dystrybucji ###
 Aby uzyskać dokumentację dotyczącą dystrybucji na SysRq i kroki konfigurowania systemu Linux w celu utworzenia zrzutu awaryjnego, gdy odbierze polecenie SysRq "Crash", zobacz poniższe linki:
@@ -110,7 +110,7 @@ W przypadku systemów Linux, które obsługują sysctl do konfigurowania paramet
 1. Ponowne uruchamianie lub aktualizowanie sysctl przez uruchomienie <br>
     `sysctl -p`
 
-Aby uzyskać więcej informacji na temat konfiguracji jądra systemu `unknown_nmi_panic`Linux `panic_on_io_nmi`, w `panic_on_unrecovered_nmi`tym,, i, zobacz: [Dokumentacja programu/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Aby uzyskać dokumentację dotyczącą dystrybucji na NMI i kroki konfigurowania systemu Linux w celu utworzenia zrzutu awaryjnego po odebraniu NMI, zobacz poniższe linki:
+Aby uzyskać więcej informacji na temat konfiguracji jądra systemu Linux, w tym `unknown_nmi_panic`, `panic_on_io_nmi`i `panic_on_unrecovered_nmi`, zobacz: [Dokumentacja dla/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Aby uzyskać dokumentację dotyczącą dystrybucji na NMI i kroki konfigurowania systemu Linux w celu utworzenia zrzutu awaryjnego po odebraniu NMI, zobacz poniższe linki:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Zrzut awaryjny jądra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

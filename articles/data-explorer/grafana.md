@@ -1,24 +1,24 @@
 ---
 title: Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu Grafana
-description: W tym instruktażu dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Grafana, a następnie wizualizować dane z przykładowego klastra.
+description: W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Grafana, a następnie wizualizować dane z przykładowego klastra.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 6/30/2019
-ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/13/2019
+ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582033"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038008"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Wizualizuj dane z usługi Azure Eksplorator danych w Grafana
 
 Grafana to platforma analityczna, która umożliwia wykonywanie zapytań i wizualizacji danych, a następnie Tworzenie i udostępnianie pulpitów nawigacyjnych na podstawie wizualizacji. Grafana zapewnia *wtyczkę*Eksplorator danych platformy Azure, która umożliwia nawiązywanie połączeń z usługą Azure Eksplorator danych i wizualizowanie danych. W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Grafana, a następnie wizualizować dane z przykładowego klastra.
 
-Korzystając z poniższego filmu wideo, możesz dowiedzieć się, jak korzystać z wtyczki Eksplorator danych platformy Azure Grafana, skonfigurować platformę Azure Eksplorator danych jako źródło danych dla Grafana, a następnie wizualizować dane. 
+Skorzystaj z poniższego wideo, aby dowiedzieć się, jak korzystać z wtyczki Eksplorator danych platformy Azure Grafana, skonfigurować platformę Azure Eksplorator danych jako źródło danych dla Grafana, a następnie wizualizować dane. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
@@ -26,7 +26,7 @@ Alternatywnie możesz [skonfigurować źródło danych](#configure-the-data-sour
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby dokończyć następujące czynności:
+Aby ukończyć ten artykuł, potrzebne są następujące elementy:
 
 * [Grafana wersja 5.3.0 lub nowszą](https://docs.grafana.org/installation/) dla danego systemu operacyjnego
 
@@ -59,14 +59,14 @@ Przy użyciu jednostki usługi przypisanej do roli *osoby przeglądające* może
     | Interfejs użytkownika Grafana | Azure Portal | Interfejs wiersza polecenia platformy Azure |
     | --- | --- | --- |
     | Identyfikator subskrypcji | IDENTYFIKATOR SUBSKRYPCJI | SubscriptionId |
-    | Identyfikator dzierżawy | Identyfikator katalogu | dzierżaw |
+    | Identyfikator dzierżawy | Identyfikator katalogu | tenant |
     | Identyfikator klienta | Identyfikator aplikacji | appId |
     | Klucz tajny klienta | Hasło | hasło |
     | | | |
 
 1. Wybierz pozycję **zapisz & test**.
 
-    Jeśli test zakończy się pomyślnie, przejdź do następnej sekcji. Jeśli napotkasz jakiekolwiek problemy, sprawdź wartości określone w Grafana i Przejrzyj poprzednie kroki.
+    Jeśli test zakończy się pomyślnie, przejdź do następnej sekcji. Jeśli występują problemy, sprawdź wartości określone w Grafana i Przejrzyj poprzednie kroki.
 
 ## <a name="visualize-data"></a>Wizualizowanie danych
 
@@ -111,8 +111,26 @@ Po skonfigurowaniu usługi Azure Eksplorator danych jako źródła danych dla Gr
 
 1. W górnym menu wybierz ikonę Zapisz: ![Ikona zapisywania](media/grafana/save-icon.png).
 
+## <a name="create-alerts"></a>Tworzenie alertów
+
+1. Na stronie głównej pulpitu nawigacyjnego wybierz pozycję **alerty** > **kanały powiadomień** , aby utworzyć nowy kanał powiadomień
+
+    ![Utwórz kanał powiadomień](media/grafana/create-notification-channel.png)
+
+1. Utwórz nowy **kanał powiadomień**, a następnie **Zapisz**.
+
+    ![Utwórz nowy kanał powiadomień](media/grafana/new-notification-channel-adx.png)
+
+1. Na **pulpicie nawigacyjnym**wybierz pozycję **Edytuj** z listy rozwijanej.
+
+    ![Wybieranie opcji Edytuj na pulpicie nawigacyjnym](media/grafana/edit-panel-4-alert.png)
+
+1. Wybierz ikonę dzwonka alertu, aby otworzyć okienko **alertu** . Wybierz pozycję **Utwórz alert**. Wykonaj następujące właściwości w okienku **alertów** .
+
+    ![właściwości alertu](media/grafana/alert-properties.png)
+
+1. Wybierz ikonę **Zapisz pulpit nawigacyjny** , aby zapisać zmiany.
+
 ## <a name="next-steps"></a>Następne kroki
 
 * [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
-
-* [Samouczek: Wizualizacja danych z platformy Azure Eksplorator danych w Power BI](visualize-power-bi.md)

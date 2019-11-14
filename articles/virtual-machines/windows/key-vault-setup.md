@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj Key Vault dla maszyn wirtualnych z systemem Windows w Azure Resource Manager | Microsoft Docs
+title: Skonfiguruj Key Vault dla maszyn wirtualnych z systemem Windows w programie Azure Resource Manager
 description: Jak skonfigurować Key Vault do użycia z Azure Resource Manager maszyną wirtualną.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 225ce9fcbb18aa374f413e8e237c911c85cc77a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999351"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038205"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie Key Vault dla maszyn wirtualnych w programie Azure Resource Manager
 
@@ -56,7 +56,7 @@ Następnie aby włączyć Key Vault do użycia z wdrożeniem szablonów, uruchom
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Użyj szablonów, aby skonfigurować Key Vault
-Gdy używasz szablonu, musisz ustawić `enabledForDeployment` właściwość na `true` dla zasobu Key Vault.
+Podczas używania szablonu należy ustawić właściwość `enabledForDeployment` na `true` dla zasobu Key Vault.
 
     {
       "type": "Microsoft.KeyVault/vaults",

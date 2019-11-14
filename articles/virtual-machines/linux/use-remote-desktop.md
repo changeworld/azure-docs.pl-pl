@@ -1,5 +1,5 @@
 ---
-title: Używanie Pulpit zdalny z maszyną wirtualną z systemem Linux na platformie Azure | Microsoft Docs
+title: Używanie Pulpit zdalny z maszyną wirtualną z systemem Linux na platformie Azure
 description: Informacje o instalowaniu i konfigurowaniu Pulpit zdalny (xrdp) w celu nawiązania połączenia z maszyną wirtualną z systemem Linux na platformie Azure przy użyciu narzędzi graficznych
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 8631b05bc42df86ef6865bf2a07c0e3deaaad2fe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961546"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034273"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalowanie i Konfigurowanie Pulpit zdalny do nawiązywania połączenia z maszyną wirtualną z systemem Linux na platformie Azure
 Maszyny wirtualne z systemem Linux na platformie Azure są zwykle zarządzane z wiersza polecenia przy użyciu połączenia Secure Shell (SSH). W przypadku nowych do systemu Linux lub w celu szybkiego rozwiązywania problemów korzystanie z pulpitu zdalnego może być prostsze. W tym artykule opisano sposób instalowania i konfigurowania środowiska pulpitu ([pulpit Xfce](https://www.xfce.org)) i pulpitu zdalnego ([xrdp](https://www.xrdp.org)) dla maszyny wirtualnej z systemem Linux przy użyciu modelu wdrażania Menedżer zasobów.
@@ -34,7 +34,7 @@ Ten artykuł wymaga istniejącej maszyny wirtualnej Ubuntu 18,04 LTS na platform
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Instalowanie środowiska pulpitu na maszynie wirtualnej z systemem Linux
 Większość maszyn wirtualnych z systemem Linux na platformie Azure nie ma domyślnie zainstalowanego środowiska pulpitu. Maszyny wirtualne z systemem Linux są często zarządzane przy użyciu połączeń SSH, a nie środowiska pulpitu. Dostępne są różne środowiska pulpitu w systemie Linux, które można wybrać. W zależności od wybranego środowiska komputerowego może zużywać jeden do 2 GB miejsca na dysku i przejmować od 5 do 10 minut na zainstalowanie i skonfigurowanie wszystkich wymaganych pakietów.
 
-Poniższy przykład instaluje środowisko pulpitu lekkiego [Xfce4](https://www.xfce.org/) na maszynie wirtualnej z systemem Ubuntu 18,04 LTS. Polecenia dla innych dystrybucji różnią się nieznacznie `yum` (Użyj, aby zainstalować program na `selinux` Red Hat Enterprise Linux i skonfigurować odpowiednie `zypper` reguły, lub użyć programu do instalacji w systemie SUSE, na przykład).
+Poniższy przykład instaluje środowisko pulpitu lekkiego [Xfce4](https://www.xfce.org/) na maszynie wirtualnej z systemem Ubuntu 18,04 LTS. Polecenia dla innych dystrybucji różnią się nieznacznie (Użyj `yum` do zainstalowania na Red Hat Enterprise Linux i skonfigurowania odpowiednich reguł `selinux` lub użyć `zypper` do zainstalowania na przykład na komputerze SUSE).
 
 Najpierw SSH z maszyną wirtualną. Poniższy przykład nawiązuje połączenie z maszyną wirtualną o nazwie *MyVM.westus.cloudapp.Azure.com* z nazwą użytkownika *azureuser*. Użyj własnych wartości:
 
@@ -44,7 +44,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 Jeśli używasz systemu Windows i potrzebujesz więcej informacji na temat korzystania z protokołu SSH, zobacz [jak używać kluczy SSH w systemie Windows](ssh-from-windows.md).
 
-Następnie zainstaluj pulpit Xfce przy użyciu `apt` następujących metod:
+Następnie zainstaluj pulpit Xfce przy użyciu `apt` w następujący sposób:
 
 ```bash
 sudo apt-get update
@@ -106,7 +106,7 @@ Jeśli lokalny klient RDP korzysta z uwierzytelniania na poziomie sieci, może b
 
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
-Jeśli nie można nawiązać połączenia z maszyną wirtualną z systemem Linux przy `netstat` użyciu klienta pulpit zdalny, użyj maszyny wirtualnej z systemem Linux, aby sprawdzić, czy maszyna wirtualna nasłuchuje połączeń RDP w następujący sposób:
+Jeśli nie można nawiązać połączenia z maszyną wirtualną z systemem Linux przy użyciu klienta Pulpit zdalny, użyj `netstat` na maszynie wirtualnej z systemem Linux, aby sprawdzić, czy maszyna wirtualna nasłuchuje połączeń RDP w następujący sposób:
 
 ```bash
 sudo netstat -plnt | grep rdp

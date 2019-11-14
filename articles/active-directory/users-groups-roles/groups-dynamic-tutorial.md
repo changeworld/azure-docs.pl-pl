@@ -1,26 +1,25 @@
 ---
-title: Dynamiczne członkostwo w grupie i usuwanie użytkowników — samouczek — Azure Active Directory
+title: Dodawanie użytkowników do grupy dynamicznej — samouczek — Azure AD | Microsoft Docs
 description: W tym samouczku użyjesz grup z regułami członkostwa użytkownika, aby automatycznie dodawać lub usuwać użytkowników
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102626"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027104"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Samouczek: automatyczne dodawanie lub usuwanie członków grupy
 
@@ -44,13 +43,13 @@ Nie musisz przypisywać licencji użytkownikom, aby mogli być członkami grup d
 
 Najpierw należy utworzyć grupę dla użytkowników-gości z jednej firmy partnerskiej. Potrzebują oni specjalnej licencji, a więc często najlepszym rozwiązaniem jest utworzenie grupy do tego celu.
 
-1. Zaloguj się do Azure Portal (https://portal.azure.com) za pomocą konta, które jest administratorem globalnym dla dzierżawy.
+1. Zaloguj się do Azure Portal (https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym dla dzierżawy.
 2. Wybierz pozycję **Azure Active Directory** > **Grupy** > **Nowa grupa**.
-   ![Wybierz polecenie, aby rozpocząć nową grupę](./media/groups-dynamic-tutorial/new-group.png)
+   ![wybierz polecenie, aby rozpocząć nową grupę](./media/groups-dynamic-tutorial/new-group.png)
 3. W bloku **Grupa**:
   
    * Wybierz pozycję **zabezpieczenia** jako typ grupy.
-   * Wprowadź `Guest users Contoso` nazwę i opis grupy.
+   * Wprowadź `Guest users Contoso` jako nazwę i opis grupy.
    * Zmień **Typ członkostwa** na **użytkownika dynamicznego**.
    
 4. Wybierz pozycję **właściciele** i w bloku **Dodawanie właścicieli** Wyszukaj wszystkich żądanych właścicieli. Kliknij wybranych właścicieli, aby dodać je do zaznaczenia.
@@ -70,7 +69,7 @@ Najpierw należy utworzyć grupę dla użytkowników-gości z jednej firmy partn
    
 8. W bloku **Grupy** wybierz polecenie **Utwórz**, aby utworzyć grupę.
 
-## <a name="assign-licenses"></a>Przypisz licencje
+## <a name="assign-licenses"></a>Przypisywanie licencji
 
 Po utworzeniu nowej grupy możesz przypisać licencje wymagane dla tych użytkowników partnerów.
 

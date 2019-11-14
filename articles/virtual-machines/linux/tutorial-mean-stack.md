@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie stosu MEAN na maszynie wirtualnej z systemem Linux na platformie Azure | Microsoft Docs
+title: Samouczek — Tworzenie średniej stosu na maszynie wirtualnej z systemem Linux na platformie Azure
 description: Z tego samouczka dowiesz się, jak utworzyć stos MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300808"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034407"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Samouczek: tworzenie stosu MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure
 
@@ -36,7 +36,7 @@ W tym samouczku pokazano, jak zaimplementować stos MEAN (MongoDB, Express, Angu
 
 W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem Linux
@@ -323,7 +323,7 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Otwórz w przeglądarce internetowej adres zarejestrowany dla maszyny wirtualnej. Na przykład *http: \//13.72.77.9:3300*. Powinna zostać wyświetlona zawartość podobna do tej strony:
+2. Otwórz w przeglądarce internetowej adres zarejestrowany dla maszyny wirtualnej. Na przykład *http:\//13.72.77.9:3300*. Powinna zostać wyświetlona zawartość podobna do tej strony:
 
     ![Rekord książki](media/tutorial-mean/meanstack-init.png)
 

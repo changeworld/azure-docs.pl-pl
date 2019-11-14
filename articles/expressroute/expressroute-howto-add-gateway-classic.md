@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute — klasyczne: Azure PowerShell | Microsoft Docs'
+title: 'Azure ExpressRoute: Dodawanie bramy do sieci wirtualnej: klasyczny'
 description: Konfigurowanie bramy sieci wirtualnej dla wdrożenia klasycznego modelu sieci wirtualnej przy użyciu programu PowerShell do konfiguracji usługi ExpressRoute.
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 101e03d07a15e9058ef236a575251b052017db32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75c2b400a2caf4e5f2e14589fc007bb506b46338
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365153"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031875"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -36,6 +36,6 @@ Sprawdź, czy zostały zainstalowane polecenia cmdlet programu Azure PowerShell 
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po utworzeniu bramy sieci wirtualnej, możesz połączyć sieć wirtualną z obwodem usługi ExpressRoute. Zobacz [łączenie sieci wirtualnej z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-classic.md).
 

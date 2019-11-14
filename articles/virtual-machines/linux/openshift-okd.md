@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie OKD na platformie Azure | Microsoft Docs
+title: Wdrażanie OKD na platformie Azure
 description: Wdróż OKD na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390525"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035401"
 ---
 # <a name="deploy-okd-in-azure"></a>Wdrażanie OKD na platformie Azure
 
@@ -124,7 +124,7 @@ Różne wersje mogą mieć inne parametry, dlatego należy sprawdzić wymagane p
 
 
 > [!NOTE] 
-> Następujące polecenie wymaga interfejsu wiersza polecenia platformy Azure 2.0.8 lub nowszego. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version`. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Następujące polecenie wymaga interfejsu wiersza polecenia platformy Azure 2.0.8 lub nowszego. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version` polecenie. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 W poniższym przykładzie wdrożono klaster OKD i wszystkie powiązane zasoby w grupie zasobów o nazwie openshiftrg z nazwą wdrożenia myOpenShiftCluster. Ten szablon jest przywoływany bezpośrednio z repozytorium GitHub przy użyciu pliku parametrów lokalnych o nazwie azuredeploy. Parameters. JSON.
 
@@ -143,11 +143,11 @@ Wdrożenie trwa co najmniej 30 minut na podstawie łącznej liczby wdrożonych w
 }
 ```
 
-Jeśli nie chcesz powiązać wiersza polecenia w celu oczekiwania na ukończenie wdrożenia, Dodaj `--no-wait` jako jedną z opcji wdrożenia grupy. Dane wyjściowe wdrożenia można pobrać z Azure Portal w sekcji Wdrażanie dla grupy zasobów.
+Jeśli nie chcesz powiązać wiersza polecenia podczas oczekiwania na zakończenie wdrażania, Dodaj `--no-wait` jako jedną z opcji wdrożenia grupy. Dane wyjściowe wdrożenia można pobrać z Azure Portal w sekcji Wdrażanie dla grupy zasobów.
 
 ## <a name="connect-to-the-okd-cluster"></a>Nawiązywanie połączenia z klastrem OKD
 
-Po zakończeniu wdrożenia Połącz się z konsolą OpenShift za pomocą przeglądarki, używając `OpenShift Console Url`. Alternatywnie można także przeprowadzić protokół SSH do wzorca OKD. Poniżej znajduje się przykład, który używa danych wyjściowych wdrożenia:
+Po zakończeniu wdrożenia Połącz się z konsolą OpenShift przy użyciu przeglądarki, używając `OpenShift Console Url`. Alternatywnie można także przeprowadzić protokół SSH do wzorca OKD. Poniżej znajduje się przykład, który używa danych wyjściowych wdrożenia:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com

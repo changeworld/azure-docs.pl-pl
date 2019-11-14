@@ -1,5 +1,5 @@
 ---
-title: Zresetuj własne Omówienie hasła służbowego — Azure Active Directory | Microsoft Docs
+title: Resetowanie własnego hasła służbowego — Omówienie usługi Azure AD
 description: Lista linków do artykułów dotyczących rejestrowania i resetowania hasła służbowego bez pomocy administratora.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15fbc526822f3b6659bc190ee67c6c17ff96b067
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160607"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028503"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Zresetuj własne hasło służbowe — Omówienie
 
@@ -34,5 +34,5 @@ Aby uzyskać szczegółowe informacje i instrukcje dotyczące rejestrowania kont
 
 |Artykuł |Opis |
 |------|------------|
-| [Zarejestruj się w celu samoobsługowego resetowania hasła](active-directory-passwords-reset-register.md) ] Instrukcje dotyczące weryfikowania metod uwierzytelniania i rejestrowania się w celu samoobsługowego resetowania hasła, aby można było zresetować własne hasło.|
-| [Zresetuj hasło](active-directory-passwords-update-your-own-password.md) ] Instrukcje dotyczące resetowania lub odblokowywania hasła dla konta służbowego.|
+| [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](active-directory-passwords-reset-register.md) | Instrukcje dotyczące weryfikowania metod uwierzytelniania i rejestrowania się w celu samoobsługowego resetowania hasła, aby można było zresetować własne hasło. |
+| [Resetowanie hasła](active-directory-passwords-update-your-own-password.md) | Instrukcje dotyczące resetowania lub odblokowywania hasła dla konta służbowego. |

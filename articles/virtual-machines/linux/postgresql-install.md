@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie PostgreSQL na maszynie wirtualnej z systemem Linux | Microsoft Docs
+title: Konfigurowanie PostgreSQL na maszynie wirtualnej z systemem Linux
 description: Dowiedz się, jak zainstalować i skonfigurować PostgreSQL na maszynie wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 7fc8cb7c07dd27cd42dc4c6a7e0a576f0efe04e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091721"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035263"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalowanie i konfigurowanie rozwiązania PostgreSQL na platformie Azure
 PostgreSQL to zaawansowana baza danych open source podobna do Oracle i DB2. Obejmuje ona funkcje gotowe dla przedsiębiorstwa, takie jak Pełna zgodność ze standardami KWASowymi, niezawodne przetwarzanie transakcyjne i wielostronicowa kontrola współbieżności. Obsługuje ona również standardy, takie jak ANSI SQL i SQL/MED (w tym obce otoki danych dla systemów Oracle, MySQL, MongoDB i wielu innych). Jest wysoce rozszerzalny z obsługą ponad 12 języków proceduralnych, indeksów ĄTEK i dzienników, obsługi danych przestrzennych i wielu funkcji podobnej do NoSQL dla aplikacji opartych na kluczach JSON lub wartościowych.
@@ -58,7 +58,7 @@ Nawiąż połączenie z maszyną wirtualną z systemem Linux utworzoną za pomoc
    
         # tar jxvf  postgresql-9.3.5.tar.bz2
    
-    Powyższy kod jest przykładem. Bardziej szczegółowy adres do pobrania można znaleźć w indeksie [/pub/Source/](https://ftp.postgresql.org/pub/source/).
+    Powyższy kod jest przykładem. Bardziej szczegółowy adres do pobrania można znaleźć w [indeksie/pub/Source/](https://ftp.postgresql.org/pub/source/).
 4. Aby rozpocząć kompilację, uruchom następujące polecenia:
    
         # cd postgresql-9.3.5

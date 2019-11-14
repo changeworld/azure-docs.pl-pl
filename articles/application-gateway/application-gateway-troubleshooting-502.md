@@ -1,66 +1,66 @@
 ---
-title: Rozwiązywanie błędów nieprawidłowej bramy bramy aplikacji platformy Azure (502)
-description: Dowiedz się, jak rozwiązywać problemy z błędami 502 bramy aplikacji
+title: Rozwiązywanie problemów z błędami bramy — Application Gateway platformy Azure
+description: Dowiedz się, jak rozwiązywać problemy z błędami Application Gateway 502
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/25/2019
+ms.date: 11/14/2019
 ms.author: amsriva
-ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: baf1eccdd6fe910bd98e8b39ef29b7bd8e88a7d5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697160"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048155"
 ---
-# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Rozwiązywanie problemów z błędami nieprawidłowej bramy w usłudze Application Gateway
+# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Rozwiązywanie problemów z błędami bramy w Application Gateway
 
-Dowiedz się, jak rozwiązywać problemy z nieprawidłową bramą (502) błędy odebrane podczas korzystania z usługi Azure Application Gateway.
+Dowiedz się, jak rozwiązywać błędy nieprawidłowej bramy (502) otrzymane podczas korzystania z usługi Azure Application Gateway.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Omówienie
 
-Po skonfigurowaniu bramy aplikacji, jednym z błędów, które może zostać wyświetlony jest "Błąd serwera: 502 — Serwer sieci Web odebrał nieprawidłową odpowiedź, działając jako brama lub serwer proxy”. Ten błąd może się zdarzyć z następujących głównych przyczyn:
+Po skonfigurowaniu bramy aplikacji może być wyświetlany komunikat o błędzie "błąd serwera: 502 — serwer sieci Web odebrał nieprawidłową odpowiedź, działając jako brama lub serwer proxy". Ten błąd może wystąpić z następujących powodów:
 
-* Sieciowa grupa zabezpieczeń, Routing zdefiniowany przez użytkownika lub niestandardowych serwerów DNS blokuje dostęp do składowych puli zaplecza.
-* Maszyny wirtualne lub wystąpienia zestawu skalowania maszyn wirtualnych zaplecza nie odpowiada na domyślnej funkcji badania kondycji.
-* Nieprawidłowy lub nieprawidłowej konfiguracji niestandardowe sondy kondycji.
-* Application Gateway platformy Azure [puli zaplecza nie jest skonfigurowany lub jest pusty](#empty-backendaddresspool).
-* Żadna z maszyn wirtualnych lub wystąpień w [zestawu skalowania maszyn wirtualnych są w dobrej kondycji](#unhealthy-instances-in-backendaddresspool).
-* [Żądanie limitu czasu lub łącznością problemów](#request-time-out) z żądaniami użytkowników.
+* SIECIOWEJ grupy zabezpieczeń, UDR lub niestandardowy serwer DNS blokuje dostęp do elementów członkowskich puli zaplecza.
+* Maszyny wirtualne zaplecza lub wystąpienia zestawu skalowania maszyn wirtualnych nie odpowiadają domyślnej sondy kondycji.
+* Nieprawidłowa lub niewłaściwa konfiguracja niestandardowych sond kondycji.
+* [Pula zaplecza Application Gateway platformy Azure nie jest skonfigurowana ani pusta](#empty-backendaddresspool).
+* Żadna z maszyn wirtualnych lub wystąpień w [zestawie skalowania maszyn wirtualnych nie jest w dobrej kondycji](#unhealthy-instances-in-backendaddresspool).
+* [Żądaj problemów z limitem czasu lub połączeniem](#request-time-out) z żądaniami użytkowników.
 
-## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Problem z sieciową grupą zabezpieczeń, trasa zdefiniowana przez użytkownika lub niestandardowych serwerów DNS
+## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Sieciowa Grupa zabezpieczeń, trasa zdefiniowana przez użytkownika lub problem z niestandardowym systemem DNS
 
 ### <a name="cause"></a>Przyczyna
 
-Jeśli dostęp do wewnętrznej bazy danych jest zablokowany z powodu sieciowej grupy zabezpieczeń, Routing zdefiniowany przez użytkownika lub niestandardowe DNS, wystąpienia bramy aplikacji nie można nawiązać połączenia z puli zaplecza. Powoduje to niepowodzeń sondy, wynikające z błędami 502.
+Jeśli dostęp do zaplecza jest zablokowany z powodu sieciowej grupy zabezpieczeń, UDR lub niestandardowej usługi DNS, wystąpienia bramy aplikacji nie mogą nawiązać połączenia z pulą zaplecza. Powoduje to awarie sondy, co spowodowało błędy 502.
 
-Sieciowa grupa zabezpieczeń/trasy zdefiniowanej przez użytkownika może być obecny w podsieci bramy aplikacji lub podsieci, wdrożonym maszyn wirtualnych aplikacji.
+SIECIOWEJ grupy zabezpieczeń/UDR może być obecny w podsieci bramy aplikacji lub podsieci, w której wdrożono maszyny wirtualne aplikacji.
 
-Podobnie obecności niestandardowego systemu DNS w sieci wirtualnej można również powodować problemy. Nazwy FQDN używane dla składowych puli zaplecza może nie być rozpoznawane poprawnie przez serwer DNS skonfigurowane przez użytkownika dla sieci wirtualnej.
+Podobnie obecność niestandardowego serwera DNS w sieci wirtualnej może również powodować problemy. Nazwa FQDN używana przez członków puli zaplecza może nie zostać poprawnie rozwiązana przez skonfigurowany przez użytkownika serwer DNS dla sieci wirtualnej.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Sprawdzanie poprawności konfiguracji sieciowej grupy zabezpieczeń, Routing zdefiniowany przez użytkownika i DNS, przechodząc przez następujące kroki:
+Sprawdź poprawność konfiguracji sieciowej grupy zabezpieczeń, UDR i DNS, wykonując następujące czynności:
 
-* Sprawdź, czy sieciowe grupy zabezpieczeń skojarzone z podsiecią bramy aplikacji. Upewnij się, że komunikacja z wewnętrznej bazy danych nie jest zablokowany.
-* Sprawdź, czy trasa zdefiniowana przez użytkownika skojarzoną z podsiecią bramy aplikacji. Upewnij się, że zdefiniowanej przez użytkownika nie jest kierowanie ruchu od podsieci wewnętrznej bazy danych. Na przykład Sprawdź, czy routing do sieci wirtualnych urządzeń sieciowych lub domyślne trasy anonsowane do podsieci bramy aplikacji za pośrednictwem usługi ExpressRoute/sieci VPN.
+* Sprawdź sieciowych grup zabezpieczeń skojarzone z podsiecią bramy aplikacji. Upewnij się, że komunikacja z zapleczem nie jest zablokowana.
+* Sprawdź UDR skojarzone z podsiecią bramy aplikacji. Upewnij się, że UDR nie przekierowuje ruchu z podsieci zaplecza. Na przykład sprawdź, czy są kierowane wirtualne urządzenia sieciowe lub trasy domyślne anonsowane do podsieci bramy aplikacji za pośrednictwem usługi ExpressRoute/VPN.
 
 ```azurepowershell
 $vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
 Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
-* Sprawdź skuteczne sieciowej grupy zabezpieczeń i tras za pomocą wewnętrznej bazy danych maszyny Wirtualnej
+* Sprawdź efektywne sieciowej grupy zabezpieczeń i Roześlij z maszyną wirtualną zaplecza
 
 ```azurepowershell
 Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
 Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
-* Sprawdź występowanie niestandardowe DNS w sieci wirtualnej. DNS można sprawdzić, patrząc na szczegółowe informacje o właściwościach sieci wirtualnej w danych wyjściowych.
+* Sprawdź obecność niestandardowego serwera DNS w sieci wirtualnej. System DNS można sprawdzić, przeglądając szczegóły właściwości sieci wirtualnej w danych wyjściowych.
 
 ```json
 Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
@@ -70,91 +70,91 @@ DhcpOptions            : {
                            ]
                          }
 ```
-Jeśli jest obecny, upewnij się, że serwer DNS może poprawnie rozpoznać nazwy FQDN składowej puli zaplecza.
+Jeśli jest obecny, upewnij się, że serwer DNS może prawidłowo rozpoznać nazwę FQDN składowej puli zaplecza.
 
-## <a name="problems-with-default-health-probe"></a>Problemy z domyślnej funkcji badania kondycji
+## <a name="problems-with-default-health-probe"></a>Problemy z domyślną sondą kondycji
 
 ### <a name="cause"></a>Przyczyna
 
-502 błędy mogą być także wskaźniki częste, że domyślnej funkcji badania kondycji nie może połączyć maszyny wirtualne zaplecza.
+502 błędy mogą być również częstymi wskaźnikami, że domyślna sonda kondycji nie może nawiązać połączenia z maszynami wirtualnymi zaplecza.
 
-Gdy zostanie zainicjowane wystąpienie bramy aplikacji, automatycznie konfiguruje domyślne sondy kondycji do każdego BackendAddressPool przy użyciu właściwości parametr BackendHttpSetting. Dane wejściowe użytkownika nie jest wymagane do ustawienia tej sondy. W szczególności skonfigurowano regułę równoważenia obciążenia, tworzone jest skojarzenie między parametr BackendHttpSetting i BackendAddressPool. Domyślnej funkcji badania jest skonfigurowany dla każdego z tych skojarzeń i uruchomiona usługa application gateway okresowego sprawdzania połączenia do każdego wystąpienia w BackendAddressPool na port określony w elemencie parametr BackendHttpSetting. 
+Po aprowizacji wystąpienia bramy aplikacji automatycznie konfiguruje domyślne sondy kondycji dla każdego BackendAddressPoolu przy użyciu właściwości BackendHttpSetting. Do ustawienia tej sondy nie jest wymagane wprowadzanie danych przez użytkownika. W przypadku skonfigurowania reguły równoważenia obciążenia następuje skojarzenie między BackendHttpSetting i BackendAddressPool. Domyślna sonda jest konfigurowana dla każdego z tych skojarzeń, a Brama aplikacji uruchamia okresowe połączenie sprawdzania kondycji z każdym wystąpieniem w BackendAddressPool na porcie określonym w elemencie BackendHttpSetting. 
 
-W poniższej tabeli wymieniono wartości skojarzone z domyślnej funkcji badania kondycji:
+Poniższa tabela zawiera listę wartości skojarzonych z domyślną sondą kondycji:
 
 | Właściwość sondy | Wartość | Opis |
 | --- | --- | --- |
 | Adres URL sondy |`http://127.0.0.1/` |Ścieżka adresu URL |
 | Interval |30 |Interwał sondy w sekundach |
-| Limit czasu |30 |Sondy czasu w sekundach |
-| Próg złej kondycji |3 |Sonda liczbę ponownych prób. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
+| Limit czasu |30 |Limit czasu sondy w sekundach |
+| Próg złej kondycji |3 |Liczba ponownych prób sondowania. Serwer zaplecza jest oznaczony jako wyłączony po kolejnej liczbie błędów sondy osiągnie próg złej kondycji. |
 
 ### <a name="solution"></a>Rozwiązanie
 
-* Upewnij się, że domyślna witryna jest skonfigurowana i nasłuchuje na 127.0.0.1.
-* Jeśli parametr BackendHttpSetting określa portu innego niż 80, domyślnej witryny, należy skonfigurować do nasłuchiwania na tym porcie.
-* Wywołanie `http://127.0.0.1:port` powinien zostać zwrócony kod wyniku protokołu HTTP 200. Powinna to być zwrócona przed upływem limitu czasu 30 sekund.
-* Upewnij się, że skonfigurowany port jest otwarty i że nie istnieją żadne reguły zapory lub grupy zabezpieczeń sieci platformy Azure, które blokować ruch przychodzący lub wychodzący na porcie skonfigurowanym.
-* Jeśli klasyczne maszyny wirtualne platformy Azure lub usługi w chmurze jest używany z nazwą FQDN lub publiczny adres IP, upewnij się, że odpowiednie [punktu końcowego](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) jest otwarty.
-* Jeśli maszyna wirtualna jest skonfigurowana za pomocą usługi Azure Resource Manager i spoza sieci wirtualnej, w której wdrożono bramy application gateway [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) musi być skonfigurowana do Zezwalaj na dostęp na odpowiedni port.
+* Upewnij się, że domyślna lokacja jest skonfigurowana i nasłuchuje na adresie 127.0.0.1.
+* Jeśli BackendHttpSetting określa port inny niż 80, należy skonfigurować domyślną lokację do nasłuchiwania na tym porcie.
+* Wywołanie `http://127.0.0.1:port` powinno zwracać kod wyniku HTTP 200. Ta wartość powinna zostać zwrócona w ciągu 30-sekundowego okresu limitu czasu.
+* Upewnij się, że skonfigurowany port jest otwarty i że nie ma żadnych reguł zapory lub sieciowych grup zabezpieczeń platformy Azure, które blokują ruch przychodzący lub wychodzący na porcie skonfigurowanym.
+* Jeśli klasyczne maszyny wirtualne platformy Azure lub usługa w chmurze jest używana z nazwą FQDN lub publicznym adresem IP, należy się upewnić, że odpowiadający mu [punkt końcowy](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) jest otwarty.
+* Jeśli maszyna wirtualna jest skonfigurowana za pośrednictwem Azure Resource Manager i znajduje się poza siecią wirtualną, w której wdrożono bramę aplikacji, należy skonfigurować [sieciową grupę zabezpieczeń](../virtual-network/security-overview.md) tak, aby zezwalała na dostęp na żądanym porcie.
 
-## <a name="problems-with-custom-health-probe"></a>Problemy z sondy kondycji niestandardowe
+## <a name="problems-with-custom-health-probe"></a>Problemy z niestandardową sondą kondycji
 
 ### <a name="cause"></a>Przyczyna
 
-Niestandardowe sondy kondycji zezwolić na dodatkową elastyczność na potrzeby domyślnego badania zachowanie. Użycie sond niestandardowych, można skonfigurować interwał sondowania, adres URL, ścieżkę do testowania i jak wiele odpowiedzi nie powiodło się, aby zaakceptować przed oznaczeniem wystąpienia pulę zaplecza o złej kondycji.
+Niestandardowe sondy kondycji umożliwiają dodatkową elastyczność podczas domyślnego działania sondowania. W przypadku korzystania z sond niestandardowych można skonfigurować interwał sondowania, adres URL, ścieżkę do testu oraz liczbę niepowodzeń odpowiedzi, które mają zostać zaakceptowane przed oznaczeniem wystąpienia puli zaplecza jako złej kondycji.
 
-Dodano następujące dodatkowe właściwości:
+Dodawane są następujące dodatkowe właściwości:
 
 | Właściwość sondy | Opis |
 | --- | --- |
-| Name (Nazwa) |Nazwa sondy. Ta nazwa jest używana do odwoływania się do sondowania w ustawieniach protokołu HTTP zaplecza. |
-| Protocol |Protokół używany do wysyłania sondy. Sonda korzysta z protokołu, zdefiniowane w ustawieniach HTTP zaplecza |
-| Host |Nazwa hosta, aby wysłać sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowana w usłudze application gateway. To różni się od nazwy hosta maszyny Wirtualnej. |
-| Ścieżka |Ścieżka względna sondy. Nieprawidłowa ścieżka zaczyna się od "/". Sonda jest wysyłana do \<protokołu\>://\<hosta\>:\<portu\>\<ścieżki\> |
-| Interval |Interwał sondy w sekundach. Jest to odstęp czasu między dwóch następujących po sobie sondy. |
-| Limit czasu |Sonda limitu czasu w sekundach. Odebranie prawidłowej odpowiedzi nie jest to przed upływem limitu czasu, sondy jest oznaczony jako zakończony niepowodzeniem. |
-| Próg złej kondycji |Sonda liczbę ponownych prób. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
+| Nazwa |Nazwa sondy. Ta nazwa służy do odwoływania się do sondy w ustawieniach protokołu HTTP zaplecza. |
+| Protokół |Protokół używany do wysyłania sondy. Sonda używa protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
+| Host |Nazwa hosta do wysłania sondy. Dotyczy tylko sytuacji, gdy w bramie aplikacji skonfigurowano wiele witryn. Różni się to od nazwy hosta maszyny wirtualnej. |
+| Ścieżka |Ścieżka względna sondy. Prawidłowa ścieżka zaczyna się od znaku "/". Sonda jest wysyłana do protokołu \<\>://\<hosta\>:\<port\>\<Path\> |
+| Interval |Interwał sondy (w sekundach). Jest to przedział czasu między dwoma kolejnymi sondami. |
+| Limit czasu |Limit czasu sondy w sekundach. Jeśli prawidłowa odpowiedź nie zostanie odebrana w tym okresie, sonda zostanie oznaczona jako niepowodzenie. |
+| Próg złej kondycji |Liczba ponownych prób sondowania. Serwer zaplecza jest oznaczony jako wyłączony po kolejnej liczbie błędów sondy osiągnie próg złej kondycji. |
 
 ### <a name="solution"></a>Rozwiązanie
 
-Sprawdź, czy niestandardowa sonda kondycji jest skonfigurowane poprawnie jako zgodnie z poprzednią tabelą. Oprócz powyższych kroków rozwiązywania problemów również zapewnić następujące okoliczności:
+Sprawdź, czy niestandardowa sonda kondycji została prawidłowo skonfigurowana jako poprzednia tabela. Oprócz powyższych kroków rozwiązywania problemów należy również upewnić się, że:
 
-* Upewnij się, że sonda poprawnie określono zgodnie [przewodnik](application-gateway-create-probe-ps.md).
-* Jeśli brama aplikacji jest skonfigurowana dla jednej lokacji, domyślnie hosta należy określić nazwę jako `127.0.0.1`, chyba że inaczej skonfigurowana w niestandardowej sondy.
-* Upewnij się, że wywołanie http://\<hosta\>:\<portu\>\<ścieżki\> zwraca kod wyniku protokołu HTTP 200.
-* Upewnij się, że interwał, limit czasu i UnhealtyThreshold znajdują się w dopuszczalnym zakresie.
-* Jeśli za pomocą sondy protokołu HTTPS, upewnij się, że serwera wewnętrznej bazy danych nie wymaga SNI, konfigurując certyfikat fallback na serwerze wewnętrznej bazy danych.
+* Upewnij się, że sonda została prawidłowo określona zgodnie z [przewodnikiem](application-gateway-create-probe-ps.md).
+* Jeśli Brama aplikacji jest skonfigurowana dla jednej lokacji, domyślnie nazwa hosta powinna być określona jako `127.0.0.1`, o ile nie została skonfigurowana w sondie niestandardowej.
+* Upewnij się, że wywołanie http://\<Host\>:\<port\>\<Path\> zwraca kod wyniku HTTP 200.
+* Upewnij się, że interwał, limit czasu i UnhealtyThreshold znajdują się w akceptowalnych zakresach.
+* W przypadku korzystania z sondy HTTPS upewnij się, że serwer zaplecza nie wymaga SNI, konfigurując certyfikat rezerwowy na serwerze zaplecza.
 
 ## <a name="request-time-out"></a>Limit czasu żądania
 
 ### <a name="cause"></a>Przyczyna
 
-Po odebraniu żądania użytkownika bramy application gateway stosuje skonfigurowane reguły na żądanie i kieruje je do wystąpienia puli zaplecza. Czeka konfigurowalnym interwale czasu odpowiedzi z wystąpienia zaplecza. Domyślnie jest to interwał **20** sekund. Jeśli bramy application gateway nie otrzymasz odpowiedzi od aplikacji zaplecza, w tym interwał, żądanie użytkownika pobiera 502 błąd.
+Po odebraniu żądania użytkownika Brama aplikacji stosuje skonfigurowane reguły do żądania i kieruje je do wystąpienia puli zaplecza. Czeka na konfigurację interwału czasu dla odpowiedzi z wystąpienia zaplecza. Domyślnie ten interwał wynosi **20** sekund. Jeśli Brama aplikacji nie odbiera odpowiedzi z aplikacji zaplecza w tym interwale, żądanie użytkownika pobiera błąd 502.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Usługa Application Gateway umożliwia skonfigurowanie tego ustawienia za pośrednictwem parametr BackendHttpSetting, który można następnie zastosować do różnych pul. Różnych pul zaplecza może mieć inny parametr BackendHttpSetting i skonfigurowany limit czasu żądania innego.
+Application Gateway umożliwia skonfigurowanie tego ustawienia za pośrednictwem BackendHttpSetting, które można następnie zastosować do różnych pul. Różne pule zaplecza mogą mieć różne BackendHttpSetting i mieć skonfigurowany limit czasu żądania.
 
 ```azurepowershell
     New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
-## <a name="empty-backendaddresspool"></a>Empty BackendAddressPool
+## <a name="empty-backendaddresspool"></a>Puste BackendAddressPool
 
 ### <a name="cause"></a>Przyczyna
 
-Jeśli bramy application gateway nie ma maszyn wirtualnych lub zestawu skalowania maszyn wirtualnych skonfigurowanych w puli adresów zaplecza, go nie można skierować wszelkie żądania klienta i wysyła błędów nieprawidłowej bramy.
+Jeśli Brama aplikacji nie ma skonfigurowanych maszyn wirtualnych lub zestawu skalowania maszyn wirtualnych w puli adresów zaplecza, nie może kierować żadnych żądań klienta i wysyła komunikat o błędzie nieprawidłowej bramy.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Upewnij się, że pula adresów zaplecza nie jest pusty. Można to zrobić za pośrednictwem programu PowerShell, interfejsu wiersza polecenia lub portalu.
+Upewnij się, że pula adresów zaplecza nie jest pusta. Można to zrobić za pomocą programu PowerShell, interfejsu wiersza polecenia lub portalu.
 
 ```azurepowershell
 Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
-Dane wyjściowe z poprzedniego polecenia cmdlet powinna zawierać puli adresów zaplecza niepusta. Poniższy przykład pokazuje, że dwie pule zwrócone, które są skonfigurowane za pomocą nazwy FQDN lub adresów IP dla maszyn wirtualnych wewnętrznej bazy danych. Stan aprowizacji BackendAddressPool musi mieć wartość "Succeeded".
+Dane wyjściowe z powyższego polecenia cmdlet powinny zawierać niepustą pulę adresów zaplecza. Poniższy przykład przedstawia dwie zwrócone pule, które są skonfigurowane przy użyciu nazwy FQDN lub adresów IP dla maszyn wirtualnych zaplecza. Stan aprowizacji elementu BackendAddressPool musi mieć wartość "powodzenie".
 
 BackendAddressPoolsText:
 
@@ -182,17 +182,17 @@ BackendAddressPoolsText:
 }]
 ```
 
-## <a name="unhealthy-instances-in-backendaddresspool"></a>Wystąpienia w BackendAddressPool
+## <a name="unhealthy-instances-in-backendaddresspool"></a>Wystąpienia w złej kondycji w BackendAddressPool
 
 ### <a name="cause"></a>Przyczyna
 
-Jeśli wszystkie wystąpienia elementu BackendAddressPool jest w złej kondycji bramy application gateway nie ma dowolnego zaplecza na żądanie użytkownika trasy. Może to być również wymagane w przypadku wystąpień zaplecza są w dobrej kondycji, ale nie ma wymaganej aplikacji, które są wdrożone.
+Jeśli wszystkie wystąpienia programu BackendAddressPool są w złej kondycji, Brama aplikacji nie ma żadnego zaplecza, aby skierować żądanie użytkownika do programu. Może to również być przypadek, gdy wystąpienia zaplecza są w dobrej kondycji, ale nie mają wdrożonej wymaganej aplikacji.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Upewnij się, że wystąpienia są w dobrej kondycji, a aplikacja jest poprawnie skonfigurowana. Sprawdź, jeśli wystąpień zaplecza mogą odpowiadać na polecenia ping z inną maszyną Wirtualną w tej samej sieci wirtualnej. Jeśli skonfigurowano publiczny punkt końcowy, upewnij się, że żądanie przeglądarki do aplikacji sieci web jest zdatne do użytku.
+Upewnij się, że wystąpienia są w dobrej kondycji i że aplikacja została prawidłowo skonfigurowana. Sprawdź, czy wystąpienia zaplecza mogą reagować na polecenie ping z innej maszyny wirtualnej w tej samej sieci wirtualnej. W przypadku skonfigurowania z publicznym punktem końcowym upewnij się, że żądanie przeglądarki do aplikacji sieci Web jest z obsługą.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli powyższe czynności nie rozwiąże problemu, otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).
+Jeśli powyższe kroki nie rozwiążą problemu, Otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).
 

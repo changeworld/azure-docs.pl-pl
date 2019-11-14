@@ -1,10 +1,10 @@
 ---
-title: Wyświetlanie historii inspekcji dla ról usługi Azure AD w programie PIM-Azure Active Directory | Microsoft Docs
+title: Wyświetlanie raportu inspekcji dla ról usługi Azure AD w usłudze PIM — Azure AD | Microsoft Docs
 description: Dowiedz się, jak wyświetlić historię inspekcji dla ról usługi Azure AD w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa1c5121c723148884584ca3f00522c1c459859
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7c4a157d8d5bcd281ca9fee488e58c455034e898
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809002"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022058"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Wyświetlanie historii inspekcji dla ról usługi Azure AD w usłudze PIM
 
@@ -45,9 +45,9 @@ Wykonaj następujące kroki, aby wyświetlić historię inspekcji dla ról usłu
 
     | Kolumna | Opis |
     | --- | --- |
-    | Czas | Gdy wystąpiła akcja. |
+    | Time | Gdy wystąpiła akcja. |
     | Obiektu żądającego | Użytkownik, który zażądał aktywacji lub zmiany roli. Jeśli wartość to **Azure system**, sprawdź historię inspekcji platformy Azure, aby uzyskać więcej informacji. |
-    | Działanie | Akcje podejmowane przez zleceniodawcę. Akcje mogą obejmować Przypisywanie, cofanie przypisania, aktywowanie, dezaktywowanie lub AddedOutsidePIM. |
+    | Akcja | Akcje podejmowane przez zleceniodawcę. Akcje mogą obejmować Przypisywanie, cofanie przypisania, aktywowanie, dezaktywowanie lub AddedOutsidePIM. |
     | Członek | Użytkownik, który jest uaktywniany lub przypisany do roli. |
     | Rola | Rola przypisana lub aktywowana przez użytkownika. |
     | Analizowanie | Tekst wprowadzony w polu przyczyna podczas aktywacji. |

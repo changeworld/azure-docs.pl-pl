@@ -1,5 +1,5 @@
 ---
-title: 'Pobieranie tabel ARP — Rozwiązywanie problemów — ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: Pobieranie tabel ARP — Rozwiązywanie problemów'
 description: Ta strona zawiera instrukcje dotyczące pobierania tabel ARP dla obwodu usługi ExpressRoute
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e35020923405ec072ac9c42093752ec5a9290824
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2410465052bd9ff83090c6f7122ffab2855af1d0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748162"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033435"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Pobieranie tabel ARP w modelu wdrażania Menedżer zasobów
 > [!div class="op_single_selector"]
@@ -178,5 +178,5 @@ lub
   * Pobierz Podsumowanie trasy, aby określić stan sesji protokołu BGP 
   * Pobierz tabelę tras, aby określić, które prefiksy są anonsowane w ExpressRoute
 * Sprawdź poprawność transferu danych, przeglądając/wychodzące bajty
-* Otwórz bilet pomocy technicznej w [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , jeśli nadal występują problemy.
+* Otwórz bilet pomocy technicznej za pomocą [pomocy technicznej firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Jeśli nadal występują problemy.
 

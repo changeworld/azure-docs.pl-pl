@@ -1,6 +1,6 @@
 ---
-title: Przygotowywanie obrazu maszyny Wirtualnej platformy Azure do użycia z pakietu cloud-init | Dokumentacja firmy Microsoft
-description: Jak przygotować istniejącego obrazu maszyny Wirtualnej platformy Azure do wdrożenia przy użyciu pakietu cloud-init
+title: Przygotowanie obrazu maszyny wirtualnej platformy Azure do użycia z usługą Cloud-init
+description: Jak przygotować istniejący obraz maszyny wirtualnej platformy Azure do wdrożenia przy użyciu funkcji Cloud-init
 services: virtual-machines-linux
 documentationcenter: ''
 author: danis
@@ -14,21 +14,21 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668246"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036745"
 ---
-# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Przygotowywanie istniejącego obrazu maszyny Wirtualnej platformy Azure z systemem Linux do użycia z pakietu cloud-init
-Ten artykuł pokazuje, jak pobrać istniejącej maszyny wirtualnej platformy Azure i przygotować je do można ponownie wdrożonym i gotowe do użycia pakietu cloud-init. Obraz wynikowy może służyć do wdrażania nowej maszyny wirtualnej lub zestawy skalowania maszyn wirtualnych — które można następnie można dodatkowo dostosowywać przez pakiet cloud-init w czasie wdrażania.  Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji o tym, jak pakietu cloud-init działa natywnie na platformie Azure i obsługiwane dystrybucje systemu Linux, zobacz [Omówienie pakietu cloud-init](using-cloud-init.md)
+# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Przygotowywanie istniejącego obrazu maszyny wirtualnej z systemem Linux na potrzeby użycia z usługą Cloud-init
+W tym artykule opisano sposób tworzenia istniejącej maszyny wirtualnej platformy Azure i przygotowania jej do ponownego wdrożenia i gotowości do korzystania z funkcji Cloud-init. Ten obraz może służyć do wdrażania nowej maszyny wirtualnej lub zestawów skalowania maszyn wirtualnych, z których można następnie dostosowywać program Cloud-init w czasie wdrażania.  Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym dokumencie przyjęto założenie, że masz już pracę maszyn wirtualnych z obsługiwaną wersją systemu operacyjnego Linux. Zostały już skonfigurowane maszyny do własnych potrzeb, zainstalować wymagane moduły, przetworzone wszystkie wymagane aktualizacje i zostały przetestowane na zapewnienie spełnia Twoje wymagania. 
+W tym dokumencie przyjęto założenie, że masz już działającą maszynę wirtualną platformy Azure z obsługiwaną wersją systemu operacyjnego Linux. Komputer został już skonfigurowany zgodnie z potrzebami, zainstalowano wszystkie wymagane moduły, przetworzono wszystkie wymagane aktualizacje i przetestowano je w celu upewnienia się, że spełniają one wymagania. 
 
-## <a name="preparing-rhel-76--centos-76"></a>Przygotowywanie RHEL 7.6 / CentOS 7.6
-Trzeba SSH z maszyną wirtualną systemu Linux i uruchom następujące polecenia, aby można było zainstalować pakiet cloud-init.
+## <a name="preparing-rhel-76--centos-76"></a>Przygotowywanie RHEL 7,6/CentOS 7,6
+Musisz być SSH do maszyny wirtualnej z systemem Linux i uruchamiać następujące polecenia w celu zainstalowania funkcji Cloud-init.
 
 ```bash
 sudo yum makecache fast
@@ -36,13 +36,13 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-Aktualizacja `cloud_init_modules` sekcji `/etc/cloud/cloud.cfg` do uwzględnienia w przypadku następujących modułów:
+Zaktualizuj sekcję `cloud_init_modules` w `/etc/cloud/cloud.cfg`, aby uwzględnić następujące moduły:
 ```bash
 - disk_setup
 - mounts
 ```
 
-Oto przykład jakie ogólnego przeznaczenia `cloud_init_modules` sekcja wygląda następująco.
+Oto przykład, jak wygląda sekcja `cloud_init_modules` ogólnego przeznaczenia.
 ```bash
 cloud_init_modules:
  - migrator
@@ -59,7 +59,7 @@ cloud_init_modules:
  - users-groups
  - ssh
 ```
-Liczba zadań związanych z udostępnianiem i obsługa efemeryczne dyski muszą zostać zaktualizowane w `/etc/waagent.conf`. Uruchom następujące polecenia, aby zaktualizować odpowiednie ustawienia. 
+Kilka zadań związanych z obsługą administracyjną i obsługą dysków tymczasowych należy zaktualizować w `/etc/waagent.conf`. Uruchom następujące polecenia, aby zaktualizować odpowiednie ustawienia. 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
@@ -68,23 +68,23 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Zezwalaj tylko usługi Azure jako źródła danych dla agenta systemu Linux dla platformy Azure, tworząc nowy plik `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` za pomocą dowolnego edytora o następujący wiersz:
+Zezwól na platformę Azure jako źródło danych dla agenta systemu Linux platformy Azure, tworząc nowy plik `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` przy użyciu wybranego edytora z następującym wierszem:
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
 ```
 
-Jeśli Twojego istniejącego obrazu platformy Azure ma skonfigurowane pliku wymiany, i chcesz zmienić konfigurację pliku wymiany nowych obrazów przy użyciu pakietu cloud-init, którą chcesz usunąć istniejący plik wymiany.
+Jeśli istniejący obraz platformy Azure ma skonfigurowany plik wymiany i chcesz zmienić konfigurację pliku wymiany dla nowych obrazów przy użyciu funkcji Cloud-init, musisz usunąć istniejący plik wymiany.
 
-Dla firmy Red Hat opartych na obrazach - postępuj zgodnie z instrukcjami następujących firmy Red Hat dokumentu wyjaśniające, jak [Usuń plik wymiany](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
+W przypadku obrazów opartych na Red Hat — postępuj zgodnie z instrukcjami podanymi w następującym dokumencie Red Hat, wyjaśniając, jak [usunąć plik wymiany](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
 
-CentOS obrazów za pomocą pliku wymiany jest włączone można uruchom następujące polecenie, aby wyłączyć pliku wymiany:
+W przypadku obrazów CentOS z włączonym swapfile można uruchomić następujące polecenie, aby wyłączyć swapfile:
 ```bash
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Upewnij się, odwołanie do pliku wymiany jest usuwany z `/etc/fstab` -powinien on wyglądać podobnie jak poniższe dane wyjściowe:
+Upewnij się, że odwołanie swapfile zostało usunięte z `/etc/fstab` — powinna wyglądać podobnie do następujących danych wyjściowych:
 ```text
 # /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
@@ -94,31 +94,31 @@ UUID=99cf66df-2fef-4aad-b226-382883643a1c / xfs defaults 0 0
 UUID=7c473048-a4e7-4908-bad3-a9be22e9d37d /boot xfs defaults 0 0
 ```
 
-Aby zaoszczędzić miejsce i usuń plik wymiany można uruchom następujące polecenie:
+Aby zaoszczędzić miejsce i usunąć plik wymiany, można uruchomić następujące polecenie:
 ```bash
 rm /mnt/resource/swapfile
 ```
-## <a name="extra-step-for-cloud-init-prepared-image"></a>Dodatkowego kroku przygotowany obraz pakietu cloud-init
+## <a name="extra-step-for-cloud-init-prepared-image"></a>Dodatkowy krok dla przygotowanego obrazu Cloud-init
 > [!NOTE]
-> Jeśli obraz został wcześniej **pakietu cloud-init** obrazu przygotowany i jest skonfigurowany, należy wykonać następujące czynności.
+> Jeśli obraz był wcześniej gotowym i skonfigurowanym obrazem usługi **Cloud-init** , należy wykonać następujące czynności.
 
-Następujące trzy polecenia są używane tylko w przypadku dostosowywania jako nowy obraz źródłowy wyspecjalizowane maszyny Wirtualnej zostało wcześniej przez pakiet cloud-init.  NIE trzeba przeprowadzać te, jeśli obraz został skonfigurowany przy użyciu agenta systemu Linux dla platformy Azure.
+Poniższe trzy polecenia są używane tylko wtedy, gdy maszyna wirtualna, którą chcesz dostosować, to nowy, wyspecjalizowany obraz źródłowy został wcześniej zainicjowany przez funkcję Cloud-init.  NIE musisz wykonywać tych czynności, jeśli obraz został skonfigurowany przy użyciu agenta platformy Azure Linux.
 
 ```bash
 sudo cloud-init clean --logs
 sudo waagent -deprovision+user -force
 ```
 
-## <a name="finalizing-linux-agent-setting"></a>Finalizowanie agenta systemu Linux ustawienie 
-Wszystkie obrazy platformy Azure ma agenta systemu Linux platformy Azure, które są zainstalowane, niezależnie od tego, jeśli została skonfigurowana przez pakiet cloud-init, czy nie.  Uruchom następujące polecenie, aby zakończyć cofania aprowizacji użytkowników z maszyny z systemem Linux. 
+## <a name="finalizing-linux-agent-setting"></a>Finalizowanie ustawienia agenta systemu Linux 
+Wszystkie obrazy platformy Azure mają zainstalowany agent systemu Azure Linux, niezależnie od tego, czy został on skonfigurowany przez funkcję Cloud-init, czy nie.  Uruchom następujące polecenie, aby zakończyć cofanie aprowizacji użytkownika z komputera z systemem Linux. 
 
 ```bash
 sudo waagent -deprovision+user -force
 ```
 
-Aby uzyskać więcej informacji na temat polecenia anulowania aprowizacji agenta systemu Linux platformy Azure, zobacz [agenta systemu Linux platformy Azure](../extensions/agent-linux.md) Aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji na temat poleceń anulowania aprowizacji agenta platformy Azure w systemie Linux, zobacz [Agent systemu Linux Azure](../extensions/agent-linux.md) , aby uzyskać więcej informacji.
 
-Zamknij sesję SSH, a następnie z powłoki bash, uruchom następujące polecenia codziennych cofnięcie przydziału i uogólnianie Utwórz nowy obraz maszyny Wirtualnej platformy Azure.  Zastąp `myResourceGroup` i `sourceVmName` odpowiednimi informacjami odzwierciedlający Twoje sourceVM.
+Zakończ sesję SSH, a następnie z poziomu powłoki bash Uruchom następujące polecenia AzureCLI, aby cofnąć alokację, uogólnić i utworzyć nowy obraz maszyny wirtualnej platformy Azure.  Zastąp `myResourceGroup` i `sourceVmName` odpowiednimi informacjami odzwierciedlającymi Twoje sourceVM.
 
 ```bash
 az vm deallocate --resource-group myResourceGroup --name sourceVmName
@@ -126,10 +126,10 @@ az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Przykłady dodatkowe pakietu cloud-init zmian konfiguracji zobacz następujące tematy:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać dodatkowe przykłady dotyczące zmian konfiguracji w chmurze, zobacz następujące tematy:
  
-- [Dodaj dodatkowe użytkownika w systemie Linux do maszyny Wirtualnej](cloudinit-add-user.md)
-- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety podczas pierwszego rozruchu](cloudinit-update-vm.md)
-- [Zmień lokalną nazwą hosta maszyny Wirtualnej](cloudinit-update-vm-hostname.md) 
-- [Zainstaluj pakiet aplikacji, zaktualizować pliki konfiguracji i wstawić kluczy](tutorial-automate-vm-deployment.md)
+- [Dodawanie dodatkowego użytkownika systemu Linux do maszyny wirtualnej](cloudinit-add-user.md)
+- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety przy pierwszym rozruchu](cloudinit-update-vm.md)
+- [Zmień lokalną nazwę hosta maszyny wirtualnej](cloudinit-update-vm-hostname.md) 
+- [Zainstaluj pakiet aplikacji, zaktualizuj pliki konfiguracji i klucze iniekcji](tutorial-automate-vm-deployment.md)

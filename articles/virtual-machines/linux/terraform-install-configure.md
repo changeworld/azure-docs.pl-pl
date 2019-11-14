@@ -1,5 +1,5 @@
 ---
-title: Instalowanie i Konfigurowanie Terraform w celu udostępniania zasobów platformy Azure | Microsoft Docs
+title: Instalowanie i Konfigurowanie Terraform w celu udostępniania zasobów platformy Azure
 description: Dowiedz się, jak zainstalować i skonfigurować Terraform do tworzenia zasobów platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168735"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034684"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Instalowanie i Konfigurowanie Terraform w celu udostępniania zasobów platformy Azure
  
@@ -35,7 +35,7 @@ Terraform jest instalowany domyślnie w [Cloud Shell](/azure/terraform/terraform
 
 Aby zainstalować Terraform, [Pobierz](https://www.terraform.io/downloads.html) odpowiedni pakiet dla systemu operacyjnego do oddzielnego katalogu instalacyjnego. Pobieranie zawiera pojedynczy plik wykonywalny, dla którego należy również zdefiniować ścieżkę globalną. Aby uzyskać instrukcje dotyczące sposobu ustawiania ścieżki w systemach Linux i Mac, przejdź do [tej strony sieci Web](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Aby uzyskać instrukcje dotyczące sposobu ustawiania ścieżki w systemie Windows, przejdź do [tej strony sieci Web](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows).
 
-Sprawdź konfigurację ścieżki przy użyciu `terraform` polecenia. Zostanie wyświetlona lista dostępnych opcji Terraform, jak w następujących przykładowych danych wyjściowych:
+Sprawdź konfigurację ścieżki przy użyciu polecenia `terraform`. Zostanie wyświetlona lista dostępnych opcji Terraform, jak w następujących przykładowych danych wyjściowych:
 
 ```console
 azureuser@Azure:~$ terraform
@@ -52,7 +52,7 @@ Jeśli masz wiele subskrypcji platformy Azure, najpierw Zbadaj swoje konto za po
 az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
-Aby skorzystać z wybranej subskrypcji, ustaw dla tej sesji subskrypcję [AZ Account Set](/cli/azure/account#az-account-set). Ustaw zmienną `id` środowiskową tak, aby pomieścić wartość zwracanego pola z subskrypcji, której chcesz użyć: `SUBSCRIPTION_ID`
+Aby skorzystać z wybranej subskrypcji, ustaw dla tej sesji subskrypcję [AZ Account Set](/cli/azure/account#az-account-set). Ustaw zmienną środowiskową `SUBSCRIPTION_ID` na przechowywanie wartości zwracanego pola `id` z subskrypcji, której chcesz użyć:
 
 ```azurecli-interactive
 az account set --subscription="${SUBSCRIPTION_ID}"
@@ -64,7 +64,7 @@ Teraz można utworzyć jednostkę usługi do użycia z usługą Terraform. Użyj
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Zwracane są `password`,, `sp_name`, i`tenant` . `appId` Zanotuj `appId` i `password`.
+`appId`, `password`, `sp_name`i `tenant` są zwracane. Zanotuj `appId` i `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>Konfigurowanie zmiennych środowiskowych Terraform
 

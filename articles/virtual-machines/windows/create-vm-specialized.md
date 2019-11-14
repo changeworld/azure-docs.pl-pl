@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego wirtualnego dysku twardego na platformie Azure | Microsoft Docs
+title: Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego wirtualnego dysku twardego na platformie Azure
 description: Utwórz nową maszynę wirtualną z systemem Windows przez dołączenie wyspecjalizowanego dysku zarządzanego jako dysku systemu operacyjnego przy użyciu modelu wdrażania Menedżer zasobów.
 services: virtual-machines-windows
 author: cynthn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553433"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033854"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego dysku przy użyciu programu PowerShell
 
@@ -226,7 +226,7 @@ Aby umożliwić komunikację z maszyną wirtualną w sieci wirtualnej, potrzebny
 
 ### <a name="set-the-vm-name-and-size"></a>Ustaw nazwę i rozmiar maszyny wirtualnej
 
-Ten przykład ustawia nazwę maszyny wirtualnej na *myVM* i rozmiar maszyny wirtualnej na *Standard_A2*.
+Ten przykład służy do ustawiania nazwy maszyny wirtualnej *myVM* i rozmiaru maszyny wirtualnej do *Standard_A2*.
 
 ```powershell
 $vmName = "myVM"
@@ -267,7 +267,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Sprawdź, czy maszyna wirtualna została utworzona
-Nowo utworzona maszyna wirtualna powinna zostać wyświetlona w [Azure Portal](https://portal.azure.com) w obszarze **przeglądanie** **maszyn wirtualnych** >  lub przy użyciu następujących poleceń programu PowerShell.
+Nowo utworzona maszyna wirtualna powinna zostać wyświetlona w [Azure Portal](https://portal.azure.com) w obszarze **przeglądanie** > **maszyn wirtualnych**lub przy użyciu następujących poleceń programu PowerShell.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

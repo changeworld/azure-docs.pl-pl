@@ -1,5 +1,5 @@
 ---
-title: Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure | Microsoft Docs
+title: Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure
 description: Pobierz dysk VHD systemu Windows przy użyciu Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5891d7ea2b53ab3524cfff267e71b4f05779cfc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079617"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033607"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure
 
@@ -48,7 +48,7 @@ Aby użyć dysku VHD jako dysku dla nowego wystąpienia istniejącej maszyny wir
 
 ## <a name="generate-sas-url"></a>Generuj adres URL SAS
 
-Aby pobrać plik VHD, należy wygenerować adres URL sygnatury [dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po wygenerowaniu adresu URL zostanie do niego przypisany czas wygaśnięcia.
+Aby pobrać plik VHD, należy wygenerować adres URL [sygnatury dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po wygenerowaniu adresu URL zostanie do niego przypisany czas wygaśnięcia.
 
 1.  W menu bloku maszyny wirtualnej kliknij pozycję **dyski**.
 2.  Wybierz dysk systemu operacyjnego dla maszyny wirtualnej, a następnie kliknij pozycję **eksport dysku**.

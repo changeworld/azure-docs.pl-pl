@@ -1,6 +1,6 @@
 ---
-title: Użyj pakietu cloud-init, aby dodać użytkownika do maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak dodać użytkownika do maszyny Wirtualnej z systemem Linux podczas tworzenia przy użyciu wiersza polecenia platformy Azure za pomocą pakietu cloud-init
+title: Dodawanie użytkownika do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu funkcji Cloud-init
+description: Jak używać funkcji Cloud-init do dodawania użytkownika do maszyny wirtualnej z systemem Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,20 +14,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: bcea130652789a84d332247445d8e25b2f7ac42e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 428f489a24c24b173cb1cef0980dd17c1d8483ce
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671788"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036782"
 ---
-# <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Użyj pakietu cloud-init, aby dodać użytkownika do maszyny Wirtualnej z systemem Linux na platformie Azure
-W tym artykule dowiesz się, jak używać [pakietu cloud-init](https://cloudinit.readthedocs.io) mógł dodać użytkownika na maszynie wirtualnej lub maszyny wirtualnej (VM) zestawów skalowania (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Ten skrypt pakietu cloud-init jest uruchamiany podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji o tym, jak pakietu cloud-init działa natywnie na platformie Azure i obsługiwane dystrybucje systemu Linux, zobacz [Omówienie pakietu cloud-init](using-cloud-init.md).
+# <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Dodawanie użytkownika do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu funkcji Cloud-init
+W tym artykule pokazano, jak za pomocą funkcji [Cloud-init](https://cloudinit.readthedocs.io) dodać użytkownika do maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych (VMSS) w czasie aprowizacji na platformie Azure. Ten skrypt usługi Cloud-init jest uruchamiany podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure. Aby uzyskać więcej informacji na temat sposobu, w jaki usługa Cloud-init działa natywnie na platformie Azure i obsługiwanych dystrybucje z systemem Linux, zobacz [Omówienie usługi Cloud-init](using-cloud-init.md).
 
-## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Dodawanie użytkownika do maszyny Wirtualnej za pomocą pakietu cloud-init
-Jedno z zadań pierwszego na nowej maszynie Wirtualnej z systemem Linux jest dodanie dodatkowego użytkownika samodzielnie uniknąć użycia *głównego*. Klucze SSH są najlepszym rozwiązaniem w zakresie bezpieczeństwa i użyteczności. Klucze są dodawane do *~/.ssh/authorized_keys* plików za pomocą tego skryptu pakietu cloud-init.
+## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Dodawanie użytkownika do maszyny wirtualnej przy użyciu funkcji Cloud-init
+Jednym z pierwszych zadań na każdej nowej maszynie wirtualnej z systemem Linux jest dodanie dodatkowego użytkownika w celu uniknięcia korzystania z *katalogu głównego*. Klucze SSH są najlepszym rozwiązaniem w zakresie bezpieczeństwa i użyteczności. Klucze są dodawane do pliku *~/.ssh/authorized_keys* za pomocą tego skryptu Cloud-init.
 
-Aby dodać użytkownika do maszyny Wirtualnej z systemem Linux, Utwórz plik w bieżącej powłoce o nazwie *cloud_init_add_user.txt* i Wklej poniższą konfigurację. W tym przykładzie należy utworzyć plik w usłudze Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor cloud_init_add_user.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć **nano** edytora. Upewnij się, że poprawnie skopiować pliku całego pakietu cloud-init szczególnie pierwszy wiersz.  Należy podać klucz publiczny (np. zawartość *~/.ssh/id_rsa.pub*) dla wartości `ssh-authorized-keys:` — została ona skrócona tutaj aby uprościć przykład.
+Aby dodać użytkownika do maszyny wirtualnej z systemem Linux, Utwórz plik w bieżącej powłoce o nazwie *cloud_init_add_user. txt* i wklej następującą konfigurację. Na potrzeby tego przykładu Utwórz plik w Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor cloud_init_add_user.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć edytora **nano** . Upewnij się, że cały plik Cloud-init został poprawnie skopiowany, szczególnie w pierwszym wierszu.  Musisz podać własny klucz publiczny (na przykład zawartość *~/.ssh/id_rsa. pub*) dla wartości `ssh-authorized-keys:` — został skrócony w tym miejscu, aby uprościć przykład.
 
 ```yaml
 #cloud-config
@@ -41,15 +41,15 @@ users:
       - ssh-rsa AAAAB3<snip>
 ```
 > [!NOTE] 
-> Plik konfiguracji cloud # zawiera `- default` parametru. Użytkownik zostanie dołączona do istniejącego konta użytkownika administracyjnego utworzone podczas inicjowania obsługi. Jeśli tworzysz użytkownika bez `- default` parametr - automatycznie wygenerowanego administratora utworzone przez platformę Azure czy zostanie zastąpiony. 
+> Plik #cloud-config zawiera dołączony parametr `- default`. Spowoduje to dołączenie użytkownika do istniejącego użytkownika administracyjnego utworzonego podczas aprowizacji. Jeśli użytkownik zostanie utworzony bez parametru `- default` — automatycznie wygenerowany użytkownik administracyjny utworzony przez platformę Azure zostanie zastąpiony. 
 
-Przed wdrożeniem tego obrazu, należy utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+Przed wdrożeniem tego obrazu należy utworzyć grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group) . Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz Utwórz maszynę Wirtualną z [tworzenie az vm](/cli/azure/vm) i określ plik cloud-init za pomocą `--custom-data cloud_init_add_user.txt` w następujący sposób:
+Teraz Utwórz maszynę wirtualną za pomocą [AZ VM Create](/cli/azure/vm) i określ plik Cloud-init z `--custom-data cloud_init_add_user.txt` w następujący sposób:
 
 ```azurecli-interactive 
 az vm create \
@@ -60,19 +60,19 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-Protokół SSH z publicznego adresu IP maszyny Wirtualnej w danych wyjściowych z poprzedniego polecenia. Wprowadź własne **publicznego adresu IP** w następujący sposób:
+SSH do publicznego adresu IP maszyny wirtualnej wyświetlanej w danych wyjściowych poprzedniego polecenia. Wprowadź własne **publicIpAddress** w następujący sposób:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Aby upewnić się, użytkownik został dodany do maszyny Wirtualnej i określonych grup, Wyświetl zawartość */etc/grupy* pliku w następujący sposób:
+Aby potwierdzić, że użytkownik został dodany do maszyny wirtualnej i określonych grup, Wyświetl zawartość pliku */etc/Group* w następujący sposób:
 
 ```bash
 cat /etc/group
 ```
 
-Następujące przykładowe dane wyjściowe są widoczne dla użytkownika z *cloud_init_add_user.txt* plik został dodany do maszyny Wirtualnej i odpowiednie grupy:
+Następujące przykładowe dane wyjściowe pokazują, że użytkownik z pliku *cloud_init_add_user. txt* został dodany do maszyny wirtualnej i odpowiedniej grupy:
 
 ```bash
 root:x:0:
@@ -82,10 +82,10 @@ sudo:x:27:myadminuser
 myadminuser:x:1000:
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Przykłady dodatkowe pakietu cloud-init zmian konfiguracji zobacz następujące tematy:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać dodatkowe przykłady dotyczące zmian konfiguracji w chmurze, zobacz następujące tematy:
  
-- [Dodaj dodatkowe użytkownika w systemie Linux do maszyny Wirtualnej](cloudinit-add-user.md)
-- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety podczas pierwszego rozruchu](cloudinit-update-vm.md)
-- [Zmień lokalną nazwą hosta maszyny Wirtualnej](cloudinit-update-vm-hostname.md) 
-- [Zainstaluj pakiet aplikacji, zaktualizować pliki konfiguracji i wstawić kluczy](tutorial-automate-vm-deployment.md)
+- [Dodawanie dodatkowego użytkownika systemu Linux do maszyny wirtualnej](cloudinit-add-user.md)
+- [Uruchom Menedżera pakietów, aby zaktualizować istniejące pakiety przy pierwszym rozruchu](cloudinit-update-vm.md)
+- [Zmień lokalną nazwę hosta maszyny wirtualnej](cloudinit-update-vm-hostname.md) 
+- [Zainstaluj pakiet aplikacji, zaktualizuj pliki konfiguracji i klucze iniekcji](tutorial-automate-vm-deployment.md)

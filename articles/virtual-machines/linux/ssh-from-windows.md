@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z kluczy SSH w systemie Windows dla maszyn wirtualnych z systemem Linux | Microsoft Docs
+title: Używanie kluczy SSH w systemie Windows dla maszyn wirtualnych z systemem Linux
 description: Informacje na temat generowania i używania kluczy SSH na komputerze z systemem Windows w celu nawiązania połączenia z maszyną wirtualną z systemem Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e8e63f2c916153b5d43267869d7bc5be8fa646c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e01fb23bbf1720f7d8df9c269373c1b8dc3ec75c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081975"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034804"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Jak używać kluczy SSH w systemie Windows na platformie Azure
 
@@ -43,21 +43,21 @@ Inne typowe klienckie aplikacje SSH systemu Windows, które można zainstalować
 
 W [Azure Cloud Shell](../../cloud-shell/overview.md)można również użyć narzędzi SSH dostępnych w bash. 
 
-* Dostęp do Cloud Shell w przeglądarce [https://shell.azure.com](https://shell.azure.com) internetowej znajduje się w [Azure Portal](https://portal.azure.com). 
+* Dostęp do Cloud Shell w przeglądarce internetowej znajduje się w [https://shell.azure.com](https://shell.azure.com) lub w [Azure Portal](https://portal.azure.com). 
 * Dostęp do Cloud Shell jako terminalu z poziomu Visual Studio Code przez zainstalowanie [rozszerzenia konta platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
 ## <a name="create-an-ssh-key-pair"></a>Tworzenie pary kluczy SSH
-W poniższych sekcjach opisano dwie opcje tworzenia pary kluczy SSH w systemie Windows. Można użyć polecenia powłoki (`ssh-keygen`) lub graficznego interfejsu użytkownika (PuTTYgen). Należy również pamiętać, że podczas tworzenia klucza przy użyciu programu PowerShell należy przekazać klucz publiczny jako format SSH. com (SECSH). Podczas korzystania z interfejsu wiersza polecenia Konwertuj klucz na format OpenSSH przed przekazaniem. 
+W poniższych sekcjach opisano dwie opcje tworzenia pary kluczy SSH w systemie Windows. Można użyć polecenia powłoki (`ssh-keygen`) lub narzędzia graficznego interfejsu użytkownika (PuTTYgen). Należy również pamiętać, że podczas tworzenia klucza przy użyciu programu PowerShell należy przekazać klucz publiczny jako format SSH. com (SECSH). Podczas korzystania z interfejsu wiersza polecenia Konwertuj klucz na format OpenSSH przed przekazaniem. 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Tworzenie kluczy SSH przy użyciu protokołu SSH-Keygen
 
-Jeśli uruchamiasz powłokę poleceń w systemie Windows, która obsługuje narzędzia klienta SSH (lub używasz Azure Cloud Shell), Utwórz parę kluczy SSH za pomocą `ssh-keygen` polecenia. Wpisz następujące polecenie i Odpowiedz na nie. Jeśli para kluczy SSH istnieje w wybranej lokalizacji, te pliki są zastępowane. 
+Jeśli uruchamiasz powłokę poleceń w systemie Windows, która obsługuje narzędzia klienta SSH (lub używasz Azure Cloud Shell), Utwórz parę kluczy SSH przy użyciu polecenia `ssh-keygen`. Wpisz następujące polecenie i Odpowiedz na nie. Jeśli para kluczy SSH istnieje w wybranej lokalizacji, te pliki są zastępowane. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Aby uzyskać więcej informacji, zobacz sekcję [szybkie](mac-create-ssh-keys.md) lub [szczegółowe](create-ssh-keys-detailed.md) instrukcje tworzenia kluczy SSH przy użyciu programu `ssh-keygen`.
+Aby uzyskać więcej informacji, zobacz sekcję [szybkie](mac-create-ssh-keys.md) lub [szczegółowe](create-ssh-keys-detailed.md) instrukcje dotyczące tworzenia kluczy SSH przy użyciu `ssh-keygen`.
 
 ### <a name="create-ssh-keys-with-puttygen"></a>Utwórz klucze SSH za pomocą PuTTYgen
 
@@ -81,7 +81,7 @@ Aby utworzyć parę kluczy SSH RSA z PuTTYgen:
 
     ![Zapisz plik z kluczem prywatnym](./media/ssh-from-windows/save-ppk-file.png)
 
-    Jeśli chcesz zapisać klucz prywatny w formacie OpenSSH, format klucza prywatnego używany przez wielu klientów SSH, wybierz pozycję **konwersje** > **Eksportuj klucz OpenSSH**.
+    Jeśli chcesz zapisać klucz prywatny w formacie OpenSSH, format klucza prywatnego używany przez wielu klientów SSH, wybierz pozycję **konwersje** > **wyeksportować klucz OpenSSH**.
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Podaj klucz publiczny SSH podczas wdrażania maszyny wirtualnej
 
@@ -117,7 +117,7 @@ Jeśli zainstalowano [pakiet pobierania pobrany](https://www.chiark.greenend.org
 
     ![Otwórz nowe połączenie.](./media/ssh-from-windows/putty-new-connection.png)
 
-3. Wybierz kategorię **połączenie** > **SSH** > połączenia. Wyszukaj i wybierz swój klucz prywatny (plik. PPK):
+3. Wybierz pozycję **połączenie** > kategorię **uwierzytelniania** > **SSH** . Wyszukaj i wybierz swój klucz prywatny (plik. PPK):
 
     ![Wybierz swój klucz prywatny do uwierzytelnienia](./media/ssh-from-windows/putty-auth-dialog.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Znajdowanie i usuwanie niedołączonych dysków zarządzanych i niezarządzanych platformy Azure | Microsoft Docs
+title: Znajdowanie i usuwanie niedołączonych dysków zarządzanych i niezarządzanych platformy Azure
 description: Jak znaleźć i usunąć niedołączone dyski (VHD/stronicowe obiekty blob) platformy Azure przy użyciu Azure PowerShell.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0de0e68bb8419894386641c827bdbc40ed142d3f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2973d2589be05426a13d16870d0b0fe1a5be9213
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698687"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023066"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Znajdowanie i usuwanie niedołączonych dysków zarządzanych i niezarządzanych platformy Azure
 
 Po usunięciu maszyny wirtualnej na platformie Azure domyślnie wszystkie dyski dołączone do maszyny wirtualnej nie zostaną usunięte. Ta funkcja pomaga zapobiec utracie danych z powodu niezamierzonego usunięcia maszyn wirtualnych. Po usunięciu maszyny wirtualnej opłaty za dyski niedołączone będą kontynuowane. W tym artykule opisano sposób znajdowania i usuwania dowolnych niedołączonych dysków i zmniejszania niepotrzebnych kosztów.
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>Dyski zarządzane: Znajdowanie i usuwanie niedołączonych dysków
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>Dyski zarządzane: Znajdź i Usuń niedołączone dyski
 
 Następujący skrypt szuka niedołączonych [dysków zarządzanych](managed-disks-overview.md) przez sprawdzenie wartości właściwości **zarządzane** . Po dołączeniu dysku zarządzanego do maszyny wirtualnej Właściwość **zarządzane** zawiera identyfikator zasobu maszyny wirtualnej. Po odłączeniu dysku zarządzanego Właściwość **zarządzane** ma wartość null. Skrypt bada wszystkie dyski zarządzane w ramach subskrypcji platformy Azure. Gdy skrypt lokalizuje dysk zarządzany z właściwością **zarządzane** ustawioną na wartość null, skrypt określa, że dysk nie jest dołączony.
 
@@ -47,9 +47,9 @@ foreach ($md in $managedDisks) {
  }
 ```
 
-## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Dyski niezarządzane: Znajdowanie i usuwanie niedołączonych dysków
+## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Dyski niezarządzane: Znajdź i Usuń niedołączone dyski
 
-Dyski niezarządzane to pliki VHD, które są przechowywane jako [stronicowe obiekty blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) na [kontach usługi Azure Storage](../../storage/common/storage-create-storage-account.md). Następujący skrypt szuka niedołączonych dysków niezarządzanych (stronicowych obiektów BLOB) przez sprawdzenie wartości właściwości **LeaseStatus** . Gdy dysk niezarządzany jest dołączony do maszyny wirtualnej, właściwość **LeaseStatus** jest ustawiona na **zablokowaną**. Gdy dysk niezarządzany jest niedołączony, właściwość **LeaseStatus** jest ustawiona na **odblokowany**. Skrypt bada wszystkie dyski niezarządzane na wszystkich kontach usługi Azure Storage w ramach subskrypcji platformy Azure. Gdy skrypt lokalizuje dysk niezarządzany z właściwością **LeaseStatus** ustawionąna odblokowane, skrypt określa, że dysk nie jest dołączony.
+Dyski niezarządzane to pliki VHD, które są przechowywane jako [stronicowe obiekty blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) na [kontach usługi Azure Storage](../../storage/common/storage-create-storage-account.md). Następujący skrypt szuka niedołączonych dysków niezarządzanych (stronicowych obiektów BLOB) przez sprawdzenie wartości właściwości **LeaseStatus** . Gdy dysk niezarządzany jest dołączony do maszyny wirtualnej, właściwość **LeaseStatus** jest ustawiona na **zablokowaną**. Gdy dysk niezarządzany jest niedołączony, właściwość **LeaseStatus** jest ustawiona na **odblokowany**. Skrypt bada wszystkie dyski niezarządzane na wszystkich kontach usługi Azure Storage w ramach subskrypcji platformy Azure. Gdy skrypt lokalizuje dysk niezarządzany z właściwością **LeaseStatus** ustawioną na **odblokowane**, skrypt określa, że dysk nie jest dołączony.
 
 >[!IMPORTANT]
 >Najpierw uruchom skrypt, ustawiając zmienną **deleteUnattachedVHDs** na 0. Ta akcja umożliwia znalezienie i wyświetlenie wszystkich niedołączonych niepołączonych dysków VHD.
@@ -85,6 +85,6 @@ foreach($storageAccount in $storageAccounts){
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz [usuwanie konta magazynu](../../storage/common/storage-create-storage-account.md) i [Identyfikowanie dysków oddzielonych przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/) .

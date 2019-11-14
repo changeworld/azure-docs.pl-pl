@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja — współistniejących: wersja klasyczna: Azure | Microsoft Docs'
+title: 'Konfigurowanie współistniejących połączeń ExpressRoute i VPN S2S: klasyczny'
 description: Ten artykuł zawiera instrukcje dotyczące konfigurowania połączeń usługi ExpressRoute oraz sieci VPN typu lokacja-lokacja, które mogą współistnieć, w klasycznym modelu wdrożenia.
 documentationcenter: na
 services: expressroute
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: b8eb1d7da9c588aedaedb37dc50c69970fe79ac2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0643ce99ce4ba9328abc3f7a8c8e7061026611b9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162713"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031777"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurowanie współistniejących połączeń usługi ExpressRoute i połączeń typu lokacja-lokacja (wersja klasyczna)
 > [!div class="op_single_selector"]

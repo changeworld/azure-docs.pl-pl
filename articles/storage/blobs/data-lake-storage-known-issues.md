@@ -1,6 +1,6 @@
 ---
-title: Znane problemy dotyczące Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Informacje o ograniczeniach i znanych problemach związanych z Azure Data Lake Storage Gen2
+title: Znane problemy związane z usługi Azure Data Lake Storage Gen2 | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o ograniczeniach i znanych problemach, za pomocą usługi Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581484"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033936"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy z Azure Data Lake Storage Gen2
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
 W tym artykule wymieniono funkcje i narzędzia, które nie są jeszcze obsługiwane lub są obsługiwane tylko częściowo w przypadku kont magazynu, które mają hierarchiczną przestrzeń nazw (Azure Data Lake Storage Gen2).
 
@@ -57,7 +57,7 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 | **Zasady zarządzania cyklem życia Blob Storage platformy Azure** | Obsługiwane są wszystkie warstwy dostępu. Warstwa dostępu archiwalnego jest obecnie w wersji zapoznawczej. Usuwanie migawek obiektów BLOB nie jest jeszcze obsługiwane. |
 | **Azure Content Delivery Network (CDN)** | Jeszcze nieobsługiwane|
 | **Usługa Azure Search** |Obsługiwane (wersja zapoznawcza)|
-| **Azure Storage Explorer** | Obsługa specyficzna dla wersji <br><br>Używaj tylko wersji `1.6.0` lub nowszej. <br>Wersja `1.6.0` jest dostępna bezpłatnie do [pobrania](https://azure.microsoft.com/features/storage-explorer/).|
+| **Azure Storage Explorer** | Obsługa specyficzna dla wersji <br><br>Używaj tylko wersji `1.6.0` przez `1.10.0`. <br> Wersja `1.10.0` jest dostępna bezpłatnie do [pobrania](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). Wersja `1.11.0` nie jest jeszcze obsługiwana.|
 | **Listy ACL kontenera obiektów BLOB** |Jeszcze nieobsługiwane|
 | **Blobfuse** |Jeszcze nieobsługiwane|
 | **Niestandardowe domeny** |Jeszcze nieobsługiwane|

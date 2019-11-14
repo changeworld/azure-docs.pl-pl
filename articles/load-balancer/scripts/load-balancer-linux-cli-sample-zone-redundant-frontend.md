@@ -1,5 +1,5 @@
 ---
-title: Przykład dla interfejsu wiersza polecenia — maszyny wirtualne usługi Load Balancer w różnych strefach dostępności — Azure | Microsoft Docs
+title: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności — interfejs wiersza polecenia platformy Azure — Azure Load Balancer
 description: Ten przykładowy skrypt wiersza polecenia platformy Azure przedstawia sposób równoważenia obciążenia ruchu do maszyn wirtualnych w różnych strefach dostępności
 services: load-balancer
 documentationcenter: load-balancer
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: fdfd1de3d20a275dbc19ed414a22ebe2a6864eeb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 92f03981a573a9688115d9505266e94b7cab0e78
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273713"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048880"
 ---
-# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Przykład skryptu interfejsu wiersza polecenia platformy Azure: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
+# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Przykład skryptu dla interfejsu wiersza polecenia platformy Azure: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
 
 Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure umożliwia utworzenie wszystkich elementów potrzebnych do uruchomienia kilku maszyn wirtualnych z systemem Ubuntu skonfigurowanych w ramach konfiguracji o wysokiej dostępności i zrównoważonym obciążeniu. Po uruchomieniu skryptu będziesz mieć trzy maszyny wirtualne we wszystkich strefach dostępności w regionie, które będą dostępne za pośrednictwem usługi Azure Load Balancer w warstwie Standardowa. 
 
@@ -182,7 +182,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](/cli/azure/vm#az-vm-create) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

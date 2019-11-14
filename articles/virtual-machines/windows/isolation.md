@@ -1,5 +1,5 @@
 ---
-title: Izolacja maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+title: Izolacja maszyn wirtualnych z systemem Windows na platformie Azure
 description: Informacje o izolacji maszyny wirtualnej działają na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 8fcbd5c9b2f3841d7d1170a2d107cec5e9e524cc
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4d6c8bb2bc27c7202848229e749b62dd714e86fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123982"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029877"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Izolacja maszyny wirtualnej na platformie Azure
 

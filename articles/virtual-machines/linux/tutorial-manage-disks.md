@@ -1,5 +1,5 @@
 ---
-title: Samouczek — zarządzanie dyskami platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Samouczek — zarządzanie dyskami platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 description: Z tego samouczka dowiesz się, jak tworzyć dyski platformy Azure dla maszyn wirtualnych i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 9f4aec031d9ba8a162b022541c6e4cb35ce976a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9042bece9b9a4c914941d65d615045cf365b67b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081505"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034382"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Samouczek — zarządzanie dyskami platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -182,7 +182,7 @@ exit
 
 Utworzenie migawki dysku powoduje utworzenie przez platformę Azure jego kopii tylko do odczytu ze stałym punktem odniesienia. Migawki maszyn wirtualnych platformy Azure są przydatne do szybkiego zapisywania stanu maszyny wirtualnej przed wprowadzeniem zmian w konfiguracji. Jeśli wystąpi problem lub błąd, można przywrócić maszynę wirtualną przy użyciu migawki. Jeśli maszyna wirtualna ma więcej niż jeden dysk, migawki każdego dysku są tworzone niezależnie od innych. W przypadku wykonywania kopii zapasowych spójnych z aplikacjami rozważ zatrzymanie maszyny wirtualnej przed utworzeniem migawek dysków. Możesz także użyć [usługi Azure Backup](/azure/backup/), która umożliwia wykonywanie automatycznych kopii zapasowych, gdy maszyna wirtualna jest uruchomiona.
 
-### <a name="create-snapshot"></a>Utwórz migawkę
+### <a name="create-snapshot"></a>Tworzenie migawki
 
 Aby utworzyć migawkę dysku maszyny wirtualnej, należy najpierw uzyskać identyfikator i nazwę dysku. Za pomocą polecenia [az vm show](/cli/azure/vm#az-vm-show) wyświetl identyfikator dysku. W tym przykładzie identyfikator dysku jest przechowywany w zmiennej, aby można go było użyć w późniejszym kroku.
 

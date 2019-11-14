@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 51102962879b43d4ef3ae8662d7c3136bc7441d9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 50728363ffd02e189b4bc0dacebd684a7f13091e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818438"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030709"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Tworzenie zestawów danych Azure Machine Learning
 
@@ -55,7 +55,7 @@ Istnieją dwa typy zestawów danych, w zależności od tego, jak użytkownicy zu
 
 Aby dowiedzieć się więcej o nadchodzących zmianach interfejsu API, zobacz temat [zmiana interfejsu API zestawu danych](https://aka.ms/tabular-dataset).
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 
 Tworząc zestaw danych, utworzysz odwołanie do lokalizacji źródła danych wraz z kopią jej metadanych. Ponieważ dane pozostają w istniejącej lokalizacji, nie pociągnie za sobą dodatkowych kosztów magazynowania. Można utworzyć zarówno `TabularDataset`, jak i `FileDataset` zestawy danych za pomocą zestawu SDK języka Python lub strony docelowej obszaru roboczego (wersja zapoznawcza).
 
@@ -115,8 +115,8 @@ titanic_ds.take(3).to_pandas_dataframe()
 | |PassengerId|Ocalałe|Pclass|Nazwa|Biciu|Wiek|SibSp|Parch|Równ|Bezprzewodow|Kabin|Zaokrętowanie
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen Harris|mężczyzna|22,0|1|0|A/5 21171|7,2500||S
-1|2|True|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
-2|3|True|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||S
+1|2|Prawda|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
+2|3|Prawda|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Użyj metody [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) na klasie `TabularDatasetFactory`, aby odczytać Azure SQL Database:
 
@@ -155,11 +155,9 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 Użyj metody [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) na klasie `FileDatasetFactory`, aby załadować pliki w dowolnym formacie i utworzyć niezarejestrowane FileDataset:
 
 ```Python
-# create a FileDataset from multiple paths in datastore
+# create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
 datastore_paths = [
-                  (datastore, 'animals/dog/1.jpg'),
-                  (datastore, 'animals/dog/2.jpg'),
-                  (datastore, 'animals/dog/*.jpg')
+                  (datastore, 'animals')
                  ]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
 

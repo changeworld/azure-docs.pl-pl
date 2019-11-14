@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure na podstawie szablonu | Dokumentacja firmy Microsoft
-description: Jak utworzyć Maszynę wirtualną systemu Linux na podstawie szablonu usługi Resource Manager za pomocą wiersza polecenia platformy Azure
+title: Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure na podstawie szablonu
+description: Jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonu Menedżer zasobów za pomocą interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,33 +16,33 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f12bfaa09b74bf2d9004044dbedb8d7bb15965c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3e32e9f17b5c48e18453724eb683ba2e86dd0cdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671589"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036489"
 ---
-# <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonów usługi Azure Resource Manager
+# <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonów Azure Resource Manager
 
-Dowiedz się, jak utworzyć maszynę wirtualną (VM) systemu Linux przy użyciu szablonu usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure w usłudze Azure Cloud shell. Aby utworzyć maszynę wirtualną Windows, zobacz [Utwórz maszynę wirtualną Windows za pomocą szablonu usługi Resource Manager](../windows/ps-template.md).
+Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonu Azure Resource Manager i interfejsu wiersza polecenia platformy Azure w usłudze Azure Cloud Shell. Aby utworzyć maszynę wirtualną z systemem Windows, zobacz [Tworzenie maszyny wirtualnej z systemem Windows na podstawie szablonu Menedżer zasobów](../windows/ps-template.md).
 
 ## <a name="templates-overview"></a>Przegląd szablonów
 
-Szablony usługi Azure Resource Manager są plikami JSON definiującymi infrastruktury i konfiguracji rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. Aby dowiedzieć się więcej o formacie szablonu i sposobie jego konstruowania, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md). Aby wyświetlić składnię JSON dla typów zasobów, zobacz [Define resources in Azure Resource Manager templates](/azure/templates/microsoft.compute/allversions) (Definiowanie zasobów w szablonach usługi Azure Resource Manager).
+Szablony Azure Resource Manager są plikami JSON, które definiują infrastrukturę i konfigurację rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. Aby dowiedzieć się więcej o formacie szablonu i sposobie jego konstruowania, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md). Aby wyświetlić składnię JSON dla typów zasobów, zobacz [Define resources in Azure Resource Manager templates](/azure/templates/microsoft.compute/allversions) (Definiowanie zasobów w szablonach usługi Azure Resource Manager).
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Tworzenie maszyny wirtualnej platformy Azure, zwykle obejmuje dwa kroki:
+Tworzenie maszyny wirtualnej platformy Azure zwykle obejmuje dwa kroki:
 
 1. Utwórz grupę zasobów. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed maszyną wirtualną.
 1. Tworzy maszynę wirtualną.
 
-Poniższy przykład obejmuje tworzenie maszyny Wirtualnej z [szablonu szybkiego startu platformy Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Tylko uwierzytelnianie SSH jest dozwolone dla tego wdrożenia. Po wyświetleniu monitu podaj wartość własny klucz publiczny SSH, takie jak zawartość *~/.ssh/id_rsa.pub*. Jeśli musisz utworzyć parę kluczy SSH, zobacz [jak tworzenie i używanie pary kluczy SSH dla maszyn wirtualnych systemu Linux na platformie Azure](mac-create-ssh-keys.md). Oto kopię szablonu:
+Poniższy przykład tworzy maszynę wirtualną na podstawie [szablonu szybkiego startu platformy Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Dla tego wdrożenia można używać tylko uwierzytelniania SSH. Po wyświetleniu monitu podaj wartość własnego klucza publicznego SSH, na przykład zawartość *~/.ssh/id_rsa. pub*. Jeśli musisz utworzyć parę kluczy SSH, zobacz [jak utworzyć i używać pary kluczy SSH dla maszyn wirtualnych z systemem Linux na platformie Azure](mac-create-ssh-keys.md). Oto kopia szablonu:
 
 [!code-json[create-linux-vm](~/quickstart-templates/101-vm-sshkey/azuredeploy.json)]
 
-Aby uruchomić skrypt interfejsu wiersza polecenia, wybierz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+Aby uruchomić skrypt interfejsu wiersza polecenia, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -60,19 +60,19 @@ az group deployment create --resource-group $resourceGroupName --template-uri ht
 az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-details --query publicIps --output tsv
 ```
 
-Ostatnie polecenie wiersza polecenia platformy Azure zawiera publiczny adres IP nowo utworzonej maszyny Wirtualnej. Potrzebujesz publicznego adresu IP, aby połączyć się z maszyną wirtualną. Zobacz następną sekcję tego artykułu.
+Ostatnie polecenie interfejsu wiersza polecenia platformy Azure pokazuje publiczny adres IP nowo utworzonej maszyny wirtualnej. Do nawiązania połączenia z maszyną wirtualną potrzebny jest publiczny adres IP. Zobacz następną sekcję tego artykułu.
 
-W poprzednim przykładzie określono szablonu przechowywanego w usłudze GitHub. Możesz również pobrać lub utworzyć szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+W poprzednim przykładzie określono szablon przechowywany w serwisie GitHub. Możesz również pobrać lub utworzyć szablon i określić ścieżkę lokalną za pomocą parametru `--template-file`.
 
-Poniżej przedstawiono dodatkowe zasoby:
+Oto kilka dodatkowych zasobów:
 
-- Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, zobacz [dokumentacji usługi Azure Resource Manager](/azure/azure-resource-manager/).
-- Aby wyświetlić schematy maszyny wirtualnej platformy Azure, zobacz [odwołanie do szablonu usługi Azure](/azure/templates/microsoft.compute/allversions).
-- Aby zobaczyć więcej przykładów szablonu maszyny wirtualnej, zobacz [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
+- Aby dowiedzieć się, jak opracowywać szablony Menedżer zasobów, zobacz [dokumentację dotyczącą Azure Resource Manager](/azure/azure-resource-manager/).
+- Aby wyświetlić schematy maszyn wirtualnych platformy Azure, zobacz [Dokumentacja szablonu platformy Azure](/azure/templates/microsoft.compute/allversions).
+- Aby zobaczyć więcej przykładów szablonów maszyn wirtualnych, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 
 ## <a name="connect-to-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-Możesz następnie SSH z maszyną wirtualną, jak zwykle. Podaj własny publiczny adres IP z poprzedniego polecenia:
+Następnie można obsłużyć SSH na potrzeby maszyny wirtualnej. Podaj własny publiczny adres IP z poprzedniego polecenia:
 
 ```bash
 ssh <adminUsername>@<ipAddress>
@@ -80,12 +80,12 @@ ssh <adminUsername>@<ipAddress>
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przykładzie utworzono Maszynę wirtualną systemu Linux podstawowe. Aby uzyskać dodatkowe szablony usługi Resource Manager, które obejmują struktur aplikacji lub utworzyć bardziej złożonych środowisk, przejdź [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
+W tym przykładzie utworzono podstawową maszynę wirtualną z systemem Linux. Aby uzyskać więcej Menedżer zasobów szablonów obejmujących struktury aplikacji lub tworzyć bardziej złożone środowiska, przejrzyj [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 
-Aby dowiedzieć się więcej na temat tworzenia szablonów, wyświetlić składnię JSON i właściwości dla typów zasobów, które można wdrożyć:
+Aby dowiedzieć się więcej na temat tworzenia szablonów, Wyświetl składnię i właściwości JSON dla wdrożonych typów zasobów:
 
 - [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
 - [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 - [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

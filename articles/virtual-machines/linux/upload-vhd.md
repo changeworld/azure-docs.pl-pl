@@ -1,5 +1,5 @@
 ---
-title: Przekazywanie lub kopiowanie niestandardowej maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Przekazywanie lub kopiowanie niestandardowej maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Przekazywanie lub kopiowanie dostosowanej maszyny wirtualnej przy użyciu modelu wdrażania Menedżer zasobów i interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cc01266bb6e7f122868257e8a5b9e88e78dddea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553488"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034300"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Tworzenie maszyny wirtualnej z systemem Linux na podstawie dysku niestandardowego przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -51,9 +51,9 @@ Aby wykonać następujące kroki, potrzebne są:
 
 - Upewnij się, że masz zainstalowaną najnowszą wersję [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogujesz się do konta platformy Azure przy użyciu [AZ login](/cli/azure/reference-index#az-login).
 
-W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami, takimi jak `myResourceGroup`, `mystorageaccount` i `mydisks`.
+W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami, takimi jak `myResourceGroup`, `mystorageaccount`i `mydisks`.
 
-<a id="prepimage"> </a>
+<a id="prepimage"></a>
 
 ## <a name="prepare-the-vm"></a>Przygotowywanie maszyny wirtualnej
 
