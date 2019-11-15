@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: analizowanie zdarzeń — Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
+title: 'Samouczek: analizowanie zdarzeń z usługi Azure Digital bliźniaczych reprezentacji Setup'
 description: Dowiedz się, w jaki sposób wizualizować i analizować zdarzenia z przestrzeni usługi Azure Digital Twins przy użyciu usługi Azure Time Series Insights, korzystając z kroków opisanych w tym samouczku.
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: b082de36b954f1ed387782c3eefdc2b01cf09a90
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/12/2019
+ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014007"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107680"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Samouczek: wizualizacja i analiza zdarzeń z usługi Azure Digital bliźniaczych reprezentacji przy użyciu Time Series Insights
 

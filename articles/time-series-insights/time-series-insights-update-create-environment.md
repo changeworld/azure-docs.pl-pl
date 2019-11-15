@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie środowiska w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować środowisko Azure Time Series Insights w wersji zapoznawczej.
+title: 'Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej'
+description: 'Samouczek: informacje dotyczące konfigurowania środowiska w wersji zapoznawczej programu Azure Time Series Insights.'
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 11/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd08af518be9b3fec84e756edf9532ef669f22f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49960ae91688b97a9d38a65e1b17fd277508b996
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012675"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114576"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 

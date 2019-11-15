@@ -1,22 +1,22 @@
 ---
-title: Aprowizowanie urządzeń w wielu centrach IoT Hub z równoważeniem obciążenia przy użyciu usługi Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Automatyczne aprowizowanie urządzeń w wielu centrach IoT Hub z równoważeniem obciążenia przy użyciu usługi Device Provisioning Service w witrynie Azure Portal
+title: 'Samouczek: korzystanie z usługi Azure IoT Hub Device Provisioning Service do udostępniania urządzeń w centrach IoT o zrównoważonym obciążeniu'
+description: 'Samouczek: usługa Device Provisioning — automatyczne Inicjowanie obsługi urządzeń w centrach IoT o zrównoważonym obciążeniu w witrynie Azure Portal'
 author: sethmanheim
 ms.author: sethm
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6cd5dcb1fd96ac0fda75bf89dcf7259695cf971d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486025"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112783"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Aprowizowanie urządzeń w centrach IoT Hub z równoważeniem obciążenia
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Samouczek: Udostępnianie urządzeń w centrach IoT o zrównoważonym obciążeniu
 
 W tym samouczku przedstawiono sposób aprowizacji urządzeń w wielu centrach IoT Hub z równoważeniem obciążenia przy użyciu usługi Device Provisioning Service. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -64,7 +64,7 @@ Wykonaj następujące czynności, aby skonfigurować zasady alokacji:
 
 1. Na stronie **Wszystkie zasoby** kliknij wcześniej utworzone wystąpienie usługi Device Provisioning Service.
 2. Na stronie Usługa Device Provisioning kliknij pozycję **Połączone centra IoT Hub**.
-3. Kliknij pozycję **Dodaj**.
+3. Kliknij pozycję **Add** (Dodaj).
 4. Na stronie **Dodawanie linku do centrum IoT Hub** użyj przycisków opcji, aby określić, czy połączone centrum IoT znajduje się w bieżącej subskrypcji, czy w innej subskrypcji. Następnie wybierz nazwę centrum IoT w polu **Centrum IoT**.
 5. Kliknij pozycję **Zapisz**.
 

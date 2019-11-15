@@ -1,20 +1,20 @@
 ---
-title: Stream Analytics na krawędzi Azure IoT Edge | Microsoft Docs
+title: 'Samouczek: Stream Analytics na krawędzi Azure IoT Edge'
 description: W tym samouczku przedstawiono wdrożenie Azure Stream Analytics jako modułu na urządzeniu IoT Edge
 author: kgremban
 ms.author: kgremban
-ms.date: 08/07/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0128574ff0ef9db1c5a4326e3ebce25fbba0c2e7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fcb272a6161ecae99f969fbf6689944ea85a1384
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845122"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114021"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Samouczek: Wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Samouczek: wdrażanie Azure Stream Analytics jako modułu IoT Edge
 
 Wiele rozwiązań IoT korzysta z usług analitycznych w celu uzyskania wglądu w informacje o danych, które docierają do chmury z urządzeń IoT. Dzięki usłudze Azure IoT Edge możesz zastosować logikę usługi [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), wdrażając ją bezpośrednio na urządzeniu. Dzięki przetwarzaniu potoków danych telemetrycznych na urządzeniu brzegowym możesz zmniejszyć ilość przekazywanych danych i skrócić czas reakcji na szczegółowe informacje umożliwiające podejmowanie działań.
 
@@ -33,8 +33,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 <center>
 
-![Diagram — architektura samouczka, zadanie etapowe i wdrażanie ASA](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
-</center>
+Diagram ![— architektura samouczka,](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+zadania na etapie i wdrożenia ASA </center>
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -61,16 +61,16 @@ W tej sekcji utworzysz zadanie Azure Stream Analytics, które wykona następują
 
 W przypadku tworzenia zadania usługi Azure Stream Analytics do uruchamiania na urządzeniu usługi IoT Edge musi być ono przechowywane w sposób umożliwiający wywoływanie go z urządzenia. Możesz użyć istniejącego konta usługi Azure Storage lub utworzyć teraz nowe konto. 
 
-1. W Azure Portal przejdź do pozycji **Tworzenie zasobu magazynu zasobów** > . >  
+1. W Azure Portal przejdź do obszaru **Tworzenie zasobu** > **Storage** > **konto magazynu**. 
 
 1. Podaj następujące wartości, aby utworzyć konto magazynu:
 
-   | Pole | Value |
+   | Pole | Wartość |
    | ----- | ----- |
-   | Subscription | Wybierz tę samą subskrypcję co używana dla centrum IoT Hub. |
-   | Resource group | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
-   | Name (Nazwa) | Wprowadź unikatową nazwę konta magazynu. | 
-   | Location | Wybierz bliską lokalizację. |
+   | Subskrypcja | Wybierz tę samą subskrypcję co używana dla centrum IoT Hub. |
+   | Grupa zasobów | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
+   | Nazwa | Wprowadź unikatową nazwę konta magazynu. | 
+   | Lokalizacja | Wybierz bliską lokalizację. |
 
 
 1. Zachowaj wartości domyślne dla innych pól i wybierz kolejno pozycje **Recenzja + Utwórz**.
@@ -83,11 +83,11 @@ W przypadku tworzenia zadania usługi Azure Stream Analytics do uruchamiania na 
 
 1. Podaj następujące wartości, aby utworzyć zadanie:
 
-   | Pole | Value |
+   | Pole | Wartość |
    | ----- | ----- |
    | Nazwa zadania | Podaj nazwę zadania. Na przykład **IoTEdgeJob** | 
-   | Subscription | Wybierz tę samą subskrypcję co używana dla centrum IoT Hub. |
-   | Resource group | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
+   | Subskrypcja | Wybierz tę samą subskrypcję co używana dla centrum IoT Hub. |
+   | Grupa zasobów | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
    | Lokalizacja | Wybierz bliską lokalizację. | 
    | Środowisko hostingu | Wybierz pozycję **Edge**. |
  
@@ -206,7 +206,7 @@ W tym samouczku wdrażane są dwa moduły. Pierwszy to **SimulatedTemperatureSen
     }
     ```
 
-   Trasy zadeklarowane w tym miejscu definiują przepływ danych przez urządzenie usługi IoT Edge. Dane telemetryczne z SimulatedTemperatureSensor są wysyłane do IoT Hub i do **temperatury** wejściowej, która została skonfigurowana w zadaniu Stream Analytics. Komunikaty wyjściowe alertu są wysyłane do IoT Hub i do modułu SimulatedTemperatureSensor, aby wyzwolić polecenie resetowania. 
+   Trasy zadeklarowane w tym miejscu definiują przepływ danych przez urządzenie usługi IoT Edge. Dane telemetryczne z SimulatedTemperatureSensor są wysyłane do IoT Hub i do **temperatury** wejściowej, która została skonfigurowana w zadaniu Stream Analytics. Komunikaty wyjściowe **alertu** są wysyłane do IoT Hub i do modułu SimulatedTemperatureSensor, aby wyzwolić polecenie resetowania. 
 
 1. Wybierz opcję **Dalej**.
 

@@ -1,22 +1,22 @@
 ---
-title: Tworzenie geofencingu przy użyciu usługi Azure Maps | Microsoft Docs
-description: Skonfiguruj geofencing przy użyciu usługi Azure Maps.
+title: 'Samouczek: Tworzenie geofencingu przy użyciu Azure Maps'
+description: 'Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694926"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107099"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Konfigurowanie geofencingu przy użyciu usługi Azure Maps
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps
 
 Ten samouczek przeprowadzi Cię przez podstawowe kroki konfigurowania geofencingu przy użyciu usługi Azure Maps. Scenariusz, który omawiamy w tym samouczku, ma pomóc kierownikom budowy w monitorowaniu potencjalnie niebezpiecznych wyjazdów sprzętu poza wyznaczone tereny budowy. Na terenie budowy znajduje się kosztowny sprzęt i obowiązują pewne przepisy. Zazwyczaj wymagają one, aby urządzenia znajdowały się na terenie budowy i nie opuszczały go bez zezwolenia.
 
@@ -154,7 +154,7 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Skopiuj identyfikator URI stanu i Dołącz do niego parametr `subscription-key` z wartością klucza subskrypcji konta Azure Maps. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
+6. Skopiuj identyfikator URI stanu i Dołącz do niego parametr `subscription-key`, podając jego wartość klucza subskrypcji konta usługi Azure Maps. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek języka Python: Wywołaj Cognitive Services w potoku wzbogacenia AI'
+title: 'Samouczek: Tworzenie zestawu umiejętności w języku Python przy użyciu interfejsów API REST'
 titleSuffix: Azure Cognitive Search
 description: Przejdź do przykładowego sposobu wyodrębniania danych, języka naturalnego i przetwarzania obrazu AI na platformie Azure Wyszukiwanie poznawcze przy użyciu notesu Python Jupyter. Wyodrębnione dane są indeksowane i łatwo dostępne przez zapytanie.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bb36ae551c48fc53756933e78ff0212f8ec1cdeb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790201"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113679"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-enrichment-pipeline"></a>Samouczek języka Python: Wywołaj interfejsy API usług Cognitive Services w potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Samouczek: Tworzenie potoku wzbogacania AI przy użyciu języka REST i języka Python
 
 W ramach tego samouczka nauczysz się Mechanics wzbogacania danych programistycznych na platformie Wyszukiwanie poznawcze Azure, korzystając z *umiejętności poznawczych*. Umiejętności są obsługiwane przez funkcję przetwarzania języka naturalnego (NLP) i możliwości analizy obrazów w Cognitive Services. Za poorednictwem kompozycji i konfiguracji zestawu umiejętności można wyodrębnić tekst i tekst reprezentacje obrazu lub zeskanowanego pliku dokumentu. Możesz również wykryć język, jednostki, kluczowe frazy i inne. Wynik zawiera rozbudowaną dodatkową zawartość w indeksie wyszukiwania utworzonym przy użyciu wzbogacania AI w potoku indeksowania. 
 

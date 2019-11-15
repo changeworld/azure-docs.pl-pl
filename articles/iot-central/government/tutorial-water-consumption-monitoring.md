@@ -1,19 +1,19 @@
 ---
-title: Tworzenie aplikacji do monitorowania zużycia wody przy użyciu usługi Azure IoT Central | Microsoft Docs
-description: Dowiedz się, jak utworzyć aplikację do monitorowania zużycia wody przy użyciu szablonów aplikacji IoT Central platformy Azure.
+title: 'Samouczek: Tworzenie aplikacji do monitorowania zużycia wody przy użyciu usługi Azure IoT Central'
+description: 'Samouczek: informacje na temat tworzenia aplikacji do monitorowania zużycia wody przy użyciu IoT Central szablonów aplikacji platformy Azure.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d79c4585d9764e2cc5cebd679372a97946479396
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889154"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112624"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania zużycia wody w IoT Central
 

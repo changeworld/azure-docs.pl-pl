@@ -1,22 +1,22 @@
 ---
-title: Implementowanie analizy przestrzennej IoT przy użyciu Azure Maps | Microsoft Docs
-description: Integruj IoT Hub z interfejsami API usługi Azure Maps.
+title: 'Samouczek: implementowanie analizy przestrzennej IoT przy użyciu Azure Maps'
+description: 'Samouczek: integracja IoT Hub z interfejsami API usługi Azure Maps.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933203"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107042"
 ---
-# <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementowanie analizy przestrzennej IoT przy użyciu Azure Maps
+# <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Samouczek: implementowanie analizy przestrzennej IoT przy użyciu Azure Maps
 
 Śledzenie i przechwytywanie istotnych zdarzeń występujących w miejscu i czasie jest typowym scenariuszem IoT. Na przykład w przypadku zarządzania flotą, śledzenia zasobów, mobilności i aplikacji inteligentnych miast. Ten samouczek przeprowadzi Cię przez wzorzec rozwiązań służący do używania Azure Maps interfejsów API z odpowiednimi zdarzeniami przechwytywanymi przez IoT Hub przy użyciu modelu subskrypcji zdarzeń dostarczonego przez Event Grid.
 
@@ -70,7 +70,7 @@ Poniższy diagram zawiera ogólne omówienie systemu.
  
   <center>
 
-  ![Przegląd systemu](./media/tutorial-iot-hub-maps/system-diagram.png)</center>
+  ![przegląd systemu](./media/tutorial-iot-hub-maps/system-diagram.png)</center>
 
 Poniższa ilustracja przedstawia obszar geoogrodzenia wyróżniony w trasie na niebieską i wynajmu pojazdu jako zieloną linię.
 
@@ -96,7 +96,7 @@ Aby wykonać kroki opisane w tym samouczku, musisz najpierw utworzyć grupę zas
 4. Wprowadź następujące wartości właściwości:
     * **Subskrypcja:** Wybierz subskrypcję platformy Azure.
     * **Grupa zasobów:** Wprowadź wartość "ContosoRental" jako nazwę grupy zasobów.
-    * **Okolicy** Wybierz region dla grupy zasobów.  
+    * **Region:** Wybierz region dla grupy zasobów.  
 
     ![Szczegóły grupy zasobów](./media/tutorial-iot-hub-maps/resource-details.png)
 
@@ -165,7 +165,7 @@ Otwórz aplikację Poster i postępuj zgodnie z poniższymi instrukcjami, aby pr
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
     
-    Wartość "GEOJSON" dla `dataFormat` parametru w ścieżce URL reprezentuje Format przekazywanych danych.
+    Wartość "GEOJSON" dotycząca parametru `dataFormat` w ścieżce URL reprezentuje Format przekazywanych danych.
 
 3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczową subskrypcją Azure Maps.
    
@@ -181,13 +181,13 @@ Otwórz aplikację Poster i postępuj zgodnie z poniższymi instrukcjami, aby pr
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Skopiuj swój identyfikator URI stanu i Dołącz `subscription-key` do niego parametr z wartością klucza subskrypcji konta Azure Maps. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
+6. Skopiuj identyfikator URI stanu i Dołącz do niego parametr `subscription-key`, podając jego wartość klucza subskrypcji konta usługi Azure Maps. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. Aby uzyskać dostęp do `udId` programu, Otwórz nową kartę w aplikacji Poster i wybierz pozycję Pobierz metodę http na karcie Konstruktor i wprowadź żądanie Get w identyfikatorze URI stanu. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId do późniejszego użycia.
+7. Aby uzyskać `udId` Otwórz nową kartę w aplikacji Poster i wybierz pozycję Pobierz metodę HTTP na karcie Konstruktor i wprowadź żądanie GET w identyfikatorze URI stanu. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId do późniejszego użycia.
 
    ```JSON
    {
@@ -224,9 +224,9 @@ Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchami
 6. Skopiuj [kod c#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do funkcji, a następnie kliknij przycisk **Zapisz**.
  
 7. W skrypcie języka c# Zastąp następujące parametry:
-    * Zastąp **SUBSCRIPTION_KEY** kluczem podstawowej subskrypcji konta Azure Maps.
+    * Zastąp **SUBSCRIPTION_KEY** podstawowym kluczem subskrypcji konta usługi Azure Maps.
     * Zastąp **UDID** z UDIDem przekazana geoogrodzenia, 
-    * Funkcja **CreateBlobAsync** w skrypcie tworzy obiekt BLOB dla zdarzenia na koncie magazynu danych. Zastąp wartość **ACCESS_KEY**, **ACCOUNT_NAME** i **STORAGE_CONTAINER_NAME** kluczem dostępu do konta magazynu oraz nazwą konta i kontenerem magazynu danych.
+    * Funkcja **CreateBlobAsync** w skrypcie tworzy obiekt BLOB dla zdarzenia na koncie magazynu danych. Zastąp **ACCESS_KEY**, **ACCOUNT_NAME** i **STORAGE_CONTAINER_NAME** przy użyciu klucza dostępu konta magazynu oraz nazwy konta i kontenera magazynu danych.
 
 10. Kliknij pozycję **Dodaj subskrypcję Event Grid**.
     
@@ -243,7 +243,7 @@ Po dodaniu subskrypcji Event Grid do funkcji platformy Azure będzie można wyś
 
 ![koncentrator-EG-Route](./media/tutorial-iot-hub-maps/hub-route.png)
 
-W naszym przykładowym scenariuszu chcemy odfiltrować wszystkie komunikaty, w przypadku których trwa przeniesienie pojazdu najmu. Aby opublikować takie zdarzenia telemetrii urządzenia do Event Grid, będziemy używać zapytania routingu do filtrowania zdarzeń, w których `Engine` właściwość jest **"on"** . Istnieją różne sposoby wykonywania zapytań dotyczących komunikatów przesyłanych z urządzeń do chmury, aby dowiedzieć się więcej na temat składni routingu wiadomości, zobacz [IoT Hub Routing komunikatów](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Aby utworzyć zapytanie routingu, kliknij trasę **RouteToEventGrid** i Zastąp **zapytanie routingu** z **"aparat =" na ""** , a następnie kliknij przycisk **Zapisz**. Teraz Centrum IoT będzie publikować dane telemetryczne urządzenia, na których jest włączony aparat.
+W naszym przykładowym scenariuszu chcemy odfiltrować wszystkie komunikaty, w przypadku których trwa przeniesienie pojazdu najmu. Aby opublikować takie zdarzenia telemetrii urządzenia do Event Grid, będziemy używać zapytania routingu do filtrowania zdarzeń, w których właściwość `Engine` ma wartość **"on"** . Istnieją różne sposoby wykonywania zapytań dotyczących komunikatów przesyłanych z urządzeń do chmury, aby dowiedzieć się więcej na temat składni routingu wiadomości, zobacz [IoT Hub Routing komunikatów](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Aby utworzyć zapytanie routingu, kliknij trasę **RouteToEventGrid** i Zastąp **zapytanie routingu** z **"aparat =" na ""** , a następnie kliknij przycisk **Zapisz**. Teraz Centrum IoT będzie publikować dane telemetryczne urządzenia, na których jest włączony aparat.
 
 ![koncentrator — EG — filtr](./media/tutorial-iot-hub-maps/hub-filter.png)
 
@@ -254,7 +254,7 @@ Gdy nasza funkcja platformy Azure zostanie uruchomiona, będziemy teraz wysyła�
 
 1. Pobierz projekt języka c# [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) . 
 
-2. Otwórz plik simulatedCar.cs w wybranym edytorze tekstów i Zastąp wartość `connectionString` atrybutem zapisanym podczas rejestrowania urządzenia i Zapisz zmiany w pliku.
+2. Otwórz plik simulatedCar.cs w wybranym edytorze tekstów i Zastąp wartość `connectionString` wartością zapisaną podczas rejestrowania urządzenia i Zapisz zmiany w pliku.
  
 3. W oknie terminalu lokalnego przejdź do folderu głównego C# projektu i uruchom następujące polecenie, aby zainstalować wymagane pakiety dla aplikacji symulowanego urządzenia:
     

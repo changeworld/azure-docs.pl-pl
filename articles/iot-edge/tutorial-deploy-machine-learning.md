@@ -1,20 +1,20 @@
 ---
-title: Wdrażanie Azure Machine Learning na urządzeniu Azure IoT Edge | Microsoft Docs
+title: 'Samouczek: wdrażanie Azure Machine Learning na urządzeniu — Azure IoT Edge'
 description: W tym samouczku utworzysz model Azure Machine Learning, a następnie wdrożono go jako moduł na urządzeniu brzegowym
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/16/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 28e5e09ea64f7ac1272e8ed126d5b4153b952c1d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2d56d434fbdaf8c05c4d4db75bffb65468a5bc42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494043"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114038"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
 
@@ -70,7 +70,7 @@ W tej sekcji przekonwertujesz przeszkolone pliki modelu uczenia maszynowego na k
 
    ![Uruchamianie przy bezpłatnych obliczeniach](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-6. Otwórz plik **aml_config/config. JSON** .
+6. Otwórz plik **aml_config/config.JSON** .
 
 7. Edytuj plik konfiguracji, aby uwzględnić wartości identyfikatora subskrypcji platformy Azure, grupy zasobów w subskrypcji oraz nazwę obszaru roboczego Azure Machine Learning. Wszystkie te wartości można uzyskać z sekcji **Przegląd** obszaru roboczego na platformie Azure. 
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: eb3f73f3ceb27bec05d4e2e88877ea398de7cdf5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034362"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111989"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Samouczek: monitorowanie maszyny wirtualnej z systemem Linux na platformie Azure
 
@@ -133,7 +133,7 @@ Aby włączyć monitorowanie maszyny wirtualnej platformy Azure przy użyciu Azu
 
 3. Na **Insights (wersja zapoznawcza)** wybierz opcję **Wypróbuj teraz usługę**.
 
-    ![Włączanie usługi Azure Monitor dla maszyn wirtualnych dla maszyny Wirtualnej](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Włączanie usługi Azure Monitor dla maszyn wirtualnych dla maszyny Wirtualnej](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. Na **Azure Monitor Insights dołączania** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji, wybierz go na liście rozwijanej.  
 

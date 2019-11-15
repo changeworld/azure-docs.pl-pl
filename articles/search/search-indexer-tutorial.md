@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793603"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113327"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Samouczek: przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Wyszukiwanie poznawcze
+# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Samouczek: Importowanie usługi Azure SQL Database przy użyciu indeksatorów usługi Azure Wyszukiwanie poznawcze
 
 Dowiedz się, jak skonfigurować indeksator do wyodrębniania danych z możliwością wyszukiwania z przykładowej bazy danych SQL Azure. [Indeksatory](search-indexer-overview.md) są składnikiem platformy Azure wyszukiwanie poznawcze przeszukiwania zewnętrznych źródeł danych, wypełniania [indeksu wyszukiwania](search-what-is-an-index.md) zawartością. Dla wszystkich indeksatorów, indeksator dla Azure SQL Database jest najczęściej używany. 
 

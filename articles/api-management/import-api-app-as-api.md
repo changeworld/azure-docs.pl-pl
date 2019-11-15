@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073261"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108489"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Importowanie aplikacji interfejsu API jako interfejsu API
 
@@ -39,7 +39,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
 
-1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
+1. Wybierz **Interfejsy API** w obszarze **ZARZĄDZANIE INTERFEJSAMI API**.
 2. Wybierz pozycję **Aplikacja interfejsu API** z listy **Dodaj nowy interfejs API**.
 
     ![Aplikacja interfejsu API](./media/import-api-app-as-api/api-app.png)
@@ -58,7 +58,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
     * **Unlimited (nieograniczony)**   
 7. Wybierz pozycję **Utwórz**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi APIM w witrynie Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Przetestuj nowy interfejs API w Azure Portal
 
 Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 
@@ -70,21 +70,6 @@ Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zap
 1. Kliknij pozycję **Wyślij**.
 
     Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
-
-## <a name="call-operation"> </a>Wywoływanie operacji z portalu dla deweloperów
-
-Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API. 
-
-1. Wybierz interfejs API utworzony w kroku „Importowanie i publikowanie interfejsu API zaplecza”.
-2. Naciśnij pozycję **Portal dla deweloperów**.
-
-    Zostanie otwarta witryna „Portal dla deweloperów”.
-3. Wybierz utworzony **interfejs API**.
-4. Kliknij operację, którą chcesz przetestować.
-5. Naciśnij pozycję **Wypróbuj**.
-6. Kliknij pozycję **Wyślij**.
-    
-    Po wywołaniu operacji portal dla deweloperów wyświetla **stan odpowiedzi**, **nagłówki odpowiedzi** oraz wszelką **zawartość odpowiedzi**.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

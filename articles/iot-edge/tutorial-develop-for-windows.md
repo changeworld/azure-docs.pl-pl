@@ -1,20 +1,20 @@
 ---
-title: Tworzenie modułu dla urządzeń z systemem Windows — Azure IoT Edge | Microsoft Docs
+title: 'Samouczek: opracowywanie modułu dla urządzeń z systemem Windows — Azure IoT Edge'
 description: Ten samouczek przeprowadzi Cię przez proces konfigurowania maszyn deweloperskich i zasobów w chmurze w celu opracowywania modułów IoT Edge przy użyciu kontenerów systemu Windows dla urządzeń z systemem Windows
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/15/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 755290997cb6aab328cd38ce81a21c598c737b5f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 67a80178c5cd800ea08d9f5493efd0f37422fe36
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429013"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113981"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Samouczek: opracowywanie modułów IoT Edge dla urządzeń z systemem Windows
 
@@ -45,11 +45,11 @@ Ten samouczek dotyczy urządzeń z systemem Windows, na których działa IoT Edg
 
 W poniższej tabeli przedstawiono obsługiwane scenariusze programowania dla **kontenerów systemu Windows** w Visual Studio Code i Visual Studio.
 
-|   | Visual Studio Code | Program Visual Studio 2017/2019 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Usługi platformy Azure** | Stan usługi Funkcje Azure <br> Usługa Azure Stream Analytics |   |
+| **Usługi platformy Azure** | Azure Functions <br> Usługa Azure Stream Analytics |   |
 | **Języki** | C#(debugowanie nie jest obsługiwane) | C <br> C# |
-| **Więcej informacji** | [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Narzędzia Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Narzędzia Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+| **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -58,7 +58,7 @@ Komputer deweloperski:
 * System Windows 10 z aktualizacją 1809 lub nowszą.
 * Możesz użyć własnego komputera lub maszyny wirtualnej, w zależności od preferencji programistycznych.
   * Upewnij się, że komputer deweloperski obsługuje wirtualizację zagnieżdżoną. Ta funkcja jest niezbędna do uruchomienia aparatu kontenera, który jest instalowany w następnej sekcji.
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/). 
+* Zainstaluj oprogramowanie [Git](https://git-scm.com/). 
 
 Urządzenie Azure IoT Edge w systemie Windows:
 
@@ -91,7 +91,7 @@ W tym samouczku przedstawiono kroki deweloperskie dla programu Visual Studio 201
    * Jeśli nie masz jeszcze programu Visual Studio na komputerze deweloperskim, [Zainstaluj program Visual studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) z następującymi obciążeniami: 
 
       * Tworzenie aplikacji na platformie Azure
-      * Programowanie aplikacji klasycznychC++
+      * Programowanie aplikacji klasycznych w języku C++
       * Tworzenie aplikacji dla wielu platform w środowisku .NET Core
 
    * Jeśli masz już program Visual Studio 2019 na komputerze deweloperskim, postępuj zgodnie z instrukcjami w sekcji [modyfikowanie programu Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) , aby dodać wymagane obciążenia.
@@ -102,7 +102,7 @@ W tym samouczku przedstawiono kroki deweloperskie dla programu Visual Studio 201
 
 3. Po zakończeniu instalacji Otwórz program Visual Studio 2019 i wybierz pozycję **Kontynuuj bez kodu**.
 
-4. Wybierz pozycję **wyświetl** > **Cloud Explorer**. 
+4. Wybierz pozycję **wyświetl** > w **Eksploratorze chmury**. 
 
 5. Wybierz ikonę profilu w Eksploratorze chmury i zaloguj się do konta platformy Azure, jeśli jeszcze nie zalogowano się. 
 
@@ -118,7 +118,7 @@ W tym samouczku przedstawiono kroki deweloperskie dla programu Visual Studio 201
 
 Rozszerzenie narzędzi Azure IoT Edge zawiera szablony projektów dla wszystkich obsługiwanych języków modułu IoT Edge w programie Visual Studio. Te szablony mają wszystkie pliki i kod, które są potrzebne do wdrożenia modułu roboczego w celu przetestowania IoT Edge, lub umożliwiają rozpoczęcie dostosowywania szablonu przy użyciu własnej logiki biznesowej. 
 
-1. Wybierz **plik** > **Nowy** > **projekt...**
+1. Wybierz pozycję **plik** > **Nowy** > **projekt...**
 
 2. W oknie Nowy projekt Wyszukaj **IoT Edge** a następnie wybierz projekt **Azure IoT Edge (Windows amd64)** . Kliknij przycisk **Dalej**. 
 
@@ -134,7 +134,7 @@ Rozszerzenie narzędzi Azure IoT Edge zawiera szablony projektów dla wszystkich
    | ----- | ----- |
    | Szablon programu Visual Studio | Wybierz pozycję  **C# moduł**. | 
    | Nazwa modułu | Zaakceptuj domyślny **IotEdgeModule1**. | 
-   | Adres URL repozytorium | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wstępnie wypełniany na podstawie wartości nazwy projektu modułu. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Wartość **serwera logowania** można pobrać ze strony **Przegląd** rejestru kontenerów w Azure Portal. <br><br> Finalne repozytorium obrazów wygląda jak \<registry name\>.azurecr.io/iotedgemodule1. |
+   | Adres URL repozytorium | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wstępnie wypełniany na podstawie wartości nazwy projektu modułu. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Wartość **serwera logowania** można pobrać ze strony **Przegląd** rejestru kontenerów w Azure Portal. <br><br> Finalne repozytorium obrazów wygląda jak \<Nazwa rejestru\>. azurecr.io/iotedgemodule1. |
 
       ![Skonfiguruj projekt dla urządzenia docelowego, typu modułu i rejestru kontenerów](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -176,7 +176,7 @@ Po załadowaniu nowego projektu w oknie programu Visual Studio Poświęć chwil�
 
 1. Zapisz zmiany w pliku ENV.
 
-### <a name="review-the-sample-code"></a>Zapoznaj się z przykładowym kodem
+### <a name="review-the-sample-code"></a>Przejrzyj przykładowy kod
 
 Utworzony szablon rozwiązania zawiera przykładowy kod dla modułu IoT Edge. Ten przykładowy moduł po prostu odbiera komunikaty, a następnie przekazuje je. Funkcje potoku przedstawiają ważne koncepcje w IoT Edge, które są zgodne z tym, jak moduły komunikują się ze sobą.
 
@@ -206,7 +206,7 @@ Przykładowy C# kod, który jest dostarczany z szablonem projektu, używa [klasy
 
 7. Znajdź właściwość **routes** $edgeHub żądanych właściwości. 
 
-   Jedną z funkcji modułu IoT Edge Hub jest kierowanie komunikatów między wszystkimi modułami w ramach wdrożenia. Sprawdź wartości we właściwości trasy. Pierwsza trasa, **IotEdgeModule1ToIoTHub**, używa znaku wieloznacznego ( **\*** ), aby dołączyć komunikat pochodzący z kolejki wyjściowej w module IotEdgeModule1. Te komunikaty przechodzą do *$upstream*, która jest nazwą zastrzeżoną, która wskazuje IoT Hub. Druga trasa, **sensorToIotEdgeModule1**, pobiera komunikaty pochodzące z modułu SimulatedTemperatureSensor i kieruje je do kolejki wejściowej *INPUT1* modułu IotEdgeModule1. 
+   Jedną z funkcji modułu IoT Edge Hub jest kierowanie komunikatów między wszystkimi modułami w ramach wdrożenia. Sprawdź wartości we właściwości trasy. Pierwsza trasa, **IotEdgeModule1ToIoTHub**, używa symbolu wieloznacznego ( **\*** ), aby dołączyć komunikat pochodzący z kolejki wyjściowej w module IotEdgeModule1. Te komunikaty przechodzą do *$upstream*, która jest nazwą zastrzeżoną, która wskazuje IoT Hub. Druga trasa, **sensorToIotEdgeModule1**, pobiera komunikaty pochodzące z modułu SimulatedTemperatureSensor i kieruje je do kolejki wejściowej *INPUT1* modułu IotEdgeModule1. 
 
    ![Przejrzyj trasy w pliku Deployment. Template. JSON](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -227,7 +227,7 @@ Podaj poświadczenia rejestru kontenerów platformy Docker na komputerze dewelop
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające użycie `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające korzystanie z `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 ### <a name="build-and-push"></a>Kompiluj i wypchnij
 
@@ -237,7 +237,7 @@ Komputer deweloperski ma teraz dostęp do rejestru kontenerów, a Twoje urządze
 
    ![Kompilowanie i wypychanie modułów IoT Edge](./media/tutorial-develop-for-windows/build-and-push-modules.png)
 
-   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, z wbudowanymi informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie działa `docker build` w celu skompilowania obrazu kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie uruchamia `docker push` w celu wypchnięcia repozytorium obrazów do rejestru kontenerów. 
+   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, z wbudowanymi informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie działa `docker build`, aby skompilować obraz kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie uruchamia `docker push`, aby wypchnąć repozytorium obrazów do rejestru kontenerów. 
 
    Ten proces może potrwać kilka minut po raz pierwszy, ale jest szybszy przy następnym uruchomieniu poleceń. 
 
@@ -269,7 +269,7 @@ Komputer deweloperski ma teraz dostęp do rejestru kontenerów, a Twoje urządze
 Jeśli wystąpią błędy podczas kompilowania i wypychania obrazu modułu, często musimy to zrobić przy użyciu konfiguracji platformy Docker na komputerze deweloperskim. Aby przejrzeć konfigurację, użyj następujących testów: 
 
 * Czy uruchomiono polecenie `docker login` przy użyciu poświadczeń skopiowanych z rejestru kontenerów? Te poświadczenia są inne niż te, które są używane do logowania się na platformie Azure. 
-* Czy używasz właściwego repozytorium kontenerów? Czy ma poprawną nazwę rejestru kontenerów i poprawną nazwę modułu? Otwórz plik **module. JSON** w folderze IotEdgeModule1, aby sprawdzić. Wartość repozytorium powinna wyglądać jak **\<registry Name\>.azurecr.io/iotedgemodule1**. 
+* Czy używasz właściwego repozytorium kontenerów? Czy ma poprawną nazwę rejestru kontenerów i poprawną nazwę modułu? Otwórz plik **module. JSON** w folderze IotEdgeModule1, aby sprawdzić. Wartość repozytorium powinna wyglądać jak **\<Nazwa rejestru\>. azurecr.IO/iotedgemodule1**. 
 * Jeśli użyto innej nazwy niż **IotEdgeModule1** dla modułu, czy nazwa jest spójna w całym rozwiązaniu?
 * Czy na maszynie działa ten sam typ kontenerów, które są kompilowane? Ten samouczek dotyczy urządzeń z systemem Windows IoT Edge, więc pliki programu Visual Studio powinny mieć rozszerzenie **Windows-amd64** , a na pulpicie platformy Docker powinny być uruchomione kontenery systemu Windows. 
 

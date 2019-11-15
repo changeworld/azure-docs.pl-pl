@@ -1,19 +1,19 @@
 ---
 title: C#Samouczek dotyczący autouzupełniania i sugestii
 titleSuffix: Azure Cognitive Search
-description: W tym samouczku przedstawiono projekt "wyniki wyszukiwania na stronie spisu — Wyszukiwanie poznawcze platformy Azure", co umożliwia dodanie autouzupełniania i sugestii. Celem jest bogatsze środowisko użytkownika. Dowiedz się, jak połączyć listę rozwijaną sugestii z wbudowaną funkcją autouzupełniania.
+description: W tym samouczku przedstawiono sposób automatycznego uzupełniania i sugestii w celu zebrania danych wejściowych terminu wyszukiwania od użytkowników przy użyciu listy rozwijanej. Jest ona oparta na istniejącym projekcie hoteli.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786500"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114559"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#Samouczek: Dodawanie autouzupełniania i sugestii — Azure Wyszukiwanie poznawcze
 
@@ -311,7 +311,7 @@ Istnieją biblioteki, które oferują tę funkcję — często nazywane "wbudowa
 
     Jedna opcja autouzupełniania jest zwracana u góry listy **wyników** , a następnie wszystkie sugestie.
 
-2. W widoku najpierw implementujemy lewę, aby jasne, szare słowo uzupełniające jest renderowane bezpośrednio w obszarze tekstu pogrubionego przez użytkownika. Język HTML zawiera Pozycjonowanie względne do tego celu. Zmień instrukcję **TextBoxFor** (wraz z otaczającymi &lt;DIV&gt;) na następujące, zwracając uwagę na to, że drugie pole wyszukiwania identyfikowane jako **poniżej** jest bezpośrednio pod naszym normalnym polem wyszukiwania, pobierając to pole wyszukiwania 39 pikseli poza jej domyślną lokalizację!
+2. W widoku najpierw implementujemy lewę, aby jasne, szare słowo uzupełniające jest renderowane bezpośrednio w obszarze tekstu pogrubionego przez użytkownika. Język HTML zawiera Pozycjonowanie względne do tego celu. Zmień instrukcję **TextBoxFor** (wraz z otaczającymi &lt;DIV&gt;) na następujące, zwracając uwagę na to, że drugie pole wyszukiwania **zidentyfikowane jako część** jest bezpośrednio pod naszym normalnym polem wyszukiwania, pobierając to pole wyszukiwania 39 pikseli z lokalizacji domyślnej.
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -433,7 +433,7 @@ Istnieją biblioteki, które oferują tę funkcję — często nazywane "wbudowa
     </script>
     ```
 
-    Zwróć uwagę na sprytne użycie funkcji **Interval** , aby wyczyścić tekst podstawowy, gdy nie jest już zgodny z wpisanym przez użytkownika, a także ustawić taki sam przypadek (Upper lub Lower) jak użytkownik pisze ("PA" pasuje do "PA", "PA", "PA" podczas wyszukiwania) , dzięki czemu nałożonego tekstu jest tekst.
+    Zwróć uwagę na sprytne użycie funkcji **Interval** , aby wyczyocić tekst podstawowy, gdy nie jest już zgodny z wpisanym przez użytkownika, a także ustawić ten sam przypadek (górny lub niższy), gdy użytkownik pisze tekst ("PA" pasuje do "PA", "PA", "PA" podczas wyszukiwania), tak aby należąca do niego wartość jest przejrzysta.
 
     Zapoznaj się z komentarzami w skrypcie, aby uzyskać pełniejsze informacje.
 

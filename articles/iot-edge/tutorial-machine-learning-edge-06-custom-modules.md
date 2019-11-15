@@ -1,19 +1,19 @@
 ---
-title: Tworzenie i wdrażanie modułów niestandardowych — Machine Learning na Azure IoT Edge | Microsoft Docs
-description: Twórz i wdrażaj moduły IoT Edge, które przetwarzają dane z urządzeń liściowych za pośrednictwem modelu uczenia maszynowego, a następnie wysyłają szczegółowe informacje do IoT Hub.
+title: 'Samouczek: Tworzenie i wdrażanie modułów niestandardowych — Machine Learning na Azure IoT Edge'
+description: 'Samouczek: Tworzenie i wdrażanie modułów IoT Edge, które przetwarzają dane z urządzeń liściowych za pośrednictwem modelu uczenia maszynowego, a następnie wysyłają szczegółowe informacje do IoT Hub.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494006"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106552"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Samouczek: Tworzenie i wdrażanie niestandardowych modułów IoT Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "73494006"
 
 W tym artykule tworzymy trzy moduły IoT Edge, które odbierają komunikaty z urządzeń typu liść, uruchamiają dane za pośrednictwem modelu uczenia maszynowego, a następnie przesyłają szczegółowe informacje do IoT Hub.
 
-IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą określać dane wejściowe, na których są akceptowane wiadomości i dane wyjściowe, do których są zapisywane wiadomości.
+IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów.
 
 Chcemy, aby IoT Edge urządzenie miało cztery rzeczy dla nas:
 

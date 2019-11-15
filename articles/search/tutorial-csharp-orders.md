@@ -1,19 +1,19 @@
 ---
 title: C#Samouczek dotyczący porządkowania wyników
 titleSuffix: Azure Cognitive Search
-description: W tym samouczku przedstawiono projekt "wyniki wyszukiwania na stronie spisu — Wyszukiwanie poznawcze platformy Azure" w celu dodania kolejności wyników wyszukiwania. Dowiedz się, jak zamówić wyniki na głównej właściwości i dla wyników mających taką samą Właściwość podstawową, jak kolejność wyników na właściwości pomocniczej. Na koniec dowiesz się, jak zamówić wyniki w oparciu o profil oceniania.
+description: W tym samouczku pokazano, jak zamówić wyniki wyszukiwania. Kompiluje on w poprzednim projekcie hoteli, porządkując według właściwości podstawowej, właściwości pomocniczej i zawiera profil oceniania, aby dodać kryteria zwiększania wydajności.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794052"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112668"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Samouczek: kolejność wyników — Wyszukiwanie poznawcze platformy Azure
 

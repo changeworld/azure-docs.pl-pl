@@ -1,21 +1,21 @@
 ---
-title: Konfigurowanie środowiska Machine Learning na Azure IoT Edge | Microsoft Docs
-description: Przygotuj środowisko do opracowywania i wdrażania modułów na potrzeby uczenia maszynowego na brzegu.
+title: 'Samouczek: Konfigurowanie środowiska Machine Learning na Azure IoT Edge'
+description: 'Samouczek: Przygotowanie środowiska do opracowywania i wdrażania modułów na potrzeby uczenia maszynowego na brzegu.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1db94e683a0dfb3b60b12bc5ac205c766d405d0a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2ea4248ebaedd318e4112e41169f72bc80b1120f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299824"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114076"
 ---
-# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Samouczek: Skonfiguruj środowisko do uczenia maszynowego na IoT Edge
+# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Samouczek: Konfigurowanie środowiska do uczenia maszynowego na IoT Edge
 
 > [!NOTE]
 > Ten artykuł jest częścią serii samouczka dotyczącego używania Azure Machine Learning w IoT Edge. Jeśli ten artykuł został osiągnięty bezpośrednio, zachęcamy do rozpoczęcia od [pierwszego artykułu](tutorial-machine-learning-edge-01-intro.md) z serii w celu uzyskania najlepszych wyników.
@@ -44,7 +44,7 @@ Maszyna wirtualna programu Development zostanie skonfigurowana przy użyciu:
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   * [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
-  * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
+  * [Program PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
 Maszyna wirtualna dla deweloperów nie jest ściśle wymagana — wszystkie narzędzia programistyczne można uruchomić na komputerze lokalnym. Jednak zdecydowanie zalecamy użycie maszyny wirtualnej w celu zagwarantowania pola poziomu odtwarzania.
 
@@ -81,13 +81,13 @@ Katalog DevVM zawiera pliki potrzebne do utworzenia maszyny wirtualnej platformy
       * **Nazwa grupy zasobów**: Nazwa nowej lub istniejącej grupy zasobów na platformie Azure
       * **Lokalizacja**: Wybierz lokalizację platformy Azure, w której zostanie utworzona maszyna wirtualna. Na przykład westus2 lub northeurope. Aby uzyskać więcej informacji, zobacz [lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/locations/).
       * **AdminUsername**: Podaj nazwę do zapamiętania dla konta administratora, które chcesz utworzyć i użyć na maszynie wirtualnej.
-      * Klucz **AdminPassword**: Ustaw hasło dla konta administratora na maszynie wirtualnej.
+      * **AdminPassword**: Ustaw hasło dla konta administratora na maszynie wirtualnej.
 
     * Jeśli nie masz zainstalowanego Azure PowerShell, skrypt zainstaluje [Azure PowerShell AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 
     * Zostanie wyświetlony monit o zalogowanie się do platformy Azure.
 
-    * Skrypt potwierdza informacje dotyczące tworzenia maszyny wirtualnej. Naciśnij `y` klawisz `Enter` lub, aby kontynuować.
+    * Skrypt potwierdza informacje dotyczące tworzenia maszyny wirtualnej. Naciśnij klawisz `y` lub `Enter`, aby kontynuować.
 
 Skrypt jest uruchamiany przez kilka minut, ponieważ wykonuje następujące czynności:
 
@@ -118,7 +118,7 @@ Po utworzeniu maszyny wirtualnej musimy zainstalować oprogramowanie wymagane do
 
 1. Skrypt tworzenia maszyny wirtualnej utworzył plik RDP na pulpicie.
 
-2. Kliknij dwukrotnie plik o nazwie  **\<Azure VM Name\>. rdp**.
+2. Kliknij dwukrotnie plik o nazwie **\<Nazwa maszyny wirtualnej platformy Azure\>. rdp**.
 
 3. Zostanie wyświetlone okno dialogowe z informacją, że Wydawca połączenia zdalnego jest nieznany. Kliknij pole wyboru **nie pytaj mnie ponownie dla połączeń z tym komputerem,** a następnie wybierz pozycję **Połącz**.
 
@@ -130,7 +130,7 @@ Po utworzeniu maszyny wirtualnej musimy zainstalować oprogramowanie wymagane do
 
 Teraz, gdy masz połączenie z maszyną deweloperskią, Dodaj przydatne rozszerzenia, aby Visual Studio Code ułatwić programowanie.
 
-1. W oknie programu PowerShell przejdź do **C:\\\\Source IoTEdgeAndMlSample\\DevVM**.
+1. W oknie programu PowerShell przejdź do **C:\\source\\IoTEdgeAndMlSample\\DevVM**.
 
 2. Zezwalaj na wykonywanie skryptów na maszynie wirtualnej, wpisując polecenie.
 
@@ -182,7 +182,7 @@ W tej sekcji użyjesz skryptu do utworzenia usługi Azure IoT Hub i konta usług
     ```
 
     * Zostanie wyświetlony monit o zalogowanie się do platformy Azure.
-    * Skrypt potwierdza informacje dotyczące tworzenia centrum i konta magazynu. Naciśnij `y` klawisz `Enter` lub, aby kontynuować.
+    * Skrypt potwierdza informacje dotyczące tworzenia centrum i konta magazynu. Naciśnij klawisz `y` lub `Enter`, aby kontynuować.
 
 Wykonanie skryptu trwa około dwie minuty. Po zakończeniu skrypt wyświetla nazwę centrum i konto magazynu.
 
@@ -202,7 +202,7 @@ W ramach tworzenia Centrum IoT, skrypt, który został uruchomiony w poprzedniej
 
 1. W obszarze **BLOB Storage**wybierz pozycję **turbofanDeviceStorage**.
 
-1. Należy zauważyć, że ten punkt końcowy wskazuje kontener obiektów BLOB o nazwie **devicedata** w ramach konta magazynu utworzonego w ostatnim kroku o nazwie **iotedgeandml\<Unique sufiks\>** .
+1. Należy zauważyć, że ten punkt końcowy wskazuje kontener obiektów BLOB o nazwie **devicedata** w ramach konta magazynu utworzonego w ostatnim kroku o nazwie **iotedgeandml\<unikalnego sufiksu\>** .
 
 1. Należy również zauważyć, że **Format nazwy pliku obiektu BLOB** został zmieniony z formatu domyślnego, aby zamiast tego umieścić partycję jako ostatni element w nazwie. Ten format jest wygodniejszy dla operacji na plikach, które będziemy wykonywać, Azure Notebooks w dalszej części tego samouczka.
 

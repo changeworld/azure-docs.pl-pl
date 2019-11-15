@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b96cfe9813eef9caf1f1f21e43470a23c7032cb1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072125"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108510"
 ---
 # <a name="import-an-openapi-specification"></a>Importowanie specyfikacji interfejsu OpenAPI
 
@@ -41,9 +41,10 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
 
 ## <a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
 
-1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
+1. Wybierz **Interfejsy API** w obszarze **ZARZĄDZANIE INTERFEJSAMI API**.
 2. Wybierz pozycję **Specyfikacja interfejsu OpenAPI** z listy **Dodawanie nowego interfejsu API**.
-    ![Specyfikacja interfejsu OpenAPI](./media/import-api-from-oas/oas-api.png)
+
+    ![Specyfikacja OpenAPI](./media/import-api-from-oas/oas-api.png)
 3. Wprowadź odpowiednie ustawienia. Podczas tworzenia możesz ustawić wszystkie wartości interfejsu API. Alternatywnie możesz ustawić niektóre z nich później, przechodząc na kartę **Ustawienia**. <br/> Jeśli naciśniesz klawisz **Tab** niektóre (lub wszystkie) pola zostaną wypełnione z użyciem informacji z określonej usługi zaplecza.
 
     ![Tworzenie interfejsu API](./media/api-management-get-started/create-api.png)
@@ -56,47 +57,25 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
     |**Opis**|Wprowadź opcjonalny opis interfejsu API.|W przypadku naciśnięcia klawisza Tab po wprowadzeniu adresu URL usługi usługa APIM wypełni to pole w oparciu o zawartość pliku JSON.|
     |**Sufiks adresu URL interfejsu API**|*conference*|Sufiks jest dołączany do podstawowego adresu URL usługi API Management. W usłudze API Management interfejsy API są rozróżniane na podstawie sufiksów, dlatego sufiksy poszczególnych interfejsów API dla danego wydawcy muszą być unikatowe.|
     |**Schemat adresu URL**|*HTTPS*|Określa, których protokołów można używać w celu uzyskania dostępu do interfejsu API. |
-    |**Produkty**|*Unlimited (nieograniczony)*| Opublikuj interfejs API przez skojarzenie go z produktem. Opcjonalnie możesz dodać ten nowy interfejs API do produktu, wpisując nazwę produktu. Ten krok możesz powtórzyć wiele razy, aby dodać interfejs API do wielu produktów.<br/>Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.<br/> Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe: **początkowy** i **bez ograniczeń**. |
+    |**Produkty**|*Unlimited (nieograniczony)*| Opublikuj interfejs API przez skojarzenie go z produktem. Opcjonalnie możesz dodać ten nowy interfejs API do produktu, wpisując nazwę produktu. Ten krok można powtórzyć wiele razy, aby dodać interfejs API do wielu produktów.<br/>Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.<br/> Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe: **Starter** i **Unlimited**. |
 
 4. Wybierz pozycję **Utwórz**.
 
 > [!NOTE]
 > Ograniczenia importu interfejsu API są udokumentowane w [innym artykule](api-management-api-import-restrictions.md).
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi APIM w witrynie Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Przetestuj nowy interfejs API w Azure Portal
+
+![Mapa testowania interfejsu API](./media/api-management-get-started/01-import-first-api-01.png)
 
 Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.
 
-![Testuj interfejs API](./media/api-management-get-started/01-import-first-api-01.png)
-
-1. Wybierz interfejs API utworzony w poprzednim kroku.
+1. Wybierz interfejs API utworzony w poprzednim kroku (z karty **Interfejsy API**).
 2. Naciśnij kartę **Test**.
-3. Kliknij pozycję **GetSpeakers**.
-
-    Strona wyświetla pola parametrów zapytania, ale w tym przypadku nie ma żadnych parametrów. Ponadto strona wyświetla pola nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc klucz zostanie uzupełniony automatycznie.
+3. Kliknij pozycję **GetSpeakers**. Na stronie są wyświetlane pola parametrów zapytania (w tym przypadku nie ma żadnych parametrów) i nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Klucz jest uzupełniany automatycznie.
 4. Kliknij pozycję **Wyślij**.
 
     Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
-
-## <a name="call-operation"> </a>Wywoływanie operacji z portalu dla deweloperów
-
-Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API.
-
-1. Wybierz interfejs API utworzony w kroku „Importowanie i publikowanie interfejsu API zaplecza”.
-2. Naciśnij pozycję **Portal dla deweloperów**.
-
-    ![Testowanie w portalu dla deweloperów](./media/api-management-get-started/developer-portal.png)
-
-    Zostanie otwarta witryna „Portal dla deweloperów”.
-3. Wybierz pozycję **Interfejs API**.
-4. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
-5. Kliknij pozycję **GetSpeakers**.
-
-    Strona wyświetla pola parametrów zapytania, ale w tym przypadku nie ma żadnych parametrów. Ponadto strona wyświetla pola nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc klucz zostanie uzupełniony automatycznie.
-6. Naciśnij pozycję **Wypróbuj**.
-7. Kliknij pozycję **Wyślij**.
-
-    Po wywołaniu operacji portal dla deweloperów wyświetla **stan odpowiedzi**, **nagłówki odpowiedzi** oraz wszelką **zawartość odpowiedzi**.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

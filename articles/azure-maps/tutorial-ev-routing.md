@@ -1,22 +1,22 @@
 ---
-title: Kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python) | Microsoft Docs
-description: Roześlij pojazdy elektryczne przy użyciu Azure Maps interfejsów API routingu i Azure Notebooks.
+title: 'Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)'
+description: 'Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Maps interfejsów API routingu i Azure Notebooks.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/01/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011114"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109601"
 ---
-# <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
 
 Azure Maps to portfolio interfejsów API usług geoprzestrzennych, które są natywnie zintegrowane z platformą Azure. Korzystając z tych interfejsów API, deweloperzy, przedsiębiorstwa i dostawcy oprogramowania mogą tworzyć aplikacje obsługujące lokalizacje i rozwiązania IoT, mobilności, logistyki i śledzenia zasobów. 
 

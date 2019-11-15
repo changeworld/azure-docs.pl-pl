@@ -1,20 +1,20 @@
 ---
-title: Dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central | Microsoft Docs
-description: Dowiedz się, jak dodać i skonfigurować rzeczywiste urządzenie w aplikacji IoT Central platformy Azure. Możesz również poznać kod na rzeczywistym urządzeniu.
+title: 'Samouczek: Dodawanie rzeczywistego urządzenia do aplikacji IoT Central platformy Azure'
+description: 'Samouczek: informacje na temat dodawania i konfigurowania rzeczywistego urządzenia w aplikacji IoT Central platformy Azure. Możesz również poznać kod na rzeczywistym urządzeniu.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 08/23/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5234c371cc4a7238148915f4dcca1faac564f608
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824606"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108976"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
 

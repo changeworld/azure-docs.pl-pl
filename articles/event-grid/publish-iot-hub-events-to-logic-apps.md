@@ -1,6 +1,6 @@
 ---
-title: Wyzwalanie usługi Azure Logic Apps przy użyciu zdarzeń usługi IoT Hub | Microsoft Docs
-description: Za pomocą routingu zdarzeń usługi Azure Event Grid możesz tworzyć zautomatyzowane procesy służące do wykonywania akcji usługi Azure Logic Apps opartych na zdarzeniach usługi IoT Hub.
+title: 'Samouczek: używanie zdarzeń IoT Hub do wyzwalania Azure Logic Apps'
+description: 'Samouczek: korzystanie z usługi routingu zdarzeń Azure Event Grid, Tworzenie zautomatyzowanych procesów w celu wykonywania Azure Logic Apps akcji opartych na zdarzeniach IoT Hub.'
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -10,16 +10,16 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e003cb650b0589ab43c984850838c56cbbf1ff2f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823835"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106775"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Samouczek: Wysyłanie powiadomień e-mail o zdarzeniach usługi Azure IoT Hub przy użyciu usługi Logic Apps
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Samouczek: wysyłanie powiadomień e-mail dotyczących zdarzeń usługi Azure IoT Hub przy użyciu Logic Apps
 
 Usługa Azure Event Grid pozwala reagować na zdarzenia usługi IoT Hub dzięki akcjom wyzwalanym w podrzędnych aplikacjach biznesowych.
 
@@ -128,8 +128,8 @@ Akcje to kroki, które są wykonywane, gdy wyzwalacz uruchomi przepływ pracy ap
 5. W razie potrzeby zaloguj się do swojego konta e-mail. 
 
 6. Utwórz szablon wiadomości e-mail. 
-   * **Do**: Wpisz adres e-mail, na który mają być wysyłane wiadomości e-mail z powiadomieniami. Na potrzeby tego samouczka użyj konta e-mail, które nadaje się do celów testowych. 
-   * **Temat** i **Treść**: Wpisz tekst wiadomości e-mail. Za pomocą narzędzia do wybierania wybierz właściwości JSON w celu dołączenia zawartości dynamicznej opartej na danych zdarzenia.  
+   * **Do**: wpisz adres e-mail, na który mają być wysyłane wiadomości e-mail z powiadomieniami. Na potrzeby tego samouczka użyj konta e-mail, które nadaje się do celów testowych. 
+   * **Temat** i **Treść**: wpisz tekst wiadomości e-mail. Za pomocą narzędzia do wybierania wybierz właściwości JSON w celu dołączenia zawartości dynamicznej opartej na danych zdarzenia.  
 
    Przykładowy szablon wiadomości e-mail może wyglądać następująco:
 
@@ -162,12 +162,12 @@ W tej sekcji skonfigurujesz usługę IoT Hub pod kątem publikowania zdarzeń na
    ![Tworzenie nowej subskrypcji zdarzeń](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Utwórz subskrypcję zdarzeń, korzystając z następujących wartości: 
-   * **Typ zdarzenia**: Usuń zaznaczenie pola wyboru Subskrybuj wszystkie typy zdarzeń i wybierz z menu pozycję **Urządzenie utworzone**.
-   * **Szczegóły punktu końcowego**: Wybierz typ punktu końcowego **Web hook**, a następnie kliknij wybrany punkt końcowy, wklej adres URL skopiowany z aplikacji logiki i potwierdź wybór.
+   * **Typ zdarzenia**: usuń zaznaczenie pola wyboru Subskrybuj wszystkie typy zdarzeń i wybierz z menu pozycję **Urządzenie utworzone**.
+   * **Szczegóły punktu końcowego**: wybierz typ punktu końcowego **Webhook**, a następnie kliknij wybrany punkt końcowy, wklej adres URL skopiowany z aplikacji logiki i potwierdź wybór.
 
      ![wybieranie adresu url punktu końcowego](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-   * **Szczegóły subskrypcji zdarzeń**: Wprowadź opisową nazwę, a następnie wybierz pozycję **Schemat usługi Event Grid**
+   * **Szczegóły subskrypcji zdarzeń**: wprowadź opisową nazwę, a następnie wybierz pozycję **Schemat usługi Event Grid**
 
    Gdy wszystko będzie gotowe, formularz powinien wyglądać tak: 
 
@@ -177,8 +177,8 @@ W tej sekcji skonfigurujesz usługę IoT Hub pod kątem publikowania zdarzeń na
 
 6. Utwórz następujące filtry:
 
-   * **Temat zaczyna się od**: Wprowadź wartość `devices/Building1_`, aby odfiltrować zdarzenia dotyczące urządzeń w budynku 1.
-   * **Temat kończy się na**: Wprowadź wartość `_Temperature`, aby odfiltrować zdarzenia dotyczące urządzeń związane z temperaturą.
+   * **Temat zaczyna się od**: wprowadź wartość `devices/Building1_`, aby odfiltrować zdarzenia urządzeń w budynku 1.
+   * **Temat kończy się na**: wprowadź wartość `_Temperature`, aby odfiltrować zdarzenia urządzeń związane z temperaturą.
 
 5. Wybierz pozycję **Utwórz**, aby zapisać subskrypcję zdarzeń.
 
@@ -222,7 +222,7 @@ Być może zdecydujesz się zachować centrum IoT Hub, ale usunąć utworzoną s
 2. Wybierz subskrypcję zdarzeń, którą chcesz usunąć. 
 3. Wybierz pozycję **Usuń**. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej — zobacz [Reacting to IoT Hub events by using Event Grid to trigger actions (Reagowanie na zdarzenia usługi IoT Hub przez wyzwalanie akcji za pomocą usługi Event Grid)](../iot-hub/iot-hub-event-grid.md).
 * [Dowiedz się, jak porządkować zdarzenia podłączania i odłączania urządzeń](../iot-hub/iot-hub-how-to-order-connection-state-events.md)

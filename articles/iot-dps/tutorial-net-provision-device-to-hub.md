@@ -1,23 +1,23 @@
 ---
-title: Aprowizacja urządzenia przy użyciu usługi Azure IoT Hub Device Provisioning (.NET) | Microsoft Docs
-description: Aprowizacja urządzenia w jednym centrum IoT przy użyciu usługi Azure IoT Hub Device Provisioning (.NET)
+title: 'Samouczek: udostępnianie urządzenia przy użyciu usługi Azure IoT Hub Device Provisioning Service (.NET)'
+description: 'Samouczek: udostępnianie urządzenia w jednym centrum IoT Hub przy użyciu usługi Azure IoT Hub Device Provisioning Service (.NET)'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 4a6a074c3f677023928fefa5c09eb305b5441dfe
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 02995549590f6f53feff92fe45bfb6cc3d543334
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303976"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112816"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Rejestrowanie urządzenia w centrum IoT przy użyciu klienta usługi Azure IoT Hub Device Provisioning (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Samouczek: rejestrowanie urządzenia w usłudze IoT Hub przy użyciu klienta usługi Azure IoT Hub Provisioning Service (.NET)
 
 W poprzednim samouczku omówiono sposób konfigurowania urządzenia do nawiązywania połączenia z usługą Device Provisioning. W tym samouczku dowiesz się, jak używać tej usługi do aprowizacji urządzenia w jednym centrum IoT za pomocą zarówno **_rejestracji indywidualnej_** , jak i **_grup rejestracji_** . Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -130,7 +130,7 @@ Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
     Console.ReadLine();
     ```
         
-1. W Eksploratorze rozwiązań programu Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij polecenie **Ustaw projekty startowe...** . Wybierz pozycję **Pojedynczy projekt startowy**, a następnie wybierz projekt **DeviceProvisioning** w menu rozwijanym.  
+1. W Eksplorator rozwiązań programu Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij pozycję **Ustaw projekty startowe..** .. Wybierz pozycję **pojedynczy projekt startowy**, a następnie wybierz projekt **DeviceProvisioning** z menu rozwijanego.  
 
 1. Uruchom aplikację urządzenia platformy .NET **DeviceProvisioning**. Powinno to spowodować skonfigurowanie aprowizacji dla urządzenia: 
 
@@ -240,7 +240,7 @@ Po uruchomieniu urządzenia powinny zostać wykonane następujące działania. A
 
     ![Pomyślne połączenie z centrum w portalu](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

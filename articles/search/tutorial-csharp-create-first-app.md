@@ -1,19 +1,19 @@
 ---
 title: C#Samouczek przedstawiający tworzenie pierwszej aplikacji
 titleSuffix: Azure Cognitive Search
-description: Dowiedz się, jak utworzyć pierwszą aplikację wyszukiwania krok po kroku. Samouczek zawiera link do działającej aplikacji w witrynie GitHub oraz kompletny proces tworzenia aplikacji od podstaw. Poznaj najważniejsze składniki Wyszukiwanie poznawcze platformy Azure.
+description: Dowiedz się, jak utworzyć C# pierwszą aplikację wyszukiwania krok po kroku. Samouczek zawiera link do działającej aplikacji w witrynie GitHub oraz kompletny proces tworzenia aplikacji od podstaw. Poznaj najważniejsze składniki Wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794129"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112229"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#Samouczek: Tworzenie pierwszej aplikacji — Wyszukiwanie poznawcze platformy Azure
 
@@ -502,7 +502,7 @@ Wywołanie Wyszukiwanie poznawcze platformy Azure jest hermetyzowane w naszej me
 
     W tej metodzie najpierw upewnimy się, że konfiguracja platformy Azure została zainicjowana, a następnie ustaw kilka parametrów wyszukiwania. Nazwy pól w **zaznaczeniu** parametru pasują dokładnie do nazw właściwości w klasie **hotelu** . Możliwe jest pozostawienie parametru **SELECT** , w tym przypadku zwracane są wszystkie właściwości. Ustawienie nie **wybieraj** żadnych parametrów jest jednak niewydajne, Jeśli interesuje Cię tylko podzbiór danych. Określając właściwości, których interesuje, są zwracane tylko te właściwości.
 
-    Wywołanie asynchroniczne do wyszukiwania (**model. resultList = await _indexClient. Documents. SearchAsync&lt;hotelu&gt;(model. tekstprzeszukiwany, Parameters);** ) to informacje o tym samouczku i aplikacji. Klasa **DocumentSearchResult** jest interesująca, a dobrym pomysłem (gdy aplikacja jest uruchomiona) polega na tym, że w tym miejscu należy ustawić punkt przerwania i użyć debugera do sprawdzenia zawartości **modelu. resultList**. Należy się przekonać, że jest intuicyjny, dostarczając dane, których dotyczy żądanie, a nie wiele innych.
+    Wywołanie asynchroniczne do wyszukiwania (**model. resultList = await _indexClient. Documents. SearchAsync&lt;Hotel&gt;(model. tekstprzeszukiwany, Parameters);** ) to informacje o tym samouczku i aplikacji. Klasa **DocumentSearchResult** jest interesująca, a dobrym pomysłem (gdy aplikacja jest uruchomiona) polega na tym, że w tym miejscu należy ustawić punkt przerwania i użyć debugera do sprawdzenia zawartości **modelu. resultList**. Należy się przekonać, że jest intuicyjny, dostarczając dane, których dotyczy żądanie, a nie wiele innych.
 
 Teraz na chwilę zaistnienia prawdy.
 

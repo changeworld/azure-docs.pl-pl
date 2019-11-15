@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Przechwytywanie zdarzeń z miejsca — Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
+title: 'Samouczek: Przechwytywanie zdarzeń z przestrzeni cyfrowej bliźniaczych reprezentacji na platformie Azure'
 description: Dowiedz się, w jaki sposób otrzymywać powiadomienia z przestrzeni po zintegrowaniu usługi Azure Digital Twins z usługą Logic Apps, korzystając z kroków opisanych w tym samouczku.
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: 00efae0b87de90d2abb1d488afa6b51b1b188b30
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/12/2019
+ms.openlocfilehash: 3cb5d8a6cb605d2150be1e34a9f4b0ac7955aed6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009280"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107696"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Samouczek: otrzymywanie powiadomień z przestrzeni usługi Azure Digital Twins przy użyciu usługi Logic Apps
 

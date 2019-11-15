@@ -1,19 +1,19 @@
 ---
 title: C#Samouczek dotyczący dzielenia na strony wyników wyszukiwania
 titleSuffix: Azure Cognitive Search
-description: Ten samouczek jest oparty na projekcie "Tworzenie pierwszej aplikacji na platformie Azure Wyszukiwanie poznawcze" z wyborem dwóch typów stronicowania. Pierwszy z nich używa zakresu przycisków numerów stron, a także przycisków pierwszy, następny, poprzedni i ostatni. Drugi system stronicowania używa Nieskończonego przewijania wyzwalanego przez przeniesienie pionowego paska przewijania do jego dolnego limitu.
+description: W tym samouczku przedstawiono stronicowanie wyników wyszukiwania. Jest ona oparta na istniejącym projekcie hoteli, ze stronicowaniem według przycisków pierwszy, następny, poprzedni, ostatni i numerowany. Drugi system stronicowania używa Nieskończonego przewijania wyzwalanego przez przeniesienie pionowego paska przewijania do jego dolnego limitu.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794002"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113771"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#Samouczek: przeszukiwanie wyników wyszukiwania na platformie Azure Wyszukiwanie poznawcze
 
@@ -471,7 +471,7 @@ Aby zaimplementować nieskończoność przewijania, Zacznijmy od projektu przed 
 
 ### <a name="handle-the-next-action"></a>Obsługuj następną akcję
 
-Istnieje tylko trzy akcje, które muszą zostać wysłane do kontrolera: pierwsze uruchomienie aplikacji, która wywołuje **indeks ()** , pierwsze wyszukiwanie przez użytkownika, które wywołuje **indeks (model)** , a następnie kolejne wywołania w celu uzyskania większej liczby wyników za pośrednictwem usługi **Next (model)** .
+Istnieją tylko trzy akcje, które muszą zostać wysłane do kontrolera: pierwsze uruchomienie aplikacji, która wywołuje **indeks ()** , pierwsze wyszukiwanie przez użytkownika, które wywołuje **indeks (model)** , a następnie kolejne wywołania w celu uzyskania większej liczby wyników za pośrednictwem usługi **Next (model)** .
 
 1. Otwórz plik kontrolera głównego i Usuń metodę **RunQueryAsync** z oryginalnego samouczka.
 

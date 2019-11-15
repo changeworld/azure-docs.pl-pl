@@ -1,19 +1,19 @@
 ---
-title: Wyślij dane urządzenia za pośrednictwem przezroczystej bramy — Machine Learning na Azure IoT Edge | Microsoft Docs
-description: Użyj maszyny deweloperskiej jako symulowanego urządzenia IoT Edge, aby wysłać dane do IoT Hub, przechodząc przez urządzenie skonfigurowane jako przezroczyste bramy.
+title: 'Samouczek: wysyłanie danych urządzenia za pośrednictwem przezroczystej bramy — Machine Learning na Azure IoT Edge'
+description: 'Samouczek: Użyj maszyny deweloperskiej jako symulowanego urządzenia IoT Edge do wysyłania danych do IoT Hub przez przechodzenie przez urządzenie jako niejawną bramę.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 224afe19e50e52c56c223ff1a52f9989943ce712
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1a1974a9d9e635bad4094e38c2c194ff49993611
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163108"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113943"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Samouczek: wysyłanie danych za pośrednictwem niewidocznej bramy
 

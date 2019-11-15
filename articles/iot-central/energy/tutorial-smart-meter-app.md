@@ -1,19 +1,19 @@
 ---
-title: Tworzenie aplikacji inteligentnego analizowania analiz przy użyciu IoT Central | Microsoft Docs
-description: Dowiedz się, jak utworzyć aplikację do monitorowania miernika inteligentnego przy użyciu szablonów aplikacji platformy Azure IoT Central.
+title: 'Samouczek: Tworzenie aplikacji inteligentnego pomiaru analizy przy użyciu IoT Central'
+description: 'Samouczek: informacje na temat tworzenia inteligentnego monitorowania miernika przy użyciu szablonów aplikacji IoT Central platformy Azure.'
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581256"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112539"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Samouczek: Tworzenie i przechodzenie przez szablon aplikacji do monitorowania mierników inteligentnych 
 

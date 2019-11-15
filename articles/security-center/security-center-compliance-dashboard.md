@@ -1,5 +1,5 @@
 ---
-title: Kontrole zgodności z przepisami — Azure Security Center
+title: 'Samouczek: sprawdzanie zgodności z przepisami — Azure Security Center'
 description: 'Samouczek: informacje na temat ulepszania zgodności z przepisami przy użyciu Azure Security Center.'
 services: security-center
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: c448697339948b30d73e88c183211e7a1154fe77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686439"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112318"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Samouczek: ulepszanie zgodności z przepisami
 ---
@@ -62,7 +62,7 @@ W górnej części ekranu zostanie wyświetlony pulpit nawigacyjny zawierający 
 
     Raport zawiera podsumowanie stanu zgodności dla wybranego standardu w oparciu o Security Center oceny danych i jest zorganizowany zgodnie z kontrolkami tego konkretnego standardu. Raport może być współużytkowany z odpowiednimi uczestnikami projektu i może służyć do zapewnienia dowodu dla wewnętrznych i zewnętrznych audytorów.
 
-    ![Przesłać](./media/security-center-compliance-dashboard/download-report.png)
+    ![przesłać](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>Zwiększanie poziomu zgodności
 
@@ -76,7 +76,7 @@ Dzięki informacjom wyświetlanym na pulpicie nawigacyjnym Zgodność z przepisa
 
 1. Klikanie informacji dotyczących rekomendacji i wybieranie zasobów w złej kondycji prowadzi bezpośrednio do środowiska włączania **bezpiecznego transferu magazynu** w witrynie Azure Portal.
 
-    Więcej informacji dotyczących stosowania rekomendacji można znaleźć w temacie [Wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
+    Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 
     ![Rekomendacje dotyczące zgodności](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 

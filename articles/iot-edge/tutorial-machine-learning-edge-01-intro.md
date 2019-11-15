@@ -1,109 +1,109 @@
 ---
-title: Szczegółowy przewodnik dotyczący uczenia maszynowego w usłudze Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Samouczek wysokiego poziomu, który przeprowadzi różne zadania niezbędne do utworzenia uczenia maszynowego end-to-end, w scenariuszu krawędzi.
+title: 'Samouczek: szczegółowy przewodnik po Machine Learning na Azure IoT Edge'
+description: Ogólny samouczek, który przeprowadzi Cię przez różne zadania niezbędne do utworzenia kompleksowej uczenia maszynowego w ramach scenariusza brzegowego.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 916e48752431be41ff150c2ac84e66eb1e98e81f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057750"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106512"
 ---
-# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Samouczek: Rozwiązania end-to-end, przy użyciu usługi Azure Machine Learning i usługi IoT Edge
+# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Samouczek: kompleksowe rozwiązanie przy użyciu Azure Machine Learning i IoT Edge
 
-Chcesz korzystać z zalet chmury inteligentnej i inteligentnych rozwiązań brzegowych często aplikacji IoT. W tym samouczku przedstawiono szkolenia usługi machine learning model przy użyciu danych zebranych z urządzeń IoT w chmurze, wdrażanie tego modelu do usługi IoT Edge i utrzymywania i okresowo rafinacja modelu.
+Często aplikacje IoT chcą korzystać z inteligentnej chmury i inteligentnej krawędzi. W tym samouczku przeprowadzimy Cię przez szkolenie modelu uczenia maszynowego za pomocą danych zebranych z urządzeń IoT w chmurze, wdrożenie tego modelu do IoT Edge i okresowe utrzymywanie i rafinacja modelu.
 
-Głównym celem tego samouczka jest wprowadzenie przetwarzanie danych IoT przy użyciu uczenia maszynowego, konkretnie na urządzeniach brzegowych. Gdy firma Microsoft touch wiele aspektów ogólne usługi machine learning przepływu pracy, w tym samouczku nie ma służyć jako szczegółowe wprowadzenie do usługi machine learning. Jako punkt w przypadku firma Microsoft nie należy próbować tworzyć wysoce zoptymalizowane modelu dla danego przypadku użycia — po prostu robimy wystarczająco dużo, które ilustrują proces tworzenia i używania modelu możliwego do użycia do przetwarzania danych IoT.
+Głównym celem tego samouczka jest wprowadzenie przetwarzania danych IoT za pomocą uczenia maszynowego, w zależności od krawędzi. W przypadku wielu aspektów ogólnego przepływu pracy uczenia maszynowego ten samouczek nie jest przeznaczony do dokładnego wprowadzenia do uczenia maszynowego. W tym przypadku nie próbujemy utworzyć wysoce zoptymalizowanego modelu dla przypadku użycia — wystarczy, aby zilustrować proces tworzenia i używania modelu zdolnego do przetwarzania danych IoT.
 
-## <a name="target-audience-and-roles"></a>Docelowi odbiorcy i ról
+## <a name="target-audience-and-roles"></a>Docelowi odbiorcy i role
 
-Ten zestaw artykułów jest przeznaczona dla deweloperów, bez doświadczenia w IoT rozwoju lub machine learning. Wdrażanie usługi machine learning na urządzeniach brzegowych wymaga znajomości sposobu łączenia szeroką gamę technologii. W związku z tym ten samouczek obejmuje cały scenariusz end-to-end w celu zademonstrowania jednym ze sposobów dołączania tych technologii razem dla rozwiązania IoT. W środowisku rzeczywistych tych zadań mogą rozproszone między kilka osób z różnych specjalizacji. Na przykład deweloperów może skupić się na kodu urządzenia lub chmury, analitykom danych zaprojektowana modele analizy. Aby włączyć pojedynczych deweloperów do pomyślnego ukończenia tego samouczka, udostępniliśmy dodatkowe wskazówki dotyczące szczegółowe informacje i linki do szczegółowych informacji, które mamy nadzieję, że jest wystarczające, aby zrozumieć, co to jest wykonywana, jak i dlaczego.
+Ten zestaw artykułów jest przeznaczony dla deweloperów bez wcześniejszego doświadczenia w programowaniu IoT lub uczeniu maszynowym. Wdrożenie uczenia maszynowego na brzegu wymaga znajomości sposobu łączenia szerokiej gamy technologii. W związku z tym ten samouczek obejmuje cały kompleksowy scenariusz, który pokazuje jeden ze sposobów dołączania tych technologii do rozwiązania IoT. W środowisku rzeczywistym te zadania mogą być dystrybuowane między kilka osób z różnymi specjalizacjami. Na przykład deweloperzy mogą skoncentrować się na każdym urządzeniu lub kodzie w chmurze, a analityków danych zaprojektowali modele analityczne. Aby umożliwić indywidualnym deweloperom pomyślne ukończenie tego samouczka, firma Microsoft udostępniła wskazówki uzupełniające z informacjami i linki do większej ilości informacji, które mamy nadzieję, aby zrozumieć, co jest gotowe, a także dlaczego.
 
-Może też sił ze współpracownikami różne role, aby wykonać kroki samouczka ze sobą, przeniesienie pełną wiedzę na temat ponosić oraz Dowiedz się jako zespół, jak elementy współdziałają ze sobą.
+Alternatywnie, możesz połączyć się z współpracownikami z różnych ról, aby postępować wspólnie z samouczkiem, dzięki czemu masz pełną wiedzę i Dowiedz się jako zespół, w jaki sposób dopasowuje się do siebie.
 
-W obu przypadkach pomaga w poznaniu czytniki poszczególnymi artykułami, w tym samouczku wskazuje roli użytkownika. Te role obejmują:
+W obu przypadkach, aby ułatwić zorientowanie czytelników, każdy artykuł w tym samouczku wskazuje rolę użytkownika. Role te obejmują:
 
-* Projektowanie aplikacji w chmurze (w tym chmury dla deweloperów, pracy w charakterze DevOps)
+* Programowanie w chmurze (w tym deweloperów w chmurze pracujących w DevOps pojemności)
 * Analiza danych
 
-## <a name="use-case-predictive-maintenance"></a>Przypadek użycia: Konserwacja zapobiegawcza
+## <a name="use-case-predictive-maintenance"></a>Przypadek użycia: konserwacja predykcyjna
 
-W tym scenariuszu firma Microsoft oparte na przypadek użycia prezentowane podczas konferencji na zestaw oraz zarządzanie stanem zdrowia (PHM08) 2008. Celem jest przewidywania pozostałego okresu eksploatacji (RUL) z zestawu aparatów w trybie samolotowym turbofan. Te dane został wygenerowany przy użyciu języka C-MAPSS, komercyjnej wersji oprogramowania MAPSS (moduły Aero napędu systemu symulacji). To oprogramowanie zapewnia środowisko symulacji aparatu elastyczne turbofan wygodnie symulowanie kondycji, kontroli i parametry silnika.
+Ten scenariusz jest oparty na przypadku użycia przedstawionym na konferencji w temacie dotyczących and Health Management (PHM08) w 2008. Celem jest przewidywanie pozostałego okresu użytkowania (pozostałego czasu eksploatacji) zestawu turbofanych aparatów samolotowych. Te dane zostały wygenerowane przy użyciu języka C-MAPS, komercyjnej wersji map (modularna symulacja systemu Aero). To oprogramowanie zapewnia elastyczne środowisko symulacji aparatu TurboFan, aby wygodnie zasymulować parametry kondycji, kontroli i aparatu.
 
-Dane używane w ramach tego samouczka jest pobierana z [zestaw danych symulacji degradacji silnika Turbofan](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
+Dane używane w tym samouczku są pobierane z [zestawu danych symulacji degradacji aparatu TurboFan](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
-Z pliku readme:
+Z pliku Readme:
 
-***Scenariusz eksperymentalne***
+***Scenariusz eksperymentalny***
 
-*Zestawy danych składają się z wielu szeregach czasowych wielu zmiennych. Każdy zestaw danych jest podzielona na podzestawy szkolenia i testowania. Każdy szereg czasowy z różnych aparatu — czyli, dane mogą być uważane floty aparatów tego samego typu. Każdy silnik rozpoczyna się od różne stopnie początkowej zużycia i produkcji odmiany, który jest nieznany dla użytkownika. To zużycia i odmiany jest uznawany za normalne, czyli, nie jest uznawana za warunek błędu. Dostępne są trzy ustawienia operacyjne, które mają znaczny wpływ na wydajność aparatu. Te ustawienia znajdują się również w danych. Dane jest zanieczyszczony szumu czujnika.*
+*Zestawy danych składają się z wielu wieloczynnikowa szeregów czasowych. Każdy zestaw danych jest dalej podzielony na podzbiory szkoleniowe i testowe. Każda seria czasowa jest z innego silnika — to znaczy, że dane mogą być uważane za pochodzące z floty silników tego samego typu. Każdy silnik rozpoczyna się od różnych stopni początkowych zużycia i produkcji, które są nieznane dla użytkownika. Takie zużycie i zróżnicowanie jest uznawane za normalne, tj. nie jest traktowane jako warunek błędu. Istnieją trzy ustawienia operacyjne, które mają znaczny wpływ na wydajność aparatu. Te ustawienia są również zawarte w danych. Dane są zanieczyszczone hałasem czujnika.*
 
-*Aparat działają normalnie na początku każdego szeregów czasowych i opracowuje błędów w pewnym momencie podczas serii. Błąd rośnie w zestaw treningowy wielkości i do momentu awarii systemu. W zestawie testów szeregów czasowych kończy się chwilę przed awarii systemu. Celem konkurencję się przewidzieć liczbę pozostałych cykle operacyjnej przed awarią w zestawie testów, czyli liczbę cykli operacyjne od ostatniego cyklu, który aparat będzie w dalszym ciągu działać. Również podane wektor wartość true, wartości pozostałych przydatne okresu eksploatacji (RUL) dla danych testowych.*
+*Aparat działa normalnie na początku każdej szeregu czasowego i opracowuje błąd w pewnym momencie podczas serii. W zestawie szkoleniowym rozmiar błędu wzrasta do momentu awarii systemu. W zestawie testów cykl czasowy kończą się trochę czasu przed awarią systemu. Celem konkursu jest przewidywanie liczby pozostałych cykli operacyjnych przed awarią w zestawie testów, tj. liczbą cykli operacyjnych po ostatnim cyklu, że aparat będzie kontynuował działanie. Zapewniono również wektor wartości pozostałych okresów istnienia (pozostałego czasu eksploatacji) dla danych testowych.*
 
-Ponieważ dane został opublikowany w konkursie, niezależne zostały opublikowane kilka metod, aby utworzyć pochodny modeli uczenia maszynowego. Znaleźliśmy bada przykłady to pomocne w opis procesu i wnioskowania do utworzenia modelu uczenia maszynowego określone. Zobacz na przykład:
+Ponieważ dane zostały opublikowane na potrzeby konkursu, kilka metod pochodnych modeli uczenia maszynowego została niezależnie opublikowana. Okazało się, że badanie przykładów jest pomocne w zrozumieniu procesu i przyczyn związanych z tworzeniem określonego modelu uczenia maszynowego. Zobacz na przykład:
 
-[Model predykcyjny awarii silnika samolotu](https://github.com/jancervenka/turbofan_failure) przez jancervenka użytkownika usługi GitHub.
+[Model przewidywania niepowodzeń aparatu samolotu](https://github.com/jancervenka/turbofan_failure) przez jancervenka użytkownika serwisu GitHub.
 
-[Turbofan engine degradacji](https://github.com/hankroark/Turbofan-Engine-Degradation) przez hankroark użytkownika usługi GitHub.
+[Obniżenie wydajności aparatu TurboFan](https://github.com/hankroark/Turbofan-Engine-Degradation) przez hankroark użytkownika usługi GitHub.
 
-## <a name="process"></a>Process
+## <a name="process"></a>Proces
 
-Na rysunku poniżej przedstawiono ogólne kroki, jakie wykonamy w ramach tego samouczka:
+Na poniższej ilustracji przedstawiono kroki, które należy wykonać w tym samouczku:
 
-![Diagram architektury kroków procesu](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
+![Diagram architektury dla kroków procesu](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
 
-1. **Zbieranie danych treningowych**: Rozpocznie się proces przez zbieranie danych treningowych. W niektórych przypadkach danych została już zebrane i jest dostępna w bazie danych lub w postaci plików danych. W innych przypadkach, szczególnie w przypadku scenariuszy IoT dane muszą być zebrane z czujników i urządzeń IoT i przechowywane w chmurze.
+1. **Zbierz dane szkoleniowe**: proces rozpoczyna się od zebrania danych szkoleniowych. W niektórych przypadkach dane zostały już zebrane i są dostępne w bazie danych lub w postaci plików danych. W innych przypadkach, szczególnie w przypadku scenariuszy IoT, dane muszą być zbierane z urządzeń IoT i czujników i przechowywane w chmurze.
 
-   Przyjęto założenie, że nie masz kolekcję aparatów turbofan, więc pliki projektu obejmują symulator urządzeń proste wysyłający NASA danych urządzenia do chmury.
+   Przyjęto założenie, że nie masz kolekcji aparatów TurboFan, więc pliki projektu zawierają prosty symulator urządzenia, który wysyła dane urządzenia NASA do chmury.
 
-1. **Przygotowywanie danych**. W większości przypadków dane pierwotne jako zebranych z urządzeń i czujników wymaga przygotowania do uczenia maszynowego. Ten krok może obejmować dane oczyszczania, ponownego formatowania danych lub przetwarzania wstępnego, aby wstawić dodatkowe informacje, uczenie maszynowe może klucza wyłączone.
+1. **Przygotuj dane**. W większości przypadków dane pierwotne zebrane z urządzeń i czujników będą wymagały przygotowania do uczenia maszynowego. Ten krok może wiązać się z czyszczeniem danych, ponownym formatowaniem i przetwarzaniem danych w celu dodania dodatkowych informacji uczenia maszynowego.
 
-   Dla danych maszyny w trybie samolotowym aparatu przygotowania danych polega na obliczanie jawne razy błąd czasu dla każdego punktu danych w przykładzie, na podstawie rzeczywistych obserwacji w danych. Te informacje umożliwia znajdowanie korelacji między wzorców danych rzeczywistych czujników i oczekiwanego pozostałego okresu eksploatacji silnika Algorytm uczenia maszynowego. Ten krok jest bardzo specyficznego dla domeny.
+   W przypadku naszych danych maszynowych z aparatu samolotowego Przygotowywanie danych obejmuje obliczanie jawnego czasu oczekiwania na awarie dla każdego punktu danych w próbce w oparciu o rzeczywiste obserwacje danych. Te informacje umożliwiają algorytmowi uczenie maszynowego znalezienie korelacji między rzeczywistymi wzorcami danych i oczekiwanym czasem trwania silnika. Ten krok jest wysoce specyficzny dla domeny.
 
-1. **Tworzenie modelu uczenia maszynowego**. Na podstawie danych przygotowany, możemy teraz eksperymentować z algorytmów uczenia maszynowego różnych i parameterizations do uczenia modeli i porównać wyniki ze sobą.
+1. **Utwórz model uczenia maszynowego**. Na podstawie przygotowanych danych możemy teraz eksperymentować z różnymi algorytmami uczenia maszynowego i parameterizations, aby szkolić modele i porównać wyniki ze sobą.
 
-   W tym przypadku do testowania porównamy przewidywany wynik obliczone przez model rzeczywistego wyniku obserwowana na zestaw aparatów. W usłudze Azure Machine Learning możemy zarządzać różne iteracje modele utworzone w rejestrze modelu.
+   W tym przypadku do testowania porównamy przewidywany wynik obliczony przez model z rzeczywistym wynikiem zaobserwowanym na zestawie silników. W Azure Machine Learning można zarządzać różnymi iteracjami modeli tworzonych w rejestrze modelu.
 
-1. **Wdrażanie modelu**. Gdy będziemy już mieć modelu, które spełniają nasze kryteria sukcesu, można przystąpić do wdrożenia. Obejmujące zawijania modelu w aplikacji usługi sieci web, która jest zasilany z danymi przy użyciu wywołania REST i zwracają wyniki analizy. Aplikacja usługi sieci web, następnie jest dostarczana w kontenerze platformy docker, który z kolei można wdrożyć w chmurze lub jako moduł usługi IoT Edge. W tym przykładzie skupimy się na wdrożenie usługi IoT Edge.
+1. **Wdróż model**. Gdy mamy model, który spełnia nasze kryteria sukcesu, można przejść do wdrożenia. Obejmuje to pakowanie modelu do aplikacji usługi sieci Web, która może być podawana z danymi przy użyciu wywołań REST i wyników analizy zwrotnej. Aplikacja usługi sieci Web jest następnie spakowana w kontener platformy Docker, który z kolei można wdrożyć w chmurze lub jako moduł IoT Edge. W tym przykładzie koncentrujemy się na rozmieszczeniu do IoT Edge.
 
-1. **Obsługa i dostosować model**. Nasza praca odbywa się po wdrożeniu modelu. W wielu przypadkach chcemy kontynuować, zbieranie danych, a okresowe przekazywanie tych danych do chmury. Ponowne szkolenie i dostosowywać nasz model, który możemy następnie można wdrożyć ponownie do usługi IoT Edge, możemy następnie użyć tych danych.
+1. **Zachowaj i Uściślij model**. Nasza służbowa nie jest wykonywana po wdrożeniu modelu. W wielu przypadkach chcemy kontynuować zbieranie danych i okresowe przekazywanie tych danych do chmury. Następnie możemy używać tych danych do ponownego uczenia i udoskonalania modelu, który następnie będzie można wdrożyć ponownie w IoT Edge.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka, potrzebujesz dostępu do subskrypcji platformy Azure, w którym masz uprawnienia do tworzenia zasobów. Kilka usług używanych w tym samouczku zostaną naliczone opłaty usługi Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, można rozpocząć pracę z [bezpłatnego konta platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
+Aby ukończyć ten samouczek, musisz mieć dostęp do subskrypcji platformy Azure, w której masz uprawnienia do tworzenia zasobów. Niektóre z usług używanych w tym samouczku będą naliczane opłaty za platformę Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz zacząć korzystać z [bezpłatnego konta platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 
-Należy również maszynę przy użyciu programu PowerShell jest zainstalowane, której można uruchamiać skryptów, aby ustawić się maszynę wirtualną platformy Azure jako komputerze deweloperskim.
+Potrzebna jest również maszyna z zainstalowanym programem PowerShell, gdzie można uruchamiać skrypty, aby skonfigurować maszynę wirtualną platformy Azure jako maszynę deweloperskią.
 
-W tym dokumencie używamy następujący zestaw narzędzi:
+W tym dokumencie używany jest następujący zestaw narzędzi:
 
-* Usługi Azure IoT hub do przechwycenia danych
+* Usługa Azure IoT Hub do przechwytywania danych
 
-* Notesy platformy Azure jako naszym głównym frontonu na potrzeby przygotowywania danych i eksperymentów uczenia maszynowego. Korzystanie z języka python kodu w notesie w podzestawie przykładowych danych jest doskonałym sposobem na szybkie, iteracyjne i interaktywne dotychczasowa podczas przygotowywania danych. Notesy Jupyter notebook można również przygotować skryptów do uruchamiania na dużą skalę w zapleczu obliczeń.
+* Azure Notebooks jako nasz główny fronton do przygotowywania danych i uczenia maszynowego. Uruchamianie kodu w języku Python w notesie z podzbiorem przykładowych danych jest doskonałym sposobem na szybkie iteracyjne i interaktywne szybkością oferowaną podczas przygotowywania danych. Notesy Jupyter mogą również służyć do przygotowywania skryptów do uruchamiania na dużą skalę w zapleczu obliczeniowym.
 
-* Usługa Azure Machine Learning jako zaplecza dla usługi machine learning na dużą skalę i generowanie obrazu uczenia maszynowego. Utworzyliśmy zaplecza usługi Azure Machine Learning, za pomocą skryptów przygotowany i testowane na platformie notesów programu Jupyter.
+* Azure Machine Learning jako zaplecze dla uczenia maszynowego na dużą skalę i dla generacji obrazów uczenia maszynowego. Azure Machine Learning zaplecza przy użyciu skryptów przygotowanych i przetestowanych w notesach Jupyter.
 
-* Usługa Azure IoT Edge dla aplikacji poza chmurą obrazu machine learning
+* Azure IoT Edge dla aplikacji w chmurze dla obrazu uczenia maszynowego
 
-Oczywiście istnieją inne opcje. W niektórych scenariuszach na przykład IoT Central może służyć jako alternatywa bez użycia kodu do przechwytywania danych wstępne szkolenie z urządzeń IoT.
+Oczywiście dostępne są inne opcje. W niektórych scenariuszach, na przykład, IoT Central może służyć jako alternatywny kod, aby przechwycić początkowe dane szkoleniowe z urządzeń IoT.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku jest podzielona na następujące sekcje:
+Ten samouczek jest podzielony na następujące sekcje:
 
-1. Konfigurowanie Twojego komputera deweloperskiego i usług platformy Azure.
-2. Generowanie danych szkoleniowych maszyny modułu nauczania.
-3. Uczenie i wdrażanie maszyny modułu nauczania.
-4. Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy.
-5. Tworzenie i wdrażanie moduły usługi IoT Edge.
-6. Wysłać dane do urządzenia usługi IoT Edge.
+1. Skonfiguruj swoje maszyny deweloperskie i usługi platformy Azure.
+2. Generuj dane szkoleniowe dotyczące modułu uczenia maszynowego.
+3. Uczenie i wdrażanie modułu uczenia maszynowego.
+4. Skonfiguruj urządzenie IoT Edge jako niejawną bramę.
+5. Tworzenie i wdrażanie modułów IoT Edge.
+6. Wyślij dane do urządzenia IoT Edgeowego.
 
-Przejdź do następnego artykułu, aby skonfigurować komputerze deweloperskim i aprowizowania zasobów platformy Azure.
+Przejdź do następnego artykułu, aby skonfigurować maszynę deweloperskią i udostępnić zasoby platformy Azure.
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie środowiska na potrzeby usługi machine learning w usłudze IoT Edge](tutorial-machine-learning-edge-02-prepare-environment.md)
+> [Skonfiguruj środowisko do uczenia maszynowego na IoT Edge](tutorial-machine-learning-edge-02-prepare-environment.md)

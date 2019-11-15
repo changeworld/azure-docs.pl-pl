@@ -1,22 +1,22 @@
 ---
-title: Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps | Microsoft Docs
-description: Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps.
+title: 'Samouczek: Tworzenie lokalizatora sklepu przy użyciu Azure Maps'
+description: 'Samouczek: Tworzenie lokalizatora sklepu za pomocą Azure Maps.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/15/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933064"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107091"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Samouczek: Tworzenie lokalizatora sklepu za pomocą Azure Maps
 
 Ten samouczek przeprowadzi Cię przez proces tworzenia prostego lokalizatora sklepów przy użyciu usługi Azure Maps. Lokalizatory sklepów są powszechne. Wiele koncepcji używanych w tego typu aplikacjach można stosować w wielu innych typach aplikacji. Oferowanie lokalizatora sklepów jest koniecznością dla większości firm prowadzących sprzedaż detaliczną bezpośrednio dla klientów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
     
@@ -37,21 +37,21 @@ Przejdź dalej do [przykładu lokalizatora sklepów na żywo](https://azuremapsc
 
 Aby wykonać kroki opisane w tym samouczku, musisz najpierw [utworzyć konto Azure Maps](./tutorial-search-location.md#createaccount) i postępować zgodnie z instrukcjami zawartymi w sekcji [Pobieranie klucza podstawowego](./tutorial-search-location.md#getkey) w celu pobrania podstawowego klucza subskrypcji dla konta.
 
-## <a name="design"></a>Projektuj
+## <a name="design"></a>Projekt
 
 Zanim przejdziesz do kodu, dobrze jest zacząć od projektu. Lokalizator sklepów może być prosty lub złożony — taki, jaki chcesz. W tym samouczku utworzymy prosty lokalizator sklepów. W trakcie tego procesu podamy kilka wskazówek pomocnych w rozszerzeniu niektórych funkcji, jeśli zechcesz to zrobić. Utworzymy lokalizator sklepów dla fikcyjnej firmy o nazwie Contoso Coffee. Na poniższej ilustracji przedstawiono szkielet ogólnego układu lokalizatora sklepów, który utworzymy w tym samouczku:
 
 <br/>
 <center>
 
-![Szkielet magazynu lokalizatora sklepu dla lokalizacji warsztatów kawowych firmy Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![szkieletem lokalizatora magazynu dla lokalizacji warsztatów systemu kawowego firmy Contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Aby zmaksymalizować przydatność tego lokalizatora sklepów, dołączymy układ dynamiczny, który dostosowuje się, jeśli szerokość ekranu użytkownika jest mniejsza niż 700 pikseli. Układ dynamiczny ułatwia używanie lokalizatora sklepów na małym ekranie, na przykład na urządzeniu przenośnym. Poniżej przedstawiono szkielet układu dla małego ekranu:  
 
 <br/>
 <center>
 
-![Szkielet dla lokalizatora magazynu kawy firmy Contoso na urządzeniu przenośnym](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![szkieletem lokalizatora magazynu kawy firmy Contoso na urządzeniu przenośnym](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Powyższe szkielety pokazują dość prostą aplikację. Aplikacja zawiera pole wyszukiwania, listę pobliskich sklepów, mapę z kilkoma znacznikami (symbolami) i okno podręczne, które wyświetla dodatkowe informacje, gdy użytkownik wybierze znacznik. Poniżej znajduje się bardziej szczegółowa lista funkcji wbudowanych w lokalizatorze sklepów w tym samouczku:
 
@@ -76,7 +76,7 @@ Zanim opracujemy aplikację lokalizatora sklepów, musimy utworzyć zestaw danyc
 <br/>
 <center>
 
-![Zrzut ekranu przedstawiający dane lokalizatora sklepu w skoroszycie programu Excel](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
+![zrzut ekranu przedstawiający dane lokalizatora magazynu w skoroszycie programu Excel](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
 Możesz [pobrać ten skoroszyt programu Excel](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
@@ -98,14 +98,14 @@ Aby przekonwertować skoroszyt na prosty plik tekstowy, zapisz skoroszyt jako pl
 <br/>
 <center>
 
-![Zrzut ekranu przedstawiający okno dialogowe Zapisywanie jako typ](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+![zrzut ekranu przedstawiający okno dialogowe Zapisz jako typ](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Jeśli otworzysz plik tekstowy w Notatniku, będzie on wyglądał podobnie, jak na poniższej ilustracji:
 
 <br/>
 <center>
 
-![Zrzut ekranu przedstawiający plik Notatnika, który pokazuje rozdzielany tabulatorami zestaw danych](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+![zrzut ekranu pliku Notatnika, który pokazuje rozdzielany tabulatorami zestaw danych](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>Konfigurowanie projektu
@@ -115,7 +115,7 @@ Aby utworzyć projekt, można użyć programu [Visual Studio](https://visualstud
 <br/>
 <center>
 
-![Zrzut ekranu przedstawiający folder projektu lokalizatora prostego magazynu](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![zrzut ekranu przedstawiający folder projektu lokalizatora prostego magazynu](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
 
 ## <a name="create-the-user-interface"></a>Tworzenie interfejsu użytkownika
 
@@ -403,7 +403,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
 
 1. Dodaj kod do pliku *index.js*. Poniższy kod inicjuje mapę, dodaje [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events), który czeka, aż ładowanie strony zostanie ukończone, podłącza zdarzenia w celu monitorowania ładowania mapy oraz obsługuje przycisk wyszukiwania i przycisk Moja lokalizacja.
 
-   Kiedy użytkownik wybierze przycisk wyszukiwania lub naciśnie klawisz Enter po wprowadzeniu lokalizacji w polu wyszukiwania, inicjowane jest wyszukiwanie rozmyte względem zapytania użytkownika. Przekaż tablicę wartości ISO 2 kraju do `countrySet` opcji, aby ograniczyć wyniki wyszukiwania do tych krajów/regionów. Ograniczenie krajów/regionów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
+   Kiedy użytkownik wybierze przycisk wyszukiwania lub naciśnie klawisz Enter po wprowadzeniu lokalizacji w polu wyszukiwania, inicjowane jest wyszukiwanie rozmyte względem zapytania użytkownika. Aby ograniczyć wyniki wyszukiwania do tych krajów/regionów, należy przekazać tablicę wartości ISO 2 kraju do `countrySet` opcji. Ograniczenie krajów/regionów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
   
    Po zakończeniu wyszukiwania weź pierwszy wynik i ustaw aparat mapy na ten obszar. Kiedy użytkownik wybierze przycisk Moja lokalizacja, użyj interfejsu API geolokalizacji języka HTML5, który jest wbudowany w przeglądarce, aby pobrać lokalizację użytkownika i wyśrodkować na niej mapę.  
 
@@ -933,21 +933,21 @@ Kiedy użytkownik wybierze przycisk Moja lokalizacja po raz pierwszy, w przeglą
 <br/>
 <center>
 
-![Zrzut ekranu przedstawiający żądanie przeglądarki w celu uzyskania dostępu do lokalizacji użytkownika](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![zrzut ekranu żądania przeglądarki w celu uzyskania dostępu do lokalizacji użytkownika](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Po zastosowaniu wystarczająco dużego powiększenia obszaru zawierającego lokalizacje kawiarni klastry zostaną rozdzielone na poszczególne lokalizacje. Wybierz jedną z ikon na mapie lub wybierz element w panelu bocznym, aby wyświetlić okno podręczne zawierające informacje dla danej lokalizacji.
 
 <br/>
 <center>
 
-![Zrzut ekranu ukończonego lokalizatora magazynu](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+![zrzut ekranu zakończonego lokalizatora magazynu](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Jeśli rozmiar okna przeglądarki zostanie zmieniony tak, że jego szerokość będzie mniejsza niż 700 pikseli, lub aplikacja zostanie otworzona na urządzeniu przenośnym, układ zostanie zmieniony w celu lepszego dopasowania do małego ekranu. 
 
 <br/>
 <center>
 
-![Zrzut ekranu przedstawiający wersję małego ekranu lokalizatora magazynu](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![zrzut ekranu przedstawiający wersję małego ekranu lokalizatora magazynu](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
 ## <a name="next-steps"></a>Następne kroki
 

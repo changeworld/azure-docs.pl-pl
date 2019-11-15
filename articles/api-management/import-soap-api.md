@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 22b7b79426829b57f15263f7792dca6596c6641f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073238"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107662"
 ---
 # <a name="import-soap-api"></a>Importowanie interfejsu API protokołu SOAP
 
@@ -38,7 +38,7 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
 
 ## <a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
 
-1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
+1. Wybierz **Interfejsy API** w obszarze **ZARZĄDZANIE INTERFEJSAMI API**.
 2. Wybierz pozycję **WSDL** z listy **Dodaj nowy interfejs API**.
 
     ![interfejs api protokołu soap](./media/import-soap-api/wsdl-api.png)
@@ -48,7 +48,7 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
     ![Przekazywanie](./media/import-soap-api/pass-through.png)
 5. Naciśnij klawisz Tab.
 
-    Następujące pola są wypełniane informacjami z interfejsu API protokołu SOAP: Nazwa wyświetlana, nazwa, opis.
+    Następujące pola są wypełniane przy użyciu informacji z interfejsu API protokołu SOAP: Nazwa wyświetlana, Nazwa, Opis.
 6. Dodaj sufiks adresu URL interfejsu API. Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi APIM. Musi ona być unikatowa w tym wystąpieniu usługi APIM.
 9. Opublikuj interfejs API przez skojarzenie go z produktem. W takim przypadku jest używany produkt typu „*Nieograniczony*”.  Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.
 
@@ -60,7 +60,7 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
     * **Unlimited (nieograniczony)**   
 10. Wybierz pozycję **Utwórz**.
 
-### <a name="test-the-new-apim-api-in-the-administrative-portal"></a>Testowanie nowego interfejsu API usługi APIM w portalu administracyjnym
+### <a name="test-the-new-api-in-the-administrative-portal"></a>Testowanie nowego interfejsu API w portalu administracyjnym
 
 Operacje mogą być wywoływane bezpośrednio z portalu administracyjnego, który zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 
@@ -72,21 +72,6 @@ Operacje mogą być wywoływane bezpośrednio z portalu administracyjnego, któr
 1. Kliknij pozycję **Wyślij**.
 
     Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
-
-### <a name="call-operation"> </a>Wywoływanie operacji z portalu dla deweloperów
-
-Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API. 
-
-1. Wybierz interfejs API utworzony w kroku „Importowanie i publikowanie interfejsu API zaplecza”.
-2. Naciśnij pozycję **Portal dla deweloperów**.
-
-    Zostanie otwarta witryna „Portal dla deweloperów”.
-3. Wybierz utworzony **interfejs API**.
-4. Kliknij operację, którą chcesz przetestować.
-5. Naciśnij pozycję **Wypróbuj**.
-6. Kliknij pozycję **Wyślij**.
-    
-    Po wywołaniu operacji portal dla deweloperów wyświetla **stan odpowiedzi**, **nagłówki odpowiedzi** oraz wszelką **zawartość odpowiedzi**.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

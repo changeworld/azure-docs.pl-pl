@@ -27,9 +27,9 @@
         - name: Korzystanie z języka PHP
           href: quickstarts/php.md
         - name: Korzystanie z języka Go
-          href: quickstarts/php.md
+          href: quickstarts/go.md
         - name: Korzystanie z języka Ruby
-          href: quickstarts/php.md
+          href: quickstarts/ruby.md
 - name: Samouczki
   items:
     - name: Integracja usługi Power BI w celu analizy opinii klientów
