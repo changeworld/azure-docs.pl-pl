@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — kierowanie ruchu przez wirtualne urządzenie sieciowe | Microsoft Docs
+title: Kierowanie ruchu za pośrednictwem sieciowego urządzenia wirtualnego — przykład skryptu interfejsu wiersza polecenia platformy Azure
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — kierowanie ruchu przez wirtualne urządzenie sieciowe w ramach zapory.
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 2e5ec39e2d8fe1636018ac59dba372bd0faf31f4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d8704c34d59a8f735d060a7c7ca6463034883714
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716073"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083815"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Przykładowy skrypt służący do kierowania ruchu przez wirtualne urządzenie sieciowe
 
@@ -51,7 +51,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 |---|---|
 | [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az network vnet create](/cli/azure/network/vnet) | Tworzy sieć wirtualną i podsieć frontonu platformy Azure. |
-| [az network subnet create](/cli/azure/network/vnet/subnet) | Tworzy zaplecza i sieć obwodową podsieci. |
+| [az network subnet create](/cli/azure/network/vnet/subnet) | Tworzy podsieci zaplecza i strefy DMZ. |
 | [az network public-ip create](/cli/azure/network/public-ip) | Tworzy publiczny adres IP umożliwiający uzyskiwanie dostępu do maszyny wirtualnej z Internetu. |
 | [az network nic create](/cli/azure/network/nic) | Tworzy interfejs sieci wirtualnej i włącza przekazywanie adresów IP. |
 | [az network nsg create](/cli/azure/network/nsg) | Tworzy sieciową grupę zabezpieczeń. |
@@ -62,7 +62,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](/cli/azure/vm) | Tworzy maszynę wirtualną i dołącza do niej kartę sieciową. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne. |
 | [az group delete](/cli/azure/group) | Usuwa grupę zasobów i wszystkie zasoby, które zawiera. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

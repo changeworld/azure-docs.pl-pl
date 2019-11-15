@@ -1,18 +1,18 @@
 ---
-title: Tworzenie i dostosowywanie planów odzyskiwania na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery
+title: Utwórz/Dostosuj plany odzyskiwania w Azure Site Recovery
 description: Dowiedz się, jak tworzyć i dostosowywać plany odzyskiwania na potrzeby odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 2ca44ffd26e1b87dd201ed6f274791eadfeb0737
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814404"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084522"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Tworzenie i dostosowywanie planów odzyskiwania
 
@@ -52,7 +52,7 @@ Należy utworzyć dodatkowe grupy i dodać maszyny do różnych grup, aby można
 
 ## <a name="add-a-script-or-manual-action"></a>Dodawanie skryptu lub akcji ręcznej
 
-Możesz dostosować plan odzyskiwania, dodając skrypt lub akcję ręczną. Należy pamiętać o następujących kwestiach:
+Możesz dostosować plan odzyskiwania, dodając skrypt lub akcję ręczną. Należy pamiętać, że:
 
 - Jeśli przeprowadzasz replikację do platformy Azure, możesz zintegrować elementy Runbook usługi Azure Automation z planem odzyskiwania. [Dowiedz się więcej](site-recovery-runbook-automation.md).
 - W przypadku replikowania maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM można utworzyć skrypt na lokalnym serwerze programu VMM i uwzględnić go w planie odzyskiwania.
@@ -63,10 +63,10 @@ Możesz dostosować plan odzyskiwania, dodając skrypt lub akcję ręczną. Nale
     
     **Scenariusz** | **Tryb failover** | **Powrót po awarii**
     --- | --- | --- 
-    Azure–Azure  | Runbook | Runbook
-    Z programu VMware do platformy Azure | Runbook | Nie dotyczy 
-    Funkcja Hyper-V z programem VMM na platformie Azure | Runbook | Skrypt
-    Z lokacji funkcji Hyper-V na platformę Azure | Runbook | Nie dotyczy
+    Azure–Azure  | Element Runbook | Element Runbook
+    Z programu VMware do platformy Azure | Element Runbook | Nie dotyczy 
+    Funkcja Hyper-V z programem VMM na platformie Azure | Element Runbook | Skrypt
+    Z lokacji funkcji Hyper-V na platformę Azure | Element Runbook | Nie dotyczy
     Program VMM do pomocniczego programu VMM | Skrypt | Skrypt
 
 1. W planie odzyskiwania kliknij krok, do którego powinna zostać dodana akcja, a następnie określ, kiedy powinna wystąpić akcja:
@@ -77,7 +77,7 @@ Możesz dostosować plan odzyskiwania, dodając skrypt lub akcję ręczną. Nale
     1. Wpisz nazwę akcji i wpisz instrukcje akcji. Osoba, na której działa przejście w tryb failover, zobaczy te instrukcje.
     1. Określ, czy chcesz dodać akcję ręczną dla wszystkich typów trybu failover (test, tryb failover, planowana praca w trybie failover (jeśli dotyczy)). Następnie kliknij przycisk **OK**.
 4. Jeśli chcesz dodać skrypt, wykonaj następujące czynności:
-    1. W przypadku dodawania skryptu programu VMM wybierz pozycję **tryb failover do skryptu programu VMM**, a w polu **ścieżka skryptu** wpisz ścieżkę względną do udziału. Na przykład, jeśli udział znajduje się w lokalizacji \\ \<nazwa > \MSSCVMMLibrary\RPScripts, określ ścieżkę: \RPScripts\RPScript.ps1.
+    1. W przypadku dodawania skryptu programu VMM wybierz pozycję **tryb failover do skryptu programu VMM**, a w polu **ścieżka skryptu** wpisz ścieżkę względną do udziału. Na przykład, jeśli udział znajduje się w \\\<nazwa > \MSSCVMMLibrary\RPScripts, określ ścieżkę: \RPScripts\RPScript.PS1.
     1. Jeśli dodajesz książkę uruchamiania usługi Azure Automation, określ **konto Azure Automation** , w którym znajduje się element Runbook, a następnie wybierz odpowiedni **skrypt elementu Runbook platformy Azure**.
 5. Uruchom test pracy w trybie failover planu odzyskiwania, aby upewnić się, że skrypt działa zgodnie z oczekiwaniami.
 

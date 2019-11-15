@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18b96e9afbf2a83b917d6848b419fb76518035de
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490971"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090425"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Szybki Start: uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Linux
 
@@ -25,7 +25,7 @@ Aplikacja została skompilowana przy użyciu pakietu zestawu Speech SDK, a środ
 
 Ten przewodnik wymaga konta usługi [Azure Cognitive Services](get-started.md) z zasobem usługi Speech Services. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
-Kod źródłowy [przykładowej aplikacji](https://aka.ms/sdsdk-download-JRE) jest dołączony do zestawu Speech Devices SDK. Jest ona również [dostępna w witrynie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Kod źródłowy [przykładowej aplikacji](https://aka.ms/sdsdk-download-JRE) jest dołączony do zestawu Speech Devices SDK. Warto również [dostępne w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -80,20 +80,43 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
 
    ![Zrzut ekranu narzędzia Package Explorer](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. Otwórz plik pliku pom. XML i edytuj go.
+
+    Na końcu pliku przed tagiem zamykającym `</project>`Utwórz elementy `repositories` i `dependencies`, jak pokazano poniżej, i upewnij się, że `version` jest zgodna z bieżącą wersją:
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
 1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz **Właściwości**, a następnie **Uruchom/Debuguj ustawienia** > **nowe...** > **aplikacji Java**. 
 
 1. Zostanie wyświetlone okno **Edytuj konfigurację** . W polu **Nazwa** wprowadź wartość **Main**, a następnie Użyj opcji Wyszukaj **klasy głównej** , aby znaleźć i wybrać obiekt **com. Microsoft. cognitiveservices. Speech. Samples. FunctionsList**.
 
    ![Zrzut ekranu przedstawiający konfigurację uruchamiania edycji](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
-1. W oknie **Edycja konfiguracji** wybierz stronę **środowisko** i **nową**. Zostanie wyświetlone okno **Nowa zmienna środowiskowa** . W polu **Nazwa** wprowadź **LD_LIBRARY_PATH** , a w polu **wartość** wprowadź folder zawierający pliki *. so, na przykład **/Home/wcaltest/JRE-Sample-Release**
+1. Skopiuj pliki binarne audio dla architektury docelowej z **systemu Linux-ARM** lub **linux-x64**do lokalizacji projektu Java, np. **/Home/wcaltest/JRE-Sample-Release**
+
+1. W oknie **Edycja konfiguracji** wybierz stronę **środowisko** i **nową**. Zostanie wyświetlone okno **Nowa zmienna środowiskowa** . W polu **Nazwa** wprowadź **LD_LIBRARY_PATH** i w polu **wartość** wprowadź folder zawierający pliki *. so, na przykład **/Home/wcaltest/JRE-Sample-Release**
 
 1. Kopiuj `kws.table` i `participants.properties` do **obiektu docelowego/klas** folderu projektu
 
 
 ## <a name="configure-the-sample-application"></a>Konfigurowanie przykładowej aplikacji
 
-1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz wypróbować funkcję rozpoznawania intencji, Dodaj również klucz subskrypcji [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) i identyfikator aplikacji.
+1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
 
    W przypadku mowy i LUIS informacje są wprowadzane do `FunctionsList.java`:
 
@@ -118,24 +141,23 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
    > [!TIP]
    > Możesz również [utworzyć niestandardowe słowo kluczowe](speech-devices-sdk-create-kws.md).
 
-    Aby użyć nowego słowa kluczowego, zaktualizuj następujące dwa wiersze w `FunctionsList.java`i skopiuj pakiet słów kluczowych do aplikacji. Na przykład, aby użyć słowa kluczowego "Machine" z pakietu słowa kluczowego `kws-machine.zip`:
+    Aby użyć nowego słowa kluczowego, zaktualizuj Poniższy wiersz w `FunctionsList.java`i skopiuj słowo kluczowe do aplikacji. Na przykład, aby użyć słowa kluczowego "Machine" z pakietu słowa kluczowego `machine.zip`:
 
-   * Skopiuj pakiet słów kluczowych do folderu projektu **Target/Classes**.
+   * Skopiuj plik `kws.table` z pakietu zip do folderu **docelowego/klas**projektu.
 
-   * Zaktualizuj `FunctionsList.java` za pomocą słowa kluczowego i nazwy pakietu:
+   * Zaktualizuj `FunctionsList.java` przy użyciu nazwy słowa kluczowego:
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Uruchamianie przykładowej aplikacji z poziomu programu zaćmienie
 
 1. Na pasku menu zaćmienie **uruchom** > **Uruchom** 
 
-1. Aplikacja Przykładowa zestawu SDK urządzeń mowy uruchamia się i wyświetla następujące opcje:
+1. Przykładowa aplikacja zestawu Speech Devices SDK rozpoczyna się i wyświetla następujące opcje:
 
-   ![Przykładowa aplikacja i opcje zestawu SDK urządzeń rozpoznawania mowy](media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](media/speech-devices-sdk/java-sample-app-linux.png)
 
 1. Wypróbuj nową wersję demonstracyjną **transkrypcji konwersacji** . Uruchom jego przepisywania z **sesją** **startową** > . Domyślnie wszyscy są gośćmi. Jeśli jednak masz podpisy głosu uczestnika, można je umieścić w `participants.properties` w **obiekcie docelowym/klasie**folderu projektu. Aby wygenerować podpis głosowy, spójrz na [transkrypcja konwersacje (SDK)](how-to-use-conversation-transcription-service.md).
 
@@ -143,7 +165,7 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
 
 ## <a name="create-and-run-standalone-the-application"></a>Tworzenie i uruchamianie autonomicznej aplikacji
 
-1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz pozycję **Eksportuj**. 
+1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz **wyeksportować**. 
 1. Zostanie wyświetlone okno **eksport** . Rozwiń węzeł **Java** i wybierz pozycję **możliwy do uruchomienia plik JAR** , a następnie wybierz pozycję **Next (dalej**).
 
    ![Zrzut ekranu okna eksportowania](media/speech-devices-sdk/eclipse-export-linux.png) 
@@ -154,7 +176,7 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
 
 1. Umieść `kws.table` i `participants.properties` w folderze docelowym wybranym powyżej, ponieważ te pliki są wymagane przez aplikację.
 
-1. Ustaw LD_LIBRARY_LIB do folderu zawierającego *. so plików
+1. Ustaw LD_LIBRARY_LIB w folderze zawierającym pliki *. so
 
      ```bash
      export LD_LIBRARY_PATH=/home/wcaltest/JRE-Sample-Release

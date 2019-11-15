@@ -1,18 +1,19 @@
 ---
-title: Przełączenie w tryb failover i powrót po awarii serwerów fizycznych na potrzeby odzyskiwania po awarii na platformie Azure za pomocą Site Recovery | Microsoft Docs
+title: Konfigurowanie trybu failover i powrotu po awarii dla serwerów fizycznych za pomocą Site Recovery
 description: Dowiedz się, jak przełączyć serwery fizyczne do trybu failover na platformie Azure i powrócić po awarii do lokacji lokalnej w celu odzyskiwania po awarii za pomocą Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 49b61423b33282be7f0ace52c2a164d52ba20314
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 2c0d2e57a34286f65be45a95403a32de42c51908
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814416"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084568"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Przełączenie w tryb failover i powrót po awarii serwerów fizycznych replikowanych do platformy Azure
 
@@ -25,9 +26,9 @@ Serwery fizyczne replikowane do platformy Azure za pomocą Site Recovery mogą k
 Przełączanie do trybu failover i powrót po awarii odbywa się w czterech etapach:
 
 1. **Przełączenie do trybu failover na platformie Azure**: wprowadzenie maszyn w tryb failover z lokacji lokalnej do platformy Azure.
-2. **Ponowne włączanie ochrony maszyn wirtualnych na platformie Azure**: Ponownie Włącz ochronę maszyn wirtualnych platformy Azure, aby rozpocząć replikację z powrotem do lokalnych maszyn wirtualnych programu VMware.
+2. Ponowne **Włączanie ochrony maszyn wirtualnych platformy Azure**: Włącz ochronę maszyn wirtualnych platformy Azure, aby umożliwić ich replikację z powrotem do lokalnych maszyn wirtualnych VMware.
 3. **Przełączenie do trybu failover w lokacji lokalnej**: uruchomienie trybu failover w celu powrotu po awarii z platformy Azure.
-4. **Ponowne włączanie ochrony lokalnych maszyn wirtualnych**: Po awarii danych ponownie Włącz ochronę lokalnych maszyn wirtualnych programu VMware, do których nie udało się powrócić, aby rozpocząć replikację do platformy Azure.
+4. Ponowne **Włączanie ochrony lokalnych maszyn wirtualnych**: po awarii danych ponownie Włącz ochronę lokalnych maszyn wirtualnych programu VMware, do których nie udało się powrócić, aby rozpocząć replikację do platformy Azure.
 
 ## <a name="verify-server-properties"></a>Sprawdź właściwości serwera
 
@@ -45,8 +46,8 @@ Sprawdź właściwości serwera i upewnij się, że jest ono zgodne z [wymagania
 1. W obszarze **Ustawienia** > **Zreplikowane elementy** kliknij maszynę wirtualną > **Tryb failover**.
 2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, którego chcesz użyć do przełączenia do trybu failover. Możesz użyć jednej z następujących opcji:
    - **Najnowszy**: ta opcja najpierw przetwarza wszystkie dane wysyłane do usługi Site Recovery. Zapewnia najniższą wartość celu puntu odzyskiwania, ponieważ maszyna wirtualna platformy Azure utworzona po przejściu do trybu failover zawiera wszystkie dane, które zostały zreplikowane w usłudze Site Recovery do momentu włączenia trybu failover.
-   - **Najnowszy przetworzony**: Ta opcja powoduje przełączenie komputera w tryb failover do najnowszego punktu odzyskiwania przetworzonego przez Site Recovery. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
-   - **Najnowszy spójny na poziomie aplikacji**: Ta opcja powoduje przełączenie komputera w tryb failover do najnowszego punktu odzyskiwania spójnego na poziomie aplikacji przetworzonego przez Site Recovery.
+   - **Najnowsza przetworzony**: Ta opcja powoduje przełączenie komputera w tryb failover do najnowszego punktu odzyskiwania przetworzonego przez Site Recovery. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
+   - **Najnowsza spójna dla aplikacji**: Ta opcja powoduje przełączenie maszyny w tryb failover do najnowszego punktu odzyskiwania spójnego na poziomie aplikacji przetworzonego przez Site Recovery.
    - **Niestandardowy**: umożliwia określenie punktu odzyskiwania.
 
 3. Wybierz opcję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover** , jeśli chcesz, aby Site Recovery próbuje zamknąć maszynę źródłową przed wyzwoleniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Na stronie **Zadania** można śledzić postęp trybu failover.

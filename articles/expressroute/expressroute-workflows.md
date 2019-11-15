@@ -1,5 +1,5 @@
 ---
-title: 'Przepływy pracy konfiguracji obwodu — ExpressRoute: Azure| Microsoft Docs'
+title: 'Azure ExpressRoute: przepływy pracy konfiguracji obwodu'
 description: Ta strona zawiera przepływy pracy do skonfigurowania obwodu usługi ExpressRoute i połączeń komunikacji równorzędnej
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ae6c2b7257ee6a8184f3a5bb002f24cb75a86d67
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123377"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083321"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Przepływy pracy ExpressRoute dla aprowizacji obwodu i stanów obwodu
 Ta strona przeprowadzi Cię przez usługę aprowizacji i routing konfiguracji przepływów pracy na wysokim poziomie.
@@ -104,7 +103,7 @@ Jeśli ustawiono stan anonsowanego prefiksu publicznych *konieczna weryfikacja* 
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Skonfiguruj połączenie usługi ExpressRoute.
   
   * [Create an ExpressRoute circuit (Tworzenie obwodu usługi ExpressRoute)](expressroute-howto-circuit-arm.md)

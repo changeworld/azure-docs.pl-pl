@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure IoT Hub strumienia C# urządzeń — szybki start dla protokołów SSH i RDP (wersja zapoznawcza) | Microsoft Docs
+title: Usługa Azure IoT Hub strumienia C# urządzeń — szybki start dla protokołów SSH i RDP
 description: W tym przewodniku szybki start uruchomisz C# dwie przykładowe aplikacje, które umożliwiają scenariusze SSH i RDP w strumieniu urządzenia IoT Hub.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d84a20a554308e1705c304a18062a4a1d762a72b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d131e0112070dcc60e601b2859e8c9df8d40764a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901446"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084345"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzeń IoT Hub przy użyciu C# aplikacji serwera proxy (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Microsoft Azure IoT Hub obecnie obsługuje strumienie urządzeń jako [funkcję 
 
 W tym artykule przedstawiono najpierw Instalatora protokołu SSH (przy użyciu portu 22), a następnie opisano sposób modyfikowania portu Instalatora dla protokołu RDP. Ponieważ strumienie urządzeń są typu Application-i Protocol-niezależny od, ten sam przykład można zmodyfikować, aby pomieścić inne typy ruchu aplikacji. Ta modyfikacja zwykle polega wyłącznie na zmianie portu komunikacyjnego na ten, który jest używany przez zamierzoną aplikację.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Na poniższej ilustracji przedstawiono, w jaki sposób lokalne i lokalne aplikacje serwera proxy w tym przykładzie umożliwiają kompleksową łączność między procesami klienta SSH i demonów SSH. Załóżmy, że demon jest uruchomiony na tym samym urządzeniu co aplikacja lokalnego serwera proxy.
 
@@ -190,7 +190,7 @@ Dane wyjściowe konsoli po stronie usługi (aplikacja lokalnego serwera proxy na
 
 ![Usługa — dane wyjściowe aplikacji lokalnego serwera proxy](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-Dane wyjściowe konsoli na urządzeniu lokalnego serwera proxy, który łączy się z demonem SSH w dniu *adres_IP: 22*:
+Dane wyjściowe konsoli na urządzeniu lokalnego serwera proxy, który łączy się z demonem SSH w *IP_address: 22*:
 
 ![Dane wyjściowe aplikacji lokalnego serwera proxy](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 

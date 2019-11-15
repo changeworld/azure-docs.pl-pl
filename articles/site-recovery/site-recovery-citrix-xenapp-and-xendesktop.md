@@ -1,195 +1,195 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla wdrożenia Citrix XenDesktop i XenApp obejmujące wiele warstw przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii fo Citrix XenDesktop i XenApp korzystające z usługi Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii Citrix XenDesktop/XenApp za pomocą Azure Site Recovery
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii w ramach wdrożeń Citrix XenDesktop i XenApp przy użyciu Azure Site Recovery.
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038238"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084551"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia programów Citrix XenApp i XenDesktop wielowarstwowej
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowego wdrożenia Citrix XenApp i XenDesktop
 
 
 
-Citrix XenDesktop to rozwiązanie wirtualizacji pulpitu, które dostarcza pulpitów i aplikacji jako usługa na żądanie z żadnym użytkownikiem, dowolnym miejscu. Dzięki FlexCast dostarczanie technologii XenDesktop można szybko i bezpiecznie dostarczania aplikacji i pulpitów do użytkowników.
-Już dziś Citrix XenApp nie zapewnia awariami możliwości odzyskiwania.
+Citrix XenDesktop to rozwiązanie wirtualizacji pulpitu, które udostępnia komputery stacjonarne i aplikacje jako usługę OnDemand dla dowolnego użytkownika, wszędzie. Dzięki technologii FlexCast Delivery XenDesktop mogą szybko i bezpiecznie dostarczać aplikacje i komputery stacjonarne użytkownikom.
+Obecnie program Citrix XenApp nie zapewnia możliwości odzyskiwania po awarii.
 
-Dobre rozwiązanie odzyskiwania po awarii, powinien zezwalać na modelowanie planów odzyskiwania wokół powyższych architektury aplikacji złożonych i również mieć możliwość dodawania niestandardowych kroków do obsługi aplikacji mapowania między różne warstwy, dlatego zapewnienie jednym kliknięciem się, że zrzut rozwiązanie na wypadek awarii, co prowadzi do niższych cel czasu odzyskiwania.
+Dobre rozwiązanie do odzyskiwania po awarii powinno umożliwić modelowanie planów odzyskiwania na podstawie podanych powyżej złożonych architektur aplikacji oraz możliwość dodawania dostosowanych kroków do obsługi mapowań aplikacji między różnymi warstwami, dzięki czemu zapewnianie pojedynczego kliknięcia należy pamiętać o rozwiązaniu zrzutu w przypadku awarii prowadzącej do obniżenia RTO.
 
-Ten dokument zawiera wskazówki krok po kroku dotyczące tworzenia rozwiązania odzyskiwania po awarii dla lokalnych wdrożeń Citrix XenApp na platformie vSphere funkcji Hyper-V i VMware. W tym dokumencie opisano również sposób wykonywania testu trybu failover (odzyskiwanie po awarii) i nieplanowany tryb failover na platformie Azure przy użyciu planów odzyskiwania, obsługiwane konfiguracje i wymagania wstępne.
+Ten dokument zawiera wskazówki krok po kroku dotyczące tworzenia rozwiązania do odzyskiwania po awarii dla lokalnych wdrożeń usługi Citrix XenApp na platformach Hyper-V i VMware vSphere. W tym dokumencie opisano również, jak przeprowadzić test pracy w trybie failover (sprawdzanie odzyskiwania po awarii) i nieplanowaną pracę w trybie failover na platformie Azure przy użyciu planów odzyskiwania, obsługiwanych konfiguracji i wymagań wstępnych.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że należy zrozumieć następujące kwestie:
+Przed rozpoczęciem upewnij się, że rozumiesz następujące kwestie:
 
-1. [Replikowanie maszyny wirtualnej na platformie Azure](site-recovery-vmware-to-azure.md)
-1. Jak [projektować sieć odzyskiwania](site-recovery-network-design.md)
-1. [Podczas testowania trybu failover na platformie Azure](site-recovery-test-failover-to-azure.md)
-1. [Przełączeniem w tryb failover na platformie Azure](site-recovery-failover.md)
-1. Jak [replikacji kontrolera domeny](site-recovery-active-directory.md)
-1. Jak [replikowanie programu SQL Server](site-recovery-sql.md)
+1. [Replikowanie maszyny wirtualnej na platformę Azure](site-recovery-vmware-to-azure.md)
+1. [Projektowanie sieci odzyskiwania](site-recovery-network-design.md)
+1. [Testowanie pracy w trybie failover na platformie Azure](site-recovery-test-failover-to-azure.md)
+1. [Przełączenie w tryb failover na platformie Azure](site-recovery-failover.md)
+1. Jak [replikować kontroler domeny](site-recovery-active-directory.md)
+1. Jak [replikować SQL Server](site-recovery-sql.md)
 
 ## <a name="deployment-patterns"></a>Wzorce wdrożenia
 
-Citrix XenApp i XenDesktop farmy zwykle mają następujący wzorzec wdrożenia:
+Farma Citrix XenApp i XenDesktop ma zwykle następujący wzorzec wdrożenia:
 
 **Wzorzec wdrożenia**
 
-Wdrożenia programów Citrix XenApp i XenDesktop z serwer AD DNS, SQL bazy danych, serwer StoreFront serwer, kontroler dostarczania Citrix, XenApp Master (VDA), serwer licencji Citrix XenApp
+Wdrożenie Citrix XenApp i XenDesktop z serwerem DNS usług AD, serwerem bazy danych SQL, kontrolerem dostarczania Citrix, serwerem witryny sklepu, XenApp Master (VDA), serwerem licencji Citrix XenApp
 
 ![Wzorzec wdrożenia 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
 
 ## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
-Na potrzeby tego artykułu Citrix wdrożenia na maszynach wirtualnych VMware jest zarządzane przez vSphere w wersji 6.0 lub System Center VMM 2012 R2 zostały użyte do konfiguracji odzyskiwania po awarii.
+Na potrzeby tego artykułu wdrożenia Citrix na maszynach wirtualnych VMware zarządzanych przez vSphere 6,0/System Center VMM 2012 R2 zostały użyte do skonfigurowania programu DR.
 
-### <a name="source-and-target"></a>Źródłowe i docelowe
+### <a name="source-and-target"></a>Źródło i cel
 
-**Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
+**Scenariusz** | **Do lokacji dodatkowej** | **Platforma Azure**
 --- | --- | ---
-**Funkcja Hyper-V** | Nie znajduje się w zakresie | Yes
-**VMware** | Nie znajduje się w zakresie | Yes
-**Serwer fizyczny** | Nie znajduje się w zakresie | Yes
+**Funkcja Hyper-V** | Poza zakresem | Yes
+**VMware** | Poza zakresem | Yes
+**Serwer fizyczny** | Poza zakresem | Yes
 
 ### <a name="versions"></a>Wersje
-Klienci mogą wdrażać składniki XenApp jako maszyny wirtualne uruchomione na funkcji Hyper-V lub VMware lub serwerów fizycznych. Usługa Azure Site Recovery umożliwia ochronę wdrożeń fizycznych i wirtualnych na platformie Azure.
-Ponieważ usługa XenApp 7,7 lub nowszej jest obsługiwana na platformie Azure, tylko wdrożenia z tych wersji można przełączyć na platformie Azure dla migracji lub odzyskiwania po awarii.
+Klienci mogą wdrażać składniki XenApp jako Virtual Machines uruchomione w funkcji Hyper-V lub VMware lub jako serwery fizyczne. Azure Site Recovery może chronić wdrożenia fizyczne i wirtualne na platformie Azure.
+Ponieważ na platformie Azure jest obsługiwana XenApp 7,7 lub nowsza, tylko wdrożenia z tymi wersjami mogą zostać przełączone do trybu failover na platformie Azure na potrzeby odzyskiwania po awarii lub migracji.
 
-### <a name="things-to-keep-in-mind"></a>Warto pamiętać o
+### <a name="things-to-keep-in-mind"></a>Kwestie, które należy wziąć pod uwagę
 
-1. Ochrony i odzyskiwania lokalnych wdrożeń przy użyciu systemu operacyjnego serwera maszyn w celu dostarczenia XenApp opublikowane aplikacje i rozwiązania XenApp opublikowanych pulpitów jest obsługiwana.
+1. Ochrona i odzyskiwanie lokalnych wdrożeń przy użyciu maszyn systemu operacyjnego serwera w celu dostarczania opublikowanych aplikacji XenApp i pulpitów opublikowanych XenApp.
 
-2. Ochrony i odzyskiwania lokalnych wdrożeń korzystanie z pulpitu systemu operacyjnego maszyny w celu dostarczania pulpitu VDI dla klienta pulpitów wirtualnych, łącznie z systemem Windows 10 nie jest obsługiwana. Jest to spowodowane Site Recovery nie obsługuje odzyskiwanie maszyn za pomocą programu desktop OS'es.  Ponadto niektóre wirtualnego pulpitu systemy operacyjne klienta (np.) Windows 7) nie są jeszcze obsługiwane w przypadku licencjonowania na platformie Azure. [Dowiedz się więcej](https://azure.microsoft.com/pricing/licensing-faq/) na temat licencjonowania dla komputerów stacjonarnych klienta/serwera na platformie Azure.
+2. Ochrona i odzyskiwanie lokalnych wdrożeń przy użyciu maszyn systemu operacyjnego komputerów stacjonarnych w celu zapewnienia infrastruktury VDI dla komputerów stacjonarnych, w tym systemu Windows 10, nie jest obsługiwane. Jest to spowodowane tym, że Site Recovery nie obsługuje odzyskiwania maszyn z OS'es Desktop.  Ponadto niektóre klienckie systemy operacyjne na komputerach klienckich (np. System Windows 7) nie jest jeszcze obsługiwany na potrzeby licencjonowania na platformie Azure. [Dowiedz się więcej](https://azure.microsoft.com/pricing/licensing-faq/) na temat licencjonowania dla komputerów stacjonarnych klienta/serwera na platformie Azure.
 
-3.  Usługa Azure Site Recovery nie może chronić i replikować istniejących klony oddział MCS lub Odwiedziny w środowisku lokalnym.
-Należy ponownie utworzyć te klony przy użyciu usługi Azure RM aprowizowania już od kontroler dostarczania.
+3.  Azure Site Recovery nie może replikować ani chronić istniejących lokalnych obiektów MCS lub klonów PVS.
+Należy ponownie utworzyć te klony przy użyciu aprowizacji usługi Azure RM z poziomu kontrolera dostarczania.
 
-4. Program NetScaler nie mogą być chronione przy użyciu usługi Azure Site Recovery NetScaler opiera się na FreeBSD i usługi Azure Site Recovery nie obsługuje ochrony systemu operacyjnego FreeBSD. Należy wdrożyć i skonfigurować nowe urządzenie NetScaler z portalu Azure Marketplace, po włączeniu trybu failover na platformie Azure.
+4. Nie można chronić usługi system skaler przy użyciu Azure Site Recovery, ponieważ usługa FreeBSD jest oparta na systemie, a Azure Site Recovery nie obsługuje ochrony systemu operacyjnego FreeBSD. Po przejściu do trybu failover na platformie Azure należy wdrożyć i skonfigurować nowe urządzenie do skalowania w systemie Azure.
 
 
 ## <a name="replicating-virtual-machines"></a>Replikowanie maszyn wirtualnych
 
-Następujące składniki wdrożenia Citrix XenApp muszą być chronione, aby włączyć replikację i odzyskiwanie.
+Aby umożliwić replikację i odzyskiwanie, należy chronić następujące składniki wdrożenia programu Citrix XenApp.
 
-* Ochrona serwer AD DNS
-* Ochrona programu SQL server, bazy danych
-* Ochrona kontroler dostarczania Citrix
-* Ochrona serwer StoreFront.
+* Ochrona serwera DNS usługi AD
+* Ochrona serwera SQL Database
+* Ochrona kontrolera dostarczania Citrix
+* Ochrona serwera witryny sklepu.
 * Ochrona XenApp Master (VDA)
-* Ochrona serwer licencji Citrix XenApp
+* Ochrona serwera licencji Citrix XenApp
 
 
-**Replikacja serwer AD DNS**
+**Replikacja serwera DNS usługi AD**
 
-Zapoznaj się [ochrony usługi Active Directory i DNS przy użyciu usługi Azure Site Recovery](site-recovery-active-directory.md) na wskazówki dotyczące replikacji i konfigurowania kontrolera domeny na platformie Azure.
+Zapoznaj się z artykułem [ochrona Active Directory i usługi DNS z Azure Site Recovery](site-recovery-active-directory.md) , aby uzyskać wskazówki dotyczące replikowania i konfigurowania kontrolera domeny na platformie Azure.
 
-**Replikacja serwer bazy danych SQL**
+**Replikacja serwera SQL Database**
 
-Zapoznaj się [ochrona programu SQL Server za pomocą odzyskiwania po awarii programu SQL Server i usługi Azure Site Recovery](site-recovery-sql.md) Aby uzyskać szczegółowe wskazówki techniczne na temat zalecanych opcji ochrony serwerów SQL.
+Zapoznaj się z artykułem [ochrona SQL Server z SQL Server odzyskiwaniem po awarii i Azure Site Recovery,](site-recovery-sql.md) Aby uzyskać szczegółowe wskazówki techniczne na temat zalecanych opcji ochrony serwerów SQL.
 
-Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-vmware-to-azure.md) aby rozpocząć replikowanie innych składników maszyn wirtualnych na platformie Azure.
+Postępuj zgodnie z [tymi wskazówkami](site-recovery-vmware-to-azure.md) , aby rozpocząć replikację innych składników maszyn wirtualnych do platformy Azure.
 
-![Ochrona XenApp składników](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
+![Ochrona składników XenApp](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 
-**Ustawienia sieci i obliczeń**
+**Ustawienia obliczeń i sieci**
 
-Po ich ochroną maszyny (stan jest wyświetlany jako "Chronione" w obszarze zreplikowane elementy), należy skonfigurować ustawień obliczenia i sieć.
-W obliczenia i sieć > Compute właściwości, można określić nazwę i docelowy rozmiar maszyny Wirtualnej platformy Azure.
-Zmodyfikuj nazwę aby spełniać wymagania dotyczące usługi Azure, jeśli potrzebujesz. Można również wyświetlić i dodać informacje dotyczące sieci docelowej, podsieci i adresu IP, który zostanie przypisany do maszyny Wirtualnej platformy Azure.
+Po włączeniu ochrony maszyn (stan jest wyświetlany jako "chroniony" w obszarze zreplikowane elementy) należy skonfigurować ustawienia obliczeń i sieci.
+We właściwościach obliczeniowych obliczeniowych i > sieciowych można określić nazwę i docelowy rozmiar maszyny wirtualnej platformy Azure.
+Zmodyfikuj nazwę, aby zachować zgodność z wymaganiami platformy Azure, jeśli jest to konieczne. Możesz również wyświetlić i dodać informacje o sieci docelowej, podsieci i adresie IP, które zostaną przypisane do maszyny wirtualnej platformy Azure.
 
-Pamiętaj o następujących kwestiach:
+Należy pamiętać o następujących kwestiach:
 
-* Możesz ustawić docelowy adres IP. Jeśli nie podasz adresu, maszyna w trybie failover będzie używać protokołu DHCP. Jeśli ustawisz adres który nie jest dostępna w trybie failover, pracy w trybie failover nie będą działać. Ten sam docelowy adres IP może być użyty do testowania trybu failover, jeśli adres jest dostępny w testowej sieci trybu failover.
+* Możesz ustawić docelowy adres IP. Jeśli nie podasz adresu, maszyna w trybie failover będzie używać protokołu DHCP. Jeśli ustawisz adres, który nie jest dostępny w trybie failover, przełączenie w tryb failover nie będzie możliwe. Ten sam docelowy adres IP może być użyty do testowania trybu failover, jeśli adres jest dostępny w testowej sieci trybu failover.
 
-* Na serwerze AD/DNS zachowywanie adresu lokalnego pozwala określić ten sam adres jako serwera DNS dla sieci wirtualnej platformy Azure.
+* W przypadku serwera AD/DNS zachowywanie adresu lokalnego umożliwia określenie tego samego adresu co serwer DNS dla sieci wirtualnej platformy Azure.
 
 Liczba kart sieciowych zależy od rozmiaru określonego dla docelowej maszyny wirtualnej, zgodnie z poniższym:
 
 *   Jeśli liczba kart sieciowych w maszynie źródłowej jest mniejsza lub równa liczbie kart sieciowych dozwolonych dla rozmiaru maszyny docelowej, maszyna docelowa będzie mieć taką samą liczbę kart sieciowych jak maszyna źródłowa.
 *   Jeśli liczba kart sieciowych dla źródłowej maszyny wirtualnej przekracza liczbę dozwolonych kart sieciowych dla rozmiaru maszyny docelowej, zostanie użyta maksymalna liczba kart dla rozmiaru maszyny docelowej.
 * Na przykład, jeśli maszyna źródłowa ma dwie karty sieciowe, a rozmiar maszyny docelowej obsługuje cztery karty, maszyna docelowa będzie mieć dwie karty sieciowe. Jeśli maszyna źródłowa ma dwie karty sieciowe, ale rozmiar maszyny docelowej obsługuje tylko jedną kartę, maszyna docelowa będzie mieć tylko jedną kartę sieciową.
-*   Jeśli maszyna wirtualna ma wiele kart sieciowych, które wszyscy klienci zostaną połączeni z tą samą siecią.
-*   Jeśli maszyna wirtualna ma wiele kart sieciowych, pierwszy z nich wyświetlane na liście stanie się domyślną kartę sieciową maszyny wirtualnej platformy Azure.
+*   Jeśli maszyna wirtualna ma wiele kart sieciowych, wszystkie będą łączyć się z tą samą siecią.
+*   Jeśli maszyna wirtualna ma wiele kart sieciowych, to pierwsza z nich wyświetlana na liście będzie domyślną kartą sieciową na maszynie wirtualnej platformy Azure.
 
 
-## <a name="creating-a-recovery-plan"></a>Trwa tworzenie planu odzyskiwania
+## <a name="creating-a-recovery-plan"></a>Tworzenie planu odzyskiwania
 
-Po włączeniu replikacji dla maszyn wirtualnych składnika XenApp, następnym krokiem jest utworzenie planu odzyskiwania.
-Grupy razem maszyny wirtualne mają podobne wymagania dotyczące trybu failover i odzyskiwania planu odzyskiwania.  
+Po włączeniu replikacji dla maszyn wirtualnych składników XenApp następnym krokiem jest utworzenie planu odzyskiwania.
+Plan odzyskiwania grupuje maszyny wirtualne z podobnymi wymaganiami dotyczącymi trybu failover i odzyskiwania.  
 
-**Kroki, aby utworzyć plan odzyskiwania**
+**Procedura tworzenia planu odzyskiwania**
 
-1. Dodaj składnik XenApp wirtualne w planie odzyskiwania.
-2. Kliknij opcję plany odzyskiwania -> + planu odzyskiwania. Podaj nazwę intuicyjne dla planu odzyskiwania.
-3. W przypadku maszyn wirtualnych programu VMware: Wybierz źródło jako serwer przetwarzania VMware, element docelowy jako Microsoft Azure i modelu wdrażania usługi Resource Manager i kliknij pozycję Wybierz elementy.
-4. Dla maszyn wirtualnych funkcji Hyper-V: Wybierz źródło jako serwer programu VMM, element docelowy jako Microsoft Azure i modelu wdrażania przy użyciu jako usługi Resource Manager i kliknij pozycję Wybierz elementy, a następnie wybierz XenApp wdrażania maszyn wirtualnych.
+1. Dodaj maszyny wirtualne składnika XenApp w planie odzyskiwania.
+2. Kliknij kolejno pozycje plany odzyskiwania — > + plan odzyskiwania. Podaj intuicyjną nazwę planu odzyskiwania.
+3. W przypadku maszyn wirtualnych VMware: wybierz opcję Źródło jako serwer przetwarzania VMware, cel jako Microsoft Azure i model wdrażania jako Menedżer zasobów i kliknij pozycję Wybierz elementy.
+4. W przypadku maszyn wirtualnych funkcji Hyper-V: wybierz pozycję źródło jako serwer VMM, miejsce docelowe jako Microsoft Azure i model wdrażania jako Menedżer zasobów i kliknij pozycję Wybierz elementy, a następnie wybierz pozycję Maszyny wirtualne wdrożenia XenApp.
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grupy trybu failover
+### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grup trybu failover
 
-Plany odzyskiwania można dostosować w taki sposób, aby dodać grupy trybu failover dla określonej kolejności uruchamiania, skrypty i działania ręczne. Następujące grupy muszą zostać dodane do planu odzyskiwania.
+Plany odzyskiwania można dostosować, aby dodać grupy trybu failover dla określonej kolejności uruchamiania, skryptów lub akcji ręcznych. Do planu odzyskiwania należy dodać następujące grupy.
 
-1. Grupa1 trybu failover: USŁUGI AD DNS
-2. Group2 trybu failover: Maszyny wirtualne z programem SQL Server
-2. Grupa trybu failover 3: VDA maszynę Wirtualną z obrazu Master
-3. Failover Group4: Kontroler dostarczania StoreFront maszyny wirtualne i server
+1. Grupa grupa1 trybu failover: DNS usługi AD
+2. Group2 trybu failover: maszyny wirtualne SQL Server
+2. Tryb failover Grupa 3: VDA Master Image VM
+3. Group4 trybu failover: kontroler dostarczania i maszyny wirtualne serwera witryny sklepu
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Dodawanie skryptów do planu odzyskiwania
 
-Można uruchamiać skrypty przed lub po określonej grupy w planie odzyskiwania. Można również uwzględnione działania ręczne i wykonywane podczas pracy awaryjnej.
+Skrypty można uruchamiać przed lub po określonej grupie w planie odzyskiwania. Akcje ręczne można również dołączać i wykonywać podczas pracy w trybie failover.
 
-Plan odzyskiwania dostosowany wygląda jak poniżej:
+Dostosowany plan odzyskiwania wygląda podobnie do poniższego:
 
-1. Grupa1 trybu failover: USŁUGI AD DNS
-2. Group2 trybu failover: Maszyny wirtualne z programem SQL Server
-3. Grupa trybu failover 3: VDA maszynę Wirtualną z obrazu Master
+1. Grupa grupa1 trybu failover: DNS usługi AD
+2. Group2 trybu failover: maszyny wirtualne SQL Server
+3. Tryb failover Grupa 3: VDA Master Image VM
 
    >[!NOTE]     
-   >Kroki od 4, 6 i 7 zawierający akcje ręczne lub skrypt mają zastosowanie do lokalnych XenApp > środowisko z katalogami MCS/Odwiedziny.
+   >Kroki 4, 6 i 7 zawierające akcje ręczne lub skrypty mają zastosowanie tylko do lokalnego środowiska XenApp > z wykazami serwera MCS/PVS.
 
-4. Akcja ręczna lub skryptu grupa 3: Zamknij wzorca VDA maszyny Wirtualnej.
-Wzorzec VDA maszyna wirtualna przełączone w tryb failover Azure będzie w stanie uruchomienia. Aby utworzyć nowe katalogi MCS przy użyciu hostingu platformy Azure, wzorca VDA maszyna wirtualna jest wymagane będzie zatrzymane (przydzielone de) stanu. Zamknij maszynę Wirtualną z witryny Azure portal.
+4. Akcja ręczna lub skryptu grupy 3: Zamknij główną maszynę wirtualną VDA.
+Główna maszyna wirtualna VDA po przełączeniu w tryb failover na platformę Azure będzie w stanie uruchomienia. Aby utworzyć nowe katalogi serwera MCS przy użyciu hostingu platformy Azure, maszyna wirtualna VDA musi być w stanie zatrzymania (bez przydziału). Zamknij maszynę wirtualną z Azure Portal.
 
-5. Failover Group4: Kontroler dostarczania StoreFront maszyny wirtualne i server
-6. Grupa 3 ręczny lub skryptu akcji 1:
+5. Group4 trybu failover: kontroler dostarczania i maszyny wirtualne serwera witryny sklepu
+6. Grupa 3 ręcznie lub akcja skryptu 1:
 
-    ***Dodawanie połączenia hosta usługi Azure RM***
+    ***Dodawanie połączenia z hostem usługi Azure RM***
 
-    Utwórz połączenie z hostem platformy Azure na maszynie kontrolera dostarczania, aby aprowizować nowe katalogi MCS na platformie Azure. Wykonaj kroki opisane w tym [artykułu](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
+    Utwórz połączenie hosta platformy Azure na komputerze kontrolera dostarczania, aby udostępnić nowe katalogi MCS na platformie Azure. Wykonaj kroki opisane w tym [artykule](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
 
-7. Grupa 3 ręczny lub skryptu akcji 2:
+7. Grupa 3 lub akcja skryptu 2:
 
-    ***Utwórz ponownie MCS katalogi na platformie Azure***
+    ***Ponowne tworzenie katalogów serwera MCS na platformie Azure***
 
-    Klony oddział MCS lub Odwiedziny istniejącego w lokacji głównej nie będą replikowane do platformy Azure. Należy ponownie utworzyć te klony przy użyciu replikowanych VDA głównego i Azure aprowizowania już od kontroler dostarczania. Wykonaj kroki opisane w tym [artykułu](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) tworzenia katalogów serwera MCS na platformie Azure.
+    Istniejące klony serwera MCS lub PVS w lokacji głównej nie będą replikowane do platformy Azure. Należy ponownie utworzyć te klony przy użyciu zreplikowanego głównego VDA i aprowizacji platformy Azure z poziomu kontrolera dostarczania. Wykonaj kroki opisane w tym [artykule](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) , aby utworzyć katalogi serwera MCS na platformie Azure.
 
 ![Plan odzyskiwania dla składników XenApp](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 
 
    >[!NOTE]
-   >Możesz używać skryptów w [lokalizacji](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) zaktualizować DNS przy użyciu nowe adresy IP nie powiodło się za pośrednictwem > maszyny wirtualne lub dołączyć modułu równoważenia obciążenia w trybie przez maszynę wirtualną, jeśli to konieczne.
+   >W razie potrzeby można użyć skryptów w [lokalizacji](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) do zaktualizowania systemu DNS przy użyciu nowych adresów IP maszyn wirtualnych w trybie failover w > lub dołączenia modułu równoważenia obciążenia na maszynie wirtualnej w trybie failover.
 
 
-## <a name="doing-a-test-failover"></a>Podczas testowania trybu failover
+## <a name="doing-a-test-failover"></a>Przeprowadzenie testu pracy w trybie failover
 
-Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-test-failover-to-azure.md) celu testowy tryb failover.
+Postępuj zgodnie z [tymi wskazówkami](site-recovery-test-failover-to-azure.md) , aby przeprowadzić test pracy w trybie failover.
 
 ![Plan odzyskiwania](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-tfo.png)
 
 
-## <a name="doing-a-failover"></a>Przełączeniem w tryb failover
+## <a name="doing-a-failover"></a>Przełączenie w tryb failover
 
-Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-failover.md) po operacji przejścia w tryb failover.
+Postępuj zgodnie z [tymi wskazówkami](site-recovery-failover.md) podczas pracy w trybie failover.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Możesz [więcej](https://aka.ms/citrix-xenapp-xendesktop-with-asr) temat replikowania wdrożenia programów Citrix XenApp i XenDesktop, w tym dokumencie. Przyjrzyj się ze wskazówkami, aby [replikować inne aplikacje](site-recovery-workload.md) przy użyciu Site Recovery.
+Więcej informacji na temat replikowania wdrożeń Citrix XenApp i XenDesktop można [znaleźć](https://aka.ms/citrix-xenapp-xendesktop-with-asr) w tym oficjalnym dokumencie. Zapoznaj się ze wskazówkami, aby [replikować inne aplikacje](site-recovery-workload.md) przy użyciu Site Recovery.
