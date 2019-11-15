@@ -496,7 +496,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Konfigurowanie usługi Azure SQL Data Sync
           href: sql-database-get-started-sql-data-sync.md
-        - name: Dodawanie puli elastycznej do grupy trybu failover
+        - name: Dodawanie elastycznej puli do grupy trybu failover
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Konfigurowanie zabezpieczeń
           href: sql-database-security-tutorial.md

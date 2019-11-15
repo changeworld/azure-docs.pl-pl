@@ -180,6 +180,8 @@
       items:
         - name: Azure Data Factory
           items:
+            - name: Integracja z usługą Data Factory
+              href: data-factory-integration.md
             - name: Zbiorcze kopiowanie danych za pomocą szablonu usługi Azure Data Factory
               href: data-factory-template.md
             - name: Uruchamianie poleceń sterujących przy użyciu usługi Azure Data Factory

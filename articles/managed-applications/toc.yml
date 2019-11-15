@@ -75,6 +75,8 @@
           href: key-vault-access.md
         - name: Wdrażanie za pomocą tożsamości zarządzanej
           href: publish-managed-identity.md
+        - name: Wdrażanie przy użyciu powiadomień
+          href: publish-notifications.md
     - name: Klienci
       items:
         - name: Monitorowanie aplikacji zarządzanych

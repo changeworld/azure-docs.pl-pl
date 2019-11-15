@@ -57,6 +57,20 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: W języku C++/WinRT
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: Odnajdywanie kotwic w pobliżu za pomocą czujników urządzenia
+      items:
+        - name: 'W środowisku C#/Unity'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: W języku Objective-C
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: W języku Swift
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: W języku Java
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: W języku C++/NDK
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: W języku C++/WinRT
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: Przykłady
   items:
     - name: Przykłady dla usługi Azure Spatial Anchors (GitHub)
@@ -71,6 +85,8 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: Rejestrowanie i diagnostyka
       href: concepts/logging-diagnostics.md
+    - name: Zgrubna ponowna lokalizacja
+      href: concepts/coarse-reloc.md
 - name: Dokumentacja
   items:
     - name: Zestaw SDK dla aparatu Unity

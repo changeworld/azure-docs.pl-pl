@@ -24,6 +24,8 @@
 - name: Pojęcia
   expanded: true
   items:
+    - name: Najlepsze rozwiązania dotyczące zarządzania aplikacjami
+      href: application-management-fundamentals.md
     - name: Aplikacje w chmurze i logowanie jednokrotne
       items:
         - name: Planowanie integracji aplikacji w chmurze
