@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499236"
+ms.locfileid: "73580091"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
-Rezerwacje platformy Azure pomagają zaoszczędzić pieniądze dzięki zobowiązaniu do korzystania z maszyn wirtualnych, pojemności obliczeniowej bazy danych SQL Database, przepływności bazy danych Azure Cosmos DB lub innych zasobów platformy Azure przez jeden rok lub trzy lata. Zobowiązanie umożliwia uzyskanie rabatu dotyczącego używanych zasobów. Rezerwacje mogą znacząco zredukować koszty maszyn wirtualnych, mocy obliczeniowej bazy danych SQL Database, bazy danych Azure Cosmos DB lub innych zasobów — nawet o 72% w porównaniu z cenami w modelu płatności zgodnie z rzeczywistym użyciem. Rezerwacje umożliwiają skorzystanie z rabatu na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego Twoich zasobów.
+Rezerwacje platformy Azure pomagają zaoszczędzić pieniądze dzięki zobowiązaniu do korzystania z planów dla maszyn wirtualnych, usługi Azure Blob Storage lub Azure Data Lake Storage Gen2, pojemności obliczeniowej bazy danych SQL Database, przepływności bazy danych Azure Cosmos DB lub innych zasobów platformy Azure przez jeden rok lub trzy lata. Zobowiązanie umożliwia uzyskanie rabatu dotyczącego używanych zasobów. Rezerwacje mogą znacznie obniżyć koszty zasobów, nawet o 72% w porównaniu do cen przy płatności zgodnie z rzeczywistym użyciem. Rezerwacje umożliwiają skorzystanie z rabatu na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego Twoich zasobów.
 
 Za rezerwację można zapłacić z góry lub w miesięcznych ratach. Łączny koszt rezerwacji w przypadku płatności z góry i miesięcznych rat jest taki sam, a wybór płatności miesięcznych nie pociąga za sobą dodatkowych opłat. Opcja płatności miesięcznych jest dostępna w przypadku rezerwacji platformy Azure, a nie produktów innych firm.
 
@@ -24,13 +24,14 @@ Rezerwację można kupić w witrynie [Azure Portal](https://ms.portal.azure.com/
 
 ## <a name="why-buy-a-reservation"></a>Dlaczego warto kupić rezerwację?
 
-Jeśli masz maszyny wirtualne, bazę danych Azure Cosmos DB lub bazy danych SQL, które są uruchamiane przez długi czas, kupowanie rezerwacji jest najbardziej opłacalną opcją. Jeśli na przykład ciągle uruchamiasz cztery wystąpienia usługi bez rezerwacji, opłaty są naliczone według stawek płatności zgodnie z rzeczywistym użyciem. Przy zakupie rezerwacji dla tych zasobów natychmiast uzyskasz rabat na rezerwację. Zasoby nie będą już obciążane opłatami według stawek płatności zgodnie z rzeczywistym użyciem.
+Jeśli masz maszyny wirtualne, dane w magazynie obiektów blob, bazę danych Azure Cosmos DB lub bazy danych SQL, które używają dużo pojemności lub przepływności bądź są uruchamiane przez długi czas, kupowanie rezerwacji jest najbardziej opłacalną opcją. Jeśli na przykład ciągle uruchamiasz cztery wystąpienia usługi bez rezerwacji, opłaty są naliczone według stawek płatności zgodnie z rzeczywistym użyciem. Przy zakupie rezerwacji dla tych zasobów natychmiast uzyskasz rabat na rezerwację. Zasoby nie będą już obciążane opłatami według stawek płatności zgodnie z rzeczywistym użyciem.
 
 ## <a name="charges-covered-by-reservation"></a>Opłaty objęte rezerwacją
 
 Plany usługi:
 
 - **Wystąpienie zarezerwowane maszyny wirtualnej** — rezerwacja obejmuje tylko koszty obliczeń na maszynie wirtualnej. Nie dotyczy dodatkowych opłat za oprogramowanie, sieć ani magazyn.
+- **Pojemność zarezerwowana usługi Azure Storage** — rezerwacja obejmuje pojemność magazynu dla kont magazynu w warstwie Standardowa dla magazynu obiektów blob lub magazynu usługi Azure Data Lake Gen2. Rezerwacja nie obejmuje stawek za przepustowość lub transakcje.
 - **Pojemność zarezerwowana usługi Azure Cosmos DB** — rezerwacja obejmuje przepływność przydzieloną dla zasobów. Nie dotyczy opłat za magazyn i sieć.
 - **Zarezerwowany rdzeń wirtualny w usłudze SQL Database** — w rezerwacji są uwzględniane tylko koszty obliczeń. Opłata za licencję jest naliczana oddzielnie.
 - **SQL Data Warehouse** — rezerwacja obejmuje użycie jednostek cDWU. Nie pokrywa kosztów magazynu i sieci wynikających z użycia usługi SQL Data Warehouse.
@@ -134,6 +135,7 @@ W przypadku zakupu rezerwacji rabat może być stosowany do innych wystąpień z
 Plany usługi:
 
 - Wystąpienia zarezerwowane maszyn wirtualnych: Po zakupieniu rezerwacji i wybraniu opcji **Zoptymalizowane pod kątem elastyczności rozmiaru wystąpienia** zastosowanie rabatu zależy od wybranego rozmiaru maszyny wirtualnej. Rezerwacja może dotyczyć rozmiarów maszyn wirtualnych w tej samej grupie serii rozmiarów. Aby uzyskać więcej informacji, zobacz artykuł [Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Pojemność zarezerwowana usługi Azure Storage: Możesz kupić pojemność zarezerwowaną dla kont usługi Azure Storage w warstwie Standardowa w jednostkach po 100 TiB lub 1 PiB na miesiąc. Pojemność zarezerwowana usługi Azure Storage jest dostępna we wszystkich regionach dla dowolnej warstwy dostępu (Gorąca, Chłodna lub Archiwalna) i dla dowolnej opcji replikacji (magazyn lokalnie nadmiarowy, magazyn geograficznie nadmiarowy lub magazyn strefowo nadmiarowy).
 - Pojemność zarezerwowana usługi SQL Database: Zastosowanie rabatu zależy od wybranej warstwy wydajności. Aby uzyskać więcej informacji, zobacz [opis sposobu stosowania rabatu na rezerwację platformy Azure](billing-understand-reservation-charges.md).
 - Pojemność zarezerwowana usługi Azure Cosmos DB: Zastosowanie rabatu zależy od alokowanej przepływności. Aby uzyskać więcej informacji, zobacz [opis sposobu stosowania rabatu na rezerwację usługi Azure Cosmos DB](billing-understand-cosmosdb-reservation-charges.md).
 

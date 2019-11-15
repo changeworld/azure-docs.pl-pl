@@ -4,16 +4,16 @@ description: W tym artykule wyjaśniono, jak klienci platformy Azure z umową EA
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 11/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 1882b283f376a1bb8706132263c83e1a24ec0705
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 567beb9de0c0a8039d774270bdf61a7db437091e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900934"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888363"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Wprowadzenie do witryny Azure EA Portal
 
@@ -121,7 +121,7 @@ Upewnij się, że masz adresy e-mail użytkownika i preferowaną metodę uwierzy
 
 Jeśli nie jesteś administratorem umowy EA, skontaktuj się z administratorem umowy EA, aby zażądać dodania Ciebie do rejestracji. Po dodaniu do rejestracji otrzymasz wiadomość e-mail dotyczącą aktywacji.
 
-Jeśli administrator umowy EA nie może Ci pomóc, utwórz wniosek o pomoc techniczną dla witryny Azure EA Portal. Podaj następujące informacje:
+Jeśli administrator umowy EA nie może Ci pomóc, utwórz [wniosek o pomoc techniczną witryny Azure EA Portal](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Podaj następujące informacje:
 
 - Numer rejestracji
 - Adres e-mail do dodania i typ uwierzytelnienia (konto służbowe lub konto Microsoft)
@@ -205,7 +205,8 @@ Możesz dodać kolejne konto, klikając pozycję **Dodaj kolejne konto** lub kli
 Aby potwierdzić własność konta:
 
 1. Zaloguj się do witryny Azure EA Portal.
-2. Potwierdź własność konta, wyświetlając stan. Stan powinien ulec zmianie z **Oczekujące** na **Data początkowa/końcowa**. Data początkowa/końcowa to data pierwszego logowania użytkownika i data zakończenia obowiązywania umowy.
+1. Potwierdź własność konta, wyświetlając stan. Stan powinien ulec zmianie z **Oczekujące** na **Data początkowa/końcowa**. Data początkowa/końcowa to data pierwszego logowania użytkownika i data zakończenia obowiązywania umowy.
+1. Gdy zostanie wyświetlony komunikat „Ostrzeżenie”, właściciel konta musi kliknąć przycisk **Kontynuuj**, aby aktywować konto podczas pierwszego logowania się do witryny Azure EA Portal.
 
 
 ## <a name="change-account-owner"></a>Zmienianie właściciela konta
@@ -284,16 +285,64 @@ Nowe subskrypcje mogą pojawić się na liście subskrypcji po upływie do 24 go
 - [Edytowanie szczegółów subskrypcji ](https://account.azure.com/Subscriptions)
 - [Zarządzanie usługami subskrypcji](https://portal.azure.com/#home)
 
-## <a name="transfer-pay-as-you-go-subscription-to-ea-subscription"></a>Przenoszenie subskrypcji płatnej zgodnie z rzeczywistym użyciem do subskrypcji umowy EA
+## <a name="transfer-ea-subscription-to-pay-as-you-go-subscription"></a>Przenoszenie subskrypcji umowy EA do subskrypcji płatnej zgodnie z rzeczywistym użyciem
 
-Aby przenieść pojedynczą subskrypcję ze stawkami płatności zgodnie z rzeczywistym użyciem do subskrypcji umowy EA, należy utworzyć nowe żądanie pomocy technicznej w witrynie Azure Portal. Aby utworzyć żądanie pomocy technicznej, kliknij pozycję **+ Nowe żądanie pomocy technicznej** w obszarze Pomoc i obsługa techniczna.
+Aby przenieść subskrypcję umowy EA do pojedynczej subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem, należy utworzyć nowy wniosek o pomoc techniczną w witrynie Azure EA Portal. Aby utworzyć żądanie pomocy technicznej, kliknij pozycję **+ Nowe żądanie pomocy technicznej** w obszarze Pomoc i obsługa techniczna.
 
+## <a name="associate-an-existing-account-with-your-pay-as-you-go-subscription"></a>Kojarzenie istniejącego konta z subskrypcją płatności zgodnie z rzeczywistym użyciem
+
+Jeśli masz już istniejące konto Microsoft Azure w witrynie Microsoft Azure Portal, wprowadź skojarzone konto Microsoft lub konto służbowe, aby skojarzyć je z rejestracją umowy Enterprise Agreement.
+
+### <a name="associate-an-existing-account"></a>Kojarzenie istniejącego konta
+
+1. W witrynie Enterprise Portal kliknij pozycję **Zarządzanie**.
+1. Kliknij kartę **Konto**.
+1. Kliknij pozycję **+ Dodaj konto**.
+1. Wprowadź konto Microsoft lub konto służbowe skojarzone z istniejącym kontem.
+1. Potwierdź konto Microsoft lub konto służbowe skojarzone z istniejącym kontem.
+1. Podaj nazwę, której chcesz używać do identyfikowania tego konta na potrzeby raportowania.
+1. Kliknij pozycję **Add** (Dodaj).
+1. Możesz dodać kolejne konto, wybierając ponownie opcję **+ Dodaj konto**, lub wrócić do strony głównej, wybierając przycisk **Administrator**.
+1. Jeśli klikniesz, aby wyświetlić stronę **Konto**, nowo dodane konto zostanie wyświetlone ze stanem **Oczekiwanie**.
+
+### <a name="confirm-account-ownership"></a>Potwierdzanie własności konta
+
+1. Zaloguj się na konto poczty e-mail skojarzone z podanym kontem Microsoft lub kontem służbowym.
+1. Otwórz powiadomienie e-mail zatytułowane _„Invitation to Activate your Account on the Microsoft Azure Service from Microsoft Volume Licensing”_ (Zaproszenie do aktywacji konta w usłudze Microsoft Azure w ramach licencjonowania zbiorowego firmy Microsoft).
+1. Kliknij link **Log into the Microsoft Azure Enterprise Portal** (Zaloguj się do witryny Microsoft Azure Enterprise Portal) w zaproszeniu.
+1. Kliknij pozycję **Zaloguj się**.
+1. Wprowadź konto Microsoft lub konto służbowe i hasło, aby zalogować się i potwierdzić własność konta.
+
+### <a name="azure-marketplace"></a>Azure Marketplace
+
+Chociaż większość subskrypcji jest konwertowana ze środowiska płatności zgodnie z rzeczywistym użyciem do środowiska Enterprise Azure, nie dotyczy to usług witryny Azure Marketplace. Aby móc korzystać z pojedynczego widoku wszystkich subskrypcji i opłat, zalecamy dodanie usług witryny Azure Marketplace do witryny Enterprise Portal:
+
+1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej.
+1. Kliknij kartę **Rejestracja**.
+1. Wyświetl sekcję Szczegóły rejestracji.
+1. Na prawo od pola Azure Marketplace kliknij ikonę ołówka, aby włączyć, i naciśnij przycisk **Zapisz**.
+
+Właściciel konta może teraz kupić subskrypcje witryny Azure Marketplace, które posiadał poprzednio w ramach płatności zgodnie z rzeczywistym użyciem.
+
+Po aktywowaniu nowych subskrypcji witryny Azure Marketplace w ramach rejestracji anuluj subskrypcje witryny Marketplace utworzone w środowisku płatności zgodnie z rzeczywistym użyciem. Ten krok ma krytyczne znaczenie, aby subskrypcje witryny Marketplace nie przeszły w nieprawidłowy stan, gdy wygaśnie instrument płatniczy środowiska płatności zgodnie z rzeczywistym użyciem.
+
+### <a name="msdn"></a>MSDN
+
+Subskrypcje MSDN są automatycznie konwertowane na ofertę MSDN Tworzenie/testowanie, a oferta EA utraci wszystkie istniejące środki pieniężne.
+
+### <a name="azure-in-open"></a>Licencja Azure w ramach programu licencjonowania Open
+
+Skojarzenie subskrypcji licencji Azure w ramach programu licencjonowania Open z umową EA spowoduje utratę wszystkich niewykorzystanych środków licencji Azure w ramach programu licencjonowania Open. W celu uniknięcia możliwej utraty środków zaleca się, aby klienci wykorzystali wszystkie środki w subskrypcji licencji Azure w ramach programu licencjonowania Open przed dodaniem konta do umowy EA.  
+
+### <a name="accounts-with-support-subscriptions"></a>Konta z subskrypcjami pomocy technicznej
+
+Podczas dodawania do witryny Enterprise Portal istniejących kont, które mają subskrypcję pomocy technicznej (i nie mają jeszcze subskrypcji pomocy technicznej umowy EA), należy pamiętać, że subskrypcja pomocy technicznej MOSA nie zostanie przeniesiona automatycznie i trzeba będzie ponownie kupić pomoc techniczną w ramach umowy EA. Okres prolongaty obowiązywania pomocy technicznej zostanie przedłużony do końca kolejnego miesiąca w celu zapewnienia czasu na ponowne zamówienie pomocy technicznej.
 
 ## <a name="view-usage-summary-and-download-reports"></a>Wyświetlanie podsumowania użycia i pobieranie raportów
 
 Administratorzy przedsiębiorstwa mogą wyświetlać podsumowanie danych użycia, wykorzystanych zobowiązań pieniężnych i opłat związanych z dodatkowym użyciem w witrynie Azure EA Portal. Opłaty są wyświetlane na poziomie podsumowania dla wszystkich kont i subskrypcji.
 
-Wyświetlanie szczegółowych informacji o użyciu określonych kont
+Aby wyświetlić szczegółowe informacje o użyciu dla określonych kont:
 
 Pobierz szczegółowy raport użycia. Kliknij pozycję **Raporty**, a następnie kliknij kartę **Pobieranie danych użycia**. Na liście raportów kliknij pozycję **Pobierz** dla miesięcznego raportu, który chcesz uzyskać.
 
@@ -302,10 +351,10 @@ Raport nie zawiera żadnych należnych podatków. Może wystąpić opóźnienie 
 Aby wyświetlić raporty i wykresy podsumowania użycia:
 
 1. W witrynie Azure EA Portal w lewym obszarze nawigacji kliknij pozycję **Raporty** i wyświetl kartę **Podsumowanie użycia**.  
-  ![](./media/billing-ea-portal-get-started/create-ea-view usage-summary-and-download-reports.png)
+  ![Tworzenie i wyświetlanie podsumowania użycia i pobieranie raportów](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports.png)
 2. Wybierz termin zobowiązania.
 3. Przełączaj między ustawieniem **M** (miesięczne) i **C** (niestandardowe) w prawym górnym rogu strony, aby wyświetlić **Podsumowanie użycia** z niestandardowymi datami rozpoczęcia i zakończenia.  
-  ![](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+  ![Tworzenie i wyświetlanie podsumowania użycia i pobieranie raportów w widoku niestandardowym](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 4. Wybierz okres lub miesiąc na wykresie, aby wyświetlić dodatkowe szczegóły.
 5. Wykres przedstawia użycie miesiąc do miesiąca z podziałem na wykorzystane użycie, nadpłatę za usługę, opłaty naliczane osobno i opłaty za korzystanie z witryny Marketplace.
 6. W wybranym miesiącu filtruj według działów, kont i subskrypcji poniżej wykresu.
@@ -346,10 +395,151 @@ Oto wideo pokazujące, jak pobrać informacje o użyciu:
 
 >[!VIDEO https://www.youtube.com/embed/eY797htT1qg]
 
-## <a name="schedule-an-onboarding-call"></a>Planowanie połączenia dotyczącego dołączania
+### <a name="advanced-report-download"></a>Zaawansowane pobieranie raportu
 
-Jeśli chcesz zaplanować osobistą sesję dołączania klienta, utwórz wniosek o pomoc techniczną na stronie [Azure EA Portal — pomoc techniczna](https://support.microsoft.com/supportrequestform/e114582c-4e51-af46-10b1-1f0cc141e133). Wybierz pozycję **Dołączanie** w sekcji **Kategoria problemu**.
+W przypadku raportowania dla określonych zakresów dat lub kont można użyć funkcji zaawansowanego pobierania raportu. Od 30 sierpnia 2016 r. format pliku wyjściowego został zmieniony z xlsx na csv w celu przystosowania do większych zestawów rekordów.
+
+1. Wybierz pozycję **Zaawansowane pobieranie raportu**.
+1. Wybierz pozycję **Odpowiedni zakres dat**.
+1. Wybierz pozycję **Odpowiednie konta**.
+1. Wybierz pozycję **Żądaj danych użycia**.
+1. Wybieraj przycisk **Odśwież** do momentu aktualizacji stanu raportu na **Pobierz**.
+1. Pobierz raport.
+
+## <a name="ea-term-glossary"></a>Słownik terminów umowy EA
+
+- **Konto**: Jednostka organizacyjna w witrynie Azure EA Portal używana do administrowania subskrypcjami i wykorzystywana do raportowania.
+- **Właściciel konta**: Osoba wyznaczona do zarządzania subskrypcjami i administratorami usługi na platformie Microsoft Azure. Może wyświetlać dane użycia na tym koncie i w skojarzonych z nim subskrypcjach.
+- **Aneks subskrypcji**: Pojedyncza jednoroczna lub współbieżna subskrypcja w ramach poprawki do rejestracji.
+- **Zobowiązanie**: Zobowiązanie rocznej kwoty pieniężnej dla usług platformy Microsoft Azure z obniżoną stawką zobowiązania za korzystanie z tej przedpłaty.
+- **Administrator działu**: Osoba wyznaczona do zarządzania działem, tworzenia nowych kont i właścicieli kont, wyświetlania szczegółów użycia dla działów, którymi zarządza, i wyświetlania kosztów po udzieleniu uprawnień.
+- **Numer rejestracji**: Unikatowy identyfikator przydzielany przez firmę Microsoft w celu identyfikowania konkretnej rejestracji skojarzonej z umową Enterprise Agreement.
+- **Administratora przedsiębiorstwa**: Osoba wyznaczona do zarządzania działami i właścicielami działów oraz kontami i właścicielami kont na platformie Microsoft Azure. Ma możliwość zarządzania administratorami przedsiębiorstwa, a także wyświetlania danych użycia, rozliczonych ilości i nierozliczonych opłat na wszystkich kontach i we wszystkich subskrypcjach skojarzonych z rejestracją przedsiębiorstwa.
+- **Umowa Enterprise Agreement**: Umowa licencyjna firmy Microsoft dla klientów ze scentralizowanymi zakupami, którzy chcą ustandaryzować całą swoją organizację na technologii firmy Microsoft i utrzymać infrastrukturę technologii informatycznej na standardzie oprogramowania firmy Microsoft.
+- **Rejestracja umów Enterprise Agreement**: Rejestracja w programie Enterprise Agreement zapewniającym produkty firmy Microsoft w obniżonych cenach.
+- **Konto Microsoft**: Usługa internetowa, która umożliwia stronom uczestniczącym uwierzytelnianie użytkownika za pomocą jednego zestawu poświadczeń.
+- **Poprawka rejestracji umowy Microsoft Azure Enterprise (poprawka rejestracji)** : Poprawka podpisana przez przedsiębiorstwo, która zapewnia dostęp do platformy Microsoft Azure w ramach rejestracji przedsiębiorstwa.
+- **Azure EA Portal**: Portal używany przez naszych klientów korporacyjnych do zarządzania kontami platformy Microsoft Azure i powiązanymi subskrypcjami.
+- **Ilość użytych zasobów**: Ilość pojedynczej usługi platformy Microsoft Azure wykorzystana w danym miesiącu.
+- **Administrator usługi**: Osoba wyznaczona do uzyskiwania dostępu do subskrypcji i projektów programistycznych oraz zarządzania nimi w witrynie Azure EA Portal.
+- **Subskrypcja**: Reprezentuje subskrypcję witryny Azure EA Portal i jest kontenerem usług platformy Microsoft Azure zarządzanych przez tego samego administratora usługi.
+- **Konto służbowe**: Dla organizacji, które skonfigurowały usługę Active Directory z federacją w chmurze i mają wszystkie konta w jednej dzierżawie.
+
+### <a name="enrollment-statuses"></a>Stany rejestracji:
+
+- **Oczekująca**: Administrator rejestracji musi zalogować się w witrynie Azure EA Portal. Po zalogowaniu rejestracja zostanie przełączona do stanu aktywnego.
+- **Aktywna**: Rejestracja jest aktywna i można tworzyć konta i subskrypcje w witrynie Azure EA Portal. Rejestracja pozostanie aktywna do daty zakończenia umowy Enterprise Agreement.
+- **Przedłużenie na czas nieokreślony**: Przedłużenie na czas nieokreślony występuje po terminie zakończenia umowy Enterprise Agreement. Umożliwia to klientom z umowami EA, którzy wybrali opcję przedłużenia, dalsze korzystanie z platformy Azure przez czas nieokreślony po zakończeniu umowy Enterprise Agreement. Zanim rejestracja umowy EA osiągnie datę zakończenia umowy Enterprise Agreement, administrator rejestracji powinien zdecydować, czy organizacja odnowi rejestrację przez dodanie kolejnego zobowiązania pieniężnego, przeniesie się do nowej rejestracji, przeprowadzi migrację do programu subskrypcji online firmy Microsoft (MOSP, Microsoft Online Subscription Program) lub potwierdzi wyłączenie wszystkich usług skojarzonych z daną rejestracją.
+- **Wygasła**: Klient z umową EA nie wybrał opcji przedłużenia i rejestracja umowy EA osiągnęła datę zakończenia umowy Enterprise Agreement — rejestracja wygaśnie, a wszystkie skojarzone usługi zostaną wyłączone.
+- **Przeniesiona**: Rejestracje, dla których wszystkie konta i usługi zostały przeniesione do nowej rejestracji, będą wyświetlane ze stanem Przeniesiona. Należy pamiętać, że rejestracje nie są przenoszone automatycznie w przypadku wygenerowania nowego numeru rejestracji podczas odnawiania. Aby nastąpiło automatyczne przeniesienie, należy uwzględnić poprzedni numer rejestracji w dokumentacji odnowienia klienta.
+
+## <a name="get-started-on-azure-ea-faq"></a>Wprowadzenie do umowy EA platformy Azure — często zadawane pytania
+
+Ten dokument zawiera szczegółowe informacje dotyczące typowych pytań, które zadawali klienci podczas procesu dołączania.  
+
+### <a name="can-i-associate-my-existing-azure-account-to-enterprise-enrollment"></a>Czy można skojarzyć istniejące konto platformy Azure z rejestracją Enterprise?
+
+Tak, można. Należy pamiętać, że wszystkie subskrypcje platformy Azure, dla których jesteś właścicielem konta, zostaną przekonwertowane na umowę Enterprise Agreement. Obejmuje to subskrypcje korzystające ze środków miesięcznych (np. Visual Studio, AzurePass, MPN, BizSpark itp.), co oznacza, że miesięczne środki zostaną utracone.
+
+### <a name="i-accidentally-associated-my-existing-azure-account-with-enterprise-enrollment-as-a-result-i-lost-my-monthly-credit-is-it-possible-to-get-my-monthly-credit-back"></a>Przypadkowo skojarzono moje istniejące konto platformy Azure z rejestracją Enterprise. W wyniku środki miesięczne zostały utracone. Czy jest możliwe odzyskanie tych środków miesięcznych?
+
+Aby odzyskać korzyść platformy Azure dla indywidualnej subskrypcji programu Visual Studio po uwierzytelnieniu się jako właściciel konta EA, gdy użyjesz tych samych danych logowania dla umowy EA, co dla subskrypcji programu Visual Studio, musisz wykonać następujące czynności:
+1. Usuń tego właściciela konta z witryny EA Portal po usunięciu lub przeniesieniu wszelkich posiadanych przez niego subskrypcji platformy Azure i poproś go o ponowne zarejestrowanie się w celu uzyskania indywidualnych korzyści platformy Azure dla programu Visual Studio.
+ LUB
+1. Usuń subskrybenta programu Visual Studio z witryny administracyjnej w portalu VLSC i ponownie przypisz subskrypcję, korzystając tym razem z innych danych logowania — następnie użytkownik może od nowa zarejestrować się w celu uzyskania indywidualnych korzyści platformy Azure dla programu Visual Studio.
+
+### <a name="what-type-of-subscription-should-i-create"></a>Jakiego typu subskrypcję należy utworzyć?
+
+Witryna EA Portal oferuje dwa typy subskrypcji dla klientów korporacyjnych:
+
+- Microsoft Azure Enterprise — idealne pod kątem:
+  - wszelkich zastosowań produkcyjnych
+  - najlepszych cen na podstawie wydatków na infrastrukturę
+  - Więcej szczegółów można znaleźć pod adresem https://azure.microsoft.com/pricing/enterprise-agreement/
+- Enterprise — tworzenie i testowanie. Idealne pod kątem:
+  - wszelkich zespołowych obciążeń tworzenia/testowania
+  - średnich i dużych indywidualnych obciążeń tworzenia/testowania
+  - dostępu do specjalnych obrazów MSDN i preferencyjnych stawek za usługi
+  - Więcej szczegółów można znaleźć pod adresem https://azure.microsoft.com/offers/ms-azr-0148p/
+
+### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Czy można przenieść własność subskrypcji na inne konto?
+
+Tak, można przenieść własność subskrypcji na inne konto. Jeśli na przykład konto A ma trzy subskrypcje, administrator przedsiębiorstwa może przenieść jedną subskrypcję na konto B, jedną na konto C i jedną na konto D lub wszystkie na konto E.
+
+Po przejściu do witryny EA, kliknięciu pozycji Zarządzaj > Konto i umieszczeniu wskaźnika myszy na pozycji **Konto** (skrajnie na prawo) zostanie wyświetlona opcja Przenoszenie własności (ikona zdjęcia portretowego) i opcja Przenoszenie subskrypcji (ikona listy).
+
+Ta opcja będzie widoczna tylko dla kont aktywnych.
+
+### <a name="i-see-subscription-name-defaults-to-offer-name-should-i-change-the-subscription-name-to-something-meaningful-to-my-organization"></a>Widzę, że nazwa subskrypcji to domyślnie nazwa oferty. Czy należy zmienić nazwę subskrypcji na coś znaczącego dla mojej organizacji?
+
+Każda utworzona subskrypcja domyślnie będzie miała nazwę wybranego typu oferty. Zalecamy zmianę nazwy subskrypcji na coś, co ułatwi śledzenie subskrypcji.
+
+**Aby zmienić nazwę:**
+1. Zaloguj się do witryny [https://account.windowsazure.com](https://account.windowsazure.com).
+1. Kliknij listę subskrypcji.
+1. Wybierz subskrypcję.
+1. Kliknij ikonę **Zarządzaj subskrypcją**.
+1. Edytuj szczegóły subskrypcji.
+
+### <a name="how-can-i-track-cost-incurred-by-cost-center"></a>Jak mogę śledzić koszty wygenerowane przez Centrum kosztów?
+
+Aby śledzić koszty wg. Centrum kosztów, należy zdefiniować Centrum kosztów na dowolnym z następujących poziomów:
+- Dział
+- Konto
+- Subskrypcja
+
+W zależności od potrzeb można użyć tego samego Centrum kosztów, aby śledzić użycie i koszty związane z określonym Centrum kosztów.
+
+Aby na przykład śledzić koszty dla określonego projektu, w którym uczestniczy wiele działów, można użyć Centrum kosztów na poziomie subskrypcji w celu śledzenia użycia i kosztów.
+
+Nie można zdefiniować Centrum kosztów na poziomie usługi. Jeśli chcesz śledzić użycie na poziomie usługi, możesz użyć funkcji tagowania dostępnej na poziomie usługi.
+
+### <a name="how-do-i-track-usage-and-spend-by-different-departments-in-my-organization"></a>Jak mogę śledzić użycie i wydatki dla różnych działów w mojej organizacji?
+
+W ramach rejestracji umowy EA możesz utworzyć tyle działów, ile potrzebujesz. Aby prawidłowo śledzić użycie, należy się upewnić, że subskrypcje nie są współużytkowane przez działy.
+
+Po zakończeniu tworzenia działów i subskrypcji można wyświetlić informacje przesyłane w raporcie użycia, który będzie pomocny w śledzeniu użycia i w zarządzaniu kosztami/wydatkami na poziomie działu.
+
+Dostęp do użycia możesz również uzyskać za pośrednictwem szczegółowych informacji interfejsu API. Przykładowy kod jest dostępny na stronie [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI).
+
+### <a name="can-i-set-the-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Czy mogę ustawić limit przydziału wydatków i otrzymywać alerty w miarę zbliżania się do wykorzystania limitu?
+
+Limit przydziału wydatków można ustawić na poziomie działu, a system automatycznie powiadomi Cię, gdy limit przydziału wydatków osiągnie 50%, 75%, 90% i 100% zdefiniowanej wartości.
+
+Aby zdefiniować limit przydziału wydatków, kliknij dział, dla którego chcesz dodać limit przydziału wydatków, i kliknij ikonę Edytuj. Kliknij przycisk **Zapisz**, aby zapisać szczegóły.
+
+### <a name="i-used-resource-groups-rgs-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>W celu zaimplementowania kontroli dostępu opartej na rolach i śledzenia użycia stosowano grupy zasobów. Jak można wyświetlić skojarzone szczegóły użycia?
+
+Informacje, takie jak „grupy zasobów” i „tag”, jeśli są używane, są śledzone na poziomie usługi, i są one dostępne w pliku do pobrania użycia szczegółowego (CSV), który można pobrać z witryny Azure EA Portal [https://ea.azure.com/report/downloadusage](https://ea.azure.com/report/downloadusage).
+
+Dostęp do użycia możesz również uzyskać za pośrednictwem szczegółowych informacji interfejsu API. Przykładowy kod jest dostępny na stronie [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI).
+
+Należy pamiętać, że tagi można stosować tylko do zasobów, które obsługują operacje Menedżera zasobów. W przypadku utworzenia maszyny wirtualnej, sieci wirtualnej lub magazynu za pomocą klasycznego modelu wdrażania (na przykład za pośrednictwem portalu klasycznego) nie można zastosować znacznika do takiego zasobu. Aby umożliwić obsługę tagowania, należy ponownie wdrożyć te zasoby za pomocą Menedżera zasobów. Wszystkie inne zasoby obsługują tagowanie.
+
+### <a name="can-i-perform-analyses-using-power-bi"></a>Czy mogę wykonywać analizy przy użyciu usługi Power BI?
+
+Tak. Pakiet zawartości Microsoft Azure Enterprise dla usługi Power BI umożliwia szybkie importowanie i analizowanie danych dotyczących wykorzystania platformy Azure na potrzeby rejestracji w przedsiębiorstwie. Sprawdź, który dział, konto lub subskrypcja odnotowały największe użycie oraz z której usługi organizacja korzystała najczęściej. Śledź trendy dotyczące wydatków i użycia.
+
+**Przejdź do witryny internetowej usługi Power BI:**
+
+ 1. Zaloguj się za pomocą ważnego konta służbowego.
+    - Konto służbowe może być takie samo jak użyte w celu uzyskania dostępu do rejestracji za pomocą witryny Azure EA Portal lub inne.
+ 1. Na pulpicie nawigacyjnym usług wybierz:
+    - kafelek Microsoft Azure Enterprise.
+    - Kliknij przycisk **Połącz**.
+ 1. Na ekranie „Nawiązywanie połączenia z platformą Azure Enterprise” wybierz:
+    - Adres URL środowiska platformy Azure: [https://ea.azure.com](https://ea.azure.com).
+    - Liczba miesięcy: wybierz z przedziału od 1 do 36.
+    - Numer rejestracji: podaj numer rejestracji.
+    - Kliknij przycisk **Dalej**.
+ 1. W polu Klucz uwierzytelniania podaj klucz interfejsu API. Klucz interfejsu API możesz uzyskać w witrynie Azure EA Portal na karcie „Pobierz użycie”: kliknij pozycję **Klucz dostępu interfejsu API**.
+    - Skopiuj i wklej klucz w polu „Klucz konta”.
+    - Załadowanie danych do usługi Power BI trwa około 5-30 minut w zależności od rozmiaru zestawu danych.
+
+Funkcja raportowania usługi Power BI jest dostępna dla bezpośrednich klientów umowy EA, partnerów i klientów pośrednich, którzy mogą wyświetlać informacje dotyczące rozliczeń.
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Administratorzy witryny Azure EA Portal powinni przeczytać artykuł [Administracja w witrynie Azure EA Portal](billing-ea-portal-administration.md), aby poznać typowe zadania administracyjne.
-- Jeśli potrzebujesz pomocy dotyczącej rozwiązywania problemów z witryną Azure EA Portal, zobacz [Rozwiązywanie problemów z dostępem do witryny Azure EA Portal](billing-ea-portal-troubleshoot.md).
+- Jeśli potrzebujesz pomocy w rozwiązywaniu problemów z witryną Azure EA Portal, zobacz [Rozwiązywanie problemów z dostępem do witryny Azure EA Portal](billing-ea-portal-troubleshoot.md).
+- Przewodnik dołączania do umowy EA platformy Azure znajduje się w temacie [Przewodnik po dołączaniu do umowy EA platformy Azure](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide).

@@ -4,16 +4,16 @@ description: W tym artykule opisano typowe zadania wykonywane przez administrato
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 11/08/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3c992274ba8ff82795e9a4f917c67e7ef379d13e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329339"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888443"
 ---
 # <a name="azure-ea-portal-administration"></a>Administracja przy użyciu witryny Azure EA Portal
 
@@ -25,13 +25,55 @@ Administratorzy przedsiębiorstwa mają największe uprawnienia podczas zarządz
 
 ## <a name="update-user-state-from-pending-to-active"></a>Aktualizowanie stanu użytkownika z „oczekujące” na „aktywne”
 
-Gdy nowi właściciele konta są po raz pierwszy dodawani do rejestracji w ramach umowy EA, ich stan jest wyświetlany jako _oczekujące_. Gdy nowy właściciel konta otrzymuje powitalną wiadomość e-mail z informacjami o aktywacji, może się zalogować, aby aktywować swoje konto. Po aktywowaniu konta stan konta jest aktualizowany z _oczekujące_ na _aktywne_. Nowi użytkownicy mogą zobaczyć monit o wprowadzenie imienia i nazwiska, aby utworzyć konto komercyjne. W takiej sytuacji muszą dodać wymagane informacje, aby kontynuować pracę, a konto jest aktywowane.
+Gdy nowi właściciele konta są po raz pierwszy dodawani do rejestracji w ramach umowy EA, ich stan jest wyświetlany jako _oczekujące_. Gdy nowy właściciel konta otrzymuje powitalną wiadomość e-mail z informacjami o aktywacji, może się zalogować, aby aktywować swoje konto. Po aktywowaniu konta stan konta jest aktualizowany z _oczekujące_ na _aktywne_. Właściciel konta musi odczytać komunikat z ostrzeżeniem, a następnie kliknąć przycisk **Kontynuuj**. Nowi użytkownicy mogą zobaczyć monit o wprowadzenie imienia i nazwiska, aby utworzyć konto komercyjne. W takiej sytuacji muszą dodać wymagane informacje, aby kontynuować pracę, a konto jest aktywowane.
 
 ## <a name="add-a-department-admin"></a>Dodawanie administratora działu
 
 Po utworzeniu działu przez administratora portalu Azure EA administrator oferty Azure Enterprise może dodać administratorów działu i skojarzyć ich z działem. Administrator działu może tworzyć nowe konta. Nowe konta są potrzebne do tworzenia subskrypcji portalu Azure EA.
 
 Aby uzyskać więcej informacji o dodawaniu administratora działu, zobacz [Tworzenie administratora działu w portalu Azure EA](billing-ea-portal-get-started.md#add-a-department-admin).
+
+## <a name="associate-an-account-to-a-department"></a>Kojarzenie konta z działem
+
+Administratorzy przedsiębiorstwa mogą skojarzyć istniejące konta z działami w ramach rejestracji.
+
+### <a name="to-associate-an-account-to-a-department"></a>Aby skojarzyć konto z działem
+
+1. Zaloguj się do witryny Azure EA Portal jako administrator przedsiębiorstwa.
+1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej.
+1. Kliknij pozycję **Dział**.
+1. Umieść kursor na wierszu z odpowiednim kontem i kliknij ikonę ołówka po prawej stronie.
+1. Wybierz żądany dział z menu rozwijanego.
+1. Kliknij pozycję **Zapisz**.
+
+## <a name="department-spending-quotas"></a>Limity przydziału wydatków dla działu
+
+Klienci z umowami EA mogą ustawiać lub zmieniać limity przydziałów wydatków dla każdego działu w ramach rejestracji. Kwota przydziału wydatków jest ustawiana dla bieżącego okresu zobowiązania. Na koniec bieżącego okresu zobowiązania system przedłuży istniejący limit przydziału wydatków na następny okres zobowiązania, chyba że wartości zostaną zaktualizowane.
+
+Administrator działu może wyświetlić limit przydziału wydatków, ale tylko administrator przedsiębiorstwa może zaktualizować wartość limitu przydziału. Administrator przedsiębiorstwa i administrator działu otrzymają powiadomienia, gdy limit przydziału zostanie wykorzystany w 50%, 75%, 90%, i 100%.
+
+### <a name="enterprise-administrator-to-set-the-quota"></a>Ustawianie limitu przydziału przez administratora przedsiębiorstwa:
+
+ 1. Otwórz witrynę Azure EA Portal.
+ 1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej.
+ 1. Kliknij kartę **Dział**.
+ 1. Kliknij żądany dział.
+ 1. Kliknij ikonę ołówka w sekcji Szczegóły działu lub kliknij przycisk **+ Dodaj dział**, aby dodać limit przydziału wydatków wraz z nowym działem.
+ 1. W obszarze Szczegóły działu wprowadź kwotę limitu przydziału wydatków w walucie rejestracji w polu Limit przydziału wydatków $ (wartość musi być większa niż 0).
+    - W tym miejscu można także edytować nazwę działu i centrum kosztów.
+ 1. Wybierz pozycję **Zapisz**.
+
+Limit przydziału wydatków działu będzie teraz widoczny w widoku Lista działów na karcie Dział. Na koniec bieżącego zobowiązania witryna Azure EA Portal zachowa limity przydziału wydatków na następny okres zobowiązania.
+
+Kwota limitu przydziału dla działu jest niezależna od bieżącego zobowiązania pieniężnego. Ponadto kwota limitu przydziału i alerty są stosowane tylko do użycia tej samej firmy. Limit przydziału wydatków dla działu jest przeznaczony wyłącznie do celów informacyjnych i nie wymusza limitów wydatków.
+
+### <a name="department-administrator-to-view-the-quota"></a>Wyświetlanie limitu przydziału przez administratora działu:
+
+1. Otwórz witrynę Azure EA Portal.
+1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej.
+1. Kliknij kartę **Dział** i wyświetl widok Lista działów z limitami przydziałów wydatków.
+
+Jeśli jesteś klientem pośrednim, funkcje kosztów muszą zostać włączone przez partnera handlowego.
 
 ## <a name="enterprise-user-roles"></a>Role użytkownika przedsiębiorstwa
 
@@ -43,13 +85,35 @@ Witryna Azure EA Portal ułatwia administrowanie kosztami i użyciem dla umowy E
 
 Każda rola ma inny poziom dostępu i uprawnień.
 
-Aby uzyskać więcej informacji na temat ról użytkownika, zobacz temat dotyczący ról użytkownika przedsiębiorstwa.
+Aby uzyskać więcej informacji na temat ról użytkownika, zobacz [Role użytkownika przedsiębiorstwa](https://docs.microsoft.com/azure/billing/billing-ea-portal-get-started#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Dodawanie konta usługi Azure EA
 
 Konto umowy Azure EA to jednostka organizacyjna w witrynie Azure EA Portal, która jest używana do administrowania subskrypcjami, a do raportowania. Aby uzyskać dostęp do usług platformy Azure i korzystać z nich, musisz utworzyć konto lub poprosić o jego utworzenie.
 
 Aby uzyskać więcej informacji na temat kont platformy Azure, zobacz temat dotyczący dodawania konta.
+
+## <a name="enterprise-devtest-offer"></a>Oferta Enterprise — tworzenie i testowanie
+
+Jako administrator przedsiębiorstwa platformy Azure możesz teraz umożliwiać właścicielom kont w organizacji tworzenie subskrypcji na podstawie oferty Tworzenie i testowanie w ramach umowy EA. Możesz to zrobić, zaznaczając pole Tworzenie i testowanie dla danego właściciela konta z poziomu witryny Azure EA Portal.
+
+Po zaznaczeniu pola Tworzenie i testowanie poinformuj właściciela konta, aby umożliwić mu skonfigurowanie subskrypcji w ramach umowy EA Tworzenie i testowanie dla zespołów subskrybentów tworzenia i testowania.
+
+Oferta ta umożliwia aktywnym subskrybentom programu Visual Studio uruchamianie obciążeń programowania i testowania na platformie Azure według specjalnych stawek za tworzenie i testowanie z dostępem do pełnej galerii obrazów tworzenia i testowania, w tym systemów Windows 8.1 i Windows 10.
+
+### <a name="to-set-up-the-enterprise-devtest-offer"></a>Aby skonfigurować ofertę Enterprise — tworzenie i testowanie:
+
+1. Zaloguj się jako administrator przedsiębiorstwa.
+1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej.
+1. Kliknij kartę **Konto**.
+1. Kliknij wiersz dla konta, dla którego chcesz włączyć dostęp do tworzenia i testowania.
+1. Kliknij ikonę ołówka po prawej stronie wiersza.
+1. Zaznacz pole wyboru Tworzenie i testowanie.
+1. Wybierz pozycję **Zapisz**.
+
+Kiedy użytkownik zostanie dodany jako właściciel konta za pośrednictwem witryny Azure EA Portal, wszystkie subskrypcje platformy Azure skojarzone z właścicielem konta, które są oparte na ofercie Tworzenie i testowanie w ramach płatności zgodnie z rzeczywistym użyciem lub w ramach ofert środków miesięcznych dla subskrybentów programu Visual Studio zostaną przekonwertowane na ofertę Tworzenie i testowanie w ramach umowy EA. Subskrypcje oparte na innych typach ofert, takich jak Płatność zgodnie z rzeczywistym użyciem, skojarzone z właścicielem konta, zostaną przekonwertowane na oferty Microsoft Azure Enterprise.
+
+Obecnie oferta Tworzenie i testowanie nie ma zastosowania do klientów platformy Azure dla instytucji rządowych.
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Przenoszenie konta przedsiębiorstwa do nowej rejestracji
 
@@ -85,7 +149,6 @@ Po zażądaniu przeniesienia konta podaj następujące informacje:
 Inne zagadnienia, które należy wziąć pod uwagę przed przeniesieniem konta:
 
 - Zatwierdzenie od administratora umowy EA jest wymagane w przypadku rejestracji docelowej i źródłowej
-  - W niektórych przypadkach firma Microsoft może zażądać dodatkowego zatwierdzenia od administratora umowy EA z rejestracji źródłowej
 - Jeśli przeniesienie konta nie spełnia Twoich wymagań, rozważ przeniesienie rejestracji.
 - Przenoszenie kont powoduje przeniesienie wszystkich usług i subskrypcji powiązanych z określonymi kontami.
 - Po zakończeniu przenoszenia przeniesione konto będzie widoczne jako nieaktywne w ramach rejestracji źródłowej.
@@ -102,6 +165,9 @@ Po utworzeniu żądania dotyczącego przeniesienia całej rejestracji w przedsi�
 - Stan rejestracji zostanie ustawiono na _Przeniesione_. Przeniesiona rejestracja jest dostępna wyłącznie dla celów raportowania użycia historycznego.
 - Do przeniesionej rejestracji nie można dodawać ról ani subskrypcji. Stan Przeniesione uniemożliwia dodatkowe użycie w odniesieniu do rejestracji.
 - Pozostałe saldo zobowiązania pieniężnego w umowie zostanie utracone, łącznie z przyszłymi okresami.
+-   Jeśli rejestracja, z której się przenosisz, obejmuje zakupy wystąpień zarezerwowanych, opłata za zakup wystąpień zarezerwowanych pozostaje w rejestracji źródłowej, jednak wszystkie korzyści wynikające z wystąpienia zarezerwowanego zostaną przeniesione do wykorzystania w nowej rejestracji.
+-   Opłata za jednorazowe zakupy w witrynie Marketplace i wszystkie miesięczne opłaty stałe naliczone już w ramach starej rejestracji nie zostaną przeniesione do nowej rejestracji. Opłaty witryny Marketplace naliczone na podstawie użycia zostaną przeniesione.
+-   Po przeniesieniu rejestracji z datą wsteczną wszystkie opłaty jednorazowe wynikające z zakupów pozostaną w rejestracji źródłowej.
 
 ### <a name="effective-transfer-date"></a>Data obowiązywania przeniesienia
 
@@ -132,7 +198,6 @@ Po zażądaniu przeniesienia rejestracji podaj następujące informacje:
 Inne zagadnienia, które należy wziąć pod uwagę przed przeniesieniem rejestracji:
 
 - Zatwierdzenie od administratora umowy EA jest wymagane w przypadku rejestracji docelowej i źródłowej.
-  - W niektórych przypadkach firma Microsoft może zażądać dodatkowego zatwierdzenia od administratora umowy EA z rejestracji źródłowej.
 - Jeśli przeniesienie rezerwacji nie spełnia Twoich wymagań, rozważ przeniesienie konta.
 - Tylko wybrane przez Ciebie konta są przenoszone. Możesz poprosić o przeniesienie wszystkich kont.
 - Rejestracja źródłowa zachowuje stan jako aktywny/rozszerzony. Z rejestracji można korzystać do momentu jej wygaśnięcia.
@@ -164,14 +229,26 @@ Jeśli odbiorca musi ograniczyć dostęp do swoich zasobów platformy Azure, pow
 3. Wybierz zasób.
 4. Na stronie zasobu kliknij pozycję **Ustawienia**, aby wyświetlić i zaktualizować istniejące wpisy tajne.
 
+## <a name="delete-subscription"></a>Usuwanie subskrypcji
 
+Aby usunąć subskrypcję, w której jesteś właścicielem konta:
 
-## <a name="close-an-azure-enterprise-enrollment"></a>Zamykanie rejestracji platformy Azure w przedsiębiorstwie
+1. Zaloguj się do witryny Azure Portal przy użyciu poświadczeń skojarzonych z Twoim kontem.
+1. W menu Centrum wybierz pozycję **Subskrypcje**.
+1. Na karcie subskrypcji w lewym górnym rogu strony wybierz subskrypcję, którą chcesz anulować, a następnie kliknij pozycję **Anuluj subskrypcję**, aby otworzyć kartę anulowania.
+1. Wprowadź nazwę subskrypcji i wybierz przyczynę anulowania, a następnie kliknij przycisk **Anuluj subskrypcję**.
 
-Jeśli chcesz zamknąć rejestrację w portalu Azure EA, możesz:
+Pamiętaj, że tylko administratorzy kont mogą anulować subskrypcje.
 
-- Anulować wszystkie subskrypcje skojarzone z umową Azure EA w witrynie Azure Portal.
-- Skontaktować się z doradcą oprogramowania lub partnerem klienta i poprosić go o zamknięcie umowy Enterprise Agreement platformy Azure.
+## <a name="delete-an-account"></a>Usuwanie konta
+
+Usunięcie konta można wykonać tylko dla aktywnych kont bez aktywnych subskrypcji.
+
+1. W witrynie Enterprise Portal wybierz pozycję **Zarządzanie** w obszarze nawigacji po lewej stronie.
+1. Kliknij kartę **Konto**.
+1. W tabeli Konta wybierz konto, które chcesz usunąć.
+1. Kliknij ikonę X znajdującą się po prawej stronie wiersza Konta.
+1. Jeśli na koncie nie ma aktywnych subskrypcji, kliknij przycisk **Tak** w wierszu Konto, aby potwierdzić usunięcie konta.
 
 ## <a name="update-notification-settings"></a>Aktualizowanie ustawień powiadomień
 
@@ -195,6 +272,31 @@ Nowy kontakt dla powiadomień zostanie wyświetlony w sekcji **Kontakt dla powia
 
 Możesz pominąć powiadomienia dotyczące cyklu życia ze _zbliżającą się datą zakończenia okresu pokrycia_ oraz _ze zbliżającą się datą wyłączenia i anulowania aprowizacji_. Wyłączenie powiadomień dotyczących cyklu życia powoduje pomijanie powiadomień o okresie pokrycia i dacie zakończenia obowiązywania umowy.
 
+## <a name="manage-partner-administrators"></a>Zarządzanie administratorami partnerów
+
+Każdy administrator partnera w witrynie Azure EA Portal ma możliwość dodawania i usuwania innych administratorów partnerów. Administratorzy partnerów są powiązani z organizacjami partnerskimi rejestracji pośrednich i nie są powiązani bezpośrednio z rejestracjami.
+
+### <a name="add-a-partner-administrator"></a>Dodawanie administratora partnera
+
+Aby wyświetlić listę wszystkich rejestracji skojarzonych z tą samą organizacją partnerską, co bieżący użytkownik, kliknij kartę **Rejestracja** i wybierz odpowiednie pole rejestracji.
+
+1. Zaloguj się jako administrator partnera.
+1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej.
+1. Kliknij kartę **Partner**.
+1. Kliknij pozycję **+ Dodaj administratora** i wypełnij pole adresu e-mail, kontaktu do powiadomień i szczegółów powiadomienia.
+1. Wybierz przycisk **Dodaj**.
+
+### <a name="remove-a-partner-administrator"></a>Usuwanie administratora partnera
+
+Aby wyświetlić listę wszystkich rejestracji skojarzonych z tą samą organizacją partnerską, co bieżący użytkownik, kliknij kartę **Rejestracja** i wybierz odpowiednie pole rejestracji.
+
+1. Zaloguj się jako administrator partnera.
+1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej.
+1. Kliknij kartę **Partner**.
+1. W sekcji Administrator wybierz odpowiedni wiersz dla administratora, którego chcesz usunąć.
+1. Naciśnij ikonę X po prawej stronie.
+1. Potwierdź, że chcesz usunąć.
+
 ## <a name="manage-partner-notifications"></a>Zarządzanie powiadomieniami partnerów
 
 Administratorzy partnerów mogą zarządzać częstotliwością otrzymywania powiadomień o użyciu we własnych rejestracjach. Automatycznie otrzymują oni powiadomienia dotyczące nierozliczonego salda. Mogą zmieniać częstotliwość poszczególnych powiadomień na powiadomienia comiesięczne, cotygodniowe lub codzienne albo wyłączać je całkowicie.
@@ -203,7 +305,7 @@ Jeśli użytkownik nie otrzymuje powiadomienia, sprawdź, czy ustawienia powiado
 
 1. Zaloguj się do witryny Azure EA Portal jako administrator partnera.
 2. Kliknij pozycję **Zarządzanie**, a następnie kliknij kartę **Partner**.
-3. Przejrzyj listę administratorów w sekcji **Administrator**.
+3. Przejrzyj listę administratorów w sekcji Administrator.
 4. Aby edytować preferencje powiadomień, umieść kursor nad odpowiednim administratorem i kliknij symbol ołówka.
 5. Zwiększ częstotliwość powiadamiania i zmodyfikuj powiadomienia dotyczące cyklu życia zgodnie z wymaganiami.
 6. W razie potrzeby dodaj kontakt, a następnie kliknij przycisk **Dodaj**.
@@ -211,14 +313,75 @@ Jeśli użytkownik nie otrzymuje powiadomienia, sprawdź, czy ustawienia powiado
 
 ![Przykład pokazujący okno dodawania kontaktu ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
+## <a name="view-enrollments-for-partner-administrators"></a>Wyświetlanie rejestracji dla administratorów partnerów
+
+Administratorzy partnerów mogą wyświetlić listę wszystkich swoich bezpośrednich i pośrednich rejestracji w witrynie Azure EA Portal. Pola zawierające przegląd każdej rejestracji będą wyświetlane z numerem rejestracji, nazwą rejestracji, saldem i kwotami nadwyżkowymi.
+
+### <a name="view-a-list-of-enrollments"></a>Wyświetlanie listy rejestracji
+
+1. Zaloguj się jako administrator partnera.
+1. Kliknij pozycję **Zarządzaj** w obszarze nawigacji po lewej stronie.
+1. Kliknij kartę **Rejestracja**.
+1. Wybierz pole dla żądanej rejestracji.
+
+Widok wszystkich rejestracji pozostanie w górnej części strony razem z polami dla każdej rejestracji. Ponadto możesz przechodzić między rejestracjami, klikając numer bieżącej rejestracji w obszarze nawigacji po lewej stronie. Zostanie wyświetlone wyskakujące okienko umożliwiające wyszukiwanie rejestracji lub wybranie innej rejestracji przez kliknięcie odpowiedniego pola.
+
 ## <a name="azure-sponsorship-offer"></a>Oferta dostępu sponsorowanego Azure
 
-Oferta dostępu sponsorowanego Azure to ograniczone, sponsorowane konto platformy Microsoft Azure. Jest ono dostępne tylko na zaproszenie e-mail dla ograniczonej liczby klientów wybranych przez firmę Microsoft. Jeśli masz upoważnienie do oferty dostępu sponsorowanego Microsoft Azure, otrzymasz zaproszenie e-mail oferty dla Twojego identyfikatora konta.
+Oferta dostępu sponsorowanego Azure to ograniczone, sponsorowane konto platformy Microsoft Azure. Jest ono dostępne tylko na zaproszenie e-mail dla ograniczonej liczby klientów wybranych przez firmę Microsoft. Jeśli masz upoważnienie do oferty dostępu sponsorowanego Microsoft Azure, otrzymasz zaproszenie e-mail dla Twojego identyfikatora konta.
 
-Aby uzyskać więcej informacji, zobacz:
+Aby uzyskać więcej informacji, utwórz [wniosek o pomoc techniczną](https://aka.ms/azrsponsorship) dotyczący aktywacji sponsorowania.
 
-- Wniosek o pomoc techniczną dotyczącą aktywacji dostępu sponsorowanego — http://aka.ms/azrsponsorship
+## <a name="conversion-to-work-or-school-account-authentication"></a>Konwersja na uwierzytelnianie konta służbowego
+
+Użytkownicy z umową Azure Enterprise mogą konwertować typ uwierzytelniania z konta Microsoft (MSA lub Live ID) na konto służbowe (które używa usługi Active Directory na platformie Azure).
+
+Aby rozpocząć:
+
+1. Dodaj konto służbowe do witryny Azure EA Portal w wymaganych rolach.
+1. W przypadku wystąpienia błędów konto może być nieprawidłowe w usłudze Active Directory.  Platforma Azure używa głównej nazwy użytkownika (UPN), która nie zawsze jest identyczna z adresem e-mail.
+1. Uwierzytelnij się w witrynie Azure EA Portal za pomocą konta służbowego.
+
+### <a name="to-convert-subscriptions-from-microsoft-accounts-to-work-or-school-accounts"></a>Aby przekonwertować subskrypcje z kont Microsoft na konta służbowe:
+
+1. Zaloguj się do portalu zarządzania przy użyciu konta Microsoft, do którego należą subskrypcje.
+1. Użyj transferu własności konta, aby przejść do nowego konta.
+1. Teraz konto Microsoft powinno być wolne od aktywnych subskrypcji i można je usunąć.
+1. Wszystkie usunięte konta pozostaną widoczne w portalu w stanie nieaktywnym z powodów związanych z rozliczeniami historycznymi.  Możesz odfiltrować je z widoku, zaznaczając pole wyboru, aby wyświetlić tylko aktywne konta.
+
+## <a name="account-subscription-ownership-faq"></a>Własność subskrypcji konta — często zadawane pytania
+
+Ten dokument zawiera odpowiedzi na często zadawane pytania dotyczące własności subskrypcji konta.
+
+### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Ilu właścicieli konta platformy Azure można mieć na subskrypcję?
+
+Dozwolony jest tylko jeden właściciel konta na subskrypcję.  Dodatkowe role można dodawać przy użyciu funkcji dostępu opartego na rolach lub kontroli dostępu (zarządzanie dostępem i tożsamościami) na karcie subskrypcji w lewym górnym rogu strony [portal.azure.com]] (https://portal.azure.com).
+
+### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Czy właściciel konta platformy Azure może być wymieniony w więcej niż jednym dziale?
+
+Właściciel konta może być skojarzony tylko z jednym działem.  Ma to na celu zapewnienie dokładnego monitorowania i rozdzielania kosztów/wydatków związanych z działem, do którego jest dopasowany w ramach rejestracji EA w witrynie Azure EA Portal.
+
+### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Czy właściciel konta platformy Azure może być wymieniony jako grupa zabezpieczeń?
+
+Nie, właściciel subskrypcji musi być unikatowym kontem Microsoft (MSA) lub uwierzytelnieniem usługi Azure Active Directory (AAD). Aby uwzględnić dziedziczenie w organizacji, możesz rozważyć utworzenie kont ogólnych i użycie usługi AAD w celu zarządzania dostępem do subskrypcji.
+
+### <a name="can-an-individual-user-own-multiple-subscriptions"></a>Czy użytkownicy indywidualni mogą mieć wiele subskrypcji?
+
+Właściciel konta platformy Azure może utworzyć nieograniczoną liczbę subskrypcji i zarządzać nimi.
+
+### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Jak mogę wyświetlić wszystkie subskrypcje mojej organizacji lub uzyskać do nich dostęp?
+
+Obecnie robi się to za pomocą zasad. Oznacza to, że należy wymagać tego dla każdej utworzonej subskrypcji i że Twoje konto jest dodawane do roli subskrypcji przy użyciu dostępu opartego na rolach.
+
+### <a name="where-do-i-go-to-create-a-subscription"></a>Gdzie mogę utworzyć subskrypcję?
+
+Aby można było utworzyć subskrypcję oferty w ramach umowy Enterprise Azure (EA), Twoje konto musi zostać dodane do roli właściciela konta przez administratora rejestracji EA w witrynie Azure EA Portal. Następnie należy zalogować się w witrynie Azure EA Portal w celu uzyskania uprawnień do tworzenia subskrypcji typu oferta EA. Zalecamy, aby pierwszą subskrypcję EA utworzyć przy użyciu linku „+ Dodaj subskrypcję” na karcie subskrypcji w witrynie EA Portal.  Jednak po uzyskaniu uprawnień przez konto łatwiejsze może być tworzenie subskrypcji na stronie portal.azure.com na karcie subskrypcji w lewym górnym rogu strony, gdzie można utworzyć subskrypcję i zmienić jej nazwę w jednym kroku.
+
+### <a name="who-can-create-a-subscription"></a>Kto może utworzyć subskrypcję?
+
+Aby utworzyć subskrypcję oferty typu Enterprise Azure, musisz mieć uprawnienia w roli właściciela konta w witrynie [EA Portal](https://ea.azure.com).
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Przeczytaj więcej o tym, jak [rezerwacje maszyn wirtualnych](billing-ea-portal-vm-reservations.md) mogą pomóc Ci zaoszczędzić pieniądze.
 - Jeśli potrzebujesz pomocy w rozwiązywaniu problemów z witryną Azure EA Portal, zobacz [Rozwiązywanie problemów z dostępem do witryny Azure EA Portal](billing-ea-portal-troubleshoot.md).
