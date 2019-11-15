@@ -1,17 +1,17 @@
 ---
-title: Zarządzanie serwerami VMware vCenter na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs "
+title: Zarządzanie serwerami VMware vCenter w Azure Site Recovery
 description: W tym artykule opisano, jak dodawać i zarządzać programem VMware vCenter na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 59088d8351bf89c859312774e3e9e396be8dd532
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904253"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083975"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Zarządzanie programem VMware vCenter Server
 
@@ -35,14 +35,14 @@ Synchronizacja informacji o koncie z usługą Site Recovery trwa około 15 minut
 
 |**Zadanie** | **Konto** | **Uprawnienia** | **Szczegóły**|
 |--- | --- | --- | ---|
-|**Automatyczne odnajdywanie/Migrowanie (bez powrotu po awarii)** | Potrzebujesz co najmniej użytkownika tylko do odczytu | Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do** obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).|
-|**Replikacja/tryb failover** | Potrzebujesz co najmniej użytkownika tylko do odczytu| Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do** obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).<br/><br/> Przydatne do migracji, ale nie pełna replikacja, tryb failover i powrót po awarii.|
-|**Replikacja/tryb failover/powrót po awarii** | Sugerujemy utworzenie roli (AzureSiteRecoveryRole) z wymaganymi uprawnieniami, a następnie przypisanie roli do użytkownika lub grupy programu VMware | Obiekt centrum danych — > propagowania do obiektu podrzędnego, rola = AzureSiteRecoveryRole<br/><br/> Magazyn danych -> przydzielanie miejsca, przegląd magazynu danych, operacje na plikach niskiego poziomu, usuwanie pliku, aktualizowanie plików maszyn wirtualnych<br/><br/> Sieć -> przypisywanie sieci<br/><br/> Zasób -> przypisywanie maszyny wirtualnej do puli zasobów, migracja wyłączonej maszyny wirtualnej, migracja włączonej maszyny wirtualnej<br/><br/> Zadania -> tworzenie zadania, aktualizowanie zadania<br/><br/> Maszyna wirtualna -> konfiguracja<br/><br/> Maszyna wirtualna -> interakcja -> odpowiadanie na pytanie, połączenie z urządzeniem, konfigurowanie nośnika CD, konfigurowanie dyskietki, wyłączanie, włączanie, instalowanie narzędzi VMware<br/><br/> Maszyna wirtualna -> spis -> tworzenie, rejestrowanie, wyrejestrowywanie<br/><br/> Maszyna wirtualna -> aprowizowanie -> zezwalanie na pobieranie maszyny wirtualnej, zezwalanie na przekazywanie plików maszyny wirtualnej<br/><br/> Maszyna wirtualna -> migawki -> usuwanie migawek | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do** obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).|
+|**Automatyczne odnajdywanie/Migrowanie (bez powrotu po awarii)** | Potrzebujesz co najmniej użytkownika tylko do odczytu | Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do obiektu podrzędnego** do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).|
+|**Replikacja/tryb failover** | Potrzebujesz co najmniej użytkownika tylko do odczytu| Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do obiektu podrzędnego** do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).<br/><br/> Przydatne do migracji, ale nie pełna replikacja, tryb failover i powrót po awarii.|
+|**Replikacja/tryb failover/powrót po awarii** | Sugerujemy utworzenie roli (AzureSiteRecoveryRole) z wymaganymi uprawnieniami, a następnie przypisanie roli do użytkownika lub grupy programu VMware | Obiekt centrum danych — > propagowania do obiektu podrzędnego, rola = AzureSiteRecoveryRole<br/><br/> Magazyn danych -> przydzielanie miejsca, przegląd magazynu danych, operacje na plikach niskiego poziomu, usuwanie pliku, aktualizowanie plików maszyn wirtualnych<br/><br/> Sieć -> przypisywanie sieci<br/><br/> Zasób -> przypisywanie maszyny wirtualnej do puli zasobów, migracja wyłączonej maszyny wirtualnej, migracja włączonej maszyny wirtualnej<br/><br/> Zadania -> tworzenie zadania, aktualizowanie zadania<br/><br/> Maszyna wirtualna -> konfiguracja<br/><br/> Maszyna wirtualna -> interakcja -> odpowiadanie na pytanie, połączenie z urządzeniem, konfigurowanie nośnika CD, konfigurowanie dyskietki, wyłączanie, włączanie, instalowanie narzędzi VMware<br/><br/> Maszyna wirtualna -> spis -> tworzenie, rejestrowanie, wyrejestrowywanie<br/><br/> Maszyna wirtualna -> aprowizowanie -> zezwalanie na pobieranie maszyny wirtualnej, zezwalanie na przekazywanie plików maszyny wirtualnej<br/><br/> Maszyna wirtualna -> migawki -> usuwanie migawek | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do obiektu podrzędnego** do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).|
 
 
 ## <a name="add-vmware-server-to-the-vault"></a>Dodawanie serwera VMware do magazynu
 
-1. W Azure Portal otwórz magazyn > **Site Recovery** > **serwery konfiguracji**infrastruktury i Otwórz serwer konfiguracji.
+1. W Azure Portal otwórz magazyn > **Site Recovery infrastruktury** > **konfiguracjami**i Otwórz serwer konfiguracji.
 2. Na stronie **szczegółów** kliknij pozycję **+ vCenter**.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
@@ -56,16 +56,16 @@ Zmodyfikuj poświadczenia używane do nawiązania połączenia z serwerem vCente
 
    ![Dodaj konto](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. Podaj szczegóły nowego konta, a następnie kliknij przycisk **OK** , aby go dodać. Konto powinno mieć uprawnienia wymienione [powyżej](#account-permissions).
-4. Na Azure Portal otwórz magazyn > **Site Recovery** > **serwery konfiguracji**infrastruktury i Otwórz serwer konfiguracji.
+4. Na Azure Portal otwórz magazyn > **Site Recovery infrastruktury** > **Configurations**i Otwórz serwer konfiguracji.
 5. Na stronie **szczegółów** kliknij przycisk **Odśwież serwer**.
-6. Po zakończeniu zadania odświeżania serwera wybierz vCenter Server, aby otworzyć stronę podsumowania programu vCenter .
+6. Po zakończeniu zadania odświeżania serwera wybierz vCenter Server, aby otworzyć stronę **podsumowania** programu vCenter.
 7. W polu **konto hosta programu vCenter Server/vSphere** wybierz nowo dodane konto, a następnie kliknij przycisk **Zapisz**.
 
    ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>Usuwanie serwera vCenter
 
-1. W Azure Portal otwórz magazyn > **Site Recovery** > **serwery konfiguracji**infrastruktury i Otwórz serwer konfiguracji.
+1. W Azure Portal otwórz magazyn > **Site Recovery infrastruktury** > **konfiguracjami**i Otwórz serwer konfiguracji.
 2. Na stronie **szczegóły** wybierz serwer vCenter.
 3. Kliknij przycisk **Usuń** .
 
@@ -74,7 +74,7 @@ Zmodyfikuj poświadczenia używane do nawiązania połączenia z serwerem vCente
 ## <a name="modify-the-vcenter-ip-address-and-port"></a>Modyfikowanie adresu IP i portu programu vCenter
 
 1. Zaloguj się do Portalu Azure.
-2. Przejdź do **magazynu** > Recovery Services**Site Recovery** > **serwery konfiguracji**infrastruktury.
+2. Przejdź do **magazynu Recovery Services** > **Site Recovery infrastruktury** > **serwery konfiguracji**.
 3. Kliknij serwer konfiguracji, do którego zostanie przypisany program vCenter.
 4. W sekcji **serwery vCenter** kliknij program vCenter, który chcesz zmodyfikować.
 5. Na stronie Podsumowanie programu vCenter zaktualizuj adres IP i port vCenter w odpowiednich polach, a następnie Zapisz zmiany.
@@ -88,7 +88,7 @@ Zmodyfikuj poświadczenia używane do nawiązania połączenia z serwerem vCente
 Aby przeprowadzić migrację wszystkich maszyn wirtualnych do nowego programu vCenter, nie dodawaj kolejnego konta vCenter. Może to prowadzić do duplikowania wpisów. Po prostu zaktualizuj adres IP nowego programu vCenter:
 
 1. Zaloguj się do Portalu Azure.
-2. Przejdź do **magazynu** > Recovery Services**Site Recovery** > **serwery konfiguracji**infrastruktury.
+2. Przejdź do **magazynu Recovery Services** > **Site Recovery infrastruktury** > **serwery konfiguracji**.
 3. Kliknij serwer konfiguracji, do którego jest przypisany stary program vCenter.
 4. W sekcji **serwery vCenter** kliknij program vCenter, z którego planujesz przeprowadzić migrację.
 5. Na stronie Podsumowanie programu vCenter zaktualizuj adres IP nowego serwera vCenter w polu **Nazwa hosta lub adres IP vSphere**. Zapisz zmiany.

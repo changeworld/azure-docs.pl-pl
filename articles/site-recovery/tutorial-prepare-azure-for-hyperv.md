@@ -1,21 +1,21 @@
 ---
-title: Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
+title: Przygotuj platformę Azure do odzyskiwania po awarii funkcji Hyper-V za pomocą Azure Site Recovery
 description: Dowiedz się, jak przygotować platformę Azure do odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V za pomocą Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814334"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084172"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii funkcji Hyper-V
 
  [Azure Site Recovery](site-recovery-overview.md) zapewnia ciągłość biznesową i odzyskiwanie po awarii (BCDR), dzięki czemu aplikacje biznesowe działają w trakcie planowanych i nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 
@@ -52,7 +52,7 @@ Aby wykonać te zadania, Twoje konto powinno mieć przypisaną wbudowaną rolę 
 
 Obrazy replikowanych maszyn są przechowywane w usłudze Azure Storage. Maszyny wirtualne Azure są tworzone na podstawie magazynu w momencie przejścia w tryb failover ze środowiska lokalnego do platformy Azure. Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
 
-1. W menu [Azure Portal](https://portal.azure.com) wybierz pozycję >  **Utwórz zasób** > **Magazyn** **konto magazynu — obiekt BLOB, plik, tabela, kolejka**.
+1. W menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **magazynu** > **konto magazynu — obiekt BLOB, plik, tabela, kolejka**.
 2. W obszarze **Tworzenie konta magazynu** wprowadź nazwę konta.  Wybrana nazwa musi być unikatowa w obrębie platformy Azure, mieć długość od 3 do 24 znaków i zawierać tylko małe litery i cyfry. Na potrzeby tego samouczka Użyj **contosovmsacct1910171607**.
 3. W obszarze **Model wdrażania** wybierz opcję **Resource Manager**.
 4. W obszarze **rodzaj konta**wybierz pozycję **Magazyn (ogólnego przeznaczenia w wersji 1)** . Nie wybieraj magazynu obiektów blob.
@@ -95,7 +95,7 @@ Gdy maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po prze
 
 Utworzenie sieci wirtualnej zajmuje kilka sekund. Po jego utworzeniu zobaczysz go na pulpicie nawigacyjnym Azure Portal.
 
-## <a name="useful-links"></a>Przydatne linki
+## <a name="useful-links"></a>Przydatne łącza
 
 Dowiedz się więcej na temat:
 - [Sieci platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)

@@ -1,19 +1,18 @@
 ---
-title: Często zadawane pytania dotyczące odzyskiwania po awarii oprogramowania VMware na platformę Azure za pomocą Azure Site Recovery
+title: Często zadawane pytania dotyczące odzyskiwania po awarii oprogramowania VMware przy użyciu Azure Site Recovery
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii lokalnych maszyn wirtualnych VMware na platformę Azure przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053678"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084163"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Często zadawane pytania dotyczące replikacji oprogramowania VMware do platformy Azure
 

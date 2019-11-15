@@ -1,33 +1,33 @@
 ---
-title: Samouczek — Tworzenie sieci wirtualnej centrum na platformie Azure przy użyciu Terraform
+title: Samouczek — Tworzenie centralnej sieci wirtualnej na platformie Azure przy użyciu Terraform
 description: Samouczek przedstawiający sposób tworzenia koncentratora sieci wirtualnej na platformie Azure, który działa jako wspólny punkt połączenia między innymi sieciami
 ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 231f8c6b98db785f3ef155af271be7e354998d54
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 25c4d6fa881f7ec6c96dd5ea7c935544374bc57d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969422"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077698"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-using-terraform"></a>Samouczek: Tworzenie centralnej sieci wirtualnej na platformie Azure przy użyciu Terraform
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Samouczek: Tworzenie centralnej sieci wirtualnej na platformie Azure przy użyciu Terraform
 
-Sieć wirtualna centrum działa jako centralny punkt łączności z siecią lokalną. Sieć wirtualna hostuje usługi udostępnione używane przez obciążenia hostowane w sieci wirtualnych szprychy. W celach demonstracyjnych w tym samouczku nie zaimplementowano żadnych usług udostępnionych.
+Sieć wirtualna centrum działa jako centralny punkt łączności z siecią lokalną. Sieć wirtualna hostuje usługi udostępnione używane przez obciążenia hostowane w sieciach wirtualnych szprych. W celach demonstracyjnych w tym samouczku nie zaimplementowano żadnych usług udostępnionych.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Używanie HCL (HashiCorp Language) do implementowania sieci wirtualnej centrum w topologii gwiazdy
-> * Użyj Terraform, aby utworzyć maszynę wirtualną w polu skoku centrum
-> * Korzystanie z Terraform do tworzenia bramy wirtualnej sieci prywatnej centrum
-> * Korzystanie z Terraform do tworzenia centrów i połączeń bramy lokalnej
+> * Użyj HashiCorp Configuration Language (HCL), aby zaimplementować centralną sieć wirtualną w topologii gwiazdy.
+> * Użyj Terraform, aby utworzyć maszynę wirtualną z centrum serwera przesiadkowego.
+> * Użyj Terraform, aby utworzyć bramę wirtualnej sieci prywatnej centrum.
+> * Użyj Terraform, aby utworzyć połączenia bramy i koncentratora lokalnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. [Tworzenie topologii sieci hybrydowej Hub i satelity z Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
+1. [Tworzenie hybrydowej topologii sieci gwiazdy i gwiazdy przy użyciu Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
 1. [Utwórz lokalną sieć wirtualną za pomocą Terraform na platformie Azure](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
@@ -52,13 +52,13 @@ Następujący plik konfiguracji Terraform definiuje zasoby:
     cd clouddrive
     ```
 
-1. Zmień katalog na nowy:
+1. Zmień katalogi do nowego katalogu.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-vnet"></a>Deklarowanie sieci wirtualnej centrum
+## <a name="declare-the-hub-virtual-network"></a>Zadeklaruj centralną sieć wirtualną
 
 Utwórz plik konfiguracji Terraform, który deklaruje sieć wirtualną centrum.
 
@@ -226,9 +226,9 @@ Utwórz plik konfiguracji Terraform, który deklaruje sieć wirtualną centrum.
     }
     ```
     
-1. Zapisz plik i Zamknij Edytor.
+3. Zapisz plik i Zamknij Edytor.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Tworzenie urządzenia sieci wirtualnej centrum za pomocą Terraform na platformie Azure](./terraform-hub-spoke-hub-nva.md))
+> [Tworzenie urządzenia sieci wirtualnej centrum za pomocą Terraform na platformie Azure](./terraform-hub-spoke-hub-nva.md)

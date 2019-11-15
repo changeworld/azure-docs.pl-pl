@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162120"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090549"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -45,7 +45,7 @@ Zainstaluj na serwerze kopii zapasowej | Po skonfigurowaniu programu DPM lub ser
 
 W celu utworzenia kopii zapasowej danych przy użyciu agenta MARS Agent tworzy migawkę danych i zapisuje ją w folderze lokalnego pamięci podręcznej, zanim wyśle dane do platformy Azure. Folder pamięci podręcznej (Scratch) ma kilka wymagań:
 
-**Chow** | **Szczegóły**
+**Cache** | **Szczegóły**
 --- | ---
 Rozmiar |  Ilość wolnego miejsca w folderze pamięci podręcznej powinna wynosić co najmniej 5 do 10 procent całkowitego rozmiaru danych kopii zapasowej.
 Lokalizacja | Folder pamięci podręcznej musi być przechowywany lokalnie na komputerze, na którym jest wykonywana kopia zapasowa, i musi być w trybie online. Folder pamięci podręcznej nie powinien znajdować się w udziale sieciowym na nośniku wymiennym ani w woluminie w trybie offline.
@@ -58,11 +58,11 @@ Zmiany lokalizacji | Można zmienić lokalizację pamięci podręcznej przez zat
 
 Agent MARS musi mieć dostęp do tych adresów URL:
 
-- http://www.msftncsi.com/ncsi.txt
+- <http://www.msftncsi.com/ncsi.txt>
 - *.Microsoft.com
 - *.WindowsAzure.com
-- *. MicrosoftOnline.com
-- *. Windows.net
+- *.MicrosoftOnline.com
+- *.Windows.net
 
 ### <a name="throttling-support"></a>Obsługa ograniczania przepustowości
 
@@ -72,6 +72,9 @@ Kontrola przepustowości | Obsługiwane. W agencie MARS Użyj **właściwości Z
 Ograniczanie sieci | Niedostępne dla maszyn z kopią zapasową z systemem Windows Server 2008 R2, Windows Server 2008 z dodatkiem SP2 lub Windows 7.
 
 ## <a name="support-for-direct-backups"></a>Obsługa bezpośrednich kopii zapasowych
+
+>[!NOTE]
+> Agent MARS nie obsługuje podstawowych jednostek SKU systemu Windows Server.
 
 Agenta MARS można używać do tworzenia kopii zapasowych bezpośrednio na platformie Azure w niektórych systemach operacyjnych działających na maszynach lokalnych i maszynach wirtualnych platformy Azure. Systemy operacyjne muszą być 64 bitowe i powinny mieć zainstalowane najnowsze pakiety i aktualizacje usług. W poniższej tabeli zestawiono te systemy operacyjne:
 
@@ -101,13 +104,13 @@ Windows Server 2012 lub nowszy |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 lub nowszy| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7| 1 700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Obsługiwane typy plików dla kopii zapasowej
 
 **Typ** | **Pomoc techniczna**
 --- | ---
-Szyfrowane| Obsługiwane.
+Zaszyfrowane| Obsługiwane.
 Skompresowane | Obsługiwane.
 Rozrzedzone | Obsługiwane.
 Skompresowane i rozrzedzone |Obsługiwane.
@@ -122,12 +125,12 @@ OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Nieobsługiwane.
 
 **Dysk/wolumin** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
-Woluminy tylko do odczytu| Brak obsługi | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
-Woluminy offline| Brak obsługi |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
-Udział sieciowy| Brak obsługi |Wolumin musi być lokalny na serwerze.
-Woluminy chronione przez funkcję BitLocker| Brak obsługi |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
-Identyfikacja systemu plików| Brak obsługi |Obsługiwany jest tylko system plików NTFS.
-Nośnik wymienny| Brak obsługi |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
+Woluminy tylko do odczytu| Nieobsługiwane | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
+Woluminy offline| Nieobsługiwane |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
+Udział sieciowy| Nieobsługiwane |Wolumin musi być lokalny na serwerze.
+Woluminy chronione przez funkcję BitLocker| Nieobsługiwane |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
+Identyfikacja systemu plików| Nieobsługiwane |Obsługiwany jest tylko system plików NTFS.
+Nośnik wymienny| Nieobsługiwane |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
 Deduplikowane dyski | Obsługiwane | Azure Backup konwertuje deduplikowane dane na normalne dane. Optymalizuje, szyfruje, przechowuje i wysyła dane do magazynu.
 
 ## <a name="support-for-initial-offline-backup"></a>Obsługa początkowej kopii zapasowej offline

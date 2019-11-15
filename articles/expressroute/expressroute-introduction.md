@@ -1,5 +1,5 @@
 ---
-title: 'Rozszerzanie sieci lokalnej na platformę Azure za pośrednictwem połączenia prywatnego — omówienie usługi ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute — omówienie: łączenie za pośrednictwem połączenia prywatnego'
 description: W opisie technicznym usługi ExpressRoute omówiono sposób działania połączenia usługi ExpressRoute podczas rozszerzania sieci lokalnej na platformę Azure przez połączenie prywatne.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123335"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083405"
 ---
 # <a name="expressroute-overview"></a>Omówienie usługi ExpressRoute
 Usługa ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można nawiązywać połączenia z usługami w chmurze firmy Microsoft, takimi jak Microsoft Azure i Office 365.
@@ -74,13 +73,13 @@ Usługa ExpressRoute ma nieustannie rosnący ekosystem dostawców połączeń i 
 ### <a name="connectivity-to-national-clouds"></a>Łączność z chmurami krajowymi
 Firma Microsoft obsługuje izolowane środowiska w chmurze dla określonych regionów geopolitycznych i segmentów klientów. Lista krajowych chmur i dostawców znajduje się w artykule [Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute](expressroute-locations.md).
 
-### <a name="expressroute-direct"></a>ExpressRoute Direct
+### <a name="expressroute-direct"></a>Usługa ExpressRoute Direct
 Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w lokalizacjach komunikacji równorzędnej strategicznie rozmieszczonych na całym świecie. Usługa ExpressRoute Direct zapewnia dwustronną łączność z przepustowością 100 Gb/s, co umożliwia obsługę łączności w trybie aktywny/aktywny na dużą skalę.
 
 Oto kilka najważniejszych funkcji, które zapewnia usługa ExpressRoute Direct:
 
 * Masywne pozyskiwanie danych do usług, takich jak Storage i Cosmos DB
-* Fizyczne oddzielenie w przypadku tych branż, które są regulowane i w których łączność musi być dedykowana oraz oddzielona, na przykład w przypadku: usług bankowych, rządowych i handlowych
+* Fizyczne oddzielenie w przypadku tych branż, które są regulowane i w których łączność musi być dedykowana oraz oddzielona, na przykład w przypadku usług bankowych, rządowych i handlowych
 * Pełna kontrola nad rozmieszczeniem obwodów na podstawie jednostek biznesowych
 
 Aby uzyskać więcej informacji, zobacz [About ExpressRoute Direct (Usługa ExpressRoute Direct)](https://go.microsoft.com/fwlink/?linkid=2022973).

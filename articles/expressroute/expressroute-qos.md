@@ -1,5 +1,5 @@
 ---
-title: 'Wymagania dotyczące jakości usług — ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: wymagania dotyczące jakości usług'
 description: Ta strona zawiera szczegółowe wymagania dotyczące konfigurowania i zarządzania nimi QoS. Omówiono Skype dla firm/rejestr usług.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: eed6113442b4080341ff08b3983880f3afe66c00
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385123"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080096"
 ---
 # <a name="expressroute-qos-requirements"></a>Wymagania dotyczące technologii QoS w usłudze ExpressRoute
 Program Skype dla firm obejmuje różne obciążenia, które wymagają zróżnicowanej obsługi w technologii QoS. Jeśli planujesz korzystać z usług głosowych za pośrednictwem usługi ExpressRoute, musisz spełnić opisane poniżej wymagania.
@@ -39,7 +38,7 @@ Poniższa tabela zawiera listę oznaczeń DSCP używanych przez usługi Microsof
 * Skonfiguruj i obsługuj wiele kolejek w technologii QoS w sieci. Głos musi być klasą autonomiczną i przyjmować traktowanie EF określone w [dokumencie RFC 3246](https://www.ietf.org/rfc/rfc3246.txt). 
 * Możesz wybrać mechanizm kolejkowania, zasady wykrywania przeciążenia oraz alokację przepustowości na klasę ruchu. Oznaczanie DSCP dla obciążeń programu Skype dla firm musi jednak zostać zachowane. Jeśli używasz oznaczenia DSCP niewymienionego powyżej, np. AF31 (26), musisz zmodyfikować tę wartość DSCP do 0 przed wysłaniem pakietu do firmy Microsoft. Firma Microsoft wysyła tylko pakiety oznaczone wartościami DSCP pokazanymi w powyższej tabeli. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Zapoznaj się z wymaganiami dotyczącymi [routingu](expressroute-routing.md) i [translatora adresów sieciowych](expressroute-nat.md).
 * Użyj następujących linków przydatnych podczas konfigurowania połączenia za pomocą usługi ExpressRoute.
   

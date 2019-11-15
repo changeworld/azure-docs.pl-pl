@@ -1,5 +1,5 @@
 ---
-title: 'Optymalizuj obwody usługi Routing-ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: Optymalizowanie routingu'
 description: Ta strona zawiera szczegółowe informacje dotyczące optymalizacji routingu w przypadku, gdy występują co najmniej dwa obwody usługi ExpressRoute łączące firmę Microsoft z siecią firmową.
 services: expressroute
 author: charwen
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141866"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080134"
 ---
 # <a name="optimize-expressroute-routing"></a>Optymalizacja routingu usługi ExpressRoute
 Jeśli masz wiele obwodów usługi ExpressRoute, masz więcej niż jedną ścieżkę łączenia z firmą Microsoft. W związku z tym może wystąpić routing nieoptymalny, tzn. ruch może użyć dłuższej ścieżki w celu dotarcia do firmy Microsoft lub z firmy Microsoft do sieci użytkownika. Im dłuższa ścieżka sieciowa, tym większe opóźnienie. Opóźnienie ma bezpośredni wpływ na wydajność aplikacji i środowisko użytkownika. W tym artykule przedstawiono ten problem i wyjaśniono, jak zoptymalizować routing przy użyciu standardowych technologii routingu.
@@ -55,7 +54,7 @@ Przyjrzyjmy się problemowi z routingiem, korzystając z przykładu. Załóżmy,
 ![Przypadek 1 dotyczący usługi ExpressRoute — suboptymalny routing od klienta do firmy Microsoft](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>Rozwiązanie: użyj społeczności BGP
-Aby zoptymalizować routing dla użytkowników obu biur, trzeba wiedzieć, który prefiks odpowiada zachodnim, a który wschodnim stanom USA. Kodujemy te informacje przy użyciu [wartości społeczności BGP](expressroute-routing.md). Przypisaliśmy unikatową wartość społeczności BGP do każdego regionu świadczenia usługi Azure, np. „12076:51004” dla wschodnich, a „12076:51006” dla zachodnich stanów USA. Skoro już wiesz, który prefiks odpowiada któremu regionowi świadczenia usługi Azure, możesz skonfigurować preferowany obwód usługi ExpressRoute. Ponieważ do wymiany informacji o routingu używamy protokołu BGP, w celu wpłynięcia na routing możesz użyć preferencji lokalnej BGP. W naszym przykładzie można przypisać wyższą wartość preferencji lokalnej na 13.100.0.0/16 w zachodnich niż we wschodnich stanach USA i podobnie wyższą wartość preferencji lokalnej na 23.100.0.0/16 we wschodnich niż w zachodnich stanach USA. Ta konfiguracja pozwoli zagwarantować, że gdy obie ścieżki do firmy Microsoft będą dostępne, użytkownicy w Los Angeles będą korzystać z obwodu usługi ExpressRoute w zachodnich stanach USA do połączenia ze stanami zachodnimi, natomiast użytkownicy z Nowego Jorku będą korzystać z usługi ExpressRoute we wschodnich stanach USA w celu połączenia ze stanami wschodnimi. Routing jest zoptymalizowany po obu stronach. 
+Aby zoptymalizować routing dla użytkowników obu biur, trzeba wiedzieć, który prefiks odpowiada zachodnim, a który wschodnim stanom USA. Kodujemy te informacje przy użyciu [wartości społeczności BGP](expressroute-routing.md). Do każdego regionu platformy Azure przypisano unikatową wartość wspólnotową BGP, np. "12076:51004" dla Wschodnie stany USA, "12076:51006" dla zachodnich Stanów Zjednoczonych. Skoro już wiesz, który prefiks odpowiada któremu regionowi świadczenia usługi Azure, możesz skonfigurować preferowany obwód usługi ExpressRoute. Ponieważ do wymiany informacji o routingu używamy protokołu BGP, w celu wpłynięcia na routing możesz użyć preferencji lokalnej BGP. W naszym przykładzie można przypisać wyższą wartość preferencji lokalnej na 13.100.0.0/16 w zachodnich niż we wschodnich stanach USA i podobnie wyższą wartość preferencji lokalnej na 23.100.0.0/16 we wschodnich niż w zachodnich stanach USA. Ta konfiguracja pozwoli zagwarantować, że gdy obie ścieżki do firmy Microsoft będą dostępne, użytkownicy w Los Angeles będą korzystać z obwodu usługi ExpressRoute w zachodnich stanach USA do połączenia ze stanami zachodnimi, natomiast użytkownicy z Nowego Jorku będą korzystać z usługi ExpressRoute we wschodnich stanach USA w celu połączenia ze stanami wschodnimi. Routing jest zoptymalizowany po obu stronach. 
 
 ![Rozwiązanie przypadku 1 dotyczącego usługi ExpressRoute — używanie społeczności BGP](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 

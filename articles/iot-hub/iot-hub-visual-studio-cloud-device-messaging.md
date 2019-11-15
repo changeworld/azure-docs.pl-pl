@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie obsługą usługi Azure IoT Hub Cloud Device Messaging przy użyciu programu Cloud Explorer dla programu Visual Studio | Microsoft Docs
+title: Korzystanie z programu VS Cloud Explorer do zarządzania usługą Azure IoT Hub Device Messaging
 description: Dowiedz się, jak za pomocą Eksploratora chmury dla programu Visual Studio monitorować urządzenia w chmurze i wysyłać komunikaty z chmury do urządzeń w usłudze Azure IoT Hub.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050290"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079489"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Użyj Eksploratora chmury dla programu Visual Studio, aby wysyłać i odbierać komunikaty między urządzeniem i IoT Hub
 
@@ -54,7 +54,7 @@ Składnik Cloud Explorer Instalator programu Visual Studio dla programu Visual S
 
 Aby uzyskać dostęp do centrum, wykonaj następujące kroki:
 
-1. W programie Visual Studio wybierz pozycję **Wyświetl** > program**Cloud Explorer** , aby otworzyć Eksploratora chmury.
+1. W programie Visual Studio wybierz pozycję **wyświetl** > **Cloud Explorer** , aby otworzyć Eksploratora chmury.
 
 1. Wybierz ikonę Zarządzanie kontem, aby wyświetlić subskrypcje.
 

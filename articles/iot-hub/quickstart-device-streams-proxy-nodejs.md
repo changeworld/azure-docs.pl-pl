@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure IoT Hub urządzenia strumienie szybkiego startu Node. js dla protokołów SSH i RDP (wersja zapoznawcza) | Microsoft Docs
+title: Usługa Azure IoT Hub Device Streams Node. js — szybki start dla protokołów SSH i RDP
 description: W tym przewodniku szybki start uruchomisz przykładową aplikację Node. js, która działa jako serwer proxy, aby umożliwić obsługę scenariuszy SSH i RDP przez IoT Hub strumieni urządzeń.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 676b05b94fad506fba7c5bd2bd00061ae8a0426b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7f2b98f196a0889406e7821c60db7066a21b9178
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900764"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084283"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzenia IoT Hub przy użyciu aplikacji serwera proxy środowiska Node. js (wersja zapoznawcza)
 

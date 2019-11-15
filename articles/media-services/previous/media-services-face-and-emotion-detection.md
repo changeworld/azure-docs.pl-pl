@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881762"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084618"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Wykrywanie kroju i rozpoznawania emocji przy użyciu Azure Media Analytics
 
-> [!IMPORTANT]
-> Zapoznaj się z [planami wycofania](media-services-analytics-overview.md#retirement-plans) niektórych procesorów multimedialnych.
-
 ## <a name="overview"></a>Przegląd
+
 Procesor Media **Azure Media Face Detector** (MP) umożliwia zliczanie, śledzenie przesunięć, a nawet ocenia uczestnictwo i reagowanie odbiorców przy użyciu wyrażeń twarzy. Ta usługa zawiera dwie funkcje: 
 
 * **Wykrywanie kroju**
@@ -166,8 +164,8 @@ Poniżej znajdują się zalecane wartości okna agregacji i ustawień interwału
 
 || Wartości domyślne | Maksymalna liczba (s) | Min. |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0,25|
-| AggregateEmotionIntervalMs |0,5 |1 |0,25|
+| AggregateEmotionWindowMs |0,5 |2 |0.25|
+| AggregateEmotionIntervalMs |0,5 |1 |0.25|
 
 ### <a name="json-output"></a>Dane wyjściowe JSON
 Dane wyjściowe JSON dla zagregowanych rozpoznawania emocji (obcięty):
@@ -521,7 +519,7 @@ namespace FaceDetection
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

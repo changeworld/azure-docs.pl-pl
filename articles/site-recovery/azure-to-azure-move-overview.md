@@ -1,33 +1,23 @@
 ---
-title: Przenoszenie platformy Azure MS do innego regionu za pomocą Azure Site Recovery
-description: Używanie usługi Azure Site Recovery do przenoszenia maszyn wirtualnych IaaS platformy Azure z jednego regionu świadczenia usługi Azure do innego.
+title: Przeniesienie maszyn wirtualnych platformy Azure do innego regionu za pomocą Azure Site Recovery
+description: Przenoszenie maszyn wirtualnych platformy Azure z jednego regionu platformy Azure do innego za pomocą Azure Site Recovery.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e3a3db66b4833a8ba21dc9d3c1938f645919221c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954166"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091944"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
+# <a name="moving-azure-vms-to-another-azure-region"></a>Przeniesienie maszyn wirtualnych platformy Azure do innego regionu platformy Azure
 
-Platforma Azure rośnie wraz z podstawową bazą klientów i dodaje obsługę nowych regionów w celu zapewnienia wzrostu wymagań. Nowe możliwości są również dodawane co miesiąc przez usługi. Możesz chcieć przenieść maszyny wirtualne do innego regionu lub do Strefy dostępności, aby zwiększyć dostępność.
+Ten artykuł zawiera omówienie przyczyn i kroków związanych z przeniesieniem maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md). 
 
-W tym samouczku opisano różne scenariusze, w których chcesz przenieść maszyny wirtualne. Opisano w nim również sposób konfigurowania architektury w regionie docelowym w celu uzyskania wyższej dostępności. 
-
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> 
-> * Przyczyny przenoszenia maszyn wirtualnych
-> * Typowe architektury
-> * Przeniesienie maszyn wirtualnych jako do regionu docelowego
-> * Przeniesienie maszyn wirtualnych w celu zwiększenia dostępności
 
 ## <a name="reasons-to-move-azure-vms"></a>Przyczyny przenoszenia maszyn wirtualnych platformy Azure
 

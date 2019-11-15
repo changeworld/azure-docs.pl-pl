@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 9421f730ea6480c9e4223dd9ddbd15852b1fce8f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072599"
+ms.locfileid: "74091194"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Informacje o wersji: zestaw SDK urządzeń mowy
 
 W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
+
+## <a name="speech-devices-sdk-170"></a>1\.7.0 zestawu SDK urządzeń mowy:
+
+*   System Linux ARM jest teraz obsługiwany.
+*   Dostępne są początkowe pliki binarne dla Roobov2 (Linux ARM64).
+*   Użytkownicy systemu Windows mogą używać AudioConfig. fromDefaultMicrophoneInput () lub AudioConfig. fromMicrophoneInput (DeviceName), aby określić mikrofon, który ma być używany.
+*   Rozmiar biblioteki został zoptymalizowany.
+*   Obsługa rozpoznawania wieloskładnikowego przy użyciu tego samego obiektu rozpoznawania mowy/konwersji.
+*   Usuń sporadyczne zawieszenie, które nastąpiło podczas zatrzymywania rozpoznawania.
+*   Przykładowe aplikacje zawierają teraz przykładowy plik uczestników. właściwości, aby przedstawić format pliku.
+*   Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.7.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-160"></a>1\.6.0 zestawu SDK urządzeń mowy:
 

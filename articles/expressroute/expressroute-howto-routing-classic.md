@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie komunikacji równorzędnej dla obwodu ExpressRoute: Azure: klasyczny | Microsoft Docs'
+title: 'Azure ExpressRoute: Konfigurowanie komunikacji równorzędnej: klasyczny'
 description: Ten artykuł zawiera instrukcje tworzenia i inicjowania obsługi komunikacji równorzędnej prywatnej, publicznej i firmy Microsoft obwodu usługi ExpressRoute. W tym artykule opisano również, jak aktualizować i usuwać komunikację równoległą dla obwodu oraz sprawdzać jej stan.
 services: expressroute
 author: cherylmc
@@ -7,28 +7,27 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 01ec721fb7e7dea0e4e31e0c3052cc4246cf14b0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748195"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083438"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Tworzenie i modyfikowanie komunikacji równorzędnej dla obwodu usługi ExpressRoute (klasyczny)
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [Program PowerShell](expressroute-howto-routing-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-routing-cli.md)
-> * [Wideo — prywatna Komunikacja równorzędna](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Wideo — publiczna Komunikacja równorzędna](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Wideo — Komunikacja równorzędna firmy Microsoft](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Wideo — prywatna komunikacja równorzędna](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Wideo — publicznej komunikacji równorzędnej](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Wideo — komunikacja równorzędna firmy Microsoft](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-routing-classic.md)
 > 
 
-W tym artykule omówiono procedurę tworzenia komunikacji równorzędnej/konfiguracji routingu dla obwodu usługi ExpressRoute przy użyciu programu PowerShell i klasycznego modelu wdrażania oraz zarządzania nią. W poniższych krokach opisano również, jak sprawdzać stan komunikacji równorzędnej, aktualizować ją, usuwać i wstrzymywać jej obsługę administracyjną dla obwodu usługi ExpressRoute. W przypadku obwodu usługi ExpressRoute można skonfigurować jedną, dwie lub wszystkie trzy sieci równorzędne (prywatne, publiczne platformy Azure i Microsoft). Możesz skonfigurować komunikację równorzędną w dowolnej kolejności. Musisz jednak pamiętać, aby kończyć konfiguracje poszczególnych komunikacji równorzędnych pojedynczo. 
+W tym artykule omówiono procedurę tworzenia komunikacji równorzędnej/konfiguracji routingu dla obwodu usługi ExpressRoute przy użyciu programu PowerShell i klasycznego modelu wdrażania oraz zarządzania nią. W poniższych krokach opisano również, jak sprawdzać stan komunikacji równorzędnej, aktualizować ją, usuwać i wstrzymywać jej obsługę administracyjną dla obwodu usługi ExpressRoute. Można skonfigurować jeden, dwa lub wszystkie trzy komunikacje równorzędne (Azure prywatnej i publicznej Azure i Microsoft) dla obwodu usługi ExpressRoute. Możesz skonfigurować komunikację równorzędną w dowolnej kolejności. Musisz jednak pamiętać, aby kończyć konfiguracje poszczególnych komunikacji równorzędnych pojedynczo. 
 
-Te instrukcje dotyczą tylko obwodów utworzonych przy użyciu dostawców usług oferujących usługi łączności warstwy 2. Jeśli używasz dostawcy usług oferującego zarządzane usługi warstwy 3 (zwykle IPVPN, takie jak MPLS), dostawca łączności skonfiguruje dla Ciebie Routing i zarządza nim.
+Te instrukcje dotyczą tylko obwodów utworzonych przy użyciu dostawców usług oferujących usługi łączności warstwy 2. Jeśli używasz dostawcy usług, który oferuje zarządzane warstwy 3 usługi (zwykle IPVPN, np. MPLS), dostawca połączenia będzie Konfigurowanie routingu oraz zarządzanie nim za Ciebie.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,7 +42,7 @@ Te instrukcje dotyczą tylko obwodów utworzonych przy użyciu dostawców usług
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Pobierz najnowsze polecenia cmdlet programu PowerShell
 
-Zainstaluj najnowsze wersje modułów programu PowerShell dla usługi Azure Service Management (SM) i modułu ExpressRoute. W poniższym przykładzie należy zauważyć, że numer wersji (w tym przykładzie, 5.1.1) zmieni się w miarę wydania nowszych wersji poleceń cmdlet.
+Zainstaluj najnowsze wersje modułu usługi ExpressRoute i modułów programu PowerShell usługi Azure Service Management (SM). Podczas korzystając z następującego przykładu, należy pamiętać, że numer wersji (w tym przykładzie 5.1.1) zmieni się nowsze wersje poleceń cmdlet zostaną zwolnione.
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
@@ -72,7 +71,7 @@ Aby zalogować się do konta platformy Azure, użyj następujących przykładów
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
-4. Następnie użyj poniższego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
+4. Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
 
    ```powershell
    Add-AzureAccount
@@ -336,7 +335,7 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
    * Anonsowane prefiksy: musisz podać listę wszystkich prefiksów, które planujesz anonsować za pośrednictwem sesji BGP. Akceptowane są tylko prefiksy publicznych adresów IP. Aby wysłać zestaw prefiksów, można wysłać listę rozdzieloną przecinkami. Prefiksy te muszą być zarejestrowane na Ciebie w RIR/IRR.
    * Numer ASN klienta: jeśli anonsujesz prefiksy, które nie są rejestrowane do numeru AS komunikacji równorzędnej, możesz określić numer AS, do którego są rejestrowane. **Opcjonalnie**.
    * Nazwa rejestru routingu: możesz określić RIR/IRR, względem którego rejestrowany jest numer AS i prefiksy.
-   * Skrót MD5, jeśli zdecydujesz się go użyć. **Obowiązkowe.**
+   * Skrót MD5, jeśli zdecydujesz się go użyć. **Opcjonalnie.**
      
    Uruchom następujące polecenie cmdlet, aby skonfigurować komunikację równorzędną firmy Microsoft dla obwodu:
  

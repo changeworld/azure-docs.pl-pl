@@ -1,20 +1,21 @@
 ---
-title: Samouczek — tworzenie rekordu aliasu usługi Azure DNS do obsługi nazw wierzchołków domeny przy użyciu usługi Traffic Manager
+title: 'Samouczek: Tworzenie rekordu aliasu do obsługi nazw Apex domeny — Traffic Manager'
+titleSuffix: Azure DNS
 description: W tym samouczku przedstawiono sposób konfigurowania rekordu aliasu usługi Azure DNS do obsługi nazwy wierzchołka domeny przy użyciu usługi Traffic Manager.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921427"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082248"
 ---
-# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Samouczek: Konfigurowanie rekordu aliasu do obsługi języka apex nazw domen przy użyciu usługi Traffic Manager 
+# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Samouczek: konfigurowanie rekordu aliasu w celu obsługi nazw domen wierzchołkowych przy użyciu usługi Traffic Manager 
 
 Można utworzyć rekord aliasu wierzchołka nazwy domeny, aby odwoływać się do profilu usługi Azure Traffic Manager. Przykładowa domena to contoso.com. Zamiast używać usługi przekierowania, skonfiguruj usługę Azure DNS, aby odwoływać się do profilu usługi Traffic Manager bezpośrednio z poziomu strefy. 
 
@@ -33,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje na temat sposobu Hostuj swoją domenę, w usłudze Azure DNS, zobacz [samouczka: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje dotyczące sposobu hostowania własnej domeny w usłudze Azure DNS, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z własnej nazwy domeny.
 
@@ -50,7 +51,7 @@ Najpierw utwórz sieć wirtualną i podsieć, aby umieścić w nich serwery inte
 3. W obszarze **Rozmiar** wybierz jednostkę magazynową zawierającą 8 GB pamięci RAM.
 4. W obszarze **Ustawienia** wybierz sieć wirtualną **VNet-Servers** i podsieć **SN-Web**.
 5. Wybierz pozycję **Publiczny adres IP**. W obszarze **Przypisanie** wybierz pozycję **Statyczne**, a następnie wybierz pozycję **OK**.
-6. W przypadku publicznych portów wejściowych wybierz pozycję **HTTP** > **HTTPS** > **RDP (3389)**, a następnie wybierz pozycję **OK**.
+6. W przypadku publicznych portów wejściowych wybierz pozycję **HTTP** > **HTTPS** > **RDP (3389)** , a następnie wybierz pozycję **OK**.
 7. Na stronie **Podsumowanie** wybierz pozycję **Utwórz**. Wykonanie tej procedury trwa kilka minut.
 
 Powtórz tę procedurę, aby utworzyć inną maszynę wirtualną o nazwie **Web-02**.
@@ -70,7 +71,7 @@ Zainstaluj usługi IIS na maszynach **Web-01** i **Web-02**.
 
 1. Nawiąż połączenie z maszyną wirtualną **Web-01** i zaloguj się.
 2. Na pulpicie nawigacyjnym **Menedżer serwera** wybierz pozycję **Dodaj role i funkcje**.
-3. Trzykrotnie wybierz pozycję **Dalej**. Na stronie **Role serwera** wybierz pozycję **Serwer sieci Web (IIS)**.
+3. Trzykrotnie wybierz pozycję **Dalej**. Na stronie **Role serwera** wybierz pozycję **Serwer sieci Web (IIS)** .
 4. Wybierz pozycję **Dodaj funkcje**, a następnie wybierz pozycję **Dalej**.
 5. Czterokrotnie wybierz pozycję **Dalej**. Następnie wybierz pozycję **Zainstaluj**. Wykonanie tej procedury trwa kilka minut.
 6. Po zakończeniu instalacji wybierz pozycję **Zamknij**.
@@ -101,13 +102,13 @@ Utwórz rekord aliasu wskazujący na profil usługi Traffic Manager.
 1. Wybierz strefę usługi Azure DNS, aby ją otworzyć.
 2. Wybierz pozycję **Zestaw rekordów**.
 3. Pozostaw puste pole tekstowe **Nazwa**, aby reprezentować wierzchołek nazwy domeny. Przykładowa domena to contoso.com.
-4. Pozostaw pole **Typ** z ustawieniem rekordu **A**.
+4. Pozostaw pole **Typ** ustawione na rekord **A**.
 5. Zaznacz pole wyboru **Zestaw rekordów aliasów**.
 6. Wybierz pozycję **Wybierz usługę platformy Azure** i wybierz profil usługi Traffic Manager **TM-alias-test**.
 
 ## <a name="test-the-alias-record"></a>Testowanie rekordu aliasu
 
-1. Z poziomu przeglądarki internetowej przejdź do wierzchołka nazwy domeny. Przykładowa domena to contoso.com. Zostanie wyświetlona domyślna strona internetowa usług IIS. Zamknij przeglądarkę sieci Web.
+1. Z poziomu przeglądarki internetowej przejdź do wierzchołka nazwy domeny. Przykładowa domena to contoso.com. Zostanie wyświetlona domyślna strona internetowa usług IIS. Zamknij przeglądarkę internetową.
 2. Zamknij maszynę wirtualną **Web-01**. Zaczekaj kilka minut na jej całkowite zamknięcie.
 3. Otwórz nową przeglądarkę internetową i przejdź ponownie do wierzchołka nazwy domeny.
 4. Ponownie zostanie wyświetlona domyślna strona internetowa usług IIS, ponieważ usługa Traffic Manager obsługiwała tę sytuację i kierowała ruch do maszyny wirtualnej **Web-02**.
@@ -116,7 +117,7 @@ Utwórz rekord aliasu wskazujący na profil usługi Traffic Manager.
 
 Jeśli nie potrzebujesz już zasobów utworzonych w ramach tego samouczka, usuń grupę zasobów **RG-DNS-Alias-TM**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku został utworzony rekord aliasu umożliwiający użycie nazwy domeny wierzchołkowej do odwoływania się do profilu usługi Traffic Manager. Aby dowiedzieć się więcej o usłudze Azure DNS i aplikacjach internetowych, przejdź do samouczka dotyczącego aplikacji internetowych.
 

@@ -8,14 +8,14 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 499b08dbdc8e798a884b721bcba51be1f6973df6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6386ef775f897ca56d2660adf72a885672c8dfd2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562388"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092061"
 ---
-# <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Samouczek: Instrukcje krok po kroku dotyczące tworzenia nowej aplikacji dla systemu Android przy użyciu kotwic przestrzennych platformy Azure
+# <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Samouczek: instrukcje krok po kroku dotyczące tworzenia nowej aplikacji dla systemu Android przy użyciu kotwic przestrzennych platformy Azure
 
 W tym samouczku pokazano, jak utworzyć nową aplikację systemu Android, która integruje funkcjonalność ARCore z zakotwiczeniami przestrzennymi platformy Azure.
 
@@ -30,17 +30,17 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 
 Uruchom program Android Studio. W oknie **Witamy w Android Studio** kliknij pozycję **rozpocznij nowy projekt Android Studio**. Lub, jeśli masz już otwarty projekt, wybierz pozycję **plik**->**Nowy projekt**.
 
-W oknie **Tworzenie nowego projektu** w obszarze **telefon i tablet** wybierz pozycję **puste działanie**, a następnie kliknij przycisk **dalej**. Następnie w obszarze **minimalny poziom interfejsu API**wybierz `API 26: Android 8.0 (Oreo)`pozycję i upewnij się, że **Język** jest `Java`ustawiony na. Możesz chcieć zmienić nazwę projektu & lokalizacji i nazwę pakietu. Pozostaw inne opcje. Kliknij przycisk **Zakończ**. Zostanie uruchomiony **Instalator składnika** . Po zakończeniu kliknij przycisk **Zakończ**. Po zakończeniu niektórych operacji Android Studio otworzy środowisko IDE.
+W oknie **Tworzenie nowego projektu** w obszarze **telefon i tablet** wybierz pozycję **puste działanie**, a następnie kliknij przycisk **dalej**. Następnie w obszarze **minimalny poziom interfejsu API**wybierz pozycję `API 26: Android 8.0 (Oreo)`i upewnij się, że **Język** jest ustawiony na `Java`. Możesz chcieć zmienić nazwę projektu & lokalizacji i nazwę pakietu. Pozostaw inne opcje. Kliknij przycisk **Zakończ**. Zostanie uruchomiony **Instalator składnika** . Po zakończeniu kliknij przycisk **Zakończ**. Po zakończeniu niektórych operacji Android Studio otworzy środowisko IDE.
 
 ## <a name="trying-it-out"></a>Trwa próba
 
-Aby przetestować nową aplikację, podłącz urządzenie z obsługą dewelopera do komputera deweloperskiego przy użyciu kabla USB. Kliknij przycisk **Uruchom**->**Uruchom polecenie "App"** . W oknie **Wybieranie celu wdrożenia** wybierz urządzenie, a następnie kliknij przycisk **OK**. Android Studio instaluje aplikację na podłączonym urządzeniu i uruchamia ją. Powinien być teraz widoczny "Hello world!" wyświetlane w aplikacji uruchomionej na urządzeniu. Kliknij przycisk **Uruchom**->**Zatrzymaj "App"** .
+Aby przetestować nową aplikację, podłącz urządzenie z obsługą dewelopera do komputera deweloperskiego przy użyciu kabla USB. Kliknij przycisk **uruchom**->**Uruchom polecenie "App"** . W oknie **Wybieranie celu wdrożenia** wybierz urządzenie, a następnie kliknij przycisk **OK**. Android Studio instaluje aplikację na podłączonym urządzeniu i uruchamia ją. Powinien być teraz widoczny "Hello world!" wyświetlane w aplikacji uruchomionej na urządzeniu. Kliknij przycisk **Uruchom** ,->**zatrzymać "App"** .
 
-## <a name="integrating-arcore"></a>Integrowanie _ARCore_
+## <a name="integrating-_arcore_"></a>Integrowanie _ARCore_
 
 <a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> to platforma firmy Google do tworzenia środowisk o rzeczywistości rozszerzonej, dzięki czemu urządzenie może śledzić swoją pozycję w miarę ich przenoszenia i tworzy własne zrozumienie świata rzeczywistego.
 
-Zmodyfikuj `app\manifests\AndroidManifest.xml` , aby uwzględnić następujące wpisy w węźle głównym `<manifest>` . Ten fragment kodu wykonuje kilka czynności:
+Zmodyfikuj `app\manifests\AndroidManifest.xml`, aby uwzględnić następujące wpisy w głównym węźle `<manifest>`. Ten fragment kodu wykonuje kilka czynności:
 
 - Umożliwi aplikacji dostęp do aparatu urządzenia.
 - Zapewnia również, że aplikacja będzie widoczna tylko w Sklep Google Play na urządzeniach, które obsługują ARCore.
@@ -57,21 +57,21 @@ Zmodyfikuj `app\manifests\AndroidManifest.xml` , aby uwzględnić następujące 
 </application>
 ```
 
-Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)` , aby uwzględnić następujący wpis. Ten kod zapewni, że aplikacja jest przeznaczona dla ARCore w wersji 1,8. Po tej zmianie może zostać wyświetlone powiadomienie z programu Gradle z prośbą o zsynchronizowanie: kliknij pozycję **Synchronizuj teraz**.
+Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)` tak, aby zawierał następujący wpis. Ten kod zapewni, że aplikacja jest przeznaczona dla ARCore w wersji 1,8. Po tej zmianie może zostać wyświetlone powiadomienie z programu Gradle z prośbą o zsynchronizowanie: kliknij pozycję **Synchronizuj teraz**.
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.8.0'
+    implementation 'com.google.ar:core:1.11.0'
     ...
 }
 ```
 
-## <a name="integrating-sceneform"></a>Integrowanie _Sceneform_
+## <a name="integrating-_sceneform_"></a>Integrowanie _Sceneform_
 
 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> ułatwia renderowanie realistycznych scen 3W w aplikacjach rzeczywistości o rozszerzeniu, bez konieczności uczenia się OpenGL.
 
-Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)` , aby uwzględnić następujące wpisy. Ten kod umożliwi aplikacji korzystanie z konstrukcji językowych języka Java 8, które `Sceneform` wymagają. Zapewni również, że aplikacja będzie docelowa `Sceneform` w wersji 1,8, ponieważ powinna być zgodna z wersją ARCore używaną przez aplikację. Po tej zmianie może zostać wyświetlone powiadomienie z programu Gradle z prośbą o zsynchronizowanie: kliknij pozycję **Synchronizuj teraz**.
+Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)`, aby uwzględnić następujące wpisy. Ten kod umożliwi aplikacji korzystanie z konstrukcji językowych języka Java 8, co `Sceneform` wymaga. Zapewni również, że aplikacja będzie ukierunkowana na `Sceneform` wersji 1,8, ponieważ powinna być zgodna z wersją ARCore używaną przez aplikację. Po tej zmianie może zostać wyświetlone powiadomienie z programu Gradle z prośbą o zsynchronizowanie: kliknij pozycję **Synchronizuj teraz**.
 
 ```
 android {
@@ -85,12 +85,12 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.11.0'
     ...
 }
 ```
 
-Otwórz i Zastąp istniejący element Hello WOLRD `<TextView>` następującym ArFragment. `app\res\layout\activity_main.xml` Ten kod spowoduje wyświetlenie kanału informacyjnego aparatu na ekranie umożliwiającym ARCore śledzenia położenia urządzenia w trakcie jego przenoszenia.
+Otwórz `app\res\layout\activity_main.xml`i Zastąp istniejący element Hello WOLRD `<TextView>` następującym elementem ArFragment. Ten kod spowoduje wyświetlenie kanału informacyjnego aparatu na ekranie umożliwiającym ARCore śledzenia położenia urządzenia w trakcie jego przenoszenia.
 
 ```xml
 <fragment android:name="com.google.ar.sceneform.ux.ArFragment"
@@ -107,15 +107,15 @@ Utwórzmy & umieścić obiekt przy użyciu aplikacji. Najpierw Dodaj następują
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=23-33)]
 
-Następnie Dodaj następujące zmienne członkowskie do `MainActivity` klasy:
+Następnie Dodaj następujące zmienne członkowskie do klasy `MainActivity`:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=52-57)]
 
-Następnie Dodaj następujący kod do `app\java\<PackageName>\MainActivity` `onCreate()` metody. Ten kod spowoduje Podłączenie odbiornika o nazwie `handleTap()`, który zostanie wykryty, gdy użytkownik naciśnie ekran na urządzeniu. Jeśli naciśnięcie ma być na świecie rzeczywistym, który został już rozpoznany przez śledzenie ARCore, zostanie uruchomiony odbiornik.
+Następnie Dodaj następujący kod do metody `onCreate()` `app\java\<PackageName>\MainActivity`. Ten kod spowoduje Podłączenie odbiornika o nazwie `handleTap()`, który będzie wykrywać, kiedy użytkownik naciśnie ekran na urządzeniu. Jeśli naciśnięcie ma być na świecie rzeczywistym, który został już rozpoznany przez śledzenie ARCore, zostanie uruchomiony odbiornik.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-74,85&highlight=6-7)]
 
-Na koniec Dodaj następującą `handleTap()` metodę, która spowoduje powiązanie wszystkiego ze sobą. Spowoduje to utworzenie kuli i umieszczenie jej w lokalizacji, w której zostanie umieszczona. Kula będzie początkowo czarna, ponieważ `this.recommendedSessionProgress` jest teraz ustawiona na zero. Ta wartość zostanie później zmieniona na.
+Na koniec Dodaj następującą metodę `handleTap()`, która spowoduje powiązanie wszystkiego ze sobą. Spowoduje to utworzenie kuli i umieszczenie jej w lokalizacji, w której zostanie umieszczona. Sfera będzie początkowo czarna, ponieważ `this.recommendedSessionProgress` jest teraz ustawiona na zero. Ta wartość zostanie później zmieniona na.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-171,174-182,198-199)]
 
@@ -123,7 +123,7 @@ Ponownie [Wdróż](#trying-it-out) aplikację na urządzeniu, aby zweryfikować 
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Dołącz lokalną kotwicę przestrzenną platformy Azure
 
-Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)` , aby uwzględnić następujący wpis. Ten kod zapewni, że aplikacja będzie ukierunkowana na kotwice przestrzenne platformy Azure w wersji 1.3.0. Wspomniane odwołanie odwołujące się do wszystkich najnowszych wersji zakotwiczenia przestrzennego platformy Azure powinno funkcjonować.
+Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)` tak, aby zawierał następujący wpis. Ten kod zapewni, że aplikacja będzie ukierunkowana na kotwice przestrzenne platformy Azure w wersji 1.3.0. Wspomniane odwołanie odwołujące się do wszystkich najnowszych wersji zakotwiczenia przestrzennego platformy Azure powinno funkcjonować.
 
 ```
 dependencies {
@@ -134,13 +134,13 @@ dependencies {
 }
 ```
 
-Kliknij prawym przyciskiem `app\java\<PackageName>` ->myszy **nową**->**klasę Java**. Ustaw **nazwę** na _mojapierwszaaplikacja_i **Superklasa** na system _Android. app. Application_. Pozostaw inne opcje. Kliknij przycisk **OK**. Zostanie utworzony plik `MyFirstApp.java` o nazwie. Dodaj do niego następujący import:
+Kliknij prawym przyciskiem myszy pozycję `app\java\<PackageName>`->**nową** **klasę->Java**. Ustaw **nazwę** na _mojapierwszaaplikacja_i **Superklasa** na system _Android. app. Application_. Pozostaw inne opcje. Kliknij przycisk **OK**. Zostanie utworzony plik o nazwie `MyFirstApp.java`. Dodaj do niego następujący import:
 
 ```java
 import com.microsoft.CloudServices;
 ```
 
-Następnie Dodaj następujący kod do nowej `MyFirstApp` klasy, co zapewni zainicjowanie zakotwiczenia przestrzennego platformy Azure przy użyciu kontekstu aplikacji.
+Następnie Dodaj następujący kod do nowej klasy `MyFirstApp`, co zapewni zainicjowanie kotwice przestrzenne platformy Azure przy użyciu kontekstu aplikacji.
 
 ```java
     @Override
@@ -150,7 +150,7 @@ Następnie Dodaj następujący kod do nowej `MyFirstApp` klasy, co zapewni zaini
     }
 ```
 
-Teraz zmodyfikuj `app\manifests\AndroidManifest.xml` , aby uwzględnić następujący wpis w węźle głównym `<application>` . Ten kod spowoduje podłączenie klasy aplikacji utworzonej w aplikacji.
+Teraz zmodyfikuj `app\manifests\AndroidManifest.xml` tak, aby zawierał następujący wpis w głównym węźle `<application>`. Ten kod spowoduje podłączenie klasy aplikacji utworzonej w aplikacji.
 
 ```xml
     <application
@@ -159,23 +159,23 @@ Teraz zmodyfikuj `app\manifests\AndroidManifest.xml` , aby uwzględnić następu
     </application>
 ```
 
-Wróć do `app\java\<PackageName>\MainActivity`programu, Dodaj do niego następujące Importy:
+Wróć do `app\java\<PackageName>\MainActivity`, Dodaj do niego następujące Importy:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=33-40&highlight=2-8)]
 
-Następnie Dodaj następujące zmienne członkowskie do `MainActivity` klasy:
+Następnie Dodaj następujące zmienne członkowskie do klasy `MainActivity`:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=57-60&highlight=3-4)]
 
-Następnie Dodajmy następującą `initializeSession()` metodę `mainActivity` w klasie. Po wywołaniu zagwarantuje, że sesja kotwic Azure przestrzenny zostanie utworzona i poprawnie zainicjowana podczas uruchamiania aplikacji.
+Następnie Dodajmy następującą metodę `initializeSession()` wewnątrz klasy `mainActivity`. Po wywołaniu zagwarantuje, że sesja kotwic Azure przestrzenny zostanie utworzona i poprawnie zainicjowana podczas uruchamiania aplikacji.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,146)]
 
-Teraz przejdźmy `initializeSession()` `onCreate()` do metody. Ponadto zagwarantujemy, że ramki z kanału informacyjnego aparatu są wysyłane do zestawu Azure przestrzenny Kotwics do przetwarzania.
+Teraz przejdźmy do metody `onCreate()` `initializeSession()`. Ponadto zagwarantujemy, że ramki z kanału informacyjnego aparatu są wysyłane do zestawu Azure przestrzenny Kotwics do przetwarzania.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-85&highlight=9-17)]
 
-Na koniec Dodaj następujący kod do `handleTap()` metody. Dołączy lokalną kotwicę platformy Azure do czarnej sfery, która jest umieszczana w świecie rzeczywistym.
+Na koniec Dodaj następujący kod do metody `handleTap()`. Dołączy lokalną kotwicę platformy Azure do czarnej sfery, która jest umieszczana w świecie rzeczywistym.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-182,198-199&highlight=12-13)]
 
@@ -187,27 +187,27 @@ Przed przeprowadzeniem dalszych dalszych czynności należy utworzyć identyfika
 
 ## <a name="upload-your-local-anchor-into-the-cloud"></a>Przekaż lokalne zakotwiczenie do chmury
 
-Po określeniu identyfikatora i klucza konta zakotwiczeń przestrzennych platformy Azure możemy wrócić do programu `app\java\<PackageName>\MainActivity`, dodać do niego następujące Importy:
+Po określeniu identyfikatora i klucza konta zakotwiczeń przestrzennych platformy Azure możemy wrócić do `app\java\<PackageName>\MainActivity`, dodając do niego następujące Importy:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=40-45&highlight=3-6)]
 
-Następnie Dodaj następujące zmienne członkowskie do `MainActivity` klasy:
+Następnie Dodaj następujące zmienne członkowskie do klasy `MainActivity`:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=60-65&highlight=3-6)]
 
-Teraz Dodaj następujący kod do `initializeSession()` metody. Najpierw ten kod zezwoli aplikacji na monitorowanie postępu, jaki zestaw SDK kotwice przestrzenne platformy Azure tworzy w miarę zbierania ramek z kanału informacyjnego aparatu. W miarę jak kolor sfery zacznie się zmieniać od oryginalnego koloru czarnego na szary. Następnie nastąpi obrócenie bieli po zebraniu wystarczającej liczby klatek, aby przesłać zakotwiczenie do chmury. Następnie ten kod zapewni poświadczenia potrzebne do komunikowania się z zapleczem chmury. Tutaj można skonfigurować aplikację do używania identyfikatora i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobów kotwic przestrzennych](#create-a-spatial-anchors-resource).
+Teraz Dodaj następujący kod do metody `initializeSession()`. Najpierw ten kod zezwoli aplikacji na monitorowanie postępu, jaki zestaw SDK kotwice przestrzenne platformy Azure tworzy w miarę zbierania ramek z kanału informacyjnego aparatu. W miarę jak kolor sfery zacznie się zmieniać od oryginalnego koloru czarnego na szary. Następnie nastąpi obrócenie bieli po zebraniu wystarczającej liczby klatek, aby przesłać zakotwiczenie do chmury. Następnie ten kod zapewni poświadczenia potrzebne do komunikowania się z zapleczem chmury. Tutaj można skonfigurować aplikację do używania identyfikatora i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobów kotwic przestrzennych](#create-a-spatial-anchors-resource).
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-146&highlight=11-36)]
 
-Następnie Dodaj następującą `uploadCloudAnchorAsync()` metodę `mainActivity` do klasy. Po wywołaniu ta metoda asynchronicznie zaczeka, aż do momentu zebrania wystarczającej liczby klatek z Twojego urządzenia. Tak szybko, jak to nastąpi, zmieni kolor sfery na żółty, a następnie rozpocznie się przekazywanie lokalnego zakotwiczenia przestrzennego platformy Azure do chmury. Po zakończeniu przekazywania kod zwróci identyfikator zakotwiczenia.
+Następnie Dodaj następującą metodę `uploadCloudAnchorAsync()` wewnątrz klasy `mainActivity`. Po wywołaniu ta metoda asynchronicznie zaczeka, aż do momentu zebrania wystarczającej liczby klatek z Twojego urządzenia. Tak szybko, jak to nastąpi, zmieni kolor sfery na żółty, a następnie rozpocznie się przekazywanie lokalnego zakotwiczenia przestrzennego platformy Azure do chmury. Po zakończeniu przekazywania kod zwróci identyfikator zakotwiczenia.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=uploadCloudAnchorAsync)]
 
-Na koniec przychodźmy wszystko razem. `handleTap()` W metodzie Dodaj następujący kod. Spowoduje to wywołanie `uploadCloudAnchorAsync()` metody zaraz po utworzeniu sfery. Po powrocie metody kod poniżej wykona jedną aktualizację ostateczną do sfery, zmieniając jej kolor na niebieską.
+Na koniec przychodźmy wszystko razem. W metodzie `handleTap()` Dodaj następujący kod. Spowoduje to wywołanie metody `uploadCloudAnchorAsync()` zaraz po utworzeniu sfery. Po powrocie metody kod poniżej wykona jedną aktualizację ostateczną do sfery, zmieniając jej kolor na niebieską.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-199&highlight=24-37)]
 
-Ponownie [Wdróż](#trying-it-out) aplikację jeszcze raz. Poruszaj się po urządzeniu, naciśnij ekran i umieść swoją sferę. Tym razem, sfera zmieni kolor z czarnej na biały, ponieważ klatki kamer są zbierane. Gdy mamy wystarczającą liczbę ramek, sfera zmieni się na żółtą i rozpocznie się przekazywanie do chmury. Po zakończeniu przekazywania sfera zmieni kolor na niebieski. Opcjonalnie można również użyć `Logcat` okna w Android Studio, aby monitorować komunikaty dziennika wysyłane przez aplikację. Na przykład postęp sesji podczas przechwytywania ramki oraz identyfikator zakotwiczony zwracany przez chmurę po zakończeniu przekazywania.
+Ponownie [Wdróż](#trying-it-out) aplikację jeszcze raz. Poruszaj się po urządzeniu, naciśnij ekran i umieść swoją sferę. Tym razem, sfera zmieni kolor z czarnej na biały, ponieważ klatki kamer są zbierane. Gdy mamy wystarczającą liczbę ramek, sfera zmieni się na żółtą i rozpocznie się przekazywanie do chmury. Po zakończeniu przekazywania sfera zmieni kolor na niebieski. Opcjonalnie można również użyć okna `Logcat` wewnątrz Android Studio do monitorowania komunikatów dziennika wysyłanych przez aplikację. Na przykład postęp sesji podczas przechwytywania ramki oraz identyfikator zakotwiczony zwracany przez chmurę po zakończeniu przekazywania.
 
 ## <a name="locate-your-cloud-spatial-anchor"></a>Znajdź kotwicę przestrzenną w chmurze
 
@@ -215,7 +215,7 @@ Jedno zakotwiczenie zostanie przekazane do chmury. wszystko jest gotowe do ponow
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=45-48&highlight=3-4)]
 
-Następnie Dodajmy do `handleTap()` metody następujący kod. Ten kod będzie:
+Następnie Dodajmy Poniższy kod do metody `handleTap()`. Ten kod będzie:
 
 - Usuń istniejącą niebieską sferę z ekranu.
 - Zainicjuj ponownie sesję zakotwiczeń przestrzennych platformy Azure. Ta akcja zapewni, że zakotwiczenie, które zamierzamy zlokalizować, pochodzi z chmury, a nie do lokalnej kotwicy.
@@ -223,10 +223,10 @@ Następnie Dodajmy do `handleTap()` metody następujący kod. Ten kod będzie:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=handleTap&highlight=10-19)]
 
-Teraz przechwytuje kod, który zostanie wywołany, gdy zakotwiczenie zostanie umieszczone w zapytaniu. `initializeSession()` Wewnątrz metody Dodaj następujący kod. Ten fragment kodu zostanie utworzony, & umieścić zieloną sferę, gdy zostanie umieszczona kotwica w chmurze. Spowoduje to również ponowne włączenie ekranu, aby można było wielokrotnie powtórzyć cały scenariusz: Utwórz kolejną kotwicę lokalną, przekaż ją i Znajdź ponownie.
+Teraz przechwytuje kod, który zostanie wywołany, gdy zakotwiczenie zostanie umieszczone w zapytaniu. Wewnątrz metody `initializeSession()` Dodaj następujący kod. Ten fragment kodu zostanie utworzony, & umieścić zieloną sferę, gdy zostanie umieszczona kotwica w chmurze. Spowoduje to również ponowne włączenie ekranu, aby można było wielokrotnie powtórzyć cały scenariusz: Utwórz kolejną kotwicę lokalną, przekaż ją i Znajdź ponownie.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=initializeSession&highlight=34-53)]
 
-To wszystko! Ponownie [Wdróż](#trying-it-out) aplikację po raz ostatni, aby wypróbować cały scenariusz. Poruszaj się po urządzeniu i umieść swoją czarną sferę. Następnie kontynuuj przeniesienie urządzenia do przechwytywania klatek kamer, dopóki sfera nie zmieni się na żółty. Twoje lokalne zakotwiczenie zostanie przekazane, a SFERA zmieni kolor na niebiesko. Na koniec naciśnij swój ekran jeszcze raz, aby lokalne zakotwiczenie zostało usunięte, a następnie będziemy wysyłać zapytania o jego odpowiednik w chmurze. Kontynuuj przenoszenie urządzenia do momentu, gdy zakotwiczenie chmury nie zostanie umieszczone. Zielona kula powinna pojawić się w poprawnej lokalizacji i można wypłukać & powtórzyć cały scenariusz ponownie.
+Gotowe. Ponownie [Wdróż](#trying-it-out) aplikację po raz ostatni, aby wypróbować cały scenariusz. Poruszaj się po urządzeniu i umieść swoją czarną sferę. Następnie kontynuuj przeniesienie urządzenia do przechwytywania klatek kamer, dopóki sfera nie zmieni się na żółty. Twoje lokalne zakotwiczenie zostanie przekazane, a SFERA zmieni kolor na niebiesko. Na koniec naciśnij swój ekran jeszcze raz, aby lokalne zakotwiczenie zostało usunięte, a następnie będziemy wysyłać zapytania o jego odpowiednik w chmurze. Kontynuuj przenoszenie urządzenia do momentu, gdy zakotwiczenie chmury nie zostanie umieszczone. Zielona kula powinna pojawić się w poprawnej lokalizacji i można wypłukać & powtórzyć cały scenariusz ponownie.
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-new-android-app-finished.md)]

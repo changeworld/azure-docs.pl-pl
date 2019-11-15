@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 09/04/2019
-ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 0b8bfff03414dd02360cab1957ea2205e392235d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826651"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082475"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopiowanie spójnej transakcyjnie kopii bazy danych Azure SQL Database
 
@@ -72,8 +72,8 @@ Aby utworzyć kopię bazy danych, musisz mieć następujące role:
 - SQL Server rolę współautor lub
 - Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
 
-   Microsoft. SQL/serwery/bazy danych/Odczyt   
-   Microsoft. SQL/serwery/bazy danych/zapis   
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
 
 Aby anulować kopię bazy danych, musisz mieć następujące role:
 
@@ -81,8 +81,8 @@ Aby anulować kopię bazy danych, musisz mieć następujące role:
 - SQL Server rolę współautor lub
 - Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
 
-   Microsoft. SQL/serwery/bazy danych/Odczyt   
-   Microsoft. SQL/serwery/bazy danych/zapis   
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
    
 Aby zarządzać kopią bazy danych przy użyciu Azure Portal, potrzebne są również następujące uprawnienia:
 
@@ -156,6 +156,26 @@ Gdy nowa baza danych jest w trybie online na serwerze docelowym, należy użyć 
 Wszyscy użytkownicy w nowej bazie danych zachowują uprawnienia, które miały w źródłowej bazie danych. Użytkownik, który zainicjował kopię bazy danych, zostaje właścicielem bazy danych nowej bazy danych i ma przypisany nowy identyfikator zabezpieczeń (SID). Po pomyślnym zakończeniu kopiowania i wcześniejszym zamapowaniu użytkowników zostanie zalogowanie się do nowej bazy danych tylko za pomocą nazwy logowania, która zainicjowała kopiowanie.
 
 Aby dowiedzieć się więcej o zarządzaniu użytkownikami i logowaniami podczas kopiowania bazy danych na inny serwer SQL Database, zobacz [jak zarządzać zabezpieczeniami usługi Azure SQL Database po awarii](sql-database-geo-replication-security-config.md).
+
+## <a name="database-copy-errors"></a>Błędy kopiowania bazy danych
+
+Podczas kopiowania bazy danych w Azure SQL Database można napotkać następujące błędy. Więcej informacji znajdziesz w artykule [Kopiowanie bazy danych usługi Azure SQL Database](sql-database-copy.md).
+
+| Kod błędu | Ważność | Opis |
+| ---:| ---:|:--- |
+| 40635 |16 |Klient o adresie IP '%.&#x2a;ls' jest tymczasowo wyłączona. |
+| 40637 |16 |Tworzenie kopii bazy danych jest obecnie wyłączone. |
+| 40561 |16 |Kopiowanie bazy danych nie powiodło się. Źródłowa lub docelowa baza danych nie istnieje. |
+| 40562 |16 |Kopiowanie bazy danych nie powiodło się. Źródłowa baza danych została porzucona. |
+| 40563 |16 |Kopiowanie bazy danych nie powiodło się. Docelowa baza danych została porzucona. |
+| 40564 |16 |Kopiowanie bazy danych nie powiodło się z powodu błędu wewnętrznego. Porzuć docelową bazę danych i spróbuj ponownie. |
+| 40565 |16 |Kopiowanie bazy danych nie powiodło się. Dozwolona jest nie więcej niż 1 współbieżna kopia bazy danych z tego samego źródła. Porzuć docelową bazę danych i spróbuj ponownie później. |
+| 40566 |16 |Kopiowanie bazy danych nie powiodło się z powodu błędu wewnętrznego. Porzuć docelową bazę danych i spróbuj ponownie. |
+| 40567 |16 |Kopiowanie bazy danych nie powiodło się z powodu błędu wewnętrznego. Porzuć docelową bazę danych i spróbuj ponownie. |
+| 40568 |16 |Kopiowanie bazy danych nie powiodło się. Źródłowa baza danych stanie się niedostępna. Porzuć docelową bazę danych i spróbuj ponownie. |
+| 40569 |16 |Kopiowanie bazy danych nie powiodło się. Docelowa baza danych stanie się niedostępna. Porzuć docelową bazę danych i spróbuj ponownie. |
+| 40570 |16 |Kopiowanie bazy danych nie powiodło się z powodu błędu wewnętrznego. Porzuć docelową bazę danych i spróbuj ponownie później. |
+| 40571 |16 |Kopiowanie bazy danych nie powiodło się z powodu błędu wewnętrznego. Porzuć docelową bazę danych i spróbuj ponownie później. |
 
 ## <a name="next-steps"></a>Następne kroki
 

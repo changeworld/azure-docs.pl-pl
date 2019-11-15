@@ -10,22 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552969"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091210"
 ---
 # <a name="speech-to-text-rest-api"></a>Interfejs API REST zamiany mowy na tekst
 
 Jako alternatywę dla [zestawu Speech SDK](speech-sdk.md)usługi mowy umożliwiają konwertowanie mowy na tekst za pomocą interfejsu API REST. Każdy punkt końcowy, dostępny jest skojarzone z regionem. Aplikacja wymaga klucza subskrypcji dla punktu końcowego, który ma być używany.
 
 Przed użyciem interfejsu API REST zamiany mowy na tekst należy zrozumieć następujące informacje:
-* Żądania korzystające z interfejsu API REST mogą zawierać tylko 10 sekund nagrania audio.
+
+* Żądania korzystające z interfejsu API REST i bezpośredniego przesyłania dźwięku mogą zawierać maksymalnie 60 sekund audio.
 * Interfejs API REST mowy na tekst zwraca tylko wyniki końcowe. Wyniki częściowe nie są dostarczane.
 
-Jeśli wysyłanie dłużej audio jest wymagana dla aplikacji, należy rozważyć użycie [zestaw SDK rozpoznawania mowy](speech-sdk.md) lub [batch transkrypcji](batch-transcription.md).
+Jeśli wysyłanie dłuższego dźwięku jest wymagane dla aplikacji, należy rozważyć użycie [zestawu Speech SDK](speech-sdk.md) lub interfejsu API REST opartego na plikach, takiego jak [transkrypcja partii](batch-transcription.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -33,7 +34,7 @@ Jeśli wysyłanie dłużej audio jest wymagana dla aplikacji, należy rozważyć
 
 Te regiony są obsługiwane w przypadku przekształcania mowy na tekst przy użyciu interfejsu API REST. Upewnij się, wybierz pozycję punkt końcowy, który odpowiada Twoim regionie subskrypcji.
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
 
 ## <a name="query-parameters"></a>Parametry zapytania
 
@@ -43,7 +44,7 @@ Te parametry mogą być zawarte w ciągu zapytania żądania REST.
 |-----------|-------------|---------------------|
 | `language` | Określa język mówiony, który jest rozpoznawany. Zobacz [obsługiwane języki](language-support.md#speech-to-text). | Wymagane |
 | `format` | Określa format wyniku. Akceptowane wartości to `simple` i `detailed`. Proste wyniki obejmują `RecognitionStatus`, `DisplayText`, `Offset`, i `Duration`. Precyzyjne reakcje obejmują wiele wyników z wartościami zaufania i cztery różne reprezentacje. Ustawieniem domyślnym jest `simple`. | Optional (Opcjonalność) |
-| `profanity` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `masked`, gwiazdek, która zastępuje wulgaryzmów `removed`, który Usuń wszystkie wulgaryzmów z wyników, lub `raw`, w tym wulgaryzmów w wyniku. Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
+| `profanity` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `masked`, które zastępują braki z gwiazdkami, `removed`, które usuwają wszystkie niewulgarności z wyniku lub `raw`, które zawierają braki w wyniku. Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
 
 ## <a name="request-headers"></a>Nagłówki żądań
 
@@ -56,7 +57,7 @@ Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany mowy na
 | `Content-type` | W tym artykule opisano format i kodera-dekodera audio podanych danych. Akceptowane wartości to `audio/wav; codecs=audio/pcm; samplerate=16000` i `audio/ogg; codecs=opus`. | Wymagane |
 | `Transfer-Encoding` | Określa, czy fragmentaryczne dane audio są wysyłane, zamiast pojedynczego pliku. Ten nagłówek należy używać tylko, jeśli dane audio. | Optional (Opcjonalność) |
 | `Expect` | Jeśli używasz fragmentaryczne transferu, Wyślij `Expect: 100-continue`. Usługi mowy potwierdzają wstępne żądanie i czekają na dodatkowe dane.| Wymagany, jeśli wysyłanie danych audio podzielonego. |
-| `Accept` | Jeśli podano, musi on być `application/json`. Usługi mowy zapewniają wyniki w formacie JSON. Niektóre środowiska żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`. | Opcjonalne, ale zalecane. |
+| `Accept` | Jeśli podano, musi on być `application/json`. Usługi mowy zapewniają wyniki w formacie JSON. Niektóre platformy żądań zapewniają niezgodną wartość domyślną. Dobrym sposobem jest zawsze uwzględnienie `Accept`. | Opcjonalne, ale zalecane. |
 
 ## <a name="audio-formats"></a>Formaty audio
 
@@ -72,7 +73,7 @@ Dźwięku w treści HTTP `POST` żądania. Musi być w jednym z formatów w tej 
 
 ## <a name="sample-request"></a>Przykładowe żądanie
 
-Jest to typowy żądania HTTP. Poniższy przykład obejmuje nazwę hosta i wymagane nagłówki. Należy zauważyć, że usługa oczekuje również dane audio, która nie znajduje się w tym przykładzie. Jak wspomniano wcześniej, segmentu jest zalecane, jednak nie jest wymagane.
+Poniższy przykład obejmuje nazwę hosta i wymagane nagłówki. Należy zauważyć, że usługa oczekuje również dane audio, która nie znajduje się w tym przykładzie. Jak wspomniano wcześniej, segmentu jest zalecane, jednak nie jest wymagane.
 
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -92,13 +93,13 @@ Kod stanu HTTP dla każdej odpowiedzi wskazuje sukces lub typowych błędów.
 |------------------|-------------|-----------------|
 | 100 | Kontynuuj | Wstępne żądanie zostało zaakceptowane. Czy kontynuować wysyłanie pozostałe dane. (Używany przy użyciu transferu pakietowego). |
 | 200 | OK | Żądanie powiodło się; treść odpowiedzi jest obiekt JSON. |
-| 400 | Nieprawidłowe żądanie | Kod języka podany lub nie jest obsługiwany język; Nieprawidłowy plik audio. |
+| 400 | Nieprawidłowe żądanie | Nie podano kodu języka, nie jest to obsługiwanego języka, nieprawidłowy plik audio itd. |
 | 401 | Brak autoryzacji | Klucz subskrypcji lub autoryzacji token jest nieprawidłowy w określonym regionie lub nieprawidłowy punkt końcowy. |
-| 403 | Zabroniony | Brak klucz subskrypcji lub autoryzacji tokenu. |
+| 403 | Forbidden | Brak klucz subskrypcji lub autoryzacji tokenu. |
 
 ## <a name="chunked-transfer"></a>Fragmentaryczne transferu
 
-Funkcja transferu fragmentarycznego`Transfer-Encoding: chunked`() może pomóc w zmniejszeniu opóźnienia rozpoznawania, ponieważ umożliwia usługom mowy rozpoczęcie przetwarzania pliku audio podczas jego przesyłania. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki. Ta opcja jest przeznaczona wyłącznie do zwiększyć szybkość reakcji.
+Przenoszenie fragmentaryczne (`Transfer-Encoding: chunked`) może pomóc w zmniejszeniu opóźnienia rozpoznawania. Dzięki temu usługi mowy mogą rozpocząć przetwarzanie pliku audio podczas jego przesyłania. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki.
 
 Ten przykładowy kod przedstawia sposób wysłania audio we fragmentach. Tylko pierwszy fragment może zawierać nagłówek pliku audio. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
 
@@ -146,7 +147,7 @@ Wyniki są dostarczane w formacie JSON. `simple` Formatu zawiera następujące p
 | Parametr | Opis  |
 |-----------|--------------|
 |`RecognitionStatus`|Stan, takich jak `Success` rozpoznawania się pomyślnie. Zobacz następną tabelę.|
-|`DisplayText`|Rozpoznany tekst po wielkość liter, znaki interpunkcyjne, tekst odwrotny normalizacji (Konwersja tekstu mówionego na krótszą formularzy, takich jak 200, "200" lub "odzyskiwania po awarii. Smith""lekarzem Smith"), a wulgaryzmów maskowania. Istnieje tylko w przypadku powodzenia.|
+|`DisplayText`|Rozpoznany tekst po kapitalizacji, interpunkcji, normalizacji tekstu odwrotnego (konwersja mówionego tekstu na krótsze formularze, takie jak 200 dla "200" lub "Dr. Smith" dla "lekarza Kowalski") i maskowania niewulgarności. Istnieje tylko w przypadku powodzenia.|
 |`Offset`|Czas (w jednostkach 100-nanosekundowych), jaką rozpoznawanym mowy rozpoczyna się w strumienia audio.|
 |`Duration`|Czas trwania (w jednostkach 100-nanosekundowych) rozpoznawaną mowy w strumienia audio.|
 
@@ -163,7 +164,7 @@ Wyniki są dostarczane w formacie JSON. `simple` Formatu zawiera następujące p
 > [!NOTE]
 > Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy.
 
-Format zawiera te same dane `simple` co format, wraz z `NBest`listą alternatywną interpretacji tego samego wyniku rozpoznawania. `detailed` Te wyniki są uszeregowane od najbardziej najprawdopodobniej do najmniej najprawdopodobniej. Pierwszy wpis jest taki sam jak główny wynik rozpoznawania.  Korzystając z `detailed` formacie `DisplayText` jest dostarczana jako `Display` dla każdego wyniku `NBest` listy.
+`detailed` format zawiera te same dane, co format `simple`, oraz `NBest`, listę alternatywnych interpretacji tego samego wyniku rozpoznawania. Te wyniki są uszeregowane od najbardziej najprawdopodobniej do najmniej najprawdopodobniej. Pierwszy wpis jest taki sam jak główny wynik rozpoznawania.  Korzystając z `detailed` formacie `DisplayText` jest dostarczana jako `Display` dla każdego wyniku `NBest` listy.
 
 Każdy obiekt w `NBest` lista zawiera:
 
@@ -177,7 +178,7 @@ Każdy obiekt w `NBest` lista zawiera:
 
 ## <a name="sample-responses"></a>Przykład odpowiedzi
 
-Jest to typowa odpowiedź dla `simple` rozpoznawania.
+Typowa odpowiedź na `simple` rozpoznawania:
 
 ```json
 {
@@ -188,7 +189,7 @@ Jest to typowa odpowiedź dla `simple` rozpoznawania.
 }
 ```
 
-Jest to typowa odpowiedź dla `detailed` rozpoznawania.
+Typowa odpowiedź na `detailed` rozpoznawania:
 
 ```json
 {

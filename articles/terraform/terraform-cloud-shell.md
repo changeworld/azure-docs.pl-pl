@@ -6,12 +6,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 693ed462fb1ba3dfed079e8ae97152732c771253
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1259d5004bd547e33f65571333b6d0721d1253c0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969595"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078726"
 ---
 # <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Samouczek: Konfigurowanie Azure Cloud Shell dla Terraform
 
@@ -21,12 +21,12 @@ Terraform dobrze działa z wiersza polecenia bash w systemie macOS, Windows lub 
 
 ## <a name="automatic-credential-configuration"></a>Konfiguracja poświadczeń automatycznych
 
-Narzędzie Terraform jest instalowane i od razu dostępne w usłudze Cloud Shell. Skrypty narzędzia Terraform uwierzytelniają się na platformie Azure po zalogowaniu do usługi Cloud Shell, umożliwiając zarządzanie infrastrukturą bez konieczności przeprowadzania jakiejkolwiek dodatkowej konfiguracji. Automatyczne uwierzytelnianie pomija dwa procesy ręczne:
-- Tworzenie jednostki usługi Active Directory.
-- Konfigurowanie zmiennych dostawcy usługi Azure Terraform.
+Narzędzie Terraform jest instalowane i od razu dostępne w usłudze Cloud Shell. Skrypty Terraform uwierzytelniają się przy użyciu platformy Azure podczas logowania w celu Cloud Shell zarządzania infrastrukturą bez dodatkowej konfiguracji. Automatyczne uwierzytelnianie pomija dwa procesy ręczne:
+- Tworzenie jednostki usługi Active Directory
+- Konfigurowanie zmiennych dostawcy usługi Azure Terraform
 
 
-## <a name="using-modules-and-providers"></a>Używanie modułów i dostawców
+## <a name="use-modules-and-providers"></a>Korzystanie z modułów i dostawców
 
 Moduły Terraform platformy Azure wymagają poświadczeń w celu uzyskania dostępu do zasobów platformy Azure i ich modyfikowania. Aby użyć modułów Terraform w Cloud Shell, Dodaj następujący kod:
 
@@ -37,13 +37,13 @@ provider "azurerm" {
 }
 ```
 
-Usługa Cloud Shell przekazuje wymagane wartości dla dostawcy `azurerm` za pomocą zmiennych środowiskowych, używając dowolnego z poleceń `terraform` interfejsu wiersza polecenia.
+Cloud Shell przekazuje wymagane wartości dostawcy `azurerm` za pomocą zmiennych środowiskowych w przypadku korzystania z poleceń interfejsu wiersza polecenia `terraform`.
 
 ## <a name="other-cloud-shell-developer-tools"></a>Inne narzędzia programistyczne w usłudze Cloud Shell
 
-Pliki i stany powłoki pozostają w usłudze Azure Storage między sesjami usługi Cloud Shell. Używając [Eksploratora usługi Azure Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer), skopiuj i przekaż pliki z komputera lokalnego do usługi Cloud Shell.
+Pliki i stany powłoki pozostają w usłudze Azure Storage między sesjami usługi Cloud Shell. Użyj [Eksplorator usługi Azure Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer) do kopiowania i przekazywania plików do Cloud Shell z komputera lokalnego.
 
-W usłudze Cloud Shell jest dostępny interfejs wiersza polecenia platformy Azure, który stanowi doskonałe narzędzie do testowania konfiguracji i kontrolowania pracy po wykonaniu polecenia `terraform apply` lub `terraform destroy`.
+Interfejs wiersza polecenia platformy Azure jest dostępny w Cloud Shell i jest doskonałym narzędziem do testowania konfiguracji i sprawdzania pracy po zakończeniu `terraform apply` lub `terraform destroy`.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie routingu komunikatów dla platformy Azure IoT Hub przy użyciu szablonu Azure Resource Manager | Microsoft Docs
+title: Konfigurowanie routingu komunikatów dla IoT Hub platformy Azure przy użyciu szablonu Azure Resource Manager
 description: Konfigurowanie routingu komunikatów dla IoT Hub platformy Azure przy użyciu szablonu Azure Resource Manager
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ef73aed577645af5af82c439abb57022b389d040
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809712"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084403"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Samouczek: używanie szablonu Azure Resource Manager do konfigurowania routingu komunikatów IoT Hub
 
@@ -50,7 +50,7 @@ Większość z tych parametrów ma wartości domyślne. Te kończące się na **
 
 Identyfikator **subskrypcji**: to pole jest ustawione dla subskrypcji, w której wdrażasz szablon. To pole nie znajduje się w pliku parametrów, ponieważ jest ono ustawione dla Ciebie.
 
-**IoTHubName_in**: to pole jest podstawową nazwą IoT Hub, która jest łączona z randomValue, która ma być globalnie unikatowa.
+**IoTHubName_in**: to pole jest podstawową nazwą IoT Hub, która jest połączona z randomValue, aby była unikatowa w skali globalnej.
 
 **Lokalizacja**: to pole jest regionem platformy Azure, w którym są wdrażane, na przykład "zachodnie".
 
@@ -58,7 +58,7 @@ Identyfikator **subskrypcji**: to pole jest ustawione dla subskrypcji, w której
 
 **sku_name**: to pole jest skalowaniem dla IoT Hub. Ta wartość musi być równa S1 lub większa; warstwa Bezpłatna nie działa w tym samouczku, ponieważ nie zezwala na używanie wielu punktów końcowych.
 
-**sku_units**: to pole ma wartość **sku_name**i jest liczbą IoT Hub jednostek, które mogą być używane.
+**sku_units**: to pole zawiera **sku_name**i jest liczbą IoT Hub jednostek, które mogą być używane.
 
 **d2c_partitions**: to pole jest liczbą partycji używanych przez strumień zdarzeń.
 
@@ -68,9 +68,9 @@ Identyfikator **subskrypcji**: to pole jest ustawione dla subskrypcji, w której
 
 **storage_endpoint**: to pole jest nazwą punktu końcowego konta magazynu używanego przez routing wiadomości.
 
-**service_bus_namespace_in**: to pole jest nazwą obszaru nazw Service Bus, który ma zostać utworzony. Ta wartość jest łączona z randomValue, aby uczynić ją globalnie unikatową.
+**service_bus_namespace_in**: to pole jest nazwą Service Bus przestrzeni nazw, która ma zostać utworzona. Ta wartość jest łączona z randomValue, aby uczynić ją globalnie unikatową.
 
-**service_bus_queue_in**: to pole jest nazwą kolejki Service Bus używanej dla komunikatów routingu. Ta wartość jest łączona z randomValue, aby uczynić ją globalnie unikatową.
+**service_bus_queue_in**: to pole jest nazwą kolejki Service Bus używanej w przypadku komunikatów routingu. Ta wartość jest łączona z randomValue, aby uczynić ją globalnie unikatową.
 
 **AuthRules_sb_queue**: to pole jest regułami autoryzacji dla kolejki usługi Service Bus, które są używane do pobierania parametrów połączenia dla kolejki.
 
@@ -84,7 +84,7 @@ Te wartości są używane w szablonie i są głównie wyprowadzane z parametrów
 
 **storageAccountName**: to pole jest nazwą konta magazynu po połączona z randomValue. 
 
-**service_bus_namespace**: to pole jest przestrzenią nazw po randomValue łączenia.
+**service_bus_namespace**: to pole jest przestrzenią nazw po randomValue połączonej.
 
 **service_bus_queue**: to pole jest nazwą kolejki Service Bus po randomValue łączenia.
 

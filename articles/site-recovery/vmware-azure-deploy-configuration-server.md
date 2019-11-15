@@ -1,5 +1,5 @@
 ---
-title: Wdróż serwer konfiguracji na potrzeby odzyskiwania po awarii programu VMware z Azure Site Recovery | Microsoft Docs
+title: Wdróż serwer konfiguracji w Azure Site Recovery
 description: W tym artykule opisano sposób wdrażania serwera konfiguracji na potrzeby odzyskiwania po awarii oprogramowania VMware przy użyciu Azure Site Recovery
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 92b51b3955833bac6f87457a19e4d6359600a25a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747826"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084138"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -46,7 +46,7 @@ Użytkownik musi mieć jeden z następujących uprawnień ustawionych w Azure Ac
     - Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika**.
     - Wobszarze rejestracje aplikacji **Użytkownicy mogą rejestrować aplikacje**, a następnie wybrać opcję **tak**.
 
-      ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+      ![AD_application_permission platformy Azure](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Active Directory Federation Services *nie jest obsługiwana*. Użyj konta zarządzanego za pomocą [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
@@ -185,7 +185,7 @@ Aby uniknąć przerw w trwającej replikacji, należy się upewnić, że adres I
 
 Aby uzyskać więcej często zadawanych pytań na temat serwerów konfiguracji, zobacz [często zadawane pytania dotyczące serwera konfiguracji](vmware-azure-common-questions.md#configuration-server).
 
-## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
+## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów z wdrożeniem
 
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 

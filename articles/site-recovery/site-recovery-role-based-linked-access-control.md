@@ -1,21 +1,21 @@
 ---
-title: Zarządzanie dostępem Azure Site Recovery przy użyciu kontroli dostępu opartej na rolach (RBAC) | Microsoft Docs
+title: Zarządzanie kontrolą dostępu opartą na rolach na platformie Azure w Azure Site Recovery
 description: W tym artykule opisano sposób stosowania kontroli dostępu opartej na rolach (RBAC) do zarządzania dostępem Azure Site Recovery.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 51c0d832a6d6d9b1cd148f765e68cb77c4679819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929215"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083776"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Zarządzanie dostępem Site Recovery przy użyciu kontroli dostępu opartej na rolach (RBAC)
 
-Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Za pomocą RBAC można rozdzielić obowiązki w zespole i udzielić użytkownikom tylko określonych uprawnień dostępu w celu wykonywania określonych zadań.
+Kontrola dostępu oparta na rolach (RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem na platformie Azure. Za pomocą RBAC można rozdzielić obowiązki w zespole i udzielić użytkownikom tylko określonych uprawnień dostępu w celu wykonywania określonych zadań.
 
 Azure Site Recovery udostępnia 3 wbudowane role do kontrolowania operacji zarządzania Site Recovery. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
 
@@ -43,31 +43,31 @@ Użytkownik musi mieć następujące uprawnienia, aby ukończyć replikację now
 
 | **Typ zasobu** | **Model wdrażania** | **Zezwolenie** |
 | --- | --- | --- |
-| Wystąpienia obliczeniowe | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
-|  |  | Microsoft. COMPUTE/virtualMachines/Read |
-|  |  | Microsoft. COMPUTE/virtualMachines/Write |
-|  |  | Microsoft. COMPUTE/virtualMachines/Delete |
-|  | Klasyczny | Microsoft. ClassicCompute/domainNames/odczyt |
-|  |  | Microsoft. ClassicCompute/domainNames/Write |
-|  |  | Microsoft. ClassicCompute/domainNames/Delete |
-|  |  | Microsoft. ClassicCompute/virtualMachines/odczyt |
-|  |  | Microsoft. ClassicCompute/virtualMachines/Write |
-|  |  | Microsoft. ClassicCompute/virtualMachines/Delete |
-| Sieć | Resource Manager | Microsoft. Network/networkInterfaces/odczyt |
-|  |  | Microsoft. Network/networkInterfaces/Write |
-|  |  | Microsoft. Network/networkInterfaces/Delete |
-|  |  | Microsoft. Network/networkInterfaces/Join/Action |
-|  |  | Microsoft. Network/virtualNetworks/odczyt |
-|  |  | Microsoft. Network/virtualNetworks/podsieci/odczyt |
-|  |  | Microsoft. Network/virtualNetworks/Subnets/Join/Action |
-|  | Klasyczny | Microsoft. ClassicNetwork/virtualNetworks/odczyt |
-|  |  | Microsoft. ClassicNetwork/virtualNetworks/Join/Action |
-| Usługa Storage | Resource Manager | Microsoft. Storage/storageAccounts/Read |
-|  |  | Microsoft. Storage/storageAccounts/ListKeys/akcja |
-|  | Klasyczny | Microsoft. ClassicStorage/storageAccounts/odczyt |
-|  |  | Microsoft. ClassicStorage/storageAccounts/listKeys/akcja |
+| Compute | Resource Manager | Microsoft.Compute/availabilitySets/read |
+|  |  | Microsoft.Compute/virtualMachines/read |
+|  |  | Microsoft.Compute/virtualMachines/write |
+|  |  | Microsoft.Compute/virtualMachines/delete |
+|  | Wdrożenie klasyczne | Microsoft.ClassicCompute/domainNames/read |
+|  |  | Microsoft.ClassicCompute/domainNames/write |
+|  |  | Microsoft.ClassicCompute/domainNames/delete |
+|  |  | Microsoft.ClassicCompute/virtualMachines/read |
+|  |  | Microsoft.ClassicCompute/virtualMachines/write |
+|  |  | Microsoft.ClassicCompute/virtualMachines/delete |
+| Sieć | Resource Manager | Microsoft.Network/networkInterfaces/read |
+|  |  | Microsoft.Network/networkInterfaces/write |
+|  |  | Microsoft.Network/networkInterfaces/delete |
+|  |  | Microsoft.Network/networkInterfaces/join/action |
+|  |  | Microsoft.Network/virtualNetworks/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
+|  | Wdrożenie klasyczne | Microsoft.ClassicNetwork/virtualNetworks/read |
+|  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
+| Magazyn | Resource Manager | Microsoft.Storage/storageAccounts/read |
+|  |  | Microsoft.Storage/storageAccounts/listkeys/action |
+|  | Wdrożenie klasyczne | Microsoft.ClassicStorage/storageAccounts/read |
+|  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
 | Grupa zasobów | Resource Manager | Microsoft. resources/Deployments/* |
-|  |  | Microsoft. resources/subscriptions/resourceGroups/Read |
+|  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
 Rozważ użycie [wbudowanych ról](../role-based-access-control/built-in-roles.md) "Współautor maszyny wirtualnej" i "Współautor klasycznej maszyny wirtualnej" dla Menedżer zasobów i klasycznych modeli wdrażania.
 

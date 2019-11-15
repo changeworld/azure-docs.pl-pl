@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826813"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082494"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z SQL Database problemami z połączeniem i błędami przejściowymi
 
@@ -30,7 +30,7 @@ W tym artykule opisano, jak zapobiegać, rozwiązywać problemy, diagnozować i 
 
 Błąd przejściowy, nazywany także błędem przejściowym, ma zasadniczą przyczynę, która wkrótce wyeliminuje siebie. Sporadyczne wystąpienie błędów przejściowych polega na tym, że system Azure szybko przenosi zasoby sprzętowe w celu lepszego zrównoważenia obciążenia różnych obciążeń. Większość tych zdarzeń ponownej konfiguracji kończy się za mniej niż 60 sekund. Podczas tego przedziału czasu ponownej konfiguracji mogą wystąpić problemy z łącznością SQL Database. Aplikacje łączące się z SQL Database powinny zostać skompilowane, aby oczekiwać na te błędy przejściowe. Aby je obsłużyć, należy wdrożyć logikę ponowień w kodzie, zamiast dopełniać je do użytkowników jako błędy aplikacji.
 
-Jeśli program kliencki używa ADO.NET, program jest powiadamiany o błędzie przejściowym przez throw **SqlException**. Porównaj Właściwość **Number** z listą błędów przejściowych znalezionych w górnej części artykułu [kody błędów SQL dla SQL Database aplikacji klienckich](sql-database-develop-error-messages.md).
+Jeśli program kliencki używa ADO.NET, program jest powiadamiany o błędzie przejściowym przez throw **SqlException**. 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 

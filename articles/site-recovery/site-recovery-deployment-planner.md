@@ -1,5 +1,5 @@
 ---
-title: Informacje o Planista wdrażania usługi Azure Site Recovery odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure | Microsoft Docs
+title: Planista wdrażania usługi Azure Site Recovery na potrzeby odzyskiwania po awarii oprogramowania VMware
 description: Dowiedz się więcej o Planista wdrażania usługi Azure Site Recovery na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware na platformę Azure.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 50a236154a0340bd49e84a8ca02f656e3cd9994a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620061"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084525"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informacje o Planista wdrażania usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure
 Ten artykuł to podręcznik użytkownika planisty wdrażania usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.
@@ -64,7 +64,7 @@ Narzędzie udostępnia następujące szczegóły:
 
 | | **Z programu VMware do platformy Azure** |**Z funkcji Hyper-V do platformy Azure**|**Z platformy Azure do platformy Azure**|**Z funkcji Hyper-V do lokacji dodatkowej**|**Z oprogramowania VMware do lokacji dodatkowej**
 --|--|--|--|--|--
-Obsługiwane scenariusze |Tak|Yes|Nie|Tak*|Nie
+Obsługiwane scenariusze |Yes|Yes|Nie|Tak*|Nie
 Obsługiwana wersja | vCenter 6,7, 6,5, 6,0 lub 5,5| Windows Server 2016, Windows Server 2012 R2 | Nie dotyczy |Windows Server 2016, Windows Server 2012 R2|Nie dotyczy
 Obsługiwana konfiguracja|vCenter, ESXi| Klaster funkcji Hyper-V, host funkcji Hyper-V|Nie dotyczy|Klaster funkcji Hyper-V, host funkcji Hyper-V|Nie dotyczy|
 Liczba serwerów, które mogą być profilowane, na uruchomione wystąpienie planisty wdrażania usługi Site Recovery |Jeden (w tym samym czasie można profilować maszyny wirtualne należące do jednego serwera vCenter lub jednego serwera ESXi)|Wiele (w tym samym czasie można profilować maszyny wirtualne należące do wielu hostów lub klastrów hostów)| Nie dotyczy |Wiele (w tym samym czasie można profilować maszyny wirtualne należące do wielu hostów lub klastrów hostów)| Nie dotyczy
@@ -76,9 +76,9 @@ Narzędzie obejmuje dwa główne etapy — profilowanie i generowanie raportu. J
 
 | Wymaganie dotyczące serwera | Opis|
 |---|---|
-|Profilowanie i pomiar przepływności| <ul><li>System operacyjny: Windows Server 2016 lub Windows Server 2012 R2<br>(w idealnej sytuacji spełniający co najmniej [zalecenia dotyczące rozmiaru serwera konfiguracji](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfiguracja maszyny: 8 procesorów wirtualnych vCPU, 16 GB pamięci RAM, dysk twardy 300 GB</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Pakiet redystrybucyjny Visual C++ dla Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp do platformy Azure przez Internet z tego serwera</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Ustawienia poziomu statystyk programu VMware vCenter mogą mieć poziom 1 lub wyższy</li><li>Zezwalaj na port vCenter (domyślnie 443): Site Recovery Planista wdrażania używa tego portu do nawiązywania połączenia z serwerem vCenter/hostem ESXi</ul></ul>|
+|Profilowanie i pomiar przepływności| <ul><li>System operacyjny: Windows Server 2016 lub Windows Server 2012 R2<br>(w idealnej sytuacji spełniający co najmniej [zalecenia dotyczące rozmiaru serwera konfiguracji](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfiguracja maszyny: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Pakiet redystrybucyjny Visual C++ dla Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp do platformy Azure przez Internet z tego serwera</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Ustawienia poziomu statystyk programu VMware vCenter mogą mieć poziom 1 lub wyższy</li><li>Zezwalaj na port vCenter (domyślnie 443): Site Recovery Planista wdrażania używa tego portu do nawiązywania połączenia z serwerem vCenter/hostem ESXi</ul></ul>|
 | Generowanie raportu | KOMPUTER z systemem Windows lub Windows Server z programem Excel 2013 lub nowszym.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Pakiet redystrybucyjny Visual C++ dla Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) jest wymagana tylko w przypadku przekazywania opcji użytkownika w poleceniu generowania raportu w celu pobrania najnowszych informacji o konfiguracji maszyny wirtualnej maszyn wirtualnych. Planista wdrażania nawiązuje połączenie z serwerem vCenter. Zezwalaj portowi vCenter port (domyślnie 443) na połączenie z serwerem vCenter.</li>|
-| Uprawnienia użytkownika | Uprawnienia tylko do odczytu dla konta użytkownika używanego do uzyskiwania dostępu do serwera VMware vCenter/hosta VMware vSphere ESXi podczas profilowania |
+| Uprawnienia użytkowników | Uprawnienia tylko do odczytu dla konta użytkownika używanego do uzyskiwania dostępu do serwera VMware vCenter/hosta VMware vSphere ESXi podczas profilowania |
 
 > [!NOTE]
 >
@@ -97,7 +97,7 @@ Narzędzie można uruchomić z systemu Windows Server 2012 R2, jeśli serwer ma 
 3. Wyodrębnij folder ZIP.
 Folder zawiera wiele plików i podfolderów. Plik wykonywalny nosi nazwę ASRDeploymentPlanner.exe i znajduje się w folderze nadrzędnym.
 
-    Przykład: Skopiuj plik ZIP na dysk E:\ i wyodrębnij go.
+    Przykład: skopiuj plik zip na dysk E:\ i wyodrębnij go.
     E:\ASR Deployment Planner_v2.3.zip
 
     E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe

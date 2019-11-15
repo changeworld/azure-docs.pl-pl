@@ -1,19 +1,19 @@
 ---
-title: Powrót po awarii maszyn wirtualnych platformy Azure replikowanych do pomocniczego regionu platformy Azure na potrzeby odzyskiwania po awarii za pomocą usługi Azure Site Recovery.
-description: Dowiedz się, jak zakończyć przywracanie maszyn wirtualnych platformy Azure za pomocą usługi Azure Site Recovery.
+title: Powrót po awarii maszyn wirtualnych platformy Azure do regionu podstawowego za pomocą usługi Azure Site Recovery.
+description: Opisuje sposób powrotu maszyn wirtualnych platformy Azure do regionu podstawowego przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242954"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091343"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Powrót po awarii maszyny wirtualnej platformy Azure między regionami platformy Azure
 

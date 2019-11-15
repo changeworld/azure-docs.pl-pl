@@ -9,29 +9,28 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821335"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090350"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorowanie i Poprawianie wydajności
 
 Azure SQL Database identyfikuje potencjalne problemy w bazie danych i zaleca akcje, które mogą poprawić wydajność obciążeń, zapewniając inteligentne akcje dostrajania i zalecenia.
 
-Aby sprawdzić wydajność bazy danych, użyj kafelka **wydajność** na stronie Przegląd lub przejdź do sekcji "Pomoc techniczna i rozwiązywanie problemów":
+## <a name="performance-tuning-options"></a>Opcje dostrajania wydajności
 
-   ![Wyświetl wydajność](./media/sql-database-performance/entries.png)
+Opcje dostrajania wydajności dostępne Azure SQL Database są dostępne w menu nawigacji bazy danych w obszarze "Inteligentna wydajność":
 
-W sekcji "Pomoc techniczna i rozwiązywanie problemów" można użyć następujących stron:
-
-
-1. [Przegląd wydajności](#performance-overview) do monitorowania wydajności bazy danych. 
-2. [Zalecenia dotyczące wydajności](#performance-recommendations) , aby znaleźć zalecenia dotyczące wydajności, które mogą poprawić wydajność obciążeń.
-3. [Szczegółowe informacje o wydajności zapytań](#query-performance-insight) znaleźć najważniejszych zapytań zużywających zasoby.
-4. [Automatyczne dostrajanie](#automatic-tuning) , aby umożliwić Azure SQL Database automatycznie zoptymalizować bazę danych.
+| Opcja dostrajania wydajności | Obsługa pojedynczej bazy danych i bazy danych w puli | Obsługa bazy danych wystąpień |
+| :----------------------------- | ----- | ----- |
+| **[Przegląd wydajności](#performance-overview)** — monitorowanie wszystkich działań związanych z wydajnością bazy danych. | Tak | Nie | 
+| **[Zalecenia dotyczące wydajności](#performance-recommendations)** — pokazuje zalecenia dotyczące wydajności, które mogą poprawić wydajność obciążeń. | Tak | Nie | 
+| **[Szczegółowe informacje o wydajności zapytań](#query-performance-insight)** — pokazuje wydajność najczęściej zużywanych zapytań w bazie danych. | Tak | Nie | 
+| **[Dostrajanie automatyczne](#automatic-tuning)** — Użyj Azure SQL Database, aby automatycznie zoptymalizować wydajność bazy danych. | Tak | Nie | 
 
 ## <a name="performance-overview"></a>Przegląd wydajności
 
@@ -58,10 +57,6 @@ Możesz również znaleźć pełną historię działań dostrajania, które zost
 
 Dowiedz się, jak znaleźć zalecenia dotyczące wydajności w artykule [Znajdowanie i stosowanie zaleceń dotyczących wydajności](sql-database-advisor-portal.md) .
 
-## <a name="automatic-tuning"></a>Automatyczne dostrajanie
-
-Bazy danych Azure SQL Database mogą automatycznie dostosowywać wydajność bazy danych, stosując [zalecenia dotyczące wydajności](sql-database-advisor.md). Aby dowiedzieć się więcej, przeczytaj artykuł dotyczący [dostrajania automatycznego](sql-database-automatic-tuning.md). Aby ją włączyć, przeczytaj artykuł [jak włączyć dostrajanie automatyczne](sql-database-automatic-tuning-enable.md).
-
 ## <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań
 
 [Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) pozwala poświęcać mniej czasu na rozwiązywanie problemów z wydajnością bazy danych, zapewniając:
@@ -74,8 +69,11 @@ Bazy danych Azure SQL Database mogą automatycznie dostosowywać wydajność baz
 
 Więcej informacji na temat tej strony znajdziesz w artykule **[jak korzystać z szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md)** .
 
+## <a name="automatic-tuning"></a>Automatyczne dostrajanie
+
+Bazy danych Azure SQL Database mogą automatycznie dostosowywać wydajność bazy danych, stosując [zalecenia dotyczące wydajności](sql-database-advisor.md). Aby dowiedzieć się więcej, przeczytaj artykuł dotyczący [dostrajania automatycznego](sql-database-automatic-tuning.md). Aby ją włączyć, przeczytaj artykuł [jak włączyć dostrajanie automatyczne](sql-database-automatic-tuning-enable.md).
+
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Azure SQL Database wskazówki dotyczące wydajności dla pojedynczych baz danych](sql-database-performance-guidance.md)
 * [Kiedy należy używać puli elastycznej?](sql-database-elastic-pool-guidance.md)
-

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: e1d27563d2181a8e094e00295f9506d88e694513
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22e833a1d555057c7e6a2ce46e7a1bb136260851
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500265"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888305"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
@@ -64,11 +64,11 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
-[6,12]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,36]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,71]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,78]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,91]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>System operacyjny gościa z września 2019
@@ -106,11 +106,11 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
-[6,11]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,35]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,70]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,77]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,90]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>System operacyjny gościa z sierpnia 2019
@@ -163,11 +163,11 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6,1]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,34]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,69]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,76]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,89]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>OS systemu operacyjnego gościa 2019
@@ -621,18 +621,18 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Zabezpieczenia systemu Windows 10 | 5,22 | 14 sierpnia 2018 |
-| Rel 18-08 | [4343899] | Tylko zabezpieczenia systemu Windows | 2,77 | 14 sierpnia 2018 |
+| Rel 18-08 | [4343899] | Tylko zabezpieczenia systemu Windows | 2.77 | 14 sierpnia 2018 |
 | Rel 18-08 | [4343896] | Tylko zabezpieczenia systemu Windows | 3,64 | 14 sierpnia 2018 |
 | Rel 18-08 | [4343888] | Tylko zabezpieczenia systemu Windows | 4,57 | 14 sierpnia 2018 |
-| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 — zabezpieczenia | 2,77 | 14 sierpnia 2018 |
+| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 — zabezpieczenia | 2.77 | 14 sierpnia 2018 |
 | Rel 18-08 | [4344175], [4344172] | .NET 3,5, 4. x — zabezpieczenia | 3,64 | 14 sierpnia 2018 |
 | Rel 18-08 | [4344178], [4344171] | .NET 3,5, 4. x — zabezpieczenia | 4,57 | 14 sierpnia 2018 |
 | Rel 18-08 | [4346742], [4346739] | .NET 3,5, 4. x wersja OOB | 3,64 | 30 lipca 2018 r. |
 | Rel 18-08 | [4346745], [4346408] | .NET 3,5, 4. x wersja OOB | 4,57 | 30 lipca 2018 r. |
 | Rel 18-08 | [4343902] | Flash | 3,64, 4,57, 5,22 | 14 sierpnia 2018 |
 | Rel 18-08 | [4343205] | Internet Explorer | 2,77, 3,64, 4,57 | 14 sierpnia 2018 |
-| Nie dotyczy | [4338818] |Pakiet zbiorczy bez zabezpieczeń |2,77 | 10 lipca 2018 |
-| Nie dotyczy | [4019990] |Aktualizacja kompilatora D3D dla platformy .NET |2,77 | 10 lipca 2018 |
+| Nie dotyczy | [4338818] |Pakiet zbiorczy bez zabezpieczeń |2.77 | 10 lipca 2018 |
+| Nie dotyczy | [4019990] |Aktualizacja kompilatora D3D dla platformy .NET |2.77 | 10 lipca 2018 |
 | Nie dotyczy | [4338830] |Pakiet zbiorczy bez zabezpieczeń |3,64 | 10 lipca 2018 |
 | Nie dotyczy | [4338421] |Pakiet zbiorczy .NET 3,5 bez zabezpieczeń |3,64 | 10 lipca 2018 |
 | Nie dotyczy | [4338416] |Zbiorcze informacje o niebezpieczeństwie .NET 4x |3,64 | 10 lipca 2018 |

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a822f1f5d781576102d874f33b31b698f4907a7d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b9dd7781263887a21597f32c74bd51854cc0dcfc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121565"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081911"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą ePlatform
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą ePlatform
 
 W tym samouczku dowiesz się, jak zintegrować usługę ePlatform z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi ePlatform z usługą Azure AD można:
 
@@ -67,11 +67,11 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą ePlat
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą ePlatform, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj Logowanie jednokrotne](#configure-eplatform-sso)** w usłudze ePlatform, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego ePlatform](#create-eplatform-test-user)** , aby dysponować odpowiednikiem B. Simon w ePlatform, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+    * **[Utwórz użytkownika testowego ePlatform](#create-eplatform-test-user)** , aby dysponować odpowiednikiem B. Simon w ePlatform, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -84,6 +84,16 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
 1. W sekcji **Podstawowa konfiguracja języka SAML** aplikacja została wstępnie skonfigurowana i wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
+
+1. Aplikacja ePlatform oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
+
+    ![image](common/default-attributes.png)
+
+1. Oprócz powyższych, aplikacja ePlatform oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
+
+    | Nazwa | Atrybut źródłowy |
+    | ---------------| --------------- |
+    | głównej | user.userprincipalname |
 
 1. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML**.
 
@@ -105,7 +115,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij pozycję **Utwórz**.
 
@@ -135,7 +145,7 @@ Aby skonfigurować Logowanie jednokrotne na stronie **ePlatform** , musisz wysł
 
 W tej sekcji utworzysz użytkownika o nazwie B. Simon w ePlatform. Aby dodać użytkowników na platformie ePlatform, Pracuj z [zespołem pomocy technicznej ePlatform](https://help.eplatform.co/hc/en-us) . Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 

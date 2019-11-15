@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 5773ea37585bb5c63736aaa4432243dc1d41f7bc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811177"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082431"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Jak używać Azure SQL Database
 
@@ -48,7 +48,7 @@ W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które 
 - [Użyj dziennika diagnostyki Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Monitoruj przestrzeń OLTP w pamięci](sql-database-in-memory-oltp-monitoring.md)
 
-### <a name="extended-events"></a>Rozszerzone zdarzenia
+### <a name="extended-events"></a>Zdarzenia rozszerzone
 
 - [Zdarzenia rozszerzone](sql-database-xevent-db-diff-from-svr.md)
 - [Przechowuj zdarzenia rozszerzone w pliku zdarzeń](sql-database-xevent-code-event-file.md)
@@ -72,7 +72,6 @@ W tej sekcji znajdują się różne przewodniki, skrypty i wyjaśnienia, które 
 - [Łączność](sql-database-libraries.md)
 - [Korzystanie z łącznika Spark](sql-database-spark-connector.md)
 - [Uwierzytelnianie aplikacji](sql-database-client-id-keys.md)
-- [Komunikaty o błędach](sql-database-develop-error-messages.md)
 - [Korzystanie z usługi Batch w celu uzyskania lepszej wydajności](sql-database-use-batching-to-improve-performance.md)
 - [Wskazówki dotyczące łączności](sql-database-connectivity-issues.md)
 - [Aliasy DNS](dns-alias-overview.md)

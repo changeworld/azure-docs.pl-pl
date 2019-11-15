@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 1a3d917775f6ba5b0b7f62d19de2b970a8b36838
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a203aa3a2df7e61c43f895849afa38b56ebea441
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571219"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091261"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji ASP.NET Core
 
@@ -144,8 +144,11 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
         webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
         {
             var settings = config.Build();
-            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"])
-                .UseFeatureFlags();
+            config.AddAzureAppConfiguration(options => {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .UseFeatureFlags();
+            });
+
         })
         .UseStartup<Startup>());
     ```
@@ -221,7 +224,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otwórz *_Layout. cshtml* w *widokach*\\*udostępniony* katalog i Zastąp `<nav>` kod kreskowy w obszarze `<body>` > `<header>` przy użyciu następującego kodu:
+1. Otwórz *_Layout. cshtml* w *widokach*\\*udostępniony* katalog i Zastąp kod paska `<nav>` w obszarze `<body>` > `<header>` następującym kodem:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">

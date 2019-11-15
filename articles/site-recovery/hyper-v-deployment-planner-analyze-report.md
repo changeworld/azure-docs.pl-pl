@@ -1,5 +1,5 @@
 ---
-title: Analizowanie raportu Planista wdrażania usługi Azure Site Recovery na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure | Microsoft Docs
+title: Analizowanie raportu Planista wdrażania funkcji Hyper-V w programie Azure Site Recovery
 description: W tym artykule opisano sposób analizowania raportu wygenerowanego przez Planista wdrażania usługi Azure Site Recovery na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693583"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084962"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analizowanie raportu Planista wdrażania usługi Azure Site Recovery
 W tym artykule omówiono arkusze zawarte w raporcie programu Excel wygenerowanym przez Planistę wdrażania usługi Azure Site Recovery w przypadku scenariusza dotyczącego funkcji Hyper-V na platformie Azure.
@@ -179,7 +179,7 @@ Raport programu Excel generowany przez Planistę wdrażania usługi Site Recover
 
 **Nazwa maszyny wirtualnej**: nazwa maszyny wirtualnej używana w pliku VMListFile podczas generowania raportu. Ta kolumna obejmuje też dyski (VHD) dołączone do maszyn wirtualnych. Nazwy obejmują nazwy hostów funkcji Hyper-V, na których zostały rozmieszczone maszyny wirtualne po tym, jak narzędzie odnalazło je w trakcie okresu profilowania.
 
-**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak**\*. **Tak** \* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o wysokim współczynniku zmian lub dużej liczbie operacji we/wy na sekundę pasuje do rozmiaru dysku w warstwie Premium większego niż rozmiar mapowany do dysku. Decyzja o tym, na jaki typ dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu: 
+**Zgodność maszyny wirtualnej**: wartości to **Tak** i **Tak**\*. **Tak**\* jest dla wystąpień, w których maszyna wirtualna jest zgodna z [dysków ssdem w warstwie Premium](../virtual-machines/windows/disks-types.md). Tutaj profilowany dysk o wysokim współczynniku zmian lub dużej liczbie operacji we/wy na sekundę pasuje do rozmiaru dysku w warstwie Premium większego niż rozmiar mapowany do dysku. Decyzja o tym, na jaki typ dysku magazynu Premium będzie mapowany dysk, jest podejmowana na podstawie jego rozmiaru na poziomie konta magazynu: 
 * Mniej niż 128 GB — P10.
 * 128 GB do 256 GB — P15.
 * 256 GB do 512 GB — P20.

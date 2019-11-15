@@ -1,6 +1,5 @@
 ---
-title: Samouczek — uzyskiwanie dostępu do obiektów blob magazynu w domenie niestandardowej usługi Azure CDN za pośrednictwem protokołu HTTPS | Microsoft Docs
-description: ''
+title: Dostęp do obiektów blob magazynu przy użyciu Azure CDN domeny niestandardowej za pośrednictwem protokołu HTTPS
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,20 +14,20 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e3b10760b95662570c8a6e802a57e1073e2faa0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593368"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083017"
 ---
-# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Samouczek: Dostęp do magazynu obiektów blob przy użyciu domeny niestandardowej Azure CDN przy użyciu protokołu HTTPS
+# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Samouczek: uzyskiwanie dostępu do obiektów blob magazynu w domenie niestandardowej usługi Azure CDN za pośrednictwem protokołu HTTPS
 
 Po zintegrowaniu konta magazynu platformy Azure z usługą Azure Content Delivery Network (CDN) możesz dodać domenę niestandardową i włączyć protokół HTTPS na tej domenie dla niestandardowego punktu końcowego magazynu obiektów blob. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zanim będzie możliwe wykonanie kroków opisanych w tym samouczku, najpierw należy zintegrować konto magazynu platformy Azure z usługą Azure CDN. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Integrowanie konta usługi Azure storage z usługą Azure CDN](cdn-create-a-storage-account-with-cdn.md).
+Zanim będzie możliwe wykonanie kroków opisanych w tym samouczku, najpierw należy zintegrować konto magazynu platformy Azure z usługą Azure CDN. Aby uzyskać więcej informacji, zobacz [Szybki start: integrowanie konta magazynu platformy Azure z usługą Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="add-a-custom-domain"></a>Dodawanie domeny niestandardowej
 Po utworzeniu punktu końcowego usługi CDN w profilu nazwa punktu końcowego, czyli domena podrzędna domeny azureedge.net, jest uwzględniana w adresie URL w celu domyślnego dostarczania zawartości usługi CDN. Dostępna jest także opcja kojarzenia domeny niestandardowej z punktem końcowym usługi CDN. Ta opcja umożliwia dostarczanie zawartości przy użyciu domeny niestandardowej w adresie URL zamiast korzystania z nazwy punktu końcowego. Aby dodać domenę niestandardową do punktu końcowego, postępuj zgodnie z instrukcjami w tym samouczku: [Dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md).
@@ -55,7 +54,7 @@ Gdy uzyskujesz dostęp do obiektów blob za pomocą usługi Azure CDN, opłaty s
 
 Jeśli na przykład masz konto magazynu w Stanach Zjednoczonych, do którego dostęp jest uzyskiwany przy użyciu usługi Azure CDN, a ktoś w Europie spróbuje uzyskać dostęp do jednego z obiektów blob w tym koncie magazynu za pośrednictwem usługi Azure CDN, usługa Azure CDN najpierw sprawdzi punkt POP położony najbliżej Europy w poszukiwaniu tego obiektu blob. Jeśli zostanie znaleziony, usługa Azure CDN uzyska dostęp do kopii tego obiektu blob i zastosuje cennik usługi CDN, ponieważ dostęp będzie uzyskiwany w usłudze Azure CDN. Jeśli nie zostanie znaleziony, usługa Azure CDN skopiuje obiekt blob do serwera POP, co spowoduje wystąpienie ruchu wychodzącego i naliczenie opłat za transakcje zgodnie z cennikiem magazynu obiektów blob, a następnie uzyska dostęp do pliku na serwerze POP, co spowoduje naliczenie opłat za usługę Azure CDN.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Samouczek: ustawianie reguł buforowania usługi Azure CDN](cdn-caching-rules-tutorial.md)
 
 

@@ -7,16 +7,16 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: be6eb6f13d7abf80537d155472a4072f7d08c06c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747458"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091596"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można zadawać także na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 Aby szybko przeskanować sekcje znajdujące się w tym artykule, użyj linków z prawej strony w obszarze **W tym artykule**.
 
@@ -85,7 +85,7 @@ W wersji zapoznawczej można chronić w jednym magazynie udziały plików platfo
 
 Nie. Wszystkie udziały plików na koncie usługi Storage mogą być chronione tylko przez ten sam magazyn.
 
-## <a name="backup"></a>Tworzenie kopii zapasowych
+## <a name="backup"></a>Backup
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Ile zaplanowanych kopii zapasowych można skonfigurować dla każdego udziału plików?
 
@@ -109,7 +109,7 @@ Tak. Jeśli podczas zatrzymywania ochrony została wybrana opcja **Zachowaj dane
 
 Jeśli trwające zadanie przywracania zostanie anulowane, proces przywracania zostanie zatrzymany i wszystkie pliki zostaną przywrócone przed anulowaniem, pozostać w skonfigurowanym miejscu docelowym (w lokalizacji oryginalnej lub alternatywnej) bez żadnych wycofywania.
 
-## <a name="manage-backup"></a>Zarządzanie kopiami zapasowymi
+## <a name="manage-backup"></a>Zarządzanie kopią zapasową
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Czy można konfigurować i przywracać kopie zapasowe udziałów plików platformy Azure oraz zarządzać nimi za pomocą programu PowerShell?
 
@@ -119,7 +119,7 @@ Tak. Zapoznaj się ze szczegółową dokumentacją [tutaj](backup-azure-afs-auto
 
 Do wszystkich migawek wykonanych przez usługę Azure Backup możesz uzyskać dostęp, wyświetlając migawki w portalu, w programie PowerShell lub przy użyciu interfejsu wiersza polecenia. Aby dowiedzieć się więcej na temat udostępniania migawek udziału usługi Azure Files, zobacz [Omówienie migawek udziału dla usługi Azure Files (wersja zapoznawcza)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jaki jest maksymalny czas przechowywania, który mogę skonfigurować dla kopii zapasowych?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jaki jest maksymalny czas przechowywania, który można skonfigurować dla kopii zapasowych?
 
 Kopia zapasowa udziałów plików platformy Azure umożliwia konfigurowanie w zasadach okresu przechowywania do 180 dni. Jednak przy użyciu [opcji „Kopia zapasowa na żądanie” w programie PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup) można przechowywać punkt odzyskiwania nawet przez 10 lat.
 
@@ -127,9 +127,9 @@ Kopia zapasowa udziałów plików platformy Azure umożliwia konfigurowanie w za
 
 Po zastosowaniu nowych zasad do udziału plików będzie obowiązywał harmonogram i okres przechowywania określony przez te nowe zasady. Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania zostaną oznaczone, aby przechowywać je zgodnie z nowymi zasadami. W przypadku skrócenia okresu przechowywania są one oznaczane do oczyszczenia w ramach następnego zadania oczyszczania i usuwane.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="next-steps"></a>Następne kroki
 
-Te informacje dotyczą wyłącznie tworzenia kopii zapasowych plików usługi Azure Files. Aby dowiedzieć się więcej na temat innych obszarów usługi Azure Backup, zobacz inne najczęściej zadawane pytania dotyczące tworzenia kopii zapasowych:
+Aby dowiedzieć się więcej o innych obszarach Azure Backup, zobacz niektóre z tych innych często zadawanych pytań dotyczących tworzenia kopii zapasowych:
 
 - [Recovery Services vault FAQ (Magazyn usługi Recovery Services — często zadawane pytania)](backup-azure-backup-faq.md)
 - [Azure VM backup FAQ (Tworzenie kopii zapasowych maszyn wirtualnych — często zadawane pytania)](backup-azure-vm-backup-faq.md)

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 491adb2719dc7c05a2943634e83027376c9327c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817463"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082726"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Samouczek: stosowanie modeli uczenia maszynowego w Azure Functions przy użyciu języka Python i TensorFlow
 
@@ -100,7 +100,7 @@ Aplikacja funkcji może zawierać co najmniej jedną Azure Functions. Otwórz fo
 
 - [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): zawiera ustawienia aplikacji używane na potrzeby lokalnego tworzenia
 - plik [*host. JSON*](functions-host-json.md): zawiera ustawienia dla Azure Functions hosta i rozszerzeń
-- [*Requirements. txt*](functions-reference-python.md#python-version-and-package-management): zawiera pakiety języka Python wymagane przez tę aplikację
+- [*Requirements. txt*](functions-reference-python.md#package-management): zawiera pakiety języka Python wymagane przez tę aplikację
 
 ## <a name="create-an-http-function"></a>Tworzenie funkcji HTTP
 
@@ -140,7 +140,7 @@ Będziesz używać wstępnie skompilowanego modelu TensorFlow, który został pr
 > [!NOTE]
 > Jeśli chcesz utworzyć własny program za pomocą warstwy Bezpłatna Custom Vision Service, możesz postępować zgodnie z [instrukcjami w repozytorium przykładowego projektu](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-Model składa się z dwóch plików w *< REPOSITORY_ROOT >/Resources/model* folder: *model. PB* i *Label. txt*. Skopiuj je do folderu funkcji *klasyfikowanie* .
+Model składa się z dwóch plików w *< REPOSITORY_ROOT > folderze/Resources/model* : *model. PB* i *Label. txt*. Skopiuj je do folderu funkcji *klasyfikowanie* .
 
 #### <a name="linux-and-macos"></a>Linux i macOS:
 
@@ -221,7 +221,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Upewnij się, że Zapisano zmiany.
+Upewnij się zapisać zmiany.
 
 Ta funkcja odbiera adres URL obrazu w parametrze ciągu zapytania o nazwie `img`. Wywołuje `predict_image_from_url` z biblioteki pomocnika, która pobiera obraz i zwraca prognozę przy użyciu modelu TensorFlow. Funkcja zwraca odpowiedź HTTP z wynikami.
 
@@ -246,7 +246,7 @@ http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-S
 
 Pozostaw uruchomioną aplikację funkcji.
 
-### <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
+### <a name="run-the-web-app"></a>Uruchamianie aplikacji sieci web
 
 W folderze *frontonu* znajduje się prosta aplikacja internetowa korzystająca z interfejsu API protokołu HTTP w aplikacji funkcji.
 

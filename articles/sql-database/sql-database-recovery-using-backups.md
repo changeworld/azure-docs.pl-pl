@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1c8717614ec59ef210c7340f70ddedd7f7f86f88
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821204"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091976"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL Database przy użyciu zautomatyzowanych kopii zapasowych bazy danych
 
@@ -108,11 +108,13 @@ Przywrócono usunięte bazy danych z Azure Portal z zasobów serwera i wystąpie
 
 Aby odzyskać bazę danych z pojedynczą lub pulą w puli przy użyciu Azure Portal, Otwórz stronę przegląd serwera i wybierz pozycję **usunięte bazy danych**. Wybierz usuniętą bazę danych, którą chcesz przywrócić, a następnie wpisz nazwę nowej bazy danych, która zostanie utworzona z przywróconymi danymi z kopii zapasowej.
 
-  ![Zrzut ekranu przedstawiający opcje usuniętych baz danych](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![Zrzut ekranu przedstawiający przywracanie usuniętej bazy danych Azure SQL Database](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-Nie można używać Azure Portal do przywracania usuniętej bazy danych w wystąpieniu zarządzanym. W tym celu można użyć programu PowerShell. 
+Aby odzyskać zarządzaną bazę danych przy użyciu Azure Portal, Otwórz stronę Omówienie wystąpienia zarządzanego i wybierz pozycję **usunięte bazy danych**. Wybierz usuniętą bazę danych, którą chcesz przywrócić, a następnie wpisz nazwę nowej bazy danych, która zostanie utworzona z przywróconymi danymi z kopii zapasowej.
+
+  ![Zrzut ekranu przedstawiający przywracanie usuniętej bazy danych wystąpienia usługi Azure SQL](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="deleted-database-restore-by-using-powershell"></a>Przywracanie bazy danych zostało usunięte przy użyciu programu PowerShell
 

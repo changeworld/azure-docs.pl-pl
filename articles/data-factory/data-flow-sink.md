@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519327"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082928"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
 
@@ -28,7 +28,7 @@ Aby wyprowadzić wszystkie pola przychodzące, Włącz funkcję **Automap**. Aby
 ## <a name="output"></a>Dane wyjściowe 
 W przypadku usługi Azure Blob Storage lub Data Lake Storage typów ujścia dane są wyprowadzane w folderze. Platforma Spark generuje partycjonowane pliki danych wyjściowych na podstawie schematu partycjonowania używanego przez transformację ujścia. 
 
-Schemat partycjonowania można ustawić na karcie **Optymalizacja** . Jeśli chcesz, aby Data Factory scalał dane wyjściowe w jeden plik, wybierz **jedną partycję**.
+Schemat partycjonowania można ustawić na karcie **Optymalizacja** . Jeśli chcesz, aby Data Factory scalał dane wyjściowe w jeden plik, wybierz **jedną partycję**. Jeśli chcesz zachować lub utworzyć partycjonowane foldery, Użyj partycji **klucza** i ustaw klucze, które mają być używane dla partycjonowanych struktur folderów.
 
 ![Opcje na karcie Optymalizacja](media/data-flow/opt001.png "Opcje ujścia")
 

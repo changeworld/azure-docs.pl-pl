@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8decf4622c4043cbac0f2e2f6e2ad59f1b5baaae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074009"
+ms.locfileid: "74091380"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Ciągłe dostarczanie za pomocą akcji GitHub
 
@@ -215,7 +215,7 @@ W poniższym przykładzie użyta zostanie wersja 1 `functions-action`:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby wyświetlić kompletny przepływ pracy. YAML, zobacz jeden z plików w [repozytorium przykładów przepływu pracy akcji usługi Azure GitHub](https://github.com/Azure/actions-workflow-samples) , który ma `functionapp` w nazwie. Możesz użyć tych przykładów jako punktu wyjścia dla przepływu pracy.
+Aby wyświetlić kompletny przepływ pracy. YAML, zobacz jeden z plików w [repozytorium przykładów przepływu pracy akcji usługi Azure GitHub](https://aka.ms/functions-actions-samples) , który ma `functionapp` w nazwie. Możesz użyć tych przykładów jako punktu wyjścia dla przepływu pracy.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o akcjach usługi GitHub](https://help.github.com/en/articles/about-github-actions)

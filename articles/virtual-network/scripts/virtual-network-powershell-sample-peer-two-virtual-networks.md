@@ -1,13 +1,10 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — komunikacja równorzędna dwóch sieci wirtualnych | Microsoft Docs
+title: Komunikacja równorzędna dwóch sieci wirtualnych — przykład skryptu Azure PowerShell
 description: Przykładowy skrypt programu Azure PowerShell — komunikacja równorzędna dwóch sieci wirtualnych
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: sample
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 9f75d1078926772d71e10fe59e2759656aec9ab9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4061997aa2efbae250b30fc58cef06b1249c2b8f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710214"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091303"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Przykładowy skrypt tworzący komunikację równorzędną dwóch sieci wirtualnych
 
@@ -55,7 +52,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) | Tworzy komunikację równorzędną między dwiema sieciami wirtualnymi.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

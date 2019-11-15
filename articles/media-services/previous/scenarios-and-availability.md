@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991430"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083206"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 Usługa Microsoft Azure Media Services (AMS) umożliwia bezpieczne przekazywanie, przechowywanie, kodowanie i tworzenie pakietów zawartości wideo lub audio na potrzeby transmisji strumieniowej na żądanie i na żywo do różnych klientów (np. odbiorników TV, komputerów i urządzeń przenośnych).
 
@@ -31,13 +31,13 @@ Usługa AMS działa w wielu centrach danych na całym świecie. Te centra danych
 
 W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żywo](#live_scenarios) lub na żądanie. Temat zawiera także szczegółowe informacje o dostępności funkcji i usług multimedialnych w centrach danych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 Do rozpoczęcia korzystania z usługi Azure Media Services potrzebne są:
 
-* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com).
+* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com).
 * Konto usługi Azure Media Services. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
@@ -79,7 +79,7 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
 2. Wykonaj kodowanie do zestawu plików MP4 o adaptacyjnej szybkości transmisji bitów. Zastosuj opcję szyfrowania magazynu w odniesieniu do elementu zawartości wyjściowej.
 3. Utwórz klucz szyfrowania zawartości dla elementu zawartości, który ma zostać dynamicznie zaszyfrowany podczas odtwarzania.
 4. Skonfiguruj zasady autoryzacji klucza zawartości.
-5. Skonfiguruj zasady dostarczania elementu zawartości (używane podczas dynamicznego tworzenia pakietów i dynamicznego szyfrowania).
+5. Skonfiguruj zasady dostarczania zasobu (stosowane podczas pakowania dynamicznego i szyfrowania dynamicznego).
 6. Opublikuj element zawartości, tworząc lokalizator OnDemand.
 7. Prześlij strumieniowo opublikowaną zawartość.
 
@@ -179,8 +179,8 @@ Klienci usługi Media Services mogą wybrać **Standardowy** punkt końcowy prze
 
 |Name (Nazwa)|Stan|Centra danych
 |---|---|---|
-|Standardowa (Standard)|Ogólna dostępność|Wszyscy|
-|Premium|Ogólna dostępność|Wszyscy|
+|Standardowa (Standard)|Ogólna dostępność|Wszystkie|
+|Premium|Ogólna dostępność|Wszystkie|
 
 ### <a name="live-encoding"></a>Kodowanie na żywo
 
@@ -196,7 +196,7 @@ Usługa AMS oferuje dwa kodery na żądanie: **Media Encoder Standard** i **Medi
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Usługa Media Encoder Standard|Ogólna dostępność|Wszyscy|
+|Usługa Media Encoder Standard|Ogólna dostępność|Wszystkie|
 |Przepływ pracy usługi Media Encoder w warstwie Premium|Ogólna dostępność|Wszystkie z wyjątkiem Chin|
 
 ### <a name="analytics-media-processors"></a>Procesory multimediów usługi analizy
@@ -207,13 +207,12 @@ Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają 
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Azure Media Face Detector|Wersja zapoznawcza|Wszyscy|
-|Azure Media Indexer|Ogólna dostępność|Wszyscy|
-|Azure Media Motion Detector|Wersja zapoznawcza|Wszyscy|
-|Azure Media OCR|Wersja zapoznawcza|Wszyscy|
-|Azure Media Redactor|Wersja zapoznawcza|Wszyscy|
-|Azure Media Stabilizer|Wersja zapoznawcza|Wszyscy|
-|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszyscy|
+|Azure Media Face Detector|Wersja zapoznawcza|Wszystkie|
+|Azure Media Indexer|Ogólna dostępność|Wszystkie|
+|Azure Media Motion Detector|Wersja zapoznawcza|Wszystkie|
+|Azure Media OCR|Wersja zapoznawcza|Wszystkie|
+|Azure Media Redactor|Wersja zapoznawcza|Wszystkie|
+|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszystkie|
 |Azure Media Indexer 2|Wersja zapoznawcza|Wszystkie z wyjątkiem Chin i obszaru administracji federalnej USA|
 
 ### <a name="protection"></a>Ochrona
@@ -224,10 +223,10 @@ Usługi Microsoft Azure Media Services umożliwiają zabezpieczenie multimediów
 
 |Szyfrowanie|Stan|Centra danych|
 |---|---|---| 
-|Magazyn|Ogólna dostępność|Wszyscy|
-|Klucze AES-128|Ogólna dostępność|Wszyscy|
-|FairPlay|Ogólna dostępność|Wszyscy|
-|PlayReady|Ogólna dostępność|Wszyscy|
+|Magazyn|Ogólna dostępność|Wszystkie|
+|Klucze AES-128|Ogólna dostępność|Wszystkie|
+|FairPlay|Ogólna dostępność|Wszystkie|
+|PlayReady|Ogólna dostępność|Wszystkie|
 |Widevine|Ogólna dostępność|Wszystkie regiony z wyjątkiem Niemiec, Rządu Federalnego i Chin.
 
 ### <a name="reserved-units-rus"></a>Jednostki zarezerwowane (RU)
@@ -250,11 +249,11 @@ Aby uzyskać więcej informacji, zobacz sekcję opisującą [skalowanie](#scalin
 
 |Nazwa typu jednostki zarezerwowanej|Stan|Centra danych
 |---|---|---|
-|S1|Ogólna dostępność|Wszyscy|
+|S1|Ogólna dostępność|Wszystkie|
 |S2|Ogólna dostępność|Wszystkie regiony z wyjątkiem Brazylii Południowej i Indii Zachodnich|
 |S3|Ogólna dostępność|Wszystkie regiony z wyjątkiem Indii Zachodnich|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 

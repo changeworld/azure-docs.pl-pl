@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej platformy Azure z przyspieszoną siecią | Microsoft Docs
+title: Tworzenie maszyny wirtualnej platformy Azure przy użyciu przyspieszonej sieci — Azure PowerShell
 description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux przy użyciu przyspieszonej sieci.
 services: virtual-network
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677994"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083701"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Tworzenie maszyny wirtualnej z systemem Windows przy użyciu przyspieszonej sieci
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows za pomocą przyspieszonej sieci przy użyciu Azure PowerShell
 
 W tym samouczku dowiesz się, jak utworzyć maszynę wirtualną z systemem Windows przy użyciu przyspieszonej sieci. Aby utworzyć maszynę wirtualną z systemem Linux przy użyciu przyspieszonej sieci, zobacz [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu przyspieszonej sieci](create-vm-accelerated-networking-cli.md). Przyspieszona sieć umożliwia wirtualizację we/wy z jednym elementem głównym (SR-IOV) do maszyny wirtualnej, co znacznie zwiększa wydajność sieci. Ta ścieżka o wysokiej wydajności pomija hosta ze ścieżki datapath, skracając czas opóźnienia, wahania i użycie procesora CPU w celu użycia z najbardziej wymagającymi obciążeniami sieci na obsługiwanych typach maszyn wirtualnych. Na poniższej ilustracji przedstawiono komunikację między dwiema maszynami wirtualnymi za pomocą i bez przyspieszonej sieci:
 
@@ -42,7 +42,7 @@ Zalety przyspieszonej sieci mają zastosowanie tylko do maszyny wirtualnej, na k
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 Następujące dystrybucje są obsługiwane z poziomu galerii platformy Azure:
-* **System Windows Server 2016 Datacenter** 
+* **Windows Server 2016 Datacenter** 
 * **Windows Server 2012 R2 Datacenter**
 * **System Windows Server 2019 Datacenter**
 
@@ -53,7 +53,7 @@ W wystąpieniach, które obsługują wielowątkowość, przyspieszona sieć jest
 
 Aby uzyskać więcej informacji na temat wystąpień maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="regions"></a>Regiony
+### <a name="regions"></a>Regions
 Dostępne we wszystkich publicznych regionach świadczenia usługi Azure i w chmurze Azure Government.
 
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Włączanie przyspieszonej sieci na uruchomionej maszynie wirtualnej

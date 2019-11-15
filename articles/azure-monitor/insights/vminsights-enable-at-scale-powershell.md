@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/14/2019
-ms.openlocfilehash: 24b40e5dfdef7bde65d326cb0d054365f730477e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 25e9848124b84822749d3be4d1ead7b86e6e584e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555280"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091771"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Włącz Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) przy użyciu szablonów Azure PowerShell lub Menedżer zasobów
 
@@ -20,25 +20,25 @@ ms.locfileid: "72555280"
 
 W tym artykule wyjaśniono, jak włączyć Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) dla usługi Azure Virtual Machines lub zestawu skalowania maszyn wirtualnych przy użyciu szablonów Azure PowerShell lub Azure Resource Manager. Po zakończeniu tego procesu będzie można pomyślnie zacząć monitorować wszystkie maszyny wirtualne i dowiedzieć się, czy występują problemy z wydajnością lub dostępnością.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego Log Analytics 
+## <a name="set-up-a-log-analytics-workspace"></a>Skonfiguruj obszar roboczy usługi Log Analytics 
 
 Jeśli nie masz obszaru roboczego Log Analytics, musisz go utworzyć. Zapoznaj się z metodami sugerowanymi w sekcji [wymagania wstępne](vminsights-enable-overview.md#log-analytics) przed wykonaniem czynności, aby ją skonfigurować. Następnie można zakończyć wdrażanie Azure Monitor dla maszyn wirtualnych przy użyciu metody szablonu Azure Resource Manager.
 
 ### <a name="enable-performance-counters"></a>Włącz liczniki wydajności
 
-Jeśli obszar roboczy Log Analytics, do którego odwołuje się rozwiązanie, nie jest już skonfigurowany do zbierania liczników wydajności wymaganych przez rozwiązanie, należy je włączyć. Można to zrobić na jeden z dwóch sposobów:
-* Ręczne, zgodnie z opisem w temacie [źródła danych wydajności systemu Windows i Linux w log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
+Jeśli obszar roboczy usługi Log Analytics, który odwołuje się do niej rozwiązanie nie jest już skonfigurowany można zebrać liczników wydajności wymaganych przez to rozwiązanie, należy je włączyć. Można to zrobić na jeden z dwóch sposobów:
+* Ręcznie, zgodnie z opisem w [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
 * Pobierając i uruchamiając skrypt programu PowerShell, który jest dostępny z [galerii Azure PowerShell](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
 ### <a name="install-the-servicemap-solution"></a>Zainstaluj rozwiązanie ServiceMap
 
-Ta metoda obejmuje szablon JSON, który określa konfigurację włączania składników rozwiązania w obszarze roboczym Log Analytics.
+Ta metoda obejmuje szablon JSON, który określa konfigurację włączanie składników rozwiązania w Twoim obszarze roboczym usługi Log Analytics.
 
 Jeśli nie wiesz, jak wdrażać zasoby przy użyciu szablonu, zobacz:
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Aby zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Aby zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Skopiuj i wklej następującą składnię JSON do pliku:
 
@@ -86,9 +86,9 @@ Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw 
     }
     ```
 
-1. Zapisz ten plik jako *installsolutionsforvminsights. JSON* w folderze lokalnym.
+1. Zapisz ten plik jako *installsolutionsforvminsights.json* do folderu lokalnego.
 
-1. Przechwyć wartości dla *obszarów roboczych*, *ResourceGroupName*i *WorkspaceLocation*. Wartość dla *obszaru roboczegoname* jest nazwą obszaru roboczego log Analytics. Wartość parametru *WorkspaceLocation* to region, w którym jest zdefiniowany obszar roboczy.
+1. Przechwyć wartości dla *obszarów roboczych*, *ResourceGroupName*i *WorkspaceLocation*. Wartość dla *obszaru roboczegoname* jest nazwą obszaru roboczego log Analytics. Wartość *WorkspaceLocation* jest region, w obszarze roboczym jest zdefiniowany w.
 
 1. Wszystko jest teraz gotowe do wdrożenia tego szablonu.
  
@@ -104,7 +104,7 @@ Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw 
         provisioningState       : Succeeded
         ```
 
-    * Aby uruchomić następujące polecenie przy użyciu interfejsu wiersza polecenia platformy Azure:
+    * Aby za pomocą wiersza polecenia platformy Azure, należy uruchomić następujące polecenie:
     
         ```azurecli
         az login
@@ -127,9 +127,9 @@ Utworzyliśmy przykładowe szablony Azure Resource Manager do dołączania maszy
 
 Jeśli nie wiesz, jak wdrażać zasoby przy użyciu szablonu, zobacz:
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Aby zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Aby zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="download-templates"></a>Pobierz szablony
 
@@ -175,7 +175,7 @@ Dane wyjściowe są podobne do następujących:
 provisioningState       : Succeeded
 ```
 
-## <a name="enable-with-powershell"></a>Włączanie przy użyciu programu PowerShell
+## <a name="enable-with-powershell"></a>Włącz przy użyciu programu PowerShell
 
 Aby włączyć Azure Monitor dla maszyn wirtualnych dla wielu maszyn wirtualnych lub zestawów skalowania maszyn wirtualnych, Użyj skryptu programu PowerShell [Install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0). Jest ona dostępna z Galerii Azure PowerShell. Ten skrypt wykonuje iterację w następujący sposób:
 
@@ -183,11 +183,11 @@ Aby włączyć Azure Monitor dla maszyn wirtualnych dla wielu maszyn wirtualnych
 - Grupa zasobów należących do zakresu, która jest określona przez grupę *resources*. 
 - Pojedyncza maszyna wirtualna lub zestaw skalowania maszyn wirtualnych, który jest określony przez *nazwę*.
 
-W przypadku każdej maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych skrypt sprawdza, czy rozszerzenie maszyny wirtualnej jest już zainstalowane. Jeśli rozszerzenie maszyny wirtualnej nie jest zainstalowane, skrypt spróbuje go zainstalować ponownie. Jeśli rozszerzenie maszyny wirtualnej jest zainstalowane, skrypt instaluje rozszerzenia maszyny wirtualnej Log Analytics i agenta zależności.
+Dla każdej maszyny Wirtualnej lub maszyny wirtualnej zestawu skalowania skrypt sprawdza, czy rozszerzenie maszyny Wirtualnej jest już zainstalowany. Jeśli rozszerzenie maszyny wirtualnej jest zainstalowane, skrypt spróbuje ją zainstalować ponownie. Jeśli rozszerzenie maszyny wirtualnej nie jest zainstalowane, skrypt instaluje rozszerzenia maszyny wirtualnej Log Analytics i agenta zależności.
 
 Sprawdź, czy używasz modułu Azure PowerShell AZ Version 1.0.0 lub nowszego z włączonymi `Enable-AzureRM` aliasami zgodności. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
-Aby uzyskać listę szczegółów argumentów skryptu i przykładowego użycia, uruchom `Get-Help`.
+Aby uzyskać listę szczegółów argumentu oraz przykład użycia skryptu, uruchom `Get-Help`.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
@@ -289,7 +289,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Poniższy przykład ilustruje użycie poleceń programu PowerShell w folderze, aby włączyć Azure Monitor dla maszyn wirtualnych i zrozumieć oczekiwane dane wyjściowe:
+W poniższym przykładzie pokazano, aby włączyć usługi Azure Monitor dla maszyn wirtualnych i zrozumieć oczekiwanych danych wyjściowych za pomocą poleceń programu PowerShell w folderze:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -342,6 +342,6 @@ Failed: (0)
 
 Po włączeniu monitorowania dla maszyn wirtualnych te informacje są dostępne do analizy za pomocą Azure Monitor dla maszyn wirtualnych.
  
-- Aby wyświetlić odnalezione zależności aplikacji, zobacz [view Azure monitor dla maszyn wirtualnych map](vminsights-maps.md). 
+- Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md). 
 
 - Aby identyfikować wąskie gardła i ogólne wykorzystanie z wydajnością maszyny wirtualnej, zobacz [Wyświetlanie wydajności maszyny wirtualnej platformy Azure](vminsights-performance.md). 

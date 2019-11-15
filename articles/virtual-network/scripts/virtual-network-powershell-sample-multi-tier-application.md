@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — tworzenie sieci dla aplikacji wielowarstwowych | Microsoft Docs
+title: Tworzenie sieci wirtualnej dla aplikacji wielowarstwowych — przykład skryptu Azure PowerShell
 description: Przykładowy skrypt programu Azure PowerShell — tworzenie sieci wirtualnej dla aplikacji wielowarstwowych.
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 32140429d96d73100c4bd5a2ae274e508a15b7a8
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725389"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091318"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Przykładowy skrypt służący do tworzenia sieci dla aplikacji wielowarstwowych
 
@@ -35,7 +35,7 @@ Skrypt można wykonać z poziomu usługi Azure [Cloud Shell](https://shell.azure
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
-Identyfikator podsieci jest przypisany, po utworzeniu sieci wirtualnej; w szczególności za pomocą polecenia cmdlet New-AzVirtualNetwork z opcją - podsieci. Jeśli skonfigurujesz podsieć przy użyciu polecenia cmdlet New-AzVirtualNetworkSubnetConfig przed wywołaniem polecenia New-AzVirtualNetwork, identyfikator podsieci nie będzie widoczny, dopóki nie zostanie wywołane polecenie New-AzVirtualNetwork.
+Identyfikator podsieci jest przypisywany po utworzeniu sieci wirtualnej; w przypadku korzystania z polecenia cmdlet New-AzVirtualNetwork z opcją-Subnet. Jeśli skonfigurujesz podsieć przy użyciu polecenia cmdlet New-AzVirtualNetworkSubnetConfig przed wywołaniem polecenia New-AzVirtualNetwork, identyfikator podsieci nie będzie widoczny, dopóki nie zostanie wywołane polecenie New-AzVirtualNetwork.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
@@ -63,7 +63,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Tworzy maszyny wirtualne i dołącza kartę sieciową do każdej maszyny wirtualnej. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby, które zawiera. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

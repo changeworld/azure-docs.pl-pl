@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: a9a72a9b9df18462c1a4dfe470c7c7393cf356d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a7a1b088868add308f128c5a51d8cce4339c637c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074280"
+ms.locfileid: "74091722"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Tworzenie kopii zapasowej farmy programu SharePoint na platformie Azure za pomocą usługi serwera usługi MAB
 
@@ -25,7 +25,7 @@ Azure Backup programu DPM obsługuje następujące scenariusze:
 
 | Obciążenie | Wersja | Wdrożenie programu SharePoint | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- |
-| Program SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn | Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
+| Sharepoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn | Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 

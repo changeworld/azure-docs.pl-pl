@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 04/18/2019
-ms.openlocfilehash: 907fc89c0d9af01865037f650c407edd97e96645
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 52e7a3408c231ba8a38fdc22c2fcac65ee26bb82
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821139"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082506"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów SQL Database dla serwera Azure SQL Database
 
@@ -32,7 +32,7 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 | Bazy danych na serwer | 5000 |
 | Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |
 | Maksymalna liczba serwerów na subskrypcję w dowolnym regionie | 200 |  
-| Przydział jednostek DTU/eDTU na serwer | 54 000 |  
+| Przydział jednostek DTU/eDTU na serwer | 54,000 |  
 | przydział rdzeń wirtualny na serwer/wystąpienie | 540 |
 | Maksymalna liczba pul na serwer | Ograniczone przez liczbę DTU lub rdzeni wirtualnych. Na przykład jeśli każda pula ma 1000 DTU, serwer może obsługiwać pule 54.|
 |||
@@ -41,11 +41,13 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 > Aby uzyskać więcej wartości przydziału/eDTU jednostek DTU, przydziału rdzeń wirtualny lub większej liczby serwerów niż domyślna, można przesłać nowe żądanie obsługi w Azure Portal dla subskrypcji z typem problemu "przydział". Limity przydziału jednostek DTU/eDTU i bazy danych na serwer ograniczają liczbę pul elastycznych na serwer.
 > [!IMPORTANT]
 > Ponieważ liczba baz danych zbliża się do limitu na serwer SQL Database, mogą wystąpić następujące elementy:
+>
 > - Zwiększanie opóźnień w uruchamianiu zapytań względem bazy danych Master.  Obejmuje to widoki statystyk wykorzystania zasobów, takich jak sys. resource_stats.
 > - Zwiększenie opóźnienia w operacjach zarządzania i portalu renderowania, który obejmuje wyliczanie baz danych na serwerze.
 
 ### <a name="storage-size"></a>Rozmiar magazynu
-- W przypadku pojedynczych baz danych rources zapoznaj się z limitami [zasobów opartymi na](sql-database-dtu-resource-limits-single-databases.md) jednostkach DTU lub [limitami zasobów opartymi na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) dla limitów rozmiaru magazynu dla warstwy cenowej.
+
+- W przypadku magazynów zasobów o pojedynczej bazie danych zapoznaj się z limitami zasobów [opartymi na](sql-database-dtu-resource-limits-single-databases.md) jednostkach DTU lub limitami [zasobów opartymi na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) dla limitów rozmiaru magazynu na warstwę cenową.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co się stanie po osiągnięciu limitów zasobów bazy danych
 
@@ -59,7 +61,7 @@ W przypadku wystąpienia dużej mocy obliczeniowej opcje ograniczenia obejmują:
 
 ### <a name="storage"></a>Magazyn
 
-Gdy używane miejsce na bazę danych osiągnie limit rozmiaru, wstawia i aktualizuje bazę danych, która zwiększa niepowodzenie rozmiaru danych, a klienci odbierają [komunikat o błędzie](sql-database-develop-error-messages.md). WYBÓR i usunięcie bazy danych powiodło się.
+Gdy używane miejsce na bazę danych osiągnie limit rozmiaru, wstawia i aktualizuje bazę danych, która zwiększa niepowodzenie rozmiaru danych, a klienci odbierają [komunikat o błędzie](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). WYBÓR i usunięcie bazy danych powiodło się.
 
 W przypadku wystąpienia dużej ilości miejsca, opcje ograniczenia obejmują:
 
@@ -76,17 +78,18 @@ W przypadku wystąpienia wysokiego poziomu sesji lub procesu wyłączania, opcje
 - Zwiększenie warstwy usług lub rozmiaru obliczeniowego bazy danych lub puli elastycznej. Zobacz [skalowanie zasobów pojedynczych baz danych](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej](sql-database-elastic-pool-scale.md).
 - Optymalizowanie zapytań w celu ograniczenia wykorzystania zasobów dla każdego zapytania, jeśli przyczyną zwiększonego wykorzystania procesów roboczych jest rywalizacja o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [dostrajanie/podpowiedzi zapytań](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-## <a name="transaction-log-rate-governance"></a>Ocena szybkości dziennika transakcji 
-Współczynnik dziennika transakcji ładu to proces w Azure SQL Database używany do ograniczania wysokich szybkości pozyskiwania dla obciążeń takich jak wstawianie zbiorcze, wybieranie do i kompilacje indeksów. Limity te są śledzone i wymuszane na poziomie podrzędnym według szybkości generowania rekordów dziennika, ograniczając przepływność bez względu na to, ile systemu IOs można wystawić względem plików danych.  Stawki za generowanie dzienników transakcji są obecnie skalowane liniowie do punktu, który jest zależny od sprzętu, a maksymalna szybkość rejestrowania może być 96 MB/s z modelem zakupów rdzeń wirtualny. 
+## <a name="transaction-log-rate-governance"></a>Ocena szybkości dziennika transakcji
+
+Współczynnik dziennika transakcji ładu to proces w Azure SQL Database używany do ograniczania wysokich szybkości pozyskiwania dla obciążeń takich jak wstawianie zbiorcze, wybieranie do i kompilacje indeksów. Limity te są śledzone i wymuszane na poziomie drugim do szybkości generowania rekordów dziennika, ograniczając przepływność bez względu na to, ile systemu IOs można wystawić dla plików danych.  Stawki generowania dziennika transakcji są obecnie skalowane liniowo do punktu, który jest zależny od sprzętu, a maksymalna szybkość rejestrowania może być 96 MB/s z modelem zakupów rdzeń wirtualny.
 
 > [!NOTE]
-> Rzeczywiste fizyczne pliki dziennika transakcji w systemie IOs nie podlegają ograniczeniom ani nie są ograniczone. 
+> Rzeczywiste fizyczne pliki dziennika transakcji w systemie IOs nie podlegają ograniczeniom ani nie są ograniczone.
 
 Stawki dzienników są ustawiane tak, aby można je było osiągnąć i utrzymywać w różnych scenariuszach, podczas gdy ogólny system może utrzymywać swoją funkcjonalność przy minimalnym wpływie na obciążenie użytkownikami. Częstotliwość rejestrowania gwarantuje, że kopie zapasowe dziennika transakcji pozostają w ramach opublikowanej umowy SLA.  To zarządzanie uniemożliwia również nadmierne zaległości w replikach pomocniczych.
 
 Ponieważ rekordy dziennika są generowane, każda operacja jest oceniana i oceniana pod kątem tego, czy należy opóźnić, aby zachować maksymalny żądany współczynnik dziennika (MB/s na sekundę). Opóźnienia nie są dodawane, gdy rekordy dziennika są opróżniane do magazynu, podczas generowania stawki dziennika są stosowane zasady zarządzania.
 
-Rzeczywiste stawki za generowanie dzienników nałożone w czasie wykonywania mogą również mieć wpływ na mechanizmy przesyłania opinii, tymczasowo zmniejszając dopuszczalne stawki dzienników, dzięki czemu system może być stabilny. Zarządzanie miejscem w pliku dziennika, unikanie uruchamiania w warunkach wolnego miejsca w dzienniku i mechanizmów replikacji grupy dostępności może tymczasowo obniżyć ogólne limity systemu. 
+Rzeczywiste stawki za generowanie dzienników nałożone w czasie wykonywania mogą również mieć wpływ na mechanizmy przesyłania opinii, tymczasowo zmniejszając dopuszczalne stawki dzienników, dzięki czemu system może być stabilny. Zarządzanie miejscem w pliku dziennika, unikanie uruchamiania w warunkach wolnego miejsca w dzienniku i mechanizmów replikacji grupy dostępności może tymczasowo obniżyć ogólne limity systemu.
 
 Współczynnik dziennika: kształtowanie ruchu gubernatora jest przedstawiane przy użyciu następujących typów oczekiwania (uwidocznionych w [tabeli sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
 
@@ -100,9 +103,10 @@ Współczynnik dziennika: kształtowanie ruchu gubernatora jest przedstawiane pr
 |||
 
 W przypadku napotkania limitu szybkości rejestrowania, który hamuje pożądaną skalowalność, należy wziąć pod uwagę następujące opcje:
-- Skaluj w górę do większej warstwy w celu uzyskania maksymalnej liczby dzienników 96 MB/s. 
-- Jeśli ładowanie danych jest przejściowe, tj. dane przejściowe w procesie ETL, można je załadować do bazy danych tempdb (co jest w minimalnym stopniu rejestrowane). 
-- W przypadku scenariuszy analitycznych Załaduj do tabeli objętej usługą magazynu kolumn. Zmniejsza to wymaganą szybkość rejestrowania z powodu kompresji. Ta technika zwiększa wykorzystanie procesora CPU i ma zastosowanie tylko do zestawów danych, które korzystają z klastrowanych indeksów magazynu kolumn. 
+
+- Skaluj w górę do większej warstwy w celu uzyskania maksymalnej liczby dzienników 96 MB/s.
+- Jeśli ładowanie danych jest przejściowe, tj. dane przejściowe w procesie ETL, można je załadować do bazy danych tempdb (co jest w minimalnym stopniu rejestrowane).
+- W przypadku scenariuszy analitycznych Załaduj do tabeli objętej usługą magazynu kolumn. Zmniejsza to wymaganą szybkość rejestrowania z powodu kompresji. Ta technika zwiększa wykorzystanie procesora CPU i ma zastosowanie tylko do zestawów danych, które korzystają z klastrowanych indeksów magazynu kolumn.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą MyVR | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i MyVR.
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą MyVR | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i MyVR.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,151 +13,155 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 10/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10473c820cd0dbb7c7db3f33de203ca4d636414b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0bb55832443a9f4ac71122d92292c18346a9f48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096486"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081901"
 ---
-# <a name="tutorial-integrate-myvr-with-azure-active-directory"></a>Samouczek: Integracja MyVR za pomocą usługi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-myvr"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą MyVR
 
-W tym samouczku dowiesz się, jak zintegrować MyVR w usłudze Azure Active Directory (Azure AD). W ramach MyVR integracji z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować usługę MyVR z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi MyVR z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do MyVR.
-* Umożliwianie użytkownikom można automatycznie zalogowany do MyVR za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do MyVR.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi MyVR przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* MyVR logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) MyVR.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. 
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje MyVR **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez.
-* Obsługuje MyVR **Just In Time** Inicjowanie obsługi użytkowników.
+
+
+* MyVR obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
+* MyVR obsługuje Inicjowanie obsługi użytkowników **just in Time**
+
+> [!NOTE]
+> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
 
 ## <a name="adding-myvr-from-the-gallery"></a>Dodawanie MyVR z galerii
 
-Aby skonfigurować integrację MyVR w usłudze Azure AD, należy dodać MyVR z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu MyVR z usługą Azure AD, musisz dodać MyVR z galerii do listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **MyVR** w polu wyszukiwania.
-1. Wybierz **MyVR** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **MyVR** w polu wyszukiwania.
+1. Wybierz pozycję **MyVR** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą MyVR za pomocą użytkownika testu o nazwie **B. Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w MyVR.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-myvr"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla MyVR
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą MyVR, wykonaj poniższe bloki konstrukcyjne:
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą MyVR przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w MyVR.
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Konfigurowanie logowania jednokrotnego MyVR](#configure-myvr-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Tworzenie użytkownika testowego MyVR](#create-myvr-test-user)**  — aby odpowiednikiem B. Simon w MyVR połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą MyVR, wykonaj następujące bloki konstrukcyjne:
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne](#configure-myvr-sso)** w usłudze MyVR, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    1. **[Utwórz użytkownika testowego MyVR](#create-myvr-test-user)** , aby dysponować odpowiednikiem B. Simon w MyVR, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **MyVR** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
+
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **MyVR** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli użytkownik chce skonfigurować aplikację w **tożsamości** zainicjowano tryb, użytkownik nie będzie musiał wykonać każdy krok, ponieważ aplikacja jest już wstępnie zintegrowane z platformą Azure.
+1. W sekcji **Podstawowa konfiguracja SAML** aplikacja została wstępnie skonfigurowana w trybie inicjalizacji programu **dostawcy tożsamości** i wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **zapisz** .
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-   W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://ess.virtualroster.net/ess/login.aspx`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://ess.virtualroster.net/ess/login.aspx`
 
-1. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
+1. Aplikacja MyVR oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-   | Name (Nazwa) | Atrybut źródłowy|
+    ![image](common/edit-attribute.png)
+
+1. Oprócz powyższych, aplikacja MyVR oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami.
+
+   | Nazwa | Atrybut źródłowy|
    | ---------------| --------------- |
-   | Imię | user.givenname |
-   | surname | user.surname |
-   | emailaddress | user.mail |
-   | EmployeeID | user.employeeid |
+   | employeeid | user.employeeid |
 
-   1. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
-   1. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
-   1. Pozostaw pole **Przestrzeń nazw** puste.
-   1. Dla opcji Źródło wybierz wartość **Atrybut**.
-   1. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
-   1. Kliknij przycisk **OK**.
-   1. Kliknij pozycję **Zapisz**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-   ![Link pobierania certyfikatu](common/certificatebase64.png)
+1. W sekcji **Konfigurowanie MyVR** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
-1. Na **Konfigurowanie MyVR** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
-
-   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
-
-### <a name="configure-myvr-sso"></a>Konfigurowanie logowania jednokrotnego MyVR
-
-Aby skonfigurować logowanie jednokrotne na **MyVR** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [MyVR zespołem pomocy technicznej](mailto:arno.vandenberg@Kronos.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Simon B. do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do MyVR.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi MyVR.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **MyVR**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **MyVR**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-   ![Łącze Dodaj użytkownika](common/add-assign-user.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-myvr-test-user"></a>Tworzenie użytkownika testowego MyVR
+## <a name="configure-myvr-sso"></a>Konfigurowanie logowania jednokrotnego MyVR
 
-W tej sekcji użytkownika o nazwie B. Simon jest tworzony w MyVR. MyVR obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w MyVR, nowy katalog jest tworzony po uwierzytelnieniu.
+Aby skonfigurować Logowanie jednokrotne na stronie **MyVR** , musisz wysłać pobrany **certyfikat (base64)** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej MyVR](mailto:arno.vandenberg@Kronos.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="create-myvr-test-user"></a>Utwórz użytkownika testowego MyVR
 
-Po wybraniu kafelka MyVR w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze MyVR, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+W tej sekcji użytkownik o nazwie B. Simon został utworzony w MyVR. MyVR obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze MyVR, zostanie utworzony nowy po uwierzytelnieniu.
+
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka MyVR w panelu dostępu należy automatycznie zalogować się do MyVR, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj MyVR z usługą Azure AD](https://aad.portal.azure.com/)
+

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-ms.date: 02/07/2019
-ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825834"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082447"
 ---
 # <a name="sql-database-application-development-overview"></a>Omówienie tworzenia aplikacji SQL Database
 
@@ -48,7 +48,7 @@ Unikaj długotrwałych transakcji, ponieważ Jakakolwiek awaria infrastruktury l
 
 ## <a name="resiliency"></a>Odporność
 
-Azure SQL Database to usługa w chmurze, w której można oczekiwać błędów przejściowych występujących w podstawowej infrastrukturze lub komunikacji między jednostkami w chmurze. Choć Azure SQL Database jest odporny na awarie infrastruktury przechodniej, te błędy mogą mieć wpływ na łączność. Gdy wystąpi błąd przejściowy podczas nawiązywania połączenia z SQL Database, kod powinien [ponowić próbę wywołania](sql-database-connectivity-issues.md). Zalecamy, aby logika ponawiania korzystała z logiki wycofywania, co pozwoli uniknąć przeciążenia usługi SQL Database z powodu jednoczesnych ponownych prób ze strony wielu klientów. Logika ponawiania zależy od [komunikatów o błędach dla SQL Database programów klienckich](sql-database-develop-error-messages.md).
+Azure SQL Database to usługa w chmurze, w której można oczekiwać błędów przejściowych występujących w podstawowej infrastrukturze lub komunikacji między jednostkami w chmurze. Choć Azure SQL Database jest odporny na awarie infrastruktury przechodniej, te błędy mogą mieć wpływ na łączność. Gdy wystąpi błąd przejściowy podczas nawiązywania połączenia z SQL Database, kod powinien [ponowić próbę wywołania](sql-database-connectivity-issues.md). Zalecamy, aby logika ponawiania korzystała z logiki wycofywania, co pozwoli uniknąć przeciążenia usługi SQL Database z powodu jednoczesnych ponownych prób ze strony wielu klientów. Logika ponawiania zależy od [komunikatów o błędach dla SQL Database programów klienckich](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md).
 
 Aby uzyskać więcej informacji o sposobach przygotowania do planowanych zdarzeń konserwacji w usłudze Azure SQL Database, zobacz [Planowanie zdarzeń konserwacji platformy Azure w Azure SQL Database](sql-database-planned-maintenance.md).
 

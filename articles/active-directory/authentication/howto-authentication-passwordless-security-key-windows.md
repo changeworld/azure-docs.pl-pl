@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603474"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081558"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Włącz klucz zabezpieczeń bezhasłem Zaloguj się na urządzeniach z systemem Windows 10 (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Ten dokument koncentruje się na włączaniu uwierzytelniania bezhaseł opartego
 
 ## <a name="requirements"></a>Wymagania
 
-- [Multi-Factor Authentication platformy Azure](howto-mfa-getstarted.md)
+- [Usługa Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Wersja zapoznawcza rejestracji informacji o zabezpieczeniach](concept-registration-mfa-sspr-combined.md)
 - Zgodne [FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN wymaga systemu Windows 10 w wersji 1809 lub nowszej
@@ -88,7 +88,7 @@ Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj n
 
 ### <a name="enable-with-a-provisioning-package"></a>Włącz z pakietem aprowizacji
 
-W przypadku urządzeń, które nie są zarządzane przez usługę Intune, można zainstalować pakiet aprowizacji, aby włączyć tę funkcję. Aplikację Windows Configuration Designer można zainstalować z poziomu [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22).
+W przypadku urządzeń, które nie są zarządzane przez usługę Intune, można zainstalować pakiet aprowizacji, aby włączyć tę funkcję. Aplikację Windows Configuration Designer można zainstalować z poziomu [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22).
 
 1. Uruchom projektanta konfiguracji systemu Windows.
 1. Wybierz pozycję **plik** > **Nowy projekt**.

@@ -1,6 +1,6 @@
 ---
 title: SQL Server FCI — Virtual Machines platformy Azure | Microsoft Docs
-description: W tym artykule opisano sposób tworzenia SQL Server wystąpienia klastra trybu failover na platformie Azure Virtual Machines.
+description: W tym artykule wyjaśniono, jak utworzyć SQL Server wystąpienie klastra trybu failover na maszynach wirtualnych platformy Azure.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -15,110 +15,112 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 08549935c7a0651709a08bef61624e4e436d4aad
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300604"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084094"
 ---
-# <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover na platformie Azure Virtual Machines
+# <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover na maszynach wirtualnych platformy Azure
 
-W tym artykule opisano sposób tworzenia SQL Server wystąpienia klastra trybu failover (FCI) na maszynach wirtualnych platformy Azure w modelu Menedżer zasobów. To rozwiązanie używa [systemu Windows Server 2016 Datacenter edition Bezpośrednie miejsca do magazynowania \(S2D @ no__t-2](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) jako wirtualnej sieci San opartej na oprogramowaniu, która synchronizuje magazyn (dyski danych) między węzłami (maszyn wirtualnych platformy Azure) w klastrze systemu Windows. Funkcja S2D jest nowością w systemie Windows Server 2016.
+W tym artykule opisano sposób tworzenia SQL Server wystąpienia klastra trybu failover (FCI) na maszynach wirtualnych platformy Azure w modelu Azure Resource Manager. To rozwiązanie używa [systemu Windows Server 2016 Datacenter edition bezpośrednie miejsca do magazynowania](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) jako wirtualnej sieci San opartej na oprogramowaniu, która synchronizuje magazyn (dyski danych) między węzłami (maszyn wirtualnych platformy Azure) w klastrze systemu Windows. Bezpośrednie miejsca do magazynowania Nowość w systemie Windows Server 2016.
 
 Na poniższym diagramie przedstawiono kompletne rozwiązanie na maszynach wirtualnych platformy Azure:
 
-![Grupa dostępności](./media/virtual-machines-windows-portal-sql-create-failover-cluster/00-sql-fci-s2d-complete-solution.png)
+![Kompletne rozwiązanie](./media/virtual-machines-windows-portal-sql-create-failover-cluster/00-sql-fci-s2d-complete-solution.png)
 
-Na powyższym diagramie przedstawiono:
+Ten diagram przedstawia:
 
-- Dwie maszyny wirtualne platformy Azure w klastrze trybu failover systemu Windows. Jeśli maszyna wirtualna znajduje się w klastrze trybu failover, jest również nazywana *węzłem klastra*lub *węzłami*.
+- Dwie maszyny wirtualne platformy Azure w klastrze trybu failover systemu Windows Server. Jeśli maszyna wirtualna znajduje się w klastrze trybu failover, jest również nazywana *węzłem klastra* lub *węzłem*.
 - Każda maszyna wirtualna ma co najmniej dwa dyski danych.
-- Funkcja S2D synchronizuje dane na dysku danych i przedstawia zsynchronizowany magazyn jako pulę magazynów.
-- Pula magazynów przedstawia udostępniony wolumin klastra (CSV) w klastrze trybu failover.
+- Bezpośrednie miejsca do magazynowania synchronizuje dane na dyskach danych i przedstawia zsynchronizowany magazyn jako pulę magazynów.
+- Pula magazynów prezentuje udostępniony wolumin klastra (CSV) do klastra trybu failover.
 - Rola klastra usługi SQL Server FCI używa woluminu CSV dla dysków danych.
 - Moduł równoważenia obciążenia platformy Azure do przechowywania adresu IP SQL Server FCI.
 - Zestaw dostępności platformy Azure zawiera wszystkie zasoby.
 
-   >[!NOTE]
-   >Wszystkie zasoby platformy Azure znajdują się na diagramie należącym do tej samej grupy zasobów.
+>[!NOTE]
+>Wszystkie zasoby platformy Azure na diagramie znajdują się w tej samej grupie zasobów.
 
-Aby uzyskać szczegółowe informacje na temat funkcji S2D, zobacz [Windows Server 2016 Datacenter edition Bezpośrednie miejsca do magazynowania \(S2D @ no__t-2](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
+Aby uzyskać szczegółowe informacje na temat Bezpośrednie miejsca do magazynowania, zobacz [Windows Server 2016 Datacenter edition bezpośrednie miejsca do magazynowania](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
 
-Funkcja S2D obsługuje dwa typy architektur — zbieżne i nadaje zbieżność. Architektura w tym dokumencie jest technologią Hyper-zbieżną. Infrastruktura z technologią Hyper-zbieżną umieszcza magazyn na tych samych serwerach, które obsługują klastrowaną aplikację. W tej architekturze magazyn znajduje się na każdym SQL Server węźle FCI.
+Bezpośrednie miejsca do magazynowania obsługuje dwa typy architektur: zbieżne i z funkcją Hyper-zbieżność. Architektura w tym dokumencie jest technologią Hyper-zbieżną. Infrastruktura z technologią Hyper-zbieżną umieszcza magazyn na tych samych serwerach, które obsługują klastrowaną aplikację. W tej architekturze magazyn znajduje się na każdym SQL Server węźle FCI.
 
 ## <a name="licensing-and-pricing"></a>Licencjonowanie i Cennik
 
-Na platformie Azure Virtual Machines możesz licencjonować SQL Server przy użyciu funkcji płatność zgodnie z rzeczywistym użyciem lub przenieść własne obrazy maszyn wirtualnych (BYOL). Wybrany typ obrazu ma wpływ na sposób naliczania opłat.
+Na maszynach wirtualnych platformy Azure możesz uzyskać licencję SQL Server przy użyciu obrazów maszyn wirtualnych "płatność zgodnie z rzeczywistym użyciem" lub "Przenieś własną licencję" (BYOL). Wybrany typ obrazu ma wpływ na sposób naliczania opłat.
 
-Dzięki licencjonowaniu PAYG wystąpienie klastra trybu failover (FCI) SQL Server na platformie Azure Virtual Machines naliczane są opłaty za wszystkie węzły FCI, w tym węzły pasywne. Aby uzyskać więcej informacji, zobacz [SQL Server Enterprise Virtual Machines cennika](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+Dzięki licencjonowaniu z płatnością zgodnie z rzeczywistym użyciem wystąpienie klastra trybu failover (FCI) SQL Server w usłudze Azure Virtual Machines powoduje naliczanie opłat za wszystkie węzły FCI, w tym węzły pasywne. Aby uzyskać więcej informacji, zobacz [SQL Server Enterprise Virtual Machines cennika](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/).
 
-Klienci z Umowa Enterpriseą z programem Software Assurance mają prawo do korzystania z jednego wolnego węzła pasywnej FCI dla każdego aktywnego węzła. Aby skorzystać z zalet tej korzyści na platformie Azure, użyj obrazów maszyn wirtualnych BYOL, a następnie użyj tej samej licencji na węzłach aktywnych i pasywnych FCI. Aby uzyskać więcej informacji, zobacz [Umowa Enterprise](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
+Jeśli masz Umowa Enterprise z programem Software Assurance, możesz użyć jednego wolnego węzła pasywnej FCI dla każdego aktywnego węzła. Aby skorzystać z tej korzyści na platformie Azure, użyj obrazów maszyn wirtualnych BYOL i Użyj tej samej licencji na węzłach aktywnych i pasywnych FCI. Aby uzyskać więcej informacji, zobacz [Umowa Enterprise](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Aby porównać licencję PAYG i BYOL na potrzeby SQL Server na platformie Azure Virtual Machines Zobacz Rozpoczynanie [pracy z maszynami wirtualnymi SQL](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
+Aby porównać usługę płatność zgodnie z rzeczywistym użyciem i BYOL Licencjonowanie na potrzeby SQL Server na maszynach wirtualnych platformy Azure, zobacz artykuł [Rozpoczynanie pracy z maszynami](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)wirtualnymi SQL.
 
 Aby uzyskać pełne informacje na temat licencjonowania SQL Server, zobacz [Cennik](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>Przykładowy szablon platformy Azure
 
-Możesz utworzyć całe rozwiązanie na platformie Azure na podstawie szablonu. Przykładowy szablon jest dostępny w [szablonach szybkiego startu platformy Azure](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). Ten przykład nie jest zaprojektowany ani testowany pod kątem określonego obciążenia. Można uruchomić szablon, aby utworzyć SQL Server FCI z magazynem funkcji S2D podłączonym do domeny. Możesz oszacować szablon i zmodyfikować go do swoich celów.
+To całe rozwiązanie można utworzyć na platformie Azure na podstawie szablonu. Przykładowy szablon jest dostępny w [szablonach szybkiego startu platformy Azure](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). Ten przykład nie jest zaprojektowany ani testowany pod kątem określonego obciążenia. Można uruchomić szablon w celu utworzenia SQL Server FCI z magazynem Bezpośrednie miejsca do magazynowania podłączonym do domeny. Możesz oszacować szablon i zmodyfikować go do swoich celów.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Istnieje kilka rzeczy, które należy znać, i kilka rzeczy, które są potrzebne przed kontynuowaniem.
+Przed rozpoczęciem pracy należy poznać kilka rzeczy.
 
 ### <a name="what-to-know"></a>Co należy wiedzieć
-Należy mieć praktyczne zrozumienie następujących technologii:
+Należy mieć praktyczne zrozumienie tych technologii:
 
 - [Technologie klastrów systemu Windows](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server wystąpienia klastra trybu failover](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
+- [SQL Server wystąpienia klastra trybu failover](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
-Istotną różnicą jest to, że w klastrze trybu failover gościa maszyny wirtualnej Azure IaaS zalecamy pojedyncze karty sieciowe na serwer (węzeł klastra) i jedną podsieć. Sieć platformy Azure ma fizyczną nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci są niepotrzebne w klastrze gościa maszyny wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie, że węzły są dostępne tylko w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny wirtualnej IaaS platformy Azure. 
+Należy pamiętać, że w przypadku klastra trybu failover gościa maszyny wirtualnej Azure IaaS zaleca się użycie jednej karty sieciowej na serwer (węzeł klastra) i pojedynczej podsieci. Sieć platformy Azure ma fizyczną nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci nie są potrzebne w klastrze gościa maszyny wirtualnej Azure IaaS. Raport weryfikacji klastra ostrzega o tym, że węzły są dostępne tylko w jednej sieci. To ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny wirtualnej usługi Azure IaaS.
 
-Ponadto należy ogólnie zrozumieć następujące technologie:
+Należy również uzyskać ogólne informacje na temat tych technologii:
 
-- [Rozwiązanie z technologią Hyper-zbieżne przy użyciu Bezpośrednie miejsca do magazynowania w systemie Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+- [Rozwiązania z funkcją Hyper-zbieżne używające Bezpośrednie miejsca do magazynowania w systemie Windows Server 2016](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
 - [Grupy zasobów platformy Azure](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> W tej chwili SQL Server wystąpienia klastra trybu failover w usłudze Azure Virtual Machines są obsługiwane tylko w trybie [uproszczonego](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) zarządzania [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Odinstaluj pełne rozszerzenie z maszyn wirtualnych, które uczestniczą w klastrze trybu failover, a następnie zarejestruj je przy użyciu dostawcy zasobów maszyny wirtualnej SQL w trybie `lightweight`. Pełne rozszerzenie obsługuje takie funkcje, jak automatyczne tworzenie kopii zapasowych, stosowanie poprawek i zaawansowane zarządzanie portalem. Te funkcje nie będą działały w przypadku maszyn wirtualnych SQL po ponownym zainstalowaniu agenta w trybie uproszczonego zarządzania.
+> W tej chwili SQL Server wystąpienia klastra trybu failover w usłudze Azure Virtual Machines są obsługiwane tylko przy użyciu [uproszczonego](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) trybu zarządzania [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Odinstaluj pełne rozszerzenie z maszyn wirtualnych, które uczestniczą w klastrze trybu failover, a następnie zarejestruj je przy użyciu dostawcy zasobów maszyny wirtualnej SQL w trybie uproszczonym.
+>
+> Pełne rozszerzenie obsługuje funkcje takie jak automatyczne tworzenie kopii zapasowych, stosowanie poprawek i zaawansowane zarządzanie portalem. Te funkcje nie będą działały dla SQL Server maszyn wirtualnych po ponownym zainstalowaniu agenta w trybie uproszczonego zarządzania.
 
 ### <a name="what-to-have"></a>Co należy zrobić
 
-Przed wykonaniem instrukcji przedstawionych w tym artykule należy wykonać następujące czynności:
+Przed wykonaniem kroków opisanych w tym artykule należy dysponować:
 
 - Subskrypcja Microsoft Azure.
 - Domena systemu Windows na maszynach wirtualnych platformy Azure.
-- Konto z uprawnieniami do tworzenia obiektów na maszynie wirtualnej platformy Azure.
-- Sieć wirtualna platformy Azure i podsieć z wystarczającą przestrzenią adresową IP dla następujących składników:
+- Konto, które ma uprawnienia do tworzenia obiektów zarówno na maszynach wirtualnych platformy Azure, jak i w Active Directory.
+- Sieć wirtualna platformy Azure i podsieć z wystarczającą przestrzenią adresową IP dla tych składników:
    - Obie maszyny wirtualne.
    - Adres IP klastra trybu failover.
    - Adres IP dla każdego FCIu.
 - System DNS skonfigurowany w sieci platformy Azure, wskazujący kontrolery domeny.
 
-Po spełnieniu tych wymagań wstępnych można kontynuować tworzenie klastra trybu failover. Pierwszym krokiem jest utworzenie maszyn wirtualnych.
+Po spełnieniu tych wymagań wstępnych można rozpocząć tworzenie klastra trybu failover. Pierwszym krokiem jest utworzenie maszyn wirtualnych.
 
-## <a name="step-1-create-virtual-machines"></a>Krok 1. Tworzenie maszyn wirtualnych
+## <a name="step-1-create-the-virtual-machines"></a>Krok 1. Tworzenie maszyn wirtualnych
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) z subskrypcją.
 
 1. [Utwórz zestaw dostępności platformy Azure](../tutorial-availability-sets.md).
 
-   Zestaw dostępności grupuje maszyny wirtualne w domenach błędów i domenach aktualizacji. Zestaw dostępności pozwala upewnić się, że aplikacja nie ma wpływ na pojedyncze punkty awarii, takie jak przełącznik sieciowy lub jednostka mocy stojaka serwerów.
+   Zestaw dostępności grupuje maszyny wirtualne w domenach błędów i domenach aktualizacji. Gwarantuje to, że aplikacja nie ma wpływ na pojedyncze punkty awarii, takie jak przełącznik sieciowy lub jednostka mocy stojaka serwerów.
 
    Jeśli nie utworzono grupy zasobów dla maszyn wirtualnych, zrób to podczas tworzenia zestawu dostępności platformy Azure. Jeśli używasz Azure Portal do utworzenia zestawu dostępności, wykonaj następujące czynności:
 
-   - W Azure Portal kliknij pozycję **+** , aby otworzyć witrynę Azure Marketplace. Wyszukaj **zestaw dostępności**.
-   - Kliknij pozycję **zestaw dostępności**.
-   - Kliknij przycisk **Utwórz**.
-   - W bloku **Tworzenie zestawu dostępności** ustaw następujące wartości:
+   1. W Azure Portal wybierz pozycję **Utwórz zasób** , aby otworzyć witrynę Azure Marketplace. Wyszukaj **zestaw dostępności**.
+   1. Wybierz pozycję **zestaw dostępności**.
+   1. Wybierz pozycję **Utwórz**.
+   1. W obszarze **Tworzenie zestawu dostępności**podaj następujące wartości:
       - **Nazwa**: Nazwa zestawu dostępności.
       - **Subskrypcja**: Twoja subskrypcja platformy Azure.
-      - **Grupa zasobów**: Jeśli chcesz użyć istniejącej grupy, kliknij pozycję **Użyj istniejącej** , a następnie wybierz grupę z listy rozwijanej. W przeciwnym razie wybierz pozycję **Utwórz nową** , a następnie wpisz nazwę grupy.
+      - **Grupa zasobów**: Jeśli chcesz użyć istniejącej grupy, kliknij pozycję **Wybierz istniejącą** , a następnie wybierz grupę z listy. W przeciwnym razie wybierz pozycję **Utwórz nową** , a następnie wprowadź nazwę grupy.
       - **Lokalizacja**: Ustaw lokalizację, w której planujesz utworzyć maszyny wirtualne.
-      - **Domeny błędów**: Użyj ustawienia domyślnego (3).
-      - **Aktualizowanie domen**: Użyj domyślnego (5).
-   - Kliknij przycisk **Utwórz** , aby utworzyć zestaw dostępności.
+      - **Domeny błędów**: Użyj ustawienia domyślnego (**3**).
+      - **Aktualizowanie domen**: Użyj domyślnego (**5**).
+   1. Wybierz pozycję **Utwórz** , aby utworzyć zestaw dostępności.
 
 1. Utwórz maszyny wirtualne w zestawie dostępności.
 
@@ -128,51 +130,51 @@ Po spełnieniu tych wymagań wstępnych można kontynuować tworzenie klastra tr
 
    - W tej samej grupie zasobów platformy Azure, w której znajduje się zestaw dostępności.
    - W tej samej sieci, w której znajduje się kontroler domeny.
-   - W podsieci z wystarczającą przestrzenią adresów IP dla obu maszyn wirtualnych i wszystkich FCIs, które mogą być używane w tym klastrze.
-   - W zestawie dostępności platformy Azure.   
+   - W podsieci, która ma wystarczającą przestrzeń adresową IP dla maszyn wirtualnych i wszystkich FCIs, które mogą być używane w klastrze.
+   - W zestawie dostępności platformy Azure.
 
       >[!IMPORTANT]
-      >Nie można ustawić lub zmienić zestawu dostępności po utworzeniu maszyny wirtualnej.
+      >Nie można ustawić ani zmienić zestawu dostępności po utworzeniu maszyny wirtualnej.
 
-   Wybierz obraz z portalu Azure Marketplace. Możesz użyć obrazu z portalu Marketplace zawierającego system Windows Server i SQL Server lub tylko system Windows Server. Aby uzyskać szczegółowe informacje, zobacz [omówienie SQL Server na platformie Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md)
+   Wybierz obraz z witryny Azure Marketplace. Możesz użyć obrazu portalu Azure Marketplace zawierającego system Windows Server i SQL Server lub użyć systemu z systemem Windows Server. Aby uzyskać szczegółowe informacje, zobacz [omówienie SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
 
-   Oficjalne obrazy SQL Server w galerii platformy Azure obejmują zainstalowane wystąpienie SQL Server oraz oprogramowanie instalacyjne SQL Server oraz wymagany klucz.
+   Oficjalne obrazy SQL Server w galerii platformy Azure obejmują zainstalowane wystąpienie SQL Server, oprogramowanie instalacyjne SQL Server i wymagany klucz.
 
-   Wybierz odpowiedni obraz z uwzględnieniem sposobu płacenia SQL Server licencji:
+   Wybierz odpowiedni obraz, w zależności od tego, jak chcesz uregulować licencję SQL Server:
 
-   - **Płatność za Licencjonowanie za użycie**: koszt za każdy z tych obrazów zawiera SQL Server Licencjonowanie:
-      - **SQL Server 2016 Enterprise w systemie Windows Server Datacenter 2016**
-      - **SQL Server 2016 Standard w systemie Windows Server Datacenter 2016**
-      - **Deweloper SQL Server 2016 w systemie Windows Server Datacenter 2016**
+   - **Licencjonowanie za użycie**. Koszt dla tych obrazów na sekundę obejmuje SQL Server Licencjonowanie:
+      - **SQL Server 2016 Enterprise w systemie Windows Server 2016 Datacenter**
+      - **SQL Server 2016 Standard w systemie Windows Server 2016 Datacenter**
+      - **Deweloper SQL Server 2016 w systemie Windows Server 2016 Datacenter**
 
    - **Przenieś własną licencję (BYOL)**
 
-      - **BYOL SQL Server 2016 Enterprise w systemie Windows Server Datacenter 2016**
-      - **BYOL SQL Server 2016 Standard w systemie Windows Server Datacenter 2016**
+      - **BYOL SQL Server 2016 Enterprise w systemie Windows Server 2016 Datacenter**
+      - **BYOL SQL Server 2016 Standard w systemie Windows Server 2016 Datacenter**
 
    >[!IMPORTANT]
-   >Po utworzeniu maszyny wirtualnej Usuń wstępnie zainstalowane wystąpienie SQL Server autonomicznej. Przed skonfigurowaniem klastra trybu failover i programu S2D należy użyć wstępnie zainstalowanego nośnika SQL Server do utworzenia SQL Server FCI.
+   >Po utworzeniu maszyny wirtualnej Usuń wstępnie zainstalowane wystąpienie SQL Server autonomicznej. Przed skonfigurowaniem klastra trybu failover i Bezpośrednie miejsca do magazynowania należy użyć wstępnie zainstalowanego nośnika SQL Server do utworzenia SQL Server FCI.
 
-   Alternatywnie możesz użyć obrazów portalu Azure Marketplace z tylko systemem operacyjnym. Wybierz obraz **systemu Windows Server 2016 Datacenter** i zainstaluj SQL Server FCI po skonfigurowaniu klastra trybu failover i funkcji S2D. Ten obraz nie zawiera nośnika instalacyjnego SQL Server. Umieść nośnik instalacyjny w lokalizacji, w której można uruchomić instalację SQL Server dla każdego serwera.
+   Alternatywnie możesz użyć obrazów portalu Azure Marketplace, które zawierają tylko system operacyjny. Wybierz obraz **systemu Windows Server 2016 Datacenter** i zainstaluj SQL Server FCI po skonfigurowaniu klastra trybu failover i bezpośrednie miejsca do magazynowania. Ten obraz nie zawiera nośnika instalacyjnego SQL Server. Umieść nośnik instalacyjny SQL Server w lokalizacji, w której można uruchomić go dla każdego serwera.
 
-1. Po utworzeniu maszyn wirtualnych przez platformę Azure Połącz się z każdą maszyną wirtualną za pomocą protokołu RDP.
+1. Po utworzeniu maszyn wirtualnych przez platformę Azure Połącz się z nimi przy użyciu protokołu RDP.
 
-   Gdy po raz pierwszy łączysz się z maszyną wirtualną przy użyciu protokołu RDP, komputer pyta, czy chcesz zezwolić na odnajdowanie tego komputera w sieci. Kliknij przycisk **Yes** (Tak).
+   Gdy po raz pierwszy łączysz się z maszyną wirtualną przy użyciu protokołu RDP, zostanie wyświetlony monit z pytaniem, czy chcesz zezwolić na odnajdywanie komputera w sieci. Wybierz pozycję **Tak**.
 
 1. Jeśli używasz jednego z obrazów maszyn wirtualnych opartych na SQL Server, Usuń wystąpienie SQL Server.
 
-   - W obszarze **programy i funkcje**kliknij prawym przyciskiem myszy pozycję **Microsoft SQL Server 2016 (64-bitowe)** , a następnie kliknij polecenie **Odinstaluj/Zmień**.
-   - Kliknij pozycję **Usuń**.
-   - Wybierz wystąpienie domyślne.
-   - Usuń wszystkie funkcje w obszarze **usługi aparatu bazy danych**. Nie usuwaj **funkcji udostępnionych**. Zapoznaj się z poniższym obrazem:
+   1. W obszarze **programy i funkcje**kliknij prawym przyciskiem myszy pozycję **Microsoft SQL Server 2016 (64-bitowe)** i wybierz polecenie **Odinstaluj/Zmień**.
+   1. Wybierz pozycję **Usuń**.
+   1. Wybierz wystąpienie domyślne.
+   1. Usuń wszystkie funkcje w obszarze **usługi aparatu bazy danych**. Nie usuwaj **funkcji udostępnionych**. Zobaczysz coś podobnego do poniższego zrzutu ekranu:
 
-      ![Usuń funkcje](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+      ![Wybieranie funkcji](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
-   - Kliknij przycisk **dalej**, a następnie kliknij przycisk **Usuń**.
+   1. Wybierz pozycję **dalej**, a następnie wybierz pozycję **Usuń**.
 
 1. <a name="ports"></a>Otwórz porty zapory.
 
-   Na każdej maszynie wirtualnej Otwórz następujące porty w zaporze systemu Windows.
+   Na każdej maszynie wirtualnej Otwórz te porty w zaporze systemu Windows:
 
    | Przeznaczenie | Port TCP | Uwagi
    | ------ | ------ | ------
@@ -183,9 +185,9 @@ Po spełnieniu tych wymagań wstępnych można kontynuować tworzenie klastra tr
 
    Obie maszyny wirtualne potrzebują co najmniej dwóch dysków z danymi.
 
-   Dołączanie dysków nieprzetworzonych — nie sformatowanych w systemie plików NTFS.
+   Dołączanie dysków nieprzetworzonych, a nie dysków sformatowanych w systemie plików NTFS.
       >[!NOTE]
-      >W przypadku dołączania dysków sformatowanych w systemie plików NTFS można włączyć funkcję S2D tylko bez sprawdzania uprawnień dysku.  
+      >W przypadku dołączania dysków sformatowanych w systemie plików NTFS można włączyć Bezpośrednie miejsca do magazynowania tylko bez sprawdzania uprawnień dysku.  
 
    Dołącz co najmniej dwie dysków SSD w warstwie Premium do każdej maszyny wirtualnej. Zalecamy co najmniej P30 (1 TB) dysków.
 
@@ -197,60 +199,58 @@ Po spełnieniu tych wymagań wstępnych można kontynuować tworzenie klastra tr
 
 Po utworzeniu i skonfigurowaniu maszyn wirtualnych można skonfigurować klaster trybu failover.
 
-## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>Krok 2. Konfigurowanie klastra trybu failover systemu Windows przy użyciu funkcji S2D
+## <a name="step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct"></a>Krok 2. Konfigurowanie klastra trybu failover z systemem Windows Server za pomocą Bezpośrednie miejsca do magazynowania
 
-Następnym krokiem jest skonfigurowanie klastra trybu failover za pomocą funkcji S2D. W tym kroku wykonasz następujące czynności:
+Następnym krokiem jest skonfigurowanie klastra trybu failover przy użyciu Bezpośrednie miejsca do magazynowania. W tym kroku wykonasz następujące czynności:
 
-1. Dodaj funkcję Klaster trybu failover systemu Windows
-1. Weryfikowanie klastra
-1. Tworzenie klastra trybu failover
-1. Utwórz monitor w chmurze
-1. Dodaj magazyn
+1. Dodaj funkcję Klaster trybu failover systemu Windows Server.
+1. Sprawdź poprawność klastra.
+1. Utwórz klaster trybu failover.
+1. Utwórz monitor w chmurze.
+1. Dodaj magazyn.
 
-### <a name="add-windows-failover-clustering-feature"></a>Dodaj funkcję Klaster trybu failover systemu Windows
+### <a name="add-windows-server-failover-clustering"></a>Dodaj klaster trybu failover systemu Windows Server
 
-1. Aby rozpocząć, Połącz się z pierwszą maszyną wirtualną za pomocą protokołu RDP przy użyciu konta domeny, które jest członkiem lokalnej grupy administratorów i ma uprawnienia do tworzenia obiektów w Active Directory. Użyj tego konta do pozostałej części konfiguracji.
+1. Nawiąż połączenie z pierwszą maszyną wirtualną za pomocą protokołu RDP przy użyciu konta domeny, które jest członkiem lokalnej grupy administratorów i ma uprawnienia do tworzenia obiektów w Active Directory. Użyj tego konta do pozostałej części konfiguracji.
 
-1. [Dodaj funkcję Klaster trybu failover do każdej maszyny wirtualnej](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
+1. [Dodaj klaster trybu failover do każdej maszyny wirtualnej](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 
-   Aby zainstalować funkcję Klaster trybu failover z interfejsu użytkownika, wykonaj następujące czynności na obu maszynach wirtualnych.
-   - W **Menedżer serwera**kliknij pozycję **Zarządzaj**, a następnie kliknij pozycję **Dodaj role i funkcje**.
-   - W **Kreatorze dodawania ról i funkcji**kliknij przycisk **dalej** , aż **wybierzesz pozycję funkcje**.
-   - W obszarze **Wybieranie funkcji**kliknij pozycję **klaster trybu failover**. Dołącz wszystkie wymagane funkcje i narzędzia do zarządzania. Kliknij pozycję **Dodaj funkcje**.
-   - Kliknij przycisk **dalej** , a następnie kliknij przycisk **Zakończ** , aby zainstalować funkcje.
+   Aby zainstalować klaster trybu failover z interfejsu użytkownika, wykonaj następujące kroki na obu maszynach wirtualnych:
+   1. W **Menedżer serwera**wybierz pozycję **Zarządzaj**, a następnie wybierz pozycję **Dodaj role i funkcje**.
+   1. W **Kreatorze dodawania ról i funkcji**wybierz pozycję **dalej** , aż **wybierzesz pozycję funkcje**.
+   1. W obszarze **Wybierz funkcje**wybierz pozycję **klaster trybu failover**. Dołącz wszystkie wymagane funkcje i narzędzia do zarządzania. Wybierz pozycję **Dodaj funkcje**.
+   1. Wybierz pozycję **dalej**, a następnie wybierz pozycję **Zakończ** , aby zainstalować funkcje.
 
-   Aby zainstalować funkcję Klaster trybu failover z programem PowerShell, uruchom następujący skrypt z sesji programu PowerShell administratora na jednej z maszyn wirtualnych.
+   Aby zainstalować klaster trybu failover przy użyciu programu PowerShell, uruchom następujący skrypt z sesji programu PowerShell administratora na jednej z maszyn wirtualnych:
 
    ```powershell
    $nodes = ("<node1>","<node2>")
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Aby uzyskać informacje na ten temat, należy postępować zgodnie z instrukcjami podanymi w sekcji Krok 3 rozwiązania z technologią [Hyper-zbieżność przy użyciu bezpośrednie miejsca do magazynowania w systemie Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Aby uzyskać dalsze informacje o następnych krokach, zobacz instrukcje w sekcji Krok 3 [rozwiązania z funkcją Hyper-zbieżność przy użyciu bezpośrednie miejsca do magazynowania w systemie Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 ### <a name="validate-the-cluster"></a>Weryfikowanie klastra
 
-Ten przewodnik odwołuje się do instrukcji w obszarze [Weryfikuj klaster](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
-
 Sprawdź poprawność klastra w interfejsie użytkownika lub za pomocą programu PowerShell.
 
-Aby sprawdzić poprawność klastra przy użyciu interfejsu użytkownika, wykonaj następujące czynności z jednej z maszyn wirtualnych.
+Aby sprawdzić poprawność klastra przy użyciu interfejsu użytkownika, wykonaj następujące czynności na jednej z maszyn wirtualnych:
 
-1. W **Menedżer serwera**kliknij pozycję **Narzędzia**, a następnie kliknij pozycję **Menedżer klastra trybu failover**.
-1. W **Menedżer klastra trybu failover**, kliknij przycisk **Akcja**, a następnie kliknij przycisk **Weryfikuj konfigurację...** .
-1. Kliknij przycisk **Dalej**.
-1. Na stronie **Wybieranie serwerów lub klastrów**wpisz nazwę obu maszyn wirtualnych.
-1. W obszarze **opcje testowania**wybierz opcję **Uruchom tylko wybrane testy**. Kliknij przycisk **Dalej**.
-1. W przypadku **wyboru testu**Uwzględnij wszystkie testy poza **magazynem**. Zapoznaj się z poniższym obrazem:
+1. W obszarze **Menedżer serwera**wybierz pozycję **Narzędzia**, a następnie wybierz pozycję **Menedżer klastra trybu failover**.
+1. W obszarze **Menedżer klastra trybu failover**wybierz pozycję **Akcja**, a następnie wybierz pozycję **Weryfikuj konfigurację**.
+1. Wybierz opcję **Dalej**.
+1. W obszarze **Wybierz serwery lub klaster**wprowadź nazwy obu maszyn wirtualnych.
+1. W obszarze **opcje testowania**wybierz opcję **Uruchom tylko wybrane testy**. Wybierz opcję **Dalej**.
+1. W obszarze **wybór testu**zaznacz wszystkie testy z wyjątkiem **magazynu**, jak pokazano poniżej:
 
-   ![Weryfikuj testy](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
+   ![Wybierz testy weryfikacji klastra](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. Kliknij przycisk **Dalej**.
-1. W obszarze **potwierdzenie**kliknij przycisk **dalej**.
+1. Wybierz opcję **Dalej**.
+1. W obszarze **potwierdzenie**wybierz pozycję **dalej**.
 
-**Kreator weryfikacji konfiguracji** uruchamia testy weryfikacyjne.
+Kreator weryfikacji konfiguracji uruchamia testy weryfikacyjne.
 
-Aby sprawdzić poprawność klastra przy użyciu programu PowerShell, uruchom następujący skrypt z sesji programu PowerShell administratora na jednej z maszyn wirtualnych.
+Aby sprawdzić poprawność klastra przy użyciu programu PowerShell, uruchom następujący skrypt z sesji programu PowerShell administratora na jednej z maszyn wirtualnych:
 
    ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
@@ -260,16 +260,14 @@ Po sprawdzeniu poprawności klastra utwórz klaster trybu failover.
 
 ### <a name="create-the-failover-cluster"></a>Tworzenie klastra trybu failover
 
-Ten przewodnik odwołuje się do [tworzenia klastra trybu failover](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
-
 Aby utworzyć klaster trybu failover, potrzebne są:
 - Nazwy maszyn wirtualnych, które staną się węzłami klastra.
 - Nazwa klastra trybu failover
 - Adres IP klastra trybu failover. Można użyć adresu IP, który nie jest używany w tej samej sieci wirtualnej platformy Azure i podsieci co węzły klastra.
 
-#### <a name="windows-server-2008-2016"></a>System Windows Server 2008-2016
+#### <a name="windows-server-2008-through-windows-server-2016"></a>System Windows Server 2008 za poorednictwem systemu Windows Server 2016
 
-Poniższy program PowerShell tworzy klaster trybu failover dla **systemu Windows Server 2008-2016**. Zaktualizuj skrypt przy użyciu nazw węzłów (nazw maszyn wirtualnych) i dostępnego adresu IP z sieci wirtualnej platformy Azure:
+Poniższy skrypt programu PowerShell tworzy klaster trybu failover dla systemu Windows Server 2008 za pomocą systemu Windows Server 2016. Zaktualizuj skrypt przy użyciu nazw węzłów (nazw maszyn wirtualnych) i dostępnego adresu IP z sieci wirtualnej platformy Azure.
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
@@ -277,7 +275,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 #### <a name="windows-server-2019"></a>Windows Server 2019
 
-Poniższy program PowerShell tworzy klaster trybu failover dla systemu Windows Server 2019.  Aby uzyskać więcej informacji, zapoznaj się z tematem [klaster trybu failover w blogu: obiekt sieci klastra](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).  Zaktualizuj skrypt przy użyciu nazw węzłów (nazw maszyn wirtualnych) i dostępnego adresu IP z sieci wirtualnej platformy Azure:
+Poniższy skrypt programu PowerShell tworzy klaster trybu failover dla systemu Windows Server 2019. Aby uzyskać więcej informacji, zobacz [klaster trybu failover: obiekt sieci klastra](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97). Zaktualizuj skrypt przy użyciu nazw węzłów (nazw maszyn wirtualnych) i dostępnego adresu IP z sieci wirtualnej platformy Azure.
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
@@ -286,7 +284,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ### <a name="create-a-cloud-witness"></a>Utwórz monitor w chmurze
 
-Monitor w chmurze to nowy typ monitora kworum klastra, który jest przechowywany w Azure Storage Blob. Eliminuje to potrzebę oddzielnej maszyny wirtualnej obsługującej udział monitora.
+Monitor w chmurze to nowy typ monitora kworum klastra, który jest przechowywany w obiekcie blob usługi Azure Storage. Eliminuje to konieczność stosowania oddzielnej maszyny wirtualnej, która hostuje udział monitora.
 
 1. [Utwórz monitor chmury dla klastra trybu failover](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -294,15 +292,15 @@ Monitor w chmurze to nowy typ monitora kworum klastra, który jest przechowywany
 
 1. Zapisz klucze dostępu i adres URL kontenera.
 
-1. Skonfiguruj monitor kworum klastra trybu failover. Zobacz temat [Konfigurowanie monitora kworum w interfejsie użytkownika](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) w oknie użytkownika.
+1. Skonfiguruj monitor kworum klastra trybu failover. Zobacz [Konfigurowanie monitora kworum w interfejsie użytkownika](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
 
-### <a name="add-storage"></a>Dodaj magazyn
+### <a name="add-storage"></a>Dodawanie magazynu
 
-Dyski dla funkcji S2D muszą być puste i nie mogą zawierać partycji ani innych danych. Aby wyczyścić dyski [, wykonaj kroki opisane w tym przewodniku](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
+Dyski dla Bezpośrednie miejsca do magazynowania muszą być puste. Nie mogą zawierać partycji ani innych danych. Aby wyczyścić dyski, wykonaj [kroki opisane w tym przewodniku](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives).
 
-1. [Włącz funkcję bezpośrednie miejsca do magazynowania @no__t — 1S2D @ no__t-2](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Włącz bezpośrednie miejsca do magazynowania](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
-   Poniższy program PowerShell umożliwia bezpośrednie miejsca do magazynowania.  
+   Poniższy skrypt programu PowerShell umożliwia Bezpośrednie miejsca do magazynowania:  
 
    ```powershell
    Enable-ClusterS2D
@@ -312,7 +310,7 @@ Dyski dla funkcji S2D muszą być puste i nie mogą zawierać partycji ani innyc
 
 1. [Utwórz wolumin](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
 
-   Jedną z funkcji opcji S2D jest automatyczne tworzenie puli magazynów po jej włączeniu. Teraz można przystąpić do tworzenia woluminu. Program PowerShell polecenia cmdlet `New-Volume` automatyzuje proces tworzenia woluminu, w tym formatowanie, dodawanie do klastra i tworzenie udostępnionego woluminu klastra (CSV). Poniższy przykład tworzy wolumin CSV 800 gigabajta (GB).
+   Bezpośrednie miejsca do magazynowania automatycznie tworzy pulę magazynów po jej włączeniu. Teraz można przystąpić do tworzenia woluminu. Polecenie cmdlet programu PowerShell `New-Volume` automatyzuje proces tworzenia woluminu. Ten proces obejmuje formatowanie, dodanie woluminu do klastra i utworzenie udostępniony wolumin klastra (CSV). Ten przykład tworzy wolumin CSV 800-gigabajt (GB):
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
@@ -320,127 +318,128 @@ Dyski dla funkcji S2D muszą być puste i nie mogą zawierać partycji ani innyc
 
    Po zakończeniu wykonywania tego polecenia wolumin 800 GB zostanie zainstalowany jako zasób klastra. Wolumin jest w `C:\ClusterStorage\Volume1\`.
 
-   Na poniższym diagramie przedstawiono udostępniony wolumin klastra z funkcją S2D:
+   Ten zrzut ekranu przedstawia udostępniony wolumin klastra z Bezpośrednie miejsca do magazynowania:
 
-   ![ClusterSharedVolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
+   ![udostępniony wolumin klastra](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
 ## <a name="step-3-test-failover-cluster-failover"></a>Krok 3. Testowanie trybu failover klastra trybu failover
 
-W Menedżer klastra trybu failover upewnij się, że można przenieść zasób magazynu do innego węzła klastra. Jeśli można nawiązać połączenie z klastrem trybu failover z **Menedżer klastra trybu failover** i przenieść magazyn z jednego węzła do drugiego, możesz skonfigurować FCI.
+W **Menedżer klastra trybu failover**upewnij się, że można przenieść zasób magazynu do innego węzła klastra. Jeśli można nawiązać połączenie z klastrem trybu failover przy użyciu **Menedżer klastra trybu failover** i przenieść magazyn z jednego węzła do drugiego, można skonfigurować FCI.
 
-## <a name="step-4-create-sql-server-fci"></a>Krok 4. tworzenie SQL Server FCI
+## <a name="step-4-create-the-sql-server-fci"></a>Krok 4. tworzenie SQL Server FCI
 
 Po skonfigurowaniu klastra trybu failover i wszystkich składników klastra, w tym magazynu, można utworzyć SQL Server FCI.
 
 1. Nawiąż połączenie z pierwszą maszyną wirtualną przy użyciu protokołu RDP.
 
-1. W **Menedżer klastra trybu failover**upewnij się, że wszystkie zasoby podstawowe klastra znajdują się na pierwszej maszynie wirtualnej. W razie potrzeby Przenieś wszystkie zasoby do tej maszyny wirtualnej.
+1. W **Menedżer klastra trybu failover**upewnij się, że wszystkie podstawowe zasoby klastra znajdują się na pierwszej maszynie wirtualnej. W razie potrzeby Przenieś wszystkie zasoby na tę maszynę wirtualną.
 
-1. Znajdź nośnik instalacyjny. Jeśli maszyna wirtualna używa jednego z obrazów portalu Azure Marketplace, nośnik znajduje się w `C:\SQLServer_<version number>_Full`. Kliknij przycisk **Setup (Konfiguracja**).
+1. Znajdź nośnik instalacyjny. Jeśli maszyna wirtualna używa jednego z obrazów portalu Azure Marketplace, nośnik znajduje się w `C:\SQLServer_<version number>_Full`. Wybierz pozycję **Konfiguracja**.
 
-1. W **centrum instalacji SQL Server**kliknij pozycję **Instalacja**.
+1. W **SQL Server centrum instalacji**wybierz opcję **Instalacja**.
 
-1. Kliknij kolejno pozycje **nowy SQL Server Instalacja klastra trybu failover**. Postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze, aby zainstalować SQL Server FCI.
+1. Wybierz pozycję **nowa SQL Server Instalacja klastra trybu failover**. Postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze, aby zainstalować SQL Server FCI.
 
-   Katalogi danych FCI muszą znajdować się w magazynie klastrowanym. W przypadku funkcji S2D nie jest to dysk udostępniony, ale punkt instalacji należy do woluminu na każdym serwerze. Funkcja S2D synchronizuje wolumin między obydwoma węzłami. Wolumin jest prezentowany w klastrze jako udostępniony wolumin klastra. Użyj punktu instalacji woluminu CSV dla katalogów danych.
+   Katalogi danych FCI muszą znajdować się w magazynie klastrowanym. W przypadku Bezpośrednie miejsca do magazynowania nie jest to dysk udostępniony, ale punkt instalacji do woluminu na każdym serwerze. Bezpośrednie miejsca do magazynowania synchronizuje wolumin między obydwoma węzłami. Wolumin jest prezentowany w klastrze jako udostępniony wolumin klastra. Użyj punktu instalacji woluminu CSV dla katalogów danych.
 
-   ![Datadirectors](./media/virtual-machines-windows-portal-sql-create-failover-cluster/20-data-dicrectories.png)
+   ![Katalogi danych](./media/virtual-machines-windows-portal-sql-create-failover-cluster/20-data-dicrectories.png)
 
-1. Po zakończeniu pracy Kreatora Instalator zainstaluje SQL Server FCI na pierwszym węźle.
+1. Po wykonaniu instrukcji w Kreatorze Instalator zainstaluje SQL Server FCI na pierwszym węźle.
 
-1. Po pomyślnym zainstalowaniu przez Instalatora FCI na pierwszym węźle Nawiąż połączenie z drugim węzłem przy użyciu protokołu RDP.
+1. Po zainstalowaniu przez Instalatora FCI na pierwszym węźle Nawiąż połączenie z drugim węzłem przy użyciu protokołu RDP.
 
-1. Otwórz **centrum instalacji SQL Server**. Kliknij pozycję **Instalacja**.
+1. Otwórz **centrum instalacji SQL Server**. Wybierz opcję **Instalacja**.
 
-1. Kliknij przycisk **Dodaj węzeł do klastra trybu failover SQL Server**. Postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze, aby zainstalować program SQL Server i dodać ten serwer do FCI.
+1. Wybierz pozycję **Dodaj węzeł do klastra trybu failover SQL Server**. Postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze, aby zainstalować SQL Server i dodać serwer do FCI.
 
    >[!NOTE]
-   >Jeśli korzystasz z obrazu galerii portalu Azure Marketplace z SQL Server, narzędzia SQL Server zostały dołączone do obrazu. Jeśli nie korzystasz z tego obrazu, zainstaluj SQL Server narzędzia osobno. Zobacz [pobieranie SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >W przypadku korzystania z obrazu galerii portalu Azure Marketplace zawierającego SQL Server narzędzia SQL Server zostały dołączone do obrazu. Jeśli nie korzystasz z jednego z tych obrazów, zainstaluj SQL Server narzędzia osobno. Zobacz [pobieranie SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-## <a name="step-5-create-azure-load-balancer"></a>Krok 5. Tworzenie modułu równoważenia obciążenia platformy Azure
+## <a name="step-5-create-the-azure-load-balancer"></a>Krok 5. Tworzenie modułu równoważenia obciążenia platformy Azure
 
 W przypadku maszyn wirtualnych platformy Azure klastry używają usługi równoważenia obciążenia do przechowywania adresu IP, który musi znajdować się w jednym węźle klastra naraz. W tym rozwiązaniu moduł równoważenia obciążenia przechowuje adres IP SQL Server FCI.
 
-[Utwórz i skonfiguruj moduł równoważenia obciążenia platformy Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
+Aby uzyskać więcej informacji, zobacz [Tworzenie i Konfigurowanie modułu równoważenia obciążenia platformy Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
 
 ### <a name="create-the-load-balancer-in-the-azure-portal"></a>Utwórz moduł równoważenia obciążenia w Azure Portal
 
 Aby utworzyć moduł równoważenia obciążenia:
 
-1. W Azure Portal przejdź do grupy zasobów z maszynami wirtualnymi.
+1. W Azure Portal przejdź do grupy zasobów zawierającej maszyny wirtualne.
 
-1. Kliknij pozycję **+ Dodaj**. Wyszukaj **Load Balancer**w portalu Marketplace. Kliknij **Load Balancer**.
+1. Wybierz pozycję **Dodaj**. Wyszukaj **Load Balancer**w portalu Azure Marketplace. Wybierz **Load Balancer**.
 
-1. Kliknij przycisk **Utwórz**.
+1. Wybierz pozycję **Utwórz**.
 
 1. Skonfiguruj moduł równoważenia obciążenia przy użyciu:
 
    - **Subskrypcja**: Twoja subskrypcja platformy Azure.
-   - **Grupa zasobów**: Użyj tej samej grupy zasobów co maszyny wirtualne.
+   - **Grupa zasobów**: Grupa zasobów zawierająca maszyny wirtualne.
    - **Nazwa**: Nazwa identyfikująca moduł równoważenia obciążenia.
-   - **Region**: Użyj tej samej lokalizacji platformy Azure co maszyny wirtualne.
-   - **Typ**: usługa równoważenia obciążenia może być publiczna lub prywatna. Dostęp do prywatnego modułu równoważenia obciążenia można uzyskać w ramach tej samej sieci wirtualnej. Większość aplikacji platformy Azure może korzystać z prywatnego modułu równoważenia obciążenia. Jeśli aplikacja wymaga dostępu do SQL Server bezpośrednio za pośrednictwem Internetu, użyj publicznego modułu równoważenia obciążenia.
-   - **Jednostka SKU**: jednostka SKU dla modułu równoważenia obciążenia powinna być standardowa. 
-   - **Virtual Network**: sieć, w której znajduje się maszyna wirtualna.
-   - **Przypisanie adresu IP**: przypisanie adresu IP powinno być statyczne. 
-   - **Prywatny adres IP**: ten sam adres IP, który został przypisany do zasobu sieci klastra SQL Server FCI.
-   Zapoznaj się z poniższym obrazem:
+   - **Region**: Lokalizacja platformy Azure, w której znajdują się maszyny wirtualne.
+   - **Typ**: publiczny lub prywatny. Dostęp do prywatnego modułu równoważenia obciążenia można uzyskać z poziomu sieci wirtualnej. Większość aplikacji platformy Azure może korzystać z prywatnego modułu równoważenia obciążenia. Jeśli aplikacja wymaga dostępu do SQL Server bezpośrednio za pośrednictwem Internetu, użyj publicznego modułu równoważenia obciążenia.
+   - **Jednostka SKU**: Standard.
+   - **Sieć wirtualna**: sieć, w której znajduje się maszyna wirtualna.
+   - **Przypisanie adresu IP**: statyczne. 
+   - **Prywatny adres IP**: adres IP przypisany do zasobu sieci klastra SQL Server FCI.
 
-   ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
+ Poniższy zrzut ekranu przedstawia interfejs użytkownika **tworzenia modułu równoważenia obciążenia** :
+
+   ![Konfigurowanie modułu równoważenia obciążenia](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
 
 ### <a name="configure-the-load-balancer-backend-pool"></a>Konfigurowanie puli zaplecza modułu równoważenia obciążenia
 
-1. Wróć do grupy zasobów platformy Azure z maszynami wirtualnymi i Znajdź nowy moduł równoważenia obciążenia. Może być konieczne odświeżenie widoku w grupie zasobów. Kliknij moduł równoważenia obciążenia.
+1. Wróć do grupy zasobów platformy Azure zawierającej maszyny wirtualne i Znajdź nowy moduł równoważenia obciążenia. Może być konieczne odświeżenie widoku w grupie zasobów. Wybierz moduł równoważenia obciążenia.
 
-1. Kliknij pozycję **Pule zaplecza** i kliknij pozycję **+ Dodaj** , aby dodać pulę zaplecza.
+1. Wybierz pozycję **Pule zaplecza**, a następnie wybierz pozycję **Dodaj**.
 
 1. Skojarz pulę zaplecza z zestawem dostępności zawierającym maszyny wirtualne.
 
-1. W obszarze **Konfiguracja IP sieci docelowej**Sprawdź **maszynę wirtualną** i wybierz maszyny wirtualne, które będą uczestniczyć w węzłach klastra. Pamiętaj, aby uwzględnić wszystkie maszyny wirtualne, które będą hostować FCI. 
+1. W obszarze **Konfiguracja IP sieci docelowej**wybierz pozycję **maszyna wirtualna** i wybierz maszyny wirtualne, które będą uczestniczyć w węzłach klastra. Pamiętaj, aby uwzględnić wszystkie maszyny wirtualne, które będą hostować FCI.
 
-1. Kliknij przycisk **OK** , aby utworzyć pulę zaplecza.
+1. Wybierz **przycisk OK** , aby utworzyć pulę zaplecza.
 
 ### <a name="configure-a-load-balancer-health-probe"></a>Konfigurowanie sondy kondycji modułu równoważenia obciążenia
 
-1. W bloku moduł równoważenia obciążenia kliknij pozycję **sondy kondycji**.
+1. W bloku moduł równoważenia obciążenia wybierz pozycję **sondy kondycji**.
 
-1. Kliknij pozycję **+ Dodaj**.
+1. Wybierz pozycję **Dodaj**.
 
-1. W bloku **Dodawanie sondy kondycji** <a name="probe"> </a>ustaw parametry sondy kondycji:
+1. W bloku **Dodawanie sondy kondycji** <a name="probe"> </a>ustaw parametry sondy kondycji.
 
    - **Name**: Nazwa sondy kondycji.
    - **Protokół**: TCP.
-   - **Port**: Ustaw na port utworzony w zaporze dla sondy kondycji w [tym kroku](#ports). W tym artykule w przykładzie zastosowano port TCP `59999`.
+   - **Port**: Ustaw na port utworzony w zaporze dla sondy kondycji w [tym kroku](#ports). W tym artykule przykład używa `59999`portów TCP.
    - **Interwał**: 5 sekund.
    - **Próg złej kondycji**: 2 kolejne błędy.
 
-1. Kliknij przycisk OK.
+1. Kliknij przycisk **OK**.
 
 ### <a name="set-load-balancing-rules"></a>Ustawianie reguł równoważenia obciążenia
 
-1. W bloku moduł równoważenia obciążenia kliknij pozycję **reguły równoważenia obciążenia**.
+1. W bloku moduł równoważenia obciążenia wybierz pozycję **reguły równoważenia obciążenia**.
 
-1. Kliknij pozycję **+ Dodaj**.
+1. Wybierz pozycję **Dodaj**.
 
-1. Ustaw parametry zasad równoważenia obciążenia:
+1. Ustaw parametry reguły równoważenia obciążenia:
 
    - **Name**: nazwa dla reguł równoważenia obciążenia.
-   - **Adres IP frontonu**: Użyj adresu IP dla zasobu sieci klastra SQL Server FCI.
-   - **Port**: Ustaw dla portu TCP SQL Server FCI. Domyślnym portem wystąpienia jest 1433.
-   - **Port zaplecza**: Ta wartość używa tego samego portu co wartość **portu** w przypadku włączenia **swobodnego adresu IP (bezpośredni zwrot serwera)** .
-   - **Pula zaplecza**: Użyj wcześniej skonfigurowanej nazwy puli zaplecza.
-   - **Sonda kondycji**: Użyj wcześniej skonfigurowanej sondy kondycji.
+   - **Adres IP frontonu**: adres IP dla zasobu sieci klastra SQL Server FCI.
+   - **Port**: port TCP SQL Server FCI. Domyślnym portem wystąpienia jest 1433.
+   - **Port zaplecza**: używa tego samego portu co wartość **portu** w przypadku włączenia **swobodnego adresu IP (bezpośredni zwrot serwera)** .
+   - **Pula zaplecza**: Nazwa puli zaplecza, która została wcześniej skonfigurowana.
+   - **Sonda kondycji**: Sonda kondycji, która została wcześniej skonfigurowana.
    - **Trwałość sesji**: Brak.
    - **Limit czasu bezczynności (w minutach)** : 4.
-   - **Zmienny adres IP (bezpośredni zwrot serwera)** : włączony
+   - **Zmienny adres IP (bezpośredni zwrot serwera)** : włączony.
 
 1. Kliknij przycisk **OK**.
 
-## <a name="step-6-configure-cluster-for-probe"></a>Krok 6. Konfigurowanie klastra do sondowania
+## <a name="step-6-configure-the-cluster-for-the-probe"></a>Krok 6. Konfigurowanie klastra dla sondy
 
 Ustaw parametr portu sondowania klastra w programie PowerShell.
 
-Aby ustawić parametr portu sondowania klastra, zaktualizuj zmienne w następującym skrypcie przy użyciu wartości ze środowiska. Usuń nawiasy kątowe `<>` ze skryptu. 
+Aby ustawić parametr port sondowania klastra, należy zaktualizować zmienne w następującym skrypcie przy użyciu wartości z danego środowiska. Usuń nawiasy kątowe (`<` i `>`) ze skryptu.
 
    ```powershell
    $ClusterNetworkName = "<Cluster Network Name>"
@@ -453,20 +452,20 @@ Aby ustawić parametr portu sondowania klastra, zaktualizuj zmienne w następuj�
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-W powyższym skrypcie Ustaw wartości dla danego środowiska. Na poniższej liście opisano wartości:
+Na poniższej liście opisano wartości, które należy zaktualizować:
 
-   - `<Cluster Network Name>`: Nazwa klastra trybu failover systemu Windows Server dla sieci. W **Menedżer klastra trybu failover** > **sieci**, kliknij prawym przyciskiem myszy sieć i kliknij polecenie **Właściwości**. Poprawna wartość jest pod **nazwą** na karcie **Ogólne** . 
+   - `<Cluster Network Name>`: Nazwa klastra trybu failover systemu Windows Server dla sieci. W **Menedżer klastra trybu failover** > **sieci**, kliknij prawym przyciskiem myszy sieć i wybierz pozycję **Właściwości**. Poprawna wartość jest pod **nazwą** na karcie **Ogólne** .
 
-   - `<SQL Server FCI IP Address Resource Name>`: SQL Server FCI nazwa zasobu adresu IP. W **Menedżer klastra trybu failover** **role** >  w obszarze SQL Server roli FCI w obszarze **Nazwa serwera**kliknij prawym przyciskiem myszy zasób adres IP, a następnie kliknij pozycję **Właściwości**. Poprawna wartość jest pod **nazwą** na karcie **Ogólne** . 
+   - `<SQL Server FCI IP Address Resource Name>`: nazwa zasobu adresu IP FCI SQL Server. W **Menedżer klastra trybu failover** > **role**, w obszarze SQL Server rolę FCI, w obszarze **Nazwa serwera**kliknij prawym przyciskiem myszy zasób adresu IP, a następnie wybierz pozycję **Właściwości**. Poprawna wartość jest pod **nazwą** na karcie **Ogólne** . 
 
    - `<ILBIP>`: adres IP ILB. Ten adres jest skonfigurowany w Azure Portal jako adres frontonu ILB. Jest to również SQL Server FCI adres IP. Można go znaleźć w **Menedżer klastra trybu failover** na tej samej stronie właściwości, na której znajduje się `<SQL Server FCI IP Address Resource Name>`.  
 
-   - `<nnnnn>`: jest port sondy skonfigurowany w sondy kondycji modułu równoważenia obciążenia. Dowolny nieużywany port TCP jest prawidłowy. 
+   - `<nnnnn>`: Port sondy skonfigurowany w sondie kondycji modułu równoważenia obciążenia. Dowolny nieużywany port TCP jest prawidłowy.
 
 >[!IMPORTANT]
 >Maska podsieci parametru klastra musi być adresem IP protokołu TCP: `255.255.255.255`.
 
-Po ustawieniu sondy klastra można zobaczyć wszystkie parametry klastra w programie PowerShell. Uruchom następujący skrypt:
+Po ustawieniu sondy klastra można zobaczyć wszystkie parametry klastra w programie PowerShell. Uruchom ten skrypt:
 
    ```powershell
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
@@ -474,40 +473,40 @@ Po ustawieniu sondy klastra można zobaczyć wszystkie parametry klastra w progr
 
 ## <a name="step-7-test-fci-failover"></a>Krok 7. Testowanie pracy w trybie failover FCI
 
-Przetestuj tryb failover FCI, aby sprawdzić poprawność działania klastra. Wykonaj następujące czynności:
+Przetestuj tryb failover FCI, aby sprawdzić poprawność działania klastra. Wykonaj następujące kroki:
 
-1. Połącz się z jednym z SQL Server węzłów klastra FCI z protokołem RDP.
+1. Połącz się z jednym z SQL Server węzłów klastra FCI przy użyciu protokołu RDP.
 
-1. Otwórz **Menedżer klastra trybu failover**. Kliknij pozycję **role**. Zwróć uwagę na to, który węzeł jest właścicielem SQL Server roli FCI.
+1. Otwórz **Menedżer klastra trybu failover**. Wybierz pozycję **role**. Zwróć uwagę na to, który węzeł jest właścicielem SQL Server roli FCI.
 
 1. Kliknij prawym przyciskiem myszy SQL Server rolę FCI.
 
-1. Kliknij przycisk **Przenieś** , a następnie kliknij pozycję **najlepszy możliwy węzeł**.
+1. Wybierz pozycję **Przenieś**, a następnie wybierz pozycję **najlepszy możliwy węzeł**.
 
-**Menedżer klastra trybu failover** pokazuje rolę i jej zasobów przejdź do trybu offline. Zasoby są następnie przenoszone i dostępne w trybie online w innym węźle.
+**Menedżer klastra trybu failover** pokazuje rolę i jej zasoby przechodzą do trybu offline. Zasoby są następnie przenoszone i dostępne w trybie online w innym węźle.
 
 ### <a name="test-connectivity"></a>Testowanie łączności
 
 Aby przetestować łączność, zaloguj się do innej maszyny wirtualnej w tej samej sieci wirtualnej. Otwórz **SQL Server Management Studio** i nawiąż połączenie z SQL Server nazwą FCI.
 
 >[!NOTE]
->W razie potrzeby można [pobrać SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+>Jeśli zachodzi taka potrzeba, można [pobrać SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Ograniczenia
 
-Usługa Azure Virtual Machines obsługuje usługę Microsoft Distributed Transaction Coordinator (MSDTC) w systemie Windows Server 2019 z magazynem w udostępnionych woluminach klastra (CSV) i w [standardowym module równoważenia obciążenia](../../../load-balancer/load-balancer-standard-overview.md).
+Usługa Azure Virtual Machines obsługuje program Microsoft Distributed Transaction Coordinator (MSDTC) w systemie Windows Server 2019 z magazynem w udostępnionych woluminach klastra (CSV) i w [standardowym module równoważenia obciążenia](../../../load-balancer/load-balancer-standard-overview.md).
 
-W przypadku maszyn wirtualnych platformy Azure usługa MSDTC nie jest obsługiwana w systemie Windows Server 2016 i jego starszych wersjach, ponieważ:
+W przypadku maszyn wirtualnych platformy Azure usługa MSDTC nie jest obsługiwana w systemie Windows Server 2016 lub starszym, ponieważ:
 
-- Nie można skonfigurować klastrowanego zasobu usługi MSDTC do korzystania z magazynu udostępnionego. W przypadku korzystania z systemu Windows Server 2016 w przypadku utworzenia zasobu usługi MSDTC nie będą wyświetlane żadne udostępnione magazyny dostępne do użycia, nawet jeśli magazyn istnieje. Ten problem został rozwiązany w systemie Windows Server 2019.
+- Nie można skonfigurować klastrowanego zasobu usługi MSDTC do korzystania z magazynu udostępnionego. W systemie Windows Server 2016, jeśli utworzysz zasób MSDTC, nie będzie widoczny żaden magazyn udostępniony dostępny do użycia, nawet jeśli magazyn jest dostępny. Ten problem został rozwiązany w systemie Windows Server 2019.
 - Podstawowa usługa równoważenia obciążenia nie obsługuje portów RPC.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-[Konfigurowanie funkcji S2D przy użyciu pulpitu zdalnego (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
+[Konfigurowanie Bezpośrednie miejsca do magazynowania przy użyciu pulpitu zdalnego (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
-[Rozwiązanie funkcji Hyper-zbieżne z funkcją bezpośrednie miejsca do magazynowania](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
+[Rozwiązanie z funkcją Hyper-zbieżne z technologią Bezpośrednie miejsca do magazynowania](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 
-[Bezpośrednie miejsce do magazynowania — omówienie](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
+[Przegląd Bezpośrednie miejsca do magazynowania](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
-[Obsługa funkcji S2D w SQL Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)
+[SQL Server obsługa Bezpośrednie miejsca do magazynowania](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)

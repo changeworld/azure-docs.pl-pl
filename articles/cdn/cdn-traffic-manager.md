@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie trybu failover między wieloma punktami końcowymi usługi CDN Azure przy użyciu usługi Azure Traffic Manager | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o konfigurowaniu usługi Azure Traffic Manager z punktami końcowymi usługi Azure CDN.
+title: Tryb failover dla wielu punktów końcowych Azure CDN z Traffic Manager
+description: Dowiedz się więcej na temat sposobu konfigurowania Traffic Manager platformy Azure za pomocą Azure CDN punktów końcowych.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,88 +15,88 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 276fe9352d0c4ca7ec525b88d65689b56c0ba027
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593347"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083005"
 ---
-# <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Konfigurowanie trybu failover między wieloma punktami końcowymi usługi CDN Azure przy użyciu usługi Azure Traffic Manager
+# <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Konfigurowanie trybu failover dla wielu punktów końcowych Azure CDN przy użyciu usługi Azure Traffic Manager
 
-Podczas konfigurowania usługi Azure Content Delivery Network (CDN), można wybrać optymalne dostawcy i warstwę cenową dla Twoich potrzeb. Usługa Azure CDN, za pomocą jego globalnie rozproszonej infrastruktury domyślnie tworzy lokalne i geograficznej nadmiarowości i globalne równoważenia do poprawy wydajności i dostępności usługi. Jeśli lokalizacja nie jest dostępna do obsługi zawartości, żądania są automatycznie kierowane do innej lokalizacji i optymalne punktu obecności (oparte na takie czynniki jak żądanie lokalizacji i obciążenia serwera) jest używany do obsługi każdego żądania klienta. 
+Podczas konfigurowania usługi Azure Content Delivery Network (CDN) można wybrać optymalny dostawca i warstwę cenową dla potrzeb. Azure CDN, z globalnie dystrybuowaną infrastrukturą, domyślnie tworzy nadmiarowość lokalną i geograficzną oraz globalne Równoważenie obciążenia, aby zwiększyć dostępność i wydajność usług. Jeśli lokalizacja nie jest dostępna do udostępniania zawartości, żądania są automatycznie kierowane do innej lokalizacji, a optymalny punkt POP (na podstawie takich czynników, jak lokalizacja żądania i obciążenie serwera) jest używany do obsłużenia każdego żądania klienta. 
  
-Jeśli masz wiele profilów CDN, dodatkowo zwiększyć dostępność i wydajność za pomocą usługi Azure Traffic Manager. Za pomocą usługi Azure Traffic Manager i usługi Azure CDN można załadować saldo między wieloma punktami końcowymi usługi CDN dla trybu failover, geograficznie obciążenia równoważenia i innych scenariuszy. W przypadku typowego pracy awaryjnej wszystkie żądania klientów są najpierw kierowane do podstawowego profil CDN; profil, który nie jest dostępny, żądania są następnie przekazywane do dodatkowej profilu usługi CDN do momentu powrotu do trybu online głównej profilu CDN. W ten sposób za pomocą usługi Azure Traffic Manager gwarantuje, że aplikacja sieci web jest zawsze dostępna. 
+Jeśli masz wiele profilów usługi CDN, możesz jeszcze bardziej zwiększyć dostępność i wydajność dzięki usłudze Azure Traffic Manager. Za pomocą usługi Azure Traffic Manager z Azure CDN można zrównoważyć obciążenie między wieloma punktami końcowymi sieci CDN w celu przełączenia w tryb failover, równoważenia obciążenia geograficznego i innych scenariuszy. W typowym scenariuszu pracy awaryjnej wszystkie żądania klientów są najpierw kierowane do podstawowego profilu CDN. Jeśli profil nie jest dostępny, żądania są następnie przenoszone do profilu pomocniczej sieci CDN do momentu powrotu do trybu online podstawowego profilu CDN. Korzystanie z usługi Azure Traffic Manager w ten sposób gwarantuje, że aplikacja sieci Web będzie zawsze dostępna. 
 
-Ten artykuł zawiera wskazówki i przykład sposobu konfigurowania trybu failover z **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** profilów.
+Ten artykuł zawiera wskazówki i przykład sposobu konfigurowania trybu failover przy użyciu **standardu Azure CDN Verizon** i **Azure CDN Standard from Akamai** profile.
 
-## <a name="set-up-azure-cdn"></a>Konfigurowanie usługi Azure CDN 
-Utwórz co najmniej dwóch profilów Azure CDN, jak i punktów końcowych z różnych dostawców.
+## <a name="set-up-azure-cdn"></a>Skonfiguruj Azure CDN 
+Utwórz co najmniej dwa profile Azure CDN i punkty końcowe z różnymi dostawcami.
 
-1. Utwórz **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** profilu, wykonując kroki opisane w [Utwórz nowy profil CDN](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
+1. Utwórz **standard Azure CDN od Verizon** i **Azure CDN Standard z profilu Akamai** , wykonując kroki opisane w temacie [Tworzenie nowego profilu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
  
-   ![Sieci CDN wiele profilów](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
+   ![Wiele profilów usługi CDN](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
 
-2. We wszystkich nowych profilów, Utwórz co najmniej jeden punkt końcowy, wykonując kroki opisane w [utworzyć nowy punkt końcowy CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint).
+2. W każdym z nowych profilów Utwórz co najmniej jeden punkt końcowy, wykonując kroki opisane w temacie [Tworzenie nowego punktu końcowego usługi CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint).
 
-## <a name="set-up-azure-traffic-manager"></a>Ustawianie usługi Azure Traffic Manager
-Tworzenie profilu usługi Azure Traffic Manager i skonfigurować Równoważenie obciążenia w punktach końcowych sieci CDN. 
+## <a name="set-up-azure-traffic-manager"></a>Konfigurowanie usługi Azure Traffic Manager
+Utwórz profil Traffic Manager platformy Azure i skonfiguruj Równoważenie obciążenia dla punktów końcowych usługi CDN. 
 
-1. Tworzenie profilu usługi Azure Traffic Manager, wykonując kroki opisane w [Tworzenie profilu usługi Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile). 
+1. Utwórz profil Traffic Manager platformy Azure, wykonując kroki opisane w temacie [Tworzenie profilu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile). 
 
-    Aby uzyskać **Metoda routingu**, wybierz opcję **priorytet**.
+    W obszarze **Metoda routingu**wybierz pozycję **priorytet**.
 
-2. Dodawanie punktów końcowych sieci CDN w profilu usługi Traffic Manager, wykonując kroki opisane w [punkty końcowe usługi Traffic Manager Dodaj](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)
+2. Dodaj punkty końcowe usługi CDN w profilu Traffic Manager, wykonując czynności opisane w sekcji [dodawanie Traffic Manager punktów końcowych](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)
 
-    Aby uzyskać **typu**, wybierz opcję **zewnętrzne punkty końcowe**. Aby uzyskać **priorytet**, wprowadź liczbę.
+    W obszarze **Typ**wybierz pozycję **zewnętrzne punkty końcowe**. W obszarze **priorytet**wprowadź liczbę.
 
-    Na przykład można utworzyć *cdndemo101akamai.azureedge.net* z priorytetem *1* i *cdndemo101verizon.azureedge.net* z priorytetem *2*.
+    Na przykład Utwórz *cdndemo101akamai.azureedge.NET* z priorytetem *1* i *cdndemo101verizon.azureedge.NET* o priorytecie *2*.
 
-   ![Punktów końcowych usługi CDN traffic manager](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
+   ![Punkty końcowe usługi Traffic Manager](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
 
 
-## <a name="set-up-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Konfigurowanie domeny niestandardowej na sieć CDN systemu Azure i usługi Azure Traffic Manager
-Po skonfigurowaniu profilów usługi Traffic Manager i CDN, wykonaj następujące kroki, aby dodać mapowanie DNS i zarejestruj domeny niestandardowej do punktów końcowych usługi CDN. W tym przykładzie nazwa domeny niestandardowej jest *cdndemo101.dustydogpetcare.online*.
+## <a name="set-up-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Skonfiguruj domenę niestandardową na Azure CDN i na platformie Azure Traffic Manager
+Po skonfigurowaniu profilów sieci CDN i Traffic Manager wykonaj następujące kroki, aby dodać mapowanie DNS i zarejestrować domenę niestandardową do punktów końcowych usługi CDN. W tym przykładzie niestandardowa nazwa domeny to *cdndemo101. dustydogpetcare. online*.
 
-1. Przejdź do witryny internetowej dostawcy domeny w domenie niestandardowej, np. GoDaddy i Utwórz dwa wpisy CNAME w systemie DNS. 
+1. Przejdź do witryny sieci Web dostawcy domeny niestandardowej, takiej jak GoDaddy, i Utwórz dwa wpisy CNAME DNS. 
 
-    a. Pierwszy wpis CNAME mapowanie domeny niestandardowej, z poziomu poddomeny cdnverify do punktu końcowego usługi CDN. Ten wpis jest to krok wymagany do zarejestrowania domeny niestandardowej do punktu końcowego usługi CDN, dodanego do usługi Traffic Manager w kroku 2.
+    a. W przypadku pierwszego wpisu CNAME Mapuj domenę niestandardową z poddomeną cdnverify na punkt końcowy usługi CDN. Ten wpis jest wymaganym krokiem w celu zarejestrowania domeny niestandardowej w punkcie końcowym usługi CDN, który został dodany do Traffic Manager w kroku 2.
 
-      Przykład: 
+      Na przykład: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
-    b. Drugiego wpisu CNAME mapować domenę niestandardową, bez domeny podrzędnej cdnverify, do punktu końcowego usługi CDN. Ten wpis mapuje domenę niestandardową do usługi Traffic Manager. 
+    b. Dla drugiego wpisu CNAME Mapuj domenę niestandardową bez poddomeny cdnverify do punktu końcowego usługi CDN. Ten wpis mapuje domenę niestandardową na Traffic Manager. 
 
       Na przykład: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
     > [!NOTE]
-    > Jeśli domeny jest obecnie aktywna i nie można przerwać, ostatnia wykonaj ten krok. Sprawdź, czy punkty końcowe sieci CDN i domen Menedżera ruchu na żywo przed zaktualizowaniem niestandardowej domeny DNS do usługi Traffic Manager.
+    > Jeśli Twoja domena jest obecnie aktywna i nie można jej przerwać, zrób to w ostatnim kroku. Przed zaktualizowaniem DNS domeny niestandardowej na Traffic Manager należy sprawdzić, czy są używane punkty końcowe sieci CDN i domeny usługi Traffic Manager.
     >
 
 
-2.  Z profilem w usłudze Azure CDN wybierz pierwszy punkt końcowy usługi CDN (firmy Akamai). Wybierz **Dodaj domenę niestandardową** i wejściowego *cdndemo101.dustydogpetcare.online*. Sprawdź, czy zielony znacznik wyboru, aby zweryfikować domenę niestandardową. 
+2.  Z poziomu profilu Azure CDN wybierz pierwszy punkt końcowy usługi CDN (Akamai). Wybierz pozycję **Dodaj domenę niestandardową** i wprowadź *cdndemo101. dustydogpetcare. online*. Sprawdź, czy znacznik wyboru weryfikacji domeny niestandardowej jest zielony. 
 
-    Usługa Azure CDN używa *cdnverify* poddomeny, aby sprawdzić poprawność mapowania DNS, aby ukończyć ten proces rejestracji. Aby uzyskać więcej informacji, zobacz [tworzenie rekordu CNAME DNS](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ten krok powoduje włączenie usługi Azure CDN, dzięki czemu mogą odpowiadać na żądania jego, rozpoznawał domeny niestandardowej.
+    Azure CDN używa poddomeny *cdnverify* do sprawdzania poprawności mapowania DNS w celu ukończenia tego procesu rejestracji. Aby uzyskać więcej informacji, zobacz [Tworzenie rekordu DNS CNAME](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ten krok umożliwia Azure CDN rozpoznawania domeny niestandardowej, aby mogła ona odpowiadać na żądania.
     
     > [!NOTE]
-    > Aby włączyć protokół SSL na **Azure CDN from Akamai** profile, należy bezpośrednio rekordu cname domeny niestandardowej do punktu końcowego usługi. cdnverify do włączenia protokołu SSL nie jest jeszcze obsługiwana. 
+    > Aby włączyć protokół SSL na **Azure CDN z poziomu profilów Akamai** , należy bezpośrednio odrekordować domenę niestandardową do punktu końcowego. cdnverify do włączenia protokołu SSL nie jest jeszcze obsługiwane. 
     >
 
-3.  Wróć do witryny sieci web dostawcy domeny niestandardowej domeny i zaktualizuj mapowanie DNS pierwszego, utworzony w tak, aby domena niestandardowa została zamapowana do drugiego punktu końcowego usługi CDN.
+3.  Wróć do witryny sieci Web dostawcy domeny niestandardowej i zaktualizuj pierwsze mapowanie DNS utworzone w programie, tak aby domena niestandardowa została zamapowana na drugi punkt końcowy usługi CDN.
                              
     Na przykład: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Z profilem w usłudze Azure CDN Wybierz drugi punkt końcowy usługi CDN (Verizon), a następnie powtórz krok 2. Wybierz **Dodaj domenę niestandardową**i wejściowego *cdndemo101.dustydogpetcare.online*.
+4. W profilu Azure CDN wybierz drugi punkt końcowy usługi CDN (Verizon) i powtórz krok 2. Wybierz pozycję **Dodaj domenę niestandardową**i wprowadź *cdndemo101. dustydogpetcare. online*.
  
-Po wykonaniu tych kroków, usługi CDN wielu, możliwości trybu failover jest skonfigurowany przy użyciu usługi Azure Traffic Manager. Będziesz mieć możliwość dostępu testu adresy URL z domeny niestandardowej. Aby przetestować funkcję, wyłącz podstawowego punktu końcowego usługi CDN i sprawdź, czy żądanie jest poprawnie przeniesieni do pomocniczego punktu końcowego usługi CDN. 
+Po wykonaniu tych kroków usługa wiele sieci CDN z funkcjami trybu failover jest skonfigurowana za pomocą usługi Azure Traffic Manager. Będzie można uzyskać dostęp do testów adresów URL z domeny niestandardowej. Aby przetestować funkcje, wyłącz podstawowy punkt końcowy usługi CDN i sprawdź, czy żądanie jest prawidłowo przenoszone do punktu końcowego pomocniczej usługi CDN. 
 
 ## <a name="next-steps"></a>Następne kroki
-Możesz także skonfigurować inne metody routingu, takich jak geograficzne, aby równoważyć obciążenie między różnych punktów końcowych usługi CDN. Aby uzyskać więcej informacji, zobacz [Konfigurowanie metody routingu geograficznego ruchu przy użyciu usługi Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
+Można także skonfigurować inne metody routingu, takie jak geograficzne, aby zrównoważyć obciążenie między różnymi punktami końcowymi usługi CDN. Aby uzyskać więcej informacji, zobacz [Konfigurowanie metody routingu ruchu geograficznego przy użyciu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
 
 

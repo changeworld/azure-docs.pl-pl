@@ -11,14 +11,17 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743238"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081519"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Wdrażanie samoobsługowego resetowania haseł w usłudze Azure AD
+
+> [!NOTE]
+> W tym przewodniku wyjaśniono sposób samoobsługowego resetowania hasła i sposobu jego wdrożenia. Jeśli szukasz narzędzia do samoobsługowego resetowania hasła, aby wrócić do swojego konta, przejdź do obszaru [https://aka.ms/sspr](https://aka.ms/sspr). 
 
 Samoobsługowe resetowanie hasła (SSPR) to funkcja Azure Active Directory, która umożliwia pracownikom Resetowanie swoich haseł bez konieczności kontaktowania się z pracownikami działu IT. Przed skorzystaniem z usługi pracownicy muszą zarejestrować się w usłudze lub zostać zarejestrowany do samoobsługowego resetowania hasła. Podczas rejestracji pracownik wybiera jedną lub więcej metod uwierzytelniania włączonych przez ich organizację.
 
@@ -53,19 +56,19 @@ Połączone środowisko rejestracji nie wymaga, aby organizacje mogły korzysta�
 
 Następujące ustawienia są wymagane do włączenia SSPR oraz zalecanych wartości.
 
-| Obszar | Ustawienie | Value |
+| Obszar | Ustawienie | Wartość |
 | --- | --- | --- |
 | **Właściwości SSPR** | Włączono Samoobsługowe resetowanie hasła | **Wybrana** Grupa dla pilotażu/ **wszystko** dla środowiska produkcyjnego |
 | **Metody uwierzytelniania** | Metody uwierzytelniania wymagane do zarejestrowania | Zawsze 1 więcej niż wymagane do zresetowania |
 |   | Metody uwierzytelniania wymagane do zresetowania | Jeden lub dwa |
-| **Rejestracja** | Czy wymagać od użytkowników rejestrowania się podczas logowania? | Tak |
+| **Rejestracja** | Czy wymagać od użytkowników rejestrowania się podczas logowania? | Yes |
 |   | Liczba dni, zanim użytkownicy zostaną poproszeni o ponowne potwierdzenie swoich informacji uwierzytelniania | 90 – 180 dni |
-| **Powiadomienia** | Czy powiadamiać użytkowników o resetowaniu hasła? | Tak |
-|   | Czy powiadamiać wszystkich administratorów, gdy inni administratorzy zresetują swoje hasło? | Tak |
-| **Customization** | Dostosuj link do pomocy technicznej | Tak |
-|   | Niestandardowy adres e-mail lub adres URL pomocy technicznej | Witryna lub adres e-mail pomocy technicznej |
-| **Integracja lokalna** | Zapisuj hasła do lokalnej usługi AD | Tak |
-|   | Zezwalaj użytkownikom na Odblokowywanie konta bez resetowania hasła | Tak |
+| **Powiadomienia** | Czy powiadamiać użytkowników o resetowaniu hasła? | Yes |
+|   | Czy powiadamiać wszystkich administratorów, gdy inni administratorzy zresetują swoje hasło? | Yes |
+| **Customization** | Dostosuj link do pomocy technicznej | Yes |
+|   | Niestandardowa wiadomość e-mail lub adres URL pomocy technicznej | Witryna lub adres e-mail pomocy technicznej |
+| **Integracja lokalna** | Zapisuj hasła do lokalnej usługi AD | Yes |
+|   | Zezwalaj użytkownikom na Odblokowywanie konta bez resetowania hasła | Yes |
 
 ### <a name="sspr-properties-recommendations"></a>Zalecenia dotyczące właściwości SSPR
 
@@ -158,7 +161,7 @@ W tabeli, podobnej do przedstawionej poniżej, udokumentowanie harmonogramu twor
 | Tworzenie kopii zapasowej |   |   |   |
 | Kopia zapasowa odzyskiwania po awarii |   |   |   |
 
-## <a name="implementation"></a>Implementacja
+## <a name="implementation"></a>Wdrażanie
 
 Implementacja występuje w trzech etapach:
 
@@ -206,7 +209,7 @@ Urządzenia z systemem Windows 10 w wersji 1803 lub nowszej, które są przyłą
 
 ### <a name="configure-password-writeback"></a>Konfigurowanie zapisywania zwrotnego haseł
 
-Kroki konfigurowania funkcji zapisywania zwrotnego haseł dla organizacji można znaleźć w artykule [How to: Skonfiguruj funkcję zapisywania](howto-sspr-writeback.md)zwrotnego haseł.
+Procedurę konfigurowania funkcji zapisywania zwrotnego haseł dla organizacji można znaleźć w artykule [How to: Configure Password zapisywania zwrotnego](howto-sspr-writeback.md).
 
 ## <a name="manage-sspr"></a>Zarządzanie SSPR
 
@@ -215,7 +218,7 @@ Role wymagane do zarządzania funkcjami związanymi z funkcją samoobsługowego 
 | Rola biznesowa/osoba | Rola usługi Azure AD (w razie potrzeby) |
 | :---: | :---: |
 | Pomoc techniczna na poziomie 1 | Administrator haseł |
-| Pomoc techniczna poziomu 2 | Administrator użytkownika |
+| Pomoc techniczna poziomu 2 | Administrator użytkowników |
 | SSPR administrator | Administrator globalny |
 
 ### <a name="support-scenarios"></a>Scenariusze pomocy technicznej

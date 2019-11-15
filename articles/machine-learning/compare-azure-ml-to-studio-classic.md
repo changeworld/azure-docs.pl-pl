@@ -8,23 +8,23 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 00a2268442f94822064f86d95b14160d67e1516c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716678"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084759"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Różnice Azure Machine Learning od ML Studio (klasyczne)
 
 W tym artykule porównano funkcje, możliwości i interfejs Azure Machine Learning do ML Studio (klasyczny). 
 
 ## <a name="about-ml-studio-classic"></a>Informacje o ML Studio (klasyczne)
-[Ml Studio (klasyczny)](/studio/what-is-ml-studio.md) to współpracująca, przeciągnij i upuść obszar roboczy wizualizacji, w którym można kompilować, testować i wdrażać rozwiązania do uczenia maszynowego bez konieczności pisania kodu. Używa wstępnie skompilowanych i wstępnie skonfigurowanych algorytmów uczenia maszynowego oraz modułów obsługi danych, a także własnościowej platformy obliczeniowej.
+[Ml Studio (klasyczny)](studio/what-is-ml-studio.md) to współpracująca, przeciągnij i upuść obszar roboczy wizualizacji, w którym można kompilować, testować i wdrażać rozwiązania do uczenia maszynowego bez konieczności pisania kodu. Używa wstępnie skompilowanych i wstępnie skonfigurowanych algorytmów uczenia maszynowego oraz modułów obsługi danych, a także własnościowej platformy obliczeniowej.
 
 ## <a name="about-azure-machine-learning"></a>Informacje o usłudze Azure Machine Learning
 
-Tymczasem [Azure Machine Learning](/service/overview-what-is-azure-ml.md) udostępnia interfejs sieci Web o nazwie projektant (wersja zapoznawcza) **oraz** kilka zestawów SDK i interfejsu wiersza polecenia, aby szybko przygotowywać dane, uczeniować i wdrażać modele uczenia maszynowego. Dzięki Azure Machine Learning skalowaniu możesz korzystać z wielu platform, zaawansowanych funkcji, takich jak automatyczne Uczenie maszynowe i obsługa potoku.
+Tymczasem [Azure Machine Learning](service/overview-what-is-azure-ml.md) udostępnia interfejs sieci Web o nazwie projektant (wersja zapoznawcza) **oraz** kilka zestawów SDK i interfejsu wiersza polecenia, aby szybko przygotowywać dane, uczeniować i wdrażać modele uczenia maszynowego. Dzięki Azure Machine Learning skalowaniu możesz korzystać z wielu platform, zaawansowanych funkcji, takich jak automatyczne Uczenie maszynowe i obsługa potoku.
 
 Program Azure Machine Learning Designer oferuje podobne środowisko przeciągania i upuszczania do programu Studio (klasyczne). Jednak, w przeciwieństwie do własnościowej platformy obliczeniowej programu Studio (klasycznej), projektant używa własnych zasobów obliczeniowych, jest skalowalny i jest w pełni zintegrowany z Azure Machine Learning.  
 
@@ -35,11 +35,11 @@ Program Azure Machine Learning Designer oferuje podobne środowisko przeciągani
 
 Oto krótkie porównanie.
 
-||  Projektant Azure Machine Learning|Studio (wersja klasyczna) |
+||  Projektant Azure Machine Learning|Studio (klasyczna) |
 |---| --- | --- |
 ||Projektant jest w wersji zapoznawczej, Azure Machine Learning jest GA|Ogólnie dostępna (GA) | 
 |Interfejs przeciągnij i upuść| Tak | Tak|
-|Doświadczenia| Skalowanie za pomocą elementu docelowego obliczeń|Skala (limit danych szkoleniowych 10 GB) | 
+|Eksperyment| Skalowanie za pomocą elementu docelowego obliczeń|Skala (limit danych szkoleniowych 10 GB) | 
 |Moduły dla interfejsu| [Wiele popularnych modułów](algorithm-module-reference/module-reference.md) | Ilość |
 |Szkoleniowe cele obliczeniowe| AML COMPUTE (procesor GPU/procesor CPU)|Własnościowy obiekt docelowy obliczeń, tylko procesor CPU|
 |Inferencing cele obliczeń| Usługa Azure Kubernetes na potrzeby wnioskowania w czasie rzeczywistym <br/>AML obliczeniowe na potrzeby wnioskowania partii|Własny format usługi sieci Web, niedostosowywalny | 

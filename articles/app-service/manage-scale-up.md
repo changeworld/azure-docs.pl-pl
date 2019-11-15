@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232366"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089456"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Skalowanie aplikacji w górę w Azure App Service
 
 W tym artykule przedstawiono sposób skalowania aplikacji w Azure App Service. Istnieją dwa przepływy pracy umożliwiające skalowanie, skalowanie w górę i w poziomie, a w tym artykule opisano przepływ pracy skalowania w górę.
 
-* [Skaluj w górę](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Uzyskaj więcej informacji na temat procesora, pamięci, miejsca na dysku i dodatkowych funkcji, takich jak dedykowane maszyny wirtualne, domeny niestandardowe i certyfikaty, gniazda tymczasowe, Skalowanie automatyczne i nie tylko. Możesz skalować w górę, zmieniając warstwę cenową planu App Service, do którego należy aplikacja.
+* [Skalowanie w górę](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Uzyskaj więcej informacji na temat procesora CPU, pamięci, miejsca na dysku i dodatkowych funkcji, takich jak dedykowane maszyny wirtualne, domeny niestandardowe i certyfikaty, gniazda tymczasowe, Skalowanie automatyczne i nie tylko. Możesz skalować w górę, zmieniając warstwę cenową planu App Service, do którego należy aplikacja.
 * [Skalowanie w poziomie](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Zwiększ liczbę wystąpień maszyn wirtualnych, na których działa aplikacja.
-  Możesz skalować w poziomie do maksymalnie 20 wystąpień, w zależności od warstwy cenowej. [Środowiska App Service](environment/intro.md) w warstwie izolowanej dodatkowo zwiększają liczbę wystąpień skalowania do 100. Aby uzyskać więcej informacji na temat skalowania w poziomie, zobacz [Ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md). W tym miejscu możesz dowiedzieć się, jak używać funkcji automatycznego skalowania, która polega na automatycznym skalowaniu liczby wystąpień na podstawie wstępnie zdefiniowanych reguł i harmonogramów.
+  Możesz skalować w poziomie do maksymalnie 30 wystąpień, w zależności od warstwy cenowej. [Środowiska App Service](environment/intro.md) w warstwie **izolowanej** dodatkowo zwiększają liczbę wystąpień skalowania do 100. Aby uzyskać więcej informacji na temat skalowania w poziomie, zobacz [Ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md). W tym miejscu możesz dowiedzieć się, jak używać funkcji automatycznego skalowania, która polega na automatycznym skalowaniu liczby wystąpień na podstawie wstępnie zdefiniowanych reguł i harmonogramów.
 
 Zastosowanie ustawień skalowania trwa tylko kilka sekund i ma wpływ na wszystkie aplikacje w [planie App Service](../app-service/overview-hosting-plans.md).
 Nie wymagają one zmiany kodu ani ponownego wdrożenia aplikacji.
@@ -70,7 +70,7 @@ Jeśli aplikacja zależy od innych usług, takich jak Azure SQL Database lub us�
    
     ![Przejdź do strony grupy zasobów, aby skalować w górę aplikację platformy Azure](./media/web-sites-scale/ResourceGroup.png)
 
-    Aby skalować w górę powiązane zasoby, zapoznaj się z dokumentacją dla określonego typu zasobu. Na przykład aby skalować w górę pojedyncze SQL Database, zobacz [skalowanie zasobów pojedynczej bazy danych w Azure SQL Database](../sql-database/sql-database-single-database-scale.md). Aby skalować zasób Azure Database for MySQL, zobacz Skalowanie [zasobów MySQL](../mysql/concepts-pricing-tiers.md#scale-resources).
+    Aby skalować w górę powiązane zasoby, zapoznaj się z dokumentacją dla określonego typu zasobu. Na przykład aby skalować w górę pojedyncze SQL Database, zobacz [skalowanie zasobów pojedynczej bazy danych w Azure SQL Database](../sql-database/sql-database-single-database-scale.md). Aby skalować zasób Azure Database for MySQL, zobacz [skalowanie zasobów MySQL](../mysql/concepts-pricing-tiers.md#scale-resources).
 
 <a name="OtherFeatures"></a>
 <a name="devfeatures"></a>

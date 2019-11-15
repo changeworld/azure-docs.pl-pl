@@ -1,103 +1,103 @@
 ---
-title: Zastępowanie zachowania HTTP przy użyciu Azure CDN from Verizon — Premium aparat reguł | Dokumentacja firmy Microsoft
-description: Aparat reguł pozwala dostosować sposób obsługi żądań HTTP przez Azure CDN from Verizon — wersja Premium, takich jak blokowanie dostarczania określonych typów zawartości, definiowania zasad buforowania i modyfikowanie nagłówków HTTP.
+title: Przesłoń zachowanie protokołu HTTP przy użyciu aparatu reguł Azure CDN Verizon Premium
+description: Aparat reguł umożliwia dostosowywanie sposobu obsługi żądań HTTP przez Azure CDN z Verizon Premium, takich jak blokowanie dostarczania określonych typów zawartości, definiowanie zasad buforowania i modyfikowanie nagłówków HTTP.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593175"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082956"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Zastępowanie zachowania HTTP przy użyciu Azure CDN from Verizon — Premium aparatu reguł
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Przesłoń zachowanie protokołu HTTP przy użyciu Azure CDN z aparatu reguł Verizon Premium
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Aparat reguł sieć CDN systemu Azure pozwala dostosować sposób obsługi żądań HTTP. Na przykład blokowanie dostarczania określonych typów zawartości, definiowanie zasad buforowania lub modyfikowanie nagłówków HTTP. W tym samouczku pokazano, jak utworzyć regułę, która zmienia zachowanie buforowania zasobów sieci CDN. Aby uzyskać więcej informacji na temat składni aparatu reguł zobacz [dokumentacja aparatu reguł wysokiej dostępności treści Azure](cdn-verizon-premium-rules-engine-reference.md).
+Aparat reguł Azure CDN umożliwia dostosowywanie sposobu obsługi żądań HTTP. Na przykład blokowanie dostarczania określonych typów zawartości, definiowanie zasad buforowania lub modyfikowanie nagłówka HTTP. W tym samouczku pokazano, jak utworzyć regułę, która zmienia zachowanie buforowania zasobów sieci CDN. Aby uzyskać więcej informacji na temat składni aparatu reguł, zobacz temat [Informacje o aparacie Azure CDN reguł](cdn-verizon-premium-rules-engine-reference.md).
 
 ## <a name="access"></a>Access
 
-Aby uzyskać dostęp do aparatu reguł, musisz najpierw wybrać **Zarządzaj** od górnej krawędzi **profil CDN** strony, aby uzyskać dostęp do strony zarządzania usługi Azure CDN. W zależności od tego, czy punkt końcowy usługi jest zoptymalizowanej pod kątem przyspieszania witryn dynamicznych (DSA) można następnie dostęp do aparatu reguł za pomocą zbioru reguł, które są odpowiednie dla danego typu punktu końcowego:
+Aby uzyskać dostęp do aparatu reguł, musisz najpierw wybrać pozycję **Zarządzaj** w górnej części strony **profilu usługi CDN** , aby uzyskać dostęp do strony zarządzania Azure CDN. W zależności od tego, czy punkt końcowy jest zoptymalizowany pod kątem przyspieszania witryn dynamicznych (DSA), uzyskujesz dostęp do aparatu reguł przy użyciu zestawu reguł odpowiednich dla danego typu punktu końcowego:
 
-- Punkty końcowe zoptymalizowane pod kątem ogólne dostarczanie w Internecie lub innych optymalizacji-DSA:
+- Punkty końcowe zoptymalizowane pod kątem ogólnej dostarczania sieci Web lub optymalizacji innej niż DSA:
     
-    Wybierz **HTTP dużych** kartę, a następnie wybierz **aparat reguł**.
+    Wybierz **dużą kartę http** , a następnie wybierz pozycję **aparat reguł**.
 
     ![Aparat reguł dla protokołu HTTP](./media/cdn-rules-engine/cdn-http-rules-engine.png)
 
 - Punkty końcowe zoptymalizowane pod kątem DSA:
     
-    Wybierz **sieci ADN** kartę, a następnie wybierz **aparat reguł**.
+    Wybierz kartę **wdrożenie** , a następnie wybierz opcję **aparat reguł**.
     
-    Sieci ADN to termin używany przez firmy Verizon, aby określić zawartość DSA. Wszystkie reguły tworzone w tym miejscu są ignorowane przez wszystkie punkty końcowe w Twoim profilu, które nie są zoptymalizowane pod kątem DSA.
+    WDROŻENIE to termin używany przez Verizon do określania zawartości DSA. Wszystkie utworzone tutaj reguły są ignorowane przez wszystkie punkty końcowe w profilu, które nie są zoptymalizowane pod kątem DSA.
 
-    ![Aparat reguł technologię DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![Aparat reguł dla agenta DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
 ## <a name="tutorial"></a>Samouczek
 
-1. Z **profil CDN** wybierz opcję **Zarządzaj**.
+1. Na stronie **profil usługi CDN** wybierz pozycję **Zarządzaj**.
    
-    ![Przycisk Zarządzaj w profilu CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Przycisk zarządzania profilem CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
    
-    Zostanie otwarty w portalu zarządzania usługi CDN.
+    Zostanie otwarty portal zarządzania sieci CDN.
 
-2. Wybierz **HTTP dużych** kartę, a następnie wybierz **aparat reguł**.
+2. Wybierz **dużą kartę http** , a następnie wybierz pozycję **aparat reguł**.
    
-    Opcje dla nowej reguły są wyświetlane.
+    Zostaną wyświetlone opcje nowej reguły.
    
-    ![Nowe opcje reguł sieci CDN](./media/cdn-rules-engine/cdn-new-rule.png)
+    ![Opcje nowej reguły sieci CDN](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Kolejność, w którym są wyświetlane wiele reguł ma wpływ na sposób obsługi. Kolejne reguły mogą zastąpić akcji określonych przez poprzednią regułę.
+   > Kolejność, w której są wymienione wiele reguł, ma wpływ na sposób ich obsługi. Kolejna reguła może zastąpić akcje określone przez poprzednią regułę.
    >
 
-3. Wprowadź nazwę w **nazwę / opis** pola tekstowego.
+3. Wprowadź nazwę w polu tekstowym **Nazwa/opis** .
 
-4. Określ typ żądania, których dotyczy reguła. Użyj domyślnego warunku dopasowania, **zawsze**.
+4. Określ typ żądań, których dotyczy reguła. Użyj domyślnego warunku dopasowania, **zawsze**.
    
-   ![Warunek dopasowania reguły usługi CDN](./media/cdn-rules-engine/cdn-request-type.png)
+   ![Warunek dopasowania reguły sieci CDN](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!NOTE]
-   > Wiele warunków dopasowania są dostępne na liście rozwijanej. Dla informacji dotyczących warunku dopasowania zaznaczony wybierz niebieski informacyjną ikony po lewej stronie.
+   > Na liście rozwijanej są dostępne wiele warunków dopasowywania. Aby uzyskać informacje dotyczące aktualnie wybranego warunku dopasowywania, wybierz niebieską ikonę informacyjną po lewej stronie.
    >
-   >  Aby uzyskać szczegółową listę wyrażeń warunkowych, zobacz [wyrażenia warunkowe aparatu reguł](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   >  Aby uzyskać szczegółową listę wyrażeń warunkowych, zobacz temat [wyrażenia warunkowe aparatu reguł](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
    >  
-   > Aby uzyskać szczegółową listę warunków dopasowania, zobacz [warunki dopasowań aparatu reguł](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   > Aby uzyskać szczegółową listę warunków zgodności, zobacz [warunki dopasowania aparatu reguł](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
    >
    >
 
-5. Aby dodać nową funkcję, wybierz **+** znajdujący się obok **funkcji**.  Na liście rozwijanej po lewej stronie wybierz **życie wewnętrznego Max-Age**.  W wyświetlonym polu tekstowym wprowadź **300**. Nie zmieniaj pozostałe wartości domyślne.
+5. Aby dodać nową funkcję, wybierz przycisk **+** obok pozycji **funkcje**.  Na liście rozwijanej po lewej stronie wybierz pozycję **Wymuszaj wewnętrzny maksymalny wiek**.  W wyświetlonym polu tekstowym wprowadź **300**. Nie należy zmieniać pozostałych wartości domyślnych.
    
-   ![Funkcja reguły usługi CDN](./media/cdn-rules-engine/cdn-new-feature.png)
+   ![Funkcja reguły sieci CDN](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > Wiele funkcji są dostępne na liście rozwijanej. Aby uzyskać informacje o aktualnie wybranej funkcji wybierz niebieski informacyjną ikony po lewej stronie.
+   > Na liście rozwijanej są dostępne wiele funkcji. Aby uzyskać informacje na temat aktualnie wybranej funkcji, wybierz niebieską ikonę informacyjną po lewej stronie.
    >
-   > Dla **życie wewnętrznego Max-Age**, zasobu `Cache-Control` i `Expires` nagłówki są zastępowane do kontrolowania, kiedy węzła krawędzi sieci CDN odświeża zawartości ze źródła. W tym przykładzie węzła krawędzi sieci CDN buforuje zasobów przez 300 sekund lub 5 minut, zanim odświeżania zasobów na podstawie pochodzenia.
+   > W przypadku **wymuszonego maksymalnego wieku**, `Cache-Control` i `Expires` elementów zawartości są przesłonięte w celu kontrolowania, kiedy węzeł brzegowy usługi CDN odświeża element zawartości ze źródła. W tym przykładzie węzeł brzegowy usługi CDN buforuje zasób przez 300 sekund lub 5 minut, zanim spowoduje odświeżenie elementu zawartości z jego źródła.
    >
-   > Aby uzyskać szczegółową listę funkcji, zobacz [funkcje aparatu reguł](cdn-verizon-premium-rules-engine-reference-features.md).
+   > Aby uzyskać szczegółową listę funkcji, zobacz [reguły aparatu funkcji](cdn-verizon-premium-rules-engine-reference-features.md).
    >
    >
 
-6. Wybierz **Dodaj** Aby zapisać nową regułę.  Nowa reguła teraz oczekuje na zatwierdzenie. Po jego zatwierdzeniu stan zmienia się ze **oczekujące XML** do **Active XML**.
+6. Wybierz pozycję **Dodaj** , aby zapisać nową regułę.  Nowa reguła czeka teraz na zatwierdzenie. Po jego zatwierdzeniu stan zmieni się z **oczekującego XML** na **aktywny plik XML**.
    
    > [!IMPORTANT]
-   > Zasady zmian może potrwać do 10 minut propagować przez sieć CDN systemu Azure.
+   > Azure CDN propagowanie zmian w regułach może potrwać do 10 minut.
    >
    >
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Omówienie usługi Azure CDN](cdn-overview.md)
+- [Przegląd Azure CDN](cdn-overview.md)
 - [Dokumentacja aparatu reguł](cdn-verizon-premium-rules-engine-reference.md)
 - [Warunki dopasowań aparatu reguł](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Wyrażenia warunkowe aparatu reguł](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Funkcje aparatu reguł](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Piątki z Windows Azure: Zaawansowane nowe funkcje premium usługi Azure CDN](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (wideo)
+- [Piątek platformy Azure: zaawansowane nowe funkcje Premium](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (wideo) Azure CDN

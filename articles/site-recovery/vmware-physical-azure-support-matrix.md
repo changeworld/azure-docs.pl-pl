@@ -1,5 +1,5 @@
 ---
-title: Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+title: Macierz obsługi dla oprogramowania VMware/fizycznego odzyskiwania po awarii w Azure Site Recovery
 description: Podsumowuje obsługę odzyskiwania po awarii maszyn wirtualnych programu VMware i serwera fizycznego na platformie Azure przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9125c69f9d2f4d7289120f86059ffab3b7f9228a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b16b6bb8ad39f7f0a5f19a2e2d4280bb73def60a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961295"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082210"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -170,15 +170,15 @@ Sieć gościa/serwer z wieloma kartami sieciowymi | Tak.
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Usługa ExpressRoute systemu Azure | Tak
-ILB | Tak
-ELB | Tak
-Azure Traffic Manager | Tak
-Multi-NIC | Tak
-Zastrzeżony adres IP | Tak
-IPv4 | Tak
-Zachowaj źródłowy adres IP | Tak
-Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Tak
+Usługa ExpressRoute systemu Azure | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Multi-NIC | Yes
+Zastrzeżony adres IP | Yes
+IPv4 | Yes
+Zachowaj źródłowy adres IP | Yes
+Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Yes
 Wydajniejsze sieci | Nie
 
 ## <a name="storage"></a>Magazyn
@@ -187,24 +187,24 @@ Wydajniejsze sieci | Nie
 Dysk dynamiczny | Dysk systemu operacyjnego musi być dyskiem podstawowym. <br/><br/>Dyski danych mogą być dyskami dynamicznymi
 Konfiguracja dysku platformy Docker | Nie
 System plików NFS hosta | Tak dla oprogramowania VMware<br/><br/> Nie dla serwerów fizycznych
-Sieć SAN hosta (iSCSI/FC) | Tak
+Sieć SAN hosta (iSCSI/FC) | Yes
 Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
 Wielościeżkowa hosta (MPIO) | Tak, przetestowano przy użyciu modułu Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualne hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
-Gość/serwer VMDK | Tak
+Gość/serwer VMDK | Yes
 Udostępniony dysk klastra gościa/serwera | Nie
 Dysk szyfrowany gościa/serwera | Nie
 System plików NFS gościa/serwera | Nie
 Interfejs iSCSI gościa/serwera | Dla migracji — tak<br/>W przypadku odzyskiwania po awarii — nie, iSCSI spowoduje powrót po awarii jako dołączony dysk do maszyny wirtualnej
 Gość/serwer SMB 3,0 | Nie
-RDM gościa/serwera | Tak<br/><br/> N/A dla serwerów fizycznych
+RDM gościa/serwera | Yes<br/><br/> N/A dla serwerów fizycznych
 Dysk gościa/serwer > 1 TB | Tak, dysk musi być większy niż 1024 MB<br/><br/>Do 8 192 GB podczas replikowania na dyski zarządzane (wersja 9,26)<br></br> Do 4 095 GB podczas replikowania na konta magazynu
 Dysk gościa/serwer z rozmiarem sektora fizycznego i 4 KB w kilobajtach | Nie
 Dysk gościa/serwer z logicznymi i 512mi 4K rozmiar sektora fizycznego | Nie
-Wolumin gościa/serwer z dyskiem rozłożonym > 4 TB <br/><br/>Zarządzanie woluminami logicznymi (LVM)| Tak
+Wolumin gościa/serwer z dyskiem rozłożonym > 4 TB <br/><br/>Zarządzanie woluminami logicznymi (LVM)| Yes
 Gość/serwer — miejsca do magazynowania | Nie
 Gość/serwer gorąca Dodaj/Usuń dysk | Nie
-Gość/serwer — wykluczanie dysku | Tak
+Gość/serwer — wykluczanie dysku | Yes
 Wielościeżkowa gość/serwer (MPIO) | Nie
 Partycje typu GPT/serwer | Z [pakietem zbiorczym aktualizacji 37](https://support.microsoft.com/help/4508614/) są obsługiwane pięć partycji (wersja 9,25 usługi mobilności). Poprzednia wersja obsługiwała cztery.
 System | System plików jest odporny na błędy w wersji 9,23 lub nowszej
@@ -222,15 +222,15 @@ Gość/serwer EFI/rozruch UEFI | -Obsługiwane dla systemu Windows Server 2012 l
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Magazyn lokalnie nadmiarowy | Tak
-Magazyn geograficznie nadmiarowy | Tak
-Magazyn Geograficznie nadmiarowy do odczytu | Tak
+Magazyn lokalnie nadmiarowy | Yes
+Magazyn geograficznie nadmiarowy | Yes
+Magazyn Geograficznie nadmiarowy do odczytu | Yes
 Chłodny magazyn | Nie
 Magazyn gorąca| Nie
-Blokowe obiekty blob | Nie
-Szyfrowanie — w spoczynku (SSE)| Tak
+Obiekty BLOB typu Block | Nie
+Szyfrowanie — w spoczynku (SSE)| Yes
 Szyfrowanie na poziomie spoczynku (CMK)| Nie
-Premium Storage | Tak
+Premium Storage | Yes
 Usługa importu/eksportu | Nie
 Zapory usługi Azure Storage dla sieci wirtualnych | Tak.<br/> Skonfigurowane na docelowym koncie magazynu/pamięci podręcznej (używane do przechowywania danych replikacji).
 Konta magazynu ogólnego przeznaczenia w wersji 2 (warstwy gorąca i chłodna) | Tak (koszt transakcji jest znacznie wyższy dla wersji 2 w porównaniu do v1)
@@ -239,10 +239,10 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (warstwy gorąca i chłodna) |
 
 **Funkcja** | **Obsługiwane**
 --- | ---
-Zestawy dostępności | Tak
+Zestawy dostępności | Yes
 Strefy dostępności | Nie
-HUB | Tak
-Dyski zarządzane | Tak
+HUB | Yes
+Dyski zarządzane | Yes
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure
 

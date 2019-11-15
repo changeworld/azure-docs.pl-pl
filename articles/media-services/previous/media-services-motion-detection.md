@@ -14,19 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: c319b3e53f550e56fbf4f655cb9cfa43326f9c72
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882420"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083752"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Wykrywaj ruchy przy użyciu Azure Media Analytics
+ 
+## <a name="overview"></a>Omówienie
 
-> [!IMPORTANT]
-> Zapoznaj się z [planami wycofania](media-services-analytics-overview.md#retirement-plans) niektórych procesorów multimedialnych.
-
-## <a name="overview"></a>Przegląd
 Procesor Media **Azure Media Motion Detector** (MP) pozwala wydajnie identyfikować interesujące Cię sekcje w innym pliku wideo długim i niezdarzeń. Wykrywanie ruchu może być używane na potrzeby statycznego filmu kamery do identyfikowania sekcji wideo, w których odbywa się ruch. Generuje plik JSON zawierający metadane z sygnaturami czasowymi i obszarem ograniczenia, w którym wystąpiło zdarzenie.
 
 Technologia ta umożliwia kategoryzowanie ruchu na odpowiednich zdarzeniach i fałszywych wartościach, takich jak cieniowanie i oświetlenie. Dzięki temu można generować alerty zabezpieczeń z kanałów informacyjnych z aparatu, bez konieczności spamu, przy jednoczesnym wykorzystaniu momentu, w którym można wyodrębnić czas zainteresowania z długiego wideo nadzoru.
@@ -46,9 +44,9 @@ Można użyć następujących parametrów:
 
 | Nazwa | Opcje | Opis | Domyślne |
 | --- | --- | --- | --- |
-| sensitivityLevel |Ciąg: "Low", "medium", "High" |Ustawia poziom czułości, przy którym są raportowane ruchy. Dostosuj ten sposób, aby dopasować liczbę fałszywie dodatnich. |średniookresow |
+| sensitivityLevel |String:'low', 'medium', 'high' |Ustawia poziom czułości, przy którym są raportowane ruchy. Dostosuj ten sposób, aby dopasować liczbę fałszywie dodatnich. |średniookresow |
 | frameSamplingValue |Dodatnia liczba całkowita |Ustawia częstotliwość uruchamiania algorytmu. 1 równa się każdej klatce, 2 oznacza każdą klatkę i tak dalej. |1 |
-| detectLightChange |Wartość logiczna: "true", "false" |Ustawia, czy jasne zmiany są raportowane w wynikach |False |
+| detectLightChange |Boolean:'true', 'false' |Ustawia, czy jasne zmiany są raportowane w wynikach |'False' |
 | mergeTimeThreshold |Godzina xs: hh: mm: SS<br/>Przykład: 00:00:03 |Określa przedział czasu między zdarzeniami ruchu, w przypadku których 2 zdarzenia są łączone i raportowane jako 1. |00:00:00 |
 | detectionZones |Tablica stref wykrywania:<br/>— Strefa wykrywania jest tablicą z 3 lub więcej punktów<br/>-Point to współrzędna x i y od 0 do 1. |Opisuje listę wielokątaowych stref wykrywania, które mają być używane.<br/>Wyniki są raportowane ze strefami jako identyfikator, a pierwszy z nich to "ID": 0 |Pojedynczej strefy, która obejmuje całą ramkę. |
 
@@ -100,12 +98,12 @@ W poniższej tabeli opisano elementy wyjściowego pliku JSON.
 | Element | Opis |
 | --- | --- |
 | version |Odnosi się to do wersji interfejsu API wideo. Bieżąca wersja to 2. |
-| Dział |"Ticks" na sekundę filmu wideo. |
-| Przesunięcie |Przesunięcie czasu dla sygnatur czasowych w "Takty". W wersji 1,0 interfejsów API wideo zawsze będzie równa 0. W przyszłych scenariuszach dział IT może zmienić tę wartość. |
+| timescale |"Ticks" na sekundę filmu wideo. |
+| offset |Przesunięcie czasu dla sygnatur czasowych w "Takty". W wersji 1,0 interfejsów API wideo zawsze będzie równa 0. W przyszłych scenariuszach dział IT może zmienić tę wartość. |
 | szybkości |Liczba klatek na sekundę w wideo. |
 | Szerokość, Wysokość |Odnosi się do szerokości i wysokości wideo w pikselach. |
-| rozpoczynanie |Początkowa sygnatura czasowa w "taktach". |
-| trwania |Długość zdarzenia w "taktach". |
+| rozpoczynanie |Sygnatura czasowa rozpoczęcia w "taktach". |
+| duration |Długość zdarzenia w "taktach". |
 | interval |Interwał każdego wpisu w zdarzeniu w "Takty". |
 | zdarzenia |Każdy fragment zdarzenia zawiera ruch wykryty w tym czasie. |
 | type |W bieżącej wersji jest to zawsze "2" dla ruchu ogólnego. Ta etykieta umożliwia interfejsom API wideo elastyczność kategoryzowania ruchu w przyszłych wersjach. |
@@ -383,7 +381,7 @@ namespace VideoMotionDetection
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

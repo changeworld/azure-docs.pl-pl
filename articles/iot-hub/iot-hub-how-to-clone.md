@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: robinsh
-ms.openlocfilehash: 8d071d4cd6ae3f9a52433104075e396d70d5bc57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828697"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083283"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak sklonować usługę Azure IoT Hub do innego regionu
 
@@ -391,7 +391,7 @@ Portal teraz sprawdza poprawność szablonu i wdraża sklonowane centrum. Jeśli
 
 Po ukończeniu klonowania i uruchomienia należy skopiować wszystkie urządzenia z oryginalnego centrum do klona. 
 
-Istnieje wiele sposobów osiągnięcia tego celu. Pierwotnie była używana [Usługa Device Provisioning (DPS)](/azure/iot-dps/about-iot-dps.md)do udostępniania urządzeń lub nie została ona zastosowana. Jeśli tak, to nie jest trudne. Jeśli tego nie zrobiono, może to być bardzo skomplikowane. 
+Istnieje wiele sposobów osiągnięcia tego celu. Pierwotnie była używana [Usługa Device Provisioning (DPS)](/azure/iot-dps/about-iot-dps)do udostępniania urządzeń lub nie została ona zastosowana. Jeśli tak, to nie jest trudne. Jeśli tego nie zrobiono, może to być bardzo skomplikowane. 
 
 Jeśli nie korzystasz z usługi DPS do aprowizacji urządzeń, możesz pominąć następną sekcję i rozpocząć korzystanie z usługi [Import/Export w celu przeniesienia urządzeń do nowego centrum](#using-import-export-to-move-the-devices-to-the-new-hub).
 

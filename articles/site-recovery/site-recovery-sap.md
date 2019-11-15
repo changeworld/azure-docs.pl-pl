@@ -1,170 +1,168 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla wdrożenia aplikacji SAP NetWeaver obejmujące wiele warstw przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla wdrożenia aplikacji SAP NetWeaver przy użyciu usługi Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii oprogramowania SAP NetWeaver z użyciem Azure Site Recovery
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla wdrożeń aplikacji SAP NetWeaver przy użyciu Azure Site Recovery.
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 0848738b71a605d8baf049847daa3ae2428a7abe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca3126c983d62cb28c543215b86ab9709a4736d8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65793669"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083787"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowego wdrożenia aplikacji SAP NetWeaver
 
-Większości wdrożeń SAP duży rozmiar i średniego użycia pewnego rodzaju rozwiązania odzyskiwania po awarii. Znaczenie rozwiązania odzyskiwania po awarii niezawodne i testowaniu został zwiększony, ponieważ więcej procesów biznesowych core są przenoszone do aplikacji, takich jak SAP. Usługa Azure Site Recovery została przetestowana i zintegrowana z aplikacjami SAP. Usługa Site Recovery przekracza możliwości większości rozwiązań odzyskiwania po awarii w środowisku lokalnym oraz na niższy całkowity koszt posiadania (TCO) niż konkurencyjne rozwiązania.
+Najnowsze wdrożenia SAP o dużych rozmiarach i średnim rozmiarze używają pewnego rodzaju rozwiązania do odzyskiwania po awarii. Znaczenie niezawodnych i weryfikowalneych rozwiązań odzyskiwania po awarii zostało zwiększone, ponieważ bardziej podstawowe procesy biznesowe są przenoszone do aplikacji takich jak SAP. Azure Site Recovery został przetestowany i zintegrowany z aplikacjami SAP. Site Recovery przekracza możliwości większości lokalnych rozwiązań odzyskiwania po awarii oraz niższy całkowity koszt posiadania (TCO) niż konkurencyjne rozwiązania.
 
-Usługa Site Recovery można wykonywać następujące czynności:
-* **Włącz ochronę aplikacji produkcyjnych oprogramowania SAP NetWeaver i innych NetWeaver działających w środowisku lokalnym** replikując składniki do platformy Azure.
-* **Włącz ochronę aplikacji produkcyjnych oprogramowania SAP NetWeaver i innych NetWeaver działających na platformie Azure** replikując składniki do innego centrum danych platformy Azure.
-* **Skorzystaj z uproszczenia migracji do chmury** przy użyciu usługi Site Recovery do migrowania wdrożenia SAP do platformy Azure.
-* **Uprość SAP uaktualnienia projektu, testowanie i tworzenie prototypów** , tworząc produkcyjnym sklonować wybieraniem numeru na potrzeby testowania aplikacji SAP.
+Za pomocą Site Recovery można:
+* **Włącz ochronę oprogramowania SAP NetWeaver i innych niż NetWeaver aplikacji produkcyjnych, które są uruchamiane lokalnie** przez replikowanie składników do platformy Azure.
+* **Włącz ochronę oprogramowania SAP NetWeaver i innych niż NetWeaver aplikacji produkcyjnych uruchamianych na platformie Azure** przez replikowanie składników do innego centrum danych platformy Azure.
+* **Uprość migrację do chmury** , korzystając z Site Recovery do migrowania wdrożenia SAP do platformy Azure.
+* **Upraszczanie uaktualnień projektów SAP, testowanie i Tworzenie prototypów** przez utworzenie klonu produkcyjnego na żądanie na potrzeby testowania aplikacji SAP.
 
-W tym artykule opisano, jak zapewnić ochronę wdrożeń aplikacji SAP NetWeaver przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md). Artykuł opisuje najlepsze wskazówki dotyczące ochrony trójwarstwowej wdrożenie oprogramowania SAP NetWeaver na platformie Azure przez replikację do innego centrum danych platformy Azure przy użyciu usługi Site Recovery. Opisano w nim obsługiwane scenariusze i konfiguracjach oraz jak przeprowadzić test pracy awaryjnej (odzyskiwanie po awarii) i rzeczywisty tryb failover.
+W tym artykule opisano sposób ochrony wdrożeń aplikacji SAP NetWeaver przy użyciu [Azure Site Recovery](site-recovery-overview.md). W tym artykule opisano najlepsze rozwiązania dotyczące ochrony wielowarstwowego wdrożenia oprogramowania SAP NetWeaver na platformie Azure przez replikację do innego centrum danych platformy Azure przy użyciu Site Recovery. Opisano w nim obsługiwane scenariusze i konfiguracje oraz sposób wykonywania testu pracy w trybie failover (przechodzenia do odzyskiwania po awarii) i rzeczywistej pracy awaryjnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem upewnij się, że wiesz, jak wykonać następujące zadania:
 
-* [Replikacja maszyny wirtualnej do platformy Azure](azure-to-azure-walkthrough-enable-replication.md)
-* [Projektowanie sieć odzyskiwania](site-recovery-azure-to-azure-networking-guidance.md)
-* [Wykonaj test trybu failover na platformie Azure](azure-to-azure-walkthrough-test-failover.md)
-* [Czy tryb failover na platformie Azure](site-recovery-failover.md)
+* [Replikowanie maszyny wirtualnej na platformę Azure](azure-to-azure-walkthrough-enable-replication.md)
+* [Projektowanie sieci odzyskiwania](site-recovery-azure-to-azure-networking-guidance.md)
+* [Wykonaj test pracy w trybie failover na platformie Azure](azure-to-azure-walkthrough-test-failover.md)
+* [Przełączenie w tryb failover na platformie Azure](site-recovery-failover.md)
 * [Replikowanie kontrolera domeny](site-recovery-active-directory.md)
 * [Replikowanie programu SQL Server](site-recovery-sql.md)
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
-Usługa Site Recovery można użyć do wdrożenia rozwiązanie odzyskiwania po awarii w następujących scenariuszach:
-* Systemów SAP działające w jednym centrum danych platformy Azure, które są replikowane do innego centrum danych platformy Azure (odzyskiwanie po awarii Azure – Azure). Aby uzyskać więcej informacji, zobacz [architektura replikacji Azure – Azure](https://aka.ms/asr-a2a-architecture).
-* SAP komputerów z systemami w oprogramowaniu firmy VMware (lub fizyczny) serwerów lokalnych tego replikacja do lokacji odzyskiwania po awarii w centrum danych platformy Azure (odzyskiwanie po awarii programu VMware do platformy Azure). Ten scenariusz wymaga pewnych dodatkowych składników. Aby uzyskać więcej informacji, zobacz [architektura replikacji VMware – Azure](https://aka.ms/asr-v2a-architecture).
-* Systemów SAP uruchomiona na funkcji Hyper-V w środowisku lokalnym, które są replikowane do lokacji odzyskiwania po awarii w centrum danych platformy Azure (odzyskiwanie po awarii z funkcji Hyper-V — na platformie Azure). Ten scenariusz wymaga pewnych dodatkowych składników. Aby uzyskać więcej informacji, zobacz [architektury replikacji funkcji Hyper V – Azure](https://aka.ms/asr-h2a-architecture).
+Za pomocą Site Recovery można zaimplementować rozwiązanie odzyskiwania po awarii w następujących scenariuszach:
+* Systemy SAP działające w jednym centrum danych platformy Azure, które są replikowane do innego centrum danych platformy Azure (odzyskiwanie po awarii z platformy Azure do platformy Azure). Aby uzyskać więcej informacji, zobacz [Architektura replikacji z platformy Azure do platformy Azure](https://aka.ms/asr-a2a-architecture).
+* Systemy SAP działające na serwerach VMware (lub fizycznych) w środowisku lokalnym, które są replikowane do lokacji odzyskiwania po awarii w centrum danych platformy Azure (odzyskiwanie po awarii oprogramowania VMware na platformę Azure). W tym scenariuszu wymagane są pewne dodatkowe składniki. Aby uzyskać więcej informacji, zobacz [Architektura replikacji VMware-to-Azure](https://aka.ms/asr-v2a-architecture).
+* Systemy SAP uruchomione w lokalnej funkcji Hyper-V, które są replikowane do lokacji odzyskiwania po awarii w centrum danych platformy Azure (funkcja Hyper-V do odzyskiwania po awarii na platformie Azure). W tym scenariuszu wymagane są pewne dodatkowe składniki. Aby uzyskać więcej informacji, zobacz [Architektura replikacji funkcji Hyper-V do platformy Azure](https://aka.ms/asr-h2a-architecture).
 
-W tym artykule używamy **Azure – Azure** scenariusza odzyskiwania po awarii, aby zademonstrować funkcje odzyskiwania po awarii SAP Site Recovery. Ponieważ replikacji usługi Site Recovery nie jest specyficzna dla aplikacji, proces, który jest opisany powinien również zastosowanie do innych scenariuszy.
+W tym artykule opisano scenariusz odzyskiwania po awarii z **platformy Azure do platformy Azure** w celu zademonstrowania możliwości odzyskiwania po awarii SAP Site Recovery. Ponieważ replikacja Site Recovery nie jest specyficzna dla aplikacji, proces, który został opisany, ma zastosowanie również do innych scenariuszy.
 
-### <a name="required-foundation-services"></a>Wymagane foundation services
-W tym scenariuszu, które omówimy w tym artykule są wdrażane następujących usług foundation:
-* Usługa ExpressRoute systemu Azure lub na platformie Azure VPN Gateway
-* Co najmniej jeden kontroler domeny usługi Active Directory i serwer DNS, działające na platformie Azure
+### <a name="required-foundation-services"></a>Wymagane usługi Foundation
+W scenariuszu omawianym w tym artykule wdrożono następujące usługi programu Foundation:
+* Azure ExpressRoute lub Azure VPN Gateway
+* Co najmniej jeden Active Directory kontroler domeny i serwer DNS działający na platformie Azure
 
-Firma Microsoft zaleca ustanowienia tej infrastruktury, zanim wdrożenia usługi Site Recovery.
+Zalecamy ustanowienie tej infrastruktury przed wdrożeniem Site Recovery.
 
-## <a name="reference-sap-application-deployment"></a>Wdrażanie aplikacji SAP odwołania
+## <a name="reference-sap-application-deployment"></a>Odwołanie do wdrożenia aplikacji SAP
 
-Ta architektura referencyjna pokazuje, z oprogramowaniem SAP NetWeaver w środowisku Windows na platformie Azure dzięki wysokiej dostępności.  Ta architektura jest wdrażana z rozmiarów określonej maszyny wirtualnej (VM), które mogą być zmieniane spełniają wymagania Twojej organizacji.
+W tej architekturze referencyjnej przedstawiono Uruchamianie programu SAP NetWeaver w środowisku systemu Windows na platformie Azure o wysokiej dostępności.  Ta architektura jest wdrażana z określonymi rozmiarami maszyn wirtualnych, które można zmienić w celu uwzględnienia potrzeb organizacji.
 
-![Diagram przedstawiający typowy wzorzec wdrożenia SAP](./media/site-recovery-sap/sap-netweaver_latest.png)
+![Diagram typowego wzorca wdrażania SAP](./media/site-recovery-sap/sap-netweaver_latest.png)
 
 ## <a name="disaster-recovery-considerations"></a>Zagadnienia dotyczące odzyskiwania po awarii
 
 Do odzyskiwania po awarii (DR) musi być możliwe do trybu failover do regionu pomocniczego. Każda warstwa używa innej strategii w celu zapewnienia ochrony odzyskiwania po awarii (DR, disaster recovery).
 
-#### <a name="vms-running-sap-web-dispatcher-pool"></a>Maszyny wirtualne z systemem SAP Web Dispatcher puli 
-Składnik Web Dispatcher służy jako moduł równoważenia obciążenia dla ruchu SAP na serwery aplikacji SAP. Uzyskanie wysokiej dostępności dla składnika Web Dispatcher, usługi Azure Load Balancer umożliwia wdrożenie równoległe Instalator Web Dispatcher w konfiguracji działania okrężnego dla ruchu HTTP (S) rozkład dostępne dyspozytorów sieci Web w puli usługi równoważenia. To będą replikowane, za pomocą Recovery (ASR) do usługi Azure Site i skrypty automatyzacji będzie służyć do konfigurowania modułu równoważenia obciążenia w regionie odzyskiwania po awarii. 
+#### <a name="vms-running-sap-web-dispatcher-pool"></a>Maszyny wirtualne z uruchomioną pulą dyspozytorów sieci Web SAP 
+Składnik Web Dispatcher służy jako moduł równoważenia obciążenia dla ruchu SAP na serwery aplikacji SAP. Aby zapewnić wysoką dostępność składnika dyspozytora sieci Web, Azure Load Balancer jest używany do implementowania konfiguracji równoległego dyspozytora sieci Web w konfiguracji okrężnej dla dystrybucji ruchu HTTP (S) wśród dostępnych elementów docelowych w puli modułu równoważenia obciążenia. Zostanie ona zreplikowana przy użyciu Azure Site Recovery (ASR), a skrypty automatyzacji zostaną użyte do skonfigurowania modułu równoważenia obciążenia w regionie odzyskiwania po awarii. 
 
-#### <a name="vms-running-application-servers-pool"></a>Maszyny wirtualne z puli serwerów aplikacji
-Aby zarządzać grupami logowania dla serwerów aplikacji ABAP, transakcji SMLG jest używany. Używa ona funkcji w ramach serwera wiadomości centralnej usług równoważenia obciążenia do dystrybucji obciążeń między puli serwerów aplikacji SAP SAPGUIs i RFC ruchu. To będą replikowane, za pomocą usługi Azure Site Recovery 
+#### <a name="vms-running-application-servers-pool"></a>Maszyny wirtualne z uruchomioną pulą serwerów aplikacji
+Aby zarządzać grupami logowania dla serwerów aplikacji ABAP, transakcji SMLG jest używany. Używa ona funkcji w ramach serwera wiadomości centralnej usług równoważenia obciążenia do dystrybucji obciążeń między puli serwerów aplikacji SAP SAPGUIs i RFC ruchu. Ta replikacja zostanie zreplikowana przy użyciu Azure Site Recovery 
 
-#### <a name="vms-running-sap-central-services-cluster"></a>Maszyny wirtualne działające w klastrze usług SAP Central Services
+#### <a name="vms-running-sap-central-services-cluster"></a>Maszyny wirtualne z systemem SAP Central Services — klaster
 Ta architektura referencyjna uruchamia centralnej usług na maszynach wirtualnych w warstwie aplikacji. Central Services jest potencjalnym pojedynczym punktem awarii (SPOF), po wdrożeniu na jednej maszynie Wirtualnej — typowe wdrożenie w przypadku wysokiej dostępności nie jest wymagane.<br>
 
-Aby zaimplementować rozwiązanie zapewniające wysoką dostępność, można użyć udostępnionych klastrów dysku lub klastrze udziału plików. Aby skonfigurować maszyn wirtualnych do udostępnionych klastrów dysku, należy użyć klastra trybu Failover systemu Windows Server. Zaleca się monitor w chmurze jako monitor kworum. 
+Aby zaimplementować rozwiązanie wysokiej dostępności, można użyć udostępnionego klastra dysków lub klastra udziałów plików. Aby skonfigurować maszyny wirtualne dla udostępnionego klastra dysków, należy użyć klastra trybu failover systemu Windows Server. Monitor chmury jest zalecany jako monitor kworum. 
  > [!NOTE]
- > Usługa Azure Site Recovery nie jest replikowany monitora w chmurze w związku z tym zaleca się wdrażanie monitora w chmurze w regionie odzyskiwania po awarii.
+ > Azure Site Recovery nie replikuje monitora chmury, dlatego zaleca się wdrożenie monitora chmury w regionie odzyskiwania po awarii.
 
 Do obsługi środowiska klastra trybu failover, [oprogramowanie SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) wykonuje funkcję woluminu udostępnionego klastra, replikując niezależne dyski należące do węzłów klastra. Azure nie obsługuje natywnie udostępnionych dysków i dlatego wymaga udostępniane przez oprogramowanie SIOS rozwiązania. 
 
-Innym sposobem obsługi klastrowania jest do wdrożenia klastra udziału plików. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) ostatnio zmodyfikowane wzorca wdrażania centralnego usługi dostęp do katalogów globalnych /sapmnt za pośrednictwem ścieżki UNC. Jednak nadal zaleca się upewnij się, że udział UNC /sapmnt o wysokiej dostępności. Można to zrobić w wystąpieniu usługi centralnego przy użyciu klastra trybu Failover systemu Windows Server skalowania poziomie serwera plików (SOFS) oraz funkcję bezpośrednimi miejscami do magazynowania (S2D) w systemie Windows Server 2016. 
+Innym sposobem obsługi klastrowania jest zaimplementowanie klastra udziałów plików. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) ostatnio zmodyfikowane wzorca wdrażania centralnego usługi dostęp do katalogów globalnych /sapmnt za pośrednictwem ścieżki UNC. Jednak nadal zaleca się upewnienie się, że udział UNC/sapmnt ma wysoką dostępność. Można to zrobić na wystąpieniu usług centralnych przy użyciu klastra trybu failover systemu Windows Server z serwerem plików skalowalnym w poziomie (SOFS) i funkcją Bezpośrednie miejsca do magazynowania (S2D) w systemie Windows Server 2016. 
  > [!NOTE]
- > Obecnie pomocy technicznej usługi Azure Site Recovery tylko awarii punktu spójnego na poziomie replikacji maszyn wirtualnych przy użyciu magazynu miejsca do magazynowania bezpośrednie i pasywnym węzła oprogramowanie SIOS Datakeeper
+ > Obecnie Azure Site Recovery obsługuje tylko replikację punktu w poziomie awarii na maszynach wirtualnych przy użyciu funkcji bezpośrednie miejsca do magazynowania i pasywnego węzła oprogramowanie SIOS DataKeeper
 
 
 ## <a name="disaster-recovery-considerations"></a>Zagadnienia dotyczące odzyskiwania po awarii
 
-Za pomocą usługi Azure Site Recovery do organizowania pracy nad pełnego wdrożenia SAP regionami platformy Azure.
-Poniżej przedstawiono kroki konfigurowania odzyskiwania po awarii 
+Za pomocą Azure Site Recovery można organizować tryb failover całego wdrożenia SAP w regionach platformy Azure.
+Poniżej przedstawiono procedurę konfigurowania odzyskiwania po awarii 
 
 1. Replikowanie maszyn wirtualnych 
-2. Projektowanie sieć odzyskiwania
+2. Projektowanie sieci odzyskiwania
 3.  Replikowanie kontrolera domeny
-4.  Replikowanie danych warstwy podstawowa 
+4.  Replikuj warstwę bazową danych 
 5.  Przeprowadzanie testu trybu failover 
 6.  Przejdź w tryb failover 
 
-Poniżej przedstawiono zalecenia dotyczące odzyskiwania po awarii dla każdej warstwy, w tym przykładzie. 
+Poniżej znajduje się zalecenie dotyczące odzyskiwania po awarii dla każdej warstwy używanej w tym przykładzie. 
 
  **Warstwy SAP** | **Zalecenie**
  --- | ---
-**SAP Web Dispatcher puli** |  Replikacja za pomocą Site recovery 
-**Puli serwerów aplikacji SAP** |  Replikacja za pomocą Site recovery 
-**SAP Central Services klastra** |  Replikacja za pomocą Site recovery 
-**Maszyny wirtualne usługi Active directory** |  Replikacja usługi Active directory 
-**Serwery baz danych SQL** |  Zawsze włączone replikacji programu SQL Server
+**Pula dyspozytorów sieci Web SAP** |  Replikacja przy użyciu usługi Site Recovery 
+**Pula serwerów aplikacji SAP** |  Replikacja przy użyciu usługi Site Recovery 
+**Klaster usług SAP Central** |  Replikacja przy użyciu usługi Site Recovery 
+**Maszyny wirtualne usługi Active Directory** |  Replikacja usługi Active Directory 
+**Serwery baz danych SQL** |  Zawsze włączona replikacja SQL
 
 ## <a name="replicate-virtual-machines"></a>Replikowanie maszyn wirtualnych
 
-Aby rozpocząć replikowanie wszystkich SAP aplikacji maszyn wirtualnych do centrum danych odzyskiwania po awarii platformy Azure, postępuj zgodnie ze wskazówkami w [replikacji maszyny wirtualnej na platformie Azure](azure-to-azure-walkthrough-enable-replication.md).
+Aby rozpocząć replikowanie wszystkich maszyn wirtualnych aplikacji SAP do centrum danych odzyskiwania po awarii platformy Azure, postępuj zgodnie ze wskazówkami zawartymi w artykule [replikowanie maszyny wirtualnej na platformę Azure](azure-to-azure-walkthrough-enable-replication.md).
 
 
-* Aby uzyskać wskazówki na temat ochrony usługi Active Directory i DNS, zobacz [chronić Active Directory i DNS](site-recovery-active-directory.md) dokumentu.
+* Aby uzyskać wskazówki dotyczące ochrony Active Directory i systemu DNS, zobacz [ochrona Active Directory i dokumentu DNS](site-recovery-active-directory.md) .
 
-* Aby uzyskać wskazówki na temat ochrony warstwy bazy danych uruchomione w programie SQL server, zapoznaj się [ochrona programu SQL Server](site-recovery-active-directory.md) dokumentu.
+* Wskazówki dotyczące ochrony warstwy bazy danych działającej w programie SQL Server można znaleźć w temacie [ochrona SQL Server](site-recovery-active-directory.md) dokumentu.
 
 ## <a name="networking-configuration"></a>Konfiguracja sieci
 
-Jeśli korzystasz ze statycznego adresu IP, można określić adresu IP, który ma maszynę wirtualną. Aby ustawić adres IP, przejdź do **ustawień obliczenia i sieć** > **karty interfejsu sieciowego**.
+Jeśli używasz statycznego adresu IP, możesz określić adres IP, który ma być pobierany przez maszynę wirtualną. Aby ustawić adres IP, przejdź do pozycji **obliczenia i ustawienia sieciowe** > **karcie interfejsu sieciowego**.
 
-![Zrzut ekranu pokazujący sposób ustawiania prywatny adres IP w okienku karty interfejsu sieci odzyskiwania lokacji](./media/site-recovery-sap/sap-static-ip.png)
-
-
-## <a name="creating-a-recovery-plan"></a>Trwa tworzenie planu odzyskiwania
-Plan odzyskiwania obsługuje sekwencjonowania różnych warstw w aplikacji wielowarstwowej podczas przejścia w tryb failover. Sekwencjonowanie pomaga w utrzymaniu spójności aplikacji. Po utworzeniu planu odzyskiwania w przypadku aplikacji sieci web w wielowarstwowych pełną kroki opisane w [utworzyć plan odzyskiwania przy użyciu usługi Site Recovery](site-recovery-create-recovery-plans.md).
-
-### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grupy trybu failover
-
-1.  Dodając serwer aplikacji sieci web dispatcher i SAP Central services maszyn wirtualnych, należy utworzyć plan odzyskiwania.
-2.  Kliknij przycisk "Dostosuj", aby pogrupować maszyny wirtualne. Domyślnie wszystkie maszyny wirtualne są częścią "Grupa 1".
+![Zrzut ekranu pokazujący sposób ustawiania prywatnego adresu IP w okienku karty sieciowej Site Recovery](./media/site-recovery-sap/sap-static-ip.png)
 
 
+## <a name="creating-a-recovery-plan"></a>Tworzenie planu odzyskiwania
+Plan odzyskiwania obsługuje sekwencjonowanie różnych warstw w aplikacji wielowarstwowej podczas pracy w trybie failover. Sekwencjonowanie pomaga zachować spójność aplikacji. Po utworzeniu planu odzyskiwania dla wielowarstwowej aplikacji sieci Web wykonaj kroki opisane w temacie [Tworzenie planu odzyskiwania przy użyciu Site Recovery](site-recovery-create-recovery-plans.md).
 
-### <a name="add-scripts-to-the-recovery-plan"></a>Dodaj skrypty do planu odzyskiwania
-Dla Twoich aplikacji działać poprawnie konieczne może być czy niektóre operacje na maszynach wirtualnych Azure po przełączeniu w tryb failover lub podczas testowania trybu failover. Można zautomatyzować niektóre operacje po przejściu do trybu failover. Na przykład można zaktualizować wpisu DNS i zmiany mień skojarzenia i połączenia przez dodanie odpowiedniej skrypty do planu odzyskiwania.
+### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grup trybu failover
+
+1.  Utwórz plan odzyskiwania, dodając serwer aplikacji, Dyspozytor sieci Web i maszyny wirtualne usług SAP Central Services.
+2.  Kliknij przycisk "Dostosuj", aby zgrupować maszyny wirtualne. Domyślnie wszystkie maszyny wirtualne są częścią grupy 1.
 
 
-Najczęściej używane skryptów usługi Azure Site Recovery można wdrożyć na koncie usługi Automation, klikając przycisk "Wdróż na platformie Azure" poniżej. Korzystając z dowolnego skryptu opublikowane, upewnij się, że należy postępować zgodnie ze wskazówkami w skrypcie.
+
+### <a name="add-scripts-to-the-recovery-plan"></a>Dodawanie skryptów do planu odzyskiwania
+Aby aplikacje działały prawidłowo, może być konieczne wykonanie pewnych operacji na maszynach wirtualnych platformy Azure po przejściu do trybu failover lub w trakcie testu pracy w trybie failover. Można zautomatyzować niektóre operacje wykonywane po przejściu w tryb failover. Można na przykład zaktualizować wpis DNS i zmienić powiązania i połączenia przez dodanie odpowiednich skryptów do planu odzyskiwania.
+
+
+Najczęściej używane skrypty Azure Site Recovery można wdrożyć na koncie usługi Automation, klikając przycisk "wdróż na platformie Azure" poniżej. W przypadku korzystania z dowolnego opublikowanego skryptu upewnij się, że zostały podane wskazówki w skrypcie.
 
 [![Wdrażanie na platformie Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-1. Dodać skrypt akcję wstępną "Grupa 1", aby przełączyć awaryjnie grupy dostępności programu SQL. Użyj skryptu "ASR-SQL-FailoverAG" opublikowany w przykładowych skryptach. Upewnij się, zgodnie z wytycznymi w skrypcie i wprowadź wymagane zmiany w skrypcie, odpowiednio.
-2. Dodaj skrypt akcji post w celu dołączenia modułu równoważenia obciążenia w trybie za pośrednictwem maszyn wirtualnych warstwy internetowej (Grupa 1). Użyj skryptu "ASR-AddSingleLoadBalancer" opublikowany w przykładowych skryptach. Upewnij się, zgodnie z wytycznymi w skrypcie i wprowadź wymagane zmiany w skrypcie, odpowiednio.
+1. Dodaj skrypt przed akcją w grupie dostępności programu SQL do trybu failover. Użyj skryptu "ASR-SQL-FailoverAG" opublikowanego w przykładowych skryptach. Upewnij się, że postępuj zgodnie ze wskazówkami w skrypcie i wprowadź odpowiednio wymagane zmiany w skrypcie.
+2. Dodaj skrypt akcji po stronie w celu dołączenia modułu równoważenia obciążenia do maszyn wirtualnych w trybie failover w warstwie sieci Web (Grupa 1). Użyj skryptu "ASR-AddSingleLoadBalancer" opublikowanego w przykładowych skryptach. Upewnij się, że postępuj zgodnie ze wskazówkami w skrypcie i wprowadź odpowiednio wymagane zmiany w skrypcie.
 
 ![Plan odzyskiwania SAP](./media/site-recovery-sap/sap_recovery_plan.png)
 
 
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
 
-1.  W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
+1.  W Azure Portal wybierz swój magazyn Recovery Services.
 2.  Wybierz plan odzyskiwania, który został utworzony dla aplikacji SAP.
 3.  Wybierz pozycję **Test pracy w trybie failover**.
-4.  Aby rozpocząć proces testu trybu failover, wybierz punkt odzyskiwania i usługa Azure virtual network.
-5.  Po skonfigurowaniu dodatkowej środowiska wykonywać operacji sprawdzania poprawności.
-6.  Po zakończeniu walidacji można wyczyścić środowisko trybu failover wybierz **wyczyść test pracy awaryjnej**.
+4.  Aby rozpocząć proces testowego przełączania do trybu failover, wybierz punkt odzyskiwania i sieć wirtualną platformy Azure.
+5.  Gdy środowisko pomocnicze jest w pełni, wykonaj walidację.
+6.  Po zakończeniu walidacji w celu oczyszczenia środowiska trybu failover wybierz pozycję **Oczyść test pracy w trybie failover**.
 
-Aby uzyskać więcej informacji, zobacz [testowy tryb failover na platformie Azure w usłudze Site Recovery](site-recovery-test-failover-to-azure.md).
+Aby uzyskać więcej informacji, zobacz [test pracy w trybie failover na platformie Azure w Site Recovery](site-recovery-test-failover-to-azure.md).
 
 ## <a name="run-a-failover"></a>Uruchamianie trybu failover
 
-1.  W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
+1.  W Azure Portal wybierz swój magazyn Recovery Services.
 2.  Wybierz plan odzyskiwania, który został utworzony dla aplikacji SAP.
 3.  Wybierz pozycję **Tryb failover**.
-4.  Aby rozpocząć proces pracy awaryjnej, wybierz punkt odzyskiwania.
+4.  Aby rozpocząć proces trybu failover, wybierz punkt odzyskiwania.
 
-Aby uzyskać więcej informacji, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).
+Aby uzyskać więcej informacji, zobacz [tryb failover w Site Recovery](site-recovery-failover.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii, w przypadku wdrożeń oprogramowania SAP NetWeaver przy użyciu usługi Site Recovery, zobacz oficjalny dokument do pobrania [oprogramowanie SAP NetWeaver: Tworzenie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery](https://aka.ms/asr_sap). Oficjalny dokument w tym artykule omówiono zalecenia dotyczące różnych architekturach SAP, wyświetla listę obsługiwanych aplikacji i typy maszyn wirtualnych dla rozwiązania SAP na platformie Azure i w tym artykule opisano opcje planu testowania rozwiązanie odzyskiwania po awarii.
-* Dowiedz się więcej o [replikowanie innych obciążeń](site-recovery-workload.md) przy użyciu usługi Site Recovery.
+## <a name="next-steps"></a>Następne kroki
+* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii dla wdrożeń SAP NetWeaver przy użyciu Site Recovery, zobacz dokument [dotyczący pobierania danych z systemu SAP NetWeaver: kompilowanie rozwiązania do odzyskiwania po awarii z Azure Site Recovery](https://aka.ms/asr_sap). Oficjalny dokument omawia zalecenia dotyczące różnych architektur SAP, zawiera listę obsługiwanych aplikacji i typów maszyn wirtualnych dla oprogramowania SAP na platformie Azure oraz opisuje opcje planu testowania dla rozwiązania do odzyskiwania po awarii.
+* Dowiedz się więcej o [replikacji innych obciążeń](site-recovery-workload.md) przy użyciu Site Recovery.

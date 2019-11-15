@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70673dc7d42a0c7d9b60f3c3f877c1985dac3c98
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097807"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091997"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klienta jądra SMB](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwa sposoby instalowania udziału plików platformy Azure: na żądanie przy użyciu polecenia `mount` i rozruchu przez utworzenie wpisu w `/etc/fstab`.
@@ -22,11 +22,11 @@ Zalecanym sposobem instalowania udziału plików platformy Azure w systemie Linu
 | | SMB 2.1 <br>(Instalacja na maszynach wirtualnych w ramach tego samego regionu platformy Azure) | SMB 3.0 <br>(Instalacje z poziomu lokalnego i obejmującego wiele regionów) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + | 10 + |
+| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 + | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12 + | 12 SP3+ |
 
 Jeśli używasz dystrybucji systemu Linux, która nie jest wymieniona w powyższej tabeli, możesz sprawdzić, czy w systemie Linux jest obsługiwana obsługa protokołu SMB 3,0 z szyfrowaniem. Protokół SMB 3,0 z szyfrowaniem został dodany do jądra systemu Linux w wersji 4,11. `uname` polecenie zwróci wersję jądra systemu Linux w użyciu:
 
@@ -53,7 +53,7 @@ uname -r
     sudo dnf install cifs-utils
     ```
 
-    W starszych wersjach **Red Hat Enterprise Linux** i **CentOS**Użyj Menedżera pakietów `dnf`:
+    W starszych wersjach **Red Hat Enterprise Linux** i **CentOS**Użyj Menedżera pakietów `yum`:
 
     ```bash
     sudo yum install cifs-utils 
@@ -173,7 +173,7 @@ Po zakończeniu korzystania z udziału plików platformy Azure Możesz użyć `s
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **Użyj poniższego polecenia, aby dołączyć następujący wiersz do `/etc/fstab`** : w poniższym przykładzie domyślne uprawnienia do plików i folderów lokalnego systemu Linux 0755, co oznacza, że odczytywanie, zapisywanie i wykonywanie dla właściciela (na podstawie właściciela pliku/katalogu Linux), Odczyt i Wykonaj dla użytkowników w grupie właścicieli, a następnie odczytaj i wykonaj dla innych w systemie. Możesz użyć opcji instalacji `uid` i `gid`, aby ustawić identyfikator użytkownika i identyfikator grupy dla instalacji. Możesz również użyć `dir_mode` i `file_mode`, aby ustawić uprawnienia niestandardowe zgodnie z potrzebami. Aby uzyskać więcej informacji na temat sposobu ustawiania uprawnień, zobacz [notacja numeryczna systemu UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) w witrynie Wikipedia.
+1. **Użyj poniższego polecenia, aby dołączyć następujący wiersz do `/etc/fstab`** : w poniższym przykładzie domyślne uprawnienia do plików i folderów lokalnego systemu Linux 0755, które oznaczają odczyt, zapis i wykonywanie dla właściciela (na podstawie właściciela pliku/katalogu Linux), Odczytaj i wykonaj dla użytkowników w grupie właścicieli, a następnie odczytaj i wykonaj dla innych w systemie. Możesz użyć opcji instalacji `uid` i `gid`, aby ustawić identyfikator użytkownika i identyfikator grupy dla instalacji. Możesz również użyć `dir_mode` i `file_mode`, aby ustawić uprawnienia niestandardowe zgodnie z potrzebami. Aby uzyskać więcej informacji na temat sposobu ustawiania uprawnień, zobacz [notacja numeryczna systemu UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) w witrynie Wikipedia.
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -202,18 +202,18 @@ Począwszy od jądra systemu Linux 4,18, moduł jądra protokołu SMB o nazwie `
 | Dystrybucja | Może wyłączyć protokół SMB 1 |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | Nie |
-| Ubuntu 18.04 | Tak |
-| Ubuntu 19.04 + | Tak |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
 | Debian 8-9 | Nie |
-| Debian 10 + | Tak |
-| Fedora 29 + | Tak |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
 | CentOS 7 | Nie | 
-| CentOS 8 + | Tak |
+| CentOS 8 + | Yes |
 | Red Hat Enterprise Linux 6. x-7. x | Nie |
-| Red Hat Enterprise Linux 8 + | Tak |
+| Red Hat Enterprise Linux 8 + | Yes |
 | openSUSE przestępnie 15,0 | Nie |
-| openSUSE przestępny 15.1 + | Tak |
-| openSUSE Tumbleweed | Tak |
+| openSUSE przestępny 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
 | SUSE Linux Enterprise 11. x-12. x | Nie |
 | SUSE Linux Enterprise 15 | Nie |
 | SUSE Linux Enterprise 15,1 | Nie |

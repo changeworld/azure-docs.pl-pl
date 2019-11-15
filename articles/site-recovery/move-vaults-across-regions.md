@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie konfiguracji Azure Site Recovery do innego regionu platformy Azure | Microsoft Docs
-description: Wskazówki dotyczące przeniesienia konfiguracji Site Recovery do innego regionu platformy Azure
+title: Przenoszenie magazynu Azure Site Recovery do innego regionu
+description: Opisuje sposób przenoszenia magazynu Recovery Services (Azure Site Recovery) do innego regionu platformy Azure
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2cf06a0c4e35d22cbad260201183516db2f07436
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013459"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090295"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Przenoszenie magazynu Recovery Services i konfiguracji Azure Site Recovery do innego regionu platformy Azure
 
@@ -45,9 +45,9 @@ W tym dokumencie zawarto następujące:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Zidentyfikuj zasoby, które były używane przez Azure Site Recovery
 Zalecamy wykonanie tego kroku przed przejściem do kolejnego. Podczas replikowania maszyn wirtualnych łatwiej jest identyfikować odpowiednie zasoby.
 
-Dla każdej zreplikowanej maszyny wirtualnej platformy Azure przejdź do **pozycji elementy** > chronione**zreplikowane** > **Właściwości** elementów i zidentyfikuj następujące zasoby:
+Dla każdej zreplikowanej maszyny wirtualnej platformy Azure przejdź do **pozycji chronione elementy** > **zreplikowane elementy** > **Właściwości** i zidentyfikuj następujące zasoby:
 
-- Docelowa grupa zasobów
+- Docelowa Grupa zasobów
 - Konto magazynu pamięci podręcznej
 - Docelowe konto magazynu (w przypadku niezarządzanej maszyny wirtualnej platformy Azure opartej na dyskach) 
 - Sieć docelowa
@@ -56,7 +56,7 @@ Dla każdej zreplikowanej maszyny wirtualnej platformy Azure przejdź do **pozyc
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>Wyłącz istniejącą konfigurację odzyskiwania po awarii
 
 1. Przejdź do magazynu Recovery Services.
-2. W obszarze **chronione elementy** > **zreplikowane elementy**kliknij prawym przyciskiem myszy maszynę i wybierz pozycję **Wyłącz replikację**.
+2. W obszarze **chronione elementy** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy maszynę i wybierz pozycję **Wyłącz replikację**.
 3. Powtórz ten krok dla wszystkich maszyn wirtualnych, które chcesz przenieść.
 
 > [!NOTE]

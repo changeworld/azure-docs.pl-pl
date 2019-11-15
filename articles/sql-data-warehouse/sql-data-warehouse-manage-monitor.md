@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645669"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083649"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 W tym artykule opisano sposób korzystania z dynamicznych widoków zarządzania (widoków DMV) do monitorowania obciążenia. Obejmuje to badanie wykonywania zapytań w Azure SQL Data Warehouse.
@@ -28,7 +28,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Monitoruj połączenia
-Wszystkie logowania do SQL Data Warehouse są rejestrowane w pliku [sys. DM _pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Ten DMV zawiera ostatnie identyfikatory logowania 10 000.  Session_id jest kluczem podstawowym i jest przypisywana sekwencyjnie dla każdego nowego logowania.
+Wszystkie logowania do SQL Data Warehouse są rejestrowane w pliku [sys. dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Ten DMV zawiera ostatnie identyfikatory logowania 10 000.  Session_id jest kluczem podstawowym i jest przypisywana sekwencyjnie dla każdego nowego logowania.
 
 ```sql
 -- Other Active Connections
@@ -36,7 +36,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Monitoruj wykonywanie zapytań
-Wszystkie zapytania wykonane w SQL Data Warehouse są rejestrowane w [widoku sys. DM _pdw_exec_requests][sys.dm_pdw_exec_requests].  Ten DMV zawiera ostatnie 10 000 wykonanych zapytań.  Request_id jednoznacznie identyfikuje poszczególne zapytania i jest kluczem podstawowym dla tego DMV.  Request_id jest przypisywana sekwencyjnie dla każdej nowej kwerendy i ma prefiks QID, który oznacza identyfikator zapytania.  Wykonywanie zapytania dotyczącego tego DMV dla danego session_id pokazuje wszystkie zapytania dotyczące danego logowania.
+Wszystkie zapytania wykonane w SQL Data Warehouse są rejestrowane w pliku [sys. dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Ten DMV zawiera ostatnie 10 000 wykonanych zapytań.  Request_id jednoznacznie identyfikuje poszczególne zapytania i jest kluczem podstawowym dla tego DMV.  Request_id jest przypisywana sekwencyjnie dla każdego nowego zapytania i ma prefiks QID, który oznacza identyfikator zapytania.  Wykonywanie zapytania dotyczącego tego DMV dla danego session_id zawiera wszystkie zapytania dotyczące danego logowania.
 
 > [!NOTE]
 > Procedury składowane używają wielu identyfikatorów żądań.  Identyfikatory żądań są przypisywane w kolejności sekwencyjnej. 
@@ -63,9 +63,9 @@ ORDER BY total_elapsed_time DESC;
 
 Z poprzednich wyników zapytania należy **zwrócić uwagę na identyfikator żądania** zapytania, które chcesz zbadać.
 
-Zapytania w stanie **wstrzymania** można umieścić w kolejce ze względu na dużą liczbę aktywnych uruchomionych zapytań. Te zapytania są również wyświetlane w zapytaniu [sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) oczekiwania z typem UserConcurrencyResourceType. Aby uzyskać informacje o ograniczeniach współbieżności, zobacz [warstwy wydajności](performance-tiers.md) lub [klasy zasobów do zarządzania obciążeniami](resource-classes-for-workload-management.md). Zapytania mogą również poczekać z innych powodów, takich jak w przypadku blokad obiektów.  Jeśli zapytanie oczekuje na zasób, zobacz [Badanie zapytań oczekujących na zasoby][Investigating queries waiting for resources] w dalszej sekcji tego artykułu.
+Zapytania w stanie **wstrzymania** można umieścić w kolejce ze względu na dużą liczbę aktywnych uruchomionych zapytań. Te zapytania są również wyświetlane w pliku [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) czeka na zapytanie z typem UserConcurrencyResourceType. Aby uzyskać informacje o ograniczeniach współbieżności, zobacz [warstwy wydajności](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units) lub [klasy zasobów do zarządzania obciążeniami](resource-classes-for-workload-management.md). Zapytania mogą również poczekać z innych powodów, takich jak w przypadku blokad obiektów.  Jeśli zapytanie oczekuje na zasób, zobacz [Badanie zapytań oczekujących na zasoby][Investigating queries waiting for resources] w dalszej sekcji tego artykułu.
 
-Aby uprościć wyszukiwanie zapytania w tabeli [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , użyj [etykiety][LABEL] , aby przypisać komentarz do zapytania, które można wyszukać w widoku sys. DM _pdw_exec_requests.
+Aby uprościć wyszukiwanie zapytania w tabeli [sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , należy użyć [etykiety][LABEL] do przypisania komentarza do zapytania, które można wyszukać w widoku sys. dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -82,7 +82,7 @@ WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>Krok 2. Badanie planu zapytania
-Użyj identyfikatora żądania, aby pobrać plan rozproszonej bazy danych SQL (DSQL) zapytania z [widoku sys. DM _pdw_request_steps][sys.dm_pdw_request_steps].
+Użyj identyfikatora żądania, aby pobrać plan rozproszonej bazy danych SQL (DSQL) zapytania z [tabeli sys. dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -101,7 +101,7 @@ Aby zbadać dalsze szczegóły dotyczące pojedynczego kroku, kolumny *operation
 * Przejdź do kroku 3B dla **operacji przenoszenia danych**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Krok 3a: Badanie SQL w rozproszonych bazach danych
-Użyj identyfikatora żądania i indeksu kroku, aby pobrać szczegóły z [tabeli sys. DM _pdw_sql_requests][sys.dm_pdw_sql_requests], która zawiera informacje o wykonywaniu kroku zapytania dla wszystkich rozproszonych baz danych.
+Użyj identyfikatora żądania i indeksu kroku, aby pobrać szczegóły z [tabeli sys. dm_pdw_sql_requests][sys.dm_pdw_sql_requests], która zawiera informacje o wykonywaniu kroku zapytania dla wszystkich rozproszonych baz danych.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -111,7 +111,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Gdy krok zapytania jest uruchomiony, [polecenia DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] można użyć do pobrania SQL Server szacowanego planu z pamięci podręcznej planu SQL Server na potrzeby kroku uruchomionego w określonej dystrybucji.
+Gdy krok zapytania jest uruchomiony, [polecenie DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] może zostać użyte do pobrania SQL Server szacowanego planu z pamięci podręcznej planu SQL Server dla kroku uruchomionego w określonej dystrybucji.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -121,7 +121,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3B: badanie przenoszenia danych w rozproszonych bazach danych
-Użyj identyfikatora żądania i indeksu kroku, aby pobrać informacje o kroku przenoszenia danych uruchomionym w każdej dystrybucji z poziomu [widoku sys. DM _pdw_dms_workers][sys.dm_pdw_dms_workers].
+Użyj identyfikatora żądania i indeksu kroku, aby pobrać informacje o kroku przenoszenia danych uruchomionym w każdej dystrybucji z poziomu [widoku sys. dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -134,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Sprawdź kolumnę *total_elapsed_time* , aby sprawdzić, czy dana dystrybucja trwa znacznie dłużej niż inne do przenoszenia danych.
 * W przypadku długotrwałej dystrybucji Sprawdź kolumnę *rows_processed* , aby sprawdzić, czy liczba wierszy przenoszonych z tej dystrybucji jest znacznie większa niż w przypadku innych. Jeśli tak, to znalezienie może wskazywać pochylenie danych źródłowych.
 
-Jeśli zapytanie jest uruchomione, [polecenia DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] można użyć do pobrania SQL Server szacowanego planu z pamięci podręcznej planu SQL Server dla aktualnie działającego kroku SQL w ramach określonej dystrybucji.
+Jeśli zapytanie jest uruchomione, [polecenia DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] mogą służyć do pobierania SQL Server szacowanego planu z pamięci podręcznej planu SQL Server dla aktualnie uruchomionego kroku SQL w ramach określonej dystrybucji.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -206,7 +206,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Jeśli masz zapytanie korzystające z dużej ilości pamięci lub otrzymasz komunikat o błędzie związany z przydzieleniem bazy danych tempdb, może to być spowodowane bardzo dużym [CREATE TABLE jak SELECT (CTAs)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) lub [Wstawianie instrukcji SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , która kończy się niepowodzeniem w końcowa Operacja przenoszenia danych. Może to być zwykle identyfikowane jako operacja ShuffleMove w planie zapytania rozproszonego bezpośrednio przed ostatnim WSTAWIANIEm.  Aby monitorować operacje ShuffleMove, należy użyć [widoku sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) . 
+Jeśli masz zapytanie korzystające z dużej ilości pamięci lub otrzymasz komunikat o błędzie związany z przydzieleniem bazy danych tempdb, może to być spowodowane bardzo dużym [CREATE TABLE jak SELECT (CTAs)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) lub [Wstawianie instrukcji SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , która kończy się niepowodzeniem w końcowa Operacja przenoszenia danych. Może to być zwykle identyfikowane jako operacja ShuffleMove w planie zapytania rozproszonego bezpośrednio przed ostatnim WSTAWIANIEm.  Użyj wykazu [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) , aby monitorować operacje ShuffleMove. 
 
 Najbardziej typowym środkiem ograniczającym jest przerwanie CTAS lub wstawianie instrukcji SELECT do wielu instrukcji obciążenia, tak aby wolumin danych nie przekroczy limitu 1 TB na węzeł w ramach platformy tempdb. Możesz również skalować klaster do większego rozmiaru, co spowoduje rozłożenie rozmiaru bazy danych tempdb na więcej węzłów, zmniejszając bazę danych tempdb w każdym węźle.
 

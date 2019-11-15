@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii lokalnych serwerów fizycznych na platformę Azure przy użyciu Azure Site Recovery | Microsoft Docs "
+title: Zarządzanie serwerem konfiguracji serwerów fizycznych w Azure Site Recovery
 description: W tym artykule opisano sposób zarządzania serwerem konfiguracji Azure Site Recovery na potrzeby odzyskiwania po awarii serwera fizycznego na platformie Azure.
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242999"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084611"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego
 
@@ -39,7 +39,7 @@ Tabela zawiera podsumowanie wymagań wstępnych dotyczących wdrażania lokalneg
 | IIS | -Brak istniejącej domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz ustawienie [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> — Żadna istniejąca witryna sieci Web/aplikacja nasłuchu na porcie 443<br>|
 | Typ karty sieciowej | VMXNET3 (po wdrożeniu jako maszyny wirtualnej VMware) |
 | Typ adresu IP | Statyczny |
-| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi -  (niewymagane w przypadku serwerów przetwarzania skalowalnego w poziomie) <br> - time.nist.gov <br> - time.windows.com |
+| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi - (niewymagane w przypadku serwerów przetwarzania skalowalnego w poziomie) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych)|
 
 ## <a name="download-the-latest-installation-file"></a>Pobierz najnowszy plik instalacyjny
@@ -118,12 +118,12 @@ Uruchom plik instalacyjny w następujący sposób:
 |/PSIP|Wymagane|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
 |/CSIP|Wymagane|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
 |/PassphraseFilePath|Wymagane|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
-|/BypassProxy|Opcjonalne|Określa, że serwer konfiguracji łączy się z platformą Azure bez serwera proxy|Należy uzyskać tę wartość z Venu|
-|/ProxySettingsFilePath|Opcjonalne|Ustawienia serwera proxy (domyślny serwer proxy wymaga uwierzytelniania lub niestandardowy serwer proxy)|Plik powinien mieć format określony poniżej|
-|DataTransferSecurePort|Opcjonalne|Numer portu dla protokołu PSIP do użytku z danymi replikacji| Prawidłowy numer portu (wartość domyślna to 9433)|
-|/SkipSpaceCheck|Opcjonalne|Pomiń sprawdzanie miejsca dla dysku pamięci podręcznej| |
+|/BypassProxy|Optional (Opcjonalność)|Określa, że serwer konfiguracji łączy się z platformą Azure bez serwera proxy|Należy uzyskać tę wartość z Venu|
+|/ProxySettingsFilePath|Optional (Opcjonalność)|Ustawienia serwera proxy (domyślny serwer proxy wymaga uwierzytelniania lub niestandardowy serwer proxy)|Plik powinien mieć format określony poniżej|
+|DataTransferSecurePort|Optional (Opcjonalność)|Numer portu dla protokołu PSIP do użytku z danymi replikacji| Prawidłowy numer portu (wartość domyślna to 9433)|
+|/SkipSpaceCheck|Optional (Opcjonalność)|Pomiń sprawdzanie miejsca dla dysku pamięci podręcznej| |
 |/AcceptThirdpartyEULA|Wymagane|Flaga implikuje akceptację umowy licencyjnej innego producenta| |
-|/ShowThirdpartyEULA|Opcjonalne|Wyświetla umowę licencyjną innej firmy. Jeśli zostanie podany w danych wejściowych, wszystkie inne parametry są ignorowane| |
+|/ShowThirdpartyEULA|Optional (Opcjonalność)|Wyświetla umowę licencyjną innej firmy. Jeśli zostanie podany w danych wejściowych, wszystkie inne parametry są ignorowane| |
 
 
 
@@ -155,7 +155,7 @@ Ustawienia serwera proxy dla komputera serwera konfiguracji można modyfikować 
 3. Kliknij kartę **rejestracja w magazynie** .
 4. Pobierz nowy plik rejestracji magazynu z portalu i podaj go jako dane wejściowe do narzędzia.
 
-   ![Rejestr-konfiguracja-serwer](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Podaj szczegóły nowego serwera proxy, a następnie kliknij przycisk **zarejestruj** .
 6. Otwórz okno poleceń administracyjnych programu PowerShell.
 7. Uruchom następujące polecenie:
@@ -175,7 +175,7 @@ Ustawienia serwera proxy dla komputera serwera konfiguracji można modyfikować 
 2. Uruchom cspsconfigtool. exe przy użyciu skrótu na pulpicie.
 3. Kliknij kartę **rejestracja w magazynie** .
 4. Pobierz nowy plik rejestracji z portalu i podaj go jako dane wejściowe do narzędzia.
-      ![Register-Configuration-Server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Podaj szczegóły serwera proxy, a następnie kliknij przycisk **zarejestruj** .  
 6. Otwórz okno poleceń administracyjnych programu PowerShell.
 7. Uruchom następujące polecenie
@@ -259,7 +259,7 @@ Uaktualnij serwer w następujący sposób:
    * Dostawca Site Recovery Microsoft Azure
    * Microsoft Azure Site Recovery serwera konfiguracji/serwera przetwarzania
    * Microsoft Azure Site Recovery konfiguracji zależności serwera
-   * Serwer MySQL 5,5
+   * MySQL Server 5.5
 4. Uruchom następujące polecenie z wiersza polecenia i administratora.
    ```
    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration

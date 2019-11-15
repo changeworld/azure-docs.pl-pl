@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791895"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082397"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Połączenia hybrydowe #
 
@@ -28,7 +28,7 @@ Połączenia hybrydowe to usługa na platformie Azure i funkcja w Azure App Serv
 W App Service Połączenia hybrydowe może służyć do uzyskiwania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie umożliwia alternatywnej możliwości uzyskiwania dostępu do aplikacji. Jak w App Service każde połączenie hybrydowe jest skorelowane z pojedynczym hostem TCP i kombinacją portów. Oznacza to, że punkt końcowy połączenia hybrydowego może znajdować się w dowolnym systemie operacyjnym i dowolnej aplikacji, pod warunkiem, że uzyskujesz dostęp do portu nasłuchiwania protokołu TCP. Funkcja Połączenia hybrydowe nie wie ani nie posługuje się z protokołem aplikacji lub dostępem do niego. Zapewnia to po prostu dostęp do sieci.  
 
 
-## <a name="how-it-works"></a>Zasady działania ##
+## <a name="how-it-works"></a>Jak to działa ##
 Funkcja Połączenia hybrydowe obejmuje dwa wywołania wychodzące do przekaźnika Azure Service Bus. Istnieje połączenie z biblioteki na hoście, na którym aplikacja działa w App Service. Istnieje również połączenie z Menedżer połączeń hybrydowych (HCM) do Service Bus Relay. HCM to usługa przekaźnikowa, która jest wdrażana w sieci obsługującej zasób, do którego próbujesz uzyskać dostęp. 
 
 Za pośrednictwem dwóch dołączonych połączeń aplikacja ma tunel TCP do stałego hosta: kombinacja portów po drugiej stronie HCM. W ramach uwierzytelniania i autoryzacji połączenie używa protokołu TLS 1,2 dla zabezpieczeń i kluczy sygnatury dostępu współdzielonego (SAS).    
@@ -106,7 +106,7 @@ App Service Połączenia hybrydowe są dostępne tylko w jednostkach SKU w warst
 
 | Plan cenowy | Liczba Połączenia hybrydowe użytecznych w planie |
 |----|----|
-| Basic | 5 |
+| Podstawowa | 5 |
 | Standardowa (Standard) | 25 |
 | Premium | 200 |
 | Izolowane | 200 |
@@ -220,6 +220,12 @@ Aby użyć tego interfejsu API, wymagany jest identyfikator wysyłania klucza i 
 
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+
+## <a name="secure-your-hybrid-connections"></a>Zabezpieczanie Połączenia hybrydowe ##
+
+Istniejące połączenie hybrydowe można dodać do innych App Service Web Apps przez dowolnego użytkownika, który ma odpowiednie uprawnienia do podstawowego przekaźnika Azure Service Bus. Oznacza to, że w przypadku konieczności uniemożliwienia innym osobom korzystania z tego samego połączenia hybrydowego (na przykład gdy zasób docelowy jest usługą, która nie ma żadnych dodatkowych środków bezpieczeństwa w celu zapobiegania nieautoryzowanemu dostępowi), należy zablokować dostęp do platformy Azure Service Bus Relay.
+
+Każda osoba mająca `Reader` dostęp do przekaźnika będzie mogła _wyświetlać_ połączenie hybrydowe podczas próby dodania go do aplikacji sieci Web w witrynie Azure Portal, ale nie będzie mogła _dodać_ go, ponieważ nie ma uprawnień do pobrania parametrów połączenia, które są używane do nawiązania połączenia z przekaźnikiem. Aby można było pomyślnie dodać połączenie hybrydowe, muszą mieć uprawnienie `listKeys` (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`). Rola `Contributor` lub jakakolwiek inna rola obejmująca to uprawnienie w ramach przekaźnika umożliwi użytkownikom korzystanie z połączenia hybrydowego i dodawanie go do własnych Web Apps.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów ##
 

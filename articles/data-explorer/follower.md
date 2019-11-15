@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828567"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083190"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Używanie bazy danych programu do uzupełniania w celu dołączania baz danych na platformie Azure Eksplorator danych
 
@@ -181,7 +181,7 @@ Aby sprawdzić, czy baza danych została pomyślnie dołączona, Znajdź dołąc
 
     ![Baza danych z flagami tylko do odczytu](media/follower/read-only-follower-database.png)
 
-Alternatywne
+Alternatywnie:
 
 1. Przejdź do klastra lidera i wybierz pozycję **bazy danych**
 2. Sprawdź, czy odpowiednie bazy danych są oznaczone jako **udostępniane innym osobom** > **tak**
@@ -242,15 +242,15 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>Zarządzaj podmiotami zabezpieczeń
 
-Podczas dołączania bazy danych określ **domyślny rodzaj modyfikacji podmiotu zabezpieczeń**. Domyślnie zachowuje lidera kolekcja baz danych [autoryzowanych podmiotów zabezpieczeń](/azure/kusto/management/access-control/index.md#authorization)
+Podczas dołączania bazy danych określ **domyślny rodzaj modyfikacji podmiotu zabezpieczeń**. Domyślnie zachowuje lidera kolekcja baz danych [autoryzowanych podmiotów zabezpieczeń](/azure/kusto/management/access-control/index#authorization)
 
 |**Natur** |**Opis**  |
 |---------|---------|
 |**Unii**     |   Dołączone podmioty zabezpieczeń bazy danych zawsze będą zawierać pierwotne podmioty zabezpieczeń bazy danych oraz dodatkowe nowe podmioty zabezpieczeń dodane do bazy danych programu do wykonania.      |
-|**Stępować**   |    Brak dziedziczenia podmiotów zabezpieczeń z oryginalnej bazy danych. Dla dołączonej bazy danych należy utworzyć nowe podmioty zabezpieczeń. Należy dodać co najmniej jednego podmiot zabezpieczeń, aby zablokować dziedziczenie podmiotu zabezpieczeń.     |
-|**Dawaj**   |   Dołączone podmioty zabezpieczeń bazy danych zawierają tylko główne bazy danych bez dodatkowych podmiotów zabezpieczeń.      |
+|**Zastąp**   |    Brak dziedziczenia podmiotów zabezpieczeń z oryginalnej bazy danych. Dla dołączonej bazy danych należy utworzyć nowe podmioty zabezpieczeń. Należy dodać co najmniej jednego podmiot zabezpieczeń, aby zablokować dziedziczenie podmiotu zabezpieczeń.     |
+|**Brak**   |   Dołączone podmioty zabezpieczeń bazy danych zawierają tylko główne bazy danych bez dodatkowych podmiotów zabezpieczeń.      |
 
-Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania autoryzowanych podmiotów zabezpieczeń, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower.md).
+Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania autoryzowanych podmiotów zabezpieczeń, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).
 
 ### <a name="manage-permissions"></a>Zarządzaj uprawnieniami
 
@@ -258,7 +258,7 @@ Zarządzanie uprawnieniem do bazy danych tylko do odczytu jest takie samo jak w 
 
 ### <a name="configure-caching-policy"></a>Konfigurowanie zasad buforowania
 
-Administrator bazy danych może zmodyfikować [Zasady buforowania](/azure/kusto/management/cache-policy) dołączonej bazy danych lub dowolnej z jej tabel w klastrze hostingu. Wartość domyślna zachowuje lidera kolekcja baz danych i zasad buforowania na poziomie tabeli. Można na przykład mieć 30-dniową zasadę buforowania dla lidera bazy danych do uruchamiania miesięcznego raportowania oraz trzy dni zasad buforowania w bazie danych programu, aby wykonać zapytanie dotyczące tylko najnowszych danych w celu rozwiązywania problemów. Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania zasad buforowania w bazie danych lub tabeli programu, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower.md).
+Administrator bazy danych może zmodyfikować [Zasady buforowania](/azure/kusto/management/cache-policy) dołączonej bazy danych lub dowolnej z jej tabel w klastrze hostingu. Wartość domyślna zachowuje lidera kolekcja baz danych i zasad buforowania na poziomie tabeli. Można na przykład mieć 30-dniową zasadę buforowania dla lidera bazy danych do uruchamiania miesięcznego raportowania oraz trzy dni zasad buforowania w bazie danych programu, aby wykonać zapytanie dotyczące tylko najnowszych danych w celu rozwiązywania problemów. Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania zasad buforowania w bazie danych lub tabeli programu, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -270,4 +270,4 @@ Administrator bazy danych może zmodyfikować [Zasady buforowania](/azure/kusto/
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać informacje na temat konfiguracji klastra z flagami, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower.md).
+* Aby uzyskać informacje na temat konfiguracji klastra z flagami, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).

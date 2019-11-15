@@ -1,20 +1,19 @@
 ---
-title: Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V podczas odzyskiwania po awarii na platformie Azure za pomocą usługi Site Recovery | Microsoft Docs
+title: Konfigurowanie trybu failover i powrotu po awarii dla maszyn wirtualnych funkcji Hyper-V w Azure Site Recovery
 description: Dowiedz się, jak przejść do trybu failover i powrócić po awarii maszyn wirtualnych funkcji Hyper-V podczas odzyskiwania po awarii na platformie Azure za pomocą usługi Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4b9680b00905126d261562d7bec64bb931c1cda3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845709"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082647"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowanych na platformie Azure
 
@@ -65,7 +64,7 @@ W obszarze **Chronione elementy** kliknij kolejno pozycje **Zreplikowane element
 4. Po weryfikacji przełączenia do trybu failover kliknij przycisk **Zatwierdź**. To działanie usuwa wszystkie dostępne punkty odzyskiwania.
 
 > [!WARNING]
-> **Nie anuluj trybu failover, który jest w toku**: jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
+> **Nie należy anulować trybu failover po rozpoczęciu przełączania**: w takim przypadku przełączanie zostanie zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Powrót maszyn wirtualnych platformy Azure po awarii do środowiska lokalnego i odwrotna replikacja lokalnych maszyn wirtualnych
 

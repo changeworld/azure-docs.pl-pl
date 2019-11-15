@@ -1,5 +1,5 @@
 ---
-title: Łączenie sieci lokalnych do usługi Microsoft Cloud za pomocą zasięgu globalnym — usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
+title: 'Azure ExpressRoute: łączenie się z Microsoft Cloud przy użyciu Global Reach'
 description: W tym artykule wyjaśniono, zasięgu globalnym usługi ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: e522c7ea306667f675af4bbe7486e25fb7f4ec9f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: e01b311d10dcf4216bfeea77ce8919f64ea2ef28
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122801"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080340"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 Usługa ExpressRoute jest prywatny i odporne na błędy sposób łączenia sieci lokalnej Microsoft Cloud. Możesz uzyskać dostęp do wielu usług w chmurze firmy Microsoft, takich jak Azure, i pakietu Office 365 z prywatnego centrum danych lub sieci firmowej. Na przykład masz oddziału w San Francisco z obwodem usługi ExpressRoute w Dolinie Krzemowej i innego oddziału firmy w Londynie z obwodem usługi ExpressRoute, w tym samym mieście. Obu biur oddziałów mogą mieć łączność o dużej szybkości do zasobów platformy Azure w zachodnich stanach USA i Południowe Zjednoczone Królestwo. Jednak oddziałów nie wymiany danych bezpośrednio ze sobą. Innymi słowy 10.0.1.0/24 może wysyłać dane do 10.0.3.0/24 i 10.0.4.0/24, ale nie do 10.0.2.0/24.
@@ -39,16 +38,16 @@ Zasięgu globalnym usługi ExpressRoute jest obecnie obsługiwane w następując
 * SRA Hongkong
 * Irlandia
 * Japonia
-* Korea Południowa
+* Korea
 * Holandia
 * Singapur
 * Szwajcaria
-* Zjednoczone Królestwo
+* Wielka Brytania
 * Stany Zjednoczone
 
 Utworzono obwodów usługi ExpressRoute [lokalizacje komunikacji równorzędnej usługi ExpressRoute](expressroute-locations.md) powyżej krajów lub regionów. Aby włączyć usługi ExpressRoute zasięgu globalnym między [różnych regionów geopolitycznych](expressroute-locations.md), obwodów usługi musi być jednostki SKU Premium.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 1. [Dowiedz się więcej o zasięgu globalnym usługi ExpressRoute](expressroute-faqs.md)
 2. [Jak włączyć zasięgu globalnym usługi ExpressRoute](expressroute-howto-set-global-reach.md)
 3. [Połącz obwód usługi ExpressRoute z sieci wirtualnej platformy Azure](expressroute-howto-linkvnet-arm.md)

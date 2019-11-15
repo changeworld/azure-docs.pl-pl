@@ -1,5 +1,5 @@
 ---
-title: Komunikacja z aplikacją urządzenia w C# usłudze za pośrednictwem usługi Azure IoT Hub strumienie urządzeń (wersja zapoznawcza) | Microsoft Docs
+title: Komunikacja z aplikacją urządzenia w C# usłudze Azure IoT Hub strumienie urządzeń
 description: W tym przewodniku szybki start uruchomisz C# dwie przykładowe aplikacje, które komunikują się za pośrednictwem strumienia urządzeń ustanowionego za pośrednictwem IoT Hub.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900931"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084293"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Szybki Start: komunikacja z aplikacją urządzenia w C# usłudze za pośrednictwem IoT Hub strumieni urządzenia (wersja zapoznawcza)
 

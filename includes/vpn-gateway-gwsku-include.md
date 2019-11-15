@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 75152fabfc33dda0494d871fbdf9a388f4260c0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495743"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085263"
 ---
 Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. W przypadku jednostek SKU bramy sieci wirtualnej w Strefy dostępności platformy Azure zobacz [jednostki SKU bramy strefy dostępności platformy Azure](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
 
@@ -21,7 +21,11 @@ Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do 
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-[!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
+> [!NOTE]
+> Jednostki SKU VpnGw (VpnGw1, VpnGw1AZ, VpnGw2, VpnGw2AZ, VpnGw3, VpnGw3AZ, VpnGw4, VpnGw4AZ, VpnGw5 i VpnGw5AZ) są obsługiwane tylko w przypadku modelu wdrażania Menedżer zasobów. Klasyczne sieci wirtualne powinny nadal używać starych (starszych) jednostek SKU.
+>  * Aby uzyskać informacje na temat pracy ze starszymi jednostkami SKU bramy (Basic, standard i HighPerformance), zobacz [Praca z jednostkami SKU bramy sieci VPN (starsze jednostki SKU)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
+>  * W przypadku jednostek SKU bramy usługi ExpressRoute należy zapoznać się z tematem [Virtual Network Gateways for ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
+>
 
 ###  <a name="feature"></a>Jednostki SKU bramy według zestawu funkcji
 

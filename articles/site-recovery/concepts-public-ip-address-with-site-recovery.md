@@ -1,6 +1,6 @@
 ---
-title: Używania publicznych adresów IP po włączeniu trybu failover za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania publicznych adresów IP przy użyciu usługi Azure Site Recovery i Azure Traffic Manager na potrzeby odzyskiwania po awarii i migracji
+title: Przypisywanie publicznych adresów IP po przejściu w tryb failover za pomocą Azure Site Recovery
+description: Opisuje sposób konfigurowania publicznych adresów IP przy użyciu Azure Site Recovery i platformy Azure Traffic Manager na potrzeby odzyskiwania po awarii i migracji
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,52 +8,52 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101957"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084249"
 ---
-# <a name="set-up-public-ip-addresses-after-failover"></a>Konfigurowanie publicznych adresów IP, po włączeniu trybu failover
+# <a name="set-up-public-ip-addresses-after-failover"></a>Skonfiguruj publiczne adresy IP po przejściu w tryb failover
 
 Publiczne adresy IP umożliwiają zasobom internetowym komunikowanie się w ramach ruchu przychodzącego z zasobami platformy Azure. Publiczne adresy IP umożliwiają również zasobom platformy Azure komunikowanie się w ramach ruchu wychodzącego z Internetem i publicznymi usługami platformy Azure za pomocą adresu IP przypisanego do zasobu.
-- Komunikacji przychodzącej z Internetu do zasobu, takich jak Azure Virtual Machines (VM), bramy aplikacji platformy Azure, usługi równoważenia obciążenia platformy Azure, bram Azure VPN Gateway i inne. Użytkownik może nadal komunikować się z niektórych zasobów, takich jak maszyny wirtualne z Internetu, jeśli maszyna wirtualna nie ma publiczny adres IP przypisany do niego, tak długo, jak maszyna wirtualna jest częścią puli zaplecza modułu równoważenia obciążenia i równoważenia obciążenia jest przypisany publiczny adres IP.
-- Łączność wychodząca z Internetem przy użyciu adresu IP przewidywalne. Na przykład maszyny wirtualnej mogą komunikować się ruch wychodzący do Internetu bez publicznego adresu IP do niej przypisany, lecz jego adres sieci adresu tłumaczone przez usługę Azure nieprzewidywalne adres publiczny, domyślnie. Przypisanie publicznego adresu IP do zasobu umożliwia wiedzieć, których adres IP jest używany dla połączeń wychodzących. Chociaż przewidywalne, można zmienić adres, w zależności od wybranej metody przydziału. Aby uzyskać więcej informacji, zobacz [tworzenie publicznego adresu IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address). Aby dowiedzieć się więcej na temat połączeń wychodzących z zasobów platformy Azure, zobacz [informacje o połączeniach wychodzących](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Komunikacja przychodząca z Internetu do zasobu, taka jak Azure Virtual Machines (maszyna wirtualna), Azure Application Gateways, Azure Load Gateways, Azure sieci VPN i inne. Można nadal komunikować się z niektórymi zasobami, takimi jak maszyny wirtualne, z Internetu, jeśli maszyna wirtualna nie ma przypisanego publicznego adresu IP, pod warunkiem, że maszyna wirtualna jest częścią puli zaplecza modułu równoważenia obciążenia, a moduł równoważenia obciążenia ma przypisany publiczny adres IP.
+- Łączność wychodząca z Internetem przy użyciu przewidywalnego adresu IP. Na przykład maszyna wirtualna może komunikować się z Internetem bez przypisanego do niego publicznego adresu IP, ale jego adres jest domyślnie przetłumaczony przez platformę Azure do nieprzewidywalnego adresu publicznego. Przypisanie publicznego adresu IP do zasobu pozwala dowiedzieć się, który adres IP jest używany do połączenia wychodzącego. Chociaż przewidywalna, adres może się zmienić, w zależności od wybranej metody przypisania. Aby uzyskać więcej informacji, zobacz [Tworzenie publicznego adresu IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address). Aby dowiedzieć się więcej o połączeniach wychodzących z zasobów platformy Azure, zobacz [Omówienie połączeń wychodzących](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-W usłudze Azure Resource Manager, publiczny adres IP jest zasobem, który ma własne właściwości. Niektóre zasoby, z którymi możesz powiązać zasób publicznego adresu IP, to:
+W Azure Resource Manager publiczny adres IP jest zasobem, który ma własne właściwości. Niektóre zasoby, z którymi możesz powiązać zasób publicznego adresu IP, to:
 
 * Interfejsy sieciowe maszyny wirtualnej
 * Moduły równoważenia obciążenia dostępne z Internetu
 * Bramy sieci VPN
 * Bramy aplikacji
 
-W tym artykule opisano, jak użyć publicznych adresów IP, z usługą Site Recovery.
+W tym artykule opisano, jak można używać publicznych adresów IP z Site Recovery.
 
-## <a name="public-ip-address-assignment-using-recovery-plan"></a>Publiczne przypisania adresu IP przy użyciu planu odzyskiwania
+## <a name="public-ip-address-assignment-using-recovery-plan"></a>Przypisanie publicznego adresu IP przy użyciu planu odzyskiwania
 
-Publiczny adres IP aplikacji produkcyjnej **nie mogą być przechowywane w trybie failover**. Obciążenia wznowione, jako część procesu pracy awaryjnej musi być przypisany zasób publicznego adresu IP usługi Azure dostępne w regionie docelowym. Ten krok można wykonać albo ręcznie lub jest automatycznie przy użyciu planów odzyskiwania. Plan odzyskiwania zbiera maszyn w grupach odzyskiwania. Pomaga zdefiniować proces systematyczne odzyskiwania. Umożliwia nakłada zamówienie planu odzyskiwania i zautomatyzować wymagane przeprowadzenie kolejnych czynności na każdym etapie, za pomocą elementów runbook usługi Azure Automation do trybu failover na platformie Azure lub skryptów.
+Nie można zachować publicznego adresu IP aplikacji produkcyjnej **w trybie failover**. Do obciążeń przetworzonych w ramach procesu przełączania do trybu failover należy przypisać zasób publicznego adresu IP platformy Azure dostępny w regionie docelowym. Ten krok można wykonać ręcznie lub zautomatyzowany przy użyciu planów odzyskiwania. Plan odzyskiwania umożliwia zbieranie maszyn w grupach odzyskiwania. Ułatwia on zdefiniowanie procesu odzyskiwania systematyczne. Można użyć planu odzyskiwania, aby wprowadzić zamówienie i zautomatyzować akcje potrzebne w każdym kroku, korzystając z Azure Automation elementów Runbook w celu przełączenia w tryb failover do platformy Azure lub skryptów.
 
-Instalator jest w następujący sposób:
-- Tworzenie [planu odzyskiwania](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) i grupach obciążenia w razie potrzeby do planu.
-- Dostosuj planu, dodając krok do dołączenia, publiczny adres IP, za pomocą [elementów runbook usługi Azure Automation](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) skryptów w trybie Failover maszyny Wirtualnej.
+Konfiguracja jest następująca:
+- Utwórz [plan odzyskiwania](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) i Grupuj swoje obciążenia w miarę potrzeb w planie.
+- Dostosuj plan, dodając krok w celu dołączenia publicznego adresu IP za pomocą skryptów [elementów runbook Azure Automation](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) do maszyny wirtualnej przełączonej w tryb failover.
 
  
-## <a name="public-endpoint-switching-with-dns-level-routing"></a>Publiczny punkt końcowy przełączenie Routing poziomu DNS
+## <a name="public-endpoint-switching-with-dns-level-routing"></a>Przełączanie publicznego punktu końcowego przy użyciu routingu na poziomie systemu DNS
 
-Usługa Azure Traffic Manager umożliwia routing między punktami końcowymi na poziomie DNS i może pomóc [obniżenie swoje RTO](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) dla scenariusza odzyskiwania po awarii. 
+Usługa Azure Traffic Manager umożliwia routing na poziomie systemu DNS między punktami końcowymi i może pomóc w podniesieniu RTO do scenariusza odzyskiwania po [awarii](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) . 
 
-Dowiedz się więcej na temat Scenariusze trybu failover za pomocą usługi Traffic Manager:
-1. [Środowiska lokalnego do trybu failover systemu Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) z usługą Traffic Manager 
-2. [Tryb failover do platformy](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) z usługą Traffic Manager 
+Więcej informacji na temat scenariuszy trybu failover można znaleźć w Traffic Manager:
+1. [Lokalne do trybu failover platformy Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) za pomocą Traffic Manager 
+2. [Przejście do trybu failover platformy Azure do platformy Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) za pomocą Traffic Manager 
 
-Instalator jest w następujący sposób:
-- Tworzenie [profilu usługi Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
-- Przy użyciu **priorytet** routingu metody, Utwórz dwa punkty końcowe — **podstawowego** źródła i **trybu Failover** dla platformy Azure. **Podstawowy** jest przypisany priorytet 1 i **trybu Failover** jest przypisany priorytet 2.
-- **Podstawowego** punkt końcowy może być [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) lub [zewnętrznych](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) w zależności od tego, czy Twoje środowisko źródłowe jest wewnątrz lub spoza platformy Azure.
-- **Trybu Failover** punkt końcowy został utworzony jako **Azure** punktu końcowego. Użyj **statyczny publiczny adres IP** będzie to zewnątrz punktu końcowego usługi Traffic Manager w przypadku awarii.
+Konfiguracja jest następująca:
+- Utwórz [profil Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- Korzystając z metody routingu **priorytetowego** , Utwórz dwa punkty końcowe — **podstawowe** dla źródła i **trybu failover** dla platformy Azure. **Podstawowym** przypisano priorytet 1, a **tryb failover** ma przypisany priorytet 2.
+- **Podstawowym** punktem końcowym może być [platforma Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) lub [zewnętrzna](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) w zależności od tego, czy środowisko źródłowe znajduje się na platformie Azure, czy poza nią.
+- Punkt końcowy **trybu failover** jest tworzony jako punkt końcowy **platformy Azure** . Użyj **statycznego publicznego adresu IP** , ponieważ będzie to zewnętrzny punkt końcowy dla Traffic Manager w zdarzeniu awarii.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [usługi Traffic Manager z usługą Azure Site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
-- Dowiedz się więcej o usłudze Traffic Manager [metod routingu](../traffic-manager/traffic-manager-routing-methods.md).
-- Dowiedz się więcej o [planów odzyskiwania](site-recovery-create-recovery-plans.md) do automatyzowania trybu failover w aplikacji.
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [Traffic Manager z Azure Site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
+- Dowiedz się więcej na temat Traffic Manager [metod routingu](../traffic-manager/traffic-manager-routing-methods.md).
+- Dowiedz się więcej o [planach odzyskiwania](site-recovery-create-recovery-plans.md) w celu zautomatyzowania pracy awaryjnej aplikacji.

@@ -1,27 +1,26 @@
 ---
-title: Azure Site Recovery — często zadawane pytania
+title: Ogólne pytania dotyczące usługi Azure Site Recovery
 description: W tym artykule omówiono popularne pytania dotyczące Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 9ab2466a201662cfde4655aedd12f9fd1b21c964
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053723"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078538"
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: często zadawane pytania
-Ten artykuł zawiera podsumowanie często zadawanych pytań dotyczących Azure Site Recovery.</br>
-Konkretne zapytania dotyczące różnych scenariuszy usługi ASR można znaleźć w tematach często zadawanych pytań dotyczących scenariusza.<br>
+# <a name="general-questions-about-azure-site-recovery"></a>Ogólne pytania dotyczące Azure Site Recovery
 
-- [Odzyskiwanie po awarii maszyny wirtualnej platformy Azure na platformę Azure](azure-to-azure-common-questions.md)
-- [Odzyskiwanie po awarii maszyn wirtualnych VMware na platformę Azure](vmware-azure-common-questions.md)
-- [Odzyskiwanie po awarii maszyn wirtualnych funkcji Hyper-V do platformy Azure](hyper-v-azure-common-questions.md)
+Ten artykuł zawiera podsumowanie często zadawanych pytań dotyczących Azure Site Recovery. W przypadku określonych scenariuszy przejrzyj te artykuły
+
+- [Pytania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure na platformę Azure](azure-to-azure-common-questions.md)
+- [Pytania dotyczące odzyskiwania po awarii maszyny wirtualnej VMware na platformę Azure](vmware-azure-common-questions.md)
+- [Pytania dotyczące odzyskiwania po awarii maszyny wirtualnej funkcji Hyper-V na platformie Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Ogólne
 
@@ -222,7 +221,7 @@ Tak. odzyskiwanie lokalizacji alternatywnej można użyć do powrotu po awarii d
 * [Dla maszyn wirtualnych VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Dla maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-failback.md#perform-failback)
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatyzacja
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Czy można zautomatyzować scenariusze Site Recovery przy użyciu zestawu SDK?
 Tak. Przepływy pracy usługi Site Recovery można zautomatyzować przy użyciu interfejsu API REST, programu PowerShell lub zestawu SDK platformy Azure. Obecnie obsługiwane scenariusze wdrażania Site Recovery przy użyciu programu PowerShell:

@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery — wykluczanie dysków podczas replikacji maszyn wirtualnych platformy Azure przy użyciu Azure PowerShell | Microsoft Docs
+title: Wykluczanie dysków maszyny wirtualnej platformy Azure z replikacji przy użyciu Azure Site Recovery i Azure PowerShell
 description: Dowiedz się, jak wykluczać dyski maszyn wirtualnych platformy Azure podczas Azure Site Recovery przy użyciu Azure PowerShell.
 author: asgang
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 317a8ba48851ebf65fe52e79f6cf9d9c45786f6f
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: beb4ee6fcf6413634d7d728e3f070294e8ce3787
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053404"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084969"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Wykluczanie dysków z replikacji programu PowerShell na maszynach wirtualnych platformy Azure
 

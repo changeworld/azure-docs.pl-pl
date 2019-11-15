@@ -1,19 +1,19 @@
 ---
-title: Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware lub serwerów fizycznych do pomocniczej lokacji programu VMware z Azure Site Recovery | Microsoft Docs
+title: Obsługa oprogramowania VMware/fizycznego odzyskiwania po awarii w lokacji dodatkowej z Azure Site Recovery
 description: Podsumowuje obsługę odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych w lokacji dodatkowej z Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255207"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082186"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -51,7 +51,7 @@ Poniższa tabela zawiera podsumowanie obsługi systemu operacyjnego dla maszyn r
 **System operacyjny** | **Szczegóły**
 --- | ---
 Oprogramowanie Windows Server | 64-bitowy system Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z co najmniej dodatkiem SP1.
-Linux | Red Hat Enterprise Linux 6,7, 6,8, 6,9, 7,1, 7,2 <br/><br/> CentOS 6,5, 6,6, 6,7, 6,8, 6,9, 7,0, 7,1, 7,2 <br/><br/> Oracle Enterprise Linux 6,4, 6,5, 6,8, uruchamianie jądra zgodnego z systemem Red Hat lub nieprzerwane wydanie jądra 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 z dodatkiem SP3, 11 SP4 
+Linux | Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.1, 7.2 <br/><br/> Centos 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2 <br/><br/> Oracle Enterprise Linux 6,4, 6,5, 6,8, uruchamianie jądra zgodnego z systemem Red Hat lub nieprzerwane wydanie jądra 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
 
 
 ## <a name="linux-machine-storage"></a>Magazyn maszyny z systemem Linux
@@ -68,47 +68,47 @@ Można replikować tylko maszyny z systemem Linux z następującym magazynem:
 
 **Konfiguracja** | **Obsługiwane**  
 --- | --- 
-Hostowanie — Tworzenie zespołu kart interfejsu sieciowego | Tak 
-Host-sieć VLAN | Tak 
-Host-IPv4 | Tak 
+Hostowanie — Tworzenie zespołu kart interfejsu sieciowego | Yes 
+Host-sieć VLAN | Yes 
+Host-IPv4 | Yes 
 Host-IPv6 | Nie 
 Maszyna wirtualna gościa — Tworzenie zespołu kart interfejsu sieciowego | Nie
-Maszyna wirtualna gościa — IPv4 | Tak
+Maszyna wirtualna gościa — IPv4 | Yes
 Maszyna wirtualna gościa — IPv6 | Nie
-Maszyna wirtualna gościa — system Windows/Linux — statyczny adres IP | Tak
-Maszyna wirtualna gościa — wiele kart sieciowych | Tak
+Maszyna wirtualna gościa — system Windows/Linux — statyczny adres IP | Yes
+Maszyna wirtualna gościa — wiele kart sieciowych | Yes
 
 
-## <a name="storage"></a>Usługa Storage
+## <a name="storage"></a>Magazyn
 
 ### <a name="host-storage"></a>Magazyn hosta
 
 **Magazyn (Host)** | **Obsługiwane** 
 --- | --- 
-NFS | Tak 
-SMB 3.0 | ND 
-SIEĆ SAN (ISCSI) | Tak 
-Wiele ścieżek (MPIO) | Tak 
+NFS | Yes 
+SMB 3.0 | Nie dotyczy 
+SAN (ISCSI) | Yes 
+Wiele ścieżek (MPIO) | Yes 
 
 ### <a name="guest-or-physical-server-storage"></a>Magazyn Gości lub serwer fizyczny
 
 **Konfiguracja** | **Obsługiwane** 
 --- | --- 
-VMDK | Tak 
-DYSK VHD/VHDX | ND 
-Maszyna wirtualna generacji 2 | ND 
-Udostępniony dysk klastra | Tak 
+VMDK | Yes 
+VHD/VHDX | Nie dotyczy 
+Maszyna wirtualna generacji 2 | Nie dotyczy 
+Udostępniony dysk klastra | Yes 
 Zaszyfrowany dysk | Nie 
-UEFI| Tak 
+UEFI| Yes 
 NFS | Nie 
 SMB 3.0 | Nie 
-RDM | Tak 
-Dysk > 1 TB | Tak 
-Wolumin z dyskiem rozłożonym > 1 TB<br/><br/> LVM | Tak 
+RDM | Yes 
+Dysk > 1 TB | Yes 
+Wolumin z dyskiem rozłożonym > 1 TB<br/><br/> LVM | Yes 
 Miejsca do magazynowania | Nie 
-Gorące Dodawanie/usuwanie dysku | Tak 
-Wykluczanie dysku | Tak 
-Wiele ścieżek (MPIO) | ND 
+Gorące Dodawanie/usuwanie dysku | Yes 
+Wykluczanie dysku | Yes 
+Wiele ścieżek (MPIO) | Nie dotyczy 
 
 ## <a name="vaults"></a>Magazyny
 

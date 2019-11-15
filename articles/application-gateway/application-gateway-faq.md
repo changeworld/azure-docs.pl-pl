@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2cf69b456aeccd6da5ac393b88171fb3bb03cf2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470075"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082548"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -91,7 +91,7 @@ Zobacz [zagadnienia dotyczące rozmiaru podsieci Application Gateway](https://do
 
 Tak. Oprócz wielu wystąpień danego wdrożenia Application Gateway można zainicjować inny unikatowy zasób Application Gateway do istniejącej podsieci, która zawiera różne zasoby Application Gateway.
 
-Pojedyncza podsieć nie może jednocześnie obsługiwać Standard_v2 i standardowych Application Gateway.
+Pojedyncza podsieć nie może jednocześnie obsługiwać jednocześnie Standard_v2 i Application Gateway standardowych.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Czy Application Gateway obsługuje nagłówki x-Forwarded-For?
 
@@ -290,10 +290,6 @@ Nie, używaj tylko znaków alfanumerycznych w haśle pliku PFX.
 
 Tak. WAF obsługuje wszystkie funkcje w standardowej jednostce SKU.
 
-### <a name="which-crs-versions-does-application-gateway-support"></a>Które wersje systemu KSR są obsługiwane Application Gateway?
-
-Application Gateway obsługuje KSR [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) i KSR [3,0](application-gateway-crs-rulegroups-rules.md#owasp30).
-
 ### <a name="how-do-i-monitor-waf"></a>Jak mogę monitorować WAF?
 
 Monitoruj WAF za poorednictwem rejestrowania diagnostycznego. Aby uzyskać więcej informacji, zobacz [rejestrowanie diagnostyczne i metryki dla Application Gateway](application-gateway-diagnostics.md).
@@ -308,7 +304,7 @@ Tak. Aby uzyskać więcej informacji, zobacz [Dostosowywanie grup reguł i regu�
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>Jakie reguły są obecnie dostępne dla WAF?
 
-WAF obecnie obsługuje program KSR [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) i [3,0](application-gateway-crs-rulegroups-rules.md#owasp30). Te reguły zapewniają zabezpieczenia bazowe przed większością luk 10 najważniejszych, które są używane do otwierania projektu zabezpieczeń aplikacji sieci Web (OWASP): 
+WAF obecnie obsługuje KSR [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)i [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31). Te reguły zapewniają zabezpieczenia bazowe przed większością luk 10 najważniejszych, które są używane do otwierania projektu zabezpieczeń aplikacji sieci Web (OWASP): 
 
 * Ochrona przed atakami polegającymi na iniekcji SQL
 * Ochrona skryptów między lokacjami

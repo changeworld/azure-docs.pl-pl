@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9dbc24aa93b1f2c89b23120abb018c920835d8d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896980"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084643"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -102,7 +102,7 @@ Każde żądanie do usługi Azure Storage musi być autoryzowane. Usługa Azure 
 
 - **Azure Active Directory (Azure AD) integracja dla danych obiektów blob i kolejek.** Usługa Azure Storage obsługuje uwierzytelnianie i autoryzację w usłudze Azure AD dla usług obiektów blob i kolejek za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Autoryzacja żądań za pomocą usługi Azure AD jest zalecana w celu zapewnienia bezpieczeństwa i łatwość użycia. Aby uzyskać więcej informacji, zobacz [Autoryzuj dostęp do obiektów blob i kolejek platformy Azure przy użyciu Azure Active Directory](storage-auth-aad.md).
 - **Autoryzacja usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza).** Azure Files obsługuje autoryzację opartą na tożsamościach za pośrednictwem protokołu SMB (Server Message Block) za pośrednictwem Azure Active Directory Domain Services. Przyłączone do domeny maszyny wirtualne z systemem Windows mogą uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Omówienie autoryzacji Azure Active Directory za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza)](../files/storage-files-active-directory-overview.md).
-- **Autoryzacja za pomocą klucza współużytkowanego.** Usługi Azure Storage Blob, Queue i Table i Azure Files obsługują autoryzację za pomocą klucza współużytkowanego. klient korzystający z autoryzacji klucza współużytkowanego przekazuje nagłówek z każdym żądaniem podpisanym przy użyciu klucza dostępu do konta magazynu. Aby uzyskać więcej informacji, zobacz [Autoryzuj przy użyciu klucza](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)współużytkowanego.
+- **Autoryzacja za pomocą klucza współużytkowanego.** Usługi Azure Storage Blob, Queue i Table i Azure Files obsługują autoryzację za pomocą klucza współużytkowanego. klient korzystający z autoryzacji klucza współużytkowanego przekazuje nagłówek z każdym żądaniem podpisanym przy użyciu klucza dostępu do konta magazynu. Aby uzyskać więcej informacji, zobacz [Autoryzuj przy użyciu klucza współużytkowanego](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
 - **Autoryzacja przy użyciu sygnatur dostępu współdzielonego (SAS).** Sygnatura dostępu współdzielonego (SAS) jest ciągiem zawierającym token zabezpieczający, który może być dołączany do identyfikatora URI zasobu magazynu. Token zabezpieczający hermetyzuje ograniczenia, takie jak uprawnienia i interwał dostępu. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
 - **Anonimowy dostęp do kontenerów i obiektów BLOB.** Kontener i jego obiekty blob mogą być publicznie dostępne. Po określeniu, że kontener lub obiekt BLOB jest publiczny, każda osoba może ją odczytać anonimowo; nie jest wymagane żadne uwierzytelnianie. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
 
@@ -143,7 +143,7 @@ Zasoby usługi Azure Storage są dostępne za pomocą dowolnego języka, który 
 - [Interfejs API REST usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/)
 - [Biblioteka klienta usługi Azure Storage dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Biblioteka klienta usługi Azure Storage dla środowiska Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Biblioteka klienta usługi Azure Storage dla środowiska Node. js](https://docs.microsoft.com/javascript/api/azure-storage)
+- [Biblioteka klienta usługi Azure Storage dla środowiska Node. js](https://docs.microsoft.com/javascript/api/overview/azure/storage)
 - [Biblioteka klienta usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python)
 - [Biblioteka klienta usługi Azure Storage dla języka PHP](https://github.com/Azure/azure-storage-php)
 - [Biblioteka klienta usługi Azure Storage dla języka Ruby](https://github.com/Azure/azure-storage-ruby)

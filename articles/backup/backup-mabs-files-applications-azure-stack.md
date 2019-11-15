@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 70da426f1dff843f1e2515052431f54f8ea83780
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074089"
+ms.locfileid: "74091562"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Tworzenie kopii zapasowych plików i aplikacji w usłudze Azure Stack
 
@@ -134,7 +134,7 @@ Aby wyświetlić Azure Backup Server jednostki w Azure Portal, można wykonać n
 2. Kliknij pozycję Infrastruktura kopii zapasowych.
 3. Wyświetl serwery zarządzania kopiami zapasowymi.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać informacje na temat używania Azure Backup Server do ochrony innych obciążeń, zobacz jeden z następujących artykułów:
 

@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: fb1f8a1d1f8e1ebbaf3e0e9fe96e3c1bf0ba9ba6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176168"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078751"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Używanie prywatnych punktów końcowych usługi Azure Storage (wersja zapoznawcza)
 
@@ -22,7 +22,7 @@ Możesz użyć [prywatnych punktów końcowych](../../private-link/private-endpo
 
 Używanie prywatnych punktów końcowych dla konta magazynu pozwala:
 - Zabezpiecz swoje konto magazynu, konfigurując zaporę magazynu do blokowania wszystkich połączeń w publicznym punkcie końcowym usługi Storage.
-- Zwiększa bezpieczeństwo sieci wirtualnej (VNet), umożliwiając zablokowanie eksfiltracji danych w wirtualnej.
+- Zwiększ bezpieczeństwo sieci wirtualnej (VNet), umożliwiając zablokowanie eksfiltracji danych w wirtualnej.
 - Bezpiecznie łącz się z kontami magazynu z sieci lokalnych, które łączą się z siecią wirtualną przy użyciu [sieci VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [Usługa expressroutes](../../expressroute/expressroute-locations.md) z prywatną komunikację równorzędną.
 
 ## <a name="conceptual-overview"></a>Omówienie pojęć
@@ -30,11 +30,11 @@ Używanie prywatnych punktów końcowych dla konta magazynu pozwala:
 
 Prywatny punkt końcowy jest specjalnym interfejsem sieciowym dla usługi platformy Azure w [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNET). Utworzenie prywatnego punktu końcowego dla konta magazynu zapewnia bezpieczną łączność między klientami w sieci wirtualnej i magazynem. Do prywatnego punktu końcowego jest przypisany adres IP z zakresu adresów IP sieci wirtualnej. Połączenie między prywatnym punktem końcowym a usługą magazynu używa bezpiecznego linku prywatnego.
 
-Aplikacje w sieci wirtualnej mogą bezproblemowo łączyć się z usługą magazynu za pośrednictwem prywatnego punktu końcowego, używając tych samych parametrów połączenia i mechanizmów autoryzacji, które mogą być używane w inny sposób. Prywatnych punktów końcowych można używać ze wszystkimi protokołami obsługiwanymi przez konto magazynu, w tym REST i SMB.
+Aplikacje w sieci wirtualnej mogą bezproblemowo łączyć się z usługą magazynu za pośrednictwem prywatnego punktu końcowego, **używając tych samych parametrów połączenia i mechanizmów autoryzacji, które mogą być używane w inny sposób**. Prywatnych punktów końcowych można używać ze wszystkimi protokołami obsługiwanymi przez konto magazynu, w tym REST i SMB.
 
 Po utworzeniu prywatnego punktu końcowego dla usługi magazynu w sieci wirtualnej do zatwierdzenia dla właściciela konta magazynu jest wysyłane żądanie zgody. Jeśli użytkownik żądający utworzenia prywatnego punktu końcowego jest również właścicielem konta magazynu, to żądanie zgody jest automatycznie zatwierdzane.
 
-Właściciele kont magazynu mogą zarządzać żądaniami zgody i prywatnymi punktami końcowymi za pomocą karty "prywatne punkty końcowe" dla konta magazynu w [Azure Portal](https://portal.azure.com).
+Właściciele kont magazynu mogą zarządzać żądaniami zgody i prywatnymi punktami końcowymi za pomocą karty "*prywatne punkty końcowe*" dla konta magazynu w [Azure Portal](https://portal.azure.com).
 
 > [!TIP]
 > Jeśli chcesz ograniczyć dostęp do konta magazynu tylko za pomocą prywatnego punktu końcowego, skonfiguruj zaporę magazynu tak, aby odmówić wszystkim dostępowi za pomocą publicznego punktu końcowego.
@@ -48,7 +48,7 @@ Podczas tworzenia prywatnego punktu końcowego należy określić konto magazynu
 > [!TIP]
 > Utwórz oddzielny prywatny punkt końcowy dla dodatkowego wystąpienia usługi Storage, aby uzyskać lepszą wydajność odczytu na kontach RA-GRS.
 
-Aby uzyskać informacje o dostępności na [koncie magazynu geograficznie nadmiarowego do odczytu](storage-redundancy-grs.md#read-access-geo-redundant-storage), musisz oddzielić prywatne punkty końcowe zarówno dla wystąpienia podstawowego, jak i pomocniczego usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do **pracy w trybie failover**. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover. git 
+Aby uzyskać informacje o dostępności na [koncie magazynu geograficznie nadmiarowego do odczytu](storage-redundancy-grs.md#read-access-geo-redundant-storage), musisz oddzielić prywatne punkty końcowe zarówno dla wystąpienia podstawowego, jak i pomocniczego usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do **pracy w trybie failover**. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover.
 
 #### <a name="resources"></a>Zasoby
 
@@ -61,7 +61,7 @@ Aby uzyskać bardziej szczegółowe informacje na temat tworzenia prywatnego pun
 
 ### <a name="dns-changes-for-private-endpoints"></a>Zmiany w systemie DNS dla prywatnych punktów końcowych
 
-Klienci w sieci wirtualnej mogą używać tych samych parametrów połączenia dla konta magazynu, nawet w przypadku korzystania z prywatnego punktu końcowego.
+Klienci w sieci wirtualnej powinni używać tych samych parametrów połączenia dla konta magazynu, nawet w przypadku korzystania z prywatnego punktu końcowego.
 
 Podczas tworzenia prywatnego punktu końcowego aktualizujemy rekord zasobu CNAME DNS dla tego punktu końcowego magazynu do aliasu w poddomenie z prefiksem "*privatelink*". Domyślnie tworzymy również [prywatną strefę DNS](../../dns/private-dns-overview.md) dołączoną do sieci wirtualnej. Ta prywatna strefa DNS odpowiada poddomeny z prefiksem "*privatelink*" i zawiera rekordy zasobów DNS a dla prywatnych punktów końcowych.
 
@@ -82,19 +82,22 @@ Rekordy zasobów DNS dla StorageAccountA, po rozwiązaniu przez klienta w sieci 
 | Nazwa                                                  | Typ  | Wartość                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | klienta 10.1.1.5                                              |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-Takie podejście umożliwia dostęp do konta magazynu przy użyciu tych samych parametrów połączenia z sieci wirtualnej obsługującej prywatne punkty końcowe, a także klientów spoza sieci wirtualnej. Możesz użyć zapory magazynu, aby odmówić dostępu wszystkim klientom spoza sieci wirtualnej.
+Takie podejście umożliwia dostęp do konta magazynu **przy użyciu tych samych parametrów połączenia** z sieci wirtualnej obsługującej prywatne punkty końcowe, a także klientów spoza sieci wirtualnej. Możesz użyć zapory magazynu, aby odmówić dostępu wszystkim klientom spoza sieci wirtualnej.
+
+> [!IMPORTANT]
+> Użyj tych samych parametrów połączenia, aby nawiązać połączenie z kontem magazynu przez prywatne punkty końcowe, jak w przeciwnym razie. Nie łącz się z kontem magazynu przy użyciu adresu URL poddomeny "*privatelink*".
 
 > [!TIP]
-> Jeśli używasz niestandardowego lub lokalnego serwera DNS, należy użyć poddomeny "privatelink" usługi Storage, aby skonfigurować rekordy zasobów DNS dla prywatnych punktów końcowych.
+> W przypadku korzystania z niestandardowego lub lokalnego serwera DNS należy skonfigurować rekordy zasobów DNS dla prywatnych punktów końcowych w strefie DNS odpowiadającej poddomenie "privatelink" usługi magazynu.
 
 Zalecane nazwy stref DNS dla prywatnych punktów końcowych usług magazynu to:
 
 | Usługa magazynu        | Nazwa strefy                            |
 | :--------------------- | :----------------------------------- |
-| Usługa Obiekty Blob           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
+| Blob service           | `privatelink.blob.core.windows.net`  |
+| Usługa Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
 | Usługa plików           | `privatelink.file.core.windows.net`  |
 | usługa kolejki          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
@@ -106,12 +109,12 @@ Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Azure Pri
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="copy-blob-failures"></a>Błędy kopiowania obiektów BLOB
+### <a name="copy-blob-support"></a>Kopiuj obsługę obiektów BLOB
 
-Obecnie [kopie poleceń obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) wystawione dla kont magazynu, do których uzyskuje się dostęp za pomocą prywatnych punktów końcowych, zakończą się niepowodzeniem, gdy źródłowe konto magazynu
+W trakcie okresu zapoznawczego nie obsługujemy [kopiowania poleceń obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) dla kont magazynu, do których można uzyskać dostęp za pomocą prywatnych punktów końcowych, jeśli konto magazynu źródłowego jest chronione przez zaporę.
 
 ### <a name="subnets-with-service-endpoints"></a>Podsieci z punktami końcowymi usługi
-W trakcie okresu zapoznawczego nie można utworzyć prywatnego punktu końcowego w podsieci, która ma punkty końcowe usługi. Można utworzyć oddzielne podsieci w tej samej sieci wirtualnej dla punktów końcowych usługi i prywatnych punktów końcowych.
+Obecnie nie można utworzyć prywatnego punktu końcowego w podsieci, która ma punkty końcowe usługi. Jako obejście można utworzyć oddzielne podsieci w tej samej sieci wirtualnej dla punktów końcowych usługi i prywatnych punktów końcowych.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Ograniczenia dostępu do magazynu dla klientów w sieci wirtualnych z prywatnymi punktami końcowymi
 

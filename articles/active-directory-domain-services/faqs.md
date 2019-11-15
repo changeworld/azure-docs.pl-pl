@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: e8e6eb9be65b038780fa6e21cf20f4c5dda27a31
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991454"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081021"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące Azure Active Directory Domain Services.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 * [Czy mogę utworzyć wiele domen zarządzanych dla jednego katalogu usługi Azure AD?](#can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory)
 * [Czy mogę włączyć Azure AD Domain Services w klasycznej sieci wirtualnej?](#can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network)
@@ -62,7 +62,7 @@ Sama usługa nie obsługuje bezpośrednio tego scenariusza. Twoja domena zarząd
 Tak. Aby uzyskać więcej informacji, zobacz [jak włączyć Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Czy mogę włączyć Azure AD Domain Services przy użyciu szablonu Menedżer zasobów?
-Nie, obecnie nie jest możliwe Włączanie Azure AD Domain Services przy użyciu szablonu. Aby dowiedzieć się, [jak włączyć Azure AD Domain Services przy użyciu programu PowerShell](powershell-create-instance.md).
+Tak, możesz utworzyć Azure AD Domain Services domenę zarządzaną przy użyciu szablonu Menedżer zasobów. Przed wdrożeniem szablonu należy utworzyć nazwę główną usługi i grupę usługi Azure AD dla administracji przy użyciu Azure Portal lub Azure PowerShell. Podczas tworzenia Azure AD Domain Services domeny zarządzanej w Azure Portal, istnieje możliwość wyeksportowania szablonu do użycia z dodatkowymi wdrożeniami. W przykładowym [repozytorium szablonów usługi GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)znajduje się również przykładowy szablon.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Czy można dodać kontrolery domeny do Azure AD Domain Services domeny zarządzanej?
 Nie. Domena udostępniona przez Azure AD Domain Services jest domeną zarządzaną. Nie ma potrzeby udostępniania, konfigurowania ani zarządzania kontrolerami domeny dla tej domeny. Te działania związane z zarządzaniem są udostępniane jako usługa przez firmę Microsoft. W związku z tym nie można dodać dodatkowych kontrolerów domeny (do odczytu i zapisu lub tylko do odczytu) dla domeny zarządzanej.

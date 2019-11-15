@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888616"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092259"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Samouczek: uczenie i wdrażanie pierwszego modelu w języku R z Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,7 +70,7 @@ Zalecamy używanie RStudio do uruchamiania tego samouczka. W RStudio wybierz poz
 > Jeśli masz doświadczenie z RMarkdown, możesz użyć kodu z tego pliku.  Można też skopiować/wkleić fragmenty kodu z tego miejsca lub z tego artykułu do skryptu języka R lub wiersza polecenia.
 
 
-## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
+## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska programistycznego
 Konfiguracja dla pracy programistycznej w tym samouczku obejmuje następujące działania:
 
 * Instalowanie wymaganych pakietów
@@ -108,7 +108,7 @@ experiment_name <- "accident-logreg"
 exp <- experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-compute-target"></a>Tworzenie obiektu docelowego obliczeń
+### <a name="create-a-compute-target"></a>Utworzyć cel obliczenia
 Za pomocą usługi zarządzanej Azure Machine Learning Compute (AmlCompute) analitycy danych mogą szkolić modele uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure. Przykłady obejmują maszyny wirtualne z obsługą procesorów GPU. W tym samouczku utworzysz klaster AmlCompute z jednym węzłem jako środowisko szkoleniowe. Poniższy kod tworzy klaster obliczeniowy, jeśli jeszcze nie istnieje w obszarze roboczym.
 
 Jeśli klaster obliczeniowy nie istnieje, może być konieczne odczekanie kilku minut.
@@ -271,7 +271,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 Dzięki modelowi można przewidzieć niebezpieczeństwo zgonu z kolizji. Użyj platformy Azure ML do wdrożenia modelu jako usługi predykcyjnej. W tym samouczku zostanie wdrożona usługa sieci Web w [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
-### <a name="register-the-model"></a>Rejestrowanie modelu
+### <a name="register-the-model"></a>Zarejestruj model
 
 Najpierw Zarejestruj pobrany model w obszarze roboczym, korzystając z [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html). Zarejestrowanym modelem może być dowolna Kolekcja plików, ale w tym przypadku obiekt modelu R jest wystarczający. Platforma Azure ML będzie używać zarejestrowanego modelu do wdrożenia.
 
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 Usuń zasoby, gdy nie będą już potrzebne. Nie usuwaj zasobów, których planujesz nadal używać. 
 
 Usuń usługę sieci Web:
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 Usuń zarejestrowany model:
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 Usuń klaster obliczeniowy:
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 

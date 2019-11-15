@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure IoT Hub Streams C — szybki start dla protokołów SSH i RDP (wersja zapoznawcza) | Microsoft Docs
+title: Usługa Azure IoT Hub Streams C — szybki start dla protokołów SSH i RDP
 description: W tym przewodniku szybki start uruchomisz przykładową aplikację w języku C, która działa jako serwer proxy, aby umożliwić obsługę scenariuszy SSH i RDP przez IoT Hub strumieni urządzeń.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 5d610f14dc037d1585b7f8ec1e0dd28944847b7a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c8554fc3f691af05a2c6a660d07ffb9a6ff29f31
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900868"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084331"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzenia IoT Hub przy użyciu aplikacji serwera proxy języka C (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Usługa Azure IoT Hub obecnie obsługuje strumienie urządzeń jako [funkcję w 
 
 W tym przewodniku szybki start opisano konfigurowanie protokołu tunelowania Secure Shell (SSH) (przy użyciu portu 22) za pośrednictwem strumieni urządzeń. Konfiguracja dla ruchu Remote Desktop Protocol (RDP) jest podobna i wymaga prostej zmiany konfiguracji. Ponieważ strumienie urządzeń są typu Application-and Protocol-niezależny od, można zmodyfikować ten przewodnik Szybki Start, aby pomieścić inne typy ruchu aplikacji.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Na poniższej ilustracji przedstawiono sposób, w jaki programy lokalnego serwera proxy dla urządzeń i usług umożliwiają kompleksową łączność między procesami klienta SSH i SSH. W publicznej wersji zapoznawczej zestaw SDK języka C obsługuje strumienie urządzeń tylko po stronie urządzenia. W efekcie w tym przewodniku szybki start przedstawiono instrukcje dotyczące uruchamiania tylko aplikacji lokalnego serwera proxy na urządzeniu. Aby skompilować i uruchomić towarzyszącą aplikację po stronie usług, postępuj zgodnie z instrukcjami w jednym z następujących przewodników szybki start:
 

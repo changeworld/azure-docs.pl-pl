@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e0d55b3661e7dbff1519691bd396a30b8c527010
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936069"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092180"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
+# <a name="move-azure-vms-to-another-azure-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu platformy Azure
 
 Można przenieść maszyny wirtualne infrastruktury jako usługi (IaaS) platformy Azure z jednego regionu do drugiego w celu poprawy niezawodności, dostępności, zarządzania lub ładu. W tym samouczku pokazano, jak przenieść maszyny wirtualne do innego regionu przy użyciu Azure Site Recovery. Omawiane tematy:
 

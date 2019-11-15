@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 92717e704fb3f9e79b364fcf47bbcc096c5dd1d0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074823"
+ms.locfileid: "74090739"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Dodawanie magazynu do usługi Azure Backup Server
 
@@ -22,6 +22,8 @@ Azure Backup Server v2 i nowszych obsługuje Nowoczesny magazyn kopii zapasowych
 > [!NOTE]
 > Aby korzystać z Nowoczesny magazyn kopii zapasowych, należy uruchomić polecenie Backup Server v2 lub V3 w systemie Windows Server 2016 lub V3 w systemie Windows Server 2019.
 > W przypadku uruchomienia programu Backup Server v2 w starszej wersji systemu Windows Server Azure Backup Server nie może korzystać z Nowoczesny magazyn kopii zapasowych. Zamiast tego chroni obciążenia w taki sposób, w jaki działa serwer zapasowy v1. Aby uzyskać więcej informacji, zobacz [macierz ochrony](backup-mabs-protection-matrix.md)wersji serwera kopii zapasowej.
+>
+> Aby osiągnąć ulepszone wykonywanie kopii zapasowych, zalecamy wdrożenie serwera usługi MAB v3 z magazynem warstwowym w systemie Windows Server 2019. Aby uzyskać instrukcje dotyczące konfigurowania magazynu warstwowego, zapoznaj się z artykułem programu DPM "[set up the MB with Tiered Storage](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)".
 
 ## <a name="volumes-in-backup-server"></a>Woluminy na serwerze kopii zapasowej
 
@@ -64,6 +66,11 @@ Użycie serwera zapasowego w wersji 2 lub nowszej z woluminami jako magazyn dysk
     ![Wybierz serwer i dysk](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>Dodawanie woluminów do magazynu dyskowego serwera kopii zapasowej
+
+> [!NOTE]
+>
+> - Dodaj tylko jeden dysk do puli, aby zachować liczbę kolumn na 1. Następnie można dodać dyski odpowiednio do wymagań.
+> - W przypadku dodania wielu dysków do puli magazynów w ramach języka go liczba dysków jest przechowywana jako liczba kolumn. Po dodaniu większej liczby dysków może to być tylko wielokrotność liczby kolumn.
 
 Aby dodać wolumin do serwera kopii zapasowej, w okienku **zarządzania** ponownie Przeskanuj magazyn, a następnie wybierz pozycję **Dodaj**. Zostanie wyświetlona lista wszystkich woluminów dostępnych do dodania do magazynu serwera kopii zapasowych. Po dodaniu dostępnych woluminów do listy wybranych woluminów można nadać im przyjazną nazwę ułatwiającą zarządzanie nimi. Aby sformatować te woluminy do systemu plików ReFS, aby serwer kopii zapasowych mógł korzystać z zalet Nowoczesny magazyn kopii zapasowych, wybierz **przycisk OK**.
 

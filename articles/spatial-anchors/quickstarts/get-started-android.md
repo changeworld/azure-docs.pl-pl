@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 248b66a928d373678d3058be488e226ee51bbcae
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845736"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092123"
 ---
-# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji systemu Android przy użyciu usługi Azure Spatial Anchors
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji dla systemu Android przy użyciu kotwic usługi Azure przestrzenny
 
 W tym przewodniku Szybki start opisano, jak utworzyć aplikację dla systemu Android przy użyciu usługi [Azure Spatial Anchors](../overview.md) w języku Java lub C++/NDK. Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARCore dla systemu Android, która może zapisywać i przywoływać kotwicę przestrzenną.
 
@@ -34,11 +34,11 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 
 - Maszyna z systemem Windows lub macOS z <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
   - W przypadku uruchomienia w systemie Windows potrzebna jest również <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a>.
-  - W przypadku uruchamiania w systemie macOS Pobierz narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`polecenie.
+  - W przypadku uruchamiania w systemie macOS Pobierz narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`.
   - Aby skompilować przykład NDK, należy również zainstalować CMake NDK i 3,6 lub więcej SDK Tools w Android Studio.
 - Urządzenie z systemem Android <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">pracujące w trybie dewelopera</a> i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">zgodne z platformą ARCore</a>.
   - Aby komputer mógł komunikować się z urządzeniem z systemem Android, mogą być wymagane dodatkowe sterowniki urządzeń. Aby uzyskać dodatkowe informacje i instrukcje, zobacz [tutaj](https://developer.android.com/studio/run/device.html) .
-- Twoja aplikacja musi być docelowa ARCore **1,8**.
+- Aplikacja musi mieć element Target ARCore **1.11.0**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -52,7 +52,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Pobierz `arcore_c_api.h` z tego [miejsca](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h) i umieść go `Android\NDK\libraries\include`w.
+Pobierz `arcore_c_api.h` z tego [miejsca](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) i umieść je w `Android\NDK\libraries\include`.
 
 W ramach nowo sklonowanego repozytorium zainicjuj moduły podrzędne, uruchamiając następujące polecenie:
 
@@ -80,7 +80,7 @@ Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystał
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Otwórz plik `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
+Otwórz `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 
@@ -88,7 +88,7 @@ Znajdź pole `SpatialAnchorsAccountId` i zastąp wartość `Set me` identyfikato
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Otwórz plik `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
+Otwórz `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 
@@ -117,4 +117,4 @@ Zatrzymaj aplikację, wybierając polecenie **Stop (Zatrzymaj)** na pasku narzę
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udostępnianie kotwic przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)

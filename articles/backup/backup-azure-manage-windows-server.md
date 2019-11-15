@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e5103fad517e695198602a182574de964a9c504
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747444"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091129"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -100,7 +100,7 @@ Domyślnie wszystkie szczegóły, z wyjątkiem **ostatniego wystąpienia czasu**
 * Serwer chroniony
 * Ważność
 * Czas trwania
-* Czas utworzenia
+* Godzina utworzenia
 * Stan
 * Ostatni czas wystąpienia
 
@@ -221,7 +221,7 @@ Można wyświetlić jedną operację lub wszystkie operacje. Nie można wybrać 
 * Wszystkie operacje
 * Zarejestruj subskrypcję
 * Konfigurowanie kopii zapasowych
-* Tworzenie kopii zapasowych
+* Backup
 * Przywracanie
 * Wyłącz kopię zapasową
 * Usuwanie danych kopii zapasowej

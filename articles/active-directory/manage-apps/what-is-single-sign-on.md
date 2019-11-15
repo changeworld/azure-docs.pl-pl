@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 8f8d1c9f53d08d017c6c07abf8e00ab77e6879e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477174"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091392"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 
@@ -60,7 +60,7 @@ Aby uzyskać więcej informacji, zobacz:
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Microsoft Identity platform Developer Guide](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="saml-sso"></a>LOGOWANIA JEDNOKROTNEGO SAML
+## <a name="saml-sso"></a>Logowanie jednokrotne SAML
 
 Za pomocą **SAML logowania jednokrotnego**, usługa Azure AD uwierzytelnia się do aplikacji przy użyciu konta usługi Azure AD. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Korzystając z logowania jednokrotnego opartego na protokole SAML, można mapować użytkowników na określone role aplikacji na podstawie reguł zdefiniowanych w oświadczeniach SAML.
 
@@ -73,7 +73,7 @@ Opartej na SAML logowania jednokrotnego jest obsługiwana dla aplikacji, które 
 
 Aby skonfigurować aplikację SaaS dla logowania jednokrotnego opartego na protokole SAML, zobacz Konfigurowanie logowania jednokrotnego [opartego na protokole SAML](configure-single-sign-on-non-gallery-applications.md). Ponadto wiele aplikacji oprogramowania jako usługi (SaaS) ma [samouczek specyficzny dla aplikacji](../saas-apps/tutorial-list.md) , który przeprowadzi Cię przez proces konfigurowania logowania jednokrotnego opartego na protokole SAML.
 
-Aby skonfigurować aplikację dla protokołu WS-Federation, postępuj zgodnie z tymi samymi wskazówkami, aby skonfigurować aplikację dla logowania jednokrotnego opartego na protokole SAML, zobacz Konfigurowanie logowania jednokrotnego [opartego na protokole SAML](configure-single-sign-on-non-gallery-applications.md). W kroku, aby skonfigurować aplikację do korzystania z usługi Azure AD, musisz zastąpić adres URL logowania usługi Azure AD dla punktu `https://login.microsoftonline.com/<tenant-ID>/wsfed`końcowego usługi WS-Federation.
+Aby skonfigurować aplikację dla protokołu WS-Federation, postępuj zgodnie z tymi samymi wskazówkami, aby skonfigurować aplikację dla logowania jednokrotnego opartego na protokole SAML, zobacz Konfigurowanie logowania jednokrotnego [opartego na protokole SAML](configure-single-sign-on-non-gallery-applications.md). W kroku, aby skonfigurować aplikację do korzystania z usługi Azure AD, musisz zastąpić adres URL logowania usługi Azure AD dla `https://login.microsoftonline.com/<tenant-ID>/wsfed`punktu końcowego usługi WS-Federation.
 
 Aby skonfigurować aplikację lokalną na potrzeby logowania jednokrotnego opartego na protokole SAML, zobacz Rejestrowanie jednokrotne [SAML dla aplikacji lokalnych przy użyciu serwera proxy aplikacji](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -97,6 +97,8 @@ Oparte na hasłach logowanie jednokrotne jest obsługiwana dla dowolnej aplikacj
    > Program Internet Explorer ma ograniczoną obsługę i nie otrzymuje już nowych aktualizacji oprogramowania. Zalecana przeglądarka to Microsoft Edge.
 
 - Microsoft Edge w systemie Windows 10 w wersji rocznicowej lub nowszej
+- Microsoft Edge dla systemów iOS i Android
+- Intune Managed Browser
 - Dla programu Chrome w Windows 7 lub nowszy, a system MacOS x lub nowszym
 - Firefox 26.0 lub nowszej dla systemu Windows XP SP2 lub nowszy i w systemie Mac OS X 10.6 lub nowszej
 
@@ -187,10 +189,10 @@ Ponieważ ten scenariusz jest oferowany przez partnerstwo między usługą Azure
 
 Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](../fundamentals/active-directory-whatis.md).
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 * [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Konfigurowanie logowania jednokrotnego opartego na protokole SAML](configure-single-sign-on-non-gallery-applications.md)
 * [Konfigurowanie logowania jednokrotnego opartego na hasłach](configure-password-single-sign-on-non-gallery-applications.md)
 * [Konfigurowanie logowania połączonego](configure-linked-sign-on.md)
 * [Wprowadzenie do zarządzanie dostępem do aplikacji](what-is-access-management.md)
-* Link do pobierania: [Plan wdrożenia logowania](https://aka.ms/SSODeploymentPlan)jednokrotnego.
+* Link pobierania: [plan wdrażania rejestracji jednokrotnej](https://aka.ms/SSODeploymentPlan).

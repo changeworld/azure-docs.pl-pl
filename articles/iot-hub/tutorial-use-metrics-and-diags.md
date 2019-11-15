@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze Azure IoT Hub | Microsoft Docs
+title: Konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze Azure IoT Hub
 description: Dowiedz się, jak skonfigurować metryki i dzienniki diagnostyczne przy użyciu usługi Azure IoT Hub i korzystać z nich. Umożliwi to analizowanie danych, które mogą być pomocne w diagnozowaniu problemów z centrum.
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890361"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084358"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: Konfigurowanie metryk i dzienników diagnostycznych za pomocą Centrum IoT Hub oraz korzystanie z nich
 
@@ -38,7 +38,7 @@ Ten samouczek obejmuje wykonanie następujących zadań:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Instalacja programu [Visual Studio](https://www.visualstudio.com/). 
+- Zainstalować program [Visual Studio](https://www.visualstudio.com/). 
 
 - Konto e-mail umożliwiające odbieranie wiadomości e-mail.
 

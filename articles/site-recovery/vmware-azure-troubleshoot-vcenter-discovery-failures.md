@@ -1,20 +1,20 @@
 ---
-title: Rozwiązywanie problemów z powrotem po awarii do stanu lokalnego podczas odzyskiwania po awarii maszyny wirtualnej VMware na platformie Azure za pomocą Azure Site Recovery
-description: W tym artykule opisano sposoby rozwiązywania problemów z odzyskiwaniem po awarii i ochroną podczas odzyskiwania po awarii maszyny wirtualnej VMware na platformę Azure przy użyciu Azure Site Recovery.
+title: Rozwiązywanie problemów z błędami odnajdywania programu VMware vCenter w Azure Site Recovery
+description: W tym artykule opisano sposób rozwiązywania problemów z błędami odnajdywania programu VMware vCenter w programie Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053847"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091249"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>Rozwiązywanie problemów z awariami odnajdywania w programie vCenter
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>Rozwiązywanie problemów z błędami odnajdywania vCenter Server
 
 Ten artykuł pomaga w rozwiązywaniu problemów występujących w wyniku awarii programu VMware vCenter Discovery.
 

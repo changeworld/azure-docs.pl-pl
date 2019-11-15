@@ -14,17 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881741"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084822"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Użyj Azure Media Analytics do przekonwertowania zawartości tekstowej w plikach wideo na tekst cyfrowy  
-
-> [!IMPORTANT]
-> Zapoznaj się z [planami wycofania](media-services-analytics-overview.md#retirement-plans) niektórych procesorów multimedialnych.
 
 ## <a name="overview"></a>Przegląd
 Jeśli zachodzi potrzeba wyodrębnienia zawartości tekstowej z plików wideo i wygenerowania edytowalnego, możliwego do przeszukiwania tekstu cyfrowego, należy użyć Azure Media Analytics OCR (optyczne rozpoznawanie znaków). Ten procesor multimediów platformy Azure wykrywa zawartość tekstową w plikach wideo i generuje pliki tekstowe do użycia. OCR umożliwia automatyzację wyodrębniania znaczących metadanych z sygnału wideo nośnika.
@@ -109,14 +106,14 @@ Dane wyjściowe zawierają następujące atrybuty:
 
 | Element | Opis |
 | --- | --- |
-| Skala czasu |"Takty" na sekundę filmu wideo |
+| Timescale |"Takty" na sekundę filmu wideo |
 | Przesunięcie |przesunięcie czasu dla sygnatur czasowych. W wersji 1,0 interfejsów API wideo zawsze będzie równa 0. |
 | Framerate |Klatki na sekundę filmu wideo |
 | Szerokość |Szerokość filmu wideo w pikselach |
-| Proporcj |wysokość filmu wideo w pikselach |
+| proporcj |wysokość filmu wideo w pikselach |
 | Fragments |Tablica fragmentów wideo opartych na czasie, w których fragmenty metadanych są podzielone |
 | rozpoczynanie |Godzina rozpoczęcia fragmentu w "taktach" |
-| trwania |Długość fragmentu w "taktach" |
+| duration |Długość fragmentu w "taktach" |
 | interval |interwał każdego zdarzenia w danym fragmencie |
 | zdarzenia |Tablica zawierająca regiony |
 | region |Obiekt reprezentujący wykryte wyrazy lub frazy |
@@ -369,7 +366,7 @@ namespace OCR
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

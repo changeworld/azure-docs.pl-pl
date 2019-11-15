@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie, alerty i metryki — usługa Azure ExpressRoute | Dokumentacja firmy Microsoft
+title: 'Azure ExpressRoute: monitorowanie, metryki i alerty'
 description: Ta strona zawiera informacje dotyczące monitorowania usługi ExpressRoute
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672147"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083427"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie, metryki i alerty usługi ExpressRoute
 
@@ -34,14 +33,14 @@ Po wybraniu metryki zostanie zastosowana domyślna agregacja. Opcjonalnie można
 | --- | --- | --- | --- |
 |Dostępność protokołu ARP|Dostępność|<ui><li>Węzeł równorzędny (podstawowy/pomocniczy router ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej (prywatny/publiczny/Microsoft)</ui></li>|ExpressRoute|
 |Dostępność protokołu BGP|Dostępność|<ui><li> Węzeł równorzędny (podstawowy/pomocniczy router ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej</ui></li>|ExpressRoute|
-|BitsInPerSecond|Ruch|<ui><li> Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li>Link (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsInPerSecond|Ruch|<ui><li> Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li>Link (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>Usługa ExpressRoute Direct|
 |BitsOutPerSecond|Ruch| <ui><li>Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li> Link (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute bezpośrednie</ui></li> |
 |GlobalReachBitsInPerSecond|Ruch|<ui><li>Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
 |GlobalReachBitsOutPerSecond|Ruch|<ui><li>Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
-|AdminState|Łączność fizyczna|Łącze|ExpressRoute Direct|
-|LineProtocol|Łączność fizyczna|Łącze|ExpressRoute Direct|
-|RxLightLevel|Łączność fizyczna|<ui><li>Powiązań</ui></li><ui><li>Ścieżka</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Łączność fizyczna|<ui><li>Powiązań</ui></li><ui><li>Ścieżka</ui></li>|ExpressRoute Direct|
+|AdminState|Łączność fizyczna|Link|Usługa ExpressRoute Direct|
+|LineProtocol|Łączność fizyczna|Link|Usługa ExpressRoute Direct|
+|RxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|Usługa ExpressRoute Direct|
+|TxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|Usługa ExpressRoute Direct|
 >[!NOTE]
 >Użycie *GlobalGlobalReachBitsInPerSecond* i *GlobalGlobalReachBitsOutPerSecond* będzie widoczne tylko wtedy, gdy zostanie nawiązane co najmniej jedno połączenie Global REACH.
 >
@@ -116,7 +115,7 @@ Możesz wyświetlić poziom światła TX (poziom jasny, który jest **przesyłan
 
 2. Kliknij przycisk **+ wybierz element docelowy** i wybierz zasób połączenia bramy usługi ExpressRoute.
 
-   ![Docelowy]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Zdefiniuj szczegóły alertu.
 
    ![grupy akcji](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
@@ -135,7 +134,7 @@ W **kryteriów alertu**, możesz wybrać **dziennika aktywności** typu sygnału
 
   ![inny](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Skonfiguruj połączenie usługi ExpressRoute.
   

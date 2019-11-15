@@ -1,21 +1,19 @@
 ---
-title: Ciągłe wdrażanie dla Azure Functions | Microsoft Docs
+title: Ciągłe wdrażanie dla usługi Azure Functions
 description: Użyj funkcji ciągłego wdrażania Azure App Service, aby opublikować swoje funkcje.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/25/2016
+ms.date: 09/25/2019
 ms.author: glenga
-ms.openlocfilehash: fb3cd885c0a16b3dc3a79150043b25cb271040bd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dae75153cffbf2f0e836e1a28b78a9f05f54e6e0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097096"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091177"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Ciągłe wdrażanie dla usługi Azure Functions
 
@@ -35,11 +33,14 @@ Aby ciągłe wdrożenie powiodło się, struktura katalogów musi być zgodna z 
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
+>[!NOTE]  
+> Ciągłe wdrażanie nie jest jeszcze obsługiwane w przypadku aplikacji systemu Linux działających w ramach planu zużycia. 
+
 ## <a name="credentials"></a>Konfigurowanie ciągłego wdrażania
 
 Aby skonfigurować ciągłe wdrażanie dla istniejącej aplikacji funkcji, wykonaj te kroki. Kroki pokazują integrację z repozytorium GitHub, ale podobne kroki dotyczą Azure Repos lub innych repozytoriów kodu źródłowego.
 
-1. W aplikacji funkcji w [Azure Portal](https://portal.azure.com)wybierz pozycję **platforma funkcje** > platformy**Deployment Center**.
+1. W aplikacji funkcji w [Azure Portal](https://portal.azure.com)wybierz pozycję **funkcje platformy** > **centrum wdrażania**.
 
     ![Otwórz centrum wdrażania](./media/functions-continuous-deployment/platform-features.png)
 
@@ -55,7 +56,7 @@ Aby skonfigurować ciągłe wdrażanie dla istniejącej aplikacji funkcji, wykon
 
 4. Wybierz jednego z następujących dostawców kompilacji:
 
-    * **App Service usługi kompilacji**: Najlepiej, gdy nie potrzebujesz kompilacji lub jeśli potrzebujesz kompilacji ogólnej.
+    * **App Service Build Service**: najlepiej, gdy nie potrzebujesz kompilacji lub jeśli potrzebujesz kompilacji ogólnej.
     * **Azure Pipelines (wersja zapoznawcza)** : Najlepsza, gdy potrzebna jest większa kontrola nad kompilacją. Ten dostawca jest obecnie w wersji zapoznawczej.
 
     ![Wybierz dostawcę kompilacji](./media/functions-continuous-deployment/build.png)

@@ -6,32 +6,32 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 080fda3077a10d0605f061aca5226783457348f9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7d2813a51e63d86b56712bb6d07efc2f65ec65a0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837538"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077813"
 ---
-# <a name="tutorial-create-azure-virtual-machine-scale-set-from-a-packer-custom-image-using-terraform"></a>Samouczek: Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure na podstawie niestandardowego obrazu programu Packer przy użyciu Terraform
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Samouczek: Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure na podstawie niestandardowego obrazu programu Packer przy użyciu Terraform
 
-W tym samouczku za pomocą narzędzia [Terraform](https://www.terraform.io/) utworzysz i wdrożysz [zestaw skalowania maszyn wirtualnych platformy Azure](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) utworzony za pomocą niestandardowego obrazu wygenerowanego przy użyciu narzędzia [Packer](https://www.packer.io/intro/index.html) z dyskami zarządzanymi przy użyciu języka [HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL).  
+W tym samouczku użyjesz [Terraform](https://www.terraform.io/) do utworzenia i wdrożenia [zestawu skalowania maszyn wirtualnych platformy Azure](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) utworzonego przy użyciu obrazu niestandardowego wygenerowanego przez program [Packer](https://www.packer.io/intro/index.html) z dyskami zarządzanymi, które korzystają z [języka konfiguracji HashiCorp](https://www.terraform.io/docs/configuration/syntax.html) (HCL). 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie wdrożenia narzędzia Terraform
-> * Używanie zmiennych i danych wyjściowych dla wdrożenia programu Terraform 
-> * Tworzenie i wdrażanie infrastruktury sieci
-> * Tworzenie niestandardowego obrazu maszyn wirtualnych za pomocą narzędzia Packer
-> * Tworzenie i wdrażanie zestawu skalowania maszyn wirtualnych przy użyciu niestandardowego obrazu
-> * Tworzenie i wdrażanie rampy 
+> * Skonfiguruj wdrożenie Terraform.
+> * Użyj zmiennych i danych wyjściowych dla wdrożenia Terraform.
+> * Tworzenie i wdrażanie infrastruktury sieciowej.
+> * Tworzenie niestandardowego obrazu maszyny wirtualnej przy użyciu programu Packer.
+> * Tworzenie i wdrażanie zestawu skalowania maszyn wirtualnych przy użyciu obrazu niestandardowego.
+> * Utwórz i Wdróż serwera przesiadkowego.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Terraform**: [Zainstaluj Terraform i Skonfiguruj dostęp do platformy Azure](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform**: [Zainstaluj Terraform i Skonfiguruj dostęp do platformy Azure](/azure/virtual-machines/linux/terraform-install-configure).
 - **Para kluczy SSH**: [Utwórz parę kluczy SSH](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Pakujący**: [Zainstaluj program Packer](https://www.packer.io/docs/install/index.html).
 
@@ -47,7 +47,7 @@ W pustym katalogu utwórz trzy nowe pliki o następujących nazwach:
 
 W tym kroku zdefiniujesz zmienne, za pomocą których dostosujesz zasoby utworzone w narzędziu Terraform.
 
-Przeprowadź edycję pliku `variables.tf`, skopiuj poniższy kod, a następnie zapisz zmiany.
+Edytuj plik `variables.tf`, Skopiuj poniższy kod, a następnie Zapisz zmiany.
 
 ```hcl
 variable "location" {
@@ -63,11 +63,11 @@ variable "resource_group_name" {
 ```
 
 > [!NOTE]
-> Domyślna wartość zmiennej resource_group_name nie jest ustawiona. Zdefiniuj własną wartość.
+> Wartość domyślna zmiennej resource_group_name jest Nieustawienie. Zdefiniuj własną wartość.
 
 Zapisz plik.
 
-Podczas wdrażania szablonu narzędzia Terraform może być konieczne pobranie w pełni kwalifikowanej nazwy domeny, która służy do uzyskiwania dostępu do aplikacji. Użyj typu zasobu `output` narzędzia Terraform i pobierz właściwość zasobu `fqdn`. 
+Podczas wdrażania szablonu Terraform chcesz uzyskać w pełni kwalifikowaną nazwę domeny, która jest używana w celu uzyskania dostępu do aplikacji. Użyj typu zasobu `output` narzędzia Terraform i pobierz właściwość zasobu `fqdn`. 
 
 Przeprowadź edycję pliku `output.tf` i skopiuj poniższy kod, aby uwidocznić w pełni kwalifikowaną nazwę domeny dla maszyn wirtualnych. 
 
@@ -80,9 +80,9 @@ output "vmss_public_ip" {
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Definiowanie infrastruktury sieci w szablonie 
 
 W tym kroku utworzysz w nowej grupie zasobów platformy Azure następującą infrastrukturę sieci: 
-  - Jedna sieć wirtualna z przestrzenią adresową 10.0.0.0/16 
-  - Jedna podsieć z przestrzenią adresową 10.0.2.0/24
-  - Dwa publiczne adresy IP: jeden używany przez moduł równoważenia obciążenia zestawu skalowania maszyn wirtualnych, a drugi służący do nawiązywania połączenia z rampą SSH
+  - Jedna sieć wirtualna z przestrzenią adresową 10.0.0.0/16.
+  - Jedna podsieć z przestrzenią adresową 10.0.2.0/24.
+  - Dwa publiczne adresy IP: Jest on używany przez moduł równoważenia obciążenia zestawu skalowania maszyn wirtualnych. Druga jest używana do nawiązywania połączenia z usługą SSH serwera przesiadkowego.
 
 Potrzebujesz również grupy zasobów, w której są tworzone wszystkie zasoby. 
 
@@ -132,7 +132,7 @@ resource "azurerm_public_ip" "vmss" {
 ``` 
 
 > [!NOTE]
-> Zalecamy otagowanie zasobów wdrażanych na platformie Azure, aby ułatwić ich identyfikację w przyszłości.
+> Oznacz zasoby wdrażane na platformie Azure, aby ułatwić ich identyfikację w przyszłości.
 
 ## <a name="create-the-network-infrastructure"></a>Tworzenie infrastruktury sieci
 
@@ -152,31 +152,31 @@ terraform apply
 
 Sprawdź, czy w pełni kwalifikowana nazwa domeny publicznego adresu IP odpowiada Twojej konfiguracji.
 
-![W pełni kwalifikowana nazwa domeny narzędzia Terraform zestawu skalowania maszyn wirtualnych dla publicznego adresu IP](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
+![Zestaw skalowania maszyn wirtualnych Terraform w pełni kwalifikowaną nazwę domeny dla publicznego adresu IP](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
 
 Grupa zasobów zawiera następujące zasoby:
 
 ![Zasoby sieciowe narzędzia Terraform zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-rg.png)
 
 
-## <a name="create-an-azure-image-using-packer"></a>Tworzenie obrazu platformy Azure za pomocą narzędzia Packer
-Utwórz niestandardowy obraz systemu Linux, wykonując kroki opisane w samouczku [How to use Packer to create Linux virtual machine images in Azure](/azure/virtual-machines/linux/build-image-with-packer) (Jak utworzyć obrazy maszyn wirtualnych z systemem Linux na platformie Azure za pomocą narzędzia Packer).
+## <a name="create-an-azure-image-by-using-packer"></a>Tworzenie obrazu platformy Azure przy użyciu programu Packer
+Utwórz niestandardowy obraz systemu Linux, wykonując kroki opisane w samouczku [jak używać programu Packer do tworzenia obrazów maszyn wirtualnych z systemem Linux na platformie Azure](/azure/virtual-machines/linux/build-image-with-packer).
  
-Postępuj zgodnie z samouczkiem, aby za pomocą zainstalowanego serwera NGINX utworzyć obraz systemu Ubuntu z anulowaną aprowizacją.
+Postępuj zgodnie z samouczkiem, aby utworzyć niezainicjowany obraz Ubuntu z zainstalowanym Nginx.
 
-![Po utworzeniu obrazu usługi Packer masz obraz](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
+![Po utworzeniu obrazu programu Packer masz obraz](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
 
 > [!NOTE]
-> Dla celów tego samouczka w obrazie narzędzia Packer jest uruchamiane polecenie instalacji serwera nginx. Możesz również uruchomić własny skrypt w procesie tworzenia.
+> Na potrzeby tego samouczka w obrazie programu Packer polecenie jest uruchamiane w celu zainstalowania Nginx. Możesz również uruchomić własny skrypt w procesie tworzenia.
 
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Edytowanie infrastruktury w celu dodania zestawu skalowania maszyn wirtualnych
 
 W tym kroku we wdrożonej wcześniej sieci utworzysz następujące zasoby:
-- Moduł równoważenia obciążenia platformy Azure do obciążania aplikacji i dołączenia go do wdrożonego wcześniej publicznego adresu IP.
-- Jeden moduł równoważenia obciążenia platformy Azure oraz reguły obsługi aplikacji i dołączania jej do skonfigurowanego wcześniej publicznego adresu IP
-- Pula adresów zaplecza platformy Azure i przypisz ją do modułu równoważenia obciążenia.
+- Moduł równoważenia obciążenia platformy Azure, który będzie obsługiwał aplikację. Dołącz je do publicznego adresu IP, który został wdrożony wcześniej.
+- Jeden moduł równoważenia obciążenia platformy Azure i reguły umożliwiające ochronę aplikacji. Dołącz go do publicznego adresu IP, który został wcześniej skonfigurowany.
+- Pula adresów zaplecza platformy Azure. Przypisz go do modułu równoważenia obciążenia.
 - Port sondy kondycji używany przez aplikację i skonfigurowany w usłudze równoważenia obciążenia.
-- Zestaw skalowania maszyn wirtualnych znajduje się za modułem równoważenia obciążenia uruchomionym w ramach wdrożonej wcześniej sieci wirtualnej.
+- Zestaw skalowania maszyn wirtualnych, który znajduje się za modułem równoważenia obciążenia i działa w sieci wirtualnej, która została wdrożona wcześniej.
 - [Nginx](https://nginx.org/) na węzłach skali maszyny wirtualnej zainstalowanej z obrazu niestandardowego.
 
 
@@ -342,7 +342,7 @@ Otwórz przeglądarkę i połącz się z w pełni kwalifikowaną nazwą domeny, 
 Ten opcjonalny krok umożliwia dostęp SSH do wystąpień zestawu skalowania maszyn wirtualnych za pomocą rampy.
 
 Do istniejącego wdrożenia dodaj następujące zasoby:
-- Interfejs sieciowy połączony z tą samą podsiecią co zestaw skalowania maszyn wirtualnych
+- Interfejs sieciowy podłączony do tej samej podsieci co zestaw skalowania maszyn wirtualnych
 - Maszyna wirtualna z tym interfejsem sieciowym
 
 Na końcu pliku `vmss.tf` dodaj następujący kod:
@@ -419,7 +419,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 }
 ```
 
-Przeprowadź edycję pliku `outputs.tf`, aby dodać następujący kod, który po zakończeniu wdrożenia spowoduje wyświetlenie nazwy hosta rampy:
+Edytuj `outputs.tf`, aby dodać poniższy kod, który wyświetla nazwę hosta serwera przesiadkowego po zakończeniu wdrożenia:
 
 ```
 output "jumpbox_public_ip" {
@@ -435,12 +435,12 @@ Wdróż rampę.
 terraform apply 
 ```
 
-Po zakończeniu wdrożenia zawartość grupy zasobów wygląda tak jak na poniższej ilustracji:
+Po zakończeniu wdrożenia zawartość grupy zasobów wygląda następująco:
 
 ![Grupa zasobów zestawu skalowania maszyn wirtualnych narzędzia Terraform](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
 
 > [!NOTE]
-> Logowanie się przy użyciu hasła na rampie i we wdrożonym zestawie skalowania maszyn wirtualnych jest wyłączone. Aby uzyskać dostęp do maszyn wirtualnych, zaloguj się za pomocą protokołu SSH.
+> Logowanie za pomocą hasła jest wyłączone w serwera przesiadkowego i wdrożonym zestawie skalowania maszyn wirtualnych. Zaloguj się przy użyciu protokołu SSH, aby uzyskać dostęp do maszyn wirtualnych.
 
 ## <a name="clean-up-the-environment"></a>Czyszczenie środowiska
 
@@ -450,7 +450,7 @@ Następujące polecenia powodują usunięcie zasobów utworzonych w ramach tego 
 terraform destroy
 ```
 
-Po wyświetleniu monitu o potwierdzenie usunięcia zasobów wpisz polecenie `yes`. Proces niszczenia może potrwać kilka minut.
+Wprowadź *wartość tak* , gdy zostanie wyświetlony monit o potwierdzenie usunięcia zasobów. Proces niszczenia może potrwać kilka minut.
 
 ## <a name="next-steps"></a>Następne kroki
 

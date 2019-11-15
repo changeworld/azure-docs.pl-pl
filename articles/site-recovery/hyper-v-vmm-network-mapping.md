@@ -1,18 +1,18 @@
 ---
-title: Informacje o mapowaniu sieci dla maszyny wirtualnej funkcji Hyper-V (z programem VMM) na platformie Azure przy użyciu Site Recovery
+title: Mapowanie sieci funkcji Hyper-V (z programem VMM) za pomocą Site Recovery
 description: Opisuje sposób konfigurowania mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V (zarządzanych w chmurach programu VMM) na platformie Azure przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813674"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082555"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Przygotowanie mapowania sieci na potrzeby odzyskiwania po awarii maszyny wirtualnej funkcji Hyper-V na platformie Azure
 
@@ -53,7 +53,7 @@ Mapowanie sieci działa w następujący sposób:
 
 Oto przykład ilustrujący ten mechanizm. Przyjrzyjmy się organizacji z dwiema lokalizacjami w Nowym Jorku i Chicago.
 
-**Location** | **Serwer VMM** | **Sieci VMNETWORK** | **Zamapowane na**
+**Lokalizacja** | **Serwer VMM** | **Sieci VMNETWORK** | **Zamapowane na**
 ---|---|---|---
 Nowy Jork | VMM-NewYork| VMNetwork1-NewYork | Zamapowana na VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | Niezamapowane
@@ -78,7 +78,7 @@ SilverCloud2 | <p>Nie dotyczy</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>Logi
 
 ### <a name="logical-and-vm-network-settings"></a>Ustawienia sieci logicznej i maszyny wirtualnej
 
-**Location** | **Sieć logiczna** | **Skojarzona sieć maszyny wirtualnej**
+**Lokalizacja** | **Sieć logiczna** | **Skojarzona sieć maszyny wirtualnej**
 ---|---|---
 Nowy Jork | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
@@ -88,11 +88,11 @@ Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
 
 W oparciu o te ustawienia, po wybraniu docelowej sieci maszyn wirtualnych w poniższej tabeli przedstawiono dostępne opcje.
 
-**Select** | **Chroniona chmura** | **Ochrona chmury** | **Dostępna sieć docelowa**
+**Wybierz** | **Chroniona chmura** | **Ochrona chmury** | **Dostępna sieć docelowa**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Dostępne
  | GoldCloud1 | GoldCloud2 | Dostępne
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Niedostępny
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Niedostępne
  | GoldCloud1 | GoldCloud2 | Dostępne
 
 

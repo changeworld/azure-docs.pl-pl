@@ -1,19 +1,19 @@
 ---
-title: Przełączenie w tryb failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowanych do pomocniczego centrum danych podczas odzyskiwania po awarii przy użyciu Azure Site Recovery | Microsoft Docs
+title: Konfigurowanie trybu failover/powrotu po awarii do lokacji pomocniczej funkcji Hyper-V za pomocą Azure Site Recovery
 description: Dowiedz się, jak przełączać maszyny wirtualne funkcji Hyper-V do lokacji lokalnej w tryb failover i powrócić po awarii do lokacji głównej, podczas gdy odzyskiwanie awaryjne Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f93c9bd679272f76665a6c8e4a0c611327699839
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813706"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082600"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Przełączenie w tryb failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowanych do pomocniczej lokacji lokalnej
 
@@ -30,8 +30,8 @@ W tym artykule opisano sposób przełączenia w tryb failover maszyny wirtualnej
 
 Przełączenie w tryb failover i powrót po awarii ma trzy etapy:
 
-1. Przechodzenie w tryb **failover do lokacji dodatkowej**: Przełączenie maszyn w tryb failover z lokacji głównej do pomocniczej.
-2. **Powrót po awarii z lokacji dodatkowej**: Replikowanie maszyn wirtualnych z elementu pomocniczego do podstawowego i uruchamianie planowanej pracy w trybie failover w celu powrotu po awarii.
+1. Przełączenie w tryb failover **do lokacji dodatkowej**: przełączenie maszyn w tryb failover z lokacji głównej do pomocniczej.
+2. **Powrót po awarii z lokacji dodatkowej**: replikowanie maszyn wirtualnych z elementu pomocniczego do podstawowego i uruchamianie planowanej pracy w trybie failover w celu powrotu po awarii.
 3. Po zaplanowanym przejściu w tryb failover opcjonalnie można ponownie rozpocząć replikację z lokacji głównej do pomocniczej bazy danych.
 
 
@@ -58,7 +58,7 @@ Na maszynach wirtualnych funkcji Hyper-V można uruchamiać regularne lub planow
 3. Po sprawdzeniu maszyny wirtualnej **Zatwierdź** tryb failover. To działanie usuwa wszystkie dostępne punkty odzyskiwania.
 
 > [!WARNING]
-> **Nie anuluj trybu failover, który jest w toku**: Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.  
+> **Nie anuluj trybu failover po rozpoczęciu przełączania**: przed uruchomieniem trybu failover replikacja maszyny wirtualnej zostanie zatrzymana. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>Replikacja odwrotna i tryb failover

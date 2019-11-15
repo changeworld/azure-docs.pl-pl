@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 90b7d79cd2a0e215af17856796bcdda2fbabb43f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 00805d6284c166d0ec03b9fe88482377a9488314
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693633"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084861"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Kanał informacyjny zmiany procesu w usłudze Azure Blob Storage (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Aby dowiedzieć się więcej na temat źródła zmian, zobacz temat [zmiana źr�
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Pobieranie biblioteki procesora kanału informacyjnego zmiany obiektu BLOB
 
-1. W programie Visual Studio Dodaj adres URL `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` do źródeł pakietów NuGet. 
+1. W programie Visual Studio Dodaj adres URL `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` do źródeł pakietów NuGet. 
 
    Aby dowiedzieć się, jak to zrobić, zobacz [źródła pakietów](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
 

@@ -1,23 +1,22 @@
 ---
-title: 'Konfigurowanie Global Reach-ExpressRoute: Azure | Microsoft Docs'
-description: Ten artykuł ułatwia łączenie obwodów usługi ExpressRoute w celu zapewnienia sieci prywatnej między sieciami lokalnymi i włączania Global Reach.
+title: 'Azure ExpressRoute: Konfigurowanie Global Reach'
+description: Ten artykuł pomoże Ci połączyć obwodów usługi ExpressRoute razem w celu zapewnienia prywatnych sieci między sieci lokalnych i włączanie zasięgu globalnym.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 64abf820a502db0ee0033ce52ed148bae6b8ffc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748171"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083465"
 ---
 # <a name="configure-expressroute-global-reach"></a>Konfigurowanie usługi ExpressRoute Global Reach
 
-W tym artykule opisano sposób konfigurowania ExpressRoute Global Reach przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [ExpressRouteRoute Global REACH](expressroute-global-reach.md).
+Ten artykuł ułatwia konfigurowanie usługi ExpressRoute zasięgu globalnym przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [zasięgu globalnym ExpressRouteRoute](expressroute-global-reach.md).
 
  ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -28,7 +27,7 @@ Przed rozpoczęciem konfiguracji Potwierdź następujące kwestie:
 * Prywatna Komunikacja równorzędna Azure jest konfigurowana na obwodach usługi ExpressRoute.
 * Jeśli chcesz uruchomić program PowerShell lokalnie, sprawdź, czy na komputerze jest zainstalowana najnowsza wersja Azure PowerShell.
 
-### <a name="working-with-azure-powershell"></a>Praca z Azure PowerShell
+### <a name="working-with-azure-powershell"></a>Praca z programem Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -50,7 +49,7 @@ Włącz łączność między sieciami lokalnymi. Istnieją oddzielne zestawy ins
 
 ### <a name="expressroute-circuits-in-the-same-azure-subscription"></a>Obwody usługi ExpressRoute w tej samej subskrypcji platformy Azure
 
-1. Użyj następujących poleceń, aby uzyskać obwód 1 i 2. Dwa obwody znajdują się w tej samej subskrypcji.
+1. Użyj następujących poleceń, aby uzyskać obwodu 1 i 2 obwodu. Są dwa obwody w tej samej subskrypcji.
 
    ```azurepowershell-interactive
    $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
@@ -80,7 +79,7 @@ Po zakończeniu poprzedniej operacji będziesz mieć łączność między siecia
 
 Jeśli dwa obwody nie znajdują się w tej samej subskrypcji platformy Azure, musisz mieć autoryzację. W poniższej konfiguracji Autoryzacja jest generowana w ramach subskrypcji obwodu 2, a klucz autoryzacji jest przesyłany do obwodu 1.
 
-1. Wygeneruj klucz autoryzacji.
+1. Generowanie klucza autoryzacji.
 
    ```azurepowershell-interactive
    $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
@@ -89,7 +88,7 @@ Jeśli dwa obwody nie znajdują się w tej samej subskrypcji platformy Azure, mu
    ```
 
    Zanotuj identyfikator prywatnego komunikacji równorzędnej obwodu 2, a także klucz autoryzacji.
-2. Uruchom następujące polecenie w stosunku do obwodu 1. Przekaż prywatny identyfikator komunikacji równorzędnej obwodu 2 i klucz autoryzacji.
+2. Uruchom następujące polecenie przed 1 obwodu. Przekaż prywatny identyfikator komunikacji równorzędnej obwodu 2 i klucz autoryzacji.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
@@ -121,11 +120,11 @@ Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -Expre
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-Aby sprawdzić stan, można uruchomić operację pobierania.
+Można uruchomić operację pobierania, aby sprawdzić stan.
 
 Po zakończeniu poprzedniej operacji nie masz już łączności między siecią lokalną za pośrednictwem obwody usługi ExpressRoute.
 
 ## <a name="next-steps"></a>Następne kroki
-1. [Dowiedz się więcej o ExpressRoute Global Reach](expressroute-global-reach.md)
-2. [Weryfikowanie łączności ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
+1. [Dowiedz się więcej o zasięgu globalnym usługi ExpressRoute](expressroute-global-reach.md)
+2. [Sprawdź łączność usługi ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
 3. [Łączenie obwodu usługi ExpressRoute z siecią wirtualną platformy Azure](expressroute-howto-linkvnet-arm.md)

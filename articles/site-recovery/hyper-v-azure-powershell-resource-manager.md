@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i Azure Resource Manager | Microsoft Docs
+title: Odzyskiwanie po awarii maszyn wirtualnych funkcji Hyper-V przy użyciu Azure Site Recovery i programu PowerShell
 description: Automatyzuj odzyskiwanie po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure za pomocą usługi Azure Site Recovery przy użyciu programu PowerShell i Azure Resource Manager.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200534"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082679"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i Azure Resource Manager
 
@@ -45,7 +45,7 @@ Ponadto w konkretnym przykładzie opisanym w tym artykule są spełnione następ
 * Host funkcji Hyper-V z systemem Windows Server 2012 R2 lub Microsoft Hyper-V Server 2012 R2 zawierający co najmniej jedną maszynę wirtualną. Serwery funkcji Hyper-V powinny być połączone z Internetem bezpośrednio lub za pomocą serwera proxy.
 * Maszyny wirtualne, które mają być replikowane, powinny być zgodne z [wymaganiami wstępnymi](hyper-v-azure-support-matrix.md#replicated-vms).
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Zaloguj się do swojego konta platformy Azure
+## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1. Logowanie do konta platformy Azure
 
 1. Otwórz konsolę programu PowerShell i Uruchom to polecenie, aby zalogować się do konta platformy Azure. Polecenie cmdlet wyświetla stronę internetową z prośbą o poświadczenia konta: **Connect-AzAccount**.
     - Alternatywnie można uwzględnić poświadczenia konta jako parametr w poleceniu cmdlet **Connect-AzAccount** przy użyciu parametru **-Credential** .
@@ -66,7 +66,7 @@ Ponadto w konkretnym przykładzie opisanym w tym artykule są spełnione następ
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-## <a name="step-2-set-up-the-vault"></a>Krok 2: Konfigurowanie magazynu
+## <a name="step-2-set-up-the-vault"></a>Krok 2. Konfigurowanie magazynu
 
 1. Utwórz Azure Resource Manager grupę zasobów, w której chcesz utworzyć magazyn, lub Użyj istniejącej grupy zasobów. Utwórz nową grupę zasobów w następujący sposób. Zmienna $ResourceGroupName zawiera nazwę grupy zasobów, którą chcesz utworzyć, a zmienna $Geo zawiera region świadczenia usługi Azure, w którym ma zostać utworzona grupa zasobów (na przykład "Brazylia Południowa").
 
@@ -80,13 +80,13 @@ Ponadto w konkretnym przykładzie opisanym w tym artykule są spełnione następ
     Listę istniejących magazynów można pobrać przy użyciu polecenia cmdlet **Get-AzRecoveryServicesVault** .
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: Ustawianie kontekstu magazynu Recovery Services
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3. Ustawianie kontekstu magazynu Recovery Services
 
 Ustaw kontekst magazynu w następujący sposób:
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Tworzenie lokacji funkcji Hyper-V
+## <a name="step-4-create-a-hyper-v-site"></a>Krok 4. Tworzenie lokacji funkcji Hyper-V
 
 1. Utwórz nową lokację funkcji Hyper-V w następujący sposób:
 
@@ -115,15 +115,15 @@ Ustaw kontekst magazynu w następujący sposób:
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 Jeśli używasz serwera podstawowego funkcji Hyper-V, Pobierz plik Instalatora i wykonaj następujące kroki:
-1. Wyodrębnij pliki z AzureSiteRecoveryProvider. exe do katalogu lokalnego, uruchamiając następujące polecenie:```AzureSiteRecoveryProvider.exe /x:. /q```
-2. Wyniki ```.\setupdr.exe /i``` przebiegu są rejestrowane w%ProgramData%\ASRLogs\DRASetupWizard.log.
+1. Wyodrębnij pliki z AzureSiteRecoveryProvider. exe do katalogu lokalnego, uruchamiając następujące polecenie: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Wyniki uruchamiania ```.\setupdr.exe /i``` są rejestrowane w%Programdata%\ASRLogs\DRASetupWizard.log.
 
 3. Zarejestruj serwer, uruchamiając następujące polecenie:
 
     ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
 
 
-## <a name="step-6-create-a-replication-policy"></a>Krok 6: Tworzenie zasad replikacji
+## <a name="step-6-create-a-replication-policy"></a>Krok 6. Tworzenie zasad replikacji
 
 Przed rozpoczęciem należy zauważyć, że określone konto magazynu powinno znajdować się w tym samym regionie świadczenia usługi Azure co magazyn i powinna mieć włączoną replikację geograficzną.
 
@@ -151,7 +151,7 @@ Przed rozpoczęciem należy zauważyć, że określone konto magazynu powinno zn
 
         $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $protectionContainer
 
-## <a name="step-7-enable-vm-protection"></a>Krok 7: Włącz ochronę maszyny wirtualnej
+## <a name="step-7-enable-vm-protection"></a>Krok 7. Włączanie ochrony maszyny wirtualnej
 
 1. Pobierz element objęty ochroną, który odnosi się do maszyny wirtualnej, która ma być chroniona, w następujący sposób:
 
@@ -190,7 +190,7 @@ Przed rozpoczęciem należy zauważyć, że określone konto magazynu powinno zn
 
 
 
-## <a name="step-8-run-a-test-failover"></a>Krok 8: Wykonywanie próby przejścia w tryb failover
+## <a name="step-8-run-a-test-failover"></a>Krok 8. Uruchamianie testu pracy w trybie failover
 1. Uruchom test pracy w trybie failover w następujący sposób:
 
         $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

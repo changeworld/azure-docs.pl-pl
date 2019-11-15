@@ -7,12 +7,12 @@ ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329732"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082818"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
 
@@ -40,7 +40,7 @@ Teraz możesz dodać powiązanie danych wyjściowych magazynu do projektu.
 
 ## <a name="add-an-output-binding"></a>Dodawanie powiązania danych wyjściowych
 
-W funkcjach każdy typ powiązania wymaga `direction`, `type` i unikatowych `name` do zdefiniowania w pliku Function. JSON. Sposób definiowania tych atrybutów zależy od języka aplikacji funkcji.
+W funkcjach każdy typ powiązania wymaga `direction`, `type`i unikatowy `name` do zdefiniowania w pliku Function. JSON. Sposób definiowania tych atrybutów zależy od języka aplikacji funkcji.
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -91,7 +91,7 @@ Możesz [sprawdzić ponownie komunikat kolejki magazynu](#query-the-storage-queu
 
 ## <a name="next-steps"></a>Następne kroki
 
-Została zaktualizowana funkcja wyzwalana przez protokół HTTP w celu zapisania danych w kolejce magazynu. Aby dowiedzieć się więcej na temat opracowywania Azure Functions przy użyciu języka Python, zobacz [Przewodnik dla deweloperów Azure Functions Python](functions-reference-python.md) oraz [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md). Aby zapoznać się z przykładami kompletnych projektów funkcji w języku Python, zobacz [przykłady funkcji języka Python](/samples/browse/?products=azure-functions&languages=python). 
+Została zaktualizowana funkcja wyzwalana przez protokół HTTP w celu zapisania danych w kolejce magazynu. Aby dowiedzieć się więcej na temat opracowywania Azure Functions przy użyciu języka Python, zobacz [Przewodnik dla deweloperów Azure Functions Python](functions-reference-python.md) oraz [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md). Aby zapoznać się z przykładami kompletnych projektów funkcji w języku Python, zobacz [przykłady funkcji języka Python](/samples/browse/?products=azure-functions&languages=python). Aby dowiedzieć się więcej o cenach, zobacz [stronę cennika funkcji](https://azure.microsoft.com/pricing/details/functions/) oraz artykuł [szacowanie kosztów planu zużycia](functions-consumption-costs.md) .
 
 Następnie należy włączyć monitorowanie Application Insights dla aplikacji funkcji:
 

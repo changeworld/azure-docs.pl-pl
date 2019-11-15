@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886042"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081467"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -239,9 +239,9 @@ Najpierw postępuj zgodnie z instrukcjami dotyczącymi [udzielania dostępu apli
 
 Aby wstrzyknąć te wpisy tajne w pliku konfiguracji wiosennej lub Tomcat, użyj składni iniekcji zmiennych środowiskowych (`${MY_ENV_VAR}`). W przypadku plików konfiguracji wiosennej zapoznaj się z tą dokumentacją w temacie [konfiguracje zewnętrzne](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
-## <a name="using-the-java-key-store"></a>Korzystanie z magazynu kluczy języka Java
+### <a name="using-the-java-key-store"></a>Korzystanie z magazynu kluczy języka Java
 
-Domyślnie wszystkie certyfikaty publiczne lub prywatne [przekazane do App Service Linux](../configure-ssl-certificate.md) zostaną załadowane do magazynu kluczy Java w trakcie uruchamiania kontenera. Oznacza to, że przekazane certyfikaty będą dostępne w kontekście połączenia podczas tworzenia wychodzących połączeń TLS.
+Domyślnie wszystkie certyfikaty publiczne lub prywatne [przekazane do App Service Linux](../configure-ssl-certificate.md) zostaną załadowane do magazynu kluczy Java w trakcie uruchamiania kontenera. Oznacza to, że przekazane certyfikaty będą dostępne w kontekście połączenia podczas tworzenia wychodzących połączeń TLS. Po przekazaniu certyfikatu należy ponownie uruchomić App Service, aby można go było załadować do magazynu kluczy Java.
 
 Możesz korzystać z narzędzia klucza Java lub debugować je, [otwierając połączenie SSH](app-service-linux-ssh-support.md) do App Service i uruchamiając polecenie `keytool`. Listę poleceń można znaleźć w dokumentacji dotyczącej [najważniejszych narzędzi](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Certyfikaty są przechowywane w domyślnej lokalizacji pliku magazynu języka Java, `$JAVA_HOME/jre/lib/security/cacerts`.
 
@@ -251,7 +251,7 @@ Aby można było zaszyfrować połączenie JDBC, może być wymagana dodatkowa k
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 
-### <a name="manually-initialize-and-load-the-key-store"></a>Ręczne inicjowanie i ładowanie magazynu kluczy
+#### <a name="manually-initialize-and-load-the-key-store"></a>Ręczne inicjowanie i ładowanie magazynu kluczy
 
 Możesz zainicjować Magazyn kluczy i ręcznie dodać certyfikaty. Utwórz ustawienie aplikacji `SKIP_JAVA_KEYSTORE_LOAD`z wartością `1`, aby wyłączyć App Service ładowania certyfikatów do magazynu kluczy automatycznie. Wszystkie certyfikaty publiczne przekazane do App Service za pośrednictwem witryny Azure Portal są przechowywane w obszarze `/var/ssl/certs/`. Certyfikaty prywatne są przechowywane w obszarze `/var/ssl/private/`.
 
@@ -316,7 +316,7 @@ Te instrukcje dotyczą wszystkich połączeń z bazą danych. Musisz wypełnić 
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Pobieranie](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Pobierz](https://dev.mysql.com/downloads/connector/j/) (wybierz pozycję "Platforma niezależna") |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| Oprogramowanie SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
 Aby skonfigurować Tomcat do korzystania z łączności z bazą danych Java (JDBC) lub interfejsu API trwałości Java (JPA), najpierw Dostosuj zmienną środowiskową `CATALINA_OPTS`, która jest odczytywana przez Tomcat w momencie uruchomienia. Ustaw te wartości za pomocą ustawienia aplikacji w [dodatku App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
@@ -579,7 +579,7 @@ Poniższe kroki wyjaśniają wymagania dotyczące łączenia istniejących App S
 
 6. Użyj interfejsu wiersza polecenia platformy Azure, aby dodać ustawienia do App Service, w którym przechowywane są informacje o połączeniu z bazą danych. Zastąp `<resource group>` i `<webapp name>` wartościami używanymi przez App Service. Zastąp `<database server name>`, `<database name>`, `<admin name>`i `<admin password>` informacjami o połączeniu z bazą danych. Możesz uzyskać informacje o App Service i bazie danych z Azure Portal.
 
-    **PostgreSQL**
+    **PostgreSQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -591,7 +591,7 @@ Poniższe kroki wyjaśniają wymagania dotyczące łączenia istniejących App S
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL**
+    **MySQL:**
 
     ```bash
     az webapp config appsettings set \

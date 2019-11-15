@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961585"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091643"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -66,17 +66,13 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
     W przypadku uruchamiania skryptu na komputerze z ograniczonym dostępem upewnij się, że masz dostęp do:
 
     - download.microsoft.com
-    - Adresy URL usługi odzyskiwania (nazwa geograficzna odnosi się do regionu, w którym znajduje się magazyn usługi odzyskiwania)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (dla usługi Azure Public Georegiony)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (w przypadku platformy Azure — Chiny)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (dla instytucji rządowych USA platformy Azure)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (dla platformy Azure (Niemcy)
+    - Adresy URL usługi Recovery Name (nazwa geograficzna) odnoszą się do regionu, w którym znajduje się magazyn usługi Recovery Service) - <https://pod01-rec2.geo-name.backup.windowsazure.com> (w przypadku usługi Azure Public Georegiony) - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (w przypadku platformy Azure — Chiny) - <https://pod01-rec2.geo-name.backup.windowsazure.us> (dla platformy Azure dla instytucji rządowych) - (na platformie Azure (Niemcy)<https://pod01-rec2.geo-name.backup.windowsazure.de>
     - Port wychodzący 3260
 
 > [!Note]
 >
-> - Pobrana nazwa pliku skryptu będzie miała **nazwę geograficzną** , która ma zostać wypełniona w adresie URL. Na przykład: pobrana Nazwa skryptu rozpoczyna się od \'VMname\'\_\'geoname\'_\'\'identyfikator GUID, na przykład ContosoVM_wcus_12345678....<br><br>
-> - Adres URL to "https:\//pod01-rec2.wcus.backup.windowsazure.com"
+> - Pobrana nazwa pliku skryptu będzie miała **nazwę geograficzną** , która ma zostać wypełniona w adresie URL. Na przykład: pobrana Nazwa skryptu rozpoczyna się od \'VMname\'\_\'geoname\'_\'\'identyfikator GUID, na przykład ContosoVM_wcus_12345678
+> - Adres URL zostałby <https://pod01-rec2.wcus.backup.windowsazure.com>"
 
    W przypadku systemu Linux skrypt wymaga składników "Open-iSCSI" i "lshw", aby nawiązać połączenie z punktem odzyskiwania. Jeśli składniki nie istnieją na komputerze, na którym skrypt jest uruchamiany, skrypt monituje o zgodę na zainstalowanie składników programu. Wyrażanie zgody na zainstalowanie niezbędnych składników.
 
@@ -141,21 +137,21 @@ Aby wyświetlić listę nazw grup woluminów w woluminie fizycznym.
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 Aby wyświetlić listę wszystkich woluminów logicznych, nazw i ich ścieżek w grupie woluminów.
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 Aby zainstalować woluminy logiczne do wybranej ścieżki.
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>Macierze RAID
@@ -164,7 +160,7 @@ Następujące polecenie wyświetla szczegółowe informacje o wszystkich dyskach
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  Odpowiedni dysk RAID jest wyświetlany jako `/dev/mdm/<RAID array name in the protected VM>`
@@ -173,7 +169,7 @@ Użyj polecenia Instaluj, jeśli dysk RAID ma woluminy fizyczne.
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 Jeśli dysk RAID ma skonfigurowany inny LVM, użyj powyższej procedury dla partycji LVM, ale Użyj nazwy woluminu zamiast nazwy dysku RAID

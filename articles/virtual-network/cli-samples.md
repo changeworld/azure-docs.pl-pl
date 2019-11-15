@@ -1,5 +1,5 @@
 ---
-title: Przykłady interfejsu wiersza polecenia platformy Azure dla sieci wirtualnej | Microsoft Docs
+title: Przykłady interfejsu wiersza polecenia platformy Azure dla sieci wirtualnej
 description: Przykłady interfejsu wiersza polecenia platformy Azure dla sieci wirtualnej.
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 4caa19ad22faa0a921fb6397e5b376b65a29e519
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: ff1017c8a6bc3c2806da6ea2a53b931aaf28644f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249064"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092098"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla sieci wirtualnej
 
@@ -32,5 +32,5 @@ Poniższa tabela zawiera linki do skryptów bash utworzonych za pomocą poleceń
 | [Komunikacja równorzędna dwóch sieci wirtualnych](./scripts/virtual-network-cli-sample-peer-two-virtual-networks.md) | Tworzy i łączy dwie sieci wirtualne w tym samym regionie. |
 | [Kierowanie ruchu przez wirtualne urządzenie sieciowe](./scripts/virtual-network-cli-sample-route-traffic-through-nva.md) | Tworzy sieć wirtualną z podsieciami frontonu i zaplecza oraz maszyną wirtualną, która może kierować ruchem między dwiema podsieciami. |
 | [Filtrowanie przychodzącego i wychodzącego ruchu sieciowego maszyny wirtualnej](./scripts/virtual-network-cli-sample-filter-network-traffic.md) | Tworzy sieć wirtualną z podsieciami frontonu i zaplecza. Ruch sieciowy przychodzący do podsieci frontonu jest ograniczony do protokołów HTTP, HTTPS i SSH. Ruch wychodzący do Internetu z podsieci zaplecza jest niedozwolony. |
-|[Konfigurowanie protokołu IPv4 + IPv6 podwójnego stosu sieci wirtualnej przy użyciu podstawowego modułu równoważenia obciążenia](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|Wdraża obsługującej podwójny stos (IPv4 + IPv6) sieci wirtualnej z dwiema maszynami wirtualnymi i podstawowa usługi Azure Load Balancer z publicznych adresów IP protokołu IPv4 i IPv6. |
-|[Konfigurowanie protokołu IPv4 + IPv6 podwójnego stosu sieci wirtualnej przy użyciu standardowego modułu równoważenia obciążenia](./scripts/virtual-network-cli-sample-ipv6-dual-stack-standard-load-balancer.md)|Wdraża obsługującej podwójny stos (IPv4 + IPv6) sieci wirtualnej z dwiema maszynami wirtualnymi i standardowa usługi Azure Load Balancer z publicznych adresów IP protokołu IPv4 i IPv6. |
+|[Konfigurowanie sieci wirtualnej o podwójnym stosie IPv4 + IPv6 z podstawową Load Balancer](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|Wdraża sieć wirtualną o podwójnej stercie (IPv4 + IPv6) z dwiema maszynami wirtualnymi i podstawową Load Balancer platformy Azure przy użyciu adresów IPv4 i IPv6. |
+|[Konfigurowanie sieci wirtualnej o podwójnym stosie IPv4 + IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa](./scripts/virtual-network-cli-sample-ipv6-dual-stack-standard-load-balancer.md)|Wdraża sieć wirtualną dual-stack (IPv4 + IPv6) z dwiema maszynami wirtualnymi i usługa Load Balancer w warstwie Standardowa platformy Azure z publicznymi adresami IP w protokołach IPv4 i IPv6. |

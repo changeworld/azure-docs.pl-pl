@@ -1,5 +1,5 @@
 ---
-title: 'Wymagania wstępne — ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: wymagania wstępne'
 description: Ta strona zawiera listę wymagań, które należy spełnić przed zamówieniem obwodu usługi Azure ExpressRoute. Zawiera on listę kontrolną.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 4ef1a768356078c160b798c1a96412adda0330f6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123295"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083357"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Wymagania wstępne usługi ExpressRoute i lista kontrolna
 Aby połączyć się z usługami w chmurze firmy Microsoft za pomocą usługi ExpressRoute, należy sprawdzić, czy zostały spełnione wymagania wymienione w poniższych sekcjach.
@@ -30,11 +29,11 @@ Aby połączyć się z usługami w chmurze firmy Microsoft za pomocą usługi Ex
 * Jeśli dostawca nie jest partnerem połączenia usługi ExpressRoute, można nadal połączyć się z chmurą firmy Microsoft za pośrednictwem [dostawcy serwera Exchange w chmurze](expressroute-locations.md#connectivity-through-exchange-providers).
 
 ## <a name="network-requirements"></a>Wymagania dotyczące sieci
-* **Nadmiarowość w każdej lokalizacji komunikacji równorzędnej**: Firma Microsoft wymaga skonfigurowania nadmiarowych sesji protokołu BGP między routerami firmy Microsoft i routerami komunikacji równorzędnej w każdym obwodzie usługi ExpressRoute (nawet jeśli istnieje tylko [jedno połączenie fizyczne z wymianą w chmurze](expressroute-faqs.md#onep2plink)).
-* **Nadmiarowość w przypadku odzyskiwania po awarii**: Firma Microsoft zdecydowanie zaleca skonfigurowanie co najmniej dwóch obwodów usługi ExpressRoute w różnych lokalizacjach komunikacji równorzędnej w celu uniknięcia single point of failure.
+* **Nadmiarowość w poszczególnych lokalizacjach komunikacji równorzędnej**: Firma Microsoft wymaga skonfigurowania nadmiarowych sesji protokołu BGP między routerami firmy Microsoft i routerami komunikacji równorzędnej w każdym obwodzie usługi ExpressRoute (nawet jeśli istnieje tylko [jedno połączenie fizyczne z wymianą w chmurze](expressroute-faqs.md#onep2plink)).
+* **Nadmiarowość odzyskiwania po awarii**: Firma Microsoft zdecydowanie zaleca skonfigurowanie co najmniej dwóch obwodów usługi ExpressRoute w różnych lokalizacjach komunikacji równorzędnej w celu uniknięcia Single Point of Failure.
 * **Routing**: w zależności od sposobu połączenia z chmurą firmy Microsoft użytkownik lub jego dostawca musi skonfigurować sesje protokołu BGP oraz nimi zarządzać na potrzeby [domen routingu](expressroute-circuit-peerings.md). Niektórzy dostawcy połączenia Ethernet lub dostawcy usług serwera Exchange w chmurze mogą oferować zarządzanie przy użyciu protokołu BGP w ramach usługi dodatkowej.
-* **TRANSLATOR ADRESÓW SIECIOWYCH**: Firma Microsoft akceptuje tylko publiczne adresy IP za pomocą komunikacji równorzędnej firmy Microsoft. W przypadku korzystania z prywatnych adresów IP w sieci lokalnej użytkownik lub jego dostawca muszą przełożyć prywatne adresy IP na publiczne [przy użyciu translatora adresów sieciowych](expressroute-nat.md).
-* **Jakość**usług (QoS): Usługa Skype dla firm ma różne usługi (na przykład głos, wideo, tekst), które wymagają zróżnicowanego traktowania QoS. Użytkownik i jego dostawca powinni postępować zgodnie z [wymaganiami technologii QoS](expressroute-qos.md).
+* **Translator adresów sieciowych**: firma Microsoft akceptuje tylko publiczne adresy IP za pośrednictwem komunikacji równorzędnej firmy Microsoft. W przypadku korzystania z prywatnych adresów IP w sieci lokalnej użytkownik lub jego dostawca muszą przełożyć prywatne adresy IP na publiczne [przy użyciu translatora adresów sieciowych](expressroute-nat.md).
+* **Technologia QoS**: program Skype dla firm oferuje różne usługi (np. połączenia głosowe, wideo, usługi tekstowe), które wymagają zróżnicowanej obsługi w technologii QoS. Użytkownik i jego dostawca powinni postępować zgodnie z [wymaganiami technologii QoS](expressroute-qos.md).
 * **Bezpieczeństwo sieci**: podczas łączenia z usługą Microsoft Cloud za pośrednictwem usługi ExpressRoute miej na uwadze [bezpieczeństwo sieci](../best-practices-network-security.md).
 
 ## <a name="office-365"></a>Office 365

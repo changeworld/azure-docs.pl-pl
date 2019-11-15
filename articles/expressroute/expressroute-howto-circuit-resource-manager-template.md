@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
-ms.openlocfilehash: d6d9a3b472e2a40bfacf25a0b8fe0accb7d62cb8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 25ed38e72f5a21622a87e36ad811ffd66f6a4c90
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031969"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083507"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Tworzenie obwodu usługi ExpressRoute przy użyciu szablonu Azure Resource Manager
 
@@ -64,8 +64,8 @@ Aby utworzyć obwód ExpressRoute przez wdrożenie szablonu:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **Warstwa** Określa, czy włączona jest standardem usługi ExpressRoute lub dodatek ExpressRoute premium. Można określić **standardowa** można pobrać standardowej jednostki SKU lub **Premium** używania dodatku premium.
-
+   * **Warstwa SKU** określa, czy obwód ExpressRoute jest [lokalny](expressroute-faqs.md#expressroute-local), standardowy czy [Premium](expressroute-faqs.md#expressroute-premium). Możesz określić *Local*, *Standard* lub *Premium*.
+   * **Rodzina SKU** określa typ rozliczeń. Można określić *Metereddata* plan taryfowy z danymi i *Unlimiteddata* dla plan z nieograniczonymi danymi. Można zmienić typ rozliczeń z *Metereddata* do *Unlimiteddata*, ale nie możesz zmienić typ z *Unlimiteddata* do *Metereddata*. Obwód *lokalny* jest tylko *Unlimiteddata* .
    * **Lokalizacja komunikacji równorzędnej** jest lokalizacji fizycznej, w którym są komunikacji równorzędnej z firmą Microsoft.
 
      > [!IMPORTANT]

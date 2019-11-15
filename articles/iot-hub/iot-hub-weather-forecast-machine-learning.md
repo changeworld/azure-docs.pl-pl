@@ -1,5 +1,5 @@
 ---
-title: Prognoza pogody przy użyciu Azure Machine Learning z danymi z IoT Hub | Microsoft Docs
+title: Prognoza pogody przy użyciu Azure Machine Learning z danymi IoT Hub
 description: Użyj Azure Machine Learning, aby przewidzieć prawdopodobieństwo oddeszczu w oparciu o dane dotyczące temperatury i wilgotności, które Centrum IoT zbiera z czujnika.
 author: robinsh
 manager: philmea
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498882"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079262"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Prognoza pogody przy użyciu danych czujników z Centrum IoT Hub w Azure Machine Learning
 

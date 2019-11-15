@@ -1,18 +1,18 @@
 ---
-title: Skonfiguruj odzyskiwanie po awarii na platformie Azure dla dużej liczby maszyn wirtualnych VMware lub serwerów fizycznych za pomocą Azure Site Recovery | Microsoft Docs
+title: Skalowanie oprogramowania VMware/fizycznego odzyskiwania po awarii za pomocą Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla dużej liczby lokalnych maszyn wirtualnych VMware lub serwerów fizycznych przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782654"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082220"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Konfigurowanie odzyskiwania po awarii na dużą skalę dla maszyn wirtualnych VMware/serwerów fizycznych
 
@@ -26,16 +26,16 @@ W ramach strategii ciągłości działania i odzyskiwania po awarii (BCDR) możn
 - Zgodnie z planem odzyskiwania danych na dużą skalę na potrzeby maszyn wirtualnych VMware i ustalania potrzebnych zasobów platformy Azure można określić wartość RTO, która będzie używana na potrzeby obliczeń pojemności.
 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Niektóre ogólne najlepsze rozwiązania dotyczące odzyskiwania po awarii na dużą skalę. Te najlepsze rozwiązania zostały omówione bardziej szczegółowo w następnych sekcjach dokumentu.
 
-- **Określ wymagania docelowe**: Oszacuj wymagania dotyczące pojemności i zasobów na platformie Azure przed rozpoczęciem konfigurowania odzyskiwania po awarii.
-- **Zaplanuj składniki Site Recovery**: Ustal, jakie składniki Site Recovery (serwer konfiguracji, serwery przetwarzania), potrzebne do osiągnięcia szacowanej wydajności.
-- **Skonfiguruj co najmniej jeden serwer przetwarzania skalowalny**w poziomie: Nie używaj serwera przetwarzania, który jest domyślnie uruchomiony na serwerze konfiguracji. 
-- **Uruchom najnowsze aktualizacje**: Zespół Site Recovery w regularnych wersjach składników Site Recovery ma pewność, że są uruchomione najnowsze wersje. Aby to ułatwić, śledź [nowości](site-recovery-whats-new.md) dotyczące aktualizacji oraz [włączaj i instaluj aktualizacje](service-updates-how-to.md) podczas ich wydawania.
-- **Proaktywne monitorowanie**: W miarę uzyskiwania i uruchamiania odzyskiwania po awarii należy aktywnie monitorować stan i kondycję replikowanych maszyn oraz zasobów infrastruktury.
-- **Odzyskiwanie po awarii**: Należy regularnie uruchamiać funkcję odzyskiwania po awarii. Nie mają one wpływu na środowisko produkcyjne, ale pomagają zapewnić, że tryb failover na platformie Azure będzie działał zgodnie z oczekiwaniami w razie potrzeby.
+- **Określenie wymagań docelowych**: oszacowanie wydajności i potrzeb zasobów na platformie Azure przed rozpoczęciem konfigurowania odzyskiwania po awarii.
+- **Zaplanuj składniki Site Recovery**: Ustal, jakie składniki Site Recovery (serwer konfiguracji, serwery przetwarzania) muszą spełniać szacunkową pojemność.
+- **Skonfiguruj co najmniej jeden serwer przetwarzania skalowalny**w poziomie: nie używaj serwera przetwarzania, który jest domyślnie uruchomiony na serwerze konfiguracji. 
+- **Uruchom najnowsze aktualizacje**: zespół site Recoverya regularnie zwalnia nowe wersje składników Site Recovery i upewnij się, że korzystasz z najnowszych wersji. Aby to ułatwić, śledź [nowości](site-recovery-whats-new.md) dotyczące aktualizacji oraz [włączaj i instaluj aktualizacje](service-updates-how-to.md) podczas ich wydawania.
+- **Monitoruj proaktywne**: w przypadku odzyskiwania po awarii i uruchamiania, należy aktywnie monitorować stan i kondycję replikowanych maszyn oraz zasobów infrastruktury.
+- **Przechodzenie do odzyskiwania po awarii**: należy regularnie uruchamiać funkcję odzyskiwania po awarii. Nie mają one wpływu na środowisko produkcyjne, ale pomagają zapewnić, że tryb failover na platformie Azure będzie działał zgodnie z oczekiwaniami w razie potrzeby.
 
 
 
@@ -68,14 +68,14 @@ Następnie uruchom Planistę w następujący sposób:
 
 ## <a name="plan-target-azure-requirements-and-capacity"></a>Wymagania i pojemność planu docelowego (platforma Azure)
 
-Korzystając z zebranych szacunków i zaleceń, można zaplanować zasoby docelowe i pojemność. Jeśli uruchomiono Planista wdrażania dla maszyn wirtualnych VMware, możesz użyć szeregu zaleceń dotyczących [raportów](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) , aby pomóc.
+Korzystając z zebranych szacunków i zaleceń, można zaplanować zasoby docelowe i pojemność. Jeśli uruchomiono Planista wdrażania dla maszyn wirtualnych VMware, możesz użyć szeregu [zaleceń dotyczących raportów](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) , aby pomóc.
 
-- **Zgodne maszyny wirtualne**: Użyj tej liczby, aby określić liczbę maszyn wirtualnych, które są gotowe do odzyskiwania po awarii na platformie Azure. Zalecenia dotyczące przepustowości sieci i rdzeni platformy Azure są oparte na tej liczbie.
-- **Wymagana przepustowość sieci**: Zwróć uwagę na przepustowość potrzebną dla replikacji różnicowej zgodnych maszyn wirtualnych. 
+- **Zgodne maszyny wirtualne**: Użyj tego numeru, aby określić liczbę maszyn wirtualnych, które są gotowe do odzyskiwania po awarii na platformie Azure. Zalecenia dotyczące przepustowości sieci i rdzeni platformy Azure są oparte na tej liczbie.
+- **Wymagana przepustowość sieci**: należy zwrócić uwagę na przepustowość potrzebną w przypadku replikacji różnicowej zgodnych maszyn wirtualnych. 
     - Po uruchomieniu planisty należy określić żądany cel punktu odzyskiwania w minutach. Zalecenia pokazują, że przepustowość wymagana do osiągnięcia tego celu punktu odzyskiwania 100% i 90% czasu. 
     - W zaleceniach dotyczących przepustowości sieci należy wziąć pod uwagę przepustowość wymaganą dla łącznej liczby serwerów konfiguracji i serwerów przetwarzania zalecanych w programie Planner.
-- **Wymagane rdzenie platformy Azure**: Zwróć uwagę na liczbę rdzeni, które są potrzebne w docelowym regionie platformy Azure, na podstawie liczby zgodnych maszyn wirtualnych. Jeśli nie masz wystarczającej liczby rdzeni, w trybie failover Site Recovery nie będzie można utworzyć wymaganych maszyn wirtualnych platformy Azure.
-- **Zalecany rozmiar partii maszyn wirtualnych**: Zalecany rozmiar wsadu jest oparty na możliwości zakończenia replikacji początkowej dla partii w ciągu 72 godzin domyślnie, podczas gdy zostanie objęty Celem punktu odzyskiwania 100%. Wartość godzinowa może być modyfikowana.
+- **Wymagane rdzenie platformy Azure**: Zwróć uwagę na liczbę rdzeni, których potrzebujesz w docelowym regionie platformy Azure, na podstawie liczby zgodnych maszyn wirtualnych. Jeśli nie masz wystarczającej liczby rdzeni, w trybie failover Site Recovery nie będzie można utworzyć wymaganych maszyn wirtualnych platformy Azure.
+- **Zalecany rozmiar partii maszyn wirtualnych**: zalecany rozmiar wsadu bazuje na możliwości zakończenia replikacji początkowej dla partii w ciągu 72 godzin domyślnie, jednocześnie spełniając cel punktu odzyskiwania 100%. Wartość godzinowa może być modyfikowana.
 
 Te zalecenia umożliwiają planowanie zasobów platformy Azure, przepustowości sieci i partii maszyn wirtualnych.
 
@@ -189,7 +189,7 @@ Po rozpoczęciu replikacji pierwszej partii maszyn wirtualnych Rozpocznij monito
 2. [Monitoruj zdarzenia](site-recovery-monitor-and-troubleshoot.md) dla zreplikowanych elementów i infrastruktury.
 3. [Monitoruj kondycję](vmware-physical-azure-monitor-process-server.md) serwerów procesów skalowalnych w poziomie.
 4. Zarejestruj się, aby otrzymywać [powiadomienia e-mail](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) o zdarzeniach w celu łatwiejszego monitorowania.
-5. Przeprowadź regularne przechodzenie do [odzyskiwania po awarii](site-recovery-test-failover-to-azure.md), aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
+5. Przeprowadź regularne [Przechodzenie do odzyskiwania po awarii](site-recovery-test-failover-to-azure.md), aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
 
 
 ## <a name="plan-for-large-scale-failovers"></a>Planowanie trybu failover w dużej skali

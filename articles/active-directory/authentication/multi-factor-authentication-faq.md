@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474268"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081546"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -219,7 +219,7 @@ Obejście tego błędu ma na celu oddzielenie kont użytkowników dla operacji z
 
 Jeśli Twoje pytanie nie zostało tutaj odebrane, pozostaw je w komentarzach w dolnej części strony. Lub Oto kilka dodatkowych opcji uzyskiwania pomocy:
 
-* Wyszukaj rozwiązania typowych problemów technicznych w [Pomoc techniczna firmy Microsoft bazie wiedzy](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) .
+* Wyszukaj rozwiązania typowych problemów technicznych w [Pomoc techniczna firmy Microsoft bazie wiedzy](https://support.microsoft.com) .
 * Wyszukaj i Przeglądaj pytania techniczne oraz odpowiedzi ze społeczności lub zadawaj swoje pytania na [forach Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Jeśli jesteś starszym klientem programu PhoneFactor i masz pytania lub potrzebujesz pomocy przy resetowaniu hasła, Użyj linku [resetowania hasła](mailto:phonefactorsupport@microsoft.com) , aby otworzyć zgłoszenie do pomocy technicznej.
 * Skontaktuj się z pracownikiem pomocy technicznej za pomocą [usługi Azure serwer Multi-Factor Authentication (PhoneFactor)](https://support.microsoft.com/oas/default.aspx?prid=14947). Gdy kontaktuje się z nami, jest to przydatne, jeśli możesz dołączyć tyle informacji o problemie, ile to możliwe. Informacje, które można podać, obejmują stronę, na której wydano błąd, konkretny kod błędu, identyfikator konkretnej sesji oraz identyfikator użytkownika, który wykorzystał błąd.

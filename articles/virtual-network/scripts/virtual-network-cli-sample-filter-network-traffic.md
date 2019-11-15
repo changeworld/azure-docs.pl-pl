@@ -1,13 +1,10 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — filtrowanie ruchu sieciowego maszyny wirtualnej | Microsoft Docs
+title: Filtrowanie ruchu sieciowego maszyny wirtualnej — przykład skryptu interfejsu wiersza polecenia platformy Azure
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — filtrowanie przychodzącego i wychodzącego ruchu sieciowego maszyny wirtualnej.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: sample
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 549f966f86e9ddd447f24e21027504395981fd1e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 71de6c9c3f742e006762fb8778948cff2e5d96af
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729366"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084049"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Przykładowy skrypt służący do filtrowania przychodzącego i wychodzącego ruchu sieciowego maszyny wirtualnej
 
@@ -59,7 +56,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](/cli/azure/vm) | Tworzy maszyny wirtualne i dołącza kartę sieciową do każdej maszyny wirtualnej. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne. |
 | [az group delete](/cli/azure/group) | Usuwa grupę zasobów i wszystkie zasoby, które zawiera. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

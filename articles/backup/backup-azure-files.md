@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747482"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091089"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Tworzenie kopii zapasowej i przywracanie udziałów plików platformy Azure
 
@@ -201,7 +201,7 @@ Kopię zapasową udziału plików można usunąć podczas zadania zatrzymania tw
 
 Na potrzeby poniższej procedury przyjęto założenie, że zadanie tworzenia kopii zapasowej dla maszyny wirtualnej zostało zatrzymane. Po zatrzymaniu zadania tworzenia kopii zapasowej opcje Wznów tworzenie kopii zapasowej i Usuń dane kopii zapasowej są dostępne na pulpicie nawigacyjnym elementu kopii zapasowej. Kliknij pozycję Usuń dane kopii zapasowej, a następnie wpisz nazwę udziału plików, aby potwierdzić usunięcie. Opcjonalnie podaj przyczynę usunięcia lub dodaj komentarz.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat udziałów plików platformy Azure, zobacz
 

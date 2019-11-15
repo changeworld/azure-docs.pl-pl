@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z bramą za wynagrodzeniem | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i bramą osób trzecich.
+title: 'Samouczek: integracja Azure Active Directory z bramą z wynagrodzeniem | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i nagradzania bramy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cdc4420758b67dc3a578b9530fb7039ed53ee66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092796"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081954"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Samouczek: Integracja usługi Azure Active Directory z bramą za wynagrodzeniem
+# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Samouczek: integracja Azure Active Directory z bramą z wynagrodzeniem
 
-W tym samouczku dowiesz się, jak zintegrować nagradzania bramy za pomocą usługi Azure Active Directory (Azure AD).
-Integrowanie bramy za wynagrodzeniem z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować bramę nagradzania z usługą Azure Active Directory (Azure AD).
+Integracja bramy nagradzania z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do bramy osób trzecich.
-* Użytkownikom można automatycznie zalogowany do nagrody bramy (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do nagradzania bramy.
+* Możesz pozwolić użytkownikom na automatyczne logowanie się, aby nagradzać bramę (Logowanie jednokrotne) za pomocą kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,60 +36,60 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD za pomocą bramy nagrody, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z bramą nagradzania, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Nagrody bramy logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z włączonym logowaniem jednokrotnym w bramie
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Nagradzaj Gateway obsługuje **tożsamości** jednokrotne logowanie inicjowane przez
+* Usługa Nagroda Gateway obsługuje **dostawcy tożsamości** zainicjowane Logowanie jednokrotne
 
-## <a name="adding-reward-gateway-from-the-gallery"></a>Dodawanie bramy za wynagrodzeniem z galerii
+## <a name="adding-reward-gateway-from-the-gallery"></a>Dodawanie bramy nagradzania z galerii
 
-Aby skonfigurować integrację za wynagrodzeniem bramy w usłudze Azure AD, należy dodać bramę z Silicon z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację usługi z usługą Azure AD, należy dodać bramę nagradzania z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać bramę nagradzania z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **bramy za wynagrodzeniem**, wybierz opcję **bramy za wynagrodzeniem** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz ciąg " **Nagroda Gateway**", wybierz pozycję **Nagroda Gateway** z panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![Brama osób trzecich, na liście wyników](common/search-new-app.png)
+     ![Nagradzanie bramy na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowania jednokrotnego z bramą za wynagrodzeniem w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w bramie nagradzania musi zostać ustanowione.
+W tej sekcji konfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD za pomocą bramy nagradzania na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w bramie z wynagrodzeniem.
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego z bramą za wynagrodzeniem, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu bramy nagradzania, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie nagradzania bramy logowania jednokrotnego](#configure-reward-gateway-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj funkcję rejestracji](#configure-reward-gateway-single-sign-on)** jednokrotnej bramy, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego bramy za wynagrodzeniem](#create-reward-gateway-test-user)**  — aby odpowiednikiem Britta Simon w bramy nagrody, która jest połączona z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego bramy z wynagrodzeniem](#create-reward-gateway-test-user)** — Aby uzyskać odpowiednik usługi Britta Simon, która jest powiązana z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługi Azure AD logowania jednokrotnego z bramą nagrody, wykonaj następujące czynności:
+Aby skonfigurować usługę Azure AD Logowanie jednokrotne za pomocą bramy nagradzania, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **bramy za wynagrodzeniem** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracji aplikacji **bramy** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego z bramą nagrody, wy
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
 
-    ![Nagrody bramy domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Nagradzanie domeny bramy i adresów URL logowania jednokrotnego](common/idp-intiated.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
     
@@ -124,13 +124,13 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego z bramą nagrody, wy
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, należy uruchomić konfigurowania integracji w portalu programu nagradzania Manager. Szczegółowe informacje można znaleźć w https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, Rozpocznij Konfigurowanie integracji w portalu z menedżerem nagradzania. Szczegółowe informacje można znaleźć na https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **konfigurowania bramy za wynagrodzeniem** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie bramy zarobków** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -140,29 +140,29 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego z bramą nagrody, wy
 
     d. Adres URL wylogowywania
 
-### <a name="configure-reward-gateway-single-sign-on"></a>Konfigurowanie nagradzania bramy logowania jednokrotnego
+### <a name="configure-reward-gateway-single-sign-on"></a>Konfigurowanie jednokrotnego logowania bramy nagradzania
 
-Aby skonfigurować logowanie jednokrotne na **bramy za wynagrodzeniem** po stronie, rozpocząć konfigurowanie integracji w portalu programu nagradzania Manager. Użyj pobranego metadanych do uzyskania certyfikatu podpisywania, a następnie przekaż, podczas konfiguracji. Szczegółowe informacje można znaleźć w https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+Aby skonfigurować opcję logowania jednokrotnego na stronie **bramy z wynagrodzeniem** , Rozpocznij Konfigurowanie integracji w portalu Menedżera nagradzania. Użyj pobranych metadanych, aby uzyskać certyfikat podpisywania i przekazać go podczas konfiguracji. Szczegółowe informacje można znaleźć na https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`  
+    b. W polu **Nazwa użytkownika** wpisz `brittasimon@yourcompanydomain.extension`  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -171,19 +171,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowania jednokrotnego przez udzielenie dostępu do bramy osób trzecich.
+Ta sekcja umożliwia włączenie usługi Britta Simon w celu korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do bramy nagradzania.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **bramy za wynagrodzeniem**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **nagradzanie bramy**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **bramy za wynagrodzeniem**.
+2. Na liście Aplikacje wybierz pozycję **nagradzanie bramy**.
 
-    ![Link nagradzania bramy na liście aplikacji](common/all-applications.png)
+    ![Link bramy nagradzania na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
@@ -195,20 +195,20 @@ W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-reward-gateway-test-user"></a>Tworzenie użytkownika testowego za wynagrodzeniem bramy
+### <a name="create-reward-gateway-test-user"></a>Utwórz użytkownika testowego bramy nagradzania
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w bramie osób trzecich. Praca z [zespołu pomocy technicznej za wynagrodzeniem bramy](mailto:clientsupport@rewardgateway.com) Aby dodać użytkowników na platformie za wynagrodzeniem bramy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w bramie z wynagrodzeniem. Pracuj z [zespołem pomocy technicznej bramy](mailto:clientsupport@rewardgateway.com) , aby dodać użytkowników na platformie bramy z wynagrodzeniem. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka nagradzania bramy w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze bramy nagrody, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Brama nagrody w panelu dostępu należy automatycznie zalogować się do bramy nagradzania, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

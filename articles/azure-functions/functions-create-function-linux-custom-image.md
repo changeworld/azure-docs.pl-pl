@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329583"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082829"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego
 
@@ -57,7 +57,7 @@ Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bas
 
 ## <a name="create-the-local-project"></a>Utwórz projekt lokalny
 
-Uruchom następujące polecenie w wierszu polecenia, aby utworzyć projekt aplikacji funkcji w folderze `MyFunctionProj` bieżącego katalogu lokalnego. W przypadku projektu w języku Python [należy uruchomić program w środowisku wirtualnym](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
+Uruchom następujące polecenie w wierszu polecenia, aby utworzyć projekt aplikacji funkcji w folderze `MyFunctionProj` bieżącego katalogu lokalnego. W przypadku projektu w języku Python [należy uruchomić program w środowisku wirtualnym](functions-create-first-function-python.md#create-and-activate-a-virtual-environment).
 
 ```bash
 func init MyFunctionProj --docker
@@ -147,7 +147,7 @@ Po pomyślnym wypchnięciu można użyć obrazu jako źródła wdrożenia dla no
 
 Hosting systemu Linux dla kontenerów funkcji niestandardowych obsługiwanych w ramach [dedykowanych planów (App Service)](functions-scale.md#app-service-plan) i [planów Premium](functions-premium-plan.md#features). W tym samouczku jest używany plan Premium, który można skalować zgodnie z wymaganiami. Aby dowiedzieć się więcej o hostingu, zobacz [Porównanie planów hostingu usługi Azure Functions](functions-scale.md).
 
-Poniższy przykład tworzy plan Premium o nazwie `myPremiumPlan` w warstwie cenowej **elastyczne 1** . (`--sku EP1`) w regionie zachodnie Stany usa (`-location WestUS`) i w kontenerze systemu Linux (`--is-linux`).
+Poniższy przykład tworzy plan Premium o nazwie `myPremiumPlan` w warstwie cenowej **elastyczne 1** (`--sku EP1`) w regionie zachodnie Stany usa (`-location WestUS`) i w kontenerze systemu Linux (`--is-linux`).
 
 ```azurecli-interactive
 az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
@@ -206,7 +206,7 @@ Wybierz funkcję **MyHttpTrigger** , wybierz pozycję **</> Pobierz adres URL fu
 
 ![Kopiowanie adresu URL funkcji z witryny Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
 
-W tym adresie URL klucz funkcji jest parametrem zapytania `code`. 
+W tym adresie URL klucz funkcji jest `code` parametr zapytania. 
 
 > [!NOTE]  
 > Ponieważ aplikacja funkcji jest wdrażana jako kontener, nie można wprowadzać zmian w kodzie funkcji w portalu. Zamiast tego należy zaktualizować projekt w kontenerze lokalnym i ponownie opublikować go na platformie Azure.
@@ -243,7 +243,7 @@ Protokół SSH umożliwia bezpieczną komunikację między kontenerem i klientem
 
 ### <a name="change-the-base-image"></a>Zmiana obrazu podstawowego
 
-W pliku dockerfile Dołącz ciąg `-appservice` do obrazu podstawowego w instrukcji `FROM`, która dla projektu JavaScript wygląda następująco.
+W pliku dockerfile Dołącz ciąg `-appservice` do obrazu podstawowego w instrukcji `FROM`, który dla projektu JavaScript wygląda następująco.
 
 ```docker
 FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
@@ -253,7 +253,7 @@ Różnice w dwóch obrazach podstawowych umożliwiają nawiązywanie połączeń
 
 ### <a name="rebuild-and-redeploy-the-image"></a>Ponowne kompilowanie i wdrażanie obrazu
 
-W folderze głównym Uruchom ponownie polecenie [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) (tak jak wcześniej), zastępując `<docker-id>` identyfikatorem konta centrum platformy Docker. 
+W folderze głównym ponownie uruchom polecenie [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) , tak jak wcześniej, zastąp `<docker-id>` identyfikatorem konta centrum platformy Docker. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -317,7 +317,7 @@ Teraz można dodać powiązanie danych wyjściowych magazynu do projektu.
 
 ### <a name="add-an-output-binding"></a>Dodawanie powiązania danych wyjściowych
 
-W funkcjach każdy typ powiązania wymaga `direction`, `type` i unikatowych `name` do zdefiniowania w pliku Function. JSON. Sposób definiowania tych atrybutów zależy od języka aplikacji funkcji.
+W funkcjach każdy typ powiązania wymaga `direction`, `type`i unikatowy `name` do zdefiniowania w pliku Function. JSON. Sposób definiowania tych atrybutów zależy od języka aplikacji funkcji.
 
 # <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
@@ -349,7 +349,7 @@ Po zdefiniowaniu powiązania można użyć `name` powiązania, aby uzyskać do n
 
 ### <a name="update-the-hosted-container"></a>Aktualizowanie hostowanego kontenera
 
-W folderze głównym ponownie uruchom polecenie [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) , a następnie zaktualizuj wersję w znaczniku do `v1.0.2`. Tak jak wcześniej, Zastąp `<docker-id>` IDENTYFIKATORem konta centrum Docker. 
+W folderze głównym ponownie uruchom polecenie [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) , a następnie zaktualizuj wersję w znaczniku, aby `v1.0.2`. Tak jak wcześniej, Zastąp `<docker-id>` IDENTYFIKATORem konta centrum platformy Docker. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -363,7 +363,7 @@ docker push <docker-id>/mydockerimage:v1.0.0
 
 ### <a name="verify-the-updates-in-azure"></a>Weryfikowanie aktualizacji na platformie Azure
 
-Użyj tego samego adresu URL, co wcześniej w przeglądarce, aby wyzwolić funkcję. Powinna zostać wyświetlona taka sama odpowiedź. Jednak w tym czasie ciąg przekazywany jako parametr `name` jest zapisywana w kolejce magazynu `outqueue`.
+Użyj tego samego adresu URL, co wcześniej w przeglądarce, aby wyzwolić funkcję. Powinna zostać wyświetlona taka sama odpowiedź. Jednak tym razem ciąg, który jest przekazywany jako parametr `name`, jest zapisywana w kolejce magazynu `outqueue`.
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 

@@ -7,12 +7,12 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: a6914fadcc69db534bb8476bbd8c89aa716a8bcb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c589cba1386433e13318dabbd2873f789ee42df3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074691"
+ms.locfileid: "74091505"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej udziałów plików platformy Azure
 
@@ -44,7 +44,7 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | Konfiguracja kopii zapasowej udziału plików (lub konfiguracja zasad ochrony) kończy się niepowodzeniem. | <ul><li>Spróbuj ponownie wykonać operację, aby sprawdzić, czy problem nadal występuje. <li> Sprawdź, czy udział plików, który chcesz chronić, nie został usunięty. <li> Jeśli próbujesz chronić wiele udziałów plików jednocześnie, a niektóre udziały plików kończą się niepowodzeniem, ponów próbę skonfigurowania kopii zapasowej dla udziałów plików zakończonych niepowodzeniem. |
 | Nie można usunąć magazynu usługi Recovery Services po wyłączeniu ochrony udziału plików. | W witrynie Azure Portal otwórz swój magazyn, wybierz pozycję **Infrastruktura kopii zapasowych** > **Konta magazynu**, a następnie kliknij pozycję **Wyrejestruj**, aby usunąć konto magazynu z magazynu usługi Recovery Services.|
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>Komunikaty o błędach dotyczących zadań tworzenia kopii zapasowej lub przywracania
+## <a name="error-messages-for-backup-or-restore-job-failures"></a>Komunikaty o błędach dotyczące niepowodzeń zadania tworzenia kopii zapasowej lub przywracania
 
 | Komunikaty o błędach | Wskazówki dotyczące obejść lub rozwiązań |
 | -------------- | ----------------------------- |
@@ -62,7 +62,7 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | Operacja przywrócenia nie powiodła się, ponieważ wystąpił błąd podczas wykonywania operacji przywracania wstępnego dla zasobów usługi File Sync skojarzonych z docelowym udziałem plików. | Spróbuj ponownie za jakiś czas. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
 | Odzyskanie co najmniej jednego pliku zakończyło się niepowodzeniem. Aby uzyskać więcej informacji, sprawdź listę plików zakończonych niepowodzeniem w ramach podanej powyżej ścieżki. | <ul> <li> Przyczyny niepowodzenia odzyskiwania są wymienione w pliku (ścieżka jest podana w szczegółach zadania). Usuń przyczyny niepowodzenia, a następnie spróbuj ponownie wykonać operację przywracania tylko dla plików zakończonych niepowodzeniem. <li> Typowe przyczyny błędów przywracania plików: <br/> - pliki zakończone niepowodzeniem są używane <br/> -w katalogu nadrzędnym istnieje katalog o tej samej nazwie, co plik zakończony niepowodzeniem |
 
-## <a name="modify-policy"></a>Modyfikowanie zasad
+## <a name="modify-policy"></a>Modyfikuj zasady
 
 | Komunikaty o błędach | Wskazówki dotyczące obejść lub rozwiązań |
 | ------------------ | ----------------------------- |

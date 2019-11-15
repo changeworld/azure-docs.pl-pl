@@ -1,5 +1,5 @@
 ---
-title: 'Wymagania dotyczące routingu — ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: wymagania dotyczące routingu'
 description: Ta strona zawiera szczegółowe wymagania dotyczące konfigurowania routingu oraz zarządzania nim na potrzeby obwodów usługi ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: a52f9fca172e42aa39a4507347185026451a8ff2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 934dc94da9bbdfc38cc12e78eaa5b67fa9f786ca
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029037"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083312"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -40,7 +39,7 @@ Do konfigurowania komunikacji równorzędnej można użyć prywatnych lub public
   * Aby zapewnić ważność [umowy SLA dotyczącej dostępności](https://azure.microsoft.com/support/legal/sla/), musisz skonfigurować obie sesje protokołu BGP.  
 
 #### <a name="example-for-private-peering"></a>Przykład prywatnej komunikacji równorzędnej
-Jeśli do skonfigurowania komunikacji równorzędnej zdecydujesz się użyć podsieci a.b.c.d/29, zostanie ona podzielona na dwie podsieci /30. W poniższym przykładzie Zwróć uwagę na to, jak jest używana podsieć a. b. c. d/29:
+Jeśli do skonfigurowania komunikacji równorzędnej zdecydujesz się użyć podsieci a.b.c.d/29, zostanie ona podzielona na dwie podsieci /30. W poniższym przykładzie zwróć uwagę, jak jest używana podsieci a.b.c.d/29:
 
 * Podsieć a.b.c.d/29 zostanie podzielona na podsieci a.b.c.d/30 i a.b.c.d+4/30 i przekazana firmie Microsoft za pośrednictwem aprowizowanych interfejsów API.
   * Użytkownik użyje podsieci a.b.c.d+1 jako adresu IP VRF usługi Primary PE, a firma Microsoft użyje podsieci a.b.c.d+2 jako adresu IP VRF podstawowego rozwiązania MSEE.
@@ -84,7 +83,7 @@ Do konfigurowania sesji protokołu BGP należy użyć posiadanych publicznych ad
 Do prywatnej komunikacji równorzędnej można używać publicznych lub prywatnych adresów IPv4. Zapewniamy kompleksową izolację ruchu, w związku z czym w warunkach prywatnej komunikacji równorzędnej nie ma możliwości, aby adresy się nakładały. Te adresy nie są anonsowane w Internecie. 
 
 ### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
-Ścieżka komunikacji równorzędnej firmy Microsoft umożliwia nawiązanie połączenia z usługami w chmurze firmy Microsoft. Lista usług obejmuje usługi Office 365, takie jak Exchange Online, SharePoint Online, Skype dla firm i Microsoft Teams. Firma Microsoft zapewnia obsługę dwukierunkowej łączności w oparciu o komunikację równorzędną firmy Microsoft. Ruch skierowany do usług w chmurze firmy Microsoft musi uzyskać prawidłowe publiczne adresy IPv4, zanim wejdzie do sieci firmy Microsoft.
+Ścieżki komunikacji równorzędnej firmy Microsoft umożliwia łączenie z usługami chmurowymi firmy Microsoft. Lista usług obejmuje usługi Office 365, takie jak Exchange Online, SharePoint Online, Skype dla firm i Microsoft Teams. Firma Microsoft zapewnia obsługę dwukierunkowej łączności w oparciu o komunikację równorzędną firmy Microsoft. Ruch skierowany do usług w chmurze firmy Microsoft musi uzyskać prawidłowe publiczne adresy IPv4, zanim wejdzie do sieci firmy Microsoft.
 
 Zadbaj o to, aby adres IP i numer AS zostały zarejestrowane na Ciebie w jednym z następujących rejestrów:
 
@@ -101,18 +100,18 @@ Jeśli Twoje prefiksy i numer systemu autonomicznego nie są przypisane do Ciebi
 Prywatny numer systemu autonomicznego jest dozwolony dla komunikacji równorzędnej firmy Microsoft, ale będzie również wymagał ręcznej weryfikacji. Ponadto firma Microsoft usuwa prywatne numery AS w ścieżce AS dla odebranych prefiksów. W związku z tym nie można dołączyć prywatnych numerów AS do ścieżki AS, aby [wpłynąć na routing komunikacji równorzędnej firmy Microsoft](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Nie należy anonsować tej samej publicznej trasy IP do publicznego Internetu i za pośrednictwem ExpressRoute. Aby zmniejszyć ryzyko niepoprawnej konfiguracji powodującej Routing asymetryczny, zdecydowanie zalecamy, aby [adresy IP translatora adresów sieciowych](expressroute-nat.md) anonsowane do firmy Microsoft przez ExpressRoute były z zakresu, który nie jest anonsowany w Internecie. Jeśli nie jest to możliwe, należy się upewnić, że anonsuje bardziej konkretny zakres od ExpressRoute niż ten, na którym nadano połączenie internetowe. Poza trasą publiczną dla translatora adresów sieciowych można także anonsować za pośrednictwem usługi ExpressRoute publiczne adresy IP używane przez serwery w sieci lokalnej, które komunikują się z punktami końcowymi pakietu Office 365 w firmie Microsoft. 
+> Nie anonsuje tego samego publicznego trasy IP do publicznej sieci Internet i za pośrednictwem usługi ExpressRoute. Aby zmniejszyć ryzyko niepoprawnej konfiguracji powodującej Routing asymetryczny, zdecydowanie zalecamy, aby [adresy IP translatora adresów sieciowych](expressroute-nat.md) anonsowane do firmy Microsoft przez ExpressRoute były z zakresu, który nie jest anonsowany w Internecie. Jeśli nie jest to możliwe, należy się upewnić, że anonsuje bardziej konkretny zakres od ExpressRoute niż ten, na którym nadano połączenie internetowe. Oprócz publicznego trasę dla translatora adresów Sieciowych, należy można również ogłaszać dłuższe za pośrednictwem usługi ExpressRoute z publicznym adresem IP adresów używanych przez serwery w sieci lokalnej, które komunikują się z punktami końcowymi usługi Office 365, w ramach firmy Microsoft. 
 > 
 > 
 
-### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>Publiczna Komunikacja równorzędna (przestarzałe — niedostępne w przypadku nowych obwodów)
+### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>Publicznej komunikacji równorzędnej (przestarzałe — nie jest dostępna dla obwodów)
 Ścieżka publicznej komunikacji równorzędnej Azure umożliwia łączenie ze wszystkimi usługami obsługiwanymi na platformie Azure za pośrednictwem ich publicznych adresów IP. Dotyczy to usług wymienionych w temacie [ExpessRoute FAQ](expressroute-faqs.md) (ExpessRoute — często zadawane pytania) i wszystkich usług obsługiwanych przez niezależnych dostawców oprogramowania na platformie Microsoft Azure. Połączenie z usługami Microsoft Azure w publicznej komunikacji równorzędnej jest zawsze inicjowane z sieci użytkownika do sieci Microsoft. W odniesieniu do ruchu skierowanego do sieci firmy Microsoft należy użyć publicznych adresów IP.
 
 > [!IMPORTANT]
-> Wszystkie usługi Azure PaaS są dostępne za pomocą komunikacji równorzędnej firmy Microsoft.
+> Wszystkie usługi PaaS platformy Azure są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft.
 >   
 
-Prywatny numer AS jest dozwolony w publicznej komunikacji równorzędnej.
+Prywatny numer jest dozwolony w publicznej komunikacji równorzędnej.
 
 ## <a name="dynamic-route-exchange"></a>Wymiana tras dynamicznych
 Wymiana routingu będzie odbywać się za pośrednictwem protokołu eBGP. Sesje eBGP są ustanawiane między rozwiązaniami MSEE a routerami użytkownika. Uwierzytelnianie sesji BGP nie jest wymagane. W razie potrzeby można skonfigurować skrót MD5. Informacje na temat konfigurowania sesji BGP znajdują się w artykułach [Configure routing](how-to-routefilter-portal.md) (Konfigurowanie routingu) i [Circuit provisioning workflows and circuit states](expressroute-workflows.md) (Przepływy pracy inicjowania obsługi obwodu i stany obwodu).
@@ -152,7 +151,7 @@ Na przykład po połączeniu się z firmą Microsoft w Amsterdamie za pośrednic
 
 Zapoznaj się ze stroną [ExpressRoute partners and peering locations](expressroute-locations.md) (Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute), która zawiera szczegółową listę regionów geopolitycznych, powiązanych regionów świadczenia usługi Azure i odpowiadających im lokalizacji komunikacji równorzędnej usługi ExpressRoute.
 
-Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolityczny. Wiele ofert połączeń daje znaczące korzyści w zakresie wysokiej dostępności z powodu nadmiarowości geograficznej. W przypadkach, gdy masz wiele obwodów usługi ExpressRoute, otrzymasz ten sam zestaw prefiksów anonsowanych od firmy Microsoft na ścieżce komunikacji równorzędnej firmy Microsoft i publicznych komunikacji równorzędnych. Oznacza to, że będziesz mieć wiele ścieżek ze swojej sieci do firmy Microsoft. Może to teoretycznie spowodować podjęcie nieoptymalnych decyzji w zakresie routingu w ramach sieci. W efekcie połączenia z różnymi usługami mogą nie być optymalne. Wartości społeczności gwarantują, że zostaną podjęte odpowiednie decyzje w kwestii routingu i klienci będą mieli zapewniony [optymalny routing do użytkowników](expressroute-optimize-routing.md).
+Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolityczny. Wiele ofert połączeń daje znaczące korzyści w zakresie wysokiej dostępności z powodu nadmiarowości geograficznej. W przypadkach, w którym masz wiele obwodów usługi ExpressRoute otrzymasz ten sam zestaw prefiksów anonsowanych z firmy Microsoft dotyczące komunikacji równorzędnej firmy Microsoft i publicznej komunikacji równorzędnej ścieżki. Oznacza to, że będziesz mieć wiele ścieżek ze swojej sieci do firmy Microsoft. Może to teoretycznie spowodować podjęcie nieoptymalnych decyzji w zakresie routingu w ramach sieci. W efekcie połączenia z różnymi usługami mogą nie być optymalne. Wartości społeczności gwarantują, że zostaną podjęte odpowiednie decyzje w kwestii routingu i klienci będą mieli zapewniony [optymalny routing do użytkowników](expressroute-optimize-routing.md).
 
 | **Region platformy Microsoft Azure** | **Regionalna społeczność protokołu BGP** | **Społeczność protokołu BGP magazynu** | **Społeczność protokołu BGP SQL** | **Cosmos DB społeczność protokołu BGP** |
 | --- | --- | --- | --- | --- |
@@ -161,9 +160,9 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Wschodnie stany USA 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
 | Zachodnie stany USA | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
 | Zachodnie stany USA 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| Zachodnio-środkowe stany USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| Północno-środkowe stany USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| Południowo-środkowe stany USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| Środkowo-zachodnie stany USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| Środkowo-północne stany USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| Środkowo-południowe stany USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
 | Środkowe stany USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
 | Kanada Środkowa | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
 | Kanada Wschodnia | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
@@ -178,7 +177,7 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Francja Południowa | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | **Azja i Pacyfik** | |
 | Azja Wschodnia | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
-| Azja Południowo-wschodnia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
+| Azja Południowo-Wschodnia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **Japonia** | |
 | Japonia Wschodnia | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
 | Japonia Zachodnia | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
@@ -196,8 +195,8 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Korea Południowa | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
 | Korea Środkowa | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
 | **Republika Południowej Afryki**| |
-| Republika Południowej Afryki (północ) | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
-| Republika Południowej Afryki (zachód) | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| Północna Republika Południowej Afryki | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Północna Republika Południowej Afryki | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **Emiraty**| |
 | Północne Zjednoczone Emiraty Arabskie | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
 | Środkowe Zjednoczone Emiraty Arabskie | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
@@ -219,8 +218,8 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | SharePoint Online * * | 12076:5020 |
 | Skype dla firm Online * * | 12076:5030 |
 | CRM Online |12076:5040 |
-| Usługi globalne platformy Azure * | 12076:5050 |
-| Usługa Active Directory systemu Azure |12076:5060 |
+| Usługa Azure globalnego usług * | 12076:5050 |
+| Usługa Azure Active Directory |12076:5060 |
 | Inne usługi online pakietu Office 365 * * | 12076:5100 |
 
 \* Usługi globalne platformy Azure obejmują tylko usługę Azure DevOps.
@@ -240,8 +239,8 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | US Gov Iowa | 12076:51109 |
 | Administracja USA — Wirginia | 12076:51105 |
 | Administracja USA — Teksas | 12076:51108 |
-| Środkowe stany USA — DoD | 12076:51209 |
-| Wschodnie stany USA — DoD | 12076:51205 |
+| US DoD — środkowe stany | 12076:51209 |
+| US DoD — wschodnie stany | 12076:51205 |
 
 
 | **Usługa w chmurach krajowych** | **Wartość społeczności BGP** |

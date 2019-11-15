@@ -1,5 +1,5 @@
 ---
-title: Temat usługi ExpressRoute bezpośrednio — Azure | Dokumentacja firmy Microsoft
+title: Informacje o usłudze Azure ExpressRoute Direct
 description: Ta strona zawiera omówienie usługi ExpressRoute Direct
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123404"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083602"
 ---
 # <a name="about-expressroute-direct"></a>Informacje o usłudze ExpressRoute Direct
 
@@ -22,7 +21,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
 Najważniejsze funkcje, które zapewnia usługi ExpressRoute bezpośrednio obejmują, ale nie są ograniczone do:
 
 * Masywne pozyskiwanie danych do usług, takich jak Storage i Cosmos DB
-* Izolacja fizyczna dla branż, które są regulowane i wymagają dedykowanych i izolowanych połączeń, takich jak: usług bankowych, rządowych i handlowych
+* Fizyczne odizolowanie dla przedsiębiorstw, które są regulowane i wymagają w wersji dedykowanej i izolowany łączności, takich jak: bankowe dla instytucji rządowych i handlu detalicznego
 * Pełna kontrola nad rozmieszczeniem obwodów na podstawie jednostek biznesowych
 
 ## <a name="onboard-to-expressroute-direct"></a>Dołączanie do ExpressRoute Direct
@@ -73,8 +72,8 @@ Bezpośrednie ExpressRoute obsługuje scenariuszy pozyskiwania duża ilość dan
     * Etertype = 0x8100
     * Należy dodać zewnętrzny tag sieci VLAN (STAG) na podstawie identyfikatora sieci VLAN określonego przez firmę Microsoft — *dotyczy tylko QinQ*
     * Musi obsługiwać wiele sesji protokołu BGP (VLAN) na port i urządzenie
-    * Łączność z protokołami IPv4 i IPv6. *W przypadku protokołu IPv6 nie zostanie utworzony dodatkowy interfejs podrzędny. Adres IPv6 zostanie dodany do istniejącego interfejsu*podrzędnego. 
-    * Opcjonalnie: Obsługa [wykrywania dwukierunkowego przekazywania (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , która jest konfigurowana domyślnie na wszystkich prywatnych komunikacji równorzędnej w obwodach usługi ExpressRoute
+    * Łączność z protokołami IPv4 i IPv6. *W przypadku protokołu IPv6 nie zostanie utworzony dodatkowy interfejs podrzędny. Adres IPv6 zostanie dodany do istniejącego interfejsu podrzędnego*. 
+    * Opcjonalne: Obsługa funkcji [wykrywania przekazywania dwukierunkowego (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , która jest konfigurowana domyślnie na wszystkich prywatnych komunikacji równorzędnej w obwodach usługi ExpressRoute
 
 ## <a name="vlan-tagging"></a>Znakowanie sieci VLAN
 
@@ -86,7 +85,7 @@ Usługa ExpressRoute bezpośrednio obsługuje QinQ i Dot1Q znakowanie sieci VLAN
 
 ## <a name="workflow"></a>Przepływ pracy
 
-[![utworzonego](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[przepływ pracy ![](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>Umowa SLA
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie serwera przetwarzania na platformie Azure dla maszyn wirtualnych VMware i powrotu po awarii serwera fizycznego przy użyciu Azure Site Recovery | Microsoft Docs
+title: Konfigurowanie serwera przetwarzania VMware/fizycznego powrotu po awarii w Azure Site Recovery
 description: W tym artykule opisano sposób konfigurowania serwera przetwarzania na platformie Azure na potrzeby powrotu po awarii maszyn wirtualnych platformy Azure do programu VMware.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 080edfc86848bb6c6579c177c72d3fbd3214a06a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968837"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083948"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Konfigurowanie serwera przetwarzania na platformie Azure na potrzeby powrotu po awarii
 
@@ -37,7 +37,7 @@ Dowiedz się więcej o procesie ponownego [zabezpieczania](vmware-azure-reprotec
 
 4. W polu **Nazwa serwera**, **Nazwa użytkownika**i **hasło**Określ nazwę serwera przetwarzania i poświadczenia, które zostaną przypisane uprawnienia administratora na serwerze.
 5. Określ konto magazynu, które będzie używane dla dysków maszyny wirtualnej serwera, podsieć, w której znajduje się maszyna wirtualna serwera przetwarzania, oraz adres IP serwera, który zostanie przypisany podczas uruchamiania maszyny wirtualnej.
-6. Kliknij przycisk **OK** , aby rozpocząć wdrażanie maszyny wirtualnej serwera przetwarzania. Serwer przetwarzania zostanie wdrożony w jednostce SKU Standard_A8_v2. Upewnij się, że ta jednostka SKU maszyny wirtualnej jest dostępna dla Twojej subskrypcji.
+6. Kliknij przycisk **OK** , aby rozpocząć wdrażanie maszyny wirtualnej serwera przetwarzania. Serwer przetwarzania zostanie wdrożony w Standard_A8_v2 jednostki SKU. Upewnij się, że ta jednostka SKU maszyny wirtualnej jest dostępna dla Twojej subskrypcji.
 
 >
 

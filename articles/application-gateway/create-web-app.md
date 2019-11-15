@@ -1,22 +1,23 @@
 ---
-title: Ochrona aplikacji sieci web za pomocą usługi Azure Application Gateway — PowerShell
+title: Konfigurowanie App Service przy użyciu programu PowerShell
+titleSuffix: Azure Application Gateway
 description: Ten artykuł zawiera wskazówki dotyczące sposobu konfigurowania aplikacji internetowych jako hostów zaplecza w istniejącej lub nowej bramie aplikacji.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122221"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089508"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Konfigurowanie usługi App Service z usługą Application Gateway
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>Konfigurowanie App Service z Application Gateway przy użyciu programu PowerShell
 
-Usługa Application gateway umożliwia aplikacji usługi App Service lub innej usługi wielodostępnej jako składowej puli zaplecza. W tym artykule przedstawiono sposób konfigurowania aplikacji usługi App Service z usługą Application Gateway. W pierwszym przykładzie pokazano, jak skonfigurować istniejącą bramę aplikacji w celu używania aplikacji internetowej jako składowej puli zaplecza. Drugi przykład pokazuje, jak utworzyć nową bramę aplikacji z aplikacją internetową jako składową puli zaplecza.
+Usługa Application Gateway umożliwia korzystanie z aplikacji App Service lub innej usługi wielodostępnej jako składowej puli zaplecza. W tym artykule dowiesz się, jak skonfigurować aplikację App Service przy użyciu Application Gateway. W pierwszym przykładzie pokazano, jak skonfigurować istniejącą bramę aplikacji w celu używania aplikacji internetowej jako składowej puli zaplecza. Drugi przykład pokazuje, jak utworzyć nową bramę aplikacji z aplikacją internetową jako składową puli zaplecza.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -157,12 +158,12 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="restrict-access"></a>Ograniczanie dostępu
+## <a name="restrict-access"></a>Ogranicz dostęp
 
-Aplikacje sieci web wdrażane w tych przykładach używania publicznych adresów IP, które są dostępne bezpośrednio z Internetu. Ułatwia to Rozwiązywanie problemów podczas nauki obsługi nowych funkcji i podjęcie próby nowe obiekty. Ale jeśli zamierzasz wdrożyć funkcję w środowisku produkcyjnym, należy dodać więcej ograniczeń.
+Aplikacje sieci Web wdrożone w tych przykładach używają publicznych adresów IP, do których można uzyskać dostęp bezpośrednio z Internetu. Ułatwia to rozwiązywanie problemów podczas uczenia się o nowej funkcji i podejmowanie nowych zadań. Ale jeśli zamierzasz wdrożyć funkcję w środowisku produkcyjnym, musisz dodać więcej ograniczeń.
 
-Jednym ze sposobów, możesz ograniczyć dostęp do aplikacji sieci web jest użycie [ograniczenia adresów IP statycznych w usłudze Azure App Service](../app-service/app-service-ip-restrictions.md). Na przykład aplikacja sieci web można ograniczyć tak, aby tylko odbiera ruch z bramy aplikacji. Użyj funkcji ograniczeń adresów IP usługi aplikacji, aby wyświetlić listę adresów VIP bramy aplikacji jako adres tylko z dostępem.
+Jednym ze sposobów ograniczenia dostępu do aplikacji sieci Web jest użycie [Azure App Service ograniczeń statycznych adresów IP](../app-service/app-service-ip-restrictions.md). Można na przykład ograniczyć aplikację sieci Web tak, aby tylko odbierał ruch z bramy aplikacji. Użyj funkcji ograniczenia adresów IP usługi App Service, aby wyświetlić listę adresów VIP bramy aplikacji jako jedyny adres z dostępem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak skonfigurować przekierowanie, odwiedzając: [Konfigurowanie przekierowania dla usługi Application Gateway przy użyciu programu PowerShell](redirect-overview.md).
+Dowiedz się, jak skonfigurować przekierowanie, odwiedzając stronę [Konfigurowanie przekierowania dla usługi Application Gateway przy użyciu programu PowerShell](redirect-overview.md).
