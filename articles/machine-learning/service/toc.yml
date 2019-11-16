@@ -103,7 +103,7 @@
             - name: Zarządzanie użytkownikami i rolami
               href: how-to-assign-roles.md
             - name: Używanie sieci wirtualnych
-              displayName: vnet
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
               href: how-to-secure-web-service.md
