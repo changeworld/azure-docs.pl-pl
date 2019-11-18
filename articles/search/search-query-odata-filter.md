@@ -1,7 +1,7 @@
 ---
 title: Odwołanie filtru OData
 titleSuffix: Azure Cognitive Search
-description: Dokumentacja języka OData dla składni filtru w zapytaniach usługi Azure Wyszukiwanie poznawcze.
+description: Dokumentacja języka OData i pełna Składnia służąca do tworzenia wyrażeń filtrów w usłudze Azure Wyszukiwanie poznawcze zapytania.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793369"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113199"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Składnia $filter OData na platformie Azure Wyszukiwanie poznawcze
 
@@ -78,7 +78,7 @@ Jeśli piszesz wyrażenie filtru bez nawiasów wokół jego wyrażeń podrzędny
 | Grupa | Operatorzy: |
 | --- | --- |
 | Operatory logiczne | `not` |
-| Operatory porównania | `eq`, `ne`, `gt`, `lt`, `ge``le` |
+| Operatory porównania | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
 | Operatory logiczne | `and` |
 | Operatory logiczne | `or` |
 

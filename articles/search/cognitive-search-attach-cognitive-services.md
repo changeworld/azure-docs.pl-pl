@@ -1,5 +1,5 @@
 ---
-title: Dołącz zasób Cognitive Services do zestawu umiejętności
+title: Dołącz Cognitive Services do zestawu umiejętności
 titleSuffix: Azure Cognitive Search
 description: Instrukcje dotyczące dołączania Cognitive Services całościowej subskrypcji do potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 11ca5f71cb0d08a4bebf72407035a9557c794f9f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788028"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113930"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Dołącz zasób Cognitive Services do zestawu umiejętności na platformie Azure Wyszukiwanie poznawcze 
 
-Algorytmy AI umożliwiają tworzenie [potoków wzbogacania](cognitive-search-concept-intro.md) używanych na potrzeby przekształcania zawartości w usłudze Azure wyszukiwanie poznawcze. Algorytmy te są oparte na zasobach Cognitive Services platformy Azure, w tym [Przetwarzanie obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/) do analizy obrazów i optycznego rozpoznawania znaków (OCR) oraz [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) do rozpoznawania jednostek, wyodrębniania kluczowych fraz i innych wzbogaceń . Używane przez Wyszukiwanie poznawcze platformy Azure do wzbogacania dokumentów, algorytmy są opakowane w ramach *umiejętności*, umieszczane w *zestawu umiejętności*i odwołujące się do *indeksatora* podczas indeksowania.
+Algorytmy AI umożliwiają tworzenie [potoków wzbogacania](cognitive-search-concept-intro.md) używanych na potrzeby przekształcania zawartości w usłudze Azure wyszukiwanie poznawcze. Algorytmy te są oparte na zasobach Cognitive Services platformy Azure, w tym [Przetwarzanie obrazów](https://azure.microsoft.com/services/cognitive-services/computer-vision/) do analizy obrazów i optycznego rozpoznawania znaków (OCR) oraz [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) do rozpoznawania jednostek, wyodrębniania kluczowych fraz i innych wzbogaceń. Używane przez Wyszukiwanie poznawcze platformy Azure do wzbogacania dokumentów, algorytmy są opakowane w ramach *umiejętności*, umieszczane w *zestawu umiejętności*i odwołujące się do *indeksatora* podczas indeksowania.
 
 Możesz wzbogacić ograniczoną liczbę dokumentów bezpłatnie. Można też dołączyć zasób Cognitive Services rozliczany do *zestawu umiejętności* w celu uzyskania większych i bardziej częstych obciążeń. W tym artykule dowiesz się, jak dołączyć zasób Cognitive Services rozliczany do wzbogacania dokumentów podczas [indeksowania](search-what-is-an-index.md)wyszukiwanie poznawcze Azure.
 
@@ -99,7 +99,7 @@ Jeśli masz istniejący zestawu umiejętności, możesz dołączyć go do nowego
 
 ## <a name="attach-cognitive-services-programmatically"></a>Dołącz Cognitive Services programowo
 
-Podczas programistycznego definiowania zestawu umiejętności, Dodaj sekcję `cognitiveServices` do zestawu umiejętności. W tej sekcji należy uwzględnić klucz zasobu Cognitive Services, który ma zostać skojarzony z zestawu umiejętności. Należy pamiętać, że zasób musi znajdować się w tym samym regionie co zasób Wyszukiwanie poznawcze platformy Azure. Należy również uwzględnić `@odata.type` i ustawić ją na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
+Podczas programistycznego definiowania zestawu umiejętności, Dodaj sekcję `cognitiveServices` do zestawu umiejętności. W tej sekcji należy uwzględnić klucz zasobu Cognitive Services, który ma zostać skojarzony z zestawu umiejętności. Należy pamiętać, że zasób musi znajdować się w tym samym regionie co zasób Wyszukiwanie poznawcze platformy Azure. Należy również uwzględnić `@odata.type`i ustawić ją na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
 
 Poniższy przykład pokazuje ten wzorzec. Zwróć uwagę na sekcję `cognitiveServices` na końcu definicji.
 

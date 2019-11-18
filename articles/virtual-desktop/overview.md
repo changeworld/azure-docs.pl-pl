@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 3781b71237f97cfd004805846f7c30f8cfe9b9f5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013165"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74119999"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -117,8 +117,8 @@ Następujący klienci Pulpit zdalny obsługują pulpit wirtualny systemu Windows
 
 Pulpit wirtualny systemu Windows obsługuje następujące obrazy systemu operacyjnego x64:
 
-* Wiele sesji systemu Windows 10 Enterprise
-* Windows 10 Enterprise
+* Wiele sesji systemu Windows 10 Enterprise, wersja 1809 lub nowsza
+* Windows 10 Enterprise, wersja 1809 lub nowsza
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
@@ -130,14 +130,14 @@ Dostępne opcje automatyzacji i wdrażania zależą od wybranego systemu operacy
 
 |System operacyjny|Galeria obrazów platformy Azure|Ręczne wdrożenie maszyny wirtualnej|Integracja z szablonem Azure Resource Manager|Inicjowanie obsługi pul hostów w witrynie Azure Marketplace|Aktualizacje agenta pulpitu wirtualnego systemu Windows|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Wiele sesji systemu Windows 10, wersja 1903|Tak|Tak|Tak|Tak|Automatyczne|
-|Wiele sesji systemu Windows 10, wersja 1809|Tak|Tak|Nie|Nie|Automatyczne|
-|Windows 10 Enterprise, wersja 1903|Tak|Tak|Tak|Tak|Automatyczne|
-|Windows 10 Enterprise, wersja 1809|Tak|Tak|Nie|Nie|Automatyczne|
-|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręcznie|
-|Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczne|
-|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczne|
-|Windows Server 2012 R2|Tak|Tak|Nie|Nie|Automatyczne|
+|Wiele sesji systemu Windows 10, wersja 1903|Yes|Yes|Yes|Yes|Automatyczne|
+|Wiele sesji systemu Windows 10, wersja 1809|Yes|Yes|Nie|Nie|Automatyczne|
+|Windows 10 Enterprise, wersja 1903|Yes|Yes|Yes|Yes|Automatyczne|
+|Windows 10 Enterprise, wersja 1809|Yes|Yes|Nie|Nie|Automatyczne|
+|Windows 7 Enterprise|Yes|Yes|Nie|Nie|Ręcznie|
+|Windows Server 2019|Yes|Yes|Nie|Nie|Automatyczne|
+|Windows Server 2016|Yes|Yes|Yes|Yes|Automatyczne|
+|Windows Server 2012 R2|Yes|Yes|Nie|Nie|Automatyczne|
 
 ## <a name="next-steps"></a>Następne kroki
 

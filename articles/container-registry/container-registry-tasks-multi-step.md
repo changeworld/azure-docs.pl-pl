@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 27321dbcdeae3a830b6ddf5ea70cbaa098d7e4e3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 06bdcc1cd4f9bfcb1a77140d70435545fbe01079
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931493"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148770"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Uruchamianie wieloetapowych zadań kompilacji, testów i poprawek w zadaniach ACR
 
@@ -84,7 +84,7 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-Zobacz [przykłady zadań][task-examples] dla kompletnych wieloetapowych plików zadań YAML i wieloetapowe dockerfile dla kilku scenariuszy.
+Zobacz [przykłady zadań](container-registry-tasks-samples.md) dla wieloetapowych zadań YAML pliki i wieloetapowe dockerfile dla kilku scenariuszy.
 
 ## <a name="run-a-sample-task"></a>Uruchamianie przykładowego zadania
 
@@ -155,7 +155,7 @@ Aby uzyskać więcej informacji na temat zautomatyzowanych kompilacji w ramach z
 Informacje o wieloetapowym odniesieniu do zadania i przykłady można znaleźć tutaj:
 
 * [Odwołanie do zadania](container-registry-tasks-reference-yaml.md) — typy etapów zadań, ich właściwości i użycie.
-* [Przykłady zadań][task-examples] — przykładowe `task.yaml` pliki dla kilku scenariuszy, proste do złożonej.
+* [Przykłady zadań](container-registry-tasks-samples.md) — przykładowe `task.yaml` i pliki platformy Docker dla kilku scenariuszy, proste do złożonej.
 * [Polecenie cmd repozytorium](https://github.com/AzureCR/cmd) — kolekcja kontenerów jako poleceń dla zadań ACR.
 
 <!-- IMAGES -->

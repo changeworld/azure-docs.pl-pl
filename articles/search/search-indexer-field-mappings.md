@@ -1,5 +1,5 @@
 ---
-title: Mapowania pól na potrzeby automatycznego indeksowania przy użyciu indeksatorów
+title: Mapowania pól w indeksatorach
 titleSuffix: Azure Cognitive Search
 description: Skonfiguruj mapowania pól w indeksatorze, aby uwzględnić różnice w nazwach pól i reprezentacjach danych.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786968"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123993"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapowania pól i przekształcenia przy użyciu indeksatorów usługi Azure Wyszukiwanie poznawcze
 
@@ -175,15 +175,18 @@ Usługa Azure Wyszukiwanie poznawcze obsługuje dwa różne kodowania base64. Na
 
 #### <a name="base64-encoding-options"></a>Opcje kodowania base64
 
-Usługa Azure Wyszukiwanie poznawcze obsługuje dwa różne kodowania base64: **token adresu URL HttpServerUtility**i **bezpieczne kodowanie przy użyciu adresu URL**. Ciąg szyfrowany algorytmem Base64 podczas indeksowania powinien zostać później zdekodowany przy użyciu tych samych opcji kodowania lub w przeciwnym razie wynik nie będzie zgodny z oryginałem.
+Usługa Azure Wyszukiwanie poznawcze obsługuje kodowanie przy użyciu bezpiecznego adresu URL i standardowego kodowania base64. Ciąg szyfrowany algorytmem Base64 podczas indeksowania powinien zostać zdekodowany później przy użyciu tych samych opcji kodowania lub w przeciwnym razie wynik nie będzie zgodny z oryginałem.
 
 Jeśli parametry `useHttpServerUtilityUrlTokenEncode` lub `useHttpServerUtilityUrlTokenDecode` do kodowania i dekodowania odpowiednio są ustawione na `true`, `base64Encode` zachowuje się jak [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) i `base64Decode` zachowuje się jak [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Jeśli nie używasz pełnego .NET Framework (to oznacza, że korzystasz z platformy .NET Core lub innej struktury) do tworzenia wartości klucza do emulowania zachowania Wyszukiwanie poznawcze platformy Azure, należy ustawić `useHttpServerUtilityUrlTokenEncode` i `useHttpServerUtilityUrlTokenDecode` na `false`. W zależności od używanej biblioteki funkcje kodowania i dekodowania Base64 mogą się różnić od tych, które są używane przez usługę Azure Wyszukiwanie poznawcze.
+> [!WARNING]
+> Jeśli `base64Encode` jest używany do tworzenia wartości kluczy, `useHttpServerUtilityUrlTokenEncode` musi być ustawiona na wartość true. Dla wartości kluczy można używać tylko bezpiecznego kodowania base64 z adresem URL. Zobacz [reguły &#40;nazewnictwa Azure&#41; wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/naming-rules) , aby uzyskać pełny zestaw ograniczeń dotyczących znaków w wartościach klucza.
+
+W bibliotekach platformy .NET na platformie Azure Wyszukiwanie poznawcze założono pełny .NET Framework, który zapewnia wbudowane kodowanie. `useHttpServerUtilityUrlTokenEncode` i `useHttpServerUtilityUrlTokenDecode` opcje wykorzystują ten wbudowany functionaity. W przypadku korzystania z platformy .NET Core lub innej platformy zalecamy ustawienie tych opcji w celu `false` i wywołania funkcji kodowania i dekodowania struktury przez program.
 
 W poniższej tabeli porównano różne kodowania base64 `00>00?00`. Aby określić wymagane dodatkowe przetwarzanie (jeśli istnieje) dla funkcji Base64, zastosuj funkcję kodowania biblioteki w ciągu `00>00?00` i Porównaj dane wyjściowe z oczekiwanym `MDA-MDA_MDA`wyjściowym.
 
-| Encoding | Dane wyjściowe kodowania base64 | Dodatkowe przetwarzanie po kodowaniu biblioteki | Dodatkowe przetwarzanie przed dekodowaniem biblioteki |
+| Kodowanie | Dane wyjściowe kodowania base64 | Dodatkowe przetwarzanie po kodowaniu biblioteki | Dodatkowe przetwarzanie przed dekodowaniem biblioteki |
 | --- | --- | --- | --- |
 | Base64 z uzupełnieniem | `MDA+MDA/MDA=` | Użyj znaków bezpiecznych dla adresu URL i Usuń uzupełnienie | Użyj standardowych znaków base64 i Dodaj uzupełnienie |
 | Bezuzupełnienie Base64 | `MDA+MDA/MDA` | Użyj znaków bezpiecznych dla adresu URL | Używaj standardowych znaków Base64 |

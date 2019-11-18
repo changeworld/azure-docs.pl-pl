@@ -1,7 +1,7 @@
 ---
 title: Punkt końcowy wyszukiwania w sieci Web
 titleSuffix: Azure Cognitive Services
-description: Podsumowanie punktu końcowego interfejsu API wyszukiwania w sieci Web.
+description: Aby uzyskać wyniki wyszukiwania w sieci Web, Wyślij żądanie `GET` do poniższego punktu końcowego. Nagłówki i parametry URL definiują dalsze specyfikacje.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883560"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111337"
 ---
 # <a name="web-search-endpoint"></a>wyszukiwanie w sieci Web punkt końcowy
 
@@ -23,19 +23,19 @@ ms.locfileid: "68883560"
 
 ## <a name="endpoint"></a>Endpoint
 
-Aby uzyskać wyniki wyszukiwania w sieci Web przy użyciu interfejsu API Bing `GET` , Wyślij żądanie do poniższego punktu końcowego. Nagłówki i parametry URL definiują dalsze specyfikacje.
+Aby uzyskać wyniki wyszukiwania w sieci Web przy użyciu interfejsu API Bing, Wyślij żądanie `GET` do poniższego punktu końcowego. Nagłówki i parametry URL definiują dalsze specyfikacje.
 
-**Punkt końcowy**: Zwraca wyniki sieci Web, które są istotne dla zapytania wyszukiwania użytkownika zdefiniowanego `?q=""`przez.
+**Punkt końcowy**: zwraca wyniki sieci Web, które są istotne dla zapytania wyszukiwania użytkownika zdefiniowanego przez `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
 
-Punktu końcowego Aby uzyskać szczegółowe informacje o nagłówkach, parametrach, kodach rynku, obiektach odpowiedzi, błędach i innych, zobacz Dokumentacja [interfejsu API sieci Web Bing wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) .
+Punkt końcowy: Aby uzyskać szczegółowe informacje o nagłówkach, parametrach, kodach rynku, obiektach odpowiedzi, błędach i innych, zobacz Dokumentacja [interfejsu API sieci Web Bing wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) .
 
 ## <a name="response-json"></a>KOD JSON odpowiedzi
 
-Odpowiedź na żądanie wyszukiwania w sieci Web obejmuje wszystkie wyniki jako obiekty JSON. Analizowanie wyniku wymaga procedur, które obsługują elementy każdego typu. Przykłady można [](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) znaleźć w samouczku i [kodzie źródłowym](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) .
+Odpowiedź na żądanie wyszukiwania w sieci Web obejmuje wszystkie wyniki jako obiekty JSON. Analizowanie wyniku wymaga procedur, które obsługują elementy każdego typu. Przykłady można znaleźć w [samouczku](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) i [kodzie źródłowym](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) .
 
 ## <a name="next-steps"></a>Następne kroki
 

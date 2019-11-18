@@ -1,19 +1,16 @@
 ---
-title: Samouczek — Eksportowanie szablonu Azure Resource Manager z Azure Portal
+title: Samouczek — Eksportowanie szablonu z Azure Portal
 description: Dowiedz się, jak za pomocą wyeksportowanego szablonu ukończyć tworzenie szablonu.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6dae5d494ac71ace41586e89de5aab745962cc90
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243208"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147924"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Samouczek: korzystanie z wyeksportowanego szablonu z Azure Portal
 
@@ -35,7 +32,7 @@ Ten szablon działa dobrze w przypadku wdrażania kont magazynu, ale możesz chc
 
 ## <a name="create-app-service-plan"></a>Tworzenie planu usługi App Service
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wybierz pozycję **Utwórz zasób**.
 1. W obszarze **Wyszukaj w portalu Marketplace**wprowadź **App Service plan**, a następnie wybierz pozycję **App Service plan**.  Nie wybieraj **planu App Service (klasyczny)**
 1. Wybierz pozycję **Utwórz**.
@@ -114,7 +111,7 @@ az group deployment create \
 
 Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
 1. Grupa zasobów zawiera konto magazynu i plan App Service.

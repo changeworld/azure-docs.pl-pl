@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/14/2019
+ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162297"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109768"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Informacje o kondycji maszyn wirtualnych platformy Azure
 
@@ -26,46 +26,50 @@ W tym artykule pokazano, jak szybko ocenić, zbadać i rozwiązać problemy z ko
 
 Informacje o konfigurowaniu Azure Monitor dla maszyn wirtualnych można znaleźć w temacie [Enable Azure monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
 
+>[!NOTE]
+>Niedawno [ogłoszono zmiany wprowadzane](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+) do funkcji kondycji w oparciu o Opinie otrzymane od naszych klientów publicznej wersji zapoznawczej. Mając na względzie liczbę wprowadzonych zmian, będziemy mogli przestać oferować funkcję kondycji dla nowych klientów. Istniejący klienci mogą nadal korzystać z funkcji kondycji. Aby uzyskać więcej informacji, zobacz nasze [często zadawane pytania dotyczące ogólnej dostępności](vminsights-ga-release-faq.md). 
+
 ## <a name="monitoring-configuration-details"></a>Szczegóły konfiguracji monitorowania
 
 Ta sekcja zawiera opis domyślnych kryteriów kondycji do monitorowania maszyn wirtualnych z systemami Windows i Linux. Wszystkie kryteria kondycji są wstępnie skonfigurowane do wysyłania alertu po wykryciu złej kondycji.
 
 | Nazwa monitora | Częstotliwość (min) | Czas trwania lookback (min) | Operator | Próg | Alert w stanie | Ważność | Kategoria obciążenia | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
-| Dysk logiczny w trybie online | 5 | 15 | <> | 1 (prawda) | Krytyczna | Sev1 | Linux | 
+| Dysk logiczny w trybie online | 5 | 15 | <> | 1 (prawda) | Krytyczny | Sev1 | Linux | 
 | Wolne miejsce na dysku logicznym | 5 | 15 | < | 200 MB (ostrzeżenie)<br> 100 MB (krytyczna) | Ostrzeżenie | Sev1<br> Sev2 | Linux | 
-| Dysk logiczny% Free węzłów i | 5 | 15 | < | 5% | Krytyczna | Sev1 | Linux | 
-| Wolne miejsce na dysku logicznym (%) | 5 | 15 | < | 5% | Krytyczna | Sev1 | Linux | 
+| Dysk logiczny% Free węzłów i | 5 | 15 | < | 5% | Krytyczny | Sev1 | Linux | 
+| Wolne miejsce na dysku logicznym (%) | 5 | 15 | < | 5% | Krytyczny | Sev1 | Linux | 
 | Stan karty sieciowej | 5 | 15 | <> | 1 (prawda) | Ostrzeżenie | Sev2 | Linux | 
-| Dostępna pamięć (MB) w systemie operacyjnym | 5 | 10 | < | 2,5 MB | Krytyczna | Sev1 | Linux | 
-| Średni czas dysku w s/odczyt | 5 | 25 | > | 0,05 s | Krytyczna | Sev1 | Linux | 
-| Średni czas dysku w s/transfer | 5 | 25 | > | 0,05 s | Krytyczna | Sev1 | Linux | 
-| Średni czas dysku w s/zapis | 5 | 25 | > | 0,05 s | Krytyczna | Sev1 | Linux | 
-| Stan dysku | 5 | 25 | <> | 1 (prawda) | Krytyczna | Sev1 | Linux | 
-| Łączny czas procesora (%) w systemie operacyjnym | 5 | 10 | >= | 95% | Krytyczna | Sev1 | Linux | 
-| Procent łącznego użycia procesora CPU | 5 | 10 | >= | 95% | Krytyczna | Sev1 | Windows | 
-| Błąd lub uszkodzenie systemu plików | 60 | 60 | <> | 4 | Krytyczna | Sev1 | Windows | 
+| Dostępna pamięć (MB) w systemie operacyjnym | 5 | 10 | < | 2,5 MB | Krytyczny | Sev1 | Linux | 
+| Średni czas dysku w s/odczyt | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Średni czas dysku w s/transfer | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Średni czas dysku w s/zapis | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Stan dysku | 5 | 25 | <> | 1 (prawda) | Krytyczny | Sev1 | Linux | 
+| Łączny czas procesora (%) w systemie operacyjnym | 5 | 10 | >= | 95% | Krytyczny | Sev1 | Linux | 
+| Procent łącznego użycia procesora CPU | 5 | 10 | >= | 95% | Krytyczny | Sev1 | Windows | 
+| Błąd lub uszkodzenie systemu plików | 60 | 60 | <> | 4 | Krytyczny | Sev1 | Windows | 
 | Średnia liczba sekund dysku logicznego na odczyt | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
 | Średnia liczba sekund dysku logicznego na transfer | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
 | Średni czas dysku logicznego (w sekundach) na zapis (dysk logiczny) | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
 | Bieżąca długość kolejki dysku (dysk logiczny) | 5 | 60 | >= | 32 | Ostrzeżenie | Sev2 | Windows | 
-| Wolne miejsce na dysku logicznym (MB) | 15 | 60 | > | Ostrzeżenie 500 MB<br> krytyczne 300 MB | Krytyczna | Sev1<br> Sev2 | Windows | 
-| Wolne miejsce na dysku logicznym (%) | 15 | 60 | > | 10% ostrzeżenia<br> 5% krytyczne | Krytyczna | Sev1<br> Sev2 | Windows |
+| Wolne miejsce na dysku logicznym (MB) | 15 | 60 | > | Ostrzeżenie 500 MB<br> krytyczne 300 MB | Krytyczny | Sev1<br> Sev2 | Windows | 
+| Wolne miejsce na dysku logicznym (%) | 15 | 60 | > | 10% ostrzeżenia<br> 5% krytyczne | Krytyczny | Sev1<br> Sev2 | Windows |
 | Procent czasu bezczynności dysku logicznego | 15 | 360 | <= | 20% | Ostrzeżenie | Sev2 | Windows | 
 | Procent wykorzystania przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Sev2 | Windows | 
 | Procent całkowitej liczby użytych przepustowości | 5 | 60 | >= | 75% | Ostrzeżenie | Sev2 | Windows | 
 | Procent użycia przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Sev2 | Windows | 
-| Service Health klienta DHCP | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health klienta DNS | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health dziennika zdarzeń systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health zapory systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health RPC | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health serwera | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Windows Remote Management Service Health | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Dostępna pamięć (MB) | 5 | 10 | < | 100 MB | Krytyczna | Sev1 | Windows | 
-| Wolne wpisy tabeli stron systemu | 5 | 10 | <= | 5000 | Krytyczna | Sev1 | Windows | 
+| Service Health klienta DHCP | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health klienta DNS | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health dziennika zdarzeń systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health zapory systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health RPC | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health serwera | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Windows Remote Management Service Health | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Dostępna pamięć (MB) | 5 | 10 | < | 100 MB | Krytyczny | Sev1 | Windows | 
+| Wolne wpisy tabeli stron systemu | 5 | 10 | <= | 5000 | Krytyczny | Sev1 | Windows | 
 | Liczba stron pamięci na sekundę | 5 | 10 | >= | 5000/s | Ostrzeżenie | Sev1 | Windows | 
-| Procent zadeklarowanej pamięci w użyciu | 5 | 10 | > | 80% | Krytyczna | Sev1 | Windows | 
+| Procent zadeklarowanej pamięci w użyciu | 5 | 10 | > | 80% | Krytyczny | Sev1 | Windows | 
 | Średni czas transferu na sekundę dysku | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
 | Średni czas dysku na zapis | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
 | Bieżąca długość kolejki dysku | 5 | 60 | >= | 32 | Ostrzeżenie | Sev2 | Windows | 
@@ -75,7 +79,7 @@ Ta sekcja zawiera opis domyślnych kryteriów kondycji do monitorowania maszyn w
 >Lookback czas trwania reprezentuje, jak często okno wyszukania sprawdza wartości metryk, na przykład w ciągu ostatnich pięciu minut.  
 
 >[!NOTE]
->Częstotliwość określa, jak często alert dotyczący metryki sprawdza, czy warunki są spełnione, na przykład co minutę.  Jest to szybkość, z jaką jest wykonywane kryterium kondycji, a lookback to czas trwania oceny kryterium kondycji. Na przykład kryterium kondycji ocenia się, jeśli **użycie procesora CPU** jest większe niż 95% z częstotliwością wynoszącą 5 minut i pozostanie większe niż 95% przez 15 minut (3 kolejne cykle oceny), a następnie stan zostanie zaktualizowany na krytyczny ważność, jeśli nie została jeszcze.
+>Częstotliwość określa, jak często alert dotyczący metryki sprawdza, czy warunki są spełnione, na przykład co minutę.  Jest to szybkość, z jaką jest wykonywane kryterium kondycji, a lookback to czas trwania oceny kryterium kondycji. Na przykład kryterium kondycji ocenia, czy **użycie procesora CPU** jest większe niż 95% z częstotliwością wynoszącą 5 minut i pozostaje większe niż 95% przez 15 minut (3 kolejne cykle oceny), stan zostanie zaktualizowany do ważności krytycznej, jeśli nie jest jeszcze.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -102,7 +106,7 @@ Stany kondycji zdefiniowane dla maszyny wirtualnej są opisane w poniższej tabe
 |Ikona |Stan kondycji |Znaczenie |
 |-----|-------------|---------------|
 | |W dobrej kondycji |Maszyna wirtualna znajduje się w określonych warunkach kondycji. Ten stan wskazuje, że nie wykryto problemów, a maszyna wirtualna działa normalnie. W przypadku nadrzędnego monitora zbiorczego kondycja jest rzutowana i odzwierciedla najlepszy przypadek lub najgorszy przypadek elementu podrzędnego.|
-| |Krytyczna |Stan nie znajduje się w określonym stanie kondycji, co oznacza, że wykryto co najmniej jeden krytyczny problem. Te problemy muszą zostać rozwiązane w celu przywrócenia normalnej funkcjonalności. W przypadku nadrzędnego monitora zbiorczego stan kondycji jest rzutowany i odzwierciedla stan najlepszego lub najgorszego przypadku podrzędnego.|
+| |Krytyczny |Stan nie znajduje się w określonym stanie kondycji, co oznacza, że wykryto co najmniej jeden krytyczny problem. Te problemy muszą zostać rozwiązane w celu przywrócenia normalnej funkcjonalności. W przypadku nadrzędnego monitora zbiorczego stan kondycji jest rzutowany i odzwierciedla stan najlepszego lub najgorszego przypadku podrzędnego.|
 | |Ostrzeżenie |Stan jest między dwoma progami dla zdefiniowanego warunku kondycji, gdzie jeden wskazuje na stan ostrzegawczy, a drugi wskazuje stan krytyczny (trzy progi stanu kondycji można skonfigurować) lub jeśli problem niekrytyczny może spowodować krytyczne problemy, jeśli nierozpoznane. W przypadku nadrzędnego monitora zbiorczego, jeśli co najmniej jeden element podrzędny jest w stanie ostrzeżenia, obiekt nadrzędny będzie odzwierciedlał stan ostrzegawczy. Jeśli jeden element podrzędny jest w stanie krytycznym i inny element podrzędny w stanie ostrzeżenia, w zestawie nadrzędnym zostanie wyświetlony stan kondycji jako krytyczny.|
 | |Nieznane |Nie można obliczyć stanu z kilku powodów. W poniższej sekcji znajdują się dodatkowe szczegółowe informacje i możliwe rozwiązania. |
 
@@ -111,7 +115,7 @@ Nieznany stan kondycji może być spowodowany przez następujące problemy:
 - Agent został ponownie skonfigurowany i nie będzie już zgłaszany do obszaru roboczego określonego po włączeniu Azure Monitor dla maszyn wirtualnych. Aby skonfigurować agenta do raportowania w obszarze roboczym, zobacz [Dodawanie lub usuwanie obszaru roboczego](../platform/agent-manage.md#adding-or-removing-a-workspace).
 - Maszyna wirtualna została usunięta.
 - Obszar roboczy skojarzony z Azure Monitor dla maszyn wirtualnych został usunięty. Możesz odzyskać obszar roboczy, jeśli masz korzyści z pomocy technicznej Premium. Przejdź do [witryny Premier](https://premier.microsoft.com/) i Otwórz żądanie pomocy technicznej.
-- Zależności rozwiązania zostały usunięte. Aby ponownie włączyć rozwiązania ServiceMap i InfrastructureInsights w obszarze roboczym Log Analytics, zainstaluj ponownie rozwiązanie ServiceMap przy użyciu [szablonu Azure Resource Manager](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution). Aby ponownie zainstalować rozwiązanie InfastructureInsights, vminsights@microsoft.com poczty e-mail. 
+- Zależności rozwiązania zostały usunięte. Aby ponownie włączyć rozwiązania ServiceMap i InfrastructureInsights w obszarze roboczym Log Analytics, zainstaluj ponownie rozwiązanie ServiceMap przy użyciu [szablonu Azure Resource Manager](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution). Aby ponownie zainstalować rozwiązanie InfastructureInsights, vminsights@microsoft.compoczty e-mail. 
 - Maszyna wirtualna została zamknięta.
 - Usługa maszyny wirtualnej platformy Azure jest niedostępna lub trwa wykonywanie konserwacji.
 - Osiągnięto [dzienny limit ilości danych lub przechowywania](../platform/manage-cost-storage.md) obszaru roboczego.
@@ -321,7 +325,7 @@ Aby dowiedzieć się więcej na temat zarządzania alertami, zobacz [Tworzenie i
 Można zmienić stan alertu dla jednego lub wielu alertów, zaznaczając je, a następnie wybierając pozycję **Zmień stan** ze strony **wszystkie alerty** w lewym górnym rogu. Wybierz jeden z stanów w okienku **Zmień stan alertów** , Dodaj opis zmiany w polu **komentarz** , a następnie wybierz **przycisk OK** , aby zatwierdzić zmiany. Gdy informacje są weryfikowane i stosowane są zmiany, śledź postęp w obszarze **powiadomienia** w menu.
 
 ### <a name="configure-alerts"></a>Konfigurowanie alertów
-Z Azure Portal nie można zarządzać określonymi zadaniami zarządzania alertami. Te zadania muszą być wykonywane przy użyciu [interfejsu API REST Azure monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). W szczególności:
+Z Azure Portal nie można zarządzać określonymi zadaniami zarządzania alertami. Te zadania muszą być wykonywane przy użyciu [interfejsu API REST Azure monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Są to:
 
 - Włączanie lub wyłączanie alertu dla kryteriów kondycji
 - Konfigurowanie powiadomień dla alertów kryteriów kondycji

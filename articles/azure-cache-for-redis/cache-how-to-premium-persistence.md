@@ -1,189 +1,181 @@
 ---
-title: Konfigurowanie trwałości danych dla usługi Azure Cache w warstwie Premium dla usługi Redis
-description: Dowiedz się, jak skonfigurować i zarządzać funkcji trwałości danych usługi w warstwie Premium usługi Azure Cache dla wystąpień usługi Redis
-services: cache
-documentationcenter: ''
+title: Jak skonfigurować trwałość danych dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
+description: Dowiedz się, jak skonfigurować trwałość danych i zarządzać nimi w usłudze Azure cache dla wystąpień Redis
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: yegu
-ms.openlocfilehash: de0b2e3ef7b0268540ef4896ade132a297ee88ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543505"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122742"
 ---
-# <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurowanie trwałości danych dla usługi Azure Cache w warstwie Premium dla usługi Redis
-Pamięć podręczna systemu Azure dla usługi Redis zawiera ofert różnych pamięci podręcznych, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. W tym artykule opisano sposób konfigurowania trwałości w warstwie premium usługi Azure Cache dla wystąpienia usługi Redis.
+# <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować trwałość danych dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
+Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. W tym artykule opisano sposób konfigurowania trwałości w pamięci podręcznej systemu Azure w warstwie Premium dla wystąpienia Redis.
 
-Aby uzyskać informacje o innych funkcjach pamięci podręcznej — wersja premium, zobacz [wprowadzenie do usługi Azure Cache w warstwie Redis Premium](cache-premium-tier-intro.md).
+Aby uzyskać informacje na temat innych funkcji Premium pamięci podręcznej, zobacz [wprowadzenie do usługi Azure cache for Redis w warstwie Premium](cache-premium-tier-intro.md).
 
-## <a name="what-is-data-persistence"></a>Co to jest stan trwały danych?
-[Trwałość redis](https://redis.io/topics/persistence) umożliwia utrwalanie danych przechowywanych w pamięci podręcznej Redis. Można też tworzyć migawki i utworzyć kopię zapasową danych, które można załadować w razie wystąpienia awarii sprzętu. Jest to dużą przewagę nad warstwy podstawowa lub standardowa, gdzie wszystkie dane są przechowywane w pamięci i mogą być możliwej utracie danych w razie awarii, w których węzłach pamięci podręcznej w dół. 
+## <a name="what-is-data-persistence"></a>Co to jest trwałość danych?
+[Trwałość Redis](https://redis.io/topics/persistence) umożliwia utrwalanie danych przechowywanych w Redis. Można również tworzyć migawki i tworzyć kopie zapasowe danych, które można ładować w przypadku awarii sprzętu. Jest to ogromna korzyść w porównaniu z warstwą podstawową lub standardową, w której wszystkie dane są przechowywane w pamięci i może istnieć potencjalna utrata danych w przypadku awarii, w której węzły pamięci podręcznej nie działają. 
 
-Pamięć podręczna systemu Azure dla usługi Redis zapewnia trwałość pamięci podręcznej Redis przy użyciu następujących modeli:
+Usługa Azure cache for Redis oferuje Trwałość Redis przy użyciu następujących modeli:
 
-* **Trwałość RDB** -trwałości po RDB (baza danych usługi Redis) jest skonfigurowany, pamięci podręcznej Redis Azure będzie nadal występować po migawkę pamięci podręcznej Azure redis Cache w pamięci podręcznej Redis, format binarny na dysku, oparte na można skonfigurować częstotliwość wykonywania kopii zapasowych. Sytuacji katastrofy wyłączającą podstawowej i replice pamięci podręcznej pamięć podręczna jest odtworzone przy użyciu najnowszej migawki. Dowiedz się więcej o [zalety](https://redis.io/topics/persistence#rdb-advantages) i [wady](https://redis.io/topics/persistence#rdb-disadvantages) trwałość RDB.
-* **Trwałość AOF** -trwałości po AOF (Dołącz plik tylko) jest skonfigurowany, pamięci podręcznej Redis Azure zapisuje każdej operacji zapisu w dzienniku, który jest zapisywany w co najmniej raz na sekundę do konta usługi Azure Storage. Sytuacji katastrofy wyłączającą podstawowej i replice pamięci podręcznej pamięć podręczna jest odtworzone przy użyciu operacji zapisu przechowywanych. Dowiedz się więcej o [zalety](https://redis.io/topics/persistence#aof-advantages) i [wady](https://redis.io/topics/persistence#aof-disadvantages) AOF trwałość.
+* Trwałość **RDB** — w przypadku skonfigurowania trwałości pliku RDB (Redis Database) usługa Azure cache for Redis utrzymuje migawkę pamięci podręcznej platformy Azure dla Redis w formacie binarnym Redis na dysk na podstawie konfigurowalnej częstotliwości kopii zapasowych. W przypadku wystąpienia krytycznego zdarzenia, które powoduje wyłączenie zarówno podstawowej, jak i pamięci podręcznej repliki, pamięć podręczną jest tworzona przy użyciu najnowszej migawki. Dowiedz się więcej o [zaletach](https://redis.io/topics/persistence#rdb-advantages) i [wadach](https://redis.io/topics/persistence#rdb-disadvantages) trwałości RDB.
+* **Kopia zapasowa AOF trwałość** — w przypadku skonfigurowania trwałości kopia zapasowa AOF (dołączania tylko pliku) pamięć podręczna systemu Azure dla Redis zapisuje każdą operację zapisu do dziennika, który jest zapisywany co najmniej raz na sekundę na koncie usługi Azure Storage. W przypadku wystąpienia krytycznego zdarzenia, które powoduje wyłączenie zarówno podstawowej, jak i pamięci podręcznej repliki, pamięć podręczną jest tworzona przy użyciu przechowywanych operacji zapisu. Dowiedz się więcej o [zaletach](https://redis.io/topics/persistence#aof-advantages) i [wadach](https://redis.io/topics/persistence#aof-disadvantages) trwałości kopia zapasowa AOF.
 
-Trwałości jest skonfigurowany z **nowej usługi Azure Cache dla usługi Redis** bloku, podczas tworzenia pamięci podręcznej i na **menu zasobów** dla istniejące premie zapisuje w pamięci podręcznej.
+Trwałość jest konfigurowana z **nowego bloku Azure cache for Redis** podczas tworzenia pamięci podręcznej oraz w **menu zasobów** dla istniejących pamięci podręcznych w warstwie Premium.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Po wybraniu warstwy cenowej premium kliknij **trwałość Redis**.
+Po wybraniu warstwy cenowej Premium kliknij pozycję **Redis trwałość**.
 
-![Trwałość redis][redis-cache-persistence]
+![Trwałość Redis][redis-cache-persistence]
 
-W następnej sekcji opisano sposób konfigurowania stanu trwałego pamięci podręcznej Redis na nowe cache w warstwie premium. Po skonfigurowaniu funkcji trwałości Redis kliknij **Utwórz** do utworzenia nowego cache w warstwie premium z trwałość pamięci podręcznej Redis.
+Kroki opisane w następnej sekcji opisują sposób konfigurowania trwałości Redis w nowej pamięci podręcznej Premium. Po skonfigurowaniu trwałości Redis kliknij pozycję **Utwórz** , aby utworzyć nową pamięć podręczną Premium z trwałością Redis.
 
-## <a name="enable-redis-persistence"></a>Włącz trwałość pamięci podręcznej Redis
+## <a name="enable-redis-persistence"></a>Włącz Trwałość Redis
 
-Redis trwałości jest włączona na **trwałość danych Redis** bloku, wybierając opcję **RDB** lub **AOF** trwałości. Dla nowych pamięci podręcznych ten blok jest dostępny w trakcie procesu tworzenia pamięci podręcznej, zgodnie z opisem w poprzedniej sekcji. Dla dostępnych pamięci podręcznych **trwałość danych Redis** bloku jest dostępny z **menu zasobów** dla pamięci podręcznej.
+Trwałość Redis jest włączona w bloku **trwałość danych Redis** , wybierając pozycję **RDB** lub **kopia zapasowa AOF** trwałość. W przypadku nowych pamięci podręcznych ten blok jest dostępny w procesie tworzenia pamięci podręcznej, zgodnie z opisem w poprzedniej sekcji. W przypadku istniejących pamięci podręcznych blok **trwałości danych Redis** jest dostępny z **menu zasób** dla pamięci podręcznej.
 
-![Redis ustawienia][redis-cache-settings]
+![Ustawienia Redis][redis-cache-settings]
 
 
-## <a name="configure-rdb-persistence"></a>Konfigurowanie trwałości RDB
+## <a name="configure-rdb-persistence"></a>Konfiguruj trwałość RDB
 
-Aby włączyć opcję trwałości RDB, kliknij przycisk **RDB**. Aby wyłączyć trwałości RDB na włączonym uprzednio premium pamięci podręcznej, kliknij pozycję **wyłączone**.
+Aby włączyć trwałość RDB, kliknij pozycję **RDB**. Aby wyłączyć trwałość RDB w wcześniej włączonej pamięci podręcznej Premium, kliknij pozycję **wyłączone**.
 
-![RDB trwałość redis][redis-cache-rdb-persistence]
+![Trwałość Redis RDB][redis-cache-rdb-persistence]
 
-Aby skonfigurować interwał wykonywania kopii zapasowej, zaznacz **częstotliwość wykonywania kopii zapasowych** z listy rozwijanej. Można także wybrać opcję **15 minut**, **30 minut**, **60 minut**, **6 godzin**, **12 godzin**i **24 godziny**. Ten interwał odlicza w dół po pomyślnym zakończeniu poprzedniej operacji tworzenia kopii zapasowej i po jego upływie inicjowane jest nową kopię zapasową.
+Aby skonfigurować interwał tworzenia kopii zapasowych, wybierz z listy rozwijanej **częstotliwość tworzenia kopii zapasowych** . Dostępne opcje to **15 minut**, **30 minut**, **60 minut**, **6 godzin**, **12 godzin**i **24 godziny**. Ten interwał rozpoczyna zliczanie w dół po pomyślnym zakończeniu poprzedniej operacji tworzenia kopii zapasowej i po zainicjowaniu nowej kopii zapasowej.
 
-Kliknij przycisk **konta magazynu** o wybranie konta magazynu do użycia, a następnie wybierz opcję **klucza podstawowego** lub **klucz pomocniczy** do użycia z **klucza magazynu** listy rozwijanej. W tym samym regionie co pamięć podręczna, musisz wybrać konto magazynu i **usługi Premium Storage** konta jest zalecane, ponieważ usługa premium storage ma większą przepływność. 
-
-> [!IMPORTANT]
-> Zostanie ponownie wygenerowany klucz magazynu dla konta usługi trwałości, należy ponownie skonfigurować żądany klucz z **klucza magazynu** listy rozwijanej.
-> 
-> 
-
-Kliknij przycisk **OK** można zapisać konfiguracji trwałości.
-
-Następną kopią zapasową (lub pierwsza kopia zapasowa w przypadku nowych pamięci podręcznych) jest inicjowane, gdy upłynie interwał częstotliwości tworzenia kopii zapasowej.
-
-## <a name="configure-aof-persistence"></a>Konfigurowanie trwałości AOF
-
-Aby włączyć opcję trwałości AOF, kliknij przycisk **AOF**. Aby wyłączyć trwałości AOF na włączonym uprzednio premium pamięci podręcznej, kliknij pozycję **wyłączone**.
-
-![AOF trwałość redis][redis-cache-aof-persistence]
-
-Konfigurowanie trwałości AOF, określ **pierwszego konta magazynu**. To konto magazynu musi należeć do tego samego regionu pamięci podręcznej, a **usługi Premium Storage** konta jest zalecane, ponieważ usługa premium storage ma większą przepływność. Opcjonalnie można skonfigurować dodatkowe konto magazynu o nazwie **drugiego konta magazynu**. Jeśli drugie konto magazynu jest skonfigurowany, zapisuje w pamięci podręcznej repliki są zapisywane do tego drugiego konta magazynu. Dla każdego skonfigurowanego konta magazynu, wybierz **klucza podstawowego** lub **klucz pomocniczy** do użycia z **klucza magazynu** listy rozwijanej. 
+Kliknij pozycję **konto magazynu** , aby wybrać konto magazynu, które ma być używane, a następnie wybierz **klucz podstawowy** lub **klucz pomocniczy** do użycia z listy rozwijanej **klucz magazynu** . Musisz wybrać konto magazynu w tym samym regionie, w którym znajduje się pamięć podręczna, a konto **Premium Storage** jest zalecane, ponieważ usługa Premium Storage ma wyższą przepływność. 
 
 > [!IMPORTANT]
-> Zostanie ponownie wygenerowany klucz magazynu dla konta usługi trwałości, należy ponownie skonfigurować żądany klucz z **klucza magazynu** listy rozwijanej.
+> W przypadku ponownego wygenerowania klucza magazynu dla konta trwałości należy ponownie skonfigurować żądany klucz z listy rozwijanej **klucza magazynu** .
 > 
 > 
 
-Włączenie trwałości AOF zapisu operacji do pamięci podręcznej są zapisywane do konta magazynu wyznaczonego (lub konta, po skonfigurowaniu drugiego konta magazynu). W przypadku poważnej awarii trwa dół podstawowej i replice pamięci podręcznej przechowywane dziennika AOF służy do Odbuduj pamięć podręczną.
+Kliknij przycisk **OK** , aby zapisać konfigurację trwałości.
 
-## <a name="persistence-faq"></a>Trwałość — często zadawane pytania
-Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Cache potrzeby stanu trwałego pamięci podręcznej Redis.
+Kolejna kopia zapasowa (lub pierwsza kopia zapasowa nowych pamięci podręcznych) jest inicjowana po upłynięciu interwału częstotliwości wykonywania kopii zapasowych.
 
-* [Można włączyć trwałość dla utworzonej wcześniej pamięci podręcznej?](#can-i-enable-persistence-on-a-previously-created-cache)
-* [Można włączyć trwałość AOF i pliku RDB jest w tym samym czasie?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
-* [Model trwałości, który należy wybrać?](#which-persistence-model-should-i-choose)
-* [Co się stanie, jeśli mam była skalowana do innego rozmiaru i przywróceniu kopii zapasowej został utworzony przed wykonaniem operacji skalowania?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+## <a name="configure-aof-persistence"></a>Konfigurowanie trwałości kopia zapasowa AOF
+
+Aby włączyć trwałość kopia zapasowa AOF, kliknij przycisk **kopia zapasowa AOF**. Aby wyłączyć trwałość kopia zapasowa AOF w wcześniej włączonej pamięci podręcznej Premium, kliknij pozycję **wyłączone**.
+
+![Trwałość Redis kopia zapasowa AOF][redis-cache-aof-persistence]
+
+Aby skonfigurować trwałość kopia zapasowa AOF, określ **pierwsze konto magazynu**. To konto magazynu musi znajdować się w tym samym regionie, w którym znajduje się pamięć podręczna, a konto **Premium Storage** jest zalecane, ponieważ usługa Premium Storage ma wyższą przepływność. Opcjonalnie możesz skonfigurować dodatkowe konto magazynu o nazwie **drugie konto magazynu**. W przypadku skonfigurowania drugiego konta magazynu operacje zapisu w pamięci podręcznej repliki są zapisywane na tym drugim koncie magazynu. Dla każdego skonfigurowanego konta magazynu wybierz **klucz podstawowy** lub **klucz pomocniczy** do użycia z listy rozwijanej **klucz magazynu** . 
+
+> [!IMPORTANT]
+> W przypadku ponownego wygenerowania klucza magazynu dla konta trwałości należy ponownie skonfigurować żądany klucz z listy rozwijanej **klucza magazynu** .
+> 
+> 
+
+Po włączeniu funkcji trwałości kopia zapasowa AOF operacje zapisu w pamięci podręcznej są zapisywane na wyznaczynym koncie magazynu (lub na kontach, jeśli skonfigurowano drugie konto magazynu). W przypadku błędu krytycznego, który przeprowadzi zarówno podstawową, jak i pamięć podręczną repliki, zapisany dziennik kopia zapasowa AOF służy do odbudowywania pamięci podręcznej.
+
+## <a name="persistence-faq"></a>Często zadawane pytania dotyczące trwałości
+Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure cache for Redis trwałość.
+
+* [Czy mogę włączyć trwałość w wcześniej utworzonej pamięci podręcznej?](#can-i-enable-persistence-on-a-previously-created-cache)
+* [Czy mogę włączyć trwałość kopia zapasowa AOF i RDB w tym samym czasie?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
+* [Który model trwałości należy wybrać?](#which-persistence-model-should-i-choose)
+* [Co się stanie, jeśli przeprowadzono skalowanie do innego rozmiaru i przywrócono kopię zapasową wykonaną przed operacją skalowania?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 
 
 ### <a name="rdb-persistence"></a>Trwałość RDB
-* [Częstotliwość wykonywania kopii zapasowych pliku RDB można zmienić po utworzeniu pamięci podręcznej?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
-* [Dlaczego mam częstotliwość tworzenia kopii zapasowej RDB 60 minut czy ponad 60 minut między kopią zapasową?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
-* [Co się dzieje starych kopii zapasowych pliku RDB po wysłaniu nową kopię zapasową?](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
+* [Czy mogę zmienić częstotliwość tworzenia kopii zapasowych RDB po utworzeniu pamięci podręcznej?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
+* [Dlaczego jeśli mam częstotliwość tworzenia kopii zapasowych RDB 60 minut między kopiami zapasowymi jest więcej niż 60 minut?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
+* [Co się stanie z poprzednimi kopiami zapasowymi RDB po utworzeniu nowej kopii zapasowej?](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
 
-### <a name="aof-persistence"></a>Trwałość AOF
-* [Kiedy należy używać drugie konto magazynu?](#when-should-i-use-a-second-storage-account)
-* [Czy AOF trwałości mogą wpłynąć na całym, opóźnienia lub wydajność przepełnieniu pamięci podręcznej?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+### <a name="aof-persistence"></a>Trwałość kopia zapasowa AOF
+* [Kiedy należy używać drugiego konta magazynu?](#when-should-i-use-a-second-storage-account)
+* [Czy trwałość kopia zapasowa AOF ma wpływ na czas oczekiwania lub wydajność mojej pamięci podręcznej?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
 * [Jak usunąć drugie konto magazynu?](#how-can-i-remove-the-second-storage-account)
-* [Co to jest nadpisania i jak wpływa na przepełnieniu pamięci podręcznej?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
-* [Co mogę oczekiwać, gdy Skalowanie pamięci podręcznej przy użyciu funkcja aof jest włączona?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
-* [Jak Moje dane AOF jest zorganizowana w magazynie?](#how-is-my-aof-data-organized-in-storage)
+* [Co to jest ponowne zapisywanie i jak ma to wpływ na moją pamięć podręczną?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
+* [Co należy oczekiwać podczas skalowania pamięci podręcznej z włączonym kopia zapasowa AOF?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
+* [Jak moje dane kopia zapasowa AOF są zorganizowane w magazynie?](#how-is-my-aof-data-organized-in-storage)
 
 
-### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Można włączyć trwałość dla utworzonej wcześniej pamięci podręcznej?
-Trwałość pamięci podręcznej Redis może być skonfigurowany tak, zarówno podczas tworzenia pamięci podręcznej, jak i dostępnych pamięci podręcznych premium.
+### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Czy mogę włączyć trwałość w wcześniej utworzonej pamięci podręcznej?
+Tak, trwałość Redis można skonfigurować zarówno podczas tworzenia pamięci podręcznej, jak i w istniejących pamięciach podręcznych Premium.
 
-### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Można włączyć trwałość AOF i pliku RDB jest w tym samym czasie?
+### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Czy mogę włączyć trwałość kopia zapasowa AOF i RDB w tym samym czasie?
 
-Nie można włączyć tylko RDB lub AOF, ale nie obu jednocześnie.
+Nie, można włączyć tylko obiekty RDB lub kopia zapasowa AOF, ale nie oba jednocześnie.
 
-### <a name="which-persistence-model-should-i-choose"></a>Model trwałości, który należy wybrać?
+### <a name="which-persistence-model-should-i-choose"></a>Który model trwałości należy wybrać?
 
-Trwałość AOF zapisuje każdego zapisu do dziennika, który ma kilka wpływu na przepustowość, w porównaniu z pliku RDB trwałości, co powoduje zapisanie kopii zapasowych oparte na skonfigurowanym interwałem wykonywania kopii zapasowej z minimalnym wpływem na wydajność. Wybierz AOF trwałości, jeśli podstawowym celem jest zminimalizować ryzyko utraty danych i może obsługiwać spadek przepustowości dla pamięci podręcznej. Wybierz opcję trwałości RDB, jeśli chcesz zachować optymalnej przepływności dla pamięci podręcznej, ale nadal ma mechanizm odzyskiwania danych.
+KOPIA zapasowa AOF trwałość zapisuje każdy zapis w dzienniku, który ma wpływ na przepływność, w porównaniu z trwałością RDB, która zapisuje kopie zapasowe na podstawie skonfigurowanego interwału tworzenia kopii zapasowych, przy minimalnym wpływie na wydajność. Wybierz pozycję Kopia zapasowa AOF trwałość, jeśli głównym celem jest Minimalizacja utraty danych, i możesz obsłużyć spadek przepływności dla pamięci podręcznej. Wybierz pozycję trwałość RDB, jeśli chcesz zachować optymalną przepływność pamięci podręcznej, ale nadal chcesz przeprowadzić odzyskiwanie danych.
 
-* Dowiedz się więcej o [zalety](https://redis.io/topics/persistence#rdb-advantages) i [wady](https://redis.io/topics/persistence#rdb-disadvantages) trwałość RDB.
-* Dowiedz się więcej o [zalety](https://redis.io/topics/persistence#aof-advantages) i [wady](https://redis.io/topics/persistence#aof-disadvantages) AOF trwałość.
+* Dowiedz się więcej o [zaletach](https://redis.io/topics/persistence#rdb-advantages) i [wadach](https://redis.io/topics/persistence#rdb-disadvantages) trwałości RDB.
+* Dowiedz się więcej o [zaletach](https://redis.io/topics/persistence#aof-advantages) i [wadach](https://redis.io/topics/persistence#aof-disadvantages) trwałości kopia zapasowa AOF.
 
-Aby uzyskać więcej informacji o wydajności, korzystając z AOF trwałości, zobacz [AOF jest trwałości mogą wpłynąć na całym, opóźnienia lub wydajność przepełnieniu pamięci podręcznej?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+Aby uzyskać więcej informacji o wydajności przy korzystaniu z trwałości kopia zapasowa AOF, zobacz [czy trwałość kopia zapasowa AOF ma wpływ na cały czas oczekiwania lub wydajność mojej pamięci podręcznej?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
 
-### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Co się stanie, jeśli mam była skalowana do innego rozmiaru i przywróceniu kopii zapasowej został utworzony przed wykonaniem operacji skalowania?
+### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Co się stanie, jeśli przeprowadzono skalowanie do innego rozmiaru i przywrócono kopię zapasową wykonaną przed operacją skalowania?
 
-Aby uzyskać RDB i AOF trwałości:
+W przypadku trwałości programu RDB i kopia zapasowa AOF:
 
-* Jeśli była skalowana na większy rozmiar, nie ma żadnego wpływu.
-* Jeśli mają być skalowane do mniejszego rozmiaru i ma niestandardowy [baz danych](cache-configure.md#databases) ustawienie, który jest większy niż [limit bazy danych](cache-configure.md#databases) dla Twojego nowego rozmiaru danych w tych bazach danych nie jest przywrócony. Aby uzyskać więcej informacji, zobacz [to niestandardowe ustawienie dotyczy podczas skalowania baz danych?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Jeśli mają być skalowane do mniejszego rozmiaru i mniejszy rozmiar do przechowywania wszystkich danych z ostatniej kopii zapasowej nie ma wystarczająco dużo miejsca, kluczy zostanie wykluczona podczas procesu przywracania, zazwyczaj przy użyciu [allkeys lru](https://redis.io/topics/lru-cache) zasady eksmisji.
+* W przypadku skalowania do większego rozmiaru nie ma to żadnego wpływu.
+* W przypadku skalowania do mniejszego rozmiaru i ustawienia niestandardowych [baz danych](cache-configure.md#databases) , które są większe niż [Limit baz danych](cache-configure.md#databases) dla nowego rozmiaru, dane w tych bazach danych nie są przywracane. Aby uzyskać więcej informacji, zobacz [Ustawienia moje niestandardowe bazy danych, których to dotyczy, podczas skalowania?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
+* W przypadku skalowania do mniejszego rozmiaru i braku miejsca na mniejszym rozmiarze do przechowywania wszystkich danych z ostatniej kopii zapasowej klucze zostaną wykluczone podczas procesu przywracania, zazwyczaj przy użyciu zasad wykluczania [AllKeys-LRU](https://redis.io/topics/lru-cache) .
 
-### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Częstotliwość wykonywania kopii zapasowych pliku RDB można zmienić po utworzeniu pamięci podręcznej?
-Tak, można zmienić częstotliwość wykonywania kopii zapasowych dla trwałości RDB na **trwałość danych Redis** bloku. Aby uzyskać instrukcje zobacz Konfigurowanie Redis trwałości.
+### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Czy mogę zmienić częstotliwość tworzenia kopii zapasowych RDB po utworzeniu pamięci podręcznej?
+Tak, możesz zmienić częstotliwość tworzenia kopii zapasowych dla trwałości RDB w bloku **trwałości danych Redis** . Aby uzyskać instrukcje, zobacz Konfigurowanie trwałości Redis.
 
-### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Dlaczego mam częstotliwość tworzenia kopii zapasowej RDB 60 minut czy ponad 60 minut między kopią zapasową?
-Interwał częstotliwości tworzenia kopii zapasowej trwałości RDB nie uruchamia, dopóki poprzedniego procesu tworzenia kopii zapasowej zakończyła się pomyślnie. Jeśli częstotliwości tworzenia kopii zapasowej jest 60 minut i potrzebny procesu tworzenia kopii zapasowej 15 minut do pomyślnego ukończenia, następnej kopii zapasowej nie będą naliczane do dnia 75 minut od czasu rozpoczęcia z poprzedniej kopii zapasowej.
+### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Dlaczego jeśli mam częstotliwość tworzenia kopii zapasowych RDB 60 minut między kopiami zapasowymi jest więcej niż 60 minut?
+Interwał częstotliwości kopii zapasowych w przypadku trwałości RDB nie zostanie uruchomiony do momentu pomyślnego zakończenia poprzedniego procesu tworzenia kopii zapasowej. Jeśli częstotliwość tworzenia kopii zapasowych wynosi 60 minut, a proces tworzenia kopii zapasowej trwa 15 minut, kolejna kopia zapasowa nie zostanie uruchomiona do 75 minut od czasu rozpoczęcia poprzedniej kopii zapasowej.
 
-### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Co się dzieje starych kopii zapasowych pliku RDB po wysłaniu nową kopię zapasową?
-Wszystkie kopie zapasowe trwałości RDB z wyjątkiem najnowszego są automatycznie usuwane. Takiego usunięcia nie może być realizowane natychmiast, ale starsze kopie zapasowe nie zostaną utrwalone przez czas nieokreślony.
+### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Co się stanie z poprzednimi kopiami zapasowymi RDB po utworzeniu nowej kopii zapasowej?
+Wszystkie kopie zapasowe o trwałości RDB z wyjątkiem najnowszej z nich zostaną automatycznie usunięte. To usunięcie może nie nastąpić natychmiast, ale starsze kopie zapasowe nie są utrwalane w nieskończoność.
 
 
-### <a name="when-should-i-use-a-second-storage-account"></a>Kiedy należy używać drugie konto magazynu?
+### <a name="when-should-i-use-a-second-storage-account"></a>Kiedy należy używać drugiego konta magazynu?
 
-Drugie konto magazynu należy użyć potrzeby stanu trwałego AOF, gdy uznasz, że masz wyższe niż operacje oczekiwanego zestawu w pamięci podręcznej.  Konfigurowanie konta magazynu pomocniczego pomaga upewnić się, że pamięć podręczna nie dociera do limity przepustowości magazynu.
+Jeśli uważasz, że w pamięci podręcznej jest większa niż oczekiwana operacja ustawiania, należy użyć drugiego konta magazynu do kopia zapasowa AOF trwałości.  Skonfigurowanie konta magazynu pomocniczego pomaga zapewnić, że pamięć podręczna nie osiągnie limitów przepustowości magazynu.
 
-### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>Czy AOF trwałości mogą wpłynąć na całym, opóźnienia lub wydajność przepełnieniu pamięci podręcznej?
+### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>Czy trwałość kopia zapasowa AOF ma wpływ na czas oczekiwania lub wydajność mojej pamięci podręcznej?
 
-Trwałość AOF ma wpływ na przepustowość przez około 15 – 20% po pamięci podręcznej znajduje się poniżej maksymalnego obciążenia (procesora CPU i serwera załadować zarówno w obszarze 90%). Nie powinno być opóźnień w przypadku pamięci podręcznej w tych granicach. Jednak pamięć podręczna będzie korzystał te limity wcześniej przy użyciu funkcja aof jest włączona.
+Trwałość kopia zapasowa AOF ma wpływ na przepływność przez około 15% – 20%, gdy pamięć podręczna jest mniejsza niż maksymalne obciążenie (obciążenie procesora CPU i serwera w obszarze 90%). Występują problemy z opóźnieniami, gdy pamięć podręczna mieści się w ramach tych limitów. Jednak pamięć podręczna osiągnie te limity wcześniej z włączonym kopia zapasowa AOF.
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>Jak usunąć drugie konto magazynu?
 
-Można usunąć konto magazynu pomocniczego trwałości AOF, ustawiając drugiego konta magazynu, aby być taka sama jak pierwszego konta magazynu. Aby uzyskać instrukcje, zobacz [AOF Konfigurowanie trwałości](#configure-aof-persistence).
+Konto magazynu pomocniczego trwałości kopia zapasowa AOF można usunąć, ustawiając drugie konto magazynu jako takie samo, jak pierwsze konto magazynu. Aby uzyskać instrukcje, zobacz [Konfigurowanie trwałości kopia zapasowa AOF](#configure-aof-persistence).
 
-### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Co to jest nadpisania i jak wpływa na przepełnieniu pamięci podręcznej?
+### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Co to jest ponowne zapisywanie i jak ma to wpływ na moją pamięć podręczną?
 
-Gdy plików AOF staje się wystarczająco duży, nadpisania automatycznie jest kolejkowana w pamięci podręcznej. Poprawione zmienia rozmiar plików AOF minimalny zestaw operacji wymaganych do utworzenia w bieżącym zestawie danych. Podczas modyfikacji oprogramowania należy oczekiwać wcześniej osiągnięcie limity wydajności, szczególnie w przypadku pracy z dużymi zestawami danych. Modyfikacji oprogramowania występuje mniej często, jak plików AOF staje się większy, ale będzie zająć dużo czasu, kiedy się dzieje.
+Gdy plik kopia zapasowa AOF jest wystarczająco duży, ponowne zapisywanie jest automatycznie umieszczane w kolejce w pamięci podręcznej. Ponowne zapis zmienia rozmiar pliku kopia zapasowa AOF z minimalnym zestawem operacji wymaganych do utworzenia bieżącego zestawu danych. Podczas ponownego zapisywania należy oczekiwać, że osiągnięto limity wydajności wkrótce, szczególnie podczas pracy z dużymi zestawami danych. Ponowne Zapisywanie odbywa się rzadziej, gdy plik kopia zapasowa AOF stanie się większy, ale zajmie dużo czasu, gdy wystąpi.
 
-### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Co mogę oczekiwać, gdy Skalowanie pamięci podręcznej przy użyciu funkcja aof jest włączona?
+### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Co należy oczekiwać podczas skalowania pamięci podręcznej z włączonym kopia zapasowa AOF?
 
-W przypadku znacznie dużych plików AOF w czasie skalowania się spodziewać na dłużej, niż oczekiwano, ponieważ jej będzie można ponownego ładowania pliku po zakończeniu skalowanie operacji skalowania.
+Jeśli plik kopia zapasowa AOF w czasie skalowania jest bardzo duży, oczekiwano, że operacja skalowania trwa dłużej niż oczekiwano, ponieważ będzie ponownie ładować plik po zakończeniu skalowania.
 
-Aby uzyskać więcej informacji na temat skalowania, zobacz [co się stanie, jeśli mam była skalowana do innego rozmiaru i przywróceniu kopii zapasowej został utworzony przed wykonaniem operacji skalowania?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+Aby uzyskać więcej informacji na temat skalowania, zobacz [co się stanie, jeśli przeskaluję do innego rozmiaru i przywrócono kopię zapasową wykonaną przed operacją skalowania?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 
-### <a name="how-is-my-aof-data-organized-in-storage"></a>Jak Moje dane AOF jest zorganizowana w magazynie?
+### <a name="how-is-my-aof-data-organized-in-storage"></a>Jak moje dane kopia zapasowa AOF są zorganizowane w magazynie?
 
-Dane przechowywane w plikach AOF jest podzielony na wiele stronicowe obiekty BLOB w każdym węźle, aby zwiększyć wydajność zapisywania danych do magazynu. W poniższej tabeli przedstawiono, jak wiele stronicowe obiekty BLOB są używane dla każdej warstwy cenowej:
+Dane przechowywane w plikach kopia zapasowa AOF są podzielone na wiele stronicowych obiektów BLOB na węzeł w celu zwiększenia wydajności zapisywania danych w magazynie. W poniższej tabeli przedstawiono liczbę stronicowych obiektów BLOB używanych dla każdej warstwy cenowej:
 
 | Warstwa Premium | Obiekty blob |
 |--------------|-------|
-| P1           | 4 na fragment    |
-| P2           | 8 na fragment    |
-| P3           | 16 na fragment   |
-| P4           | 20 na fragment   |
+| P1           | 4 za fragmentu    |
+| P2           | 8 za fragmentu    |
+| P3           | 16 na fragmentu   |
+| P4           | 20 za fragmentu   |
 
-Gdy klaster jest włączona, każdy fragment w pamięci podręcznej ma swój własny zestaw stronicowych obiektów blob, jak wskazano w powyższej tabeli. Na przykład P2 pamięć podręczną z trzech fragmentów rozkłada jego plików AOF na 24 stronicowych obiektów blob (8 obiektów blob na fragment, za pomocą fragmentów 3).
+Gdy klastrowanie jest włączone, każda fragmentu w pamięci podręcznej ma swój własny zestaw stronicowych obiektów blob, jak wskazano w poprzedniej tabeli. Na przykład pamięć podręczna P2 z trzema fragmentów dystrybuuje swój plik kopia zapasowa AOF w 24-stronicowych obiektach Blob (8 obiektów BLOB na fragmentu, z 3 fragmentów).
 
-Po nadpisania dwa zestawy plików AOF istnieje w magazynie. Ponownego występują w tle i Dołącz do pierwszego zestawu plików, podczas gdy operacje na zestawie, które są wysyłane do pamięci podręcznej podczas ponownego zapisywania dołączania do drugiego zestawu. Tworzenie kopii zapasowej są tymczasowo przechowywane podczas modyfikacji oprogramowania w przypadku awarii, ale niezwłocznie zostanie usunięty po zakończeniu ponownego zapisywania.
+Po ponownej operacji zapisu w magazynie istnieją dwa zestawy plików kopia zapasowa AOF. Ponowne Zapisywanie odbywa się w tle i dołącza do pierwszego zestawu plików, podczas gdy ustawienia operacji, które są wysyłane do pamięci podręcznej podczas ponownego zapisu, dołączane do drugiego zestawu. Kopia zapasowa jest tymczasowo przechowywana podczas ponownego zapisywania w przypadku awarii, ale jest natychmiast usuwana po zakończeniu ponownego zapisywania.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak korzystać z funkcji premium więcej w pamięci podręcznej.
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się, jak korzystać z większej liczby funkcji pamięci podręcznej Premium.
 
-* [Wprowadzenie do platformy Azure pamięci podręcznej Redis w warstwie Premium](cache-premium-tier-intro.md)
+* [Wprowadzenie do usługi Azure cache dla warstwy Redis Premium](cache-premium-tier-intro.md)
 
 <!-- IMAGES -->
 

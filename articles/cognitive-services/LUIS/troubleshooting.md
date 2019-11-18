@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: c7e34b816f33c5286557dfc5d58711128ff68437
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075886"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123114"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding często zadawane pytania
 
@@ -50,7 +50,7 @@ Tak, jest dobre do nauczenia usługi **Brak** intencji za pomocą więcej wypowi
 Zobacz [Bing pisowni Sprawdź interfejsu API w wersji 7](luis-tutorial-bing-spellcheck.md) samouczka. Usługa LUIS wymusza ograniczeń narzuconych przez Bing pisowni Sprawdź interfejsu API w wersji 7.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Jak programowo edytować aplikację usługi LUIS?
-Aby edytować aplikacją usługi LUIS programowo, należy użyć [tworzenia interfejsu API](https://go.microsoft.com/fwlink/?linkid=2092087). Zobacz [wywołania tworzenia interfejsu API usługi LUIS](./luis-quickstart-node-add-utterance.md) i [tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js](./luis-tutorial-node-import-utterances-csv.md) przykładów dotyczących sposobów wywołać interfejs API tworzenia. Tworzenie interfejsu API wymaga użycia [tworzenia klucza](luis-concept-keys.md#azure-resources-for-luis) zamiast klucza punktu końcowego. Programowe tworzenie pozwala maksymalnie 1 000 000 wywołań na miesiąc i 5 transakcji na sekundę. Aby uzyskać więcej informacji na kluczach, korzystać z użyciem usługi LUIS, zobacz [zarządzanie kluczami](./luis-concept-keys.md).
+Aby edytować aplikacją usługi LUIS programowo, należy użyć [tworzenia interfejsu API](https://go.microsoft.com/fwlink/?linkid=2092087). Zobacz [wywołania tworzenia interfejsu API usługi LUIS](./get-started-get-model-rest-apis.md) i [tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js](./luis-tutorial-node-import-utterances-csv.md) przykładów dotyczących sposobów wywołać interfejs API tworzenia. Tworzenie interfejsu API wymaga użycia [tworzenia klucza](luis-concept-keys.md#azure-resources-for-luis) zamiast klucza punktu końcowego. Programowe tworzenie pozwala maksymalnie 1 000 000 wywołań na miesiąc i 5 transakcji na sekundę. Aby uzyskać więcej informacji na kluczach, korzystać z użyciem usługi LUIS, zobacz [zarządzanie kluczami](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Gdy funkcja wzorca, który podane wyrażenie regularne jest zgodny
 Poprzedni **funkcja wzorca** jest obecnie przestarzałe, zastępuje  **[wzorców](luis-concept-patterns.md)** .
@@ -329,7 +329,7 @@ Następujące funkcje zostały wydane na konferencji Build 2019:
 * [Jednostki listy dynamicznej](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Jednostki zewnętrzne](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
-Wideo:
+Filmy wideo:
 
 * [Jak skalować swoją firmę do nowej generacji przy użyciu funkcji Azure Conversation AI](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 

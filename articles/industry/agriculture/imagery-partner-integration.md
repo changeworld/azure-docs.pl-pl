@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927793"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132023"
 ---
 # <a name="imagery-partner-integration"></a>Integracja z partnerami obsługującymi obrazy
 
@@ -34,7 +34,7 @@ Aby połączyć FarmBeats, należy użyć następujących poświadczeń w oprogr
 - Punkt końcowy interfejsu API
 - Identyfikator dzierżawy
 - Identyfikator klienta
-- Klucz tajny klienta
+- Wpis tajny klienta
 
 ## <a name="api-development"></a>Programowanie interfejsu API
 
@@ -42,14 +42,14 @@ Interfejsy API zawierają dokumentację techniczną struktury Swagger. Przejrzyj
 
 ## <a name="authentication"></a>Authentication
 
-FarmBeats wykorzystuje [Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization))Microsoft Azure. Azure App Service uwierzytelniania zapewnia wbudowaną obsługę uwierzytelniania i autoryzacji. 
+FarmBeats wykorzystuje [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)Microsoft Azure. Azure App Service zapewnia wbudowaną obsługę uwierzytelniania i autoryzacji. 
 
 Aby uzyskać więcej informacji na temat, zobacz [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
 
 FarmBeats centrum danych używa uwierzytelniania okaziciela, który wymaga następujących poświadczeń:
 
 - Identyfikator klienta
-- Klucz tajny klienta
+- Wpis tajny klienta
 - Identyfikator dzierżawy
 
 Korzystając z powyższych poświadczeń, obiekt wywołujący może zażądać tokenu dostępu, który musi zostać wysłany w kolejnych żądaniach interfejsu API, w sekcji nagłówka w następujący sposób:
@@ -86,7 +86,7 @@ Poniżej znajdują się najczęstsze nagłówki żądań, które należy określ
 --- | ---
 Content-Type  | Format żądania (Content-Type: Application/<format>) dla FarmBeats interfejsu API usługi Data Hub to JSON. Content-Type: Application/JSON
 Autoryzacja | Określa token dostępu wymagany do wywołania interfejsu API. Autoryzacja: < tokenu dostępu >
-odebrać  | Format odpowiedzi. W przypadku interfejsów API usługi FarmBeats Data Hub formatem jest akceptowanie JSON: Application/JSON
+Odebrać  | Format odpowiedzi. W przypadku interfejsów API usługi FarmBeats Data Hub formatem jest akceptowanie JSON: Application/JSON
 
 
 ## <a name="api-requests"></a>Żądania interfejsu API

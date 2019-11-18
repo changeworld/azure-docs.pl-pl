@@ -1,5 +1,5 @@
 ---
-title: Łączenie i indeksowanie Azure SQL Database zawartości przy użyciu indeksatorów
+title: Wyszukiwanie w usłudze Azure SQL Data
 titleSuffix: Azure Cognitive Search
 description: Importuj dane z Azure SQL Database przy użyciu indeksatorów w celu wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze. W tym artykule opisano połączenia, konfigurację indeksatora i pozyskiwanie danych.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792191"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113304"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Łączenie się z zawartością i indeksowanie Azure SQL Database za pomocą indeksatorów Wyszukiwanie poznawcze platformy Azure
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Łączenie się z zawartością i indeksowanie Azure SQL Database za pomocą indeksatora Wyszukiwanie poznawcze platformy Azure
 
 Aby można było wykonywać zapytania dotyczące [indeksu wyszukiwanie poznawcze platformy Azure](search-what-is-an-index.md), musisz wypełnić je danymi. Jeśli dane znajdują się w bazie danych Azure SQL, usługa **azure wyszukiwanie poznawcze indeksator dla Azure SQL Database** (lub **Azure SQL indeksator** for Short) może zautomatyzować proces indeksowania, co oznacza, że nie trzeba pisać i mniej więcej, aby zachować infrastrukturę.
 
@@ -177,7 +177,7 @@ Jeśli Twoja baza danych SQL obsługuje [śledzenie zmian](https://docs.microsof
 + W bazie danych [Włącz śledzenie zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) dla tabeli. 
 + Brak złożonego klucza podstawowego (klucz podstawowy zawierający więcej niż jedną kolumnę) w tabeli.  
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 Aby użyć tych zasad, Utwórz lub zaktualizuj źródło danych podobne do tego:
 
@@ -212,7 +212,7 @@ Ta zasada wykrywania zmian korzysta z kolumny "High-Mark" przechwytującej wersj
 > [!IMPORTANT] 
 > Zdecydowanie zalecamy użycie typu danych [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) dla kolumny znacznika limitu górnego. W przypadku użycia dowolnego innego typu danych śledzenie zmian nie gwarantuje przechwycenia wszystkich zmian w obecności transakcji wykonywanych współbieżnie przy użyciu zapytania indeksatora. W przypadku korzystania z **rowversion** w konfiguracji z replikami tylko do odczytu należy wskazać indeksator w replice podstawowej. Tylko replika podstawowa może być używana do scenariuszy synchronizacji danych.
 
-#### <a name="usage"></a>Użycie
+#### <a name="usage"></a>Sposób użycia
 
 Aby użyć zasad oznakowania górnego, Utwórz lub zaktualizuj źródło danych w następujący sposób:
 
@@ -271,24 +271,24 @@ Korzystając z techniki usuwania nietrwałego, można określić zasady usuwania
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Mapowanie między typami danych SQL i Azure Wyszukiwanie poznawcze
 | Typ danych SQL | Dozwolone typy pól indeksu docelowego | Uwagi |
 | --- | --- | --- |
-| bit |EDM. Boolean, EDM. String | |
-| int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
-| bigint |EDM. Int64, EDM. String | |
-| rzeczywiste, zmiennoprzecinkowe |EDM. Double, EDM. String | |
+| bit |Edm.Boolean, Edm.String | |
+| int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
+| bigint |Edm.Int64, Edm.String | |
+| rzeczywiste, zmiennoprzecinkowe |Edm.Double, Edm.String | |
 | smallmoney, cyfra dziesiętna pieniędzy |Edm.String |Usługa Azure Wyszukiwanie poznawcze nie obsługuje konwertowania typów dziesiętnych na EDM. Double, ponieważ spowodowałoby to utratę precyzji |
 | char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Ciąg SQL może służyć do wypełniania pola kolekcji (EDM. String), jeśli ciąg reprezentuje tablicę JSON ciągów: `["red", "white", "blue"]` |
-| smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
+| smalldatetime, DateTime, datetime2, Date, DateTimeOffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | Geograficzne |Edm.GeographyPoint |Obsługiwane są tylko wystąpienia typu Geografia z SRID 4326 (co jest ustawieniem domyślnym) |
-| rowversion |ND |Kolumny wiersza — wersja nie mogą być przechowywane w indeksie wyszukiwania, ale mogą być używane do śledzenia zmian |
-| Time, TimeSpan, Binary, varbinary, Image, XML, geometria, typy CLR |ND |Brak obsługi |
+| rowversion |Nie dotyczy |Kolumny wiersza — wersja nie mogą być przechowywane w indeksie wyszukiwania, ale mogą być używane do śledzenia zmian |
+| Time, TimeSpan, Binary, varbinary, Image, XML, geometria, typy CLR |Nie dotyczy |Nieobsługiwane |
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 Program SQL indeksator uwidacznia kilka ustawień konfiguracji:
 
 | Ustawienie | Typ danych | Przeznaczenie | Wartość domyślna |
 | --- | --- | --- | --- |
-| queryTimeout |string |Ustawia limit czasu wykonywania zapytania SQL |5 minut ("00:05:00") |
+| queryTimeout |ciąg |Ustawia limit czasu wykonywania zapytania SQL |5 minut ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |bool |Powoduje, że zapytanie SQL używane przez zasady wysokiej rozdzielczości do pomijania klauzuli ORDER BY. Zobacz [zasady oznaczania górną wodą](#HighWaterMarkPolicy) |false |
 
 Te ustawienia są używane w obiekcie `parameters.configuration` w definicji indeksatora. Na przykład aby ustawić limit czasu zapytania na 10 minut, Utwórz lub zaktualizuj indeksator przy użyciu następującej konfiguracji:

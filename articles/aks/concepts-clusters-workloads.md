@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: da84f72c1ccf85e1f3d0f003a5aca961118c0a0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472891"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120625"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
 Gdy Programowanie aplikacji przenosi się do podejścia opartego na kontenerach, trzeba zorganizować i zarządzać zasobami. Kubernetes to wiodąca platforma zapewniająca niezawodne planowanie obciążeń aplikacji odpornych na błędy. Usługa Azure Kubernetes Service (AKS) to zarządzana oferta Kubernetes, która ułatwia wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi.
 
-W tym artykule wprowadzono podstawowe składniki infrastruktury Kubernetes, takie jak *wzorzec klastra*, *węzły*i *Pule węzłów*. Wprowadzono również zasoby obciążenia *, takie jak* *zbiory* , *wdrożenia*i zestawy, wraz z sposobem grupowania zasobów w *przestrzeni nazw*.
+W tym artykule wprowadzono podstawowe składniki infrastruktury Kubernetes, takie jak *płaszczyzna kontroli*, *węzły*i *Pule węzłów*. Wprowadzono również zasoby obciążenia *, takie jak* *zbiory* , *wdrożenia*i zestawy, wraz z sposobem grupowania zasobów w *przestrzeni nazw*.
 
 ## <a name="what-is-kubernetes"></a>Co to jest Kubernetes?
 
@@ -28,33 +28,33 @@ Możesz tworzyć i uruchamiać nowoczesne, przenośne, oparte na mikrousługach 
 
 Jako otwarta platforma Kubernetes umożliwia tworzenie aplikacji przy użyciu preferowanego języka programowania, systemu operacyjnego, bibliotek lub magistrali obsługi komunikatów. Istniejące narzędzia ciągłej integracji i ciągłego dostarczania (CI/CD) można zintegrować z usługą Kubernetes w celu planowania i wdrażania wersji.
 
-Usługa Azure Kubernetes Service (AKS) oferuje zarządzaną usługę Kubernetes, która zmniejsza złożoność wdrażania i podstawowych zadań zarządzania, w tym koordynowania uaktualnień. Wzorce klastra AKS są zarządzane przez platformę Azure i płacisz tylko za węzły AKS, na których działają aplikacje. AKS jest tworzona na podstawie aparatu usługi Azure Kubernetes ([AKS-Engine][aks-engine]) typu open source.
+Usługa Azure Kubernetes Service (AKS) oferuje zarządzaną usługę Kubernetes, która zmniejsza złożoność wdrażania i podstawowych zadań zarządzania, w tym koordynowania uaktualnień. Płaszczyzna kontroli AKS jest zarządzana przez platformę Azure i płacisz tylko za węzły AKS, na których działają aplikacje. AKS jest tworzona na podstawie aparatu usługi Azure Kubernetes ([AKS-Engine][aks-engine]) typu open source.
 
 ## <a name="kubernetes-cluster-architecture"></a>Architektura klastra Kubernetes
 
 Klaster Kubernetes jest podzielony na dwa składniki:
 
-- Węzły *wzorca klastra* zapewniają podstawowe usługi Kubernetes i aranżację obciążeń aplikacji.
+- Węzły *płaszczyzny kontroli* zapewniają podstawowe usługi Kubernetes i aranżację obciążeń aplikacji.
 - *Węzły* uruchamiają obciążenia aplikacji.
 
-![Składniki wzorca i węzła klastra Kubernetes](media/concepts-clusters-workloads/cluster-master-and-nodes.png)
+![Kubernetes i płaszczyzny kontroli](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
-## <a name="cluster-master"></a>Wzorzec klastra
+## <a name="control-plane"></a>Płaszczyzna kontroli
 
-Podczas tworzenia klastra AKS zostanie automatycznie utworzony i skonfigurowany główny klaster. Ten wzorzec klastra jest dostarczany jako zarządzany zasób platformy Azure, który został wyodrębniony przez użytkownika. Nie ma kosztu dla wzorca klastra, tylko węzłów, które są częścią klastra AKS.
+Podczas tworzenia klastra AKS, zostanie automatycznie utworzona i skonfigurowana płaszczyzna kontroli. Ta płaszczyzna kontroli jest udostępniana jako zarządzany zasób platformy Azure, który został podzielny przez użytkownika. Dla płaszczyzny kontroli nie ma kosztu, tylko węzły, które są częścią klastra AKS.
 
-Wzorzec klastra zawiera następujące podstawowe składniki Kubernetes:
+Płaszczyzna kontroli obejmuje następujące podstawowe składniki Kubernetes:
 
 - *polecenia-apiserver* — serwer interfejsu API to sposób, w jaki są ujawniane bazowe interfejsy API Kubernetes. Ten składnik zapewnia interakcję z narzędziami do zarządzania, takimi jak `kubectl` lub pulpit nawigacyjny Kubernetes.
 - *etcd* — aby zachować stan klastra Kubernetes i konfiguracji, *etcd* wysoka dostępność to kluczowy magazyn wartości w ramach Kubernetes.
 - *polecenia-Scheduler* — podczas tworzenia lub skalowania aplikacji harmonogram określa węzły, które mogą uruchamiać obciążenie i je uruchamia.
 - *polecenia-Controller-Manager* — Menedżer kontrolerów widzi kilka mniejszych kontrolerów, które wykonują takie działania, jak replikowanie i obsługa operacji węzła.
 
-AKS udostępnia wzorzec klastra z jedną dzierżawą, przy użyciu dedykowanego serwera interfejsu API, harmonogramu itp. Zdefiniuj liczbę i rozmiar węzłów, a platforma Azure skonfiguruje bezpieczną komunikację między wzorcem i węzłami klastra. Interakcja z wzorcem klastra odbywa się za pomocą interfejsów API Kubernetes, takich jak `kubectl` lub pulpit nawigacyjny Kubernetes.
+AKS zapewnia jednodostępną płaszczyznę kontroli z dedykowanym serwerem interfejsu API, harmonogramem itd. Zdefiniuj liczbę i rozmiar węzłów, a platforma Azure skonfiguruje bezpieczną komunikację między płaszczyzną i węzłami. Interakcja z płaszczyzną kontroli odbywa się za pomocą interfejsów API Kubernetes, takich jak `kubectl` lub pulpit nawigacyjny Kubernetes.
 
-Ten zarządzany serwer główny klastra oznacza, że nie trzeba konfigurować składników takich jak magazyn *etcd* o wysokiej dostępności, ale oznacza to również, że nie można uzyskać dostępu bezpośrednio do wzorca klastra. Uaktualnienia do Kubernetes są zorganizowane za pomocą interfejsu wiersza polecenia platformy Azure lub Azure Portal, który uaktualnia wzorzec klastra, a następnie węzły. Aby rozwiązać ewentualne problemy, można przejrzeć dzienniki główne klastra za pomocą dzienników Azure Monitor.
+Ta płaszczyzna kontroli zarządzanej oznacza, że nie trzeba konfigurować składników takich jak magazyn *etcd* o wysokiej dostępności, ale oznacza to również, że nie można bezpośrednio uzyskać dostępu do płaszczyzny kontroli. Uaktualnienia do Kubernetes są zorganizowane za pomocą interfejsu wiersza polecenia platformy Azure lub Azure Portal, który uaktualnia płaszczyznę kontroli, a następnie węzły. Aby rozwiązać ewentualne problemy, można przejrzeć dzienniki płaszczyzny kontroli za pomocą dzienników Azure Monitor.
 
-Jeśli musisz skonfigurować wzorzec klastra w określony sposób lub potrzebujesz bezpośredniego dostępu do nich, możesz wdrożyć własny klaster Kubernetes przy użyciu [aparatu AKS-Engine][aks-engine].
+Jeśli konieczne jest skonfigurowanie płaszczyzny kontroli w określony sposób lub konieczność bezpośredniego dostępu do niej, można wdrożyć własny klaster Kubernetes przy użyciu [aparatu AKS][aks-engine].
 
 W przypadku skojarzonych najlepszych rozwiązań należy zapoznać się [z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń i uaktualnień klastra w programie AKS][operator-best-practices-cluster-security].
 
@@ -62,7 +62,7 @@ W przypadku skojarzonych najlepszych rozwiązań należy zapoznać się [z najle
 
 Aby uruchamiać aplikacje i usługi pomocnicze, potrzebny jest *węzeł*Kubernetes. Klaster AKS ma co najmniej jeden węzeł, który jest maszyną wirtualną platformy Azure, na której działa składniki węzła Kubernetes i środowisko uruchomieniowe kontenera:
 
-- `kubelet` to Agent Kubernetes, który przetwarza żądania aranżacji z głównego serwera klastra i planowania uruchamiania żądanych kontenerów.
+- `kubelet` to Agent Kubernetes, który przetwarza żądania aranżacji z płaszczyzny kontroli i planowania uruchamiania żądanych kontenerów.
 - Sieć wirtualna jest obsługiwana przez *polecenia-proxy* w każdym węźle. Serwer proxy kieruje ruchem sieciowym i zarządza adresami IP dla usług i zasobników.
 - *Środowisko uruchomieniowe kontenera* to składnik, który umożliwia aplikacjom kontenerowym uruchamianie i współdziałanie z dodatkowymi zasobami, takimi jak sieć wirtualna i magazyn. W AKS, Moby jest używany jako środowisko uruchomieniowe kontenera.
 
@@ -87,7 +87,7 @@ kubectl describe node [NODE_NAME]
 Aby zachować wydajność i funkcjonalność węzła, zasoby są zastrzeżone dla każdego węzła przez AKS. W miarę zwiększania się liczby zasobów, rezerwacja zasobów rośnie ze względu na większą ilość potrzebnych do zarządzania użytkownikami.
 
 >[!NOTE]
-> Używanie dodatków, takich jak OMS, będzie zużywać dodatkowe zasoby węzła.
+> Używanie dodatków AKS, takich jak Container Insights (OMS), będzie zużywać dodatkowe zasoby węzła.
 
 - Procesor CPU zarezerwowany przez **procesor** CPU zależy od typu węzła i konfiguracji klastra, co może spowodować mniejsze możliwości przydzielania CPU z powodu uruchamiania dodatkowych funkcji
 
@@ -95,16 +95,24 @@ Aby zachować wydajność i funkcjonalność węzła, zasoby są zastrzeżone dl
 |---|---|---|---|---|---|---|---|
 |Polecenia — zarezerwowane (millicores)|60|100|140|180|260|420|740|
 
-- **Pamięć** — rezerwacja pamięci jest następująca: wskaźnik progresywny
-  - 25% pierwszego 4 GB pamięci
-  - 20% z następnych 4 GB pamięci (do 8 GB)
-  - 10% z następnych 8 GB pamięci (do 16 GB)
-  - 6% następnego 112 GB pamięci (do 128 GB)
-  - 2% każdej pamięci powyżej 128 GB
+- Pamięć zarezerwowana **pamięci** zawiera sumę dwóch wartości
 
-Te rezerwacje oznaczają, że ilość dostępnego procesora i pamięci dla aplikacji może być mniejsza niż w przypadku węzła. Jeśli istnieją ograniczenia zasobów ze względu na liczbę uruchomionych aplikacji, te rezerwacje zapewniają, że procesor i pamięć są dostępne dla podstawowych składników Kubernetes. Nie można zmienić rezerwacji zasobów.
+1. Demon kubelet został zainstalowany we wszystkich węzłach agenta Kubernetes w celu zarządzania tworzeniem i kończeniem kontenera. Domyślnie w systemie AKS ten demon ma następującą regułę wykluczania: Memory. available < 750Mi, co oznacza, że w każdym momencie węzeł musi mieć co najmniej 750.  Gdy host jest poniżej tego progu dostępnej pamięci, kubelet zakończy jeden z uruchomionych zasobników, aby zwolnić pamięć na komputerze hosta i chronić ją.
 
-Podstawowy system operacyjny nie wymaga również pewnej ilości zasobów procesora i pamięci do ukończenia własnych funkcji podstawowych.
+2. Druga wartość to progresywna szybkość pamięci zarezerwowanej dla demona kubelet, która prawidłowo działa (zarezerwowane polecenia).
+    - 25% pierwszego 4 GB pamięci
+    - 20% z następnych 4 GB pamięci (do 8 GB)
+    - 10% z następnych 8 GB pamięci (do 16 GB)
+    - 6% następnego 112 GB pamięci (do 128 GB)
+    - 2% każdej pamięci powyżej 128 GB
+
+W wyniku tych dwóch określonych reguł nałożonych na zachowanie Kubernetes i węzłów agenta w dobrej kondycji, ilość przystosowanego procesora i pamięci będzie mniejsza niż w przypadku samego węzła. Nie można zmienić zdefiniowanych powyżej rezerwacji zasobów.
+
+Na przykład, jeśli węzeł zawiera 7 GB, zgłasza 34% pamięci, która nie jest przydzielana:
+
+`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+
+Oprócz rezerwacji dla Kubernetes, podstawowy system operacyjny węzła również rezerwuje ilość zasobów procesora i pamięci do obsługi funkcji systemu operacyjnego.
 
 Aby zapoznać się z najlepszymi rozwiązaniami, zobacz [najlepsze rozwiązania dotyczące podstawowych funkcji usługi Scheduler w AKS][operator-best-practices-scheduler].
 
@@ -140,7 +148,7 @@ spec:
 
 Aby uzyskać więcej informacji na temat sposobu kontrolowania, gdzie są planowane planowanie, zobacz [najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler w AKS][operator-best-practices-advanced-scheduler].
 
-## <a name="pods"></a>Zasobników
+## <a name="pods"></a>Zasobniki
 
 Kubernetes używa *zasobników* do uruchomienia wystąpienia aplikacji. Element pod reprezentuje pojedyncze wystąpienie aplikacji. Zasobniki zwykle mają 1:1 mapowania z kontenerem, chociaż istnieją zaawansowane scenariusze, w których część może zawierać wiele kontenerów. Te wielokontenerowe działy są planowane razem w tym samym węźle i umożliwiają kontenerom udostępnianie powiązanych zasobów.
 

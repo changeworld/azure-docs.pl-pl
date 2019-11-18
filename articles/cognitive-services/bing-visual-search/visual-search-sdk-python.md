@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: zestaw SDK wyszukiwania wizualnego Bing i język Python'
+title: 'Szybki start: zestaw SDK wyszukiwania wizualnego Bing, Python'
 titleSuffix: Azure Cognitive Services
-description: Konfigurowanie aplikacji konsolowej zestawu SDK wyszukiwania wizualnego w języku Python.
+description: Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych obrazu w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla języka Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: eb0befe3b6f131559a86c121251a4b6194abc49c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4d5679e75f0feb4fd502abc92fc7c1de16b53bc8
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204016"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111569"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Szybki start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwania wizualnego Bing dla języka Python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwanie wizualne Bing dla języka Python
 
 Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych obrazu w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla języka Python. Chociaż wyszukiwanie wizualne Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
@@ -108,7 +108,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych
             print("Couldn't find image tags!")
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-visual-search-single-page-app.md)

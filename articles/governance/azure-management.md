@@ -2,13 +2,13 @@
 title: Zarządzanie platformą Azure — omówienie — zarządzanie platformą Azure
 description: Omówienie obszarów zarządzania dla aplikacji platformy Azure i zasobów wraz z łączami do zawartości w narzędzia do zarządzania platformy Azure.
 ms.date: 12/06/2018
-ms.topic: article
-ms.openlocfilehash: e85d5162146fb716ed9f846dc5a828d83c669627
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.topic: overview
+ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013903"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132845"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Przegląd usług zarządzania na platformie Azure
 

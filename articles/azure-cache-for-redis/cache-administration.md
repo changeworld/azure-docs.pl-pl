@@ -1,25 +1,17 @@
 ---
-title: Jak administrować usługą Azure cache for Redis | Microsoft Docs
+title: Jak administrować usługą Azure cache for Redis
 description: Dowiedz się, jak wykonywać zadania administracyjne, takie jak ponowne uruchamianie i Planowanie aktualizacji usługi Azure cache for Redis
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 8c915ae6-5322-4046-9938-8f7832403000
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: afb48c18f9690e77a5478956e1147acf850290ab
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756615"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122536"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak administrować usługą Azure cache for Redis
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [Ponowne uruchamianie](#reboot) i [Planowanie aktualizacji](#schedule-updates) pamięci podręcznej platformy Azure dla wystąpień Redis.
@@ -84,7 +76,7 @@ Blok **harmonogram aktualizacji** umożliwia wyznaczenie okna obsługi dla wyst�
 
 Aby określić okno obsługi, sprawdź wymagane dni i określ czas rozpoczęcia okna obsługi dla każdego dnia, a następnie kliknij przycisk **OK**. Należy pamiętać, że czas okna obsługi jest w formacie UTC. 
 
-Ustawienie domyślne i minimalne okno obsługi aktualizacji to pięć godzin. Ta wartość nie może być konfigurowalna z Azure Portal, ale można ją skonfigurować w programie PowerShell przy użyciu parametru `MaintenanceWindow` polecenia cmdlet [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) . Aby uzyskać więcej informacji, zobacz mogę zarządzać zaplanowanymi aktualizacjami przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania?
+Ustawienie domyślne i minimalne okno obsługi aktualizacji to pięć godzin. Tej wartości nie można skonfigurować na podstawie Azure Portal, ale możesz ją skonfigurować w programie PowerShell przy użyciu parametru `MaintenanceWindow` polecenia cmdlet [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) . Aby uzyskać więcej informacji, zobacz mogę zarządzać zaplanowanymi aktualizacjami przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania?
 
 ## <a name="schedule-updates-faq"></a>Zaplanuj często zadawane pytania dotyczące aktualizacji
 * [Kiedy aktualizacje są wykonywane, jeśli nie używam funkcji Zaplanuj aktualizacje?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

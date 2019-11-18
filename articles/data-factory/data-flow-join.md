@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961837"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122924"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Przekształcenie łączenia w przepływie danych mapowania
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Przykład sprzężenia krzyżowego
 
-Poniższy przykład to transformacja sprzężenia o nazwie `CartesianProduct`, która pobiera lewe `TripData` strumienia i właściwe `TripFare`przesyłania strumieniowego. Ta transformacja zajmuje dwa strumienie i zwraca kartezjańskiegoy produkt ich wierszy. Warunek sprzężenia jest `true()`, ponieważ wyprowadza pełny produkt kartezjańskiego. `joinType` w `cross`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'`wartości.
+Poniższy przykład to transformacja sprzężenia o nazwie `CartesianProduct`, która pobiera lewe `TripData` strumienia i właściwe `TripFare`przesyłania strumieniowego. Ta transformacja zajmuje dwa strumienie i zwraca kartezjańskiegoy produkt ich wierszy. Warunek sprzężenia jest `true()`, ponieważ wyprowadza pełny produkt kartezjańskiego. `joinType` jest `cross`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'`wartości.
 
 W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 

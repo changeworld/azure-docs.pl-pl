@@ -1,19 +1,19 @@
 ---
 title: Python UDF z Apache Hive i Apache chlewnej — Azure HDInsight
 description: Dowiedz się, jak używać funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache świni w usłudze HDInsight, stosu Apache Hadoop technologii na platformie Azure.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: de738461776be7bdfd1abc45dde24dc1202d3a3c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180756"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148392"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Używanie funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache chlewnej w usłudze HDInsight
 
@@ -29,31 +29,32 @@ Usługa HDInsight zawiera również Jython, która jest implementacją języka P
 
 * **Klaster usługi Hadoop w usłudze HDInsight**. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](apache-hadoop-linux-tutorial-get-started.md).
 * **Klient SSH**. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Dotyczy to usługi Azure Storage, `abfs://` Azure Data Lake Storage Gen2 lub ADL://dla Azure Data Lake Storage Gen1. `wasb://` Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI zostałby wasbs://.  Zobacz również [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
-* **Możliwa zmiana konfiguracji magazynu.**  Zobacz [Konfiguracja magazynu](#storage-configuration) , jeśli używany jest typ `BlobStorage`konta magazynu.
+* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to `wasb://` dla usługi Azure Storage, `abfs://` dla Azure Data Lake Storage Gen2 lub adl://dla Azure Data Lake Storage Gen1. Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI zostałby wasbs://.  Zobacz również [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
+* **Możliwa zmiana konfiguracji magazynu.**  Zobacz [Konfiguracja magazynu](#storage-configuration) , jeśli używasz rodzaju konta magazynu `BlobStorage`.
 * Opcjonalny.  Jeśli planujesz korzystanie z programu PowerShell, musisz mieć zainstalowaną pozycję [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
 
 > [!NOTE]  
-> Konto magazynu używane w tym artykule było magazynem platformy Azure z włączonym [bezpiecznym transferem](../../storage/common/storage-require-secure-transfer.md) i w tym `wasbs` przypadku jest używany w całym artykule.
+> Konto magazynu używane w tym artykule było magazynem platformy Azure z włączonym [bezpiecznym transferem](../../storage/common/storage-require-secure-transfer.md) i w ten sposób `wasbs` jest używany w całym artykule.
 
-## <a name="storage-configuration"></a>Konfiguracja magazynu
-Jeśli używane konto magazynu ma charakter `Storage (general purpose v1)` lub `StorageV2 (general purpose v2)`, nie jest wymagana żadna akcja.  Proces w tym artykule spowoduje wygenerowanie danych wyjściowych do `/tezstaging`co najmniej.  Domyślna konfiguracja usługi `/tezstaging` `core-site.xml` `fs.azure.page.blob.dir` Hadoopbędziezawieraćwzmiennejkonfiguracyjnejprogramu`HDFS`w programie for.  Ta konfiguracja powoduje, że dane wyjściowe do katalogu będą stronicowymi obiektami BLOB, które nie są obsługiwane dla rodzaju `BlobStorage`konta magazynu.  Aby użyć `BlobStorage` tego artykułu, Usuń `/tezstaging` ze `fs.azure.page.blob.dir` zmiennej konfiguracyjnej.  Dostęp do konfiguracji można uzyskać za pomocą [interfejsu użytkownika Ambari](../hdinsight-hadoop-manage-ambari.md).  W przeciwnym razie zostanie wyświetlony komunikat o błędzie:`Page blob is not supported for this account type.`
+## <a name="storage-configuration"></a>Konfiguracja usługi Storage
+
+Jeśli używane konto magazynu ma charakter `Storage (general purpose v1)` lub `StorageV2 (general purpose v2)`, nie jest wymagana żadna akcja.  Proces w tym artykule spowoduje wygenerowanie danych wyjściowych do co najmniej `/tezstaging`.  Domyślna konfiguracja usługi Hadoop będzie zawierać `/tezstaging` w zmiennej konfiguracyjnej `fs.azure.page.blob.dir` w `core-site.xml` do `HDFS`usług.  Ta konfiguracja spowoduje, że dane wyjściowe do katalogu będą stronicowymi obiektami BLOB, które nie są obsługiwane dla rodzaju konta magazynu `BlobStorage`.  Aby użyć `BlobStorage` tego artykułu, Usuń `/tezstaging` ze zmiennej konfiguracyjnej `fs.azure.page.blob.dir`.  Dostęp do konfiguracji można uzyskać za pomocą [interfejsu użytkownika Ambari](../hdinsight-hadoop-manage-ambari.md).  W przeciwnym razie zostanie wyświetlony komunikat o błędzie: `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > Kroki opisane w tym dokumencie składają się z następujących założeń:  
 >
 > * Tworzysz skrypty języka Python w lokalnym środowisku programistycznym.
-> * Skrypty są przekazywane do usługi HDInsight przy użyciu `scp` polecenia lub dostarczonego skryptu programu PowerShell.
+> * Skrypty są przekazywane do usługi HDInsight przy użyciu polecenia `scp` lub dostarczonego skryptu programu PowerShell.
 >
 > Jeśli chcesz użyć [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) do pracy z usługą HDInsight, musisz:
 >
 > * Utwórz skrypty w środowisku usługi Cloud Shell.
-> * Służy `scp` do przekazywania plików z usługi Cloud Shell do usługi HDInsight.
-> * Użyj `ssh` usługi Cloud Shell, aby nawiązać połączenie z usługą HDInsight i uruchomić przykłady.
+> * Użyj `scp`, aby przekazać pliki z usługi Cloud Shell do usługi HDInsight.
+> * Użyj `ssh` z usługi Cloud Shell, aby nawiązać połączenie z usługą HDInsight i uruchomić przykłady.
 
 ## <a name="hivepython"></a>Apache Hive UDF
 
-Język Python może być używany jako UDF z usługi Hive za pośrednictwem instrukcji HiveQL `TRANSFORM` . Na przykład następujący HiveQL wywołuje `hiveudf.py` plik przechowywany na domyślnym koncie usługi Azure Storage dla klastra.
+Język Python może być używany jako UDF z programu Hive za pomocą instrukcji HiveQL `TRANSFORM`. Na przykład następujący HiveQL wywołuje plik `hiveudf.py` przechowywany na domyślnym koncie usługi Azure Storage dla klastra.
 
 ```hiveql
 add file wasbs:///hiveudf.py;
@@ -67,9 +68,9 @@ ORDER BY clientid LIMIT 50;
 
 Oto co to jest w tym przykładzie:
 
-1. Instrukcja na początku pliku `hiveudf.py` dodaje plik do rozproszonej pamięci podręcznej, dzięki czemu jest dostępny dla wszystkich węzłów w klastrze. `add file`
-2. Instrukcja wybiera dane `hivesampletable`z. `SELECT TRANSFORM ... USING` Przekazuje także wartości ClientID, devicemake i devicemodel do `hiveudf.py` skryptu.
-3. Klauzula opisuje pola zwracane z `hiveudf.py`. `AS`
+1. Instrukcja `add file` na początku pliku dodaje plik `hiveudf.py` do rozproszonej pamięci podręcznej, dzięki czemu jest dostępny dla wszystkich węzłów w klastrze.
+2. Instrukcja `SELECT TRANSFORM ... USING` wybiera dane z `hivesampletable`. Przekazuje także wartości ClientID, devicemake i devicemodel do skryptu `hiveudf.py`.
+3. Klauzula `AS` opisuje pola zwracane z `hiveudf.py`.
 
 <a name="streamingpy"></a>
 
@@ -97,17 +98,18 @@ while True:
 Ten skrypt wykonuje następujące czynności:
 
 1. Odczytuje wiersz danych z STDIN.
-2. Końcowy znak nowego wiersza jest usuwany przy `string.strip(line, "\n ")`użyciu.
-3. Podczas przetwarzania strumieniowego pojedynczy wiersz zawiera wszystkie wartości z znakiem tabulacji między każdą wartością. `string.split(line, "\t")` Można go użyć do podziału danych wejściowych na każdej karcie, zwracając tylko pola.
+2. Końcowy znak nowego wiersza jest usuwany przy użyciu `string.strip(line, "\n ")`.
+3. Podczas przetwarzania strumieniowego pojedynczy wiersz zawiera wszystkie wartości z znakiem tabulacji między każdą wartością. Dlatego `string.split(line, "\t")` może służyć do podziału danych wejściowych na każdej karcie, zwracając tylko pola.
 4. Po zakończeniu przetwarzania dane wyjściowe muszą być zapisywane w strumieniu STDOUT jako jeden wiersz, z kartą między każdym polem. Na przykład `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
-5. Pętla powtarza się, `while` dopóki nie `line` zostanie odczytana.
+5. Pętla `while` powtarza się, dopóki nie zostanie odczytana `line`.
 
-Dane wyjściowe skryptu są połączeniem wartości wejściowych dla `devicemake` i `devicemodel`i skrótu połączonej wartości.
+Dane wyjściowe skryptu są połączeniem wartości wejściowych dla `devicemake` i `devicemodel`oraz skrót wartości połączonej.
 
 ### <a name="upload-file-shell"></a>Przekaż plik (Shell)
-W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytkownika, jeśli jest inna.  Zamień `mycluster` na rzeczywistą nazwę klastra.  Upewnij się, że w katalogu roboczym znajduje się plik.
 
-1. Użyj `scp` , aby skopiować pliki do klastra usługi HDInsight. Edytuj i wprowadź poniższe polecenie:
+W poniższych poleceniach Zastąp `sshuser` wartością rzeczywistej nazwy użytkownika, jeśli różni się.  Zastąp `mycluster` rzeczywistą nazwą klastra.  Upewnij się, że w katalogu roboczym znajduje się plik.
+
+1. Użyj `scp`, aby skopiować pliki do klastra usługi HDInsight. Edytuj i wprowadź poniższe polecenie:
 
     ```cmd
     scp hiveudf.py sshuser@mycluster-ssh.azurehdinsight.net:
@@ -135,7 +137,7 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
 
     To polecenie uruchamia klienta programu Z usługi Beeline.
 
-2. W `0: jdbc:hive2://headnodehost:10001/>` wierszu polecenia wprowadź następujące zapytanie:
+2. W wierszu `0: jdbc:hive2://headnodehost:10001/>` wprowadź następujące zapytanie:
 
    ```hive
    add file wasbs:///hiveudf.py;
@@ -162,7 +164,7 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
 
 ### <a name="upload-file-powershell"></a>Przekaż plik (PowerShell)
 
-Program PowerShell może również służyć do zdalnego uruchamiania zapytań Hive. Upewnij się, że katalog roboczy `hiveudf.py` znajduje się w lokalizacji.  Użyj poniższego skryptu programu PowerShell, aby uruchomić zapytanie programu Hive korzystające ze `hiveudf.py` skryptu:
+Program PowerShell może również służyć do zdalnego uruchamiania zapytań Hive. Upewnij się, że katalog roboczy znajduje się w lokalizacji, w której znajduje się `hiveudf.py`.  Użyj poniższego skryptu programu PowerShell, aby uruchomić zapytanie programu Hive korzystające ze skryptu `hiveudf.py`:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -172,6 +174,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Revise file path as needed
 $pathToStreamingFile = ".\hiveudf.py"
@@ -202,9 +207,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > Aby uzyskać więcej informacji na temat przekazywania plików, zobacz sekcję [przekazywanie danych dla Apache Hadoop zadań w usłudze HDInsight](../hdinsight-upload-data.md) .
 
-
 #### <a name="use-hive-udf"></a>Korzystanie z funkcji UDF w programie Hive
-
 
 ```PowerShell
 # Script should stop on failures
@@ -217,6 +220,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Get cluster info
 $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
@@ -281,18 +287,17 @@ Dane wyjściowe zadania **Hive** powinny wyglądać podobnie do poniższego przy
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-
 ## <a name="pigpython"></a>UDF świni Apache
 
-Skrypt w języku Python może być używany jako UDF ze świń za pośrednictwem `GENERATE` instrukcji. Skrypt można uruchomić przy użyciu języka Python Jython lub C.
+Skrypt w języku Python może służyć jako UDF ze świń za pośrednictwem instrukcji `GENERATE`. Skrypt można uruchomić przy użyciu języka Python Jython lub C.
 
 * Jython działa na JVM i może być natywnie wywoływany ze świni.
 * Język C Python jest procesem zewnętrznym, dlatego dane ze świń w JVM są wysyłane do skryptu działającego w procesie języka Python. Dane wyjściowe skryptu języka Python są wysyłane z powrotem do świni.
 
-Aby określić interpreter języka Python, użyj `register` go podczas odwoływania się do skryptu języka Python. Poniższe przykłady rejestrują skrypty ze świnią `myfuncs`jako:
+Aby określić interpreter języka Python, użyj `register` podczas odwoływania się do skryptu języka Python. W poniższych przykładach rejestrujemy skrypty ze świnią jako `myfuncs`:
 
-* **Aby użyć Jython**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **Aby użyć języka C Python**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Aby użyć Jython**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **Aby użyć języka C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > W przypadku korzystania z Jython ścieżka do pliku pig_jython może być ścieżką lokalną lub ścieżką WASBS://. Jednak w przypadku korzystania z języka C Python należy odwołać się do pliku w lokalnym systemie plików węzła, który jest używany do przesyłania danego zadania.
@@ -308,10 +313,10 @@ DUMP DETAILS;
 
 Oto co to jest w tym przykładzie:
 
-1. Pierwszy wiersz ładuje przykładowy plik `sample.log` danych do. `LOGS` Definiuje również każdy rekord jako `chararray`.
+1. Pierwszy wiersz ładuje przykładowy plik danych `sample.log` do `LOGS`. Definiuje również każdy rekord jako `chararray`.
 2. Następny wiersz filtruje wartości null, przechowując wynik operacji w `LOG`.
-3. Następnie wykonuje iterację w odniesieniu do `LOG` rekordów w `GENERATE` i używa do `create_structure` wywołania metody zawartej w skrypcie Python/Jython załadowanym jako `myfuncs`. `LINE`służy do przekazywania bieżącego rekordu do funkcji.
-4. Na koniec dane wyjściowe są zrzucane do strumienia stdout przy `DUMP` użyciu polecenia. To polecenie wyświetla wyniki po zakończeniu operacji.
+3. Następnie wykonuje iterację w odniesieniu do rekordów w `LOG` i używa `GENERATE` do wywołania metody `create_structure` zawartej w skrypcie Python/Jython załadowanej jako `myfuncs`. `LINE` służy do przekazywania bieżącego rekordu do funkcji.
+4. Na koniec dane wyjściowe są zrzucane do strumienia STDOUT przy użyciu polecenia `DUMP`. To polecenie wyświetla wyniki po zakończeniu operacji.
 
 ### <a name="create-file"></a>Utwórz plik
 
@@ -332,9 +337,9 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-W przykładzie dla świni, `LINE` dane wejściowe są zdefiniowane jako CharArray, ponieważ nie istnieje spójny schemat danych wejściowych. Skrypt języka Python przekształca dane w spójny schemat dla danych wyjściowych.
+W przykładzie dla trzody chlewnej `LINE` dane wejściowe są zdefiniowane jako CharArray, ponieważ nie istnieje spójny schemat danych wejściowych. Skrypt języka Python przekształca dane w spójny schemat dla danych wyjściowych.
 
-1. `@outputSchema` Instrukcja definiuje format danych, które są zwracane do świni. W tym przypadku jest to **zbiór danych**, który jest typem danych świni. Zbiór zawiera następujące pola, z których wszystkie są CharArray (ciągi):
+1. Instrukcja `@outputSchema` definiuje format danych, które są zwracane do świni. W tym przypadku jest to **zbiór danych**, który jest typem danych świni. Zbiór zawiera następujące pola, z których wszystkie są CharArray (ciągi):
 
    * Data — Data utworzenia wpisu dziennika.
    * godzina — godzina utworzenia wpisu dziennika.
@@ -342,23 +347,21 @@ W przykładzie dla świni, `LINE` dane wejściowe są zdefiniowane jako CharArra
    * poziom — poziom rejestrowania
    * Szczegóły — szczegóły wpisu dziennika
 
-2. `def create_structure(input)` Następnie definiuje funkcję, do której świnie przechodzą elementy wiersza.
+2. Następnie `def create_structure(input)` definiuje funkcję, do której świnie przechodzą elementy wiersza.
 
-3. Przykładowe dane, `sample.log`, głównie zgodne ze schematem daty, godziny, ClassName, poziomu i szczegółów. Zawiera on jednak kilka wierszy, które zaczynają `*java.lang.Exception*`się od. Te wiersze należy zmodyfikować, aby pasowały do schematu. Instrukcja sprawdza dla tych, a następnie komunikaty dane wejściowe w celu `*java.lang.Exception*` przeniesienia ciągu do końca, co powoduje przełączenie danych w wierszu o oczekiwanym schemacie danych wyjściowych. `if`
+3. Przykładowe dane, `sample.log`, głównie są zgodne ze schematem daty, godziny, ClassName, poziomu i szczegółów. Zawiera on jednak kilka wierszy, które zaczynają się od `*java.lang.Exception*`. Te wiersze należy zmodyfikować, aby pasowały do schematu. Instrukcja `if` sprawdza dla tych, a następnie komunikaty dane wejściowe, aby przenieść ciąg `*java.lang.Exception*` do końca, przełączając dane w wierszu o oczekiwanym schemacie danych wyjściowych.
 
-4. `split` Następnie polecenie jest używane do dzielenia danych na pierwsze cztery znaki spacji. Dane wyjściowe są przypisywane `date`do `time` `classname`, `level`,,, `detail`i.
+4. Następnie `split` polecenie służy do dzielenia danych na pierwsze cztery znaki spacji. Dane wyjściowe są przypisywane do `date`, `time`, `classname`, `level`i `detail`.
 
 5. Na koniec wartości są zwracane do świni.
 
-Gdy dane są zwracane do świni, ma spójny schemat, zgodnie z definicją w `@outputSchema` instrukcji.
-
-
+Gdy dane są zwracane do świni, ma spójny schemat, zgodnie z definicją w instrukcji `@outputSchema`.
 
 ### <a name="upload-file-shell"></a>Przekaż plik (Shell)
 
-W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytkownika, jeśli jest inna.  Zamień `mycluster` na rzeczywistą nazwę klastra.  Upewnij się, że w katalogu roboczym znajduje się plik.
+W poniższych poleceniach Zastąp `sshuser` wartością rzeczywistej nazwy użytkownika, jeśli różni się.  Zastąp `mycluster` rzeczywistą nazwą klastra.  Upewnij się, że w katalogu roboczym znajduje się plik.
 
-1. Użyj `scp` , aby skopiować pliki do klastra usługi HDInsight. Edytuj i wprowadź poniższe polecenie:
+1. Użyj `scp`, aby skopiować pliki do klastra usługi HDInsight. Edytuj i wprowadź poniższe polecenie:
 
     ```cmd
     scp pigudf.py sshuser@mycluster-ssh.azurehdinsight.net:
@@ -376,7 +379,6 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-
 ### <a name="use-pig-udf-shell"></a>Korzystanie z funkcji UDF (Shell)
 
 1. Aby nawiązać połączenie z świnią, użyj następującego polecenia z otwartej sesji SSH:
@@ -385,11 +387,11 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
     pig
     ```
 
-2. W `grunt>` wierszu polecenia wprowadź następujące instrukcje:
+2. W wierszu `grunt>` wprowadź następujące instrukcje:
 
    ```pig
    Register wasbs:///pigudf.py using jython as myfuncs;
-   LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+   LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
    LOG = FILTER LOGS by LINE is not null;
    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
    DUMP DETAILS;
@@ -403,13 +405,13 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
         ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
         ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-4. Użyj `quit` polecenia, aby wyjść z powłoki grunt, a następnie użyć następujących elementów do edytowania pliku pigudf.py w lokalnym systemie plików:
+4. Użyj `quit`, aby wyjść z powłoki grunt, a następnie użyć następującego polecenia, aby edytować plik pigudf.py w lokalnym systemie plików:
 
     ```bash
     nano pigudf.py
     ```
 
-5. W edytorze Usuń komentarz z poniższego wiersza, usuwając `#` znak z początku wiersza:
+5. W edytorze Usuń komentarz z poniższego wiersza, usuwając znak `#` od początku wiersza:
 
     ```bash
     #from pig_util import outputSchema
@@ -417,7 +419,7 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
 
     Ten wiersz modyfikuje skrypt języka Python, aby działał z językiem Python języka C zamiast Jython. Po dokonaniu zmiany **naciśnij klawisze Ctrl + X** , aby wyjść z edytora. Wybierz pozycję **Y**, a następnie **wprowadź** polecenie, aby zapisać zmiany.
 
-6. `pig` Użyj polecenia, aby ponownie uruchomić powłokę. Po wyświetleniu `grunt>` monitu użyj poniższego polecenia, aby uruchomić skrypt języka Python przy użyciu interpretera języka C Python.
+6. Użyj polecenia `pig`, aby ponownie uruchomić powłokę. Po wyświetleniu monitu `grunt>` Użyj następującego polecenia, aby uruchomić skrypt języka Python przy użyciu interpretera języka C Python.
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
@@ -429,10 +431,9 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
 
     Po zakończeniu tego zadania powinny zostać wyświetlone te same dane wyjściowe jak w przypadku, gdy skrypt został wcześniej uruchomiony przy użyciu Jython.
 
-
 ### <a name="upload-file-powershell"></a>Przekaż plik (PowerShell)
 
-Program PowerShell może również służyć do zdalnego uruchamiania zapytań Hive. Upewnij się, że katalog roboczy `pigudf.py` znajduje się w lokalizacji.  Użyj poniższego skryptu programu PowerShell, aby uruchomić zapytanie programu Hive korzystające ze `pigudf.py` skryptu:
+Program PowerShell może również służyć do zdalnego uruchamiania zapytań Hive. Upewnij się, że katalog roboczy znajduje się w lokalizacji, w której znajduje się `pigudf.py`.  Użyj poniższego skryptu programu PowerShell, aby uruchomić zapytanie programu Hive korzystające ze skryptu `pigudf.py`:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -442,6 +443,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Revise file path as needed
 $pathToJythonFile = ".\pigudf.py"
@@ -475,7 +479,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > Podczas zdalnego przesyłania zadania przy użyciu programu PowerShell nie jest możliwe używanie języka C Python jako interpretera.
 
-Program PowerShell może również służyć do uruchamiania zadań w postaci surówki. Aby uruchomić zadanie w postaci wieprzowiny, które `pigudf.py` używa skryptu, użyj następującego skryptu programu PowerShell:
+Program PowerShell może również służyć do uruchamiania zadań w postaci surówki. Aby uruchomić zadanie w postaci wieprzowiny, które używa skryptu `pigudf.py`, użyj następującego skryptu programu PowerShell:
 
 ```PowerShell
 # Script should stop on failures
@@ -585,5 +589,4 @@ Jeśli zachodzi potrzeba załadowania modułów języka Python, które nie są u
 Aby dowiedzieć się więcej na temat korzystania z programu MapReduce, zobacz następujące dokumenty:
 
 * [Korzystanie z Apache Hive z usługą HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z Apache świni z usługą HDInsight](hdinsight-use-pig.md)
 * [Korzystanie z MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md)

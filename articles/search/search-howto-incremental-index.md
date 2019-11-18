@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie indeksowania przyrostowego (wersja zapoznawcza) ulepszonych funkcji śledzenia zmian na podstawie zawartości
+title: Dodaj indeksowanie przyrostowe (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
 description: Włącz śledzenie zmian i Zachowaj stan wzbogaconej zawartości dla kontrolowanego przetwarzania w zestawu umiejętności poznawczym. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 author: vkurpad
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719938"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112575"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Jak skonfigurować przyrostowe indeksowanie ulepszonych dokumentów na platformie Azure Wyszukiwanie poznawcze
 

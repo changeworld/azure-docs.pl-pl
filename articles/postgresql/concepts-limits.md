@@ -1,70 +1,70 @@
 ---
-title: Ograniczenia w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano limity w usłudze Azure Database for PostgreSQL — pojedynczego serwera, takie jak liczba połączeń i opcje aparatu magazynu.
+title: Limity w Azure Database for PostgreSQL-pojedynczym serwerze
+description: W tym artykule opisano limity w Azure Database for PostgreSQL-pojedynczym serwerze, takie jak liczba opcji połączenia i aparatu magazynu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b9cef4753b6fd324b38d7254139fe288463a0c0c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448099"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123895"
 ---
-# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Ograniczenia w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych. Jeśli chcesz dowiedzieć się więcej o warstwach zasobów (obliczeniowych, pamięci, magazynu), zobacz [warstw cenowych](concepts-pricing-tiers.md) artykułu.
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Limity w Azure Database for PostgreSQL-pojedynczym serwerze
+W poniższych sekcjach opisano pojemności i limity funkcjonalne usługi bazy danych. Jeśli chcesz dowiedzieć się więcej o warstwach zasobów (obliczeniowych, pamięci, magazynu), zobacz artykuł [warstwy cenowe](concepts-pricing-tiers.md) .
 
 
 ## <a name="maximum-connections"></a>Maksymalna liczba połączeń
 Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następujące: 
 
-|**Warstwa cenowa**| **rdzenie wirtualne:**| **Maksymalna liczba połączeń** |
-|---|---|---|
-|Podstawowa| 1| 50 |
-|Podstawowa| 2| 100 |
-|Ogólne zastosowanie| 2| 150|
-|Ogólne zastosowanie| 4| 250|
-|Ogólne zastosowanie| 8| 480|
-|Ogólne zastosowanie| 16| 950|
-|Ogólne zastosowanie| 32| 1500|
-|Ogólne zastosowanie| 64| 1900|
-|Pamięć| 2| 300|
-|Pamięć| 4| 500|
-|Pamięć| 8| 960|
-|Pamięć| 16| 1900|
-|Pamięć| 32| 1987|
+|**Warstwa cenowa**| **rdzenie wirtualne:**| **Maksymalna liczba połączeń** | **Maksymalna liczba połączeń użytkowników** |
+|---|---|---|---|
+|Podstawowa| 1| 55 | 50|
+|Podstawowa| 2| 105 | 100|
+|Ogólnego przeznaczenia| 2| 150| 145|
+|Ogólnego przeznaczenia| 4| 250| 245|
+|Ogólnego przeznaczenia| 8| 480| 475|
+|Ogólnego przeznaczenia| 16| 950| 945|
+|Ogólnego przeznaczenia| 32| 1500| 1495|
+|Ogólnego przeznaczenia| 64| 1900| 1895|
+|Pamięć| 2| 300| 295|
+|Pamięć| 4| 500| 495|
+|Pamięć| 8| 960| 955|
+|Pamięć| 16| 1900| 1895|
+|Pamięć| 32| 1987| 1982|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
-> Błąd krytyczny: Niestety, zbyt wielu klientów już
+> Błąd krytyczny: Niestety, zbyt wielu klientów
 
-Azure system wymaga pięć połączeń do monitorowania usługi Azure Database for postgresql w warstwie serwera. 
+System Azure wymaga pięciu połączeń do monitorowania serwera Azure Database for PostgreSQL. 
 
 ## <a name="functional-limitations"></a>Ograniczenia funkcjonalności
 ### <a name="scale-operations"></a>Operacje skalowania
 - Dynamiczne skalowanie do i z warstw cenowych podstawowa nie jest obecnie obsługiwane.
-- Zmniejsza rozmiar magazynu serwera nie jest obecnie obsługiwane.
+- Zmniejszenie rozmiaru magazynu serwera nie jest obecnie obsługiwane.
 
 ### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
 - Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane. Jeśli chcesz uaktualnić do następnej wersji głównej, [zrzucanie i przywracanie](./howto-migrate-using-dump-and-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
 
-> Należy pamiętać, że przed PostgreSQL w wersji 10, [zasad przechowywania wersji PostgreSQL](https://www.postgresql.org/support/versioning/) uważane za _wersji głównej_ uaktualnienie do wzrost pierwszy _lub_ drugi numer ( przykład 9.5 lub 9.6 została uznana za _głównych_ uaktualniania wersji).
-> Począwszy od wersji 10 tylko zmiana pierwsza liczba jest uważany za uaktualnienie wersji głównej (na przykład jest 10.0 i 10.1 _pomocnicza_ uaktualniania wersji i 10-11 jest _głównych_ uaktualniania wersji).
+> Należy pamiętać, że przed PostgreSQL wersja 10 [zasady dotyczące wersji PostgreSQL](https://www.postgresql.org/support/versioning/) uznawane za uaktualnienie _wersji głównej_ o zwiększenie liczby pierwszej _lub_ drugiej (na przykład 9,5 do 9,6 zostało uznane za uaktualnienie wersji _głównej_ ).
+> Począwszy od wersji 10, tylko zmiana pierwszego numeru jest uznawana za uaktualnienie wersji głównej (na przykład 10,0 do 10,1 jest uaktualnieniem wersji _pomocniczej_ , a 10 do 11 jest uaktualnieniem _głównym_ wersji).
 
 ### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 - Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
-### <a name="restoring-a-server"></a>Przywrócenie serwera
-- Podczas korzystania z funkcji Odzyskiwanie, nowy serwer jest tworzony z takie same konfiguracje warstwy cenowej jako serwer, na którym opiera się na.
-- Nowy serwer utworzone podczas przywracania nie ma reguł zapory, które istniały na oryginalnym serwerze. Reguły zapory muszą ustawić oddzielnie dla tego nowego serwera.
+### <a name="restoring-a-server"></a>Przywracanie serwera
+- W przypadku korzystania z funkcji kopie nowy serwer jest tworzony z tymi samymi konfiguracjami warstwy cenowej co serwer, na którym jest oparta.
+- Nowy serwer utworzony podczas przywracania nie ma reguł zapory istniejących na oryginalnym serwerze. Reguły zapory należy skonfigurować oddzielnie dla tego nowego serwera.
 - Przywracanie usuniętych serwera nie jest obsługiwana.
 
-### <a name="utf-8-characters-on-windows"></a>Znaki UTF-8 na Windows
-- W niektórych scenariuszach znaków UTF-8 nie są obsługiwane w pełni w bazy danych PostgreSQL na Windows, który ma wpływ na — Azure Database for PostgreSQL typu open source. Zapoznaj się wątek [15476 # usterkę w postgresql w warstwie archiwum](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) Aby uzyskać więcej informacji.
+### <a name="utf-8-characters-on-windows"></a>Znaki UTF-8 w systemie Windows
+- W niektórych scenariuszach znaki UTF-8 nie są w pełni obsługiwane w programie Open Source PostgreSQL w systemie Windows, co ma wpływ na Azure Database for PostgreSQL. Aby uzyskać więcej informacji, zobacz wątek w [#15476 błędów w archiwum PostgreSQL](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) .
 
-## <a name="next-steps"></a>Kolejne kroki
-- Zrozumienie [co jest dostępne w każdej warstwy cenowej](concepts-pricing-tiers.md)
-- Dowiedz się więcej o [obsługiwane wersje bazy danych PostgreSQL](concepts-supported-versions.md)
-- Przegląd [jak tworzenie kopii zapasowej i przywracania serwera w usłudze Azure Database for PostgreSQL za pomocą witryny Azure portal](howto-restore-server-portal.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz [się, co jest dostępne w poszczególnych warstwach cenowych](concepts-pricing-tiers.md)
+- Informacje o [obsługiwanych wersjach bazy danych PostgreSQL](concepts-supported-versions.md)
+- Zapoznaj [się z tematem jak utworzyć kopię zapasową i przywrócić serwer w Azure Database for PostgreSQL przy użyciu Azure Portal](howto-restore-server-portal.md)

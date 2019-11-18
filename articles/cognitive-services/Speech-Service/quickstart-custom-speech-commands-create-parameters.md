@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)'
+title: 'Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym artykule opisano Dodawanie parametrów do aplikacji poleceń niestandardowych.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 010a9331bb4533bc84957261f312993c4cc7ffe8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507518"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111254"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)
 
@@ -38,7 +38,7 @@ W tym artykule zostanie rozbudowana ta aplikacja z parametrami, aby umożliwić 
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
    | Nazwa               | OnOff           | Opisowa nazwa parametru                                                                     |
    | Jest globalny          | Unchecked       | Pole wyboru wskazujące, czy wartość tego parametru jest stosowana globalnie do wszystkich poleceń w projekcie |
-   | Wymagany           | Dane         | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
+   | Wymagane           | Dane         | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
    | Szablon odpowiedzi  | Włączać lub wyłączać?      | Monit o podanie wartości tego parametru, gdy nie jest on znany                                       |
    | Typ               | Ciąg          | Typ parametru, taki jak Number, String lub Data Time                                               |
    | Konfiguracja      | Lista ciągów     | W przypadku ciągów lista ciągów ogranicza dane wejściowe do zestawu możliwych wartości                                      |
@@ -50,7 +50,7 @@ W tym artykule zostanie rozbudowana ta aplikacja z parametrami, aby umożliwić 
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
    | Nazwa               | SubjectDevice     | Opisowa nazwa parametru                                                                     |
    | Jest globalny          | Unchecked         | Pole wyboru wskazujące, czy wartość tego parametru jest stosowana globalnie do wszystkich poleceń w projekcie |
-   | Wymagany           | Dane           | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
+   | Wymagane           | Dane           | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
    | Szablon odpowiedzi  | Które urządzenie?     | Monit o podanie wartości tego parametru, gdy nie jest on znany                                       |
    | Typ               | Ciąg            | Typ parametru, taki jak Number, String lub Data Time                                               |
    | Konfiguracja      | Lista ciągów       | W przypadku ciągów lista ciągów ogranicza dane wejściowe do zestawu możliwych wartości                                      |

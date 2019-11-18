@@ -1,31 +1,23 @@
 ---
-title: Migrowanie aplikacji Managed Cache Service na platformę Azure | Microsoft Docs
+title: Migrowanie aplikacji Managed Cache Service do Redis — Azure
 description: Dowiedz się, jak migrować aplikacje Managed Cache Service i Pamięć podręczna oparta na roli do usługi Azure cache for Redis
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 05638e17c2f41806a5c8aa3e0c3020eae82bdb60
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315966"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122683"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrowanie z Managed Cache Service do usługi Azure cache for Redis
 Migrowanie aplikacji korzystających z usługi Azure Managed Cache Service do usługi Azure cache for Redis można wykonać przy minimalnych zmianach w aplikacji, w zależności od funkcji Managed Cache Service używanych przez aplikację pamięci podręcznej. Mimo że interfejsy API nie są dokładnie takie same, są podobne i większość istniejącego kodu, który używa Managed Cache Service dostępu do pamięci podręcznej, może być ponownie używana z minimalnymi zmianami. W tym artykule pokazano, jak wprowadzić zmiany konfiguracji i aplikacji w celu migrowania aplikacji Managed Cache Service do korzystania z pamięci podręcznej platformy Azure dla usługi Redis, a także informacje o tym, jak niektóre funkcje usługi Azure cache for Redis mogą być używane do implementowania funkcji programu pamięć podręczna Managed Cache Service.
 
 >[!NOTE]
->Managed Cache Service i pamięć podręczna oparta na [](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) roli zostały wycofane 30 listopada 2016. Jeśli masz jakiekolwiek Pamięć podręczna oparta na roli wdrożenia, które chcesz migrować do usługi Azure cache for Redis, możesz wykonać kroki opisane w tym artykule.
+>Managed Cache Service i Pamięć podręczna oparta na roli zostały [wycofane](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) 30 listopada 2016. Jeśli masz jakiekolwiek Pamięć podręczna oparta na roli wdrożenia, które chcesz migrować do usługi Azure cache for Redis, możesz wykonać kroki opisane w tym artykule.
 
 ## <a name="migration-steps"></a>Kroki migracji
 Poniższe kroki są wymagane do przeprowadzenia migracji aplikacji Managed Cache Service do korzystania z usługi Azure cache for Redis.
@@ -51,7 +43,7 @@ Usługa Azure Managed Cache Service i usługa Azure cache for Redis są podobne,
 | Wysoka dostępność |Zapewnia wysoką dostępność dla elementów w pamięci podręcznej w ofertach pamięci podręcznej w warstwach Standardowa i Premium. Jeśli elementy zostaną utracone z powodu błędu, kopie zapasowe elementów w pamięci podręcznej są nadal dostępne. Operacje zapisu w pomocniczej pamięci podręcznej są wykonywane synchronicznie. |Wysoka dostępność jest dostępna w ofertach pamięci podręcznej w warstwach Standardowa i Premium, które mają dwuwęzłową konfigurację podstawowego/repliki (każda fragmentu w pamięci podręcznej Premium ma parę podstawową/repliką). Operacje zapisu w replice są wykonywane asynchronicznie. Aby uzyskać więcej informacji, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/pricing/details/cache/). |
 | Powiadomienia |Umożliwia klientom otrzymywanie powiadomień asynchronicznych, gdy wiele operacji pamięci podręcznej jest wykonywanych w nazwanej pamięci podręcznej. |Aplikacje klienckie mogą używać powiadomień Redis/Sub lub [Space](cache-configure.md#keyspace-notifications-advanced-settings) w celu osiągnięcia podobnej funkcjonalności do powiadomień. |
 | Lokalna pamięć podręczna |Przechowuje kopię buforowanych obiektów lokalnie na kliencie w celu uzyskania dodatkowego dostępu. |Aplikacje klienckie będą musiały zaimplementować tę funkcję przy użyciu słownika lub podobnej struktury danych. |
-| Zasady eksmisji |None lub LRU. Zasady domyślne to LRU. |Usługa Azure cache for Redis obsługuje następujące zasady wykluczania: volatile-LRU, AllKeys-LRU, volatile-Random, AllKeys-Random, volatile-TTL, nowykluczenia. Zasady domyślne to volatile-LRU. Aby uzyskać więcej informacji, zobacz [domyślną konfigurację serwera Redis](cache-configure.md#default-redis-server-configuration). |
+| Zasady wykluczania |None lub LRU. Zasady domyślne to LRU. |Usługa Azure cache for Redis obsługuje następujące zasady wykluczania: volatile-LRU, AllKeys-LRU, volatile-Random, AllKeys-Random, volatile-TTL, nowykluczenia. Zasady domyślne to volatile-LRU. Aby uzyskać więcej informacji, zobacz [domyślną konfigurację serwera Redis](cache-configure.md#default-redis-server-configuration). |
 | Zasady wygasania |Domyślne zasady wygasania są bezwzględne i domyślny interwał wygaśnięcia wynosi 10 minut. Dostępne są również zasady przesuwania i nienigdy. |Domyślnie elementy w pamięci podręcznej nie wygasną, ale okres ważności można skonfigurować dla każdego zapisu, używając przeciążeń zestawu pamięci podręcznej. |
 | Regiony i tagowanie |Regiony są podgrupami elementów w pamięci podręcznej. Regiony obsługują również adnotację elementów w pamięci podręcznej z dodatkowymi opisami ciągów nazywanymi tagami. Regiony obsługują możliwość wykonywania operacji wyszukiwania na wszystkich oznakowanych elementach w tym regionie. Wszystkie elementy w obrębie regionu znajdują się w jednym węźle klastra pamięci podręcznej. |Pamięć podręczna platformy Azure dla usługi Redis składa się z jednego węzła (chyba że klaster Redis jest włączony), więc pojęcie Managed Cache Service regionów nie ma zastosowania. Redis obsługuje wyszukiwanie i wieloznaczne operacje podczas pobierania kluczy, tak aby Tagi opisowe mogły być osadzane w nazwach kluczy i używane do późniejszego pobierania elementów. Aby zapoznać się z przykładem implementacji rozwiązania tagowania za pomocą Redis, zobacz [implementowanie tagowania pamięci podręcznej za pomocą Redis](https://stackify.com/implementing-cache-tagging-redis/). |
 | Serializacji |Zarządzana pamięć podręczna obsługuje NetDataContractSerializer, BinaryFormatter i używa serializatorów niestandardowych. Wartość domyślna to NetDataContractSerializer. |Przed umieszczeniem ich w pamięci podręcznej przez aplikację kliencką można serializować obiekty .NET, a następnie wybrać serializator do deweloperów aplikacji klienta. Aby uzyskać więcej informacji i przykładowy kod, zobacz [Work with .NET objectss w pamięci podręcznej](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
@@ -86,7 +78,7 @@ Aby odinstalować pakiet NuGet Managed Cache Service, kliknij prawym przyciskiem
 
 Odinstalowywanie pakietu NuGet Managed Cache Service usuwa zestawy Managed Cache Service i Managed Cache Service wpisów w pliku App. config lub Web. config aplikacji klienckiej. Niektóre dostosowane ustawienia nie mogą zostać usunięte podczas odinstalowywania pakietu NuGet, Otwórz plik Web. config lub App. config i upewnij się, że zostały usunięte następujące elementy.
 
-Upewnij się, `dataCacheClients` że wpis został usunięty `configSections` z elementu. Nie usuwaj całego `configSections` elementu; po prostu `dataCacheClients` Usuń wpis, jeśli jest obecny.
+Upewnij się, że wpis `dataCacheClients` został usunięty z elementu `configSections`. Nie usuwaj całego elementu `configSections`; po prostu Usuń wpis `dataCacheClients`, jeśli istnieje.
 
 ```xml
 <configSections>
@@ -95,7 +87,7 @@ Upewnij się, `dataCacheClients` że wpis został usunięty `configSections` z e
 </configSections>
 ```
 
-Upewnij się, `dataCacheClients` że sekcja została usunięta. `dataCacheClients` Sekcja będzie wyglądać podobnie do poniższego przykładu.
+Upewnij się, że sekcja `dataCacheClients` została usunięta. Sekcja `dataCacheClients` będzie podobna do poniższego przykładu.
 
 ```xml
 <dataCacheClients>
@@ -122,7 +114,7 @@ Po usunięciu konfiguracji Managed Cache Service można skonfigurować klienta p
 Interfejs API StackExchange. Azure cache for Redis Client jest podobny do Managed Cache Service. Ta sekcja zawiera omówienie różnic.
 
 ### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Nawiązywanie połączenia z pamięcią podręczną przy użyciu klasy ConnectionMultiplexer
-W Managed Cache Service połączenia z pamięcią podręczną były obsługiwane przez `DataCacheFactory` klasy `DataCache` i. W usłudze Azure cache for Redis te połączenia są zarządzane przez `ConnectionMultiplexer` klasę.
+W Managed Cache Service połączenia z pamięcią podręczną były obsługiwane przez klasy `DataCacheFactory` i `DataCache`. W usłudze Azure cache for Redis te połączenia są zarządzane przez klasę `ConnectionMultiplexer`.
 
 Dodaj następującą instrukcję using na początku każdego pliku, z którego chcesz uzyskać dostęp do pamięci podręcznej.
 
@@ -130,14 +122,14 @@ Dodaj następującą instrukcję using na początku każdego pliku, z którego c
 using StackExchange.Redis
 ```
 
-Jeśli ta przestrzeń nazw nie zostanie rozwiązana, upewnij się, że dodano pakiet NuGet stackexchange. Redis, zgodnie [z opisem w przewodniku szybki start: Użyj usługi Azure cache for Redis z aplikacją](cache-dotnet-how-to-use-azure-redis-cache.md)platformy .NET.
+Jeśli ta przestrzeń nazw nie zostanie rozpoznana, upewnij się, że został dodany pakiet NuGet StackExchange. Redis, zgodnie z opisem w [przewodniku szybki start: Użyj usługi Azure cache for Redis z aplikacją platformy .NET](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
 > Należy zauważyć, że klient StackExchange. Redis wymaga .NET Framework 4 lub nowszego.
 > 
 > 
 
-Aby nawiązać połączenie z usługą Azure cache for Redis, wywołaj `ConnectionMultiplexer.Connect` metodę statyczną i przekaż punkt końcowy i klucz. Jednym z rozwiązań w zakresie udostępniania wystąpienia klasy `ConnectionMultiplexer` w aplikacji jest korzystanie z właściwości statycznej, która zwraca połączone wystąpienie podobnie jak w poniższym przykładzie. To podejście zapewnia bezpieczny wątkowo sposób inicjowania pojedynczego połączonego `ConnectionMultiplexer` wystąpienia. W tym przykładzie `abortConnect` jest ustawiona na wartość false, co oznacza, że wywołanie powiedzie się, nawet jeśli połączenie z pamięcią podręczną nie zostanie ustanowione. Kluczowa funkcja klasy `ConnectionMultiplexer` polega na automatycznym przywracaniu łączności z pamięcią podręczną po rozwiązaniu problemu z siecią lub usunięciu innych przyczyn.
+Aby nawiązać połączenie z usługą Azure cache for Redis, wywołaj metodę static `ConnectionMultiplexer.Connect` i przekaż punkt końcowy i klucz. Jednym z rozwiązań w zakresie udostępniania wystąpienia klasy `ConnectionMultiplexer` w aplikacji jest korzystanie z właściwości statycznej, która zwraca połączone wystąpienie podobnie jak w poniższym przykładzie. To podejście zapewnia bezpieczny wątkowo sposób inicjowania pojedynczego połączonego wystąpienia `ConnectionMultiplexer`. W tym przykładzie `abortConnect` jest ustawiona na false, co oznacza, że wywołanie powiedzie się, nawet jeśli połączenie z pamięcią podręczną nie zostanie ustanowione. Kluczowa funkcja klasy `ConnectionMultiplexer` polega na automatycznym przywracaniu łączności z pamięcią podręczną po rozwiązaniu problemu z siecią lub usunięciu innych przyczyn.
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -156,7 +148,7 @@ public static ConnectionMultiplexer Connection
 
 Punkt końcowy pamięci podręcznej, klucze i porty można uzyskać z bloku **Azure cache for Redis** dla wystąpienia pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [pamięć podręczna Azure dla właściwości Redis](cache-configure.md#properties).
 
-Po nawiązaniu połączenia Zwróć odwołanie do bazy danych usługi Azure cache for Redis przez wywołanie `ConnectionMultiplexer.GetDatabase` metody. Obiekt zwracany z metody `GetDatabase` jest lekkim obiektem przekazującym i nie wymaga przechowywania.
+Po nawiązaniu połączenia Zwróć odwołanie do bazy danych usługi Azure cache for Redis, wywołując metodę `ConnectionMultiplexer.GetDatabase`. Obiekt zwracany z metody `GetDatabase` jest lekkim obiektem przekazującym i nie wymaga przechowywania.
 
 ```csharp
 IDatabase cache = Connection.GetDatabase();
@@ -171,11 +163,11 @@ string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-Klient stackexchange. Redis używa `RedisKey` typów i `RedisValue` do uzyskiwania dostępu do elementów w pamięci podręcznej i ich przechowywania. Te typy są mapowane na większość typów języka pierwotnego, w tym ciąg i często nie są używane bezpośrednio. Ciągi Redis są najbardziej podstawowym rodzajem wartości Redis i mogą zawierać wiele typów danych, w tym serializowane strumienie binarne, a chociaż nie można używać typu bezpośrednio, należy użyć metod, które zawierają `String` nazwę. W przypadku większości typów danych pierwotnych można przechowywać i pobierać elementy z pamięci podręcznej `StringGet` przy użyciu `StringSet` metod i, chyba że przechowujesz kolekcje lub inne typy danych Redis w pamięci podręcznej. 
+Klient StackExchange. Redis używa typów `RedisKey` i `RedisValue` do uzyskiwania dostępu do elementów w pamięci podręcznej i ich przechowywania. Te typy są mapowane na większość typów języka pierwotnego, w tym ciąg i często nie są używane bezpośrednio. Ciągi Redis są najbardziej podstawowym rodzajem wartości Redis i mogą zawierać wiele typów danych, w tym serializowane strumienie binarne, a chociaż nie można używać typu bezpośrednio, należy użyć metod, które zawierają `String` w nazwie. W przypadku większości typów danych pierwotnych można przechowywać i pobierać elementy z pamięci podręcznej przy użyciu metod `StringSet` i `StringGet`, chyba że są przechowywane kolekcje lub inne typy danych Redis w pamięci podręcznej. 
 
-`StringSet`i `StringGet` są podobne do Managed Cache Service `Put` i `Get` metod, z jedną istotną różnicą przed rozpoczęciem ustawiania i pobierania obiektu .NET do pamięci podręcznej, należy najpierw serializować ją. 
+`StringSet` i `StringGet` są podobne do Managed Cache Service `Put` i `Get` metod, z jedną główną różnicą, że przed ustawieniem i uzyskaniem obiektu .NET do pamięci podręcznej należy najpierw serializować ją. 
 
-W przypadku `StringGet`wywołania, jeśli obiekt istnieje, jest zwracany, a jeśli nie, zwracana jest wartość null. W takim przypadku można pobrać wartość z żądanego źródła danych i zapisać ją w pamięci podręcznej do późniejszego użycia. Ten wzorzec jest znany jako wzorzec z odkładaniem do pamięci podręcznej.
+W przypadku wywołania `StringGet`, jeśli obiekt istnieje, jest zwracany, a jeśli nie, zwracana jest wartość null. W takim przypadku można pobrać wartość z żądanego źródła danych i zapisać ją w pamięci podręcznej do późniejszego użycia. Ten wzorzec jest znany jako wzorzec z odkładaniem do pamięci podręcznej.
 
 Aby określić wygaśnięcie elementu w pamięci podręcznej, użyj parametru `TimeSpan` metody `StringSet`.
 

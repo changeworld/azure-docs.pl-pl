@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 222ca8781ae9532f10ed7d113b93eac78c6a3bba
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575894"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129081"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
 
@@ -23,7 +23,7 @@ ms.locfileid: "73575894"
 Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono ustawienia, które są dostępne dla środowiska uruchomieniowego w wersji 2.  
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla Azure Functions 2. x.  Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
+> Ten artykuł jest przeznaczony dla Azure Functions 2. x.  Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
 
 Inne opcje konfiguracji aplikacji funkcji są zarządzane w [ustawieniach aplikacji](functions-app-settings.md).
 
@@ -48,6 +48,10 @@ W poniższych przykładowych plikach *hosta. JSON* dostępne są wszystkie możl
         "queues": {},
         "sendGrid": {},
         "serviceBus": {}
+    },
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -87,11 +91,11 @@ W poniższych przykładowych plikach *hosta. JSON* dostępne są wszystkie możl
 
 W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższego poziomu. Wszystkie są opcjonalne, o ile nie wskazano inaczej.
 
-## <a name="aggregator"></a>agregatora
+## <a name="aggregator"></a>aggregator
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
-## <a name="applicationinsights"></a>ApplicationInsights
+## <a name="applicationinsights"></a>applicationInsights
 
 To ustawienie jest elementem podrzędnym [rejestrowania](#logging).
 
@@ -135,7 +139,13 @@ Ustawienia konfiguracji można znaleźć w temacie [wyzwalacze i powiązania cen
 
 Właściwość zwracająca obiekt, który zawiera wszystkie ustawienia specyficzne dla powiązania, takie jak [http](#http) i [eventHub](#eventhub).
 
-## <a name="functions"></a>functions
+## <a name="extensionbundle"></a>extensionBundle 
+
+Zestawy rozszerzeń umożliwiają dodawanie zgodnego zestawu funkcji powiązania do aplikacji funkcji. Aby dowiedzieć się więcej, zobacz [zestawy rozszerzeń na potrzeby lokalnego tworzenia](functions-bindings-register.md#extension-bundles)oprogramowania.
+
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
+
+## <a name="functions"></a>— funkcje
 
 Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamianie wszystkich funkcji. Przeznaczone do użytku tylko w przypadku [uruchamiania lokalnego](functions-run-local.md). W aplikacjach funkcji na platformie Azure zamiast tego należy wykonać kroki opisane w temacie [Jak wyłączyć funkcje w Azure Functions](disable-function.md) , aby wyłączyć określone funkcje zamiast używać tego ustawienia.
 
@@ -184,7 +194,7 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 
 Ustawienia konfiguracji można znaleźć w tematach [wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>Rejestrować
+## <a name="logging"></a>rejestrować
 
 Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 
@@ -208,8 +218,8 @@ Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne są `never`, `always`, `debugOnly`. |
 |logLevel|Nie dotyczy|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. Wersja 2. x jest zgodna z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
-|console|Nie dotyczy| Ustawienie rejestrowania [konsoli](#console) . |
-|ApplicationInsights|Nie dotyczy| Ustawienie [applicationInsights](#applicationinsights) . |
+|console|Nie dotyczy| [console](#console) ustawień rejestrowania. |
+|applicationInsights|Nie dotyczy| Ustawienie [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -255,7 +265,7 @@ Ustawienie konfiguracji można znaleźć w [SendGrid wyzwalaczach i powiązaniac
 
 Ustawienie konfiguracji można znaleźć w [Service Bus wyzwalacze i powiązania](functions-bindings-service-bus.md#host-json).
 
-## <a name="singleton"></a>pojedynczego
+## <a name="singleton"></a>Pojedynczego
 
 Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej informacji, zobacz [temat problem z usługą GitHub dotyczący pojedynczej pomocy technicznej](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 

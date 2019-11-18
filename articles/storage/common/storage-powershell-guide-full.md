@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430060"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131019"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Używanie programu Azure PowerShell z usługą Azure Storage
 
@@ -38,11 +38,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 To ćwiczenie wymaga modułu Azure PowerShell AZ w wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-W tym ćwiczeniu można wpisać polecenia do zwykłego okna programu PowerShell lub użyć [środowiska Windows PowerShell Integrated Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) , a następnie wpisać polecenia do edytora, a następnie przetestować jedno lub więcej poleceń w danym momencie po przejściu przez pokazują. Można podświetlić wiersze, które mają zostać wykonane, a następnie kliknąć pozycję Uruchom wybrane, aby po prostu uruchomić te polecenia.
+W tym ćwiczeniu można wpisać polecenia do zwykłego okna programu PowerShell lub użyć [środowiska Windows PowerShell Integrated Scripting Environment (ISE)](/powershell/scripting/components/ise/exploring-the-windows-powershell-ise) , a następnie wpisać polecenia do edytora, a następnie przetestować co najmniej jedno polecenie w czasie, przechodząc do przykładów. Można podświetlić wiersze, które mają zostać wykonane, a następnie kliknąć pozycję Uruchom wybrane, aby po prostu uruchomić te polecenia.
 
 Aby uzyskać więcej informacji na temat kont magazynu, zobacz [wprowadzenie do magazynu](storage-introduction.md) i [konta usługi Azure Storage](storage-create-storage-account.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -105,7 +105,7 @@ $ctx = $storageAccount.Context
 
 Skrypt używa następujących poleceń cmdlet programu PowerShell:
 
-*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --pobiera listę prawidłowych lokalizacji. W przykładzie używa się `eastus` dla lokalizacji.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --pobiera listę prawidłowych lokalizacji. W przykładzie używa się `eastus` do lokalizacji.
 
 *   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --tworzy nową grupę zasobów. Grupa zasobów to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure. Nasza jest nazywana `teststoragerg`.
 
@@ -131,7 +131,7 @@ Aby zmienić ustawienia dla konta magazynu, użyj polecenie [Set-AzStorageAccoun
 
 * **Tagi** przypisane do konta magazynu. Tagi są często używane do klasyfikowania zasobów na potrzeby rozliczeń.
 
-* **Jednostka SKU** to ustawienie replikacji dla konta magazynu, takie jak LRS dla magazynu lokalnie nadmiarowego. Na przykład można zmienić ze standardowego @ no__t-0LRS na standardowy @ no__t-1GRS lub standardowy @ no__t-2RAGRS. Należy pamiętać, że nie można zmienić standardowych produktów @ no__t-0ZRS, standard @ no__t-1GZRS, standard @ no__t-2RAGZRS lub Premium @ no__t-3LRS do innych jednostek SKU ani zmieniać innych jednostek SKU.
+* **Jednostka SKU** to ustawienie replikacji dla konta magazynu, takie jak LRS dla magazynu lokalnie nadmiarowego. Na przykład można zmienić z standardowego\_LRS na Standard\_GRS lub standard\_RAGRS. Należy pamiętać, że nie można zmienić standardowego\_ZRS, standardowego\_GZRS, standard\_RAGZRS lub Premium\_LRS na inne jednostki SKU ani zmieniać innych jednostek SKU.
 
 * **Warstwa dostępu** dla kont usługi BLOB Storage. Wartość w polu Warstwa dostępu jest ustawiana na **gorąca** lub **chłodna**i pozwala zminimalizować koszt, wybierając warstwę dostępu, która jest wyrównana do sposobu korzystania z konta magazynu. Aby uzyskać więcej informacji, zobacz [warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 
@@ -156,7 +156,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-Aby ponownie wygenerować drugi klucz, użyj `key2` jako nazwy klucza zamiast `key1`.
+Aby ponownie wygenerować drugi klucz, użyj `key2` jako nazwy klucza, a nie `key1`.
 
 Wygeneruj ponownie jeden z kluczy, a następnie Odzyskaj go w celu wyświetlenia nowej wartości.
 
@@ -185,7 +185,7 @@ W tym artykule pokazano, jak zarządzać tymi ustawieniami przy użyciu następu
 * [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
 * [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
-## <a name="use-storage-analytics"></a>Korzystanie z analizy magazynu  
+## <a name="use-storage-analytics"></a>Korzystanie z analizy magazynu
 
 [Analityka magazynu platformy Azure](storage-analytics.md) składa się z [metryk analityka magazynu](/rest/api/storageservices/about-storage-analytics-metrics) i [rejestrowania analityka magazynu](/rest/api/storageservices/about-storage-analytics-logging).
 
@@ -252,4 +252,4 @@ W tym artykule przedstawiono również odwołania do kilku innych artykułów, t
 
 * [Polecenia cmdlet programu PowerShell płaszczyzny kontroli usługi Azure Storage](/powershell/module/az.storage/)
 * [Polecenia cmdlet programu PowerShell dotyczące płaszczyzny danych usługi Azure Storage](/powershell/module/azure.storage/)
-* [Dokumentacja programu Windows PowerShell](/powershell/scripting/developer/windows-powershell)
+* [Dokumentacja programu Windows PowerShell](/powershell/scripting/overview)

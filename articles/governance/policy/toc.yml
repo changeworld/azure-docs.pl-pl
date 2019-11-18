@@ -300,9 +300,19 @@
     - name: Korygowanie niezgodnych zasobów
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
-    - name: Włączanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
-      displayName: 'insights, log analytics, builtin'
-      href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json
+    - name: Integracja z usługą Azure Lighthouse
+      items:
+        - name: Wdrażanie zasad w dużej skali
+          displayName: 'lighthouse, scale, deploy'
+          href: ../../lighthouse/how-to/policy-at-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+        - name: 'Wdrażanie zasad, które można skorygować'
+          displayName: 'lighthouse, scale, remediate'
+          href: ../../lighthouse/how-to/deploy-policy-remediation.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Integracja z usługą Azure Monitor
+      items:
+        - name: Włączanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
+          displayName: 'monitor, insights, log analytics, builtin'
+          href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

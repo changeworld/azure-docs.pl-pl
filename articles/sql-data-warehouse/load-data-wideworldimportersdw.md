@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5272d9aa77f78d0cef316f9f227f9e269ab7e186
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f58623ec179965c8f8f165805cb181f8c102e746
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839896"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132362"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse
 
@@ -24,7 +24,7 @@ W tym samouczku magazyn danych WideWorldImportersDW jest ładowany z usługi Azu
 
 > [!div class="checklist"]
 > * Tworzenie magazynu danych w witrynie Azure Portal
-> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Konfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
 > * Nawiązywanie połączenia z magazynem danych za pomocą programu SSMS
 > * Tworzenie użytkownika wyznaczonego do ładowania danych
 > * Tworzenie tabel zewnętrznych używających obiektu blob platformy Azure jako źródła danych
@@ -45,7 +45,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Utwórz puste SQL Data Warehouse
 
-Azure SQL Data Warehouse jest tworzony za pomocą zdefiniowanego zestawu [zasoby obliczeniowe] pamięć-współbieżność-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
+Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
 
 Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse. 
 
@@ -73,7 +73,7 @@ Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse.
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). | 
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
 
     ![tworzenie serwera bazy danych](media/load-data-wideworldimportersdw/create-database-server.png)
 
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse.
 
     ![konfigurowanie wydajności](media/load-data-wideworldimportersdw/configure-performance.png)
 
-8. Kliknij przycisk **Zastosuj**.
+8. Kliknij przycisk **zastosować**.
 9. Na stronie usługi SQL Data Warehouse wybierz **sortowanie** dla pustej bazy danych. Na potrzeby tego samouczka użyj wartości domyślnej. Aby uzyskać więcej informacji na temat sortowań, zobacz [Sortowania](/sql/t-sql/statements/collations)
 
 11. Teraz po uzupełnieniu formularza SQL Database kliknij przycisk **Utwórz**, aby aprowizować bazę danych. Aprowizacja zajmuje kilka minut. 
@@ -182,7 +182,7 @@ Obecnie łączysz się jako administrator serwera, dlatego możesz tworzyć iden
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. Kliknij polecenie **Execute** (Wykonaj).
+3. Kliknij przycisk **Execute** (Wykonaj).
 
 4. Kliknij prawym przyciskiem myszy pozycję **SampleDW** i wybierz pozycję **Nowe zapytanie**. Zostanie otwarte okno nowego zapytania.  
 
@@ -196,7 +196,7 @@ Obecnie łączysz się jako administrator serwera, dlatego możesz tworzyć iden
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. Kliknij polecenie **Execute** (Wykonaj).
+6. Kliknij przycisk **Execute** (Wykonaj).
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Nawiązywanie połączenia z serwerem jako użytkownik ładujący
 
@@ -1113,7 +1113,7 @@ W tym samouczku przedstawiono sposób tworzenia magazynu danych i tworzenia uży
 Zostały wykonane następujące zadania:
 > [!div class="checklist"]
 > * Utworzenie magazynu danych w witrynie Azure Portal
-> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Konfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
 > * Nawiązanie połączenia z magazynem danych za pomocą programu SSMS
 > * Utworzenie użytkownika wyznaczonego do ładowania danych
 > * Utworzenie tabel zewnętrznych dla danych w usłudze Azure Storage Blob

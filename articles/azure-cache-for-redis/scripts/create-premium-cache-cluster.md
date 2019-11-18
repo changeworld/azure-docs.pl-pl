@@ -1,26 +1,19 @@
 ---
-title: Skrypt interfejsu wiersza polecenia platformy Azure przykładowy — Tworzenie usługi Azure Cache w warstwie Premium dla usługi Redis z klastrowaniem | Dokumentacja firmy Microsoft
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie pamięci podręcznej platformy Azure w warstwie Premium dla usługi Redis
 description: Skrypt interfejsu wiersza polecenia platformy Azure przykładowy — Tworzenie usługi Azure Cache w warstwie Premium dla usługi Redis z klastrowaniem
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
 tags: azure-service-management
-ms.assetid: 07bcceae-2521-4fe3-b88f-ed833104ddd2
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: 18538cf713d2938b0b595c9d4664c39c6ada5231
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1813bf7112969436012627147b94f656537029d5
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130453"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122493"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Tworzenie pamięci podręcznej Azure — wersja Premium dla usługi Redis z klastrowaniem
 
@@ -44,7 +37,7 @@ Ten skrypt używa poniższych poleceń, aby utworzyć grupę zasobów i włączy
 | [Utwórz az redis](https://docs.microsoft.com/cli/azure/redis) | Tworzenie usługi Azure Cache dla wystąpienia usługi Redis. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

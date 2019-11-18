@@ -2,23 +2,17 @@
 title: Udostępnianie aplikacji sieci Web za pomocą usługi Azure cache for Redis
 description: Użyj szablonu Azure Resource Manager, aby wdrożyć aplikację internetową za pomocą usługi Azure cache for Redis.
 services: app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: b28ed58159545bca10ec89375b82b9c97ae38630
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098239"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122634"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Tworzenie aplikacji sieci Web i usługi Azure cache for Redis przy użyciu szablonu
 
@@ -33,7 +27,7 @@ Aby zapoznać się z pełnym szablonem, zobacz [Web App with Azure cache for Red
 ## <a name="what-you-will-deploy"></a>Co zostanie wdrożone
 W tym szablonie zostaną wdrożone następujące narzędzia:
 
-* Aplikacja sieci Web platformy Azure
+* Aplikacja internetowa platformy Azure
 * Azure Cache for Redis
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
@@ -83,7 +77,7 @@ Szablon tworzy pamięć podręczną w tej samej lokalizacji co grupa zasobów.
 
 
 ### <a name="web-app"></a>Aplikacja internetowa
-Tworzy aplikację sieci Web o nazwie określonej w zmiennej WebsiteName.
+Tworzy aplikację sieci Web o nazwie określonej w zmiennej **WebsiteName** .
 
 Zwróć uwagę, że aplikacja sieci Web jest skonfigurowana przy użyciu właściwości ustawienia aplikacji, które umożliwiają współdziałanie z pamięcią podręczną platformy Azure dla Redis. Te ustawienia aplikacji są dynamicznie tworzone na podstawie wartości podanych podczas wdrażania.
 

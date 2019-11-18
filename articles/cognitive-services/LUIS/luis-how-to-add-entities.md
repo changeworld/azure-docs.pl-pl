@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: ed100c27d482065e244bb3dc2cca3b66dfc11986
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013481"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132691"
 ---
 # <a name="add-entities-to-extract-data"></a>Dodawanie jednostek do wyodrębniania danych 
 
@@ -26,15 +26,26 @@ Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyo
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="creating-an-entity-is-different-from-labeling-an-entity"></a>Tworzenie jednostki różni się od etykietowania jednostki
+## <a name="plan-entities-then-create-and-label"></a>Planowanie jednostek, a następnie Tworzenie i etykietowanie
 
-Najpierw musisz utworzyć jednostkę, aby można było oznaczyć jednostkę w przykładzie wypowiedź. 
+Jednostki z możliwością uczenia maszynowego można utworzyć na podstawie przykładu wyrażenia długości lub utworzyć na stronie **jednostki** . 
+
+Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest poświęcanie czasu na planowanie jednostek przed utworzeniem jednostki, która jest wyszukiwana przez maszynę w portalu. Następnie utwórz jednostkę uczenia maszynowego na podstawie przykładu wypowiedź z jak najwięcej szczegółów w podskładnikach i deskryptorach i ograniczeniach, jak wiadomo w czasie. [Samouczek dotyczący tworzenia jednostki](tutorial-machine-learned-entity.md) pokazuje, jak używać tej metody. 
+
+W ramach planowania jednostek, możesz mieć pewność, że potrzebujesz obiektów pasujących do tekstu (takich jak wstępnie skompilowane jednostki, jednostki wyrażeń regularnych lub jednostki listy). Można je utworzyć na podstawie strony **jednostki** , zanim zostaną one oznaczone jako przykładowe wyrażenia długości. 
+
+Podczas etykietowania można oznaczyć poszczególne jednostki, a następnie skompilować do jednostki nadrzędnej. Można też rozpocząć od nadrzędnej maszyny i rozłożyć na jednostki podrzędne. 
+
+> [!TIP] 
+>Oznacz wszystkie słowa, które mogą wskazywać na jednostkę, nawet jeśli wyrazy nie są używane podczas wyodrębniania w aplikacji klienckiej. 
+
+## <a name="creating-an-entity-before-or-with-labeling"></a>Tworzenie jednostki przed lub z etykietami
 
 W poniższej tabeli przedstawiono jednostki, w których można utworzyć lub dodać każdą jednostkę do aplikacji. 
 
 |Typ jednostki|Gdzie można utworzyć jednostkę w portalu LUIS|
 |--|--|
-|Jednostka wyuczenia maszynowego|Szczegóły jednostek lub zamiaru|
+|Jednostka nauczona maszynowo|Szczegóły jednostek lub zamiaru|
 |Jednostka listy|Szczegóły jednostek lub zamiaru|
 |Jednostka wyrażenia regularnego|Jednostki|
 |Jednostka Pattern.any|Jednostki|

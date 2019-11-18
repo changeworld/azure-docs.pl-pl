@@ -241,7 +241,9 @@
                   href: migrate-android-adal-msal.md
                 - name: Migrowanie do biblioteki MSAL.iOS i systemu MacOS
                   href: migrate-objc-adal-msal.md
-                - name: Migrowanie do platformy MSAL Java
+                - name: Migrowanie do biblioteki MSAL dla języka Python
+                  href: migrate-python-adal-msal.md
+                - name: Migrowanie do biblioteki MSAL dla języka Java
                   href: migrate-adal-msal-java.md
                 - name: Migrowanie aplikacji platformy Xamarin przy użyciu brokerów z biblioteki ADAL.NET do MSAL.NET
                   href: msal-net-migration-ios-broker.md
@@ -452,7 +454,11 @@
                   href: request-custom-claims.md
                 - name: Konfiguracja identyfikatora URI przekierowania
                   href: redirect-uris-ios.md
-            - name: MSAL Java
+            - name: Biblioteka MSAL dla języka Python
+              items:
+                - name: Serializacja pamięci podręcznej tokenu
+                  href: msal-python-token-cache-serialization.md
+            - name: Biblioteka MSAL dla języka Java
               items:
                 - name: Serializacja pamięci podręcznej tokenu
                   href: msal-java-token-cache-serialization.md

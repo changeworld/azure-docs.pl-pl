@@ -1,5 +1,5 @@
 ---
-title: Filtry do określania zakresu wyników wyszukiwania w indeksie
+title: Filtruj według wyników wyszukiwania
 titleSuffix: Azure Cognitive Search
 description: Filtruj według tożsamości zabezpieczeń użytkownika, języka, lokalizacji geograficznej lub wartości liczbowych, aby zmniejszyć wyniki wyszukiwania zapytań w usłudze Azure Wyszukiwanie poznawcze, hostowaną usługę wyszukiwania w chmurze na Microsoft Azure.
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792858"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132929"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filtry na platformie Azure Wyszukiwanie poznawcze 
 
 *Filtr* zawiera kryteria wyboru dokumentów używanych w zapytaniu wyszukiwanie poznawcze platformy Azure. Wyszukiwanie niefiltrowane zawiera wszystkie dokumenty w indeksie. Filtr zakresów zapytania wyszukiwania do podzbioru dokumentów. Na przykład filtr może ograniczyć wyszukiwanie pełnotekstowe do tylko tych produktów mających konkretną markę lub kolor, w odniesieniu do cen powyżej określonego progu.
 
-Niektóre środowiska wyszukiwania nakładają wymagania dotyczące filtru w ramach implementacji, ale można używać filtrów w dowolnym momencie, gdy chcesz ograniczyć wyszukiwanie przy użyciu kryteriów *opartych na wartości* (przeznaczać zakres wyszukiwania na typ produktu "książki" dla kategorii "bez fikcyjnego" opublikowanego przez " Simon & Schuster ").
+Niektóre środowiska wyszukiwania nakładają wymagania filtru w ramach implementacji, ale można używać filtrów w dowolnym momencie, gdy chcesz ograniczyć wyszukiwanie przy użyciu kryteriów *opartych na wartości* (zakres wyszukiwania do typu produktu "książki" dla kategorii "non-fikcja" opublikowany przez "Simon & Schuster").
 
 Jeśli zamiast tego cel jest celem wyszukiwania w określonych *strukturach* danych (Określanie zakresu wyszukiwania do pola Recenzje klienta), istnieją alternatywne metody opisane poniżej.
 
@@ -157,7 +157,7 @@ Ciągi tekstowe są rozróżniane wielkości liter. Nie istnieje małe litery wy
 
 ### <a name="approaches-for-filtering-on-text"></a>Podejścia do filtrowania tekstu
 
-| Wynosi | Opis | Kiedy stosować |
+| Podejście | Opis | Kiedy stosować |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Funkcja, która dopasowuje pole do rozdzielanej listy ciągów. | Zalecane dla [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) oraz filtrów, w których wiele wartości tekstowych musi być dopasowanych do pola ciągu. Funkcja **Search.in** została zaprojektowana w celu przyspieszenia i jest znacznie szybsza niż jawne porównanie pola z każdym ciągiem przy użyciu `eq` i `or`. | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkcja, która umożliwia mieszanie operacji wyszukiwania pełnotekstowego z ścisłymi operacjami filtru logicznego w tym samym wyrażeniu filtru. | Użyj pozycji **Wyszukaj. IsMatch** (lub jej równoważnej ocenie **Wyszukaj. ismatchscoring**), jeśli chcesz, aby wiele kombinacji filtru wyszukiwania w jednym żądaniu. Można go również użyć dla filtru *zawiera* filtr, aby odfiltrować ciąg częściowy w większym ciągu. |

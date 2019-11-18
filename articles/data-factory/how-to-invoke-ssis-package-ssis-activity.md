@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/14/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673746"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122961"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchom pakiet usług SSIS za pomocą działania wykonaj pakiet SSIS w Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) w potoku Azure Data Factory przy użyciu działania wykonaj pakiet SSIS. 
@@ -57,7 +57,7 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory lub aplikacji w celu u
 
     Podczas tworzenia lub edytowania połączonej usługi magazynu kluczy możesz wybrać lub edytować istniejący magazyn kluczy lub utworzyć nowy. Upewnij się, że Data Factory zarządzana tożsamość do magazynu kluczy, jeśli jeszcze tego nie zrobiono. Możesz również wprowadzić wpisy tajne bezpośrednio w następującym formacie: `<Key vault linked service name>/<secret name>/<secret version>`. Jeśli pakiet wymaga 32-bitowego środowiska uruchomieniowego do uruchomienia, zaznacz pole wyboru **32-bitowe środowisko uruchomieniowe** .
 
-   W obszarze **Lokalizacja pakietu**wybierz pozycję **SSISDB**, **system plików (pakiet)** lub **system plików (projekt)** . W przypadku wybrania opcji **SSISDB** jako lokalizacji pakietu, która jest automatycznie wybierana, jeśli Azure-SSIS IR została zainicjowana przy użyciu wykazu usług SSIS (SSISDB) hostowanego przez serwer Azure SQL Database lub wystąpienie zarządzane, określ pakiet do uruchomienia, który został wdrożony do SSISDB. 
+   W **obszarze Lokalizacja pakietu**wybierz pozycję **SSISDB**, **system plików (pakiet)** , **system plików (projekt)** lub **pakiet osadzony**. W przypadku wybrania opcji **SSISDB** jako lokalizacji pakietu, która jest automatycznie wybierana, jeśli Azure-SSIS IR została zainicjowana przy użyciu wykazu usług SSIS (SSISDB) hostowanego przez serwer Azure SQL Database lub wystąpienie zarządzane, określ pakiet do uruchomienia, który został wdrożony do SSISDB. 
 
     Jeśli Azure-SSIS IR jest uruchomiona, a pole wyboru **wpisy ręczne** jest wyczyszczone, Przeglądaj i wybierz istniejące foldery, projekty, pakiety lub środowiska z SSISDB. Wybierz pozycję **Odśwież** , aby pobrać nowo dodane foldery, projekty, pakiety lub środowiska z SSISDB, aby były dostępne do przeglądania i wyboru. Aby przeglądać lub wybierać środowiska na potrzeby wykonywania pakietów, musisz wcześniej skonfigurować projekty, aby dodać te środowiska jako odwołania z tych samych folderów w obszarze SSISDB. Aby uzyskać więcej informacji, zobacz [Tworzenie i mapowanie środowisk SSIS](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -82,6 +82,10 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory lub aplikacji w celu u
    Następnie określ poświadczenia, aby uzyskać dostęp do plików projektu, pakietu lub konfiguracji. Jeśli wcześniej wprowadzono wartości poświadczeń wykonywania pakietu (zobacz poprzedni), możesz użyć ich ponownie, zaznaczając pole wyboru **poświadczenia wykonywania pakietu** . W przeciwnym razie wprowadź wartości poświadczeń dostępu do pakietu w polach **domena**, **Nazwa użytkownika**i **hasło** . Na przykład w przypadku przechowywania projektu, pakietu lub konfiguracji w Azure Files domena jest `Azure`, nazwa użytkownika jest `<storage account name>`, a hasło jest `<storage account key>`. 
 
    Alternatywnie możesz użyć wpisów tajnych przechowywanych w magazynie kluczy jako ich wartości (zobacz poprzedni). Te poświadczenia są używane do uzyskiwania dostępu do pakietu i pakietów podrzędnych w zadaniu pakietu, wszystkie z własnej ścieżki lub tego samego projektu, a także konfiguracje, które obejmują te określone w pakietach. 
+
+   Jeśli wybierzesz opcję **pakiet osadzony** jako lokalizację pakietu, przeciągnij i upuść swój pakiet, aby uruchomić lub **przekazać** go z folderu plików do dostępnego pola. Pakiet zostanie automatycznie skompresowany i osadzony w ładunku aktywności. Po osadzeniu można **pobrać** pakiet później do edycji. Możesz również **Sparametryzuj** osadzony pakiet, przypisując go do parametru potoku, który może być używany w wielu działaniach, a tym samym zoptymalizować rozmiar ładunku potoku. Jeśli osadzony pakiet nie jest szyfrowany i wykryjesz w nim zadanie wykonaj pakiet, zostanie zaznaczone pole wyboru **Wykonaj zadanie wykonania pakietu** , a odpowiednie pakiety podrzędne z odwołaniami do systemu plików zostaną automatycznie dodane. Jeśli nie można wykryć użycia zadania wykonaj pakiet, musisz ręcznie zaznaczyć pole wyboru **Wykonaj zadanie pakietu** i dodać odpowiednie pakiety podrzędne wraz z ich systemem plików, do których można je również osadzić. Jeśli pakiety podrzędne używają odwołań SQL Server, upewnij się, że SQL Server jest dostępny w Azure-SSIS IR.  Użycie odwołań projektu dla pakietów podrzędnych nie jest obecnie obsługiwane.
+   
+   ![Ustawianie właściwości na karcie Ustawienia — ręczne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    Jeśli używasz poziomu ochrony **EncryptAllWithPassword** lub **EncryptSensitiveWithPassword** podczas tworzenia pakietu za pomocą narzędzi SQL Server Data Tools, wprowadź wartość hasła w polu **hasło szyfrowania** . Alternatywnie możesz użyć wpisu tajnego przechowywanego w magazynie kluczy jako jego wartości (zobacz poprzedni). W przypadku użycia poziomu ochrony **EncryptSensitiveWithUserKey** należy ponownie wprowadzić wartości poufne w plikach konfiguracyjnych lub na kartach **Parametry usług SSIS**, **menedżerów połączeń**lub **zastąpień właściwości** (zobacz nowsze). 
 
@@ -281,7 +285,7 @@ W tym kroku utworzysz potok z działaniem wykonaj pakiet SSIS. Działanie urucha
    }
    ```
 
-   Aby wykonać pakiety przechowywane w systemach plików, udziałach plików lub Azure Files, wprowadź wartości właściwości pakietu lub lokalizacji dziennika w następujący sposób:
+   Aby wykonać pakiety przechowywane w systemach plików, w udziałach plików lub Azure Files, wprowadź wartości właściwości pakietu i lokalizacji dziennika w następujący sposób:
 
    ```json
    {
@@ -353,6 +357,31 @@ W tym kroku utworzysz potok z działaniem wykonaj pakiet SSIS. Działanie urucha
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Aby wykonać pakiety osadzone, wprowadź wartości właściwości lokalizacja pakietu w następujący sposób:
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

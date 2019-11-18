@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: a48c89785e0a448609026aab53364f6cf704e948
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd2c1105078b918043791fd0f18395409bb32f7c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331654"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151711"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section — element interfejsu użytkownika
+
 Kontrolka, która grupuje co najmniej jeden element w ramach nagłówka.
 
 ## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
-![Microsoft. Common. sekcja](./media/managed-application-elements/microsoft.common.section.png)
+
+![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
 
 ## <a name="schema"></a>Schemat
+
 ```json
 {
   "name": "section1",
@@ -49,11 +52,12 @@ Kontrolka, która grupuje co najmniej jeden element w ramach nagłówka.
 ```
 
 ## <a name="remarks"></a>Uwagi
+
 - `elements` musi mieć co najmniej jeden element i może zawierać wszystkie typy elementów z wyjątkiem `Microsoft.Common.Section`.
 - Ten element nie obsługuje właściwości `toolTip`.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
-Aby uzyskać dostęp do wartości wyjściowych elementów w `elements`, użyj [podstawowych ()](create-uidefinition-functions.md#basics) lub [kroków ()](create-uidefinition-functions.md#steps) i notacji kropkowej:
+Aby uzyskać dostęp do wartości wyjściowych elementów w `elements`, użyj [podstawowych ()](create-uidefinition-functions.md#basics) lub [czynności ()](create-uidefinition-functions.md#steps) i notacji kropkowej:
 
 ```json
 steps('configuration').section1.text1
@@ -62,5 +66,6 @@ steps('configuration').section1.text1
 Elementy typu `Microsoft.Common.Section` nie mają samych wartości wyjściowych.
 
 ## <a name="next-steps"></a>Następne kroki
+
 * Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
 * Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

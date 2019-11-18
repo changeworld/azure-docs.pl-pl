@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: cb6032938379b632b743827153c61fd3e18c1cfe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721587"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123833"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu wtyczki Maven
 
@@ -52,8 +52,6 @@ az extension add --name spring-cloud
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Inicjowanie obsługi administracyjnej wystąpienia usługi na Azure Portal
 
 1. W przeglądarce sieci Web Otwórz [ten link do chmury Azure wiosny w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)i zaloguj się na swoim koncie.
-
-1. Wybierz pozycję **Utwórz** na stronie **Przegląd** , aby otworzyć okno dialogowe tworzenia.
 
 1. Podaj **szczegóły projektu** dla przykładowej aplikacji w następujący sposób:
 

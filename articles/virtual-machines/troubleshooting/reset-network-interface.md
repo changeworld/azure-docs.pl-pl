@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058462"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111725"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Jak zresetować interfejs sieciowy dla maszyny wirtualnej platformy Azure z systemem Windows 
 
@@ -68,7 +68,7 @@ W tym artykule opisano sposób resetowania interfejsu sieciowego dla maszyny wir
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. Spróbuj nawiązać połączenie RDP z maszyną.  Jeśli chcesz, możesz zmienić prywatny adres IP z powrotem na oryginalny. W przeciwnym razie możesz ją zachować.
 
@@ -109,7 +109,7 @@ Aby zresetować interfejs sieciowy, wykonaj następujące kroki:
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. Spróbuj nawiązać połączenie RDP z maszyną. Jeśli chcesz, możesz zmienić prywatny adres IP z powrotem na oryginalny. W przeciwnym razie możesz ją zachować. 
 
@@ -117,10 +117,10 @@ Aby zresetować interfejs sieciowy, wykonaj następujące kroki:
 Po dodaniu pulpitu zdalnego do komputera należy usunąć stare karty sieciowe, aby uniknąć potencjalnego problemu:
 
 1.  Otwórz Menedżer urządzeń.
-2.  Wybierz pozycję **Wyświetl** > **Pokaż ukryte urządzenia**.
+2.  Wybierz pozycję **wyświetl** > **Pokaż ukryte urządzenia**.
 3.  Wybierz pozycję **karty sieciowe**. 
 4.  Sprawdź karty o nazwie "Microsoft Hyper-V karcie sieciowej".
-5.  Możesz zobaczyć niedostępne karty przedstawione jako wyszarzone. Kliknij prawym przyciskiem myszy kartę, a następnie wybierz pozycję Odinstaluj.
+5.  Może zostać wyświetlona niedostępna karta, która jest wyszarzona. Kliknij prawym przyciskiem myszy kartę, a następnie wybierz pozycję Odinstaluj.
 
     ![obraz karty sieciowej](media/reset-network-interface/nicpage.png)
 

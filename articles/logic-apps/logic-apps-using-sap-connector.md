@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 6067a60ed2883ea358dbdfff523b9224175bc5c2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390122"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113479"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z Azure Logic Apps
 
@@ -26,11 +26,11 @@ ms.locfileid: "70390122"
 
 W tym artykule pokazano, jak można uzyskać dostęp do lokalnych zasobów SAP z wewnątrz aplikacji logiki przy użyciu łącznika SAP. Łącznik współpracuje z klasycznymi wersjami oprogramowania SAP, takimi jak R/3 i systemu ECC w środowisku lokalnym. Łącznik umożliwia także integrację z nowszymi dla platformy SAP opartymi na platformie HANA, takimi jak S/4 HANA, niezależnie od tego, czy są hostowane lokalnie, czy w chmurze. Łącznik SAP obsługuje integrację komunikatów lub danych z systemami opartymi na systemie SAP NetWeaver za pośrednictwem dokumentu pośredniczącego (IDoc), Business Application Programming Interface (BAPI) lub zdalnego wywołania funkcji (RFC).
 
-Łącznik SAP używa [biblioteki SAP .NET Connector (NCo)](https://support.sap.com/en/product/connectors/msnet.html) i udostępnia następujące operacje lub akcje:
+Łącznik SAP używa [biblioteki SAP .NET Connector (NCo)](https://support.sap.com/en/product/connectors/msnet.html) i udostępnia następujące akcje:
 
-* **Wyślij do SAP**: Wysyłaj IDoc przez tRFC, wywołaj funkcje interfejsu BAPI w ramach specyfikacji RFC lub wywołaj specyfikacje RFC/tRFC w systemach SAP.
-* **Odbieranie od SAP**: Odbieraj IDoc przez tRFC, wywołaj funkcje interfejsu BAPI przez tRFC lub wywołaj specyfikacje RFC/tRFC w systemach SAP.
-* **Generuj schematy**: Generuj schematy dla artefaktów SAP dla IDoc, BAPI lub RFC.
+* **Wyślij wiadomość do SAP**: wysyłanie IDOC przez tRFC, wywoływanie funkcji interfejsu BAPI w specyfikacji RFC lub wywoływanie RFC/tRFC w systemach SAP.
+* **Po odebraniu komunikatu od SAP**: otrzymywanie IDOC przez tRFC, wywoływanie funkcji interfejsu BAPI przez tRFC lub wywołanie RFC/tRFC w systemach SAP.
+* **Generuj schematy**: Generuj schematy dla artefaktów SAP dla IDOC, BAPI lub RFC.
 
 W przypadku tych operacji łącznik SAP obsługuje uwierzytelnianie podstawowe za pomocą nazw użytkowników i haseł. Łącznik obsługuje również [bezpieczną komunikację sieciową (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). Usługi SNC można używać do logowania jednokrotnego (SSO) SAP NetWeaver lub w celu uzyskania dodatkowych możliwości zabezpieczeń zapewnianych przez zewnętrzny produkt zabezpieczeń.
 
@@ -46,7 +46,7 @@ Aby wykonać czynności opisane w tym artykule, potrzebne są następujące elem
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Aplikacja logiki z lokalizacji, w której chcesz uzyskać dostęp do systemu SAP, i wyzwalacza, który uruchamia przepływ pracy aplikacji logiki. Jeśli jesteś nowym sposobem logiki aplikacji, zobacz [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md) i [szybki start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki.
+* Aplikacja logiki z lokalizacji, w której chcesz uzyskać dostęp do systemu SAP, i wyzwalacza, który uruchamia przepływ pracy aplikacji logiki. Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zobacz [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md) i [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * [Serwer aplikacji SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) lub [serwer komunikatów SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
@@ -76,13 +76,13 @@ Aby wykonać czynności opisane w tym artykule, potrzebne są następujące elem
 
 1. W aplikacji logiki korzystającej ze starszego łącznika SAP Usuń akcję **Wyślij do SAP** .
 
-1. Z poziomu najnowszego łącznika SAP Dodaj akcję **Wyślij do SAP** . Aby można było użyć tej akcji, należy ponownie utworzyć połączenie z systemem SAP.
+1. Z poziomu najnowszego łącznika SAP Dodaj **komunikat Wyślij do działania SAP** . Aby można było użyć tej akcji, należy ponownie utworzyć połączenie z systemem SAP.
 
 1. Gdy skończysz, Zapisz aplikację logiki.
 
 <a name="add-trigger"></a>
 
-## <a name="send-to-sap"></a>Wyślij do SAP
+## <a name="send-message-to-sap"></a>Wyślij wiadomość do oprogramowania SAP
 
 W tym przykładzie zastosowano aplikację logiki, którą można wyzwolić za pomocą żądania HTTP. Aplikacja logiki wysyła IDoc do serwera SAP i zwraca odpowiedź do żądającego, który wywołał aplikację logiki.
 
@@ -94,9 +94,9 @@ W tym przykładzie utworzysz aplikację logiki z punktem końcowym na platformie
 
 1. W [Azure Portal](https://portal.azure.com)Utwórz pustą aplikację logiki, która otwiera projektanta aplikacji logiki.
 
-1. W polu wyszukiwania wprowadź ciąg "żądanie HTTP" jako filtr. Z listy **wyzwalacze** wybierz opcję **po odebraniu żądania HTTP**.
+1. W polu wyszukiwania wprowadź `http request` jako filtr. Z listy **wyzwalacze** wybierz opcję **po odebraniu żądania HTTP**.
 
-   ![Dodawanie wyzwalacza żądania HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![Dodawanie wyzwalacza żądania HTTP](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. Teraz Zapisz aplikację logiki, aby można było wygenerować adres URL punktu końcowego dla aplikacji logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
@@ -112,31 +112,39 @@ W Azure Logic Apps [Akcja](../logic-apps/logic-apps-overview.md#logic-app-concep
 
 1. W Projektancie aplikacji logiki, w obszarze wyzwalacza wybierz pozycję **nowy krok**.
 
-   ![Wybierz pozycję "nowy krok"](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Dodawanie nowego kroku do aplikacji logiki](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. W polu wyszukiwania wprowadź wartość "SAP" jako filtr. Z listy **Akcje** wybierz pozycję **Wyślij wiadomość do SAP**.
+1. W polu wyszukiwania wprowadź `sap` jako filtr. Z listy **Akcje** wybierz pozycję **Wyślij wiadomość do SAP**.
   
-   ![Wybierz akcję wysyłania SAP](media/logic-apps-using-sap-connector/select-sap-send-action.png)
+   ![Wybierz akcję "Wyślij wiadomość do SAP"](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
-   Lub zamiast wyszukiwania, wybierz kartę **Enterprise** , a następnie wybierz akcję SAP.
+   Możesz też wybrać kartę **Enterprise** , a następnie wybrać akcję SAP.
 
-   ![Wybieranie akcji wysyłania SAP z karty Enterprise](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![Wybierz akcję "Wyślij wiadomość do SAP" z karty Enterprise](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Jeśli zostanie wyświetlony monit o podanie szczegółów połączenia, Utwórz połączenie SAP teraz. W przeciwnym razie, jeśli połączenie już istnieje, przejdź do następnego kroku, aby móc skonfigurować akcję SAP.
+1. Jeśli połączenie już istnieje, przejdź do następnego kroku, aby móc skonfigurować akcję SAP. Jeśli jednak zostanie wyświetlony monit o podanie szczegółów połączenia, podaj informacje, aby teraz można było utworzyć połączenie z lokalnym serwerem SAP.
 
-   **Tworzenie lokalnego połączenia SAP**
+   1. Podaj nazwę połączenia.
 
-   Podaj informacje o połączeniu dla serwera SAP. Dla właściwości **brama danych** Wybierz bramę danych utworzoną w Azure Portal na potrzeby instalacji bramy. Po zakończeniu wybierz pozycję **Utwórz**. Logic Apps konfiguruje i testuje połączenie, aby upewnić się, że połączenie działa poprawnie.
+   1. W sekcji **brama danych** w obszarze **subskrypcja**najpierw wybierz subskrypcję platformy Azure dla zasobu bramy utworzonego w Azure Portal instalacji bramy. 
+   
+   1. W obszarze **Brama połączenia**wybierz zasób bramy.
 
-   * Jeśli właściwość **Typ logowania** jest ustawiona na **serwer aplikacji**, te właściwości, które zwykle są opcjonalne, są wymagane:
+   1. Kontynuuj dostarczanie informacji o połączeniu. Dla właściwości **Typ logowania** postępuj zgodnie z krokami w zależności od tego, czy właściwość jest ustawiona na **serwer aplikacji** czy **Grupa**:
+   
+      * W przypadku **serwera aplikacji**te właściwości, które zwykle są opcjonalne, są wymagane:
 
-     ![Utwórz połączenie z serwerem aplikacji SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+        ![Utwórz połączenie z serwerem aplikacji SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-   * Jeśli właściwość **Typ logowania** ma wartość **Grupuj**, te właściwości, które zwykle są opcjonalne, są wymagane:
+      * Dla **grupy**, te właściwości, które zwykle są opcjonalne, są wymagane:
 
-     ![Utwórz połączenie z serwerem komunikatów SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+        ![Utwórz połączenie z serwerem komunikatów SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
-   Domyślnie silne wpisywanie jest używane do sprawdzania nieprawidłowych wartości przez wykonywanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [opcji bezpiecznego wpisywania](#safe-typing).
+      Domyślnie silne wpisywanie jest używane do sprawdzania nieprawidłowych wartości przez wykonywanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [opcji bezpiecznego wpisywania](#safe-typing).
+
+   1. Po zakończeniu wybierz pozycję **Utwórz**.
+
+      Logic Apps konfiguruje i testuje połączenie, aby upewnić się, że połączenie działa poprawnie.
 
 1. Teraz Znajdź i wybierz akcję z serwera SAP.
 
@@ -159,7 +167,7 @@ W Azure Logic Apps [Akcja](../logic-apps/logic-apps-overview.md#logic-app-concep
 
       Ten krok obejmuje zawartość treści z wyzwalacza żądania HTTP i wysyła te dane wyjściowe do serwera SAP.
 
-      ![Wybierz pole "treść"](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+      ![Wybierz właściwość "treść" z wyzwalacza](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
       Po zakończeniu akcja SAP będzie wyglądać następująco:
 
@@ -175,7 +183,7 @@ Teraz Dodaj akcję odpowiedzi do przepływu pracy aplikacji logiki i Uwzględnij
 
 1. W Projektancie aplikacji logiki w obszarze Akcja SAP wybierz pozycję **nowy krok**.
 
-1. W polu wyszukiwania wprowadź "odpowiedź" jako filtr. Z listy **Akcje** wybierz pozycję **odpowiedź**.
+1. W polu wyszukiwania wprowadź `response` jako filtr. Z listy **Akcje** wybierz pozycję **odpowiedź**.
 
 1. Kliknij wewnątrz pola **treść** , aby wyświetlić listę zawartości dynamicznej. Z tej listy w obszarze **Wyślij wiadomość do SAP**zaznacz pole **treść** .
 
@@ -194,7 +202,7 @@ Dołącz zawartość wiadomości do żądania. Aby wysłać żądanie, można u�
 
    W tym artykule żądanie wysyła plik IDoc, który musi być w formacie XML i zawiera przestrzeń nazw dla używanej akcji SAP, na przykład:
 
-   ``` xml
+   ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
    <Send xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/2/ORDERS05//720/Send">
       <idocData>
@@ -210,7 +218,9 @@ Dołącz zawartość wiadomości do żądania. Aby wysłać żądanie, można u�
 
 Aplikacja logiki, która może komunikować się z serwerem SAP, została już utworzona. Teraz, po skonfigurowaniu połączenia SAP dla aplikacji logiki, można eksplorować inne dostępne akcje SAP, takie jak BAPI i RFC.
 
-## <a name="receive-from-sap"></a>Odbieranie z oprogramowania SAP
+<a name="receive-from-sap"></a>
+
+## <a name="receive-message-from-sap"></a>Odbierz wiadomość od SAP
 
 W tym przykładzie jest stosowana aplikacja logiki, która wyzwala, gdy aplikacja otrzymuje komunikat z systemu SAP.
 
@@ -218,29 +228,37 @@ W tym przykładzie jest stosowana aplikacja logiki, która wyzwala, gdy aplikacj
 
 1. W Azure Portal Utwórz pustą aplikację logiki, która otwiera projektanta aplikacji logiki.
 
-1. W polu wyszukiwania wprowadź wartość "SAP" jako filtr. Z listy **wyzwalacze** wybierz opcję **Kiedy komunikat zostanie ODEBRANY z oprogramowania SAP**.
+1. W polu wyszukiwania wprowadź `sap` jako filtr. Z listy **wyzwalacze** wybierz opcję **Kiedy komunikat zostanie ODEBRANY z oprogramowania SAP**.
 
-   ![Dodaj wyzwalacz SAP](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
+   ![Dodaj wyzwalacz SAP](./media/logic-apps-using-sap-connector/add-sap-trigger-logic-app.png)
 
-   Możesz też przejść do karty **Enterprise** i wybrać wyzwalacz:
+   Możesz też wybrać kartę **Enterprise** , a następnie wybrać wyzwalacz:
 
    ![Dodaj wyzwalacz SAP z karty Enterprise](./media/logic-apps-using-sap-connector/add-sap-trigger-ent-tab.png)
 
-1. Jeśli zostanie wyświetlony monit o podanie szczegółów połączenia, Utwórz połączenie SAP teraz. Jeśli połączenie już istnieje, przejdź do następnego kroku, aby móc skonfigurować akcję SAP.
+1. Jeśli połączenie już istnieje, przejdź do następnego kroku, aby móc skonfigurować akcję SAP. Jeśli jednak zostanie wyświetlony monit o podanie szczegółów połączenia, podaj informacje, aby teraz można było utworzyć połączenie z lokalnym serwerem SAP.
 
-   **Tworzenie lokalnego połączenia SAP**
+   1. Podaj nazwę połączenia.
 
-   Podaj informacje o połączeniu dla serwera SAP. Dla właściwości **brama danych** Wybierz bramę danych utworzoną w Azure Portal na potrzeby instalacji bramy. Po zakończeniu wybierz pozycję **Utwórz**. Logic Apps konfiguruje i testuje połączenie, aby upewnić się, że połączenie działa poprawnie.
+   1. W sekcji **brama danych** w obszarze **subskrypcja**najpierw wybierz subskrypcję platformy Azure dla zasobu bramy utworzonego w Azure Portal instalacji bramy. 
 
-   * Jeśli właściwość **Typ logowania** jest ustawiona na **serwer aplikacji**, te właściwości, które zwykle są opcjonalne, są wymagane:
+   1. W obszarze **Brama połączenia**wybierz zasób bramy.
 
-     ![Utwórz połączenie z serwerem aplikacji SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+   1. Kontynuuj dostarczanie informacji o połączeniu. Dla właściwości **Typ logowania** postępuj zgodnie z krokami w zależności od tego, czy właściwość jest ustawiona na **serwer aplikacji** czy **Grupa**:
 
-   * Jeśli właściwość **Typ logowania** ma wartość **Grupuj**, te właściwości, które zwykle są opcjonalne, są wymagane:
+      * W przypadku **serwera aplikacji**te właściwości, które zwykle są opcjonalne, są wymagane:
 
-     ![Utwórz połączenie z serwerem komunikatów SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+        ![Utwórz połączenie z serwerem aplikacji SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-   Domyślnie silne wpisywanie jest używane do sprawdzania nieprawidłowych wartości przez wykonywanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [opcji bezpiecznego wpisywania](#safe-typing).
+      * Dla **grupy**, te właściwości, które zwykle są opcjonalne, są wymagane:
+
+        ![Utwórz połączenie z serwerem komunikatów SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+
+      Domyślnie silne wpisywanie jest używane do sprawdzania nieprawidłowych wartości przez wykonywanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [opcji bezpiecznego wpisywania](#safe-typing).
+
+   1. Po zakończeniu wybierz pozycję **Utwórz**.
+
+      Logic Apps konfiguruje i testuje połączenie, aby upewnić się, że połączenie działa poprawnie.
 
 1. Podaj wymagane parametry w oparciu o konfigurację systemu SAP.
 
@@ -248,7 +266,7 @@ W tym przykładzie jest stosowana aplikacja logiki, która wyzwala, gdy aplikacj
 
    Można wybrać akcję SAP z selektora plików:
 
-   ![Wybierz akcję SAP](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
+   ![Dodawanie akcji SAP do aplikacji logiki](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
 
    Można też ręcznie określić akcję:
 
@@ -256,12 +274,11 @@ W tym przykładzie jest stosowana aplikacja logiki, która wyzwala, gdy aplikacj
 
    Oto przykład pokazujący, jak akcja pojawia się po skonfigurowaniu wyzwalacza tak, aby otrzymywał więcej niż jeden komunikat.
 
-   ![Przykład wyzwalacza](media/logic-apps-using-sap-connector/example-trigger.png)  
+   ![Przykład wyzwalacza, który odbiera wiele komunikatów](media/logic-apps-using-sap-connector/example-trigger.png)
 
    Aby uzyskać więcej informacji na temat akcji SAP, zobacz [schematy komunikatów dla operacji IDOC](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
-1. Teraz Zapisz aplikację logiki, aby można było rozpocząć otrzymywanie komunikatów z systemu SAP.
-Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+1. Teraz Zapisz aplikację logiki, aby można było rozpocząć otrzymywanie komunikatów z systemu SAP. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 Aplikacja logiki jest teraz gotowa do odbierania komunikatów z systemu SAP.
 
@@ -280,21 +297,21 @@ Aplikacja logiki jest teraz gotowa do odbierania komunikatów z systemu SAP.
 
 Można skonfigurować SAP, aby [wysyłał IDOCs w pakietach](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), które są partiami lub grupami IDOCs. Do odbierania pakietów IDOC, łącznika SAP i konkretnego wyzwalacza nie jest wymagana dodatkowa konfiguracja. Jednak, aby przetwarzać każdy element w pakiecie IDOC po odebraniu pakietu przez wyzwalacz, należy wykonać pewne dodatkowe kroki, aby podzielić pakiet na poszczególne IDOCs.
 
-Oto przykład, który pokazuje, jak wyodrębnić poszczególne IDOCs z pakietu przy użyciu [ `xpath()` funkcji](./workflow-definition-language-functions-reference.md#xpath):
+Oto przykład, który pokazuje, jak wyodrębnić poszczególne IDOCs z pakietu przy użyciu [funkcji`xpath()`](./workflow-definition-language-functions-reference.md#xpath):
 
-1. Przed rozpoczęciem potrzebna jest aplikacja logiki z wyzwalaczem SAP. Jeśli nie masz jeszcze tej aplikacji logiki, wykonaj kroki opisane w tym temacie, aby skonfigurować [aplikację logiki z wyzwalaczem SAP](#receive-from-sap).
+1. Przed rozpoczęciem potrzebna jest aplikacja logiki z wyzwalaczem SAP. Jeśli nie masz jeszcze tej aplikacji logiki, wykonaj kroki opisane w tym temacie, aby [skonfigurować aplikację logiki z wyzwalaczem SAP](#receive-from-sap).
 
    Na przykład:
 
-   ![Wyzwalacz SAP](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+   ![Dodawanie wyzwalacza SAP do aplikacji logiki](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Pobierz główną przestrzeń nazw z IDOC XML, którą aplikacja logiki otrzymuje od SAP. Aby wyodrębnić tę przestrzeń nazw z dokumentu XML, należy dodać krok, który tworzy zmienną ciągu lokalnego i zapisuje tę przestrzeń nazw przy użyciu `xpath()` wyrażenia:
+1. Pobierz główną przestrzeń nazw z IDOC XML, którą aplikacja logiki otrzymuje od SAP. Aby wyodrębnić tę przestrzeń nazw z dokumentu XML, należy dodać krok, który tworzy zmienną ciągu lokalnego i zapisuje tę przestrzeń nazw przy użyciu wyrażenia `xpath()`:
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
-   ![Pobierz przestrzeń nazw](./media/logic-apps-using-sap-connector/get-namespace.png)
+   ![Pobierz główną przestrzeń nazw z IDOC](./media/logic-apps-using-sap-connector/get-namespace.png)
 
-1. Aby wyodrębnić pojedyncze IDOC, Dodaj krok, który tworzy zmienną tablicową i zapisuje kolekcję IDOC przy użyciu innego `xpath()` wyrażenia:
+1. Aby wyodrębnić pojedyncze IDOC, Dodaj krok, który tworzy zmienną tablicową i zapisuje kolekcję IDOC przy użyciu innego wyrażenia `xpath()`:
 
    `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
@@ -302,14 +319,13 @@ Oto przykład, który pokazuje, jak wyodrębnić poszczególne IDOCs z pakietu p
 
    Zmienna Array sprawia, że każdy IDOC jest dostępny dla aplikacji logiki do przetworzenia indywidualnie przez Wyliczenie w kolekcji. W tym przykładzie aplikacja logiki przesyła każdy IDOC do serwera SFTP przy użyciu pętli:
 
-   ![Wyślij IDOC](./media/logic-apps-using-sap-connector/loop-batch.png)
+   ![Wyślij IDOC do serwera SFTP](./media/logic-apps-using-sap-connector/loop-batch.png)
 
-   Każdy IDOC musi zawierać główną przestrzeń nazw, co stanowi powód, dla którego zawartość pliku jest opakowana wewnątrz `<Receive></Receive` elementu wraz z główną przestrzenią nazw przed wysłaniem IDOC do aplikacji podrzędnej lub w tym przypadku serwera SFTP.
+   Każdy IDOC musi zawierać główną przestrzeń nazw, co stanowi powód, dla którego zawartość pliku jest opakowana wewnątrz elementu `<Receive></Receive` wraz z główną przestrzenią nazw przed wysłaniem IDOC do aplikacji podrzędnej lub w tym przypadku serwera SFTP.
 
-> [!TIP]
-> Szablonu szybkiego startu można użyć dla tego wzorca, wybierając ten szablon w Projektancie aplikacji logiki podczas tworzenia nowej aplikacji logiki.
->
-> ![Szablon wsadowy](./media/logic-apps-using-sap-connector/batch-template.png)
+Szablonu szybkiego startu można użyć dla tego wzorca, wybierając ten szablon w Projektancie aplikacji logiki podczas tworzenia nowej aplikacji logiki.
+
+![Wybieranie szablonu aplikacji logiki wsadowej](./media/logic-apps-using-sap-connector/select-batch-logic-app-template.png)
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>Generowanie schematów dla artefaktów w oprogramowaniu SAP
 
@@ -319,9 +335,9 @@ W tym przykładzie zastosowano aplikację logiki, którą można wyzwolić za po
 
 1. W Azure Portal Utwórz pustą aplikację logiki, która otwiera projektanta aplikacji logiki.
 
-1. W polu wyszukiwania wprowadź ciąg "żądanie HTTP" jako filtr. Z listy **wyzwalacze** wybierz opcję **po odebraniu żądania HTTP**.
+1. W polu wyszukiwania wprowadź `http request` jako filtr. Z listy **wyzwalacze** wybierz opcję **po odebraniu żądania HTTP**.
 
-   ![Dodawanie wyzwalacza żądania HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![Dodawanie wyzwalacza żądania HTTP](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. Teraz Zapisz aplikację logiki, aby można było wygenerować adres URL punktu końcowego dla aplikacji logiki.
 Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
@@ -334,29 +350,33 @@ Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 1. W Projektancie aplikacji logiki, w obszarze wyzwalacza wybierz pozycję **nowy krok**.
 
-   ![Wybierz pozycję "nowy krok"](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Dodawanie nowego kroku do aplikacji logiki](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. W polu wyszukiwania wprowadź wartość "SAP" jako filtr. Z listy **Akcje** wybierz pozycję **Generuj schematy**.
+1. W polu wyszukiwania wprowadź `sap` jako filtr. Z listy **Akcje** wybierz pozycję **Generuj schematy**.
   
-   ![Wybierz akcję wysyłania SAP](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
+   ![Dodaj akcję "Generuj schematy" do aplikacji logiki](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
-   Możesz również wybrać kartę **Enterprise** , a następnie wybrać akcję SAP.
+   Możesz też wybrać kartę **Enterprise** , a następnie wybrać akcję SAP.
 
    ![Wybieranie akcji wysyłania SAP z karty Enterprise](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
 
-1. Jeśli zostanie wyświetlony monit o podanie szczegółów połączenia, Utwórz połączenie SAP teraz. Jeśli połączenie już istnieje, przejdź do następnego kroku, aby móc skonfigurować akcję SAP.
+1. Jeśli połączenie już istnieje, przejdź do następnego kroku, aby móc skonfigurować akcję SAP. Jeśli jednak zostanie wyświetlony monit o podanie szczegółów połączenia, podaj informacje, aby teraz można było utworzyć połączenie z lokalnym serwerem SAP.
 
-   **Tworzenie lokalnego połączenia SAP**
+   1. Podaj nazwę połączenia.
 
-   1. Podaj informacje o połączeniu dla serwera SAP. Dla właściwości **brama danych** Wybierz bramę danych utworzoną w Azure Portal na potrzeby instalacji bramy.
+   1. W sekcji **brama danych** w obszarze **subskrypcja**najpierw wybierz subskrypcję platformy Azure dla zasobu bramy utworzonego w Azure Portal instalacji bramy. 
+   
+   1. W obszarze **Brama połączenia**wybierz zasób bramy.
 
-      * Jeśli właściwość **Typ logowania** jest ustawiona na **serwer aplikacji**, te właściwości, które zwykle są opcjonalne, są wymagane:
+   1. Kontynuuj dostarczanie informacji o połączeniu. Dla właściwości **Typ logowania** postępuj zgodnie z krokami w zależności od tego, czy właściwość jest ustawiona na **serwer aplikacji** czy **Grupa**:
+   
+      * W przypadku **serwera aplikacji**te właściwości, które zwykle są opcjonalne, są wymagane:
 
         ![Utwórz połączenie z serwerem aplikacji SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      * Jeśli właściwość **Typ logowania** ma wartość **Grupuj**, te właściwości, które zwykle są opcjonalne, są wymagane:
+      * Dla **grupy**, te właściwości, które zwykle są opcjonalne, są wymagane:
 
-        ![Utwórz połączenie z serwerem komunikatów SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+        ![Utwórz połączenie z serwerem komunikatów SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
       Domyślnie silne wpisywanie jest używane do sprawdzania nieprawidłowych wartości przez wykonywanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [opcji bezpiecznego wpisywania](#safe-typing).
 
@@ -398,7 +418,7 @@ Opcjonalnie można pobrać lub zapisać wygenerowane schematy w repozytoriach, t
 
 1. W Projektancie aplikacji logiki, w obszarze wyzwalacza wybierz pozycję **nowy krok**.
 
-1. W polu wyszukiwania wprowadź ciąg "Menedżer zasobów" jako filtr. Wybierz pozycję **Utwórz lub zaktualizuj zasób**.
+1. W polu wyszukiwania wprowadź `Resource Manager` jako filtr. Wybierz pozycję **Utwórz lub zaktualizuj zasób**.
 
    ![Wybierz akcję Azure Resource Manager](media/logic-apps-using-sap-connector/select-azure-resource-manager-action.png)
 
@@ -412,9 +432,10 @@ Opcjonalnie można pobrać lub zapisać wygenerowane schematy w repozytoriach, t
 
    Akcja **Generuj schematy** w programie SAP generuje schematy jako kolekcję, więc Projektant automatycznie dodaje do akcji pętlę **for each** . Oto przykład, który pokazuje, jak wygląda ta akcja:
 
-   ![Azure Resource Manager akcji z pętlą "for each"](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)  
+   ![Azure Resource Manager akcji z pętlą "for each"](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)
+
    > [!NOTE]
-   > Schematy używają formatu zakodowanego algorytmem Base64. Aby przekazać schematy do konta integracji, muszą one zostać zdekodowane przy użyciu `base64ToString()` funkcji. Oto przykład, który pokazuje kod dla `"properties"` elementu:
+   > Schematy używają formatu zakodowanego algorytmem Base64. Aby przekazać schematy do konta integracji, muszą one zostać zdekodowane przy użyciu funkcji `base64ToString()`. Oto przykład, który pokazuje kod dla elementu `"properties"`:
    >
    > ```json
    > "properties": {
@@ -446,7 +467,7 @@ Przed rozpoczęciem upewnij się, że spełniono wcześniej wymienione [wymagani
 
    | Właściwość | Opis |
    |----------| ------------|
-   | **Ścieżka biblioteki SNC** | Nazwa biblioteki SNC lub ścieżka względem lokalizacji instalacji NCo lub ścieżki bezwzględnej. Przykłady to `sapsnc.dll` or `.\security\sapsnc.dll` lub `c:\security\sapsnc.dll`. |
+   | **Ścieżka biblioteki SNC** | Nazwa biblioteki SNC lub ścieżka względem lokalizacji instalacji NCo lub ścieżki bezwzględnej. Przykłady to `sapsnc.dll` lub `.\security\sapsnc.dll` lub `c:\security\sapsnc.dll`. |
    | **SNC LOGOWANIE JEDNOKROTNE** | Po nawiązaniu połączenia za pomocą usługi SNC tożsamość SNC jest zwykle używana do uwierzytelniania obiektu wywołującego. Kolejną opcją jest przesłonięcie, aby informacje o użytkowniku i haśle mogły być używane do uwierzytelniania obiektu wywołującego, ale wiersz jest wciąż szyfrowany. |
    | **SNC moją nazwę** | W większości przypadków ta właściwość może zostać pominięta. Zainstalowane rozwiązanie SNC zazwyczaj zna własną nazwę SNC. Tylko w przypadku rozwiązań, które obsługują wiele tożsamości, może być konieczne określenie tożsamości, która ma być używana dla danego miejsca docelowego lub serwera. |
    | **Nazwa partnera SNC** | Nazwa SNC zaplecza. |
@@ -460,7 +481,7 @@ Przed rozpoczęciem upewnij się, że spełniono wcześniej wymienione [wymagani
 
 ## <a name="safe-typing"></a>Bezpieczne wpisywanie
 
-Domyślnie podczas tworzenia połączenia SAP jest używane silne wpisywanie w celu sprawdzenia nieprawidłowych wartości przez wykonanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. W przypadku wybrania opcji **bezpieczne wpisywanie**typ dats i typ Tims w oprogramowaniu SAP są traktowane jako ciągi, `xs:date` a nie jako odpowiedniki XML i `xmlns:xs="http://www.w3.org/2001/XMLSchema"` `xs:time`, gdzie. Bezpieczne wpisywanie ma wpływ na zachowanie wszystkich generacji schematu, wysyła komunikat dla "wysłano" i "otrzymano" odpowiedź oraz wyzwalacz. 
+Domyślnie podczas tworzenia połączenia SAP jest używane silne wpisywanie w celu sprawdzenia nieprawidłowych wartości przez wykonanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. W przypadku wybrania opcji **bezpieczne wpisywanie**typ dats i typ Tims w oprogramowaniu SAP są traktowane jako ciągi, a nie jako odpowiedniki XML, `xs:date` i `xs:time`, gdzie `xmlns:xs="http://www.w3.org/2001/XMLSchema"`. Bezpieczne wpisywanie ma wpływ na zachowanie wszystkich generacji schematu, wysyła komunikat dla "wysłano" i "otrzymano" odpowiedź oraz wyzwalacz. 
 
 W przypadku użycia silnego wpisywania (**bezpieczne wpisywanie** nie jest włączone) schemat mapuje typy dats i Tims na bardziej proste typy XML:
 
@@ -516,7 +537,7 @@ Oto przykład, który pokazuje następujący wzorzec:
 
 1. W łączniku SAP Dodaj akcję **Wyślij IDOC** . Podaj szczegóły dotyczące IDOC wysyłanego do systemu SAP.
 
-1. Aby jawnie potwierdzić identyfikator transakcji w osobnym kroku, w właściwości **Potwierdź TID** wybierz pozycję **nie**. Dla właściwości opcjonalny **Identyfikator GUID identyfikatora transakcji** można ręcznie określić wartość lub łącznik automatycznie generować i zwracać ten identyfikator GUID w odpowiedzi z akcji Wyślij IDOC.
+1. Aby jawnie potwierdzić identyfikator transakcji w osobnym kroku, w polu Potwierdź numer **TID** wybierz pozycję **nie**. Dla pola opcjonalne **Identyfikator GUID transakcji** można ręcznie określić wartość lub łącznik automatycznie generować i zwracać ten identyfikator GUID w odpowiedzi z akcji Wyślij IDOC.
 
    ![Wyślij właściwości akcji IDOC](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 

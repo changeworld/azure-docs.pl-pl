@@ -1,5 +1,5 @@
 ---
-title: 'Przykład: Tworzenie niestandardowej umiejętności poznawczej przy użyciu interfejs API wyszukiwania jednostek Bing'
+title: Niestandardowy przykład umiejętności przy użyciu interfejs API wyszukiwania jednostek Bing
 titleSuffix: Azure Cognitive Search
 description: Demonstruje użycie usługi wyszukiwanie jednostek Bing w niestandardowej umiejętności zamapowanej na potok indeksowania wzbogaconej AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466814"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113822"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Przykład: Tworzenie niestandardowej umiejętności przy użyciu interfejs API wyszukiwania jednostek Bing
 
@@ -379,7 +379,7 @@ Gdy zachowanie funkcji jest zadowalające, można je opublikować.
 
 1. Jeśli program Visual Studio nie został jeszcze połączony z kontem platformy Azure, wybierz pozycję **Dodaj konto....**
 
-1. Postępuj zgodnie z monitami wyświetlanymi na ekranie. Zostanie wyświetlony monit o podanie unikatowej nazwy usługi App Service, subskrypcji platformy Azure, grupy zasobów, planu hostingu oraz konta magazynu, którego chcesz użyć. Jeśli jeszcze tego nie zrobiono, możesz utworzyć nową grupę zasobów, nowy plan hostingu i konto magazynu. Po zakończeniu wybierz pozycję **Utwórz** .
+1. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie. Zostanie wyświetlony monit o podanie unikatowej nazwy usługi App Service, subskrypcji platformy Azure, grupy zasobów, planu hostingu oraz konta magazynu, którego chcesz użyć. Jeśli jeszcze tego nie zrobiono, możesz utworzyć nową grupę zasobów, nowy plan hostingu i konto magazynu. Po zakończeniu wybierz pozycję **Utwórz** .
 
 1. Po zakończeniu wdrażania Zwróć uwagę na adres URL witryny. Jest to adres aplikacji funkcji na platformie Azure. 
 

@@ -1,17 +1,14 @@
 ---
-title: Ciągłej integracji/ciągłego wdrażania za pomocą szablonów Azure Pipelines i Menedżer zasobów
+title: Ciągłej integracji/ciągłego wdrażania za pomocą Azure Pipelines i szablonów
 description: Opisuje sposób konfigurowania ciągłej integracji w Azure Pipelines przy użyciu projektów wdrażania grupy zasobów platformy Azure w programie Visual Studio w celu wdrażania szablonów Menedżer zasobów.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 51122e314ebd0a97647fc4026b1f49619950c351
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597517"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143752"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrowanie szablonów Menedżer zasobów z Azure Pipelines
 
@@ -82,7 +79,7 @@ steps:
 - task: AzurePowerShell@4
 ```
 
-W polu `azureSubscription` Podaj nazwę utworzonego połączenia z usługą.
+W polu `azureSubscription`Podaj nazwę utworzonego połączenia z usługą.
 
 ```yaml
 inputs:
@@ -157,13 +154,13 @@ W poniższym YAML przedstawiono [zadanie kopiowania plików platformy Azure](/az
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Istnieje kilka części tego zadania, które można poprawić w danym środowisku. @No__t_0 wskazuje lokalizację artefaktów względem pliku potoku. W tym przykładzie pliki znajdują się w folderze o nazwie `AzureResourceGroup1`, który był nazwą projektu.
+Istnieje kilka części tego zadania, które można poprawić w danym środowisku. `SourcePath` wskazuje lokalizację artefaktów względem pliku potoku. W tym przykładzie pliki znajdują się w folderze o nazwie `AzureResourceGroup1`, który był nazwą projektu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-W polu `azureSubscription` Podaj nazwę utworzonego połączenia z usługą.
+W polu `azureSubscription`Podaj nazwę utworzonego połączenia z usługą.
 
 ```yaml
 azureSubscription: '<your-connection-name>'

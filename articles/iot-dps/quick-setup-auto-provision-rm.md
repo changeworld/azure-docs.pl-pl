@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: Konfigurowanie aprowizacji urządzeń przy użyciu szablonu Azure Resource Manager'
-description: Przewodnik Szybki start platformy Azure — Konfigurowanie usługi Azure IoT Hub Device Provisioning Service przy użyciu szablonu
+description: Przewodnik Szybki Start platformy Azure — Konfigurowanie IoT Hub Device Provisioning Service platformy Azure przy użyciu szablonu
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,22 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f74260b5a2d088a6019653dcbcc6709e438916c4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903358"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151651"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Szybki Start: Konfigurowanie IoT Hub Device Provisioning Service przy użyciu szablonu Azure Resource Manager
 
-Przy użyciu usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) można skonfigurować programowo zasoby w chmurze platformy Azure niezbędne do aprowizacji urządzeń. Poniżej przedstawiono procedurę tworzenia usługi IoT Hub, nowej usługi IoT Hub Device Provisioning oraz łączenia tych dwóch usług ze sobą przy użyciu szablonu usługi Azure Resource Manager. W tym przewodniku Szybki start [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) jest używany do wykonywania kroków programowych niezbędnych do utworzenia grupy zasobów i wdrożenia szablonu, ale te kroki można również z łatwością wykonać i wdrożyć szablon przy użyciu [witryny Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [programu PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), środowiska .NET, języka Ruby lub innych języków programowania. 
+Przy użyciu usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) można skonfigurować programowo zasoby w chmurze platformy Azure niezbędne do aprowizacji urządzeń. W tych krokach przedstawiono sposób tworzenia Centrum IoT i nowego IoT Hub Device Provisioning Service oraz łączenia tych dwóch usług przy użyciu szablonu Azure Resource Manager. Ten przewodnik Szybki Start korzysta z [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) w celu wykonania czynności programistycznych niezbędnych do utworzenia grupy zasobów i wdrożenia szablonu, ale w celu wykonania tych kroków i wdrożenia szablonu można łatwo użyć [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [programu PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), platformy .NET, języka Ruby lub innych języków programowania. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Ten przewodnik Szybki start wymaga uruchomienia wiersza polecenia platformy Azure lokalnie. Musi być zainstalowany wiersz polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja interfejsu wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Ten przewodnik Szybki Start wymaga lokalnego uruchomienia interfejsu wiersza polecenia platformy Azure. Musi być zainstalowany wiersz polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja interfejsu wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Logowanie się do platformy Azure i tworzenie grupy zasobów
@@ -114,7 +114,7 @@ Użyj szablonu JSON, aby utworzyć usługę inicjowania i połączone centrum Io
 
    ```
 
-4. Aby utworzyć centrum IoT, dodaj następujące wiersze do kolekcji **resources**. Element JSON określa minimalne właściwości wymagane do utworzenia centrum IoT. Właściwości **name** i **location** są przekazywane jako parametry. Aby dowiedzieć się więcej o właściwościach, które można określić dla centrum IoT w szablonie, zobacz dokumentację dotyczącą szablonów [Microsoft.Devices/IotHubs](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs).
+4. Aby utworzyć centrum IoT, dodaj następujące wiersze do kolekcji **resources**. KOD JSON określa minimalne właściwości wymagane do utworzenia Centrum IoT Hub. Właściwości **name** i **location** są przekazywane jako parametry. Aby dowiedzieć się więcej o właściwościach, które można określić dla Centrum IoT w szablonie, zobacz [Microsoft. Devices/IotHubs Template Reference](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs).
 
    ```json
         {
@@ -235,7 +235,7 @@ Użyj szablonu JSON, aby utworzyć usługę inicjowania i połączone centrum Io
 
 ## <a name="create-a-resource-manager-parameter-file"></a>Tworzenie pliku parametrów usługi Resource Manager
 
-W szablonie zdefiniowanym w ostatnim kroku są używane parametry służące do określenia nazwy centrum IoT, nazwy usługi aprowizacji oraz lokalizacji, w których mają zostać utworzone (region platformy Azure). Te parametry są przekazywane w oddzielnym pliku. Umożliwia to ponowne użycie tego samego szablonu podczas wielu wdrożeń. Aby utworzyć plik parametrów, wykonaj następujące kroki:
+Szablon zdefiniowany w ostatnim kroku używa parametrów, aby określić nazwę Centrum IoT, nazwę usługi aprowizacji i lokalizację (region platformy Azure), aby je utworzyć. Te parametry są przekazywane w oddzielnym pliku. Umożliwia to ponowne użycie tego samego szablonu podczas wielu wdrożeń. Aby utworzyć plik parametrów, wykonaj następujące kroki:
 
 1. Użyj edytora tekstów, aby utworzyć plik parametrów usługi Azure Resource Manager o nazwie **parameters.json** z następującym szkieletem zawartości: 
 
@@ -248,7 +248,7 @@ W szablonie zdefiniowanym w ostatnim kroku są używane parametry służące do 
    }
    ```
 
-2. Dodaj wartość **iotHubName** do sekcji parametrów. W przypadku zmiany nazwy upewnij się, że jest zgodna z odpowiednią konwencją nazewnictwa dla centrum IoT. Powinna mieć długość 3–50 znaków i zawierać tylko małe i wielkie litery, cyfry i łączniki („-”). 
+2. Dodaj wartość **iotHubName** do sekcji parametrów.  Nazwa Centrum IoT musi być globalnie unikatowa na platformie Azure, dlatego możesz chcieć dodać unikatowy prefiks lub sufiks do nazwy przykładu lub wybrać nową nazwę. Upewnij się, że nazwa jest zgodna z właściwymi konwencjami nazewnictwa Centrum IoT: długość powinna wynosić 3-50 znaków i może zawierać tylko znaki alfanumeryczne wielkie lub małe litery ("-"). 
 
    ```json
     "parameters": {
@@ -259,7 +259,7 @@ W szablonie zdefiniowanym w ostatnim kroku są używane parametry służące do 
    
    ```
 
-3. Dodaj wartość **provisioningServiceName** do sekcji parametrów. W przypadku zmiany nazwy upewnij się, że jest zgodna z odpowiednią konwencją nazewnictwa usługi IoT Hub Device Provisioning. Powinna mieć długość 3–64 znaków i zawierać tylko małe i wielkie litery, cyfry i łączniki („-”).
+3. Dodaj wartość **provisioningServiceName** do sekcji parametrów. Należy również wybrać globalnie unikatową nazwę dla usługi aprowizacji. Upewnij się, że są zgodne z właściwymi konwencjami nazewnictwa dla IoT Hub Device Provisioning Service: długość powinna wynosić 3-64 znaków i może zawierać tylko wielkie lub małe litery lub łączniki ("-").
 
    ```json
     "parameters": {
@@ -344,10 +344,10 @@ Grupy zasobów i poszczególne zasoby można usuwać również przy użyciu witr
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start zostały wdrożone centrum IoT i wystąpienie usługi Device Provisioning Service, po czym te dwa zasoby zostały połączone ze sobą. Aby dowiedzieć się, jak za pomocą tej konfiguracji zaaprowizować symulowane urządzenie, przejdź do przewodnika Szybki start omawiającego tworzenie symulowanego urządzenia.
+W tym przewodniku szybki start wdrożono Centrum IoT Hub i wystąpienie usługi Device Provisioning Service i połączono te dwa zasoby. Aby dowiedzieć się, jak używać tego Instalatora do aprowizacji symulowanego urządzenia, przejdź do przewodnika Szybki Start dotyczącego tworzenia symulowanego urządzenia.
 
 > [!div class="nextstepaction"]
-> [Przewodnik Szybki start z tworzeniem symulowanego urządzenia](./quick-create-simulated-device.md)
+> [Przewodnik Szybki Start dotyczący tworzenia symulowanego urządzenia](./quick-create-simulated-device.md)
 
 
 <!-- Links -->

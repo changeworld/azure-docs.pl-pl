@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4af238241293f32be296e7a4243b0d2a6fef15dd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931907"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152045"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Szybki Start: korzystanie z modelu możliwości urządzenia do tworzenia urządzenia w wersji zapoznawczej IoT Plug and Play (Windows)
 
@@ -46,36 +46,7 @@ _Parametry połączenia repozytorium modelu firmy_ można znaleźć w portalu [A
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>Przygotowywanie Centrum IoT Hub
-
-Aby ukończyć ten przewodnik Szybki Start, potrzebujesz również usługi Azure IoT Hub w ramach subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Jeśli nie masz Centrum IoT Hub, postępuj zgodnie [z tymi instrukcjami, aby je utworzyć](../iot-hub/iot-hub-create-using-cli.md).
-
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej funkcje Plug and Play IoT są dostępne tylko w centrach IoT, które zostały utworzone w regionach **środkowe stany USA**, **Europa Północna**i **Japonia Wschodnia** .
-
-Uruchom następujące polecenie, aby dodać rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia Cloud Shell:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-Uruchom następujące polecenie, aby utworzyć tożsamość urządzenia w centrum IoT Hub. Zastąp symbole zastępcze **YourIoTHubName** i **YourDevice** własnymi nazwami.
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
-```
-
-Uruchom następujące polecenie, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
-
-Uruchom następujące polecenie, aby pobrać _Parametry połączenia usługi IoT Hub_ dla centrum:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub-windows.md](../../includes/iot-pnp-prepare-iot-hub-windows.md)]
 
 ## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego
 
@@ -212,11 +183,11 @@ Aby sprawdzić poprawność kodu urządzenia za pomocą programu **Azure IoT Exp
 
 1. Wprowadź _Parametry połączenia IoT Hub_ i wybierz pozycję **Połącz**.
 
-1. Po nawiązaniu połączenia zostanie wyświetlona strona Przegląd urządzenia.
+1. Po nawiązaniu połączenia zostanie wyświetlona strona przegląd **urządzeń** .
 
 1. Aby dodać repozytorium firmy, wybierz pozycję **Ustawienia**, a następnie **+ Dodaj źródło definicji modułu**, a następnie pozycję **repozytorium firmy**. Dodaj parametry połączenia repozytorium modelu firmy i wybierz pozycję **Zapisz i Połącz**.
 
-1. Na stronie Przegląd urządzenia Znajdź wcześniej utworzoną tożsamość urządzenia i wybierz ją, aby wyświetlić więcej szczegółów.
+1. Na stronie Przegląd **urządzeń** Znajdź wcześniej utworzoną tożsamość urządzenia. Gdy aplikacja urządzenia jest nadal uruchomiona w wierszu polecenia, sprawdź, czy **stan połączenia** urządzenia w programie Azure IoT Explorer jest raportowany jako _połączony_ (jeśli nie, należy **odświeżyć** do momentu). Wybierz urządzenie, aby wyświetlić więcej szczegółów.
 
 1. Rozwiń interfejs o IDENTYFIKATORze **urn: < YOUR_INTERFACE_NAME >: EnvironmentalSensor: 1** , aby wyświetlić elementy podstawowe Plug and Play IoT — właściwości, polecenia i dane telemetryczne. Nazwa interfejsu, która zostanie wyświetlona, to nazwa wprowadzona podczas tworzenia modelu.
 
@@ -226,7 +197,7 @@ Aby sprawdzić poprawność kodu urządzenia za pomocą programu **Azure IoT Exp
 
 1. Wybierz stronę **właściwości (zapisywalne)** , aby wyświetlić właściwości do zapisu, które można zaktualizować.
 
-1. Rozwiń węzeł **Nazwa**właściwości, Aktualizuj przy użyciu nowej nazwy i wybierz opcję **Aktualizuj modyfikowalną Właściwość**.
+1. Rozwiń węzeł **Nazwa**właściwości, Aktualizuj przy użyciu nowej nazwy i wybierz opcję **Aktualizuj modyfikowalną Właściwość**. 
 
 1. Aby wyświetlić nową nazwę wyświetlaną w kolumnie **raportowane właściwości** , wybierz przycisk **Odśwież** w górnej części strony.
 
@@ -235,6 +206,8 @@ Aby sprawdzić poprawność kodu urządzenia za pomocą programu **Azure IoT Exp
 1. Rozwiń polecenie **Blink** i Ustaw nowy przedział czasu. Wybierz pozycję **Wyślij polecenie** , aby wywołać polecenie na urządzeniu.
 
 1. Przejdź do wiersza polecenia symulowanego urządzenia i zapoznaj się z wydrukowanymi komunikatami potwierdzającymi, aby sprawdzić, czy polecenia zostały wykonane zgodnie z oczekiwaniami.
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

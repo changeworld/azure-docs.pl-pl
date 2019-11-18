@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b0c3487bb77f32483d6d65cd0a4b1f637267eabf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012963"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144357"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzuj konta dewelopera przy użyciu Azure Active Directory na platformie Azure API Management
 
@@ -81,12 +81,16 @@ Po zapisaniu zmian użytkownicy w określonym wystąpieniu usługi Azure AD mog�
 
 ## <a name="add-an-external-azure-ad-group"></a>Dodaj zewnętrzną grupę usługi Azure AD
 
-Po włączeniu dostępu dla użytkowników w wystąpieniu usługi Azure AD można dodać grupy usługi Azure AD w API Management. Następnie można łatwiej zarządzać skojarzeniem deweloperów w grupie z żądanymi produktami.
+Po włączeniu dostępu dla użytkowników w dzierżawie usługi Azure AD można dodać grupy usługi Azure AD do API Management. W związku z tym można kontrolować widoczność produktu przy użyciu grup usługi Azure AD.
 
- > [!IMPORTANT]
- > Aby dodać zewnętrzną grupę usługi Azure AD, należy najpierw skonfigurować wystąpienie usługi Azure AD na karcie **tożsamości** , wykonując procedurę opisaną w poprzedniej sekcji. Ponadto aplikacja musi mieć udzielony dostęp do usługi Azure AD interfejs API programu Graph z uprawnieniami `Directory.Read.All`. 
+Aby dodać zewnętrzną grupę usługi Azure AD do usługi APIM, należy najpierw wykonać poprzednią sekcję. Ponadto zarejestrowana aplikacja musi mieć udzielony dostęp do Azure Active Directory interfejs API programu Graph z uprawnieniami `Directory.ReadAll`, wykonując następujące czynności: 
 
-Możesz dodać zewnętrzne grupy usługi Azure AD z karty **grupy** wystąpienia API Management.
+1. Wróć do rejestracji aplikacji, która została utworzona w poprzedniej sekcji
+2. Kliknij kartę **uprawnienia interfejsu API** , a następnie kliknij przycisk **+ Dodaj przycisk uprawnienia** 
+3. W okienku **uprawnienia do interfejsu API żądania** wybierz kartę **interfejsy API firmy Microsoft** , a następnie przewiń w dół, aby znaleźć kafelek **Azure Active Directory Graph** w sekcji obsługiwane starsze interfejsy API, a następnie kliknij go. Następnie kliknij przycisk **uprawnienia aplikacji** , a następnie wybierz pozycję **katalog.** poddana uprawnienia, a następnie Dodaj uprawnienie przy użyciu przycisku u dołu. 
+4. Kliknij przycisk **Udziel zgody administratora dla {dzierżawca}** , aby przyznać dostęp wszystkim użytkownikom w tym katalogu. 
+
+Teraz możesz dodać zewnętrzne grupy usługi Azure AD z karty **grupy** wystąpienia API Management.
 
 1. Wybierz kartę **Grupy**.
 2. Wybierz przycisk **Dodaj grupę usługi AAD** .

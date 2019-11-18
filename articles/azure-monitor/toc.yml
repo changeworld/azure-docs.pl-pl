@@ -806,10 +806,10 @@
                   href: insights/container-insights-hybrid-setup.md
                 - name: Mapowania regionów
                   href: insights/container-insights-region-mapping.md
-            - name: Analiza
+            - name: Monitorowanie wydajności
               href: insights/container-insights-analyze.md
-            - name: Wyłączanie monitorowania
-              href: insights/container-insights-optout.md
+            - name: Monitorowanie kondycji
+              href: insights/container-insights-health.md
             - name: Wyświetlanie danych na żywo
               items:
                 - name: Dane na żywo (wersja zapoznawcza) — omówienie
@@ -832,6 +832,10 @@
               href: insights/container-insights-agent-config.md
             - name: Aktualizowanie w celu włączenia metryk
               href: insights/container-insights-update-metrics.md
+            - name: Konfiguracja monitorowania kondycji
+              href: insights/container-insights-health-monitors-config.md
+            - name: Wyłączanie monitorowania
+              href: insights/container-insights-optout.md
             - name: Rozwiązywanie problemów
               href: insights/container-insights-troubleshoot.md
         - name: Platforma Docker i monitorowanie kontenerów systemu Windows
@@ -1167,7 +1171,7 @@
               href: platform/autoscale-overview.md
             - name: Przewodnik
               href: platform/autoscale-get-started.md
-            - name: Ustawienia
+            - name: Ustawienia konfiguracji
               href: platform/autoscale-understanding-settings.md
             - name: Najlepsze praktyki
               href: platform/autoscale-best-practices.md
@@ -1183,6 +1187,10 @@
               href: platform/autoscale-virtual-machine-scale-sets.md
             - name: Używanie elementów webhook i powiadomień e-mail
               href: platform/autoscale-webhook-email.md
+            - name: Rozwiązywanie problemów
+              href: platform/autoscale-troubleshoot.md
+            - name: Schematy dzienników zasobów
+              href: platform/autoscale-resource-log-schema.md
         - name: PowerShell
           items:
             - name: Zarządzanie przy użyciu programu PowerShell

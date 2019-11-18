@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7ae388488de32bb106ae29f975302953cfcb2e9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072347"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123031"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Wprowadzenie do Azure Cost Management dla partnerów
 
-Azure Cost Management jest natywnie dostępna dla partnerów, którzy zostali dołączeni do umowy klienta firmy Microsoft i kupili plan platformy Azure. W tym artykule wyjaśniono, w jaki sposób partnerzy używają funkcji [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) . Opisano w nim również, jak partnerzy zapewniają klientom Cost Management dostęp do nich. Klienci mogą korzystać z funkcji Cost Management, jeśli są włączone przez partnera CSP.
+Azure Cost Management jest natywnie dostępna dla partnerów, którzy zostali dołączeni do umowy klienta firmy Microsoft i [kupili plan platformy Azure](/partner-center/purchase-azure-plan). W tym artykule wyjaśniono, w jaki sposób partnerzy używają [Azure Cost Management](index.yml) funkcji do wyświetlania kosztów subskrypcji w planie platformy Azure. Opisano w nim również, jak partnerzy zapewniają klientom Cost Management dostęp do nich. Klienci mogą korzystać z funkcji Cost Management, jeśli są włączone przez partnera CSP.
 
 Partnerzy programu CSP używają Cost Management do:
 
@@ -147,25 +147,81 @@ Widoki amortyzowane i rzeczywiste koszty wystąpień zarezerwowanych w zakresach
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analizowanie kosztów w analizie kosztów
 
-Partnerzy mogą eksplorować i analizować koszty w analizie kosztów od klientów dla określonego klienta lub dla faktury.
+Partnerzy mogą eksplorować i analizować koszty w analizie kosztów od klientów dla określonego klienta lub dla faktury. W widoku [Analiza kosztów](quick-acm-cost-analysis.md) można także [zapisywać widoki](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) i eksportować dane do [plików CSV i PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis).
 
-Poniższe pola są dostępne w plikach szczegółów użycia i interfejsy API Cost Management. W celu przeanalizowania kosztów według wielu pól można użyć funkcji filtrowania i grupowania przez funkcje w analizie kosztów. Aby wyświetlić pełną listę pól, zobacz [Cost Management pól danych](understand-cost-mgt-data.md#cost-management-data-fields).
+W celu przeanalizowania kosztów według wielu pól można użyć funkcji filtrowania i grupowania przez funkcje w analizie kosztów. Pola specyficzne dla partnera są wyświetlane w następnej sekcji.
 
-| Nazwa pola | Opis |
-| --- | --- |
-| CustomerTenantID | Identyfikator dzierżawy Azure Active Directory subskrypcji klienta&#39;. |
-| CustomerName | Nazwa dzierżawy usługi Azure Active Directory dla subskrypcji klienta&#39;s. |
-| CustomerTenantDomainName | Nazwa domeny dla dzierżawy Azure Active Directory subskrypcji klienta&#39;. |
-| PartnerTenantID | Identyfikator dzierżawy Azure Active Directory&#39;partnera. |
-| PartnerName | Nazwa partnera Azure Active Directory dzierżawy. |
-| ResellerMPNID | MPNID dla odsprzedawcy skojarzonego z subskrypcją. |
-| costinUSD | Szacowany koszt koszt rozszerzony lub mieszany przed opodatkowaniem w USD. |
-| paygCostInBillingCurrency | Pokazuje koszty w przypadku cen detalicznych. W walucie rozliczeniowej są wyświetlane ceny płatności zgodnie z rzeczywistym użyciem. Dostępne tylko w zakresach RBAC. |
-| paygCostInUSD | Pokazuje koszty w przypadku cen detalicznych. W USD są wyświetlane ceny z opcją płatność zgodnie z rzeczywistym użyciem. Dostępne tylko w zakresach RBAC. |
-| partnerEarnedCreditRate | Kwota rabatu stosowana w przypadku, gdy Partner uzyskał kredyt (PEC) w oparciu o dostęp do linku administratora partnera. |
-| partnerEarnedCreditApplied | Wskazuje, czy jest stosowany kredyt uzyskany przez partnera. |
+## <a name="data-fields"></a>Pola danych
 
-W widoku [Analiza kosztów](quick-acm-cost-analysis.md) można także [zapisywać widoki](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) i eksportować dane do [plików CSV i PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis).
+Następujące pola danych znajdują się w plikach szczegółów użycia i interfejsów API Cost Management. Jeśli jest dostępna, są wyświetlane równoważne informacje Centrum partnerskiego. W przypadku następujących pogrubionych pól partnerzy mogą używać funkcji filtrowania i grupowania przez funkcje w analizie kosztów, aby analizować koszty według wielu pól. Pola pogrubione dotyczą tylko umów klienta firmy Microsoft obsługiwanych przez partnerów.
+
+| **Nazwa pola** | **Opis** | **Odpowiednik Centrum partnerskiego** |
+| --- | --- | --- |
+| invoiceId | Identyfikator faktury wyświetlany na fakturze dla określonej transakcji. | Numer faktury, w której jest pokazywana transakcja. |
+| previousInvoiceID | Odwołanie do oryginalnej faktury ma zwrot (koszt ujemny). Wypełniane tylko wtedy, gdy istnieje zwrot. | Nie dotyczy |
+| billingAccountName | Nazwa konta rozliczeniowego reprezentującego partnera. Naliczane są wszystkie koszty dla klientów, którzy zostali dołączeni do umowy klienta firmy Microsoft i klientów dostawcy usług kryptograficznych, którzy mieli uprawnienia do zakupów takich jak SaaS, Azure Marketplace i rezerwacje. | Nie dotyczy |
+| billingAccountID | Identyfikator konta rozliczeniowego reprezentujący partnera. | Identyfikator głównego elementu Commerce partnera MCAPI. Używane w żądaniu, ale nie zawarte w odpowiedzi.|
+| billingProfileID | Identyfikator profilu rozliczeń, który grupuje koszty między faktury w ramach pojedynczej waluty rozliczeniowej dla klientów, którzy zostali dołączeni do umowy klienta firmy Microsoft i klientów z dostawcami usług kryptograficznych, którzy dokonywali zakupów, takich jak SaaS, Azure Marketplace i dokonując. | Identyfikator grupy rozliczeń partnera MCAPI. Używane w żądaniu, ale nie zawarte w odpowiedzi. |
+| billingProfileName | Nazwa profilu rozliczeń, który grupuje koszty między faktury w ramach pojedynczej waluty rozliczeniowej dla klientów, którzy zostali dołączeni do umowy klienta firmy Microsoft i klientów korzystających z usług dostawcy CSP, którzy dokonywali zakupów, takich jak SaaS, Azure Marketplace i dokonując. | Nie dotyczy |
+| invoiceSectionName | Nazwa projektu, który jest rozliczany na podstawie faktury. Nie dotyczy umów klienta firmy Microsoft dołączonych przez partnerów. | Nie dotyczy |
+| invoiceSectionID | Identyfikator projektu, który jest rozliczany na podstawie faktury. Nie dotyczy umów klienta firmy Microsoft dołączonych przez partnerów. | Nie dotyczy |
+| **CustomerTenantID** | Identyfikator dzierżawy Azure Active Directory subskrypcji klienta. | Identyfikator organizacyjny klienta — Azure Active Directory klienta TenantID. |
+| **CustomerName** | Nazwa dzierżawy usługi Azure Active Directory dla subskrypcji klienta. | Nazwa organizacji klienta, jak pokazano w centrum partnerskim. Ważne w przypadku uzgadniania faktury z informacjami o systemie. |
+| **CustomerTenantDomainName** | Nazwa domeny dla dzierżawy Azure Active Directory subskrypcji klienta. | Klient Azure Active Directory domeny dzierżawcy. |
+| **PartnerTenantID** | Identyfikator dzierżawcy Azure Active Directory partnera. | Partner Azure Active Directory identyfikator dzierżawcy, który został wywołany jako identyfikator partnera w formacie identyfikatora GUID. |
+| **PartnerName** | Nazwa partnera Azure Active Directory dzierżawy. | Nazwa partnera. |
+| **ResellerMPNID** | MPNID dla odsprzedawcy skojarzonego z subskrypcją. | IDENTYFIKATOR MPN odsprzedawcy w ramach rekordu dla subskrypcji. Niedostępne dla bieżącego działania. |
+| costCenter | Centrum kosztów skojarzone z subskrypcją. | Nie dotyczy |
+| billingPeriodStartDate | Data rozpoczęcia okresu rozliczeniowego, jak pokazano na fakturze. | Nie dotyczy |
+| billingPeriodEndDate | Data końcowa okresu rozliczeniowego, jak pokazano na fakturze. | Nie dotyczy |
+| servicePeriodStartDate | Data rozpoczęcia okresu oceny, gdy użycie usługi zostało ocenione pod kątem opłat. Ceny usług platformy Azure są określane na okres oceniania. | ChargeStartDate w centrum partnerskim. Data rozpoczęcia cyklu rozliczania, z wyjątkiem przypadków, gdy daty są przedstawiane wcześniej nieodpłatne ukryte dane użycia z poprzedniego okresu rozliczeniowego. Czas jest zawsze początku dnia, 0:00. |
+| servicePeriodEndDate | Data zakończenia okresu, w którym oceniono użycie usługi pod kątem opłat. Ceny usług platformy Azure są ustalane na podstawie okresu rankingu. | Nie dotyczy |
+| date | W przypadku danych dotyczących zużycia na platformie Azure pokazuje datę użycia jako sklasyfikowaną. W przypadku wystąpienia zarezerwowanego jest wyświetlana data zakupu. W przypadku naliczania opłat cyklicznych i jednorazowych opłat, takich jak Marketplace i pomoc techniczna, jest wyświetlana data zakupu. | Nie dotyczy |
+| Produktu | Identyfikator produktu, który ma naliczone opłaty według zużycia lub zakupu. Jest to połączenie klucza productID i identyfikatora skuId, jak pokazano w centrum partnerskim. | Identyfikator produktu. |
+| product | Nazwa produktu, który ma naliczone opłaty według zużycia lub zakupu, jak pokazano na fakturze. | Nazwa produktu w wykazie. |
+| serviceFamily | Pokazuje rodzinę usług zakupionych lub naliczanych produktów. Na przykład Storage lub COMPUTE. | Nie dotyczy |
+| productOrderID | Identyfikator elementu zawartości lub nazwy planu platformy Azure, do którego należy subskrypcja. Na przykład usługa Azure plan. | Nie dotyczy |
+| productOrderName | Nazwa planu platformy Azure, do którego należy subskrypcja. Na przykład usługa Azure plan. | Nie dotyczy|
+| consumedService | Użycie usługi (starsza taksonomia) w ramach szczegółowych informacji o użyciu starszych wersji EA. | Usługa wyświetlana w centrum partnerskim. Na przykład Microsoft. Storage, Microsoft. COMPUTE i Microsoft. operationalinsights. |
+| meterID | Mierzony identyfikator dla zmierzonego zużycia. | Identyfikator używanego licznika. |
+| meterName | Określa nazwę miernika do zmierzonego zużycia. | Nazwa zużytego miernika. |
+| meterCategory | Określa usługę najwyższego poziomu do użycia. | Usługa najwyższego poziomu do użycia. |
+| meterSubCategory | Definiuje typ lub podkategorię usługi platformy Azure, która może wpływać na stawkę. | Typ usługi platformy Azure, który może mieć wpływ na stawkę.|
+| meterRegion | Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych. | Regionalna Lokalizacja centrum danych dla usług, jeśli ma to zastosowanie i wypełnione. |
+| subscription ID | Unikatowy identyfikator wygenerowany przez firmę Microsoft dla subskrypcji platformy Azure. | Nie dotyczy |
+| subscriptionName | Nazwa subskrypcji platformy Azure. | Nie dotyczy |
+| Termin | Przedstawia okres ważności oferty. Na przykład wystąpienia zarezerwowane pokazują 12 miesięcy rocznego warunku wystąpienia zarezerwowanego. W przypadku jednorazowych zakupów lub cyklicznych zakupów termin wyświetla jeden miesiąc dla SaaS, Azure Marketplace i pomocy technicznej. Nie dotyczy użycia platformy Azure. | Nie dotyczy |
+| PublisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Typ wydawcy, który identyfikuje wydawcę jako pierwszej strony, odsprzedawcę lub inną osobę. | Nie dotyczy |
+| partNumber | Numer części nieużywanych wystąpień zarezerwowanych i usług Azure Marketplace. | Nie dotyczy |
+| publisherName | Nazwa wydawcy usługi, w tym wydawcy firmy Microsoft lub innych firm. | Nazwa wydawcy produktu.|
+| reservationId | Identyfikator zakupu wystąpienia zarezerwowanego. | Nie dotyczy |
+| reservationName | Nazwa wystąpienia zarezerwowanego. | Nie dotyczy |
+| reservationOrderId | Identyfikator IDZamówienia dla wystąpienia zarezerwowanego. | Nie dotyczy |
+| frequency | Częstotliwość płatności dla wystąpienia zarezerwowanego. | Nie dotyczy |
+| resourceGroup | Nazwa grupy zasobów platformy Azure używanej do zarządzania zasobami cyklu życia. | Nazwa grupy zasobów. |
+| Identyfikator instanceID (lub) ResourceID | Identyfikator wystąpienia zasobu. | Przedstawiane jako ResourceURI, które obejmują pełne właściwości zasobów. |
+| resourceLocation | Nazwa lokalizacji zasobu. | Lokalizacja zasobu. |
+| Lokalizacja | Znormalizowana lokalizacja zasobu. | Nie dotyczy |
+| effectivePrice | Obowiązująca cena jednostkowa usługi w walucie cenowej. Unikatowy dla produktu, rodziny usług, miernika i oferty. Używany z cenami w arkuszu cen dla konta rozliczeniowego. W przypadku cen warstwowych lub uwzględnionych ilości zostanie wyświetlona połączona cena zużycia. | Cena jednostkowa po dokonaniu korekt. |
+| Liczba | Zmierzona ilość zakupione lub zużyte. Ilość licznika użyta w okresie rozliczeniowym. | Liczba jednostek. Upewnij się, że jest ona zgodna z informacjami w systemie rozliczeniowym podczas uzgadniania. |
+| unitOfMeasure | Identyfikuje jednostkę, w której jest naliczana opłata za usługę. Na przykład GB i godziny. | Identyfikuje jednostkę, w której jest naliczana opłata za usługę. Na przykład GB, godzin i 10, 000. |
+| pricingCurrency | Waluta określająca cenę jednostkową. | Waluta w priceList.|
+| billingCurrency | Waluta definiująca koszt naliczany. | Waluta regionu geograficznego klienta. |
+| chargeType | Określa typ opłaty reprezentowanej przez koszt Azure Cost Management, na przykład zakup i zwrot. | Typ opłaty lub korekty. Niedostępne dla bieżącego działania. |
+| costinBillingCurrency | Koszt rozszerzony lub zmieszany koszt przed opodatkowaniem w walucie rozliczeniowej. | Nie dotyczy |
+| costinPricingCurrency | Koszt rozszerzony lub zmieszany koszt przed opodatkowaniem w walucie cenowej w celu skorelowania cen. | Nie dotyczy |
+| **costinUSD** | Szacowany koszt koszt rozszerzony lub mieszany przed opodatkowaniem w USD. | Nie dotyczy |
+| **paygCostInBillingCurrency** | Pokazuje koszty w przypadku cen detalicznych. W walucie rozliczeniowej są wyświetlane ceny płatności zgodnie z rzeczywistym użyciem. Dostępne tylko w zakresach RBAC. | Nie dotyczy |
+| **paygCostInUSD** | Pokazuje koszty w przypadku cen detalicznych. W USD są wyświetlane ceny z opcją płatność zgodnie z rzeczywistym użyciem. Dostępne tylko w zakresach RBAC. | Nie dotyczy |
+| exchangeRate | Kurs wymiany używany do konwersji z waluty cenowej na walutę rozliczeń. | Określany jako PCToBCExchangeRate w centrum partnerskim. Waluta cennika dla kursu wymiany waluty.|
+| exchangeRateDate | Data kursu wymiany używanego do konwersji z waluty cenowej na walutę rozliczeń. | Określany jako PCToBCExchangeRateDat w centrum partnerskim. Waluta cennika na datę kursu wymiany waluty.|
+| isAzureCreditEligible | Wskazuje, czy koszt jest uprawniony do płatności za środki na korzystanie z platformy Azure. | Nie dotyczy |
+| serviceInfo1 | Starsze pole, które przechwytuje opcjonalne metadane specyficzne dla usługi. | Wewnętrzne metadane usługi platformy Azure. |
+| serviceInfo2 | Starsze pole, które przechwytuje opcjonalne metadane specyficzne dla usługi. | Informacje o usłudze. Na przykład typ obrazu dla maszyny wirtualnej i nazwy usługodawcy internetowego dla ExpressRoute.|
+| additionalInfo | Metadane dotyczące konkretnej usługi. Na przykład typ obrazu dla maszyny wirtualnej. | Wszelkie dodatkowe informacje, które nie są objęte innymi kolumnami. Metadane specyficzne dla usługi. Na przykład typ obrazu dla maszyny wirtualnej.|
+| tagów | Tag przypisany do miernika. Grupowanie rekordów rozliczeń przy użyciu tagów. Można na przykład użyć tagów do dystrybucji kosztów według działu, który używa miernika. | Tagi dodane przez klienta.|
+| **partnerEarnedCreditRate** | Kwota rabatu stosowana w przypadku, gdy Partner uzyskał kredyt (PEC) w oparciu o dostęp do linku administratora partnera. | Stawka w wysokości (PEC) uzyskana przez partnera. Na przykład 0% lub 15%. |
+| **partnerEarnedCreditApplied** | Wskazuje, czy jest stosowany kredyt uzyskany przez partnera. | Nie dotyczy |
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>Wyświetlanie kosztów zasobów dla partnerów (PEC)
 

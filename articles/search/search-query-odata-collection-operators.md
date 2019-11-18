@@ -1,7 +1,7 @@
 ---
 title: Odwołanie operatora zbierania danych OData
 titleSuffix: Azure Cognitive Search
-description: Operatory kolekcji OData, dowolne i wszystkie oraz wyrażenia lambda w zapytaniach Wyszukiwanie poznawcze platformy Azure.
+description: Podczas tworzenia wyrażeń filtru w usłudze Azure Wyszukiwanie poznawcze zapytania należy używać operatorów "any" i "All" w wyrażeniach lambda, gdy filtr znajduje się w kolekcji lub polu kolekcji złożonej.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fdb250a844b70cef4f6941debbb1fa7450874932
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793400"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113238"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Operatory kolekcji OData w usłudze Azure Wyszukiwanie poznawcze — `any` i `all`
 

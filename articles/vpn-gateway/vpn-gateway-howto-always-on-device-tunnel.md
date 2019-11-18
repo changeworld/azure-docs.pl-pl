@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie tunelu zawsze włączone VPN dla VPN Gateway
+title: Konfigurowanie tunelu VPN Always-On
+titleSuffix: Azure VPN Gateway
 description: Procedura konfigurowania zawsze włączone tunel VPN dla VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841139"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146395"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurowanie tunelu zawsze włączonego urządzenia sieci VPN
 
@@ -155,7 +156,7 @@ Po skonfigurowaniu bramy sieci wirtualnej i zainstalowaniu certyfikatu klienta w
    ![pliku](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Wyszukaj wpis **MachineCertTest** , a następnie kliknij przycisk **Połącz**.
 
-   ![Łączenie](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Połączenie](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Jeśli połączenie zakończy się pomyślnie, należy ponownie uruchomić komputer. Tunel zostanie automatycznie nawiązane.
 
 ## <a name="cleanup"></a>Czyszczenie

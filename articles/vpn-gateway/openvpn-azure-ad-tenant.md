@@ -1,5 +1,5 @@
 ---
-title: 'Tworzenie dzierżawy Azure Active Directory dla połączeń sieci VPN P2S: uwierzytelnianie usługi Azure AD | Microsoft Docs'
+title: 'VPN Gateway: dzierżawa usługi Azure AD dla połączeń sieci VPN P2S: uwierzytelnianie usługi Azure AD'
 description: Aby nawiązać połączenie z siecią wirtualną przy użyciu uwierzytelniania usługi Azure AD, możesz użyć sieci VPN P2S
 services: vpn-gateway
 author: anzaman
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: alzam
-ms.openlocfilehash: a7f17890c8422c9a9be7620f5ff1441390c60257
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 73c379d914f37de351165c19e3d73425e9a202b2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075320"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151867"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Tworzenie dzierżawy Azure Active Directory dla połączeń protokołu OpenVPN P2S
 
@@ -84,7 +84,7 @@ Wykonaj kroki opisane w [tym artykule](../active-directory/fundamentals/add-user
 
 6. Wybierz pozycję **Akceptuj** po wyświetleniu monitu.
 
-    ![odebrać](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Odebrać](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. W ramach usługi Azure AD w **aplikacjach dla przedsiębiorstw**zostanie wyświetlona lista **Azure VPN** .
 

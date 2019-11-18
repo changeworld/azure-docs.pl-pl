@@ -1,7 +1,7 @@
 ---
 title: Wyszukiwanie filmów wideo przy użyciu interfejs API wyszukiwania wideo Bing
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wysyłać żądania wyszukiwania do interfejsu API wyszukiwania wideo Bing.
+description: Wyszukiwanie wideo Bing APIfinds i zwraca odpowiednie wideo z Internetu, udostępnia kilka funkcji inteligentnych i ukierunkowanych na pobieranie wideo w sieci Web.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512418"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111439"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Wyszukiwanie wideo za pomocą interfejsu API wyszukiwania wideo Bing
 

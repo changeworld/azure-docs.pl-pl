@@ -1,6 +1,6 @@
 ---
 title: Azure Container Instances grupy kontenerów
-description: Informacje o tym, jak grupy wielokontenerowe działają w Azure Container Instances
+description: Więcej informacji na temat grup kontenerów w Azure Container Instances, kolekcja wystąpień, które współużytkują cykl życia i zasoby, takie jak Storage i Network
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ef6745e18a0df3ee0a572f106d1507d0fca32ac2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904447"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150203"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
 Zasób najwyższego poziomu w Azure Container Instances jest *grupą kontenerów*. W tym artykule opisano, co to są grupy kontenerów i jakie typy scenariuszy są włączane.
 
-## <a name="how-a-container-group-works"></a>Jak działa Grupa kontenerów
+## <a name="what-is-a-container-group"></a>Co to jest Grupa kontenerów?
 
 Grupa kontenerów to kolekcja kontenerów, które są planowane na tym samym komputerze-hoście. Kontenery w grupie kontenerów współdzielą cykl życia, zasoby, sieć lokalną i woluminy magazynu. Jest to podobne w *koncepcji w* [Kubernetes][kubernetes-pod].
 

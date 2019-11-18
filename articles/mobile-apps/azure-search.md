@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 1e3e198c38215ceacbe43961bf93ab906e5ccc09
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 335df16e6a6436485521611aee0f0a62edca8a3b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846257"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123453"
 ---
 # <a name="ai-powered-cloud-service-with-azure-cognitive-search"></a>Usługa w chmurze oparta na dyskach AI z usługą Azure Wyszukiwanie poznawcze
 [Azure wyszukiwanie poznawcze](https://azure.microsoft.com/services/search/) to rozwiązanie w chmurze typu "wyszukiwanie jako usługa", które udostępnia deweloperom interfejsy API i narzędzia umożliwiające dodawanie bogatego środowiska wyszukiwania za pośrednictwem prywatnej, heterogenicznej zawartości w aplikacjach sieci Web, mobilnych i firmowych. Niestandardowy kod wywołuje pozyskiwanie danych (indeksowanie) w celu utworzenia i załadowania indeksu. Po drugiej stronie kod aplikacji wystawia żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kliencie przy użyciu funkcji z usługi Azure Wyszukiwanie poznawcze, z wykonywaniem zapytań w odniesieniu do utrwalonego indeksu tworzonego, własnego i przechowywanego w usłudze.
@@ -33,7 +33,7 @@ Znajdź szczegółowy opis [funkcji](/azure/search/search-what-is-azure-search#f
 - [Azure Portal](https://portal.azure.com) 
 - [Dokumentacja](/azure/search/)
 - [Przewodnik dla deweloperów](https://azure.microsoft.com/resources/iot-developers-guide/)
-- [Jak korzystać z usługi Azure Wyszukiwanie poznawcze](/azure/search/search-what-is-azure-search#how-to-use-azure-search)
+- [Jak korzystać z usługi Azure Wyszukiwanie poznawcze](/azure/search/search-what-is-azure-search#how-to-use-azure-cognitive-search)
 - [Przewodniki Szybki start](/azure/search/search-create-service-portal)
 
   

@@ -10,18 +10,18 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 986e146e2129d26aa6accd747c89e12462d46667
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: cf9a57b58740d1a759e00f10f6f327d605e91148
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931137"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123642"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
 W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
-Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
+Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
 
 ## <a name="2019-11-11"></a>2019-11-11
 
@@ -228,7 +228,7 @@ Zapoznaj się z [witryną internetową pakietu](https://azure.github.io/azureml-
     + Dodano psutil jako zależność `automl` i uwzględnione psutil jako zależność Conda w amlcompute.
     + Rozwiązano problem związany z algorytmem heurystycznego spowolnienia i oknem kroczącym dla danych prognozowania, który określa niektóre serie mogące spowodować błędy algebry liniowe
       + Dodano drukowanie dla parametrów z algorytmem heurystycznym określonych w przebiegach prognozowania.
-  + **[Azure — contrib — datadryf](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
+  + **Azure — contrib — datadryf**
     + Dodano ochronę podczas tworzenia metryk danych wyjściowych, jeśli w pierwszej sekcji nie ma dryfu poziomu zestawu danych.
   + **Azure-contrib — interpretacja**
     + Nazwa pakietu "Azure-contrib-wyjaśnij" została zmieniona na "Azure-contrib-Interpretuj"
@@ -280,16 +280,16 @@ Zapoznaj się z [witryną internetową pakietu](https://azure.github.io/azureml-
         experiment2 = Experiment(workspace, "Active Experiment")
         experiment1.reactivate(new_name="Previous Active Experiment")
         ```
-        Lista metod statycznych [()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly--) na eksperymentie może przyjmować filtr nazw i filtru widoku. Wartości ViewType są "ACTIVE_ONLY", "ARCHIVED_ONLY" i "ALL". Przykład: 
+        Lista metod statycznych [()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-) na eksperymentie może przyjmować filtr nazw i filtru widoku. Wartości ViewType są "ACTIVE_ONLY", "ARCHIVED_ONLY" i "ALL". Przykład: 
         
         ```py
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
     + Obsługa użycia środowiska do wdrażania modeli i aktualizacji usługi.
-  + **[Azure — datadryfowanie](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
-    + Atrybut show klasy [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector) nie będzie obsługiwał opcjonalnego argumentu "with_details". Atrybut show będzie zawierał tylko współczynnik dryfu danych i udział danych w kolumnach funkcji.
-    + Zmiany zachowania [get_output](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector#get-output-start-time--end-time--run-id-none--daily-latest-only-true-) funkcji DataDriftDetector:
+  + **[Azure — datadryfowanie](https://docs.microsoft.com/python/api/azureml-datadrift)**
+    + Atrybut show klasy [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) nie będzie obsługiwał opcjonalnego argumentu "with_details". Atrybut show będzie zawierał tylko współczynnik dryfu danych i udział danych w kolumnach funkcji.
+    + DataDriftDetector funkcja [get_output]https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) zmiany zachowania:
       + Start_time parametru wejściowego, end_time są opcjonalne zamiast obowiązkowe;
       + Wejście start_time i/lub end_time z określonym run_id w tym samym wywołaniu spowoduje wyjątek błędu wartości, ponieważ wykluczają się wzajemnie. 
       + Według danych wejściowych start_time i/lub end_time zostaną zwrócone tylko wyniki zaplanowanego uruchomienia. 
@@ -909,9 +909,9 @@ Przywrócono zmianę, która zwiększyła wydajność, ponieważ powodowała to 
 + **Funkcje w wersji zapoznawczej**
     + Integracja z usługą [MLflow](https://mlflow.org) 1.0.0 Tracking za pomocą pakietu Azure-MLflow ([przykładowe notesy](https://aka.ms/azureml-mlflow-examples)).
     + Prześlij Notes Jupyter jako przebieg. [Dokumentacja interfejsu API](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + Publiczna wersja zapoznawcza narzędzia do [wykrywania dryfów danych](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) za poorednictwem pakietu Azure-contrib-datadryfing ([przykładowe notesy](https://aka.ms/azureml-datadrift-example)). Dryfowanie danych jest jednym z najważniejszych powodów, w których dokładność modelu ulega obniżeniu w miarę upływu czasu. Zdarza się to, gdy dane dostarczane do modelu w środowisku produkcyjnym różnią się od danych, na których jest szkolony model. Narzędzie AML dryfowania danych ułatwia Klientowi monitorowanie dryfowania danych i wysyłanie alertów w przypadku wykrycia dryfu. 
+    + Publiczna wersja zapoznawcza narzędzia do [wykrywania dryfów danych](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) za poorednictwem pakietu Azure-contrib-datadryfing ([przykładowe notesy](https://aka.ms/azureml-datadrift-example)). Dryfowanie danych jest jednym z najważniejszych powodów, w których dokładność modelu ulega obniżeniu w miarę upływu czasu. Zdarza się to, gdy dane dostarczane do modelu w środowisku produkcyjnym różnią się od danych, na których jest szkolony model. Narzędzie AML dryfowania danych ułatwia Klientowi monitorowanie dryfowania danych i wysyłanie alertów w przypadku wykrycia dryfu. 
 
-+ **Istotne zmiany**
++ **Fundamentalne zmiany**
 
 + **Poprawki i ulepszenia błędów**
   + RunConfiguration Załaduj i Zapisz obsługuje określenie pełnej ścieżki pliku z pełnymi kopiami zapasowymi dla poprzedniego zachowania.
@@ -1139,7 +1139,7 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure Machine Learning zestawu SDK 1.1.0 przygotowywania danych
 
-+ **Istotne zmiany**
++ **Fundamentalne zmiany**
   + Koncepcja pakietu przygotowywania danych jest przestarzała i nie jest już obsługiwana. Zamiast utrwalać wiele przepływów elementów w jednym pakiecie, można utrwalać przepływy elementów pojedynczo.
     + Przewodnik: [otwieranie i zapisywanie notesu dataflows](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -1250,12 +1250,12 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
   + Ulepszona wydajność uzyskiwania profilów danych.
   + Rozwiązano drobne usterki związane z raportowaniem błędów.
   
-### <a name="azure-portal-new-features"></a>Azure Portal: nowe funkcje
+### <a name="azure-portal-new-features"></a>Witryna Azure portal: nowe funkcje
 + Nowe środowisko przeciągania i upuszczania wykresów w raportach. Użytkownicy mogą przeciągać kolumnę lub atrybut z obszaru wykresu, w którym system automatycznie wybierze odpowiedni typ wykresu dla użytkownika na podstawie typu danych. Użytkownicy mogą zmienić typ wykresu na inne odpowiednie typy lub dodać dodatkowe atrybuty.
 
     Obsługiwane typy wykresów:
     - Wykres liniowy
-    - Razem
+    - Histogram
     - Skumulowany wykres słupkowy
     - Skrzynka Box
     - Wykres punktowy
@@ -1303,11 +1303,11 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
 + **Aktualizacje**
   * [Przykładowe notesy](https://aka.ms/aml-data-prep-notebooks) dla samouczków rozpoczynających pracę, analizy przypadków i przewodniki.
 
-## <a name="2018-12-04-general-availability"></a>2018-12-04: ogólna dostępność
+## <a name="2018-12-04-general-availability"></a>2018--12 04: ogólna dostępność
 
 Azure Machine Learning jest teraz ogólnie dostępna.
 
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning obliczeń
+### <a name="azure-machine-learning-compute"></a>Usługi Azure Machine Learning obliczeń
 W tej wersji ogłaszamy nowe zarządzane środowisko obliczeniowe za pomocą [obliczeń Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute). Ten obiekt docelowy obliczeń zastępuje Azure Batch AI obliczeń dla Azure Machine Learning. 
 
 Ten obiekt docelowy obliczeń:
@@ -1318,212 +1318,212 @@ Ten obiekt docelowy obliczeń:
 + Obsługa zasobów procesora CPU i procesora GPU 
 + Umożliwia korzystanie z maszyn wirtualnych o niskim priorytecie w celu obniżenia kosztów
 
-Azure Machine Learning obliczeń można utworzyć w języku Python przy użyciu Azure Portal lub interfejsu wiersza polecenia. Należy ją utworzyć w regionie obszaru roboczego i nie może zostać dołączony do żadnego innego obszaru roboczego. Ten obiekt docelowy obliczeń używa kontenera Docker dla przebiegu i pakuje zależności, aby replikować to samo środowisko we wszystkich węzłach.
+Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku Python, za pomocą witryny Azure portal lub interfejsu wiersza polecenia. Należy utworzyć w regionie Twojego obszaru roboczego i nie można dołączyć z innym obszarem roboczym. Ten obiekt docelowy obliczeń używa kontenera Docker dla przebiegu i pakuje zależności, aby replikować to samo środowisko we wszystkich węzłach.
 
 > [!Warning]
-> Zalecamy utworzenie nowego obszaru roboczego do użycia Azure Machine Learning COMPUTE. Istnieje zdalna szansa, że użytkownicy próbujący utworzyć Azure Machine Learning obliczeń z istniejącego obszaru roboczego mogą zobaczyć błąd. Istniejące obliczenia w obszarze roboczym powinny nadal funkcjonować bez zmian.
+> Zalecamy utworzenie nowego obszaru roboczego, aby użyć obliczeniowego usługi Azure Machine Learning. Brak zdalnego prawdopodobieństwo, że w trakcie tworzenia obliczeniowego usługi Azure Machine Learning z istniejącym obszarem roboczym użytkownicy będą widzieć błąd. Istniejących zasobów obliczeniowych, w obszarze roboczym będą nadal działać bez zmian.
 
-### <a name="azure-machine-learning-sdk-for-python-v102"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.2
-+ **Istotne zmiany**
-  + W tej wersji usuwamy obsługę tworzenia maszyny wirtualnej z Azure Machine Learning. Nadal możesz dołączyć istniejącą maszynę wirtualną w chmurze lub zdalny serwer lokalny. 
-  + Usuwamy również pomoc techniczną dla usługi Batchai job, która powinna być obsługiwana za pomocą obliczeń Azure Machine Learning teraz.
+### <a name="azure-machine-learning-sdk-for-python-v102"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.2
++ **Fundamentalne zmiany**
+  + W tej wersji zostaną usunięte obsługę tworzenia maszyny Wirtualnej z usługi Azure Machine Learning. Nadal możesz dołączyć istniejącej chmury maszyny Wirtualnej lub zdalnej na serwerze lokalnym. 
+  + Obsługa BatchAI, które powinny być wspierane za pośrednictwem obliczeniowego usługi Azure Machine Learning teraz również zostaną usunięte.
 
 + **Nowy**
-  + W przypadku potoków usługi Machine Learning:
+  + Dla potoków uczenia maszynowego:
     + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
     + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
-+ **Aktualny**
-  + W przypadku potoków usługi Machine Learning:
++ **zaktualizowane**
+  + Dla potoków uczenia maszynowego:
     + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) teraz akceptuje runconfig
     + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) teraz kopiuje do i z źródła danych SQL
-    + Zaplanuj funkcjonalność w zestawie SDK, aby utworzyć i zaktualizować harmonogramy uruchamiania opublikowanych potoków
+    + Planowanie funkcji zestawu SDK do tworzenia i aktualizowania harmonogramy uruchamiania potoków opublikowane
 
 <!--+ **Bugs fixed**-->
 
-### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure Machine Learning zestawu SDK 0.5.2 przygotowywania danych
-+ **Istotne zmiany** 
-  * Zmieniono nazwę `SummaryFunction.N` na `SummaryFunction.Count`.
+### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Zestaw SDK v0.5.2 przeznaczonego do przygotowania danych usługi Azure Machine Learning
++ **Fundamentalne zmiany** 
+  * `SummaryFunction.N` Nazwa została zmieniona na `SummaryFunction.Count`.
   
 + **Poprawki błędów**
-  * Użyj najnowszego tokenu uruchamiania AML podczas odczytywania danych i zapisywania ich w magazynach danych na zdalnych uruchomieniach. Wcześniej, jeśli token uruchamiania AML został zaktualizowany w języku Python, środowisko uruchomieniowe przygotowywania danych nie zostanie zaktualizowane przy użyciu zaktualizowanego tokenu uruchamiania AML.
-  * Dodatkowe bardziej wyraźniejsze komunikaty o błędach
+  * Użyj najnowszej AML Uruchom tokenu podczas odczytywanie z oraz zapisywanie do magazynów danych na zdalnych przebiegów. Wcześniej Jeśli tokenu Uruchom AML zostanie zaktualizowany w języku Python, przygotowywanie danych środowiska uruchomieniowego nie zostanie zaktualizowany przy użyciu zaktualizowanych AML Uruchom tokenu.
+  * Dodatkowe przejrzyste komunikaty o błędach
   * to_spark_dataframe () nie będzie już ulegać awarii, gdy platforma Spark używa serializacji `Kryo`
-  * Inspektor licznika wartości może teraz wyświetlać więcej niż 1000 unikatowych wartości
-  * Dzielenie losowe nie powiedzie się, jeśli oryginalny przepływu danych nie ma nazwy  
+  * Liczba wartości Inspector umożliwia teraz wyświetlanie więcej niż 1000 unikatowe wartości
+  * Losowe podziału nie jest już nie powiedzie się jeśli oryginalny przepływu danych nie ma nazwy  
 
 + **Więcej informacji**
   * [Zestaw SDK przygotowywania danych usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
 
-### <a name="docs-and-notebooks"></a>Dokumenty i notesy
-+ Potoki ML
-  + Nowe i zaktualizowane notesy umożliwiające rozpoczęcie pracy z potokami, zakresami partii i przykładami transferu stylów: https://aka.ms/aml-pipeline-notebooks
-  + Dowiedz się, jak [utworzyć pierwszy potok](how-to-create-your-first-pipeline.md)
-  + Dowiedz się, jak [uruchamiać przewidywania wsadowe przy użyciu potoków](how-to-run-batch-predictions.md)
+### <a name="docs-and-notebooks"></a>Dokumenty i notesów
++ Potokach uczenia Maszynowego
+  + Nowe i zaktualizowane notesów dla klientów zaczynających się od potoki, określania zakresu usługi batch i styl transferu przykłady: https://aka.ms/aml-pipeline-notebooks
+  + Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md)
+  + Dowiedz się, jak [Uruchom prognozy usługi batch przy użyciu potoków](how-to-run-batch-predictions.md)
 + Azure Machine Learning cel obliczeń
   + [Przykładowe notesy](https://aka.ms/aml-notebooks) zostały zaktualizowane w celu korzystania z nowych zarządzanych obliczeń.
-  + [Dowiedz się więcej na temat tego obliczenia](how-to-set-up-training-targets.md#amlcompute)
+  + [Dowiedz się więcej o tym obliczeń](how-to-set-up-training-targets.md#amlcompute)
 
-### <a name="azure-portal-new-features"></a>Azure Portal: nowe funkcje
-+ Twórz Azure Machine Learning typy [obliczeniowe](how-to-set-up-training-targets.md#amlcompute) i zarządzaj nimi w portalu.
-+ Monitoruj użycie przydziału i [przydziały żądań](how-to-manage-quotas.md) dla Azure Machine Learning obliczeń.
+### <a name="azure-portal-new-features"></a>Witryna Azure portal: nowe funkcje
++ Tworzenie i zarządzanie nimi [obliczeniowego usługi Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) typów w portalu.
++ Monitoruj użycie przydziału i [zażądać przydziału](how-to-manage-quotas.md) Azure obliczeniowego usługi Machine Learning.
 + Wyświetl Azure Machine Learning stanu klastra obliczeniowego w czasie rzeczywistym.
-+ Dodano obsługę sieci wirtualnej na potrzeby tworzenia Azure Machine Learning obliczeń i usługi Azure Kubernetes.
++ Tworzenie obliczeniowego usługi Azure Machine Learning i usługi Azure Kubernetes Service została dodana obsługa sieci wirtualnej.
 + Uruchom ponownie opublikowane potoki z istniejącymi parametrami.
-+ Nowe [Automatyczne wykresy uczenia maszynowego](how-to-understand-automated-ml.md) dla modeli klasyfikacji (dźwig, zyski, kalibracja, wykres ważności funkcji z wyjaśnieniem modelu) i modele regresji (składniki i wykres ważności funkcji z wyjaśnieniem modelu). 
-+ Potoki można wyświetlać w Azure Portal
++ Nowe [zautomatyzowane machine learning wykresy](how-to-understand-automated-ml.md) modeli klasyfikacji (przyrostu zyski, odwzorowania, funkcja znaczenie na wykresie słupkowym: explainability modelu) i modele regresji (reszty i funkcja znaczenie wykresu za pomocą modelu explainability). 
++ Potoki mogą być wyświetlane w witrynie Azure portal
 
 
 
 
 ## <a name="2018-11-20"></a>2018-11-20
 
-### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Zestaw Azure Machine Learning SDK dla języka Python v 0.1.80
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.80
 
-+ **Istotne zmiany** 
-  * Przestrzeń nazw " *Azure. uczenie. widgets* " została przeniesiona do programu *Azure. widgets*.
-  * na stronie *Azure. Core. COMPUTE. AmlCompute* są używane następujące klasy: *Azure. Core. COMPUTE. BatchAICompute* i *Azure. Core. COMPUTE. DSVMCompute*. Druga klasa zostanie usunięta w kolejnych wersjach. Klasa AmlCompute ma teraz łatwiejszą definicję, a po prostu wymaga vm_size i max_nodes i automatycznie skaluje swój klaster od 0 do max_nodes po przesłaniu zadania. Nasze [przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zostały zaktualizowane o te informacje i powinny być podane przykłady użycia. Mamy nadzieję, że podoba Ci się to uproszczenie i wiele bardziej atrakcyjnych funkcji, które są dostępne w nowszej wersji.
++ **Fundamentalne zmiany** 
+  * *azureml.Train.widgets* przestrzeń nazw została przeniesiona do *azureml.widgets*.
+  * *azureml.core.compute.AmlCompute* następujące klasy — na podstawie której zaniechane *azureml.core.compute.BatchAICompute* i *azureml.core.compute.DSVMCompute*. Ostatnie klasy zostaną usunięte w następnych wersjach. Klasa AmlCompute ma teraz łatwiej definicję po prostu potrzebuje vm_size i max_nodes i automatycznie skaluje klaster z zakresu od 0 do max_nodes po przesłaniu zadania. Nasze [przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zostały zaktualizowane o te informacje i powinny być podane przykłady użycia. Mamy nadzieję, że możesz np. to uproszczenie i wiele więcej fascynujących funkcji są dostępne w nowszej wersji!
 
-### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning zestawu SDK 0.5.1 przygotowywania danych 
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Zestaw SDK v0.5.1 przeznaczonego do przygotowania danych usługi Azure Machine Learning 
 
-Dowiedz się więcej o zestawie SDK przygotowywania danych, odczytując [dokumenty referencyjne](https://aka.ms/data-prep-sdk).
+Więcej informacji na temat zestawu SDK usługi Data Prep, czytając [odwołania docs](https://aka.ms/data-prep-sdk).
 + **Nowe funkcje**
-   * Utworzono nowy interfejs wiersza polecenia preprodukcyjny do wykonywania pakietów preprzepływu danych i wyświetlania profilu danych dla zestawu danych lub
-   * Przeprojektowano interfejs API setcolumntype, aby zwiększyć użyteczność
-   * Zmieniono nazwę smart_read_file na auto_read_file
-   * Teraz zawiera skośność i kurtoza w profilu danych
-   * Można próbkować przy użyciu próbkowania stratified
-   * Może odczytywać pliki zip, które zawierają pliki CSV
+   * Utworzony nowy interfejs wiersza polecenia przygotowania danych do wykonywania pakietów przygotowania danych i wyświetlić profil danych dla zestawu danych i przepływu danych
+   * Przeprojektowana SetColumnType interfejsu API w celu zwiększenia użyteczności
+   * Zmieniono nazwę smart_read_file do auto_read_file
+   * Udostępnia teraz przesunięcia czasowego i kurtoza profilu danych
+   * Próbkowanie z włączonym próbkowaniem stratyfikowana
+   * Może odczytywać dane z plików zip, które zawierają pliki CSV
    * Może dzielić zestawy danych z losowym podziałem (na przykład do zestawów testów testowych)
    * Można uzyskać wszystkie typy danych kolumn z przepływu danych lub profilu danych przez wywołanie `.dtypes`
    * Może pobrać liczbę wierszy z przepływu danych lub profilu danych przez wywołanie `.row_count`
 
 + **Poprawki błędów**
-   * Stała konwersja długa na podwójną 
-   * Stałe potwierdzenie po dodaniu dowolnej kolumny 
-   * Rozwiązano problem z FuzzyGrouping, gdzie nie wykryje grup w niektórych przypadkach
-   * Stała funkcja sortowania w celu uwzględnienia kolejności sortowania w wielu kolumnach
+   * Stałą Długa podwójna konwersja 
+   * Naprawiono assert po dowolnej Dodaj kolumnę 
+   * Rozwiązano problem z FuzzyGrouping, gdzie nie może nie wykryć grup w niektórych przypadkach
+   * Funkcja stałej sortowania przestrzegają kolejność sortowania wielokolumnowych
    * Stałe i/lub wyrażenia, które mają być podobne do sposobu, w jaki `pandas` je obsłużyć
-   * Stały odczyt ze ścieżki dBfs
-   * Komunikaty o błędach są bardziej zrozumiałe 
-   * Teraz nie kończy się niepowodzeniem podczas odczytywania na zdalnym miejscu docelowym obliczeń przy użyciu tokenu AML
-   * Teraz nie kończy się już w systemie Linux DSVM
-   * Teraz nie ma już awarii, gdy wartości niebędące ciągami są predykatami ciągu
-   * Teraz obsługuje błędy potwierdzeń, gdy przepływu danych powinien działać prawidłowo
-   * Program obsługuje teraz lokalizacje magazynów z zainstalowanymi narzędziami na Azure Databricks
+   * Naprawiono odczytu ze ścieżki dbfs
+   * Wprowadzone bardziej zrozumiałe komunikaty o błędach 
+   * Teraz już nie kończy się niepowodzeniem podczas odczytywania na zdalnym obliczeniowych elementów docelowych przy użyciu tokenu AML
+   * Teraz już nie kończy się niepowodzeniem na DSVM systemu Linux
+   * Teraz już ulega awarii podczas wartości innych niż ciąg znajdują się w ciągu predykatów
+   * Teraz obsługuje błędy potwierdzenia, gdy przepływ danych powinna zakończyć się niepowodzeniem poprawnie
+   * Obsługuje teraz lokalizacje przechowywania dbutils zainstalowanego w usłudze Azure Databricks
 
-## <a name="2018-11-05"></a>2018-11-05
+## <a name="2018-11-05"></a>05-11-2018 r.
 
 ### <a name="azure-portal"></a>Azure Portal 
 Azure Portal dla Azure Machine Learning mają następujące aktualizacje:
-  * Nowa karta **potoków** dla opublikowanych potoków.
-  * Dodano obsługę dołączania istniejącego klastra usługi HDInsight jako obiektu docelowego obliczeń.
+  * Nowy **potoki** kartę opublikowanych potoków.
+  * Dodano obsługę dołączania do istniejącego klastra HDInsight, jako cel obliczenia.
 
-### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Zestaw Azure Machine Learning SDK dla języka Python v 0.1.74
+### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.74
 
-+ **Istotne zmiany** 
-  * \* Workspace. compute_targets, magazyny danych, eksperymenty, obrazy, modele i *usługi WebService* są właściwościami, a nie metodami. Na przykład Zastąp *obszar roboczy. compute_targets ()* z *obszarem roboczym. compute_targets*.
-  * *Uruchom. get_context* przestarzałe *Uruchom. get_submitted_run*. Ta Ostatnia metoda zostanie usunięta w kolejnych wersjach.
-  * Klasa *PipelineData* teraz oczekuje obiektu magazynu danych jako parametru, a nie datastore_name. Podobnie *potok* akceptuje default_datastore, a nie default_datastore_name.
++ **Fundamentalne zmiany** 
+  * \* Workspace. compute_targets, magazyny danych, eksperymenty, obrazy, modele i *usługi WebService* są właściwościami, a nie metodami. Na przykład Zastąp ciąg *Workspace.compute_targets()* z *Workspace.compute_targets*.
+  * *Run.get_context* traktuje jako przestarzałą *Run.get_submitted_run*. Druga metoda zostaną usunięte w następnych wersjach.
+  * *PipelineData* klasy teraz oczekuje obiektu magazynu danych jako parametr zamiast datastore_name. Podobnie *potoku* akceptuje default_datastore zamiast default_datastore_name.
 
 + **Nowe funkcje**
-  * [Przykładowy notes](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) Azure Machine Learning potoki używa teraz kroków MPI.
-  * Widżet RunDetails dla notesów Jupyter został zaktualizowany, aby pokazać wizualizację potoku.
+  * Potoków uczenia maszynowego Azure [przykładowy notes](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) używa teraz kroki MPI.
+  * Element widget RunDetails dla notesów programu Jupyter jest aktualizowana w celu wyświetlenia wizualizacja potoku.
 
-### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Azure Machine Learning zestawu SDK 0.4.0 przygotowywania danych 
+### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Zestaw SDK v0.4.0 przeznaczonego do przygotowania danych usługi Azure Machine Learning 
  
 + **Nowe funkcje**
-  * Liczba typów dodana do profilu danych 
-  * Liczba wartości i histogram są teraz dostępne
-  * Więcej percentylów w profilu danych
-  * Mediana jest dostępna w podsumowaniu
-  * Środowisko Python 3,7 jest teraz obsługiwane
-  * Po zapisaniu przepływu danych zawierającej magazyny danych do pakietu preprodukcyjnym informacje o magazynie będą utrwalane jako część pakietu preprodukcyjny
-  * Zapisywanie w magazynie danych jest teraz obsługiwane 
+  * Liczba typów dodawane do profilu danych 
+  * Liczba wartości i histogramu jest teraz dostępna
+  * Więcej percentyle w profilu danych
+  * Mediana jest dostępna w podsumowanie
+  * Python 3.7 jest teraz obsługiwane.
+  * Po zapisaniu przepływu danych, który zawiera magazynów danych na pakiet przygotowania danych jako część pakietu przygotowania danych zostaną utrwalone dane magazynu danych
+  * Zapisywanie do magazynu danych jest teraz obsługiwane. 
         
 + **Naprawiono usterkę**
   * 64-bitowe przepełnienia liczby całkowitej bez znaku są teraz obsługiwane prawidłowo w systemie Linux
-  * Naprawiono niepoprawną etykietę tekstową dla zwykłych plików tekstowych w smart_read
-  * Typ kolumny typu String jest teraz wyświetlany w widoku metryk
-  * Liczba typów jest teraz ustalona, aby pokazać ValueKinds zamapowane do jednego Polatype zamiast pojedynczych
-  * Write_to_csv przestaje działać, gdy ścieżka jest podana jako ciąg
-  * W przypadku użycia Zamień pozostawienie pustego pola "Znajdź" nie powiedzie się. 
+  * Stały tekst Nieprawidłowa etykieta plikami ze zwykłym tekstem w smart_read
+  * Typ kolumny ciągu teraz zostaną wyświetlone w widoku metryk
+  * Liczba typów jest rozwiązano problem, aby pokazać ValueKinds mapowany do jednego typu pola, a nie pojedyncze pliki
+  * Write_to_csv już nie kończy się niepowodzeniem podczas ścieżka jest podana jako ciąg
+  * Korzystając z Zastąp, pozostawiając "wyszukiwanie" puste nie są już nie powiedzie się 
 
 ## <a name="2018-10-12"></a>2018-10-12
 
-### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Zestaw Azure Machine Learning SDK dla języka Python v 0.1.68
+### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.68
 
 + **Nowe funkcje**
   * Obsługa wielu dzierżawców podczas tworzenia nowego obszaru roboczego.
 
-+ **Naprawione usterki**
++ **Usterki usunięte**
   * Nie trzeba już przypinać wersji biblioteki pynacl podczas wdrażania usługi sieci Web.
 
-### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Azure Machine Learning zestawu SDK 0.3.0 przygotowywania danych
+### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Zestaw SDK v0.3.0 przeznaczonego do przygotowania danych usługi Azure Machine Learning
 
 + **Nowe funkcje**
-  * Dodano metodę transform_partition_with_file (script_path), która umożliwia użytkownikom przekazywanie ścieżki pliku języka Python do wykonania
+  * Dodano transform_partition_with_file(script_path) metody, która umożliwia użytkownikom na przekazywanie, ścieżkę pliku Python do wykonywania
 
 ## <a name="2018-10-01"></a>2018-10-01
 
-### <a name="azure-machine-learning-sdk-for-python-v0165"></a>Zestaw Azure Machine Learning SDK dla języka Python v 0.1.65
-[Wersja 0.1.65](https://pypi.org/project/azureml-sdk/0.1.65) zawiera nowe funkcje, więcej dokumentacji, poprawki błędów i więcej [przykładowych notesów](https://aka.ms/aml-notebooks).
+### <a name="azure-machine-learning-sdk-for-python-v0165"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.65
+[Wersja 0.1.65](https://pypi.org/project/azureml-sdk/0.1.65) zawiera nowe funkcje, więcej dokumentacji, poprawki i [przykładowy notesów](https://aka.ms/aml-notebooks).
 
-Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
+Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
 
-+ **Istotne zmiany**
-  * Przestrzeń robocza. eksperymenty, przestrzeń robocza. modele, obszar roboczy. compute_targets, obszar roboczy. obrazy, obszar roboczy. web_services Zwróć listę, która została wcześniej zwrócona. Zobacz dokumentację interfejsu API usługi [Azure. Core. Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) .
++ **Fundamentalne zmiany**
+  * Workspace.experiments, Workspace.models, Workspace.compute_targets Workspace.images Workspace.web_services słownika zwrotu, poprzednio zwróconej liście. Zobacz [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) dokumentacji interfejsu API.
 
-  * Zautomatyzowany Machine Learning usunął znormalizowany błąd średniego kwadratu z podstawowych metryk.
+  * Automatyczne usługi Machine Learning usunąć błąd znormalizowane średniej kwadratowej z podstawowe metryki.
 
-+ **Moja stacja**
-  * Różne poprawki dotyczące błędów na dysku dla bayesowskie, ulepszenia wydajności dla wywołań metryk pobierania. 
-  * Uaktualnienie Tensorflow 1,10 z 1,9 
-  * Optymalizacja obrazu platformy Docker dla zimnego startu. 
++ **HyperDrive**
+  * Poprawki błędów różnych HyperDrive Bayesowskie, ulepszenia wydajności dotyczące pobrania wywołania metryki. 
+  * Uaktualnienie Tensorflow 1.10 1.9 
+  * Optymalizacja obrazów platformy docker do zimnego. 
   * Zadania będą teraz zgłaszać prawidłowy stan nawet wtedy, gdy zakończyły się kodem błędu innym niż 0. 
-  * Walidacja atrybutu RunConfig w zestawie SDK. 
-  * Obiekt run dysku obsługuje anulowanie podobne do zwykłego przebiegu: nie trzeba przekazywać żadnych parametrów. 
-  * Udoskonalenia widżetu dotyczące utrzymania stanu wartości rozwijanych dla uruchomionych rozproszonych przebiegów i dysków. 
-  * TensorBoard i inne pliki dziennika obsługują stałe dla serwera parametrów. 
-  * Intel (R) MPI support po stronie usługi. 
-  * Poprawka do dostrajania parametrów dla rozłożonego przebiegu uruchomieniowego podczas walidacji w Batchai Job. 
-  * Menedżer kontekstu identyfikuje teraz wystąpienie podstawowe. 
+  * Sprawdzanie poprawności atrybutów RunConfig w zestawie SDK. 
+  * Obiekt HyperDrive Uruchom obsługuje anulowanie podobne do regularnego wykonywania: nie trzeba przekazywać żadnych parametrów. 
+  * Widżet ulepszenia dotyczące utrzymania stan z listy rozwijanej wartości dla rozproszonej przebiegów oraz uruchomień HyperDrive. 
+  * Narzędzia TensorBoard i innych dziennik, który obsługuje pliki Naprawiono parametr serwera. 
+  * Obsługa MPI Intel(R) po stronie usługi. 
+  * Poprawka do szczegółowego dostosowywania parametrów dla rozproszonego wykonywania awarii podczas sprawdzania poprawności w BatchAI. 
+  * Kontekst Manager identyfikuje teraz podstawowe wystąpienie. 
 
-+ **Środowisko Azure Portal**
-  * w szczegółach uruchomienia są obsługiwane log_table () i log_row (). 
++ **Środowisku witryny Azure portal**
+  * log_table() i log_row() są obsługiwane w szczegóły przebiegu. 
   * Automatycznie twórz wykresy dla tabel i wierszy z 1, 2 lub 3 kolumnami numerycznymi i opcjonalną kolumną kategorii.
 
-+ **Machine Learning zautomatyzowany**
-  * Ulepszona obsługa błędów i dokumentacja 
-  * Problemy z wydajnością pobierania właściwości ustalonego przebiegu. 
-  * Rozwiązano problem z kontynuacją działania. 
++ **Automatyczne Machine Learning**
+  * Ulepszona obsługa błędów i dokumentacji 
+  * Naprawiono pobieranie właściwości uruchamiania problemy z wydajnością. 
+  * Naprawiono kontynuować wykonywania problem. 
   * Rozwiązano problemy z iteracją :::no-loc text="ensembling":::.
-  * Stała usterka wysunięcia szkolenia w systemie MAC OS.
-  * Próbkowanie w dół średniej krzywej PR/ROC w scenariuszu niestandardowego sprawdzania poprawności.
-  * Usunięto dodatkową logikę indeksu.
-  * Usunięto filtr z interfejsu API get_output.
+  * Naprawiono szkolenia zwisa błędów w systemie MAC OS.
+  * Próbkowanie — makro średni żądania Ściągnięcia/WIELOKLASOWA krzywa w scenariuszu niestandardowego sprawdzania poprawności.
+  * Usunięty indeks dodatkowej logiki.
+  * Usunąć filtr z get_output interfejsu API.
 
 + **Potoki**
-  * Dodano potok metody. Opublikuj (), aby opublikować potok bezpośrednio, bez konieczności pierwszego uruchomienia wykonywania.   
+  * Dodaje metody Pipeline.publish() publikowanie potoku bezpośrednio, bez konieczności wykonywania są uruchamiane jako pierwsze.   
   * Dodano metodę PipelineRun. get_pipeline_runs () w celu pobrania uruchomień potoków, które zostały wygenerowane z opublikowanego potoku.
 
-+ **Brainwave projektu**
-  * Zaktualizowano obsługę nowych modeli AI dostępnych w witrynie FPGA.
++ **Project Brainwave**
+  * Zaktualizowano obsługę na układów FPGA nowe modele sztucznej Inteligencji.
 
-### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Azure Machine Learning zestawu SDK 0.2.0 przygotowywania danych
+### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Zestaw SDK v0.2.0 przeznaczonego do przygotowania danych usługi Azure Machine Learning
 [Wersja 0.2.0](https://pypi.org/project/azureml-dataprep/0.2.0/) zawiera następujące funkcje i poprawki błędów:
 
 + **Nowe funkcje**
-  * Obsługa kodowania jednostronicowego
-  * Obsługa transformacji quantile
+  * Obsługa hot jeden kodowania
+  * Obsługa przekształcania kwantyl
    
-+ **Rozwiązano problem:**
-  * Działa z dowolną wersją Tornado, nie ma potrzeby obniżenia poziomu wersji Tornado
-  * Liczba wartości dla wszystkich wartości, a nie tylko trzy pierwsze
++ **Usterka naprawiona:**
+  * Działa z dowolną wersją Tornado nie ma potrzeby obniżyć wersji Tornado
+  * Liczba wartości dla wszystkich wartości nie tylko trzy pierwsze
 
-## <a name="2018-09-public-preview-refresh"></a>2018-09 (publiczna wersja zapoznawcza)
+## <a name="2018-09-public-preview-refresh"></a>2018-09 (w wyniku odświeżenia publiczna wersja zapoznawcza)
 
 Nowe, odświeżone wydanie Azure Machine Learning: Przeczytaj więcej na temat tej wersji: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 

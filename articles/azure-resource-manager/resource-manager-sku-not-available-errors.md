@@ -1,24 +1,14 @@
 ---
-title: Błędy usługi Azure SKU nie są dostępne | Microsoft Docs
+title: Błędy niedostępne dla jednostki SKU
 description: Opisuje sposób rozwiązywania problemów z niedostępnym jednostką SKU podczas wdrażania zasobów przy użyciu Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: fca028412052a9a1520e1178f5d182a9987a9a85
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390231"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150490"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Rozwiązywanie błędów dla jednostki SKU jest niedostępne
 
@@ -58,7 +48,7 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia platformy Azure
+## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia Azure
 
 Aby określić, które jednostki SKU są dostępne w regionie, użyj polecenia `az vm list-skus`. Użyj parametru `--location`, aby odfiltrować dane wyjściowe do lokalizacji, której używasz. Użyj parametru `--size`, aby wyszukać według częściowej nazwy rozmiaru.
 
@@ -78,7 +68,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Rozwiązanie 3 — Azure Portal
+## <a name="solution-3---azure-portal"></a>Rozwiązanie 3 - w witrynie Azure portal
 
 Aby określić, które jednostki SKU są dostępne w regionie, użyj [portalu](https://portal.azure.com). Zaloguj się do portalu i Dodaj zasób za pomocą interfejsu. Podczas ustawiania wartości są wyświetlane dostępne jednostki SKU dla tego zasobu. Wdrożenie nie jest konieczne.
 

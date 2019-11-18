@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070453"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130592"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Wskazówki dotyczące wdrażania aplikacji sieci Web za pomocą szablonów Azure Resource Manager
 
@@ -46,7 +46,7 @@ Zasoby są wdrażane w następującej kolejności:
 **Warstwa 3**
 * Kontrola źródła — zależy od aplikacji sieci Web.
 * Rozszerzenie witryny MSDeploy — zależy od aplikacji sieci Web.
-* Wystąpienie Application Insights, które jest przeznaczone dla farmy serwerów — zależy od aplikacji sieci Web.
+* Wystąpienie usługi Azure Application Insights, które jest przeznaczone dla aplikacji sieci Web — zależy od aplikacji sieci Web.
 
 **Warstwa 4**
 * Certyfikat App Service — zależy od kontroli źródła lub MSDeploy, jeśli jest obecny. W przeciwnym razie zależy od aplikacji sieci Web.
@@ -87,7 +87,7 @@ Poniższy przykład przedstawia część szablonu. Wartość konfiguracji parame
 }
 ```
 
-Aby uzyskać gotowy do uruchomienia przykład, który używa powyższego kodu, zobacz [szablon: Utwórz prostą aplikację](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)sieci Web Umbraco.
+Aby uzyskać gotowy do uruchomienia przykład, który używa powyższego kodu, zobacz [szablon: tworzenie prostej aplikacji sieci Web Umbraco](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Znajdowanie informacji o błędach MSDeploy
 
@@ -132,7 +132,7 @@ W Key Vault wybierz pozycję **Certyfikaty** i **Wygeneruj/Importuj** , aby prze
 
 ![Importuj certyfikat](media/web-sites-rm-template-guidance/import-certificate.png)
 
-W szablonie Podaj nazwę certyfikatu `keyVaultSecretName`.
+W szablonie Podaj nazwę certyfikatu dla `keyVaultSecretName`.
 
 Aby zapoznać się z przykładowym szablonem, zobacz [Wdrażanie certyfikatu aplikacji sieci Web z poziomu wpisu tajnego Key Vault i używanie go do tworzenia powiązania SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 

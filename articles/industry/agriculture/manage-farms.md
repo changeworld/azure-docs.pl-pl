@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c83ac8a42a91c9db06726e917ed142e20995b987
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 929672dceabc7d9b591f05ef3f4f716f2117e09c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797974"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128675"
 ---
 # <a name="manage-farms"></a>Zarządzanie farmami
 
@@ -58,7 +58,7 @@ Na stronie Lista farmy zostanie wyświetlona lista utworzonych Farm. Wybierz far
 Na stronie **farmy** zostanie wyświetlona lista utworzonych Farm.
 
 1.  Wybierz farmę, aby wyświetlić i edytować farmę.
-2.  Wybierz pozycję **Edytuj farmę** , aby edytować informacje o farmie. W oknie **szczegóły farmy** można edytować **nazwy**, **uprawy**, **adresy**i **granice farmy** .
+2.  Wybierz pozycję **Edytuj farmę** , aby edytować informacje o farmie. W oknie **szczegóły farmy** można edytować **nazwy**, **uprawy**, **adresy**i definiować pola **granic farmy** .
 
     ![Farmy projektów](./media/create-farms/edit-farm-1.png)
 

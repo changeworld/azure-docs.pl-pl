@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab3fa02f7285fdbde918f9e365d1ee96ba5e71a1
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 7650dce9a3ef494815b8d7a326eb07e1e25f2da2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802991"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123090"
 ---
 # <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Szybki Start: QnA Makera Biblioteka kliencka dla środowiska Node. js
 
@@ -23,11 +23,11 @@ Rozpocznij pracę z biblioteką klienta QnA Maker dla środowiska Node. js. Wyko
 
 Użyj QnA Maker biblioteki klienta dla środowiska Node. js, aby:
 
-* Utwórz bazę wiedzy 
+* Tworzenie bazy wiedzy 
 * Zarządzanie bazą wiedzy
 * Publikowanie bazy wiedzy
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [pakiet (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)@no__t 5[.](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
+[Dokumentacja referencyjna](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) [(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [przykładów środowiska Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -52,7 +52,7 @@ W oknie konsoli (na przykład cmd, PowerShell lub bash) Utwórz nowy katalog dla
 mkdir myapp && cd myapp
 ```
 
-Uruchom polecenie `npm init -y`, aby utworzyć aplikację Node z plikiem `package.json`. 
+Uruchom `npm init -y` polecenie, aby utworzyć aplikację Node przy użyciu pliku `package.json`. 
 
 ```console
 npm init -y
@@ -60,7 +60,7 @@ npm init -y
 
 ### <a name="install-the-client-library"></a>Zainstaluj bibliotekę kliencką
 
-Zainstaluj `ms-rest-azure` i `azure-cognitiveservices-qnamaker` NPM:
+Zainstaluj `ms-rest-azure` i `azure-cognitiveservices-qnamaker` pakiety NPM:
 
 ```console
 npm install azure-cognitiveservices--qnamaker ms-rest-azure --save
@@ -99,7 +99,7 @@ Utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource. Jeśli zm
 |Zmienna środowiskowa|Zmienna Node. js|Przykład|
 |--|--|--|
 |`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|Identyfikator GUID znaku 32|
-|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com` — zastępuje poddomenę `your-resource-name` wartością nazwy zasobu|
+|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com` — Zastąp poddomenę `your-resource-name` wartością nazwy zasobu|
 ||||
 
 [!code-javascript[Azure resource variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=resourcekeys)]
@@ -111,7 +111,7 @@ Następnie Utwórz obiekt serviceclientcredentials z kluczem i użyj go w punkci
 
 [!code-javascript[Authorization to resource key](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Utwórz bazę wiedzy
+## <a name="create-a-knowledge-base"></a>Tworzenie bazy wiedzy
 
 Baza wiedzy zapisuje pary pytań i odpowiedzi dla obiektu [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) z trzech źródeł:
 
@@ -123,7 +123,7 @@ Wywołaj metodę [Create](https://docs.microsoft.com/javascript/api/@azure/cogni
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
-Upewnij się, że uwzględniono funkcję [`wait_for_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnego utworzenia bazy wiedzy. 
+Upewnij się, że funkcja include [`wait_for_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnego utworzenia bazy wiedzy. 
 
 ## <a name="update-a-knowledge-base"></a>Aktualizowanie bazy wiedzy
 
@@ -131,7 +131,7 @@ Bazę wiedzy można zaktualizować, przekazując informacje o IDENTYFIKATORze ba
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
 
-Upewnij się, że uwzględniono funkcję [`wait_for_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnej aktualizacji bazy wiedzy. 
+Upewnij się, że funkcja include [`wait_for_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnej aktualizacji bazy wiedzy. 
 
 ## <a name="publish-a-knowledge-base"></a>Publikowanie bazy wiedzy
 
@@ -177,5 +177,5 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 >[Samouczek: Tworzenie i odpowiadanie na KB](../tutorials/create-publish-query-in-portal.md)
 
 * [Co to jest interfejs API usługi QnA Maker?](../Overview/overview.md)
-* [Edytowanie bazy wiedzy](../how-to/edit-knowledge-base.md)
+* [Edytowanie wiedzy](../how-to/edit-knowledge-base.md)
 * [Pobierz analizę użycia](../how-to/get-analytics-knowledge-base.md)

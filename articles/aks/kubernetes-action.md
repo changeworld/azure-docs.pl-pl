@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: c82cbb8d7406c8d6f4063f52590e050438283ace
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cc2d6df952b2e0aa9b9f4d4e1dcb4859a5bb3790
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693386"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130532"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Akcje GitHub dotyczące wdrażania w usłudze Kubernetes Service
 
-Dzięki [akcjom GitHub](https://help.github.com/en/articles/about-github-actions) można tworzyć zautomatyzowane przepływy pracy tworzenia oprogramowania. Akcja Kubernetes [azure/aks-set-context@v1]((https://github.com/Azure/aks-set-context)) ułatwia wdrażanie klastrów usługi Azure Kubernetes. Akcja ustawia docelowy kontekst klastra AKS, który może być używany przez inne akcje, takie jak [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) itp. lub uruchomić dowolne polecenia polecenia kubectl.
+Dzięki [akcjom GitHub](https://help.github.com/en/articles/about-github-actions) można tworzyć zautomatyzowane przepływy pracy tworzenia oprogramowania. Akcja Kubernetes [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) ułatwia wdrażanie klastrów usługi Azure Kubernetes. Akcja ustawia docelowy kontekst klastra AKS, który może być używany przez inne akcje, takie jak [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) itp. lub uruchomić dowolne polecenia polecenia kubectl.
 
 > [!IMPORTANT]
 > Akcje usługi GitHub są obecnie dostępne w wersji beta. Musisz najpierw [utworzyć konto, aby dołączyć do wersji zapoznawczej](https://github.com/features/actions) przy użyciu konta usługi GitHub.
@@ -29,7 +29,7 @@ Dla przepływu pracy AKS, plik ma trzy sekcje:
 |Sekcja  |Zadania  |
 |---------|---------|
 |**Uwierzytelnianie** | Zaloguj się do prywatnego rejestru kontenerów (ACR) |
-|**Utworzenia** | Kompilowanie & wypychanie obrazu kontenera  |
+|**Kompilacja** | Kompilowanie & wypychanie obrazu kontenera  |
 |**Wdrażanie** | 1. Ustaw docelowy klaster AKS |
 | |2. tworzenie wpisu tajnego rejestru ogólnego/Docker w klastrze Kubernetes  |
 ||3. Wdróż w klastrze Kubernetes|
@@ -78,11 +78,11 @@ Postępuj zgodnie z instrukcjami, aby skonfigurować wpisy tajne:
 
 Kompilacja i wypychanie obrazów kontenera odbywa się przy użyciu akcji `Azure/docker-login@v1`. Aby wdrożyć obraz kontenera w AKS, musisz użyć akcji `Azure/k8s-deploy@v1`. Ta akcja ma pięć parametrów:
 
-| **Konstruktora**  | **Wyjaśnienie**  |
+| **Parametr**  | **Wyjaśnienie**  |
 |---------|---------|
-| **obszaru** | Obowiązkowe Wybierz docelową przestrzeń nazw Kubernetes. Jeśli przestrzeń nazw nie zostanie podana, polecenia zostaną uruchomione w domyślnej przestrzeni nazw | 
+| **namespace** | Obowiązkowe Wybierz docelową przestrzeń nazw Kubernetes. Jeśli przestrzeń nazw nie zostanie podana, polecenia zostaną uruchomione w domyślnej przestrzeni nazw | 
 | **manifesty** |  Potrzeb Ścieżka do plików manifestu, która będzie używana do wdrażania |
-| **rastrow** | Obowiązkowe W pełni kwalifikowany adres URL zasobów przeznaczonych do podstawiania plików manifestu |
+| **images** | Obowiązkowe W pełni kwalifikowany adres URL zasobów przeznaczonych do podstawiania plików manifestu |
 | **imagepullsecrets** | Obowiązkowe Nazwa wpisu tajnego rejestru platformy Docker, który został już skonfigurowany w klastrze. Każda z tych nazw tajnych jest dodawana w polu imagePullSecrets dla obciążeń znalezionych w wejściowych plikach manifestu |
 | **polecenia kubectl — wersja** | Obowiązkowe Instaluje określoną wersję pliku binarnego polecenia kubectl |
 

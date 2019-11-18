@@ -1,7 +1,7 @@
 ---
 title: Zamówienie OData — według odwołania
 titleSuffix: Azure Cognitive Search
-description: Dokumentacja języka OData dla składni order-by w zapytaniach usługi Azure Wyszukiwanie poznawcze.
+description: Dokumentacja dotycząca składni i języka dla korzystania z polecenia order-by w usłudze Azure Wyszukiwanie poznawcze zapytania.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793299"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113146"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Składnia $orderby OData na platformie Azure Wyszukiwanie poznawcze
 

@@ -1,25 +1,17 @@
 ---
-title: Zarządzanie usługą Azure cache for Redis za pomocą Azure PowerShell | Microsoft Docs
+title: Zarządzanie usługą Azure cache for Redis za pomocą Azure PowerShell
 description: Dowiedz się, jak wykonywać zadania administracyjne dla usługi Azure cache for Redis przy użyciu Azure PowerShell.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 0286bd7ae20fc1398dbfffad6484164c9d66c7e1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758080"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122143"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Zarządzanie usługą Azure cache for Redis za pomocą Azure PowerShell
 > [!div class="op_single_selector"]
@@ -52,13 +44,13 @@ Jeśli masz wiele subskrypcji platformy Azure, musisz ustawić subskrypcję plat
 
     Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 
-Aby określić subskrypcję, uruchom następujące polecenie. W poniższym przykładzie nazwa subskrypcji to `ContosoSubscription`.
+Aby określić subskrypcję, uruchom następujące polecenie. W poniższym przykładzie nazwa subskrypcji jest `ContosoSubscription`.
 
     Select-AzSubscription -SubscriptionName ContosoSubscription
 
 Aby można było używać programu Windows PowerShell z Azure Resource Manager, potrzebne są następujące elementy:
 
-* Windows PowerShell, wersja 3,0 lub 4,0. Aby znaleźć wersję programu Windows PowerShell, wpisz: `$PSVersionTable` i sprawdź, czy wartość `PSVersion` to 3,0 lub 4,0. Aby zainstalować zgodną wersję, zobacz [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) lub [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
+* Windows PowerShell, wersja 3,0 lub 4,0. Aby znaleźć wersję programu Windows PowerShell, wpisz:`$PSVersionTable` i sprawdź, czy wartość `PSVersion` to 3,0 lub 4,0. Aby zainstalować zgodną wersję, zobacz [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) lub [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 Aby uzyskać szczegółową pomoc dotyczącą każdego polecenia cmdlet wyświetlanego w tym samouczku, należy użyć polecenia cmdlet Get-Help.
 
@@ -132,30 +124,30 @@ Poniższa tabela zawiera właściwości i opisy często używanych parametrów p
 | ResourceGroupName |Nazwa grupy zasobów, w której ma zostać utworzona pamięć podręczna | |
 | Rozmiar |Rozmiar pamięci podręcznej. Prawidłowe wartości to: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Liczba fragmentów do utworzenia podczas tworzenia pamięci podręcznej Premium z włączoną obsługą klastrowania. Prawidłowe wartości to: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| JSZ |Określa jednostkę SKU pamięci podręcznej. Prawidłowe wartości to: Basic, standard, Premium |Standardowa (Standard) |
+| SKU |Określa jednostkę SKU pamięci podręcznej. Prawidłowe wartości to: Basic, standard, Premium |Standardowa (Standard) |
 | RedisConfiguration |Określa ustawienia konfiguracji Redis. Aby uzyskać szczegółowe informacje na temat każdego ustawienia, zobacz następującą tabelę [Właściwości RedisConfiguration](#redisconfiguration-properties) . | |
-| EnableNonSslPort |Wskazuje, czy port bez obsługi protokołu SSL jest włączony. |Fałsz |
+| EnableNonSslPort |Wskazuje, czy port bez obsługi protokołu SSL jest włączony. |False |
 | MaxMemoryPolicy |Ten parametr jest przestarzały — zamiast tego należy użyć RedisConfiguration. | |
 | StaticIP |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podany, jeden z nich zostanie wybrany dla Ciebie z podsieci. | |
-| Podsieć |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa nazwę podsieci, w której ma zostać wdrożona pamięć podręczna. | |
+| Subnet |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa nazwę podsieci, w której ma zostać wdrożona pamięć podręczna. | |
 | VirtualNetwork |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa identyfikator zasobu sieci wirtualnej, w którym ma zostać wdrożona pamięć podręczna. | |
-| keyType |Określa, który klucz dostępu ma zostać wygenerowany ponownie podczas odnawiania kluczy dostępu. Prawidłowe wartości to: podstawowa, pomocnicza | |
+| KeyType |Określa, który klucz dostępu ma zostać wygenerowany ponownie podczas odnawiania kluczy dostępu. Prawidłowe wartości to: podstawowa, pomocnicza | |
 
 ### <a name="redisconfiguration-properties"></a>Właściwości RedisConfiguration
 | Właściwość | Opis | Warstwy cenowe |
 | --- | --- | --- |
 | RDB — włączono tworzenie kopii zapasowej |Czy jest włączona funkcja [trwałości danych Redis](cache-how-to-premium-persistence.md) |Tylko wersja Premium |
-| RDB-Storage-Connection-String |Parametry połączenia z kontem magazynu w celu zapewnienia [trwałości danych Redis](cache-how-to-premium-persistence.md) |Tylko wersja Premium |
-| RDB — częstotliwość tworzenia kopii zapasowych |Częstotliwość tworzenia kopii zapasowych dla [trwałości danych Redis](cache-how-to-premium-persistence.md) |Tylko wersja Premium |
-| maxmemory — zarezerwowane |Konfiguruje [pamięć zarezerwowaną](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla procesów poza pamięcią podręczną |Standardowa i Premium |
-| maxmemory — zasady |Konfiguruje [Zasady wykluczania](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla pamięci podręcznej |Wszystkie warstwy cenowe |
+| rdb-storage-connection-string |Parametry połączenia z kontem magazynu w celu zapewnienia [trwałości danych Redis](cache-how-to-premium-persistence.md) |Tylko wersja Premium |
+| rdb-backup-frequency |Częstotliwość tworzenia kopii zapasowych dla [trwałości danych Redis](cache-how-to-premium-persistence.md) |Tylko wersja Premium |
+| maxmemory-reserved |Konfiguruje [pamięć zarezerwowaną](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla procesów poza pamięcią podręczną |Standardowa i Premium |
+| maxmemory-policy |Konfiguruje [Zasady wykluczania](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla pamięci podręcznej |Wszystkie warstwy cenowe |
 | Powiadamiaj-o miejscu — zdarzenia |Konfiguruje [powiadomienia o przestrzeni](cache-configure.md#keyspace-notifications-advanced-settings) kluczy |Standardowa i Premium |
-| Hash-Max-ZipList-wpisów |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
-| Hash — Max-ZipList-Value |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
-| set-max-intset-wpisów |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
-| zset-Max-ZipList-wpisów |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
-| zset — Max-ZipList-Value |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
-| databases |Konfiguruje liczbę baz danych. Tę właściwość można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
+| hash-max-ziplist-entries |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
+| hash-max-ziplist-value |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
+| set-max-intset-entries |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
+| zset-max-ziplist-entries |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
+| zset-max-ziplist-value |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
+| bazy danych |Konfiguruje liczbę baz danych. Tę właściwość można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Aby utworzyć pamięć podręczną platformy Azure dla usługi Redis
 Nowe wystąpienia usługi Azure cache dla wystąpień Redis są tworzone za pomocą polecenia cmdlet [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) .
@@ -245,7 +237,7 @@ Aby utworzyć pamięć podręczną z domyślnymi parametrami, uruchom następuj�
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 
-`ResourceGroupName`, `Name` i `Location` są wymaganymi parametrami, ale pozostałe są opcjonalne i mają wartości domyślne. Uruchomienie poprzedniego polecenia powoduje utworzenie w pamięci podręcznej standardowej jednostki SKU platformy Azure dla wystąpienia Redis o określonej nazwie, lokalizacji i grupie zasobów o rozmiarze 1 GB z wyłączonym portem innym niż SSL.
+`ResourceGroupName`, `Name`i `Location` są wymaganymi parametrami, ale pozostałe są opcjonalne i mają wartości domyślne. Uruchomienie poprzedniego polecenia powoduje utworzenie w pamięci podręcznej standardowej jednostki SKU platformy Azure dla wystąpienia Redis o określonej nazwie, lokalizacji i grupie zasobów o rozmiarze 1 GB z wyłączonym portem innym niż SSL.
 
 Aby utworzyć pamięć podręczną Premium, określ rozmiar P1 (6 GB-60 GB), P2 (13 GB-130 GB), P3 (26 GB – 260 GB) lub P4 (53 GB-530 GB). Aby włączyć klastrowanie, określ liczbę fragmentu przy użyciu parametru `ShardCount`. Poniższy przykład tworzy pamięć podręczną P1 Premium z 3 fragmentów. Pamięć podręczna w warstwie Premium P1 ma rozmiar 6 GB, a ponieważ określono trzy fragmentów, całkowity rozmiar to 18 GB (3 x 6 GB).
 
@@ -321,7 +313,7 @@ Aby wyświetlić listę dostępnych parametrów i ich opisów dla `Set-AzRedisCa
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-Za pomocą polecenia cmdlet `Set-AzRedisCache` można aktualizować właściwości, takie jak `Size`, `Sku`, `EnableNonSslPort` i `RedisConfiguration` wartości. 
+Za pomocą polecenia cmdlet `Set-AzRedisCache` można aktualizować właściwości, takie jak `Size`, `Sku`, `EnableNonSslPort`i `RedisConfiguration` wartości. 
 
 Następujące polecenie aktualizuje zasady maxmemory dla usługi Azure cache dla Redis o nazwie moja pamięć podręczna.
 
@@ -330,7 +322,7 @@ Następujące polecenie aktualizuje zasady maxmemory dla usługi Azure cache dla
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Aby skalować pamięć podręczną platformy Azure dla usługi Redis
-`Set-AzRedisCache` może służyć do skalowania wystąpienia usługi Azure cache for Redis, gdy właściwości `Size`, `Sku` lub `ShardCount` są modyfikowane. 
+`Set-AzRedisCache` może służyć do skalowania wystąpienia usługi Azure cache for Redis, gdy właściwości `Size`, `Sku`lub `ShardCount` są modyfikowane. 
 
 > [!NOTE]
 > Skalowanie pamięci podręcznej przy użyciu programu PowerShell podlega tym samym limitom i wytycznym jak skalowanie pamięci podręcznej z Azure Portal. Możesz skalować do innej warstwy cenowej, korzystając z następujących ograniczeń.

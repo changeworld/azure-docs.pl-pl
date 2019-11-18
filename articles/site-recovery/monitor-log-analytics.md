@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936086"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133414"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorowanie usługi Site Recovery przy użyciu dzienników usługi Azure Monitor
 
@@ -28,7 +28,7 @@ Site Recovery można Azure Monitor dzienników, aby ułatwić wykonywanie nastę
 Korzystanie z dzienników Azure Monitor z Site Recovery jest obsługiwane w przypadku replikacji **platformy Azure do platformy** Azure oraz do replikacji platformy Azure **/serwera fizycznego** .
 
 > [!NOTE]
-> Dzienniki danych o zmienionych i szybkości przekazywania są dostępne tylko dla maszyn wirtualnych platformy Azure replikowanych do pomocniczego regionu platformy Azure.
+> Aby uzyskać dzienniki danych zmian i dzienniki szybkości przekazywania dla oprogramowania VMware i maszyn fizycznych, należy zainstalować program Microsoft Monitoring Agent na serwerze przetwarzania. Ten agent wysyła dzienniki maszyn replikowanych do obszaru roboczego. Ta funkcja jest dostępna tylko w przypadku wersji Agent mobilności 9,30.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -54,6 +54,24 @@ Zalecamy zapoznanie się z [typowymi pytaniami monitorowania](monitoring-common-
     ![Wybór obszaru roboczego](./media/monitoring-log-analytics/select-workspace.png)
 
 Dzienniki Site Recovery rozpoczynają się do tabeli (**AzureDiagnostics**) w wybranym obszarze roboczym.
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Skonfiguruj program Microsoft Monitoring Agent na serwerze przetwarzania w celu wysyłania dzienników zmian i szybkości przekazywania
+
+Możesz przechwytywać informacje o szybkości zmian danych i szybkość przekazywania danych źródłowych dla maszyn wirtualnych VMware/Physical w środowisku lokalnym. Aby to umożliwić, na serwerze przetwarzania musi być zainstalowany program Microsoft Monitoring Agent.
+
+1. Przejdź do obszaru roboczego Log Analytics i kliknij pozycję **Ustawienia zaawansowane**.
+2. Kliknij stronę **połączone źródła** , a następnie wybierz pozycję **serwery z systemem Windows**.
+3. Pobierz agenta systemu Windows (64 bit) na serwerze przetwarzania. 
+4. [Uzyskaj identyfikator i klucz obszaru roboczego](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Konfigurowanie agenta do korzystania z protokołu TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Ukończ instalację agenta](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) , podając identyfikator i klucz pozyskanego obszaru roboczego.
+7. Po zakończeniu instalacji przejdź do obszaru roboczego Log Analytics i kliknij pozycję **Ustawienia zaawansowane**. Przejdź do strony **dane** , a następnie kliknij pozycję **liczniki wydajności systemu Windows**. 
+8. Kliknij znak **"+"** , aby dodać następujące dwa liczniki z interwałem próbkowania wynoszącym 300 sekund:
+
+        ASRAnalytics(*)\SourceVmChurnRate 
+        ASRAnalytics(*)\SourceVmThrpRate 
+
+Dane o współczynniku zmian i szybkości przekazywania będą rozpoczynać pracę w obszarze roboczym.
 
 
 ## <a name="query-the-logs---examples"></a>Wysyłanie zapytań do dzienników — przykłady
@@ -174,12 +192,9 @@ AzureDiagnostics  
 ```
 ![Zbadaj cel punktu odzyskiwania maszyny](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>Współczynnik zmian danych zapytania dla maszyny wirtualnej
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Szybkość zmian danych zapytania i szybkość przekazywania dla maszyny wirtualnej platformy Azure
 
-> [!NOTE] 
-> Informacje o postępie są dostępne tylko dla maszyn wirtualnych platformy Azure replikowanych do pomocniczego regionu platformy Azure.
-
-To zapytanie przedstawia wykres trendu dla określonej maszyny wirtualnej platformy Azure (ContosoVM123), który śledzi współczynnik zmian danych (bajty zapisu na sekundę) i szybkość przekazywania danych. 
+To zapytanie zawiera wykres trendu dla określonej maszyny wirtualnej platformy Azure (ContosoVM123), który reprezentuje współczynnik zmian danych (liczba bajtów zapisu na sekundę) i szybkość przekazywania danych. 
 
 ```
 AzureDiagnostics   
@@ -193,6 +208,23 @@ Category contains "Upload", "UploadRate", "none") 
 | render timechart  
 ```
 ![Zmień dane zapytania](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Szybkość zmian danych zapytania i szybkość przekazywania dla maszyny fizycznej lub VMware
+
+> [!Note]
+> Upewnij się, że skonfigurowano agenta monitorowania na serwerze przetwarzania, aby pobrać te dzienniki. Zapoznaj się [z instrukcjami, aby skonfigurować agenta monitorowania](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
+
+To zapytanie przedstawia wykres trendu dla określonego dysku **disk0** zreplikowanego elementu **win-9r7sfh9qlru**, który reprezentuje współczynnik zmian danych (liczba bajtów zapisu na sekundę) i szybkość przekazywania danych. Nazwę dysku można znaleźć w bloku **dyski** zreplikowanego elementu w magazynie usługi Recovery Services. Nazwa wystąpienia, która ma zostać użyta w zapytaniu, to nazwa DNS maszyny, a następnie _ i nazwa dysku, jak w tym przykładzie.
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+Serwer przetwarzania wypycha te dane co 5 minut do obszaru roboczego Log Analytics. Te punkty danych przedstawiają średnią obliczoną przez 5 minut.
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Zapytanie dotyczące odzyskiwania po awarii (Azure na platformę Azure)
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 424df8ac7145129dd70a9a5791648730189b528b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889672"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128845"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Pobierz dane czujnika z partnerów czujników
 
@@ -35,7 +35,7 @@ Po rozpoczęciu przesyłania strumieniowego danych czujników można rozpocząć
  - Punkt końcowy interfejsu API  
  - Identyfikator dzierżawy  
  - Identyfikator klienta  
- - Klucz tajny klienta  
+ - Wpis tajny klienta  
  - Parametry połączenia EventHub
 
 Powyższe informacje są udostępniane przez Integrator systemu. W przypadku problemów związanych z integracją urządzeń należy skontaktować się z integratorem systemu.
@@ -72,7 +72,7 @@ Odwiedź portal partnera urządzeń, aby utworzyć link FarmBeats za pomocą zes
  - Punkt końcowy interfejsu API  
  - Parametry połączenia EventHub  
  - Identyfikator klienta  
- - Klucz tajny klienta  
+ - Wpis tajny klienta  
  - Identyfikator dzierżawy  
 
  Dostawca urządzenia potwierdza pomyślną integrację. Po potwierdzeniu można wyświetlić wszystkie urządzenia i czujniki w usłudze Azure FarmBeats.
@@ -86,7 +86,7 @@ Skorzystaj z poniższej sekcji, aby wyświetlić urządzenia i czujniki w farmie
 Obecnie FarmBeats obsługuje następujące urządzenia:
 
 - **Węzeł**: urządzenie, do którego jest dołączona co najmniej jedna czujników.
-- **Brama**: urządzenie, do którego jest dołączona co najmniej jedna z czujników.
+- **Brama**: urządzenie, do którego dołączono co najmniej jeden węzeł.
 
 Wykonaj następujące czynności:
 

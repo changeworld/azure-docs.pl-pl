@@ -1,25 +1,18 @@
 ---
-title: Omówienie zasad SSL dla usługi Azure Application Gateway | Microsoft Docs
-description: Dowiedz się, jak usługa Azure Application Gateway umożliwia konfigurowanie zasad SSL
+title: Omówienie zasad SSL dla usługi Azure Application Gateway
+description: Dowiedz się, jak skonfigurować zasady protokołu SSL dla usługi Azure Application Gateway i zmniejszyć obciążenie szyfrowania i odszyfrowywania z farmy serwerów zaplecza.
 services: application gateway
-documentationcenter: na
 author: amsriva
-manager: ''
-editor: ''
-tags: azure resource manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure services
-ms.date: 08/03/2017
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1710635f145136e564a2bad48d539f242c9bc228
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6b3d52f1f6bd0390ab6ccafa80b2979cb0e498fd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359913"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130410"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Omówienie zasad protokołu SSL Application Gateway
 
@@ -35,27 +28,27 @@ Application Gateway ma trzy wstępnie zdefiniowane zasady zabezpieczeń. Bramę 
 
 |Właściwość  |Wartość  |
 |---|---|
-|Name (Nazwa)     | AppGwSslPolicy20150501        |
+|Nazwa     | AppGwSslPolicy20150501        |
 |MinProtocolVersion     | TLSv1_0        |
-|Domyślny| True (jeśli nie określono żadnych wstępnie zdefiniowanych zasad) |
+|Domyślne| True (jeśli nie określono żadnych wstępnie zdefiniowanych zasad) |
 |CipherSuites     |TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_3DES_EDE_CBC_SHA<br>TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401"></a>AppGwSslPolicy20170401
   
-|Właściwość  |Value  |
+|Właściwość  |Wartość  |
 |   ---      |  ---       |
-|Name (Nazwa)     | AppGwSslPolicy20170401        |
+|Nazwa     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
-|Domyślny| False |
+|Domyślne| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
 
-|Właściwość  |Value  |
+|Właściwość  |Wartość  |
 |---|---|
-|Name (Nazwa)     | AppGwSslPolicy20170401S        |
+|Nazwa     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
-|Domyślny| False |
+|Domyślne| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
 ## <a name="custom-ssl-policy"></a>Niestandardowe zasady protokołu SSL
@@ -66,7 +59,7 @@ Jeśli konieczne jest skonfigurowanie wstępnie zdefiniowanych zasad SSL dla wym
 
 * Protokoły SSL 2,0 i 3,0 są domyślnie wyłączone dla wszystkich bram aplikacji. Te wersje protokołu nie są konfigurowalne.
 * Niestandardowe zasady protokołu SSL umożliwiają wybranie jednego z trzech następujących protokołów jako minimalnej wersji protokołu SSL dla bramy: TLSv1_0, TLSv1_1 i TLSv1_2.
-* Jeśli żadna zasada SSL nie zostanie zdefiniowana, wszystkie trzy protokoły (TLSv1_0, TLSv1_1 i TLSv1_2) są włączone.
+* Jeśli żadna zasada SSL nie zostanie zdefiniowana, wszystkie trzy protokoły (TLSv1_0, TLSv1_1 i TLSv1_2) będą włączone.
 
 ### <a name="cipher-suites"></a>Mechanizmy szyfrowania
 

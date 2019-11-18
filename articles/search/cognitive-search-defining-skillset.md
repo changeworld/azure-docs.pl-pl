@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zestawu umiejętności w potoku wzbogacania
+title: Tworzenie zestawu umiejętności
 titleSuffix: Azure Cognitive Search
 description: Zdefiniuj wyodrębnianie danych, przetwarzanie języka naturalnego lub procedurę analizy obrazów, aby wzbogacać i wyodrębnić informacje o strukturze z danych do użycia w usłudze Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787466"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114538"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Jak utworzyć zestawu umiejętności w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze 
 
@@ -36,9 +36,9 @@ Zalecany początkowy krok polega na tym, które dane mają zostać wyodrębnione
 
 Załóżmy, że interesuje Cię przetwarzanie zestawu komentarzy analityków finansowych. Dla każdego pliku, chcesz wyodrębnić nazwy firmowe i ogólne tonacji komentarzy. Warto również napisać niestandardowy wzbogacający, który używa usługi wyszukiwanie jednostek Bing, aby znaleźć dodatkowe informacje o firmie, takie jak rodzaj firmy, w której jest zaangażowana firma. Zasadniczo, chcesz wyodrębnić informacje takie jak następujące, które są indeksowane dla każdego dokumentu:
 
-| rekord — tekst | towarzystw | Tonacji | opisy firmy |
+| rekord — tekst | towarzystw | tonacji | opisy firmy |
 |--------|-----|-----|-----|
-|Przykładowy rekord| ["Microsoft", "LinkedIn"] | 0,99 | ["Microsoft Corporation to amerykańska firma wielonarodowych technologii...", "LinkedIn to sieć społecznościowa zorientowana na działalność biznesową i"... "]
+|sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation to amerykańska firma wielonarodowych technologii...", "LinkedIn to sieć społecznościowa zorientowana na działalność biznesową i"... "]
 
 Poniższy diagram ilustruje hipotetyczny potok wzbogacania:
 
@@ -163,7 +163,7 @@ Przyjrzyjmy się pierwszej umiejętności, która stanowi wbudowaną [umiejętno
     }
 ```
 
-* Każda wbudowana umiejętność ma `odata.type`, `input` i `output` właściwości. Właściwości specyficzne dla umiejętności zawierają dodatkowe informacje dotyczące tej umiejętności. W przypadku rozpoznawania jednostek `categories` jest jedną jednostką dla ustalonego zestawu typów jednostek, które może rozpoznać przedmieszczony model.
+* Każda wbudowana umiejętność ma `odata.type`, `input`i `output` właściwości. Właściwości specyficzne dla umiejętności zawierają dodatkowe informacje dotyczące tej umiejętności. W przypadku rozpoznawania jednostek `categories` jest jedną jednostką dla ustalonego zestawu typów jednostek, które może rozpoznać przedmieszczony model.
 
 * Każda umiejętność powinna mieć ```"context"```. Kontekst reprezentuje poziom, na którym operacje mają miejsce. W powyższej umiejętności kontekst jest całym dokumentem, co oznacza, że umiejętność rozpoznawania jednostki jest wywoływana raz dla dokumentu. Dane wyjściowe są również tworzone na tym poziomie. Dokładniej, ```"organizations"``` są generowane jako element członkowski ```"/document"```. W obszarze umiejętności podrzędne można odwołać się do nowo utworzonych informacji jako ```"/document/organizations"```.  Jeśli pole ```"context"``` nie jest jawnie ustawione, domyślnym kontekstem jest dokument.
 

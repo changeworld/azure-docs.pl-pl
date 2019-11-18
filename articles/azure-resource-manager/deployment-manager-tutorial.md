@@ -1,19 +1,16 @@
 ---
 title: Używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager | Microsoft Docs
 description: Użyj szablonów usługi Resource Manager z usługą Azure Deployment Manager, aby wdrażać zasoby platformy Azure.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 6a05e45c5dc60cf26b2fb4f50cb4699c0fde142a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285881"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147421"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (publiczna wersja zapoznawcza)
 
@@ -192,7 +189,7 @@ Musisz utworzyć tożsamość zarządzaną przypisaną przez użytkownika i skon
 > [!IMPORTANT]
 > Tożsamość zarządzana przypisana przez użytkownika musi znajdować się w tej samej lokalizacji, co [wprowadzanie](#create-the-rollout-template). Obecnie zasoby usługi Deployment Manager, w tym wprowadzanie, można tworzyć tylko w lokalizacji Środkowe stany USA lub Wschodnie stany USA 2. Ta reguła obowiązuje jednak tylko w przypadku zasobów programu Deployment Manager (na przykład topologii usługi, usług, jednostek usług, wdrożenia i kroków). Zasoby docelowe można wdrażać w dowolnym obsługiwanym regionie platformy Azure. Na przykład w tym samouczku zasoby programu Deployment Manager są wdrażane w regionie Środkowe stany USA, a usługi są wdrażane w regionach Wschodnie stany USA i Zachodnie stany USA. To ograniczenie zostanie zlikwidowane w przyszłości.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Utwórz [tożsamość zarządzaną przypisaną przez użytkownika](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. W portalu wybierz opcję **Subskrypcje** z menu po lewej stronie, a następnie wybierz swoją subskrypcję.
 4. Wybierz opcję **Kontrola dostępu (IAM)** , a następnie wybierz opcję **Dodaj przypisanie roli**.
@@ -340,7 +337,7 @@ Programu Azure PowerShell można użyć do wdrażania szablonów.
     Jeśli skrypt zostanie uruchomiony z innej sesji programu PowerShell z poziomu tej, w której uruchomiono skrypt [przygotowania artefaktów](#prepare-the-artifacts) , należy najpierw ponownie wypełnić zmienne, które zawierają **$resourceGroupName** i **$FilePath**.
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment` to wywołanie asynchroniczne. Komunikat o powodzeniu oznacza, że wdrożenie zostało pomyślnie rozpoczęte. Aby sprawdzić wdrożenie, zobacz krok 2 i krok 4 tej procedury.
+    > `New-AzResourceGroupDeployment` jest wywołaniem asynchronicznym. Komunikat o powodzeniu oznacza, że wdrożenie zostało pomyślnie rozpoczęte. Aby sprawdzić wdrożenie, zobacz krok 2 i krok 4 tej procedury.
 
 2. Sprawdź, czy topologia usługi oraz podstawowe zasoby zostały utworzone pomyślnie, korzystając z witryny Azure Portal:
 

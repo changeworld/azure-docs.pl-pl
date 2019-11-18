@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 05/21/2019
-ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/15/2019
+ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821769"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132417"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metryki i rejestrowania diagnostyki
 
@@ -63,16 +63,17 @@ Można skonfigurować bazy danych Azure SQL Database i wystąpienia baz danych, 
 
 | Monitorowanie telemetrii dla baz danych | Obsługa pojedynczej bazy danych i bazy danych w puli | Obsługa bazy danych wystąpień |
 | :------------------- | ----- | ----- |
-| [Metryki podstawowe](#basic-metrics): zawiera wartość procentową jednostek DTU/CPU, limit liczby jednostek DTU/procesora, procent odczytu danych fizycznych, procent zapisu w dzienniku, pomyślne/nieudane/zablokowane przez połączenia zapory procent miejsca do magazynowania. | Tak | Nie |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): zawiera informacje o statystykach środowiska uruchomieniowego zapytań, takich jak użycie procesora CPU i statystyka czasu trwania zapytania. | Tak | Tak |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): zawiera informacje o statystykach oczekiwania na zapytanie (zapytania, w których zarejestrowano), takie jak procesor CPU, dziennik i blokowanie. | Tak | Tak |
-| [Błędy](#errors-dataset): zawiera informacje o błędach SQL w bazie danych. | Tak | Tak |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): zawiera informacje o tym, ile czasu baza danych poświęca na oczekiwanie na różne typy oczekiwania. | Tak | Nie |
-| [Limity czasu](#time-outs-dataset): zawiera informacje na temat limitów czasu w bazie danych. | Tak | Nie |
-| [Bloki](#blockings-dataset): zawiera informacje o blokowaniu zdarzeń w bazie danych. | Tak | Nie |
-| [Zakleszczenia](#deadlocks-dataset): zawiera informacje o zdarzeniach zakleszczenia w bazie danych. | Tak | Nie |
-| [AutomaticTuning](#automatic-tuning-dataset): zawiera informacje o zaleceniach dostrajania automatycznego dla bazy danych. | Tak | Nie |
-| [SQLInsights](#intelligent-insights-dataset): zawiera Intelligent Insights do wydajności bazy danych. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Tak | Tak |
+| [Metryki podstawowe](#basic-metrics): zawiera wartość procentową jednostek DTU/CPU, limit liczby jednostek DTU/procesora, procent odczytu danych fizycznych, procent zapisu w dzienniku, pomyślne/nieudane/zablokowane przez połączenia zapory procent miejsca do magazynowania. | Yes | Nie |
+| [Zaawansowane wystąpienie i aplikacja](#advanced-metrics): zawiera bazę danych tempdb system Data i rozmiar pliku dziennika oraz plik dziennika bazy danych tempdb (%). | Yes | Nie |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): zawiera informacje o statystykach środowiska uruchomieniowego zapytań, takich jak użycie procesora CPU i statystyka czasu trwania zapytania. | Yes | Yes |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): zawiera informacje o statystykach oczekiwania na zapytanie (zapytania, w których zarejestrowano), takie jak procesor CPU, dziennik i blokowanie. | Yes | Yes |
+| [Błędy](#errors-dataset): zawiera informacje o błędach SQL w bazie danych. | Yes | Yes |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): zawiera informacje o tym, ile czasu baza danych poświęca na oczekiwanie na różne typy oczekiwania. | Yes | Nie |
+| [Limity czasu](#time-outs-dataset): zawiera informacje na temat limitów czasu w bazie danych. | Yes | Nie |
+| [Bloki](#blockings-dataset): zawiera informacje o blokowaniu zdarzeń w bazie danych. | Yes | Nie |
+| [Zakleszczenia](#deadlocks-dataset): zawiera informacje o zdarzeniach zakleszczenia w bazie danych. | Yes | Nie |
+| [AutomaticTuning](#automatic-tuning-dataset): zawiera informacje o zaleceniach dostrajania automatycznego dla bazy danych. | Yes | Nie |
+| [SQLInsights](#intelligent-insights-dataset): zawiera Intelligent Insights do wydajności bazy danych. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
 
 > [!IMPORTANT]
 > Pule elastyczne i wystąpienia zarządzane mają osobne dane telemetryczne diagnostyki z baz danych, które zawierają. Jest to ważne, aby pamiętać, że dane telemetryczne diagnostyki są konfigurowane osobno dla każdego z tych zasobów, jak opisano poniżej.
@@ -214,7 +215,7 @@ Aby włączyć strumieniowe dane telemetryczne diagnostyki dla baz danych wystą
 
 Można włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu programu PowerShell.
 
-- Aby włączyć magazyn dzienników diagnostycznych na koncie magazynu, użyj tego polecenia:
+- Aby włączyć magazyn dzienniki diagnostyczne na koncie magazynu, użyj tego polecenia:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -222,31 +223,31 @@ Można włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu progr
 
    Identyfikator konta magazynu jest IDENTYFIKATORem zasobu dla docelowego konta magazynu.
 
-- Aby włączyć przesyłanie strumieniowe dzienników diagnostycznych do centrum zdarzeń, użyj tego polecenia:
+- Aby włączyć strumieniowe przesyłanie dzienników diagnostycznych do Centrum zdarzeń, użyj tego polecenia:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   Identyfikator reguły Azure Service Bus jest ciągiem o tym formacie:
+   Identyfikator reguły usługi Azure Service Bus jest ciągiem o następującym formacie:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- Aby włączyć wysyłanie dzienników diagnostycznych do obszaru roboczego Log Analytics, użyj tego polecenia:
+- Aby włączyć wysyłanie dzienników diagnostycznych do obszaru roboczego usługi Log Analytics, użyj tego polecenia:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- Identyfikator zasobu obszaru roboczego Log Analytics można uzyskać za pomocą następującego polecenia:
+- Identyfikator zasobu obszaru roboczego usługi Log Analytics można uzyskać za pomocą następującego polecenia:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Te parametry można połączyć, aby włączyć wiele opcji danych wyjściowych.
+Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Aby skonfigurować wiele zasobów platformy Azure
 
@@ -296,7 +297,7 @@ Możesz włączyć funkcję rejestrowania metryk i diagnostyki przy użyciu inte
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-Te parametry można połączyć, aby włączyć wiele opcji danych wyjściowych.
+Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
 
 ### <a name="rest-api"></a>Interfejs API REST
 
@@ -310,7 +311,7 @@ Przeczytaj informacje o sposobie [włączania ustawień diagnostycznych podczas 
 
 Azure SQL Analytics to rozwiązanie w chmurze, które służy do monitorowania wydajności baz danych SQL Azure, pul elastycznych i wystąpień zarządzanych na dużą skalę i w wielu subskrypcjach. Może pomóc zbierać i wizualizować Azure SQL Database metryki wydajności i ma wbudowaną analizę na potrzeby rozwiązywania problemów z wydajnością.
 
-![Przegląd Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Usługi Azure SQL Analytics — Przegląd](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 SQL Database metryki i dzienniki diagnostyczne mogą być przesyłane strumieniowo do Azure SQL Analytics przy użyciu wbudowanej opcji **Wyślij do log Analytics** na karcie Ustawienia diagnostyki w portalu. Usługę log Analytics można również włączyć przy użyciu ustawień diagnostycznych za pośrednictwem poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia platformy Azure lub protokołu API REST Azure Monitor.
 
@@ -428,6 +429,16 @@ Szczegółowe informacje na temat podstawowych metryk według zasobów można zn
 |**Zasób**|**Metryki**|
 |---|---|
 |Baza danych Azure SQL Database|Procent jednostek DTU, użytych jednostek DTU, limit jednostek DTU, procent użycia procesora, procent odczytu danych fizycznych, procent zapisu w dzienniku, pomyślne/nieudane/zablokowane przez połączenia zapory, procenty dla pracowników, wartość procentowa, magazyn, procent magazynu, procent magazynu XTP i zakleszczenia |
+
+## <a name="advanced-metrics"></a>Metryki zaawansowane
+
+Szczegółowe informacje na temat zaawansowanych metryk można znaleźć w poniższej tabeli.
+
+|**Metryka**|**Nazwa wyświetlana metryki**|**Opis**|
+|---|---|---|
+|tempdb_data_size| Rozmiar pliku danych tempdb kilobajtów |Rozmiar pliku danych tempdb kilobajtów. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU. |
+|tempdb_log_size| Rozmiar pliku dziennika bazy danych tempdb kilobajtów |Rozmiar pliku dziennika bazy danych tempdb kilobajtów. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU. |
+|tempdb_log_used_percent| Użyto dziennika% tempdb |Użyto dziennika bazy danych tempdb. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU. |
 
 ## <a name="basic-logs"></a>Dzienniki podstawowe
 
@@ -566,7 +577,7 @@ Dowiedz się więcej na temat [danych statystycznych oczekiwania magazynu zapyta
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
 |ResourceId|Identyfikator URI zasobu |
-|Wiadomość|Komunikat o błędzie w postaci zwykłego tekstu |
+|Komunikat|Komunikat o błędzie w postaci zwykłego tekstu |
 |user_defined_b|Jest błędem bitowym zdefiniowanym przez użytkownika |
 |error_number_d|Kod błędu |
 |Ważność|Ważność błędu |
@@ -716,7 +727,7 @@ Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć metryki i katego
 
 Aby dowiedzieć się więcej na temat Event Hubs, Przeczytaj:
 
-- [Co to jest platforma Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Co to jest usługa Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Aby dowiedzieć się, jak skonfigurować alerty na podstawie danych telemetrycznych z usługi log Analytics, zobacz:

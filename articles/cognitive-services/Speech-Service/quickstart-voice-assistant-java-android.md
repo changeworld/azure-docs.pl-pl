@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1de9283e1ad609a1f81d7e8a6d8171cc8052e3ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504074"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111791"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Szybki Start: Tworzenie asystenta głosowego w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
@@ -26,13 +26,13 @@ W tym artykule opisano tworzenie asystenta głosowego za pomocą języka Java dl
 Ta aplikacja jest zbudowana z pakietem Maven zestawu mowy SDK i Android Studio 3,3. Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32 lub 64-bitowymi procesorami ARM i procesorami x86 lub x64 firmy Intel.
 
 > [!NOTE]
-> Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).
+> W przypadku zestawu Speech Devices SDK i urządzenia Roobo zobacz [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
-* Wcześniej utworzono bot skonfigurowany za pomocą [kanału Direct line](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-* [Android Studio](https://developer.android.com/studio/) v 3.3 lub nowszy
+- Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
+- Wcześniej utworzono bot skonfigurowany za pomocą [kanału Direct line](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Android Studio](https://developer.android.com/studio/) v 3.3 lub nowszy
 
     > [!NOTE]
     > Zapoznaj się z [listą obsługiwanych regionów dla asystentów głosowych](regions.md#voice-assistants) i upewnij się, że zasoby zostały wdrożone w jednym z tych regionów.
@@ -96,9 +96,9 @@ Następnie zastąp zawartość `activity_main.xml` następującym kodem:
 
 Ten plik XML definiuje prosty interfejs użytkownika do współpracy z bot.
 
-* Element `button` inicjuje interakcję i wywołuje metodę `onBotButtonClicked` po kliknięciu.
-* Element `recoText` wyświetli wyniki zamiany mowy na tekst podczas rozmowy z bot.
-* Element `activityText` wyświetli ładunek JSON dla najnowszej aktywności bot Framework z bot.
+- Element `button` inicjuje interakcję i wywołuje metodę `onBotButtonClicked` po kliknięciu.
+- Element `recoText` wyświetli wyniki zamiany mowy na tekst podczas rozmowy z bot.
+- Element `activityText` wyświetli ładunek JSON dla najnowszej aktywności bot Framework z bot.
 
 Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać następująco:
 
@@ -283,7 +283,7 @@ Po uruchomieniu aplikacji i jej działania kliknij przycisk, aby rozpocząć roz
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 - [Asystenci głosu — informacje](voice-assistants.md)
 - [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
 - [Niestandardowe słowa kluczowe](speech-devices-sdk-create-kws.md)

@@ -216,6 +216,8 @@
         - name: Używanie kontroli dostępu opartej na rolach w usłudze Kubernetes w integracji z usługą Azure AD
           href: azure-ad-rbac.md
           maintainContext: true
+        - name: Wymiana certyfikatów
+          href: certificate-rotation.md
     - name: Monitorowanie i rejestrowanie
       items:
         - name: Usługa Azure Monitor dla kontenerów

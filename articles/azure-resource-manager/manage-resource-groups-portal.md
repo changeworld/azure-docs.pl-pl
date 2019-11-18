@@ -1,19 +1,16 @@
 ---
 title: Zarządzanie grupami zasobów — Azure Portal
 description: Użyj Azure Portal do zarządzania grupami zasobów przy użyciu Azure Resource Manager. Pokazuje, jak tworzyć, wyświetlać i usuwać grupy zasobów.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: b0fac4f618f742a13633473f00dbd24ff8411c44
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: e3402f496371fe89c832dc22c8288a1b94378c82
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528543"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147162"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Zarządzanie grupami zasobów Azure Resource Manager przy użyciu Azure Portal
 
@@ -36,7 +33,7 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania
 
 ## <a name="create-resource-groups"></a>Tworzenie grup zasobów
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **grupy zasobów**
 
     ![Dodaj grupę zasobów](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -56,7 +53,7 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania
 
 ## <a name="list-resource-groups"></a>Wyświetl listę grup zasobów
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Aby wyświetlić listę grup zasobów, wybierz pozycję **grupy zasobów**
 
     ![Przeglądaj grupy zasobów](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -65,7 +62,7 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania
 
 ## <a name="open-resource-groups"></a>Otwórz grupy zasobów
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Grupy zasobów**.
 3. Wybierz grupę zasobów, którą chcesz otworzyć.
 
@@ -109,7 +106,7 @@ Aby uzyskać informacje na temat eksportowania szablonów, zobacz [jeden i wiele
 
 ## <a name="manage-access-to-resource-groups"></a>Zarządzanie dostępem do grup zasobów
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md).
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

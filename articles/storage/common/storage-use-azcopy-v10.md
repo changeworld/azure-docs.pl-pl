@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 812daaf42a987e9dd63bbc39b60c517d8f0cc761
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882491"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111755"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -53,7 +53,7 @@ Dla wygody należy rozważyć dodanie lokalizacji katalogu wykonywalnego AzCopy 
 
 W przypadku wybrania opcji nie dodawaj katalogu AzCopy do ścieżki należy zmienić katalogi na lokalizację pliku wykonywalnego AzCopy i wpisać `azcopy` lub `.\azcopy` w wierszach polecenia programu Windows PowerShell.
 
-Aby wyświetlić listę poleceń, wpisz `azcopy -h`, a następnie naciśnij klawisz ENTER.
+Aby wyświetlić listę poleceń, wpisz `azcopy -h` a następnie naciśnij klawisz ENTER.
 
 Aby dowiedzieć się więcej na temat konkretnego polecenia, należy dołączyć nazwę polecenia (na przykład: `azcopy list -h`).
 
@@ -70,7 +70,7 @@ Poświadczenia autoryzacji można podawać przy użyciu Azure Active Directory (
 
 Użyj tej tabeli jako przewodnika:
 
-| Typ usługi Storage | Obecnie obsługiwana metoda autoryzacji |
+| Typ magazynu | Obecnie obsługiwana metoda autoryzacji |
 |--|--|
 |**Blob Storage** | Usługa Azure AD & SAS |
 |**BLOB Storage (hierarchiczne przestrzeń nazw)** | Usługa Azure AD & SAS |
@@ -193,7 +193,7 @@ Następnie wpisz następujące polecenie, a następnie naciśnij klawisz ENTER.
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-Zastąp symbol zastępczy `<path-to-certificate-file>` z względną lub w pełni kwalifikowaną ścieżką do pliku certyfikatu. AzCopy zapisuje ścieżkę do tego certyfikatu, ale nie zapisuje kopii certyfikatu, więc pamiętaj, aby zachować ten certyfikat w miejscu. Zastąp symbol zastępczy `<tenant-id>` IDENTYFIKATORem dzierżawy organizacji, do której należy konto magazynu. Aby znaleźć identyfikator dzierżawy, wybierz pozycję **Azure Active Directory właściwości > > identyfikator katalogu** w Azure Portal.
+Zastąp symbol zastępczy `<path-to-certificate-file>` ścieżką względną lub w pełni kwalifikowaną do pliku certyfikatu. AzCopy zapisuje ścieżkę do tego certyfikatu, ale nie zapisuje kopii certyfikatu, więc pamiętaj, aby zachować ten certyfikat w miejscu. Zastąp symbol zastępczy `<tenant-id>` IDENTYFIKATORem dzierżawy organizacji, do której należy konto magazynu. Aby znaleźć identyfikator dzierżawy, wybierz pozycję **Azure Active Directory właściwości > > identyfikator katalogu** w Azure Portal.
 
 > [!NOTE]
 > Rozważ użycie monitu, jak pokazano w tym przykładzie. Dzięki temu Twoje hasło nie będzie wyświetlane w historii poleceń konsoli. 
@@ -284,7 +284,7 @@ Aby uzyskać link, uruchom następujące polecenie:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> W przypadku systemu Linux `--strip-components=1` w poleceniu `tar` usuwa folder najwyższego poziomu, który zawiera nazwę wersji, a następnie wyodrębnia plik binarny bezpośrednio do bieżącego folderu. Dzięki temu skrypt zostanie zaktualizowany przy użyciu nowej wersji `azcopy` przez zaktualizowanie adresu URL `wget`.
+> W przypadku systemu Linux `--strip-components=1` na `tar` polecenie usuwa folder najwyższego poziomu, który zawiera nazwę wersji, a następnie wyodrębnia plik binarny bezpośrednio do bieżącego folderu. Dzięki temu skrypt będzie aktualizowany przy użyciu nowej wersji `azcopy` przez zaktualizowanie `wget` adresu URL.
 
 W danych wyjściowych tego polecenia zostanie wyświetlony adres URL. Skrypt może następnie pobrać AzCopy przy użyciu tego adresu URL.
 
@@ -305,16 +305,9 @@ Jeśli planujesz używać [Jenkins](https://jenkins.io/) do uruchamiania skrypt�
 /usr/bin/keyctl new_session
 ```
 
-## <a name="use-azcopy-in-storage-explorer"></a>Używanie AzCopy w Eksplorator usługi Storage
+## <a name="use-azcopy-in-azure-storage-explorer"></a>Używanie AzCopy w Eksplorator usługi Azure Storage
 
-Jeśli chcesz wykorzystać zalety wydajności AzCopy, ale wolisz używać Eksplorator usługi Storage, a nie wiersza polecenia, aby współdziałać z plikami, a następnie Włącz AzCopy w Eksplorator usługi Storage.
-
-W Eksplorator usługi Storage wybierz pozycję **podgląd**->**Użyj AzCopy do ulepszonego przekazywania obiektów blob i pobierania**.
-
-![Włącz AzCopy jako aparat transferu w Eksplorator usługi Azure Storage](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
-
-> [!NOTE]
-> Nie musisz włączać tego ustawienia, jeśli włączono hierarchiczną przestrzeń nazw na koncie magazynu. Dzieje się tak, ponieważ Eksplorator usługi Storage automatycznie używa AzCopy na kontach magazynu, które mają hierarchiczną przestrzeń nazw.  
+[Eksplorator usługi Storage](https://azure.microsoft.com/features/storage-explorer/) używa AzCopy do wykonywania wszystkich operacji transferu danych. [Eksplorator usługi Storage](https://azure.microsoft.com/features/storage-explorer/) można użyć, jeśli chcesz wykorzystać zalety wydajności AzCopy, ale wolisz używać graficznego interfejsu użytkownika, a nie wiersza polecenia, aby pracować z plikami.
 
 Eksplorator usługi Storage używa klucza konta do wykonywania operacji, więc po zalogowaniu się do Eksplorator usługi Storage nie trzeba podawać dodatkowych poświadczeń autoryzacji.
 

@@ -1,18 +1,14 @@
 ---
 title: Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
 description: W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e0f0a9d4cdd56ff1bca9b9faf493d3e0d68e558c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286185"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132471"
 ---
 # <a name="recommended-security-practices"></a>Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
 
@@ -34,10 +30,10 @@ Na przykład możesz chcieć użyć struktury podobnej do następujących:
 
 |Nazwa grupy  |Typ  |principalId  |Definicja roli  |Identyfikator definicji roli  |
 |---------|---------|---------|---------|---------|
-|Architektury     |Grupa użytkowników         |\<principalId @ no__t-1         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Ocena     |Grupa użytkowników         |\<principalId @ no__t-1         |Czytelnik         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|Specjaliści dla maszyn wirtualnych     |Grupa użytkowników         |\<principalId @ no__t-1         |Współautor maszyny wirtualnej         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |Główna nazwa usługi (SPN)         |\<principalId @ no__t-1         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Architektury     |Grupa użytkowników         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ocena     |Grupa użytkowników         |\<principalId\>         |Czytelnik         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|Specjaliści dla maszyn wirtualnych     |Grupa użytkowników         |\<principalId\>         |Współautor maszyny wirtualnej         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automatyzacja     |Główna nazwa usługi (SPN)         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Po utworzeniu tych grup można przypisywać użytkowników zgodnie z wymaganiami. Dodawać tylko użytkowników, którzy naprawdę muszą mieć dostęp. Pamiętaj o regularnym przeglądaniu członkostwa w grupach i usunięciu wszystkich użytkowników, którzy nie są już zarejestrowani.
 

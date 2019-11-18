@@ -1,35 +1,27 @@
 ---
-title: Dostawca stanu sesji ASP.NET dla pamięci podręcznej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przechowywanie stanu sesji ASP.NET dla usługi Redis za pomocą usługi Azure Cache
-services: cache
-documentationcenter: na
+title: Dostawca stanu sesji ASP.NET pamięci podręcznej
+description: Dowiedz się, jak przechowywać stan sesji ASP.NET za pomocą usługi Azure cache for Redis
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: yegu
-ms.openlocfilehash: 7333fa51da1cd5bbd9175d56571ec1d17cbbe33f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfcad48060a3cf33da80c09c3900ce4322b947da
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203923"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122823"
 ---
-# <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Dostawca stanu sesji ASP.NET dla usługi Azure Cache dla usługi Redis
+# <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Dostawca stanu sesji ASP.NET dla usługi Azure cache for Redis
 
-Pamięć podręczna systemu Azure dla usługi Redis zawiera dostawca stanu sesji, który służy do przechowywania swojej sesji stanu w pamięci z pamięcią podręczną Azure Redis zamiast bazy danych programu SQL Server. Aby korzystać z pamięci podręcznej dostawcy stanu sesji, najpierw skonfigurować pamięć podręczną, a następnie skonfiguruj aplikację ASP.NET przy użyciu usługi Azure Cache dla pakietu Redis NuGet stanu sesji w pamięci podręcznej.
+Pamięć podręczna systemu Azure dla usługi Redis zawiera dostawcę stanu sesji, którego można użyć do przechowywania stanu sesji w pamięci za pomocą usługi Azure cache dla Redis zamiast bazy danych SQL Server. Aby użyć dostawcy stanu sesji buforowania, najpierw Skonfiguruj pamięć podręczną, a następnie skonfiguruj aplikację ASP.NET dla pamięci podręcznej przy użyciu usługi Azure cache dla pakietu NuGet stanu sesji Redis.
 
-Często nie jest praktyczne w chmurze w rzeczywistych warunkach aplikacji bez przechowywania pewnego rodzaju stanu dla sesji użytkownika, ale niektóre podejścia wpłynąć na wydajność i skalowalność więcej niż inne. W przypadku przechowywania stanu, najlepszym rozwiązaniem jest zachowywanie małych ilości stanu i zapisz go w plikach cookie. Jeśli nie jest to możliwe, dalej najlepszym rozwiązaniem jest do użytku z dostawcą rozproszona, wewnątrzpamięciowa pamięć podręczna stanu sesji programu ASP.NET. Najgorszy rozwiązania z punktu widzenia skalowalności i wydajności jest korzystanie z bazy danych kopii dostawca stanu sesji. Ten temat zawiera wskazówki na temat używania dostawca stanu sesji ASP.NET dla usługi Azure Cache dla usługi Redis. Aby uzyskać informacje na temat innych opcji stanu sesji, zobacz [opcji stanu sesji ASP.NET](#aspnet-session-state-options).
+Często nie jest to praktyczne w aplikacji w chmurze w rzeczywistości, aby uniknąć przechowywania niektórych form stanu dla sesji użytkownika, ale niektóre podejścia mają wpływ na wydajność i skalowalność więcej niż inne. Jeśli musisz przechowywać stan, najlepszym rozwiązaniem jest zachowanie małego stanu i zapisanie go w plikach cookie. Jeśli to nie jest możliwe, następnym najlepszym rozwiązaniem jest użycie ASP.NET stanu sesji z dostawcą dla rozproszonej pamięci podręcznej w pamięci. Najgorszym rozwiązaniem z punktu widzenia wydajności i skalowalności jest użycie dostawcy stanu sesji bazy danych. Ten temat zawiera wskazówki dotyczące używania dostawcy stanu sesji ASP.NET dla usługi Azure cache for Redis. Aby uzyskać informacje o innych opcjach stanu sesji, zobacz [ASP.NET Session State Options](#aspnet-session-state-options).
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>Przechowywanie stanu sesji programu ASP.NET w pamięci podręcznej
 
-Aby skonfigurować aplikację klienta w programie Visual Studio dla pakietu Redis NuGet stanu sesji przy użyciu usługi Azure Cache, kliknij przycisk **Menedżera pakietów NuGet**, **Konsola Menedżera pakietów** z **narzędzia**  menu.
+Aby skonfigurować aplikację kliencką w programie Visual Studio przy użyciu pakietu NuGet usługi Azure cache for Redis, kliknij pozycję **Menedżer pakietów NuGet**, **konsola Menedżera pakietów** z menu **Narzędzia** .
 
 W oknie `Package Manager Console` uruchom następujące polecenie.
     
@@ -39,18 +31,18 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 ```
 
 > [!IMPORTANT]
-> Jeśli używasz funkcję klastrowania z warstwy premium, należy użyć [pakietu RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 lub wyższą lub wyjątek, który jest generowany. Przenoszenie 2.0.1 lub wyższej jest zmianą przerywającą; Aby uzyskać więcej informacji, zobacz [v2.0.0 istotne szczegóły zmian](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details). W czasie tej aktualizacji artykułu bieżącą wersję tego pakietu jest 2.2.3.
+> Jeśli używasz funkcji klastrowania z warstwy Premium, musisz użyć [pakietu redissessionstateprovider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 lub nowszej lub wyjątek jest zgłaszany. Przechodzenie do wersji 2.0.1 lub wyższej jest istotną zmianą; Aby uzyskać więcej informacji, zobacz artykuł [v 2.0.0 — szczegóły dotyczące zmiany](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details). W momencie aktualizacji tego artykułu bieżąca wersja tego pakietu jest 2.2.3.
 > 
 > 
 
-Pakiet NuGet dostawcy stanu sesji Redis ma zależność od pakietu StackExchange.Redis.StrongName. Jeśli pakiet StackExchange.Redis.StrongName nie jest obecny w projekcie, jest zainstalowana.
+Pakiet NuGet dostawcy stanu sesji Redis ma zależność od pakietu StackExchange. Redis. StrongName. Jeśli pakiet StackExchange. Redis. StrongName nie występuje w projekcie, jest on zainstalowany.
 
 >[!NOTE]
->Oprócz pakietu StackExchange.Redis.StrongName o silnej nazwie jest również wersja niż-o silnej nazwie StackExchange.Redis. Jeśli projektu używa wersji StackExchange.Redis innych niż-o silnej nazwie, należy go odinstalować, w przeciwnym razie możesz uzyskać konfliktów nazw w projekcie. Aby uzyskać więcej informacji o tych paloetach, zobacz [.NET Konfigurowanie klientów pamięci podręcznej](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+>Oprócz silnej nazwy pakietu StackExchange. Redis. StrongName istnieje również StackExchange. Redis, która nie ma silnej nazwy. Jeśli projekt korzysta z niesilnej nazwy StackExchange. Redis, należy ją odinstalować. w przeciwnym razie w projekcie pojawiają się konflikty nazw. Aby uzyskać więcej informacji o tych pakietach, zobacz [Konfigurowanie klientów pamięci podręcznej platformy .NET](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 >
 >
 
-Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu i dodanie sekcji poniżej do pliku web.config. Ta sekcja zawiera wymaganej konfiguracji dla aplikacji ASP.NET na potrzeby pamięci podręcznej Azure redis Cache dostawca stanu sesji.
+Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu i dodaje następującą sekcję do pliku Web. config. Ta sekcja zawiera konfigurację wymaganą przez aplikację ASP.NET do korzystania z pamięci podręcznej platformy Azure dla dostawcy stanu sesji Redis.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -85,26 +77,26 @@ Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu i dodanie sekcji po
 </sessionState>
 ```
 
-Komentarze sekcja zawiera przykład atrybutów i przykładowych ustawień dla każdego atrybutu.
+Sekcja z komentarzem zawiera przykład atrybutów i ustawień przykładowych dla każdego atrybutu.
 
-Konfigurowanie atrybutów przy użyciu wartości z bloku usługi pamięci podręcznej w portalu Microsoft Azure i innych wartości zostaną skonfigurowane zgodnie z potrzebami. Aby uzyskać instrukcje dotyczące uzyskiwania dostępu do właściwości pamięci podręcznej, zobacz [Konfigurowanie usługi Azure Cache ustawień pamięci podręcznej Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
+Skonfiguruj atrybuty przy użyciu wartości z bloku pamięci podręcznej w Microsoft Azure Portal i skonfiguruj inne wartości zgodnie z potrzebami. Aby uzyskać instrukcje dotyczące uzyskiwania dostępu do właściwości pamięci podręcznej, zobacz [Konfigurowanie usługi Azure cache for Redis Settings](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-* **host** — Określ punkt końcowy usługi pamięci podręcznej.
-* **port** — port bez protokołu SSL lub port SSL, w zależności od ustawień protokołu ssl.
-* **accessKey** — klucz podstawowy lub pomocniczy na użytek pamięci podręcznej.
-* **Protokół SSL** — wartość true, jeśli chcesz zabezpieczyć komunikację klienta/pamięci podręcznej przy użyciu protokołu ssl; w przeciwnym razie wartość false. Należy określić prawidłowy port.
-  * Port bez obsługi protokołu SSL jest domyślnie wyłączony w przypadku nowych pamięci podręcznych. Określ wartość true dla tego ustawienia używał portu protokołu SSL. Aby uzyskać więcej informacji na temat włączania portu bez protokołu SSL, zobacz [porty dostępu](cache-configure.md#access-ports) sekcji [Konfigurowanie pamięci podręcznej](cache-configure.md) tematu.
-* **throwOnError** — jest to wartość true, jeśli chcesz, aby zgłoszenie wyjątku w przypadku awarii, lub FAŁSZ, jeśli chcesz, aby zakończyć się niepowodzeniem dyskretnie operacji. Możesz sprawdzić awarię, sprawdzając właściwość statyczna Microsoft.Web.Redis.RedisSessionStateProvider.LastException. Wartość domyślna to true.
-* **retryTimeoutInMilliseconds** — operacje, które nie zostaną ponowione w danym przedziale czasu w milisekundach. Pierwszym ponowieniem próby występuje po 20 MS, a następnie ponowne próby są wykonywane co sekundę, do czasu wygaśnięcia interwału retryTimeoutInMilliseconds. Natychmiast po tym okresie jeden raz końcowego jest próba powtórzenia operacji. Jeśli nadal kończy się niepowodzeniem, wyjątek jest zgłaszany ponownie do obiektu wywołującego, w zależności od ustawienia throwOnError. Wartość domyślna to 0, co oznacza brak ponownych prób.
-* **databaseId** — Określa, które bazy danych na potrzeby pamięci podręcznej danych wyjściowych. Jeśli nie zostanie określony, jest używana domyślna wartość 0.
-* **applicationName** — klucze są przechowywane w pamięci podręcznej redis jako `{<Application Name>_<Session ID>}_Data`. Ten schemat nazewnictwa umożliwia wielu aplikacjom na udostępnianie tego samego wystąpienia usługi Redis. Ten parametr jest opcjonalny, a jeśli nie zostanie określona wartość domyślna jest używana.
-* **connectionTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie connectTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie connectTimeout 5000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie syncTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie syncTimeout 1000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **redisSerializerType** — to ustawienie umożliwia określenie niestandardowej serializacji zawartości sesji, które są wysyłane do usługi Redis. Określony typ musi implementować `Microsoft.Web.Redis.ISerializer` i zadeklarować publicznego konstruktora bez parametrów. Domyślnie `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` jest używany.
+* **host** — Określ punkt końcowy pamięci podręcznej.
+* **port** — użyj portu bez protokołu SSL lub portu SSL w zależności od ustawień protokołu SSL.
+* **AccessKey** — Użyj klucza podstawowego lub pomocniczego dla pamięci podręcznej.
+* **SSL** — prawda, jeśli chcesz zabezpieczyć pamięć podręczną/klienta przy użyciu protokołu SSL; w przeciwnym razie false. Upewnij się, że określono prawidłowy port.
+  * Port bez obsługi protokołu SSL jest domyślnie wyłączony w przypadku nowych pamięci podręcznych. Określ wartość true dla tego ustawienia, aby używać portu SSL. Aby uzyskać więcej informacji na temat włączania portu bez obsługi protokołu SSL, zobacz sekcję [porty dostępu](cache-configure.md#access-ports) w temacie [Konfigurowanie pamięci podręcznej](cache-configure.md) .
+* **parametr throwOnError** — wartość true, jeśli chcesz, aby wyjątek był zgłaszany w przypadku niepowodzenia, lub wartość false, jeśli chcesz, aby operacja została zakończona niepowodzeniem. Aby wyszukać błąd, należy sprawdzić Właściwość static Microsoft. Web. Redis. pakietu redissessionstateprovider. LastException. Wartość domyślna to true.
+* **retryTimeoutInMilliseconds** — operacje, które nie powiodły się, są ponawiane w tym interwale, określone w milisekundach. Pierwsza ponowna próba nastąpi po 20 milisekundach, a następnie ponowne próby są wykonywane co sekundę do czasu wygaśnięcia interwału retryTimeoutInMilliseconds. Natychmiast po tym czasie operacja zostanie ponowiona po raz ostatni. Jeśli operacja nadal kończy się niepowodzeniem, wyjątek jest generowany z powrotem do obiektu wywołującego, w zależności od ustawienia parametr throwOnError. Wartość domyślna to 0, co oznacza brak ponownych prób.
+* **DatabaseID** — określa, która baza danych ma być używana do danych wyjściowych pamięci podręcznej. Jeśli nie zostanie określony, zostanie użyta wartość domyślna 0.
+* **ApplicationName** — klucze są przechowywane w redis jako `{<Application Name>_<Session ID>}_Data`. Ten schemat nazewnictwa umożliwia wielu aplikacjom współużytkowanie tego samego wystąpienia Redis. Ten parametr jest opcjonalny i jeśli nie zostanie on podano, zostanie użyta wartość domyślna.
+* **connectionTimeoutInMilliseconds** — to ustawienie umożliwia zastąpienie ustawienia connectTimeout w kliencie stackexchange. Redis. Jeśli nie zostanie określony, zostanie użyte domyślne ustawienie connectTimeout 5000. Aby uzyskać więcej informacji, zobacz [stackexchange. Redis Configuration model](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** — to ustawienie umożliwia zastąpienie ustawienia syncTimeout w kliencie stackexchange. Redis. Jeśli nie zostanie określony, zostanie użyte domyślne ustawienie syncTimeout 1000. Aby uzyskać więcej informacji, zobacz [stackexchange. Redis Configuration model](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **redisSerializerType** — to ustawienie pozwala określić niestandardową serializację zawartości sesji, która jest wysyłana do Redis. Określony typ musi implementować `Microsoft.Web.Redis.ISerializer` i musi deklarować publiczny Konstruktor bez parametrów. Domyślnie `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` jest używany.
 
-Aby uzyskać więcej informacji o tych właściwościach, zobacz oryginalnego wpis na blogu w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Aby uzyskać więcej informacji o tych właściwościach, zapoznaj się z ogłoszeniem oryginalnego wpisu w blogu, w którym jest [ogłaszany dostawca stanu sesji ASP.NET dla usługi Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 
-Nie zapomnij o komentarz standardowa InProc sesji stan dostawcy sekcji w z pliku web.config.
+Nie zapomnij dodać komentarza do sekcji dostawca stanu sesji w warstwie Standardowa w pliku Web. config.
 
 ```xml
 <!-- <sessionState mode="InProc"
@@ -119,21 +111,21 @@ Nie zapomnij o komentarz standardowa InProc sesji stan dostawcy sekcji w z pliku
 </sessionState> -->
 ```
 
-Gdy te kroki są wykonywane, aplikacja jest skonfigurowana na potrzeby pamięci podręcznej Azure redis Cache dostawca stanu sesji. Stan sesji jest używany w Twojej aplikacji, jest przechowywany w pamięci podręcznej Azure dla wystąpienia usługi Redis.
+Po wykonaniu tych kroków aplikacja jest skonfigurowana do korzystania z usługi Azure cache dla dostawcy stanu sesji Redis. Gdy używasz stanu sesji w aplikacji, jest on przechowywany w pamięci podręcznej platformy Azure dla wystąpienia Redis.
 
 > [!IMPORTANT]
-> Dane przechowywane w pamięci podręcznej musi być możliwy do serializacji, w przeciwieństwie do danych, które mogą być przechowywane w domyślnym sesja programu ASP.NET w pamięci stan dostawcy. Gdy jest używany dostawca stanu sesji dla pamięci podręcznej Redis, można się, że typy danych, które są przechowywane w stanie sesji są możliwe do serializacji.
+> Dane przechowywane w pamięci podręcznej muszą być możliwe do serializacji, w przeciwieństwie do danych, które mogą być przechowywane w domyślnym dostawcy stanu sesji ASP.NET w pamięci. Gdy jest używany dostawca stanu sesji dla Redis, należy się upewnić, że typy danych przechowywane w stanie sesji są możliwe do serializacji.
 > 
 > 
 
-## <a name="aspnet-session-state-options"></a>Opcje stanu sesji platformy ASP.NET
+## <a name="aspnet-session-state-options"></a>Opcje stanu sesji ASP.NET
 
-* W dostawcy stanu sesji w pamięci — ten dostawca przechowuje stanu sesji w pamięci. Zaletą używania tego dostawcy jest to proste i szybkie. Jednak nie można skalować aplikacji sieci Web, jeśli używasz dostawcy pamięci, ponieważ nie będzie on rozpowszechniany.
-* Dostawca stanu sesji programu SQL Server — ten dostawca przechowuje stanu sesji w programie Sql Server. Użyj tego dostawcy, aby przechowywanie stanu sesji w magazynie trwałym. Umożliwia skalowanie aplikacji sieci Web, ale przy użyciu programu Sql Server dla sesji ma wpływ na wydajność Twojej aplikacji sieci Web. Możesz również użyć tego dostawcy z [konfiguracji OLTP w pamięci](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) do poprawy wydajności.
-* Rozproszone w pamięci dostawcy stanu sesji takich jak pamięci podręcznej Azure redis Cache dostawca stanu sesji — ten dostawca zapewnia najlepsze cechy obu światów. Twoja aplikacja sieci Web może mieć prosty, szybkich i skalowalnych dostawca stanu sesji. Ponieważ ten dostawca przechowuje stanu sesji w pamięci podręcznej, aplikacja musi wziąć pod uwagę w wszystkich właściwości, które są skojarzone po rozmowie z dystrybucji w pamięci podręcznej, takie jak błędy przejściowe problemy z siecią. Aby uzyskać wskazówki na temat korzystania z pamięci podręcznej, zobacz [wskazówki dotyczące buforowania](../best-practices-caching.md) z Microsoft Patterns & wskazówki [projektowania aplikacji w chmurze platformy Azure i wytyczne dotyczące implementacji](https://github.com/mspnp/azure-guidance).
+* Dostawca stanu sesji w pamięci — ten dostawca przechowuje stan sesji w pamięci. Korzyści wynikające z używania tego dostawcy są proste i szybkie. Nie można jednak skalować Web Apps, jeśli używasz w dostawcy pamięci, ponieważ nie jest on dystrybuowany.
+* Dostawca stanu sesji programu SQL Server — ten dostawca przechowuje stan sesji w programie SQL Server. Użyj tego dostawcy, jeśli chcesz przechowywać stan sesji w magazynie trwałym. Możesz skalować aplikację sieci Web, ale korzystanie z programu SQL Server dla sesji ma wpływ na wydajność aplikacji sieci Web. Tego dostawcy można także użyć z [konfiguracją OLTP w pamięci](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) , aby zwiększyć wydajność.
+* Dostawca stanu sesji rozproszonej w pamięci, taki jak usługa Azure cache dla dostawcy stanu sesji Redis — ten dostawca zapewnia najlepsze rozwiązanie obu rozwiązań. Aplikacja sieci Web może mieć prosty, szybki i skalowalny dostawca stanu sesji. Ponieważ ten dostawca przechowuje stan sesji w pamięci podręcznej, należy wziąć pod uwagę wszystkie cechy skojarzone podczas rozmowy z pamięcią podręczną rozproszonej pamięci, na przykład przejściowe awarie sieci. Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi używania pamięci podręcznej, zobacz [wskazówki dotyczące buforowania](../best-practices-caching.md) ze wzorców firmy Microsoft & wskazówki [dotyczące projektowania i wdrażania aplikacji w chmurze Azure](https://github.com/mspnp/azure-guidance)
 
-Aby uzyskać więcej informacji o stanie sesji i innych najlepszych rozwiązań, zobacz [najlepsze praktyki programowania aplikacji sieci Web (tworzenie rzeczywistych aplikacji w chmurze dzięki platformie Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
+Aby uzyskać więcej informacji o stanie sesji i innych najlepszych rozwiązaniach, zobacz [najlepsze rozwiązania dotyczące programowania w sieci Web (Tworzenie aplikacji w chmurze w rzeczywistych warunkach na platformie Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [dostawca wyjściowej pamięci podręcznej ASP.NET dla usługi Azure Cache dla usługi Redis](cache-aspnet-output-cache-provider.md).
+Sprawdź [dostawcę wyjściowej pamięci Podręcznej ASP.NET dla usługi Azure cache for Redis](cache-aspnet-output-cache-provider.md).

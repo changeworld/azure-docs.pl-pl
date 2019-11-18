@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579666"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110348"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Asystenci głosowa: często zadawane pytania
+# <a name="voice-assistants-frequently-asked-questions"></a>Często zadawane pytania dotyczące asystentów głosowych
 
 Jeśli nie możesz znaleźć odpowiedzi na pytania w tym dokumencie, zapoznaj się z [innymi opcjami pomocy technicznej](support.md).
 
@@ -35,9 +35,9 @@ Odp. **:** [polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) t
 
 Odp **.:** Najlepszym sposobem, aby zacząć od tworzenia niestandardowych poleceń (wersja zapoznawcza) lub Basic bot Framework bot.
 
-* [Tworzenie aplikacji poleceń niestandardowych (wersja zapoznawcza)](quickstart-custom-speech-commands-create-new.md)
-* [Tworzenie podstawowego bot Framework bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Łączenie bot z kanałem mowy w linii bezpośredniej](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Tworzenie aplikacji poleceń niestandardowych (wersja zapoznawcza)](quickstart-custom-speech-commands-create-new.md)
+- [Tworzenie podstawowego bot Framework bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Łączenie bot z kanałem mowy w linii bezpośredniej](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Debugowanie
 
@@ -47,14 +47,13 @@ Odp **.:** W przypadku korzystania z wersji zapoznawczej bezpośredniego rozpozn
 
 Najnowsza wersja funkcji bezpośredniej obsługi liniowej nie pozwala na nawiązywanie kontaktu z bot z urządzenia. Na stronie Rejestracja kanału lista rozwijana na górze kojarzy swoją rejestrację kanału mowy z linią głosową z zasobem mowy. Po skojarzeniu zestaw SDK mowy v 1.8 zawiera metodę `BotFrameworkConfig::FromSubscription` Factory, która skonfiguruje `DialogServiceConnector`, aby skontaktować się z botą skojarzoną z Twoją subskrypcją.
 
-Jeśli nadal trwa Migrowanie aplikacji klienckiej z wersji 1.7 do wersji 1.8, `DialogServiceConfig::FromBotSecret` może nadal współpracować z niepustą wartością o wartości innej niż null dla swojego parametru tajnego kanału, np. poprzedniego użytego klucza tajnego. Zostanie ona po prostu zignorowana w przypadku korzystania z subskrypcji mowy skojarzonej z nowszą rejestracją kanału. Należy pamiętać, że wartość nie *może* mieć wartości null i nie jest pusta, ponieważ są one sprawdzane na urządzeniu przed zastosowaniem skojarzenia po stronie usługi.
-
+Jeśli nadal trwa Migrowanie aplikacji klienckiej z wersji 1.7 do wersji 1.8, `DialogServiceConfig::FromBotSecret` może nadal współpracować z niepustą wartością o wartości innej niż null dla swojego parametru tajnego kanału, np. poprzedniego użytego klucza tajnego. Zostanie ona po prostu zignorowana w przypadku korzystania z subskrypcji mowy skojarzonej z nowszą rejestracją kanału. Należy pamiętać, że wartość nie _może_ mieć wartości null i nie jest pusta, ponieważ są one sprawdzane na urządzeniu przed zastosowaniem skojarzenia po stronie usługi.
 
 Aby uzyskać bardziej szczegółowy przewodnik, zapoznaj się z [sekcją samouczka](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) , która przeprowadzi Cię przez proces rejestracji kanału.
 
 **P: otrzymuję błąd 401 podczas nawiązywania połączenia i nic nie działa. Wiem, że klucz subskrypcji mowy jest prawidłowy. Co się dzieje?**
 
-Odp **.:** Podczas zarządzania subskrypcją w Azure Portal upewnij się, że używasz zasobu **mowy** (Microsoft. CognitiveServicesSpeechServices, "Speech"), a *nie* zasobu **Cognitive Services** ( Microsoft. CognitiveServicesAllInOne, "wszystkie Cognitive Services"). Sprawdź również, czy [w regionie usługi mowy są obsługiwane Asystenci głosowa](regions.md#voice-assistants).
+Odp **.:** Podczas zarządzania subskrypcją w Azure Portal upewnij się, że używasz zasobu **mowy** (Microsoft. CognitiveServicesSpeechServices, "Speech"), a _nie_ zasobu **Cognitive Services** ( Microsoft. CognitiveServicesAllInOne, "wszystkie Cognitive Services"). Sprawdź również, czy [w regionie usługi mowy są obsługiwane Asystenci głosowa](regions.md#voice-assistants).
 
 ![poprawna subskrypcja dla bezpośredniej linii mowy](media/voice-assistants/faq-supported-subscription.png "przykład zgodnej subskrypcji mowy")
 
@@ -62,8 +61,8 @@ Odp **.:** Podczas zarządzania subskrypcją w Azure Portal upewnij się, że u�
 
 Odp **.:** Ten błąd wskazuje na problem z komunikacją między asystentem a usługą asystenta głosowego.
 
-* W przypadku poleceń niestandardowych (wersja zapoznawcza) Upewnij się, że aplikacja poleceń niestandardowych (wersja zapoznawcza) została opublikowana
-* W przypadku bezpośredniej obsługi mowy w wierszu upewnij się, że [nawiązano połączenie z usługą bot w kanale bezpośredniego wiersza mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Dodano obsługę protokołu przesyłania strumieniowego](https://aka.ms/botframework/addstreamingprotocolsupport) do bot (z obsługą obsługiwanego gniazda sieci Web), a następnie sprawdź, czy bot odpowiada na przychodzące żądania z kanału.
+- W przypadku poleceń niestandardowych (wersja zapoznawcza) Upewnij się, że aplikacja poleceń niestandardowych (wersja zapoznawcza) została opublikowana
+- W przypadku bezpośredniej obsługi mowy w wierszu upewnij się, że [nawiązano połączenie z usługą bot w kanale bezpośredniego wiersza mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Dodano obsługę protokołu przesyłania strumieniowego](https://aka.ms/botframework/addstreamingprotocolsupport) do bot (z obsługą obsługiwanego gniazda sieci Web), a następnie sprawdź, czy bot odpowiada na przychodzące żądania z kanału.
 
 **P: ten kod nadal nie działa i/lub podczas korzystania z `DialogServiceConnector`występuje inny błąd. Co mam zrobić?**
 
@@ -71,5 +70,5 @@ Odp **.:** Rejestrowanie na podstawie plików zapewnia znacznie bardziej szczeg�
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Rozwiązywanie problemów](troubleshooting.md)
-* [Informacje o wersji](releasenotes.md)
+- [Rozwiązywanie problemów](troubleshooting.md)
+- [Informacje o wersji](releasenotes.md)

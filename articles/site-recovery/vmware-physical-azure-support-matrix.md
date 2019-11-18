@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b16b6bb8ad39f7f0a5f19a2e2d4280bb73def60a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5c20c280fdc9097692f98c83dcb3d310e9914ecf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082210"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133368"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -208,7 +208,7 @@ Gość/serwer — wykluczanie dysku | Yes
 Wielościeżkowa gość/serwer (MPIO) | Nie
 Partycje typu GPT/serwer | Z [pakietem zbiorczym aktualizacji 37](https://support.microsoft.com/help/4508614/) są obsługiwane pięć partycji (wersja 9,25 usługi mobilności). Poprzednia wersja obsługiwała cztery.
 System | System plików jest odporny na błędy w wersji 9,23 lub nowszej
-Gość/serwer EFI/rozruch UEFI | -Obsługiwane dla systemu Windows Server 2012 lub nowszego, SLES SP4 i RHEL 8,0 <br/> -Bezpieczny typ rozruchu UEFI nie jest obsługiwany. 
+Gość/serwer EFI/rozruch UEFI | -Obsługiwane dla systemu Windows Server 2012 lub nowszego, SLES 12 SP4 i RHEL 8,0 z agentem mobilności w wersji 9,30 lub nowszej<br/> -Bezpieczny typ rozruchu UEFI nie jest obsługiwany. 
 
 ## <a name="replication-channels"></a>Kanały replikacji
 
@@ -227,7 +227,7 @@ Magazyn geograficznie nadmiarowy | Yes
 Magazyn Geograficznie nadmiarowy do odczytu | Yes
 Chłodny magazyn | Nie
 Magazyn gorąca| Nie
-Obiekty BLOB typu Block | Nie
+Blokowe obiekty blob | Nie
 Szyfrowanie — w spoczynku (SSE)| Yes
 Szyfrowanie na poziomie spoczynku (CMK)| Nie
 Premium Storage | Yes

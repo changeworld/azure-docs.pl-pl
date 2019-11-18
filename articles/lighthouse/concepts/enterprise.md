@@ -1,22 +1,18 @@
 ---
-title: Azure Lighthouse w scenariuszach dla przedsiębiorstw
+title: Usługa Azure Lighthouse w scenariuszach dla przedsiębiorstw
 description: Możliwości usługi Azure Lighthouse umożliwiają uproszczenie zarządzania różnymi dzierżawcami w przedsiębiorstwie, które korzystają z wielu dzierżawców usługi Azure AD.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: fbd87cc801824729025feb7aefa411ac38048949
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266727"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132499"
 ---
-# <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse w scenariuszach dla przedsiębiorstw
+# <a name="azure-lighthouse-in-enterprise-scenarios"></a>Usługa Azure Lighthouse w scenariuszach dla przedsiębiorstw
 
-Najbardziej typowym scenariuszem dla usługi Azure Lighthouse jest dostawca usług zarządzający zasobami w dzierżawach Azure Active Directory (Azure AD) klientów. Jednak możliwości usługi Azure Lighthouse umożliwiają również uproszczenie zarządzania dzierżawcą w przedsiębiorstwie korzystającym z wielu dzierżawców usługi Azure AD.
+Najbardziej typowym scenariuszem dla [usługi Azure Lighthouse](../overview.md) jest dostawca usług zarządzający zasobami w dzierżawach Azure Active Directory (Azure AD) klientów. Jednak możliwości usługi Azure Lighthouse umożliwiają również uproszczenie zarządzania dzierżawcą w przedsiębiorstwie korzystającym z wielu dzierżawców usługi Azure AD.
 
 ## <a name="single-vs-multiple-tenants"></a>Pojedyncza a wiele dzierżawców
 

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: uruchamianie zestawu Speech Devices SDK w systemie Windows-Speech Service'
+title: 'Szybki Start: uruchamianie zestawu Speech Devices SDK w systemie Windows'
 titleSuffix: Azure Cognitive Services
 description: Wymagania wstępne i instrukcje dotyczące rozpoczynania pracy z zestawem SDK urządzeń z funkcją rozpoznawania mowy systemu Windows.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e59cfaa1260cd33c8912437d56bbbb2ace2f43ed
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090450"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111666"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Szybki Start: uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Windows
 
@@ -105,22 +105,21 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    W przypadku korzystania z transkrypcji konwersacji informacje o kluczu mowy i regionie są również potrzebne w `Cts.java`:
+   W przypadku korzystania z transkrypcji konwersacji informacje o kluczu mowy i regionie są również potrzebne w `Cts.java`:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. Słowo kluczowe default (słowo kluczowe) to "Computer". Możesz również wypróbować jeden z innych podanych słów kluczowych, takich jak "Machine" lub "Assistant". Pliki zasobów dla tych alternatywnych słów kluczowych znajdują się w zestawie SDK urządzeń mowy w folderze słów kluczowych. Na przykład `C:\SDSDK\JRE-Sample-Release\keyword\Computer` zawiera pliki używane dla słowa kluczowego "Computer".
 
-   > [!TIP]
-   > Możesz również [utworzyć niestandardowe słowo kluczowe](speech-devices-sdk-create-kws.md).
+    > [!TIP]
+    > Możesz również [utworzyć niestandardowe słowo kluczowe](speech-devices-sdk-create-kws.md).
 
     Aby użyć nowego słowa kluczowego, zaktualizuj Poniższy wiersz w `FunctionsList.java`i skopiuj słowo kluczowe do aplikacji. Na przykład, aby użyć słowa kluczowego "Machine" z pakietu słowa kluczowego `machine.zip`:
 
    * Skopiuj plik `kws.table` z pakietu zip do folderu **docelowego/klas**projektu.
-
    * Zaktualizuj `FunctionsList.java` przy użyciu nazwy słowa kluczowego:
 
      ```java
@@ -143,23 +142,23 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
 
 ## <a name="create-and-run-a-standalone-application"></a>Tworzenie i uruchamianie aplikacji autonomicznej
 
-1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz **wyeksportować**. 
+1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz **wyeksportować**.
 
 1. Zostanie wyświetlone okno **eksport** . Rozwiń węzeł **Java** i wybierz pozycję **możliwy do uruchomienia plik JAR** , a następnie wybierz pozycję **Next (dalej**).
 
-   ![Zrzut ekranu okna eksportowania](media/speech-devices-sdk/eclipse-export-windows.png) 
+   ![Zrzut ekranu okna eksportowania](media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. Zostanie wyświetlone okno **Eksportuj plik możliwy do uruchomienia jar** . Wybierz **lokalizację docelową eksportu** aplikacji, a następnie wybierz pozycję **Zakończ**.
- 
+
    ![Zrzut ekranu przedstawiający Eksport pliku JAR możliwy do uruchomienia](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. Umieść `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` i `Microsoft.CognitiveServices.Speech.extension.pma.dll` w folderze docelowym wybranym powyżej, ponieważ te pliki są wymagane przez aplikację.
 
 1. Aby uruchomić aplikację autonomiczną
 
-     ```powershell
-     java -jar SpeechDemo.jar
-     ```
+   ```powershell
+   java -jar SpeechDemo.jar
+   ```
 
 ## <a name="next-steps"></a>Następne kroki
 

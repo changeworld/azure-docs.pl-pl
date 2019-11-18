@@ -1,25 +1,17 @@
 ---
-title: Używanie Azure Key Vault w Menedżer zasobów szablon
+title: Używanie Azure Key Vault w szablonach
 description: Dowiedz się, jak używać usługi Azure Key Vault do bezpiecznego przekazywania wartości parametrów podczas wdrażania szablonu usługi Resource Manager
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 86625132e4ac4aa3ed2c42f1e94babcfbbf63a51
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533602"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149283"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Samouczek: Integrowanie Azure Key Vault w rozmieszczeniu szablonu Menedżer zasobów
 
@@ -126,7 +118,7 @@ Szablony szybkiego startu platformy Azure to repozytorium szablonów usługi Res
 
    Warto mieć podstawowe informacje na temat szablonu przed jego dostosowaniem.
 
-1. Wybierz pozycję **plik**  > **Zapisz jako**, a następnie Zapisz kopię pliku na komputerze lokalnym przy użyciu nazwy *azuredeploy. JSON*.
+1. Wybierz pozycję **plik** > **Zapisz jako**, a następnie Zapisz kopię pliku na komputerze lokalnym przy użyciu nazwy *azuredeploy. JSON*.
 
 1. Powtórz kroki 1-3, aby otworzyć następujący adres URL, a następnie Zapisz plik jako *azuredeploy. Parameters. JSON*.
 
@@ -189,7 +181,7 @@ Po pomyślnym wdrożeniu maszyny wirtualnej Przetestuj poświadczenia logowania 
 
 1. Otwórz [portal Azure](https://portal.azure.com).
 
-1. Wybierz pozycję **grupy zasobów**  >  **\<*YourResourceGroupName* >**  > **simpleWinVM**.
+1. Wybierz pozycję **grupy zasobów** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
 1. Wybierz pozycję **Połącz** w górnej części.
 1. Wybierz pozycję **Pobierz plik RDP**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się do maszyny wirtualnej przy użyciu hasła przechowywanego w magazynie kluczy.
 

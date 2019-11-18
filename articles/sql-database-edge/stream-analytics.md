@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 1b6b3f4e4be9d056bc53fac2eb2f1f3fcd768085
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514994"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108747"
 ---
 # <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>Używanie SQL Database pakietu DAC i zadania Stream Analytics z SQL Database Edge
 
@@ -37,7 +37,7 @@ Azure SQL Database Edge uwidacznia dwa opcjonalne parametry za pomocą opcji *po
 |Pole | Opis |
 |------|-------------|
 | SQLPackage | Identyfikator URI Blob Storage platformy Azure dla pliku *. zip zawierającego pakiet SQL Database DAC.
-| ASAJobInfo | Identyfikator URI Blob Storage platformy Azure dla zadania ASA Edge. Aby uzyskać więcej informacji o publikowaniu zadania ASA Edge, zapoznaj się z tematem [Publikowanie zadania ASA Edge dla SQL Database Edge]().
+| ASAJobInfo | Identyfikator URI Blob Storage platformy Azure dla zadania ASA Edge. Aby uzyskać więcej informacji o publikowaniu zadania ASA Edge, zapoznaj się z tematem [Publikowanie zadania ASA Edge dla SQL Database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>Używanie SQL Database pakietów DAC z SQL Database Edge
 

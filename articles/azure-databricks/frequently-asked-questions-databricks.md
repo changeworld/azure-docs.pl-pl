@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601800"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129324"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące usługi Azure Databricks
 
@@ -34,7 +34,7 @@ Wykonaj następujące kroki:
 1. Przypisz odpowiednie uprawnienia do nazwy głównej usługi w Data Lake Storage.
 1. Aby uzyskać dostęp do pliku w Data Lake Storage, Użyj poświadczeń nazwy głównej usługi w notesie.
 
-Aby uzyskać więcej informacji, zobacz [używanie Azure Data Lake Storage z Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake.html).
+Aby uzyskać więcej informacji, zobacz [używanie Azure Data Lake Storage z Azure Databricks](/azure/databricks/data/data-sources/azure/azure-datalake).
 
 ## <a name="fix-common-problems"></a>Rozwiązywanie typowych problemów
 

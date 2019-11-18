@@ -1,64 +1,61 @@
 ---
-title: Historia wdrożenia za pomocą usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Opisuje sposób wyświetlania operacji wdrażania usługi Azure Resource Manager przy użyciu portalu, programu PowerShell i wiersza polecenia platformy Azure oraz interfejsu API REST.
+title: Historia wdrożenia
+description: Opisuje sposób wyświetlania Azure Resource Manager operacji wdrażania przy użyciu portalu, programu PowerShell, interfejsu wiersza polecenia platformy Azure i usługi API REST.
 tags: top-support-issue
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 58d22e3fcae5c30e5d7dcc39b317afeef4a693ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8daf7191bb22f7c7057f6ef6b220a18868872cc
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606033"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149569"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>Wyświetl historię wdrożenia za pomocą usługi Azure Resource Manager
+# <a name="view-deployment-history-with-azure-resource-manager"></a>Wyświetlanie historii wdrożenia za pomocą Azure Resource Manager
 
-Usługa Azure Resource Manager pozwala na wyświetlanie historii wdrożenia i zbadać określonych operacji w ciągu ostatnich wdrożeń. Zapoznaj się z zasobami, które zostały wdrożone i uzyskać informacje na temat błędów.
+Azure Resource Manager umożliwia wyświetlanie historii wdrożenia i sprawdzanie określonych operacji w poprzednich wdrożeniach. Możesz zobaczyć wdrożone zasoby i uzyskać informacje o błędach.
 
-Aby uzyskać pomoc dotyczącą Rozwiązywanie błędów danego wdrożenia, zobacz [Rozwiązywanie typowych problemów podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
+Aby uzyskać pomoc dotyczącą rozwiązywania określonych błędów wdrażania, zobacz [Rozwiązywanie typowych błędów podczas wdrażania zasobów na platformie Azure za pomocą Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portal
 
-Aby uzyskać szczegółowe informacje dotyczące wdrożenia z historii wdrożenia.
+Aby uzyskać szczegółowe informacje na temat wdrożenia z historii wdrażania.
 
-1. Wybierz grupę zasobów, które chcesz zbadać.
+1. Wybierz grupę zasobów, którą chcesz przeanalizować.
 
-1. Wybierz link w obszarze **wdrożeń**.
+1. Wybierz link w obszarze **wdrożenia**.
 
-   ![Wybierz pozycję Historia wdrażania](./media/resource-manager-deployment-operations/select-deployment-history.png)
+   ![Wybierz historię wdrożenia](./media/resource-manager-deployment-operations/select-deployment-history.png)
 
-1. Wybierz jedno z wdrożeń z historii wdrożenia.
+1. Wybierz jedno z wdrożeń z historii wdrażania.
 
-   ![Wybieranie pozycji wdrożenie](./media/resource-manager-deployment-operations/select-details.png)
+   ![Wybieranie wdrożenia](./media/resource-manager-deployment-operations/select-details.png)
 
-1. Zostanie wyświetlone podsumowanie wdrożenia, łącznie z listą zasobów, które zostały wdrożone.
+1. Zostanie wyświetlone podsumowanie wdrożenia zawierające listę wdrożonych zasobów.
 
     ![Podsumowanie wdrożenia](./media/resource-manager-deployment-operations/view-deployment-summary.png)
 
-1. Aby wyświetlić Szablon użyty do wdrożenia, wybierz **szablonu**. Możesz pobrać szablonu Aby użyć go ponownie.
+1. Aby wyświetlić szablon używany do wdrożenia, wybierz opcję **szablon**. Możesz pobrać szablon, aby użyć go ponownie.
 
-    ![Wyświetlanie szablonu](./media/resource-manager-deployment-operations/show-template-from-history.png)
+    ![Pokaż szablon](./media/resource-manager-deployment-operations/show-template-from-history.png)
 
-1. Jeśli wdrożenie nie powiodło się, zobaczysz komunikat o błędzie. Wybieranie komunikatu o błędzie, aby uzyskać więcej informacji.
+1. Jeśli wdrożenie nie powiodło się, zostanie wyświetlony komunikat o błędzie. Wybierz komunikat o błędzie, aby uzyskać więcej szczegółów.
 
-    ![Wyświetl wdrożenie nie powiodło się](./media/resource-manager-deployment-operations/show-error.png)
+    ![Wyświetl niepowodzenie wdrożenia](./media/resource-manager-deployment-operations/show-error.png)
 
-1. Wyświetlany jest komunikat szczegółowy komunikat o błędzie.
+1. Zostanie wyświetlony szczegółowy komunikat o błędzie.
 
     ![Wyświetl szczegóły błędu](./media/resource-manager-deployment-operations/show-details.png)
 
-1. Identyfikator korelacji jest używane do śledzenia powiązane zdarzenia i może być przydatne podczas pracy z pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem.
+1. Identyfikator korelacji służy do śledzenia powiązanych zdarzeń i może być przydatny podczas pracy z pomocą techniczną w celu rozwiązywania problemów z wdrożeniem.
 
     ![Pobierz identyfikator korelacji](./media/resource-manager-deployment-operations/get-correlation-id.png)
 
-1. Aby dowiedzieć się więcej na temat tego kroku, który nie powiodło się, zaznaczyć **szczegóły operacji**.
+1. Aby dowiedzieć się więcej na temat kroku, który się nie powiódł, wybierz pozycję **szczegóły operacji**.
 
     ![Wybierz operacje wdrażania](./media/resource-manager-deployment-operations/select-deployment-operations.png)
 
-1. Możesz wyświetlić szczegóły dla tego kroku wdrożenia.
+1. Zobaczysz szczegóły dotyczące tego kroku wdrożenia.
 
     ![Pokaż szczegóły operacji](./media/resource-manager-deployment-operations/show-operation-details.png)
 
@@ -66,31 +63,31 @@ Aby uzyskać szczegółowe informacje dotyczące wdrożenia z historii wdrożeni
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aby uzyskać ogólny stan wdrożenia, użyj **Get AzResourceGroupDeployment** polecenia.
+Aby uzyskać ogólny stan wdrożenia, użyj polecenia **Get-AzResourceGroupDeployment** .
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-Alternatywnie można filtrować wyniki tych wdrożeń, które nie powiodło się.
+Lub można filtrować wyniki tylko dla tych wdrożeń, które zakończyły się niepowodzeniem.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
 ```
 
-Identyfikator korelacji jest używane do śledzenia powiązane zdarzenia i może być przydatne podczas pracy z pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem. Aby uzyskać identyfikator korelacji, należy użyć:
+Identyfikator korelacji służy do śledzenia powiązanych zdarzeń i może być przydatny podczas pracy z pomocą techniczną w celu rozwiązywania problemów z wdrożeniem. Aby uzyskać identyfikator korelacji, użyj:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
 ```
 
-Każde wdrożenie obejmuje wiele operacji. Każda operacja stanowi krok w procesie wdrażania. Aby dowiedzieć się, czym jest problem z wdrożeniem, zazwyczaj chcesz zobaczyć szczegółowe informacje o operacji wdrażania. Można wyświetlić stan operacji przy użyciu **Get AzResourceGroupDeploymentOperation**.
+Każde wdrożenie zawiera wiele operacji. Każda operacja reprezentuje krok w procesie wdrażania. Aby sprawdzić, co się stało z wdrożeniem, zazwyczaj należy wyświetlić szczegółowe informacje o operacjach wdrażania. Stan operacji można zobaczyć przy użyciu elementu **Get-AzResourceGroupDeploymentOperation**.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName azuredeploy
 ```
 
-Zwraca wiele operacji z każdą z nich w następującym formacie:
+Zwracające wiele operacji przy użyciu każdego z nich w następującym formacie:
 
 ```powershell
 Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -108,7 +105,7 @@ Aby uzyskać więcej informacji na temat operacji nie powiodło się, można pob
 (Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
 ```
 
-Zwraca wszystkie operacje zakończone niepowodzeniem z każdą z nich w następującym formacie:
+Zwraca wszystkie operacje zakończone niepowodzeniem z każdym z nich w następującym formacie:
 
 ```powershell
 provisioningOperation : Create
@@ -124,15 +121,15 @@ targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/p
                        resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
 ```
 
-Należy pamiętać, serviceRequestId i trackingId dla tej operacji. ServiceRequestId mogą być pomocne podczas pracy z usługą pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem. Identyfikator śledzenia w następnym kroku użyjemy skoncentrowanie się na określonej operacji.
+Zwróć uwagę na serviceRequestId i trackingId dla operacji. ServiceRequestId może być przydatne podczas pracy z pomocą techniczną w celu rozwiązywania problemów z wdrożeniem. Użyjesz trackingId w następnym kroku, aby skoncentrować się na określonej operacji.
 
-Aby uzyskać komunikat o stanie określonej operacji nie powiodło się, użyj następującego polecenia:
+Aby uzyskać komunikat o stanie dla konkretnej nieudanej operacji, użyj następującego polecenia:
 
 ```azurepowershell-interactive
 ((Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
 ```
 
-Zwraca:
+Które zwraca:
 
 ```powershell
 code           message                                                                        details
@@ -140,9 +137,9 @@ code           message                                                          
 DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
 ```
 
-Każda operacja wdrażania na platformie Azure obejmuje zawartości żądania i odpowiedzi. Podczas wdrażania, można użyć **DeploymentDebugLogLevel** parametru do określenia, czy żądania i/lub odpowiedzi są rejestrowane.
+Każda operacja wdrożenia na platformie Azure zawiera zawartość żądania i odpowiedzi. Podczas wdrażania można użyć parametru **DeploymentDebugLogLevel** w celu określenia, czy żądanie i/lub odpowiedź są rejestrowane.
 
-Pobieranie informacji z dziennika, a następnie zapisz go lokalnie, używając następujących poleceń programu PowerShell:
+Te informacje są uzyskiwane z dziennika i zapisywane lokalnie przy użyciu następujących poleceń programu PowerShell:
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -152,19 +149,19 @@ Pobieranie informacji z dziennika, a następnie zapisz go lokalnie, używając n
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby uzyskać ogólny stan wdrożenia, użyj **grupy azure deployment show** polecenia.
+Aby uzyskać ogólny stan wdrożenia, użyj polecenia **Pokaż wdrożenie grupy platformy Azure** .
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment
 ```
   
-Identyfikator korelacji jest używane do śledzenia powiązane zdarzenia i może być przydatne podczas pracy z pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem.
+Identyfikator korelacji służy do śledzenia powiązanych zdarzeń i może być przydatny podczas pracy z pomocą techniczną w celu rozwiązywania problemów z wdrożeniem.
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
 ```
 
-Aby wyświetlić operacje dotyczące wdrożenia, należy użyć:
+Aby wyświetlić operacje dotyczące wdrożenia, użyj:
 
 ```azurecli-interactive
 az group deployment operation list -g ExampleGroup -n ExampleDeployment
@@ -172,13 +169,13 @@ az group deployment operation list -g ExampleGroup -n ExampleDeployment
 
 ## <a name="rest"></a>REST
 
-Aby uzyskać informacje na temat wdrożenia, należy użyć [uzyskać informacje na temat wdrożenia szablonu](https://docs.microsoft.com/rest/api/resources/deployments) operacji.
+Aby uzyskać informacje na temat wdrożenia, należy użyć operacji [Pobierz informacje o wdrożeniu szablonu](https://docs.microsoft.com/rest/api/resources/deployments) .
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
 ```
 
-W odpowiedzi, należy pamiętać, w szczególności **provisioningState**, **correlationId**, i **błąd** elementów. **CorrelationId** służy do śledzenia powiązane zdarzenia i może być przydatne podczas pracy z pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem.
+W odpowiedzi Zanotuj w szczególności elementy **provisioningState**, **Identyfikator korelacji**i **Błędy** . **Identyfikator korelacji** służy do śledzenia powiązanych zdarzeń i może być przydatny podczas pracy z pomocą techniczną w celu rozwiązywania problemów z wdrożeniem.
 
 ```json
 { 
@@ -195,13 +192,13 @@ W odpowiedzi, należy pamiętać, w szczególności **provisioningState**, **cor
 }
 ```
 
-Aby uzyskać informacje na temat wdrożeń, użyj [listy wszystkich operacji wdrożenia szablonu](https://docs.microsoft.com/rest/api/resources/deployments). 
+Aby uzyskać informacje o wdrożeniach, użyj [listy wszystkie operacje wdrażania szablonu](https://docs.microsoft.com/rest/api/resources/deployments). 
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
 ```
    
-Odpowiedź zawiera informacje żądania i/lub odpowiedzi, w zależności od określonych w **debugSetting** właściwości podczas wdrażania.
+Odpowiedź zawiera informacje na temat żądania i/lub odpowiedzi w zależności od tego, co zostało określone we właściwości **debugSetting** podczas wdrażania.
 
 ```json
 {
@@ -228,8 +225,8 @@ Odpowiedź zawiera informacje żądania i/lub odpowiedzi, w zależności od okre
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać pomoc dotyczącą Rozwiązywanie błędów danego wdrożenia, zobacz [Rozwiązywanie typowych problemów podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* Aby dowiedzieć się, korzystając z tych dzienników do monitorowania innych typów akcji, zobacz [wyświetlanie dzienników aktywności do zarządzania zasobami platformy Azure](resource-group-audit.md).
-* Aby sprawdzić poprawność wdrożenia przed jego wykonaniem, zobacz [wdrażanie grupy zasobów za pomocą szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
+## <a name="next-steps"></a>Następne kroki
+* Aby uzyskać pomoc dotyczącą rozwiązywania określonych błędów wdrażania, zobacz [Rozwiązywanie typowych błędów podczas wdrażania zasobów na platformie Azure za pomocą Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Aby dowiedzieć się więcej o korzystaniu z dzienników aktywności do monitorowania innych typów akcji, zobacz [Wyświetlanie dzienników aktywności w celu zarządzania zasobami platformy Azure](resource-group-audit.md).
+* Aby sprawdzić poprawność wdrożenia przed jego wykonaniem, zobacz [wdrażanie grupy zasobów przy użyciu szablonu Azure Resource Manager](resource-group-template-deploy.md).
 

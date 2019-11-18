@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 25846bb7a19d29a3a72146d4046b5205183a247e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720851"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132566"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Samouczek: Tworzenie aplikacji konsolowej .NET do zarządzania danymi w Azure Cosmos DB koncie interfejsu API SQL
 
@@ -257,6 +257,16 @@ Baza danych jest logicznym kontenerem elementów podzielonym na partycje w konte
     ```
 
 1. Wybierz klawisz F5, aby uruchomić aplikację.
+
+   > [!NOTE]
+   > Jeśli zostanie wyświetlony wyjątek "niedostępność usługi 503", możliwe, że wymagane [porty](performance-tips.md#networking) trybu bezpośredniego są blokowane przez zaporę. Aby rozwiązać ten problem, Otwórz wymagane [porty](performance-tips.md#networking) lub spróbuj użyć trybu bramy, jak pokazano poniżej.
+   ```csharp
+     // Create a new instance of the Cosmos Client in Gateway mode
+     this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
+            {
+                ConnectionMode = ConnectionMode.Gateway
+            });
+   ```
 
 Gratulacje! Baza danych Azure Cosmos została pomyślnie utworzona.  
 

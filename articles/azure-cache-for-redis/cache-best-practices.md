@@ -1,25 +1,17 @@
 ---
 title: Najlepsze rozwiązania dotyczące usługi Azure cache for Redis
 description: Dowiedz się, jak efektywnie korzystać z pamięci podręcznej platformy Azure, postępując zgodnie z najlepszymi rozwiązaniami.
-services: cache
-documentationcenter: na
 author: joncole
-manager: jhubbard
-editor: tysonn
-ms.assetid: 3e4905e3-89e3-47f7-8cfb-12caf1c6e50e
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: joncole
-ms.openlocfilehash: 29e5a81c438a7aa834fc002b916739a952c9a270
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 136c29245c63b2f2feed79a10a09fb57a379736f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785867"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122382"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Najlepsze rozwiązania dotyczące usługi Azure cache for Redis 
 Postępując zgodnie z najlepszymi rozwiązaniami, możesz pomóc zmaksymalizować wydajność i ekonomiczne użycie wystąpienia usługi Azure cache for Redis.
@@ -74,7 +66,7 @@ Niestety, nie ma żadnej prostej odpowiedzi.  Każda aplikacja musi zdecydować,
 
 Jeśli chcesz przetestować działanie kodu w warunkach błędów, rozważ użycie [funkcji ponownego uruchamiania](cache-administration.md#reboot). Pozwala to zobaczyć, jak Blips połączeń wpływa na aplikację.
 
-## <a name="performance-testing"></a>Testowanie wydajnościowe
+## <a name="performance-testing"></a>Testowanie wydajności
  * **Zacznij od używania `redis-benchmark.exe`** , aby uzyskać dostęp do możliwej przepływności/opóźnienia przed napisaniem własnych testów wydajności.  Dokumentację Redis-testową można [znaleźć tutaj](https://redis.io/topics/benchmarks).  Należy pamiętać, że Redis-testowe nie obsługuje protokołu SSL, dlatego przed uruchomieniem testu należy [włączyć port bez protokołu SSL za pośrednictwem portalu](cache-configure.md#access-ports) .  [Zgodną z systemem Windows wersją programu Redis-Benchmark. exe można znaleźć tutaj](https://github.com/MSOpenTech/redis/releases)
  * Maszyna wirtualna klienta użyta do testowania powinna znajdować się **w tym samym regionie** co wystąpienie pamięci podręcznej Redis.
  * **Zalecamy używanie serii maszyn wirtualnych Dv2** dla klienta, ponieważ mają one lepszy sprzęt i dają najlepsze wyniki.

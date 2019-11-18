@@ -1,5 +1,5 @@
 ---
-title: Szyfrowanie — w spoczynku przy użyciu kluczy zarządzanych przez klienta w Azure Key Vault (wersja zapoznawcza)
+title: Szyfrowanie — w spoczynku przy użyciu kluczy zarządzanych przez klienta (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
 description: Uzupełniaj szyfrowanie po stronie serwera za pośrednictwem indeksów i map synonimów w usłudze Azure Wyszukiwanie poznawcze za pomocą kluczy tworzonych i zarządzanych w Azure Key Vault. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721751"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112926"
 ---
-# <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie zawartości platformy Azure Wyszukiwanie poznawcze przy użyciu kluczy zarządzanych przez klienta w programie Azure Key Vault
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie zawartości w usłudze Azure Wyszukiwanie poznawcze przy użyciu kluczy zarządzanych przez klienta w programie Azure Key Vault
 
 > [!IMPORTANT] 
 > Obsługa szyfrowania na poziomie spoczynku jest obecnie dostępna w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) i [zestaw SDK .net w wersji 8,0 — Podgląd](search-dotnet-sdk-migration-version-9.md) udostępnia tę funkcję. Obecnie nie ma obsługi portalu.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6ec8f8835e925663fc6ac21a6eb1df09d6927109
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822204"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132104"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Dowiedz się, jak zainicjować obsługę nowych dzierżawców i zarejestrować je w wykazie
 
@@ -25,7 +25,7 @@ W tym samouczku dowiesz się, jak udostępniać i wykazać wzorce SaaS. Dowiesz 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> 
+>
 > * Inicjowanie obsługi administracyjnej jednej nowej dzierżawy.
 > * Zainicjuj obsługę partii dodatkowych dzierżawców.
 
@@ -39,17 +39,17 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 
 W przypadku aplikacji SaaS wielodostępnej w bazie danych należy wiedzieć, gdzie są przechowywane informacje dotyczące poszczególnych dzierżawców. W przypadku wzorca wykazu SaaS baza danych wykazu jest używana do przechowywania mapowania między poszczególnymi dzierżawcami i bazą danych, w której są przechowywane dane. Ten wzorzec ma zastosowanie, gdy dane dzierżawy są dystrybuowane między wieloma bazami danych.
 
-Każda dzierżawa jest identyfikowana przez klucz w wykazie, który jest mapowany do lokalizacji bazy danych. W aplikacji bilety Wingtip klucz jest tworzony na podstawie skrótu nazwy dzierżawcy. Ten schemat umożliwia aplikacji utworzenie klucza z nazwy dzierżawy zawartej w adresie URL aplikacji. Można używać innych schematów kluczy dzierżawy.  
+Każda dzierżawa jest identyfikowana przez klucz w wykazie, który jest mapowany do lokalizacji bazy danych. W aplikacji bilety Wingtip klucz jest tworzony na podstawie skrótu nazwy dzierżawcy. Ten schemat umożliwia aplikacji utworzenie klucza z nazwy dzierżawy zawartej w adresie URL aplikacji. Można używać innych schematów kluczy dzierżawy.
 
 Wykaz umożliwia zmianę nazwy lub lokalizacji bazy danych przy minimalnym wpływie na aplikację. W wielodostępnym modelu bazy danych ta funkcja umożliwia również przechodzenie dzierżawy między bazami danych. Wykazu można także użyć, aby wskazać, czy dzierżawca lub baza danych jest w trybie offline w celu konserwacji lub wykonywania innych czynności. Ta funkcja została zbadana w [samouczku przywracanie pojedynczej dzierżawy](saas-dbpertenant-restore-single-tenant.md).
 
-W wykazie mogą być również przechowywane dodatkowe metadane dzierżawy lub bazy danych, takie jak wersja schematu, plan usługi lub umowy SLA udostępniane dzierżawcom. W wykazie mogą być przechowywane inne informacje, które umożliwiają zarządzanie aplikacjami, obsługę klienta lub DevOps. 
+W wykazie mogą być również przechowywane dodatkowe metadane dzierżawy lub bazy danych, takie jak wersja schematu, plan usługi lub umowy SLA udostępniane dzierżawcom. W wykazie mogą być przechowywane inne informacje, które umożliwiają zarządzanie aplikacjami, obsługę klienta lub DevOps.
 
-Po przekroczeniu aplikacji SaaS katalog może włączać narzędzia bazy danych. W przypadku Wingtip biletów SaaS bazy danych na dzierżawcę katalog jest używany do włączenia zapytania między dzierżawcami, które jest omówione w [samouczku sprawozdawczości ad hoc](saas-tenancy-cross-tenant-reporting.md). Zarządzanie zadaniami między bazami danych jest dostępne w samouczkach dotyczących [zarządzania schematami](saas-tenancy-schema-management.md) i [analizy dzierżawców](saas-tenancy-tenant-analytics.md) . 
+Po przekroczeniu aplikacji SaaS katalog może włączać narzędzia bazy danych. W przypadku Wingtip biletów SaaS bazy danych na dzierżawcę katalog jest używany do włączenia zapytania między dzierżawcami, które jest omówione w [samouczku sprawozdawczości ad hoc](saas-tenancy-cross-tenant-reporting.md). Zarządzanie zadaniami między bazami danych jest dostępne w samouczkach dotyczących [zarządzania schematami](saas-tenancy-schema-management.md) i [analizy dzierżawców](saas-tenancy-tenant-analytics.md) .
 
-W przykładowych Wingtip bilety SaaS wykaz jest implementowany przy użyciu funkcji zarządzania fragmentu w [bibliotece klienta Elastic Database (Biblioteka edcl)](sql-database-elastic-database-client-library.md). Biblioteka EDCL jest dostępna w języku Java i .NET Framework. Biblioteka EDCL umożliwia aplikacji Tworzenie i używanie mapy fragmentu z kopią zapasową bazy danych oraz zarządzanie nią. 
+W przykładowych Wingtip bilety SaaS wykaz jest implementowany przy użyciu funkcji zarządzania fragmentu w [bibliotece klienta Elastic Database (Biblioteka edcl)](sql-database-elastic-database-client-library.md). Biblioteka EDCL jest dostępna w języku Java i .NET Framework. Biblioteka EDCL umożliwia aplikacji Tworzenie i używanie mapy fragmentu z kopią zapasową bazy danych oraz zarządzanie nią.
 
-Mapa fragmentu zawiera listę fragmentów (baz danych) i mapowanie między kluczami (dzierżawcami) i fragmentów. Funkcje Biblioteka EDCL są używane podczas aprowizacji dzierżawy do tworzenia wpisów na mapie fragmentu. Są one używane w czasie wykonywania przez aplikacje do nawiązywania połączenia z poprawną bazą danych. Biblioteka EDCL buforuje informacje o połączeniu, aby zminimalizować ruch do bazy danych wykazu i przyspieszyć aplikację. 
+Mapa fragmentu zawiera listę fragmentów (baz danych) i mapowanie między kluczami (dzierżawcami) i fragmentów. Funkcje Biblioteka EDCL są używane podczas aprowizacji dzierżawy do tworzenia wpisów na mapie fragmentu. Są one używane w czasie wykonywania przez aplikacje do nawiązywania połączenia z poprawną bazą danych. Biblioteka EDCL buforuje informacje o połączeniu, aby zminimalizować ruch do bazy danych wykazu i przyspieszyć aplikację.
 
 > [!IMPORTANT]
 > Dane mapowania są dostępne w bazie danych wykazu, ale *nie można ich edytować*. Edytuj dane mapowania, używając tylko Elastic Database interfejsów API biblioteki klienta. Bezpośrednie manipulowanie ryzykiem związanym z danymi mapowania uszkodzonym katalog i nie jest obsługiwane.
@@ -57,15 +57,15 @@ Mapa fragmentu zawiera listę fragmentów (baz danych) i mapowanie między klucz
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>Wprowadzenie do wzorca aprowizacji SaaS
 
-Po dodaniu nowej dzierżawy w aplikacji SaaS, która używa modelu bazy danych o pojedynczej dzierżawie, musisz zainicjować obsługę administracyjną nowej bazy danych dzierżawy. Baza danych musi zostać utworzona w odpowiedniej lokalizacji i warstwie usług. Należy ją również zainicjować z odpowiednimi schematami i danymi referencyjnymi. I musi być zarejestrowane w wykazie przy użyciu odpowiedniego klucza dzierżawy. 
+Po dodaniu nowej dzierżawy w aplikacji SaaS, która używa modelu bazy danych o pojedynczej dzierżawie, musisz zainicjować obsługę administracyjną nowej bazy danych dzierżawy. Baza danych musi zostać utworzona w odpowiedniej lokalizacji i warstwie usług. Należy ją również zainicjować z odpowiednimi schematami i danymi referencyjnymi. I musi być zarejestrowane w wykazie przy użyciu odpowiedniego klucza dzierżawy.
 
-Można użyć różnych metod inicjowania obsługi bazy danych. Można wykonywać skrypty SQL, wdrażać BACPAC lub kopiować bazę danych szablonów. 
+Można użyć różnych metod inicjowania obsługi bazy danych. Można wykonywać skrypty SQL, wdrażać BACPAC lub kopiować bazę danych szablonów.
 
-Inicjowanie obsługi bazy danych musi być częścią strategii zarządzania schematem. Należy upewnić się, że są obsługiwane nowe bazy danych z najnowszym schematem. Ten wymóg jest omawiany w [samouczku zarządzania schematami](saas-tenancy-schema-management.md). 
+Inicjowanie obsługi bazy danych musi być częścią strategii zarządzania schematem. Należy upewnić się, że są obsługiwane nowe bazy danych z najnowszym schematem. Ten wymóg jest omawiany w [samouczku zarządzania schematami](saas-tenancy-schema-management.md).
 
-Aplikacja do obsługi biletów Wingtip w bazie danych dla dzierżawców udostępnia nowe dzierżawy, kopiując bazę danych szablonów o nazwie _basetenantdb_, która jest wdrożona na serwerze wykazu. Inicjowanie obsługi można zintegrować z aplikacją w ramach środowiska rejestracji. Może być również obsługiwane w trybie offline za pomocą skryptów. Ten samouczek eksploruje Inicjowanie obsługi przy użyciu programu PowerShell. 
+Aplikacja do obsługi biletów Wingtip w bazie danych dla dzierżawców udostępnia nowe dzierżawy, kopiując bazę danych szablonów o nazwie _basetenantdb_, która jest wdrożona na serwerze wykazu. Inicjowanie obsługi można zintegrować z aplikacją w ramach środowiska rejestracji. Może być również obsługiwane w trybie offline za pomocą skryptów. Ten samouczek eksploruje Inicjowanie obsługi przy użyciu programu PowerShell.
 
-Skrypty aprowizacji kopiują bazę danych _basetenantdb_ , aby utworzyć nową bazę danych dzierżawcy w puli elastycznej. Baza danych dzierżawy jest tworzona na serwerze dzierżawy zmapowanym na alias DNS _newtenant_ . Ten alias zachowuje odwołanie do serwera służącego do aprowizacji nowych dzierżawców i jest aktualizowane w celu wskazywania na serwerze dzierżawy odzyskiwania w samouczkach odzyskiwania po awarii ([Dr przy użyciu funkcji georestore](saas-dbpertenant-dr-geo-restore.md)przy [użyciu funkcji georeplikacji, dr](saas-dbpertenant-dr-geo-replication.md)). Skrypty zainicjują bazę danych z informacjami specyficznymi dla dzierżawy i rejestrują je na mapie fragmentu wykazu. Bazy danych dzierżawy są nadawane nazw na podstawie nazwy dzierżawy. Ten schemat nazewnictwa nie jest istotną częścią wzorca. Katalog mapuje klucz dzierżawy na nazwę bazy danych, więc można użyć dowolnej konwencji nazewnictwa. 
+Skrypty aprowizacji kopiują bazę danych _basetenantdb_ , aby utworzyć nową bazę danych dzierżawcy w puli elastycznej. Baza danych dzierżawy jest tworzona na serwerze dzierżawy zmapowanym na alias DNS _newtenant_ . Ten alias zachowuje odwołanie do serwera służącego do aprowizacji nowych dzierżawców i jest aktualizowane w celu wskazywania na serwerze dzierżawy odzyskiwania w samouczkach odzyskiwania po awarii ([Dr przy użyciu funkcji georestore](saas-dbpertenant-dr-geo-restore.md)przy [użyciu funkcji georeplikacji, dr](saas-dbpertenant-dr-geo-replication.md)). Skrypty zainicjują bazę danych z informacjami specyficznymi dla dzierżawy i rejestrują je na mapie fragmentu wykazu. Bazy danych dzierżawy są nadawane nazw na podstawie nazwy dzierżawy. Ten schemat nazewnictwa nie jest istotną częścią wzorca. Katalog mapuje klucz dzierżawy na nazwę bazy danych, więc można użyć dowolnej konwencji nazewnictwa.
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobierz bilety Wingtip SaaS dla skryptów aplikacji dla dzierżawców
@@ -95,7 +95,7 @@ Aby zrozumieć, w jaki sposób aplikacja biletów Wingtip implementuje nową obs
 
 
 
-Śledź wykonywanie skryptu przy użyciu opcji menu **Debuguj** . Naciśnij klawisz F10 i F11, aby przekroczyć lub do wywołanych funkcji. Aby uzyskać więcej informacji na temat debugowania skryptów programu PowerShell, zobacz [porady dotyczące pracy z skryptami programu PowerShell i ich debugowania](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+Śledź wykonywanie skryptu przy użyciu opcji menu **Debuguj** . Naciśnij klawisz F10 i F11, aby przekroczyć lub do wywołanych funkcji. Aby uzyskać więcej informacji na temat debugowania skryptów programu PowerShell, zobacz [porady dotyczące pracy z skryptami programu PowerShell i ich debugowania](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 
 Nie musisz jawnie obserwować tego przepływu pracy. Wyjaśniono, jak debugować skrypt.
@@ -156,7 +156,7 @@ Inne wzorce aprowizacji, które nie zostały uwzględnione w tym samouczku:
 
 **Wstępne Inicjowanie obsługi administracyjnej baz danych**: wzorzec wstępnej aprowizacji wykorzystuje fakt, że bazy danych w puli elastycznej nie dodawaj dodatkowych kosztów. Opłaty są naliczane za pulę elastyczną, a nie bazy danych. Bezczynne bazy danych nie zużywają żadnych zasobów. Przed zainicjowaniem obsługi administracyjnej baz danych w puli i przydzieleniu ich w razie potrzeby można skrócić czas dodawania dzierżawców. Liczba wstępnie zainicjowanych baz danych można dostosować w miarę potrzeb, aby zachować bufor odpowiedni dla przewidywanego tempa aprowizacji.
 
-**Automatyczne Inicjowanie obsługi**: w przypadku automatycznego inicjowania obsługi administracyjnej usługa aprowizacji automatycznie inicjuje obsługę administracyjną serwerów, pul i baz danych. Jeśli chcesz, możesz dołączyć bazy danych wstępnej aprowizacji do pul elastycznych. W przypadku zlikwidowania i usunięcia baz danych luki w pulach elastycznych mogą być wypełniane przez usługę aprowizacji. Takie usługi mogą być proste lub złożone, takie jak obsługa aprowizacji wielu lokalizacje geograficzne i Konfigurowanie replikacji geograficznej na potrzeby odzyskiwania po awarii. 
+**Automatyczne Inicjowanie obsługi**: w przypadku automatycznego inicjowania obsługi administracyjnej usługa aprowizacji automatycznie inicjuje obsługę administracyjną serwerów, pul i baz danych. Jeśli chcesz, możesz dołączyć bazy danych wstępnej aprowizacji do pul elastycznych. W przypadku zlikwidowania i usunięcia baz danych luki w pulach elastycznych mogą być wypełniane przez usługę aprowizacji. Takie usługi mogą być proste lub złożone, takie jak obsługa aprowizacji wielu lokalizacje geograficzne i Konfigurowanie replikacji geograficznej na potrzeby odzyskiwania po awarii.
 
 Ze wzorcem autoaprowizacji aplikacja kliencka lub skrypt przesyła żądanie aprowizacji do kolejki w celu przetworzenia przez usługę aprowizacji. Następnie sonduje usługę, aby określić zakończenie. Jeśli jest używane wstępne Inicjowanie obsługi, żądania są obsługiwane szybko. Usługa inicjuje zastępowanie zastępczej bazy danych w tle.
 
@@ -166,7 +166,7 @@ Ze wzorcem autoaprowizacji aplikacja kliencka lub skrypt przesyła żądanie apr
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> 
+>
 > * Inicjowanie obsługi administracyjnej jednej nowej dzierżawy.
 > * Zainicjuj obsługę partii dodatkowych dzierżawców.
 > * Przejdź do szczegółów dotyczących aprowizacji i zarejestrowania się w wykazie.
@@ -177,4 +177,4 @@ Wypróbuj [Samouczek dotyczący monitorowania wydajności](saas-dbpertenant-perf
 
 * Dodatkowe [samouczki, które kompilują w Wingtip bilety SaaS bazy danych dla dzierżawców](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)
-* [Debugowanie skryptów w Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [Debugowanie skryptów w Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

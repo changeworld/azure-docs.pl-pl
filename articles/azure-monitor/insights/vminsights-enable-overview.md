@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/29/2019
-ms.openlocfilehash: 7e3dad5405289ee2d1f4ec8f7a586da70db9d56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/14/2019
+ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162260"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109179"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -22,12 +22,12 @@ Aby skonfigurować Azure Monitor dla maszyn wirtualnych:
 
 * Włącz pojedynczą maszynę wirtualną platformy Azure lub zestaw skalowania maszyn wirtualnych, wybierając pozycję **Insights (wersja zapoznawcza)** bezpośrednio z poziomu maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych.
 * Włącz co najmniej dwie maszyny wirtualne platformy Azure i zestawy skalowania maszyn wirtualnych za pomocą Azure Policy. Ta metoda zapewnia, że dla istniejących i nowych maszyn wirtualnych i zestawów skalowania wymagane zależności są zainstalowane i poprawnie skonfigurowane. Zgłoszono niezgodne maszyny wirtualne i zestawy skalowania, dzięki czemu można zdecydować, czy włączyć je i skorygować.
-* Włącz co najmniej dwie maszyny wirtualne platformy Azure lub zestawy skalowania maszyn wirtualnych w ramach określonej subskrypcji lub grupy zasobów przy użyciu programu PowerShell.
+* Włączyć dwie lub więcej maszyn wirtualnych platformy Azure lub na maszynie wirtualnej skalować zestawy skalowania w określonej subskrypcji lub grupy zasobów przy użyciu programu PowerShell.
 * Umożliwia Azure Monitor dla maszyn wirtualnych monitorowania maszyn wirtualnych lub komputerów fizycznych hostowanych w sieci firmowej lub w innym środowisku chmury.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że rozumiesz informacje w poniższych sekcjach. 
+Przed rozpoczęciem upewnij się, że rozumiesz, informacje w poniższych sekcjach. 
 
 >[!NOTE]
 >Poniższe informacje opisane w tej sekcji dotyczą również [rozwiązania Service map](service-map.md).  
@@ -36,26 +36,24 @@ Przed rozpoczęciem upewnij się, że rozumiesz informacje w poniższych sekcjac
 
 Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy Log Analytics w następujących regionach:
 
-- Zachodnio-środkowe stany USA
-- Zachodnie stany USA<sup>1</sup>
-- Zachodnie stany USA 2<sup>1</sup>
-- Południowo-środkowe stany USA<sup>1</sup>
+- Środkowo-zachodnie stany USA
+- Zachodnie stany USA
+- Zachodnie stany USA 2
+- Środkowo-południowe stany USA
 - Wschodnie stany USA
-- Wschód stany USA 2<sup>1</sup>
-- Środkowe stany USA<sup>1</sup>
-- Północno-środkowe stany USA<sup>1</sup>
+- Wschodnie stany USA 2
+- Środkowe stany USA
+- Środkowo-północne stany USA
 - Kanada Środkowa
 - Południowe Zjednoczone Królestwo
-- Europa Północna<sup>1</sup>
+- Europa Północna
 - Europa Zachodnia
-- Azja Wschodnia<sup>1</sup>
+- Azja Wschodnia
 - Azja Południowo-Wschodnia
-- Indie Środkowe<sup>1</sup>
-- Japonia Wschodnia<sup>1</sup>
-- Australia Wschodnia<sup>1</sup>
-- Australia Południowo-Wschodnia<sup>1</sup>
-
-<sup>1</sup> ten region nie obsługuje obecnie funkcji kondycji Azure monitor dla maszyn wirtualnych.
+- Indie Środkowe
+- Japonia Wschodnia
+- Australia Wschodnia
+- Australia Południowo-Wschodnia
 
 >[!NOTE]
 >Maszyny wirtualne platformy Azure można wdrażać z dowolnego regionu. Te maszyny wirtualne nie są ograniczone do regionów obsługiwanych przez obszar roboczy Log Analytics.
@@ -71,8 +69,8 @@ Możesz również utworzyć obszar roboczy podczas włączania monitorowania dla
 
 Aby skonfigurować scenariusz skalowania w poziomie, który używa szablonów Azure Policy, Azure PowerShell lub Azure Resource Manager, w obszarze roboczym Log Analytics:
 
-* Zainstaluj rozwiązania ServiceMap i InfrastructureInsights. Instalację można wykonać przy użyciu dostarczonego szablonu Azure Resource Manager. Na karcie **wprowadzenie** wybierz pozycję **Konfiguruj obszar roboczy**.
-* Skonfiguruj obszar roboczy Log Analytics do zbierania liczników wydajności.
+* Zainstaluj ServiceMap i InfrastructureInsights rozwiązań. Instalację można wykonać przy użyciu dostarczonego szablonu Azure Resource Manager. Na karcie **wprowadzenie** wybierz pozycję **Konfiguruj obszar roboczy**.
+* Konfiguruj obszar roboczy usługi Log Analytics, można zebrać liczników wydajności.
 
 Aby skonfigurować obszar roboczy na potrzeby scenariusza w skali, użyj jednej z następujących metod:
 
@@ -83,34 +81,30 @@ Aby skonfigurować obszar roboczy na potrzeby scenariusza w skali, użyj jednej 
 
 W poniższej tabeli wymieniono systemy operacyjne Windows i Linux obsługiwane przez Azure Monitor dla maszyn wirtualnych. W dalszej części tej sekcji znajdziesz pełną listę zawierającą szczegóły głównej i pomocniczej wersji systemu operacyjnego Linux oraz obsługiwane wersje jądra.
 
-|Wersja systemu operacyjnego |Wydajność |Mapy |Zdrowie |
-|-----------|------------|-----|-------|
-|Windows Server 2019 | X | X | X |
-|System Windows Server 2016 1803 | X | X | X |
-|Windows Server 2016 | X | X | X |
-|Windows Server 2012 R2 | X | X | X |
-|Windows Server 2012 | X | X | |
-|Windows Server 2008 R2 | X | X|  |
-|System Windows 10 1803 | X | X | |
-|Windows 8.1 | X | X | |
-|Windows 8 | X | X | |
-|Windows 7 z dodatkiem SP1 | X | X | |
-|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| X |
-|Ubuntu 18,04, 16,04 | X | X | X |
-|CentOS Linux 7, 6 | X | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Debian 9,4, 8 | X<sup>1</sup> | | X |
+|Wersja systemu operacyjnego |Wydajność |Maps |
+|-----------|------------|-----|
+|Windows Server 2019 | X | X |
+|System Windows Server 2016 1803 | X | X |
+|Windows Server 2016 | X | X |
+|Windows Server 2012 R2 | X | X |
+|Windows Server 2012 | X | X |
+|Windows Server 2008 R2 | X | X|
+|Windows 10 w wersji 1803 | X | X |
+|Windows 8.1 | X | X |
+|Windows 8 | X | X |
+|Windows 7 z dodatkiem SP1 | X | X |
+|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
+|Ubuntu 18,04, 16,04 | X | X |
+|CentOS Linux 7, 6 | X | X |
+|SUSE Linux Enterprise Server (SLES) 12 | X | X |
+|Debian 9.4, 8 | X<sup>1</sup> | |
 
-<sup>1</sup> funkcja wydajności Azure monitor dla maszyn wirtualnych jest dostępna tylko z Azure monitor. Nie jest ona dostępna bezpośrednio z okienka po lewej stronie maszyny wirtualnej platformy Azure.
-
->[!NOTE]
->Funkcja kondycji Azure Monitor dla maszyn wirtualnych nie obsługuje [wirtualizacji zagnieżdżonej](../../virtual-machines/windows/nested-virtualization.md) na maszynie wirtualnej platformy Azure.
->
+<sup>1</sup> funkcja wydajności usługi Azure Monitor dla maszyn wirtualnych jest dostępna tylko z usługi Azure Monitor. Nie jest ona dostępna bezpośrednio z okienka po lewej stronie maszyny wirtualnej platformy Azure.
 
 >[!NOTE]
 >W systemie operacyjnym Linux:
 > - Obsługiwane są tylko wersje domyślne i wersje SMP jądra systemu Linux.
-> - Niestandardowe wersje jądra, takie jak rozszerzenie adresu fizycznego (PAE) i Xen, nie są obsługiwane w przypadku żadnej dystrybucji systemu Linux. Na przykład system z ciągiem wydania *2.6.16.21-0,8-Xen* nie jest obsługiwany.
+> - Zwalnia jądra niestandardowe, takie jak rozszerzenia adresu fizycznego (PAE) i Xen, nie są obsługiwane w przypadku dowolnej dystrybucji systemu Linux. Na przykład system z ciągu wersji *2.6.16.21-0.8-xen* nie jest obsługiwane.
 > - Niestandardowe jądra, w tym ponowne kompilacje standardowych jądra, nie są obsługiwane.
 > - CentOSPlus jądro jest obsługiwane.
 > - Dla luki w zabezpieczeniach Spectre należy zainstalować jądro systemu Linux. Aby uzyskać więcej informacji, skontaktuj się z dostawcą dystrybucji systemu Linux.
@@ -120,38 +114,38 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux obsługiwane p
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
 | 7,6 | 3.10.0-957 |
-| 7,5 | 3.10.0-862 |
-| 7,4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
+| 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
-| 6,10 | 2.6.32 — 754 |
-| 6,9 | 2.6.32-696 |
+| 6.10 | 2.6.32 — 754 |
+| 6.9 | 2.6.32-696 |
 
 #### <a name="centosplus"></a>CentOSPlus
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
-| 6,10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6,9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
+| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
+| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
-| 18,04 | 5,0 (obejmuje jądro dostosowane do platformy Azure)<br>4,18 *<br>4.15* |
+| 18,04 | 5,0 (obejmuje jądro dostosowane do platformy Azure)<br>4,18 *<br>4,15* |
 | 16.04.3 | 4,15. * |
-| 16,04 | 4,13. \*<br>4,11. \*<br>4,10. \*<br>4,8. \*<br>4,4. \* |
+| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
 |12 SP4 | 4,12. * (obejmuje jądro dostosowane do platformy Azure) |
-|12 SP3 | 4,4. * |
-|12 Z DODATKIEM SP2 | 4,4. * |
+|12 Z DODATKIEM SP3 | 4.4. * |
+|12 Z DODATKIEM SP2 | 4.4. * |
 
 #### <a name="debian"></a>Debian 
 
@@ -159,9 +153,9 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux obsługiwane p
 |:--|:--|
 | 9 | 4,9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>Agent zależności firmy Microsoft
+### <a name="the-microsoft-dependency-agent"></a>Program Microsoft Dependency agent
 
-Funkcja map w Azure Monitor dla maszyn wirtualnych pobiera swoje dane z programu Microsoft Dependency Agent. Agent zależności korzysta z Log Analytics agenta, aby połączyć się z Log Analytics. Dlatego w systemie musi być zainstalowany i skonfigurowany Agent Log Analytics przy użyciu agenta zależności.
+Funkcja map w Azure Monitor dla maszyn wirtualnych pobiera swoje dane z programu Microsoft Dependency Agent. Agent zależności zależy od agenta usługi Log Analytics do połączenia z usługi Log Analytics. Dlatego w systemie musi być zainstalowany i skonfigurowany Agent Log Analytics przy użyciu agenta zależności.
 
 Niezależnie od tego, czy włączysz Azure Monitor dla maszyn wirtualnych dla jednej maszyny wirtualnej platformy Azure, czy korzystasz z metody wdrażania na skalę, użyj rozszerzenia agenta zależności maszyny wirtualnej platformy Azure dla [systemu Windows](../../virtual-machines/extensions/agent-dependency-windows.md) lub [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) , aby zainstalować agenta w ramach środowiska.
 
@@ -170,26 +164,26 @@ Niezależnie od tego, czy włączysz Azure Monitor dla maszyn wirtualnych dla je
 
 W środowisku hybrydowym można pobrać i zainstalować agenta zależności ręcznie lub przy użyciu metody zautomatyzowanej.
 
-W poniższej tabeli opisano połączone źródła obsługiwane przez funkcję mapy w środowisku hybrydowym.
+W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję mapy w środowisku hybrydowym.
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
-| Agenci dla systemu Windows | Tak | Wraz z [agentem log Analytics dla systemu Windows](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Windows potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
-| Agenci dla systemu Linux | Tak | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Windows | Yes | Wraz z [agentem log Analytics dla systemu Windows](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Windows potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Linux | Yes | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
 | Grupa zarządzania programu System Center Operations Manager | Nie | |
 
 Agenta zależności można pobrać z następujących lokalizacji:
 
-| Plik | System operacyjny | Wersja | SHA-256 |
+| Plik | OS | Wersja | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Aby włączyć funkcje w Azure Monitor dla maszyn wirtualnych i uzyskać do nich dostęp, musisz mieć rolę *współautora log Analytics* . Aby wyświetlić dane dotyczące wydajności, kondycji i mapy, musisz mieć rolę *czytnika monitorowania* dla maszyny wirtualnej platformy Azure. Dla Azure Monitor dla maszyn wirtualnych należy skonfigurować obszar roboczy Log Analytics.
+Aby włączyć funkcje w Azure Monitor dla maszyn wirtualnych i uzyskać do nich dostęp, musisz mieć rolę *współautora log Analytics* . Aby wyświetlić dane dotyczące wydajności, kondycji i mapy, musisz mieć rolę *czytnika monitorowania* dla maszyny wirtualnej platformy Azure. Obszar roboczy usługi Log Analytics, musi być skonfigurowany dla usługi Azure Monitor dla maszyn wirtualnych.
 
-Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego Log Analytics, zobacz [Zarządzanie obszarami roboczymi](../../azure-monitor/platform/manage-access.md).
+Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../../azure-monitor/platform/manage-access.md).
 
 ## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Jak włączyć Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -213,18 +207,18 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 
 |Nazwa obiektu |Nazwa licznika |
 |------------|-------------|
-|Dysk logiczny |Wolne miejsce (%) |
+|Dysk logiczny |% Wolnego miejsca |
 |Dysk logiczny |Średni czas dysku w s/odczyt |
 |Dysk logiczny |Średni czas dysku w s/transfer |
 |Dysk logiczny |Średni czas dysku w s/zapis |
 |Dysk logiczny |Bajty dysku/s |
-|Dysk logiczny |Bajty odczytu dysku/s |
+|Dysk logiczny |Bajty odczytu z dysku/s |
 |Dysk logiczny |Odczyty dysku/s |
-|Dysk logiczny |Transfery dysku/s |
-|Dysk logiczny |Bajty zapisu dysku/s |
+|Dysk logiczny |Transfery dyskowe/s |
+|Dysk logiczny |Bajty zapisu na dysku/s |
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
-|Pamięć |Dostępna pamięć (MB) |
+|Memory (Pamięć) |Dostępna pamięć (MB) |
 |Karta sieciowa |Bajty odebrane/s |
 |Karta sieciowa |Bajty wysłane/s |
 |Procesor |Czas procesora (%) |
@@ -233,15 +227,15 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 
 |Nazwa obiektu |Nazwa licznika |
 |------------|-------------|
-|Dysk logiczny |Zajęte miejsce (%) |
-|Dysk logiczny |Bajty odczytu dysku/s |
+|Dysk logiczny |Procent wykorzystania miejsca |
+|Dysk logiczny |Bajty odczytu z dysku/s |
 |Dysk logiczny |Odczyty dysku/s |
-|Dysk logiczny |Transfery dysku/s |
-|Dysk logiczny |Bajty zapisu dysku/s |
+|Dysk logiczny |Transfery dyskowe/s |
+|Dysk logiczny |Bajty zapisu na dysku/s |
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
 |Dysk logiczny |Bajty dysku logicznego/s |
-|Pamięć |Dostępna pamięć (MB) |
+|Memory (Pamięć) |Dostępna pamięć (MB) |
 |Sieć |Całkowita liczba odebranych bajtów |
 |Sieć |Całkowita liczba przesłanych bajtów |
 |Procesor |Czas procesora (%) |
@@ -252,13 +246,13 @@ Gdy Azure Monitor dla maszyn wirtualnych jest włączona i skonfigurowana z obsz
 
 Pakiet administracyjny ma nazwę *Microsoft. IntelligencePacks. ApplicationDependencyMonitor*. Zapisany w folderze `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\`. Źródło danych używane przez pakiet administracyjny jest `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll`.
 
-## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i użycia
+## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
 
-Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności za pomocą usługi Azure Monitor. Firma Microsoft używa tych danych w celu poprawienia jakości, bezpieczeństwa i integralności usługi. 
+Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi Azure Monitor. Firma Microsoft używa tych danych w celu poprawienia jakości, bezpieczeństwa i integralności usługi. 
 
-Aby zapewnić dokładne i wydajne możliwości rozwiązywania problemów, funkcja map zawiera dane dotyczące konfiguracji oprogramowania. Dane zawierają informacje takie jak system operacyjny, wersja, adres IP, nazwa DNS i nazwa stacji roboczej. Firma Microsoft nie zbiera nazw, adresów ani innych informacji kontaktowych.
+Aby zapewnić dokładne i wydajne możliwości rozwiązywania problemów, funkcja map zawiera dane dotyczące konfiguracji oprogramowania. Dane zawierają informacje takie jak system operacyjny, wersja, adres IP, nazwa DNS i nazwa stacji roboczej. Firma Microsoft nie zbiera nazwisk, adresów ani innych informacji kontaktowych.
 
-Aby uzyskać więcej informacji na temat zbierania i używania danych, zobacz [zasady zachowania poufności informacji w witrynie Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -266,4 +260,4 @@ Teraz, gdy włączono monitorowanie dla maszyny wirtualnej, informacje o monitor
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak korzystać z funkcji kondycji, zobacz [wyświetlanie Azure monitor dla maszyn wirtualnych kondycji](vminsights-health.md). Aby wyświetlić odnalezione zależności aplikacji, zobacz [view Azure monitor dla maszyn wirtualnych map](vminsights-maps.md).
+Aby dowiedzieć się, jak korzystać z funkcji monitorowania wydajności, zobacz [wyświetlanie Azure monitor dla maszyn wirtualnych Performance](vminsights-performance.md). Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md).

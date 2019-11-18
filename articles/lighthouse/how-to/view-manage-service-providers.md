@@ -1,22 +1,18 @@
 ---
 title: Wyświetlanie dostawców usług i zarządzanie nimi
 description: Klienci mogą używać strony dostawcy usług w Azure Portal do wyświetlania informacji o dostawcach usług, ofertach dostawcy usług i delegowanych zasobach.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a7d39d95e35e30a16ce11db5b942024b6890438
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: baa5a77b481779ab511ff473aacda5d40e0d771c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286594"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132182"
 ---
 # <a name="view-and-manage-service-providers"></a>Wyświetlanie dostawców usług i zarządzanie nimi
 
-Klienci mogą używać strony **dostawcy usług** w [Azure Portal](https://portal.azure.com) do wyświetlania informacji o dostawcach usług i ofertach usługodawców, delegowaniu określonych zasobów za pomocą [zarządzania zasobami delegowanymi przez platformę Azure](../concepts/azure-delegated-resource-management.md)i kupować dodatkowe oferty dostawcy usług. Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
+Klienci mogą używać strony **dostawcy usług** w [Azure Portal](https://portal.azure.com) , aby wyświetlić informacje o dostawcach usług i ofertach dostawcy usług, delegować określone zasoby za pomocą [usługi Azure delegowane zarządzanie zasobami](../concepts/azure-delegated-resource-management.md)i kupować dodatkowe oferty dostawców usług. Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
 
 Aby uzyskać dostęp do strony **dostawcy usług** w Azure Portal, klient może wybrać **wszystkie usługi**, a następnie wyszukać **dostawców usług** i wybrać ją. Można je również znaleźć, wprowadzając "dostawcy usług" w polu wyszukiwania w górnej części Azure Portal.
 
@@ -50,6 +46,12 @@ Aby delegować subskrypcje lub grupy zasobów:
 Klient może dodać nową ofertę dostawcy usług na stronie **oferty dostawcy** , wybierając pozycję **Dodaj ofertę**. Dostawca usług musi mieć opublikowaną ofertę dla tego klienta. Klient może następnie wybrać tę ofertę na ekranie **oferty prywatne** , a następnie wybrać pozycję **Utwórz**.
 
 Jeśli klient chce usunąć ofertę dostawcy usług, może wybrać ikonę kosza w wierszu dla tej oferty. Po potwierdzeniu usunięcia ten dostawca usług nie będzie już miał dostępu do zasobów klienta, które były wcześniej delegowane dla tej oferty.
+
+## <a name="update-service-provider-offers"></a>Oferty aktualizacji dostawcy usług
+
+Po dodaniu oferty przez klienta dostawca usług może opublikować zaktualizowaną wersję tej samej oferty w witrynie Azure Marketplace. Na przykład mogą chcieć dodać nową definicję roli. Jeśli nowa wersja oferty została opublikowana, na stronie **oferty dostawcy** zostanie wyświetlona ikona "Aktualizacja" w wierszu dla tej oferty. Klient może wybrać tę ikonę, aby zobaczyć różnice między bieżącą wersją oferty a nową. 
+
+Po przejrzeniu zmian klient może zdecydować się na zaktualizowanie nowej wersji. Po wykonaniu tych czynności autoryzacje i inne ustawienia określone w nowej wersji będą stosowane do wszystkich subskrypcji i/lub grup zasobów, które zostały delegowane dla tej oferty.
 
 ## <a name="view-delegations"></a>Wyświetl delegowania
 

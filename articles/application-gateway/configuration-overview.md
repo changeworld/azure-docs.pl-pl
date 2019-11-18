@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 38d86a9ed82c3a242364e788cce371f83575c1ea
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389973"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108727"
 ---
 # <a name="application-gateway-configuration-overview"></a>Przegląd konfiguracji Application Gateway
 
@@ -20,7 +20,7 @@ Usługa Azure Application Gateway obejmuje kilka składników, które można sko
 
 ![Wykres przepływu składników Application Gateway](./media/configuration-overview/configuration-overview1.png)
 
-Ten obraz przedstawia aplikację, która ma trzy detektory. Pierwsze dwa są odbiornikami z wiele witryn dla `http://acme.com/*` i `http://fabrikam.com/*`. Oba nasłuchują na porcie 80. Trzecia to podstawowy odbiornik, który ma kompleksowe SSL (SSL).
+Ten obraz przedstawia aplikację, która ma trzy detektory. Pierwsze dwa są odbiornikami wielolokacjowymi dla `http://acme.com/*` i `http://fabrikam.com/*`, odpowiednio. Oba nasłuchują na porcie 80. Trzecia to podstawowy odbiornik, który ma kompleksowe SSL (SSL).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -32,7 +32,7 @@ Ten obraz przedstawia aplikację, która ma trzy detektory. Pierwsze dwa są odb
 Brama aplikacji to dedykowane wdrożenie w sieci wirtualnej. W ramach sieci wirtualnej wymagana jest dedykowana podsieć dla bramy aplikacji. W podsieci można mieć wiele wystąpień danego wdrożenia bramy aplikacji. Możesz również wdrożyć inne bramy aplikacji w podsieci. Nie można jednak wdrożyć żadnego innego zasobu w podsieci bramy aplikacji.
 
 > [!NOTE]
-> W tej samej podsieci nie można mieszać Standard_v2 i standardowych Application Gateway platformy Azure.
+> Nie można mieszać Standard_v2 i standardowego Application Gateway platformy Azure w tej samej podsieci.
 
 #### <a name="size-of-the-subnet"></a>Rozmiar podsieci
 
@@ -42,7 +42,7 @@ Platforma Azure rezerwuje także 5 adresów IP w każdej podsieci do użytku wew
 
 Rozważ podsieć zawierającą 27 wystąpień usługi Application Gateway i adres IP dla prywatnego adresu IP frontonu. W takim przypadku wymagane są 33 adresów IP: 27 dla wystąpień usługi Application Gateway, 1 dla frontonu prywatnego i 5 do użytku wewnętrznego. W związku z tym potrzebny jest rozmiar podsieci/26 lub większy.
 
-Zalecamy użycie rozmiaru podsieci co najmniej/28. Ten rozmiar daje 11 przydatnych adresów IP. Jeśli obciążenie aplikacji wymaga więcej niż 10 adresów IP, należy wziąć pod uwagę rozmiar podsieci/27 lub/26.
+Zalecamy użycie rozmiaru podsieci co najmniej/28. Ten rozmiar daje 11 przydatnych adresów IP. Jeśli obciążenie aplikacji wymaga więcej niż 10 Application Gateway wystąpień, należy wziąć pod uwagę rozmiar podsieci/27 lub/26.
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Sieciowe grupy zabezpieczeń w podsieci Application Gateway
 
@@ -61,7 +61,7 @@ Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) są obsługiwane w 
 
 W tym scenariuszu należy użyć sieciowych grup zabezpieczeń w podsieci Application Gateway. W tej kolejności należy umieścić następujące ograniczenia w podsieci:
 
-1. Zezwalaj na ruch przychodzący ze źródłowego zakresu adresów IP i IP oraz do całej podsieci Application Gateway lub do określonego skonfigurowanego prywatnego adresu IP frontonu. SIECIOWEJ grupy zabezpieczeń nie działa w publicznym adresie IP.
+1. Zezwalaj na ruch przychodzący ze źródłowego adresu IP lub zakresu adresów IP oraz miejsca docelowego jako całej podsieci Application Gateway lub do określonego skonfigurowanego prywatnego adresu IP frontonu. SIECIOWEJ grupy zabezpieczeń nie działa w publicznym adresie IP.
 2. Zezwalaj na żądania przychodzące ze wszystkich źródeł do portów 65503-65534 dla jednostki SKU Application Gateway V1 oraz portów 65200-65535 dla wersji 2 jednostki SKU na potrzeby komunikacji w celu zapewnienia [kondycji wewnętrznej bazy](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)danych. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez certyfikaty platformy Azure. Bez odpowiednich certyfikatów jednostki zewnętrzne nie mogą inicjować zmian w tych punktach końcowych.
 3. Zezwalaj na wychodzące sondy Azure Load Balancer (tag*AzureLoadBalancer* ) i ruchu przychodzącego sieci wirtualnej (tag*VirtualNetwork* ) w [sieciowej grupie zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Blokuj cały ruch przychodzący za pomocą reguły Odmów.
@@ -83,13 +83,13 @@ W przypadku jednostki SKU v2 UDR nie są obsługiwane w podsieci Application Gat
 
 Bramę aplikacji można skonfigurować tak, aby zawierała publiczny adres IP, prywatny adres IP lub oba te elementy. Publiczny adres IP jest wymagany w przypadku hostowania zaplecza, do którego klienci muszą uzyskać dostęp za pośrednictwem Internetu za pośrednictwem wirtualnego adresu IP (VIP) dostępnego z Internetu. 
 
-Publiczny adres IP nie jest wymagany dla wewnętrznego punktu końcowego, który nie jest narażony na Internet. Jest to tzw. wewnętrzny punkt końcowy *modułu równoważenia obciążenia* (ILB). ILB bramy aplikacji jest przydatne w przypadku wewnętrznych aplikacji biznesowych, które nie są dostępne w Internecie. Jest on również przydatny w przypadku usług i warstw w aplikacji wielowarstwowej w ramach granicy zabezpieczeń, która nie jest dostępna w Internecie, ale wymaga dystrybucji obciążenia z działaniem okrężnym, lepkość sesji lub zakończenia protokołu SSL.
+Publiczny adres IP nie jest wymagany dla wewnętrznego punktu końcowego, który nie jest narażony na Internet. Jest on znany jako punkt końcowy *wewnętrznego modułu równoważenia obciążenia* (ILB) lub prywatny adres IP frontonu. ILB bramy aplikacji jest przydatne w przypadku wewnętrznych aplikacji biznesowych, które nie są dostępne w Internecie. Jest on również przydatny w przypadku usług i warstw w aplikacji wielowarstwowej w ramach granicy zabezpieczeń, która nie jest dostępna w Internecie, ale wymaga dystrybucji obciążenia z działaniem okrężnym, lepkość sesji lub zakończenia protokołu SSL.
 
 Obsługiwany jest tylko 1 publiczny adres IP lub 1 prywatny adres IP. Adres IP frontonu jest wybierany podczas tworzenia bramy aplikacji.
 
-- W przypadku publicznego adresu IP można utworzyć nowy publiczny adres IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji, w której znajduje się Brama aplikacji. Jeśli utworzysz nowy publiczny adres IP, nie można później zmienić typu adresu IP, który został wybrany (statyczny lub dynamiczny). Aby uzyskać więcej informacji, zobacz [statyczny i dynamiczny publiczny adres IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
+- W przypadku publicznego adresu IP można utworzyć nowy publiczny adres IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji, w której znajduje się Brama aplikacji. Aby uzyskać więcej informacji, zobacz [statyczny i dynamiczny publiczny adres IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
-- Dla prywatnego adresu IP można określić prywatny adres IP z podsieci, w której jest tworzona Brama aplikacji. Jeśli nie określisz go, zostanie automatycznie wybrany dowolny adres IP z podsieci. Aby uzyskać więcej informacji, zobacz [Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
+- Dla prywatnego adresu IP można określić prywatny adres IP z podsieci, w której jest tworzona Brama aplikacji. Jeśli nie określisz go, zostanie automatycznie wybrany dowolny adres IP z podsieci. Wybrany typ adresu IP (statyczny lub dynamiczny) nie może zostać później zmieniony. Aby uzyskać więcej informacji, zobacz [Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
 Adres IP frontonu jest skojarzony z *odbiornikiem*, który sprawdza przychodzące żądania w adresie IP frontonu.
 
@@ -97,19 +97,19 @@ Adres IP frontonu jest skojarzony z *odbiornikiem*, który sprawdza przychodząc
 
 Odbiornik jest jednostką logiczną, która sprawdza przychodzące żądania połączeń przy użyciu portu, protokołu, hosta i adresu IP. Podczas konfigurowania odbiornika należy wprowadzić wartości pasujące do odpowiednich wartości w żądaniu przychodzącym na bramie.
 
-Podczas tworzenia bramy aplikacji przy użyciu Azure Portal należy również utworzyć odbiornik domyślny, wybierając protokół i port odbiornika. Możesz wybrać, czy włączyć obsługę HTTP2 na odbiorniku. Po utworzeniu bramy aplikacji można edytować ustawienia tego domyślnego odbiornika (*appGatewayHttpListener*/*appGatewayHttpsListener*) lub utworzyć nowe odbiorniki.
+Podczas tworzenia bramy aplikacji przy użyciu Azure Portal należy również utworzyć odbiornik domyślny, wybierając protokół i port odbiornika. Możesz wybrać, czy włączyć obsługę HTTP2 na odbiorniku. Po utworzeniu bramy aplikacji można edytować ustawienia tego odbiornika domyślnego (*appGatewayHttpListener*) lub utworzyć nowe odbiorniki.
 
 ### <a name="listener-type"></a>Typ odbiornika
 
 Podczas tworzenia nowego odbiornika należy wybrać jedną z [ *podstawowych* i *wiele lokacji*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners).
 
-- W przypadku hostowania pojedynczej lokacji za bramą aplikacji wybierz pozycję podstawowa. Dowiedz się, [jak utworzyć bramę aplikacji z odbiornikiem podstawowym](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Jeśli chcesz, aby wszystkie żądania (dla dowolnej domeny) zostały zaakceptowane i przesłane dalej do pul zaplecza, wybierz pozycję podstawowa. Dowiedz się, [jak utworzyć bramę aplikacji z odbiornikiem podstawowym](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Jeśli konfigurujesz więcej niż jedną aplikację sieci Web lub wiele domen podrzędnych tej samej domeny nadrzędnej w tym samym wystąpieniu bramy aplikacji, wybierz odbiornik z wieloma lokacjami. W przypadku odbiornika z obsługą wiele lokacji należy również wprowadzić nazwę hosta. Jest to spowodowane tym, że Application Gateway opiera się na nagłówkach hosta HTTP 1,1 do hostowania więcej niż jednej witryny sieci Web na tym samym publicznym adresie IP i porcie.
+- Jeśli chcesz przekazywać żądania do różnych pul zaplecza na podstawie nagłówka *hosta* lub nazwy hosta, wybierz odbiornik wielu witryn, gdzie należy określić nazwę hosta zgodną z żądaniem przychodzącym. Jest to spowodowane tym, że Application Gateway opiera się na nagłówkach hosta HTTP 1,1 do hostowania więcej niż jednej witryny sieci Web na tym samym publicznym adresie IP i porcie.
 
 #### <a name="order-of-processing-listeners"></a>Kolejność przetwarzania odbiorników
 
-W przypadku jednostki SKU V1 odbiorniki są przetwarzane w kolejności, w jakiej są wyświetlane. Jeśli podstawowy odbiornik pasuje do żądania przychodzącego, najpierw przetwarza procesy wywołujące żądania. Aby upewnić się, że ruch jest kierowany do poprawnego zaplecza, należy skonfigurować odbiorniki obejmujące wiele lokacji przed podstawowymi detektorami.
+W przypadku jednostki SKU V1 żądania są dopasowywane zgodnie z kolejnością reguł i typem odbiornika. Jeśli zasada z odbiornikiem podstawowym jest najpierw w kolejności, zostanie ona przetworzona jako pierwsza i zaakceptuje wszystkie żądania dla tego portu i kombinacji adresów IP. Aby tego uniknąć, należy najpierw skonfigurować reguły z odbiornikami z obsługą kilku lokacji i wypchnąć regułę z odbiornikiem podstawowym do ostatniego z listy.
 
 W przypadku jednostki SKU w wersji 2 odbiorniki z obsługą wiele lokacji są przetwarzane przed podstawowymi odbiornikami.
 
@@ -121,7 +121,7 @@ Wybierz adres IP frontonu, który ma zostać skojarzony z tym odbiornikiem. Odbi
 
 Wybierz port frontonu. Wybierz istniejący port lub Utwórz nowy. Wybierz dowolną wartość z [dozwolonego zakresu portów](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Można użyć nie tylko dobrze znanych portów, na przykład 80 i 443, ale dowolnego dozwolonego niestandardowego portu, który jest odpowiedni. Port może być używany na potrzeby odbiorników publicznych lub odbiorników prywatnych.
 
-### <a name="protocol"></a>Protocol (Protokół)
+### <a name="protocol"></a>Protokół
 
 Wybierz pozycję HTTP lub HTTPS:
 
@@ -165,7 +165,7 @@ Aby skonfigurować globalną stronę błędu niestandardowego, zobacz [konfigura
 
 Można scentralizować zarządzanie certyfikatami SSL i zmniejszyć obciążenie odszyfrowywania szyfrowania dla farmy serwerów zaplecza. Scentralizowana obsługa protokołu SSL umożliwia również określenie centralnych zasad protokołu SSL, które są odpowiednie do wymagań dotyczących zabezpieczeń. Można wybrać *domyślne*, *wstępnie zdefiniowane*lub *niestandardowe* zasady protokołu SSL.
 
-Należy skonfigurować zasady protokołu SSL w celu kontrolowania wersji protokołu SSL. Bramę aplikacji można skonfigurować tak, aby nie zezwalać na protokoły TLS 1.0, TLS 1.1 i TLS 1.2. Domyślnie protokoły SSL 2,0 i 3,0 są wyłączone i nie można ich konfigurować. Aby uzyskać więcej informacji, zobacz [Application Gateway Omówienie zasad protokołu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+Należy skonfigurować zasady protokołu SSL w celu kontrolowania wersji protokołu SSL. Bramę aplikacji można skonfigurować tak, aby korzystała z protokołu minimalna dla uzgadniania TLS z protokołów TLS 1.0, TLS 1.1 i TLS 1.2. Domyślnie protokoły SSL 2,0 i 3,0 są wyłączone i nie można ich konfigurować. Aby uzyskać więcej informacji, zobacz [Application Gateway Omówienie zasad protokołu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
 Po utworzeniu odbiornika należy skojarzyć go z regułą routingu żądania. Ta reguła określa, jak żądania odbierane w odbiorniku są kierowane do zaplecza.
 
@@ -177,7 +177,7 @@ Podczas tworzenia bramy aplikacji przy użyciu Azure Portal należy utworzyć re
 
 Podczas tworzenia reguły wybiera się między [ *podstawową* a *opartą na ścieżce*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
-- Wybierz pozycję podstawowa, jeśli chcesz przesłać dalej wszystkie żądania na skojarzonym odbiorniku (na *przykład<i></i>blog. contoso.com/\*)* do jednej puli zaplecza.
+- Wybierz pozycję podstawowa, jeśli chcesz przesyłać dalej wszystkie żądania na skojarzonym odbiorniku (na *przykład<i></i>blog. contoso.com/\*)* do jednej puli zaplecza.
 - Wybierz pozycję oparta na ścieżce, jeśli chcesz kierować żądania z określonych ścieżek URL do określonych pul zaplecza. Wzorzec ścieżki jest stosowany tylko do ścieżki adresu URL, a nie do parametrów zapytania.
 
 #### <a name="order-of-processing-rules"></a>Kolejność reguł przetwarzania
@@ -204,15 +204,11 @@ Dodaj ustawienia protokołu HTTP zaplecza dla każdej reguły. Żądania są kie
 
 W przypadku podstawowej reguły dozwolone jest tylko jedno ustawienie HTTP zaplecza. Wszystkie żądania na skojarzonym odbiorniku są przekazywane do odpowiednich obiektów docelowych zaplecza przy użyciu tego ustawienia protokołu HTTP.
 
-Dodaj ustawienia protokołu HTTP zaplecza dla każdej reguły. Żądania są kierowane z bramy aplikacji do obiektów docelowych zaplecza przy użyciu numeru portu, protokołu i innych informacji określonych w tym ustawieniu.
-
-W przypadku podstawowej reguły dozwolone jest tylko jedno ustawienie HTTP zaplecza. Wszystkie żądania na skojarzonym odbiorniku są przekazywane do odpowiednich obiektów docelowych zaplecza przy użyciu tego ustawienia protokołu HTTP.
-
 Dla reguły opartej na ścieżce Dodaj wiele ustawień protokołu HTTP zaplecza, które odpowiadają każdej ścieżce URL. Żądania zgodne ze ścieżką URL w tym ustawieniu są przekazywane do odpowiednich obiektów docelowych zaplecza przy użyciu ustawień HTTP, które odpowiadają każdej ścieżce URL. Ponadto Dodaj domyślne ustawienie protokołu HTTP. Żądania, które nie pasują do żadnej ścieżki URL w tej regule, są przekazywane do domyślnej puli zaplecza przy użyciu domyślnego ustawienia protokołu HTTP.
 
 ### <a name="redirection-setting"></a>Ustawienie przekierowania
 
-W przypadku skonfigurowania przekierowania dla podstawowej reguły wszystkie żądania na skojarzonym odbiorniku są przekierowywane do obiektu docelowego. To jest przekierowanie *globalne* . Jeśli przekierowanie jest skonfigurowane dla reguły opartej na ścieżce, przekierowywane są tylko żądania w określonym obszarze witryny. Przykładem jest obszar koszyka zakupów, który jest oznaczany przez */cart/\** . Jest to przekierowanie *oparte na ścieżce* .
+W przypadku skonfigurowania przekierowania dla podstawowej reguły wszystkie żądania na skojarzonym odbiorniku są przekierowywane do obiektu docelowego. To jest przekierowanie *globalne* . Jeśli przekierowanie jest skonfigurowane dla reguły opartej na ścieżce, przekierowywane są tylko żądania w określonym obszarze witryny. Przykładem jest obszar koszyka zakupów, który jest określany przez */cart/\** . Jest to przekierowanie *oparte na ścieżce* .
 
 Aby uzyskać więcej informacji na temat przekierowań, zobacz [Omówienie przekierowania Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
@@ -245,10 +241,10 @@ Aby uzyskać więcej informacji na temat przekierowania, zobacz:
 
 #### <a name="rewrite-the-http-header-setting"></a>Ponowne zapisywanie ustawienia nagłówka HTTP
 
-To ustawienie powoduje dodanie, usunięcie lub aktualizację nagłówków żądań i odpowiedzi HTTP, podczas gdy pakiety żądań i odpowiedzi przechodzą między klientami a pulami zaplecza. Tę funkcję można skonfigurować tylko przy użyciu programu PowerShell. Obsługa Azure Portal i interfejsu wiersza polecenia nie są jeszcze dostępne. Aby uzyskać więcej informacji, zobacz:
+To ustawienie powoduje dodanie, usunięcie lub aktualizację nagłówków żądań i odpowiedzi HTTP, podczas gdy pakiety żądań i odpowiedzi przechodzą między klientami a pulami zaplecza. Aby uzyskać więcej informacji, zobacz:
 
  - [Przegląd ponownego zapisywania nagłówków HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Konfigurowanie ponownego zapisywania nagłówka HTTP](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
+ - [Konfigurowanie ponownego zapisywania nagłówka HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
 
 ## <a name="http-settings"></a>Ustawienia protokołu HTTP
 
@@ -260,9 +256,9 @@ Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym
 
 ### <a name="connection-draining"></a>Opróżnianie połączeń
 
-Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji planowanych usług. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguły. Gwarantuje to, że wszystkie wystąpienia wyrejestrowania puli zaplecza nie odbierają żadnych nowych żądań. W międzyczasie istniejące żądania mogą zakończyć się w skonfigurowanym limicie czasu. Opróżnianie połączeń dotyczy wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API. Dotyczy to również wystąpień zaplecza, które są zgłaszane jako w złej *kondycji* przez sondy kondycji.
+Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji planowanych usług. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguły. Gwarantuje to, że wszystkie wystąpienia wyrejestrowania puli zaplecza nie odbierają żadnych nowych żądań. W międzyczasie istniejące żądania mogą zakończyć się w skonfigurowanym limicie czasu. Opróżnianie połączeń dotyczy wystąpień zaplecza, które są jawnie usuwane z puli zaplecza.
 
-### <a name="protocol"></a>Protocol (Protokół)
+### <a name="protocol"></a>Protokół
 
 Application Gateway obsługuje zarówno protokół HTTP, jak i HTTPS w przypadku żądań routingu do serwerów zaplecza. W przypadku wybrania protokołu HTTP ruch do serwerów zaplecza jest niezaszyfrowany. Jeśli nieszyfrowana komunikacja nie jest akceptowalna, wybierz pozycję HTTPS.
 
@@ -274,7 +270,7 @@ To ustawienie określa port, w którym serwery zaplecza nasłuchują ruchu z bra
 
 ### <a name="request-timeout"></a>Limit czasu żądania
 
-To ustawienie oznacza liczbę sekund, przez które Brama aplikacji ma odebrać odpowiedź z puli zaplecza przed zwróceniem komunikatu o błędzie "Upłynął limit czasu połączenia".
+To ustawienie określa liczbę sekund oczekiwania przez bramę aplikacji na odebranie odpowiedzi z serwera zaplecza.
 
 ### <a name="override-back-end-path"></a>Zastąp ścieżkę zaplecza
 
@@ -301,7 +297,7 @@ To ustawienie umożliwia skonfigurowanie opcjonalnej niestandardowej ścieżki p
 
 ### <a name="use-for-app-service"></a>Korzystanie z usługi App Service
 
-Jest to skrót interfejsu użytkownika, który wybiera dwa wymagane ustawienia dla zaplecza Azure App Service. Umożliwia **wybranie nazwy hosta z adresu zaplecza**i utworzenie nowej sondy niestandardowej. (Aby uzyskać więcej informacji, zobacz sekcję [Wybieranie nazwy hosta z ustawienia adres zaplecza w](#pick) tym artykule). Zostanie utworzona nowa sonda, a nagłówek sondy jest wybierany z adresu członka zaplecza.
+Jest to skrót tylko do interfejsu użytkownika, który wybiera dwa wymagane ustawienia dla Azure App Service zaplecza. Umożliwia **wybranie nazwy hosta z adresu zaplecza**i utworzenie nowej sondy niestandardowej, jeśli nie została ona jeszcze zainstalowana. (Aby uzyskać więcej informacji, zobacz sekcję [Wybieranie nazwy hosta z ustawienia adres zaplecza w](#pick) tym artykule). Zostanie utworzona nowa sonda, a nagłówek sondy jest wybierany z adresu członka zaplecza.
 
 ### <a name="use-custom-probe"></a>Użyj sondy niestandardowej
 
@@ -310,26 +306,26 @@ To ustawienie kojarzy [niestandardową sondę](https://docs.microsoft.com/azure/
 > [!NOTE]
 > Niestandardowa Sonda nie monitoruje kondycji puli zaplecza, chyba że odpowiednie ustawienie protokołu HTTP jest jawnie skojarzone z odbiornikiem.
 
-### <a id="pick"/> @ no__t-1Pick nazwa hosta z adresu zaplecza
+### <a id="pick"/></a>wybierz nazwę hosta z adresu zaplecza
 
 Ta funkcja dynamicznie ustawia nagłówek *hosta* w żądaniu na nazwę hosta puli zaplecza. Używa adresu IP lub nazwy FQDN.
 
-Ta funkcja pomaga, gdy nazwa domeny zaplecza różni się od nazwy DNS bramy aplikacji, a zaplecze opiera się na określonym nagłówku hosta lub rozszerzeniu Oznaczanie nazwy serwera (SNI), aby rozwiązać prawidłowy punkt końcowy.
+Ta funkcja pomaga, gdy nazwa domeny zaplecza różni się od nazwy DNS bramy aplikacji, a zaplecze opiera się na określonym nagłówku hosta, aby rozwiązać prawidłowy punkt końcowy.
 
 Przykładem przypadku są usługi wielodostępne jako zaplecze. Usługa App Service to usługa z wieloma dzierżawami, która używa udostępnionego miejsca z pojedynczym adresem IP. Z tego względu dostęp do usługi App Service można uzyskać tylko za pomocą nazw hostów skonfigurowanych w niestandardowych ustawieniach domeny.
 
-Domyślnie niestandardowa nazwa domeny to *przykład. azurewebsites.<i> </i> NET*. Aby uzyskać dostęp do usługi App Service przy użyciu bramy aplikacji za pomocą nazwy hosta, która nie jest jawnie zarejestrowana w usłudze App Service lub za pośrednictwem nazwy FQDN bramy aplikacji, należy zastąpić nazwę hosta w oryginalnym żądaniu do nazwy hosta usługi App Service. W tym celu należy włączyć ustawienie **Wybierz nazwę hosta z adresu zaplecza** .
+Domyślnie niestandardowa nazwa domeny to *example.azurewebsites.NET*. Aby uzyskać dostęp do usługi App Service przy użyciu bramy aplikacji za pomocą nazwy hosta, która nie jest jawnie zarejestrowana w usłudze App Service lub za pośrednictwem nazwy FQDN bramy aplikacji, należy zastąpić nazwę hosta w oryginalnym żądaniu do nazwy hosta usługi App Service. W tym celu należy włączyć ustawienie **Wybierz nazwę hosta z adresu zaplecza** .
 
 W przypadku domeny niestandardowej, której istniejąca niestandardowa nazwa DNS jest zamapowana na usługę App Service, nie trzeba włączać tego ustawienia.
 
 > [!NOTE]
-> To ustawienie nie jest wymagane w przypadku App Service Environment usługi PowerApps, która jest wdrożeniem dedykowanym.
+> To ustawienie nie jest wymagane w przypadku App Service Environment, który jest wdrożeniem dedykowanym.
 
 ### <a name="host-name-override"></a>Zastąpienie nazwy hosta
 
 Ta funkcja zastępuje nagłówek *hosta* w żądaniu przychodzącym w bramie aplikacji z określoną nazwą hosta.
 
-Na przykład jeśli *www<i></i>. contoso. com* został określony w ustawieniu **nazwy hosta** , oryginalne żądanie *https:/<i></i>/appgw.eastus.cloudapp.NET/path1* jest zmieniane na *https:/<i></i>/www.contoso.com/path1* , gdy żądanie jest przekazywane do serwera zaplecza.
+Na przykład jeśli *www.contoso.com* jest określony w ustawieniu **Nazwa hosta** , oryginalne żądanie * https://appgw.eastus.cloudapp.azure.com/path1 zostanie zmienione na * https://www.contoso.com/path1, gdy żądanie jest przekazywane do serwera zaplecza.
 
 ## <a name="back-end-pool"></a>Pula zaplecza
 
@@ -342,7 +338,7 @@ Po utworzeniu puli zaplecza należy ją skojarzyć z co najmniej jedną regułą
 Brama aplikacji domyślnie monitoruje kondycję wszystkich zasobów w zapleczu. Jednak zdecydowanie zalecamy utworzenie niestandardowej sondy dla każdego ustawienia HTTP zaplecza, aby uzyskać większą kontrolę nad monitorowaniem kondycji. Aby dowiedzieć się, jak skonfigurować sondę niestandardową, zobacz [niestandardowe ustawienia sondy kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
 
 > [!NOTE]
-> Po utworzeniu niestandardowej sondy kondycji należy ją skojarzyć z ustawieniem HTTP zaplecza. Niestandardowa Sonda nie będzie monitorować kondycji puli zaplecza, chyba że odpowiednie ustawienie protokołu HTTP jest jawnie skojarzone z odbiornikiem.
+> Po utworzeniu niestandardowej sondy kondycji należy ją skojarzyć z ustawieniem HTTP zaplecza. Niestandardowa Sonda nie będzie monitorować kondycji puli zaplecza, chyba że odpowiednie ustawienie protokołu HTTP jest jawnie skojarzone z odbiornikiem przy użyciu reguły.
 
 ## <a name="next-steps"></a>Następne kroki
 

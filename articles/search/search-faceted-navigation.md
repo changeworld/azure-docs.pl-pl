@@ -1,19 +1,19 @@
 ---
-title: Jak wdrożyć nawigację aspektową w hierarchii kategorii
+title: Dodaj hierarchię kategorii nawigacji aspektowej
 titleSuffix: Azure Cognitive Search
-description: Dodaj nawigację aspektów do aplikacji, które integrują się z usługą Azure Wyszukiwanie poznawcze, hostowanej usługi wyszukiwania w chmurze w Microsoft Azure.
+description: Dodaj nawigację aspektową dla samodzielnego filtrowania w aplikacjach wyszukiwania, które integrują się z usługą Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496525"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112083"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Jak wdrożyć nawigację aspektową na platformie Azure Wyszukiwanie poznawcze
 
@@ -38,7 +38,7 @@ W tym artykule jest na przykład wykorzystywany Portal wyszukiwania zadań. Przy
 
 -   Pobierz kod z [repozytorium Azure-Samples w witrynie GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczęcie pracy
 Jeśli dopiero zaczynasz opracowywanie aplikacji, najlepszym sposobem na podejście do nawigowania po aspektach jest wyświetlenie możliwości wyszukiwania z własnym kierowaniem. Jest to typ środowiska wyszukiwania przechodzenia do szczegółów na podstawie wstępnie zdefiniowanych filtrów, służący do szybkiego zawężania wyników wyszukiwania przez akcje typu punkt-kliknięcie. 
 
 ### <a name="interaction-model"></a>Model interakcji

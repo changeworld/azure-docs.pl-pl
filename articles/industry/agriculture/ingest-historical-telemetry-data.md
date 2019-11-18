@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927813"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128781"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -29,7 +29,7 @@ Musisz włączyć integrację partnera z wystąpieniem usługi Azure FarmBeats. 
 - Punkt końcowy interfejsu API — jest to adres URL centrum danych, na przykład https://<datahub>. azurewebsites.net
 - Identyfikator dzierżawy
 - Identyfikator klienta
-- Klucz tajny klienta
+- Wpis tajny klienta
 - Parametry połączenia EventHub
 
 Wykonaj poniższe kroki, aby je wygenerować:
@@ -74,7 +74,7 @@ Wykonaj poniższe kroki, aby je wygenerować:
 - /czujnik **czujnika** odnosi się do czujnika fizycznego, który rejestruje wartości. Czujnik jest zwykle podłączony do urządzenia z IDENTYFIKATORem urządzenia.  
 
 
-|        Tryb urządzenia   |  Sugestie   |
+|        Model urządzenia   |  Sugestie   |
 | ------- | -------             |
 |     Typ (węzeł, brama)        |          1 gwiazdka      |
 |          Producent            |         2 gwiazdki     |
@@ -83,7 +83,7 @@ Wykonaj poniższe kroki, aby je wygenerować:
 |     Nazwa                 |  Nazwa identyfikująca zasób. Na przykład nazwa modelu/Product Name.
       Opis     | Podaj znaczący opis modelu
 |    Właściwości          |    Dodatkowe właściwości producenta   |
-|    **Pliku**             |                      |
+|    **urządzenia**             |                      |
 |   DeviceModelId     |     Identyfikator skojarzonego modelu urządzenia  |
 |  HardwareId          | Unikatowy identyfikator urządzenia, na przykład adres MAC itp.,
 |  ReportingInterval        |   Interwał raportowania w sekundach
@@ -125,7 +125,7 @@ Aby wykonać żądanie interfejsu API, należy połączyć metodę HTTP (POST), 
 FarmBeats centrum danych używa uwierzytelniania okaziciela, który wymaga następujących poświadczeń, które zostały wygenerowane w powyższej sekcji.
 
 - Identyfikator klienta
-- Klucz tajny klienta
+- Wpis tajny klienta
 - Identyfikator dzierżawy  
 
 Korzystając z powyższych poświadczeń, obiekt wywołujący może zażądać tokenu dostępu, który musi zostać wysłany w kolejnych żądaniach interfejsu API w sekcji nagłówka w następujący sposób:

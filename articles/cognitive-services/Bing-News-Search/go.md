@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Wiadomości przy użyciu interfejsu API REST wyszukiwania wiadomości Bing i języka Go'
+title: 'Szybki Start: uzyskiwanie Aktualności przy użyciu wyszukiwanie wiadomości Bing interfejsu API REST i języka go'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak uzyskać wyniki wiadomości z interfejsu API wyszukiwania wiadomości Bing.
+description: Ten przewodnik Szybki Start używa języka go do wywoływania interfejs API wyszukiwania wiadomości Bing. Wyniki obejmują nazwy i adresy URL źródeł wiadomości identyfikowanych przez ciąg zapytania.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 2/21/2019
 ms.author: aahi
-ms.openlocfilehash: 79e93e3ba0bbf9ac71a01bad0502b84dfee85297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c3d18852086e202d9f818f2cac2c90fa4f464211
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798500"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110808"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Szybki start: Pobierz wyniki wiadomości przy użyciu interfejsu API REST wyszukiwania wiadomości Bing i języka Go
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Szybki Start: uzyskiwanie Aktualności wyników przy użyciu interfejsu API REST wyszukiwanie wiadomości Bing i języka go
 
-Ten przewodnik Szybki Start używa języka Go do wywołania interfejsu API wyszukiwania wiadomości Bing. Wyniki obejmują nazwy i adresy URL wiadomości źródeł identyfikowane przez ciąg zapytania.
+Ten przewodnik Szybki Start używa języka go do wywoływania interfejs API wyszukiwania wiadomości Bing. Wyniki obejmują nazwy i adresy URL źródeł wiadomości identyfikowanych przez ciąg zapytania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Zainstaluj [Przejdź plików binarnych](https://golang.org/dl/)
-* Zainstaluj bibliotekę spew z rzeczywistym użyciem dla niego pretty drukarki, aby wyświetlić wyniki
+* Instalowanie [plików binarnych języka go](https://golang.org/dl/)
+* Zainstaluj bibliotekę przejdź do Spew, aby wyświetlić wyniki
     * Zainstaluj ten libarary: `$ go get -u https://github.com/davecgh/go-spew`
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="create-a-project-and-import-libraries"></a>Tworzenie projektu i Importuj biblioteki
+## <a name="create-a-project-and-import-libraries"></a>Tworzenie projektu i importowanie bibliotek
 
-Utwórz nowy projekt z rzeczywistym użyciem w IDE lub edytora. Następnie zaimportuj `net/http` w przypadku żądań `ioutil` odczytać odpowiedzi i `encoding/json` do obsługi tekstu JSON wyników. Biblioteka spew z rzeczywistym użyciem jest potrzebny do analizowania danych JSON. 
+Utwórz nowy projekt przejdź do środowiska IDE lub edytora. Następnie zaimportuj `net/http` dla żądań, `ioutil` odczytać odpowiedź i `encoding/json` do obsługi tekstu JSON wyników. Biblioteka go-Spew jest wymagana do analizowania kodu JSON. 
 
 ```
 package main
@@ -45,9 +45,9 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>Tworzenie struktury, aby sformatować wyniki wyszukiwania wiadomości
+## <a name="create-a-struct-to-format-the-news-search-results"></a>Utwórz strukturę służącą do formatowania wyników wyszukiwania wiadomości
 
-Struktura `NewsAnswer` formatuje dane zawarte w odpowiedzi. Odpowiedź JSON jest kategoryzowanie i dość złożony.  Następującą implementacją obejmuje podstawowe elementy.
+Struktura `NewsAnswer` formatuje dane zawarte w odpowiedzi. KOD JSON odpowiedzi jest wielopoziomowy i dość skomplikowany.  W poniższej implementacji przedstawiono podstawowe informacje dotyczące programu.
 
 ```
 // This struct formats the answer provided by the Bing News Search API.
@@ -87,7 +87,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarowanie funkcji main i definiowanie zmiennych  
 
-Poniższy kod deklaruje funkcję main i przypisuje zmienne wymagane. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure.
+Poniższy kod deklaruje główną funkcję i przypisuje wymagane zmienne. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure.
 
 ```
 func main() {
@@ -106,9 +106,9 @@ func main() {
 }
 ```
 
-## <a name="query-and-header"></a>Query i header
+## <a name="query-and-header"></a>Zapytanie i nagłówek
 
-Dodaj zapytanie ciągu i dostępu do kluczy nagłówka
+Dodawanie ciągu zapytania i nagłówka klucza dostępu
 
 ```
 // Add the query to the request.  
@@ -121,9 +121,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Pobieranie żądania
+## <a name="get-request"></a>Pobierz żądanie
 
-Tworzenie klienta i Wyślij żądanie Get. 
+Utwórz klienta i Wyślij żądanie Get. 
 
 ```
 // Instantiate a client.  
@@ -139,7 +139,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>Wysyłanie żądania
 
-Wyślij żądanie i przeczytaj wyniki za pomocą `ioutil`.
+Wyślij żądanie i przeczytaj wyniki przy użyciu `ioutil`.
 
 ```
 resp, err := client.Do(req)
@@ -160,7 +160,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
-`Unmarshall` Funkcja wyodrębniania informacji z tekstu JSON zwracana przez interfejs API wyszukiwania wiadomości.  Można wyświetlać węzły z wyników za pomocą `go-spew` pretty drukarki.
+Funkcja `Unmarshall` wyodrębnia informacje z tekstu JSON zwróconego przez interfejs API wyszukiwanie wiadomości.  Następnie można wyświetlić węzły z wyników przy użyciu `go-spew` całkiem Printer.
 
 ```
 // Create a new answer object 
@@ -203,7 +203,7 @@ Wyniki zawierają nazwę i adres URL każdego wyniku.
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Co to jest wyszukiwanie wiadomości Bing](search-the-web.md)

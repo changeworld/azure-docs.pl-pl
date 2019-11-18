@@ -1,25 +1,17 @@
 ---
-title: Konfigurowanie Virtual Network dla usługi pamięć podręczna w warstwie Premium dla Redis | Microsoft Docs
+title: Konfigurowanie Virtual Network dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
 description: Dowiedz się, jak tworzyć i zarządzać Virtual Network obsługi usługi Azure cache w warstwie Premium dla wystąpień Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 6fc17f08db5951a3d693c7a5e3d5556d848d2efb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b2ddac9439183321691104d4eedccb0c971d19c9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075045"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129403"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować obsługę Virtual Network w przypadku pamięci podręcznej Premium platformy Azure dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. Sieć wirtualna jest siecią prywatną w chmurze. Gdy usługa Azure cache for Redis jest skonfigurowana przy użyciu sieci wirtualnej, nie jest ona publicznie adresowana i można uzyskać do niej dostęp tylko z maszyn wirtualnych i aplikacji w sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej na potrzeby wystąpienia usługi Redis w warstwie Premium.
@@ -161,7 +153,7 @@ Istnieją wymagania dotyczące łączności sieciowej dla usługi Azure cache fo
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Jak sprawdzić, czy moja pamięć podręczna działa w sieci wirtualnej?
 
 >[!IMPORTANT]
->W przypadku nawiązywania połączenia z usługą Azure cache for Redis, która jest hostowana w sieci wirtualnej, klienci pamięci podręcznej muszą znajdować się w tej samej sieci wirtualnej lub w sieci wirtualnej z włączonymi równorzędnymi sieciami WIRTUALNYmi. Dotyczy to wszystkich aplikacji testowych lub narzędzi ping diagnostycznych. Bez względu na to, gdzie jest hostowana aplikacja kliencka, grupy zabezpieczeń sieci muszą być skonfigurowane tak, aby ruch sieciowy klienta mógł dotrzeć do wystąpienia Redis.
+>W przypadku nawiązywania połączenia z usługą Azure cache for Redis, która jest hostowana w sieci wirtualnej, klienci pamięci podręcznej muszą znajdować się w tej samej sieci wirtualnej lub w sieci wirtualnej z włączoną obsługą sieci wirtualnych w tym samym regionie świadczenia usługi Azure. Globalne Wirtualne sieci równorzędne nie są obecnie obsługiwane. Dotyczy to wszystkich aplikacji testowych lub narzędzi ping diagnostycznych. Bez względu na to, gdzie jest hostowana aplikacja kliencka, grupy zabezpieczeń sieci muszą być skonfigurowane tak, aby ruch sieciowy klienta mógł dotrzeć do wystąpienia Redis.
 >
 >
 

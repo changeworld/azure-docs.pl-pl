@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473693"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106608"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Szybki Start: Konfigurowanie aplikacji klienckiej w celu uzyskiwania dostępu do interfejsów API sieci Web
 
@@ -171,13 +171,40 @@ Aby dodać poświadczenia do aplikacji internetowej:
 Aby dodać uprawnienia na potrzeby uzyskiwania dostępu do interfejsów API zasobu z poziomu klienta:
 
 1. Na stronie **Przegląd** aplikacji wybierz sekcję **Uprawnienia interfejsu API**.
-1. Wybierz przycisk **Dodaj uprawnienia**.
+1. W sekcji **skonfigurowane uprawnienia** wybierz przycisk **Dodaj uprawnienie** .
 1. Domyślnie widok umożliwia wybranie **interfejsów API firmy Microsoft**. Wybierz sekcję interfejsów API, która Cię interesuje:
     * **Interfejsy API firmy Microsoft** — umożliwia wybranie uprawnień dla interfejsów API firmy Microsoft, takich jak Microsoft Graph.
     * **Interfejsy API używane przez moją organizację** — umożliwia wybranie uprawnień dla interfejsów API, które zostały uwidocznione przez organizację, lub interfejsów API, z którymi jest zintegrowana Twoja organizacja.
     * **Moje interfejsy API** — umożliwia wybranie uprawnień dla interfejsów API, które zostały uwidocznione przez Ciebie.
 1. Po wybraniu interfejsów API zobaczysz stronę **Żądanie uprawnień interfejsu API**. Jeśli interfejs API udostępnia uprawnienia delegowane i aplikacji, wybierz typ uprawnień, którego potrzebuje Twoja aplikacja.
 1. Po zakończeniu wybierz pozycję **Dodaj uprawnienia**. Wrócisz do strony **Uprawnienia interfejsu API**, gdzie uprawnienia zostały zapisane i dodane do tabeli.
+
+## <a name="understanding-api-permissions-and-admin-consent-ui"></a>Informacje o uprawnieniach interfejsu API i interfejsie użytkownika zgody administratora
+
+### <a name="configured-permissions"></a>Skonfigurowane uprawnienia
+
+W tej sekcji przedstawiono uprawnienia, które zostały jawnie skonfigurowane w obiekcie aplikacji (uprawnienia \The, które są częścią wymaganej listy dostępu do zasobów aplikacji). Możesz dodawać lub usuwać uprawnienia z tej tabeli. Jako administrator możesz również udzielić/odwołać zgodę administratora na zestaw uprawnień interfejsu API lub poszczególnych uprawnień w tej sekcji.
+
+### <a name="other-permissions-granted"></a>Inne uprawnienia przyznane
+
+Jeśli aplikacja jest zarejestrowana w dzierżawie, może zostać wyświetlona dodatkowa sekcja zatytułowana **inne uprawnienia udzielone dzierżawcy**. W tej sekcji przedstawiono uprawnienia, które zostały przyznane dla dzierżawy, ale nie zostały jawnie skonfigurowane w obiekcie aplikacji (np. uprawnienia, które były dynamicznie wymagane i wysłane). Ta sekcja pojawia się tylko wtedy, gdy istnieje co najmniej jedno uprawnienie, które ma zastosowanie.
+
+Można dodać zestaw uprawnień interfejsu API lub poszczególnych uprawnień, które są wyświetlane w tej sekcji, do sekcji **skonfigurowane uprawnienia** . Jako administrator możesz również odwołać zgodę administratora dla poszczególnych interfejsów API lub uprawnień w tej sekcji.
+
+### <a name="admin-consent-button"></a>Przycisk zgody administratora
+
+Jeśli aplikacja jest zarejestrowana w dzierżawie, zostanie wyświetlona przycisk **Udziel zgody administratora dla dzierżawy** . Ta wartość zostanie wyłączona, jeśli nie jesteś administratorem lub nie skonfigurowano żadnych uprawnień dla aplikacji.
+Ten przycisk pozwala administratorowi łatwo udzielić zgody administratora na uprawnienia skonfigurowane dla aplikacji. Kliknięcie przycisku zgody administratora powoduje uruchomienie nowego okna z monitem o wyrażenie zgody, na którym są wyświetlane wszystkie skonfigurowane uprawnienia.
+
+> [!NOTE]
+> Istnieje opóźnienie między skonfigurowanymi uprawnieniami aplikacji i wyświetlanymi w monicie o zgodę. Jeśli nie widzisz wszystkich skonfigurowanych uprawnień w monicie o zgodę, zamknij ją i uruchom ponownie.
+
+Jeśli masz uprawnienia, które zostały przyznane, ale nie zostały skonfigurowane, po kliknięciu przycisku zgody administratora zostanie wyświetlony monit o podjęcie decyzji o sposobie obsługi tych uprawnień. Można je dodać do skonfigurowanych uprawnień lub można je usunąć.
+
+Monit o zgodę zapewnia opcję **akceptacji** lub **anulowania**. Jeśli wybierzesz pozycję **Akceptuj**, przyznano zgodę na administrowanie. W przypadku wybrania opcji **Anuluj**zgoda administratora nie zostanie udzielona i zostanie wyświetlony komunikat o błędzie informujący o odrzuceniu zgody.
+
+> [!NOTE]
+> Istnieje opóźnienie między udzieleniem zgody administratora (wybranie opcji **Akceptuj** w monicie o zgodę) i statusem zgody administratora w interfejsie użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 

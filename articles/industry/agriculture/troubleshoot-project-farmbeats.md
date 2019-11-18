@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048272"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131978"
 ---
 # <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -196,7 +196,7 @@ Na pulpicie nawigacyjnym grupy zasobów Wyszukaj konto magazynu (datahublogs....
     > [!NOTE]
     > Wybierz grupę zasobów akceleratora, która została określona w czasie wdrażania FarmBeats.
 
-3.  Na pulpicie nawigacyjnym grupy zasobów Wyszukaj pozycję Magazyn.... Konto magazynu. Na przykład storagedop4k
+3.  Na pulpicie nawigacyjnym grupy zasobów Wyszukaj pozycję Magazyn.... konto magazynu. Na przykład storagedop4k
 4.  Wybierz konto magazynu w kolumnie **Nazwa** , aby wyświetlić pulpit nawigacyjny konta magazynu.
 5.  Na stronie (magazyn...) wybierz pozycję **Otwórz w Eksploratorze** , aby wyświetlić otwarte Eksplorator usługi Azure Storage aplikacji.
 6.  W lewym panelu, < magazyn....), **kontenery obiektów BLOB**, wybierz pozycję **dzienniki zadań**.
@@ -251,7 +251,7 @@ Na pulpicie nawigacyjnym grupy zasobów Wyszukaj konto magazynu (datahublogs....
 
 **Znaczenie**: Konfiguracja rejestracji aplikacji usługi Azure AD nie została prawidłowo wykonana.  
 
-**Akcja naprawcza**: poproszenie administratora IT (z dostępem do odczytu dzierżawy), aby użyć naszego [skryptu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) do generowania rejestracji aplikacji usługi Azure AD. Ten skrypt automatycznie zajmie się również procedurami konfiguracji.
+**Działanie naprawcze**: poproszenie administratora IT (z dostępem do odczytu dzierżawy) w celu użycia naszego [skryptu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) do tworzenia rejestracji aplikacji usługi Azure AD. Ten skrypt automatycznie zajmie się również procedurami konfiguracji.
 
 **Błąd**: nie można utworzyć nowej aplikacji Active Directory "fikcyjnej" w tej dzierżawie: inny obiekt o tej samej wartości identyfikatorów URI identyfikatora właściwości już istnieje
 

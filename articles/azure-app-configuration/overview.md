@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687046"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129701"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co to jest konfiguracja aplikacji platformy Azure?
 
@@ -30,7 +30,7 @@ Konfiguracja aplikacji jest obecnie w publicznej wersji zapoznawczej. Korzystani
 
 Aplikacje oparte na chmurze są często uruchamiane na wielu maszynach wirtualnych lub kontenerach w wielu regionach i korzystają z wielu usług zewnętrznych. Tworzenie aplikacji rozproszonej, która jest niezawodna i skalowalna, jest wyzwaniem.
 
-Różne metody programowania pomagają deweloperom w coraz większym stopniu złożoności tworzenia aplikacji. Na przykład aplikacja 12-Factor opisuje wiele dobrze przetestowanych wzorców architektonicznych i najlepszych rozwiązań do użycia z aplikacjami w chmurze. Jednym z kluczowych zaleceń z tego przewodnika jest oddzielenia konfiguracji od kodu. W takim przypadku ustawienia konfiguracji aplikacji powinny być przechowywane zewnętrznie do jego pliku wykonywalnego i odczytywane ze środowiska uruchomieniowego lub zewnętrznego źródła.
+Różne metody programowania pomagają deweloperom w coraz większym stopniu złożoności tworzenia aplikacji. Na przykład [aplikacja 12-czynnikowa](https://12factor.net/) opisuje wiele dobrze przetestowanych wzorców architektonicznych i najlepszych rozwiązań do użycia z aplikacjami w chmurze. Jednym z kluczowych zaleceń z tego przewodnika jest oddzielenia konfiguracji od kodu. W takim przypadku ustawienia konfiguracji aplikacji powinny być przechowywane zewnętrznie do jego pliku wykonywalnego i odczytywane ze środowiska uruchomieniowego lub zewnętrznego źródła.
 
 Podczas gdy dowolna aplikacja może korzystać z konfiguracji aplikacji, następujące przykłady są typami aplikacji, które korzystają z jej użycia:
 

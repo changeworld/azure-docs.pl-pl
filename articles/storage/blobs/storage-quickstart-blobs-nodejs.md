@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2e5a5f2a4de4e01d2e4fa66f819e55839959afd0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929498"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130694"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V12 dla języka JavaScript
 
@@ -205,7 +205,7 @@ Określ nazwę nowego kontenera. Poniższy kod dołącza wartość identyfikator
 > [!IMPORTANT]
 > Nazwy kontenerów muszą być zapisane małymi literami. Aby uzyskać więcej informacji o nazewnictwie kontenerów i obiektów blob, zobacz temat [Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Utwórz wystąpienie klasy [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) przez wywołanie metody [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--newpipelineoptions-) . Następnie Wywołaj metodę [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) , aby uzyskać odwołanie do kontenera. Na koniec Wywołaj polecenie [Utwórz](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) , aby utworzyć kontener na koncie magazynu.
+Utwórz wystąpienie klasy [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) przez wywołanie metody [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--storagepipelineoptions-) . Następnie Wywołaj metodę [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) , aby uzyskać odwołanie do kontenera. Na koniec Wywołaj polecenie [Utwórz](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) , aby utworzyć kontener na koncie magazynu.
 
 Dodaj ten kod na końcu funkcji `main`:
 

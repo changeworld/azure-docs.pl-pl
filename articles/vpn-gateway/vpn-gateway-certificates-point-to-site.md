@@ -1,5 +1,6 @@
 ---
-title: 'Generowanie i eksportowanie certyfikatów dla punktu do lokacji: PowerShell: Azure | Microsoft Docs'
+title: 'Generowanie i eksportowanie certyfikatów dla P2S: PowerShell'
+titleSuffix: Azure VPN Gateway
 description: Utwórz certyfikat główny z podpisem własnym, wyeksportuj klucz publiczny i Wygeneruj certyfikaty klienta przy użyciu programu PowerShell w systemie Windows 10 lub Windows Server 2016.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f7d4f71853e1640146a38fb39384c20ca9553eb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285747"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151381"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generowanie i eksportowanie certyfikatów dla punktu do lokacji przy użyciu programu PowerShell
 
@@ -24,7 +25,7 @@ Jeśli nie masz dostępu do komputera z systemem Windows 10 lub Windows Server 2
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
-## <a name="install"></a>Instalowanie wyeksportowanego certyfikatu klienta
+## <a name="install"></a>Zainstaluj certyfikat wyeksportowany klienta
 
 Każdy klient, który nawiązuje połączenie z siecią wirtualną za pośrednictwem połączenia P2S, wymaga, aby certyfikat klienta został zainstalowany lokalnie.
 

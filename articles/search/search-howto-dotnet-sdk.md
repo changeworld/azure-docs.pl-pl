@@ -1,5 +1,5 @@
 ---
-title: Jak korzystać z usługi Azure Wyszukiwanie poznawcze z poziomu aplikacji platformy .NET
+title: Korzystanie z usługi Azure Wyszukiwanie poznawcze w środowisku .NET
 titleSuffix: Azure Cognitive Search
 description: Dowiedz się, jak korzystać z usługi Azure Wyszukiwanie poznawcze w C# aplikacji platformy .NET przy użyciu zestawu SDK platformy .NET. Zadania oparte na kodzie obejmują łączenie się z usługą, indeksowanie zawartości i wykonywanie zapytań względem indeksu.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e1903b3b33e1dde5178fadbc37feee191a2eaacd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792135"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112598"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Jak korzystać z usługi Azure Wyszukiwanie poznawcze z poziomu aplikacji platformy .NET
 
@@ -33,8 +33,8 @@ Inne pakiety NuGet w zestawie SDK są następujące:
 
 Różne biblioteki klienta definiują klasy, takie jak `Index`, `Field`i `Document`, a także operacje, takie jak `Indexes.Create` i `Documents.Search` w klasach `SearchServiceClient` i `SearchIndexClient`. Te klasy są zorganizowane w następujące przestrzenie nazw:
 
-* [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft. Azure. Search. models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Jeśli chcesz przekazać opinię na temat przyszłej aktualizacji zestawu SDK, zobacz [stronę z opiniami](https://feedback.azure.com/forums/263029-azure-search/) lub Utwórz problem w witrynie [GitHub](https://github.com/azure/azure-sdk-for-net/issues) i podaj "wyszukiwanie poznawcze platformy Azure" w tytule problemu.
 
@@ -61,7 +61,7 @@ Istnieje kilka rzeczy, które należy wykonać w aplikacji wyszukiwania. W tym s
 
 Poniższy przykładowy kod ilustruje każdy z tych scenariuszy. Możesz korzystać z fragmentów kodu we własnej aplikacji.
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 Przykładowa aplikacja, którą będziemy eksplorować, utworzy nowy indeks o nazwie "Hotele", wypełni go za pomocą kilku dokumentów, a następnie wykonuje kilka zapytań wyszukiwania. Oto główny program przedstawiający ogólny przepływ:
 
 ```csharp

@@ -1,19 +1,19 @@
 ---
 title: Konfigurowanie reguł niestandardowych w wersji 2 przy użyciu programu PowerShell
 titleSuffix: Azure Web Application Firewall
-description: Informacje o konfigurowaniu niestandardowych reguł WAF v2 przy użyciu Azure PowerShell
+description: Informacje o konfigurowaniu niestandardowych reguł WAF v2 przy użyciu Azure PowerShell. Możesz utworzyć własne reguły oceniane dla każdego żądania, które przechodzi przez zaporę.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 48f45629b82e63dfc3f098b68e1be2523a3a0e5c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075385"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133045"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Skonfiguruj zaporę aplikacji sieci Web V2 na Application Gateway z regułą niestandardową przy użyciu Azure PowerShell
 

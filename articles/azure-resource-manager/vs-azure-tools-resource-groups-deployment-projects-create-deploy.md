@@ -1,17 +1,14 @@
 ---
-title: Utwórz & Wdróż projekty grupy zasobów platformy Azure dla programu Visual Studio
+title: Utwórz & Wdróż projekty grupy zasobów programu Visual Studio
 description: Tworzenie projektu grupy zasobów platformy Azure przy użyciu programu Visual Studio i wdrażanie zasobów na platformie Azure.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 10/16/2019
-ms.author: tomfitz
-ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 39ee16ac81ee1b163a4ed4c80152a063f7ee619c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597644"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149241"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 
@@ -23,7 +20,7 @@ W tym artykule pokazano, jak używać [programu Visual Studio 2019 lub nowszego 
 
 W tej sekcji utworzysz projekt grupy zasobów platformy Azure z szablonem **aplikacji sieci Web** .
 
-1. W programie Visual Studio wybierz kolejno pozycje **plik** >**Nowy** >**projekt**.
+1. W programie Visual Studio, wybierz **pliku**>**New**>**projektu**.
 1. Wybierz szablon projektu **grupy zasobów platformy Azure** i kliknij przycisk **dalej**.
 
     ![Tworzenie projektu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
@@ -47,7 +44,7 @@ W tej sekcji utworzysz projekt grupy zasobów platformy Azure z szablonem **apli
    | Nazwa pliku | Opis |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skrypt programu PowerShell, który uruchamia polecenia w celu wdrożenia do usługi Azure Resource Manager. Program Visual Studio używa tego skryptu programu PowerShell do wdrożenia szablonu. |
-   | Plik Web. JSON |Szablon usługi Resource Manager określający infrastrukturę, którą chcesz wdrożyć na platformie Azure, oraz parametry, które można podać podczas wdrażania. Umożliwia on również definiowanie zależności między zasobami, tak aby usługa Resource Manager wdrożyła je w odpowiedniej kolejności. |
+   | WebSite.json |Szablon usługi Resource Manager określający infrastrukturę, którą chcesz wdrożyć na platformie Azure, oraz parametry, które można podać podczas wdrażania. Umożliwia on również definiowanie zależności między zasobami, tak aby usługa Resource Manager wdrożyła je w odpowiedniej kolejności. |
    | Web. Parameters. JSON |Plik parametrów zawierający wartości wymagane przez szablon. Poszczególne wdrożenia są dostosowywane za pomocą przekazywanych wartości parametrów. |
 
     Wszystkie projekty wdrażania grup zasobów zawierają te podstawowe pliki. Inne projekty mogą zawierać dodatkowe pliki do obsługi innych funkcji.
@@ -72,7 +69,7 @@ Projekt wdrożenia można dostosować, modyfikując szablon Menedżer zasobów, 
 
 1. Wybierz pozycję **konto magazynu** i nadaj jej nazwę. Podaj nazwę nie dłuższą niż 11 znaków, zawierającą tylko cyfry i małe litery.
 
-   ![Dodaj magazyn](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
+   ![Dodawanie magazynu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
 
 1. Należy zauważyć, że dodany został nie tylko zasób, ale również parametr typu konta magazynu oraz zmienna nazwy konta magazynu.
 
@@ -192,11 +189,11 @@ Wdrożono już infrastrukturę aplikacji, ale z projektem nie został wdrożony 
 
 1. Musisz teraz upewnić się, że projekt grupy zasobów wie o nowym projekcie. Wróć do projektu grupy zasobów (ExampleAppDeploy). Kliknij prawym przyciskiem myszy pozycję **Odwołania** i wybierz polecenie **Dodaj odwołanie**.
 
-    ![Dodaj odwołanie](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
+    ![Dodawanie odwołania](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
 
 1. Wybierz projekt aplikacji internetowej, który został utworzony.
 
-   ![Dodaj odwołanie](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
+   ![Dodawanie odwołania](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
 
    Dodanie odwołania powoduje połączenie projektu aplikacji sieci Web z projektem grupy zasobów i automatyczne ustawienie niektórych właściwości. Te właściwości będą wyświetlane w oknie **Właściwości** odwołania. Właściwość **Include File Path** zawiera ścieżkę, w której zostanie utworzony pakiet. Zanotuj folder (ExampleApp) i plik (package.zip). Musisz znać te wartości, ponieważ są one podawane jako parametry podczas wdrażania aplikacji.
 
@@ -212,7 +209,7 @@ Wdrożono już infrastrukturę aplikacji, ale z projektem nie został wdrożony 
 
    Zapisz szablon.
 
-1. Szablon zawiera nowe parametry. Dodano je w poprzednim kroku. Nie musisz podawać wartości dla **_artifactsLocation** lub **_artifactsLocationSasToken** , ponieważ te wartości są generowane automatycznie. Należy jednak ustawić folder i nazwę pliku na ścieżkę zawierającą pakiet wdrożeniowy. Nazwy tych parametrów kończą się z **PackageFolder** i **PackageFileName**. Pierwsza część nazwy jest nazwą dodanego zasobu Web Deploy. W tym artykule są one nazwane **ExampleAppPackageFolder** i **ExampleAppPackageFileName**.
+1. Szablon zawiera nowe parametry. Dodano je w poprzednim kroku. Nie musisz podawać wartości **_artifactsLocation** ani **_artifactsLocationSasToken** , ponieważ te wartości są generowane automatycznie. Należy jednak ustawić folder i nazwę pliku na ścieżkę zawierającą pakiet wdrożeniowy. Nazwy tych parametrów kończą się z **PackageFolder** i **PackageFileName**. Pierwsza część nazwy jest nazwą dodanego zasobu Web Deploy. W tym artykule są one nazwane **ExampleAppPackageFolder** i **ExampleAppPackageFileName**.
 
    Otwórz plik **Web. Parameters. JSON** i ustaw te parametry na wartości, które zostały podane we właściwościach odwołania. Ustaw **ExampleAppPackageFolder** na nazwę folderu. Ustaw **ExampleAppPackageFileName** na nazwę pliku zip.
 

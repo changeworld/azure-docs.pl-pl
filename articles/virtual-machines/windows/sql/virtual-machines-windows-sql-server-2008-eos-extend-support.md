@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034175"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132776"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozszerzona pomoc techniczna dla SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
 
@@ -64,7 +64,7 @@ Aby zagwarantować odzyskiwanie, SQL Server wymaga spójnych Azure Site Recovery
 
 Rozwiązania do odzyskiwania po awarii dla EOS SQL Server na maszynie wirtualnej platformy Azure są następujące:
 
-- **SQL Server kopii zapasowych**: Użyj Azure Backup, aby pomóc w ochronie SQL Server EOS przed oprogramowaniem wymuszającego okup, przypadkowym usunięciem i uszkodzeniem. Rozwiązanie jest obecnie dostępne w wersji zapoznawczej usługi EOS SQL Server i obsługuje SQL Server 2008 i 2008 R2 uruchomione w systemie Windows 2008 R2 z dodatkiem SP1. Aby uzyskać więcej informacji, zobacz [ten artykuł](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
+- **SQL Server kopii zapasowych**: Użyj Azure Backup, aby pomóc w ochronie SQL Server EOS przed oprogramowaniem wymuszającego okup, przypadkowym usunięciem i uszkodzeniem. Rozwiązanie jest obecnie dostępne w wersji zapoznawczej usługi EOS SQL Server i obsługuje SQL Server 2008 i 2008 R2 uruchomione w systemie Windows 2008 R2 z dodatkiem SP1. Aby uzyskać więcej informacji, zobacz [ten artykuł](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support).
 - **Wysyłanie dziennika**: możesz utworzyć replikę wysyłania dziennika w innej strefie lub regionie platformy Azure z ciągłymi przywracaniami, aby zmniejszyć RTO. Musisz ręcznie skonfigurować wysyłanie dziennika.
 - **Azure Site Recovery**: można replikować maszynę wirtualną między strefami i regionami za poorednictwem replikacji Azure Site Recovery. SQL Server wymaga migawek spójnych z aplikacjami w celu zagwarantowania odzyskiwania w przypadku awarii. Azure Site Recovery oferuje co najmniej 1-godzinny cel punktu odzyskiwania oraz 2-godzinny (plus SQL Server) RTO na potrzeby odzyskiwania po awarii SQL Server.
 

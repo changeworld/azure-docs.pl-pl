@@ -1,7 +1,7 @@
 ---
-title: Przykłady wglądu w szczegółowe dane z usługi Bing — wyszukiwania wizualnego Bing
+title: Przykłady usługi Bing Insights — wyszukiwanie wizualne Bing
 titleSuffix: Azure Cognitive Services
-description: Zawiera przykłady szczegółowe informacje o obrazach wyświetlane w witrynie Bing.com.
+description: Ten artykuł zawiera przykłady korzystania z wyszukiwanie wizualne Bing i wyświetlania szczegółowych informacji o obrazach w programie Bing.com.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,72 +10,72 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: 94f8d4ea98f42ad919597ef53dc63281825f0e6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60610348"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111639"
 ---
-# <a name="examples-of-bing-insights-usage"></a>Przykłady użycia szczegółowych informacji w usłudze Bing
+# <a name="examples-of-bing-insights-usage"></a>Przykłady użycia usługi Bing Insights
 
-Ten artykuł zawiera przykłady jak Bing może używać i wyświetlić szczegółowe informacje o obrazach w witrynie Bing.com.
+W tym artykule przedstawiono przykłady użycia usługi Bing i wyświetlania szczegółowych informacji o obrazach w programie Bing.com.
 
-## <a name="pagesincluding-insight-example"></a>Przykład insight PagesIncluding
+## <a name="pagesincluding-insight-example"></a>Przykład usługi PagesIncluding Insight
 
-Następujące Wyświetla łącze do pierwszej strony sieci Web i umożliwia użytkownikowi rozwijać i zwijać listę innych stron sieci Web, który zawiera obraz:
+Poniżej znajduje się łącze do pierwszej strony sieci Web i umożliwia użytkownikowi rozwijanie i zwijanie listy innych stron internetowych, które zawierają obraz:
 
-![Rozwinięty stron łącznie](./media/pages-including.PNG)
+![Rozwinięte strony, w tym](./media/pages-including.PNG)
 
-## <a name="shoppingsources-insight-example"></a>Przykład insight ShoppingSources
+## <a name="shoppingsources-insight-example"></a>Przykład usługi ShoppingSources Insight
 
-Poniżej przedstawiono, jak Bing może wyświetlić koszyk źródeł dla produktów widoczne na obrazie:
+Poniżej przedstawiono sposób wyświetlania przez usługę Bing źródeł zakupów dla produktów widocznych na obrazie:
 
 ![Źródła zakupów](./media/shopping-sources.PNG)
 
-## <a name="visualsearch-insight-example"></a>Przykład insight VisualSearch
+## <a name="visualsearch-insight-example"></a>Przykład usługi VisualSearch Insight
 
-Poniżej pokazano, jak Bing może być wyświetlany podobnych obrazach (zobacz **obrazy powiązane z** w przykładzie):
+Poniżej przedstawiono sposób wyświetlania wizualnie podobnych obrazów w usłudze Bing (zobacz **powiązane obrazy** w przykładzie):
 
 ![Obrazy podobne wizualnie](./media/similar-images.PNG)
 
-## <a name="recipes-insight-example"></a>Przepisy szczegółowe informacje o przykładzie
+## <a name="recipes-insight-example"></a>Przykład szczegółowych informacji
 
-Poniżej przedstawiono, jak Bing może być wyświetlany przepisy DS na obrazie. Przykład zezwala użytkownikowi na o tym, że istnieją przepisy:
+Poniżej przedstawiono sposób wyświetlania przez usługę Bing przepisów dotyczących żywności widocznej na obrazie. Przykład umożliwia użytkownikowi znane są następujące przepisy:
 
-![Przepisy i stron, w tym](./media/recipes-pages-including.PNG)
+![Przepisy i strony, w tym](./media/recipes-pages-including.PNG)
 
- Zawiera link do przepisami w przypadku, gdy użytkownik rozwija listy:
+ I udostępnia link do przepisów, gdy użytkownik rozwinie listę:
 
-![Strony rozwiniętego przepisu łącznie](./media/expanded-recipes-pages-including.PNG)
+![Rozwinięte strony przepisowe, w tym](./media/expanded-recipes-pages-including.PNG)
 
-## <a name="relatedsearches-insight-example"></a>Przykład insight RelatedSearches
+## <a name="relatedsearches-insight-example"></a>Przykład usługi RelatedSearches Insight
 
-Poniżej przedstawiono, jak Bing może wyświetlać powiązane wyszukiwania obrazów wykonywanymi przez innych użytkowników. Jeśli użytkownik kliknie obrazu, użytkownik jest przejście do Bing.com/images stronę wyników wyszukiwania dla tego zapytania powiązane.
+Poniżej przedstawiono sposób wyświetlania przez usługę Bing pokrewnych wyszukiwań obrazów wykonywanych przez inne osoby. Jeśli użytkownik kliknie obraz, użytkownik zostanie przełączony do strony wyników wyszukiwania Bing.com/images dla tego powiązanego zapytania.
 
 ![Powiązane wyszukiwania obrazów](./media/bordered-related-searches.PNG)
 
-## <a name="entity-insight-example"></a>Przykład wglądu jednostkę
+## <a name="entity-insight-example"></a>Przykład usługi Entity Insight
 
-Poniżej przedstawiono, jak Bing może wyświetlać informacje na temat jednostek (osoby, miejsca lub rzeczy) na obrazie. Jeśli użytkownik kliknie łącze do obiektu, użytkownik jest przejście do Bing.com stronę wyników wyszukiwania dla jednostki:
+Poniżej pokazano, w jaki sposób Bing może wyświetlać informacje o jednostce (osoba, miejsce lub rzecz) widocznej na obrazie. Jeśli użytkownik kliknie łącze jednostki, użytkownik zostanie przełączony do strony wyników wyszukiwania Bing.com dla jednostki:
 
-![Jednostki w obrazie](./media/entity.PNG)
+![Jednostka pokazana w obrazie](./media/entity.PNG)
 
-## <a name="displaying-other-insights-that-the-user-might-explore"></a>Wyświetlanie inne szczegółowe informacje, które użytkownik może zapoznaj się z
+## <a name="displaying-other-insights-that-the-user-might-explore"></a>Wyświetlanie innych szczegółowych informacji, które użytkownik może zbadać
 
-Poniżej przedstawiono, jak Bing może wyświetlić inne informacje dotyczące obrazu, który można eksplorować użytkownika.
+Poniżej pokazano, w jaki sposób Bing może wyświetlać inne informacje o obrazie, który użytkownik może zbadać.
 
-![Zapoznaj się z innymi szczegółowe informacje o obrazie](./media/apple-pie-more-tags.PNG)
+![Poznaj inne szczegółowe informacje o obrazie](./media/apple-pie-more-tags.PNG)
 
-## <a name="bounding-boxes-and-hot-spots"></a>Ograniczenia pola i aktywne
+## <a name="bounding-boxes-and-hot-spots"></a>Pola ograniczenia i punkty aktywne
 
-Inne niż domyślne znaczniki zawierają obwiedni identyfikujący obszar zainteresowania obraz, który dotyczy tagu. Jeśli pole nie wskazuje całego obrazu, należy użyć obwiedni utworzyć punkt aktywny na obrazku. Użytkownik może kliknąć aktywny, aby uzyskać informacje dotyczące zawartości znajdują się w aktywnym (lub prostokąta). Na przykład, jeśli obraz jest obrazem sposób wysoki, wyniki mogą zawierać tagi (i obwiedni) dla Akcesoria na obrazie, takich jak portfelu biżuteria, scarfs i tak dalej. Poniższy przykład przedstawia prostokąt hot miejscu dla okularów przeciwsłonecznych w nakierowaniu na obrazie:
+Tagi inne niż domyślne zawierają pole ograniczenia, które identyfikuje obszar zainteresowania obrazu, do którego odnosi się tag. Jeśli pole ograniczenia nie identyfikuje całego obrazu, użyj pola ograniczenia, aby utworzyć gorącą plamę obrazu. Użytkownik może kliknąć punkt aktywny, aby uzyskać informacje dotyczące zawartości znalezionej pod punktem aktywnym (lub prostokątem). Na przykład, jeśli obraz jest obrazem wysokiej jakości, wyniki mogą zawierać Tagi (i pola ograniczające) dla akcesoriów widocznych na obrazie, takich jak okrężnica, biżuterii, scarfs i tak dalej. Poniższy przykład pokazuje prostokąt gorąca dla szklanych pokazanych na obrazie:
 
-![Obwiedni i aktywny](./media/click-to-search.PNG)
+![Pole ograniczenia i punkt aktywny](./media/click-to-search.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z pierwszego żądania, zobacz Szybki Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+Aby rozpocząć pracę z pierwszym żądaniem, zobacz Przewodniki Szybki Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

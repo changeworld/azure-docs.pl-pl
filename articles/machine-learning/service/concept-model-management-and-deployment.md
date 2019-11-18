@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: Zarządzaj i wdrażaj, & Monitoruj modele ML'
+title: 'MLOps: Zarządzanie modelami ML'
 titleSuffix: Azure Machine Learning
-description: 'Dowiedz się, jak używać programu Azure Machine Learning for MLOps: wdrażanie i monitorowanie modeli oraz zarządzanie nimi w celu ciągłego ulepszania ich. Można wdrożyć modele przeszkolone Azure Machine Learning, na komputerze lokalnym lub z innych źródeł.'
+description: 'Informacje na temat zarządzania modelami za pomocą Azure Machine Learning (MLOps). Wdrażaj i monitoruj modele oraz zarządzaj nimi, aby stale ulepszać je. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716600"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123603"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Zarządzaj i wdrażaj modele oraz monitoruj je za pomocą Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą Azure Machine Learning
 
 W tym artykule dowiesz się, jak za pomocą Azure Machine Learning zarządzać cyklem życia modeli. Azure Machine Learning używa podejścia Machine Learning Operations (MLOps), które poprawia jakość i spójność rozwiązań uczenia maszynowego. 
 
@@ -47,7 +47,7 @@ Rejestracja modelu umożliwia przechowywanie i przechowywanie modeli w chmurze p
 > [!TIP]
 > Zarejestrowany model to logiczny kontener dla co najmniej jednego pliku, który składa się z modelu. Na przykład jeśli masz model, który jest przechowywany w wielu plikach, możesz zarejestrować je jako jeden model w obszarze roboczym Azure Machine Learning. Po zarejestrowaniu można pobrać lub wdrożyć zarejestrowany model i odebrać wszystkie zarejestrowane pliki.
  
-Zarejestrowane modele są identyfikowane przez nazwę i wersję. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie jak istniejący, rejestr zwiększy wersję. Podczas rejestracji można także podać dodatkowe Tagi metadanych, które mogą być używane podczas wyszukiwania modeli. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
+Zarejestrowane modele są identyfikowane przez nazwę i wersję. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Możesz także podać dodatkowe metadane tagów podczas rejestracji, który może służyć podczas wyszukiwania dla modeli. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
 
 > [!TIP]
 > Możesz również rejestrować modele przeszkolone poza Azure Machine Learning.

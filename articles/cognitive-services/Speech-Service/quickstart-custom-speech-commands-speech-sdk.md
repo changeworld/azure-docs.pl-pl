@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Nawiązywanie połączenia z aplikacją poleceń niestandardowych za pomocą zestawu Speech SDK (wersja zapoznawcza)'
+title: 'Szybki Start: Nawiązywanie połączenia z aplikacją poleceń niestandardowych za pomocą zestawu mowy SDK — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym artykule opisano tworzenie aplikacji klienckiej zestawu Speech SDK z poleceniami niestandardowymi.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507496"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111156"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Szybki Start: Nawiązywanie połączenia z aplikacją poleceń niestandardowych za pomocą zestawu Speech SDK (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ Do wykonania tego artykułu jest wymagana aplikacja poleceń niestandardowych. J
 
 Wymagane są również:
 
-- [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Klucz subskrypcji platformy Azure dla usługi Speech Services. [Pobierz bezpłatnie](get-started.md) lub utwórz je na [Azure Portal](https://portal.azure.com)
 
 ## <a name="optional-get-started-fast"></a>Opcjonalne: szybkie rozpoczynanie pracy
@@ -46,7 +46,7 @@ W tym przewodniku szybki start opisano krok po kroku, jak umożliwić aplikacji 
 
 1. Otwórz [wcześniej utworzone aplikacje niestandardowe poleceń](./quickstart-custom-speech-commands-create-new.md) i wybierz pozycję **Publikuj** .
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![publikowanie aplikacji](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Skopiuj identyfikator aplikacji z powiadomienia o opublikowaniu do późniejszego użycia
@@ -320,7 +320,7 @@ Dodaj źródło związane z kodem w następujący sposób:
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ Dodaj źródło związane z kodem w następujący sposób:
 1. Dodaj następujący fragment kodu do treści metody `ListenButton_ButtonClicked` w klasie `MainPage`
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -415,7 +415,7 @@ Dodaj źródło związane z kodem w następujący sposób:
 1. Wybierz opcję **rozmowa**i zacznij mówić do angielskiej frazy lub zdania na mikrofon urządzenia. Twoja Zamiana jest przesyłana do kanału mowy Direct line i uzyskanego do tekstu, który pojawia się w oknie.
 
 ## <a name="next-steps"></a>Następne kroki
+
 > [!div class="nextstepaction"]
 > [Instrukcje: wykonywanie poleceń na kliencie przy użyciu zestawu Speech SDK (wersja zapoznawcza)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [instrukcje: Dodawanie walidacji do parametrów polecenia niestandardowego (wersja zapoznawcza)](./how-to-custom-speech-commands-validations.md)
-

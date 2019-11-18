@@ -1,7 +1,7 @@
 ---
 title: Co to są potoki ML
 titleSuffix: Azure Machine Learning
-description: W tym artykule poznasz zalety potoków uczenia maszynowego, które można skompilować za pomocą zestawu SDK Azure Machine Learning dla języka Python. Potoki uczenia maszynowego (ML) są używane przez analityków danych do kompilowania i optymalizowania przepływów pracy uczenia maszynowego oraz zarządzania nimi.
+description: W tym artykule poznasz zalety potoków uczenia maszynowego, które można skompilować za pomocą zestawu SDK Azure Machine Learning dla języka Python. Machine learning (ML) potoki są używane przez analityków danych kompilacji, optymalizowanie i zarządzanie ich usługi machine learning przepływów pracy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c42d2d308398d548df4b1c088819c024ff613564
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832482"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112405"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co to są Azure Machine Learning potoki?
 
@@ -31,7 +31,7 @@ Potoki Azure Machine Learning umożliwiają tworzenie przepływów pracy w proje
 
 Te korzyści stają się istotne, gdy tylko projekt uczenia maszynowego przejdzie poza czystą eksplorację i iterację. Nawet proste potoki jednoetapowe mogą być cenne. Projekty uczenia maszynowego często są złożone i mogą być niezbędne do precyzyjnego wykonania pojedynczego przepływu pracy.
 
-Dowiedz się, jak [utworzyć pierwszy potok](how-to-create-your-first-pipeline.md).
+Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md).
 
 ![Potoki uczenia maszynowego w Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -85,7 +85,7 @@ Potoki rozwiązują ten problem. Azure Machine Learning automatycznie organizuje
 
 Ponadto dane wyjściowe kroku mogą być ponownie używane. Jeśli określisz ponowne użycie jako możliwe i nie zostaną wyzwolone żadne zależności nadrzędne, usługa potoku będzie korzystać z zbuforowanej wersji wyników kroku. Takie ponowne użycie może znacznie skrócić czas projektowania. Jeśli masz złożone zadanie przygotowania danych, prawdopodobnie będzie ono często uruchamiane ponownie, niż jest to absolutnie konieczne. Potoku zwalniają Cię z tego powodu: w razie potrzeby krok zostanie uruchomiony, jeśli nie.
 
-Wszystkie te analizy zależności, aranżacja i aktywacja są obsługiwane przez Azure Machine Learning podczas tworzenia wystąpienia obiektu [potoku](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) , przekazywania go do `Experiment`i wywoływania `submit()`. 
+Wszystkie te analizy zależności, aranżacja i aktywacja są obsługiwane przez Azure Machine Learning podczas tworzenia wystąpienia obiektu [potoku](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) , przekazywania go do `Experiment`i wywoływania `submit()`. 
 
 ### <a name="coordinating-the-steps-involved"></a>Koordynacja pozostałych kroków
 
@@ -107,7 +107,7 @@ Podczas tworzenia i uruchamiania obiektu `Pipeline` należy wykonać następują
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Kompilowanie potoków przy użyciu zestawu SDK języka Python
 
-W [zestawie Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)potok jest obiektem języka Python zdefiniowanym w module `azureml.pipeline.core`. Obiekt [potoku](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) zawiera uporządkowaną sekwencję co najmniej jednego obiektu [PipelineStep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) . Klasa `PipelineStep` jest abstrakcyjna i rzeczywiste kroki będą podklasami, takimi jak [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)lub [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). Klasa [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) przechowuje sekwencję kroków wielokrotnego użytku, które mogą być współużytkowane między potokami. `Pipeline` jest uruchamiany jako część `Experiment`.
+W [zestawie Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)potok jest obiektem języka Python zdefiniowanym w module `azureml.pipeline.core`. Obiekt [potoku](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) zawiera uporządkowaną sekwencję co najmniej jednego obiektu [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) . Klasa `PipelineStep` jest abstrakcyjna i rzeczywiste kroki będą podklasami, takimi jak [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)lub [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). Klasa [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) przechowuje sekwencję kroków wielokrotnego użytku, które mogą być współużytkowane między potokami. `Pipeline` jest uruchamiany jako część `Experiment`.
 
 Potok Azure ML jest skojarzony z obszarem roboczym Azure Machine Learning, a krok potoku jest skojarzony z elementem docelowym obliczeń dostępnym w tym obszarze roboczym. Aby uzyskać więcej informacji, zobacz temat [Tworzenie obszarów roboczych Azure Machine Learning i zarządzanie nimi w Azure Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) lub [co to są cele obliczeniowe w Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
@@ -189,16 +189,16 @@ Można łatwo stać r o ponowne używanie buforowanych wyników, szczegółową 
 
 Dopóki projekt nie osiągnie dużego lub niemal wdrożenia, potoki powinny być grubsze, a nie szczegółowe. Jeśli myślisz o projekcie ML jako obejmującej _etapy_ i potoku, co zapewnia kompletny przepływ pracy w celu przechodzenia przez określony etap, jesteś w odpowiedniej ścieżce. 
 
-## <a name="key-advantages"></a>Zalety najważniejszych
+## <a name="key-advantages"></a>Najważniejsze zalety
 
 Najważniejsze zalety używania potoków dla przepływów pracy usługi Machine Learning to:
 
-|Najważniejsze zalety|Opis|
+|Kluczową zaletą|Opis|
 |:-------:|-----------|
-|**Nienadzorowane uruchomienia&nbsp;**|Zaplanuj wykonywanie kroków równolegle lub w kolejności w sposób niezawodny i nienadzorowany. Przygotowanie i modelowanie danych może trwać ostatni dzień lub tygodnie, a potoki umożliwiają skoncentrowanie się na innych zadaniach w trakcie działania procesu. |
+|**Nienadzorowane&nbsp;działa**|Zaplanuj wykonywanie kroków równolegle lub w kolejności w sposób niezawodny i nienadzorowany. Przygotowanie i modelowanie danych może trwać ostatni dzień lub tygodnie, a potoki umożliwiają skoncentrowanie się na innych zadaniach w trakcie działania procesu. |
 |**Obliczenia heterogenicznych**|Używaj wielu potoków, które są niezawodne, skoordynowane w heterogenicznych i skalowalnych zasobach obliczeniowych i lokalizacjach magazynu. Wydajnie korzystaj z dostępnych zasobów obliczeniowych, uruchamiając poszczególne etapy potoku w różnych obiektach docelowych obliczeń, takich jak HDInsight, maszyny wirtualne do nauki o danych procesora GPU i kostki datacegły.|
 |**Możliwość ponownego wykorzystania**|Tworzenie szablonów potoku dla konkretnych scenariuszy, takich jak ponowne szkolenie i ocenianie partii. Wyzwalaj opublikowane potoki z systemów zewnętrznych za pośrednictwem prostych wywołań REST.|
-|**Śledzenie i przechowywanie wersji**|Zamiast ręcznego śledzenia danych i ścieżek wyników podczas iteracji Użyj zestawu SDK potoków, aby jawnie nazwać i w wersji źródła danych, dane wejściowe i wyjściowe. Możesz również zarządzać skryptami i danymi osobno w celu zwiększenia produktywności.|
+|**Śledzenie i przechowywania wersji**|Zamiast ręcznego śledzenia danych i ścieżek wyników podczas iteracji Użyj zestawu SDK potoków, aby jawnie nazwać i w wersji źródła danych, dane wejściowe i wyjściowe. Możesz również zarządzać skryptami i danymi osobno w celu zwiększenia produktywności.|
 | **Modułowość** | Rozdzielenie obszarów problemów i izolacja zmian pozwala na szybsze rozwijanie się oprogramowania o wyższej jakości. | 
 |**Społeczności**|Potoki umożliwiają analitykom danych współpracę we wszystkich obszarach procesu projektowania uczenia maszynowego, jednocześnie umożliwiając jednocześnie pracę nad krokami potoku.|
 
@@ -207,7 +207,7 @@ Najważniejsze zalety używania potoków dla przepływów pracy usługi Machine 
 Potoki Azure ML to zaawansowana funkcja, która rozpoczyna dostarczanie wartości na wczesnych etapach tworzenia oprogramowania. Wartość zwiększa się wraz ze wzrostem zespołu i projektu. W tym artykule wyjaśniono, jak potoki są określone za pomocą zestawu SDK języka Python Azure Machine Learning i zorganizowane na platformie Azure. Zaobserwowano jakiś podstawowy kod źródłowy i wprowadzono kilka `PipelineStep` dostępnych klas. W przypadku korzystania z potoków Azure ML i sposobu ich uruchamiania na platformie Azure należy mieć sens. 
 
 
-+ Dowiedz się, jak [utworzyć pierwszy potok](how-to-create-your-first-pipeline.md).
++ Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md).
 
 + Dowiedz się, jak [uruchamiać przewidywania wsadowe w przypadku dużych ilości danych](tutorial-pipeline-batch-scoring-classification.md ).
 

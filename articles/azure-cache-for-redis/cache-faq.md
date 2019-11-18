@@ -1,25 +1,17 @@
 ---
-title: Usługa Azure cache for Redis — często zadawane pytania | Microsoft Docs
+title: Azure Cache for Redis — często zadawane pytania
 description: Poznaj odpowiedzi na często zadawane pytania, wzorce oraz najlepsze rozwiązania dotyczące usługi Azure cache for Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785838"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122786"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Poznaj odpowiedzi na często zadawane pytania, wzorce oraz najlepsze rozwiązania dotyczące usługi Azure cache for Redis.
@@ -94,7 +86,7 @@ Istnieje kilka sposobów rozpoczynania pracy z usługą Azure cache for Redis.
 
 Jeśli nie masz jeszcze konta platformy Azure, możesz:
 
-* [Utworzyć bezpłatne konto platformy Azure ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Otrzymasz środki, które możesz wykorzystać do wypróbowania płatnych usług Azure. Nawet po wyczerpaniu tych środków możesz zachować konto i korzystać z bezpłatnych usług i funkcji platformy Azure.
+* [Utworzyć bezpłatne konto platformy Azure ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Otrzymasz kredyt, który można wykorzystać do wypróbowania płatnych usług Azure. Nawet po wyczerpaniu tych środków możesz zachować konto i korzystać z bezpłatnych usług i funkcji platformy Azure.
 * [Aktywować korzyści subskrybenta programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). W ramach subskrypcji MSDN co miesiąc otrzymasz środki, które możesz przeznaczyć na płatne usługi platformy Azure.
 
 <a name="cache-size"></a>
@@ -136,19 +128,19 @@ Z tej tabeli można narysować następujące wnioski:
 | Warstwa cenowa | Rozmiar | Rdzenie procesora CPU | Dostępna przepustowość | rozmiar wartości 1 KB | rozmiar wartości 1 KB |
 | --- | --- | --- | --- | --- | --- |
 | **Standardowe rozmiary pamięci podręcznej** | | |**Megabity na sekundę (MB/s)/megabajty na sekundę (MB/s)** |**Żądania na sekundę (RPS pliku) bez protokołu SSL** |**Żądania na sekundę (RPS pliku) SSL** |
-| C0 | 250 MB | Współdzielona | 100/12,5  |  15 000 |   7500 |
-| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
-| C2 | 2,5 GB | 2      | 500/62,5  |  41 000 |  37 000 |
-| C3 |   6 GB | 4      | 1000/125  | 100 000 |  90 000 |
-| C4 |  13 GB | 2      | 500/62,5  |  60 000 |  55 000 |
-| C5 |  26 GB | 4      | 1 000/125 | 102 000 |  93 000 |
-| C6 |  53 GB | 8      | 2 000/250 | 126 000 | 120 000 |
+| C0 | 250 MB | Udostępnione | 100 / 12.5  |  15 000 |   7500 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38 000 |  20 720 |
+| C2 | 2,5 GB | 2      | 500 / 62.5  |  41 000 |  37 000 |
+| C3 |   6 GB | 4      | 1000 / 125  | 100 000 |  90,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55 000 |
+| C5 |  26 GB | 4      | 1,000 / 125 | 102 000 |  93 000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126 000 | 120,000 |
 | **Rozmiary pamięci podręcznej Premium** | |**Rdzenie procesora CPU na fragmentu** | **Megabity na sekundę (MB/s)/megabajty na sekundę (MB/s)** |**Żądania na sekundę (RPS pliku) bez protokołu SSL, na fragmentu** |**Żądania na sekundę (RPS pliku) SSL, na fragmentu** |
-| P1 |   6 GB |  2 | 1 500/187,5 | 180 000 | 172 000 |
-| P2 |  13 GB |  4 | 3 000/375   | 350 000 | 341 000 |
-| P3 |  26 GB |  4 | 3 000/375   | 350 000 | 341 000 |
-| P4 |  53 GB |  8 | 6 000/750   | 400 000 | 373 000 |
-| P5 | 120 GB | 20 | 6 000/750   | 400 000 | 373 000 |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172 000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400 000 | 373 000 |
+| P5 | 120 GB | 20 | 6,000 / 750   | 400 000 | 373 000 |
 
 Instrukcje dotyczące konfigurowania stunnel lub pobierania narzędzi Redis, takich jak `redis-benchmark.exe`, można znaleźć w sekcji [jak uruchomić polecenia Redis?](#cache-commands) .
 
@@ -167,10 +159,10 @@ Tak. pamięć podręczna platformy Azure dla usługi Redis jest dostępna w chmu
 
 | Chmura   | Sufiks DNS dla Redis            |
 |---------|---------------------------------|
-| Publiczne  | *. redis.cache.windows.net       |
-| Rząd USA  | *. redis.cache.usgovcloudapi.net |
-| Niemcy | *. redis.cache.cloudapi.de       |
-| Chiny   | *. redis.cache.chinacloudapi.cn  |
+| Public  | *.redis.cache.windows.net       |
+| Rząd USA  | *.redis.cache.usgovcloudapi.net |
+| Niemcy | *.redis.cache.cloudapi.de       |
+| Chiny   | *.redis.cache.chinacloudapi.cn  |
 
 Aby uzyskać więcej informacji na temat zagadnień dotyczących używania usługi Azure cache for Redis z innymi chmurami, zobacz następujące linki.
 
@@ -219,7 +211,7 @@ Jednym z wspaniałych Redis jest to, że wielu klientów obsługuje wiele różn
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Czy istnieje emulator lokalny dla usługi Azure cache for Redis?
-Nie ma lokalnego emulatora dla usługi Azure cache for Redis, ale można uruchomić wersję MSOpenTech Redis-Server. exe z [narzędzi wiersza polecenia Redis](https://github.com/MSOpenTech/redis/releases/) na komputerze lokalnym i połączyć się z nią w celu uzyskania podobnego środowiska na potrzeby lokalnego emulatora pamięci podręcznej, jak pokazano na stronie Poniższy przykład:
+Nie ma lokalnego emulatora dla usługi Azure cache for Redis, ale można uruchomić wersję MSOpenTech Redis-Server. exe z [narzędzi wiersza polecenia Redis](https://github.com/MSOpenTech/redis/releases/) na komputerze lokalnym i połączyć się z nią w celu uzyskania podobnego środowiska na potrzeby lokalnego emulatora pamięci podręcznej, jak pokazano w następującym przykładzie:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -297,7 +289,7 @@ Serwer Redis nie obsługuje natywnie protokołu SSL, ale usługa Azure cache for
 >
 >
 
-Narzędzia Redis, takie jak `redis-cli` nie współpracują z portem SSL, ale można użyć narzędzia, takiego jak `stunnel`, aby bezpiecznie połączyć narzędzia z portem SSL, postępując zgodnie z instrukcjami wyświetlanymi w blogu [dostawca stanu sesji ASP.NET dla Redis wersji zapoznawczej](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) poubojowego.
+Narzędzia Redis, takie jak `redis-cli` nie współpracują z portem SSL, ale można użyć narzędzia, takiego jak `stunnel`, aby bezpiecznie połączyć narzędzia z portem SSL, postępując zgodnie z instrukcjami wyświetlanymi w blogu [dostawca stanu sesji ASP.NET dla Redis wersji zapoznawczej](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) .
 
 Instrukcje dotyczące pobierania narzędzi Redis można znaleźć w sekcji [jak uruchomić polecenia Redis?](#cache-commands)
 
@@ -319,7 +311,7 @@ Instrukcje dotyczące pobierania narzędzi Redis można znaleźć w sekcji [jak 
 * Należy pamiętać, że Redis jest magazynem danych **w pamięci** . Przeczytaj [ten artykuł](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) , aby poznać scenariusze, w których może wystąpić utrata danych.
 * Opracowywanie systemu w taki sposób, aby mógł obsługiwać Blips połączeń [z powodu stosowania poprawek i trybu failover](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
-#### <a name="performance-testing"></a>Testowanie wydajnościowe
+#### <a name="performance-testing"></a>Testowanie wydajności
 * Zacznij od używania `redis-benchmark.exe`, aby uzyskać dostęp do możliwej przepływności przed napisaniem własnych testów wydajności. Ponieważ `redis-benchmark` nie obsługuje protokołu SSL, należy [włączyć port bez protokołu SSL przez Azure Portal](cache-configure.md#access-ports) przed uruchomieniem testu. Aby zapoznać się z przykładami, zobacz [Jak sprawdzić i przetestować wydajność mojej pamięci podręcznej?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Maszyna wirtualna klienta użyta do testowania powinna znajdować się w tym samym regionie co usługa Azure cache for Redis.
 * Zalecamy używanie serii maszyn wirtualnych Dv2 dla klienta, ponieważ mają one lepszy sprzęt i powinny dawać najlepsze wyniki.
@@ -333,7 +325,7 @@ Instrukcje dotyczące pobierania narzędzi Redis można znaleźć w sekcji [jak 
 
 * Należy unikać używania niektórych poleceń Redis, których wykonanie trwa długo, chyba że w pełni zrozumiesz wpływ tych poleceń. Na przykład nie należy uruchamiać poleceń [Keys](https://redis.io/commands/keys) w środowisku produkcyjnym. W zależności od liczby kluczy powracanie może potrwać dużo czasu. Redis to jednowątkowy serwer i przetwarza polecenia pojedynczo. Jeśli masz inne polecenia wydane po KLUCZu, nie zostaną one przetworzone do momentu, gdy Redis przetwarza polecenie KEYS. [Lokacja Redis.IO](https://redis.io/commands/) zawiera szczegółowe informacje o złożoności czasu dla każdej obsługiwanej operacji. Kliknij każde polecenie, aby zobaczyć złożoność każdej operacji.
 * Rozmiary kluczy — czy należy używać małych kluczy/wartości, czy też dużych wartości klucz/wartość? Jest to zależne od scenariusza. Jeśli w scenariuszu wymagane są większe klucze, można dostosować wartość parametru ConnectionTimeout, a następnie ponowić próbę i dostosować logikę ponowień. W perspektywie serwera Redis mniejsze wartości zapewniają lepszą wydajność.
-* Te zagadnienia nie oznacza, że nie można przechowywać większych wartości w Redis; należy pamiętać o następujących kwestiach. Opóźnienia będą wyższe. Jeśli masz jeden zestaw danych, który jest większy i który jest mniejszy, możesz użyć wielu wystąpień ConnectionMultiplexer, z których każda została skonfigurowana z innym zestawem limit czasu i ponowienia wartości, zgodnie z opisem w poprzedniej części [jak stackexchange. Redis Configuration Sekcja opcji do](#cache-configuration) .
+* Te zagadnienia nie oznacza, że nie można przechowywać większych wartości w Redis; należy pamiętać o następujących kwestiach. Opóźnienia będą wyższe. Jeśli masz jeden zestaw danych, który jest większy i który jest mniejszy, możesz użyć wielu wystąpień ConnectionMultiplexer, z których każda została skonfigurowana z innym zestawem limitów czasu i ponownych prób, zgodnie z opisem w poprzedniej sekcji [Opcje konfiguracji stackexchange. Redis](#cache-configuration) .
 
 <a name="cache-benchmarking"></a>
 
@@ -418,7 +410,7 @@ void Application_Start(object sender, EventArgs e)
 Włączenie serwera GC może zoptymalizować klienta i zapewnić lepszą wydajność i przepływność przy użyciu StackExchange. Redis. Aby uzyskać więcej informacji na temat serwera GC i sposobu jego włączania, zobacz następujące artykuły:
 
 * [Aby włączyć serwer GC](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
-* [Podstawowe informacje dotyczące wyrzucania elementów bezużytecznych](/dotnet/standard/garbage-collection/fundamentals)
+* [Podstawy dotyczące odzyskiwania pamięci](/dotnet/standard/garbage-collection/fundamentals)
 * [Odzyskiwanie pamięci i wydajność](/dotnet/standard/garbage-collection/performance)
 
 

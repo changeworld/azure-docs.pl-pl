@@ -1,5 +1,5 @@
 ---
-title: Kompiluj ponownie indeks Wyszukiwanie poznawcze platformy Azure
+title: Ponowne kompilowanie indeksu wyszukiwania
 titleSuffix: Azure Cognitive Search
 description: Dodaj nowe elementy, zaktualizuj istniejące elementy lub dokumenty lub Usuń przestarzałe dokumenty z pełnego przebudowy lub częściowego indeksowania przyrostowego, aby odświeżyć indeks Wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466447"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112969"
 ---
-# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Jak skompilować indeks Wyszukiwanie poznawcze platformy Azure
+# <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Jak ponownie skompilować indeks na platformie Azure Wyszukiwanie poznawcze
 
 W tym artykule wyjaśniono, jak ponownie skompilować indeks usługi Azure Wyszukiwanie poznawcze, sytuacje, w których są wymagane ponowne kompilacje oraz Zalecenia dotyczące łagodzenia wpływu rekompilacji na bieżące żądania zapytań.
 
@@ -93,7 +93,7 @@ Po załadowaniu indeksu, odwrócony indeks każdego pola jest wypełniany wszyst
 
 Możesz rozpocząć wykonywanie zapytań względem indeksu zaraz po załadowaniu pierwszego dokumentu. Jeśli znasz identyfikator dokumentu, [interfejs API REST dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) zwraca określony dokument. W celu szerszego testowania należy zaczekać, aż indeks zostanie całkowicie załadowany, a następnie użyć zapytań w celu sprawdzenia kontekstu, który powinien być widoczny.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 + [Omówienie indeksatora](search-indexer-overview.md)
 + [Indeksowanie dużych zestawów danych na dużą skalę](search-howto-large-index.md)

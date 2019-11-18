@@ -1,5 +1,5 @@
 ---
-title: Dodaj profile oceniania, aby zwiększyć odpowiednie dokumenty w wynikach wyszukiwania
+title: Zwiększ rangę wyszukiwania przy użyciu profilów oceniania
 titleSuffix: Azure Cognitive Search
 description: Zwiększ wyniki oceny rangi wyszukiwania na platformie Azure Wyszukiwanie poznawcze przez dodanie profilów oceniania.
 manager: nitinme
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2b92f8031a0d35696447f8ab796d24c504d57457
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 60442ab101423d0a91fa35a7a12a0b930417af71
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790119"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113608"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Dodawanie profilów oceniania do indeksu Wyszukiwanie poznawcze platformy Azure
 
@@ -243,16 +243,16 @@ Wynik wyszukiwania jest obliczany na podstawie właściwości statystycznych dan
 |`Fieldname`|Wymagane dla funkcji oceniania. Funkcja oceniania może zostać zastosowana tylko do pól, które są częścią kolekcji pól indeksu, i które są do filtrowania. Ponadto każdy typ funkcji wprowadza dodatkowe ograniczenia (świeżość jest używana z polami DateTime, wielkości z liczbami całkowitymi lub polami podwójnymi oraz odległości z polami lokalizacji). Można określić tylko jedno pole dla każdej definicji funkcji. Na przykład, aby użyć wielkości dwa razy w tym samym profilu, należy uwzględnić dwie definicje, jeden dla każdego pola.|  
 |`Interpolation`|Wymagane dla funkcji oceniania. Definiuje nachylenie, dla którego wzrost wyniku zwiększa się od początku zakresu do końca zakresu. Prawidłowe wartości to liniowe (domyślne), stałe, kwadratowe i logarytmiczne. Aby uzyskać szczegółowe informacje, zobacz [Ustawianie interpolacji](#bkmk_interpolation) .|  
 |`magnitude`|Funkcja oceny wielkości służy do zmiany klasyfikacji na podstawie zakresu wartości dla pola liczbowego. Poniżej przedstawiono niektóre typowe przykłady użycia:<br /><br /> -   **klasyfikacje gwiazdkowe:** Zmień ocenianie na podstawie wartości w polu "Klasyfikacja gwiazdkowa". Gdy są istotne dwa elementy, zostanie wyświetlony pierwszy element o wyższej ocenie.<br />-   **Margin:** jeśli są istotne dwa dokumenty, sprzedawca detaliczny może chcieć poprawić dokumenty, które mają wyższe marginesy.<br />-   **klikania:** w przypadku aplikacji, które śledzą akcje klikania do produktów lub stron, można użyć wielkości w celu zwiększenia liczby elementów, które mają na celu uzyskanie większości ruchu.<br />**Liczba pobieranych -   :** w przypadku aplikacji, które śledzą pobieranie, funkcja o wielkości umożliwia zwiększenie liczby elementów, które mają najwięcej pobrań.|  
-|`magnitude` &#124;`boostingRangeStart`|Ustawia wartość początkową zakresu, w którym ma być oceniane znaczenie. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. W przypadku klasyfikacji z gwiazdką od 1 do 4 będzie to 1. W przypadku marginesów powyżej 50% będzie to 50.|  
-|`magnitude` &#124;`boostingRangeEnd`|Ustawia wartość końcową zakresu, w którym ma być oceniane znaczenie. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. W przypadku klasyfikacji z gwiazdką od 1 do 4 będzie to 4.|  
-|`magnitude` &#124;`constantBoostBeyondRange`|Prawidłowe wartości to true lub false (wartość domyślna). Po ustawieniu na wartość true, pełne podwyższenie poziomu będzie nadal stosowane do dokumentów, które mają wartość pola docelowego wyższego niż górny koniec zakresu. W przypadku wartości false zwiększenie tej funkcji nie zostanie zastosowane do dokumentów mających wartość pola docelowego, które wykracza poza zakres.|  
+|`magnitude` &#124; `boostingRangeStart`|Ustawia wartość początkową zakresu, w którym ma być oceniane znaczenie. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. W przypadku klasyfikacji z gwiazdką od 1 do 4 będzie to 1. W przypadku marginesów powyżej 50% będzie to 50.|  
+|`magnitude` &#124; `boostingRangeEnd`|Ustawia wartość końcową zakresu, w którym ma być oceniane znaczenie. Wartość musi być liczbą całkowitą lub zmiennoprzecinkową. W przypadku klasyfikacji z gwiazdką od 1 do 4 będzie to 4.|  
+|`magnitude` &#124; `constantBoostBeyondRange`|Prawidłowe wartości to true lub false (wartość domyślna). Po ustawieniu na wartość true, pełne podwyższenie poziomu będzie nadal stosowane do dokumentów, które mają wartość pola docelowego wyższego niż górny koniec zakresu. W przypadku wartości false zwiększenie tej funkcji nie zostanie zastosowane do dokumentów mających wartość pola docelowego, które wykracza poza zakres.|  
 |`freshness`|Funkcja oceny Aktualności służy do zmiany rankingu ocen dla elementów na podstawie wartości w polach `DateTimeOffset`. Na przykład element o późniejszej dacie może być wyższy niż starsze elementy.<br /><br /> Istnieje również możliwość ustalania rangi elementów, takich jak zdarzenia kalendarza w przyszłych terminach, takich jak elementy bliżej obecnego elementu mogą być bardziej uporządkowane niż dalsze w przyszłości.<br /><br /> W bieżącej wersji usługi jeden koniec zakresu zostanie ustalony do bieżącego czasu. Druga końcowa to godzina w przeszłości oparta na `boostingDuration`. Aby zwiększyć liczbę razy w przyszłości, użyj `boostingDuration`ujemnej.<br /><br /> Częstotliwość, z jaką zmiany zwiększające się z zakresu maksymalnego i minimalnego są określane przez interpolację zastosowana do profilu oceniania (zobacz rysunek poniżej). Aby odwrócić współczynnik zwiększania poziomu, wybierz współczynnik zwiększania wartości mniejszej niż 1.|  
-|`freshness` &#124;`boostingDuration`|Ustawia okres, po upływie którego podwyższanie poziomu zostanie zatrzymane dla określonego dokumentu. Zobacz [Ustaw boostingDuration](#bkmk_boostdur) w poniższej sekcji, aby zapoznać się ze składnią i przykładami.|  
+|`freshness` &#124; `boostingDuration`|Ustawia okres, po upływie którego podwyższanie poziomu zostanie zatrzymane dla określonego dokumentu. Zobacz [Ustaw boostingDuration](#bkmk_boostdur) w poniższej sekcji, aby zapoznać się ze składnią i przykładami.|  
 |`distance`|Funkcja oceniania odległości służy do wpływania na wynik dokumentu w zależności od tego, jak blisko lub daleko odnoszą się do lokalizacji geograficznej odniesienia. Lokalizacja odniesienia jest określana jako część zapytania w parametrze (przy użyciu opcji ciągu `scoringParameterquery`) jako długość argumentu w zakresie.|  
-|`distance` &#124;`referencePointParameter`|Parametr, który ma zostać przesłany w zapytaniach, aby można go było użyć jako lokalizacji odwołania. `scoringParameter` to parametr zapytania. Opisy parametrów zapytań można znaleźć w temacie [Wyszukiwanie dokumentów &#40;Azure wyszukiwanie poznawcze REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
-|`distance` &#124;`boostingDistance`|Liczba, która wskazuje odległość w kilometrach od lokalizacji odniesienia, w której upływa zakres zwiększania.|  
+|`distance` &#124; `referencePointParameter`|Parametr, który ma zostać przesłany w zapytaniach, aby można go było użyć jako lokalizacji odwołania. `scoringParameter` to parametr zapytania. Opisy parametrów zapytań można znaleźć w temacie [Wyszukiwanie dokumentów &#40;Azure wyszukiwanie poznawcze REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
+|`distance` &#124; `boostingDistance`|Liczba, która wskazuje odległość w kilometrach od lokalizacji odniesienia, w której upływa zakres zwiększania.|  
 |`tag`|Funkcja oceniania tagów służy do wpływania na wyniki dokumentów w oparciu o Tagi w dokumentach i wyszukiwania zapytań. Dokumenty zawierające Tagi wspólne z zapytaniem wyszukiwania zostaną podwyższane. Tagi dla zapytania wyszukiwania są dostarczane jako parametr oceniania w każdym żądaniu wyszukiwania (przy użyciu opcji `scoringParameterquery` ciągu).|  
-|`tag` &#124;`tagsParameter`|Parametr, który ma zostać przesłany w zapytaniach, aby określić Tagi dla określonego żądania. `scoringParameter` to parametr zapytania. Opisy parametrów zapytań można znaleźć w temacie [Wyszukiwanie dokumentów &#40;Azure wyszukiwanie poznawcze REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
+|`tag` &#124; `tagsParameter`|Parametr, który ma zostać przesłany w zapytaniach, aby określić Tagi dla określonego żądania. `scoringParameter` to parametr zapytania. Opisy parametrów zapytań można znaleźć w temacie [Wyszukiwanie dokumentów &#40;Azure wyszukiwanie poznawcze REST API&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
 |`functionAggregation`|Opcjonalny. Stosuje się tylko wtedy, gdy są określone funkcje. Prawidłowe wartości to: sum (wartość domyślna), Average, minimum, maksimum i firstMatching. Wynikiem wyszukiwania jest pojedyncza wartość, która jest obliczana na podstawie wielu zmiennych, w tym wielu funkcji. Ten atrybut wskazuje, w jaki sposób wzrosty wszystkich funkcji są łączone w pojedynczej agregacji zagregowanej, która następnie jest stosowana do oceny dokumentu podstawowego. Wynik podstawowy jest oparty na wartości [TF-IDF](http://www.tfidf.com/) obliczonej na podstawie dokumentu i zapytania wyszukiwania.|  
 |`defaultScoringProfile`|W przypadku wykonywania żądania wyszukiwania, jeśli nie określono żadnego profilu oceniania, zostanie użyte domyślne ocenianie (tylko w programie[TF-IDF](http://www.tfidf.com/) ).<br /><br /> W tym miejscu można ustawić domyślną nazwę profilu oceniania, co spowoduje, że usługa Azure Wyszukiwanie poznawcze będzie używać tego profilu, gdy w żądaniu wyszukiwania nie zostanie określony konkretny profil.|  
 
@@ -280,7 +280,7 @@ Wynik wyszukiwania jest obliczany na podstawie właściwości statystycznych dan
 |1 dzień|"P1D"|  
 |2 dni i 12 godzin|"P2DT12H"|  
 |15 minut|"PT15M"|  
-|30 dni, 5 godzin, 10 minut i 6,334 sekund|"P30DT5H10M 6.334 S"|  
+|30 dni, 5 godzin, 10 minut i 6,334 sekund|"P30DT5H10M6.334S"|  
 
  Aby uzyskać więcej przykładów, zobacz [schemat XML: typy danych (witryna sieci web w3.org)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609569"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132877"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Schemat zdarzeń Azure Event Grid dla Azure Machine Learning
 
@@ -155,11 +155,11 @@ Zdarzenie ma następujące dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
 | eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
-| Data | obiekt | Dane zdarzenia magazynu obiektów BLOB. |
+| data | obiekt | Dane zdarzenia magazynu obiektów BLOB. |
 | dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
 | metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 
@@ -180,7 +180,7 @@ Obiekt danych ma następujące właściwości dla każdego typu zdarzenia:
 | -------- | ---- | ----------- |
 | ServiceName | ciąg | Nazwa wdrożonej usługi. |
 | Servicecomputetype | ciąg | Typ obliczeń (np. ACI, AKS) wdrożonej usługi. |
-| ModelIds | ciąg | Wspólna lista oddzielonych identyfikatorów modeli. Identyfikatory modeli wdrożonych w usłudze. |
+  | ModelIds | ciąg | Rozdzielana przecinkami lista identyfikatorów modeli. Identyfikatory modeli wdrożonych w usłudze. |
 | Tagi | obiekt | Tagi wdrożonej usługi. |
 | Właściwości serviceproperties | obiekt | Właściwości wdrożonej usługi. |
 
@@ -189,7 +189,7 @@ Obiekt danych ma następujące właściwości dla każdego typu zdarzenia:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | ExperimentId | ciąg | Identyfikator eksperymentu, do którego należy uruchomienie. |
-| eksperymentname | ciąg | Nazwa eksperymentu, do którego należy uruchomienie. |
+| Eksperymentname | ciąg | Nazwa eksperymentu, do którego należy uruchomienie. |
 | RunId | ciąg | Identyfikator przebiegu, który został ukończony. |
 | RunType | ciąg | Typ uruchomienia ukończonego przebiegu. |
 | RunTags | obiekt | Tagi ukończonego przebiegu. |
@@ -214,4 +214,4 @@ Obiekt danych ma następujące właściwości dla każdego typu zdarzenia:
 * Aby zapoznać się z wprowadzeniem do Azure Event Grid, zobacz [co to jest Event Grid?](overview.md)
 * Aby uzyskać więcej informacji na temat tworzenia subskrypcji Azure Event Grid, zobacz [Event Grid schematu subskrypcji](subscription-creation-schema.md)
 * Aby zapoznać się z wprowadzeniem do korzystania z Azure Event Grid z Azure Machine Learning, zobacz temat [Korzystanie z zdarzeń Azure Machine Learning](/azure/machine-learning/service/concept-event-grid-integration)
-* Przykład korzystania z Azure Event Grid z Azure Machine Learning można znaleźć w temacie [Tworzenie przepływów pracy uczenia maszynowego](/azure/machine-learning/service/event-schema-machine-learning) na podstawie zdarzeń
+* Przykład korzystania z Azure Event Grid z Azure Machine Learning można znaleźć w temacie [Tworzenie przepływów pracy uczenia maszynowego](/azure/machine-learning/service/how-to-use-event-grid) na podstawie zdarzeń

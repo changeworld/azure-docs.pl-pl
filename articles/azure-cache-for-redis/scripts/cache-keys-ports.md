@@ -1,26 +1,19 @@
 ---
-title: Skrypt interfejsu wiersza polecenia platformy Azure przykładowy — Pobierz nazwę hosta, portów i kluczy dla usługi Azure Cache dla pamięci podręcznej Redis | Dokumentacja firmy Microsoft
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — pobieranie nazwy hosta, portów i kluczy dla usługi Azure cache for Redis
 description: Skrypt interfejsu wiersza polecenia platformy Azure przykładowy — Pobierz nazwę hosta, portów i kluczy dla usługi Azure Cache dla wystąpienia usługi Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
 tags: azure-service-management
-ms.assetid: 761eb24e-2ba7-418d-8fc3-431153e69a90
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: ff410db561879089c4c1f20acb7cb349f0484fda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 604ec6de3b95a4bc289176d54d9c7b0a6c42eae6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234308"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122520"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Pobierz nazwę hosta, portów i kluczy dla usługi Azure Cache dla usługi Redis
 
@@ -43,7 +36,7 @@ Ten skrypt używa poniższych poleceń, można pobrać nazwy hosta, klucze i por
 | [AZ redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Pobierz klucze dostępu dla usługi Azure Cache dla wystąpienia usługi Redis. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

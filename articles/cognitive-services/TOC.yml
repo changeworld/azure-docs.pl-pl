@@ -17,6 +17,8 @@
   items:
     - name: Obsługa kontenerów
       href: cognitive-services-container-support.md
+    - name: Tagi obrazu kontenera
+      href: ./containers/container-image-tags.md
     - name: Kontener — często zadawane pytania
       href: ./containers/container-faq.md
     - name: Przepisy kontenera

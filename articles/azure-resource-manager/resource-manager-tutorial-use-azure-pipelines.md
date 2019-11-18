@@ -1,24 +1,16 @@
 ---
-title: Ciągła integracja z usługą Azure Pipelines | Microsoft Docs
+title: Ciągła integracja z użyciem usługi Azure Pipelines
 description: Dowiedz się, jak ciągle kompilować, testować i wdrażać szablony Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 73ab01b5e4ea923b990932986a938f8c1fb25629
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052210"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149308"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines
 
@@ -126,7 +118,7 @@ Plik azuredeploy. JSON został dodany do repozytorium lokalnego. Następnie Prze
     ```
 
     Może pojawić się ostrzeżenie dotyczące LF. Możesz zignorować to ostrzeżenie. **główny** jest gałęzią główną.  Tworzona jest zwykle gałąź dla każdej aktualizacji. Aby uprościć samouczek, należy bezpośrednio użyć gałęzi głównej.
-1. Przejdź do repozytorium GitHub z przeglądarki.  Adres URL jest **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . W folderze jest widoczny folder **CreateAzureStorage** i plik **Azuredeploy. JSON** .
+1. Przejdź do repozytorium GitHub z przeglądarki.  Adres URL jest **https://github.com/[YourAccountName]/[YourGitHubRepository]** . W folderze jest widoczny folder **CreateAzureStorage** i plik **Azuredeploy. JSON** .
 
 Do tej pory utworzono repozytorium GitHub i przekazano szablon do repozytorium.
 
@@ -220,7 +212,7 @@ Aby utworzyć potok z krokiem do wdrożenia szablonu:
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Otwórz grupę zasobów. Nazwa jest określona w pliku YAML potoku.  Zobaczysz jedno utworzone konto magazynu.  Nazwa konta magazynu rozpoczyna się od **zapisania**.
 1. Wybierz nazwę konta magazynu, aby go otworzyć.
 1. Wybierz pozycję **Właściwości**. Zauważ, że **replikacja** jest **magazynem lokalnie nadmiarowym (LRS)** .
@@ -232,7 +224,7 @@ Aby utworzyć potok z krokiem do wdrożenia szablonu:
 Gdy aktualizujesz szablon i wypychasz zmiany do repozytorium zdalnego, potok automatycznie zaktualizuje zasoby, konto magazynu w tym przypadku.
 
 1. Otwórz plik **azuredeploy. JSON** z lokalnego repozytorium w Visual Studio Code.
-1. Zaktualizuj wartość **DefaultValue** elementu **storageAccountType** na **Standard_GRS**. Zobacz poniższy zrzut ekranu:
+1. Zaktualizuj wartość **DefaultValue** elementu **storageAccountType** do **Standard_GRS**. Zobacz poniższy zrzut ekranu:
 
     ![Azure Resource Manager usługi Azure DevOps Azure Pipelines Update YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 

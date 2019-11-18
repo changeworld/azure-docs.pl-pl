@@ -1,18 +1,16 @@
 ---
-title: Samouczek — Dodawanie zasobu do szablonu Azure Resource Manager
+title: Samouczek — Dodawanie zasobu do szablonu
 description: W tym artykule opisano kroki tworzenia pierwszego szablonu Azure Resource Manager. Dowiesz się więcej na temat składni pliku szablonu i sposobu wdrażania konta magazynu.
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6b8bd73a1248168ff8f434afa0a9317a8fe0c618
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963905"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148198"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Samouczek: Dodawanie zasobu do szablonu Menedżer zasobów
 
@@ -28,7 +26,7 @@ Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i A
 
 Aby dodać definicję konta magazynu do istniejącego szablonu, zobacz wyróżniony kod JSON w poniższym przykładzie. Zamiast próbować skopiować sekcje szablonu, Skopiuj cały plik i Zastąp jego zawartość.
 
-Zastąp element **{Account-Unique-Name}** unikatową nazwą konta magazynu. Nazwa konta magazynu musi być unikatowa na platformie Azure. Nazwa może zawierać tylko małe litery lub cyfry. Nie może być dłuższa niż 24 znaki. Możesz spróbować użyć wzorca nazewnictwa, takiego jak **store1** , jako prefiksu, a następnie dodać inicjały i bieżącą datę. Na przykład użyta nazwa może wyglądać jak **store1abc09092019**.
+Zastąp element **{Account-Unique-Name}** unikatową nazwą konta magazynu. Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Nazwa może zawierać tylko małe litery lub cyfry. Nie może być dłuższa niż 24 znaki. Możesz spróbować użyć wzorca nazewnictwa, takiego jak **store1** , jako prefiksu, a następnie dodać inicjały i bieżącą datę. Na przykład użyta nazwa może wyglądać jak **store1abc09092019**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
 
@@ -54,13 +52,13 @@ Jeśli zobaczysz starszą wersję interfejsu API, taką jak [storageAccounts 201
 
 Jeśli zdecydujesz się zmienić wersję interfejsu API dla zasobu, upewnij się, że są oceniane właściwości tej wersji i odpowiednio Dostosuj szablon.
 
-## <a name="deploy-template"></a>Wdróż szablon
+## <a name="deploy-template"></a>Wdrażanie szablonu
 
 Możesz wdrożyć szablon, aby utworzyć konto magazynu. Nadaj wdrożenieowi inną nazwę, aby można je było łatwo znaleźć w historii.
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -92,26 +90,26 @@ Mogą wystąpić dwa możliwe błędy wdrażania:
 
 To wdrożenie trwa dłużej niż wdrożenie pustego szablonu, ponieważ konto magazynu zostało utworzone. Może to potrwać około minuty, ale jest zwykle szybszy.
 
-## <a name="verify-deployment"></a>Weryfikuj wdrożenie
+## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
 Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
 1. Zobaczysz, że konto magazynu zostało wdrożone.
 1. Zauważ, że etykieta wdrożenia brzmi teraz: **wdrożenia: 2**.
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
 Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
 
-1. Z Azure Portal z menu po lewej stronie wybierz pozycję **Grupa zasobów** .
-2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy** .
+1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. W górnym menu wybierz pozycję **Usuń grupę zasobów** .
+4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 

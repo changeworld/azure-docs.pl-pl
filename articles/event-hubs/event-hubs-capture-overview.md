@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 442ceab68851dc108d327cdf212dcf58d5b31084
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 17906a7d0953d8b320301d74cda81d14c9ad340f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008561"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123432"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
 Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo, w centrach zdarzeń w [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-scalability.md#throughput-units). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
@@ -81,7 +81,7 @@ Pliki tworzone przez przechwytywania usługi Event Hubs mają następujące sche
 
 Dostępna jest Natywna obsługa magazynu obiektów blob platformy Azure, która ułatwia wykonywanie zapytań dotyczących danych w pliku Avro, zgodnie z opisem w dokumentacji:
 
-[Przechodzenie do oprogramowania Apache: Wtyczka Blob Storage platformy Azure][Apache Drill: Azure Blob Storage Plugin]
+[Funkcja drążenia Apache: wtyczka Blob Storage platformy Azure][Apache Drill: Azure Blob Storage Plugin]
 
 Aby łatwo zbadać przechwycone pliki, możesz utworzyć i wykonać maszynę wirtualną z włączoną funkcją drążenia oprogramowania Apache za pośrednictwem kontenera, aby uzyskać dostęp do usługi Azure Blob Storage:
 
@@ -95,7 +95,7 @@ Pełny kompletny przykład jest dostępny w repozytorium przesyłania strumienio
 
 [Apache Spark][Apache Spark] to "ujednolicony aparat analityczny do przetwarzania danych na dużą skalę". Obsługuje on różne języki, w tym SQL, i może łatwo uzyskać dostęp do usługi Azure Blob Storage. Dostępne są dwie opcje uruchamiania Apache Spark na platformie Azure i umożliwiają łatwy dostęp do usługi Azure Blob Storage:
 
-- [HDInsight Pliki adresów w usłudze Azure Storage][HDInsight: Address files in Azure storage]
+- [HDInsight: pliki adresów w usłudze Azure Storage][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Magazyn obiektów blob platformy Azure][Azure Databricks: Azure Blob Storage]
 
 ### <a name="use-avro-tools"></a>Korzystanie z narzędzi Avro
@@ -139,7 +139,7 @@ Należy pamiętać, że Przechwytywanie nie zużywa limitu przydziału ruchu wyc
 
 ## <a name="integration-with-event-grid"></a>Integracja z usługą Event Grid 
 
-Możesz utworzyć subskrypcję usługi Azure Event Grid z przestrzeni nazw usługi Event Hubs jako źródła. W poniższym samouczku pokazano, jak utworzyć Event Grid subskrypcję z centrum zdarzeń jako źródło i Azure Functions aplikację jako ujścia: [Przetwórz i Migruj przechwycone Event Hubs dane do SQL Data Warehouse przy użyciu Event Grid i Azure Functions](store-captured-data-data-warehouse.md).
+Możesz utworzyć subskrypcję usługi Azure Event Grid z przestrzeni nazw usługi Event Hubs jako źródła. Następującego samouczka dowiesz się, jak utworzyć subskrypcję usługi Event Grid przy użyciu Centrum zdarzeń jako źródło i aplikację usługi Azure Functions jako ujścia: [procesu i przeprowadzić migrację przechwycone dane z usługi Event Hubs w usłudze SQL Data Warehouse przy użyciu usługi Event Grid i Azure Functions](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -160,7 +160,7 @@ Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event H
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
+[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
 [Przesyłanie strumieniowe na dużą skalę: Przechwytywanie Event Hubs]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

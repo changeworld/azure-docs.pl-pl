@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240297"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129852"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
 
@@ -50,11 +50,11 @@ Minimalne wymagania dla hybrydowego procesu roboczego elementu Runbook systemu L
 |--------------------- | --------------------- | -------------------|
 |Glibc |Biblioteka GNU C| 2.5-12 |
 |OpenSSL| Biblioteki OpenSSL | 1,0 (protokoły TLS 1,1 i TLS 1,2 są obsługiwane|
-|odsłon | zazwinięcie klienta sieci Web | 7.15.5|
+|Odsłon | zazwinięcie klienta sieci Web | 7.15.5|
 |Python-ctypes | Wymagany jest język Python 2. x |
 |WYGASŁ | Moduły uwierzytelniania podłączane|
 | **Opcjonalny pakiet** | **Opis** | **Wersja minimalna**|
-| Program PowerShell Core | Aby uruchomić elementy Runbook programu PowerShell, należy zainstalować program PowerShell, zobacz temat [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) , aby dowiedzieć się, jak go zainstalować.  | 6.0.0 |
+| Program PowerShell Core | Aby uruchomić elementy Runbook programu PowerShell, należy zainstalować program PowerShell, zobacz temat [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , aby dowiedzieć się, jak go zainstalować.  | 6.0.0 |
 
 ### <a name="installation"></a>Instalacja
 
@@ -69,7 +69,7 @@ Przed kontynuowaniem Zanotuj Log Analytics obszar roboczy, z którym jest połą
          Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Zainstaluj agenta Log Analytics dla systemu Linux, uruchamiając następujące polecenie. \<Zastąp\> wartości \<identyfikator obszaru roboczego iWorkspaceKey\> odpowiednimi wartościami z obszaru roboczego.
+1. Zainstaluj agenta Log Analytics dla systemu Linux, uruchamiając następujące polecenie. Zastąp \<identyfikator obszaru roboczego\> i \<WorkspaceKey\> z odpowiednimi wartościami z obszaru roboczego.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -86,7 +86,7 @@ Przed kontynuowaniem Zanotuj Log Analytics obszar roboczy, z którym jest połą
 1. Po zakończeniu działania polecenia na stronie **grupy hybrydowych procesów roboczych** w Azure Portal zostanie wyświetlona nowa grupa i liczba członków. Jeśli jest to istniejąca Grupa, liczba członków jest zwiększana. Możesz wybrać grupę z listy na stronie **grupy hybrydowych procesów roboczych** i wybrać kafelek **hybrydowe procesy** robocze. Na stronie **hybrydowe procesy robocze** zobaczysz każdego członka grupy na liście.
 
 > [!NOTE]
-> Jeśli używasz rozszerzenia maszyny wirtualnej Azure monitor dla systemu Linux dla maszyny wirtualnej platformy Azure, zalecamy ustawienie `autoUpgradeMinorVersion` wartości false, ponieważ funkcja autouaktualniania wersji może powodować problemy z hybrydowym procesem roboczym elementu Runbook. Aby dowiedzieć się, jak ręcznie uaktualnić rozszerzenie, zobacz [wdrażanie interfejsu wiersza polecenia platformy Azure ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
+> Jeśli używasz rozszerzenia maszyny wirtualnej Azure Monitor dla systemu Linux dla maszyny wirtualnej platformy Azure, zalecamy ustawienie `autoUpgradeMinorVersion` na wartość false, ponieważ funkcja autouaktualniania wersji może spowodować problemy z hybrydowym procesem roboczym elementu Runbook. Aby dowiedzieć się, jak ręcznie uaktualnić rozszerzenie, zobacz [wdrażanie interfejsu wiersza polecenia platformy Azure ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turning-off-signature-validation"></a>Wyłączanie weryfikacji podpisu
 
@@ -106,7 +106,7 @@ Następujące typy elementów Runbook działają w hybrydowym procesie roboczym 
 * PowerShell
 
   > [!NOTE]
-  > Elementy Runbook programu PowerShell wymagają zainstalowania programu PowerShell Core na komputerze z systemem Linux. Zobacz temat [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) , aby dowiedzieć się, jak go zainstalować.
+  > Elementy Runbook programu PowerShell wymagają zainstalowania programu PowerShell Core na komputerze z systemem Linux. Zobacz temat [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , aby dowiedzieć się, jak go zainstalować.
 
 Następujące typy elementów Runbook nie działają w hybrydowym procesie roboczym Linux:
 

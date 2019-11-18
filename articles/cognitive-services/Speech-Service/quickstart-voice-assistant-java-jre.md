@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: niestandardowy asystent głosowy (wersja zapoznawcza), Java (Windows, Linux) — usługa mowy'
+title: 'Szybki Start: niestandardowy asystent głosowy dla języka Java (Windows, Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start dowiesz się, jak używać zestawu SDK mowy Cognitive Services w aplikacji konsolowej Java. Dowiesz się, jak połączyć aplikację kliencką z wcześniej utworzonym bot Framework bot skonfigurowanym do korzystania z kanału mowy linii Direct i włączyć asystenta głosowego.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 2fbe2e38ae1f41c2559b5ef5c6f66d19f3c41dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504067"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111713"
 ---
-# <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java"></a>Szybki Start: Tworzenie asystenta głosowego za pomocą zestawu Speech SDK, Java
+# <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Szybki Start: Tworzenie asystenta głosowego za pomocą zestawu Speech SDK, Java (wersja zapoznawcza)
 
 Przewodniki Szybki Start są również dostępne w przypadku [zamiany mowy na tekst](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre), zamiany [tekstu na mowę](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)i [tłumaczenia mowy](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre).
 
@@ -27,24 +27,25 @@ W tym artykule opisano tworzenie aplikacji konsolowej Java za pomocą [zestawu A
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: Windows (64-bitowy), Ubuntu Linux 16.04/18.04 (64-bitowy) lub macOS 10,13 lub nowszy.
-* [Zaćmienie IDE Java](https://www.eclipse.org/downloads/).
-* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go w [Azure Portal](https://portal.azure.com).
-* Wstępnie skonfigurowany bot utworzony przy użyciu platformy bot Framework w wersji 4,2 lub nowszej. Bot musi subskrybować nowy kanał mowy linii bezpośredniej do odbierania danych wejściowych głosowych.
+- System operacyjny: Windows (64-bitowy), Ubuntu Linux 16.04/18.04 (64-bitowy) lub macOS 10,13 lub nowszy.
+- [Zaćmienie IDE Java](https://www.eclipse.org/downloads/).
+- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
+- Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go w [Azure Portal](https://portal.azure.com).
+- Wstępnie skonfigurowany bot utworzony przy użyciu platformy bot Framework w wersji 4,2 lub nowszej. Bot musi subskrybować nowy kanał mowy linii bezpośredniej do odbierania danych wejściowych głosowych.
 
-    > [!NOTE]
-    > Zapoznaj się z [listą obsługiwanych regionów dla asystentów głosowych](regions.md#voice-assistants) i upewnij się, że zasoby zostały wdrożone w jednym z tych regionów.
+  > [!NOTE]
+  > Zapoznaj się z [listą obsługiwanych regionów dla asystentów głosowych](regions.md#voice-assistants) i upewnij się, że zasoby zostały wdrożone w jednym z tych regionów.
 
 Jeśli korzystasz z programu Ubuntu 16.04/18.04, upewnij się, że te zależności są zainstalowane przed rozpoczęciem przezaćmienia:
 
-```console
+```sh
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
 Jeśli korzystasz z systemu Windows (64-bitowego), upewnij się, że zainstalowano pakiet redystrybucyjny Microsoft Visual C++ dla swojej platformy:
-* [Pobierz pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
+- [Pobierz pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="optional-get-started-fast"></a>Opcjonalne: szybkie rozpoczynanie pracy
 
@@ -54,177 +55,176 @@ W tym przewodniku szybki start opisano krok po kroku, jak utworzyć prostą apli
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Ponadto aby włączyć rejestrowanie, zaktualizuj plik *pliku pom. XML* w celu uwzględnienia następujących zależności:
+Ponadto aby włączyć rejestrowanie, zaktualizuj plik _pliku pom. XML_ w celu uwzględnienia następujących zależności:
 
-   ```xml
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-simple</artifactId>
-        <version>1.7.5</version>
-    </dependency>
-   ```
+```xml
+ <dependency>
+     <groupId>org.slf4j</groupId>
+     <artifactId>slf4j-simple</artifactId>
+     <version>1.7.5</version>
+ </dependency>
+```
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
 1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
 
-1. W **nowym oknie klasy Java** wprowadź *speechsdk. szybkiego startu* w polu **pakiet** i *Main* w polu **Nazwa** .
+1. W **nowym oknie klasy Java** wprowadź _speechsdk. szybkiego startu_ w polu **pakiet** i _Main_ w polu **Nazwa** .
 
    ![Zrzut ekranu okna Nowa klasa Java](media/sdk/qs-java-jre-06-create-main-java.png)
 
 1. Otwórz nowo utworzoną klasę `Main` i Zastąp zawartość pliku `Main.java` następującym kodem początkowym:
 
-    ```java
-    package speechsdk.quickstart;
+   ```java
+   package speechsdk.quickstart;
 
-    import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
-    import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
-    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
-    import org.slf4j.Logger;
-    import org.slf4j.LoggerFactory;
+   import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
+   import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
+   import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+   import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
+   import org.slf4j.Logger;
+   import org.slf4j.LoggerFactory;
 
-    import javax.sound.sampled.AudioFormat;
-    import javax.sound.sampled.AudioSystem;
-    import javax.sound.sampled.DataLine;
-    import javax.sound.sampled.SourceDataLine;
-    import java.io.InputStream;
+   import javax.sound.sampled.AudioFormat;
+   import javax.sound.sampled.AudioSystem;
+   import javax.sound.sampled.DataLine;
+   import javax.sound.sampled.SourceDataLine;
+   import java.io.InputStream;
 
-    public class Main {
-        final Logger log = LoggerFactory.getLogger(Main.class);
+   public class Main {
+       final Logger log = LoggerFactory.getLogger(Main.class);
 
-        public static void main(String[] args) {
-            // New code will go here
-        }
+       public static void main(String[] args) {
+           // New code will go here
+       }
 
-        private void playAudioStream(PullAudioOutputStream audio) {
-            ActivityAudioStream stream = new ActivityAudioStream(audio);
-            final ActivityAudioStream.ActivityAudioFormat audioFormat = stream.getActivityAudioFormat();
-            final AudioFormat format = new AudioFormat(
-                    AudioFormat.Encoding.PCM_SIGNED,
-                    audioFormat.getSamplesPerSecond(),
-                    audioFormat.getBitsPerSample(),
-                    audioFormat.getChannels(),
-                    audioFormat.getFrameSize(),
-                    audioFormat.getSamplesPerSecond(),
-                    false);
-            try {
-                int bufferSize = format.getFrameSize();
-                final byte[] data = new byte[bufferSize];
+       private void playAudioStream(PullAudioOutputStream audio) {
+           ActivityAudioStream stream = new ActivityAudioStream(audio);
+           final ActivityAudioStream.ActivityAudioFormat audioFormat = stream.getActivityAudioFormat();
+           final AudioFormat format = new AudioFormat(
+                   AudioFormat.Encoding.PCM_SIGNED,
+                   audioFormat.getSamplesPerSecond(),
+                   audioFormat.getBitsPerSample(),
+                   audioFormat.getChannels(),
+                   audioFormat.getFrameSize(),
+                   audioFormat.getSamplesPerSecond(),
+                   false);
+           try {
+               int bufferSize = format.getFrameSize();
+               final byte[] data = new byte[bufferSize];
 
-                SourceDataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-                SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
-                line.open(format);
+               SourceDataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+               SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
+               line.open(format);
 
-                if (line != null) {
-                    line.start();
-                    int nBytesRead = 0;
-                    while (nBytesRead != -1) {
-                        nBytesRead = stream.read(data);
-                        if (nBytesRead != -1) {
-                            line.write(data, 0, nBytesRead);
-                        }
-                    }
-                    line.drain();
-                    line.stop();
-                    line.close();
-                }
-                stream.close();
+               if (line != null) {
+                   line.start();
+                   int nBytesRead = 0;
+                   while (nBytesRead != -1) {
+                       nBytesRead = stream.read(data);
+                       if (nBytesRead != -1) {
+                           line.write(data, 0, nBytesRead);
+                       }
+                   }
+                   line.drain();
+                   line.stop();
+                   line.close();
+               }
+               stream.close();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
 
-    }
-    ```
+   }
+   ```
 
 1. W metodzie `main` należy najpierw skonfigurować `DialogServiceConfig` i użyć jej do utworzenia wystąpienia `DialogServiceConnector`. To wystąpienie nawiązuje połączenie z kanałem mowy linii bezpośredniej w celu korzystania z bot. Wystąpienie `AudioConfig` jest również używane do określania źródła danych wejściowych audio. W tym przykładzie domyślny mikrofon jest używany z `AudioConfig.fromDefaultMicrophoneInput()`.
 
-    * Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji, który można uzyskać z [tej witryny sieci Web](get-started.md).
-    * Zastąp ciąg `YourServiceRegion`m [regionem](regions.md) skojarzonym z subskrypcją.
+   - Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji, który można uzyskać z [tej witryny sieci Web](get-started.md).
+   - Zastąp ciąg `YourServiceRegion`m [regionem](regions.md) skojarzonym z subskrypcją.
 
-    > [!NOTE]
-    > Zapoznaj się z [listą obsługiwanych regionów dla asystentów głosowych](regions.md#voice-assistants) i upewnij się, że zasoby zostały wdrożone w jednym z tych regionów.
+   > [!NOTE]
+   > Zapoznaj się z [listą obsługiwanych regionów dla asystentów głosowych](regions.md#voice-assistants) i upewnij się, że zasoby zostały wdrożone w jednym z tych regionów.
 
-    ```java
-    final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
-    final String region = "YourServiceRegion"; // Your speech subscription service region
-    final BotFrameworkConfig botConfig = BotFrameworkConfig.fromSubscription(subscriptionKey, region);
+   ```java
+   final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
+   final String region = "YourServiceRegion"; // Your speech subscription service region
+   final BotFrameworkConfig botConfig = BotFrameworkConfig.fromSubscription(subscriptionKey, region);
 
-    // Configure audio input from a microphone.
-    final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
+   // Configure audio input from a microphone.
+   final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a DialogServiceConnector instance.
-    final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
-    ```
+   // Create a DialogServiceConnector instance.
+   final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
+   ```
 
 1. Łącznik `DialogServiceConnector` opiera się na kilku zdarzeniach, aby komunikować swoje działania bot, wyniki rozpoznawania mowy i inne informacje. Dodaj te detektory zdarzeń dalej.
 
-    ```java
-    // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
-    connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
-        log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
-    });
+   ```java
+   // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
+   connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
+       log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
+   });
 
-    // Recognized will provide the final recognized text once audio capture is completed.
-    connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
-        log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
-    });
+   // Recognized will provide the final recognized text once audio capture is completed.
+   connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
+       log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
+   });
 
-    // SessionStarted will notify when audio begins flowing to the service for a turn.
-    connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
-        log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
-    });
+   // SessionStarted will notify when audio begins flowing to the service for a turn.
+   connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
+       log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
+   });
 
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
-    connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
-        log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
-    });
+   // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
+   connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
+       log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
+   });
 
-    // Canceled will be signaled when a turn is aborted or experiences an error condition.
-    connector.canceled.addEventListener((o, canceledEventArgs) -> {
-        log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
-        connector.disconnectAsync();
-    });
+   // Canceled will be signaled when a turn is aborted or experiences an error condition.
+   connector.canceled.addEventListener((o, canceledEventArgs) -> {
+       log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
+       connector.disconnectAsync();
+   });
 
-    // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
-    connector.activityReceived.addEventListener((o, activityEventArgs) -> {
-        final String act = activityEventArgs.getActivity().serialize();
-            log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
-            if (activityEventArgs.hasAudio()) {
-                playAudioStream(activityEventArgs.getAudio());
-            }
-        });
-    ```
+   // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
+   connector.activityReceived.addEventListener((o, activityEventArgs) -> {
+       final String act = activityEventArgs.getActivity().serialize();
+           log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
+           if (activityEventArgs.hasAudio()) {
+               playAudioStream(activityEventArgs.getAudio());
+           }
+       });
+   ```
 
 1. Połącz `DialogServiceConnector`, aby skierować mowę liniową przez wywołanie metody `connectAsync()`. Aby przetestować bot, możesz wywołać metodę `listenOnceAsync`, aby wysyłać dane wejściowe audio z mikrofonu. Ponadto można również użyć metody `sendActivityAsync`, aby wysłać działanie niestandardowe jako ciąg serializowany. Te niestandardowe działania mogą zapewnić dodatkowe dane używane przez bot w konwersacji.
 
-    ```java
-    connector.connectAsync();
-    // Start listening.
-    System.out.println("Say something ...");
-    connector.listenOnceAsync();
+   ```java
+   connector.connectAsync();
+   // Start listening.
+   System.out.println("Say something ...");
+   connector.listenOnceAsync();
 
-    // connector.sendActivityAsync(...)
-    ```
+   // connector.sendActivityAsync(...)
+   ```
 
 1. Zapisz zmiany w pliku `Main`.
 
 1. Aby obsłużyć odtwarzanie odpowiedzi, należy dodać dodatkową klasę, która przekształca obiekt PullAudioOutputStream zwrócony z interfejsu API getaudio () na InputStream języka Java w celu ułatwienia obsługi. Ta `ActivityAudioStream` jest wyspecjalizowaną klasą, która obsługuje odpowiedź audio z kanału Direct Speech line. Zapewnia metody dostępu do pobierania informacji o formacie audio, które są wymagane do obsługi odtwarzania. W tym celu wybierz pozycję **plik** > **nowej** **klasy** > .
 
-1. W **nowym oknie klasy Java** wprowadź *speechsdk. szybkiego startu* w polu **pakiet** i *ActivityAudioStream* w polu **Nazwa** .
+1. W **nowym oknie klasy Java** wprowadź _speechsdk. szybkiego startu_ w polu **pakiet** i _ActivityAudioStream_ w polu **Nazwa** .
 
 1. Otwórz nowo utworzoną klasę `ActivityAudioStream` i Zastąp ją następującym kodem:
 
-    ```java
-    package com.speechsdk.quickstart;
+   ```java
+   package com.speechsdk.quickstart;
 
-    import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
+   import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
 
-    import java.io.IOException;
-    import java.io.InputStream;
-
+   import java.io.IOException;
+   import java.io.InputStream;
 
     public final class ActivityAudioStream extends InputStream {
         /**
@@ -455,7 +455,7 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik *pliku pom. XML* w celu u
         }
     }
 
-    ```
+   ```
 
 1. Zapisz zmiany w pliku `ActivityAudioStream`.
 
@@ -474,7 +474,7 @@ Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dost
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Asystenci głosu — informacje](voice-assistants.md)
 - [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)

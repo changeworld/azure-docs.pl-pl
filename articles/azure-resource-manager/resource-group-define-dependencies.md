@@ -1,29 +1,28 @@
 ---
-title: Ustaw kolejność wdrażania zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak ustawić jeden zasób jako zależny od innego zasobu podczas wdrażania, aby upewnić się, że zasoby są wdrażane w odpowiedniej kolejności.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Ustaw kolejność wdrażania dla zasobów
+description: Opisuje sposób ustawiania jednego zasobu jako zależnego od innego zasobu podczas wdrażania, aby zapewnić, że zasoby są wdrażane w odpowiedniej kolejności.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: tomfitz
-ms.openlocfilehash: 32b2b41e47fe089da70d82e6049d0139795df88a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 6b608111f2fe24a0b426e5697ceb07349f2d4693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204227"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149729"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Zdefiniuj kolejność wdrażania zasobów w szablonach usługi Resource Manager platformy Azure
-Dla danego zasobu może być inne zasoby, które muszą istnieć przed wdrożeniem tego zasobu. Na przykład programu SQL server musi istnieć przed podjęciem próby wdrożenia bazy danych SQL. Należy zdefiniować tę relację, oznaczając jeden zasób jako zależny od innego zasobu. Definiowanie zależności za pomocą **dependsOn** elementu, lub za pomocą **odwołania** funkcji. 
+# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definiowanie kolejności wdrażania zasobów w szablonach Azure Resource Manager
 
-Usługa Resource Manager ocenia zależności pomiędzy zasobami i wdraża je w kolejności opartej na zależności. Gdy zasoby nie zależą od siebie nawzajem, usługa Resource Manager wdraża je równolegle. Wystarczy Definiowanie zależności dla zasobów, które są wdrażane w tym samym szablonie. 
+Dla danego zasobu mogą istnieć inne zasoby, które muszą istnieć przed wdrożeniem zasobu. Na przykład program SQL Server musi istnieć przed podjęciem próby wdrożenia bazy danych SQL. Ta relacja jest definiowana przez oznaczenie jednego zasobu jako zależnego od innego zasobu. Należy zdefiniować zależność z elementem **dependsOn** lub za pomocą funkcji **Reference** . 
 
-Aby zapoznać się z samouczkiem, zobacz [samouczek: Tworzenie szablonów usługi Azure Resource Manager przy użyciu zasobów zależnych](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+Usługa Resource Manager ocenia zależności pomiędzy zasobami i wdraża je w kolejności opartej na zależności. Gdy zasoby nie zależą od siebie nawzajem, usługa Resource Manager wdraża je równolegle. Wystarczy zdefiniować zależności dla zasobów wdrożonych w tym samym szablonie. 
+
+Aby zapoznać się z samouczkiem, zobacz [Samouczek: Tworzenie szablonów Azure Resource Manager z zasobami zależnymi](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
 
 ## <a name="dependson"></a>dependsOn
-W ramach szablonu dependsOn element umożliwia zdefiniowanie jednego zasobu jako zależną na co najmniej jednego zasobu. Wartość może być rozdzielaną przecinkami listę nazw zasobów. 
 
-Poniższy przykład przedstawia zestaw skalowania maszyn wirtualnych, który zależy od modułu równoważenia obciążenia, sieć wirtualną i pętli, która tworzy wiele kont magazynu. Inne zasoby nie są wyświetlane w poniższym przykładzie, ale muszą istnieć w innym miejscu w szablonie.
+W ramach szablonu element dependsOn umożliwia zdefiniowanie jednego zasobu jako zależnego od jednego lub większej liczby zasobów. Jego wartość może być rozdzielaną przecinkami listą nazw zasobów. 
+
+Poniższy przykład przedstawia zestaw skalowania maszyn wirtualnych, który zależy od modułu równoważenia obciążenia, sieci wirtualnej i pętli, która tworzy wiele kont magazynu. Te inne zasoby nie są wyświetlane w poniższym przykładzie, ale muszą istnieć w innym miejscu szablonu.
 
 ```json
 {
@@ -43,9 +42,9 @@ Poniższy przykład przedstawia zestaw skalowania maszyn wirtualnych, który zal
 }
 ```
 
-W powyższym przykładzie zależność znajduje się na zasoby, które są tworzone przez pętlę kopiowania, o nazwie **storageLoop**. Aby uzyskać przykład, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).
+W poprzednim przykładzie zależność jest uwzględniona w zasobach, które są tworzone za pomocą pętli kopiowania o nazwie **storageLoop**. Aby zapoznać się z przykładem, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md).
 
-Podczas definiowania zależności, może zawierać przestrzeń nazw dostawcy zasobów i typu zasobu, aby uniknąć niejednoznaczności. Na przykład aby wyjaśnić, moduł równoważenia obciążenia i sieć wirtualną, która może mieć takie same nazwy inne zasoby, należy użyć następującego formatu:
+Podczas definiowania zależności można uwzględnić przestrzeń nazw dostawcy zasobów i typ zasobu, aby uniknąć niejednoznaczności. Aby na przykład wyjaśnić moduł równoważenia obciążenia i sieć wirtualną, które mogą mieć takie same nazwy jak inne zasoby, użyj następującego formatu:
 
 ```json
 "dependsOn": [
@@ -54,14 +53,14 @@ Podczas definiowania zależności, może zawierać przestrzeń nazw dostawcy zas
 ]
 ``` 
 
-Chociaż może żądać Mapowanie relacji między zasobami za pomocą dependsOn, jest ważne, aby zrozumieć, dlaczego wykonujesz go. Na przykład do dokumentów, jak zasoby są ze sobą połączone, dependsOn nie ma właściwej metody postępowania. Nie można wykonać zapytania, które zasoby zostały zdefiniowane w elemencie dependsOn po wdrożeniu. Za pomocą dependsOn, możesz mogłoby to wpłynąć na czas wdrażania, ponieważ Menedżer zasobów nie wdroży w równoległych dwa zasoby, które mają zależności. 
+Podczas gdy nastąpi Nachylony do użycia dependsOn do mapowania relacji między zasobami, ważne jest, aby zrozumieć, dlaczego jest to konieczne. Na przykład w celu dokumentowania sposobu łączenia zasobów dependsOn nie jest właściwe podejście. Po wdrożeniu nie można zbadać, które zasoby zostały zdefiniowane w elemencie dependsOn. Korzystając z dependsOn, może to mieć wpływ na czas wdrażania, ponieważ Menedżer zasobów nie jest wdrażany w równoległych dwóch zasobach, które mają zależność. 
 
 ## <a name="child-resources"></a>Zasoby podrzędne
-Właściwość zasobów pozwala określić zasoby podrzędne, that are related to zasób jest zdefiniowany. Zasoby podrzędne mogą być tylko zdefiniowanych pięć poziomów w głąb. Należy zauważyć, że zależności niejawne wdrożenia nie jest tworzone między zasobu podrzędnego i zasobu nadrzędnego. Jeśli potrzebujesz zasobu podrzędnego do wdrożenia po zasobu nadrzędnego, musi jawnie określać tej zależności z właściwością dependsOn. 
+Właściwość Resources pozwala określić zasoby podrzędne, które są powiązane ze zdefiniowanym zasobem. Zasoby podrzędne można zdefiniować tylko na poziomie pięciu poziomów. Należy pamiętać, że niejawna zależność wdrożenia nie jest tworzona między zasobem podrzędnym i zasobem nadrzędnym. Jeśli zasób podrzędny ma zostać wdrożony po zasobie nadrzędnym, należy jawnie podać tę zależność przy użyciu właściwości dependsOn. 
 
-Każdy zasób nadrzędny akceptuje tylko niektóre typy zasobów jako zasoby podrzędne. Typy zasobów akceptowane są określone w [schemat szablonu](https://github.com/Azure/azure-resource-manager-schemas) zasobu nadrzędnego. Nazwa typu zasobu podrzędnego obejmuje takie jak nazwa typu zasobu nadrzędnego **Microsoft.Web/sites/config** i **Microsoft.Web/sites/extensions** są zasobami podrzędnymi zarówno **Microsoft.Web/sites**.
+Każdy zasób nadrzędny akceptuje tylko niektóre typy zasobów jako zasoby podrzędne. Akceptowane typy zasobów są określone w [schemacie szablonu](https://github.com/Azure/azure-resource-manager-schemas) zasobu nadrzędnego. Nazwa typu zasobu podrzędnego obejmuje nazwę nadrzędnego typu zasobu, takiego jak **Microsoft. Web/Sites/config** i **Microsoft. Web/Sites/Extensions** , są zasobami podrzędnymi **firmy Microsoft. Web/Sites**.
 
-Poniższy przykład pokazuje, SQL server i bazy danych SQL. Zwróć uwagę, jawne zależności jest zdefiniowany między bazą danych SQL i programu SQL server, nawet jeśli baza danych jest elementem podrzędnym serwerze.
+Poniższy przykład przedstawia SQL Server i SQL Database. Należy zauważyć, że dla bazy danych SQL i programu SQL Server jest zdefiniowana jawna zależność, nawet jeśli baza danych jest elementem podrzędnym serwera.
 
 ```json
 "resources": [
@@ -101,22 +100,22 @@ Poniższy przykład pokazuje, SQL server i bazy danych SQL. Zwróć uwagę, jawn
 ]
 ```
 
-## <a name="reference-and-list-functions"></a>Funkcje odwołań i listy
-[Odwoływać się do funkcji](resource-group-template-functions-resource.md#reference) umożliwia wyprowadzanie wartości z innych par nazw i wartości JSON lub zasobów w czasie wykonywania wyrażenia. [Listy * funkcje](resource-group-template-functions-resource.md#list) wartości zwracane dla zasobu z listy operacji.  Odwołanie i lista wyrażeń niejawnie zadeklarować, że jeden zasób zależy od drugiej, jeśli przywoływany zasób został wdrożony w tym samym szablonie i określonego przez nazwę (a nie identyfikator zasobu). Identyfikator zasobu w przypadku przekazania do funkcji odwołanie lub listę, niejawne odwołanie nie jest tworzony.
+## <a name="reference-and-list-functions"></a>funkcje odwołania i listy
+[Funkcja Reference](resource-group-template-functions-resource.md#reference) umożliwia wyrażeniu uzyskanie wartości z innych par nazw i wartości JSON lub zasobów środowiska uruchomieniowego. [Lista * funkcje](resource-group-template-functions-resource.md#list) zwracają wartości dla zasobu z operacji listy.  Wyrażenia odwołania i listy niejawnie deklarują, że jeden zasób zależy od innego, gdy zasób, do którego się odwoływano, jest wdrażany w tym samym szablonie i jest określany przez jego nazwę (nie identyfikator zasobu). W przypadku przekazania identyfikatora zasobu do funkcji odwołania lub listy niejawne odwołanie nie zostanie utworzone.
 
-Jest ogólny format odwołanie funkcji:
+Ogólny format funkcji referencyjnej to:
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-Ogólny format funkcji listKeys jest:
+Ogólny format funkcji listKeys to:
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
-W poniższym przykładzie punktu końcowego usługi CDN jawnie zależy od profilu usługi CDN i niejawnie zależy od aplikacji sieci web.
+W poniższym przykładzie punkt końcowy usługi CDN jest jawnie zależny od profilu CDN i niejawnie zależy od aplikacji sieci Web.
 
 ```json
 {
@@ -133,26 +132,26 @@ W poniższym przykładzie punktu końcowego usługi CDN jawnie zależy od profil
     }
 ```
 
-Można użyć tego elementu lub elementu dependsOn, aby określić zależności, ale nie trzeba używać ich obu zasobów zależnych. Jeśli to możliwe, umożliwia niejawne odwołanie unikać dodawania niepotrzebne zależności.
+Możesz użyć tego elementu lub elementu dependsOn, aby określić zależności, ale nie musisz używać obu dla tego samego zasobu zależnego. Jeśli to możliwe, użyj niejawnego odwołania, aby uniknąć dodawania niepotrzebnej zależności.
 
-Aby dowiedzieć się więcej, zobacz [odwoływać się do funkcji](resource-group-template-functions-resource.md#reference).
+Aby dowiedzieć się więcej, zobacz [Funkcja Reference](resource-group-template-functions-resource.md#reference).
 
 ## <a name="circular-dependencies"></a>Zależności cykliczne
 
-Menedżer zasobów identyfikuje zależności cykliczne podczas weryfikowania szablonu. Jeśli zostanie wyświetlony komunikat o błędzie informujący, że istnieje zależność cykliczną, ocenić szablonu, czy jakieś zależności, nie są potrzebne i można je usunąć. Jeśli usuwanie zależności nie rozwiąże problemu, możesz uniknąć zależności cykliczne, przenosząc pewne operacje wdrażania w zasoby podrzędne, które są wdrażane po zasoby, które mają zależności cyklicznej. Na przykład załóżmy, że wdrożysz dwie maszyny wirtualne, ale należy ustawić właściwości na każdym z nich, które odwołują się do drugiego. Można je wdrożyć w następującej kolejności:
+Menedżer zasobów identyfikuje zależności cykliczne podczas walidacji szablonu. Jeśli zostanie wyświetlony komunikat o błędzie informujący, że istnieje zależność cykliczna, należy oszacować szablon, aby sprawdzić, czy jakiekolwiek zależności nie są potrzebne i można je usunąć. Jeśli Usuwanie zależności nie działa, można uniknąć cyklicznych zależności przez przeniesienie niektórych operacji wdrażania do zasobów podrzędnych, które są wdrażane po zasobach, które mają zależność cykliczną. Załóżmy na przykład, że wdrażasz dwie maszyny wirtualne, ale musisz ustawić właściwości dla każdej z nich, która odwołuje się do drugiego. Można je wdrożyć w następującej kolejności:
 
 1. vm1
 2. vm2
-3. Rozszerzenie maszyny vm1 zależy od tego, vm1 i vm2. Rozszerzenie ustawia wartości maszyny vm1, który otrzymuje od maszyny vm2.
-4. Rozszerzenia dla maszyny vm2, zależy od vm1 i vm2. Rozszerzenie ustawia wartości dla maszyny vm2, która otrzymuje od vm1.
+3. Rozszerzenie na VM1 zależy od VM1 i VM2. Rozszerzenie ustawia wartości w VM1, które pobiera z VM2.
+4. Rozszerzenie na VM2 zależy od VM1 i VM2. Rozszerzenie ustawia wartości w VM2, które pobiera z VM1.
 
-Aby uzyskać informacji o ocenie kolejność wdrażania i rozwiązywanie błędów zależności, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
+Aby uzyskać informacje o ocenie kolejności wdrażania i rozwiązywaniu błędów zależności, zobacz [Rozwiązywanie typowych błędów wdrażania platformy Azure przy użyciu Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby wykonać kroki samouczka, zobacz [samouczek: Tworzenie szablonów usługi Azure Resource Manager przy użyciu zasobów zależnych](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
-* Zalecenia dotyczące podczas ustawiania zależności w temacie [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
-* Aby uzyskać informacje dotyczące rozwiązywania problemów zależności podczas wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* Aby dowiedzieć się więcej na temat tworzenia szablonów usługi Azure Resource Manager, zobacz [Tworzenie szablonów](resource-group-authoring-templates.md). 
+* Aby przejść przez samouczek, zobacz [Samouczek: Tworzenie szablonów Azure Resource Manager z zasobami zależnymi](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+* Zalecenia dotyczące konfigurowania zależności można znaleźć w temacie [Azure Resource Manager Best Practices Template](template-best-practices.md).
+* Aby dowiedzieć się więcej o rozwiązywaniu problemów podczas wdrażania, zobacz [Rozwiązywanie typowych błędów wdrażania platformy Azure przy użyciu Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Aby dowiedzieć się więcej na temat tworzenia szablonów Azure Resource Manager, zobacz Tworzenie [szablonów](resource-group-authoring-templates.md). 
 * Aby uzyskać listę dostępnych funkcji w szablonie, zobacz [funkcje szablonu](resource-group-template-functions.md).
 

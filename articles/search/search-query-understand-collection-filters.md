@@ -1,7 +1,7 @@
 ---
 title: Informacje o filtrach kolekcji OData
 titleSuffix: Azure Cognitive Search
-description: Zrozumienie, jak filtry kolekcji OData działają w zapytaniach usługi Azure Wyszukiwanie poznawcze.
+description: Dowiedz się, w jaki sposób filtry kolekcji OData działają w ramach zapytań Wyszukiwanie poznawcze platformy Azure, w tym ograniczeń i zachowań unikatowych dla kolekcji.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a57e1d16b13d822b6f5b541a7f838b0dd3a69ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794388"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113073"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Informacje o filtrach kolekcji OData na platformie Azure Wyszukiwanie poznawcze
 
@@ -103,7 +103,7 @@ Jak `Rooms/Description` są przechowywane na potrzeby wyszukiwania pełnotekstow
 | protokołów | 1 |
 | wyświetl | 1 |
 
-W przeciwieństwie do powyższego filtru, co oznacza, że "dopasowuje dokumenty, gdy pomieszczenie ma `Type` równe" Pokój Deluxe "i **że to samo miejsce** ma `BaseRate` mniejsze niż 100", zapytanie wyszukiwania ma postać "dopasowania dokumentów, w których `Rooms/Type` ma termin" Deluxe "i `Rooms/Description` ma frazę "widok miejscowości". Nie ma koncepcji pojedynczych pokojów, których pola mogą być skorelowane w tym ostatnim przypadku.
+W przeciwieństwie do powyższego filtru, który zasadniczo wskazuje na "dopasowanie dokumentów, gdy pomieszczenie ma `Type` równe" Pokój Deluxe "i **że to samo miejsce** ma `BaseRate` mniejsze niż 100", zapytanie wyszukiwania ma postać "dopasowanie dokumentów, w których `Rooms/Type` ma termin" Deluxe ", a `Rooms/Description` ma frazę" widok miejscowości ". Nie ma koncepcji pojedynczych pokojów, których pola mogą być skorelowane w tym ostatnim przypadku.
 
 > [!NOTE]
 > Jeśli chcesz uzyskać pomoc techniczną dla wyszukiwania skorelowanego dodanego do usługi Azure Wyszukiwanie poznawcze, zagłosuj na [ten element głosowy użytkownika](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections).
@@ -138,7 +138,7 @@ Rozważmy na przykład pole Kolekcja ciągów z możliwością filtrowania, taki
 
 Wartości pola `seasons` są przechowywane w strukturze o nazwie **odwrócony indeks**, który wygląda następująco:
 
-| Okres obowiązywania Umowy | Identyfikatory dokumentów |
+| Termin | Identyfikatory dokumentów |
 | --- | --- |
 | Spring | 1, 2 |
 | wakacj | 1 |

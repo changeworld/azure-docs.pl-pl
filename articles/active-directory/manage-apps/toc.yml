@@ -70,10 +70,10 @@
               href: end-user-experiences.md
     - name: Aprowizowanie aplikacji (SCIM)
       items:
-        - name: Automatyczna aprowizacja w aplikacjach obsługujących standard SCIM
-          href: use-scim-to-provision-users-and-groups.md
         - name: Planowanie wdrożenia automatycznego aprowizowania użytkowników
           href: plan-auto-user-provisioning.md
+        - name: Aprowizowanie automatyczne a ręczne
+          href: application-provisioning-config-how-to.md
     - name: Serwer proxy aplikacji dla aplikacji lokalnych
       items:
         - name: Serwer proxy aplikacji
@@ -227,28 +227,40 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Aprowizowanie aplikacji (SCIM)
       items:
-        - name: Konfigurowanie aprowizacji użytkowników
+        - name: Konfigurowanie aprowizacji aplikacji
           items:
-            - name: Aprowizowanie automatyczne a ręczne
-              href: application-provisioning-config-how-to.md
             - name: Konfigurowanie automatycznej aprowizacji użytkowników
               href: configure-automatic-user-provisioning-portal.md
+            - name: Automatyczna aprowizacja przy użyciu standardu SCIM
+              href: use-scim-to-provision-users-and-groups.md
             - name: Dostosowywanie mapowań atrybutów
               href: Customize-application-attributes.md
+            - name: Pisanie wyrażeń do mapowania atrybutów
+              href: functions-for-customizing-application-data.md
             - name: Określanie zakresu użytkowników lub grup do aprowizacji
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Pomijanie usuwania dla użytkowników spoza zakresu
               href: skip-out-of-scope-deletions.md
             - name: Monitorowanie stanu i wydajności aprowizacji
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Raportowanie na temat automatycznej aprowizacji użytkowników
+            - name: Raport dotyczący aprowizacji aplikacji
               href: check-status-user-account-provisioning.md
             - name: Eksportowanie i importowanie konfiguracji
               href: export-import-provisioning-configuration.md
+            - name: Automatyzowanie konfiguracji przy użyciu programu MS Graph
+              href: application-provisioning-configure-api.md
         - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
           items:
-            - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
+            - name: Rozwiązywanie problemów z aprowizowaniem aplikacji
               href: application-provisioning-config-problem.md
+            - name: Stan kwarantanny
+              href: application-provisioning-quarantine-status.md
+            - name: Dzienniki aprowizowania
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: Synchronizowanie atrybutu mapowania — aplikacja z galerii
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Długie godziny — aplikacja z galerii
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Problem z autoryzacją (nie można zapisać poświadczeń administratora)
               href: application-provisioning-config-problem-storage-limit.md
             - name: Użytkownicy nie są aprowizowani

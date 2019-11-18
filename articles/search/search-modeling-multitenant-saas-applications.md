@@ -1,5 +1,5 @@
 ---
-title: Modelowanie wielodostępności na potrzeby izolacji zawartości w jednej usłudze
+title: Wielodostępność i izolacja zawartości
 titleSuffix: Azure Cognitive Search
 description: Poznaj typowe wzorce projektowe dla wielodostępnych aplikacji SaaS przy użyciu usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793529"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113277"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Wzorce projektowe dla wielodostępnych aplikacji SaaS i platformy Azure Wyszukiwanie poznawcze
 Aplikacja wielodostępna jest taka, która zapewnia te same usługi i możliwości dla dowolnej liczby dzierżawców, którzy nie mogą zobaczyć ani udostępnić danych innych dzierżawców. W tym dokumencie omówiono strategie izolacji dzierżawców dla aplikacji wielodostępnych utworzonych przy użyciu usługi Azure Wyszukiwanie poznawcze.
@@ -37,7 +37,7 @@ Dodawanie i usuwanie partycji oraz replik umożliwia zwiększenie pojemności us
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Limity usługi i indeksu na platformie Azure Wyszukiwanie poznawcze
 Na platformie Azure Wyszukiwanie poznawcze istnieje kilka różnych [warstw cenowych](https://azure.microsoft.com/pricing/details/search/) , a każda z nich ma różne [limity i przydziały](search-limits-quotas-capacity.md). Niektóre z tych limitów znajdują się na poziomie usługi, a niektóre z nich znajdują się na poziomie indeksu, a niektóre z nich znajdują się na poziomie partycji.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Podstawowa | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba replik na usługę |3 |12 |12 |12 |12 |
 | Maksymalna liczba partycji na usługę |1 |12 |12 |12 |3 |
@@ -125,7 +125,7 @@ Ta metoda może służyć do osiągnięcia funkcjonalności oddzielnych kont uż
 > 
 
 ## <a name="next-steps"></a>Następne kroki
-Usługa Azure Wyszukiwanie poznawcze to atrakcyjny wybór dla wielu aplikacji. Oceniając różne wzorce projektowe dla aplikacji wielodostępnych, należy wziąć pod uwagę [różne warstwy cenowe](https://azure.microsoft.com/pricing/details/search/) i odpowiednie [limity usług](search-limits-quotas-capacity.md) , aby najlepiej dostosować platformę Azure wyszukiwanie poznawcze tak, aby pasowała do obciążeń aplikacji i architektury wszystkich rozmiarów .
+Usługa Azure Wyszukiwanie poznawcze to atrakcyjny wybór dla wielu aplikacji. Oceniając różne wzorce projektowe dla aplikacji wielodostępnych, należy wziąć pod uwagę [różne warstwy cenowe](https://azure.microsoft.com/pricing/details/search/) i odpowiednie [limity usług](search-limits-quotas-capacity.md) , aby najlepiej dostosować platformę Azure wyszukiwanie poznawcze tak, aby pasowała do obciążeń aplikacji i architektury wszystkich rozmiarów.
 
 Wszelkie pytania dotyczące usługi Azure Wyszukiwanie poznawcze i wielodostępne scenariusze można kierować do azuresearch_contact@microsoft.com.
 

@@ -7,17 +7,17 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie aplikacji platformy ASP.NET
+    - name: Aplikacja ASP.NET
       href: cache-web-app-howto.md
-    - name: Tworzenie aplikacji platformy .NET
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Tworzenie aplikacji .NET Core
+    - name: Aplikacja .NET Core
       href: cache-dotnet-core-quickstart.md
-    - name: Tworzenie aplikacji platformy Node.js
-      href: cache-nodejs-get-started.md
-    - name: Tworzenie aplikacji w języku Java
+    - name: Aplikacja platformy .NET
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Aplikacja w języku Java
       href: cache-java-get-started.md
-    - name: Tworzenie aplikacji w języku Python
+    - name: Aplikacja platformy Node.js
+      href: cache-nodejs-get-started.md
+    - name: Aplikacja w języku Python
       href: cache-python-get-started.md
 - name: Samouczki
   items:
@@ -33,10 +33,10 @@
       href: cli-samples.md
 - name: Pojęcia
   items:
-    - name: Najlepsze praktyki
-      href: cache-best-practices.md
     - name: Tryb failover i stosowanie poprawek
       href: cache-failover.md
+    - name: Najlepsze praktyki
+      href: cache-best-practices.md
     - name: Najlepsze rozwiązania architektury dotyczące buforowania
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Przewodniki z instrukcjami
@@ -45,12 +45,14 @@
       items:
         - name: Wybieranie warstwy pamięci podręcznej
           href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: Rozproszenie pamięci podręcznej przez zastosowanie klastrowania
+          href: cache-how-to-premium-clustering.md
         - name: Trwałość pamięci podręcznej dzięki funkcji trwałości danych Redis
           href: cache-how-to-premium-persistence.md
         - name: Ochrona pamięci podręcznej przy użyciu sieci wirtualnej
           href: cache-how-to-premium-vnet.md
-        - name: Rozproszenie pamięci podręcznej przez zastosowanie klastrowania
-          href: cache-how-to-premium-clustering.md
+        - name: Konfigurowanie replikacji geograficznej
+          href: cache-how-to-geo-replication.md
         - name: Migrowanie z usługi Managed Cache Service
           href: cache-migrate-to-redis.md
     - name: Automatyzacja
@@ -79,8 +81,6 @@
       items:
         - name: Konfigurowanie w witrynie Azure Portal
           href: cache-configure.md
-        - name: Konfigurowanie replikacji geograficznej
-          href: cache-how-to-geo-replication.md
         - name: Importowanie/eksportowanie danych
           href: cache-how-to-import-export-data.md
         - name: Ponowne uruchamianie

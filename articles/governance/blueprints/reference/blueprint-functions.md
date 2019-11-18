@@ -1,14 +1,14 @@
 ---
 title: Funkcje planów platformy Azure
-description: Opisuje funkcje do użycia z definicjami i przypisaniami planów platformy Azure.
+description: Zawiera opis funkcji dostępnych do użycia z artefaktami strategii w definicjach i przypisaniach platformy Azure.
 ms.date: 04/15/2019
 ms.topic: reference
-ms.openlocfilehash: 5f4948b55b8889094570574647b7a35ce08f5c12
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 92539da02ddbe22f943454aff54dae4ccb5af3ce
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960311"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128756"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkcje do użycia z planami platformy Azure
 
@@ -33,7 +33,7 @@ Zwraca obiekt właściwości wypełniony przez dane wyjściowe artefaktów planu
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| artefaktname |Tak |ciąg |Nazwa artefaktu planu. |
+| artefaktname |Yes |ciąg |Nazwa artefaktu planu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -122,7 +122,7 @@ Przykłady pobierania danych z przykładu _myTemplateArtifact_ są następujące
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| string1 |Tak |ciąg |Pierwsza wartość dla łączenia. |
+| string1 |Yes |ciąg |Pierwsza wartość dla łączenia. |
 | dodatkowe argumenty |Nie |ciąg |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -147,7 +147,7 @@ Zwraca wartość parametru planu. Określona nazwa parametru musi być zdefiniow
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Tak |ciąg |Nazwa parametru do zwrócenia. |
+| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -268,7 +268,7 @@ Zwraca obiekt, który reprezentuje określony artefakt grupy zasobów. W przeciw
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Symbol zastępczy |Tak |ciąg |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
+| Symbol zastępczy |Yes |ciąg |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 

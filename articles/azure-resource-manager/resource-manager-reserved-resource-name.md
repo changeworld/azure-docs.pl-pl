@@ -1,32 +1,22 @@
 ---
-title: Zarezerwowane błędy nazw zasobów na platformie Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób Rozwiązywanie błędów podczas podawania nazwy zasobu, który zawiera słowo zastrzeżone.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Błędy nazw zarezerwowanych zasobów
+description: Opisuje sposób rozwiązywania błędów podczas podawania nazwy zasobu zawierającej słowo zastrzeżone.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 922389b7c6c1bb7ad1d9b8f6ec35ccc1c5656723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683933"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150453"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Rozwiązywanie błędów nazw zarezerwowanych zasobów
+# <a name="resolve-reserved-resource-name-errors"></a>Rozwiązywanie błędów zarezerwowanych nazw zasobów
 
-W tym artykule opisano błąd, który wystąpi podczas wdrażania zasobu, który zawiera wyrazem zastrzeżonym w jego nazwę.
+W tym artykule opisano błąd występujący podczas wdrażania zasobu zawierającego słowo zastrzeżone w nazwie.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania zasobów, która jest dostępna za pośrednictwem publicznego punktu końcowego, może zostać wyświetlony następujący błąd:
+Podczas wdrażania zasobu, który jest dostępny za pomocą publicznego punktu końcowego, może zostać wyświetlony następujący błąd:
 
 ```
 Code=ReservedResourceName;
@@ -35,47 +25,47 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Przyczyna
 
-Zasoby, które mają publiczny punkt końcowy nie można użyć wyrazów zastrzeżonych ani znaków towarowych, w nazwie.
+Zasoby, które mają publiczny punkt końcowy nie mogą używać słów zarezerwowanych ani znaków towarowych w nazwie.
 
-Wyrazy są zarezerwowane:
+Następujące słowa są zastrzeżone:
 
-* DOSTĘP DO
+* NIEGO
 * AZURE
-* BING
+* PRZEGLĄDARCE
 * BIZSPARK
-* BIZTALK
+* DOKUMENT
 * CORTANA
 * DIRECTX
-* POLECENIA DOTNET
+* DOTNET
 * DYNAMICS
 * EXCEL
-* PROGRAM EXCHANGE
+* ZAMIAN
 * FOREFRONT
 * GROOVE
-* URZĄDZENIA HOLOLENS
-* FUNKCJI HYPER-V
-* ZESTAW KINECT
+* HOLOLENS
+* HYPERV
+* URZĄDZENIA Kinect
 * LYNC
 * MSDN
 * O365
-* PAKIETU OFFICE
+* Pakiet
 * OFFICE365
-* ONEDRIVE
-* PROGRAM ONENOTE
-* PROGRAM OUTLOOK
+* USŁUDZE
+* #B0
+* PROGRAMIE
 * POWERPOINT
-* PROGRAM SHAREPOINT
-* SKYPE
-* VISIO
+* SHAREPOINT
+* ROZMOWY
+* ?
 * VISUALSTUDIO
 
-Następujące słowa nie można użyć jako całe wyrazy lub podciąg nazwy:
+Następujących słów nie można używać jako całego wyrazu lub podciągu w nazwie:
 
-* LOGIN
+* IDENTYFIKATORÓW
 * MICROSOFT
-* SYSTEMU WINDOWS
+* Systemy
 * XBOX
 
 ## <a name="solution"></a>Rozwiązanie
 
-Podaj nazwę, która nie korzysta z jednego ze słów zastrzeżonych.
+Podaj nazwę, która nie używa jednego z wyrazów zastrzeżonych.

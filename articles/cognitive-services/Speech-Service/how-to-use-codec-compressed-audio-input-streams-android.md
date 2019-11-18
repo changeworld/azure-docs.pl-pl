@@ -1,5 +1,5 @@
 ---
-title: Koder-dekoder audio skompresowany dźwięk z zestawem Speech SDK w usłudze Android-Speech
+title: Skompresowane audio kodera-dekoder strumienia przy użyciu zestawu Speech SDK w systemie Android
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przesyłać strumieniowo skompresowane audio do usługi Azure Speech Services przy użyciu zestawu Speech SDK w systemie Android.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464373"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109908"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Używanie kodera-dekoder skompresowanego audio z zestawem Speech SDK w systemie Android
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Instrukcje: korzystanie z kodera-dekoder kompresji audio przy użyciu zestawu Speech SDK w systemie Android
 
 Interfejs API **strumienia danych wejściowych audio** zestawu Speech SDK umożliwia przesyłanie strumieniowo skompresowanego dźwięku do usługi mowy przy użyciu PullStream lub PushStream.
 
@@ -25,9 +25,9 @@ Interfejs API **strumienia danych wejściowych audio** zestawu Speech SDK umożl
 > Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie obsługiwane dla [ C++systemów, C#i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md). Jest ona również obsługiwana w przypadku języka Java w systemach Android i [C na platformie iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
 > Wymagany jest pakiet Speech SDK w wersji 1.7.0 lub nowszej.
 
-W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej.  Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
+W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej. Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
 
-- FORMATU
+- MP3
 - OPUS/OGG
 - FLAC
 - ALAW w kontenerze WAV
@@ -35,7 +35,7 @@ W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej.  Na zewn
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>Wymagania wstępne dotyczące korzystania z kodera skompresowanych danych wejściowych audio w systemie Android
 
-Koder-dekoder skompresowany audio jest implementowany przy użyciu [GStreamer](https://gstreamer.freedesktop.org). Ze względów licencjonowania GStreamer pliki binarne nie są kompilowane z zestawem SDK. Musisz użyć wstępnie skompilowanych plików binarnych dla systemu Android. Aby pobrać wstępnie skompilowane biblioteki, zobacz [Instalowanie aplikacji dla systemu Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
+Koder-dekoder skompresowany audio jest implementowany przy użyciu [GStreamer](https://gstreamer.freedesktop.org). Ze względów licencjonowania GStreamer pliki binarne nie są kompilowane z zestawem SDK. Musisz użyć wstępnie skompilowanych plików binarnych dla systemu Android. Aby pobrać wstępnie skompilowane biblioteki, zobacz [Instalowanie aplikacji dla systemu Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
 `libgstreamer_android.so` jest wymagana. Upewnij się, że wtyczki GStreamer są połączone w `libgstreamer_android.so`.
 
@@ -129,7 +129,7 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Gdy obiekt współużytkowany (libgstreamer_android. so) jest skompilowany, Deweloper aplikacji musi umieścić obiekt współużytkowany w aplikacji systemu Android, aby można go było załadować za pomocą narzędzia Speech SDK.
+Gdy obiekt współużytkowany (libgstreamer_android. so) jest skompilowany, Deweloper aplikacji musi umieścić obiekt współużytkowany w aplikacji systemu Android, aby można go było załadować przy użyciu zestawu Speech SDK.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera skompresowanego sygnału audio
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>Następne kroki
 
 - [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz jak rozpoznać mowę w języku Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Zobacz jak rozpoznać mowę w języku Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

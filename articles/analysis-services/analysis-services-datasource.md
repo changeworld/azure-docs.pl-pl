@@ -4,15 +4,15 @@ description: Opisuje źródła danych i łączniki obsługiwane w przypadku tabe
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572957"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120023"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -22,20 +22,20 @@ ms.locfileid: "73572957"
 
 |Źródło danych  |W pamięci  |Tryb DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Tak      |    Tak      |
-|Azure SQL Data Warehouse     |   Tak      |   Tak       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Tak       |    Nie      |
-|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Tak       |    Nie      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Tak        |  Nie        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Tak       |    Nie      |
-|Usługa Azure HDInsight w systemie plików HDFS<sup>[1](#tab1400a)</sup>     |     Tak     |   Nie       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Tak       |   Nie       |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Yes      |    Yes      |
+|Azure SQL Data Warehouse     |   Yes      |   Yes       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Yes       |    Nie      |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Yes       |    Nie      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Yes        |  Nie        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Yes       |    Nie      |
+|Usługa Azure HDInsight w systemie plików HDFS<sup>[1](#tab1400a)</sup>     |     Yes     |   Nie       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Yes       |   Nie       |
 ||||
 
 tylko <a name="tab1400a">1</a> -tabelaryczny model 1400 i wyższe.   
 Obsługiwane jest <a name="azsqlmanaged">2</a> Azure SQL Database wystąpienia zarządzanego. Ponieważ wystąpienie zarządzane działa w sieci wirtualnej platformy Azure z prywatnym adresem IP, w tym wystąpieniu musi być włączony publiczny punkt końcowy. Jeśli ta funkcja nie jest włączona, wymagana jest lokalna Brama danych.    
 <a name="databricks">3</a> — Azure Databricks przy użyciu łącznika Spark nie jest obecnie obsługiwany.   
-<a name="gen2">4</a> — ADLS Gen2 nie jest obecnie obsługiwane.
+Łącznik <a name="gen2">4</a> ADLS Gen2 nie jest obecnie obsługiwany, ale łącznik BLOB Storage może być używany ze źródłem danych ADLS Gen2.
 
 
   **dostawcy**  
@@ -43,14 +43,14 @@ Modele w pamięci i DirectQuery łączące się ze źródłami danych platformy 
 
 ## <a name="other-data-sources"></a>Inne źródła danych
 
-Nawiązywanie połączenia z lokalnymi źródłami danych z programu i platformy Azure jako serwera wymaga bramy lokalnej. W przypadku korzystania z bramy wymagane są 64-bitowe dostawcy.
+Połączenie z lokalnymi źródłami danych z serwera Azure Analysis Services wymaga bramy lokalnej. W przypadku korzystania z bramy wymagane są 64-bitowe dostawcy.
 
 ### <a name="in-memory-and-directquery"></a>W pamięci i DirectQuery
 
 |Źródło danych | Dostawca w pamięci | Dostawca zapytania bezpośredniego |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
-| Magazyn danych SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
+| Oprogramowanie SQL Server |Sterownik OLE DB firmy Microsoft dla SQL Server MSOLEDBSQL (zalecane), SQL Server Native Client 11,0, .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
+| SQL Server Data Warehouse |Sterownik OLE DB firmy Microsoft dla SQL Server MSOLEDBSQL (zalecane), SQL Server Native Client 11,0, .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
 | Oracle | OLE DB Provider for Oracle, Oracle Dostawca danych dla platformy .NET |Oracle Dostawca danych dla platformy .NET |
 | Teradata |Dostawca OLE DB dla programu Teradata, Dostawca danych programu Teradata dla platformy .NET |Dostawca danych programu Teradata dla platformy .NET |
 | | | |
@@ -66,7 +66,7 @@ Nawiązywanie połączenia z lokalnymi źródłami danych z programu i platformy
 |Plik CSV  |
 |Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
 |Skoroszyt programu Excel     |  
-|Program Exchange<sup>[1](#tab1400b)</sup>     |  
+|Exchange<sup>[1](#tab1400b)</sup>     |  
 |Folder<sup>[1](#tab1400b)</sup>     |
 |IBM Informix<sup>[1](#tab1400b)</sup> (beta) |
 |Dokument JSON<sup>[1](#tab1400b)</sup>     |  
@@ -101,7 +101,7 @@ W przypadku migrowania lokalnego modelu SQL Server Analysis Services tabelaryczn
 2. W obszarze **Edytuj połączenie**kliknij pozycję **Zaawansowane** , aby otworzyć okno właściwości zaawansowana.
 3. W obszarze **Ustaw właściwości zaawansowane** > **dostawców**, a następnie wybierz odpowiedniego dostawcę.
 
-## <a name="impersonation"></a>Chodzi
+## <a name="impersonation"></a>Personifikacja
 W niektórych przypadkach może być konieczne określenie innego konta personifikacji. Konto personifikacji można określić w programie Visual Studio lub SSMS.
 
 Dla lokalnych źródeł danych:

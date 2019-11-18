@@ -1,33 +1,25 @@
 ---
-title: Korzystanie z dokumentacji szablonu usługi Azure Resource Manager | Microsoft Docs
+title: Dokumentacja dotycząca korzystania z szablonów
 description: Skorzystaj z dokumentacji szablonu usługi Azure Resource Manager, aby utworzyć szablon na potrzeby wdrażania szyfrowanego konta magazynu.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 81c02c5e39e23b49291561821b0732227feb5c05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 8957f661665811679c088de7ac4a4b026e9d28c7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103652"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149371"
 ---
-# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Samouczek: Korzystanie z dokumentacji szablonu usługi Azure Resource Manager
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Samouczek: korzystanie z odwołania do szablonu Azure Resource Manager
 
 Dowiedz się, jak znaleźć informacje o schemacie szablonu i używać tych informacji do tworzenia szablonów usługi Azure Resource Manager.
 
 W tym samouczku użyjesz szablonu podstawowego z szablonów szybkiego startu platformy Azure. Korzystając z dokumentacji referencyjnej szablonu, możesz dostosować szablon podstawowy, aby utworzyć zaszyfrowane konto usługi Storage.
 
-![Odwołanie do szablonu usługi Resource Manager wdrażanie zaszyfrowanego konta magazynu](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Odwołanie do szablonu Menedżer zasobów Wdróż zaszyfrowane konto magazynu](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -50,14 +42,14 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/) to repozytorium na potrzeby szablonów usługi Resource Manager. Zamiast tworzyć szablon od podstaw, możesz znaleźć szablon przykładowy i zmodyfikować go. Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard storage account (Tworzenie standardowego konta magazynu)](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Szablon definiuje zasób konta usługi Azure Storage.
 
-1. W programie Visual Studio Code wybierz pozycję **File (Plik)**>**Open File (Otwórz plik)**.
+1. W programie Visual Studio Code wybierz pozycję **File (Plik)** >**Open File (Otwórz plik)** .
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
-4. Wybierz pozycję **File (Plik)**>**Save As (Zapisz jako)**, aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
+3. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik.
+4. Wybierz pozycję **File (Plik)** >**Save As (Zapisz jako)** , aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
 
 ## <a name="understand-the-schema"></a>Informacje o schemacie
 
@@ -78,9 +70,9 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 ## <a name="find-the-template-reference"></a>Znajdowanie dokumentacji szablonu
 
-1. Przejdź do [odwołanie do szablonu usługi Azure](https://docs.microsoft.com/azure/templates/).
-2. W **Filtruj według tytułu** wprowadź **kont magazynu**.
-3. Wybierz **odwołania/szablonu odwołania/Storage/&lt;wersji > / konta magazynu** jak pokazano na poniższym zrzucie ekranu:
+1. Przejdź do [dokumentacji szablonu platformy Azure](https://docs.microsoft.com/azure/templates/).
+2. W polu **Filtruj według tytułu** wprowadź **konto magazynu**.
+3. Wybierz pozycję odwołanie **/odwołanie do szablonu/magazyn/&lt;wersja > konta/Storage** , jak pokazano na poniższym zrzucie ekranu:
 
     ![Konto magazynu odwołania do szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
@@ -154,7 +146,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 3. Wybierz nazwę grupy zasobów.  W grupie zasobów zostanie wyświetlonych łącznie sześć zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób użycia dokumentacji szablonu w celu dostosowania istniejącego szablonu. Aby dowiedzieć się, jak utworzyć wiele wystąpień konta magazynu, zobacz:
 

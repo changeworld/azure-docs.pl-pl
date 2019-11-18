@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720229"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123497"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Ocenianie serwerów fizycznych za pomocą Azure Migrate: Ocena serwera
 
@@ -43,7 +43,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 - [Wykonaj](tutorial-prepare-physical.md) pierwszy samouczek z tej serii. Jeśli tego nie zrobisz, instrukcje podane w tym samouczku nie będą działały.
 - Oto co należy zrobić w pierwszym samouczku:
     - [Skonfiguruj uprawnienia platformy Azure](tutorial-prepare-physical.md#prepare-azure) dla Azure Migrate.
-    - [Przygotuj serwery fizyczne](tutorial-prepare-physical.md#prepare-azure) do oceny. Wymagania dotyczące urządzenia należy zweryfikować. Należy również mieć skonfigurowane konto do odnajdowania serwera fizycznego. Wymagane porty powinny być dostępne i należy mieć świadomość adresów URL potrzebnych do uzyskania dostępu do platformy Azure.
+    - [Przygotuj serwery fizyczne](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) do oceny. Wymagania dotyczące urządzenia należy zweryfikować. Należy również mieć skonfigurowane konto do odnajdowania serwera fizycznego. Wymagane porty powinny być dostępne i należy mieć świadomość adresów URL potrzebnych do uzyskania dostępu do platformy Azure.
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Konfigurowanie projektu Azure Migrate
@@ -104,9 +104,10 @@ Pobierz spakowany plik dla urządzenia.
 Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
 
 1. Na maszynie, na którą pobrano plik, otwórz okno wiersza polecenia administratora.
-2. Uruchom następujące polecenie, aby wygenerować skrót dla wirtualnego dysku twardego
+2. Uruchom następujące polecenie, aby wygenerować skrót dla pliku spakowanego
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Przykład użycia: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
+
 3.  W przypadku 1.19.05.10 w wersji urządzenia wygenerowany skrót powinien być zgodny z tymi ustawieniami.
 
   **Algorytm** | **Wartość skrótu**
@@ -114,7 +115,8 @@ Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
   SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Uruchom skrypt Instalatora Azure Migrate
-= Skrypt Instalatora wykonuje następujące czynności:
+
+Skrypt Instalatora wykonuje następujące czynności:
 
 - Instaluje agentów i aplikację sieci Web na potrzeby odnajdywania i oceny serwera fizycznego.
 - Zainstaluj role systemu Windows, w tym usługi aktywacji systemu Windows, usług IIS i programu PowerShell ISE.
@@ -129,12 +131,16 @@ Uruchom skrypt w następujący sposób:
 1. Wyodrębnij spakowany plik do folderu na serwerze, który będzie hostować urządzenie.
 2. Uruchom program PowerShell na powyższym serwerze z uprawnieniami administracyjnymi (z podwyższonym poziomem uprawnień).
 3. Zmień katalog programu PowerShell do folderu, w którym zawartość została wyodrębniona z pobranego pliku spakowanego.
-4. Uruchom skrypt, uruchamiając następujące polecenie:
+4. Uruchom skrypt o nazwie **AzureMigrateInstaller. ps1** , uruchamiając następujące polecenie:
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Po pomyślnym zakończeniu działania skryptu zostanie uruchomiona aplikacja sieci Web urządzenia.
+Po pomyślnym zakończeniu działania skryptu zostanie uruchomiona aplikacja sieci Web urządzenia. 
 
+W razie jakichkolwiek problemów możesz uzyskać dostęp do dzienników skryptów w witrynie C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log w celu rozwiązywania problemów.
+
+> [!NOTE]
+> Nie wykonuj skryptu Instalatora Azure Migrate na istniejącym urządzeniu Azure Migrate.
 
 ### <a name="verify-appliance-access-to-azure"></a>Weryfikowanie dostępu urządzenia do platformy Azure
 
@@ -182,7 +188,7 @@ Można dodać jeden zestaw poświadczeń dla serwerów z systemami Windows i Lin
     - Aby usunąć serwer, wybierz pozycję > **Usuń**.
 4. Po sprawdzeniu poprawności kliknij przycisk **Zapisz i Rozpocznij odnajdywanie** , aby rozpocząć proces odnajdywania.
 
-Spowoduje to uruchomienie odnajdywania. Metadane odnalezionych serwerów mogą pojawić się w Azure Portal około 15 minut. 
+Spowoduje to uruchomienie odnajdywania. Aby metadane wykrytego serwera pojawiły się w Azure Portal, zajmie około 1,5 minut na serwer. 
 
 ### <a name="verify-servers-in-the-portal"></a>Weryfikowanie serwerów w portalu
 
@@ -286,7 +292,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 21%–40% | 2 gwiazdki
 41%–60% | 3 gwiazdki
 61%–80% | 4 gwiazdki
-81%–100% | 5 gwiazdek
+81%-100% | 5 gwiazdek
 
 [Dowiedz się więcej](best-practices-assessment.md#best-practices-for-confidence-ratings) o najlepszych rozwiązaniach dotyczących klasyfikacji zaufania.
 

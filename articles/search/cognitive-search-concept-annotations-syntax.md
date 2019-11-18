@@ -1,5 +1,5 @@
 ---
-title: Odwołania do wejść i wyjść w potoku wzbogacenia AI
+title: Odwołania do danych wejściowych i wyjść w umiejętności
 titleSuffix: Azure Cognitive Search
 description: Objaśnia składnię adnotacji oraz sposób odwoływania się do adnotacji w danych wejściowych i wyjściowych zestawu umiejętności w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fe81ccb5324d75212763e20ac2514ade9ce50496
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787777"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113872"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Jak odwoływać się do adnotacji w usłudze Azure Wyszukiwanie poznawcze zestawu umiejętności
 
@@ -25,7 +25,7 @@ Przykłady w tym artykule są oparte na polu *zawartości* wygenerowanej automat
 
 Przed przejrzeniem składni należy ponownie odwiedzić kilka ważnych koncepcji, aby lepiej zrozumieć przykłady opisane w dalszej części tego artykułu.
 
-| Okres obowiązywania Umowy | Opis |
+| Termin | Opis |
 |------|-------------|
 | Wzbogacony dokument | Wzbogacony dokument to wewnętrzna struktura utworzona i używana przez potok do przechowywania wszystkich adnotacji związanych z dokumentem. Zastanów się, że wzbogacony dokument jest drzewem adnotacji. Na ogół adnotacja utworzona na podstawie poprzedniej adnotacji staną się jej elementami podrzędnymi.<p/>Dokumenty wzbogacone istnieją tylko na czas wykonywania zestawu umiejętności. Gdy zawartość jest zamapowana na indeks wyszukiwania, wzbogacony dokument nie będzie już potrzebne. Chociaż nie można bezpośrednio korzystać z ulepszonych dokumentów, warto mieć model psychiczny dokumentów podczas tworzenia zestawu umiejętności. |
 | Kontekst wzbogacania | Kontekst, w którym odbywa się wzbogacanie, w odniesieniu do którego element jest wzbogacany. Domyślnie kontekst wzbogacania jest na poziomie `"/document"`, w zakresie do poszczególnych dokumentów. Po uruchomieniu umiejętności dane wyjściowe tej umiejętności stają się [właściwościami zdefiniowanego kontekstu](#example-2).|

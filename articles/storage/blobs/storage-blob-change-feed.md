@@ -8,23 +8,20 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c4669809f1efa1f69081da17bf5ccbeddc39a716
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f48c8712a2f4fbd69db7de5247e3293ad57ae1e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077147"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112821"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Obsługa kanału informacyjnego zmiany w usłudze Azure Blob Storage (wersja zapoznawcza)
 
 Celem źródła zmian jest dostarczenie dzienników transakcji wszystkich zmian, które występują w obiektach Blob i metadanych obiektów BLOB na koncie magazynu. Kanał informacyjny zmiany zawiera **uporządkowany**, **gwarantowany**, **trwały**, **niezmienny** **Dziennik tych** zmian. Aplikacje klienckie mogą odczytywać te dzienniki w dowolnym momencie, w ramach przesyłania strumieniowego lub w trybie wsadowym. Kanał informacyjny zmiany umożliwia tworzenie wydajnych i skalowalnych rozwiązań, które przetwarzają zdarzenia zmiany występujące na koncie Blob Storage przy niskich kosztach.
 
-> [!NOTE]
-> Kanał informacyjny zmiany jest w publicznej wersji zapoznawczej i jest dostępny w regionach **westcentralus** i **westus2** . Zobacz sekcję [warunki](#conditions) w tym artykule. Aby zarejestrować się w wersji zapoznawczej, zobacz sekcję [Rejestrowanie subskrypcji](#register) w tym artykule.
-
 Źródło zmian jest przechowywane jako [obiekty blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) w specjalnym kontenerze na koncie magazynu przy użyciu standardowego kosztu [cennika obiektów BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) . Możesz kontrolować okres przechowywania tych plików zgodnie z wymaganiami (zobacz [warunki](#conditions) bieżącej wersji). Zdarzenia zmiany są dołączane do źródła zmian jako rekordy w specyfikacji formatu [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) : kompaktowy, szybki i binarny format, który zapewnia rozbudowane struktury danych z wbudowanym schematem. Ten format jest powszechnie używany w ekosystemie usługi Hadoop, usługi Stream Analytics i Azure Data Factory.
 
-Można przetwarzać te dzienniki asynchronicznie, przyrostowo lub w całości. Dowolna liczba aplikacji klienckich może niezależnie odczytywać Źródło zmian, równolegle i we własnym tempie. Aplikacje analityczne, takie jak [Apache drążenie](https://drill.apache.org/docs/querying-avro-files/) lub [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) , mogą korzystać z dzienników bezpośrednio jako pliki Avro, dzięki czemu można przetwarzać je przy niskich kosztach, z wysoką przepustowością i bez konieczności pisania niestandardowej aplikacji.
+Można przetwarzać te dzienniki asynchronicznie, przyrostowo lub w całości. Dowolna liczba aplikacji klienckich może niezależnie odczytywać Źródło zmian, równolegle i we własnym tempie. Aplikacje analityczne, takie jak [Apache drążenie](https://drill.apache.org/docs/querying-avro-files/) lub [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) , mogą zużywać dzienniki bezpośrednio jako pliki Avro, dzięki czemu można przetwarzać je przy niskich kosztach, z wysoką przepustowością i bez konieczności pisania niestandardowej aplikacji.
 
 Obsługa kanałów informacyjnych zmian jest odpowiednia dla scenariuszy, które przetwarzają dane na podstawie obiektów, które uległy zmianie. Na przykład aplikacje mogą:
 
@@ -32,7 +29,7 @@ Obsługa kanałów informacyjnych zmian jest odpowiednia dla scenariuszy, które
   
   - Wyodrębnij szczegółowe informacje o analizie biznesowej i metryki na podstawie zmian, które występują w obiektach, w formie przesyłania strumieniowego lub w trybie wsadowym.
   
-  - Przechowuj, przeprowadzaj inspekcję i Analizuj zmiany w obiektach, w dowolnym czasie, pod kątem bezpieczeństwa, zgodności lub analizy na potrzeby zarządzania danymi w przedsiębiorstwie.
+  - Przechowuj, przeprowadzaj inspekcję i Analizuj zmiany w obiektach, w dowolnym czasie, pod kątem bezpieczeństwa, zgodności lub analizy dla zarządzania danymi w przedsiębiorstwie.
 
   - Twórz rozwiązania do tworzenia kopii zapasowych, dublowania lub replikowania stanu obiektów na koncie w celu zarządzania awaryjnego lub zapewnienia zgodności.
 
@@ -54,6 +51,9 @@ Poniżej przedstawiono kilka kwestii, które należy wziąć pod uwagę po włą
 - Kanał informacyjny zmiany przechwytuje *wszystkie* zmiany dla wszystkich dostępnych zdarzeń występujących na tym koncie. Aplikacje klienckie mogą odfiltrować typy zdarzeń zgodnie z wymaganiami. (Zobacz [warunki](#conditions) bieżącej wersji).
 
 - Tylko konta GPv2 i BLOB Storage mogą włączać Źródło zmian. Konta magazynu GPv1, konta BlockBlobStorage w warstwie Premium oraz konta obsługujące hierarchiczną przestrzeń nazw nie są obecnie obsługiwane.
+
+> [!IMPORTANT]
+> Kanał informacyjny zmiany jest w publicznej wersji zapoznawczej i jest dostępny w regionach **westcentralus** i **westus2** . Zobacz sekcję [warunki](#conditions) w tym artykule. Aby zarejestrować się w wersji zapoznawczej, zobacz sekcję [Rejestrowanie subskrypcji](#register) w tym artykule. Musisz zarejestrować swoją subskrypcję, aby można było włączyć funkcję źródła zmian na kontach magazynu.
 
 ### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -302,7 +302,16 @@ W tej sekcji opisano znane problemy i warunki w bieżącej publicznej wersji zap
 - Właściwość `url` pliku dziennika jest zawsze pusta.
 - Właściwość `LastConsumable` w pliku Segments. JSON nie zawiera pierwszego segmentu, który kończy się podawaniem zmian. Ten problem występuje tylko po sfinalizowaniu pierwszego segmentu. Wszystkie kolejne segmenty po pierwszej godzinie są dokładnie przechwytywane we właściwości `LastConsumable`.
 
+## <a name="faq"></a>Często zadawane pytania
+
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Jaka jest różnica między źródłem zmian i rejestrowaniem analityka magazynu?
+Kanał informacyjny zmiany jest zoptymalizowany pod kątem tworzenia aplikacji, ponieważ zdarzenia związane z tworzeniem, modyfikowaniem i usuwaniem obiektów BLOB są rejestrowane w dzienniku źródła zmian. Rejestrowanie analiz rejestruje wszystkie pomyślne i Nieudane żądania dla wszystkich operacji, w tym operacje odczytu i listy. Korzystając z kanału informacyjnego zmiany, nie trzeba martwić się o filtrowanie informacji o hałasie dziennika na dużym koncie transakcji i skupić się tylko na zdarzeniach zmiany obiektu BLOB.
+
+### <a name="should-i-use-change-feed-or-storage-events"></a>Czy należy używać kanału informacyjnego zmian czy zdarzeń magazynu?
+Można korzystać z obu funkcji, ponieważ zdarzenia źródła zmian i usługi [BLOB Storage](storage-blob-event-overview.md) są podobne do natury, z główną różnicą opóźnienia, kolejności i magazynowania rekordów zdarzeń. Polecenie Zmień źródło zapisuje rekordy w dzienniku kanału informacyjnego zmian zbiorczo co kilka minut i gwarantując kolejność operacji zmiany obiektów BLOB. Zdarzenia magazynu są wypychane w czasie rzeczywistym i mogą nie być uporządkowane. Zdarzenia dotyczące zmiany źródła danych są przechowywane w ramach konta magazynu, podczas gdy zdarzenia magazynu są przejściowe i zużywane przez program obsługi zdarzeń, chyba że zostaną jawnie zapisane.
+
 ## <a name="next-steps"></a>Następne kroki
 
 - Zobacz przykład sposobu odczytywania źródła zmian za pomocą aplikacji klienckiej platformy .NET. Zobacz [dzienniki źródła zmian procesów na platformie Azure Blob Storage](storage-blob-change-feed-how-to.md).
 - Dowiedz się więcej na temat reagowania na zdarzenia w czasie rzeczywistym. Zobacz [, jak BLOB Storage zdarzenia](storage-blob-event-overview.md)
+- Dowiedz się więcej na temat szczegółowych informacji rejestrowania dla operacji zakończonych powodzeniem i zakończonych niepowodzeniem dla wszystkich żądań. Zobacz [Rejestrowanie analizy usługi Azure Storage](../common/storage-analytics-logging.md)

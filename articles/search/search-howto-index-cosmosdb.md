@@ -1,5 +1,5 @@
 ---
-title: Indeksowanie Azure Cosmos DB źródła danych
+title: Przeszukaj Azure Cosmos DB dane
 titleSuffix: Azure Cognitive Search
 description: Przeszukaj Azure Cosmos DB źródło danych i pozyskaj dane w indeksie z możliwością wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze. Indeksatory automatyzują pozyskiwanie danych dla wybranych źródeł danych, takich jak Azure Cosmos DB.
 author: mgottein
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0657d3d5aec414b867e85b627fcf77174c8ce789
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7e4d51701fd8614831585aac03f2c8a909b2b847
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889908"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112742"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indeksować Cosmos DB danych przy użyciu indeksatora na platformie Azure Wyszukiwanie poznawcze 
 
@@ -172,7 +172,7 @@ Treść żądania zawiera definicję źródła danych, która powinna zawierać 
 
 | Pole   | Opis |
 |---------|-------------|
-| **Nazwij** | Wymagany. Wybierz dowolną nazwę reprezentującą obiekt źródła danych. |
+| **name** | Wymagany. Wybierz dowolną nazwę reprezentującą obiekt źródła danych. |
 |**type**| Wymagany. Musi być `cosmosdb`. |
 |**uwierzytelniające** | Wymagany. Musi być Cosmos DB parametrami połączenia.<br/>W przypadku kolekcji SQL parametry połączenia mają następujący format: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>W przypadku kolekcji MongoDB Dodaj **rodzaju interfejsu API = MongoDB** do parametrów połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>[Aby uzyskać](https://aka.ms/azure-cognitive-search/indexer-preview) dostęp do wersji zapoznawczej i zapoznać się z informacjami na temat sposobu formatowania poświadczeń, w przypadku wykresów Gremlin i tabel Cassandra.<br/><br/>Należy unikać numerów portów w adresie URL punktu końcowego. Jeśli dołączysz numer portu, usługa Azure Wyszukiwanie poznawcze nie będzie w stanie indeksować bazy danych Azure Cosmos DB.|
 | **wbudowane** | Zawiera następujące elementy: <br/>**Nazwa**: wymagane. Określ identyfikator kolekcji baz danych do indeksowania.<br/>**zapytanie**: opcjonalne. Możesz określić zapytanie, aby spłaszczyć dowolny dokument JSON do prostego schematu, który usługa Azure Wyszukiwanie poznawcze może indeksować.<br/>W przypadku interfejsu API MongoDB, interfejsu API Gremlin i interfejs API Cassandra zapytania nie są obsługiwane. |
@@ -251,12 +251,12 @@ Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem źródłow
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Mapowanie między typami danych JSON i typami danych Wyszukiwanie poznawcze platformy Azure
 | Typ danych JSON | Zgodne typy pól indeksu docelowego |
 | --- | --- |
-| Logiczna |EDM. Boolean, EDM. String |
-| Liczby, które wyglądają jak liczby całkowite |EDM. Int32, EDM. Int64, EDM. String |
-| Liczby, które wyglądają jak zmiennoprzecinkowe |EDM. Double, EDM. String |
+| Bool |Edm.Boolean, Edm.String |
+| Liczby, które wyglądają jak liczby całkowite |Edm.Int32, Edm.Int64, Edm.String |
+| Liczby, które wyglądają jak zmiennoprzecinkowe |Edm.Double, Edm.String |
 | Ciąg |Edm.String |
 | Tablice typów pierwotnych, na przykład ["a", "b", "c"] |Collection(Edm.String) |
-| Ciągi, które wyglądają jak daty |EDM. DateTimeOffset, EDM. String |
+| Ciągi, które wyglądają jak daty |Edm.DateTimeOffset, Edm.String |
 | Obiekty GEOJSON, na przykład {"Type": "Point", "współrzędne": [Long, lat]} |Edm.GeographyPoint |
 | Inne obiekty JSON |Nie dotyczy |
 
@@ -285,10 +285,10 @@ Aby uzyskać więcej informacji o definiowaniu harmonogramów indeksatora, zobac
 
 Ogólnie dostępny zestaw .NET SDK ma pełną zgodność z ogólnie dostępnym interfejsem API REST. Zalecamy zapoznanie się z poprzednią sekcją interfejsu API REST, aby poznać koncepcje, przepływ pracy i wymagania. Następnie można zapoznać się z następującą dokumentacją interfejsu API platformy .NET, aby zaimplementować indeksator JSON w kodzie zarządzanym.
 
-+ [Microsoft. Azure. Search. models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [Microsoft. Azure. Search. models. DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. models. indeksator](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 

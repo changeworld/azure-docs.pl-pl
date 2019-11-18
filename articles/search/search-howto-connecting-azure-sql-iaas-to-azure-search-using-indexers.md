@@ -1,5 +1,5 @@
 ---
-title: Połączenie maszyny wirtualnej z maszyną wirtualną usługi Azure SQL na potrzeby indeksowania wyszukiwania
+title: Połączenie maszyny wirtualnej Azure SQL do indeksowania wyszukiwania
 titleSuffix: Azure Cognitive Search
 description: Włącz połączenia szyfrowane i skonfiguruj zaporę tak, aby zezwalała na połączenia SQL Server na maszynie wirtualnej platformy Azure za pomocą indeksatora w usłudze Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 57bea41d95b8859af55be777b17189861a445a12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792145"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111894"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurowanie połączenia z indeksatora Wyszukiwanie poznawcze platformy Azure do SQL Server na maszynie wirtualnej platformy Azure
 
-Jak zostało to opisane w temacie [łączenie Azure SQL Database z platformą azure wyszukiwanie poznawcze przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenie indeksatorów względem **SQL Server na maszynach wirtualnych platformy Azure** (lub **Azure** Virtual Machines for Short) jest obsługiwane przez usługę Azure wyszukiwanie poznawcze, ale istnieje kilka wymagania wstępne związane z zabezpieczeniami — najpierw należy zachować ostrożność. 
+Jak zostało to opisane w sekcji [łączenie Azure SQL Database z platformą azure wyszukiwanie poznawcze przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenie indeksatorów względem **SQL Server na maszynach wirtualnych platformy Azure** (lub na **maszynach wirtualnych z usługą SQL Azure** ) jest obsługiwane przez usługę Azure wyszukiwanie poznawcze, ale istnieje kilka wymagań wstępnych związanych z zabezpieczeniami, które należy wziąć pod uwagę w pierwszej kolejności. 
 
 Połączenia z usługi Azure Wyszukiwanie poznawcze do SQL Server na maszynie wirtualnej są publicznym połączeniem internetowym. Wszystkie miary zabezpieczeń, które zwykle są spełnione w przypadku tych połączeń, mają również zastosowanie tutaj:
 

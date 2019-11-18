@@ -1,21 +1,21 @@
 ---
-title: C#Samouczek dotyczący wywoływania interfejsy API usług Cognitive Services w potoku wzbogacenia AI
+title: 'Samouczek: Tworzenie zestawu umiejętności C# przy użyciu platformy .NET'
 titleSuffix: Azure Cognitive Search
-description: Przechodzenie między przykładem wyodrębniania danych, języka naturalnego i przetwarzania obrazu AI na platformie Azure Wyszukiwanie poznawcze potoku indeksowania.
+description: Przechodzenie do przykładowego kodu pokazującego wyodrębnianie danych, język naturalny i przetwarzanie obrazów AI w potoku indeksowania systemu Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7a8146f524a6e6f9abed2440c98a83aa3878f0c7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790228"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111734"
 ---
-# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-indexing-pipeline"></a>C#Samouczek: wywoływanie interfejsy API usług Cognitive Services w potoku indeksowania Wyszukiwanie poznawcze platformy Azure
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Samouczek: Tworzenie potoku wzbogacania AI przy C# użyciu zestawu SDK platformy .NET
 
 W ramach tego samouczka nauczysz się Mechanics wzbogacania danych programistycznych na platformie Wyszukiwanie poznawcze Azure, korzystając z *umiejętności poznawczych*. Umiejętności są obsługiwane przez funkcję przetwarzania języka naturalnego (NLP) i możliwości analizy obrazów w Cognitive Services. Za poorednictwem kompozycji i konfiguracji zestawu umiejętności można wyodrębnić tekst i tekst reprezentacje obrazu lub zeskanowanego pliku dokumentu. Możesz również wykryć język, jednostki, kluczowe frazy i inne. Wynik końcowy to rozbudowana dodatkowa zawartość w indeksie wyszukiwania utworzonym przez potok indeksowania oparty na formacie AI.
 
@@ -91,7 +91,7 @@ Zacznij od otwierania programu Visual Studio i tworzenia nowego projektu aplikac
 
 ### <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
-[Zestaw Azure wyszukiwanie poznawcze .NET SDK](https://aka.ms/search-sdk) składa się z kilku bibliotek klienckich, które umożliwiają zarządzanie indeksami, źródłami danych, indeksatorami i umiejętności, a także przekazywaniem i zarządzaniem dokumentami oraz wykonywanie zapytań, bez konieczności zajmowania się szczegółami HTTP i JSON. Te biblioteki klienckie są dystrybuowane jako pakiety NuGet.
+[Zestaw Azure wyszukiwanie poznawcze .NET SDK](https://aka.ms/search-sdk) składa się z kilku bibliotek klienckich, które umożliwiają zarządzanie indeksami, źródłami danych, indeksatorami i umiejętności, a także przekazywaniem i zarządzaniem dokumentami oraz wykonywanie zapytań, bez konieczności zajmowania się szczegółowymi informacjami dotyczącymi protokołu HTTP i JSON. Te biblioteki klienckie są dystrybuowane jako pakiety NuGet.
 
 W przypadku tego projektu należy zainstalować wersję 9 pakietu NuGet `Microsoft.Azure.Search` i najnowszy `Microsoft.Extensions.Configuration.Json` pakiet NuGet.
 

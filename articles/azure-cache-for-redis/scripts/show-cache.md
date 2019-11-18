@@ -1,26 +1,19 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Uzyskaj szczegóły pamięci podręcznej Azure redis Cache | Dokumentacja firmy Microsoft
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Uzyskaj szczegóły pamięci podręcznej Azure redis Cache
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Uzyskaj szczegóły pamięci podręcznej Azure redis Cache
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
 tags: azure-service-management
-ms.assetid: 155924e6-00d5-4a8c-ba99-5189f300464a
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: 8b4c0311f935fa141170206f51e01b90eb4b98ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f3e6c6dab95722eebdc4a175379444ef5840cad1
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240295"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122482"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Uzyskaj szczegółowe informacje o pamięci podręcznej Azure dla usługi Redis
 
@@ -41,7 +34,7 @@ Ten skrypt używa poniższych poleceń, można pobrać szczegółów dla wystąp
 | [AZ redis show](https://docs.microsoft.com/cli/azure/redis) | Pobierz szczegóły usługi Azure Cache dla wystąpienia usługi Redis. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

@@ -1,25 +1,17 @@
 ---
-title: Jak skonfigurować klastrowanie Redis dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis | Microsoft Docs
+title: Jak skonfigurować klastrowanie Redis dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
 description: Dowiedz się, jak tworzyć i zarządzać klastrowaniem Redis dla usługi Azure cache w warstwie Premium dla wystąpień Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596921"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122162"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować klastrowanie Redis dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. W tym artykule opisano sposób konfigurowania klastrowania w pamięci podręcznej systemu Azure w warstwie Premium dla wystąpienia Redis.
@@ -38,20 +30,20 @@ Klastrowanie nie zwiększa liczby połączeń dostępnych dla klastrowanej pami�
 
 Na platformie Azure klaster Redis jest oferowany jako model podstawowy/repliki, gdzie każdy fragmentu ma parę podstawowa/repliki z replikacją, w której replikacja jest zarządzana przez usługę Azure cache for Redis. 
 
-## <a name="clustering"></a>Usługę
+## <a name="clustering"></a>Klastrowanie
 Klastrowanie jest włączane w **nowym bloku Azure cache for Redis** podczas tworzenia pamięci podręcznej. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 Klastrowanie jest konfigurowane w bloku **klastra Redis** .
 
-![Usługę][redis-cache-clustering]
+![Klastrowanie][redis-cache-clustering]
 
 W klastrze może znajdować się maksymalnie 10 fragmentów. Kliknij pozycję **włączone** i przesuń suwak lub wpisz liczbę z zakresu od 1 do 10 dla **fragmentu liczba** i kliknij przycisk **OK**.
 
 Każdy fragmentu jest parę pamięci podręcznej podstawowej/repliki zarządzaną przez platformę Azure, a łączny rozmiar pamięci podręcznej jest obliczany przez pomnożenie liczby fragmentów przez rozmiar pamięci podręcznej wybrany w warstwie cenowej. 
 
-![Usługę][redis-cache-clustering-selected]
+![Klastrowanie][redis-cache-clustering-selected]
 
 Po utworzeniu pamięci podręcznej można nawiązać z nią połączenie i używać jej w taki sam sposób, jak nieklastrowana pamięć podręczna, a następnie Redis dystrybuuje dane w całej pamięci podręcznej fragmentów. Jeśli Diagnostyka jest [włączona](cache-how-to-monitor.md#enable-cache-diagnostics), metryki są przechwytywane osobno dla każdego fragmentuu i można je [wyświetlić](cache-how-to-monitor.md) w bloku pamięci podręcznej platformy Azure dla Redis. 
 
@@ -99,7 +91,7 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 * [Co mam zrobić w przypadku korzystania z StackExchange. Redis i klastrowania?](#i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do)
 
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>Czy muszę wprowadzić zmiany w aplikacji klienckiej w celu korzystania z klastrowania?
-* Gdy klastrowanie jest włączone, dostępna jest tylko baza danych 0. Jeśli aplikacja kliencka używa wielu baz danych i próbuje odczytać lub zapisać w bazie danych innej niż 0, zgłaszany jest następujący wyjątek. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
+* Gdy klastrowanie jest włączone, dostępna jest tylko baza danych 0. Jeśli aplikacja kliencka używa wielu baz danych i próbuje odczytać lub zapisać w bazie danych innej niż 0, zgłaszany jest następujący wyjątek. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->``StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
   Aby uzyskać więcej informacji, zobacz temat [Redis Cluster Specification-zaimplementowany podzestaw](https://redis.io/topics/cluster-spec#implemented-subset).
 * Jeśli używasz [stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/), musisz użyć 1.0.481 lub nowszego. Łączysz się z pamięcią podręczną przy użyciu tych samych [punktów końcowych, portów i kluczy](cache-configure.md#properties) , które są używane podczas nawiązywania połączenia z pamięcią podręczną, w której nie włączono obsługi klastrowania. Jedyną różnicą jest to, że wszystkie operacje odczytu i zapisu należy wykonać w bazie danych 0.
@@ -111,7 +103,7 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>W jaki sposób klucze są dystrybuowane w klastrze?
 Dokumentacja [modelu dystrybucji kluczy](https://redis.io/topics/cluster-spec#keys-distribution-model) Redis: przestrzeń klucza jest dzielona na 16384 gniazd. Każdy klucz jest przypisywany do jednego z tych miejsc, które są rozproszone w węzłach klastra. Można skonfigurować, która część klucza ma być używana do mieszania, aby mieć pewność, że wiele kluczy znajduje się w tym samym fragmentu za pomocą tagów skrótu.
 
-* Klucze ze znacznikiem skrótu — Jeśli jakakolwiek część klucza jest zawarta w `{` i `}`, tylko ta część klucza ma wartość hash dla celów określania gniazda skrótu klucza. Na przykład następujące trzy klucze powinny znajdować się w tym samym fragmentu: `{key}1`, `{key}2` i `{key}3`, ponieważ tylko część `key` nazwy jest poddana skrótowi. Aby zapoznać się z pełną listą parametrów skrótu kluczy, zobacz [Tagi skrótów kluczy](https://redis.io/topics/cluster-spec#keys-hash-tags).
+* Klucze ze znacznikiem skrótu — Jeśli jakakolwiek część klucza jest zawarta w `{` i `}`, tylko ta część klucza ma wartość hash dla celów określania gniazda skrótu klucza. Na przykład następujące trzy klucze powinny znajdować się w tym samym fragmentu: `{key}1`, `{key}2`i `{key}3`, ponieważ tylko część `key` nazwy jest poddana skrótowi. Aby zapoznać się z pełną listą parametrów skrótu kluczy, zobacz [Tagi skrótów kluczy](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Klucze bez znacznika skrótu — cała nazwa klucza jest używana do tworzenia skrótów. Wynikiem tego jest statystycznie równomierny rozkład w fragmentów pamięci podręcznej.
 
 W celu uzyskania najlepszej wydajności i przepływności zalecamy równomierne dystrybuowanie kluczy. Jeśli używasz kluczy ze znacznikiem skrótu, jest on odpowiedzialny za zapewnienie, że klucze są dystrybuowane równomiernie.

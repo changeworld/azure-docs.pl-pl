@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3894904575d545aed0dbfce470247afb145b7590
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605662"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129308"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Wdrażanie usługi Azure Databricks w sieci wirtualnej
 
@@ -119,7 +119,7 @@ Jeśli użyjesz tego szablonu bez również używania szablonu sieciowe grupy za
 
 ## <a name="whitelisting-subnet-traffic"></a>Ruch podsieci listy dozwolonych
 
-Jeśli nie korzystasz z szablonów [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) lub [Azure Resource Manager](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) do tworzenia grup zabezpieczeń sieci, musisz ręcznie dozwolonych następujący ruch w podsieciach.
+Jeśli nie korzystasz z szablonów [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) lub [Azure Resource Manager](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-advanced) do tworzenia grup zabezpieczeń sieci, musisz ręcznie dozwolonych następujący ruch w podsieciach.
 
 |Kierunek|Protokół|Element źródłowy|Port źródłowy|Element docelowy|Port docelowy|
 |---------|--------|------|-----------|-----------|----------------|

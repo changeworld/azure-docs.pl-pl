@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 11/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 96d66e6190732d88ba9a33094b6c27bbadfd4aae
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 758c9b323e78e7e86312555f5fabdcc9c4c28330
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747808"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123719"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Wprowadzenie do programu Visual Studio 2019 dla SQL Data Warehouse
 Visual Studio **2019** SQL Server Data Tools (SSDT) to pojedyncze narzędzie, które umożliwia wykonywanie następujących czynności:
@@ -32,7 +32,22 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) to pojedyncze narzędzie, kt
 ## <a name="install-visual-studio-2019"></a>Zainstaluj program Visual Studio 2019
 Zobacz [Pobierz program Visual Studio 2019][] , aby pobrać i zainstalować program visual Studio **16,3 lub nowszy**. Podczas instalacji wybierz obciążenie magazynu i przetwarzania danych. Instalacja autonomiczna SSDT nie jest już wymagana w programie Visual Studio 2019.
 
+## <a name="unsupported-features-in-ssdt"></a>Nieobsługiwane funkcje w programie SSDT
+
+Istnieją przypadki, w których wydania funkcji dla SQL Data Warehouse mogą nie obejmować obsługi SSDT. Następujące funkcje nie są obecnie obsługiwane:
+
+- [Widoki z materiałami](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (w toku)
+- [Uporządkowane klastrowane indeksy magazynu kolumn](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (w toku)
+- [Copy — instrukcja](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (w toku)
+- [Zarządzanie obciążeniami](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-management) — grupy obciążeń i klasyfikatory (w toku)
+- [Zabezpieczenia na poziomie wiersza](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
+  - Prześlij bilet pomocy technicznej lub zagłosuj [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) , aby uzyskać obsługiwaną funkcję.
+- [Dynamiczne maskowanie danych](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
+  - Prześlij bilet pomocy technicznej lub zagłosuj [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) , aby uzyskać obsługiwaną funkcję. 
+- Funkcja [przewidywania](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) 
+
 ## <a name="next-steps"></a>Następne kroki
+
 Teraz, gdy masz najnowszą wersję programu SSDT, możesz [nawiązać połączenie][connect] z SQL Data Warehouse.
 
 <!--Anchors-->

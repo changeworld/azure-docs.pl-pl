@@ -1,17 +1,14 @@
 ---
-title: Zasoby platformy Azure bez limitu 800
+title: Zasoby bez limitu liczby 800
 description: Wyświetla listę typów zasobów platformy Azure, które mogą mieć więcej niż 800 wystąpień w grupie zasobów.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.author: tomfitz
-ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ad0a3d83738a5bd51d9c2833a71d09038bd97116
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795656"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150360"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Zasoby nieograniczone do 800 wystąpień na grupę zasobów
 
@@ -20,17 +17,17 @@ Domyślnie można wdrożyć do 800 wystąpień typu zasobu w każdej grupie zaso
 W przypadku niektórych typów zasobów należy skontaktować się z pomocą techniczną, aby ograniczyć liczbę wystąpień 800. Te typy zasobów zostały wymienione w tym artykule.
 
 
-## <a name="microsoftautomation"></a>Microsoft. Automation
+## <a name="microsoftautomation"></a>Microsoft.Automation
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft. AzureStack
+## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 * rejestracje
 * rejestracje/customerSubscriptions
 * rejestracje/produkty
 
-## <a name="microsoftbotservice"></a>Microsoft. BotService
+## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 * botServices — domyślnie ograniczone do 800 wystąpień. Ten limit można zwiększyć, kontaktując się z pomocą techniczną.
 
@@ -39,51 +36,51 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * dysku
 * images
 * Migawki
-* VirtualMachines
+* virtualMachines
 
-## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 * containerGroups
 
-## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 * rejestry/buildTasks
 * rejestry/buildTasks/listSourceRepositoryProperties
-* rejestry/buildTasks/kroki
+* registries/buildTasks/steps
 * rejestry/buildTasks/etapy/listBuildArguments
-* rejestry/eventGridFilters
+* registries/eventGridFilters
 * rejestry/replikacje
 * rejestry/zadania
 * rejestry/elementy webhook
 
-## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 * serwery
 
-## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 * serwery
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 * serverGroups
 * serwery
 * serversv2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * services
 
-## <a name="microsofteventhub"></a>Microsoft. EventHub
+## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 * oparty
-* Przestrzeni
+* przestrzeni
 
 ## <a name="microsoftexperimentation"></a>Microsoft. eksperymentowanie
 
 * experimentWorkspaces
 
-## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 * configurationProfileAssignments
 * guestConfigurationAssignments
@@ -91,12 +88,12 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftlogic"></a>Microsoft. Logic
+## <a name="microsoftlogic"></a>Microsoft.Logic
 
 * integrationAccounts
 * przebieg
 
-## <a name="microsoftnetapp"></a>Microsoft. NetApp
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 * netAppAccounts
 * netAppAccounts/capacityPools
@@ -143,27 +140,27 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * trafficmanagerprofiles
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 * workspaceCollections — domyślnie ograniczone do 800 wystąpień. Ten limit można zwiększyć, kontaktując się z pomocą techniczną.
 
-## <a name="microsoftrelay"></a>Microsoft. Relay
+## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* Przestrzeni
+* przestrzeni
 
-## <a name="microsoftscheduler"></a>Microsoft. Scheduler
+## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* Przestrzeni
+* przestrzeni
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 * aplikacje
 * containerGroups
@@ -176,9 +173,9 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 
 * storageAccounts
 
-## <a name="microsoftweb"></a>Microsoft. Web
+## <a name="microsoftweb"></a>Microsoft.Web
 
-* apiManagementAccounts/interfejsy API
+* apiManagementAccounts/apis
 * teren
 
 ## <a name="next-steps"></a>Następne kroki

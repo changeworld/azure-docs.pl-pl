@@ -1,25 +1,17 @@
 ---
 title: Dostawca wyjściowej pamięci podręcznej ASP.NET dla usługi Azure cache for Redis
 description: Dowiedz się, jak buforować dane wyjściowe stron ASP.NET za pomocą usługi Azure cache for Redis
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 78469a66-0829-484f-8660-b2598ec60fbf
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 04/22/2018
 ms.author: yegu
-ms.openlocfilehash: d3babb213f633586786c0015c27fae50e44369df
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 5d7099779f330bc0a92f0c8f305ac534ab385119
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815660"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122463"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Dostawca wyjściowej pamięci podręcznej ASP.NET dla usługi Azure cache for Redis
 
@@ -31,7 +23,7 @@ Aby użyć dostawcy wyjściowej pamięci podręcznej Redis, najpierw Skonfiguruj
 
 Aby skonfigurować aplikację kliencką w programie Visual Studio przy użyciu pakietu NuGet usługi Azure cache for Redis, kliknij pozycję **Menedżer pakietów NuGet**, **konsola Menedżera pakietów** z menu **Narzędzia** .
 
-Uruchom następujące polecenie w oknie `Package Manager Console`.
+W oknie `Package Manager Console` uruchom następujące polecenie.
 
 ```
 Install-Package Microsoft.Web.RedisOutputCacheProvider
@@ -59,22 +51,22 @@ Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu i dodaje następuj�
 
 Skonfiguruj atrybuty przy użyciu wartości z bloku pamięci podręcznej w Microsoft Azure Portal i skonfiguruj inne wartości zgodnie z potrzebami. Aby uzyskać instrukcje dotyczące uzyskiwania dostępu do właściwości pamięci podręcznej, zobacz [Konfigurowanie usługi Azure cache for Redis Settings](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-| Atrybut | Typ | Domyślny | Opis |
+| Atrybut | Typ | Domyślne | Opis |
 | --------- | ---- | ------- | ----------- |
-| *Host* | string | lokalnym | Adres IP lub nazwa hosta serwera Redis |
-| *przewożąc* | dodatnia liczba całkowita | 6379 (bez protokołu SSL)<br/>6380 (SSL) | Port serwera Redis |
-| *accessKey* | string | "" | Hasło serwera Redis, gdy autoryzacja Redis jest włączona. Wartość jest domyślnie pustym ciągiem, co oznacza, że dostawca stanu sesji nie będzie używać żadnego hasła podczas nawiązywania połączenia z serwerem Redis. **Jeśli Twój serwer Redis znajduje się w publicznie dostępnej sieci, takiej jak Azure Redis Cache, upewnij się, że włączono autoryzację Redis, aby zwiększyć bezpieczeństwo i zapewnić bezpieczne hasło.** |
-| *zastosowania* | wartość logiczna | **false** | Czy nawiązać połączenie z serwerem Redis za pośrednictwem protokołu SSL. Ta wartość jest domyślnie **fałszywa** , ponieważ Redis nie obsługuje protokołu SSL z pola. **Jeśli używasz Azure Redis Cache, który obsługuje protokół SSL z pola, pamiętaj, aby ustawić wartość true, aby zwiększyć bezpieczeństwo.**<br/><br/>Port bez protokołu SSL jest domyślnie wyłączony w przypadku nowych pamięci podręcznych. Określ **wartość true** dla tego ustawienia, aby używać portu SSL. Aby uzyskać więcej informacji na temat włączania portu bez obsługi protokołu SSL, zobacz sekcję [porty dostępu](cache-configure.md#access-ports) w temacie [Konfigurowanie pamięci podręcznej](cache-configure.md) . |
+| *host* | ciąg | lokalnym | Adres IP lub nazwa hosta serwera Redis |
+| *przewożąc* | dodatnia liczba całkowita | 6379 (non-SSL)<br/>6380 (SSL) | Port serwera Redis |
+| *accessKey* | ciąg | "" | Hasło serwera Redis, gdy autoryzacja Redis jest włączona. Wartość jest domyślnie pustym ciągiem, co oznacza, że dostawca stanu sesji nie będzie używać żadnego hasła podczas nawiązywania połączenia z serwerem Redis. **Jeśli Twój serwer Redis znajduje się w publicznie dostępnej sieci, takiej jak Azure Redis Cache, upewnij się, że włączono autoryzację Redis, aby zwiększyć bezpieczeństwo i zapewnić bezpieczne hasło.** |
+| *ssl* | wartość logiczna | **false** | Czy nawiązać połączenie z serwerem Redis za pośrednictwem protokołu SSL. Ta wartość jest domyślnie **fałszywa** , ponieważ Redis nie obsługuje protokołu SSL z pola. **Jeśli używasz Azure Redis Cache, który obsługuje protokół SSL z pola, pamiętaj, aby ustawić wartość true, aby zwiększyć bezpieczeństwo.**<br/><br/>Port bez obsługi protokołu SSL jest domyślnie wyłączony w przypadku nowych pamięci podręcznych. Określ **wartość true** dla tego ustawienia, aby używać portu SSL. Aby uzyskać więcej informacji na temat włączania portu bez obsługi protokołu SSL, zobacz sekcję [porty dostępu](cache-configure.md#access-ports) w temacie [Konfigurowanie pamięci podręcznej](cache-configure.md) . |
 | *databaseIdNumber* | dodatnia liczba całkowita | 0 | *Ten atrybut może być określony tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Określ, która baza danych Redis ma być używana. |
 | *connectionTimeoutInMilliseconds* | dodatnia liczba całkowita | Dostarczone przez StackExchange. Redis | Służy do ustawiania *ConnectTimeout* podczas tworzenia stackexchange. Redis. ConnectionMultiplexer. |
 | *operationTimeoutInMilliseconds* | dodatnia liczba całkowita | Dostarczone przez StackExchange. Redis | Służy do ustawiania *SyncTimeout* podczas tworzenia stackexchange. Redis. ConnectionMultiplexer. |
-| *ConnectionString* (prawidłowe parametry połączenia stackexchange. Redis) | string | *nie dotyczy* | Odwołanie do parametru AppSettings lub Web. config lub inne prawidłowe parametry połączenia StackExchange. Redis. Ten atrybut może podawać wartości parametrów *host*, *port*, *AccessKey*, *SSL*i inne atrybuty stackexchange. Redis. Aby bliżej zapoznać się z parametrem *ConnectionString*, zobacz [ustawienie ConnectionString](#setting-connectionstring) w sekcji [uwagi dotyczące atrybutu](#attribute-notes) . |
-| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *nie dotyczy* | *Te atrybuty można określić tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Użyj tych atrybutów, aby podać parametry połączenia. *settingsClassName* powinna być kwalifikowana nazwa klasy zestawu, która zawiera metodę określoną przez *settingsMethodName*.<br/><br/>Metoda określona przez *settingsMethodName* powinna być publiczna, statyczna i void (nie przyjmować żadnych parametrów) z typem zwracanym **ciągu**. Ta metoda zwraca rzeczywiste parametry połączenia. |
-| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *nie dotyczy* | *Te atrybuty można określić tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Te atrybuty umożliwiają debugowanie aplikacji przez dostarczanie dzienników z pamięci podręcznej stanu sesji/wyjściowej oraz dzienników z StackExchange. Redis. *loggingClassName* powinna być kwalifikowana nazwa klasy zestawu, która zawiera metodę określoną przez *loggingMethodName*.<br/><br/>Metoda określona przez *loggingMethodName* powinna być publiczna, statyczna i void (nie przyjmować żadnych parametrów) z typem zwracanym **System. IO. TextWriter**. |
-| *applicationName* | string | Nazwa modułu bieżącego procesu lub "/" | *Tylko SessionStateProvider*<br/>*Ten atrybut może być określony tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Prefiks nazwy aplikacji do użycia w pamięci podręcznej Redis. Klient może używać tej samej pamięci podręcznej Redis do różnych celów. Aby upewnić się, że klucze sesji nie kolidują, można je prefiksować przy użyciu nazwy aplikacji. |
-| *Parametr throwOnError* | wartość logiczna | true | *Tylko SessionStateProvider*<br/>*Ten atrybut może być określony tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Określa, czy zgłaszać wyjątek w przypadku wystąpienia błędu.<br/><br/>Aby uzyskać więcej informacji na temat *parametr throwOnError*, zobacz [uwagi dotyczące *parametr throwOnError* ](#notes-on-throwonerror) w sekcji [uwagi dotyczące atrybutów](#attribute-notes) . |>*Microsoft. Web. Redis. pakietu redissessionstateprovider. LastException*. |
+| *ConnectionString* (prawidłowe parametry połączenia stackexchange. Redis) | ciąg | *nie dotyczy* | Odwołanie do parametru AppSettings lub Web. config lub inne prawidłowe parametry połączenia StackExchange. Redis. Ten atrybut może podawać wartości parametrów *host*, *port*, *AccessKey*, *SSL*i inne atrybuty stackexchange. Redis. Aby bliżej zapoznać się z parametrem *ConnectionString*, zobacz [ustawienie ConnectionString](#setting-connectionstring) w sekcji [uwagi dotyczące atrybutu](#attribute-notes) . |
+| *settingsClassName*<br/>*settingsMethodName* | ciąg<br/>ciąg | *nie dotyczy* | *Te atrybuty można określić tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Użyj tych atrybutów, aby podać parametry połączenia. *settingsClassName* powinna być kwalifikowana nazwa klasy zestawu, która zawiera metodę określoną przez *settingsMethodName*.<br/><br/>Metoda określona przez *settingsMethodName* powinna być publiczna, statyczna i void (nie przyjmować żadnych parametrów) z typem zwracanym **ciągu**. Ta metoda zwraca rzeczywiste parametry połączenia. |
+| *loggingClassName*<br/>*loggingMethodName* | ciąg<br/>ciąg | *nie dotyczy* | *Te atrybuty można określić tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Te atrybuty umożliwiają debugowanie aplikacji przez dostarczanie dzienników z pamięci podręcznej stanu sesji/wyjściowej oraz dzienników z StackExchange. Redis. *loggingClassName* powinna być kwalifikowana nazwa klasy zestawu, która zawiera metodę określoną przez *loggingMethodName*.<br/><br/>Metoda określona przez *loggingMethodName* powinna być publiczna, statyczna i void (nie przyjmować żadnych parametrów) z typem zwracanym **System. IO. TextWriter**. |
+| *applicationName* | ciąg | Nazwa modułu bieżącego procesu lub "/" | *Tylko SessionStateProvider*<br/>*Ten atrybut może być określony tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Prefiks nazwy aplikacji do użycia w pamięci podręcznej Redis. Klient może używać tej samej pamięci podręcznej Redis do różnych celów. Aby upewnić się, że klucze sesji nie kolidują, można je prefiksować przy użyciu nazwy aplikacji. |
+| *Parametr throwOnError* | wartość logiczna | true | *Tylko SessionStateProvider*<br/>*Ten atrybut może być określony tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Określa, czy zgłaszać wyjątek w przypadku wystąpienia błędu.<br/><br/>Aby uzyskać więcej informacji na temat *parametr throwOnError*, zobacz [uwagi dotyczące *parametr throwOnError* ](#notes-on-throwonerror) w sekcji [uwagi dotyczące atrybutów](#attribute-notes) . |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
 | *retryTimeoutInMilliseconds* | dodatnia liczba całkowita | 5000 | *Tylko SessionStateProvider*<br/>*Ten atrybut może być określony tylko za pomocą pliku Web. config lub AppSettings.*<br/><br/>Czas ponowienia próby w przypadku niepowodzenia operacji. Jeśli ta wartość jest mniejsza niż *operationTimeoutInMilliseconds*, dostawca nie będzie ponawiać próby.<br/><br/>Aby uzyskać więcej informacji na temat *retryTimeoutInMilliseconds*, zobacz [uwagi dotyczące *retryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) w sekcji [uwagi dotyczące atrybutów](#attribute-notes) . |
-| *redisSerializerType* | string | *nie dotyczy* | Określa nazwę typu kwalifikowanego zestawu klasy implementującej Microsoft. Web. Redis. ISerializer i zawierający logikę niestandardową do serializacji i deserializacji wartości. Aby uzyskać więcej informacji, zobacz [Informacje o *redisSerializerType* ](#about-redisserializertype) w sekcji [uwagi dotyczące atrybutów](#attribute-notes) . |
+| *redisSerializerType* | ciąg | *nie dotyczy* | Określa nazwę typu kwalifikowanego zestawu klasy implementującej Microsoft. Web. Redis. ISerializer i zawierający logikę niestandardową do serializacji i deserializacji wartości. Aby uzyskać więcej informacji, zobacz [Informacje o *redisSerializerType* ](#about-redisserializertype) w sekcji [uwagi dotyczące atrybutów](#attribute-notes) . |
 |
 
 ## <a name="attribute-notes"></a>Uwagi dotyczące atrybutów
@@ -93,7 +85,7 @@ W poniższych przykładach pokazano, jak używać *ConnectionString* .
 </connectionStrings>
 ```
 
-W `web.config` użyj powyższego klucza jako wartości parametru zamiast wartości rzeczywistej.
+W `web.config`Użyj powyższego klucza jako wartości parametru, a nie wartości rzeczywistej.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -113,7 +105,7 @@ W `web.config` użyj powyższego klucza jako wartości parametru zamiast wartoś
 </appSettings>
 ```
 
-W `web.config` użyj powyższego klucza jako wartości parametru zamiast wartości rzeczywistej.
+W `web.config`Użyj powyższego klucza jako wartości parametru, a nie wartości rzeczywistej.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">

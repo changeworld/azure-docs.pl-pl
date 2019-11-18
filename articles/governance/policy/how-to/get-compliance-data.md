@@ -1,14 +1,14 @@
 ---
 title: Pobierz dane zgodności zasad
-description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, jak można pobrać szczegółów zgodności.
+description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, jak uzyskać szczegóły zgodności zasobów platformy Azure.
 ms.date: 02/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: b460a3e70b5462be3fdc7f34dd7261d491a495b3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8cb95f0a9479da27ea6b9ef8ec6836f915aa4030
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959583"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132800"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Pobieranie danych zgodności zasobów platformy Azure
 

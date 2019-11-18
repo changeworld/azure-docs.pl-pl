@@ -1,114 +1,114 @@
 ---
-title: Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Advisor, aby poprawić wysoką dostępność wdrożeń platformy Azure.
+title: Zwiększ dostępność aplikacji za pomocą Azure Advisor | Microsoft Docs
+description: Użyj Azure Advisor, aby zwiększyć wysoką dostępność wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
-author: kasparks
-ms.author: kasparks
+author: saket-ms
+ms.author: sagupt
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd1b898adf4c4cdff45e05427757d90d5f80bf25
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446787"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145332"
 ---
-# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor
+# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zwiększ dostępność aplikacji dzięki Azure Advisor
 
-Usługa Azure Advisor ułatwia upewnij się, a ciągłość aplikacje krytyczne dla prowadzonej działalności. Można uzyskać zaleceń dotyczących wysokiej dostępności przez usługę Advisor z **wysokiej dostępności** karty Pulpit nawigacyjny usługi Advisor.
+Azure Advisor pomaga zapewnić i poprawić ciągłość aplikacji o znaczeniu krytycznym dla firmy. Zalecenia dotyczące wysokiej dostępności można uzyskać, korzystając z karty **wysokiej dostępności** na pulpicie nawigacyjnym usługi Advisor.
 
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Upewnij się, odporność na uszkodzenia maszyny wirtualnej
+## <a name="ensure-virtual-machine-fault-tolerance"></a>Zapewnianie odporności na uszkodzenia maszyny wirtualnej
 
-Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Klasyfikator identyfikuje maszyny wirtualne, które nie są częścią zestawu dostępności i zaleca przenoszenia ich do zestawu dostępności. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Można wybrać, aby utworzyć zestaw dostępności dla maszyny wirtualnej lub Dodaj maszynę wirtualną do istniejącego zestawu dostępności.
+Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Doradca identyfikuje maszyny wirtualne, które nie są częścią zestawu dostępności i zaleca ich przeniesienie do zestawu dostępności. Ta konfiguracja gwarantuje, że podczas planowanego lub nieplanowanego zdarzenia konserwacji jest dostępna co najmniej jedna maszyna wirtualna i będzie ona zgodna z umową SLA maszyny wirtualnej platformy Azure. Można utworzyć zestaw dostępności dla maszyny wirtualnej lub dodać maszynę wirtualną do istniejącego zestawu dostępności.
 
 > [!NOTE]
-> Jeśli zdecydujesz się utworzyć zestaw dostępności, należy dodać co najmniej jedną maszynę wirtualną do niego. Firma Microsoft zaleca tego należy co najmniej dwóch maszyn wirtualnych w dostępności zestawu grup aby upewnić się, że co najmniej jedna maszyna jest dostępny podczas awarii.
+> Jeśli wybierzesz opcję utworzenia zestawu dostępności, musisz dodać co najmniej jedną maszynę wirtualną do niej. Zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności, aby upewnić się, że podczas przestoju jest dostępny przynajmniej jeden komputer.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Upewnij się, że zestaw dostępności, odporności na uszkodzenia
+## <a name="ensure-availability-set-fault-tolerance"></a>Zapewnianie odporności na uszkodzenia zestawu dostępności
 
-Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Advisor ustala zestawów dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie co najmniej jednej maszyny wirtualnej do niego. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Możesz wybrać do utworzenia maszyny wirtualnej, lub można dodać istniejącej maszyny wirtualnej do zestawu dostępności.  
+Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Doradca identyfikuje zestawy dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie do niej co najmniej jednej maszyny wirtualnej. Ta konfiguracja gwarantuje, że podczas planowanego lub nieplanowanego zdarzenia konserwacji jest dostępna co najmniej jedna maszyna wirtualna i będzie ona zgodna z umową SLA maszyny wirtualnej platformy Azure. Można utworzyć maszynę wirtualną lub dodać istniejącą maszynę wirtualną do zestawu dostępności.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Korzystanie z funkcji Dyski zarządzane w celu zwiększania niezawodności danych
 
-Maszyny wirtualne, które znajdują się w zestaw dostępności z dyskami współużytkującymi konta magazynu lub jednostki skali magazynu nie są odporne na błędy jednostki skali magazynu jednego podczas awarii. Klasyfikator zidentyfikuje te zestawy dostępności i zaleca się migrację do usługi Azure Managed Disks. Pozwoli to zagwarantować, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco izolowane pod kątem uniknięcia pojedynczego punktu awarii. 
+Maszyny wirtualne, które znajdują się w zestawie dostępności z dyskami, które korzystają z kont magazynu lub jednostek skalowania magazynu, nie są odporne na awarie pojedynczej jednostki skalowania magazynu podczas przestoju. Usługa Advisor zidentyfikuje te zestawy dostępności i zaleca migrację do usługi Azure Managed Disks. Dzięki temu dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco izolowane, aby uniknąć single point of failure. 
 
-## <a name="ensure-application-gateway-fault-tolerance"></a>Upewnij się, odporność na uszkodzenia bramy aplikacji
+## <a name="ensure-application-gateway-fault-tolerance"></a>Upewnij się, że Tolerancja błędów w usłudze Application Gateway
 
-To zalecenie zapewnia ciągłość działania aplikacji o kluczowym znaczeniu, które są obsługiwane przez bramy application Gateway. Klasyfikator identyfikuje wystąpienia bramy aplikacji, które nie są skonfigurowane dla odporności na uszkodzenia i sugerują one akcji korygowania, które należy wykonać. Klasyfikator identyfikuje średnich i dużych aplikacja o pojedynczym wystąpieniu bramy i zaleca się dodanie co najmniej jedno wystąpienie więcej. Ponadto identyfikuje instance jednego lub wielu małych bramach aplikacji i zaleca się migrację do średnich i dużych jednostek SKU. Klasyfikator zaleca tych akcji, aby upewnić się, że Twoje wystąpienia bramy aplikacji są skonfigurowane do spełnić bieżące wymagania umowy SLA dla tych zasobów.
+To zalecenie zapewnia ciągłość działania aplikacji o kluczowym znaczeniu, które są obsługiwane przez bramy aplikacji. Doradca identyfikuje wystąpienia bramy aplikacji, które nie są skonfigurowane pod kątem odporności na uszkodzenia, i sugeruje akcje korygowania, które można wykonać. Klasyfikator identyfikuje średnią lub dużą bramę aplikacji z jednym wystąpieniem i zaleca dodanie co najmniej jednego wystąpienia. Identyfikuje ona również aplikacje małych aplikacji o pojedynczej lub wielu wystąpieniach i zaleca Migrowanie do średnich lub dużych jednostek SKU. Doradca zaleca te działania, aby upewnić się, że wystąpienia usługi Application Gateway zostały skonfigurowane tak, aby spełniały bieżące wymagania SLA dotyczące tych zasobów.
 
-## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Chronić dane maszyny wirtualnej przed przypadkowym usunięciem
+## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Ochrona danych maszyny wirtualnej przed przypadkowym usunięciem
 
-Konfigurowanie kopii zapasowej maszyny wirtualnej zapewnia dostępność danych krytyczne dla prowadzonej działalności i zapewnia ochronę przed przypadkowym uszkodzeniem lub usunięciem. Klasyfikator identyfikuje maszyny wirtualne, których kopia zapasowa nie jest włączona i zaleca się włączenie kopii zapasowej. 
+Konfiguracja kopii zapasowej maszyny wirtualnej zapewnia dostępność danych o kluczowym znaczeniu dla firmy i zapewnia ochronę przed przypadkowym usunięciem lub uszkodzeniem. Program Advisor identyfikuje maszyny wirtualne, których kopia zapasowa nie jest włączona i zaleca włączenie tworzenia kopii zapasowych. 
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Upewnij się, że masz dostęp do ekspertów ds. chmury platformy Azure, gdy jej potrzebujesz
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Upewnij się, że masz dostęp do ekspertów w chmurze platformy Azure, gdy ich potrzebujesz
 
-Podczas uruchamiania obciążenia krytyczne dla prowadzonej działalności, należy mieć dostęp do pomocy technicznej potrzebnych. Klasyfikator identyfikuje potencjalne krytyczne dla prowadzonej działalności subskrypcje, które nie mają pomocy technicznej uwzględnione w ich plan pomocy technicznej i zaleca się uaktualnienie do opcja, która obejmuje pomoc techniczną.
+W przypadku wykonywania obciążeń o krytycznym znaczeniu dla firmy ważne jest, aby mieć dostęp do pomocy technicznej w razie potrzeby. Doradca identyfikuje potencjalne subskrypcje o krytycznym znaczeniu dla firmy, które nie mają wsparcia technicznego zawartego w planie pomocy technicznej i zalecają uaktualnienie do opcji, która obejmuje pomoc techniczną.
 
-## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Tworzenie alertów usługi Azure Service Health, aby otrzymywać powiadomienia, gdy napotkasz problemy z platformy Azure
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Utwórz alerty Azure Service Health, aby otrzymywać powiadomienia o problemach z platformą Azure
 
-Firma Microsoft zaleca skonfigurowanie alerty dotyczące kondycji usługi platformy Azure, aby otrzymywać powiadomienia, gdy napotkasz problemy z usługą Azure. [Usługa Azure Service Health](https://azure.microsoft.com/features/service-health/) to bezpłatna usługa, która zapewnia spersonalizowane wskazówki i pomoc techniczna, gdy mają wpływ problemu usługi platformy Azure. Advisor ustala subskrypcje, które nie mają skonfigurowano alertów i zaleca się tworzenie katalogu.
+Zalecamy skonfigurowanie alertów Azure Service Health, aby otrzymywać powiadomienia o problemach z usługą platformy Azure. [Azure Service Health](https://azure.microsoft.com/features/service-health/) to bezpłatna usługa, która zapewnia spersonalizowane wskazówki i pomoc techniczną, gdy ma to wpływ na problem z usługą platformy Azure. Klasyfikator identyfikuje subskrypcje, dla których nie skonfigurowano alertów i zaleca ich utworzenie.
 
-## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Skonfiguruj punkty końcowe usługi Traffic Manager w celu zapewnienia odporności
+## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Skonfiguruj Traffic Manager punkty końcowe pod kątem odporności
 
-Profile usługi Traffic Manager z więcej niż jednym punktem końcowym środowiska wyższą dostępność, jeśli dowolnego danego punktu końcowego nie powiedzie się. Wprowadzenie do punktów końcowych w różnych regionach dalsze zwiększa niezawodność usług. Advisor identyfikuje profile Menedżer ruchu, gdy istnieje tylko jeden punkt końcowy i zaleca dodanie co najmniej jeden punkt końcowy więcej w innym regionie.
+Profile Traffic Manager z więcej niż jednym punktem końcowym o większej dostępności w przypadku niepowodzenia danego punktu końcowego. Umieszczenie punktów końcowych w różnych regionach dodatkowo zwiększa niezawodność usługi. Klasyfikator identyfikuje profile usługi Traffic Manager, w których istnieje tylko jeden punkt końcowy i zaleca dodanie co najmniej jednego punktu końcowego w innym regionie.
 
-W przypadku wszystkich punktów końcowych w profilu usługi Traffic Manager, który jest skonfigurowany dla routingu odległości między elementami w tym samym regionie, użytkownicy z innych regionów, mogą wystąpić opóźnienia w połączeniu. Dodanie lub usunięcie punktu końcowego w innym regionie spowoduje zwiększenia ogólnej wydajności i zapewnienie wyższej dostępności, jeśli wszystkie punkty końcowe w jednym regionie nie powiedzie się. Klasyfikator identyfikuje profile usługi Traffic Manager skonfigurowany dla odległości routingu, gdy wszystkie punkty końcowe są w tym samym regionie. Zaleca się dodanie lub usunięcie punktu końcowego w innym regionie platformy Azure.
+Jeśli wszystkie punkty końcowe w profilu Traffic Manager skonfigurowanym dla routingu bliskości znajdują się w tym samym regionie, użytkownicy z innych regionów mogą napotkać opóźnienia połączeń. Dodanie lub przeniesienie punktu końcowego do innego regionu poprawi ogólną wydajność i zapewni lepszą dostępność, jeśli wszystkie punkty końcowe w jednym regionie zakończą się niepowodzeniem. Usługa Advisor identyfikuje Traffic Manager profile skonfigurowane dla routingu bliskości, w których wszystkie punkty końcowe znajdują się w tym samym regionie. Zalecamy dodanie lub przeniesienie punktu końcowego do innego regionu platformy Azure.
 
-Jeśli profil usługi Traffic Manager jest skonfigurowany dla geograficznego routingu, ruch jest kierowany do punktów końcowych na podstawie określonych regionów. Region nie powiedzie się, czy wstępnie zdefiniowane trybu failover. O punkt końcowy, w której grupowanie regionalne jest skonfigurowana pod kątem "Wszystkie (World)" uniknąć ruchu sieciowego pomijanego i zwiększyć dostępność usług. Klasyfikator identyfikuje profile usługi Traffic Manager skonfigurowane dla geograficznego routingu w przypadku, gdy istnieje żaden punkt końcowy skonfigurowaną grupowanie regionalne jako "Wszystkie (World)". Zaleca się zmiany konfiguracji, aby punkt końcowy "wszystkie (świat).
+Jeśli profil Traffic Manager jest skonfigurowany pod kątem routingu geograficznego, ruch jest kierowany do punktów końcowych w oparciu o zdefiniowane regiony. W przypadku niepowodzenia regionu nie ma wstępnie zdefiniowanego trybu failover. Punkt końcowy, w którym grupowanie regionalne jest skonfigurowany na wartość "wszystko (świat)", pozwala uniknąć porzucenia ruchu i zwiększyć dostępność usługi. Usługa Advisor identyfikuje profil Traffic Manager skonfigurowany pod kątem routingu geograficznego, w którym nie ma punktu końcowego skonfigurowanego jako "wszystko (świat)". Zalecamy zmianę konfiguracji, aby utworzyć punkt końcowy "wszystko (świat)".
 
-## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Użyj usuwania nietrwałego na swoim koncie magazynu platformy Azure w celu zapisania i odzyskiwanie danych po przypadkowym zastępowania lub usuwania
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Użyj nietrwałego usunięcia na koncie usługi Azure Storage, aby zapisać i odzyskać dane po przypadkowym zastąpieniu lub usunięciu
 
-Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na swoim koncie magazynu, aby usunąć obiekty BLOB przejście do stanu usunięcia nietrwałego zamiast trwale usunięte. Gdy dane są zastępowane, generowana jest migawka usuwania nietrwałego w celu zapisania stanu zastąpionych danych. Korzystanie z miękkiego usuwania umożliwia odzyskiwanie w przypadku przypadkowym lub zastępuje. Advisor ustala kont usługi Azure Storage, które nie mają włączone usuwanie nietrwałe i sugeruje, że można ją włączyć.
+Włącz [usuwanie nietrwałe](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na koncie magazynu, aby usunięte obiekty blob przechodzą do stanu nietrwałego usunięcia. Gdy dane są zastępowane, generowana jest migawka usuwania nietrwałego w celu zapisania stanu zastąpionych danych. Użycie funkcji usuwania nietrwałego umożliwia odzyskanie w przypadku przypadkowych usunięć lub zastępowaniem. Usługa Advisor identyfikuje konta usługi Azure Storage, dla których nie włączono usuwania nietrwałego i sugeruje włączenie go.
 
-## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurowanie bramy sieci VPN w taki sposób, aby aktywne aktywne dla połączeń
+## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Skonfiguruj bramę sieci VPN do usługi Active-Active na potrzeby odporności połączeń
 
-W konfiguracji aktywne aktywne oba wystąpienia bramy sieci VPN ustanowią tunele S2S sieci VPN do urządzenia sieci VPN w środowisku lokalnym. Sytuacji zdarzenie planowanej konserwacji lub nieplanowanego zdarzenia dotyczącego jednego wystąpienia bramy ruchu umożliwić przełączenie do innego aktywnego tunelu IPsec automatycznie. Usługa Azure Advisor zidentyfikuje bram sieci VPN, które nie są skonfigurowane jako aktywny aktywny i sugeruje, że można je skonfigurować wysoką dostępność.
+W konfiguracji Active-Active, oba wystąpienia bramy sieci VPN będą ustanawiać tunele sieci VPN S2S do lokalnego urządzenia sieci VPN. Gdy planowane zdarzenie konserwacji lub nieplanowane zdarzenie do jednego wystąpienia bramy, ruch zostanie przełączony do innego aktywnego tunelu IPsec automatycznie. Azure Advisor zidentyfikuje bramy sieci VPN, które nie są skonfigurowane jako aktywne-aktywne i sugerują skonfigurowanie ich pod kątem wysokiej dostępności.
 
-## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Uruchamianie obciążeń produkcyjnych za pomocą bram sieci VPN w środowisku produkcyjnym
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Używanie bram produkcyjnych sieci VPN do uruchamiania obciążeń produkcyjnych
 
-Usługa Azure Advisor sprawdzi dla bram sieci VPN, które są podstawowej jednostki SKU i zaleca się używanie produkcji jednostki SKU. Podstawowa jednostka SKU jest przeznaczona dla celów projektowania i testowania. Jednostki SKU w środowisku produkcyjnym oferują większej liczby tuneli, obsługi protokołu BGP, opcje konfiguracji aktywne aktywne, niestandardowe zasad Ipsec/IKE i wyższe stabilność i dostępność.
+Azure Advisor sprawdza wszystkie bramy sieci VPN będące podstawową jednostką SKU i zaleca użycie produkcyjnej jednostki SKU. Podstawowa jednostka SKU jest przeznaczona do celów deweloperskich i testowych. Produkcyjne jednostki SKU oferują większą liczbę tuneli, obsługę protokołu BGP, opcje konfiguracji aktywne-aktywne, niestandardowe zasady IPSec/IKE i wyższą stabilność i dostępność.
 
-## <a name="repair-invalid-log-alert-rules"></a>Napraw reguł alertów dzienników nieprawidłowy
+## <a name="repair-invalid-log-alert-rules"></a>Napraw nieprawidłowe reguły alertów dziennika
 
-Usługa Azure Advisor wykryje reguł alertów, które mają nieprawidłowe zapytania określony w sekcji warunków. Reguły alertów dziennika są tworzone w usłudze Azure Monitor i służą do uruchamiania zapytań analitycznych w określonych odstępach czasu. Wyniki zapytania określają, czy trzeba wyzwolić alert. Zapytania analityczne z upływem czasu mogą stać się nieprawidłowe z powodu zmian w zasobach, tabelach lub poleceniach, do których się odwołują. Klasyfikator oferuje rekomendacje dotyczące poprawisz zapytania w regule alertu, aby uniemożliwić wyłączone automatycznego pobierania i zapewnić pokrycie monitorowania zasobów na platformie Azure. [Dowiedz się więcej na temat rozwiązywania problemów reguły alertów](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor wykryje reguły alertów, które mają nieprawidłowe zapytania określone w sekcji warunku. Reguły alertów dziennika są tworzone w usłudze Azure Monitor i służą do uruchamiania zapytań analitycznych w określonych odstępach czasu. Wyniki zapytania określają, czy trzeba wyzwolić alert. Zapytania analityczne z upływem czasu mogą stać się nieprawidłowe z powodu zmian w zasobach, tabelach lub poleceniach, do których się odwołują. Usługa Advisor zaleca poprawienie zapytania w regule alertu, aby uniemożliwić jego ręczne pobranie i zapewnienie monitorowania zasobów na platformie Azure. [Dowiedz się więcej o rozwiązywaniu problemów z regułami alertów](https://aka.ms/aa_logalerts_queryrepair)
 
-## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurowanie spójnego trybu indeksowania w kolekcji usługi Cosmos DB
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Skonfiguruj spójny tryb indeksowania w kolekcji Cosmos DB
 
-Kontenery usługi Azure Cosmos DB skonfigurowaną z opóźnieniem tryb indeksowania może mieć wpływ na aktualność wyników zapytania. Advisor wykryje, że kontenery są skonfigurowane w ten sposób i zaleca się przełączenie do trybu spójne. [Dowiedz się więcej na temat zasady w usłudze Cosmos DB indeksowania](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Kontenery Azure Cosmos DB skonfigurowane z trybem indeksowania z opóźnieniem mogą mieć wpływ na świeżość wyników zapytania. Program Advisor wykrywa kontenery skonfigurowane w ten sposób i zaleca się przełączenie na tryb spójny. [Dowiedz się więcej na temat zasad indeksowania w Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Konfigurowanie kontenerów usługi Azure Cosmos DB przy użyciu klucza partycji
 
-Usługa Azure Advisor będzie identyfikować niepartycjonowana kolekcji usługi Azure Cosmos DB, które są zbliża się limit przydziału aprowizowanego magazynu. Oferuje rekomendacje, migracja tych kolekcji do nowej kolekcji z definicją klucza partycji, tak, aby ich automatycznie można skalować w poziomie przez usługę. [Dowiedz się więcej o wybór klucza partycji](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor zidentyfikuje Azure Cosmos DB kolekcje niepartycjonowane, które zbliżają się do przydzielonego limitu przydziału magazynu. Zalecamy Migrowanie tych kolekcji do nowych kolekcji z definicją klucza partycji, dzięki czemu mogą być automatycznie skalowane przez usługę. [Dowiedz się więcej na temat wybierania klucza partycji](https://aka.ms/cosmosdb/choose-partitionkey)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Uaktualnianie zestawu .NET SDK dla usługi Azure Cosmos DB do najnowszej wersji z narzędzia Nuget
 
-Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które korzystają z starsze wersje zestawu SDK platformy .NET i zaleca się uaktualnienie do najnowszej wersji z pakietów Nuget dla najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej o Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor zidentyfikuje konta Azure Cosmos DB, które używają starych wersji zestawu .NET SDK, i zaleca się przeprowadzenie uaktualnienia do najnowszej wersji z programu NuGet w celu uzyskania najnowszych poprawek, ulepszeń wydajności i nowych możliwości funkcji. [Dowiedz się więcej na temat Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Uaktualnianie zestawu Java SDK dla usługi Azure Cosmos DB do najnowszej wersji z programu Maven
 
-Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które używają starej wersji zestawu SDK języka Java i zaleca się uaktualnienie do najnowszej wersji z narzędzia Maven najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor będzie identyfikować konta Azure Cosmos DB, które używają starych wersji zestawu Java SDK i zalecać uaktualnienie do najnowszej wersji z Maven dla najnowszych poprawek, ulepszeń wydajności i nowych funkcji. [Dowiedz się więcej na temat Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Uaktualnianie łącznika platformy Spark dla usługi Azure Cosmos DB do najnowszej wersji z programu Maven
 
-Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które są używane przez łącznik usługi Cosmos DB Spark stare wersje i zaleca się uaktualnienie do najnowszej wersji z narzędzia Maven najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej na temat łącznika usługi Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor zidentyfikuje konta Azure Cosmos DB, które używają starych wersji łącznika programu Cosmos DB Spark i zalecamy uaktualnienie do najnowszej wersji z Maven dla najnowszych poprawek, ulepszeń wydajności i nowych funkcji. [Dowiedz się więcej o łączniku Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="enable-virtual-machine-replication"></a>Włącz replikację maszyn wirtualnych
-Maszyny wirtualne, które nie mają włączone do innego regionu replikacji nie są odporne na regionalnych przestojów. Replikowanie maszyn wirtualnych zmniejsza wszelkie niekorzystny wpływ na działalność w czasie awarii region platformy Azure. Klasyfikator wykryje maszyn wirtualnych, które nie mają replikacja włączona i zaleca się włączenie replikacji, dzięki czemu w przypadku awarii, można szybko uruchomieniu maszyn wirtualnych odległym regionie platformy Azure. [Dowiedz się więcej na temat replikacji maszyny wirtualnej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Maszyny wirtualne, które nie mają włączonej replikacji w innym regionie, nie są odporne na awarie regionalne. Replikowanie maszyn wirtualnych zmniejsza niekorzystny wpływ na działalność biznesową w czasie awarii regionu platformy Azure. Usługa Advisor wykrywa maszyny wirtualne, które nie mają włączonej replikacji i zaleca włączenie replikacji, tak aby w przypadku awarii można szybko przełączać maszyny wirtualne w odległym regionie platformy Azure. [Dowiedz się więcej o replikacji maszyny wirtualnej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących wysokiej dostępności w programie Advisor
+## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do rekomendacji o wysokiej dostępności w usłudze Advisor
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), a następnie otwórz program [Advisor](https://aka.ms/azureadvisordashboard).
 
-2.  Na pulpicie nawigacyjnym usługi Advisor kliknij **wysokiej dostępności** kartę.
+2.  Na pulpicie nawigacyjnym usługi Advisor kliknij kartę **wysoka dostępność** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat zalecenia usługi Advisor zobacz:
-* [Wprowadzenie do usługi Azure Advisor](advisor-overview.md)
+Aby uzyskać więcej informacji na temat zaleceń klasyfikatora, zobacz:
+* [Wprowadzenie do Azure Advisor](advisor-overview.md)
 * [Wprowadzenie do usługi Advisor](advisor-get-started.md)
-* [Rekomendacji dotyczących kosztu usługi Advisor](advisor-cost-recommendations.md)
+* [Zalecenia dotyczące kosztów usługi Advisor](advisor-cost-recommendations.md)
 * [Zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md)
 * [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md)
-
+* [Zalecenia dotyczące doskonałości operacyjnej klasyfikatora](advisor-operational-excellence-recommendations.md)

@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "70812685"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120122"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Inicjowanie obsługi aplikacji opartej na atrybutach przy użyciu filtrów zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów zakresu do definiowania reguł opartych na atrybutach, które określają, którzy użytkownicy są obsługiwani do aplikacji.
@@ -65,7 +65,7 @@ Zgodnie z tym filtrem określania zakresu użytkownicy muszą spełniać następ
 Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego łącznika aprowizacji użytkowników usługi Azure AD. W poniższej procedurze przyjęto założenie, że skonfigurowano automatyczną obsługę administracyjną dla [jednej z obsługiwanych aplikacji](../saas-apps/tutorial-list.md) i dodano do niej filtr określania zakresu.
 
 ### <a name="create-a-scoping-filter"></a>Tworzenie filtru określania zakresu
-1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** >  aplikacje dla**przedsiębiorstw** > **wszystkie aplikacje** .
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** > aplikacje dla **przedsiębiorstw** > **wszystkie aplikacje** .
 
 2. Wybierz aplikację, dla której skonfigurowano automatyczną obsługę administracyjną: na przykład "usługi ServiceNow".
 
@@ -111,7 +111,15 @@ Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego 
 > Zapisanie nowego filtru określania zakresu wyzwala nową pełną synchronizację dla aplikacji, w której wszystkie użytkownicy w systemie źródłowym są oceniane ponownie dla nowego filtru określania zakresu. Jeśli użytkownik w aplikacji był wcześniej objęty zakresem aprowizacji, ale poza zakresem, jego konto jest wyłączone lub anulowane w aplikacji. Aby zastąpić to zachowanie domyślne, zapoznaj się z tematem [pomijanie usuwania dla kont użytkowników, które wykraczają poza zakres](skip-out-of-scope-deletions.md).
 
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="common-scoping-filters"></a>Typowe filtry zakresu
+| Atrybut docelowy| Operator | Wartość | Opis|
+|----|----|----|----|
+|userPrincipalName|DOPASOWANIE WYRAŻENIA REGULARNEGO|.\*@domain.com |Wszyscy użytkownicy z userPrincipalą z domeną @domain.com będą w zakresie aprowizacji|
+|userPrincipalName|NIE PASUJE DO WYRAŻENIA REGULARNEGO|.\*@domain.com|Wszyscy użytkownicy z userPrincipalą z domeną @domain.com będą poza zakresem aprowizacji|
+|Dział|UBIEGŁ|transakcje|Wszyscy użytkownicy z działu sprzedaży znajdują się w zakresie aprowizacji|
+|workerID|DOPASOWANIE WYRAŻENIA REGULARNEGO|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Wszyscy pracownicy z workerIDsem od 1000000 do 2000000 są w zakresie aprowizacji.|
+
+## <a name="related-articles"></a>Pokrewne artykuły
 * [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS](user-provisioning.md)
 * [Dostosuj mapowania atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)
 * [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)

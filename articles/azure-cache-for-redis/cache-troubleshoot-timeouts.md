@@ -1,25 +1,17 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure cache pod kątem limitów czasu Redis | Microsoft Docs
+title: Rozwiązywanie problemów z usługą Azure cache dla limitów czasu Redis
 description: Dowiedz się, jak rozwiązywać typowe problemy z przekroczeniem limitu czasu w usłudze Azure cache for Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e58b305a43cc5ad339fb87b9b8a09af04c410839
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826353"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121382"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Rozwiązywanie problemów z usługą Azure cache dla limitów czasu Redis
 
@@ -47,11 +39,11 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskazanie przy
 | Metryka komunikatu o błędzie | Szczegóły |
 | --- | --- |
 | powrotu |W ostatnim czasie: 0 poleceń zostało wystawione |
-| Menedżer |Menedżer gniazd wykonuje `socket.select`, co oznacza, że prosi o system operacyjny, aby wskazać gniazdo, które ma coś do zrobienia. Czytnik nie jest aktywnie czytany z sieci, ponieważ nie ma znaczenia, czy nie ma nic do zrobienia |
+| mgr |Menedżer gniazd wykonuje `socket.select`, co oznacza, że prosi o system operacyjny, aby wskazać gniazdo, które ma coś do zrobienia. Czytnik nie jest aktywnie czytany z sieci, ponieważ nie ma znaczenia, czy nie ma nic do zrobienia |
 | kolejka |Liczba operacji w toku wynosi 73 |
 | qu |6 operacji w toku znajdują się w niewysłanej kolejce i nie została jeszcze zapisywana w sieci wychodzącej |
 | qs |67 operacji w toku zostały wysłane do serwera, ale odpowiedź nie jest jeszcze dostępna. Odpowiedź może być `Not yet sent by the server` lub `sent by the server but not yet processed by the client.` |
-| składnika |0 z operacji w toku ma przejrzane odpowiedzi, ale nie zostały jeszcze oznaczone jako ukończone, ponieważ oczekują na pętlę ukończenia |
+| qc |0 z operacji w toku ma przejrzane odpowiedzi, ale nie zostały jeszcze oznaczone jako ukończone, ponieważ oczekują na pętlę ukończenia |
 | oznacza |Istnieje aktywny składnik zapisywania (oznacza to, że 6 niewysłanych żądań nie jest ignorowany) bajty/activewriters |
 | Podczas |Brak aktywnych czytników i zero bajtów jest dostępnych do odczytu na karcie sieciowej bajty/activereaders |
 

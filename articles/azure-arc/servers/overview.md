@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606086"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122839"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co to jest usługa Azure ARC dla serwerów
 
@@ -49,7 +49,7 @@ Podczas instalacji i środowiska uruchomieniowego Agent wymaga łączności z **
 
 Tagi usługi:
 
-* Usługi azureactivedirectory
+* AzureActiveDirectory
 * AzureTrafficManager
 
 Aby uzyskać listę adresów IP dla każdego tagu usługi/regionu, zobacz plik JSON — [zakresy adresów IP platformy Azure i Tagi usług — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519). Firma Microsoft publikuje cotygodniowe aktualizacje zawierające poszczególne usługi platformy Azure i zakresy adresów IP, z których korzystają. Aby uzyskać więcej informacji, zobacz [Tagi usług](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
@@ -132,7 +132,7 @@ Dane dziennika zbierane przez [Microsoft Monitoring Agent (MMA)](https://docs.mi
 
 - Na maszynach, na których zainstalowano już agenta MMA, będzie dostępna funkcja **usługi Azure Arc** z włączonymi zaktualizowanymi pakietami administracyjnymi.
 - W przypadku usługi Azure Arc na potrzeby integracji serwerów jest wymagany [Agent MMA w wersji 10.20.18011 lub nowszej](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version) .
-- Podczas wykonywania zapytania dotyczącego danych dziennika w [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#log-queries), zwracany schemat danych będzie zawierać hybrydowy **ResourceId** w formularzu `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`.
+- Podczas wykonywania zapytania dotyczącego danych dziennika w [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), zwracany schemat danych będzie zawierać hybrydowy **ResourceId** w formularzu `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`.
 
 Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z log Analytics w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
 

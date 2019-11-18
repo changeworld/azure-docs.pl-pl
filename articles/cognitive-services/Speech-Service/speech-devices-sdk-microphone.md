@@ -1,5 +1,5 @@
 ---
-title: Zestaw SDK urządzeń mowy zalecenia dotyczące tablicy mikrofonów — usługa mowy
+title: Zestaw SDK urządzenia mowy zalecenia dotyczące tablicy mikrofonów
 titleSuffix: Azure Cognitive Services
 description: Zalecenia dotyczące tablicy mikrofonów zestawu SDK urządzeń mowy. Te geometrie tablicy są zalecane do użycia z stosem audio firmy Microsoft.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 0a0bbbb59d09d35d0153f56f65b2ee1d9438e49d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072397"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111660"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Zestaw SDK urządzenia mowy zalecenia dotyczące tablicy mikrofonów
 
@@ -41,16 +41,16 @@ Należy wybrać składniki mikrofonu, aby dokładnie odtworzyć sygnał bez szum
 
 Zalecane właściwości w przypadku wybrania mikrotelefonu są następujące:
 
-| Parametr                     | Zalecane                                         |
-| ----------------------------- | --------------------------------------------------- |
-| SNR                           | \>= 65 dB (1 kHz sygnał 94 dBSPL, szum ważony) |
-| Dopasowanie amplitudy            | ± 1 dB @ 1 kHz                                      |
-| Dopasowanie fazy                | 2 ° @ 1 kHz                                        |
-| Punkt przeciążenia akustycznego (AOP) | \>= 120 dBSPL (THD = 10%)                           |
-| Szybkość transmisji bitów                      | Minimum 24-bitowe                                      |
-| Częstotliwość próbkowania                 | Minimum 16 kHz\*                                    |
-| Odpowiedź dotycząca częstotliwości            | ± 3 dB, 200-8000 Hz maska zmiennoprzecinkowa\*                 |
-| Niezawodność                   | Zakres temperatury magazynu — 40 °C do 70 °C<br />Zakres temperatury działania — od 20 °C do 55 °C |
+| Parametr | Zalecane |
+| --------- | ----------- |
+| SNR | \>= 65 dB (1 kHz sygnał 94 dBSPL, szum ważony) |
+| Dopasowanie amplitudy | ± 1 dB @ 1 kHz |
+| Dopasowanie fazy | 2 ° @ 1 kHz |
+| Punkt przeciążenia akustycznego (AOP) | \>= 120 dBSPL (THD = 10%) |
+| Szybkość transmisji bitów | Minimum 24-bitowe |
+| Częstotliwość próbkowania | Minimum 16 kHz\* |
+| Odpowiedź dotycząca częstotliwości | ± 3 dB, 200-8000 Hz maska zmiennoprzecinkowa\* |
+| Niezawodność | Zakres temperatury magazynu — 40 °C do 70 °C<br />Zakres temperatury działania — od 20 °C do 55 °C |
 
 _w przypadku aplikacji do obsługi wysokiej jakości (VoIP) mogą być wymagane \*wyższe stawki za próbkowanie lub zakresy częstotliwości "szerszych"._
 
@@ -68,7 +68,7 @@ Wydajność macierzy mikrofonu, gdy jest ona zintegrowana z urządzeniem, różn
 | THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, piąty porządek             |
 | Odpowiedź dotycząca częstotliwości | 200-8000 Hz,\*a maska zmiennoprzecinkowa, \*              |
 
-_aby mierzyć THD (np. Neumann KH120), musi być wymagany głośnik o niskim zniekształceniu._ \*
+\*\*_do mierzenia THD jest wymagany głośnik o niskim zniekształceniu (np. Neumann KH120)_
 
 _w przypadku aplikacji do obsługi wysokiej jakości (VoIP) mogą być wymagane zakresy częstotliwości \*\*"szerszym"_
 

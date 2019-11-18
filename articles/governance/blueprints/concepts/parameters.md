@@ -1,14 +1,14 @@
 ---
 title: Używanie parametrów do tworzenia planów dynamicznych
-description: Informacje o parametrach statycznych i dynamicznych oraz sposobach tworzenia przez nich planów dynamicznych.
+description: Poznaj parametry statyczne i dynamiczne oraz sposób ich używania do tworzenia bezpiecznych i dynamicznych planów.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: da0670bdc880c47c3b715dc8344896a6c695924c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960510"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128938"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych planów za poorednictwem parametrów
 

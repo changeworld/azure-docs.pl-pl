@@ -1,18 +1,15 @@
 ---
-title: Usuń grupę zasobów i zasoby — usługi Azure Resource Manager
+title: Usuwanie grupy zasobów i zasobów
 description: Opisuje sposób usuwania grup zasobów i zasobów. Opisano w nim, jak Azure Resource Manager zamówienia usunięcia zasobów podczas usuwania grupy zasobów. Opisano w nim kodów odpowiedzi i jak Menedżera zasobów obsługuje je, aby określić, jeśli usunięcie powiodło się.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c84dcf64555f40f45dbdaeedb05d4cc461f2cbb7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275090"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150814"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager grupy zasobów i usuwania zasobów
 
@@ -57,11 +54,11 @@ Jeśli operacja GET zwróci błąd, Menedżer zasobów ponawia próbę GET dla n
 
 Dla innych kodów błędu usługi Resource Manager nie usunięcia zasobu.
 
-## <a name="delete-resource-group"></a>Usuń grupę zasobów
+## <a name="delete-resource-group"></a>Usuwanie grupy zasobów
 
 Aby usunąć grupę zasobów, użyj jednej z poniższych metod.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
@@ -79,7 +76,7 @@ az group delete --name ExampleResourceGroup
 
 1. Wybierz pozycję **Usuń grupę zasobów**.
 
-   ![Usuń grupę zasobów](./media/resource-group-delete/delete-group.png)
+   ![Usuwanie grupy zasobów](./media/resource-group-delete/delete-group.png)
 
 1. Aby potwierdzić usunięcie, wpisz nazwę grupy zasobów
 
@@ -89,7 +86,7 @@ az group delete --name ExampleResourceGroup
 
 Użyj jednej z poniższych metod, aby usunąć zasób.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7475d660fd2fa64ce69e7c23e0bad518fffddd26
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2b90d95d41bb30226d870a74a47327d6492bbd1e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681510"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122941"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
@@ -48,7 +48,7 @@ Na poniższym diagramie przedstawiono, jak różnych infrastruktur Integration R
 
 ![Różne typy infrastruktur Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Środowisko uruchomieniowe integracji Azure
+## <a name="azure-integration-runtime"></a>Azure Integration Runtime
 Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
 - Uruchamianie przepływów danych na platformie Azure 
@@ -78,6 +78,9 @@ Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
 
 > [!NOTE] 
 > Korzystaj z własnego środowiska Integration Runtime, aby obsługiwać magazyny danych, które wymagają sterownika przystosowanego do oprogramowania, takiego jak SAP HANA, MySQL itp.  Aby uzyskać więcej informacji, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+
+> [!NOTE] 
+> Java Runtime Environment (JRE) to zależność środowiska IR obsługiwanego przez siebie. Upewnij się, że środowisko JRE jest zainstalowane na tym samym hoście.
 
 ### <a name="self-hosted-ir-network-environment"></a>Własne środowisko sieciowe IR
 Jeśli chcesz przeprowadzić integrację danych bezpiecznie w środowisku sieci prywatnej, która nie ma bezpośredniego połączenia ze środowiskiem chmury publicznej, możesz zainstalować hostowane samodzielnie, lokalne środowisko IR za zaporą firmową lub w wirtualnej sieci prywatnej.  Infrastruktura Integration Runtime (Self-hosted) wykonuje tylko wychodzące połączenia HTTP do otwartej sieci Internet.

@@ -1,6 +1,6 @@
 ---
-title: Azure VirtualNetworkCombo UI element | Microsoft Docs
-description: Opis elementu Microsoft.Network.VirtualNetworkCombo interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika usługi Azure VirtualNetworkCombo | Microsoft Docs
+description: Opisuje element interfejsu użytkownika Microsoft. Network. VirtualNetworkCombo dla Azure Portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,26 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0437338b403ff19761173d08be3938d07f13f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d325230f603be4ccfe4fe42f1b58c6ad892fdb2c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708347"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151482"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI element
-Grupa służy do wybierania nowej lub istniejącej sieci wirtualnej.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-Gdy użytkownik wybiera nową sieć wirtualną, użytkownik może dostosować nazwę każdej podsieci i prefiksu adresu. Konfigurowanie podsieci jest opcjonalne.
+Grupa kontrolek służąca do wybierania nowej lub istniejącej sieci wirtualnej.
 
-![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
 
-Gdy użytkownik wybiera istniejącą sieć wirtualną, użytkownik musi być mapowane każdej podsieci, wymagane przez szablon wdrożenia do istniejącej podsieci. W tym przypadku Konfigurowanie podsieci jest wymagana.
+Gdy użytkownik wybiera nową sieć wirtualną, użytkownik może dostosować nazwę i prefiks adresu każdej podsieci. Konfigurowanie podsieci jest opcjonalne.
 
-![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft. Network. VirtualNetworkCombo New](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+
+Gdy użytkownik wybiera istniejącą sieć wirtualną, użytkownik musi zmapować każdą podsieć, której wymaga szablon wdrożenia, do istniejącej podsieci. Konfigurowanie podsieci w tym przypadku jest wymagane.
+
+![Istniejąca firma Microsoft. Network. VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schemat
+
 ```json
 {
   "name": "element1",
@@ -85,16 +88,6 @@ Gdy użytkownik wybiera istniejącą sieć wirtualną, użytkownik musi być map
 }
 ```
 
-## <a name="remarks"></a>Uwagi
-- Jeśli zostanie określony, pierwszy nienakładający prefiks rozmiaru adresu `defaultValue.addressPrefixSize` jest ustalana automatycznie w istniejących sieciach wirtualnych w subskrypcji użytkownika.
-- Wartością domyślną dla `defaultValue.name` i `defaultValue.addressPrefixSize` jest **null**.
-- `constraints.minAddressPrefixSize` musi być określona. Niedostępny do wyboru są istniejące sieci wirtualne, z mniejszą niż określona wartość przestrzeń adresową.
-- `subnets` należy określić, i `constraints.minAddressPrefixSize` musi być określona dla każdej podsieci.
-- Podczas tworzenia nowej sieci wirtualnej, prefiks adresu w każdej podsieci jest obliczana automatycznie na podstawie prefiksu adresu sieci wirtualnej oraz odpowiednie `addressPrefixSize`.
-- Korzystając z istniejącego wirtualnego sieci, wszelkie podsieci, które są mniejsze niż odpowiednie `constraints.minAddressPrefixSize` nie są dostępne do wyboru. Ponadto jeśli zostanie określony, podsieci, które nie mają co najmniej `minAddressCount` dostępnych adresów nie są dostępne do wyboru. Wartość domyślna to **0**. Aby upewnić się, że dostępne adresy są ciągłe, należy określić **true** dla `requireContiguousAddresses`. Wartość domyślna to **true**.
-- Tworzenie podsieci w istniejącej sieci wirtualnej nie jest obsługiwane.
-- Jeśli `options.hideExisting` jest **true**, użytkownik nie może wybrać istniejącą sieć wirtualną. Wartość domyślna to **false**.
-
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
 ```json
@@ -118,6 +111,18 @@ Gdy użytkownik wybiera istniejącą sieć wirtualną, użytkownik musi być map
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="remarks"></a>Uwagi
+
+- Jeśli ta wartość jest określona, pierwszy nienakładający się prefiks adresu `defaultValue.addressPrefixSize` jest ustalany automatycznie na podstawie istniejących sieci wirtualnych w ramach subskrypcji użytkownika.
+- Wartość domyślna dla `defaultValue.name` i `defaultValue.addressPrefixSize` ma **wartość null**.
+- należy określić `constraints.minAddressPrefixSize`. Wszystkie istniejące sieci wirtualne z przestrzenią adresową mniejszą niż określona wartość są niedostępne do wybrania.
+- należy określić `subnets` i należy określić `constraints.minAddressPrefixSize` dla każdej podsieci.
+- Podczas tworzenia nowej sieci wirtualnej prefiks adresu każdej podsieci jest obliczany automatycznie na podstawie prefiksu adresu sieci wirtualnej i odpowiednich `addressPrefixSize`.
+- W przypadku korzystania z istniejącej sieci wirtualnej wszystkie podsieci mniejsze niż odpowiednie `constraints.minAddressPrefixSize` są niedostępne do wyboru. Ponadto w przypadku wybrania opcji podsieci, które nie mają co najmniej `minAddressCount` dostępnych adresów, są niedostępne do wyboru. Wartość domyślna to **0**. Aby upewnić się, że dostępne adresy są ciągłe, określ **wartość true** dla `requireContiguousAddresses`. Wartość domyślna to **true**.
+- Tworzenie podsieci w istniejącej sieci wirtualnej nie jest obsługiwane.
+- Jeśli `options.hideExisting` ma **wartość true**, użytkownik nie może wybrać istniejącej sieci wirtualnej. Wartość domyślna to **false**.
+
+## <a name="next-steps"></a>Następne kroki
+
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

@@ -1,7 +1,7 @@
 ---
 title: Struktura odpowiedzi interfejs API wyszukiwania w sieci Web Bing i typy odpowiedzi
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się więcej na temat typów odpowiedzi i odpowiedzi używanych przez interfejs API wyszukiwania w sieci Web Bing.
+description: Po wysłaniu wyszukiwanie w sieci Web Bing żądanie wyszukiwania zwraca obiekt `SearchResponse` w treści odpowiedzi.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854722"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110621"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Struktura odpowiedzi interfejs API wyszukiwania w sieci Web Bing i typy odpowiedzi  
 
-Po wysłaniu wyszukiwanie w sieci Web Bing żądanie wyszukiwania zwraca [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) obiekt w treści odpowiedzi. Obiekt zawiera pole dla każdej odpowiedzi wyznaczonej przez usługę Bing do zapytania. Ten przykład ilustruje obiekt odpowiedzi, jeśli Bing zwróci wszystkie odpowiedzi:
+Po wysłaniu wyszukiwanie w sieci Web Bing żądanie wyszukiwania zwraca obiekt [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) w treści odpowiedzi. Obiekt zawiera pole dla każdej odpowiedzi wyznaczonej przez usługę Bing do zapytania. Ten przykład ilustruje obiekt odpowiedzi, jeśli Bing zwróci wszystkie odpowiedzi:
 
 ```json
 {
@@ -38,7 +38,7 @@ Po wysłaniu wyszukiwanie w sieci Web Bing żądanie wyszukiwania zwraca [`Searc
 }, ...
 ```
 
-Zwykle wyszukiwanie w sieci Web Bing zwraca podzestaw odpowiedzi. Na przykład jeśli termin kwerendy miał wartość *dinghies*, odpowiedź może obejmować `webPages`, `images`, i `rankingResponse`. O ile nie użyto [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) do odfiltrowania stron sieci Web, odpowiedź zawsze zawiera `webpages` odpowiedzi i. `rankingResponse`
+Zwykle wyszukiwanie w sieci Web Bing zwraca podzestaw odpowiedzi. Na przykład jeśli termin kwerendy miał wartość *dinghies*, odpowiedź może zawierać `webPages`, `images`i `rankingResponse`. O ile nie użyto [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) do odfiltrowania stron sieci Web, odpowiedź zawsze zawiera `webpages` i `rankingResponse` odpowiedzi.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -57,7 +57,7 @@ Odpowiedź na [stronach sieci Web](https://docs.microsoft.com/rest/api/cognitive
 }, ...
 ```
 
-Użyj `name` i`url` , aby utworzyć hiperłącze, które pobiera użytkownika do strony sieci Web.
+Użyj `name` i `url`, aby utworzyć hiperłącze, które pobiera użytkownika do strony sieci Web.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display the webpage in a search results page.
@@ -105,7 +105,7 @@ Możesz również powiększać miniatury, gdy użytkownik zatrzyma nad nimi wska
 ![Expanded view of thumbnail image](./media/cognitive-services-bing-web-api/bing-web-image-thumbnail-expansion.PNG)
 -->
 
-Jeśli użytkownik kliknie miniaturę, użyj `webSearchUrl` do przełączenia użytkownika do strony wyników wyszukiwania Bing dla obrazów, które zawierają kolaż obrazu.
+Jeśli użytkownik kliknie miniaturę, użyj `webSearchUrl`, aby przełączyć użytkownika do strony wyników wyszukiwania Bing dla obrazów, które zawierają kolaż obrazu.
 
 Aby uzyskać szczegółowe informacje na temat odpowiedzi i obrazów obrazu, zobacz [Wyszukiwanie obrazów API](../bing-image-search/search-the-web.md).
 
@@ -121,9 +121,9 @@ Odpowiedź [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservic
 }, ...
 ```
 
-Użyj ciągu `webSearchUrl` zapytania i adresu URL, aby utworzyć hiperłącze, które pobiera użytkownika do strony wyników wyszukiwania Bing dla powiązanego zapytania. `displayText` Możesz również użyć `text` ciągu zapytania we własnej kwerendzie interfejsu API wyszukiwanie w sieci Web i wyświetlić wyniki samodzielnie.
+Użyj `displayText` ciągu zapytania i adresu URL `webSearchUrl`, aby utworzyć hiperłącze, które pobiera użytkownika do strony wyników wyszukiwania Bing dla powiązanego zapytania. Możesz również użyć `text` ciągu zapytania we własnej kwerendzie interfejsu API wyszukiwanie w sieci Web i wyświetlić wyniki samodzielnie.
 
-Aby uzyskać informacje o sposobie obsługi znaczników wyróżniania w `displayText`programie, zobacz [podświetlanie trafień](../bing-web-search/hit-highlighting.md).
+Aby uzyskać informacje na temat obsługi znaczników wyróżniania w `displayText`, zobacz [wyróżnianie trafień](../bing-web-search/hit-highlighting.md).
 
 Poniżej przedstawiono przykład użycia powiązanych zapytań w Bing.com.
 
@@ -169,7 +169,7 @@ W zależności od urządzenia użytkownika zwykle jest wyświetlany podzestaw fi
 ![List of video thumbnails](./media/cognitive-services-bing-web-api/bing-web-video-thumbnails.PNG)
 -->
 
-Gdy użytkownik umieści wskaźnik myszy nad miniaturą, której można `motionThumbnailUrl` użyć do odtwarzania miniaturowej wersji wideo. Pamiętaj o nadaniu atrybutu wyświetlonej miniaturze ruchu.
+Gdy użytkownik umieści wskaźnik myszy nad miniaturką, można użyć `motionThumbnailUrl`, aby odtworzyć miniaturę klipu wideo. Pamiętaj o nadaniu atrybutu wyświetlonej miniaturze ruchu.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Motion thumbnail of a video](./media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
@@ -177,15 +177,15 @@ Gdy użytkownik umieści wskaźnik myszy nad miniaturą, której można `motionT
 
 Po kliknięciu miniatury będą dostępne następujące opcje wyświetlania filmu wideo:
 
-- Użyj `hostPageUrl` , aby wyświetlić wideo w witrynie sieci Web hosta (na przykład YouTube)
-- Używanie `webSearchUrl` do wyświetlania wideo w przeglądarce wideo Bing
+- Użyj `hostPageUrl`, aby wyświetlić wideo w witrynie sieci Web hosta (na przykład YouTube)
+- Użyj `webSearchUrl`, aby wyświetlić wideo w przeglądarce wideo Bing
 - Używanie `embedHtml` do osadzania wideo we własnym środowisku
 
 Aby uzyskać szczegółowe informacje na temat odpowiedzi wideo i wideo, zobacz [Wyszukiwanie wideo API](../bing-video-search/search-the-web.md).
 
 ## <a name="news-answer"></a>Odpowiedź na wiadomości
 
-Odpowiedź [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) z wiadomościami zawiera listę artykułów z wiadomościami, które są ważne dla zapytania w usłudze Bing. Każdy [artykułu z wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) na liście zawiera nazwę, opis i adres URL do artykułu w witrynie internetowej hosta. Jeśli artykuł zawiera obraz, obiekt zawiera miniaturę obrazu.
+Odpowiedź z [wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) zawiera listę artykułów z wiadomościami, które są ważne dla zapytania w usłudze Bing. Każdy [artykułu z wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) na liście zawiera nazwę, opis i adres URL do artykułu w witrynie internetowej hosta. Jeśli artykuł zawiera obraz, obiekt zawiera miniaturę obrazu.
 
 ```json
 {
@@ -208,7 +208,7 @@ Odpowiedź [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/b
 }, ...
 ```
 
-W zależności od urządzenia użytkownika zostanie wyświetlony podzestaw artykułów z wiadomościami z opcją dla użytkownika, aby wyświetlić pozostałe artykuły. Użyj właściwości `name` i `url`, aby utworzyć hiperlink prowadzący użytkownika do artykułu w witrynie hosta. Jeśli artykuł zawiera obraz, należy kliknąć obraz przy użyciu polecenia `url`. Pamiętaj, aby podać źródło artykułu przy użyciu właściwości `provider`.
+W zależności od urządzenia użytkownika zostanie wyświetlony podzestaw artykułów z wiadomościami z opcją dla użytkownika, aby wyświetlić pozostałe artykuły. Użyj właściwości `name` i `url`, aby utworzyć hiperlink prowadzący użytkownika do artykułu w witrynie hosta. Jeśli artykuł zawiera obraz, należy kliknąć obraz przy użyciu `url`. Pamiętaj, aby podać źródło artykułu przy użyciu właściwości `provider`.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.
@@ -220,11 +220,11 @@ Aby uzyskać szczegółowe informacje o nowościach i artykułach nowości, zoba
 
 ## <a name="computation-answer"></a>Odpowiedź obliczeniowa
 
-Jeśli użytkownik wprowadzi wyrażenie matematyczne lub kwerendę konwersji jednostkowej, odpowiedź może zawierać odpowiedź obliczeniową [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) . `computation` Odpowiedź zawiera wyrażenie znormalizowane i jego wynik.
+Jeśli użytkownik wprowadzi wyrażenie matematyczne lub kwerendę konwersji jednostkowej, odpowiedź może zawierać odpowiedź [obliczeniową](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) . Odpowiedź `computation` zawiera wyrażenie znormalizowane i jego wynik.
 
 Zapytanie konwersji jednostkowej to zapytanie, które konwertuje jedną jednostkę na inną. Na przykład, *ile stóp w 10 metrów?* lub *ile tablespoons w filiżanki 1/4?*
 
-Poniżej przedstawiono `computation` odpowiedzi na liczbę metrów *w 10 pomiarach?*
+Poniżej przedstawiono `computation` odpowiedzi na to, *ile stóp w 10 metrów?*
 
 ```json
 "computation": {
@@ -292,13 +292,13 @@ Wyrażenie matematyczne może zawierać następujące symbole:
 
 |Symbol|Opis|
 |------------|-----------------|
-|+|Dodanie|
+|+|Dodatkowo|
 |-|Odejmowania|
-|/|Dzielenie|
-|*|Mnożenie|
-|^|Awansowan|
+|/|Przegrod|
+|*|Mnożenia|
+|^|Power|
 |!|Siln|
-|.|Decimal|
+|.|Dziesiętna|
 |()|Grupowanie pierwszeństwa|
 |[]|Funkcja|
 
@@ -316,7 +316,7 @@ Wyrażenie matematyczne może zawierać następujące funkcje:
 
 |Symbol|Opis|
 |------------|-----------------|
-|Sortuj|Pierwiastek kwadratowy|
+|Sortowanie|Pierwiastek kwadratowy|
 |Sin [x], cos [x], Tan [x]<br />CSC [x], s [x], COT [x]|Funkcje trygonometryczne (z argumentami w radianach)|
 |Łuki [x], ArcCos [x], ArcTan [x]<br />ArcCsc [x], ArcSec [x], ArcCot [x]|Odwrotne funkcje trygonometryczne (dające wyniki w radianach)|
 |EXP [x], E ^ x|Funkcja wykładnicza|
@@ -330,11 +330,11 @@ Wyrażenia matematyczne zawierające zmienne (na przykład 4x + 6 = 18, gdzie x 
 
 Jeśli użytkownik wprowadzi zapytanie o godzinę lub datę, odpowiedź może zawierać odpowiedź [strefy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) czasowej. Ta odpowiedź obsługuje zapytania niejawne lub jawne. Niejawne zapytanie, na przykład *jego czas trwania?* , zwraca czas lokalny na podstawie lokalizacji użytkownika. Jawne zapytanie, na przykład *jaki jest czas w Seattle?* , zwraca czas lokalny dla Seattle, WA.
 
-`timeZone` Odpowiedź zawiera nazwę lokalizacji, bieżącą datę i godzinę UTC w określonej lokalizacji oraz przesunięcie czasu UTC. Jeśli granica lokalizacji znajduje się w wielu strefach czasowych, odpowiedź zawiera bieżącą datę i godzinę UTC wszystkich stref czasowych w ramach granicy. Na przykład, ponieważ stan Florida jest w dwóch strefach czasowych, odpowiedź zawiera lokalną datę i godzinę obu stref czasowych.  
+Odpowiedź `timeZone` zawiera nazwę lokalizacji, bieżącą datę i godzinę UTC w określonej lokalizacji oraz przesunięcie czasu UTC. Jeśli granica lokalizacji znajduje się w wielu strefach czasowych, odpowiedź zawiera bieżącą datę i godzinę UTC wszystkich stref czasowych w ramach granicy. Na przykład, ponieważ stan Florida jest w dwóch strefach czasowych, odpowiedź zawiera lokalną datę i godzinę obu stref czasowych.  
 
-Jeśli zapytanie żąda czasu stanu lub kraju/regionu, Bing określa główne miasto w granicach geograficznych lokalizacji i zwraca je w `primaryCityTime` polu. Jeśli granica zawiera wiele stref czasowych, pozostałe strefy czasowe są zwracane w `otherCityTimes` polu.
+Jeśli zapytanie żąda czasu stanu lub kraju/regionu, Bing określa główne miasto w granicach geograficznych lokalizacji i zwraca je w polu `primaryCityTime`. Jeśli granica zawiera wiele stref czasowych, pozostałe strefy czasowe są zwracane w polu `otherCityTimes`.
 
-Poniżej przedstawiono przykładowe zapytania, które zwracają `timeZone` odpowiedź.
+Poniżej przedstawiono przykładowe zapytania, które zwracają `timeZone` odpowiedzi.
 
 ```
 Query: What time is it?
@@ -473,7 +473,7 @@ Poniżej przedstawiono sposób korzystania z sugestii pisowni w usłudze Bing.
 
 ![Przykład sugestii pisowni Bing](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="next-steps"></a>Kolejne kroki  
+## <a name="next-steps"></a>Następne kroki  
 
 * Przejrzyj dokumentację dotyczącą [ograniczania żądań](throttling-requests.md) .  
 

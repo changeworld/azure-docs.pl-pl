@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f9d1198a0faca8eed2ca5d3f3ee89ac9019d657
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 777fe1a62002a765460617cd69f3d518d78ed331
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073907"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150881"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -120,6 +120,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmian
+- 11/15/2019: niewielkie zmiany [dotyczące wysokiej dostępności dla oprogramowania SAP NetWeaver na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP](high-availability-guide-suse-netapp-files.md) i [wysokiej dostępności dla oprogramowania sap NetWeaver na Red Hat Enterprise Linux z Azure NetApp files for SAP Applications](high-availability-guide-rhel-netapp-files.md) w celu wyjaśnienia ograniczeń rozmiaru puli pojemności i usunięcia instrukcji, że obsługiwana jest tylko wersja NFSv3.
 - 11/12/2019: wydanie [wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Windows z Azure NetApp Files (SMB)](high-availability-guide-windows-netapp-files-smb.md)
 - 11/08/2019: zmiany dotyczące [wysokiej dostępności SAP HANA na maszynach wirtualnych platformy Azure w SUSE Linux Enterprise Server](sap-hana-high-availability.md), [konfigurowania replikacji systemu SAP HANA na maszynach wirtualnych platformy Azure](sap-hana-high-availability-rhel.md), na [platformie Azure Virtual Machines wysokiej dostępności dla oprogramowania SAP NETWEAVER na SUSE Linux Enterprise Server dla aplikacji SAP](high-availability-guide-suse.md), platforma Azure Virtual Machines wysoką dostępność dla oprogramowania SAP [NetWeaver na SUSE Linux Enterprise Server](high-availability-guide-suse-netapp-files.md)Azure NetApp Files [ ](high-availability-guide-rhel.md), [Platforma Azure Virtual Machines wysoką dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux z Azure NetApp Files](high-availability-guide-rhel-netapp-files.md), [wysoką dostępnością dla systemu plików NFS na maszynach wirtualnych platformy Azure na platformie SUSE Linux Enterprise Server](high-availability-guide-suse-nfs.md), [GlusterFS na maszynach wirtualnych platformy Azure na Red Hat Enterprise Linux dla oprogramowania SAP NetWeaver](high-availability-guide-rhel-glusterfs.md) , aby zalecamy korzystanie z usługi Azure Standard Load  
 - 11/08/2019: zmiany dotyczące [planowania obciążeń SAP i listy kontrolnej wdrożenia](sap-deployment-checklist.md) w celu wyjaśnienia zalecenia dotyczące szyfrowania  

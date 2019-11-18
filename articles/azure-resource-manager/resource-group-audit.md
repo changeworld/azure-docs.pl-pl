@@ -1,17 +1,14 @@
 ---
-title: Wyświetlanie dzienników aktywności platformy Azure w celu monitorowania zasobów | Microsoft Docs
+title: Wyświetlanie dzienników aktywności platformy Azure w celu monitorowania zasobów
 description: Użyj dzienników aktywności, aby przejrzeć akcje i błędy użytkownika. Pokazuje Azure Portal PowerShell, interfejs wiersza polecenia platformy Azure i REST.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3ac407fa4cfef1530cb6bbfde2ec666b5a07e324
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329439"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150864"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Wyświetlanie dzienników aktywności w celu monitorowania akcji dotyczących zasobów
 

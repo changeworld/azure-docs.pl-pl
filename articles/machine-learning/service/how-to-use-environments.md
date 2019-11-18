@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73957841"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123546"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Ponownie Użyj środowisk do szkolenia & wdrożenia z Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 Środowiska można używać podczas wdrażania modelu jako usługi sieci Web. Umożliwia to przekształcenie połączonego przepływu pracy, w którym można nauczyć, testować i wdrażać model przy użyciu dokładnie tych samych bibliotek w ramach obliczeń szkoleniowych i wnioskowych.
 
-Aby wdrożyć usługę sieci Web, Połącz środowisko, obliczenia wnioskowania, skrypt oceniania i zarejestrowany model w obiekcie wdrożenia, [Wdróż ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). Dowiedz się więcej o [wdrażaniu usług sieci Web](how-to-deploy-and-where.md).
+Aby wdrożyć usługę sieci Web, Połącz środowisko, obliczenia wnioskowania, skrypt oceniania i zarejestrowany model w obiekcie wdrożenia, [Wdróż ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). Dowiedz się więcej o [wdrażaniu usług sieci Web](how-to-deploy-and-where.md).
 
 W tym przykładzie przyjęto założenie, że Ukończono pracę szkoleniową i chcesz wdrożyć ten model w usłudze Azure Container Instance (ACI). Podczas kompilowania usługi sieci Web pliki modelu i oceny są instalowane na obrazie, a Azure Machine Learning stos wnioskowania zostanie dodany do obrazu.
 

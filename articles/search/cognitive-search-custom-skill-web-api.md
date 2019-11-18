@@ -1,5 +1,5 @@
 ---
-title: Niestandardowa umiejętność interfejsu API sieci Web w potoku wzbogacania
+title: Niestandardowa umiejętność interfejsu API sieci Web w programie umiejętności
 titleSuffix: Azure Cognitive Search
 description: Zwiększaj możliwości usługi Azure Wyszukiwanie poznawcze umiejętności, wywołując do interfejsów API sieci Web. Za pomocą niestandardowej funkcji interfejsu API sieci Web Zintegruj swój kod niestandardowy.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466741"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113793"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Niestandardowa umiejętność interfejsu API sieci Web w potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure
 
@@ -28,7 +28,7 @@ Struktura ładunków JSON została opisana w dalszej części tego dokumentu.
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. umiejętności. Custom. WebApiSkill
+Microsoft.Skills.Custom.WebApiSkill
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
 
@@ -201,7 +201,7 @@ Oprócz nieprawidłowego interfejsu API sieci Web lub wysyłania kodów stanu, k
 
 W przypadku niedostępności internetowego interfejsu API lub zwrócenie błędu HTTP, przyjazny błąd ze wszystkimi dostępnymi szczegółami dotyczącymi błędu HTTP zostanie dodany do historii wykonywania indeksatora.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Dodaj niestandardową umiejętność do potoku wzbogacania AI](cognitive-search-custom-skill-interface.md)

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 480c4c65f1bc0abe81114a2b898696e6d6b153fe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039633"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133338"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Odbieraj powiadomienia dotyczące magazynu kluczy i odpowiadaj na nie Azure Event Grid (wersja zapoznawcza)
 
@@ -194,8 +194,10 @@ Jeśli używasz systemu opartego na sondowaniu do wyszukiwania zmian stanu wpis�
 
 Więcej informacji:
 
+
+- Przegląd: [monitorowanie Key Vault z Azure Event Grid (wersja zapoznawcza)](event-grid-overview.md)
+- Instrukcje: [otrzymywanie wiadomości e-mail po zmianie wpisu tajnego magazynu kluczy](event-grid-logicapps.md)
+- [Schemat zdarzeń Azure Event Grid dla Azure Key Vault (wersja zapoznawcza)](../event-grid/event-schema-key-vault.md)
 - [Przegląd Azure Key Vault](key-vault-overview.md)
 - [Przegląd Azure Event Grid](../event-grid/overview.md)
-- [Key Vault monitorowania z Azure Event Grid (wersja zapoznawcza)](event-grid-overview.md)
-- [Schemat zdarzeń Azure Event Grid dla Azure Key Vault (wersja zapoznawcza)](../event-grid/event-schema-key-vault.md)
 - [Omówienie usługi Azure Automation](../automation/index.yml)

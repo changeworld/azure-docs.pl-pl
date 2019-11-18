@@ -1,18 +1,18 @@
 ---
-title: Obsługa protokołu WebSocket na platformie Azure Application Gateway | Microsoft Docs
-description: Ta strona zawiera omówienie obsługi protokołu WebSocket Application Gateway.
+title: Obsługa protokołu WebSocket na platformie Azure Application Gateway
+description: Usługa Application Gateway zapewnia natywną obsługę protokołu WebSocket w bramach każdego rozmiaru. Nie ma ustawień konfigurowalnych przez użytkownika.
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
+services: application-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 03/18/2019
-ms.openlocfilehash: a48f1b6e4410820d40ba6563d431c690ab791ff0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 11/16/2019
+ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097242"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130333"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Omówienie obsługi protokołu WebSocket w Application Gateway
 

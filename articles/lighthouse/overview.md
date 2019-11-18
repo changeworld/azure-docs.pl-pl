@@ -1,18 +1,14 @@
 ---
 title: Co to jest Azure Lighthouse?
 description: Usługa Azure Lighthouse umożliwia dostawcom usług dostarczanie usług zarządzanych klientom o większej wydajności i skalowalności.
-author: JnHs
-ms.author: jenhayes
 ms.date: 11/11/2019
 ms.topic: overview
-ms.service: lighthouse
-manager: carmonm
-ms.openlocfilehash: ae8194e6d5764769019ac803a52cd54497a618c1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0551bbcbc9609809b0b28eb56a0a3b848debcaae
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929582"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132196"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co to jest Azure Lighthouse?
 

@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817924"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133154"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Udostępnianie i katalogowanie nowych dzierżawców w aplikacji SaaS przy użyciu wielodostępnej usługi Azure SQL Database podzielonej na fragmenty
 
@@ -63,11 +63,11 @@ Wykaz może również wskazywać, czy dzierżawca jest w trybie offline w celu k
 - Warstwa usług lub wersja bazy danych.
 - Wersja schematu bazy danych.
 - Nazwa dzierżawy i jej umowa SLA (Umowa dotycząca poziomu usług).
-- Informacje umożliwiające zarządzanie aplikacjami, obsługę klienta lub procesy DevOps.  
+- Informacje umożliwiające zarządzanie aplikacjami, obsługę klienta lub procesy DevOps.
 
-Wykaz może również służyć do włączania raportów między dzierżawcami, zarządzania schematami i wyodrębniania danych na potrzeby analizy. 
+Wykaz może również służyć do włączania raportów między dzierżawcami, zarządzania schematami i wyodrębniania danych na potrzeby analizy.
 
-### <a name="elastic-database-client-library"></a>Biblioteka kliencka Elastic Database 
+### <a name="elastic-database-client-library"></a>Biblioteka kliencka Elastic Database
 
 W programie Wingtip katalog jest implementowany w bazie danych *tenantcatalog* . *Tenantcatalog* jest tworzony przy użyciu funkcji zarządzania fragmentu w [bibliotece klienta Elastic Database (Biblioteka edcl)](sql-database-elastic-database-client-library.md). Biblioteka umożliwia aplikacji Tworzenie i używanie *mapy fragmentu* przechowywanej w bazie danych oraz zarządzanie nią. Mapa fragmentu krzyżowo odwołuje się do klucza dzierżawy z fragmentu, co oznacza jego bazę danych podzielonej na fragmenty.
 
@@ -108,7 +108,7 @@ Skrypty aprowizacji dzierżawców w tym samouczku obsługują oba z następując
 - Inicjowanie obsługi dzierżawy w istniejącej bazie danych udostępnionej innym dzierżawcom.
 - Inicjowanie obsługi dzierżawy w oddzielnym bazie danych.
 
-Dane dzierżawy są następnie inicjowane i zarejestrowane na mapie fragmentu wykazu. W przykładowej aplikacji bazy danych, które zawierają wiele dzierżawców, mają nazwę generyczną, taką jak *tenants1* lub *tenants2*. Do baz danych, które zawierają pojedynczą dzierżawę, nadano nazwę dzierżawy. Określone konwencje nazewnictwa w przykładzie nie stanowią krytycznej części wzorca, ponieważ użycie wykazu umożliwia przypisanie każdej nazwy do bazy danych.  
+Dane dzierżawy są następnie inicjowane i zarejestrowane na mapie fragmentu wykazu. W przykładowej aplikacji bazy danych, które zawierają wiele dzierżawców, mają nazwę generyczną, taką jak *tenants1* lub *tenants2*. Do baz danych, które zawierają pojedynczą dzierżawę, nadano nazwę dzierżawy. Określone konwencje nazewnictwa w przykładzie nie stanowią krytycznej części wzorca, ponieważ użycie wykazu umożliwia przypisanie każdej nazwy do bazy danych.
 
 <a name="goto_1_tutorial"/>
 
@@ -132,7 +132,7 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 
 - Pobierz skrypty Wingtip i kod źródłowy:
     - Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) .
-    - Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania skryptów Wingtip. 
+    - Zapoznaj się z [ogólnymi wskazówkami](saas-tenancy-wingtip-app-guidance-tips.md) dotyczącymi kroków pobierania i odblokowywania skryptów Wingtip.
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>Udostępnianie dzierżawcy do bazy danych *udostępnionej* innym dzierżawcom
 
@@ -144,8 +144,8 @@ Poniżej przedstawiono najważniejsze elementy przepływu pracy aprowizacji, kt�
 
 - **Oblicz nowy klucz dzierżawy**: funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
 - **Sprawdź, czy klucz dzierżawy już istnieje**: wykaz jest sprawdzany w celu upewnienia się, że klucz nie został jeszcze zarejestrowany.
-- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawy**: baza danych dzierżawy została zaktualizowana w celu dodania informacji o nowej dzierżawie.  
-- **Rejestrowanie dzierżawy w wykazie**: mapowanie między nowym kluczem dzierżawy a istniejącą bazą danych tenants1 jest dodawane do wykazu. 
+- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawy**: baza danych dzierżawy została zaktualizowana w celu dodania informacji o nowej dzierżawie.
+- **Rejestrowanie dzierżawy w wykazie**: mapowanie między nowym kluczem dzierżawy a istniejącą bazą danych tenants1 jest dodawane do wykazu.
 - **Dodaj nazwę dzierżawy do tabeli rozszerzeń wykazu**: nazwa miejsca jest dodawana do tabeli dzierżawców w katalogu.  To dodanie pokazuje, w jaki sposób baza danych wykazu może zostać rozszerzona w celu obsługi dodatkowych danych specyficznych dla aplikacji.
 - **Otwórz stronę zdarzeń dla nowej dzierżawy**: Strona zdarzeń *Bushwillow Blues* zostanie otwarta w przeglądarce.
 
@@ -172,7 +172,7 @@ Aby zrozumieć, w jaki sposób aplikacja Wingtip implementuje nowe udostępniani
 
 5. Śledź wykonywanie skryptu przy użyciu opcji menu **Debuguj** , **F10** i **F11**, aby przekroczyć lub użyć funkcji o nazwie.
 
-Aby uzyskać więcej informacji na temat debugowania skryptów programu PowerShell, zobacz [porady dotyczące pracy z skryptami programu PowerShell i ich debugowania](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+Aby uzyskać więcej informacji na temat debugowania skryptów programu PowerShell, zobacz [porady dotyczące pracy z skryptami programu PowerShell i ich debugowania](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>Udostępnianie dzierżawcy w *własnej* bazie danych
 
@@ -184,7 +184,7 @@ Poniżej przedstawiono najważniejsze elementy przepływu pracy, które należy 
 - **Sprawdź, czy klucz dzierżawy już istnieje**: wykaz jest sprawdzany w celu upewnienia się, że klucz nie został jeszcze zarejestrowany.
 - **Tworzenie nowej bazy danych dzierżawy**: baza danych jest tworzona przez skopiowanie bazy danych *basetenantdb* przy użyciu szablonu Menedżer zasobów.  Nazwa nowej bazy danych jest określana na podstawie nazwy dzierżawy.
 - **Dodaj bazę danych do wykazu**: Nowa baza danych dzierżawy jest zarejestrowana jako fragmentu w wykazie.
-- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawy**: baza danych dzierżawy została zaktualizowana w celu dodania informacji o nowej dzierżawie.  
+- **Zainicjuj dzierżawcę w domyślnej bazie danych dzierżawy**: baza danych dzierżawy została zaktualizowana w celu dodania informacji o nowej dzierżawie.
 - **Rejestrowanie dzierżawy w wykazie**: mapowanie między nowym kluczem dzierżawy i bazą danych *sequoiasoccer* jest dodawane do wykazu.
 - **Nazwa dzierżawy została dodana do wykazu**: nazwa miejsca zostanie dodana do tabeli rozszerzenia dzierżawców w wykazie.
 - **Otwórz stronę zdarzeń dla nowej dzierżawy**: Strona zdarzenia *Sequoia piłkarskie* jest otwarta w przeglądarce.
@@ -217,7 +217,7 @@ W tym ćwiczeniu zainicjujemy partię 17 dzierżawców. Zaleca się zainicjowani
 
 2. Naciśnij klawisz **F5** i uruchom skrypt.
 
-### <a name="verify-the-deployed-set-of-tenants"></a>Weryfikowanie wdrożonego zestawu dzierżawców 
+### <a name="verify-the-deployed-set-of-tenants"></a>Weryfikowanie wdrożonego zestawu dzierżawców
 
 Na tym etapie masz połączenie dzierżawców wdrożonych w udostępnionej bazie danych i dzierżawcach wdrożonych w ich własnych bazach danych. Azure Portal można użyć do sprawdzenia utworzonych baz danych. W [Azure Portal](https://portal.azure.com)otwórz serwer **\>tenants1-MT-\<użytkownika** , przechodząc do listy serwerów SQL.  Lista **baz danych SQL** powinna zawierać udostępnioną bazę danych **tenants1** oraz bazy danych dla dzierżawców, które znajdują się w własnej bazie danych:
 
@@ -227,7 +227,7 @@ Gdy Azure Portal zawiera bazy danych dzierżawy, nie można zobaczyć dzierżawc
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>Korzystanie ze strony centrum zdarzeń biletów Wingtip
 
-Otwórz stronę centrum zdarzeń w przeglądarce (http: Events. Wingtip-Mt.\<USER\>. trafficmanager.net)  
+Otwórz stronę centrum zdarzeń w przeglądarce (http: Events. Wingtip-Mt.\<USER\>. trafficmanager.net)
 
 #### <a name="using-catalog-database"></a>Korzystanie z bazy danych wykazu
 
@@ -245,7 +245,7 @@ Pełna lista dzierżawców i odpowiednia baza danych dla każdej z nich są dost
 3. Kliknij prawym przyciskiem myszy widok *TenantsExtended* i wybierz **pozycję Wybierz pierwsze 1000 wierszy**. Zanotuj mapowanie między nazwą dzierżawy i bazą danych dla różnych dzierżawców.
 
     ![Widok ExtendedTenants w programie SSMS](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
-      
+
 ## <a name="other-provisioning-patterns"></a>Inne wzorce aprowizacji
 
 W tej sekcji omówiono inne interesujące wzorce udostępniania.
@@ -264,7 +264,7 @@ Ten typ zautomatyzowanej usługi może być prosty lub skomplikowany. Na przykł
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)
-- [Sposób debugowania skryptów w programie Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [Sposób debugowania skryptów w programie Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>Następne kroki

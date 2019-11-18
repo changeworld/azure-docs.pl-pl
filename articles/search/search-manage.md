@@ -1,5 +1,5 @@
 ---
-title: Administrowanie usługą dla Wyszukiwanie poznawcze platformy Azure w portalu
+title: Administrowanie usługą w portalu
 titleSuffix: Azure Cognitive Search
 description: Zarządzanie usługą Azure Wyszukiwanie poznawcze, hostowaną usługą wyszukiwania w chmurze na Microsoft Azure przy użyciu Azure Portal.
 manager: nitinme
@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 052d772c8ef885d594146d456ebb3cdcbbc0e383
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793505"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113290"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Administracja usługi dla platformy Azure Wyszukiwanie poznawcze w Azure Portal
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "72793505"
 > * [Interfejs API REST](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
-> * > [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure Wyszukiwanie poznawcze to w pełni zarządzana usługa wyszukiwania oparta na chmurze służąca do tworzenia bogatego środowiska wyszukiwania w aplikacjach niestandardowych. W tym artykule omówiono zadania administracyjne usługi, które można wykonać w [Azure Portal](https://portal.azure.com) dla usługi wyszukiwania, która została już zainicjowana. Administrowanie usługami jest lekkie przez projektowanie, ograniczone do następujących zadań:
 
@@ -62,20 +62,20 @@ Na pulpicie nawigacyjnym monitorowanie zasobów jest ograniczone do informacji w
 
 Korzystając z interfejsu API REST usługi Search, można programowo uzyskać liczbę dokumentów i indeksów: 
 
-* [Pobierz statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Liczenie dokumentów](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Pobieranie statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Liczba dokumentów](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Odzyskiwanie po awarii i awaria usługi
 
 Mimo że możemy odzyskać Twoje dane, usługa Azure Wyszukiwanie poznawcze nie zapewnia natychmiastowej pracy w trybie failover w przypadku wystąpienia awarii w klastrze lub na poziomie centrum danych. Jeśli klaster ulegnie awarii w centrum danych, zespół operacyjny wykryje i zacznie działać do przywracania usługi. Podczas przywracania usługi możesz zażądać kredytów na korzystanie z usługi, aby wyrównać niedostępność usługi na [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Jeśli ciągła usługa jest wymagana w przypadku wystąpienia awarii poza kontrolą firmy Microsoft, można [zainicjować obsługę administracyjną dodatkowej usługi](search-create-service-portal.md) w innym regionie i wdrożyć strategię replikacji geograficznej, aby upewnić się, że indeksy są w pełni nadmiarowe dla wszystkich usług.
+Jeśli ciągła usługa jest wymagana w przypadku wystąpienia awarii poza kontrolą firmy Microsoft, można [zainicjować obsługę administracyjną dodatkowej usługi](search-create-service-portal.md) w innym regionie i wdrożyć strategię replikacji geograficznej w celu zapewnienia, że indeksy są w pełni nadmiarowe dla wszystkich usług.
 
 Klienci używający [indeksatorów](search-indexer-overview.md) do wypełniania i odświeżania indeksów mogą obsługiwać odzyskiwanie po awarii za pomocą indeksatorów specyficznych dla lokalizacji geograficznych wykorzystujących to samo źródło danych. Dwie usługi w różnych regionach, z których każdy uruchamia indeksator, może indeksować to samo źródło danych w celu zapewnienia nadmiarowości geograficznej. W przypadku indeksowania ze źródeł danych, które są również geograficznie nadmiarowe, należy pamiętać, że indeksatory usługi Azure Wyszukiwanie poznawcze mogą wykonywać tylko indeksowanie przyrostowe z replik podstawowych. W przypadku zdarzenia trybu failover Pamiętaj, aby ponownie wskazać indeksator do nowej repliki podstawowej. 
 
 Jeśli nie używasz indeksatorów, użyj kodu aplikacji do wypychania obiektów i danych do różnych usług wyszukiwania równolegle. Aby uzyskać więcej informacji, zobacz [wydajność i optymalizacja na platformie Azure wyszukiwanie poznawcze](search-performance-optimization.md).
 
-## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
+## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
 Ponieważ platforma Azure Wyszukiwanie poznawcze nie jest podstawowym rozwiązaniem do przechowywania danych, firma Microsoft nie udostępnia formalnego mechanizmu tworzenia kopii zapasowych i przywracania samoobsługowego. Można jednak użyć przykładowego kodu do **przywracania kopii zapasowej** w ramach tego [przykładowego repozytorium platformy Azure wyszukiwanie poznawcze .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) , aby utworzyć kopię zapasową definicji indeksu i migawki do serii plików JSON, a następnie użyć tych plików do przywrócenia indeksu, w razie potrzeby. To narzędzie umożliwia również przenoszenie indeksów między warstwami usług.
 

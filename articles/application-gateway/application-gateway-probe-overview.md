@@ -1,48 +1,47 @@
 ---
-title: Omówienie monitorowania dla usługi Azure Application Gateway Health
-description: Dowiedz się więcej na temat funkcji monitoringu w usłudze Azure Application Gateway
+title: Omówienie monitorowania kondycji dla usługi Azure Application Gateway
+description: Usługa Azure Application Gateway monitoruje kondycję wszystkich zasobów w puli zaplecza i automatycznie usuwa wszelkie zasoby uznawane za złej kondycji z puli.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135191"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130680"
 ---
-# <a name="application-gateway-health-monitoring-overview"></a>Omówienie monitorowania kondycji bramy aplikacji
+# <a name="application-gateway-health-monitoring-overview"></a>Application Gateway — Omówienie monitorowania kondycji
 
-Usługa Azure Application Gateway domyślnie monitoruje kondycję wszystkich zasobów w puli zaplecza i automatycznie usuwa dowolnego zasobu z puli uznawana za złą. Usługa Application Gateway w dalszym ciągu monitorować złej kondycji wystąpień i dodaje je do puli zaplecza w dobrej kondycji, gdy staną się dostępne i odpowiadać na sondy kondycji. Usługa Application gateway wysyła sondy kondycji za pomocą tego samego portu, który jest zdefiniowany w ustawieniach HTTP zaplecza. Ta konfiguracja gwarantuje, że sonda testuje tego samego portu, którego klienci będą stosowane do łączenia się z zapleczem.
+Usługa Azure Application Gateway domyślnie monitoruje kondycję wszystkich zasobów w puli zaplecza i automatycznie usuwa wszelkie zasoby uznawane za złej kondycji z puli. Application Gateway nadal monitoruje wystąpienia w złej kondycji i dodaje je z powrotem do odpowiedniej puli zaplecza, gdy staną się dostępne i reagują na sondy kondycji. Brama aplikacji wysyła sondy kondycji z tym samym portem, który jest zdefiniowany w ustawieniach protokołu HTTP zaplecza. Ta konfiguracja gwarantuje, że sonda testuje ten sam port, który będzie używany przez klientów do łączenia się z zapleczem.
 
-![Przykładem sondy bramy aplikacji][1]
+![przykład sondowania bramy aplikacji][1]
 
-Oprócz używania, sondowanie kondycji domyślnej funkcji monitorowania, można również dostosować sondę kondycji, aby odpowiadał wymaganiom Twojej aplikacji. W tym artykule opisano domyślne i niestandardowe sondy kondycji.
+Oprócz domyślnego monitorowania sondy kondycji można także dostosować sondę kondycji do wymagań aplikacji. W tym artykule są pokryte domyślne i niestandardowe sondy kondycji.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="default-health-probe"></a>Domyślnej funkcji badania kondycji
+## <a name="default-health-probe"></a>Domyślna sonda kondycji
 
-Bramy aplikacji automatycznie konfiguruje domyślnego badania kondycji, gdy nie skonfigurowano żadnej konfiguracji niestandardowej sondy. Monitorowanie zachowania działa poprzez wysłanie żądania HTTP do adresów IP skonfigurowane dla puli zaplecza. Dla domyślnej sondy Jeśli ustawienia http zaplecza są skonfigurowane do obsługi protokołu HTTPS, sondy używa protokołu HTTPS oraz aby sprawdzić kondycję zaplecza.
+Brama aplikacji automatycznie konfiguruje domyślną sondę kondycji, gdy nie zostanie skonfigurowana żadna niestandardowa konfiguracja sondy. Zachowanie monitorowania działa, wysyłając żądanie HTTP do adresów IP skonfigurowanych dla puli zaplecza. W przypadku domyślnych sond, jeśli ustawienia protokołu HTTP zaplecza są skonfigurowane dla protokołu HTTPS, sonda korzysta z protokołu HTTPS, a także testuje kondycję zapleczy.
 
-Na przykład: Brama aplikacji umożliwia serwerów zaplecza, A, B i C, aby odbierać ruch sieciowy protokołu HTTP na porcie 80. Domyślne monitorowanie kondycji sprawdza trzy serwery co 30 sekund w dobrej kondycji odpowiedzi HTTP. Dobra odpowiedzi HTTP ma [kod stanu](https://msdn.microsoft.com/library/aa287675.aspx) między 200 a 399.
+Na przykład: skonfigurujesz bramę aplikacji tak, aby korzystała z serwerów zaplecza A, B i C do odbierania ruchu sieciowego HTTP na porcie 80. Domyślne monitorowanie kondycji testuje trzy serwery co 30 sekund na dobrą odpowiedź HTTP. W dobrej kondycji odpowiedź HTTP ma [kod stanu](https://msdn.microsoft.com/library/aa287675.aspx) z przedziału od 200 do 399.
 
-Jeśli domyślnego wyboru sondowania serwera A nie powiedzie się, bramy aplikacji powoduje jej usunięcie z jej puli zaplecza i ruchu sieciowego, docierać do tego serwera. Domyślnej funkcji badania nadal kontynuuje pod kątem serwera co 30 sekund. Gdy serwer A pomyślnie odpowiada na jedno żądanie od domyślnego badania kondycji, dodaniu ponownie jako w dobrej kondycji do puli zaplecza i rozpoczęciu ruchu danych do serwera ponownie.
+Jeśli domyślne sprawdzenie sondy zakończy się niepowodzeniem dla serwera A, Brama aplikacji usunie ją z puli zaplecza, a ruch sieciowy przepływa do tego serwera. Domyślna sonda nadal kontynuuje wyszukiwanie serwera A co 30 sekund. Gdy serwer A odpowiada na jedno żądanie z domyślnej sondy kondycji, jest on dodawany z powrotem do puli zaplecza, a ruch ponownie przechodzi do serwera.
 
-### <a name="probe-matching"></a>Badanie dopasowania
+### <a name="probe-matching"></a>Dopasowanie sondy
 
-Domyślnie odpowiedź HTTP (S) z kodem stanu między 200 a 399 jest uważany za dobrej kondycji. Niestandardowe sondy kondycji obsługuje również dwa kryteria dopasowania. Spełniające kryteria można opcjonalnie zmodyfikuj to domyślna interpretacja, co stanowi odpowiedzi dobrej kondycji.
+Domyślnie odpowiedź HTTP (S) o kodzie stanu z zakresu od 200 do 399 jest traktowana w dobrej kondycji. Niestandardowe sondy kondycji dodatkowo obsługują dwa zgodne kryteria. Kryterium dopasowywania można użyć, aby opcjonalnie zmodyfikować domyślną interpretację co stanowi dobrą odpowiedź.
 
-Poniżej są spełniające kryteria: 
+Poniżej przedstawiono kryteria dopasowywania: 
 
-- **Dopasuj kod stanu odpowiedzi HTTP** — kryterium do akceptowania dopasowywania sondy http odpowiedzi kod lub odpowiedzi kod zakresy określone przez użytkownika. Kody stanów odpowiedzi rozdzielonych przecinkami poszczególne lub zakres kodów stanu jest obsługiwana.
-- **Dopasowanie treści odpowiedzi HTTP** — sondy czy wygląda w treści odpowiedzi HTTP i zgodności z użytkownikiem określony ciąg kryterium dopasowywania. Dopasowanie tylko szuka obecności użytkownika określonego ciągu w treści odpowiedzi i nie jest zgodny z wyrażeniem regularnym pełnej.
+- **Dopasowanie kodu stanu odpowiedzi HTTP** — kryterium dopasowywania sondy dla żądania kodu odpowiedzi HTTP określonego przez użytkownika lub zakresów kodu odpowiedzi. Obsługiwane są oddzielne kody stanu odpowiedzi oddzielone przecinkami lub zakres kodu stanu.
+- **Dopasowanie treści odpowiedzi HTTP** — kryterium dopasowywania sondy, które przegląda treść odpowiedzi HTTP i dopasowuje do ciągu określonego przez użytkownika. Dopasowanie tylko szuka obecności ciągu określonego przez użytkownika w treści odpowiedzi i nie jest pełnym dopasowaniem wyrażenia regularnego.
 
-Kryteria dopasowania można określać z użyciem `New-AzApplicationGatewayProbeHealthResponseMatch` polecenia cmdlet.
+Kryteria dopasowywania można określić za pomocą polecenia cmdlet `New-AzApplicationGatewayProbeHealthResponseMatch`.
 
 Na przykład:
 
@@ -50,57 +49,57 @@ Na przykład:
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
-Po określeniu kryteria dopasowania, może być dołączane do sondowania przy użyciu konfiguracji `-Match` parametru w programie PowerShell.
+Po określeniu kryteriów dopasowania można je dołączyć do konfiguracji sondowania przy użyciu `-Match` parametru w programie PowerShell.
 
 ### <a name="default-health-probe-settings"></a>Domyślne ustawienia sondy kondycji
 
 | Właściwość sondy | Wartość | Opis |
 | --- | --- | --- |
 | Adres URL sondy |http://127.0.0.1:\<port\>/ |Ścieżka adresu URL |
-| Interval |30 |Czas w sekundach czas oczekiwania przed następnym sondy kondycji są wysyłane.|
-| Limit czasu |30 |Czas w sekundach bramy application gateway czeka na odpowiedź sondy przed oznaczeniem sondy komunikat o złej kondycji. Jeśli sonda zwraca jako w dobrej kondycji, odpowiedniego zaplecza natychmiast jest oznaczony jako w dobrej kondycji.|
-| Próg złej kondycji |3 |Określa, ile sondy do wysłania w przypadku, gdy wystąpi awaria sondy kondycji regularne. Tych sond kondycji dodatkowe są wysyłane w szybko, aby szybko ustalić kondycję wewnętrznej bazy danych i czeka na interwał sondowania. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
+| Interval |30 |Czas oczekiwania (w sekundach) przed wysłaniem następnej sondy kondycji.|
+| Limit czasu |30 |Czas w sekundach, przez który Brama aplikacji czeka na odpowiedź sondy przed oznaczeniem sondy jako złej kondycji. Jeśli sonda jest powracana w dobrej kondycji, odpowiednie zaplecze jest natychmiast oznaczone jako w dobrej kondycji.|
+| Próg złej kondycji |3 |Decyduje o liczbie sond do wysłania w przypadku niepowodzenia regularnej sondy kondycji. Te dodatkowe sondy kondycji są wysyłane w krótkim czasie, aby szybko określić kondycję zaplecza i nie czekać na interwał sondowania. Serwer zaplecza jest oznaczony jako wyłączony po kolejnej liczbie błędów sondy osiągnie próg złej kondycji. |
 
 > [!NOTE]
-> Port jest tego samego portu jako ustawienia HTTP zaplecza.
+> Port jest tym samym portem co ustawienia HTTP zaplecza.
 
-Domyślnej funkcji badania sprawdza tylko http:\//127.0.0.1:\<portu\> do określenia stanu kondycji. Jeśli musisz skonfigurować sondę kondycji, aby przejść do niestandardowego adresu URL lub zmodyfikuj inne ustawienia, należy użyć niestandardowe sondy.
+Sonda domyślna jest sprawdzana tylko w przypadku protokołu http:\//127.0.0.1:\<portu\> w celu określenia stanu kondycji. Jeśli musisz skonfigurować sondę kondycji, aby przejść do niestandardowego adresu URL lub zmodyfikować inne ustawienia, musisz użyć niestandardowych sond.
 
-### <a name="probe-intervals"></a>Interwałów sondy
+### <a name="probe-intervals"></a>Interwały sondowania
 
-Wszystkie wystąpienia usługi Application Gateway probe wewnętrznej bazy danych, niezależnie od siebie nawzajem. Stosuje taką samą konfigurację sondowania do każdego wystąpienia bramy aplikacji. Na przykład jeśli brama aplikacji ma dwa wystąpienia w konfiguracji sondowania jest wysłanie sond kondycji co 30 sekund, oba wystąpienia wyśle sondy kondycji co 30 sekund.
+Wszystkie wystąpienia Application Gateway sondować zaplecze niezależne od siebie. Ta sama konfiguracja sondy ma zastosowanie do każdego wystąpienia Application Gateway. Na przykład jeśli konfiguracja sondy ma wysyłać sondy kondycji co 30 sekund, a Brama aplikacji ma dwa wystąpienia, to oba wystąpienia wysyłają sondę kondycji co 30 sekund.
 
-Również w przypadku wielu odbiorników każdego odbiornika sondy zaplecza od siebie niezależne. Na przykład jeśli istnieją dwa odbiorniki wskazujące na tej samej puli zaplecza na dwóch różnych portów (skonfigurowane za pomocą dwóch ustawień http zaplecza) następnie każdego odbiornika sondy tego samego zaplecza niezależnie. W tym przypadku istnieją dwie sondy z każdego wystąpienia bramy aplikacji dla obu detektorów. Jeśli istnieją dwa wystąpienia usługi application gateway, w tym scenariuszu, maszyna wirtualna zaplecza widział cztery sondy na interwał sondowania skonfigurowany.
+Ponadto jeśli istnieje wiele detektorów, każdy odbiornik sonduje zaplecze niezależne od siebie. Na przykład, jeśli istnieją dwa odbiorniki wskazujące tę samą pulę zaplecza na dwóch różnych portach (skonfigurowane przez dwa ustawienia protokołu HTTP zaplecza), każdy odbiornik sonduje tego samego zaplecza niezależnie. W takim przypadku istnieją dwie sondy z każdego wystąpienia bramy aplikacji dla dwóch odbiorników. Jeśli w tym scenariuszu istnieją dwa wystąpienia bramy aplikacji, na maszynie wirtualnej zaplecza zobaczysz cztery sondy zgodnie ze skonfigurowanym interwałem sondowania.
 
-## <a name="custom-health-probe"></a>Sonda kondycji niestandardowe
+## <a name="custom-health-probe"></a>Niestandardowa sonda kondycji
 
-Niestandardowe sondy umożliwiają zapewniają bardziej szczegółową kontrolę nad monitorowanie kondycji. Użycie sond niestandardowych, można skonfigurować interwał sondowania, adres URL i ścieżki do testowania i jak wiele odpowiedzi nie powiodło się, aby zaakceptować przed oznaczeniem wystąpienia pulę zaplecza o złej kondycji.
+Niestandardowe sondy umożliwiają bardziej szczegółową kontrolę nad monitorowaniem kondycji. W przypadku korzystania z sond niestandardowych można skonfigurować interwał sondowania, adres URL i ścieżkę do testowania oraz liczbę niepowodzeń odpowiedzi, które mają zostać zaakceptowane przed oznaczeniem wystąpienia puli zaplecza jako w złej kondycji.
 
-### <a name="custom-health-probe-settings"></a>Ustawienia sondy kondycji niestandardowe
+### <a name="custom-health-probe-settings"></a>Niestandardowe ustawienia sondy kondycji
 
-Poniższa tabela zawiera definicje dla właściwości sondę kondycji niestandardowych.
+Poniższa tabela zawiera definicje właściwości niestandardowej sondy kondycji.
 
 | Właściwość sondy | Opis |
 | --- | --- |
-| Name (Nazwa) |Nazwa sondy. Ta nazwa jest używana do odwoływania się do sondowania w ustawieniach protokołu HTTP zaplecza. |
-| Protocol |Protokół używany do wysyłania sondy. Sonda korzysta z protokołu, zdefiniowane w ustawieniach HTTP zaplecza |
-| Host |Nazwa hosta, aby wysłać sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej. |
-| Ścieżka |Ścieżka względna sondy. Nieprawidłowa ścieżka zaczyna się od "/". |
-| Interval |Interwał sondy w sekundach. Ta wartość jest odstęp czasu między dwóch następujących po sobie sondy. |
-| Limit czasu |Sonda limitu czasu w sekundach. Jeśli prawidłowe odpowiedzi nie zostanie odebrany w ramach tego limitu czasu, sondy jest oznaczony jako zakończony niepowodzeniem.  |
-| Próg złej kondycji |Sonda liczbę ponownych prób. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
+| Nazwa |Nazwa sondy. Ta nazwa służy do odwoływania się do sondy w ustawieniach protokołu HTTP zaplecza. |
+| Protokół |Protokół używany do wysyłania sondy. Sonda używa protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
+| Host |Nazwa hosta do wysłania sondy. Dotyczy tylko sytuacji, gdy wiele witryn jest skonfigurowanych na Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość różni się od nazwy hosta maszyny wirtualnej. |
+| Ścieżka |Ścieżka względna sondy. Prawidłowa ścieżka zaczyna się od znaku "/". |
+| Interval |Interwał sondy (w sekundach). Ta wartość jest przedziałem czasu między dwoma kolejnymi sondami. |
+| Limit czasu |Limit czasu sondy w sekundach. Jeśli prawidłowa odpowiedź nie zostanie odebrana w tym okresie, sonda zostanie oznaczona jako niepowodzenie.  |
+| Próg złej kondycji |Liczba ponownych prób sondowania. Serwer zaplecza jest oznaczony jako wyłączony po kolejnej liczbie błędów sondy osiągnie próg złej kondycji. |
 
 > [!IMPORTANT]
-> Jeśli usługa Application Gateway jest skonfigurowana dla jednej witryny, domyślnie hosta należy podać nazwę jako "127.0.0.1", chyba że inaczej skonfigurowane w niestandardowej sondy.
-> Odwołania niestandardowej sondy są wysyłane do \<protokołu\>://\<hosta\>:\<portu\>\<ścieżki\>. Port używany będzie ten sam port, zgodnie z definicją w ustawieniach protokołu HTTP zaplecza.
+> Jeśli Application Gateway jest skonfigurowany dla jednej lokacji, domyślnie nazwa hosta powinna być określona jako "127.0.0.1", chyba że jest skonfigurowana w przypadku sondy niestandardowej.
+> W odniesieniu do odwołania niestandardowa sonda jest wysyłana do \<Protocol\>://\<hosta\>:\<port\>\<Path\>. Używany port będzie portem określonym w ustawieniach protokołu HTTP zaplecza.
 
 ## <a name="nsg-considerations"></a>Zagadnienia dotyczące sieciowej grupy zabezpieczeń
 
-Jeśli na podsieci bramy aplikacji jest sieciowa grupa zabezpieczeń (NSG), zakresy portów 65503 65534 musi być otwarty w podsieci bramy aplikacji dla ruchu przychodzącego. Te porty są wymagane dla kondycji zaplecza interfejsu API do pracy.
+Jeśli w podsieci bramy aplikacji istnieje sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń), w podsieci bramy aplikacji należy otworzyć zakresy portów 65503-65534 dla ruchu przychodzącego. Te porty są wymagane do działania interfejsu API kondycji wewnętrznej bazy danych.
 
-Ponadto wychodzące połączenie z Internetem nie mogą zostać zablokowane, a ruch przychodzący pochodzące z AzureLoadBalancer tag muszą być dozwolone.
+Ponadto nie można zablokować wychodzącej łączności z Internetem, a ruch przychodzący pochodzący ze znacznika AzureLoadBalancer musi być dozwolony.
 
-## <a name="next-steps"></a>Kolejne kroki
-Po zapoznaniu się z informacji na temat monitorowania kondycji bramy Application Gateway, można skonfigurować [sondy kondycji niestandardowe](application-gateway-create-probe-portal.md) w witrynie Azure portal lub [sondy kondycji niestandardowe](application-gateway-create-probe-ps.md) przy użyciu programu PowerShell i usługi Azure Resource Manager model wdrażania.
+## <a name="next-steps"></a>Następne kroki
+Po rozpoczęciu uczenia się Application Gateway monitorowania kondycji można skonfigurować [niestandardową sondę kondycji](application-gateway-create-probe-portal.md) w Azure Portal lub [niestandardowej sondy kondycji](application-gateway-create-probe-ps.md) przy użyciu programu PowerShell i modelu wdrażania Azure Resource Manager.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

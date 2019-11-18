@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3cb5d8a6cb605d2150be1e34a9f4b0ac7955aed6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107696"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129127"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Samouczek: otrzymywanie powiadomień z przestrzeni usługi Azure Digital Twins przy użyciu usługi Logic Apps
 
@@ -38,7 +38,7 @@ W tym samouczku przyjęto założenie, że [skonfigurowano](tutorial-facilities-
 - Uruchomione wystąpienie usługi Digital Twins.
 - Pobrane i wyodrębnione [przykłady usługi Digital Twins w języku C#](https://github.com/Azure-Samples/digital-twins-samples-csharp) na maszynie roboczej.
 - [Zestaw SDK .NET Core w wersji 2.1.403 lub nowszej](https://www.microsoft.com/net/download) na komputerze deweloperskim w celu uruchomienia przykładu. Uruchom polecenie `dotnet --version`, aby sprawdzić, czy zainstalowano prawidłową wersję.
-- Konto usługi Office 365 do wysyłania powiadomień e-mail.
+- Konto [pakietu Office 365](https://products.office.com/home) do wysyłania wiadomości e-mail z powiadomieniami.
 
 > [!TIP]
 > Jeśli zainicjowano nowe wystąpienie, użyj unikatowej nazwy wystąpienia bliźniaczych reprezentacji Digital.
@@ -63,7 +63,7 @@ W tej sekcji skonfigurujesz usługę [Event Grid](../event-grid/overview.md), kt
 
 1. Przejdź do tematu usługi Event Grid z grupy zasobów, wybierz pozycję **Omówienie**, a następnie skopiuj wartość dla **punktu końcowego tematu** do pliku tymczasowego. Ten adres URL będzie potrzebny w następnej sekcji. 
 
-1. Wybierz pozycję **Klucze dostępu** i skopiuj **TWÓJ_KLUCZ_1** i **TWÓJ_KLUCZ_2** do pliku tymczasowego. Te wartości będą potrzebne do utworzenia punktu końcowego w kolejnej sekcji.
+1. Wybierz pozycję **Klucze dostępu** i skopiuj **Klucz 1** i **Klucz 2** do pliku tymczasowego. Te wartości będą potrzebne do utworzenia punktu końcowego w kolejnej sekcji.
 
     [klucze Event Grid ![](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ W tej sekcji skonfigurujesz usługę [Event Grid](../event-grid/overview.md), kt
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Zastąp symbol zastępczy `<Primary connection string for your Event Grid>` wartością **TWÓJ_KLUCZ_1**.
+1. Zastąp symbol zastępczy `<Primary connection string for your Event Grid>` wartością **klucza 1**.
 
-1. Zastąp symbol zastępczy `<Secondary connection string for your Event Grid>` wartością **TWÓJ_KLUCZ_2**.
+1. Zastąp symbol zastępczy `<Secondary connection string for your Event Grid>` wartością **klucza 2**.
 
 1. Zastąp symbol zastępczy **ścieżki ścieżką** i ścieżką do tematu usługi Event Grid. Aby uzyskać tę ścieżkę, usuń ciąg **https://** i końcowe ścieżki zasobów z adresu URL **punktu końcowego tematu**. Powinna mieć ona mniej więcej taki format:*nazwa_usługi_Event_Grid.lokalizacja.eventgrid.azure.net*.
 
@@ -178,7 +178,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    a. Wybierz kolejno pozycje **Dodaj akcję** i  **Office 365 Outlook**.
 
-   b. Na liście **Akcje** wybierz pozycję **Wyślij wiadomość e-mail**. Wybierz pozycję **Zaloguj** i wprowadź poświadczenia konta e-mail. Jeśli zostanie wyświetlony monit, wybierz opcję **Zezwalaj na dostęp** .
+   b. Z listy **Akcje** wybierz pozycję **Wyślij wiadomość E-mail (wersja 2)** . Wybierz pozycję **Zaloguj** i wprowadź poświadczenia konta e-mail. Jeśli zostanie wyświetlony monit, wybierz opcję **Zezwalaj na dostęp** .
 
    d. W oknie **Do** wprowadź swój identyfikator poczty e-mail, aby otrzymywać powiadomienia. W polu **Temat** wprowadź tekst **Powiadomienie usługi Digital Twins dotyczące niskiej jakości powietrza**. Następnie wybierz pozycję **TopologyObjectId** na liście **Zawartość dynamiczna** pozycji **Przeanalizuj dane JSON**.
 

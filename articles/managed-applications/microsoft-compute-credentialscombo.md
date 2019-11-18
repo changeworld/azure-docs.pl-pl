@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3036e5882e236dbbb9cf4f9aae17617822422a82
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c1b4791f2ec80eba25a00e22cb4298b4c97da4de
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742104"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151085"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
+
 Grupa kontrolek z wbudowaną walidacją haseł systemu Windows i Linux oraz kluczy publicznych SSH.
 
 ## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
@@ -38,6 +39,7 @@ Dla systemu Linux z wybranym kluczem publicznym SSH użytkownicy zobaczą:
 ![Microsoft. COMPUTE. CredentialsCombo — klucz systemu Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schemat
+
 W przypadku systemu Windows należy użyć następującego schematu:
 
 ```json
@@ -95,14 +97,8 @@ W przypadku systemu **Linux**należy użyć następującego schematu:
 }
 ```
 
-## <a name="remarks"></a>Uwagi
-- `osPlatform`musi być określony i może być w **systemie Windows** lub **Linux**.
-- Jeśli `constraints.required` jest ustawiona na **true**, hasło lub pola tekstowe klucza publicznego SSH muszą mieć wartości, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **true**.
-- Jeśli `options.hideConfirmation` jest ustawiona na **wartość true**, drugie pole tekstowe potwierdzające hasło użytkownika jest ukryte. Wartość domyślna to **false**.
-- Jeśli `options.hidePassword` jest ustawiona na **true**, opcja używania uwierzytelniania hasła jest ukryta. Może być używana tylko wtedy, `osPlatform` gdy jest to system **Linux**. Wartość domyślna to **false**.
-- Dodatkowe ograniczenia dotyczące dozwolonych haseł można zaimplementować przy użyciu `customPasswordRegex` właściwości. Ciąg w jest `customValidationMessage` wyświetlany w przypadku niepowodzenia niestandardowej walidacji hasła. Wartość domyślna dla obu właściwości jest **równa null**.
-
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
+
 Jeśli `osPlatform` jest **Windows**lub `osPlatform` jest systemem **Linux** , a użytkownik podał hasło zamiast klucza publicznego SSH, kontrolka zwróci następujące dane wyjściowe:
 
 ```json
@@ -112,7 +108,7 @@ Jeśli `osPlatform` jest **Windows**lub `osPlatform` jest systemem **Linux** , a
 }
 ```
 
-Jeśli `osPlatform` jest **systemem Linux** , a użytkownik podał klucz publiczny SSH, kontrolka zwróci następujące dane wyjściowe:
+Jeśli `osPlatform` jest system **Linux** , a użytkownik podał klucz publiczny SSH, kontrolka zwróci następujące dane wyjściowe:
 
 ```json
 {
@@ -121,6 +117,15 @@ Jeśli `osPlatform` jest **systemem Linux** , a użytkownik podał klucz publicz
 }
 ```
 
+## <a name="remarks"></a>Uwagi
+
+- należy określić `osPlatform` i może to być **system Windows** lub **Linux**.
+- Jeśli `constraints.required` ma **wartość true**, pola tekstowe hasła lub klucza publicznego SSH muszą mieć wartości, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **true**.
+- Jeśli `options.hideConfirmation` ma **wartość true**, drugie pole tekstowe potwierdzające hasło użytkownika jest ukryte. Wartość domyślna to **false**.
+- Jeśli `options.hidePassword` ma **wartość true**, opcja używania uwierzytelniania hasła jest ukryta. Może być używana tylko wtedy, gdy `osPlatform` jest **Linux**. Wartość domyślna to **false**.
+- Dodatkowe ograniczenia dotyczące dozwolonych haseł można zaimplementować przy użyciu właściwości `customPasswordRegex`. Ciąg w `customValidationMessage` jest wyświetlany w przypadku niepowodzenia niestandardowej walidacji hasła. Wartość domyślna dla obu właściwości jest **równa null**.
+
 ## <a name="next-steps"></a>Następne kroki
+
 * Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
 * Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

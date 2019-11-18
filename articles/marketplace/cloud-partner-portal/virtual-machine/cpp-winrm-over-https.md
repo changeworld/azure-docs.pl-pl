@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e39f83b2ed715afbfff69770c151cfc4d527105d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808422"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132265"
 ---
 # <a name="windows-remote-management-over-https"></a>Windows Remote Management za pośrednictwem protokołu HTTPS
 
-W tej sekcji opisano sposób konfigurowania maszyny wirtualnej opartej na platformie Azure, która umożliwia zdalne zarządzanie i wdrażanie za pomocą programu PowerShell.  Aby włączyć obsługę zdalną programu PowerShell, docelowa maszyna wirtualna musi uwidaczniać punkt końcowy HTTPS Windows Remote Management (WinRM).  Aby uzyskać więcej informacji na temat komunikacji zdalnej programu PowerShell, zobacz [Uruchamianie poleceń zdalnych](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Aby uzyskać więcej informacji na temat usługi WinRM, zobacz [Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal).
+W tej sekcji opisano sposób konfigurowania maszyny wirtualnej opartej na platformie Azure, która umożliwia zdalne zarządzanie i wdrażanie za pomocą programu PowerShell.  Aby włączyć obsługę zdalną programu PowerShell, docelowa maszyna wirtualna musi uwidaczniać punkt końcowy HTTPS Windows Remote Management (WinRM).  Aby uzyskać więcej informacji na temat komunikacji zdalnej programu PowerShell, zobacz [Uruchamianie poleceń zdalnych](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands).  Aby uzyskać więcej informacji na temat usługi WinRM, zobacz [Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-Jeśli maszyna wirtualna została utworzona przy użyciu jednego z "klasycznych" rozwiązań platformy Azure — portalu Azure Service Manager lub przestarzałych [interfejs API zarządzania usługami platformy Azure](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))— jest ona automatycznie konfigurowana za pomocą punktu końcowego usługi WinRM.  Jeśli jednak utworzysz maszynę wirtualną przy użyciu dowolnego z następujących podejść "nowoczesne" platformy Azure, maszyna wirtualna *nie* zostanie skonfigurowana na potrzeby usługi WinRM za pośrednictwem protokołu HTTPS.  
+Jeśli maszyna wirtualna została utworzona przy użyciu jednego z "klasycznych" rozwiązań platformy Azure — portalu Azure Service Manager lub przestarzałych [interfejs API zarządzania usługami platformy Azure](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))— jest ona automatycznie konfigurowana za pomocą punktu końcowego usługi WinRM.  Jeśli jednak utworzysz maszynę wirtualną przy użyciu dowolnego z następujących podejść "nowoczesne" platformy Azure, maszyna wirtualna *nie* zostanie skonfigurowana na potrzeby usługi WinRM za pośrednictwem protokołu HTTPS.
 
 - Korzystając z [Azure Portal](https://portal.azure.com/), zazwyczaj z zatwierdzonej bazy, zgodnie z opisem w sekcji [Tworzenie wirtualnego dysku twardego zgodnego z platformą Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
 - [Korzystanie z szablonów Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
@@ -34,9 +34,9 @@ Z kolei zazwyczaj maszyny wirtualne z systemem Linux są zarządzane zdalnie za 
 
 Punkt końcowy usługi WinRM dla maszyny wirtualnej opartej na systemie Windows można skonfigurować na dwa różne etapy jego rozwoju:
 
-- Podczas tworzenia — podczas wdrażania maszyny wirtualnej na istniejącym dysku VHD.  Jest to preferowane podejście dla nowych ofert.  Takie podejście wymaga utworzenia certyfikatu platformy Azure przy użyciu dostarczonych szablonów Azure Resource Manager i uruchomienia niestandardowych skryptów programu PowerShell. 
-- Po wdrożeniu — na istniejącej maszynie wirtualnej hostowanej na platformie Azure.  Użyj tej metody, jeśli masz już rozwiązanie maszyny wirtualnej wdrożone na platformie Azure i musisz włączyć zdalne zarządzanie systemem Windows.  To podejście wymaga ręcznej zmiany w Azure Portal i wykonania skryptu na docelowej maszynie wirtualnej. 
+- Podczas tworzenia — podczas wdrażania maszyny wirtualnej na istniejącym dysku VHD.  Jest to preferowane podejście dla nowych ofert.  Takie podejście wymaga utworzenia certyfikatu platformy Azure przy użyciu dostarczonych szablonów Azure Resource Manager i uruchomienia niestandardowych skryptów programu PowerShell.
+- Po wdrożeniu — na istniejącej maszynie wirtualnej hostowanej na platformie Azure.  Użyj tej metody, jeśli masz już rozwiązanie maszyny wirtualnej wdrożone na platformie Azure i musisz włączyć zdalne zarządzanie systemem Windows.  To podejście wymaga ręcznej zmiany w Azure Portal i wykonania skryptu na docelowej maszynie wirtualnej.
 
 
 ## <a name="next-steps"></a>Następne kroki
-Jeśli tworzysz nową maszynę wirtualną, możesz włączyć usługę WinRM podczas [wdrażania maszyny wirtualnej ze swoich wirtualnych dysków twardych](./cpp-deploy-vm-vhd.md).  W przeciwnym razie usługa WinRM może być włączona na istniejącej maszynie wirtualnej  
+Jeśli tworzysz nową maszynę wirtualną, możesz włączyć usługę WinRM podczas [wdrażania maszyny wirtualnej ze swoich wirtualnych dysków twardych](./cpp-deploy-vm-vhd.md).  W przeciwnym razie usługa WinRM może być włączona na istniejącej maszynie wirtualnej

@@ -1,28 +1,20 @@
 ---
-title: Tworzenie aplikacji internetowej platformy ASP.NET przy użyciu usługi Azure Cache for Redis | Microsoft Docs
+title: Tworzenie aplikacji sieci Web ASP.NET za pomocą usługi Azure cache dla Redis
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć aplikację internetową platformy ASP.NET przy użyciu usługi Azure Cache for Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326494"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122582"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Szybki start: Używanie usługi Azure cache for Redis z aplikacją internetową ASP.NET 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Szybki Start: korzystanie z usługi Azure cache for Redis z aplikacją internetową ASP.NET 
 
 W tym przewodniku szybki start użyjesz programu Visual Studio 2019 do utworzenia aplikacji sieci Web ASP.NET, która łączy się z usługą Azure cache for Redis w celu przechowywania i pobierania danych z pamięci podręcznej. Następnie aplikacja zostanie wdrożona w Azure App Service.
 
@@ -43,7 +35,7 @@ W tym przewodniku szybki start użyjesz programu Visual Studio 2019 do utworzeni
 
     b. Wybierz pozycję **Chmura**.
 
-    c. Wybierz pozycję **Aplikacja internetowa platformy ASP.NET**.
+    d. Wybierz pozycję **Aplikacja internetowa platformy ASP.NET**.
 
     d. Upewnij się, że został wybrany program **.NET Framework 4.5.2** lub nowszy.
 
@@ -55,7 +47,7 @@ W tym przewodniku szybki start użyjesz programu Visual Studio 2019 do utworzeni
 
 4. Upewnij się, że dla ustawienia **Uwierzytelnianie** wybrano pozycję **Bez uwierzytelniania**. Domyślne ustawienie **Uwierzytelnianie** może być różne w różnych wersjach programu Visual Studio. Aby je zmienić, wybierz pozycję **Zmień uwierzytelnianie**, a następnie pozycję **Bez uwierzytelniania**.
 
-5. Wybierz **OK** do tworzenia projektu.
+5. Wybierz przycisk **OK**, aby utworzyć projekt.
 
 ## <a name="create-a-cache"></a>Tworzenie pamięci podręcznej
 
@@ -67,7 +59,7 @@ Następnie utworzysz pamięć podręczną dla aplikacji.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>Aby edytować plik *CacheSecrets.config*
 
-1. Utwórz na swoim komputerze plik o nazwie *CacheSecrets.config*. Umieść go w lokalizacji, gdzie nie zostanie zaewidencjonowany z kodem źródłowym przykładowej aplikacji. W tym przewodniku Szybki start plik *CacheSecrets.config* znajduje się w lokalizacji *C:\AppSecrets\CacheSecrets.config*.
+1. Utwórz plik na komputerze o nazwie *CacheSecrets. config*. Umieść go w lokalizacji, w której nie zostanie zaewidencjonowany przy użyciu kodu źródłowego przykładowej aplikacji. W tym przewodniku Szybki start plik *CacheSecrets.config* znajduje się w lokalizacji *C:\AppSecrets\CacheSecrets.config*.
 
 1. Edytuj plik *CacheSecrets.config*. Następnie dodaj następującą zawartość:
 
@@ -109,7 +101,7 @@ Ponieważ plik *CacheSecrets.config* nie został wdrożony na platformie Azure z
 2. W pliku *web.config* znajdź element `<appSetting>`. Następnie dodaj następujący atrybut `file`. Jeśli wcześniej używana była inna nazwa pliku lub lokalizacja, podstaw te wartości w miejsce pokazanych w przykładzie.
 
 * Przed: `<appSettings>`
-* Otrzyma`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Po: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 Środowisko uruchomieniowe ASP.NET scala zawartość pliku zewnętrznego ze znacznikami w elemencie `<appSettings>`. Środowisko uruchomieniowe ignoruje atrybut pliku, jeśli nie można odnaleźć określonego pliku. Wpisy tajne (parametry połączenia z pamięcią podręczną) nie są dołączone jako część kodu źródłowego aplikacji. Podczas wdrażania aplikacji internetowej na platformie Azure plik *CacheSecrets.config* nie jest wdrażany.
 
@@ -123,7 +115,7 @@ Ponieważ plik *CacheSecrets.config* nie został wdrożony na platformie Azure z
     Install-Package StackExchange.Redis
     ```
 
-3. Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu umożliwiające aplikacji klienta uzyskanie dostępu do usługi Azure Cache for Redis przy użyciu klienta usługi Azure Cache for Redis StackExchange. Jeśli wolisz użyć wersji biblioteki klienckiej `StackExchange.Redis` o silnej nazwie, zainstaluj pakiet `StackExchange.Redis.StrongName`.
+3. Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu umożliwiające aplikacji klienta uzyskiwać dostęp do usługi Azure Cache dla pamięci podręcznej Redis przy użyciu pamięci podręcznej StackExchange.Azure klienta pamięci podręcznej Redis. Jeśli wolisz użyć wersji biblioteki klienckiej `StackExchange.Redis` o silnej nazwie, zainstaluj pakiet `StackExchange.Redis.StrongName`.
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>Aby zaktualizować pliki HomeController i Layout
 
@@ -325,7 +317,7 @@ Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy
 
 Po krótkim czasie grupa zasobów i wszystkie jej zasoby zostaną usunięte.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W następnym samouczku użyjesz usługi Azure Cache for Redis w scenariuszu bardziej zbliżonym do rzeczywistego, aby poprawić wydajność aplikacji. Zaktualizujesz tę aplikację tak, aby buforowała wyniki rankingu przy użyciu wzorca odkładania do pamięci podręcznej za pomocą platformy ASP.NET i bazy danych.
 

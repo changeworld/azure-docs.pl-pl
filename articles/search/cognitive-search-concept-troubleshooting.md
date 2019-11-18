@@ -1,5 +1,5 @@
 ---
-title: Wskazówki dotyczące rozwiązywania problemów dotyczących wzbogacania AI
+title: Wskazówki dotyczące projektowania wzbogacenia AI
 titleSuffix: Azure Cognitive Search
 description: Porady i rozwiązywanie problemów związanych z konfigurowaniem potoków wzbogacania AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787702"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113831"
 ---
-# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów w przypadku wzbogacania AI na platformie Azure Wyszukiwanie poznawcze
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Wskazówki dotyczące wzbogacania AI na platformie Azure Wyszukiwanie poznawcze
 
 Ten artykuł zawiera listę porad i wskazówek ułatwiających przechodzenie po rozpoczęciu pracy z funkcjami wzbogacania AI na platformie Azure Wyszukiwanie poznawcze. 
 

@@ -1,7 +1,7 @@
 ---
 title: Nawiązywanie połączenia z interfejsem API wyszukiwania wiadomości Bing za pomocą usług połączonych w programie Visual Studio i języka C#
 titleSuffix: Azure Cognitive Services
-description: Nawiąż połączenie z interfejsem API wyszukiwania wiadomości Bing z poziomu aplikacji internetowej platformy ASP.NET Core.
+description: Użycie interfejsu API wyszukiwania wiadomości Bing umożliwia aplikacjom i usługom korzystanie z możliwości działającej w skali internetowej wyszukiwarki bez reklam.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: ghogen
-ms.openlocfilehash: 85afae087b1b1e572759943142412743744ee806
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203420"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111501"
 ---
-# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Samouczek: Nawiązywanie połączenia z interfejsem API wyszukiwania wiadomości Bing za pomocą usług połączonych w programie Visual Studio i języka C#
+# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Samouczek: łączenie się z usługą interfejs API wyszukiwania wiadomości Bing za pomocą połączonych usług w programie Visual Studio iC#
 
 Użycie interfejsu API wyszukiwania wiadomości Bing umożliwia aplikacjom i usługom korzystanie z możliwości działającej w skali internetowej wyszukiwarki bez reklam. Wyszukiwanie wiadomości Bing to jedna z usług wyszukiwania dostępnych w ramach usług Cognitive Services.
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono szczegółowe instrukcje dotyczące korzystania z i
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
-- Dnia Visual Studio 2019 r, z zainstalowanym obciążeniem programowania dla sieci Web. [Pobierz go teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Program Visual Studio 2019 z zainstalowanym obciążeniem programowaniem w sieci Web. [Pobierz go teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -49,7 +49,7 @@ W tym artykule przedstawiono szczegółowe instrukcje dotyczące korzystania z i
 
 1. Wybierz grupę zasobów i warstwę cenową.
 
-   ![Zrzut ekranu przedstawiający pola Grupa zasobów i Warstwa cenowa](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
+   ![Zrzut ekranu z polami grupy zasobów i warstwy cenowej](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
 
    Aby uzyskać więcej informacji na temat warstw cenowych, wybierz pozycję **Przejrzyj cennik**.
 
@@ -266,6 +266,6 @@ Gdy grupa zasobów nie jest już potrzebna, możesz ją usunąć. Spowoduje to u
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **Wpisz nazwę grupy zasobów** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat interfejsu API wyszukiwania wiadomości Bing, zobacz [Co to jest wyszukiwanie wiadomości Bing?](index.yml).

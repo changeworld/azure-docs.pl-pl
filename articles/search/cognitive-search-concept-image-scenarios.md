@@ -1,5 +1,5 @@
 ---
-title: Przetwarzaj i Wyodrębniaj tekst z obrazów w potoku wzbogacania
+title: Wyodrębnianie tekstu z obrazów
 titleSuffix: Azure Cognitive Search
 description: Przetwarzaj i Wyodrębniaj tekst oraz inne informacje z obrazów w potokach Wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787736"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113856"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Jak przetwarzać i wyodrębniać informacje z obrazów w scenariuszach wzbogacania AI
 
@@ -62,9 +62,9 @@ Gdy *imageAction* jest ustawiona na wartość inną niż "none", nowe pole *norm
 
 | Element członkowski obrazu       | Opis                             |
 |--------------------|-----------------------------------------|
-| Data               | Zakodowany ciąg BASE64 standardowego obrazu w formacie JPEG.   |
+| data               | Zakodowany ciąg BASE64 standardowego obrazu w formacie JPEG.   |
 | Szerokość              | Szerokość znormalizowanego obrazu w pikselach. |
-| Proporcj             | Wysokość znormalizowanego obrazu (w pikselach). |
+| proporcj             | Wysokość znormalizowanego obrazu (w pikselach). |
 | originalWidth      | Oryginalna Szerokość obrazu przed normalizacją. |
 | originalHeight      | Oryginalna wysokość obrazu przed normalizacją. |
 | rotationFromOriginal |  Obrót w prawo w stopniach, które wystąpiły w celu utworzenia znormalizowanego obrazu. Wartość z przedziału od 0 stopni do 360 stopni. Ten krok odczytuje metadane z obrazu wygenerowanego przez aparat lub skaner. Zwykle jest to wielokrotność 90 stopni. |
@@ -162,7 +162,7 @@ Poniższy przykład zestawu umiejętności tworzy pole *merged_text* zawierając
 }
 ```
 
-Teraz, gdy masz pole merged_text, możesz je zmapować jako pole z możliwością wyszukiwania w definicji indeksatora. Cała zawartość plików, w tym tekst obrazów, będzie można przeszukiwać.
+Teraz, gdy masz merged_text pole, możesz je zmapować jako pole z możliwością wyszukiwania w definicji indeksatora. Cała zawartość plików, w tym tekst obrazów, będzie można przeszukiwać.
 
 ## <a name="visualize-bounding-boxes-of-extracted-text"></a>Wizualizowanie pól powiązanych tekstu
 

@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56f9901a1468207a295f8223e990f7a926b2d76e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e8196c9561465930fc9723c9b8f8a0d02668ef5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561423"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114083"
 ---
-# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji HoloLens Unity wykorzystującej kotwice przestrzenne platformy Azure
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji HoloLens Unity wykorzystującej kotwice przestrzenne platformy Azure
 
 W tym przewodniku szybki start utworzysz aplikację HoloLens Unity korzystającą z [kotwic przestrzennych platformy Azure](../overview.md). Kotwice przestrzenne to wieloplatformowa usługa dla deweloperów, która umożliwia tworzenie środowisk o rzeczywistości mieszanej z obiektami, które utrzymują swoją lokalizację na różnych urządzeniach w miarę upływu czasu. Gdy skończysz, będziesz mieć aplikację dla urządzenia HoloLens utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
 
@@ -33,10 +33,10 @@ Omawiane tematy:
 
 Aby ukończyć ten przewodnik Szybki start:
 
-- Wymagany jest komputer z systemem Windows, na którym jest zainstalowany aparat <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> lub nowszy oraz <a href="https://www.visualstudio.com/downloads/" target="_blank">program Visual Studio 2019</a> lub nowszy. Instalacja programu Visual Studio musi zawierać **platforma uniwersalna systemu Windows** obciążenie programowaniem i składnik **zestawu Windows 10 SDK (10.0.18362.0 lub nowszy)** . Należy również zainstalować program <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a>.
-- Potrzebujesz urządzenia HoloLens, na którym włączono [Tryb dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . [Aktualizacja systemu Windows 10 październik 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (znany również jako RS5) musi być zainstalowany na urządzeniu. Aby zaktualizować do najnowszej wersji na serwerze HoloLens, Otwórz aplikację **Ustawienia** , przejdź do pozycji **Aktualizacja & zabezpieczenia**, a następnie wybierz pozycję **Sprawdź aktualizacje**.
-- W aplikacji należy włączyć funkcję **SpatialPerception** . To ustawienie znajduje się w obszarze **Ustawienia** > kompilacji ustawienia**odtwarzacza** > **Publikowanie** > **ustawień.**
-- W Twojej aplikacji należy włączyć opcję **wirtualnej rzeczywistość obsługiwaną** z zestawem **SDK rzeczywistości systemu Windows**. To ustawienie jest w obszarze Ustawienia **kompilacji** > ustawienia**odtwarzacza** > ustawienia**XR**.
+- Wymagany jest komputer z systemem Windows, na którym jest zainstalowany aparat <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> lub nowszy oraz <a href="https://www.visualstudio.com/downloads/" target="_blank">program Visual Studio 2019</a> lub nowszy. Instalacja programu Visual Studio musi zawierać **platforma uniwersalna systemu Windows obciążenie programowaniem** i składnik **zestawu Windows 10 SDK (10.0.18362.0 lub nowszy)** . Należy również zainstalować program <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a>.
+- Potrzebujesz urządzenia HoloLens, na którym włączono [Tryb dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . Na urządzeniu musi być zainstalowana [Aktualizacja systemu Windows 10 październik 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (znana również jako RS5). Aby zaktualizować do najnowszej wersji na serwerze HoloLens, Otwórz aplikację **Ustawienia** , przejdź do pozycji **Aktualizacja & zabezpieczenia**, a następnie wybierz pozycję **Sprawdź aktualizacje**.
+- W aplikacji należy włączyć funkcję **SpatialPerception** . To ustawienie dotyczy ustawień **kompilacji** > **Ustawienia odtwarzacza** > **Ustawienia publikowania** > **możliwości**.
+- W Twojej aplikacji należy włączyć opcję **wirtualnej rzeczywistość obsługiwaną** z **zestawem SDK rzeczywistości systemu Windows**. To ustawienie dotyczy ustawień **kompilacji** > **Ustawienia odtwarzacza** > **ustawień XR**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -58,7 +58,7 @@ Zamknij okno **Build Settings (Ustawienia kompilacji)** .
 
 ## <a name="configure-the-account-identifier-and-key"></a>Skonfiguruj identyfikator i klucz konta
 
-W okienku **projekt** przejdź do `Assets/AzureSpatialAnchors.Examples/Scenes` pliku `AzureSpatialAnchorsBasicDemo.unity` sceny i otwórz go.
+W okienku **projekt** przejdź do `Assets/AzureSpatialAnchors.Examples/Scenes` i Otwórz plik scena `AzureSpatialAnchorsBasicDemo.unity`.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
@@ -76,9 +76,9 @@ Po zakończeniu eksportowania zostanie wyświetlony folder zawierający wyekspor
 
 W folderze kliknij dwukrotnie plik **HELLOAR U3D. sln** , aby otworzyć projekt w programie Visual Studio.
 
-Zmień **konfigurację rozwiązania** na Zwolnij, Zmień **platformę rozwiązania** na **x86**, a następnie wybierz pozycję **urządzenie** z opcji cel wdrożenia.
+Zmień **konfigurację rozwiązania** na **Zwolnij**, Zmień **platformę rozwiązania** na **x86**, a następnie wybierz pozycję **urządzenie** z opcji cel wdrożenia.
 
-W przypadku korzystania z urządzenia HoloLens 2 Użyj usługi **ARM** jako **platformy rozwiązania**zamiast **architektury x86**.
+W przypadku korzystania z urządzenia HoloLens 2 Użyj **arm64** jako **platformy rozwiązania**zamiast **architektury x86**.
 
    ![Konfiguracja programu Visual Studio](./media/get-started-unity-hololens/visual-studio-configuration.png)
 
@@ -95,4 +95,4 @@ W programie Visual Studio Zatrzymaj aplikację, wybierając pozycję **Zatrzymaj
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)

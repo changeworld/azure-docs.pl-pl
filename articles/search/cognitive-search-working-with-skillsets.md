@@ -1,5 +1,5 @@
 ---
-title: Praca z umiejętności
+title: Koncepcje i przepływy pracy zestawu umiejętności
 titleSuffix: Azure Cognitive Search
 description: Umiejętności to miejsce, w którym tworzysz potok wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze. Poznaj ważne pojęcia i szczegółowe informacje na temat kompozycji zestawu umiejętności.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890162"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113646"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Praca z usługą umiejętności na platformie Azure Wyszukiwanie poznawcze
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Zestawu umiejętności pojęć i kompozycji na platformie Azure Wyszukiwanie poznawcze
 
 Ten artykuł jest przeznaczony dla deweloperów, którzy potrzebują dokładniejszego wglądu w sposób działania potoku wzbogacania i przyjęto, że masz koncepcję opisującą proces wzbogacania AI. Jeśli tworzysz nowe koncepcje, Zacznij od:
 + [Wzbogacanie AI na platformie Azure Wyszukiwanie poznawcze](cognitive-search-concept-intro.md)
@@ -43,9 +43,9 @@ Gdy dokument znajduje się w potoku wzbogacenia, jest reprezentowany jako drzewo
 
 |Tryb Source\Parsing danych|Domyślne|JSON, wiersze JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|Nie dotyczy |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|Nie dotyczy|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|Nie dotyczy |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|Nie dotyczy|
 
  W miarę wykonywania umiejętności Dodaj nowe węzły do drzewa wzbogacania. Te nowe węzły mogą być następnie używane jako dane wejściowe dla umiejętności podrzędnych, projekcja w sklepie wiedzy lub mapowanie do pól indeksu. Wzbogacania nie są modyfikowalne: po utworzeniu węzły nie mogą być edytowane. Ponieważ umiejętności jest bardziej skomplikowany, to drzewo wzbogacania, ale nie wszystkie węzły w drzewie wzbogacania muszą wprowadzić je do indeksu lub sklepu wiedzy. Można wybiórczo utrwalać tylko podzbiór wzbogaceń do indeksu lub sklepu z bazami danych.
 

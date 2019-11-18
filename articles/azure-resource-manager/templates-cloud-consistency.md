@@ -1,23 +1,17 @@
 ---
-title: Ponowne użycie szablonów dla chmur — usługi Azure Resource Manager
+title: Ponowne używanie szablonów w chmurach
 description: Tworzenie szablonów usługi Azure Resource Manager, stale działające dla środowisk inną chmurę. Tworzenie nowego elementu lub aktualizowanie istniejących szablonów dla usługi Azure Stack.
-services: azure-resource-manager
-documentationcenter: na
 author: marcvaneijk
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2964bb4365a2c153e7bc82c3292545ad4de985eb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164767"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143771"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -671,7 +665,7 @@ Należy wziąć pod uwagę na poniższe porady dotyczące testowania i automatyz
 * Należy pamiętać, że niektóre testy mogą być wykonywane bez połączenia do usługi Azure Resource Manager. Inne, takie jak testowanie wdrożenia szablonu wymagają usługi Resource Manager do wykonywania pewnych działań, które nie mogą być wykonywane w trybie offline.
 * Testowanie Szablon wdrożenia względem walidacji interfejsu API nie jest równa rzeczywiste wdrożenie. Ponadto nawet wtedy, gdy należy wdrożyć szablon z pliku lokalnego, wszelkie odwołania do szablonów zagnieżdżonych w szablonie są pobierane przez usługę Resource Manager bezpośrednio i artefakty przywoływane przez rozszerzenia maszyny Wirtualnej są pobierane przez agenta maszyny Wirtualnej uruchomionej w wdrożonej maszyny Wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zagadnienia dotyczące szablonów usługi Azure Resource Manager](/azure-stack/user/azure-stack-develop-templates)
 * [Najlepsze rozwiązania dotyczące szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md)

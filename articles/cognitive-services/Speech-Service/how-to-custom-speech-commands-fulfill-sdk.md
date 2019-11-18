@@ -1,5 +1,5 @@
 ---
-title: 'Instrukcje: wykonywanie niestandardowych poleceń na kliencie przy użyciu zestawu Speech SDK (wersja zapoznawcza)'
+title: Jak zrealizować niestandardowe polecenia na kliencie przy użyciu zestawu Speech SDK
 titleSuffix: Azure Cognitive Services
 description: W tym artykule obsłużą działania niestandardowych poleceń na kliencie przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507023"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110074"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Instrukcje: spełnienie poleceń na kliencie przy użyciu zestawu mowy SDK (wersja zapoznawcza)
 
@@ -28,13 +28,13 @@ W tym artykule przedstawiono następujące:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Klucz subskrypcji platformy Azure dla usługi Speech Services
-   - [Pobierz bezpłatnie](get-started.md) lub utwórz je na [Azure Portal](https://portal.azure.com)
+  - [Pobierz bezpłatnie](get-started.md) lub utwórz je na [Azure Portal](https://portal.azure.com)
 - Wcześniej utworzona aplikacja poleceń niestandardowych
-   - [Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)](./quickstart-custom-speech-commands-create-parameters.md)
 - Aplikacja kliencka z włączonym zestawem SDK mowy
-   - [Szybki Start: Nawiązywanie połączenia z aplikacją niestandardową za pomocą zestawu Speech SDK (wersja zapoznawcza)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [Szybki Start: Nawiązywanie połączenia z aplikacją niestandardową za pomocą zestawu Speech SDK (wersja zapoznawcza)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>Opcjonalne: szybkie rozpoczynanie pracy
 
@@ -45,14 +45,15 @@ W tym artykule opisano krok po kroku, jak umożliwić aplikacji klienckiej komun
 1. Otwórz wcześniej utworzoną aplikację poleceń niestandardowych z programu [Speech Studio](https://speech.microsoft.com/)
 1. Zapoznaj się z sekcją **reguły uzupełniania** , aby upewnić się, że masz wcześniej utworzoną regułę, która reaguje z powrotem do użytkownika.
 1. Aby wysłać ładunek bezpośrednio do klienta, Utwórz nową regułę z akcją Wyślij działanie
+
    > [!div class="mx-imgBorder"]
    > ![wysyłania](media/custom-speech-commands/fulfill-sdk-completion-rule.png) regułę ukończenia działania
 
-   | Ustawienie    | Sugerowana wartość                                  | Opis                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | Nazwa reguły  | UpdateDeviceState                                | Nazwa opisująca przeznaczenie reguły          |
-   | Warunki | Wymagany parametr-`OnOff` i `SubjectDevice` | Warunki określające, kiedy można uruchomić regułę    |
-   | Akcje    | `SendActivity` (patrz poniżej)                        | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
+   | Ustawienie | Sugerowana wartość | Opis |
+   | ------- | --------------- | ----------- |
+   | Nazwa reguły | UpdateDeviceState | Nazwa opisująca przeznaczenie reguły |
+   | Warunki | Wymagany parametr-`OnOff` i `SubjectDevice` | Warunki określające, kiedy można uruchomić regułę |
+   | Akcje | `SendActivity` (patrz poniżej) | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
 
    > [!div class="mx-imgBorder"]
    > ![wysyłania ładunku aktywności](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. Wizualny stan telewizora powinien zmienić na "on"
 
 ## <a name="next-steps"></a>Następne kroki
+
 > [!div class="nextstepaction"]
 > [Instrukcje: Dodawanie walidacji do parametrów polecenia niestandardowego (wersja zapoznawcza)](./how-to-custom-speech-commands-validations.md)
-

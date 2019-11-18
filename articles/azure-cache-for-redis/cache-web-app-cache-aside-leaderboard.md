@@ -1,26 +1,18 @@
 ---
-title: Samouczek dotyczący tworzenia aplikacji internetowej z usługą Azure Cache for Redis, która korzysta ze wzorca Odkładanie do pamięci podręcznej | Microsoft Docs
+title: Samouczek dotyczący tworzenia aplikacji sieci Web za pomocą usługi Azure cache for Redis, która używa wzorca z odkładaniem do pamięci podręcznej
 description: Dowiedz się, jak utworzyć aplikację internetową z usługą Azure Cache for Redis, która korzysta ze wzorca Odkładanie do pamięci podręcznej
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834115"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121514"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
 
@@ -42,7 +34,7 @@ Do ukończenia tego samouczka niezbędne są:
 
 * Ten samouczek jest kontynuacją [przewodnika Szybki start platformy ASP.NET dla usługi Azure Cache for Redis](cache-web-app-howto.md). Jeśli jeszcze nie został on przez Ciebie ukończony, ukończ go najpierw.
 * Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
-    * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
+    * ASP.NET i tworzenie aplikacji internetowych
     * Programowanie na platformie Azure
     * Programowanie aplikacji klasycznych dla platformy .NET z użyciem programu SQL Server Express LocalDB lub [SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express).
 
@@ -735,7 +727,7 @@ Po zakończeniu pracy z przykładową aplikacją z samouczka możesz usunąć u�
 2. Wpisz nazwę grupy zasobów w polu tekstowym **Filtruj elementy...** .
 3. Kliknij pozycję **...** z prawej strony grupy zasobów i kliknij pozycję **Usuń grupę zasobów**.
 
-    ![Usuń](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Usuwanie](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**.
 

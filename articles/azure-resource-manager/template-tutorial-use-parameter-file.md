@@ -1,19 +1,16 @@
 ---
-title: Samouczek — używanie pliku parametrów w celu ułatwienia wdrażania szablonu Azure Resource Manager
+title: Samouczek — używanie pliku parametrów do wdrażania szablonu
 description: Użyj plików parametrów, które zawierają wartości używane do wdrażania szablonu Azure Resource Manager.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 7ebf8a3eed81c8f5233f7212df7e245a27f7fd16
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177553"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149166"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Samouczek: używanie plików parametrów do wdrożenia szablonu Menedżer zasobów
 
@@ -49,7 +46,7 @@ Utwórz nowy plik o następującej zawartości. Zapisz plik o nazwie **azuredepl
 
 Ten plik jest plikiem parametrów dla środowiska produkcyjnego. Zwróć uwagę, że używa Standard_GRS dla konta magazynu, nazw zasobów z prefiksem **contoso** i ustawia tag **środowiska** na **produkcyjny**. W rzeczywistym środowisku produkcyjnym warto również używać usługi App Service z jednostką SKU inną niż bezpłatna, ale będziemy nadal korzystać z tej jednostki SKU dla tego samouczka.
 
-## <a name="deploy-the-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 Użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby wdrożyć szablon.
 
@@ -57,7 +54,7 @@ Jako ostatni test szablonu Utwórzmy dwie nowe grupy zasobów. Jeden dla środow
 
 Po pierwsze wdrożenie zostanie wdrożone w środowisku deweloperskim.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -90,7 +87,7 @@ az group deployment create \
 
 Teraz wdrażamy je w środowisku produkcyjnym.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -123,23 +120,23 @@ az group deployment create \
 
 Możesz zweryfikować wdrożenie, przeeksplorowanie grup zasobów z Azure Portal.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Zobaczysz dwie nowe grupy zasobów wdrożone w tym samouczku.
 1. Wybierz pozycję Grupa zasobów i Wyświetl wdrożone zasoby. Zwróć uwagę, że są one zgodne z wartościami określonymi w pliku parametrów dla danego środowiska.
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-1. Z Azure Portal z menu po lewej stronie wybierz pozycję **Grupa zasobów** .
-2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy** . Jeśli ta seria została ukończona, istnieją trzy grupy zasobów do usunięcia — zasobu, myResourceGroupDev i myResourceGroupProd.
+1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**. Jeśli ta seria została ukończona, istnieją trzy grupy zasobów do usunięcia — zasobu, myResourceGroupDev i myResourceGroupProd.
 3. Wybierz nazwę grupy zasobów.
-4. W górnym menu wybierz pozycję **Usuń grupę zasobów** .
+4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Gratulacje, wprowadzenie do wdrożenia szablonów na platformie Azure. Daj nam znać, jeśli masz jakieś komentarze i sugestie w sekcji Opinie. Za!
+Gratulacje, wprowadzenie do wdrożenia szablonów na platformie Azure. Daj nam znać, jeśli masz jakieś komentarze i sugestie w sekcji Opinie. Dziękujemy.
 
 Możesz teraz przejść do bardziej zaawansowanych koncepcji dotyczących szablonów. Następny samouczek zawiera więcej szczegółów dotyczących korzystania z dokumentacji szablonów referencyjnych, aby ułatwić Definiowanie zasobów do wdrożenia.
 
 > [!div class="nextstepaction"]
-> [Użyj odwołania do szablonu](resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Korzystanie z dokumentacji szablonów](resource-manager-tutorial-create-encrypted-storage-accounts.md)

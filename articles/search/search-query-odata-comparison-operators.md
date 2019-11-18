@@ -1,7 +1,7 @@
 ---
 title: Odwołanie operatora porównania OData
 titleSuffix: Azure Cognitive Search
-description: Operatory porównania OData, EQ, ne, gt, lt, GE i Le w usłudze Azure Wyszukiwanie poznawcze zapytania.
+description: Składnia i dokumentacja referencyjna dotycząca korzystania z operatorów porównania OData (EQ, ne, gt, lt, GE i Le) w usłudze Azure Wyszukiwanie poznawcze zapytania.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 068e2ec822f0a292ac83b3e48049830eb77b49f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793385"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113223"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Operatory porównania OData w usłudze Azure Wyszukiwanie poznawcze — `eq`, `ne`, `gt`, `lt`, `ge`i `le`
 
@@ -38,9 +38,9 @@ Operatory równości:
 Operatory zakresu:
 
 - `gt`: testowanie, czy pole jest **większe niż** wartość stała
-- `lt`: testowanie, czy pole jest **mniejsze niż** wartość stała
-- `ge`: testowanie, czy pole jest **większe lub równe** wartości stałej
-- `le`: testowanie, czy pole jest **mniejsze niż lub równe** wartości stałej
+- `lt`: Sprawdź, czy pole jest **mniejsze niż** wartość stała
+- `ge`: Sprawdź, czy pole jest **większe lub równe** wartości stałej
+- `le`: Sprawdź, czy pole jest **mniejsze niż lub równe** wartości stałej
 
 Można użyć operatorów zakresu w połączeniu z [operatorami logicznymi](search-query-odata-logical-operators.md) , aby sprawdzić, czy pole znajduje się w określonym zakresie wartości. Zobacz [przykłady](#examples) w dalszej części tego artykułu.
 
@@ -81,13 +81,13 @@ Typy danych po obu stronach operatora porównania muszą być zgodne. Na przykł
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Porównanie podlega [specjalnym regułom dla `NaN`](#special-case-nan) |
 | `Edm.Double` | `Edm.Int64` | Stała jest konwertowana na `Edm.Double`, co spowodowało utratę dokładności dla wartości o dużej wielkości |
-| `Edm.Double` | `Edm.Int32` | nd. |
+| `Edm.Double` | `Edm.Int32` | Nie dotyczy |
 | `Edm.Int64` | `Edm.Double` | Porównania do `NaN`, `-INF`lub `INF` są niedozwolone |
-| `Edm.Int64` | `Edm.Int64` | nd. |
+| `Edm.Int64` | `Edm.Int64` | Nie dotyczy |
 | `Edm.Int64` | `Edm.Int32` | Stała jest konwertowana na `Edm.Int64` przed porównaniem |
 | `Edm.Int32` | `Edm.Double` | Porównania do `NaN`, `-INF`lub `INF` są niedozwolone |
-| `Edm.Int32` | `Edm.Int64` | nd. |
-| `Edm.Int32` | `Edm.Int32` | nd. |
+| `Edm.Int32` | `Edm.Int64` | Nie dotyczy |
+| `Edm.Int32` | `Edm.Int32` | Nie dotyczy |
 
 W przypadku porównań, które nie są dozwolone, takich jak porównywanie pola typu `Edm.Int64` do `NaN`, interfejs API REST platformy Azure Wyszukiwanie poznawcze zwróci błąd "HTTP 400: złe żądanie".
 

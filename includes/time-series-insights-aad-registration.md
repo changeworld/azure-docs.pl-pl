@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 09/24/2019
-ms.openlocfilehash: 1ed57e30273c9ba3feb110e0e5acbd3bcc7ffd40
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 11/14/2019
+ms.openlocfilehash: fa6921f8c4309f17cbd63e242a5416e7e81bb6c3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74062909"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133456"
 ---
 1. W [Azure Portal](https://ms.portal.azure.com/)wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **nową rejestrację**.
 
@@ -39,7 +39,7 @@ ms.locfileid: "74062909"
         * W przypadku aplikacji hostowanych w lokalnym środowisku programistycznym wybierz pozycję **Klient publiczny (mobile & Desktop)** . Upewnij się, że dla **domyślnego typu klienta** ustawiono wartość tak.
         * W przypadku aplikacji jednostronicowych hostowanych w Azure App Service wybierz pozycję **Sieć Web**.
 
-    1. Włącz przepływ niejawnego udzielenia przez sprawdzenie **tokenów identyfikatorów**.
+    1. Włącz przepływ niejawnego udzielenia, sprawdzając **tokeny dostępu** lub **tokeny identyfikatorów**.
 
    [![utworzyć nowego klucza tajnego klienta](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 

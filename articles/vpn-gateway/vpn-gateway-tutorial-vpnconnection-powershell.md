@@ -1,5 +1,5 @@
 ---
-title: Tworzenie połączeń S2S sieci VPN na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell | Microsoft Docs
+title: 'Azure VPN Gateway: tworzenie połączeń sieci VPN S2S i zarządzanie nimi: samouczek'
 description: Samouczek — tworzenie połączeń S2S sieci VPN i zarządzanie nimi za pomocą modułu Azure PowerShell
 services: vpn-gateway
 author: yushwang
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 1f2cbe447508ca6939fcdb997a9536ea91a7953f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 64da55c3dba4b617458b68a8b54a509bab4264d2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495631"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152162"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Samouczek: tworzenie połączeń sieci VPN S2S i zarządzanie nimi przy użyciu programu PowerShell
 

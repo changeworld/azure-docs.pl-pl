@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 72bf461dc882b9a097e59e8ecf40b0f71b2cc1f2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163143"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108796"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw dla prywatnego dostępu vCenter w chmurze z lokalnych stacji roboczych
 
@@ -23,7 +23,7 @@ Aby uzyskać dostęp do serwera vCenter w chmurze prywatnej CloudSimple z lokaln
 
 1. Zaloguj się do [portalu CloudSimple](access-cloudsimple-portal.md).
 
-2. Przejdź do **zasobów** > **chmury prywatne** i wybierz chmurę prywatną, z którą chcesz nawiązać połączenie.
+2. Przejdź do **zasobów** > **chmurami prywatnymi** i wybierz chmurę prywatną, z którą chcesz nawiązać połączenie.
 
 3. Na stronie **Podsumowanie** w chmurze prywatnej w obszarze **podstawowe informacje**Skopiuj adres IP serwera DNS w chmurze prywatnej.
 
@@ -46,7 +46,7 @@ Określony plik i parametry do skonfigurowania mogą się różnić w zależnoś
 Na przykład dla domyślnej konfiguracji serwera BIND Edytuj plik/etc/named.conf na serwerze DNS i Dodaj następujące informacje o strefie.
 
 ```
-zone "cloudsimple.io"
+zone "az.cloudsimple.io"
 {
     type stub;
     masters { IP address of DNS servers; };
@@ -87,7 +87,7 @@ Określony plik i parametry do skonfigurowania mogą się różnić w zależnoś
 Na przykład dla domyślnej konfiguracji serwera BIND Edytuj plik/etc/named.conf na serwerze DNS i Dodaj następujące informacje warunkowego przekazywania.
 
 ```
-zone "cloudsimple.io" {
+zone "az.cloudsimple.io" {
     type forward;
     forwarders { IP address of DNS servers; };
 };

@@ -1,5 +1,6 @@
 ---
-title: 'Konfigurowanie zasad protokołu IPsec/IKE dla połączeń sieci VPN S2S lub połączenia VNet-Sieć wirtualna: Azure Resource Manager: PowerShell | Microsoft Docs'
+title: Zasady protokołu IPsec/IKE dla sieci VPN S2S & połączeń typu sieć wirtualna-sieć wirtualna
+titleSuffix: Azure VPN Gateway
 description: Skonfiguruj zasady protokołu IPsec/IKE dla połączeń S2S lub VNet-to-VNet z bramami sieci VPN platformy Azure przy użyciu Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: a4a0431a8d40f7905805e0a7d902988b7eb26208
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0dabf0ee3370abab3d0f9d6f1bf26dd622862cf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035049"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151777"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurowanie zasad protokołu IPsec/IKE dla połączeń sieci VPN S2S lub Sieć wirtualna-sieć wirtualna
 
@@ -57,7 +58,7 @@ Ta sekcja zawiera opis przepływu pracy w celu utworzenia i zaktualizowania zasa
 
 Instrukcje zawarte w tym artykule ułatwiają konfigurowanie i Konfigurowanie zasad protokołu IPsec/IKE, jak pokazano na diagramie:
 
-![IPSec — zasady IKE](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 ## <a name ="params"></a>Część 2 — Obsługiwane algorytmy kryptograficzne & mocnych kluczy
 
@@ -67,7 +68,7 @@ W poniższej tabeli wymieniono obsługiwane algorytmy kryptograficzne i siły kl
 | ---  | --- 
 | Szyfrowanie IKEv2 | AES256, AES192, AES128, DES3, DES  
 | Integralność IKEv2  | SHA384, SHA256, SHA1, MD5  |
-| Grupa DH         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, brak |
+| Grupa DH         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, None |
 | Szyfrowanie IPsec | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Brak    |
 | Integralność IPsec  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | Grupa PFS        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Brak 
@@ -93,7 +94,7 @@ W poniższej tabeli wymieniono obsługiwane algorytmy kryptograficzne i siły kl
 >    * Grupa DH określa grupę diff-Hellmen używaną w trybie głównym lub w fazie 1
 >    * Grupa PFS została określona dla grupy Diffie-Hellmen używanej w trybie szybkim lub w fazie 2
 > 4. Okres istnienia skojarzenia zabezpieczeń trybu głównego protokołu IKEv2 jest ustalony na 28 800 sekund na bramach sieci VPN platformy Azure
-> 5. Ustawienie opcji "UsePolicyBasedTrafficSelectors" na $True połączenia spowoduje skonfigurowanie bramy sieci VPN platformy Azure w celu połączenia z zaporą sieci VPN opartej na zasadach lokalnych. W przypadku włączenia PolicyBasedTrafficSelectors należy upewnić się, że urządzenie sieci VPN ma pasujące selektory ruchu zdefiniowane ze wszystkimi kombinacjami sieci lokalnych (Brama sieci lokalnej) prefiksami do/z prefiksów sieci wirtualnej platformy Azure, a nie dowolny z nich. Na przykład jeśli prefiksy sieci lokalnej to 10.1.0.0/16 i 10.2.0.0/16, a prefiksy sieci wirtualnej to 192.168.0.0/16 i 172.16.0.0/16, trzeba określić następujące selektory ruchu:
+> 5. Ustawienie opcji "UsePolicyBasedTrafficSelectors" na $True połączenia spowoduje skonfigurowanie bramy sieci VPN platformy Azure w celu połączenia z zaporą sieci VPN opartej na zasadach lokalnych. W przypadku włączenia PolicyBasedTrafficSelectors należy upewnić się, że urządzenie sieci VPN ma pasujące selektory ruchu zdefiniowane ze wszystkimi kombinacjami sieci lokalnych (Brama sieci lokalnej) prefiksami do/z prefiksów sieci wirtualnej platformy Azure, a nie z dowolnego miejsca. Na przykład jeśli prefiksy sieci lokalnej to 10.1.0.0/16 i 10.2.0.0/16, a prefiksy sieci wirtualnej to 192.168.0.0/16 i 172.16.0.0/16, trzeba określić następujące selektory ruchu:
 >    * 10.1.0.0/16 <====> 192.168.0.0/16
 >    * 10.1.0.0/16 <====> 172.16.0.0/16
 >    * 10.2.0.0/16 <====> 192.168.0.0/16
@@ -308,7 +309,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 Po wykonaniu tych kroków połączenie zostanie nawiązane w ciągu kilku minut i będzie dostępna następująca topologia sieci, jak pokazano na początku:
 
-![IPSec — zasady IKE](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
 ## <a name ="managepolicy"></a>Część 5 — aktualizowanie zasad protokołu IPsec/IKE dla połączenia

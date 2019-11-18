@@ -171,6 +171,8 @@
           displayName: 'roles, import'
         - name: Korzystanie ze wstępnie utworzonych modeli
           href: howto-add-prebuilt-models.md
+        - name: Oznaczanie etykietą jednostki w wypowiedzi
+          href: label-entity-example-utterance.md
         - name: Za pomocą interfejsów API REST
           items:
             - name: Programowe tworzenie aplikacji przy użyciu środowiska Node.js
@@ -188,8 +190,8 @@
         - name: Korzystanie z pulpitu nawigacyjnego
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: Dodawanie listy fraz
-          displayName: 'synonym, interchange'
+        - name: Dodawanie deskryptora
+          displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
         - name: Przeglądanie wypowiedzi punktu końcowego
           displayName: active learning

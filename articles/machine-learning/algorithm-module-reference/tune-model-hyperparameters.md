@@ -1,5 +1,5 @@
 ---
-title: Dostrajanie parametrów modelu
+title: Dostrajanie hiperparametrów modelu
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak użyć modułu dostrajania parametrów modelu w usłudze Azure Machine Learning, aby przeprowadzić odczyszczenie parametrów na modelu w celu określenia optymalnych ustawień parametrów.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: fd796297bafeb437b55eca7f38cbd7ae55e19b93
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716717"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131223"
 ---
-# <a name="tune-model-hyperparameters"></a>Dostrajanie parametrów modelu
+# <a name="tune-model-hyperparameters"></a>Dostrajanie hiperparametrów modelu
 
 W tym artykule opisano, jak używać modułu dostrajania parametrów modelu w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem jest określenie optymalnych parametrów dla modelu uczenia maszynowego. Moduł kompiluje i testuje wiele modeli przy użyciu różnych kombinacji ustawień. Porównuje metryki dla wszystkich modeli w celu uzyskania kombinacji ustawień. 
 
@@ -69,7 +69,7 @@ W tej sekcji opisano, jak wykonać podstawowe odwzorowanie parametrów, które p
 
 8.  W celu **określania rankingu**wybierz pojedynczą metrykę, która ma być używana do klasyfikowania modeli.
 
-    Po uruchomieniu odchylenia parametrów moduł oblicza wszystkie odpowiednie metryki dla typu modelu zwraca je w raporcie **wyniki odchylenia** . Moduł używa oddzielnych metryk dla modeli regresji i klasyfikacji.
+    Po uruchomieniu odchylenia parametrów moduł oblicza wszystkie odpowiednie metryki dla typu modelu i zwraca je w raporcie **wyniki odchylenia** . Moduł używa oddzielnych metryk dla modeli regresji i klasyfikacji.
 
     Wybrana Metryka określa jednak, w jaki sposób modele są klasyfikowane. Tylko górny model, uporządkowany według wybranej metryki, jest wyprowadzany jako model przeszkolony do użycia na potrzeby oceniania.
 

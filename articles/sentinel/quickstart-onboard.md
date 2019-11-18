@@ -1,37 +1,42 @@
 ---
-title: Dołączanie na platformie Azure — wskaźnikowa | Microsoft Docs
-description: Dowiedz się, jak zbierać dane na platformie Azure — wskaźnik.
+title: 'Szybki Start: dołączanie na platformie Azure — wskaźnik'
+description: Dowiedz się, jak zbierać dane na platformie Azure — zgodnie z tym dokumentem szybkiego startu.
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quickstart
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316807"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133100"
 ---
-# <a name="on-board-azure-sentinel"></a>Tablica wskaźnikowa platformy Azure
+# <a name="quickstart-on-board-azure-sentinel"></a>Szybki Start: tablica wskaźnikowa platformy Azure
 
-
-
-W tym przewodniku szybki start dowiesz się, jak przejść do tablicy wskaźnikowej platformy Azure. 
+W tym przewodniku szybki start dowiesz się, jak dołączyć wskaźnik do platformy Azure. 
 
 Aby przenieść wskaźnik na platformę Azure, musisz najpierw włączyć wskaźnik na platformie Azure, a następnie połączyć źródła danych. Wskaźnik platformy Azure obejmuje wiele łączników dla rozwiązań firmy Microsoft, dostępnych poza platformą i zapewniania integracji w czasie rzeczywistym, w tym rozwiązań ochrony przed zagrożeniami firmy Microsoft, źródeł Microsoft 365, takich jak Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto istnieją wbudowane łączniki do szerszego ekosystemu zabezpieczeń dla rozwiązań firm innych niż Microsoft. Możesz również użyć typowego formatu zdarzeń, dziennika systemowego lub REST-API, aby połączyć źródła danych z platformą Azure.  
 
 Po nawiązaniu połączenia ze źródłami danych wybierz jedną z galerii ze szczegółowymi skoroszytami utworzonymi na podstawie danych. Te skoroszyty mogą być łatwo dostosowane do Twoich potrzeb.
 
+>[!NOTE] 
+> [Cennik usługi Azure wskaźnikowej](https://azure.microsoft.com/pricing/details/azure-sentinel/) zależy od ilości danych pozyskanych w skojarzonym obszarze roboczym Azure Monitor Log Analytics. Niektóre z następujących łączników danych nie są obciążane opłatami za pozyskiwanie, jednak po wygenerowaniu dowolnego rodzaju alertów za pomocą pozyskanych danych przechowywanych w obszarze roboczym Log Analytics będą naliczane opłaty za [Azure monitor cennika usługi log Analytics](https://azure.microsoft.com/pricing/details/monitor/). 
+  > - Aktywność platformy Azure (dzienniki aktywności dla operacji platformy Azure)
+  > - Azure Active Directory Identity Protection (dla dzierżawców z licencjami usługi AAD P2)
+  > - Azure Information Protection
+  > - Zaawansowana ochrona przed zagrożeniami na platformie Azure (alerty)
+  > - Azure Security Center (alerty)
+  > - Microsoft Cloud App Security (tylko alerty)
+  > - Microsoft Defender Advanced Threat Protection (monitorowanie alertów agentów)
+  > - Office 365 (dzienniki programu Exchange i programu SharePoint)
+>
+> Dzienniki inspekcji usługi Azure AD/Office 365 nie są bezpłatne i oferowane jako warstwa Premium, dlatego w przypadku pozyskiwania tych danych jest naliczana opłata za GB. 
+  
 
 ## <a name="global-prerequisites"></a>Ogólne wymagania wstępne
 
@@ -49,7 +54,7 @@ Po nawiązaniu połączenia ze źródłami danych wybierz jedną z galerii ze sz
 1. Przejdź do Azure Portal.
 2. Upewnij się, że wybrano subskrypcję, w której jest tworzony wskaźnik "Azure,". 
 3. Wyszukaj platformę Azure — wskaźnik. 
-   ![wyszukiwania](./media/quickstart-onboard/search-product.png)
+   ](./media/quickstart-onboard/search-product.png) wyszukiwania ![
 
 1. Kliknij pozycję **+ Dodaj**.
 1. Wybierz obszar roboczy, którego chcesz użyć, lub Utwórz nowy. Możesz uruchomić wskaźnik platformy Azure na więcej niż jednym obszarze roboczym, ale dane są izolowane do jednego obszaru roboczego.

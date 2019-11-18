@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do indeksowania przyrostowego (wersja zapoznawcza)
+title: Indeksowanie przyrostowe (wersja zapoznawcza)
 titleSuffix: Azure Cognitive Search
 description: Skonfiguruj potok wzbogacenia dysku AI, aby zwiększyć spójność danych w celu obsługi wszelkich aktualizacji umiejętności, umiejętności, indeksatorów lub źródeł danych. Ta funkcja jest obecnie dostępna w publicznej wersji zapoznawczej
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715417"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113587"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Co to jest indeksowanie przyrostowe w usłudze Azure Wyszukiwanie poznawcze?
 
@@ -138,7 +138,7 @@ Niektóre indeksatory (za pośrednictwem [źródeł danych](https://docs.microso
 
 Umiejętności nie będzie obsługiwać żadnych nowych operacji, ale będzie obsługiwały nowy parametr QueryString: `disableCacheReprocessingChangeDetection` powinna być ustawiona na `true`, gdy nie ma żadnych aktualizacji istniejących dokumentów na podstawie bieżącej akcji.
 
-### <a name="datasources"></a>źródła danych
+### <a name="datasources"></a>Źródła danych
 
 Źródła danych nie będą obsługiwać żadnych nowych operacji, ale będą obsługiwać nowe parametry QueryString: `ignoreResetRequirement` powinna być ustawiona na `true`, gdy akcja aktualizacji nie powinna unieważniać pamięci podręcznej.
 

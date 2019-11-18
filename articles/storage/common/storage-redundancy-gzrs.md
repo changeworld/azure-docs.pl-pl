@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333216"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111840"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -31,6 +31,7 @@ GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących reg
 
 - Europa Północna
 - Europa Zachodnia
+- Południowe Zjednoczone Królestwo
 - Wschodnie stany USA
 - Wschodnie stany USA 2
 - Środkowe stany USA
@@ -53,7 +54,7 @@ Podczas tworzenia konta magazynu należy określić sposób replikowania danych 
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Korzystanie z usługi RA-GZRS w celu zapewnienia wysokiej dostępności
 
-Po włączeniu usługi RA-GZRS dla konta magazynu dane można odczytać z pomocniczego punktu końcowego oraz z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy* do nazwy konta. Na przykład jeśli podstawowy punkt końcowy Blob service ma `myaccount.blob.core.windows.net`, wówczas pomocniczy punkt końcowy to `myaccount-secondary.blob.core.windows.net`. Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
+Po włączeniu usługi RA-GZRS dla konta magazynu dane można odczytać z pomocniczego punktu końcowego oraz z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy* do nazwy konta. Na przykład jeśli podstawowy punkt końcowy Blob service jest `myaccount.blob.core.windows.net`, zostanie `myaccount-secondary.blob.core.windows.net`pomocniczy punkt końcowy. Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
 
 Aby skorzystać z funkcji RA-GZRS w przypadku awarii regionalnej, musisz zaprojektować aplikację z wyprzedzeniem, aby obsłużyć ten scenariusz. Aplikacja powinna odczytywać i zapisywać w podstawowym punkcie końcowym, ale przełączyć się do korzystania z pomocniczego punktu końcowego w przypadku, gdy region podstawowy stał się niedostępny. Aby uzyskać wskazówki dotyczące projektowania wysokiej dostępności za pomocą usługi RA-GZRS, zobacz [projektowanie wysoce dostępnych aplikacji przy użyciu usługi RA-GZRS lub RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -141,7 +142,7 @@ Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.c
     - **Typ problemu**: wybierz pozycję **migracja danych**.
     - **Kategoria**: wybierz pozycję **MIGRUJ do (Ra-) GZRS w regionie**.
     - **Title**: wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
-    - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, GRS] w regionie \_ @ no__t-3". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ @ no__t-1".
+    - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, GRS] w regionie \_ \_". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ \_".
 5. Wybierz opcję **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
 7. Wybierz pozycję **Utwórz**.

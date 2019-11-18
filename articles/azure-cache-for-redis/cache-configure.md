@@ -1,25 +1,17 @@
 ---
-title: Jak skonfigurować usługę Azure cache for Redis | Microsoft Docs
+title: Jak skonfigurować usługę Azure cache for Redis
 description: Zapoznaj się z domyślną konfiguracją Redis dla usługi Azure cache for Redis i Dowiedz się, jak skonfigurować pamięć podręczną platformy Azure dla wystąpień Redis
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bc4b69122df7d29a611571a750229f47337015c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756795"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122875"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować usługę Azure cache for Redis
 W tym temacie opisano konfiguracje dostępne dla usługi Azure cache dla wystąpień Redis. W tym temacie opisano również domyślną konfigurację serwera Redis dla usługi Azure cache dla wystąpień Redis.
@@ -70,7 +62,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
     * [Nowe żądanie obsługi](#new-support-request)
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 **Przegląd** zawiera podstawowe informacje o pamięci podręcznej, takie jak nazwa, porty, warstwa cenowa i wybrane metryki pamięci podręcznej.
 
@@ -112,7 +104,7 @@ Sekcja **Ustawienia** umożliwia dostęp do i konfigurowanie następujących ust
 
 
 
-### <a name="access-keys"></a>Klawisze dostępu
+### <a name="access-keys"></a>Klucze dostępu
 Kliknij pozycję **klucze dostępu** , aby wyświetlić lub ponownie wygenerować klucze dostępu do pamięci podręcznej. Te klucze są używane przez klientów nawiązujących połączenie z pamięcią podręczną.
 
 ![Pamięć podręczna platformy Azure dla kluczy dostępu Redis](./media/cache-configure/redis-cache-manage-keys.png)
@@ -177,15 +169,15 @@ Aby uzyskać więcej informacji, zobacz [Redis — powiadomienia dotyczące miej
 ## <a name="azure-cache-for-redis-advisor"></a>Usługa Azure cache for Redis Advisor
 W bloku **Azure cache for Redis Advisor** są wyświetlane zalecenia dotyczące pamięci podręcznej. W trakcie normalnych operacji nie są wyświetlane żadne zalecenia. 
 
-![Polecane elementy](./media/cache-configure/redis-cache-no-recommendations.png)
+![Zalecenia](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Jeśli wystąpią jakiekolwiek warunki podczas operacji pamięci podręcznej, takie jak duże użycie pamięci, przepustowość sieci lub obciążenie serwera, w bloku **pamięci podręcznej platformy Azure dla Redis** zostanie wyświetlony alert.
 
-![Polecane elementy](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Zalecenia](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 Więcej informacji można znaleźć w bloku **zalecenia** .
 
-![Polecane elementy](./media/cache-configure/redis-cache-recommendations.png)
+![Zalecenia](./media/cache-configure/redis-cache-recommendations.png)
 
 Te metryki można monitorować w sekcjach [wykresy monitorowania](cache-how-to-monitor.md#monitoring-charts) i [wykresy użycia](cache-how-to-monitor.md#usage-charts) w bloku **Azure cache for Redis** .
 
@@ -263,7 +255,7 @@ Blok **replikacji geograficznej** zawiera mechanizm łączenia dwóch pamięci p
 > 
 > 
 
-### <a name="virtual-network"></a>Sieć wirtualna
+### <a name="virtual-network"></a>Virtual Network
 Sekcja **Virtual Network** umożliwia skonfigurowanie ustawień sieci wirtualnej dla pamięci podręcznej. Aby uzyskać informacje na temat tworzenia pamięci podręcznej Premium z obsługą sieci wirtualnej i aktualizowania jej ustawień, zobacz [jak skonfigurować obsługę usługi Virtual Network w przypadku pamięci podręcznej systemu Azure w warstwie Premium dla Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -308,7 +300,7 @@ Ustawienia w sekcji **Administracja** umożliwiają wykonywanie następujących 
 * [Ponowne uruchamianie](#reboot)
 
 
-### <a name="importexport"></a>Import/eksport
+### <a name="importexport"></a>Import/Export
 Import/Export to pamięć podręczna platformy Azure do Redis operacji zarządzania danymi, która umożliwia importowanie i eksportowanie danych w pamięci podręcznej przez zaimportowanie i wyeksportowanie bazy danych Azure cache for Redis Database (RDB) z pamięci podręcznej Premium do strony obiektu BLOB na koncie usługi Azure Storage. Usługa Import/Export umożliwia Migrowanie między różnymi pamięciami podręcznymi platformy Azure dla wystąpień Redis lub wypełnianie pamięci podręcznej danymi przed użyciem.
 
 Import może służyć do przenoszenia zgodnych plików RDB Redis z dowolnego serwera Redis działającego w dowolnej chmurze lub środowisku, w tym Redis działających w systemie Linux, Windows lub dowolnym dostawcy chmury, takim jak Amazon Web Services i inne. Importowanie danych to prosty sposób tworzenia pamięci podręcznej z wstępnie wypełnionymi danymi. Podczas procesu importowania usługa Azure cache for Redis ładuje pliki RDB z usługi Azure Storage do pamięci, a następnie wstawia klucze do pamięci podręcznej.
@@ -371,7 +363,7 @@ Ustawienia w sekcji **Pomoc techniczna i rozwiązywanie problemów** zawierają 
 * [Kondycja zasobów](#resource-health)
 * [Nowe żądanie obsługi](#new-support-request)
 
-### <a name="resource-health"></a>Resource Health
+### <a name="resource-health"></a>Kondycja zasobów
 **Kondycja zasobu** obserwuje zasób i informuje o tym, że działa zgodnie z oczekiwaniami. Aby uzyskać więcej informacji o usłudze Azure Resource Health, zobacz [Omówienie usługi Azure Resource Health](../resource-health/resource-health-overview.md).
 
 > [!NOTE]
@@ -406,7 +398,7 @@ W nowej pamięci podręcznej platformy Azure dla wystąpień Redis są skonfigur
 | `maxmemory-samples` |3 |Aby zaoszczędzić pamięć, algorytmy LRU i minimalnego czasu wygaśnięcia są przybliżone algorytmy, a nie precyzyjne algorytmy. Domyślnie Redis sprawdza trzy klucze i wybiera te, które były ostatnio używane. |
 | `lua-time-limit` |5000 |Maksymalny czas wykonywania skryptu Lua w milisekundach. W przypadku osiągnięcia maksymalnego czasu wykonania program Redis rejestruje, że skrypt nadal jest wykonywany po upływie maksymalnego dozwolonego czasu, i zaczyna odpowiadać na zapytania z błędem. |
 | `lua-event-limit` |500 |Maksymalny rozmiar kolejki zdarzeń skryptu. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8 MB 60 |Limity buforów wyjściowych klienta mogą być używane w celu wymuszenia odłączenia klientów, którzy nie odczytują danych z serwera na tyle z powodów (częstą przyczyną jest to, że klient publikowania/sub nie może zużywać komunikatów tak szybko, jak Wydawca może je generować). Aby uzyskać więcej informacji, zobacz [https://redis.io/topics/clients](https://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity buforów wyjściowych klienta mogą być używane w celu wymuszenia odłączenia klientów, którzy nie odczytują danych z serwera na tyle z powodów (częstą przyczyną jest to, że klient publikowania/sub nie może zużywać komunikatów tak szybko, jak Wydawca może je generować). Aby uzyskać więcej informacji, zobacz [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>limit `databases` jest różny dla każdej usługi Azure cache dla warstwy cenowej Redis i można ją ustawić podczas tworzenia pamięci podręcznej. Jeśli podczas tworzenia pamięci podręcznej nie zostanie określone ustawienie `databases`, wartość domyślna to 16.
@@ -434,7 +426,7 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 > 
 
 <a name="maxclients"></a>
-<sup>2</sup> `maxclients` jest różna dla każdej usługi Azure cache dla warstwy cenowej Redis.
+<sup>2</sup>`maxclients` jest różna dla każdej usługi Azure cache dla warstwy cenowej Redis.
 
 * Pamięć podręczna podstawowa i Standardowa
   * Z pamięci podręcznej C0 (250 MB) — do 256 połączeń
@@ -464,7 +456,7 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 > * BGREWRITEAOF
 > * BGSAVE
 > * SYGNATUR
-> * ROZPOCZĄĆ
+> * DEBUG
 > * DOKONAĆ
 > * PISAŁ
 > * WYŁĄCZONY
@@ -506,7 +498,7 @@ shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-W poprzednim przykładzie fragmentu 1 jest wybranym fragmentu, ale `myKey` znajduje się w fragmentu 0, jak wskazano `(shard 0)` część komunikatu o błędzie. W tym przykładzie w celu uzyskania dostępu do `myKey` wybierz pozycję fragmentu 0 przy użyciu selektora fragmentu, a następnie wydaj odpowiednie polecenie.
+W poprzednim przykładzie fragmentu 1 jest wybranym fragmentu, ale `myKey` znajduje się w fragmentu 0, jak wskazano `(shard 0)` część komunikatu o błędzie. W tym przykładzie w celu uzyskania dostępu do `myKey`wybierz pozycję fragmentu 0 przy użyciu selektora fragmentu, a następnie wydaj odpowiednie polecenie.
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Przenoszenie pamięci podręcznej do nowej subskrypcji

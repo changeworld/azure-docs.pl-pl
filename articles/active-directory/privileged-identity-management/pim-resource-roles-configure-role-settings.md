@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022934"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144253"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Skonfiguruj ustawienia roli zasobów platformy Azure w Privileged Identity Management
 
@@ -48,11 +48,19 @@ Wykonaj następujące kroki, aby otworzyć ustawienia roli zasobów platformy Az
 
     ![Strona szczegółów ustawienia roli wyświetlanie kilku ustawień przypisywania i aktywacji](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Wybierz pozycję **Edytuj** , aby otworzyć okienko ustawienia roli.
+1. Wybierz pozycję **Edytuj** , aby otworzyć okienko **Ustawienia roli** . Na pierwszej karcie można zaktualizować konfigurację aktywacji roli w Privileged Identity Management.
 
-    ![Strona edytowania ustawień roli z opcjami aktualizowania ustawień przypisywania i aktywacji](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Strona edytowania ustawień roli z otwartą kartą aktywacji](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    W okienku Ustawienia roli dla każdej roli istnieje kilka ustawień, które można skonfigurować.
+1. Wybierz kartę **przypisanie** lub przycisk **Dalej: przypisanie** w dolnej części strony, aby otworzyć kartę ustawienia przypisania. Te ustawienia kontrolują przypisania ról wykonane w interfejsie Privileged Identity Management.
+
+    ![Karta Przypisanie roli na stronie Ustawienia roli](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. Skorzystaj z karty **powiadomień** lub przycisku **Dalej: Aktywacja** w dolnej części strony, aby przejść do karty Ustawienia powiadomień dla tej roli. Te ustawienia kontrolują wszystkie powiadomienia e-mail powiązane z tą rolą.
+
+    ![Karta powiadomienia o rolach na stronie ustawień roli](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+1. Aby zaktualizować ustawienia roli, wybierz przycisk **Aktualizuj** w dowolnym momencie.
 
 ## <a name="assignment-duration"></a>Czas trwania przypisywania
 

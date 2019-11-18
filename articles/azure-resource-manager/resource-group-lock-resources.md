@@ -1,63 +1,60 @@
 ---
-title: Blokowanie zasobów platformy Azure, aby uniemożliwić zmiany | Dokumentacja firmy Microsoft
-description: Uniemożliwianie użytkownikom aktualizowanie i usuwanie zasoby platformy Azure o znaczeniu krytycznym, stosując blokady dla wszystkich użytkowników i ról.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Zablokuj zasoby, aby uniemożliwić zmiany
+description: Zablokuj użytkownikom możliwość aktualizowania lub usuwania krytycznych zasobów platformy Azure, stosując blokadę dla wszystkich użytkowników i ról.
 ms.topic: conceptual
 ms.date: 05/14/2019
-ms.author: tomfitz
-ms.openlocfilehash: 31d77b4ea6e7594cd3ed4dba264f9ea6db4ca290
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 5dd5d5f58e13039842dca85ca65d6a26ce54c7e5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155223"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150779"
 ---
-# <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
+# <a name="lock-resources-to-prevent-unexpected-changes"></a>Zablokuj zasoby, aby zapobiec nieoczekiwanym zmianom
 
-Jako administrator może być konieczne zablokowania subskrypcji, grupy zasobów lub zasobu, aby uniemożliwić innym użytkownikom w organizacji przypadkowo usuwanie i modyfikowanie zasoby o znaczeniu krytycznym. Poziom blokady można ustawić na wartość **CanNotDelete** lub **ReadOnly**. W portalu, są nazywane blokady **Usuń** i **tylko do odczytu** odpowiednio.
+Jako administrator może być konieczne zablokowanie subskrypcji, grupy zasobów lub zasobu, aby uniemożliwić innym użytkownikom w organizacji Przypadkowe usunięcie lub zmodyfikowanie zasobów krytycznych. Poziom blokady można ustawić na wartość **CanNotDelete** lub **ReadOnly**. W portalu blokady są nazywane odpowiednio **usuwaniem** i **tylko do odczytu** .
 
-* **CanNotDelete** oznacza, że autoryzowani użytkownicy nadal może odczytywać i modyfikować zasobu, ale ich nie można usunąć zasobu. 
-* **Tylko do odczytu** oznacza, że autoryzowani użytkownicy mogą odczytywać zasobu, ale nie mogą usunąć ani zaktualizować zasobu. Zastosowanie Ta blokada jest podobny do ograniczania wszystkim uprawnionym użytkownikom uprawnienia przyznane przez **czytnika** roli. 
+* **CanNotDelete** oznacza, że autoryzowani użytkownicy nadal mogą odczytywać i modyfikować zasób, ale nie mogą usunąć tego zasobu. 
+* **ReadOnly** oznacza, że autoryzowani użytkownicy mogą odczytywać zasoby, ale nie mogą usuwać ani aktualizować zasobu. Zastosowanie tej blokady jest podobne do ograniczenia wszystkich autoryzowanych użytkowników do uprawnień udzielonych przez rolę **czytelnika** . 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="how-locks-are-applied"></a>Jak są stosowane blokady
 
-Po zastosowaniu blokady w zakresie nadrzędnej wszystkie zasoby w tym zakresie dziedziczenia tego samego blokady. Nawet zasoby, które zostaną dodane później dziedziczą blokadę z obiektu nadrzędnego. Najbardziej restrykcyjne blokady w dziedziczenia ma pierwszeństwo.
+W przypadku zastosowania blokady w zakresie nadrzędnym wszystkie zasoby w tym zakresie dziedziczą tę samą blokadę. Nawet zasoby dodawane później dziedziczą blokadę z elementu nadrzędnego. Pierwszeństwo ma najbardziej restrykcyjną blokadę dziedziczenia.
 
-W przeciwieństwie do kontroli dostępu opartej na rolach umożliwia zarządcze stosowania ograniczeń dla wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md).
+W przeciwieństwie do kontroli dostępu opartej na rolach, można użyć blokad zarządzania do zastosowania ograniczeń dla wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [Access Control oparte na rolach platformy Azure](../role-based-access-control/role-assignments-portal.md).
 
-Blokad usługi Resource Manager mają zastosowanie tylko do operacji, które odbywa się w płaszczyzny zarządzania, który składa się z operacji wysyłane do `https://management.azure.com`. Blokady nie Ograniczaj, jak zasoby wykonać swoje własne funkcje. Zmiany zasobu są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokadę tylko do odczytu na bazę danych SQL uniemożliwia usunięcie lub zmodyfikowanie bazy danych. Nie uniemożliwia z tworzenia, aktualizowania lub usuwania danych w bazie danych. Transakcje są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
+Blokady Menedżer zasobów dotyczą tylko operacji wykonywanych w płaszczyźnie zarządzania, która składa się z operacji wysyłanych do `https://management.azure.com`. Blokady nie ograniczają sposobu wykonywania własnych funkcji przez zasoby. Zmiany zasobów są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokada tylko do odczytu na SQL Database uniemożliwia usunięcie lub zmodyfikowanie bazy danych. Nie uniemożliwia to tworzenia, aktualizowania ani usuwania danych w bazie danych. Transakcje danych są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
 
-Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które nie wydają się, aby zmodyfikować zasób faktycznie wymagane akcje, które są blokowane przez blokadę. **Tylko do odczytu** blokady może odnosić się do zasobu lub grupę zasobów zawierającą zasobu. Typowe przykłady działań, które są blokowane przez **tylko do odczytu** blokady są:
+Zastosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które nie wydają się do modyfikacji zasobu, rzeczywiście wymagają akcji blokowanych przez blokadę. Blokadę **ReadOnly** można zastosować do zasobu lub do grupy zasobów zawierającej zasób. Niektóre typowe przykłady operacji blokowanych przez blokadę tylko do **odczytu** są następujące:
 
-* A **tylko do odczytu** blokadę konta magazynu uniemożliwia wszystkim użytkownikom wyświetlanie listy kluczy. Na liście, którą zwrócone klucze nie są dostępne dla operacji klucze odbywa się za pomocą żądania POST operacji zapisu.
+* Blokada **tylko do odczytu** na koncie magazynu uniemożliwia wszystkim użytkownikom wyświetlanie kluczy. Operacja Lista kluczy jest obsługiwana za pomocą żądania POST, ponieważ zwracane klucze są dostępne dla operacji zapisu.
 
-* A **tylko do odczytu** blokady zasobu usługi App Service uniemożliwia wyświetlanie plików dla zasobu, ponieważ interakcji wymaga dostępu do zapisu Eksploratora serwera w usłudze Visual Studio.
+* Blokada **tylko do odczytu** w zasobie App Service uniemożliwia programowi Visual Studio Eksplorator serwera wyświetlanie plików dla zasobu, ponieważ ta interakcja wymaga dostępu do zapisu.
 
-* A **tylko do odczytu** blokady na grupę zasobów, która zawiera maszynę wirtualną uniemożliwia wszystkim użytkownikom możliwość uruchamiania lub ponownego uruchamiania maszyny wirtualnej. Te operacje wymagają żądania POST.
+* Blokada **tylko do odczytu** w grupie zasobów zawierającej maszynę wirtualną uniemożliwia wszystkim użytkownikom uruchamianie lub ponowne uruchamianie maszyny wirtualnej. Te operacje wymagają żądania POST.
 
-## <a name="who-can-create-or-delete-locks"></a>Kto może utworzyć lub usunąć blokady
-Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do `Microsoft.Authorization/*` lub `Microsoft.Authorization/locks/*` akcji. Spośród wbudowanych ról tylko **Właściciel** i **Administrator dostępu użytkowników** mają dostęp do tych akcji.
+## <a name="who-can-create-or-delete-locks"></a>Kto może tworzyć lub usuwać blokady
+Aby utworzyć lub usunąć blokady zarządzania, musisz mieć dostęp do akcji `Microsoft.Authorization/*` lub `Microsoft.Authorization/locks/*`. Spośród wbudowanych ról tylko **Właściciel** i **Administrator dostępu użytkowników** mają dostęp do tych akcji.
 
-## <a name="managed-applications-and-locks"></a>Zarządzane aplikacje i blokowania
+## <a name="managed-applications-and-locks"></a>Zarządzane aplikacje i blokady
 
-Użyj usług platformy Azure, takich jak usługi Azure Databricks [zarządzanych aplikacji](../managed-applications/overview.md) wdrażania usługi. W takiej sytuacji usługa tworzy dwie grupy zasobów. Jedna grupa zasobów zawiera omówienie usługi i nie jest zablokowany. Grupa zasobów zawiera infrastruktury usługi i jest zablokowany.
+Niektóre usługi platformy Azure, takie jak Azure Databricks, używają [aplikacji zarządzanych](../managed-applications/overview.md) do implementowania usługi. W takim przypadku usługa tworzy dwie grupy zasobów. Jedna grupa zasobów zawiera przegląd usługi i nie jest zablokowana. Inna grupa zasobów zawiera infrastrukturę usługi i jest zablokowana.
 
-Jeśli spróbujesz usunąć grupę zasobów infrastruktury, otrzymasz komunikat o błędzie informujący, że grupa zasobów jest ograniczona. Jeśli zostanie podjęta próba usunięcia blokady dla grupy zasobów infrastruktury, otrzymasz komunikat o błędzie informujący, że blokada nie można usunąć, ponieważ jej właścicielem jest aplikacja systemowa
+Jeśli spróbujesz usunąć grupę zasobów infrastruktury, zostanie wyświetlony komunikat o błędzie informujący, że grupa zasobów jest zablokowana. Jeśli spróbujesz usunąć blokadę dla grupy zasobów infrastruktury, zostanie wyświetlony komunikat o błędzie informujący, że nie można usunąć blokady, ponieważ należy ona do aplikacji systemowej.
 
-Zamiast tego należy usunąć usługę, która spowoduje również usunięcie grupy zasobów infrastruktury.
+Zamiast tego należy usunąć usługę, która również usuwa grupę zasobów infrastruktury.
 
-Dla zarządzanych aplikacji wybierz wdrożonej usługi.
+W przypadku aplikacji zarządzanych wybierz wdrożoną usługę.
 
-![Wybierz usługę](./media/resource-group-lock-resources/select-service.png)
+![Wybieranie usługi](./media/resource-group-lock-resources/select-service.png)
 
-Powiadomienie usługi zawiera również link do **grupy zarządzanej z wykorzystaniem zasobów**. Tej grupy zasobów przechowuje infrastruktury i jest zablokowany. Go nie można bezpośrednio usunąć.
+Zwróć uwagę, że usługa zawiera link do **zarządzanej grupy zasobów**. Ta grupa zasobów zawiera infrastrukturę i jest zablokowana. Nie można go bezpośrednio usunąć.
 
-![Grupa zarządzana przez show](./media/resource-group-lock-resources/show-managed-group.png)
+![Pokaż grupę zarządzaną](./media/resource-group-lock-resources/show-managed-group.png)
 
-Aby usunąć wszystkie usługi, w tym infrastruktury zablokowanej grupy zasobów, wybierz pozycję **Usuń** dla usługi.
+Aby usunąć wszystkie elementy usługi, w tym zablokowaną grupę zasobów infrastruktury, wybierz pozycję **Usuń** dla usługi.
 
 ![Usuń usługę](./media/resource-group-lock-resources/delete-service.png)
 
@@ -66,19 +63,19 @@ Aby usunąć wszystkie usługi, w tym infrastruktury zablokowanej grupy zasobów
 
 ## <a name="template"></a>Szablon
 
-Za pomocą szablonu usługi Resource Manager wdrażać blokadę, używasz różnych wartości dla nazwy i typu w zależności od zakresu blokady.
+W przypadku użycia szablonu Menedżer zasobów do wdrożenia blokady należy użyć różnych wartości dla nazwy i typu w zależności od zakresu blokady.
 
-Podczas stosowania blokady w celu **zasobów**, użyj następujących formatów:
+W przypadku zastosowania blokady do **zasobu**należy użyć następujących formatów:
 
 * Nazwa — `{resourceName}/Microsoft.Authorization/{lockName}`
 * Typ — `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-Podczas stosowania blokady w celu **grupy zasobów** lub **subskrypcji**, użyj następujących formatów:
+W przypadku stosowania blokady do **grupy zasobów** lub **subskrypcji**należy użyć następujących formatów:
 
 * Nazwa — `{lockName}`
 * Typ — `Microsoft.Authorization/locks`
 
-Poniższy przykład przedstawia szablon, który tworzy plan usługi app service, witryny sieci web i blokady w witrynie sieci web. Typ zasobu blokowania jest typ zasobu zasobu do zablokowania i **/dostawców/blokad**. Nazwa blokady jest tworzona przez dołączenie nazwy zasobu z **/Microsoft.Authorization/** i nazwę blokady.
+Poniższy przykład przedstawia szablon, który tworzy plan usługi App Service, witrynę sieci Web i blokadę w witrynie sieci Web. Typ zasobu blokady to typ zasobu zasobu do zablokowania i **/providers/Locks**. Nazwa blokady jest tworzona przez połączenie nazwy zasobu z **/Microsoft.Authorization/** i nazwę blokady.
 
 ```json
 {
@@ -135,12 +132,12 @@ Poniższy przykład przedstawia szablon, który tworzy plan usługi app service,
 }
 ```
 
-Na przykład ustawienie blokady dla grupy zasobów, zobacz [Utwórz grupę zasobów i blokowanie](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+Aby zapoznać się z przykładem ustawienia blokady grupy zasobów, zobacz [Tworzenie grupy zasobów i blokowanie jej](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
-Blokady możesz wdrożyć zasoby przy użyciu programu Azure PowerShell przy użyciu [New AzResourceLock](/powershell/module/az.resources/new-azresourcelock) polecenia.
+Wdrożone zasoby można blokować za pomocą Azure PowerShell przy użyciu polecenia [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) .
 
-Aby zablokować zasobu, podaj nazwę zasobu, jego typ zasobu i nazwy grupy zasobów.
+Aby zablokować zasób, podaj nazwę zasobu, jego typ zasobu i nazwę grupy zasobów.
 
 ```azurepowershell-interactive
 New-AzResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
@@ -152,13 +149,13 @@ Aby zablokować grupę zasobów, podaj nazwę grupy zasobów.
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-Aby uzyskać informacje na temat blokady, należy użyć [Get AzResourceLock](/powershell/module/az.resources/get-azresourcelock). Aby uzyskać wszystkie blokady w ramach subskrypcji, użyj:
+Aby uzyskać informacje na temat blokady, użyj polecenie [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock). Aby uzyskać wszystkie blokady w ramach subskrypcji, użyj:
 
 ```azurepowershell-interactive
 Get-AzResourceLock
 ```
 
-Aby uzyskać wszystkie blokady dla zasobu, należy użyć:
+Aby uzyskać wszystkie blokady dla zasobu, użyj:
 
 ```azurepowershell-interactive
 Get-AzResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
@@ -170,7 +167,7 @@ Aby uzyskać wszystkie blokady dla grupy zasobów, użyj:
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
-Aby usunąć blokadę, należy użyć:
+Aby usunąć blokadę, użyj:
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
@@ -179,9 +176,9 @@ Remove-AzResourceLock -LockId $lockId
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Zablokuj możesz wdrożyć zasobów przy użyciu wiersza polecenia platformy Azure przy użyciu [tworzenie az lock](/cli/azure/lock#az-lock-create) polecenia.
+Wdrożone zasoby można zablokować za pomocą polecenia [AZ Lock Create](/cli/azure/lock#az-lock-create) .
 
-Aby zablokować zasobu, podaj nazwę zasobu, jego typ zasobu i nazwy grupy zasobów.
+Aby zablokować zasób, podaj nazwę zasobu, jego typ zasobu i nazwę grupy zasobów.
 
 ```azurecli
 az lock create --name LockSite --lock-type CanNotDelete --resource-group exampleresourcegroup --resource-name examplesite --resource-type Microsoft.Web/sites
@@ -193,13 +190,13 @@ Aby zablokować grupę zasobów, podaj nazwę grupy zasobów.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Aby uzyskać informacje na temat blokady, należy użyć [az lock list](/cli/azure/lock#az-lock-list). Aby uzyskać wszystkie blokady w ramach subskrypcji, użyj:
+Aby uzyskać informacje na temat blokady, użyj [AZ Lock list](/cli/azure/lock#az-lock-list). Aby uzyskać wszystkie blokady w ramach subskrypcji, użyj:
 
 ```azurecli
 az lock list
 ```
 
-Aby uzyskać wszystkie blokady dla zasobu, należy użyć:
+Aby uzyskać wszystkie blokady dla zasobu, użyj:
 
 ```azurecli
 az lock list --resource-group exampleresourcegroup --resource-name examplesite --namespace Microsoft.Web --resource-type sites --parent ""
@@ -211,7 +208,7 @@ Aby uzyskać wszystkie blokady dla grupy zasobów, użyj:
 az lock list --resource-group exampleresourcegroup
 ```
 
-Aby usunąć blokadę, należy użyć:
+Aby usunąć blokadę, użyj:
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --resource-type Microsoft.Web/sites --resource-name examplesite --output tsv --query id)
@@ -219,15 +216,15 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>Interfejs API REST
-Możesz zablokować wdrożonych zasobów za pomocą [interfejsu API REST dla blokady zarządzania](https://docs.microsoft.com/rest/api/resources/managementlocks). Interfejs API REST umożliwia tworzenie i usuwanie blokad i pobierania informacji o istniejących blokad.
+Wdrożone zasoby można zablokować za pomocą [interfejsu API REST dla blokad zarządzania](https://docs.microsoft.com/rest/api/resources/managementlocks). Interfejs API REST umożliwia tworzenie i usuwanie blokad oraz pobieranie informacji o istniejących blokadach.
 
 Aby utworzyć blokadę, uruchom polecenie:
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-Zakres może być subskrypcji, grupy zasobów lub zasobu. Nazwa blokady jest, niezależnie od rodzaju, który chcesz wybrać blokady. W przypadku wersji interfejsu api, użyj **2016-09-01**.
+Zakresem może być subskrypcja, Grupa zasobów lub zasób. Nazwa blokady jest taka, którą chcesz wywołać blokadę. W przypadku interfejsu API-Version należy użyć **2016-09-01**.
 
-W żądaniu zawierać obiekt JSON, który określa właściwości blokady.
+W żądaniu Dołącz obiekt JSON, który określa właściwości blokady.
 
     {
       "properties": {
@@ -236,8 +233,8 @@ W żądaniu zawierać obiekt JSON, który określa właściwości blokady.
       }
     } 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat logicznie organizowania zasobów, zobacz [organizowanie zasobów za pomocą tagów](resource-group-using-tags.md)
-* W ramach subskrypcji za pomocą zasad niestandardowych, można zastosować ograniczenia i Konwencji. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Azure Policy?](../governance/policy/overview.md).
+## <a name="next-steps"></a>Następne kroki
+* Aby dowiedzieć się, jak logicznie organizować zasoby, zobacz [Używanie tagów do organizowania zasobów](resource-group-using-tags.md)
+* Ograniczenia i konwencje w ramach subskrypcji można stosować przy użyciu zasad niestandardowych. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Azure Policy?](../governance/policy/overview.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
 

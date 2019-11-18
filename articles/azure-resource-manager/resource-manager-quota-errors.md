@@ -1,24 +1,14 @@
 ---
-title: Błędy przydziału platformy Azure | Microsoft Docs
+title: Błędy przydziału
 description: Opisuje sposób rozwiązywania problemów z przydziałami zasobów podczas wdrażania zasobów przy użyciu Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.author: tomfitz
-ms.openlocfilehash: 201ddf69f9c28b5b3a4197f91768f749152094de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8760b027d815dfc70000db5aea534bf10f60b759
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390311"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149439"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Rozwiązywanie problemów z przydziałami zasobów
 
@@ -54,7 +44,7 @@ Aby uzyskać pełne informacje o limicie przydziału, zobacz [limity subskrypcji
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-W przypadku interfejsu wiersza polecenia platformy Azure do znajdowania przydziałów maszyn wirtualnych Użyj `az vm list-usage`.
+W przypadku interfejsu wiersza polecenia platformy Azure Użyj `az vm list-usage` polecenie, aby znaleźć przydziały maszyny wirtualnej.
 
 ```azurecli
 az vm list-usage --location "South Central US"
@@ -109,7 +99,7 @@ Aby zażądać zwiększenia limitu przydziału, przejdź do portalu i zapoznaj s
 
 2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 
-   ![Wybierz subskrypcję](./media/resource-manager-quota-errors/select-subscription.png)
+   ![Wybieranie subskrypcji](./media/resource-manager-quota-errors/select-subscription.png)
 
 3. Wybierz **użycie i przydziały**
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 74a33edb358f9b9bf9322c652c0696ef87182725
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521581"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151690"
 ---
 # <a name="workflow-automation-preview"></a>Automatyzacja przepływu pracy (wersja zapoznawcza)
 
@@ -74,9 +74,9 @@ W tym artykule opisano funkcję automatyzacji przepływu pracy (wersja zapoznawc
 
 1. Po zdefiniowaniu aplikacji logiki Wróć do okienka definicji automatyzacji przepływu pracy ("Dodaj automatyzację przepływu pracy"). Kliknij przycisk **Odśwież** , aby upewnić się, że nowa aplikacja logiki jest dostępna do wybrania.
 
-    ![Odśwież](media/workflow-automation/refresh-the-list-of-logic-apps.png)
+    ![Odświeżanie](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Wybierz aplikację logiki i Zapisz automatyzację.
+1. Wybierz aplikację logiki i Zapisz automatyzację. Należy pamiętać, że lista rozwijana aplikacji logiki zawiera tylko Logic Apps z obsługą łączników Security Center wymienionych powyżej.
 
 
 ## <a name="manually-trigger-a-logic-app"></a>Ręczne wyzwalanie aplikacji logiki

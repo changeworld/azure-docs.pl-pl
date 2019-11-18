@@ -1,18 +1,14 @@
 ---
 title: Oferty usług zarządzanych w witrynie Azure Marketplace
 description: Dzięki usługom zarządzanym dostawcy usług mogą sprzedawać oferty zarządzania zasobami klientom w portalu Azure Marketplace.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/19/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0f1ba749a5477f0c006e6666b841e82f4eeb193f
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155272"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131875"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Oferty usług zarządzanych w witrynie Azure Marketplace
 
@@ -30,7 +26,7 @@ Każda oferta usług zarządzanych obejmuje jeden lub więcej planów. Te plany 
 
 Jeśli chcesz ograniczyć ofertę do określonych klientów, możesz opublikować plan prywatny. Po wykonaniu tej czynności plan można kupić tylko dla określonych identyfikatorów subskrypcji, które podano. Aby uzyskać więcej informacji, zobacz [prywatne oferty](https://docs.microsoft.com/azure/marketplace/private-offers).
 
-Plany publiczne umożliwiają podwyższenie poziomu usług do nowych klientów. Są one zazwyczaj bardziej odpowiednie, gdy wymagany jest tylko ograniczony dostęp do dzierżawy klienta. Po ustanowieniu relacji z klientem, jeśli zdecydują się udzielić dodatkowej dostępu do organizacji, możesz to zrobić przez opublikowanie nowego planu prywatnego tylko dla tego klienta lub przez dołączenie [ich do dodatkowego dostępu przy użyciu zasobu platformy Azure Szablony Menedżera](../how-to/onboard-customer.md).
+Plany publiczne umożliwiają podwyższenie poziomu usług do nowych klientów. Są one zazwyczaj bardziej odpowiednie, gdy wymagany jest tylko ograniczony dostęp do dzierżawy klienta. Po ustanowieniu relacji z klientem, jeśli zdecydują się udzielić dodatkowej dostępu do organizacji, możesz to zrobić przez opublikowanie nowego planu prywatnego tylko dla tego klienta lub przez dołączenie [ich do dodatkowego dostępu przy użyciu szablonów Azure Resource Manager](../how-to/onboard-customer.md).
 
 Należy pamiętać, że po opublikowaniu planu jako publicznego nie można zmienić go na prywatny. Ponadto nie można ograniczyć dostępu do planu publicznego do określonych klientów, a nawet do określonej liczby klientów, ale możesz zrezygnować z całkowitego sprzedaży planu w przypadku wybrania tej opcji.
 

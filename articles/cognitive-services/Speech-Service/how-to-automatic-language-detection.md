@@ -1,5 +1,5 @@
 ---
-title: 'Instrukcje: korzystanie z funkcji automatycznego wykrywania języka dla zamiany mowy na tekst-mowę'
+title: Jak używać automatycznego wykrywania języka dla zamiany mowy na tekst
 titleSuffix: Azure Cognitive Services
 description: Zestaw Speech SDK obsługuje automatyczne wykrywanie języka dla zamiany mowy na tekst. W przypadku korzystania z tej funkcji, podany dźwięk jest porównywany z podaną listą języków i jest określana najprawdopodobniej. Zwracana wartość może następnie zostać użyta do wybrania modelu języka używanego do zamiany mowy na tekst.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
-ms.openlocfilehash: e156704d3ad54c3437f921fae536a497e1d94868
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506968"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110181"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatyczne wykrywanie języka dla zamiany mowy na tekst
 
@@ -30,7 +30,7 @@ W tym artykule dowiesz się, jak utworzyć obiekt `SpeechRecognizer` i pobrać w
 
 Funkcja automatycznego wykrywania języka ma obecnie limit dwóch języków na wykrycie po stronie usług. To ograniczenie należy wziąć pod uwagę podczas konstruowania obiektu `AudoDetectSourceLanguageConfig`. W poniższych przykładach utworzysz `AutoDetectSourceLanguageConfig`, a następnie użyjesz go do skonstruowania `SpeechRecognizer`.
 
->[!TIP]
+> [!TIP]
 > Możesz również określić model niestandardowy, który ma być używany podczas wykonywania zamiany mowy na tekst. Aby uzyskać więcej informacji, zobacz [Korzystanie z modelu niestandardowego na potrzeby automatycznego wykrywania języka](#use-a-custom-model-for-automatic-language-detection).
 
 Poniższe fragmenty kodu ilustrują sposób korzystania z automatycznego wykrywania języka w aplikacjach:
@@ -80,4 +80,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSource
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dokumentacja referencyjna zestawu Speech SDK](speech-sdk.md)
+- [Dokumentacja referencyjna zestawu Speech SDK](speech-sdk.md)

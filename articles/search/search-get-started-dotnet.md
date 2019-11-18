@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie indeksu wyszukiwania przy C# użyciu zestawu .NET SDK'
+title: 'Szybki Start: Tworzenie indeksu wyszukiwania przy C# użyciu platformy .NET'
 titleSuffix: Azure Cognitive Search
 description: Wyjaśnia, jak utworzyć indeks, załadować dane i uruchamiać zapytania przy użyciu C# zestawu SDK platformy Azure wyszukiwanie poznawcze .NET.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792820"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112025"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure C# przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -87,7 +87,7 @@ W przypadku tego projektu należy użyć wersji 9 pakietu NuGet `Microsoft.Azure
 
 1. Dodaj plik do katalogu wyjściowego. Kliknij prawym przyciskiem myszy plik appSettings. JSON i wybierz polecenie **Właściwości**. W obszarze **Kopiuj do katalogu wyjściowego**wybierz opcję **Kopiuj, jeśli nowszy**.
 
-1. Skopiuj poniższy kod JSON do nowego pliku JSON. Zastąp wartość w polu Nazwa usługi wyszukiwania (nazwa usługi-SEARCH-SERVICE-NAME) i klucz interfejsu API administratora (administrator-administrator-klucz) z prawidłowymi wartościami. Jeśli punkt końcowy usługi ma `https://mydemo.search.windows.net`, nazwą usługi będzie "" demonstracja ".
+1. Skopiuj poniższy kod JSON do nowego pliku JSON. Zastąp wartość w polu Nazwa usługi wyszukiwania (nazwa usługi-SEARCH-SERVICE-NAME) i klucz interfejsu API administratora (administrator-administrator-klucz) z prawidłowymi wartościami. Jeśli punkt końcowy usługi jest `https://mydemo.search.windows.net`, nazwą usługi będzie "" demonstracja ".
 
 ```json
 {
@@ -192,7 +192,7 @@ Indeks hoteli zawiera proste i złożone pola, w których proste pole to "Hoteln
     }
     ```
 
-    Atrybuty w polu określają, w jaki sposób jest używany w aplikacji. Na przykład atrybut `IsSearchable` musi być przypisany do każdego pola, które należy uwzględnić w wyszukiwaniu pełnotekstowym. 
+    Atrybuty w polu określają, w jaki sposób jest używany w aplikacji. Na przykład, atrybut `IsSearchable` musi być przypisany do każdego pola, które powinny być uwzględnione w wyszukiwaniu pełnotekstowym. 
     
     > [!NOTE]
     > W zestawie .NET SDK pola muszą być jawnie przypisane do [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)i [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). To zachowanie jest w przeciwieństwie do interfejsu API REST, który niejawnie włącza przypisanie na podstawie typu danych (na przykład proste pola ciągów są automatycznie przeszukiwane).
@@ -533,7 +533,7 @@ Klasa [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.
     }
     ```
 
-    Istnieją dwa [sposoby dopasowywania terminów do zapytania](search-query-overview.md#types-of-queries): wyszukiwanie pełnotekstowe i filtry. Zapytanie wyszukiwania pełnotekstowego wyszukuje co najmniej jeden termin w `IsSearchable` pól w indeksie. Filtr jest wyrażeniem logicznym, które jest oceniane względem pól `IsFilterable` w indeksie. Możesz użyć wyszukiwania pełnotekstowego i filtrów razem lub oddzielnie.
+    Istnieją dwa [sposoby dopasowywania terminów do zapytania](search-query-overview.md#types-of-queries): wyszukiwanie pełnotekstowe i filtry. Zapytanie wyszukiwania pełnotekstowego wyszukuje co najmniej jeden termin w `IsSearchable` pól w indeksie. Filtr jest wyrażeniem logicznym, które jest oceniane dla `IsFilterable` pól w indeksie. Możesz użyć wyszukiwania pełnotekstowego i filtrów razem lub oddzielnie.
 
     Zarówno operacja wyszukiwania, jak i filtrowania są wykonywane przy użyciu metody `Documents.Search`. Zapytanie wyszukiwania może zostać przekazane za pośrednictwem parametru `searchText`, natomiast wyrażenie filtrowania może zostać przekazane za pośrednictwem właściwości `Filter` klasy `SearchParameters`. Aby filtrować bez wyszukiwania, po prostu przekaż wartość `"*"` jako parametr `searchText`. Aby wyszukiwać bez filtrowania, pozostaw nieustawioną właściwość `Filter` lub nie przekazuj jej w wystąpieniu obiektu `SearchParameters`.
 

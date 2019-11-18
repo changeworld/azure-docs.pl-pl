@@ -1,19 +1,16 @@
 ---
-title: Używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager | Microsoft Docs
+title: Korzystanie z usługi Azure Menedżer wdrażania z szablonami
 description: Użyj szablonów usługi Resource Manager z usługą Azure Deployment Manager, aby wdrażać zasoby platformy Azure.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285673"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149894"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: korzystanie z kontroli kondycji w usłudze Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
@@ -65,7 +62,7 @@ W środowisku produkcyjnym zwykle używany jest jeden lub więcej dostawców mon
 
 Poniższe dwa pliki są używane do wdrażania funkcji platformy Azure. Nie musisz pobierać tych plików, aby przejść przez samouczek.
 
-* Szablon Menedżer zasobów zlokalizowany w [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). Ten szablon zostanie wdrożony w celu utworzenia funkcji platformy Azure.
+* Szablon Menedżer zasobów znajdujący się w [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). Ten szablon zostanie wdrożony w celu utworzenia funkcji platformy Azure.
 * Plik zip kodu źródłowego funkcji platformy Azure, [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Ten plik zip jest wywoływany przez szablon Menedżer zasobów.
 
 Aby wdrożyć funkcję platformy Azure, wybierz **ją** , aby otworzyć usługę Azure Cloud Shell, a następnie wklej następujący skrypt do okna powłoki.  Aby wkleić kod, kliknij prawym przyciskiem myszy okno powłoki, a następnie wybierz polecenie **Wklej**.
@@ -268,7 +265,7 @@ New-AzResourceGroupDeployment `
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment` to wywołanie asynchroniczne. Komunikat o powodzeniu oznacza, że wdrożenie zostało pomyślnie rozpoczęte. Aby zweryfikować wdrożenie, użyj `Get-AZDeploymentManagerRollout`.  Zobacz następną procedurę.
+> `New-AzResourceGroupDeployment` jest wywołaniem asynchronicznym. Komunikat o powodzeniu oznacza, że wdrożenie zostało pomyślnie rozpoczęte. Aby zweryfikować wdrożenie, użyj `Get-AZDeploymentManagerRollout`.  Zobacz następną procedurę.
 
 Aby sprawdzić postęp wdrażania przy użyciu następującego skryptu programu PowerShell:
 

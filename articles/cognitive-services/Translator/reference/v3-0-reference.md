@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888091"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123036"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tłumaczenia tekstu w usłudze Translator v 3.0
 
@@ -56,9 +56,9 @@ Istnieją trzy nagłówki, za pomocą których można uwierzytelniać swoją sub
 
 |Nagłówki|Opis|
 |:----|:----|
-|OCP-APIM-Subscription-Key|*Jeśli przekazujesz klucz tajny, Użyj usługi z subskrypcją Cognitive Services*.<br/>Wartość jest kluczem tajnym platformy Azure dla Twojej subskrypcji do interfejs API tłumaczenia tekstu w usłudze Translator.|
+|OCP-Apim-Subscription-Key|*Jeśli przekazujesz klucz tajny, Użyj usługi z subskrypcją Cognitive Services*.<br/>Wartość jest kluczem tajnym platformy Azure dla Twojej subskrypcji do interfejs API tłumaczenia tekstu w usłudze Translator.|
 |Autoryzacja|*Użyj usługi z subskrypcją Cognitive Services, jeśli przekazujesz token uwierzytelniania.*<br/>Wartość jest tokenem okaziciela: `Bearer <token>`.|
-|OCP-APIM-Subscription-region|*Użyj usługi with Cognitive Services subskrypcję usługi, jeśli przekazujesz klucz tajny usługi wiele usług.*<br/>Wartość jest regionem subskrypcji wielousługowej. Ta wartość jest opcjonalna, gdy nie jest używana subskrypcja Wielousługowa.|
+|Ocp-Apim-Subscription-Region|*Użyj usługi with Cognitive Services subskrypcję usługi, jeśli przekazujesz klucz tajny usługi wiele usług.*<br/>Wartość jest regionem subskrypcji wielousługowej. Ta wartość jest opcjonalna, gdy nie jest używana subskrypcja Wielousługowa.|
 
 ###  <a name="secret-key"></a>Klucz tajny
 Pierwsza opcja polega na uwierzytelnianiu przy użyciu nagłówka `Ocp-Apim-Subscription-Key`. Dodaj nagłówek `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` do żądania.
@@ -165,3 +165,21 @@ Kod błędu to 6-cyfrowy numer łączący 3-cyfrowy kod stanu HTTP, a następnie
 | 500000| Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś ten błąd w polu Data/godzina błędu, identyfikator żądania z nagłówka odpowiedzi X-IdentyfikatorŻądania i identyfikator klienta z nagłówka żądania X-ClientTraceId.|
 | 503000| Usługa jest tymczasowo niedostępna. Spróbuj ponownie. Jeśli błąd będzie się powtarzać, zgłoś ten błąd w polu Data/godzina błędu, identyfikator żądania z nagłówka odpowiedzi X-IdentyfikatorŻądania i identyfikator klienta z nagłówka żądania X-ClientTraceId.|
 
+## <a name="metrics"></a>Metryki 
+Metryki umożliwiają wyświetlanie informacji dotyczących użycia i dostępności usługi Translator w Azure Portal w obszarze metryki, jak pokazano na poniższym zrzucie ekranu. Aby uzyskać więcej informacji, zobacz [metryki danych i platformy](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+
+![Metryki translatora](../media/translatormetrics.png)
+
+Ta tabela zawiera listę dostępnych metryk z opisem sposobu ich używania do monitorowania wywołań interfejsu API translacji.
+
+| Metryki | Opis |
+|:----|:-----|
+| TotalCalls| Łączna liczba wywołań interfejsu API.|
+| TotalTokenCalls| Łączna liczba wywołań interfejsu API za pośrednictwem usługi tokenu przy użyciu tokenu uwierzytelniania.|
+| SuccessfulCalls| Liczba pomyślnych wywołań.|
+| TotalErrors| Liczba wywołań z odpowiedzią na błędy.|
+| BlockedCalls| Liczba wywołań, które przekroczyły limit szybkości lub limitu przydziału.|
+| Błędy servererrors| Liczba wywołań z błędem wewnętrznym serwera (5XX).|
+| ClientErrors| Liczba wywołań z błędem po stronie klienta (4XX).|
+| Opóźnienie| Czas trwania żądania w milisekundach.|
+| CharactersTranslated| Całkowita liczba znaków w żądaniu tekstu przychodzącego.|

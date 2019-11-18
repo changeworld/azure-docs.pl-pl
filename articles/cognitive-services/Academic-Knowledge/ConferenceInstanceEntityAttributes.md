@@ -3,47 +3,57 @@ title: Atrybuty jednostki wystąpienia konferencji — Academic Knowledge API
 titlesuffix: Azure Cognitive Services
 description: Informacje o atrybutach, których można używać z jednostką wystąpienia konferencji w Academic Knowledge API.
 services: cognitive-services
-author: alch-msft
-manager: nitinme
+author: darrine
+manager: kuansanw
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
-ms.date: 03/23/2017
-ms.author: alch
+ms.date: 11/14/2019
+ms.author: darrine
 ROBOTS: NOINDEX
-ms.openlocfilehash: 37a353fbb86ca199b2316dcfba5904f4b46b0276
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c6761206a58724dae96d9dc6f6234658892d4d18
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705058"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146564"
 ---
 # <a name="conference-instance-entity"></a>Jednostka wystąpienia konferencji
 
-<sub>* Następujące atrybuty są specyficzne dla jednostki wystąpienia konferencji. (Ty = ' 4 ')</sub>
+> [!NOTE]
+> Następujące atrybuty są specyficzne dla jednostki wystąpienia konferencji. (Ty = ' 4 ')
 
-Name (Nazwa)    |Opis                            |Type       | Operacje
-------- | ------------------------------------- | --------- | ----------------------------
-Id      |Identyfikator jednostki                              |Int64      |Równa się
-CIN     |Znormalizowana nazwa wystąpienia konferencji ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |Ciąg     |Równa się
-DCN     |Nazwa wyświetlana wystąpienia konferencji ({ConferenceSeriesName}: {ConferenceInstanceYear})       |Ciąg     |brak
-JĘZYKA     |Lokalizacja wystąpienia konferencji    |String     |Ubiegł<br/>StartsWith
-CISD    |Data rozpoczęcia wystąpienia konferencji  |Date       |Ubiegł<br/>IsBetween
-CIED    |Data końcowa wystąpienia konferencji    |Date       |Ubiegł<br/>IsBetween
-CIARD   |Data ukończenia rejestracji abstrakcyjnej wystąpienia konferencji  |Date       |Ubiegł<br/>IsBetween
-CISDD   |Data ukończenia zgłoszenia wystąpienia konferencji     |Date       |Ubiegł<br/>IsBetween
-CIFVD   |Końcowa wersja ukończenia wystąpienia konferencji  |Date       |Ubiegł<br/>IsBetween
-CINDD   |Data powiadomienia wystąpienia konferencji   |Date       |Ubiegł<br/>IsBetween
-PŁYT. &    |Tytuł zdarzenia wystąpienia konferencji   |Date       |Ubiegł<br/>IsBetween
-PŁYT. WYKRES    |Data zdarzenia wystąpienia konferencji    |Date       |Ubiegł<br/>IsBetween
-PCS.CN  |Nazwa serii konferencji wystąpienia |String     |Równa się
-PCs. Identyfikator |Identyfikator serii konferencji wystąpienia |Int64    |Równa się
-CC      |Łączna liczba cytatów wystąpienia konferencji           |Int32      |brak  
-ECC     |Łączna liczba cytatów dla wystąpienia konferencji |Int32      |brak
+Nazwa | Opis | Typ | Operacje
+--- | --- | --- | ---
+CC      |Łączna liczba cytatów wystąpienia konferencji           |Int32      |Brak  
+Płyt. Wykres    |Data zdarzenia wystąpienia konferencji    |Date       |Equals, isBetween
+Płyt. &    |Tytuł zdarzenia wystąpienia konferencji   |Date       |Equals, isBetween
+CIARD   |Data ukończenia rejestracji abstrakcyjnej wystąpienia konferencji  |Date       |Equals, isBetween
+CIED    |Data końcowa wystąpienia konferencji    |Date       |Equals, isBetween
+CIFVD   |Końcowa wersja ukończenia wystąpienia konferencji  |Date       |Equals, isBetween
+JĘZYKA     |Lokalizacja wystąpienia konferencji    |Ciąg     |Równa się, StartsWith
+CIN     |Nazwa znormalizowana wystąpienia konferencji |Ciąg        |Równa się
+CINDD   |Data powiadomienia wystąpienia konferencji   |Date       |Equals, isBetween
+CISD    |Data rozpoczęcia wystąpienia konferencji  |Date       |Equals, isBetween
+CISDD   |Data ukończenia zgłoszenia wystąpienia konferencji     |Date       |Equals, isBetween
+DCN     |Nazwa wyświetlana wystąpienia konferencji  |Ciąg      |Brak
+E | Rozszerzone metadane</br></br>**Ważne**: ten atrybut jest przestarzały i jest obsługiwany tylko w przypadku starszych aplikacji. Żądanie tego atrybutu pojedynczo (tj. Attributes = ID, TI, E) spowoduje zwrócenie wszystkich atrybutów rozszerzonych metadanych w *serializowanym ciągu JSON*</br></br>Wszystkie atrybuty zawarte w rozszerzonych metadanych są teraz dostępne jako atrybut najwyższego poziomu i mogą być żądane jako takie (tj. atrybuty = ID, TI, DOI, IA) | [Wydłuż](#extended) | Brak
+ECC     |Łączna liczba cytatów dla wystąpienia konferencji |Int32      |Brak
+FN | Pełna nazwa wystąpienia konferencji | Ciąg | Brak
+Identyfikator      |Identyfikator jednostki                              |Int64      |Równa się
+PC | Łączna liczba publikacji wystąpienia konferencji | Int32 | Brak
+PCS.CN  |Nazwa nadrzędnej serii konferencji wystąpienia |Ciąg  |Równa się
+PCs. Identyfikator |Identyfikator nadrzędnej serii konferencji wystąpienia |Int64     |Równa się
 
+## <a name="extended"></a>Wydłuż
 
-## <a name="extended-metadata-attributes"></a>Rozszerzone atrybuty metadanych ##
+> [!IMPORTANT]
+> Ten atrybut jest przestarzały i jest obsługiwany tylko w przypadku starszych aplikacji. Żądanie tego atrybutu pojedynczo (tj. Attributes = ID, TI, E) spowoduje zwrócenie wszystkich atrybutów rozszerzonych metadanych w *serializowanym ciągu JSON*</br></br>Wszystkie atrybuty zawarte w rozszerzonych metadanych są teraz dostępne jako atrybut najwyższego poziomu i mogą być żądane jako takie (tj. atrybuty = ID, TI, DOI, IA)
 
-Name (Nazwa)    | Opis               
---------|---------------------------    
-FN      | Pełna nazwa wystąpienia konferencji
+> [!IMPORTANT]
+> Obsługa żądania pojedynczych atrybutów rozszerzonych przy użyciu "E" zakres, tj. "E. DN", jest przestarzały. Mimo że jest to technicznie obsługiwane, żądanie pojedynczych atrybutów rozszerzonych przy użyciu "E". zakres spowoduje zwrócenie wartości atrybutu w dwóch miejscach w odpowiedzi JSON jako część obiektu "E" i jako atrybut najwyższego poziomu.
+
+Nazwa | Opis | Typ | Operacje
+--- | --- | --- | ---
+FN | Pełna nazwa wystąpienia konferencji | Ciąg | Brak
+PC | Łączna liczba publikacji wystąpienia konferencji | Int32 | Brak

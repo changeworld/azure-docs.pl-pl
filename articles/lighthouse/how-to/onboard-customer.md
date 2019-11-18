@@ -1,22 +1,18 @@
 ---
 title: Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure, umożliwiając dostęp do zasobów i zarządzanie nimi za pomocą własnej dzierżawy.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
 ms.date: 11/7/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 1d5e9c44fe7669a89c52d2ac14299c2687f11dc5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 61b639a65d42d64a828db896b7c815c3d8f84734
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827251"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131258"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
-W tym artykule wyjaśniono, jak usługodawca może dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure, umożliwiając dostęp do swoich delegowanych zasobów (subskrypcji i/lub grup zasobów) oraz zarządzanie nimi za pomocą własnych Azure Active Directory ( Dzierżawa usługi Azure AD). Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
+W tym artykule wyjaśniono, jak usługodawca może dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure, umożliwiając dostęp do swoich delegowanych zasobów (subskrypcji i/lub grup zasobów) oraz zarządzanie nimi za pomocą własnej dzierżawy usługi Azure Active Directory (Azure AD). Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
 
 Ten proces można powtórzyć, Jeśli zarządzasz zasobami dla wielu klientów. Następnie, gdy autoryzowany użytkownik loguje się do dzierżawy, ten użytkownik może być autoryzowany w zakresach dzierżawy klienta w celu wykonywania operacji zarządzania bez konieczności logowania się do każdej dzierżawy klienta.
 
@@ -110,7 +106,7 @@ az role definition list --name "<roleName>" | grep name
 > [!TIP]
 > Zalecamy przypisanie [roli usuwania przypisania rejestracji usług zarządzanych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) podczas dołączania klienta, dzięki czemu użytkownicy w dzierżawie mogą później w razie potrzeby [usunąć dostęp do delegowania](#remove-access-to-a-delegation) . Jeśli ta rola nie jest przypisana, delegowane zasoby mogą zostać usunięte tylko przez użytkownika w dzierżawie klienta.
 
-## <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu Azure Resource Manager
+## <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
 
 Aby dołączyć klienta, musisz utworzyć szablon [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) dla oferty z następującymi informacjami. Wartości **mspOfferName** i **mspOfferDescription** są widoczne dla klienta podczas wyświetlania szczegółów oferty na [stronie dostawcy usług](view-manage-service-providers.md) Azure Portal.
 

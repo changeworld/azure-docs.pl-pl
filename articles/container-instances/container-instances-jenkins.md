@@ -1,6 +1,6 @@
 ---
 title: Użyj Azure Container Instances jako agenta kompilacji Jenkins
-description: Dowiedz się, jak używać Azure Container Instances jako agenta kompilacji Jenkins.
+description: Dowiedz się, jak skonfigurować serwer Jenkins do uruchamiania zadań kompilacji na żądanie w Azure Container Instances
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: ed000779940d9af7b1384873bf9fddd1cde79c71
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7e93457a182598a2e8d739f4d626b49ff57b30fb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326012"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150221"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj Azure Container Instances jako agenta kompilacji Jenkins
 
@@ -27,24 +27,24 @@ Aby uzyskać więcej informacji na temat Azure Container Instances, zobacz [Info
 
 2. Wprowadź następujące informacje w formularzu **podstawy** , a następnie wybierz przycisk **OK**.
 
-   - **Nazwa**: Wprowadź nazwę dla wdrożenia Jenkins.
+   - **Nazwa**: Wprowadź nazwę wdrożenia Jenkins.
    - **Nazwa użytkownika**: Wprowadź nazwę użytkownika administratora maszyny wirtualnej Jenkins.
-   - **Typ uwierzytelniania**: Zalecamy użycie klucza publicznego SSH na potrzeby uwierzytelniania. W przypadku wybrania tej opcji Wklej w kluczu publicznym SSH, który ma być używany do logowania się do maszyny wirtualnej Jenkins.
-   - **Subskrypcja**: Wybierz subskrypcję platformy Azure.
-   - **Grupa zasobów**: Utwórz grupę zasobów lub wybierz istniejącą grupę.
-   - **Lokalizacja**: Wybierz lokalizację dla serwera Jenkins.
+   - **Typ uwierzytelniania**: zalecamy użycie klucza publicznego SSH na potrzeby uwierzytelniania. W przypadku wybrania tej opcji Wklej w kluczu publicznym SSH, który ma być używany do logowania się do maszyny wirtualnej Jenkins.
+   - **Subskrypcja**: wybierz subskrypcję platformy Azure.
+   - **Grupa zasobów**: utwórz grupę zasobów lub wybierz istniejącą.
+   - **Lokalizacja**: Wybierz lokalizację serwera Jenkins.
 
    ![Podstawowe ustawienia wdrożenia portalu Jenkins](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. W formularzu **Ustawienia dodatkowe** wykonaj następujące czynności:
 
-   - **Rozmiar**: Wybierz odpowiednią opcję zmiany rozmiarów dla maszyny wirtualnej Jenkins.
+   - **Rozmiar**: wybierz odpowiednią opcję zmiany rozmiaru maszyny wirtualnej Jenkins.
    - **Typ dysku maszyny wirtualnej**: Określ **dyski** twarde (dysk twardy) lub **SSD** (dysk SSD) dla serwera Jenkins.
-   - **Sieć wirtualna**: Wybierz strzałkę, jeśli chcesz zmodyfikować ustawienia domyślne.
-   - **Podsieci**: Wybierz strzałkę, sprawdź informacje, a następnie wybierz **przycisk OK**.
-   - **Publiczny adres IP**: Wybierz strzałkę, aby określić publiczny adres IP jako nazwę niestandardową, skonfiguruj jednostkę SKU i ustaw metodę przypisywania.
+   - **Sieć wirtualna**: wybierz strzałkę, jeśli chcesz zmodyfikować ustawienia domyślne.
+   - **Podsieci**: wybierz strzałkę, sprawdź informacje i wybierz **przycisk OK**.
+   - **Publiczny adres IP**: wybierz strzałkę, aby nadać publicznemu adresowi IP nazwę niestandardową, skonfigurować jednostkę SKU i ustawić metodę przypisywania.
    - **Etykieta nazwy domeny**: Określ wartość, aby utworzyć w pełni kwalifikowany adres URL maszyny wirtualnej Jenkins.
-   - **Typ wydania Jenkins**: Wybierz żądany typ wydania z opcji: **LTS**, **kompilacja tygodniowa**lub **platforma Azure**została zweryfikowana.
+   - **Typ wydania Jenkins**: wybierz żądany typ wydania z opcji: **LTS**, **kompilacja tygodniowa**lub **weryfikacja platformy Azure**.
 
    ![Dodatkowe ustawienia dla wdrożenia portalu Jenkins](./media/container-instances-jenkins/jenkins-portal-02.png)
 
@@ -66,7 +66,7 @@ Aby uzyskać więcej informacji na temat Azure Container Instances, zobacz [Info
 
    ![Instrukcje logowania Jenkins z użyciem ciągu SSH](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-3. Otwórz sesję terminalu w systemie deweloperskim i wklej ciąg SSH z ostatniego kroku. Zaktualizuj `username` nazwę użytkownika określoną podczas wdrażania serwera Jenkins.
+3. Otwórz sesję terminalu w systemie deweloperskim i wklej ciąg SSH z ostatniego kroku. Zaktualizuj `username` do nazwy użytkownika określonej podczas wdrażania serwera Jenkins.
 
 4. Po nawiązaniu połączenia Uruchom następujące polecenie, aby pobrać początkowe hasło administratora:
 
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat Azure Container Instances, zobacz [Info
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. Pozostaw uruchomioną sesję SSH i tunelu, a następnie `http://localhost:8080` przejdź do okna przeglądarki. Wklej początkowe hasło administratora do pola, a następnie wybierz pozycję **Kontynuuj**.
+5. Pozostaw sesję SSH i tunel z systemem, a następnie przejdź do `http://localhost:8080` w przeglądarce. Wklej początkowe hasło administratora do pola, a następnie wybierz pozycję **Kontynuuj**.
 
    ![Ekran "Odblokuj Jenkins" z polem hasła administratora](./media/container-instances-jenkins/jenkins-portal-05.png)
 
@@ -102,7 +102,7 @@ Teraz zadanie kompilacji Jenkins jest tworzone, aby przedstawić kompilacje Jenk
 
    ![Karta "ogólne" z informacjami o konfiguracji](./media/container-instances-jenkins/jenkins-job-01.png)
 
-3. W obszarze **kompilacja**wybierz pozycję **Dodaj krok kompilacji** , a następnie wybierz pozycję **Wykonaj powłokę**. Wprowadź `echo "aci-demo"` wartość jako polecenie.
+3. W obszarze **kompilacja**wybierz pozycję **Dodaj krok kompilacji** , a następnie wybierz pozycję **Wykonaj powłokę**. Wprowadź `echo "aci-demo"` jako polecenie.
 
    ![Karta "Kompilacja" z wybranymi krokami dla kroku kompilacji](./media/container-instances-jenkins/jenkins-job-02.png)
 
@@ -132,7 +132,7 @@ Aby przetestować zadanie kompilacji i obserwować Azure Container Instances jak
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat Jenkins na platformie Azure, zobacz [Azure i Jenkins][jenkins-azure].
 

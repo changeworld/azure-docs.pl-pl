@@ -1,5 +1,5 @@
 ---
-title: 'Instrukcje: Określanie języka źródłowego dla zamiany mowy na tekst — usługa mowy'
+title: Jak określić język źródłowy dla zamiany mowy na tekst
 titleSuffix: Azure Cognitive Services
 description: Zestaw Speech SDK umożliwia określenie języka źródłowego podczas konwertowania mowy na tekst. W tym artykule opisano sposób korzystania z metod FromConfig i SourceLanguageConfig w celu umożliwienia usłudze mowy znajomości języka źródłowego i dostarczania niestandardowego obiektu docelowego modelu.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 3c2503d2f341b4cdf90f7f7690fed897412a9614
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 94b8fb026b61b52e8096cf54e1db30a6c260c04b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506902"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109953"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Określ język źródłowy dla zamiany mowy na tekst
 
@@ -174,7 +174,7 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * Aby uzyskać listę obsługiwanych języków i ustawień regionalnych dla zamiany mowy na tekst, zobacz temat [Obsługa języków](language-support.md).
 
