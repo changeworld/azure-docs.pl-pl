@@ -1,17 +1,14 @@
 ---
-title: Funkcje szablonu Menedżer zasobów | Microsoft Docs
+title: Funkcje szablonów
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pobierania wartości, pracy z ciągami i wartościami liczbowymi oraz pobierania informacji o wdrożeniu.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 04358f21af79838f894dc50d5d9c165da67a332c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a9501517672d3ea80a29979ce6b1439c4cc0010e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894158"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150663"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkcje szablonu Azure Resource Manager
 
@@ -40,23 +37,23 @@ Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](
 ## <a name="array-and-object-functions"></a>Funkcje tablicy i obiektów
 Menedżer zasobów udostępnia kilka funkcji do pracy z tablicami i obiektami.
 
-* [macierzy](resource-group-template-functions-array.md#array)
+* [array](resource-group-template-functions-array.md#array)
 * [łączonych](resource-group-template-functions-array.md#coalesce)
-* [Concat](resource-group-template-functions-array.md#concat)
-* [wyświetlana](resource-group-template-functions-array.md#contains)
-* [przearray](resource-group-template-functions-array.md#createarray)
-* [ciągiem](resource-group-template-functions-array.md#empty)
-* [pierwszego](resource-group-template-functions-array.md#first)
-* [część wspólną](resource-group-template-functions-array.md#intersection)
+* [concat](resource-group-template-functions-array.md#concat)
+* [contains](resource-group-template-functions-array.md#contains)
+* [createArray](resource-group-template-functions-array.md#createarray)
+* [empty](resource-group-template-functions-array.md#empty)
+* [first](resource-group-template-functions-array.md#first)
+* [intersection](resource-group-template-functions-array.md#intersection)
 * [kodu](resource-group-template-functions-array.md#json)
-* [ostatniego](resource-group-template-functions-array.md#last)
+* [last](resource-group-template-functions-array.md#last)
 * [Długość](resource-group-template-functions-array.md#length)
-* [długości](resource-group-template-functions-array.md#min)
-* [Maksymalny](resource-group-template-functions-array.md#max)
+* [min](resource-group-template-functions-array.md#min)
+* [max](resource-group-template-functions-array.md#max)
 * [zakresu](resource-group-template-functions-array.md#range)
-* [Skocz](resource-group-template-functions-array.md#skip)
-* [czasochłonn](resource-group-template-functions-array.md#take)
-* [Unii](resource-group-template-functions-array.md#union)
+* [skip](resource-group-template-functions-array.md#skip)
+* [take](resource-group-template-functions-array.md#take)
+* [union](resource-group-template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -82,7 +79,7 @@ Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości z 
 
 * [mieszczeniu](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
-* [modyfikacj](resource-group-template-functions-deployment.md#variables)
+* [variables](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -95,9 +92,9 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z warunkami logicz
 
 * [lub](resource-group-template-functions-logical.md#and)
 * [logiczna](resource-group-template-functions-logical.md#bool)
-* [przypadku](resource-group-template-functions-logical.md#if)
-* [niemożliwe](resource-group-template-functions-logical.md#not)
-* [oraz](resource-group-template-functions-logical.md#or)
+* [if](resource-group-template-functions-logical.md#if)
+* [not](resource-group-template-functions-logical.md#not)
+* [lub](resource-group-template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -114,15 +111,15 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z warunkami logicz
 Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkowitymi:
 
 * [dodana](resource-group-template-functions-numeric.md#add)
-* [Funkcji copyindex](resource-group-template-functions-numeric.md#copyindex)
-* [służąc](resource-group-template-functions-numeric.md#div)
+* [copyIndex](resource-group-template-functions-numeric.md#copyindex)
+* [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
-* [ZAOKR](resource-group-template-functions-numeric.md#int)
-* [długości](resource-group-template-functions-numeric.md#min)
-* [Maksymalny](resource-group-template-functions-numeric.md#max)
+* [int](resource-group-template-functions-numeric.md#int)
+* [min](resource-group-template-functions-numeric.md#min)
+* [max](resource-group-template-functions-numeric.md#max)
 * [Funkcja](resource-group-template-functions-numeric.md#mod)
 * [mul](resource-group-template-functions-numeric.md#mul)
-* [Sub](resource-group-template-functions-numeric.md#sub)
+* [sub](resource-group-template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -136,17 +133,17 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkow
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Funkcje zasobów
-Menedżer zasobów udostępnia następujące funkcje pobierania wartości zasobów:
+Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartości zasobu:
 
 * [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [listKeys](resource-group-template-functions-resource.md#listkeys)
+* [klucze list](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
-* [staw](resource-group-template-functions-resource.md#list)
-* [udostępnia](resource-group-template-functions-resource.md#providers)
-* [odwoła](resource-group-template-functions-resource.md#reference)
+* [Lista *](resource-group-template-functions-resource.md#list)
+* [dostawcy](resource-group-template-functions-resource.md#providers)
+* [Odwołanie](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
-* [Identyfikator](resource-group-template-functions-resource.md#resourceid)
+* [resourceId](resource-group-template-functions-resource.md#resourceid)
 * [Subskrypcja](resource-group-template-functions-resource.md#subscription)
 * [subscriptionResourceId](resource-group-template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](resource-group-template-functions-resource.md#tenantresourceid)
@@ -185,36 +182,36 @@ Menedżer zasobów udostępnia następujące funkcje pobierania wartości zasob�
 ## <a name="string-functions"></a>Funkcje ciągów
 Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 
-* [zakodowan](resource-group-template-functions-string.md#base64)
+* [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [Concat](resource-group-template-functions-string.md#concat)
-* [wyświetlana](resource-group-template-functions-string.md#contains)
+* [concat](resource-group-template-functions-string.md#concat)
+* [contains](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
-* [ciągiem](resource-group-template-functions-string.md#empty)
+* [empty](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
-* [pierwszego](resource-group-template-functions-string.md#first)
-* [Formatowanie](resource-group-template-functions-string.md#format)
-* [ident](resource-group-template-functions-string.md#guid)
+* [first](resource-group-template-functions-string.md#first)
+* [format](resource-group-template-functions-string.md#format)
+* [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [ostatniego](resource-group-template-functions-string.md#last)
+* [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Długość](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
-* [stępować](resource-group-template-functions-string.md#replace)
-* [Skocz](resource-group-template-functions-string.md#skip)
+* [replace](resource-group-template-functions-string.md#replace)
+* [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [parametry](resource-group-template-functions-string.md#string)
-* [podciąg](resource-group-template-functions-string.md#substring)
-* [czasochłonn](resource-group-template-functions-string.md#take)
+* [ciąg](resource-group-template-functions-string.md#string)
+* [substring](resource-group-template-functions-string.md#substring)
+* [take](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [Trim](resource-group-template-functions-string.md#trim)
+* [trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [adresu](resource-group-template-functions-string.md#uri)
+* [uri](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)

@@ -1,23 +1,20 @@
 ---
-title: Najlepsze rozwiązania dotyczące Azure Resource Manager szablonów
+title: Najlepsze rozwiązania dotyczące szablonów
 description: Opisuje zalecane podejścia do tworzenia szablonów Azure Resource Manager. Oferuje sugestie pozwalające uniknąć typowych problemów związanych z korzystaniem z szablonów.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.author: tomfitz
-ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983824"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150301"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Najlepsze rozwiązania dotyczące szablonu Azure Resource Manager
 
 W tym artykule przedstawiono zalecenia dotyczące sposobu konstruowania szablonu Menedżer zasobów. Te zalecenia pozwalają uniknąć typowych problemów związanych z wdrażaniem rozwiązania przy użyciu szablonu.
 
-Aby zapoznać się z zaleceniami dotyczącymi zarządzania subskrypcjami [platformy Azure, zobacz Azure Enterprise szkielet: Zalecenia dotyczące zarządzania](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)subskrypcjami.
+Aby uzyskać zalecenia dotyczące sposobu zarządzania subskrypcjami platformy Azure, zobacz [Azure Enterprise szkielet: prescriptal subscriptions](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
 
 Aby zapoznać się z zaleceniami dotyczącymi tworzenia szablonów, które działają we wszystkich środowiskach w chmurze platformy Azure, zobacz [opracowywanie szablonów Azure Resource Manager na potrzeby spójności chmury](templates-cloud-consistency.md).
 
@@ -35,7 +32,7 @@ Jest również ograniczona do:
 
 Można przekroczyć niektóre limity szablonów przy użyciu zagnieżdżonego szablonu. Aby uzyskać więcej informacji, zobacz [Używanie połączonych szablonów podczas wdrażania zasobów platformy Azure](resource-group-linked-templates.md). Aby zmniejszyć liczbę parametrów, zmiennych lub danych wyjściowych, można połączyć kilka wartości z obiektem. Aby uzyskać więcej informacji, zobacz [obiekty jako parametry](resource-manager-objects-as-parameters.md).
 
-## <a name="resource-group"></a>Resource group
+## <a name="resource-group"></a>Grupa zasobów
 
 Podczas wdrażania zasobów w grupie zasobów Grupa zasobów przechowuje metadane dotyczące zasobów. Metadane są przechowywane w lokalizacji grupy zasobów.
 
@@ -96,7 +93,7 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
 
 * Nie należy używać parametru dla wersji interfejsu API dla typu zasobu. Właściwości i wartości zasobów mogą się różnić w zależności od numeru wersji. Funkcja IntelliSense w edytorze kodu nie może określić poprawnego schematu, gdy wersja interfejsu API jest ustawiona na wartość parametru. Zamiast tego należy zwolnić wersję interfejsu API w szablonie.
 
-* Używaj `allowedValues` oszczędnie. Użyj go tylko wtedy, gdy musisz upewnić się, że niektóre wartości nie są uwzględnione w dozwolonych opcjach. Jeśli używasz zbyt szerokiego, możesz zablokować prawidłowe wdrożenia, nie zachowując Aktualności listy. `allowedValues`
+* Używaj `allowedValues` oszczędnie. Użyj go tylko wtedy, gdy musisz upewnić się, że niektóre wartości nie są uwzględnione w dozwolonych opcjach. Jeśli używasz `allowedValues` zbyt szeroko, możesz zablokować prawidłowe wdrożenia, nie zachowując Aktualności listy.
 
 * Jeśli nazwa parametru w szablonie jest zgodna z parametrem w poleceniu wdrażania programu PowerShell, Menedżer zasobów rozwiązuje ten konflikt nazw przez dodanie przyrostka **FromTemplate** do parametru szablonu. Na przykład jeśli w szablonie zostanie uwzględniony parametr o nazwie **ResourceGroupName** , powoduje to konflikt z parametrem **ResourceGroupName** w poleceniu cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . Podczas wdrażania zostanie wyświetlony monit o podanie wartości dla **ResourceGroupNameFromTemplate**.
 
@@ -104,7 +101,7 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
 
 * Zawsze używaj parametrów nazw użytkowników i haseł (lub wpisów tajnych).
 
-* Używane `securestring` dla wszystkich haseł i wpisów tajnych. W przypadku przekazania poufnych danych do obiektu JSON należy użyć `secureObject` typu. Nie można odczytać parametrów szablonu z bezpiecznym ciągiem lub bezpiecznych typów obiektów po wdrożeniu zasobów. 
+* Użyj `securestring` dla wszystkich haseł i wpisów tajnych. Jeśli dane poufne są przekazywane w obiekcie JSON, użyj typu `secureObject`. Nie można odczytać parametrów szablonu z bezpiecznym ciągiem lub bezpiecznych typów obiektów po wdrożeniu zasobów. 
    
    ```json
    "parameters": {
@@ -117,13 +114,13 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
    }
    ```
 
-* Nie należy podawać wartości domyślnych dla nazw użytkowników, haseł ani wartości, które wymagają `secureString` typu.
+* Nie należy podawać wartości domyślnych dla nazw użytkowników, haseł ani wartości, które wymagają typu `secureString`.
 
 * Nie należy podawać wartości domyślnych dla właściwości, które zwiększają obszar ataków aplikacji.
 
 ### <a name="location-recommendations-for-parameters"></a>Zalecenia dotyczące lokalizacji parametrów
 
-* Użyj parametru, aby określić lokalizację dla zasobów, i ustaw wartość domyślną na `resourceGroup().location`. Podanie parametru Location umożliwia użytkownikom szablonu określenie lokalizacji, do której mają uprawnienia do wdrożenia.
+* Użyj parametru, aby określić lokalizację zasobów i ustawić wartość domyślną `resourceGroup().location`. Podanie parametru Location umożliwia użytkownikom szablonu określenie lokalizacji, do której mają uprawnienia do wdrożenia.
 
    ```json
    "parameters": {
@@ -145,7 +142,7 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
 
 ## <a name="variables"></a>Zmienne
 
-Poniższe informacje mogą być przydatne podczas pracy ze zmiennymi [](template-variables.md):
+Poniższe informacje mogą być przydatne podczas pracy ze [zmiennymi](template-variables.md):
 
 * Użyj notacji CamelCase przypadku nazw zmiennych.
 
@@ -153,9 +150,9 @@ Poniższe informacje mogą być przydatne podczas pracy ze zmiennymi [](template
 
 * Używaj zmiennych dla wartości, które są konstruowane na podstawie złożonego rozmieszczenia funkcji szablonu. Szablon jest łatwiejszy do odczytania, gdy złożone wyrażenie pojawia się tylko w zmiennych.
 
-* Nie używaj zmiennych dla `apiVersion` zasobu. Wersja interfejsu API określa schemat zasobu. Często nie można zmienić wersji bez zmiany właściwości zasobu.
+* Nie używaj zmiennych dla `apiVersion` w zasobie. Wersja interfejsu API określa schemat zasobu. Często nie można zmienić wersji bez zmiany właściwości zasobu.
 
-* Nie można użyć funkcji [Reference](resource-group-template-functions-resource.md#reference) w sekcji **zmiennych** szablonu. Funkcja **Reference** dziedziczy jej wartość ze stanu środowiska uruchomieniowego zasobu. Jednak zmienne są rozwiązywane podczas początkowej analizy szablonu. Konstruowanie wartości, które wymagają funkcji referencyjnej, bezpośrednio w sekcji **zasoby** lub dane **wyjściowe** szablonu.
+* Nie można użyć funkcji [Reference](resource-group-template-functions-resource.md#reference) w sekcji **zmiennych** szablonu. Funkcja **Reference** dziedziczy jej wartość ze stanu środowiska uruchomieniowego zasobu. Jednak zmienne są rozwiązywane podczas początkowej analizy szablonu. Konstruowanie wartości, które wymagają funkcji **referencyjnej** , bezpośrednio w sekcji **zasoby** lub dane **wyjściowe** szablonu.
 
 * Dołącz zmienne nazw zasobów, które muszą być unikatowe.
 
@@ -167,7 +164,7 @@ Poniższe informacje mogą być przydatne podczas pracy ze zmiennymi [](template
 
 Podczas wybierania [zależności](resource-group-define-dependencies.md) , które należy ustawić, należy przestrzegać następujących wytycznych:
 
-* Użyj funkcji **Reference** i przekaż nazwę zasobu, aby ustawić niejawną zależność między zasobami, które muszą udostępniać właściwość. Nie dodawaj jawnego `dependsOn` elementu, gdy została już zdefiniowana zależność niejawna. Takie podejście zmniejsza ryzyko związane z niepotrzebnymi zależnościami.
+* Użyj funkcji **Reference** i przekaż nazwę zasobu, aby ustawić niejawną zależność między zasobami, które muszą udostępniać właściwość. Nie dodawaj jawnego elementu `dependsOn`, gdy została już zdefiniowana zależność niejawna. Takie podejście zmniejsza ryzyko związane z niepotrzebnymi zależnościami.
 
 * Ustaw zasób podrzędny jako zależny od jego zasobu nadrzędnego.
 
@@ -239,7 +236,7 @@ Poniższe informacje mogą być przydatne podczas pracy z [zasobami](resource-gr
    * [Zezwalanie na dostęp zewnętrzny do maszyny wirtualnej przy użyciu programu PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Zezwalanie na dostęp zewnętrzny do maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-* Właściwość **wartość domainnamelabel** dla publicznych adresów IP musi być unikatowa. Wartość **wartość domainnamelabel** musi mieć długość od 3 do 63 znaków i postępować zgodnie z regułami określonymi w tym wyrażeniu `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`regularnym:. Ponieważ funkcja **uniqueString** generuje ciąg o długości 13 znaków, parametr **dnsPrefixString** jest ograniczony do 50 znaków:
+* Właściwość **wartość domainnamelabel** dla publicznych adresów IP musi być unikatowa. Wartość **wartość domainnamelabel** musi mieć długość od 3 do 63 znaków i postępować zgodnie z regułami określonymi w tym wyrażeniu regularnym: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Ponieważ funkcja **uniqueString** generuje ciąg o długości 13 znaków, parametr **dnsPrefixString** jest ograniczony do 50 znaków:
 
    ```json
    "parameters": {
@@ -280,7 +277,7 @@ Poniższe informacje mogą być przydatne podczas pracy z [zasobami](resource-gr
    > 
    > 
 
-## <a name="outputs"></a>outputs
+## <a name="outputs"></a>Dane wyjściowe
 
 W przypadku tworzenia publicznych adresów IP za pomocą szablonu należy uwzględnić [sekcję](template-outputs.md) Output, która zwraca szczegółowe informacje o adresie IP i w pełni kwalifikowanej nazwie domeny (FQDN). Można użyć wartości danych wyjściowych można łatwo pobrać szczegółowe informacje dotyczące publicznych adresów IP i nazw FQDN po wdrożeniu.
 

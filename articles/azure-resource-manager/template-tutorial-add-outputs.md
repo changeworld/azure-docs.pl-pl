@@ -1,19 +1,16 @@
 ---
-title: Samouczek — Dodawanie danych wyjściowych do szablonu Azure Resource Manager
+title: Samouczek — Dodawanie danych wyjściowych do szablonu
 description: Dodaj dane wyjściowe do szablonu Azure Resource Manager, aby uprościć składnię.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 0d89c1651e6b897da7538432d183a8ac003a51ac
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001542"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148257"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Samouczek: Dodawanie danych wyjściowych do szablonu Menedżer zasobów
 
@@ -49,13 +46,13 @@ Używa funkcji [Reference](resource-group-template-functions-resource.md#referen
 
 Na koniec zwraca właściwość **obiektu** z konta magazynu
 
-## <a name="deploy-the-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 Wszystko jest gotowe do wdrożenia szablonu i przeszukania zwracanej wartości.
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -97,7 +94,7 @@ Wykonano wiele ostatnich sześciu samouczków. Poświęć chwilę na zapoznanie 
 
 Teraz przyjrzyjmy się grupie zasobów i historii wdrażania.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
 1. W zależności od wykonywanych czynności należy mieć co najmniej jedno konto magazynu w grupie zasobów.
@@ -121,16 +118,16 @@ Teraz przyjrzyjmy się grupie zasobów i historii wdrażania.
 
    ![Pokaż szablon](./media/template-tutorial-add-outputs/show-template.png)
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
 Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
 
-1. Z Azure Portal z menu po lewej stronie wybierz pozycję **Grupa zasobów** .
-2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy** .
+1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. W górnym menu wybierz pozycję **Usuń grupę zasobów** .
+4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 

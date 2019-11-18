@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330664"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133179"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Konfigurowanie laboratorium do uczenia się klasy działanie hakerskie etycznych 
 W tym artykule opisano sposób konfigurowania klasy, która koncentruje się na dowodowych etycznej działanie hakerskie. Testowanie penetracji, metoda stosowana przez społeczność etyczną działanie hakerskie, występuje, gdy ktoś próbuje uzyskać dostęp do systemu lub sieci w celu zademonstrowania luk w zabezpieczeniach. 
 
-W klasie etycznej działanie hakerskie studenci mogą uczyć się nowoczesnych technik obrony przed lukami w zabezpieczeniach. Każdy student otrzymuje maszynę wirtualną hosta systemu Windows Server, która ma dwie zagnieżdżone maszyny wirtualne — jedną maszynę **wirtualną z** obrazem. [](https://www.kali.org/) Maszyna wirtualna Metasploitable jest używana na potrzeby wykorzystywania i Kali maszyny wirtualnej zapewnia dostęp do narzędzi wymaganych do wykonywania zadań śledczej.
+W klasie etycznej działanie hakerskie studenci mogą uczyć się nowoczesnych technik obrony przed lukami w zabezpieczeniach. Każdy student otrzymuje maszynę wirtualną hosta systemu Windows Server, która ma dwie zagnieżdżone maszyny wirtualne — jedną maszynę wirtualną z obrazem [Metasploitable3](https://github.com/rapid7/metasploitable3) i inną maszynę z obrazem [Kali Linux](https://www.kali.org/) . Maszyna wirtualna Metasploitable jest używana na potrzeby wykorzystywania i Kali maszyny wirtualnej zapewnia dostęp do narzędzi wymaganych do wykonywania zadań śledczej.
 
 Ten artykuł zawiera dwa główne sekcje. W pierwszej sekcji opisano, jak utworzyć laboratorium klasowe. Druga sekcja zawiera informacje na temat tworzenia maszyny szablonu z włączoną funkcją wirtualizacji zagnieżdżonej oraz wymaganych narzędzi i obrazów. W takim przypadku obraz Metasploitable i obraz systemu Linux w systemie Kali na maszynie z włączoną funkcją Hyper-V do obsługi obrazów.
 
@@ -34,7 +34,7 @@ Postępuj zgodnie z [tym samouczkiem](tutorial-setup-classroom-lab.md) , aby utw
 
 | Rozmiar maszyny wirtualnej | Image (Obraz) |
 | -------------------- | ----- | 
-| Średni (Wirtualizacja zagnieżdżona) | System Windows Server 2019 Datacenter |
+| Średni (Wirtualizacja zagnieżdżona) | Windows Server 2019 Datacenter |
 
 ## <a name="template-machine"></a>Komputer szablonu 
 
@@ -43,6 +43,8 @@ Po utworzeniu komputera szablonu Uruchom maszynę i Połącz się z nią, aby wy
 1. Skonfiguruj maszynę do wirtualizacji zagnieżdżonej. Umożliwia ona dostęp do wszystkich odpowiednich funkcji systemu Windows, takich jak funkcja Hyper-V, i konfiguruje sieci dla obrazów funkcji Hyper-V, które będą mogły komunikować się ze sobą i z Internetem.
 2. Skonfiguruj obraz [Kali](https://www.kali.org/) systemu Linux. Kali to dystrybucja systemu Linux obejmująca narzędzia do testowania i inspekcji zabezpieczeń.
 3. Skonfiguruj obraz Metasploitable. Na potrzeby tego przykładu zostanie użyty obraz [Metasploitable3](https://github.com/rapid7/metasploitable3) . Ten obraz jest tworzony w celu uzyskania luk w zabezpieczeniach.
+
+Skrypt, który automatyzuje zadania opisane powyżej, jest dostępny w przypadku [skryptów działanie hakerskie etycznych usług laboratoryjnych](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking).
 
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>Przygotuj komputer szablonu do wirtualizacji zagnieżdżonej
 Postępuj zgodnie z instrukcjami w [tym artykule](how-to-enable-nested-virtualization-template-vm.md) , aby przygotować maszynę wirtualną szablonu do wirtualizacji zagnieżdżonej. 
@@ -69,8 +71,8 @@ Kali to dystrybucja systemu Linux obejmująca narzędzia do testowania i inspekc
 
     ![Strona łączenia sieci](../media/class-type-ethical-hacking/connect-network.png)
 1. Na stronie **Podsumowanie** wybierz pozycję **Zakończ** . Zaczekaj na zakończenie operacji kopiowania i importowania. Maszyna wirtualna z systemem Kali Linux będzie teraz dostępna w funkcji Hyper-V.
-1. W **Menedżerze funkcji Hyper-V**wybierz **Akcja** -> **Start**, a następnie wybierz **akcję** -> **Połącz** się, aby nawiązać połączenie z maszyną wirtualną.  
-12. Domyślna nazwa użytkownika to `root`, a hasło to `toor`. 
+1. W **Menedżerze funkcji Hyper-V**wybierz pozycję **Akcja** -> **Start**, a następnie wybierz pozycję **Akcja** -> **Połącz** się z maszyną wirtualną.  
+12. Domyślna nazwa użytkownika to `root`, a hasło jest `toor`. 
 
     > [!NOTE]
     > Jeśli zachodzi potrzeba odblokowania obrazu, naciśnij klawisz CTRL i przeciągnij myszą w górę.
@@ -82,7 +84,7 @@ Obraz Rapid7 Metasploitable to obraz skonfigurowany do celów z lukami w zabezpi
 1. Wybierz przycisk **Pobierz Metasploitable teraz** .
 1. Po pobraniu pliku zip Wyodrębnij plik zip i Zapamiętaj lokalizację.
 1. Przekonwertuj wyodrębniony plik VMDK na plik VHDX, aby można było używać go z funkcją Hyper-V. Aby to zrobić, Otwórz program PowerShell z uprawnieniami administracyjnymi i przejdź do folderu, w którym znajduje się plik VMDK, i wykonaj następujące instrukcje:
-    1. Pobierz [program Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497)i uruchom plik mvmc_setup. msi po wyświetleniu monitu.
+    1. Pobierz [konwertera maszyn wirtualnych firmy Microsoft](https://www.microsoft.com/download/details.aspx?id=42497)i uruchom plik mvmc_setup. msi po wyświetleniu monitu.
     1. Zaimportuj moduł programu PowerShell.  Domyślna lokalizacja, w której zainstalowano moduł, to C:\Program Files\Microsoft Virtual Machine Converter \
 
         ```powershell
@@ -96,7 +98,7 @@ Obraz Rapid7 Metasploitable to obraz skonfigurowany do celów z lukami w zabezpi
     1. Skopiuj nowo utworzony plik metasploitable. vhdx do C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\. 
 1. Utwórz nową maszynę wirtualną funkcji Hyper-V.
     1. Otwórz **Menedżera funkcji Hyper-V**.
-    1. Wybierz **akcję** -> **Nowa** -> **maszynę wirtualną**.
+    1. Wybierz **akcję** -> **nową** -> ą **maszynę wirtualną**.
     1. Na stronie **zanim rozpoczniesz** **Kreatora nowej maszyny wirtualnej**kliknij przycisk **dalej**.
     1. Na stronie **Określanie nazwy i lokalizacji** wprowadź **Metasploitable** jako **nazwę**, a następnie wybierz przycisk **dalej**.
 
@@ -111,7 +113,7 @@ Obraz Rapid7 Metasploitable to obraz skonfigurowany do celów z lukami w zabezpi
         ![Strona łączenie dysku sieci wirtualnej](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
     1. Na stronie **Kończenie pracy Kreatora nowej maszyny wirtualnej** , a następnie wybierz pozycję **Zakończ**.
     1. Po utworzeniu maszyny wirtualnej wybierz ją w Menedżerze funkcji Hyper-V. Nie włączaj jeszcze maszyny.  
-    1. Wybierz **akcję** -> **ustawień**.
+    1. Wybierz pozycję **akcja** -> **Ustawienia**.
     1. W oknie dialogowym **Ustawienia dla Metasploitable** wybierz pozycję **Dodaj sprzęt**. 
     1. Wybierz opcję **Starsza karta sieciowa**, a następnie wybierz pozycję **Dodaj**.
 
@@ -119,13 +121,13 @@ Obraz Rapid7 Metasploitable to obraz skonfigurowany do celów z lukami w zabezpi
     1. Na **starszej karcie sieciowej** wybierz opcję **LabServicesSwitch** dla ustawienia **przełącznika wirtualnego** , a następnie wybierz **przycisk OK**. LabServicesSwitch został utworzony podczas przygotowywania maszyny szablonu dla funkcji Hyper-V w sekcji **Prepare szablonu dla zagnieżdżonej wirtualizacji** .
 
         ![Strona starszej karty sieciowej](../media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. Obraz Metasploitable jest teraz gotowy do użycia. W **Menedżerze funkcji Hyper-V**wybierz **Akcja** -> **Start**, a następnie wybierz **akcję** -> **Połącz** się, aby nawiązać połączenie z maszyną wirtualną.  Domyślna nazwa użytkownika to **msfadmin** , a hasło to **msfadmin**. 
+    1. Obraz Metasploitable jest teraz gotowy do użycia. W **Menedżerze funkcji Hyper-V**wybierz pozycję **Akcja** -> **Start**, a następnie wybierz pozycję **Akcja** -> **Połącz** się z maszyną wirtualną.  Domyślna nazwa użytkownika to **msfadmin** , a hasło to **msfadmin**. 
 
 
 Szablon jest teraz aktualizowany i zawiera obrazy potrzebne do testowania działanie hakerskiej penetracji etycznej, obrazu z narzędziami do testowania penetracji i innego obrazu z lukami w zabezpieczeniach do odnalezienia. Obraz szablonu można teraz opublikować w klasie. Wybierz przycisk **Publikuj** na stronie szablon, aby opublikować szablon w laboratorium.
   
 
-## <a name="cost"></a>Koszt  
+## <a name="cost"></a>Koszty  
 Jeśli chcesz oszacować koszt tego laboratorium, możesz użyć poniższego przykładu: 
  
 W przypadku klasy 25 studentów z upływem 20 godzin planowanego czasu zajęć i 10 godzin przydziału dla prac domowych lub przydziałów, Cena za laboratorium to: 

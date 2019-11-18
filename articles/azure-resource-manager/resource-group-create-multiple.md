@@ -1,18 +1,14 @@
 ---
-title: Wdróż wiele wystąpień zasobów platformy Azure | Microsoft Docs
+title: Wdróż wiele wystąpień zasobów
 description: Użyj operacji kopiowania i tablic w szablonie Azure Resource Manager, aby wielokrotnie wykonywać iteracje podczas wdrażania zasobów.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3ee4b47dd6cb9043a4100d114c483d1feadbde38
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675101"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150788"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteracja zasobu, właściwości lub zmiennej w szablonach Azure Resource Manager
 
@@ -86,7 +82,7 @@ Zasób do utworzenia kilka razy przyjmuje następujący format:
 }
 ```
 
-Należy zauważyć, że nazwa każdego zasobu zawiera funkcję `copyIndex()`, która zwraca bieżącą iterację w pętli. `copyIndex()` to zero. Tak więc, Poniższy przykład:
+Należy zauważyć, że nazwa każdego zasobu zawiera funkcję `copyIndex()`, która zwraca bieżącą iterację w pętli. Funkcja `copyIndex()` rozpoczyna liczenie od zera. Tak więc, Poniższy przykład:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -98,7 +94,7 @@ Tworzy następujące nazwy:
 * storage1
 * storage2.
 
-Aby przesunięciu wartość indeksu, można przekazać wartość w funkcji funkcji copyindex (). Liczba iteracji jest nadal określona w elemencie Copy, ale wartość funkcji copyindex jest przesunięta przez określoną wartość. Tak więc, Poniższy przykład:
+Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Liczba iteracji jest nadal określona w elemencie Copy, ale wartość funkcji copyindex jest przesunięta przez określoną wartość. Tak więc, Poniższy przykład:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -143,7 +139,7 @@ Tworzy następujące nazwy:
 
 Domyślnie Menedżer zasobów tworzy zasoby równolegle. Nie ma żadnego limitu liczby zasobów wdrożonych równolegle, poza całkowitym limitem 800 zasobów w szablonie. Kolejność, w której są tworzone, nie jest gwarantowana.
 
-Można jednak określić, że zasoby są wdrażane w sekwencji. Na przykład podczas aktualizowania środowiska produkcyjnego warto rozłożyć aktualizacje, aby w dowolnym momencie zaktualizować tylko określoną liczbę. Aby przeprowadzić szeregowo wdrożenie więcej niż jednego wystąpienia zasobu, należy ustawić wartość `mode` na **serial** i `batchSize` do liczby wystąpień do wdrożenia w danym momencie. W trybie serial Menedżer zasobów tworzy zależność od wcześniejszych wystąpień w pętli, dlatego nie uruchamia jednej partii do momentu zakończenia poprzedniej partii.
+Można jednak określić, że zasoby są wdrażane w sekwencji. Na przykład podczas aktualizowania środowiska produkcyjnego warto rozłożyć aktualizacje, aby w dowolnym momencie zaktualizować tylko określoną liczbę. Aby przeprowadzić szeregowo wdrożenie więcej niż jednego wystąpienia zasobu, należy ustawić `mode` na **port szeregowy** i `batchSize` do liczby wystąpień do wdrożenia w danym momencie. W trybie serial Menedżer zasobów tworzy zależność od wcześniejszych wystąpień w pętli, dlatego nie uruchamia jednej partii do momentu zakończenia poprzedniej partii.
 
 Na przykład aby przeprowadzić sekwencyjne wdrażanie kont magazynu dwa naraz, należy użyć:
 
@@ -180,7 +176,7 @@ Aby uzyskać informacje na temat używania kopiowania z szablonami zagnieżdżon
 
 ## <a name="property-iteration"></a>Iteracja właściwości
 
-Aby utworzyć więcej niż jedną wartość właściwości zasobu, Dodaj tablicę `copy` w elemencie Properties. Ta tablica zawiera obiekty, a każdy obiekt ma następujące właściwości:
+Aby utworzyć więcej niż jedną wartość właściwości zasobu, Dodaj tablicę `copy`ną w elemencie Properties. Ta tablica zawiera obiekty, a każdy obiekt ma następujące właściwości:
 
 * Nazwa — nazwa właściwości, w której ma zostać utworzona kilka wartości
 * Count — liczba wartości do utworzenia.
@@ -426,7 +422,7 @@ I zmienna o nazwie **Array-Level-String** zwraca:
 
 ## <a name="depend-on-resources-in-a-loop"></a>Zależą od zasobów w pętli
 
-Należy określić, że zasób zostanie wdrożony po innym zasobie przy użyciu elementu `dependsOn`. Aby wdrożyć zasób zależny od kolekcji zasobów w pętli, podaj nazwę pętli kopiowania w elemencie dependsOn. Poniższy przykład pokazuje, jak wdrożyć trzy konta magazynu przed wdrożeniem maszyny wirtualnej. Pełna definicja maszyny wirtualnej nie jest wyświetlana. Zwróć uwagę, że element Copy ma nazwę ustawioną na `storagecopy`, a element dependsOn dla Virtual Machines jest również ustawiony na `storagecopy`.
+Należy określić, że zasób zostanie wdrożony po innym zasobie przy użyciu elementu `dependsOn`. Aby wdrożyć zasób zależny od kolekcji zasobów w pętli, podaj nazwę pętli kopiowania w elemencie dependsOn. Poniższy przykład pokazuje, jak wdrożyć trzy konta magazynu przed wdrożeniem maszyny wirtualnej. Pełna definicja maszyny wirtualnej nie jest wyświetlana. Zwróć uwagę, że element Copy ma nazwę ustawioną na `storagecopy` i element dependsOn dla Virtual Machines jest również ustawiony na `storagecopy`.
 
 ```json
 {
@@ -486,7 +482,7 @@ Załóżmy na przykład, że zwykle zdefiniujesz zestaw danych jako zasób podrz
   ]
 ```
 
-Aby utworzyć więcej niż jeden zestaw danych, przenieś go poza fabrykę danych. Zestaw danych musi znajdować się na tym samym poziomie co Fabryka danych, ale nadal jest zasobem podrzędnym fabryki danych. Relację między zestawem danych a fabryką danych można zachować za pomocą właściwości Typ i nazwa. Ponieważ typ nie może być już wywnioskowany na podstawie jego pozycji w szablonie, należy podać w pełni kwalifikowany typ w formacie: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Aby utworzyć więcej niż jeden zestaw danych, przenieś go poza fabrykę danych. Zestaw danych musi znajdować się na tym samym poziomie co Fabryka danych, ale nadal jest zasobem podrzędnym fabryki danych. Relację między zestawem danych a fabryką danych można zachować za pomocą właściwości Typ i nazwa. Ponieważ typ nie może być już wywnioskowany na podstawie jego pozycji w szablonie, należy podać w formacie w pełni kwalifikowany typ: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
 Aby ustanowić relację nadrzędną/podrzędną z wystąpieniem fabryki danych, podaj nazwę zestawu danych, który zawiera nazwę zasobu nadrzędnego. Użyj formatu: `{parent-resource-name}/{child-resource-name}`.
 
@@ -517,13 +513,13 @@ W poniższym przykładzie przedstawiono implementację:
 
 W poniższych przykładach przedstawiono typowe scenariusze tworzenia więcej niż jednego wystąpienia zasobu lub właściwości.
 
-|Formularza  |Opis  |
+|Szablon  |Opis  |
 |---------|---------|
 |[Kopiuj magazyn](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Wdraża więcej niż jedno konto magazynu o numerze indeksu w nazwie. |
 |[Magazyn kopii seryjnych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Wdraża kilka kont magazynu jeden w czasie. Nazwa zawiera numer indeksu. |
 |[Kopiuj magazyn z tablicą](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Wdraża kilka kont magazynu. Nazwa zawiera wartość z tablicy. |
 |[Wdrożenie maszyny wirtualnej z zmienną liczbą dysków z danymi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Wdraża kilka dysków danych z maszyną wirtualną. |
-|[Kopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ilustruje różne sposoby iteracji na zmiennych. |
+|[Skopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ilustruje różne sposoby iteracji na zmiennych. |
 |[Wiele reguł zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Wdraża kilka reguł zabezpieczeń w sieciowej grupie zabezpieczeń. Konstruuje reguły zabezpieczeń z parametru. Dla parametru zobacz [wiele plików parametrów sieciowej grupy zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Następne kroki

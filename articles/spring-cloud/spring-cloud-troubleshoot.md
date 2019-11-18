@@ -6,154 +6,161 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: af3b0b6113833dfd36be8b604b6b3d3e7b33fe5f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607627"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151131"
 ---
-# <a name="troubleshooting-guide-for-common-problems"></a>Przewodnik rozwiązywania problemów z typowymi problemami
+# <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Rozwiązywanie typowych problemów z chmurą wiosenną platformy Azure
 
-W tym artykule opisano niektóre typowe problemy i kroki rozwiązywania problemów dla deweloperów pracujących w chmurze wiosennej platformy Azure. Zalecamy także zapoznanie się z naszym [artykułem często zadawanych pytań](spring-cloud-faq.md).
+Ten artykuł zawiera instrukcje dotyczące rozwiązywania problemów z programowaniem w chmurze na platformie Azure. Aby uzyskać dodatkowe informacje, zobacz temat [często zadawane pytania dotyczące chmury Azure wiosennej](spring-cloud-faq.md).
 
 ## <a name="availability-performance-and-application-issues"></a>Problemy z dostępnością, wydajnością i aplikacją
 
-### <a name="my-application-cannot-start-for-example-the-endpoint-cannot-be-connected-or-returns-502-after-few-retries"></a>Nie można uruchomić mojej aplikacji (na przykład punkt końcowy nie może być połączony lub zwraca 502 po kilku ponownych próbach)
+### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Nie można uruchomić mojej aplikacji (na przykład punkt końcowy nie może być połączony lub zwraca 502 po kilku ponownych próbach)
 
-Wyeksportuj dzienniki do _log Analytics platformy Azure_. Tabela dla dzienników aplikacji Spring ma nazwę `AppPlatformLogsforSpring`. Aby dowiedzieć się więcej, zobacz [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](diagnostic-services.md)
+Wyeksportuj dzienniki do Log Analytics platformy Azure. Tabela dla sprężynowych dzienników aplikacji nosi nazwę *AppPlatformLogsforSpring*. Aby dowiedzieć się więcej, zobacz [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](diagnostic-services.md).
 
-Wyszukiwanie następującego błędu w dziennikach wskazuje jeden z dwóch możliwych problemów:
+W dziennikach może pojawić się następujący komunikat o błędzie:
 
-`org.springframework.context.ApplicationContextException: Unable to start web server`
+> "org. springframework. Context. ApplicationContextException: nie można uruchomić serwera sieci Web"
 
+Komunikat wskazuje jeden z dwóch możliwych problemów: 
 * Brakuje jednego z ziaren lub jednej z jego zależności.
-* Brakuje jednej z właściwości ziarna lub jest ona nieprawidłowa. W takim przypadku prawdopodobnie pojawi się `java.lang.IllegalArgumentException`.
+* Brakuje jednej z właściwości ziarna lub jest ona nieprawidłowa. W takim przypadku prawdopodobnie zostanie wyświetlony komunikat "Java. lang. IllegalArgumentException".
 
-Powiązania usługi mogą również spowodować błędy uruchomienia aplikacji. Użyj słów kluczowych związanych z powiązanymi usługami do odpytania dzienników.  Na przykład załóżmy, że aplikacja ma powiązanie z wystąpieniem MySQL ustawionym na czas system lokalny. Jeśli uruchomienie aplikacji nie powiedzie się, w dzienniku może wystąpić następujący błąd:
+Powiązania usługi mogą również powodować błędy uruchomienia aplikacji. Aby wykonać zapytanie dotyczące dzienników, należy użyć słów kluczowych związanych z usługami powiązanymi. Załóżmy na przykład, że aplikacja ma powiązanie z wystąpieniem programu MySQL, które jest ustawione na czas system lokalny. Jeśli uruchomienie aplikacji nie powiedzie się, w dzienniku może pojawić się następujący komunikat o błędzie:
 
-`java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
+> "Java. SQL. SQLException: wartość strefy czasowej" Coordinated Universal Time "nie została rozpoznana lub reprezentuje więcej niż jedną strefę czasową".
 
-Aby naprawić ten błąd, przejdź do `server parameters` wystąpienia programu MySql i Zmień `time_zone` `SYSTEM` na `+0:00`.
+Aby naprawić ten błąd, przejdź do `server parameters` wystąpienia MySQL i zmień wartość `time_zone` z *system* na *+ 0:00*.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Moja aplikacja ulega awarii lub zgłasza nieoczekiwany błąd
 
-Podczas debugowania awarii aplikacji Zacznij od sprawdzenia stanu uruchomienia i stanu odnajdywania aplikacji. Przejdź do pozycji _Zarządzanie aplikacjami_ w Azure Portal, aby upewnić _się, że_wszystkie aplikacje są _uruchomione i działają_ .
+Gdy debugujesz awarie aplikacji, Zacznij od sprawdzenia stanu uruchomienia i stanu odnajdywania aplikacji. W tym celu przejdź do pozycji _Zarządzanie aplikacjami_ w Azure Portal, aby upewnić się, że wszystkie aplikacje są _uruchomione_ i w _górę_.
 
-* Jeśli stan jest _uruchomiony_ , ale stan odnajdywania nie jest _ustawiony_, przejdź do [sekcji nie można zarejestrować aplikacji](#my-application-cannot-be-registered).
+* Jeśli stan jest _uruchomiony_ , ale stan odnajdywania nie jest _ustawiony_, przejdź do sekcji ["Moje aplikacje nie można zarejestrować"](#my-application-cant-be-registered) .
 
-* Jeśli stan odnajdywania jest _ustawiony_, przejdź do pozycji _metryki_ , aby sprawdzić kondycję aplikacji. Sprawdź następujące metryki:
+* Jeśli stan odnajdywania jest _ustawiony_, przejdź do pozycji metryki, aby sprawdzić kondycję aplikacji. Sprawdź następujące metryki:
 
 
-  - `TomcatErrorCount` (_tomcat. Global. Error_): w tym miejscu będą zliczane wszystkie wyjątki aplikacji wiosennej. Jeśli ta liczba jest duża, przejdź do _usługi Azure log Analytics_ w celu sprawdzenia dzienników aplikacji.
+  - `TomcatErrorCount` (_tomcat. Global. Error_): w tym miejscu są zliczane wszystkie wyjątki aplikacji wiosennej. Jeśli ta liczba jest duża, przejdź do usługi Azure Log Analytics w celu sprawdzenia dzienników aplikacji.
 
-  - `AppMemoryMax` (_JVM. Memory. Max_): Maksymalna ilość pamięci dostępnej dla aplikacji. Jeśli jest zdefiniowany, może być niezdefiniowany lub zmieniony w miarę upływu czasu. Ilość użytej i zatwierdzonej pamięci będzie zawsze mniejsza lub równa wartości maksymalnej, jeśli jest zdefiniowana. Jednak alokacja pamięci może zakończyć się niepowodzeniem z wyjątkiem `OutOfMemoryError` w przypadku próby zwiększenia użytej pamięci w taki sposób, że pamięć użyta będzie większa niż pamięć zatwierdzona, nawet jeśli pamięć użyta będzie mniejsza niż pamięć maksymalna lub jej równa. W takiej sytuacji spróbuj zwiększyć maksymalny rozmiar sterty za pomocą parametru `-Xmx`.
+  - `AppMemoryMax` (_JVM. Memory. Max_): Maksymalna ilość pamięci dostępnej dla aplikacji. Kwota może być niezdefiniowana lub może ulec zmianie w czasie, jeśli jest zdefiniowana. Jeśli jest zdefiniowana, ilość używanej i zadeklarowanej pamięci jest zawsze mniejsza lub równa max. Jednak alokacja pamięci może zakończyć się niepowodzeniem z komunikatem `OutOfMemoryError`, jeśli alokacja próbuje zwiększyć użytą pamięć, taką jak *użycie > zatwierdzone*, nawet jeśli jest *używana < = Max* jest nadal true. W takiej sytuacji spróbuj zwiększyć maksymalny rozmiar sterty przy użyciu parametru `-Xmx`.
 
-  - `AppMemoryUsed` (_JVM. Memory._ Application): ilość pamięci w bajtach, która jest obecnie używana przez aplikację. W przypadku aplikacji Java z normalnym obciążeniem ta seria pomiarowa będzie mieć wygląd „zębów piły” — użycie pamięci równomiernie rośnie i spada o niewielkie wartości, a następnie znacznie spada, po czym ten wzorzec powtarza się. Wynika to z faktu, że wyrzucanie elementów bezużytecznych wewnątrz maszyny wirtualnej Java, gdzie akcje kolekcji reprezentują opady na "sawteeth".
-    Ta Metryka jest ważna w przypadku identyfikowania problemów z pamięcią, takich jak: * rozłożenie pamięci na początku * przepięcia alokacji pamięci dla określonej ścieżki logicznej * stopniowe przecieki pamięci
+  - `AppMemoryUsed` (_JVM. Memory._ Application): ilość pamięci w bajtach, która jest obecnie używana przez aplikację. W przypadku normalnej aplikacji Java do załadowania ta seria metryk tworzy wzorzec *powoduje piłokształtny* , w którym użycie pamięci stale rośnie i zmniejsza się w małych przyrostach i nagle porzuca dużo, a następnie wzorzec powtarza się. Ta seria metryk występuje ze względu na wyrzucanie elementów bezużytecznych wewnątrz maszyny wirtualnej Java, gdzie akcje kolekcji reprezentują porzucenia wzorca powoduje piłokształtny.
+    
+    Ta Metryka jest ważna, aby ułatwić identyfikowanie problemów z pamięcią, takich jak:
+    * Rozłożenie pamięci na bardzo rozpoczęciu.
+    * Alokacja pamięci przepięcia dla określonej ścieżki logicznej.
+    * Stopniowe przecieki pamięci.
 
   Aby uzyskać więcej informacji, zobacz [metryki](spring-cloud-concept-metrics.md).
 
-Odwiedź [ten artykuł Wprowadzenie](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) , aby rozpocząć pracę z _usługą Azure log Analytics_.
+Aby dowiedzieć się więcej o usłudze Azure Log Analytics, zobacz Wprowadzenie do [log Analytics w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Moja aplikacja używa dużo mocy procesora lub pamięci
 
-Jeśli aplikacja ma duże użycie procesora CPU/pamięci, jedno z dwóch warunków jest prawdziwe:
-* Wszystkie wystąpienia aplikacji napotykają duże użycie procesora CPU/pamięci lub
-* W niektórych wystąpieniach aplikacji występuje duże użycie procesora CPU/pamięci.
+Jeśli aplikacja korzysta z dużego procesora lub pamięci, jedno z dwóch rzeczy jest prawdziwe:
+* Wszystkie wystąpienia aplikacji napotykają duże użycie procesora CPU lub pamięci.
+* Niektóre wystąpienia aplikacji napotykają duże użycie procesora CPU lub pamięci.
 
-Aby potwierdzić, którą sytuację ma,
+Aby ustalić, która sytuacja ma zastosowanie, wykonaj następujące czynności:
 
-1. Przejdź do pozycji _Metryki_ i wybierz pozycję `Service CPU Usage Percentage` lub `Service Memory Used`
-2. Dodaj filtr `App=`, aby określić, która aplikacja ma być monitorowana
-3. Podziel metryki według `Instance`.
+1. Przejdź do pozycji **metryki**, a następnie wybierz opcję **procent użycia procesora CPU** lub **użyta pamięć usługi**.
+2. Dodaj **aplikację =** filtr, aby określić, która aplikacja ma być monitorowana.
+3. Podziel metryki według **wystąpienia**.
 
-Jeśli wszystkie wystąpienia mają duży procesor CPU/pamięć, należy przeprowadzić skalowanie w poziomie aplikacji lub skalowanie procesora CPU/pamięci. Aby uzyskać więcej informacji, zobacz [skalowanie aplikacji](spring-cloud-tutorial-scale-manual.md)
+Jeśli *wszystkie wystąpienia* mają duże użycie procesora CPU lub pamięci, należy albo skalować aplikację, albo skalować w górę użycie procesora lub pamięci. Aby uzyskać więcej informacji, zobacz [Samouczek: skalowanie aplikacji w chmurze Azure wiosennej](spring-cloud-tutorial-scale-manual.md).
 
-Jeśli w niektórych wystąpieniach występuje duże użycie procesora CPU/pamięci, sprawdź stan wystąpienia i stan odnajdywania.
+Jeśli w *niektórych wystąpieniach* występuje wysokie użycie procesora CPU lub pamięci, sprawdź stan wystąpienia i stan odnajdywania.
 
-Aby uzyskać więcej informacji, odwiedź [metryki](spring-cloud-concept-metrics.md).
+Aby uzyskać więcej informacji, zobacz [metryki dla chmury wiosennej platformy Azure](spring-cloud-concept-metrics.md).
 
-Jeśli wszystkie wystąpienia są uruchomione, przejdź do _usługi Azure log Analytics_ , aby wykonać zapytanie dotyczące dzienników aplikacji, i sprawdź logikę kodu, aby sprawdzić, czy którykolwiek z nich może wpływać na partycjonowanie skalowania. Aby uzyskać więcej informacji, zobacz [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](diagnostic-services.md).
+Jeśli wszystkie wystąpienia są uruchomione, przejdź do usługi Azure Log Analytics, aby wykonać zapytanie dotyczące dzienników aplikacji i przejrzeć logikę kodu. Ułatwi to sprawdzenie, czy którykolwiek z nich może mieć wpływ na partycjonowanie skalowania. Aby uzyskać więcej informacji, zobacz [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](diagnostic-services.md).
 
-Odwiedź [ten artykuł Wprowadzenie](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) , aby rozpocząć pracę z _usługą Azure log Analytics_. Wykonaj zapytanie dotyczące dzienników przy użyciu [języka zapytań Kusto](https://docs.microsoft.com/azure/kusto/query/).
+Aby dowiedzieć się więcej o usłudze Azure Log Analytics, zobacz Wprowadzenie do [log Analytics w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Wykonaj zapytanie dotyczące dzienników przy użyciu [języka zapytań Kusto](https://docs.microsoft.com/azure/kusto/query/).
 
-### <a name="checklist-before-onboarding-your-spring-application-to-azure-spring-cloud"></a>Lista kontrolna przed dołączeniem aplikacji wiosennej do chmury z użyciem platformy Azure
+### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Lista kontrolna wdrażania aplikacji wiosennej w chmurze Azure wiosennej
+
+Przed dołączeniem aplikacji upewnij się, że spełnia ona następujące kryteria:
 
 * Aplikacja może działać lokalnie z określoną wersją środowiska uruchomieniowego języka Java.
 * Konfiguracja środowiska (procesor/pamięć RAM/wystąpienia) spełnia wymagania minimalne ustawione przez dostawcę aplikacji.
 * Elementy konfiguracji mają oczekiwane wartości. Aby uzyskać więcej informacji, zobacz [config Server](spring-cloud-tutorial-config-server.md).
 * Zmienne środowiskowe mają oczekiwane wartości.
 * Parametry JVM mają oczekiwane wartości.
-* Zalecamy wyłączenie/usunięcie z pakietu aplikacji usługi Embedded _Server_ i _sprężynowego rejestru usługi_ .
+* Zaleca się wyłączenie lub usunięcie z pakietu aplikacji usług rejestru Embedded _Server_ i _sprężyny_ usług.
 * Jeśli jakiekolwiek zasoby platformy Azure mają być powiązane za pomocą _powiązania usługi_, upewnij się, że zasoby docelowe zostały uruchomione.
 
-## <a name="configuration-and-management"></a>Konfiguracja i zarządzanie
+## <a name="configuration-and-management"></a>Konfigurowanie i zarządzanie
 
-### <a name="i-encountered-a-problem-creating-an-azure-spring-cloud-service-instance"></a>Wystąpił problem podczas tworzenia wystąpienia usługi w chmurze ze sprężyną Azure
+### <a name="i-encountered-a-problem-with-creating-an-azure-spring-cloud-service-instance"></a>Wystąpił problem podczas tworzenia wystąpienia usługi w chmurze ze sprężyną Azure
 
-Przy próbie aprowizacji wystąpienia usługi w _chmurze ze sprężyną Azure_ za pośrednictwem portalu, Chmura Wiosenna platformy Azure przeprowadzi weryfikację.
+Po skonfigurowaniu wystąpienia usługi w chmurze ze sprężyną na platformie Azure za pomocą Azure Portal, Chmura Wiosenna platformy Azure wykonuje weryfikację.
 
-Jednak w przypadku próby aprowizacji wystąpienia usługi w _chmurze Azure wiosny_ za pośrednictwem [interfejsu wiersza polecenia platformy azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) lub [szablonu Menedżer zasobów](https://docs.microsoft.com/azure/azure-resource-manager/)upewnij się, że:
+Ale jeśli spróbujesz skonfigurować wystąpienie usługi chmurowej Azure sprężynowej przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) lub [szablonu Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/), sprawdź, czy:
 
 * Subskrypcja jest aktywna.
-* Lokalizacja jest [obsługiwana](spring-cloud-faq.md) przez _chmurę wiosenną platformy Azure_.
+* Lokalizacja jest [obsługiwana](spring-cloud-faq.md) przez chmurę wiosenną platformy Azure.
 * Grupa zasobów dla wystąpienia została już utworzona.
-* Nazwa zasobu jest zgodna z regułą nazewnictwa. (Może zawierać tylko małe litery, cyfry i łączniki. Pierwszy znak musi być literą. Ostatni znak musi być literą lub cyfrą. Wartość musi mieć długość od 2 do 32 znaków.)
+* Nazwa zasobu jest zgodna z regułą nazewnictwa. Musi zawierać tylko małe litery, cyfry i łączniki. Pierwszy znak musi być literą. Ostatni znak musi być literą lub cyfrą. Wartość musi zawierać od 2 do 32 znaków.
 
-Jeśli spróbujesz udostępnić wystąpienie usługi w _chmurze Azure wiosny_ za pośrednictwem szablonu Menedżer zasobów, odwiedź https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates, aby sprawdzić składnię szablonu.
+Jeśli chcesz skonfigurować wystąpienie usługi w chmurze Azure wiosny przy użyciu szablonu Menedżer zasobów, najpierw zapoznaj się z tematem [Struktura i składnia Azure Resource Manager szablonów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 
-Nazwa wystąpienia usługi w _chmurze Azure sprężynowego_ zostanie użyta do żądania nazwy domeny podrzędnej w obszarze `azureapps.io`, więc Inicjowanie obsługi zakończy się niepowodzeniem, jeśli wystąpi konflikt nazw z istniejącą. Więcej szczegółów można znaleźć w dziennikach aktywności.
+Nazwa wystąpienia usługi w chmurze Azure sprężynowego zostanie użyta do żądania nazwy domeny podrzędnej w obszarze `azureapps.io`, więc instalacja nie powiedzie się, jeśli wystąpi konflikt między nazwą a istniejącą. Więcej szczegółów można znaleźć w dziennikach aktywności.
 
-### <a name="i-cannot-deploy-a-jar-package"></a>Nie mogę wdrożyć pakietu JAR
+### <a name="i-cant-deploy-a-jar-package"></a>Nie można wdrożyć pakietu JAR
 
-Nie można przekazać pakietu JAR/Source przy użyciu szablonu portalu lub Menedżer zasobów.
+Nie można przekazać pakietu/Source w pliku archiwum Java (JAR) przy użyciu szablonu Menedżer zasobów Azure Portal lub.
 
-Po wdrożeniu pakietu aplikacji przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)program okresowo sonduje postęp wdrażania, a na końcu będzie wyświetlał wynik wdrożenia.
+Podczas wdrażania pakietu aplikacji przy użyciu [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)platformy Azure interfejs wiersza polecenia platformy Azure okresowo sonduje postęp wdrażania i na końcu wyświetla wynik wdrożenia.
 
 Jeśli sondowanie zostanie przerwane, możesz użyć następującego polecenia, aby pobrać dzienniki wdrażania:
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Upewnij się, że aplikacja znajduje się w pakiecie w prawidłowym [formacie wykonywalnego pliku JAR](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html). Jeśli nie, zostanie wyświetlony błąd podobny do poniższego:
+Upewnij się, że aplikacja jest spakowana w prawidłowym [pliku wykonywalnym jar](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html). Jeśli plik nie zostanie poprawnie spakowany, zostanie wyświetlony komunikat o błędzie podobny do następującego:
 
-`Error: Invalid or corrupt jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714`
+> "Błąd: nieprawidłowy lub uszkodzony jarfile/jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714"
 
-### <a name="i-cannot-deploy-a-source-package"></a>Nie mogę wdrożyć pakietu źródłowego
+### <a name="i-cant-deploy-a-source-package"></a>Nie można wdrożyć pakietu źródłowego
 
-Nie można przekazać pakietu JAR/Source przy użyciu szablonu portalu lub Menedżer zasobów.
+Nie można przekazać pakietu JAR/Source przy użyciu Azure Portal lub szablonu Menedżer zasobów.
 
-Podczas wdrażania pakietu aplikacji za pomocą [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) okresowo sonduje on postęp wdrażania, a na końcu wyświetla jego wynik.
+Podczas wdrażania pakietu aplikacji przy użyciu [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)platformy Azure interfejs wiersza polecenia platformy Azure okresowo sonduje postęp wdrażania i na końcu wyświetla wynik wdrożenia.
 
 Jeśli sondowanie zostanie przerwane, możesz użyć następującego polecenia, aby pobrać dzienniki kompilowania i wdrażania:
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Należy jednak pamiętać, że jedno wystąpienie usługi w _chmurze Azure sprężynowe_ może wyzwolić tylko jedno zadanie kompilacji w jednym z nich. Aby uzyskać więcej informacji, zapoznaj się z tematem [wdrażanie aplikacji](spring-cloud-quickstart-launch-app-portal.md) i [Przewodnik po środowisku przejściowym](spring-cloud-howto-staging-environment.md).
+Należy jednak pamiętać, że jedno wystąpienie usługi w chmurze Azure wiosennej może wyzwolić tylko jedno zadanie kompilacji w jednym z nich. Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji](spring-cloud-quickstart-launch-app-portal.md) i [Konfigurowanie środowiska tymczasowego w chmurze Azure wiosennej](spring-cloud-howto-staging-environment.md).
 
-### <a name="my-application-cannot-be-registered"></a>Nie można zarejestrować aplikacji
+### <a name="my-application-cant-be-registered"></a>Nie można zarejestrować mojej aplikacji
 
-W większości przypadków dzieje się tak, gdy wymagane zależności/odnajdowanie usług nie są poprawnie skonfigurowane w pliku pliku pom. Po skonfigurowaniu wbudowany punkt końcowy serwera rejestru usługi zostanie dodany jako zmienna środowiskowa do aplikacji. Następnie aplikacje będą się rejestrować na serwerze rejestru usługi i odnajdywać inne zależne mikrousługi.
+W większości przypadków taka sytuacja występuje, gdy *wymagane zależności* i *odnajdowanie usług* nie są prawidłowo skonfigurowane w pliku modelu obiektów projektu (pliku POM). Po jego skonfigurowaniu wbudowany punkt końcowy serwera rejestru usługi zostanie dodany jako zmienna środowiskowa do aplikacji. Aplikacje następnie rejestrują się na serwerze rejestru usługi i odnajdują inne zależne mikrousługi.
 
-Odczekaj co najmniej 2 minuty, zanim nowo zarejestrowane wystąpienie zacznie odbierać ruch.
+Zaczekaj co najmniej dwie minuty, zanim nowo zarejestrowane wystąpienie zacznie odbierać ruch.
 
-Jeśli przeprowadzasz migrację istniejącego rozwiązania z chmurą w chmurze na platformę Azure, upewnij się, że wystąpienia serwera _rejestru_ i _konfiguracji_ usługi ad hoc zostały usunięte (lub wyłączone), aby uniknąć konfliktu z wystąpieniami zarządzanymi w chmurze z systemem _Azure wiosny_ .
+Jeśli migrujesz istniejące, sprężynowe rozwiązanie oparte na chmurze na platformie Azure, upewnij się, że wystąpienia _usługi_ ad hoc w rejestrze i _serwerze konfiguracji_ zostały usunięte (lub wyłączone), aby uniknąć konfliktu z wystąpieniami zarządzanymi w chmurze sieci platformy Azure.
 
-Możesz również sprawdzić dzienniki klienta _usługi_ w usłudze _Azure log Analytics_. Aby uzyskać więcej informacji, zobacz [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](diagnostic-services.md)
+Możesz również sprawdzić dzienniki _usługi Rejestr_ klienta w usłudze Azure log Analytics. Aby uzyskać więcej informacji, zobacz [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](diagnostic-services.md)
 
-Odwiedź [ten artykuł Wprowadzenie](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) , aby rozpocząć pracę z _usługą Azure log Analytics_. Wykonaj zapytanie dotyczące dzienników przy użyciu [języka zapytań Kusto](https://docs.microsoft.com/azure/kusto/query/).
+Aby dowiedzieć się więcej o usłudze Azure Log Analytics, zobacz Wprowadzenie do [log Analytics w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Wykonaj zapytanie dotyczące dzienników przy użyciu [języka zapytań Kusto](https://docs.microsoft.com/azure/kusto/query/).
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Chcę sprawdzić zmienne środowiskowe aplikacji
 
-Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzięki czemu platforma Azure rozumie, gdzie i jak skonfigurować usługi wchodzące w skład Twojej aplikacji.  Upewnienie się, że zmienne środowiskowe są poprawne, jest to konieczne w pierwszym kroku w rozwiązywaniu potencjalnych problemów.  Aby przejrzeć zmienne środowiskowe, można użyć punktu końcowego uruchamiającego rozruchu sprężynowego.  
+Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzięki czemu platforma Azure rozumie, gdzie i jak skonfigurować usługi wchodzące w skład aplikacji. Upewnienie się, że zmienne środowiskowe są poprawne, jest to konieczne w pierwszym kroku w rozwiązywaniu potencjalnych problemów.  Aby przejrzeć zmienne środowiskowe, można użyć punktu końcowego uruchamiającego rozruchu sprężynowego.  
 
 > [!WARNING]
 > Ta procedura udostępnia zmienne środowiskowe za pomocą punktu końcowego testu.  Nie należy przechodzić, jeśli punkt końcowy testu jest publicznie dostępny lub jeśli przypisano nazwę domeny do aplikacji.
 
-1. Przejdź do tego adresu URL: `https://<your application test endpoint>/actuator/health`.  
+1. Przejdź do pozycji `https://<your application test endpoint>/actuator/health` (Plik > Nowy > Inny).  
     - Odpowiedź podobna do `{"status":"UP"}` wskazuje, że punkt końcowy został włączony.
-    - Jeśli odpowiedź jest ujemna, Uwzględnij w `POM.xml`następujący zależność:
+    - Jeśli odpowiedź jest ujemna, uwzględnij następujące zależności w pliku *pliku pom. XML* :
 
         ```xml
             <dependency>
@@ -162,11 +169,11 @@ Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzi�
             </dependency>
         ```
 
-1. Po włączeniu punktu końcowego uruchamiającego uruchamianie sprężyny przejdź do Azure Portal i Znajdź stronę Konfiguracja aplikacji.  Dodaj zmienną środowiskową o nazwie `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` i `*` wartość. 
+1. Po włączeniu punktu końcowego uruchamiającego uruchamianie sprężyny przejdź do Azure Portal i Wyszukaj stronę Konfiguracja aplikacji.  Dodaj zmienną środowiskową o nazwie `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` i `*` wartość. 
 
 1. Uruchom ponownie aplikację.
 
-1. Przejdź do `https://<the test endpoint of your app>/actuator/env` i sprawdź odpowiedź.  Powinny wyglądać następująco:
+1. Przejdź do `https://<your application test endpoint>/actuator/env` i sprawdź odpowiedź.  Powinny wyglądać następująco:
 
     ```json
     {
@@ -182,16 +189,16 @@ Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzi�
     }
     ```
 
-Znajdź węzeł podrzędny o nazwie `systemEnvironment`.  Ten węzeł zawiera zmienne środowiskowe aplikacji.
+Wyszukaj węzeł podrzędny o nazwie `systemEnvironment`.  Ten węzeł zawiera zmienne środowiskowe aplikacji.
 
 > [!IMPORTANT]
-> Pamiętaj, aby wycofać narażenie zmiennych środowiskowych przed udostępnieniem aplikacji publicznie.  Przejdź do Azure Portal, Znajdź stronę konfiguracji aplikacji i Usuń tę zmienną środowiskową: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
+> Pamiętaj, aby wycofać narażenie zmiennych środowiskowych przed udostępnieniem aplikacji publicznie.  Przejdź do Azure Portal, Wyszukaj stronę Konfiguracja aplikacji i Usuń tę zmienną środowiskową: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
-### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Nie mogę odnaleźć metryk ani dzienników dla mojej aplikacji
+### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nie mogę znaleźć metryk lub dzienników dla mojej aplikacji
 
-Przejdź do pozycji _Zarządzanie aplikacjami_ _, aby_upewnić się, że aplikacja jest _uruchomiona i działa_ .
+Przejdź do pozycji **Zarządzanie aplikacjami** , aby upewnić się, że Stany aplikacji są _uruchomione_ i w _górę_.
 
-Jeśli są wyświetlane metryki z _JVM_ , ale nie metryki z _Tomcat_, sprawdź, czy w pakiecie aplikacji jest włączona zależność`spring-boot-actuator` i czy rozruch został pomyślnie uruchomiony.
+Jeśli są wyświetlane metryki z _JVM_ , ale nie metryki z _Tomcat_, sprawdź, czy w pakiecie aplikacji jest włączona zależność `spring-boot-actuator` i czy rozruch został pomyślnie uruchomiony.
 
 ```xml
 <dependency>
@@ -200,4 +207,4 @@ Jeśli są wyświetlane metryki z _JVM_ , ale nie metryki z _Tomcat_, sprawdź, 
 </dependency>
 ```
 
-Jeśli dzienniki aplikacji można zarchiwizować na koncie magazynu, ale nie są one wysyłane do usługi _Azure Log Analytics_, sprawdź, czy [obszar roboczy został prawidłowo skonfigurowany](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). W przypadku korzystania z bezpłatnej warstwy _usługi Azure log Analytics_należy pamiętać, że [warstwa Bezpłatna nie zapewnia umowy SLA](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Jeśli dzienniki aplikacji można zarchiwizować na koncie magazynu, ale nie są wysyłane do usługi Azure Log Analytics, należy sprawdzić, czy [obszar roboczy został skonfigurowany prawidłowo](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). W przypadku korzystania z bezpłatnej warstwy usługi Azure Log Analytics należy pamiętać, że [w warstwie Bezpłatna nie jest oferowana umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).

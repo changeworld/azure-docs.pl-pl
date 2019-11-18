@@ -1,19 +1,15 @@
 ---
-title: Rozwiązywanie typowych błędów wdrażania platformy Azure | Microsoft Docs
+title: Rozwiązywanie typowych błędów związanych z wdrażaniem
 description: Opisuje sposób rozwiązywania typowych błędów podczas wdrażania zasobów na platformie Azure przy użyciu Azure Resource Manager.
 tags: top-support-issue
-author: tfitzmac
-keywords: Błąd wdrażania, wdrażanie platformy Azure, wdrażanie na platformie Azure
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 27f3b9db40e00ea0a00e50333fe86248906d8560
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263043"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150637"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiązywanie typowych błędów wdrażania platformy Azure za pomocą Azure Resource Manager
 
@@ -33,7 +29,7 @@ Jeśli szukasz informacji o kodzie błędu i te informacje nie zostały podane w
 | AnotherOperationInProgress | Poczekaj na zakończenie operacji współbieżności. | |
 | AuthorizationFailed | Twoje konto lub jednostka usługi nie ma wystarczających uprawnień, aby ukończyć wdrażanie. Sprawdź rolę, do której należy konto, i dostęp do zakresu wdrożenia.<br><br>Ten błąd może pojawić się, jeśli nie zarejestrowano wymaganego dostawcy zasobów. | [Access Control oparte na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Rozwiązywanie rejestracji](resource-manager-register-provider-errors.md) |
 | Nieprawidłowego żądania | Wartości wdrożeń są wysyłane, które nie są zgodne z oczekiwaniami Menedżer zasobów. Sprawdź wewnętrzny komunikat o stanie, aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Odwołania do szablonu](/azure/templates/) i [obsługiwane lokalizacje](resource-location.md) |
-| Kolizj | Żądasz operacji, która nie jest dozwolona w bieżącym stanie zasobu. Na przykład zmiany rozmiarów dysków są dozwolone tylko w przypadku tworzenia maszyny wirtualnej lub po cofnięciu przydziału maszyny wirtualnej. | |
+| kolizj | Żądasz operacji, która nie jest dozwolona w bieżącym stanie zasobu. Na przykład zmiany rozmiarów dysków są dozwolone tylko w przypadku tworzenia maszyny wirtualnej lub po cofnięciu przydziału maszyny wirtualnej. | |
 | DeploymentActiveAndUneditable | Poczekaj na ukończenie współbieżnego wdrażania tej grupy zasobów. | |
 | DeploymentFailedCleanUp | Podczas wdrażania w trybie kompletnym wszystkie zasoby, które nie znajdują się w szablonie, są usuwane. Ten błąd występuje, gdy nie masz odpowiednich uprawnień, aby usunąć wszystkie zasoby, które nie znajdują się w szablonie. Aby uniknąć tego błędu, Zmień tryb wdrożenia na przyrostowy. | [Azure Resource Manager tryby wdrażania](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | Nazwa wdrożenia może zawierać tylko litery, cyfry, znaki "-", "." lub "_". | |
@@ -94,7 +90,7 @@ Błędy weryfikacji wynikają z sytuacji, które można rozpoznać przed przyst�
 
 Oba rodzaje błędów zwracają kod błędu, którego należy użyć do rozwiązania problemów z wdrożeniem. Oba rodzaje błędów są wyświetlane w [dzienniku aktywności](resource-group-audit.md). Błędy weryfikacji nie są jednak wyświetlane w historii wdrażania, ponieważ wdrożenie nie jest w takim przypadku rozpoczynane.
 
-### <a name="validation-errors"></a>błędy walidacji
+### <a name="validation-errors"></a>Błędy walidacji
 
 Podczas wdrażania za pośrednictwem portalu zobaczysz błąd weryfikacji po przesłaniu własnych wartości.
 
@@ -104,7 +100,7 @@ Wybierz komunikat, aby uzyskać więcej informacji. Na poniższej ilustracji zos
 
 ![Pokaż szczegóły walidacji](./media/resource-manager-common-deployment-errors/validation-details.png)
 
-### <a name="deployment-errors"></a>błędy wdrożenia
+### <a name="deployment-errors"></a>Błędy wdrożenia
 
 Jeśli operacja przeszła weryfikację, ale kończy się niepowodzeniem podczas wdrażania, otrzymasz błąd wdrażania.
 
@@ -132,7 +128,7 @@ Zostanie wyświetlony komunikat o błędzie i kody błędu. Zauważ, że są tam
 
 ![Szczegóły błędu](./media/resource-manager-common-deployment-errors/error-details.png)
 
-## <a name="enable-debug-logging"></a>Włącz rejestrowanie debugowania
+## <a name="enable-debug-logging"></a>Włączenie rejestrowania debugowania
 
 Czasami potrzebujesz więcej informacji na temat żądania i odpowiedzi, aby dowiedzieć się, co poszło źle. Podczas wdrażania możesz poprosić o zarejestrowanie dodatkowych informacji podczas wdrażania.
 
@@ -198,7 +194,7 @@ az group deployment operation list \
   --query [].properties.response
 ```
 
-### <a name="nested-template"></a>Szablon zagnieżdżony
+### <a name="nested-template"></a>Zagnieżdżony szablon
 
 Aby rejestrować informacje debugowania dla szablonu zagnieżdżonego, należy użyć elementu **debugSetting** .
 

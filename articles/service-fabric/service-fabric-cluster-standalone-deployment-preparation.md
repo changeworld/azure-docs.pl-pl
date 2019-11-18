@@ -1,6 +1,6 @@
 ---
-title: Przygotowanie do wdrożenia klastra autonomicznego platformy Azure Service Fabric | Microsoft Docs
-description: Dokumentacja dotycząca przygotowania środowiska i tworzenia konfiguracji klastra do uwzględnienia przed wdrożeniem klastra przeznaczonego do obsługi obciążeń produkcyjnych.
+title: Przygotowywania wdrożenia klastra autonomicznego usługi platformy Azure w sieci szkieletowej | Dokumentacja firmy Microsoft
+description: Dokumentacja związanych z przygotowywaniem środowiska i tworzenia konfiguracji klastra, należy wziąć pod uwagę przed wdrożeniem klastra przeznaczone do obsługi obciążeń produkcyjnych.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -13,132 +13,133 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 96956e1ad935933572b1f2d31b70ef64f8b92501
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 8b9f659098e563a3dc0692530ad798a5c763551f
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175856"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133399"
 ---
-# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planowanie i przygotowywanie Service Fabric wdrożenia klastra autonomicznego
+# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planowanie i przygotowanie wdrożenia klastra usługi Service Fabric autonomiczny
 
 <a id="preparemachines"></a>Przed utworzeniem klastra wykonaj poniższe czynności.
 
 ## <a name="plan-your-cluster-infrastructure"></a>Planowanie infrastruktury klastra
-Zamierzasz utworzyć klaster Service Fabric na maszynach, które są "własne", dzięki czemu możesz zdecydować, jakiego rodzaju awarie klaster ma przeżyły. Czy na przykład chcesz mieć osobne linie zasilające lub połączenia internetowe dostarczane do tych maszyn? Ponadto należy wziąć pod uwagę fizyczne zabezpieczenia tych maszyn. Gdzie znajdują się maszyny i które wymagają dostępu do nich? Po wprowadzeniu tych decyzji można logicznie mapować maszyny do różnych domen błędów (Zobacz następny krok). Planowanie infrastruktury dla klastrów produkcyjnych jest bardziej związane niż w przypadku klastrów testowych.
+Masz zamiar utworzyć klaster usługi Service Fabric na maszynach, gdy jesteś "właścicielem", można zdecydować, jakiego rodzaju błędów ma klaster umożliwiającą przetrwanie. Na przykład czy potrzebujesz oddzielnych, linie zasilania lub połączenia przez Internet do tych maszyn? Ponadto należy wziąć pod uwagę zabezpieczenia fizyczne maszyn. Maszyny lokalizację i który musi mieć dostęp do nich? Po wprowadzeniu tych decyzji, komputery można mapować logicznie do różnych domen błędów (patrz następny krok). W przypadku klastrów produkcyjnych z planowaniem infrastruktury jest bardziej skomplikowane niż w przypadku klastrów testowych.
 
-## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Określanie liczby domen błędów i domen uaktualnienia
-[ *Domena błędów* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) jest fizyczną jednostką awarii i jest bezpośrednio związana z infrastrukturą fizyczną w centrach danych. Domena błędów składa się ze składników sprzętowych (komputerów, przełączników, sieci i innych), które współużytkują single point of failure. Chociaż nie istnieje 1:1 mapowanie między domenami błędów i stojakami, luźno mówiąc, każdy Stojak może być traktowany jako domena błędów.
+## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Określenie liczby domen błędów i uaktualnień
+A [ *domena błędów* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) jest miejscem, awarii i jest bezpośrednio związane z infrastrukturą fizyczną w centrach danych. Domena błędów składa się z składniki sprzętowe (komputery, przełączniki, sieci i inne), które współużytkują pojedynczy punkt awarii. Mimo że nie istnieje żadne mapowanie 1:1 między domenami błędów i stojaki, luźno wypowiedzi, każdy Stojak jest uznawana za domeny błędów.
 
-Po określeniu domenami błędów w pliku ClusterConfig. JSON można wybrać nazwę dla każdego FD. Service Fabric obsługuje hierarchiczne domenami błędów, dzięki czemu można odzwierciedlić topologię infrastruktury.  Na przykład następujące domenami błędów są prawidłowe:
+Po określeniu domenach błędów w ClusterConfig.json można wybrać nazwę każdego FD. Usługa Service Fabric obsługuje hierarchiczne błędów, dzięki czemu może odzwierciedlać topologii infrastruktury w nich.  Na przykład poniższy domenami błędów są prawidłowe:
 
-* "faultDomain": "FD:/Room1/Szafa1/Maszyna1"
-* "faultDomain": "FD:/FD1"
-* "faultDomain": "FD:/Room1/Szafa1/PDU1/M1"
+* "faultDomain": "fd: / Komputer1-Room1/szafa1"
+* "faultDomain": "fd: / FD1"
+* "faultDomain": "fd: / Room1/szafa1/PDU1 znajdującego/M1"
 
-*Domena uaktualnienia* (UD) jest jednostką logiczną węzłów. Podczas Service Fabricch uaktualnień w ramach aranżacji (Uaktualnienie aplikacji lub uaktualnienie klastra) wszystkie węzły w UD są przełączane w celu przeprowadzenia uaktualnienia, podczas gdy węzły w innych, są nadal dostępne do obsłużenia żądań. Uaktualnienia oprogramowania układowego wykonywanego na maszynach nie są honorowane, więc należy wykonać je pojedynczo.
+*Domeny uaktualnień* (UD) jest jednostki logicznej węzłów. Podczas uaktualniania usługi Service Fabric zorganizowanych (uaktualnienie aplikacji lub uaktualniania klastra) wszystkie węzły w UD przechodzą w dół do uaktualnienia węzłów w innych domenach uaktualniania pozostaną dostępne obsłużyć żądania. Aktualizacje oprogramowania układowego, wykonania na maszynach, nie uznają domenami aktualizacji, więc musisz je jednym komputerze w danym momencie.
 
-Najprostszym sposobem na podejście do tego koncepcji jest rozważenie domenami błędów jako jednostki nieplanowanego błędu i odnoszącego się do jednostki planowanej konserwacji.
+Najprostszym sposobem Pomyśl o tych pojęciach jest jednostką nieplanowanych awarii i domenach uaktualniania jednostką planowanej konserwacji należy wziąć pod uwagę domenami błędów.
 
-Jeśli określisz wartość w ClusterConfig. JSON, możesz wybrać nazwę dla każdego UDu. Na przykład następujące nazwy są prawidłowe:
+Po określeniu domenami aktualizacji w ClusterConfig.json można wybrać nazwę każdego UD. Na przykład następujące nazwy są prawidłowe:
 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
-* "upgradeDomain": "niebieska"
+* "upgradeDomain": "Niebieski"
 
-Aby uzyskać bardziej szczegółowe informacje na temat domenami błędów i do programu, zobacz [opisywanie klastra Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md).
+Aby uzyskać szczegółowe informacje na temat błędów i domenami aktualizacji, zobacz [opisujące klaster usługi Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Klaster w środowisku produkcyjnym powinien obejmować co najmniej trzy domenami błędów, aby można było je obsłużyć na potrzeby środowiska produkcyjnego. Jeśli masz pełną kontrolę nad konserwacją i zarządzaniem węzłami, oznacza to, że użytkownik jest odpowiedzialny za aktualizowanie i zastępowanie maszyn. W przypadku klastrów działających w środowiskach (czyli Amazon Web Services wystąpienia maszyn wirtualnych), w których nie masz pełnej kontroli nad maszynami, w klastrze powinien znajdować się co najmniej pięć domenami błędów. Każdy FD może mieć co najmniej jeden węzeł. Ma to na celu zapobieganie problemom spowodowanym przez uaktualnienia i aktualizacje maszyn, które w zależności od ich czasu mogą zakłócać uruchamianie aplikacji i usług w klastrach.
+Klastra w środowisku produkcyjnym powinien obejmować co najmniej trzech domenach błędów, aby mogły być obsługiwane w środowisku produkcyjnym, jeśli masz pełną kontrolę nad obsługi i zarządzanie węzłami, oznacza to, że użytkownik jest odpowiedzialny aktualizacji i zastępując maszyn. W przypadku klastrów działających w środowiskach (czyli wystąpienia Amazon Web Services w maszynie Wirtualnej), w których nie masz pełną kontrolę nad maszynami powinien mieć co najmniej 5 domenami błędów w klastrze. Każdy FD może mieć co najmniej jeden węzeł. Ma to zapobiec występowaniu problemów spowodowanych maszyny uaktualnienia i aktualizacje, które mogą zakłócać uruchamianie aplikacji i usług w klastrach w zależności od ich czas trwania.
 
-## <a name="determine-the-initial-cluster-size"></a>Określanie początkowego rozmiaru klastra
+## <a name="determine-the-initial-cluster-size"></a>Określ rozmiar klastra
 
-Ogólnie rzecz biorąc, liczba węzłów w klastrze jest określana na podstawie potrzeb firmy, czyli liczby usług i kontenerów, które będą działać w klastrze i ile zasobów jest potrzebnych do utrzymania obciążeń. W przypadku klastrów produkcyjnych zalecamy używanie co najmniej pięciu węzłów w klastrze, obejmujących 5 domenami błędów. Jednak zgodnie z powyższym opisem, jeśli masz pełną kontrolę nad węzłami i może obejmować trzy domenami błędów, to zadanie jest również trzy węzły.
+Ogólnie rzecz biorąc liczbę węzłów w klastrze jest określana w oparciu o Twoje potrzeby biznesowe, które jest, jak wiele usług i kontenery będą działać w klastrze i ile zasobów należy utrzymywanie obciążeń. W przypadku klastrów produkcyjnych zalecamy posiadanie co najmniej pięciu węzłów w klastrze, obejmujące 5 domenami błędów. Jednak zgodnie z powyższym opisem, jeśli mają pełną kontrolę nad węzły i mogą znajdować się na trzech domenami błędów następnie trzy węzły należy również wykonać zadanie.
 
-Klastry testowe z uruchomionymi obciążeniami stanowymi powinny mieć trzy węzły, podczas gdy klastry testowe tylko z uruchomionymi obciążeniami bezstanowymi potrzebują tylko jednego węzła. Należy również zauważyć, że w celach programistycznych można mieć więcej niż jeden węzeł na danej maszynie. W środowisku produkcyjnym Service Fabric obsługuje tylko jeden węzeł na maszynę fizyczną lub wirtualną.
+Klastrów testowych obciążeń stanowych powinien mieć trzy węzły klastrów testowych tylko uruchamianie tylko w przypadku obciążeń bezstanowych powinny jeden węzeł. Należy również zauważyć, że w celach programistycznych więcej niż jeden węzeł może mieć na danym komputerze. W środowisku produkcyjnym, Usługa Service Fabric obsługuje tylko jeden węzeł na maszynie fizycznej lub wirtualnej.
 
-## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Przygotuj maszyny, które będą działać jako węzły
+## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Przygotowywanie komputerów, które będzie służyć jako węzły
 
-Poniżej przedstawiono niektóre zalecane specyfikacje dla każdej maszyny, która ma zostać dodana do klastra:
+Poniżej przedstawiono niektóre specyfikacje zalecane dla każdego komputera, który chcesz dodać do klastra:
 
 * Co najmniej 16 GB pamięci RAM
 * Co najmniej 40 GB dostępnego miejsca na dysku
-* Procesor 4-lub większy
-* Łączność z bezpieczną siecią lub sieciami dla wszystkich maszyn
+* 4 rdzenie lub większa procesora CPU
+* Łączność z bezpiecznej sieci lub sieci dla wszystkich maszyn
 * Zainstalowany system operacyjny Windows Server (prawidłowe wersje: 2012 R2, 2016, 1709 lub 1803). Service Fabric w wersji 6.4.654.9590 i nowszych również obsługuje serwer 2019 i 1809.
-* [.NET Framework 4.5.1 lub nowszy](https://www.microsoft.com/download/details.aspx?id=40773), pełna instalacja
-* [Środowisko Windows PowerShell 3,0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
-* [Usługa RemoteRegistry](https://technet.microsoft.com/library/cc754820) powinna być uruchomiona na wszystkich maszynach
+* [.NET framework 4.5.1 lub nowszej](https://www.microsoft.com/download/details.aspx?id=40773), pełna instalacja
+* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
+* [Usługi RemoteRegistry](https://technet.microsoft.com/library/cc754820) powinna być uruchomiona na wszystkich komputerach
 * Dysk instalacji Service Fabric musi mieć system plików NTFS
 
-Administrator klastra wdrażający i konfigurujący klaster musi mieć [uprawnienia administratora](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) na każdej z tych maszyn. Usługi Service Fabric nie można zainstalować na kontrolerze domeny.
+Administrator klastra, wdrażanie i konfigurowanie klastra musi mieć [uprawnień administratora](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) na poszczególnych maszynach. Usługi Service Fabric nie można zainstalować na kontrolerze domeny.
 
-## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Pobierz pakiet autonomiczny Service Fabric dla systemu Windows Server
-[Link do pobierania — Service Fabric autonomiczny pakiet — system Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) i rozpakować pakiet na maszynę wdrożenia, która nie jest częścią klastra, lub do jednej z maszyn, które będą częścią klastra.
+## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Pobieranie pakietu autonomicznego usługi Service Fabric dla systemu Windows Server
+[Pobierz Link - pakietu autonomicznego usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) i Rozpakuj pakiet maszyną wdrożenia, który nie jest częścią klastra lub do jednej z maszyn, które będzie częścią klastra.
 
-## <a name="modify-cluster-configuration"></a>Modyfikuj konfigurację klastra
-Aby utworzyć klaster autonomiczny, należy utworzyć autonomiczny plik konfiguracji klastra ClusterConfig. JSON, który opisuje specyfikację klastra. Plik konfiguracji można oprzeć na szablonach znalezionych w poniższym łączu. <br>
+## <a name="modify-cluster-configuration"></a>Modyfikowanie konfiguracji klastra
+Tworzenie klastra autonomicznego należy utworzyć autonomiczny klaster ClusterConfig.json pliku konfiguracji, który opisuje specyfikacji klastra. Można utworzyć pliku konfiguracji na tych szablonach adrese Poniższy link. <br>
 [Konfiguracje klastra autonomicznego](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-Aby uzyskać szczegółowe informacje dotyczące sekcji w tym pliku, zobacz [Ustawienia konfiguracji autonomicznego klastra systemu Windows](service-fabric-cluster-manifest.md).
+Aby uzyskać szczegółowe informacje na sekcje, w tym pliku, zobacz [ustawienia konfiguracji dla autonomicznego klastra Windows](service-fabric-cluster-manifest.md).
 
-Otwórz jeden z plików ClusterConfig. JSON z pobranego pakietu i zmodyfikuj następujące ustawienia:
+Otwórz jeden z plików ClusterConfig.json z pakietu, które zostały pobrane i zmodyfikować następujące ustawienia:
 
-| **Ustawienie konfiguracji** | **Opis** |
+| **Ustawienia konfiguracji** | **Opis** |
 | --- | --- |
-| **Elementów NodeType** |Typy węzłów umożliwiają rozdzielenie węzłów klastra do różnych grup. Klaster musi mieć co najmniej jedną NodeType. Wszystkie węzły w grupie mają następujące typowe cechy: <br> **Nazwa** — nazwa typu węzła. <br>**Porty punktów końcowych** — są to różne nazwane punkty końcowe (porty), które są skojarzone z tym typem węzła. Możesz użyć dowolnego numeru portu, o ile nie są one sprzeczne z żadnym innym w tym manifeście i nie są jeszcze używane przez żadną inną aplikację uruchomioną na komputerze/maszynie wirtualnej. <br> **Właściwości umieszczania** — te informacje opisują właściwości tego typu węzła, które są używane jako ograniczenia umieszczania dla usług systemowych lub usług. Te właściwości to zdefiniowane przez użytkownika pary klucz/wartość, które zapewniają dodatkowe metadane dla danego węzła. Przykładami właściwości węzła jest to, czy węzeł ma dysk twardy, czy kartę graficzną, liczbę jednostek na dysku twardym, rdzenie i inne właściwości fizyczne. <br> **Pojemności** — pojemności węzłów definiują nazwę i ilość określonego zasobu, który jest dostępny do użycia w określonym węźle. Na przykład węzeł może zdefiniować, że ma pojemność dla metryki o nazwie "MemoryInMb" i że ma ona domyślnie dostępne 2048 MB. Te pojemności są używane w czasie wykonywania w celu zapewnienia, że usługi wymagające określonych ilości zasobów są umieszczane w węzłach, w których te zasoby są dostępne w wymaganych ilościach.<br>**Isprimary** — Jeśli masz więcej niż jeden NodeType, upewnij się, że tylko jeden z nich jest ustawiony na wartość *true*, co oznacza, że usługi systemowe są uruchamiane. Dla wszystkich innych typów węzłów należy ustawić wartość *false* . |
-| **Nich** |Są to szczegółowe informacje dotyczące każdego z węzłów, które są częścią klastra (typu węzła, nazwy węzła, adresu IP, domeny błędów i domeny uaktualnienia węzła). Komputery, na których ma zostać utworzone klaster, muszą być wymienione w tym miejscu przy użyciu adresów IP. <br> Jeśli używasz tego samego adresu IP dla wszystkich węzłów, zostanie utworzony klaster jednokrotny, którego można użyć do celów testowych. Nie należy używać jednobox klastrów do wdrażania obciążeń produkcyjnych. |
+| **Elementy NodeType** |Typy węzłów umożliwiają oddzielenie węzły klastra w różnych grupach. Klaster musi mieć co najmniej jeden element NodeType. Wszystkie węzły w grupie mają następujące cechy wspólne: <br> **Nazwa** — jest to nazwa typu węzła. <br>**Porty punktów końcowych** — te mają różne nazwy punktów końcowych (porty), które są skojarzone z tym typem węzła. Można użyć dowolnego numeru portu, chcesz, tak długo, jak nie powodują konfliktów z niczego więcej w tym manifeście i nie są już używane przez wszystkie inne aplikacje uruchomione na maszynie/na maszynie Wirtualnej. <br> **Właściwości umieszczania** — te opisują właściwości dla tego typu węzła używanego jako ograniczeniami dotyczącymi umieszczania dla usług systemu lub usługi. Te właściwości to pary klucz/wartość zdefiniowanych przez użytkownika, które zapewniają dodatkowe metadane dla danego węzła. Przykłady — właściwości węzła byłaby, czy węzeł zawiera dysk twardy lub karty graficznej, od liczby dysków w jego dysku twardym, rdzeni i inne właściwości fizyczne. <br> **Pojemności** — wydajność węzłów zdefiniować nazwę i sumę określonego zasobu, określony węzeł jest dostępne do użycia. Na przykład węzeł mogą określić, czy ma ona wydajności dla metryki o nazwie "MemoryInMb" i ma dostępne 2048 MB, domyślnie. Te możliwości są używane w czasie wykonywania, aby upewnić się, że usługi, które wymagają określonej ilości zasobów są umieszczane w węzły, które mają te zasoby, które są dostępne w ilości wymaganych.<br>**IsPrimary** — Jeśli masz więcej niż jeden element NodeType zdefiniowane upewnij się, że tylko jedna jest ustawiona na podstawowej z wartością *true*, czyli, gdzie system usług przebiegu. Wszystkie pozostałe typy węzła powinna być równa wartości *false* |
+| **Węzły** |Oto szczegóły dla każdego z węzłów, które są częścią klastra (typ węzła, nazwa węzła, adres IP, domeny błędów i domeny uaktualnień węzła). Komputery mają klastra, który ma zostać utworzony na potrzeby pojawić się tutaj za pomocą ich adresów IP. <br> Jeśli używasz tego samego adresu IP dla wszystkich węzłów klastra jednopunktowe tworzona jest, które służy do celów testowych. Nie używaj klastrów jednopunktowe wdrażania obciążeń produkcyjnych. |
 
-Po skonfigurowaniu wszystkich ustawień środowiska przez konfigurację klastra można je przetestować względem środowiska klastra (krok 7).
+Po konfiguracji klastra miał wszystkie ustawienia skonfigurowane w środowisku, może zostać przetestowany przeciwko środowisku klastra (krok 7).
 
 <a id="environmentsetup"></a>
 
 ## <a name="environment-setup"></a>Konfiguracja środowiska
 
-Gdy administrator klastra konfiguruje autonomiczny klaster Service Fabric, należy skonfigurować środowisko z następującymi kryteriami: <br>
-1. Użytkownik tworzący klaster powinien mieć uprawnienia zabezpieczeń na poziomie administratora dla wszystkich komputerów, które są wymienione jako węzły w pliku konfiguracji klastra.
-2. Maszyna, z której jest tworzony klaster, a także każda maszyna węzła klastra musi:
-   * Odinstalowanie zestawu SDK Service Fabric
-   * Zainstalowano środowisko uruchomieniowe Service Fabric 
-   * Mieć włączoną usługę Zapora systemu Windows (MpsSvc)
-   * Włączono usługę Rejestr zdalny (Rejestr zdalny)
-   * Mieć otwarte wymagane porty na podstawie portów konfiguracji klastra
-   * Mieć otwarte wymagane porty dla usługi Rejestr zdalny: 135, 137, 138 i 139
-   * Połączenie sieciowe ze sobą
-3. Żadna z maszyn węzłów klastra nie powinna być kontrolerem domeny.
-4. Jeśli klaster, który ma zostać wdrożony, jest zabezpieczonym klastrem, sprawdź, czy zostały spełnione wymagania wstępne dotyczące zabezpieczeń i czy zostały prawidłowo skonfigurowane na potrzeby konfiguracji.
-5. Jeśli maszyny klastra nie są dostępne w Internecie, ustaw następujące ustawienia w konfiguracji klastra:
-   * Wyłącz telemetrię: w obszarze *Właściwości* Ustaw *"enableTelemetry": false*
-   * Wyłącz pobieranie automatycznej wersji sieci szkieletowej & powiadomienia, że aktualna wersja klastra zbliża się do końca wsparcia: w obszarze *Właściwości* Ustaw *"fabricClusterAutoupgradeEnabled": false*
-   * Alternatywnie, jeśli dostęp do sieci Internet jest ograniczony do domen z białej listy, poniższe domeny są wymagane do automatycznego uaktualniania: go.microsoft.com download.microsoft.com
+Gdy administrator klastra umożliwia skonfigurowanie klastra autonomicznego usługi Service Fabric, środowisko musi można skonfigurować przy użyciu następujących kryteriów: <br>
+1. Użytkownik tworzący klaster powinien mieć uprawnienia zabezpieczeń na poziomie administratora do wszystkich maszyn, które są wymienione jako węzły w pliku konfiguracji klastra.
+2. Komputer, z którego został utworzony klaster, a także każdego komputera węzła klastra musi:
+   * Odinstalowano zestaw SDK usługi Service Fabric
+   * Środowiska uruchomieniowego usługi Service Fabric odinstalowane
+   * Czy włączono usługę Windows zapory (mpssvc)
+   * Czy włączono usługę Rejestr zdalny (Rejestr zdalny)
+   * Plik włączenia udostępniania serwera (SMB)
+   * Masz wymagane porty otwarte, oparta na portach konfiguracji klastra
+   * Masz wymagane porty otworzyć dla usługi Windows SMB i Rejestr zdalny: 135, 137, 138, 139 i 445
+   * Mieć łączność sieciową ze sobą
+3. Żadna z maszyn węzeł klastra powinien być kontrolerem domeny.
+4. Jeśli można wdrożyć klaster jest zabezpieczony klaster, sprawdź poprawność niezbędne wymagania wstępne znajdują się w miejscu i są poprawnie skonfigurowane dla konfiguracji zabezpieczeń.
+5. Jeśli na komputerach klastra nie są dostępne za pośrednictwem Internetu, należy ustawić następującą w konfiguracji klastra:
+   * Wyłączanie telemetrii: w obszarze *właściwości* ustaw *"enableTelemetry": false*
+   * Wyłącz automatyczne pobieranie wersja sieci szkieletowej & powiadomienia, że bieżąca wersja klastra zbliża się koniec obsługi: w obszarze *właściwości* ustaw *"fabricClusterAutoupgradeEnabled": false*
+   * Alternatywnie dostęp do sieci internet jest ograniczona do biały na liście domen, domen poniżej są wymagane dla automatyczne uaktualnianie: witrynie download.microsoft.com go.microsoft.com
 
-6. Ustaw odpowiednie wykluczenia programu antywirusowego Service Fabric:
+6. Ustaw odpowiednie wyjątki programu antywirusowego usługi Service Fabric:
 
-| **Wykluczone katalogi oprogramowania antywirusowego** |
+| **Antywirusowe wykluczone katalogi** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (z konfiguracji klastra) |
 | FabricLogRoot (z konfiguracji klastra) |
 
-| **Wykluczone procesy programu antywirusowego** |
+| **Antywirusowe wykluczone procesy** |
 | --- |
-| Fabric. exe |
-| Elemencie fabrichost określono. exe |
-| Usługi fabricinstallerservice. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| Program fabricdca. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
 
-## <a name="validate-environment-using-testconfiguration-script"></a>Weryfikuj środowisko przy użyciu skryptu TestConfiguration
-Skrypt TestConfiguration. ps1 można znaleźć w pakiecie autonomicznym. Jest on używany jako Analizator najlepszych rozwiązań do sprawdzania poprawności niektórych kryteriów powyżej i powinien być używany jako Sanity, aby sprawdzić, czy klaster można wdrożyć w danym środowisku. Jeśli wystąpi awaria, zapoznaj się z listą w obszarze [Konfiguracja środowiska](service-fabric-cluster-standalone-deployment-preparation.md) w celu rozwiązywania problemów. 
+## <a name="validate-environment-using-testconfiguration-script"></a>Weryfikowanie środowiska za pomocą skryptu TestConfiguration
+Skrypt TestConfiguration.ps1 można znaleźć w pakiecie autonomicznym. On używany jako Analizator najlepszych rozwiązań do weryfikowania niektórych z powyższych kryteriów i powinny służyć jako wyboru poprawnością można sprawdzić, czy można wdrożyć klaster w danym środowisku. Jeśli istnieje jakikolwiek błąd, można znaleźć na liście w obszarze [konfiguracji środowiska](service-fabric-cluster-standalone-deployment-preparation.md) do rozwiązywania problemów.
 
-Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administratora do wszystkich maszyn wymienionych jako węzły w pliku konfiguracji klastra. Maszyna, na której jest uruchomiony ten skrypt, nie musi być częścią klastra.
+Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administratora do wszystkich maszyn, które są wymienione jako węzły w pliku konfiguracji klastra. Komputer, na którym uruchamiany jest skrypt nie musi być częścią klastra.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
@@ -159,12 +160,12 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-Obecnie ten moduł testowania konfiguracji nie sprawdza poprawności konfiguracji zabezpieczeń, dlatego musi być wykonywany niezależnie.  
+Obecnie tego modułu do testowania konfiguracji nie sprawdza poprawności konfiguracji zabezpieczeń, więc to odbywać się niezależnie.
 
 > [!NOTE]
-> Ciągle wprowadzamy udoskonalenia, aby ten moduł był bardziej niezawodny, więc jeśli wystąpi wadliwy lub brakujący przypadek, w którym sądzisz, że nie jest on obecnie przechwytywany przez TestConfiguration, daj nam znać nasze [kanały pomocy technicznej](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).   
-> 
-> 
+> Nieustannie wprowadzamy ulepszenia się ten moduł działał on bardziej niezawodnie, więc w przypadku przypadek uszkodzone lub brakuje który uważasz, że nie jest aktualnie przechwycony przez TestConfiguration, Daj nam znać za pośrednictwem naszego [obsługuje kanałów](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+>
+>
 
 ## <a name="next-steps"></a>Następne kroki
-* [Tworzenie klastra autonomicznego działającego w systemie Windows Server](service-fabric-cluster-creation-for-windows-server.md)
+* [Tworzenie klastra autonomicznego w systemie Windows Server](service-fabric-cluster-creation-for-windows-server.md)

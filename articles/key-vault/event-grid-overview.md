@@ -1,21 +1,21 @@
 ---
-title: Key Vault monitorowania z Azure Event Grid
-description: Subskrybowanie zdarzeń Key Vault za pomocą Azure Event Grid
+title: 'Samouczek: monitorowanie Key Vault z Azure Event Grid'
+description: 'Samouczek: używanie Azure Event Grid do subskrybowania zdarzeń Key Vault'
 services: media-services
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: article
-ms.date: 10/25/2019
+ms.topic: tutorial
+ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1fa554e03188c4d8d6227a6d2c0a560c3080b0fe
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033500"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133349"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault monitorowania z Azure Event Grid (wersja zapoznawcza)
+# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Samouczek: monitorowanie Key Vault z Azure Event Grid (wersja zapoznawcza)
 
 Integracja Key Vault z usługą Event Grid jest obecnie dostępna w wersji zapoznawczej. Umożliwia ona użytkownikom otrzymywanie powiadomień o zmianie stanu wpisu tajnego przechowywanego w magazynie kluczy. Zmiana stanu jest definiowana jako klucz tajny, który wkrótce wygaśnie (w ciągu 30 dni od wygaśnięcia), klucz tajny, który wygasł, lub wpis tajny, który ma nową wersję. Obsługiwane są powiadomienia dla wszystkich trzech typów tajnych (kluczy, certyfikatów i wpisów tajnych).
 
@@ -45,6 +45,7 @@ Aplikacje, które obsługują zdarzenia Key Vault, powinny spełniać kilka zale
 
 - [Przegląd Azure Key Vault](key-vault-overview.md)
 - [Przegląd Azure Event Grid](../event-grid/overview.md)
-- [Instrukcje: kierowanie zdarzeń Key Vault do elementu Runbook usługi Automation (wersja zapoznawcza)](event-grid-tutorial.md).
+- Instrukcje: [kierowanie zdarzeń Key Vault do elementu Runbook usługi Automation (wersja zapoznawcza)](event-grid-tutorial.md).
+- Instrukcje: [otrzymywanie wiadomości e-mail po zmianie wpisu tajnego magazynu kluczy](event-grid-logicapps.md)
 - [Schemat zdarzeń Azure Event Grid dla Azure Key Vault (wersja zapoznawcza)](../event-grid/event-schema-key-vault.md)
 - [Omówienie usługi Azure Automation](../automation/index.yml)

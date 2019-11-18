@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: daaf5763bde560250ddf70e70466fc9f4ed3e1c2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 11/14/2019
+ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834102"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150051"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -88,14 +88,14 @@ Aby uzyskać więcej informacji, zobacz [porty używane przez Apache Hadoop Serv
 
 Pliki związane z usługą Hadoop można znaleźć w węzłach klastra w `/usr/hdp`. Ten katalog zawiera następujące podkatalogi:
 
-* **2.6.5.3006-29**: Nazwa katalogu jest wersją platformy Hadoop używanej przez usługi HDInsight. Liczba w klastrze może być różna od wymienionej w tym miejscu.
-* **bieżący**: ten katalog zawiera linki do podkatalogów w katalogu **2.6.5.3006-29** . Ten katalog istnieje, aby nie trzeba było pamiętać numeru wersji.
+* **2.6.5.3009-43**: Nazwa katalogu jest wersją platformy Hadoop używanej przez usługi HDInsight. Liczba w klastrze może być różna od wymienionej w tym miejscu.
+* **bieżący**: ten katalog zawiera linki do podkatalogów w katalogu **2.6.5.3009-43** . Ten katalog istnieje, aby nie trzeba było pamiętać numeru wersji.
 
 Przykładowe dane i pliki JAR można znaleźć w rozproszony system plików Hadoop na `/example` i `/HdiSamples`.
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage i Data Lake Storage
 
-W większości dystrybucji usługi Hadoop dane są przechowywane w systemie plików HDFS, który jest objęty magazynem lokalnym na maszynach w klastrze. Użycie magazynu lokalnego może być kosztowne w przypadku rozwiązania opartego na chmurze, które jest obciążane godzinowo lub minutowo za zasoby obliczeniowe.
+W większości dystrybucji usługi Hadoop dane są przechowywane w systemie plików HDFS, który jest objęty magazynem lokalnym na maszynach w klastrze. Korzystanie z magazynu lokalnego może być kosztowne dla rozwiązania opartego na chmurze, w którym opłata jest naliczana co godzinę lub za minutę w przypadku zasobów obliczeniowych.
 
 W przypadku korzystania z usługi HDInsight pliki danych są przechowywane w sposób skalowalny i odporny w chmurze przy użyciu Blob Storage platformy Azure i opcjonalnie Azure Data Lake Storage. Te usługi zapewniają następujące korzyści:
 
@@ -105,7 +105,7 @@ W przypadku korzystania z usługi HDInsight pliki danych są przechowywane w spo
 
 Aby uzyskać więcej informacji, zobacz [Omówienie obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) i [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
-W przypadku korzystania z usługi Azure Storage lub Data Lake Storage nie trzeba wykonywać żadnych specjalnych działań w usłudze HDInsight, aby uzyskiwać dostęp do danych. Na przykład następujące polecenie wyświetla listę plików w folderze `/example/data` niezależnie od tego, czy są one przechowywane w usłudze Azure Storage, czy Data Lake Storage:
+W przypadku korzystania z usługi Azure Storage lub Data Lake Storage nie trzeba wykonywać żadnych specjalnych działań w usłudze HDInsight, aby uzyskiwać dostęp do danych. Na przykład następujące polecenie wyświetla listę plików w folderze `/example/data`, niezależnie od tego, czy są one przechowywane w usłudze Azure Storage, czy Data Lake Storage:
 
     hdfs dfs -ls /example/data
 
@@ -284,5 +284,4 @@ Aby użyć innej wersji składnika, Przekaż potrzebną wersję i użyj jej do z
 
 * [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu API REST usługi Apache Ambari](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z Apache świni z usługą HDInsight](hadoop/hdinsight-use-pig.md)
 * [Korzystanie z zadań MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)

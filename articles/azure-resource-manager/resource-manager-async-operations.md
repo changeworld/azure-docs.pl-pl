@@ -1,18 +1,15 @@
 ---
-title: Stan operacji asynchronicznej — usługi Azure Resource Manager
+title: Stan operacji asynchronicznych
 description: W tym artykule opisano, jak śledzić operacji asynchronicznych na platformie Azure. Pokazuje wartości, które umożliwiają Pobierz stan operacji długotrwałej.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/09/2018
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 56d55365a243a9e51e96985ee0035c43404f82f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 39174010e5d5c71e1b9f09827f92a2c540d98e78
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206294"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149538"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Śledzenie operacji asynchronicznych na platformie Azure
 Niektóre operacje REST platformy Azure jest uruchamiane asynchronicznie, ponieważ nie można ukończyć operacji, szybko. W tym artykule opisano, jak śledzić stan operacji asynchronicznych za pomocą wartości zwracanych w odpowiedzi.  
@@ -185,7 +182,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 Jeśli żądanie jest nadal uruchomione, zostanie wyświetlony kod stanu: 202. Jeśli żądanie zostało ukończone, Twoje wyświetlany kod stanu 200, a treść odpowiedzi zawiera właściwości konta magazynu, który został utworzony.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dokumentacji dotyczącej operacji REST, zobacz [dokumentację interfejsu API REST](/rest/api/).
 * Aby uzyskać informacji na temat wdrażania szablonów przy użyciu interfejsu REST API usługi Resource Manager, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu REST API usługi Resource Manager](resource-group-template-deploy-rest.md).

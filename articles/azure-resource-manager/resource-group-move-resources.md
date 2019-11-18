@@ -1,27 +1,24 @@
 ---
-title: Przenoszenie zasobów platformy Azure do nowej subskrypcji lub grupy zasobów | Microsoft Docs
+title: Przenoszenie zasobów do nowej subskrypcji lub grupy zasobów
 description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskrypcji usługi Azure Resource Manager.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: tomfitz
-ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 11/08/2019
+ms.openlocfilehash: f106de7fd35bdbe91033af173b1f338dd251f4e8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035552"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149692"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
-W tym artykule opisano sposób przenoszenia zasobów platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Do przenoszenia zasobów można użyć Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST.
+W tym artykule opisano sposób przenoszenia zasobów platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Do przenoszenia zasobów możesz użyć witryny Azure Portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
 
-Zarówno Grupa źródłowa, jak i Grupa docelowa są zablokowane podczas operacji przenoszenia. Pisanie i operacje usuwania są zablokowane na temat grup zasobów, dopiero po zakończeniu przenoszenia. Ta blokada oznacza, że nie Dodawanie, aktualizowanie lub usuwanie zasobów w grupach zasobów, ale nie oznacza, że zasoby są zablokowane. Na przykład jeśli zostanie przeniesiony do nowej grupy zasobów programu SQL Server i jego bazy danych, aplikacji korzystającej z bazy danych środowisk bez przestojów. Nadal może odczytywać i zapisywać w bazie danych.
+Zarówno Grupa źródłowa, jak i Grupa docelowa są zablokowane podczas operacji przenoszenia. Operacje zapisu i usuwania na grupach zasobów są blokowane do momentu zakończenia przenoszenia. Ta blokada oznacza, że nie można dodawać, aktualizować ani usuwać zasobów w grupach zasobów. Nie oznacza to, że zasoby są zamrożone. Na przykład jeśli zostanie przeniesiony do nowej grupy zasobów programu SQL Server i jego bazy danych, aplikacji korzystającej z bazy danych środowisk bez przestojów. Nadal może odczytywać i zapisywać w bazie danych. Blokada może trwać maksymalnie cztery godziny, ale większość ruchów kończy się w znacznie krótszym czasie.
 
-Przeniesienie zasobu powoduje przeniesienie go do nowej grupy zasobów lub subskrypcji. Nie zmienia on lokalizacji zasobu.
+Przeniesienie zasobu powoduje jedynie przeniesienie go do nowej grupy zasobów lub subskrypcji. Operacja nie może zmienić lokalizacji zasobu.
 
-## <a name="checklist-before-moving-resources"></a>Listę kontrolną przed przenoszeniem zasobów
+## <a name="checklist-before-moving-resources"></a>Sporządzenie listy kontrolnej przed przeniesieniem zasobów
 
 Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki sprawdzeniu tych warunków można uniknąć błędów.
 
@@ -108,9 +105,9 @@ Przeniesienie zasobów z jednej subskrypcji do innej to proces trójstanowy:
 
 Na potrzeby ilustracji mamy tylko jeden zasób zależny.
 
-* Krok 1: Jeśli zasoby zależne są dystrybuowane w różnych grupach zasobów, najpierw Przenieś je do jednej grupy zasobów.
-* Krok 2: Przenieś zasób i zasoby zależne ze źródłowej subskrypcji do subskrypcji docelowej.
-* Krok 3: Opcjonalnie można ponownie rozesłać zasoby zależne do różnych grup zasobów w ramach subskrypcji docelowej. 
+* Krok 1. Jeśli zasoby zależne są dystrybuowane w różnych grupach zasobów, najpierw Przenieś je do jednej grupy zasobów.
+* Krok 2. przeniesienie zasobu i zasobów zależnych ze źródłowej subskrypcji do subskrypcji docelowej.
+* Krok 3. Opcjonalnie można ponownie rozesłać zasoby zależne do różnych grup zasobów w ramach subskrypcji docelowej. 
 
 ## <a name="validate-move"></a>Waliduj przeniesienie
 
@@ -185,7 +182,7 @@ Po ukończeniu, otrzymasz powiadomienie o wyniku.
 
 ![Pokaż wynik przenoszenia](./media/resource-group-move-resources/show-result.png)
 
-Jeśli wystąpi błąd, zobacz Rozwiązywanie [problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
+Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 
@@ -199,7 +196,7 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 Aby przejść do nowej subskrypcji, należy dołączyć wartość dla `DestinationSubscriptionId` parametru.
 
-Jeśli wystąpi błąd, zobacz Rozwiązywanie [problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
+Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -213,7 +210,7 @@ az resource move --destination-group newgroup --ids $webapp $plan
 
 Aby przejść do nowej subskrypcji, podać `--destination-subscription-id` parametru.
 
-Jeśli wystąpi błąd, zobacz Rozwiązywanie [problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
+Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
 
 ## <a name="use-rest-api"></a>Korzystanie z interfejsu API REST
 
@@ -232,7 +229,52 @@ W treści żądania należy określić docelową grupę zasobów i zasobów, aby
 }
 ```
 
-Jeśli wystąpi błąd, zobacz Rozwiązywanie [problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
+Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
+
+## <a name="frequently-asked-questions"></a>Często zadawane pytania
+
+**Pytanie: Operacja przenoszenia zasobu, która zazwyczaj trwa kilka minut, była uruchomiona przez prawie godzinę. Czy wystąpił problem?**
+
+Przeniesienie zasobu jest skomplikowaną operacją, która ma różne etapy. Może dotyczyć tylko dostawcy zasobów zasobu, który próbujesz przenieść. Ze względu na zależności między dostawcami zasobów, Azure Resource Manager umożliwia ukończenie operacji przez 4 godziny. Ten okres zapewnia dostawcom zasobów możliwość odzyskania sprawności od problemów przejściowych. Jeśli Twoje żądanie przeniesienia jest w okresie 4-godzinnym, operacja kontynuuje próbę wykonania i może nadal się powieść. Źródłowe i docelowe grupy zasobów są zablokowane w tym czasie, aby uniknąć problemów ze spójnością.
+
+**Pytanie: Dlaczego moja grupa zasobów została zablokowana przez 4 godziny podczas przenoszenia zasobów?**
+
+Okno 4-godzinne to maksymalny dozwolony czas przenoszenia zasobów. Aby zapobiec modyfikacji zasobów, zarówno źródłowa, jak i docelowa Grupa zasobów są zablokowane na czas trwania przenoszenia zasobów.
+
+W żądaniu przeniesienia istnieją dwie fazy. W pierwszej fazie zasób jest przenoszony. W drugiej fazie powiadomienia są wysyłane do innych dostawców zasobów, które są zależne od przenoszonego zasobu. Grupę zasobów można zablokować dla całego okna 4-godzinnego, gdy dostawca zasobów nie może wykonać jednej fazy. W dozwolonym czasie Menedżer zasobów ponawianie próby zakończonego niepowodzeniem.
+
+Jeśli zasobu nie można przenieść w oknie 4-godzinnym, Menedżer zasobów odblokowuje obie grupy zasobów. Zasoby, które zostały przeniesione pomyślnie, znajdują się w docelowej grupie zasobów. Zasoby, które nie zostały przeniesione, są pozostawione źródłową grupą zasobów.
+
+**Pytanie: Jakie są konsekwencje źródłowej i docelowej grupy zasobów, które są blokowane podczas przenoszenia zasobów?**
+
+Blokada uniemożliwia usunięcie grupy zasobów, utworzenie nowego zasobu w grupie zasobów albo usunięcie dowolnego z zasobów związanych z przenoszeniem.
+
+Na poniższej ilustracji przedstawiono komunikat o błędzie z Azure Portal, gdy użytkownik próbuje usunąć grupę zasobów, która jest częścią trwającego przenoszenia.
+
+![Przenieś komunikat o błędzie podczas próby usunięcia](./media/resource-group-move-resources/move-error-delete.png)
+
+**Pytanie: co oznacza kod błędu "MissingMoveDependentResources"?**
+
+Podczas przenoszenia zasobu jego zależne zasoby muszą znajdować się w docelowej grupie zasobów lub subskrypcji lub być dołączone do żądania przeniesienia. Kod błędu MissingMoveDependentResources można uzyskać, gdy zasób zależny nie spełnia tego wymagania. Komunikat o błędzie zawiera szczegółowe informacje o zasobach zależnych, które należy uwzględnić w żądaniu przeniesienia.
+
+Na przykład przeniesienie maszyny wirtualnej może wymagać przeniesienia siedmiu typów zasobów z trzema różnymi dostawcami zasobów. Te dostawcy zasobów i typy są:
+
+* Microsoft.Compute
+   * virtualMachines
+   * dysku
+* Microsoft.Network
+  * networkInterfaces
+  * publicIPAddresses
+  * networkSecurityGroups
+  * virtualNetworks
+* Microsoft.Storage
+  * storageAccounts
+
+Inny typowy przykład obejmuje przeniesienie sieci wirtualnej. Może być konieczne przeniesienie kilku innych zasobów skojarzonych z tą siecią wirtualną. Żądanie Move może wymagać przeniesienia publicznych adresów IP, tabel tras, bram sieci wirtualnej, sieciowych grup zabezpieczeń i innych.
+
+**Pytanie: Dlaczego nie mogę przenieść niektórych zasobów na platformę Azure?**
+
+Obecnie nie wszystkie zasoby w ramach pomocy technicznej platformy Azure są przenoszone. Aby zapoznać się z listą zasobów, które obsługują przenoszenie, zobacz [przenoszenie obsługi zasobów](move-support-resources.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

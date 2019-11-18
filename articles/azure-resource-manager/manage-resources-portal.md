@@ -1,19 +1,16 @@
 ---
-title: Zarządzanie zasobami platformy Azure przy użyciu Azure Portal | Microsoft Docs
+title: Zarządzanie zasobami — Azure Portal
 description: Użyj Azure Portal i Azure Resource Manager do zarządzania zasobami. Pokazuje, jak wdrażać i usuwać zasoby.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c52d54ca02436f7224346a65048244a5ec8d104c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 5c0e09930ee53733b36e987356cef2963416006f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390394"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149827"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Zarządzanie zasobami platformy Azure przy użyciu Azure Portal
 
@@ -36,7 +33,7 @@ Zasoby platformy Azure są zorganizowane według usług platformy Azure i grup z
 
 Aby otworzyć zasób według typu usługi:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W okienku po lewej stronie wybierz usługę platformy Azure. W tym przypadku **konta magazynu**.  Jeśli nie widzisz usługi na liście, wybierz pozycję **wszystkie usługi**, a następnie wybierz typ usługi.
 
     ![Otwórz zasób platformy Azure w portalu](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -51,7 +48,7 @@ Aby otworzyć zasób według typu usługi:
 
 Aby otworzyć zasób według grupy zasobów:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W okienku po lewej stronie wybierz pozycję **grupy zasobów** , aby wyświetlić listę zasobów w grupie.
 3. Wybierz zasób, który chcesz otworzyć. 
 
@@ -117,7 +114,7 @@ Możesz wybrać ikonę pinezki w prawym górnym rogu wykresów, aby przypiąć w
 
 ## <a name="manage-access-to-resources"></a>Zarządzanie dostępem do zasobów
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md).
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

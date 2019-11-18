@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e777387437b572eb11ebb7999d87a172b54738bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479609"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151255"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Szybki Start: Tworzenie i szyfrowanie maszyny wirtualnej przy użyciu Azure Portal
 
@@ -19,40 +19,13 @@ Maszyny wirtualne platformy Azure można utworzyć za pomocą witryny Azure Port
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-
-## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
-
-1. Wybierz opcję **Utwórz zasób** w lewym górnym rogu witryny Azure Portal
-1. W polu wyszukiwania wpisz **Key Vault**.
-1. Z listy wyników wybierz pozycję **Key Vault**.
-1. W sekcji Key Vault wybierz pozycję **Utwórz**.
-1. Na ekranie **Tworzenie magazynu kluczy** wybierz unikatową nazwę nowego magazynu kluczy.
-
-    > [!Important]
-    > Każdy Key Vault musi mieć unikatową nazwę. Poniższy przykład tworzy Key Vault o nazwie *myADEKV*, ale należy nazwać coś innego.
-
-1. Wybierz **subskrypcję**.
-1.  W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową**. W wyskakującym okienku wpisz wartość *MyResourceGroup* w polu nazwy grupy zasobów, a następnie wybierz przycisk **OK**. 
-
-    ![Ekran tworzenia grupy zasobów](./media/disk-encryption/portal-qs-keyvaultcreation.png)
-
-1. W menu rozwijanym **Lokalizacja** wybierz pozycję **Wschodnie stany USA**.
-1. Dla pozostałych opcji zostaw wartości domyślne.
-1. Wybierz pozycję "zasady dostępu", co spowoduje przejście do nowego ekranu.
-1. Zaznacz pole wyboru obok pozycji "Włącz dostęp do Azure Disk Encryption szyfrowania woluminów.
-
-    ![Ekran tworzenia z przetworzeniem zasobów](./media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
-
-1. W dolnej części ekranu zasady dostępu kliknij pozycję "Przejrzyj + Utwórz".
-1. Po przejrzeniu kliknij pozycję "Utwórz".
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 1. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu okna witryny Azure Portal.
-
 1. Na stronie nowy w obszarze popularne wybierz pozycję **Ubuntu Server 18,04 LTS**.
 1. Na karcie **podstawy** w obszarze **szczegóły projektu**upewnij się, że wybrano poprawną subskrypcję.
 1. W obszarze **Grupa zasobów**wybierz grupę zasobów, która została utworzona podczas tworzenia magazynu kluczy powyżej (np. Grupa **zasobów).**
@@ -73,15 +46,24 @@ Wdrożenie maszyny wirtualnej potrwa kilka minut. Po zakończeniu wdrażania prz
 1. Na pasku bocznym po lewej stronie wybierz pozycję **dyski**.
 1. Na ekranie dyski wybierz pozycję **szyfrowanie**. 
 
-    ![wybór dysków i szyfrowania](./media/disk-encryption/portal-qs-disks-to-encryption.png)
+    ![wybór dysków i szyfrowania](../media/disk-encryption/portal-qs-disks-to-encryption.png)
 
 1. Na ekranie szyfrowanie w obszarze **dyski do zaszyfrowania**wybierz opcję **dyski systemu operacyjnego i danych**.
-1. W obszarze **Ustawienia szyfrowania**kliknij pozycję "Wybierz magazyn kluczy i klucz do szyfrowania".
-1. Na pasku bocznym po prawej stronie wybierz nazwę magazynu kluczy utworzonego wcześniej jako wartość dla **magazynu kluczy**, a następnie kliknij pozycję **Wybierz**.
+1. W obszarze **Ustawienia szyfrowania**wybierz **pozycję Wybierz magazyn kluczy i klucz do szyfrowania**.
+1. Na ekranie **Wybieranie klucza z Azure Key Vault** wybierz pozycję **Utwórz nowy**.
 
-    ![wybór dysków i szyfrowania](./media/disk-encryption/portal-qs-encrypt-vm-screen.png)
-1. W górnej części ekranu szyfrowania kliknij pozycję "Zapisz". W oknie podręcznym zostanie wyświetlone ostrzeżenie o ponownym uruchomieniu maszyny wirtualnej. Kliknij przycisk **Yes** (Tak).
+    ![wybór dysków i szyfrowania](../media/disk-encryption/portal-qs-keyvault-create.png)
 
+1. Na ekranie **Tworzenie magazynu kluczy** upewnij się, że grupa zasobów jest taka sama jak ta, która została użyta do utworzenia maszyny wirtualnej.
+1. Podaj nazwę magazynu kluczy.  Każdy Magazyn kluczy na platformie Azure musi mieć unikatową nazwę.
+1. Na karcie **zasady dostępu** sprawdź pole **Azure Disk Encryption do szyfrowania woluminów** .
+
+    ![wybór dysków i szyfrowania](../media/disk-encryption/portal-qs-keyvault-enable.png)
+
+1. Wybierz pozycję **Przegląd + utwórz**.  
+1. Po przekazaniu walidacji magazynu kluczy wybierz pozycję **Utwórz**. Spowoduje to powrót do ekranu **wyboru z Azure Key Vault** .
+1. Pozostaw pole **klucza** puste i wybierz **pozycję Wybierz**.
+1. W górnej części ekranu szyfrowania kliknij przycisk **Zapisz**. W oknie podręcznym zostanie wyświetlone ostrzeżenie o ponownym uruchomieniu maszyny wirtualnej. Kliknij przycisk **Tak**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

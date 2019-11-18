@@ -1,28 +1,20 @@
 ---
-title: Bezpieczne artefakty — szablony Azure Resource Manager
+title: Bezpieczne artefakty w szablonach
 description: Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d9570c30e2870a136bd97ed5fc2304d6f0d280c9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4aea85fe7f71d09c77b0596b4a8ec54922c8eee8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528278"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150417"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Samouczek: bezpieczne artefakty we wdrożeniach szablonów Azure Resource Manager
 
-Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager za pomocą konta usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS). Artefakty wdrożenia to dowolne pliki oprócz pliku szablonu głównego, które są potrzebne do ukończenia wdrożenia. Na przykład w [samouczku: Importowanie plików SQL BACPAC za pomocą szablonów Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), główny szablon tworzy Azure SQL Database; wywołuje również plik BACPAC, aby tworzyć tabele i wstawiać dane. Plik BACPAC jest tu artefaktem. Artefakt jest przechowywany na koncie usługi Azure Storage z dostępem publicznym. W tym samouczku użyjesz sygnatury dostępu współdzielonego w celu przyznania ograniczonego dostępu do pliku BACPAC na swoim koncie usługi Azure Storage. Aby uzyskać więcej informacji o sygnaturze dostępu współdzielonego, zobacz [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Używanie sygnatur dostępu współdzielonego).
+Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager za pomocą konta usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS). Artefakty wdrożenia to dowolne pliki oprócz pliku szablonu głównego, które są potrzebne do ukończenia wdrożenia. Na przykład w [samouczku: Importowanie plików SQL BACPAC za pomocą szablonów Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), główny szablon tworzy Azure SQL Database; wywołuje również plik BACPAC, aby tworzyć tabele i wstawiać dane. Artefaktem jest na przykład plik BACPAC. Artefakt jest przechowywany na koncie usługi Azure Storage z dostępem publicznym. W tym samouczku użyjesz sygnatury dostępu współdzielonego w celu przyznania ograniczonego dostępu do pliku BACPAC na swoim koncie usługi Azure Storage. Aby uzyskać więcej informacji o sygnaturze dostępu współdzielonego, zobacz [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Używanie sygnatur dostępu współdzielonego).
 
 Aby dowiedzieć się, jak zabezpieczyć połączony szablon, zobacz [Samouczek: Tworzenie połączonych Azure Resource Manager szablonów](./resource-manager-tutorial-create-linked-templates.md).
 

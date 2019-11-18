@@ -2,18 +2,18 @@
 title: Apache Ambari aby zoptymalizować konfiguracje klastrów — Azure HDInsight
 description: Użyj interfejsu użytkownika sieci Web Apache Ambari w celu skonfigurowania i zoptymalizowania klastrów usługi Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: e0d94a41febdba1bea6818309e05d287bef6d3a1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492499"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150118"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optymalizowanie konfiguracji klastra usługi HDInsight przy użyciu oprogramowania Apache Ambari
 
@@ -143,7 +143,7 @@ Program Hive przetwarza wiersz danych według wiersza. Wektoryzacji kieruje gał
 
 Domyślnie gałąź jest zgodna z zestawem reguł, aby znaleźć jeden optymalny plan wykonywania zapytań. Optymalizacja oparta na kosztach (CBO) szacuje wiele planów, aby wykonać zapytanie i przypisuje koszt do każdego planu, a następnie określa najtańszy plan wykonywania zapytania.
 
-Aby włączyć program CBO, przejdź **do karty konfiguracje** programu Hive i wyszukaj pozycję `parameter hive.cbo.enable`, a następnie Przełącz przycisk przełączania na pozycję **włączone**.
+Aby włączyć program CBO, przejdź do opcji **Hive** > **configs** > **Ustawienia** i Znajdź pozycję **Włącz Optymalizator oparty na kosztach**, a następnie Przełącz przycisk przełączania na pozycję **włączone**.
 
 ![Optymalizator oparty na kosztach usługi HDInsight](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
@@ -177,8 +177,8 @@ Dostępne typy kompresji to:
 
 | Format | Narzędzie | Algorytm | Rozszerzenie pliku | Podzielne? |
 | -- | -- | -- | -- | -- |
-| Gzip | Gzip | WKLĘŚNIĘCIE | . gz | Nie |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | Tak |
+| Gzip | Gzip | WKLĘŚNIĘCIE | .gz | Nie |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | Yes |
 | LZO | Lzop | LZO | .lzo | Tak, jeśli indeksowane |
 | Snappy | Nie dotyczy | Snappy | Snappy | Nie |
 
@@ -195,15 +195,13 @@ Ogólną zasadą jest, że posiadanie podziału metody kompresji jest ważne, w 
 
 1. Aby dodać ustawienie niestandardowe:
 
-    a. Przejdź do karty konfiguracje **programu Hive i wybierz kartę** **Zaawansowane** .
+    a. Przejdź do **gałęzi** > **konfiguracjami** > **Advanced** > **Custom Hive-site**.
 
-    b. Na karcie **Zaawansowane** Znajdź i rozwiń węzeł **niestandardowe gałęzie — lokacja** .
-
-    d. Kliknij link **Dodaj właściwość** w dolnej części okienka niestandardowe gałęzie — lokacja.
+    b. Wybierz pozycję **Dodaj właściwość...** w dolnej części okienka niestandardowe gałęzie — lokacja.
 
     d. W oknie Dodawanie właściwości wprowadź `mapred.map.output.compression.codec` jako klucz i `org.apache.hadoop.io.compress.SnappyCodec` jako wartość.
 
-    e. Kliknij pozycję **Dodaj**.
+    d. Wybierz pozycję **Dodaj**.
 
     ![Apache Hive dodanie właściwości niestandardowej](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
@@ -282,9 +280,9 @@ Dodatkowe zalecenia dotyczące optymalizacji aparatu wykonywania programu Hive:
 | -- | -- | -- |
 | `hive.mapjoin.hybridgrace.hashtable` | Prawda = bezpieczniejsze, wolniejsze; FAŁSZ = szybsze | false |
 | `tez.am.resource.memory.mb` | Górna granica 4 GB dla większości | Dostrajanie autodostrajania |
-| `tez.session.am.dag.submit.timeout.secs` | 300 + | 300 |
-| `tez.am.container.idle.release-timeout-min.millis` | 20 000 + | 10 000 |
-| `tez.am.container.idle.release-timeout-max.millis` | 40 000 + | 20000 |
+| `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
+| `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10 000 |
+| `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
 ## <a name="apache-pig-optimization"></a>Optymalizacja przez Apache świni
 
@@ -319,7 +317,7 @@ Podobnie jak w przypadku programu Hive, tryb lokalny służy do przyspieszenia z
 
 ### <a name="copy-user-jar-cache"></a>Kopiuj pamięć podręczną jar użytkownika
 
-Świnie kopiuje pliki JAR wymagane przez UDF do rozproszonej pamięci podręcznej w celu udostępnienia ich dla węzłów zadań. Te Jars nie ulegają częstym zmianom. Jeśli ta opcja jest włączona, ustawienie `pig.user.cache.enabled` umożliwia umieszczenie Jars w pamięci podręcznej w celu ponownego użycia dla zadań uruchomionych przez tego samego użytkownika. Powoduje to niewielki wzrost wydajności zadania.
+Świnie kopiuje pliki JAR wymagane przez UDF do rozproszonej pamięci podręcznej w celu udostępnienia ich dla węzłów zadań. Te Jars nie zmieniają się często. Jeśli ta opcja jest włączona, ustawienie `pig.user.cache.enabled` umożliwia umieszczenie Jars w pamięci podręcznej w celu ponownego użycia dla zadań uruchomionych przez tego samego użytkownika. Powoduje to niewielki wzrost wydajności zadania.
 
 1. Aby włączyć, ustaw dla `pig.user.cache.enabled` wartość true. Wartość domyślna to false.
 
@@ -357,7 +355,7 @@ Liczba zmniejszeń jest obliczana na podstawie parametru `pig.exec.reducers.byte
 
 Konfiguracja [Apache HBase](https://hbase.apache.org/) została zmodyfikowana z karty **configs** . W poniższych sekcjach opisano niektóre ważne ustawienia konfiguracji, które mają wpływ na wydajność HBase.
 
-### <a name="set-hbase_heapsize"></a>Ustaw HBASE_HEAPSIZE
+### <a name="set-hbase_heapsize"></a>Set HBASE_HEAPSIZE
 
 Rozmiar sterty HBase określa maksymalną ilość sterty, która ma być używana w megabajtach według *regionów* i serwerów *głównych* . Wartość domyślna to 1 000 MB. Ta wartość powinna być dostrojona dla obciążenia klastra.
 
@@ -432,7 +430,7 @@ Rozmiar magazynu jest definiowany przez parametry `hbase.regionserver.global.mem
 
 Użycie magazynu lokalnego buforu alokacji jest określane przez `hbase.hregion.memstore.mslab.enabled`właściwości. Po włączeniu (true) zapobiega fragmentacji sterty podczas ciężkiej operacji zapisu. Wartość domyślna to true.
 
-![HBase. hregion. magazynu. mslab. Enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
+![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

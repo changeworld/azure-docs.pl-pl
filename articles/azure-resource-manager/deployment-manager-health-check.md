@@ -1,19 +1,16 @@
 ---
 title: Wdrażanie integracji z kondycją — Menedżer wdrażania platformy Azure
-description: Opisuje sposób wdrażania usługi w wielu regionach za pomocą usługi Azure Menedżer wdrażania. Przedstawiono w nim bezpieczne praktyki wdrażania, aby zweryfikować stabilność wdrożenia przed wdrożeniem we wszystkich regionach.
-services: azure-resource-manager
-documentationcenter: na
+description: W tym artykule opisano, jak wdrożyć usługę w wielu regionach za pomocą usługi Azure Deployment Manager. Przedstawia on praktyki bezpiecznego wdrażania, aby sprawdzić stabilność wdrożenie, zanim zetknie się we wszystkich regionach.
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
-ms.openlocfilehash: 72ddc900a892e6391d6b54046ac6f3a42358526f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 6cc21837ff08822a9eae6ae7c326142ca873df74
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528569"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149964"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Wprowadzanie wdrożenia integracji z kondycją na platformie Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
@@ -157,7 +154,7 @@ W tym momencie usługa Azure Menedżer wdrażania wie, jak wykonywać zapytania 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób integrowania monitorowania kondycji w usłudze Azure Menedżer wdrażania. Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć program przy użyciu Menedżer wdrażania.
+W tym artykule przedstawiono sposób integrowania monitorowania kondycji w usłudze Azure Menedżer wdrażania. Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć za pomocą programu Deployment Manager.
 
 > [!div class="nextstepaction"]
 > [Samouczek: Integracja kontroli kondycji w usłudze Azure Menedżer wdrażania](./deployment-manager-tutorial-health-check.md)

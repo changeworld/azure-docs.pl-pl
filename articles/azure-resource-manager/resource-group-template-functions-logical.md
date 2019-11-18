@@ -1,17 +1,14 @@
 ---
-title: Funkcje szablonu Azure Resource Manager — logiczne | Microsoft Docs
+title: Funkcje szablonu — logiczne
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager, aby określić wartości logiczne.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: tomfitz
-ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: df8433d167a166fe94d965f81e42cd0b3e8f0e54
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194791"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150691"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów Azure Resource Manager
 
@@ -33,9 +30,9 @@ Sprawdza, czy wszystkie wartości parametrów mają wartość true.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
-| arg2 |Tak |boolean |Druga wartość do sprawdzenia, czy ma wartość true. |
-| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
+| arg1 |Yes |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
+| arg2 |Yes |wartość logiczna |Druga wartość do sprawdzenia, czy ma wartość true. |
+| dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -69,7 +66,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Name | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | Prawda |
@@ -85,7 +82,7 @@ Konwertuje parametr na wartość logiczną.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |ciąg lub int |Wartość do przekonwertowania na wartość logiczną. |
+| arg1 |Yes |ciąg lub int |Wartość do przekonwertowania na wartość logiczną. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Wartość logiczna przekonwertowanej wartości.
@@ -122,7 +119,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | trueString | Bool | Prawda |
 | falseString | Bool | False |
@@ -139,9 +136,9 @@ Zwraca wartość na podstawie tego, czy warunek ma wartość true lub false.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| condition |Tak |boolean |Wartość, aby sprawdzić, czy jest to wartość true lub false. |
-| trueValue |Tak | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość true. |
-| falseValue |Tak | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość false. |
+| condition |Yes |wartość logiczna |Wartość, aby sprawdzić, czy jest to wartość true lub false. |
+| trueValue |Yes | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość true. |
+| falseValue |Yes | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość false. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -153,7 +150,7 @@ Gdy warunek ma **wartość true**, Szacowana jest tylko wartość true. Gdy waru
 
 ### <a name="examples"></a>Przykłady
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) pokazuje, `if` jak używać funkcji.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) pokazuje, jak używać funkcji `if`.
 
 ```json
 {
@@ -180,11 +177,11 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Name | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| yesOutput | String | tak |
-| NoOutput | String | nie |
-| objectOutput | Object | {"test": "wartość1"} |
+| yesOutput | Ciąg | tak |
+| NoOutput | Ciąg | nie |
+| objectOutput | Obiekt | {"test": "wartość1"} |
 
 Poniższy [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) pokazuje, jak używać tej funkcji z wyrażeniami, które są warunkowo prawidłowe.
 
@@ -234,7 +231,7 @@ Poniższy [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/mast
 }
 ```
 
-## <a name="not"></a>nie
+## <a name="not"></a>niemożliwe
 
 `not(arg1)`
 
@@ -244,7 +241,7 @@ Konwertuje wartość logiczną na wartość odwrotną.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |boolean |Wartość do przekonwertowania. |
+| arg1 |Yes |wartość logiczna |Wartość do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -278,7 +275,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Name | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | Prawda |
@@ -302,7 +299,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Name | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | Prawda |
 
@@ -316,9 +313,9 @@ Sprawdza, czy parametr ma wartość true.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
-| arg2 |Tak |boolean |Druga wartość do sprawdzenia, czy ma wartość true. |
-| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
+| arg1 |Yes |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
+| arg2 |Yes |wartość logiczna |Druga wartość do sprawdzenia, czy ma wartość true. |
+| dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -352,7 +349,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Name | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | Prawda |

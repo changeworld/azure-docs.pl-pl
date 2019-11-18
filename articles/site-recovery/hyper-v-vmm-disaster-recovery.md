@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 559f29624ef0946374c3e87a26f0983f202a20d7
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082629"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132994"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do dodatkowej lokacji lokalnej
 
@@ -29,8 +29,6 @@ W tym artykule pokazano, jak skonfigurować odzyskiwanie po awarii do lokacji do
 > * Tworzenie zasad replikacji
 > * Włączanie replikacji maszyny wirtualnej
 
-> [!WARNING]
-> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](site-to-site-deprecation.md) przed kontynuowaniem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

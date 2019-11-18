@@ -1,19 +1,16 @@
 ---
-title: Samouczek — Dodawanie parametrów do szablonu Azure Resource Manager
+title: Samouczek — Dodawanie parametrów do szablonu
 description: Dodaj parametry do szablonu Azure Resource Manager, aby umożliwić jego wielokrotne użycie.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7a4d8db57167bc82d13b4d46be1abc3518c340e4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001499"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150238"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Samouczek: Dodawanie parametrów do szablonu Menedżer zasobów
 
@@ -41,13 +38,13 @@ Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-the-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 Wdróżmy szablon. Poniższy przykład wdraża szablon przy użyciu interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Zwróć uwagę, że podajesz nazwę konta magazynu jako jedną z wartości w poleceniu wdrożenia. Podaj nazwę konta magazynu o tej samej nazwie, która została użyta w poprzednim samouczku.
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -79,7 +76,7 @@ Ten sposób obsługi aktualizacji oznacza, że szablon może obejmować wszystki
 
 ## <a name="customize-by-environment"></a>Dostosuj według środowiska
 
-Parametry umożliwiają dostosowanie wdrożenia przez podanie wartości, które są dostosowane do określonego środowiska. Na przykład można przekazać różne wartości w zależności od tego, czy wdrażasz do środowiska na potrzeby opracowywania, testowania i produkcji.
+Parametry umożliwiają dostosowanie wdrożenia poprzez podanie wartości dopasowanych do danego środowiska. Na przykład można przekazać różne wartości w zależności od tego, czy wdrażasz do środowiska na potrzeby opracowywania, testowania i produkcji.
 
 Poprzedni szablon zawsze wdrożono konto magazynu Standard_LRS. W zależności od środowiska może być konieczna elastyczność wdrażania różnych jednostek SKU. Poniższy przykład pokazuje zmiany w celu dodania parametru dla jednostki SKU. Skopiuj cały plik i wklej go nad szablonem.
 
@@ -91,7 +88,7 @@ Parametr **storageSKU** ma wartość domyślną. Ta wartość jest używana, gdy
 
 Wszystko jest gotowe do ponownego wdrożenia. Ponieważ domyślna jednostka SKU jest ustawiona na **Standard_LRS**, nie trzeba podawać wartości dla tego parametru.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -115,7 +112,7 @@ az group deployment create \
 
 Aby sprawdzić elastyczność szablonu, wdróż ponownie. Tym razem ustaw parametr SKU na **Standard_GRS**. Możesz przekazać nową nazwę, aby utworzyć inne konto magazynu, lub użyć tej samej nazwy do zaktualizowania istniejącego konta magazynu. Obie opcje działają.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -140,7 +137,7 @@ az group deployment create \
 
 Na koniec Uruchommy jeszcze jeden test i zobacz, co się dzieje po przejściu do jednostki SKU, która nie jest jedną z dozwolonych wartości. W takim przypadku testuje scenariusz, w którym użytkownik szablonu traktuje **podstawową** , jest jedną z jednostek SKU.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -165,16 +162,16 @@ az group deployment create \
 
 Polecenie kończy się niepowodzeniem z komunikatem o błędzie z informacją, które wartości są dozwolone. Menedżer zasobów identyfikuje błąd przed rozpoczęciem wdrażania.
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
 Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
 
-1. Z Azure Portal z menu po lewej stronie wybierz pozycję **Grupa zasobów** .
-2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy** .
+1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. W górnym menu wybierz pozycję **Usuń grupę zasobów** .
+4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 

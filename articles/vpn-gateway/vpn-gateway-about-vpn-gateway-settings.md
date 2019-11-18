@@ -1,5 +1,5 @@
 ---
-title: Ustawienia bramy sieci VPN dla połączeń między różnymi lokalizacjami platformy Azure | Microsoft Docs
+title: 'Azure VPN Gateway: ustawienia konfiguracji'
 description: Dowiedz się więcej o VPN Gateway ustawieniach dla bram sieci wirtualnej platformy Azure.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c72b85bc978191744c55afb73973caa6d3b45db6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495725"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150948"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informacje o ustawieniach konfiguracji VPN Gateway
 
@@ -173,7 +173,7 @@ Aby uzyskać dodatkowe zasoby techniczne i wymagania dotyczące składni w przyp
 | --- | --- |
 | [Program PowerShell](/powershell/module/az.network/#networking) |[Program PowerShell](/powershell/module/az.network#vpn) |
 | [Interfejs API REST](https://msdn.microsoft.com/library/jj154113) |[Interfejs API REST](/rest/api/network/virtualnetworkgateways) |
-| Brak obsługi | [Interfejs wiersza polecenia platformy Azure](/cli/azure/network/vnet-gateway)|
+| Nieobsługiwane | [Interfejs wiersza polecenia platformy Azure](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Następne kroki
 

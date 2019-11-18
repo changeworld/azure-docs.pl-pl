@@ -1,24 +1,15 @@
 ---
-title: Wdróż szablon Azure Resource Manager — pomysł IntelliJ
+title: Wdróż szablon — pomysł IntelliJ
 description: Dowiedz się, jak utworzyć pierwszy szablon Azure Resource Manager przy użyciu POMYSŁu IntelliJ oraz jak go wdrożyć.
-services: azure-resource-manager
-documentationcenter: ''
-author: yucwan
-manager: ''
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
-ms.author: yucwan
-ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 62ea27236eec1a63b2a07dcb532f91cea7ead70b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533660"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149462"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Szybki Start: Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu POMYSŁu IntelliJ
 
@@ -48,7 +39,7 @@ Zamiast tworzyć szablon od podstaw, otwórz szablon z obszaru [Azure Quickstart
 
     ![Szablon Menedżer zasobów kliknij prawym przyciskiem myszy, aby utworzyć wdrożenie](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Skonfiguruj **nazwę wdrożenia**, **subskrypcję**, **grupę zasobów**i **region**. W tym miejscu wdrażamy szablon w nowej grupie zasobów `testRG`. Następnie wybierz pozycję ścieżka dla **szablonu zasobu** jako `azuredeploy.json` i **parametry zasobu** jako pobrane `azuredeploy.parameters.json`.
+1. Skonfiguruj **nazwę wdrożenia**, **subskrypcję**, **grupę zasobów**i **region**. W tym miejscu wdrażamy szablon w nowej grupie zasobów `testRG`. Następnie wybierz pozycję ścieżka dla **szablonu zasobu** jako `azuredeploy.json` i **parametry zasobu** jako `azuredeploy.parameters.json` pobrane.
 
     ![Szablon Menedżer zasobów wybierz pliki do utworzenia wdrożenia](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -58,7 +49,7 @@ Zamiast tworzyć szablon od podstaw, otwórz szablon z obszaru [Azure Quickstart
 
 ## <a name="browse-an-existing-deployment"></a>Przeglądanie istniejącego wdrożenia
 
-1. Po zakończeniu wdrażania zostanie wyświetlona nowa grupa zasobów `testRG` i utworzone nowe wdrożenie. Kliknij prawym przyciskiem myszy wdrożenie i zobaczysz listę możliwych akcji. Teraz wybierz pozycję **Pokaż właściwości**.
+1. Po zakończeniu wdrażania zobaczysz nową grupę zasobów `testRG` i utworzono nowe wdrożenie. Kliknij prawym przyciskiem myszy wdrożenie i zobaczysz listę możliwych akcji. Teraz wybierz pozycję **Pokaż właściwości**.
 
     ![Wdrożenie Menedżer zasobówego przeglądania szablonów](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-deployment-browse.png)
 

@@ -1,17 +1,14 @@
 ---
-title: Rozwiązywanie problemów z błędami przenoszenia — Azure Resource Manager
-description: Użyj Azure Resource Manager, aby przenieść zasoby do nowej grupy zasobów lub subskrypcji.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Rozwiązywanie problemów z błędami przenoszenia
+description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskrypcji usługi Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 383098ab227013119bca668b42035c93334c8464
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 46fedeb8b50b19a0adc34b2099e7e76b888821f6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533343"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149107"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji
 
@@ -21,10 +18,10 @@ Ten artykuł zawiera sugestie ułatwiające rozwiązywanie problemów dotyczący
 
 Jeśli chcesz uaktualnić subskrypcję platformy Azure (np. przełączenie z bezpłatnej do płatnej zgodnie z rzeczywistym użyciem), musisz przekonwertować swoją subskrypcję.
 
-* Aby uaktualnić bezpłatną wersję próbną, zobacz [uaktualnianie bezpłatnej wersji próbnej lub Microsoft Imagine subskrypcję platformy Azure na płatność zgodnie z rzeczywistym](../billing/billing-upgrade-azure-subscription.md)użyciem.
-* Aby zmienić konto z opcją płatność zgodnie z rzeczywistym użyciem, zobacz artykuł [zmiana subskrypcji systemu Azure z płatność zgodnie z rzeczywistym użyciem na inną ofertę](../billing/billing-how-to-switch-azure-offer.md).
+* Aby uaktualnić z bezpłatnej wersji próbnej, zobacz [Zmień poziom subskrypcji bezpłatnej wersji próbnej lub programu Microsoft Imagine platformy Azure rozliczana według bieżącego użycia](../billing/billing-upgrade-azure-subscription.md).
+* Aby zmienić konto zgodnie z rzeczywistym użyciem, zobacz [zmienić subskrypcję platformy Azure rozliczana według bieżącego użycia do innej oferty](../billing/billing-how-to-switch-azure-offer.md).
 
-Jeśli nie możesz przekonwertować subskrypcji, [Utwórz żądanie pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md). Wybierz pozycję **Zarządzanie subskrypcją** dla typu problemu.
+Jeśli nie można przekonwertować subskrypcję, [utworzyć żądanie pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **zarządzania subskrypcjami** jako typ problemu.
 
 ## <a name="service-limitations"></a>Ograniczenia usługi
 
@@ -39,7 +36,7 @@ Niektóre usługi wymagają dodatkowych zagadnień podczas przesuwania zasobów.
 
 ## <a name="large-requests"></a>Duże żądania
 
-Gdy jest to możliwe, podział dużych operacji przenoszenia na oddzielne operacje przeniesienia. Menedżer zasobów natychmiast zwraca błąd, jeśli w jednej operacji znajduje się więcej niż 800 zasobów. Jednak przeniesienie mniejsze niż 800 zasobów może również zakończyć się niepowodzeniem przez przekroczenie limitu czasu.
+Jeśli to możliwe, podział dużych przenosi do operacji przenoszenia oddzielne. Menedżer zasobów natychmiast zwraca błąd, jeśli w jednej operacji znajduje się więcej niż 800 zasobów. Jednak przenoszenia zasobów mniej niż 800 może również zakończyć się niepowodzeniem, przekroczeniem limitu czasu.
 
 ## <a name="resource-not-in-succeeded-state"></a>Zasób nie jest w stanie pomyślnym
 

@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b72bfcf06f4c7e256dd227e4edf781c4500c7b19
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a5f28b763023bb60bca8f79bcaa9f2169281e466
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331603"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151095"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. TextBox — element interfejsu użytkownika
+# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI element
+
 Kontrolka, która może służyć do edycji niesformatowanego tekstu.
 
 ## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
-![Microsoft. Common. TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+
+![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
 
 ## <a name="schema"></a>Schemat
+
 ```json
 {
   "name": "element1",
@@ -43,18 +46,20 @@ Kontrolka, która może służyć do edycji niesformatowanego tekstu.
 }
 ```
 
-## <a name="remarks"></a>Uwagi
-- Jeśli `constraints.required` jest ustawiona na **wartość true**, pole tekstowe musi mieć wartość, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **false**.
-- `constraints.regex` jest wzorcem wyrażenia regularnego JavaScript. Jeśli jest określony, wartość pola tekstowego musi być zgodna ze wzorcem, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **null**.
-- `constraints.validationMessage` to ciąg, który będzie wyświetlany, gdy wartość pola tekstowego nie powiedzie się. Jeśli nie zostanie określony, będą używane wbudowane komunikaty weryfikacyjne pola tekstowego. Wartość domyślna to **null**.
-- Możliwe jest określenie wartości `constraints.regex`, gdy `constraints.required` ma wartość **false**. W tym scenariuszu wartość nie jest wymagana, aby pole tekstowe zostało pomyślnie zweryfikowane. Jeśli jest określony, musi być zgodny ze wzorcem wyrażenia regularnego.
-
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
 ```json
 "my text value"
 ```
 
+## <a name="remarks"></a>Uwagi
+
+- Jeśli `constraints.required` ma wartość **true**, pole tekstowe musi mieć wartość, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **false**.
+- `constraints.regex` jest wzorcem wyrażenia regularnego JavaScript. Jeśli jest określony, wartość pola tekstowego musi być zgodna ze wzorcem, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **null**.
+- `constraints.validationMessage` jest ciągiem, który będzie wyświetlany, gdy wartość pola tekstowego nie powiedzie się. Jeśli nie zostanie określony, będą używane wbudowane komunikaty weryfikacyjne pola tekstowego. Wartość domyślna to **null**.
+- Możliwe jest określenie wartości `constraints.regex`, gdy `constraints.required` jest ustawiona na **wartość false**. W tym scenariuszu wartość nie jest wymagana, aby pole tekstowe zostało pomyślnie zweryfikowane. Jeśli jest określony, musi być zgodny ze wzorcem wyrażenia regularnego.
+
 ## <a name="next-steps"></a>Następne kroki
+
 * Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
 * Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

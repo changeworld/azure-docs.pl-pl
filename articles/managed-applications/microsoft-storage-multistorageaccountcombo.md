@@ -1,6 +1,6 @@
 ---
-title: Azure elementu interfejsu użytkownika MultiStorageAccountCombo | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Storage.MultiStorageAccountCombo interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika usługi Azure MultiStorageAccountCombo | Microsoft Docs
+description: Opisuje element interfejsu użytkownika Microsoft. Storage. MultiStorageAccountCombo dla Azure Portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08b65770414e9ee1cb5e478427fe7654b2bb9a78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3fb6f474bfe56f54e6dc621a3893e184ebc71d9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725446"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151443"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI element
-Grupa formantów do tworzenia kilku kont magazynu, których nazwy rozpoczynają się prefiksem wspólnej.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
+Grupa kontrolek do tworzenia kilku kont magazynu z nazwami, które zaczynają się od wspólnego prefiksu.
+
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
 
 ## <a name="schema"></a>Schemat
+
 ```json
 {
   "name": "element1",
@@ -52,13 +55,6 @@ Grupa formantów do tworzenia kilku kont magazynu, których nazwy rozpoczynają 
 }
 ```
 
-## <a name="remarks"></a>Uwagi
-- Wartość `defaultValue.prefix` jest połączona z jedną lub więcej liczb całkowitych na wygenerowanie sekwencji nazw kont magazynu. Na przykład jeśli `defaultValue.prefix` jest **sa** i `count` jest **2**, następnie nazwy kont magazynu **sa1** i **sa2** są generowane. Unikatowość nazwy kont magazynu wygenerowanego są weryfikowane automatycznie.
-- Nazwy kont magazynu są generowane leksykograficznie na podstawie `count`. Na przykład jeśli `count` wynosi 10, a następnie nazwy kont magazynu kończyć się znakiem dwóch cyfr całkowitych (01, 02, 03).
-- Wartością domyślną dla `defaultValue.prefix` jest **null**oraz `defaultValue.type` jest **Premium_LRS**.
-- Dowolny typ nieokreślony w `constraints.allowedTypes` jest ukryta i dowolnego typu, nie jest określona w `constraints.excludedTypes` jest wyświetlany. `constraints.allowedTypes` i `constraints.excludedTypes` są opcjonalne, ale nie mogą być używane jednocześnie.
-- Oprócz generowania nazw kont magazynu, `count` służy do ustawiania odpowiednie mnożnik dla tego elementu. Obsługuje ona wartość statyczną, takie jak **2**, lub wartość dynamiczna z innego elementu, tak jak `[steps('step1').storageAccountCount]`. Wartość domyślna to **1**.
-
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
 ```json
@@ -70,6 +66,15 @@ Grupa formantów do tworzenia kilku kont magazynu, których nazwy rozpoczynają 
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="remarks"></a>Uwagi
+
+- Wartość `defaultValue.prefix` jest łączona z co najmniej jedną liczbą całkowitą w celu wygenerowania sekwencji nazw kont magazynu. Na przykład jeśli `defaultValue.prefix` jest **sa** i `count` ma **2**, generowane są nazwy kont magazynu **SA1** i **SA2** . Nazwy wygenerowanego konta magazynu są sprawdzane automatycznie w celu zapewnienia unikatowości.
+- Nazwy kont magazynu są generowane lexicographically na podstawie `count`. Na przykład jeśli `count` wynosi 10, wówczas nazwy kont magazynu kończą się dwoma cyfrowymi liczbami całkowitymi (01, 02, 03).
+- Wartość domyślna `defaultValue.prefix` ma **wartość null**, a dla `defaultValue.type` jest **Premium_LRS**.
+- Dowolny typ nieokreślony w `constraints.allowedTypes` jest ukryty, a żaden typ nie został określony w `constraints.excludedTypes` jest pokazywany. `constraints.allowedTypes` i `constraints.excludedTypes` są opcjonalne, ale nie mogą być używane jednocześnie.
+- Oprócz generowania nazw kont magazynu, `count` służy do ustawiania odpowiedniego mnożnika dla elementu. Obsługuje ona wartość statyczną, taką jak **2**, lub wartość dynamiczną z innego elementu, np. `[steps('step1').storageAccountCount]`. Wartość domyślna to **1**.
+
+## <a name="next-steps"></a>Następne kroki
+
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

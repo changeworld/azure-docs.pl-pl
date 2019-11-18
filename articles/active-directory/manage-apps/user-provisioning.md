@@ -11,46 +11,69 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2019
+ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1f661aa67f04de23c7b4871e78d3628c639e7567
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641446"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144551"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu Azure Active Directory
+# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji przy użyciu Azure Active Directory
 
-Usługa Azure Active Directory (Azure AD) umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach SaaS w chmurze, takich jak [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [usługi ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)i inne. Jest to znane jako zautomatyzowane Inicjowanie obsługi użytkowników dla aplikacji SaaS.
+W Azure Active Directory (Azure AD) termin **aprowizacji aplikacji** dotyczy automatycznego tworzenia tożsamości i ról użytkowników w aplikacjach w chmurze ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), do których użytkownicy potrzebują dostępu. Oprócz tworzenia tożsamości użytkowników automatyczne Inicjowanie obsługi obejmuje konserwację i usuwanie tożsamości użytkowników jako zmiany stanu lub ról. Typowe scenariusze obejmują Inicjowanie obsługi użytkownika usługi Azure AD w aplikacjach takich jak [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [usługi ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)i inne.
 
-> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+![Diagram omówienia aprowizacji](media/user-provisioning/provisioning-overview.png)
 
 Ta funkcja umożliwia:
 
-- Automatycznie twórz nowe konta w odpowiednich systemach dla nowych osób po dołączeniu do zespołu lub organizacji.
-- Automatycznie Dezaktywuj konta w odpowiednich systemach, gdy ludzie opuszczają zespół lub organizację.
-- Upewnij się, że tożsamości w aplikacjach i systemach są aktualne na podstawie zmian w katalogu lub w systemie kadr.
-- Udostępnianie obiektów niebędących użytkownikami, takich jak grupy, do aplikacji, które je obsługują.
+- **Automatyzowanie aprowizacji**: automatyczne tworzenie nowych kont w odpowiednich systemach dla nowych osób po dołączeniu do zespołu lub organizacji.
+- **Automatyzowanie anulowania aprowizacji:** Automatycznie Dezaktywuj konta w odpowiednich systemach, gdy ludzie opuszczają zespół lub organizację.
+- **Synchronizuj dane między systemami:** Upewnij się, że tożsamości w Twoich aplikacjach i systemach są aktualne na podstawie zmian w katalogu lub w systemie zasobów ludzkich.
+- **Grupy udostępniania:** Zainicjuj obsługę grup dla aplikacji, które je obsługują.
+- **Zarządzanie dostępem:** Monitoruj i przeprowadzaj inspekcję, która została zainicjowana w aplikacjach.
+- **Bezproblemowo Wdrażaj w scenariuszach brązowych pól:** Dopasowuje istniejące tożsamości między systemami i pozwala na łatwą integrację, nawet jeśli użytkownicy znajdują się już w systemie docelowym.
+- **Użyj zaawansowanego dostosowywania:** Korzystaj z dostosowywalnych mapowań atrybutów, które definiują, jakie dane użytkownika powinny być przepływać z systemu źródłowego do systemu docelowego.
+- **Otrzymywanie alertów dotyczących zdarzeń krytycznych:** Usługa aprowizacji udostępnia alerty dla zdarzeń krytycznych i umożliwia integrację Log Analytics, w której można zdefiniować niestandardowe alerty w celu określenia potrzeb firmy.
 
-Automatyczne Inicjowanie obsługi użytkowników obejmuje również następujące funkcje:
+## <a name="benefits-of-automatic-provisioning"></a>Zalety automatycznej aprowizacji
 
-- Możliwość dopasowania istniejących tożsamości między systemami źródłowymi i docelowymi.
-- Dostosowywalne mapowania atrybutów, które definiują, jakie dane użytkownika powinny być przepływać z systemu źródłowego do systemu docelowego.
-- Opcjonalne alerty e-mail dotyczące błędów aprowizacji.
-- Dzienniki raportowania i aktywności ułatwiające monitorowanie i rozwiązywanie problemów.
+Wraz ze wzrostem liczby aplikacji używanych w nowoczesnych organizacjach Administratorzy IT są zależne od zarządzania dostępem w odpowiedniej skali. Standardy, takie jak Security Assertions Markup Language (SAML) lub Open ID Connect (OIDC), umożliwiają administratorom szybkie konfigurowanie logowania jednokrotnego (SSO), ale dostęp wymaga również, aby użytkownicy mieli do nich możliwość aprowizacji. W przypadku wielu administratorów Inicjowanie obsługi administracyjnej oznacza ręczne tworzenie każdego konta użytkownika lub przekazywanie plików CSV w każdym tygodniu, ale te procesy są czasochłonne, kosztowne i podatne na błędy. Rozwiązania takie jak "JIT" (just-in-Time) zostały wdrożone w celu zautomatyzowania aprowizacji, ale przedsiębiorstwa również wymagają rozwiązania, aby anulować obsługę administracyjną użytkowników, którzy opuszczają organizację lub nie potrzebują już dostępu do niektórych aplikacji na podstawie zmiany roli.
 
-## <a name="why-use-automated-provisioning"></a>Dlaczego warto używać automatycznej aprowizacji?
+Niektóre typowe motywacje dotyczące korzystania z automatycznej aprowizacji obejmują:
 
-Niektóre typowe motywacje dotyczące korzystania z tej funkcji obejmują:
-
-- Uniknięcie kosztów, nieefektywności i błędu ludzkiego związanego z ręcznymi procesami aprowizacji.
-- Uniknięcie kosztów związanych z hostingiem i utrzymywaniem niestandardowo opracowanych rozwiązań i skryptów aprowizacji.
+- Maksymalizacja wydajności i dokładności procesów aprowizacji.
+- Oszczędności związane z hostingiem i utrzymywaniem niestandardowo opracowanych rozwiązań i skryptów aprowizacji.
 - Zabezpieczanie organizacji przez natychmiastowe usuwanie tożsamości użytkowników z aplikacji Key SaaS, gdy opuszczają one organizację.
 - Łatwo Importuj dużą liczbę użytkowników do określonej aplikacji lub systemu SaaS.
 - Posiadanie jednego zestawu zasad, aby określić, kto jest zainicjowany i kto może logować się do aplikacji.
+
+Inicjowanie obsługi użytkowników w usłudze Azure AD może pomóc rozwiązać te wyzwania. Aby dowiedzieć się więcej o tym, jak klienci korzystają z aprowizacji użytkowników usługi Azure AD, możesz przeczytać [analizę przypadku ASOs](https://aka.ms/asoscasestudy). Poniższe wideo zawiera omówienie aprowizacji użytkowników w usłudze Azure AD:
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jakie aplikacje i systemy mogą być używane przez automatyczne Inicjowanie obsługi użytkowników w usłudze Azure AD?
+
+Funkcje usługi Azure AD są wstępnie zintegrowane z obsługą wielu popularnych aplikacji SaaS i systemów kadr oraz ogólnego wsparcia dla aplikacji, które implementują określone części [standardu standard scim 2,0](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010).
+
+* **Wstępnie zintegrowane aplikacje (aplikacje w galerii SaaS)** . Możesz znaleźć wszystkie aplikacje, dla których usługa Azure AD obsługuje wstępnie zintegrowany łącznik aprowizacji na [liście samouczków aplikacji na potrzeby aprowizacji użytkowników](../saas-apps/tutorial-list.md). Wstępnie zintegrowane aplikacje wymienione w galerii zwykle używają interfejsów API zarządzania użytkownikami opartymi na Standard scim 2,0 na potrzeby aprowizacji. 
+
+   ![Logo usługi Salesforce](media/user-provisioning/gallery-app-logos.png)
+
+   Jeśli chcesz zażądać nowej aplikacji do aprowizacji, możesz [poprosić o integrację aplikacji z naszą galerią aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing). W przypadku żądania aprowizacji użytkowników wymagamy, aby aplikacja miała punkt końcowy zgodny z standard scim. Zażądaj, aby Dostawca aplikacji był zgodny ze standardem Standard scim, dzięki czemu możemy szybko dodać aplikację do naszej platformy.
+
+* **Aplikacje obsługujące standard scim 2,0**. Aby uzyskać informacje na temat ogólnego łączenia aplikacji, które implementują interfejsy API zarządzania użytkownikami opartymi na systemie Standard scim 2,0, zobacz [Używanie Standard scim do automatycznego aprowizacji użytkowników i grup z Azure Active Directory do aplikacji](use-scim-to-provision-users-and-groups.md).
+
+## <a name="what-is-scim"></a>Co to jest standard scim?
+
+Aby ułatwić automatyzację aprowizacji i anulowania obsługi, aplikacje uwidaczniają zastrzeżone interfejsy API użytkowników i grup. Jednak każda osoba, która podjęła próbę zarządzania użytkownikami w więcej niż jednej aplikacji, powiedzie, że każda aplikacja próbuje wykonać te same proste akcje, takie jak tworzenie lub aktualizowanie użytkowników, Dodawanie użytkowników do grup lub cofanie aprowizacji użytkowników. Jednak wszystkie te proste akcje są implementowane tylko nieco inaczej, przy użyciu różnych ścieżek punktów końcowych, różnych metod, aby określić informacje o użytkownikach i innych schematów do reprezentowania poszczególnych elementów informacji.
+
+Aby rozwiązać te problemy, Specyfikacja Standard scim zapewnia wspólny schemat użytkownika, aby ułatwić użytkownikom przechodzenie do aplikacji, a także z nich. Standard scim staje się de facto standardem do aprowizacji i, w połączeniu z standardami Federacji, takimi jak SAML lub OpenID Connect Connect, zapewnia administratorom kompleksowe rozwiązanie do zarządzania dostępem oparte na standardach.
+
+Aby uzyskać szczegółowe wskazówki dotyczące korzystania z programu Standard scim do automatyzowania aprowizacji i cofania obsługi administracyjnej użytkowników i grup w aplikacji, zobacz [Standard scim Inicjowanie obsługi administracyjnej użytkowników przy użyciu Azure Active Directory](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="how-does-automatic-provisioning-work"></a>Jak działa Automatyczna obsługa administracyjna?
 
@@ -65,54 +88,13 @@ Niektóre typowe motywacje dotyczące korzystania z tej funkcji obejmują:
 ![przepływ pracy inicjowania obsługi użytkowników przychodzących](./media/user-provisioning/provisioning2.PNG)
 *rysunek 3: "przychodzący" przepływ pracy aprowizacji użytkowników z popularnych aplikacji do zarządzania stolicą Kadr (HCM) do Azure Active Directory i systemu Windows Server Active Directory*
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jakie aplikacje i systemy mogą być używane przez automatyczne Inicjowanie obsługi użytkowników w usłudze Azure AD?
-
-Funkcje usługi Azure AD są wstępnie zintegrowane z obsługą wielu popularnych aplikacji SaaS i systemów kadr oraz ogólnego wsparcia dla aplikacji, które implementują określone części [standardu standard scim 2,0](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010).
-
-### <a name="pre-integrated-applications"></a>Wstępnie zintegrowane aplikacje
-
-Aby uzyskać listę wszystkich aplikacji, dla których usługa Azure AD obsługuje wstępnie zintegrowany łącznik aprowizacji, zapoznaj się z [listą samouczków aplikacji dotyczących aprowizacji użytkowników](../saas-apps/tutorial-list.md).
-
-Aby skontaktować się z zespołem inżynierów usługi Azure AD, aby zażądać pomocy technicznej dotyczącej dodatkowych aplikacji, Prześlij komunikat za pomocą [forum opinii Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
-
-> [!NOTE]
-> Aby aplikacja obsługiwała automatyczne Inicjowanie obsługi użytkowników, musi najpierw udostępnić niezbędne interfejsy API zarządzania użytkownikami, które umożliwiają programom zewnętrznym automatyzację tworzenia, obsługi i usuwania użytkowników. W związku z tym nie wszystkie aplikacje SaaS są zgodne z tą funkcją. W przypadku aplikacji, które obsługują interfejsy API zarządzania użytkownikami, zespół inżynierów usługi Azure AD może następnie utworzyć łącznik aprowizacji dla tych aplikacji, a ta ilość pracy jest określana przez potrzeby bieżących i potencjalnych klientów.
-
-### <a name="connecting-applications-that-support-scim-20"></a>Łączenie aplikacji obsługujących standard scim 2,0
-
-Aby uzyskać informacje na temat ogólnego łączenia aplikacji, które implementują interfejsy API zarządzania użytkownikami opartymi na systemie Standard scim 2,0, zobacz [Używanie Standard scim do automatycznego aprowizacji użytkowników i grup z Azure Active Directory do aplikacji](use-scim-to-provision-users-and-groups.md).
-
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak mogę skonfigurować automatyczne Inicjowanie obsługi administracyjnej aplikacji?
+
+W przypadku wstępnie zintegrowanych aplikacji wymienionych w galerii wskazówki krok po kroku są dostępne w celu skonfigurowania automatycznej aprowizacji. Zapoznaj się z [listą samouczków dotyczących zintegrowanych aplikacji galerii](https://docs.microsoft.com/azure/active-directory/saas-apps/). Poniższy film wideo pokazuje, jak skonfigurować automatyczne Inicjowanie obsługi administracyjnej użytkowników w usłudze SalesForce.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-Użyj portalu Azure Active Directory, aby skonfigurować usługę Azure AD Provisioning dla wybranej aplikacji.
-
-1. Otwórz **[portal Azure Active Directory](https://aad.portal.azure.com)** .
-1. W okienku po lewej stronie wybierz pozycję **aplikacje dla przedsiębiorstw** . Zostanie wyświetlona lista wszystkich skonfigurowanych aplikacji.
-1. Wybierz pozycję **+ Nowa aplikacja** , aby dodać aplikację. 
-1. Podaj wszystkie szczegóły i wybierz pozycję **Dodaj**. Nowa aplikacja zostanie dodana do listy aplikacji dla przedsiębiorstw i zostanie otwarta na swoim ekranie zarządzania aplikacjami.
-1. Wybierz opcję **aprowizacji** , aby zarządzać ustawieniami aprowizacji konta użytkownika dla aplikacji.
-
-   ![Pokazuje ekran ustawień aprowizacji](./media/user-provisioning/provisioning_settings0.PNG)
-
-1. Wybierz opcję Automatyczna dla **trybu aprowizacji** , aby określić ustawienia poświadczeń administratora, mapowania, uruchamiania i zatrzymywania oraz synchronizację.
-
-   - Rozwiń węzeł **poświadczenia administratora** , aby wprowadzić poświadczenia wymagane przez usługę Azure AD do łączenia się z interfejsem API zarządzania użytkownikami aplikacji. Ta sekcja umożliwia również włączenie powiadomień e-mail w przypadku niepowodzenia poświadczeń lub zadania aprowizacji do [kwarantanny](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
-   - Rozwiń węzeł **mapowania** , aby wyświetlić i edytować atrybuty użytkownika, które przepływają między usługą Azure AD a aplikacją docelową, gdy konta użytkowników są inicjowane lub aktualizowane. Jeśli aplikacja docelowa obsługuje tę funkcję, w tej sekcji można opcjonalnie skonfigurować obsługę administracyjną grup i kont użytkowników. Wybierz mapowanie w tabeli, aby otworzyć Edytor mapowania po prawej stronie, w którym można wyświetlać i dostosowywać atrybuty użytkownika.
-
-     **Filtry określania zakresu** informują usługę aprowizacji, którą użytkownicy i grupy w systemie źródłowym powinny być obsługiwane lub cofać administracyjnie do systemu docelowego. W okienku **Mapowanie atrybutu** wybierz pozycję **Zakres obiektu źródłowego** , aby filtrować według określonych wartości atrybutów. Można na przykład określić, że w zakres aprowizacji mają wchodzić tylko użytkownicy, u których atrybut „Dział” ma wartość „Sprzedaż”. Aby uzyskać więcej informacji, zobacz [Używanie filtrów zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
-
-     Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów](customize-application-attributes.md).
-
-   - **Ustawienia** kontrolują działanie usługi aprowizacji dla aplikacji, w tym to, czy jest ona obecnie uruchomiona. Menu **zakres** pozwala określić, czy tylko przypisani Użytkownicy i grupy powinny znajdować się w zakresie aprowizacji, czy też należy zainicjować obsługę administracyjną wszystkich użytkowników w katalogu usługi Azure AD. Aby uzyskać informacje na temat „przypisywania” użytkowników i grup, zobacz [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](assign-user-or-group-access-portal.md).
-
-Na ekranie Zarządzanie aplikacjami wybierz pozycję **dzienniki aprowizacji (wersja zapoznawcza)** , aby wyświetlić rekordy wszystkich operacji wykonywanych przez usługę Azure AD Provisioning. Aby uzyskać więcej informacji, zobacz [Przewodnik po raportowaniu obsługi administracyjnej](check-status-user-account-provisioning.md).
-
-![Przykład — ekran dzienniki aprowizacji dla aplikacji](./media/user-provisioning/audit_logs.PNG)
-
-> [!NOTE]
-> Usługę aprowizacji użytkowników w usłudze Azure AD można także skonfigurować i zarządzać nią za pomocą [interfejsu API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
+W przypadku innych aplikacji, które obsługują standard scim 2,0, wykonaj kroki opisane w artykule [Standard scim aprowizacji użytkowników w Azure Active Directory](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="what-happens-during-provisioning"></a>Co się stanie w trakcie aprowizacji?
 

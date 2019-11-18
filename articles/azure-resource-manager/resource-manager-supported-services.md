@@ -1,23 +1,14 @@
 ---
-title: Dostawcy zasobów platformy Azure i typy zasobów | Microsoft Docs
+title: Dostawcy zasobów i typy zasobów
 description: Opisuje dostawców zasobów, którzy obsługują Menedżer zasobów, ich schematy i dostępne wersje interfejsu API oraz regiony, które mogą hostować zasoby.
-services: azure-resource-manager
-documentationcenter: na
-author: tfitzmac
-ms.assetid: 3c7a6fe4-371a-40da-9ebe-b574f583305b
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/29/2019
-ms.author: tomfitz
-ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 01550adbce51e3498f1167f6a4ebfd846ec316f3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164818"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149402"
 ---
 # <a name="azure-resource-providers-and-types"></a>Dostawcy zasobów platformy Azure i typy
 
@@ -46,13 +37,13 @@ Aby wyświetlić wszystkich dostawców zasobów i status rejestracji dla Twojej 
 2. Wybierz pozycję **Wszystkie usługi**.
 
     ![Wybieranie subskrypcji](./media/resource-manager-supported-services/select-subscriptions.png)
-3. W polu **wszystkie usługi** wprowadź subskrypcję, a następnie wybierz pozycję **subskrypcje**.
+3. W polu **wszystkie usługi** wprowadź **subskrypcję**, a następnie wybierz pozycję **subskrypcje**.
 4. Wybierz subskrypcję z listy subskrypcji do wyświetlenia.
 5. Wybierz pozycję **dostawcy zasobów** i Wyświetl listę dostępnych dostawców zasobów.
 
     ![Pokaż dostawców zasobów](./media/resource-manager-supported-services/show-resource-providers.png)
 
-6. Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie wielu dostawców zasobów jest automatycznie rejestrowanych. Jednak może być konieczne ręczne zarejestrowanie niektórych dostawców zasobów. Aby zarejestrować dostawcę zasobów, musisz mieć uprawnienia do wykonania `/register/action` operacji dla dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Aby zarejestrować dostawcę zasobów, wybierz pozycję **zarejestruj**. Na poprzednim zrzucie ekranu link **rejestru** został wyróżniony dla elementu **Microsoft. plan**.
+6. Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie wielu dostawców zasobów jest automatycznie rejestrowanych. Jednak może być konieczne ręczne zarejestrowanie niektórych dostawców zasobów. Aby zarejestrować dostawcę zasobów, musisz mieć uprawnienia do wykonywania `/register/action` operacji dla dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Aby zarejestrować dostawcę zasobów, wybierz pozycję **zarejestruj**. Na poprzednim zrzucie ekranu link **rejestru** został wyróżniony dla elementu **Microsoft. plan**.
 
     Nie można wyrejestrować dostawcy zasobów, gdy nadal masz typy zasobów od tego dostawcy zasobów w ramach subskrypcji.
 
@@ -102,7 +93,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie wielu dostawców zasobów jest automatycznie rejestrowanych. Jednak może być konieczne ręczne zarejestrowanie niektórych dostawców zasobów. Aby zarejestrować dostawcę zasobów, musisz mieć uprawnienia do wykonania `/register/action` operacji dla dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel.
+Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie wielu dostawców zasobów jest automatycznie rejestrowanych. Jednak może być konieczne ręczne zarejestrowanie niektórych dostawców zasobów. Aby zarejestrować dostawcę zasobów, musisz mieć uprawnienia do wykonywania `/register/action` operacji dla dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -207,7 +198,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie wielu dostawców zasobów jest automatycznie rejestrowanych. Jednak może być konieczne ręczne zarejestrowanie niektórych dostawców zasobów. Aby zarejestrować dostawcę zasobów, musisz mieć uprawnienia do wykonania `/register/action` operacji dla dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel.
+Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie wielu dostawców zasobów jest automatycznie rejestrowanych. Jednak może być konieczne ręczne zarejestrowanie niektórych dostawców zasobów. Aby zarejestrować dostawcę zasobów, musisz mieć uprawnienia do wykonywania `/register/action` operacji dla dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch

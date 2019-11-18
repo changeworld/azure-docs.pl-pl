@@ -1,57 +1,54 @@
 ---
-title: Funkcje szablonu Azure Resource Manager — ciąg | Microsoft Docs
+title: Funkcje szablonu — ciąg
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pracy z ciągami.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: tomfitz
-ms.openlocfilehash: d5c95e964740978af0db8db233c65adb7eb074f0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: af972bac39890402cf75e83d10806e9a830c1d4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834343"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149613"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla Azure Resource Manager szablonów
 
 Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 
-* [zakodowan](#base64)
+* [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [Concat](#concat)
-* [wyświetlana](#contains)
+* [concat](#concat)
+* [contains](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [ciągiem](#empty)
+* [empty](#empty)
 * [endsWith](#endswith)
-* [pierwszego](#first)
-* [Formatowanie](#format)
-* [ident](#guid)
+* [first](#first)
+* [format](#format)
+* [guid](#guid)
 * [indexOf](#indexof)
 * [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Długość](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
-* [stępować](#replace)
+* [replace](#replace)
 * [skip](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [parametry](#string)
-* [podciąg](#substring)
-* [czasochłonn](#take)
+* [ciąg](#string)
+* [substring](#substring)
+* [take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [trim](#trim)
 * [uniqueString](#uniquestring)
-* [adresu](#uri)
+* [uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 * [utcNow](#utcnow)
 
-## <a name="base64"></a>zakodowan
+## <a name="base64"></a>base64
 
 `base64(inputString)`
 
@@ -59,9 +56,9 @@ Zwraca reprezentację Base64 ciągu wejściowego.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Tak |ciąg |Wartość, która ma zostać zwrócona jako reprezentacja Base64. |
+| inputString |Yes |ciąg |Wartość, która ma zostać zwrócona jako reprezentacja Base64. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -108,7 +105,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -124,9 +121,9 @@ Konwertuje reprezentację Base64 na obiekt JSON.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Tak |ciąg |Reprezentacja Base64 do przekonwertowania na obiekt JSON. |
+| base64Value |Yes |ciąg |Reprezentacja Base64 do przekonwertowania na obiekt JSON. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -173,7 +170,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -189,9 +186,9 @@ Konwertuje reprezentację Base64 na ciąg.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Tak |ciąg |Reprezentacja Base64 do przekonwertowania na ciąg. |
+| base64Value |Yes |ciąg |Reprezentacja Base64 do przekonwertowania na ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -238,7 +235,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -254,9 +251,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |ciąg lub tablica |Pierwsza wartość dla łączenia. |
+| arg1 |Yes |ciąg lub tablica |Pierwsza wartość dla łączenia. |
 | dodatkowe argumenty |Nie |ciąg |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -286,11 +283,11 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| concatOutput | Ciąg | prefiks — 5yj4yjf5mbg72 |
+| concatOutput | Ciąg | prefix-5yj4yjf5mbg72 |
 
 Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) pokazuje, jak połączyć dwie tablice.
 
@@ -327,13 +324,13 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | przesłać | Tablica | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>wyświetlana
+## <a name="contains"></a>zawiera
 
 `contains (container, itemToFind)`
 
@@ -341,10 +338,10 @@ Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz, lub ciąg zawiera
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| kontener |Tak |Tablica, obiekt lub ciąg |Wartość, która zawiera wartość do znalezienia. |
-| itemToFind |Tak |ciąg lub int |Wartość do znalezienia. |
+| kontener |Yes |Tablica, obiekt lub ciąg |Wartość, która zawiera wartość do znalezienia. |
+| itemToFind |Yes |ciąg lub int |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -403,16 +400,16 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringTrue | Logiczna | True |
-| stringFalse | Logiczna | False |
-| objectTrue | Logiczna | True |
-| objectFalse | Logiczna | False |
-| arrayTrue | Logiczna | True |
-| arrayFalse | Logiczna | False |
+| stringTrue | Bool | Prawda |
+| stringFalse | Bool | False |
+| objectTrue | Bool | Prawda |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | Prawda |
+| arrayFalse | Bool | False |
 
 ## <a name="datauri"></a>dataUri
 
@@ -422,9 +419,9 @@ Konwertuje wartość na identyfikator URI danych.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Tak |ciąg |Wartość do przekonwertowania na identyfikator URI danych. |
+| stringToConvert |Yes |ciąg |Wartość do przekonwertowania na identyfikator URI danych. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -462,11 +459,11 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| dataUriOutput | Ciąg | dane: text/Plains; charset = UTF8; Base64, SGVsbG8 = |
+| dataUriOutput | Ciąg | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | Ciąg | Hello world! |
 
 ## <a name="datauritostring"></a>dataUriToString
@@ -477,9 +474,9 @@ Konwertuje wartość sformatowaną identyfikatora URI danych na ciąg.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Tak |ciąg |Wartość identyfikatora URI danych do przekonwertowania. |
+| dataUriToConvert |Yes |ciąg |Wartość identyfikatora URI danych do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -517,11 +514,11 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| dataUriOutput | Ciąg | dane: text/Plains; charset = UTF8; Base64, SGVsbG8 = |
+| dataUriOutput | Ciąg | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | Ciąg | Hello world! |
 
 ## <a name="empty"></a>ciągiem
@@ -532,9 +529,9 @@ Określa, czy tablica, obiekt lub ciąg jest pusty.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Tak |Tablica, obiekt lub ciąg |Wartość, aby sprawdzić, czy jest pusta. |
+| itemToTest |Yes |Tablica, obiekt lub ciąg |Wartość, aby sprawdzić, czy jest pusta. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -581,15 +578,15 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayEmpty | Logiczna | True |
-| objectEmpty | Logiczna | True |
-| stringEmpty | Logiczna | True |
+| arrayEmpty | Bool | Prawda |
+| objectEmpty | Bool | Prawda |
+| stringEmpty | Bool | Prawda |
 
-## <a name="endswith"></a>EndsWith
+## <a name="endswith"></a>endsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -597,10 +594,10 @@ Określa, czy ciąg ma kończyć się wartością. W porównaniu z rozróżniani
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Yes |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -644,16 +641,16 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| startsTrue | Logiczna | True |
-| startsCapTrue | Logiczna | True |
-| startsFalse | Logiczna | False |
-| endsTrue | Logiczna | True |
-| endsCapTrue | Logiczna | True |
-| endsFalse | Logiczna | False |
+| startsTrue | Bool | Prawda |
+| startsCapTrue | Bool | Prawda |
+| startsFalse | Bool | False |
+| endsTrue | Bool | Prawda |
+| endsCapTrue | Bool | Prawda |
+| endsFalse | Bool | False |
 
 ## <a name="first"></a>pierwszego
 
@@ -663,9 +660,9 @@ Zwraca pierwszy znak ciągu lub pierwszy element tablicy.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |Tablica lub ciąg |Wartość do pobrania pierwszego elementu lub znaku. |
+| arg1 |Yes |Tablica lub ciąg |Wartość do pobrania pierwszego elementu lub znaku. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -700,14 +697,14 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | arrayOutput | Ciąg | jeden |
 | stringOutput | Ciąg | O |
 
-## <a name="format"></a>Formatowanie
+## <a name="format"></a>format
 
 `format(formatString, arg1, arg2, ...)`
 
@@ -715,10 +712,10 @@ Tworzy sformatowany ciąg z wartości wejściowych.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Formatowanie | Tak | ciąg | Ciąg formatu złożonego. |
-| arg1 | Tak | ciąg, liczba całkowita lub wartość logiczna | Wartość, która ma zostać uwzględniona w sformatowanym ciągu. |
+| Formatowanie | Yes | ciąg | Ciąg formatu złożonego. |
+| arg1 | Yes | ciąg, liczba całkowita lub wartość logiczna | Wartość, która ma zostać uwzględniona w sformatowanym ciągu. |
 | dodatkowe argumenty | Nie | ciąg, liczba całkowita lub wartość logiczna | Dodatkowe wartości do uwzględnienia w sformatowanym ciągu. |
 
 ### <a name="remarks"></a>Uwagi
@@ -758,7 +755,7 @@ Poniższy przykładowy szablon pokazuje, jak używać funkcji format.
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -772,9 +769,9 @@ Tworzy wartość w formacie unikatowego identyfikatora globalnego na podstawie w
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Tak |ciąg |Wartość użyta w funkcji skrótu do utworzenia identyfikatora GUID. |
+| baseString |Yes |ciąg |Wartość użyta w funkcji skrótu do utworzenia identyfikatora GUID. |
 | dodatkowe parametry w razie konieczności |Nie |ciąg |W razie potrzeby można dodać dowolną liczbę ciągów, aby utworzyć wartość określającą poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
@@ -843,10 +840,10 @@ Zwraca pierwszą pozycję wartości w ciągu. W porównaniu z rozróżnianiem wi
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Yes |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -886,15 +883,15 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| pierwsze | ZAOKR | 0 |
-| Ostatnia | ZAOKR | 3 |
-| firstString | ZAOKR | 2 |
-| lastString | ZAOKR | 0 |
-| notFound | ZAOKR | -1 |
+| pierwsze | Int | 0 |
+| Ostatnia | Int | 3 |
+| firstString | Int | 2 |
+| lastString | Int | 0 |
+| notFound | Int | -1 |
 
 ## <a name="last"></a>last
 
@@ -904,9 +901,9 @@ Zwraca ostatni znak ciągu lub ostatni element tablicy.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |Tablica lub ciąg |Wartość do pobrania ostatniego elementu lub znaku. |
+| arg1 |Yes |Tablica lub ciąg |Wartość do pobrania ostatniego elementu lub znaku. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -941,7 +938,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -956,10 +953,10 @@ Zwraca ostatnią pozycję wartości w ciągu. W porównaniu z rozróżnianiem wi
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Yes |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -999,17 +996,17 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| pierwsze | ZAOKR | 0 |
-| Ostatnia | ZAOKR | 3 |
-| firstString | ZAOKR | 2 |
-| lastString | ZAOKR | 0 |
-| notFound | ZAOKR | -1 |
+| pierwsze | Int | 0 |
+| Ostatnia | Int | 3 |
+| firstString | Int | 2 |
+| lastString | Int | 0 |
+| notFound | Int | -1 |
 
-## <a name="length"></a>Długość
+## <a name="length"></a>length
 
 `length(string)`
 
@@ -1017,9 +1014,9 @@ Zwraca liczbę znaków w ciągu, elementów w tablicy lub we właściwościach p
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |Tablica, ciąg lub obiekt |Tablica, która ma być używana do pobierania liczby elementów, ciągu, który ma być używany do pobierania liczby znaków lub obiektu, który ma być używany do pobierania liczby właściwości na poziomie głównym. |
+| arg1 |Yes |Tablica, ciąg lub obiekt |Tablica, która ma być używana do pobierania liczby elementów, ciągu, który ma być używany do pobierania liczby znaków lub obiektu, który ma być używany do pobierania liczby właściwości na poziomie głównym. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1077,13 +1074,13 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayLength | ZAOKR | 3 |
-| stringLength | ZAOKR | 13 |
-| objectLength | ZAOKR | 4 |
+| arrayLength | Int | 3 |
+| stringLength | Int | 13 |
+| objectLength | Int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
@@ -1190,10 +1187,10 @@ Zwraca ciąg wyrównany do prawej poprzez dodanie znaków po lewej stronie do os
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Tak |ciąg lub int |Wartość na wyrównanie do prawej. |
-| totalLength |Tak |int |Całkowita liczba znaków w zwracanym ciągu. |
+| valueToPad |Yes |ciąg lub int |Wartość na wyrównanie do prawej. |
+| totalLength |Yes |int |Całkowita liczba znaków w zwracanym ciągu. |
 | paddingCharacter |Nie |pojedynczy znak |Znak, który ma zostać użyty do lewej krawędzi do momentu osiągnięcia całkowitej długości. Wartość domyślna to spacja. |
 
 Jeśli oryginalny ciąg jest dłuższy niż liczba znaków do zablokowania, nie są dodawane żadne znaki.
@@ -1226,7 +1223,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -1240,11 +1237,11 @@ Zwraca nowy ciąg ze wszystkimi wystąpieniami jednego ciągu zamienionego przez
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalString |Tak |ciąg |Wartość, która ma wszystkie wystąpienia jednego ciągu zamienionego przez inny ciąg. |
-| Staryciąg |Tak |ciąg |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
-| Nowyciąg |Tak |ciąg |Ciąg, który ma zostać dodany zamiast usuniętego ciągu. |
+| originalString |Yes |ciąg |Wartość, która ma wszystkie wystąpienia jednego ciągu zamienionego przez inny ciąg. |
+| Staryciąg |Yes |ciąg |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
+| Nowyciąg |Yes |ciąg |Ciąg, który ma zostać dodany zamiast usuniętego ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1278,12 +1275,12 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | firstOutput | Ciąg | 1231231234 |
-| secondOutput | Ciąg | 123-123 — xxxx |
+| secondOutput | Ciąg | 123-123-xxxx |
 
 ## <a name="skip"></a>Skocz
 
@@ -1293,10 +1290,10 @@ Zwraca ciąg zawierający wszystkie znaki po określonej liczbie znaków lub tab
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalValue |Tak |Tablica lub ciąg |Tablica lub ciąg, który ma być używany do pomijania. |
-| numberToSkip |Tak |int |Liczba elementów lub znaków do pominięcia. Jeśli ta wartość jest równa 0 lub mniejsza, zwracane są wszystkie elementy lub znaki w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
+| originalValue |Yes |Tablica lub ciąg |Tablica lub ciąg, który ma być używany do pomijania. |
+| numberToSkip |Yes |int |Liczba elementów lub znaków do pominięcia. Jeśli ta wartość jest równa 0 lub mniejsza, zwracane są wszystkie elementy lub znaki w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1346,7 +1343,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -1361,10 +1358,10 @@ Zwraca tablicę ciągów, która zawiera podciągi ciągu wejściowego, które s
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Tak |ciąg |Ciąg do podzielenia. |
-| ogranicznik |Tak |ciąg lub tablica ciągów |Ogranicznik używany do dzielenia ciągu. |
+| inputString |Yes |ciąg |Ciąg do podzielenia. |
+| ogranicznik |Yes |ciąg lub tablica ciągów |Ogranicznik używany do dzielenia ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1405,7 +1402,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -1420,10 +1417,10 @@ Określa, czy ciąg rozpoczyna się od wartości. W porównaniu z rozróżnianie
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Tak |ciąg |Wartość do znalezienia. |
+| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Yes |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1467,16 +1464,16 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| startsTrue | Logiczna | True |
-| startsCapTrue | Logiczna | True |
-| startsFalse | Logiczna | False |
-| endsTrue | Logiczna | True |
-| endsCapTrue | Logiczna | True |
-| endsFalse | Logiczna | False |
+| startsTrue | Bool | Prawda |
+| startsCapTrue | Bool | Prawda |
+| startsFalse | Bool | False |
+| endsTrue | Bool | Prawda |
+| endsCapTrue | Bool | Prawda |
+| endsFalse | Bool | False |
 
 ## <a name="string"></a>ciąg
 
@@ -1486,9 +1483,9 @@ Konwertuje określoną wartość na ciąg.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Tak | Dowolne |Wartość do przekonwertowania na ciąg. Każdy typ wartości może być konwertowany, w tym obiektów i tablic. |
+| valueToConvert |Yes | Dowolne |Wartość do przekonwertowania na ciąg. Każdy typ wartości może być konwertowany, w tym obiektów i tablic. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1541,12 +1538,12 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | objectOutput | Ciąg | {"valuea": 10, "Wartośćb": "przykładowy tekst"} |
-| arrayOutput | Ciąg | ["a", "b", "c"] |
+| arrayOutput | Ciąg | ["a","b","c"] |
 | intOutput | Ciąg | 5 |
 
 ## <a name="substring"></a>podciąg
@@ -1557,11 +1554,11 @@ Zwraca podciąg, który zaczyna się od określonej pozycji znaku i zawiera okre
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Tak |ciąg |Oryginalny ciąg, z którego jest wyodrębniany podciąg. |
-| Indeks |Nie |int |Początkowa pozycja znaku (liczony od zera) dla podciągu. |
-| Długość |Nie |int |Liczba znaków podciągu. Musi odwoływać się do lokalizacji w ciągu. Musi być równa zero lub większa. |
+| stringToParse |Yes |ciąg |Oryginalny ciąg, z którego jest wyodrębniany podciąg. |
+| startIndex |Nie |int |Początkowa pozycja znaku (liczony od zera) dla podciągu. |
+| length |Nie |int |Liczba znaków podciągu. Musi odwoływać się do lokalizacji w ciągu. Musi być równa zero lub większa. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1604,13 +1601,13 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | substringOutput | Ciąg | dwa |
 
-## <a name="take"></a>Czasochłonn
+## <a name="take"></a>czasochłonn
 
 `take(originalValue, numberToTake)`
 
@@ -1618,10 +1615,10 @@ Zwraca ciąg zawierający określoną liczbę znaków od początku ciągu lub ta
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalValue |Tak |Tablica lub ciąg |Tablica lub ciąg, z którego mają zostać przebrane elementy. |
-| numberToTake |Tak |int |Liczba elementów lub znaków do wykonania. Jeśli ta wartość jest równa 0 lub mniejsza, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
+| originalValue |Yes |Tablica lub ciąg |Tablica lub ciąg, z którego mają zostać przebrane elementy. |
+| numberToTake |Yes |int |Liczba elementów lub znaków do wykonania. Jeśli ta wartość jest równa 0 lub mniejsza, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1671,12 +1668,12 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | arrayOutput | Tablica | ["jeden", "dwa"] |
-| stringOutput | Ciąg | z |
+| stringOutput | Ciąg | włączone |
 
 ## <a name="tolower"></a>toLower
 
@@ -1686,9 +1683,9 @@ Konwertuje określony ciąg na małe litery.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Tak |ciąg |Wartość do przekonwertowania na małe litery. |
+| stringToChange |Yes |ciąg |Wartość do przekonwertowania na małe litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1722,7 +1719,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -1737,9 +1734,9 @@ Konwertuje określony ciąg na wielkie litery.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Tak |ciąg |Wartość do przekonwertowania na wielkie litery. |
+| stringToChange |Yes |ciąg |Wartość do przekonwertowania na wielkie litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1773,7 +1770,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -1788,9 +1785,9 @@ Usuwa wszystkie spacje wiodące i końcowe z określonego ciągu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Tak |ciąg |Wartość do przycięcia. |
+| stringToTrim |Yes |ciąg |Wartość do przycięcia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1820,7 +1817,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -1834,9 +1831,9 @@ Tworzy deterministyczny ciąg skrótu na podstawie wartości podanych jako param
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Tak |ciąg |Wartość użyta w funkcji skrótu do utworzenia unikatowego ciągu. |
+| baseString |Yes |ciąg |Wartość użyta w funkcji skrótu do utworzenia unikatowego ciągu. |
 | dodatkowe parametry w razie konieczności |Nie |ciąg |W razie potrzeby można dodać dowolną liczbę ciągów, aby utworzyć wartość określającą poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
@@ -1912,10 +1909,10 @@ Tworzy bezwzględny identyfikator URI przez połączenie baseUri i ciągu relati
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Tak |ciąg |Podstawowy ciąg identyfikatora URI. Pamiętaj, aby obserwować zachowanie dotyczące obsługi końcowego ukośnika ('/'), zgodnie z opisem poniżej tej tabeli.  |
-| relativeUri |Tak |ciąg |Względny ciąg identyfikatora URI, który ma zostać dodany do podstawowego ciągu identyfikatora URI. |
+| baseUri |Yes |ciąg |Podstawowy ciąg identyfikatora URI. Pamiętaj, aby obserwować zachowanie dotyczące obsługi końcowego ukośnika ('/'), zgodnie z opisem poniżej tej tabeli.  |
+| relativeUri |Yes |ciąg |Względny ciąg identyfikatora URI, który ma zostać dodany do podstawowego ciągu identyfikatora URI. |
 
 * Jeśli **baseUri** kończy się na końcu ukośnika, wynik jest po prostu **baseUri** , a następnie **relativeUri**.
 
@@ -1976,7 +1973,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -1992,9 +1989,9 @@ Koduje identyfikator URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Tak |ciąg |Wartość do kodowania. |
+| stringToEncode |Yes |ciąg |Wartość do kodowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2031,7 +2028,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -2047,9 +2044,9 @@ Zwraca ciąg wartości zakodowanej URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Tak |ciąg |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. |
+| uriEncodedString |Yes |ciąg |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2086,7 +2083,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
@@ -2102,9 +2099,9 @@ Zwraca bieżącą wartość daty/godziny w określonym formacie. Jeśli format n
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Formatowanie |Nie |ciąg |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. Użyj [standardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format |Nie |ciąg |Zakodowana wartość identyfikatora URI w celu przekonwertowania na ciąg. Użyj [standardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [niestandardowych ciągów formatu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Uwagi
 
@@ -2204,8 +2201,8 @@ W następnym przykładzie pokazano, jak używać wartości z funkcji podczas ust
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](resource-group-authoring-templates.md).
-* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](resource-group-linked-templates.md).
-* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md).
-* Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](resource-group-template-deploy.md).
+* Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
+* Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).
+* Aby zobaczyć, jak wdrożyć szablon został utworzony, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
 

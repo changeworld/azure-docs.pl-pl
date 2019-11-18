@@ -1,17 +1,14 @@
 ---
-title: Funkcje szablonu Azure Resource Manager — wdrożenie | Microsoft Docs
+title: Funkcje szablonu — wdrożenie
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pobierania informacji o wdrożeniu.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 17caf78fb77e330685bb45ab03aaeed611900ba0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983987"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149638"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla Azure Resource Manager szablonów 
 
@@ -25,7 +22,7 @@ Aby uzyskać wartości z zasobów, grup zasobów lub subskrypcji, zobacz temat [
 
 <a id="deployment" />
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>wdrożenie
 `deployment()`
 
 Zwraca informacje o bieżącej operacji wdrażania.
@@ -78,7 +75,7 @@ Gdy obiekt jest przenoszona jako link, na przykład w przypadku użycia parametr
 }
 ```
 
-Po [wdrożeniu do subskrypcji platformy Azure](deploy-to-subscription.md), a nie w grupie zasobów, obiekt zwracany zawiera `location` właściwość. Właściwość Location jest uwzględniana podczas wdrażania szablonu lokalnego lub zewnętrznego.
+Po [wdrożeniu do subskrypcji platformy Azure](deploy-to-subscription.md), a nie w grupie zasobów, obiekt zwracany zawiera właściwość `location`. Właściwość Location jest uwzględniana podczas wdrażania szablonu lokalnego lub zewnętrznego.
 
 ### <a name="remarks"></a>Uwagi
 
@@ -90,7 +87,7 @@ Możesz użyć wdrożenia (), aby połączyć się z innym szablonem na podstawi
 }
 ```  
 
-Po ponownym wdrożeniu szablonu z historii wdrożenia w portalu szablon zostanie wdrożony jako plik lokalny. `templateLink` Właściwość nie jest zwracana w funkcji wdrożenia. Jeśli szablon polega na `templateLink` skonstruowaniu linku do innego szablonu, nie należy używać portalu do ponownego wdrożenia. Zamiast tego należy użyć poleceń użytych do pierwotnego wdrożenia szablonu.
+Po ponownym wdrożeniu szablonu z historii wdrożenia w portalu szablon zostanie wdrożony jako plik lokalny. Właściwość `templateLink` nie została zwrócona w funkcji wdrożenia. Jeśli szablon polega na `templateLink` konstruowania linku do innego szablonu, nie należy używać portalu do ponownego wdrożenia. Zamiast tego należy użyć poleceń użytych do pierwotnego wdrożenia szablonu.
 
 ### <a name="example"></a>Przykład
 
@@ -134,7 +131,7 @@ Poprzedni przykład zwraca następujący obiekt:
 }
 ```
 
-Aby zapoznać się z szablonem na poziomie subskrypcji korzystającym z funkcji wdrażania, zobacz [Funkcja wdrażania subskrypcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Jest ona wdrażana za `az deployment create` pomocą `New-AzDeployment` polecenia lub.
+Aby zapoznać się z szablonem na poziomie subskrypcji korzystającym z funkcji wdrażania, zobacz [Funkcja wdrażania subskrypcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Jest ona wdrażana za pomocą poleceń `az deployment create` lub `New-AzDeployment`.
 
 <a id="parameters" />
 
@@ -147,7 +144,7 @@ Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowana w 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Tak |ciąg |Nazwa parametru do zwrócenia. |
+| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -232,13 +229,13 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringOutput | String | Opcja 1 |
+| stringOutput | Ciąg | Opcja 1 |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"jeden": "a", "dwa": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | Opcja 1 |
+| objectOutput | Obiekt | {"jeden": "a", "dwa": "b"} |
+| arrayOutput | Tablica | [1, 2, 3] |
+| crossOutput | Ciąg | Opcja 1 |
 
 Aby uzyskać więcej informacji na temat używania parametrów, zobacz [Parametry w szablonie Azure Resource Manager](template-parameters.md).
 
@@ -253,7 +250,7 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowana w se
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| variableName |Tak |String |Nazwa zmiennej do zwrócenia. |
+| variableName |Yes |Ciąg |Nazwa zmiennej do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -325,12 +322,12 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | NazwaMojejZmiennej |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | String | NazwaMojejZmiennej |
-| exampleOutput4 |  Object | {"Property1": "wartość1", "Property2": "wartość2"} |
+| exampleOutput1 | Ciąg | NazwaMojejZmiennej |
+| exampleOutput2 | Tablica | [1, 2, 3, 4] |
+| exampleOutput3 | Ciąg | NazwaMojejZmiennej |
+| exampleOutput4 |  Obiekt | {"Property1": "wartość1", "Property2": "wartość2"} |
 
 Aby uzyskać więcej informacji o używaniu zmiennych, zobacz [zmienne w szablonie Azure Resource Manager](template-variables.md).
 

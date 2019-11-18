@@ -1,17 +1,14 @@
 ---
-title: Oznacz zasoby platformy Azure dla organizacji logicznej | Microsoft Docs
+title: Tagi zasobów dla organizacji logicznej
 description: Pokazuje, jak zastosować Tagi do organizowania zasobów platformy Azure na potrzeby rozliczeń i zarządzania nimi.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.author: tomfitz
-ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b332ae86e714d4b642f921d217d80e802fa60572
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199160"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149593"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 333bc12c475cedbd98480e3b596bcc7ad4e30ecc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ba8dc3080f3b584ae3a60576e4cc670dc60c28a0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824913"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151812"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux z Azure NetApp Files dla aplikacji SAP
 
@@ -100,7 +100,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SA
 > [!IMPORTANT]
 > Klastrowanie z obsługą wiele identyfikatorów SID oprogramowania SAP ASCS/wykres WYWOŁUJĄCYCH z systemem Red Hat Linux jako systemu operacyjnego gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie z wieloma SIDmi opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker.
 
-### <a name="ascs"></a>Z SCS
+### <a name="ascs"></a>(A)SCS
 
 * Konfiguracja frontonu
   * Adres IP 192.168.14.9
@@ -118,7 +118,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SA
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-### <a name="ers"></a>Wykres WYWOŁUJĄCYCH
+### <a name="ers"></a>ERS
 
 * Konfiguracja frontonu
   * Adres IP 192.168.14.10
@@ -166,11 +166,10 @@ W tym przykładzie użyto Azure NetApp Files dla wszystkich systemów plików SA
 
 Rozważając Azure NetApp Files dla architektury SAP NetWeaver w systemie SUSE wysokiej dostępności, weź pod uwagę następujące ważne zagadnienia:
 
-- Minimalna Pula pojemności to 4 TiB. Rozmiar puli pojemności musi być wielokrotnością 4 TiB.
+- Minimalna Pula pojemności to 4 TiB. Rozmiar puli pojemności można zwiększyć w 1 TiB przyrostów.
 - Minimalny wolumin to 100 GiB
 - Azure NetApp Files i wszystkie maszyny wirtualne, w których zostaną zainstalowane woluminy Azure NetApp Files, muszą znajdować się w tej samej Virtual Network platformy Azure lub w [równorzędnych sieciach wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) w tym samym regionie. Azure NetApp Files dostęp za pośrednictwem komunikacji równorzędnej sieci wirtualnej w tym samym regionie jest obecnie obsługiwany. Dostęp do usługi Azure NetApp za pośrednictwem globalnej komunikacji równorzędnej nie jest jeszcze obsługiwany.
 - Wybrana Sieć wirtualna musi mieć podsieć delegowaną do Azure NetApp Files.
-- Azure NetApp Files obecnie obsługuje tylko NFSv3 
 - Azure NetApp Files oferuje [zasady eksportowania](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): można kontrolować dozwolonych klientów, typ dostępu (odczyt & zapis, tylko do odczytu itp.). 
 - Funkcja Azure NetApp Files nie jest jeszcze dostępna dla strefy. Obecnie Azure NetApp Files funkcja nie jest wdrażana we wszystkich strefach dostępności w regionie świadczenia usługi Azure. Weź pod uwagę potencjalne konsekwencje opóźnienia w niektórych regionach świadczenia usługi Azure. 
 
@@ -268,18 +267,18 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker Red Hat Enterprise Lin
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Przygotowanie do instalacji oprogramowania SAP NetWeaver
 
-Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
+Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 
-1. **[A]** rozpoznawanie nazw hostów
+1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
-   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
+   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
     ```
     sudo vi /etc/hosts
     ```
 
-   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
+   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
 
     ```
     # IP address of cluster node 1
@@ -370,6 +369,9 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
     192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS nfs rw,hard,rsize=65536,wsize=65536,vers=3
     192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
+
+   > [!NOTE]
+   > Przed zainstalowaniem woluminów upewnij się, że jest zgodna z wersją protokołu NFS Azure NetApp Files woluminów. W tym przykładzie woluminy Azure NetApp Files zostały utworzone jako woluminy NFSv3.  
 
    Zainstaluj nowe udziały
 
@@ -685,7 +687,7 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 
    Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno platformy pas, jak i AAS, **[P]** — dotyczy tylko platformy pas lub **[S]** — dotyczy tylko AAS.  
 
-1. **[A]** rozpoznawanie nazw hostów można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
+1. **[A]** rozpoznawanie nazw hostów można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach:  
 
    ```

@@ -1,6 +1,6 @@
 ---
 title: Zaplanuj zadania Azure Container Registry
-description: Dowiedz się, jak uruchomić zadanie Azure Container Registry zgodnie ze zdefiniowanym harmonogramem, ustawiając jeden lub więcej wyzwalaczy czasomierza
+description: W tym samouczku dowiesz się, jak uruchomić zadanie Azure Container Registry zgodnie ze zdefiniowanym harmonogramem, ustawiając jeden lub więcej wyzwalaczy czasomierza
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,16 +8,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ae36b8d67d02f8cae0007b7b06485932db851af5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931464"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148640"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Uruchamianie zadania ACR zgodnie ze zdefiniowanym harmonogramem
 
-W tym artykule przedstawiono sposób uruchamiania [zadania ACR](container-registry-tasks-overview.md) zgodnie z harmonogramem. Zaplanuj zadanie, konfigurując jeden lub więcej *wyzwalaczy czasomierza*.
+W tym samouczku przedstawiono sposób uruchamiania [zadania ACR](container-registry-tasks-overview.md) zgodnie z harmonogramem. Zaplanuj zadanie, konfigurując jeden lub więcej *wyzwalaczy czasomierza*. Wyzwalacze czasomierza mogą być używane samodzielnie lub w połączeniu z innymi wyzwalaczami zadań.
+
+W tym samouczku dowiesz się więcej na temat planowania zadań i:
+
+> [!div class="checklist"]
+> * Tworzenie zadania z wyzwalaczem czasomierza
+> * Zarządzaj wyzwalaczami czasomierza
 
 Planowanie zadania jest przydatne w scenariuszach takich jak następujące:
 
@@ -199,9 +205,11 @@ Każde pole może mieć jeden z następujących typów wartości:
 
 ## <a name="next-steps"></a>Następne kroki
 
+W tym samouczku przedstawiono sposób tworzenia Azure Container Registry zadań, które są automatycznie wyzwalane przez czasomierz. 
+
 Przykład użycia zaplanowanego zadania do czyszczenia repozytoriów w rejestrze można znaleźć w temacie [Automatyczne przeczyszczanie obrazów z usługi Azure Container Registry](container-registry-auto-purge.md).
 
-Aby zapoznać się z przykładami zadań wyzwalanych przez zatwierdzenia kodu źródłowego lub aktualizacje obrazu podstawowego, zapoznaj się z [serią samouczka zadań ACR](container-registry-tutorial-quick-task.md).
+Przykłady zadań wyzwalanych przez zatwierdzenia kodu źródłowego lub aktualizacje obrazu podstawowego można znaleźć w innych artykułach w [serii samouczków zadań ACR](container-registry-tutorial-quick-task.md).
 
 
 

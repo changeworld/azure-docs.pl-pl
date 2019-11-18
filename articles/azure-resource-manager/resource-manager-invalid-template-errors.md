@@ -1,17 +1,14 @@
 ---
-title: Błędy związane z nieprawidłowym szablonem platformy Azure | Microsoft Docs
+title: Nieprawidłowe błędy szablonu
 description: Opisuje sposób rozwiązywania nieprawidłowych błędów szablonów podczas wdrażania szablonów Azure Resource Manager.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.author: tomfitz
-ms.openlocfilehash: bdf1d66ab345cc0d86206413db6617e9568b4d22
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7b9b8021ad34a7ec7f879ce9413f4ae5d44e2720
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390326"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150568"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Rozwiązywanie błędów dla nieprawidłowego szablonu
 
@@ -153,8 +150,8 @@ Usunięcie wartości z właściwości **dependsOn** może spowodować błędy po
 
 Jeśli takie podejście nie rozwiąże zależności cyklicznej, rozważ przeniesienie części logiki wdrażania do zasobów podrzędnych (takich jak rozszerzenia lub ustawienia konfiguracji). Skonfiguruj te zasoby podrzędne do wdrożenia po zasobach występujących w zależności cyklicznej. Załóżmy na przykład, że wdrażasz dwie maszyny wirtualne, ale musisz ustawić właściwości dla każdej z nich, która odwołuje się do drugiego. Można je wdrożyć w następującej kolejności:
 
-1. VM1
-2. VM2
+1. vm1
+2. vm2
 3. Rozszerzenie na VM1 zależy od VM1 i VM2. Rozszerzenie ustawia wartości w VM1, które pobiera z VM2.
 4. Rozszerzenie na VM2 zależy od VM1 i VM2. Rozszerzenie ustawia wartości w VM2, które pobiera z VM1.
 

@@ -9,43 +9,46 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: cbd8ad73ff4a03790dd6b22d5ce33acf09a2b125
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39b56c5e73c8ce85a020402dafb622b90c536a1e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491367"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143845"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorce, aby poprawić dokładność przewidywania
 Gdy aplikacja LUIS otrzymuje punkt końcowy wyrażenia długości, użyj [wzorca](luis-concept-patterns.md) , aby poprawić dokładność przewidywania dla wyrażenia długości, które ujawnia wzorzec w kolejności słów i wyborze wyrazu. Wzorce używają określonej [składni](luis-concept-patterns.md#pattern-syntax) , aby wskazać lokalizację: [jednostki](luis-concept-entity-types.md), [role](luis-concept-roles.md)jednostek i tekst opcjonalny.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="add-template-utterance-to-create-pattern"></a>Dodawanie szablonu wypowiedź do tworzenia wzorców
-1. Otwórz aplikację, wybierając jej nazwę na stronie **Moje aplikacje** , a następnie wybierz pozycję **wzorce** w lewym panelu, w obszarze **Popraw wydajność aplikacji**.
+## <a name="add-template-utterance-to-create-pattern"></a>Dodaj wypowiedź szablonu, aby utworzyć wzorzec
 
-    ![Zrzut ekranu przedstawiający listę wzorców](./media/luis-how-to-model-intent-pattern/patterns-1.png)
+1. Otwórz aplikację, wybierając jego nazwę na **Moje aplikacje** strony, a następnie wybierz pozycję **wzorców** w lewym panelu w obszarze **lepsza wydajność aplikacji**.
 
-2. Wybierz odpowiedni cel dla wzorca. 
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający listę wzorców](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
-    ![Wybór opcji](./media/luis-how-to-model-intent-pattern/patterns-2.png)
+1. Wybierz prawidłowe opcje dla wzorca. 
 
-3. W polu tekstowym szablon wpisz wypowiedź szablonu i wybierz ENTER. Jeśli chcesz wprowadzić nazwę jednostki, użyj poprawnej składni jednostki wzorca. Rozpocznij składnię jednostki za pomocą `{`. Zostanie wyświetlona lista jednostek. Wybierz poprawną jednostkę, a następnie wybierz klawisz ENTER. 
+1. W polu tekstowym szablonu wpisz wypowiedź szablonu, a następnie naciśnij klawisz Enter. Jeśli chcesz wprowadzić nazwę jednostki, należy użyć składni jednostki prawidłowy wzorzec. Rozpocznij składni jednostki za pomocą `{`. Lista zawiera jednostki. Wybierz poprawną jednostkę. 
 
-    ![Zrzut ekranu jednostki dla wzorca](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu jednostki dla wzorca](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Jeśli jednostka zawiera [rolę](luis-concept-roles.md), wskaż rolę z pojedynczym dwukropkiem, `:`po nazwie jednostki, takiej jak `{Location:Origin}`. Lista ról dla jednostek zostanie wyświetlona na liście. Wybierz rolę, a następnie wybierz klawisz ENTER. 
+    Jeśli jednostka zawiera [rolę](luis-concept-roles.md), wskaż rolę z pojedynczym dwukropkiem, `:`po nazwie jednostki, takiej jak `{Location:Origin}`. Wyświetla listę ról dla obiektów w postaci listy. Wybierz rolę, a następnie naciśnij klawisz Enter. 
 
-    ![Zrzut ekranu jednostki z rolą](./media/luis-how-to-model-intent-pattern/patterns-4.png)
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu jednostki z rolą](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
-    Po wybraniu prawidłowej jednostki Zakończ wprowadzanie wzorca, a następnie wybierz klawisz ENTER. Gdy skończysz wprowadzać wzorce, [uczenie](luis-how-to-train.md) aplikacji.
+    Po wybraniu prawidłowe jednostki, Zakończ wprowadzanie wzorzec, a następnie naciśnij klawisz Enter. Po zakończeniu wprowadzania wzorców [szkolenie](luis-how-to-train.md) aplikacji.
 
-    ![Zrzut ekranu przedstawiający wprowadzony wzorzec z obydwoma typami jednostek](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający wprowadzony wzorzec z obydwoma typami jednostek](./media/luis-how-to-model-intent-pattern/patterns-5.png)
 
-## <a name="train-your-app-after-changing-model-with-patterns"></a>Uczenie aplikacji po zmianie modelu ze wzorcami
-Po dodaniu, edycji, usunięciu lub ponownym przypisaniu wzorca należy [pouczenie](luis-how-to-train.md) i [opublikować](luis-how-to-publish-app.md) aplikację, aby zmiany dotyczyły zapytań punktów końcowych. 
+## <a name="train-your-app-after-changing-model-with-patterns"></a>Uczenie aplikacji po zmianie modelu wzorami
+Po dodaniu, edytować, usunąć lub ponownie przypisać wzorzec [szkolenie](luis-how-to-train.md) i [publikowania](luis-how-to-publish-app.md) aplikacji zmiany wpływają na zapytania punktu końcowego. 
 
 <a name="search-patterns"></a>
 <a name="edit-a-pattern"></a>
@@ -63,17 +66,17 @@ Po dodaniu, edycji, usunięciu lub ponownym przypisaniu wzorca należy [pouczeni
 Kontekstowy pasek narzędzi powyżej listy wzorców pozwala:
 
 * Wyszukaj wzorce
-* Edytowanie wzorca
-* Przypisz ponownie indywidualny wzorzec do innego celu
-* Przypisz ponownie kilka wzorców do innego celu
+* Edytuj wzorzec
+* Ponowne przypisywanie poszczególnych wzorzec do innego zamiaru
+* Ponowne przypisywanie kilka wzorców do innego zamiaru
 * Delete-a-Single-wzorzec
-* Usuń kilka wzorców
-* Filtruj listę wzorców według jednostek
+* Usuwanie wielu wzorców
+* Filtrowanie listy wzorzec przez jednostkę
 * Filtr-wzorzec-lista według intencji
-* Usuń filtr jednostki lub celu
-* Dodaj wzorzec z istniejącej wypowiedź na stronie intencji lub jednostki
+* Usuwanie jednostki lub filtr elementu intent
+* Dodawanie wzorca z istniejących wypowiedź przeznaczenie lub jednostki strony
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, jak [utworzyć wzorzec](luis-tutorial-pattern.md) ze wzorcem. dowolne role i z samouczkiem.
-* Dowiedz się, jak [szkolić](luis-how-to-train.md) aplikację.
+* Dowiedz się, jak [szkolenie](luis-how-to-train.md) aplikacji.

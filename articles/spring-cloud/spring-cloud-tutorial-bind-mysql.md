@@ -1,21 +1,21 @@
 ---
-title: Jak powiązać Azure Database for MySQL ze swoją aplikacją w chmurze Azure wiosną | Microsoft Docs
-description: W tym artykule opisano sposób powiązania usługi Azure MySQL z Twoją aplikacją w chmurze Azure wiosennej
+title: Jak powiązać wystąpienie Azure Database for MySQL z aplikacją w chmurze Azure wiosną | Microsoft Docs
+description: W tym artykule opisano, jak powiązać wystąpienie Azure Database for MySQL z aplikacją w chmurze platformy Azure
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: b6de5bb3b25c111d1b7775ea9570a4ae2cf45042
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 6c5cd4ac384affaedbd813f9395f997f92eb69c4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607587"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151123"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-database-for-mysql"></a>Samouczek: powiązywanie usług platformy Azure z Twoją aplikacją w chmurze Azure wiosną: Azure Database for MySQL
+# <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Samouczek: Powiąż wystąpienie Azure Database for MySQL z aplikacją w chmurze platformy Azure 
 
-Chmura sprężynowa platformy Azure umożliwia automatyczne powiązanie wybranych usług platformy Azure z aplikacjami zamiast ręcznego konfigurowania aplikacji do rozruchu ze sprężyną. W tym samouczku przedstawiono sposób powiązania aplikacji z usługą Azure MySQL.
+Dzięki chmurze platformy Azure można automatycznie powiązać wybrane usługi platformy Azure z aplikacjami, a nie trzeba ręcznie konfigurować aplikacji rozruchowej ze sprężyną. W tym samouczku pokazano, jak powiązać aplikację z wystąpieniem Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,13 +23,15 @@ Chmura sprężynowa platformy Azure umożliwia automatyczne powiązanie wybranyc
 * Konto Azure Database for MySQL
 * Interfejs wiersza polecenia platformy Azure
 
-Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki opisane w tym [przewodniku szybki start](spring-cloud-quickstart-launch-app-portal.md) , aby wdrożyć swoją pierwszą aplikację w chmurze.
+Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, postępuj zgodnie z instrukcjami w [przewodniku szybki start: uruchamianie aplikacji w chmurze platformy Azure przy użyciu Azure Portal](spring-cloud-quickstart-launch-app-portal.md) do wdrożenia pierwszej aplikacji w chmurze.
 
-## <a name="bind-azure-database-for-mysql"></a>Azure Database for MySQL powiązania
+## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>Powiązywanie aplikacji z wystąpieniem Azure Database for MySQL
 
-1. Zanotuj nazwę użytkownika i hasło administratora konta usługi Azure MySQL. Nawiąż połączenie z serwerem i Utwórz bazę danych o nazwie `testdb` z klienta programu MySQL. Utwórz nowe konto inne niż administracyjne.
+1. Zanotuj nazwę użytkownika i hasło administratora konta Azure Database for MySQL. 
 
-1. Dodaj następującą zależność do `pom.xml` projektu
+1. Połącz się z serwerem, Utwórz bazę danych o nazwie **TestDB** z klienta MySQL, a następnie utwórz nowe konto niebędące administratorami.
+
+1. W pliku *pliku pom. XML* projektu Dodaj następującą zależność:
 
     ```xml
     <dependency>
@@ -37,15 +39,19 @@ Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki o
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     ```
-1. Usuń `spring.datasource.*` właściwości (jeśli istnieją) w pliku `application.properties`.
+1. W pliku *Application. Properties* usuń wszystkie `spring.datasource.*` właściwości.
 
-1. Zaktualizuj bieżące wdrożenie przy użyciu `az spring-cloud app update` lub Utwórz nowe wdrożenie dla tej zmiany przy użyciu `az spring-cloud app deployment create`.  Te polecenia spowodują aktualizację lub utworzenie aplikacji z nową zależnością.
+1. Zaktualizuj bieżące wdrożenie, uruchamiając `az spring-cloud app update`lub Utwórz nowe wdrożenie dla tej zmiany, uruchamiając polecenie `az spring-cloud app deployment create`.  Te polecenia służą do aktualizowania lub tworzenia aplikacji z nową zależnością.
 
-1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal. Znajdź **pulpit nawigacyjny aplikacji** i wybierz aplikację, która ma zostać powiązana z usługą Azure MySQL.  Ta sama aplikacja została zaktualizowana lub wdrożona w poprzednim kroku. Następnie wybierz pozycję `Service binding` i wybierz przycisk `Create service binding`. Wypełnij formularz, upewnij się, że wybrano opcję **Typ powiązania** `Azure MySQL`, tę samą nazwę bazy danych, która była używana wcześniej, i tę samą nazwa użytkownika i hasło zanotowane w pierwszym kroku.
+1. W Azure Portal na stronie usługi **Azure wiosennej w chmurze** Znajdź **pulpit nawigacyjny aplikacji**, a następnie wybierz aplikację, która ma zostać powiązana z wystąpieniem Azure Database for MySQL.  Jest to ta sama aplikacja, która została zaktualizowana lub wdrożona w poprzednim kroku. 
+
+1. Wybierz pozycję **powiązanie usługi**, a następnie wybierz przycisk **Utwórz powiązanie usługi** . 
+
+1. Wypełnij formularz, wybierając pozycję **Azure MySQL** jako **Typ powiązania**, używając tej samej nazwy bazy danych, która została użyta wcześniej, i korzystając z tej samej nazwa użytkownika i hasło zanotowane w pierwszym kroku.
 
 1. Uruchom ponownie aplikację, a to powiązanie powinno teraz funkcjonować.
 
-1. Aby upewnić się, że powiązanie usługi jest prawidłowe, wybierz nazwę powiązania i sprawdź jej szczegóły. Pole `property` powinno wyglądać następująco:
+1. Aby upewnić się, że powiązanie usługi jest poprawne, wybierz nazwę powiązania, a następnie sprawdź jej szczegóły. Pole `property` powinno wyglądać następująco:
     ```
     spring.datasource.url=jdbc:mysql://some-server.mysql.database.azure.com:3306/testdb?useSSL=true&requireSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin@some-server
@@ -55,8 +61,8 @@ Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki o
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego samouczka nauczysz się powiązać aplikację w chmurze platformy Azure z bazą danych MySQL.  Aby dowiedzieć się więcej na temat zarządzania usługą Azure wiosennej w chmurze, Przeczytaj, aby dowiedzieć się więcej na temat odnajdywania i rejestracji usług.
+W tym samouczku przedstawiono sposób powiązania aplikacji w chmurze platformy Azure z wystąpieniem Azure Database for MySQL.  Aby dowiedzieć się więcej o zarządzaniu usługą Azure wiosennej w chmurze, zapoznaj się z artykułem dotyczącym odnajdywania i rejestracji usług.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak włączyć odnajdowanie usług i rejestracje przy użyciu rejestru wiosennej usługi w chmurze](spring-cloud-service-registration.md).
+> [Włączanie odnajdowania i rejestracji usług przy użyciu rejestru wiosennej usługi w chmurze](spring-cloud-service-registration.md)
 

@@ -1,17 +1,14 @@
 ---
-title: Uwierzytelnianie między dzierżawcami — Azure Resource Manager
+title: Uwierzytelnianie w wielu dzierżawach
 description: Opisuje, w jaki sposób Azure Resource Manager obsługuje żądania uwierzytelniania między dzierżawcami.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1dccfc522179cd88e69bc5a58307b343aaef8f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300350"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149979"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Uwierzytelnianie żądań między dzierżawcami
 
@@ -23,8 +20,8 @@ Podczas tworzenia aplikacji z wieloma dzierżawcami może być konieczne obsłu�
 
 | Nazwa nagłówka | Opis | Przykładowa wartość |
 | ----------- | ----------- | ------------ |
-| Autoryzacja | Token podstawowy | Bearer &lt;primary-token @ no__t-1 |
-| x-MS-Authorization-pomocniczy | Tokeny pomocnicze | Okaziciela &lt;auxiliary-token1 @ no__t-1, EncryptedBearer &lt;auxiliary-token2 @ no__t-3, Bearer &lt;auxiliary-token3 @ no__t-5 |
+| Autoryzacja | Token podstawowy | Okaziciela &lt;token podstawowy&gt; |
+| x-MS-Authorization-pomocniczy | Tokeny pomocnicze | Posiadacz &lt;pomocniczy token1&gt;, EncryptedBearer &lt;pomocnicze token2&gt;, Okazicielaer &lt;pomocnicze token3&gt; |
 
 Nagłówek pomocniczy może zawierać maksymalnie trzy tokeny pomocnicze. 
 

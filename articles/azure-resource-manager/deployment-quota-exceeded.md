@@ -1,17 +1,14 @@
 ---
-title: Przekroczono limit przydziału wdrożenia platformy Azure
+title: Przekroczono limit przydziału wdrożenia
 description: Opisuje sposób rozwiązywania problemów z więcej niż 800 wdrożeniami w historii grupy zasobów.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 7f9e1b6b8518ebc03f051e379e4707dd1864e003
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7f389827513562a3add67f022fec360081754b02
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578974"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147205"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Usuń błąd, gdy liczba wdrożeń przekracza 800
 
@@ -49,7 +46,7 @@ Bieżącą liczbę można uzyskać w historii wdrożenia za pomocą następując
 az group deployment list --resource-group exampleGroup --query "length(@)"
 ```
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Użyj polecenia [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) , aby usunąć wdrożenia z historii.
 

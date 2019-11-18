@@ -1,18 +1,14 @@
 ---
-title: Bezpieczne wdrażanie szablonu Azure Resource Manager z tokenem SAS
+title: Bezpieczne wdrażanie szablonu z tokenem SAS
 description: Wdróż zasoby na platformie Azure przy użyciu szablonu Azure Resource Manager, który jest chroniony przez token sygnatury dostępu współdzielonego. Pokazuje Azure PowerShell i interfejs wiersza polecenia platformy Azure.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.author: tomfitz
-ms.openlocfilehash: f396618350e4f4a9be09db421d073aec6ba52b65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8138563211cae12cc38f0e737be49b32204dc243
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036958"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150324"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token"></a>Wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu współdzielonego
 
@@ -22,7 +18,7 @@ Gdy szablon znajduje się na koncie magazynu, możesz ograniczyć dostęp do sza
 
 Poniższy skrypt tworzy konto magazynu i kontener z wyłączonym dostępem publicznym.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -69,7 +65,7 @@ az storage container create \
 
 Teraz możesz przystąpić do przekazywania szablonu do konta magazynu. Podaj ścieżkę do szablonu, którego chcesz użyć.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -97,7 +93,7 @@ Aby wdrożyć szablon prywatny na koncie magazynu, wygeneruj token sygnatury dos
 > Obiekt BLOB zawierający szablon jest dostępny tylko dla właściciela konta. Jednak podczas tworzenia tokenu sygnatury dostępu współdzielonego dla obiektu BLOB obiekt BLOB jest dostępny dla wszystkich użytkowników o tym identyfikatorze URI. Jeśli inny użytkownik przechwytuje identyfikator URI, ten użytkownik będzie mógł uzyskać dostęp do szablonu. Token SAS to dobry sposób ograniczania dostępu do szablonów, ale nie należy uwzględniać poufnych danych, takich jak hasła bezpośrednio w szablonie.
 >
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token

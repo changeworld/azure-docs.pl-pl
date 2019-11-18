@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 6874372f56e814fad662813b558ca712fdf10671
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9d53f8eff53a875a7a37d1ee1986e94405a24485
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012995"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144964"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Utwórz kontroler transferu danych przychodzących ze statycznym publicznym adresem IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 Następnie utwórz publiczny adres IP za pomocą metody alokacji *statycznej* przy użyciu polecenia [AZ Network Public-IP Create][az-network-public-ip-create] . Poniższy przykład tworzy publiczny adres IP o nazwie *myAKSPublicIP* w grupie zasobów klastra AKS uzyskanym w poprzednim kroku:
 
 ```azurecli-interactive
-az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static --query publicIp.ipAddress -o tsv
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
 Teraz Wdróż wykres *Nginx-* transferal z Helm. Dodaj parametr `--set controller.service.loadBalancerIP` i określ własny publiczny adres IP utworzony w poprzednim kroku. W celu dodania nadmiarowości dwie repliki kontrolerów NGINX Ingress są wdrażane z parametrem `--set controller.replicaCount`. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze AKS znajduje się więcej niż jeden węzeł.
