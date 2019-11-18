@@ -15,10 +15,6 @@
   items:
     - name: Korzystanie z interfejsu API usługi Video Indexer
       href: video-indexer-use-apis.md
-- name: Przykłady
-  items:
-    - name: Analiza transmisji strumieniowej na żywo
-      href: live-stream-analysis.md
 - name: Pojęcia
   items:
     - name: Omówienie
@@ -29,6 +25,8 @@
       href: manage-multiple-tenants.md
     - name: Model identyfikacji języka
       href: language-identification-model.md
+    - name: Analiza transmisji strumieniowej na żywo
+      href: live-stream-analysis.md
     - name: Dostosowywanie modeli zawartości
       items:
         - name: Omówienie
