@@ -100,7 +100,7 @@
             - name: Konfiguracja zaawansowana rozszerzenia serwera zasad sieciowych
               href: howto-mfa-nps-extension-advanced.md
             - name: Usługi Azure VPN i Azure MFA
-              href: ../../vpn-gateway/vpn-gateway-radiuis-mfa-nsp.md
+              href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Brama pulpitu zdalnego
               href: howto-mfa-nps-extension-rdg.md
             - name: Sieć VPN

@@ -1,7 +1,7 @@
 ---
 title: Serializacja niestandardowego buforu tokenów w MSAL dla języka Java
 titleSuffix: Microsoft identity platform
-description: Dowiedz się, jak zdeserializować pamięć podręczną tokenów dla MSAL for Java
+description: Dowiedz się, jak serializować pamięć podręczną tokenów dla MSAL for Java
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -18,16 +18,16 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bd8cb07d30aa5223cf3d78d636f0d593fefbecf
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7274a1b6b5ebf5b55c2cad4b52dfe4c997e26314
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905500"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145909"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java-msal4j"></a>Serializacja niestandardowego buforu tokenów w programie MSAL for Java (MSAL4J)
 
-Aby mieć trwałą aplikację pamięci podręcznej tokenów, należy dostosować serializację. Klasy i interfejsy języka Java wykorzystywane w serializacji pamięci podręcznej tokenu są następujące:
+Aby zachować pamięć podręczną tokenów między wystąpieniami aplikacji, należy dostosować serializację. Klasy i interfejsy języka Java wykorzystywane w serializacji pamięci podręcznej tokenu są następujące:
 
 - [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html): interfejs reprezentujący pamięć podręczną tokenów zabezpieczających.
 - [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): interfejs reprezentujący działanie wykonywania kodu przed i po Access. Należy @Override *beforeCacheAccess* i *afterCacheAccess* z logiką odpowiedzialną za Serializowanie i deserializacja pamięci podręcznej.
