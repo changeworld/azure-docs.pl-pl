@@ -331,6 +331,14 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Definicje zasad
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Zestaw Azure SDK dla środowiska Python
+      items:
+        - name: Zasady
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+        - name: Klient zasad
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+        - name: Szczegółowe informacje o zasadach
+          href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
         - name: Zdarzenia

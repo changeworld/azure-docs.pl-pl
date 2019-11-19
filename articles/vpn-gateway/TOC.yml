@@ -133,11 +133,13 @@
             - name: Tworzenie i instalowanie plików konfiguracji klienta sieci VPN
               href: point-to-site-vpn-client-configuration-radius.md
             - name: Integrowanie uwierzytelniania RADIUS w sieci VPN typu P2S za pomocą serwera NPS
-              href: vpn-gateway-radiuis-mfa-nsp.md
+              href: vpn-gateway-radius-mfa-nsp.md
         - name: Uwierzytelnianie w usłudze Azure AD
           items:
             - name: Konfigurowanie dzierżawy
               href: openvpn-azure-ad-tenant.md
+            - name: Konfigurowanie uwierzytelniania wieloskładnikowego
+              href: openvpn-azure-ad-mfa.md
             - name: Konfigurowanie klienta sieci VPN
               href: openvpn-azure-ad-client.md
         - name: OpenVPN

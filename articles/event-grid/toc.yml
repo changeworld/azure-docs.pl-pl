@@ -27,6 +27,8 @@
           href: custom-event-quickstart-powershell.md
         - name: Portal
           href: custom-event-quickstart-portal.md
+    - name: Usługa Azure Functions jako program obsługi zdarzeń
+      href: custom-event-to-function.md
     - name: Usługa Queue Storage jako program obsługi zdarzeń
       href: custom-event-to-queue-storage.md
     - name: Usługa Event Hubs jako program obsługi zdarzeń
@@ -111,6 +113,8 @@
       href: post-to-custom-topic.md
     - name: Odbieranie zdarzeń w punkcie końcowym HTTP
       href: receive-events.md
+    - name: Zabezpieczanie elementu webhook za pomocą usługi AAD
+      href: secure-webhook-delivery.md
     - name: Utracone wiadomości i ponawianie prób
       href: manage-event-delivery.md
     - name: Filtrowanie zdarzeń

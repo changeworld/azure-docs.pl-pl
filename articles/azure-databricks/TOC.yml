@@ -573,10 +573,10 @@
             - name: Ładowanie danych
               href: /azure/databricks/spark/latest/spark-sql/language-manual/load-data
               maintainContext: true
-            - name: Merge Into (usługa Delta Lake w ramach usługi Azure Databricks)
+            - name: Merge Into (usługa Delta Lake w ramach usługi Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/merge-into
               maintainContext: true
-            - name: Optimize (usługa Delta Lake w ramach usługi Azure Databricks)
+            - name: Optimize (usługa Delta Lake w ramach usługi Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/optimize
               maintainContext: true
             - name: Refresh Table
@@ -714,9 +714,9 @@
             - name: Zaawansowany przykład biblioteki MLlib
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: Automatyczne uczenie maszynowe
+        - name: AutoML
           items:
-            - name: Omówienie automatycznego uczenia maszynowego
+            - name: AutoML — omówienie
               href: /azure/databricks/applications/machine-learning/automl/index
               maintainContext: true
             - name: Hyperopt
@@ -920,7 +920,7 @@
             - name: Potok uszkodzony/normalny
               href: /azure/databricks/applications/genomics/secondary/tumor-normal-pipeline
               maintainContext: true
-            - name: Adnotacja wariantów przy użyciu programu Pipe Tansformer
+            - name: Adnotacja wariantów przy użyciu programu Pipe Transformer
               href: /azure/databricks/applications/genomics/secondary/variant-annotation-pipe
               maintainContext: true
             - name: Metody adnotacji wariantów
@@ -1609,6 +1609,12 @@
               items:
                 - name: Obsługiwane wersje środowiska uruchomieniowego
                   href: /azure/databricks/release-notes/runtime/supported
+                  maintainContext: true
+                - name: Databricks Runtime 6.2
+                  href: /azure/databricks/release-notes/runtime/6.2
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 ML
+                  href: /azure/databricks/release-notes/runtime/6.2ml
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

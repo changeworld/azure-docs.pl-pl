@@ -40,6 +40,8 @@
   items:
     - name: Otwieranie biletu pomocy technicznej
       href: hpc-cache-support-ticket.md
+    - name: Obchodzenie ustawień zapory konta magazynu obiektów blob
+      href: hpc-cache-blob-firewall-fix.md
     - name: Odzyskiwanie sprawności po awarii regionalnej
       href: hpc-region-recovery.md
     - name: Używanie usługi Azure NetApp Files z usługą Azure HPC Cache

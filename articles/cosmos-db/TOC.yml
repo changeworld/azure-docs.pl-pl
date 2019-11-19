@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: Czas wygaśnięcia — MongoDB
               href: mongodb-time-to-live.md
+            - name: Zmiana strumieni
+              href: mongodb-change-streams.md
             - name: Zarządzanie indeksowaniem danych
               href: mongodb-indexing.md
             - name: Magazynowanie danych rozwiązania Spring Data i zarządzanie nimi

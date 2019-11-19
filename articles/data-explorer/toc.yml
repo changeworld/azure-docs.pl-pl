@@ -21,7 +21,7 @@
           href: end-to-end-csharp.md
         - name: Python
           href: end-to-end-python.md
-    - name: Pozyskiwanie danych bez używania kodu
+    - name: Pozyskiwanie danych monitorowania i wykonywanie zapytań względem nich
       href: ingest-data-no-code.md
     - name: Wizualizacja danych w usłudze Power BI
       href: visualize-power-bi.md

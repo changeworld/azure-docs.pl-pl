@@ -1,8 +1,8 @@
-- name: Dokumentacja usługi CDN
+- name: Dokumentacja usługi Content Delivery Network
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest Azure CDN?
+    - name: Co to jest usługa Azure Content Delivery Network (Azure CDN)?
       href: cdn-overview.md
     - name: Porównanie funkcji produktów
       href: cdn-features.md
@@ -18,7 +18,7 @@
   items:
     - name: Dodawanie usługi Azure CDN do aplikacji internetowej
       href: cdn-add-to-web-app.md
-    - name: Dostęp do obiektów blob przy użyciu domeny niestandardowej za pomocą protokołu HTTPS
+    - name: Dostęp do obiektów blob przy użyciu domeny niestandardowej za pośrednictwem protokołu HTTPS
       href: cdn-storage-custom-domain-https.md
     - name: Dodawanie domeny niestandardowej
       href: cdn-map-content-to-custom-domain.md
@@ -63,7 +63,7 @@
           href: cdn-create-endpoint-how-to.md
         - name: Zarządzanie przy użyciu programu Azure PowerShell
           href: cdn-manage-powershell.md
-        - name: Ograniczanie dostępu według kraju/regionu
+        - name: Ograniczanie dostępu według kraju lub regionu
           href: cdn-restrict-access-by-country.md
         - name: Poprawianie wydajności poprzez kompresowanie plików
           href: cdn-improve-performance.md
@@ -89,13 +89,13 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: Uwierzytelnianie przy użyciu tokenów
           href: cdn-token-auth.md
-        - name: Magazyn SAS — pomoc techniczna
+        - name: Obsługa magazynu sygnatur dostępu współdzielonego
           href: cdn-sas-storage-support.md
         - name: Współużytkowanie zasobów między źródłami
           href: cdn-cors.md
         - name: Monitorowanie zasobów
           href: cdn-resource-health.md
-        - name: Zastępowanie zachowania przy użyciu reguł
+        - name: Przesłanianie zachowania przy użyciu reguł
           href: cdn-verizon-premium-rules-engine.md
         - name: Korzystanie z usługi Traffic Manager
           href: cdn-traffic-manager.md
@@ -110,7 +110,7 @@
               href: cdn-analyze-usage-patterns.md
             - name: Raporty niestandardowe z usługi Verizon
               href: cdn-verizon-custom-reports.md
-        - name: Narzędzia do analizy dla usługi Azure CDN Premium świadczonej przez firmę Verizon
+        - name: Narzędzia do analizy dla usługi Azure CDN w warstwie Premium świadczonej przez firmę Verizon
           items:
             - name: Generowanie zaawansowanych raportów HTTP
               href: cdn-advanced-http-reports.md
@@ -177,7 +177,7 @@
           href: cdn-pop-locations.md
         - name: Lokalizacje POP według skrótu
           href: cdn-pop-abbreviations.md
-    - name: Omówienie rozliczania za usługę Azure CDN
+    - name: Rozliczenia usługi Azure Content Delivery Network
       href: cdn-billing.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
