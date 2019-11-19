@@ -1,25 +1,21 @@
 ---
-title: Często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure za pomocą Azure Backup
+title: Często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 description: W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: ad5e715de2f3467d4530759cbb2acec0358e5597
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747269"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172558"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi [Azure Backup](backup-introduction-to-azure-backup.md) .
 
-## <a name="backup"></a>Tworzenie kopii zapasowych
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Które obrazy maszyn wirtualnych można włączyć do tworzenia kopii zapasowych podczas ich tworzenia?
 
@@ -33,15 +29,15 @@ Nie. Koszty kopii zapasowej są oddzielone od kosztów maszyny wirtualnej. Dowie
 
 Jeśli jesteś współautorem maszyny wirtualnej, możesz włączyć tworzenie kopii zapasowej na maszynie wirtualnej. Jeśli używasz roli niestandardowej, musisz mieć następujące uprawnienia, aby włączyć tworzenie kopii zapasowej na maszynie wirtualnej:
 
-- Microsoft. RecoveryServices/magazyny/zapis
-- Microsoft. RecoveryServices/magazyny/odczyt
-- Microsoft. RecoveryServices/Locations/*
-- Microsoft. RecoveryServices/magazyny/backupFabrics/protectionContainers/protectedItems/*/Read
-- Microsoft. RecoveryServices/magazyny/backupFabrics/protectionContainers/protectedItems/Read
-- Microsoft. RecoveryServices/magazyny/backupFabrics/protectionContainers/protectedItems/Write
-- Microsoft. RecoveryServices/magazyny/backupFabrics/backupProtectionIntent/zapis
-- Microsoft. RecoveryServices/magazyny/backupPolicies/odczyt
-- Microsoft. RecoveryServices/magazyny/backupPolicies/zapis
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
 
 Jeśli magazyn Recovery Services i maszyna wirtualna mają różne grupy zasobów, upewnij się, że masz uprawnienia do zapisu w grupie zasobów dla magazynu Recovery Services.  
 

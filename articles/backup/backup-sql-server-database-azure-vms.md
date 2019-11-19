@@ -1,19 +1,15 @@
 ---
-title: Tworzenie kopii zapasowych baz danych SQL Server na maszynach wirtualnych platformy Azure | Microsoft Docs
+title: Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową SQL Server baz danych w usłudze Azure Virtual Machines z Azure Backup.
 ms.reviewer: vijayts
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: a6752ffcf434b81c3013a2bd43c784bc92a8c1fe
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3d6875d8c466400da79e1b749d11914b3bf77d86
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747176"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172100"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -76,7 +72,7 @@ Ustanów łączność przy użyciu jednej z następujących opcji:
 
 Opcje łączności obejmują następujące zalety i wady:
 
-**Opcja** | **Zalety** | **Wady**
+**Option** | **Zalety** | **Wady**
 --- | --- | ---
 Zezwolenie na zakresy adresów IP | Brak dodatkowych kosztów | Skomplikowane do zarządzania, ponieważ zakresy adresów IP zmieniają się w czasie <br/><br/> Zapewnia dostęp do całości platformy Azure, a nie tylko usługi Azure Storage
 Użyj tagów usługi sieciowej grupy zabezpieczeń | Łatwiejsze zarządzanie, ponieważ zmiany zakresu są automatycznie scalane <br/><br/> Brak dodatkowych kosztów <br/><br/> | Może być używany tylko z sieciowych grup zabezpieczeń <br/><br/> Zapewnia dostęp do całej usługi
@@ -265,7 +261,7 @@ Jeśli musisz wyłączyć funkcję autoochrony, wybierz nazwę wystąpienia w ob
 
 ## <a name="next-steps"></a>Następne kroki
 
-Instrukcje:
+Omawiane kwestie:
 
 * [Przywracanie kopii zapasowych SQL Server baz danych](restore-sql-database-azure-vm.md)
 * [Zarządzanie kopiami zapasowymi baz danych SQL Server](manage-monitor-sql-database-backup.md)

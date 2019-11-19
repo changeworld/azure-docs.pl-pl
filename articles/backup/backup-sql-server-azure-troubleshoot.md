@@ -1,19 +1,14 @@
 ---
-title: Rozwiązywanie problemów z kopią zapasową bazy danych SQL Server przy użyciu Azure Backup | Microsoft Docs
+title: Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database
 description: Informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych SQL Server baz danych działających na maszynach wirtualnych platformy Azure z Azure Backup.
-ms.reviewer: anuragm
-author: dcurwin
-manager: carmonm
-ms.service: backup
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: 635476ed5ca6440995fff743b7eb8f70a66768b4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 95f7966fa59f0a1f6f6a3c9c6832cc573f89e05c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091523"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172124"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 

@@ -1,17 +1,17 @@
 ---
-title: Przewodnik do uwierzytelniania klientów usługi Azure SignalR Service
-description: W tym przewodniku dowiesz się, jak uwierzytelniać klientów usługi Azure SignalR Service
+title: Przewodnik dotyczący uwierzytelniania klientów usługi Azure sygnalizujących
+description: Dowiedz się, jak wdrożyć własne uwierzytelnianie i zintegrować je z usługą Azure Signal Service, wykonując przykład E2E.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128294"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158278"
 ---
 # <a name="azure-signalr-service-authentication"></a>Uwierzytelnianie w usłudze Azure SignalR Service
 
@@ -48,7 +48,7 @@ Do ukończenia tego samouczka niezbędne są:
 * [Usługa Git](https://git-scm.com/)
 * [Zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download/windows)
 * [Skonfigurowana usługa Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* Pobrane lub sklonowane repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples)
+* Pobierz lub sklonuj repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples).
 
 ## <a name="create-an-oauth-app"></a>Tworzenie aplikacji OAuth
 
@@ -377,7 +377,7 @@ W tej sekcji włączysz prawdziwe uwierzytelnianie, dodając atrybut `Authorize`
 
 ## <a name="deploy-the-app-to-azure"></a>Wdrażanie aplikacji na platformie Azure
 
-W tej sekcji użyjesz interfejsu wiersza polecenia (CLI) platformy Azure z usługi Azure Cloud Shell do utworzenia nowej aplikacji sieci web w [usługi Azure App Service](https://docs.microsoft.com/azure/app-service/) do hostowania aplikacji platformy ASP.NET na platformie Azure. Aplikacja internetowa zostanie skonfigurowana do używania lokalnego wdrożenia usługi Git. Aplikacja internetowa będzie również skonfigurowana za pomocą parametrów połączenia usługi SignalR, wpisów tajnych aplikacji OAuth usługi GitHub i użytkownika wdrożenia.
+W tej sekcji użyjesz interfejsu wiersza polecenia platformy Azure (CLI) z Azure Cloud Shell, aby utworzyć nową aplikację sieci Web w usłudze [Azure App Service](https://docs.microsoft.com/azure/app-service/) do hostowania aplikacji ASP.NET na platformie Azure. Aplikacja internetowa zostanie skonfigurowana do używania lokalnego wdrożenia usługi Git. Aplikacja internetowa będzie również skonfigurowana za pomocą parametrów połączenia usługi SignalR, wpisów tajnych aplikacji OAuth usługi GitHub i użytkownika wdrożenia.
 
 Kroki opisane w tej sekcji używają rozszerzenia *signalr* dla interfejsu wiersza polecenia platformy Azure. Uruchom następujące polecenie, aby zainstalować rozszerzenie *signalr* dla interfejsu wiersza polecenia platformy Azure:
 

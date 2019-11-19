@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0f34aad4a8590c71f926d12d201f9a614afaa127
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
+ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114931"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74153562"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Analiza strumienia na żywo za pomocą Video Indexer
 
-Azure Media Services Video Indexer to usługa platformy Azure zaprojektowana w celu wyodrębnienia szczegółowych informacji z plików wideo i audio w trybie offline. Jest to analiza danego pliku multimedialnego, który został już utworzony z wyprzedzeniem. Jednak w przypadku niektórych przypadków użycia ważne jest, aby uzyskać informacje o multimediach z kanału informacyjnego na żywo tak szybko, jak to możliwe, aby odblokować działania i inne przypadki użycia naciśnięto w czasie. Na przykład takie bogate metadane w strumieniu na żywo mogą być używane przez producentów zawartości do automatyzowania produkcji TV. Na przykład [Grupa Endemol](https://customers.microsoft.com/story/esg-media-telecommunications-azure), w której dziennikarze Newsroom przeszukali na żywo kanały informacyjne, aby kompilować usługi powiadomień na podstawie zawartości.
+Azure Media Services Video Indexer to usługa platformy Azure zaprojektowana w celu wyodrębnienia szczegółowych informacji z plików wideo i audio w trybie offline. Jest to analiza danego pliku multimedialnego, który został już utworzony z wyprzedzeniem. Jednak w przypadku niektórych przypadków użycia ważne jest, aby uzyskać informacje o multimediach z kanału informacyjnego na żywo tak szybko, jak to możliwe, aby odblokować działania i inne przypadki użycia naciśnięto w czasie. Na przykład takie bogate metadane w strumieniu na żywo mogą być używane przez producentów zawartości do automatyzowania produkcji w TELEWIZORze.
 
 Rozwiązanie opisane w tym artykule pozwala klientom używać Video Indexer niemal w czasie rzeczywistym w ramach rozwiązań na żywo. Opóźnienie w indeksie może wynosić co najmniej cztery minuty przy użyciu tego rozwiązania, w zależności od fragmentów indeksowanych danych, rozdzielczości wejścia, typu zawartości i obliczeń używanych dla tego procesu.
 

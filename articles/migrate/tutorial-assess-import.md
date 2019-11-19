@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715514"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158654"
 ---
 # <a name="assess-servers-using-imported-data"></a>Ocenianie serwerów za pomocą zaimportowanych danych
 
-> [!NOTE]
-> Jeśli ta funkcja nie jest jeszcze widoczna w portalu Azure Migrate, zaczekaj. Zostanie ona wyświetlona w ciągu następnego tygodnia lub.
-
-W tym artykule wyjaśniono, jak oceniać serwery lokalne za pomocą [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-assessment-tool), importując metadane serwera przy użyciu woluminu CSV. W przypadku tej metody oceny nie trzeba konfigurować urządzenia Azure Migrate w celu utworzenia oceny. Jest to przydatne, jeśli: 
+W tym artykule wyjaśniono, jak oceniać serwery lokalne za pomocą [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-assessment-tool), importując metadane serwera przy użyciu woluminu CSV. W przypadku tej metody oceny nie trzeba konfigurować urządzenia Azure Migrate w celu utworzenia oceny. Jest to przydatne, jeśli:
 
 - Przed wdrożeniem urządzenia należy utworzyć szybką ocenę początkową.
 - Nie można wdrożyć urządzenia Azure Migrate w organizacji.
@@ -49,7 +46,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Ustawianie uprawnień platformy Azure dla Azure Migrate 
+## <a name="set-azure-permissions-for-azure-migrate"></a>Ustawianie uprawnień platformy Azure dla Azure Migrate
 
 Twoje konto platformy Azure wymaga uprawnień do utworzenia projektu Azure Migrate.
 
@@ -116,10 +113,10 @@ Poniższa tabela zawiera podsumowanie pól plików do wypełnienia.
 
 **Nazwa pola** | **Wypełnione** | **Szczegóły**
 --- | --- | ---
-**Nazwa serwera** | Tak | Zalecamy określenie nazwy FQDN. 
+**Nazwa serwera** | Tak | Zalecamy określenie nazwy FQDN.
 **Adres IP** | Nie | Adres serwera.
 **Liczba rdzeni** | Tak | Liczba rdzeni procesora przypisanych do serwera.
-**Rozmiar** | Tak | Całkowita ilość pamięci RAM (MB) przypisana do serwera.
+**Pamięć** | Tak | Całkowita ilość pamięci RAM (MB) przypisana do serwera.
 **Nazwa systemu operacyjnego** | Tak | System operacyjny serwera.
 **Wersja systemu operacyjnego** | Nie | Wersja systemu operacyjnego serwera.
 **Liczba dysków** | Nie | Niepotrzebna, jeśli podano szczegółowe szczegóły dysku.
@@ -144,7 +141,7 @@ Poniższa tabela zawiera podsumowanie pól plików do wypełnienia.
 **Identyfikator programu Virtual Machine Manager** | Nie | Jest to **InstanceUUid** dla programu VMware vCenter. Niewymagane w przypadku funkcji Hyper-V.
 **Adres MAC**| Nie | Adres MAC serwera.
 **IDENTYFIKATOR SYSTEMU BIOS** | Nie | Identyfikator systemu BIOS serwera.
-**Identyfikator serwera niestandardowego**| Nie | Lokalne unikatowe identyfikatory serwera lokalnie. <br/> Przydatne do śledzenia zaimportowanego serwera według identyfikatora lokalnego. 
+**Identyfikator serwera niestandardowego**| Nie | Lokalne unikatowe identyfikatory serwera lokalnie. <br/> Przydatne do śledzenia zaimportowanego serwera według identyfikatora lokalnego.
 **Nazwa aplikacji 1** | Nie | Nazwa obciążeń uruchomionych na serwerze.<br/> Możesz dodać szczegóły do większej liczby aplikacji, [dodając kolumny](#add-multiple-applications) w szablonie. Można dodać maksymalnie pięć aplikacji.
 **Typ aplikacji 1** | Nie | Typ obciążenia uruchomionego na serwerze
 **Wersja 1 aplikacji** | Nie | Wersja obciążenia uruchomionego na serwerze.
@@ -162,7 +159,7 @@ Ocena rozpoznaje nazwy określonych systemów operacyjnych. Każda określona na
 
 ### <a name="add-multiple-disks"></a>Dodaj wiele dysków
 
-Szablon zawiera domyślne pola dla pierwszego dysku.  Możesz dodać podobne kolumny dla maksymalnie 8 dysków. 
+Szablon zawiera domyślne pola dla pierwszego dysku.  Możesz dodać podobne kolumny dla maksymalnie 8 dysków.
 
 Na przykład aby określić wszystkie pola dla drugiego dysku, Dodaj kolumny:
 
@@ -192,10 +189,10 @@ Po dodaniu informacji do szablonu CSV zaimportuj serwery do Azure Migrate: Ocena
 
 1. W Azure Migrate > **odnajdywania maszyn**przejdź do wypełnionego szablonu.
 2. Kliknij przycisk **Importuj**.
-3. Stan importowania jest pokazywany. 
+3. Stan importowania jest pokazywany.
     - Jeśli w stanie pojawiły się ostrzeżenia, możesz je rozwiązać lub kontynuować bez ich rozwiązywania.
     - Ulepszanie informacji o serwerze zgodnie z sugestią w ostrzeżeniach zwiększa dokładność oceny.
-    - Aby wyświetlić i naprawić ostrzeżenia, jeśli są wyświetlane, kliknij pozycję **Pobierz szczegóły ostrzeżenia. Wolumin CSV**. Spowoduje to pobranie woluminu CSV z dodanymi ostrzeżeniami. Możesz przejrzeć ostrzeżenia i rozwiązać problemy zgodnie z wymaganiami. 
+    - Aby wyświetlić i naprawić ostrzeżenia, jeśli są wyświetlane, kliknij pozycję **Pobierz szczegóły ostrzeżenia. Wolumin CSV**. Spowoduje to pobranie woluminu CSV z dodanymi ostrzeżeniami. Możesz przejrzeć ostrzeżenia i rozwiązać problemy zgodnie z wymaganiami.
     Jeśli błędy pojawiają się w stanie (stan importowania **nie powiodło się**), należy je usunąć przed kontynuowaniem importowania. Aby to zrobić, Pobierz wolumin CSV, który ma teraz dodane szczegóły błędu. Przejrzyj błędy i Rozwiąż je w razie konieczności. Następnie ponownie Przekaż zmodyfikowany plik.
 4. Po **zakończeniu**importowania informacje o serwerze są importowane.
 
@@ -205,7 +202,7 @@ Po dodaniu informacji do szablonu CSV zaimportuj serwery do Azure Migrate: Ocena
 
 ## <a name="updating-server-information"></a>Aktualizowanie informacji o serwerze
 
-Aby zaktualizować informacje o serwerze, należy ponownie przekazać dane dla serwera z tą samą **nazwą serwera**. Nie można zmodyfikować pola **Nazwa serwera** . 
+Aby zaktualizować informacje o serwerze, należy ponownie przekazać dane dla serwera z tą samą **nazwą serwera**. Nie można zmodyfikować pola **Nazwa serwera** .
 
 Usuwanie serwerów nie jest obecnie obsługiwane.
 
@@ -300,21 +297,21 @@ Ten widok przedstawia szacowany koszt obliczeń i magazynu dla uruchomionych mas
 
 Nazwa | Nazwa
 --- | ---
-**A – H** | 
+**A – H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD 
-**I-R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD
+**I-R** |
 SYSTEM OPERACYJNY IBM OS/2 | systemu |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S-T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S-T** |
 SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO dla systemu UNIX 7 | Serenity Systems eComStation 1<br/>Serenity Systems eComStation 2
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U-Z** | 
+**U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
-Windows 10<br/>System Windows 2000<br/>System Windows 3<br/>Windows 7<br/>Windows 8<br/>System Windows 95<br/>System Windows 98<br/>System Windows NT<br/>System Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Próg systemu Windows Server<br/>Windows Vista<br/>Serwer sieci Web systemu Windows 2008 R2<br/>Windows XP Professional
-    
+Windows 10<br/>Windows 2000<br/>System Windows 3<br/>Windows 7<br/>Windows 8<br/>System Windows 95<br/>System Windows 98<br/>System Windows NT<br/>System Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Próg systemu Windows Server<br/>Windows Vista<br/>Serwer sieci Web systemu Windows 2008 R2<br/>Windows XP Professional
+
 
 ## <a name="next-steps"></a>Następne kroki
 

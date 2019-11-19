@@ -1,18 +1,18 @@
 ---
 title: Omówienie tagów FQDN dla zapory platformy Azure
-description: Dowiedz się więcej o tagach FQDN w zaporze platformy Azure
+description: Tag FQDN reprezentuje grupę w pełni kwalifikowanych nazw domen (FQDN) skojarzonych z dobrze znanymi usługami firmy Microsoft.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/23/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d78f67b96776fa3fb1d13fbf7b385e41ca3aa59a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665560"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169051"
 ---
 # <a name="fqdn-tags-overview"></a>Omówienie tagów FQDN
 

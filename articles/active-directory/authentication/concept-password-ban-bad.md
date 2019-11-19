@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 27530b143e46acad4152e8333836cbe9c79fab17
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032873"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168097"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
@@ -39,7 +39,7 @@ Za każdym razem, gdy nowe hasło jest zmieniane lub resetowane dla dowolnego u�
 > [!NOTE]
 > Cybernetycznymi — przestępcy stosują także podobne strategie w oddziałach. W związku z tym firma Microsoft nie publikuje zawartości tej listy publicznie.
 
-## <a name="custom-banned-password-list"></a>Lista zakazanych haseł niestandardowych
+## <a name="custom-banned-password-list"></a>Niestandardowa lista wykluczonych haseł
 
 Niektóre organizacje mogą chcieć jeszcze bardziej poprawić zabezpieczenia poprzez dodanie własnych dostosowań na liście globalnie zakazanych haseł, w których firma Microsoft wywołuje niestandardową listę wykluczonych haseł. Firma Microsoft zaleca, aby warunki dodane do tej listy były głównie skoncentrowane na warunkach określonych w organizacji, takich jak:
 
@@ -57,7 +57,7 @@ Po dodaniu terminów do listy niestandardowych zakazanych haseł zostaną one po
 Na przykład: Rozważmy klienta o nazwie "contoso", który jest oparty na Londynie i który sprawia, że produkt nosi nazwę "widget". W przypadku takiego klienta należy wasteful, a także mniej bezpieczny, aby próbować blokować konkretne wahania tych warunków, takich jak:
 
 - "Contoso! 1"
-- "Contoso@London"
+- „Contoso@London”
 - "ContosoWidget"
 - "! Contoso
 - "LondonHQ"
@@ -98,7 +98,7 @@ Za każdym razem, gdy użytkownik zmienia lub resetuje hasło, nowe hasło jest 
 
 Nawet jeśli hasło użytkownika zawiera zabronione hasło, hasło może nadal zostać zaakceptowane, jeśli ogólne hasło jest wystarczająco silne. Nowo skonfigurowane hasło przejdzie przez następujące kroki, aby ocenić jego ogólną siłę, aby określić, czy powinien zostać zaakceptowany czy odrzucony.
 
-### <a name="step-1-normalization"></a>Krok 1: Normalizacji
+### <a name="step-1-normalization"></a>Krok 1: Normalizacja
 
 Nowe hasło najpierw przechodzi przez proces normalizacji. Ta technika umożliwia zmapowanie małego zestawu zabronionych haseł do znacznie większego zestawu potencjalnie słabych haseł.
 
@@ -111,9 +111,9 @@ Normalizacja ma dwie części.  Po pierwsze wielkie litery są zmieniane na mał
 | '$'  | przeglądarki |
 | '\@'  | 'a' |
 
-Przykład: Załóżmy, że hasło "puste" jest zabronione, a użytkownik próbuje zmienić hasło na "Bl@nK". Chociaż "Bl@nk" nie jest jawnie zakazany, proces normalizacji konwertuje to hasło na "puste", które jest zakazanym hasłem.
+Przykład: Załóżmy, że hasło "puste" jest zabronione, a użytkownik próbuje zmienić hasło na "Bl@nK". Mimo że "Bl@nk" nie jest jawnie zakazany, proces normalizacji konwertuje to hasło na "puste", które jest zakazanym hasłem.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2: Sprawdź, czy hasło jest uznawane za zabronione
+### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2. Sprawdzanie, czy hasło jest uznawane za zabronione
 
 #### <a name="fuzzy-matching-behavior"></a>Zachowanie dopasowywania rozmytego
 
@@ -133,7 +133,7 @@ Przykład: Załóżmy, że mamy użytkownika, pol, który chce zresetować swoje
 
 #### <a name="score-calculation"></a>Obliczanie wyniku
 
-Następnym krokiem jest zidentyfikowanie wszystkich wystąpień zakazanych haseł w znormalizowanym nowym haśle użytkownika. Następnie
+Następnym krokiem jest zidentyfikowanie wszystkich wystąpień zakazanych haseł w znormalizowanym nowym haśle użytkownika. Następnie:
 
 1. Każde z zakazanych haseł, które znajdują się w haśle użytkownika, otrzymuje jeden punkt.
 2. Każdy pozostały unikatowy znak jest przyznany jeden punkt.
@@ -147,7 +147,7 @@ Po normalizacji to hasło przyjmuje wartość "contosoblank12". Proces dopasowyw
 
 [contoso] + [puste] + [1] + [2] = 4 punkty, ponieważ to hasło znajduje się poniżej pięciu (5) punktów, zostanie odrzucone.
 
-Przykład: użytkownik zmienia swoje hasło na "ContoS0Bl@nkf9!".
+Przykład: użytkownik zmieni hasło na "ContoS0Bl@nkf9!".
 
 Po normalizacji to hasło zmieni się na "contosoblankf9!". Proces dopasowywania stwierdza, że to hasło zawiera dwa zabronione hasła: contoso i blank. To hasło otrzymuje wynik:
 
@@ -164,7 +164,7 @@ Po normalizacji to hasło zmieni się na "contosoblankf9!". Proces dopasowywania
 | Użytkownicy zsynchronizowani z lokalnego systemu Windows Server Active Directory | Azure AD — wersja Premium P1 lub P2 | Azure AD — wersja Premium P1 lub P2 |
 
 > [!NOTE]
-> Lokalne serwery z systemem Windows Server Active Directory użytkowników, którzy nie są zsynchronizowani z Azure Active Directory również korzystać z ochrony hasłem usługi Azure AD na podstawie istniejącej licencji dla synchronizowanych użytkowników.
+> Lokalne systemy Windows Server Active Directory użytkownicy, którzy nie są synchronizowani do Azure Active Directory również korzystają z ochrony hasłem usługi Azure AD na podstawie istniejącej licencji dla synchronizowanych użytkowników.
 
 Dodatkowe informacje o licencjonowaniu, w tym koszty, można znaleźć w [witrynie Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
 

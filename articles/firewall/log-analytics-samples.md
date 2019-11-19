@@ -1,18 +1,18 @@
 ---
 title: Przykłady analizy dzienników zapory platformy Azure
-description: Przykłady analizy dzienników zapory platformy Azure
+description: Za pomocą dzienników Azure Monitor można analizować zaporę platformy Azure. Przykładowy plik jest skompilowany w projektancie widoków w Azure Monitor.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033983"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168890"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Przykłady analizy dzienników zapory platformy Azure
 
@@ -26,11 +26,11 @@ Oto jak można skonfigurować przykładową wizualizację dzienników Azure Moni
 
 Wykonaj następujące kroki, aby dodać widok do obszaru roboczego Log Analytics:
 
-1. Otwórz obszar roboczy Log Analytics w witrynie Azure Portal.
+1. Otwórz obszar roboczy Log Analytics w Azure Portal.
 2. Otwórz **projektanta widoków** poniżej **ogólnego**.
-3. Kliknij przycisk **importu**.
+3. Kliknij przycisk **Importuj**.
 4. Przeglądaj i wybierz pobrany wcześniej plik **AzureFirewall. omsview** .
-5. Kliknij polecenie **Zapisz**.
+5. Kliknij pozycję **Zapisz**.
 
 Oto jak widok wyszukuje dane dziennika reguły aplikacji:
 
@@ -168,4 +168,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat monitorowania i diagnostyki [zapory platformy Azure, zobacz Samouczek: Monitoruj dzienniki i metryki](tutorial-diagnostics.md)zapory platformy Azure.
+Aby dowiedzieć się więcej na temat monitorowania i diagnostyki zapory platformy Azure, zobacz [Samouczek: monitorowanie dzienników i metryk zapory platformy Azure](tutorial-diagnostics.md).

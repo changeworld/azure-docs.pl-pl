@@ -3,17 +3,13 @@ title: Samouczek — wdrażanie aplikacji w zestawach skalowania maszyn wirtualn
 description: Dowiedz się, jak używać rozwiązania ansible do konfigurowania zestawów skalowania maszyn wirtualnych platformy Azure i wdrażania aplikacji w zestawie skalowania
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7c54790a3d988341caa65bdf0ce33c240f0580fb
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241748"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156391"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
 
@@ -37,7 +33,7 @@ ms.locfileid: "72241748"
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 - **Usługa git** - [git](https://git-scm.com) jest używana do pobrania przykładu w języku Java używanego w tym samouczku.
 - **Java SE Development Kit (JDK)** — zestaw [JDK](https://aka.ms/azure-jdks) służy do utworzenia przykładowego projektu w języku Java.
-- **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) jest używany do kompilowania przykładowego projektu Java.
+- Platforma **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) jest używana do kompilowania przykładowego projektu Java.
 
 ## <a name="get-host-information"></a>Pobieranie informacji o hoście
 
@@ -170,13 +166,13 @@ Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 * W sekcji `vars` Zastąp symbol zastępczy `{{ admin_password }}` własnym hasłem.
 * Aby użyć typu połączenia SSH z hasłami, zainstaluj program sshpass:
 
-    Ubuntu
+    Ubuntu:
 
     ```bash
     apt-get install sshpass
     ```
 
-    CentOS
+    CentOS:
 
     ```bash
     yum install sshpass

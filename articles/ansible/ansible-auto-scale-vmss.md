@@ -3,17 +3,13 @@ title: Samouczek — Skalowanie automatyczne zestawów skalowania maszyn wirtual
 description: Dowiedz się, jak skalować zestawy skalowania maszyn wirtualnych przy użyciu funkcji automatycznego skalowania na platformie Azure
 keywords: ansible, azure, devops, bash, playbook, scale, autoscale, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 784cb532c11b16c820336ceeaf8d38f0225c832f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242104"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156820"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: automatyczne skalowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
 
@@ -81,7 +77,7 @@ Zapisz następujący podręcznik jako `vmss-auto-scale.yml`:
               - '10'
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
@@ -175,7 +171,7 @@ Zapisz następujący podręcznik jako `vmss-auto-scale-metrics.yml`:
             value: '1'
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
@@ -183,7 +179,7 @@ ansible-playbook vmss-auto-scale-metrics.yml
 
 ## <a name="get-autoscale-settings-information"></a>Pobierz informacje o ustawieniach automatycznego skalowania 
 
-Kod element PlayBook w tej sekcji używa modułu `azure_rm_autoscale_facts` do pobierania szczegółów ustawienia skalowania automatycznego.
+Kod element PlayBook w tej sekcji używa modułu `azure_rm_autoscale_facts`, aby pobrać szczegóły ustawienia skalowania automatycznego.
 
 Zapisz następujący podręcznik jako `vmss-auto-scale-get-settings.yml`:
 
@@ -203,7 +199,7 @@ Zapisz następujący podręcznik jako `vmss-auto-scale-get-settings.yml`:
         var: autoscale_query.autoscales[0]
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-auto-scale-get-settings.yml
@@ -230,7 +226,7 @@ Zapisz następujący podręcznik jako `vmss-auto-scale-delete-setting.yml`:
          state: absent
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 vmss-auto-scale-delete-setting.yml

@@ -3,17 +3,13 @@ title: Samouczek — Konfigurowanie aplikacji w Azure App Service przy użyciu r
 description: Dowiedz się, jak utworzyć aplikację w Azure App Service przy użyciu języka Java 8 i środowiska uruchomieniowego kontenera Tomcat
 keywords: ansible, azure, devops, bash, element playbook, Azure App Service, aplikacja internetowa, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5104db6bd7fa57600c7212e041263971ca4c91d4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242044"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156559"
 ---
 # <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Samouczek: Konfigurowanie aplikacji w Azure App Service przy użyciu rozwiązania ansible
 
@@ -75,7 +71,7 @@ Zapisz następujący podręcznik jako `firstwebapp.yml`:
               java_container_version: 8.5
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook firstwebapp.yml
@@ -199,7 +195,7 @@ Zapisz następujący podręcznik jako `webapp.yml`:
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook webapp.yml

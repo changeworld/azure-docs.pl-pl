@@ -8,20 +8,16 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 075c60aed458be8a4bf45fafb2d06757862ff5ba
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091915"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158587"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Przygotowanie do oceny i migracji serwerów fizycznych na platformę Azure
 
 W tym artykule opisano sposób przygotowania do oceny lokalnych serwerów fizycznych za pomocą [Azure Migrate](migrate-services-overview.md).
-
-
-> [!NOTE]
-> Jeśli nie widzisz jeszcze niektórych z tych funkcji w portalu Azure Migrate, zaczekaj. Pojawią się one w ciągu następnego tygodnia lub.
 
 [Azure Migrate](migrate-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) innych firm. 
 
@@ -45,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Musisz skonfigurować uprawnienia do wdrożenia Azure Migrate.
 
-- Uprawnienia do konta platformy Azure w celu utworzenia projektu Azure Migrate. 
+- Uprawnienia do konta platformy Azure w celu utworzenia projektu Azure Migrate.
 - Uprawnienia dla Twojego konta, które zarejestrują urządzenie Azure Migrate. Urządzenie jest używane na potrzeby odnajdywania i migracji funkcji Hyper-V. Podczas rejestracji urządzenia Azure Migrate tworzy dwie aplikacje Azure Active Directory (Azure AD), które w unikatowy sposób identyfikują urządzenie:
     - Pierwsza aplikacja komunikuje się z punktami końcowymi usługi Azure Migrate.
     - Druga aplikacja uzyskuje dostęp do Azure Key Vault, który jest tworzony podczas rejestracji, do przechowywania informacji o aplikacji usługi Azure AD i ustawień konfiguracji urządzenia.
@@ -73,7 +69,7 @@ Można przypisać uprawnienia Azure Migrate do tworzenia aplikacji usługi Azure
 Warto zauważyć, że:
 
 - Aplikacje nie mają żadnych innych uprawnień dostępu do subskrypcji innych niż opisane powyżej.
-- Te uprawnienia są potrzebne tylko podczas rejestrowania nowego urządzenia. Po skonfigurowaniu urządzenia można usunąć uprawnienia. 
+- Te uprawnienia są potrzebne tylko podczas rejestrowania nowego urządzenia. Po skonfigurowaniu urządzenia można usunąć uprawnienia.
 
 
 #### <a name="grant-account-permissions"></a>Udziel uprawnień konta
@@ -88,7 +84,7 @@ Dzierżawy/Administrator globalny mogą udzielić uprawnień w następujący spo
 > [!NOTE]
 > Jest to ustawienie domyślne, które nie jest poufne. [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
-#### <a name="assign-application-developer-role"></a>Przypisywanie roli Deweloper aplikacji 
+#### <a name="assign-application-developer-role"></a>Przypisywanie roli Deweloper aplikacji
 
 Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
@@ -124,12 +120,12 @@ Azure Migrate wymaga uprawnień do odnajdywania serwerów lokalnych.
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * Skonfiguruj uprawnienia konta platformy Azure.
 > * Przygotowano serwery fizyczne do oceny.
 
 Przejdź do następnego samouczka, aby utworzyć projekt Azure Migrate i ocenić serwery fizyczne do migracji na platformę Azure
 
-> [!div class="nextstepaction"] 
-> [Ocenianie serwerów fizycznych](./tutorial-assess-physical.md) 
+> [!div class="nextstepaction"]
+> [Ocenianie serwerów fizycznych](./tutorial-assess-physical.md)

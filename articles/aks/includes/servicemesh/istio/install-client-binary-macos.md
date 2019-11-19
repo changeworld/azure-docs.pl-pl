@@ -2,14 +2,14 @@
 author: paulbouwer
 ms.service: container-service
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 11/15/2019
 ms.author: pabouwer
-ms.openlocfilehash: 06479b4396ab26c280cc6246d774bc30b5ea1c76
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d812baa15380b7824deaed081d2857fbc6e0b1b6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530396"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170810"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Pobierz i zainstaluj dane binarne klienta Istio istioctl
 
@@ -17,12 +17,12 @@ W bash Shell na MacOS, użyj `curl`, aby pobrać wersję Istio, a następnie wyo
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.3.2
+ISTIO_VERSION=1.4.0
 
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-@No__t_0 dane binarne klienta są uruchamiane na komputerze klienckim i umożliwiają współdziałanie z siatką usługi Istio. Użyj następujących poleceń, aby zainstalować dane binarne klienta Istio `istioctl` w bash Shell na MacOS. Te polecenia kopiują plik binarny klienta `istioctl` do lokalizacji standardowego programu użytkownika w `PATH`.
+`istioctl` dane binarne klienta są uruchamiane na komputerze klienckim i umożliwiają współdziałanie z siatką usługi Istio. Użyj następujących poleceń, aby zainstalować dane binarne klienta Istio `istioctl` w bash Shell na MacOS. Te polecenia kopiują plik binarny klienta `istioctl` do lokalizacji standardowego programu użytkownika w `PATH`.
 
 ```bash
 cd istio-$ISTIO_VERSION

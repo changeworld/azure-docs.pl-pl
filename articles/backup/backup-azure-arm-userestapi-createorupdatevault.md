@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Tworzenie magazynów Recovery Services przy użyciu interfejsu API REST'
+title: Tworzenie magazynów Recovery Services przy użyciu interfejsu API REST
 description: W tym artykule dowiesz się, jak zarządzać operacją tworzenia kopii zapasowej i przywracania kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: INTERFEJS API REST; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 7c9d165f623367d1c888b90f76e96ce8fa2e8f89
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747568"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173412"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Tworzenie magazynu Recovery Services platformy Azure przy użyciu interfejsu API REST
 
@@ -44,11 +38,11 @@ Aby uzyskać więcej informacji na temat sposobu tworzenia żądania, zobacz [sk
 
 Następujące typowe definicje są używane do kompilowania treści żądania:
 
-|Nazwa  |Wymagany  |Typ  |Opis  |
+|Nazwa  |Wymagane  |Typ  |Opis  |
 |---------|---------|---------|---------|
 |Element ETag     |         |   Ciąg      |  Opcjonalny element eTag       |
 |location     |  true       |Ciąg         |   Lokalizacja zasobu      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
+|Właściwości     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
 |sku     |         |  [Jednostka SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Identyfikuje unikatowy identyfikator systemowy dla poszczególnych zasobów platformy Azure     |
 |tagów     |         | Obiekt        |     Tagi zasobów    |
 

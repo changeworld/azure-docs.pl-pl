@@ -1,19 +1,15 @@
 ---
 title: Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins
 description: Dowiedz się, jak przy użyciu wtyczki Jenkins usługi Azure App Service wdrożyć aplikację internetową Java na platformie Azure na serwerze Jenkins
-ms.service: jenkins
 keywords: jenkins, azure, devops, usługa app service
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 9f7e0e23a04c6b141c6e0c5ff88b3d5ff2d76e1d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840433"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158517"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins 
 
@@ -71,7 +67,7 @@ Aby wdrożyć projekt w funkcji Web Apps, możesz przekazać artefakty kompilacj
 Zanim skonfigurujesz zadanie na serwerze Jenkins, potrzebujesz planu usługi Azure App Service i aplikacji internetowej do uruchomienia aplikacji Java.
 
 
-1. Utwórz plan usługi Azure App Service w warstwie cenowej **BEZPŁATNA** za pomocą następującego [polecenia interfejsu wiersza polecenia platformy Azure](/cli/azure/appservice/plan#az-appservice-plan-create): `az appservice plan create`. Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby. Zasoby współdzielone pomagają zmniejszyć koszty w przypadku hostowania wielu aplikacji.
+1. Utwórz plan usługi Azure App Service w warstwie cenowej **BEZPŁATNA** za pomocą następującego `az appservice plan create`polecenia interfejsu wiersza polecenia platformy Azure[: ](/cli/azure/appservice/plan#az-appservice-plan-create). Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby. Zasoby współdzielone pomagają zmniejszyć koszty w przypadku hostowania wielu aplikacji.
 2. Utwórz aplikację internetową. Możesz użyć [witryny Azure Portal](/azure/app-service/configure-common) lub następującego `az` polecenia interfejsu wiersza polecenia platformy Azure:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -90,7 +86,7 @@ Zanim skonfigurujesz zadanie na serwerze Jenkins, potrzebujesz planu usługi Azu
 ### <a name="set-up-the-jenkins-job"></a>Konfigurowanie zadania serwera Jenkins
 
 1. Utwórz nowy **dowolny** projekt na pulpicie nawigacyjnym serwera Jenkins.
-2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
+2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//github.com/&lt;your_ID >/javawebappsample.
 3. Dodaj krok kompilowania projektu przy użyciu narzędzia Maven, dodając polecenie **Execute shell** (Wykonaj powłokę). W tym przykładzie potrzebujemy dodatkowego polecenia, aby zmienić nazwę pliku \*.war w folderze docelowym na **ROOT.war**:   
     ```bash
     mvn clean package
@@ -143,7 +139,7 @@ Przed skonfigurowaniem zadania na serwerze Jenkins potrzebujesz aplikacji intern
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Konfigurowanie zadania serwera Jenkins dla platformy Docker
 
 1. Utwórz nowy **dowolny** projekt na pulpicie nawigacyjnym serwera Jenkins.
-2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
+2. Skonfiguruj pole **Source Code Management** (Zarządzanie kodem źródłowym) w celu użycia Twojego rozwidlenia lokalnego [prostej aplikacji internetowej Java dla platformy Azure](https://github.com/azure-devops/javawebappsample). Podaj wartość **Repository URL** (Adres URL repozytorium). Na przykład: http:\//github.com/&lt;your_ID >/javawebappsample.
 3. Dodaj krok kompilowania projektu przy użyciu narzędzia Maven, dodając polecenie **Execute shell** (Wykonaj powłokę). W poleceniu dołącz następujący wiersz:
     ```bash
     mvn clean package
@@ -163,7 +159,7 @@ W polu **Docker registry URL** (Adres URL rejestru platformy Docker) podaj adres
 
 10. Nazwa obrazu platformy Docker oraz wartość tagu na karcie **Advanced** (Zaawansowane) to wartości opcjonalne. Domyślnie wartość nazwy obrazu jest uzyskiwana z nazwy obrazu, która została skonfigurowana w witrynie Azure Portal w ustawieniu **Kontener platformy Docker**. Tag jest generowany na podstawie numeru kompilacji $BUILD_NUMBER.
     > [!NOTE]
-    > Pamiętaj, aby określić nazwę obrazu w witrynie Azure Portal lub podać wartość **Docker Image** (Obraz platformy Docker) na karcie **Advanced** (Zaawansowane). W tym przykładzie w polu **Docker image** (Obraz platformy Docker) ustaw wartość &lt;Twój_rejestr >.azurecr.io/calculator, a pole **Docker Image Tag** (Tag obrazu platformy Docker) pozostaw puste.
+    > Upewnij się, że nazwa obrazu jest określona w Azure Portal lub podaj wartość **obrazu platformy Docker** na karcie **Zaawansowane** . Na potrzeby tego przykładu ustaw wartość **obrazu platformy Docker** na &lt;your_Registry >. azurecr. IO/Kalkulator i pozostaw pustą wartość **znacznika obrazu platformy Docker** .
 
 11. Wdrażanie nie powiedzie się, jeśli skorzystasz z ustawienia wbudowanego obrazu platformy Docker. W ustawieniu **Kontener platformy Docker** w witrynie Azure Portal zmień konfigurację platformy Docker, aby użyć obrazu niestandardowego. W celu wdrożenia z użyciem wbudowanego obrazu skorzystaj z metody przekazywania plików.
 12. Podobnie jak w przypadku metody przekazywania plików, możesz wybrać inną nazwę **miejsca** niż **produkcyjne**.
@@ -206,7 +202,7 @@ W polu **Docker registry URL** (Adres URL rejestru platformy Docker) podaj adres
     Sun Jun 17 16:39:10 UTC 2017
     ```
 
-3. Przejdź do adresu http://&lt;nazwa_Twojej_aplikacji>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Zastąp fragmenty &lt;x> i &lt;y> dowolnymi liczbami, aby uzyskać sumę x+y. Kalkulator pokazuje sumę: ![Calculator: add](./media/execute-cli-jenkins-pipeline/calculator-add.png) (Kalkulator: dodawanie)
+3. Przejdź do adresu http://&lt;nazwa_Twojej_aplikacji>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Zastąp fragmenty &lt;x> i &lt;y> dowolnymi liczbami, aby uzyskać sumę x+y. Kalkulator pokaże sumę: ![Calculator: add](./media/execute-cli-jenkins-pipeline/calculator-add.png) (Kalkulatora: dodawanie)
 
 ### <a name="for-azure-app-service-on-linux"></a>Dla usługi Azure App Service w systemie Linux
 

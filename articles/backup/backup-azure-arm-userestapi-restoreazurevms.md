@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST'
+title: Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST
 description: W tym artykule dowiesz się, jak zarządzać operacjami przywracania kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: INTERFEJS API REST; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eecee01ffc78ec8cc0e60b517e9d5b4f0e6baa25
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929157"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173387"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST
 
@@ -139,7 +133,7 @@ Aby wyzwolić przywracanie dysku z kopii zapasowej maszyny wirtualnej platformy 
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|Właściwości     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
 Pełną listę definicji treści żądania oraz inne szczegóły znajdują się w [dokumencie wyzwalacze przywracania interfejsu API REST](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
 

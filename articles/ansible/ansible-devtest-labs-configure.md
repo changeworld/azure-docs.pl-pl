@@ -1,19 +1,15 @@
 ---
 title: Samouczek — Konfigurowanie laboratoriów w Azure DevTest Labs przy użyciu rozwiązania ansible
 description: Dowiedz się, jak skonfigurować laboratorium w Azure DevTest Labs przy użyciu rozwiązania ansible
-ms.service: ansible
 keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, DevTest Labs
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d035c76a811df45af5ed8183b86e14a2ee6218b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241655"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156281"
 ---
 # <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Samouczek: Konfigurowanie laboratoriów w Azure DevTest Labs przy użyciu rozwiązania ansible
 
@@ -80,7 +76,7 @@ Można skonfigurować ustawienia zasad laboratorium. Można ustawić następują
 - `lab_vm_size` to dozwolone rozmiary maszyn wirtualnych laboratorium
 - `gallery_image` to dozwolone obrazy galerii
 - `user_owned_lab_vm_count_in_subnet` to maksymalna liczba maszyn wirtualnych użytkownika w podsieci
-- `lab_target_cost` to docelowy koszt laboratorium
+- `lab_target_cost` jest kosztem docelowym laboratorium
 
 ```yml
 - name: Set the lab policies
@@ -449,10 +445,10 @@ Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
 W tej sekcji należy uruchomić element PlayBook w celu przetestowania różnych funkcji przedstawionych w tym artykule.
 
 Przed uruchomieniem element PlayBook wprowadź następujące zmiany:
-- W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+- W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
 - Zapisz token usługi GitHub jako zmienną środowiskową o nazwie `GITHUB_ACCESS_TOKEN`.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook devtestlab-create.yml
@@ -476,7 +472,7 @@ Zapisz następujący kod jako `cleanup.yml`:
         state: absent
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

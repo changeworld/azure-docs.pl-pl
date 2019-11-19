@@ -1,19 +1,14 @@
 ---
-title: Przywróć klucz tajny & Key Vault dla zaszyfrowanej maszyny wirtualnej za pomocą Azure Backup
+title: Przywróć klucz tajny & Key Vault klucza dla zaszyfrowanej maszyny wirtualnej
 description: Dowiedz się, jak przywrócić klucz Key Vault i wpis tajny w Azure Backup przy użyciu programu PowerShell
-ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.author: dacurwin
-ms.openlocfilehash: 289042f70c44ab3b818a5350cc2e3db19e4d8a26
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 55e20d861eedde19946d2c99dfc1cd8ff33f6b0b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969115"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172769"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Przywróć klucz Key Vault i wpis tajny szyfrowanych maszyn wirtualnych przy użyciu Azure Backup
 

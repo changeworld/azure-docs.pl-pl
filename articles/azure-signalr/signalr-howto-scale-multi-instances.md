@@ -1,17 +1,17 @@
 ---
-title: Jak skalować z wieloma wystąpieniami usługi Azure Signal Service
+title: Skalowanie z wieloma wystąpieniami — usługa Azure Signal Service
 description: W wielu scenariuszach skalowania klient często musi zainicjować obsługę wielu wystąpień i skonfigurować go do korzystania ze sobą, aby utworzyć wdrożenie na dużą skalę. Na przykład fragmentowania wymaga obsługi wielu wystąpień.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672330"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158157"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Jak skalować usługę sygnalizującą z wieloma wystąpieniami?
 Najnowsza wersja zestawu SDK usługi sygnalizującej obsługuje wiele punktów końcowych dla wystąpień usługi sygnalizującej. Za pomocą tej funkcji można skalować współbieżne połączenia lub używać ich do obsługi komunikatów między regionami.

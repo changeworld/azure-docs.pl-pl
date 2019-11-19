@@ -1,152 +1,152 @@
 ---
-title: Wiadomość e-mail akcji w obrębie zdalne monitorowanie — Azure | Dokumentacja firmy Microsoft
-description: Ten poradnik pokazuje, jak dodawanie akcji poczty e-mail do nowej lub istniejącej reguły.
-author: asdonald
+title: Akcja poczty e-mail w ramach monitorowania zdalnego — Azure | Microsoft Docs
+description: W tym przewodniku opisano sposób dodawania akcji poczty e-mail do nowej lub istniejącej reguły.
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65466955"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168365"
 ---
-# <a name="add-an-email-action"></a>Dodawanie akcji poczty e-mail
+# <a name="add-an-email-action"></a>Dodaj akcję poczty e-mail
 
-Adres e-mail akcje upewnić się, nie przegapisz alertów. Akcji poczty e-mail można dodać do istniejącej reguły lub tworząc nową regułę.
+Akcje e-mail pomagają upewnić się, że alerty nie zostały pominięte. Możesz dodać akcję poczty e-mail do istniejącej reguły lub podczas tworzenia nowej reguły.
 
-Aby wykonać kroki opisane w tym przewodniku z instrukcjami, należy wdrożone wystąpienie akcelerator rozwiązań zdalnego monitorowania w ramach subskrypcji platformy Azure.
+Aby wykonać kroki opisane w tym przewodniku, musisz wdrożyć wystąpienie akceleratora rozwiązania do monitorowania zdalnego w ramach subskrypcji platformy Azure.
 
-Aby utworzyć lub zmodyfikować reguły, użytkownik musi być [ **administratora**, lub mieć odpowiednie uprawnienia](iot-accelerators-remote-monitoring-rbac.md).
+Aby utworzyć lub zmodyfikować regułę, musisz być [ **administratorem**lub mieć odpowiednie uprawnienia](iot-accelerators-remote-monitoring-rbac.md).
 
 ## <a name="edit-an-existing-rule"></a>Edytowanie istniejącej reguły
 
-Wykonaj następujące kroki, aby dodać akcji w wiadomości e-mail do istniejącej reguły:
+Wykonaj następujące kroki, aby dodać akcję poczty e-mail do istniejącej reguły:
 
-1. Przejdź do rozwiązania do zdalnego monitorowania.
+1. Przejdź do rozwiązania do monitorowania zdalnego.
 
-1. Z **pulpit nawigacyjny**, przejdź do **reguły** strony:
+1. Na **pulpicie nawigacyjnym**przejdź do strony **reguły** :
 
     ![Strona reguł](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. Kliknij pole wyboru obok istniejącej reguły do zmodyfikowania, a następnie kliknij przycisk **Edytuj** u góry. Można edytować **reguły** zostanie wyświetlony panel.
+1. Kliknij pole wyboru obok istniejącej reguły do zmodyfikowania, a następnie kliknij pozycję **Edytuj** u góry. Zostanie wyświetlony panel **reguły** edytowalnej.
 
-1. W **akcji** sekcji, Przełącz **włączoną pocztą E-mail** do **na**.
+1. W sekcji **Akcja** Przełącz opcję **poczta e-mail** na włączone **.**
 
-1. Włącz akcji poczty e-mail w akcelerator rozwiązań po raz pierwszy, należy najpierw [Zaloguj się do programu Outlook](#outlook).
+1. Po pierwszym włączeniu akcji poczty e-mail w akceleratorze rozwiązań należy [zalogować się do programu Outlook](#outlook).
 
-1. Wprowadź adres e-mail do adresatów pole i naciśnij klawisz **Enter** klucza dla każdego z adresów e-mail do dodania:
+1. Wprowadź adres e-mail w polu odbiorca i naciśnij klawisz **Enter** , aby dodać adres e-mail.
 
     ![Wpis adresu](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Wprowadź temat wiadomości e-mail.
 
-1. Wprowadź wszelkie uwagi, dodatkowych adresatów wiadomości e-mail jako zwykły tekst. Możesz użyć HTML formatowanie, jeśli użytkownik [edytować szablon wiadomości e-mail](#htmledit).
+1. Wprowadź wszelkie dodatkowe uwagi dla adresatów wiadomości e-mail jako zwykły tekst. Możesz użyć formatowania HTML [w przypadku edytowania szablonu wiadomości e-mail](#htmledit).
 
-1. Upewnij się, że **stan reguły** ustawiono **włączone**.
+1. Upewnij się, że **stan reguły** jest ustawiony na **włączone**.
 
-1. Kliknij przycisk **Zastosuj**.
+1. Kliknij przycisk **zastosować**.
 
 ## <a name="create-a-new-rule"></a>Tworzenie nowej reguły
 
-Wykonaj następujące kroki, aby dodać akcji poczty e-mail, podczas tworzenia nowej reguły:
+Wykonaj następujące kroki, aby dodać akcję poczty e-mail podczas tworzenia nowej reguły:
 
-1. Przejdź do rozwiązania do zdalnego monitorowania.
+1. Przejdź do rozwiązania do monitorowania zdalnego.
 
-1. Z **pulpit nawigacyjny**, przejdź do **reguły** strony:
+1. Na **pulpicie nawigacyjnym**przejdź do strony **reguły** :
 
     ![Strona reguł](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. Postępuj zgodnie z instrukcjami w [Utwórz sekcję reguły](iot-accelerators-remote-monitoring-automate.md#create-a-rule). Wykonaj kroki opisane w [utworzyć zaawansowaną regułę](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) sekcji aż do momentu, w którym można ustawić **poziom ważności**. Nie klikaj pozycji **Zastosuj** jeszcze.
+1. Wykonaj kroki opisane w [sekcji Tworzenie reguły](iot-accelerators-remote-monitoring-automate.md#create-a-rule). Wykonaj kroki opisane w sekcji [tworzenie zaawansowanej reguły](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) do punktu, w którym ustawiono **poziom ważności**. Nie klikaj jeszcze przycisku **Zastosuj** .
 
-1. W **akcji** sekcji, Przełącz **włączoną pocztą E-mail** do **na**.
+1. W sekcji **Akcja** Przełącz opcję **poczta e-mail** na włączone **.**
 
-1. Włącz akcji poczty e-mail w akcelerator rozwiązań po raz pierwszy, należy najpierw [Zaloguj się do programu Outlook](#outlook).
+1. Po pierwszym włączeniu akcji poczty e-mail w akceleratorze rozwiązań należy [zalogować się do programu Outlook](#outlook).
 
-1. Wprowadź adres e-mail do adresatów pole i naciśnij klawisz **Enter** klucza dla każdego z adresów e-mail do dodania:
+1. Wprowadź adres e-mail w polu odbiorca i naciśnij klawisz **Enter** , aby dodać adres e-mail.
 
     ![Wpis adresu](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Wprowadź temat wiadomości e-mail.
 
-1. Wprowadź wszelkie uwagi, dodatkowych adresatów wiadomości e-mail jako zwykły tekst. Możesz użyć HTML formatowanie, jeśli użytkownik [edytować szablon wiadomości e-mail](#htmledit).
+1. Wprowadź wszelkie dodatkowe uwagi dla adresatów wiadomości e-mail jako zwykły tekst. Możesz użyć formatowania HTML [w przypadku edytowania szablonu wiadomości e-mail](#htmledit).
 
-1. Upewnij się, że **stan reguły** ustawiono **włączone**.
+1. Upewnij się, że **stan reguły** jest ustawiony na **włączone**.
 
-1. Kliknij przycisk **Zastosuj**.
+1. Kliknij przycisk **zastosować**.
 
-Reguły za pomocą akcji poczty e-mail jest teraz włączony. Każdorazowo, gdy akcja zostanie wywołany, nowy adres e-mail jest wysyłana do adresatów.
+Twoja reguła z akcją wiadomości e-mail jest teraz włączona. Za każdym razem, gdy akcja jest wyzwalana, do adresatów jest wysyłana nowa wiadomość e-mail.
 
-## Zaloguj się do programu Outlook <a name="outlook"></a>
+## Zaloguj się do programu Outlook<a name="outlook"></a>
 
-Włącz akcji poczty e-mail w akceleratorze rozwiązań po raz pierwszy użytkownik musi zalogować się do programu Outlook. Ta akcja konfiguruje konta e-mail, które wysyła powiadomienia e-mail.
+Po pierwszym włączeniu akcji poczty e-mail w akceleratorze rozwiązań należy zalogować się do programu Outlook. Ta akcja powoduje skonfigurowanie konta e-mail, które wysyła powiadomienia e-mail.
 
 > [!NOTE]
-> Należy tworzenia konkretnego konta programu Outlook, po prostu dla powiadomień akcelerator rozwiązań i użyć tego konta, po włączeniu pierwszej akcji w wiadomości e-mail.
+> Należy utworzyć określone konto programu Outlook tylko dla powiadomień akceleratora rozwiązań i korzystać z tego konta po włączeniu pierwszej akcji poczty e-mail.
 
-### <a name="contributor-role-outlook-setup"></a>Instalator programu Outlook roli współautora
+### <a name="contributor-role-outlook-setup"></a>Rola współautor — konfiguracja programu Outlook
 
-Jeśli ktoś w **Współautor** roli w subskrypcji wdrożyć akcelerator rozwiązań, aplikacja nie ma wystarczających uprawnień do konfigurowania i weryfikowania akcji poczty e-mail przy użyciu interfejsu użytkownika sieci Web.
+Jeśli ktoś w roli **współautor** w subskrypcji wdrożony Akcelerator rozwiązania, aplikacja nie ma wystarczających uprawnień do konfigurowania i weryfikowania akcji poczty e-mail za pośrednictwem interfejsu użytkownika sieci Web.
 
-Przed rozpoczęciem należy utworzyć konto programu Outlook służące do wysyłania powiadomień e-mail z Twój akcelerator rozwiązań.
+Przed rozpoczęciem Utwórz konto programu Outlook, które będzie używane do wysyłania powiadomień e-mail z akceleratora rozwiązań.
 
-Poniższe kroki pokazują sposób konfigurowania i weryfikowania ręcznie akcji poczty e-mail:
+Poniższe kroki pokazują, jak skonfigurować i zweryfikować akcje poczty e-mail ręcznie:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
-1. Przejdź do grupy zasobów dla Twój akcelerator rozwiązań.
+1. Przejdź do grupy zasobów dla akceleratora rozwiązania.
 
-1. Kliknij przycisk **łącznik usługi Office 365**:
+1. Kliknij **Łącznik usługi Office 365**:
 
     ![Połączenie interfejsu API](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
 1. Kliknij transparent, aby rozpocząć proces autoryzacji:
 
-    ![Autoryzuj](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
+    ![autoryzować](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
-1. Kliknij przycisk **autoryzować**. Zostanie wyświetlony monit Zaloguj się. Konto, którego używasz do logowania powinien być adres e-mail aplikacja używa do wysyłania powiadomień e-mail:
+1. Kliknij przycisk **Autoryzuj**. Zostanie wyświetlony monit o zalogowanie się. Konto używane do logowania powinno być adresem e-mail używanym przez aplikację do wysyłania powiadomień e-mail:
 
-    ![Autoryzuj przycisku](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
+    ![Przycisk Autoryzuj](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
 
-1. Kliknij przycisk **Zapisz** u dołu. Twojej autoryzacji, zakończy się pomyślnie, jeśli transparent został usunięty.
+1. Kliknij przycisk **Zapisz** u dołu. Autoryzacja powiedzie się, jeśli transparent zostanie usunięty.
 
-1. Aby zmienić adres e-mail, z którego wysyłane są powiadomienia z, kliknij przycisk **połączenia Edytuj interfejsu API**.
+1. Aby zmienić adres e-mail, z którego są wysyłane powiadomienia, kliknij pozycję **Edytuj połączenie z interfejsem API**.
 
     ![Zmień adres e-mail](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
-### <a name="owner-role-outlook-setup"></a>Instalator programu Outlook roli właściciela
+### <a name="owner-role-outlook-setup"></a>Konfiguracja roli właściciela programu Outlook
 
-Jeśli ktoś w **właściciela** roli w subskrypcji wdrożyć akcelerator rozwiązań, aplikacji można sprawdzić w akcji poczty e-mail zostały poprawnie skonfigurowane przy użyciu interfejsu użytkownika sieci Web.
+Jeśli ktoś w roli **właściciela** w ramach subskrypcji wdrożył Akcelerator rozwiązania, aplikacja może sprawdzić, czy akcje e-mail zostały prawidłowo skonfigurowane za pośrednictwem interfejsu użytkownika sieci Web.
 
-Przed rozpoczęciem należy utworzyć konto programu Outlook służące do wysyłania powiadomień e-mail z Twój akcelerator rozwiązań.
+Przed rozpoczęciem Utwórz konto programu Outlook, które będzie używane do wysyłania powiadomień e-mail z akceleratora rozwiązań.
 
-Poniższe kroki ułatwiają Zaloguj się i Ustawianie akcji poczty e-mail:
+Poniższe kroki ułatwiają logowanie się i Konfigurowanie akcji poczty e-mail:
 
-1. Kliknij, aby zalogować się do programu Outlook. Nastąpi przekierowanie do witryny Azure portal:
+1. Kliknij, aby zalogować się do programu Outlook. Nastąpi przekierowanie do Azure Portal:
 
    ![Zaloguj się do programu Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
-1. Kliknij przycisk **autoryzować**. Zostanie wyświetlony monit Zaloguj się. Konto, którego używasz do logowania powinien być adres e-mail aplikacja używa do wysyłania powiadomień e-mail:
+1. Kliknij przycisk **Autoryzuj**. Zostanie wyświetlony monit o zalogowanie się. Konto używane do logowania powinno być adresem e-mail używanym przez aplikację do wysyłania powiadomień e-mail:
 
-1. Kliknij pozycję **Zapisz**. Wróć do Twój akcelerator rozwiązań, a następnie odśwież stronę.
+1. Kliknij pozycję **Zapisz**. Wróć do akceleratora rozwiązania i Odśwież stronę.
 
-1. Jeśli zostały pomyślnie skonfigurowane powiadomienia e-mail, zostanie wyświetlony ten komunikat:
+1. Po pomyślnym skonfigurowaniu powiadomienia e-mail zostanie wyświetlony następujący komunikat:
 
-   ![Pomyślne Outlook logowanie](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
+   ![Pomyślne logowanie do programu Outlook](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## Dostosuj wiadomości e-mail HTML <a name="htmledit"></a>
+## Dostosowywanie wiadomości e-mail w formacie HTML<a name="htmledit"></a>
 
-Out-of--box, zdalne monitorowanie akcelerator rozwiązań udostępnia podstawowy szablon HTML dla akcji w wiadomości e-mail. Szablon wiadomości e-mail są używane wartości z ustawień akcji poczty e-mail. Poniżej przedstawiono przykładową wiadomość e-mail:
+Wbudowany Akcelerator rozwiązania do monitorowania zdalnego udostępnia podstawowy szablon HTML dla wiadomości e-mail z akcją. Szablon wiadomości e-mail używa wartości z ustawień akcji poczty e-mail. Oto przykład wiadomości e-mail:
 
 ![przykład wiadomości e-mail](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
-Poniższe kroki pokazują, jak edytować szablon wiadomości e-mail w formacie HTML. Na przykład można dołączyć więcej informacji, lub dodać niestandardowych obrazów:
+Poniższe kroki pokazują, jak edytować szablon wiadomości e-mail w formacie HTML. Na przykład możesz dołączyć więcej informacji lub dodać obrazy niestandardowe:
 
-1. Sklonuj repozytorium platformy Java lub .NET zdalnego monitorowania GitHub:
+1. Sklonowanie repozytorium usługi GitHub do monitorowania zdalnego Java lub .NET:
 
 1. Przejdź do lokalizacji szablonu wiadomości e-mail:
   
@@ -154,24 +154,24 @@ Poniższe kroki pokazują, jak edytować szablon wiadomości e-mail w formacie H
   
     `Java device-telemetry/app/resources/data/EmailTemplate.html`
 
-1. Można dodać lub usunąć wszelkie parametry tego szablonu, aby dostosować komunikat o. Można również dodać, usunąć lub zamienić wywołania, zgodnie z potrzebami:
+1. Aby dostosować komunikat, można dodać lub usunąć wszystkie parametry w tym szablonie. W razie konieczności można także dodawać, usuwać lub zamieniać wywołania:
 
-    Na przykład w kodzie .NET:  `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
+    Na przykład w kodzie .NET: `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
 
-    Na przykład w kodzie języka Java:  `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
+    Na przykład w kodzie Java: `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. Parametry w szablonie formę `${...}`. Aby usunąć parametr, należy usunąć żądanego wiersza. Aby dodać parametr, Dodaj wiersz o wartości do wstawienia.
+1. Parametry w szablonie mają postać `${...}`. Aby usunąć parametr, Usuń wymagany wiersz. Aby dodać parametr, Dodaj wiersz z wartością do wstawienia.
 
-1. Aby dodać obrazy lub niestandardowego tekstu, należy zaktualizować plik EmailTemplate.HTML bezpośrednio.
+1. Aby dodać obrazy lub niestandardowy tekst, zaktualizuj plik EmailTemplate. HTML bezpośrednio.
 
 ## <a name="throttling"></a>Ograniczanie przepływności
 
-Akcelerator rozwiązań zdalnego monitorowania korzysta z programu Outlook do wysyłania powiadomień e-mail. Program Outlook ogranicza liczbę wiadomości e-mail wysłanych na [30 wiadomości e-mail na 1 minutę](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). Klientów poczty e-mail, otrzymywania wiadomości e-mail może również ograniczać liczbę wiadomości e-mail odebrane na minutę. Skontaktuj się z klienta określonej wiadomości e-mail na ograniczenia. Podczas konfigurowania powiadomień e-mail dla reguły reguły należy obliczyć średnie wartości w okresie co najmniej jedną minutę, a następnie używa wartości błyskawicznych:
+Akcelerator rozwiązania do monitorowania zdalnego używa programu Outlook do wysyłania powiadomień e-mail. Program Outlook ogranicza liczbę wiadomości e-mail wysyłanych do [30 wiadomości e-mail na 1 minutę](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). Klienci poczty e-mail, którzy odbierają wiadomości e-mail, mogą również ograniczyć liczbę otrzymywanych wiadomości e-mail na minutę. Skontaktuj się z konkretnym klientem poczty e-mail w sprawie ograniczeń. Podczas konfigurowania powiadomienia e-mail dla reguły, reguła powinna obliczać wartości średnie w okresie co najmniej jednej minuty, a nie używać wartości błyskawicznych:
 
-![Obliczania średniej](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
+![Obliczanie średniej](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W przewodniku pokazano, jak dodawanie akcji poczty e-mail do nowej lub istniejącej reguły w ramach rozwiązania monitorowania zdalnego. Przewodnik po pokazano też, możesz i sposobu edytowania kodu HTML, który definiuje format komunikatu.
+W tym przewodniku pokazano, jak dodać akcję poczty e-mail do nowej lub istniejącej reguły w ramach rozwiązania do monitorowania zdalnego. Przewodnik ten zawiera również instrukcje i sposób edytowania kodu HTML, który definiuje format wiadomości.
 
-Sugerowane następnym krokiem jest, aby dowiedzieć się więcej [sposób używania alertów i rozwiązywanie problemów z urządzeniami](iot-accelerators-remote-monitoring-maintain.md).
+Zalecanym następnym krokiem jest zapoznanie się z [alertami i rozwiązywanie problemów z urządzeniami](iot-accelerators-remote-monitoring-maintain.md).

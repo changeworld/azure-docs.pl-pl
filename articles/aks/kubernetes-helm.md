@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: fc808fee66dee573aecd423e375d30bf3f5b696a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305272"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170712"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalowanie aplikacji przy użyciu usługi Helm w usłudze Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Wymagany jest również interfejs wiersza polecenia Helm, który jest klientem u
 
 Przed wdrożeniem Helm w klastrze AKS z włączoną funkcją RBAC należy mieć konto usługi i powiązanie roli dla usługi. Aby uzyskać więcej informacji na temat zabezpieczania Helm/do usługi w klastrze z obsługą RBAC, zobacz odniesień [, przestrzenie nazw i RBAC][tiller-rbac]. Jeśli w klastrze AKS nie włączono kontroli RBAC, Pomiń ten krok.
 
-Utwórz plik o nazwie `helm-rbac.yaml` i skopiuj w następującym YAML:
+Utwórz plik o nazwie `helm-rbac.yaml` i skopiuj go do następującej YAML:
 
 ```yaml
 apiVersion: v1
@@ -56,7 +56,7 @@ subjects:
     namespace: kube-system
 ```
 
-Utwórz konto usługi i powiązanie roli za pomocą `kubectl apply` polecenia:
+Utwórz konto usługi i powiązanie roli za pomocą polecenia `kubectl apply`:
 
 ```console
 kubectl apply -f helm-rbac.yaml
@@ -70,15 +70,15 @@ W przypadku klastra Kubernetes z obsługą kontroli RBAC można kontrolować poz
 
 ## <a name="configure-helm"></a>Konfigurowanie Helm
 
-Aby wdrożyć podstawową usługę do klastra AKS, użyj polecenia [init Helm][helm-init] . Jeśli w `--service-account` klastrze nie włączono kontroli RBAC, Usuń argument i wartość. W poniższych przykładach ustawiono również [historię — maks][helm-history-max] . do 200.
+Aby wdrożyć podstawową usługę do klastra AKS, użyj polecenia [init Helm][helm-init] . Jeśli w klastrze nie włączono kontroli RBAC, Usuń `--service-account` argument i wartość. W poniższych przykładach ustawiono również [historię — maks][helm-history-max] . do 200.
 
-W przypadku skonfigurowania protokołu TLS/SSL dla operacji do odniesień i Helm należy pominąć ten podstawowy krok inicjujący, a następnie podać wymagane `--tiller-tls-` , jak pokazano w następnym przykładzie.
+W przypadku skonfigurowania protokołu TLS/SSL dla operacji do odniesień i Helm, Pomiń ten podstawowy krok inicjalizacji, a następnie podaj wymagane `--tiller-tls-`, jak pokazano w następnym przykładzie.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-W przypadku skonfigurowania protokołu TLS/SSL między Helm i do przydzielenia przez `--tiller-tls-*` program do dostarczania parametrów i nazw własnych certyfikatów, jak pokazano w następującym przykładzie:
+W przypadku skonfigurowania protokołu TLS/SSL między Helm i do przydzielenia przez program do dostarczania parametrów `--tiller-tls-*` i nazw własnych certyfikatów, jak pokazano w następującym przykładzie:
 
 ```console
 helm init \
@@ -148,7 +148,7 @@ Update Complete.
 
 ## <a name="run-helm-charts"></a>Uruchom wykresy Helm
 
-Aby zainstalować wykresy z Helm, użyj polecenia [Install Helm][helm-install] i określ nazwę wykresu do zainstalowania. Aby zapoznać się z tematem Instalowanie wykresu Helm w działaniu, Zainstalujmy podstawowe wdrożenie Nginx przy użyciu wykresu Helm. Jeśli skonfigurowano protokół TLS/SSL, Dodaj `--tls` parametr, aby użyć certyfikatu klienta Helm.
+Aby zainstalować wykresy z Helm, użyj polecenia [Install Helm][helm-install] i określ nazwę wykresu do zainstalowania. Aby zapoznać się z tematem Instalowanie wykresu Helm w działaniu, Zainstalujmy podstawowe wdrożenie Nginx przy użyciu wykresu Helm. W przypadku skonfigurowania protokołu TLS/SSL Dodaj parametr `--tls`, aby użyć certyfikatu klienta Helm.
 
 ```console
 helm install stable/nginx-ingress \
@@ -187,7 +187,7 @@ Aby można było wypełniać zewnętrzny adres *IP* usługi Nginx-transfer-Contr
 
 ## <a name="list-helm-releases"></a>Lista wersji Helm
 
-Aby wyświetlić listę wersji zainstalowanych w klastrze, użyj polecenia [listy Helm][helm-list] . Poniższy przykład przedstawia wydanie Nginx-Ingress wdrożone w poprzednim kroku. Jeśli skonfigurowano protokół TLS/SSL, Dodaj `--tls` parametr, aby użyć certyfikatu klienta Helm.
+Aby wyświetlić listę wersji zainstalowanych w klastrze, użyj polecenia [listy Helm][helm-list] . Poniższy przykład przedstawia wydanie Nginx-Ingress wdrożone w poprzednim kroku. W przypadku skonfigurowania protokołu TLS/SSL Dodaj parametr `--tls`, aby użyć certyfikatu klienta Helm.
 
 ```console
 $ helm list
@@ -198,7 +198,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po wdrożeniu wykresu Helm są tworzone różne zasoby Kubernetes. Do tych zasobów należą między innymi: zasoby, wdrożenia i usługi. Aby wyczyścić te zasoby, użyj `helm delete` polecenia i określ nazwę wydania, jak to zostało znalezione w poprzednim `helm list` poleceniu. Poniższy przykład usuwa wydanie o nazwie *Flailing-Alpaca*:
+Po wdrożeniu wykresu Helm są tworzone różne zasoby Kubernetes. Do tych zasobów należą między innymi: zasoby, wdrożenia i usługi. Aby wyczyścić te zasoby, użyj `helm delete` polecenia i określ nazwę wydania, jak znaleziono w poprzednim `helm list` polecenie. Poniższy przykład usuwa wydanie o nazwie *Flailing-Alpaca*:
 
 ```console
 $ helm delete flailing-alpaca
@@ -215,18 +215,18 @@ Aby uzyskać więcej informacji na temat zarządzania wdrożeniami aplikacji Kub
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/
-[helm-documentation]: https://docs.helm.sh/
-[helm-init]: https://docs.helm.sh/helm/#helm-init
-[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
+[helm-documentation]: https://v2.helm.sh/docs/
+[helm-init]: https://v2.helm.sh/docs/helm/#helm-init
+[helm-install]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
-[helm-list]: https://docs.helm.sh/helm/#helm-list
-[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
-[helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
-[helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
-[helm-search]: https://docs.helm.sh/helm/#helm-search
-[tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac
-[helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
-
+[helm-list]: https://v2.helm.sh/docs/helm/#helm-list
+[helm-history-max]: https://v2.helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
+[helm-rbac]: https://v2.helm.sh/docs/using_helm/#role-based-access-control
+[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-search]: https://v2.helm.sh/docs/helm/#helm-search
+[tiller-rbac]: https://v2.helm.sh/docs/using_helm/#tiller-namespaces-and-rbac
+[helm-ssl]: https://v2.helm.sh/docs/using_helm/#using-ssl-between-helm-and-tiller
+            
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md

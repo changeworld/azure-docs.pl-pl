@@ -1,19 +1,14 @@
 ---
-title: Rozwiązywanie problemów z kopiami zapasowymi SAP HANA baz danych — Azure Backup
+title: Rozwiązywanie problemów z kopiami zapasowymi baz danych SAP HANA
 description: Opisuje sposób rozwiązywania typowych błędów, które mogą wystąpić podczas tworzenia kopii zapasowej SAP HANA baz danych przy użyciu Azure Backup.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968452"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172743"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
@@ -50,7 +45,7 @@ Po wybraniu bazy danych do wykonania kopii zapasowej usługa Azure Backup konfig
 
 - [catalog_backup_using_backint: true]
 - [enable_accumulated_catalog_backup: false]
-- [parallel_data_backup_backint_channels: 1]
+- [parallel_data_backup_backint_channels:1]
 - [log_backup_timeout_s: 900)]
 - [backint_response_timeout: 7200]
 
@@ -82,7 +77,7 @@ W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfigur
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-Data| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
+data| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Nie można nawiązać połączenia z systemem HANA. Sprawdź, czy system jest uruchomiony.| Usługa Azure Backup nie może połączyć się z platformą HANA, ponieważ baza danych HANA nie działa. Lub HANA jest uruchomiony, ale nie zezwala na łączenie się z usługą Azure Backup. | Sprawdź, czy baza danych lub usługa HANA nie działa. Jeśli baza danych lub usługa HANA jest uruchomiona, sprawdź, czy [zostały ustawione wszystkie uprawnienia](#setting-up-permissions). Jeśli brakuje klucza, uruchom ponownie skrypt rejestracyjny, aby utworzyć nowy klucz. |
 

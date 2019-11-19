@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie dostarczania komunikatów usługi Azure Event Grid
-description: W tym artykule opisano, jak monitorować dostarczenia komunikatów usługi Azure Event Grid.
+title: Monitorowanie dostarczania komunikatów Azure Event Grid
+description: Opisuje sposób monitorowania dostarczania komunikatów Azure Event Grid.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -8,75 +8,81 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: spelluru
-ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824162"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170002"
 ---
-# <a name="monitor-event-grid-message-delivery"></a>Monitorowanie dostarczania komunikatów FIFO usługi Event Grid 
+# <a name="monitor-event-grid-message-delivery"></a>Monitorowanie dostarczania komunikatów Event Grid 
 
-W tym artykule opisano, jak korzystać z portalu, aby wyświetlić stan wysyłki zdarzeń.
+W tym artykule opisano sposób korzystania z portalu w celu wyświetlenia stanu dostaw zdarzeń.
 
-Usługi Event Grid oferuje niezawodne dostarczanie. System ten zapewnia każdy komunikat co najmniej raz dla każdej subskrypcji. Zdarzenia są wysyłane bezpośrednio do zarejestrowanych elementu webhook w każdej subskrypcji. Jeśli element webhook nie otrzymanie zdarzenia w ciągu 60 sekund od pierwszej próby dostarczenia, usługi Event Grid ponawia próbę dostarczaniu zdarzenia.
+Event Grid zapewnia trwałe dostarczanie. Każdy z nich dostarcza każdy komunikat co najmniej raz dla każdej subskrypcji. Zdarzenia są natychmiast wysyłane do zarejestrowanego elementu webhook każdej subskrypcji. Jeśli element webhook nie potwierdzi odbioru zdarzenia w ciągu 60 sekund od pierwszej próby dostarczenia, Event Grid ponawianie prób dostarczenia zdarzenia.
 
 Informacje o dostarczanie zdarzeń i ponownych prób [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
 
-## <a name="delivery-metrics"></a>Dostarczanie metryk
+## <a name="delivery-metrics"></a>Metryki dostarczania
 
-Portal zawiera metryki dotyczące stanu dostarczania komunikaty o zdarzeniach.
+W portalu są wyświetlane metryki dotyczące stanu dostarczania komunikatów o zdarzeniach.
 
-Tematy dostępne są następujące metryki:
+W przypadku tematów miary są następujące:
 
-* **Publikowanie zostało zakończone pomyślnie**: Pomyślnie zdarzeń wysłanych do tematu i przetwarzane przy użyciu odpowiedzi 2xx.
-* **Nie można opublikować**: Zdarzenia wysyłane do tematu, ale odrzucone z kodem błędu.
-* **Niedopasowane**: Zdarzenie została pomyślnie opublikowana do tematu, ale nie pasuje do subskrypcji zdarzeń. Zdarzenie zostało porzucone.
+* **Publikowanie powiodło się**: zdarzenie zostało pomyślnie wysłane do tematu i przetworzone z odpowiedzią 2xx.
+* **Publikowanie nie powiodło**się: zdarzenie wysłane do tematu, ale odrzucone z kodem błędu.
+* **Niedopasowane**: zdarzenie zostało pomyślnie opublikowane w temacie, ale nie jest zgodne z subskrypcją zdarzeń. Zdarzenie zostało porzucone.
 
-W przypadku subskrypcji dostępne są następujące metryki:
+W przypadku subskrypcji metryki są następujące:
 
-* **Dostarczenie powiodło się**: Zdarzenie pomyślnie dostarczone do endpoint dla subskrypcji i Odebrano odpowiedź 2xx.
-* **Dostarczanie nie powiodło się**: Zdarzenia wysyłane do punktu końcowego subskrypcji, ale Odebrano odpowiedź 4xx lub 5xx.
-* **Ważność zdarzenia**: Zdarzenie nie zostało dostarczone, i zostały wysłane przeprowadzenia wszystkich ponownych prób. Zdarzenie zostało porzucone.
-* **Dopasowane zdarzenia**: Zdarzenia w tym temacie zostały dopasowane do subskrypcji zdarzeń.
+* **Dostarczenie powiodło się**: zdarzenie zostało pomyślnie dostarczone do punktu końcowego subskrypcji i otrzymało odpowiedź 2xx.
+* **Dostarczenie nie powiodło**się: zdarzenie wysłane do punktu końcowego subskrypcji, ale odebrano odpowiedź 4xx lub 5xx.
+* **Wygasłe zdarzenia**: zdarzenie nie zostało dostarczone i wszystkie próby ponowienia zostały wysłane. Zdarzenie zostało porzucone.
+* **Dopasowane zdarzenia**: zdarzenie w temacie zostało dopasowane przez subskrypcję zdarzeń.
 
 ## <a name="event-subscription-status"></a>Stan subskrypcji zdarzeń
 
-Aby wyświetlić metryki subskrypcji zdarzeń, albo można wyszukiwać według typu subskrypcji lub subskrypcji dla określonego zasobu.
+Aby wyświetlić metryki dla subskrypcji zdarzeń, można wyszukać według typu subskrypcji lub subskrypcji dla określonego zasobu.
 
-Aby przeprowadzić wyszukiwanie według typu subskrypcji zdarzeń, wybierz **wszystkich usług**.
+Aby wyszukać według typu subskrypcji zdarzeń, wybierz pozycję **wszystkie usługi**.
 
 ![Wybierz wszystkie usługi](./media/monitor-event-delivery/all-services.png)
 
-Wyszukaj **usługi event grid** i wybierz **subskrypcje usługi Event Grid** z dostępnych opcji.
+Wyszukaj ciąg **Event Grid** i wybierz opcję **Event Grid subskrypcje** z dostępnych opcji.
 
 ![Wyszukaj subskrypcje zdarzeń](./media/monitor-event-delivery/search-and-select.png)
 
-Filtruj według typu zdarzenia, subskrypcji i lokalizacji. Wybierz **metryki** dla subskrypcji wyświetlić.
+Filtrowanie według typu zdarzenia, subskrypcji i lokalizacji. Wybierz **metryki** dla subskrypcji do wyświetlenia.
 
-![Filtruj subskrypcje zdarzeń](./media/monitor-event-delivery/filter-events.png)
+![Filtrowanie subskrypcji zdarzeń](./media/monitor-event-delivery/filter-events.png)
 
-Wyświetlaj metryki dla zdarzenia tematu i subskrypcji.
+Wyświetl metryki dotyczące tematu i subskrypcji zdarzenia.
 
-![Wyświetl metryki zdarzenia](./media/monitor-event-delivery/subscription-metrics.png)
+![Wyświetl metryki zdarzeń](./media/monitor-event-delivery/subscription-metrics.png)
 
-Aby uzyskać metryki dla określonego zasobu, zaznacz ten zasób. Następnie wybierz **zdarzenia**.
+Aby znaleźć metryki dla określonego zasobu, wybierz ten zasób. Następnie wybierz pozycję **zdarzenia**.
 
-![Wybierz zdarzenia dla zasobu](./media/monitor-event-delivery/select-events.png)
+![Wybieranie zdarzeń dla zasobu](./media/monitor-event-delivery/select-events.png)
 
-Możesz wyświetlić metryki dla subskrypcji dla tego zasobu.
+Są wyświetlane metryki dla subskrypcji dla tego zasobu.
 
 ## <a name="custom-event-status"></a>Stan zdarzenia niestandardowego
 
-Po opublikowaniu tematu niestandardowego, możesz wyświetlić metryki dla niego. Wybierz grupę zasobów dla tematu, a następnie wybierz tematu.
+Po opublikowaniu tematu niestandardowego można wyświetlić metryki dla niego. Wybierz grupę zasobów dla tematu i wybierz temat.
 
 ![Wybieranie tematu niestandardowego](./media/monitor-event-delivery/select-custom-topic.png)
 
-Wyświetlaj metryki dla tematu niestandardowego zdarzenia.
+Wyświetl metryki dla niestandardowego tematu zdarzeń.
 
-![Wyświetl metryki zdarzenia](./media/monitor-event-delivery/custom-topic-metrics.png)
+![Wyświetl metryki zdarzeń](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="set-alerts"></a>Ustawianie alertów
+
+Możesz ustawić alerty dla tematu i metryk na poziomie domeny dla tematów niestandardowych i domen zdarzeń. W bloku przegląd dla programu wybierz pozycję **alerty** z menu po lewej stronie, w którym mają być wyświetlane reguły alertów, a następnie zarządzaj nimi. [Dowiedz się więcej o alertach Azure Monitor](../azure-monitor/platform/alerts-overview.md)
+
+![Wyświetl metryki zdarzeń](./media/monitor-event-delivery/select-alerts.png)
+
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje o dostarczanie zdarzeń i ponownych prób [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).

@@ -3,17 +3,13 @@ title: Samouczek — konfigurowanie zestawów skalowania maszyn wirtualnych na p
 description: Dowiedz się, jak tworzyć i konfigurować zestawy skalowania maszyn wirtualnych na platformie Azure przy użyciu programu rozwiązania ansible
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1d9b8cd207596aefa01af852627f11cb9b4ce5dc
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241727"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156553"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Samouczek: konfigurowanie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania ansible
 
@@ -149,7 +145,7 @@ Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 
 * W sekcji `vars` Zastąp symbol zastępczy `{{ admin_password }}` własnym hasłem.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-create.yml
@@ -193,7 +189,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 [Skonfigurowany zestaw skalowania](#configure-a-scale-set) ma obecnie dwa wystąpienia. Poniższe kroki służą do potwierdzenia tej wartości:
 
-1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Przejdź do skonfigurowanego zestawu skalowania.
 
@@ -247,7 +243,7 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
       azure_rm_virtualmachinescaleset: "{{ body }}"
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-scale-out.yml
@@ -293,7 +289,7 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
 
 Sprawdź wyniki pracy za pośrednictwem Azure Portal:
 
-1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Przejdź do skonfigurowanego zestawu skalowania.
 

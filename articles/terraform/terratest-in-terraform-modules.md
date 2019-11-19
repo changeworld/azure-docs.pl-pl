@@ -1,17 +1,14 @@
 ---
 title: Samouczek — testowanie modułów Terraform na platformie Azure za pomocą Terratest
 description: Dowiedz się, jak używać struktury Terratest do testowania modułów programu Terraform.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969217"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158966"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Samouczek: testowanie modułów Terraform na platformie Azure za pomocą Terratest
 

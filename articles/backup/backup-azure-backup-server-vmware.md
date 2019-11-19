@@ -1,18 +1,14 @@
 ---
 title: Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure Backup Server
 description: W tym artykule dowiesz się, jak używać Azure Backup Server do tworzenia kopii zapasowych maszyn wirtualnych VMware działających na serwerze VMware vCenter/ESXi.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: dacurwin
-ms.openlocfilehash: df41907ee10b54ab3bfaeb548e085617f7d79084
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903231"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173355"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure Backup Server
 
@@ -132,26 +128,26 @@ Azure Backup Server musi mieć konto użytkownika z uprawnieniami dostępu do ho
 
 ### <a name="role-permissions"></a>Uprawnienia roli
 
-**6.5/6.0** | **5,5**
+**6.5/6.0** | **5.5**
 --- | ---
 Magazyn danych. AllocateSpace | Magazyn danych. AllocateSpace
-Global. ManageCustomFields | Global. ManageCustomFields
-Global. SetCustomField |
+Global.ManageCustomFields | Global.ManageCustomFields
+Global.SetCustomField |
 Host. local. CreateVM | Network. Assign
 Network. Assign |
 Resource. AssignVMToPool |
-VirtualMachine. config. AddNewDisk  | VirtualMachine. config. AddNewDisk
-VirtualMachine. config. AdvancedConfig| VirtualMachine. config. AdvancedConfig
-VirtualMachine. config. śledzenia zmian| VirtualMachine. config. śledzenia zmian
-VirtualMachine. config. HostUSBDevice |
-VirtualMachine. config. QueryUnownedFiles |
+VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
+VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
+VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
+VirtualMachine.Config.HostUSBDevice |
+VirtualMachine.Config.QueryUnownedFiles |
 VirtualMachine. config. SwapPlacement| VirtualMachine. config. SwapPlacement
-VirtualMachine. współdziała. wyłączenie| VirtualMachine. współdziała. wyłączenie
+VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
 VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
-VirtualMachine. Provisioning. DiskRandomAccess |
-VirtualMachine. Provisioning. DiskRandomRead | VirtualMachine. Provisioning. DiskRandomRead
-VirtualMachine. State. issnapshot | VirtualMachine. State. issnapshot
-VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
+VirtualMachine.Provisioning.DiskRandomAccess |
+VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
+VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
+VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 ## <a name="create-a-vmware-account"></a>Utwórz konto VMware
 

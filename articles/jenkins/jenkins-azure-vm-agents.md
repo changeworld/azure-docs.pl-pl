@@ -1,25 +1,21 @@
 ---
 title: Skalowanie wdrożeń serwera Jenkins przy użyciu agentów maszyn wirtualnych platformy Azure
 description: Dodaj dodatkową pojemność do potoków narzędzia Jenkins przy użyciu maszyn wirtualnych platformy Azure za pomocą wtyczki agenta maszyny wirtualnej platformy Azure usługi Jenkins.
-ms.service: jenkins
 keywords: jenkins, azure, devops, maszyna wirtualna, agenci
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641357"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158531"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalowanie wdrożeń serwera Jenkins w celu spełnienia wymagań przy użyciu agentów maszyn wirtualnych platformy Azure
 
 W tym samouczku pokazano, jak używać [wtyczki agentów maszyn wirtualnych platformy Azure](https://plugins.jenkins.io/azure-vm-agents) narzędzia Jenkins w celu dodania pojemności na żądanie na przykładzie maszyn wirtualnych z systemem Linux działających na platformie Azure.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku wykonasz następujące czynności:
 
 > [!div class="checklist"]
 > * Instalowanie wtyczki agentów maszyn wirtualnych platformy Azure
@@ -54,7 +50,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
     a. Wybierz pozycję **Add** (Dodaj) obok sekcji **Azure Credentials** (Poświadczenia platformy Azure) i wybierz pozycję **Jenkins**.   
     b. W oknie dialogowym **Add Credentials** (Dodawanie poświadczeń) wybierz pozycję **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure) z listy rozwijanej **Kind** (Rodzaj).   
-    c. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub usługi [Cloud Shell](/azure/cloud-shell/overview).
+    d. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub usługi [Cloud Shell](/azure/cloud-shell/overview).
     
     ```azurecli-interactive
     az ad sp create-for-rbac --name jenkins_sp --password secure_password
@@ -144,7 +140,7 @@ Wybierz pozycję **Verify Template** (Sprawdź szablon), aby sprawdzić konfigur
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Ciągła integracja/ciągłe wdrażanie w usłudze Azure App Service](java-deploy-webapp-tutorial.md)

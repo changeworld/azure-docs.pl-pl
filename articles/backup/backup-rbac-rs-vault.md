@@ -1,19 +1,15 @@
 ---
-title: Zarządzanie kopiami zapasowymi przy użyciu Access Control opartej na rolach platformy Azure
+title: Zarządzanie kopiami zapasowymi przy użyciu Access Control opartej na rolach
 description: Access Control oparte na rolach umożliwiają zarządzanie dostępem do operacji zarządzania kopiami zapasowymi w magazynie Recovery Services.
 ms.reviewer: utraghuv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8ba28829d3ee18b441227e537cb0a7ca97fb7638
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: afb8067f2547e3a26a505bb5ec8063dd340e8500
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074053"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172188"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Zarządzanie Azure Backup punktów odzyskiwania przy użyciu Access Control opartych na rolach
 
@@ -85,5 +81,5 @@ W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowi
 * Dowiedz się, jak zarządzać dostępem przy użyciu:
   * [Program PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Interfejs wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)
-  * [REST API](../role-based-access-control/role-assignments-rest.md)
+  * [Interfejs API REST](../role-based-access-control/role-assignments-rest.md)
 * [Rozwiązywanie problemów Access Control opartych na rolach](../role-based-access-control/troubleshooting.md): Uzyskaj sugestie dotyczące rozwiązywania typowych problemów.

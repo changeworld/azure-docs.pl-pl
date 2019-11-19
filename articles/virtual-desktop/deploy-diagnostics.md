@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332834"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167433"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -106,13 +106,13 @@ Poniżej przedstawiono sposób ręcznego konfigurowania zalecanych liczników wy
 1. Otwórz przeglądarkę internetową i zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta administracyjnego.
 2. Następnie przejdź do **obszaru roboczego log Analytics** , aby przejrzeć skonfigurowane liczniki wydajności systemu Windows.
 3. W sekcji **Ustawienia** wybierz pozycję **Ustawienia zaawansowane**.
-4. Następnie przejdź do **danych**liczników wydajności  > **systemu Windows** i Dodaj następujące liczniki:
+4. Następnie przejdź do **danych** > **liczników wydajności systemu Windows** i Dodaj następujące liczniki:
 
-    -   Dysk logiczny (\*) \%Free miejsce
-    -   Dysk logiczny (C:) \\Avg. Długość kolejki dysku
-    -   Pamięć (\*) @no__t — 1Available MB
-    -   Informacje o procesorze (\*) @no__t — czas 1Processor
-    -   Opóźnienie danych wejściowych użytkownika na sesję (\*) opóźnienie @no__t 1Max
+    -   Dysk logiczny (\*)\\wolne miejsce (%)
+    -   Dysk logiczny (C:)\\średnia długość kolejki dysku
+    -   Pamięć (\*)\\dostępna pamięć (MB)
+    -   Informacje o procesorze (\*)\\czas procesora
+    -   Opóźnienie danych wejściowych użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe
 
 Dowiedz się więcej o licznikach wydajności w [źródłach danych wydajności systemu Windows i Linux w Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -139,14 +139,14 @@ Aby upewnić się, że obszar roboczy Log Analytics ma wstępnie skonfigurowane 
 
 1. W [Azure Portal](https://portal.azure.com/)przejdź do **obszaru log Analytics obszary robocze** , aby przejrzeć skonfigurowane liczniki wydajności systemu Windows.
 2. W obszarze **Ustawienia**wybierz pozycję **Ustawienia zaawansowane**.
-3. Następnie przejdź do **danych** > **liczników wydajności systemu Windows**.
+3. Następnie przejdź do pozycji **dane** > **liczniki wydajności systemu Windows**.
 4. Upewnij się, że następujące liczniki są wstępnie skonfigurowane:
 
-   - Dysk logiczny (\*) \%Free Space: Wyświetla ilość wolnego miejsca na dysku w postaci wartości procentowej.
-   - Dysk logiczny (C:) \\Avg. Długość kolejki dysku: długość żądania transferu dysku dla dysku C. Wartość nie może przekroczyć 2 przez dłuższy czas.
-   - Pamięć (\*) \\Available MB: dostępna pamięć dla systemu (w megabajtach).
-   - Informacje o procesorze (\*) \\Processor: wyrażony w procentach czas, przez który procesor poświęca na wykonywanie bezczynnego wątku.
-   - Opóźnienie danych wejściowych użytkownika na sesję (\*) opóźnienie @no__t 1Max
+   - Dysk logiczny (\*)\\% wolnego miejsca: Wyświetla ilość wolnego miejsca na dysku w postaci wartości procentowej.
+   - Dysk logiczny (C:)\\średnia długość kolejki dysku: długość żądania transferu dysku dla dysku C. Wartość nie może przekroczyć 2 przez dłuższy czas.
+   - Pamięć (\*)\\dostępna pamięć (MB): ilość dostępnej pamięci dla systemu w megabajtach.
+   - Informacje o procesorze (\*)\\czas procesora: wyrażony w procentach czas, przez który procesor zużywa nieczynny wątek.
+   - Opóźnienie danych wejściowych użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Nawiązywanie połączenia z maszynami wirtualnymi w obszarze roboczym Log Analytics
 
@@ -189,7 +189,7 @@ Aby ustawić identyfikator URI przekierowania:
 
    ![Strona URI przekierowania](media/redirect-uri-page.png)
 
-8. Teraz przejdź do zasobów platformy Azure, wybierz zasób App Services platformy Azure o nazwie podanej w szablonie i przejdź do adresu URL skojarzonego z nim. (Na przykład jeśli nazwa aplikacji użyta w szablonie została `contosoapp45`, wówczas skojarzony adres URL to <https://contosoapp45.azurewebsites.net>).
+8. Teraz przejdź do zasobów platformy Azure, wybierz zasób App Services platformy Azure o nazwie podanej w szablonie i przejdź do adresu URL skojarzonego z nim. (Na przykład jeśli nazwa aplikacji użyta w szablonie została `contosoapp45`, skojarzony adres URL jest <https://contosoapp45.azurewebsites.net>).
 9. Zaloguj się przy użyciu odpowiedniego konta użytkownika Azure Active Directory.
 10.   Wybierz pozycję **Zaakceptuj**.
 
@@ -234,25 +234,25 @@ Możesz również korzystać z użytkowników na hoście sesji:
 
 ### <a name="windows-performance-counter-thresholds"></a>Progi licznika wydajności systemu Windows
 
-- Dysk logiczny (\*) \|% wolnego miejsca:
+- Dysk logiczny (\*)\\wolne miejsce (%):
 
     - Przedstawia wartość procentową całkowitego użytecznego miejsca na dysku logicznym, który jest bezpłatny.
     - Próg: mniej niż 20% jest oznaczone jako w złej kondycji.
 
-- Dysk logiczny (C:) \\Avg. Długość kolejki dysku:
+- Dysk logiczny (C:)\\średnia długość kolejki dysku:
 
     - Reprezentuje warunki systemu magazynu.
     - Próg: wartość wyższa niż 5 jest oznaczona jako zła.
 
-- Pamięć (\*) \\Available MB:
+- Pamięć (\*)\\dostępna pamięć (MB):
 
     - Dostępna pamięć dla systemu.
     - Próg: mniej niż 500 megabajtów oznaczono jako zła kondycja.
 
-- Informacje o procesorze (\*) \\Processor:
+- Informacje o procesorze (\*)\\czas procesora:
 
     - Próg: wartość wyższa niż 80% jest oznaczona jako zła.
 
-- [Opóźnienie danych wejściowych użytkownika na sesję (\* @no__t) opóźnienie operacji wejścia](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)/wyjścia 2max:
+- [Opóźnienie danych wejściowych użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Próg: większe niż 2000 MS jest oznaczone jako złej kondycji.

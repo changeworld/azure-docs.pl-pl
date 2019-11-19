@@ -1,45 +1,41 @@
 ---
-title: Użyj InSpec zgodności automatyzacji infrastruktury platformy Azure
-description: Dowiedz się, jak używać InSpec do wykrywania problemów z wdrożeń platformy Azure
-keywords: Azure, programu chef, metodyki devops, maszyny wirtualne, przegląd, automatyzacja, inspec
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Używanie funkcji INSPEC do automatyzacji zgodności infrastruktury platformy Azure
+description: Dowiedz się, jak używać metody INSPEC do wykrywania problemów z wdrożeniami platformy Azure
+keywords: Azure, Chef, DevOps, Virtual Machines, przegląd, Automatyzacja, niespecyfikacja
 ms.date: 03/19/2019
 ms.topic: article
-ms.openlocfilehash: bdfa30b48c79a8910d503bb9e54a42c30e5adba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2531277eb1aa6048c93240031652e09582409e56
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629802"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158225"
 ---
-# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Użyj InSpec zgodności automatyzacji infrastruktury platformy Azure
+# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Używanie funkcji INSPEC do automatyzacji zgodności infrastruktury platformy Azure
 
-[InSpec](https://www.chef.io/inspec/) jest związane z programem Chef typu open-source języka opisu reguły zabezpieczeń i zgodności, które mogą być współużytkowane między programistów, operacji i inżynierowie zabezpieczeń. InSpec działa przez porównanie rzeczywisty stan infrastruktury za pomocą żądanego stanu, który można wyrazić w łatwych do zrozumienia i łatwe w zapisie InSpec kodu. InSpec wykrywa naruszeń i wyświetla wyniki w postaci raportu, ale umożliwia kontrolę korygowania.
+[Inspecd](https://www.chef.io/inspec/) to Chef język "open source" umożliwiający opisywanie reguł zgodności & zabezpieczeń, które mogą być współużytkowane przez inżynierów oprogramowania, operacje i inżynierów ds. zabezpieczeń. Niespecyfikacja działa przez porównanie rzeczywistego stanu infrastruktury z żądanym stanem, który można łatwo odczytać i łatwo napisać kod specyfikacji. Specyfikacja INSPEC wykrywa naruszenia i wyświetla wyniki w postaci raportu, ale wprowadza kontrolę nad korygowaniem.
 
-InSpec służy do sprawdzania stanu zasobów i grup zasobów w ramach subskrypcji, w tym maszyn wirtualnych, konfiguracje sieci, ustawienia usługi Azure Active Directory i inne.
+Funkcja INSPEC służy do sprawdzania stanu zasobów i grup zasobów w ramach subskrypcji, w tym maszyn wirtualnych, konfiguracji sieci, Azure Active Directory ustawień i innych elementów.
 
-W tym artykule opisano zalety używania InSpec, aby ułatwić zabezpieczeń i zgodności na platformie Azure.
+W tym artykule opisano zalety korzystania z funkcji INSPEC w celu łatwiejszego zapewniania bezpieczeństwa i zgodności z platformą Azure.
 
-## <a name="make-compliance-easy-to-understand-and-assess"></a>Wprowadź łatwy do zrozumienia i ocena zgodności
+## <a name="make-compliance-easy-to-understand-and-assess"></a>Ułatwianie zrozumienia i oceny zgodności
 
-Dokumentacja zgodności w języku arkuszy kalkulacyjnych lub dokumentów programu Word pozostawia wymagania otwarte do interpretacji. Za pomocą InSpec przekształcasz wymagań kod numerów wersji, pliku wykonywalnego, czytelny dla człowieka. Kod zastępuje rozmowy dotyczące powinien być oceniany na rzecz testów zawierają wymiernych z zamiarem Wyczyść.
+Dokumentacja dotycząca zgodności zapisywana w arkuszach kalkulacyjnych lub dokumentach programu Word pozostawia wymagania otwarte do interpretacji. W przypadku niespecyfikacji można przekształcić wymagania do wersji, wykonywalnej, czytelnej dla człowieka kodu. Kod zastępuje konwersacje na temat tego, co powinno się ocenić na rzecz materialnych testów z wyraźnym zamiarem.
 
-## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>Wykrywanie problemów w całej flocie i ustalić ich priorytety ich korygowania
+## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>Wykrywanie problemów obejmujących wiele flot i określanie priorytetów ich korygowania
 
-InSpec użytkownika bez wykorzystania agentów wykrywa tryb umożliwiają szybko ocenić - skali — poziom usługi ekspozycji. Wbudowanych metadanych do oceniania wpływ/ważność pomaga ustalić, jakie obszary, aby skoncentrować się na dotyczącym korygowania. Można również pisać reguły szybko w odpowiedzi na nowych luk w zabezpieczeniach lub regulacji prawnych i wprowadzane natychmiast.
+Tryb wykrywania bezagentowego INSPEC umożliwia szybką ocenę w skali — poziom ekspozycji. Wbudowane metadane dla oceny wpływu/ważności pomagają określić, które obszary mają być skoncentrowane na korygowaniu. Możesz również szybko pisać reguły w odpowiedzi na nowe luki lub regulacje i natychmiast je wycofać.
 
-## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Przeprowadź inspekcję maszyn wirtualnych platformy Azure przy użyciu konfiguracji gościa zasad
+## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Inspekcja maszyn wirtualnych platformy Azure z konfiguracją gościa zasad
 
-Platforma Azure obsługuje bezpośrednio użytkowania Chef InSpec definicje Przeprowadź inspekcję maszyn wirtualnych platformy Azure za pośrednictwem [konfiguracji gościa zasad platformy Azure](/azure/governance/policy/concepts/guest-configuration). Konfiguracja gościa daje w wyniku maszyny wirtualnej z systemem Linux do podanej definicji Chef InSpec i raporty zgodności powrotem przy użyciu usługi Azure Policy. Wyniki tych inspekcji są również zgłaszane przez dzienników usługi Azure Monitor Włączanie alertów i innych scenariuszy usługi automation.
+Platforma Azure bezpośrednio obsługuje używanie definicji specyfikacji Chef do inspekcji maszyn wirtualnych platformy Azure za pomocą [Azure Policy konfiguracji gościa](/azure/governance/policy/concepts/guest-configuration). Konfiguracja gościa szacuje maszynę wirtualną z systemem Linux w podanej definicji specyfikacji Chef i zgłasza zgodność z powrotem za pomocą Azure Policy. Wyniki tych inspekcji są również raportowane za pomocą dzienników Azure Monitor; Włączanie alertów i innych scenariuszy automatyzacji.
 
-## <a name="satisfy-audits"></a>Spełniają inspekcji
+## <a name="satisfy-audits"></a>Zaspokoj inspekcje
 
-Dzięki InSpec możesz reagować z inspekcji pytania w dowolnym momencie — nie tylko na poziomie wcześniej określonych przedziałach czasowych, np. kwartalnych lub co rok. Według działających nieprzerwanie InSpec testów, możesz wprowadzić przechodzić audyt wiedząc swoją ocenę stanu zgodności dokładne i historii, zamiast oczekiwano tak, przez ustalenia audytora.
+W przypadku określenia niespecyfikacji można w dowolnym momencie odpowiedzieć na pytania dotyczące inspekcji — nie tylko w ustalonych odstępach czasu, takich jak co kwartał lub co rok. Nieustannie uruchamiając testy w firmie, należy wprowadzić cykl inspekcji wiedzący o dokładnym stan zgodności i historii, a nie jest to pożądane przez ustalenia audytorów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Spróbuj InSpec w usłudze Azure Cloud Shell](https://shell.azure.com)
+> [Wypróbuj niespecyfikację w Azure Cloud Shell](https://shell.azure.com)

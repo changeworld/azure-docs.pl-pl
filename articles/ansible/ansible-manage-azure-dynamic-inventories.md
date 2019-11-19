@@ -3,17 +3,13 @@ title: Samouczek — Konfigurowanie dynamicznych spisów zasobów platformy Azur
 description: Dowiedz się, jak zarządzać spisami dynamicznymi na platformie Azure przy użyciu rozwiązania Ansible
 keywords: ansible, azure, devops, bash, cloudshell, dynamic inventory
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 6d520518e7180f69ee7293523dd40c8158dcfb99
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990671"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156179"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Samouczek: Konfigurowanie dynamicznych spisów zasobów platformy Azure przy użyciu rozwiązania ansible
 
@@ -36,7 +32,7 @@ Za pomocą rozwiązania Ansible można ściągać informacje o spisie z różnyc
 
 ## <a name="create-the-test-vms"></a>Tworzenie testowych maszyn wirtualnych
 
-1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otwórz usługę [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -91,7 +87,7 @@ Po zdefiniowaniu i oznaczeniu tagami maszyn wirtualnych nadszedł czas na wygene
 
 ### <a name="using-ansible-version--28"></a>Używanie rozwiązania ansible w wersji < 2,8
 
-Rozwiązania ansible udostępnia skrypt języka Python o nazwie [azure_rm. PR](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) , który generuje dynamiczny spis zasobów platformy Azure. Poniższe kroki pokazują, jak przy użyciu skryptu `azure_rm.py` nawiązać połączenie z dwoma utworzonymi testowymi maszynami wirtualnymi platformy Azure:
+Rozwiązania ansible udostępnia skrypt w języku Python o nazwie [azure_rm. PR](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) , który generuje dynamiczny spis zasobów platformy Azure. Poniższe kroki pokazują, jak przy użyciu skryptu `azure_rm.py` nawiązać połączenie z dwoma utworzonymi testowymi maszynami wirtualnymi platformy Azure:
 
 1. Przy użyciu polecenia GNU `wget` pobierz skrypt `azure_rm.py`:
 
@@ -243,7 +239,7 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
 
 1. Zapisz plik i Zamknij Edytor.
 
-1. Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+1. Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
    - Rozwiązania ansible < 2,8:
 

@@ -1,21 +1,17 @@
 ---
-title: Zarządzaj kopiami zapasowymi & monitorowanie Microsoft Azure Recovery Services
-description: Dowiedz się, jak zarządzać kopiami zapasowymi agentów Microsoft Azure Recovery Services i monitorować je za pomocą usługi Azure Backup.
+title: Zarządzanie kopiami zapasowymi agenta MARS i ich monitorowanie
+description: Informacje o sposobach zarządzania kopiami zapasowymi agenta Microsoft Azure Recovery Services (MARS) i ich monitorowania za pomocą usługi Azure Backup.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074995"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173081"
 ---
-# <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Zarządzanie kopiami zapasowymi Microsoft Azure Recovery Services agenta za pomocą usługi Azure Backup
+# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Zarządzanie kopiami zapasowymi agentów Microsoft Azure Recovery Services (MARS) za pomocą usługi Azure Backup
 
 W tym artykule opisano sposób zarządzania plikami i folderami, których kopię zapasową utworzono przy użyciu agenta Microsoft Azure Recovery Services.
 

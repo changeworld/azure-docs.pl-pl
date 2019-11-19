@@ -1,18 +1,14 @@
 ---
-title: Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą Azure Backup Server
-description: Ten artykuł zawiera procedury tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych przy użyciu programu Microsoft Azure Backup Server.
-author: dcurwin
-manager: carmonm
-ms.service: backup
+title: Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą serwera usługi MAB
+description: Ten artykuł zawiera procedury tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: f15606c83c221e4591a2a1f6a71fc7141bdf3daf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3bca1b46a867c2967dfcebe4bc8477d5f9c9447d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074962"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173533"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą Azure Backup Server
 
@@ -64,7 +60,7 @@ SERWERA usługi MAB wykonuje kopię zapasową za pomocą usługi VSS w następuj
 
 Poniżej przedstawiono wymagania wstępne dotyczące tworzenia kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą serwera usługi MAB:
 
-|Wymagania wstępne|Szczegóły|
+|Warunek wstępny|Szczegóły|
 |------------|-------|
 |Wymagania wstępne serwera usługi MAB|— Jeśli chcesz przeprowadzić odzyskiwanie na poziomie elementu dla maszyn wirtualnych (odzyskanie plików, folderów, woluminów), musisz zainstalować rolę funkcji Hyper-V na serwerze serwera usługi MAB.  Jeśli chcesz tylko odzyskać maszynę wirtualną, a nie na poziomie elementu, rola nie jest wymagana.<br />— Można chronić maksymalnie 800 maszyn wirtualnych z 100 GB każdego na jednym serwerze serwera usługi MAB i zezwalać na wiele serwerów serwera usługi MAB obsługujących większe klastry.<br />-SERWERA usługi MAB wyklucza plik stronicowania z przyrostowych kopii zapasowych w celu zwiększenia wydajności kopii zapasowej maszyny wirtualnej.<br />-SERWERA usługi MAB może utworzyć kopię zapasową serwera lub klastra funkcji Hyper-V w tej samej domenie co serwer serwera usługi MAB lub w domenie podrzędnej lub zaufanej. Jeśli chcesz utworzyć kopię zapasową funkcji Hyper-V w grupie roboczej lub niezaufanej domenie, musisz skonfigurować uwierzytelnianie. W przypadku pojedynczego serwera funkcji Hyper-V można użyć uwierzytelniania NTLM lub certyfikatu. W przypadku klastra można używać tylko uwierzytelniania certyfikatów.<br />— Używanie kopii zapasowej na poziomie hosta do wykonywania kopii zapasowych danych maszyny wirtualnej na dyskach przekazujących nie jest obsługiwane. W tym scenariuszu zalecamy użycie kopii zapasowej na poziomie hosta do wykonywania kopii zapasowych plików VHD i kopii zapasowej na poziomie gościa w celu utworzenia kopii zapasowej innych danych, które nie są widoczne na hoście.<br />   — Można utworzyć kopię zapasową maszyn wirtualnych przechowywanych na deduplikowanych woluminach.|
 |Wymagania wstępne dotyczące maszyn wirtualnych funkcji Hyper-V|-Wersja składników integracji uruchamiana na maszynie wirtualnej powinna być taka sama jak wersja hosta funkcji Hyper-V. <br />-Dla każdej kopii zapasowej maszyny wirtualnej będzie wymagane wolne miejsce na woluminie obsługującym pliki wirtualnego dysku twardego w celu umożliwienia funkcji Hyper-V wystarczającej ilości miejsca na dyski różnicowe (AVHD) podczas tworzenia kopii zapasowej. Przestrzeń musi być co najmniej równa **rozmiarowi początkowego rozmiaru dysku,\*współczynnik zmian\*czasu okna kopii zapasowej** . Jeśli uruchamiasz wiele kopii zapasowych w klastrze, potrzebujesz wystarczającej pojemności magazynu, aby obsłużyć magazynowania dysków AVHD dla każdej maszyny wirtualnej korzystającej z tego obliczenia.<br />— Aby utworzyć kopię zapasową maszyn wirtualnych znajdujących się na serwerach hosta funkcji Hyper-V z systemem Windows Server 2012 R2, maszyna wirtualna powinna mieć określony kontroler SCSI, nawet jeśli nie jest połączony z żadnymi elementami. (W usłudze Kopia zapasowa online systemu Windows Server 2012 R2, host funkcji Hyper-V instaluje nowy wirtualny dysk twardy w maszynie wirtualnej, a następnie Odinstalowuje go później. Może to obsługiwać tylko kontroler SCSI i dlatego jest wymagany do tworzenia kopii zapasowych online maszyny wirtualnej.  Bez tego ustawienia zostanie wygenerowane zdarzenie o IDENTYFIKATORze 10103 podczas próby utworzenia kopii zapasowej maszyny wirtualnej.|

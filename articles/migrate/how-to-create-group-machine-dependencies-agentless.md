@@ -4,27 +4,25 @@ description: Opisuje sposób tworzenia grup przy użyciu zależności maszyn w s
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720256"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158437"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności bez agenta na potrzeby oceny
-
-> [!NOTE]
-> Jeśli ta funkcja nie jest jeszcze widoczna w portalu Azure Migrate, zaczekaj. Zostanie ona wyświetlona w ciągu następnego tygodnia lub.
 
 W tym artykule opisano sposób konfigurowania mapowania zależności bez agenta w Azure Migrate: Ocena serwera. Ta funkcja jest obecnie dostępna w wersji zapoznawczej dla maszyn VMware odnalezionych za pomocą urządzenia Azure Migrate. 
 
 > [!IMPORTANT]
 > Wizualizacja zależności bez agenta jest obecnie dostępna w wersji zapoznawczej dla maszyn wirtualnych VMware platformy Azure odnalezionych za pomocą urządzenia Azure Migrate.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="about-dependency-mapping"></a>Mapowanie zależności — informacje 
+## <a name="about-dependency-mapping"></a>Mapowanie zależności — informacje
 
 Mapowanie zależności ułatwia wizualizację zależności między maszynami, które mają zostać poddane ocenie i przeprowadzeniem migracji. Mapowanie zależności zazwyczaj jest stosowane, gdy chcesz ocenić komputery z wyższym poziomem zaufania.
 
@@ -38,7 +36,7 @@ Wizualizacja zależności bez agenta nie wymaga instalowania agentów na kompute
 
 - Po rozpoczęciu odnajdywania zależności urządzenie zbiera dane z maszyn z interwałem sondowania równym pięć minut.
 - Zbierane są następujące dane:
-    - Połączenia TCP
+    - Połączenia protokołu TCP
     - Nazwy procesów, które mają aktywne połączenia
     - Nazwy zainstalowanych aplikacji, które uruchamiają powyższe procesy
     - Nie. wykrytych połączeń podczas każdego interwału sondowania
@@ -46,7 +44,7 @@ Wizualizacja zależności bez agenta nie wymaga instalowania agentów na kompute
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
 - Wizualizacja zależności bez agenta jest obecnie dostępna tylko dla maszyn wirtualnych VMware.
-- Teraz nie można dodać ani usunąć serwera z grupy w widoku Analiza zależności. 
+- Teraz nie można dodać ani usunąć serwera z grupy w widoku Analiza zależności.
 - Mapa zależności grupy serwerów jest obecnie niedostępna.
 - Obecnie nie można pobrać danych zależności w formacie tabelarycznym.
 
@@ -60,12 +58,12 @@ Wizualizacja zależności bez agenta nie wymaga instalowania agentów na kompute
 
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
- 
+
 Obsługiwane systemy operacyjne dla wizualizacji zależności bez agenta są następujące.
 
 **Typ** | **Obsługiwane systemy operacyjne**
---- | --- 
-**Windows** | Microsoft Windows Server 2016 <br/> System Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-bit) 
+--- | ---
+**Windows** | Microsoft Windows Server 2016 <br/> System Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-bit)
 **Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
@@ -74,7 +72,7 @@ Obsługiwane systemy operacyjne dla wizualizacji zależności bez agenta są nas
 Skonfiguruj konto użytkownika, które ma wymagane uprawnienia, aby Ocena serwera mogła uzyskać dostęp do maszyny wirtualnej w celu odnajdywania. Możesz określić jedno konto użytkownika.
 
 - **Wymagane uprawnienie na maszynach wirtualnych z systemem Windows**: konto użytkownika wymaga dostępu "Gość".
-- **Wymagane uprawnienie na maszynach wirtualnych z systemem Linux**: wymagane jest uprawnienie główne na tym koncie. Alternatywnie konto użytkownika wymaga tych dwóch funkcji w plikach/bin/netstat i/bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE.
+- **Wymagane uprawnienie na maszynach wirtualnych z systemem Linux**: wymagane jest uprawnienie główne na tym koncie. Alternatywnie konto użytkownika wymaga tych dwóch możliwości w plikach/bin/netstat i/bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Dodaj konto użytkownika do urządzenia
 
@@ -84,7 +82,7 @@ Dodaj konto w następujący sposób:
 
 1. Otwórz aplikację zarządzanie urządzeniami. Przejdź do panelu **Podaj szczegóły programu vCenter** .
 2. W sekcji **odnajdywanie aplikacji i zależności dla maszyn wirtualnych** kliknij pozycję **Dodaj poświadczenia** .
-3. Wybierz **system operacyjny**. 
+3. Wybierz **system operacyjny**.
 4. Podaj przyjazną nazwę dla konta.
 5. Podaj **nazwę użytkownika** i **hasło**
 6. Kliknij pozycję **Zapisz**.
@@ -113,8 +111,8 @@ Po rozpoczęciu odnajdywania zależności będzie można wizualizować zależno�
 2. Wyszukaj maszynę, dla której chcesz wyświetlić mapę zależności.
 3. Kliknij pozycję **Wyświetl zależności** w kolumnie **zależności** .
 4. Zmień okres, dla którego ma zostać wyświetlona mapa, przy użyciu listy rozwijanej czas **trwania** .
-5. Rozwiń grupę **klientów** , aby wyświetlić listę maszyn, które mają zależność na wybranym komputerze. 
-6. Rozwiń grupę **portów** , aby wyświetlić listę maszyn z zależnością od wybranej maszyny. 
+5. Rozwiń grupę **klientów** , aby wyświetlić listę maszyn, które mają zależność na wybranym komputerze.
+6. Rozwiń grupę **portów** , aby wyświetlić listę maszyn z zależnością od wybranej maszyny.
 7. Aby przejść do widoku mapy dowolnych maszyn zależnych, kliknij nazwę komputera, a następnie kliknij pozycję **Załaduj mapę serwera**
 
     ![Rozwiń węzeł Grupa portów serwera i Załaduj mapę serwera](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

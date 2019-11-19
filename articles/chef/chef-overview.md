@@ -1,47 +1,43 @@
 ---
-title: Przy użyciu programu Chef z platformą Azure
-description: Wprowadzenie do konfigurowania i testowania infrastruktury platformy Azure przy użyciu programu Chef
-ms.service: virtual-machines-linux
-keywords: Azure, programu chef, metodyki devops, maszyny wirtualne, przegląd, automatyzacja
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Korzystanie z programu Chef z platformą Azure
+description: Wprowadzenie do konfigurowania i testowania infrastruktury platformy Azure przy użyciu usługi Chef
+keywords: Azure, Chef, DevOps, Virtual Machines, omówienie, Automatyzowanie
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ad8b79b42c9d8d7942f391223c052f63579b11b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656578"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158006"
 ---
-# <a name="using-chef-with-azure"></a>Przy użyciu programu Chef z platformą Azure
-[Program chef](https://www.chef.io) platforma zaawansowanej automatyzacji, która przekształca infrastruktury maszyny wirtualnej na platformie Azure w kodzie. Program chef automatyzuje jak infrastruktura jest skonfigurowany, wdrażane i zarządzane w sieci, niezależnie od jego rozmiaru.
+# <a name="using-chef-with-azure"></a>Korzystanie z programu Chef z platformą Azure
+[Chef](https://www.chef.io) to zaawansowana platforma automatyzacji, która przekształca infrastrukturę maszyny wirtualnej na platformę Azure w kod. Chef automatyzuje, jak infrastruktura jest konfigurowana, wdrażana i zarządzana w sieci, niezależnie od jej rozmiaru.
 
-W tym artykule opisano zalety Zarządzaj infrastrukturą platformy Azure przy użyciu programu Chef.
+W tym artykule opisano zalety korzystania z programu Chef do zarządzania infrastrukturą platformy Azure.
 
-## <a name="chef-extension-on-azure"></a>Rozszerzenie programu chef na platformie Azure
-Aprowizowanie maszyny wirtualnej za pomocą klienta programu Chef, uruchomione jako usługę w tle za pomocą [rozszerzenia Chef](https://docs.microsoft.com/azure/chef/chef-extension-portal) w witrynie Azure Portal. Po zainicjowaniu obsługi administracyjnej, te maszyny wirtualne są gotowe do zarządzane przez serwer programu Chef.
+## <a name="chef-extension-on-azure"></a>Rozszerzenie Chef na platformie Azure
+Zainicjuj obsługę administracyjną maszyny wirtualnej z Chef klientem działającym jako usługa w tle z [rozszerzeniem Chef](https://docs.microsoft.com/azure/chef/chef-extension-portal) w witrynie Azure Portal. Po zainicjowaniu obsługi te maszyny wirtualne są gotowe do zarządzania przez serwer Chef.
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
-Stacja robocza Chef do użycia bezpośrednio w usłudze Azure Cloud Shell! Uruchom wszystkie narzędzia Chef i InSpec prawo z usługi Cloud Shell. Korzystanie z poleceń programu Chef z:
+Używaj stacji roboczej Chef bezpośrednio w Azure Cloud Shell! Uruchom wszystkie narzędzia Chef i niewłaściwe cechy dotyczące Cloud Shell. Polecenia Chef można wykorzystać z:
 
-* [chef](https://docs.chef.io/ctl_chef.html)
-* [kuchenne](https://docs.chef.io/ctl_kitchen.html)
-* [inspec](https://www.inspec.io/docs/reference/cli/)
-* [nóż](https://docs.chef.io/knife.html)
-* [cookstyle](https://docs.chef.io/cookstyle.html)
+* [Chef](https://docs.chef.io/ctl_chef.html)
+* [zlew](https://docs.chef.io/ctl_kitchen.html)
+* [dane niespecyfikacja](https://www.inspec.io/docs/reference/cli/)
+* [Nóż](https://docs.chef.io/knife.html)
+* [Cooka](https://docs.chef.io/cookstyle.html)
 * [foodcritic](https://docs.chef.io/foodcritic.html)
-* [chef-run](https://www.chef.sh/docs/chef-workstation/getting-started/)
+* [Chef — Uruchom](https://www.chef.sh/docs/chef-workstation/getting-started/)
 
-Łączenie nasze narzędzia polecenia przy użyciu innych narzędzi dostępnych w usłudze Cloud Shell, takich jak `git`, `az-cli`, i `terraform`i zapis automatyzacji infrastruktury i zgodności z przeglądarki.
+Połącz nasze narzędzia poleceń z innymi narzędziami dostępnymi w Cloud Shell, takimi jak `git`, `az-cli`i `terraform`, i zanotuj automatyzację infrastruktury i zgodności z przeglądarki.
 
-## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Automatyzacja infrastruktury, aplikacji i zgodność z platformami
-Firmy wymagają szybkość, szybkość dostępu i bezpieczeństwa, aby wziąć udział w rynku cyfrowych. Razem program Chef i Microsoft pomagają osób, zespołów, przedsiębiorstw i wykonać wszystkie czynności. Jedna platforma, Chef Automate, możesz teraz zautomatyzować i ciągłe dostarczanie infrastruktury, aplikacji i zgodności między infrastruktury firmy Microsoft.
+## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Automatyzowanie infrastruktury, aplikacji i zgodności z jedną platformą
+Firmy wymagają szybkości, szybkości i bezpieczeństwa do konkurowania w witrynie Digital Marketplace. Razem z Chef i firmą Microsoft, zespoły i przedsiębiorstwa, które spełniają wszystkie te rzeczy. Dzięki jednej platformie, Chef automatyzuje, możesz teraz zautomatyzować i stale dostarczać infrastrukturę, aplikacje i zgodność w ramach platformy Microsoft.
 
-## <a name="test-drive-chef-automate-on-azure"></a>Przetestuj Chef Automate na platformie Azure
-Obsługiwane przez program Chef, [rozwiązania Chef Automatyzacja Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) pozwala na tworzenie, wdrażanie i zarządzanie infrastruktury i aplikacji wspólnie. Jednym kliknięciem pobiera natychmiastowy dostęp do wszystkich komercyjnych funkcji rozwiązania Chef automate; Zyskaj widoczność end-to-end w całej flocie, umożliwiasz ciągłą i zarządzasz wszystkimi zmianami w ramach ujednoliconego przepływu pracy.
+## <a name="test-drive-chef-automate-on-azure"></a>Testowanie Chef na platformie Azure
+Obsługiwane przez program Chef [rozwiązanie Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) , które umożliwia tworzenie i wdrażanie infrastruktury oraz aplikacji oraz zarządzanie nimi wspólnie. Jedno kliknięcie umożliwia natychmiastowe uzyskanie dostępu do wszystkich funkcji komercyjnych dostępnych w ramach automatyzacji Chef. Uzyskaj kompleksową widoczność całej floty, Włącz ciągłą zgodność i Zarządzaj wszystkimi zmianami za pomocą ujednoliconego przepływu pracy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Utwórz maszynę wirtualną Windows na platformie Azure przy użyciu programu Chef](/azure/virtual-machines/windows/chef-automation)
+* [Tworzenie maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu Chef](/azure/virtual-machines/windows/chef-automation)

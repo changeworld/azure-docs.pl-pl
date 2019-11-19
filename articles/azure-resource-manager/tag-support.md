@@ -2,13 +2,13 @@
 title: Obsługa tagów dla zasobów
 description: Pokazuje, które typy zasobów platformy Azure obsługują Tagi. Zawiera szczegółowe informacje dotyczące wszystkich usług platformy Azure.
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: c0f36568bbbf824285cfaa3385d2225e0a989639
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/18/2019
+ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149210"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173548"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [Tagi](resource-group-using-tags.md). Kolumna z etykietą **obsługuje znaczniki** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna **tag z etykietą w raporcie koszt** wskazuje, czy ten typ zasobu przekazuje tag do raportu kosztów.
@@ -170,9 +170,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | DomainServices | Yes | Yes |
+> | DomainServices | Tak | Tak |
 > | DomainServices/oucontainer | Nie | Nie |
-> | DomainServices/ReplicaSets | Yes | Yes |
+> | DomainServices/ReplicaSets | Tak | Tak |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -212,14 +212,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | actionRules | Yes | Yes |
+> | actionRules | Tak | Tak |
 > | alerts | Nie | Nie |
 > | alertsList | Nie | Nie |
 > | alertsMetaData | Nie | Nie |
 > | alertsSummary | Nie | Nie |
 > | alertsSummaryList | Nie | Nie |
 > | Opinii | Nie | Nie |
-> | smartDetectorAlertRules | Yes | Yes |
+> | smartDetectorAlertRules | Tak | Tak |
 > | smartDetectorRuntimeEnvironments | Nie | Nie |
 > | smartGroups | Nie | Nie |
 
@@ -228,7 +228,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | serwery | Yes | Yes |
+> | serwery | Tak | Tak |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
@@ -236,7 +236,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | reportFeedback | Nie | Nie |
-> | usługa | Yes | Yes |
+> | usługa | Tak | Tak |
 > | validateServiceName | Nie | Nie |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
@@ -244,7 +244,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | configurationStores | Yes | Yes |
+> | configurationStores | Tak | Tak |
 > | configurationStores/eventGridFilters | Nie | Nie |
 
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
@@ -252,7 +252,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Spring | Yes | Yes |
+> | Spring | Tak | Tak |
 
 ## <a name="microsoftattestation"></a>Microsoft. zaświadczanie
 
@@ -285,10 +285,10 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | automationAccounts | Yes | Yes |
-> | automationAccounts/konfiguracje | Yes | Yes |
+> | automationAccounts | Tak | Tak |
+> | automationAccounts/konfiguracje | Tak | Tak |
 > | automationAccounts/zadania | Nie | Nie |
-> | automationAccounts/elementy Runbook | Yes | Yes |
+> | automationAccounts/elementy Runbook | Tak | Tak |
 > | automationAccounts/softwareUpdateConfigurations | Nie | Nie |
 > | automationAccounts/elementy webhook | Nie | Nie |
 
@@ -297,7 +297,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | configurationStores | Yes | Yes |
+> | configurationStores | Tak | Tak |
 > | configurationStores/eventGridFilters | Nie | Nie |
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
@@ -315,7 +315,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | b2cDirectories | Yes | Nie |
+> | b2cDirectories | Tak | Nie |
 > | b2ctenants | Nie | Nie |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
@@ -323,11 +323,11 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | hybridDataManagers | Yes | Yes |
-> | postgresInstances | Yes | Yes |
-> | sqlBigDataClusters | Yes | Yes |
-> | Wystąpienia sqlinstances | Yes | Yes |
-> | sqlServerRegistrations | Yes | Yes |
+> | hybridDataManagers | Tak | Tak |
+> | postgresInstances | Tak | Tak |
+> | sqlBigDataClusters | Tak | Tak |
+> | Wystąpienia sqlinstances | Tak | Tak |
+> | sqlServerRegistrations | Tak | Tak |
 > | sqlServerRegistrations/SQLServers | Nie | Nie |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
@@ -335,7 +335,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | rejestracje | Yes | Yes |
+> | rejestracje | Tak | Tak |
 > | rejestracje/customerSubscriptions | Nie | Nie |
 > | rejestracje/produkty | Nie | Nie |
 
@@ -344,7 +344,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | batchAccounts | Yes | Yes |
+> | batchAccounts | Tak | Tak |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -437,7 +437,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | mapApis | Yes | Yes |
+> | mapApis | Tak | Tak |
 > | updateCommunicationPreference | Nie | Nie |
 
 ## <a name="microsoftblockchain"></a>Microsoft. łańcucha bloków
@@ -445,9 +445,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | blockchainMembers | Yes | Yes |
-> | cordaMembers | Yes | Yes |
-> | obserwatorzy | Yes | Yes |
+> | blockchainMembers | Tak | Tak |
+> | cordaMembers | Tak | Tak |
+> | obserwatorzy | Tak | Tak |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -467,7 +467,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | botServices | Yes | Yes |
+> | botServices | Tak | Tak |
 > | botServices/kanały | Nie | Nie |
 > | botServices/połączenia | Nie | Nie |
 > | Języki | Nie | Nie |
@@ -478,7 +478,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Redis | Yes | Yes |
+> | Redis | Tak | Tak |
 > | RedisConfigDefinition | Nie | Nie |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
@@ -512,10 +512,10 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | CdnWebApplicationFirewallManagedRuleSets | Nie | Nie |
-> | CdnWebApplicationFirewallPolicies | Yes | Yes |
+> | CdnWebApplicationFirewallPolicies | Tak | Tak |
 > | edgenodes | Nie | Nie |
-> | profiles | Yes | Yes |
-> | Profile/punkty końcowe | Yes | Yes |
+> | profiles | Tak | Tak |
+> | Profile/punkty końcowe | Tak | Tak |
 > | Profile/punkty końcowe/customdomains | Nie | Nie |
 > | Profile/punkty końcowe/źródła | Nie | Nie |
 > | validateProbe | Nie | Nie |
@@ -525,7 +525,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | certificateOrders | Yes | Yes |
+> | certificateOrders | Tak | Tak |
 > | certificateOrders/certyfikaty | Nie | Nie |
 > | validateCertificateRegistrationInformation | Nie | Nie |
 
@@ -608,7 +608,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | accounts | Yes | Yes |
+> | accounts | Tak | Tak |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -623,29 +623,29 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | availabilitySets | Yes | Yes |
-> | diskEncryptionSets | Yes | Yes |
-> | dysku | Yes | Yes |
-> | znajduj | Yes | Yes |
+> | availabilitySets | Tak | Tak |
+> | diskEncryptionSets | Tak | Tak |
+> | dysku | Tak | Tak |
+> | znajduj | Tak | Tak |
 > | Galerie/aplikacje | Nie | Nie |
 > | Galerie/aplikacje/wersje | Nie | Nie |
 > | Galerie/obrazy | Nie | Nie |
 > | Galerie/obrazy/wersje | Nie | Nie |
-> | hostGroups | Yes | Yes |
-> | hostGroups/hosty | Yes | Yes |
-> | images | Yes | Yes |
-> | proximityPlacementGroups | Yes | Yes |
-> | restorePointCollections | Yes | Yes |
+> | hostGroups | Tak | Tak |
+> | hostGroups/hosty | Tak | Tak |
+> | images | Tak | Tak |
+> | proximityPlacementGroups | Tak | Tak |
+> | restorePointCollections | Tak | Tak |
 > | restorePointCollections/restorePoints | Nie | Nie |
-> | sharedVMExtensions | Yes | Yes |
+> | sharedVMExtensions | Tak | Tak |
 > | sharedVMExtensions/wersje | Nie | Nie |
-> | sharedVMImages | Yes | Yes |
+> | sharedVMImages | Tak | Tak |
 > | sharedVMImages/wersje | Nie | Nie |
-> | Migawki | Yes | Yes |
-> | virtualMachines | Yes | Yes |
-> | virtualMachines/rozszerzenia | Yes | Yes |
+> | Migawki | Tak | Tak |
+> | virtualMachines | Tak | Tak |
+> | virtualMachines/rozszerzenia | Tak | Tak |
 > | virtualMachines/metricDefinitions | Nie | Nie |
-> | virtualMachineScaleSets | Yes | Yes |
+> | virtualMachineScaleSets | Tak | Tak |
 > | virtualMachineScaleSets/rozszerzenia | Nie | Nie |
 > | virtualMachineScaleSets/networkInterfaces | Nie | Nie |
 > | virtualMachineScaleSets/publicIPAddresses | Nie | Nie |
@@ -683,7 +683,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | containerGroups | Yes | Yes |
+> | containerGroups | Tak | Tak |
 > | serviceAssociationLinks | Nie | Nie |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
@@ -691,11 +691,11 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | wołuje | Yes | Yes |
+> | wołuje | Tak | Tak |
 > | rejestry/kompilacje | Nie | Nie |
 > | rejestry/kompilacje/anulowanie | Nie | Nie |
 > | rejestry/kompilacje/getLogLink | Nie | Nie |
-> | rejestry/buildTasks | Yes | Yes |
+> | rejestry/buildTasks | Tak | Tak |
 > | registries/buildTasks/steps | Nie | Nie |
 > | registries/eventGridFilters | Nie | Nie |
 > | rejestry/generateCredentials | Nie | Nie |
@@ -705,15 +705,15 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | rejestry/queueBuild | Nie | Nie |
 > | registries/regenerateCredential | Nie | Nie |
 > | rejestry/regenerateCredentials | Nie | Nie |
-> | rejestry/replikacje | Yes | Yes |
+> | rejestry/replikacje | Tak | Tak |
 > | rejestry/uruchomienia | Nie | Nie |
 > | rejestry/uruchomienia/Anuluj | Nie | Nie |
 > | rejestry/scheduleRun | Nie | Nie |
 > | rejestry/scopeMaps | Nie | Nie |
-> | rejestry/zadania | Yes | Yes |
+> | rejestry/zadania | Tak | Tak |
 > | rejestry/tokeny | Nie | Nie |
 > | registries/updatePolicies | Nie | Nie |
-> | rejestry/elementy webhook | Yes | Yes |
+> | rejestry/elementy webhook | Tak | Tak |
 > | registries/webhooks/getCallbackConfig | Nie | Nie |
 > | rejestry/elementy webhook/polecenie ping | Nie | Nie |
 
@@ -722,16 +722,16 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | containerServices | Yes | Yes |
-> | managedClusters | Yes | Yes |
-> | openShiftManagedClusters | Yes | Yes |
+> | containerServices | Tak | Tak |
+> | managedClusters | Tak | Tak |
+> | openShiftManagedClusters | Tak | Tak |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | accounts | Yes | Yes |
+> | accounts | Tak | Tak |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -742,7 +742,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | billingAccounts | Nie | Nie |
 > | Budżety | Nie | Nie |
 > | CloudConnectors | Nie | Nie |
-> | Łączniki | Yes | Yes |
+> | Łączniki | Tak | Tak |
 > | działów | Nie | Nie |
 > | Wymiary | Nie | Nie |
 > | enrollmentAccounts | Nie | Nie |
@@ -779,28 +779,28 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | związku | Nie | Nie |
-> | resourceProviders | Yes | Yes |
+> | resourceProviders | Tak | Tak |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | zadania | Yes | Yes |
+> | zadania | Tak | Tak |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | DataBoxEdgeDevices | Yes | Yes |
+> | DataBoxEdgeDevices | Tak | Tak |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | obszarów roboczych | Yes | Nie |
+> | obszarów roboczych | Tak | Nie |
 > | workspaces/virtualNetworkPeerings | Nie | Nie |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -808,8 +808,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | wykazy | Yes | Yes |
-> | wykazy | Yes | Yes |
+> | wykazy | Tak | Tak |
+> | wykazy | Tak | Tak |
 > | wykazy danych/źródła danych | Nie | Nie |
 > | wykazy danych/źródła danych/skany | Nie | Nie |
 > | wykazy danych/źródła danych/skany/zestawy danych | Nie | Nie |
@@ -820,11 +820,11 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Fabryki datafactors | Yes | Nie |
+> | Fabryki datafactors | Tak | Nie |
 > | datafactors/diagnosticSettings | Nie | Nie |
 > | datafactors/metricDefinitions | Nie | Nie |
 > | dataFactorySchema | Nie | Nie |
-> | fabryki | Yes | Nie |
+> | fabryki | Tak | Nie |
 > | fabryki/integrationRuntimes | Nie | Nie |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -832,7 +832,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | accounts | Yes | Yes |
+> | accounts | Tak | Tak |
 > | accounts/dataLakeStoreAccounts | Nie | Nie |
 > | konta/storageAccounts | Nie | Nie |
 > | konta/storageAccounts/kontenery | Nie | Nie |
@@ -843,7 +843,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | accounts | Yes | Yes |
+> | accounts | Tak | Tak |
 > | accounts/eventGridFilters | Nie | Nie |
 > | konta/firewallRules | Nie | Nie |
 
@@ -860,7 +860,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | accounts | Yes | Yes |
+> | accounts | Tak | Tak |
 > | konta/udziały | Nie | Nie |
 > | konta/udziały/zestawy danych | Nie | Nie |
 > | konta/udziały/zaproszenia | Nie | Nie |
@@ -876,7 +876,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | serwery | Yes | Yes |
+> | serwery | Tak | Tak |
 > | serwery/doradcy | Nie | Nie |
 > | serwery/privateEndpointConnectionProxies | Nie | Nie |
 > | serwery/privateEndpointConnections | Nie | Nie |
@@ -892,7 +892,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | serwery | Yes | Yes |
+> | serwery | Tak | Tak |
 > | serwery/doradcy | Nie | Nie |
 > | serwery/privateEndpointConnectionProxies | Nie | Nie |
 > | serwery/privateEndpointConnections | Nie | Nie |
@@ -908,8 +908,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | serverGroups | Yes | Yes |
-> | serwery | Yes | Yes |
+> | serverGroups | Tak | Tak |
+> | serwery | Tak | Tak |
 > | serwery/doradcy | Nie | Nie |
 > | serwery/klucze | Nie | Nie |
 > | serwery/privateEndpointConnectionProxies | Nie | Nie |
@@ -920,45 +920,45 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | servers/topQueryStatistics | Nie | Nie |
 > | servers/virtualNetworkRules | Nie | Nie |
 > | serwery/waitStatistics | Nie | Nie |
-> | serversv2 | Yes | Yes |
+> | serversv2 | Tak | Tak |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | artifactSources | Yes | Yes |
-> | wprowadzanie | Yes | Yes |
-> | servicetopologie | Yes | Yes |
-> | servicetopologie/usługi | Yes | Yes |
-> | servicetopologie/usługi/serviceunits | Yes | Yes |
-> | kroki | Yes | Yes |
+> | artifactSources | Tak | Tak |
+> | wprowadzanie | Tak | Tak |
+> | servicetopologie | Tak | Tak |
+> | servicetopologie/usługi | Tak | Tak |
+> | servicetopologie/usługi/serviceunits | Tak | Tak |
+> | kroki | Tak | Tak |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | applicationgroups | Yes | Yes |
+> | applicationgroups | Tak | Tak |
 > | applicationgroups/aplikacje | Nie | Nie |
 > | applicationgroups/komputery stacjonarne | Nie | Nie |
 > | applicationgroups/startmenuitems | Nie | Nie |
-> | hostpools | Yes | Yes |
+> | hostpools | Tak | Tak |
 > | hostpools/sessionhosts | Nie | Nie |
 > | hostpools/sessionhosts/usersessions | Nie | Nie |
 > | hostpools/usersessions | Nie | Nie |
-> | obszarów roboczych | Yes | Yes |
+> | obszarów roboczych | Tak | Tak |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | ElasticPools | Yes | Yes |
-> | ElasticPools/IotHubTenants | Yes | Yes |
-> | IotHubs | Yes | Yes |
+> | ElasticPools | Tak | Tak |
+> | ElasticPools/IotHubTenants | Tak | Tak |
+> | IotHubs | Tak | Tak |
 > | IotHubs/eventGridFilters | Nie | Nie |
-> | ProvisioningServices | Yes | Yes |
+> | ProvisioningServices | Tak | Tak |
 > | użycia | Nie | Nie |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
@@ -966,26 +966,26 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | potoki | Yes | Yes |
+> | potoki | Tak | Tak |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Rejestrowanie | Yes | Yes |
+> | Rejestrowanie | Tak | Tak |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | labcenters | Yes | Yes |
-> | Labs | Yes | Yes |
-> | laboratoria/środowiska | Yes | Yes |
-> | labs/serviceRunners | Yes | Yes |
-> | Labs/virtualMachines | Yes | Yes |
-> | Uruchamianie | Yes | Yes |
+> | labcenters | Tak | Tak |
+> | Labs | Tak | Tak |
+> | laboratoria/środowiska | Tak | Tak |
+> | labs/serviceRunners | Tak | Tak |
+> | Labs/virtualMachines | Tak | Tak |
+> | Uruchamianie | Tak | Tak |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -993,14 +993,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | databaseAccountNames | Nie | Nie |
-> | databaseAccounts | Yes | Yes |
+> | databaseAccounts | Tak | Tak |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | domeny | Yes | Yes |
+> | domeny | Tak | Tak |
 > | domeny/domainOwnershipIdentifiers | Nie | Nie |
 > | generateSsoRequest | Nie | Nie |
 > | topLevelDomains | Nie | Nie |
@@ -1020,18 +1020,18 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | services | Yes | Yes |
+> | services | Tak | Tak |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | domeny | Yes | Yes |
+> | domeny | Tak | Tak |
 > | domeny/tematy | Nie | Nie |
 > | eventSubscriptions | Nie | Nie |
 > | extensionTopics | Nie | Nie |
-> | opisano | Yes | Yes |
+> | opisano | Tak | Tak |
 > | topicTypes | Nie | Nie |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -1039,8 +1039,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | oparty | Yes | Yes |
-> | przestrzeni | Yes | Yes |
+> | oparty | Tak | Tak |
+> | przestrzeni | Tak | Tak |
 > | przestrzenie nazw/reguł autoryzacji | Nie | Nie |
 > | przestrzenie nazw/disasterrecoveryconfigs | Nie | Nie |
 > | przestrzenie nazw/eventhubs | Nie | Nie |
@@ -1079,14 +1079,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | accounts | Yes | Yes |
+> | accounts | Tak | Tak |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | autoManagedVmConfigurationProfiles | Yes | Yes |
+> | autoManagedVmConfigurationProfiles | Tak | Tak |
 > | configurationProfileAssignments | Nie | Nie |
 > | guestConfigurationAssignments | Nie | Nie |
 > | programy | Nie | Nie |
@@ -1098,22 +1098,22 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | hanaInstances | Yes | Yes |
-> | sapMonitors | Yes | Yes |
+> | hanaInstances | Tak | Tak |
+> | sapMonitors | Tak | Tak |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Modułów dedicatedhsms | Yes | Yes |
+> | Modułów dedicatedhsms | Tak | Tak |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | oparty | Yes | Yes |
+> | oparty | Tak | Tak |
 > | klastry/aplikacje | Nie | Nie |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
@@ -1121,37 +1121,37 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | services | Yes | Yes |
+> | services | Tak | Tak |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Win64 | Yes | Yes |
-> | Maszyny/rozszerzenia | Yes | Yes |
+> | Win64 | Tak | Tak |
+> | Maszyny/rozszerzenia | Tak | Tak |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | datamanagers | Yes | Yes |
+> | datamanagers | Tak | Tak |
 
 ## <a name="microsofthydra"></a>Microsoft. Hydra
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | komponentów | Yes | Yes |
-> | networkScopes | Yes | Yes |
+> | komponentów | Tak | Tak |
+> | networkScopes | Tak | Tak |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | zadania | Yes | Yes |
+> | zadania | Tak | Tak |
 
 ## <a name="microsoftintune"></a>Microsoft. Intune
 
@@ -1167,14 +1167,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | appTemplates | Nie | Nie |
-> | IoTApps | Yes | Yes |
+> | IoTApps | Tak | Tak |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Graph | Yes | Yes |
+> | Graph | Tak | Tak |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -1182,8 +1182,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | deletedVaults | Nie | Nie |
-> | hsmPools | Yes | Yes |
-> | magazynów | Yes | Yes |
+> | hsmPools | Tak | Tak |
+> | magazynów | Tak | Tak |
 > | magazyny/accessPolicies | Nie | Nie |
 > | magazyny/eventGridFilters | Nie | Nie |
 > | magazyny/wpisy tajne | Nie | Nie |
@@ -1193,7 +1193,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | oparty | Yes | Yes |
+> | oparty | Tak | Tak |
 > | klastry/attacheddatabaseconfigurations | Nie | Nie |
 > | klastry/bazy danych | Nie | Nie |
 > | klastry/bazy danych/połączenia Databases | Nie | Nie |
@@ -1205,7 +1205,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | labaccounts | Yes | Yes |
+> | labaccounts | Tak | Tak |
 > | użytkownicy | Nie | Nie |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
@@ -1213,28 +1213,28 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | hostingEnvironments | Yes | Yes |
-> | integrationAccounts | Yes | Yes |
-> | integrationServiceEnvironments | Yes | Yes |
-> | integrationServiceEnvironments/managedApis | Yes | Yes |
-> | isolatedEnvironments | Yes | Yes |
-> | przebieg | Yes | Yes |
+> | hostingEnvironments | Tak | Tak |
+> | integrationAccounts | Tak | Tak |
+> | integrationServiceEnvironments | Tak | Tak |
+> | integrationServiceEnvironments/managedApis | Tak | Tak |
+> | isolatedEnvironments | Tak | Tak |
+> | przebieg | Tak | Tak |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | commitmentPlans | Yes | Yes |
-> | webServices | Yes | Yes |
-> | Obszary robocze | Yes | Yes |
+> | commitmentPlans | Tak | Tak |
+> | webServices | Tak | Tak |
+> | Obszary robocze | Tak | Tak |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | obszarów roboczych | Yes | Yes |
+> | obszarów roboczych | Tak | Tak |
 > | obszary robocze/obliczenia | Nie | Nie |
 > | obszary robocze/eventGridFilters | Nie | Nie |
 
@@ -1244,7 +1244,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | Osob | Nie | Nie |
-> | Resourceidentity | Yes | Yes |
+> | Resourceidentity | Tak | Tak |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
@@ -1271,7 +1271,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | accounts | Yes | Yes |
+> | accounts | Tak | Tak |
 > | accounts/eventGridFilters | Nie | Nie |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
@@ -1298,7 +1298,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | classicDevServices | Yes | Yes |
+> | classicDevServices | Tak | Tak |
 > | updateCommunicationPreference | Nie | Nie |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
@@ -1314,19 +1314,19 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | MediaServices | Yes | Yes |
+> | MediaServices | Tak | Tak |
 > | MediaServices/accountFilters | Nie | Nie |
 > | MediaServices/zasoby | Nie | Nie |
 > | MediaServices/assetFilters | Nie | Nie |
 > | MediaServices/contentKeyPolicies | Nie | Nie |
 > | MediaServices/eventGridFilters | Nie | Nie |
 > | mediaservices/liveEventOperations | Nie | Nie |
-> | MediaServices/liveEvents | Yes | Yes |
+> | MediaServices/liveEvents | Tak | Tak |
 > | MediaServices/liveEvents/liveOutputs | Nie | Nie |
 > | MediaServices/liveOutputOperations | Nie | Nie |
 > | MediaServices/mediaGraphs | Nie | Nie |
 > | MediaServices/streamingEndpointOperations | Nie | Nie |
-> | MediaServices/streamingEndpoints | Yes | Yes |
+> | MediaServices/streamingEndpoints | Tak | Tak |
 > | MediaServices/streamingLocators | Nie | Nie |
 > | MediaServices/streamingPolicies | Nie | Nie |
 > | MediaServices/transformacje | Nie | Nie |
@@ -1337,58 +1337,56 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | appClusters | Yes | Yes |
+> | appClusters | Tak | Tak |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | assessmentProjects | Yes | Yes |
-> | migrateprojects | Yes | Yes |
-> | projektami | Yes | Yes |
+> | assessmentProjects | Tak | Tak |
+> | migrateprojects | Tak | Tak |
+> | projektami | Tak | Tak |
 
 ## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | holographicsBroadcastAccounts | Yes | Yes |
-> | objectUnderstandingAccounts | Yes | Yes |
-> | remoteRenderingAccounts | Yes | Yes |
-> | spatialAnchorsAccounts | Yes | Yes |
-> | surfaceReconstructionAccounts | Yes | Yes |
+> | holographicsBroadcastAccounts | Tak | Tak |
+> | objectUnderstandingAccounts | Tak | Tak |
+> | remoteRenderingAccounts | Tak | Tak |
+> | spatialAnchorsAccounts | Tak | Tak |
+> | surfaceReconstructionAccounts | Tak | Tak |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Yes | Yes |
-> | netAppAccounts/backupPolicies | Yes | Yes |
-> | netAppAccounts/capacityPools | Yes | Yes |
-> | netAppAccounts/capacityPools/woluminy | Yes | Yes |
-> | netAppAccounts/capacityPools/woluminy/kopie zapasowe | Nie | Nie |
-> | netAppAccounts/capacityPools/woluminy/mountTargets | Yes | Yes |
-> | netAppAccounts/capacityPools/woluminy/migawki | Yes | Yes |
-> | netAppAccounts/magazyny | Nie | Nie |
+> | netAppAccounts | Tak | Nie |
+> | netAppAccounts/capacityPools | Tak | Nie |
+> | netAppAccounts/capacityPools/woluminy | Tak | Nie |
+> | netAppAccounts/capacityPools/woluminy/mountTargets | Tak | Nie |
+> | netAppAccounts/capacityPools/woluminy/migawki | Tak | Nie |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | applicationGateways | Yes | Yes |
-> | applicationGatewayWebApplicationFirewallPolicies | Yes | Yes |
-> | applicationSecurityGroups | Yes | Yes |
+> | applicationGateways | Tak | Tak |
+> | applicationGatewayWebApplicationFirewallPolicies | Tak | Tak |
+> | applicationSecurityGroups | Tak | Tak |
 > | azureFirewallFqdnTags | Nie | Nie |
-> | azureFirewalls | Yes | Nie |
-> | bastionHosts | Yes | Yes |
+> | azureFirewalls | Tak | Nie |
+> | bastionHosts | Tak | Tak |
 > | bgpServiceCommunities | Nie | Nie |
-> | Licznik | Yes | Yes |
-> | ddosCustomPolicies | Yes | Yes |
-> | ddosProtectionPlans | Yes | Yes |
+> | Licznik | Tak | Tak |
+> | ddosCustomPolicies | Tak | Tak |
+> | ddosProtectionPlans | Tak | Tak |
 > | dnsOperationStatuses | Nie | Nie |
-> | dnszones | Yes | Yes |
+> | dnszones | Tak | Tak |
 > | dnszones/A | Nie | Nie |
 > | dnszones/AAAA | Nie | Nie |
 > | dnszones/wszystkie | Nie | Nie |
@@ -1401,31 +1399,31 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | dnszones/SOA | Nie | Nie |
 > | dnszones/SRV | Nie | Nie |
 > | dnszones/TXT | Nie | Nie |
-> | expressRouteCircuits | Yes | Yes |
-> | expressRouteCrossConnections | Yes | Yes |
-> | expressRouteGateways | Yes | Yes |
-> | expressRoutePorts | Yes | Yes |
+> | expressRouteCircuits | Tak | Tak |
+> | expressRouteCrossConnections | Tak | Tak |
+> | expressRouteGateways | Tak | Tak |
+> | expressRoutePorts | Tak | Tak |
 > | expressRouteServiceProviders | Nie | Nie |
-> | firewallPolicies | Yes | Yes |
-> | usługi frontdoor | Tak, ale ograniczone (patrz [Uwaga poniżej](#frontdoor)) | Yes |
+> | firewallPolicies | Tak | Tak |
+> | usługi frontdoor | Tak, ale ograniczone (patrz [Uwaga poniżej](#frontdoor)) | Tak |
 > | frontdoorWebApplicationFirewallManagedRuleSets | Tak, ale ograniczone (patrz [Uwaga poniżej](#frontdoor)) | Nie |
-> | frontdoorWebApplicationFirewallPolicies | Tak, ale ograniczone (patrz [Uwaga poniżej](#frontdoor)) | Yes |
+> | frontdoorWebApplicationFirewallPolicies | Tak, ale ograniczone (patrz [Uwaga poniżej](#frontdoor)) | Tak |
 > | getDnsResourceReference | Nie | Nie |
 > | internalNotify | Nie | Nie |
-> | loadBalancers | Yes | Nie |
-> | localNetworkGateways | Yes | Yes |
-> | natGateways | Yes | Yes |
-> | networkIntentPolicies | Yes | Yes |
-> | networkInterfaces | Yes | Yes |
-> | networkProfiles | Yes | Yes |
-> | networkSecurityGroups | Yes | Yes |
-> | networkWatchers | Yes | Nie |
-> | networkWatchers/connectionMonitors | Yes | Nie |
-> | networkWatchers/soczewki | Yes | Nie |
-> | networkWatchers/pingMeshes | Yes | Nie |
-> | p2sVpnGateways | Yes | Yes |
+> | loadBalancers | Tak | Nie |
+> | localNetworkGateways | Tak | Tak |
+> | natGateways | Tak | Tak |
+> | networkIntentPolicies | Tak | Tak |
+> | networkInterfaces | Tak | Tak |
+> | networkProfiles | Tak | Tak |
+> | networkSecurityGroups | Tak | Tak |
+> | networkWatchers | Tak | Nie |
+> | networkWatchers/connectionMonitors | Tak | Nie |
+> | networkWatchers/soczewki | Tak | Nie |
+> | networkWatchers/pingMeshes | Tak | Nie |
+> | p2sVpnGateways | Tak | Tak |
 > | privateDnsOperationStatuses | Nie | Nie |
-> | privateDnsZones | Yes | Yes |
+> | privateDnsZones | Tak | Tak |
 > | privateDnsZones/A | Nie | Nie |
 > | privateDnsZones/AAAA | Nie | Nie |
 > | privateDnsZones/wszystkie | Nie | Nie |
@@ -1435,26 +1433,26 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | privateDnsZones/SOA | Nie | Nie |
 > | privateDnsZones/SRV | Nie | Nie |
 > | privateDnsZones/TXT | Nie | Nie |
-> | privateDnsZones/virtualNetworkLinks | Yes | Yes |
-> | privateEndpoints | Yes | Yes |
-> | privateLinkServices | Yes | Yes |
-> | publicIPAddresses | Yes | Yes |
-> | publicIPPrefixes | Yes | Yes |
-> | routeFilters | Yes | Yes |
-> | routeTables | Yes | Yes |
-> | serviceEndpointPolicies | Yes | Yes |
+> | privateDnsZones/virtualNetworkLinks | Tak | Tak |
+> | privateEndpoints | Tak | Tak |
+> | privateLinkServices | Tak | Tak |
+> | publicIPAddresses | Tak | Tak |
+> | publicIPPrefixes | Tak | Tak |
+> | routeFilters | Tak | Tak |
+> | routeTables | Tak | Tak |
+> | serviceEndpointPolicies | Tak | Tak |
 > | trafficManagerGeographicHierarchies | Nie | Nie |
-> | trafficmanagerprofiles | Yes | Yes |
+> | trafficmanagerprofiles | Tak | Tak |
 > | trafficmanagerprofiles/map cieplnych | Nie | Nie |
 > | trafficManagerUserMetricsKeys | Nie | Nie |
-> | virtualHubs | Yes | Yes |
-> | virtualNetworkGateways | Yes | Yes |
-> | virtualNetworks | Yes | Yes |
-> | virtualNetworkTaps | Yes | Yes |
-> | virtualWans | Yes | Yes |
-> | vpnGateways | Yes | Nie |
-> | vpnSites | Yes | Yes |
-> | webApplicationFirewallPolicies | Yes | Yes |
+> | virtualHubs | Tak | Tak |
+> | virtualNetworkGateways | Tak | Tak |
+> | virtualNetworks | Tak | Tak |
+> | virtualNetworkTaps | Tak | Tak |
+> | virtualWans | Tak | Tak |
+> | vpnGateways | Tak | Nie |
+> | vpnSites | Tak | Tak |
+> | webApplicationFirewallPolicies | Tak | Tak |
 
 <a id="frontdoor" />
 
@@ -1467,36 +1465,36 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | przestrzeni | Yes | Nie |
-> | przestrzenie nazw/notificationHubs | Yes | Nie |
+> | przestrzeni | Tak | Nie |
+> | przestrzenie nazw/notificationHubs | Tak | Nie |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | osNamespaces | Yes | Yes |
+> | osNamespaces | Tak | Tak |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | HyperVSites | Yes | Yes |
-> | ImportSites | Yes | Yes |
-> | ServerSites | Yes | Yes |
-> | VMwareSites | Yes | Yes |
+> | HyperVSites | Tak | Tak |
+> | ImportSites | Tak | Tak |
+> | ServerSites | Tak | Tak |
+> | VMwareSites | Tak | Tak |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | oparty | Yes | Yes |
+> | oparty | Tak | Tak |
 > | urządzenia | Nie | Nie |
 > | linkTargets | Nie | Nie |
 > | storageInsightConfigs | Nie | Nie |
-> | obszarów roboczych | Yes | Yes |
+> | obszarów roboczych | Tak | Tak |
 > | obszary robocze/źródła danych | Nie | Nie |
 > | workspaces/linkedServices | Nie | Nie |
 > | obszary robocze/zapytanie | Nie | Nie |
@@ -1507,9 +1505,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | managementassociations | Nie | Nie |
-> | managementconfigurations | Yes | Yes |
-> | rozwiązania | Yes | Yes |
-> | Widoki | Yes | Yes |
+> | managementconfigurations | Tak | Tak |
+> | rozwiązania | Tak | Tak |
+> | Widoki | Tak | Tak |
 
 ## <a name="microsoftpeering"></a>Microsoft. Komunikacja równorzędna
 
@@ -1518,9 +1516,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ----------- |
 > | legacyPeerings | Nie | Nie |
 > | peerAsns | Nie | Nie |
-> | komunikacje równorzędne | Yes | Yes |
+> | komunikacje równorzędne | Tak | Tak |
 > | peeringServiceProviders | Nie | Nie |
-> | peeringServices | Yes | Yes |
+> | peeringServices | Tak | Tak |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
@@ -1539,7 +1537,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | konsol | Nie | Nie |
-> | pulpitów nawigacyjnych | Yes | Yes |
+> | pulpitów nawigacyjnych | Tak | Tak |
 > | userSettings | Nie | Nie |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
@@ -1547,14 +1545,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | workspaceCollections | Yes | Yes |
+> | workspaceCollections | Tak | Tak |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | produkcyjnych | Yes | Yes |
+> | produkcyjnych | Tak | Tak |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1562,14 +1560,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | backupProtectedItems | Nie | Nie |
-> | magazynów | Yes | Yes |
+> | magazynów | Tak | Tak |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | przestrzeni | Yes | Yes |
+> | przestrzeni | Tak | Tak |
 > | przestrzenie nazw/reguł autoryzacji | Nie | Nie |
 > | przestrzenie nazw/hybridconnections | Nie | Nie |
 > | przestrzenie nazw/hybridconnections/reguł autoryzacji | Nie | Nie |
@@ -1582,7 +1580,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | accounts | Nie | Nie |
-> | Kolekcje | Yes | Yes |
+> | Kolekcje | Tak | Tak |
 > | Kolekcje/aplikacje | Nie | Nie |
 > | Kolekcje/SecurityPrincipals | Nie | Nie |
 > | templateImages | Nie | Nie |
@@ -1592,7 +1590,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | — zapytania | Yes | Yes |
+> | — zapytania | Tak | Tak |
 > | resourceChangeDetails | Nie | Nie |
 > | resourceChanges | Nie | Nie |
 > | produkcyjnych | Nie | Nie |
@@ -1617,14 +1615,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | komputerów | Yes | Nie |
+> | komputerów | Tak | Nie |
 > | wdrożenia/operacje | Nie | Nie |
-> | deploymentScripts | Yes | Yes |
+> | deploymentScripts | Tak | Tak |
 > | deploymentScripts/dzienniki | Nie | Nie |
 > | linki | Nie | Nie |
 > | notifyResourceJobs | Nie | Nie |
 > | dostawcy | Nie | Nie |
-> | resourceGroups | Yes | Nie |
+> | resourceGroups | Tak | Nie |
 > | produkcyjnych | Nie | Nie |
 > | opłaty | Nie | Nie |
 > | subskrypcje/dostawcy | Nie | Nie |
@@ -1640,7 +1638,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | aplikacje | Yes | Yes |
+> | aplikacje | Tak | Tak |
 > | saasresources | Nie | Nie |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
@@ -1648,7 +1646,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | jobcollections | Yes | Yes |
+> | jobcollections | Tak | Tak |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -1656,7 +1654,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | resourceHealthMetadata | Nie | Nie |
-> | searchServices | Yes | Yes |
+> | searchServices | Tak | Tak |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -1670,7 +1668,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | applicationWhitelistings | Nie | Nie |
 > | assessmentMetadata | Nie | Nie |
 > | oceny | Nie | Nie |
-> | automatyzacji | Yes | Yes |
+> | automatyzacji | Tak | Tak |
 > | AutoProvisioningSettings | Nie | Nie |
 > | Zachowania zgodności prawnymi | Nie | Nie |
 > | dataCollectionAgents | Nie | Nie |
@@ -1678,13 +1676,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | discoveredSecuritySolutions | Nie | Nie |
 > | externalSecuritySolutions | Nie | Nie |
 > | InformationProtectionPolicies | Nie | Nie |
-> | iotSecuritySolutions | Yes | Yes |
+> | iotSecuritySolutions | Tak | Tak |
 > | iotSecuritySolutions/analyticsModels | Nie | Nie |
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | Nie | Nie |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | Nie | Nie |
 > | jitNetworkAccessPolicies | Nie | Nie |
 > | networkData | Nie | Nie |
-> | playbookConfigurations | Yes | Yes |
+> | playbookConfigurations | Tak | Tak |
 > | jazd | Nie | Nie |
 > | cen | Nie | Nie |
 > | regulatoryComplianceStandards | Nie | Nie |
@@ -1731,7 +1729,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | przestrzeni | Yes | Nie |
+> | przestrzeni | Tak | Nie |
 > | przestrzenie nazw/reguł autoryzacji | Nie | Nie |
 > | przestrzenie nazw/disasterrecoveryconfigs | Nie | Nie |
 > | przestrzenie nazw/eventgridfilters | Nie | Nie |
@@ -1749,30 +1747,30 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | aplikacje | Yes | Yes |
-> | oparty | Yes | Yes |
+> | aplikacje | Tak | Tak |
+> | oparty | Tak | Tak |
 > | klastry/aplikacje | Nie | Nie |
-> | containerGroups | Yes | Yes |
-> | containerGroupSets | Yes | Yes |
-> | edgeclusters | Yes | Yes |
+> | containerGroups | Tak | Tak |
+> | containerGroupSets | Tak | Tak |
+> | edgeclusters | Tak | Tak |
 > | edgeclusters/aplikacje | Nie | Nie |
-> | sieci | Yes | Yes |
-> | secretstores | Yes | Yes |
+> | sieci | Tak | Tak |
+> | secretstores | Tak | Tak |
 > | secretstores/certyfikaty | Nie | Nie |
 > | secretstores/wpisy tajne | Nie | Nie |
-> | volumes | Yes | Yes |
+> | volumes | Tak | Tak |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | aplikacje | Yes | Yes |
-> | containerGroups | Yes | Yes |
-> | bram | Yes | Yes |
-> | sieci | Yes | Yes |
-> | wpisy tajne | Yes | Yes |
-> | volumes | Yes | Yes |
+> | aplikacje | Tak | Tak |
+> | containerGroups | Tak | Tak |
+> | bram | Tak | Tak |
+> | sieci | Tak | Tak |
+> | wpisy tajne | Tak | Tak |
+> | volumes | Tak | Tak |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
@@ -1781,14 +1779,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ----------- |
 > | providerRegistrations | Nie | Nie |
 > | providerRegistrations/resourceTypeRegistrations | Nie | Nie |
-> | wprowadzanie | Yes | Yes |
+> | wprowadzanie | Tak | Tak |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | SignalR | Yes | Yes |
+> | SignalR | Tak | Tak |
 > | Sygnalizujący/eventGridFilters | Nie | Nie |
 
 ## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
@@ -1796,7 +1794,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | SiteRecoveryVault | Yes | Yes |
+> | SiteRecoveryVault | Tak | Tak |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
@@ -1810,17 +1808,17 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | applicationDefinitions | Yes | Yes |
-> | aplikacje | Yes | Yes |
-> | jitRequests | Yes | Yes |
+> | applicationDefinitions | Tak | Tak |
+> | aplikacje | Tak | Tak |
+> | jitRequests | Tak | Tak |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | managedInstances | Yes | Yes |
-> | managedInstances/bazy danych | Tak (patrz [Uwaga poniżej](#sqlnote)) | Yes |
+> | managedInstances | Tak | Tak |
+> | managedInstances/bazy danych | Tak (patrz [Uwaga poniżej](#sqlnote)) | Tak |
 > | managedInstances/databases/backupShortTermRetentionPolicies | Nie | Nie |
 > | managedInstances/bazy danych/schematy/tabele/kolumny/sensitivityLabels | Nie | Nie |
 > | managedInstances/Databases/vulnerabilityAssessments | Nie | Nie |
@@ -1829,10 +1827,10 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | managedInstances/klucze | Nie | Nie |
 > | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nie | Nie |
 > | managedInstances/vulnerabilityAssessments | Nie | Nie |
-> | serwery | Yes | Yes |
+> | serwery | Tak | Tak |
 > | serwery/Administratorzy | Nie | Nie |
 > | serwery/communicationLinks | Nie | Nie |
-> | Serwery/bazy danych | Tak (patrz [Uwaga poniżej](#sqlnote)) | Yes |
+> | Serwery/bazy danych | Tak (patrz [Uwaga poniżej](#sqlnote)) | Tak |
 > | serwery/encryptionProtector | Nie | Nie |
 > | serwery/firewallRules | Nie | Nie |
 > | serwery/klucze | Nie | Nie |
@@ -1851,16 +1849,16 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | SqlVirtualMachineGroups | Yes | Yes |
+> | SqlVirtualMachineGroups | Tak | Tak |
 > | SqlVirtualMachineGroups/AvailabilityGroupListeners | Nie | Nie |
-> | SqlVirtualMachines | Yes | Yes |
+> | SqlVirtualMachines | Tak | Tak |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | storageAccounts | Yes | Yes |
+> | storageAccounts | Tak | Tak |
 > | storageAccounts/blobServices | Nie | Nie |
 > | storageAccounts/fileServices | Nie | Nie |
 > | storageAccounts/queueServices | Nie | Nie |
@@ -1874,7 +1872,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | pamięci podręcznych | Yes | Yes |
+> | pamięci podręcznych | Tak | Tak |
 > | pamięci podręczne/storageTargets | Nie | Nie |
 > | usageModels | Nie | Nie |
 
@@ -1890,7 +1888,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | storageSyncServices | Yes | Yes |
+> | storageSyncServices | Tak | Tak |
 > | storageSyncServices/registeredServers | Nie | Nie |
 > | storageSyncServices/syncGroups | Nie | Nie |
 > | storageSyncServices/syncGroups/cloudEndpoints | Nie | Nie |
@@ -1902,7 +1900,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | storageSyncServices | Yes | Yes |
+> | storageSyncServices | Tak | Tak |
 > | storageSyncServices/registeredServers | Nie | Nie |
 > | storageSyncServices/syncGroups | Nie | Nie |
 > | storageSyncServices/syncGroups/cloudEndpoints | Nie | Nie |
@@ -1914,7 +1912,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | storageSyncServices | Yes | Yes |
+> | storageSyncServices | Tak | Tak |
 > | storageSyncServices/registeredServers | Nie | Nie |
 > | storageSyncServices/syncGroups | Nie | Nie |
 > | storageSyncServices/syncGroups/cloudEndpoints | Nie | Nie |
@@ -1926,14 +1924,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | skonfigurowany | Yes | Yes |
+> | skonfigurowany | Tak | Tak |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | streamingjobs | Tak (patrz Uwaga poniżej) | Yes |
+> | streamingjobs | Tak (patrz Uwaga poniżej) | Tak |
 
 > [!NOTE]
 > Nie można dodać znacznika, gdy streamingjobs jest uruchomiony. Zatrzymaj zasób, aby dodać tag.
@@ -1955,19 +1953,19 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | Wiejski | Yes | Nie |
+> | Wiejski | Tak | Nie |
 > | środowiska/accessPolicies | Nie | Nie |
-> | środowiska/źródła zdarzeń | Yes | Nie |
-> | environments/referenceDataSets | Yes | Nie |
+> | środowiska/źródła zdarzeń | Tak | Nie |
+> | environments/referenceDataSets | Tak | Nie |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | dedicatedCloudNodes | Yes | Yes |
-> | dedicatedCloudServices | Yes | Yes |
-> | virtualMachines | Yes | Yes |
+> | dedicatedCloudNodes | Tak | Tak |
+> | dedicatedCloudServices | Tak | Tak |
+> | virtualMachines | Tak | Tak |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -1985,28 +1983,28 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | apiManagementAccounts/connectionAcls | Nie | Nie |
 > | apiManagementAccounts/connections | Nie | Nie |
 > | billingMeters | Nie | Nie |
-> | przystawki | Yes | Yes |
-> | connectionGateways | Yes | Yes |
-> | Licznik | Yes | Yes |
-> | customApis | Yes | Yes |
+> | przystawki | Tak | Tak |
+> | connectionGateways | Tak | Tak |
+> | Licznik | Tak | Tak |
+> | customApis | Tak | Tak |
 > | deletedSites | Nie | Nie |
 > | — funkcje | Nie | Nie |
-> | hostingEnvironments | Yes | Yes |
+> | hostingEnvironments | Tak | Tak |
 > | hostingEnvironments/multiRolePools | Nie | Nie |
 > | hostingEnvironments/workerPools | Nie | Nie |
 > | publishingUsers | Nie | Nie |
 > | Zalecenia | Nie | Nie |
 > | resourceHealthMetadata | Nie | Nie |
 > | Runtime | Nie | Nie |
-> | Dopuszczalna | Yes | Yes |
+> | Dopuszczalna | Tak | Tak |
 > | Dopuszczalna/eventGridFilters | Nie | Nie |
-> | teren | Yes | Yes |
+> | teren | Tak | Tak |
 > | Lokacje/konfiguracja  | Nie | Nie |
 > | Lokacje/eventGridFilters | Nie | Nie |
 > | sites/hostNameBindings | Nie | Nie |
 > | Lokacje/networkConfig | Nie | Nie |
-> | sites/premieraddons | Yes | Yes |
-> | Lokacje/miejsca | Yes | Yes |
+> | sites/premieraddons | Tak | Tak |
+> | Lokacje/miejsca | Tak | Tak |
 > | Lokacje/miejsca/eventGridFilters | Nie | Nie |
 > | sites/slots/hostNameBindings | Nie | Nie |
 > | Lokacje/miejsca/networkConfig | Nie | Nie |
@@ -2027,7 +2025,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | DeviceServices | Yes | Yes |
+> | DeviceServices | Tak | Tak |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 

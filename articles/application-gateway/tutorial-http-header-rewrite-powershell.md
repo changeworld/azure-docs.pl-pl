@@ -1,22 +1,22 @@
 ---
-title: Ponownie zapisuje nagłówki HTTP w usłudze Azure Application Gateway
-description: Ten artykuł zawiera informacje na temat sposobu tworzenia usługi Azure Application Gateway i ponownie zapisuje nagłówki HTTP przy użyciu programu Azure PowerShell
+title: Tworzenie Application Gateway platformy Azure & zapisywania nagłówków HTTP
+description: Ten artykuł zawiera informacje dotyczące sposobu tworzenia Application Gateway platformy Azure i ponownego zapisywania nagłówków HTTP przy użyciu Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64947087"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173713"
 ---
-# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Tworzenie bramy aplikacji i ponownie zapisuje nagłówki HTTP
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Utwórz bramę aplikacji i Zapisz ponownie nagłówki HTTP
 
-Można użyć programu Azure PowerShell, aby skonfigurować [reguły ponownego zapisywania nagłówki żądania i odpowiedzi HTTP](rewrite-http-headers.md) podczas tworzenia nowego [skalowania automatycznego i jednostki SKU bramy aplikacji strefowo nadmiarowy](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+Za pomocą Azure PowerShell można skonfigurować [reguły do ponownego zapisywania nagłówków żądań i odpowiedzi HTTP](rewrite-http-headers.md) podczas tworzenia nowej [jednostki SKU bramy aplikacji z obsługą automatycznego skalowania i strefowo nadmiarowej](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -25,7 +25,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Tworzenie sieci wirtualnej skalowania automatycznego
 > * Tworzenie zastrzeżonego publicznego adresu IP
 > * Konfigurowanie infrastruktury bramy aplikacji
-> * Określ konfigurację reguły ponownego zapisywania adresów nagłówek http
+> * Określ konfigurację reguły ponownego zapisywania nagłówka http
 > * Określanie skalowania automatycznego
 > * Tworzenie bramy aplikacji
 > * Testowanie bramy aplikacji
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten artykuł będzie wymagał programu Azure PowerShell lokalnie. Musi mieć Az modułu Wersja 1.0.0 lub nowszy. Uruchom `Import-Module Az` i następnie`Get-Module Az` Aby znaleźć wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
+Ten artykuł wymaga uruchomienia Azure PowerShell lokalnie. Musisz mieć zainstalowany AZ module w wersji 1.0.0 lub nowszej. Uruchom `Import-Module Az` a następnie`Get-Module Az`, aby znaleźć wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -89,7 +89,7 @@ $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork
 
 ## <a name="configure-the-infrastructure"></a>Konfigurowanie infrastruktury
 
-Skonfigurować IP konfiguracji, frontonu konfiguracji adresu IP, puli zaplecza, HTTP ustawienia, certyfikat, port i odbiornika w formie identyczne do istniejącej bramy standardowej aplikacji. W nowej jednostce SKU obowiązuje taki sam model obiektów jak w jednostce SKU w warstwie Standardowa.
+Skonfiguruj konfigurację IP, konfigurację IP frontonu, pulę zaplecza, ustawienia protokołu HTTP, certyfikat, port i odbiornik w identycznym formacie dla istniejącej standardowej bramy aplikacji. W nowej jednostce SKU obowiązuje taki sam model obiektów jak w jednostce SKU w warstwie Standardowa.
 
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -105,15 +105,15 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
           -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-## <a name="specify-your-http-header-rewrite-rule-configuration"></a>Określ konfigurację reguły ponownego zapisywania adresów nagłówek HTTP
+## <a name="specify-your-http-header-rewrite-rule-configuration"></a>Określ konfigurację reguły ponownego zapisywania nagłówka HTTP
 
-Skonfiguruj nowe obiekty, które są wymagane do przepisania nagłówków http:
+Skonfiguruj nowe obiekty wymagane do ponownego zapisania nagłówków http:
 
-- **RequestHeaderConfiguration**: ten obiekt jest używany do określenia pola nagłówka żądania, które planujesz ponownego zapisywania i nową wartość, która oryginalnego nagłówki muszą zostać przepisane, aby.
-- **ResponseHeaderConfiguration**: ten obiekt jest używany do określania, które zamierzasz zmodyfikować pola nagłówka odpowiedzi i nową wartość, która oryginalnego nagłówki muszą zostać przepisane, aby.
-- **ActionSet**: ten obiekt zawiera konfiguracje nagłówki żądania i odpowiedzi określonym powyżej. 
-- **RewriteRule**: ten obiekt zawiera wszystkie *actionSets* określonej powyżej. 
-- **RewriteRuleSet**— ten obiekt zawiera wszystkie *rewriteRules* i musi być dołączony do żądania regułę routingu — basic lub opartego na ścieżkach.
+- **RequestHeaderConfiguration**: ten obiekt służy do określania pól nagłówka żądania, które mają być ponownie zapisane, oraz do nowej wartości, w której mają być zapisywane oryginalne nagłówki.
+- **ResponseHeaderConfiguration**: ten obiekt służy do określania pól nagłówka odpowiedzi, które mają być ponownie zapisane, oraz do nowej wartości, w której mają być zapisywane oryginalne nagłówki.
+- **ActionSet**: ten obiekt zawiera konfiguracje żądań i nagłówków odpowiedzi określonych powyżej. 
+- **RewriteRule**: ten obiekt zawiera wszystkie *actionSets* określone powyżej. 
+- **RewriteRuleSet**— ten obiekt zawiera wszystkie *rewriteRules* i będzie musiał zostać dołączony do reguły routingu żądań — podstawowa lub oparta na ścieżce.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -123,9 +123,9 @@ Skonfiguruj nowe obiekty, które są wymagane do przepisania nagłówków http:
    $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name rewriteRuleSet1 -RewriteRule $rewriteRule
    ```
 
-## <a name="specify-the-routing-rule"></a>Określ reguły routingu
+## <a name="specify-the-routing-rule"></a>Określanie reguły routingu
 
-Utwórz regułę routingu żądania. Po utworzeniu tej konfiguracji ponownego zapisywania jest dołączony do odbiornika źródła za pomocą reguły routingu. Korzystając z podstawową regułę routingu, konfiguracja ponownego napisania nagłówka jest skojarzony z odbiornika źródła i nadpisania globalnego nagłówka. W przypadku regułę routingu opartego na ścieżkach Konfiguracja ponownego napisania nagłówka został zdefiniowany w Mapa ścieżki adresu URL. Tak mają zastosowanie tylko do określonej ścieżki obszaru lokacji. Poniżej utworzono podstawową regułę routingu i zestaw reguł ponownego zapisywania jest dołączony.
+Utwórz regułę routingu żądania. Po utworzeniu ta konfiguracja ponownego zapisywania jest dołączona do odbiornika źródłowego za pośrednictwem reguły routingu. W przypadku korzystania z podstawowej reguły routingu, konfiguracja ponownego zapisywania nagłówka jest skojarzona z odbiornikiem źródłowym i jest ponownym zapisem nagłówka globalnego. Gdy jest używana reguła routingu oparta na ścieżce, konfiguracja ponownego zapisywania nagłówka jest definiowana na mapie ścieżki URL. W związku z tym dotyczy tylko określonego obszaru ścieżki w lokacji. Poniżej zostanie utworzona Podstawowa reguła routingu i zostanie dołączony zestaw reguł ponownego zapisywania.
 
 ```azurepowershell
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType basic `
@@ -159,7 +159,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 -Resource
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Użyj Get AzPublicIPAddress, aby pobrać publiczny adres IP bramy aplikacji. Skopiuj publiczny adres IP (lub nazwę DNS), a następnie wklej go na pasku adresu przeglądarki.
+Użyj Get-AzPublicIPAddress, aby uzyskać publiczny adres IP bramy aplikacji. Skopiuj publiczny adres IP (lub nazwę DNS), a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell
 Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
@@ -173,6 +173,6 @@ Najpierw zapoznaj się z zasobami utworzonymi przy użyciu bramy aplikacji. Nast
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Tworzenie bramy aplikacji za pomocą reguł routingu bazujących na ścieżce adresu URL](./tutorial-url-route-powershell.md)

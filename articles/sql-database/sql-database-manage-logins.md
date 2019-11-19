@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822828"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159147"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych do SQL Database i SQL Data Warehouse
 
@@ -54,6 +54,9 @@ Konta administratorów **serwera** i **usługi Azure AD** mają następującą c
 - Może tworzyć, zmieniać i usuwać bazy danych, nazwy logowania, użytkowników z wzorców i reguły zapory adresów IP na poziomie serwera.
 - Może dodawać i usuwać członków do ról `dbmanager` i `loginmanager`.
 - Może wyświetlać tabelę systemową `sys.sql_logins`.
+- Nie można zmienić nazwy.
+- Aby zmienić konto administratora usługi Azure AD, użyj portalu lub interfejsu wiersza polecenia platformy Azure.
+- Nie można później zmienić konta administratora serwera.
 
 ### <a name="configuring-the-firewall"></a>Konfigurowanie zapory
 

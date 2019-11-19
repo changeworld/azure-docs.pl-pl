@@ -5,14 +5,14 @@ services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f89fcdd50d958269b5c79c41ebabd69331c905aa
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839297"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158213"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Jak wysyłać zdarzenia z usługi Azure Signal Service do Event Grid
 
@@ -26,7 +26,7 @@ Polecenie interfejsu wiersza polecenia platformy Azure w tym artykule jest sform
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów platformy Azure to logiczny kontener służący do wdrażania zasobów platformy Azure i zarządzania nimi. Następujące polecenie [AZ Group Create][az-group-create] tworzy grupę zasobów o nazwie Moja *resourceName* w regionie *wschodnim* . Jeśli chcesz użyć innej nazwy dla grupy zasobów, ustaw `RESOURCE_GROUP_NAME` inną wartość.
+Grupa zasobów platformy Azure to logiczny kontener służący do wdrażania zasobów platformy Azure i zarządzania nimi. Następujące polecenie [AZ Group Create][az-group-create] tworzy grupę zasobów o nazwie Moja *resourceName* w regionie *wschodnim* . Jeśli chcesz użyć innej nazwy dla grupy zasobów, ustaw `RESOURCE_GROUP_NAME` na inną wartość.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -75,7 +75,7 @@ Po utworzeniu usługi sygnalizującej interfejs wiersza polecenia platformy Azur
 
 W tej sekcji użyjesz szablonu Menedżer zasobów znajdującego się w repozytorium GitHub do wdrożenia wstępnie skompilowanej przykładowej aplikacji sieci Web do Azure App Service. Później można subskrybować zdarzenia Event Grid w rejestrze i określić tę aplikację jako punkt końcowy, do którego są wysyłane zdarzenia.
 
-Aby wdrożyć przykładową aplikację, ustaw `SITE_NAME` jako unikatową nazwę aplikacji sieci Web i wykonaj następujące polecenia. Nazwa witryny musi być unikatowa w ramach platformy Azure, ponieważ stanowi część w pełni kwalifikowanej nazwy domeny (FQDN) aplikacji sieci Web. W dalszej części możesz przejść do nazwy FQDN aplikacji w przeglądarce sieci Web, aby wyświetlić zdarzenia rejestru.
+Aby wdrożyć przykładową aplikację, ustaw `SITE_NAME` na unikatową nazwę aplikacji sieci Web i wykonaj następujące polecenia. Nazwa witryny musi być unikatowa w ramach platformy Azure, ponieważ stanowi część w pełni kwalifikowanej nazwy domeny (FQDN) aplikacji sieci Web. W dalszej części możesz przejść do nazwy FQDN aplikacji w przeglądarce sieci Web, aby wyświetlić zdarzenia rejestru.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -141,7 +141,7 @@ Po zakończeniu subskrypcji powinny zostać wyświetlone dane wyjściowe podobne
 
 ## <a name="trigger-registry-events"></a>Wyzwalanie zdarzeń rejestru
 
-Przejdź do trybu `Serverless Mode` usługi i skonfiguruj połączenie z klientem do usługi sygnalizującej. Jako odwołanie można pobrać bezserwerowy [przykład](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) .
+Przejdź do trybu usługi, aby `Serverless Mode` i skonfigurować połączenie z klientem do usługi sygnalizującej. Jako odwołanie można pobrać [bezserwerowy przykład](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) .
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +162,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Wyświetlanie zdarzeń rejestru
 
-Klient został podłączony do usługi sygnalizującej. Przejdź do aplikacji sieci Web w przeglądarce Event Grid i zobaczysz `ClientConnectionConnected` zdarzenie. Jeśli klient zostanie przerwany, zobaczysz również `ClientConnectionDisconnected` zdarzenie.
+Klient został podłączony do usługi sygnalizującej. Przejdź do aplikacji sieci Web w przeglądarce Event Grid i zobaczysz zdarzenie `ClientConnectionConnected`. Jeśli klient zostanie przerwany, zobaczysz również zdarzenie `ClientConnectionDisconnected`.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

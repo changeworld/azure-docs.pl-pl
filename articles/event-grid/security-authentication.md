@@ -1,5 +1,5 @@
 ---
-title: Azure Event Grid zabezpieczenia i uwierzytelnianie
+title: Usługa Azure Event Grid zabezpieczeń i uwierzytelniania
 description: Opis usługi Azure Event Grid i pojęć z nią związanych.
 services: event-grid
 author: banisadr
@@ -8,58 +8,58 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 8fe85685a41e05b5132157453a6dcbc81c2399af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825768"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169575"
 ---
-# <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczenia i uwierzytelnianie 
+# <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
-Azure Event Grid ma trzy typy uwierzytelniania:
+Usługa Azure Event Grid ma trzy typy uwierzytelniania:
 
-* Dostarczanie zdarzeń elementu webhook
+* Dostarczanie zdarzeń elementu WebHook
 * Subskrypcje zdarzeń
-* Publikowanie tematów niestandardowych
+* Publikowanie tematu niestandardowego
 
-## <a name="webhook-event-delivery"></a>Dostarczanie zdarzeń elementu webhook
+## <a name="webhook-event-delivery"></a>Dostarczanie zdarzeń elementu WebHook
 
-Elementy webhook to jeden z wielu sposobów odbierania zdarzeń z Azure Event Grid. Gdy nowe zdarzenie jest gotowe, usługa Event Grid ogłasza żądanie HTTP do skonfigurowanego punktu końcowego przy użyciu zdarzenia w treści żądania.
+Elementy Webhook są jednym z wielu sposobów, aby odbierać zdarzenia z usługi Azure Event Grid. Gdy nowe zdarzenie jest gotowy, usługi Event Grid wysyła żądanie HTTP do punktu końcowego skonfigurowanego ze zdarzeniem w treści żądania.
 
-Podobnie jak w przypadku wielu innych usług, które obsługują elementy webhook, Event Grid wymaga potwierdzenia własności punktu końcowego elementu webhook przed rozpoczęciem dostarczania zdarzeń do tego punktu końcowego. To wymaganie uniemożliwia złośliwemu użytkownikowi przelanie punktu końcowego ze zdarzeniami. W przypadku korzystania z jednej z trzech usług platformy Azure wymienionych poniżej infrastruktura platformy Azure automatycznie obsługuje tę weryfikację:
+Podobnie jak wielu innych usług, które obsługują elementy webhook usługi Event Grid wymaga udowodnić własność punktu końcowego usługi elementu Webhook, zanim zacznie dostarczanie zdarzeń do określonego punktu końcowego. To wymaganie zapobiega przepełnieniu punktu końcowego usługi za pomocą zdarzeń przez złośliwego użytkownika. Gdy używasz dowolnego z trzech usług platformy Azure wymienionych poniżej infrastruktury platformy Azure automatycznie obsługuje tej weryfikacji:
 
 * Azure Logic Apps za pomocą [łącznika Event Grid](https://docs.microsoft.com/connectors/azureeventgrid/)
 * Azure Automation za pośrednictwem [elementu webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
 * Azure Functions z [wyzwalaczem Event Grid](../azure-functions/functions-bindings-event-grid.md)
 
-Jeśli używasz innego typu punktu końcowego, takiego jak oparty na wyzwalaczu HTTP funkcja platformy Azure, kod punktu końcowego musi uczestniczyć w uzgadnianiu walidacji z Event Grid. Event Grid obsługuje dwa sposoby walidacji subskrypcji.
+Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na podstawie funkcji platformy Azure, swój kod punktu końcowego musi wziąć udział w uzgadniania weryfikacji za pomocą usługi Event Grid. Usługa Event Grid obsługuje sprawdzanie poprawności subskrypcji na dwa sposoby.
 
-1. **Uzgadnianie ValidationCode (** programowe): w przypadku kontrolowania kodu źródłowego dla punktu końcowego ta metoda jest zalecana. W momencie tworzenia subskrypcji zdarzeń Event Grid wysyła do punktu końcowego zdarzenie weryfikacji subskrypcji. Schemat tego zdarzenia jest podobny do dowolnego innego zdarzenia Event Grid. Część danych tego zdarzenia zawiera właściwość `validationCode`. Aplikacja weryfikuje, czy żądanie weryfikacji dotyczy oczekiwanej subskrypcji zdarzeń, i echo kod weryfikacyjny do Event Grid. Ten mechanizm uzgadniania jest obsługiwany we wszystkich wersjach Event Grid.
+1. **Uzgadnianie ValidationCode (programowe)** : Jeśli dla punktu końcowego usługi jest kontroli kodu źródłowego, ta metoda jest zalecana. Tworzenie subskrypcji zdarzeń usługi Event Grid wysyła zdarzenie sprawdzania poprawności subskrypcji do punktu końcowego usługi. Schemat tego zdarzenia jest podobne do innych zdarzeń usługi Event Grid. Zawiera części danych to zdarzenie `validationCode` właściwości. Aplikacja sprawdza, czy żądanie weryfikacji dotyczy subskrypcji zdarzeń oczekiwanego i funkcją kod sprawdzania poprawności do usługi Event Grid. Ten mechanizm uzgadniania jest obsługiwana we wszystkich wersjach usługi Event Grid.
 
-2. **Uzgadnianie ValidationURL (ręczne)** : w niektórych przypadkach nie można uzyskać dostępu do kodu źródłowego punktu końcowego w celu zaimplementowania uzgadniania ValidationCode. Na przykład w przypadku korzystania z usługi innej firmy (np. [zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)) nie można programowo odpowiedzieć na kod weryfikacyjny.
+2. **Uzgadnianie ValidationURL (ręcznie)** : W niektórych przypadkach, nie masz dostępu do kodu źródłowego punktu końcowego w celu wykonania uzgadniania ValidationCode. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie możesz programowo odpowiedzieć kodem sprawdzania poprawności.
 
-   Począwszy od wersji 2018-05-01-Preview, Event Grid obsługuje ręczne uzgadnianie walidacji. Jeśli tworzysz subskrypcję zdarzeń za pomocą zestawu SDK lub narzędzia korzystającego z interfejsu API w wersji 2018-05-01-Preview lub nowszej, Event Grid wysyła Właściwość `validationUrl` w części danych zdarzenia walidacji subskrypcji. Aby ukończyć uzgadnianie, Znajdź ten adres URL w danych zdarzenia i ręcznie Wyślij do niego żądanie GET. Możesz użyć klienta REST lub przeglądarki sieci Web.
+   Począwszy od wersji 2018-05-01-preview usługi Event Grid obsługuje uzgadniania ręcznej weryfikacji. Jeżeli tworzysz subskrypcję zdarzeń przy użyciu zestawu SDK lub narzędzia, która używa interfejsu API w wersji 2018-05-01-preview lub później, usługa Event Grid wysyła `validationUrl` właściwości w części danych zdarzeń sprawdzania poprawności subskrypcji. Aby ukończyć uzgadnianie, należy znaleźć tego adresu URL w danych zdarzeń i ręcznie Wyślij żądanie Pobierz do niego. Można użyć klienta REST lub przeglądarki sieci web.
 
-   Podany adres URL jest prawidłowy przez 5 minut. W tym czasie stan aprowizacji subskrypcji zdarzeń jest `AwaitingManualAction`. Jeśli weryfikacja ręczna nie zostanie zakończona w ciągu 5 minut, stan aprowizacji zostanie ustawiony na `Failed`. Przed rozpoczęciem walidacji ręcznej należy utworzyć subskrypcję zdarzeń.
+   Podany adres URL jest prawidłowy przez 5 minut. W tym czasie jest stan aprowizacji subskrypcji zdarzeń `AwaitingManualAction`. Jeśli weryfikacja ręczna nie zostanie zakończona w ciągu 5 minut, stan aprowizacji zostanie ustawiony na `Failed`. Należy utworzyć subskrypcję zdarzeń ponownie, przed rozpoczęciem ręcznej weryfikacji.
 
     Ten mechanizm uwierzytelniania wymaga również, aby punkt końcowy elementu webhook zwracał kod stanu HTTP 200, aby wiedział, że wpis dla zdarzenia sprawdzania poprawności został zaakceptowany, zanim będzie można go umieścić w trybie walidacji ręcznej. Innymi słowy, jeśli punkt końcowy zwraca 200, ale nie zwraca ponownie odpowiedzi na weryfikację, tryb przechodzi do trybu walidacji ręcznej. Jeśli adres URL sprawdzania poprawności jest dostępny w ciągu 5 minut, uzgadnianie walidacji jest uznawane za pomyślne.
 
 > [!NOTE]
 > Sprawdzanie poprawności przy użyciu certyfikatów z podpisem własnym nie jest obsługiwane. Zamiast tego użyj podpisanego certyfikatu z urzędu certyfikacji (CA).
 
-### <a name="validation-details"></a>Szczegóły walidacji
+### <a name="validation-details"></a>Szczegóły sprawdzania poprawności
 
-* W momencie tworzenia/aktualizowania subskrypcji zdarzeń Event Grid ogłasza zdarzenie weryfikacji subskrypcji w docelowym punkcie końcowym. 
-* Zdarzenie zawiera wartość nagłówka "AEG-Event-Type: SubscriptionValidation".
-* Treść zdarzenia ma ten sam schemat co inne zdarzenia Event Grid.
-* Właściwość eventType zdarzenia jest `Microsoft.EventGrid.SubscriptionValidationEvent`.
-* Właściwość Data zdarzenia zawiera właściwość `validationCode` z losowo generowanym ciągiem. Na przykład "validationCode: acb13...".
+* W momencie utworzenie/aktualizacja subskrypcji zdarzeń usługi Event Grid publikuje zdarzenie sprawdzania poprawności subskrypcji do docelowego punktu końcowego. 
+* Zdarzenie zawiera wartość nagłówka "Æg event-type: SubscriptionValidation".
+* Treść zdarzeń ma ten sam schemat, jak inne zdarzenia usługi Event Grid.
+* Typ zdarzenia właściwości zdarzenia `Microsoft.EventGrid.SubscriptionValidationEvent`.
+* Właściwości danych zdarzenia zawiera `validationCode` właściwości z ciągiem generowanym losowo. Na przykład "validationCode: acb13...".
 * Dane zdarzenia zawierają również właściwość `validationUrl` z adresem URL w celu ręcznej weryfikacji subskrypcji.
-* Tablica zawiera tylko zdarzenie walidacji. Inne zdarzenia są wysyłane w oddzielnym żądaniu po ECHA kodu weryfikacyjnego.
-* Zestawy SDK EventGrid dataplanes mają klasy odpowiadające danym zdarzenia weryfikacji subskrypcji i odpowiedzi na weryfikację subskrypcji.
+* Tablica zawiera tylko zdarzenia sprawdzania poprawności. Inne zdarzenia są wysyłane w oddzielnym żądaniu po odsyłania kod sprawdzania poprawności.
+* Zestawy SDK płaszczyzny danych EventGrid mają klas odpowiadających danych zdarzeń sprawdzania poprawności subskrypcji i odpowiedź weryfikacji subskrypcji.
 
-Przykład SubscriptionValidationEvent pokazano w następującym przykładzie:
+W poniższym przykładzie przedstawiono przykładowy SubscriptionValidationEvent:
 
 ```json
 [{
@@ -77,7 +77,7 @@ Przykład SubscriptionValidationEvent pokazano w następującym przykładzie:
 }]
 ```
 
-Aby udowodnić własność punktu końcowego, echo kod weryfikacyjny we właściwości validationResponse, jak pokazano w następującym przykładzie:
+Aby udowodnić własność punktu końcowego, odsyłania kod sprawdzania poprawności we właściwości validationResponse, jak pokazano w poniższym przykładzie:
 
 ```json
 {
@@ -87,56 +87,61 @@ Aby udowodnić własność punktu końcowego, echo kod weryfikacyjny we właści
 
 Należy zwrócić kod stanu odpowiedzi HTTP 200. Akceptowany protokół HTTP 202 nie został rozpoznany jako prawidłowa odpowiedź na weryfikację subskrypcji Event Grid. Żądanie HTTP musi zakończyć się w ciągu 30 sekund. Jeśli operacja nie zakończy się w ciągu 30 sekund, operacja zostanie anulowana i może zostać ponownie podjęta po 5 sekundach. Jeśli wszystkie próby zakończą się niepowodzeniem, będzie ono traktowane jako błąd uzgadniania walidacji.
 
-Można też ręcznie zweryfikować subskrypcję, wysyłając żądanie GET do adresu URL walidacji. Subskrypcja zdarzeń pozostaje w stanie oczekiwania do momentu zweryfikowania. Adres URL walidacji używa portu 553. Jeśli reguły zapory blokują port 553, reguły mogą wymagać aktualizacji w celu pomyślnego uzgodnienia ręcznego.
+Lub można ręcznie sprawdzić poprawność subskrypcji, wysyłając żądanie GET do adresu URL sprawdzania poprawności. Subskrypcja zdarzeń pozostaje w stanie oczekiwania do momentu zweryfikowania. Adres URL walidacji używa portu 553. Jeśli reguły zapory blokują port 553, reguły mogą wymagać aktualizacji w celu pomyślnego uzgodnienia ręcznego.
 
-Aby zapoznać się z przykładem obsługi uzgadniania subskrypcji, zobacz [ C# przykład](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
+Na przykład obsługi uzgadnianie sprawdzania poprawności subskrypcji, zobacz [ C# przykładowe](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ### <a name="checklist"></a>Lista kontrolna
 
 Podczas tworzenia subskrypcji zdarzeń, jeśli widzisz komunikat o błędzie, taki jak "próba zweryfikowania dostarczonego https:\//Your-Endpoint-here nie powiodła się. Aby uzyskać więcej informacji, odwiedź stronę https:\//aka.ms/esvalidation ", co oznacza, że wystąpił błąd uzgadniania walidacji. Aby rozwiązać ten problem, sprawdź następujące aspekty:
 
-* Czy masz kontrolę nad kodem aplikacji w docelowym punkcie końcowym? Jeśli na przykład używasz funkcji platformy Azure opartej na wyzwalaczu HTTP, czy masz dostęp do kodu aplikacji, aby wprowadzić w nim zmiany?
-* Jeśli masz dostęp do kodu aplikacji, zaimplementuj mechanizm uzgadniania oparty na ValidationCode, jak pokazano w powyższym przykładzie.
+* Masz kontrolę nad kodem aplikacji w docelowy punkt końcowy? Na przykład jeśli piszesz wyzwalacz HTTP na podstawie funkcji platformy Azure, czy masz dostęp do kodu aplikacji, aby wprowadzić zmiany?
+* Jeśli masz dostęp do kodu aplikacji, należy zaimplementować mechanizm uzgadnianie ValidationCode na podstawie, jak pokazano w powyższym przykładzie.
 
-* Jeśli nie masz dostępu do kodu aplikacji (na przykład jeśli używasz usługi innej firmy, która obsługuje elementy webhook), możesz użyć mechanizmu uzgadniania ręcznego. Upewnij się, że korzystasz z wersji interfejsu API 2018-05-01-Preview lub nowszej (Zainstaluj Event Grid rozszerzenia interfejsu wiersza polecenia platformy Azure), aby otrzymać validationUrl w zdarzeniu walidacji. Aby zakończyć ręczne uzgadnianie walidacji, Pobierz wartość właściwości `validationUrl` i przejdź do tego adresu URL w przeglądarce internetowej. Jeśli sprawdzanie poprawności zakończy się pomyślnie, w przeglądarce internetowej powinien zostać wyświetlony komunikat informujący o pomyślnym sprawdzeniu poprawności. Zobaczysz, że provisioningState subskrypcji zdarzeń to "powodzenie". 
+* Jeśli nie masz dostępu do kodu aplikacji (na przykład, jeśli używasz usługi innej firmy, która obsługuje elementy webhook), można użyć mechanizmu ręczne uzgadniania. Upewnij się, że używasz wersji interfejsu API 2018-05-01-preview lub nowszej (Instalacja rozszerzenia siatki zdarzeń wiersza polecenia platformy Azure) do odbierania validationUrl w przypadku sprawdzania poprawności. Aby ukończyć uzgadnianie ręcznej weryfikacji, należy uzyskać wartość `validationUrl` właściwości i odwiedź tego adresu URL w przeglądarce sieci web. Jeśli weryfikacja zakończy się pomyślnie, powinien zostać wyświetlony komunikat w przeglądarce sieci web, czy Weryfikacja powiodła się. Zobaczysz, że provisioningState subskrypcji zdarzeń to "Powodzenie". 
 
 ### <a name="event-delivery-security"></a>Zabezpieczenia dostarczania zdarzeń
 
-Punkt końcowy elementu webhook można zabezpieczyć przez dodanie parametrów zapytania do adresu URL elementu webhook podczas tworzenia subskrypcji zdarzeń. Ustaw jeden z tych parametrów zapytania jako wpis tajny, taki jak [token dostępu](https://en.wikipedia.org/wiki/Access_token). Element webhook może użyć klucza tajnego do rozpoznawania zdarzenia z Event Grid z prawidłowymi uprawnieniami. Event Grid będą zawierać te parametry zapytania w każdym dostarczeniu zdarzenia do elementu webhook.
+#### <a name="azure-ad"></a>Azure AD
 
-Podczas edytowania subskrypcji zdarzeń parametry zapytania nie są wyświetlane ani zwracane, chyba że w [interfejsie wiersza polecenia](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)platformy Azure jest używany parametr [--include-Full-Endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) .
+Punkt końcowy elementu webhook można zabezpieczyć za pomocą Azure Active Directory do uwierzytelniania i autoryzowania Event Grid do publikowania zdarzeń w punktach końcowych. Konieczne będzie utworzenie aplikacji Azure Active Directory, utworzenie zasady roli i usługi w aplikacji, która autoryzuje Event Grid, i skonfigurowanie subskrypcji zdarzeń do korzystania z aplikacji usługi Azure AD. [Dowiedz się, jak skonfigurować usługi AAD za pomocą Event Grid](secure-webhook-delivery.md).
 
-Na koniec należy pamiętać, że Azure Event Grid obsługuje tylko punkty końcowe elementu webhook protokołu HTTPS.
+#### <a name="query-parameters"></a>Parametry zapytania
+Punkt końcowy usługi elementu webhook można zabezpieczyć, dodając parametry zapytania do adresu URL elementu webhook, podczas tworzenia subskrypcji zdarzeń. Ustaw jeden z tych parametrów zapytania jako klucz tajny, takich jak [token dostępu](https://en.wikipedia.org/wiki/Access_token). Element webhook umożliwiają Rozpoznawaj zdarzenia pochodzi z usługi Event Grid przy użyciu prawidłowe uprawnienia klucza tajnego. Usługa Event Grid będzie zawierać te parametry zapytań w każdym dostarczanie zdarzeń do elementu webhook.
+
+Podczas edytowania subskrypcji zdarzeń, parametry zapytania nie są wyświetlane lub zwracane, chyba że [— obejmują — pełny — — adres url punktu końcowego](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parametr jest używany na platformie Azure [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
+
+Na koniec jest należy pamiętać, że usługi Azure Event Grid obsługuje tylko punkty końcowe HTTPS elementu webhook.
 
 ## <a name="event-subscription"></a>Subskrypcja zdarzeń
 
-Aby subskrybować zdarzenie, musisz udowodnić, że masz dostęp do źródła i obsługi zdarzeń. Dowód, że jesteś członkiem elementu webhook, został objęty poprzednią sekcją. Jeśli używasz procedury obsługi zdarzeń, która nie jest elementem webhook (takim jak centrum zdarzeń lub magazyn kolejki), musisz mieć dostęp do zapisu do tego zasobu. To sprawdzenie uprawnień uniemożliwia wysyłanie zdarzeń do zasobu przez nieautoryzowanego użytkownika.
+Aby subskrybować zdarzenie, muszą potwierdzić, że masz dostęp do źródła zdarzeń i obsługi. Potwierdzające, że jesteś właścicielem elementu WebHook zostało opisane w poprzedniej sekcji. Jeśli używasz programu obsługi zdarzeń, który nie jest element WebHook (np. event hub lub kolejki magazynu), należy się dostęp do zapisu do tego zasobu. To sprawdzenie uprawnień uniemożliwia nieautoryzowany użytkownik wysyła zdarzenia do zasobu.
 
-Użytkownik musi mieć uprawnienie **Microsoft. EventGrid/EventSubscriptions/Write** do zasobu, który jest źródłem zdarzenia. To uprawnienie jest wymagane, ponieważ piszesz nową subskrypcję w zakresie zasobu. Wymagany zasób różni się w zależności od tego, czy subskrybujesz temat systemowy czy temat niestandardowy. Oba typy zostały opisane w tej sekcji.
+Konieczne jest posiadanie **Microsoft.EventGrid/EventSubscriptions/Write** uprawnienia dla zasobu, który jest źródłem zdarzeń. To uprawnienie jest konieczne, ponieważ nowej subskrypcji w zakresie zasobów jest pisany. Wymagany zasób różni się zależnie od tego, czy w przypadku subskrybowania tematu system lub tematu niestandardowego. Oba typy są opisane w tej sekcji.
 
-### <a name="system-topics-azure-service-publishers"></a>Tematy systemowe (wydawcy usług platformy Azure)
+### <a name="system-topics-azure-service-publishers"></a>Tematy dotyczące systemu (wydawcy usług platformy Azure)
 
-W przypadku tematów systemowych należy mieć uprawnienia do napisania nowej subskrypcji zdarzeń w zakresie zasobu, który publikuje zdarzenie. Format zasobu to: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Tematy systemu musisz mieć uprawnienie do zapisu nowej subskrypcji zdarzeń w zakresie zasobów publikowanie zdarzenia. Format zasobu jest następujący: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Na przykład w celu subskrybowania zdarzenia na koncie magazynu o nazwie Moja **ACCT**wymagane jest uprawnienie Microsoft. EventGrid/EventSubscriptions/Write dla: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Na przykład, aby subskrybować zdarzenie na koncie magazynu o nazwie **myacct**, musisz mieć uprawnienie Microsoft.EventGrid/EventSubscriptions/Write na: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Tematy niestandardowe
 
-W przypadku niestandardowych tematów należy mieć uprawnienia do zapisywania nowej subskrypcji zdarzeń w zakresie tematu usługi Event Grid. Format zasobu to: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Niestandardowe tematy musisz mieć uprawnienie do zapisu nowej subskrypcji zdarzeń w zakresie tematu usługi event grid. Format zasobu jest następujący: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Na przykład w celu subskrybowania niestandardowego tematu o nazwie Moja **tematu**wymagane jest uprawnienie Microsoft. EventGrid/EventSubscriptions/Write do: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Na przykład do subskrybowania tematu niestandardowego o nazwie **mytopic**, musisz mieć uprawnienie Microsoft.EventGrid/EventSubscriptions/Write na: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
-## <a name="custom-topic-publishing"></a>Publikowanie tematów niestandardowych
+## <a name="custom-topic-publishing"></a>Publikowanie tematu niestandardowego
 
-Tematy niestandardowe wykorzystują sygnaturę dostępu współdzielonego (SAS) lub uwierzytelnianie klucza. Zalecamy używanie sygnatury dostępu współdzielonego, ale uwierzytelnianie klucza zapewnia proste programowanie i jest zgodne z wieloma istniejącymi wydawcami elementów webhook. 
+Tematy niestandardowe Użyj sygnatury dostępu współdzielonego (SAS) lub uwierzytelniania za pomocą klucza. Firma Microsoft zaleca sygnatury dostępu Współdzielonego, ale uwierzytelnianie za pomocą klucza udostępnia proste programowanie i jest zgodny z wielu istniejących wydawców elementu webhook. 
 
-Wartość uwierzytelniania należy uwzględnić w nagłówku HTTP. Dla sygnatury dostępu współdzielonego Użyj **AEG-SAS-token** dla wartości nagłówka. W przypadku uwierzytelniania za pomocą klucza Użyj wartości nagłówka **AEG-SAS-Key** .
+Wartość uwierzytelniania jest uwzględniona w nagłówku HTTP. Sygnatury dostępu Współdzielonego, można użyć **Æg sygnatury dostępu współdzielonego token** dla wartości nagłówka. W przypadku uwierzytelniania za pomocą klucza Użyj **Æg sygnatury dostępu współdzielonego klucza** dla wartości nagłówka.
 
-### <a name="key-authentication"></a>Uwierzytelnianie klucza
+### <a name="key-authentication"></a>Uwierzytelnianie za pomocą klucza
 
-Uwierzytelnianie klucza jest najprostszą formą uwierzytelniania. Użyj formatu: `aeg-sas-key: <your key>`
+Uwierzytelnianie za pomocą klucza jest najprostsza forma uwierzytelniania. Użyj formatu: `aeg-sas-key: <your key>`
 
-Na przykład przekazujesz klucz z:
+Na przykład polega na przekazaniu klucza przy użyciu:
 
 ```
 aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
@@ -144,19 +149,19 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 ### <a name="sas-tokens"></a>Tokeny sygnatur dostępu współdzielonego
 
-Tokeny sygnatury dostępu współdzielonego dla Event Grid obejmują zasób, czas wygaśnięcia i sygnaturę. Format tokenu sygnatury dostępu współdzielonego to: `r={resource}&e={expiration}&s={signature}`.
+Tokeny sygnatur dostępu Współdzielonego dla usługi Event Grid obejmują zasobu, czasu wygaśnięcia i podpis. Format tokenu sygnatury dostępu Współdzielonego: `r={resource}&e={expiration}&s={signature}`.
 
-Zasób jest ścieżką do tematu usługi Event Grid, do którego są wysyłane zdarzenia. Na przykład prawidłowa ścieżka zasobu to: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Zasób jest ścieżka do tematu usługi event grid do którego są wysyłane zdarzenia. Na przykład ścieżka prawidłowy zasób jest: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
-Sygnatura jest generowana z klucza.
+Podpis jest generowanie z kluczem.
 
-Na przykład prawidłowa wartość **AEG-SAS-token** to:
+Na przykład prawidłowy **Æg sygnatury dostępu współdzielonego token** wartość to:
 
 ```http
 aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
-Poniższy przykład tworzy token sygnatury dostępu współdzielonego do użycia z Event Grid:
+Poniższy przykład tworzy token SAS do użycia z usługą Event Grid:
 
 ```cs
 static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
@@ -181,28 +186,28 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 }
 ```
 
-## <a name="management-access-control"></a>Access Control zarządzania
+## <a name="management-access-control"></a>Kontrola dostępu do zarządzania
 
-Azure Event Grid umożliwia kontrolowanie poziomu dostępu nadawanego różnym użytkownikom w celu wykonywania różnych operacji zarządzania, takich jak subskrypcje zdarzeń listy, tworzenie nowych i generowanie kluczy. Event Grid używa kontroli dostępu opartej na rolach (RBAC) na platformie Azure.
+Usługa Azure Event Grid umożliwia kontrolowanie poziomu dostępu do różnych użytkowników może wykonać różne operacje zarządzania, takich jak lista subskrypcji zdarzeń, tworzenie nowych i generowanie kluczy. Kontrola dostępu oparta na rolach platformy Azure (RBAC) korzysta z usługi Event Grid.
 
 ### <a name="operation-types"></a>Typy operacji
 
-Event Grid obsługuje następujące akcje:
+Usługa Event Grid obsługuje następujące akcje:
 
-* Microsoft. EventGrid/*/Read
-* Microsoft. EventGrid/*/Write
-* Microsoft. EventGrid/*/Delete
-* Microsoft. EventGrid/eventSubscriptions/getFullUrl/akcja
-* Microsoft. EventGrid/tematy/listKeys/akcja
-* Microsoft. EventGrid/tematy/regenerateKey/akcja
+* Microsoft.EventGrid/*/read
+* Microsoft.EventGrid/*/write
+* Microsoft.EventGrid/*/delete
+* Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
+* Microsoft.EventGrid/topics/listKeys/action
+* Microsoft.EventGrid/topics/regenerateKey/action
 
-Ostatnie trzy operacje zwracają potencjalnie tajne informacje, które są filtrowane z normalnych operacji odczytu. Zaleca się ograniczenie dostępu do tych operacji. 
+Ostatnie trzy operacje zwracają potencjalnie poufne informacje, które pobiera przefiltrowane z normalnych operacji odczytu. Zalecane jest, można ograniczyć dostęp do tych operacji. 
 
 ### <a name="built-in-roles"></a>Wbudowane role
 
-Event Grid udostępnia dwie wbudowane role do zarządzania subskrypcjami zdarzeń. Są one ważne podczas implementowania [domen zdarzeń](event-domains.md) , ponieważ zapewniają użytkownikom uprawnienia wymagane do subskrybowania tematów w domenie zdarzeń. Role te są skoncentrowane na subskrypcjach zdarzeń i nie udzielają dostępu do akcji, takich jak tworzenie tematów.
+Zarządzanie subskrypcjami zdarzeń usługi Event Grid zapewnia dwie wbudowane role. Są one ważne podczas implementowania [domen zdarzeń](event-domains.md) ponieważ zapewniają użytkownikom uprawnienia muszą subskrybować tematy w domenie zdarzeń. Te role koncentrują się na subskrypcji zdarzeń i nie przyznać dostęp do akcji, takich jak tworzenie tematów.
 
-[Te role można przypisać do użytkownika lub grupy](../role-based-access-control/quickstart-assign-role-user-portal.md).
+Możesz [przypisania tych ról użytkownikowi lub grupie](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
 **Współautor EventGrid EventSubscription**: Zarządzanie operacjami subskrypcji Event Grid
 
@@ -274,11 +279,11 @@ Event Grid udostępnia dwie wbudowane role do zarządzania subskrypcjami zdarze�
 
 ### <a name="custom-roles"></a>Role niestandardowe
 
-Jeśli musisz określić uprawnienia, które są inne niż wbudowane role, możesz utworzyć role niestandardowe.
+Jeśli musisz określić uprawnienia, które są inne niż wbudowane role mogą tworzyć role niestandardowe.
 
-Poniżej przedstawiono Event Grid przykładowe definicje ról, które umożliwiają użytkownikom podejmowanie różnych akcji. Te role niestandardowe różnią się od wbudowanych ról, ponieważ udzielają szerszego dostępu niż tylko subskrypcje zdarzeń.
+Poniżej przedstawiono przykładowe definicje ról usługi Event Grid, których użytkownicy mogą wykonać różne operacje. Te role niestandardowe różnią się od wbudowanych ról, ponieważ powodują udzielenie szerszy dostęp niż po prostu subskrypcji zdarzeń.
 
-**EventGridReadOnlyRole. JSON**: Zezwalaj tylko na operacje tylko do odczytu.
+**EventGridReadOnlyRole.json**: Zezwalaj tylko na operacji tylko do odczytu.
 
 ```json
 {
@@ -297,7 +302,7 @@ Poniżej przedstawiono Event Grid przykładowe definicje ról, które umożliwia
 }
 ```
 
-**EventGridNoDeleteListKeysRole. JSON**: Zezwalaj na ograniczone akcje post, ale nie Zezwalaj na akcje usuwania.
+**EventGridNoDeleteListKeysRole.json**: Zezwalaj na akcje po ograniczony, ale nie zezwalaj akcje usuwania.
 
 ```json
 {
@@ -320,7 +325,7 @@ Poniżej przedstawiono Event Grid przykładowe definicje ról, które umożliwia
 }
 ```
 
-**EventGridContributorRole. JSON**: zezwala na wszystkie akcje związane z siatką zdarzeń.
+**EventGridContributorRole.json**: zezwala na wszystkie akcje siatki zdarzeń.
 
 ```json
 {
@@ -342,8 +347,8 @@ Poniżej przedstawiono Event Grid przykładowe definicje ról, które umożliwia
 }
 ```
 
-Role niestandardowe można tworzyć przy użyciu [programu PowerShell](../role-based-access-control/custom-roles-powershell.md), [interfejsu wiersza polecenia platformy Azure i usługi](../role-based-access-control/custom-roles-cli.md) [rest](../role-based-access-control/custom-roles-rest.md).
+Można tworzyć niestandardowe role z [PowerShell](../role-based-access-control/custom-roles-powershell.md), [wiersza polecenia platformy Azure](../role-based-access-control/custom-roles-cli.md), i [REST](../role-based-access-control/custom-roles-rest.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z wprowadzeniem do Event Grid, zobacz [Informacje o Event Grid](overview.md)
+* Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Event Grid](overview.md)

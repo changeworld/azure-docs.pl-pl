@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 08/11/2019
+ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1ff46ec437de671d5804eeb31a5d1fb0284a8946
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123516"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158386"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych funkcji Hyper-V za pomocą oceny serwera Azure Migrate
 
@@ -119,10 +119,8 @@ Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
 
   **Algorytm** | **Wartość skrótu**
   --- | ---
-  MD5 | d0a68e76ea24ba4e4a494c0dab95e90e
-  SHA256 | 0551221d2a9de75c352c201ccc88f7f10e87e5df1ecda42bfd4ec6c8defc57c0
-
-
+  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
+  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 ### <a name="create-the-appliance-vm"></a>Tworzenie maszyny wirtualnej urządzenia
 
@@ -223,7 +221,7 @@ Połącz się z urządzeniem z hostami lub klastrami funkcji Hyper-V, a następn
     - Można dodać klaster, nawet jeśli występują problemy z konkretnymi hostami w klastrze.
 4. Po sprawdzeniu poprawności kliknij przycisk **Zapisz i Rozpocznij odnajdywanie** , aby rozpocząć proces odnajdywania.
 
-Spowoduje to uruchomienie odnajdywania. Dla każdego hosta pozostanie około 1,5 minut na obsługę metadanych odnalezionych serwerów w Azure Portal. 
+Spowoduje to uruchomienie odnajdywania. Dla każdego hosta pozostanie około 1,5 minut na obsługę metadanych odnalezionych serwerów w Azure Portal.
 
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
@@ -324,7 +322,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 **Dostępność punktu danych** | **Ocenę zaufania**
 --- | ---
 0%–20% | 1 gwiazdka
-21%–40% | 2 gwiazdki
+21%-40% | 2 gwiazdki
 41%–60% | 3 gwiazdki
 61%–80% | 4 gwiazdki
 81%-100% | 5 gwiazdek

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927112"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167800"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -148,7 +148,7 @@ Ten atrybut powoduje, że ASP.NET sprawdza obecność pliku cookie sesji zawiera
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Jak aplikacja sieci Web deleguje logowanie do usługi Azure AD i uzyskuje token
 
 Uwierzytelnianie użytkowników odbywa się za pośrednictwem przeglądarki. Protokół OpenID Connect używa standardowych komunikatów protokołu HTTP.
-- Aplikacja sieci Web wysyła HTTP 202 (redirect) do przeglądarki w celu korzystania z usługi Azure AD.
+- Aplikacja sieci Web wysyła HTTP 302 (redirect) do przeglądarki w celu korzystania z usługi Azure AD.
 - Po uwierzytelnieniu użytkownika usługa Azure AD wysyła token do aplikacji sieci Web przy użyciu przekierowania za pośrednictwem przeglądarki.
 - Przekierowanie jest dostarczane przez aplikację internetową w formie identyfikatora URI przekierowania. Ten identyfikator URI przekierowania jest zarejestrowany w obiekcie aplikacji usługi Azure AD. Może istnieć kilka identyfikatorów URI przekierowania, ponieważ aplikacja może zostać wdrożona w kilku adresach URL. W związku z tym aplikacja sieci Web będzie również musiała określić identyfikator URi przekierowania, który ma być używany.
 - Usługa Azure AD weryfikuje, czy identyfikator URI przekierowania Wysłany przez aplikację sieci Web jest jednym z zarejestrowanych identyfikatorów URI przekierowania dla aplikacji.
@@ -159,7 +159,7 @@ Opisany powyżej przepływ ma zastosowanie z niewielkimi różnicami w aplikacja
 
 Aplikacje klasyczne i mobilne mogą korzystać z osadzonego formantu sieci Web lub przeglądarki systemowej w celu uwierzytelniania. Na poniższym diagramie przedstawiono, w jaki sposób aplikacja klasyczna lub mobilna używa biblioteki uwierzytelniania firmy Microsoft (MSAL) w celu uzyskania tokenów dostępu i wywołania interfejsów API sieci Web.
 
-![Aplikacja klasyczna, która wygląda](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![Aplikacja klasyczna, która wygląda](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 MSAL używa przeglądarki do uzyskiwania tokenów, a podobnie jak w przypadku aplikacji internetowych, delegowania uwierzytelniania do usługi Azure AD.
 

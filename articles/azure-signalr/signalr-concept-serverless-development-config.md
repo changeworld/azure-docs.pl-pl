@@ -1,17 +1,17 @@
 ---
-title: Opracowywanie i Konfigurowanie aplikacji usługi sygnalizującej Azure Functions
+title: Opracowywanie & konfigurowania Azure Functions aplikacji — usługa Azure Signal
 description: Szczegółowe informacje na temat sposobu tworzenia i konfigurowania aplikacji bezserwerowych w czasie rzeczywistym przy użyciu Azure Functions i usługi Azure Signal Service
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882305"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157655"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions opracowywanie i Konfigurowanie za pomocą usługi Azure Signal Service
 
@@ -21,9 +21,9 @@ W tym artykule opisano koncepcje dotyczące tworzenia i konfigurowania aplikacji
 
 ## <a name="signalr-service-configuration"></a>Konfiguracja usługi sygnalizującego
 
-Usługę sygnałów platformy Azure można skonfigurować w różnych trybach. W przypadku używania z Azure Functions należy skonfigurować usługę w trybie bezserwerowym.
+Usługę sygnałów platformy Azure można skonfigurować w różnych trybach. W przypadku używania z Azure Functions należy skonfigurować usługę w trybie *Bezserwerowym* .
 
-W Azure Portal odszukaj stronę *Ustawienia* zasobu usługi sygnalizującego. Ustaw *tryb usługi* na bezserwerowy.
+W Azure Portal odszukaj stronę *Ustawienia* zasobu usługi sygnalizującego. Ustaw *tryb usługi* na *bezserwerowy*.
 
 ![Tryb usługi sygnalizującej](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -38,7 +38,7 @@ Aplikacja bezserwerowa w czasie rzeczywistym skompilowana przy użyciu Azure Fun
 
 Aplikacja kliencka wymaga ważnego tokenu dostępu, aby połączyć się z usługą Azure Signal. Token dostępu może być anonimowy lub uwierzytelniony dla danego identyfikatora użytkownika. Aplikacje usługi sygnalizacji bezserwerowej wymagają punktu końcowego HTTP o nazwie "Negotiate", aby uzyskać token i inne informacje o połączeniu, takie jak adres URL punktu końcowego usługi sygnalizującego.
 
-Użyj wyzwalanej przez protokół HTTP funkcji platformy Azure i powiązania danych wejściowych *SignalRConnectionInfo* w celu wygenerowania obiektu informacji o połączeniu. Funkcja musi mieć trasę HTTP, która się skończy `/negotiate`.
+Użyj wyzwalanej przez protokół HTTP funkcji platformy Azure i powiązania danych wejściowych *SignalRConnectionInfo* w celu wygenerowania obiektu informacji o połączeniu. Funkcja musi mieć trasę HTTP kończącą się na `/negotiate`.
 
 Aby uzyskać więcej informacji na temat tworzenia funkcji Negotiate, zobacz odwołanie do [powiązania danych wejściowych *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
 
@@ -46,11 +46,11 @@ Aby dowiedzieć się więcej o sposobie tworzenia uwierzytelnionego tokenu, zapo
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Wysyłanie komunikatów i zarządzanie członkostwem w grupie
 
-Użyj powiązania danych wyjściowych sygnalizującego, aby wysyłać komunikaty do klientów podłączonych do usługi Azure signaler. Komunikaty można rozgłaszać do wszystkich klientów lub wysyłać je do podzbioru klientów, którzy są uwierzytelniani przy użyciu określonego identyfikatora użytkownika lub zostali dodani do określonej grupy.
+Użyj powiązania danych wyjściowych *sygnalizującego* , aby wysyłać komunikaty do klientów podłączonych do usługi Azure signaler. Komunikaty można rozgłaszać do wszystkich klientów lub wysyłać je do podzbioru klientów, którzy są uwierzytelniani przy użyciu określonego identyfikatora użytkownika lub zostali dodani do określonej grupy.
 
-Użytkowników można dodawać do co najmniej jednej grupy. Można również użyć powiązania danych wyjściowych sygnalizującego, aby dodać lub usunąć użytkowników do/z grup.
+Użytkowników można dodawać do co najmniej jednej grupy. Można również użyć powiązania danych wyjściowych *sygnalizującego* , aby dodać lub usunąć użytkowników do/z grup.
 
-Aby uzyskać więcej informacji, zobacz [ informacje o powiązaniach wyjściowych sygnalizującego](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Aby uzyskać więcej informacji, zobacz [Informacje o powiązaniach wyjściowych *sygnalizującego* ](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
 
 ### <a name="signalr-hubs"></a>Centra sygnałów
 
@@ -67,7 +67,7 @@ Aby nawiązać połączenie z usługą sygnalizującego, klient musi zakończyć
 1. Prześlij żądanie do punktu końcowego *negocjowania* protokołu HTTP omówionego powyżej, aby uzyskać prawidłowe informacje o połączeniu
 1. Połącz z usługą sygnalizującą przy użyciu adresu URL punktu końcowego usługi i tokenu dostępu uzyskanego z punktu końcowego *negocjowania*
 
-Zestawy SDK klienta sygnalizujące już zawierają logikę wymaganą do wykonania uzgadniania negocjacji. Przekaż adres URL punktu końcowego negocjowania, pomniejszony `negotiate` o segment, do `HubConnectionBuilder`zestawu SDK. Oto przykład kodu JavaScript:
+Zestawy SDK klienta sygnalizujące już zawierają logikę wymaganą do wykonania uzgadniania negocjacji. Przekaż adres URL punktu końcowego negocjowania, który zostanie pomniejszony o segment `negotiate`, na `HubConnectionBuilder`zestawu SDK. Oto przykład kodu JavaScript:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -102,10 +102,10 @@ Klient JavaScript/TypeScript wysyła żądania HTTP do funkcji Negotiate, aby za
 
 #### <a name="localhost"></a>Lokalnym
 
-Podczas uruchamiania aplikacji funkcji na komputerze lokalnym można dodać sekcję do pliku `Host` *Local. Settings. JSON* w celu włączenia mechanizmu CORS. `Host` W sekcji Dodaj dwie właściwości:
+Podczas uruchamiania aplikacji funkcji na komputerze lokalnym można dodać sekcję `Host` do pliku *Local. Settings. JSON* w celu włączenia mechanizmu CORS. W sekcji `Host` Dodaj dwie właściwości:
 
-* `CORS`— Wprowadź podstawowy adres URL, który jest źródłem aplikacji klienckiej.
-* `CORSCredentials`-Ustaw, `true` aby zezwalać na żądania "withCredentials"
+* `CORS` — wprowadź podstawowy adres URL, który jest źródłem aplikacji klienckiej.
+* `CORSCredentials` — ustaw ją na `true`, aby zezwolić na żądania "withCredentials"
 
 Przykład:
 
@@ -163,13 +163,13 @@ Skonfiguruj klientów sygnalizujących, aby używały adresu URL API Management.
 
 ### <a name="using-app-service-authentication"></a>Korzystanie z uwierzytelniania App Service
 
-Azure Functions ma wbudowane uwierzytelnianie obsługujące popularnych dostawców, takich jak Facebook, Twitter, konto Microsoft, Google i Azure Active Directory. Tę funkcję można zintegrować z powiązaniem *SignalRConnectionInfo* w celu utworzenia połączeń z usługą Azure signaler, która została UWIERZYTELNIONA jako identyfikator użytkownika. Aplikacja może wysyłać wiadomości za pomocą powiązania danych wyjściowych sygnalizującego, które są przeznaczone dla tego identyfikatora użytkownika.
+Azure Functions ma wbudowane uwierzytelnianie obsługujące popularnych dostawców, takich jak Facebook, Twitter, konto Microsoft, Google i Azure Active Directory. Tę funkcję można zintegrować z powiązaniem *SignalRConnectionInfo* w celu utworzenia połączeń z usługą Azure signaler, która została UWIERZYTELNIONA jako identyfikator użytkownika. Aplikacja może wysyłać wiadomości za pomocą powiązania danych wyjściowych *sygnalizującego* , które są przeznaczone dla tego identyfikatora użytkownika.
 
 W Azure Portal na karcie *funkcje platformy* aplikacji funkcji Otwórz okno Ustawienia *uwierzytelniania/autoryzacji* . Postępuj zgodnie z dokumentacją [App Service Authentication](../app-service/overview-authentication-authorization.md) , aby skonfigurować uwierzytelnianie przy użyciu wybranego przez siebie dostawcy tożsamości.
 
-Po skonfigurowaniu uwierzytelnione żądania HTTP będą zawierać `x-ms-client-principal-name` `x-ms-client-principal-id` odpowiednio nagłówki i nazwy użytkowników oraz identyfikatory użytkownika tożsamości uwierzytelnionej.
+Po skonfigurowaniu uwierzytelnione żądania HTTP będą zawierać odpowiednio nagłówki `x-ms-client-principal-name` i `x-ms-client-principal-id` zawierające nazwę użytkownika i identyfikator logowania uwierzytelnionej tożsamości.
 
-Za pomocą tych nagłówków w konfiguracji powiązania *SignalRConnectionInfo* można tworzyć połączenia uwierzytelnione. Poniżej znajduje się przykład C# negocjowania funkcji, która `x-ms-client-principal-id` używa nagłówka.
+Za pomocą tych nagłówków w konfiguracji powiązania *SignalRConnectionInfo* można tworzyć połączenia uwierzytelnione. Poniżej znajduje się przykład C# negocjowania funkcji korzystającej z nagłówka `x-ms-client-principal-id`.
 
 ```csharp
 [FunctionName("negotiate")]
@@ -184,7 +184,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-Następnie można wysyłać komunikaty do tego użytkownika przez ustawienie `UserId` właściwości komunikatu sygnalizującego.
+Następnie można wysyłać komunikaty do tego użytkownika przez ustawienie właściwości `UserId` komunikatu sygnalizującego.
 
 ```csharp
 [FunctionName("SendMessage")]

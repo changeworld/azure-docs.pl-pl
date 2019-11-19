@@ -1,17 +1,17 @@
 ---
 title: Przewodnik Szybki start — interfejs API REST usługi Azure SignalR Service
-description: Przewodnik Szybki start dotyczący korzystania z interfejsu API REST usługi Azure SignalR Service.
+description: Dowiedz się, jak korzystać z interfejsu API REST w usłudze Azure Signal Service. Znajdź szczegóły specyfikacji interfejsu API REST.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724654"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157683"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Szybki start: tworzenie przekazów komunikatów w czasie rzeczywistym z poziomu aplikacji konsolowej
 
@@ -126,7 +126,7 @@ Wersja | Interfejs API stanu | Drzwi | Określona wersja
 
 Lista dostępnych interfejsów API dla każdej konkretnej wersji znajduje się na poniższej liście.
 
-Interfejs API | `1.0-preview` | `1.0`
+API | `1.0-preview` | `1.0`
 --- | --- | ---
 [Rozgłoś do wszystkich](#broadcast) | **&#x2713;** | **&#x2713;**
 [Rozgłoś do grupy](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -136,7 +136,7 @@ Wyślij do niektórych użytkowników | **&#x2713;** (przestarzałe) | `N / A`
 [Dodawanie użytkownika do grupy](#add-user-to-group) | `N / A` | **&#x2713;**
 [Usuwanie użytkownika z grupy](#remove-user-from-group) | `N / A` | **&#x2713;**
 
-<a name="broadcast"> </a>
+<a name="broadcast"></a>
 ### <a name="broadcast-to-everyone"></a>Rozgłoś do wszystkich
 
 Wersja | Metoda HTTP interfejsu API | Adres URL żądania | Treść żądania
@@ -144,7 +144,7 @@ Wersja | Metoda HTTP interfejsu API | Adres URL żądania | Treść żądania
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>` | Jak wyżej
 
-<a name="broadcast-group"> </a>
+<a name="broadcast-group"></a>
 ### <a name="broadcast-to-a-group"></a>Rozgłoś do grupy
 
 Wersja | Metoda HTTP interfejsu API | Adres URL żądania | Treść żądania
@@ -152,7 +152,7 @@ Wersja | Metoda HTTP interfejsu API | Adres URL żądania | Treść żądania
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Jak wyżej
 
-<a name="send-user"> </a>
+<a name="send-user"></a>
 ### <a name="sending-to-specific-users"></a>Wyślij do określonych użytkowników
 
 Wersja | Metoda HTTP interfejsu API | Adres URL żądania | Treść żądania
@@ -160,14 +160,14 @@ Wersja | Metoda HTTP interfejsu API | Adres URL żądania | Treść żądania
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>` | Jak wyżej
 
-<a name="add-user-to-group"> </a>
+<a name="add-user-to-group"></a>
 ### <a name="adding-a-user-to-a-group"></a>Dodaj użytkownika do grupy
 
 Wersja | Metoda HTTP interfejsu API | Adres URL żądania
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
-<a name="remove-user-from-group"> </a>
+<a name="remove-user-from-group"></a>
 ### <a name="removing-a-user-from-a-group"></a>Usuń użytkownika z grupy
 
 Wersja | Metoda HTTP interfejsu API | Adres URL żądania
@@ -176,9 +176,9 @@ Wersja | Metoda HTTP interfejsu API | Adres URL żądania
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start przedstawiono sposób użycia interfejsu API REST w celu emisji komunikatów w czasie rzeczywistym z usługi SignalR dla klientów. Następnie Dowiedz się więcej o tym, jak opracowywać i wdrażać usługi Azure Functions przy użyciu usługi SignalR powiązanie, które bazuje na usłudze interfejsu API REST.
+W tym przewodniku szybki start przedstawiono sposób korzystania z interfejsu API REST w celu emitowania komunikatów w czasie rzeczywistym od usługi sygnalizującej do klientów. Następnie Dowiedz się więcej na temat tworzenia i wdrażania Azure Functions za pomocą powiązania usługi sygnalizującego, który jest oparty na interfejsie API REST.
 
 > [!div class="nextstepaction"]
-> [Tworzenie usługi Azure Functions za pomocą powiązań usługi Azure SignalR Service](signalr-quickstart-azure-functions-csharp.md)
+> [Opracowywanie Azure Functions przy użyciu powiązań usługi platformy Azure](signalr-quickstart-azure-functions-csharp.md)

@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7f840a99ab76548c16389955cf49791036cc63a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123497"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158364"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Ocenianie serwerów fizycznych za pomocą Azure Migrate: Ocena serwera
-
-> [!NOTE]
-> Jeśli ta funkcja nie jest jeszcze widoczna w portalu Azure Migrate, zaczekaj. Zostanie ona wyświetlona w ciągu następnego tygodnia lub.
- 
 
 W tym artykule pokazano, jak oceniać lokalne serwery fizyczne przy użyciu Azure Migrate: narzędzia do oceny serwera.
 
@@ -112,7 +108,8 @@ Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
 
   **Algorytm** | **Wartość skrótu**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Uruchom skrypt Instalatora Azure Migrate
 
@@ -135,7 +132,7 @@ Uruchom skrypt w następujący sposób:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Po pomyślnym zakończeniu działania skryptu zostanie uruchomiona aplikacja sieci Web urządzenia. 
+Po pomyślnym zakończeniu działania skryptu zostanie uruchomiona aplikacja sieci Web urządzenia.
 
 W razie jakichkolwiek problemów możesz uzyskać dostęp do dzienników skryptów w witrynie C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log w celu rozwiązywania problemów.
 
@@ -166,7 +163,7 @@ Skonfiguruj urządzenie po raz pierwszy.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zarejestruj urządzenie w Azure Migrate
 
 1. Kliknij przycisk **Zaloguj**. Jeśli ta wartość nie jest wyświetlana, upewnij się, że w przeglądarce wyłączono blokowanie wyskakujących okienek.
-2. Na nowej karcie Zaloguj się przy użyciu poświadczeń platformy Azure. 
+2. Na nowej karcie Zaloguj się przy użyciu poświadczeń platformy Azure.
     - Zaloguj się przy użyciu nazwy użytkownika i hasła.
     - Logowanie przy użyciu numeru PIN nie jest obsługiwane.
 3. Po pomyślnym zalogowaniu Wróć do aplikacji sieci Web.
@@ -188,7 +185,7 @@ Można dodać jeden zestaw poświadczeń dla serwerów z systemami Windows i Lin
     - Aby usunąć serwer, wybierz pozycję > **Usuń**.
 4. Po sprawdzeniu poprawności kliknij przycisk **Zapisz i Rozpocznij odnajdywanie** , aby rozpocząć proces odnajdywania.
 
-Spowoduje to uruchomienie odnajdywania. Aby metadane wykrytego serwera pojawiły się w Azure Portal, zajmie około 1,5 minut na serwer. 
+Spowoduje to uruchomienie odnajdywania. Aby metadane wykrytego serwera pojawiły się w Azure Portal, zajmie około 1,5 minut na serwer.
 
 ### <a name="verify-servers-in-the-portal"></a>Weryfikowanie serwerów w portalu
 
@@ -289,7 +286,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 **Dostępność punktu danych** | **Ocenę zaufania**
 --- | ---
 0%–20% | 1 gwiazdka
-21%–40% | 2 gwiazdki
+21%-40% | 2 gwiazdki
 41%–60% | 3 gwiazdki
 61%–80% | 4 gwiazdki
 81%-100% | 5 gwiazdek

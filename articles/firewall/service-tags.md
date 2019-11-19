@@ -1,29 +1,29 @@
 ---
-title: Omówienie zapory usługi Azure service tags
-description: W tym artykule przedstawiono omówienie procedury tagi usługi zapory usługi Azure.
+title: Omówienie tagów usługi Zapora platformy Azure
+description: Tag usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować złożoność tworzenia reguły zabezpieczeń.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 6/27/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d0ac36e415c056dffc9c75d00968ff74c2156e63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450168"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168693"
 ---
-# <a name="azure-firewall-service-tags"></a>Usługa Azure tagi usługi zapory
+# <a name="azure-firewall-service-tags"></a>Tagi usługi Zapora platformy Azure
 
 Tag usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować złożoność tworzenia reguły zabezpieczeń. Nie można utworzyć własnego tagu usługi ani określić adresów IP uwzględnionych w tagu. Firma Microsoft zarządza prefiksami adresów obejmowanymi przez tag usługi i automatycznie aktualizuje tag usługi, gdy adresy ulegną zmianie.
 
-Tagi usługi w usłudze Azure zapory może służyć w pole docelowe zasady sieciowej. Można je zamiast konkretnych adresów IP.
+Tagów usługi Zapora platformy Azure można używać w polu docelowym reguły sieciowe. Można ich użyć zamiast konkretnych adresów IP.
 
-## <a name="supported-service-tags"></a>Obsługiwane tagi usługi
+## <a name="supported-service-tags"></a>Obsługiwane Tagi usług
 
-Zobacz [grup zabezpieczeń](../virtual-network/security-overview.md#service-tags) listę tagów usługi, które są dostępne do użycia w regułach sieciowej zapory usługi Azure.
+Zobacz [grupy zabezpieczeń](../virtual-network/security-overview.md#service-tags) , aby uzyskać listę tagów usługi dostępnych do użycia w regułach sieci zapory platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat reguł zapory usługi Azure, zobacz [reguły zapory na platformie Azure przetwarzanie logiki](rule-processing.md).
+Aby dowiedzieć się więcej na temat reguł zapory platformy Azure, zobacz [logika przetwarzania reguł zapory platformy Azure](rule-processing.md).

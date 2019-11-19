@@ -1,89 +1,89 @@
 ---
-title: Rozwiązywanie problemów z połączonych rejestracji dla usługi Azure AD SSPR oraz uwierzytelnianie wieloskładnikowe (wersja zapoznawcza) — usługi Azure Active Directory
-description: Rozwiązywanie problemów z uwierzytelniania wieloskładnikowego w usłudze Azure AD i Samoobsługowe resetowanie haseł połączone rejestracji (wersja zapoznawcza)
+title: Rozwiązywanie problemów z rejestracją łączną dla usług Azure AD SSPR i Multi-Factor Authentication (wersja zapoznawcza) — Azure Active Directory
+description: Rozwiązywanie problemów z usługą Azure AD Multi-Factor Authentication i rejestracja łączona samoobsługowego resetowania hasła (wersja zapoznawcza)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e586105d8b2ec85e4ebd85046185ddc21112f0e0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414629"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167826"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Rozwiązywanie problemów z połączone rejestracji informacje zabezpieczeń (wersja zapoznawcza)
+# <a name="troubleshooting-combined-security-information-registration-preview"></a>Rozwiązywanie problemów z rejestracją połączonych informacji zabezpieczeń (wersja zapoznawcza)
 
-Informacje przedstawione w tym artykule jest przeznaczona do przeprowadzają administratorów, którzy są rozwiązywania problemów zgłaszanych przez użytkowników proces rejestracji połączone.
+Informacje przedstawione w tym artykule dotyczą administratorów, którzy rozwiązywają problemy zgłaszane przez użytkowników połączonego środowiska rejestracji.
 
 |     |
 | --- |
-| Połączone zabezpieczeń informacji o rejestracji dla usługi Azure Multi-Factor Authentication i resetowania hasła usługi Azure Active Directory (Azure AD) to funkcja publicznej wersji zapoznawczej usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Rejestracja informacji o zabezpieczeniach dotycząca usług Azure Multi-Factor Authentication i Azure Active Directory (Azure AD) samoobsługowego resetowania hasła jest publiczną funkcją w wersji zapoznawczej usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
-Zdarzenia zarejestrowane dla rejestracji połączone znajdują się w kategorii metod uwierzytelniania w usłudze Azure AD dzienniki inspekcji.
+Zdarzenia zarejestrowane dla połączonej rejestracji znajdują się w kategorii metody uwierzytelniania w dziennikach inspekcji usługi Azure AD.
 
-![Inspekcji platformy Azure AD rejestruje zdarzenia rejestracji przedstawiający interfejsu](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Interfejs dzienników inspekcji usługi Azure AD przedstawiający zdarzenia rejestracji](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
-Poniższa tabela zawiera listę wszystkich zdarzeń inspekcji generowanych przez połączone rejestracji:
+W poniższej tabeli wymieniono wszystkie zdarzenia inspekcji wygenerowane przez łączną rejestrację:
 
-| Działanie | Stan | Reason | Opis |
+| Działanie | Stan | Przyczyna | Opis |
 | --- | --- | --- | --- |
-| Użytkownik zarejestrowany wszystkie wymagane informacje zabezpieczające | Powodzenie | Użytkownik zarejestrowany wszystkie wymagane informacje zabezpieczające. | To zdarzenie występuje, gdy użytkownik zostanie pomyślnie zakończony rejestracji.|
-| Użytkownik zarejestrowany wszystkie wymagane informacje zabezpieczające | Niepowodzenie | Użytkownik anulował zabezpieczeń informacji o rejestracji. | To zdarzenie występuje, gdy użytkownik anuluje rejestracji z trybu przerwania.|
-| Użytkownik zarejestrowany informacje zabezpieczające | Powodzenie | Użytkownik zarejestrowany *metoda*. | To zdarzenie występuje, gdy użytkownik rejestruje poszczególne metody. *Metoda* może być wystawcy uwierzytelnienia aplikacji, telefonicznej, wiadomości E-mail, zabezpieczeń pytania, aplikacji hasła, alternatywny numer telefonu i tak dalej.| 
-| Użytkownik przejrzeć informacje zabezpieczające | Powodzenie | Użytkownik pomyślnie przejrzeć informacje zabezpieczające. | To zdarzenie występuje, gdy użytkownik wybierze **wygląda dobrze** na stronie Przegląd informacji.|
-| Użytkownik przejrzeć informacje zabezpieczające | Niepowodzenie | Użytkownik nie może przejrzeć informacje zabezpieczające. | To zdarzenie występuje, gdy użytkownik wybierze **wygląda dobrze** na informacje o zabezpieczeniach Przejrzyj strony, ale coś się nie powiedzie, do wewnętrznej bazy danych.|
-| Użytkownik usunął informacje zabezpieczające | Powodzenie | Użytkownik usunął *metoda*. | To zdarzenie występuje, gdy użytkownik usuwa poszczególne metody. *Metoda* może być wystawcy uwierzytelnienia aplikacji, telefonicznej, wiadomości E-mail, zabezpieczeń pytania, aplikacji hasła, alternatywny numer telefonu i tak dalej.|
-| Użytkownik usunął informacje zabezpieczające | Niepowodzenie | Nie można usunąć użytkownika *metoda*. | To zdarzenie występuje, gdy użytkownik próbuje usunąć metody, ale próba nie powiedzie się z jakiegoś powodu. *Metoda* może być wystawcy uwierzytelnienia aplikacji, telefonicznej, wiadomości E-mail, zabezpieczeń pytania, aplikacji hasła, alternatywny numer telefonu i tak dalej.|
-| Informacje o zabezpieczeniach domyślne użytkownika zmieniła się | Powodzenie | Użytkownik zmienił zabezpieczające domyślne *metoda*. | To zdarzenie występuje, gdy użytkownik zmienia domyślną metodę. *Metoda* może być powiadomienie w aplikacji wystawcy uwierzytelnienia, kodu z mojej aplikacji authenticator lub tokenu, wywołanie + X XXXXXXXXXX, tekst, kod, aby + X XXXXXXXXX i tak dalej.|
-| Informacje o zabezpieczeniach domyślne użytkownika zmieniła się | Niepowodzenie | Użytkownik nie może zmienić domyślną zabezpieczające dla *metoda*. | To zdarzenie występuje, gdy użytkownik próbuje zmienić domyślną metodę, ale próba nie powiedzie się z jakiegoś powodu. *Metoda* może być powiadomienie w aplikacji wystawcy uwierzytelnienia, kodu z mojej aplikacji authenticator lub tokenu, wywołanie + X XXXXXXXXXX, tekst, kod, aby + X XXXXXXXXX i tak dalej.|
+| Użytkownik zarejestrował wszystkie wymagane informacje zabezpieczające | Powodzenie | Użytkownik zarejestrował wszystkie wymagane informacje zabezpieczające. | To zdarzenie występuje, gdy użytkownik pomyślnie zakończył rejestrację.|
+| Użytkownik zarejestrował wszystkie wymagane informacje zabezpieczające | Niepowodzenie | Użytkownik anulował rejestrację informacji zabezpieczających. | To zdarzenie występuje, gdy użytkownik anuluje rejestrację w trybie przerwania.|
+| Informacje zabezpieczające zarejestrowane przez użytkownika | Powodzenie | *Metoda*zarejestrowana przez użytkownika. | To zdarzenie występuje, gdy użytkownik rejestruje indywidualną metodę. *Metodą* może być aplikacja uwierzytelniania, numer telefonu, adres e-mail, pytania zabezpieczające, hasło aplikacji, alternatywny numer telefonu i tak dalej.| 
+| Informacje o zabezpieczeniach zrecenzowanych przez użytkownika | Powodzenie | Użytkownik pomyślnie sprawdził informacje zabezpieczające. | To zdarzenie występuje, gdy użytkownik wybierze pozycję **wygląda dobrze** na stronie Przegląd informacji zabezpieczających.|
+| Informacje o zabezpieczeniach zrecenzowanych przez użytkownika | Niepowodzenie | Użytkownik nie mógł przejrzeć informacji zabezpieczających. | To zdarzenie występuje, gdy użytkownik wybierze pozycję **wygląda dobrze** na stronie Przegląd informacji zabezpieczających, ale coś nie powiedzie się w zapleczu.|
+| Użytkownik usunął informacje zabezpieczające | Powodzenie | *Metoda*usunięta przez użytkownika. | To zdarzenie występuje, gdy użytkownik usunie indywidualną metodę. *Metodą* może być aplikacja uwierzytelniania, numer telefonu, adres e-mail, pytania zabezpieczające, hasło aplikacji, alternatywny numer telefonu i tak dalej.|
+| Użytkownik usunął informacje zabezpieczające | Niepowodzenie | Usunięcie *metody*przez użytkownika nie powiodło się. | To zdarzenie występuje, gdy użytkownik próbuje usunąć metodę, ale próba nie powiedzie się z jakiegoś powodu. *Metodą* może być aplikacja uwierzytelniania, numer telefonu, adres e-mail, pytania zabezpieczające, hasło aplikacji, alternatywny numer telefonu i tak dalej.|
+| Zmieniono domyślne informacje o zabezpieczeniach użytkownika | Powodzenie | Użytkownik zmienił domyślne informacje zabezpieczające dla *metody*. | To zdarzenie występuje, gdy użytkownik zmieni metodę domyślną. *Metodą* może być powiadomienie aplikacji uwierzytelniania, kod z mojej aplikacji lub tokenu uwierzytelniania, wywołać + x XXXXXXXXXX, tekst kodu do + x xxxxxxxxx i tak dalej.|
+| Zmieniono domyślne informacje o zabezpieczeniach użytkownika | Niepowodzenie | Użytkownik nie mógł zmienić domyślnych informacji zabezpieczających dla *metody*. | To zdarzenie występuje, gdy użytkownik próbuje zmienić metodę domyślną, ale próba nie powiedzie się z jakiegoś powodu. *Metodą* może być powiadomienie aplikacji uwierzytelniania, kod z mojej aplikacji lub tokenu uwierzytelniania, wywołać + x XXXXXXXXXX, tekst kodu do + x xxxxxxxxx i tak dalej.|
 
-## <a name="troubleshooting-interrupt-mode"></a>Rozwiązywanie problemów z trybu przerwania
-
-| Objaw | Kroki rozwiązywania problemów |
-| --- | --- |
-| Nie widzę metod, oczekiwano się. | 1. Sprawdź, czy użytkownik ma rolę administratora usługi Azure AD. Jeśli tak, wyświetlanie różnic zasad administrator funkcji samoobsługowego resetowania HASEŁ. <br> 2. Ustal, czy użytkownik jest jest przerwane ze względu na wymuszanie rejestracji uwierzytelniania wieloskładnikowego lub samoobsługowego resetowania HASEŁ rejestracji wymuszania. Zobacz [schemat blokowy](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) w obszarze "Łączony rejestracji modes" do określenia metody, które mają być wyświetlane. <br> 3. Określ, jak ostatnio zmieniono zasady uwierzytelniania wieloskładnikowego lub samoobsługowego resetowania HASEŁ. Jeśli ostatnie zmiany, może upłynąć trochę czasu, następnie zaktualizowane zasady do propagowania.|
-
-## <a name="troubleshooting-manage-mode"></a>Rozwiązywanie problemów z zarządzania w trybie
+## <a name="troubleshooting-interrupt-mode"></a>Rozwiązywanie problemów z trybem przerwania
 
 | Objaw | Kroki rozwiązywania problemów |
 | --- | --- |
-| Nie mam opcję, aby dodać określoną metodę. | 1. Ustal, czy metoda jest włączone dla uwierzytelniania wieloskładnikowego lub samoobsługowego resetowania HASEŁ. <br> 2. Jeśli metoda jest włączony, ponownie zapisać zasady, a następnie poczekaj 1 – 2 godzin przed testowaniem ponownie. <br> 3. Jeśli metoda jest włączona, upewnij się, że użytkownik nie zostało już skonfigurowane maksymalną liczbę tej metody, które mają zezwolenie na konfigurowanie.|
+| Nie widzę oczekiwanych metod. | 1. Sprawdź, czy użytkownik ma rolę administratora usługi Azure AD. Jeśli tak, Wyświetl różnice zasad administratora SSPR. <br> 2. Ustal, czy użytkownik jest przerywany z powodu wymuszania rejestracji Multi-Factor Authentication lub wymuszania rejestracji SSPR. Aby określić, które metody mają być wyświetlane, zobacz [schemat blokowy](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) w obszarze "połączone tryby rejestracji". <br> 3. Określ, jak ostatnio Multi-Factor Authentication lub zasady SSPR zostały zmienione. Jeśli zmiana była niedawna, może upłynąć trochę czasu, zanim zaktualizowane zasady są propagowane.|
 
-## <a name="disable-combined-registration"></a>Wyłącz rejestrację połączone
+## <a name="troubleshooting-manage-mode"></a>Rozwiązywanie problemów z trybem zarządzania
 
-Kiedy użytkownik rejestruje numer telefonu i/lub aplikacji mobilnej w nowym połączeniu doświadczenia, nasze sygnatury usługi zestaw flag (StrongAuthenticationMethods) dla tych metod na tego użytkownika. Ta funkcjonalność umożliwia użytkownikowi przeprowadzenie uwierzytelniania wieloskładnikowego za pomocą tych metod, zawsze wtedy, gdy jest wymagane uwierzytelnianie wieloskładnikowe.
+| Objaw | Kroki rozwiązywania problemów |
+| --- | --- |
+| Nie mam opcji dodania określonej metody. | 1. Ustal, czy metoda jest włączona dla Multi-Factor Authentication lub SSPR. <br> 2. Jeśli metoda jest włączona, Zapisz zasady ponownie i poczekaj 1-2 godzin przed ponownym przetestowaniem. <br> 3. Jeśli metoda jest włączona, upewnij się, że użytkownik nie skonfigurował jeszcze maksymalnej liczby tej metody, którą mogą konfigurować.|
 
-Jeśli administrator umożliwia korzystania z wersji zapoznawczej, użytkownikom zarejestrowanie się za pomocą nowego środowiska, a następnie Administrator powoduje wyłączenie korzystania z wersji zapoznawczej, użytkownicy mogą nieświadomie także zostać zarejestrowana uwierzytelniania Multi-Factor Authentication.
+## <a name="disable-combined-registration"></a>Wyłącz rejestrację połączoną
 
-Jeśli użytkownik, który ma łączna Rejestracja zakończona przechodzi do bieżącej strony rejestracji resetowania haseł w [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup), użytkownik jest monitowany o wykonywać uwierzytelnianie wieloskładnikowe, zanim uzyskają dostęp tę stronę. Ten krok jest oczekiwana z technicznego punktu widzenia, ale jest nowa dla osób, które zostały wcześniej zarejestrowane dla funkcji samoobsługowego resetowania HASEŁ tylko. Chociaż ten dodatkowy krok zwiększyć poziom bezpieczeństwa użytkownika, podając inny poziom zabezpieczeń, administratorów może być wycofać użytkownikom, aby były one nie będzie mógł wykonywać uwierzytelnianie wieloskładnikowe.  
+Gdy użytkownik rejestruje numer telefonu i/lub aplikację mobilną w nowym połączonym środowisku, Nasza usługa sygnaturuje zestaw flag (StrongAuthenticationMethods) dla tych metod na tym użytkowniku. Ta funkcja umożliwia użytkownikowi wykonywanie Multi-Factor Authentication przy użyciu tych metod, gdy Multi-Factor Authentication jest wymagane.
 
-### <a name="how-to-roll-back-users"></a>Jak przywrócić użytkowników
+Jeśli administrator włączy Podgląd, użytkownicy rejestrują się za pomocą nowego środowiska, a następnie administrator wyłącza wersję zapoznawczą, użytkownicy mogą nieświadomie rejestrować się do Multi-Factor Authentication.
 
-Chcąc, jako administrator zresetować ustawienia usługi Multi-Factor Authentication użytkownika, można użyć skryptu programu PowerShell podanego w następnej sekcji. Skrypt spowoduje wyczyszczenie właściwość StrongAuthenticationMethods dla aplikacji mobilnej użytkownika i/lub numer telefonu. Po uruchomieniu tego skryptu dla użytkowników muszą ponownie rejestrację dla usługi Multi-Factor Authentication, jeśli ich potrzebują. Firma Microsoft zaleca testowania wycofywania z jednego lub dwóch użytkowników przed wycofania wszystkich użytkowników.
+Jeśli użytkownik, który ukończył rejestrację, przejdzie do bieżącej strony rejestracji funkcji samoobsługowego resetowania hasła (SSPR) w [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup), użytkownik zostanie poproszony o przeprowadzenie Multi-Factor Authentication przed uzyskaniem dostępu do tej strony. Ten krok jest oczekiwany z technicznego punktu widzenia, ale jest nowy dla użytkowników, którzy zostali wcześniej zarejestrowani wyłącznie do SSPR. Mimo że ten dodatkowy krok ulepsza stan zabezpieczeń użytkownika, zapewniając inny poziom zabezpieczeń, Administratorzy mogą chcieć wycofać swoich użytkowników, aby nie mieli już możliwości wykonywania Multi-Factor Authentication.  
 
-Poniższe kroki pomoże wycofać użytkownika lub grupy użytkowników.
+### <a name="how-to-roll-back-users"></a>Jak wycofać użytkowników
+
+Jeśli administrator chce zresetować ustawienia Multi-Factor Authentication użytkownika, można użyć skryptu programu PowerShell podanego w następnej sekcji. Skrypt wyczyści Właściwość StrongAuthenticationMethods dla aplikacji mobilnej i/lub numeru telefonu użytkownika. Jeśli uruchomisz ten skrypt dla użytkowników, będzie konieczne ponowne zarejestrowanie się w celu Multi-Factor Authentication, jeśli ich potrzebują. Zalecamy przetestowanie wycofywania z jednego lub dwóch użytkowników przed wycofaniem wszystkich użytkowników, których to dotyczy.
+
+Poniższe kroki pomogą Ci wycofać użytkownika lub grupę użytkowników.
 
 #### <a name="prerequisites"></a>Wymagania wstępne
 
-1. Zainstaluj odpowiednie moduły programu Azure AD PowerShell. W oknie programu PowerShell uruchom następujące polecenia, aby zainstalować moduły:
+1. Zainstaluj odpowiednie moduły programu PowerShell usługi Azure AD. W oknie programu PowerShell uruchom następujące polecenia, aby zainstalować moduły:
 
    ```powershell
    Install-Module -Name MSOnline
    Import-Module MSOnline
    ```
 
-1. Zapisz listę identyfikatory obiektów użytkownika na komputerze jako plik tekstowy o identyfikatorze jeden na wiersz. Zanotuj lokalizację pliku.
-1. Zapisz poniższy skrypt na komputerze i zanotuj lokalizację skryptu:
+1. Zapisz listę identyfikatorów obiektów użytkownika, których dotyczy ten komputer, jako plik tekstowy z jednym IDENTYFIKATORem w każdym wierszu. Zanotuj lokalizację pliku.
+1. Zapisz następujący skrypt na komputerze i zanotuj lokalizację skryptu:
 
    ```powershell
    <# 
@@ -144,22 +144,22 @@ Poniższe kroki pomoże wycofać użytkownika lub grupy użytkowników.
    }
    ```
 
-#### <a name="rollback"></a>Wycofywanie
+#### <a name="rollback"></a>Wycofuj
 
-W oknie programu PowerShell, uruchom następujące polecenie podając lokalizacje pliku skryptu i użytkownika. Wprowadź poświadczenia administratora globalnego, po wyświetleniu monitu. Skryptu zostanie wygenerowana wynik operacji aktualizacji każdego użytkownika.
+W oknie programu PowerShell uruchom następujące polecenie, podając plik skryptu i lokalizacji plików użytkownika. Po wyświetleniu monitu wprowadź poświadczenia administratora globalnego. Skrypt będzie wyprowadzał wynik każdej operacji aktualizacji użytkownika.
 
 `<script location> -path <user file location>`
 
 ### <a name="disable-the-preview-experience"></a>Wyłącz środowisko wersji zapoznawczej
 
-Aby wyłączyć środowisko wersji zapoznawczej dla użytkowników, wykonaj następujące kroki:
+Aby wyłączyć obsługę wersji zapoznawczej dla użytkowników, wykonaj następujące kroki:
 
-1. Zaloguj się do witryny Azure portal jako administrator użytkowników.
-2. Przejdź do **usługi Azure Active Directory** > **ustawienia użytkownika** > **Zarządzanie ustawieniami funkcji w wersji zapoznawczej panelu dostępu**.
-3. W obszarze **użytkownicy mogą używać funkcji w wersji zapoznawczej do rejestrowania i zarządzania nimi informacje zabezpieczające**, równa selektor **Brak**, a następnie wybierz pozycję **Zapisz**.
+1. Zaloguj się do Azure Portal jako administrator użytkownika.
+2. Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika** > **Zarządzanie ustawieniami funkcji Podgląd panelu dostępu**.
+3. W obszarze **Użytkownicy mogą używać funkcji w wersji zapoznawczej na potrzeby rejestrowania i zarządzania informacjami o zabezpieczeniach**, ustawić dla selektora wartość **Brak**, a następnie wybrać pozycję **Zapisz**.
 
-Użytkownicy otrzymują monit nie będzie można zarejestrować za pomocą środowiska w wersji zapoznawczej.
+Użytkownicy nie będą już monitowani o rejestrację przy użyciu funkcji Podgląd.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej na temat publicznej wersji zapoznawczej połączone rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Dowiedz się więcej na temat publicznej wersji zapoznawczej połączonej rejestracji do samoobsługowego resetowania haseł i Multi-Factor Authentication platformy Azure](concept-registration-mfa-sspr-combined.md)

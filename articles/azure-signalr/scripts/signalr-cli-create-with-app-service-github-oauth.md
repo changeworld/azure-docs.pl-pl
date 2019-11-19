@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji internetowej korzystającej z uwierzytelniania usług SignalR Service i GitHub
+title: Tworzenie aplikacji sieci Web przy użyciu usługi sygnalizującej i uwierzytelniania GitHub
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji internetowej korzystającej z uwierzytelniania usług SignalR Service i GitHub
 author: sffamily
 ms.service: signalr
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: b5d05e37d9abb5b38fa5b5722c7f60d5f508a755
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579374"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158048"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Tworzenie aplikacji internetowej korzystającej z uwierzytelniania usług SignalR Service i GitHub
 

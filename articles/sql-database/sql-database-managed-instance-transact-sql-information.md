@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823324"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158298"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -48,7 +48,7 @@ Ta strona zawiera również informacje o [tymczasowych znanych problemach](#Issu
 - [PORZUĆ GRUPĘ DOSTĘPNOŚCI](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Klauzula [SET HADR Cluster](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) instrukcji [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Tworzenie kopii zapasowych
+### <a name="backup"></a>Backup
 
 Wystąpienia zarządzane mają automatyczne kopie zapasowe, dlatego użytkownicy mogą tworzyć pełne kopie zapasowe `COPY_ONLY`. Kopie zapasowe, dzienniki i migawki plików nie są obsługiwane.
 
@@ -78,7 +78,7 @@ Ograniczenia:
 
 Aby uzyskać informacje o kopiach zapasowych przy użyciu języka T-SQL, zobacz [kopia zapasowa](/sql/t-sql/statements/backup-transact-sql).
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="auditing"></a>Inspekcja
 
@@ -280,7 +280,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](/sql/t-sql/statements/a
   - Obsługiwane są czynności zadania T-SQL.
   - Obsługiwane są następujące zadania replikacji:
     - Dziennik transakcji
-    - Snapshot
+    - Migawka
     - Dystrybutor
   - Obsługiwane są etapy zadania SSIS.
   - Inne typy kroków zadań nie są obecnie obsługiwane:
@@ -299,7 +299,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](/sql/t-sql/statements/a
 
 Następujące funkcje agenta SQL nie są obecnie obsługiwane:
 
-- Proxy
+- Serwery proxy
 - Planowanie zadań w bezczynnym procesorze CPU
 - Włączanie lub wyłączanie agenta
 - Alerty
@@ -519,14 +519,14 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ## <a name="Environment"></a>Ograniczenia środowiska
 
-### <a name="subnet"></a>Podsieć
+### <a name="subnet"></a>Subnet
 -  Nie można umieścić żadnych innych zasobów (np. maszyn wirtualnych) w podsieci, w której wdrożono wystąpienie zarządzane. Wdróż te zasoby przy użyciu innej podsieci.
 - Podsieć musi mieć wystarczającą liczbę dostępnych [adresów IP](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wartość minimalna to 16, podczas gdy zalecenie ma mieć co najmniej 32 adresów IP w podsieci.
 - [Punktów końcowych usługi nie można kojarzyć z podsiecią wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Upewnij się, że opcja punkty końcowe usługi jest wyłączona podczas tworzenia sieci wirtualnej.
 - Liczba rdzeni wirtualnych i typy wystąpień, które można wdrożyć w regionie, mają pewne [ograniczenia i](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)ograniczenia.
 - Istnieją pewne [reguły zabezpieczeń, które należy zastosować w podsieci](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-### <a name="vnet"></a>Environment
+### <a name="vnet"></a>Sieć wirtualna
 - Sieć wirtualną można wdrożyć przy użyciu modelu zasobów — model klasyczny dla sieci wirtualnej nie jest obsługiwany.
 - Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.
 - Niektóre usługi, takie jak środowiska App Service, Aplikacje logiki i wystąpienia zarządzane (używane na potrzeby replikacji geograficznej, replikacji transakcyjnej lub połączonych serwerów) nie mogą uzyskać dostępu do wystąpień zarządzanych w różnych regionach, jeśli ich sieci wirtualnych są połączone przy użyciu [globalnego Komunikacja równorzędna](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
@@ -564,16 +564,6 @@ Wystąpienie SQL Server/zarządzane [nie zezwala użytkownikowi na usuwanie niep
 Ciągła instrukcja `RESTORE`, proces migracji usługi migracji danych oraz wbudowane przywracanie do punktu w czasie zablokują aktualizację warstwy usług lub zmiany rozmiaru istniejącego wystąpienia i tworzy nowe wystąpienia do momentu zakończenia procesu przywracania. Proces przywracania spowoduje zablokowanie tych operacji na zarządzanych wystąpieniach i pulach wystąpień w tej samej podsieci, w której jest uruchomiony proces przywracania. Nie ma to żadnego oddziaływania na wystąpienia w pulach wystąpień. Operacje tworzenia lub zmiany warstwy usług nie będą kończyć się niepowodzeniem lub przekroczenia limitu czasu — będą one działać po ukończeniu lub anulowaniu procesu przywracania.
 
 **Obejście**: Poczekaj na zakończenie procesu przywracania lub Anuluj proces przywracania, jeśli operacja tworzenia lub aktualizacji warstwy usługi ma wyższy priorytet.
-
-### <a name="missing-validations-in-restore-process"></a>Brak walidacji w procesie przywracania
-
-**Data:** Wrz 2019
-
-Instrukcja `RESTORE` i wbudowanego przywracania do punktu w czasie nie wykonują niektórych testów nessecary dla przywróconej bazy danych:
-- Instrukcja **DBCC CHECKDB** - `RESTORE` nie należy wykonywać `DBCC CHECKDB` na przywróconej bazie danych. Jeśli oryginalna baza danych jest uszkodzona lub plik kopii zapasowej jest uszkodzony podczas kopiowania do usługi Azure Blob Storage, automatyczne kopie zapasowe nie zostaną wykonane, a pomoc techniczna platformy Azure skontaktuje się z klientem. 
-- Wbudowany proces przywracania do punktu w czasie nie sprawdza, czy automatyczne kopie zapasowe z wystąpienia Krytyczne dla działania firmy zawierają [obiekty OLTP w pamięci](sql-database-in-memory.md#in-memory-oltp). 
-
-**Obejście**: przed utworzeniem kopii zapasowej należy wykonać `DBCC CHECKDB` w źródłowej bazie danych, a przy użyciu opcji `WITH CHECKSUM` w kopii zapasowej można uniknąć potencjalnych uszkodzeń, które mogą zostać przywrócone w wystąpieniu zarządzanym. Upewnij się, że źródłowa baza danych nie zawiera [obiektów OLTP w pamięci](sql-database-in-memory.md#in-memory-oltp) , jeśli są przywracane w warstwie ogólnego przeznaczenia.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po przejściu w tryb failover może zajść konieczność ponownego skonfigurowania przyrządu zasobów na Krytyczne dla działania firmyej warstwie usług
 

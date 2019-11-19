@@ -1,19 +1,14 @@
 ---
-title: Model danych dla Azure Backup
+title: Power BI model danych
 description: W tym artykule omówiono Power BI szczegóły modelu danych dla Azure Backup raportów.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: dacurwin
-ms.openlocfilehash: f3db0e6a78eada52f2b5936f5194138d97ebcca6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2f06da16280070448d7b42dc5e1dcfc46354cfa
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074888"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172800"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Model danych dla raportów usługi Azure Backup
 
@@ -27,7 +22,7 @@ Power BI udostępnia funkcje dostosowywania, za pomocą których można [tworzy�
 
 Do tworzenia raportów i dostosowywania istniejących raportów można użyć poniższych pól dostępnych jako część modelu danych.
 
-### <a name="alert"></a>Zgłoś alert
+### <a name="alert"></a>Alert
 
 Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z alertami.
 
@@ -124,7 +119,7 @@ Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z z
 | MonthlyRetentionFormat |Tekst |Typ konfiguracji do przechowywania miesięcznie. Na przykład dziennie w oparciu o dzień, co tydzień w oparciu o tydzień |
 | MonthlyRetentionTimes |Tekst |Data i godzina skonfigurowania miesięcznego przechowywania |
 | MonthlyRetentionWeeksOfTheMonth |Tekst |Tygodnie miesiąca w przypadku skonfigurowania miesięcznego przechowywania. Na przykład, First, Last itd. |
-| policyName |Tekst |Nazwa zdefiniowanych zasad |
+| PolicyName |Tekst |Nazwa zdefiniowanych zasad |
 | PolicyUniqueId |Tekst |Unikatowy identyfikator identyfikujący zasady |
 | Czas przechowywania |Tekst |Typ zasad przechowywania. Na przykład codziennie, co tydzień, co miesiąc, co rok |
 | WeeklyRetentionDaysOfTheWeek |Tekst |Dni tygodnia wybrane do przechowywania tygodniowego |

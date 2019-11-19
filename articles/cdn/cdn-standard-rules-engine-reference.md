@@ -1,68 +1,70 @@
 ---
-title: Informacje o aparacie Azure CDN standardowych reguł | Microsoft Docs
-description: Dokumentacja referencyjna dotycząca warunków i akcji aparatu Azure CDN standardowych reguł.
+title: Dokumentacja aparatu reguł standardowych dla Azure CDN | Microsoft Docs
+description: Dokumentacja referencyjna dotycząca warunków i akcji w aparacie standardowych reguł dla usługi Azure Content Delivery Network (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: 6fb7e704f3d33cff8c29386b8aba9d8289037cbb
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615938"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171560"
 ---
-# <a name="azure-cdn-from-microsoft-rules-engine-reference"></a>Azure CDN z dokumentacji aparatu Microsoft Rules
+# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Dokumentacja aparatu reguł standardowych dla Azure CDN
 
-W tym artykule przedstawiono szczegółowe opisy warunków i postanowień dopasowania dla [aparatu standardowych reguł](cdn-standard-rules-engine.md)usługi Azure Content Delivery Network (CDN).
+W [aparacie reguł standardowych](cdn-standard-rules-engine.md) dla platformy Azure Content Delivery Network (Azure CDN) reguła zawiera co najmniej jeden warunek dopasowania i akcję. Ten artykuł zawiera szczegółowe opisy warunków dopasowania i funkcji, które są dostępne w aparacie reguł standardowych dla Azure CDN.
 
-Aparat reguł został zaprojektowany z myślą o sposobie przetwarzania określonych typów żądań przez sieć CDN.
+Aparat reguł został zaprojektowany z myślą o sposobie przetwarzania określonych typów żądań przez standardową Azure CDN.
 
-**Typowe zastosowania**:
+**Typowe zastosowania reguł**:
 
 - Przesłoń lub Zdefiniuj niestandardowe zasady pamięci podręcznej.
 - Przekieruj żądania.
-- Modyfikowanie nagłówków żądań i odpowiedzi HTTP
+- Modyfikuj nagłówki żądań i odpowiedzi HTTP.
 
 ## <a name="terminology"></a>Terminologia
 
-Reguła jest definiowana przy użyciu [**warunków zgodności**](cdn-standard-rules-engine-match-conditions.md)i [**akcji**](cdn-standard-rules-engine-actions.md). Te elementy zostały wyróżnione na poniższej ilustracji:
+Aby zdefiniować regułę w aparacie reguł, ustaw odpowiednie [warunki](cdn-standard-rules-engine-match-conditions.md) i [Akcje](cdn-standard-rules-engine-actions.md):
 
- ![Struktura reguł sieci CDN](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
+ ![Struktura reguł Azure CDN](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
 
-Każda reguła może mieć maksymalnie 4 warunki dopasowania i 3 akcje. Istnieje maksymalnie 5 reguł na punkt końcowy usługi CDN. Ponadto istnieje reguła w miejscu domyślnie nazywana **regułą globalną**. Jest to reguła bez zgodności, w której akcje zdefiniowane w ramach programu będą zawsze wyzwalane. Ta reguła jest uwzględniona w ograniczeniu do bieżącego 5 reguł.
+Każda reguła może mieć maksymalnie cztery warunki dopasowania i trzy akcje. Każdy punkt końcowy Azure CDN może mieć maksymalnie pięć reguł. 
+
+Uwzględniony w bieżącym limicie pięciu reguł dla punktu końcowego Azure CDN jest domyślną *regułą globalną*. Reguła globalna nie ma pasujących warunków, a akcje, które są zdefiniowane w regule, zawsze są wyzwalane.
 
 ## <a name="syntax"></a>Składnia
 
-Sposób, w jaki znaki specjalne są traktowane, różni się w zależności od tego, jak warunek dopasowania lub actopm obsługuje wartości tekstowe. Warunek dopasowania lub funkcja może interpretować tekst w jeden z następujących sposobów:
+Sposób traktowania znaków specjalnych w regule różni się w zależności od sposobu, w jaki różne warunki dopasowania i akcje obsługują wartości tekstowe. Warunek dopasowania lub akcja może interpretować tekst w jeden z następujących sposobów:
 
-1. [**Wartości literału**](#literal-values)
-2. [**Wartości symboli wieloznacznych**](#wildcard-values)
+- [Wartości literału](#literal-values)
+- [Wartości symboli wieloznacznych](#wildcard-values)
 
 
 ### <a name="literal-values"></a>Wartości literału
 
-Tekst interpretowany jako wartość literału traktuje wszystkie znaki specjalne, z wyjątkiem symbolu%, jako część wartości, która musi być dopasowana. Innymi słowy, warunek dopasowania literału ustawiony na `\'*'\` jest spełniony tylko wtedy, gdy zostanie znaleziona dokładna wartość (czyli `\'*'\`).
+Tekst interpretowany jako wartość literału traktuje wszystkie znaki specjalne, *z wyjątkiem% symbol* jako część wartości, która musi być dopasowana w regule. Na przykład warunek dopasowania literału ustawiony na `'*'` jest spełniony tylko wtedy, gdy zostanie znaleziona dokładna wartość `'*'`.
 
 Znak procentu jest używany do wskazania kodowania adresu URL (na przykład `%20`).
 
 ### <a name="wildcard-values"></a>Wartości symboli wieloznacznych
 
-Tekst, który jest interpretowany jako wartość symbolu wieloznacznego, przypisuje dodatkowe znaczenie do znaków specjalnych. W poniższej tabeli opisano sposób interpretowania następującego zestawu znaków:
+Tekst interpretowany jako wartość symbol wieloznaczny przypisuje dodatkowe znaczenie do znaków specjalnych. W poniższej tabeli opisano sposób interpretacji określonych znaków specjalnych w aparacie standardowych reguł:
 
-Opis | Opis
+Znak | Opis
 ----------|------------
-\ | Ukośnik odwrotny jest używany do ucieczki znaków określonych w tej tabeli. Ukośnik odwrotny musi być określony bezpośrednio przed znakiem specjalnym, który powinien zostać zmieniony.<br/>Na przykład następująca składnia wyprowadza gwiazdkę: `\*`
+\ | Ukośnik odwrotny jest używany do ucieczki znaków określonych w tej tabeli. Ukośnik odwrotny musi być określony bezpośrednio przed znakiem specjalnym, który powinien zostać zmieniony. Na przykład następująca składnia wyprowadza gwiazdkę: `\*`
 % | Znak procentu jest używany do wskazania kodowania adresu URL (na przykład `%20`).
 \* | Gwiazdka jest symbolem wieloznacznym reprezentującym jeden lub więcej znaków.
-Przestrzeń kosmiczna | Znak spacji wskazuje, że warunek dopasowania może być spełniony przez jedną z określonych wartości lub wzorców.
-wartościami | Pojedynczy cudzysłów nie ma specjalnego znaczenia. Jednak zestaw pojedynczych cudzysłowów służy do wskazywania, że wartość powinna być traktowana jako wartość literału. Może być używana w następujący sposób:<br><br/>-Pozwala na spełnienie warunku dopasowywania za każdym razem, gdy określona wartość pasuje do dowolnej części wartości porównania.  Na przykład `'ma'` pasuje do żadnego z następujących ciągów: <br/><br/>/Business/**ma**rathon/Asset.htm<br/>**ma**p. gif<br/>/business/template. **ma**p<br /><br />— Umożliwia określenie znaku specjalnego jako znaku literału. Na przykład można określić znak spacji literału, umieszczając znak spacji w zestawie pojedynczych cudzysłowów (czyli `' '` lub `'sample value'`).<br/>-Umożliwia określenie wartości pustej. Określ wartość pustą, określając zestaw pojedynczych cudzysłowów (czyli "").<br /><br/>**Ważne:**<br/>— Jeśli określona wartość nie zawiera symbolu wieloznacznego, zostanie automatycznie uznana za wartość literału, co oznacza, że nie jest konieczne określenie zestawu pojedynczych cudzysłowów.<br/>-Jeśli ukośnik odwrotny nie powoduje ucieczki innego znaku w tej tabeli, jest on ignorowany, gdy jest określony w ramach zestawu pojedynczych cudzysłowów.<br/>Innym sposobem określenia znaku specjalnego jako znaku literału jest wypróbowanie go przy użyciu ukośnika odwrotnego (czyli `\`).
+odstęp | Znak spacji wskazuje, że warunek dopasowania może być spełniony przez jedną z określonych wartości lub wzorców.
+znaki pojedynczego cudzysłowu | Pojedynczy cudzysłów nie ma specjalnego znaczenia. Jednak zestaw znaków pojedynczego cudzysłowu wskazuje, że wartość powinna być traktowana jako wartość literału. Znaki pojedynczego cudzysłowu mogą być używane w następujący sposób:<ul><li>Aby zezwolić na spełnienie warunku dopasowywania za każdym razem, gdy określona wartość pasuje do dowolnej części wartości porównania.  Na przykład `'ma'` pasuje do żadnego z następujących ciągów: <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template. **ma**p</li></ul><li>Aby zezwolić na określenie znaku specjalnego jako znaku literału. Na przykład można określić znak spacji literału, umieszczając znak spacji w zestawie znaków pojedynczego cudzysłowu (`' '` lub `'<sample value>'`).</li><li>, Aby umożliwić określenie pustej wartości. Określ wartość pustą, określając zestaw znaków pojedynczego cudzysłowu ( **' '** ).</li></ul>**Ważne**:<br /><ul><li>Jeśli określona wartość nie zawiera symbolu wieloznacznego, wartość zostanie automatycznie uznana za wartość literału. Nie trzeba określać zestawu znaków pojedynczego cudzysłowu dla wartości literału.</li><li>Jeśli ukośnik odwrotny nie jest używany do ucieczki innego znaku w tej tabeli, ukośnik odwrotny jest ignorowany, gdy jest określony w zestawie znaków pojedynczego cudzysłowu.</li><li>Innym sposobem określenia znaku specjalnego jako znaku literału jest wypróbowanie go przy użyciu ukośnika odwrotnego (`\`).</li></ul>
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Warunki dopasowania aparatu reguł standardowych](cdn-standard-rules-engine-match-conditions.md)
-- [Standardowe działania aparatu reguł](cdn-standard-rules-engine-actions.md)
+- [Warunki dopasowania w aparacie standardowych reguł](cdn-standard-rules-engine-match-conditions.md)
+- [Akcje w aparacie reguł standardowych](cdn-standard-rules-engine-actions.md)
 - [Wymuszanie protokołu HTTPS przy użyciu standardowego aparatu reguł](cdn-standard-rules-engine.md)
 - [Przegląd Azure CDN](cdn-overview.md)

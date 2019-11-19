@@ -1,18 +1,14 @@
 ---
 title: Rozwiązywanie problemów dotyczących tworzenia kopii zapasowej udziałów plików platformy Azure
 description: W tym artykule znajdują się informacje dotyczące rozwiązywania problemów występujących podczas ochrony udziałów plików platformy Azure.
-ms.service: backup
-author: dcurwin
-ms.author: dacurwin
 ms.date: 08/20/2019
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: c589cba1386433e13318dabbd2873f789ee42df3
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.topic: conceptual
+ms.openlocfilehash: 62a4f83c93230c150a7c406d0614dbee3d125e9c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091505"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171767"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej udziałów plików platformy Azure
 
@@ -37,7 +33,7 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 
 | Komunikaty o błędach | Wskazówki dotyczące obejść lub rozwiązań |
 | ------------------ | ----------------------------- |
-| Nie można odnaleźć konta magazynu w celu skonfigurowania kopii zapasowej na potrzeby udziału plików platformy Azure | <ul><li>Poczekaj na zakończenie odnajdywania. <li>Sprawdź, czy żaden udział plików z konta magazynu nie jest już chroniony w ramach innego magazynu usługi Recovery Services. **Uwaga**: wszystkie udziały plików konta magazynu mogą być chronione w ramach jednego magazynu usługi Recovery Services. <li>Upewnij się, że udział plików nie istnieje w żadnym z nieobsługiwanych kont magazynu.|
+| Nie można odnaleźć konta magazynu w celu skonfigurowania kopii zapasowej na potrzeby udziału plików platformy Azure | <ul><li>Poczekaj na zakończenie odnajdywania. <li>Sprawdź, czy żaden udział plików z konta magazynu nie jest już chroniony w ramach innego magazynu usługi Recovery Services. **Uwaga**: wszystkie udziały plików konta magazynu mogą być chronione w ramach jednego magazynu usługi Recovery Services. <li>Upewnij się, że udział plików nie istnieje w żadnym z nieobsługiwanych kont magazynu.<li> Upewnij się, że pole wyboru **Zezwalaj na dostęp do tego konta magazynu zaufane usługi firmy Microsoft** jest zaznaczone na koncie magazynu. [Dowiedz się więcej.](../storage/common/storage-network-security.md)|
 | Błąd w portalu z informacją o niepowodzeniu odnajdywania kont magazynu. | Jeśli subskrypcja jest partnerska (z obsługą dostawcy usług kryptograficznych), zignoruj ten błąd. Jeśli Twoja subskrypcja nie obsługuje dostawcy usług kryptograficznych i nie można odnaleźć kont magazynu, skontaktuj się z pomocą techniczną.|
 | Wybrana weryfikacja lub rejestracja konta magazynu nie powiodła się.| Spróbuj ponownie wykonać operację. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną.|
 | Nie można wyświetlić lub odnaleźć udziałów plików w ramach wybranego konta magazynu. | <ul><li> Sprawdź, czy konto magazynu istnieje w grupie zasobów i nie zostało usunięte ani przeniesione po ostatniej weryfikacji lub rejestracji w magazynie.<li>Sprawdź, czy udział plików, który chcesz chronić, nie został usunięty. <li>Sprawdź, czy dla konta magazynu obsługiwane jest tworzenie kopii zapasowej udziału plików.<li>Sprawdź, czy udział plików nie jest już chroniony w tym samym magazynie usługi Recovery Services.|

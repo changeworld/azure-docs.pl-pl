@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/15/2019
+ms.date: 11/18/2019
 ms.author: dapine
-ms.openlocfilehash: 8a8c49089d5c0554c4636e98b5820ef206010207
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0d8c7a36582c30975f3a408a2ea6e95d39e560ef
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134179"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173751"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Tagi obrazu kontenera Cognitive Services platformy Azure
 
@@ -127,124 +127,121 @@ Ten obraz kontenera ma dostępne następujące znaczniki:
 | Tagi obrazu | Uwagi |
 |------------|:------|
 | `latest` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
-| `2.0.0-amd64-zh-tw-preview` | |
-| `2.0.0-amd64-zh-hk-preview` | |
-| `2.0.0-amd64-zh-cn-preview` | |
-| `2.0.0-amd64-tr-tr-preview` | |
-| `2.0.0-amd64-th-th-preview` | |
-| `2.0.0-amd64-sv-se-preview` | |
-| `2.0.0-amd64-ru-ru-preview` | |
-| `2.0.0-amd64-pt-pt-preview` | |
-| `2.0.0-amd64-pt-br-preview` | |
-| `2.0.0-amd64-pl-pl-preview` | |
-| `2.0.0-amd64-nl-nl-preview` | |
-| `2.0.0-amd64-nb-no-preview` | |
-| `2.0.0-amd64-ko-kr-preview` | |
-| `2.0.0-amd64-ja-jp-preview` | |
-| `2.0.0-amd64-it-it-preview` | |
-| `2.0.0-amd64-hi-in-preview` | |
-| `2.0.0-amd64-fr-fr-preview` | |
-| `2.0.0-amd64-fr-ca-preview` | |
-| `2.0.0-amd64-fi-fi-preview` | |
-| `2.0.0-amd64-es-mx-preview` | |
-| `2.0.0-amd64-es-es-preview` | |
-| `2.0.0-amd64-en-us-preview` | |
-| `2.0.0-amd64-en-nz-preview` | |
-| `2.0.0-amd64-en-in-preview` | |
-| `2.0.0-amd64-en-gb-preview` | |
-| `2.0.0-amd64-en-ca-preview` | |
-| `2.0.0-amd64-en-au-preview` | |
-| `2.0.0-amd64-de-de-preview` | |
-| `2.0.0-amd64-da-dk-preview` | |
-| `2.0.0-amd64-ca-es-preview` | |
-| `2.0.0-amd64-ar-eg-preview` | |
-| `1.2.0-amd64-zh-cn-preview` | |
-| `1.2.0-amd64-pt-br-preview` | |
-| `1.2.0-amd64-preview` | |
-| `1.2.0-amd64-ja-jp-preview` | |
-| `1.2.0-amd64-it-it-preview` | |
-| `1.2.0-amd64-fr-fr-preview` | |
-| `1.2.0-amd64-fr-ca-preview` | |
-| `1.2.0-amd64-es-mx-preview` | |
-| `1.2.0-amd64-es-es-preview` | |
-| `1.2.0-amd64-en-us-preview` | |
-| `1.2.0-amd64-en-in-preview` | |
-| `1.2.0-amd64-en-gb-preview` | |
-| `1.2.0-amd64-en-ca-preview` | |
-| `1.2.0-amd64-en-au-preview` | |
-| `1.2.0-amd64-de-de-preview` | |
-| `1.1.3-amd64-zh-cn-preview` | |
-| `1.1.3-amd64-pt-br-preview` | |
-| `1.1.3-amd64-preview` | |
-| `1.1.3-amd64-ja-jp-preview` | |
-| `1.1.3-amd64-it-it-preview` | |
-| `1.1.3-amd64-fr-fr-preview` | |
-| `1.1.3-amd64-fr-ca-preview` | |
-| `1.1.3-amd64-es-mx-preview` | |
-| `1.1.3-amd64-es-es-preview` | |
-| `1.1.3-amd64-en-us-preview` | |
-| `1.1.3-amd64-en-in-preview` | |
-| `1.1.3-amd64-en-gb-preview` | |
-| `1.1.3-amd64-en-ca-preview` | |
-| `1.1.3-amd64-en-au-preview` | |
-| `1.1.3-amd64-de-de-preview` | |
-| `1.1.2-amd64-zh-cn-preview` | |
-| `1.1.2-amd64-pt-br-preview` | |
-| `1.1.2-amd64-preview` | |
-| `1.1.2-amd64-ja-jp-preview` | |
-| `1.1.2-amd64-it-it-preview` | |
-| `1.1.2-amd64-fr-fr-preview` | |
-| `1.1.2-amd64-fr-ca-preview` | |
-| `1.1.2-amd64-es-mx-preview` | |
-| `1.1.2-amd64-es-es-preview` | |
-| `1.1.2-amd64-en-us-preview` | |
-| `1.1.2-amd64-en-in-preview` | |
-| `1.1.2-amd64-en-gb-preview` | |
-| `1.1.2-amd64-en-ca-preview` | |
-| `1.1.2-amd64-en-au-preview` | |
-| `1.1.2-amd64-de-de-preview` | |
-| `1.1.1-amd64-zh-cn-preview` | |
-| `1.1.1-amd64-pt-br-preview` | |
-| `1.1.1-amd64-ja-jp-preview` | |
-| `1.1.1-amd64-it-it-preview` | |
-| `1.1.1-amd64-fr-fr-preview` | |
-| `1.1.1-amd64-fr-ca-preview` | |
-| `1.1.1-amd64-es-mx-preview` | |
-| `1.1.1-amd64-es-es-preview` | |
-| `1.1.1-amd64-en-us-preview` | |
-| `1.1.1-amd64-en-in-preview` | |
-| `1.1.1-amd64-en-gb-preview` | |
-| `1.1.1-amd64-en-ca-preview` | |
-| `1.1.1-amd64-en-au-preview` | |
-| `1.1.1-amd64-de-de-preview` | |
-| `1.1.0-amd64-zh-cn-preview` | |
-| `1.1.0-amd64-pt-br-preview` | |
-| `1.1.0-amd64-ja-jp-preview` | |
-| `1.1.0-amd64-it-it-preview` | |
-| `1.1.0-amd64-fr-fr-preview` | |
-| `1.1.0-amd64-fr-ca-preview` | |
-| `1.1.0-amd64-es-mx-preview` | |
-| `1.1.0-amd64-es-es-preview` | |
-| `1.1.0-amd64-en-us-preview` | |
-| `1.1.0-amd64-en-in-preview` | |
-| `1.1.0-amd64-en-gb-preview` | |
-| `1.1.0-amd64-en-ca-preview` | |
-| `1.1.0-amd64-en-au-preview` | |
-| `1.1.0-amd64-de-de-preview` | |
-| `1.0.0-amd64-zh-cn-preview` | |
-| `1.0.0-amd64-pt-br-preview` | |
-| `1.0.0-amd64-ja-jp-preview` | |
-| `1.0.0-amd64-it-it-preview` | |
-| `1.0.0-amd64-fr-fr-preview` | |
-| `1.0.0-amd64-fr-ca-preview` | |
-| `1.0.0-amd64-es-mx-preview` | |
-| `1.0.0-amd64-es-es-preview` | |
-| `1.0.0-amd64-en-us-preview` | |
-| `1.0.0-amd64-en-in-preview` | |
-| `1.0.0-amd64-en-gb-preview` | |
-| `1.0.0-amd64-en-ca-preview` | |
-| `1.0.0-amd64-en-au-preview` | |
-| `1.0.0-amd64-de-de-preview` | |
+| `2.0.0-amd64-ar-eg-preview` | Obraz kontenera z ustawieniami regionalnymi `ar-EG`. |
+| `2.0.0-amd64-ca-es-preview` | Obraz kontenera z ustawieniami regionalnymi `ca-ES`. |
+| `2.0.0-amd64-da-dk-preview` | Obraz kontenera z ustawieniami regionalnymi `da-DK`. |
+| `2.0.0-amd64-de-de-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE`. |
+| `2.0.0-amd64-en-au-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU`. |
+| `2.0.0-amd64-en-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA`. |
+| `2.0.0-amd64-en-gb-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB`. |
+| `2.0.0-amd64-en-in-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN`. |
+| `2.0.0-amd64-en-nz-preview` | Obraz kontenera z ustawieniami regionalnymi `en-NZ`. |
+| `2.0.0-amd64-en-us-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
+| `2.0.0-amd64-es-es-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES`. |
+| `2.0.0-amd64-es-mx-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX`. |
+| `2.0.0-amd64-fi-fi-preview` | Obraz kontenera z ustawieniami regionalnymi `fi-FI`. |
+| `2.0.0-amd64-fr-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA`. |
+| `2.0.0-amd64-fr-fr-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR`. |
+| `2.0.0-amd64-hi-in-preview` | Obraz kontenera z ustawieniami regionalnymi `hi-IN`. |
+| `2.0.0-amd64-it-it-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT`. |
+| `2.0.0-amd64-ja-jp-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP`. |
+| `2.0.0-amd64-ko-kr-preview` | Obraz kontenera z ustawieniami regionalnymi `ko-KR`. |
+| `2.0.0-amd64-nb-no-preview` | Obraz kontenera z ustawieniami regionalnymi `nb-NO`. |
+| `2.0.0-amd64-nl-nl-preview` | Obraz kontenera z ustawieniami regionalnymi `nl-NL`. |
+| `2.0.0-amd64-pl-pl-preview` | Obraz kontenera z ustawieniami regionalnymi `pl-PL`. |
+| `2.0.0-amd64-pt-br-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR`. |
+| `2.0.0-amd64-pt-pt-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-PT`. |
+| `2.0.0-amd64-ru-ru-preview` | Obraz kontenera z ustawieniami regionalnymi `ru-RU`. |
+| `2.0.0-amd64-sv-se-preview` | Obraz kontenera z ustawieniami regionalnymi `sv-SE`. |
+| `2.0.0-amd64-th-th-preview` | Obraz kontenera z ustawieniami regionalnymi `th-TH`. |
+| `2.0.0-amd64-tr-tr-preview` | Obraz kontenera z ustawieniami regionalnymi `tr-TR`. |
+| `2.0.0-amd64-zh-cn-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN`. |
+| `2.0.0-amd64-zh-hk-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-HK`. |
+| `2.0.0-amd64-zh-tw-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-TW`. |
+| `1.2.0-amd64-de-de-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE`. |
+| `1.2.0-amd64-en-au-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU`. |
+| `1.2.0-amd64-en-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA`. |
+| `1.2.0-amd64-en-gb-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB`. |
+| `1.2.0-amd64-en-in-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN`. |
+| `1.2.0-amd64-en-us-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
+| `1.2.0-amd64-es-es-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES`. |
+| `1.2.0-amd64-es-mx-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX`. |
+| `1.2.0-amd64-fr-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA`. |
+| `1.2.0-amd64-fr-fr-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR`. |
+| `1.2.0-amd64-it-it-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT`. |
+| `1.2.0-amd64-ja-jp-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP`. |
+| `1.2.0-amd64-pt-br-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR`. |
+| `1.2.0-amd64-zh-cn-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN`. |
+| `1.1.3-amd64-de-de-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE`. |
+| `1.1.3-amd64-en-au-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU`. |
+| `1.1.3-amd64-en-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA`. |
+| `1.1.3-amd64-en-gb-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB`. |
+| `1.1.3-amd64-en-in-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN`. |
+| `1.1.3-amd64-en-us-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
+| `1.1.3-amd64-es-es-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES`. |
+| `1.1.3-amd64-es-mx-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX`. |
+| `1.1.3-amd64-fr-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA`. |
+| `1.1.3-amd64-fr-fr-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR`. |
+| `1.1.3-amd64-it-it-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT`. |
+| `1.1.3-amd64-ja-jp-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP`. |
+| `1.1.3-amd64-pt-br-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR`. |
+| `1.1.3-amd64-zh-cn-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN`. |
+| `1.1.2-amd64-de-de-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE`. |
+| `1.1.2-amd64-en-au-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU`. |
+| `1.1.2-amd64-en-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA`. |
+| `1.1.2-amd64-en-gb-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB`. |
+| `1.1.2-amd64-en-in-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN`. |
+| `1.1.2-amd64-en-us-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
+| `1.1.2-amd64-es-es-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES`. |
+| `1.1.2-amd64-es-mx-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX`. |
+| `1.1.2-amd64-fr-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA`. |
+| `1.1.2-amd64-fr-fr-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR`. |
+| `1.1.2-amd64-it-it-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT`. |
+| `1.1.2-amd64-ja-jp-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP`. |
+| `1.1.2-amd64-pt-br-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR`. |
+| `1.1.2-amd64-zh-cn-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN`. |
+| `1.1.1-amd64-de-de-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE`. |
+| `1.1.1-amd64-en-au-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU`. |
+| `1.1.1-amd64-en-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA`. |
+| `1.1.1-amd64-en-gb-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB`. |
+| `1.1.1-amd64-en-in-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN`. |
+| `1.1.1-amd64-en-us-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
+| `1.1.1-amd64-es-es-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES`. |
+| `1.1.1-amd64-es-mx-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX`. |
+| `1.1.1-amd64-fr-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA`. |
+| `1.1.1-amd64-fr-fr-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR`. |
+| `1.1.1-amd64-it-it-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT`. |
+| `1.1.1-amd64-ja-jp-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP`. |
+| `1.1.1-amd64-pt-br-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR`. |
+| `1.1.1-amd64-zh-cn-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN`. |
+| `1.1.0-amd64-de-de-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE`. |
+| `1.1.0-amd64-en-au-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU`. |
+| `1.1.0-amd64-en-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA`. |
+| `1.1.0-amd64-en-gb-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB`. |
+| `1.1.0-amd64-en-in-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN`. |
+| `1.1.0-amd64-en-us-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
+| `1.1.0-amd64-es-es-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES`. |
+| `1.1.0-amd64-es-mx-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX`. |
+| `1.1.0-amd64-fr-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA`. |
+| `1.1.0-amd64-fr-fr-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR`. |
+| `1.1.0-amd64-it-it-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT`. |
+| `1.1.0-amd64-ja-jp-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP`. |
+| `1.1.0-amd64-pt-br-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR`. |
+| `1.1.0-amd64-zh-cn-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN`. |
+| `1.0.0-amd64-de-de-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE`. |
+| `1.0.0-amd64-en-au-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU`. |
+| `1.0.0-amd64-en-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA`. |
+| `1.0.0-amd64-en-gb-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB`. |
+| `1.0.0-amd64-en-in-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN`. |
+| `1.0.0-amd64-en-us-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US`. |
+| `1.0.0-amd64-es-es-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES`. |
+| `1.0.0-amd64-es-mx-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX`. |
+| `1.0.0-amd64-fr-ca-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA`. |
+| `1.0.0-amd64-fr-fr-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR`. |
+| `1.0.0-amd64-it-it-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT`. |
+| `1.0.0-amd64-ja-jp-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP`. |
+| `1.0.0-amd64-pt-br-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR`. |
+| `1.0.0-amd64-zh-cn-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN`. |
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
@@ -254,169 +251,173 @@ Ten obraz kontenera ma dostępne następujące znaczniki:
 
 | Tagi obrazu | Uwagi |
 |------------|:------|
-| `latest` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `JessaRUS`. |
-| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview` | |
-| `1.3.0-amd64-zh-tw-yating-apollo-preview` | |
-| `1.3.0-amd64-zh-tw-hanhanrus-preview` | |
-| `1.3.0-amd64-zh-hk-tracyrus-preview` | |
-| `1.3.0-amd64-zh-hk-tracy-apollo-preview` | |
-| `1.3.0-amd64-zh-hk-danny-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.3.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.3.0-amd64-vi-vn-an-preview` | |
-| `1.3.0-amd64-tr-tr-sedarus-preview` | |
-| `1.3.0-amd64-th-th-pattara-preview` | |
-| `1.3.0-amd64-te-in-chitra-preview` | |
-| `1.3.0-amd64-ta-in-valluvar-preview` | |
-| `1.3.0-amd64-sv-se-hedvigrus-preview` | |
-| `1.3.0-amd64-sl-si-lado-preview` | |
-| `1.3.0-amd64-sk-sk-filip-preview` | |
-| `1.3.0-amd64-ru-ru-pavel-apollo-preview` | |
-| `1.3.0-amd64-ru-ru-irina-apollo-preview` | |
-| `1.3.0-amd64-ru-ru-ekaterinarus-preview` | |
-| `1.3.0-amd64-ro-ro-andrei-preview` | |
-| `1.3.0-amd64-pt-pt-heliarus-preview` | |
-| `1.3.0-amd64-pt-br-heloisarus-preview` | |
-| `1.3.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.3.0-amd64-pl-pl-paulinarus-preview` | |
-| `1.3.0-amd64-nl-nl-hannarus-preview` | |
-| `1.3.0-amd64-nb-no-huldarus-preview` | |
-| `1.3.0-amd64-ms-my-rizwan-preview` | |
-| `1.3.0-amd64-ko-kr-heamirus-preview` | |
-| `1.3.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.3.0-amd64-ja-jp-harukarus-preview` | |
-| `1.3.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.3.0-amd64-it-it-luciarus-preview` | |
-| `1.3.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.3.0-amd64-id-id-andika-preview` | |
-| `1.3.0-amd64-hu-hu-szabolcs-preview` | |
-| `1.3.0-amd64-hr-hr-matej-preview` | |
-| `1.3.0-amd64-hi-in-kalpana-preview` | |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | |
-| `1.3.0-amd64-hi-in-hemant-preview` | |
-| `1.3.0-amd64-he-il-asaf-preview` | |
-| `1.3.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.3.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.3.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.3.0-amd64-fr-ch-guillaume-preview` | |
-| `1.3.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.3.0-amd64-fr-ca-caroline-preview` | |
-| `1.3.0-amd64-fi-fi-heidirus-preview` | |
-| `1.3.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.3.0-amd64-es-mx-hildarus-preview` | |
-| `1.3.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.3.0-amd64-es-es-laura-apollo-preview` | |
-| `1.3.0-amd64-es-es-helenarus-preview` | |
-| `1.3.0-amd64-en-us-zirarus-preview` | |
-| `1.3.0-amd64-en-us-jessarus-preview` | |
-| `1.3.0-amd64-en-us-jessa24krus-preview` | |
-| `1.3.0-amd64-en-us-guy24krus-preview` | |
-| `1.3.0-amd64-en-us-benjaminrus-preview` | |
-| `1.3.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.3.0-amd64-en-in-priyarus-preview` | |
-| `1.3.0-amd64-en-in-heera-apollo-preview` | |
-| `1.3.0-amd64-en-ie-sean-preview` | |
-| `1.3.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.3.0-amd64-en-gb-hazelrus-preview` | |
-| `1.3.0-amd64-en-gb-george-apollo-preview` | |
-| `1.3.0-amd64-en-ca-linda-preview` | |
-| `1.3.0-amd64-en-ca-heatherrus-preview` | |
-| `1.3.0-amd64-en-au-hayleyrus-preview` | |
-| `1.3.0-amd64-en-au-catherine-preview` | |
-| `1.3.0-amd64-el-gr-stefanos-preview` | |
-| `1.3.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.3.0-amd64-de-de-heddarus-preview` | |
-| `1.3.0-amd64-de-de-hedda-preview` | |
-| `1.3.0-amd64-de-ch-karsten-preview` | |
-| `1.3.0-amd64-de-at-michael-preview` | |
-| `1.3.0-amd64-da-dk-hellerus-preview` | |
-| `1.3.0-amd64-cs-cz-jakub-preview` | |
-| `1.3.0-amd64-ca-es-herenarus-preview` | |
-| `1.3.0-amd64-bg-bg-ivan-preview` | |
-| `1.3.0-amd64-ar-sa-naayf-preview` | |
-| `1.3.0-amd64-ar-eg-hoda-preview` | |
-| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.2.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.2.0-amd64-pt-br-heloisarus-preview` | |
-| `1.2.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.2.0-amd64-ko-kr-heamirus-preview` | |
-| `1.2.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.2.0-amd64-ja-jp-harukarus-preview` | |
-| `1.2.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.2.0-amd64-it-it-luciarus-preview` | |
-| `1.2.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.2.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.2.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.2.0-amd64-fr-ca-caroline-preview` | |
-| `1.2.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.2.0-amd64-es-mx-hildarus-preview` | |
-| `1.2.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.2.0-amd64-es-es-laura-apollo-preview` | |
-| `1.2.0-amd64-es-es-helenarus-preview` | |
-| `1.2.0-amd64-en-us-zirarus-preview` | |
-| `1.2.0-amd64-en-us-jessarus-preview` | |
-| `1.2.0-amd64-en-us-jessa24krus-preview` | |
-| `1.2.0-amd64-en-us-guy24krus-preview` | |
-| `1.2.0-amd64-en-us-benjaminrus-preview` | |
-| `1.2.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.2.0-amd64-en-in-priyarus-preview` | |
-| `1.2.0-amd64-en-in-heera-apollo-preview` | |
-| `1.2.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.2.0-amd64-en-gb-hazelrus-preview` | |
-| `1.2.0-amd64-en-gb-george-apollo-preview` | |
-| `1.2.0-amd64-en-au-hayleyrus-preview` | |
-| `1.2.0-amd64-en-au-catherine-preview` | |
-| `1.2.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.2.0-amd64-de-de-heddarus-preview` | |
-| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.1.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.1.0-amd64-pt-br-heloisarus-preview` | |
-| `1.1.0-amd64-pt-br-daniel-apollo-preview` | |
-| `1.1.0-amd64-ko-kr-heamirus-preview` | |
-| `1.1.0-amd64-ja-jp-ichiro-apollo-preview` | |
-| `1.1.0-amd64-ja-jp-harukarus-preview` | |
-| `1.1.0-amd64-ja-jp-ayumi-apollo-preview` | |
-| `1.1.0-amd64-it-it-luciarus-preview` | |
-| `1.1.0-amd64-it-it-cosimo-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-paul-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-julie-apollo-preview` | |
-| `1.1.0-amd64-fr-fr-hortenserus-preview` | |
-| `1.1.0-amd64-fr-ca-harmonierus-preview` | |
-| `1.1.0-amd64-fr-ca-caroline-preview` | |
-| `1.1.0-amd64-es-mx-raul-apollo-preview` | |
-| `1.1.0-amd64-es-mx-hildarus-preview` | |
-| `1.1.0-amd64-es-es-pablo-apollo-preview` | |
-| `1.1.0-amd64-es-es-laura-apollo-preview` | |
-| `1.1.0-amd64-es-es-helenarus-preview` | |
-| `1.1.0-amd64-en-us-zirarus-preview` | |
-| `1.1.0-amd64-en-us-jessarus-preview` | |
-| `1.1.0-amd64-en-us-jessa24krus-preview` | |
-| `1.1.0-amd64-en-us-guy24krus-preview` | |
-| `1.1.0-amd64-en-us-benjaminrus-preview` | |
-| `1.1.0-amd64-en-in-ravi-apollo-preview` | |
-| `1.1.0-amd64-en-in-priyarus-preview` | |
-| `1.1.0-amd64-en-in-heera-apollo-preview` | |
-| `1.1.0-amd64-en-gb-susan-apollo-preview` | |
-| `1.1.0-amd64-en-gb-hazelrus-preview` | |
-| `1.1.0-amd64-en-gb-george-apollo-preview` | |
-| `1.1.0-amd64-en-au-hayleyrus-preview` | |
-| `1.1.0-amd64-en-au-catherine-preview` | |
-| `1.1.0-amd64-de-de-stefan-apollo-preview` | |
-| `1.1.0-amd64-de-de-heddarus-preview` | |
-| `1.1.0-amd64-de-de-hedda-preview` | |
-| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview` | |
-| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | |
-| `1.0.0-amd64-zh-cn-huihuirus-preview` | |
-| `1.0.0-amd64-en-us-zirarus-preview` | |
-| `1.0.0-amd64-en-us-jessarus-preview` | |
-| `1.0.0-amd64-en-us-jessa24krus-preview` | |
-| `1.0.0-amd64-en-us-guy24krus-preview` | |
-| `1.0.0-amd64-en-us-benjaminrus-preview` | |
+| `latest` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-JessaRUS`. |
+| `1.3.0-amd64-ar-eg-hoda-preview` | Obraz kontenera z ustawieniami regionalnymi `ar-EG` i `ar-EG-Hoda`. |
+| `1.3.0-amd64-ar-sa-naayf-preview` | Obraz kontenera z ustawieniami regionalnymi `ar-SA` i `ar-SA-Naayf`. |
+| `1.3.0-amd64-bg-bg-ivan-preview` | Obraz kontenera z ustawieniami regionalnymi `bg-BG` i `bg-BG-Ivan`. |
+| `1.3.0-amd64-ca-es-herenarus-preview` | Obraz kontenera z ustawieniami regionalnymi `ca-ES` i `ca-ES-HerenaRUS`. |
+| `1.3.0-amd64-cs-cz-jakub-preview` | Obraz kontenera z ustawieniami regionalnymi `cs-CZ` i `cs-CZ-Jakub`. |
+| `1.3.0-amd64-da-dk-hellerus-preview` | Obraz kontenera z ustawieniami regionalnymi `da-DK` i `da-DK-HelleRUS`. |
+| `1.3.0-amd64-de-at-michael-preview` | Obraz kontenera z ustawieniami regionalnymi `de-AT` i `de-AT-Michael`. |
+| `1.3.0-amd64-de-ch-karsten-preview` | Obraz kontenera z ustawieniami regionalnymi `de-CH` i `de-CH-Karsten`. |
+| `1.3.0-amd64-de-de-hedda-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Hedda`. |
+| `1.3.0-amd64-de-de-heddarus-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Hedda`. |
+| `1.3.0-amd64-de-de-heddarus-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-HeddaRUS`. |
+| `1.3.0-amd64-de-de-stefan-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Stefan-Apollo`. |
+| `1.3.0-amd64-el-gr-stefanos-preview` | Obraz kontenera z ustawieniami regionalnymi `el-GR` i `el-GR-Stefanos`. |
+| `1.3.0-amd64-en-au-catherine-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU` i `en-AU-Catherine`. |
+| `1.3.0-amd64-en-au-hayleyrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU` i `en-AU-HayleyRUS`. |
+| `1.3.0-amd64-en-ca-heatherrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA` i `en-CA-HeatherRUS`. |
+| `1.3.0-amd64-en-ca-linda-preview` | Obraz kontenera z ustawieniami regionalnymi `en-CA` i `en-CA-Linda`. |
+| `1.3.0-amd64-en-gb-george-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-George-Apollo`. |
+| `1.3.0-amd64-en-gb-hazelrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-HazelRUS`. |
+| `1.3.0-amd64-en-gb-susan-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-Susan-Apollo`. |
+| `1.3.0-amd64-en-ie-sean-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IE` i `en-IE-Sean`. |
+| `1.3.0-amd64-en-in-heera-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-Heera-Apollo`. |
+| `1.3.0-amd64-en-in-priyarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-PriyaRUS`. |
+| `1.3.0-amd64-en-in-ravi-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-Ravi-Apollo`. |
+| `1.3.0-amd64-en-us-benjaminrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-BenjaminRUS`. |
+| `1.3.0-amd64-en-us-guy24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Guy24kRUS`. |
+| `1.3.0-amd64-en-us-jessa24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Jessa24kRUS`. |
+| `1.3.0-amd64-en-us-jessarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-JessaRUS`. |
+| `1.3.0-amd64-en-us-zirarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-ZiraRUS`. |
+| `1.3.0-amd64-es-es-helenarus-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-HelenaRUS`. |
+| `1.3.0-amd64-es-es-laura-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-Laura-Apollo`. |
+| `1.3.0-amd64-es-es-pablo-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-Pablo-Apollo`. |
+| `1.3.0-amd64-es-mx-hildarus-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX` i `es-MX-HildaRUS`. |
+| `1.3.0-amd64-es-mx-raul-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX` i `es-MX-Raul-Apollo`. |
+| `1.3.0-amd64-fi-fi-heidirus-preview` | Obraz kontenera z ustawieniami regionalnymi `fi-FI` i `fi-FI-HeidiRUS`. |
+| `1.3.0-amd64-fr-ca-caroline-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA` i `fr-CA-Caroline`. |
+| `1.3.0-amd64-fr-ca-harmonierus-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA` i `fr-CA-HarmonieRUS`. |
+| `1.3.0-amd64-fr-ch-guillaume-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CH` i `fr-CH-Guillaume`. |
+| `1.3.0-amd64-fr-fr-hortenserus-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-HortenseRUS`. |
+| `1.3.0-amd64-fr-fr-julie-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-Julie-Apollo`. |
+| `1.3.0-amd64-fr-fr-paul-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-Paul-Apollo`. |
+| `1.3.0-amd64-he-il-asaf-preview` | Obraz kontenera z ustawieniami regionalnymi `he-IL` i `he-IL-Asaf`. |
+| `1.3.0-amd64-hi-in-hemant-preview` | Obraz kontenera z ustawieniami regionalnymi `hi-IN` i `hi-IN-Hemant`. |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `hi-IN` i `hi-IN-Kalpana-Apollo`. |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `hi-IN` i `hi-IN-Kalpana`. |
+| `1.3.0-amd64-hi-in-kalpana-preview` | Obraz kontenera z ustawieniami regionalnymi `hi-IN` i `hi-IN-Kalpana`. |
+| `1.3.0-amd64-hr-hr-matej-preview` | Obraz kontenera z ustawieniami regionalnymi `hr-HR` i `hr-HR-Matej`. |
+| `1.3.0-amd64-hu-hu-szabolcs-preview` | Obraz kontenera z ustawieniami regionalnymi `hu-HU` i `hu-HU-Szabolcs`. |
+| `1.3.0-amd64-id-id-andika-preview` | Obraz kontenera z ustawieniami regionalnymi `id-ID` i `id-ID-Andika`. |
+| `1.3.0-amd64-it-it-cosimo-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT` i `it-IT-Cosimo-Apollo`. |
+| `1.3.0-amd64-it-it-luciarus-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT` i `it-IT-LuciaRUS`. |
+| `1.3.0-amd64-ja-jp-ayumi-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-Ayumi-Apollo`. |
+| `1.3.0-amd64-ja-jp-harukarus-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-HarukaRUS`. |
+| `1.3.0-amd64-ja-jp-ichiro-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-Ichiro-Apollo`. |
+| `1.3.0-amd64-ko-kr-heamirus-preview` | Obraz kontenera z ustawieniami regionalnymi `ko-KR` i `ko-KR-HeamiRUS`. |
+| `1.3.0-amd64-ms-my-rizwan-preview` | Obraz kontenera z ustawieniami regionalnymi `ms-MY` i `ms-MY-Rizwan`. |
+| `1.3.0-amd64-nb-no-huldarus-preview` | Obraz kontenera z ustawieniami regionalnymi `nb-NO` i `nb-NO-HuldaRUS`. |
+| `1.3.0-amd64-nl-nl-hannarus-preview` | Obraz kontenera z ustawieniami regionalnymi `nl-NL` i `nl-NL-HannaRUS`. |
+| `1.3.0-amd64-pl-pl-paulinarus-preview` | Obraz kontenera z ustawieniami regionalnymi `pl-PL` i `pl-PL-PaulinaRUS`. |
+| `1.3.0-amd64-pt-br-daniel-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR` i `pt-BR-Daniel-Apollo`. |
+| `1.3.0-amd64-pt-br-heloisarus-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR` i `pt-BR-HeloisaRUS`. |
+| `1.3.0-amd64-pt-pt-heliarus-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-PT` i `pt-PT-HeliaRUS`. |
+| `1.3.0-amd64-ro-ro-andrei-preview` | Obraz kontenera z ustawieniami regionalnymi `ro-RO` i `ro-RO-Andrei`. |
+| `1.3.0-amd64-ru-ru-ekaterinarus-preview` | Obraz kontenera z ustawieniami regionalnymi `ru-RU` i `ru-RU-EkaterinaRUS`. |
+| `1.3.0-amd64-ru-ru-irina-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ru-RU` i `ru-RU-Irina-Apollo`. |
+| `1.3.0-amd64-ru-ru-pavel-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ru-RU` i `ru-RU-Pavel-Apollo`. |
+| `1.3.0-amd64-sk-sk-filip-preview` | Obraz kontenera z ustawieniami regionalnymi `sk-SK` i `sk-SK-Filip`. |
+| `1.3.0-amd64-sl-si-lado-preview` | Obraz kontenera z ustawieniami regionalnymi `sl-SI` i `sl-SI-Lado`. |
+| `1.3.0-amd64-sv-se-hedvigrus-preview` | Obraz kontenera z ustawieniami regionalnymi `sv-SE` i `sv-SE-HedvigRUS`. |
+| `1.3.0-amd64-ta-in-valluvar-preview` | Obraz kontenera z ustawieniami regionalnymi `ta-IN` i `ta-IN-Valluvar`. |
+| `1.3.0-amd64-te-in-chitra-preview` | Obraz kontenera z ustawieniami regionalnymi `te-IN` i `te-IN-Chitra`. |
+| `1.3.0-amd64-th-th-pattara-preview` | Obraz kontenera z ustawieniami regionalnymi `th-TH` i `th-TH-Pattara`. |
+| `1.3.0-amd64-tr-tr-sedarus-preview` | Obraz kontenera z ustawieniami regionalnymi `tr-TR` i `tr-TR-SedaRUS`. |
+| `1.3.0-amd64-vi-vn-an-preview` | Obraz kontenera z ustawieniami regionalnymi `vi-VN` i `vi-VN-An`. |
+| `1.3.0-amd64-zh-cn-huihuirus-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-HuihuiRUS`. |
+| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Kangkang-Apollo`. |
+| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Yaoyao-Apollo`. |
+| `1.3.0-amd64-zh-hk-danny-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-HK` i `zh-HK-Danny-Apollo`. |
+| `1.3.0-amd64-zh-hk-tracy-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-HK` i `zh-HK-Tracy-Apollo`. |
+| `1.3.0-amd64-zh-hk-tracyrus-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-HK` i `zh-HK-TracyRUS`. |
+| `1.3.0-amd64-zh-tw-hanhanrus-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-TW` i `zh-TW-HanHanRUS`. |
+| `1.3.0-amd64-zh-tw-yating-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-TW` i `zh-TW-Yating-Apollo`. |
+| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-TW` i `zh-TW-Zhiwei-Apollo`. |
+| `1.2.0-amd64-de-de-heddarus-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Hedda`. |
+| `1.2.0-amd64-de-de-heddarus-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-HeddaRUS`. |
+| `1.2.0-amd64-de-de-stefan-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Stefan-Apollo`. |
+| `1.2.0-amd64-en-au-catherine-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU` i `en-AU-Catherine`. |
+| `1.2.0-amd64-en-au-hayleyrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU` i `en-AU-HayleyRUS`. |
+| `1.2.0-amd64-en-gb-george-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-George-Apollo`. |
+| `1.2.0-amd64-en-gb-hazelrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-HazelRUS`. |
+| `1.2.0-amd64-en-gb-susan-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-Susan-Apollo`. |
+| `1.2.0-amd64-en-in-heera-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-Heera-Apollo`. |
+| `1.2.0-amd64-en-in-priyarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-PriyaRUS`. |
+| `1.2.0-amd64-en-in-ravi-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-Ravi-Apollo`. |
+| `1.2.0-amd64-en-us-benjaminrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-BenjaminRUS`. |
+| `1.2.0-amd64-en-us-guy24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Guy24kRUS`. |
+| `1.2.0-amd64-en-us-jessa24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Jessa24kRUS`. |
+| `1.2.0-amd64-en-us-jessarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-JessaRUS`. |
+| `1.2.0-amd64-en-us-zirarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-ZiraRUS`. |
+| `1.2.0-amd64-es-es-helenarus-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-HelenaRUS`. |
+| `1.2.0-amd64-es-es-laura-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-Laura-Apollo`. |
+| `1.2.0-amd64-es-es-pablo-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-Pablo-Apollo`. |
+| `1.2.0-amd64-es-mx-hildarus-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX` i `es-MX-HildaRUS`. |
+| `1.2.0-amd64-es-mx-raul-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX` i `es-MX-Raul-Apollo`. |
+| `1.2.0-amd64-fr-ca-caroline-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA` i `fr-CA-Caroline`. |
+| `1.2.0-amd64-fr-ca-harmonierus-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA` i `fr-CA-HarmonieRUS`. |
+| `1.2.0-amd64-fr-fr-hortenserus-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-HortenseRUS`. |
+| `1.2.0-amd64-fr-fr-julie-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-Julie-Apollo`. |
+| `1.2.0-amd64-fr-fr-paul-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-Paul-Apollo`. |
+| `1.2.0-amd64-it-it-cosimo-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT` i `it-IT-Cosimo-Apollo`. |
+| `1.2.0-amd64-it-it-luciarus-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT` i `it-IT-LuciaRUS`. |
+| `1.2.0-amd64-ja-jp-ayumi-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-Ayumi-Apollo`. |
+| `1.2.0-amd64-ja-jp-harukarus-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-HarukaRUS`. |
+| `1.2.0-amd64-ja-jp-ichiro-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-Ichiro-Apollo`. |
+| `1.2.0-amd64-ko-kr-heamirus-preview` | Obraz kontenera z ustawieniami regionalnymi `ko-KR` i `ko-KR-HeamiRUS`. |
+| `1.2.0-amd64-pt-br-daniel-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR` i `pt-BR-Daniel-Apollo`. |
+| `1.2.0-amd64-pt-br-heloisarus-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR` i `pt-BR-HeloisaRUS`. |
+| `1.2.0-amd64-zh-cn-huihuirus-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-HuihuiRUS`. |
+| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Kangkang-Apollo`. |
+| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Yaoyao-Apollo`. |
+| `1.1.0-amd64-de-de-hedda-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Hedda`. |
+| `1.1.0-amd64-de-de-heddarus-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Hedda`. |
+| `1.1.0-amd64-de-de-heddarus-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-HeddaRUS`. |
+| `1.1.0-amd64-de-de-stefan-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `de-DE` i `de-DE-Stefan-Apollo`. |
+| `1.1.0-amd64-en-au-catherine-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU` i `en-AU-Catherine`. |
+| `1.1.0-amd64-en-au-hayleyrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-AU` i `en-AU-HayleyRUS`. |
+| `1.1.0-amd64-en-gb-george-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-George-Apollo`. |
+| `1.1.0-amd64-en-gb-hazelrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-HazelRUS`. |
+| `1.1.0-amd64-en-gb-susan-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-GB` i `en-GB-Susan-Apollo`. |
+| `1.1.0-amd64-en-in-heera-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-Heera-Apollo`. |
+| `1.1.0-amd64-en-in-priyarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-PriyaRUS`. |
+| `1.1.0-amd64-en-in-ravi-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `en-IN` i `en-IN-Ravi-Apollo`. |
+| `1.1.0-amd64-en-us-benjaminrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-BenjaminRUS`. |
+| `1.1.0-amd64-en-us-guy24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Guy24kRUS`. |
+| `1.1.0-amd64-en-us-jessa24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Jessa24kRUS`. |
+| `1.1.0-amd64-en-us-jessarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-JessaRUS`. |
+| `1.1.0-amd64-en-us-zirarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-ZiraRUS`. |
+| `1.1.0-amd64-es-es-helenarus-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-HelenaRUS`. |
+| `1.1.0-amd64-es-es-laura-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-Laura-Apollo`. |
+| `1.1.0-amd64-es-es-pablo-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-ES` i `es-ES-Pablo-Apollo`. |
+| `1.1.0-amd64-es-mx-hildarus-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX` i `es-MX-HildaRUS`. |
+| `1.1.0-amd64-es-mx-raul-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `es-MX` i `es-MX-Raul-Apollo`. |
+| `1.1.0-amd64-fr-ca-caroline-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA` i `fr-CA-Caroline`. |
+| `1.1.0-amd64-fr-ca-harmonierus-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-CA` i `fr-CA-HarmonieRUS`. |
+| `1.1.0-amd64-fr-fr-hortenserus-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-HortenseRUS`. |
+| `1.1.0-amd64-fr-fr-julie-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-Julie-Apollo`. |
+| `1.1.0-amd64-fr-fr-paul-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `fr-FR` i `fr-FR-Paul-Apollo`. |
+| `1.1.0-amd64-it-it-cosimo-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT` i `it-IT-Cosimo-Apollo`. |
+| `1.1.0-amd64-it-it-luciarus-preview` | Obraz kontenera z ustawieniami regionalnymi `it-IT` i `it-IT-LuciaRUS`. |
+| `1.1.0-amd64-ja-jp-ayumi-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-Ayumi-Apollo`. |
+| `1.1.0-amd64-ja-jp-harukarus-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-HarukaRUS`. |
+| `1.1.0-amd64-ja-jp-ichiro-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `ja-JP` i `ja-JP-Ichiro-Apollo`. |
+| `1.1.0-amd64-ko-kr-heamirus-preview` | Obraz kontenera z ustawieniami regionalnymi `ko-KR` i `ko-KR-HeamiRUS`. |
+| `1.1.0-amd64-pt-br-daniel-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR` i `pt-BR-Daniel-Apollo`. |
+| `1.1.0-amd64-pt-br-heloisarus-preview` | Obraz kontenera z ustawieniami regionalnymi `pt-BR` i `pt-BR-HeloisaRUS`. |
+| `1.1.0-amd64-zh-cn-huihuirus-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-HuihuiRUS`. |
+| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Kangkang-Apollo`. |
+| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Yaoyao-Apollo`. |
+| `1.0.0-amd64-en-us-benjaminrus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-BenjaminRUS`. |
+| `1.0.0-amd64-en-us-guy24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Guy24kRUS`. |
+| `1.0.0-amd64-en-us-jessa24krus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-Jessa24kRUS`. |
+| `1.0.0-amd64-en-us-jessarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-JessaRUS`. |
+| `1.0.0-amd64-en-us-zirarus-preview` | Obraz kontenera z ustawieniami regionalnymi `en-US` i `en-US-ZiraRUS`. |
+| `1.0.0-amd64-zh-cn-huihuirus-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-HuihuiRUS`. |
+| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Kangkang-Apollo`. |
+| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview` | Obraz kontenera z ustawieniami regionalnymi `zh-CN` i `zh-CN-Yaoyao-Apollo`. |
 
 ## <a name="key-phrase-extraction"></a>Wyodrębnianie kluczowych fraz
 

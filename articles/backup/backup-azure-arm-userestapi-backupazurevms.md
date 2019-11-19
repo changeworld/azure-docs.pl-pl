@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST'
+title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST
 description: W tym artykule dowiesz się, jak konfigurować i inicjować operacje tworzenia kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST oraz zarządzać nimi.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: INTERFEJS API REST; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c929f820862f5d041b4a63a1ca9c083abf1a1e4c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929174"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173440"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -188,7 +182,7 @@ Aby utworzyć chroniony element, poniżej przedstawiono składniki treści żąd
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|properties     | AzureIaaSVMProtectedItem        |Właściwości zasobów ProtectedItem         |
+|Właściwości     | AzureIaaSVMProtectedItem        |Właściwości zasobów ProtectedItem         |
 
 Aby uzyskać pełną listę definicji treści żądania i innych szczegółów, zobacz [dokument interfejsu API Rest tworzenia chronionego elementu](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
 
@@ -302,7 +296,7 @@ Aby wyzwolić kopię zapasową na żądanie, poniżej przedstawiono składniki t
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Właściwości BackupRequestResource         |
+|Właściwości     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Właściwości BackupRequestResource         |
 
 Aby zapoznać się z pełną listą definicji treści żądania i innych szczegółów, zapoznaj się z tematem [wyzwalanie kopii zapasowych dla dokumentów interfejsu API REST elementów chronionych](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
 

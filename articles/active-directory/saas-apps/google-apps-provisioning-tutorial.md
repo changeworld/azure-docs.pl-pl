@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120321"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167860"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite do automatycznej aprowizacji użytkowników
 
@@ -32,7 +32,7 @@ Celem tego samouczka jest przedstawienie czynności, które należy wykonać w u
 > [!NOTE]
 > Łącznik pakietu G Suite został niedawno zaktualizowany o 2019 października. Zmiany wprowadzone do łącznika G Suite obejmują:
 - Dodano obsługę dodatkowych atrybutów użytkowników i grup usługi G Suite. 
-- Zaktualizowano nazwy atrybutów docelowych G Suite, aby były zgodne z informacjami zdefiniowanymi w [tym miejscu](/azure/active-directory/manage-apps/customize-application-attributes).
+- Zaktualizowano nazwy atrybutów docelowych G Suite, aby były zgodne z informacjami zdefiniowanymi w [tym miejscu](https://developers.google.com/admin-sdk/directory).
 - Zaktualizowano domyślne mapowania atrybutów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -112,7 +112,7 @@ Aby skonfigurować usługę G dla automatycznej aprowizacji użytkowników w us�
 
 2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
@@ -128,6 +128,9 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 > [!TIP]
 > Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla pakietu G Suite, postępując zgodnie z instrukcjami podanymi w samouczku Logowanie jednokrotne w [usłudze g Suite](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje napadają nawzajem.
+
+> [!NOTE]
+> Aby dowiedzieć się więcej o punkcie końcowym interfejsu API katalogu usługi G, zapoznaj się z [interfejsem API katalogu](https://developers.google.com/admin-sdk/directory).
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi administracyjnej użytkowników dla pakietu G Suite w usłudze Azure AD:
 
@@ -196,15 +199,6 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w usłudze G Suite.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
-
-> [!NOTE]
-> Kolejną opłacalną opcją automatyzacji aprowizacji użytkowników w usłudze G Suite jest korzystanie z usługi [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en). Ta opcja umożliwia zarezerwowanie lokalnych tożsamości Active Directory na pakiet G Suite.
-
-## <a name="common-issues"></a>Typowe problemy
-* Pakiet G Suite wymaga, aby wszyscy użytkownicy z zainicjowanymi użytkownikami mieli zweryfikowane domeny. Upewnij się, że każdy użytkownik, który chcesz udostępnić, ma nazwę UPN z zweryfikowanej domeny w zestawie G Suite. Jeśli użytkownik z niezweryfikowanej domeny znajduje się w zakresie aprowizacji, zobaczysz błąd w [dziennikach aprowizacji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) , takich jak "GoogleAppsInvalidDomain". Można uniknąć tych błędów i upewnić się, że użytkownicy z niezweryfikowanych domen są spoza zakresu przy użyciu [filtru określania zakresu](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-    * Atrybut docelowy: userPrincipalName
-    * Operator: dopasowanie wyrażenia regularnego lub nie jest zgodne z wyrażeniem regularnym
-    * Wartość:. *@domain.com
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

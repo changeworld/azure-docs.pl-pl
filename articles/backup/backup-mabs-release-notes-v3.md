@@ -1,20 +1,15 @@
 ---
 title: Informacje o wersji dla Microsoft Azure Backup Server v3
 description: Ten artykuł zawiera informacje o znanych problemach i obejściach programu Microsoft Azure Backup Server (serwera usługi MAB) v3.
-ms.reviewer: v-jysur
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/22/2018
-ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 6f00b51cc5ac23aa8d1d39202ca79a9f5d762cbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074802"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172277"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Informacje o wersji programu Microsoft Azure Backup Server
 

@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 7d0fec56791c0d3e7ae60d78da83cf286532b9ab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124008"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173811"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Monitorowanie operacji pozyskiwania Eksplorator danych platformy Azure przy użyciu dzienników diagnostycznych (wersja zapoznawcza)
 
@@ -30,8 +30,8 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Konfigurowanie dzienników diagnostycznych dla klastra usługi Azure Eksplorator danych
 
 Dzienników diagnostycznych można użyć do skonfigurowania kolekcji następujących danych dziennika:
-* Pomyślne operacje pozyskiwania: Te dzienniki zawierają informacje o pomyślnym zakończeniu operacji pozyskiwania.
-* Nieudane operacje pozyskiwania: Te dzienniki zawierają szczegółowe informacje o nieudanych operacjach pozyskiwania, w tym szczegóły błędu. 
+* Pomyślne operacje pozyskiwania: te dzienniki zawierają informacje o pomyślnym zakończeniu operacji pozyskiwania.
+* Nieudane operacje pozyskiwania: te dzienniki zawierają szczegółowe informacje o operacjach pozyskiwania zakończonych niepowodzeniem, w tym szczegóły błędu. 
 
 Dane są następnie archiwizowane na koncie magazynu, przesyłane strumieniowo do centrum zdarzeń lub wysyłane do Log Analytics zgodnie ze specyfikacją.
 
@@ -66,14 +66,14 @@ Wszystkie [dzienniki diagnostyczne Azure monitor korzystają ze wspólnego schem
 
 Ciągi JSON dziennika zawierają elementy wymienione w poniższej tabeli:
 
-|Name               |Opis
+|Nazwa               |Opis
 |---                |---
 |time               |Godzina raportu
 |resourceId         |Identyfikator zasobu Azure Resource Manager
-|operationName      |Nazwa operacji: PROGRAMU. KUSTO/KLASTRY/POZYSKIWANIE/AKCJA "
-|operationVersion   |Wersja schematu: "1,0" 
-|category           |Kategoria operacji. `SucceededIngestion`lub `FailedIngestion`. Właściwości różnią się w zależności od [operacji zakończonej powodzeniem](#successful-ingestion-operation-log) lub [nieudanej operacji](#failed-ingestion-operation-log).
-|properties         |Szczegółowe informacje o operacji.
+|operationName      |Nazwa operacji: "MICROSOFT. KUSTO/KLASTRY/POZYSKIWANIE/AKCJA "
+|operationVersion   |Wersja schematu: ' 1,0 ' 
+|category           |Kategoria operacji. `SucceededIngestion` lub `FailedIngestion`. Właściwości różnią się w zależności od [operacji zakończonej powodzeniem](#successful-ingestion-operation-log) lub [nieudanej operacji](#failed-ingestion-operation-log).
+|Właściwości         |Szczegółowe informacje o operacji.
 
 #### <a name="successful-ingestion-operation-log"></a>Dziennik operacji pozyskiwania zakończonych powodzeniem
 
@@ -100,11 +100,11 @@ Ciągi JSON dziennika zawierają elementy wymienione w poniższej tabeli:
 ```
 **Właściwości dziennika diagnostycznego pomyślnej operacji**
 
-|Name               |Opis
+|Nazwa               |Opis
 |---                |---
 |succeededOn        |Czas ukończenia pozyskiwania
 |operationId        |Identyfikator operacji pozyskiwania Eksplorator danych platformy Azure
-|database           |Nazwa docelowej bazy danych
+|baza danych           |Nazwa docelowej bazy danych
 |table              |Nazwa tabeli docelowej
 |ingestionSourceId  |Identyfikator źródła danych pozyskiwania
 |ingestionSourcePath|Ścieżka do źródła danych pozyskiwania lub identyfikatora URI obiektu BLOB
@@ -141,21 +141,23 @@ Ciągi JSON dziennika zawierają elementy wymienione w poniższej tabeli:
 
 **Właściwości dziennika diagnostyki operacji zakończonej niepowodzeniem**
 
-|Name               |Opis
+|Nazwa               |Opis
 |---                |---
 |failedOn           |Czas ukończenia pozyskiwania
 |operationId        |Identyfikator operacji pozyskiwania Eksplorator danych platformy Azure
-|database           |Nazwa docelowej bazy danych
+|baza danych           |Nazwa docelowej bazy danych
 |table              |Nazwa tabeli docelowej
 |ingestionSourceId  |Identyfikator źródła danych pozyskiwania
 |ingestionSourcePath|Ścieżka do źródła danych pozyskiwania lub identyfikatora URI obiektu BLOB
 |rootActivityId     |Identyfikator działania
 |details informacje            |Szczegółowy opis błędu i komunikatu o błędzie
 |Kodzie          |Kod błędu 
-|failureStatus      |`Permanent`lub `Transient`. Ponowna próba błędu przejściowego może zakończyć się pomyślnie.
+|failureStatus      |`Permanent` lub `Transient`. Ponowna próba błędu przejściowego może zakończyć się pomyślnie.
 |originatesFromUpdatePolicy|Prawda, jeśli niepowodzenie pochodzi z zasad aktualizacji
 |shouldRetry        |Prawda, jeśli próba powiodła się
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Monitorowanie kondycji klastra przy użyciu metryk](using-metrics.md)
+* [Samouczek: pozyskiwanie i wykonywanie zapytań dotyczących danych monitorowania na platformie Azure Eksplorator danych](ingest-data-no-code.md)
+* [Monitorowanie kondycji klastra przy użyciu metryk](using-metrics.md)
+

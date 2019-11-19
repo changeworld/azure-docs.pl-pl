@@ -1,6 +1,6 @@
 ---
-title: Ochrona App Services w Azure Security Center | Microsoft Docs
-description: Ten artykuł pomaga rozpocząć ochronę App Services w Azure Security Center.
+title: Ochrona Azure App Service aplikacji sieci Web i interfejsów API
+description: Ten artykuł pomaga rozpocząć ochronę Azure App Service aplikacji sieci Web i interfejsów API w programie Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,57 +10,59 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 68f7c47f0a0f56085d632f1c1741318f440b41ee
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: be9331ccd548628bfc27172c4f6e625bdba1632c
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202467"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158926"
 ---
-# <a name="protect-app-service-with-azure-security-center"></a>Ochrona App Service przy użyciu Azure Security Center
-Ten artykuł ułatwia używanie Azure Security Center do monitorowania i ochrony aplikacji działających w oparciu o App Service.
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Ochrona Azure App Service aplikacji sieci Web i interfejsów API
 
-App Service umożliwia tworzenie i hostowanie aplikacji sieci Web w wybranym języku programowania bez zarządzania infrastrukturą. App Service oferuje automatyczne skalowanie i wysoką dostępność, obsługują zarówno systemy Windows, jak i Linux, a także zautomatyzowane wdrożenia z usług GitHub, Azure DevOps lub dowolnego repozytorium git. 
+Azure App Service to w pełni zarządzana platforma do tworzenia i hostowania aplikacji i interfejsów API sieci Web bez obaw o zarządzanie infrastrukturą. Umożliwia zarządzanie, monitorowanie i wgląd w dane operacyjne w celu spełnienia wymagań dotyczących wydajności, zabezpieczeń i zgodności klasy korporacyjnej. Aby uzyskać więcej informacji, zobacz [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
-Luki w zabezpieczeniach aplikacji sieci Web są często wykorzystywane przez osoby atakujące, ponieważ mają wspólny i dynamiczny interfejs niemal każdej organizacji w Internecie. Żądania do aplikacji uruchamianych na App Service przechodzą przez kilka bram wdrożonych w centrach danych platformy Azure na całym świecie odpowiedzialne za kierowanie poszczególnych żądań do odpowiedniej aplikacji. 
+Aby włączyć zaawansowaną ochronę przed zagrożeniami dla planu Azure App Service, musisz:
 
-Azure Security Center można uruchamiać oceny i zalecenia dotyczące aplikacji uruchamianych w App Service w piaskownicach na maszynie wirtualnej lub w wystąpieniach na żądanie. Dzięki wykorzystaniu widoczności platformy Azure jako dostawcy chmury Security Center analizuje App Service dzienniki wewnętrzne, aby monitorować typowe ataki aplikacji sieci Web, które często działają w wielu celach.
+* Subskrybuj standardową warstwę cenową Azure Security Center
+* Włącz plan App Service, jak pokazano poniżej. Security Center jest natywnie zintegrowana z App Service, eliminując konieczność wdrażania i dołączania — integracja jest niewidoczna.
+* Mają plan App Service skojarzony z dedykowanymi maszynami. Obsługiwane są następujące plany: Basic, standard, Premium, izolowane lub Linux. Security Center nie obsługuje planów bezpłatna, współdzielona ani zużycie. Aby uzyskać więcej informacji, zobacz [plany App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
-Security Center wykorzystuje skalę chmury w celu identyfikowania ataków na aplikacje App Service i skoncentrowanie się na pojawiających się atakach, podczas gdy osoby atakujące znajdują się w fazie Rekonesans, co umożliwia wykrywanie luk w zabezpieczeniach w wielu witrynach sieci Web hostowanych na platformie Azure. Security Center korzysta z modeli analizy i uczenia maszynowego, aby uwzględnić wszystkie interfejsy umożliwiające klientom interakcję z aplikacjami, niezależnie od tego, czy za pośrednictwem protokołu HTTP, czy za pośrednictwem metod zarządzania. Ponadto jako usługa pierwszej firmy na platformie Azure Security Center jest również w unikatowym miejscu, aby oferować analizę zabezpieczeń opartą na hoście obejmującą bazowe węzły obliczeniowe dla tego PaaS, umożliwiając Security Center wykrywające ataki dla aplikacji sieci Web, które zostały została już wykorzystana.
+Po włączeniu planu App Service Security Center ocenia zasoby objęte planem App Service i generuje zalecenia dotyczące zabezpieczeń na podstawie ich wyników. Security Center chroni wystąpienie maszyny wirtualnej, w której jest uruchomiony App Service i interfejs zarządzania. Monitoruje również żądania i odpowiedzi wysyłane do i z aplikacji uruchamianych w App Service.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Aby monitorować i zabezpieczyć usługę App Service, musisz mieć plan usługi App Service, który jest skojarzony z dedykowanymi maszynami. Te plany są następujące: Podstawowy, Standardowy, Premium, Izolowany lub Linux. Usługa Azure Security Center nie obsługuje planów Bezpłatny, Współdzielony ani Zużycie. Aby uzyskać więcej informacji, zobacz [plany App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
-
-## <a name="security-center-protection"></a>Ochrona Security Center
-
-Azure Security Center chroni wystąpienie maszyny wirtualnej, w której jest uruchomiony App Service i interfejs zarządzania. Monitoruje również żądania i odpowiedzi wysyłane do i z aplikacji uruchamianych w App Service.
-
-Security Center jest natywnie zintegrowana z App Service, eliminując konieczność wdrażania i dołączania — integracja jest całkowicie niewidoczna.
-
+Security Center wykorzystuje skalę chmury oraz widoczność, którą platforma Azure ma jako dostawcę chmury, aby monitorować typowe ataki aplikacji sieci Web. Security Center mogą wykrywać ataki w aplikacjach i identyfikować ataki, nawet gdy osoby atakujące znajdują się w fazie rekonesansego skanowania w celu identyfikowania luk w zabezpieczeniach w wielu aplikacjach hostowanych przez platformę Azure. Jako usługa natywna platformy Azure Security Center jest również w unikatowym miejscu, aby oferować analizę zabezpieczeń opartą na hoście obejmującą bazowe węzły obliczeniowe dla tego PaaS, umożliwiając Security Center wykrywające ataki na aplikacje sieci Web, które zostały już wykorzystane.
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Włączanie monitorowania i ochrony App Service
 
-1. Na platformie Azure wybierz Security Center.
+1. W Azure Portal wybierz pozycję Security Center.
 2. Przejdź do pozycji **cennik & Ustawienia** i wybierz subskrypcję.
 3. W obszarze **warstwa cenowa**w wierszu **usługi App Service** Przełącz swój plan na **włączony**.
 
-![Przełączanie usługi App Service](./media/security-center-app-services/app-services-toggle.png)
+    [![włączania usług App Services w ramach subskrypcji warstwy standardowej](media/security-center-app-services/app-services-toggle.png)](media/security-center-app-services/app-services-toggle.png#lightbox)
+
 
 >[!NOTE]
-> Liczba wystąpień na liście dla danej liczby zasobów reprezentuje liczbę ważnych wystąpień usługi App Service, która jest aktywna w momencie otwarcia bloku warstwy cenowej. Ponieważ ta liczba może ulec zmianie w zależności od wybranych opcji skalowania, liczba wystąpień, dla których nastąpi opłata, zostanie odpowiednio zmodyfikowana.
+> Liczba wystąpień wymienionych dla danej **liczby zasobów** reprezentuje łączną liczbę wystąpień obliczeniowych w ramach wszystkich App Service planów w ramach tej subskrypcji, uruchomionych w momencie otwarcia bloku warstwy cenowej.
+>
+> Azure App Service oferuje różne plany. Plan App Service definiuje zestaw zasobów obliczeniowych dla aplikacji sieci Web do uruchomienia. Są one równoważne farmom serwerów w konwencjonalnym hostingu w sieci Web. Co najmniej jedna aplikacja może być skonfigurowana do uruchamiania w tych samych zasobach obliczeniowych (lub w tym samym planie App Service).
+>
+>Aby sprawdzić poprawność liczby, przejdź do obszaru "App Service plany" w witrynie Azure Portal, gdzie możesz zobaczyć liczbę wystąpień obliczeniowych używanych przez poszczególne plany. 
+
+
+
+
+
 
 Aby wyłączyć monitorowanie i zalecenia dotyczące App Service, Powtórz ten proces i Przełącz plan **App Service** na **wyłączony**.
 
 
 
 ## <a name="see-also"></a>Zobacz także
-W tym artykule przedstawiono sposób korzystania z funkcji monitorowania w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób korzystania z funkcji monitorowania w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat Azure Security Center, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md): Dowiedz się, jak skonfigurować ustawienia zabezpieczeń w Azure Security Center.
-* [Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center](security-center-managing-and-responding-alerts.md): Informacje na temat sposobu zarządzania alertami zabezpieczeń i reagowania na nie.
-* [App Services](security-center-virtual-machine-protection.md#app-services):  Wyświetl listę środowisk usługi App Service za pomocą podsumowań kondycji.
-* [Monitorowanie rozwiązań partnerskich za pomocą Azure Security Center](security-center-partner-solutions.md): Informacje na temat sposobu monitorowania stanu kondycji rozwiązań partnerskich.
-* [Azure Security Center często zadawane pytania](security-center-faq.md): Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/): Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania ustawień zabezpieczeń w usłudze Azure Security Center.
+* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
+* [App Services](security-center-virtual-machine-protection.md#app-services): Wyświetl listę środowisk usługi App Service za pomocą podsumowań kondycji.
+* [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
+* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

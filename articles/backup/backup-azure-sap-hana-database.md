@@ -1,18 +1,14 @@
 ---
-title: Utwórz kopię zapasową bazy danych SAP HANA na platformie Azure przy użyciu Azure Backup | Microsoft Docs
+title: Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure
 description: W tym samouczku wyjaśniono, jak utworzyć kopię zapasową bazy danych SAP HANA na platformie Azure przy użyciu usługi Azure Backup.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 519e47c6b6793c638e64c4e4bcc4fafdb678c9fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931816"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172742"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure
 
@@ -170,13 +166,13 @@ Jeśli chcesz utworzyć lokalną kopię zapasową bazy danych, której kopia zap
 
 1. Poczekaj na zakończenie wszystkich pełnych lub dzienników kopii zapasowych bazy danych. Sprawdź stan w SAP HANA Studio.
 2. Wyłącz kopie zapasowe dzienników i ustaw wykaz kopii zapasowych w systemie plików dla odpowiedniej bazy danych.
-3. Aby to zrobić, kliknij dwukrotnie pozycję **systemdb** > **Configuration** > **SELECT Database** > **Filter (log)** .
-4. Ustaw wartość opcji **enable_auto_log_backup** na **nie**.
+3. Aby to zrobić, kliknij dwukrotnie pozycję **systemdb** > **Configuration** > **Wybierz pozycję Database** > **Filter (log)** .
+4. Ustaw **enable_auto_log_backup** na wartość **nie**.
 5. Ustaw **log_backup_using_backint** na **wartość false**.
 6. Utwórz pełną kopię zapasową bazy danych ad hoc.
 7. Poczekaj na zakończenie pełnej kopii zapasowej i kopii zapasowej wykazu.
 8. Przywróć poprzednie ustawienia z powrotem do tych dla platformy Azure:
-    - Ustaw **enable_auto_log_backup** na **wartość tak**.
+    - Ustaw wartość **enable_auto_log_backup** na **tak**.
     - Ustaw **log_backup_using_backint** na **wartość true**.
 
 

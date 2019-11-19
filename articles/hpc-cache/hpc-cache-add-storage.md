@@ -4,14 +4,14 @@ description: Jak zdefiniować cele magazynu, aby pamięć podręczna platformy A
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/18/2019
 ms.author: rohogue
-ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621467"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166614"
 ---
 # <a name="add-storage-targets"></a>Dodawanie lokalizacji docelowych magazynu
 
@@ -41,7 +41,7 @@ Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacj
 
 * **Nazwa docelowego magazynu** — Ustaw nazwę identyfikującą ten element docelowy magazynu w pamięci podręcznej platformy Azure HPC.
 * **Typ docelowy** — wybierz **obiekt BLOB**.
-* **Konto magazynu** — wybierz konto z kontenerem, którego ma dotyczyć odwołanie.
+* **Konto magazynu** — wybierz konto z kontenerem, który ma być używany.
 
   Musisz autoryzować wystąpienie pamięci podręcznej, aby uzyskać dostęp do konta magazynu, zgodnie z opisem w temacie [Dodawanie ról dostępu](#add-the-access-control-roles-to-your-account).
 
@@ -53,13 +53,16 @@ Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacj
 
 Po zakończeniu kliknij przycisk **OK** , aby dodać miejsce docelowe magazynu.
 
+> [!NOTE]
+> Jeśli Zapora konta magazynu jest ustawiona w taki sposób, aby ograniczyć dostęp tylko do wybranych sieci, użyj tymczasowego obejścia udokumentowanego w obszarze [Pracuj wokół ustawień zapory konta magazynu obiektów BLOB](hpc-cache-blob-firewall-fix.md).
+
 ### <a name="add-the-access-control-roles-to-your-account"></a>Dodaj role kontroli dostępu do swojego konta
 
-Pamięć podręczna Azure HPC używa [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) do autoryzacji aplikacji pamięci podręcznej w celu uzyskania dostępu do konta magazynu dla obiektów docelowych usługi Azure Blob Storage.
+Pamięć podręczna Azure HPC używa [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) do autoryzowania usługi pamięci podręcznej w celu uzyskania dostępu do konta magazynu dla obiektów docelowych usługi Azure Blob Storage.
 
 Właściciel konta magazynu musi jawnie dodać rolę współautor danych [współautor konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) i [obiektu blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) dla użytkownika "dostawca zasobów pamięci podręcznej usługi HPC".
 
-Można to zrobić wcześniej lub przez kliknięcie linku na stronie, w którym można dodać obiekt docelowy magazynu obiektów BLOB.
+Można to zrobić wcześniej lub przez kliknięcie linku na stronie, w którym można dodać obiekt docelowy magazynu obiektów BLOB. Należy pamiętać, że może upłynąć do 5 minut, zanim ustawienia roli są propagowane za pomocą środowiska platformy Azure, więc przed utworzeniem elementu docelowego magazynu należy poczekać kilka minut.
 
 Procedura dodawania ról RBAC:
 
@@ -76,7 +79,7 @@ Procedura dodawania ról RBAC:
    > [!NOTE]
    > Jeśli wyszukiwanie "HPC" nie działa, spróbuj użyć zamiast niego ciągu "storagecache". Użytkownicy, którzy dołączeli do wersji zapoznawczych (przed uzyskaniem wiedzy), muszą używać starszej nazwy dla nazwy głównej usługi.
 
-1. Kliknij przycisk **Zapisz** , aby dodać przypisanie roli do konta magazynu.
+1. Kliknij przycisk **Zapisz** u dołu.
 
 1. Powtórz ten proces, aby przypisać rolę "Współautor danych obiektu blob magazynu".  
 
@@ -84,7 +87,7 @@ Procedura dodawania ról RBAC:
 
 ## <a name="add-a-new-nfs-storage-target"></a>Dodaj nowy element docelowy magazynu NFS
 
-Miejsce docelowe magazynu NFS zawiera kilka dodatkowych pól, w których można określić, jak uzyskać dostęp do eksportu magazynu i jak efektywnie buforować swoje dane. Ponadto można utworzyć wiele ścieżek przestrzeni nazw z jednego hosta NFS, jeśli jest dostępny więcej niż jeden eksport.
+Obiekt docelowy magazynu NFS ma więcej pól niż obiekt docelowy magazynu obiektów BLOB. Te pola określają sposób osiągnięcia eksportu magazynu i wydajnej pamięci podręcznej danych. Ponadto obiekt docelowy magazynu NFS umożliwia utworzenie wielu ścieżek przestrzeni nazw, Jeśli host NFS ma więcej niż jeden dostępny eksport.
 
 ![Zrzut ekranu przedstawiający stronę Dodawanie miejsca docelowego magazynu z zdefiniowanym elementem docelowym NFS](media/hpc-cache-add-nfs-target.png)
 
@@ -96,14 +99,15 @@ Podaj te informacje dla miejsca docelowego magazynu z kopią zapasową NFS:
 
 * **Nazwa hosta** — wprowadź adres IP lub w pełni kwalifikowaną nazwę domeny dla systemu magazynu NFS. (Użyj nazwy domeny tylko wtedy, gdy pamięć podręczna ma dostęp do serwera DNS, który może rozpoznać nazwę).
 
-* **Model użycia** — wybierz jeden z profili buforowania danych opartych na przepływie pracy, zgodnie z opisem w temacie [Wybierz model użycia poniżej](#choose-a-usage-model).
+* **Model użycia** — wybierz jeden z profili buforowania danych opartych na przepływie pracy, zgodnie z opisem w temacie [Wybierz model użycia](#choose-a-usage-model)poniżej.
 
 ### <a name="nfs-namespace-paths"></a>Ścieżki przestrzeni nazw NFS
 
 Obiekt docelowy magazynu NFS może mieć wiele ścieżek wirtualnych, o ile każda ścieżka reprezentuje inny eksport lub podkatalog w tym samym systemie magazynu.
 
 Utwórz wszystkie ścieżki z jednego miejsca docelowego magazynu.
-<!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
+
+[Ścieżki przestrzeni nazw można dodawać i edytować](hpc-cache-edit-storage.md) w miejscu docelowym magazynu w dowolnym momencie.
 
 Wypełnij te wartości dla każdej ścieżki przestrzeni nazw:
 
@@ -122,11 +126,29 @@ Po zakończeniu kliknij przycisk **OK** , aby dodać miejsce docelowe magazynu.
 
 Podczas tworzenia miejsca docelowego magazynu, które wskazuje system magazynu NFS, należy wybrać *model użycia* dla tego celu. Ten model określa, w jaki sposób dane są buforowane.
 
-* Odczytaj duże — Jeśli korzystasz głównie z pamięci podręcznej w celu przyspieszenia dostępu do odczytu danych, wybierz tę opcję.
+Dostępne są trzy opcje:
 
-* Odczyt/zapis — Jeśli klienci używają pamięci podręcznej do odczytu i zapisu, wybierz tę opcję.
+* **Czytaj duże, rzadko** występujące zapisy — Użyj tej opcji, jeśli chcesz przyspieszyć dostęp do odczytu do plików, które są statyczne lub rzadko zmieniane.
 
-* Klienci pomijają pamięć podręczną — wybierz tę opcję, jeśli klienci zapisują dane bezpośrednio w systemie magazynu bez wcześniejszego zapisu w pamięci podręcznej.
+  Ta opcja powoduje buforowanie plików, które są odczytywane przez klientów, ale natychmiast przekazuje do magazynu zaplecza. Pliki przechowywane w pamięci podręcznej nigdy nie są porównywane z plikami znajdującymi się na woluminie magazynu NFS.
+
+  Nie należy używać tej opcji, jeśli istnieje ryzyko, że plik może być modyfikowany bezpośrednio w systemie magazynu bez wcześniejszego zapisania go w pamięci podręcznej. W takim przypadku buforowana wersja pliku nigdy nie będzie aktualizowana o zmiany z zaplecza, a zestaw danych może stać się niespójny.
+
+* **Więcej niż 15% zapisów** — ta opcja przyspiesza zarówno wydajność odczytu, jak i zapisu. W przypadku korzystania z tej opcji Wszyscy klienci muszą uzyskać dostęp do plików za pośrednictwem pamięci podręcznej platformy Azure HPC zamiast bezpośrednio zainstalować magazyn zaplecza. Pliki w pamięci podręcznej będą miały ostatnio wprowadzone zmiany, które nie są przechowywane w zapleczu.
+
+  W tym modelu użycia pliki w pamięci podręcznej nie są sprawdzane względem plików w magazynie zaplecza. Założono, że w pamięci podręcznej znajduje się nowsza wersja pliku. Zmodyfikowany plik w pamięci podręcznej jest zapisywana tylko w systemie magazynu zaplecza, po którym jest w pamięci podręcznej przez godzinę bez dodatkowych zmian.
+
+* **Klienci zapisują w miejscu DOCELOWYM NFS, pomijając pamięć podręczną** — wybierz tę opcję, jeśli jakikolwiek klient w przepływie pracy zapisuje dane bezpośrednio w systemie magazynu bez wcześniejszego zapisu w pamięci podręcznej. Pliki, które są przechowywane w pamięci podręcznej żądań klientów, ale wszelkie zmiany tych plików z klienta są natychmiast przesyłane z powrotem do systemu magazynu zaplecza.
+
+  W tym modelu użycia pliki w pamięci podręcznej są często sprawdzane względem wersji zaplecza dla aktualizacji. Ta weryfikacja pozwala na zmianę plików poza pamięcią podręczną przy zachowaniu spójności danych.
+
+Ta tabela zawiera podsumowanie różnic między modelami użycia:
+
+| Model użycia | Tryb buforowania | Weryfikacja zaplecza | Maksymalne opóźnienie zapisu |
+| ---- | ---- | ---- | ---- |
+| Czytaj duże, rzadko występujące zapisy | Odczyt | Nigdy | Brak |
+| Ponad 15% zapisów | Odczyt/zapis | Nigdy | 1 godzina |
+| Klienci pomijają pamięć podręczną | Odczyt | 30 sekund | Brak |
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -135,4 +157,4 @@ Po utworzeniu obiektów docelowych magazynu należy wziąć pod uwagę jedno z n
 * [Instalowanie pamięci podręcznej platformy Azure HPC](hpc-cache-mount.md)
 * [Przenoszenie danych do usługi Azure Blob Storage](hpc-cache-ingest.md)
 
-Jeśli potrzebujesz zmienić miejsce docelowe magazynu, przeczytaj artykuł [Edycja miejsc docelowych](hpc-cache-edit-storage.md) , aby dowiedzieć się, jak.
+Jeśli trzeba zaktualizować dowolne ustawienia, można [edytować miejsce docelowe magazynu](hpc-cache-edit-storage.md).

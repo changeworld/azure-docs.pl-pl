@@ -1,18 +1,14 @@
 ---
-title: Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej za pomocą Azure Backup
+title: Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową pojedynczej maszyny wirtualnej platformy Azure lub wielu maszyn wirtualnych platformy Azure z usługą Azure Backup.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747239"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172510"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej
 
@@ -60,7 +56,7 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, Azure Backup 
 8. Postęp konfiguracji można śledzić w powiadomieniach portalu.
 9. Po zakończeniu zadania w menu maszyny wirtualnej kliknij pozycję **kopia zapasowa**. Na stronie jest wyświetlany stan kopii zapasowej maszyny wirtualnej, informacje o punktach odzyskiwania, uruchomionych zadaniach i alertach.
 
-   ![Stan usługi Backup](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![Stan kopii zapasowej](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. Po włączeniu kopii zapasowej zostanie uruchomione początkowe kopie zapasowe. Początkową kopię zapasową można rozpocząć od razu lub zaczekać, aż zacznie się zgodnie z harmonogramem tworzenia kopii zapasowych.
     - Do momentu ukończenia początkowej kopii zapasowej **stan ostatniej kopii zapasowej** zostanie wyświetlony jako **ostrzeżenie (początkowa kopia zapasowa oczekuje)** .

@@ -1,36 +1,32 @@
 ---
-title: Wtyczki serwera Jenkins na platformie Azure
-description: Dowiedz się więcej o dodatek Jenkins dostępne do użycia z platformą Azure
-ms.service: jenkins
-keywords: jenkins, plugis, azure, devops
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Wtyczki Jenkins dla platformy Azure
+description: Dowiedz się więcej na temat wtyczki Jenkins dostępnej do użycia z platformą Azure
+keywords: Jenkins, plug, Azure, DevOps
 ms.date: 03/22/2019
 ms.topic: article
-ms.openlocfilehash: c103bc0a314f1e5a4a0afef3f7969f53b6a0dccd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ecc8f7f7435cbb0dbc80f334f27aaca7f4cd1ed7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640977"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158797"
 ---
-# <a name="jenkins-plugins-for-azure"></a>Wtyczki serwera Jenkins na platformie Azure
+# <a name="jenkins-plugins-for-azure"></a>Wtyczki Jenkins dla platformy Azure
 
-Następujące wtyczki narzędzia Jenkins obsługują różne funkcje do użytku z platformą Azure.
+Następujące wtyczki Jenkins obsługują różne funkcje do użycia z platformą Azure.
   
-| Wtyczka usługi Jenkins | Opis                                   |
+| Wtyczka Jenkins | Opis                                   |
 |------------------------------------------------------------------------------|
-| [Wtyczka usługi Azure App Service](https://plugins.jenkins.io/azure-app-service)     | Dodatek Jenkins do wdrożenia usługi Azure App Service (obecnie obsługuje tylko aplikacji sieci Web). | 
-| [Wtyczka usługi Azure AD](https://plugins.jenkins.io/azure-ad)                       | Dodatek Jenkins, która obsługuje uwierzytelnianie i autoryzacja przy użyciu usługi Azure Active Directory. | 
-| [Wtyczka artefaktu Manager platformy Azure](https://plugins.jenkins.io/azure-artifact-manager) | Wtyczka usługi Azure Menedżera artefaktu jest Menedżer artefaktów, które umożliwia przechowywanie artefaktów w usłudze Azure Blob Storage. Wtyczka usługi Azure Menedżera artefaktu działa przezroczyste do systemu Jenkins i zadań, to jak domyślny Menedżer artefaktu. | 
-| [Wtyczka agentów kontenera platformy Azure](https://plugins.jenkins.io/azure-container-agents) | Wtyczka agentów kontenera platformy Azure umożliwia uruchamianie kontenera jako agenta na serwerze Jenkins | 
-| [Wtyczka usługi Azure Container Registry zadania](https://plugins.jenkins.io/azure-container-registry-tasks)       | Dodatek Jenkins, aby wysłać żądanie kompilacji platformy docker, aby [usługi Azure Container Registry](/azure/container-registry/container-registry-tasks-overview). |
-| [Wtyczka usługi kontenera platformy Azure](https://plugins.jenkins.io/azure-acs)       | Wtyczka usługi Jenkins na wdrażanie konfiguracji do usługi Azure Container Service (AKS). | 
-| [Wtyczka poświadczeń platformy Azure](https://plugins.jenkins.io/azure-credentials)      | Dodatek Jenkins do zarządzania poświadczeń platformy Azure. | 
-| [Wtyczka funkcji platformy Azure](https://plugins.jenkins.io/azure-function)           | Dodatek Jenkins, aby wdrożyć funkcję platformy Azure. | 
-| [Wtyczka usługi Azure IoT Edge](https://plugins.jenkins.io/azure-iot-edge)           | Wtyczka usługi Azure IoT Edge można łatwo Skonfiguruj potok ciągłej integracji/ciągłego Dostarczania do opracowywania rozwiązań usługi IoT Edge na usługi Jenkins. | 
-| [Wtyczka usługi Azure Service Fabric](https://plugins.jenkins.io/service-fabric)     | Dodatek Jenkins dla projektów systemu Linux usługi Azure Service Fabric. |
-| [Wtyczka usługi Azure Storage](https://plugins.jenkins.io/windows-azure-storage)     | Wtyczka przekazywania artefakty kompilacji do lub pobieranie tworzenia zależności z Microsoft Azure Blob storage. | 
-| [Wtyczka agentów maszyn wirtualnych platformy Azure](https://plugins.jenkins.io/azure-vm-agents)         | Dodatek Jenkins tworzy agentów serwera Jenkins na maszynach wirtualnych platformy Azure (przy użyciu szablonu usługi Azure Resource Manager). | 
-| [Wtyczka zestawu skalowania maszyn wirtualnych platformy Azure](https://plugins.jenkins.io/azure-vmss)           | Ustawia dodatek Jenkins, aby wdrożyć obrazy maszyn wirtualnych skalowania maszyn wirtualnych platformy Azure. | 
+| [Wtyczka Azure App Service](https://plugins.jenkins.io/azure-app-service)     | Wtyczka Jenkins do wdrożenia Azure App Service (obecnie obsługuje tylko aplikację sieci Web). | 
+| [Wtyczka usługi Azure AD](https://plugins.jenkins.io/azure-ad)                       | Wtyczka Jenkins, która obsługuje uwierzytelnianie & autoryzację za pośrednictwem Azure Active Directory. | 
+| [Wtyczka Menedżera artefaktów platformy Azure](https://plugins.jenkins.io/azure-artifact-manager) | Wtyczka usługi Azure artefakt Manager to Menedżer artefaktów, który umożliwia przechowywanie artefaktów w usłudze Azure Blob Storage. Wtyczka Menedżera artefaktów platformy Azure działa w sposób przezroczysty do Jenkins i Twoich zadań, podobnie jak w przypadku domyślnego menedżera artefaktów. | 
+| [Wtyczka agentów kontenera platformy Azure](https://plugins.jenkins.io/azure-container-agents) | Wtyczka agentów kontenera platformy Azure może pomóc w uruchomieniu kontenera jako agenta w Jenkins | 
+| [Wtyczka zadania Azure Container Registry](https://plugins.jenkins.io/azure-container-registry-tasks)       | Wtyczka Jenkins do wysłania żądania Docker-Build do [Azure Container Registry](/azure/container-registry/container-registry-tasks-overview). |
+| [Wtyczka usługi kontenera platformy Azure](https://plugins.jenkins.io/azure-acs)       | Wtyczka Jenkins do wdrażania konfiguracji do Azure Container Service (AKS). | 
+| [Wtyczka poświadczeń platformy Azure](https://plugins.jenkins.io/azure-credentials)      | Wtyczka Jenkins do zarządzania poświadczeniami platformy Azure. | 
+| [Wtyczka funkcji platformy Azure](https://plugins.jenkins.io/azure-function)           | Wtyczka Jenkins do wdrożenia funkcji platformy Azure. | 
+| [Wtyczka Azure IoT Edge](https://plugins.jenkins.io/azure-iot-edge)           | Wtyczka Azure IoT Edge ułatwia konfigurowanie potoku ciągłej integracji/ciągłego wdrażania na potrzeby tworzenia rozwiązania IoT Edge na Jenkins. | 
+| [Wtyczka Service Fabric platformy Azure](https://plugins.jenkins.io/service-fabric)     | Wtyczka Jenkins dla projektów Service Fabric systemu Linux Azure. |
+| [Wtyczka usługi Azure Storage](https://plugins.jenkins.io/windows-azure-storage)     | Wtyczka do przekazywania artefaktów kompilacji do lub pobierania zależności kompilacji z, Microsoft Azure magazynu obiektów BLOB. | 
+| [Wtyczka agentów maszyny wirtualnej platformy Azure](https://plugins.jenkins.io/azure-vm-agents)         | Wtyczka Jenkins do tworzenia agentów Jenkins w usłudze Azure Virtual Machines (za pośrednictwem szablonu Azure Resource Manager). | 
+| [Wtyczka zestawu skalowania maszyn wirtualnych platformy Azure](https://plugins.jenkins.io/azure-vmss)           | Wtyczka Jenkins do wdrażania obrazów maszyn wirtualnych w zestawach skalowania maszyn wirtualnych platformy Azure. | 

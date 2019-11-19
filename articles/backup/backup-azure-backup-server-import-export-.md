@@ -1,19 +1,15 @@
 ---
-title: Azure Backup — kopia zapasowa offline dla programu DPM i Azure Backup Server
+title: Kopia zapasowa offline dla programu DPM i usługi Azure Backup Server
 description: Azure Backup umożliwia wysyłanie danych z sieci za pomocą usługi Azure Import/Export. W tym artykule wyjaśniono przepływ pracy kopii zapasowej offline dla programu DPM i Azure Backup Server (serwera usługi MAB).
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: dacurwin
-ms.openlocfilehash: 0763cbd4345dca39f37b77a0f3d991a7d77e30c4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074303"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173246"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Tryb offline — przepływ pracy tworzenia kopii zapasowych dla programu DPM i Azure Backup Server
 
@@ -108,7 +104,7 @@ Informacje przedstawione w tej sekcji ułatwiają zakończenie przepływu pracy 
 
 Narzędzie *AzureOfflineBackupDiskPrep* służy do przygotowywania dysków SATA, które są wysyłane do najbliższego centrum danych platformy Azure. To narzędzie jest dostępne w katalogu instalacyjnym Agenta Recovery Services w następującej ścieżce:
 
-*\\narzędzia\\Microsoft Azure Recovery Services Agent\\*
+    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. Przejdź do katalogu i Skopiuj katalog **AzureOfflineBackupDiskPrep** do komputera kopii, na którym są połączone dyski SATA, które mają zostać przygotowane. Upewnij się, że w odniesieniu do komputera kopii:
 

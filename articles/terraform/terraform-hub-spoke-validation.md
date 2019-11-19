@@ -1,17 +1,14 @@
 ---
 title: Samouczek — Weryfikowanie sieci piasty i szprych na platformie Azure przy użyciu Terraform
 description: Samouczek dotyczący weryfikowania topologii sieci Hub i szprychy ze wszystkimi sieciami wirtualnymi połączonymi ze sobą.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969336"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159192"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Samouczek: sprawdzanie poprawności sieci piasty i szprych na platformie Azure przy użyciu Terraform
 
@@ -100,7 +97,7 @@ W tej sekcji przedstawiono sposób testowania łączności z symulowanego środo
 
 1. Obok tekstu **logowania przy użyciu lokalnego konta maszyny wirtualnej**Skopiuj polecenie **SSH** do Schowka.
 
-1. W wierszu polecenia systemu Linux Uruchom `ssh`, aby nawiązać połączenie z symulowanym środowiskiem lokalnym. Użyj hasła określonego w pliku parametrów `on-prem.tf`.
+1. W wierszu polecenia systemu Linux Uruchom `ssh` połączyć się z symulowanego lokalnego środowiska. Użyj hasła określonego w pliku parametrów `on-prem.tf`.
 
 1. Uruchom `ping` polecenie, aby przetestować łączność z maszyną wirtualną serwera przesiadkowego w sieci wirtualnej centrum:
 

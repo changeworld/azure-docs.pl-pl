@@ -1,18 +1,14 @@
 ---
-title: Macierz obsługi dla agenta Microsoft Azure Recovery Services
+title: Macierz obsługi dla agenta MARS
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090549"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172054"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -54,7 +50,7 @@ Zmiany lokalizacji | Można zmienić lokalizację pamięci podręcznej przez zat
 
 ## <a name="networking-and-access-support"></a>Obsługa sieci i dostępu
 
-### <a name="url-access"></a>Dostęp do adresu URL
+### <a name="url-and-ip-access"></a>Dostęp do adresów URL i adresów IP
 
 Agent MARS musi mieć dostęp do tych adresów URL:
 
@@ -63,6 +59,11 @@ Agent MARS musi mieć dostęp do tych adresów URL:
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+
+I na te adresy IP:
+
+- 20.190.128.0/18
+- 40.126.0.0/18
 
 ### <a name="throttling-support"></a>Obsługa ograniczania przepustowości
 
@@ -76,7 +77,12 @@ Ograniczanie sieci | Niedostępne dla maszyn z kopią zapasową z systemem Windo
 >[!NOTE]
 > Agent MARS nie obsługuje podstawowych jednostek SKU systemu Windows Server.
 
-Agenta MARS można używać do tworzenia kopii zapasowych bezpośrednio na platformie Azure w niektórych systemach operacyjnych działających na maszynach lokalnych i maszynach wirtualnych platformy Azure. Systemy operacyjne muszą być 64 bitowe i powinny mieć zainstalowane najnowsze pakiety i aktualizacje usług. W poniższej tabeli zestawiono te systemy operacyjne:
+Agenta MARS można użyć do utworzenia kopii zapasowej bezpośrednio na platformie Azure w systemach operacyjnych wymienionych poniżej, które są uruchamiane na:
+
+1. Lokalne serwery z systemem Windows
+2. Maszyny wirtualne platformy Azure z systemem Windows
+
+Systemy operacyjne muszą być 64 bitowe i powinny mieć zainstalowane najnowsze pakiety i aktualizacje usług. W poniższej tabeli zestawiono te systemy operacyjne:
 
 **System operacyjny** | **Pliki/foldery** | **Stan systemu** | **Wymagania dotyczące oprogramowania/modułu**
 --- | --- | --- | ---
@@ -128,7 +134,7 @@ OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Nieobsługiwane.
 Woluminy tylko do odczytu| Nieobsługiwane | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
 Woluminy offline| Nieobsługiwane |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
 Udział sieciowy| Nieobsługiwane |Wolumin musi być lokalny na serwerze.
-Woluminy chronione przez funkcję BitLocker| Nieobsługiwane |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
+Woluminy zablokowane przez funkcję BitLocker| Nieobsługiwane |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
 Identyfikacja systemu plików| Nieobsługiwane |Obsługiwany jest tylko system plików NTFS.
 Nośnik wymienny| Nieobsługiwane |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
 Deduplikowane dyski | Obsługiwane | Azure Backup konwertuje deduplikowane dane na normalne dane. Optymalizuje, szyfruje, przechowuje i wysyła dane do magazynu.

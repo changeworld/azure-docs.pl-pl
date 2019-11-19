@@ -1,18 +1,14 @@
 ---
-title: Odpowiedzi na często zadawane pytania dotyczące Azure Backup funkcji
+title: Odpowiedzi na często zadawane pytania
 description: 'Odpowiedzi na typowe pytania dotyczące funkcji usługi Azure Backup, w tym magazynów usług Recovery Services, elementów, których kopie zapasowe można tworzyć, sposobu działania, szyfrowania i ograniczeń. '
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: efd2959547e13872bfa73a0a8e4b9fda62ea5728
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074314"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173226"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup — często zadawane pytania
 
@@ -97,6 +93,8 @@ Windows Storage Server 2012 64 bit | Standard, Workgroup | Najnowsze dodatki Ser
 Windows Server 2008 R2 z dodatkiem SP1 64 bit | Standard, Enterprise, Datacenter, Foundation | Z najnowszymi aktualizacjami.
 Windows Server 2008 64 bit | Standard, Enterprise i Datacenter | Z najnowszymi aktualizacjami.
 
+Azure Backup nie obsługuje 32-bitowych systemów operacyjnych.
+
 W przypadku kopii zapasowych w systemie Linux dla maszyny wirtualnej platformy Azure Azure Backup obsługuje [listę dystrybucji potwierdzonych przez platformę Azure](../virtual-machines/linux/endorsed-distros.md), z wyjątkiem podstawowego systemu operacyjnego Linux i 32-bitowego. Inne dystrybucje systemu Linux mogą współdziałać, o ile Agent maszyny wirtualnej jest dostępny na maszynie wirtualnej, i istnieje obsługa języka Python.
 
 ### <a name="are-there-size-limits-for-data-backup"></a>Czy istnieją limity rozmiaru kopii zapasowych danych?
@@ -119,7 +117,7 @@ W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła da
 --- | ---
 Wolumin |Ilość danych, których kopia zapasowa jest tworzona z maszyny wirtualnej z pojedynczym woluminem.
 Baza danych programu SQL Server |Rozmiar pojedynczego rozmiaru bazy danych SQL, którego kopia zapasowa jest tworzona.
-Program SharePoint | Suma baz danych zawartości i konfiguracji w obrębie farmy programu SharePoint, których kopia zapasowa jest tworzona.
+Sharepoint | Suma baz danych zawartości i konfiguracji w obrębie farmy programu SharePoint, których kopia zapasowa jest tworzona.
 Exchange |Suma wszystkich baz danych programu Exchange znajdujących się w kopii zapasowej programu Exchange Server.
 BMR/stan systemu |Każda indywidualna kopia BMR lub stanu systemu maszyny, której kopia zapasowa jest tworzona.
 

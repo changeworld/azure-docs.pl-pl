@@ -3,7 +3,7 @@ title: Samouczek tworzenia infrastruktury dla klastra Service Fabric na maszynac
 description: W tym samouczku dowiesz się, jak skonfigurować infrastrukturę maszyny wirtualnej platformy Azure do uruchamiania klastra Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: v-vasuke
+author: jpconnock
 manager: jpconnock
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: v-vasuke
+ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177731"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166277"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: tworzenie infrastruktury maszyny wirtualnej platformy Azure na potrzeby hostowania klastra Service Fabric
 
@@ -90,12 +90,18 @@ Uruchom jeszcze dwie **Virtual Machines**, pamiętaj, aby zachować te same usta
  
 4. Otwórz plik RDP i po wyświetleniu monitu wprowadź nazwę użytkownika i hasło podane w konfiguracji maszyny wirtualnej.
 
-5. Po nawiązaniu połączenia z wystąpieniem należy sprawdzić, czy Rejestr zdalny był uruchomiony i otworzyć wymagane porty.
+5. Po nawiązaniu połączenia z wystąpieniem należy sprawdzić, czy Rejestr zdalny był uruchomiony, włączyć protokół SMB i otworzyć wymagane porty dla protokołu SMB i rejestru zdalnego.
+
+   Aby włączyć protokół SMB, jest to polecenie programu PowerShell:
+
+   ```powershell
+   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+   ```
 
 6. W celu otwarcia portów w zaporze użyto tego polecenia programu PowerShell:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
 7. Powtórz ten proces dla innych wystąpień i ponownie Zanotuj prywatne adresy IP.
@@ -111,6 +117,15 @@ Uruchom jeszcze dwie **Virtual Machines**, pamiętaj, aby zachować te same usta
    ```
 
    Jeśli w Twoich danych wyjściowych cztery razy pojawia się komunikat podobny do tego: `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, oznacza to, że połączenie między wystąpieniami działa.
+
+3. Teraz użyj następującego polecenia, aby zweryfikować, że udostępnianie za pomocą protokołu SMB działa:
+
+   ```
+   net use * \\172.31.20.163\c$
+   ```
+
+   Powinien zostać wyświetlony komunikat podobny do następującego: `Drive Z: is now connected to \\172.31.20.163\c$.`.
+
 
    Teraz Twoje wystąpienia są prawidłowo przygotowane do Service Fabric.
 

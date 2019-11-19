@@ -1,19 +1,14 @@
 ---
-title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services z Azure Backup
+title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services
 description: Zawiera opis sposobu tworzenia kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services przy użyciu Azure Backup
-service: backup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 2ef8e7e77481c0df6e85545d16c3859949184d2f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968539"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173339"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services
 
@@ -34,7 +29,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-* [Przejrzyj](backup-architecture.md#architecture-direct-backup-of-azure-vms) architekturę kopii zapasowych maszyny wirtualnej platformy Azure.
+* [Przejrzyj](backup-architecture.md#architecture-built-in-azure-vm-backup) architekturę kopii zapasowych maszyny wirtualnej platformy Azure.
 * [Dowiedz się więcej o](backup-azure-vms-introduction.md) Kopia zapasowa maszyny wirtualnej platformy Azure i rozszerzenie kopii zapasowej.
 * Przed skonfigurowaniem kopii zapasowej [zapoznaj się z matrycą pomocy technicznej](backup-support-matrix-iaas.md) .
 
@@ -47,7 +42,7 @@ Ponadto istnieje kilka rzeczy, które mogą być konieczne w pewnych okolicznoś
 
  Magazyn przechowuje kopie zapasowe i punkty odzyskiwania utworzone wraz z upływem czasu, a następnie przechowuje zasady tworzenia kopii w programie skojarzonych z maszynami z kopii zapasowej. Utwórz magazyn w następujący sposób:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. W polu wyszukiwania wpisz **Recovery Services**. W obszarze **usługi**kliknij pozycję **magazyny Recovery Services**.
 
      ![Wyszukaj Recovery Services magazyny](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -189,7 +184,7 @@ Przyrostowy punkt odzyskiwania utworzony w magazynie będzie przechwytywał wszy
 
 Azure Backup tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przez zainstalowanie rozszerzenia agenta maszyny wirtualnej platformy Azure uruchomionego na komputerze. Jeśli maszyna wirtualna została utworzona na podstawie obrazu portalu Azure Marketplace, Agent jest zainstalowany i uruchomiony. Jeśli tworzysz niestandardową maszynę wirtualną lub migrujesz maszynę lokalną, może być konieczne ręczne zainstalowanie agenta, zgodnie z podsumowaniem w tabeli.
 
-**MASZYN** | **Szczegóły**
+**VM** | **Szczegóły**
 --- | ---
 **Windows** | 1. [Pobierz i zainstaluj](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) plik msi agenta.<br/><br/> 2. Zainstaluj program z uprawnieniami administratora na komputerze.<br/><br/> 3. Sprawdź instalację. W *C:\WindowsAzure\Packages* na maszynie wirtualnej kliknij prawym przyciskiem myszy pozycję **WaAppAgent. exe** > **Właściwości**. Na karcie **szczegóły** **Wersja produktu** powinna mieć wartość 2.6.1198.718 lub wyższą.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, że nie są uruchomione żadne operacje tworzenia kopii zapasowej, a [następnie ponownie zainstaluj agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Zainstaluj program przy użyciu KCO lub pakietu DEB z repozytorium pakietu dystrybucji. Jest to preferowana metoda instalowania i uaktualniania agenta systemu Linux platformy Azure. Wszyscy [pozatwierdzeni dostawcy dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrują pakiet agenta platformy Azure z systemem Linux z obrazami i repozytoriami. Agent jest dostępny w serwisie [GitHub](https://github.com/Azure/WALinuxAgent), ale nie zalecamy instalacji.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, że nie są uruchomione żadne operacje tworzenia kopii zapasowej, i zaktualizuj pliki binarne.
@@ -199,9 +194,9 @@ Azure Backup tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przez
 Rozszerzenie kopii zapasowej uruchomione na maszynie wirtualnej wymaga dostępu wychodzącego do publicznych adresów IP platformy Azure.
 
 * Zazwyczaj nie trzeba jawnie zezwalać na wychodzący dostęp sieciowy dla maszyny wirtualnej platformy Azure w celu komunikowania się z Azure Backup.
-* Jeśli wystąpią problemy z nawiązywaniem połączenia z maszynami wirtualnymi lub jeśli podczas próby nawiązania połączenia zobaczysz błąd **ExtensionSnapshotFailedNoNetwork** , należy jawnie zezwolić na dostęp, aby rozszerzenie kopii zapasowej mogły komunikować się z publicznymi adresami IP platformy Azure w celu utworzenia kopii zapasowej komunikacyjne. Metody dostępu są podsumowane w poniższej tabeli.
+* Jeśli wystąpią problemy z nawiązywaniem połączenia z maszynami wirtualnymi lub jeśli podczas próby nawiązania połączenia zobaczysz błąd **ExtensionSnapshotFailedNoNetwork** , należy jawnie zezwolić na dostęp, aby rozszerzenie kopii zapasowej mogły komunikować się z publicznymi adresami IP platformy Azure na potrzeby tworzenia kopii zapasowych. Metody dostępu są podsumowane w poniższej tabeli.
 
-**Opcja** | **Akcja** | **Szczegóły**
+**Option** | **Akcja** | **Szczegóły**
 --- | --- | ---
 **Konfigurowanie reguł sieciowej grupy zabezpieczeń** | Zezwalaj na [zakresy adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/> Zamiast zezwalać na każdy zakres adresów i zarządzać nim, można dodać regułę, która umożliwia dostęp do usługi Azure Backup przy użyciu [tagu usługi](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). | [Dowiedz się więcej](../virtual-network/security-overview.md#service-tags) o tagach usługi.<br/><br/> Tagi usług upraszczają zarządzanie dostępem i nie wiążą się z dodatkowymi kosztami.
 **Wdrażanie serwera proxy** | Wdróż serwer proxy HTTP na potrzeby routingu ruchu. | Zapewnia dostęp do całego systemu Azure, a nie tylko magazynu.<br/><br/> Szczegółowa kontrola nad adresami URL magazynu jest dozwolona.<br/><br/> Pojedynczy punkt dostępu do Internetu dla maszyn wirtualnych.<br/><br/> Dodatkowe koszty dla serwera proxy.
@@ -227,7 +222,7 @@ Jeśli sieciowej grupy zabezpieczeń zarządza dostępem do maszyny wirtualnej, 
 7. W obszarze **Protokół**wybierz pozycję **TCP**.
 8. W obszarze **priorytet**Określ wartość priorytetu mniejszą niż wszelkie wyższe reguły odmowy.
 
-   Jeśli masz regułę odmawiającą dostępu, Nowa reguła zezwalania musi być wyższa. Na przykład jeśli masz zestaw reguł **Deny_All** z priorytetem 1000, Nowa reguła musi być ustawiona na wartość mniejszą niż 1000.
+   Jeśli masz regułę odmawiającą dostępu, Nowa reguła zezwalania musi być wyższa. Na przykład jeśli masz zestaw reguł **Deny_All** w priorytecie 1000, Nowa reguła musi być ustawiona na wartość mniejszą niż 1000.
 9. Podaj nazwę i opis reguły, a następnie wybierz **przycisk OK**.
 
 Regułę sieciowej grupy zabezpieczeń można zastosować do wielu maszyn wirtualnych, aby zezwolić na dostęp wychodzący. Ten film wideo przeprowadzi Cię przez proces.

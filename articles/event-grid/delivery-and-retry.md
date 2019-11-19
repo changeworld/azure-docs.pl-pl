@@ -1,30 +1,41 @@
 ---
-title: Usługa Azure Event Grid dostarczanie i ponawianie prób
-description: W tym artykule opisano, jak usługi Azure Event Grid dostarcza zdarzenia i sposób obsługi niedostarczone wiadomości.
+title: Azure Event Grid dostarczania i ponów próbę
+description: Opisuje, w jaki sposób Azure Event Grid dostarcza zdarzenia i jak obsługuje niedostarczone komunikaty.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812923"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170040"
 ---
-# <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie
+# <a name="event-grid-message-delivery-and-retry"></a>Event Grid dostarczania komunikatów i ponów próbę
 
-W tym artykule opisano, jak usługi Azure Event Grid obsługuje zdarzenia, gdy nie ma potwierdzenia dostarczenia.
+W tym artykule opisano, jak Azure Event Grid obsługuje zdarzenia, gdy dostarczenie nie jest potwierdzone.
 
-Usługi Event Grid oferuje niezawodne dostarczanie. System ten zapewnia każdy komunikat co najmniej raz dla każdej subskrypcji. Zdarzenia są wysyłane bezpośrednio do zarejestrowanych punktu końcowego w każdej subskrypcji. Jeśli punkt końcowy nie otrzymanie zdarzenia, usługi Event Grid ponawia próbę dostarczaniu zdarzenia.
+Event Grid zapewnia trwałe dostarczanie. Każdy z nich dostarcza każdy komunikat co najmniej raz dla każdej subskrypcji. Zdarzenia są natychmiast wysyłane do zarejestrowanego punktu końcowego dla każdej subskrypcji. Jeśli punkt końcowy nie potwierdzi przyjęcia zdarzenia, Event Grid ponawianie prób dostarczenia zdarzenia.
 
-Obecnie usługa Event Grid wysyła każde zdarzenie indywidualnie do subskrybentów. Subskrybent otrzymuje tablicy o liczbie pojedyncze zdarzenie.
+## <a name="batched-event-delivery"></a>Wsadowe dostarczanie zdarzeń
+
+Event Grid domyślnie wysyłać każde zdarzenie do subskrybentów. Subskrybent otrzymuje tablicę z pojedynczym zdarzeniem. Można skonfigurować Event Grid do zdarzeń wsadowych na potrzeby dostarczania w celu zwiększenia wydajności HTTP w scenariuszach o wysokiej przepływności.
+
+Wsadowe dostarczanie ma dwa ustawienia:
+
+* Maksymalna liczba **zdarzeń na partię** jest maksymalną liczbą zdarzeń, Event Grid będzie dostarczanych na partię. Ta liczba nigdy nie zostanie przekroczona. można jednak dostarczyć mniejszą liczbę zdarzeń, jeśli podczas publikowania nie będą dostępne żadne inne zdarzenia. Event Grid nie opóźnia zdarzeń, aby można było utworzyć partię, jeśli są dostępne mniej zdarzeń. Musi zawierać się w przedziale od 1 do 5 000.
+* **Preferowany rozmiar wsadu w kilobajtach** to docelowy limit rozmiaru wsadu w kilobajtach. Podobnie jak w przypadku maksymalnych zdarzeń, rozmiar wsadu może być mniejszy, jeśli podczas publikowania nie są dostępne więcej zdarzeń. Istnieje możliwość, że partia jest większa niż preferowany rozmiar partii, *Jeśli* pojedyncze zdarzenie jest większe niż preferowany rozmiar. Na przykład jeśli preferowany rozmiar to 4 KB, a do Event Grid zostanie wypchnięte zdarzenie o rozmiarze 10 KB, zdarzenie o rozmiarze 10 KB będzie nadal dostarczane do własnej partii, a nie do porzucenia.
+
+Dostarczanie wsadowe skonfigurowane dla każdej subskrypcji zdarzenia za pośrednictwem portalu, interfejsu wiersza polecenia, programu PowerShell lub zestawów SDK.
+
+![Ustawienia dostarczania wsadowego](./media/delivery-and-retry/batch-settings.png)
 
 ## <a name="retry-schedule-and-duration"></a>Harmonogram ponownych prób i czas trwania
 
-Usługa Event Grid czeka 30 sekund na odpowiedź od dostarczania wiadomości. Po 30 sekundach Jeśli punkt końcowy nie odpowiedział, komunikat jest kolejkowana dla ponownych prób. Usługa Event Grid używa zasady ponawiania wykładniczego wycofywania, podczas dostarczania zdarzeń. Usługa Event Grid ponownych prób dostarczenia według następującego harmonogramu na optymalne rozwiązanie:
+Event Grid czeka 30 sekund na odpowiedź po dostarczeniu komunikatu. Po 30 sekundach, jeśli punkt końcowy nie odpowiedział, komunikat zostanie umieszczony w kolejce w celu ponowienia próby. W przypadku dostarczania zdarzeń Event Grid są stosowane wykładnicze zasady ponawiania wycofywania. Event Grid ponawianie prób dostarczenia zgodnie z poniższym harmonogramem w oparciu o najlepszą pracę:
 
 - 10 sekund
 - 30 sekund
@@ -35,65 +46,65 @@ Usługa Event Grid czeka 30 sekund na odpowiedź od dostarczania wiadomości. Po
 - 1 godzina
 - Co godzinę przez maksymalnie 24 godziny
 
-Jeśli punkt końcowy odpowie w ciągu 3 minut, usługi Event Grid będzie podejmować próby usunięcia zdarzenia z kolejki ponownych prób na optymalne rozwiązanie, ale duplikaty może nadal można odbierać dane.
+Jeśli punkt końcowy odpowie w ciągu 3 minut, Event Grid podejmie próbę usunięcia zdarzenia z kolejki ponawiania prób, ale duplikaty mogą nadal zostać odebrane.
 
-Usługa Event Grid dodaje małe losowe do wszystkich kroków ponownych prób i tylko wtedy może pominąć niektóre ponownych prób, jeśli punkt końcowy jest stale złej kondycji, dół przez długi czas lub wydaje się być przeciążeniu.
+Event Grid dodaje małe losowe instrukcje do wszystkich ponownych prób i mogą odpowiednio Uzgodnij pominąć pewne ponowne próby, jeśli punkt końcowy jest ciągle w złej kondycji, nie działa przez długi czas lub wydaje się być przeciążony.
 
-Deterministyczne zachowania, ustaw czas zdarzenia na żywo i w próby max dostarczania [zasady ponawiania prób subskrypcji](manage-event-delivery.md).
+W przypadku zachowań deterministycznych Ustaw czas wygaśnięcia i maksymalną liczbę prób dostarczenia w [zasadach ponawiania subskrypcji](manage-event-delivery.md).
 
-Domyślnie usługi Event Grid wygasa wszystkie zdarzenia, które nie są dostarczane w ciągu 24 godzin. Możesz [Dostosuj zasady ponawiania](manage-event-delivery.md) podczas tworzenia subskrypcji zdarzeń. Podaj maksymalną liczbę prób dostarczenia (wartość domyślna to 30) i zdarzenia time to live (wartość domyślna to 1440 minut).
+Domyślnie Event Grid wygasa wszystkie zdarzenia, które nie zostały dostarczone w ciągu 24 godzin. [Zasady ponawiania można dostosować](manage-event-delivery.md) podczas tworzenia subskrypcji zdarzeń. Podajesz maksymalną liczbę prób dostarczenia (wartość domyślna to 30) i czas wygaśnięcia zdarzenia na żywo (wartość domyślna to 1440 minut).
 
-## <a name="delayed-delivery"></a>Dostarczenie opóźnione
+## <a name="delayed-delivery"></a>Opóźnione dostarczanie
 
-Jako punkt końcowy napotka błędy dostarczania, usługa Event Grid rozpocznie się opóźnienia, dostarczanie i ponawianie prób, zdarzeń do określonego punktu końcowego. Na przykład, jeśli pierwszych dziesięciu zdarzeń publikowanych do punktu końcowego kończą się niepowodzeniem, usługi Event Grid będzie założono, że punkt końcowy ma problemy i zostanie opóźnione, wszystkie kolejne próby *i nowe* dostaw przez pewien czas — w niektórych przypadkach do kilku godzin .
+W przypadku niepowodzeń dostarczania punktów końcowych Event Grid zacznie opóźniać dostarczenie i ponawianie zdarzeń do tego punktu końcowego. Na przykład jeśli pierwsze 10 zdarzeń opublikowanych w punkcie końcowym zakończy się niepowodzeniem, Event Grid przyjmie, że punkt końcowy ma problemy i spowoduje to opóźnienie wszystkich kolejnych ponownych prób *i nowych* dostaw przez pewien czas do kilku godzin.
 
-Funkcjonalności opóźnione dostawy ma na celu ochronę punktów końcowych w złej kondycji, a także system usługi Event Grid. Bez wycofywania i Opóźnienie dostarczania do punktów końcowych w złej kondycji zasady ponawiania usługi Event Grid i możliwości woluminu może łatwo przeciążyć systemu.
+Celem opóźnionej dostawy jest ochrona punktów końcowych w złej kondycji oraz systemu Event Grid. Bez wycofywania i opóźnień dostarczania w przypadku punktów końcowych w złej kondycji, Event Grid zasady ponawiania prób i możliwości woluminów mogą łatwo zapychać system.
 
 ## <a name="dead-letter-events"></a>Zdarzenia utraconych wiadomości
 
-Kiedy usługi Event Grid może dostarczyć zdarzenia, może wysłać zdarzenia niedostarczone do konta magazynu. Ten proces jest nazywany Obsługa utraconych komunikatów. Domyślnie obsługa utraconych komunikatów nie Włącz usługi Event Grid. Aby ją włączyć, należy określić konto magazynu do przechowywania zdarzeń niedostarczone podczas tworzenia subskrypcji zdarzeń. Możesz pobierać zdarzenia z tego konta magazynu, aby rozwiązać dostaw.
+Gdy Event Grid nie można dostarczyć zdarzenia, może wysłać niedostarczone zdarzenie do konta magazynu. Ten proces jest znany jako utracony. Domyślnie Event Grid nie powoduje wyłączenia utraconych wiadomości. Aby je włączyć, należy określić konto magazynu do przechowywania niedostarczonych zdarzeń podczas tworzenia subskrypcji zdarzeń. Zdarzenia z tego konta magazynu są ściągane, aby można było rozpoznać dostawy.
 
-Usługi Event Grid wysyła zdarzenie do lokalizacji utraconych wiadomości, gdy wypróbuje wszystkich jego ponownych prób. Jeśli usługa Event Grid otrzymuje 400 (nieprawidłowe żądanie) lub 413 (żądanie podmiotu zbyt duże) kod odpowiedzi, natychmiast wysyła zdarzenia do punktu końcowego utraconych wiadomości. Te kody odpowiedzi wskazują, że nigdy nie powiedzie się dostarczania zdarzeń.
+Event Grid wysyła zdarzenie do lokalizacji utraconych, gdy nastąpi próba wszystkich ponownych prób. Jeśli Event Grid otrzymuje kod odpowiedzi 400 (złe żądanie) lub 413 (żądanie jest zbyt duże), natychmiast wysyła zdarzenie do punktu końcowego utraconych wiadomości. Te kody odpowiedzi wskazują, że dostarczenie zdarzenia nigdy nie powiedzie się.
 
-Występuje opóźnienie pięciu minut od ostatniej próby dostarczenia zdarzeń i kiedy są dostarczane do lokalizacji utraconych wiadomości. To opóźnienie jest przeznaczona do zmniejszenia liczba operacji magazynu obiektów Blob. Jeśli lokalizacja utraconych wiadomości jest niedostępna przez kilka godzin, zdarzenie zostało porzucone.
+Istnieje pięć minut opóźnienia między ostatnią próbą dostarczenia zdarzenia a jego dostarczeniem do lokalizacji utraconych wiadomości. To opóźnienie jest przeznaczone do zmniejszenia liczby operacji magazynu obiektów BLOB. Jeśli lokalizacja utraconych wiadomości jest niedostępna przez cztery godziny, zdarzenie zostanie odrzucone.
 
-Przed ustawieniem lokalizacja utraconych wiadomości, musi mieć konto magazynu przy użyciu kontenera. Możesz podać punktu końcowego dla tego kontenera, podczas tworzenia subskrypcji zdarzeń. Punkt końcowy jest w formacie: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+Przed ustawieniem lokalizacji utraconych wiadomości musisz mieć konto magazynu z kontenerem. Należy podać punkt końcowy dla tego kontenera podczas tworzenia subskrypcji zdarzeń. Punkt końcowy ma format: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Możesz otrzymywać powiadomienia, gdy zdarzenie zostało wysłane do lokalizacji utraconych wiadomości. Odpowiadanie na zdarzenia niedostarczone za pomocą usługi Event Grid [utworzysz subskrypcję zdarzeń](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) dla magazynu obiektów blob utraconych wiadomości. Za każdym razem, gdy magazynu obiektów blob utraconych odbiera niedostarczone zdarzeń usługi Event Grid powiadamia programu obsługi. Program obsługi odpowiada za pomocą akcji, które mają zostać podjęte, jaką niedostarczone zdarzenia.
+Możesz chcieć otrzymywać powiadomienia, gdy zdarzenie zostało wysłane do lokalizacji utraconych wiadomości. Aby użyć Event Grid do odpowiadania na zdarzenia niedostarczone, [Utwórz subskrypcję zdarzeń](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) dla utraconego magazynu obiektów BLOB. Za każdym razem, gdy magazyn obiektów BLOB utraconych wiadomości odbiera zdarzenie niedostarczone, Event Grid powiadamia program obsługi. Program obsługi reaguje na akcje, które mają zostać wykonane w celu uzgodnienia niedostarczonych zdarzeń.
 
-Na przykład konfigurowania lokalizacja utraconych zobacz [Dead litera, a następnie spróbuj ponownie zasady](manage-event-delivery.md).
+Aby zapoznać się z przykładem konfigurowania martwej lokalizacji, zobacz artykuł [utracony i zasady ponawiania](manage-event-delivery.md).
 
-## <a name="message-delivery-status"></a>Stan dostarczenia komunikatu
+## <a name="message-delivery-status"></a>Stan dostarczania wiadomości
 
-Usługa Event Grid używa kody odpowiedzi HTTP do otrzymanie zdarzenia. 
+Event Grid używa kodów odpowiedzi HTTP w celu potwierdzenia odbioru zdarzeń. 
 
-### <a name="success-codes"></a>Kody operacji zakończonych powodzeniem
+### <a name="success-codes"></a>Kody sukcesu
 
-Uwzględnia usługi Event Grid **tylko** następujące kody odpowiedzi HTTP jako pomyślnych dostarczeń. Wszystkie inne stan kody są uważane za dostarczenie nie powiodło się i zostanie ponowiona lub deadlettered zgodnie z potrzebami. Po otrzymaniu kod stanu powodzenia, pełną dostarczania uwzględnia usługi Event Grid.
+Event Grid traktuje **tylko** następujące kody odpowiedzi HTTP jako pomyślne dostawy. Wszystkie inne kody stanu są uważane za nieudane dostawy i zostaną ponowione lub deadlettered zgodnie z potrzebami. Po otrzymaniu kodu stanu pomyślnego Event Grid uznaje, że dostarczenie zostało zakończone.
 
 - 200 OK
-- 201 utworzono
-- 202 zaakceptowano
-- 203 Informacje nieautorytatywne
-- 204 No Content
+- 201 Utworzono
+- 202 zaakceptowane
+- 203 informacje nieautorytatywne
+- 204 Brak zawartości
 
 ### <a name="failure-codes"></a>Kody błędów
 
-Wszystkie kody w zestawie powyżej (200 204) nie są traktowane jako błędy i zostanie ponowiona. Niektóre z nich mają zasady ponawiania określone, powiązane z nimi opisane poniżej, wykonaj pozostałe wykładniczego wycofywania modelu standardowego. Należy pamiętać, że ze względu na charakter wysoce równoległe architektury usługi Event Grid, sposób ponawiania jest niedeterministyczny. 
+Wszystkie inne kody, które nie znajdują się w powyższym zestawie (200-204), są uznawane za niepowodzenia i zostanie ponowione. Niektóre z nich mają określone zasady ponawiania prób powiązane z nimi, które podano poniżej, wszystkie inne przestrzegają standardowego modelu wykładniczego wycofywania. Należy pamiętać, że ze względu na wysoce parallelowy charakter architektury Event Grid, zachowanie ponowienia nie jest deterministyczne. 
 
 | Kod stanu | Zachowanie przy ponowieniu próby |
 | ------------|----------------|
-| 400 Niewłaściwe żądanie | Spróbuj ponownie za 5 minut lub dłużej (utraconych natychmiast, jeśli Instalator utraconych wiadomości) |
-| 401 Brak autoryzacji | Spróbuj ponownie za 5 minut lub dłużej |
-| 403 Zabroniony | Spróbuj ponownie za 5 minut lub dłużej |
-| 404 — Nie odnaleziono | Spróbuj ponownie za 5 minut lub dłużej |
-| 408 — limit czasu żądania | Ponów próbę po 2 minuty lub więcej |
-| Jednostka 413 żądania jest zbyt duża | Ponów próbę po 10 sekund lub więcej (utraconych natychmiast, jeśli Instalator utraconych wiadomości) |
-| 503 — usługa niedostępna | Po 30 sekundach ponawiania próby lub więcej |
-| Wszystkie inne | Ponów próbę po 10 sekund lub więcej |
+| 400 Nieprawidłowe żądanie | Ponów próbę po 5 minutach lub więcej (Utracono wiadomości natychmiast, jeśli konfiguracja utraconych wiadomości) |
+| 401 — nieautoryzowane | Ponów próbę po 5 minutach lub dłużej |
+| 403 Zabronione | Ponów próbę po 5 minutach lub dłużej |
+| 404 — Nie odnaleziono | Ponów próbę po 5 minutach lub dłużej |
+| 408 — limit czasu żądania | Ponów próbę po 2 minutach lub więcej |
+| Jednostka żądania 413 jest zbyt duża | Ponów próbę po upływie 10 sekund lub więcej (utraconych wiadomości, jeśli konfiguracja utraconych wiadomości) |
+| 503 — usługa niedostępna | Ponów próbę po 30 sekundach lub więcej |
+| Wszystkie pozostałe | Ponów próbę po 10 sekundach lub więcej |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby wyświetlić stan wysyłki zdarzeń, zobacz [dostarczanie komunikatów Monitor Event Grid](monitor-event-delivery.md).
-* Aby dostosować opcje dostarczania zdarzeń, zobacz [Dead litera, a następnie spróbuj ponownie zasady](manage-event-delivery.md).
+* Aby wyświetlić stan dostaw zdarzeń, zobacz [monitorowanie Event Grid dostarczania komunikatów](monitor-event-delivery.md).
+* Aby dostosować opcje dostarczania zdarzeń, zobacz artykuł [utracony i zasady ponawiania](manage-event-delivery.md).

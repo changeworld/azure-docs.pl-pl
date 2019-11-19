@@ -1,20 +1,20 @@
 ---
 title: Omówienie dzienników i metryk zapory platformy Azure
-description: Ten artykuł zawiera omówienie dzienników i metryk diagnostyki zapory platformy Azure.
+description: Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876563"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166990"
 ---
-# <a name="azure-firewall-logs-and-metrics"></a>Dzienniki i metryki zapory platformy Azure
+# <a name="azure-firewall-logs-and-metrics"></a>Dzienniki i metryki usługi Azure Firewall
 
 Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall.
 
@@ -75,9 +75,9 @@ Metryki są lekkie i obsługują scenariusze niemal w czasie rzeczywistym, dzię
 
 Masz trzy opcje przechowywania dzienników:
 
-* **Konto magazynu**: Konta magazynu najlepiej używać w przypadku dzienników, gdy dzienniki są przechowywane przez dłuższy czas i są przeglądane w razie potrzeby.
-* **Centra zdarzeń**: Centra zdarzeń to doskonałe rozwiązanie umożliwiające integrację z innymi narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SEIM) w celu uzyskania alertów dotyczących zasobów.
-* **Azure monitor dzienników**: Dzienniki Azure Monitor najlepiej sprawdzają się w czasie rzeczywistym monitorowania aplikacji lub patrząc na trendy.
+* **Konto magazynu**: konta magazynu najlepiej sprawdzają się w przypadku dzienników przechowywanych przez dłuższy czas i przeglądanych w razie potrzeby.
+* **Event Hubs**: usługa Event Hubs to doskonałe rozwiązanie umożliwiające integrację z innymi narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM, Security Information and Event Management), aby otrzymywać alerty dotyczące zasobów.
+* **Azure monitor Logs**: dzienniki Azure monitor najlepiej sprawdzają się w czasie rzeczywistym monitorowania aplikacji lub patrząc na trendy.
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
 
@@ -108,8 +108,8 @@ Następujące metryki są dostępne dla zapory platformy Azure:
     Jednostka: procent
 
    Ta Metryka ma dwa wymiary:
-  - **Stan**: Możliwe wartości to *dobra kondycja*, *zła kondycja*.
-  - **Przyczyna**: Wskazuje przyczynę odpowiedniego stanu zapory. Na przykład może wskazywać porty z podłączaniem *adresów sieciowych* , jeśli stan zapory jest negatywny lub w złej kondycji.
+  - **Stan**: możliwe wartości są *zdrowe*, *w*złej *kondycji*.
+  - **Przyczyna**: wskazuje przyczynę odpowiedniego stanu zapory. Na przykład może wskazywać porty z podłączaniem *adresów sieciowych* , jeśli stan zapory jest negatywny lub w złej kondycji.
 
 
 
@@ -124,6 +124,6 @@ Następujące metryki są dostępne dla zapory platformy Azure:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak monitorować dzienniki i metryki zapory [platformy Azure, zobacz Samouczek: Monitoruj dzienniki](tutorial-diagnostics.md)zapory platformy Azure.
+- Aby dowiedzieć się, jak monitorować dzienniki i metryki zapory platformy Azure, zobacz [Samouczek: monitorowanie dzienników zapory platformy Azure](tutorial-diagnostics.md).
 
 - Aby dowiedzieć się więcej o metrykach w Azure Monitor, zobacz [metryki w Azure monitor](../azure-monitor/platform/data-platform-metrics.md).

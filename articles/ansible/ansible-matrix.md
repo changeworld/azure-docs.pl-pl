@@ -3,17 +3,13 @@ title: Macierz modułu rozwiązania ansible i wersji dla platformy Azure | Micro
 description: Moduł rozwiązania Ansible i macierz wersji dla platformy Azure
 keywords: rozwiązania ansible, role, macierz, wersja, Azure, DevOps
 ms.topic: reference
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 275dca40ab20c222da2b9115f9a5dc141228c766
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385462"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155983"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Moduł rozwiązania Ansible i macierz wersji
 
@@ -98,7 +94,7 @@ Te moduły są dostępne z oficjalnego wydania rozwiązania ansible oraz z nast�
 | azure_rm_virtualnetworkgateway              | -            | -                         | -          | -            | Tak          | Tak          | Tak          |
 | azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Tak          | Tak          | Tak          |
 | azure_rm_virtualnetworkpeering_info         | -            | -                         | -          | -            | -            | Tak          | Tak          |
-| **Magazyn**                    |           |                          |                          |                            |           |           |         |
+| **Storage**                    |           |                          |                          |                            |           |           |         |
 | azure_rm_manageddisk                        | Tak          | Tak                         | Tak          | Tak          | Tak          | Tak          | Tak          |
 | azure_rm_manageddisk_info                  | Tak          | Tak                         | Tak          | Tak          | Tak          | Tak          | Tak          |
 | azure_rm_storageaccount                     | Tak          | Tak                         | Tak          | Tak          | Tak          | Tak          | Tak          |
@@ -110,7 +106,7 @@ Te moduły są dostępne z oficjalnego wydania rozwiązania ansible oraz z nast�
 | azure_rm_webapp                             | -            | -                         | -          | Tak          | Tak          | Tak          | Tak          |
 | azure_rm_webapp_info                       | -            | -                         | -          | Tak          | Tak          | Tak          | Tak          |
 | azure_rm_webappslot                         | -            | -                         | -          | -            | Tak          | Tak          | Tak          |
-| **Containers**                    |           |                          |                          |                            |           |           |          |
+| **Kontenery**                    |           |                          |                          |                            |           |           |          |
 | azure_rm_acs                                | Tak          | Tak                         | Tak          | Tak          | Tak          | Tak          | Tak          |
 | azure_rm_aks                                | -            | -                           | Tak          | Tak          | Tak          | Tak          | Tak          |
 | azure_rm_aks_info                          | -            | -                           | Tak          | Tak          | Tak          | Tak          | Tak          |
@@ -171,7 +167,7 @@ Te moduły są dostępne z oficjalnego wydania rozwiązania ansible oraz z nast�
 | azure_rm_servicebussaspolicy                | -            | -                           | -            | -            | Tak          | Tak          | Tak          |
 | azure_rm_servicebustopic                    | -            | -                           | -            | -            | Tak          | Tak          | Tak          |
 | azure_rm_servicebustopicsubscription        | -            | -                           | -            | -            | Tak          | Tak          | Tak          |
-| **Bezpieczeństwo**                    |           |                          |                          |                             |           |           |           |
+| **Zabezpieczenia**                    |           |                          |                          |                             |           |           |           |
 | azure_rm_keyvault                           | -            | Tak                         | Tak          | Tak          | Tak          | Tak          | Tak          |
 | azure_rm_keyvault_info                     | -            | -                           | -              | -          | Tak          | Tak          | Tak          |
 | azure_rm_keyvaultkey                        | -            | Tak                         | Tak          | Tak          | Tak          | Tak          | Tak          |
@@ -221,9 +217,9 @@ Te moduły są dostępne z oficjalnego wydania rozwiązania ansible oraz z nast�
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Wprowadzenie do roli element PlayBook na platformie Azure
 
-[Rola azure_preview_module element PlayBook](https://galaxy.ansible.com/Azure/azure_preview_modules/) obejmuje wszystkie najnowsze moduły platformy Azure. Aktualizacje i poprawki błędów są wykonywane w sposób bardziej czasochłonny niż oficjalne wydanie rozwiązania ansible. W przypadku korzystania z rozwiązania ansible na potrzeby aprowizacji zasobów platformy Azure zaleca się zainstalowanie roli element PlayBook `azure_preview_module`.
+[Rola element playbook azure_preview_module](https://galaxy.ansible.com/Azure/azure_preview_modules/) obejmuje wszystkie najnowsze moduły platformy Azure. Aktualizacje i poprawki błędów są wykonywane w sposób bardziej czasochłonny niż oficjalne wydanie rozwiązania ansible. W przypadku korzystania z rozwiązania ansible na potrzeby aprowizacji zasobów platformy Azure zaleca się zainstalowanie roli `azure_preview_module` element PlayBook.
 
-@No__t-0 rola element PlayBook jest wydawana co trzy tygodnie.
+Rola element PlayBook `azure_preview_module` jest wydawana co trzy tygodnie.
 
 ## <a name="next-steps"></a>Następne kroki
 

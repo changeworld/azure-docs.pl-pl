@@ -3,17 +3,13 @@ title: Samouczek — skalowanie aplikacji w Azure App Service przy użyciu rozwi
 description: Dowiedz się, jak skalować aplikację w górę w Azure App Service
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, scale, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241492"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155912"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Samouczek: skalowanie aplikacji w Azure App Service przy użyciu rozwiązania ansible
 
@@ -84,7 +80,7 @@ Zapisz następujący podręcznik jako `webapp_scaleup.yml`:
       var: facts.appserviceplans[0].sku
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook webapp_scaleup.yml

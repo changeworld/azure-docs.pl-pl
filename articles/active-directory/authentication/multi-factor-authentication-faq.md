@@ -4,19 +4,19 @@ description: Często zadawane pytania i odpowiedzi dotyczące usługi Azure Mult
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081546"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167767"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -142,13 +142,11 @@ Jeśli Twoja organizacja nie ma starszych klientów, nie należy zezwalać użyt
 >
 > Hasła aplikacji są wymagane tylko w przypadku aplikacji, które nie obsługują nowoczesnego uwierzytelniania. Klienci pakietu Office 2013 obsługują nowoczesne protokoły uwierzytelniania, ale muszą być skonfigurowane. Teraz nowoczesne uwierzytelnianie jest dostępne dla każdego klienta z marca 2015 lub nowszą aktualizacją pakietu Office 2013. Aby uzyskać więcej informacji, zobacz wpis w blogu [zaktualizowany nowoczesny pakiet Office 365](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
-**P: Moi użytkownicy mówią, że czasami nie otrzymują wiadomości tekstowej lub odpowiadają na dwukierunkową wiadomość SMS, ale okres weryfikacji jest przestawny.**
+**P: Moi użytkownicy mówią, że czasami nie otrzymają wiadomości tekstowej lub przechodzą limit czasu weryfikacji.**
 
-Dostarczanie komunikatów tekstowych i otrzymanie odpowiedzi w postaci dwukierunkowej wiadomości SMS nie jest gwarantowane, ponieważ istnieją niekontrolowane czynniki, które mogą mieć wpływ na niezawodność usługi. Te czynniki obejmują docelowy kraj/region, operator telefonu komórkowego i siłę sygnału.
+Dostarczanie komunikatów SMS nie jest gwarantowane, ponieważ istnieją niekontrolowane czynniki, które mogą mieć wpływ na niezawodność usługi. Te czynniki obejmują docelowy kraj/region, operator telefonu komórkowego i siłę sygnału.
 
 Jeśli użytkownicy często mają problemy z niezawodnymi komunikatami SMS, poinformuj ich o konieczności użycia aplikacji mobilnej lub metody rozmowy telefonicznej. Aplikacja mobilna może odbierać powiadomienia zarówno przez połączenia komórkowe, jak i Wi-Fi. Ponadto aplikacja mobilna może generować kody weryfikacyjne nawet wtedy, gdy urządzenie nie ma żadnego sygnału. Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)i [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
-
-Jeśli musisz używać wiadomości tekstowych, zalecamy używanie jednokierunkowej wiadomości SMS, a nie dwukierunkowego programu SMS, jeśli jest to możliwe. Jednokierunkowa wiadomość SMS jest bardziej niezawodna i uniemożliwia użytkownikom naliczanie opłat za globalne korzystanie z programu SMS, które są wysyłane z innego kraju/regionu.
 
 **P: Czy mogę zmienić czas, przez jaki wszyscy użytkownicy muszą wprowadzić kod weryfikacyjny z wiadomości tekstowej przed upływem limitu czasu systemu?**
 
@@ -162,7 +160,7 @@ W przypadku jednokierunkowego SMS z usługą Azure MFA Server w wersji 7.0 lub n
 >[!TIP] 
 >Jeśli masz wiele serwerów MFA, tylko te, które przetworzyły oryginalne żądanie uwierzytelnienia, znają kod weryfikacyjny, który został wysłany do użytkownika. Gdy użytkownik wprowadzi kod, żądanie uwierzytelnienia do weryfikacji musi być wysłane do tego samego serwera. Jeśli Walidacja kodu jest wysyłana na inny serwer, uwierzytelnianie zostanie odrzucone. 
 
-W przypadku dwukierunkowego zarządzania programem SMS przy użyciu serwera usługi Azure MFA można skonfigurować ustawienie limitu czasu w portal zarządzania MFA. Jeśli użytkownicy nie odpowiadają na wiadomość SMS w określonym limicie czasu, uwierzytelnienie zostanie odrzucone. 
+Jeśli użytkownicy nie odpowiadają na wiadomość SMS w określonym limicie czasu, uwierzytelnienie zostanie odrzucone. 
 
 W przypadku jednokierunkowej wiadomości SMS z usługą Azure MFA w chmurze (w tym karty AD FS lub rozszerzenia serwera zasad sieciowych) nie można skonfigurować ustawienia limitu czasu. Usługa Azure AD przechowuje kod weryfikacyjny przez 180 sekund. 
 

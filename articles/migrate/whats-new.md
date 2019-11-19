@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/06/2019
+ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: af9305aafc3a77df9d7c4cffa65f6c61c53ad8a4
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
-ms.translationtype: MT
+ms.openlocfilehash: 9eb70d74752b3db5fcbc185f596d518100992672
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715396"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158575"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co nowego w Azure Migrate
 
@@ -22,12 +22,7 @@ ms.locfileid: "73715396"
 
 ## <a name="update-november-2019"></a>Aktualizacja (listopad 2019)
 
-
-
 Dodano kilka nowych funkcji do Azure Migrate:
-
-> [!NOTE]
-> Jeśli nie widzisz jeszcze niektórych z tych funkcji w portalu Azure Migrate, zaczekaj. Pojawią się one w ciągu następnego tygodnia lub.
 
 - **Ocena serwera fizycznego**. Teraz jest obsługiwana Ocena lokalnych serwerów fizycznych, oprócz migracji serwera fizycznego, która jest już obsługiwana.
 - **Ocena na podstawie importu**. Teraz obsługiwana jest ocena maszyn przy użyciu metadanych i danych wydajności dostępnych w pliku CSV.
@@ -45,9 +40,9 @@ Dodano nowe narzędzia do oceny i migracji do Azure Migrate:
 
 ## <a name="release-version-july-2019"></a>Wydanie wersji (lipiec 2019)
 
-Bieżąca wersja Azure Migrate została wydana w lipcu 2019. 
+Bieżąca wersja Azure Migrate została wydana w lipcu 2019.
 
-- **Bieżąca wersja**: Użyj tej wersji do tworzenia projektów Azure Migrate, odnajdywania maszyn lokalnych i organizowania ocen i migracji. 
+- **Bieżąca wersja**: Użyj tej wersji do tworzenia projektów Azure Migrate, odnajdywania maszyn lokalnych i organizowania ocen i migracji.
 - **Poprzednia wersja**: dla klienta korzystającego z poprzedniej wersji Azure Migrate (obsługiwana jest tylko Ocena lokalnych maszyn wirtualnych programu VMware). teraz należy używać bieżącej wersji. W poprzedniej wersji nie można już tworzyć nowych projektów Azure Migrate ani wykonywać nowych odkrycia. Nadal możesz uzyskiwać dostęp do istniejących projektów. Aby to zrobić, w Azure Portal > **wszystkie usługi**, Wyszukaj **Azure Migrate**. W Azure Migrate powiadomieniach jest dostępny link umożliwiający dostęp do starych projektów Azure Migrate.
 
 
@@ -65,7 +60,7 @@ Bieżąca wersja Azure Migrate zawiera wiele nowych funkcji:
     - Urządzenie stale odnajduje metadane serwera i dane wydajności na potrzeby oceny i migracji.  
 - **Migracja maszyny wirtualnej VMware**: migracja serwera Azure Migrate zapewnia kilka metod migrowania lokalnych maszyn wirtualnych programu VMware na platformę Azure.  Migracja bez agentów przy użyciu urządzenia Azure Migrate oraz migracja oparta na agentach, która korzysta z urządzenia replikacji, i wdraża agenta na każdej maszynie wirtualnej, która ma zostać zmigrowana. [Dowiedz się więcej](server-migrate-overview.md)
  - **Ocena i migracja bazy danych**: w Azure Migrate można ocenić lokalne bazy danych na potrzeby migracji na platformę Azure przy użyciu usługi azure Database Asystent migracji. Bazę danych można migrować przy użyciu Azure Database Migration Service.
-- **Migracja aplikacji sieci Web**: możesz ocenić aplikacje sieci Web przy użyciu publicznego adresu URL punktu końcowego z Azure App Service. W przypadku migracji wewnętrznych aplikacji .NET można pobrać i uruchomić App Service Asystent migracji. 
+- **Migracja aplikacji sieci Web**: możesz ocenić aplikacje sieci Web przy użyciu publicznego adresu URL punktu końcowego z Azure App Service. W przypadku migracji wewnętrznych aplikacji .NET można pobrać i uruchomić App Service Asystent migracji.
 - **Urządzenie Data Box**: zaimportuj duże ilości danych w trybie offline na platformę Azure przy użyciu Azure Data Box w Azure Migrate.
 
 

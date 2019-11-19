@@ -1,19 +1,19 @@
 ---
 title: Reagowanie na zdarzenia usługi Azure sygnalizujące
-description: Użyj Azure Event Grid, aby subskrybować zdarzenia usługi Azure Signal Service.
+description: Użyj Azure Event Grid, aby subskrybować zdarzenia usługi Azure Signal Service. Inne usługi podrzędne mogą być wyzwalane przez te zdarzenia.
 services: azure-signalr,event-grid
 author: chenyl
 ms.author: chenyl
 ms.reviewer: zhshang
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
-ms.openlocfilehash: a3d0669a1a89f2fc5aaca0a96e00b731d2d40830
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296830"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158196"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Reagowanie na zdarzenia usługi Azure sygnalizujące
 
@@ -64,4 +64,4 @@ Dowiedz się więcej o Event Grid i przekaż zdarzenia usługi Azure Signal Serv
 
 > [!div class="nextstepaction"]
 > [Wypróbuj Event Grid integrację z usługą Azure Signal Service](./signalr-howto-event-grid-integration.md)
-> [o Event Grid](../event-grid/overview.md)
+> na [temat Event Grid](../event-grid/overview.md)

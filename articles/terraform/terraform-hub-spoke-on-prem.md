@@ -1,17 +1,14 @@
 ---
 title: Samouczek — Tworzenie lokalnej sieci wirtualnej na platformie Azure przy użyciu Terraform
 description: Samouczek przedstawiający sposób implementacji lokalnej sieci wirtualnej na platformie Azure, w której zawarto zasoby lokalne
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: df96b9340e9961387fd727eba898fe4db6a18821
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 361f9919fdd406a1fef6bbf2b7512dbc20266a54
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969385"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159221"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>Samouczek: Tworzenie lokalnej sieci wirtualnej na platformie Azure przy użyciu Terraform
 

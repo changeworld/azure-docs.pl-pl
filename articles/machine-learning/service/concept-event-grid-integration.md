@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
-ms.openlocfilehash: 888d294634078d2fe7737426f6cf025ae9948b0a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 2fe2d07b29b8799712d59cdf21aeb3ce989ca3b2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609348"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158463"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>Korzystanie z zdarzeń Azure Machine Learning (wersja zapoznawcza)
 
@@ -81,14 +81,14 @@ Aby dowiedzieć się więcej na temat stosowania filtrów, zobacz [filtrowanie z
 Aplikacje, które obsługują zdarzenia Machine Learning, powinny spełniać kilka zalecanych praktyk:
 
 > [!div class="checklist"]
-> * Ponieważ można skonfigurować wiele subskrypcji do kierowania zdarzeń do tego samego programu obsługi zdarzeń, ważne jest, aby nie przyjmować zdarzeń z określonego źródła, ale w celu sprawdzenia, czy pochodzi ona z konta magazynu, którego oczekujesz.
+> * Tak jak wiele subskrypcji można skonfigurować do kierowania zdarzeń do tego samego programu obsługi zdarzeń, dlatego ważne jest, aby nie założyć, że zdarzenia pochodzą z określonego źródła, ale aby sprawdzić temat wiadomości w celu upewnienia się, że pochodzi ona z obszaru roboczego uczenia maszynowego.
 > * Podobnie Sprawdź, czy typ zdarzenia jest przygotowana do przetworzenia i nie zakładaj, że wszystkie zdarzenia, które otrzymujesz, są oczekiwanymi typami.
 > * Ponieważ komunikaty mogą się pojawiać poza kolejnością i po pewnym opóźnieniu, należy użyć pól ETag, aby zrozumieć, czy informacje o obiektach są nadal aktualne.  Ponadto należy użyć pól programu Sequencer do zrozumienia kolejności zdarzeń dla każdego określonego obiektu.
 > * Ignoruj pola, które nie są zrozumiałe. Ta metoda pomaga w zachowaniu odporności na nowe funkcje, które mogą zostać dodane w przyszłości.
 > * Niepowodzenie lub anulowanie operacji Azure Machine Learning nie spowoduje wyzwolenia zdarzenia. Na przykład jeśli wdrożenie modelu nie powiedzie się Microsoft. MachineLearningServices. ModelDeployed nie zostanie wyzwolone. Ten tryb awarii należy wziąć pod uwagę podczas projektowania aplikacji. Aby sprawdzić stan operacji i zrozumieć szczegółowe przyczyny niepowodzenia, zawsze możesz użyć zestawu SDK, interfejsu wiersza polecenia i portalu Azure Machine Learning.
 
 Azure Event Grid umożliwia klientom tworzenie niepołączonych programów obsługi komunikatów, które mogą być wyzwalane przez zdarzenia Azure Machine Learning. Oto przykładowe przykłady obsługi komunikatów:
-* Azure Functions
+* Stan usługi Funkcje Azure
 * Azure Logic Apps
 * Azure Event Hubs
 * Potok Azure Data Factory

@@ -1,18 +1,14 @@
 ---
-title: Tworzenie kopii zapasowych udziałów plików Azure Files za pomocą usługi Azure Backup
+title: Samouczek — Tworzenie kopii zapasowych Azure Files udziałów plików
 description: W tym samouczku dowiesz się, jak skonfigurować magazyn Recovery Services i utworzyć kopię zapasową udziałów plików platformy Azure przy użyciu Azure Portal.
-author: dcurwin
-ms.author: dacurwin
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.service: backup
-manager: carmonm
-ms.openlocfilehash: a8b08f87441f9b4c67f718dfe9f0c894d0730a5f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747054"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171864"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Tworzenie kopii zapasowych udziałów plików platformy Azure w Azure Portal
 

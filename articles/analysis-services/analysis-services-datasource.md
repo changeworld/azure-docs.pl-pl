@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120023"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170658"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -22,14 +22,14 @@ ms.locfileid: "74120023"
 
 |Źródło danych  |W pamięci  |Tryb DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Yes      |    Yes      |
-|Azure SQL Data Warehouse     |   Yes      |   Yes       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Yes       |    Nie      |
-|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Yes       |    Nie      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Yes        |  Nie        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Yes       |    Nie      |
-|Usługa Azure HDInsight w systemie plików HDFS<sup>[1](#tab1400a)</sup>     |     Yes     |   Nie       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Yes       |   Nie       |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Tak      |    Tak      |
+|Azure SQL Data Warehouse     |   Tak      |   Tak       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Tak       |    Nie      |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Tak       |    Nie      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Tak        |  Nie        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Tak       |    Nie      |
+|Usługa Azure HDInsight w systemie plików HDFS<sup>[1](#tab1400a)</sup>     |     Tak     |   Nie       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Tak       |   Nie       |
 ||||
 
 tylko <a name="tab1400a">1</a> -tabelaryczny model 1400 i wyższe.   
@@ -91,7 +91,7 @@ tylko <a name="tab1400b">1</a> -tabelaryczny model 1400 i wyższe.
 
 ## <a name="specifying-a-different-provider"></a>Określanie innego dostawcy
 
-Modele danych w Azure Analysis Services mogą wymagać różnych dostawców danych podczas łączenia się z pewnymi źródłami danych. W niektórych przypadkach modele tabelaryczne łączące się ze źródłami danych przy użyciu natywnych dostawców, takich jak SQL Server Native Client (SQLNCLI11), mogą zwrócić błąd. W przypadku korzystania z natywnych dostawców innych niż SQLOLEDB może zostać wyświetlony komunikat o błędzie: **dostawca "sqlncli 11.1" nie jest zarejestrowany**. Lub, jeśli masz model zapytania bezpośredniego łączący się z lokalnymi źródłami danych i używasz dostawców natywnych, może pojawić się komunikat o błędzie: **błąd podczas tworzenia zestawu wierszy OLE DB. Nieprawidłowa składnia w sąsiedztwie "LIMIT"** .
+Modele danych w Azure Analysis Services mogą wymagać różnych dostawców danych podczas łączenia się z pewnymi źródłami danych. W niektórych przypadkach modele tabelaryczne łączące się ze źródłami danych przy użyciu natywnych dostawców, takich jak SQL Server Native Client (SQLNCLI11), mogą zwrócić błąd. W przypadku korzystania z natywnych dostawców innych niż MSOLEDBSQL może zostać wyświetlony komunikat o błędzie: **dostawca "sqlncli 11.1" nie jest zarejestrowany**. Lub, jeśli masz model zapytania bezpośredniego łączący się z lokalnymi źródłami danych i używasz dostawców natywnych, może pojawić się komunikat o błędzie: **błąd podczas tworzenia zestawu wierszy OLE DB. Nieprawidłowa składnia w sąsiedztwie "LIMIT"** .
 
 W przypadku migrowania lokalnego modelu SQL Server Analysis Services tabelarycznego do Azure Analysis Services, może być konieczne zmianę dostawcy.
 

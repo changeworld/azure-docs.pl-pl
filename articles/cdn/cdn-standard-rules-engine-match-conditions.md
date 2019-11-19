@@ -1,121 +1,124 @@
 ---
-title: Azure CDN ze standardowych reguł firmy Microsoft dotyczących zgodności aparatu | Microsoft Docs
-description: Dokumentacja referencyjna dotycząca platformy Azure Content Delivery Network z poziomu standardowych reguł firmy Microsoft dotyczącej aparatu.
+title: Dopasuj warunki w aparacie reguł standardowych dla Azure CDN | Microsoft Docs
+description: Dokumentacja referencyjna dotycząca warunków dopasowania w aparacie standardowych reguł dla platformy Azure Content Delivery Network (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: a72452d37b152a9463a5aee0e199fd42ea852236
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615964"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171604"
 ---
-# <a name="azure-cdn-from-microsoft-standard-rules-engine-match-conditions"></a>Azure CDN z warunków dopasowania aparatu standardowej reguły firmy Microsoft
+# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Dopasuj warunki w aparacie reguł standardowych dla Azure CDN
 
-W tym artykule przedstawiono szczegółowe opisy warunków dopasowania dostępne dla usługi Azure Content Delivery Network (CDN) z [aparatu standardowych reguł](cdn-standard-rules-engine.md)firmy Microsoft.
+W [aparacie reguł standardowych](cdn-standard-rules-engine.md) dla platformy Azure Content Delivery Network (Azure CDN) reguła zawiera co najmniej jeden warunek dopasowania i akcję. Ten artykuł zawiera szczegółowe opisy warunków dopasowania, których można użyć w aparacie reguł standardowych dla Azure CDN.
 
-Pierwsza część reguły jest zestawem warunków dopasowywania. Każda reguła może mieć maksymalnie 4 warunki dopasowania. Warunek dopasowania identyfikuje określone typy żądań, dla których zostaną wykonane akcje zdefiniowane w regule. Jeśli używasz wielu warunków dopasowywania, zostaną zgrupowane razem przy użyciu i logiki.
+Pierwszą częścią reguły jest warunek dopasowania lub zestaw warunków zgodności. W aparacie reguł standardowych dla Azure CDN Każda reguła może mieć maksymalnie cztery warunki dopasowywania. Warunek dopasowania służy do identyfikowania określonych typów żądań, dla których wykonywane są określone akcje. Jeśli używasz wielu warunków dopasowywania, warunki dopasowania są pogrupowane przy użyciu i logiki.
 
 Można na przykład użyć warunku dopasowywania do:
 
-- Filtruj żądania wygenerowane na podstawie określonego adresu IP lub kraju/regionu.
+- Filtrowanie żądań na podstawie określonego adresu IP, kraju lub regionu.
 - Filtruj żądania według informacji nagłówka.
-- Filtrowanie żądań z urządzeń przenośnych lub komputerów stacjonarnych.
+- Filtrowanie żądań z urządzeń przenośnych lub urządzeń stacjonarnych.
 
 ## <a name="match-conditions"></a>Warunki dopasowania
 
-Poniższe warunki dopasowania są dostępne do użycia. 
+Poniższe warunki dopasowania są dostępne do użycia w aparacie reguł standardowych dla Azure CDN. 
 
 ### <a name="device-type"></a>Typ urządzenia 
 
-Warunek dopasowania typu urządzenia identyfikuje żądania wysyłane z urządzenia przenośnego lub stacjonarnego na podstawie jego właściwości.  
+Identyfikuje żądania wysyłane z urządzenia przenośnego lub urządzenia stacjonarnego.  
 
-**Pola wymagane**
+#### <a name="required-fields"></a>Pola wymagane
 
-Operator | Obsługiwana wartość
+Operator | Obsługiwane wartości
 ---------|----------------
 Równa się, nie równa się | Urządzenia przenośne, komputery stacjonarne
 
-
 ### <a name="http-version"></a>Wersja protokołu HTTP
 
-Warunek dopasowania wersji protokołu HTTP identyfikuje żądania na podstawie wersji protokołu HTTP, do której dociera żądanie.
+Identyfikuje żądania na podstawie wersji protokołu HTTP żądania.
 
-**Pola wymagane**
+#### <a name="required-fields"></a>Pola wymagane
 
-Operator | Obsługiwana wartość
+Operator | Obsługiwane wartości
 ---------|----------------
 Równa się, nie równa się | 2,0, 1,1, 1,0, 0,9, wszystkie
 
-
 ### <a name="request-cookies"></a>Pliki cookie żądania
 
-Warunek dopasowania plików cookie żądania identyfikuje żądania na podstawie informacji o pliku cookie w żądaniu przychodzącym.
+Identyfikuje żądania na podstawie informacji o pliku cookie w żądaniu przychodzącym.
 
-**Pola wymagane**
+#### <a name="required-fields"></a>Pola wymagane
 
 Nazwa pliku cookie | Operator | Wartość cookie | Przekształcanie wielkości liter
 ------------|----------|--------------|---------------
 Ciąg | [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-Informacje o kluczu
-- Wartości symboli wieloznacznych, w tym gwiazdki (*), nie są obsługiwane podczas określania nazwy pliku cookie, tylko dokładne dopasowania nazw plików cookie kwalifikują się do porównania.
+#### <a name="key-information"></a>Informacje o kluczu
+
+- Nie można używać symboli wieloznacznych (w tym gwiazdek (\*)) podczas określania nazwy pliku cookie; Muse użyć dokładnej nazwy pliku cookie.
 - Dla każdego wystąpienia tego warunku dopasowywania można określić tylko jedną nazwę pliku cookie.
 - Porównania nazw plików cookie nie uwzględniają wielkości liter.
-- Określ wiele wartości plików cookie, ograniczając każdą z nich pojedynczym miejscem. 
+- Aby określić wiele wartości plików cookie, należy użyć pojedynczej spacji między wartościami plików cookie. 
 - Wartości plików cookie mogą korzystać z symboli wieloznacznych.
-- Jeśli nie określono wartości symbolu wieloznacznego, tylko dokładne dopasowanie będzie spełniało ten warunek dopasowania. Na przykład określenie "value" będzie pasować do wartości "value", ale nie "wartość1". 
+- Jeśli nie określono wartości symbolu wieloznacznego, tylko dokładne dopasowanie spełnia ten warunek dopasowania. Na przykład "wartość" będzie pasować do wartości "value", ale nie "wartość1". 
 
 ### <a name="post-argument"></a>Opublikuj argument
 
-**Pola wymagane**
+Identyfikuje żądania na podstawie argumentów zdefiniowanych dla metody POST Request, która jest używana w żądaniu. 
+
+#### <a name="required-fields"></a>Pola wymagane
 
 Nazwa argumentu | Operator | Wartość argumentu | Przekształcanie wielkości liter
 --------------|----------|----------------|---------------
 Ciąg | [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-### <a name="query-string"></a>Ciąg kwerendy
+### <a name="query-string"></a>Ciąg zapytania
 
-Warunki dopasowania ciągu zapytania identyfikują żądania zawierające określony parametr ciągu zapytania. Ten parametr jest ustawiony na wartość zgodną z określonym wzorcem. Parametry ciągu zapytania (na przykład parametr = wartość) w adresie URL żądania określają, czy ten warunek jest spełniony. Ten warunek dopasowania identyfikuje parametr ciągu zapytania według jego nazwy i akceptuje co najmniej jedną wartość wartości parametru.
+Identyfikuje żądania zawierające określony parametr ciągu zapytania. Ten parametr jest ustawiony na wartość zgodną z określonym wzorcem. Parametry ciągu zapytania (na przykład **parametr = wartość**) w adresie URL żądania określają, czy ten warunek jest spełniony. Ten warunek dopasowania identyfikuje parametr ciągu zapytania według jego nazwy i akceptuje co najmniej jedną wartość wartości parametru.
 
-**Pola wymagane**
+#### <a name="required-fields"></a>Pola wymagane
 
-Operator | Ciąg kwerendy | Przekształcanie wielkości liter
+Operator | Ciąg zapytania | Przekształcanie wielkości liter
 ---------|--------------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
 ### <a name="remote-address"></a>Adres zdalny
 
-Warunek zgodności adresów zdalnych zidentyfikuje żądania na podstawie lokalizacji lub adresu IP osoby żądającej.
+Identyfikuje żądania na podstawie lokalizacji lub adresu IP osoby żądającej.
 
-**Pola wymagane**
+#### <a name="required-fields"></a>Pola wymagane
 
 Operator | Obsługiwane wartości
 ---------|-----------------
 Dowolne | Nie dotyczy
-Dopasowanie geograficzne | Kody krajów
-Dopasowanie adresu IP | Adresy IP (rozdzielone miejsce)
+Dopasowanie geograficzne | Kod kraju
+Dopasowanie adresu IP | Adres IP (rozdzielone spacjami)
 Nie wszystkie | Nie dotyczy
-Brak dopasowania geograficznego | Kody krajów
-Niezgodność adresów IP | Adresy IP (rozdzielone miejsce)
+Brak dopasowania geograficznego | Kod kraju
+Niezgodność adresów IP | Adres IP (rozdzielone spacjami)
 
-Informacje o kluczu:
+#### <a name="key-information"></a>Informacje o kluczu
 
 - Użyj notacji CIDR.
-- Określ wiele adresów IP i/lub bloków adresów IP, ograniczając każdą z nich pojedynczym miejscem. Na przykład:
-  - **Przykład IPv4**: 1.2.3.4 10.20.30.40 dopasowuje wszystkie żądania, które dotarły do adresu 1.2.3.4 lub 10.20.30.40.
-  - **Przykład IPv6**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 dopasowuje wszystkie żądania, które nadeszły z adresu 1:2:3:4:5:6:7:8 lub 10:20:30:40:50:60:70:80.
+- Aby określić wiele adresów IP i bloków adresów IP, należy użyć pojedynczej spacji między wartościami:
+  - **Przykład IPv4**: *1.2.3.4 10.20.30.40* dopasowuje wszystkie żądania, które dotarły do adresu 1.2.3.4 lub 10.20.30.40.
+  - **Przykład IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 dopasowuje wszystkie żądania, które nadeszły z adresu 1:2:3:4:5:6:7:8 lub 10:20:30:40:50:60:70:80.
 - Składnia bloku adresów IP to podstawowy adres IP, po którym następuje ukośnik i rozmiar prefiksu. Na przykład:
-  - **Przykład IPv4**: 5.5.5.64/26 dopasowuje wszystkie żądania odbierane z adresów 5.5.5.64 przez 5.5.5.127.
-  - **Przykład IPv6**: 1:2:3:/48 dopasowuje wszystkie żądania odbierane z adresów 1:2:3:0:0:0:0:0 do 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF.
+  - **Przykład IPv4**: *5.5.5.64/26* dopasowuje wszystkie żądania odbierane z adresów 5.5.5.64 przez 5.5.5.127.
+  - **Przykład IPv6**: *1:2:3:/48* dopasowuje wszystkie żądania odbierane z adresów 1:2:3:0:0:0:0:0 do 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF.
 
 ### <a name="request-body"></a>Treść żądania
 
-**Pola wymagane**
+Identyfikuje żądania na podstawie określonego tekstu, który pojawia się w treści żądania.
+
+#### <a name="required-fields"></a>Pola wymagane
 
 Operator | Treść żądania | Przekształcanie wielkości liter
 ---------|--------------|---------------
@@ -123,76 +126,91 @@ Operator | Treść żądania | Przekształcanie wielkości liter
 
 ### <a name="request-header"></a>Nagłówek żądania
 
-**Pola wymagane**
+Identyfikuje żądania, które używają określonego nagłówka w żądaniu.
+
+#### <a name="required-fields"></a>Pola wymagane
+
 Nazwa nagłówka | Operator | Wartość nagłówka | Przekształcanie wielkości liter
 ------------|----------|--------------|---------------
 Ciąg | [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
 ### <a name="request-method"></a>Metoda żądania
 
-**Pola wymagane**
+Identyfikuje żądania wykorzystujące określoną metodę żądania.
 
-Operator | Obsługiwana wartość
+#### <a name="required-fields"></a>Pola wymagane
+
+Operator | Obsługiwane wartości
 ---------|----------------
 Równa się, nie równa się | GET, POST, PUT, DELETE, GŁOWY, OPTIONS, TRACE
 
-Informacje o kluczu:
+#### <a name="key-information"></a>Informacje o kluczu
 
-- Tylko Metoda GET Request może generować zawartość z pamięci podręcznej w usłudze CDN. Wszystkie pozostałe metody żądań są przekazywane za pomocą sieci. 
+- Tylko Metoda GET Request może generować zawartość buforowaną w Azure CDN. Wszystkie pozostałe metody żądań są przekazywane za pomocą sieci. 
 
 ### <a name="request-protocol"></a>Protokół żądania
 
-**Pola wymagane**
+Identyfikuje żądania używające określonego używanego protokołu.
 
-Operator | Obsługiwana wartość
+#### <a name="required-fields"></a>Pola wymagane
+
+Operator | Obsługiwane wartości
 ---------|----------------
 Równa się, nie równa się | HTTP, HTTPS
 
 ### <a name="request-url"></a>Adres URL żądania
 
-**Pola wymagane**
+Identyfikuje żądania zgodne z określonym adresem URL.
+
+#### <a name="required-fields"></a>Pola wymagane
 
 Operator | Adres URL żądania | Przekształcanie wielkości liter
 ---------|-------------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-Informacje o kluczu:
+#### <a name="key-information"></a>Informacje o kluczu
 
-- Po wprowadzeniu adresu URL żądania upewnij się, że dołączasz informacje o protokole. Na przykład "https://www. [twojadomena]. com "
+- Jeśli używasz tego warunku reguły, pamiętaj o uwzględnieniu informacji o protokole. Na przykład: *https://www.\<yourdomain\>.com* .
 
 ### <a name="url-file-extension"></a>Rozszerzenie pliku adresu URL
 
-**Pola wymagane**
+Identyfikuje żądania, które zawierają określone rozszerzenie pliku w nazwie pliku w żądającym adresie URL.
+
+#### <a name="required-fields"></a>Pola wymagane
 
 Operator | Wewnętrzny | Przekształcanie wielkości liter
 ---------|-----------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-Informacje o kluczu:
+#### <a name="key-information"></a>Informacje o kluczu
 
-- W przypadku rozszerzenia nie należy umieszczać wiodących kropek; na przykład użyj HTML zamiast. html.
+- W przypadku rozszerzenia nie należy umieszczać wiodących kropek; na przykład użyj *HTML* zamiast *. html*.
 
 ### <a name="url-file-name"></a>Nazwa pliku adresu URL
 
-**Pola wymagane**
+Identyfikuje żądania, które zawierają określoną nazwę pliku w adresie URL żądania.
+
+#### <a name="required-fields"></a>Pola wymagane
 
 Operator | Nazwa pliku | Przekształcanie wielkości liter
 ---------|-----------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-Informacje o kluczu:
+#### <a name="key-information"></a>Informacje o kluczu
 
 - Aby określić wiele nazw plików, oddziel poszczególne nazwy plików pojedynczą spacją. 
 
 ### <a name="url-path"></a>Ścieżka adresu URL
 
-**Pola wymagane**
+Identyfikuje żądania, które zawierają określoną ścieżkę w adresie URL żądania.
+
+#### <a name="required-fields"></a>Pola wymagane
 
 Operator | Wartość | Przekształcanie wielkości liter
 ---------|-------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-Informacje o kluczu:
+#### <a name="key-information"></a>Informacje o kluczu
 
 - Wartość nazwy pliku może korzystać z symboli wieloznacznych. Na przykład każdy wzorzec nazwy pliku może składać się z co najmniej jednej gwiazdki (*), gdzie każda Gwiazdka dopasowuje sekwencję składającą się z co najmniej jednego znaku.
 
@@ -200,14 +218,14 @@ Informacje o kluczu:
 
 ### <a name="standard-operator-list"></a>Standardowa lista operatorów
 
-W przypadku reguł zawierających listę standardowych operatorów następujące operatory są prawidłowe:
+Dla reguł, które akceptują wartości z standardowej listy operatorów, są prawidłowe następujące operatory:
 
 - Dowolne
 - Równa się 
 - Contains 
 - Zaczyna się od 
-- Kończący się na 
-- Mniej niż
+- kończy się ciągiem 
+- Mniejsze niż
 - Mniejsze niż lub równe
 - Większe niż
 - Większe niż lub równe
@@ -220,17 +238,11 @@ W przypadku reguł zawierających listę standardowych operatorów następujące
 - Nie większe niż
 - Nie większe niż lub równe
 
-W przypadku operatorów liczbowych, takich jak "mniejsze niż" lub "większe niż lub równe", użyte porównanie będzie oparte na długości. W takim przypadku wartość w warunku dopasowywania powinna być liczbą całkowitą równą długości, którą chcesz porównać. 
-
----
-
-[Powrót do początku](#match-conditions)
-
-</br>
+W przypadku operatorów liczbowych, takich jak *mniejsza niż* i *większa niż lub równa*, użyte porównanie jest zależne od długości. W takim przypadku wartość w warunku dopasowania powinna być liczbą całkowitą, która jest równa długości, którą chcesz porównać. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Omówienie usługi Azure Content Delivery Network](cdn-overview.md)
-- [Dokumentacja aparatu reguł](cdn-standard-rules-engine-reference.md)
-- [Akcje aparatu reguł](cdn-standard-rules-engine-actions.md)
+- [Przegląd Azure CDN](cdn-overview.md)
+- [Dokumentacja aparatu reguł standardowych](cdn-standard-rules-engine-reference.md)
+- [Akcje w aparacie reguł standardowych](cdn-standard-rules-engine-actions.md)
 - [Wymuszanie protokołu HTTPS przy użyciu standardowego aparatu reguł](cdn-standard-rules-engine.md)

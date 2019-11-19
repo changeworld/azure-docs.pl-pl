@@ -1,18 +1,14 @@
 ---
-title: Architektura Azure Backup
+title: Przegląd architektury
 description: Zawiera omówienie architektury, składników i procesów używanych przez usługę Azure Backup.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: dacurwin
-ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074346"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173519"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -96,17 +92,17 @@ Użycie magazynu, cel czasu odzyskiwania (RTO) i użycie sieci różnią się w 
 
 Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typów kopii zapasowych:
 
-**Funkcja** | **Lokalne maszyny z systemem Windows Server (bezpośrednie)** | **Maszyny wirtualne platformy Azure** | **Maszyny lub aplikacje z programem DPM/serwera usługi MAB**
+**Funkcja** | **Bezpośrednie tworzenie kopii zapasowych plików i folderów (przy użyciu agenta MARS)** | **Kopia zapasowa maszyny wirtualnej platformy Azure** | **Maszyny lub aplikacje z programem DPM/serwera usługi MAB**
 --- | --- | --- | ---
-Tworzenie kopii zapasowej w magazynie | ![Yes][green] | ![Yes][green] | ![Yes][green]
-Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Yes][green]
-Kompresuj dane wysyłane do kopii zapasowej | ![Yes][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Yes][green]
-Uruchom przyrostową kopię zapasową |![Yes][green] |![Yes][green] |![Yes][green]
+Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Tak][green] | ![Tak][green]
+Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Tak][green]
+Kompresuj dane wysyłane do kopii zapasowej | ![Tak][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Tak][green]
+Uruchom przyrostową kopię zapasową |![Tak][green] |![Tak][green] |![Tak][green]
 Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> W przypadku serwerów DPM/serwera usługi MAB wdrożonych tylko lokalnie.
 
 ![Klucz tabeli](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architektura: bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
+## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Wbudowana kopia zapasowa maszyny wirtualnej platformy Azure
 
 1. Po włączeniu kopii zapasowej dla maszyny wirtualnej platformy Azure kopia zapasowa jest uruchamiana zgodnie z określonym harmonogramem.
 1. Podczas pierwszej kopii zapasowej, rozszerzenie kopii zapasowej jest instalowane na maszynie wirtualnej, jeśli maszyna wirtualna jest uruchomiona.

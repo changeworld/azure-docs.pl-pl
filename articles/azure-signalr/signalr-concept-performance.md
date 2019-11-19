@@ -1,17 +1,17 @@
 ---
 title: Przewodnik dotyczący wydajności usługi Azure Signal Service
-description: Przegląd wydajności usługi Azure Signal Service.
+description: Przegląd wydajności i testów porównawczych usługi Azure Signal Service. Kluczowe metryki, które należy wziąć pod uwagę podczas planowania pojemności.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232536"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157669"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Przewodnik dotyczący wydajności usługi Azure Signal Service
 
@@ -21,15 +21,15 @@ W tym przewodniku wprowadzimy czynniki wpływające na wydajność aplikacji syg
 
 ## <a name="term-definitions"></a>Definicje terminów
 
-*Ruch*przychodzący: Komunikat przychodzący do usługi Azure Signal Service.
+*Przychodzące*: komunikat przychodzący do usługi Azure Signal Service.
 
-Wychodzące: Komunikat wychodzący z usługi Azure Signal Service.
+*Wychodzące*: komunikat wychodzący z usługi Azure Signal Service.
 
-*Przepustowość*: Łączny rozmiar wszystkich komunikatów w 1 s.
+*Przepustowość*: łączny rozmiar wszystkich komunikatów w 1 s.
 
-*Tryb domyślny*: Domyślny tryb roboczy podczas tworzenia wystąpienia usługi Azure Signal instance. Usługa Azure Signal oczekuje, aby serwer aplikacji ustanowił połączenie z nim przed zaakceptowaniem wszelkich połączeń klienta.
+*Tryb domyślny*: domyślny tryb roboczy podczas tworzenia wystąpienia usługi Azure Signal instance. Usługa Azure Signal oczekuje, aby serwer aplikacji ustanowił połączenie z nim przed zaakceptowaniem wszelkich połączeń klienta.
 
-*Tryb*bezserwerowy: Tryb, w którym usługa sygnałów platformy Azure akceptuje tylko połączenia klienckie. Brak połączenia z serwerem.
+*Tryb bezserwerowy*: tryb, w którym usługa sygnałów platformy Azure akceptuje tylko połączenia klienckie. Brak połączenia z serwerem.
 
 ## <a name="overview"></a>Omówienie
 
@@ -66,7 +66,7 @@ W domyślnym trybie usługi Azure Signal Machines maszyny wirtualne serwera apli
 
 ### <a name="performance-factors"></a>Czynniki wydajności
 
-Teoretycznie pojemność usługi Azure Signal Service jest ograniczona przez zasoby obliczeniowe: PROCESOR, pamięć i sieć. Na przykład więcej połączeń z usługą Azure sygnalizujących powoduje, że usługa używa większej ilości pamięci. W przypadku większego ruchu komunikatów (na przykład każdy komunikat jest większy niż 2 048 bajtów) usługa Azure Signal Service musi poświęcać więcej cyklom procesora CPU na przetwarzanie ruchu. W tym przypadku przepustowość sieci platformy Azure nakłada również limit na maksymalny ruch.
+Teoretycznie pojemność usługi Azure Signal Service jest ograniczona przez zasoby obliczeniowe: procesor, pamięć i sieć. Na przykład więcej połączeń z usługą Azure sygnalizujących powoduje, że usługa używa większej ilości pamięci. W przypadku większego ruchu komunikatów (na przykład każdy komunikat jest większy niż 2 048 bajtów) usługa Azure Signal Service musi poświęcać więcej cyklom procesora CPU na przetwarzanie ruchu. W tym przypadku przepustowość sieci platformy Azure nakłada również limit na maksymalny ruch.
 
 Typ transportu jest innym czynnikiem wpływającym na wydajność. Te trzy typy to między innymi typ [protokołu WebSocket](https://en.wikipedia.org/wiki/WebSocket), [serwer — zdarzenie wysłane](https://en.wikipedia.org/wiki/Server-sent_events)i [długotrwałe sondowanie](https://en.wikipedia.org/wiki/Push_technology). 
 
@@ -122,32 +122,32 @@ Każda warstwa ma własną maksymalną przepustowość ruchu przychodzącego i p
 
 |       ECHA                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia                       | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia                       | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | **Przepustowość ruchu przychodzącego** | **2 MB/s**    | **4 MB/s**    | **10 MB/s**   | **20 MB/s**    | **40 MB/s**    | **100 MB/s**   | **200 MB/s**    |
 | Przepustowość wychodząca | 2 MB/s   | 4 MB/s   | 10 MB/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
 
 
 |     Emisja             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
+| Połączenia               | 1000 | 2,000 | 5000  | 10 000 | 20,000 | 50 000  | 100 000 |
 | Przepustowość ruchu przychodzącego  | 4 KB/s   | 4 KB/s   | 4 KB/s    | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s    |
 | **Przepustowość wychodząca** | **4 MB/s**    | **8 MB/s**    | **20 MB/s**    | **40 MB/s**    | **80 MB/s**    | **200 MB/s**    | **400 MB/s**   |
 
-*Przepustowość ruchu przychodzącego* i *przepustowość* wychodząca to całkowity rozmiar komunikatów na sekundę.  Poniżej znajdują się następujące formuły:
+*Przepustowość ruchu przychodzącego* i *przepustowość wychodząca* to całkowity rozmiar komunikatów na sekundę.  Poniżej znajdują się następujące formuły:
 ```
   inboundBandwidth = inboundConnections * messageSize / sendInterval
   outboundBandwidth = outboundConnections * messageSize / sendInterval
 ```
 
-- *inboundConnections*: Liczba połączeń wysyłających wiadomość.
+- *inboundConnections*: liczba połączeń wysyłających wiadomość.
 
-- *outboundConnections*: Liczba połączeń otrzymujących wiadomość.
+- *outboundConnections*: liczba połączeń odebranych komunikatem.
 
-- *messageSize*: Rozmiar pojedynczego komunikatu (średnia wartość). Mały komunikat o rozmiarze mniejszym niż 1 024 bajtów ma wpływ na wydajność podobny do komunikatu o rozmiarze 1 024-bajtowym.
+- *messageSize*: rozmiar pojedynczego komunikatu (średnia wartość). Mały komunikat o rozmiarze mniejszym niż 1 024 bajtów ma wpływ na wydajność podobny do komunikatu o rozmiarze 1 024-bajtowym.
 
-- *sendInterval*: Godzina wysłania jednej wiadomości. Zwykle jest to 1 sekundę na komunikat, co oznacza wysłanie jednej wiadomości co sekundę. Mniejszy interwał oznacza wysyłanie więcej komunikatów w danym okresie czasu. Na przykład 0,5 sekund na komunikat oznacza wysyłanie dwóch komunikatów co sekundę.
+- *sendInterval*: godzina wysłania jednej wiadomości. Zwykle jest to 1 sekundę na komunikat, co oznacza wysłanie jednej wiadomości co sekundę. Mniejszy interwał oznacza wysyłanie więcej komunikatów w danym okresie czasu. Na przykład 0,5 sekund na komunikat oznacza wysyłanie dwóch komunikatów co sekundę.
 
-- *Połączenia*: Przekazany maksymalny próg usługi Azure Signal dla każdej warstwy. Jeśli nastąpi dalsze zwiększenie liczby połączeń, będzie to miało wpływ na ograniczenia połączeń.
+- *Połączenia*: zatwierdzono maksymalny próg usługi Azure Signal dla każdej warstwy. Jeśli nastąpi dalsze zwiększenie liczby połączeń, będzie to miało wpływ na ograniczenia połączeń.
 
 #### <a name="evaluation-for-complex-use-cases"></a>Ocena złożonych przypadków użycia
 
@@ -159,7 +159,7 @@ W poniższej tabeli przedstawiono rzeczywiste przypadki użycia **emisji**. Jedn
 
 | Emisja  | Rozmiar komunikatu | Komunikaty przychodzące na sekundę | Połączenia | Interwały wysyłania |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1 | 20 KB                | 1                        | 100,000     | 5 sekund                      |
+| 1 | 20 KB                | 1                        | 100 000     | 5 sekund                      |
 | 2 | 256 KB               | 1                        | 8000       | 5 sekund                      |
 
 Poniższa formuła jest łatwa do wnioskowania na podstawie poprzedniej formuły:
@@ -213,8 +213,8 @@ Zachowanie **ECHA** określa, że maksymalna przepustowość ruchu przychodzące
 
 |       ECHA                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia                       | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
-| Komunikaty przychodzące/wychodzące na sekundę | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia                       | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
+| Komunikaty przychodzące/wychodzące na sekundę | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Przepustowość ruchu przychodzącego/wychodzącego | 2 MB/s   | 4 MB/s   | 10 MB/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
 
 W tym przypadku użycia każdy klient wywołuje centrum zdefiniowane na serwerze aplikacji. Koncentrator po prostu wywołuje metodę zdefiniowaną w oryginalnej stronie klienta. To centrum jest najbardziej lekkim centrum na potrzeby **ECHA**.
@@ -226,12 +226,12 @@ W tym przypadku użycia każdy klient wywołuje centrum zdefiniowane na serwerze
         }
 ```
 
-Nawet w przypadku tego prostego centrum, nacisk na ruch na serwerze aplikacji jest widoczny w miarę wzrostu obciążenia komunikatów przychodzących. To ciśnienie ruchu wymaga wielu serwerów aplikacji dla dużych warstw jednostki SKU. W poniższej tabeli wymieniono liczbę serwerów aplikacji dla każdej warstwy.
+Nawet w przypadku tego prostego centrum, nacisk na ruch na serwerze aplikacji jest widoczny w miarę wzrostu obciążenia **komunikatów przychodzących.** To ciśnienie ruchu wymaga wielu serwerów aplikacji dla dużych warstw jednostki SKU. W poniższej tabeli wymieniono liczbę serwerów aplikacji dla każdej warstwy.
 
 
 |    ECHA          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -249,9 +249,9 @@ W poniższej tabeli zestawiono maksymalne połączenia klientów, liczbę komuni
 
 |     Emisja             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
+| Połączenia               | 1000 | 2,000 | 5000  | 10 000 | 20,000 | 50 000  | 100 000 |
 | Komunikaty przychodzące na sekundę  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
+| Komunikaty wychodzące na sekundę | 2,000 | 4,000 | 10 000 | 20,000 | 40,000 | 100 000 | 200,000 |
 | Przepustowość ruchu przychodzącego  | 4 KB/s   | 4 KB/s   | 4 KB/s    | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s     |
 | Przepustowość wychodząca | 4 MB/s   | 8 MB/s   | 20 MB/s   | 40 MB/s   | 80 MB/s   | 200 MB/s   | 400 MB/s   |
 
@@ -259,7 +259,7 @@ Emituje klientów, którzy publikują komunikaty, nie przekraczają czterech. W 
 
 |   Emisja      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -277,7 +277,7 @@ Liczba członków i grup grup to dwa czynniki wpływające na wydajność. Aby u
 
 - **Mała grupa**: Każda grupa ma 10 połączeń. Numer grupy jest równy (maksymalna liczba połączeń)/10. Na przykład w przypadku Unit1 liczba połączeń wynosi 1 000, a następnie mamy 1000/10 = 100 grupy.
 
-- **Duża grupa**: Numer grupy to zawsze 10. Liczba członków grupy jest równa (maksymalna liczba połączeń)/10. Na przykład dla Unit1, jeśli liczba połączeń wynosi 1 000, każda grupa ma 1000/10 = 100 członków.
+- **Duża grupa**: Numer grupy jest zawsze 10. Liczba członków grupy jest równa (maksymalna liczba połączeń)/10. Na przykład dla Unit1, jeśli liczba połączeń wynosi 1 000, każda grupa ma 1000/10 = 100 członków.
 
 Wartość **Wyślij do grupy umożliwia** kierowanie kosztów routingu do usługi Azure Signal Service, ponieważ ma ona znaleźć docelowe połączenia za pomocą rozproszonej struktury danych. W miarę zwiększania się liczby połączeń wysyłających zwiększa się koszt.
 
@@ -287,19 +287,19 @@ Koszt routingu jest znaczący dla wysyłania komunikatów do wielu małych grup.
 
 |   Wyślij do małej grupy     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000 | 100,000
+| Połączenia               | 1000 | 2,000 | 5000  | 10 000 | 20,000 | 50 000 | 100 000
 | Liczba członków grupy        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Liczba grup               | 100   | 200   | 500    | 1000  | 2000  | 5,000  | 10 000 
+| Liczba grup               | 100   | 200   | 500    | 1000  | 2,000  | 5000  | 10 000 
 | Komunikaty przychodzące na sekundę  | 200   | 400   | 1000  | 2,500  | 4,000  | 7,000  | 7,000   |
 | Przepustowość ruchu przychodzącego  | 400 KB/s  | 800 KB/s  | 2 MB/s     | 5 MB/s     | 8 MB/s     | 14 MB/s    | 14 MB/s     |
-| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 25,000 | 40,000 | 70 000 | 70 000  |
+| Komunikaty wychodzące na sekundę | 2,000 | 4,000 | 10 000 | 25,000 | 40,000 | 70 000 | 70 000  |
 | Przepustowość wychodząca | 4 MB/s    | 8 MB/s    | 20 MB/s    | 50 MB/s     | 80 MB/s    | 140 MB/s   | 140 MB/s    |
 
 Wiele połączeń klientów wywołuje centrum, więc numer serwera aplikacji jest również krytyczny dla wydajności. W poniższej tabeli wymieniono sugerowane liczby serwerów aplikacji.
 
 |  Wyślij do małej grupy   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,19 +311,19 @@ W przypadku **wysyłania do dużych grup**przepustowość wychodząca jest wąsk
 
 |    Wyślij do dużej grupy      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000
-| Liczba członków grupy        | 100   | 200   | 500    | 1000  | 2000  | 5,000   | 10 000 
+| Połączenia               | 1000 | 2,000 | 5000  | 10 000 | 20,000 | 50 000  | 100 000
+| Liczba członków grupy        | 100   | 200   | 500    | 1000  | 2,000  | 5000   | 10 000 
 | Liczba grup               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Komunikaty przychodzące na sekundę  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Przepustowość ruchu przychodzącego  | 80 KB/s   | 40 KB/s   | 40 KB/s    | 20 KB/s    | 40 KB/s    | 40 KB/s     | 40 KB/s     |
-| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
+| Komunikaty wychodzące na sekundę | 2,000 | 4,000 | 10 000 | 20,000 | 40,000 | 100 000 | 200,000 |
 | Przepustowość wychodząca | 8 MB/s    | 8 MB/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
 
 Liczba połączeń wysyłanych nie przekracza 40. Obciążenie serwera aplikacji jest małe, więc Sugerowana liczba aplikacji sieci Web jest mała.
 
 |  Wyślij do dużej grupy  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -345,15 +345,15 @@ Poniższa tabela zawiera podsumowanie statystyczne po wielu zaokrągleniach uruc
 
 |   Wyślij do połączenia   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Połączenia                        | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000          | 100,000         |
-| Komunikaty przychodzące/wychodzące na sekundę | 1000 | 2000 | 5,000 | 8000  | 9 000  | 20,000 | 20,000 |
+| Połączenia                        | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000          | 100 000         |
+| Komunikaty przychodzące/wychodzące na sekundę | 1000 | 2,000 | 5000 | 8000  | 9 000  | 20,000 | 20,000 |
 | Przepustowość ruchu przychodzącego/wychodzącego | 2 MB/s    | 4 MB/s    | 10 MB/s   | 16 MB/s    | 18 MB/s    | 40 MB/s       | 40 MB/s       |
 
 Ten przypadek użycia wymaga wysokiego obciążenia po stronie serwera aplikacji. Zapoznaj się z sugerowaną liczbą serwerów aplikacji w poniższej tabeli.
 
 |  Wyślij do połączenia  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -369,21 +369,21 @@ W poniższej tabeli przedstawiono sugerowaną liczbę aplikacji sieci Web na pot
 
 |   ECHA           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 W poniższej tabeli przedstawiono sugerowaną liczbę aplikacji sieci Web dla **emisji**sygnałów ASP.NET.
 
 |  Emisja       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 W poniższej tabeli przedstawiono sugerowaną liczbę aplikacji sieci Web dla sygnałów ASP.NET **wysyłanych do małych grup**.
 
 |  Wyślij do małej grupy     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Połączenia      | 1000 | 2,000 | 5000 | 10 000 | 20,000 | 50 000 | 100 000 |
 | Liczba serwerów aplikacji | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Tryb bezserwerowy
@@ -397,9 +397,9 @@ Wszyscy klienci nawiązują połączenia WebSocket z usługą Azure Signal Servi
 
 |   Rozgłaszanie za poorednictwem interfejsu API REST     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
+| Połączenia               | 1000 | 2,000 | 5000  | 10 000 | 20,000 | 50 000  | 100 000 |
 | Komunikaty przychodzące na sekundę  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
+| Komunikaty wychodzące na sekundę | 2,000 | 4,000 | 10 000 | 20,000 | 40,000 | 100 000 | 200,000 |
 | Przepustowość ruchu przychodzącego  | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s     | 4 KB/s     | 4 KB/s      | 4 KB/s      |
 | Przepustowość wychodząca | 4 MB/s    | 8 MB/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
 
@@ -408,9 +408,9 @@ Test porównawczy przypisuje nazwy użytkowników wszystkim klientom przed rozpo
 
 |   Wyślij do użytkownika przy użyciu interfejsu API REST | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
-| Komunikaty przychodzące na sekundę  | 300   | 600   | 900    | 1 300  | 2000  | 10 000  | 18 000  |
-| Komunikaty wychodzące na sekundę | 300   | 600   | 900    | 1 300  | 2000  | 10 000  | 18 000 |
+| Połączenia               | 1000 | 2,000 | 5000  | 10 000 | 20,000 | 50 000  | 100 000 |
+| Komunikaty przychodzące na sekundę  | 300   | 600   | 900    | 1 300  | 2,000  | 10 000  | 18 000  |
+| Komunikaty wychodzące na sekundę | 300   | 600   | 900    | 1 300  | 2,000  | 10 000  | 18 000 |
 | Przepustowość ruchu przychodzącego  | 600 kb/s  | 1,2 MB/s  | 1,8 MB/s   | 2,6 MB/s   | 4 MB/s     | 10 MB/s     | 36 MB/s    |
 | Przepustowość wychodząca | 600 kb/s  | 1,2 MB/s  | 1,8 MB/s   | 2,6 MB/s   | 4 MB/s     | 10 MB/s     | 36 MB/s    |
 

@@ -1,20 +1,15 @@
 ---
-title: Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
+title: Samouczek — Tworzenie kopii zapasowej systemu Windows Server na platformie Azure
 description: Ten samouczek zawiera szczegółowe instrukcje tworzenia kopii zapasowej lokalnych serwerów z systemem Windows w magazynie usługi Recovery Services.
-author: dcurwin
-manager: carmonm
-keywords: kopia zapasowa serwerów z systemem windows; kopia zapasowa windows server; kopia zapasowa i odzyskiwanie po awarii
-ms.service: backup
 ms.topic: tutorial
 ms.date: 08/22/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: d57d25eff9548bea9d29f8aa908e9e1721495bd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073942"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171828"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 

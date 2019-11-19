@@ -1,19 +1,14 @@
 ---
-title: Używanie Azure Backup Server do tworzenia kopii zapasowych obciążeń na platformie Azure
+title: Użyj Azure Backup Server, aby utworzyć kopię zapasową obciążeń
 description: W tym artykule dowiesz się, jak przygotować środowisko do ochrony i tworzenia kopii zapasowych obciążeń przy użyciu Microsoft Azure Backup Server (serwera usługi MAB).
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: dacurwin
-ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012932"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172988"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 
@@ -335,8 +330,6 @@ Wykonaj następujące kroki, aby uaktualnić program serwera usługi MAB:
    > [!NOTE]
    >
    > Nie zamykaj, gdy wystąpienie programu SQL jest uaktualniane, zakończenie spowoduje odinstalowanie wystąpienia raportowania SQL, a w związku z tym próba ponownego uaktualnienia serwera usługi MAB zakończy się niepowodzeniem.
-
-
 
    > [!IMPORTANT]
    >

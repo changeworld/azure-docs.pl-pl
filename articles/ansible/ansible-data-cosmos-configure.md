@@ -3,17 +3,13 @@ title: Samouczek — Konfigurowanie kont Azure Cosmos DB przy użyciu rozwiązan
 description: Dowiedz się, jak utworzyć i skonfigurować Azure Cosmos DB przy użyciu programu rozwiązania ansible
 keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, Cosmo DB, baza danych
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242073"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156475"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Samouczek: Konfigurowanie kont Azure Cosmos DB przy użyciu rozwiązania ansible
 
@@ -234,10 +230,10 @@ Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
 W tej sekcji należy uruchomić element PlayBook w celu przetestowania różnych funkcji przedstawionych w tym artykule.
 
 Przed uruchomieniem element PlayBook wprowadź następujące zmiany:
-- W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
-- Upewnij się, że element "cosmosdbaccount_name zawiera tylko małe litery i jest unikatowy globalnie.
+- W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
+- Upewnij się, że element "cosmosdbaccount_name zawiera tylko małe litery i jest globalnie unikatowy.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cosmosdb.yml
@@ -261,7 +257,7 @@ Zapisz następujący kod jako `cleanup.yml`:
         state: absent
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

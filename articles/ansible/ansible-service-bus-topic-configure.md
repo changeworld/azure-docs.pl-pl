@@ -3,17 +3,13 @@ title: Samouczek — Konfigurowanie tematów w Azure Service Bus przy użyciu ro
 description: Informacje dotyczące tworzenia Azure Service Bus tematu przy użyciu programu rozwiązania ansible
 keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, Service Bus, tematy, subskrypcje
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 952779db582f9437f10608bf86b0b80560ded2c0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241217"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155797"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Samouczek: Konfigurowanie tematów w Azure Service Bus przy użyciu rozwiązania ansible
 
@@ -73,7 +69,7 @@ Zapisz następujący podręcznik jako `servicebus_topic.yml`:
           var: topic
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_topic.yml
@@ -106,7 +102,7 @@ Przykładowy kod element PlayBook tworzy subskrypcję w temacie Service Bus. Tem
 
 Zapisz następujący podręcznik jako `servicebus_subscription.yml`:
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_subscription.yml
@@ -143,7 +139,7 @@ Zapisz następujący podręcznik jako `servicebus_topic_policy.yml`:
           var: policy
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_topic_policy.yml
@@ -176,7 +172,7 @@ Zapisz następujący podręcznik jako `servicebus_namespace_info.yml`:
 Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 - Wartość `show_sas_policies` wskazuje, czy mają być wyświetlane zasady sygnatury dostępu współdzielonego w ramach określonego obszaru nazw. Domyślnie wartość jest `False`, aby uniknąć dodatkowych obciążeń sieci.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
@@ -221,9 +217,9 @@ Zapisz następujący podręcznik jako `servicebus_list.yml`:
 ```
 
 Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
-- Wartość `show_sas_policies` wskazuje, czy mają być pokazywane zasady sygnatury dostępu współdzielonego w ramach określonej kolejki. Domyślnie ta wartość jest ustawiona na `False`, aby uniknąć dodatkowych obciążeń sieci.
+- Wartość `show_sas_policies` wskazuje, czy mają być wyświetlane zasady sygnatury dostępu współdzielonego w ramach określonej kolejki. Domyślnie ta wartość jest ustawiana na `False`, aby uniknąć dodatkowych obciążeń sieci.
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_list.yml
@@ -252,7 +248,7 @@ Zapisz następujący podręcznik jako `servicebus_queue_policy_delete.yml`:
           state: absent
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_topic_policy_delete.yml
@@ -298,7 +294,7 @@ Zapisz następujący kod jako `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

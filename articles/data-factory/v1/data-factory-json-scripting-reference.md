@@ -3326,8 +3326,8 @@ Lokalny system plików można połączyć z fabryką danych Azure przy użyciu p
 
 | Scenariusz | Definicja hosta w połączonej usłudze | folderPath w definicji zestawu danych |
 | --- | --- | --- |
-| Folder lokalny na maszynie Zarządzanie danymi bramy: <br/><br/>Przykłady: D:\\\* lub D:\folder\subfolder\\* |D:\\\\ (dla bramy Zarządzanie danymi 2,0 i nowszych) <br/><br/> localhost (dla wcześniejszych wersji niż Zarządzanie danymi Gateway 2,0) |.\\\\ lub folderu\\\\podfolderem (dla Zarządzanie danymi Gateway 2,0 i nowsze wersje) <br/><br/>D:\\\\ lub D:\\\\folderu\\\\podfolderu (w przypadku wersji bramy poniżej 2,0) |
-| Zdalny folder udostępniony: <br/><br/>Przykłady: \\\\uzyskać\\udostępniania\\\* lub \\\\\\Udostępnij\\folder\\\\* |\\\\\\\\i\\\\ |.\\\\ lub folderu\\\\podfolderem |
+| Folder lokalny na maszynie Zarządzanie danymi bramy: <br/><br/>Przykłady: D:\\\* lub D:\folder\subfolder\\\* |D:\\\\ (dla bramy Zarządzanie danymi 2,0 i nowszych) <br/><br/> localhost (dla wcześniejszych wersji niż Zarządzanie danymi Gateway 2,0) |.\\\\ lub folderu\\\\podfolderem (dla Zarządzanie danymi Gateway 2,0 i nowsze wersje) <br/><br/>D:\\\\ lub D:\\\\folderu\\\\podfolderu (w przypadku wersji bramy poniżej 2,0) |
+| Zdalny folder udostępniony: <br/><br/>Przykłady: \\\\uzyskać\\udostępniania\\\* lub \\\\\\Udostępnij\\folder\\\\\* |\\\\\\\\i\\\\ |.\\\\ lub folderu\\\\podfolderem |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>Przykład: używanie nazwy użytkownika i hasła w postaci zwykłego tekstu

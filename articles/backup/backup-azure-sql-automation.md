@@ -1,27 +1,21 @@
 ---
-title: Tworzenie kopii zapasowych bazy danych SQL w usłudze Azure VM & Przywracanie za pomocą programu PowerShell — Azure Backup
+title: Tworzenie kopii zapasowych bazy danych SQL w usłudze Azure VM & Przywracanie za pomocą programu PowerShell
 description: Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu Azure Backup i programu PowerShell.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; SQL;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 2622fc9b7b7bc5caedc560af64a5d6b2971b814f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 115eef3619f76f83f63c5e69e86393c032e0844e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090945"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172638"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
 
 W tym artykule opisano sposób użycia Azure PowerShell do tworzenia kopii zapasowych i odzyskiwania bazy danych SQL w ramach maszyny wirtualnej platformy Azure przy użyciu magazynu [Azure Backup](backup-overview.md) Recovery Services.
 
-W tym samouczku wyjaśniono:
+W tym artykule wyjaśniono, jak:
 
 > [!div class="checklist"]
 >

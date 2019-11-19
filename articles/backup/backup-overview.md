@@ -1,19 +1,15 @@
 ---
 title: Co to jest Azure Backup?
 description: Zawiera omówienie usługi Azure Backup i sposobu, w jaki przyczynia się do strategii ciągłości działania i odzyskiwania po awarii (BCDR).
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: overview
 ms.date: 04/24/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 29e0b05ee9cb8f7dc67f90b54081bca4db0691b6
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 49ef90c874e920ef92dd5206447081a6aa4f7988
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035229"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172201"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co to jest usługa Azure Backup?
 
@@ -116,7 +112,7 @@ W usłudze Azure Backup obowiązuje limit wynoszący 9999 punktów odzyskiwania,
 
 W poniższej tabeli przedstawiono maksymalną częstotliwość wykonywania kopii zapasowych dla każdego składnika. Konfiguracja zasad kopii zapasowych określa, jak szybko są zużywane punkty odzyskiwania. Jeśli na przykład utworzysz punkt odzyskiwania codziennie, możesz zachować punkty odzyskiwania przez 27 lat przed rozpoczęciem pracy. W przypadku korzystania z miesięcznego punktu odzyskiwania można zachować punkty odzyskiwania przez 833 lat przed rozpoczęciem pracy. Usługa tworzenia kopii zapasowych nie ustawia limitu czasu wygaśnięcia w punkcie odzyskiwania.
 
-|  | Agent usługi Azure Backup (MARS)| System Center DPM | Usługa Azure Backup Server | Usługa Backup dla maszyn wirtualnych IaaS platformy Azure |
+|  | Agent usługi Azure Backup (MARS)| System Center DPM | Azure Backup Server | Usługa Backup dla maszyn wirtualnych IaaS platformy Azure |
 | --- | --- | --- | --- | --- |
 | Częstotliwość wykonywania kopii zapasowych<br/> (do magazynu usługi Recovery Services) |Trzy kopie zapasowe dziennie |Dwie kopie zapasowe dziennie |Dwie kopie zapasowe dziennie |Jedna kopia zapasowa dziennie |
 | Częstotliwość wykonywania kopii zapasowych<br/> (na dysku) |Nie dotyczy |Co 15 minut dla programu SQL Server<br/><br/> Co godzinę dla innych obciążeń |Co 15 minut dla programu SQL Server<br/><br/> Co godzinę dla innych obciążeń |Nie dotyczy |
@@ -124,7 +120,7 @@ W poniższej tabeli przedstawiono maksymalną częstotliwość wykonywania kopii
 | Maksymalna liczba punktów odzyskiwania na chronione wystąpienie |9999|9999|9999|9999|
 | Maksymalny okres przechowywania |Zależnie od częstotliwości wykonywania kopii zapasowych |Zależnie od częstotliwości wykonywania kopii zapasowych |Zależnie od częstotliwości wykonywania kopii zapasowych |Zależnie od częstotliwości wykonywania kopii zapasowych |
 | Punkty odzyskiwania na dysku lokalnym |Nie dotyczy | 64 dla serwerów plików<br/><br/> 448 dla serwerów aplikacji | 64 dla serwerów plików<br/><br/> 448 dla serwerów aplikacji |Nie dotyczy |
-| Punkty odzyskiwania na taśmie |Nie dotyczy |Bez ograniczeń |Nie dotyczy |Nie dotyczy |
+| Punkty odzyskiwania na taśmie |Nie dotyczy |Nieograniczona liczba |Nie dotyczy |Nie dotyczy |
 
 ## <a name="how-does-azure-backup-work-with-encryption"></a>Jak działa Azure Backup z szyfrowaniem?
 

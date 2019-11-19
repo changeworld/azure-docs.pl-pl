@@ -1,17 +1,14 @@
 ---
 title: Samouczek — Tworzenie topologii sieci hybrydowej Hub i satelity na platformie Azure przy użyciu Terraform
 description: Samouczek przedstawiający sposób tworzenia całej architektury referencyjnej sieci hybrydowej na platformie Azure przy użyciu Terraform
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969407"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159020"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Samouczek: tworzenie topologii sieci hybrydowej Hub i satelity na platformie Azure przy użyciu Terraform
 

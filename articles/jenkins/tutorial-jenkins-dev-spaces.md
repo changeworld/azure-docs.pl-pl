@@ -1,18 +1,14 @@
 ---
 title: Korzystanie z wtyczki Azure Dev Spaces dla Jenkins za pomocą usługi Azure Kubernetes Service
 description: Dowiedz się, jak używać wtyczki Azure Dev Spaces w potoku ciągłej integracji.
-author: tomarchermsft
-ms.author: tarcher
-ms.service: jenkins
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 10/23/2019
-ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 42d732cda26f0c34f0a54fffc0b1b9c54def94ad
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881879"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158731"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Samouczek: korzystanie z wtyczki Azure Dev Spaces dla Jenkins za pomocą usługi Azure Kubernetes Service 
 
@@ -153,13 +149,13 @@ Aby uzyskać więcej informacji na temat korzystania z Azure Dev Spaces i tworze
 
     1. Zmień katalog na `dev-spaces/samples/java/getting-started/mywebapi`
 
-    2. Uruchamianie
+    2. Uruchom polecenie
 
         ```bash
         azds prep
         ```
 
-    3. Uruchamianie
+    3. Uruchom polecenie
 
         ```bash
         azds up -d
@@ -376,7 +372,7 @@ stage('create dev space') {
 
 `test_endpoint` to adres URL aplikacji webfrontonu, która została wcześniej wdrożona przy użyciu `azds up`[wdrażania przykładowych aplikacji do klastra AKS, krok 7](#test_endpoint). Wartość `$env.TEST_ENDPOINT` jest ustawiona w konfiguracji potoku. 
 
-Poniższy fragment kodu przedstawia sposób używania adresu URL podrzędnego miejsca deweloperskiego na etapie `smoketest`. Kod sprawdza, czy jest dostępna podrzędna przestrzeń dev TEST_ENDPOINT, a jeśli tak, pobiera tekst pozdrowienia do stdout:
+Poniższy fragment kodu przedstawia sposób używania adresu URL podrzędnego miejsca deweloperskiego na etapie `smoketest`. Kod sprawdza, czy TEST_ENDPOINT podrzędne miejsce dev jest dostępne, a jeśli tak, pobiera tekst pozdrowienia do stdout:
 
 ```Groovy
 stage('smoketest') {

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3f5e01a0ceebac092084e339994161763a11c49b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240424"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158851"
 ---
-# <a name="tutorial-monitor-your-data"></a>Samouczek: Monitoruj potoki
+# <a name="tutorial-monitor-your-data"></a>Samouczek: monitorowanie danych
 
 
 
-Po [nawiązaniu połączenia ze źródłami](quickstart-onboard.md) danych na platformie Azure — dane można monitorować, korzystając z integracji wskaźników platformy Azure z Azure monitor skoroszytów, które zapewniają uniwersalność tworzenia niestandardowych pulpitów nawigacyjnych. Gdy skoroszyty są wyświetlane inaczej na platformie Azure — wskaźnikiem, może być przydatne, aby zobaczyć, jak [tworzyć interaktywne raporty przy użyciu skoroszytów Azure monitor](../azure-monitor/app/usage-workbooks.md). System Azure — wskaźnik kontrolny umożliwia tworzenie niestandardowych skoroszytów w danych, a także udostępnia wbudowane szablony skoroszytów umożliwiające szybkie uzyskiwanie szczegółowych informacji na temat danych, gdy tylko nawiążesz połączenie ze źródłem danych.
+Po [nawiązaniu połączenia ze źródłami danych](quickstart-onboard.md) do kontroli wskaźnikowej platformy Azure możesz monitorować dane, korzystając z integracji z usługą Azure wskaźnikowego i Azure monitor skoroszytów, co zapewnia uniwersalność tworzenia niestandardowych pulpitów nawigacyjnych. Gdy skoroszyty są wyświetlane inaczej na platformie Azure — wskaźnikiem, może być przydatne, aby zobaczyć, jak [tworzyć interaktywne raporty przy użyciu skoroszytów Azure monitor](../azure-monitor/app/usage-workbooks.md). System Azure — wskaźnik kontrolny umożliwia tworzenie niestandardowych skoroszytów w danych, a także udostępnia wbudowane szablony skoroszytów umożliwiające szybkie uzyskiwanie szczegółowych informacji na temat danych, gdy tylko nawiążesz połączenie ze źródłem danych.
 
 
 Ten samouczek ułatwia monitorowanie danych na platformie Azure — wskaźnik.
@@ -43,7 +43,7 @@ Ten samouczek ułatwia monitorowanie danych na platformie Azure — wskaźnik.
 ## <a name="use-built-in-workbooks"></a>Używanie wbudowanych skoroszytów
 
 1. Przejdź do obszaru **skoroszyty** , a następnie wybierz pozycję **Szablony** , aby wyświetlić pełną listę wbudowanych skoroszytów platformy Azure. Aby zobaczyć, które są istotne dla połączonych typów danych, pole **wymagane typy danych** w każdym skoroszycie wyświetli typ danych obok zielonego znacznika wyboru, jeśli dane są już strumieniowo powiązane z platformą Azure.
-  ![Przejdź do skoroszytów](./media/tutorial-monitor-data/access-workbooks.png)
+  ![przejdź do skoroszytów](./media/tutorial-monitor-data/access-workbooks.png)
 1. Kliknij przycisk **Wyświetl skoroszyt** , aby wyświetlić szablon wypełniony danymi.
   
 1. Aby edytować skoroszyt, wybierz pozycję **Zapisz**, a następnie wybierz lokalizację, w której chcesz zapisać plik JSON dla szablonu. 
@@ -56,13 +56,13 @@ Ten samouczek ułatwia monitorowanie danych na platformie Azure — wskaźnik.
 ![Wyświetl skoroszyty](./media/tutorial-monitor-data/workbook-graph.png)
 1. Po wprowadzeniu zmian można zapisać skoroszyt. 
 
-1. Można również sklonować skoroszyt: Wybierz pozycję **Edytuj** , a następnie pozycję **Zapisz jako**, a następnie zapisz ją z inną nazwą w ramach tej samej subskrypcji i grupy zasobów. Te skoroszyty są wyświetlane na karcie **Moje skoroszyty** .
+1. Można również sklonować skoroszyt: wybierz pozycję **Edytuj** , a następnie pozycję **Zapisz jako**, a następnie zapisz go przy użyciu innej nazwy w ramach tej samej subskrypcji i grupy zasobów. Te skoroszyty są wyświetlane na karcie **Moje skoroszyty** .
 
 
 ## <a name="create-new-workbook"></a>Utwórz nowy skoroszyt
 
 1. Przejdź do obszaru **skoroszyty** , a następnie wybierz pozycję **Dodaj skoroszyt** , aby utworzyć nowy skoroszyt od podstaw.
-  ![Przejdź do skoroszytów](./media/tutorial-monitor-data/create-workbook.png)
+  ![przejdź do skoroszytów](./media/tutorial-monitor-data/create-workbook.png)
 
 1. Aby edytować skoroszyt, wybierz opcję **Edytuj**, a następnie w razie potrzeby Dodaj tekst, zapytania i parametry. Aby uzyskać więcej informacji na temat dostosowywania skoroszytu, zobacz jak [tworzyć interaktywne raporty przy użyciu skoroszytów Azure monitor](../azure-monitor/app/usage-workbooks.md). 
 
@@ -72,7 +72,7 @@ Ten samouczek ułatwia monitorowanie danych na platformie Azure — wskaźnik.
 
 1. Jeśli chcesz zezwolić innym osobom w organizacji na korzystanie ze skoroszytu, w obszarze **Zapisz** wybierz **raporty udostępnione**. Jeśli chcesz, aby ten skoroszyt był dostępny tylko dla Ciebie, wybierz pozycję **Moje raporty**.
 
-1. Aby przełączać się między skoroszytami w obszarze roboczym, możesz](./media/tutorial-monitor-data/switch.png)wybrać opcję **Otwórz** ![skoroszyty w górnym okienku dowolnego skoroszytu. W oknie, które jest otwierane z prawej strony, przełącz się między skoroszytami.
+1. Aby przełączać się między skoroszytami w obszarze roboczym, możesz wybrać pozycję **otwórz** ![Przełącz skoroszyty](./media/tutorial-monitor-data/switch.png)w górnym okienku dowolnego skoroszytu. W oknie, które jest otwierane z prawej strony, przełącz się między skoroszytami.
 
    ![Przełącz skoroszyty](./media/tutorial-monitor-data/switch-workbooks.png)
 
@@ -81,10 +81,7 @@ Ten samouczek ułatwia monitorowanie danych na platformie Azure — wskaźnik.
 
 Można usuwać skoroszyty, które zostały utworzone na podstawie szablonu wskaźnikowego platformy Azure. 
 
-Aby usunąć dostosowany skoroszyt:
-1.  Wybierz pozycję **Wyświetl skoroszyt**.
-2.  Wybierz pozycję **Otwórz** u góry.
-3.  W tabeli zawierającym listę skoroszytów w wierszu skoroszytu, który chcesz usunąć, wybierz trzy kropki na końcu wiersza... Aby otworzyć menu, a następnie wybierz pozycję **Usuń**. Spowoduje to usunięcie zapisanego skoroszytu.
+Aby usunąć dostosowany skoroszyt, na stronie skoroszyty wybierz zapisany skoroszyt, który chcesz usunąć, a następnie wybierz pozycję **Usuń**. Spowoduje to usunięcie zapisanego skoroszytu.
 
 > [!NOTE]
 > Spowoduje to usunięcie zasobu, a także wszelkich zmian wprowadzonych w szablonie. Oryginalny szablon pozostanie dostępny.

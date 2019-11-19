@@ -1,19 +1,15 @@
 ---
-title: Azure Backup Server i DPM (Data Protection Manager) — często zadawane pytania
-description: W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące serwera Microsoft Azure Backup (serwera usługi MAB) i programu DPM.
+title: Azure Backup Server i program DPM — często zadawane pytania
+description: W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące serwera Microsoft Azure Backup (serwera usługi MAB) i programu DPM (Data Protection Manager).
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: dacurwin
-ms.openlocfilehash: 940ac4d94bf39583fad828545a45cbb033908f15
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091654"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173156"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server i DPM — często zadawane pytania
 

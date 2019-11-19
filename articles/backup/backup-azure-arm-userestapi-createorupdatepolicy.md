@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Tworzenie zasad kopii zapasowych przy użyciu interfejsu API REST'
+title: Tworzenie zasad kopii zapasowych przy użyciu interfejsu API REST
 description: W tym artykule przedstawiono sposób tworzenia zasad tworzenia kopii zapasowych i zarządzania nimi (harmonogram i przechowywanie) przy użyciu interfejsu API REST.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: INTERFEJS API REST; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747596"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173434"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad usługi Kopia zapasowa Azure Recovery Services przy użyciu interfejsu API REST
 
@@ -50,9 +44,9 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Na przykład, aby utworzyć zasady kopii zapasowej maszyny wirtualnej platformy Azure, poniżej przedstawiono składniki treści żądania.
 
-|Nazwa  |Wymagany  |Typ  |Opis  |
+|Nazwa  |Wymagane  |Typ  |Opis  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Właściwości ProtectionPolicyResource        |
+|Właściwości     |   Prawda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Właściwości ProtectionPolicyResource        |
 |tagów     |         | Obiekt        |  Tagi zasobów       |
 
 Aby zapoznać się z pełną listą definicji w treści żądania, zapoznaj się z [dokumentem interfejsu API REST zasad tworzenia kopii zapasowych](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
