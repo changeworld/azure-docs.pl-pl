@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543021"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052177"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwroty kosztów rezerwacji platformy Azure
 
@@ -44,7 +44,7 @@ Najpierw firma Microsoft anuluje istniejącą rezerwację i zwraca kwotę propor
 
 ### <a name="enterprise-agreement-customers"></a>Klienci posiadający umowę Enterprise Agreement
 
-Pieniądze są dodawane do zobowiązania pieniężnego na wymiany i zwroty w przypadku, gdy pierwotny zakup został utworzony przy jego użyciu. Wszystkie faktury nadwyżkowe od pierwotnych zakupów są ponownie otwierane i klasyfikowane w celu upewnienia się, że zobowiązanie pieniężne jest używane. Jeśli okres zobowiązania pieniężnego korzystający z rezerwacji, który został już zakupiony, nie jest już aktywny, do bieżącego okresu zobowiązania pieniężnego w ramach umowy Enterprise Agreement zostaną dodane środki.
+Pieniądze są dodawane do zobowiązania pieniężnego na wymiany i zwroty w przypadku, gdy pierwotny zakup został utworzony przy jego użyciu. Wszystkie faktury nadwyżkowe od pierwotnych zakupów są ponownie otwierane i klasyfikowane w celu upewnienia się, że zobowiązanie pieniężne jest używane. Jeśli okres zobowiązania pieniężnego korzystający z rezerwacji, który został już zakupiony, nie jest już aktywny, do bieżącego okresu zobowiązania pieniężnego w ramach umowy Enterprise Agreement zostaną dodane środki. Środki są ważne przez 90 dni od daty zwrotu pieniędzy. Niewykorzystane środki wygasną po upływie 90 dni.
 
 Jeśli zakup pierwotny został zrealizowany jako nadwyżka, firma Microsoft wystawi fakturę korygującą.
 
@@ -91,7 +91,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 - Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz temat [Manage Azure Reservations](billing-manage-reserved-vm-instance.md) (Zarządzanie wystąpieniami zarezerwowanymi na platformie Azure).
 - Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
-    - [Co to jest Azure Reservations?](billing-save-compute-costs-reservations.md)
+    - [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
     - [Zarządzanie rezerwacjami na platformie Azure](billing-manage-reserved-vm-instance.md)
     - [Jak jest stosowany rabat na rezerwacje](billing-understand-vm-reservation-charges.md)
     - [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](billing-understand-reserved-instance-usage.md)

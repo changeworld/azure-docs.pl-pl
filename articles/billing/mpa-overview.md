@@ -8,20 +8,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 9c6c28ef296f3b1346fd82641d8c557a500273d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 6bb0f3ea1b4e3bf17ed3bf26b838da8f2a694673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376692"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898545"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Wprowadzenie do konta rozliczeniowego w ramach Umowy partnerskiej firmy Microsoft
 
 Konto rozliczeniowe jest tworzone podczas rejestrowania się w celu korzystania z platformy Azure. Konta rozliczeniowego można używać do zarządzania fakturami i płatnościami oraz do śledzenia kosztów. Możesz mieć dostęp do wielu kont rozliczeniowych. Możesz na przykład zarejestrować się na platformie Azure, aby móc pracować nad projektami osobistymi. Dostęp do platformy Azure można również uzyskiwać w ramach zawartej przez organizację umowy Enterprise Agreement, Umowy klienta firmy Microsoft lub Umowy partnerskiej firmy Microsoft. W każdym z tych scenariuszy używane jest oddzielne konto rozliczeniowe.
 
-Ten artykuł dotyczy kont rozliczeniowych dla umów partnerskich firmy Microsoft Te konta są tworzone dla dostawców rozwiązań w chmurze w celu zarządzania rozliczeniami dla klientów w nowym środowisku handlowym. To nowe środowisko jest dostępne tylko dla partnerów mających co najmniej jednego klienta, który zaakceptował umowę klienta firmy Microsoft i ma plan platformy Azure. [Sprawdź, czy masz dostęp do umowy partnerskiej firmy Microsoft](#check-access-to-a-microsoft-partner-agreement).
+Ten artykuł dotyczy kont rozliczeniowych dla umów partnerskich firmy Microsoft Te konta są tworzone dla dostawców rozwiązań w chmurze w celu zarządzania rozliczeniami dla klientów w nowym środowisku handlowym. To nowe środowisko jest dostępne tylko dla partnerów mających co najmniej jednego klienta, który zaakceptował umowę klienta firmy Microsoft i ma plan platformy Azure. [Sprawdź, czy masz dostęp do umowy partnerskiej firmy Microsoft](#check-access-to-a-microsoft-partner-agreement). [Plan platformy Azure](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) zapewnia klientom dostęp do usług platformy Azure według stawek płatności zgodnie z rzeczywistym użyciem w ramach umowy klienta firmy Microsoft.
 
 ## <a name="your-billing-account"></a>Konto rozliczeniowe
 
@@ -35,7 +35,7 @@ Użytkownicy mający rolę **administratora globalnego** i **agentów administra
 
 ## <a name="billing-profiles"></a>Profile rozliczeniowe
 
-Użyj profilu rozliczeniowego, aby zarządzać fakturami w danej walucie. Dla każdego profilu rozliczeniowego na koncie na początku miesiąca jest generowana faktura miesięczna. Faktura zawiera opłaty w walucie profilu rozliczeniowego za wszystkie subskrypcje platformy Azure i inne zakupy w poprzednim miesiącu. 
+Użyj profilu rozliczeniowego, aby zarządzać fakturami w danej walucie. Dla każdego profilu rozliczeniowego na koncie na początku miesiąca jest generowana faktura miesięczna. Faktura zawiera opłaty w walucie profilu rozliczeniowego za wszystkie subskrypcje platformy Azure i inne zakupy w poprzednim miesiącu.
 
 W witrynie Azure Portal możesz wyświetlić fakturę i pobrać powiązane dokumenty, takie jak plik użycia i arkusz cen. Aby uzyskać więcej informacji, zobacz [Pobieranie faktur za umowę partnerską firmy Microsoft](billing-download-azure-invoice.md).
 
@@ -45,11 +45,11 @@ W witrynie Azure Portal możesz wyświetlić fakturę i pobrać powiązane dokum
 
 ## <a name="customers"></a>Klienci
 
-W witrynie Azure Portal możesz wyświetlać klientów, którzy zaakceptowali umowę klienta firmy Microsoft i mają plan Azure, oraz zarządzać nimi. Możesz wyświetlać opłaty i transakcje oraz utworzyć subskrypcje platformy Azure dla tych klientów i zarządzać nimi. 
+W witrynie Azure Portal możesz wyświetlać klientów, którzy zaakceptowali umowę klienta firmy Microsoft i mają plan Azure, oraz zarządzać nimi. Możesz wyświetlać opłaty i transakcje oraz utworzyć subskrypcje platformy Azure dla tych klientów i zarządzać nimi.
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Włączanie zasad w celu zapewnienia widoczności kosztów
 
-Zastosuj zasady, aby kontrolować, czy użytkownicy w organizacji klienta mogą wyświetlać i analizować koszt według stawek płatności zgodnie z rzeczywistym użyciem dla ich użycia platformy Azure. Te zasady są domyślnie wyłączone, a użytkownicy nie mogą wyświetlić kosztu. Po włączeniu zasad użytkownicy mający odpowiedni dostęp [dla ról kontroli dostępu opartej na rolach platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) w subskrypcji mogą wyświetlać i analizować koszt dla subskrypcji. 
+Zastosuj zasady, aby kontrolować, czy użytkownicy w organizacji klienta mogą wyświetlać i analizować koszt według stawek płatności zgodnie z rzeczywistym użyciem dla ich użycia platformy Azure. Te zasady są domyślnie wyłączone, a użytkownicy nie mogą wyświetlić kosztu. Po włączeniu zasad użytkownicy mający odpowiedni dostęp [dla ról kontroli dostępu opartej na rolach platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) w subskrypcji mogą wyświetlać i analizować koszt dla subskrypcji.
 
 Aby włączyć zasady:
 
@@ -60,7 +60,7 @@ Aby włączyć zasady:
    ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/mpa-overview/search-cmb.png)
 
 1. Wybierz pozycję **Klienci** po lewej stronie, a następnie wybierz klienta z listy.
-   
+
    ![Zrzut ekranu pokazujący wybieranie klienta](./media/mpa-overview/mpa-customers.png)
 
 1. Wybierz pozycję **Zasady** po lewej stronie.

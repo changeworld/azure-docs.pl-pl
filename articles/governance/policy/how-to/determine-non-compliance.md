@@ -90,7 +90,7 @@ Poniższa macierz odwzorowuje każdy możliwy _powód_ do [warunku](../concepts/
 |Bieżąca wartość musi być większa lub równa wartości docelowej. |greaterOrEquals lub **nie** mniej |
 |Bieżąca wartość musi być większa niż wartość docelowa. |większe lub **nie** lessOrEquals |
 |Bieżąca wartość nie może być większa niż wartość docelowa. |lessOrEquals lub **nie jest** większa |
-|Bieżąca wartość musi istnieć. |Istniejący |
+|Bieżąca wartość musi istnieć. |istniejący |
 |Bieżąca wartość musi należeć do wartości docelowej. |w programie **lub notIn** |
 |Bieżąca wartość musi być taka sama jak wartość docelowa. |Podobnie jak **notLike** |
 |Bieżąca wartość musi uwzględniać wielkość liter, dopasowując wartość docelową. |dopasowanie lub **notMatch** |
