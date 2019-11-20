@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 11/12/2019
 ms.author: swmachan
-ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835782"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184805"
 ---
 # <a name="translator-text-api-30-translate"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: tłumaczenie
 
@@ -33,21 +33,30 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 Parametry żądania przesłane na ciągu zapytania są następujące:
 
+### <a name="required-parameters"></a>Wymagane parametry
+
 <table width="100%">
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
-    <td>wersja interfejsu API</td>
+    <td>api-version</td>
     <td><em>Wymagany parametr</em>.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być <code>3.0</code>.</td>
   </tr>
   <tr>
-    <td>wniosek</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Znajdź Języki dostępne do przetłumaczenia, wyszukując <a href="./v3-0-languages.md">obsługiwane języki</a> przy użyciu zakresu <code>translation</code>. Jeśli parametr <code>from</code> nie zostanie określony, automatyczne wykrywanie języka jest stosowane w celu określenia języka źródłowego. <br/><br/>W przypadku korzystania z funkcji <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">słownika dynamicznego</a> należy użyć parametru <code>from</code> zamiast automatycznego wykrywania.</td>
-  </tr>
-  <tr>
-    <td>na</td>
+    <td>to</td>
     <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z <a href="./v3-0-languages.md">obsługiwanych języków</a> uwzględnionych w zakresie <code>translation</code>. Na przykład użyj <code>to=de</code>, aby przetłumaczyć na język niemiecki.<br/>Możliwe jest przetłumaczenie na wiele języków jednocześnie przez powtarzanie parametru w ciągu zapytania. Na przykład użyj <code>to=de&to=it</code> do tłumaczenia na język niemiecki i włoski.</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>Parametry opcjonalne
+
+<table width="100%">
+  <th width="20%">Parametr zapytania</th>
+  <th>Opis</th>
+  <tr>
+    <td>from</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Znajdź Języki dostępne do przetłumaczenia, wyszukując <a href="./v3-0-languages.md">obsługiwane języki</a> przy użyciu zakresu <code>translation</code>. Jeśli parametr <code>from</code> nie zostanie określony, automatyczne wykrywanie języka jest stosowane w celu określenia języka źródłowego. <br/><br/>W przypadku korzystania z funkcji <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">słownika dynamicznego</a> należy użyć parametru <code>from</code> zamiast automatycznego wykrywania.</td>
+  </tr>  
   <tr>
     <td>texttype</td>
     <td><em>Opcjonalny parametr</em>.<br/>Określa, czy przetłumaczony tekst jest zwykłym tekstem czy tekstem HTML. Każdy kod HTML musi być poprawnie sformułowanym elementem kompletnym. Możliwe wartości to: <code>plain</code> (wartość domyślna) lub <code>html</code>.</td>
@@ -57,7 +66,7 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
     <td><em>Opcjonalny parametr</em>.<br/>Ciąg określający kategorię (domenę) tłumaczenia. Ten parametr służy do uzyskiwania tłumaczeń z dostosowanego systemu utworzonego przy użyciu <a href="../customization.md">translatora niestandardowego</a>. Dodaj identyfikator kategorii z <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">szczegółów projektu</a> usługi tłumaczenia niestandardowego do tego parametru, aby użyć wdrożonego systemu. Wartość domyślna to: <code>general</code>.</td>
   </tr>
   <tr>
-    <td>ProfanityAction</td>
+    <td>profanityAction</td>
     <td><em>Opcjonalny parametr</em>.<br/>Określa, jak mają być traktowane w tłumaczeniach. Możliwe wartości to: <code>NoAction</code> (wartość domyślna), <code>Marked</code> lub <code>Deleted</code>. Aby zrozumieć sposoby traktowania Niemniej Niemniej, zobacz <a href="#handle-profanity">Obsługa Niewulgarności</a>.</td>
   </tr>
   <tr>
@@ -155,7 +164,7 @@ Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tab
 
     Obiekt `transliteration` nie jest uwzględniony w przypadku, gdy nie nastąpi przeznaczenie.
 
-    * `alignment`: obiekt z właściwością pojedynczego ciągu o nazwie `proj`, który mapuje tekst wejściowy na przetłumaczony tekst. Informacje o wyrównaniu są dostępne tylko wtedy, gdy `includeAlignment` parametru żądania jest `true`. Wyrównanie jest zwracane jako wartość ciągu o następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela indeks początkowy i końcowy, myślnik oddziela Języki, a spacja oddziela słowa. Jedno słowo może być wyrównane z zerem, jednym lub wieloma wyrazami w innym języku, a wyrównane słowa mogą nie być ciągłe. Gdy żadne informacje o wyrównaniu nie są dostępne, element wyrównania będzie pusty. Zobacz [Uzyskiwanie informacji o wyrównaniu](#obtain-alignment-information) dla przykładu i ograniczeń.
+    * `alignment`: obiekt z właściwością pojedynczego ciągu o nazwie `proj`, który mapuje tekst wejściowy na przetłumaczony tekst. Informacje o wyrównaniu są dostępne tylko wtedy, gdy `includeAlignment` parametru żądania jest `true`. Wyrównanie jest zwracane jako wartość ciągu o następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela indeks początkowy i końcowy, myślnik oddziela Języki, a spacja oddziela słowa. O jeden wyraz może być dostosowanie zero, jeden lub wiele słów w innym języku, a wyrównany wyrażenie może być nieciągłe. Gdy żadne informacje o wyrównaniu nie są dostępne, element wyrównania będzie pusty. Zobacz [Uzyskiwanie informacji o wyrównaniu](#obtain-alignment-information) dla przykładu i ograniczeń.
 
     * `sentLen`: obiekt zwracający granice zdania w tekstach wejściowych i wyjściowych.
 
@@ -175,7 +184,7 @@ Przykład odpowiedzi JSON znajduje się w sekcji [przykładów](#examples) .
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
     <tr>
-    <td>X-IdentyfikatorŻądania</td>
+    <td>X-RequestId</td>
     <td>Wartość wygenerowana przez usługę w celu zidentyfikowania żądania. Służy do rozwiązywania problemów.</td>
   </tr>
   <tr>
@@ -205,7 +214,7 @@ Oto możliwe kody stanu HTTP zwracane przez żądanie.
   </tr>
   <tr>
     <td>403</td>
-    <td>Żądanie nie ma autoryzacji. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
+    <td>Żądanie nie jest autoryzowany. Sprawdź komunikat o błędzie szczegóły. Często oznacza to, że używane są wszystkie bezpłatne tłumaczenia udostępnione w ramach wersji próbnej.</td>
   </tr>
   <tr>
     <td>408</td>
@@ -353,11 +362,11 @@ Zwykle usługa translator zachowa nieobecność, która jest obecna w źródle w
 Jeśli chcesz uniknąć niewulgarności w tłumaczeniu, niezależnie od obecności w tekście źródłowym, możesz użyć opcji filtrowania niepotrzebne. Opcja pozwala wybrać, czy ma być wyświetlana wartość nietrwałych nietrwałych, niezależnie od tego, czy mają być oznaczane wulgarne przy użyciu odpowiednich tagów (co umożliwia dodanie własnego przetwarzania końcowego) lub nie ma żadnej akcji. Akceptowane wartości `ProfanityAction` to `Deleted`, `Marked` i `NoAction` (wartość domyślna).
 
 <table width="100%">
-  <th width="20%">ProfanityAction</th>
+  <th width="20%">profanityAction</th>
   <th>Akcja</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>Jest to zachowanie domyślne. Niedostępność zostanie przekazana z lokalizacji źródłowej do docelowej.<br/><br/>
+    <td>To zachowanie domyślne. Niedostępność zostanie przekazana z lokalizacji źródłowej do docelowej.<br/><br/>
     <strong>Przykładowe źródło (japoński)</strong>: 彼はジャッカスです.<br/>
     <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to Jackass.
     </td>
@@ -474,7 +483,7 @@ Należy pamiętać o następujących ograniczeniach:
 
 * Wyrównanie nie jest dostępne dla tekstu w formacie HTML tzn., texttype = HTML
 * Wyrównanie jest zwracane tylko dla podzestawu par języka:
-  - od języka angielskiego do dowolnego innego języka;
+  - z języka angielskiego na dowolnym innym języku;
   - z dowolnego innego języka w języku angielskim, z wyjątkiem chiński uproszczony, chiński tradycyjny i łotewski do Polski;
   - od wersji japońskiej do koreańskiej lub z koreańskiej do japońskiej.
 * Nie otrzymasz wyrównania, jeśli zdanie jest przekształceniem w konserwie. Przykładem przeprowadzonego tłumaczenia jest "to jest test", "mam miłość" i inne zdania o wysokiej częstotliwości.

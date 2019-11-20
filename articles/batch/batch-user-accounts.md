@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 11/18/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 866f2e5e1ba9df9e8e63b77250d6c94635bbc009
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094277"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194974"
 ---
 > [!NOTE] 
 > Konta użytkowników omówione w tym artykule różnią się od kont użytkowników używanych dla Remote Desktop Protocol (RDP) lub Secure Shell (SSH) ze względów bezpieczeństwa. 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji na temat uzyskiwania dostępu do plików i katal
 
 Poziom podniesienia uprawnień konta użytkownika wskazuje, czy zadanie jest uruchamiane z podniesionymi uprawnieniami dostępu. Zarówno konto użytkownika, jak i nazwane konto użytkownika mogą działać z podwyższonym dostępem. Dostępne są dwie opcje poziomu podniesienia uprawnień:
 
-- **NonAdmin** Zadanie jest uruchamiane jako użytkownik standardowy bez podwyższonego poziomu dostępu. Domyślny poziom podniesienia uprawnień dla konta użytkownika usługi Batch jestzawsze nieadministracyjny.
+- **Nieadministracyjne:** Zadanie jest uruchamiane jako użytkownik standardowy bez podwyższonego poziomu dostępu. Domyślny poziom podniesienia uprawnień dla konta użytkownika usługi Batch jest zawsze **nieadministracyjny**.
 - **Administrator:** Zadanie jest uruchamiane jako użytkownik z podwyższonym poziomem dostępu i działa z pełnymi uprawnieniami administratora. 
 
 ## <a name="auto-user-accounts"></a>Konta użytkowników
@@ -94,7 +94,7 @@ Można skonfigurować specyfikację autoużytkownika dla uprawnień administrato
 >
 >
 
-Poniższe fragmenty kodu pokazują, jak skonfigurować specyfikację autoużytkownika. Przykłady ustawiają poziom `Admin` podniesienia uprawnień i zakres do `Task`. Zakres zadania jest ustawieniem domyślnym, ale jest tu uwzględniony na przykład.
+Poniższe fragmenty kodu pokazują, jak skonfigurować specyfikację autoużytkownika. Przykłady ustawiają poziom podniesienia uprawnień `Admin` i zakres do `Task`. Zakres zadania jest ustawieniem domyślnym, ale jest tu uwzględniony na przykład.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -159,7 +159,7 @@ Konto użytkownika nazwanego jest przydatne, gdy chcesz uruchamiać wszystkie za
 
 Można również użyć nazwanego konta użytkownika do uruchomienia zadania, które ustawia uprawnienia do zasobów zewnętrznych, takich jak udziały plików. Przy użyciu nazwanego konta użytkownika kontrolujesz tożsamość użytkownika i można użyć tej tożsamości użytkownika do ustawiania uprawnień.  
 
-Konta użytkowników nazwanych umożliwiają włączenie protokołu SSH bez hasła między węzłami systemu Linux. Można użyć nazwanego konta użytkownika z węzłami systemu Linux, które wymagają uruchamiania zadań obejmujących wiele wystąpień. Każdy węzeł w puli może uruchamiać zadania w ramach konta użytkownika zdefiniowanego w całej puli. Aby uzyskać więcej informacji na temat zadań z wieloma wystąpieniami, zobacz [Używanie zadań z wieloma\-wystąpieniami do uruchamiania aplikacji MPI](batch-mpi.md).
+Konta użytkowników nazwanych umożliwiają włączenie protokołu SSH bez hasła między węzłami systemu Linux. Można użyć nazwanego konta użytkownika z węzłami systemu Linux, które wymagają uruchamiania zadań obejmujących wiele wystąpień. Każdy węzeł w puli może uruchamiać zadania w ramach konta użytkownika zdefiniowanego w całej puli. Aby uzyskać więcej informacji na temat zadań z wieloma wystąpieniami, zobacz [Korzystanie z wielu\-wystąpienia zadań do uruchamiania aplikacji MPI](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Tworzenie nazwanych kont użytkowników
 
@@ -280,7 +280,7 @@ users = [
     batchmodels.UserAccount(
         name='pool-nonadmin',
         password='******',
-        elevation_level=batchmodels.ElevationLevel.nonadmin)
+        elevation_level=batchmodels.ElevationLevel.non_admin)
 ]
 pool = batchmodels.PoolAddParameter(
     id=pool_id,
@@ -295,7 +295,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Uruchamianie zadania przy użyciu konta użytkownika o podniesionych uprawnieniach
 
-Aby uruchomić zadanie jako podwyższony użytkownik, należy ustawić właściwość **tożsamość użytkownika** zadania na nazwę konta użytkownika, które zostało utworzone za pomocą właściwości **ElevationLevel** ustawionej na `Admin`.
+Aby uruchomić zadanie jako podwyższony użytkownik, należy ustawić właściwość **tożsamość użytkownika** zadania na nazwane konto użytkownika, które zostało utworzone za pomocą właściwości **ElevationLevel** ustawionej na `Admin`.
 
 Ten fragment kodu określa, że zadanie powinno być uruchamiane przy użyciu konta użytkownika o nazwie. To nazwane konto użytkownika zostało zdefiniowane w puli podczas tworzenia puli. W takim przypadku nazwane konto użytkownika zostało utworzone z uprawnieniami administratora:
 
@@ -314,7 +314,7 @@ Usługa Batch w wersji 2017 -01-01.4.0 wprowadza istotną zmianę, zastępując 
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`nie określono | Aktualizacja nie jest wymagana                                                                                               |
+| nie określono `CloudTask.RunElevated` | Aktualizacja nie jest wymagana                                                                                               |
 
 ### <a name="batch-java"></a>Wsadowe środowisko Java
 
@@ -322,17 +322,17 @@ Usługa Batch w wersji 2017 -01-01.4.0 wprowadza istotną zmianę, zastępując 
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`nie określono | Aktualizacja nie jest wymagana                                                                                                                     |
+| nie określono `CloudTask.withRunElevated` | Aktualizacja nie jest wymagana                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
 | Jeśli kod używa...                      | Aktualizuj do...                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, gdzie <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`, gdzie <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
-| `run_elevated`nie określono | Aktualizacja nie jest wymagana                                                                                                                                  |
+| `run_elevated=False`                      | `user_identity=user`, gdzie <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
+| nie określono `run_elevated` | Aktualizacja nie jest wymagana                                                                                                                                  |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Szczegółowe omówienie usługi Batch można znaleźć w temacie [programowanie równoległych rozwiązań obliczeniowych na dużą skalę za pomocą usługi Batch](batch-api-basics.md).

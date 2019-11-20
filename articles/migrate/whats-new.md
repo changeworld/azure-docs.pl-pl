@@ -1,18 +1,18 @@
 ---
-title: Co nowego w Azure Migrate | Microsoft Docs
-description: Ten artykuł zawiera omówienie usługi Azure Migrate.
+title: Co nowego w Azure Migrate
+description: Dowiedz się więcej na temat Nowości i ostatnich aktualizacji w usłudze Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
 ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9eb70d74752b3db5fcbc185f596d518100992672
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: b3b8e24e7d84e492aeaba64573b6e909707bc5a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158575"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185753"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co nowego w Azure Migrate
 
@@ -64,7 +64,7 @@ Bieżąca wersja Azure Migrate zawiera wiele nowych funkcji:
 - **Urządzenie Data Box**: zaimportuj duże ilości danych w trybie offline na platformę Azure przy użyciu Azure Data Box w Azure Migrate.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Uzyskaj więcej informacji](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenach usługi Azure Migrate.
 - [Przejrzyj często zadawane pytania](resources-faq.md) dotyczące usługi Azure Migrate.

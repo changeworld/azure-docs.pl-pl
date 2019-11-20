@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/03/2019
+ms.date: 11/18/2019
 ms.author: atsenthi
-ms.openlocfilehash: cc77995e12d756c5878ee62ef6dd0f0229506d4c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1eb8e5893d93ef0261d68df4629b072876096711
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333068"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185676"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Aby kompilować i uruchamiać [aplikacje Service Fabric platformy Azure][1] na k
 ### <a name="supported-operating-system-versions"></a>Obsługiwane wersje systemu operacyjnego
 Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu operacyjnego:
 
-* Windows 7
+* Windows 7
 * Windows 8/Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
@@ -69,11 +69,8 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 * [Zainstaluj zestaw SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Service Fabric zestawu SDK i narzędzi 3.4.676
-* 6\.5.676 środowiska uruchomieniowego Service Fabric
-* Service Fabric Tools dla programu Visual Studio 2015 2.5.20615.1
-* Program Visual Studio 2017 15,9 zawiera Service Fabric Tools dla programu Visual Studio 2.4.11024.1 
-* Program Visual Studio 2019 16,1 zawiera Service Fabric Tools dla programu Visual Studio 2.5.20423.3
+* Service Fabric zestawu SDK i narzędzi 4.0.457
+* 7\.0.457 środowiska uruchomieniowego Service Fabric
 
 Aby uzyskać listę obsługiwanych wersji, zobacz [Service Fabric wersje](service-fabric-versions.md)
 
@@ -89,7 +86,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="install-docker-optional"></a>Zainstaluj platformę Docker (opcjonalnie)
 [Service Fabric to koordynator kontenera](service-fabric-containers-overview.md) służący do wdrażania mikrousług w klastrze maszyn. Aby uruchamiać aplikacje kontenera systemu Windows w lokalnym klastrze programistycznym, należy najpierw zainstalować Docker for Windows. Pobierz [Docker CE for Windows (stabilny)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po zainstalowaniu i uruchomieniu programu Docker kliknij prawym przyciskiem myszy jego ikonę na pasku zadań i wybierz pozycję **Switch to Windows containers** (Przełącz na kontenery systemu Windows). Ten krok jest wymagany do uruchomienia obrazów platformy Docker opartych na systemie Windows.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruchamiać aplikacje.
 
 * [Dowiedz się, jak tworzyć i wdrażać aplikacje oraz zarządzać nimi](service-fabric-tutorial-create-dotnet-app.md)

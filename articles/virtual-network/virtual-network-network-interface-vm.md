@@ -1,10 +1,10 @@
 ---
-title: Dodawanie interfejsów sieciowych do maszyn wirtualnych platformy Azure lub usuwanie ich z nich | Microsoft Docs
+title: Dodawanie interfejsów sieciowych do maszyn wirtualnych platformy Azure lub usuwanie ich z niej
 description: Dowiedz się, jak dodać interfejsy sieciowe do lub usunąć interfejsy sieciowe z maszyn wirtualnych.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: kumud
-ms.openlocfilehash: 24f4b7435c2736527d033aa5ca7a65ad35a3a705
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: a55bf014a2da10069e4e6a5f6f4eb4b8cd9ff205
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73022181"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196750"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Dodawanie interfejsów sieciowych do lub usuwanie interfejsów sieciowych z maszyn wirtualnych
 
@@ -35,7 +35,7 @@ Jeśli musisz dodać, zmienić lub usunąć adresy IP dla interfejsu sieciowego,
 Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące zadania:
 
 - Jeśli nie masz jeszcze konta platformy Azure, Utwórz [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
-- Jeśli używasz portalu, Otwórz https://portal.azure.com i zaloguj się przy użyciu konta platformy Azure.
+- Jeśli używasz portalu, Otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
 - W przypadku wykonywania zadań w tym artykule przy użyciu poleceń programu PowerShell uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/powershell)lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga modułu Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - W przypadku korzystania z poleceń interfejsu wiersza polecenia (CLI) platformy Azure w celu wykonania zadań w tym artykule Uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/bash)lub przez uruchomienie interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, musisz również uruchomić `az login`, aby utworzyć połączenie z platformą Azure.
 
@@ -49,7 +49,7 @@ Przed utworzeniem maszyny wirtualnej Utwórz interfejs sieciowy, wykonując krok
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs CLI|[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|Interfejs wiersza polecenia|[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |PowerShell|[New-AzVM](/powershell/module/az.compute/new-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vm-add-nic"></a>Dodawanie interfejsu sieciowego do istniejącej maszyny wirtualnej
@@ -65,14 +65,14 @@ Przed utworzeniem maszyny wirtualnej Utwórz interfejs sieciowy, wykonując krok
 
    Jeśli nie masz istniejącego interfejsu sieciowego, musisz go najpierw utworzyć. W tym celu wybierz pozycję **Utwórz interfejs sieciowy**. Aby dowiedzieć się więcej na temat tworzenia interfejsu sieciowego, zobacz [Tworzenie interfejsu sieciowego](virtual-network-network-interface.md#create-a-network-interface). Aby dowiedzieć się więcej na temat dodatkowych ograniczeń podczas dodawania interfejsów sieciowych do maszyn wirtualnych, zobacz [ograniczenia](#constraints).
 
-6. Kliknij przycisk **OK**.
+6. Wybierz **OK**.
 7. Wybierz pozycję **Przegląd**, w obszarze **Ustawienia**, a następnie **Uruchom** polecenie, aby uruchomić maszynę wirtualną.
 8. Skonfiguruj system operacyjny maszyny wirtualnej tak, aby używał wielu interfejsów sieciowych prawidłowo. Dowiedz się, jak skonfigurować [system](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) lub Windows dla wielu interfejsów sieciowych.
 
 ### <a name="commands"></a>Polecenia
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs CLI|[AZ VM nic Add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json) (odwołanie) lub [Szczegółowa procedura](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|Interfejs wiersza polecenia|[AZ VM nic Add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json) (odwołanie) lub [Szczegółowa procedura](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (odwołanie) lub [szczegółowe kroki](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 ## <a name="view-network-interfaces-for-a-vm"></a>Wyświetlanie interfejsów sieciowych dla maszyny wirtualnej
@@ -88,7 +88,7 @@ Możesz wyświetlić interfejsy sieciowe aktualnie dołączone do maszyny wirtua
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs CLI|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|Interfejs wiersza polecenia|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-a-network-interface-from-a-vm"></a>Usuwanie interfejsu sieciowego z maszyny wirtualnej
@@ -101,13 +101,13 @@ Możesz wyświetlić interfejsy sieciowe aktualnie dołączone do maszyny wirtua
 
    >[!NOTE]
    >Jeśli na liście znajduje się tylko jeden interfejs sieciowy, nie można go odłączyć, ponieważ maszyna wirtualna musi mieć dołączony co najmniej jeden interfejs sieciowy.
-6. Kliknij przycisk **OK**.
+6. Wybierz **OK**.
 
 ### <a name="commands"></a>Polecenia
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs CLI|[AZ VM nic Remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json) (odwołanie) lub [szczegółowe kroki](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|Interfejs wiersza polecenia|[AZ VM nic Remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json) (odwołanie) lub [szczegółowe kroki](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (odwołanie) lub [szczegółowe kroki](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="constraints"></a>Ograniczenia
@@ -124,7 +124,7 @@ Możesz wyświetlić interfejsy sieciowe aktualnie dołączone do maszyny wirtua
 - Usunięcie maszyny wirtualnej nie powoduje usunięcia podłączonych do niej interfejsów sieciowych. Po usunięciu maszyny wirtualnej interfejsy sieciowe są odłączone od maszyny wirtualnej. Możesz dodać interfejsy sieciowe do różnych maszyn wirtualnych lub je usunąć.
 - Podobnie jak w przypadku protokołu IPv6, nie można dołączyć interfejsu sieciowego z włączoną obsługą przyspieszonej sieci do maszyny wirtualnej po jej utworzeniu. Dodatkowo, aby korzystać z przyspieszonej sieci, należy również wykonać kroki opisane w systemie operacyjnym maszyny wirtualnej. Dowiedz się więcej na temat przyspieszonej sieci i innych ograniczeń w przypadku korzystania z niej w przypadku maszyn wirtualnych z [systemem Windows](create-vm-accelerated-networking-powershell.md) lub [Linux](create-vm-accelerated-networking-cli.md) .
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby utworzyć maszynę wirtualną z wieloma interfejsami sieciowymi lub adresami IP, zobacz następujące artykuły:
 
 |Zadanie|Narzędzie|

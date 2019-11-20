@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 51697aa426a638ad536390c4114df5faa18a41ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904073"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184868"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Praca z parami klucz-wartość w magazynie usługi Azure App Configuration
 
@@ -84,16 +84,16 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa poniższych poleceń do pracy na parach klucz-wartość w magazynie konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+Ten skrypt używa następujących poleceń do obsługi wartości kluczy w magazynie konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig) | Tworzy lub aktualizuje parę klucz-wartość. |
-| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig) | Wyświetla listę par klucz-wartość w magazynie konfiguracji aplikacji. |
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | Usuwa parę klucz-wartość. |
+| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Tworzy lub aktualizuje parę klucz-wartość. |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Wyświetla listę wartości kluczy w magazynie konfiguracji aplikacji. |
+| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Usuwa parę klucz-wartość. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
-Dodatkowe przykłady skryptów interfejsu wiersza polecenia usługi App Configuration można znaleźć w [dokumentacji usługi Azure App Configuration](../cli-samples.md).
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia konfiguracji aplikacji można znaleźć w [przykładach interfejsu wiersza polecenia konfiguracji aplikacji platformy Azure](../cli-samples.md).

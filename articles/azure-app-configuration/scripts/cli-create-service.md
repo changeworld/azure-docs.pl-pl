@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029794"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184904"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Tworzenie magazynu usługi Azure App Configuration
 
@@ -71,16 +71,16 @@ Zanotuj rzeczywistą nazwę wygenerowaną dla nowej grupy zasobów. Tej nazwy gr
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa poniższych poleceń, aby utworzyć nową grupę zasobów i magazyn konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+Ten skrypt zawiera następujące polecenia służące do tworzenia nowej grupy zasobów i magazynu konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig) | Tworzy zasób magazynu konfiguracji aplikacji. |
-| [az appconfig key list](/cli/azure/ext/appconfig/appconfig/kv) | Wyświetla listę kluczy przechowywanych w magazynie konfiguracji aplikacji. |
+| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Tworzy zasób magazynu konfiguracji aplikacji. |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Wyświetl listę kluczy przechowywanych w magazynie konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
-Dodatkowe przykłady skryptów interfejsu wiersza polecenia usługi App Configuration można znaleźć w [dokumentacji usługi Azure App Configuration](../cli-samples.md).
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia konfiguracji aplikacji można znaleźć w [przykładach interfejsu wiersza polecenia konfiguracji aplikacji platformy Azure](../cli-samples.md).

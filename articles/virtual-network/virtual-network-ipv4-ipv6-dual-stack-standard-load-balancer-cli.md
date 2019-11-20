@@ -1,11 +1,11 @@
 ---
-title: Wdrażanie aplikacji dwustosowej IPv6 w usłudze Azure Virtual Network — interfejs wiersza polecenia
+title: Wdrażanie aplikacji podwójnego stosu IPv6 — usługa Load Balancer w warstwie Standardowa — interfejs wiersza polecenia
 titlesuffix: Azure Virtual Network
 description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: d0968ddedb36ab7fb4ee515ef1d20a177d4d59fe
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c2f6c331e1f769f3d24fde9ab2adbd820b704d3b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820993"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186331"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 w usłudze Azure Virtual Network — interfejs wiersza polecenia (wersja zapoznawcza)
 
@@ -51,7 +51,7 @@ Po zakończeniu rejestracji Uruchom następujące polecenie:
 ```azurelci
 az provider register --namespace Microsoft.Network
 ```
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Przed utworzeniem sieci wirtualnej o podwójnym stosie należy utworzyć grupę zasobów za pomocą [AZ Group Create](/cli/azure/group). Poniższy przykład tworzy grupę zasobów o nazwie *DsResourceGroup01* w lokalizacji *Wschodnie* :
 
@@ -113,7 +113,7 @@ W tej sekcji należy skonfigurować podwójny adres IP frontonu (IPv4 i IPv6) or
 
 ### <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Utwórz usługa Load Balancer w warstwie Standardowa za pomocą [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **dsLB** , która zawiera pulę frontonu o nazwie **dsLbFrontEnd_v4**, pulę zaplecza o nazwie **dsLbBackEndPool_v4** , która jest skojarzona z publicznym adresem **IP IPv4 dsPublicIP_v4** utworzony w poprzednim kroku. 
+Utwórz usługa Load Balancer w warstwie Standardowa za pomocą [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **dsLB** , która zawiera pulę frontonu o nazwie **dsLbFrontEnd_v4**, puli zaplecza o nazwie **DsLbBackEndPool_v4** skojarzonej z publicznym adresem IP IPv4 **dsPublicIP_v4** utworzonego w poprzednim kroku. 
 
 ```azurecli
 az network lb create \
@@ -128,7 +128,7 @@ az network lb create \
 
 ### <a name="create-ipv6-frontend"></a>Tworzenie frontonu IPv6
 
-Utwórz adres IP frontonu IPV6 za pomocą [AZ Network lb fronton-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create). Poniższy przykład tworzy konfigurację adresu IP frontonu o nazwie *dsLbFrontEnd_v6* i dołącza adres *dsPublicIP_v6* :
+Utwórz adres IP frontonu IPV6 za pomocą [AZ Network lb fronton-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create). Poniższy przykład umożliwia utworzenie konfiguracji adresu IP frontonu o nazwie *dsLbFrontEnd_v6* i dołączenie adresu *dsPublicIP_v6* :
 
 ```azurepowershell-interactive
 az network lb frontend-ip create \
@@ -385,6 +385,6 @@ Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą ju�
  az group delete --name DsResourceGroup01
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule opisano tworzenie usługa Load Balancer w warstwie Standardowa z konfiguracją dwóch adresów IP frontonu (IPv4 i IPv6). Utworzono również dwie maszyny wirtualne, które zawierają karty sieciowe z dwoma konfiguracjami protokołu IP (IPV4 + IPv6), które zostały dodane do puli zaplecza modułu równoważenia obciążenia. Aby dowiedzieć się więcej o obsłudze protokołu IPv6 w sieciach wirtualnych platformy Azure, zobacz [co to jest protokół IPv6 dla systemu azure Virtual Network?](ipv6-overview.md)

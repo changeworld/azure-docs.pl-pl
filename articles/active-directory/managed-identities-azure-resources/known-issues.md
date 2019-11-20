@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania i znane problemy związane z tożsamościami zarządzanymi dla zasobów platformy Azure
+title: Często zadawane pytania i znane problemy związane z tożsamościami zarządzanymi — Azure AD
 description: Znane problemy związane z tożsamościami zarządzanymi dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983432"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183884"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z tożsamościami zarządzanymi dla zasobów platformy Azure
 
@@ -64,11 +64,11 @@ Niektóre korzyści wynikające z używania tożsamości zarządzanych dla zasob
 Zarządzane tożsamości dla rozszerzenia maszyny wirtualnej zasobów platformy Azure są nadal dostępne; nie opracowujemy jednak już nowych funkcji. Zalecamy przełączenie do korzystania z punktu końcowego IMDS. 
 
 Niektóre ograniczenia związane z korzystaniem z punktu końcowego rozszerzenia maszyny wirtualnej są następujące:
-- Ograniczona obsługa dystrybucji systemu Linux: CoreOS stabilny, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
+- Ograniczona obsługa dystrybucji systemu Linux: CoreOS stabilna, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
 - Do maszyny wirtualnej można przypisać tylko 32 tożsamości zarządzane przypisane przez użytkownika.
 
 
-Uwaga: Identyfikatory zarządzane dla rozszerzenia maszyny wirtualnej zasobów platformy Azure nie są obsługiwane w styczniu 2019. 
+Uwaga: w styczniu 2019 nie będzie można obsługiwać zarządzanych tożsamości dla rozszerzenia maszyny wirtualnej zasobów platformy Azure. 
 
 Aby uzyskać więcej informacji na temat usługi Azure Instance Metadata Service, zobacz [dokumentację IMDS](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
@@ -84,8 +84,8 @@ Nie. Tożsamości zarządzane nie obsługują obecnie scenariuszy między katalo
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jakie uprawnienia RBAC platformy Azure są wymagane do zarządzania tożsamościami w zasobie? 
 
-- Tożsamość zarządzana przypisana przez system: Potrzebujesz uprawnień do zapisu nad zasobem. Na przykład w przypadku maszyn wirtualnych, których potrzebujesz firma Microsoft. COMPUTE/virtualMachines/Write. Ta akcja jest uwzględniona w rolach wbudowanych specyficznych dla zasobów, takich jak [współautor maszyny wirtualnej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Tożsamość zarządzana przypisana przez użytkownika: Potrzebujesz uprawnień do zapisu nad zasobem. Na przykład w przypadku maszyn wirtualnych, których potrzebujesz firma Microsoft. COMPUTE/virtualMachines/Write. Oprócz przypisywania roli [operatora tożsamości zarządzanej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) przez zarządzaną tożsamość.
+- Tożsamość zarządzana przypisana przez system: wymagane są uprawnienia do zapisu dla zasobu. Na przykład w przypadku maszyn wirtualnych, których potrzebujesz firma Microsoft. COMPUTE/virtualMachines/Write. Ta akcja jest uwzględniona w rolach wbudowanych specyficznych dla zasobów, takich jak [współautor maszyny wirtualnej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Tożsamość zarządzana przypisana przez użytkownika: wymagane są uprawnienia do zapisu dla zasobu. Na przykład w przypadku maszyn wirtualnych, których potrzebujesz firma Microsoft. COMPUTE/virtualMachines/Write. Oprócz przypisywania roli [operatora tożsamości zarządzanej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) przez zarządzaną tożsamość.
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak ponownie uruchomić zarządzane tożsamości dla rozszerzenia zasobów platformy Azure?
 W systemie Windows i niektórych wersjach systemu Linux, jeśli rozszerzenie zostanie zatrzymane, można użyć następującego polecenia cmdlet, aby ręcznie uruchomić ponownie:
@@ -114,7 +114,7 @@ Po udostępnieniu funkcji eksportu schematu dla tożsamości zarządzanych dla r
 
 Jeśli przeniesiesz maszynę wirtualną w stan uruchomienia, będzie ona nadal działać podczas przenoszenia. Jednak po przeniesieniu, jeśli maszyna wirtualna zostanie zatrzymana i uruchomiona ponownie, nie zostanie uruchomiona. Ten problem występuje, ponieważ maszyna wirtualna nie aktualizuje odwołania do zarządzanych tożsamości dla tożsamości zasobów platformy Azure i kontynuuje wskazywanie jej w starej grupie zasobów.
 
-**Obejście problemu** 
+**Obejście** 
  
 Wyzwól aktualizację na maszynie wirtualnej, aby możliwe było uzyskanie prawidłowych wartości dla zarządzanych tożsamości dla zasobów platformy Azure. Aby zaktualizować odwołanie do zarządzanych tożsamości dla tożsamości zasobów platformy Azure, można zmienić wartość właściwości maszyny wirtualnej. Na przykład można ustawić nową wartość tagu na maszynie wirtualnej przy użyciu następującego polecenia:
 

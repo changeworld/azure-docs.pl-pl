@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: bf9afb66163532b4095e0d30b1167010320abbf8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490932"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184831"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Tworzenie niestandardowego słowa kluczowego przy użyciu usługi mowy
 
@@ -27,26 +27,26 @@ W tym artykule dowiesz się, jak utworzyć niestandardowe słowo kluczowe dla ur
 
 Podczas wybierania słowa kluczowego należy wziąć pod uwagę następujące wytyczne:
 
-* Słowo kluczowe powinno być słowem w języku angielskim lub frazą. Nie może upłynąć dłużej niż dwa sekundy.
+* Słowo kluczowe powinno być słowem w języku angielskim lub frazą. Powinno zająć maksymalnie dwóch sekund powiedzieć.
 
-* Słowa z 4 do 7 sylab działają najlepiej. Na przykład "Hej, Computer" jest dobrym słowem kluczowym. Tylko "Hej" jest słabo.
+* Najlepiej słów sylab 4 do 7. Na przykład "Hej, Computer" jest dobrym słowem kluczowym. Po prostu "Hej," jest niska.
 
 * Słowa kluczowe powinny być zgodne z typowymi regułami wymowy w języku angielskim
 
-* Unikatowy lub nawet utworzony wyraz, który jest zgodny z typowymi regułami wymowy w języku angielskim, może obniżyć liczbę fałszywie dodatnich. Na przykład "computerama" może być dobrym słowem kluczowym.
+* Unikatowy lub nawet gotowych słowa występującego typowych reguł Wymowa angielskie może zmniejszyć liczbę fałszywych alarmów. Na przykład "computerama" może być dobrym słowem kluczowym.
 
-* Nie wybieraj wspólnego wyrazu. Na przykład "Eat" i "go" są słowami, które ludzie często mówią w zwykłych konwersacjach. Mogą to być fałszywe wyzwalacze dla Twojego urządzenia.
+* Nie należy wybierać wspólnego programu word. Na przykład "jedzenie" i "Przejdź" to słowa, które ludzie mówią, często w zwykłych konwersacji. Mogą one false wyzwalaczy dla Twojego urządzenia.
 
-* Unikaj używania słowa kluczowego, które może mieć alternatywne wymowy. Użytkownicy będą musieli znać wymowę "Right", aby uzyskać odpowiedzi na swoje urządzenia. Na przykład "509" może być wymawiane "5 0 9", "5 0 9" lub "509". "R.E.I." może być wymawiany "r-e-i" lub "ray". "Na żywo" może być wymawiane "/līv/" lub "/Liv/".
+* Unikaj używania słowa kluczowego, które może mieć alternatywne wymowy. Użytkownicy musi znać "prawo" Wymowa można pobrać swoje urządzenie. Na przykład "509" mogą występować w "pięć 9, zero" "pięć AHA dziewięć," lub "pięć sto i dziewięć." "R.E.I." mogą występować w "r-e-i" lub "ray." Może być wymawiane "Live", "/līv/" lub "/liv/".
 
-* Nie należy używać znaków specjalnych, symboli ani cyfr. Na przykład "go #" i "20 + koty" nie będzie dobrym słowami kluczowymi. Jednak może się zdarzyć, że "nie tylko" lub "dwadzieścia i koty". Można nadal używać symboli w znakowaniu i korzystać z marketingu i dokumentacji, aby wzmocnić odpowiednią wymowę.
+* Nie należy używać znaków specjalnych, symbole i cyfry. Na przykład "go #" i "20 + koty" nie będzie dobrym słowami kluczowymi. Jednak "Przejdź do sharp" lub "dwadzieścia plus koty" może działać. Można nadal stosować symbole w znakowanie i używać marketingowych i dokumentacji wzmocnienie Wymowa odpowiednie.
 
 > [!NOTE]
 > Jeśli wybierzesz słowo znakowe jako słowo kluczowe, upewnij się, że jesteś właścicielem tego znaku towarowego lub że masz uprawnienia od właściciela znaku towarowego do korzystania z tego słowa. Firma Microsoft nie ponosi odpowiedzialności za wszelkie problemy prawne, które mogą wystąpić przy wyborze słowa kluczowego.
 
 ## <a name="create-your-keyword"></a>Utwórz słowo kluczowe
 
-Aby można było użyć niestandardowego słowa kluczowego z urządzeniem, musisz utworzyć słowo kluczowe przy użyciu usługi generowania słów kluczowych firmy Microsoft. Po podaniu słowa kluczowego Usługa tworzy plik, który jest wdrażany w twoim zestawie deweloperskim, aby włączyć słowo kluczowe na urządzeniu.
+Aby można było użyć niestandardowego słowa kluczowego, należy utworzyć słowo kluczowe przy użyciu strony [niestandardowe słowo kluczowe](https://aka.ms/sdsdk-wakewordportal) w programie [Speech Studio](https://aka.ms/sdsdk-speechportal). Po podaniu słowa kluczowego tworzy plik, który jest wdrażany na urządzeniu.
 
 1. Przejdź do programu [Speech Studio](https://aka.ms/sdsdk-speechportal) i **Zaloguj się** lub, jeśli nie masz jeszcze subskrypcji mowy, wybierz pozycję [**Utwórz subskrypcję**](https://go.microsoft.com/fwlink/?linkid=2086754).
 
@@ -62,8 +62,8 @@ Aby można było użyć niestandardowego słowa kluczowego z urządzeniem, musis
 
     ![Pobierz słowo kluczowe](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
 
-1. Zapisz plik zip na komputerze. Ten plik będzie potrzebny do wdrożenia niestandardowego słowa kluczowego w programie Development Kit.
+1. Zapisz plik zip na komputer. Ten plik będzie potrzebny do wdrożenia niestandardowego słowa kluczowego na urządzeniu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przetestuj niestandardowe słowo kluczowe przy użyciu [zestawu Speech Devices SDK szybkiego startu](https://aka.ms/sdsdk-quickstart).

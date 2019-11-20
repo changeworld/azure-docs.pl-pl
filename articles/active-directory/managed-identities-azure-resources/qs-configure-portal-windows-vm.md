@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować zarządzane tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu witryny Azure portal
-description: Krok po kroku instrukcje dotyczące konfigurowania zarządzania tożsamościami dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu witryny Azure portal.
+title: Konfigurowanie tożsamości zarządzanych przy użyciu Azure Portal — Azure AD
+description: Instrukcje krok po kroku dotyczące konfigurowania tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,106 +15,106 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab0a5b021048f0f684473d3f54bbeadf870cd007
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75971dbd35a6b29306bc87988423ab662a343705
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112797"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183866"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal
+# <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
+Zarządzane tożsamości dla zasobów platformy Azure zapewniają usługi platformy Azure z automatycznie zarządzaną tożsamością w Azure Active Directory. Tej tożsamości można użyć do uwierzytelniania w dowolnej usłudze, która obsługuje uwierzytelnianie usługi Azure AD, bez poświadczeń w kodzie. 
 
-W tym artykule dowiesz się, jak włączyć i wyłączyć systemu i tożsamości przypisanych przez użytkownika zarządzanego dla maszyny wirtualnej (maszyny Wirtualnej platformy Azure), przy użyciu witryny Azure portal. 
+W tym artykule dowiesz się, jak włączyć i wyłączyć zarządzane tożsamości systemowe i przypisane przez użytkownika dla maszyny wirtualnej platformy Azure (VM) przy użyciu Azure Portal. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
-## <a name="system-assigned-managed-identity"></a>Przypisana przez system tożsamości zarządzanej
+## <a name="system-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez system
 
-W tej sekcji dowiesz się, jak włączanie i wyłączanie przypisany systemowo tożsamości zarządzanej dla maszyny Wirtualnej przy użyciu witryny Azure portal.
+W tej sekcji dowiesz się, jak włączyć i wyłączyć zarządzaną tożsamość przypisaną przez system dla maszyny wirtualnej przy użyciu Azure Portal.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>Włącz przypisany systemowo tożsamości zarządzanej podczas tworzenia maszyny Wirtualnej
+### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>Włącz tożsamość zarządzaną przypisaną przez system podczas tworzenia maszyny wirtualnej
 
-Aby włączyć przypisany systemowo tożsamości zarządzanej maszyny wirtualnej podczas jej tworzenia, Twoje konto musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) przypisania roli.  Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
+Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wirtualnej podczas jej tworzenia, konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-- W obszarze **zarządzania** karcie **tożsamości** sekcji, Przełącz **tożsamości usługi zarządzanej** do **na**.  
+- Na karcie **Zarządzanie** w sekcji **tożsamość** Przełącz opcję **tożsamość usługi zarządzanej** na wartość **włączone**.  
 
-![Włączanie tożsamości przypisanych przez system podczas tworzenia maszyny Wirtualnej](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
+![Włącz tożsamość przypisaną przez system podczas tworzenia maszyny wirtualnej](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
 
-Zapoznaj się z następujących przewodników Szybki Start tworzenie maszyny Wirtualnej: 
+Aby utworzyć maszynę wirtualną, zobacz następujące przewodniki szybki start: 
 
-- [Utwórz maszynę wirtualną Windows za pomocą witryny Azure portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
-- [Utwórz maszynę wirtualną systemu Linux w witrynie Azure portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+- [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu Azure Portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
+- [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu Azure Portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 
 
-### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Włącz przypisany systemowo tożsamość zarządzaną istniejącej maszyny wirtualnej
+### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Włącz tożsamość zarządzaną przypisaną przez system na istniejącej maszynie wirtualnej
 
-Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotnie została aprowizowana bez niego przypisana przez system, konto usługi musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) przypisania roli.  Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
+Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wirtualnej, która została pierwotnie zainicjowana bez niej, konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, która zawiera maszynę wirtualną.
 
-2. Przejdź do odpowiednią maszynę wirtualną i wybierz **tożsamości**.
+2. Przejdź do odpowiedniej maszyny wirtualnej i wybierz pozycję **tożsamość**.
 
-3. W obszarze **przypisanej w systemie**, **stan**, wybierz opcję **na** a następnie kliknij przycisk **Zapisz**:
+3. W obszarze **przypisano system**, **stan**, wybierz opcję **włączone** , a następnie kliknij przycisk **Zapisz**:
 
    ![Zrzut ekranu strony konfiguracji](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
-### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>Usuwanie przypisany systemowo tożsamości zarządzanej maszyny Wirtualnej
+### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>Usuwanie tożsamości zarządzanej przypisanej przez system z maszyny wirtualnej
 
-Aby usunąć przypisany systemowo tożsamości zarządzanej maszyny Wirtualnej, Twoje konto musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) przypisania roli.  Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
+Aby usunąć tożsamość zarządzaną przypisaną przez system z maszyny wirtualnej, Twoje konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-Jeśli masz maszyny wirtualnej, która nie potrzebuje już przypisany systemowo tożsamość zarządzana:
+Jeśli masz maszynę wirtualną, która nie wymaga już tożsamości zarządzanej przypisanej przez system:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. 
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, która zawiera maszynę wirtualną. 
 
-2. Przejdź do odpowiednią maszynę wirtualną i wybierz **tożsamości**.
+2. Przejdź do odpowiedniej maszyny wirtualnej i wybierz pozycję **tożsamość**.
 
-3. W obszarze **przypisanej w systemie**, **stan**, wybierz opcję **poza** a następnie kliknij przycisk **Zapisz**:
+3. W obszarze **przypisano system**, **stan**, wybierz pozycję **wyłączone** , a następnie kliknij przycisk **Zapisz**:
 
    ![Zrzut ekranu strony konfiguracji](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 
 ## <a name="user-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez użytkownika
 
- W tej sekcji dowiesz się, jak dodawać i usuwać przypisanych przez użytkownika tożsamości zarządzanej maszyny wirtualnej przy użyciu witryny Azure portal.
+ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez użytkownika z maszyny wirtualnej przy użyciu Azure Portal.
 
-### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>Przypisz tożsamości przypisanych przez użytkownika podczas tworzenia maszyny Wirtualnej
+### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>Przypisywanie tożsamości przypisanej do użytkownika podczas tworzenia maszyny wirtualnej
 
-Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualnej, Twoje konto musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) i [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) przypisań ról. Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
+Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualnej wymagane są przypisania ról współautor i [operator tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-operator) [maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-Obecnie witryny Azure portal nie obsługuje przypisywanie przypisanych przez użytkownika tożsamości zarządzanej podczas tworzenia maszyny Wirtualnej. Zamiast tego zobacz następujące artykuły Szybki Start tworzenia maszyny Wirtualnej, aby najpierw utworzyć Maszynę wirtualną, a następnie przejść do następnej sekcji, aby uzyskać szczegółowe informacje na temat przypisywania tożsamości zarządzanej użytkownik przypisany do maszyny Wirtualnej:
+Obecnie Azure Portal nie obsługuje przypisywania tożsamości zarządzanej przypisanej przez użytkownika podczas tworzenia maszyny wirtualnej. Zamiast tego zapoznaj się z jednym z poniższych artykułów szybkiego startu tworzenia maszyn wirtualnych, aby najpierw utworzyć maszynę wirtualną, a następnie przejdź do następnej sekcji, aby uzyskać szczegółowe informacje na temat przypisywania tożsamości zarządzanej przypisanej przez użytkownika do maszyny wirtualnej:
 
-- [Utwórz maszynę wirtualną Windows za pomocą witryny Azure portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Utwórz maszynę wirtualną systemu Linux w witrynie Azure portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+- [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu Azure Portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu Azure Portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>Przypisz tożsamości zarządzanej użytkownik przypisany do istniejącej maszyny Wirtualnej
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>Przypisywanie tożsamości zarządzanej przypisanej przez użytkownika do istniejącej maszyny wirtualnej
 
-Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualnej, Twoje konto musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) i [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) przypisań ról. Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
+Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualnej wymagane są przypisania ról współautor i [operator tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-operator) [maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
-2. Przejdź do maszyny Wirtualnej i kliknij żądany **tożsamości**, **przypisane do użytkowników** i następnie  **\+Dodaj**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, która zawiera maszynę wirtualną.
+2. Przejdź do odpowiedniej maszyny wirtualnej i kliknij pozycję **tożsamość**, **przypisane przez użytkownika** , a następnie **\+Dodaj**.
 
-   ![Dodawanie tożsamości zarządzanej użytkownik przypisany do maszyny Wirtualnej](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
+   ![Dodawanie tożsamości zarządzanej przypisanej przez użytkownika do maszyny wirtualnej](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 
-3. Kliknij przycisk tożsamości przypisanych przez użytkownika, chcesz dodać do maszyny Wirtualnej, a następnie kliknij przycisk **Dodaj**.
+3. Kliknij tożsamość przypisaną przez użytkownika, którą chcesz dodać do maszyny wirtualnej, a następnie kliknij przycisk **Dodaj**.
 
-    ![Dodawanie tożsamości zarządzanej użytkownik przypisany do maszyny Wirtualnej](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
+    ![Dodawanie tożsamości zarządzanej przypisanej przez użytkownika do maszyny wirtualnej](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
 
-### <a name="remove-a-user-assigned-managed-identity-from-a-vm"></a>Usuwanie przypisanych przez użytkownika tożsamości zarządzanej maszyny Wirtualnej
+### <a name="remove-a-user-assigned-managed-identity-from-a-vm"></a>Usuwanie tożsamości zarządzanej przypisanej przez użytkownika z maszyny wirtualnej
 
-Aby usunąć tożsamości przypisanych przez użytkownika z maszyny Wirtualnej, Twoje konto musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) przypisania roli. Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
+Aby usunąć tożsamość przypisaną przez użytkownika z maszyny wirtualnej, Twoje konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
-2. Przejdź do maszyny Wirtualnej i kliknij żądany **tożsamości**, **przypisane do użytkowników**, nazwę użytkownika przypisane zarządzanych tożsamości, które chcesz usunąć, a następnie kliknij przycisk **Usuń** (kliknij  **Tak** w okienku potwierdzenia).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, która zawiera maszynę wirtualną.
+2. Przejdź do odpowiedniej maszyny wirtualnej i kliknij pozycję **tożsamość**, **przypisane przez użytkownika**, nazwę zarządzanej tożsamości przypisanej przez użytkownika, która ma zostać usunięta, a następnie kliknij przycisk **Usuń** (kliknij przycisk **tak** w okienku potwierdzenia).
 
-   ![Usuwanie przypisanych przez użytkownika z tożsamości zarządzanej maszyny Wirtualnej](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vm-screenshot.png)
+   ![Usuwanie tożsamości zarządzanej przypisanej przez użytkownika z maszyny wirtualnej](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vm-screenshot.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- W witrynie Azure portal, zapewniają tożsamość zarządzaną w maszynie Wirtualnej platformy Azure [dostęp do zasobów platformy Azure w innym](howto-assign-access-portal.md).
+- Korzystając z Azure Portal, udziel zarządzanej tożsamości maszyny wirtualnej platformy Azure [do innego zasobu platformy Azure](howto-assign-access-portal.md).
 

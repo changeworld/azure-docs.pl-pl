@@ -1,17 +1,17 @@
 ---
 title: Często zadawane pytania dotyczące Azure Migrate
-description: Rozwiązuje typowe i często zadawane pytania dotyczące Azure Migrate
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi Azure Migrate.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1663e1d418610bcfa2ada28770944bfc8cbf908f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480072"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185774"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: typowe pytania
 
@@ -214,5 +214,5 @@ Możesz [wizualizować zależności](https://docs.microsoft.com/azure/migrate/ho
 - Do migracji maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych i maszyn wirtualnych VMware opartych na agentach migracja Azure Migrate Server korzysta z aparatu replikacji Azure Site Recovery.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Zapoznaj się z [omówieniem Azure Migrate](migrate-services-overview.md).

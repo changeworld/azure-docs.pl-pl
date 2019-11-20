@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555453"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195014"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w Azure Monitor dla kontenerów
 Azure Monitor dla kontenerów monitoruje wydajność obciążeń kontenera wdrożonych w celu Azure Container Instances lub do zarządzanych klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS).
@@ -102,7 +102,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Poniższe zapytania używają wartości symboli zastępczych \<your-Cluster-Name > i \<your-Controller-Name > do reprezentowania klastra i kontrolera. Zastąp je wartościami specyficznymi dla danego środowiska podczas konfigurowania alertów.
+>Poniższe zapytania używają wartości symboli zastępczych \<nazwy klastra > i \<nazwę-kontrolera-> do reprezentowania klastra i kontrolera. Zastąp je wartościami specyficznymi dla danego środowiska podczas konfigurowania alertów.
 
 Następujące zapytanie oblicza średnie wykorzystanie procesora CPU przez wszystkie kontenery w kontrolerze jako średnie wykorzystanie procesora CPU każdego wystąpienia kontenera w kontrolerze co minutę. Pomiar jest wartością procentową limitu skonfigurowanego dla kontenera.
 
@@ -284,12 +284,12 @@ Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy 
 >Poniższa procedura umożliwia utworzenie reguły alertu dotyczącego użycia zasobów kontenera. w tym celu należy przełączyć się do nowego interfejsu API alertów dziennika, zgodnie z opisem w [preferencjach przełącznika interfejsu API dla alertów dzienników](../platform/alerts-log-api-switch.md).
 >
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **monitor** z okienka po lewej stronie. W obszarze **szczegółowe**dane wybierz pozycję **kontenery**.
 3. Na karcie **monitorowane klastry** wybierz klaster z listy.
 4. W okienku po lewej stronie w obszarze **monitorowanie**wybierz pozycję **dzienniki** , aby otworzyć stronę Dzienniki Azure monitor. Ta strona służy do pisania i wykonywania zapytań Log Analytics platformy Azure.
 5. Na stronie **dzienniki** wybierz pozycję **+ Nowa reguła alertu**.
-6. W sekcji **warunek** wybierz opcję zawsze, **gdy niestandardowe wyszukiwanie w dzienniku jest \<logic niezdefiniowane >** wstępnie zdefiniowany warunek dziennika niestandardowego. Typ sygnału **niestandardowego wyszukiwania w dzienniku** jest automatycznie wybierany, ponieważ tworzymy regułę alertu bezpośrednio na stronie dzienników Azure monitor.  
+6. W sekcji **warunek** wybierz opcję zawsze, **gdy niestandardowa wyszukiwarka dziennika ma \<logiki niezdefiniowana >** wstępnie zdefiniowany warunek dziennika niestandardowego. Typ sygnału **niestandardowego wyszukiwania w dzienniku** jest automatycznie wybierany, ponieważ tworzymy regułę alertu bezpośrednio na stronie dzienników Azure monitor.  
 7. Wklej jedno z [zapytań](#resource-utilization-log-search-queries) dostarczonych wcześniej do pola **zapytania wyszukiwania** .
 8. Skonfiguruj alert w następujący sposób:
 
@@ -305,7 +305,7 @@ Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy 
 12. Wybierz istniejącą **grupę akcji** lub Utwórz nową grupę. Ten krok zapewnia, że te same akcje są wykonywane za każdym razem, gdy zostanie wyzwolony alert. Skonfiguruj w zależności od tego, jak zespół IT lub DevOps Operations zarządza incydentami.
 13. Wybierz pozycję **Utwórz regułę alertu** , aby zakończyć regułę alertu. Rozpoczyna ona działanie od razu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Wyświetl [przykłady zapytań dotyczących dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby zobaczyć wstępnie zdefiniowane zapytania i przykłady do oszacowania lub dostosowania do tworzenia alertów, wizualizacji lub analizowania klastrów.
-- Aby dowiedzieć się więcej na temat Azure Monitor i sposobu monitorowania innych aspektów klastra AKS, zobacz [Wyświetlanie usługi Azure Kubernetes Service Health](container-insights-analyze.md).
+- Aby dowiedzieć się więcej na temat Azure Monitor i sposobu monitorowania innych aspektów klastra Kubernetes, zobacz [Wyświetlanie Kubernetes klastra Performance](container-insights-analyze.md) and [View Kubernetes Cluster Health](container-insights-health.md).

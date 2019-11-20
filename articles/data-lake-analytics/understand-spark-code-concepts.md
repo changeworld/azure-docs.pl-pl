@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 4ed23beae6edb13efabf034c1e87b9cb76048f82
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3d15afc26c876c6e4d2d7244e26f0b13ced59a58
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648469"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184758"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Informacje o kodzie Apache Spark dla deweloperów U-SQL
 
@@ -143,13 +143,13 @@ W platformie Spark wartość NULL wskazuje, że wartość jest nieznana. Wartoś
 
 To zachowanie różni się od języka U-SQL, który C# jest zgodny z semantyką, w której `null` różni się od żadnej wartości, ale jest równe.  
 
-W ten sposób SparkSQL `SELECT` instrukcji, która używa `WHERE column_name = NULL` zwraca zero wierszy, nawet jeśli w `column_name`jest wartości NULL, a w języku U-SQL zwróci wiersze, w których `column_name` jest ustawiona na `null`. Podobnie instrukcja `SELECT` platformy Spark, która używa `WHERE column_name != NULL` zwraca zero wierszy, nawet jeśli w `column_name`nie ma wartości null, a w języku U-SQL zwróci wiersze, które mają wartość różną od null. W takim przypadku, jeśli chcesz mieć semantykę sprawdzania wartości null U-SQL, należy użyć odpowiednio [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)) i [IsNotNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (lub ich odpowiedników DSL).
+W ten sposób SparkSQL `SELECT` instrukcji, która używa `WHERE column_name = NULL` zwraca zero wierszy, nawet jeśli w `column_name`jest wartości NULL, a w języku U-SQL zwróci wiersze, w których `column_name` jest ustawiona na `null`. Podobnie instrukcja `SELECT` platformy Spark, która używa `WHERE column_name != NULL` zwraca zero wierszy, nawet jeśli w `column_name`nie ma wartości null, a w języku U-SQL zwróci wiersze, które mają wartość różną od null. W takim przypadku, jeśli chcesz, aby semantyka sprawdzania wartości null w języku U-SQL, należy użyć odpowiednio [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) i [IsNotNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (lub jego odpowiedniku DSL).
 
 ## <a name="transform-u-sql-catalog-objects"></a>Przekształcanie obiektów wykazu U-SQL
 
 Istotną różnicą jest to, że skrypty U-SQL mogą korzystać z obiektów wykazu, z których wiele nie ma bezpośredniego odpowiednika platformy Spark.
 
-Platforma Spark zapewnia obsługę koncepcji magazynu metadanych usługi Hive, głównie baz danych i tabel, dzięki czemu można mapować bazy danych i schematy U-SQL do baz danych programu Hive oraz tabele języka U-SQL w tabelach platformy Spark (zobacz [przeniesienie danych przechowywanych w tabelach U-SQL](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)), ale nie obsługuje widoków. funkcje o wartościach tabelowych (TVFs), procedury składowane, zestawy U-SQL, zewnętrzne źródła danych itp.
+Platforma Spark zapewnia obsługę koncepcji metadanych magazynu Hive, głównie bazy danych i tabele, dzięki czemu można mapować bazy danych i schematy U-SQL do baz danych programu Hive oraz tabele U-SQL w tabelach platformy Spark (zobacz [przeniesienie danych przechowywanych w tabelach u-SQL](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables), ale nie ma ona obsługi widoków, funkcji zwracających tabele (TVFs), procedur składowanych, zestawów u-SQL, zewnętrznych źródeł danych itp.
 
 Obiekty kodu U-SQL, takie jak widoki, TVFs, procedury składowane i zestawy, można modelować za pomocą funkcji kodu i bibliotek w platformie Spark i przywoływanych przy użyciu funkcji języka hosta i mechanizmów abstrakcji procedur (na przykład przy użyciu importowania Moduły języka Python lub odwołujące się do funkcji Scala.
 
@@ -213,7 +213,7 @@ Język U-SQL oferuje kilka składni sposobów udostępniania wskazówek do progr
 
 Optymalizator zapytań oparty na kosztach platformy Spark ma własne możliwości zapewniania wskazówek i dostrajania wydajności zapytań. Zapoznaj się z odpowiednią dokumentacją.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Omówienie formatów danych platformy Spark dla deweloperów U-SQL](understand-spark-data-formats.md)
 - [.NET dla Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)

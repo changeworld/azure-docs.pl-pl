@@ -1,5 +1,5 @@
 ---
-title: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure Storage
+title: Samouczek`:` korzystania z tożsamości zarządzanej w celu uzyskiwania dostępu do usługi Azure Storage — Windows — Azure AD
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147ee2450a6a67f8ca02149105533401d038a53a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2449307936839d50fe0d48a0536ca4dd9c8d85c3
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191085"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181917"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows
 
@@ -28,7 +28,7 @@ ms.locfileid: "65191085"
 
 
 > [!IMPORTANT] 
-> Usługa Azure Storage obsługuje teraz uwierzytelnianie usługi Azure AD. Najlepszym rozwiązaniem jest użycie [uwierzytelniania usługi Azure AD](tutorial-vm-windows-access-storage.md) zamiast kluczy dostępu. 
+> Usługa Azure Storage obsługuje teraz uwierzytelnianie w usłudze Azure AD. Najlepszym rozwiązaniem jest użycie uwierzytelniania usługi [Azure AD](tutorial-vm-windows-access-storage.md) zamiast kluczy dostępu. 
 
 
 Ten samouczek przedstawia sposób używania tożsamości zarządzanej przypisanej przez system do maszyny wirtualnej z systemem Windows do pobrania kluczy dostępu do konta magazynu. Możesz użyć kluczy dostępu do magazynu w zwykły sposób wykorzystywany podczas wykonywania operacji magazynu, np. podczas używania zestawu SDK usługi Storage. W tym samouczku przekażemy i pobierzemy obiekty blob przy użyciu programu PowerShell i usługi Azure Storage. Poznasz następujące czynności:
@@ -174,7 +174,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób tworzenia przypisanej przez system tożsamości zarządzanej w celu uzyskania dostępu do usługi Azure Storage przy użyciu klucza dostępu.  Aby dowiedzieć się więcej o kluczach dostępu usługi Azure Storage, zobacz:
 

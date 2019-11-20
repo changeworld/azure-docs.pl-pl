@@ -1,31 +1,31 @@
 ---
-title: Jak działa migracji funkcji Hyper-V z migracją serwera migracji platformy Azure? | Microsoft Docs
-description: Omówienie procesu migracji funkcji Hyper-V w procesie migracji serwera migracji platformy Azure
+title: Jak działa Migracja funkcji Hyper-V w Azure Migrate?
+description: Informacje o migracji funkcji Hyper-V za pomocą Azure Migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 9148e76a9f2abd369ae595422d785a347e58dfab
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811715"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185880"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Jak działa replikacja funkcji Hyper-V?
 
-Ten artykuł zawiera omówienie architektury i procesem stosowanym podczas migracji maszyn wirtualnych funkcji Hyper-V za pomocą narzędzia migracji serwera migracji platformy Azure.
+Ten artykuł zawiera omówienie architektury i procesów używanych podczas migrowania maszyn wirtualnych funkcji Hyper-V za pomocą narzędzia migracji Azure Migrate Server.
 
-[Usługa Azure Migrate](migrate-services-overview.md) udostępnia centralną Centrum do śledzenia wykrywania, oceny i migracji aplikacji lokalnych i obciążeń i chmury prywatne/publiczne maszyn wirtualnych na platformie Azure. Centrum zapewnia usługa Azure Migrate narzędzia do oceny i migracji, a także oferty Niezależnym dostawcą oprogramowania niezależnie od innych firm.
+[Azure Migrate](migrate-services-overview.md) udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz maszyn wirtualnych chmur prywatnych/publicznych na platformie Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
 ## <a name="agentless-migration"></a>Migracja bez wykorzystania agentów
 
-Narzędzie do migracji serwera migracji platformy Azure zapewnia bez wykorzystania agentów replikacji lokalnych maszyn wirtualnych funkcji Hyper-V, za pomocą przepływu pracy migracji, które jest zoptymalizowane pod kątem funkcji Hyper-V. Agent oprogramowania jest zainstalować tylko na hostach funkcji Hyper-V lub węzłów klastra. Nic nie musi być zainstalowany na maszynach wirtualnych funkcji Hyper-V.
+Narzędzie do migracji Azure Migrate Server zapewnia replikację bezagentową dla lokalnych maszyn wirtualnych funkcji Hyper-V przy użyciu przepływu pracy migracji zoptymalizowanego pod kątem funkcji Hyper-V. Agenta oprogramowania można zainstalować tylko na hostach funkcji Hyper-V lub w węzłach klastra. Niczego nie trzeba instalować na maszynach wirtualnych funkcji Hyper-V.
 
-## <a name="server-migration-and-azure-site-recovery"></a>Migracja serwera i usługi Azure Site Recovery
+## <a name="server-migration-and-azure-site-recovery"></a>Migracja serwera i Azure Site Recovery
 
-Migrowanie serwera migracji na platformę Azure to narzędzie służące do migrowania obciążeń lokalnych i opartych na chmurze maszynami wirtualnymi platformy Azure. Usługa Site Recovery to narzędzie do odzyskiwania po awarii. Narzędzia udostępnianie niektóre typowe składniki technologii, które są używane na potrzeby replikacji danych, ale także służyć do różnych celów. 
+Migracja serwera Azure Migrate to narzędzie służące do migrowania obciążeń lokalnych oraz maszyn wirtualnych opartych na chmurze na platformie Azure. Site Recovery to narzędzie odzyskiwania po awarii. Narzędzia te udostępniają niektóre popularne składniki technologiczne używane do replikacji danych, ale służą do różnych celów. 
 
 
 ## <a name="architectural-components"></a>Składniki architektury
@@ -36,56 +36,56 @@ Migrowanie serwera migracji na platformę Azure to narzędzie służące do migr
 
 **Składnik** | **Wdrożenie** | 
 --- | --- 
-**Dostawca replikacji** | Dostawcy usługi Microsoft Azure Site Recovery jest zainstalowany na hostach funkcji Hyper-V i zarejestrowane w usłudze migracji serwera migracji platformy Azure.<br/> Dostawca koordynuje replikację dla maszyn wirtualnych funkcji Hyper-V.
-**Agent usługi Recovery Services** | Agent usługi Microsoft Azure Recovery obsługuje replikację danych. Współpracuje z dostawcą replikowania danych z maszyn wirtualnych funkcji Hyper-V do platformy Azure.<br/> Replikowane dane są przekazywane na konto magazynu w ramach subskrypcji platformy Azure. Migracja serwera narzędzia procesy replikowanych danych, a dotyczy dyskach repliki w ramach subskrypcji. Dyski repliki są używane do tworzenia maszyn wirtualnych platformy Azure, podczas migracji.
+**Dostawca replikacji** | Dostawca Site Recovery Microsoft Azure jest instalowany na hostach funkcji Hyper-V i zarejestrowano w ramach migracji serwera migracji platformy Azure.<br/> Dostawca organizuje replikację maszyn wirtualnych funkcji Hyper-V.
+**Agent Recovery Services** | Agent usługi odzyskiwania Microsoft Azure obsługuje replikację danych. Współpracuje z dostawcą w celu replikowania danych z maszyn wirtualnych funkcji Hyper-V do platformy Azure.<br/> Zreplikowane dane są przekazywane do konta magazynu w ramach subskrypcji platformy Azure. Narzędzie do migracji serwera przetwarza zreplikowane dane i stosuje je do dysków repliki w ramach subskrypcji. Dyski repliki są używane do tworzenia maszyn wirtualnych platformy Azure podczas migracji.
 
-- Składniki są instalowane przez plik konfiguracji pojedynczego pobrany z usługi Azure Migration migracji serwera w portalu.
-- Dostawcy i urządzenia używają HTTPS port 443 połączeń wychodzących, do komunikacji z migracji serwera migracji platformy Azure.
+- Składniki są instalowane za pomocą pojedynczego pliku instalacyjnego pobrane z migracji Azure Migrate serwera w portalu.
+- Dostawca i urządzenie używają wychodzących połączeń HTTPS port 443 do komunikowania się z migracją serwera Azure Migrate.
 - Komunikacja od dostawcy i agenta jest bezpieczna i szyfrowana.
 
 
 ## <a name="replication-process"></a>Proces replikacji
 
-1. Po włączeniu replikacji dla maszyny Wirtualnej funkcji Hyper-V, rozpoczyna się Replikacja początkowa.
-2. Wykonywana jest migawka maszyny Wirtualnej funkcji Hyper-V.
-3. Wirtualne dyski twarde na maszynie Wirtualnej są replikowane-przez pojedynczo, dopóki nie zostaną wszystkie skopiowane na platformę Azure. Czas replikacji początkowej, zależy od rozmiaru maszyny Wirtualnej i przepustowości sieci.
-4. Za pomocą funkcji Hyper-V Replica i przechowywane w plikach dziennika (pliki hrl), są śledzone zmiany dysku, występujące podczas replikacji początkowej.
+1. Po włączeniu replikacji dla maszyny wirtualnej funkcji Hyper-V rozpoczyna się replikacja początkowa.
+2. Wykonywana jest migawka maszyny wirtualnej funkcji Hyper-V.
+3. Wirtualne dyski twarde w maszynie wirtualnej są replikowane jeden do nich, dopóki nie zostaną skopiowane na platformę Azure. Czas replikacji początkowej zależy od rozmiaru maszyny wirtualnej i przepustowości sieci.
+4. Zmiany dysku występujące podczas replikacji początkowej są śledzone przy użyciu funkcji Hyper-V Replica i przechowywane w plikach dziennika (pliki HRL).
     - Pliki dziennika znajdują się w tym samym folderze co dyski.
-    - Każdy dysk ma plik hrl skojarzone, który jest wysyłany do magazynu pomocniczego.
+    - Każdy dysk ma skojarzony plik HRL, który jest wysyłany do magazynu pomocniczego.
     - Pliki migawki i dziennika zużywają zasoby dysku w trakcie replikacji początkowej.
-4. Po zakończeniu replikacji początkowej migawka maszyny Wirtualnej zostanie usunięta, a następnie rozpoczyna się replikacja różnicowa.
-5. Dysk przyrostowe zmiany są śledzone w plikach hrl. Dzienniki replikacji są okresowo przekazywane do konta usługi Azure storage przez agenta usługi Recovery Services.
+4. Po zakończeniu replikacji początkowej migawka maszyny wirtualnej zostanie usunięta i rozpocznie się replikacja różnicowa.
+5. Przyrostowe zmiany dysku są śledzone w plikach HRL. Dzienniki replikacji są okresowo przekazywane do konta usługi Azure Storage przez agenta Recovery Services.
 
 
 ## <a name="performance-and-scaling"></a>Wydajność i skalowanie
 
-Wydajność replikacji funkcji Hyper-v ma wpływ czynników, które zawierają rozmiar maszyny Wirtualnej, współczynnik zmian danych (liczba zmian), maszyn wirtualnych, dostępne miejsce na hoście funkcji Hyper-V do przechowywania plików dziennika, przepustowość przekazywania replikacji danych i docelowego konta magazynu na platformie Azure.
+Wydajność replikacji dla funkcji Hyper-V ma wpływ na czynniki, które obejmują rozmiar maszyny wirtualnej, współczynnik zmian danych (zmiany) maszyn wirtualnych, dostępne miejsce na hoście funkcji Hyper-V do przechowywania plików dziennika, przepustowość przekazywania danych replikacji i magazyn docelowy na platformie Azure.
 
-- Jeśli replikujesz wielu maszyn w tym samym czasie, użyj [planista wdrażania usługi Azure Site Recovery](../site-recovery/hyper-v-deployment-planner-overview.md) funkcji Hyper-v, aby pomóc zoptymalizować replikacji.
-- Plan usługi replikacji funkcji Hyper-V i dystrybucję replikacji za pośrednictwem konta usługi Azure storage, zgodnie z pojemności.
+- W przypadku replikowania wielu maszyn w tym samym czasie Użyj [planista wdrażania usługi Azure Site Recovery](../site-recovery/hyper-v-deployment-planner-overview.md) funkcji Hyper-V, aby pomóc zoptymalizować replikację.
+- Zaplanuj replikację funkcji Hyper-V i Dystrybuuj replikację za pośrednictwem kont usługi Azure Storage, zgodnie z pojemnością.
 
-### <a name="control-upload-throughput"></a>Przepustowość przekazywania kontroli
+### <a name="control-upload-throughput"></a>Przepływność przekazywania kontroli
 
-Można ograniczyć ilość przepustowości używanej w celu przekazywania danych do platformy Azure na każdym hoście funkcji Hyper-V. Ostrożnie. Jeśli ustawisz zbyt niskich wartości negatywnie wpłynie na replikacji i migracja opóźnienia.
+Można ograniczyć przepustowość używaną do przekazywania danych do platformy Azure na każdym hoście funkcji Hyper-V. Ostrożnie. Jeśli ustawisz zbyt niską wartość, będzie to mieć negatywny wpływ na replikację i Opóźnij migrację.
 
 
-1. Zaloguj się do węzła hosta lub klastra funkcji Hyper-V.
-2. Uruchom **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**, aby otworzyć przystawkę MMC usługi Windows Azure Backup.
-3. W przystawce, wybierz **Zmień właściwości**.
-4. W **ograniczania**, wybierz opcję **włączyć internetowe ograniczanie użycia przepustowości dla operacji tworzenia kopii zapasowej**. Ustaw limity dla pracy i innych niż godziny pracy. Prawidłowe zakresy są od 512 KB/s do 1,023 MB/s.
+1. Zaloguj się do hosta lub węzła klastra funkcji Hyper-V.
+2. Uruchom polecenie **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**, aby otworzyć przystawkę MMC Azure Backup systemu Windows.
+3. W przystawce wybierz pozycję **Zmień właściwości**.
+4. W obszarze **ograniczenie przepustowości**wybierz opcję **Włącz ograniczenie przepustowości Internetu dla operacji tworzenia kopii zapasowej**. Ustaw limity dla godzin pracy i czasu wolnego. Prawidłowe zakresy są z zakresu od 512 KB/s do 1 023 MB/s.
 I
 
-### <a name="influence-upload-efficiency"></a>Wydajność przekazywania wpływ
+### <a name="influence-upload-efficiency"></a>Wpływ na wydajność przekazywania
 
-Jeśli masz nieużywanej przepustowości dla replikacji i chcesz zwiększyć przekazywania, możesz zwiększyć liczbę wątków przydzielone zadanie przekazywania w następujący sposób:
+Jeśli masz zapasową przepustowość na potrzeby replikacji, a chcesz zwiększyć liczbę operacji przekazywania, możesz zwiększyć ilość wątków przydzieloną dla zadania przekazania w następujący sposób:
 
-1. Otwórz Regedit.
-2. Przejdź do klucza HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
-3. Zwiększ wartość przez liczbę wątków używanych w celu przekazania danych dla każdej maszyny Wirtualnej z replikacji. Wartość domyślna to 4, a wartość maksymalna to 32. 
+1. Otwórz Rejestr przy użyciu programu regedit.
+2. Przejdź do usługi Key HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
+3. Zwiększ wartość liczby wątków używanych do przekazywania danych dla każdej replikowanej maszyny wirtualnej. Wartość domyślna to 4, a wartość maksymalna to 32. 
 
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wypróbuj [migracji funkcji Hyper-V](tutorial-migrate-hyper-v.md) przy użyciu usługi Azure Migration migracji serwera.
+Wypróbowanie [migracji funkcji Hyper-V](tutorial-migrate-hyper-v.md) za pomocą migracji serwera Azure Migrate.

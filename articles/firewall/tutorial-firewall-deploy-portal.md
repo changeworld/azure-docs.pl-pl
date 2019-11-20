@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal'
+title: 'Samouczek: wdrażanie & konfigurowania zapory platformy Azure przy użyciu Azure Portal'
 description: W ramach tego samouczka dowiesz się, jak wdrożyć i skonfigurować usługę Azure Firewall przy użyciu witryny Azure Portal.
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 124a87728a8d201c329b15d94ae7e61a225646ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468451"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195791"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -61,7 +61,7 @@ Grupa zasobów zawiera wszystkie zasoby wymagane w tym samouczku.
 3. W obszarze **Nazwa grupy zasobów**wprowadź polecenie *test-PD-RG*.
 4. W polu **Subskrypcja** wybierz subskrypcję.
 5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
-6. Wybierz pozycję **Utwórz**.
+6. Wybierz **tworzenie**.
 
 ### <a name="create-a-vnet"></a>Tworzenie sieci wirtualnej
 
@@ -90,7 +90,7 @@ Następnie należy utworzyć podsieci dla serwera przesiadkowego oraz podsieci d
 3. Wybierz **podsieci** >  **+ podsieć**.
 4. W polu **Nazwa** wpisz wartość **Workload-SN**.
 5. W polu **Zakres adresów** wpisz wartość **10.0.2.0/24**.
-6. Kliknij przycisk **OK**.
+6. Wybierz **OK**.
 
 Utwórz kolejną podsieć z nazwą **Jump-SN** i zakresem adresów **10.0.3.0/24**.
 
@@ -125,9 +125,9 @@ Skorzystaj z informacji podanych w poniższej tabeli, aby skonfigurować inną m
 
 |Ustawienie  |Wartość  |
 |---------|---------|
-|Podsieć|**Obciążenie — SN**|
-|Publiczny adres IP|**Dawaj**|
-|Publiczne porty wejściowe|**Dawaj**|
+|Subnet|**Workload-SN**|
+|Publiczny adres IP|**Brak**|
+|Publiczne porty wejściowe|**Brak**|
 
 ## <a name="deploy-the-firewall"></a>Wdrażanie zapory
 
@@ -165,13 +165,13 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 5. W polu **Subskrypcja** wybierz subskrypcję.
 6. W obszarze **Grupa zasobów**wybierz pozycję **test-PD-RG**.
 7. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-8. Wybierz pozycję **Utwórz**.
+8. Wybierz **tworzenie**.
 9. Wybierz pozycję **Odśwież**, a następnie wybierz tabelę **Zapora trasy tras** .
 10. Wybierz pozycję **podsieci** , a następnie wybierz pozycję **Skojarz**.
 11. Wybierz **sieć wirtualną** > **test-PD-VN**.
 12. W obszarze **podsieć**wybierz pozycję **obciążenie — SN**. Upewnij się, że dla tej trasy jest zaznaczona tylko podsieć **obciążenia-SN** , w przeciwnym razie Zapora nie będzie działała poprawnie.
 
-13. Kliknij przycisk **OK**.
+13. Wybierz **OK**.
 14. Wybierz pozycję **trasy** , a następnie wybierz pozycję **Dodaj**.
 15. Dla **nazwy trasy**wpisz **PD-DG**.
 16. W polu **Prefiks adresu** wpisz wartość **0.0.0.0/0**.
@@ -179,7 +179,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 
     Usługa Azure Firewall to w rzeczywistości usługa zarządzana, ale urządzenie wirtualne działa w tej sytuacji.
 18. W polu **Adres następnego skoku** wpisz wcześniej zanotowany prywatny adres IP zapory.
-19. Kliknij przycisk **OK**.
+19. Wybierz **OK**.
 
 ## <a name="configure-an-application-rule"></a>Konfigurowanie reguły aplikacji
 
@@ -254,7 +254,7 @@ Teraz sprawdzono, że reguły zapory działają:
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **Test-FW-RG**, aby usunąć wszystkie zasoby związane z zaporą.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687024"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184936"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji ze sprężyną Java przy użyciu konfiguracji aplikacji platformy Azure
 
@@ -39,7 +39,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
     | Klucz | Wartość |
     |---|---|
-    | /application/config.message | Witamy |
+    | /application/config.message | Hello |
 
     Dla tej pory pozostaw pustą **etykietę** i **Typ zawartości** .
 
@@ -68,7 +68,7 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0.M5</version>
     </dependency>
     ```
 
@@ -119,7 +119,7 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
     }
     ```
 
-6. Utwórz nowy plik o nazwie `bootstrap.properties` w katalogu zasobów aplikacji i Dodaj do pliku następujące wiersze. Zastąp przykładowe wartości odpowiednimi właściwościami magazynu konfiguracji aplikacji.
+6. Utwórz nowy plik o nazwie `bootstrap.properties` w katalogu zasobów aplikacji, a następnie Dodaj do pliku następujące wiersze. Zastąp przykładowe wartości odpowiednimi właściwościami magazynu konfiguracji aplikacji.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
@@ -144,11 +144,9 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i użył go w aplikacji ze sprężyną Java. Aby uzyskać więcej informacji, zobacz [Sprężyna na platformie Azure](https://docs.microsoft.com/java/azure/spring-framework/).
-
-Aby dowiedzieć się więcej na temat sposobu korzystania z konfiguracji aplikacji, przejdź do następnego samouczka, który pokazuje uwierzytelnianie.
+W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i użył go w aplikacji ze sprężyną Java. Aby uzyskać więcej informacji, zobacz [Sprężyna na platformie Azure](https://docs.microsoft.com/java/azure/spring-framework/). Aby dowiedzieć się, jak za pomocą tożsamości zarządzanej platformy Azure usprawnić dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)

@@ -1,18 +1,18 @@
 ---
-title: Macierz obsługi Azure Migrate na potrzeby oceny i migracji funkcji Hyper-V
-description: Podsumowuje ustawienia i ograniczenia dotyczące oceny i migracji funkcji Hyper-V przy użyciu usługi Azure Migrate.
+title: Obsługa oceny/migracji funkcji Hyper-V w Azure Migrate
+description: Dowiedz się więcej o obsłudze oceny/migracji funkcji Hyper-V za pomocą Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6562d3f15d080a3bbc54a9985c12eae5908a9980
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498690"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186654"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -86,7 +86,7 @@ Do oceny maszyn wirtualnych urządzenie Azure Migrate musi mieć łączność z 
 --- | ---
 *.portal.azure.com | Nawigacja do Azure Portal
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do Twojej subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 management.azure.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 dc.services.visualstudio.com | Rejestrowanie i monitorowanie
 *.vault.azure.net | Zarządzaj wpisami tajnymi w Azure Key Vault podczas komunikacji między urządzeniem i usługą.
@@ -99,7 +99,7 @@ https://download.microsoft.com/download/* | Zezwala na pobieranie z witryny pobi
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
-**Pliku** | **Połączenie**
+**urządzenia** | **połączenia**
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).
@@ -122,7 +122,7 @@ Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli 
 | **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , które są obsługiwane przez platformę Azure. |
 | **Uprawnienia**           | Musisz mieć uprawnienia administratora na wszystkich maszynach wirtualnych funkcji Hyper-V, które chcesz ocenić. |
 | **Usługi integracji**       | [Usługi integracji funkcji Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muszą być uruchomione na maszynach wirtualnych, które oceniasz, aby przechwycić informacje o systemie operacyjnym. |
-| **Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany w następujących systemach operacyjnych:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje, jak to zrobić. |
+| **Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany w następujących systemach operacyjnych:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> W przypadku innych systemów operacyjnych należy ręcznie wprowadzić zmiany przed migracją. Odpowiednie artykuły zawierają instrukcje, jak to zrobić. |
 | **Rozruch systemu Linux**                 | Jeśli/Boot znajduje się na dedykowanej partycji, powinien znajdować się na dysku systemu operacyjnego i nie można go rozłożyć na wiele dysków.<br/> Jeśli/boot jest częścią partycji głównej (/), partycja "/" powinna znajdować się na dysku systemu operacyjnego i nie może obejmować innych dysków. |
 | **Rozruch z interfejsem UEFI**                  | Migrowana maszyna wirtualna na platformie Azure zostanie automatycznie przekonwertowana na maszynę wirtualną rozruchową w systemie BIOS. Na maszynie wirtualnej powinien działać system Windows Server 2012 lub nowszy. Dysk systemu operacyjnego powinien mieć maksymalnie pięć partycji lub mniej, a rozmiar dysku systemu operacyjnego musi być mniejszy niż 300 GB.
   |
@@ -159,13 +159,13 @@ time.windows.com | Weryfikuje synchronizację czasu między systemem i czasem gl
 
 W poniższej tabeli zestawiono wymagania dotyczące portów na hostach i maszynach wirtualnych funkcji Hyper-V na potrzeby migracji maszyn wirtualnych.
 
-**Pliku** | **Połączenie**
+**urządzenia** | **połączenia**
 --- | ---
 Hosty/maszyny wirtualne funkcji Hyper-V | Połączenia wychodzące na porcie HTTPS 443 do wysyłania danych replikacji maszyny wirtualnej do Azure Migrate.
 
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Przygotuj się do oceny maszyn wirtualnych funkcji Hyper-V](tutorial-prepare-hyper-v.md) na potrzeby migracji.

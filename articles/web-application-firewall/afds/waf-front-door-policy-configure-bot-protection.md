@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie ochrony bot dla zapory aplikacji sieci Web za pomocą platformy Azure — drzwi (wersja zapoznawcza)
+title: Konfigurowanie ochrony bot dla WAF z użyciem drzwi platformy Azure (wersja zapoznawcza)
 description: Poznaj zaporę aplikacji sieci Web (WAF).
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 9a8901e3763b10b7ee00c10f4eec08a8325d7dec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 95660f764d28172ecb55a4952b785fea5f2aa4bb
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512472"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186712"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Konfigurowanie ochrony bot dla zapory aplikacji sieci Web (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania reguły ochrony bot w zaporze aplikacji sieci Web platformy Azure (WAF) dla drzwi zewnętrznych przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell lub szablonu Azure Resource Manager.
@@ -33,6 +33,6 @@ Utwórz podstawowe zasady WAF dla drzwi przednich, postępując zgodnie z instru
     
    ![Reguła ochrony bot](.././media/waf-front-door-configure-bot-protection/botprotect2.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [monitorować WAF](waf-front-door-monitor.md).

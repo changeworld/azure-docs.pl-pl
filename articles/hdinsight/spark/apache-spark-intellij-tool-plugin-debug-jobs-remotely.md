@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: ac8ef620948048ae26ef6f408b4bc86b2a2bfbdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5fede76fbc97b31cbbcdaec1b17f838100d35511
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494575"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195837"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Używanie Azure Toolkit for IntelliJ do zdalnego debugowania aplikacji Apache Spark w usłudze HDInsight za pośrednictwem sieci VPN
 
@@ -32,7 +32,7 @@ Ten artykuł zawiera wskazówki krok po kroku dotyczące sposobu korzystania z n
 * **Subskrypcja platformy Azure**. Aby uzyskać więcej informacji, zobacz artykuł [Uzyskaj bezpłatną wersję próbną platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Klaster Apache Spark w usłudze HDInsight**. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 * **Zestaw Oracle Java Development Kit**. Można go zainstalować z [witryny sieci Web Oracle](https://aka.ms/azure-jdks).
-* **INTELLIJ pomysł**. W tym artykule jest używane wersja 2017,1. Można go zainstalować z [witryny sieci Web JetBrains](https://www.jetbrains.com/idea/download/).
+* **IntelliJ IDEA**. W tym artykule jest używane wersja 2017,1. Można go zainstalować z [witryny sieci Web JetBrains](https://www.jetbrains.com/idea/download/).
 * **Narzędzia usługi HDInsight w Azure Toolkit for IntelliJ**. Narzędzia HDInsight Tools for IntelliJ są dostępne w ramach Azure Toolkit for IntelliJ. Aby uzyskać instrukcje dotyczące sposobu instalowania zestawu narzędzi platformy Azure, zobacz [install Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Zaloguj się do subskrypcji platformy Azure z pomysłu IntelliJ**. Postępuj zgodnie z instrukcjami w temacie [Use Azure Toolkit for IntelliJ, aby utworzyć aplikacje Apache Spark dla klastra usługi HDInsight](apache-spark-intellij-tool-plugin.md).
 * **Obejście wyjątku**. Podczas uruchamiania aplikacji Spark Scala na potrzeby zdalnego debugowania na komputerze z systemem Windows może wystąpić wyjątek. Ten wyjątek jest wyjaśniony w platformie [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) i występuje z powodu braku pliku WinUtils. exe w systemie Windows. Aby obejść ten błąd, należy [pobrać plik wykonywalny](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do lokalizacji takiej jak **C:\WinUtils\bin**. Dodaj zmienną środowiskową **HADOOP_HOME** , a następnie ustaw wartość zmiennej na **C\WinUtils**.
@@ -59,7 +59,7 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
 
     ![Wybieranie hostów w programie Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Zostanie wyświetlona lista węzłów głównych, węzłów procesu roboczego i węzłów dozorcy. Węzły główne mają prefiks **HN***. Wybierz pierwszy węzeł główny.
+1. Zostanie wyświetlona lista węzłów głównych, węzłów procesu roboczego i węzłów dozorcy. Węzły główne mają prefiks **HN**\*. Wybierz pierwszy węzeł główny.
 
     ![Znajdowanie węzła głównego w programie Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
@@ -127,7 +127,7 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
 
     ![Biblioteka pobierania POMYSŁu IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
-    d. W oknie dialogowym **pobieranie biblioteki z repozytorium Maven** Wyszukaj i Dodaj następujące biblioteki:
+    c. W oknie dialogowym **pobieranie biblioteki z repozytorium Maven** Wyszukaj i Dodaj następujące biblioteki:
 
    * `org.scalatest:scalatest_2.10:2.2.1`
    * `org.apache.hadoop:hadoop-azure:2.7.1`
@@ -177,7 +177,7 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
     </property>
     ```
 
-   d. Zapisz plik.
+   c. Zapisz plik.
 
 1. Dodaj klasę główną dla aplikacji. W **Eksploratorze projektów**kliknij prawym przyciskiem myszy **pozycję src**, wskaż polecenie **Nowy**, a następnie wybierz pozycję **Klasa Scala**.
 
@@ -203,9 +203,9 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
                             "wasb:///HVACOut")
         }
     }
-        ```
+    ```
 
-1. Repeat steps 8 and 9 to add a new Scala object called `*SparkSample`. Add the following code to this class. This code reads the data from the HVAC.csv (available in all HDInsight Spark clusters). It retrieves the rows that only have one digit in the seventh column in the CSV file, and then writes the output to **/HVACOut** under the default storage container for the cluster.
+1. Powtórz kroki 8 i 9, aby dodać nowy obiekt Scala o nazwie `*SparkSample`. Dodaj następujący kod do tej klasy. Ten kod odczytuje dane z pliku HVAC. CSV (dostępne we wszystkich klastrach usługi HDInsight Spark). Pobiera wiersze, które mają tylko jedną cyfrę w siódmej kolumnie w pliku CSV, a następnie zapisuje dane wyjściowe do **/HVACOut** w domyślnym kontenerze magazynu dla klastra.
 
     ```scala
     import org.apache.spark.SparkContext

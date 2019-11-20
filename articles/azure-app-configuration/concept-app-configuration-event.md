@@ -1,55 +1,55 @@
 ---
-title: Dające dodatnią reakcję na zdarzenia pary klucz wartość konfiguracji aplikacji platformy Azure | Dokumentacja firmy Microsoft
-description: Usługa Azure Event Grid do subskrybowania zdarzenia konfiguracji aplikacji.
+title: Reagowanie na zdarzenia klucza konfiguracji aplikacji platformy Azure | Microsoft Docs
+description: Użyj Azure Event Grid, aby subskrybować zdarzenia konfiguracji aplikacji.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 05/30/2019
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 601124aef37d2b285db71130f5c63b3620c7768f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5da64155f2823712eee7a60427b1c1e80abec068
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735649"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185297"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagowanie na zdarzenia konfiguracji aplikacji platformy Azure
 
-Azure — wydarzenia konfiguracji aplikacji umożliwiają aplikacjom reagować na zmiany w wartościach klucza. Odbywa się bez konieczności skomplikowanego kodu lub sondowania kosztowne i nieefektywna usług. Zamiast tego zdarzenia są przekazywane za pośrednictwem [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) dla subskrybentów, takie jak [usługi Azure Functions](https://azure.microsoft.com/services/functions/), [usługi Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), lub nawet własne odbiornika http niestandardowego, a tylko płatność za rzeczywiste użycie.
+Zdarzenia konfiguracji aplikacji platformy Azure umożliwiają aplikacjom reagowanie na zmiany w kluczowych wartościach. Jest to wykonywane bez konieczności stosowania skomplikowanego kodu lub kosztownych i nieefektywnych usług sondowania. Zamiast tego zdarzenia są wypychane za pośrednictwem [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do subskrybentów, takich jak [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)lub nawet do własnego niestandardowego odbiornika HTTP i płacisz tylko za to, czego używasz.
 
-Azure — wydarzenia konfiguracji aplikacji są wysyłane do usługi Azure Event Grid, która zapewnia niezawodne dostarczanie usług do aplikacji dzięki rozbudowanym funkcjom ponawiania, zasad i dostarczania wiadomości utraconych. Aby dowiedzieć się więcej, zobacz [dostarczanie komunikatów usługi Event Grid i ponów próbę](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Zdarzenia konfiguracji aplikacji platformy Azure są wysyłane do Azure Event Grid, które zapewniają niezawodne usługi dostarczania dla aplikacji dzięki rozbudowanym zasadom ponowień i dostarczaniu wiadomości utraconych. Aby dowiedzieć się więcej, zobacz [Event Grid dostarczania komunikatów i ponów próbę](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
-Typowe scenariusze zdarzeń konfiguracji obejmują odświeżanie konfiguracji aplikacji, wyzwalania wdrożeń lub przepływ pracy korzystający z konfiguracji. Gdy zmiany są rzadkie, ale dany scenariusz wymaga natychmiastowej reakcji, oparte na zdarzeniach architektury może być szczególnie wydajne.
+Typowe scenariusze zdarzeń konfiguracji aplikacji obejmują odświeżanie konfiguracji aplikacji, wyzwalanie wdrożeń lub przepływ pracy zorientowany na konfigurację. Gdy zmiany są rzadko wykonywane, ale scenariusz wymaga natychmiastowej reakcji, Architektura oparta na zdarzeniach może być szczególnie wydajna.
 
-Przyjrzyj się [konfiguracji aplikacji usługi Azure Route zdarzenia niestandardowe sieci web punktu końcowego — interfejs wiersza polecenia](./howto-app-configuration-event.md) potrzeby krótkiego przykładu. 
+Zapoznaj się z tematem [kierowanie zdarzeń konfiguracji aplikacji platformy Azure do niestandardowego punktu końcowego sieci Web — interfejs wiersza polecenia](./howto-app-configuration-event.md) na potrzeby szybkiego przykładu. 
 
-![Model siatki zdarzeń](./media/event-grid-functional-model.png)
+![Model Event Grid](./media/event-grid-functional-model.png)
 
-## <a name="available-azure-app-configuration-events"></a>Dostępności zdarzenia konfiguracji aplikacji platformy Azure
-Korzysta z usługi Event grid [subskrypcji zdarzeń](../event-grid/concepts.md#event-subscriptions) aby komunikaty o zdarzeniach trasy dla subskrybentów. Subskrypcje zdarzeń konfiguracji aplikacji może zawierać dwa typy zdarzeń:  
+## <a name="available-azure-app-configuration-events"></a>Dostępne zdarzenia konfiguracji aplikacji platformy Azure
+Funkcja Event Grid używa [subskrypcji zdarzeń](../event-grid/concepts.md#event-subscriptions) do kierowania komunikatów o zdarzeniach do subskrybentów. Subskrypcje zdarzeń konfiguracji aplikacji platformy Azure mogą zawierać dwa typy zdarzeń:  
 
 > |Nazwa zdarzenia|Opis|
 > |----------|-----------|
-> |`Microsoft.AppConfiguration.KeyValueModified`|Po utworzeniu lub zastąpić pary klucz wartość|
-> |`Microsoft.AppConfiguration.KeyValueDeleted`|Wywoływane, gdy klucz wartość zostanie usunięta.|
+> |`Microsoft.AppConfiguration.KeyValueModified`|Uruchamiany, gdy wartość klucza jest tworzona lub zastępowana|
+> |`Microsoft.AppConfiguration.KeyValueDeleted`|Uruchamiany po usunięciu wartości klucza|
 
 ## <a name="event-schema"></a>Schemat zdarzeń
-Konfiguracja aplikacji Azure — wydarzenia zawierają wszystkie informacje potrzebne do reagowania na zmiany w danych. Zdarzenia konfiguracji aplikacji można zidentyfikować, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.AppConfiguration". Dodatkowe informacje na temat użycia właściwości zdarzeń usługi Event Grid jest udokumentowany w [schematu zdarzeń usługi Event Grid](../event-grid/event-schema.md).  
+Zdarzenia konfiguracji aplikacji platformy Azure zawierają wszystkie informacje potrzebne do reagowania na zmiany danych. Możesz zidentyfikować zdarzenie konfiguracji aplikacji, ponieważ właściwość eventType zaczyna się od "Microsoft. AppConfiguration". Dodatkowe informacje na temat użycia właściwości zdarzeń Event Grid są udokumentowane w [Event Grid schemacie zdarzeń](../event-grid/event-schema.md).  
 
 > |Właściwość|Typ|Opis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|string|Pełny identyfikator usługi Azure Resource Manager konfiguracji aplikacji, który emituje zdarzenia.|
-> |subject|string|Identyfikator URI klucz wartość, która jest przedmiotem zdarzenia.|
-> |eventTime|string|Data/Godzina wygenerowania zdarzenia, w formacie ISO 8601.|
-> |eventType|string|"Microsoft.AppConfiguration.KeyValueModified" or "Microsoft.AppConfiguration.KeyValueDeleted".|
-> |Identyfikator|string|Unikatowy identyfikator tego zdarzenia.|
-> |dataVersion|string|Wersja schematu dla obiektu danych.|
-> |metadataVersion|string|Wersja schematu właściwości najwyższego poziomu.|
-> |data|obiekt|Zbieranie danych określonego zdarzenia konfiguracji aplikacji platformy Azure|
-> |Data.key|string|Klucz klucz wartość, która została zmieniona lub usunięta.|
-> |data.label|string|Etykieta, jeśli istnieje klucz wartość, która została zmieniona lub usunięta.|
-> |data.etag|string|Aby uzyskać `KeyValueModified` tag etag nowy klucz wartość. Aby uzyskać `KeyValueDeleted` tag etag klucz wartość, która została usunięta.|
+> |temat|ciąg|Pełny Azure Resource Manager Identyfikator konfiguracji aplikacji, która emituje zdarzenie.|
+> |subject|ciąg|Identyfikator URI wartości klucz-wartość, która jest podmiotem zdarzenia.|
+> |eventTime|ciąg|Data/godzina wygenerowania zdarzenia w formacie ISO 8601.|
+> |eventType|ciąg|"Microsoft. AppConfiguration. KeyValueModified" lub "Microsoft. AppConfiguration. KeyValueDeleted".|
+> |Identyfikator|ciąg|Unikatowy identyfikator tego zdarzenia.|
+> |dataVersion|ciąg|Wersja schematu obiektu danych.|
+> |metadataVersion|ciąg|Wersja schematu właściwości najwyższego poziomu.|
+> |data|obiekt|Kolekcja danych zdarzeń specyficznych dla konfiguracji aplikacji platformy Azure|
+> |Data. Key|ciąg|Klucz wartości, który został zmodyfikowany lub usunięty.|
+> |Data. Label|ciąg|Etykieta (jeśli istnieje) wartości klucz-wartość, która została zmodyfikowana lub usunięta.|
+> |Data. ETag|ciąg|Dla `KeyValueModified` element ETag nowej wartości key-value. Dla `KeyValueDeleted` element ETag, który został usunięty.|
 
 Oto przykład zdarzenia KeyValueModified:
 ```json
@@ -70,20 +70,20 @@ Oto przykład zdarzenia KeyValueModified:
 
 ```
 
-Aby uzyskać więcej informacji, zobacz [schematu zdarzeń konfiguracji aplikacji usługi Azure](../event-grid/event-schema-app-configuration.md).
+Aby uzyskać więcej informacji, zobacz [schemat zdarzeń konfiguracji aplikacji platformy Azure](../event-grid/event-schema-app-configuration.md).
 
-## <a name="practices-for-consuming-events"></a>Wskazówki dotyczące używania zdarzenia
-Aplikacje, które obsługują zdarzenia konfiguracji aplikacji, należy wykonać kilka zalecanych rozwiązań:
+## <a name="practices-for-consuming-events"></a>Praktyki związane z zużywaniem zdarzeń
+Aplikacje, które obsługują zdarzenia konfiguracji aplikacji, powinny spełniać kilka zalecanych praktyk:
 > [!div class="checklist"]
-> * Zgodnie z wieloma subskrypcjami można skonfigurować w celu kierowanie zdarzeń do tego samego programu obsługi zdarzeń, ważne jest, nie przyjęto założenie, że są zdarzenia z konkretnego źródła, ale Sprawdź tematu wiadomości, aby upewnić się, że pochodzi on z konfiguracji aplikacji, które są oczekiwane.
-> * Podobnie upewnij się, że zdarzenia jest przygotowany do procesów, a nie należy zakładać, że wszystkie zdarzenia, które otrzymujesz będzie typów, których oczekujesz.
-> * Nadejścia nowych wiadomości mogą poza kolejnością i po pewne opóźnienie, należy użyć pól element etag, aby zrozumieć, jeśli Twoje informacje, informacje o obiektach są nadal aktualne.  Ponadto użyć pola program sequencer, aby zrozumieć kolejności zdarzeń dla dowolnego określonego obiektu.
-> * Używać pola tematu do dostępu klucz wartość, która została zmodyfikowana.
+> * Można skonfigurować wiele subskrypcji do kierowania zdarzeń do tego samego programu obsługi zdarzeń, dlatego ważne jest, aby nie przyjąć zdarzeń z określonego źródła, ale w celu upewnienia się, że pochodzi on z konfiguracji aplikacji, której oczekujesz.
+> * Podobnie Sprawdź, czy typ zdarzenia jest przygotowana do przetworzenia i nie zakładaj, że wszystkie zdarzenia, które otrzymujesz, są oczekiwanymi typami.
+> * Ponieważ komunikaty mogą się pojawiać poza kolejnością i po pewnym opóźnieniu, należy użyć pól ETag, aby zrozumieć, czy informacje o obiektach są nadal aktualne.  Ponadto należy użyć pól programu Sequencer do zrozumienia kolejności zdarzeń dla każdego określonego obiektu.
+> * Użyj pola podmiot, aby uzyskać dostęp do zmodyfikowanej wartości klucz-wartość.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat usługi Event Grid i wypróbuj zdarzenia konfiguracji aplikacji platformy Azure:
+Dowiedz się więcej o Event Grid i wydawanie zdarzeń konfiguracji aplikacji platformy Azure spróbuj:
 
 - [Event Grid — informacje](../event-grid/overview.md)
-- [Kierowanie zdarzeń usługi konfiguracji aplikacji platformy Azure do niestandardowego internetowego punktu końcowego](./howto-app-configuration-event.md)
+- [Kierowanie zdarzeń konfiguracji aplikacji platformy Azure do niestandardowego internetowego punktu końcowego](./howto-app-configuration-event.md)

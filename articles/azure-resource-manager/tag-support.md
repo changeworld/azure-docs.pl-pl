@@ -3,12 +3,12 @@ title: Obsługa tagów dla zasobów
 description: Pokazuje, które typy zasobów platformy Azure obsługują Tagi. Zawiera szczegółowe informacje dotyczące wszystkich usług platformy Azure.
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: MT
+ms.openlocfilehash: 2799784ad449304a7790ad5f83d8ed1c94dd3547
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173548"
+ms.locfileid: "74194976"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [Tagi](resource-group-using-tags.md). Kolumna z etykietą **obsługuje znaczniki** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna **tag z etykietą w raporcie koszt** wskazuje, czy ten typ zasobu przekazuje tag do raportu kosztów.
@@ -673,7 +673,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ReservationRecommendations | Nie | Nie |
 > | ReservationSummaries | Nie | Nie |
 > | ReservationTransactions | Nie | Nie |
-> | Tagi | Nie | Nie |
+> | `Tags` | Nie | Nie |
 > | Dzierżaw | Nie | Nie |
 > | Warunki | Nie | Nie |
 > | UsageDetails | Nie | Nie |
@@ -1818,7 +1818,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Tak | Tak |
-> | managedInstances/bazy danych | Tak (patrz [Uwaga poniżej](#sqlnote)) | Tak |
+> | managedInstances/bazy danych | Nie | Nie |
 > | managedInstances/databases/backupShortTermRetentionPolicies | Nie | Nie |
 > | managedInstances/bazy danych/schematy/tabele/kolumny/sensitivityLabels | Nie | Nie |
 > | managedInstances/Databases/vulnerabilityAssessments | Nie | Nie |
@@ -2039,6 +2039,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | monitora | Nie | Nie |
 > | notificationSettings | Nie | Nie |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, jak zastosować Tagi do zasobów, zobacz [Używanie tagów do organizowania zasobów platformy Azure](resource-group-using-tags.md).

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577988"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195936"
 ---
 # <a name="about-voice-assistants"></a>Asystenci głosu — informacje
 
@@ -39,7 +39,8 @@ Pierwszym krokiem tworzenia asystenta głosowego jest podjęcie decyzji o tym, c
 Zaleca się [bezpośrednie używanie mowy liniowej](direct-line-speech.md) jako najlepszego wyboru, jeśli nie masz jeszcze pewności, co chcesz obsłużyć asystenta. Oferuje ona integrację z rozbudowanym zestawem narzędzi i ułatwieniami autorskimi, takimi jak [rozwiązanie dla Asystenta wirtualnego i szablon przedsiębiorstwa](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) oraz [Usługa QNA Maker](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) , które umożliwiają kompilowanie wspólnych wzorców i korzystanie z istniejących źródeł wiedzy.
 
 [Polecenia niestandardowe (wersja zapoznawcza)](custom-commands.md) zapewniają usprawnione środowisko tworzenia i hostingu specjalnie dostosowane do scenariuszy poleceń i kontroli języka naturalnego.
-   ![Porównanie rozwiązań Asystenta](media/voice-assistants/assistant-solution-comparison.png "Comparison rozwiązań asystenta ")
+
+   ![Porównanie rozwiązań Asystenta](media/voice-assistants/assistant-solution-comparison.png "Porównanie rozwiązań Asystenta")
 
 ## <a name="core-features"></a>Podstawowe funkcje
 
@@ -55,11 +56,11 @@ Bez względu na to, czy wybierasz [bezpośrednią mowę liniową](direct-line-sp
 
 Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Ta tabela zawiera listę przewodników szybki start dla asystenta głosowego uporządkowanych według języka.
 
-| Szybki start | Platforma | Dokumentacja interfejsu API |
+| Szybki start | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
-| C#, Platformy UWP | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Przycisku](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Przycisku](https://aka.ms/csspeech/javaref) |
+| C#, Platformy UWP | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -84,7 +85,7 @@ W przypadku asystentów głosowych utworzonych przy użyciu usługi Azure Speech
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
 * [Pobieranie zestawu Speech SDK](speech-sdk.md)

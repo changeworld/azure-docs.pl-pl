@@ -1,5 +1,5 @@
 ---
-title: Usługa frontonu platformy Azure — często zadawane pytania dotyczące przednich drzwi | Microsoft Docs
+title: Usługa frontonu platformy Azure — często zadawane pytania
 description: Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure front-drzwi
 services: frontdoor
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: c8f95a1de85fd2eb00b0525fca8e62ade87dd57f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809734"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184653"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Często zadawane pytania dotyczące usługi Azure Front drzwiczk
 
@@ -124,7 +124,7 @@ Nowe tworzenie do przodu lub wszelkie aktualizacje istniejących przednich drzwi
 
 Uwaga — Aktualizacje niestandardowego certyfikatu protokołu SSL trwają około 30 minut, aby można je było wdrożyć globalnie.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Czy można zrównoważyć ruch z przodu platformy Azure lub kierowaniu ruchu w sieci wirtualnej?
 
@@ -211,7 +211,7 @@ Dzienniki inspekcji są dostępne dla usługi Azure front-drzwi. W portalu klikn
 
 Tak, usługa frontonu platformy Azure obsługuje alerty. Alerty są konfigurowane na metrykach. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

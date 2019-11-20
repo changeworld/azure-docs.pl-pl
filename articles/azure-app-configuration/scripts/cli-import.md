@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — importowanie do magazynu usługi Azure App Configuration | Microsoft Docs
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Importowanie do magazynu konfiguracji aplikacji platformy Azure | Microsoft Docs
 description: Zawiera informacje i przykładowe skrypty importowania do magazynu usługi Azure App Configuration
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cd1e54fc6cfbf254da010c03dfaa859a0ee8213c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6399039a68279a5b734fb3d7cb5bfad60e2c35e1
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029815"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185012"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importowanie do magazynu usługi Azure App Configuration
 
-Ten przykładowy skrypt importuje pary klucz-wartość do magazynu usługi Azure App Configuration.
+Ten przykładowy skrypt importuje ustawienia klucz-wartość do magazynu konfiguracji aplikacji platformy Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2,0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Aby zainstalować lub uaktualnić, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 Należy najpierw zainstalować rozszerzenie interfejsu wiersza polecenia usługi Azure App Configuration, wykonując następujące polecenie:
 
@@ -48,14 +48,14 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa poniższych poleceń do importowania magazynu konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+Ten skrypt używa następujących poleceń do zaimportowania do magazynu konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [az appconfig import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Importuje do zasobu magazynu konfiguracji aplikacji. |
+| [zaimportu AZ AppConfig KV](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Importuje do zasobu magazynu konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
-Dodatkowe przykłady skryptów interfejsu wiersza polecenia usługi App Configuration można znaleźć w [dokumentacji usługi Azure App Configuration](../cli-samples.md).
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia konfiguracji aplikacji można znaleźć w [przykładach interfejsu wiersza polecenia konfiguracji aplikacji platformy Azure](../cli-samples.md).

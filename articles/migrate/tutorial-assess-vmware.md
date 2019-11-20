@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 7187cb41fa7ea499035c57e83e04038b1269b418
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158674"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196442"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware za pomocą Azure Migrate: Ocena serwera
 
@@ -172,7 +172,7 @@ Urządzenie musi połączyć się z vCenter Server, aby odnaleźć dane dotyczą
 
 ### <a name="specify-vcenter-server-details"></a>Określanie szczegółów programu vCenter Server
 1. W obszarze **określ vCenter Server Szczegóły**Określ nazwę (FQDN) lub adres IP vCenter Server. Możesz opuścić port domyślny lub określić niestandardowy port, na którym nasłuchuje vCenter Server.
-2. W polu **Nazwa użytkownika** i **hasło**określ poświadczenia konta tylko do odczytu, które będą używane przez urządzenie do odnajdywania maszyn wirtualnych na serwerze vCenter. Upewnij się, że konto ma [wymagane uprawnienia do odnajdywania](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). Zakres odnajdywania można ograniczyć, ograniczając dostęp do konta vCenter odpowiednio; Więcej informacji o określaniu zakresu odnajdywania [znajdziesz tutaj](tutorial-assess-vmware.md#scoping-discovery).
+2. W polu **Nazwa użytkownika** i **hasło**określ poświadczenia konta vCenter Server, które będą używane przez urządzenie do odnajdywania maszyn wirtualnych na serwerze vCenter. Upewnij się, że konto ma [wymagane uprawnienia do odnajdywania](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). Zakres odnajdywania można ograniczyć, ograniczając dostęp do konta vCenter odpowiednio; Więcej informacji o określaniu zakresu odnajdywania [znajdziesz tutaj](tutorial-assess-vmware.md#scoping-discovery).
 3. Kliknij pozycję **Sprawdź poprawność połączenia** , aby upewnić się, że urządzenie może połączyć się z vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Określ poświadczenia maszyny wirtualnej
@@ -222,7 +222,7 @@ Istnieją 2 podejścia do przypisywania uprawnień do obiektów spisu w programi
 
     Podobnie w przypadku migracji serwera rola zdefiniowana przez użytkownika (może mieć nazwę <em>Azure _Migrate</em>) z tymi przypisanymi [uprawnieniami](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) musi być stosowana do konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne do migracji.
 
-![Przypisywanie uprawnień](./media/tutorial-assess-vmware/assign-perms.png)
+  ![Przypisywanie uprawnień](./media/tutorial-assess-vmware/assign-perms.png)
 
 - Alternatywnym podejściem jest przypisanie konta użytkownika i roli na poziomie centrum danych i propagowanie ich do obiektów podrzędnych. Następnie nadaj kontu rolę **Brak dostępu** dla każdego obiektu (takiego jak maszyny wirtualne), które nie mają być odnajdywane/migrowane. Ta konfiguracja jest nieposkomplikowana. Udostępnia on przypadkowe kontrole dostępu, ponieważ każdy nowy obiekt podrzędny ma również automatycznie udzielony dostęp Dziedziczony z elementu nadrzędnego. W związku z tym zalecamy korzystanie z pierwszej metody.
 
@@ -342,7 +342,7 @@ Klasyfikacje zaufania dla oceny są następujące.
 [Dowiedz się więcej](best-practices-assessment.md#best-practices-for-confidence-ratings) o najlepszych rozwiązaniach dotyczących klasyfikacji zaufania.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

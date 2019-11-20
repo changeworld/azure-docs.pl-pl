@@ -1,6 +1,6 @@
 ---
 title: Wizualizowanie danych monitorowania zdalnego przy użyciu Power BI na platformie Azure | Microsoft Docs
-description: Ten samouczek używa Power BI Desktop i Cosmos DB do integerate danych z rozwiązania do zdalnego monitorowania do niestandardowej wizualizacji. Dzięki temu użytkownicy mogą tworzyć własne niestandardowe pulpity nawigacyjne i udostępniać je użytkownikom, którzy nie znajdują się w rozwiązaniu.
+description: Ten samouczek używa Power BI Desktop i Cosmos DB do integrowania danych z rozwiązania do zdalnego monitorowania w dostosowanej wizualizacji. Dzięki temu użytkownicy mogą tworzyć własne niestandardowe pulpity nawigacyjne i udostępniać je użytkownikom, którzy nie znajdują się w rozwiązaniu.
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 13b10aa4f40b7c4b62b35e8580c2826c10e6683f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166285"
+ms.locfileid: "74184238"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Wizualizowanie danych monitorowania zdalnego przy użyciu Power BI
 
@@ -22,13 +22,13 @@ W tym samouczku przedstawiono sposób podłączenia danych rozwiązania do monit
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć obecnie uruchomione rozwiązanie do monitorowania zdalnego
-- Musisz mieć dostęp do witryny [Azure Portal](https://portal.azure.com) i Twojej subskrypcji, w której działa IoT Hub i rozwiązanie
+- Musisz mieć dostęp do [Azure Portal](https://portal.azure.com) i Twojej subskrypcji, w której jest uruchomione IoT Hub i rozwiązanie
 - Musisz mieć zainstalowany program [Power BI Desktop](https://powerbi.microsoft.com) , wszystkie wersje
 
 
-## <a name="information-needed-from-azure-portal"></a>Informacje wymagane w witrynie Azure Portal
+## <a name="information-needed-from-azure-portal"></a>Informacje wymagające Azure Portal
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com) i zaloguj się w razie potrzeby
+1. W razie potrzeby przejdź do [Azure Portal](https://portal.azure.com) i zaloguj się
 
 2. Na panelu po lewej stronie kliknij pozycję grupy zasobów.
 
@@ -98,7 +98,7 @@ Po pomyślnym utworzeniu pulpitów nawigacyjnych zalecamy [opublikowanie pulpit�
 
 Należy również [odświeżyć dane](https://docs.microsoft.com/power-bi/refresh-data) na opublikowanym pulpicie nawigacyjnym, aby upewnić się, że masz najnowszy zestaw danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przedstawiono sposób wizualizacji danych monitorowania zdalnego przy użyciu Power BI
 

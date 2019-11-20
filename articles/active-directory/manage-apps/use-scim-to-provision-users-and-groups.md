@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a24ebd8aca3cebab7898689b00e590298a8d1e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144725"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195466"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>Standard scim aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -65,10 +65,10 @@ Należy pamiętać, że nie musisz obsługiwać użytkowników i grup ani wszyst
 | displayName |displayName |
 | Facsimile-TelephoneNumber |wartość phoneNumbers [typ eq "faksu"] |
 | givenName |name.givenName |
-| Stanowisko |Tytuł |
+| Stanowisko |tytuł |
 | mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |externalId |
-| Menedżer |Menedżer |
+| menedżer |menedżer |
 | Telefon komórkowy |wartość phoneNumbers [eq wpisz "wyraz mobile"] |
 | Identyfikator obiektu |ID |
 | postalCode |.postalCode adresy [typ eq "Praca"] |
@@ -1306,6 +1306,24 @@ Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki aprowizacji*
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Krok 5. publikowanie aplikacji w galerii aplikacji usługi Azure AD
 
 Jeśli tworzysz aplikację, która będzie używana przez więcej niż jedną dzierżawę, możesz ją udostępnić w galerii aplikacji usługi Azure AD. Dzięki temu organizacje mogą łatwo odnaleźć aplikację i skonfigurować obsługę administracyjną. Publikowanie aplikacji w galerii usługi Azure AD i udostępnianie jej innym osobom jest proste. Zapoznaj się z opisanymi [tutaj](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)instrukcjami. Firma Microsoft będzie współpracować z klientem w celu zintegrowania aplikacji z naszą galerią, przetestowania punktu końcowego i udostępnienia [dokumentacji](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) do dołączania do klientów. 
+
+
+### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autoryzacja łączników aprowizacji w galerii aplikacji
+Specyfikacja Standard scim nie definiuje schematu specyficznego dla Standard scim na potrzeby uwierzytelniania i autoryzacji. Opiera się na korzystaniu z istniejących standardów branżowych. Klient aprowizacji usługi Azure AD obsługuje dwie metody autoryzacji dla aplikacji w galerii. 
+
+**Przepływ przyznania kodu autoryzacji OAuth:** Usługa aprowizacji obsługuje [przyznawanie kodu autoryzacji](https://tools.ietf.org/html/rfc6749#page-24). Po przesłaniu żądania opublikowania aplikacji w galerii nasz zespół będzie mógł zebrać następujące informacje:
+*  Adres URL autoryzacji: adres URL klienta, aby uzyskać autoryzację od właściciela zasobu za pośrednictwem przekierowania agenta użytkownika. Użytkownik zostanie przekierowany do tego adresu URL, aby autoryzować dostęp. 
+*  Adres URL wymiany tokenów: adres URL klienta programu, który umożliwia wymianę autoryzacji dla tokenu dostępu, zazwyczaj z uwierzytelnianiem klienta.
+*  Identyfikator klienta: serwer autoryzacji wystawia zarejestrowany klientowi identyfikator klienta, który jest unikatowym ciągiem reprezentującym Informacje rejestracyjne dostarczone przez klienta.  Identyfikator klienta nie jest wpisem tajnym; jest on narażony na właściciela zasobu i **nie może** być używany do uwierzytelniania klientów.  
+*  Wpis tajny klienta: klucz tajny klienta jest kluczem tajnym wygenerowanym przez serwer autoryzacji. Powinna to być unikatowa wartość znana tylko serwerowi autoryzacji. 
+
+Najlepsze rozwiązania (zalecane, ale nie wymagane):
+* Obsługa wielu adresów URL przekierowań. Administratorzy mogą skonfigurować obsługę administracyjną zarówno z "portal.azure.com", jak i "aad.portal.azure.com". Obsługa wielu adresów URL przekierowania gwarantuje, że użytkownicy będą mogli autoryzować dostęp z dowolnego portalu.
+* Obsługa wielu wpisów tajnych w celu zapewnienia bezproblemowego odnawiania tajnego. 
+
+**Tokeny okaziciela OAuth o długim czasie trwania:** Jeśli aplikacja nie obsługuje przepływu przydzielenia kodu autoryzacji OAuth, można również wygenerować token okaziciela OAuth o długim czasie trwania, który może być używany przez administratora do skonfigurowania integracji aprowizacji. Token powinien być tymczasowy lub w przeciwnym razie zadanie aprowizacji zostanie poddane [kwarantannie](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) po wygaśnięciu tokenu. Token musi być poniżej rozmiarze 1 KB w rozmiarze.  
+
+Aby uzyskać dodatkowe metody uwierzytelniania i autoryzacji, daj nam znać w witrynie [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Zezwalaj na adresy IP używane przez usługę Azure AD Provisioning do podejmowania żądań Standard scim
 

@@ -1,7 +1,7 @@
 ---
-title: 'Projektant: cena predykcyjna (regresja)'
+title: 'Projektant: przewidywanie cen samochodów (podstawowy)'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak utworzyć model uczenia maszynowego, aby przewidzieć cenę samochodów, bez konieczności pisania pojedynczego wiersza kodu.
+description: Utwórz model regresji ML, aby przewidzieć cenę samochodów, bez konieczności pisania jednego wiersza kodu za pomocą narzędzia Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: ab922733133856409e7c91ee7b216fdc5a341c06
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647168"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196135"
 ---
-# <a name="sample-1---regression-predict-price"></a>Przykład 1-regresja: cena predykcyjna
+# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Korzystanie z regresji do przewidywania cen samochodów za pomocą narzędzia Azure Machine Learning Designer
+
+**Projektant (wersja zapoznawcza) — przykład 1**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Dowiedz się, jak utworzyć model regresji uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza).
@@ -80,7 +83,7 @@ Przekaż wyniki do modułu **oceny modelu** , aby wygenerować metryki oceny. Ab
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 

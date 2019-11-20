@@ -1,5 +1,5 @@
 ---
-title: Migrowanie sieci wirtualnej platformy Azure (klasycznej) z grupy koligacji do regionu | Microsoft Docs
+title: Migrowanie usługi Azure Virtual Network (klasycznej) z grupy koligacji do regionu
 description: Dowiedz się, jak przeprowadzić migrację sieci wirtualnej (klasycznej) z grupy koligacji do regionu.
 services: virtual-network
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 57e6c551e1377425dab5509a886a0454b9410a32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058395"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196694"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migrowanie sieci wirtualnej (klasycznej) z grupy koligacji do regionu
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby większość nowych wdrożeń korzystała z modelu wdrażania Menedżer zasobów.
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby większość nowych wdrożeń korzystała z modelu wdrażania Menedżer zasobów.
 
 Grupy koligacji zapewniają, że zasoby utworzone w ramach tej samej grupy koligacji są fizycznie hostowane przez serwery, które są blisko siebie, co umożliwia szybkie komunikowanie się tych zasobów. W przeszłości grupy koligacji były wymagane do tworzenia sieci wirtualnych (klasycznych). W tym czasie usługa Menedżera sieci, która zarządza sieciami wirtualnymi (klasyczna), może funkcjonować tylko w ramach zestawu serwerów fizycznych lub jednostki skalowania. Udoskonalenia architektury zwiększyły zakres zarządzania siecią do regionu.
 
@@ -52,8 +52,8 @@ Zaleca się, aby nie używać grup koligacji w ogóle. W odniesieniu do wymagań
    
     **Stara wartość:** \<VirtualNetworkSitename = "VNetUSWest" AffinityGroup = "VNetDemoAG"\> 
    
-    **Nowa wartość:** \<VirtualNetworkSitename = "VNetUSWest" Location = "zachodnie stany USA"\>
-3. Zapisz zmiany i zaimportuj konfigurację sieci na platformę Azure. [](virtual-networks-using-network-configuration-file.md#import)
+    **Nowa wartość:** \<VirtualNetworkSitename = "VNetUSWest" Location = "zachodnie Stany usa"\>
+3. Zapisz zmiany i [zaimportuj](virtual-networks-using-network-configuration-file.md#import) konfigurację sieci na platformę Azure.
 
 > [!NOTE]
 > Ta migracja nie powoduje żadnego przestoju usług.

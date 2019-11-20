@@ -8,18 +8,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d5432c794c26e350b23fe47aa1574422143ca4b2
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d1ef8852916e598373c104fb98a1c09ab656fbaf
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521958"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196202"
 ---
 # <a name="using-custom-security-policies-preview"></a>Korzystanie z niestandardowych zasad zabezpieczeń (wersja zapoznawcza)
 
 Aby pomóc w zabezpieczeniu systemów i środowiska, Azure Security Center generuje zalecenia dotyczące zabezpieczeń. Zalecenia te są oparte na najlepszych rozwiązaniach branżowych, które są włączone do ogólnych, domyślnych zasad zabezpieczeń dostarczonych wszystkim klientom. Mogą również pochodzić z Security Center znajomości standardów branżowych i prawnych.
 
-Za pomocą tej funkcji w wersji zapoznawczej możesz dodać własne inicjatywy *niestandardowe* . Następnie otrzymasz zalecenia, jeśli maszyny nie będą zgodne z tworzonymi zasadami.
+Za pomocą tej funkcji w wersji zapoznawczej możesz dodać własne inicjatywy *niestandardowe* . Następnie otrzymasz zalecenia, jeśli środowisko nie będzie zgodne z tworzonymi zasadami.
+
+Zgodnie z [opisem w dokumentacji](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) Azure Policy, gdy określisz lokalizację dla inicjatywy niestandardowej, musi to być grupa zarządzania lub subskrypcja. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Aby dodać inicjatywę niestandardową do subskrypcji 
 
@@ -55,12 +57,12 @@ Za pomocą tej funkcji w wersji zapoznawczej możesz dodać własne inicjatywy *
     > [!NOTE]
     > Tworzenie nowych inicjatyw wymaga poświadczeń właściciela subskrypcji. Aby uzyskać więcej informacji na temat ról platformy Azure, zobacz [uprawnienia w Azure Security Center](security-center-permissions.md).
 
-1. Aby zobaczyć, jakie są zalecenia dotyczące zasad, kliknij przycisk **zalecenia** na pasku bocznym, aby otworzyć stronę zalecenia. Zalecenia będą wyświetlane z etykietą "niestandardowy" i będą dostępne przez maksymalnie 30 minut.
+1. Aby zobaczyć, jakie są zalecenia dotyczące zasad, kliknij przycisk **zalecenia** na pasku bocznym, aby otworzyć stronę zalecenia. Zalecenia będą wyświetlane z etykietą "niestandardowy" i będą dostępne w ciągu około godziny.
 
     [![zalecenia niestandardowe](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przedstawiono sposób tworzenia niestandardowych zasad zabezpieczeń. 
 

@@ -1,5 +1,5 @@
 ---
-title: Uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem poświadczeń SAS przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux
+title: 'Samouczek: uzyskiwanie dostępu do usługi Azure Storage przy użyciu poświadczeń SAS-Linux-Azure AD'
 description: Samouczek, który przedstawia sposób użycia przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Linux do uzyskania dostępu do usługi Azure Storage przy użyciu poświadczeń SAS zamiast klucza dostępu do konta magazynu.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fa483a34efa3a9486e04d894a3139d17b157b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 670ae329943610ba16411da3782bc1da079c6490
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308011"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183209"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem poświadczeń SAS przy użyciu przypisanej przez system tożsamości maszyny wirtualnej z systemem Linux
 
@@ -29,7 +29,7 @@ ms.locfileid: "60308011"
 Ten samouczek przedstawia sposób używania tożsamości zarządzanej przypisanej przez system do maszyny wirtualnej z systemem Linux w celu uzyskania poświadczeń sygnatury dostępu współdzielonego magazynu. W szczególności [poświadczeń SAS usługi](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
 > [!NOTE]
-> Klucza sygnatury dostępu Współdzielonego wygenerowane w tym samouczku będzie nie być ograniczone/powiązane z do maszyny Wirtualnej.  
+> Klucz sygnatury dostępu współdzielonego wygenerowany w tym samouczku nie zostanie ograniczony/powiązany z maszyną wirtualną.  
 
 Sygnatura dostępu współdzielonego usługi zapewnia możliwość udzielenia ograniczonego dostępu do obiektów na koncie magazynu przez ograniczony czas oraz dla konkretnej usługi (w naszym przypadku usługi obiektów blob) bez ujawniania klucza dostępu do konta. Możesz użyć poświadczeń SAS w zwykły sposób wykorzystywany podczas wykonywania operacji magazynu, np. podczas używania zestawu SDK usługi Storage. W tym samouczku zademonstrujemy przekazywanie i pobieranie obiektu blob przy użyciu interfejsu wiersza polecenia usługi Azure Storage. Poznasz następujące czynności:
 
@@ -226,7 +226,7 @@ Odpowiedź:
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Azure Storage przy użyciu poświadczeń SAS.  Aby dowiedzieć się więcej o sygnaturze dostępu współdzielonego usługi Azure Storage, zobacz:
 

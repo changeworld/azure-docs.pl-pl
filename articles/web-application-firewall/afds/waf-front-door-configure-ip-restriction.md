@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie reguły ograniczeń adresów IP za pomocą reguły zapory aplikacji sieci Web dla usługi frontonu platformy Azure
+title: Konfigurowanie reguły WAF ograniczeń adresów IP dla usługi Azure front-drzwi
 description: Dowiedz się, jak skonfigurować regułę zapory aplikacji sieci Web, aby ograniczyć adresy IP dla istniejącego punktu końcowego usługi "Azure front-drzwi".
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: d0a32c4d59d580cb82ad6174c57ebbf677ac75b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2917b2f04e7c5a4896c52861ab7eab4e0eb00b5d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517165"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186695"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurowanie reguły ograniczeń adresów IP za pomocą zapory aplikacji sieci Web dla usługi platformy Azure front-drzwi
 W tym artykule opisano sposób konfigurowania reguł ograniczeń adresów IP w zaporze aplikacji sieci Web (WAF) dla usługi frontonu platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell lub szablonu Azure Resource Manager.
@@ -182,6 +182,6 @@ Połącz obiekt zasad WAF z istniejącym hostem frontonu i zaktualizuj właściw
 Aby wyświetlić szablon służący do tworzenia zasad usługi Azure Front-drzwiczk i zasad WAF z użyciem niestandardowych reguł ograniczeń adresów IP, przejdź do witryny [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [utworzyć profil usługi frontonu platformy Azure](../../frontdoor/quickstart-create-front-door.md).

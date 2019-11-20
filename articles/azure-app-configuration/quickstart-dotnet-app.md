@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329799"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185056"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji .NET Framework przy użyciu konfiguracji aplikacji platformy Azure
 
@@ -28,7 +28,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [Program Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
@@ -45,11 +45,11 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 ## <a name="create-a-net-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET
 
-1. Uruchom program Visual Studio i wybierz pozycję **plik** > **Nowy** > **projektu**.
+1. Uruchom program Visual Studio i wybierz pozycję **plik** > **Nowy** > **projekt**.
 
 1. W obszarze **Utwórz nowy projekt**odfiltruj typ projektu **konsoli** i kliknij pozycję **Aplikacja konsolowa (.NET Framework)** . Kliknij przycisk **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij przycisk **Utwórz**.
+1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij pozycję **Utwórz**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
@@ -81,7 +81,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
     </appSettings>
     ```
 
-   Parametry połączenia magazynu konfiguracji aplikacji są odczytywane ze zmiennej środowiskowej `ConnectionString`. Dodaj konstruktora konfiguracji `Environment` przed `MyConfigStore` we właściwości `configBuilders` sekcji `appSettings`.
+   Parametry połączenia magazynu konfiguracji aplikacji są odczytywane ze zmiennej środowiskowej `ConnectionString`. Dodaj `Environment` konstruktora konfiguracji przed `MyConfigStore` we właściwości `configBuilders` sekcji `appSettings`.
 
 1. Otwórz *program.cs*i zaktualizuj metodę `Main`, aby użyć konfiguracji aplikacji przez wywołanie `ConfigurationManager`.
 
@@ -110,9 +110,9 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go z aplikacją konsolową .NET Framework. Aby dowiedzieć się więcej na temat sposobu korzystania z konfiguracji aplikacji, przejdź do następnego samouczka, który pokazuje uwierzytelnianie.
+W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go z aplikacją konsolową .NET Framework. Wartość `AppSettings` `ConfiguratoinManager` nie zmieni się po uruchomieniu aplikacji. Biblioteka dostawcy konfiguracji .NET Standard konfiguracji aplikacji, ale również może być używana w aplikacji .NET Framework. Aby dowiedzieć się, jak włączyć dynamiczne Odświeżanie ustawień konfiguracji aplikacji .NET Framework, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)
+> [Włącz konfigurację dynamiczną](./enable-dynamic-configuration-dotnet.md)

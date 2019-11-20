@@ -1,39 +1,39 @@
 ---
-title: Wdrażanie zapory platformy Azure Dzięki strefom dostępności przy użyciu programu Azure PowerShell
-description: W tym artykule dowiesz się, jak wdrożyć zapory platformy Azure Dzięki strefom dostępności przy użyciu programu Azure PowerShell.
+title: Wdrażanie zapory platformy Azure za pomocą Strefy dostępności przy użyciu programu PowerShell
+description: W tym artykule dowiesz się, jak wdrożyć zaporę platformy Azure z Strefy dostępności przy użyciu Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 56958eedceeb4602589d65d5e0eb7b10e8a9ff2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33dcebf14f4d534962783a30ec94f7ff6529ae0d
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703996"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195923"
 ---
-# <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Wdrażanie zapory platformy Azure Dzięki strefom dostępności przy użyciu programu Azure PowerShell
+# <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Wdrażanie zapory platformy Azure za pomocą Strefy dostępności przy użyciu Azure PowerShell
 
-Podczas wdrażania na wielu strefach dostępności na potrzeby zwiększonej dostępności można skonfigurować zaporę platformy Azure.
+Zaporę platformy Azure można skonfigurować podczas wdrażania w celu rozdzielenia wielu Strefy dostępności w celu zwiększenia dostępności.
 
-Ta funkcja umożliwia następujące scenariusze:
+Ta funkcja włącza następujące scenariusze:
 
-- Można zwiększyć dostępność przez 99,99% czasu. Aby uzyskać więcej informacji, zobacz zapory usługi Azure [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). Czas działania 99,99% umowy SLA jest oferowana po wybraniu co najmniej dwóch strefach dostępności.
-- Można również skojarzyć zapory usługi Azure do określonej strefy tylko ze względów odległości między elementami przy użyciu usług standardowa SLA 99,95% czasu.
+- Możesz zwiększyć dostępność do 99,99% czasu pracy. Aby uzyskać więcej informacji, zobacz Umowa dotycząca poziomu usług zapory platformy Azure [(SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). Umowa SLA na czas działania na 99,99% jest oferowana w przypadku wybrania co najmniej dwóch Strefy dostępności.
+- Można także skojarzyć zaporę platformy Azure z określoną strefą tylko z przyczyn bliskości przy użyciu standardowej umowy SLA usługi 99,95%.
 
-Aby uzyskać więcej informacji o strefach dostępności zapory platformy Azure, zobacz [co to jest zapory usługi Azure?](overview.md)
+Aby uzyskać więcej informacji na temat Strefy dostępności zapory platformy Azure, zobacz [co to jest Zapora systemu Azure?](overview.md)
 
-W poniższym przykładzie programu Azure PowerShell pokazuje, jak może wdrożyć zapory platformy Azure Dzięki strefom dostępności.
+Poniższy przykład Azure PowerShell pokazuje, jak można wdrożyć zaporę platformy Azure z Strefy dostępności.
 
-## <a name="create-a-firewall-with-availability-zones"></a>Tworzenie zapory przy użyciu strefy dostępności
+## <a name="create-a-firewall-with-availability-zones"></a>Tworzenie zapory za pomocą Strefy dostępności
 
-W tym przykładzie tworzy zaporę w stref 1, 2 i 3.
+Ten przykład umożliwia utworzenie zapory w strefach 1, 2 i 3.
 
-Po utworzeniu standardowy publiczny adres IP jest określona nie określonej strefy. Domyślnie to tworzy strefowo nadmiarowe adresu IP. Standardowe publiczne adresy IP można skonfigurować w wszystkie strefy lub jedną strefę.
+Po utworzeniu standardowego publicznego adresu IP nie określono konkretnej strefy. Spowoduje to utworzenie domyślnie nadmiarowego adresu IP. Standardowe publiczne adresy IP można skonfigurować we wszystkich strefach lub w jednej strefie.
 
-Ważne jest dowiedzieć się, ponieważ nie może mieć zapory w strefie 1, a adres IP, które znajdują się w strefie 2. Jednak może mieć zapory w strefie 1 i adresów IP na wszystkich stref lub zaporą i adres IP, które znajdują się w tej samej strefie pojedynczego celów odległości między elementami.
+Należy pamiętać, że nie można mieć zapory w strefie 1 i adres IP w strefie 2. Można jednak mieć zaporę w strefie 1 i adres IP we wszystkich strefach lub zaporę i adres IP w tej samej pojedynczej strefie na potrzeby sąsiedztwa.
 
 ```azurepowershell
 $rgName = "resourceGroupName"
@@ -60,4 +60,4 @@ New-AzFirewall `
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+- [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

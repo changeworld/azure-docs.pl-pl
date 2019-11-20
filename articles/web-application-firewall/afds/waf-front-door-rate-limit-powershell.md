@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj regułę limitu szybkości zapory aplikacji sieci Web dla czołowych drzwi Azure PowerShell
+title: Skonfiguruj regułę limitu szybkości WAF dla czołowych drzwi Azure PowerShell
 description: Dowiedz się, jak skonfigurować regułę limitu szybkości dla istniejącego punktu końcowego z przodu.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517139"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186622"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Skonfiguruj regułę limitu szybkości zapory aplikacji sieci Web przy użyciu Azure PowerShell
 Reguła limitu szybkości usługi Azure Web Application Firewall (WAF) dla drzwi frontonu platformy Azure określa liczbę żądań dozwolonych z pojedynczego adresu IP klienta w czasie trwania jednej minuty.
@@ -102,7 +102,7 @@ W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z za�
 > [!NOTE]
 > Musisz tylko ustawić właściwość *WebApplicationFirewallPolicyLink* , aby połączyć zasady zabezpieczeń z frontonem. Kolejne aktualizacje zasad są automatycznie stosowane do frontonu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [drzwiach zewnętrznych](../../frontdoor/front-door-overview.md). 
 

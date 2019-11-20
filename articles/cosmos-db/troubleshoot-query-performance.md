@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515818"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184708"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Rozwiązywanie problemów z wydajnością zapytań dla Azure Cosmos DB
 W tym artykule opisano sposób identyfikowania, diagnozowania i rozwiązywania problemów z Azure Cosmos DB zapytań SQL. Aby osiągnąć optymalną wydajność zapytań Azure Cosmos DB, wykonaj poniższe kroki rozwiązywania problemów. 
@@ -26,29 +26,29 @@ Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że apl
 
 ## <a name="log-the-executed-sql-query"></a>Rejestruj wykonane zapytanie SQL 
 
-Wykonane zapytanie SQL można zarejestrować na koncie magazynu lub w tabeli dzienników diagnostycznych. [Dzienniki zapytań SQL za pomocą dzienników diagnostycznych](logging.md#turn-on-logging-in-the-azure-portal) umożliwiają rejestrowanie zasłoniętego zapytania na wybranym koncie magazynu. Pozwala to na wyświetlenie dzienników i znalezienie zapytania, które używa wyższych jednostek ru. Później można użyć identyfikatora działania, aby dopasować rzeczywiste zapytanie w QueryRuntimeStatistics. Zapytanie jest ukrywane ze względów bezpieczeństwa i nazw parametrów zapytania, a ich wartości w klauzulach WHERE są inne niż rzeczywiste nazwy i wartości. Możesz użyć rejestrowania na koncie magazynu, aby zachować długoterminowe przechowywanie wykonanych zapytań.  
+Wykonane zapytanie SQL można zarejestrować na koncie magazynu lub w tabeli dzienników diagnostycznych. [Dzienniki zapytań SQL za pomocą dzienników diagnostycznych](monitor-cosmos-db.md#diagnostic-settings) umożliwiają rejestrowanie zasłoniętego zapytania na wybranym koncie magazynu. Pozwala to na wyświetlenie dzienników i znalezienie zapytania, które używa wyższych jednostek ru. Później można użyć identyfikatora działania, aby dopasować rzeczywiste zapytanie w QueryRuntimeStatistics. Zapytanie jest ukrywane ze względów bezpieczeństwa i nazw parametrów zapytania, a ich wartości w klauzulach WHERE są inne niż rzeczywiste nazwy i wartości. Możesz użyć rejestrowania na koncie magazynu, aby zachować długoterminowe przechowywanie wykonanych zapytań.  
 
 ## <a name="log-query-metrics"></a>Metryki zapytań dziennika
 
-Służy `QueryMetrics` do rozwiązywania problemów z niską lub kosztowną kwerendą. 
+Użyj `QueryMetrics` do rozwiązywania wolnych lub kosztownych zapytań. 
 
-  * `FeedOptions.PopulateQueryMetrics = true` Ustaw`QueryMetrics` na wartość w odpowiedzi.
-  * `QueryMetrics`Klasa ma przeciążoną `.ToString()` funkcję, którą można wywołać, aby uzyskać ciąg `QueryMetrics`reprezentujący. 
+  * Ustaw `FeedOptions.PopulateQueryMetrics = true`, aby `QueryMetrics` w odpowiedzi.
+  * Klasa `QueryMetrics` ma przeciążoną funkcję `.ToString()`, którą można wywołać, aby uzyskać ciąg reprezentujący `QueryMetrics`. 
   * Metryki mogą być wykorzystywane do uzyskiwania następujących szczegółowych informacji, między innymi: 
   
       * Czy dowolny konkretny składnik potoku zapytania trwał czas nieokreślony (w kolejności setek milisekund lub więcej). 
 
-          * Przyjrzyj `TotalExecutionTime`się.
-          * `TotalExecutionTime` Jeśli zapytanie jest krótsze niż czas zakończenia wykonywania, czas jest poświęcany na klienta lub w sieci. Należy dokładnie sprawdzić, czy klient i region platformy Azure są rozłączone.
+          * Przyjrzyj się `TotalExecutionTime`.
+          * Jeśli `TotalExecutionTime` zapytania jest wcześniejsza niż godzina zakończenia wykonywania, czas jest poświęcany na klienta lub w sieci. Należy dokładnie sprawdzić, czy klient i region platformy Azure są rozłączone.
       
       * Czy w analizowanych dokumentach pojawiły się fałszywe pozytywne dane (Jeśli liczba dokumentów wyjściowych jest znacznie mniejsza niż liczba pobieranych dokumentów).  
 
-          * Przyjrzyj `Index Utilization`się.
-          * `Index Utilization`= (Liczba zwróconych dokumentów/liczba załadowanych dokumentów)
+          * Przyjrzyj się `Index Utilization`.
+          * `Index Utilization` = (liczba zwróconych dokumentów/liczba załadowanych dokumentów)
           * Jeśli liczba zwróconych dokumentów jest znacznie mniejsza niż załadowany numer, to wynik jest analizowany na wartość false.
           * Ogranicz liczbę pobieranych dokumentów przy użyciu wąskich filtrów.  
 
-      * Jak opłaty są nastawione przez poszczególne rundy ( `Partition Execution Timeline` patrz ciąg `QueryMetrics`). 
+      * Jak są nastawione poszczególne podróże rundy (zobacz `Partition Execution Timeline` z reprezentacji `QueryMetrics`). 
       * Czy zapytanie zużywał wysokie żądanie. 
 
 Aby uzyskać więcej informacji [, zobacz artykuł jak uzyskać informacje o metrykach wykonywania zapytań SQL](profile-sql-api-query.md) .
@@ -56,9 +56,9 @@ Aby uzyskać więcej informacji [, zobacz artykuł jak uzyskać informacje o met
 ## <a name="tune-query-feed-options-parameters"></a>Dostrajanie parametrów opcji kanału informacyjnego zapytania 
 Wydajność zapytań można dostrajać za pomocą parametrów [opcji kanału informacyjnego](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) żądania. Spróbuj ustawić poniższe opcje:
 
-  * Najpierw `MaxDegreeOfParallelism` ustaw wartość-1, a następnie Porównaj wydajność między różnymi wartościami. 
-  * Najpierw `MaxBufferedItemCount` ustaw wartość-1, a następnie Porównaj wydajność między różnymi wartościami. 
-  * Ustaw `MaxItemCount` wartość-1.
+  * Najpierw należy ustawić `MaxDegreeOfParallelism` wartość-1, a następnie porównać wydajność między różnymi wartościami. 
+  * Najpierw należy ustawić `MaxBufferedItemCount` wartość-1, a następnie porównać wydajność między różnymi wartościami. 
+  * Ustaw wartość `MaxItemCount` na-1.
 
 Porównując wydajność różnych wartości, wypróbuj wartości, takie jak 2, 4, 8, 16 i inne.
  
@@ -147,20 +147,20 @@ Aby sprawdzić, czy bieżące [zasady indeksowania](index-policy.md) są optymal
 
 Aby uzyskać więcej informacji [, zobacz jak zarządzać artykułem zasad indeksowania](how-to-manage-indexing-policy.md) .
 
-## <a name="spatial-data-check-ordering-of-points"></a>Dane przestrzenne: Sprawdź kolejność punktów
+## <a name="spatial-data-check-ordering-of-points"></a>Dane przestrzenne: sprawdzanie kolejności punktów
 Punkty, w ramach Wielokąt musi być określona w kolejności przeciwnie do ruchu wskazówek zegara. Wielokąt podane w kolejności do ruchu wskazówek zegara reprezentuje odwrotność region znajdujący się w nim.
 
 ## <a name="optimize-join-expressions"></a>Optymalizuj wyrażenia SPRZĘŻENIa
-`JOIN`wyrażenia można rozwijać na duże produkty krzyżowe. Gdy jest to możliwe, należy wykonać zapytanie dotyczące mniejszej ilości miejsca do wyszukiwania za pośrednictwem bardziej wąskiego filtru.
+wyrażenia `JOIN` można rozwijać na duże produkty krzyżowe. Gdy jest to możliwe, należy wykonać zapytanie dotyczące mniejszej ilości miejsca do wyszukiwania za pośrednictwem bardziej wąskiego filtru.
 
-Podzapytania z wieloma wartościami mogą optymalizować `JOIN` wyrażenia przez wypychanie predykatów po każdym wyrażeniu SELECT-wielu, a nie po wszystkich sprzężeniach krzyżowych `WHERE` w klauzuli. Aby zapoznać się z szczegółowym przykładem, zobacz [Optymalizacja wyrażenia sprzężenia](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) .
+Podzapytania z wieloma wartościami mogą optymalizować wyrażenia `JOIN` przez wypychanie predykatów po każdym wyrażeniu SELECT-wielu, a nie po wszystkich sprzężeniach krzyżowych w klauzuli `WHERE`. Aby zapoznać się z szczegółowym przykładem, zobacz [Optymalizacja wyrażenia sprzężenia](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) .
 
 ## <a name="optimize-order-by-expressions"></a>Optymalizowanie kolejności według wyrażeń 
-`ORDER BY`wydajność zapytań może pogorszyć się, jeśli pola są rozrzedzone lub nie znajdują się w zasadach indeksu.
+wydajność zapytań `ORDER BY` może pogorszyć się, jeśli pola są rozrzedzone lub nie znajdują się w zasadach indeksu.
 
   * W przypadku pól rozrzedzonych, takich jak czas, Zmniejsz ilość miejsca do wyszukiwania tak jak to możliwe za pomocą filtrów. 
-  * Dla jednej właściwości `ORDER BY`Dołącz właściwość w zasadach indeksu. 
-  * W przypadku wielu `ORDER BY` wyrażeń właściwości Zdefiniuj [indeks złożony](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) dla pól, które są sortowane.  
+  * W przypadku pojedynczej właściwości `ORDER BY`Właściwość include w zasadach indeksu. 
+  * W przypadku wielu wyrażeń `ORDER BY` właściwości Zdefiniuj [indeks złożony](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) dla sortowanych pól.  
 
 ## <a name="many-large-documents-being-loaded-and-processed"></a>Wiele dużych dokumentów ładowanych i przetwarzanych
 Czas i jednostek ru, które są wymagane przez zapytanie, nie są zależne od wielkości odpowiedzi, również są zależne od pracy wykonywanej przez potok przetwarzania zapytań. Czas i jednostek ru zwiększają się proporcjonalnie do ilości pracy wykonanej przez cały potok przetwarzania zapytań. Więcej pracy jest wykonywanych w dużych dokumentach, więc więcej czasu i jednostek ru są wymagane do załadowania i przetwarzania dużych dokumentów.
@@ -171,7 +171,7 @@ Upewnij się, że obsługiwana przepływność może obsługiwać obciążenie. 
 ## <a name="try-upgrading-to-the-latest-sdk-version"></a>Spróbuj uaktualnić do najnowszej wersji zestawu SDK
 Aby określić najnowszy zestaw SDK, zobacz artykuł [pobieranie zestawu SDK i informacje o wersji](sql-api-sdk-dotnet.md) .
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Zapoznaj się z poniższymi dokumentami, jak mierzyć jednostek ru na zapytanie, uzyskać statystyki wykonywania w celu dostrajania zapytań i nie tylko:
 
 * [Pobieranie metryk wykonywania zapytań SQL przy użyciu zestawu .NET SDK](profile-sql-api-query.md)

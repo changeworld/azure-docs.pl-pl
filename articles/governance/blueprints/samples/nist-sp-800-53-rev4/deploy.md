@@ -1,14 +1,14 @@
 ---
 title: Przykładowa strategia NIST SP 800-53 R4 plan — wdrażanie kroków
 description: Kroki wdrażania dla przykładu NIST SP 800-53 R4, w tym informacje o parametrach artefaktu strategii.
-ms.date: 06/24/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 9923e2923c57224cadfa471753d8c90b98855607
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 34b765816284d445e3c179f6aad43f590a58f1a1
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037310"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184459"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Wdrażanie przykładu planu NIST SP 800-53 R4
 
@@ -111,7 +111,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Prefiks konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń|Ten prefiks zostanie połączony z lokalizacją sieciowej grupy zabezpieczeń w celu utworzenia nazwy utworzonego konta magazynu.|
 |Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Nazwa grupy zasobów dla konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń (musi istnieć)|Grupa zasobów, w której zostanie utworzone konto magazynu. Ta grupa zasobów musi już istnieć.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po przejrzeniu kroków w celu wdrożenia przykładu z planu NIST SP 800-53 R4 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o mapowaniu planów i kontroli:
 

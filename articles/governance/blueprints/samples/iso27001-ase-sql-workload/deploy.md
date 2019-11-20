@@ -1,14 +1,14 @@
 ---
 title: Przykładowy plan obciążeń ISO 27001 ASE/SQL — wdrażanie kroków
 description: Wdróż kroki przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database, w tym szczegóły parametru artefaktu.
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: edcf9920f3a65c182240da735b1883b3d67da650
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d01de8788a7fdd37edf10d13651d846cb8af0ca
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032139"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184449"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Wdróż przykład planu obciążenia ISO 27001 App Service Environment/SQL Database
 
@@ -144,7 +144,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Szablon App Service Environment|Szablon usługi Resource Manager|Lokalizacja środowiska ASE|App Service Environment lokalizacji. Wartość domyślna to _zachodnie stany USA 2_.|
 |Szablon App Service Environment|Szablon usługi Resource Manager|Application Gateway przechowywanie dzienników w dniach|Przechowywanie danych w dniach. Wartość domyślna to _365_.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po przejrzeniu kroków w celu wdrożenia przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i mapowaniu formantów:
 

@@ -1,5 +1,5 @@
 ---
-title: Jak wyświetlić nazwę główną usługi tożsamości zarządzanej w Azure Portal
+title: Wyświetlanie jednostki usługi zarządzanej tożsamości w Azure Portal — Azure AD
 description: Instrukcje krok po kroku dotyczące wyświetlania nazwy głównej usługi tożsamości zarządzanej w Azure Portal.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8db0254f85980022115cab5d73f7f329b57001
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827566"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184098"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Wyświetl nazwę główną usługi tożsamości zarządzanej w Azure Portal
 
@@ -33,7 +33,7 @@ W tym artykule dowiesz się, jak wyświetlić nazwę główną usługi tożsamo�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md).
+- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 - Włącz [tożsamość przypisaną przez system na maszynie wirtualnej lub w](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) [aplikacji](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
 
@@ -47,7 +47,7 @@ Ta procedura przedstawia sposób wyświetlania nazwy głównej usługi maszyny w
 
    ![Wyświetlanie jednostki usługi zarządzania tożsamościami w portalu](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-[Zarządzane tożsamości dla zasobów platformy Azure](/azure/active-directory/managed-identities-azure-resources/overview)
+[Tożsamości zarządzane dla zasobów platformy Azure](/azure/active-directory/managed-identities-azure-resources/overview)
 

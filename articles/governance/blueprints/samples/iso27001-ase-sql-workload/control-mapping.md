@@ -1,14 +1,14 @@
 ---
 title: Przykładowy plan obciążeń ISO 27001 ASE/SQL
 description: Sterowanie mapowaniem przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database do Azure Policy i RBAC.
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: ff27f0d2076fc86454f547aaa67a112ed3c30f73
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ab650e35537213b0ce1e1d2b2f4692a09b0995ae
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032177"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184545"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Sterowanie mapowaniem przykładowego planu obciążeń ISO 27001 ASE/SQL
 
@@ -200,7 +200,7 @@ Plan pomaga zapewnić, że transfer informacji w ramach usług platformy Azure j
 - Inspekcja włączania tylko bezpiecznych połączeń z Redis Cache
 - Inspekcja bezpiecznego transferu na konta magazynu
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po przejrzeniu mapowania kontroli przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i sposobie wdrażania tego przykładu:
 

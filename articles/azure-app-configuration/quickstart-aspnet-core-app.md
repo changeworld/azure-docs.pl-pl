@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299938"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185088"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji ASP.NET Core przy użyciu konfiguracji aplikacji platformy Azure
 
@@ -59,9 +59,9 @@ Aby utworzyć nowy projekt aplikacji sieci Web MVC ASP.NET Core, należy użyć 
 
 ## <a name="add-secret-manager"></a>Dodawanie narzędzia Secret Manager
 
-Aby użyć Menedżera wpisów tajnych, Dodaj element `UserSecretsId` do pliku *csproj* .
+Aby użyć Menedżera wpisów tajnych, Dodaj element `UserSecretsId` do pliku *. csproj* .
 
-- Otwórz plik *. csproj* . Dodaj `UserSecretsId` elementu, jak pokazano poniżej. Możesz użyć tego samego identyfikatora GUID lub można zastąpić tę wartość własną. Zapisz plik.
+- Otwórz plik *. csproj* . Dodaj element `UserSecretsId`, jak pokazano poniżej. Możesz użyć tego samego identyfikatora GUID lub można zastąpić tę wartość własną. Zapisz plik.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -119,9 +119,9 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
 5. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
     
     > [!IMPORTANT]
-    > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` w programie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
+    > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` na platformie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualizacja `CreateWebHostBuilder` dla platformy .NET Core 2. x
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualizacja `CreateWebHostBuilder` dla programu .NET Core 2. x
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -134,7 +134,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualizacja `CreateHostBuilder` dla platformy .NET Core 3. x
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualizacja `CreateHostBuilder` dla programu .NET Core 3. x
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -167,7 +167,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-7. Otwórz *_Layout. cshtml* w widokach > udostępnionym katalogu i Zastąp jego zawartość następującym kodem:
+7. Otwórz *_Layout. cshtml* w widokach > udostępniony katalog i Zastąp jego zawartość następującym kodem:
 
     ```HTML
     <!DOCTYPE html>
@@ -214,9 +214,9 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i użył go za pomocą aplikacji internetowej ASP.NET Core za pośrednictwem [dostawcy konfiguracji aplikacji](https://go.microsoft.com/fwlink/?linkid=2074664). Aby dowiedzieć się więcej na temat sposobu korzystania z konfiguracji aplikacji, przejdź do następnego samouczka, w którym pokazano, jak skonfigurować aplikację sieci Web do dynamicznego odświeżania ustawień konfiguracji.
+W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i użył go za pomocą aplikacji internetowej ASP.NET Core za pośrednictwem [dostawcy konfiguracji aplikacji](https://go.microsoft.com/fwlink/?linkid=2074664). Aby dowiedzieć się, jak skonfigurować aplikację ASP.NET Core do dynamicznego odświeżania ustawień konfiguracji, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Używanie konfiguracji dynamicznej w aplikacji ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md)
+> [Włącz konfigurację dynamiczną](./enable-dynamic-configuration-aspnet-core.md)

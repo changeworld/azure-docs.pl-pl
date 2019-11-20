@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
 ms.date: 09/26/2019
 ms.author: mametcal
-ms.openlocfilehash: fe943913f9d33923438efb91630c5a85c4d1b748
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687185"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184949"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji z rozruchem wiosny
 
@@ -62,7 +62,7 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
 1. Po wyodrębnieniu plików w systemie lokalnym, prosta aplikacja rozruchowa sprężyny jest gotowa do edycji. Znajdź plik *pom.xml* w katalogu głównym swojej aplikacji.
 
-2. Otwórz plik *pliku pom. XML* w edytorze tekstów, a następnie Dodaj chmurę Azure config Starter i funkcję Management do listy `<dependencies>`:
+2. Otwórz plik *pliku pom. XML* w edytorze tekstów, a następnie Dodaj chmurę Azure config Starter i Zarządzanie funkcjami do listy `<dependencies>`:
 
     ```xml
     <dependency>
@@ -92,7 +92,7 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. W portalu konfiguracji aplikacji magazynu konfiguracji przejdź do pozycji klucze dostępu. Wybierz kartę klucze tylko do odczytu. Na tej karcie skopiuj wartość jednego z parametrów połączenia i Dodaj ją jako nową zmienną środowiskową o nazwie zmiennej `APP_CONFIGURATION_CONNECTION_STRING`.
+2. W portalu konfiguracji aplikacji magazynu konfiguracji przejdź do pozycji klucze dostępu. Wybierz kartę klucze tylko do odczytu. Na tej karcie skopiuj wartość jednego z parametrów połączenia i Dodaj ją jako nową zmienną środowiskową o zmiennej Nazwa `APP_CONFIGURATION_CONNECTION_STRING`.
 
 3. Otwórz główny plik Java aplikacji i dodaj element `@EnableConfigurationProperties`, aby włączyć tę funkcję.
 
@@ -244,7 +244,7 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji, który będzie używany do zarządzania funkcjami w aplikacji sieci Web ze sprężyną rozruchu za pośrednictwem [bibliotek zarządzania](https://go.microsoft.com/fwlink/?linkid=2074664)funkcjami.
 

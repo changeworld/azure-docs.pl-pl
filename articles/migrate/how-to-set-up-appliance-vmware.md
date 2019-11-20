@@ -1,17 +1,17 @@
 ---
-title: Skonfiguruj urządzenie do oceny/migracji serwera Azure Migrate dla maszyn wirtualnych VMware | Microsoft Docs
-description: Opisuje sposób konfigurowania urządzenia na potrzeby odnajdywania, oceny i migracji maszyn wirtualnych VMware przy użyciu Azure Migrate oceny/migracji serwera.
+title: Konfigurowanie urządzenia Azure Migrate dla oprogramowania VMware
+description: Dowiedz się, jak skonfigurować urządzenie Azure Migrate do oceniania i migrowania maszyn wirtualnych VMware.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 086d5bf2e0e2bd1e4c1db5960d402a8e1b129e94
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 1489d29f854b02cf493493fe022c73dc050e2615
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158598"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185854"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Konfigurowanie urządzenia dla maszyn wirtualnych VMware
 
@@ -133,6 +133,6 @@ Po określeniu vCenter Server i poświadczeń maszyny wirtualnej (opcjonalnie) k
 
 Metadane wykrytych maszyn wirtualnych będą wyświetlane w portalu na około 15 minut. Odnajdywanie zainstalowanych aplikacji, ról i funkcji zajmuje trochę czasu, a czas trwania zależy od liczby wykrytych maszyn wirtualnych. W przypadku maszyn wirtualnych 500 potrzeba około 1 godziny, aby spis aplikacji był wyświetlany w portalu Azure Migrate.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z samouczkami dotyczącymi [oceny oprogramowania VMware](tutorial-assess-vmware.md) i [migracji bez wykorzystania agentów](tutorial-migrate-vmware.md).

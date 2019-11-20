@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 61ffd4857ca9a330a4cb0eeace89791fc0973f70
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575090"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186056"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services wersja 3 — Omówienie
 
@@ -54,7 +54,11 @@ Dowiedz się, jak kodować i spakować zawartość, przesyłać strumieniowo fil
 > [!TIP]
 > Przed rozpoczęciem opracowywania, przejrzyj:<br/>* [podstawowe koncepcje](concepts-overview.md) (incudes ważne pojęcia, takie jak pakowanie, kodowanie i ochrona)<br/>* [Programowanie przy użyciu interfejsów api Media Services v3](media-services-apis-overview.md) (zawiera informacje na temat uzyskiwania dostępu do interfejsów API, konwencji nazewnictwa itd.)
 
-### <a name="quickstarts"></a>Szybki start  
+### <a name="sdks"></a>Zestawy SDK
+
+Rozpocznij programowanie przy użyciu [zestawów SDK klienta Azure Media Services v3](media-services-apis-overview.md#sdks).
+
+### <a name="quickstarts"></a>Przewodniki Szybki start  
 
 Przewodniki Szybki Start pokazują podstawowe instrukcje dotyczące pierwszego dnia dla nowych klientów, aby szybko wypróbować Media Services.
 
@@ -91,7 +95,7 @@ Przewodniki z poradnikami zawierają przykłady kodu, które pokazują, jak wyko
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Poznaj podstawowe koncepcje](concepts-overview.md)
 

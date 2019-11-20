@@ -1,6 +1,6 @@
 ---
-title: Importowanie lub eksportowanie danych z konfiguracji aplikacji platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie importowania lub eksportowania danych do lub z konfiguracji aplikacji platformy Azure
+title: Importowanie lub eksportowanie danych za pomocą usługi Azure App Configuration | Microsoft Docs
+description: Dowiedz się, jak importować lub eksportować dane do lub z konfiguracji aplikacji platformy Azure
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,62 +12,62 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9780dc34aa6b146fe62b11586cbab46825e60535
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393285"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185151"
 ---
 # <a name="import-or-export-configuration-data"></a>Importowanie lub eksportowanie danych konfiguracji
 
-Danych platformy Azure obsługuje konfigurację aplikacji, importowanie i eksportowanie operacji. Zastosowanie tych operacji do pracy z danymi konfiguracji zbiorcze i wymiany danych między magazynu konfiguracji aplikacji i kod projektu. Na przykład można skonfigurować Magazyn konfiguracji aplikacji do testowania i drugi dla środowiska produkcyjnego. Możesz następnie skopiować ustawienia aplikacji między nimi przy użyciu pliku tak, aby nie trzeba wprowadzać dane dwa razy.
+Konfiguracja aplikacji platformy Azure obsługuje operacje importowania i eksportowania danych. Te operacje służą do pracy z danymi konfiguracyjnymi zbiorczo i wymiany danych między magazynem konfiguracji aplikacji i projektem kodu. Na przykład można skonfigurować jeden magazyn konfiguracji aplikacji do testowania i drugi dla środowiska produkcyjnego. Następnie można skopiować ustawienia aplikacji między nimi za pośrednictwem pliku, aby nie trzeba było wprowadzać danych dwa razy.
 
-Ten artykuł zawiera wskazówki do importowania i eksportowania danych za pomocą konfiguracji aplikacji.
+Ten artykuł zawiera Przewodnik dotyczący importowania i eksportowania danych przy użyciu konfiguracji aplikacji.
 
 ## <a name="import-data"></a>Importowanie danych
 
-Import powoduje przeniesienie konfiguracji magazynu danych, w konfiguracji aplikacji z istniejącym źródłem, a nie ręcznie wprowadzić informacje. Aby przeprowadzić migrację danych do magazynu konfiguracji aplikacji lub zagregowanych danych z wielu źródeł, należy użyć funkcji importowania. Konfiguracja aplikacji obsługuje importowania z pliku JSON, YAML lub właściwości.
+Import przenosi dane konfiguracji do magazynu konfiguracji aplikacji z istniejącego źródła, a nie wprowadza go ręcznie. Funkcja import służy do migrowania danych do magazynu konfiguracji aplikacji lub agregowania danych z wielu źródeł. Konfiguracja aplikacji obsługuje importowanie z pliku JSON, YAML lub właściwości.
 
-Importowanie danych przy użyciu [witryny Azure portal](https://portal.azure.com) lub [wiersza polecenia platformy Azure](./scripts/cli-import.md). W witrynie Azure portal wykonaj następujące kroki:
+Importuj dane przy użyciu [Azure Portal](https://portal.azure.com) lub [interfejsu wiersza polecenia platformy Azure](./scripts/cli-import.md). W Azure Portal wykonaj następujące kroki:
 
-1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie wybierz pozycję **Import/Export**.
+1. Przejdź do magazynu konfiguracji aplikacji, a następnie wybierz pozycję **Importuj/Eksportuj**.
 
-2. Na **importu** zaznacz **źródła usługi** > **pliku konfiguracyjnego**.
+2. Na karcie **Importowanie** wybierz pozycję **plik konfiguracji** > **usługi źródłowej** .
 
-3. Wybierz **dla języka** > **typu pliku**.
+3. Wybierz opcję dla **typu pliku** > **języka** .
 
-4. Wybierz **folderu** ikonę i przejdź do pliku, który chcesz zaimportować.
+4. Wybierz ikonę **folderu** i przejdź do pliku do zaimportowania.
 
-    ![Plik importu](./media/import-file.png)
+    ![Importuj plik](./media/import-file.png)
 
-5. Wybierz **Separator**i opcjonalnie wprowadź **prefiksu** do użycia dla importowanych nazwy kluczy.
+5. Wybierz **separator**i opcjonalnie wprowadź **prefiks** do użycia dla zaimportowanych nazw kluczy.
 
-6. Opcjonalnie można zaznaczyć **etykiety**.
+6. Opcjonalnie możesz wybrać **etykietę**.
 
-7. Wybierz **Zastosuj** zakończenie importowania.
+7. Wybierz pozycję **Zastosuj** , aby zakończyć importowanie.
 
-    ![Plik importu jest gotowy](./media/import-file-complete.png)
+    ![Zakończono Importowanie pliku](./media/import-file-complete.png)
 
 ## <a name="export-data"></a>Eksportowanie danych
 
-Eksportowanie zapisuje dane konfiguracji przechowywane w konfiguracji aplikacji do innego miejsca docelowego. Funkcja eksportu, na przykład, aby zapisać dane w magazynie konfiguracji aplikacji do pliku, który jest osadzony w kodzie aplikacji podczas wdrażania.
+Eksportuj dane konfiguracji zapisu przechowywane w konfiguracji aplikacji do innego miejsca docelowego. Użyj funkcji eksportu, na przykład, aby zapisać dane w magazynie konfiguracji aplikacji do pliku, który jest osadzony w kodzie aplikacji podczas wdrażania.
 
-Eksportowanie danych przy użyciu [witryny Azure portal](https://portal.azure.com) lub [wiersza polecenia platformy Azure](./scripts/cli-export.md). W witrynie Azure portal wykonaj następujące kroki:
+Eksportuj dane przy użyciu [Azure Portal](https://portal.azure.com) lub [interfejsu wiersza polecenia platformy Azure](./scripts/cli-export.md). W Azure Portal wykonaj następujące kroki:
 
-1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie wybierz pozycję **Import/Export**.
+1. Przejdź do magazynu konfiguracji aplikacji, a następnie wybierz pozycję **Importuj/Eksportuj**.
 
-2. Na **wyeksportować** zaznacz **obiektem docelowym usługi** > **pliku konfiguracyjnego**.
+2. Na karcie **eksport** wybierz opcję docelowy **plik konfiguracji** > **usługi** .
 
-3. Opcjonalnie wprowadź **prefiksu** i wybierz **etykiety** i punktu w czasie dla kluczy do wyeksportowania.
+3. Opcjonalnie wprowadź **prefiks** i wybierz **etykietę** oraz punkt w czasie, który mają zostać wyeksportowane.
 
-4. Wybierz **typu pliku** > **Separator**.
+4. Wybierz >  **separatora**.
 
-5. Wybierz **Zastosuj** do zakończenia eksportowania.
+5. Wybierz pozycję **Zastosuj** , aby zakończyć eksport.
 
-    ![Plik eksportu jest gotowy](./media/export-file-complete.png)
+    ![Zakończono eksportowanie pliku](./media/export-file-complete.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji internetowej platformy ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Tworzenie aplikacji sieci Web ASP.NET Core](./quickstart-aspnet-core-app.md)  

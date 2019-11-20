@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3a5517c31cdac0bf6f5ea386a8614d15521d4479
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035533"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185141"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Integracja z tożsamościami zarządzanymi przez platformę Azure
+# <a name="integrate-with-azure-managed-identities"></a>Integracja z usługą tożsamości zarządzanych platformy Azure
 
-Azure Active Directory [zarządzane tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pomagają uprościć zarządzanie kluczami tajnymi aplikacji w chmurze. Za pomocą tożsamości zarządzanej można skonfigurować swój kod do korzystania z jednostki usługi, która została utworzona dla usługi obliczeniowej platformy Azure, na której działa. Użytkownik korzysta z tożsamości zarządzanej zamiast oddzielnego poświadczenia przechowywanego w Azure Key Vault lub lokalnych parametrów połączenia. 
+Azure Active Directory [zarządzane tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pomagają uprościć zarządzanie kluczami tajnymi aplikacji w chmurze. Za pomocą tożsamości zarządzanej można skonfigurować swój kod do korzystania z jednostki usługi, która została utworzona dla usługi platformy Azure, w której działa. Użytkownik korzysta z tożsamości zarządzanej zamiast oddzielnego poświadczenia przechowywanego w Azure Key Vault lub lokalnych parametrów połączenia. 
 
-Konfiguracja aplikacji platformy Azure i jej biblioteki klienckie .NET Core, .NET i Java sprężyny są dostarczane z wbudowaną tożsamością usługi zarządzanej (MSI). Chociaż nie jest to wymagane, plik MSI eliminuje konieczność korzystania z tokenu dostępu zawierającego wpisy tajne. Twój kod może uzyskać dostęp do magazynu konfiguracji aplikacji przy użyciu tylko punktu końcowego usługi. Możesz osadzić ten adres URL w kodzie bezpośrednio bez obaw o ujawnienie jakichkolwiek wpisów tajnych.
+Konfiguracja aplikacji platformy Azure oraz jej biblioteki klienckie .NET Core, .NET Framework i Java sprężyny mają wbudowaną obsługę tożsamości zarządzanych. Chociaż nie jest to konieczne, zarządzana tożsamość eliminuje konieczność korzystania z tokenu dostępu zawierającego wpisy tajne. Twój kod może uzyskać dostęp do magazynu konfiguracji aplikacji przy użyciu tylko punktu końcowego usługi. Możesz osadzić ten adres URL w kodzie bezpośrednio bez obaw o ujawnienie jakichkolwiek wpisów tajnych.
 
-W tym samouczku pokazano, jak możesz korzystać z zalet tożsamości usługi zarządzanej w celu uzyskiwania dostępu do usługi App Configuration. Opiera się on na aplikacji internetowej wprowadzonej w przewodnikach Szybki start. Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z konfiguracją aplikacji](./quickstart-aspnet-core-app.md) .
+W tym samouczku pokazano, jak można wykorzystać zarządzaną tożsamość w celu uzyskania dostępu do konfiguracji aplikacji. Opiera się on na aplikacji internetowej wprowadzonej w przewodnikach Szybki start. Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z konfiguracją aplikacji](./quickstart-aspnet-core-app.md) .
 
-Ponadto w tym samouczku pokazano, jak można użyć MSI w połączeniu z odwołaniami Key Vault konfiguracji aplikacji. Dzięki temu można bezproblemowo uzyskać dostęp do wpisów tajnych przechowywanych w Key Vault oraz wartości konfiguracyjnych w konfiguracji aplikacji. Aby poznać tę możliwość, należy najpierw zakończyć [Korzystanie z Key Vault odwołań z ASP.NET Core](./use-key-vault-references-dotnet-core.md) .
+Ponadto w tym samouczku pokazano, jak można używać tożsamości zarządzanej w połączeniu z odwołaniami Key Vault konfiguracji aplikacji. Dzięki temu można bezproblemowo uzyskać dostęp do wpisów tajnych przechowywanych w Key Vault oraz wartości konfiguracyjnych w konfiguracji aplikacji. Aby poznać tę możliwość, należy najpierw zakończyć [Korzystanie z Key Vault odwołań z ASP.NET Core](./use-key-vault-references-dotnet-core.md) .
 
 Aby wykonać kroki opisane w tym samouczku, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałym rozwiązaniem dostępnym na platformach Windows, MacOS i Linux.
 
@@ -66,7 +66,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
 
 1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby** i wybierz magazyn konfiguracji aplikacji utworzony w ramach przewodnika Szybki Start.
 
-1. Wybierz pozycję **Kontrola dostępu (IAM)** .
+1. Wybierz **kontrola dostępu (IAM)** .
 
 1. Na karcie **sprawdzanie dostępu** wybierz pozycję **Dodaj** w interfejsie użytkownika karty **Dodaj rolę** .
 
@@ -106,7 +106,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
             .UseStartup<Startup>();
     ```
 
-1. Jeśli chcesz użyć wartości konfiguracji aplikacji, a także odwołań Key Vault, Otwórz *program.cs*i zaktualizuj metodę `CreateWebHostBuilder`, jak pokazano poniżej. Spowoduje to utworzenie nowego `KeyVaultClient` przy użyciu `AzureServiceTokenProvider` i przekazuje to odwołanie do wywołania metody `UseAzureKeyVault`.
+1. Jeśli chcesz użyć wartości konfiguracji aplikacji, a także odwołań Key Vault, Otwórz *program.cs*i zaktualizuj metodę `CreateWebHostBuilder`, jak pokazano poniżej. Spowoduje to utworzenie nowego `KeyVaultClient` przy użyciu `AzureServiceTokenProvider` i przekazanie tego odwołania do wywołania metody `UseAzureKeyVault`.
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -122,7 +122,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
                 .UseStartup<Startup>();
     ```
 
-    Teraz możesz uzyskiwać dostęp do Key Vault odwołań podobnie jak każdy inny klucz konfiguracji aplikacji. Dostawca konfiguracji użyje `KeyVaultClient` skonfigurowanego do uwierzytelniania, aby Key Vault i pobrać wartość.
+    Teraz możesz uzyskiwać dostęp do Key Vault odwołań podobnie jak każdy inny klucz konfiguracji aplikacji. Dostawca konfiguracji użyje `KeyVaultClient`, który został skonfigurowany do uwierzytelniania, aby Key Vault i pobrać wartość.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -151,7 +151,7 @@ Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu serw
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Aby zamiast tego utworzyć aplikację z obsługą usługi git, uruchom [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) w Cloud Shell za pomocą parametru `--deployment-local-git`.
+Aby zamiast tego utworzyć aplikację z obsługą usługi git, uruchom [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) w Cloud Shell z parametrem `--deployment-local-git`.
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
@@ -227,7 +227,8 @@ Dostawcy usługi App Configuration dla programu .NET Framework i Java Spring ró
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
+W tym samouczku dodano tożsamość zarządzaną platformy Azure, aby usprawnić dostęp do konfiguracji aplikacji i usprawnić zarządzanie poświadczeniami dla aplikacji. Aby dowiedzieć się więcej na temat korzystania z konfiguracji aplikacji, przejdź do przykładów interfejsu wiersza polecenia platformy Azure.
 
 > [!div class="nextstepaction"]
 > [Przykłady interfejsu wiersza polecenia](./cli-samples.md)

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1cdd8fdac03c25bf28db94867891fef4c2846fcd
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821943"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196559"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -46,7 +46,7 @@ Niektóre z tych operacji można wypróbować, korzystając z następujących pr
 
 | | Witryna Azure Portal | Program Azure PowerShell |
 |---|---|---|
-| Zmień przechowywanie kopii zapasowych | [pojedyncza baza danych](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Wystąpienie zarządzane](sql-database-automated-backups.md#managed-instance-database) | [pojedyncza baza danych](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Zmień przechowywanie kopii zapasowych | [pojedyncza baza danych](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Wystąpienie zarządzane](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [pojedyncza baza danych](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Zmiana długoterminowego przechowywania kopii zapasowych | [Pojedyncza baza danych](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Wystąpienie zarządzane — nie dotyczy  | [pojedyncza baza danych](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Wystąpienie zarządzane — nie dotyczy  |
 | Przywracanie bazy danych z punktu w czasie | [Pojedyncza baza danych](sql-database-recovery-using-backups.md#point-in-time-restore) | [Pojedyncza baza danych](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Przywracanie usuniętej bazy danych | [Pojedyncza baza danych](sql-database-recovery-using-backups.md) | [Pojedyncza baza danych](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -84,6 +84,15 @@ Aby uzyskać więcej informacji, zobacz [długoterminowe przechowywanie kopii za
 ## <a name="storage-costs"></a>Koszty magazynowania
 W przypadku pojedynczych baz danych i wystąpień zarządzanych minimalna ilość miejsca w magazynie kopii zapasowej równa 100% rozmiaru bazy danych jest zapewniana bez dodatkowych opłat. W przypadku pul elastycznych minimalna ilość miejsca w magazynie kopii zapasowych równa 100% przydzielony magazyn danych dla puli jest udostępniana bez dodatkowych opłat. Dodatkowe użycie magazynu kopii zapasowych wiąże się z comiesięczną opłatą za ilość używanych GB. To dodatkowe zużycie będzie zależeć od obciążenia i rozmiaru poszczególnych baz danych.
 
+Możesz użyć analizy kosztów subskrypcji platformy Azure, aby określić bieżące wydatki na magazyn kopii zapasowych.
+
+![Analiza kosztów magazynu kopii zapasowych](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+Jeśli przejdziesz do subskrypcji i zostanie otwarty blok analiza kosztów, możesz wybrać podkategorię miernika **mi kopie Backup Storage** , aby wyświetlić bieżące koszty tworzenia kopii zapasowych i prognozę opłat. Możesz również uwzględnić inne podkategorie mierników, takie jak **wystąpienia zarządzane ogólnego przeznaczenia — magazyn** lub **wystąpienia zarządzane ogólnego przeznaczenia — magazyn** do porównywania kosztów magazynu kopii zapasowych z innymi kategoriami kosztów.
+
+> [!Note]
+> [Okres przechowywania można zmienić na 7 dni](#change-pitr-backup-retention-period-using-azure-portal) , aby zmniejszyć koszty magazynu kopii zapasowych.
+
 Aby uzyskać więcej informacji o cenach magazynu, zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
 
 ## <a name="are-backups-encrypted"></a>Czy kopie zapasowe są szyfrowane
@@ -118,17 +127,19 @@ Domyślny okres przechowywania kopii zapasowej kopie można zmienić przy użyci
 
 Aby zmienić kopie okres przechowywania kopii zapasowej przy użyciu Azure Portal, przejdź do obiektu serwera, którego okres przechowywania chcesz zmienić w portalu, a następnie wybierz odpowiednią opcję na podstawie tego, który obiekt serwera jest modyfikowany.
 
-#### <a name="single-azure-sql-database"></a>Pojedyncze Azure SQL Database
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[Jedna baza danych & pule elastyczne](#tab/single-database)
 
 Zmiana kopie przechowywania kopii zapasowych dla pojedynczych baz danych Azure SQL Database odbywa się na poziomie serwera. Zmiany wprowadzone na poziomie serwera dotyczą baz danych na tym serwerze. Aby zmienić kopie dla serwera Azure SQL Database z Azure Portal, przejdź do bloku przegląd serwera, kliknij pozycję Zarządzaj kopiami zapasowymi w menu nawigacji, a następnie kliknij pozycję Konfiguruj przechowywanie na pasku nawigacyjnym.
 
 ![Zmień Azure Portal kopie](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
+#### <a name="managed-instancetabmanaged-instance"></a>[Wystąpienie zarządzane](#tab/managed-instance)
 
 Zmiana przechowywania kopii zapasowych kopie dla wystąpienia zarządzanego SQL Database odbywa się na poziomie poszczególnych baz danych. Aby zmienić kopie przechowywanie kopii zapasowych dla bazy danych wystąpienia z Azure Portal, przejdź do bloku przegląd poszczególnych baz danych, a następnie kliknij pozycję Konfiguruj przechowywanie kopii zapasowych na pasku nawigacyjnym.
 
 ![Zmień Azure Portal kopie](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+
+---
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Zmienianie okresu przechowywania kopii zapasowych kopie przy użyciu programu PowerShell
 
@@ -175,7 +186,7 @@ Kod stanu: 200
 
 Aby uzyskać więcej informacji, zobacz [interfejs API REST przechowywania kopii zapasowych](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Kopie zapasowe bazy danych są istotną częścią strategii ciągłości działania i odzyskiwania po awarii, ponieważ chronią dane przed przypadkowym uszkodzeniem lub usunięciem. Aby dowiedzieć się więcej na temat innych Azure SQL Database rozwiązań z zakresu ciągłości biznesowej, zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md).
 - Aby przywrócić do punktu w czasie za pomocą Azure Portal, zobacz [przywracanie bazy danych do punktu w czasie przy użyciu Azure Portal](sql-database-recovery-using-backups.md).

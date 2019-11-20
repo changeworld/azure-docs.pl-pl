@@ -1,18 +1,18 @@
 ---
-title: Pracuj z poprzednią wersją Azure Migrate | Microsoft Docs
-description: Zawiera podsumowanie dotyczące pracy ze starszą wersją Azure Migrate
+title: Pracuj z poprzednią wersją Azure Migrate
+description: Opisuje sposób pracy z poprzednią wersją Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 07/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162454"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186537"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Pracuj z poprzednią wersją Azure Migrate
 
@@ -21,8 +21,8 @@ Ten artykuł zawiera informacje dotyczące pracy z poprzednią wersją programu 
 
 Istnieją dwie wersje usługi Azure Migrate:
 
-- **Bieżąca wersja**: Ta wersja umożliwia tworzenie projektów Azure Migrate, odnajdywanie maszyn lokalnych i organizowanie ocen i migracji. [Dowiedz się więcej](whats-new.md) na temat Nowości w tej wersji.
-- **Poprzednia wersja**: Jeśli używasz wcześniejszej wersji Azure Migrate (obsługiwana jest tylko Ocena lokalnych maszyn wirtualnych programu VMware), należy teraz używać bieżącej wersji. Jeśli nadal musisz używać Azure Migrate projektów utworzonych w poprzedniej wersji, to to, co możesz zrobić, i nie możesz tego zrobić:
+- **Bieżąca wersja**: Użyj tej wersji do tworzenia projektów Azure Migrate, odnajdywania maszyn lokalnych i organizowania ocen i migracji. [Dowiedz się więcej](whats-new.md) na temat Nowości w tej wersji.
+- **Poprzednia wersja**: Jeśli używasz starszej wersji Azure Migrate (obsługiwana jest tylko Ocena lokalnych maszyn wirtualnych programu VMware), należy teraz używać bieżącej wersji. Jeśli nadal musisz używać Azure Migrate projektów utworzonych w poprzedniej wersji, to to, co możesz zrobić, i nie możesz tego zrobić:
     - Nie można już tworzyć projektów migracji.
     - Zalecamy, aby nie wykonywać nowych odnajdywania.
     - Nadal możesz uzyskiwać dostęp do istniejących projektów.
@@ -80,8 +80,8 @@ Widok gotowości platformy Azure w ocenie przedstawia stan gotowości każdej ma
 --- | --- | ---
 Gotowa na platformę Azure | Brak problemów ze zgodnością. Maszynę można migrować na platformę Azure i uruchamiać ją na platformie Azure z pełną pomocą techniczną platformy Azure. | W przypadku maszyn wirtualnych, które są gotowe do migracji, usługa Azure Migrate wyświetla zalecany rozmiar maszyny wirtualnej na platformie Azure.
 Warunkowo gotowa na platformę Azure | Komputer może przeprowadzić rozruch na platformie Azure, ale może nie mieć pełnej pomocy technicznej platformy Azure. Na przykład maszyna ze starszą wersją systemu Windows Server, która nie jest obsługiwana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
-Brak gotowości na platformę Azure |  Maszyna wirtualna nie zostanie przeprowadzony na platformie Azure. Na przykład jeśli maszyna wirtualna ma dysk o pojemności ponad 4 TB, nie może być hostowana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
-Gotowość nieznana | Azure Migrate nie może zidentyfikować gotowości platformy Azure, zwykle ponieważ dane nie są dostępne.
+Niegotowa na platformę Azure |  Maszyna wirtualna nie zostanie przeprowadzony na platformie Azure. Na przykład jeśli maszyna wirtualna ma dysk o pojemności ponad 4 TB, nie może być hostowana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
+Nieznana gotowość | Azure Migrate nie może zidentyfikować gotowości platformy Azure, zwykle ponieważ dane nie są dostępne.
 
 
 #### <a name="azure-vm-properties"></a>Właściwości maszyny wirtualnej platformy Azure
@@ -112,10 +112,10 @@ Windows Server 2012 R2 i wszystkie SPs | Platforma Azure oferuje pełną pomoc t
 Windows Server 2012 i wszystkie SPs | Platforma Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
 Windows Server 2008 R2 i wszystkie SPs | Platforma Azure oferuje pełną pomoc techniczną.| Gotowa na platformę Azure
 Windows Server 2008 (32-bitowe i 64-bit) | Platforma Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
-Windows Server 2003, 2003 R2 | Poza wsparciem i potrzebna jest niestandardowa [Umowa dotycząca pomocy technicznej](https://aka.ms/WSosstatement) w celu uzyskania pomocy technicznej na platformie Azure. | Warunkowo gotowa na platformę Azure Rozważ uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.
+Windows Server 2003, 2003 R2 | Poza wsparciem i potrzebna jest [niestandardowa umowa dotycząca pomocy technicznej](https://aka.ms/WSosstatement) w celu uzyskania pomocy technicznej na platformie Azure. | Warunkowo gotowa na platformę Azure Rozważ uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Poza wsparciem. Komputer może przeprowadzić rozruch na platformie Azure, ale nie ma pomocy technicznej systemu operacyjnego na platformie Azure. | Warunkowo gotowa na platformę Azure zaleca się uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.
 Klient z systemem Windows 7, 8 i 10 | Platforma Azure zapewnia pomoc techniczną tylko w przypadku [subskrypcji programu Visual Studio.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Warunkowo gotowa na platformę Azure
-Windows 10 Pro Desktop | Platforma Azure zapewnia pomoc techniczną z wielodostępnymi [prawami hostingu.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Warunkowo gotowa na platformę Azure
+Windows 10 Pro Desktop | Platforma Azure zapewnia pomoc techniczną z [wielodostępnymi prawami hostingu.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Warunkowo gotowa na platformę Azure
 Windows Vista, XP Professional | Poza wsparciem. Komputer może przeprowadzić rozruch na platformie Azure, ale nie ma pomocy technicznej systemu operacyjnego na platformie Azure. | Warunkowo gotowa na platformę Azure zaleca się uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.
 Linux | System Azure poświadcza te [systemy operacyjne Linux](../virtual-machines/linux/endorsed-distros.md). Inne systemy operacyjne Linux mogą zostać uruchomione na platformie Azure, ale zalecamy uaktualnienie systemu operacyjnego do wersji zatwierdzonej przed przeprowadzeniem migracji na platformę Azure. | Gotowe na platformę Azure, jeśli wersja jest zatwierdzona.<br/><br/>Warunkowo gotowe, jeśli wersja nie jest zatwierdzona.
 Inne systemy operacyjne<br/><br/> Na przykład Oracle Solaris, Apple Mac OS itp., FreeBSD itp. | Na platformie Azure nie są zatwierdzona te systemy operacyjne. Komputer może przeprowadzić rozruch na platformie Azure, ale nie ma pomocy technicznej systemu operacyjnego na platformie Azure. | Warunkowo gotowa na platformę Azure zaleca się zainstalowanie obsługiwanego systemu operacyjnego przed przeprowadzeniem migracji na platformę Azure.  
@@ -160,10 +160,10 @@ W zależności od wartości procentowej dostępnych punktów danych w tabeli pod
 **Dostępność punktów danych** | **Ocenę zaufania**
 --- | ---
 0%–20% | 1 gwiazdka
-21%–40% | 2 gwiazdki
+21%-40% | 2 gwiazdki
 41%–60% | 3 gwiazdki
 61%–80% | 4 gwiazdki
-81%–100% | 5 gwiazdek
+81%-100% | 5 gwiazdek
 
 
 #### <a name="assessment-issues-affecting-confidence-ratings"></a>Problemy z oceną wpływające na klasyfikacje zaufania
@@ -261,7 +261,7 @@ W przypadku maszyn monitorowanych przez program System Center Operations Manager
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Tworzenie grupy z mapowaniem zależności
 
-1. Po zainstalowaniu agentów przejdź do portalu, a następnie kliknij pozycję **Zarządzaj** > **komputerami**.
+1. Po zainstalowaniu agentów przejdź do portalu, a następnie kliknij pozycję **zarządzaj** > **maszynami**.
 2. Wyszukaj maszynę, na której zainstalowano agentów.
 3. Kolumna **zależności** dla maszyny powinna teraz być wyświetlana jako **zależności widoku**. Kliknij kolumnę, aby wyświetlić zależności maszyny.
 4. Mapa zależności dla maszyny zawiera następujące szczegóły:
@@ -295,7 +295,7 @@ Aby uruchomić zapytania Kusto:
 
 1. Po zainstalowaniu agentów przejdź do portalu, a następnie kliknij pozycję **Przegląd**.
 2. W obszarze **Przegląd**przejdź do sekcji **podstawowe** projektu i kliknij nazwę obszaru roboczego podaną obok **obszaru roboczego pakietu OMS**.
-3. Na stronie obszar roboczy log Analytics kliknij pozycję**dzienniki** **Ogólne** > .
+3. Na stronie obszar roboczy Log Analytics kliknij pozycję **dzienniki** **Ogólne** > .
 4. Napisz zapytanie, aby zebrać dane zależności przy użyciu dzienników Azure Monitor. Znajdź przykładowe zapytania w następnej sekcji.
 5. Uruchom zapytanie, klikając polecenie Uruchom. 
 
@@ -340,5 +340,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się więcej o](migrate-services-overview.md) najnowszej wersji programu Azure Migrate.

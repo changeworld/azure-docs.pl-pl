@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111840"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186611"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -29,6 +29,7 @@ Tylko konta magazynu ogólnego przeznaczenia w wersji 2 obsługują GZRS i RA-GZ
 
 GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących regionach:
 
+- Azja Południowo-Wschodnia
 - Europa Północna
 - Europa Zachodnia
 - Południowe Zjednoczone Królestwo
@@ -145,7 +146,7 @@ Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.c
     - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, GRS] w regionie \_ \_". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ \_".
 5. Wybierz opcję **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
-7. Wybierz pozycję **Utwórz**.
+7. Wybierz **tworzenie**.
 
 Przedstawiciel działu pomocy technicznej skontaktuje się z Tobą, aby zapewnić pomoc.
 

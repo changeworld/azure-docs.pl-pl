@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie zasad zapory aplikacji sieci Web dla drzwi platformy Azure przy użyciu Azure Portal'
+title: 'Samouczek: Tworzenie zasad WAF dla zewnętrznych drzwi platformy Azure Azure Portal'
 description: W tym samouczku dowiesz się, jak utworzyć zasady zapory aplikacji sieci Web (WAF) przy użyciu Azure Portal.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/07/2019
 ms.author: victorh
-ms.openlocfilehash: 602a8620ef35ea247c5865d97495ea43a7d7d93c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501113"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186722"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Samouczek: Tworzenie zasad zapory aplikacji sieci Web na platformie Azure front-drzwi przy użyciu Azure Portal
 
@@ -76,7 +76,7 @@ Domyślny zestaw reguł zarządzany przez platformę Azure jest domyślnie włą
 
  ![Zmień zestaw reguł WAF](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o zaporze aplikacji sieci Web platformy azure](../overview.md)

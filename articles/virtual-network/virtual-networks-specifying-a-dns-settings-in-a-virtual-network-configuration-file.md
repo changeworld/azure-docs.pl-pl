@@ -1,5 +1,5 @@
 ---
-title: Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej | Microsoft Docs
+title: Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej platformy Azure
 description: Jak zmienić ustawienia serwera DNS w sieci wirtualnej przy użyciu pliku konfiguracji sieci wirtualnej w klasycznym modelu wdrażania
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: db8b1817bb14d293632d16fe02792dbb85766559
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059094"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196653"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej
 Plik konfiguracji sieci ma dwa elementy, których można użyć do określenia ustawień systemu nazw domen (DNS): **DnsServers** i **DnsServerRef**. Listę serwerów DNS można dodać, określając ich adresy IP i nazwy odwołań do elementu **DnsServers** . Następnie można użyć elementu **DnsServerRef** , aby określić, które wpisy serwera DNS z elementu DnsServers są używane dla różnych lokacji sieciowych w sieci wirtualnej.
@@ -64,7 +64,7 @@ Plik konfiguracji sieci może zawierać następujące elementy. Tytuł każdego 
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Poznaj [Schemat konfiguracji usługi Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093).
 * Informacje o [schemacie konfiguracji usługi platformy Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
 * [Skonfiguruj sieć wirtualną przy użyciu plików konfiguracji sieci](virtual-networks-using-network-configuration-file.md).

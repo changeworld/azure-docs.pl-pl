@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037868"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186182"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe na żywo z Azure Media Services v3
 
@@ -63,7 +63,7 @@ Korzystając ze zdarzenia Pass-through **Live**, można polegać na lokalnym kod
 
 W przypadku korzystania z kodowania w chmurze z Media Services należy skonfigurować lokalny koder na żywo, aby wysyłał wideo o pojedynczej szybkości transmisji bitów, jako źródło strumieniowe (do 32Mbps agregowania) do zdarzenia na żywo (przy użyciu protokołu wejścia/wyjścia w formacie RTMP lub fragmentacji). Zdarzenie na żywo transkoduje strumień przychodzącej pojedynczej szybkości transmisji bitów do [wielu strumieni wideo](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) o różnej szybkości transmisji bitów w różnych rozdzielczościach w celu usprawnienia dostarczania i udostępnienie go do dostarczania urządzeniom do odtwarzania za pośrednictwem standardowych protokołów branżowych, takich jak MPEG-kreska, Apple http Live Streaming (HLS) i Microsoft Smooth Streaming. 
 
-### <a name="live-transcription"></a>Transkrypcja dynamiczna
+### <a name="live-transcription-preview"></a>Transkrypcja dynamiczna (wersja zapoznawcza)
 
 Transkrypcja dynamiczna to funkcja, której można używać w przypadku wydarzeń na żywo, które są przekazywane lub kodowane na żywo. Aby uzyskać więcej informacji, zobacz [transkrypcja dynamiczna](live-transcription.md). Gdy ta funkcja jest włączona, usługa korzysta z funkcji [zamiany mowy na tekst](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services, aby transkrypcja słowa mówione w przychodzącym audio do tekstu. Ten tekst jest następnie udostępniany do dostarczania wraz z wideo i dźwiękiem w protokołach MPEG-KRESKowych i HLS.
 
@@ -120,7 +120,7 @@ Element zawartości, do której jest archiwizowany na żywo danych wyjściowych,
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Samouczek przesyłania strumieniowego na żywo](stream-live-tutorial-with-api.md)
 * [Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md)

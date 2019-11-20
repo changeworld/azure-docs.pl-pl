@@ -1,5 +1,5 @@
 ---
-title: Rdzeń wirtualny model — Omówienie
+title: Omówienie modelu rdzeni wirtualnych
 description: Model zakupów rdzeń wirtualny umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen.
 services: sql-database
 ms.service: sql-database
@@ -9,14 +9,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: b9de02bf0836727ac88b78194641238621e87a79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1bdd14841fc1c537046ee8dc3d0d6dc63b88ea25
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821059"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196531"
 ---
-# <a name="vcore-model-overview"></a>Rdzeń wirtualny model — Omówienie
+# <a name="vcore-model-overview"></a>Omówienie modelu rdzeni wirtualnych
 
 Model Virtual Core (rdzeń wirtualny) zapewnia kilka korzyści:
 
@@ -95,7 +95,7 @@ Aby włączyć sprzęt serii M dla subskrypcji i regionu, żądanie obsługi mus
 ### <a name="compute-and-memory-specifications"></a>Specyfikacje obliczeniowe i pamięci
 
 
-|Generowanie sprzętu  |Wystąpienia obliczeniowe  |Memory (Pamięć)  |
+|Generowanie sprzętu  |Compute  |Memory (Pamięć)  |
 |:---------|:---------|:---------|
 |Obliczenia     |-Procesory Intel E5-2673 v3 (Haswell) 2,4 GHz<br>— Zapewnij do 24 rdzeni wirtualnych (1 rdzeń wirtualny = 1 rdzeń fizyczny)  |-7 GB na rdzeń wirtualny<br>— Zapewnij do 168 GB|
 |5\. generacji     |**Zainicjowane obliczenie**<br>-Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>— Inicjowanie obsługi administracyjnej do 80 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)<br><br>**Obliczenia bezserwerowe**<br>-Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>-Automatyczne skalowanie do 16 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|**Zainicjowane obliczenie**<br>-5,1 GB na rdzeń wirtualny<br>— Zapewnij do 408 GB<br><br>**Obliczenia bezserwerowe**<br>-Automatyczne skalowanie do 24 GB na rdzeń wirtualny<br>— Automatyczne skalowanie do maksymalnie 48 GB|
@@ -134,7 +134,7 @@ Postępuj zgodnie z instrukcjami, aby zmienić konfigurację, i wybierz Generowa
 
 ### <a name="hardware-availability"></a>Dostępność sprzętu
 
-#### <a name="gen4gen5"></a>Obliczenia/5 rdzeń
+#### <a name="gen4gen5-1"></a>Obliczenia/5 rdzeń
 
 Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa. 
 
@@ -175,7 +175,7 @@ Na stronie **szczegóły** podaj następujące informacje:
 Zatwierdzone żądania pomocy technicznej są zwykle spełnione w ciągu 5 dni roboczych.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby utworzyć bazę danych SQL, zobacz [Tworzenie bazy danych SQL przy użyciu Azure Portal](sql-database-single-database-get-started.md).
 - Dla określonych rozmiarów obliczeń i opcji rozmiaru magazynu dostępnych dla pojedynczych baz danych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md).

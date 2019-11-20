@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
+title: Wdrażanie & konfigurowania zapory platformy Azure w sieci hybrydowej przy użyciu programu PowerShell
 description: W tym artykule dowiesz się, jak wdrożyć i skonfigurować zaporę platformy Azure przy użyciu Azure PowerShell.
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a5a008a795b88dbcb72ed9fba869e5251fd93567
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163536"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195759"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -493,7 +493,7 @@ Teraz ponownie uruchom testy. Tym razem wszystkie powinny zakończyć się niepo
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **FW-Hybrid-Test**, aby usunąć wszystkie zasoby związane z zaporą.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Następnie możesz monitorować dzienniki usługi Azure Firewall.
 

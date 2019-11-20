@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3482cc14e73801af6d0db910ded84adf722bc6f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0983e7d68e7ad01683d588ef89827eaf79754d07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234334"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184913"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Usuwanie magazynu usługi Azure App Configuration
 
@@ -40,7 +40,7 @@ Należy najpierw zainstalować rozszerzenie interfejsu wiersza polecenia usługi
 ```azurecli-interactive
 #/bin/bash
 
-# Delete an app configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
+# Delete an App Configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
 az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 ```
 
@@ -48,7 +48,7 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa poniższych poleceń do usuwania magazynu konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+Ten skrypt zawiera następujące polecenia służące do usuwania magazynu konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
@@ -58,4 +58,4 @@ Ten skrypt używa poniższych poleceń do usuwania magazynu konfiguracji aplikac
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
-Dodatkowe przykłady skryptów interfejsu wiersza polecenia usługi App Configuration można znaleźć w [dokumentacji usługi Azure App Configuration](../cli-samples.md).
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia konfiguracji aplikacji można znaleźć w [przykładach interfejsu wiersza polecenia konfiguracji aplikacji platformy Azure](../cli-samples.md).

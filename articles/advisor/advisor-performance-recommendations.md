@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: 08af119e7f9e72de4a8ae4a1842289a4fd5d925e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 82c77568a2c62a0e02bf00c164f4600e221376da
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144146"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183118"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Poprawianie wydajności aplikacji platformy Azure za pomocą Azure Advisor
 
@@ -116,13 +116,13 @@ Azure Advisor zidentyfikuje Azure Cosmos DB kontenery używające rozmiaru stron
 
 2.  Na pulpicie nawigacyjnym usługi Advisor kliknij kartę **wydajność** .
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat zaleceń klasyfikatora, zobacz:
 
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)
 * [Wprowadzenie do usługi Advisor](advisor-get-started.md)
-* [Zalecenia dotyczące kosztów usługi Advisor](advisor-performance-recommendations.md)
+* [Zalecenia dotyczące kosztów usługi Advisor](advisor-cost-recommendations.md)
 * [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-high-availability-recommendations.md)
 * [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md)
 * [Zalecenia dotyczące doskonałości operacyjnej klasyfikatora](advisor-operational-excellence-recommendations.md)

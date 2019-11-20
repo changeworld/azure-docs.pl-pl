@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145393"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180582"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Zmniejsz koszty usługi przy użyciu Azure Advisor
 
@@ -58,12 +58,12 @@ Aby zaoszczędzić 60% kosztów, zalecamy przechowywanie migawek w magazynie w w
 
 2.  Na pulpicie nawigacyjnym usługi Advisor kliknij kartę **koszt** .
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat zaleceń klasyfikatora, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)
 * [Wprowadzenie](advisor-get-started.md)
-* [Zalecenia dotyczące wydajności usługi Advisor](advisor-cost-recommendations.md)
-* [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-cost-recommendations.md)
-* [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-cost-recommendations.md)
+* [Zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md)
+* [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-high-availability-recommendations.md)
+* [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md)
 * [Zalecenia dotyczące doskonałości operacyjnej klasyfikatora](advisor-operational-excellence-recommendations.md)

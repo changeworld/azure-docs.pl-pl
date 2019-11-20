@@ -1,19 +1,19 @@
 ---
-title: Migrowanie lokalnych maszyn wirtualnych programu VMware na platformę Azure przy użyciu migracji Azure Migrate serwera opartego na agentach | Microsoft Docs
-description: W tym artykule opisano sposób przeprowadzania migracji maszyn lokalnych na podstawie agenta na platformie Azure przy użyciu migracji Azure Migrate serwera
+title: Migrowanie maszyn wirtualnych VMware przy użyciu migracji Azure Migrate serwera opartego na agentach
+description: Dowiedz się, jak uruchomić migrację maszyn wirtualnych VMware z użyciem agentów przy użyciu Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07e91abc1130505abc84f6687be7edd04522fa76
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720175"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196294"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrowanie maszyn wirtualnych VMware na platformę Azure (oparte na agentach)
 
@@ -165,7 +165,7 @@ Usługę Mobility należy zainstalować na każdej maszynie, która ma być repl
 Przygotuj konto w następujący sposób:
 
 1. Przygotuj domenę lub konto lokalne z uprawnieniami do instalowania na maszynie wirtualnej.
-2. W przypadku maszyn wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na maszynie lokalnej przez dodanie wpisu DWORD **LocalAccountTokenFilterPolicy**z wartością w rejestrze w obszarze **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ Windows\CurrentVersion\Policies\System**
+2. W przypadku maszyn wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na maszynie lokalnej przez dodanie wpisu DWORD **LocalAccountTokenFilterPolicy**z wartością w rejestrze w obszarze **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**
 3. W przypadku maszyn wirtualnych z systemem Linux Przygotuj konto główne na źródłowym serwerze z systemem Linux.
 
 
@@ -450,6 +450,6 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, można 
 
 
 
- ## <a name="next-steps"></a>Następne kroki
+ ## <a name="next-steps"></a>Kolejne kroki
 
 Zbadaj [podróż migracji w chmurze](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) w strukturze wdrażania w chmurze platformy Azure.

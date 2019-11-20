@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111734"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185692"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Samouczek: Tworzenie potoku wzbogacania AI przy C# użyciu zestawu SDK platformy .NET
 
@@ -103,7 +103,7 @@ Aby zainstalować pakiet NuGet `Microsoft.Extensions.Configuration.Json` w progr
 
 Aby można było nawiązać połączenie z usługą Azure Wyszukiwanie poznawcze, musisz dodać informacje o usłudze wyszukiwania do projektu. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie **dodaj** > **nowy element.** ... Nadaj plikowi nazwę `appsettings.json` a następnie wybierz pozycję **Dodaj**. 
 
-Ten plik musi zostać dołączony do katalogu wyjściowego. Aby to zrobić, kliknij prawym przyciskiem myszy `appsettings.json` i wybierz polecenie **Właściwości**. Zmień wartość w polu **Kopiuj do katalogu wyjściowego** na **kopię nowsze**.
+Ten plik musi zostać dołączony do katalogu wyjściowego. Aby to zrobić, kliknij prawym przyciskiem myszy `appsettings.json` i wybierz polecenie **Właściwości**. Zmień wartość w polu **Kopiuj do katalogu wyjściowego** na **Kopiuj, jeśli nowszy**.
 
 Skopiuj poniższy kod JSON do nowego pliku JSON.
 
@@ -691,7 +691,7 @@ Ponadto przedstawiono sposób testowania wyników i resetowania systemu na potrz
 
 Najszybszym sposobem oczyszczenia po samouczku jest usunięcie grupy zasobów zawierającej usługę Azure Wyszukiwanie poznawcze i Blob service platformy Azure. Zakładając, że obie te usługi są umieszczone w tej samej grupie, usuń teraz tę grupę zasobów, aby trwale usunąć wszystkie jej elementy, w tym usługi i zapisaną zawartość utworzoną na potrzeby tego samouczka. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd każdej usługi.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dostosuj lub rozszerz potok za pomocą umiejętności niestandardowych. Utworzenie umiejętności niestandardowej i dołączenie jej do zestawu umiejętności pozwala na dodanie samodzielnie napisanej analizy tekstu lub obrazu.
 

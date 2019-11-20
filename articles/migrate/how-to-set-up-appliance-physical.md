@@ -1,17 +1,17 @@
 ---
-title: Skonfiguruj urządzenie do oceny serwerów fizycznych za pomocą oceny serwera Azure Migrate
-description: Opisuje sposób konfigurowania urządzenia do oceny serwerów fizycznych przy użyciu oceny serwera Azure Migrate.
+title: Skonfiguruj urządzenie Azure Migrate dla serwerów fizycznych
+description: Dowiedz się, jak skonfigurować urządzenie Azure Migrate na potrzeby oceny serwera fizycznego.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1e67c36753239940b15e3cb47b5b75820ea43689
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: ade2a76c168002e573a6504e31769b83f0c6eb37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158345"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185890"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Konfigurowanie urządzenia dla serwerów fizycznych
 
@@ -143,6 +143,6 @@ Po zakończeniu odnajdywania możesz sprawdzić, czy serwery są wyświetlane w 
 2. W **Azure Migrate serwery** > **Azure Migrate: Strona Ocena serwera** kliknij ikonę, która wyświetla liczbę **odnalezionych serwerów**.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wypróbuj [ocenę serwerów fizycznych](tutorial-assess-physical.md) za pomocą oceny Azure Migrate Server.

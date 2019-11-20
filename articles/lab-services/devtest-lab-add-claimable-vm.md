@@ -1,5 +1,5 @@
 ---
-title: Twórz i Zarządzaj maszynami wirtualnymi do domagania w laboratorium w Azure DevTest Labs | Microsoft Docs
+title: Twórz i Zarządzaj maszynami wirtualnymi z możliwością domagania w Azure DevTest Labs | Microsoft Docs
 description: Dowiedz się, jak dodać maszynę wirtualną z możliwością dochodzenia do laboratorium w Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ad10a1763b4882aa3bb6aec7447f57ebaf07369
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a3b8085a4dd2ece384ece72578ffafbd0e2e0b9d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123702"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184293"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Twórz i Zarządzaj maszynami wirtualnymi z możliwością domagania w Azure DevTest Labs
 Możesz dodać maszynę wirtualną z możliwością przechodzenia do laboratorium w podobny sposób, aby [dodać standardową maszynę wirtualną](devtest-lab-add-vm.md) — od *podstawowej* , która jest [obrazem niestandardowym](devtest-lab-create-template.md), [formułą](devtest-lab-manage-formulas.md)lub [obrazem witryny Marketplace](devtest-lab-configure-marketplace-images.md). Ten samouczek przeprowadzi Cię przez proces używania Azure Portal, aby dodać maszynę wirtualną do laboratorium w środowisku DevTest Labs i wyświetlić procesy, do których użytkownik może zatwierdzić i odrościć maszynę wirtualną.
@@ -97,6 +97,6 @@ Jest to nazywane "transferem dysku danych". Dysk danych jest następnie dostępn
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Po utworzeniu można nawiązać połączenie z maszyną wirtualną, wybierając pozycję **Połącz** w jej okienku zarządzania.
 * Zapoznaj się z [galerią szablonów DevTest Labs Azure Resource Manager — szybki start](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

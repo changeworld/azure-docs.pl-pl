@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087056"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185525"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązywanie problemów z maszyną wirtualną platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
 
@@ -34,7 +34,7 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna wirtualna m
 
 -   W przypadku maszyny wirtualnej z problemową maszyną wirtualną należy używać tego samego typu konta magazynu (Standard lub Premium).
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: Utwórz ratowniczą maszynę wirtualną i Zainstaluj rolę funkcji Hyper-V
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1. Tworzenie ratowniczej maszyny wirtualnej i Instalowanie roli funkcji Hyper-V
 
 1.  Utwórz nową ratowniczą maszynę wirtualną:
 
@@ -48,13 +48,13 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna wirtualna m
 
 2.  Po utworzeniu łodziowej maszyny wirtualnej do ratowniczej maszyny wirtualnej.
 
-3.  W Menedżer serwera wybierz pozycję **Zarządzaj** > **Dodaj role i funkcje**.
+3.  W Menedżer serwera wybierz pozycję **zarządzaj** > **Dodaj role i funkcje**.
 
 4.  W sekcji **Typ instalacji** wybierz pozycję **Instalacja oparta na rolach lub oparta na funkcjach**.
 
 5.  Upewnij się, że w sekcji **Wybierz serwer docelowy** została wybrana maszyna wirtualna.
 
-6.  Wybierz >  **rolę funkcji Hyper-V** **Dodaj funkcje**.
+6.  Wybierz **rolę funkcji Hyper-V** > **Dodaj funkcje**.
 
 7.  W sekcji **funkcje** wybierz pozycję **dalej** .
 
@@ -70,73 +70,58 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna wirtualna m
 
 13. Zezwól serwerowi na zainstalowanie roli funkcji Hyper-V. Trwa to kilka minut, a serwer zostanie automatycznie uruchomiony ponownie.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Tworzenie maszyny wirtualnej problemu na serwerze funkcji Hyper-V z systemem ratowniczej maszyny wirtualnej
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2. Tworzenie maszyny wirtualnej problemu na serwerze funkcji Hyper-V z systemem ratowniczej maszyny wirtualnej
 
-1.  Zapisz nazwę dysku w maszynie wirtualnej problemu, a następnie usuń maszynę wirtualną problemu. Upewnij się, że wszystkie dołączone dyski są przechowywane. 
+1.  [Utwórz dysk migawki](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) dla dysku systemu operacyjnego maszyny wirtualnej, który ma problem, a następnie Dołącz dysk migawki do maszyny wirtualnej recuse.
 
-2.  Dołącz dysk systemu operacyjnego maszyny wirtualnej z problemami jako dysk z danymi na maszynie ratowniczej.
+2.  Pulpit zdalny na ratowniczą maszynę wirtualną.
 
-    1.  Po usunięciu problemu z maszyną wirtualną przejdź do ratowniczej maszyny wirtualnej.
+3.  Otwórz przystawkę Zarządzanie dyskami (diskmgmt. msc). Upewnij się, że dysk maszyny wirtualnej problemu jest ustawiony na **tryb offline**.
 
-    2.  Wybierz pozycję **dyski**, a następnie **Dodaj dysk danych**.
+4.  Otwórz Menedżera funkcji Hyper-V: w **Menedżer serwera**wybierz **rolę funkcji Hyper-v**. Kliknij prawym przyciskiem myszy serwer, a następnie wybierz **Menedżera funkcji Hyper-V**.
 
-    3.  Wybierz dysk maszyny wirtualnej z problemami, a następnie wybierz pozycję **Zapisz**.
+5.  W Menedżerze funkcji Hyper-V kliknij prawym przyciskiem myszy ratowniczą MASZYNę wirtualną, a następnie wybierz pozycję **nowa** > **maszynę wirtualną** > **dalej**.
 
-3.  Po pomyślnym dołączeniu dysku zdalnego pulpitu do ratowniczej maszyny wirtualnej.
+6.  Wpisz nazwę maszyny wirtualnej, a następnie wybierz przycisk **dalej**.
 
-4.  Otwórz przystawkę Zarządzanie dyskami (diskmgmt. msc). Upewnij się, że dysk maszyny wirtualnej problemu jest ustawiony na **tryb offline**.
+7.  Wybierz pozycję **generacja 1**.
 
-5.  Otwórz Menedżera funkcji Hyper-V: W **Menedżer serwera**wybierz **rolę funkcji Hyper-V**. Kliknij prawym przyciskiem myszy serwer, a następnie wybierz **Menedżera funkcji Hyper-V**.
+8.  Ustaw pamięć początkową o 1024 MB lub więcej.
 
-6.  W Menedżerze funkcji Hyper-V kliknij prawym przyciskiem myszy ratowniczą maszynę wirtualną, a następnie wybierz pozycję **Nowa** > **maszyna** > wirtualna**dalej**.
+9. W razie potrzeby wybierz przełącznik sieci funkcji Hyper-V, który został utworzony. W przeciwnym razie przejdź do następnej strony.
 
-7.  Wpisz nazwę maszyny wirtualnej, a następnie wybierz przycisk **dalej**.
-
-8.  Wybierz pozycję **generacja 1**.
-
-9.  Ustaw pamięć początkową o 1024 MB lub więcej.
-
-10. W razie potrzeby wybierz przełącznik sieci funkcji Hyper-V, który został utworzony. W przeciwnym razie przejdź do następnej strony.
-
-11. Wybierz pozycję **Dołącz wirtualny dysk twardy później**.
+10. Wybierz pozycję **Dołącz wirtualny dysk twardy później**.
 
     ![obraz przedstawiający możliwość późniejszego dołączenia wirtualnego dysku twardego](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. Po utworzeniu maszyny wirtualnej wybierz pozycję **Zakończ** .
+11. Po utworzeniu maszyny wirtualnej wybierz pozycję **Zakończ** .
 
-13. Kliknij prawym przyciskiem myszy utworzoną maszynę wirtualną, a następnie wybierz pozycję **Ustawienia**.
+12. Kliknij prawym przyciskiem myszy utworzoną maszynę wirtualną, a następnie wybierz pozycję **Ustawienia**.
 
-14. Wybierz pozycję **kontroler IDE 0**, wybierz pozycję **dysk twardy**, a następnie kliknij przycisk **Dodaj**.
+13. Wybierz pozycję **kontroler IDE 0**, wybierz pozycję **dysk twardy**, a następnie kliknij przycisk **Dodaj**.
 
     ![obraz przedstawiający Dodawanie nowego dysku twardego](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. Na stronie **fizyczny dysk twardy**wybierz dysk maszyny wirtualnej problemu dołączonej do maszyny wirtualnej platformy Azure. Jeśli nie widzisz żadnych dysków na liście, sprawdź, czy dysk jest ustawiony do trybu offline przy użyciu przystawki Zarządzanie dyskami.
+14. Na stronie **fizyczny dysk twardy**wybierz dysk maszyny wirtualnej problemu dołączonej do maszyny wirtualnej platformy Azure. Jeśli nie widzisz żadnych dysków na liście, sprawdź, czy dysk jest ustawiony do trybu offline przy użyciu przystawki Zarządzanie dyskami.
 
     ![obraz dotyczący instalowania dysku](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-17. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.
+15. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
 
-18. Kliknij dwukrotnie maszynę wirtualną, a następnie ją Uruchom.
+16. Kliknij dwukrotnie maszynę wirtualną, a następnie ją Uruchom.
 
-19. Teraz możesz współpracować z maszyną wirtualną jako lokalną maszynę wirtualną. Można wykonać dowolne kroki rozwiązywania problemów.
+17. Teraz możesz współpracować z maszyną wirtualną jako lokalną maszynę wirtualną. Można wykonać dowolne kroki rozwiązywania problemów.
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>Krok 3: Utwórz ponownie maszynę wirtualną platformy Azure na platformie Azure
+## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>Krok 3. zastępowanie dysku systemu operacyjnego używanego przez maszynę wirtualną problemu
 
 1.  Po przejściu maszyny wirtualnej w tryb online Zamknij maszynę wirtualną w Menedżerze funkcji Hyper-V.
 
-2.  Przejdź do [Azure Portal](https://portal.azure.com) i wybierz dyski >owej maszyny wirtualnej, skopiuj nazwę dysku. Nazwa zostanie użyta w następnym kroku. Odłącz dysk stały od ratowniczej maszyny wirtualnej.
+2.  [Odinstaluj i Odłącz dysk systemu operacyjnego](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+).
+3.  [Zastąp dysk systemu operacyjnego używany przez maszynę wirtualną za pomocą naprawionego dysku systemu operacyjnego](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
+).
 
-3.  Przejdź do pozycji **wszystkie zasoby**, wyszukaj nazwę dysku, a następnie wybierz dysk.
+## <a name="next-steps"></a>Kolejne kroki
 
-     ![obraz przedstawiający wyszukiwanie dysku](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
-
-4. Kliknij pozycję **Utwórz maszynę wirtualną**.
-
-     ![obraz dotyczący tworzenia maszyny wirtualnej na podstawie dysku](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
-
-Możesz również użyć Azure PowerShell, aby utworzyć maszynę wirtualną na podstawie dysku. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej maszyny wirtualnej na podstawie istniejącego dysku przy użyciu programu PowerShell](../windows/create-vm-specialized.md#create-the-new-vm). 
-
-## <a name="next-steps"></a>Następne kroki
-
-Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [Rozwiązywanie problemów z połączeniami RDP z maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md). Problemy dotyczące uzyskiwania dostępu do aplikacji uruchomionych na maszynie wirtualnej można znaleźć w temacie Rozwiązywanie problemów z [łącznością aplikacji na maszynie wirtualnej z systemem Windows](troubleshoot-app-connection.md).
+Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [Rozwiązywanie problemów z połączeniami RDP z maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md). Problemy dotyczące uzyskiwania dostępu do aplikacji uruchomionych na maszynie wirtualnej można znaleźć [w temacie Rozwiązywanie problemów z łącznością aplikacji na maszynie wirtualnej z systemem Windows](troubleshoot-app-connection.md).

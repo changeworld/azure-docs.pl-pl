@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158298"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186441"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -573,14 +573,6 @@ Funkcja [gubernatora zasobów](/sql/relational-databases/resource-governor/resou
 
 **Obejście**: Uruchom `ALTER RESOURCE GOVERNOR RECONFIGURE` okresowo lub jako część zadania programu SQL Agent, które wykonuje zadanie SQL, gdy wystąpienie zostanie uruchomione, jeśli używasz [prezesa zasobów](/sql/relational-databases/resource-governor/resource-governor).
 
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Nie można uwierzytelnić na zewnętrznych serwerach poczty przy użyciu bezpiecznego połączenia (SSL)
-
-**Data:** 2019 sie
-
-Poczta bazy danych [skonfigurowana przy użyciu bezpiecznego połączenia (SSL)](/sql/relational-databases/database-mail/configure-database-mail) nie może być uwierzytelniana na niektórych serwerach poczty E-mail poza platformą Azure. Jest to problem z konfiguracją zabezpieczeń, który wkrótce zostanie rozwiązany.
-
-**Obejście problemu:** Tymczasowe usuwanie bezpiecznego połączenia (SSL) z konfiguracji poczty bazy danych do momentu rozwiązania problemu. 
-
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Okna dialogowe Service Broker między bazami danych muszą zostać zainicjowane po uaktualnieniu warstwy usług
 
 **Data:** 2019 sie
@@ -687,7 +679,7 @@ Moduły CLR umieszczane w wystąpieniu zarządzanym oraz połączone serwery lub
 
 **Obejście problemu:** Jeśli to możliwe, Użyj połączeń kontekstu w module CLR.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
 - Aby poznać funkcje i listę porównania, zobacz [Azure SQL Database porównanie funkcji](sql-database-features.md).

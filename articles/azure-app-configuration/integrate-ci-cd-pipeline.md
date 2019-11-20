@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357017"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185101"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integracja z potokiem ciągłej integracji/ciągłego wdrażania
 
@@ -56,7 +56,7 @@ Aby przeprowadzić kompilację w chmurze, w usłudze Azure DevOps na przykład u
 
     Dodaj *Parametry ConnectionString* skojarzone z magazynem konfiguracji aplikacji jako zmienną środowiskową.
 
-2. Otwórz *program.cs*i zaktualizuj `CreateWebHostBuilder` metodę, aby użyć wyeksportowanego `config.AddJsonFile()` pliku JSON przez wywołanie metody.
+2. Otwórz *program.cs*i zaktualizuj metodę `CreateWebHostBuilder`, aby użyć wyeksportowanego pliku JSON przez wywołanie metody `config.AddJsonFile()`.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -98,7 +98,7 @@ Aby przeprowadzić kompilację w chmurze, w usłudze Azure DevOps na przykład u
 
     ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/aspnet-core-app-launch-local.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wyeksportowano dane konfiguracji aplikacji platformy Azure, które będą używane w potoku wdrożenia. Aby dowiedzieć się więcej na temat korzystania z konfiguracji aplikacji, przejdź do przykładów interfejsu wiersza polecenia platformy Azure.
 

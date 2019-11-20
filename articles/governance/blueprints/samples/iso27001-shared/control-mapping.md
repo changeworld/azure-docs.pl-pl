@@ -1,14 +1,14 @@
 ---
 title: Mapowanie kontroli próbkowania usług udostępnionych ISO 27001
 description: Sterowanie mapowaniem przykładu usługi udostępnionej ISO 27001. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: e3bba30ddffe85a067d091a328ae4cc4de7258df
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9227b94ce4133d44f73e27c5008aa59d8ed2ea10
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037371"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184425"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Sterowanie mapowaniem przykładu usługi Shared Services ISO 27001
 
@@ -200,7 +200,7 @@ Plan pomaga zapewnić, że transfer informacji w ramach usług platformy Azure j
 - Inspekcja włączania tylko bezpiecznych połączeń z Redis Cache
 - Inspekcja bezpiecznego transferu na konta magazynu
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po przejrzeniu mapowania kontroli usługi udostępnionej ISO 27001 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i sposobie wdrażania tego przykładu:
 

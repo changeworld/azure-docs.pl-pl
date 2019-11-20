@@ -6,16 +6,16 @@ author: rothja
 manager: jeffreyg
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
-ms.service: billing
+ms.service: azure-policy
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: b6ce20196b6ffdcd6699611998260dc981cc4f44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818354"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185040"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 Ten dokument zawiera listę najbardziej typowych limitów Microsoft Azure, które są również czasami nazywane przydziałami. Ten dokument nie obejmuje obecnie wszystkich usług platformy Azure. Wraz z upływem czasu lista zostanie rozszerzona i zaktualizowana w celu objęcia dodatkowych usług.
@@ -25,7 +25,7 @@ Aby dowiedzieć się więcej na temat cen platformy Azure, zobacz [Omówienie ce
 > [!NOTE]
 > Jeśli chcesz podnieść limit lub przydział powyżej domyślnego limitu, [Otwórz żądanie obsługi klienta online bez dodatkowych opłat](azure-resource-manager/resource-manager-quota-errors.md). Limitów nie można zwiększyć powyżej wartości maksymalnego limitu pokazanej w poniższych tabelach. Jeśli nie ma żadnej kolumny maksymalnego limitu, zasób nie ma dopuszczalnych limitów.
 >
-> [Bezpłatna subskrypcja wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p) nie kwalifikuje się do zwiększenia limitu przydziału. Jeśli masz [bezpłatną subskrypcję wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p), możesz przeprowadzić uaktualnienie do subskrypcji [płatnej zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0003p/) użyciem. Aby uzyskać więcej informacji, zobacz [uaktualnianie subskrypcji bezpłatnej wersji próbnej platformy Azure do subskrypcji płatnej zgodnie z rzeczywistym](billing/billing-upgrade-azure-subscription.md) użyciem i [subskrypcji bezpłatnej wersji próbnej](https://azure.microsoft.com/free/free-account-faq).
+> [Bezpłatna subskrypcja wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p) nie kwalifikuje się do zwiększenia limitu przydziału. Jeśli masz [subskrypcji bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p), możesz przeprowadzić uaktualnienie do [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) subskrypcji. Aby uzyskać więcej informacji, zobacz [uaktualnianie subskrypcji bezpłatnej wersji próbnej platformy Azure do subskrypcji płatnej zgodnie z rzeczywistym](billing/billing-upgrade-azure-subscription.md) użyciem i [subskrypcji bezpłatnej wersji próbnej](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Limity i Azure Resource Manager
@@ -50,7 +50,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Azure Cloud Services](#azure-cloud-services-limits)
 * [Wyszukiwanie poznawcze platformy Azure](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
-* [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Usługi Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [System DNS platformy Azure](#azure-dns-limits)
@@ -68,7 +68,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Container Instances](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
 * [Content Delivery Network](#content-delivery-network-limits)
-* [Data Factory](#data-factory-limits)
+* [Fabryka danych](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [Usługa Database Migration Service](#database-migration-service-limits)
@@ -89,7 +89,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
-  * [Load Balancer](#load-balancer)
+  * [Moduł równoważenia obciążenia](#load-balancer)
   * [Network Watcher](#network-watcher-limits)
   * [Publiczny adres IP](#publicip-address)
   * [Link prywatny](#private-link-limits)
@@ -104,7 +104,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Magazyn](#storage-limits)
+* [Storage](#storage-limits)
 * [System StorSimple](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Subskrypcja](#subscription-limits)
@@ -402,7 +402,7 @@ Aby uzyskać SQL Database limitów, zobacz [SQL Database limitów zasobów dla p
 ### <a name="sql-data-warehouse-limits"></a>Limity SQL Data Warehouse
 Aby uzyskać SQL Data Warehouse limitów, zobacz [SQL Data Warehouse limitów zasobów](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 - [Informacje o limitach i ograniczeniach platformy Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Rozmiary maszyn wirtualnych i usług w chmurze dla platformy Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Rozmiary dla Cloud Services platformy Azure](cloud-services/cloud-services-sizes-specs.md)

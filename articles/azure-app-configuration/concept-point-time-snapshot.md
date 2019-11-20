@@ -12,27 +12,27 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 83770e8c5f415670855b5cf2502d02c4d6919440
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdbe4846700c690261dbc734063f4420478666a8
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741142"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185216"
 ---
 # <a name="point-in-time-snapshot"></a>Migawka punktu w czasie
 
-Konfiguracja aplikacji Azure przechowuje rekordy dokładne razy, gdy nową parę klucz wartość jest tworzony i następnie zmodyfikować. Te rekordy tworzą pełną oś czasu zmian wartości klucza. Konfiguracji sklepu z aplikacjami można odtworzyć historię wszystkie wartości klucza i odtwarzania jego wartość w ciągu ostatnich w danym momencie, do chwili obecnej. Dzięki tej funkcji można "czas podróży" Wstecz i pobrania starej wartości klucza. Na przykład możesz uzyskać przeszła ustawienia konfiguracji, tuż przed najnowszych wdrożenia, aby można było odzyskać poprzednią konfigurację i wycofywanie aplikacji.
+Usługa Azure App Configuration pozwala rejestrować precyzyjne informacje o tym, kiedy nowa para klucz-wartość zostanie utworzona, a następnie zmodyfikowana. Te rekordy tworzą pełną oś czasu zmian wartości klucza. Magazyn konfiguracji aplikacji może odtworzyć historię dowolnej wartości klucza i powtórzyć jego poprzednią wartość w dowolnym momencie, do obecnej. Dzięki tej funkcji możesz "podróż czasowa" do tyłu i pobrać starą wartość klucza. Można na przykład uzyskać wczoraj ustawienia konfiguracji, tuż przed najnowszym wdrożeniem, aby odzyskać poprzednią konfigurację i wycofać aplikację.
 
 ## <a name="key-value-retrieval"></a>Pobieranie wartości klucza
 
-Aby pobrać ostatnie wartości klucza, określ czas, w którym wartości klucza są migawki w nagłówku HTTP wywołania interfejsu API REST. Na przykład:
+Aby pobrać poprzednie wartości klucza, określ godzinę, o której kluczowe wartości są migawką w nagłówku HTTP wywołania interfejsu API REST. Na przykład:
 
         GET /kv HTTP/1.1
         Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
 
-Obecnie konfiguracji aplikacji przechowuje siedem dni historii zmian.
+Obecnie konfiguracja aplikacji przechowuje siedem dni historii zmian.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji internetowej platformy ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Tworzenie aplikacji sieci Web ASP.NET Core](./quickstart-aspnet-core-app.md)  

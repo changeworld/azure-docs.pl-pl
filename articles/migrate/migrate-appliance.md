@@ -1,17 +1,17 @@
 ---
-title: Architektura urządzenia Azure Migrate | Microsoft Docs
-description: Zawiera przegląd urządzenia Azure Migrate
+title: Architektura urządzenia Azure Migrate
+description: Zawiera omówienie urządzenia Azure Migrate używanego w ocenie i migracji serwera.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: bdc81820b1ac9867d45fd26e26d24c65e20641e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685099"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185830"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
@@ -58,16 +58,16 @@ Brama migracji | Wysyła zreplikowane dane maszyn wirtualnych do platformy Azure
 
 Oto dane wydajności maszyny wirtualnej VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
-**Dane** | **Przeciw** | **Wpływ oceny**
+**Dane** | **Counter** | **Wpływ oceny**
 --- | --- | ---
-Użycie procesora CPU | CPU. Usage. Average | Zalecany rozmiar maszyny wirtualnej/koszt
-Użycie pamięci | MEM. Usage. Average | Zalecany rozmiar maszyny wirtualnej/koszt
-Przepływność odczytu dysku (MB na sekundę) | virtualDisk. Read. Average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
-Przepływność zapisu na dysku (MB na sekundę) | virtualDisk. Write. Average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
-Operacje odczytu z dysku na sekundę | virtualDisk. numberReadAveraged. Average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
-Operacje zapisu na dysku na sekundę | virtualDisk. numberWriteAveraged. Average  | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Użycie procesora CPU | cpu.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
+Użycie pamięci | mem.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
+Przepływność odczytu dysku (MB na sekundę) | virtualDisk.read.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Przepływność zapisu na dysku (MB na sekundę) | virtualDisk.write.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Operacje odczytu z dysku na sekundę | virtualDisk.numberReadAveraged.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Operacje zapisu na dysku na sekundę | virtualDisk.numberWriteAveraged.average  | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
 Przepływność odczytu karty sieciowej (MB na sekundę) | NET. Receive. Average | Obliczanie rozmiaru maszyny wirtualnej
-Przepływność zapisu karty sieciowej (MB na sekundę) | NET. reprzesłane. średnia  |Obliczanie rozmiaru maszyny wirtualnej
+Przepływność zapisu karty sieciowej (MB na sekundę) | net.transmitted.average  |Obliczanie rozmiaru maszyny wirtualnej
 
 
 ## <a name="collected-metadata-vmware"></a>Zebrane metadane — VMware
@@ -77,46 +77,46 @@ Przepływność zapisu karty sieciowej (MB na sekundę) | NET. reprzesłane. śr
 
 Poniżej znajduje się pełna lista metadanych maszyn wirtualnych VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
-**Dane** | **Przeciw**
+**Dane** | **Counter**
 --- | --- 
 **Szczegóły maszyny** | 
-IDENTYFIKATOR MASZYNY WIRTUALNEJ | maszyn. Config. InstanceUuid 
+IDENTYFIKATOR MASZYNY WIRTUALNEJ | vm.Config.InstanceUuid 
 Nazwa maszyny wirtualnej | maszyn. Config.Name
 Identyfikator vCenter Server | VMwareClient. Instance. UUID
 Opis maszyny wirtualnej | maszyn. Summary. config. Annotation
-Nazwa produktu licencji | maszyn. Client. servicecontent. LicenseProductName
+Nazwa produktu licencji | vm.Client.ServiceContent.About.LicenseProductName
 Typ systemu operacyjnego | vm.SummaryConfig.GuestFullName
-Typ rozruchu | maszyn. Config. oprogramowanie układowe
+Typ rozruchu | vm.Config.Firmware
 Liczba rdzeni | maszyn. Config. Hardware. NumCPU
 Pamięć (MB) | maszyn. Config. Hardware. MemoryMB
 Liczba dysków | maszyn. Config. Hardware. Device. ToList — (). FindAll (x = > to VirtualDisk). Count
 Lista rozmiarów dysku | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 Lista kart sieciowych | maszyn. Config. Hardware. Device. ToList — (). FindAll (x = > to VirtualEthernet). Count
-Użycie procesora CPU | CPU. Usage. Average
-Użycie pamięci |MEM. Usage. Average
+Użycie procesora CPU | cpu.usage.average
+Użycie pamięci |mem.usage.average
 **Szczegóły dysku** | 
 Wartość klucza dysku | 3,5. Głównych
 Numer Dikunit | 3,5. UnitNumber
 Wartość klucza kontrolera dysku | 3,5. ControllerKey. Value
 Gigabajty inicjowane | virtualDisk. DeviceInfo. Summary
 Nazwa dysku | Wartość wygenerowana przy użyciu dysku. UnitNumber, dysk. Klucz, dysk. ControllerKey. VAlue
-Operacje odczytu na sekundę | virtualDisk. numberReadAveraged. Average
-Operacje zapisu na sekundę | virtualDisk. numberWriteAveraged. Average
-Przepływność odczytu (MB na sekundę) | virtualDisk. Read. Average
-Przepływność zapisu (MB na sekundę) | virtualDisk. Write. Average
+Operacje odczytu na sekundę | virtualDisk.numberReadAveraged.average
+Operacje zapisu na sekundę | virtualDisk.numberWriteAveraged.average
+Przepływność odczytu (MB na sekundę) | virtualDisk.read.average
+Przepływność zapisu (MB na sekundę) | virtualDisk.write.average
 **Na szczegóły karty sieciowej** | 
 Nazwa karty sieciowej | 10/100/1000. Głównych
 Adres MAC | (Karta sieciowa (VirtualEthernetCard)). MacAddress
-Adresy IPv4 | maszyn. Guest.Net
-Adresy IPv6 | maszyn. Guest.Net
+Adresy IPv4 | vm.Guest.Net
+Adresy IPv6 | vm.Guest.Net
 Przepływność odczytu (MB na sekundę) | NET. Receive. Average
-Przepływność zapisu (MB na sekundę) | NET. reprzesłane. średnia
+Przepływność zapisu (MB na sekundę) | net.transmitted.average
 **Szczegóły ścieżki spisu** | 
-Nazwa | wbudowane. GetType (). Nazwij
+Nazwa | container.GetType().Name
 Typ obiektu podrzędnego | wbudowane. Typ podrzędny
 Szczegóły odwołania | wbudowane. MoRef
 Szczegóły nadrzędne | Kontener. Parent
-Szczegóły folderu na maszynę wirtualną | (Folder). ChildEntity. Type
+Szczegóły folderu na maszynę wirtualną | ((Folder)container).ChildEntity.Type
 Szczegóły centrum danych na maszynę wirtualną | ((Centrum danych) kontener). VmFolder
 Szczegóły centrum danych na folder hosta | ((Centrum danych) kontener). HostFolder
 Szczegóły klastra na hosta | ((ClusterComputeResource)container).Host
@@ -131,7 +131,7 @@ Szczegóły hosta na maszynę wirtualną | ((HostSystem) kontener). MASZYN
 
 Poniżej przedstawiono dane wydajności maszyny wirtualnej funkcji Hyper-IT zbierane i wysyłane na platformę Azure.
 
-**Klasa licznika wydajności** | **Przeciw** | **Wpływ oceny**
+**Klasa licznika wydajności** | **Counter** | **Wpływ oceny**
 --- | --- | ---
 Procesor wirtualny funkcji hypervisor funkcji Hyper-V | Czas działania gościa (%) | Zalecany rozmiar maszyny wirtualnej/koszt
 Maszyna wirtualna pamięć dynamiczna funkcji Hyper-V | Bieżące ciśnienie (%)<br/> Ilość pamięci fizycznej widocznej dla gościa (MB) | Zalecany rozmiar maszyny wirtualnej/koszt
@@ -151,7 +151,7 @@ Poniżej znajduje się pełna lista metadanych maszyn wirtualnych funkcji Hyper-
 **Dane** | **Klasa WMI** | **Właściwość klasy usługi WMI**
 --- | --- | ---
 **Szczegóły maszyny** | 
-Numer seryjny systemu BIOS _ Msvm_BIOSElement | BIOSSerialNumber
+Numer seryjny BIOS _ Msvm_BIOSElement | BIOSSerialNumber
 Typ maszyny wirtualnej (Gen 1 lub 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
 Nazwa wyświetlana maszyny wirtualnej | Msvm_VirtualSystemSettingData | ElementName
 Wersja maszyny wirtualnej | Msvm_ProcessorSettingData | VirtualQuantity
@@ -206,13 +206,13 @@ Urządzenie zostanie uaktualnione w miarę aktualizowania Azure Migrate agentów
 
 - Dzieje się tak automatycznie, ponieważ automatyczna aktualizacja jest domyślnie włączona na urządzeniu.
 - Można zmienić to ustawienie domyślne, aby ręcznie zaktualizować agentów.
-- Aby wyłączyć automatyczne aktualizowanie, przejdź do edytora rejestru > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance i Ustaw klucz rejestru "AutoUpdate" na 0 (DWORD).
+- Aby wyłączyć automatyczne aktualizowanie, przejdź do edytora rejestru > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance i Ustaw klucz rejestru "AutoUpdate" na 0 (DWORD).
  
 ### <a name="set-agent-updates-to-manual"></a>Ustaw aktualizacje agenta na ręczne
 
 W przypadku aktualizacji ręcznych upewnij się, że wszystkie agenci na urządzeniu zostały zaktualizowane w tym samym czasie, przy użyciu przycisku **Aktualizuj** dla każdego nieaktualnego agenta na urządzeniu. Możesz w dowolnym momencie zmienić ustawienie aktualizacji na aktualizacje automatyczne.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Dowiedz się, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) skonfigurować urządzenie dla programu VMware.
 [Dowiedz się, jak](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) skonfigurować urządzenie dla funkcji Hyper-V.

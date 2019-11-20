@@ -1,17 +1,17 @@
 ---
-title: Dodaj narzędzie do oceny/migracji po raz pierwszy w Azure Migrate | Microsoft Docs
+title: Dodaj narzędzie do oceny/migracji w Azure Migrate
 description: Opisuje sposób tworzenia projektu Azure Migrate i dodawania narzędzia do oceny/migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/06/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720245"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185951"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Dodawanie narzędzia oceny/migracji po raz pierwszy
 
@@ -48,7 +48,7 @@ Skonfiguruj nowy projekt Azure Migrate w ramach subskrypcji platformy Azure i Do
     Azja   | Azja Południowo-Wschodnia lub Azja Wschodnia
     Europa | Europa Północna lub Europa Zachodnia
     Japonia  | Japonia Wschodnia lub Japonia Zachodnia
-    Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+    Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
     Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
     Kanada | Kanada Środkowa
     Indie  | Indie Środkowe lub Indie Południowe
@@ -81,6 +81,6 @@ W pewnych okolicznościach może być konieczne utworzenie dodatkowych projektó
 3. W obszarze **Ustawienia**wybierz **pozycję kliknij tutaj, aby utworzyć nowy projekt**.
 4. Utwórz nowy projekt i Dodaj nowe narzędzie zgodnie z opisem w poprzedniej procedurze.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak dodać dodatkowe narzędzia do [oceny](how-to-assess.md) i [migracji](how-to-migrate.md) . 

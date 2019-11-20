@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować tożsamości zarządzane przez system i użytkownika na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Konfigurowanie zarządzanych tożsamości na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure — Azure AD
 description: Instrukcje krok po kroku dotyczące konfigurowania tożsamości zarządzanych przez system i użytkownika na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272315346091bacb15aef02184e1cc72d64ed49d
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: ca02505ba9b7d93cac4216916909a8c6df7fdd05
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309813"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184046"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -67,7 +67,7 @@ Aby można było utworzyć maszynę wirtualną platformy Azure z włączoną to�
    az group create --name myResourceGroup --location westus
    ```
 
-3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az-vm-create). Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* z tożsamością zarządzaną przypisaną przez system, zgodnie `--assign-identity` z żądaniem parametru. Parametry `--admin-username` i `--admin-password` określają konto nazwy użytkownika administracyjnego i hasła na potrzeby logowania do maszyny wirtualnej. Zaktualizuj te wartości zgodnie z wymaganiami środowiska: 
+3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az-vm-create). Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* z tożsamością zarządzaną przypisaną przez system, zgodnie z żądaniem `--assign-identity` parametru. Parametry `--admin-username` i `--admin-password` określają konto nazwy użytkownika administracyjnego i hasła na potrzeby logowania do maszyny wirtualnej. Zaktualizuj te wartości zgodnie z wymaganiami środowiska: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -83,7 +83,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
    az login
    ```
 
-2. Użyj `identity assign` polecenia [AZ VM Identity Assign](/cli/azure/vm/identity/) z poleceniem Enable a Assigned system Identity to a Existing VM:
+2. Użyj polecenia [AZ VM Identity Assign](/cli/azure/vm/identity/) z `identity assign`, aby włączyć tożsamość przypisaną przez system do istniejącej maszyny wirtualnej:
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
@@ -102,7 +102,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 Jeśli masz maszynę wirtualną, która nie wymaga już tożsamości przypisanej do systemu i nie ma żadnych tożsamości przypisanych przez użytkownika, użyj następującego polecenia:
 
 > [!NOTE]
-> Wartość `none` uwzględnia wielkość liter. Musi być małymi literami. 
+> W `none` wartość jest uwzględniana wielkość liter. Musi być małymi literami. 
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
@@ -147,7 +147,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    }
    ```
 
-3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az-vm-create). Poniższy przykład tworzy maszynę wirtualną skojarzoną z nową tożsamością przypisaną przez użytkownika, określoną przez `--assign-identity` parametr. Upewnij się, że parametry `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` i `<USER ASSIGNED IDENTITY NAME>` zostały zastąpione własnymi wartościami. 
+3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az-vm-create). Poniższy przykład tworzy maszynę wirtualną skojarzoną z nową tożsamością przypisaną przez użytkownika, określoną przez parametr `--assign-identity`. Upewnij się, że parametry `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` i `<USER ASSIGNED IDENTITY NAME>` zostały zastąpione własnymi wartościami. 
 
    ```azurecli-interactive 
    az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY NAME>
@@ -157,7 +157,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
 Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualnej wymagane są przypisania ról współautor i [operator tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-operator) [maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
 
-1. Utwórz tożsamość przypisaną przez użytkownika za pomocą polecenia [az identity create](/cli/azure/identity#az-identity-create).  Parametr określa grupę zasobów, w której utworzono tożsamość przypisaną przez użytkownika, `-n` a parametr określa jej nazwę. `-g` Upewnij się, że parametry `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` zostały zastąpione własnymi wartościami:
+1. Utwórz tożsamość przypisaną przez użytkownika za pomocą polecenia [az identity create](/cli/azure/identity#az-identity-create).  `-g` parametr określa grupę zasobów, w której utworzono tożsamość przypisaną przez użytkownika, a parametr `-n` określa jego nazwę. Upewnij się, że parametry `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` zostały zastąpione własnymi wartościami:
 
     > [!IMPORTANT]
     > Tworzenie tożsamości zarządzanych przypisanych przez użytkownika za pomocą znaków specjalnych (tj. podkreślenia) w nazwie nie jest obecnie obsługiwane. Użyj znaków alfanumerycznych. Wracaj tutaj, aby zapoznać się z aktualizacjami.  Aby uzyskać więcej informacji [, zobacz często zadawane pytania i znane problemy](known-issues.md)
@@ -182,7 +182,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    }
    ```
 
-2. Przypisz tożsamość przypisaną przez użytkownika do maszyny wirtualnej przy użyciu polecenia [AZ VM Identity Assign](/cli/azure/vm). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. Jest to właściwość zasobu `name` tożsamości zarządzanej przypisanej przez użytkownika, jak została utworzona w poprzednim kroku: `<USER ASSIGNED IDENTITY NAME>`
+2. Przypisz tożsamość przypisaną przez użytkownika do maszyny wirtualnej przy użyciu polecenia [AZ VM Identity Assign](/cli/azure/vm). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY NAME>` to właściwość `name` zasobu tożsamości zarządzanej przez użytkownika utworzona w poprzednim kroku:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
@@ -192,7 +192,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
 Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, Twoje konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . 
 
-Jeśli jest to jedyna zarządzana tożsamość użytkownika skojarzona z maszyną wirtualną, `UserAssigned` zostanie usunięta z wartości typu tożsamości.  Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. Będzie to `name` właściwość tożsamości przypisanej przez użytkownika, którą można znaleźć w sekcji tożsamość maszyny wirtualnej przy użyciu `az vm identity show`: `<USER ASSIGNED IDENTITY>`
+Jeśli jest to jedyna zarządzana tożsamość przypisana przez użytkownika do maszyny wirtualnej, `UserAssigned` zostanie usunięta z wartości typu tożsamości.  Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY>` będzie `name` właściwość tożsamości przypisanej przez użytkownika, którą można znaleźć w sekcji tożsamość maszyny wirtualnej za pomocą `az vm identity show`:
 
 ```azurecli-interactive
 az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
@@ -201,7 +201,7 @@ az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGN
 Jeśli maszyna wirtualna nie ma tożsamości zarządzanej przypisanej do systemu i chcesz usunąć z niej wszystkie tożsamości przypisane przez użytkownika, użyj następującego polecenia:
 
 > [!NOTE]
-> Wartość `none` uwzględnia wielkość liter. Musi być małymi literami.
+> W `none` wartość jest uwzględniana wielkość liter. Musi być małymi literami.
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none" identity.userAssignedIdentities=null
@@ -213,7 +213,7 @@ Jeśli maszyna wirtualna ma zarówno tożsamość przypisaną do systemu, jak i 
 az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Zarządzanych tożsamości dla zasobów platformy Azure — omówienie](overview.md)
 - Aby zapoznać się z pełnymi przewodnikami szybki start tworzenia maszyn wirtualnych platformy Azure, zobacz: 
   - [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu interfejsu wiersza polecenia](../../virtual-machines/windows/quick-create-cli.md)  

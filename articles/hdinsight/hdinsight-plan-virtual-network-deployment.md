@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 8d89031a3b27742149d450ab79c9febf0aaef1ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498179"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185626"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planowanie sieci wirtualnej dla usługi Azure HDInsight
 
@@ -69,7 +69,7 @@ Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, jak dodać nową usłu
     
     Aby znaleźć istniejącą konfigurację zabezpieczeń, użyj następujących Azure PowerShell lub poleceń interfejsu wiersza polecenia platformy Azure:
 
-    * Sieciowe grupy zabezpieczeń
+    * Grupy zabezpieczeń sieci
 
         Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
     
@@ -221,7 +221,7 @@ Jeśli planujesz używać **grup zabezpieczeń sieci** do kontrolowania ruchu si
 
 1. Określ region platformy Azure, który ma być używany przez usługę HDInsight.
 
-2. Zidentyfikuj adresy IP wymagane przez usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
+2. Zidentyfikuj Tagi usługi wymagane przez usługę HDInsight dla danego regionu. Aby uzyskać więcej informacji, zobacz [Tagi usług sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) dla usługi Azure HDInsight](hdinsight-service-tags.md).
 
 3. Utwórz lub zmodyfikuj sieciowe grupy zabezpieczeń dla podsieci, w której ma zostać zainstalowana Usługa HDInsight.
 
@@ -253,7 +253,7 @@ Aby uzyskać więcej informacji na temat reguł zapory dla urządzeń wirtualnyc
 
 Podczas tworzenia klastra usługi HDInsight jest również tworzony moduł równoważenia obciążenia. Typ tego modułu równoważenia obciążenia jest na [poziomie podstawowej jednostki SKU](../load-balancer/load-balancer-overview.md#skus) , który ma pewne ograniczenia. Jedno z tych ograniczeń polega na tym, że w przypadku dwóch sieci wirtualnych w różnych regionach nie można nawiązać połączenia z podstawowymi usługami równoważenia obciążenia. Zobacz [często zadawane pytania dotyczące usługi Virtual Networks: ograniczenia dotyczące globalnej komunikacji równorzędnej sieci](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)wirtualnej, aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby zapoznać się z przykładami kodu i przykłady tworzenia sieci wirtualnych platformy Azure, zobacz [Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md).
 * Aby zapoznać się z kompleksowym przykładem konfigurowania usługi HDInsight w celu nawiązania połączenia z siecią lokalną, zobacz [łączenie usługi HDInsight z siecią lokalną](./connect-on-premises-network.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center i Azure Container Registry | Microsoft Docs
+title: Azure Security Center i Azure Container Registry
 description: Dowiedz się więcej o integracji Azure Security Center z usługą Azure Container Registry
 services: security-center
 documentationcenter: na
@@ -10,22 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f0de56f968488f0e5d551ad705cc6f8ca6e7bc47
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: MT
+ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521867"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196378"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Integracja Azure Container Registry z Security Center (wersja zapoznawcza)
 
 Azure Container Registry (ACR) to zarządzana usługa rejestru prywatnego platformy Docker, która przechowuje obrazy kontenerów dla wdrożeń platformy Azure i zarządza nimi w rejestrze centralnym. Jest ona oparta na rejestrze platformy Docker open source 2,0.
 
-W przypadku korzystania z programu ACR wraz z warstwą standardu Azure Security Center (zobacz [Cennik](security-center-pricing.md)) można uzyskać lepszy wgląd w luki w zabezpieczeniach rejestru i obrazów.
+Aby uzyskać dokładniejszy wgląd w luki w zabezpieczeniach rejestru i obrazów, użytkownicy warstwy Standardowa Azure Security Center mogą włączyć opcjonalny pakiet rejestrów kontenerów. Aby uzyskać więcej informacji, zobacz [cennik](security-center-pricing.md). Po włączeniu pakietu Security Center automatycznie skanuje obrazy w usłudze ACR przy każdym wypchnięciu obrazu do rejestru. Po zakończeniu skanowania (zwykle po około 10 minutach) w Security Center zalecenia są dostępne w ramach zaleceń, takich jak:
 
-[zalecenia dotyczące Azure Container Registry ![(ACR) w Azure Security Center](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![przykład Azure Security Center zalecenia dotyczące luk w zabezpieczeniach odnalezionych w obrazie hostowanym Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>Zalety integracji
 
@@ -37,7 +37,7 @@ Security Center identyfikuje rejestry ACR w ramach subskrypcji i bezproblemowo u
 
 ![Ogólne omówienie Azure Security Center i Azure Container Registry (ACR)](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej o funkcjach zabezpieczeń kontenera Security Center, zobacz:
 

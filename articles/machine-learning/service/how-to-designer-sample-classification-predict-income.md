@@ -1,7 +1,7 @@
 ---
-title: 'Projektant: klasyfikowanie, przewidywanie przychodu'
+title: 'Projektant: klasyfikowanie, przykład przewidywania przychodów'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak utworzyć klasyfikator uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza).
+description: Postępuj zgodnie z tym przykładem, kompilując klasyfikator bez kodu, aby przewidzieć przychody za pomocą programu Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647965"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196050"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Przykład 3 — Klasyfikacja z wyborem funkcji: prognozowanie dochodu
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Kompilowanie klasyfikatora & używanie wyboru funkcji do przewidywania przychodów za pomocą projektanta Azure Machine Learning
+
+**Projektant (wersja zapoznawcza) — przykład 3**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Dowiedz się, jak utworzyć klasyfikator uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza). Ten przykład pociąga **drzewa decyzyjne z dwoma klasami** do przewidywania dochodów z spisu dla dorosłych (> = 50 000 lub < = 50 000).
@@ -70,7 +73,7 @@ W wynikach oceny można zobaczyć, że krzywe takie jak ROC, precyzja odwołania
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 

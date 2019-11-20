@@ -1,7 +1,7 @@
 ---
-title: 'Projektant: klasyfikowanie, przewidywanie opóźnień lotów'
+title: 'Projektant: przykład przewidywania opóźnień lotów'
 titleSuffix: Azure Machine Learning
-description: W tym artykule opisano sposób tworzenia modelu uczenia maszynowego w celu przewidywania opóźnień lotów przy użyciu projektanta metodą "przeciągnij i upuść" oraz niestandardowego kodu języka R.
+description: Tworzenie klasyfikatora i używanie niestandardowego kodu języka R do przewidywania opóźnień lotów za pomocą projektanta Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 06d158fb228ea82e61e785407fc0c59d66c2de15
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647198"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196018"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Przykład 6 — Klasyfikacja: przewidywanie opóźnień lotów przy użyciu języka R
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Kompilowanie klasyfikatora & użycie R do przewidywania opóźnień lotów za pomocą projektanta Azure Machine Learning
+
+**Projektant (wersja zapoznawcza) — przykład 6**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ten potok używa historycznych danych lot i Pogoda do przewidywania, czy zaplanowany lot pasażera zostanie opóźniony o ponad 15 minut. Ten problem można rozwiązać jako problem klasyfikacji, przewidzieć dwie klasy: opóźnione lub w czasie.
@@ -113,7 +116,7 @@ Model regresji logistycznej ma AUC 0,631 w zestawie testów.
 
  ![evaluate](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 

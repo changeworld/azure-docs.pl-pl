@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
-ms.openlocfilehash: b32eb7a7236871a06e1fbed5b9f1aac91675c6f3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: fbfce1c107fcf4b6f7d0b5f590a8ddfa64e69190
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174735"
+ms.locfileid: "74184739"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Zmień strumienie w interfejsie API Azure Cosmos DB dla MongoDB
 
@@ -35,7 +35,7 @@ while (!cursor.isExhausted()) {
 }
 ```
 
-Poniższy przykład pokazuje, jak uzyskać zmiany do elementów w jednym fragmentu, na przykład fragmentu "a", które zawierają elementy o wartości "1".
+Poniższy przykład pokazuje, jak uzyskać zmiany elementów w jednym fragmentu. Ten przykład pobiera zmiany elementów, które mają klucz fragmentu równy "a", a wartość klucza fragmentu równą "1".
 
 ```javascript
 var cursor = db.coll.watch(
@@ -71,7 +71,7 @@ Podczas używania strumieni zmian są obsługiwane następujące kody błędów 
 
 * **NamespaceNotFound (OperationType unvalidate)** — w przypadku uruchomienia strumienia zmian w kolekcji, która nie istnieje lub jeśli kolekcja została porzucona, zwracany jest błąd `NamespaceNotFound`. Ponieważ właściwość `operationType` nie może zostać zwrócona w dokumencie wyjściowym, a nie `operationType Invalidate` błędu, zwracany jest błąd `NamespaceNotFound`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Użyj czasu wygaśnięcia, aby automatycznie wygasać dane w interfejsie API Azure Cosmos DB MongoDB](mongodb-time-to-live.md)
 * [Indeksowanie w interfejsie API Azure Cosmos DB dla MongoDB](mongodb-indexing.md)

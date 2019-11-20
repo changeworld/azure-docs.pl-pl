@@ -1,5 +1,5 @@
 ---
-title: 'Przewodnik Szybki start platformy Azure: tworzenie profilu usługi Front Door na potrzeby wysokiej dostępności aplikacji przy użyciu witryny Azure Portal'
+title: 'Szybki Start: Tworzenie profilu frontonu w celu zapewnienia wysokiej dostępności aplikacji'
 description: W tym artykule Szybki start opisano, jak utworzyć usługę Front Door na potrzeby globalnej aplikacji internetowej o wysokiej dostępności i wydajności.
 services: front-door
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461990"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184513"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Szybki start: Utwórz drzwiami frontowymi dla aplikacji o wysokiej dostępności globalnej sieci web
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Szybki start: tworzenie usługi Front Door na potrzeby globalnej aplikacji internetowej o wysokiej dostępności
 
 W tym artykule Szybki start opisano, jak utworzyć profil usługi Front Door, który umożliwia uzyskanie wysokiej dostępności i wydajności globalnej aplikacji internetowej. 
 
@@ -39,19 +39,19 @@ Ten przewodnik Szybki Start wymaga wdrożenia dwóch wystąpień aplikacji inter
 
      | Ustawienie         | Wartość     |
      | ---              | ---  |
-     | Name (Nazwa)           | Wprowadź unikatową nazwę aplikacji internetowej  |
+     | Nazwa           | Wprowadź unikatową nazwę aplikacji internetowej  |
      | Grupa zasobów          | Wybierz pozycję **Nowa**, a następnie wpisz ciąg *myResourceGroupFD1* |
      | Plan usługi App Service/lokalizacja         | Wybierz pozycję **Nowy**.  W obszarze Plan usługi App Service wprowadź *myAppServicePlanEastUS*, a następnie wybierz pozycję **OK**. 
      |      Lokalizacja  |   Wschodnie stany USA        |
     |||
 
-3. Wybierz pozycję **Utwórz**.
+3. Wybierz **tworzenie**.
 4. Po pomyślnym wdrożeniu aplikacji internetowej zostanie utworzona domyślna witryna internetowa.
 5. Powtórz kroki 1–3, aby utworzyć drugą witrynę internetową w innym regionie platformy Azure z następującymi ustawieniami:
 
      | Ustawienie         | Wartość     |
      | ---              | ---  |
-     | Name (Nazwa)           | Wprowadź unikatową nazwę aplikacji internetowej  |
+     | Nazwa           | Wprowadź unikatową nazwę aplikacji internetowej  |
      | Grupa zasobów          | Wybierz pozycję **Nowa**, a następnie wpisz ciąg*myResourceGroupFD2* |
      | Plan usługi App Service/lokalizacja         | Wybierz pozycję **Nowy**.  W obszarze Plan usługi App Service wprowadź *myAppServicePlanWestEurope*, a następnie wybierz pozycję **OK**. 
      |      Lokalizacja  |   Europa Zachodnia      |
@@ -82,7 +82,7 @@ Następnie należy skonfigurować zaplecza aplikacji w puli zaplecza dla usługi
 Na koniec kliknij ikonę „+” w obszarze Reguły routingu, aby skonfigurować regułę rozsyłania. Jest to niezbędne w celu mapowania hosta frontonu do puli zaplecza — mówiąc najprościej, ta konfiguracja określa, że jeśli żądanie przychodzi na adres `myappfrontend.azurefd.net`, to powinno zostać przekazane do puli zaplecza `myBackendPool`. Kliknij przycisk **Dodaj**, aby dodać regułę rozsyłania dla usługi Front Door. Teraz powinno być możliwe utworzenie usługi Front Door. Kliknij polecenie **Przejrzyj i utwórz**.
 
 >[!WARNING]
-> **Musisz** upewnić się, że każdy z hostów frontonu w usłudze Front Door ma regułę rozsyłania ze skojarzoną ścieżką domyślną („/\*”). Oznacza to, że wśród wszystkich reguł rozsyłania musi być co najmniej jedna reguła rozsyłania dla każdego z hostów frontonu zdefiniowanych w ścieżce domyślnej („/\*”). Jeśli tak nie będzie, ruch użytkowników końcowych może nie być kierowany prawidłowo.
+> **Musisz** upewnić się, że każdy z hostów frontonu w usłudze Front Door ma regułę rozsyłania ze skojarzoną ścieżką domyślną („/\*”). Oznacza to, że wśród wszystkich reguł rozsyłania musi być co najmniej jedna reguła rozsyłania dla każdego z hostów frontonu zdefiniowana w ścieżce domyślnej („/\*”). Jeśli tak nie będzie, ruch użytkownika końcowego może nie być trasowany prawidłowo.
 
 ## <a name="view-front-door-in-action"></a>Usługa Front Door w działaniu
 Po utworzeniu usługi Front Door globalne wdrożenie konfiguracji może zająć kilka minut. Gdy proces ten dobiegnie końca, uzyskaj dostęp do utworzonego hosta frontonu — czyli przejdź do adresu URL `myappfrontend.azurefd.net` w przeglądarce internetowej. Twoje żądanie zostanie automatycznie skierowane do najbliższego zaplecza spośród określonych zapleczy w puli zapleczy. 

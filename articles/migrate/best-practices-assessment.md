@@ -1,17 +1,17 @@
 ---
-title: Najlepsze rozwiązania dotyczące tworzenia ocen przy użyciu oceny serwera Azure Migrate
-description: Zawiera wskazówki dotyczące tworzenia ocen przy użyciu oceny Azure Migrate Server.
+title: Najlepsze rozwiązania z zakresu oceny w Azure Migrate oceny serwera
+description: Wskazówki dotyczące tworzenia ocen przy użyciu oceny Azure Migrate Server.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: e235116ab77159a0e2e9c66ad09cdb86ce6da1e9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466932"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185979"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia ocen
 
@@ -67,10 +67,10 @@ W zależności od wartości procentowej punktów danych dostępnych dla wybraneg
    **Dostępność punktu danych** | **Ocenę zaufania**
    --- | ---
    0%–20% | 1 gwiazdka
-   21%–40% | 2 gwiazdki
+   21%-40% | 2 gwiazdki
    41%–60% | 3 gwiazdki
    61%–80% | 4 gwiazdki
-   81%–100% | 5 gwiazdek
+   81%-100% | 5 gwiazdek
 
 
 ## <a name="common-assessment-issues"></a>Typowe problemy z oceną
@@ -96,7 +96,7 @@ Ocena może nie zawierać wszystkich punktów danych z kilku powodów:
 - Kilka maszyn wirtualnych zostało utworzonych po uruchomieniu odnajdywania w narzędziu Server Assessment. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W tym przypadku dane wydajności dla nowych maszyn wirtualnych nie będą dostępne przez cały czas trwania i ocena ufności będzie niska.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Dowiedz się](concepts-assessment-calculation.md) , w jaki sposób są obliczane oceny.
 - [Dowiedz się](how-to-modify-assessment.md) , jak dostosować ocenę.

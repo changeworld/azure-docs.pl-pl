@@ -1,7 +1,7 @@
 ---
-title: 'Projektant: klasyfikowanie, prognozowanie zmian'
+title: 'Projektant: przykład prognozowania zmian'
 titleSuffix: Azure Machine Learning
-description: Ten Projektant przykładowego potoku (wersja zapoznawcza) przedstawia prognozowanie zmian w klasyfikatorach binarnych, czyli typowe zadanie zarządzania relacjami z klientami (CRM).
+description: Postępuj zgodnie z tym przykładem klasyfikacji, aby przewidzieć zmiany w programie Azure Machine Learning Designer & podwyższane drzewa decyzyjne.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647170"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196042"
 ---
-# <a name="sample-5---classification-predict-churn"></a>Przykład 5 — Klasyfikacja: przewidywalność zmian
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Używanie podwyższania drzewa decyzyjnego do przewidywania zmian za pomocą narzędzia Azure Machine Learning Designer
+
+**Projektant (wersja zapoznawcza) — przykład 5**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Dowiedz się, jak utworzyć złożony potok uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza).
@@ -74,7 +77,7 @@ Wizualizuj dane wyjściowe modułu **oceny modelu** , aby zobaczyć wydajność 
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 

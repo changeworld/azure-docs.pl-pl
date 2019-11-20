@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b51581b5a8f94419dba60eee72669a3e1261b24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151577"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185701"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -29,6 +29,16 @@ Jeśli chcesz, aby indeksatory ignorował te błędy (i pominąć "dokumenty nie
 Informacje o błędzie w tym artykule mogą pomóc w rozwiązaniu błędów, co umożliwia kontynuowanie indeksowania.
 
 Ostrzeżenia nie zatrzymują indeksowania, ale wskazują warunki, które mogą spowodować nieoczekiwane wyniki. Niezależnie od tego, czy podejmujesz akcję, czy nie zależą od danych i Twojego scenariusza.
+
+Począwszy od wersji interfejsu API `2019-05-06`, błędy indeksatora na poziomie elementu i ostrzeżenia są uporządkowane w celu zapewnienia większej przejrzystości wokół przyczyn i następnych kroków. Zawierają one następujące właściwości:
+
+| Właściwość | Opis | Przykład |
+| --- | --- | --- |
+| key | Identyfikator dokumentu dokumentu, którego dotyczy błąd lub ostrzeżenie. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| name | Nazwa operacji opisująca miejsce wystąpienia błędu lub ostrzeżenia. Ta wartość jest generowana przez następującą strukturę: [Kategoria]. [Podkategoria]. [ResourceType]. Source | DocumentExtraction. azureblob. myBlobContainerName wzbogacanie. WebApiSkill. Moja umiejętność projekcji. SearchIndex. OutputFieldMapping. myOutputFieldName projekcji. SearchIndex. MergeOrUpload. Indeksname Projekcja. KnowledgeStore. Table. webtablename |
+| message | Ogólny opis błędu lub ostrzeżenia. | Nie można wykonać umiejętności, ponieważ żądanie interfejsu API sieci Web nie powiodło się. |
+| details informacje | Wszelkie dodatkowe szczegóły, które mogą być pomocne w diagnozowaniu problemu, takie jak odpowiedź WebApi w przypadku niepowodzenia wykonywania niestandardowej umiejętności. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 Źródło, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... Pozostałe ślady stosu... |
+| documentationLink | Link do odpowiedniej dokumentacji ze szczegółowymi informacjami na temat debugowania i rozwiązywania problemu. Ten link będzie często wskazywał jedną z poniższych sekcji na tej stronie. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
 
@@ -73,8 +83,6 @@ Indeksator nie mógł uruchomić umiejętności w zestawu umiejętności.
 
 | Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
-| Pole zawiera termin, który jest zbyt duży | Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
-| Dokument jest zbyt duży, aby można go było zindeksować | Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
 | Przejściowe problemy z łącznością | Wystąpił błąd przejściowy. Spróbuj ponownie później. | Sporadycznie występują nieoczekiwane problemy z łącznością. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
 | Potencjalna usterka produktu | Wystąpił nieoczekiwany błąd. | Oznacza to nieznaną klasę błędu i może oznaczać, że występuje usterka produktu. Zapoznaj się z [biletem pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby uzyskać pomoc. |
 | Umiejętność napotkała błąd podczas wykonywania | (Z poziomu umiejętności scalania) Co najmniej jedna wartość przesunięcia była nieprawidłowa i nie można jej przeanalizować. Wstawiono elementy na końcu tekstu | Aby rozwiązać ten problem, użyj informacji w komunikacie o błędzie. Ten rodzaj błędu będzie wymagał działania do rozwiązania. |
@@ -96,6 +104,8 @@ Istnieją dwa przypadki, w których może wystąpić ten komunikat o błędzie, 
 
 ### <a name="built-in-cognitive-service-skills"></a>Wbudowane umiejętności usługi poznawczej
 Wiele wbudowanych umiejętności poznawczych, takich jak wykrywanie języka, rozpoznawanie jednostek lub OCR, są obsługiwane przez punkt końcowy interfejsu API usługi poznawczej. Czasami występują przejściowe problemy z tymi punktami końcowymi i upłynął limit czasu żądania. W przypadku problemów przejściowych nie ma żadnych naprawienia, z wyjątkiem oczekiwania i spróbuj ponownie. Jako środek zaradczy należy rozważyć skonfigurowanie indeksatora do [uruchamiania zgodnie z harmonogramem](search-howto-schedule-indexers.md). Zaplanowane indeksowanie jest odbierane w miejscu, w którym zostało pozostawione. Przy założeniu, że przejściowe problemy są rozwiązywane, indeksowanie i przetwarzanie umiejętności poznawcze powinny mieć możliwość kontynuowania przy następnym zaplanowanym uruchomieniu.
+
+Jeśli ten błąd będzie nadal występować w tym samym dokumencie dla wbudowanej umiejętności poznawczej, Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby uzyskać pomoc, ponieważ nie jest to oczekiwane.
 
 ### <a name="custom-skills"></a>Umiejętności niestandardowe
 Jeśli wystąpi błąd przekroczenia limitu czasu z utworzoną niestandardową umiejętnością, istnieje kilka rzeczy, które można wypróbować. Najpierw przejrzyj swoją niestandardową umiejętność i upewnij się, że nie jest ona zablokowana w pętli nieskończonej i że zwraca wynik konsekwentnie. Po potwierdzeniu, że jest to przypadek, ustal, jaki jest czas wykonywania danej umiejętności. Jeśli wartość `timeout` nie została jawnie ustawiona w niestandardowej definicji umiejętności, domyślna `timeout` wynosi 30 sekund. Jeśli 30 sekund nie jest wystarczająco długi, aby można było wykonać swoją umiejętność, możesz określić wyższą `timeout` wartość w niestandardowej definicji umiejętności. Oto przykład niestandardowej definicji umiejętności, w której limit czasu jest ustawiony na 90 sekund:
@@ -132,8 +142,8 @@ Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać d
 
 | Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
-| Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Pole zawiera termin, który jest zbyt duży | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
-| Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | Dokument jest zbyt duży, aby można go było zindeksować | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
+| Pole zawiera termin, który jest zbyt duży | Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
+| Dokument jest zbyt duży, aby można go było zindeksować | Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
 | Dokument zawiera zbyt wiele obiektów w kolekcji | Kolekcja w dokumencie przekracza [maksymalną liczbę elementów we wszystkich złożonych kolekcjach kolekcji](search-limits-quotas-capacity.md#index-limits) | Zalecamy zmniejszenie rozmiaru kolekcji złożonej w dokumencie do wartości poniżej limitu i uniknięcie dużego użycia magazynu.
 | Problem z nawiązaniem połączenia z docelowym indeksem (który utrzymuje się po ponownych próbach), ponieważ usługa jest w innym załadowaniu, na przykład w przypadku wykonywania zapytań lub indeksowania. | Nie można ustanowić połączenia w celu zaktualizowania indeksu. Usługa wyszukiwania jest w dużym obciążeniu. | [Skalowanie w górę usługi wyszukiwania](search-capacity-planning.md)
 | Trwa poprawianie usługi wyszukiwania w ramach aktualizacji usługi lub jest ona w trakcie ponownej konfiguracji topologii. | Nie można ustanowić połączenia w celu zaktualizowania indeksu. Usługa wyszukiwania jest obecnie wyłączona/usługa wyszukiwania przechodzi do przejścia. | Skonfiguruj usługę z co najmniej 3 replikami na 99,9% dostępności na potrzeby [dokumentacji umowy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)

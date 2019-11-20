@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
-ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
-ms.translationtype: HT
+ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74153562"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186000"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Analiza strumienia na żywo za pomocą Video Indexer
 
@@ -27,7 +27,7 @@ Rozwiązanie opisane w tym artykule pozwala klientom używać Video Indexer niem
 
 *Rysunek 1 — przykładowy odtwarzacz wyświetlający metadane Video Indexer w strumieniu na żywo*
 
-[Rozwiązanie do analizy strumienia](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/blob/master/media-functions-for-logic-app/LiveStreamAnalysis.md) w tej chwili używa Azure Functions i dwóch Logic Apps do przetwarzania programu na żywo z kanału na żywo w Azure Media Services z video Indexer i wyświetla wynik z Azure Media Player pokazującego strumień wynikowy niemal w czasie rzeczywistym.
+[Rozwiązanie do analizy strumienia](https://aka.ms/livestreamanalysis) w tej chwili używa Azure Functions i dwóch Logic Apps do przetwarzania programu na żywo z kanału na żywo w Azure Media Services z video Indexer i wyświetla wynik z Azure Media Player pokazującego strumień wynikowy niemal w czasie rzeczywistym.
 
 Na wysokim poziomie składa się z dwóch głównych kroków. Pierwszy krok jest uruchamiany co 60 sekund i pobiera podklip z ostatnich 60 sekund, a następnie tworzy element zawartości z niego i indeksuje go za pośrednictwem Video Indexer. Następnie drugi krok jest wywoływany po zakończeniu indeksowania. Przechwycone informacje są przetwarzane, wysyłane do Azure Cosmos DB, a podcinanie jest usuwane.
 
@@ -41,6 +41,6 @@ Przykładowy odtwarzacz odtwarza strumień na żywo i pobiera szczegółowe info
 
 Pełny kod i przewodnik krok po kroku służący do wdrażania wyników można znaleźć w projekcie usługi GitHub w [celu analizy multimediów na żywo za pomocą Video Indexer](https://aka.ms/livestreamanalysis). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Omówienie usługi Video Indexer](video-indexer-overview.md)

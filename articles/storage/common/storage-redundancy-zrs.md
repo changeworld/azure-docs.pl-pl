@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53441f5fedb4fa5e68cd1d8230ffe3ee6122e55b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013188"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186675"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS) do tworzenia aplikacji usługi Azure Storage o wysokiej dostępności
 
@@ -29,8 +29,8 @@ ZRS jest dostępny dla blokowych obiektów blob, niedyskowych obiektów blob, st
 W przypadku kont ogólnego przeznaczenia w wersji 2 ZRS jest ogólnie dostępna w następujących regionach:
 
 - Azja Południowo-Wschodnia
-- Europa Zachodnia
 - Europa Północna
+- Europa Zachodnia
 - Francja Środkowa
 - Japonia Wschodnia
 - Południowe Zjednoczone Królestwo
@@ -107,7 +107,7 @@ Możesz zażądać migracji na żywo za pomocą [portalu pomocy technicznej syst
     - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład chcę migrować do ZRS z [LRS, GRS] w regionie \_ \_. 
 5. Wybierz opcję **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
-7. Wybierz pozycję **Utwórz**.
+7. Wybierz **tworzenie**.
 
 Osoba odpowiedzialna za pomoc techniczną skontaktuje się z Tobą i pomoże Ci uzyskać pomoc.
 

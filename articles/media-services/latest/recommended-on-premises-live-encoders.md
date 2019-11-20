@@ -2,19 +2,19 @@
 title: Kodery przesyłania strumieniowego na żywo zalecane przez Media Services — Azure | Microsoft Docs
 description: Dowiedz się więcej o koderach lokalnych dotyczących przesyłania strumieniowego na żywo zalecanych przez Media Services
 services: media-services
-keywords: kodowanie; kodery; nośnik
+keywords: encoding;encoders;media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300950"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186032"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery przesyłania strumieniowego na żywo
 
@@ -49,6 +49,9 @@ Usługa Media Services zaleca używanie jednego z następujących koderów na ż
 - Tricaster Mini HD-4
 - VMIX
 - xStream
+- [Narzędzia FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 i Hero 8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Kodery dynamiczne, które wyprowadzają pofragmentowany plik MP4
 
@@ -60,9 +63,11 @@ Media Services zaleca użycie jednego z następujących koderów na żywo, któr
 - Envivio 4Caster C4 Gen III
 - Wyobraź sobie komunikację Selenio MCP3
 - Media Excel Hero Live i Hero 4K (UHD/HEVC)
+- [Narzędzia FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Jeśli przesyłasz strumieniowo wydarzenia na żywo w wielu językach (na przykład jedną angielską ścieżką audio i jedną Hiszpańska ścieżką audio), możesz to zrobić za pomocą kodera programu Excel Live Encoder skonfigurowanego do wysyłania kanału informacyjnego na żywo do zdarzenia przekazywania na żywo.
+
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurowanie ustawień lokalnego kodera na żywo
 
@@ -74,9 +79,9 @@ Aby odtworzyć zawartość, musi być obecny strumień audio i wideo. Odtwarzani
 
 ### <a name="configuration-tips"></a>Wskazówki dotyczące konfiguracji
 
-- Zawsze, gdy to możliwe, Użyj połączenia internetowego Hardwired.
+- Jeśli to możliwe, przy użyciu połączenia internetowego hardwired.
 - Podczas określania wymagań dotyczących przepustowości należy zwiększyć szybkość transmisji strumieniowej. Chociaż nie jest to wymagane, prosta reguła pomaga ograniczyć wpływ przeciążenia sieci.
-- W przypadku korzystania z koderów opartych na oprogramowaniu Zamknij wszystkie zbędne programy.
+- Podczas korzystania z koderów opartych na oprogramowaniu, zamknąć wszystkie zbędne programy.
 - Zmiana konfiguracji kodera po rozpoczęciu wypychania ma negatywny wpływ na zdarzenie. Zmiany konfiguracji mogą spowodować niestabilność zdarzenia. 
 - Upewnij się, że podajesz sobie dużo czasu, aby skonfigurować wydarzenie. W przypadku zdarzeń o dużej skali zalecamy uruchomienie Instalatora godzinę przed wydarzeniem.
 
@@ -128,8 +133,8 @@ Wykonaj te same czynności co w przypadku [weryfikacji zdarzenia](#pass-through-
 
 ### <a name="email-your-recorded-settings"></a>Wyślij zapisane ustawienia pocztą e-mail
 
-Na koniec Wyślij zapisane ustawienia i parametry Archiwum na żywo, aby Azure Media Services amshelp@microsoft.com jako powiadomienie, że wszystkie testy samoweryfikacji zostały zakończone pomyślnie. Podaj również informacje kontaktowe dla każdej z nich. Możesz skontaktować się z zespołem Azure Media Services, podając wszelkie pytania dotyczące tego procesu.
+Na koniec Wyślij zapisane ustawienia i parametry Archiwum na żywo, aby Azure Media Services w amshelp@microsoft.com jako powiadomienie, że wszystkie testy samoweryfikacji zostały zakończone pomyślnie. Podaj również informacje kontaktowe dla każdej z nich. Możesz skontaktować się z zespołem Azure Media Services, podając wszelkie pytania dotyczące tego procesu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Przesyłanie strumieniowe na żywo z Media Services v3](live-streaming-overview.md)

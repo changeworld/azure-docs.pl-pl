@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj prywatne adresy IP dla maszyn wirtualnych — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować prywatnych adresów IP dla maszyn wirtualnych przy użyciu interfejsu wiersza polecenia (CLI) platformy Azure.
+title: Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych — interfejs wiersza polecenia platformy Azure
+description: Dowiedz się, jak skonfigurować prywatne adresy IP dla maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1b39196c489927474c0912b316de5ff3b3dbb956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5734b96466801efaa991a971bd87f60aafc9df32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681406"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196612"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Skonfiguruj prywatne adresy IP dla maszyny wirtualnej przy użyciu wiersza polecenia platformy Azure
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
@@ -30,23 +30,23 @@ ms.locfileid: "64681406"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym artykule opisano model wdrażania usługi Resource Manager. Możesz również [Zarządzanie statyczny prywatny adres IP w klasycznym modelu wdrażania](virtual-networks-static-private-ip-classic-cli.md).
+W tym artykule opisano model wdrażania usługi Resource Manager. Można także [zarządzać statycznym prywatnym adresem IP w klasycznym modelu wdrażania](virtual-networks-static-private-ip-classic-cli.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Następujące przykładowe polecenia wiersza polecenia platformy Azure oczekują istniejącego środowiska proste. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, najpierw utworzyć środowisko testowe opisane w [tworzenie sieci wirtualnej](quick-create-cli.md).
+> Następujące przykłady poleceń interfejsu wiersza polecenia platformy Azure oczekują istniejącego środowiska prostego. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, najpierw utworzyć środowisko testowe opisane w [tworzenie sieci wirtualnej](quick-create-cli.md).
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Określ statyczny prywatny adres IP podczas tworzenia maszyny Wirtualnej
+## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Określ statyczny prywatny adres IP podczas tworzenia maszyny wirtualnej
 
-Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci wirtualnej o nazwie *TestVNet* za pomocą statycznego prywatnego adresu IP z *192.168.1.101*pełne następujące kroki:
+Aby utworzyć maszynę wirtualną o nazwie *DNS01* w podsieci *frontonu* sieci wirtualnej o nazwie *TestVNet* ze statycznym prywatnym adresem IP *192.168.1.101*, wykonaj następujące czynności:
 
-1. Jeśli nie zostało jeszcze, po zainstalowaniu i skonfigurowaniu najnowsze [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index).
+1. Jeśli jeszcze tego nie zrobiono, zainstaluj i skonfiguruj najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i zaloguj się na konto platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index).
 
-2. Tworzenie publicznego adresu IP dla maszyny Wirtualnej przy użyciu [tworzenie sieci az public-ip](/cli/azure/network/public-ip) polecenia. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
+2. Utwórz publiczny adres IP dla maszyny wirtualnej za pomocą polecenia [AZ Network Public-IP Create](/cli/azure/network/public-ip) . Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
 
     > [!NOTE]
-    > Może chcesz lub konieczność użycia różnych wartości argumenty w tym oraz kolejnych kroków, w zależności od środowiska.
+    > Może być konieczne lub konieczne użycie różnych wartości argumentów w tym i kolejnych krokach, w zależności od środowiska.
 
     ```azurecli
     az network public-ip create \
@@ -70,11 +70,11 @@ Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci w
     }
     ```
 
-   * `--resource-group`: Nazwa grupy zasobów, w której chcesz utworzyć publiczny adres IP.
+   * `--resource-group`: Nazwa grupy zasobów, w której ma zostać utworzony publiczny adres IP.
    * `--name`: Nazwa publicznego adresu IP.
-   * `--location`: Region platformy Azure, w której chcesz utworzyć publiczny adres IP.
+   * `--location`: region świadczenia usługi Azure, w którym ma zostać utworzony publiczny adres IP.
 
-3. Uruchom [tworzenie az sieciowego](/cli/azure/network/nic) polecenie, aby utworzyć z kartą Sieciową za pomocą statycznego prywatnego adresu IP. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów. 
+3. Uruchom polecenie [AZ Network nic Create](/cli/azure/network/nic) , aby utworzyć kartę sieciową ze statycznym prywatnym adresem IP. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów. 
    
     ```azurecli
     az network nic create \
@@ -122,11 +122,11 @@ Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci w
     
     Parametry:
 
-    * `--private-ip-address`: Statyczny prywatny adres IP dla karty sieciowej.
-    * `--vnet-name`: Nazwa sieci wirtualnej, w której chcesz utworzyć kartę sieciową.
-    * `--subnet`: Nazwa podsieci, w której ma zostać utworzona karta sieciowa
+    * `--private-ip-address`: statyczny prywatny adres IP karty sieciowej.
+    * `--vnet-name`: Nazwa sieci wirtualnej, w której ma zostać utworzona karta sieciowa.
+    * `--subnet`: Nazwa podsieci, w której ma zostać utworzona karta sieciowa.
 
-4. Uruchom [tworzenie maszyny wirtualnej platformy azure](/cli/azure/vm/nic) polecenie, aby utworzyć maszynę Wirtualną przy użyciu publicznego adresu IP i NIC został wcześniej utworzony. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
+4. Uruchom polecenie [Azure VM Create](/cli/azure/vm/nic) , aby utworzyć maszynę wirtualną przy użyciu publicznego adresu IP i karty sieciowej utworzonej wcześniej. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
    
     ```azurecli
     az vm create \
@@ -154,15 +154,15 @@ Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci w
     }
     ```
    
-   Parametrów innych niż podstawowe [tworzenie az vm](/cli/azure/vm) parametrów.
+   Parametry inne niż podstawowe polecenie [AZ VM Create](/cli/azure/vm) Parameters.
 
-   * `--nics`: Nazwa karty Sieciowej, do której jest dołączona maszyna wirtualna.
+   * `--nics`: Nazwa karty sieciowej, do której jest dołączona maszyna wirtualna.
    
-Zalecane jest, że nie zostanie statycznie przypisany prywatny adres IP, przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej, o ile to konieczne, takie jak czas [przypisywanie wielu adresów IP do maszyny Wirtualnej z systemem Windows](virtual-network-multiple-ip-addresses-cli.md). Jeśli ręcznie ustawić jako prywatny adres IP w ramach systemu operacyjnego, upewnij się, że jej jako ten sam adres prywatny adres IP przypisany do platformy Azure [interfejsu sieciowego](virtual-network-network-interface-addresses.md#change-ip-address-settings), lub można utracić łączność z maszyną wirtualną. Dowiedz się więcej o [prywatny adres IP](virtual-network-network-interface-addresses.md#private) ustawienia.
+Zaleca się, aby nie przypisywać statycznie prywatnego adresu IP przypisanego do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej, o ile nie jest to konieczne, [na przykład podczas przypisywania wielu adresów IP do maszyny wirtualnej z systemem Windows](virtual-network-multiple-ip-addresses-cli.md). Jeśli ręcznie ustawisz prywatny adres IP w ramach systemu operacyjnego, upewnij się, że jest to ten sam adres, co prywatny adres IP przypisany do [interfejsu sieciowego](virtual-network-network-interface-addresses.md#change-ip-address-settings)platformy Azure, lub utracisz łączność z maszyną wirtualną. Dowiedz się więcej o ustawieniach [prywatnych adresów IP](virtual-network-network-interface-addresses.md#private) .
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Pobierz statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej
+## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Pobieranie informacji o statycznym prywatnym adresie IP dla maszyny wirtualnej
 
-Uruchom następujące polecenie z wiersza polecenia platformy Azure, aby obserwować wartości dla *metody alokacji prywatny adres IP* i *prywatny adres IP*:
+Uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure, aby obserwować wartości *IP Alloc-Metoda* i *prywatny adres IP*:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -174,7 +174,7 @@ Oczekiwane dane wyjściowe:
 "192.168.1.101"
 ```
 
-Aby wyświetlać informacje dotyczące adresu IP karty sieciowej dla tej maszyny Wirtualnej, zapytania specjalnie karty Sieciowej:
+Aby wyświetlić informacje o adresie IP karty sieciowej dla tej maszyny wirtualnej, należy wykonać zapytanie na kartę sieciową w specjalny sposób:
 
 ```azurecli
 az network nic show \
@@ -195,15 +195,15 @@ Dane wyjściowe wyglądają mniej więcej tak:
 }
 ```
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Usuń statyczny prywatny adres IP z maszyny Wirtualnej
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Usuwanie statycznego prywatnego adresu IP z maszyny wirtualnej
 
-Nie można usunąć statyczny prywatny adres IP z karty Sieciowej w interfejsie wiersza polecenia platformy Azure, w przypadku wdrożeń usługi Azure Resource Manager. Musisz mieć:
-- Tworzenie nowej karty Sieciowej, która używa dynamicznego adresu IP
-- Ustaw karty Sieciowej na maszynę Wirtualną nowo utworzonej karty sieciowej. 
+Nie można usunąć statycznego prywatnego adresu IP z karty sieciowej w interfejsie wiersza polecenia platformy Azure na potrzeby wdrożeń Azure Resource Manager. Należy:
+- Tworzenie nowej karty sieciowej korzystającej z dynamicznego adresu IP
+- Skonfiguruj kartę sieciową na maszynie wirtualnej, aby była nowo utworzona karta sieciowa. 
 
-Aby zmienić karty Sieciowej dla maszyny Wirtualnej używane w poprzednich poleceniach, wykonaj następujące czynności:
+Aby zmienić kartę sieciową dla maszyny wirtualnej używanej w poprzednich poleceniach, wykonaj następujące czynności:
 
-1. Uruchom **kart sieciowych sieci platformy azure utworzyć** polecenie, aby utworzyć nowej alokacji dynamicznego adresu IP przy użyciu nowego adresu IP karty Sieciowej. Ponieważ żaden adres IP jest określona, metodą alokacji jest metoda **dynamiczne**.
+1. Uruchom polecenie **Azure Network nic Create** , aby utworzyć nową kartę sieciową przy użyciu dynamicznego przydzielania adresów IP przy użyciu nowego adresu IP. Ponieważ nie określono żadnego adresu IP, metoda alokacji jest **dynamiczna**.
 
     ```azurecli
     az network nic create     \
@@ -248,7 +248,7 @@ Aby zmienić karty Sieciowej dla maszyny Wirtualnej używane w poprzednich polec
     }
     ```
 
-2. Uruchom **zestawu maszyn wirtualnych platformy azure** polecenie, aby zmienić karty Sieciowej używanej przez maszynę Wirtualną.
+2. Uruchom polecenie **Azure VM Set** , aby zmienić kartę sieciową używaną przez maszynę wirtualną.
    
     ```azurecli
     azure vm set -g TestRG -n DNS01 -N TestNIC2
@@ -267,8 +267,8 @@ Aby zmienić karty Sieciowej dla maszyny Wirtualnej używane w poprzednich polec
     ```
 
     > [!NOTE]
-    > Jeśli maszyna wirtualna jest wystarczająco duży, aby mieć więcej niż jedną kartę Sieciową, uruchom **Usuń kartę sieciową sieci platformy azure** polecenie, aby usunąć stare karty sieciowej.
+    > Jeśli maszyna wirtualna jest wystarczająco duża, aby można było korzystać z więcej niż jednej karty sieciowej, należy uruchomić polecenie **Usuń sieć nic sieci platformy Azure** w celu usunięcia starej karty sieciowej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o zarządzaniu [ustawienia adresu IP](virtual-network-network-interface-addresses.md).
+Dowiedz się więcej na temat zarządzania [ustawieniami adresów IP](virtual-network-network-interface-addresses.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: MT
+ms.openlocfilehash: f593d5ea621ad450eb82388416534e40df36e2d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809258"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184193"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami
 
@@ -69,7 +69,7 @@ Poniżej znajdują się informacje o tym, jak można skorygować te akcje.
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>P: wyłączono lub usunięto urządzenie w Azure Portal lub przy użyciu programu Windows PowerShell. Jednak stan lokalny na urządzeniu wskazuje, że jest on nadal zarejestrowany. Co mamy zrobić?
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>P: wyłączono lub usunięto urządzenie w Azure Portal lub przy użyciu programu Windows PowerShell. Jednak stan lokalny na urządzeniu wskazuje, że jest on nadal zarejestrowany. Co mam zrobić?
 
 Odp **.:** Ta operacja jest zaprojektowana. W takim przypadku urządzenie nie ma dostępu do zasobów w chmurze. Administratorzy mogą wykonać tę akcję w przypadku starych, zagubionych lub skradzionych urządzeń, aby zapobiec nieautoryzowanemu dostępowi. Jeśli ta akcja została wykonana przypadkowo, należy ponownie włączyć lub ponownie zarejestrować urządzenie zgodnie z poniższym opisem
 
@@ -119,7 +119,7 @@ Odp **.:** Ta operacja jest zaprojektowana. W takim przypadku urządzenie nie ma
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>P: czy rejestracja urządzeń z systemem Windows 10 w usłudze Azure AD obsługuje moduły TPM w trybie FIPS?
 
-Odp **.:** Nie, obecnie rejestracja urządzeń w systemie Windows 10 dla wszystkich stanów urządzeń — dołączanie hybrydowej usługi Azure AD, usługa Azure AD Join i usługa Azure AD zarejestrowane — nie obsługuje moduły TPM w trybie FIPS. Aby pomyślnie dołączyć lub zarejestrować się w usłudze Azure AD, należy wyłączyć tryb FIPS dla moduły TPM na tych urządzeniach.
+Odp **.:** Rejestracja urządzeń z systemem Windows 10 jest obsługiwana tylko w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwana przez moduł TPM 1,2. Jeśli na urządzeniach jest używany moduł TPM zgodny ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do usługi Azure AD Join lub hybrydowego sprzężenia usługi Azure AD. Należy pamiętać, że firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM. 
 
 ---
 
@@ -316,7 +316,7 @@ Odp **.:** Wykonaj następujące czynności:
 - Podczas pierwszego dostępu spróbuj użyć monitu o zarejestrowanie urządzenia przy użyciu portalu firmy.
 
 ---
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [zarejestrowanych urządzeniach usługi Azure AD](concept-azure-ad-register.md)
 - Dowiedz się więcej o [urządzeniach przyłączonych do usługi Azure AD](concept-azure-ad-join.md)

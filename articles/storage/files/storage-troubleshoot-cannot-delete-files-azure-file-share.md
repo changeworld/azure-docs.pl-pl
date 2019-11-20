@@ -4,15 +4,18 @@ description: Identyfikowanie i rozwiązywanie problemów z niepowodzeniem usuwan
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
+manager: dcscontentpm
 ms.date: 10/25/2019
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: b535578328e7ca77f1071187b6ac761bc7076ac1
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+services: storage
+tags: ''
+ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73065979"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196480"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Udział plików platformy Azure — nie można usunąć plików z udziału plików platformy Azure
 
@@ -33,11 +36,11 @@ Za mało dostępnego limitu przydziału, aby przetworzyć to polecenie
 
 Błąd 1816 występuje, gdy zostanie osiągnięty górny limit równoczesnych otwartych dojść do pliku, na komputerze, na którym jest instalowany udział plików. Aby uzyskać więcej informacji, zobacz [Lista kontrolna wydajności i skalowalności usługi Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist).
 
-## <a name="resolution"></a>Rozdzielczość
+## <a name="resolution"></a>Rozwiązanie
 
 Zmniejsz liczbę współbieżnych dojść otwartych, zamykając niektóre uchwyty.
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
 ### <a name="install-the-latest-azure-powershell-module"></a>Zainstaluj najnowszy moduł Azure PowerShell
 
@@ -69,7 +72,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>Przykładowy wynik:
 
-|HandleId|Ścieżka|clientIp|clientPort|OpenTime|LastReconnectTime|FileId|ParentId|sessionId|
+|HandleId|Ścieżka|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|
@@ -85,7 +88,7 @@ Aby zamknąć otwarte dojście, użyj następującego polecenia:
 # Close-AzStorageFileHandle -Context $Context -ShareName "FileShareName" -Path 'New folder/test.zip' -CloseAll
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Rozwiązywanie problemów Azure Files w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Rozwiązywanie problemów Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)

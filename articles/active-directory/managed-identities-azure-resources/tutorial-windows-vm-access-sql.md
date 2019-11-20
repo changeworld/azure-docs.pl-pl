@@ -1,5 +1,5 @@
 ---
-title: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure SQL
+title: Samouczek`:` korzystania z tożsamości zarządzanej w celu uzyskania dostępu do usługi Azure SQL — Windows-Azure AD
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure SQL.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b0a743df545450f87a01785f6f8a15fe08b8eafe
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433175"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181179"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure SQL
 
@@ -103,7 +103,7 @@ Kod uruchomiony na maszynie wirtualnej może teraz pobrać token za pomocą swoj
 
 Usługa Azure SQL natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane przy użyciu tożsamości zarządzanych dla zasobów platformy Azure. Możesz użyć metody **tokena dostępu** dla tworzenia połączeń z serwerem SQL. Jest to część integracji usługi Azure SQL z usługą Azure AD. Takie rozwiązanie różni się od podawania poświadczeń w parametrach połączenia.
 
-Oto przykład kodu platformy .NET służący do otwierania połączenia z programem SQL przy użyciu tokenu dostępu. Ten kod należy uruchomić na maszynie wirtualnej, aby mógł uzyskać dostęp do punktu końcowego przypisanej przez system tożsamości zarządzanej maszyny wirtualnej. Do korzystania z metody tokenu dostępu jest wymagany **.NET Framework 4,6** lub nowszy lub **.NET Core 2,2** lub nowszy. Zastąp odpowiednio wartości AZURE-SQL-SERVERNAME i DATABASE. Zwróć uwagę na to, że identyfikator zasobu usługi Azure SQL to `https://database.windows.net/`.
+Oto przykład kodu platformy .NET służący do otwierania połączenia z programem SQL przy użyciu tokenu dostępu. Ten kod należy uruchomić na maszynie wirtualnej, aby mógł uzyskać dostęp do punktu końcowego przypisanej przez system tożsamości zarządzanej maszyny wirtualnej. Do korzystania z metody tokenu dostępu jest wymagany **.NET Framework 4,6** lub nowszy lub **.NET Core 2,2** lub nowszy. Zastąp odpowiednio wartości AZURE-SQL-SERVERNAME i DATABASE. Zwróć uwagę na to, że identyfikator zasobu usługi Azure SQL jest `https://database.windows.net/`.
 
 ```csharp
 using System.Net;
@@ -193,7 +193,7 @@ Alternatywną metodą szybkiego przetestowania kompleksowej konfiguracji bez pot
 
 Sprawdź wartość `$DataSet.Tables[0]`, aby wyświetlić wyniki zapytania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób używania przypisanej przez system tożsamości zarządzanej w celu uzyskania dostępu do serwera usługi Azure SQL. Aby dowiedzieć się więcej o usłudze Azure SQL Server, zobacz:
 

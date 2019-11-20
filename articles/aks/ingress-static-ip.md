@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 9d53f8eff53a875a7a37d1ee1986e94405a24485
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 7e390ed1151c45ca9a325b1795a8fbcad74cdfdb
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144964"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194726"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Utwórz kontroler transferu danych przychodzących ze statycznym publicznym adresem IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -125,7 +125,7 @@ kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cer
 kubectl create namespace cert-manager
 
 # Label the cert-manager namespace to disable resource validation
-kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+kubectl label namespace cert-manager cert-manager.io/disable-validation=true
 
 # Add the Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
@@ -150,7 +150,7 @@ Aby można było wystawiać certyfikaty, Menedżer certyfikatów wymaga zasobu [
 Tworzenie wystawcy klastra, takiego jak `cluster-issuer.yaml`, przy użyciu następującego przykładowego manifestu. Zaktualizuj adres e-mail przy użyciu prawidłowego adresu z Twojej organizacji:
 
 ```yaml
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
@@ -169,7 +169,7 @@ Aby utworzyć wystawcę, użyj polecenia `kubectl apply -f cluster-issuer.yaml`.
 ```
 $ kubectl apply -f cluster-issuer.yaml
 
-clusterissuer.certmanager.k8s.io/letsencrypt-staging created
+clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
 
 ## <a name="run-demo-applications"></a>Uruchom aplikacje demonstracyjne
@@ -213,7 +213,7 @@ metadata:
   namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
-    certmanager.k8s.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt-staging
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   tls:
@@ -264,7 +264,7 @@ Type    Reason          Age   From          Message
 Jeśli musisz utworzyć dodatkowy zasób certyfikatu, możesz to zrobić z poniższym przykładowym manifestem. Zaktualizuj *dnsNames* i *domeny* do nazwy DNS utworzonej w poprzednim kroku. W przypadku korzystania z kontrolera danych wejściowych tylko wewnętrznego należy określić wewnętrzną nazwę DNS usługi.
 
 ```yaml
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: tls-secret
@@ -289,7 +289,7 @@ Aby utworzyć zasób certyfikatu, użyj polecenia `kubectl apply -f certificates
 ```
 $ kubectl apply -f certificates.yaml
 
-certificate.certmanager.k8s.io/tls-secret created
+certificate.cert-manager.io/tls-secret created
 ```
 
 ## <a name="test-the-ingress-configuration"></a>Testowanie konfiguracji transferu danych przychodzących
@@ -386,7 +386,7 @@ Na koniec Usuń statyczny publiczny adres IP utworzony dla kontrolera transferu 
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowiedzieć się więcej o tych składnikach, zobacz następujące strony projektu:
 

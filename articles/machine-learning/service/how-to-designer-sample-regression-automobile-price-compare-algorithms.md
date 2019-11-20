@@ -1,7 +1,7 @@
 ---
-title: 'Projektant: przewidywanie cen samochodu (regresja)'
+title: 'Projektant: przykład przewidywania cen samochodów (Zaawansowane)'
 titleSuffix: Azure Machine Learning
-description: W tym artykule przedstawiono sposób tworzenia złożonego potoku uczenia maszynowego bez konieczności pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza). Dowiedz się, jak uczenie i porównywanie wielu modeli regresji w celu przewidywania cen samochodu w oparciu o funkcje techniczne
+description: Kompiluj & porównać wiele modeli regresji ML, aby przewidzieć cenę samochodów na podstawie funkcji technicznych w programie Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647948"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196079"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Przykład 2-Regresja: przewidywanie ceny i porównywanie algorytmów
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Uczenie & porównanie wielu modeli regresji w celu przewidywania cen samochodów przy użyciu projektanta Azure Machine Learning
+
+**Projektant (wersja zapoznawcza) — przykład 2**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Dowiedz się, jak utworzyć potok uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza). Ten przykład pociąga za siebie i porównuje wiele modeli regresji, aby przewidzieć cenę samochodu w oparciu o jego funkcje techniczne. Udostępnimy uzasadnienie dotyczące opcji wybranych w tym potoku, aby móc rozwiązywać własne problemy z uczeniem maszynowym.
@@ -85,7 +88,7 @@ Oba algorytmy mają niższy błąd w zestawie danych szkoleniowych niż na niewi
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 

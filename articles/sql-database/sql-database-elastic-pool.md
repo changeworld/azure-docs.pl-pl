@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 1b3ee75d1b24cab8211337cf1cdbd053327e16b8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823830"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186466"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pule elastyczne ułatwiają zarządzanie wieloma bazami danych Azure SQL i skalowanie ich
 
@@ -220,9 +220,10 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów SQL Database w Azure
 
    Daxko/CSI korzysta z elastycznych pul z Azure SQL Database, aby przyspieszyć cykl programowania i zwiększyć wydajność usług i klientów.   
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby skalować pule elastyczne, zobacz [skalowanie pul elastycznych](sql-database-elastic-pool-scale.md) i [skalowanie elastycznej puli — przykładowego kodu](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - Film wideo zawiera temat kurs wideo dotyczący usługi [Microsoft Virtual Academy na Azure SQL Database elastycznych możliwościach](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Aby dowiedzieć się więcej na temat wzorców projektowych dla aplikacji SaaS wykorzystujących pule elastyczne, zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).
 - Aby zapoznać się z samouczkiem SaaS przy użyciu pul elastycznych, zobacz [wprowadzenie do aplikacji Wingtip SaaS](sql-database-wtp-overview.md).
+- Aby dowiedzieć się więcej o zarządzaniu zasobami w pulach elastycznych z wieloma bazami danych, zobacz [Zarządzanie zasobami w ramach gęstych pul elastycznych](sql-database-elastic-pool-resource-management.md).

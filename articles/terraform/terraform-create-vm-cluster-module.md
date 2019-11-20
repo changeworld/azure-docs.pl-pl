@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z usł
 description: Dowiedz się, jak za pomocą modułów Terraform utworzyć klaster maszyn wirtualnych systemu Windows na platformie Azure
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 939c34eae63b89108102ed8f766a4260ce2f24bd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159067"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185559"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z usługą Terraform przy użyciu rejestru modułu
 
@@ -54,6 +54,7 @@ module mycompute {
     location = "East US 2"
     admin_password = "ComplxP@assw0rd!"
     vm_os_simple = "WindowsServer"
+    is_windows_image = "true"
     remote_port = "3389"
     nb_instances = 2
     public_ip_dns = ["unique_dns_name"]
@@ -96,7 +97,7 @@ Uruchom polecenie `terraform apply`, aby aprowizować maszyny wirtualne na platf
 
 ![Terraform Apply](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"] 
 > [Przeglądaj listę modułów usługi Azure Terraform](https://registry.terraform.io/modules/Azure)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 377ed8f17cfcf67f10cbdec77199c69c606afa3e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011477"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180686"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
@@ -143,7 +143,15 @@ Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z prze
 </cors>
 ```
 
-## <a name="next-steps"></a>Następne kroki
+> [!NOTE]
+> 
+> W przypadku zastosowania zasad CORS w zakresie produktu, a nie zakresu interfejsów API, a interfejs API używa uwierzytelniania klucza subskrypcji za pośrednictwem nagłówka, konsola nie będzie działała.
+>
+> Przeglądarka automatycznie wystawia żądanie HTTP dotyczące opcji, które nie zawiera nagłówka z kluczem subskrypcji. Ze względu na brak klucza subskrypcji API Management nie można skojarzyć opcji z produktem, dlatego nie można zastosować zasad CORS.
+>
+> Jako obejście można przekazać klucz subskrypcji w parametrze zapytania.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o nowym portalu dla deweloperów:
 

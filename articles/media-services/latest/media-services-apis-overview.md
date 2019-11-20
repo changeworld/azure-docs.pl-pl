@@ -1,6 +1,7 @@
 ---
-title: Programowanie przy użyciu interfejsów API v3 — Azure | Microsoft Docs
-description: W tym artykule omówiono reguły, które mają zastosowanie do jednostek i interfejsów API podczas tworzenia z Media Services v3.
+title: Programowanie przy użyciu interfejsów API v3
+titleSuffix: Azure Media Services
+description: Informacje o regułach, które są stosowane do jednostek i interfejsów API podczas tworzenia z Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,39 +13,39 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049026"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186126"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Programowanie przy użyciu interfejsów API Media Services v3
+# <a name="develop-with-media-services-v3-apis"></a>Programowanie przy użyciu interfejsów API Media Services v3
 
 Jako deweloper możesz użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref) usługi Media Services lub bibliotek klienckich, które umożliwiają interakcję z interfejsem API REST, aby łatwo tworzyć i utrzymywać niestandardowe przepływy pracy multimediów oraz zarządzać nimi. Interfejs API usługi [Media Services v3](https://aka.ms/ams-v3-rest-sdk) opiera się na specyfikacji interfejsu OpenAPI (wcześniej znanej jako struktura Swagger).
 
-W tym artykule omówiono reguły, które mają zastosowanie do jednostek i interfejsów API podczas tworzenia z Media Services v3.
+W tym artykule omówiono reguły dotyczące jednostek i interfejsów API podczas opracowywania programu z Media Services v3.
 
 ## <a name="accessing-the-azure-media-services-api"></a>Uzyskiwanie dostępu do interfejsu API Azure Media Services
 
 Aby uzyskać autoryzację w celu uzyskania dostępu do zasobów Media Services i interfejsu API Media Services, należy najpierw uwierzytelnić się. Media Services obsługuje uwierzytelnianie [oparte na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) . Dostępne są dwie typowe opcje uwierzytelniania:
  
-* **Uwierzytelnianie jednostki usługi** — służy do uwierzytelniania usługi (na przykład: aplikacje sieci Web, aplikacje funkcji, Aplikacje logiki, interfejs API i mikrousługi). Aplikacje, które często używają tej metody uwierzytelniania, to aplikacje, które uruchamiają usługi demonów, usługi warstwy środkowej lub zaplanowane zadania. Na przykład w przypadku aplikacji sieci Web zawsze powinna być warstwą średnią, która łączy się z Media Services za pomocą nazwy głównej usługi.
-* **Uwierzytelnianie użytkownika** — służy do uwierzytelniania osoby korzystającej z aplikacji w celu współdziałania z zasobami Media Services. Aplikacja interaktywna powinna najpierw monitować użytkownika o podanie poświadczeń użytkownika. Przykładem jest aplikacja konsoli zarządzania używana przez autoryzowanych użytkowników do monitorowania zadań kodowania lub przesyłania strumieniowego na żywo.
+* **Uwierzytelnianie jednostki usługi**: używane do uwierzytelniania usługi (na przykład: aplikacje sieci Web, aplikacje funkcji, Aplikacje logiki, interfejs API i mikrousługi). Aplikacje, które często używają tej metody uwierzytelniania, to aplikacje, które uruchamiają usługi demonów, usługi warstwy środkowej lub zaplanowane zadania. Na przykład w przypadku aplikacji sieci Web zawsze powinna być warstwą średnią, która łączy się z Media Services za pomocą nazwy głównej usługi.
+* **Uwierzytelnianie użytkownika**: służy do uwierzytelniania osoby korzystającej z aplikacji w celu współdziałania z zasobami Media Services. Aplikacja interakcyjna powinna najpierw monitować użytkownika o podanie poświadczeń użytkownika. Przykładem jest aplikacja konsoli zarządzania używana przez autoryzowanych użytkowników do monitorowania zadań kodowania lub przesyłania strumieniowego na żywo.
 
-Interfejs API Media Services wymaga, aby użytkownik lub aplikacja dokonująca żądań interfejsu API REST mieli dostęp do zasobu konta Media Services i korzystała z roli **współautor** lub **właściciela** . Dostęp do interfejsu API można uzyskać przy użyciu roli **czytelnik** , ale będą dostępne tylko operacje **Get** lub **list** . Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach dla kont Media Services](rbac-overview.md).
+Interfejs API Media Services wymaga, aby użytkownik lub aplikacja wykonująca żądania interfejsu API REST mieli dostęp do zasobu konta Media Services i korzystała z roli **współautor** lub **właściciela** . Dostęp do interfejsu API można uzyskać przy użyciu roli **czytelnik** , ale będą dostępne tylko operacje **Get** lub **list** . Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach dla kont Media Services](rbac-overview.md).
 
 Zamiast tworzyć jednostkę usługi, należy rozważyć użycie zarządzanych tożsamości dla zasobów platformy Azure w celu uzyskania dostępu do interfejsu API Media Services za pośrednictwem Azure Resource Manager. Aby dowiedzieć się więcej na temat tożsamości zarządzanych dla zasobów platformy Azure, zobacz [co to jest tożsamość zarządzana dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-### <a name="azure-ad-service-principal"></a>Nazwa główna usługi Azure AD 
+### <a name="azure-ad-service-principal"></a>Nazwa główna usługi Azure AD
 
-Jeśli tworzysz aplikację usługi Azure AD i nazwę główną usługi, aplikacja musi znajdować się w własnej dzierżawie. Po utworzeniu aplikacji nadaj **współautorowi** aplikacji lub dostęp do roli **właściciela** do konta Media Services. 
+Jeśli tworzysz aplikację usługi Azure AD i nazwę główną usługi, aplikacja musi znajdować się w własnej dzierżawie. Po utworzeniu aplikacji nadaj **współautorowi** aplikacji lub roli **właściciela** dostęp do konta Media Services.
 
 Jeśli nie masz pewności, czy masz uprawnienia do tworzenia aplikacji usługi Azure AD, zobacz [wymagane uprawnienia](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 Na poniższej ilustracji liczba reprezentuje przepływ żądań w kolejności chronologicznej:
 
-![Aplikacje warstwy środkowej](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![Uwierzytelnianie aplikacji warstwy środkowej przy użyciu usługi AAD z internetowego interfejsu API](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
 1. Aplikacja warstwy środkowej żąda tokenu dostępu usługi Azure AD, który ma następujące parametry:  
 
@@ -52,8 +53,8 @@ Na poniższej ilustracji liczba reprezentuje przepływ żądań w kolejności ch
    * Media Services identyfikator URI zasobu.
    * Identyfikator URI zasobu dla Media Services REST.
    * Wartości aplikacji usługi Azure AD: identyfikator klienta i klucz tajny klienta.
-   
-   Aby uzyskać wszystkie konieczne wartości, zobacz [dostęp Azure Media Services interfejsu API w interfejsie wiersza polecenia platformy Azure](access-api-cli-how-to.md)
+
+   Aby uzyskać wszystkie konieczne wartości, zobacz [dostęp Azure Media Services interfejsu API w interfejsie wiersza polecenia platformy Azure](access-api-cli-how-to.md).
 
 2. Token dostępu usługi Azure AD jest wysyłany do warstwy środkowej.
 4. Warstwa środkowa wysyła żądanie do interfejsu API REST usługi Azure Media przy użyciu tokenu usługi Azure AD.
@@ -71,11 +72,11 @@ Zapoznaj się z poniższymi przykładami, które pokazują, jak nawiązać poł�
 
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
-Nazwy zasobów w usłudze Azure Media Services w wersji 3 (na przykład Zasoby, Zadania, Przekształcenia) podlegają ograniczeniom nazewnictwa usługi Azure Resource Manager. Zgodnie z zasadami usługi Azure Resource Manager nazwy zasobów są zawsze unikatowe. W związku z tym jako nazw zasobów można używać dowolnych ciągów będących unikatowymi identyfikatorami (na przykład identyfikatorów GUID). 
+Nazwy zasobów w usłudze Azure Media Services w wersji 3 (na przykład Zasoby, Zadania, Przekształcenia) podlegają ograniczeniom nazewnictwa usługi Azure Resource Manager. Zgodnie z zasadami usługi Azure Resource Manager nazwy zasobów są zawsze unikatowe. W związku z tym jako nazw zasobów można używać dowolnych ciągów będących unikatowymi identyfikatorami (na przykład identyfikatorów GUID).
 
-Nazwy zasobów usługi Media Services nie mogą zawierać znaków „<”, „>”, „%”, „&”, „:”, „&#92;”, „?”, „/”, „*”, „+”, „.”, pojedynczych cudzysłowów ani żadnych znaków sterujących. Wszystkie inne znaki są dozwolone. Maksymalna długość nazwy zasobu to 260 znaków. 
+Nazwy zasobów Media Services nie mogą zawierać: "<", ">", "%", "&", ":",&#92;"", "?", "/", "*", "+", ".", znaku pojedynczego cudzysłowu ani znaków kontrolnych. Wszystkie inne znaki są dozwolone. Maksymalna długość nazwy zasobu to 260 znaków.
 
-Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager, zobacz [Wymagania w zakresie nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Aby uzyskać więcej informacji na temat nazewnictwa Azure Resource Manager, zobacz [wymagania dotyczące nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [konwencje nazewnictwa](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Nazwy plików/obiektów BLOB w obrębie elementu zawartości
 
@@ -106,7 +107,7 @@ Media Services ma następujące długotrwałe operacje:
 * [Zatrzymaj StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
 * [Skalowanie StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
-Po pomyślnym wysłaniu długiej operacji otrzymano element "202 zaakceptował" i musi on być sondowany o uzupełnianie operacji przy użyciu zwróconego identyfikatora operacji.
+Po pomyślnym wysłaniu długiej operacji otrzymasz komunikat "202 zaakceptował" i musi on być sondowany o uzupełnianie operacji przy użyciu zwróconego identyfikatora operacji.
 
 W artykule [śledzenie asynchronicznych operacji na platformie Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wyjaśniono, jak śledzić stan asynchronicznych operacji platformy Azure za pomocą wartości zwracanych w odpowiedzi.
 
@@ -115,9 +116,9 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 ## <a name="sdks"></a>Zestawy SDK
 
 > [!NOTE]
-> Nie ma gwarancji, że zestawy SDK Azure Media Services V3 są bezpieczne wątkowo. Podczas tworzenia aplikacji wielowątkowej należy dodać własną logikę synchronizacji wątków, aby chronić klienta lub użyć nowego obiektu AzureMediaServicesClient na wątek. Należy również zachować ostrożność w przypadku problemów z wielowątkowością wprowadzanych przez obiekty opcjonalne dostarczone przez kod klientowi (na przykład wystąpienie HttpClient w programie .NET).
+> Zestawy SDK Azure Media Services V3 nie mają gwarancji, że są bezpieczne wątkowo. Podczas tworzenia aplikacji wielowątkowej należy dodać własną logikę synchronizacji wątków, aby chronić klienta lub użyć nowego obiektu AzureMediaServicesClient na wątek. Należy również zachować ostrożność w przypadku problemów z wielowątkowością wprowadzanych przez obiekty opcjonalne dostarczone przez kod klientowi (na przykład wystąpienie HttpClient w programie .NET).
 
-|SDK|Dokumentacja|
+|SDK|Informacje ogólne|
 |---|---|
 |[Zestaw SDK platformy .NET](https://aka.ms/ams-v3-dotnet-sdk)|[Dokumentacja platformy .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Zestaw SDK Java](https://aka.ms/ams-v3-java-sdk)|[Dokumentacja języka Java](https://aka.ms/ams-v3-java-ref)|
@@ -126,7 +127,7 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 |[Zestaw SDK dla języka Go](https://aka.ms/ams-v3-go-sdk) |[Dokumentacja języka Go](https://aka.ms/ams-v3-go-ref)|
 |[Zestaw SDK dla języka Ruby](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 
 - [EventGrid .NET SDK zawierający zdarzenia usługi Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definicje zdarzeń Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -135,21 +136,21 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) to narzędzie dostępne dla użytkowników systemu Windows, którzy chcą dowiedzieć się więcej o usłudze Media Services. Narzędzie AMSE to aplikacja Winforms/C# obsługująca przekazywanie, pobieranie, kodowanie oraz przesyłanie strumieniowe wideo na żądanie i na żywo zawartości za pomocą usługi Media Services. Narzędzie AMSE jest przeznaczone dla klientów, którzy chcą przetestować usługę Media Services bez konieczności pisania jakiegokolwiek kodu. Kod AMSE jest dostarczany jako zasób dla klientów, którzy chcą tworzyć aplikacje za pomocą usługi Media Services.
 
-Narzędzie AMSE to projekt typu Open Source, w przypadku którego pomoc techniczna jest świadczona przez społeczność (problemy można zgłaszać pod adresem https://github.com/Azure/Azure-Media-Services-Explorer/issues). W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/). Aby uzyskać więcej informacji, zobacz [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) (Często zadawane pytania dotyczące kodeksu postępowania) lub wyślij wiadomość e-mail na adres opencode@microsoft.com w przypadku jakichkolwiek dodatkowych pytań lub komentarzy.
+Narzędzie AMSE to projekt typu Open Source, w przypadku którego pomoc techniczna jest świadczona przez społeczność (problemy można zgłaszać pod adresem https://github.com/Azure/Azure-Media-Services-Explorer/issues). W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/). Aby uzyskać więcej informacji, zobacz [Kodeks postępowania — często zadawane pytania](https://opensource.microsoft.com/codeofconduct/faq/) lub skontaktuj się opencode@microsoft.com z innymi pytaniami lub komentarzami.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrowanie, porządkowanie, stronicowanie jednostek Media Services
 
-Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Azure Media Services](entities-overview.md)
+Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Azure Media Services](entities-overview.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Nawiązywanie połączenia z Media Services przy użyciu języka Java](configure-connect-java-howto.md)
 * [Nawiązywanie połączenia z usługą Media Services przy użyciu platformy .NET](configure-connect-dotnet-howto.md)

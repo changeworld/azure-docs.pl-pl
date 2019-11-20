@@ -1,19 +1,18 @@
 ---
-title: Macierz obsługi Azure Migrate na potrzeby oceny i migracji oprogramowania VMware
-description: Podsumowuje ustawienia i ograniczenia dotyczące oceny i migracji maszyn wirtualnych VMware na platformę Azure przy użyciu usługi Azure Migrate.
-services: backup
+title: Obsługa oceny i migracji oprogramowania VMware w Azure Migrate
+description: Dowiedz się więcej o obsłudze oceny/migracji maszyn wirtualnych VMware w Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838914"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196274"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -50,7 +49,7 @@ Francja | Francja Środkowa
 Indie | Indie Środkowe lub Indie Południowe
 Japonia |  Japonia Wschodnia lub Japonia Zachodnia
 Korea | Korea środkowa lub Korea Południowa
-Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
@@ -79,7 +78,13 @@ W tej tabeli zestawiono wsparcie oceny i ograniczenia dotyczące serwerów wirtu
 
 ## <a name="assessment-vcenter-server-permissions"></a>Ocena — uprawnienia vCenter Server
 
-Do oceny potrzebne jest konto tylko do odczytu dla vCenter Server.
+Azure Migrate musi uzyskać dostęp do vCenter Server w celu odnalezienia maszyn wirtualnych na potrzeby oceny i migracji bez wykorzystania agentów.
+
+- Jeśli planujesz odnajdywanie aplikacji lub wizualizowanie zależności w sposób niezależny od agenta, Utwórz konto vCenter Server z dostępem tylko do odczytu wraz z włączonymi uprawnieniami dla **maszyn wirtualnych** > **operacji gościa**.
+
+  ![uprawnienia vCenter Server konta](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- Jeśli nie planujesz przeprowadzać odnajdywania aplikacji ani wizualizacji zależności bez agenta, skonfiguruj konto tylko do odczytu dla vCenter Server.
 
 ## <a name="assessment-appliance-requirements"></a>Ocena — wymagania dotyczące urządzenia
 
@@ -105,7 +110,7 @@ Urządzenie Azure Migrate wymaga połączenia z Internetem.
 --- | --- |
 *.portal.azure.com  | Przejdź do Azure Migrate w Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Zaloguj się do subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 management.azure.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
 *.vault.azure.net | Zarządzanie wpisami tajnymi w Azure Key Vault.
@@ -116,7 +121,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="assessment-port-requirements"></a>Ocena — wymagania dotyczące portów
 
-**Pliku** | **Połączenie**
+**urządzenia** | **połączenia**
 --- | ---
 Wprowadzony | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Połączenia wychodzące na porcie 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 Serwer vCenter | Połączenia przychodzące na porcie TCP 443 umożliwiające urządzeniu zbieranie metadanych dotyczących konfiguracji i wydajności dla ocen. <br/><br/> Urządzenie domyślnie łączy się z programem vCenter na porcie 443. Jeśli serwer vCenter nasłuchuje na innym porcie, można zmodyfikować port podczas konfigurowania odnajdywania.
@@ -128,7 +133,7 @@ Wizualizacja zależności ułatwia wizualizację zależności między maszynami,
 - **Wizualizacja zależności bez agenta**: Ta opcja jest obecnie dostępna w wersji zapoznawczej. Nie wymaga to instalowania żadnych agentów na komputerach.
     - Działa przez przechwytywanie danych połączenia TCP z maszyn, dla których jest włączona. Po rozpoczęciu odnajdywania zależności urządzenie zbiera dane z maszyn z interwałem sondowania równym pięć minut.
     - Zbierane są następujące dane:
-        - Połączenia TCP
+        - Połączenia protokołu TCP
         - Nazwy procesów, które mają aktywne połączenia
         - Nazwy zainstalowanych aplikacji, które uruchamiają powyższe procesy
         - Nie. wykrytych połączeń podczas każdego interwału sondowania
@@ -208,7 +213,7 @@ Urządzenie Azure Migrate wymaga połączenia z Internetem za pośrednictwem Int
 --- | ---
 *.portal.azure.com | Przejdź do Azure Migrate w Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do subskrypcji platformy Azure.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 management.azure.com | Utwórz Active Directory aplikacje dla urządzenia, aby komunikować się z usługą Azure Migrate.
 dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.
 *.vault.azure.net | Zarządzanie wpisami tajnymi w Azure Key Vault.
@@ -220,7 +225,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="agentless-migration-port-requirements"></a>Migracja bez agentów — wymagania dotyczące portów
 
-**Pliku** | **Połączenie**
+**urządzenia** | **połączenia**
 --- | ---
 Wprowadzony | Połączenia wychodzące na porcie 443 do przekazywania replikowanych danych na platformę Azure oraz do komunikowania się z usługami Azure Migrate organizowanie replikacji i migracji.
 Serwer vCenter | Połączenia przychodzące na porcie 443, aby umożliwić organizowanie replikacji — tworzenie migawek, kopiowanie danych i migawki wersji
@@ -263,7 +268,7 @@ Wolne miejsce na dysku (dysk przechowywania) | 600 GB
 **Ustawienia oprogramowania** |
 System operacyjny | Windows Server 2016 lub Windows Server 2012 R2
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
-Protokół | Protokół TLS 1,2 powinien być włączony.
+TLS | Protokół TLS 1,2 powinien być włączony.
 .NET Framework | Na maszynie należy zainstalować .NET Framework 4,6 lub nowszą (z włączonym silnym kryptografią.
 MySQL | Baza danych MySQL powinna być zainstalowana na urządzeniu.<br/> Należy zainstalować MySQL. Można zainstalować go ręcznie lub Site Recovery można go zainstalować podczas wdrażania urządzenia.
 Inne aplikacje | Nie uruchamiaj innych aplikacji na urządzeniu replikacji.
@@ -271,7 +276,7 @@ Role systemu Windows Server | Nie należy włączać tych ról: <br> - Active Di
 Zasady grupy | Nie włączaj tych zasad grupy: <br> -Zapobiegaj dostępowi do wiersza polecenia. <br> — Uniemożliwia dostęp do narzędzi do edytowania rejestru. <br> — Logika zaufania dla plików załączników. <br> — Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Brak istniejącej domyślnej witryny sieci Web <br> — Żadna istniejąca witryna sieci Web/aplikacja nasłuchu na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz ustawienie [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
 **Ustawienia sieci** |
-Typ adresu IP | Statyczny
+Typ adresu IP | Static
 Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych)
 Typ karty sieciowej | VMXNET3
 
@@ -324,7 +329,7 @@ Pobierz i zainstaluj w Azure Migrate | Po zainstalowaniu urządzenia i wyświetl
 **Dyski niezależne** | Obsługiwane.
 **Przekazywanie dysków** | Obsługiwane.
 **NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane.
-obiekty docelowe iSCSI | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
+**obiekty docelowe iSCSI** | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
 **Wielościeżkowe we/wy** | Nieobsługiwane.
 **VMotion magazynu** | Obsługiwane
 **Zespoły kart sieciowych** | Nieobsługiwane.
@@ -354,7 +359,7 @@ dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętr
 
 ## <a name="agent-based-migration-port-requirements"></a>Migracja oparta na agencie — wymagania dotyczące portów
 
-**Pliku** | **Połączenie**
+**urządzenia** | **połączenia**
 --- | ---
 Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem replikacji (serwer konfiguracji) na porcie HTTPS 443 przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
 Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
@@ -381,6 +386,6 @@ Połącz po migracji — Windows | Aby nawiązać połączenie z maszynami wirtu
 Połącz po migracji — system Linux | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure po migracji przy użyciu protokołu SSH:<br/> Przed migracją na maszynie lokalnej Sprawdź, czy usługa Secure Shell jest ustawiona do uruchamiania, oraz czy reguły zapory zezwalają na połączenie SSH.<br/> Po przejściu w tryb failover na maszynie wirtualnej platformy Azure Zezwól na połączenia przychodzące do portu SSH dla reguł sieciowej grupy zabezpieczeń na maszynie wirtualnej w trybie failover oraz dla podsieci platformy Azure, do której jest podłączona. Dodatkowo Dodaj publiczny adres IP dla maszyny wirtualnej. |  
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Przygotuj się do](tutorial-prepare-vmware.md) oceny oprogramowania VMware i migracji.

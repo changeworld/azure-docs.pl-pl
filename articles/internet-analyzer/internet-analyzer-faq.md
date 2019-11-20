@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512901"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184251"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer — często zadawane pytania (wersja zapoznawcza)
 
@@ -99,6 +99,10 @@ Następujące wstępnie skonfigurowane punkty końcowe są dostępne w trakcie o
 
 Analizator Internetu ułatwia zrozumienie wydajności użytkowników końcowych i ułatwia podejmowanie decyzji w celu usprawnienia ich wydajności. Chociaż inne narzędzia do monitorowania platformy Azure zapewniają wgląd w usługi platformy Azure, Analizator Internetu koncentruje się na mierze kompleksowej wydajności Internetu dla użytkowników.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Jak dane pomiarów są obsługiwane przez analizator Internetu?
+
+Platforma Azure ma [silne procesy zabezpieczeń i spełnia szeroki zakres standardów zgodności](https://azure.microsoft.com/support/trust-center/). Tylko ty i Twój Wyznaczeni zespół mają dostęp do danych. Pracownicy firmy Microsoft mogą mieć ograniczony dostęp do niego tylko w określonych ograniczonych okolicznościach z Twoją wiedzą. Jest on szyfrowany podczas przesyłania i przechowywania.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej, zobacz [Omówienie analizatora Internetu](internet-analyzer-overview.md).

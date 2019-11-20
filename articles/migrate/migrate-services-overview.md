@@ -1,18 +1,18 @@
 ---
-title: Informacje o usłudze Azure Migrate | Microsoft Docs
-description: Ten artykuł zawiera omówienie usługi Azure Migrate.
+title: Informacje o usłudze Azure Migrate
+description: Dowiedz się więcej o ocenie i migracji serwera za pomocą usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748007"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185794"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -132,7 +132,7 @@ Azure Migrate integruje się z Asystent migracji Azure App Service. Z poziomu Ce
 
 Za pomocą produktów Azure Data Box można przenieść duże ilości danych w tryb offline na platformę Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/databox/)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Wypróbuj nasze samouczki, aby ocenić [maszyny wirtualne VMware](tutorial-assess-vmware.md) i [maszyny wirtualne funkcji Hyper-V](tutorial-assess-hyper-v.md).
 - [Uzyskaj więcej informacji](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenach usługi Azure Migrate.

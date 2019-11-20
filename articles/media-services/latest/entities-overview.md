@@ -1,6 +1,7 @@
 ---
-title: Filtrowanie, porządkowanie i stronicowanie jednostek Media Services — platforma Azure | Microsoft Docs
-description: W tym artykule omówiono filtrowanie, porządkowanie, stronicowanie jednostek Azure Media Services.
+title: Filtrowanie, porządkowanie i stronicowanie jednostek Media Services
+titleSuffix: Azure Media Services
+description: Dowiedz się więcej na temat filtrowania, porządkowania i stronicowania jednostek Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,12 +13,12 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693306"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186244"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrowanie, porządkowanie i stronicowanie jednostek Media Services
 
@@ -41,7 +42,7 @@ Operatory zakresu:
 
 - `gt`: Sprawdź, czy pole jest *większe niż* wartość stała.
 - `lt`: Sprawdź, czy pole jest *mniejsze niż* wartość stała.
-- `ge`: Sprawdź, czy pole jest *większe lub równe* stałej. wartość
+- `ge`: Sprawdź, czy pole jest *większe lub równe* wartości stałej.
 - `le`: Sprawdź, czy pole jest *mniejsze niż lub równe* wartości stałej.
 
 ## <a name="filter"></a>Filtr
@@ -59,11 +60,11 @@ Poniższe C# przykładowe filtry według daty utworzenia elementu zawartości:
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```    
+```
 
 ## <a name="order-by"></a>Porządkuj według
 
-Użyj `$orderby` do sortowania zwracanych obiektów przez określony parametr. Na przykład:    
+Użyj `$orderby` do sortowania zwracanych obiektów przez określony parametr. Na przykład:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -77,7 +78,7 @@ Jeśli odpowiedź na zapytanie zawiera wiele elementów, usługa zwraca wartoś�
 
 W Media Services V3 nie można skonfigurować rozmiaru strony. Rozmiar strony jest różny w zależności od typu jednostki. Przeczytaj poszczególne sekcje, które obserwują, aby uzyskać szczegółowe informacje.
 
-Jeśli obiekty są tworzone lub usuwane podczas stronicowania w kolekcji, zmiany zostaną odzwierciedlone w zwracanych wynikach (jeśli te zmiany znajdują się w części kolekcji, która nie została pobrana). 
+Jeśli obiekty są tworzone lub usuwane podczas stronicowania w kolekcji, zmiany zostaną odzwierciedlone w zwracanych wynikach (jeśli te zmiany znajdują się w części kolekcji, która nie została pobrana).
 
 > [!TIP]
 > Należy zawsze używać `nextLink` do wyliczania kolekcji i nie zależy od określonego rozmiaru strony.
@@ -155,31 +156,31 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 W poniższej tabeli przedstawiono sposób stosowania opcji filtrowania i porządkowania do różnych jednostek:
 
-|Nazwa jednostki|Nazwa właściwości|Filtr|Zamów|
+|Nazwa jednostki|Nazwa właściwości|Filtr|Zamówienie|
 |---|---|---|---|
 |[Elementy zawartości](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` i `desc`|
-||Właściwości. alternateId |`eq`||
-||Właściwości. assetId |`eq`||
-||Właściwości. utworzone| `eq`, `gt`, `lt`| `asc` i `desc`|
+||properties.alternateId |`eq`||
+||properties.assetId |`eq`||
+||Properties.created| `eq`, `gt`, `lt`| `asc` i `desc`|
 |[Zasady kluczy zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Właściwości. utworzone    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Properties. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||Właściwości. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Właściwości. policyId|`eq`, `ne`||
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
+||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
+||properties.policyId|`eq`, `ne`||
 |[Zadania](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` i `desc`|
 ||Properties. State        | `eq`, `ne`        |                         |
-||Właściwości. utworzone      | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
-||Właściwości. lastModified | `gt`, `ge`, `lt`, `le` | `asc` i `desc`| 
+||Properties.created      | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` i `desc`| 
 |[Lokalizatory przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Właściwości. utworzone    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Właściwości. endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
 |[Zasady przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Właściwości. utworzone    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
 |[Przekształca](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` i `desc`|
-|| Właściwości. utworzone      | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
-|| Właściwości. lastModified | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
+|| Properties.created      | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wyświetl listę zasobów](https://docs.microsoft.com/rest/api/media/assets/list)
 * [Wyświetl listę zasad dotyczących kluczy zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)

@@ -1,5 +1,5 @@
 ---
-title: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
+title: Samouczek`:` korzystania z tożsamości zarządzanej maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Azure AD interfejs API programu Graph
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307509"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183645"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
@@ -67,7 +67,7 @@ W tym samouczku umożliwisz tożsamości maszyny wirtualnej wykonanie zapytania 
 Azure AD Graph:
 - Identyfikator aplikacji jednostki usługi (używany podczas udzielania uprawnień aplikacji): 00000002-0000-0000-c000-000000000000
 - Identyfikator zasobu (używany podczas żądania tokenu dostępu z tożsamości zarządzanych dla zasobów platformy Azure): https://graph.windows.net
-- Dokumentacja dotycząca zakresu uprawnień: [Dokumentacja uprawnień programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Dokumentacja zakresu uprawnień: [dokumentacja uprawnień funkcji Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-curl"></a>Udzielanie aplikacji uprawnień przy użyciu programu CURL
 

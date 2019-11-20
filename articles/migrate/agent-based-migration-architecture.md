@@ -1,17 +1,17 @@
 ---
-title: Architektura migracji oparta na agentach w ramach migracji Azure Migrate serwera
+title: Migracja oparta na agencie w migracji Azure Migrate serwera
 description: Zawiera omówienie migracji maszyn wirtualnych VMware opartych na agentach z migracją na serwer Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a8477b4c10ccbc76f36eed4d64ac12e8bb648a28
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232585"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186106"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migracji z użyciem agentów
 
@@ -42,15 +42,15 @@ W tabeli zestawiono składniki używane do migracji opartej na agentach.
 
 **Składnik** | **Szczegóły** | **Instalacja**
 --- | --- | ---
-**Urządzenie replikacji** | Urządzenie replikacji (serwer konfiguracji) jest maszyną lokalną, która działa jako Most między środowiskiem lokalnym i narzędziem migracji Azure Migrate Server. Urządzenie odnajduje spis lokalnych maszyn wirtualnych, dzięki czemu Migracja serwera Azure może organizować replikację i migrację. Urządzenie ma dwa składniki:<br/><br/> **Serwer konfiguracji**: Nawiązuje połączenie z migracją serwera Azure Migrate i koordynuje replikację.<br/> **Serwer przetwarzania**: Obsługuje replikację danych. Odbiera dane dotyczące maszyn wirtualnych, kompresuje je i szyfruje oraz wysyła do subskrypcji platformy Azure. W tym przypadku Migracja serwera zapisuje dane na dyskach zarządzanych. | Domyślnie serwer przetwarzania jest instalowany razem z serwerem konfiguracji na urządzeniu replikacji.
+**Urządzenie replikacji** | Urządzenie replikacji (serwer konfiguracji) jest maszyną lokalną, która działa jako Most między środowiskiem lokalnym i narzędziem migracji Azure Migrate Server. Urządzenie odnajduje spis lokalnych maszyn wirtualnych, dzięki czemu Migracja serwera Azure może organizować replikację i migrację. Urządzenie ma dwa składniki:<br/><br/> **Serwer konfiguracji**: nawiązuje połączenie z migracją serwera Azure Migrate i koordynuje replikację.<br/> **Serwer przetwarzania**: obsługuje replikację danych. Odbiera dane dotyczące maszyn wirtualnych, kompresuje je i szyfruje oraz wysyła do subskrypcji platformy Azure. W tym przypadku Migracja serwera zapisuje dane na dyskach zarządzanych. | Domyślnie serwer przetwarzania jest instalowany razem z serwerem konfiguracji na urządzeniu replikacji.
 **Usługa mobilności** | Usługa mobilności jest agentem zainstalowanym na każdej maszynie, która ma być replikowana i migrowana. Wysyła dane replikacji z komputera do serwera przetwarzania. Dostępnych jest wiele różnych agentów usługi mobilności. | Pliki instalacyjne usługi mobilności znajdują się na urządzeniu replikacji. Należy pobrać i zainstalować agenta, którego potrzebujesz, zgodnie z systemem operacyjnym i wersją maszyny, która ma być replikowana.
 
 ### <a name="mobility-service-installation"></a>Instalacja usługi mobilności
 
 Usługę mobilności można wdrożyć przy użyciu następujących metod:
 
-- **Instalacja wypychana**: Usługa mobilności jest instalowana przez serwer przetwarzania po włączeniu ochrony dla komputera. 
-- **Zainstaluj ręcznie**: Usługę mobilności można zainstalować ręcznie na każdym komputerze za pomocą interfejsu użytkownika lub wiersza polecenia.
+- **Instalacja wypychana**: usługa mobilności jest instalowana przez serwer przetwarzania po włączeniu ochrony dla komputera. 
+- **Zainstaluj ręcznie**: usługę mobilności można zainstalować ręcznie na każdym komputerze za pomocą interfejsu użytkownika lub wiersza polecenia.
 
 Usługa mobilności komunikuje się z urządzeniem replikacji i replikowanymi maszynami. W przypadku oprogramowania antywirusowego uruchomionego na urządzeniu replikacji, serwerów przetwarzania lub replikowanych maszyn należy wykluczyć następujące foldery z skanowania:
 
@@ -77,7 +77,7 @@ Usługa mobilności komunikuje się z urządzeniem replikacji i replikowanymi ma
 
 **urządzenia** | **połączenia**
 --- | --- 
-maszyn wirtualnych | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem do replikacji na porcie HTTPS 443 ruchu przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (domyślnie uruchomione na urządzeniu replikacji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
+Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem do replikacji na porcie HTTPS 443 ruchu przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (domyślnie uruchomione na urządzeniu replikacji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
 Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
 Serwer przetwarzania | Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do usługi Azure Storage przez port 443 wychodzące.
 
@@ -118,7 +118,7 @@ Jeśli zachodzi potrzeba wdrożenia serwera przetwarzania skalowalnego w poziomi
 
  Ruch VMware replikowany do platformy Azure odbywa się za pomocą określonego serwera przetwarzania. Przepływność przekazywania można ograniczyć, ograniczając przepustowość na komputerach, na których działają jako serwery przetwarzania. Korzystając z tego klucza rejestru, można mieć wpływ na przepustowość:
 
-- Wartość rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows platformy Azure Backup\Replication\UploadThreadsPerVM określa liczbę wątków używanych na potrzeby transferu danych (replikacja początkowa lub różnicowa) dysku. Wyższa wartość zwiększa przepustowość sieci używaną podczas replikacji. Wartość domyślna to 4. Wartość maksymalna to 32. Monitoruj ruch, aby zoptymalizować tę wartość.
+- Wartość rejestru HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM określa liczbę wątków używanych na potrzeby transferu danych (replikacja początkowa lub różnicowa) dysku. Wyższa wartość zwiększa przepustowość sieci używaną podczas replikacji. Wartość domyślna to 4. Wartość maksymalna to 32. Monitoruj ruch, aby zoptymalizować tę wartość.
 - Ponadto można ograniczyć przepustowość na komputerze serwera przetwarzania w następujący sposób:
 
     1. Na komputerze serwera przetwarzania Otwórz przystawkę MMC Azure Backup. Istnieje skrót na pulpicie lub w folderze C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
@@ -126,6 +126,6 @@ Jeśli zachodzi potrzeba wdrożenia serwera przetwarzania skalowalnego w poziomi
     3. W obszarze **ograniczenie przepustowości**wybierz opcję **Włącz ograniczenie przepustowości Internetu dla operacji tworzenia kopii zapasowej**. Ustaw limity dla godzin pracy i czasu wolnego. Prawidłowe zakresy są z zakresu od 512 KB/s do 1 023 MB/s.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wypróbuj [migrację maszyny wirtualnej VMware](tutorial-migrate-vmware-agent.md) opartą na agencie przy użyciu migracji serwera Azure Migrate.

@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7e28cdacce8eac4774683013ae1c30ca34ebfaad
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821711"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185248"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Samouczek: używanie konfiguracji dynamicznej w aplikacji .NET Framework
 
@@ -31,13 +31,12 @@ W tym samouczku pokazano, jak zaimplementować dynamiczne aktualizacje konfigura
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Skonfiguruj swoją aplikację, aby zaktualizować jej konfigurację z magazynem konfiguracji aplikacji na żądanie.
-> * Wstaw najnowszą konfigurację z kontrolerów aplikacji.
-
+> * Skonfiguruj aplikację .NET Framework, aby zaktualizować jej konfigurację w odpowiedzi na zmiany w magazynie konfiguracji aplikacji.
+> * Wstrzyknąć najnowszą konfigurację w aplikacji.
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [Program Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.1 lub nowszy](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
@@ -52,13 +51,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     Dla tej pory pozostaw pustą **etykietę** i **Typ zawartości** .
 
-## <a name="create-a-net-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET
+## <a name="create-a-net-framework-console-app"></a>Tworzenie aplikacji konsolowej .NET Framework
 
-1. Uruchom program Visual Studio i wybierz pozycję **plik** > **Nowy** > **projektu**.
+1. Uruchom program Visual Studio i wybierz pozycję **plik** > **Nowy** > **projekt**.
 
 1. W obszarze **Utwórz nowy projekt**odfiltruj typ projektu **konsoli** i kliknij pozycję **Aplikacja konsolowa (.NET Framework)** . Kliknij przycisk **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij przycisk **Utwórz**.
+1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij pozycję **Utwórz**.
 
 ## <a name="reload-data-from-app-configuration"></a>Ponowne ładowanie danych z usługi App Configuration
 1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Na karcie **Przeglądaj** Wyszukaj i Dodaj pakiet NuGet *Microsoft. Extensions. Configuration. AzureAppConfiguration* do projektu. Jeśli nie możesz go znaleźć, zaznacz pole wyboru **Uwzględnij wersję wstępną** .
@@ -135,7 +134,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     ![Lokalne uruchamianie aplikacji](./media/dotnet-app-run.png)
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
 
 1. Wybierz pozycję **Eksplorator konfiguracji**i zaktualizuj wartości następujących kluczy:
 
@@ -148,15 +147,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     ![Lokalne odświeżanie aplikacji](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
-    > Ponieważ czas wygaśnięcia pamięci podręcznej został ustawiony na 10 sekund przy użyciu metody `SetCacheExpiration` podczas określania konfiguracji dla operacji odświeżania, wartość ustawienia konfiguracji będzie aktualizowana tylko wtedy, gdy od momentu ostatniego odświeżenia dla to ustawienie.
+    > Ponieważ limit czasu wygaśnięcia pamięci podręcznej został ustawiony na 10 sekund przy użyciu metody `SetCacheExpiration` podczas określania konfiguracji dla operacji odświeżania, wartość ustawienia konfiguracji będzie aktualizowana tylko wtedy, gdy od momentu ostatniego odświeżenia tego ustawienia upłynie co najmniej 10 sekund.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku dodano tożsamość usługi zarządzanej przez platformę Azure, aby usprawnić dostęp do usługi App Configuration i poprawić zarządzanie poświadczeniami w Twojej aplikacji. Aby dowiedzieć się, jak dodać tożsamość usługi zarządzanej przez platformę Azure, która usprawnia dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
+W tym samouczku włączono aplikację .NET Framework do dynamicznego odświeżania ustawień konfiguracji z konfiguracji aplikacji. Aby dowiedzieć się, jak za pomocą tożsamości zarządzanej platformy Azure usprawnić dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)

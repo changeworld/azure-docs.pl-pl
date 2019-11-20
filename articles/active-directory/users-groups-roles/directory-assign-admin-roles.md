@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a53f2a0e5927a75c4d22ada5837da26bd8deeda
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc9565f44fdb868bc45d2f99de1d4036e1d5d123
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028288"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181145"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -51,9 +51,14 @@ Dostępne są następujące role administratorów:
 
 Użytkownicy w tej roli mogą tworzyć wszystkie aspekty aplikacji przedsiębiorstwa, rejestracji aplikacji i ustawień serwera proxy aplikacji oraz zarządzać nimi. Należy pamiętać, że użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
-> [!IMPORTANT]
-> Ta rola umożliwia zarządzanie poświadczeniami aplikacji. Użytkownicy przypisani do tej roli mogą dodawać poświadczenia do aplikacji i używać tych poświadczeń do personifikacji tożsamości aplikacji. Jeśli tożsamość aplikacji ma udzielony dostęp do Azure Active Directory, na przykład możliwość tworzenia lub aktualizowania użytkowników lub innych obiektów, wówczas użytkownik przypisany do tej roli może wykonywać te akcje podczas personifikowania aplikacji. Ta możliwość personifikacji tożsamości aplikacji może być podniesieniem uprawnień przez użytkownika za pośrednictwem ich przypisań ról w usłudze Azure AD. Ważne jest, aby zrozumieć, że przypisanie użytkownika do roli administratora aplikacji daje im możliwość personifikacji tożsamości aplikacji.
+Administratorzy aplikacji mogą zarządzać poświadczeniami aplikacji, które umożliwiają im personifikowanie aplikacji. W związku z tym użytkownicy przypisani do tej roli mogą zarządzać poświadczeniami aplikacji tylko te aplikacje, które nie są przypisane do żadnych ról usługi Azure AD lub te przypisane tylko do następujących ról administratora:
+* Administrator aplikacji
+* Deweloper aplikacji
+* Administrator aplikacji w chmurze
+* Czytelnicy katalogów
 
+Jeśli aplikacja jest przypisana do innych ról, które nie zostały wymienione powyżej, administrator aplikacji nie może zarządzać poświadczeniami tej aplikacji. 
+ 
 Ta rola zapewnia również możliwość _wyrażania zgody_ na delegowane uprawnienia i uprawnienia aplikacji, z wyjątkiem uprawnień do Microsoft Graph i wykresu usługi Azure AD.
 
 > [!IMPORTANT]
@@ -122,8 +127,12 @@ Dokonuje zakupów, zarządza subskrypcjami, zarządza biletami pomocy techniczne
 
 Użytkownicy w tej roli mają takie same uprawnienia jak rola administratora aplikacji, z wyłączeniem możliwości zarządzania serwerem proxy aplikacji. Ta rola umożliwia tworzenie wszystkich aspektów aplikacji dla przedsiębiorstw i rejestracji aplikacji oraz zarządzanie nimi. Ta rola umożliwia również zgodę na uprawnienia delegowane i uprawnienia aplikacji z wyłączeniem Microsoft Graph i Azure AD Graph. Użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
-> [!IMPORTANT]
-> Ta rola umożliwia zarządzanie poświadczeniami aplikacji. Użytkownicy przypisani do tej roli mogą dodawać poświadczenia do aplikacji i używać tych poświadczeń do personifikacji tożsamości aplikacji. Jeśli tożsamość aplikacji ma udzielony dostęp do Azure Active Directory, na przykład możliwość tworzenia lub aktualizowania użytkowników lub innych obiektów, wówczas użytkownik przypisany do tej roli może wykonywać te akcje podczas personifikowania aplikacji. Ta możliwość personifikacji tożsamości aplikacji może być podniesieniem uprawnień przez użytkownika za pośrednictwem ich przypisań ról w usłudze Azure AD. Ważne jest, aby zrozumieć, że przypisanie użytkownika do roli administratora aplikacji w chmurze daje im możliwość personifikacji tożsamości aplikacji.
+Administratorzy aplikacji w chmurze mogą zarządzać poświadczeniami aplikacji, które umożliwiają im personifikowanie aplikacji. W związku z tym użytkownicy przypisani do tej roli mogą zarządzać poświadczeniami aplikacji tylko te aplikacje, które nie są przypisane do żadnych ról usługi Azure AD lub te przypisane tylko do następujących ról administratora:
+* Deweloper aplikacji
+* Administrator aplikacji w chmurze
+* Czytelnicy katalogów
+
+Jeśli aplikacja jest przypisana do innych ról, które nie zostały wymienione powyżej, administrator aplikacji w chmurze nie może zarządzać poświadczeniami tej aplikacji.
 
 ### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[Administrator urządzenia w chmurze](#cloud-device-administrator-permissions)
 
@@ -1728,7 +1737,7 @@ Nie należy używać następujących ról. Są one przestarzałe i zostaną usun
 * Administrator skrzynek pocztowych
 * Dołączanie urządzenia w miejscu pracy
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej o sposobie przypisywania użytkownika jako administratora subskrypcji platformy Azure, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 * Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).

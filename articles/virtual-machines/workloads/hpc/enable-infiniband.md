@@ -10,78 +10,60 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858489"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196765"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Włączanie funkcji InfiniBand przy użyciu funkcji SR-IOV
 
-Najprostszym i zalecanym sposobem rozpoczęcia pracy z maszynami wirtualnymi IaaS dla HPC jest użycie obrazu systemu operacyjnego CentOS-HPC 7,6. W przypadku korzystania z niestandardowego obrazu maszyny wirtualnej Najprostszym sposobem skonfigurowania go przy użyciu funkcji InfiniBand (IB) jest dodanie rozszerzenia maszyny wirtualnej InfiniBandDriverLinux lub InfiniBandDriverWindows do wdrożenia.
-Dowiedz się, jak używać tych rozszerzeń maszyn wirtualnych z systemami [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
+W przypadku maszyn wirtualnych z serii Azure NC, ND i H są one obsługiwane przez dedykowaną sieć InfiniBand. Wszystkie rozmiary z obsługą funkcji RDMA mogą korzystać z tej sieci przy użyciu technologii Intel MPI. Niektóre serie maszyn wirtualnych mają rozszerzoną obsługę wszystkich implementacji MPI i czasowników RDMA za pomocą wirtualizacji SR-IOV. Maszyny wirtualne z obsługą funkcji RDMA obejmują maszyny wirtualne [(HPC)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) [zoptymalizowane pod kątem procesora GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) .
 
-Aby ręcznie skonfigurować InfiniBand na maszynach wirtualnych z obsługą wirtualizacji SR-IOV (obecnie HB i HC), wykonaj poniższe kroki. Te kroki dotyczą tylko RHEL/CentOS. W przypadku Ubuntu (16,04 i 18,04) oraz SLES (12 SP4 i 15) Sterowniki skrzynki odbiorczej działają prawidłowo.
+## <a name="choose-your-installation-path"></a>Wybierz ścieżkę instalacji
 
-## <a name="manually-install-ofed"></a>Ręczne instalowanie OFED
+Aby rozpocząć, najprostszą opcją jest użycie wstępnie skonfigurowanego obrazu platformy dla InfiniBand, gdzie to możliwe:
 
-Zainstaluj najnowsze sterowniki MLNX_OFED dla systemu ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
+- **Maszyny wirtualne HPC IaaS** — aby rozpocząć pracę z maszynami wirtualnymi IaaS dla HPC, najprostszym rozwiązaniem jest użycie [obrazu systemu operacyjnego CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), który jest już skonfigurowany przy użyciu InfiniBand. Ponieważ ten obraz jest już skonfigurowany przy użyciu InfiniBand, nie trzeba go konfigurować ręcznie. Aby uzyskać zgodne wersje systemu Windows, zobacz [wystąpienia z funkcją RDMA systemu Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-Dla RHEL/CentOS (przykład poniżej dla 7,6):
+- **Maszyny wirtualne IaaS GPU** — żadne obrazy platformy nie są obecnie skonfigurowane dla maszyn wirtualnych zoptymalizowanych pod kątem procesora GPU, z wyjątkiem [obrazu systemu operacyjnego CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Aby skonfigurować obraz niestandardowy przy użyciu InfiniBand, zobacz [Ręczne instalowanie MELLANOX OFED](#manually-install-mellanox-ofed).
 
-```bash
-sudo yum install -y kernel-devel python-devel
-sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
-sudo yum install -y gtk2 atk cairo tcl tk createrepo
-wget --retry-connrefused --tries=3 --waitretry=5 http://content.mellanox.com/ofed/MLNX_OFED-4.5-1.0.1.0/MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
-```
+Jeśli używasz niestandardowego obrazu maszyny wirtualnej lub maszyny wirtualnej [zoptymalizowanej pod kątem procesora GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) , należy ją skonfigurować przy użyciu funkcji InfiniBand, dodając rozszerzenie maszyny wirtualnej InfiniBandDriverLinux lub InfiniBandDriverWindows do wdrożenia. Dowiedz się, jak używać tych rozszerzeń maszyn wirtualnych z systemem [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-W przypadku systemu Windows Pobierz i zainstaluj sterowniki WinOF-2 dla programu ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+## <a name="manually-install-mellanox-ofed"></a>Ręczna instalacja Mellanox OFED
 
-## <a name="enable-ipoib"></a>Włącz program IPoIB
+Aby ręcznie skonfigurować InfiniBand przy użyciu funkcji SR-IOV, wykonaj następujące czynności. W przykładzie w tych krokach przedstawiono składnię dla RHEL/CentOS, ale czynności te są ogólne i mogą być używane w przypadku dowolnego zgodnego systemu operacyjnego, takiego jak Ubuntu (16,04, 18,04 19,04) i SLES (12 SP4 i 15). Sterowniki skrzynki odbiorczej działają również, ale sterowniki Mellanox OpenFabrics zapewniają więcej funkcji.
+
+Aby uzyskać więcej informacji na temat obsługiwanych dystrybucji dla sterownika Mellanox, zobacz najnowsze [sterowniki Mellanox OpenFabrics](https://www.mellanox.com/page/products_dyn?product_family=26). Więcej informacji o sterowniku Mellanox OpenFabrics można znaleźć w [podręczniku użytkownika Mellanox](https://docs.mellanox.com/category/mlnxofedib).
+
+Zobacz następujący przykład konfigurowania usługi InfiniBand w systemie Linux:
 
 ```bash
-sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
-sudo /etc/init.d/openibd restart
-if [ $? -eq 1 ]
-then
-  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
-  sudo /etc/init.d/openibd restart
-fi
+# Modify the variable to desired Mellanox OFED version
+MOFED_VERSION=#4.7-1.0.0.1
+# Modify the variable to desired OS
+MOFED_OS=#rhel7.6
+pushd /tmp
+curl -fSsL https://www.mellanox.com/downloads/ofed/MLNX_OFED-${MOFED_VERSION}/MLNX_OFED_LINUX-${MOFED_VERSION}-${MOFED_OS}-x86_64.tgz | tar -zxpf -
+cd MLNX_OFED_LINUX-*
+sudo ./mlnxofedinstall
+popd
 ```
 
-## <a name="assign-an-ip-address"></a>Przypisywanie adresu IP
+W przypadku systemu Windows Pobierz i zainstaluj [sterowniki MELLANOX OFED for Windows](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34).
 
-Przypisz adres IP do interfejsu ib0 przy użyciu:
+## <a name="enable-ip-over-infiniband"></a>Włączanie protokołu IP przez InfiniBand
 
-- Ręcznie Przypisz adres IP do interfejsu ib0 (jako główny).
+Użyj następujących poleceń, aby włączyć protokół IP przez InfiniBand.
 
-    ```bash
-    ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
-    ```
+```bash
+sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo systemctl restart waagent
+```
 
-LUB
-
-- Użyj WALinuxAgent, aby przypisać adres IP i zachować jego trwałość.
-
-    ```bash
-    yum install -y epel-release
-    yum install -y python-pip
-    python -m pip install --upgrade pip setuptools wheel
-    wget "https://github.com/Azure/WALinuxAgent/archive/release-2.2.36.zip"
-    unzip release-2.2.36.zip
-    cd WALinuxAgent*
-    python setup.py install --register-service --force
-    sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
-    sed -i -e 's/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-    systemctl restart waagent
-    ```
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) na platformie Azure.

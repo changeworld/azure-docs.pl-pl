@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj zasady zapory aplikacji sieci Web (WAF) przy użyciu reguł niestandardowych i domyślnego zestawu Ruse dla czołowych drzwi Azure PowerShell
+title: Skonfiguruj reguły niestandardowe WAF & domyślnego zestawu reguł dla drzwi frontonu platformy Azure
 description: Dowiedz się, jak skonfigurować zasady WAF składają się z reguł niestandardowych i zarządzanych dla istniejącego punktu końcowego z przodu.
 services: web-application-firewall
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: fec1ed5d51c4afe43df513b54595b4ce1e2f4bbb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512550"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186636"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurowanie zasad zapory aplikacji sieci Web przy użyciu Azure PowerShell
 
@@ -31,7 +31,7 @@ Program Azure PowerShell udostępnia zestaw poleceń cmdlet, które pozwalają z
 
 Możesz zainstalować program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) w maszynie lokalnej i używać go w dowolnej sesji programu PowerShell. Postępuj zgodnie z instrukcjami na stronie, aby zalogować się przy użyciu poświadczeń platformy Azure, i zainstaluj polecenie AZ PowerShell module.
 
-#### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+#### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 ```
 Connect-AzAccount
@@ -110,7 +110,7 @@ W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z za�
 > [!NOTE]
 > Musisz tylko ustawić właściwość *WebApplicationFirewallPolicyLink* , aby połączyć zasady zabezpieczeń z frontonem. Kolejne aktualizacje zasad są automatycznie stosowane do frontonu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [drzwiach zewnętrznych](../../frontdoor/front-door-overview.md) 
 - Dowiedz się więcej o [WAF z przednim drzwiem](afds-overview.md)

@@ -1,14 +1,14 @@
 ---
 title: Przykładowa kontrola nad planem NIST SP 800-53 R4
 description: Sterowanie mapowaniem przykładu programu NIST SP 800-53 R4. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-ms.date: 06/24/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 1197c6153c0252d8b6738f0e4909e32ca2ddf94e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 94011cf5bbebf0278fa66d4c2ad97e3918679ca4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037854"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184503"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Sterowanie mapowaniem przykładowego planu NIST SP 800-53 R4
 
@@ -327,7 +327,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage wykrywa niety
 > [!NOTE]
 > Dostępność określonych definicji Azure Policy może się różnić w zależności od Azure Government i innych chmur krajowych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po przejrzeniu mapowania kontroli planu NIST SP 800-53 R4 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat planu i sposobu wdrażania tego przykładu:
 

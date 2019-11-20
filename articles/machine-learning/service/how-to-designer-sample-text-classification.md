@@ -1,7 +1,7 @@
 ---
-title: Projektant&#58; klasyfikuje przeglądy książki
+title: 'Projektant: zaklasyfikowanie przykładu przeglądów książki'
 titleSuffix: Azure Machine Learning
-description: Utwórz model uczenia maszynowego klasyfikowanie przeglądów książki w różnych kategoriach.
+description: Utwórz wieloklasowy klasyfikator regresji logistycznej, aby przewidzieć kategorię firmy z zestawem danych Wikipedia SP 500 przy użyciu programu Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 43545c2d3bb3afe4e1c458f14c1ba30e41eea721
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647125"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196004"
 ---
-# <a name="sample-7---text-classification-predict-company-category"></a>Przykład 7 — Klasyfikacja tekstu: przewidywanie kategorii firmy 
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Kompiluj klasyfikator, aby przewidzieć kategorię firmy przy użyciu programu Azure Machine Learning Designer.
+
+**Projektant (wersja zapoznawcza) — przykład 7**
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ten przykład ilustruje sposób użycia modułów analizy tekstu do kompilowania potoku klasyfikacji tekstu w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Celem klasyfikacji tekstu jest przypisanie pewnego fragmentu tekstu do co najmniej jednej wstępnie zdefiniowanej klasy lub kategorii. Fragment tekstu może być dokumentem, artykułem z wiadomościami, wyszukiwaniem, pocztą e-mail, Tweetem, biletami pomocy technicznej, opiniami dotyczącymi klientów, przeglądem produktów użytkowników itp. Aplikacje klasyfikacji tekstu obejmują kategoryzację artykułów gazetowych i treści wiadomości w postaci tematów, Organizowanie stron sieci Web w kategorie hierarchiczne, filtrowanie wiadomości e-mail z spamem, analiza tonacji, przewidywanie zamiaru użytkownika z zapytań wyszukiwania, routingu Pomoc techniczna biletów oraz analizowanie opinii klientów. 
 
-Ten potok pociąga z **wieloklasowego klasyfikatora regresji logistycznej** w celu przewidywania kategorii firmy z zestawem danych programu wikipedia SP 500 pochodzącym z witryny Wikipedia.  
+Ten potok pociąga z **wieloklasowego klasyfikatora regresji logistycznej** w celu przewidywania kategorii firmy z **zestawem danych programu Wikipedia SP 500 pochodzącym z witryny Wikipedia**.  
 
 Podstawowe kroki związane z modelem uczenia maszynowego z danymi tekstowymi są następujące:
 
@@ -103,7 +107,7 @@ Aby sprawdzić wynik, wybierz port wyjściowy **oszacowania modelu** , a następ
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 - [Przykład 1-regresja: przewidywanie ceny za samochód](how-to-designer-sample-regression-automobile-price-basic.md)

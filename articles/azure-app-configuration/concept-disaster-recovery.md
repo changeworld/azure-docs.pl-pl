@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure App Configuration odporności i odzyskiwania po awarii | Dokumentacja firmy Microsoft
-description: Przegląd sposobu implementacji odporności i odzyskiwania po awarii przy użyciu konfiguracji aplikacji usługi Azure.
+title: Odporność konfiguracji aplikacji platformy Azure i odzyskiwanie po awarii | Microsoft Docs
+description: Omówienie sposobu implementacji odporności i odzyskiwania po awarii przy użyciu usługi Azure App Configuration.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,28 +12,28 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 05/29/2019
 ms.author: yegu
-ms.openlocfilehash: c05957cda16c96b841433483a90429aab2b4d22d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 291f6fe48d81397d293ab54a73e777831e25f6ea
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706502"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185275"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odporność i odzyskiwanie po awarii
 
-Obecnie konfiguracji aplikacji platformy Azure jest to usługa regionalna. Każdy magazyn konfiguracji jest tworzony w danym regionie platformy Azure. Awaria obejmujących cały region ma wpływ na wszystkie magazyny, w tym regionie. Konfiguracja aplikacji nie oferuje automatyczny tryb failover do innego regionu. Ten artykuł zawiera ogólne wskazówki dotyczące jak można użyć wielu magazynów konfiguracji różnych regionach platformy Azure zwiększyć odporność geograficznie aplikacji.
+Obecnie konfiguracja aplikacji platformy Azure to usługa regionalna. Każdy magazyn konfiguracji jest tworzony w określonym regionie świadczenia usługi Azure. Awaria całego regionu ma wpływ na wszystkie sklepy w tym regionie. Konfiguracja aplikacji nie oferuje automatycznej pracy awaryjnej w innym regionie. Ten artykuł zawiera ogólne wskazówki dotyczące korzystania z wielu magazynów konfiguracji w regionach platformy Azure w celu zwiększenia odporności aplikacji na geograficzną.
 
 ## <a name="high-availability-architecture"></a>Architektura wysokiej dostępności
 
-Do osiągnięcia nadmiarowość między regionami, należy utworzyć wiele konfiguracji sklepów z aplikacjami w różnych regionach. W przypadku takiej konfiguracji Twoja aplikacja ma co najmniej jedną dodatkową konfigurację Sklepu rezerwowe przypadku magazynu podstawowego staje się niedostępny. Na poniższym diagramie przedstawiono topologię między aplikacją i jej magazynów głównych i dodatkowych konfiguracji:
+Aby zrealizować nadmiarowość między regionami, należy utworzyć wiele magazynów konfiguracji aplikacji w różnych regionach. W przypadku tej konfiguracji aplikacja ma co najmniej jeden dodatkowy magazyn konfiguracji do przywrócenia, jeśli magazyn podstawowy stał się niedostępny. Na poniższym diagramie przedstawiono topologię między aplikacją i jej podstawową i pomocniczą magazynem konfiguracji:
 
-![Geograficznie nadmiarowych magazynach](./media/geo-redundant-app-configuration-stores.png)
+![Sklepy geograficznie nadmiarowe](./media/geo-redundant-app-configuration-stores.png)
 
-Aplikacja ładuje jego konfigurację z obu podstawowych i pomocniczych magazynów równolegle. W ten sposób zwiększa prawdopodobieństwo pomyślnie pobierania danych konfiguracji. Możesz teraz musi zachować synchronizację danych w obu sklepów. W poniższych sekcjach opisano, jak tworzyć geograficznie odporności w aplikacji.
+Aplikacja ładuje swoją konfigurację zarówno ze sklepu podstawowego, jak i pomocniczego. Zwiększa to prawdopodobieństwo pomyślnego pobrania danych konfiguracyjnych. Użytkownik jest odpowiedzialny za przechowywanie danych w obu sklepach w synchronizacji. W poniższych sekcjach opisano sposób tworzenia odporności geograficznej w aplikacji.
 
-## <a name="failover-between-configuration-stores"></a>Tryb failover między magazynami konfiguracji
+## <a name="failover-between-configuration-stores"></a>Przełączanie w tryb failover między magazynami konfiguracji
 
-Aplikacja nie jest technicznie rzecz biorąc, wykonywanie przejścia w tryb failover. Obejmuje ona próbę pobrania tego samego zestawu danych konfiguracji z dwóch magazynów konfiguracji aplikacji jednocześnie. Rozmieść swój kod, aby najpierw ładuje z pomocniczego magazynu, a następnie zapiszesz podstawowego. Takie podejście zapewnia dane konfiguracji w magazynie podstawowy ma pierwszeństwo, zawsze wtedy, gdy jest ona dostępna. Poniższy fragment kodu przedstawia, w jaki sposób wdrożyć to rozwiązanie w interfejsie wiersza polecenia platformy .NET Core:
+Technicznie aplikacja nie wykonuje przejścia w tryb failover. Podjęto próbę pobrania tego samego zestawu danych konfiguracji z dwóch magazynów konfiguracji aplikacji jednocześnie. Rozmieść kod w taki sposób, aby został załadowany z magazynu pomocniczego jako pierwszy, a następnie do magazynu podstawowego. Takie podejście gwarantuje, że dane konfiguracyjne w magazynie podstawowym mają pierwszeństwo za każdym razem, gdy jest dostępne. Poniższy fragment kodu przedstawia sposób wdrożenia tego rozmieszczenia w interfejs wiersza polecenia platformy .NET Core:
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -48,27 +48,27 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     }
 ```
 
-Zwróć uwagę `optional` parametr przekazywany do `AddAzureAppConfiguration` funkcji. Po ustawieniu `true`, ten parametr zapobiega aplikację kończy się niepowodzeniem kontynuować, jeśli funkcja nie można załadować danych konfiguracji.
+Zwróć uwagę, że parametr `optional` przeszedł do funkcji `AddAzureAppConfiguration`. Gdy ta wartość jest ustawiona na `true`, ten parametr zapobiega niepowodzeniu działania aplikacji w sytuacji, gdy funkcja nie może załadować danych konfiguracyjnych.
 
 ## <a name="synchronization-between-configuration-stores"></a>Synchronizacja między magazynami konfiguracji
 
-Jest ważne, że wszystkie sklepach konfiguracji magazynu geograficznie nadmiarowego mają tego samego zestawu danych. Możesz użyć **wyeksportować** funkcji w konfiguracji aplikacji, aby skopiować dane z magazynu podstawowego do pomocniczego na żądanie. Ta funkcja jest dostępna za pośrednictwem witryny Azure portal i interfejsu wiersza polecenia.
+Ważne jest, aby wszystkie dane z geograficznie nadmiarowych magazynów miały ten sam zestaw danych. Aby skopiować dane z magazynu podstawowego do pomocniczego na żądanie, można użyć funkcji **eksportu** w konfiguracji aplikacji. Ta funkcja jest dostępna za pomocą zarówno Azure Portal, jak i interfejsu wiersza polecenia.
 
-W witrynie Azure portal możesz wypchnąć zmiany do innego magazynu konfiguracji, wykonując następujące kroki.
+W Azure Portal można wypchnąć zmianę do innego magazynu konfiguracji, wykonując następujące kroki.
 
-1. Przejdź do **Import/Export** , a następnie wybierz pozycję **wyeksportować** > **konfiguracji aplikacji** > **docelowej**  >  **Wybierz zasób**.
+1. Przejdź do karty **Importuj/Eksportuj** , a następnie wybierz pozycję **Eksportuj** > **Konfiguracja aplikacji** > **cel** > **Wybierz zasób**.
 
-2. W otwartym bloku nowe Określ subskrypcji, grupy zasobów i nazwę zasobu magazynu pomocniczego, a następnie wybierz **Zastosuj**.
+2. W nowym bloku, który zostanie otwarty, określ subskrypcję, grupę zasobów i nazwę zasobu magazynu pomocniczego, a następnie wybierz pozycję **Zastosuj**.
 
-3. Interfejs użytkownika jest aktualizowany, dzięki czemu można wybrać, jakie dane konfiguracji, którą chcesz wyeksportować do magazynu pomocniczego. Możesz pozostawić domyślnej wartości godziny, ponieważ jest i ustawiane **z etykiety** i **do etykiety** taką samą wartość. Wybierz przycisk **Zastosuj**.
+3. Interfejs użytkownika zostanie zaktualizowany, aby można było wybrać dane konfiguracji, które mają zostać wyeksportowane do magazynu pomocniczego. Domyślną wartością czasu można pozostawić jako wartość i ustawić zarówno **z etykiety** , jak i **etykiety** na tę samą wartość. Wybierz przycisk **Zastosuj**.
 
 4. Powtórz poprzednie kroki dla wszystkich zmian konfiguracji.
 
-Aby zautomatyzować ten proces eksportu, należy użyć wiersza polecenia platformy Azure. Następujące polecenie pokazuje, jak wyeksportować zmian w konfiguracji jednego z magazynu podstawowego do pomocniczej:
+Aby zautomatyzować ten proces eksportowania, użyj interfejsu wiersza polecenia platformy Azure. Następujące polecenie pokazuje, jak wyeksportować pojedynczą zmianę konfiguracji z magazynu podstawowego do pomocniczego:
 
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób Wzbogać swoje aplikacje do osiągnięcia odporności geograficznie podczas wykonywania dla konfiguracji aplikacji. Możesz również osadzić dane konfiguracyjne z konfiguracji aplikacji w czasie kompilacji lub wdrożenia. Aby uzyskać więcej informacji, zobacz [Integracja z potokiem ciągłej integracji/ciągłego Dostarczania](./integrate-ci-cd-pipeline.md).
+W tym artykule przedstawiono sposób rozszerzania aplikacji w celu uzyskania odporności geograficznej w czasie wykonywania w celu skonfigurowania aplikacji. Możesz również osadzić dane konfiguracji z konfiguracji aplikacji podczas kompilacji lub czasu wdrożenia. Aby uzyskać więcej informacji, zobacz [Integrowanie z potokiem](./integrate-ci-cd-pipeline.md)ciągłej integracji/ciągłego wdrażania.
 

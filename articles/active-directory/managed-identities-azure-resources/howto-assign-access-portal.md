@@ -1,5 +1,5 @@
 ---
-title: Jak przypisać z tożsamości zarządzanej dostępu do zasobów platformy Azure przy użyciu witryny Azure portal
+title: Przypisywanie zarządzanej tożsamości dostępu do zasobu przy użyciu Azure Portal — Azure AD
 description: Szczegółowe instrukcje dotyczące przypisywania tożsamości zarządzanej na jednym dostępu do zasobów do innego zasobu za pomocą witryny Azure portal.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8660d5539d9cfc218667bc7bb077f9f6d1191eec
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112898"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184135"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Przypisać z tożsamości zarządzanej dostępu do tego zasobu za pomocą witryny Azure portal
 

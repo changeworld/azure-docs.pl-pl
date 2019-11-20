@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: cba0a9a003b53eeb102e14c00cb91f344ebbe3d6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 0aecf2284e448f879bc20391c8528f8efde42d94
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821732"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184969"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji .NET Framework
 
@@ -30,7 +30,7 @@ Biblioteki zarządzania funkcjami platformy .NET umożliwiają rozbudowanie plat
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [Program Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
@@ -39,11 +39,11 @@ Biblioteki zarządzania funkcjami platformy .NET umożliwiają rozbudowanie plat
 
 ## <a name="create-a-net-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET
 
-1. Uruchom program Visual Studio i wybierz pozycję **plik** > **Nowy** > **projektu**.
+1. Uruchom program Visual Studio i wybierz pozycję **plik** > **Nowy** > **projekt**.
 
 1. W obszarze **Utwórz nowy projekt**odfiltruj typ projektu **konsoli** i kliknij pozycję **Aplikacja konsolowa (.NET Framework)** . Kliknij przycisk **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij przycisk **Utwórz**.
+1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij pozycję **Utwórz**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
@@ -109,7 +109,7 @@ Biblioteki zarządzania funkcjami platformy .NET umożliwiają rozbudowanie plat
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku szybki start utworzono flagę funkcji w konfiguracji aplikacji i użyto jej z aplikacją konsolową .NET Framework. Aby dowiedzieć się, jak dynamicznie aktualizować flagi funkcji i inne wartości konfiguracji bez ponownego uruchamiania aplikacji, przejdź do następnego samouczka.
 

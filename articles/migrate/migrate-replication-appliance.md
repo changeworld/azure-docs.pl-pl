@@ -1,73 +1,73 @@
 ---
-title: Architektura urządzenia replikacji usługi Azure Migrate | Dokumentacja firmy Microsoft
-description: Zawiera omówienie urządzenia replikacji usługi Azure Migrate
+title: Architektura urządzenia replikacji Azure Migrate
+description: Zawiera omówienie urządzenia replikacji Azure Migrate na potrzeby migracji opartej na agentach.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4f4dc307bee4190a0e94ace493053e0cfd01150e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811442"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186551"
 ---
 # <a name="replication-appliance"></a>Urządzenie replikacji
 
-W tym artykule opisano urządzenie replikacji używane przez usługę Azure Migrate: Ocena serwera podczas migrowania maszyn wirtualnych VMware, maszyny fizyczne i publicznego i prywatnego chmury maszyn wirtualnych na platformie Azure przy użyciu migracji do usługi oparte na agentach. 
+W tym artykule opisano urządzenie replikacji używane przez Azure Migrate: Ocena serwera podczas migrowania maszyn wirtualnych VMware, maszyn fizycznych i prywatnych/publicznych maszyn wirtualnych do platformy Azure przy użyciu migracji opartej na agentach. 
 
-Narzędzie to jest dostępne w [usługi Azure Migrate](migrate-overview.md) koncentratora. Piasta udostępnia natywnego narzędzia do oceny i migracji, a także narzędzi z innymi usługami platformy Azure i innych producentów niezależnych dostawców oprogramowania (ISV).
+Narzędzie jest dostępne w centrum [Azure Migrate](migrate-overview.md) . Centrum udostępnia natywne narzędzia do oceny i migracji, a także narzędzia z innych usług platformy Azure oraz niezależnych dostawców oprogramowania (ISV) innych firm.
 
 
 ## <a name="appliance-overview"></a>Przegląd urządzenia
 
-Urządzenie replikacji jest wdrażany jako pojedynczej maszynie, jako Maszynę wirtualną VMware lub serwer fizyczny lokalnych. Działa:
-- **Urządzenie replikacji**: Urządzenie replikacji służy do koordynowania komunikacji oraz do zarządzania replikacją danych, dla lokalnych maszyn wirtualnych z programu VMware i serwerów fizycznych replikowanych do platformy Azure.
-- **Serwer przetwarzania**: Serwer przetwarzania, który jest instalowany domyślnie na urządzeniu replikacji i wykonuje następujące czynności:
-    - **Brama replikacji**: Działa jako brama replikacji. Go odbiera dane replikacji z maszyn włączona replikacja. Optymalizuje dane replikacji z pamięci podręcznej, kompresji i szyfrowania i wysyła je do platformy Azure.
-    - **Instalator agenta**: Wykonanie instalacji wypychanej usługi mobilności. Ta usługa musi być zainstalowana i uruchomiona na każdej lokalnej maszyny, które mają być replikowane do migracji.
+Urządzenie replikacji jest wdrażane jako pojedyncza maszyna lokalna jako maszyna wirtualna VMware lub serwer fizyczny. Działa:
+- **Urządzenie replikacji**: urządzenie replikacji koordynuje komunikację i zarządza replikacją danych dla lokalnych maszyn wirtualnych VMware i serwerów fizycznych replikowanych do platformy Azure.
+- **Serwer przetwarzania**: serwer przetwarzania, który jest instalowany domyślnie na urządzeniu replikacji, i wykonuje następujące czynności:
+    - **Brama replikacji**: działa jako brama replikacji. Odbiera dane replikacji z maszyn, na których włączono replikację. Optymalizuje dane replikacji za pomocą buforowania, kompresji i szyfrowania, a następnie wysyła je do platformy Azure.
+    - **Instalator agenta**: wykonuje instalację wypychaną usługi mobilności. Ta usługa musi być zainstalowana i uruchomiona na każdej maszynie lokalnej, która ma zostać zreplikowana do migracji.
 
 ## <a name="appliance-deployment"></a>Wdrażanie urządzenia
 
 **Wdróż jako** | **Używane dla** | **Szczegóły**
 --- | --- |  ---
-Maszyna wirtualna VMware | Zwykle używane podczas migracji maszyn wirtualnych VMware przy użyciu narzędzia migracji migracji platformy Azure z migracją oparte na agentach. | Pobierz szablon OVA z Centrum migracji platformy Azure, a następnie zaimportować do programu vCenter Server, aby utworzyć urządzenie maszyny Wirtualnej.
-Komputer fizyczny | Używany podczas migracji lokalnych serwerów fizycznych, jeśli nie masz infrastruktury VMware lub jeśli nie można utworzyć maszynę Wirtualną VMware przy użyciu szablonu usługi OVA. | Pobierz instalatora oprogramowania z Centrum migracji platformy Azure, a następnie uruchom go, aby skonfigurować maszynę urządzenia.
+Maszyna wirtualna VMware | Zwykle używany podczas migrowania maszyn wirtualnych VMware przy użyciu narzędzia migracji Azure Migrate z migracją opartą na agentach. | Szablon komórki jajowe można pobrać z centrum Azure Migrate i zaimportować do vCenter Server, aby utworzyć maszynę wirtualną urządzenia.
+Maszyna fizyczna | Używane podczas migrowania lokalnych serwerów fizycznych, jeśli nie masz infrastruktury VMware lub nie można utworzyć maszyny wirtualnej VMware przy użyciu szablonu komórki jajowe. | Należy pobrać Instalatora oprogramowania z centrum Azure Migrate i uruchomić go w celu skonfigurowania komputera.
 
-## <a name="appliance-deployment-requirements"></a>Wymagania dotyczące wdrażania urządzenia
+## <a name="appliance-deployment-requirements"></a>Wymagania dotyczące wdrażania urządzeń
 
-[Przegląd](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) wymagań związanych z wdrażaniem.
+[Zapoznaj](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) się z wymaganiami dotyczącymi wdrażania.
 
 
 
 ## <a name="appliance-license"></a>Licencja urządzenia
-Urządzenie jest powiązana z licencji ewaluacyjnej systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny jest bliski wygaśnięcia, firma Microsoft zaleca, możesz pobrać i wdrożyć nowe urządzenie lub aktywacji licencji systemu operacyjnego urządzenia maszyny Wirtualnej.
+Urządzenie jest dostarczane z licencją ewaluacyjną systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny zbliża się do wygaśnięcia, zalecamy pobranie i wdrożenie nowego urządzenia albo Aktywowanie licencji na maszynę wirtualną urządzenia.
 
 ## <a name="replication-process"></a>Proces replikacji
 
-1. Po włączeniu replikacji dla maszyny Wirtualnej, rozpoczyna się Replikacja początkowa do usługi Azure storage, za pomocą zasad określonej replikacji. 
-2. Ruch są replikowane do usługi Azure storage publicznych punktów końcowych za pośrednictwem Internetu. Replikowanie ruchu za pośrednictwem lokacja lokacja wirtualnej sieci prywatnej (VPN) z lokacji lokalnej do platformy Azure nie jest obsługiwane.
+1. Po włączeniu replikacji dla maszyny wirtualnej rozpocznie się replikacja początkowa do usługi Azure Storage przy użyciu określonych zasad replikacji. 
+2. Ruch jest replikowany do publicznych punktów końcowych usługi Azure Storage za pośrednictwem Internetu. Replikowanie ruchu za pośrednictwem wirtualnej sieci prywatnej (VPN) typu lokacja-lokacja z lokacji lokalnej do platformy Azure nie jest obsługiwane.
 3. Po zakończeniu replikacji początkowej rozpoczyna się replikacja różnicowa. Śledzone zmiany dla maszyny są rejestrowane.
 4. Komunikacja odbywa się w następujący sposób:
-    - Maszyny wirtualne komunikować się z urządzeniem replikacji na porcie HTTPS 443 dla ruchu przychodzącego na potrzeby zarządzania replikacją.
-    - Urządzenie replikacji organizuje replikację za pomocą platformy Azure za pośrednictwem portu HTTPS 443 dla ruchu wychodzącego.
-    - Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na urządzeniu replikacji) na porcie HTTPS 9443 dla ruchu przychodzącego. Ten port może być modyfikowany.
-    - Serwer przetwarzania odbiera dane replikacji, optymalizuje je szyfruje i wysyła je do usługi Azure storage za pośrednictwem portu 443 wychodzących.
-5. Dane replikacji rejestruje pierwszy ziemi na koncie magazynu pamięci podręcznej na platformie Azure. Te dzienniki są przetwarzane i dane są przechowywane na platformie Azure dysku zarządzanego.
+    - Maszyny wirtualne komunikują się z urządzeniem replikacji na porcie HTTPS 443 ruchu przychodzącego na potrzeby zarządzania replikacją.
+    - Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
+    - Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na urządzeniu replikacji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
+    - Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do usługi Azure Storage przez port 443 wychodzące.
+5. Dane replikacji są najpierw przechowywane na koncie magazynu pamięci podręcznej na platformie Azure. Te dzienniki są przetwarzane, a dane są przechowywane na dysku zarządzanym platformy Azure.
 
 ![Architektura](./media/migrate-replication-appliance/architecture.png)
 
-## <a name="appliance-upgrades"></a>Uaktualnienia urządzenia
+## <a name="appliance-upgrades"></a>Uaktualnienia urządzeń
 
-Urządzenie jest uaktualnione ręcznie z poziomu Centrum migracji platformy Azure. Firma Microsoft zaleca, zawsze uruchomić najnowszą wersję.
+Urządzenie jest uaktualniane ręcznie z centrum Azure Migrate. Zalecamy, aby zawsze była uruchamiana Najnowsza wersja.
 
-1. W usłudze Azure wykonywana jest migracja > serwery > Usługa Azure Migrate: Ocena serwera, serwery infrastruktury kliknij **serwery konfiguracji**.
-2. W **serwery konfiguracji**, pojawi się łącze **wersja agenta** gdy dostępna jest nowa wersja urządzenia replikacji. 
-3. Pobierz Instalatora do replikacji maszyny urządzenia i zainstalować uaktualnienia. Instalator wykrywa, wersja bieżącego uruchomiona na urządzeniu.
+1. W Azure Migrate > serwery > Azure Migrate: Ocena serwera, serwery infrastruktury, kliknij przycisk **serwery konfiguracji**.
+2. W obszarze **serwery konfiguracji**w **wersji agenta** pojawia się łącze, gdy dostępna jest nowa wersja urządzenia replikacji. 
+3. Pobierz instalatora na komputer z urządzeniem replikacji i zainstaluj uaktualnienie. Instalator wykryje bieżącą wersję uruchomioną na urządzeniu.
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) skonfigurować urządzenie dla oprogramowania VMware.
+[Dowiedz się, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) skonfigurować urządzenie dla programu VMware.
 [Dowiedz się, jak](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) skonfigurować urządzenie dla funkcji Hyper-V.
 

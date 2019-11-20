@@ -1,5 +1,5 @@
 ---
-title: Sterowanie routingiem w usłudze Azure Virtual Network — PowerShell — klasyczny | Microsoft Docs
+title: Sterowanie routingiem w sieci wirtualnej platformy Azure — PowerShell — klasyczny
 description: Dowiedz się, jak kontrolować Routing w programie sieci wirtualnych przy użyciu programu PowerShell | Motyw
 services: virtual-network
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058765"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186354"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Kontrolowanie routingu i używanie urządzeń wirtualnych (klasycznych) przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
-> * [PowerShell](tutorial-create-route-table-powershell.md)
+> * [Program PowerShell](tutorial-create-route-table-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure](tutorial-create-route-table-cli.md)
 > * [PowerShell (klasyczny)](virtual-network-create-udr-classic-ps.md)
 > * [Interfejs wiersza polecenia (klasyczny)](virtual-network-create-udr-classic-cli.md)
@@ -33,7 +33,7 @@ ms.locfileid: "71058765"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Przed rozpoczęciem pracy z zasobami platformy Azure należy pamiętać, że platforma Azure ma obecnie dwa modele wdrażania: Azure Resource Manager i klasyczny. Przed rozpoczęciem pracy z dowolnym zasobem Azure należy zapoznać się z [modelami i narzędziami wdrażania](../azure-resource-manager/resource-manager-deployment-model.md). Można wyświetlić dokumentację dla różnych narzędzi, wybierając opcję w górnej części tego artykułu. W tym artykule opisano klasyczny model wdrażania.
+> Przed rozpoczęciem pracy z zasobami platformy Azure należy pamiętać, że ma ona obecnie dwa modele wdrażania: za pomocą usługi Azure Resource Manager i model klasyczny. Przed rozpoczęciem pracy z dowolnym zasobem Azure należy zapoznać się z [modelami i narzędziami wdrażania](../azure-resource-manager/resource-manager-deployment-model.md). Można wyświetlić dokumentację dla różnych narzędzi, wybierając opcję w górnej części tego artykułu. W tym artykule opisano klasyczny model wdrażania.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

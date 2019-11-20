@@ -4,15 +4,18 @@ description: Identyfikowanie i rozwiązywanie problemów z opóźnieniami przy u
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
+manager: dcscontentpm
 ms.date: 10/21/2019
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: f8ec8e3f27e74f442f314d4c812908888598244c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+services: storage
+tags: ''
+ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180630"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196521"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Rozwiązywanie problemów z opóźnieniami przy użyciu dzienników analityka magazynu
 

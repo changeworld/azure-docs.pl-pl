@@ -1,5 +1,5 @@
 ---
-title: Jak przypisać z tożsamości zarządzanej dostępu do zasobów platformy Azure przy użyciu programu PowerShell
+title: Przypisywanie zarządzanej tożsamości dostępu do zasobu przy użyciu programu PowerShell — Azure AD
 description: Krok po kroku instrukcje dotyczące przypisywania tożsamość zarządzaną w jeden zasób, uzyskać dostęp do innego zasobu przy użyciu programu PowerShell.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff36be7f87d0dd9e5cac5ee7f788eec0cda5a9fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82fa5019e740d16d0b97111fcf8dbc4f6c91d57b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290696"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183998"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Przypisywanie dostępu tożsamości zarządzanej do zasobów przy użyciu programu PowerShell
 
@@ -45,7 +45,7 @@ Po włączeniu tożsamość zarządzaną w obrębie zasobu platformy Azure, [tak
    ```powershell
    Connect-AzAccount
    ```
-2. W tym przykładzie udostępniamy możliwość dostępu do maszyny Wirtualnej platformy Azure na koncie magazynu. Najpierw używamy [Get-AzVM](/powershell/module/az.compute/get-azvm) można pobrać nazwy głównej usługi dla maszyny Wirtualnej o nazwie `myVM`, która została utworzona podczas umożliwiliśmy tożsamości zarządzanej. Następnie należy użyć [AzRoleAssignment nowy](/powershell/module/Az.Resources/New-AzRoleAssignment) pozwala maszynie Wirtualnej **czytnika** dostępu do konta magazynu o nazwie `myStorageAcct`:
+2. W tym przykładzie udostępniamy możliwość dostępu do maszyny Wirtualnej platformy Azure na koncie magazynu. Najpierw użyjemy polecenie [Get-AzVM](/powershell/module/az.compute/get-azvm) , aby uzyskać nazwę główną usługi dla maszyny wirtualnej o nazwie `myVM`, która została utworzona podczas włączania zarządzanej tożsamości. Następnie użyj polecenie [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) , aby uzyskać dostęp do **czytnika** maszyn wirtualnych do konta magazynu o nazwie `myStorageAcct`:
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid

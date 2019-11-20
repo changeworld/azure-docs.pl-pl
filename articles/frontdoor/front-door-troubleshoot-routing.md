@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów — Rozwiązywanie problemów z konfiguracją usługi Azure front-drzwi Microsoft Docs
+title: Rozwiązywanie problemów z konfiguracją usługi Azure Front drzwiczk
 description: W ramach tego samouczka nauczysz się, jak rozwiązywać problemy z niektórymi typowymi problemami, które mogą być używane w przypadku zewnętrznych drzwi.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335877"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184556"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Rozwiązywanie typowych problemów z routingiem
 W tym artykule opisano sposób rozwiązywania niektórych typowych problemów z routingiem, które mogą być potrzebne w konfiguracji usługi Azure front-drzwi. 

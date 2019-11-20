@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 7fc7bd6fa0067857bde64d43be5799bd50712490
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469683"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185261"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: używanie konfiguracji dynamicznej w aplikacji ASP.NET Core
 
@@ -216,9 +216,9 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku dodano tożsamość usługi zarządzanej przez platformę Azure, aby usprawnić dostęp do usługi App Configuration i poprawić zarządzanie poświadczeniami w Twojej aplikacji. Aby dowiedzieć się więcej na temat korzystania z konfiguracji aplikacji, przejdź do przykładów interfejsu wiersza polecenia platformy Azure.
+W tym samouczku włączono aplikację sieci Web ASP.NET Core w celu dynamicznego odświeżania ustawień konfiguracji z poziomu konfiguracji aplikacji. Aby dowiedzieć się, jak za pomocą tożsamości zarządzanej platformy Azure usprawnić dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Przykłady interfejsu wiersza polecenia](./cli-samples.md)
+> [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)

@@ -1,18 +1,18 @@
 ---
-title: Wdrażanie zapory platformy Azure z wieloma publicznymi adresami IP przy użyciu Azure PowerShell
+title: Wdrażanie zapory platformy Azure z wieloma publicznymi adresami IP przy użyciu programu PowerShell
 description: W tym artykule dowiesz się, jak wdrożyć zaporę platformy Azure z wieloma publicznymi adresami IP przy użyciu Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: ba2736ae69d0bf7feff5f852da2446bfa7a722a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad54b60d8f15e36636f887015d97967740123669
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325229"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195865"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Wdrażanie zapory platformy Azure z wieloma publicznymi adresami IP przy użyciu Azure PowerShell
 
@@ -100,6 +100,6 @@ $azFw.RemovePublicIpAddress($pip)
 $azFw | Set-AzFirewall
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+* [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

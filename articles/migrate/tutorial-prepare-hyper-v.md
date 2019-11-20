@@ -1,19 +1,19 @@
 ---
-title: Przygotuj maszyny wirtualne funkcji Hyper-V na potrzeby oceny i migracji na platformę Azure za pomocą Azure Migrate | Microsoft Docs
-description: Opisuje sposób przygotowania do oceny i migracji maszyn wirtualnych funkcji Hyper-V do platformy Azure przy użyciu Azure Migrate.
+title: Przygotowywanie maszyn wirtualnych funkcji Hyper-V do oceny/migracji za pomocą Azure Migrate
+description: Dowiedz się, jak przygotować się do oceny/migracji maszyn wirtualnych funkcji Hyper-V za pomocą Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/16/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2a70472518b72052f8338d6f14ea64fed6c6d4f1
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f93528e2a35661f8a233aea476a958a079d7cd59
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158326"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196260"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Przygotowanie do oceny i migracji maszyn wirtualnych funkcji Hyper-V na platformę Azure
 
@@ -223,7 +223,7 @@ Na maszynach wirtualnych, które mają być odnajdywane i oceniane, Włącz [us�
 2. [Zapoznaj](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) się z wymaganiami dotyczącymi maszyn wirtualnych funkcji Hyper-V, które chcesz zmigrować na platformę Azure.
 3. [Zwróć uwagę](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) na adresy URL platformy Azure, do których hosty i klastry funkcji Hyper-V potrzebują dostępu do migracji maszyny wirtualnej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

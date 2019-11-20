@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z zestawu Azure SDK w celu skonfigurowania maszyny wirtualnej z tożsamościami zarządzanymi dla zasobów platformy Azure
+title: Korzystanie z zestawu SDK w celu skonfigurowania zarządzanych tożsamości na maszynie wirtualnej — Azure AD
 description: Instrukcje krok po kroku dotyczące konfigurowania i używania tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu zestawu Azure SDK.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b4f5a26f240656911fb9627d273de8b69edff6a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d11cd51984f82bc20c02669e796d9ba21b9ed5d7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809175"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183480"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurowanie maszyny wirtualnej z tożsamościami zarządzanymi dla zasobów platformy Azure przy użyciu zestawu Azure SDK
 
@@ -38,7 +38,7 @@ W tym artykule dowiesz się, jak włączyć i usunąć zarządzane tożsamości 
 
 Platforma Azure obsługuje wiele platform programistycznych za pomocą szeregu [zestawów SDK platformy Azure](https://azure.microsoft.com/downloads). Niektóre z nich zostały zaktualizowane w celu obsługi tożsamości zarządzanych dla zasobów platformy Azure i zapewniają odpowiednie przykłady w celu pokazania użycia. Ta lista jest aktualizowana w miarę dodawania dodatkowej pomocy technicznej:
 
-| SDK | Przykład |
+| SDK | Sample |
 | --- | ------ | 
 | .NET   | [Zarządzanie zasobem z maszyny wirtualnej z włączoną tożsamościami zarządzanymi dla zasobów platformy Azure](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
 | Java   | [Zarządzanie magazynem z poziomu maszyny wirtualnej z włączoną tożsamościami zarządzanymi dla zasobów platformy Azure](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
@@ -46,6 +46,6 @@ Platforma Azure obsługuje wiele platform programistycznych za pomocą szeregu [
 | Python | [Tworzenie maszyny wirtualnej z włączoną tożsamością zarządzaną przypisaną przez system](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
 | Ruby   | [Tworzenie maszyny wirtualnej platformy Azure z włączoną tożsamością przypisaną przez system](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz powiązane artykuły w obszarze **Konfigurowanie tożsamości dla maszyny wirtualnej platformy Azure**, aby dowiedzieć się, jak można także używać szablonów Azure Portal, PowerShell, interfejsu wiersza polecenia i zasobów.

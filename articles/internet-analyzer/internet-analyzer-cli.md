@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839520"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184280"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Utwórz test analizatora internetowego przy użyciu interfejsu wiersza polecenia (wersja zapoznawcza)
 
@@ -130,7 +130,8 @@ Interfejs wiersza polecenia programu Internet Analyzer udostępnia następujące
     ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Przeczytaj [często zadawane pytania dotyczące narzędzia Internet Analyzer](internet-analyzer-faq.md)
+* Przejrzyj [Informacje o interfejsie wiersza polecenia analizatora Internetu](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) , aby zapoznać się z pełną listą obsługiwanych poleceń i przykładów użycia.
+* Przeczytaj [często zadawane pytania dotyczące analizatora Internetu](internet-analyzer-faq.md).
 * Dowiedz się więcej o osadzaniu [klienta analizatora Internetu](internet-analyzer-embed-client.md) i tworzeniu [niestandardowego punktu końcowego](internet-analyzer-custom-endpoint.md). 

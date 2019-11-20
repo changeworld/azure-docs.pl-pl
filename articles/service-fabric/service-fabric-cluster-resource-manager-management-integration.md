@@ -1,6 +1,6 @@
 ---
-title: Menedżer zasobów klastra usługi Service Fabric — Integracja zarządzania | Dokumentacja firmy Microsoft
-description: Omówienie punktów integracji między Menedżerem zasobów klastra i usługi zarządzania siecią szkieletową.
+title: Service Fabric Menedżer zasobów klastra — Integracja zarządzania | Microsoft Docs
+description: Przegląd punktów integracji między Menedżer zasobów klastra a zarządzaniem Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c201945e94474d54b8a19918f3b55a0b40995a97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743517"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196492"
 ---
-# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Klaster zasobów Menedżera Integracja z usługą zarządzania klastrem usługi Service Fabric
-Menedżer zasobów klastra usługi Service Fabric nie dysku uaktualnień w usłudze Service Fabric, ale zostało ono uwzględnione. Pierwszy sposób Menedżer zasobów klastra za pomocą funkcji zarządzania jest, śledząc żądany stan klastra i usług wewnątrz niego. Menedżer zasobów klastra wysyła raporty dotyczące kondycji, gdy go nie można wstawić klastra do pożądanej konfiguracji. Na przykład w przypadku niewystarczającej pojemności Menedżer zasobów klastra wysyła ostrzeżeń i błędów wskazujących na problem. Inny element integracji związana z działania uaktualnienia. Menedżer zasobów klastra nieco zmienia jego zachowanie podczas uaktualniania.  
+# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integracja z usługą Resource Manager za pomocą Service Fabric zarządzania klastrami
+Menedżer zasobów klastra Service Fabric nie ma na dysku uaktualnień w Service Fabric, ale jest to konieczne. Pierwszy sposób, w jaki klaster Menedżer zasobów pomaga zarządzać, to śledzenie żądanego stanu klastra i usług w nim. Klaster Menedżer zasobów wysyła raporty kondycji, gdy nie można umieścić klastra w żądanej konfiguracji. Na przykład jeśli nie ma wystarczającej pojemności, klaster Menedżer zasobów wysyła ostrzeżenia dotyczące kondycji i błędy wskazujące problem. Inna część integracji polega na tym, jak działają uaktualnienia. Klaster Menedżer zasobów nieco zmienia zachowanie podczas uaktualnień.  
 
-## <a name="health-integration"></a>Integracja kondycji
-Menedżer zasobów klastra śledzi stale reguły, które zostały zdefiniowane dla wprowadzenie do usługi. Również śledzi pozostałe pojemności dla każdego metryki na węzłach w klastrze i, w klastrze jako całości. Jeśli nie spełnia tych zasad lub w przypadku niewystarczającej pojemności, ostrzeżenia i błędy są emitowane. Na przykład, jeśli węzeł znajduje się nad pojemności, a następnie próbuje naprawić tę sytuację, przenosząc usługi Menedżer zasobów klastra. Jeśli nie można go naprawić tę sytuację emituje ostrzeżenie kondycji wskazująca, który węzeł jest przeciążone i które metryki.
+## <a name="health-integration"></a>Integracja z kondycją
+Klaster Menedżer zasobów ciągle śledzi reguły zdefiniowane do umieszczania usług. Śledzi również pozostałe pojemności dla każdej metryki w węzłach i w klastrze oraz w klastrze jako całość. Jeśli nie można spełnić tych zasad lub jeśli jest za mało miejsca, są emitowane ostrzeżenia i błędy kondycji. Na przykład, jeśli węzeł przekracza pojemność, a klaster Menedżer zasobów podejmie próbę rozwiązania problemu przez przeniesienie usług. Jeśli nie można poprawić sytuacji, która emituje ostrzeżenie o kondycji wskazujące, który węzeł przekracza pojemność i dla których metryk.
 
-Innym przykładem ostrzeżeń menedżera zasobów jest naruszenia ograniczeń umieszczania. Na przykład, jeśli zdefiniowano ograniczeń umieszczania (takie jak `“NodeColor == Blue”`) i usługi Resource Manager wykrywa naruszenia tego ograniczenia, emituje ostrzeżenie kondycji. Dotyczy to niestandardowe ograniczenia i ograniczenia domyślne (np. domena błędów i domeny uaktualnienia ograniczenia).
+Innym przykładem ostrzeżeń dotyczących kondycji Menedżer zasobów są naruszenia ograniczeń umieszczania. Na przykład, jeśli zdefiniowano ograniczenie umieszczania (takie jak `“NodeColor == Blue”`), a Menedżer zasobów wykrywa naruszenie tego ograniczenia, emituje ostrzeżenie o kondycji. Dotyczy to ograniczeń niestandardowych i ograniczeń domyślnych (takich jak domena błędów i ograniczenia domeny uaktualnienia).
 
-Oto przykład jeden taki raport o kondycji. W tym przypadku raport o kondycji jest dla jednej z partycji usługi systemowej. Komunikat o kondycji wskazuje, że repliki partycji tymczasowo są pakowane w zbyt małej liczby domen uaktualnienia.
+Oto przykład tego raportu kondycji. W takim przypadku Raport kondycji dotyczy jednej z partycji usługi systemowej. Komunikat o kondycji wskazuje, że repliki tej partycji są tymczasowo pakowane na zbyt mało domen uaktualnienia.
 
 ```posh
 PS C:\Users\User > Get-ServiceFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
@@ -71,67 +71,67 @@ HealthEvents          :
                         Transitions           : Ok->Warning = 8/10/2015 7:13:02 PM, LastError = 1/1/0001 12:00:00 AM
 ```
 
-Oto, co ten komunikat health informuje NAS, jest:
+Oto, co ten komunikat o kondycji informuje nas:
 
-1. Wszystkie repliki samodzielnie są w dobrej kondycji: Każdy ma AggregatedHealthState: OK
-2. Obecnie trwa naruszenia ograniczenia dystrybucji do domeny uaktualnienia. Oznacza to, że w określonej domenie uaktualnienia jest większa liczba replik danej partycji niż powinien.
-3. Węzeł, który zawiera repliki, co powoduje naruszenie. W tym przypadku jest węzeł z nazwą "Node.8"
-4. Czy uaktualnienie aktualnie wykonywane dla partycji to ("obecnie uaktualnianie--false")
-5. Zasady dystrybucji dla tej usługi: "Zasad dystrybucji--pakowania". To jest regulowane przez `RequireDomainDistribution` [zasady rozmieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Pakowanie" oznacza, że w tym przypadku DomainDistribution była _nie_ wymagane, aby było wiadomo, że zasady rozmieszczania nie został określony dla tej usługi. 
-6. Kiedy wystąpił raportu — 8/10/2015 7:13:02: 00
+1. Wszystkie repliki są w dobrej kondycji: Każda z nich ma AggregatedHealthState: ok
+2. Ograniczenie dystrybucji domeny uaktualnienia jest obecnie naruszane. Oznacza to, że określona domena uaktualnienia ma więcej replik z tej partycji niż powinna.
+3. Który węzeł zawiera replikę powodującą naruszenie. W tym przypadku jest to węzeł o nazwie "Node. 8"
+4. Czy uaktualnienie jest aktualnie wykonywane dla tej partycji ("aktualnie uaktualnia--false")
+5. Zasady dystrybucji dla tej usługi: "zasady dystrybucji--pakowanie". Podlega to [zasadom umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)`RequireDomainDistribution`. "Pakowanie" wskazuje, że w tym przypadku DomainDistribution _nie_ jest wymagany, dlatego wiemy, że zasady umieszczania nie zostały określone dla tej usługi. 
+6. Gdy raport wystąpił — 8/10/2015 7:13:02 PM
 
-Informacje takie jak alerty tego uprawnień, które są aktywowane w środowisku produkcyjnym z informacją, wystąpił problem, a także jest używane do wykrywania i zatrzymanie zły uaktualnienia. W tym przypadku będzie chcemy zobaczyć, jeśli firma Microsoft może ustalić dlaczego usługi Resource Manager miał umieszczenie tych replik w domenie uaktualnienia. Zazwyczaj pakowania jest przejściowy, ponieważ węzły w innych domenach uaktualnienia w dół, na przykład.
+Informacje, takie jak ta, umożliwiają zgłaszanie alertów w środowisku produkcyjnym informujących o niepowodzeniu i służy również do wykrywania i zatrzymania nieprawidłowych uaktualnień. W tym przypadku chcemy sprawdzić, czy w przypadku Menedżer zasobów należało spakować repliki do domeny uaktualnienia. Zwykle pakowanie jest przejściowe, ponieważ węzły w innych domenach uaktualnienia zostały wyłączone, na przykład.
 
-Załóżmy, że Menedżer zasobów klastra próbuje umieścić niektóre usługi, ale nie ma żadnych rozwiązań, które działają. Nie można umieścić usług, zazwyczaj jest to jeden z następujących powodów:
+Załóżmy, że klaster Menedżer zasobów próbuje umieścić niektóre usługi, ale nie ma żadnych rozwiązań, które działają. Gdy usługi nie mogą być umieszczone, zwykle z jednego z następujących powodów:
 
-1. Niektóre stan przejściowy ma uniemożliwił można umieścić tego wystąpienia usługi lub repliki poprawnie
+1. Pewien warunek przejściowy uniemożliwiał poprawne umieszczenie tego wystąpienia usługi lub repliki
 2. Wymagania dotyczące umieszczania usługi są unsatisfiable.
 
-W takich przypadkach raportów o kondycji z Menedżer zasobów klastra pomóc określić, dlaczego usługa nie może zostać umieszczona. Nazywamy tego procesu sekwencji eliminacji ograniczeń. Podczas, system przeprowadzi skonfigurowane ograniczenia wpływu na usługi i rekordy one wyeliminować. Dzięki temu po usług nie mogą być umieszczone widoczne węzły, które zostały wyeliminowane i dlaczego.
+W takich przypadkach raporty kondycji z klastra Menedżer zasobów pomóc w ustaleniu, dlaczego nie można umieścić usługi. Wywołujemy ten proces w sekwencji eliminacji ograniczenia. W tym systemie system przeprowadzi przez skonfigurowane ograniczenia wpływające na usługę i rejestruje, co eliminuje. W ten sposób, gdy usługi nie będą mogły zostać umieszczone, można zobaczyć, które węzły zostały wyeliminowane i dlaczego.
 
 ## <a name="constraint-types"></a>Typy ograniczeń
-Poniżej omówiono każdy z nią związane inne ograniczenia w raportach o kondycji. Widoczne są komunikaty kondycji związane z tych ograniczeń podczas replik nie może zostać umieszczona.
+Porozmawiamy o każdym z różnych ograniczeń w tych raportach kondycji. Komunikaty o kondycji dotyczące tych ograniczeń są wyświetlane, gdy nie można umieścić replik.
 
-* **ReplicaExclusionStatic** i **ReplicaExclusionDynamic**: Te ograniczenia wskazuje, że rozwiązanie zostało odrzucone, ponieważ dwa obiekty usługi z tej samej partycji, musi zostać umieszczone na tym samym węźle. To nie jest dozwolona, ponieważ, a następnie awarii tego węzła nadmiernie mogło mieć wpływ na tej partycji. ReplicaExclusionStatic i ReplicaExclusionDynamic są prawie tę samą regułę i różnice nie ma znaczenia. Jeśli widzisz sekwencji eliminacji ograniczeń zawierającą ReplicaExclusionStatic albo ReplicaExclusionDynamic ograniczenie uzna za Menedżer zasobów klastra, że nie ma wystarczającej liczby węzłów. Wymaga to pozostałe rozwiązania, aby użyć tych angażowania nieprawidłowy, co jest niedozwolone. Warunki ograniczające w sekwencji będzie zazwyczaj Powiedz nam, dlaczego węzły są zlikwidowania w pierwszej kolejności.
-* **PlacementConstraint**: Jeśli ten komunikat jest wyświetlany, oznacza to, ponieważ nie odpowiadają one ograniczeniami dotyczącymi umieszczania usługi możemy wyeliminować niektóre węzły. Firma Microsoft śledzenia się ograniczenia dotyczące umieszczania aktualnie skonfigurowanych jako część tego komunikatu. Jest to normalne, jeśli ma zdefiniowane ograniczenia umieszczania. Jednak jeśli ograniczeń umieszczania niepoprawnie przyczyną jest zbyt wiele węzłów wyeliminować to, jak można będzie zauważyć.
-* **NodeCapacity**: To ograniczenie oznacza to, czy Menedżer zasobów klastra nie można umieścić replik węzłach wskazany, ponieważ która je umieścić nad pojemności.
-* **Koligacja**: To ograniczenie wskazuje, że firma Microsoft nie można umieścić repliki na węzłach, których to dotyczy ponieważ spowodowałoby to naruszenie ograniczenia koligacji. Aby uzyskać więcej informacji dotyczących koligacji [w tym artykule](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-* **FaultDomain** i **UpgradeDomain**: To ograniczenie eliminuje węzłów, jeśli umieszczenie replik w węzłach wskazany spowodowałoby pakowania określonego błędu lub domena uaktualnienia. Kilka przykładów, omawiając to ograniczenie, zostały przedstawione w temacie na [domenach błędów i uaktualnień ograniczenia domeny i wynikowe zachowania](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: Zwykle nie powinni dostrzec to ograniczenie usuwania węzła z rozwiązania, ponieważ jest uruchamiana jako optymalizacji domyślnie. Ograniczenie lokalizacji preferowane jest również obecny podczas uaktualniania. Podczas uaktualniania służy przenieść usługi, do której znajdowały się po uruchomieniu uaktualniania.
+* **ReplicaExclusionStatic** i **ReplicaExclusionDynamic**: te ograniczenia wskazują, że rozwiązanie zostało odrzucone, ponieważ dwa obiekty usługi z tej samej partycji byłyby umieszczane w tym samym węźle. Nie jest to dozwolone, ponieważ w przypadku awarii tego węzła nie wpłynie to na tę partycję. ReplicaExclusionStatic i ReplicaExclusionDynamic są prawie tą samą regułą i różnice nie są naprawdę istotne. Jeśli widzisz sekwencję eliminacji ograniczenia zawierającą ograniczenie ReplicaExclusionStatic lub ReplicaExclusionDynamic, klaster Menedżer zasobów uważa, że nie ma wystarczającej liczby węzłów. Wymaga to, aby pozostałe rozwiązania używały nieprawidłowych miejsc, które są niedozwolone. Pozostałe ograniczenia w sekwencji zwykle informują nas o tym, dlaczego węzły są eliminowane w pierwszym miejscu.
+* **PlacementConstraint**: Jeśli zobaczysz ten komunikat, oznacza to, że niektóre węzły nie pasują do ograniczeń umieszczania usługi. Śledzimy aktualnie skonfigurowane ograniczenia umieszczania w ramach tej wiadomości. Jest to normalne, jeśli masz zdefiniowane ograniczenie umieszczania. Jeśli jednak ograniczenie umieszczania jest nieprawidłowo przyczyną wyeliminowania zbyt wielu węzłów, jest to w jaki sposób.
+* **NodeCapacity**: to ograniczenie oznacza, że klaster Menedżer zasobów nie mógł umieścić replik w wskazanych węzłach, ponieważ spowodowałoby to przekroczenie pojemności.
+* **Koligacja**: to ograniczenie wskazuje, że nie można umieścić repliki w węzłach, których to dotyczy, ponieważ spowodowałoby to naruszenie ograniczenia koligacji. Więcej informacji na temat koligacji znajduje się w [tym artykule](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+* **FaultDomain** i **UpgradeDomain**: to ograniczenie eliminuje węzły, jeśli umieszczenie repliki we wskazanych węzłach spowoduje, że pakowanie w konkretnym błędzie lub domenie uaktualnienia. Kilka przykładów omawiających to ograniczenie przedstawiono w temacie dotyczącym [ograniczeń dotyczących błędów i uaktualniania domeny oraz zachowanie wyników](service-fabric-cluster-resource-manager-cluster-description.md)
+* **PreferredLocation**: nie powinno się normalnie wyświetlać tego ograniczenia, usuwając węzły z rozwiązania, ponieważ jest ono domyślnie uruchamiane jako Optymalizacja. W trakcie uaktualniania występuje również preferowane ograniczenie lokalizacji. Podczas uaktualniania służy do przenoszenia usług z powrotem do miejsca, w którym zostały uruchomione.
 
-## <a name="blocklisting-nodes"></a>Węzły Blocklisting
-Kolejną wiadomość kondycji raporty Menedżer zasobów klastra jest, gdy węzły zostaną blocklisted. Blocklisting można traktować jako tymczasowe ograniczenie, które jest automatycznie stosowany dla Ciebie. Węzły Uzyskaj blocklisted, gdy występuje dopuszczalnych podczas uruchamiania wystąpienia danego typu usługi. Węzły są blocklisted na podstawie poszczególnych — typ usługi. Węzeł może być blocklisted dla typu w jednej usłudze, ale nie do innego. 
+## <a name="blocklisting-nodes"></a>Blocklisting węzły
+Inny komunikat o kondycji, Menedżer zasobów raporty klastra, gdy węzły są blocklisted. Możesz traktować blocklisting jako ograniczenie tymczasowe, które jest automatycznie stosowane. Węzły uzyskują blocklisted, gdy wystąpią powtarzające się błędy podczas uruchamiania wystąpień tego typu usługi. Węzły są blocklisted dla poszczególnych typów usług. Węzeł może być blocklisted dla jednego typu usługi, ale nie do innego. 
 
-Zobaczysz blocklisting zaczną działać często podczas projektowania: niektórych błędów powoduje awarię podczas uruchamiania hosta usługi. Usługa Service Fabric, próbuje je utworzyć hosta usługi kilka razy, a błąd będzie się powtarzał. Po kilku próbach węzeł pobiera blocklisted, a Menedżer zasobów klastra będzie starał się tworzyć usługi, w innym miejscu. Jeśli ten błąd utrzymuje pojawia się w wielu węzłach, istnieje możliwość, zablokowane przez wszystkie węzły prawidłowy końcowy klastra w górę. Blocklisting można również usunąć wiele węzłów, brak wystarczającej ilości pomyślnie uruchomić usługę, aby spełnić odpowiednią skalę. Zazwyczaj zobaczysz dodatkowe błędy lub ostrzeżenia z wskazujący Menedżer zasobów klastra usługi znajduje się poniżej żądanego repliki lub liczbę wystąpień, jak również kondycji komunikaty wskazujące błąd nowości, który prowadzi to do powstawania blocklisting w pierwszym Umieść.
+Zobaczysz blocklisting często w trakcie programowania: Niektóre usterki spowodują awarię hosta usługi podczas uruchamiania. Service Fabric próbuje utworzyć hosta usługi kilka razy i nadal Wystąpił błąd. Po kilku próbach węzeł zostanie blocklisted, a klaster Menedżer zasobów spróbuje utworzyć usługę w innym miejscu. Jeśli ten błąd będzie się powtarzał na wielu węzłach, możliwe jest zablokowanie wszystkich prawidłowych węzłów w klastrze. Blocklisting może również usunąć tyle węzłów, które nie wystarczą do pomyślnej skali. Zwykle widzisz dodatkowe błędy lub ostrzeżenia z klastra Menedżer zasobów wskazujące, że usługa znajduje się poniżej żądanej repliki lub liczby wystąpień, a także komunikaty dotyczące kondycji wskazujące, co się stało z blocklistingą w pierwszym przesuwa.
 
-Blocklisting nie jest trwały warunek. Po kilku minutach węzeł zostanie usunięty z listy blokowania i usługi Service Fabric może ponownie aktywować usługi w tym węźle. Usługi kończą się niepowodzeniem, ten węzeł jest blocklisted dla tego typu Usługa ponownie. 
+Blocklisting nie jest trwałym warunkiem. Po kilku minutach węzeł zostanie usunięty z listy blokowania i Service Fabric może ponownie aktywować usługi w tym węźle. Jeśli usługi nie powiodą się, węzeł jest blocklisted dla tego typu usługi ponownie. 
 
-### <a name="constraint-priorities"></a>Priorytetów ograniczenia
+### <a name="constraint-priorities"></a>Priorytety ograniczeń
 
 > [!WARNING]
-> Zmieniających się priorytetów ograniczenia nie jest zalecane i może mieć znaczący negatywny wpływ na klastrze. Podano następujące informacje do priorytetów ograniczenia domyślne i ich zachowania. 
+> Zmiana priorytetów ograniczeń nie jest zalecana i może mieć znaczący niekorzystny wpływ na klaster. Poniższe informacje są dostępne na potrzeby odwołania do domyślnych priorytetów ograniczeń i ich zachowania. 
 >
 
-W przypadku wszystkich tych warunków ograniczających możesz może mieć zostały Myślimy "hej — wydaje mi się, że ograniczenia domen błędów są najważniejsze w systemie. Aby upewnić się, że nie naruszyła ograniczenia domeny błędów, chcę naruszają inne ograniczenia."
+Ze względu na wszystkie te ograniczenia możesz zastanawiać się "Hej, że ograniczenia domeny błędów są najważniejszym elementem w systemie. W celu zapewnienia, że ograniczenie domeny błędów nie zostanie naruszone, chcę naruszać inne ograniczenia. "
 
-Ograniczenia można skonfigurować przy użyciu różnych poziomów priorytetu. Są to:
+Ograniczenia można skonfigurować przy użyciu różnych poziomów priorytetów. Są to:
 
-   - "twarde" (0)
-   - "soft" (1)
-   - "optymalizacji" [2]
+   - "twarda" (0)
+   - "miękkie" (1)
+   - "optymalizacja" (2)
    - "off" (-1). 
    
-Większość ograniczeń są konfigurowane jako warunki ograniczające twardych domyślnie.
+Większość ograniczeń jest domyślnie skonfigurowanych jako ograniczenia stałe.
 
-Zmiana priorytetu ograniczenia jest mało prawdopodobna. Było razy tam, gdzie priorytetów ograniczenia konieczne zmiany zwykle w celu obejścia inne usterki lub zachowanie, która została wpływ na środowisko. Zazwyczaj bardzo dobrze działa elastyczności infrastruktury priorytetu ograniczenia, ale nie jest potrzebny często. W większości przypadków wszystko, co znajduje się w ich priorytetów domyślnych. 
+Zmiana priorytetu ograniczeń jest nietypowe. Istnieją przypadki, w których nie trzeba zmieniać priorytetów ograniczeń, zwykle obejść inne usterki lub zachowania, które miały wpływ na środowisko. Ogólnie elastyczność infrastruktury priorytetu ograniczenia działała bardzo dobrze, ale nie jest to często konieczne. Większość czasu jest zależała od ich domyślnych priorytetów. 
 
-Poziomy priorytetów nie oznaczają, że dany ograniczenie _będzie_ naruszona, ani że zawsze będą spełnione. Ograniczenie priorytetów zdefiniować kolejność, w której obowiązują ograniczenia. Priorytety zdefiniować skutków ubocznych, gdy nie jest możliwe spełniać wszystkie ograniczenia. Zwykle wszystkie ograniczenia mogą zostać zrealizowane, chyba że jest coś, co inne dzieje się w środowisku. Przykładowe scenariusze, które będzie prowadzić do naruszenia ograniczeń są ograniczeniami powodujące konflikt, lub dużą liczbą jednoczesnych awarii.
+Poziom priorytetów nie oznacza, że określone ograniczenie _zostanie_ naruszone, ani że zawsze zostanie spełnione. Priorytety ograniczeń definiują kolejność, w której są wymuszane ograniczenia. Priorytety definiują kompromisy, gdy nie można spełnić wszystkich ograniczeń. Zwykle wszystkie ograniczenia mogą być spełnione, chyba że istnieje inna sytuacja w środowisku. Niektóre przykłady scenariuszy, które będą prowadzić do naruszeń ograniczeń, powodują konflikt lub wiele współbieżnych awarii.
 
-W sytuacjach, zaawansowane można zmienić priorytety ograniczeń. Na przykład załóżmy, że chcesz upewnić się, że koligacji zostałyby zawsze naruszone gdy jest to niezbędne do rozwiązywania problemów z pojemnością węzła. Można to osiągnąć, można ustawić priorytetu ograniczenia koligacji "soft" (1) i pozostaw ograniczenie pojemności, ustawiona na "twarde" (0).
+W sytuacjach zaawansowanych można zmienić priorytety ograniczeń. Załóżmy na przykład, że chcesz upewnić się, że koligacja jest zawsze naruszona, gdy jest to konieczne do rozwiązywania problemów z pojemnością węzła. Aby to osiągnąć, można ustawić priorytet ograniczenia koligacji na "miękki" (1) i pozostawić ograniczenie pojemności ustawione na "twarda" (0).
 
-Domyślne wartości priorytetu dla różnych ograniczeń są określone w następujących konfiguracji:
+Domyślne wartości priorytetów dla różnych ograniczeń są określone w następującej konfiguracji:
 
-ClusterManifest.xml
+ClusterManifest. XML
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -144,7 +144,7 @@ ClusterManifest.xml
         </Section>
 ```
 
-za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json na platformie Azure hostowane klastrów:
+za pośrednictwem ClusterConfig. JSON dla wdrożeń autonomicznych lub Template. JSON dla klastrów hostowanych przez platformę Azure:
 
 ```json
 "fabricSettings": [
@@ -180,33 +180,33 @@ za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json 
 ]
 ```
 
-## <a name="fault-domain-and-upgrade-domain-constraints"></a>Ograniczenia domeny błędów domeny i uaktualnienia
-Menedżer zasobów klastra chce zachować rozłożone między domenach błędów i uaktualnień usług. Modeluje ona to jako ograniczenie w aparacie Menedżer zasobów klastra. Aby uzyskać więcej informacji na temat sposobu ich używania oraz ich określone zachowanie, zapoznaj się z artykułem na [konfiguracji klastra](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
+## <a name="fault-domain-and-upgrade-domain-constraints"></a>Ograniczenia domeny błędów i uaktualniania domeny
+Klaster Menedżer zasobów chce zachować rozłożenie usług między domenami błędów i uaktualniania. Modeluje to ograniczenie w ramach aparatu Menedżer zasobów klastra. Aby uzyskać więcej informacji na temat sposobu użycia i ich określonego zachowania, zapoznaj się z artykułem dotyczącym [konfiguracji klastra](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
 
-Menedżer zasobów klastra może być konieczne umieszczenie replik kilka do domeny uaktualnienia, aby poradzić sobie z uaktualnienia, błędów lub innego naruszenia ograniczeń. Pakowanie do domen błędów lub uaktualnienie, zwykle odbywa się tylko wtedy, gdy istnieje kilka błędów lub innych zmian w systemie, uniemożliwia poprawne umieszczania. Jeśli chcesz uniknąć pakowania, nawet w takich sytuacjach można korzystać ze `RequireDomainDistribution` [zasady rozmieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). Należy pamiętać, może to mieć wpływ na dostępność usług i niezawodności jak efekt uboczny, dlatego należy dokładnie należy rozważyć.
+Aby można było zaradzić sobie z uaktualnieniami, błędami lub innymi naruszeniami ograniczeń, Menedżer zasobów klastra musi być konieczne spakowanie różnych replik w domenie uaktualnienia. Pakowanie do domen błędów lub uaktualnień zwykle odbywa się tylko wtedy, gdy w systemie występuje kilka błędów lub innych zmian uniemożliwiających poprawne umieszczanie. Jeśli chcesz zapobiec pakowaniu nawet w tych sytuacjach, możesz użyć [zasad umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)`RequireDomainDistribution`. Należy zauważyć, że może to mieć wpływ na dostępność usługi i niezawodność jako efekt uboczny, dlatego należy rozważyć uważnie.
 
-Jeśli środowisko jest skonfigurowane prawidłowo, wszystkie ograniczenia są w pełni przestrzegane, nawet podczas uaktualniania. Kluczową kwestią jest, że Menedżer zasobów klastra obserwuje na swoje ograniczenia. W przypadku wykrycia naruszenia natychmiast go zgłasza i próbuje rozwiązać ten problem.
+Jeśli środowisko jest prawidłowo skonfigurowane, wszystkie ograniczenia są w pełni przestrzegane, nawet podczas uaktualniania. Kluczową kwestią jest to, że klaster Menedżer zasobów się w celu wyszukania ograniczeń. Gdy program wykryje naruszenie, natychmiast zgłosi je i podejmie próbę rozwiązania problemu.
 
-## <a name="the-preferred-location-constraint"></a>Ograniczenie lokalizacji preferowane
-Ograniczenie PreferredLocation jest nieco inny, ponieważ ta kolumna ma dwa różne sposoby zastosowania. Jednym z zastosowań to ograniczenie jest podczas uaktualniania aplikacji. Menedżer zasobów klastra automatycznie zarządza tym ograniczeniem podczas uaktualniania. Służy do zapewnienia, że po ukończeniu, że repliki powrót do ich początkowego lokalizacje uaktualnienia. Dotyczy użycia ograniczenie PreferredLocation [ `PreferredPrimaryDomain` zasady rozmieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Oba te są optymalizacje, a więc ograniczenie PreferredLocation jest jedynym ograniczeniem, które są domyślnie ustawione na "Optymalizacji".
+## <a name="the-preferred-location-constraint"></a>Ograniczenie preferowanej lokalizacji
+Ograniczenie PreferredLocation jest nieco inne, ponieważ ma dwa różne zastosowania. Jednym z zastosowań tego ograniczenia jest podczas uaktualniania aplikacji. Klaster Menedżer zasobów automatycznie zarządza tym ograniczeniem podczas uaktualnień. Jest on używany do upewnienia się, że po zakończeniu uaktualnień, które zostaną zwrócone do lokalizacji początkowych. Inne użycie ograniczenia PreferredLocation dotyczy [zasad umieszczania`PreferredPrimaryDomain`](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Obie te funkcje są optymalizacjami, dlatego ograniczenie PreferredLocation jest jedynym ograniczeniem ustawionym na "optymalizacja" domyślnie.
 
 ## <a name="upgrades"></a>Uaktualnienia
-Menedżer zasobów klastra pomaga również w aplikacji i Uaktualnianie klastra, w których ma dwa zadania:
+Menedżer zasobów klastra pomaga również w procesie uaktualniania aplikacji i klastra, podczas którego ma dwa zadania:
 
-* Upewnij się, że reguły klastra nie są naruszone
-* Aby pomóc uaktualnienia bezproblemowe działanie
+* Upewnij się, że reguły klastra nie zostały naruszone.
+* Staraj się, aby zapewnić bezproblemową pracę z uaktualnieniem
 
-### <a name="keep-enforcing-the-rules"></a>Zachowaj wymuszania zasad
-Główny jest, aby mieć świadomość jest, czy reguły — ścisłe ograniczeń takich jak ograniczeniami dotyczącymi umieszczania i pojemności — nadal są wymuszane podczas uaktualniania. Ograniczeniami dotyczącymi umieszczania upewnij się, że działania Twoich obciążeń tylko którym mogą one, nawet podczas uaktualniania. Gdy usługi są bardzo ograniczony, uaktualnienia może trwać dłużej. Gdy węzeł, na którym jest uruchomiona na lub usługi jest obniżona aktualizacji może być kilka opcji, gdzie można go.
+### <a name="keep-enforcing-the-rules"></a>Kontynuuj Wymuszanie reguł
+Głównym aspektem, który należy wiedzieć, jest to, że reguły — ścisłe ograniczenia, takie jak ograniczenia umieszczenia i pojemności — są nadal wymuszane podczas uaktualniania. Ograniczenia umieszczania zapewniają, że obciążenia są uruchamiane tylko wtedy, gdy są dozwolone, nawet podczas uaktualnień. Gdy usługi są wysoce ograniczone, uaktualnienia mogą trwać dłużej. Gdy usługa lub węzeł, w którym jest uruchomiona, zostanie przesunięty w celu przełączenia aktualizacji, może być kilka opcji, dla których może to zrobić.
 
-### <a name="smart-replacements"></a>Inteligentne zamiany
-Po rozpoczęciu uaktualnienia, Menedżer zasobów tworzy migawkę bieżącego rozmieszczenia klastra. Zgodnie z każdej domeny uaktualnienia zakończeniu próbuje zwrócić usług, które znajdowały się w tej domenie uaktualnienia, aby ich oryginalny układ. W ten sposób jest co najwyżej dwa przejścia usługi podczas uaktualniania. Istnieje jeden Przenieś dotyczy węzła i jednej przenieść z powrotem. Zwracanie klastra lub usługi do jak sprzed uaktualnienia gwarantuje też, że uaktualnienie nie ma wpływu na układ klastra. 
+### <a name="smart-replacements"></a>Inteligentne zamienniki
+Po rozpoczęciu uaktualnienia Menedżer zasobów wykonuje migawkę bieżącego rozmieszczenia klastra. Gdy każda domena uaktualnienia zostanie ukończona, próbuje zwrócić usługi, które znajdowały się w tej domenie uaktualnienia do ich oryginalnego rozmieszczenia. W ten sposób co najwyżej dwa przejścia dla usługi podczas uaktualniania. Istnieje jedno przejście z węzła, którego to dotyczy, i przeniesienie go do tyłu. Przywrócenie klastra lub usługi do tego, jak była przed uaktualnieniem, również gwarantuje, że uaktualnienie nie ma wpływu na układ klastra. 
 
-### <a name="reduced-churn"></a>Postęp dokonany w ograniczonym
-Innym czynnikiem, który będzie się działo podczas uaktualniania jest to, że Menedżer zasobów klastra wyłącza równoważenie. Zapobieganie równoważenia zapobiega niepotrzebne reakcje do uaktualnienia, takie jak przeniesienie usług do węzłów, które zostały opróżnione do uaktualnienia. Uaktualnienie w przypadku uaktualniania klastra cały klaster nie jest równoważone podczas uaktualniania. Sprawdzanie ograniczenia pozostają aktywne, tylko ruch, oparte na aktywne równoważenia metryki jest wyłączona.
+### <a name="reduced-churn"></a>Zmniejszone zmiany
+Innym skutkiem podczas uaktualniania jest to, że klaster Menedżer zasobów wyłącza równoważenie. Uniemożliwianie równoważenia obciążenia zapobiega niepotrzebnej reakcji na uaktualnienie, np. przeniesienie usług do węzłów, które zostały opróżnione w celu uaktualnienia. Jeśli uaktualnienie dotyczy uaktualnienia klastra, cały klaster nie jest zrównoważony podczas uaktualniania. Sprawdzanie ograniczeń pozostaje aktywne, tylko przeniesienie oparte na aktywnym równoważeniu metryk jest wyłączone.
 
-### <a name="buffered-capacity--upgrade"></a>Pojemność buforowanego & uaktualnianie
-Zazwyczaj ma zostać uaktualniony do ukończenia, nawet wtedy, gdy klaster jest ograniczona lub w pobliżu pełnej. Zarządzanie pojemność klastra jest szczególnie ważne podczas uaktualniania niż zwykle. W zależności od liczby domen uaktualnienia od 5 do 20 procent pojemność, muszą być migrowane jako uaktualnienie jest wprowadzane za pośrednictwem klastra. Ta praca ma go w innym miejscu. Jest to miejsce pojęcie [buforowane pojemności](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) przydaje się. Pojemność buforowanego są uwzględniane podczas normalnego działania. Menedżer zasobów klastra mogą wypełnić węzłów do ich całkowita pojemność (Korzystanie z buforu) podczas uaktualniania, jeśli to konieczne.
+### <a name="buffered-capacity--upgrade"></a>Przebuforowana pojemność & uaktualnienie
+Na ogół chcesz przeprowadzić uaktualnienie nawet wtedy, gdy klaster jest ograniczony lub zamknięty. Zarządzanie pojemnością klastra jest jeszcze ważniejsze w przypadku uaktualnień niż zwykle. W zależności od liczby domen uaktualnienia należy przeprowadzić migrację między 5 a 20 procent pojemności w miarę uaktualniania w ramach klastra. Ta współpraca musi znajdować się w dowolnym miejscu. Jest to miejsce, w którym koncepcje [buforowanych pojemności](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) są użyteczne. Pojemność buforowana jest przestrzegana podczas normalnego działania. Klaster Menedżer zasobów może wypełnić węzły do całkowitej pojemności (zużywanej przez bufor) w razie potrzeby.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zacznij od początku i [zapoznaj się z wprowadzeniem do usługi Service Fabric Menedżer zasobów klastra](service-fabric-cluster-resource-manager-introduction.md)
+* Zacznij od początku i [zapoznaj się z wprowadzeniem do klastra Service Fabric Menedżer zasobów](service-fabric-cluster-resource-manager-introduction.md)

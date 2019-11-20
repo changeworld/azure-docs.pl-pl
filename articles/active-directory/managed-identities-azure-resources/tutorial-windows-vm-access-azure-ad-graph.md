@@ -1,5 +1,5 @@
 ---
-title: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
+title: Samouczek`:`korzystania z tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskania dostępu do grafu usługi Azure AD
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43ef467adb8970d410404c151d0028ee4cda92b9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307798"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183018"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku dowiesz się, jak korzystać z tożsamości zarządzanej przypisana przez system Windows maszyny wirtualnej (VM) dostępu do interfejsu API programu Graph usługi Azure AD można pobrać jego członkostwa w grupach. Tożsamości zarządzane dla zasobów platformy Azure są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu.  W tym samouczku wykonasz zapytanie dotyczące członkostwa tożsamości maszyny wirtualnej w grupach usługi Azure AD. Informacje o grupie są często używane na przykład podczas podejmowania decyzji o autoryzacji. Tożsamość zarządzana maszyny wirtualnej jest niejawnie reprezentowana przez **jednostkę usługi** w usłudze Azure AD. Przed wykonaniem zapytania dotyczącego grupy dodaj jednostkę usługi reprezentującą tożsamość maszyny wirtualnej do grupy w usłudze Azure AD. Możesz to zrobić przy użyciu programu Azure PowerShell lub programu PowerShell usługi Azure AD albo interfejsu wiersza polecenia platformy Azure.
+W tym samouczku pokazano, jak za pomocą zarządzanej przez system tożsamości maszyny wirtualnej systemu Windows (VM) uzyskać dostęp do interfejs API programu Graph usługi Azure AD w celu pobrania ich członkostw w grupach. Tożsamości zarządzane dla zasobów platformy Azure są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu.  W tym samouczku wykonasz zapytanie dotyczące członkostwa tożsamości maszyny wirtualnej w grupach usługi Azure AD. Informacje o grupie są często używane na przykład podczas podejmowania decyzji o autoryzacji. Tożsamość zarządzana maszyny wirtualnej jest niejawnie reprezentowana przez **jednostkę usługi** w usłudze Azure AD. Przed wykonaniem zapytania dotyczącego grupy dodaj jednostkę usługi reprezentującą tożsamość maszyny wirtualnej do grupy w usłudze Azure AD. Możesz to zrobić przy użyciu programu Azure PowerShell lub programu PowerShell usługi Azure AD albo interfejsu wiersza polecenia platformy Azure.
 
 > [!div class="checklist"]
 > * Łączenie z usługą Azure AD
@@ -72,7 +72,7 @@ W tym samouczku umożliwisz tożsamości maszyny wirtualnej wykonanie zapytania 
 Azure AD Graph:
 - Identyfikator aplikacji jednostki usługi (używany podczas udzielania uprawnień aplikacji): 00000002-0000-0000-c000-000000000000
 - Identyfikator zasobu (używany podczas żądania tokenu dostępu z tożsamości zarządzanych dla zasobów platformy Azure): https://graph.windows.net
-- Dokumentacja dotycząca zakresu uprawnień: [Dokumentacja uprawnień programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Dokumentacja zakresu uprawnień: [dokumentacja uprawnień funkcji Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-azure-ad-powershell"></a>Udzielanie uprawnień aplikacji przy użyciu programu PowerShell usługi Azure AD
 
@@ -165,7 +165,7 @@ Aby użyć przypisanej przez system tożsamości zarządzanej maszyny wirtualnej
    $AccessToken = $content.access_token
    ```
 
-5. Identyfikator obiektu jednostki usługi tożsamości maszyny wirtualnej (możesz pobrać tę wartość za pomocą zmiennej zadeklarowanej we wcześniejszych krokach: ``$ManagedIdentitiesServicePrincipal.ObjectId``) pozwala wykonywać zapytania w interfejsie API funkcji Azure AD Graph umożliwiające pobieranie członkostw w grupach. Zastąp `<OBJECT ID>` o identyfikatorze obiektu z poprzedniego kroku i <`ACCESS-TOKEN>` przy użyciu tokenu dostępu wcześniej uzyskanej:
+5. Identyfikator obiektu jednostki usługi tożsamości maszyny wirtualnej (możesz pobrać tę wartość za pomocą zmiennej zadeklarowanej we wcześniejszych krokach: ``$ManagedIdentitiesServicePrincipal.ObjectId``) pozwala wykonywać zapytania w interfejsie API funkcji Azure AD Graph umożliwiające pobieranie członkostw w grupach. Zastąp `<OBJECT ID>` IDENTYFIKATORem obiektu z poprzedniego kroku, a <`ACCESS-TOKEN>` z tokenem dostępu uzyskanym wcześniej:
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"

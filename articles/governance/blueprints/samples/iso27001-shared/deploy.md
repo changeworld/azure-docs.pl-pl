@@ -1,14 +1,14 @@
 ---
 title: Przykład plan usługi udostępnione ISO 27001 — kroki wdrażania
 description: Wdróż kroki dla przykładu planu usług udostępnionych ISO 27001, w tym szczegóły parametru artefaktu strategii.
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 54f53e13e6d4561cb46f62318203c41c504ee60b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3f6928666dc098de81e20555cc1164338331fa90
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037348"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184392"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Wdróż przykład strategii usług udostępnionych ISO 27001
 
@@ -152,7 +152,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Szablon Active Directory Domain Services|Szablon usługi Resource Manager|Administrator domeny|Nazwa użytkownika dla konta administratora i do dołączania urządzeń do domeny usługi AD. Musi być zgodna z wartością właściwości **Nazwa użytkownika administratora usługi AD** w **szablonie Key Vault**. Wartość domyślna to _domena-administrator-użytkownik_.|
 |Szablon Active Directory Domain Services|Szablon usługi Resource Manager|Hasło administratora domeny|Ustaw Key Vault szczegóły dotyczące przechowywania hasła. Brak wartości domyślnej i nie można jej pozostawić pustej.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po przejrzeniu kroków w celu wdrożenia przykładowej usługi wspólnych informacji ISO 27001 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i mapowaniu formantów:
 

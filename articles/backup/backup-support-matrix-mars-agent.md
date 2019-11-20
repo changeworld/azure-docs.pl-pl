@@ -3,12 +3,12 @@ title: Macierz obsługi dla agenta MARS
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172054"
+ms.locfileid: "74194999"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -41,7 +41,7 @@ Zainstaluj na serwerze kopii zapasowej | Po skonfigurowaniu programu DPM lub ser
 
 W celu utworzenia kopii zapasowej danych przy użyciu agenta MARS Agent tworzy migawkę danych i zapisuje ją w folderze lokalnego pamięci podręcznej, zanim wyśle dane do platformy Azure. Folder pamięci podręcznej (Scratch) ma kilka wymagań:
 
-**Cache** | **Szczegóły**
+**Pamięć podręczna** | **Szczegóły**
 --- | ---
 Rozmiar |  Ilość wolnego miejsca w folderze pamięci podręcznej powinna wynosić co najmniej 5 do 10 procent całkowitego rozmiaru danych kopii zapasowej.
 Lokalizacja | Folder pamięci podręcznej musi być przechowywany lokalnie na komputerze, na którym jest wykonywana kopia zapasowa, i musi być w trybie online. Folder pamięci podręcznej nie powinien znajdować się w udziale sieciowym na nośniku wymiennym ani w woluminie w trybie offline.
@@ -64,6 +64,8 @@ I na te adresy IP:
 
 - 20.190.128.0/18
 - 40.126.0.0/18
+
+Dostęp do wszystkich adresów URL i adresów IP wymienionych powyżej używa protokołu HTTPS na porcie 443.
 
 ### <a name="throttling-support"></a>Obsługa ograniczania przepustowości
 
@@ -154,7 +156,7 @@ Za pomocą funkcji [natychmiastowego przywracania](backup-instant-restore-capabi
 
 Kopie zapasowe nie mogą zostać przywrócone na komputerze docelowym, na którym działa Starsza wersja systemu operacyjnego. Na przykład kopie zapasowe wykonane z komputera z systemem Windows 7 można przywrócić w systemie Windows 8 lub nowszym. Ale nie można przywrócić kopii zapasowej wykonanej z komputera z systemem Windows 8 na komputerze z systemem Windows 7.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [architekturze tworzenia kopii zapasowych korzystającej z agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Dowiedz się, co jest obsługiwane podczas [uruchamiania agenta Mars na serwera usługi MAB lub serwerze DPM](backup-support-matrix-mabs-dpm.md).

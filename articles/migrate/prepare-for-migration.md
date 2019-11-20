@@ -1,19 +1,19 @@
 ---
-title: Przygotowywanie maszyn lokalnych do migracji na platformę Azure za pomocą Azure Migrate
-description: W tym artykule opisano sposób przygotowania maszyn lokalnych do migracji na platformę Azure przy użyciu Azure Migrate.
+title: Przygotuj maszyny do migracji za pomocą Azure Migrate
+description: Dowiedz się, jak przygotować maszyny lokalne do migracji za pomocą Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480126"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196436"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Przygotowywanie maszyn lokalnych do migracji na platformę Azure
 
@@ -46,8 +46,7 @@ W tym artykule opisano następujące zagadnienia:
 
 - W przypadku maszyn wirtualnych VMware Migracja serwera Azure Migrate obsługuje [migrację bezagentową lub opartą na agencie](server-migrate-overview.md). Sprawdź wymagania/obsługę maszyn wirtualnych VMware na potrzeby migracji [bez agentów](migrate-support-matrix-vmware.md#migration---limitations) i [opartych na agentach](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
 - Sprawdź [wymagania dotyczące migracji i obsługę](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) maszyn wirtualnych funkcji Hyper-V.
-- Sprawdź [wymagania dotyczące migracji i obsługę](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) lokalnych maszyn fizycznych lub innych zwirtualizowanych serwerów. Wymagania te są podobne do wymagań dotyczących maszyn wirtualnych VMware.
-
+- Sprawdź [wymagania dotyczące migracji i obsługę](migrate-support-matrix-physical.md) lokalnych maszyn fizycznych lub innych zwirtualizowanych serwerów. 
 
 
 
@@ -66,7 +65,7 @@ Podczas migracji maszyny mogą potrzebować dostępu do Internetu.
 
 Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Azure Migrate automatycznie wprowadza te zmiany dla maszyn wirtualnych z tymi systemami operacyjnymi:
 - Red Hat Enterprise Linux 6.5 +, 7.0 +
-- CentOS 6.5 +, 7.0 +
+- CentOS 6.5+, 7.0+
 - SUSE Linux Enterprise Server 12 SP1 +
 - Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS
 - Debian 7, 8
@@ -145,6 +144,6 @@ Po migracji wykonaj następujące czynności na maszynach wirtualnych platformy 
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zdecyduj, która metoda ma być używana do [migrowania maszyn wirtualnych VMware](server-migrate-overview.md) na platformę Azure, lub Rozpocznij Migrowanie [maszyn wirtualnych funkcji Hyper-V](tutorial-migrate-hyper-v.md) lub [serwerów fizycznych lub zwirtualizowanych/chmurowych maszyn](tutorial-migrate-physical-virtual-machines.md)wirtualnych.

@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326597"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185173"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Szybki start: Kierowanie zdarzeń konfiguracji aplikacji platformy Azure do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Szybki Start: kierowanie zdarzeń konfiguracji aplikacji platformy Azure do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure
 
 W tym przewodniku szybki start dowiesz się, jak skonfigurować subskrypcje zdarzeń konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń modyfikacji klucz-wartość do internetowego punktu końcowego. Użytkownicy usługi Azure App Configuration mogą subskrybować zdarzenia, które są emitowane za każdym razem, gdy wartości klucza są modyfikowane. Zdarzenia te mogą wyzwalać elementy webhook, Azure Functions, kolejki usługi Azure Storage lub inne procedury obsługi zdarzeń obsługiwane przez Azure Event Grid. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji internetowej, która zbiera i wyświetla komunikaty.
 
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration"></a>Utwórz konfigurację aplikacji
 
-Zamień `<appconfig_name>` na unikatową nazwę konfiguracji aplikacji oraz `<resource_group_name>` utworzoną wcześniej grupę zasobów. Nazwa musi być unikatowa, ponieważ jest używana jako nazwa DNS.
+Zastąp `<appconfig_name>` unikatową nazwą swojej konfiguracji aplikacji, a `<resource_group_name>` z utworzoną wcześniej grupą zasobów. Nazwa musi być unikatowa, ponieważ jest używana jako nazwa DNS.
 
 ```azurecli-interactive
 az appconfig create \
@@ -100,7 +100,7 @@ Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdza
 
 ## <a name="trigger-an-app-configuration-event"></a>Wyzwalanie zdarzenia konfiguracji aplikacji
 
-Teraz wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Utwórz klucz-wartość przy użyciu `<appconfig_name>` wcześniejszej.
+Teraz wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Utwórz klucz-wartość przy użyciu `<appconfig_name>` ze starszych wersji.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes

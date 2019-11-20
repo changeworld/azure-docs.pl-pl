@@ -1,11 +1,11 @@
 ---
-title: Zdarzenia sieciowej grupy zabezpieczeń i licznik reguły dzienników diagnostycznych platformy Azure
+title: Rejestrowanie diagnostyczne dla sieciowej grupy zabezpieczeń
 titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak włączyć dzienniki diagnostyki zdarzeń i reguł dla sieciowej grupy zabezpieczeń platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972779"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196729"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla sieciowej grupy zabezpieczeń
 
@@ -35,7 +35,7 @@ Rejestrowanie diagnostyczne jest włączane osobno dla *każdego* sieciowej grup
 
 Aby włączyć rejestrowanie diagnostyczne, można użyć witryny [Azure Portal](#azure-portal), [programu PowerShell](#powershell)lub [interfejsu wiersza polecenia platformy Azure](#azure-cli) .
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 1. Zaloguj się do [portalu](https://portal.azure.com).
 2. Wybierz pozycję **wszystkie usługi**, a następnie wpisz *Network Security Groups*. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz je.
@@ -127,7 +127,7 @@ Jeśli chcesz tylko rejestrować dane dla jednej kategorii lub drugiej, Usuń ka
 
 Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [przeglądanie i analizowanie dzienników](#view-and-analyze-logs).
 
-## <a name="log-destinations"></a>Miejsca docelowe dzienników
+## <a name="log-destinations"></a>Miejsca docelowe dziennika
 
 Dane diagnostyczne mogą być następujące:
 - [Zapisywane na koncie usługi Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)w celu przeprowadzania inspekcji lub inspekcji ręcznej. Możesz określić czas przechowywania (w dniach) przy użyciu ustawień diagnostycznych zasobu.
@@ -205,11 +205,11 @@ Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz 
   - Dziennik zdarzeń w następującej ścieżce: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
   - Dziennik licznika reguł w następującej ścieżce: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej na temat [rejestrowania aktywności](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), wcześniej znanego jako Inspekcja lub dzienniki operacyjne. Rejestrowanie aktywności jest domyślnie włączone dla sieciowych grup zabezpieczeń utworzonych za pomocą modelu wdrażania platformy Azure. Aby określić, które operacje zostały wykonane w sieciowych grup zabezpieczeń w dzienniku aktywności, poszukaj wpisów zawierających następujące typy zasobów:
-  - Microsoft. ClassicNetwork/networkSecurityGroups
-  - Microsoft. ClassicNetwork/networkSecurityGroups/securityRules
+  - Microsoft.ClassicNetwork/networkSecurityGroups
+  - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups
-  - Microsoft. Network/networkSecurityGroups/securityRules
+  - Microsoft.Network/networkSecurityGroups/securityRules
 - Aby dowiedzieć się, jak rejestrować informacje diagnostyczne w celu uwzględnienia źródłowego adresu IP dla każdego przepływu, zobacz [Rejestrowanie przepływu sieciowej grupy zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

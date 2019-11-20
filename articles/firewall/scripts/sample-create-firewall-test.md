@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — tworzenie środowiska testowego usługi Azure Firewall
+title: Tworzenie środowiska testowego usługi Azure Firewall
 description: Ten przykładowy skrypt tworzy zaporę i testowe środowisko sieciowe. Sieć ma jedną sieć wirtualną z trzema podsieciami.
 services: virtual-network
 author: vhorne
@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 79fce47c02decffa8132ed4b093992d2db2c937f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166925"
+ms.locfileid: "74195885"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Tworzenie środowiska testowego usługi Azure Firewall
 
@@ -77,7 +77,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 |[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|Tworzy nową regułę aplikacji usługi Azure Firewall.|
 |[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Zatwierdza zmiany w obiekcie usługi Azure Firewall.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

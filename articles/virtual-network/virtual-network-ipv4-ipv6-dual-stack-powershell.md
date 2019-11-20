@@ -1,11 +1,11 @@
 ---
-title: Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu podstawowego Load Balancer na platformie Azure — PowerShell
+title: Wdrażanie aplikacji podwójnego stosu IPv6 — podstawowa Load Balancer — PowerShell
 titlesuffix: Azure Virtual Network
 description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu programu Azure PowerShell.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 0b7f7a9198664693819143c306eeb1a020d22b7c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011430"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185487"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu podstawowego Load Balancer — PowerShell (wersja zapoznawcza)
 
-W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) Load Balancer przy użyciu interfejsu wiersza polecenia platformy Azure, który obejmuje sieć wirtualną o podwójnym stosie i podsieć, podstawowy Load Balancer z podwójnymi konfiguracjami frontonu (IPv4 + IPv6), maszyn wirtualnych z kartami sieciowymi z systemem Konfiguracja dwóch adresów IP, sieciowa Grupa zabezpieczeń i publiczne adresy IP.
+W tym artykule pokazano, jak wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) z podstawową Load Balancer przy użyciu Azure PowerShell, która obejmuje sieć wirtualną o podwójnym stosie i podsieć, podstawowy Load Balancer z dwoma konfiguracjami frontonu (IPv4 + IPv6), maszyn wirtualnych z kartami sieciowymi, które mają dwie konfiguracje protokołu IP, sieciową grupę zabezpieczeń i publiczne adresy IP.
 
 Aby wdrożyć aplikację z podwójnym stosem (IPV4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa, zobacz [wdrażanie aplikacji dwustosowej z obsługą protokołu IPv6 za pomocą usługa Load Balancer w warstwie Standardowa przy użyciu Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
 
@@ -105,7 +105,7 @@ W tej sekcji należy skonfigurować podwójny adres IP frontonu (IPv4 i IPv6) or
 
 ### <a name="create-front-end-ip"></a>Tworzenie adresu IP frontonu
 
-Utwórz adres IP frontonu przy użyciu polecenia [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Poniższy przykład umożliwia utworzenie konfiguracji adresów IP frontonu IPv4 i IPv6 o nazwach *dsLbFrontEnd_v4* i *dsLbFrontEnd_v6*:
+Utwórz adres IP frontonu przy użyciu polecenia [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Poniższy przykład tworzy konfiguracje adresów IP frontonu IPv4 i IPv6 o nazwie *dsLbFrontEnd_v4* i *dsLbFrontEnd_v6*:
 
 ```azurepowershell-interactive
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -322,7 +322,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>Określanie adresów IP punktów końcowych IPv4 i IPv6
-Pobierz wszystkie obiekty interfejsu sieciowego w grupie zasobów, aby podsumować adresy IP używane w tym wdrożeniu za `get-AzNetworkInterface`pomocą programu. Należy również uzyskać adresy punktów końcowych protokołu IPv4 i IPv6 Load Balancer przy użyciu `get-AzpublicIpAddress`programu.
+Pobierz wszystkie obiekty interfejsu sieciowego w grupie zasobów, aby podsumować adresy IP używane w tym wdrożeniu przy użyciu `get-AzNetworkInterface`. Należy również uzyskać adresy punktów końcowych protokołu IPv4 i IPv6 Load Balancer z `get-AzpublicIpAddress`.
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"
@@ -378,6 +378,6 @@ Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą ju�
 Remove-AzResourceGroup -Name dsRG1
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule opisano tworzenie podstawowego Load Balancer z konfiguracją dwóch adresów IP frontonu (IPv4 i IPv6). Utworzono również dwie maszyny wirtualne, które zawierają karty sieciowe z dwoma konfiguracjami protokołu IP (IPV4 + IPv6), które zostały dodane do puli zaplecza modułu równoważenia obciążenia. Aby dowiedzieć się więcej o obsłudze protokołu IPv6 w sieciach wirtualnych platformy Azure, zobacz [co to jest protokół IPv6 dla systemu azure Virtual Network?](ipv6-overview.md)

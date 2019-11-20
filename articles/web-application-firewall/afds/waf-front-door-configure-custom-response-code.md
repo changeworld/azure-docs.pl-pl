@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie niestandardowej odpowiedzi dla zapory aplikacji sieci Web przy użyciu usług frontonu platformy Azure
+title: Konfigurowanie niestandardowej odpowiedzi dla WAF za pomocą usług Azure Front Drzwiczks
 description: Dowiedz się, jak skonfigurować niestandardowy kod odpowiedzi i komunikat, gdy Zapora aplikacji sieci Web (WAF) blokuje żądanie.
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: ae3099373bbaece57c2896eb0fb4e7d59d817f25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517152"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185342"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Konfigurowanie niestandardowej odpowiedzi dla zapory aplikacji sieci Web platformy Azure
 
@@ -83,5 +83,5 @@ Update-AzFrontDoorFireWallPolicy `
 -CustomBlockResponseBody "<html><head><title> Forbidden</title></head><body></body></html>"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [zaporze aplikacji sieci Web w usłudze Azure front-drzwi](../afds/afds-overview.md)
