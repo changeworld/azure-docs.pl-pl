@@ -125,6 +125,8 @@
       href: serial-console-power-options.md
     - name: Typowe błędy konsoli szeregowej
       href: serial-console-errors.md
+    - name: Proaktywna konfiguracja trybu GRUB konsoli szeregowej
+      href: serial-console-grub-proactive-configuration.md
 - name: Błędy podczas usuwania zasobów magazynu
   href: storage-resource-deletion-errors.md
 - name: Błędy podczas usuwania klasycznych zasobów magazynu

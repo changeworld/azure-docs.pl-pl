@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Dokumentacja usługi Azure Site Recovery
-summary: Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii lokalnych maszyn i obciążeń na platformę Azure oraz maszyn wirtualnych platformy Azure do pomocniczego regionu świadczenia usługi Azure. Dzięki obsłudze replikacji na platformę Azure możesz orkiestrować przełączanie w tryb failover, gdy wystąpi awaria, i zapewnić dalszy dostęp do obciążeń i aplikacji na platformie Azure. Gdy lokalizacja główna stanie się ponownie dostępna, możesz przeprowadzić do niej powrót po awarii, zgodnie z potrzebami.
+summary: Używaj usługi Azure Site Recovery do odzyskiwania po awarii obciążeń lokalnych i maszyn wirtualnych platformy Azure.
 metadata:
   title: Dokumentacja usługi Azure Site Recovery
-  description: Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii lokalnych maszyn i obciążeń na platformę Azure oraz maszyn wirtualnych platformy Azure do pomocniczego regionu świadczenia usługi Azure. Dzięki obsłudze replikacji na platformę Azure możesz orkiestrować przełączanie w tryb failover, gdy wystąpi awaria, i zapewnić dalszy dostęp do obciążeń i aplikacji na platformie Azure. Gdy lokalizacja główna stanie się ponownie dostępna, możesz przeprowadzić do niej powrót po awarii, zgodnie z potrzebami.
+  description: Skonfiguruj odzyskiwanie po awarii na platformie Azure dla obciążeń lokalnych i maszyn wirtualnych platformy Azure.
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001091"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186586"
 landingContent:
 - title: Informacje o usłudze Site Recovery
   linkLists:

@@ -798,12 +798,14 @@
               items:
                 - name: Omówienie włączania monitorowania
                   href: insights/container-insights-onboard.md
-                - name: Włączanie dla nowego klastra
+                - name: Włączanie dla nowego klastra AKS
                   href: insights/container-insights-enable-new-cluster.md
-                - name: Włączanie dla istniejącego klastra
+                - name: Włączanie dla istniejącego klastra AKS
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Włączanie dla klastra hybrydowego
                   href: insights/container-insights-hybrid-setup.md
+                - name: Włączanie dla platformy Azure Red Hat OpenShift
+                  href: insights/container-insights-azure-redhat-setup.md
                 - name: Mapowania regionów
                   href: insights/container-insights-region-mapping.md
             - name: Monitorowanie wydajności

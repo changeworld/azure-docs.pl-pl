@@ -22,6 +22,8 @@
   items:
     - name: Internet Analyzer — często zadawane pytania
       href: internet-analyzer-faq.md
+    - name: Internet Analyzer — dokumentacja interfejsu wiersza polecenia
+      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog

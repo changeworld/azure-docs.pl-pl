@@ -1,25 +1,22 @@
 ---
-title: Koszty oprogramowania dla rezerwacji platformy Azure | Microsoft Docs
+title: Koszty oprogramowania dla rezerwacji platformy Azure
 description: Dowiedz się, które mierniki użytkowania oprogramowania nie są uwzględnione w kosztach wystąpienia usługi Azure Reserved VM Instances.
-services: billing
-documentationcenter: ''
 author: yashar
 manager: yashar
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 11/14/2019
 ms.author: banders
-ms.openlocfilehash: e74765ec09fb9cd2d219ceb3d784b4030c83e028
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 82a3dfa9534d58d425b15a433a69a224235e027f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719642"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111537"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Nieuwzględnianie kosztów oprogramowania w przypadku usługi Azure Reserved VM Instances
 
@@ -64,7 +61,7 @@ Rabaty na wystąpienia zarezerwowane maszyny wirtualnej i wydajność rezerwową
 |dc72ee45-2ab7-4698-b435-e2cf10d1f9f6|Licencja na usługi Cloud Services — 64 procesory wirtualne|
 |7a803026-244c-4659-834c-11e6b2d6b76f|Licencja na usługi Cloud Services — 80 procesorów wirtualnych|
 
-## <a name="rates-for-azure-meters"></a>Stawki za mierniki platformy Azure
+## <a name="get-rates-for-azure-meters"></a>Uzyskaj stawki za mierniki platformy Azure
 
 Informacje o koszcie poszczególnych mierników można uzyskać za pomocą interfejsu API usługi Azure RateCard. Aby dowiedzieć się, jak uzyskać stawki miernika platformy Azure, zobacz [Pobieranie informacji o cenach i metadanych dotyczących zasobów używanych w ramach subskrypcji platformy Azure](/previous-versions/azure/reference/mt219004(v=azure.100)).
 

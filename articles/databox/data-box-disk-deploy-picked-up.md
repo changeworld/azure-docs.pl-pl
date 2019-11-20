@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128683"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092077"
 ---
 ::: zone target="chromeless"
 
@@ -137,11 +137,25 @@ W razie konieczności możesz skontaktować się z pomocą techniczną firmy Qua
     - Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową** i pobierz zwrotną etykietę wysyłkową.
     - Umieść etykietę na urządzeniu. Upewnij się, że etykieta jest widoczna.
 
-2. Wykonaj następujące czynności, aby zażądać odbioru:
-    - Zadzwoń na infolinię firmy **SingPost** pod numer **6845 6485** w godzinach jej pracy (9:00–17:00, od poniedziałku do piątku).  
-    - Powołaj się na *odbiór przesyłki w ramach platformy Microsoft Azure* i podaj numer żądania obsługi (numer śledzenia na zwrotnej etykiecie wysyłkowej) w celu zorganizowania odbioru urządzenia. 
-    - Otrzymasz słowne potwierdzenie terminu odbioru. 
-    - Jeśli kurier nie zjawi się po odbiór przesyłki, zadzwoń do firmy **SingPost** pod numer **6845 6485**, aby zaplanować odbiór alternatywny. 
+2. Aby poprosić o odbiór, wyślij wiadomość e-mail do działu obsługi klienta firmy SingPost przy użyciu następującego szablonu i podaj numer śledzenia (numer śledzenia można znaleźć na etykiecie zwrotnej znajdującej się w dostarczonej paczce).
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > W przypadku żądań rezerwacji odebranych w dniu roboczym:
+   > - Przed 15:00 — odbiór odbędzie się następnego dnia roboczego między 9:00 a 13:00.
+   > - Po 15:00 — odbiór odbędzie się następnego dnia roboczego między 14:00 a 18:00.
+
+   W razie jakichkolwiek problemów skontaktuj się z zespołem Data Box Operations Asia, pisząc na adres adbo@microsoft.com. Podaj nazwę zadania w nagłówku tematu oraz opisz napotkany problem.
+
 3. Przekaż przesyłkę kurierowi. 
 
 
