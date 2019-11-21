@@ -168,6 +168,12 @@
               href: backup-azure-vms-encryption.md
             - name: Przywracanie kluczy i wpisów tajnych dla szyfrowanych maszyn wirtualnych
               href: backup-azure-restore-key-secret.md
+    - name: Zdarzenia diagnostyki dla magazynów usługi Recovery Services
+      items:
+        - name: Używanie ustawień diagnostyki dla magazynów usługi Recovery Services
+          href: backup-azure-diagnostic-events.md
+        - name: Model danych usługi Log Analytics dla zdarzeń diagnostycznych specyficznych dla zasobów
+          href: backup-azure-log-analytics-new-data-model.md
     - name: Konfigurowanie raportów usługi Azure Backup
       items:
         - name: Konfigurowanie raportów usługi Azure Backup

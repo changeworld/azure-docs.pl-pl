@@ -10,6 +10,6 @@
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
           items:
-            - name: Usługa IoT Central dla handlu detalicznego
+            - name: Usługa IoT Central dla handlu detalicznego (funkcje w wersji zapoznawczej)
               tocHref: /azure/iot-central/
               topicHref: /azure/iot-central/retail/index/

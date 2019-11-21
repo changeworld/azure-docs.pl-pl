@@ -47,6 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: Zarządzanie obciążeniem
       items:
+        - name: Tworzenie klasyfikatora obciążenia
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
         - name: Tworzenie izolacji obciążeń
           items:
             - name: T-SQL

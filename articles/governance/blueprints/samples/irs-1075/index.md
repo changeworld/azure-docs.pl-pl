@@ -3,12 +3,12 @@ title: Przykład strategii IRS 1075 — omówienie
 description: Omówienie przykładowej strategii IRS 1075. Ten przykład strategii pomaga klientom ocenić określone mechanizmy kontroli IRS 1075.
 ms.date: 11/19/2019
 ms.topic: sample
-ms.openlocfilehash: f713f6a59f439b2d5cb9df0860d16ff761304b4b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1d2fdac47c590e663a51c11f54a3a135a7a0ed3d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210189"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267370"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Omówienie przykładowej strategii IRS 1075
 
@@ -23,7 +23,8 @@ Sekcja mapowania mechanizmów kontroli zawiera szczegółowe informacje dotyczą
 Przeczytano już omówienie przykładu strategii IRS 1075. Następnie przeczytaj następujące artykuły, aby poznać mapowanie kontrolek i sposób wdrażania tego przykładu:
 
 > [!div class="nextstepaction"]
-> [Strategia IRS 1075 — mapowanie mechanizmów kontroli](./control-mapping.md)
+> [Strategia IRS 1075 — mapowanie środków kontroli](./control-mapping.md)
+> [Strategia IRS 1075 — procedura wdrażania](./deploy.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

@@ -193,7 +193,7 @@
             - name: Przewidywanie opóźnień lotów
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-flight-delay.md
-            - name: Testowanie klasyfikacji
+            - name: Klasyfikacja tekstu
               displayName: 'classification, studio'
               href: how-to-designer-sample-text-classification.md
         - name: Używanie narzędzi do szacowania w uczeniu maszynowym
