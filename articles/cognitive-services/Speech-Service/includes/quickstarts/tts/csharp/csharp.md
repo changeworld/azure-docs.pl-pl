@@ -1,31 +1,31 @@
 ---
-title: 'Szybki Start: synteza mowy C# , usługa mowy'
+title: 'Quickstart: Synthesize speech, C# - Speech Service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 11/19/2019
 ms.author: erhopf
-ms.openlocfilehash: e35a4851ac95ad948af1a209d979a8b3fb5b8d3b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0415159aaacbe1c03c92f1106fe68a4ce6ff6c0c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503157"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260821"
 ---
-**Wybierz środowisko docelowe**
+**Choose your target environment**
 
-#### <a name="nettabdotnet"></a>[.Net](#tab/dotnet)
+#### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]
-#### <a name="net-coretabdotnetcore"></a>[.Net Core](#tab/dotnetcore)
+#### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
 #### <a name="unitytabunity"></a>[Unity](#tab/unity)
 [!INCLUDE [unity](./unity.md)]
-#### <a name="uwptabuwp"></a>[PLATFORMY UWP](#tab/uwp)
+#### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
 [!INCLUDE [uwp](./uwp.md)]
 
 * * *

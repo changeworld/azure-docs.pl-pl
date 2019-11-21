@@ -7,20 +7,20 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 6af6a6b334d29c6ff813a9b2ff35153aed239b1b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967158"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229856"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>Samouczek: Optymalizacja wystąpień zarezerwowanych
+# <a name="tutorial-optimize-reserved-instances"></a>Samouczek: optymalizowanie wystąpień zarezerwowanych
 
 W tym samouczku dowiesz się, jak rozwiązanie Cloudyn może pomóc Ci w optymalizowaniu kosztów i wykorzystania wystąpień zarezerwowanych na platformach Azure i Amazon Web Services (AWS). Wystąpienie zarezerwowane u obu dostawców usług w chmurze oznacza długoterminowe zobowiązanie, w ramach którego z góry zobowiązujesz się do używania maszyny wirtualnej w przyszłości. Potencjalnie oferuje ono znaczne oszczędności w stosunku do standardowego modelu cen maszyny wirtualnej, w którym płatność odbywa się zgodnie z rzeczywistym użyciem. Potencjalne oszczędności stają się rzeczywiste dopiero wtedy, gdy w pełni wykorzystasz pojemność wystąpień zarezerwowanych.
 
@@ -170,7 +170,7 @@ Poniższy obraz przedstawia zalecenia zakupu z raportu.
 
 W tym przykładzie konto Cloudyn\_A ma 32 zalecenia zakupu wystąpień zarezerwowanych. W przypadku postąpienia zgodnie ze wszystkimi zaleceniami zakupu potencjalnie można zaoszczędzić 137 770 USD rocznie. Pamiętaj, że zalecenia zakupu udostępniane w usłudze Cloudyn zakładają, że użycie działających obciążeń pozostanie niezmienione.
 
-Aby wyświetlić szczegóły wyjaśniające, dlaczego dany zakup jest zalecany, kliknij znak plus (**+**) w obszarze **Uzasadnienia**. Oto przykład dla pierwszego zalecenia na liście.
+Aby wyświetlić szczegóły wyjaśniające, dlaczego dany zakup jest zalecany, kliknij znak plus ( **+** ) w obszarze **Uzasadnienia**. Oto przykład dla pierwszego zalecenia na liście.
 
 ![Przykład przedstawiający szczegóły uzasadnienia zakupu](./media/tutorial-optimize-reserved-instances/aws02.png)
 
@@ -216,7 +216,7 @@ Kliknij znak plus dla pozycji pierwszej rezerwacji i ustaw opcję **Ilość reze
 
 Wszystkie nieużywane wystąpienia rezerwacji są teraz w pełni wykorzystywane i 51 wystąpień nie jest już uruchamianych na żądanie. W tym przykładzie zapewniasz swojej organizacji oszczędność pieniędzy, znacznie ograniczając użycie na żądanie i wykorzystując rezerwacje, za które już zapłacono.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku pomyślnie wykonano następujące czynności:
 

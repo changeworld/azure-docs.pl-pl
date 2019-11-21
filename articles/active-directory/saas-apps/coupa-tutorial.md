@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą łączenie | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Coupa | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Coupa.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 031a88bb8a8832fbe7acb124436cce6aaeb02e21
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159314"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227644"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Samouczek: integracja Azure Active Directory z łączeniem
+# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Tutorial: Azure Active Directory integration with Coupa
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Coupa z usługą Azure Active Directory (Azure AD).
 Zintegrowanie aplikacji Coupa z usługą Azure AD zapewnia następujące korzyści:
@@ -147,11 +147,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
 
 2. Przejdź do pozycji **Setup (Konfiguracja) \> Security Control (Kontrola zabezpieczeń)** .
 
-    ![Kontrolki zabezpieczeń](./media/coupa-tutorial/ic791900.png "Kontrolki zabezpieczeń")
+    ![Security Controls](./media/coupa-tutorial/ic791900.png "Security Controls")
 
 3. W sekcji **Log in using Coupa credentials** (Zaloguj się przy użyciu poświadczeń Coupa) wykonaj następujące kroki:
 
-    ![Łączenie metadanych SP](./media/coupa-tutorial/ic791901.png "Łączenie metadanych SP")
+    ![Coupa SP metadata](./media/coupa-tutorial/ic791901.png "Coupa SP metadata")
 
     a. Wybierz pozycję **Log in using SAML** (Zaloguj się za pośrednictwem protokołu SAML).
 
@@ -177,7 +177,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -226,11 +226,11 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Coupa
 
 3. Kliknij przycisk **Utwórz**.
 
-    ![Tworzenie użytkowników](./media/coupa-tutorial/ic791909.png "Tworzenie użytkowników")
+    ![Tworzenie użytkowników](./media/coupa-tutorial/ic791909.png "Create Users")
 
 4. W sekcji **User Create** (Tworzenie użytkownika) wykonaj następujące kroki:
 
-    ![Szczegóły użytkownika](./media/coupa-tutorial/ic791910.png "Szczegóły użytkownika")
+    ![User Details](./media/coupa-tutorial/ic791910.png "User Details")
 
     a. W polach tekstowych **Login**, **First name** (Imię), **Last Name** (Nazwisko), **Single Sign-On ID** (Identyfikator logowania jednokrotnego) i **Email** (Adres e-mail) wpisz wartości prawidłowego konta usługi Azure Active Directory, które chcesz aprowizować.
 
@@ -241,7 +241,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Coupa
     >
 
 >[!NOTE]
->Aby aprowizować konta użytkowników usługi AAD, można użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika lub interfejsów API dostarczonych przez firmę Coupa.
+>You can use any other Coupa user account creation tools or APIs provided by Coupa to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
@@ -255,5 +255,5 @@ Po kliknięciu kafelka Coupa w panelu dostępu powinno nastąpić automatyczne z
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

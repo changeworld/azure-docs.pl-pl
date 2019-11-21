@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą MCM | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with MCM | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją MCM.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f8663d59c263b6fa24e23e286f8eb4e75b888da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 96966e4b9db5af40eee233d746d5790bbb769455
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159436"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227493"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Samouczek: integracja Azure Active Directory z usługą MCM
+# <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Tutorial: Azure Active Directory integration with MCM
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację MCM z usługą Azure Active Directory (Azure AD).
 Zintegrowanie aplikacji MCM z usługą Azure AD zapewnia następujące korzyści:
@@ -148,7 +148,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -186,7 +186,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 W tej sekcji utworzysz użytkownika Britta Simon w aplikacji MCM. Współpracuj z  [zespołem pomocy technicznej aplikacji MCM](https://mcmtechnology.com/support/), aby dodać użytkowników na platformie MCM. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 >[!NOTE]
->Aby aprowizować konta użytkowników usługi AAD, możesz użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika aplikacji MCM lub interfejsów API dostarczonych przez aplikację MCM.
+>You can use any other MCM user account creation tools or APIs provided by MCM to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
@@ -200,5 +200,5 @@ Po kliknięciu kafelka MCM na panelu dostępu powinno nastąpić automatyczne za
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

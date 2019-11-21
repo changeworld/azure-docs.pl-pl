@@ -1,52 +1,51 @@
 ---
-title: 'Przypisywanie danych do klastra: odwołanie do modułu'
+title: 'Assign Data to Cluster: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak używać modułu przypisz dane do klastra w Azure Machine Learning do oceny modelu klastrowania.
+description: Learn how to use the Assign Data to Cluster module in Azure Machine Learning to score clustering model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 75a547a26057ad05444753253666dceea160d714
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493874"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214554"
 ---
-# <a name="module-assign-data-to-clusters"></a>Moduł: przypisywanie danych do klastrów
+# <a name="module-assign-data-to-clusters"></a>Module: Assign Data to Clusters
 
-W tym artykule opisano sposób korzystania z modułu *przypisywanie danych do klastrów* w programie Azure Machine Learning Designer (wersja zapoznawcza). Moduł generuje przewidywania za pośrednictwem modelu klastrowania, który został przeszkolony przy użyciu *tego algorytmu.*
+This article describes how to use the *Assign Data to Clusters* module in Azure Machine Learning designer (preview). The module generates predictions through a clustering model that was trained with the *K-means clustering* algorithm.
 
-Moduł przypisz dane do klastrów zwraca zestaw danych, który zawiera prawdopodobne przypisania dla każdego nowego punktu danych. 
+The Assign Data to Clusters module returns a dataset that contains the probable assignments for each new data point. 
 
-
-## <a name="how-to-use-assign-data-to-clusters"></a>Jak używać przypisywania danych do klastrów
+## <a name="how-to-use-assign-data-to-clusters"></a>How to use Assign Data to Clusters
   
-1. W projektancie Azure Machine Learning Znajdź wcześniej przeszkolony model klastra. Model klastrowania można utworzyć i wyszkolić przy użyciu jednej z następujących metod:  
+1. In Azure Machine Learning designer, locate a previously trained clustering model. You can create and train a clustering model by using either of the following methods:  
   
-    - Konfiguruje K-oznacza algorytm klastrowania przy użyciu modułu [k-oznaczanie klastrowania](k-means-clustering.md) i uczenie modelu przy użyciu zestawu danych i modułu klastra usługi Uczenie (ten artykuł).  
+    - Configure the K-means clustering algorithm by using the [K-Means Clustering](k-means-clustering.md) module, and train the model by using a dataset and the Train Clustering Model module (this article).  
   
-    - Możesz również dodać istniejący model przeszkolonych klastrów z grupy **zapisane modele** w obszarze roboczym.
+    - You can also add an existing trained clustering model from the **Saved Models** group in your workspace.
 
-2. Dołącz model przeszkolony do lewego portu wejściowego **przypisywania danych do klastrów**.  
+2. Attach the trained model to the left input port of **Assign Data to Clusters**.  
 
-3. Dołącz nowy zestaw danych jako dane wejściowe. 
+3. Attach a new dataset as input. 
 
-   W tym zestawie danych etykiety są opcjonalne. Ogólnie rzecz biorąc, klastrowanie to nienadzorowana Metoda uczenia się. Nie oczekuje się, że kategorie z góry są znane. Jednak kolumny wejściowe muszą być takie same jak kolumny, które były używane podczas uczenia modelu klastrowania lub wystąpi błąd.
+   In this dataset, labels are optional. Generally, clustering is an unsupervised learning method. You are not expected to know the categories in advance. However, the input columns must be the same as the columns that were used in training the clustering model, or an error occurs.
 
     > [!TIP]
-    > Aby zmniejszyć liczbę kolumn, które są zapisywane do projektanta z prognoz klastrów, użyj [opcji wybierz kolumny w zestawie danych](select-columns-in-dataset.md)i wybierz podzestaw kolumn. 
+    > To reduce the number of columns that are written to the designer from the cluster predictions, use [Select columns in the dataset](select-columns-in-dataset.md), and select a subset of the columns. 
     
-4. Pozostaw zaznaczone pole wyboru **Dołącz do dołączenia lub usuń zaznaczenie tylko dla wyniku** , jeśli chcesz, aby wyniki zawierały pełny wejściowy zestaw danych, w tym kolumnę, w której są wyświetlane wyniki (przypisania klastra).
+4. Leave the **Check for append or uncheck for result only** check box selected if you want the results to contain the full input dataset, including a column that displays the results (cluster assignments).
   
-    Jeśli wyczyścisz to pole wyboru, tylko wyniki zostaną zwrócone. Ta opcja może być przydatna podczas tworzenia prognoz w ramach usługi sieci Web.
+    If you clear this check box, only the results are returned. This option might be useful when you create predictions as part of a web service.
   
 5.  Uruchamianie potoku.  
   
 ### <a name="results"></a>Wyniki
 
-+  Aby wyświetlić wartości w zestawie danych, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **zestawy danych wynikowych**, a następnie wybierz polecenie **Wizualizuj**.
++  To view the values in the dataset, right-click the module, select **Result datasets**, and then select **Visualize**.
 

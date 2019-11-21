@@ -1,41 +1,35 @@
 ---
-title: Usługa Azure Functions F# dokumentacja dla deweloperów | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie funkcji platformy Azure przy użyciu F# skryptu.
-services: functions
-documentationcenter: fsharp
+title: Azure Functions F# developer reference
+description: Understand how to develop Azure Functions using F# script.
 author: sylvanc
-manager: jbronsk
-keywords: Azure funkcji, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bezserwerowaF#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: azure-functions
-ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 23e9ffa5c86674cb34951f29573e033b4a904941
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442230"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226749"
 ---
-# <a name="azure-functions-f-developer-reference"></a>Usługa Azure Functions F# dokumentacja dla deweloperów
+# <a name="azure-functions-f-developer-reference"></a>Azure Functions F# Developer Reference
 
-F#dla usługi Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu lub "funkcji" w chmurze. Dane są przesyłane z F# funkcji za pośrednictwem argumentów funkcji. Argument nazwy zostały określone w `function.json`, wiąże się z wstępnie zdefiniowanych nazw do uzyskiwania dostępu do elementów, takich jak funkcja rejestratora i anulowania tokeny. 
+F# for Azure Functions is a solution for easily running small pieces of code, or "functions," in the cloud. Data flows into your F# function via function arguments. Argument names are specified in `function.json`, and there are predefined names for accessing things like the function logger and cancellation tokens. 
 
 >[!IMPORTANT]
->F#Skrypt (.fsx) jest obsługiwana tylko przez [wersji 1.x](functions-versions.md#creating-1x-apps) środowiska uruchomieniowego usługi Azure Functions. Jeśli chcesz używać F# ze środowiskiem uruchomieniowym w wersji 2.x, należy użyć wstępnie skompilowanych F# projekt biblioteki klas (.fs). Tworzenie, zarządzanie i publikowanie F# projekt biblioteki klas przy użyciu programu Visual Studio, jak w przypadku [ C# projekt biblioteki klas](functions-dotnet-class-library.md). Aby uzyskać więcej informacji na temat funkcji wersji zobacz [Przegląd wersje środowiska uruchomieniowego usługi Azure Functions](functions-versions.md).
+>F# script (.fsx) is only supported by [version 1.x](functions-versions.md#creating-1x-apps) of the Azure Functions runtime. If you want to use F# with the version 2.x runtime, you must use a precompiled F# class library project (.fs). You create, manage, and publish an F# class library project using Visual Studio as you would a [C# class library project](functions-dotnet-class-library.md). For more information about Functions versions, see [Azure Functions runtime versions overview](functions-versions.md).
 
-W tym artykule założono, że zostały już przeczytane [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
+This article assumes that you've already read the [Azure Functions developer reference](functions-reference.md).
 
-## <a name="how-fsx-works"></a>Jak działa fsx
-`.fsx` Plik jest F# skryptu. Jego można traktować jako F# projektu, który znajduje się w jednym pliku. Plik zawiera kod dla Twojego programu (w tym przypadku funkcji platformy Azure) oraz dyrektywy do zarządzania zależnościami.
+## <a name="how-fsx-works"></a>How .fsx works
+An `.fsx` file is an F# script. It can be thought of as an F# project that's contained in a single file. The file contains both the code for your program (in this case, your Azure Function) and directives for managing dependencies.
 
-Kiedy używasz `.fsx` dla funkcji platformy Azure, często wymagane zestawy są automatycznie dołączane do Ciebie, co pozwala skupić się na kod funkcji, a nie "standardowy".
+When you use an `.fsx` for an Azure Function, commonly required assemblies are automatically included for you, allowing you to focus on the function rather than "boilerplate" code.
 
-## <a name="folder-structure"></a>Struktura folderów
+## <a name="folder-structure"></a>Folder structure
 
-Struktura folderów dla F# projekt skryptu wygląda podobnie do następującej:
+The folder structure for an F# script project looks like the following:
 
 ```
 FunctionsProject
@@ -52,12 +46,12 @@ FunctionsProject
  | - bin
 ```
 
-Brak udostępnionej [host.json](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma swój własny plik kodu (.fsx) i plik konfiguracji powiązania (function.json).
+There's a shared [host.json](functions-host-json.md) file that can be used to configure the function app. Each function has its own code file (.fsx) and binding configuration file (function.json).
 
-Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
+The binding extensions required in [version 2.x](functions-versions.md) of the Functions runtime are defined in the `extensions.csproj` file, with the actual library files in the `bin` folder. When developing locally, you must [register binding extensions](./functions-bindings-register.md#extension-bundles). When developing functions in the Azure portal, this registration is done for you.
 
-## <a name="binding-to-arguments"></a>Powiązanie z argumentami
-Każde powiązanie obsługuje niektóre argumenty, zgodnie z opisem w [dokumentacja dla deweloperów usługi wyzwalaczy i powiązań usługi Azure Functions](functions-triggers-bindings.md). Na przykład, jedno z powiązań argument obsługuje wyzwalacz obiektu blob jest POCO, które mogą być wyrażone za pomocą F# rekordu. Na przykład:
+## <a name="binding-to-arguments"></a>Binding to arguments
+Each binding supports some set of arguments, as detailed in the [Azure Functions triggers and bindings developer reference](functions-triggers-bindings.md). For example, one of the argument bindings a blob trigger supports is a POCO, which can be expressed using an F# record. Na przykład:
 
 ```fsharp
 type Item = { Id: string }
@@ -67,11 +61,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Twoje F# funkcji platformy Azure spowoduje przejście jednego lub więcej argumentów. Gdy mówimy o argumenty usługi Azure Functions, nazywamy *wejściowych* argumentów i *dane wyjściowe* argumentów. Argument wejściowy jest dokładnie, co wydaje się to np.: dane wejściowe do Twojej F# funkcji platformy Azure. *Dane wyjściowe* argument jest modyfikowalną danych lub `byref<>` argument, który służy jako sposób przekazywania danych z powrotem *się* funkcji.
+Your F# Azure Function will take one or more arguments. When we talk about Azure Functions arguments, we refer to *input* arguments and *output* arguments. An input argument is exactly what it sounds like: input to your F# Azure Function. An *output* argument is mutable data or a `byref<>` argument that serves as a way to pass data back *out* of your function.
 
-W powyższym przykładzie `blob` jest argument wejściowy i `output` jest argumentem danych wyjściowych. Należy zauważyć, że użyliśmy `byref<>` dla `output` (nie ma potrzeby można dodać `[<Out>]` adnotacji). Za pomocą `byref<>` typ umożliwia funkcji do zmiany, które rekord lub argumentu, który odwołuje się do obiektu.
+In the example above, `blob` is an input argument, and `output` is an output argument. Notice that we used `byref<>` for `output` (there's no need to add the `[<Out>]` annotation). Using a `byref<>` type allows your function to change which record or object the argument refers to.
 
-Gdy F# rekord jest używany jako typ danych wejściowych, muszą być oznaczone definicji rekordu `[<CLIMutable>]` parzysta w ramach usługi Azure Functions odpowiednie ustawienie pola przed przekazaniem rekord do funkcji. Kulisy `[<CLIMutable>]` generuje metod ustawiających właściwości rekordu. Na przykład:
+When an F# record is used as an input type, the record definition must be marked with `[<CLIMutable>]` in order to allow the Azure Functions framework to set the fields appropriately before passing the record to your function. Under the hood, `[<CLIMutable>]` generates setters for the record properties. Na przykład:
 
 ```fsharp
 [<CLIMutable>]
@@ -83,7 +77,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-F# Klasy można również dla obu in i out argumenty. Klasy właściwości będzie zwykle na potrzeby metod pobierających i ustawiających. Na przykład:
+An F# class can also be used for both in and out arguments. For a class, properties will usually need getters and setters. Na przykład:
 
 ```fsharp
 type Item() =
@@ -96,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Rejestrowanie
-Aby rejestrować dane wyjściowe do usługi [przesyłanie strumieniowe dzienników](../app-service/troubleshoot-diagnostic-logs.md) w F#, funkcji powinno przyjmować argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). W celu zachowania spójności, firma Microsoft zaleca, nosi nazwę tego argumentu `log`. Na przykład:
+To log output to your [streaming logs](../app-service/troubleshoot-diagnostic-logs.md) in F#, your function should take an argument of type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). For consistency, we recommend this argument is named `log`. Na przykład:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -104,8 +98,8 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>asynchroniczne
-`async` Przepływ pracy może być używany, ale wynik musi zwracać `Task`. Można to zrobić za pomocą `Async.StartAsTask`, na przykład:
+## <a name="async"></a>Async
+The `async` workflow can be used, but the result needs to return a `Task`. This can be done with `Async.StartAsTask`, for example:
 
 ```fsharp
 let Run(req: HttpRequestMessage) =
@@ -114,8 +108,8 @@ let Run(req: HttpRequestMessage) =
     } |> Async.StartAsTask
 ```
 
-## <a name="cancellation-token"></a>Token anulowania
-Jeśli funkcja musi bezpiecznie obsłużyć zamykania, możesz nadać mu [ `CancellationToken` ](/dotnet/api/system.threading.cancellationtoken) argumentu. Może to być łączone z `async`, na przykład:
+## <a name="cancellation-token"></a>Cancellation Token
+If your function needs to handle shutdown gracefully, you can give it a [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) argument. This can be combined with `async`, for example:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -126,8 +120,8 @@ let Run(req: HttpRequestMessage, token: CancellationToken)
     Async.StartAsTask(f, token)
 ```
 
-## <a name="importing-namespaces"></a>Importowanie przestrzeni nazw
-Przestrzenie nazw mogą być otwierane w zwykły sposób:
+## <a name="importing-namespaces"></a>Importing namespaces
+Namespaces can be opened in the usual way:
 
 ```fsharp
 open System.Net
@@ -138,7 +132,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
-Następujące przestrzenie nazw są automatycznie otwierane:
+The following namespaces are automatically opened:
 
 * `System`
 * `System.Collections.Generic`
@@ -149,8 +143,8 @@ Następujące przestrzenie nazw są automatycznie otwierane:
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`.
 
-## <a name="referencing-external-assemblies"></a>Odwoływanie się do zestawów zewnętrznych
-Podobnie, można dodać odwołania do zestawów framework z `#r "AssemblyName"` dyrektywy.
+## <a name="referencing-external-assemblies"></a>Referencing External Assemblies
+Similarly, framework assembly references can be added with the `#r "AssemblyName"` directive.
 
 ```fsharp
 #r "System.Web.Http"
@@ -164,7 +158,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
-Następujące zestawy są automatycznie dodawane przez środowisko hostingu usługi Azure Functions:
+The following assemblies are automatically added by the Azure Functions hosting environment:
 
 * `mscorlib`,
 * `System`
@@ -177,7 +171,7 @@ Następujące zestawy są automatycznie dodawane przez środowisko hostingu usł
 * `System.Web.Http`
 * `System.Net.Http.Formatting`.
 
-Ponadto następujące zestawy są specyficzne, z uwzględnieniem wielkości liter i mogą być przywoływane przez simplename (np. `#r "AssemblyName"`):
+In addition, the following assemblies are special cased and may be referenced by simplename (e.g. `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -185,10 +179,10 @@ Ponadto następujące zestawy są specyficzne, z uwzględnieniem wielkości lite
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-Jeśli potrzebujesz odwołać zestaw prywatny, możesz przekazać plik zestawu do `bin` folderu względem Twojej funkcji i odwołania za pomocą pliku nazwa (np.  `#r "MyAssembly.dll"`). Aby uzyskać informacje na temat przekazywania plików do folderu funkcji zobacz następującą sekcję pakietu zarządzania.
+If you need to reference a private assembly, you can upload the assembly file into a `bin` folder relative to your function and reference it by using the file name (e.g.  `#r "MyAssembly.dll"`). For information on how to upload files to your function folder, see the following section on package management.
 
-## <a name="editor-prelude"></a>Edytor Prelude
-Edytor który obsługuje F# usługi kompilatora nie będą korzystają z przestrzeni nazw i zestawów, które automatycznie uwzględnia usługi Azure Functions. W efekcie może być przydatne, obejmują prelude, ułatwiające edytora Znajdź zestawy, które są używane i otwierać przestrzeni nazw. Na przykład:
+## <a name="editor-prelude"></a>Editor Prelude
+An editor that supports F# Compiler Services will not be aware of the namespaces and assemblies that Azure Functions automatically includes. As such, it can be useful to include a prelude that helps the editor find the assemblies you are using, and to explicitly open namespaces. Na przykład:
 
 ```fsharp
 #if !COMPILED
@@ -204,12 +198,12 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     ...
 ```
 
-Usługi Azure Functions wykonuje kod, przetwarza źródło o `COMPILED` zdefiniowane, więc prelude edytora zostanie zignorowany.
+When Azure Functions executes your code, it processes the source with `COMPILED` defined, so the editor prelude will be ignored.
 
 <a name="package"></a>
 
 ## <a name="package-management"></a>Zarządzanie pakietami
-Do korzystania z pakietów NuGet w F# działa, Dodaj `project.json` plik do folderu funkcji w systemie plików aplikacji funkcji. Oto przykład `project.json` pliku, który dodaje odwołanie do pakietu NuGet, aby `Microsoft.ProjectOxford.Face` wersji 1.1.0:
+To use NuGet packages in an F# function, add a `project.json` file to the function's folder in the function app's file system. Here is an example `project.json` file that adds a NuGet package reference to `Microsoft.ProjectOxford.Face` version 1.1.0:
 
 ```json
 {
@@ -223,16 +217,16 @@ Do korzystania z pakietów NuGet w F# działa, Dodaj `project.json` plik do fold
 }
 ```
 
-Tylko .NET Framework 4.6 jest obsługiwane, dlatego upewnij się, że Twoje `project.json` plik Określa `net46` jak pokazano poniżej.
+Only the .NET Framework 4.6 is supported, so make sure that your `project.json` file specifies `net46` as shown here.
 
-Podczas przekazywania `project.json` plik, środowisko uruchomieniowe pobiera pakiety i automatycznie dodaje odwołania do zestawów pakietu. Nie trzeba dodawać `#r "AssemblyName"` dyrektywy. Wystarczy dodać wymagane `open` instrukcje, aby Twoje `.fsx` pliku.
+When you upload a `project.json` file, the runtime gets the packages and automatically adds references to the package assemblies. You don't need to add `#r "AssemblyName"` directives. Just add the required `open` statements to your `.fsx` file.
 
-Możesz też chcieć umieścić automatycznie zestawów odwołań w swojej prelude edytora, aby poprawić swoim edytorze interakcji z F# usługi kompilacji.
+You may wish to put automatically references assemblies in your editor prelude, to improve your editor's interaction with F# Compile Services.
 
-### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>Jak dodać `project.json` plików do funkcji platformy Azure
-1. Rozpocznij, upewniając się, aplikacja funkcji jest uruchomiona, co można zrobić, otwierając funkcji w witrynie Azure portal. To daje dostęp do dzienników przesyłania strumieniowego gdzie zostaną wyświetlone dane wyjściowe instalacji pakietu.
-2. Aby przekazać `project.json` pliku, użyj jednej z metod opisanych w [jak zaktualizować pliki aplikacji funkcji](functions-reference.md#fileupdate). Jeśli używasz [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md), możesz dodać `project.json` pliku gałęzi tymczasowej, aby eksperymentować z tym przed dodaniem go do swojej gałęzi z wdrożenia.
-3. Po `project.json` plik zostanie dodany, widoczne będą dane wyjściowe podobne do poniższego przykładu w funkcji użytkownika przesyłania strumieniowego dziennika:
+### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>How to add a `project.json` file to your Azure Function
+1. Begin by making sure your function app is running, which you can do by opening your function in the Azure portal. This also gives access to the streaming logs where package installation output will be displayed.
+2. To upload a `project.json` file, use one of the methods described in [how to update function app files](functions-reference.md#fileupdate). If you are using [Continuous Deployment for Azure Functions](functions-continuous-deployment.md), you can add a `project.json` file to your staging branch in order to experiment with it before adding it to your deployment branch.
+3. After the `project.json` file is added, you will see output similar to the following example in your function's streaming log:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -252,7 +246,7 @@ Możesz też chcieć umieścić automatycznie zestawów odwołań w swojej prelu
 ```
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
-Aby uzyskać zmiennej środowiskowej lub wartość ustawienia aplikacji, użyj `System.Environment.GetEnvironmentVariable`, na przykład:
+To get an environment variable or an app setting value, use `System.Environment.GetEnvironmentVariable`, for example:
 
 ```fsharp
 open System.Environment
@@ -263,8 +257,8 @@ let Run(timer: TimerInfo, log: ILogger) =
     log.LogInformation("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
 ```
 
-## <a name="reusing-fsx-code"></a>Ponowne użycie kodu fsx
-Możesz użyć kodu z innych `.fsx` plików za pomocą `#load` dyrektywy. Na przykład:
+## <a name="reusing-fsx-code"></a>Reusing .fsx code
+You can use code from other `.fsx` files by using a `#load` directive. Na przykład:
 
 `run.fsx`
 
@@ -282,21 +276,21 @@ let mylog(log: ILogger, text: string) =
     log.LogInformation(text);
 ```
 
-Zapewnia ścieżki `#load` dyrektywy są powiązane z lokalizacją usługi `.fsx` pliku.
+Paths provides to the `#load` directive are relative to the location of your `.fsx` file.
 
-* `#load "logger.fsx"` ładuje plik znajdujący się w folderze funkcji.
-* `#load "package\logger.fsx"` ładuje plik znajdujący się w `package` folderu w folderze funkcji.
-* `#load "..\shared\mylogger.fsx"` ładuje plik znajdujący się w `shared` folderu na tym samym poziomie jak folderze funkcji, znajdującą się pod `wwwroot`.
+* `#load "logger.fsx"` loads a file located in the function folder.
+* `#load "package\logger.fsx"` loads a file located in the `package` folder in the function folder.
+* `#load "..\shared\mylogger.fsx"` loads a file located in the `shared` folder at the same level as the function folder, that is, directly under `wwwroot`.
 
-`#load` Dyrektywa działa tylko z `.fsx` (F# skryptu) plików, a nie z `.fs` plików.
+The `#load` directive only works with `.fsx` (F# script) files, and not with `.fs` files.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Więcej informacji zawierają następujące zasoby:
 
-* [F#Przewodnik](/dotnet/articles/fsharp/index)
+* [F# Guide](/dotnet/articles/fsharp/index)
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
-* [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
-* [Testowanie usługi Azure Functions](functions-test-a-function.md)
-* [Skalowanie usługi Azure Functions](functions-scale.md)
+* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
+* [Azure Functions testing](functions-test-a-function.md)
+* [Azure Functions scaling](functions-scale.md)
 

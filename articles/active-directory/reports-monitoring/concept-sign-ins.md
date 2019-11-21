@@ -17,87 +17,87 @@ ms.date: 10/28/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014489"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232149"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
-Architektura raportowania w Azure Active Directory (Azure AD) składa się z następujących składników:
+The reporting architecture in Azure Active Directory (Azure AD) consists of the following components:
 
-- **Aktywność** 
-    - **Logowania** — informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników.
-    - **Dzienniki inspekcji** - [dzienniki inspekcji](concept-audit-logs.md) zapewniają informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami, zarządzane aplikacje i działania w katalogu.
-- **Zabezpieczenia** 
-    - **Ryzykowne logowania** — [ryzykowne logowanie](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania przez kogoś, kto nie jest uprawnionym właścicielem konta użytkownika.
-    - **Użytkownicy oflagowani do ryzyka** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, które mogło zostać naruszone.
+- **Działanie** 
+    - **Sign-ins** – Information about the usage of managed applications and user sign-in activities.
+    - **Audit logs** - [Audit logs](concept-audit-logs.md) provide system activity information about users and group management, managed applications, and directory activities.
+- **Bezpieczeństwo** 
+    - **Risky sign-ins** - A [risky sign-in](concept-risky-sign-ins.md) is an indicator for a sign-in attempt by someone who isn't the legitimate owner of a user account.
+    - **Users flagged for risk** - A [risky user](concept-user-at-risk.md) is an indicator for a user account that might have been compromised.
 
-Ten artykuł zawiera omówienie raportu logowania.
+This article gives you an overview of the sign-ins report.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 
-* Użytkownicy w rolach administrator zabezpieczeń, czytelnik zabezpieczeń i czytelnik raportów
-* Administratorzy globalni
+* Users in the Security Administrator, Security Reader, Global Reader, and Report Reader roles
+* Global Administrators
 * Dowolny użytkownik (inny niż administrator) może uzyskać dostęp do danych na temat własnych logowań 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
 
-* Dzierżawca musi mieć skojarzoną licencję Azure AD — wersja Premium, aby wyświetlić raport dotyczący wszystkich działań związanych z logowaniem. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Wyświetlenie danych w raportach po przeprowadzeniu uaktualnienia do licencji Premium bez działań związanych z danymi przed uaktualnieniem zajmie kilka dni.
+* Your tenant must have an Azure AD Premium license associated with it to see the all up sign-in activity report. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). It will take a couple of days for the data to show up in the reports after you upgrade to a premium license with no data activities before the upgrade.
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań
 
-Raport logowania użytkownika zawiera odpowiedzi na następujące pytania:
+The user sign-ins report provides answers to the following questions:
 
 * Co to jest wzorzec logowania użytkownika?
 * Ilu użytkowników zalogowało się w ciągu tygodnia?
 * Jaki jest stan tych logowań?
 
-Zacznij od [Azure Portal](https://portal.azure.com). Aby uzyskać dostęp do raportu logowania, wybierz pozycję **logowania**, a następnie przejdź do **monitorowania.** Wyświetlanie rekordów logowania w portalu może potrwać do dwóch godzin.
+Start with [Azure portal](https://portal.azure.com). To access the sign-ins report select **Sign-ins**, continue to the **Monitoring.** It may take up to two hours for some sign-in records to show up in the portal.
 
-![Aktywność logowania](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Aktywność związana z logowaniem")
 
 > [!IMPORTANT]
-> Raport logowania zawiera tylko logowania **interaktywne** , czyli logowania, w przypadku których użytkownik ręcznie loguje się przy użyciu nazwy użytkownika i hasła. Nieinteraktywne logowania, takie jak uwierzytelnianie między usługami, nie są wyświetlane w raporcie logowania. 
+> The sign-ins report only displays the **interactive** sign-ins, that is, sign-ins where a user manually signs in using their username and password. Non-interactive sign-ins, such as service-to-service authentication, are not displayed in the sign-ins report. 
 
 Domyślny widok listy dziennika logowań pokazuje następujące dane:
 
 - Data logowania
 - Powiązany użytkownik
-- Aplikacja, do której użytkownik zalogował się
+- The application the user has signed in to
 - Stan logowania
 - Stan wykrywania ryzyka
 - Stan wymagania dotyczącego uwierzytelniania wieloskładnikowego (MFA)
 
-![Aktywność logowania](./media/concept-sign-ins/sign-in-activity.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/sign-in-activity.png "Aktywność związana z logowaniem")
 
 Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzędzi.
 
-![Aktywność logowania](./media/concept-sign-ins/19.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/19.png "Aktywność związana z logowaniem")
 
-Wyświetla dodatkowe pola lub usuwa pola, które są już wyświetlane.
+Displays additional fields or remove fields that are already displayed.
 
-![Aktywność logowania](./media/concept-sign-ins/02.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/02.png "Aktywność związana z logowaniem")
 
-Wybierz element w widoku listy, aby uzyskać bardziej szczegółowe informacje.
+Select an item in the list view to get more detailed information.
 
-![Aktywność logowania](./media/concept-sign-ins/basic-sign-in.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/basic-sign-in.png "Aktywność związana z logowaniem")
 
 > [!NOTE]
-> Klienci mogą teraz rozwiązywać problemy z zasadami dostępu warunkowego przez wszystkie raporty logowania. Klikając kartę **dostęp warunkowy** dla rekordu logowania, klienci mogą sprawdzić stan dostępu warunkowego i szczegółowe w celu uzyskania szczegółowych informacji dotyczących zasad, które zastosowały się do logowania, oraz wyników dla każdej zasady.
-> Aby uzyskać więcej informacji, zapoznaj [się z często zadawanymi pytaniami dotyczącymi informacji o urzędzie certyfikacji we wszystkich logowaniach](reports-faq.md#conditional-access).
+> Customers can now troubleshoot Conditional Access policies through all sign-in reports. By clicking on the **Conditional Access** tab for a sign-in record, customers can review the Conditional Access status and dive into the details of the policies that applied to the sign-in and the result for each policy.
+> For more information, see the [Frequently asked questions about CA information in all sign-ins](reports-faq.md#conditional-access).
 
 
 
 ## <a name="filter-sign-in-activities"></a>Filtrowanie działań związanych z logowaniem
 
-Najpierw Zawężanie danych raportowanych do poziomu, który się do Ciebie sprawdza. Następnie należy odfiltrować dane logowania przy użyciu pola daty jako domyślnego filtru. Usługa Azure AD udostępnia szeroką gamę dodatkowych filtrów, które można ustawić.
+First, narrowing down the reported data to a level that works for you. Second, filter sign-ins data using date field as default filter. Azure AD provides you with a broad range of additional filters you can set.
 
-![Aktywność logowania](./media/concept-sign-ins/04.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/04.png "Aktywność związana z logowaniem")
 
 Filtr **Użytkownik** umożliwia określenie nazwy lub głównej nazwy wybranego użytkownika (nazwy UPN).
 
@@ -105,21 +105,21 @@ Filtr **Aplikacja** umożliwia określenie nazwy wybranej aplikacji.
 
 Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 
-- Wszystkie
+- Wszystko
 - Powodzenie
 - Niepowodzenie
 
-Filtr **dostępu warunkowego** umożliwia wybranie stanu zasad urzędu certyfikacji dla logowania:
+The **Conditional Access** filter enables you to select the CA policy status for the sign-in:
 
-- Wszystkie
-- Nie zastosowano
+- Wszystko
+- Not Applied
 - Powodzenie
 - Niepowodzenie
 
 Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
 Możliwe wartości:
 
-- Jeden miesiąc
+- One month
 - 7 dni
 - 24 godziny
 - Niestandardowy zakres czasu
@@ -127,52 +127,52 @@ Możliwe wartości:
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 
 Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie dodane do listy filtrów. Na przykład dodanie pola **Aplikacja kliencka** do listy powoduje udostępnienie kolejnej opcji filtru, która umożliwia ustawienie następujących filtrów:  
-![Aktywność logowania](./media/concept-sign-ins/12.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/12.png "Aktywność związana z logowaniem")
 
-- **Przeglądarka**  
-    Ten filtr przedstawia wszystkie zdarzenia, dla których podjęto próbę zalogowania przy użyciu przepływów przeglądarki.
-- **Exchange ActiveSync (obsługiwane)**  
-    Ten filtr przedstawia wszystkie próby logowania, w przypadku których podjęto próbę wykonania protokołu Exchange ActiveSync (EAS) z obsługiwanych platform, takich jak iOS, Android i Windows Phone.
-- **Exchange ActiveSync (nieobsługiwane)**  
-    Ten filtr przedstawia wszystkie próby logowania, w przypadku których podjęto próbę użycia protokołu EAS z nieobsługiwanych platform, takich jak Linux dystrybucje.
-- **Klienci Mobile Apps i komputery stacjonarne** Filtr pokazuje wszystkie próby logowania, które nie były używane przez przepływy przeglądarki. Na przykład aplikacje mobilne z dowolnej platformy przy użyciu dowolnego protokołu lub aplikacji klienckich dla komputerów stacjonarnych, takich jak pakiet Office w systemie Windows lub MacOS.
+- **Browser**  
+    This filter shows all events where sign-in attempts were attempted using browser flows.
+- **Exchange ActiveSync (supported)**  
+    This filter shows all sign-in attempts where the Exchange ActiveSync (EAS) protocol has been attempted from supported platforms like iOS, Android, and Windows Phone.
+- **Exchange ActiveSync (unsupported)**  
+    This filter shows all sign-in attempts where the EAS protocol has been attempted from unsupported platforms like, Linux distros.
+- **Mobile Apps and Desktop clients** The filter shows all sign-in attempts that were not using browser flows. For example, mobile apps from any platform using any protocol or from Desktop client apps like Office on Windows or MacOS.
   
-- **Inni klienci**
-    - **PROTOKOŁU**  
-        Starsza wersja klienta poczty używającej protokołu IMAP do pobierania poczty e-mail.
-    - **OBSŁUGUJĄC**  
-        Pakiet Office 2013, gdzie Biblioteka ADAL jest włączona i używa interfejsu MAPI.
-    - **Stara klienci pakietu Office**  
-        Pakiet Office 2013 w konfiguracji domyślnej, gdzie Biblioteka ADAL nie jest włączona i używa interfejsu MAPI lub pakietu Office 2016, gdzie ADAL została wyłączona.
+- **Other clients**
+    - **IMAP**  
+        A legacy mail client using IMAP to retrieve email.
+    - **MAPI**  
+        Office 2013, where ADAL is enabled and it is using MAPI.
+    - **Old Office clients**  
+        Office 2013 in its default configuration where ADAL is not enabled and it is using MAPI, or Office 2016 where ADAL has been disabled.
     - **POP**  
-        Starsza wersja klienta poczty używającej protokołu POP3 do pobierania poczty e-mail.
+        A legacy mail client using POP3 to retrieve email.
     - **SMTP**  
-        Starszego klienta poczty e-mail korzystającego z protokołu SMTP do wysyłania wiadomości.
+        A legacy mail client using SMTP to send email.
 
 ## <a name="download-sign-in-activities"></a>Pobieranie działań związanych z logowaniem
 
-Kliknij opcję **Pobierz** , aby utworzyć plik CSV lub kod JSON z najnowszych rekordów 250 000. Rozpocznij od [pobrania danych logowania,](quickstart-download-sign-in-report.md) Jeśli chcesz korzystać z nich poza Azure Portal.  
+Click the **Download** option to create a CSV or JSON file of the most recent 250,000 records. Start with [download the sign-ins data](quickstart-download-sign-in-report.md) if you want to work with it outside the Azure portal.  
 
-![Pobieranie](./media/concept-sign-ins/71.png "Do pobrania")
+![Pobieranie](./media/concept-sign-ins/71.png "Pobierz")
 
 > [!IMPORTANT]
-> Liczba rekordów, które można pobrać, jest ograniczona przez [zasady przechowywania raportów Azure Active Directory](reference-reports-data-retention.md).  
+> The number of records you can download is constrained by the [Azure Active Directory report retention policies](reference-reports-data-retention.md).  
 
 
-## <a name="sign-ins-data-shortcuts"></a>Skróty danych logowania
+## <a name="sign-ins-data-shortcuts"></a>Sign-ins data shortcuts
 
-Usługa Azure AD i Azure Portal udostępniają dodatkowe punkty wejścia do danych logowania:
+Azure AD and the Azure portal both provide you with additional entry points to sign-ins data:
 
-- Omówienie ochrony tożsamości
+- The Identity security protection overview
 - Użytkownicy
 - Grupy
 - Aplikacje dla przedsiębiorstw
 
-### <a name="users-sign-ins-data-in-identity-security-protection"></a>Użytkownicy logują się do danych w usłudze Identity Security Protection
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>Users sign-ins data in Identity security protection
 
-Na stronie Omówienie usługi **Identity Security Protection** Graf logowania użytkownika przedstawia tygodniowe agregacje logowania. Wartością domyślną okresu jest 30 dni.
+The user sign-in graph in the **Identity security protection** overview page shows weekly aggregations of sign-ins. The default for the time period is 30 days.
 
-![Aktywność logowania](./media/concept-sign-ins/06.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/06.png "Aktywność związana z logowaniem")
 
 Po kliknięciu dnia na wykresie logowań zostanie wyświetlony przegląd działań logowania dla tego dnia.
 
@@ -193,32 +193,32 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Klient
 - Lokalizacja
 - Adres IP
-- Date
+- Data
 - Wymagane uwierzytelnianie wieloskładnikowe
 - Stan logowania
 
 > [!NOTE]
-> Adresy IP są wystawiane w taki sposób, że nie istnieje ostateczne połączenie między adresem IP i lokalizacją, w której komputer z tym adresem jest fizycznie zlokalizowany. Mapowanie adresów IP jest skomplikowane przez fakt, że dostawcy urządzeń przenośnych i sieci VPN wystawiają adresy IP z pul centralnych, które często są bardzo daleko od miejsca użycia urządzenia klienckiego. Obecnie w raportach usługi Azure AD konwertowanie adresu IP na lokalizację fizyczną jest najlepszym nakładem pracy na podstawie śladów, danych rejestru, wyszukiwania wstecznego i innych informacji.
+> IP addresses are issued in such a way that there is no definitive connection between an IP address and where the computer with that address is physically located. Mapping IP addresses is complicated by the fact that mobile providers and VPNs issue IP addresses from central pools that are often very far from where the client device is actually used. Currently in Azure AD reports, converting IP address to a physical location is a best effort based on traces, registry data, reverse look ups and other information.
 
 Na stronie **Użytkownicy** znajduje się pełny przegląd wszystkich logowań użytkowników dostępny po kliknięciu pozycji **Logowania** w sekcji **Działanie**.
 
-![Aktywność logowania](./media/concept-sign-ins/08.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/08.png "Aktywność związana z logowaniem")
 
 ## <a name="usage-of-managed-applications"></a>Użycie zarządzanych aplikacji
 
 Dzięki widokowi skoncentrowanemu na aplikacji w ramach danych logowania można uzyskać odpowiedzi na pytania, takie jak:
 
 * Kto korzysta z aplikacji?
-* Co to są trzy najpopularniejsze aplikacje w organizacji?
-* Jak działa moja najnowsza aplikacja?
+* What are the top three applications in your organization?
+* How is my newest application doing?
 
-Punkt wejścia do tych danych to trzy pierwsze aplikacje w organizacji. Dane są zawarte w raporcie z ostatnich 30 dni w sekcji **Przegląd** w obszarze **aplikacje dla przedsiębiorstw**.
+The entry point to this data is the top three applications in your organization. The data is contained within the last 30 days report in the **Overview** section under **Enterprise applications**.
 
-![Aktywność logowania](./media/concept-sign-ins/10.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/10.png "Aktywność związana z logowaniem")
 
-Wykresy użycia aplikacji dotyczą tygodniowego agregacji logowań dla najpopularniejszych trzech aplikacji w danym okresie. Domyślny okres to 30 dni.
+The app-usage graphs weekly aggregations of sign-ins for your top three applications in a given time period. Domyślny okres to 30 dni.
 
-![Aktywność logowania](./media/concept-sign-ins/graph-chart.png "Aktywność związana z logowaniem")
+![Sign-in activity](./media/concept-sign-ins/graph-chart.png "Aktywność związana z logowaniem")
 
 Jeśli chcesz, możesz ustawić fokus na konkretnej aplikacji.
 
@@ -228,15 +228,15 @@ Po kliknięciu dnia na wykresie użycia aplikacji zostanie wyświetlona szczegó
 
 Opcja **Logowania** umożliwia pełny przegląd zdarzeń logowania do aplikacji.
 
-## <a name="office-365-activity-logs"></a>Dzienniki aktywności pakietu Office 365
+## <a name="office-365-activity-logs"></a>Office 365 activity logs
 
-Dzienniki aktywności pakietu Office 365 można wyświetlić w [centrum administracyjnym Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Należy wziąć pod uwagę, że usługa Office 365 i dzienniki aktywności usługi Azure AD dzielą znaczną liczbę zasobów katalogu. Tylko Microsoft 365 centrum administracyjnego zapewnia pełny wgląd w dzienniki aktywności pakietu Office 365. 
+You can view Office 365 activity logs from the [Microsoft 365 admin center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Consider the point  that, Office 365 activity and Azure AD activity logs share a significant number of the directory resources. Only the Microsoft 365 admin center provides a full view of the Office 365 activity logs. 
 
-Możesz również programowo uzyskać dostęp do dzienników aktywności pakietu Office 365 przy użyciu [interfejsów API zarządzania pakietu office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+You can also access the Office 365 activity logs programmatically by using the [Office 365 Management APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Kody błędów raportów działań związanych z logowaniem](reference-sign-ins-error-codes.md)
-* [Zasady przechowywania danych usługi Azure AD](reference-reports-data-retention.md)
-* [Opóźnienia raportów usługi Azure AD](reference-reports-latencies.md)
+* [Sign-in activity report error codes](reference-sign-ins-error-codes.md)
+* [Azure AD data retention policies](reference-reports-data-retention.md)
+* [Azure AD report latencies](reference-reports-latencies.md)
 

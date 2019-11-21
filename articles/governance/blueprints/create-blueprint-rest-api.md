@@ -1,16 +1,16 @@
 ---
-title: Tworzenie strategii przy użyciu interfejsu API REST
-description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdrażanie artefaktów przy użyciu interfejsu API REST.
+title: 'Quickstart: Create a blueprint with REST API'
+description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the REST API.
 ms.date: 02/04/2019
 ms.topic: quickstart
-ms.openlocfilehash: 9b711a6359ed9ecb45f25c460ece095af46ad8c3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 40ae1eb3647f1eba6df920459fcc3673b31bfa01
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960407"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217061"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu interfejsu API REST
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Define and Assign an Azure Blueprint with REST API
 
 Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
@@ -66,7 +66,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
 > [!NOTE]
-> Plany mogą być również tworzone na poziomie subskrypcji. Aby zapoznać się z przykładem, zobacz [Tworzenie strategii na przykład subskrypcji](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
+> Blueprints may also be created at the subscription level. To see an example, see [create blueprint at subscription example](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. Utwórz obiekt _strategii_ początkowej. **Treść żądania** zawiera właściwości strategii, wszystkie grupy zasobów, które mają zostać utworzone, oraz wszystkie parametry poziomu strategii. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
 
@@ -332,7 +332,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 - `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
-1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator AppId jest statyczny (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale nazwa główna usługi różni się w zależności od dzierżawy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
+1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. The AppId is static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), but the service principal ID varies by tenant. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
 
    - Identyfikator URI interfejsu API REST
 

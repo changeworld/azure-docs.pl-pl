@@ -1,49 +1,49 @@
 ---
-title: Zarządzanie ładem tagów
-description: Użyj efektu Modyfikuj Azure Policy, aby utworzyć i wymusić model ładu znacznika dla nowych i istniejących zasobów.
+title: 'Tutorial: Manage tag governance'
+description: In this tutorial, you use the Modify effect of Azure Policy to create and enforce a tag governance model on new and existing resources.
 ms.date: 11/04/2019
 ms.topic: tutorial
-ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 59de9d6ff03e160f83e2f2ad8b8b697109f31cd7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069659"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216682"
 ---
-# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Samouczek: Zarządzanie zarządzaniem tagów przy użyciu Azure Policy
+# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Manage tag governance with Azure Policy
 
-[Tagi](../../../azure-resource-manager/resource-group-using-tags.md) są kluczową częścią organizowania zasobów platformy Azure w taksonomię. Po zastosowaniu [najlepszych rozwiązań w zakresie zarządzania tagami](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)Tagi mogą być podstawą stosowania zasad firmowych z Azure Policy lub [śledzeniem kosztów z Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
-Niezależnie od tego, jak i dlaczego używasz tagów, ważne jest, aby można je szybko dodawać, zmieniać i usuwać z zasobów platformy Azure.
+[Tags](../../../azure-resource-manager/resource-group-using-tags.md) are a crucial part of organizing your Azure resources into a taxonomy. When following [best practices for tag management](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources), tags can be the basis for applying your business policies with Azure Policy or [tracking costs with Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+No matter how or why you use tags, it's important that you can quickly add, change, and remove those tags on your Azure resources.
 
-Efekt [modyfikacji](../concepts/effects.md#modify) Azure Policy został zaprojektowany w celu ułatwienia zarządzania tagami niezależnie od tego, jaki etap nadzoru zasobów należy do Ciebie. **Modyfikuj** ułatwia:
+Azure Policy's [Modify](../concepts/effects.md#modify) effect is designed to aid in the governance of tags no matter what stage of resource governance you are in. **Modify** helps when:
 
-- Jesteś nowym chmurą i nie posiadasz ładu
-- Ma już tysiące zasobów bez zarządzania tagami
-- Masz już istniejącą taksonomię, którą chcesz zmienić
+- You're new to the cloud and have no tag governance
+- Already have thousands of resources with no tag governance
+- Already have an existing taxonomy that you need changed
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="identify-requirements"></a>Określanie wymagań
 
-Podobnie jak jakakolwiek dobra implementacja kontroli ładu, wymagania powinny pochodzić z Twoich potrzeb firmy i być dobrze zrozumiałe przed utworzeniem kontroli technicznej. W tym samouczku przedstawiono następujące wymagania biznesowe:
+Like any good implementation of governance controls, the requirements should come from your business needs and be well understood before creating technical controls. For this scenario tutorial, the following items are our business requirements:
 
-- Dwa wymagane Tagi dla wszystkich zasobów: _CostCenter_ i _ENV_
-- _CostCenter_ musi istnieć na wszystkich kontenerach i poszczególnych zasobach
-  - Zasoby dziedziczą z kontenera, w którym się znajdują, ale mogą być indywidualnie zastępowane
-- _Koperta_ musi istnieć na wszystkich kontenerach i poszczególnych zasobach
-  - Zasoby określają środowisko przez schemat nazewnictwa kontenerów i nie mogą zostać zastąpione
-  - Wszystkie zasoby w kontenerze są częścią tego samego środowiska
+- Two required tags on all resources: _CostCenter_ and _Env_
+- _CostCenter_ must exist on all containers and individual resources
+  - Resources inherit from the container they're in, but may be individually overridden
+- _Env_ must exist on all containers and individual resources
+  - Resources determine environment by container naming scheme and may not be overridden
+  - All resources in a container are part of the same environment
 
-## <a name="configure-the-costcenter-tag"></a>Konfigurowanie tagu CostCenter
+## <a name="configure-the-costcenter-tag"></a>Configure the CostCenter tag
 
-W odniesieniu do środowiska platformy Azure zarządzanego przez Azure Policy wymagania dotyczące tagów _CostCenter_ są następujące:
+In terms specific to an Azure environment managed by Azure Policy, the _CostCenter_ tag requirements call for the following:
 
-- Odmów braku tagu _CostCenter_ w grupach zasobów
-- Modyfikuj zasoby, aby dodać tag _CostCenter_ z nadrzędnej grupy zasobów, gdy brakuje
+- Deny resource groups missing the _CostCenter_ tag
+- Modify resources to add the _CostCenter_ tag from the parent resource group when missing
 
-### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Odmów braku tagu CostCenter w grupach zasobów
+### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Deny resource groups missing the CostCenter tag
 
-Ponieważ _CostCenter_ dla grupy zasobów nie może być określony przez nazwę grupy zasobów, musi mieć tag zdefiniowany w żądaniu, aby utworzyć grupę zasobów. Następująca reguła zasad z efektem [odmowy](../concepts/effects.md#deny) uniemożliwia tworzenie lub aktualizowanie grup zasobów, które nie mają znacznika _CostCenter_ :
+Since the _CostCenter_ for a resource group can't be determined by the name of the resource group, it must have the tag defined on the request to create the resource group. The following policy rule with the [Deny](../concepts/effects.md#deny) effect prevents the creation or updating of resource groups that don't have the _CostCenter_ tag:
 
 ```json
 "if": {
@@ -63,11 +63,11 @@ Ponieważ _CostCenter_ dla grupy zasobów nie może być określony przez nazwę
 ```
 
 > [!NOTE]
-> Ponieważ ta reguła zasad jest przeznaczona dla grupy zasobów, _tryb_ definicji zasad musi mieć wartość "All", a nie "Indexed".
+> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
 
-### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Modyfikuj zasoby, aby dziedziczyły tag CostCenter w razie braku
+### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Modify resources to inherit the CostCenter tag when missing
 
-Druga _CostCenter_ potrzebna jest dla wszystkich zasobów, aby odziedziczyć tag z nadrzędnej grupy zasobów, gdy nie ma. Jeśli tag jest już zdefiniowany w zasobie, nawet jeśli różni się od nadrzędnej grupy zasobów, musi pozostać pojedynczo. Następująca reguła zasad używa [modyfikacji](../concepts/effects.md#modify):
+The second _CostCenter_ need is for any resources to inherit the tag from the parent resource group when it's missing. If the tag is already defined on the resource, even if different from the parent resource group, it must be left alone. The following policy rule uses [Modify](../concepts/effects.md#modify):
 
 ```json
 "policyRule": {
@@ -91,21 +91,21 @@ Druga _CostCenter_ potrzebna jest dla wszystkich zasobów, aby odziedziczyć tag
 }
 ```
 
-Ta reguła zasad używa operacji **dodawania** zamiast **addOrReplace** , ponieważ nie chcemy zmieniać wartości tagu, jeśli występuje, gdy [korygowaniem](../how-to/remediate-resources.md) istniejące zasoby. Używa również funkcji `[resourcegroup()]` Template, aby pobrać wartość tagu z nadrzędnej grupy zasobów.
+This policy rule uses the **add** operation instead of **addOrReplace** as we don't want to alter the tag value if it's present when [remediating](../how-to/remediate-resources.md) existing resources. It also uses the `[resourcegroup()]` template function to get the tag value from the parent resource group.
 
 > [!NOTE]
-> Ponieważ ta reguła zasad odwołuje się do zasobów, które obsługują Tagi, _tryb_ w definicji zasad musi mieć wartość "Indexed". Ta konfiguracja gwarantuje również, że te zasady pomijają grupy zasobów.
+> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
 
-## <a name="configure-the-env-tag"></a>Konfigurowanie tagu ENV
+## <a name="configure-the-env-tag"></a>Configure the Env tag
 
-Zgodnie z warunkami specyficznymi dla środowiska platformy Azure zarządzanego przez Azure Policy, wymagania dotyczące znacznika _ENV_ są następujące:
+In terms specific to an Azure environment managed by Azure Policy, the _Env_ tag requirements call for the following:
 
-- Zmodyfikuj tag _ENV_ w grupie zasobów w oparciu o schemat nazewnictwa grupy zasobów.
-- Zmodyfikuj tag _ENV_ dla wszystkich zasobów w grupie zasobów, tak samo jak nadrzędna grupa zasobów
+- Modify the _Env_ tag on the resource group based on the naming scheme of the resource group
+- Modify the _Env_ tag on all resources in the resource group to the same as the parent resource group
 
-### <a name="modify-resource-groups-env-tag-based-on-name"></a>Modyfikuj tag ENV grup zasobów na podstawie nazwy
+### <a name="modify-resource-groups-env-tag-based-on-name"></a>Modify resource groups Env tag based on name
 
-Zasady [modyfikowania](../concepts/effects.md#modify) są wymagane dla każdego środowiska, które istnieje w środowisku platformy Azure. Zasady Modyfikuj dla każdej z nich wyglądają podobnie jak w przypadku tej definicji zasad:
+A [Modify](../concepts/effects.md#modify) policy is required for each environment that exists in your Azure environment. The Modify policy for each looks something like this policy definition:
 
 ```json
 "policyRule": {
@@ -137,13 +137,13 @@ Zasady [modyfikowania](../concepts/effects.md#modify) są wymagane dla każdego 
 ```
 
 > [!NOTE]
-> Ponieważ ta reguła zasad jest przeznaczona dla grupy zasobów, _tryb_ definicji zasad musi mieć wartość "All", a nie "Indexed".
+> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
 
-Te zasady są zgodne z grupami zasobów z przykładowym schematem nazewnictwa używanym dla zasobów produkcyjnych programu `prd-`. Bardziej skomplikowany schemat nazewnictwa można osiągnąć przy użyciu kilku warunków **dopasowania** zamiast jednego **takiego jak** w tym przykładzie.
+This policy only matches resource groups with the sample naming scheme used for production resources of `prd-`. More complex naming scheme's can be achieved with several **match** conditions instead of the single **like** in this example.
 
-### <a name="modify-resources-to-inherit-the-env-tag"></a>Modyfikuj zasoby, aby dziedziczyły tag ENV
+### <a name="modify-resources-to-inherit-the-env-tag"></a>Modify resources to inherit the Env tag
 
-Wymagania biznesowe dla wszystkich zasobów mają tag _ENV_ , którego nadrzędna grupa zasobów wykonuje. Ten tag nie może zostać zastąpiony, dlatego użyjemy operacji **addOrReplace** z efektem [modyfikacji](../concepts/effects.md#modify) . Przykładowa modyfikacja zasad wygląda następująco:
+The business requirement calls for all resources to have the _Env_ tag that their parent resource group does. This tag can't be overridden, so we'll use the **addOrReplace** operation with the [Modify](../concepts/effects.md#modify) effect. The sample Modify policy looks like the following rule:
 
 ```json
 "policyRule": {
@@ -175,24 +175,24 @@ Wymagania biznesowe dla wszystkich zasobów mają tag _ENV_ , którego nadrzędn
 ```
 
 > [!NOTE]
-> Ponieważ ta reguła zasad odwołuje się do zasobów, które obsługują Tagi, _tryb_ w definicji zasad musi mieć wartość "Indexed". Ta konfiguracja gwarantuje również, że te zasady pomijają grupy zasobów.
+> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
 
-Ta reguła zasad szuka dowolnego zasobu, który nie ma wartości nadrzędnych grup zasobów dla tagu _ENV_ lub nie zawiera taga _ENV_ . Pasujące zasoby mają swój tag _ENV_ ustawiony na wartość nadrzędnych grup zasobów, nawet jeśli tag już istnieje w zasobie, ale z inną wartością.
+This policy rule looks for any resource that doesn't have its parent resource groups value for the _Env_ tag or is missing the _Env_ tag. Matching resources have their _Env_ tag set to the parent resource groups value, even if the tag already existed on the resource but with a different value.
 
-## <a name="assign-the-initiative-and-remediate-resources"></a>Przypisywanie inicjatywy i korygowanie zasobów
+## <a name="assign-the-initiative-and-remediate-resources"></a>Assign the initiative and remediate resources
 
-Po utworzeniu powyższych zasad dotyczących tagów Dołącz je do jednej inicjatywy w celu zarządzania tagami i przypisz je do grupy zarządzania lub subskrypcji. W ramach inicjatywy i uwzględnionych zasad należy oszacować zgodność istniejących zasobów i zmienić żądania dotyczące nowych lub zaktualizowanych zasobów, które pasują do właściwości **if** w regule zasad. Jednak zasady nie aktualizują automatycznie istniejących niezgodnych zasobów ze zdefiniowanymi zmianami tagu.
+Once the tag policies above are created, join them into a single initiative for tag governance and assign them to a management group or subscription. The initiative and included policies then evaluate compliance of existing resources and alters requests for new or updated resources that match the **if** property in the policy rule. However, the policy doesn't automatically update existing non-compliant resources with the defined tag changes.
 
-Podobnie jak zasady [deployIfNotExists](../concepts/effects.md#deployifnotexists) , zasady **modyfikowania** używają zadań korygowania do zmiany istniejących niezgodnych zasobów. Postępuj zgodnie z instrukcjami dotyczącymi [sposobu korygowania zasobów](../how-to/remediate-resources.md) w celu zidentyfikowania niezgodnych zasobów **modyfikacji** i skorygowania tagów do zdefiniowanej taksonomii.
+Like [deployIfNotExists](../concepts/effects.md#deployifnotexists) policies, the **Modify** policy uses remediation tasks to alter existing non-compliant resources. Follow the directions on [How-to remediate resources](../how-to/remediate-resources.md) to identify your non-compliant **Modify** resources and correct the tags to your defined taxonomy.
 
 ## <a name="review"></a>Przegląd
 
-W tym samouczku przedstawiono informacje o następujących zadaniach:
+In this tutorial, you learned about the following tasks:
 
 > [!div class="checklist"]
 > - Określono wymagania biznesowe
-> - Zamapowane każde wymaganie do definicji zasad
-> - Grupowanie zasad znaczników w ramach inicjatywy
+> - Mapped each requirement to a policy definition
+> - Grouped the tag policies into an initiative
 
 ## <a name="next-steps"></a>Następne kroki
 

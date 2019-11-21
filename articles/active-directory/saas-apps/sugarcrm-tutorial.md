@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu programu cukier CRM | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory a CRM.
+title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with Sugar CRM | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Sugar CRM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,74 +16,74 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 150c4b458724562fc35ef97e190c898a289c6122
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102919"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231976"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) za pomocą programu cukier CRM
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with Sugar CRM
 
-W tym samouczku dowiesz się, jak zintegrować program cukier CRM z Azure Active Directory (Azure AD). W przypadku integrowania programu cukier CRM z usługą Azure AD można:
+In this tutorial, you'll learn how to integrate Sugar CRM with Azure Active Directory (Azure AD). When you integrate Sugar CRM with Azure AD, you can:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do programu cukier CRM.
-* Zezwól użytkownikom na automatyczne logowanie do programu cukier CRM przy użyciu kont usługi Azure AD.
-* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
+* Control in Azure AD who has access to Sugar CRM.
+* Enable your users to be automatically signed-in to Sugar CRM with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć, potrzebne są następujące elementy:
+To get started, you need the following items:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja z włączonym logowaniem jednokrotnym w programie CRM.
+* Subskrypcja usługi Azure AD. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
+* Sugar CRM single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+In this tutorial, you configure and test Azure AD SSO in a test environment.
 
-* Program cukier CRM obsługuje logowanie jednokrotne zainicjowane przez usługę **SP**
+* Sugar CRM supports **SP** initiated SSO
 
 > [!NOTE]
-> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
+> Identifier of this application is a fixed string value so only one instance can be configured in one tenant.
 
-## <a name="adding-sugar-crm-from-the-gallery"></a>Dodawanie programu cukier CRM z galerii
+## <a name="adding-sugar-crm-from-the-gallery"></a>Adding Sugar CRM from the gallery
 
-Aby skonfigurować integrację programu cukier CRM z usługą Azure AD, musisz dodać program CRM z galerii do listy zarządzanych aplikacji SaaS.
+To configure the integration of Sugar CRM into Azure AD, you need to add Sugar CRM from the gallery to your list of managed SaaS apps.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
-1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** w polu wyszukiwania wpisz ciąg **CRM** .
-1. Wybierz pozycję **cukier CRM** z panelu wyniki, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **Sugar CRM** in the search box.
+1. Select **Sugar CRM** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sugar-crm"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla programu CRM
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sugar-crm"></a>Configure and test Azure AD single sign-on for Sugar CRM
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą programu cukier CRM przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w programie cukier CRM.
+Configure and test Azure AD SSO with Sugar CRM using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Sugar CRM.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą programu cukier CRM, wykonaj następujące bloki konstrukcyjne:
+To configure and test Azure AD SSO with Sugar CRM, complete the following building blocks:
 
-1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Konfigurowanie logowania jednokrotnego](#configure-sugar-crm-sso)** dla programu CRM — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego programu Dynamics CRM](#create-sugar-crm-test-user)** , aby uzyskać odpowiednika B. Simon w programie CRM, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+    1. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
+    1. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
+1. **[Configure Sugar CRM SSO](#configure-sugar-crm-sso)** - to configure the single sign-on settings on application side.
+    1. **[Create Sugar CRM test user](#create-sugar-crm-test-user)** - to have a counterpart of B.Simon in Sugar CRM that is linked to the Azure AD representation of user.
+1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
+## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja z aplikacją **CRM** , Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
-1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
+1. In the [Azure portal](https://portal.azure.com/), on the **Sugar CRM** application integration page, find the **Manage** section and select **single sign-on**.
+1. On the **Select a single sign-on method** page, select **SAML**.
+1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
+1. On the **Basic SAML Configuration** section, enter the values for the following fields:
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
 
@@ -101,120 +101,120 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     | `https://<companyname>.trial.sugarcrm.eu/<companyname>`|
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem obsługi klienta w programie cukier](https://support.sugarcrm.com/) . Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Contact [Sugar CRM Client support team](https://support.sugarcrm.com/) to get these values. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. On the **Set up single sign-on with SAML** page, in the **SAML Signing Certificate** section,  find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. W sekcji **Konfigurowanie programu cukier CRM** skopiuj odpowiednie adresy URL na podstawie wymagań.
+1. On the **Set up Sugar CRM** section, copy the appropriate URL(s) based on your requirement.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. We właściwościach **użytkownika** wykonaj następujące kroki:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. In the **User** properties, follow these steps:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. In the **User name** field, enter the username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając dostęp do programu cukier CRM.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Sugar CRM.
 
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście Aplikacje wybierz pozycję **cukier CRM**.
-1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **Sugar CRM**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Link Dodaj użytkownika](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-## <a name="configure-sugar-crm-sso"></a>Konfigurowanie rejestracji jednokrotnej w programie CRM
+## <a name="configure-sugar-crm-sso"></a>Configure Sugar CRM SSO
 
-1. W innym oknie przeglądarki sieci Web Zaloguj się do firmowej witryny programu CRM jako administrator.
+1. In a different web browser window, sign in to your Sugar CRM company site as an administrator.
 
-1. Przejdź do pozycji **Administracja**.
+1. Go to **Admin**.
 
-    ![Administrator](./media/sugarcrm-tutorial/ic795888.png "Administrator")
+    ![Admin](./media/sugarcrm-tutorial/ic795888.png "Admin")
 
-1. W sekcji **Administracja** kliknij pozycję **Zarządzanie hasłami**.
+1. In the **Administration** section, click **Password Management**.
 
-    ![Administracja](./media/sugarcrm-tutorial/ic795889.png "Administracja")
+    ![Administration](./media/sugarcrm-tutorial/ic795889.png "Administracja")
 
-1. Wybierz pozycję **Włącz uwierzytelnianie SAML**.
+1. Select **Enable SAML Authentication**.
 
-    ![Administracja](./media/sugarcrm-tutorial/ic795890.png "Administracja")
+    ![Administration](./media/sugarcrm-tutorial/ic795890.png "Administracja")
 
 1. W sekcji **SAML Authentication** (Uwierzytelnianie SAML) wykonaj następujące kroki:
 
-    ![Uwierzytelnianie SAML](./media/sugarcrm-tutorial/ic795891.png "Uwierzytelnianie SAML")  
+    ![SAML Authentication](./media/sugarcrm-tutorial/ic795891.png "SAML Authentication")  
 
-    a. W polu tekstowym **adres URL logowania** wklej wartość **adresu URL logowania**, który został skopiowany z Azure Portal.
+    a. In the **Login URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
   
-    b. W polu tekstowym **adres URL SLO** wklej wartość **adres URL wylogowania**, który został skopiowany z Azure Portal.
+    b. In the **SLO URL** textbox, paste the value of **Logout URL**, which you have copied from Azure portal.
   
-    c. Otwórz certyfikat zakodowany w formacie Base-64 w Notatniku, skopiuj zawartość tego pliku do schowka, a następnie wklej cały certyfikat do pola tekstowego **certyfikatu X. 509** .
+    d. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste the entire Certificate into **X.509 Certificate** textbox.
   
-    d. Kliknij polecenie **Zapisz**.
+    d. Kliknij przycisk **Save** (Zapisz).
 
-### <a name="create-sugar-crm-test-user"></a>Utwórz użytkownika testowego CRM
+### <a name="create-sugar-crm-test-user"></a>Create Sugar CRM test user
 
-Aby umożliwić użytkownikom usługi Azure AD logowanie się do programu cukier CRM, muszą one być obsługiwane w programie CRM. W przypadku programu CRM Provisioning jest zadaniem ręcznym.
+In order to enable Azure AD users to sign in to Sugar CRM, they must be provisioned to Sugar CRM. In the case of Sugar CRM, provisioning is a manual task.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do witryny firmowej programu **Dynamics CRM** jako administrator.
+1. Sign in to your **Sugar CRM** company site as administrator.
 
-1. Przejdź do pozycji **Administracja**.
+1. Go to **Admin**.
 
-    ![Administrator](./media/sugarcrm-tutorial/ic795888.png "Administrator")
+    ![Admin](./media/sugarcrm-tutorial/ic795888.png "Admin")
 
-1. W sekcji **Administracja** kliknij pozycję **Zarządzanie użytkownikami**.
+1. In the **Administration** section, click **User Management**.
 
-    ![Administracja](./media/sugarcrm-tutorial/ic795893.png "Administracja")
+    ![Administration](./media/sugarcrm-tutorial/ic795893.png "Administracja")
 
-1. Przejdź do **pozycji \> użytkownicy Utwórz nowego użytkownika**.
+1. Go to **Users \> Create New User**.
 
-    ![Utwórz nowego użytkownika](./media/sugarcrm-tutorial/ic795894.png "Utwórz nowego użytkownika")
+    ![Create New User](./media/sugarcrm-tutorial/ic795894.png "Create New User")
 
-1. Na karcie **profil użytkownika** wykonaj następujące czynności:
+1. On the **User Profile** tab, perform the following steps:
 
-    ![Nowy użytkownik](./media/sugarcrm-tutorial/ic795895.png "Nowy użytkownik")
+    ![New User](./media/sugarcrm-tutorial/ic795895.png "New User")
 
-    * Wpisz **nazwę użytkownika** **, nazwisko i** **adres e-mail** prawidłowego użytkownika Azure Active Directory w powiązanych polach tekstowych.
+    * Type the **user name**, **last name**, and **email address** of a valid Azure Active Directory user into the related textboxes.
   
-1. Jako **stan**wybierz pozycję **aktywny**.
+1. As **Status**, select **Active**.
 
-1. Na karcie hasło wykonaj następujące czynności:
+1. On the Password tab, perform the following steps:
 
-    ![Nowy użytkownik](./media/sugarcrm-tutorial/ic795896.png "Nowy użytkownik")
+    ![New User](./media/sugarcrm-tutorial/ic795896.png "New User")
 
-    a. Wpisz hasło w powiązanym polu tekstowym.
+    a. Type the password into the related textbox.
 
-    b. Kliknij polecenie **Zapisz**.
+    b. Kliknij przycisk **Save** (Zapisz).
 
 > [!NOTE]
-> Za pomocą innych narzędzi do tworzenia kont użytkowników i interfejsów API programu CRM dostarczonych przez program cukier CRM można inicjować obsługę kont użytkowników usługi AAD.
+> You can use any other Sugar CRM user account creation tools or APIs provided by Sugar CRM to provision Azure AD user accounts.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Test SSO 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka programu cukier CRM w panelu dostępu należy automatycznie zalogować się do programu CRM, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+When you click the Sugar CRM tile in the Access Panel, you should be automatically signed in to the Sugar CRM for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -222,5 +222,5 @@ Po kliknięciu kafelka programu cukier CRM w panelu dostępu należy automatyczn
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj program cukier CRM z usługą Azure AD](https://aad.portal.azure.com/)
+- [Try Sugar CRM with Azure AD](https://aad.portal.azure.com/)
 

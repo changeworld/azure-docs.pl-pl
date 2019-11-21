@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami | Microsoft Docs
-description: Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami.
+title: Azure Active Directory device management FAQ | Microsoft Docs
+description: Azure Active Directory device management FAQ.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,313 +11,313 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f593d5ea621ad450eb82388416534e40df36e2d5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184193"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207387"
 ---
-# <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami
+# <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory device management FAQ
 
-## <a name="general-faq"></a>Ogólne często zadawane pytania
+## <a name="general-faq"></a>General FAQ
 
-### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>P: ostatnio zarejestrowano urządzenie. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w Azure Portal? Lub dlaczego właściciel urządzenia jest oznaczony jako N/A dla urządzeń, które są dołączone do hybrydowego Azure Active Directory (Azure AD)?
+### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q: I registered the device recently. Why can’t I see the device under my user info in the Azure portal? Or why is the device owner marked as N/A for hybrid Azure Active Directory (Azure AD) joined devices?
 
-Odp **.:** Urządzenia z systemem Windows 10, które są dołączone do hybrydowej usługi Azure AD, nie są wyświetlane w obszarze **urządzenia użytkowników**.
-Użyj widoku **wszystkie urządzenia** w Azure Portal. Można również użyć polecenia cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) programu PowerShell.
+**A:** Windows 10 devices that are hybrid Azure AD joined don't show up under **USER devices**.
+Use the **All devices** view in the Azure portal. You can also use a PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet.
 
-W obszarze **urządzenia użytkowników**są wyświetlane tylko następujące urządzenia:
+Only the following devices are listed under **USER devices**:
 
-- Wszystkie urządzenia osobiste, które nie są dołączone do hybrydowej usługi Azure AD. 
-- Wszystkie urządzenia z systemem innym niż Windows 10 lub Windows Server 2016.
-- Wszystkie urządzenia z systemem innym niż Windows. 
-
----
-
-### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>P: Jak mogę wiedzieć, czym jest stan rejestracji urządzenia klienta?
-
-Odp **.:** W Azure Portal przejdź do pozycji **wszystkie urządzenia**. Wyszukaj urządzenie przy użyciu identyfikatora urządzenia. Sprawdź wartość w kolumnie Typ sprzężenia. Czasami urządzenie może być resetowane lub odtworzenie obrazu. W związku z tym należy również sprawdzić stan rejestracji urządzenia na urządzeniu:
-
-- W przypadku urządzeń z systemami Windows 10 i Windows Server 2016 lub nowszym Uruchom `dsregcmd.exe /status`.
-- W przypadku wersji systemu operacyjnego niskiego poziomu Uruchom `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
-
-Odp **.:** Informacje dotyczące rozwiązywania problemów można znaleźć w następujących artykułach:
-- [Rozwiązywanie problemów z urządzeniami za pomocą polecenia dsregcmd](troubleshoot-device-dsregcmd.md)
-- [Rozwiązywanie problemów z Azure Active Directory hybrydowych dołączonych do urządzeń z systemami Windows 10 i Windows Server 2016](troubleshoot-hybrid-join-windows-current.md)
-- [Rozwiązywanie problemów z Azure Active Directory hybrydowymi podłączonymi do urządzeń niższego poziomu](troubleshoot-hybrid-join-windows-legacy.md)
+- All personal devices that aren't hybrid Azure AD joined. 
+- All non-Windows 10 or Windows Server 2016 devices.
+- All non-Windows devices. 
 
 ---
 
-### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>P: widzę rekord urządzenia pod informacjami o UŻYTKOWNIKu w Azure Portal. I widzę stan zarejestrowany na urządzeniu. Czy poprawnie skonfigurowano korzystanie z dostępu warunkowego?
+### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>Q: How do I know what the device registration state of the client is?
 
-Odp **.:** Stan dołączania urządzenia, wyświetlany przez **deviceID**, musi być zgodny z stanem w usłudze Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [Wymagaj zarządzanych urządzeń dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](../conditional-access/require-managed-devices.md).
+**A:** In the Azure portal, go to **All devices**. Search for the device by using the device ID. Check the value under the join type column. Sometimes, the device might be reset or reimaged. So it's essential to also check the device registration state on the device:
 
----
+- For Windows 10 and Windows Server 2016 or later devices, run `dsregcmd.exe /status`.
+- For down-level OS versions, run `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>P: Dlaczego mój użytkownicy widzą komunikat o błędzie informujący o tym, że Twoja organizacja usunęła urządzenie "lub" Twoja organizacja wyłączyła urządzenie "na swoich urządzeniach z systemem Windows 10?
-
-Odp **.:** Na urządzeniach z systemem Windows 10 dołączonych lub zarejestrowanych w usłudze Azure AD użytkownicy są wystawiani jako [podstawowy token odświeżania (PRT)](concept-primary-refresh-token.md) , który umożliwia logowanie jednokrotne. Ważność PRT jest oparta na validaity samego urządzenia. Ten komunikat jest wyświetlany, jeśli urządzenie zostało usunięte lub wyłączone w usłudze Azure AD bez inicjowania akcji z samego urządzenia. Urządzenie można usunąć lub wyłączyć w usłudze Azure AD w jednym z następujących scenariuszy: 
-
-- Użytkownik wyłącza urządzenie w portalu My Apps. 
-- Administrator (lub użytkownik) usuwa lub wyłącza urządzenie w Azure Portal lub przy użyciu programu PowerShell
-- Tylko dołączona do hybrydowej usługi Azure AD: Administrator usuwa z zakresu synchronizacji urządzenia poza zakresem, co spowodowało usunięcie urządzeń z usługi Azure AD.
-- Uaktualnianie programu AAD Connect do wersji 1.4. XX. x. [Zrozumienie Azure AD Connect 1.4. XX. x i znikanie urządzenia](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
-
-
-Poniżej znajdują się informacje o tym, jak można skorygować te akcje.
+**A:** For troubleshooting information, see these articles:
+- [Troubleshooting devices using dsregcmd command](troubleshoot-device-dsregcmd.md)
+- [Troubleshooting hybrid Azure Active Directory joined Windows 10 and Windows Server 2016 devices](troubleshoot-hybrid-join-windows-current.md)
+- [Troubleshooting hybrid Azure Active Directory joined down-level devices](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>P: wyłączono lub usunięto urządzenie w Azure Portal lub przy użyciu programu Windows PowerShell. Jednak stan lokalny na urządzeniu wskazuje, że jest on nadal zarejestrowany. Co mam zrobić?
+### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>Q: I see the device record under the USER info in the Azure portal. And I see the state as registered on the device. Am I set up correctly to use Conditional Access?
 
-Odp **.:** Ta operacja jest zaprojektowana. W takim przypadku urządzenie nie ma dostępu do zasobów w chmurze. Administratorzy mogą wykonać tę akcję w przypadku starych, zagubionych lub skradzionych urządzeń, aby zapobiec nieautoryzowanemu dostępowi. Jeśli ta akcja została wykonana przypadkowo, należy ponownie włączyć lub ponownie zarejestrować urządzenie zgodnie z poniższym opisem
+**A:** The device join state, shown by **deviceID**, must match the state on Azure AD and meet any evaluation criteria for Conditional Access. For more information, see [Require managed devices for cloud app access with Conditional Access](../conditional-access/require-managed-devices.md).
 
-- Jeśli urządzenie zostało wyłączone w usłudze Azure AD, administrator z odpowiednimi uprawnieniami może je włączyć z poziomu portalu usługi Azure AD.  
+---
+
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>Q: Why do my users see an error message saying "Your organization has deleted the device" or "Your organization has disabled the device" on their Windows 10 devices ?
+
+**A:** On Windows 10 devices joined or registered with Azure AD, users are issued a [Primary refresh token (PRT)](concept-primary-refresh-token.md) which enables single sign on. The validity of the PRT is based on the validaity of the device itself. Users see this message if the device is either deleted or disabled in Azure AD without initiating the action from the device itself. A device can be deleted or disabled in Azure AD one of the following scenarios: 
+
+- User disables the device from the My Apps portal. 
+- An administrator (or user) deletes or disables the device in the Azure portal or by using PowerShell
+- Hybrid Azure AD joined only: An administrator removes the devices OU out of sync scope resulting in the devices being deleted from Azure AD
+- Upgrading Azure AD connect to the version 1.4.xx.x. [Understanding Azure AD Connect 1.4.xx.x and device disappearance](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+
+
+See below on how these actions can be rectified.
+
+---
+
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>Q: I disabled or deleted my device in the Azure portal or by using Windows PowerShell. But the local state on the device says it's still registered. Co mamy zrobić?
+
+**A:** This operation is by design. In this case, the device doesn't have access to resources in the cloud. Administrators can perform this action for stale, lost or stolen devices to prevent unauthorized access. If this action was performed unintentionally, you'll need to re-enable or re-register the device as described below
+
+- If the device was disabled in Azure AD, an administrator with sufficient privileges can enable it from the Azure AD portal  
   > [!NOTE]
-  > W przypadku synchronizowania urządzeń przy użyciu Azure AD Connect urządzenia dołączone do hybrydowej usługi Azure AD zostaną automatycznie ponownie włączone w następnym cyklu synchronizacji. Jeśli więc musisz wyłączyć urządzenie dołączone do hybrydowej usługi Azure AD, musisz wyłączyć je z lokalnej usługi AD
+  > If you are syncing devices using Azure AD Connect, hybrid Azure AD joined devices will be automatically re-enabled during the next  sync cycle. So, if you need to disable a hybrid Azure AD joined device, you need to disable it from your on-premises AD
 
- - Jeśli urządzenie zostało usunięte w usłudze Azure AD, należy ponownie zarejestrować urządzenie. Aby ponownie zarejestrować, musisz wykonać akcję ręczną na urządzeniu. Poniżej znajdują się instrukcje dotyczące ponownej rejestracji w zależności od stanu urządzenia. 
+ - If the device is deleted in Azure AD, you need to re-register the device. To re-register, you must take a manual action on the device. See below for instructions for re-registration based on the device state. 
 
-      Aby ponownie zarejestrować hybrydowe urządzenia z systemem Windows 10 i Windows Server 2016/2019 dołączone do usługi Azure AD, wykonaj następujące czynności:
+      To re-register hybrid Azure AD joined Windows 10 and Windows Server 2016/2019 devices, take the following steps:
 
-      1. Otwórz wiersz polecenia jako administrator.
+      1. Open the command prompt as an administrator.
       1. Wprowadź polecenie `dsregcmd.exe /debug /leave`.
-      1. Wyloguj się i zaloguj się, aby wyzwolić zaplanowane zadanie, które ponownie rejestruje urządzenie w usłudze Azure AD. 
+      1. Sign out and sign in to trigger the scheduled task that registers the device again with Azure AD. 
 
-      W przypadku wersji systemu operacyjnego Windows niższego poziomu, które są dołączone do hybrydowej usługi Azure AD, wykonaj następujące czynności:
+      For down-level Windows OS versions that are hybrid Azure AD joined, take the following steps:
 
-      1. Otwórz wiersz polecenia jako administrator.
+      1. Open the command prompt as an administrator.
       1. Wprowadź polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
       1. Wprowadź polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
 
-      W przypadku urządzeń z systemem Windows 10 przyłączonych do usługi Azure AD wykonaj następujące czynności:
+      For Azure AD joined devices Windows 10 devices, take the following steps:
 
-      1. Otwórz wiersz polecenia jako administrator
-      1. Wprowadź `dsregcmd /forcerecovery` (Uwaga: Aby wykonać tę akcję, musisz być administratorem).
-      1. W oknie dialogowym kliknij pozycję "Zaloguj się" i Kontynuuj proces logowania.
-      1. Wyloguj się i zaloguj się ponownie na urządzeniu, aby zakończyć odzyskiwanie.
+      1. Open the command prompt as an administrator
+      1. Enter `dsregcmd /forcerecovery` (Note: You need to be an administrator to perform this action).
+      1. Click "Sign in" in the dialog that opens up and continue with the sign in process.
+      1. Sign out and sign in back to the device to complete the recovery.
 
-      W przypadku urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure AD wykonaj następujące czynności:
+      For Azure AD registered Windows 10 devices, take the following steps:
 
-      1. Przejdź do pozycji **ustawienia** > **konta** > **dostęp do**zasobów służbowych. 
-      1. Wybierz konto i wybierz pozycję **Rozłącz**.
-      1. Kliknij pozycję "+ Połącz" i ponownie Zarejestruj urządzenie, przechodząc przez proces logowania.
+      1. Go to **Settings** > **Accounts** > **Access Work or School**. 
+      1. Select the account and select **Disconnect**.
+      1. Click on "+ Connect" and register the device again by going through the sign in process.
 
 ---
 
-### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>P: Dlaczego w Azure Portal są widoczne zduplikowane wpisy urządzeń?
+### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>Q: Why do I see duplicate device entries in the Azure portal?
 
 **Odp.:**
 
-- W przypadku systemów Windows 10 i Windows Server 2016 powtórzone próby odłączenia i ponownego dołączenia do tego samego urządzenia mogą spowodować zduplikowane wpisy. 
-- Każdy użytkownik systemu Windows korzystający z **dodawania konta służbowego** tworzy nowy rekord urządzenia o tej samej nazwie.
-- W przypadku wersji systemu Windows niższego poziomu, które są przyłączone do lokalnej domeny usługi Azure Directory, automatyczna rejestracja powoduje utworzenie nowego rekordu urządzenia o tej samej nazwie dla każdego użytkownika domeny, który loguje się na urządzeniu. 
-- Komputer przyłączony do usługi Azure AD, który został wyczyszczony, ponownie zainstalowany i z tą samą nazwą, będzie wyświetlany jako inny rekord o tej samej nazwie.
+- For Windows 10 and Windows Server 2016, repeated tries to unjoin and rejoin the same device might cause duplicate entries. 
+- Each Windows user who uses **Add Work or School Account** creates a new device record with the same device name.
+- For down-level Windows OS versions that are on-premises Azure Directory domain joined, automatic registration creates a new device record with the same device name for each domain user who signs in to the device. 
+- An Azure AD joined machine that's wiped, reinstalled, and rejoined with the same name shows up as another record with the same device name.
 
 ---
 
-### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>P: czy rejestracja urządzeń z systemem Windows 10 w usłudze Azure AD obsługuje moduły TPM w trybie FIPS?
+### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>Q: Does Windows 10 device registration in Azure AD support TPMs in FIPS mode?
 
-Odp **.:** Rejestracja urządzeń z systemem Windows 10 jest obsługiwana tylko w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwana przez moduł TPM 1,2. Jeśli na urządzeniach jest używany moduł TPM zgodny ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do usługi Azure AD Join lub hybrydowego sprzężenia usługi Azure AD. Należy pamiętać, że firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM. 
+**A:** Windows 10 device registration only supported for FIPS-compliant TPM 2.0 and not supported for TPM 1.2. If your devices have FIPS-compliant TPM 1.2, you must disable them before proceeding with Azure AD join or Hybrid Azure AD join. Note that Microsoft does not provide any tools for disabling FIPS mode for TPMs as it is dependent on the TPM manufacturer. Please contact your hardware OEM for support. 
 
 ---
 
-**P: dlaczego użytkownik może nadal uzyskiwać dostęp do zasobów z urządzenia, które zostało wyłączone w Azure Portal?**
+**Q: Why can a user still access resources from a device I disabled in the Azure portal?**
 
-Odp **.:** Aby można było zastosować odwołanie od momentu, gdy urządzenie usługi Azure AD zostanie oznaczone jako wyłączone, zajmie do godziny.
+**A:** It takes up to an hour for a revoke to be applied from the time the Azure AD device is marked as disabled.
 
 >[!NOTE] 
->W przypadku zarejestrowanych urządzeń zalecamy wyczyszczenie urządzenia, aby upewnić się, że użytkownicy nie będą mogli uzyskać dostępu do zasobów. Aby uzyskać więcej informacji, zobacz [co to jest rejestracja urządzenia?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>For enrolled devices, we recommend that you wipe the device to make sure users can't access the resources. For more information, see [What is device enrollment?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
-### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>P: Dlaczego istnieją urządzenia oznaczone jako "oczekujące" w zarejestrowanej kolumnie w Azure Portal?
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>Q: Why are there devices marked as "Pending" under the REGISTERED column in the Azure portal?
 
-Odp **.:** oczekiwanie wskazuje, że urządzenie nie jest zarejestrowane. Ten stan wskazuje, że urządzenie zostało zsynchronizowane przy użyciu programu Azure AD Connect z lokalnej usługi AD i jest gotowe do rejestracji urządzeń. Te urządzenia mają ustawiony typ SPRZĘŻENIa "hybrydowa usługa Azure AD". Dowiedz się więcej na [temat planowania implementacji dołączania hybrydowego Azure Active Directory](hybrid-azuread-join-plan.md).
+**A**:  Pending indicates that the device is not registered. This state indicates that a device has been synchronized using Azure AD connect from an on-premises AD and is ready for device registration. These devices have the JOIN TYPE set to "Hybrid Azure AD joined". Learn more on [how to plan your hybrid Azure Active Directory join implementation](hybrid-azuread-join-plan.md).
 
 >[!NOTE]
->Urządzenie może także ulec zmianie z stanu zarejestrowanego na "oczekiwanie"
->* Jeśli urządzenie zostanie najpierw usunięte z usługi Azure AD i zsynchronizowane z lokalną usługą AD.
->* Jeśli urządzenie zostanie usunięte z zakresu synchronizacji w Azure AD Connect i dodane z powrotem.
+>A device can also change from having a registered state to "Pending"
+>* If a device is deleted from Azure AD first and re-synchronized from an on-premises AD.
+>* If a device is removed from a sync scope on Azure AD Connect and added back.
 >
->W obu przypadkach należy ponownie zarejestrować urządzenie ręcznie na każdym z tych urządzeń. Aby sprawdzić, czy urządzenie zostało wcześniej zarejestrowane, możesz [rozwiązać problemy z urządzeniami za pomocą polecenia dsregcmd](troubleshoot-device-dsregcmd.md).
+>In both cases, you must re-register the device manually on each of these devices. To review whether the device was previously registered, you can [troubleshoot devices using the dsregcmd command](troubleshoot-device-dsregcmd.md).
 
 ---
-## <a name="azure-ad-join-faq"></a>Usługa Azure AD Join — często zadawane pytania
+## <a name="azure-ad-join-faq"></a>Azure AD join FAQ
 
-### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>P: Jak mogę odłączania urządzenia dołączonego do usługi Azure AD lokalnie na urządzeniu?
+### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>Q: How do I unjoin an Azure AD joined device locally on the device?
 
-Odp **.:** W przypadku urządzeń z czystym usługą Azure AD upewnij się, że masz konto administratora lokalnego w trybie offline lub utwórz je. Nie można zalogować się przy użyciu żadnych poświadczeń użytkownika usługi Azure AD. Następnie przejdź do pozycji **ustawienia** > **konta** > **dostęp do zasobów służbowych**. Wybierz swoje konto i wybierz pozycję **Rozłącz**. Po wyświetleniu monitu postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego. Uruchom ponownie urządzenie, aby zakończyć proces rozłączania.
-
----
-
-### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>P: Czy moje użytkownicy mogą logować się do urządzeń przyłączonych do usługi Azure AD, które są usuwane lub wyłączone w usłudze Azure AD?
-
-**Odpowiedź:** tak. System Windows ma wbudowaną funkcję username i Password, która umożliwia użytkownikom zalogowanym wcześniej dostęp do pulpitu nawet bez połączenia sieciowego. 
-
-Gdy urządzenie zostanie usunięte lub wyłączone w usłudze Azure AD, nie jest znane jako urządzenie z systemem Windows. Użytkownicy, którzy wcześniej zalogowani, nadal uzyskują dostęp do pulpitu przy użyciu buforowanej nazwy użytkownika i hasła. Jednak po usunięciu lub wyłączeniu urządzenia użytkownicy nie mogą uzyskać dostępu do żadnych zasobów chronionych przez dostęp warunkowy oparty na urządzeniach. 
-
-Użytkownicy, którzy nie zalogować się wcześniej, nie mogą uzyskać dostępu do urządzenia. Nie włączono dla nich buforowanej nazwy użytkownika i hasła. 
+**A:** For pure Azure AD joined devices, make sure you have an offline local administrator account or create one. You can't sign in with any Azure AD user credentials. Next, go to **Settings** > **Accounts** > **Access Work or School**. Select your account and select **Disconnect**. Follow the prompts and provide the local administrator credentials when prompted. Reboot the device to finish the unjoin process.
 
 ---
 
-### <a name="q-can-a-disabled-or-deleted-user-sign-in-to-an-azure-ad-joined-devices"></a>P: czy użytkownik może być zalogowany lub usunięty na urządzeniach dołączonych do usługi Azure AD
+### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>Q: Can my users' sign in to Azure AD joined devices that are deleted or disabled in Azure AD?
 
-Odp **.:** Tak, ale tylko przez ograniczony czas. Gdy użytkownik zostanie usunięty lub wyłączony w usłudze Azure AD, nie jest on natychmiast znany na urządzeniu z systemem Windows. Wcześniej zalogowani użytkownicy mogą uzyskać dostęp do pulpitu przy użyciu buforowanej nazwy użytkownika i hasła. 
+**Odpowiedź:** tak. Windows has a cached username and password capability that allows users who signed in previously to access the desktop quickly even without network connectivity. 
 
-Zazwyczaj urządzenie ma świadomość stanu użytkownika w czasie krótszym niż cztery godziny. Następnie system Windows blokuje dostęp tych użytkowników do pulpitu. Gdy użytkownik jest usuwany lub wyłączony w usłudze Azure AD, wszystkie ich tokeny są odwoływane. Nie mogą uzyskać dostępu do żadnych zasobów. 
+When a device is deleted or disabled in Azure AD, it's not known to the Windows device. So users who signed in previously continue to access the desktop with the cached username and password. But as the device is deleted or disabled, users can't access any resources protected by device-based Conditional Access. 
 
-Usunięci lub wyłączni użytkownicy, którzy nie zalogują się wcześniej, nie mogą uzyskać dostępu do urządzenia. Nie włączono dla nich buforowanej nazwy użytkownika i hasła. 
-
----
-
-### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>P: Dlaczego mój użytkownik ma problemy z urządzeniami przyłączonymi do usługi Azure AD po zmianie nazwy UPN?
-
-Odp **.:** Obecnie zmiany nazw UPN nie są w pełni obsługiwane na urządzeniach dołączonych do usługi Azure AD. Uwierzytelnianie za pomocą usługi Azure AD kończy się niepowodzeniem po zmianie nazwy UPN. W związku z tym użytkownicy mają problemy z logowaniem jednokrotnym i dostępem warunkowym na swoich urządzeniach. W tej chwili użytkownicy muszą zalogować się do systemu Windows za pomocą kafelka "inny użytkownik" przy użyciu nowej nazwy UPN, aby rozwiązać ten problem. Obecnie pracujemy nad tym problemem. Jednak użytkownicy logujący się przy użyciu usługi Windows Hello dla firm nie będą napotykać tego problemu. 
+Users who didn't sign in previously can't access the device. There's no cached username and password enabled for them. 
 
 ---
 
-### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>P: Moi użytkownicy nie mogą przeszukiwać drukarek z urządzeń przyłączonych do usługi Azure AD. Jak mogę włączyć drukowanie z tych urządzeń?
+### <a name="q-can-a-disabled-or-deleted-user-sign-in-to-an-azure-ad-joined-devices"></a>Q: Can a disabled or deleted user sign in to an Azure AD joined devices
 
-Odp **.:** Aby wdrożyć drukarki dla urządzeń przyłączonych do usługi Azure AD, zobacz [Wdrażanie chmury hybrydowej systemu Windows Server przy użyciu funkcji wstępnego uwierzytelniania](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Do wdrożenia w chmurze hybrydowej jest potrzebny lokalny serwer systemu Windows. Obecnie usługa drukowania oparta na chmurze jest niedostępna. 
+**A:** Yes, but only for a limited time. When a user is deleted or disabled in Azure AD, it's not immediately known to the Windows device. So users who signed in previously can access the desktop with the cached username and password. 
 
----
+Typically, the device is aware of the user state in less than four hours. Then Windows blocks those users' access to the desktop. As the user is deleted or disabled in Azure AD, all their tokens are revoked. So they can't access any resources. 
 
-### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>P: Jak mogę połączyć się ze zdalnym urządzeniem dołączonym do usługi Azure AD?
-
-Odp **.:** Zobacz [nawiązywanie połączenia z komputerem przyłączonym do zdalnego Azure Active Directory](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+Deleted or disabled users who didn't sign in previously can't access a device. There's no cached username and password enabled for them. 
 
 ---
 
-### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>P: Dlaczego widzę *, że nie można w tym miejscu uzyskać z tego miejsca*?
+### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>Q: Why do my users have issues on Azure AD joined devices after changing their UPN?
 
-Odp **.:** Czy skonfigurowano pewne reguły dostępu warunkowego, aby wymagały określonego stanu urządzenia? Jeśli urządzenie nie spełnia kryteriów, użytkownicy są blokowani i widzą ten komunikat. Oceń reguły zasad dostępu warunkowego. Upewnij się, że urządzenie spełnia kryteria, aby uniknąć komunikatu.
-
----
-
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>P: Dlaczego niektórzy użytkownicy nie pobierają odpowiedzi na platformę Azure Multi-Factor Authentication na urządzeniach dołączonych do usługi Azure AD?
-
-Odp **.:** Użytkownik może dołączyć lub zarejestrować urządzenie w usłudze Azure AD przy użyciu Multi-Factor Authentication. Następnie samo urządzenie będzie zaufanym drugim czynnikiem dla tego użytkownika. Za każdym razem, gdy ten sam użytkownik loguje się na urządzeniu i uzyskuje dostęp do aplikacji, usługa Azure AD traktuje urządzenie jako drugi czynnik. Dzięki temu użytkownik może bezproblemowo uzyskiwać dostęp do aplikacji bez dodatkowych Multi-Factor Authenticationych. 
-
-Takie zachowanie:
-
-- Ma zastosowanie do przyłączonych do usługi Azure AD i zarejestrowanych urządzeń usługi Azure AD — ale nie dla urządzeń przyłączonych do hybrydowej usługi Azure AD.
-- Nie dotyczy żadnych innych użytkowników, którzy logują się na tym urządzeniu. Wszyscy inni użytkownicy, którzy uzyskują dostęp do tego urządzenia, otrzymają wyzwanie Multi-Factor Authentication. Następnie mogą uzyskiwać dostęp do aplikacji, które wymagają Multi-Factor Authentication.
+**A:** Currently, UPN changes are not fully supported on Azure AD joined devices. So their authentication with Azure AD fails after their UPN changes. As a result, users have SSO and Conditional Access issues on their devices. At this time, users need to sign in to Windows through the "Other user" tile using their new UPN to resolve this issue. We are currently working on addressing this issue. However, users signing in with Windows Hello for Business do not face this issue. 
 
 ---
 
-### <a name="q-why-do-i-get-a-username-or-password-is-incorrect-message-for-a-device-i-just-joined-to-azure-ad"></a>P: Dlaczego otrzymuję *nazwę użytkownika lub hasło jest niepoprawny* dla urządzenia dołączonego do usługi Azure AD?
+### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>Q: My users can't search printers from Azure AD joined devices. How can I enable printing from those devices?
 
-Odp **.:** Typowe przyczyny tego scenariusza są następujące:
-
-- Twoje poświadczenia użytkownika nie są już prawidłowe.
-- Komputer nie może komunikować się z Azure Active Directory. Sprawdź, czy występują problemy z łącznością sieciową.
-- Logowania federacyjne wymagają, aby serwer federacyjny obsługiwał punkty końcowe usługi WS-Trust, które są włączone i dostępne. 
-- Włączono uwierzytelnianie przekazywane. Należy zmienić hasło tymczasowe po zalogowaniu się.
+**A:** To deploy printers for Azure AD joined devices, see [Deploy Windows Server Hybrid Cloud Print with Pre-Authentication](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). You need an on-premises Windows Server to deploy hybrid cloud print. Currently, cloud-based print service isn't available. 
 
 ---
 
-### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>P: Dlaczego widzę *... Wystąpił błąd* . Czy podczas próby dołączenia komputera do usługi Azure AD?
+### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>Q: How do I connect to a remote Azure AD joined device?
 
-Odp **.:** Ten błąd występuje podczas konfigurowania Azure Active Directory rejestracji w usłudze Intune. Upewnij się, że użytkownik, który próbuje nawiązać połączenie z usługą Azure AD, ma przypisaną poprawną licencję usługi Intune. Aby uzyskać więcej informacji, zobacz [Konfigurowanie rejestracji dla urządzeń z systemem Windows](https://docs.microsoft.com/intune/windows-enroll).  
-
----
-
-### <a name="q-why-did-my-attempt-to-azure-ad-join-a-pc-fail-although-i-didnt-get-any-error-information"></a>P: Dlaczego moja próba dołączenia do usługi Azure AD kończy się niepowodzeniem, mimo że nie zostały wyświetlone żadne informacje o błędzie?
-
-Odp **.:** Przyczyną jest to, że zalogowano się na urządzeniu przy użyciu lokalnego wbudowanego konta administratora. Przed rozpoczęciem instalacji Azure Active Directory należy utworzyć inne konto lokalne. 
+**A:** See [Connect to remote Azure Active Directory-joined PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
-### <a name="qwhat-are-the-ms-organization-p2p-access-certificates-present-on-our-windows-10-devices"></a>Q:What to certyfikaty MS-Organization-P2P-Access obecne na naszych urządzeniach z systemem Windows 10?
+### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>Q: Why do my users see *You can’t get there from here*?
 
-Odp **.:** Certyfikaty MS-Organization-P2P-Access są wystawiane przez usługę Azure AD zarówno do usługi Azure AD, jak i hybrydowych urządzeń przyłączonych do usługi Azure AD. Te certyfikaty służą do włączania zaufania między urządzeniami w tej samej dzierżawie na potrzeby scenariuszy usług pulpitu zdalnego. Jeden certyfikat jest wystawiony dla urządzenia, a drugi jest wystawiony dla użytkownika. Certyfikat urządzenia jest obecny w `Local Computer\Personal\Certificates` i jest ważny przez jeden dzień. Ten certyfikat zostanie odnowiony (przez wystawienie nowego certyfikatu), jeśli urządzenie jest nadal aktywne w usłudze Azure AD. Certyfikat użytkownika znajduje się w `Current User\Personal\Certificates`, a ten certyfikat jest również ważny przez jeden dzień, ale jest wystawiany na żądanie, gdy użytkownik próbuje wykonać sesję pulpitu zdalnego w innym urządzeniu przyłączonym do usługi Azure AD. Nie jest odnawiana po wygaśnięciu. Oba te certyfikaty są wystawiane przy użyciu certyfikatu MS-Organization-P2P-Access obecnego w `Local Computer\AAD Token Issuer\Certificates`. Ten certyfikat jest wystawiany przez usługę Azure AD podczas rejestracji urządzenia. 
-
----
-
-### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>Q:Why mogę zobaczyć wiele wygasłych certyfikatów wystawionych przez firmę MS-Organization-P2P — dostęp na naszych urządzeniach z systemem Windows 10? Jak można je usunąć?
-
-Odp **.:** Wystąpił problem opisany w systemie Windows 10 w wersji 1709 i niższym, gdzie wygasłe certyfikaty MS-Organization-P2P są nadal dostępne w magazynie komputer z powodu problemów kryptograficznych. Użytkownicy mogą mieć problemy z łącznością sieciową, jeśli używasz dowolnego klienta sieci VPN (na przykład Cisco AnyConnect), który nie może obsłużyć dużej liczby wygasłych certyfikatów. Ten problem został rozwiązany w wersji Windows 10 1803, aby automatycznie usunąć wszystkie takie wygasłe certyfikaty MS-Organization-P2P-Access. Możesz rozwiązać ten problem, aktualizując urządzenia do systemu Windows 10 1803. Jeśli nie możesz zaktualizować programu, możesz usunąć te certyfikaty bez żadnego niekorzystnego wpływu.  
+**A:** Did you configure certain Conditional Access rules to require a specific device state? If the device doesn't meet the criteria, users are blocked, and they see that message. Evaluate the Conditional Access policy rules. Make sure the device meets the criteria to avoid the message.
 
 ---
 
-## <a name="hybrid-azure-ad-join-faq"></a>Sprzężenie hybrydowe usługi Azure AD — często zadawane pytania
+### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Q: Why don't some of my users get Azure Multi-Factor Authentication prompts on Azure AD joined devices?
 
-### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>P: Jak mogę odłączania hybrydowego urządzenia dołączonego do usługi Azure AD lokalnie na urządzeniu?
+**A:** A user might join or register a device with Azure AD by using Multi-Factor Authentication. Then the device itself becomes a trusted second factor for that user. Whenever the same user signs in to the device and accesses an application, Azure AD considers the device as a second factor. It enables that user to seamlessly access applications without additional Multi-Factor Authentication prompts. 
 
-Odp **.:** W przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD upewnij się, że funkcja automatycznej rejestracji została wyłączona. Następnie zaplanowane zadanie nie będzie ponownie rejestrować urządzenia. Następnie otwórz wiersz polecenia jako administrator i wprowadź `dsregcmd.exe /debug /leave`. Lub Uruchom to polecenie jako skrypt na kilku urządzeniach, aby rozłączyć zbiorczo.
+This behavior:
 
-### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>P: gdzie można znaleźć informacje dotyczące rozwiązywania problemów w celu zdiagnozowania niepowodzeń dołączania hybrydowej usługi Azure AD?
+- Is applicable to Azure AD joined and Azure AD registered devices - but not for hybrid Azure AD joined devices.
+- Isn't applicable to any other user who signs in to that device. So all other users who access that device get a Multi-Factor Authentication challenge. Then they can access applications that require Multi-Factor Authentication.
 
-Odp **.:** Informacje dotyczące rozwiązywania problemów można znaleźć w następujących artykułach:
+---
 
-- [Rozwiązywanie problemów z Azure Active Directory hybrydowych dołączonych do urządzeń z systemami Windows 10 i Windows Server 2016](troubleshoot-hybrid-join-windows-current.md)
-- [Rozwiązywanie problemów z Azure Active Directory hybrydowymi podłączonymi do urządzeń niższego poziomu](troubleshoot-hybrid-join-windows-legacy.md)
+### <a name="q-why-do-i-get-a-username-or-password-is-incorrect-message-for-a-device-i-just-joined-to-azure-ad"></a>Q: Why do I get a *username or password is incorrect* message for a device I just joined to Azure AD?
+
+**A:** Common reasons for this scenario are as follows:
+
+- Your user credentials are no longer valid.
+- Your computer can't communicate with Azure Active Directory. Check for any network connectivity issues.
+- Federated sign-ins require your federation server to support WS-Trust endpoints that are enabled and accessible. 
+- You enabled pass-through authentication. So your temporary password needs to be changed when you sign in.
+
+---
+
+### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>Q: Why do I see the *Oops… an error occurred!* dialog when I try to Azure AD join my PC?
+
+**A:** This error happens when you set up Azure Active Directory enrollment with Intune. Make sure that the user who tries to Azure AD join has the correct Intune license assigned. For more information, see [Set up enrollment for Windows devices](https://docs.microsoft.com/intune/windows-enroll).  
+
+---
+
+### <a name="q-why-did-my-attempt-to-azure-ad-join-a-pc-fail-although-i-didnt-get-any-error-information"></a>Q: Why did my attempt to Azure AD join a PC fail, although I didn't get any error information?
+
+**A:** A likely cause is that you signed in to the device by using the local built-in administrator account. Create a different local account before you use Azure Active Directory join to finish the setup. 
+
+---
+
+### <a name="qwhat-are-the-ms-organization-p2p-access-certificates-present-on-our-windows-10-devices"></a>Q:What are the MS-Organization-P2P-Access certificates present on our Windows 10 devices?
+
+**A:** The MS-Organization-P2P-Access certificates are issued by Azure AD to both, Azure AD joined and hybrid Azure AD joined devices. These certificates are used to enable trust between devices in the same tenant for remote desktop scenarios. One certificate is issued to the device and another is issued to the user. The device certificate is present in `Local Computer\Personal\Certificates` and is valid for one day. This certificate is renewed (by issuing a new certificate) if the device is still active in Azure AD. The user certificate is present in `Current User\Personal\Certificates` and this certificate is also valid for one day, but it is issued on-demand when a user attempts a remote desktop session to another Azure AD joined device. It is not renewed on expiry. Both these certificates are issued using the MS-Organization-P2P-Access certificate present in the `Local Computer\AAD Token Issuer\Certificates`. This certificate is issued by Azure AD during device registration. 
+
+---
+
+### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>Q:Why do I see multiple expired certificates issued by MS-Organization-P2P-Access on our Windows 10 devices? How can I delete them?
+
+**A:** There was an issue identified on Windows 10 version 1709 and lower where expired MS-Organization-P2P-Access certificates continued to exist on the computer store because of cryptographic issues. Your users could face issues with network connectivity, if you are using any VPN clients (for example, Cisco AnyConnect) that cannot handle the large number of expired certificates. This issue was fixed in Windows 10 1803 release to automatically delete any such expired MS-Organization-P2P-Access certificates. You can resolve this issue by updating your devices to Windows 10 1803. If you are unable to update, you can delete these certificates without any adverse impact.  
+
+---
+
+## <a name="hybrid-azure-ad-join-faq"></a>Hybrid Azure AD join FAQ
+
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>Q: How do I unjoin a Hybrid Azure AD joined device locally on the device?
+
+**A:** For hybrid Azure AD joined devices, make sure to turn off automatic registration. Then the scheduled task doesn't register the device again. Next, open a command prompt as an administrator and enter `dsregcmd.exe /debug /leave`. Or run this command as a script across several devices to unjoin in bulk.
+
+### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>Q: Where can I find troubleshooting information to diagnose hybrid Azure AD join failures?
+
+**A:** For troubleshooting information, see these articles:
+
+- [Troubleshooting hybrid Azure Active Directory joined Windows 10 and Windows Server 2016 devices](troubleshoot-hybrid-join-windows-current.md)
+- [Troubleshooting hybrid Azure Active Directory joined down-level devices](troubleshoot-hybrid-join-windows-legacy.md)
  
-### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>P: Dlaczego widzę zduplikowany zarejestrowany rekord usługi Azure AD dla urządzenia dołączonego do hybrydowej usługi Azure AD systemu Windows 10 na liście urządzeń usługi Azure AD?
+### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>Q: Why do I see a duplicate Azure AD registered record for my Windows 10 hybrid Azure AD joined device in the Azure AD devices list?
 
-Odp **.:** Gdy użytkownicy dodają swoje konta do aplikacji na urządzeniu przyłączonym do domeny, może zostać wyświetlony monit o **dodanie konta do systemu Windows?** Jeśli w monicie wprowadzisz **wartość tak** , urządzenie zostanie zarejestrowane w usłudze Azure AD. Typ zaufania jest oznaczony jako zarejestrowany w usłudze Azure AD. Po włączeniu hybrydowego sprzężenia usługi Azure AD w organizacji urządzenie uzyskuje także przyłączoną do hybrydowej usługi Azure AD. Następnie dwa Stany urządzeń są wyświetlane dla tego samego urządzenia. 
+**A:** When your users add their accounts to apps on a domain-joined device, they might be prompted with **Add account to Windows?** If they enter **Yes** on the prompt, the device registers with Azure AD. The trust type is marked as Azure AD registered. After you enable hybrid Azure AD join in your organization, the device also gets hybrid Azure AD joined. Then two device states show up for the same device. 
 
-Dołączanie hybrydowej usługi Azure AD ma pierwszeństwo przed zarejestrowanym stanem usługi Azure AD. Dlatego Twoje urządzenie jest uznawane za dołączoną hybrydową usługę Azure AD na potrzeby oceny uwierzytelniania i dostępu warunkowego. Możesz bezpiecznie usunąć zarejestrowany rekord urządzenia usługi Azure AD z portalu usługi Azure AD. Zapoznaj się z tym, aby [uniknąć tego podwójnego stanu na komputerze z systemem Windows 10](hybrid-azuread-join-plan.md#review-things-you-should-know). 
-
----
-
-### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>P: Dlaczego mój użytkownik ma problemy z systemem Windows 10 hybrydowe urządzenia dołączone do usługi Azure AD po zmianie nazwy UPN?
-
-Odp **.:** Obecnie zmiany nazw UPN nie są w pełni obsługiwane w przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD. Użytkownicy mogą logować się na urządzeniu i uzyskiwać dostęp do aplikacji lokalnych, więc uwierzytelnianie za pomocą usługi Azure AD kończy się niepowodzeniem po zmianie nazwy UPN. W związku z tym użytkownicy mają problemy z logowaniem jednokrotnym i dostępem warunkowym na swoich urządzeniach. W tej chwili musisz odłączyć urządzenie od usługi Azure AD (Uruchom polecenie "dsregcmd/Leave" z podniesionymi uprawnieniami) i ponownie Dołącz (automatycznie), aby rozwiązać ten problem. Obecnie pracujemy nad tym problemem. Jednak użytkownicy logujący się przy użyciu usługi Windows Hello dla firm nie będą napotykać tego problemu. 
+Hybrid Azure AD join takes precedence over the Azure AD registered state. So your device is considered hybrid Azure AD joined for any authentication and Conditional Access evaluation. You can safely delete the Azure AD registered device record from the Azure AD portal. Learn to [avoid or clean up this dual state on the Windows 10 machine](hybrid-azuread-join-plan.md#review-things-you-should-know). 
 
 ---
 
-### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>P: czy hybrydowe urządzenia z systemem Windows 10 dołączone do usługi Azure AD wymagają linii wglądu do kontrolera domeny w celu uzyskania dostępu do zasobów w chmurze?
+### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>Q: Why do my users have issues on Windows 10 hybrid Azure AD joined devices after changing their UPN?
 
-Odp **.:** Nie, z wyjątkiem sytuacji, gdy hasło użytkownika zostanie zmienione. Po zakończeniu dołączania hybrydowego usługi Azure AD w systemie Windows 10, gdy użytkownik zalogował się co najmniej raz, urządzenie nie będzie wymagało dostępu do zasobów w chmurze do kontrolera domeny. System Windows 10 może pobrać Logowanie jednokrotne do aplikacji usługi Azure AD z dowolnego miejsca i z połączeniem internetowym, z wyjątkiem sytuacji, gdy hasło zostanie zmienione. Użytkownicy logujący się przy użyciu funkcji Windows Hello dla firm będą nadal korzystać z funkcji logowania jednokrotnego do aplikacji usługi Azure AD nawet po zmianie hasła, nawet jeśli nie mają wglądu w dane kontrolera domeny. 
-
----
-
-### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>P: co się stanie, jeśli użytkownik zmieni hasło i podejmie próbę zalogowania się do swojego urządzenia dołączonego do hybrydowej usługi Azure AD systemu Windows 10 poza siecią firmową?
-
-Odp **.:** Jeśli hasło zostanie zmienione poza siecią firmową (na przykład za pomocą usługi Azure AD SSPR), użytkownik zaloguje się przy użyciu nowego hasła zakończy się niepowodzeniem. W przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD jest to główny urząd Active Directory. Jeśli urządzenie nie ma linii wglądu do kontrolera domeny, nie można zweryfikować nowego hasła. Dlatego użytkownik musi nawiązać połączenie z kontrolerem domeny (za pośrednictwem sieci VPN lub w sieci firmowej), zanim będzie mógł zalogować się do urządzenia przy użyciu nowego hasła. W przeciwnym razie może zalogować się tylko przy użyciu starego hasła ze względu na możliwość logowania w systemie Windows. Jednak stare hasło jest unieważnione przez usługę Azure AD podczas żądań tokenów, a tym samym uniemożliwia logowanie jednokrotne i niepowodzenie wszystkich zasad dostępu warunkowego opartego na urządzeniach. Ten problem nie występuje, jeśli używasz usługi Windows Hello dla firm. 
+**A:** Currently UPN changes are not fully supported with hybrid Azure AD joined devices. While users can sign in to the device and access their on-premises applications, authentication with Azure AD fails after a UPN change. As a result, users have SSO and Conditional Access issues on their devices. At this time, you need to unjoin the device from Azure AD (run "dsregcmd /leave" with elevated privileges) and rejoin (happens automatically) to resolve the issue. We are currently working on addressing this issue. However, users signing in with Windows Hello for Business do not face this issue. 
 
 ---
 
-## <a name="azure-ad-register-faq"></a>Rejestracja w usłudze Azure AD — często zadawane pytania
+### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>Q: Do Windows 10 hybrid Azure AD joined devices require line of sight to the domain controller to get access to cloud resources?
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>P: Jak mogę usunąć zarejestrowany stan usługi Azure AD na potrzeby lokalnego urządzenia?
+**A:** No, except when the user's password is changed. After Windows 10 hybrid Azure AD join is complete, and the user has signed in at least once, the device doesn't require line of sight to the domain controller to access cloud resources. Windows 10 can get single sign-on to Azure AD applications from anywhere with an internet connection, except when a password is changed. Users who sign in with Windows Hello for Business continue to get single sign-on to Azure AD applications even after a password change, even if they don't have line of sight to their domain controller. 
+
+---
+
+### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>Q: What happens if a user changes their password and tries to login to their Windows 10 hybrid Azure AD joined device outside the corporate network?
+
+**A:** If a password is changed outside the corporate network (for example, by using Azure AD SSPR), then the user sign in with the new password will fail. For hybrid Azure AD joined devices, on-premises Active Directory is the primary authority. When a device does not have line of sight to the domain controller, it is unable to validate the new password. So, user needs to establish connection with the domain controller (either via VPN or being in the corporate network) before they're able to sign in to the device with their new password. Otherwise, they can only sign in with their old password because of cached sign in capability in Windows. However, the old password is invalidated by Azure AD during token requests and hence, prevents single sign-on and fails any device-based Conditional Access policies. This issue doesn't occur if you use Windows Hello for Business. 
+
+---
+
+## <a name="azure-ad-register-faq"></a>Azure AD register FAQ
+
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>Q: How do I remove an Azure AD registered state for a device locally?
 
 **Odp.:** 
-- W przypadku zarejestrowanych urządzeń z systemem Windows 10 w usłudze Azure AD przejdź do pozycji **ustawienia** > **konta** > **dostęp do zasobów służbowych**. Wybierz swoje konto i wybierz pozycję **Rozłącz**. Rejestracja urządzenia dotyczy profilu użytkownika w systemie Windows 10.
-- W przypadku systemów iOS i Android można użyć **ustawień** aplikacji Microsoft Authenticator > **rejestracji urządzeń** i wybrać pozycję **Wyrejestruj urządzenie**.
-- W przypadku usługi macOS można użyć aplikacji Portal firmy Microsoft Intune, aby wyrejestrować urządzenie z zarządzania i usunąć wszelkie rejestracje. 
+- For Windows 10 Azure AD registered devices, Go to **Settings** > **Accounts** > **Access Work or School**. Select your account and select **Disconnect**. Device registration is per user profile on Windows 10.
+- For iOS and Android, you can use the Microsoft Authenticator application **Settings** > **Device Registration** and select **Unregister device**.
+- For macOS, you can use the Microsoft Intune Company Portal application to un-enroll the device from management and remove any registration. 
 
 ---
-### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>P: jak zablokować użytkownikom możliwość dodawania dodatkowych kont służbowych (zarejestrowanych w usłudze Azure AD) na urządzeniach z systemem Windows 10 firmowych?
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Q: How can I block users from adding additional work accounts (Azure AD registered) on my corporate Windows 10 devices?
 
-Odp **.:** Włącz następujący rejestr, aby zablokować użytkownikom możliwość dodawania dodatkowych kont służbowych do domeny firmowej, przyłączonej do usługi Azure AD lub urządzeń z systemem Windows 10 przyłączonych do hybrydowej usługi Azure AD. Te zasady mogą również służyć do blokowania nieumyślnego uzyskiwania usługi Azure AD zarejestrowane przy użyciu tego samego konta użytkownika przez maszyny przyłączone do domeny. 
+**A:** Enable the following registry to block your users from adding additional work accounts to your corporate domain joined, Azure AD joined or hybrid Azure AD joined Windows 10 devices. This policy can also be used to block domain joined machines from inadvertently getting Azure AD registered with the same user account. 
 
 `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
-### <a name="q-can-i-register-android-or-ios-byod-devices"></a>P: Czy można rejestrować urządzenia z systemem Android lub iOS BYOD?
+### <a name="q-can-i-register-android-or-ios-byod-devices"></a>Q: Can I register Android or iOS BYOD devices?
 
-Odp **.:** Tak, ale tylko w przypadku usługi rejestracji urządzeń platformy Azure i klientów hybrydowych. Usługa rejestracji urządzeń lokalnych w Active Directory Federation Services (AD FS) nie jest obsługiwana.
-
----
-### <a name="q-how-can-i-register-a-macos-device"></a>P: Jak mogę zarejestrować urządzenie macOS?
-
-Odp **.:** Wykonaj następujące czynności:
-
-1.  [Tworzenie zasad zgodności](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-1.  [Definiowanie zasad dostępu warunkowego dla urządzeń macOS](../active-directory-conditional-access-azure-portal.md) 
-
-**Uwagi**
-
-- Użytkownicy włączeni do zasad dostępu warunkowego potrzebują [obsługiwanej wersji pakietu Office dla programu macOS](../conditional-access/technical-reference.md#client-apps-condition) w celu uzyskania dostępu do zasobów. 
-- Podczas pierwszego dostępu spróbuj użyć monitu o zarejestrowanie urządzenia przy użyciu portalu firmy.
+**A:** Yes, but only with the Azure device registration service and for hybrid customers. It's not supported with the on-premises device registration service in Active Directory Federation Services (AD FS).
 
 ---
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="q-how-can-i-register-a-macos-device"></a>Q: How can I register a macOS device?
 
-- Dowiedz się więcej o [zarejestrowanych urządzeniach usługi Azure AD](concept-azure-ad-register.md)
-- Dowiedz się więcej o [urządzeniach przyłączonych do usługi Azure AD](concept-azure-ad-join.md)
-- Dowiedz się więcej o [urządzeniach przyłączonych do hybrydowej usługi Azure AD](concept-azure-ad-join-hybrid.md)
+**A:** Take the following steps:
+
+1.  [Create a compliance policy](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [Define a Conditional Access policy for macOS devices](../active-directory-conditional-access-azure-portal.md) 
+
+**Remarks:**
+
+- The users included in your Conditional Access policy need a [supported version of Office for macOS](../conditional-access/technical-reference.md#client-apps-condition) to access resources. 
+- During the first access try, your users are prompted to enroll the device by using the company portal.
+
+---
+## <a name="next-steps"></a>Następne kroki
+
+- Learn more about [Azure AD registered devices](concept-azure-ad-register.md)
+- Learn more about [Azure AD joined devices](concept-azure-ad-join.md)
+- Learn more about [hybrid Azure AD joined devices](concept-azure-ad-join-hybrid.md)

@@ -1,39 +1,37 @@
 ---
-title: Ciągłe dostarczanie aktualizacji kodu funkcji za pomocą usługi Azure DevOps — Azure Functions
-description: Dowiedz się, jak skonfigurować potok Azure DevOps, który jest ukierunkowany na Azure Functions.
+title: Continuously deliver function code updates by using Azure DevOps - Azure Functions
+description: Learn how to set up an Azure DevOps pipeline that targets Azure Functions.
 author: ahmedelnably
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.openlocfilehash: 4fb01eac53151799a0def00d13f18619faf437f6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e2dbcadab662caf641716272db1f860c3a6bafa5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927531"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230537"
 ---
-# <a name="continuous-delivery-by-using-azure-devops"></a>Ciągłe dostarczanie za pomocą usługi Azure DevOps
+# <a name="continuous-delivery-by-using-azure-devops"></a>Continuous delivery by using Azure DevOps
 
-Funkcję można automatycznie wdrożyć w aplikacji Azure Functions przy użyciu [Azure Pipelines](/azure/devops/pipelines/).
+You can automatically deploy your function to an Azure Functions app by using [Azure Pipelines](/azure/devops/pipelines/).
 
-Dostępne są dwie opcje definiowania potoku:
+You have two options for defining your pipeline:
 
-- **Plik YAML**: plik YAML zawiera opis potoku. Plik może zawierać sekcję kroków kompilacji i sekcję dotyczącą wersji. Plik YAML musi znajdować się w tym samym repozytorium co aplikacja.
-- **Szablon**: szablony są gotowymi zadaniami, które kompilują lub wdrażają aplikację.
+- **YAML file**: A YAML file describes the pipeline. The file might have a build steps section and a release section. The YAML file must be in the same repo as the app.
+- **Template**: Templates are ready-made tasks that build or deploy your app.
 
-## <a name="yaml-based-pipeline"></a>Potok oparty na YAML
+## <a name="yaml-based-pipeline"></a>YAML-based pipeline
 
-Aby utworzyć potok oparty na YAML, najpierw skompiluj aplikację, a następnie wdróż aplikację.
+To create a YAML-based pipeline, first build your app, and then deploy the app.
 
 ### <a name="build-your-app"></a>Tworzenie aplikacji
 
-Sposób kompilowania aplikacji w Azure Pipelines zależy od języka programowania aplikacji. Każdy język zawiera konkretne kroki kompilacji, które tworzą artefakt wdrożenia. Artefakt wdrożenia służy do wdrażania aplikacji funkcji na platformie Azure.
+How you build your app in Azure Pipelines depends on your app's programming language. Each language has specific build steps that create a deployment artifact. A deployment artifact is used to deploy your function app in Azure.
 
 #### <a name="net"></a>.NET
 
-Możesz użyć poniższego przykładu, aby utworzyć plik YAML w celu skompilowania aplikacji .NET:
+You can use the following sample to create a YAML file to build a .NET app:
 
 ```yaml
 pool:
@@ -64,7 +62,7 @@ steps:
 
 #### <a name="javascript"></a>JavaScript
 
-Możesz użyć poniższego przykładu, aby utworzyć plik YAML w celu skompilowania aplikacji JavaScript:
+You can use the following sample to create a YAML file to build a JavaScript app:
 
 ```yaml
 pool:
@@ -92,7 +90,7 @@ steps:
 
 #### <a name="python"></a>Python
 
-Możesz użyć poniższego przykładu, aby utworzyć plik YAML w celu skompilowania aplikacji w języku Python. Język Python jest obsługiwany tylko w przypadku Azure Functions systemu Linux. YAML dla języka Python 3,7 można skompilować, zastępując wszystkie wystąpienia 3,6 z 3,7 w tym YAML.
+You can use the following sample to create a YAML file to build a Python app. Python is supported only for Linux Azure Functions. The YAML for Python 3.7 can be built by replacing all the instances of 3.6 with 3.7 in this YAML.
 
 ```yaml
 pool:
@@ -125,7 +123,7 @@ steps:
 ```
 #### <a name="powershell"></a>PowerShell
 
-Możesz użyć poniższego przykładu, aby utworzyć plik YAML w celu spakowania aplikacji programu PowerShell. Program PowerShell jest obsługiwany tylko w przypadku Azure Functions systemu Windows.
+You can use the following sample to create a YAML file to package a PowerShell app. PowerShell is supported only for Windows Azure Functions.
 
 ```yaml
 pool:
@@ -143,13 +141,13 @@ steps:
     name: 'drop'
 ```
 
-### <a name="deploy-your-app"></a>Wdrażanie aplikacji
+### <a name="deploy-your-app"></a>Deploy your app
 
-W pliku YAML należy uwzględnić jeden z następujących przykładów YAML, w zależności od systemu operacyjnego hostingu.
+You must include one of the following YAML samples in your YAML file, depending on the hosting OS.
 
-#### <a name="windows-function-app"></a>Aplikacja funkcji systemu Windows
+#### <a name="windows-function-app"></a>Windows function app
 
-Poniższego fragmentu kodu można użyć do wdrożenia aplikacji funkcji systemu Windows:
+You can use the following snippet to deploy a Windows function app:
 
 ```yaml
 steps:
@@ -164,9 +162,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Aplikacja funkcji systemu Linux
+#### <a name="linux-function-app"></a>Linux function app
 
-Poniższego fragmentu kodu można użyć do wdrożenia aplikacji funkcji systemu Linux:
+You can use the following snippet to deploy a Linux function app:
 
 ```yaml
 steps:
@@ -182,61 +180,61 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-## <a name="template-based-pipeline"></a>Potok oparty na szablonie
+## <a name="template-based-pipeline"></a>Template-based pipeline
 
-Szablony na platformie Azure DevOps są wstępnie zdefiniowanymi grupami zadań, które kompilują lub wdrażają aplikację.
+Templates in Azure DevOps are predefined groups of tasks that build or deploy an app.
 
 ### <a name="build-your-app"></a>Tworzenie aplikacji
 
-Sposób kompilowania aplikacji w Azure Pipelines zależy od języka programowania aplikacji. Każdy język zawiera konkretne kroki kompilacji, które tworzą artefakt wdrożenia. Artefakt wdrożenia służy do aktualizowania aplikacji funkcji na platformie Azure.
+How you build your app in Azure Pipelines depends on your app's programming language. Each language has specific build steps that create a deployment artifact. A deployment artifact is used to update your function app in Azure.
 
-Aby używać wbudowanych szablonów kompilacji, podczas tworzenia nowego potoku kompilacji, wybierz opcję **Użyj klasycznego edytora** , aby utworzyć potok za pomocą szablonów projektanta.
+To use built-in build templates, when you create a new build pipeline, select **Use the classic editor** to create a pipeline by using designer templates.
 
-![Wybierz Azure Pipelines klasycznego edytora](media/functions-how-to-azure-devops/classic-editor.png)
+![Select the Azure Pipelines classic editor](media/functions-how-to-azure-devops/classic-editor.png)
 
-Po skonfigurowaniu źródła kodu poszukaj Azure Functions szablonów kompilacji. Wybierz szablon, który jest zgodny z językiem aplikacji.
+After you configure the source of your code, search for Azure Functions build templates. Select the template that matches your app language.
 
-![Wybierz szablon kompilacji Azure Functions](media/functions-how-to-azure-devops/build-templates.png)
+![Select an Azure Functions build template](media/functions-how-to-azure-devops/build-templates.png)
 
-W niektórych przypadkach artefakty kompilacji mają określoną strukturę folderów. Może być konieczne wybranie pola wyboru **Nazwa folderu głównego dołączania do ścieżki archiwum** .
+In some cases, build artifacts have a specific folder structure. You might need to select the **Prepend root folder name to archive paths** check box.
 
-![Opcja dołączania nazwy folderu głównego](media/functions-how-to-azure-devops/prepend-root-folder.png)
+![The option to prepend the root folder name](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
-#### <a name="javascript-apps"></a>Aplikacje JavaScript
+#### <a name="javascript-apps"></a>JavaScript apps
 
-Jeśli aplikacja JavaScript ma zależność od modułów macierzystych systemu Windows, należy zaktualizować wersję puli agentów do **hostowanej program VS2017**.
+If your JavaScript app has a dependency on Windows native modules, you must update the agent pool version to **Hosted VS2017**.
 
-![Aktualizowanie wersji puli agentów](media/functions-how-to-azure-devops/change-agent.png)
+![Update the agent pool version](media/functions-how-to-azure-devops/change-agent.png)
 
-### <a name="deploy-your-app"></a>Wdrażanie aplikacji
+### <a name="deploy-your-app"></a>Deploy your app
 
-Podczas tworzenia nowego potoku wydania Wyszukaj szablon Azure Functions wydania.
+When you create a new release pipeline, search for the Azure Functions release template.
 
-![Wyszukaj szablon wydania Azure Functions](media/functions-how-to-azure-devops/release-template.png)
+![Search for the Azure Functions release template](media/functions-how-to-azure-devops/release-template.png)
 
-Wdrażanie w miejscu wdrożenia nie jest obsługiwane w szablonie zlecenia.
+Deploying to a deployment slot is not supported in the release template.
 
-## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Tworzenie potoku kompilacji przy użyciu interfejsu wiersza polecenia platformy Azure
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Create a build pipeline by using the Azure CLI
 
-Aby utworzyć potok kompilacji na platformie Azure, użyj [polecenia](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)`az functionapp devops-pipeline create`. Potok kompilacji jest tworzony w celu kompilowania i zwalniania wszelkich zmian kodu wprowadzonych w repozytorium. Polecenie generuje nowy plik YAML, który definiuje potok kompilacji i wydania, a następnie zatwierdza go do repozytorium. Wymagania wstępne dotyczące tego polecenia zależą od lokalizacji kodu.
+To create a build pipeline in Azure, use the `az functionapp devops-pipeline create` [command](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create). The build pipeline is created to build and release any code changes that are made in your repo. The command generates a new YAML file that defines the build and release pipeline and then commits it to your repo. The prerequisites for this command depend on the location of your code.
 
-- Jeśli Twój kod znajduje się w serwisie GitHub:
+- If your code is in GitHub:
 
-    - Musisz mieć uprawnienia do **zapisu** dla Twojej subskrypcji.
+    - You must have **write** permissions for your subscription.
 
-    - Musisz być administratorem projektu w usłudze Azure DevOps.
+    - You must be the project administrator in Azure DevOps.
 
-    - Musisz mieć uprawnienia do tworzenia osobistego tokenu dostępu usługi GitHub, który ma wystarczające uprawnienia. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące uprawnień w witrynie GitHub.](https://aka.ms/azure-devops-source-repos)
+    - You must have permissions to create a GitHub personal access token (PAT) that has sufficient permissions. For more information, see [GitHub PAT permission requirements.](https://aka.ms/azure-devops-source-repos)
 
-    - Musisz mieć uprawnienia do zatwierdzania gałęzi głównej w repozytorium GitHub, aby można było zatwierdzić wygenerowany automatycznie plik YAML.
+    - You must have permissions to commit to the master branch in your GitHub repository so you can commit the autogenerated YAML file.
 
-- Jeśli Twój kod jest w Azure Repos:
+- If your code is in Azure Repos:
 
-    - Musisz mieć uprawnienia do **zapisu** dla Twojej subskrypcji.
+    - You must have **write** permissions for your subscription.
 
-    - Musisz być administratorem projektu w usłudze Azure DevOps.
+    - You must be the project administrator in Azure DevOps.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z [omówieniem Azure Functions](functions-overview.md).
-- Zapoznaj się z [omówieniem usługi Azure DevOps](/azure/devops/pipelines/).
+- Review the [Azure Functions overview](functions-overview.md).
+- Review the [Azure DevOps overview](/azure/devops/pipelines/).

@@ -1,100 +1,97 @@
 ---
-title: Microsoft Graph powiązania Azure Functions
-description: Dowiedz się, jak używać wyzwalaczy Microsoft Graph i powiązań w programie Azure Functions.
-services: functions
+title: Microsoft Graph bindings for Azure Functions
+description: Understand how to use Microsoft Graph triggers and bindings in Azure Functions.
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 1db929e3ec4b400113d04cb7dd1cd4b8d2e86a9a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f253aeb202671a3f90eabb1d04af95333540a239
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176595"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231153"
 ---
-# <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph powiązania Azure Functions
+# <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph bindings for Azure Functions
 
-W tym artykule opisano sposób konfigurowania i pracy z Microsoft Graph wyzwalaczami i powiązaniami w programie Azure Functions. Za pomocą tych danych można używać Azure Functions do pracy z danymi, szczegółowymi informacjami i zdarzeniami z [Microsoft Graph](https://developer.microsoft.com/graph).
+This article explains how to configure and work with Microsoft Graph triggers and bindings in Azure Functions. With these, you can use Azure Functions to work with data, insights, and events from the [Microsoft Graph](https://developer.microsoft.com/graph).
 
-Rozszerzenie Microsoft Graph zapewnia następujące powiązania:
-- [Powiązanie danych wejściowych tokenu uwierzytelniania](#token-input) pozwala na interakcję z dowolnym interfejsem API Microsoft Graph.
-- [Powiązanie danych wejściowych tabeli programu Excel](#excel-input) umożliwia odczytywanie danych z programu Excel.
-- [Powiązanie danych wyjściowych tabeli programu Excel](#excel-output) pozwala modyfikować dane programu Excel.
-- [Powiązanie danych wejściowych pliku w usłudze OneDrive](#onedrive-input) umożliwia odczytywanie plików z usługi OneDrive.
-- [Powiązanie danych wyjściowych w usłudze OneDrive](#onedrive-output) umożliwia zapis w plikach w usłudze OneDrive.
-- [Powiązanie danych wyjściowych wiadomości programu Outlook](#outlook-output) umożliwia wysyłanie wiadomości e-mail za pośrednictwem programu Outlook.
-- Kolekcja [wyzwalaczy i powiązań Microsoft Graph elementu webhook](#webhooks) umożliwia reagowanie na zdarzenia z Microsoft Graph.
+The Microsoft Graph extension provides the following bindings:
+- An [auth token input binding](#token-input) allows you to interact with any Microsoft Graph API.
+- An [Excel table input binding](#excel-input) allows you to read data from Excel.
+- An [Excel table output binding](#excel-output) allows you to modify Excel data.
+- A [OneDrive file input binding](#onedrive-input) allows you to read files from OneDrive.
+- A [OneDrive file output binding](#onedrive-output) allows you to write to files in OneDrive.
+- An [Outlook message output binding](#outlook-output) allows you to send email through Outlook.
+- A collection of [Microsoft Graph webhook triggers and bindings](#webhooks) allows you to react to events from the Microsoft Graph.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> Microsoft Graph powiązania są obecnie dostępne w wersji zapoznawczej dla Azure Functions wersja 2. x. Nie są one obsługiwane w funkcjach w wersji 1. x.
+> Microsoft Graph bindings are currently in preview for Azure Functions version 2.x. They are not supported in Functions version 1.x.
 
 ## <a name="packages"></a>Pakiety
 
-Powiązanie danych wejściowych tokenu uwierzytelniania jest dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) . Inne powiązania Microsoft Graph są dostępne w pakiecie [Microsoft. Azure. WebJobs. Extensions. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) . Kod źródłowy pakietów znajduje się w repozytorium [Azure-Functions-microsoftgraph-Extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub.
+The auth token input binding is provided in the [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet package. The other Microsoft Graph bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) package. Source code for the packages is in the [azure-functions-microsoftgraph-extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub repository.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="setting-up-the-extensions"></a>Konfigurowanie rozszerzeń
+## <a name="setting-up-the-extensions"></a>Setting up the extensions
 
-Powiązania Microsoft Graph są dostępne za poorednictwem _rozszerzeń powiązań_. Rozszerzenia powiązań są opcjonalnymi składnikami środowiska uruchomieniowego Azure Functions. W tej sekcji przedstawiono sposób konfigurowania rozszerzeń Microsoft Graph i tokenów uwierzytelniania.
+Microsoft Graph bindings are available through _binding extensions_. Binding extensions are optional components to the Azure Functions runtime. This section shows how to set up the Microsoft Graph and auth token extensions.
 
-### <a name="enabling-functions-20-preview"></a>Włączanie funkcji w wersji zapoznawczej 2,0
+### <a name="enabling-functions-20-preview"></a>Enabling Functions 2.0 preview
 
-Rozszerzenia powiązań są dostępne tylko w wersji zapoznawczej Azure Functions 2,0. 
+Binding extensions are available only for Azure Functions 2.0 preview. 
 
-Aby uzyskać informacje na temat sposobu ustawiania aplikacji funkcji do korzystania z wersji zapoznawczej 2,0 środowiska uruchomieniowego usługi Functions, zobacz jak dowiedzieć [się, jak kierować Azure Functions wersji środowiska uruchomieniowego](set-runtime-version.md).
+For information about how to set a function app to use the preview 2.0 version of the Functions runtime, see [How to target Azure Functions runtime versions](set-runtime-version.md).
 
-### <a name="installing-the-extension"></a>Instalowanie rozszerzenia
+### <a name="installing-the-extension"></a>Installing the extension
 
-Aby zainstalować rozszerzenie z Azure Portal, przejdź do szablonu lub powiązania, które odwołuje się do niego. Utwórz nową funkcję, a następnie na ekranie Wybieranie szablonu Wybierz scenariusz "Microsoft Graph". Wybierz jeden z szablonów z tego scenariusza. Alternatywnie możesz przejść do karty "Integracja" istniejącej funkcji i wybrać jedno z powiązań uwzględnionych w tym artykule.
+To install an extension from the Azure portal, navigate to either a template or binding that references it. Create a new function, and while in the template selection screen, choose the "Microsoft Graph" scenario. Select one of the templates from this scenario. Alternatively, you can navigate to the "Integrate" tab of an existing function and select one of the bindings covered in this article.
 
-W obu przypadkach zostanie wyświetlone ostrzeżenie, które określa rozszerzenie, które ma zostać zainstalowane. Kliknij przycisk **Instaluj** , aby uzyskać rozszerzenie. Każde rozszerzenie należy zainstalować tylko raz dla aplikacji funkcji. 
-
-> [!Note] 
-> Proces instalacji w portalu może potrwać do 10 minut od planu zużycia.
-
-Jeśli używasz programu Visual Studio, możesz pobrać rozszerzenia, instalując [pakiety NuGet wymienione wcześniej w tym artykule](#packages).
-
-### <a name="configuring-authentication--authorization"></a>Konfigurowanie uwierzytelniania/autoryzacji
-
-Powiązania opisane w tym artykule wymagają użycia tożsamości. Dzięki temu Microsoft Graph wymuszać uprawnienia i kontrolować interakcje. Tożsamość może być użytkownikiem, który uzyskuje dostęp do aplikacji lub samej aplikacji. Aby skonfigurować tę tożsamość, skonfiguruj [App Service uwierzytelnianie/autoryzacja](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) przy użyciu Azure Active Directory. Należy również zażądać wszelkich uprawnień zasobów wymaganych przez funkcje.
+In both cases, a warning will appear which specifies the extension to be installed. Click **Install** to obtain the extension. Each extension only needs to be installed once per function app. 
 
 > [!Note] 
-> Rozszerzenie Microsoft Graph obsługuje tylko uwierzytelnianie w usłudze Azure AD. Użytkownicy muszą zalogować się przy użyciu konta służbowego.
+> The in-portal installation process can take up to 10 minutes on a consumption plan.
 
-Jeśli używasz Azure Portal, zobaczysz ostrzeżenie poniżej monitu o zainstalowanie rozszerzenia. Ostrzeżenie wyświetla komunikat z prośbą o skonfigurowanie App Service uwierzytelniania/autoryzacji i zażądanie wszelkich uprawnień wymaganych przez szablon lub powiązanie. Kliknij pozycję **Konfiguruj usługę Azure AD teraz** lub **Dodaj uprawnienia teraz** , odpowiednio do potrzeb.
+If you are using Visual Studio, you can get the extensions by installing [the NuGet packages that are listed earlier in this article](#packages).
+
+### <a name="configuring-authentication--authorization"></a>Configuring Authentication / Authorization
+
+The bindings outlined in this article require an identity to be used. This allows the Microsoft Graph to enforce permissions and audit interactions. The identity can be a user accessing your application or the application itself. To configure this identity, set up [App Service Authentication / Authorization](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) with Azure Active Directory. You will also need to request any resource permissions your functions require.
+
+> [!Note] 
+> The Microsoft Graph extension only supports Azure AD authentication. Users need to log in with a work or school account.
+
+If you're using the Azure portal, you'll see a warning below the prompt to install the extension. The warning prompts you to configure App Service Authentication / Authorization and request any permissions the template or binding requires. Click **Configure Azure AD now** or **Add permissions now** as appropriate.
 
 
 
 <a name="token-input"></a>
-## <a name="auth-token"></a>Token uwierzytelniania
+## <a name="auth-token"></a>Auth token
 
-Powiązanie danych wejściowych tokenu uwierzytelniania pobiera token usługi Azure AD dla danego zasobu i udostępnia go kodowi jako ciąg. Może to być dowolny zasób, dla którego aplikacja ma uprawnienia. 
+The auth token input binding gets an Azure AD token for a given resource and provides it to your code as a string. The resource can be any for which the application has permissions. 
 
-Ta sekcja zawiera następujące podsekcje:
+This section contains the following subsections:
 
 * [Przykład](#auth-token---example)
 * [Attributes](#auth-token---attributes)
 * [Konfiguracja](#auth-token---configuration)
 * [Użycie](#auth-token---usage)
 
-### <a name="auth-token---example"></a>Token uwierzytelniania — przykład
+### <a name="auth-token---example"></a>Auth token - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#auth-token---c-script-example)
+* [C# script (.csx)](#auth-token---c-script-example)
 * [JavaScript](#auth-token---javascript-example)
 
-#### <a name="auth-token---c-script-example"></a>Token uwierzytelniania — C# przykład skryptu
+#### <a name="auth-token---c-script-example"></a>Auth token - C# script example
 
-Poniższy przykład pobiera informacje o profilu użytkownika.
+The following example gets user profile information.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym tokenu:
+The *function.json* file defines an HTTP trigger with a token input binding:
 
 ```json
 {
@@ -121,7 +118,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym tokenu
 }
 ```
 
-Kod C# skryptu używa tokenu do wywołania protokołu HTTP do Microsoft Graph i zwraca wynik:
+The C# script code uses the token to make an HTTP call to the Microsoft Graph and returns the result:
 
 ```csharp
 using System.Net; 
@@ -137,11 +134,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 }
 ```
 
-#### <a name="auth-token---javascript-example"></a>Token uwierzytelniania — przykład JavaScript
+#### <a name="auth-token---javascript-example"></a>Auth token - JavaScript example
 
-Poniższy przykład pobiera informacje o profilu użytkownika.
+The following example gets user profile information.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym tokenu:
+The *function.json* file defines an HTTP trigger with a token input binding:
 
 ```json
 {
@@ -168,7 +165,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym tokenu
 }
 ```
 
-Kod JavaScript używa tokenu do wywołania protokołu HTTP do Microsoft Graph i zwraca wynik.
+The JavaScript code uses the token to make an HTTP call to the Microsoft Graph and returns the result.
 
 ```js
 const rp = require('request-promise');
@@ -200,57 +197,57 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="auth-token---attributes"></a>Token uwierzytelniania — atrybuty
+### <a name="auth-token---attributes"></a>Auth token - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [tokenu](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) attribute.
 
-### <a name="auth-token---configuration"></a>Token uwierzytelniania — konfiguracja
+### <a name="auth-token---configuration"></a>Auth token - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `Token`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `Token` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wejściowych tokenu uwierzytelniania z kodu](#token-input-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `token`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `in`.|
-|**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
-|**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
-|**Zasób**|**zasoby**|Wymagane — adres URL zasobu usługi Azure AD, dla którego jest żądany token.|
+|**name**||Required - the variable name used in function code for the auth token. See [Using an auth token input binding from code](#token-input-code).|
+|**type**||Required - must be set to `token`.|
+|**direction**||Required - must be set to `in`.|
+|**identity**|**Tożsamość**|Required - The identity that will be used to perform the action. Can be one of the following values:<ul><li><code>userFromRequest</code> - Only valid with [HTTP trigger]. Uses the identity of the calling user.</li><li><code>userFromId</code> - Uses the identity of a previously logged-in user with the specified ID. See the <code>userId</code> property.</li><li><code>userFromToken</code> - Uses the identity represented by the specified token. See the <code>userToken</code> property.</li><li><code>clientCredentials</code> - Uses the identity of the function app.</li></ul>|
+|**userId**|**UserId**  |Needed if and only if _identity_ is set to `userFromId`. A user principal ID associated with a previously logged-in user.|
+|**userToken**|**UserToken**|Needed if and only if _identity_ is set to `userFromToken`. A token valid for the function app. |
+|**Zasób**|**resource**|Required - An Azure AD resource URL for which the token is being requested.|
 
 <a name="token-input-code"></a>
-### <a name="auth-token---usage"></a>Token uwierzytelniania — użycie
+### <a name="auth-token---usage"></a>Auth token - usage
 
-Samo powiązanie nie wymaga żadnych uprawnień usługi Azure AD, ale w zależności od tego, jak token jest używany, może być konieczne zażądanie dodatkowych uprawnień. Sprawdź wymagania zasobu, do którego zamierzasz uzyskać dostęp za pomocą tokenu.
+The binding itself does not require any Azure AD permissions, but depending on how the token is used, you may need to request additional permissions. Check the requirements of the resource you intend to access with the token.
 
-Token jest zawsze wyświetlany w kodzie jako ciąg.
+The token is always presented to code as a string.
 
 > [!Note]
-> Podczas programowania lokalnego przy użyciu jednej z `userFromId`, `userFromToken` lub `userFromRequest`, wymagany token można [uzyskać ręcznie](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) i określić w nagłówku żądania `X-MS-TOKEN-AAD-ID-TOKEN` z aplikacji klienckiej wywołującej.
+> When developing locally with either of `userFromId`, `userFromToken` or `userFromRequest` options, required token can be [obtained manually](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) and specified in `X-MS-TOKEN-AAD-ID-TOKEN` request header from a calling client application.
 
 
 <a name="excel-input"></a>
-## <a name="excel-input"></a>Dane wejściowe programu Excel
+## <a name="excel-input"></a>Excel input
 
-Powiązanie danych wejściowych tabeli programu Excel odczytuje zawartość tabeli programu Excel przechowywanej w usłudze OneDrive.
+The Excel table input binding reads the contents of an Excel table stored in OneDrive.
 
-Ta sekcja zawiera następujące podsekcje:
+This section contains the following subsections:
 
 * [Przykład](#excel-input---example)
 * [Attributes](#excel-input---attributes)
 * [Konfiguracja](#excel-input---configuration)
 * [Użycie](#excel-input---usage)
 
-### <a name="excel-input---example"></a>Dane wejściowe programu Excel — przykład
+### <a name="excel-input---example"></a>Excel input - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#excel-input---c-script-example)
+* [C# script (.csx)](#excel-input---c-script-example)
 * [JavaScript](#excel-input---javascript-example)
 
-#### <a name="excel-input---c-script-example"></a>Dane wejściowe programu C# Excel — przykładowy skrypt
+#### <a name="excel-input---c-script-example"></a>Excel input - C# script example
 
-Następujący plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym programu Excel:
+The following *function.json* file defines an HTTP trigger with an Excel input binding:
 
 ```json
 {
@@ -279,7 +276,7 @@ Następujący plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wej�
 }
 ```
 
-Poniższy C# kod skryptu odczytuje zawartość określonej tabeli i zwraca je użytkownikowi:
+The following C# script code reads the contents of the specified table and returns them to the user:
 
 ```csharp
 using System.Net;
@@ -293,9 +290,9 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILog
 }
 ```
 
-#### <a name="excel-input---javascript-example"></a>Dane wejściowe programu Excel — przykład JavaScript
+#### <a name="excel-input---javascript-example"></a>Excel input - JavaScript example
 
-Następujący plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym programu Excel:
+The following *function.json* file defines an HTTP trigger with an Excel input binding:
 
 ```json
 {
@@ -324,7 +321,7 @@ Następujący plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wej�
 }
 ```
 
-Poniższy kod JavaScript odczytuje zawartość określonej tabeli i zwraca je do użytkownika.
+The following JavaScript code reads the contents of the specified table and returns them to the user.
 
 ```js
 module.exports = function (context, req) {
@@ -335,39 +332,39 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-input---attributes"></a>Dane wejściowe programu Excel
+### <a name="excel-input---attributes"></a>Excel input - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [programu Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribute.
 
-### <a name="excel-input---configuration"></a>Dane wejściowe programu Excel — konfiguracja
+### <a name="excel-input---configuration"></a>Excel input - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `Excel`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `Excel` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla tabeli programu Excel. Zobacz [Używanie powiązania danych wejściowych tabeli programu Excel z kodu](#excel-input-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `excel`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `in`.|
-|**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
-|**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
-|**path**|**Ścieżka**|Wymagane — ścieżka w usłudze OneDrive do skoroszytu programu Excel.|
-|**arkuszname**|**Arkuszname**|Arkusz, w którym znajduje się tabela.|
-|**tableName**|**TableName**|Nazwa tabeli. Jeśli nie zostanie określony, zostanie użyta zawartość arkusza.|
+|**name**||Required - the variable name used in function code for the Excel table. See [Using an Excel table input binding from code](#excel-input-code).|
+|**type**||Required - must be set to `excel`.|
+|**direction**||Required - must be set to `in`.|
+|**identity**|**Tożsamość**|Required - The identity that will be used to perform the action. Can be one of the following values:<ul><li><code>userFromRequest</code> - Only valid with [HTTP trigger]. Uses the identity of the calling user.</li><li><code>userFromId</code> - Uses the identity of a previously logged-in user with the specified ID. See the <code>userId</code> property.</li><li><code>userFromToken</code> - Uses the identity represented by the specified token. See the <code>userToken</code> property.</li><li><code>clientCredentials</code> - Uses the identity of the function app.</li></ul>|
+|**userId**|**UserId**  |Needed if and only if _identity_ is set to `userFromId`. A user principal ID associated with a previously logged-in user.|
+|**userToken**|**UserToken**|Needed if and only if _identity_ is set to `userFromToken`. A token valid for the function app. |
+|**path**|**Ścieżka**|Required - the path in OneDrive to the Excel workbook.|
+|**worksheetName**|**WorksheetName**|The worksheet in which the table is found.|
+|**tableName**|**TableName**|The name of the table. If not specified, the contents of the worksheet will be used.|
 
 <a name="excel-input-code"></a>
-### <a name="excel-input---usage"></a>Dane wejściowe programu Excel — użycie
+### <a name="excel-input---usage"></a>Excel input - usage
 
-To powiązanie wymaga następujących uprawnień usługi Azure AD:
+This binding requires the following Azure AD permissions:
 
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Odczytuj pliki użytkownika|
+|Microsoft Graph|Read user files|
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- ciąg [] []
-- Microsoft. Graph. skoroszyty
-- Niestandardowe typy obiektów (przy użyciu powiązania modelu strukturalnego)
+The binding exposes the following types to .NET functions:
+- string[][]
+- Microsoft.Graph.WorkbookTable
+- Custom object types (using structural model binding)
 
 
 
@@ -379,29 +376,29 @@ Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
 
 
 <a name="excel-output"></a>
-## <a name="excel-output"></a>Dane wyjściowe programu Excel
+## <a name="excel-output"></a>Excel output
 
-Powiązanie danych wyjściowych programu Excel modyfikuje zawartość tabeli programu Excel przechowywanej w usłudze OneDrive.
+The Excel output binding modifies the contents of an Excel table stored in OneDrive.
 
-Ta sekcja zawiera następujące podsekcje:
+This section contains the following subsections:
 
 * [Przykład](#excel-output---example)
 * [Attributes](#excel-output---attributes)
 * [Konfiguracja](#excel-output---configuration)
 * [Użycie](#excel-output---usage)
 
-### <a name="excel-output---example"></a>Dane wyjściowe programu Excel — przykład
+### <a name="excel-output---example"></a>Excel output - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#excel-output---c-script-example)
+* [C# script (.csx)](#excel-output---c-script-example)
 * [JavaScript](#excel-output---javascript-example)
 
-#### <a name="excel-output---c-script-example"></a>Dane wyjściowe programu C# Excel — przykład skryptu
+#### <a name="excel-output---c-script-example"></a>Excel output - C# script example
 
-Poniższy przykład dodaje wiersze do tabeli programu Excel.
+The following example adds rows to an Excel table.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym programu Excel:
+The *function.json* file defines an HTTP trigger with an Excel output binding:
 
 ```json
 {
@@ -431,7 +428,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym progra
 }
 ```
 
-Kod C# skryptu dodaje nowy wiersz do tabeli (przyjęto, że jest to jedna kolumna) na podstawie danych wejściowych z ciągu zapytania:
+The C# script code adds a new row to the table (assumed to be single-column) based on input from the query string:
 
 ```csharp
 using System.Net;
@@ -451,11 +448,11 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 }
 ```
 
-#### <a name="excel-output---javascript-example"></a>Dane wyjściowe programu Excel — przykład JavaScript
+#### <a name="excel-output---javascript-example"></a>Excel output - JavaScript example
 
-Poniższy przykład dodaje wiersze do tabeli programu Excel.
+The following example adds rows to an Excel table.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym programu Excel:
+The *function.json* file defines an HTTP trigger with an Excel output binding:
 
 ```json
 {
@@ -485,7 +482,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym progra
 }
 ```
 
-Poniższy kod JavaScript dodaje nowy wiersz do tabeli (przyjęto, że jest to jedna kolumna) na podstawie danych wejściowych z ciągu zapytania.
+The following JavaScript code adds a new row to the table (assumed to be single-column) based on input from the query string.
 
 ```js
 module.exports = function (context, req) {
@@ -497,70 +494,70 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-output---attributes"></a>Dane wyjściowe programu Excel — atrybuty
+### <a name="excel-output---attributes"></a>Excel output - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [programu Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribute.
 
-### <a name="excel-output---configuration"></a>Dane wyjściowe programu Excel — konfiguracja
+### <a name="excel-output---configuration"></a>Excel output - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `Excel`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `Excel` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wyjściowych tabeli programu Excel z kodu](#excel-output-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `excel`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `out`.|
-|**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**Nazwa** |**Nazwa** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
-|**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
-|**path**|**Ścieżka**|Wymagane — ścieżka w usłudze OneDrive do skoroszytu programu Excel.|
-|**arkuszname**|**Arkuszname**|Arkusz, w którym znajduje się tabela.|
-|**tableName**|**TableName**|Nazwa tabeli. Jeśli nie zostanie określony, zostanie użyta zawartość arkusza.|
-|**Typ aktualizacji**|**Typ aktualizacji**|Wymagane — typ zmiany do wprowadzenia do tabeli. Może być jedną z następujących wartości:<ul><li><code>update</code> — zastępuje zawartość tabeli w usłudze OneDrive.</li><li><code>append</code> — dodaje ładunek do końca tabeli w usłudze OneDrive przez utworzenie nowych wierszy.</li></ul>|
+|**name**||Required - the variable name used in function code for the auth token. See [Using an Excel table output binding from code](#excel-output-code).|
+|**type**||Required - must be set to `excel`.|
+|**direction**||Required - must be set to `out`.|
+|**identity**|**Tożsamość**|Required - The identity that will be used to perform the action. Can be one of the following values:<ul><li><code>userFromRequest</code> - Only valid with [HTTP trigger]. Uses the identity of the calling user.</li><li><code>userFromId</code> - Uses the identity of a previously logged-in user with the specified ID. See the <code>userId</code> property.</li><li><code>userFromToken</code> - Uses the identity represented by the specified token. See the <code>userToken</code> property.</li><li><code>clientCredentials</code> - Uses the identity of the function app.</li></ul>|
+|**UserId** |**userId** |Needed if and only if _identity_ is set to `userFromId`. A user principal ID associated with a previously logged-in user.|
+|**userToken**|**UserToken**|Needed if and only if _identity_ is set to `userFromToken`. A token valid for the function app. |
+|**path**|**Ścieżka**|Required - the path in OneDrive to the Excel workbook.|
+|**worksheetName**|**WorksheetName**|The worksheet in which the table is found.|
+|**tableName**|**TableName**|The name of the table. If not specified, the contents of the worksheet will be used.|
+|**updateType**|**UpdateType**|Required - The type of change to make to the table. Can be one of the following values:<ul><li><code>update</code> - Replaces the contents of the table in OneDrive.</li><li><code>append</code> - Adds the payload to the end of the table in OneDrive by creating new rows.</li></ul>|
 
 <a name="excel-output-code"></a>
-### <a name="excel-output---usage"></a>Dane wyjściowe programu Excel — użycie
+### <a name="excel-output---usage"></a>Excel output - usage
 
-To powiązanie wymaga następujących uprawnień usługi Azure AD:
+This binding requires the following Azure AD permissions:
 
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Uzyskaj pełny dostęp do plików użytkownika|
+|Microsoft Graph|Have full access to user files|
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- ciąg [] []
-- Newtonsoft. JSON. LINQ. JObject
-- Microsoft. Graph. skoroszyty
-- Niestandardowe typy obiektów (przy użyciu powiązania modelu strukturalnego)
+The binding exposes the following types to .NET functions:
+- string[][]
+- Newtonsoft.Json.Linq.JObject
+- Microsoft.Graph.WorkbookTable
+- Custom object types (using structural model binding)
 
 
 
 
 
 <a name="onedrive-input"></a>
-## <a name="file-input"></a>Dane wejściowe pliku
+## <a name="file-input"></a>File input
 
-Powiązanie danych wejściowych pliku usługi OneDrive odczytuje zawartość pliku przechowywanego w usłudze OneDrive.
+The OneDrive File input binding reads the contents of a file stored in OneDrive.
 
-Ta sekcja zawiera następujące podsekcje:
+This section contains the following subsections:
 
 * [Przykład](#file-input---example)
 * [Attributes](#file-input---attributes)
 * [Konfiguracja](#file-input---configuration)
 * [Użycie](#file-input---usage)
 
-### <a name="file-input---example"></a>Dane wejściowe pliku — przykład
+### <a name="file-input---example"></a>File input - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#file-input---c-script-example)
+* [C# script (.csx)](#file-input---c-script-example)
 * [JavaScript](#file-input---javascript-example)
 
-#### <a name="file-input---c-script-example"></a>Dane wejściowe pliku C# — przykład skryptu
+#### <a name="file-input---c-script-example"></a>File input - C# script example
 
-Poniższy przykład odczytuje plik, który jest przechowywany w usłudze OneDrive.
+The following example reads a file that is stored in OneDrive.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym pliku w usłudze OneDrive:
+The *function.json* file defines an HTTP trigger with a OneDrive file input binding:
 
 ```json
 {
@@ -588,7 +585,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym pliku 
 }
 ```
 
-Kod C# skryptu odczytuje plik określony w ciągu zapytania i rejestruje jego długość:
+The C# script code reads the file specified in the query string and logs its length:
 
 ```csharp
 using System.Net;
@@ -600,11 +597,11 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger lo
 }
 ```
 
-#### <a name="file-input---javascript-example"></a>Dane wejściowe pliku — przykład JavaScript
+#### <a name="file-input---javascript-example"></a>File input - JavaScript example
 
-Poniższy przykład odczytuje plik, który jest przechowywany w usłudze OneDrive.
+The following example reads a file that is stored in OneDrive.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym pliku w usłudze OneDrive:
+The *function.json* file defines an HTTP trigger with a OneDrive file input binding:
 
 ```json
 {
@@ -632,7 +629,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym pliku 
 }
 ```
 
-Poniższy kod JavaScript odczytuje plik określony w ciągu zapytania i zwraca jego długość.
+The following JavaScript code reads the file specified in the query string and returns its length.
 
 ```js
 module.exports = function (context, req) {
@@ -643,38 +640,38 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-input---attributes"></a>Wprowadzanie plików — atrybuty
+### <a name="file-input---attributes"></a>File input - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [usługi OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribute.
 
-### <a name="file-input---configuration"></a>Dane wejściowe pliku — konfiguracja
+### <a name="file-input---configuration"></a>File input - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `OneDrive`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `OneDrive` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wejściowych pliku w usłudze OneDrive z kodu](#onedrive-input-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `onedrive`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `in`.|
-|**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
-|**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
-|**path**|**Ścieżka**|Wymagane — ścieżka do pliku w usłudze OneDrive.|
+|**name**||Required - the variable name used in function code for the file. See [Using a OneDrive file input binding from code](#onedrive-input-code).|
+|**type**||Required - must be set to `onedrive`.|
+|**direction**||Required - must be set to `in`.|
+|**identity**|**Tożsamość**|Required - The identity that will be used to perform the action. Can be one of the following values:<ul><li><code>userFromRequest</code> - Only valid with [HTTP trigger]. Uses the identity of the calling user.</li><li><code>userFromId</code> - Uses the identity of a previously logged-in user with the specified ID. See the <code>userId</code> property.</li><li><code>userFromToken</code> - Uses the identity represented by the specified token. See the <code>userToken</code> property.</li><li><code>clientCredentials</code> - Uses the identity of the function app.</li></ul>|
+|**userId**|**UserId**  |Needed if and only if _identity_ is set to `userFromId`. A user principal ID associated with a previously logged-in user.|
+|**userToken**|**UserToken**|Needed if and only if _identity_ is set to `userFromToken`. A token valid for the function app. |
+|**path**|**Ścieżka**|Required - the path in OneDrive to the file.|
 
 <a name="onedrive-input-code"></a>
-### <a name="file-input---usage"></a>Wprowadzanie plików — użycie
+### <a name="file-input---usage"></a>File input - usage
 
-To powiązanie wymaga następujących uprawnień usługi Azure AD:
+This binding requires the following Azure AD permissions:
 
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Odczytuj pliki użytkownika|
+|Microsoft Graph|Read user files|
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- Byte []
+The binding exposes the following types to .NET functions:
+- byte[]
 - Stream
 - string
-- Microsoft. Graph. DriveItem
+- Microsoft.Graph.DriveItem
 
 
 
@@ -682,29 +679,29 @@ Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
 
 
 <a name="onedrive-output"></a>
-## <a name="file-output"></a>Dane wyjściowe pliku
+## <a name="file-output"></a>File output
 
-Powiązanie danych wyjściowych pliku usługi OneDrive modyfikuje zawartość pliku przechowywanego w usłudze OneDrive.
+The OneDrive file output binding modifies the contents of a file stored in OneDrive.
 
-Ta sekcja zawiera następujące podsekcje:
+This section contains the following subsections:
 
 * [Przykład](#file-output---example)
 * [Attributes](#file-output---attributes)
 * [Konfiguracja](#file-output---configuration)
 * [Użycie](#file-output---usage)
 
-### <a name="file-output---example"></a>Dane wyjściowe pliku — przykład
+### <a name="file-output---example"></a>File output - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#file-output---c-script-example)
+* [C# script (.csx)](#file-output---c-script-example)
 * [JavaScript](#file-output---javascript-example)
 
-#### <a name="file-output---c-script-example"></a>Wyjście pliku — C# przykład skryptu
+#### <a name="file-output---c-script-example"></a>File output - C# script example
 
-Poniższy przykład zapisuje do pliku, który jest przechowywany w usłudze OneDrive.
+The following example writes to a file that is stored in OneDrive.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym usługi OneDrive:
+The *function.json* file defines an HTTP trigger with a OneDrive output binding:
 
 ```json
 {
@@ -732,7 +729,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym usług
 }
 ```
 
-Kod C# skryptu Pobiera tekst z ciągu zapytania i zapisuje go w pliku tekstowym (FunctionsTest. txt, zgodnie z definicją w powyższym przykładzie), w katalogu głównym usługi OneDrive obiektu wywołującego:
+The C# script code gets text from the query string and writes it to a text file (FunctionsTest.txt as defined in the preceding example) at the root of the caller's OneDrive:
 
 ```csharp
 using System.Net;
@@ -750,11 +747,11 @@ public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile
 }
 ```
 
-#### <a name="file-output---javascript-example"></a>Wyjście pliku — przykład JavaScript
+#### <a name="file-output---javascript-example"></a>File output - JavaScript example
 
-Poniższy przykład zapisuje do pliku, który jest przechowywany w usłudze OneDrive.
+The following example writes to a file that is stored in OneDrive.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym usługi OneDrive:
+The *function.json* file defines an HTTP trigger with a OneDrive output binding:
 
 ```json
 {
@@ -782,7 +779,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym usług
 }
 ```
 
-Kod JavaScript Pobiera tekst z ciągu zapytania i zapisuje go w pliku tekstowym (FunctionsTest. txt, zgodnie z definicją w konfiguracji powyżej), w katalogu głównym usługi OneDrive obiektu wywołującego.
+The JavaScript code gets text from the query string and writes it to a text file (FunctionsTest.txt as defined in the config above) at the root of the caller's OneDrive.
 
 ```js
 module.exports = function (context, req) {
@@ -791,67 +788,67 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-output---attributes"></a>Dane wyjściowe pliku — atrybuty
+### <a name="file-output---attributes"></a>File output - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [usługi OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribute.
 
-### <a name="file-output---configuration"></a>Wyjście pliku — konfiguracja
+### <a name="file-output---configuration"></a>File output - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `OneDrive`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `OneDrive` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wyjściowych pliku usługi OneDrive z kodu](#onedrive-output-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `onedrive`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `out`.|
-|**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**Nazwa** |**Nazwa** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
-|**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
-|**path**|**Ścieżka**|Wymagane — ścieżka do pliku w usłudze OneDrive.|
+|**name**||Required - the variable name used in function code for file. See [Using a OneDrive file output binding from code](#onedrive-output-code).|
+|**type**||Required - must be set to `onedrive`.|
+|**direction**||Required - must be set to `out`.|
+|**identity**|**Tożsamość**|Required - The identity that will be used to perform the action. Can be one of the following values:<ul><li><code>userFromRequest</code> - Only valid with [HTTP trigger]. Uses the identity of the calling user.</li><li><code>userFromId</code> - Uses the identity of a previously logged-in user with the specified ID. See the <code>userId</code> property.</li><li><code>userFromToken</code> - Uses the identity represented by the specified token. See the <code>userToken</code> property.</li><li><code>clientCredentials</code> - Uses the identity of the function app.</li></ul>|
+|**UserId** |**userId** |Needed if and only if _identity_ is set to `userFromId`. A user principal ID associated with a previously logged-in user.|
+|**userToken**|**UserToken**|Needed if and only if _identity_ is set to `userFromToken`. A token valid for the function app. |
+|**path**|**Ścieżka**|Required - the path in OneDrive to the file.|
 
 <a name="onedrive-output-code"></a>
-#### <a name="file-output---usage"></a>Wyjście pliku — użycie
+#### <a name="file-output---usage"></a>File output - usage
 
-To powiązanie wymaga następujących uprawnień usługi Azure AD:
+This binding requires the following Azure AD permissions:
 
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Uzyskaj pełny dostęp do plików użytkownika|
+|Microsoft Graph|Have full access to user files|
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- Byte []
+The binding exposes the following types to .NET functions:
+- byte[]
 - Stream
 - string
-- Microsoft. Graph. DriveItem
+- Microsoft.Graph.DriveItem
 
 
 
 
 
 <a name="outlook-output"></a>
-## <a name="outlook-output"></a>Dane wyjściowe programu Outlook
+## <a name="outlook-output"></a>Outlook output
 
-Powiązanie danych wyjściowych wiadomości programu Outlook wysyła wiadomość e-mail za pomocą programu Outlook.
+The Outlook message output binding sends a mail message through Outlook.
 
-Ta sekcja zawiera następujące podsekcje:
+This section contains the following subsections:
 
 * [Przykład](#outlook-output---example)
 * [Attributes](#outlook-output---attributes)
 * [Konfiguracja](#outlook-output---configuration)
 * [Użycie](#outlook-output---usage)
 
-### <a name="outlook-output---example"></a>Dane wyjściowe programu Outlook — przykład
+### <a name="outlook-output---example"></a>Outlook output - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#outlook-output---c-script-example)
+* [C# script (.csx)](#outlook-output---c-script-example)
 * [JavaScript](#outlook-output---javascript-example)
 
-#### <a name="outlook-output---c-script-example"></a>Dane wyjściowe programu C# Outlook — przykład skryptu
+#### <a name="outlook-output---c-script-example"></a>Outlook output - C# script example
 
-Poniższy przykład wysyła wiadomość e-mail za pośrednictwem programu Outlook.
+The following example sends an email through Outlook.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym wiadomości programu Outlook:
+The *function.json* file defines an HTTP trigger with an Outlook message output binding:
 
 ```json
 {
@@ -872,7 +869,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym wiadom
 }
 ```
 
-Kod C# skryptu wysyła wiadomość z wywołującego do odbiorcy określonego w ciągu zapytania:
+The C# script code sends a mail from the caller to a recipient specified in the query string:
 
 ```csharp
 using System.Net;
@@ -902,11 +899,11 @@ public class Recipient {
 }
 ```
 
-#### <a name="outlook-output---javascript-example"></a>Dane wyjściowe programu Outlook — przykład JavaScript
+#### <a name="outlook-output---javascript-example"></a>Outlook output - JavaScript example
 
-Poniższy przykład wysyła wiadomość e-mail za pośrednictwem programu Outlook.
+The following example sends an email through Outlook.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym wiadomości programu Outlook:
+The *function.json* file defines an HTTP trigger with an Outlook message output binding:
 
 ```json
 {
@@ -927,7 +924,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wyjściowym wiadom
 }
 ```
 
-Kod JavaScript wysyła wiadomość z wywołującego do odbiorcy określonego w ciągu zapytania:
+The JavaScript code sends a mail from the caller to a recipient specified in the query string:
 
 ```js
 module.exports = function (context, req) {
@@ -942,37 +939,37 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="outlook-output---attributes"></a>Dane wyjściowe programu Outlook — atrybuty
+### <a name="outlook-output---attributes"></a>Outlook output - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [programu Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) attribute.
 
-### <a name="outlook-output---configuration"></a>Dane wyjściowe programu Outlook — konfiguracja
+### <a name="outlook-output---configuration"></a>Outlook output - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `Outlook`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `Outlook` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `outlook`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `out`.|
-|**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
-|**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
+|**name**||Required - the variable name used in function code for the mail message. See [Using an Outlook message output binding from code](#outlook-output-code).|
+|**type**||Required - must be set to `outlook`.|
+|**direction**||Required - must be set to `out`.|
+|**identity**|**Tożsamość**|Required - The identity that will be used to perform the action. Can be one of the following values:<ul><li><code>userFromRequest</code> - Only valid with [HTTP trigger]. Uses the identity of the calling user.</li><li><code>userFromId</code> - Uses the identity of a previously logged-in user with the specified ID. See the <code>userId</code> property.</li><li><code>userFromToken</code> - Uses the identity represented by the specified token. See the <code>userToken</code> property.</li><li><code>clientCredentials</code> - Uses the identity of the function app.</li></ul>|
+|**userId**|**UserId**  |Needed if and only if _identity_ is set to `userFromId`. A user principal ID associated with a previously logged-in user.|
+|**userToken**|**UserToken**|Needed if and only if _identity_ is set to `userFromToken`. A token valid for the function app. |
 
 <a name="outlook-output-code"></a>
-### <a name="outlook-output---usage"></a>Dane wyjściowe programu Outlook — użycie
+### <a name="outlook-output---usage"></a>Outlook output - usage
 
-To powiązanie wymaga następujących uprawnień usługi Azure AD:
+This binding requires the following Azure AD permissions:
 
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Wyślij wiadomość jako użytkownika|
+|Microsoft Graph|Send mail as user|
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- Microsoft. Graph. Message
-- Newtonsoft. JSON. LINQ. JObject
+The binding exposes the following types to .NET functions:
+- Microsoft.Graph.Message
+- Newtonsoft.Json.Linq.JObject
 - string
-- Niestandardowe typy obiektów (przy użyciu powiązania modelu strukturalnego)
+- Custom object types (using structural model binding)
 
 
 
@@ -981,42 +978,42 @@ Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
 
 ## <a name="webhooks"></a>Elementy webhook
 
-Elementy webhook umożliwiają reagowanie na zdarzenia w Microsoft Graph. Aby obsługiwać elementy webhook, funkcje są konieczne do tworzenia, odświeżania i reagowania na _subskrypcje elementu webhook_. Kompletne rozwiązanie elementu webhook wymaga połączenia następujących powiązań:
-- [Wyzwalacz Microsoft Graph elementu webhook](#webhook-trigger) umożliwia reagowanie na przychodzące elementy webhook.
-- [Powiązanie danych wejściowych subskrypcji elementu webhook](#webhook-input) umożliwia wyświetlenie listy istniejących subskrypcji i ich opcjonalne odświeżenie. Microsoft Graph
-- [Microsoft Graph powiązanie danych wyjściowych subskrypcji elementu webhook](#webhook-output) umożliwia tworzenie lub usuwanie subskrypcji elementu webhook.
+Webhooks allow you to react to events in the Microsoft Graph. To support webhooks, functions are needed to create, refresh, and react to _webhook subscriptions_. A complete webhook solution requires a combination of the following bindings:
+- A [Microsoft Graph webhook trigger](#webhook-trigger) allows you to react to an incoming webhook.
+- A [Microsoft Graph webhook subscription input binding](#webhook-input) allows you to list existing subscriptions and optionally refresh them.
+- A [Microsoft Graph webhook subscription output binding](#webhook-output) allows you to create or delete webhook subscriptions.
 
-Powiązania same nie wymagają żadnych uprawnień usługi Azure AD, ale musisz zażądać uprawnień odpowiednich dla typu zasobu, do którego chcesz reagować. Aby uzyskać listę uprawnień wymaganych dla każdego typu zasobu, zobacz [uprawnienia do subskrypcji](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
+The bindings themselves do not require any Azure AD permissions, but you need to request permissions relevant to the resource type you wish to react to. For a list of which permissions are needed for each resource type, see [subscription permissions](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
-Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Praca z elementami webhook w Microsoft Graph].
-
-
+For more information about webhooks, see [Working with webhooks in Microsoft Graph].
 
 
 
-## <a name="webhook-trigger"></a>Wyzwalacz elementu webhook
 
-Wyzwalacz Microsoft Graph elementu webhook umożliwia funkcji reagowanie na przychodzące elementy webhook z Microsoft Graph. Każde wystąpienie tego wyzwalacza może reagować na jeden Microsoft Graph typ zasobu.
 
-Ta sekcja zawiera następujące podsekcje:
+## <a name="webhook-trigger"></a>Webhook trigger
+
+The Microsoft Graph webhook trigger allows a function to react to an incoming webhook from the Microsoft Graph. Each instance of this trigger can react to one Microsoft Graph resource type.
+
+This section contains the following subsections:
 
 * [Przykład](#webhook-trigger---example)
 * [Attributes](#webhook-trigger---attributes)
 * [Konfiguracja](#webhook-trigger---configuration)
 * [Użycie](#webhook-trigger---usage)
 
-### <a name="webhook-trigger---example"></a>Wyzwalacz elementu webhook — przykład
+### <a name="webhook-trigger---example"></a>Webhook trigger - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#webhook-trigger---c-script-example)
+* [C# script (.csx)](#webhook-trigger---c-script-example)
 * [JavaScript](#webhook-trigger---javascript-example)
 
-#### <a name="webhook-trigger---c-script-example"></a>Wyzwalacz elementu webhook C# — przykład skryptu
+#### <a name="webhook-trigger---c-script-example"></a>Webhook trigger - C# script example
 
-W poniższym przykładzie przedstawiono obsługę elementów webhook dla przychodzących komunikatów programu Outlook. Aby użyć wyzwalacza elementu webhook, możesz [utworzyć subskrypcję](#webhook-output---example) [, aby uniemożliwić](#webhook-subscription-refresh) jej wygaśnięcie.
+The following example handles webhooks for incoming Outlook messages. To use a webhook trigger you [create a subscription](#webhook-output---example), and you can [refresh the subscription](#webhook-subscription-refresh) to prevent it from expiring.
 
-Plik *Function. JSON* definiuje wyzwalacz elementu webhook:
+The *function.json* file defines a webhook trigger:
 
 ```json
 {
@@ -1032,7 +1029,7 @@ Plik *Function. JSON* definiuje wyzwalacz elementu webhook:
 }
 ```
 
-Kod C# skryptu reaguje na przychodzące wiadomości e-mail i rejestruje treść nadawców wysyłanych przez odbiorcę oraz zawierający "Azure Functions" w temacie:
+The C# script code reacts to incoming mail messages and logs the body of those sent by the recipient and containing "Azure Functions" in the subject:
 
 ```csharp
 #r "Microsoft.Graph"
@@ -1051,11 +1048,11 @@ public static async Task Run(Message msg, ILogger log)
 }
 ```
 
-#### <a name="webhook-trigger---javascript-example"></a>Wyzwalacz elementu webhook — przykład JavaScript
+#### <a name="webhook-trigger---javascript-example"></a>Webhook trigger - JavaScript example
 
-W poniższym przykładzie przedstawiono obsługę elementów webhook dla przychodzących komunikatów programu Outlook. Aby użyć wyzwalacza elementu webhook, możesz [utworzyć subskrypcję](#webhook-output---example) [, aby uniemożliwić](#webhook-subscription-refresh) jej wygaśnięcie.
+The following example handles webhooks for incoming Outlook messages. To use a webhook trigger you [create a subscription](#webhook-output---example), and you can [refresh the subscription](#webhook-subscription-refresh) to prevent it from expiring.
 
-Plik *Function. JSON* definiuje wyzwalacz elementu webhook:
+The *function.json* file defines a webhook trigger:
 
 ```json
 {
@@ -1071,7 +1068,7 @@ Plik *Function. JSON* definiuje wyzwalacz elementu webhook:
 }
 ```
 
-Kod JavaScript reaguje na przychodzące wiadomości e-mail i rejestruje treść nadawców wysyłanych przez odbiorcę oraz zawierający "Azure Functions" w temacie:
+The JavaScript code reacts to incoming mail messages and logs the body of those sent by the recipient and containing "Azure Functions" in the subject:
 
 ```js
 module.exports = function (context) {
@@ -1085,57 +1082,57 @@ module.exports = function (context) {
 };
 ```
 
-### <a name="webhook-trigger---attributes"></a>Wyzwalacz elementu webhook — atrybuty
+### <a name="webhook-trigger---attributes"></a>Webhook trigger - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [GraphWebhookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookTriggerAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [GraphWebhookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookTriggerAttribute.cs) attribute.
 
-### <a name="webhook-trigger---configuration"></a>Wyzwalacz elementu webhook — konfiguracja
+### <a name="webhook-trigger---configuration"></a>Webhook trigger - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `GraphWebhookTrigger`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `GraphWebhookTrigger` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `graphWebhook`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `trigger`.|
-|**resourceType**|**ResourceType**|Wymagane — zasób grafu, dla którego ta funkcja powinna reagować na elementy webhook. Może być jedną z następujących wartości:<ul><li><code>#Microsoft.Graph.Message</code> — zmiany wprowadzone w komunikatach programu Outlook.</li><li><code>#Microsoft.Graph.DriveItem</code> — zmiany wprowadzone do elementów głównych usługi OneDrive.</li><li><code>#Microsoft.Graph.Contact</code> — zmiany kontaktów osobistych w programie Outlook.</li><li><code>#Microsoft.Graph.Event</code> — zmiany wprowadzone do elementów kalendarza programu Outlook.</li></ul>|
+|**name**||Required - the variable name used in function code for the mail message. See [Using an Outlook message output binding from code](#outlook-output-code).|
+|**type**||Required - must be set to `graphWebhook`.|
+|**direction**||Required - must be set to `trigger`.|
+|**resourceType**|**ResourceType**|Required - the graph resource for which this function should respond to webhooks. Can be one of the following values:<ul><li><code>#Microsoft.Graph.Message</code> - changes made to Outlook messages.</li><li><code>#Microsoft.Graph.DriveItem</code> - changes made to OneDrive root items.</li><li><code>#Microsoft.Graph.Contact</code> - changes made to personal contacts in Outlook.</li><li><code>#Microsoft.Graph.Event</code> - changes made to Outlook calendar items.</li></ul>|
 
 > [!Note]
-> Aplikacja funkcji może mieć tylko jedną funkcję, która jest zarejestrowana dla danej wartości `resourceType`.
+> A function app can only have one function that is registered against a given `resourceType` value.
 
-### <a name="webhook-trigger---usage"></a>Wyzwalacz elementu webhook — użycie
+### <a name="webhook-trigger---usage"></a>Webhook trigger - usage
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- Microsoft Graph typy zestawu SDK odpowiednie dla typu zasobu, takie jak `Microsoft.Graph.Message` lub `Microsoft.Graph.DriveItem`.
-- Niestandardowe typy obiektów (przy użyciu powiązania modelu strukturalnego)
+The binding exposes the following types to .NET functions:
+- Microsoft Graph SDK types relevant to the resource type, such as `Microsoft.Graph.Message` or `Microsoft.Graph.DriveItem`.
+- Custom object types (using structural model binding)
 
 
 
 
 <a name="webhook-input"></a>
-## <a name="webhook-input"></a>Wejście elementu webhook
+## <a name="webhook-input"></a>Webhook input
 
-Powiązanie danych wejściowych elementu webhook Microsoft Graph umożliwia pobranie listy subskrypcji zarządzanych przez tę aplikację funkcji. Powiązanie odczytuje z magazynu aplikacji funkcji, więc nie odzwierciedla innych subskrypcji utworzonych spoza aplikacji.
+The Microsoft Graph webhook input binding allows you to retrieve the list of subscriptions managed by this function app. The binding reads from function app storage, so it does not reflect other subscriptions created from outside the app.
 
-Ta sekcja zawiera następujące podsekcje:
+This section contains the following subsections:
 
 * [Przykład](#webhook-input---example)
 * [Attributes](#webhook-input---attributes)
 * [Konfiguracja](#webhook-input---configuration)
 * [Użycie](#webhook-input---usage)
 
-### <a name="webhook-input---example"></a>Wejście elementu webhook — przykład
+### <a name="webhook-input---example"></a>Webhook input - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#webhook-input---c-script-example)
+* [C# script (.csx)](#webhook-input---c-script-example)
 * [JavaScript](#webhook-input---javascript-example)
 
-#### <a name="webhook-input---c-script-example"></a>Dane wejściowe elementu webhook — C# przykład skryptu
+#### <a name="webhook-input---c-script-example"></a>Webhook input - C# script example
 
-Poniższy przykład pobiera wszystkie subskrypcje dla użytkownika wywołującego i usuwa je.
+The following example gets all subscriptions for the calling user and deletes them.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym subskrypcji i powiązanie danych wyjściowych subskrypcji, które używa akcji usuwania:
+The *function.json* file defines an HTTP trigger with a subscription input binding and a subscription output binding that uses the delete action:
 
 ```json
 {
@@ -1168,7 +1165,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym subskr
 }
 ```
 
-Kod C# skryptu pobiera subskrypcje i usuwa je:
+The C# script code gets the subscriptions and deletes them:
 
 ```csharp
 using System.Net;
@@ -1185,11 +1182,11 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 }
 ```
 
-#### <a name="webhook-input---javascript-example"></a>Dane wejściowe elementu webhook — przykład JavaScript
+#### <a name="webhook-input---javascript-example"></a>Webhook input - JavaScript example
 
-Poniższy przykład pobiera wszystkie subskrypcje dla użytkownika wywołującego i usuwa je.
+The following example gets all subscriptions for the calling user and deletes them.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym subskrypcji i powiązanie danych wyjściowych subskrypcji, które używa akcji usuwania:
+The *function.json* file defines an HTTP trigger with a subscription input binding and a subscription output binding that uses the delete action:
 
 ```json
 {
@@ -1222,7 +1219,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem wejściowym subskr
 }
 ```
 
-Kod JavaScript pobiera subskrypcje i usuwa je:
+The JavaScript code gets the subscriptions and deletes them:
 
 ```js
 module.exports = function (context, req) {
@@ -1237,56 +1234,56 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="webhook-input---attributes"></a>Wejście elementu webhook — atrybuty
+### <a name="webhook-input---attributes"></a>Webhook input - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) attribute.
 
-### <a name="webhook-input---configuration"></a>Dane wejściowe elementu webhook — konfiguracja
+### <a name="webhook-input---configuration"></a>Webhook input - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `GraphWebhookSubscription`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `GraphWebhookSubscription` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `graphWebhookSubscription`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `in`.|
-|**filtru**|**Filtru**| Jeśli wartość jest ustawiona na `userFromRequest`, powiązanie będzie pobierać tylko subskrypcje należące do użytkownika wywołującego (prawidłowe tylko w przypadku [Wyzwalacz HTTP]).| 
+|**name**||Required - the variable name used in function code for the mail message. See [Using an Outlook message output binding from code](#outlook-output-code).|
+|**type**||Required - must be set to `graphWebhookSubscription`.|
+|**direction**||Required - must be set to `in`.|
+|**filter**|**Filter**| If set to `userFromRequest`, then the binding will only retrieve subscriptions owned by the calling user (valid only with [HTTP trigger]).| 
 
-### <a name="webhook-input---usage"></a>Dane wejściowe elementu webhook
+### <a name="webhook-input---usage"></a>Webhook input - usage
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- ciąg []
-- Niestandardowe tablice typów obiektów
-- Newtonsoft. JSON. LINQ. JObject []
-- Microsoft. Graph. Subscription []
-
-
+The binding exposes the following types to .NET functions:
+- string[]
+- Custom object type arrays
+- Newtonsoft.Json.Linq.JObject[]
+- Microsoft.Graph.Subscription[]
 
 
 
-## <a name="webhook-output"></a>Wyjście elementu webhook
 
-Powiązanie danych wyjściowych subskrypcji elementu webhook umożliwia tworzenie, usuwanie i odświeżanie subskrypcji elementu webhook w Microsoft Graph.
 
-Ta sekcja zawiera następujące podsekcje:
+## <a name="webhook-output"></a>Webhook output
+
+The webhook subscription output binding allows you to create, delete, and refresh webhook subscriptions in the Microsoft Graph.
+
+This section contains the following subsections:
 
 * [Przykład](#webhook-output---example)
 * [Attributes](#webhook-output---attributes)
 * [Konfiguracja](#webhook-output---configuration)
 * [Użycie](#webhook-output---usage)
 
-### <a name="webhook-output---example"></a>Dane wyjściowe elementu webhook — przykład
+### <a name="webhook-output---example"></a>Webhook output - example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#webhook-output---c-script-example)
+* [C# script (.csx)](#webhook-output---c-script-example)
 * [JavaScript](#webhook-output---javascript-example)
 
-#### <a name="webhook-output---c-script-example"></a>Wyjście elementu webhook C# — przykład skryptu
+#### <a name="webhook-output---c-script-example"></a>Webhook output - C# script example
 
-Poniższy przykład tworzy subskrypcję. Możesz [odświeżyć subskrypcję](#webhook-subscription-refresh) , aby uniemożliwić jej wygaśnięcie.
+The following example creates a subscription. You can [refresh the subscription](#webhook-subscription-refresh) to prevent it from expiring.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem danych wyjściowych subskrypcji przy użyciu akcji Create:
+The *function.json* file defines an HTTP trigger with a subscription output binding using the create action:
 
 ```json
 {
@@ -1317,7 +1314,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem danych wyjściowyc
 }
 ```
 
-Kod C# skryptu rejestruje element webhook, który będzie informować tę aplikację funkcji, gdy wywołujący użytkownik odbiera komunikat programu Outlook:
+The C# script code registers a webhook that will notify this function app when the calling user receives an Outlook message:
 
 ```csharp
 using System;
@@ -1332,11 +1329,11 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 }
 ```
 
-#### <a name="webhook-output---javascript-example"></a>Dane wyjściowe elementu webhook — przykład JavaScript
+#### <a name="webhook-output---javascript-example"></a>Webhook output - JavaScript example
 
-Poniższy przykład tworzy subskrypcję. Możesz [odświeżyć subskrypcję](#webhook-subscription-refresh) , aby uniemożliwić jej wygaśnięcie.
+The following example creates a subscription. You can [refresh the subscription](#webhook-subscription-refresh) to prevent it from expiring.
 
-Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem danych wyjściowych subskrypcji przy użyciu akcji Create:
+The *function.json* file defines an HTTP trigger with a subscription output binding using the create action:
 
 ```json
 {
@@ -1367,7 +1364,7 @@ Plik *Function. JSON* definiuje wyzwalacz http z powiązaniem danych wyjściowyc
 }
 ```
 
-Kod JavaScript rejestruje element webhook, który będzie powiadamiał tę aplikację funkcji, gdy wywołujący użytkownik odbiera komunikat programu Outlook:
+The JavaScript code registers a webhook that will notify this function app when the calling user receives an Outlook message:
 
 ```js
 const uuidv4 = require('uuid/v4');
@@ -1378,60 +1375,60 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="webhook-output---attributes"></a>Elementy wyjściowe elementu webhook — atrybuty
+### <a name="webhook-output---attributes"></a>Webhook output - attributes
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) attribute.
 
-### <a name="webhook-output---configuration"></a>Wyjście elementu webhook — konfiguracja
+### <a name="webhook-output---configuration"></a>Webhook output - configuration
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i atrybut `GraphWebhookSubscription`.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `GraphWebhookSubscription` attribute.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**Nazwij**||Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**||Wymagany — musi być ustawiony na wartość `graphWebhookSubscription`.|
-|**direction**||Wymagany — musi być ustawiony na wartość `out`.|
-|**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
-|**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
-|**transakcji**|**Akcja**|Wymagane — określa akcję, która ma zostać wykonana przez powiązanie. Może być jedną z następujących wartości:<ul><li><code>create</code> — rejestruje nową subskrypcję.</li><li><code>delete</code> — usuwa określoną subskrypcję.</li><li><code>refresh</code> — odświeża określoną subskrypcję, aby uniemożliwić jej wygaśnięcie.</li></ul>|
-|**subscriptionResource**|**SubscriptionResource**|Wymagana, jeśli i tylko wtedy, gdy _Akcja_ jest ustawiona na `create`. Określa zasób Microsoft Graph, który będzie monitorowany pod kątem zmian. Zobacz [Praca z elementami webhook w Microsoft Graph]. |
-|**changeType**|**ChangeType**|Wymagana, jeśli i tylko wtedy, gdy _Akcja_ jest ustawiona na `create`. Wskazuje typ zmiany w subskrybowanym zasobie, który zgłosi powiadomienie. Obsługiwane są następujące wartości: `created`, `updated`, `deleted`. Wiele wartości można łączyć za pomocą listy rozdzielanej przecinkami.|
+|**name**||Required - the variable name used in function code for the mail message. See [Using an Outlook message output binding from code](#outlook-output-code).|
+|**type**||Required - must be set to `graphWebhookSubscription`.|
+|**direction**||Required - must be set to `out`.|
+|**identity**|**Tożsamość**|Required - The identity that will be used to perform the action. Can be one of the following values:<ul><li><code>userFromRequest</code> - Only valid with [HTTP trigger]. Uses the identity of the calling user.</li><li><code>userFromId</code> - Uses the identity of a previously logged-in user with the specified ID. See the <code>userId</code> property.</li><li><code>userFromToken</code> - Uses the identity represented by the specified token. See the <code>userToken</code> property.</li><li><code>clientCredentials</code> - Uses the identity of the function app.</li></ul>|
+|**userId**|**UserId**  |Needed if and only if _identity_ is set to `userFromId`. A user principal ID associated with a previously logged-in user.|
+|**userToken**|**UserToken**|Needed if and only if _identity_ is set to `userFromToken`. A token valid for the function app. |
+|**action**|**Akcja**|Required - specifies the action the binding should perform. Can be one of the following values:<ul><li><code>create</code> - Registers a new subscription.</li><li><code>delete</code> - Deletes a specified subscription.</li><li><code>refresh</code> - Refreshes a specified subscription to keep it from expiring.</li></ul>|
+|**subscriptionResource**|**SubscriptionResource**|Needed if and only if the _action_ is set to `create`. Specifies the Microsoft Graph resource that will be monitored for changes. See [Working with webhooks in Microsoft Graph]. |
+|**changeType**|**ChangeType**|Needed if and only if the _action_ is set to `create`. Indicates the type of change in the subscribed resource that will raise a notification. The supported values are: `created`, `updated`, `deleted`. Multiple values can be combined using a comma-separated list.|
 
-### <a name="webhook-output---usage"></a>Dane wyjściowe elementu webhook — użycie
+### <a name="webhook-output---usage"></a>Webhook output - usage
 
-Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
+The binding exposes the following types to .NET functions:
 - string
-- Microsoft. Graph. Subscription
+- Microsoft.Graph.Subscription
 
 
 
 
 <a name="webhook-examples"></a>
-## <a name="webhook-subscription-refresh"></a>Odświeżanie subskrypcji elementu webhook
+## <a name="webhook-subscription-refresh"></a>Webhook subscription refresh
 
-Istnieją dwa podejścia do odświeżania subskrypcji:
+There are two approaches to refreshing subscriptions:
 
-- Użyj tożsamości aplikacji, aby obsłużyć wszystkie subskrypcje. Będzie to wymagało zgody od administratora Azure Active Directory. Mogą one być używane przez wszystkie języki obsługiwane przez Azure Functions.
-- Użyj tożsamości skojarzonej z każdą subskrypcją przez ręczne powiązanie każdego identyfikatora użytkownika. To wymaga pewnego niestandardowego kodu do wykonania powiązania. Może być używany tylko przez funkcje platformy .NET.
+- Use the application identity to deal with all subscriptions. This will require consent from an Azure Active Directory admin. This can be used by all languages supported by Azure Functions.
+- Use the identity associated with each subscription by manually binding each user ID. This will require some custom code to perform the binding. This can only be used by .NET functions.
 
-Ta sekcja zawiera przykład dla każdej z tych metod:
+This section contains an example for each of these approaches:
 
-* [Przykład tożsamości aplikacji](#webhook-subscription-refresh---app-identity-example)
-* [Przykład tożsamości użytkownika](#webhook-subscription-refresh---user-identity-example)
+* [App identity example](#webhook-subscription-refresh---app-identity-example)
+* [User identity example](#webhook-subscription-refresh---user-identity-example)
 
-### <a name="webhook-subscription-refresh---app-identity-example"></a>Odświeżanie subskrypcji elementu webhook — przykład tożsamości aplikacji
+### <a name="webhook-subscription-refresh---app-identity-example"></a>Webhook Subscription refresh - app identity example
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#skrypt (. CSX)](#app-identity-refresh---c-script-example)
+* [C# script (.csx)](#app-identity-refresh---c-script-example)
 * JavaScript
 
-### <a name="app-identity-refresh---c-script-example"></a>Odświeżanie tożsamości aplikacji C# — przykład skryptu
+### <a name="app-identity-refresh---c-script-example"></a>App identity refresh - C# script example
 
-W poniższym przykładzie zostanie użyta tożsamość aplikacji do odświeżenia subskrypcji.
+The following example uses the application identity to refresh a subscription.
 
-*Funkcja. JSON* definiuje wyzwalacz czasomierza z powiązaniem wejściowym subskrypcji i powiązaniem wyjściowym subskrypcji:
+The *function.json* defines a timer trigger with a subscription input binding and a  subscription output binding:
 
 ```json
 {
@@ -1459,7 +1456,7 @@ W poniższym przykładzie zostanie użyta tożsamość aplikacji do odświeżeni
 }
 ```
 
-Kod C# skryptu odświeża subskrypcje:
+The C# script code refreshes the subscriptions:
 
 ```csharp
 using System;
@@ -1478,11 +1475,11 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 }
 ```
 
-### <a name="app-identity-refresh---c-script-example"></a>Odświeżanie tożsamości aplikacji C# — przykład skryptu
+### <a name="app-identity-refresh---c-script-example"></a>App identity refresh - C# script example
 
-W poniższym przykładzie zostanie użyta tożsamość aplikacji do odświeżenia subskrypcji.
+The following example uses the application identity to refresh a subscription.
 
-*Funkcja. JSON* definiuje wyzwalacz czasomierza z powiązaniem wejściowym subskrypcji i powiązaniem wyjściowym subskrypcji:
+The *function.json* defines a timer trigger with a subscription input binding and a  subscription output binding:
 
 ```json
 {
@@ -1510,7 +1507,7 @@ W poniższym przykładzie zostanie użyta tożsamość aplikacji do odświeżeni
 }
 ```
 
-Kod JavaScript odświeża subskrypcje:
+The JavaScript code refreshes the subscriptions:
 
 ```js
 // This template uses application permissions and requires consent from an Azure Active Directory admin.
@@ -1528,11 +1525,11 @@ module.exports = function (context) {
 };
 ```
 
-### <a name="webhook-subscription-refresh---user-identity-example"></a>Odświeżanie subskrypcji elementu webhook — przykład tożsamości użytkownika
+### <a name="webhook-subscription-refresh---user-identity-example"></a>Webhook Subscription refresh - user identity example
 
-W poniższym przykładzie zostanie użyta tożsamość użytkownika w celu odświeżenia subskrypcji.
+The following example uses the user identity to refresh a subscription.
 
-Plik *Function. JSON* definiuje wyzwalacz czasomierza i odkłada powiązania danych wejściowych subskrypcji do kodu funkcji:
+The *function.json* file defines a timer trigger and defers the subscription input binding to the function code:
 
 ```json
 {
@@ -1553,7 +1550,7 @@ Plik *Function. JSON* definiuje wyzwalacz czasomierza i odkłada powiązania dan
 }
 ```
 
-Kod C# skryptu odświeża subskrypcje i tworzy powiązanie danych wyjściowych w kodzie przy użyciu tożsamości poszczególnych użytkowników:
+The C# script code refreshes the subscriptions and creates the output binding in code, using each user's identity:
 
 ```csharp
 using System;
@@ -1589,7 +1586,7 @@ public class UserSubscription {
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
 
-[Wyzwalacz HTTP]: functions-bindings-http-webhook.md
-[Praca z elementami webhook w Microsoft Graph]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
+[HTTP trigger]: functions-bindings-http-webhook.md
+[Working with webhooks in Microsoft Graph]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks

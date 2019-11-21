@@ -1,119 +1,115 @@
 ---
-title: Szacowanie kosztów planu zużycia w Azure Functions
-description: Dowiedz się, jak lepiej oszacować koszty, które mogą zostać naliczone podczas uruchamiania aplikacji funkcji w planie zużycia na platformie Azure.
-author: ggailey777
-ms.author: glenga
+title: Estimating Consumption plan costs in Azure Functions
+description: Learn how to better estimate the costs that you may incur when running your function app in a Consumption plan in Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: 0ff41eb511ad4513fc9bf5a2ded7ef47b08d12ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243309"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230857"
 ---
-# <a name="estimating-consumption-plan-costs"></a>Szacowanie kosztów planu zużycia
+# <a name="estimating-consumption-plan-costs"></a>Estimating Consumption plan costs
 
-Obecnie istnieją trzy typy planów hostingu dla aplikacji, która działa w Azure Functions, przy czym każdy plan ma własny model cen: 
+There are currently three types of hosting plans for an app that run in Azure Functions, with each plan having its own pricing model: 
 
 | Plan | Opis |
 | ---- | ----------- |
-| [**Wyrażon**](functions-scale.md#consumption-plan) | Opłata jest naliczana tylko za czas, w którym działa aplikacja funkcji. Ten plan obejmuje [bezpłatną][strona cennika] dotacji dla każdej subskrypcji.|
-| [**Tytułu**](functions-scale.md#premium-plan) | Zapewnia te same funkcje i mechanizm skalowania co plan zużycia, ale z ulepszoną wydajnością i dostępem do sieci wirtualnej. Koszt jest określany na podstawie wybranej warstwy cenowej. Aby dowiedzieć się więcej, zobacz [Azure Functions plan Premium](functions-premium-plan.md). |
-| [**Dedykowane (App Service)** ](functions-scale.md#app-service-plan) <br/>(warstwa podstawowa lub wyższa) | Jeśli musisz uruchomić program na dedykowanych maszynach wirtualnych lub w izolacji, użyj niestandardowych obrazów lub chcesz użyć nadmiernej pojemności planu App Service. Stosuje [regularne rozliczanie planu App Service](https://azure.microsoft.com/pricing/details/app-service/). Koszt jest określany na podstawie wybranej warstwy cenowej.|
+| [**Consumption**](functions-scale.md#consumption-plan) | You're only charged for the time that your function app runs. This plan includes a [free grant][pricing page] on a per subscription basis.|
+| [**Premium**](functions-scale.md#premium-plan) | Provides you with the same features and scaling mechanism as the Consumption plan, but with enhanced performance and VNET access. Cost is based on your chosen pricing tier. To learn more, see [Azure Functions Premium plan](functions-premium-plan.md). |
+| [**Dedicated (App Service)** ](functions-scale.md#app-service-plan) <br/>(basic tier or higher) | When you need to run in dedicated VMs or in isolation, use custom images, or want to use your excess App Service plan capacity. Uses [regular App Service plan billing](https://azure.microsoft.com/pricing/details/app-service/). Cost is based on your chosen pricing tier.|
 
-Wybrano plan, który najlepiej obsługuje wymagania dotyczące wydajności i kosztów. Aby dowiedzieć się więcej, zobacz [Azure Functions skalowanie i hosting](functions-scale.md).
+You chose the plan that best supports your function performance and cost requirements. To learn more, see [Azure Functions scale and hosting](functions-scale.md).
 
-Ten artykuł dotyczy tylko planu zużycia, ponieważ ten plan skutkuje zmiennymi kosztami. 
+This article deals only with the Consumption plan, since this plan results in variable costs. 
 
-Durable Functions można również uruchomić w planie zużycia. Aby dowiedzieć się więcej na temat zagadnień dotyczących kosztów podczas korzystania z Durable Functions, zobacz [Durable Functions rozliczenia](./durable/durable-functions-billing.md).
+Durable Functions can also run in a Consumption plan. To learn more about the cost considerations when using Durable Functions, see [Durable Functions billing](./durable/durable-functions-billing.md).
 
 ## <a name="consumption-plan-costs"></a>Koszty planu zużycia
 
-*Koszt* wykonania pojedynczego wykonania funkcji jest mierzony w *GB-sekund*. Koszt wykonywania jest obliczany przez połączenie jego użycia pamięci z jego czasem wykonywania. Funkcja, która działa dłużej o dłuższy koszt, tak jak funkcja, która zużywa więcej pamięci. 
+The execution *cost* of a single function execution is measured in *GB-seconds*. Execution cost is calculated by combining its memory usage with its execution time. A function that runs for longer costs more, as does a function that consumes more memory. 
 
-Rozważ przypadek, w którym ilość pamięci używanej przez funkcję pozostaje stała. W takim przypadku Obliczanie kosztów jest prostą liczebnością. Załóżmy na przykład, że funkcja zużywa 0,5 GB przez 3 sekundy. Następnie koszt wykonania wynosi `0.5GB * 3s = 1.5 GB-seconds`. 
+Consider a case where the amount of memory used by the function stays constant. In this case, calculating the cost is simple multiplication. For example, say that your function consumed 0.5 GB for 3 seconds. Then the execution cost is `0.5GB * 3s = 1.5 GB-seconds`. 
 
-Ponieważ użycie pamięci zmienia się w czasie, obliczenia jest zasadniczo całkowitą ilością użycia pamięci w czasie.  System wykonuje to obliczenie przez próbkowanie użycia pamięci przez proces (wraz z procesami podrzędnymi) w regularnych odstępach czasu. Jak wspomniano na [Strona cennika], użycie pamięci jest zaokrąglane do najbliższego zasobnika 128 MB. Gdy proces korzysta z 160 MB, naliczana jest opłata za 256 MB. Obliczenia uwzględniają współbieżność konta, czyli wiele współbieżnych wykonań funkcji w tym samym procesie.
+Since memory usage changes over time, the calculation is essentially the integral of memory usage over time.  The system does this calculation by sampling the memory usage of the process (along with child processes) at regular intervals. As mentioned on the [pricing page], memory usage is rounded up to the nearest 128-MB bucket. When your process is using 160 MB, you're charged for 256 MB. The calculation takes into account concurrency, which is multiple concurrent function executions in the same process.
 
 > [!NOTE]
-> Chociaż użycie procesora CPU nie jest brane pod uwagę bezpośrednio w kosztach wykonania, może mieć wpływ na koszt, gdy ma to wpływ na czas wykonywania funkcji.
+> While CPU usage isn't directly considered in execution cost, it can have an impact on the cost when it affects the execution time of the function.
 
-## <a name="other-related-costs"></a>Inne powiązane koszty
+## <a name="other-related-costs"></a>Other related costs
 
-Podczas szacowania całkowitego kosztu uruchamiania funkcji w dowolnym planie należy pamiętać, że środowisko uruchomieniowe funkcji korzysta z kilku innych usług platformy Azure, które są rozliczane osobno. Przy obliczaniu cen aplikacji funkcji wszystkie wyzwalacze i powiązania, które integrują się z innymi usługami platformy Azure, wymagają utworzenia i uregulowania tych dodatkowych usług. 
+When estimating the overall cost of running your functions in any plan, remember that the Functions runtime uses several other Azure services, which are each billed separately. When calculating pricing for function apps, any triggers and bindings you have that integrate with other Azure services require you to create and pay for those additional services. 
 
-W przypadku funkcji działających w ramach planu zużycia łączny koszt to koszt wykonywania funkcji, a także koszt przepustowości i dodatkowych usług. 
+For functions running in a Consumption plan, the total cost is the execution cost of your functions, plus the cost of bandwidth and additional services. 
 
-Podczas szacowania ogólnych kosztów aplikacji funkcji i powiązanych usług Użyj [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/?service=functions). 
+When estimating the overall costs of your function app and related services, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=functions). 
 
-| Koszt pokrewny | Opis |
+| Related cost | Opis |
 | ------------ | ----------- |
-| **Konto magazynu** | Każda aplikacja funkcji wymaga, aby masz skojarzone [konto usługi Azure Storage](../storage/common/storage-introduction.md#types-of-storage-accounts)ogólnego przeznaczenia, które jest [rozliczane osobno](https://azure.microsoft.com/pricing/details/storage/). To konto jest używane wewnętrznie przez środowisko uruchomieniowe funkcji, ale można go również użyć dla wyzwalaczy i powiązań magazynu. Jeśli nie masz konta magazynu, po utworzeniu aplikacji funkcji jest tworzona jedna z nich. Aby dowiedzieć się więcej, zobacz [wymagania dotyczące konta magazynu](functions-scale.md#storage-account-requirements).|
-| **Application Insights** | Funkcje programu opierają się na [Application Insights](../azure-monitor/app/app-insights-overview.md) , aby zapewnić środowisko monitorowania o wysokiej wydajności dla aplikacji funkcji. Chociaż nie jest to wymagane, należy [włączyć integrację Application Insights](functions-monitoring.md#enable-application-insights-integration). Każdy miesiąc obejmuje bezpłatne przyznawanie danych telemetrycznych. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). |
-| **Przepustowość sieci** | Nie płacisz za transfer danych między usługami platformy Azure w tym samym regionie. Można jednak nanieść koszty transferów danych wychodzących do innego regionu lub poza platformą Azure. Aby dowiedzieć się więcej, zobacz [szczegóły cennika dotyczącego przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/). |
+| **Konto magazynu** | Each function app requires that you have an associated General Purpose [Azure Storage account](../storage/common/storage-introduction.md#types-of-storage-accounts), which is [billed separately](https://azure.microsoft.com/pricing/details/storage/). This account is used internally by the Functions runtime, but you can also use it for Storage triggers and bindings. If you don't have a storage account, one is created for you when the function app is created. To learn more, see [Storage account requirements](functions-scale.md#storage-account-requirements).|
+| **Application Insights** | Functions relies on [Application Insights](../azure-monitor/app/app-insights-overview.md) to provide a high-performance monitoring experience for your function apps. While not required, you should [enable Application Insights integration](functions-monitoring.md#enable-application-insights-integration). A free grant of telemetry data is included every month. To learn more, see [the Azure Monitor pricing page](https://azure.microsoft.com/pricing/details/monitor/). |
+| **Network bandwidth** | You don't pay for data transfer between Azure services in the same region. However, you can incur costs for outbound data transfers to another region or outside of Azure. To learn more, see [Bandwidth pricing details](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
-## <a name="behaviors-affecting-execution-time"></a>Zachowania mające wpływ na czas wykonywania
+## <a name="behaviors-affecting-execution-time"></a>Behaviors affecting execution time
 
-Następujące zachowania funkcji mogą mieć wpływ na czas wykonywania:
+The following behaviors of your functions can impact the execution time:
 
-+ **Wyzwalacze i powiązania**: czas potrzebny do odczytu danych wejściowych z i zapisu danych wyjściowych do [powiązań funkcji](functions-triggers-bindings.md) jest liczony jako czas wykonywania. Na przykład, gdy funkcja używa powiązania danych wyjściowych do zapisywania komunikatu w kolejce usługi Azure Storage, czas wykonywania obejmuje czas potrzebny do zapisania komunikatu w kolejce, który jest uwzględniany w obliczaniu kosztu funkcji. 
++ **Triggers and bindings**: The time taken to read input from and write output to your [function bindings](functions-triggers-bindings.md) is counted as execution time. For example, when your function uses an output binding to write a message to an Azure storage queue, your execution time includes the time taken to write the message to the queue, which is included in the calculation of the function cost. 
 
-+ **Wykonywanie asynchroniczne**: czas oczekiwania funkcji na wyniki żądania asynchronicznego (`await` w C#) jest liczony jako czas wykonywania. Obliczenia GB i s są oparte na godzinie rozpoczęcia i zakończenia funkcji oraz użycia pamięci w tym okresie. Co dzieje się w tym czasie w odniesieniu do działania procesora CPU nie jest uwzględniane w obliczeniach. Przy użyciu [Durable Functions](durable/durable-functions-overview.md)można obniżyć koszty podczas operacji asynchronicznych. Za czas spędzony w funkcjach programu Orchestrator nie są naliczane opłaty.
++ **Asynchronous execution**: The time that your function waits for the results of an async request (`await` in C#) is counted as execution time. The GB-second calculation is based on the start and end time of the function and the memory usage over that period. What is happening over that time in terms of CPU activity isn't factored into the calculation. You may be able to reduce costs during asynchronous operations by using [Durable Functions](durable/durable-functions-overview.md). You're not billed for time spent at awaits in orchestrator functions.
 
-## <a name="view-execution-data"></a>Wyświetl dane wykonania
+## <a name="view-execution-data"></a>View execution data
 
-Na [fakturze](/azure/billing/billing-download-azure-invoice)można wyświetlić dane związane z kosztami **całkowitych wykonań — funkcje** i **czas wykonywania**, a także rzeczywiste koszty rozliczane. Te dane faktury są jednak miesięczną sumą dla przeszłego okresu faktury. 
+In [your invoice](/azure/billing/billing-download-azure-invoice), you can view the cost-related data of **Total Executions - Functions** and **Execution Time - Functions**, along with the actual billed costs. However, this invoice data is a monthly aggregate for a past invoice period. 
 
-Aby lepiej zrozumieć wpływ kosztów funkcji, możesz użyć Azure Monitor, aby wyświetlić metryki związane z kosztami, które są obecnie generowane przez aplikacje funkcji. Aby uzyskać te dane, można użyć narzędzia [Azure monitor Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) w [Azure Portal] lub interfejsie API REST.
+To better understand the cost impact of your functions, you can use Azure Monitor to view cost-related metrics currently being generated by your function apps. You can use either [Azure Monitor metrics explorer](../azure-monitor/platform/metrics-getting-started.md) in the [Azure portal] or REST APIs to get this data.
 
-### <a name="monitor-metrics-explorer"></a>Monitorowanie Eksploratora metryk
+### <a name="monitor-metrics-explorer"></a>Monitor metrics explorer
 
-Użyj [Eksploratora metryk Azure monitor](../azure-monitor/platform/metrics-getting-started.md) , aby wyświetlić dane dotyczące kosztów dla aplikacji funkcji planu zużycia w formacie graficznym. 
+Use [Azure Monitor metrics explorer](../azure-monitor/platform/metrics-getting-started.md) to view cost-related data for your Consumption plan function apps in a graphical format. 
 
-1. W górnej części [Azure Portal] w **usługach wyszukiwania, zasobach i** dokumentach wyszukiwania `monitor` i wybierz pozycję **Monitoruj** w obszarze **usługi**.
+1. At the top of the [Azure portal] in **Search services, resources, and docs**  search for `monitor` and select **Monitor** under **Services**.
 
-1. Po lewej stronie wybierz pozycję **metryki** > **Wybierz zasób**, a następnie użyj ustawień poniżej obrazu, aby wybrać aplikację funkcji.
+1. At the left, select **Metrics** > **Select a resource**, then use the settings below the image to choose your function app.
 
-    ![Wybierz zasób aplikacji funkcji](media/functions-consumption-costing/select-a-resource.png)
+    ![Select your function app resource](media/functions-consumption-costing/select-a-resource.png)
 
       
     |Ustawienie  |Sugerowana wartość  |Opis  |
     |---------|---------|---------|
-    | Subskrypcja    |  Twoja subskrypcja  | Subskrypcja z aplikacją funkcji.  |
-    | Grupa zasobów     | Twoja grupa zasobów  | Grupa zasobów zawierająca aplikację funkcji.   |
-    | Typ zasobu     |  App Services | Aplikacje funkcji są wyświetlane jako wystąpienia App Services w monitorze. |
-    | Zasób     |  Aplikacja funkcji  | Aplikacja funkcji do monitorowania.        |
+    | Subskrypcja    |  Twoja subskrypcja  | The subscription with your function app.  |
+    | Grupa zasobów     | Your resource group  | The resource group that contains your function app.   |
+    | Typ zasobu     |  App Services | Function apps are shown as App Services instances in Monitor. |
+    | Zasób     |  Your function app  | The function app to monitor.        |
 
-1. Wybierz pozycję **Zastosuj** , aby wybrać aplikację funkcji jako zasób do monitorowania.
+1. Select **Apply** to choose your function app as the resource to monitor.
 
-1. Z **metryki**wybierz kolejno pozycje **wykonywanie funkcji liczba** i **Suma** dla **agregacji**. Spowoduje to dodanie sumy liczby wykonań w wybranym okresie do wykresu.
+1. From **Metric**, choose **Function execution count** and **Sum** for **Aggregation**. This adds the sum of the execution counts during chosen period to the chart.
 
-    ![Zdefiniuj metrykę aplikacji funkcji, która ma zostać dodana do wykresu](media/functions-consumption-costing/monitor-metrics-add-metric.png)
+    ![Define a functions app metric to add to the chart](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. Wybierz pozycję **Dodaj metrykę** i powtórz kroki 2-4, aby dodać **jednostki wykonywania funkcji** do wykresu. 
+1. Select **Add metric** and repeat steps 2-4 to add **Function execution units** to the chart. 
 
-Wykres otrzymany zawiera sumy dla obu metryk wykonywania w wybranym zakresie czasu, co w tym przypadku jest dwie godziny.
+The resulting chart contains the totals for both execution metrics in the chosen time range, which in this case is two hours.
 
-![Wykres liczników wykonywania funkcji i jednostek wykonywania](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
+![Graph of function execution counts and execution units](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
 
-Ponieważ liczba jednostek wykonywania jest znacznie większa niż Liczba wykonań, wykres pokazuje tylko jednostki wykonywania.
+As the number of execution units is so much greater than the execution count, the chart just shows execution units.
 
-Ten wykres przedstawia łączną liczbę 1 110 000 000 `Function Execution Units` zużytych w ciągu dwóch godzin (w MEGABAJTach). Aby przekonwertować na GB sekund, Podziel na 1024000. W tym przykładzie aplikacja funkcji wykorzystana `1110000000 / 1024000 = 1083.98` GB-sekund. Możesz posłużyć się tą wartością i pomnożyć przez bieżącą cenę czasu wykonywania na[stronie]cennika [funkcji Functions], która zapewnia koszt tych dwóch godzin, przy założeniu, że już użyto bezpłatnych zasiłków czasu wykonywania. 
+This chart shows a total of 1.11 billion `Function Execution Units` consumed in a two-hour period, measured in MB-milliseconds. To convert to GB-seconds, divide by 1024000. In this example, the function app consumed `1110000000 / 1024000 = 1083.98` GB-seconds. You can take this value and multiply by the current price of execution time on the [Functions pricing page][pricing page], which gives you the cost of these two hours, assuming you've already used any free grants of execution time. 
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-[Interfejs wiersza polecenia platformy Azure](/cli/azure/) zawiera polecenie do pobierania metryk. Interfejsu wiersza polecenia można użyć z lokalnego środowiska poleceń lub bezpośrednio z portalu przy użyciu [Azure Cloud Shell](../cloud-shell/overview.md). Na przykład następujące polecenie [AZ monitor Metric list](/cli/azure/monitor/metrics#az-monitor-metrics-list) zwraca dane godzinowe w tym samym okresie użytym wcześniej.
+The [Azure CLI](/cli/azure/) has commands for retrieving metrics. You can use the CLI from a local command environment or directly from the portal using [Azure Cloud Shell](../cloud-shell/overview.md). For example, the following [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) command returns hourly data over same time period used before.
 
-Pamiętaj, aby zastąpić `<AZURE_SUBSCRIPTON_ID>` IDENTYFIKATORem subskrypcji platformy Azure, na którym działa polecenie.
+Make sure to replace `<AZURE_SUBSCRIPTON_ID>` with your Azure subscription ID running the command.
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
 ```
 
-To polecenie zwraca ładunek JSON, który wygląda podobnie do następującego przykładu:
+This command returns a JSON payload that looks like the following example:
 
 ```json
 {
@@ -192,15 +188,15 @@ To polecenie zwraca ładunek JSON, który wygląda podobnie do następującego p
   ]
 }
 ```
-Ta konkretna odpowiedź pokazuje, że od `2019-09-11T21:46` do `2019-09-11T23:18`, podczas którego aplikacja zużywa 1110000000 MB-milisekundy (1083,98 GB-s).
+This particular response shows that from `2019-09-11T21:46` to `2019-09-11T23:18`, during which the app consumed 1110000000 MB-milliseconds (1083.98 GB-seconds).
 
-## <a name="determine-memory-usage"></a>Określanie użycia pamięci
+## <a name="determine-memory-usage"></a>Determine memory usage
 
-Jednostki wykonywania funkcji są kombinacją czasu wykonywania i użycia pamięci, co sprawia, że jest trudną metryką do poznania użycia pamięci. Dane pamięci nie są obecnie dostępne w Azure Monitor. Jeśli jednak chcesz zoptymalizować użycie pamięci przez aplikację, można użyć danych licznika wydajności zebranych przez Application Insights.  
+Function execution units are a combination of execution time and your memory usage, which makes it a difficult metric for understanding memory usage. Memory data isn't a metric currently available through Azure Monitor. However, if you want to optimize the memory usage of your app, can use the performance counter data collected by Application Insights.  
 
-Jeśli jeszcze tego nie zrobiono, [włącz Application Insights w aplikacji funkcji](functions-monitoring.md#enable-application-insights-integration). Po włączeniu tej integracji można [wysyłać zapytania o dane telemetryczne w portalu](functions-monitoring.md#query-telemetry-data).  
+If you haven't already done so, [enable Application Insights in your function app](functions-monitoring.md#enable-application-insights-integration). With this integration enabled, you can [query this telemetry data in the portal](functions-monitoring.md#query-telemetry-data).  
 
-W obszarze **monitorowanie**wybierz pozycję **dzienniki (analiza)** , a następnie skopiuj poniższe zapytanie telemetryczne i wklej je do okna zapytania i wybierz polecenie **Uruchom**. To zapytanie zwraca całkowite użycie pamięci przy każdym próbkowanym czasie.
+Under **Monitoring**, select **Logs (Analytics)** , then copy the following telemetry query and paste it into the query window and select **Run**. This query returns the total memory usage at each sampled time.
 
 ```
 performanceCounters
@@ -208,20 +204,20 @@ performanceCounters
 | project timestamp, name, value
 ```
 
-Wyniki wyglądają podobnie jak w poniższym przykładzie:
+The results look like the following example:
 
-| Sygnatura czasowa \[UTC @ no__t-1          | name          | wartość       |
+| timestamp \[UTC\]          | name          | wartość       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14 @ no__t-0947 AM | Bajty prywatne | 209 932 288 |
-| 9/12/2019, 1:06:14 @ no__t-0994 AM | Bajty prywatne | 212 189 184 |
-| 9/12/2019, 1:06:30 @ no__t-0,010 AM | Bajty prywatne | 231 714 816 |
-| 9/12/2019, 1:07:15 @ no__t-0040 AM | Bajty prywatne | 210 591 744 |
-| 9/12/2019, 1:12:16 @ no__t-0285 AM | Bajty prywatne | 216 285 184 |
-| 9/12/2019, 1:12:31 @ no__t-0376 AM | Bajty prywatne | 235 806 720 |
+| 9/12/2019, 1:05:14\.947 AM | Private Bytes | 209,932,288 |
+| 9/12/2019, 1:06:14\.994 AM | Private Bytes | 212,189,184 |
+| 9/12/2019, 1:06:30\.010 AM | Private Bytes | 231,714,816 |
+| 9/12/2019, 1:07:15\.040 AM | Private Bytes | 210,591,744 |
+| 9/12/2019, 1:12:16\.285 AM | Private Bytes | 216,285,184 |
+| 9/12/2019, 1:12:31\.376 AM | Private Bytes | 235,806,720 |
 
-## <a name="function-level-metrics"></a>Metryki na poziomie funkcji
+## <a name="function-level-metrics"></a>Function-level metrics
 
-Azure Monitor śledzi metryki na poziomie zasobu, który dla funkcji jest aplikacją funkcji. Integracja Application Insights emituje metryki dla poszczególnych funkcji. Oto przykładowe zapytanie analityczne, aby uzyskać średni czas trwania funkcji:
+Azure Monitor tracks metrics at the resource level, which for Functions is the function app. Application Insights integration emits metrics on a per-function basis. Here's an example analytics query to get the average duration of a function:
 
 ```
 customMetrics
@@ -232,14 +228,14 @@ customMetrics
 
 | name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16 @ no__t — 0087                     |
-| QueueTrigger MaxDurationMs | 90 @ no__t-0249                     |
-| QueueTrigger MinDurationMs | 8 @ no__t — 0522                      |
+| QueueTrigger AvgDurationMs | 16\.087                     |
+| QueueTrigger MaxDurationMs | 90\.249                     |
+| QueueTrigger MinDurationMs | 8\.522                      |
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o monitorowaniu aplikacji funkcji](functions-monitoring.md)
+> [Learn more about Monitoring function apps](functions-monitoring.md)
 
-[Strona cennika]: https://azure.microsoft.com/pricing/details/functions/
+[pricing page]: https://azure.microsoft.com/pricing/details/functions/
 [Azure Portal]: https://portal.azure.com

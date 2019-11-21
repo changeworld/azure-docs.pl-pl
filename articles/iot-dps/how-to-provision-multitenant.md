@@ -1,37 +1,36 @@
 ---
-title: Jak aprowizować urządzenia dla wielodostępności w usłudze Azure IoT Hub Device Provisioning Service | Dokumentacja firmy Microsoft
-description: Jak aprowizować urządzenia dla wielodostępności urządzeń z systemem aprowizacji wystąpienia usługi
+title: How to provision devices for multitenancy in Azure IoT Hub Device Provisioning Service
+description: How to provision devices for multitenancy with your device provisioning service instance
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116092"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228792"
 ---
-# <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
+# <a name="how-to-provision-for-multitenancy"></a>How to provision for multitenancy 
 
-Zasady alokacji, zdefiniowane przez usługę aprowizacji obsługi różnych scenariuszy alokacji. Dwie typowe scenariusze są następujące:
+The allocation policies defined by the provisioning service support a variety of allocation scenarios. Two common scenarios are:
 
-* **Używanie funkcji Geolokalizacji / GeoLatency**: Przemieszcza się w urządzeniu między lokalizacjami, opóźnienie sieci poprawia posiadanie urządzenia aprowizowane do Centrum IoT hub najbardziej zbliżony do każdej lokalizacji. W tym scenariuszu grupę centra IoT Hub, zajmujące się między różnymi regionami, są zaznaczone dla rejestracji. **Najmniejszego opóźnienia** wybrano zasady alokacji dla tych rejestracji. Ta zasada powoduje, że usługi Device Provisioning ocenić opóźnienia urządzenie i określić dystrybucji Centrum IoT hub z grupy centra IoT Hub. 
+* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device provisioned to the IoT hub closest to each location. In this scenario, a group of IoT hubs, which span across regions, are selected for enrollments. The **Lowest latency** allocation policy is selected for these enrollments. This policy causes the Device Provisioning Service to evaluate device latency and determine the closet IoT hub out of the group of IoT hubs. 
 
-* **Wielodostępność**: Urządzenia używane w ramach rozwiązania IoT, może być konieczne można przypisać do określonej usługi IoT hub lub grupy centra IoT Hub. Rozwiązanie może wymagać od wszystkich urządzeń do konkretnej dzierżawy do komunikowania się z określonej grupy centra IoT Hub. W niektórych przypadkach dzierżawy może własne centra IoT i wymaga urządzenia, które ma być przypisane do ich centra IoT Hub.
+* **Multi-tenancy**: Devices used within an IoT solution may need to be assigned to a specific IoT hub or group of IoT hubs. The solution may require all devices for a particular tenant to communicate with a specific group of IoT hubs. In some cases, a tenant may own IoT hubs and require devices to be assigned to their IoT hubs.
 
-Są często do łączenia tych dwóch scenariuszy. Na przykład wielodostępne rozwiązania IoT często spowoduje przypisanie urządzeń dzierżawy przy użyciu grupy centra IoT, które są rozproszone między regionami. Te urządzenia dzierżawy można przypisać do usługi IoT hub w tej grupie, która ma najniższe opóźnienie, na podstawie lokalizacji geograficznej.
+It is common to combine these two scenarios. For example, a multitenant IoT solution will commonly assign tenant devices using a group of IoT hubs that are scattered across regions. These tenant devices can be assigned to the IoT hub in that group, which has the lowest latency based on geographic location.
 
-W tym artykule wykorzystano przykładowe symulowane urządzenie, z [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c) do pokazują, jak aprowizować urządzenia w scenariuszu wielodostępna między regionami. W tym artykule należy wykonać następujące czynności:
+This article uses a simulated device sample from the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) to demonstrate how to provision devices in a multitenant scenario across regions. You will perform the following steps in this article:
 
-* Użyj wiersza polecenia platformy Azure, aby utworzyć dwóch regionalnych centrów IoT Hub (**zachodnie stany USA** i **wschodnie stany USA**)
-* Tworzenie wielodostępnych rejestracji
-* Użyj wiersza polecenia platformy Azure, aby utworzyć dwóch regionalnych maszyn wirtualnych systemu Linux do działania jako urządzenia w tych samych regionach (**zachodnie stany USA** i **wschodnie stany USA**)
-* Konfigurowanie środowiska deweloperskiego dla zestawu SDK C usługi IoT platformy Azure na obu maszynach wirtualnych systemu Linux
-* Symulowanie urządzenia, które chcesz zobaczyć, że są one aprowizacji dla tej samej dzierżawy w regionie najbliższym.
+* Use the Azure CLI to create two regional IoT hubs (**West US** and **East US**)
+* Create a multitenant enrollment
+* Use the Azure CLI to create two regional Linux VMs to act as devices in the same regions (**West US** and **East US**)
+* Set up the development environment for the Azure IoT C SDK on both Linux VMs
+* Simulate the devices to see that they are provisioned for the same tenant in the closest region.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -39,102 +38,102 @@ W tym artykule wykorzystano przykładowe symulowane urządzenie, z [zestawu SDK 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończenie [skonfigurować IoT Hub Device Provisioning Service przy użyciu witryny Azure portal](./quick-setup-auto-provision.md) Szybki Start.
+* Completion of the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
-## <a name="create-two-regional-iot-hubs"></a>Tworzenie dwóch regionalnych centrów IoT Hub
+## <a name="create-two-regional-iot-hubs"></a>Create two regional IoT hubs
 
-W tej sekcji użyjesz usługi Azure Cloud Shell, aby utworzyć dwie nowe regionalnych centrów IoT, w **zachodnie stany USA** i **wschodnie stany USA** regionów dla dzierżawy.
+In this section, you will use the Azure Cloud Shell to create two new regional IoT hubs in the **West US** and **East US** regions for a tenant.
 
 
-1. Użyj usługi Azure Cloud Shell, aby utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az-group-create) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+1. Use the Azure Cloud Shell to create a resource group with the [az group create](/cli/azure/group#az-group-create) command. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
-    Poniższy przykład tworzy grupę zasobów o nazwie *contoso-us-resource-group* w *eastus* regionu. Zaleca się użycie tej grupy dla wszystkich zasobów utworzonych w tym artykule. To ułatwi oczyszczania po zakończeniu.
+    The following example creates a resource group named *contoso-us-resource-group* in the *eastus* region. It is recommended that you use this group for all resources created in this article. This will make clean up easier after you are finished.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Umożliwia tworzenie Centrum IoT w usłudze Azure Cloud Shell **eastus** regionie [az iot hub, utworzyć](/cli/azure/iot/hub#az-iot-hub-create) polecenia. Usługa IoT hub zostanie dodany do *contoso-us-resource-group*.
+2. Use the Azure Cloud Shell to create an IoT hub in the **eastus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. The IoT hub will be added to the *contoso-us-resource-group*.
 
-    Poniższy przykład obejmuje tworzenie Centrum IoT o nazwie *contoso wschód hub* w *eastus* lokalizacji. Należy korzystać z własnej nazwy Centrum unikatowe, zamiast **contoso wschód hub**.
+    The following example creates an IoT hub named *contoso-east-hub* in the *eastus* location. You must use your own unique hub name instead of **contoso-east-hub**.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    To polecenie może potrwać kilka minut.
+    This command may take a few minutes to complete.
 
-3. Umożliwia tworzenie Centrum IoT w usłudze Azure Cloud Shell **westus** regionie [az iot hub, utworzyć](/cli/azure/iot/hub#az-iot-hub-create) polecenia. To IoT hub zostanie także dodana do *contoso-us-resource-group*.
+3. Use the Azure Cloud Shell to create an IoT hub in the **westus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. This IoT hub will also be added to the *contoso-us-resource-group*.
 
-    Poniższy przykład obejmuje tworzenie Centrum IoT o nazwie *contoso zachód hub* w *westus* lokalizacji. Należy korzystać z własnej nazwy Centrum unikatowe, zamiast **contoso zachód hub**.
+    The following example creates an IoT hub named *contoso-west-hub* in the *westus* location. You must use your own unique hub name instead of **contoso-west-hub**.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    To polecenie może potrwać kilka minut.
+    This command may take a few minutes to complete.
 
 
 
-## <a name="create-the-multitenant-enrollment"></a>Tworzenie wielodostępnych rejestracji
+## <a name="create-the-multitenant-enrollment"></a>Create the multitenant enrollment
 
-W tej sekcji utworzysz nową grupę rejestracji dla urządzeń z dzierżawy.  
+In this section, you will create a new enrollment group for the tenant devices.  
 
-Dla uproszczenia w tym artykule użyto [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md) w przypadku rejestracji. Bardziej bezpieczne rozwiązanie, należy wziąć pod uwagę przy użyciu [zaświadczenia certyfikat X.509](concepts-security.md#x509-certificates) przy użyciu łańcucha zaufania.
+For simplicity, this article uses [Symmetric key attestation](concepts-symmetric-key-attestation.md) with the enrollment. For a more secure solution, consider using [X.509 certificate attestation](concepts-security.md#x509-certificates) with a chain of trust.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
+1. Sign in to the [Azure portal](https://portal.azure.com), and open your Device Provisioning Service instance.
 
-2. Wybierz **Zarządzanie rejestracjami** kartę, a następnie kliknij przycisk **Dodaj grupę rejestracji** znajdujący się u góry strony. 
+2. Select the **Manage enrollments** tab, and then click the **Add enrollment group** button at the top of the page. 
 
-3. Na **Dodaj grupę rejestracji**, wprowadź następujące informacje i kliknij przycisk **Zapisz** przycisku.
+3. On **Add Enrollment Group**, enter the following information, and click the **Save** button.
 
-    **Nazwa grupy**: Wprowadź **contoso-us urządzeń**.
+    **Group name**: Enter **contoso-us-devices**.
 
-    **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
+    **Attestation Type**: Select **Symmetric Key**.
 
-    **Automatycznie generuj klucze**: Już to pole wyboru powinno być zaznaczone.
+    **Auto Generate Keys**: This checkbox should already be checked.
 
-    **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **najmniejszego opóźnienia**.
+    **Select how you want to assign devices to hubs**: Select **Lowest latency**.
 
-    ![Dodaj grupę wielodostępne rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
-
-
-4. Na **Dodaj grupę rejestracji**, kliknij przycisk **Link nowego centrum IoT hub** połączyć oba swoje centra regionalne.
-
-    **Subskrypcja**: Jeśli masz wiele subskrypcji, wybierz subskrypcję, w której utworzono regionalnych centrów IoT.
-
-    **Usługa IoT hub**: Wybierz jeden z centra regionalne, który został utworzony.
-
-    **Zasady dostępu**: Wybierz **iothubowner**.
-
-    ![Link regionalne centra IoT Hub z usługą aprowizacji](./media/how-to-provision-multitenant/link-regional-hubs.png)
+    ![Add multitenant enrollment group for symmetric key attestation](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-5. Po obu regionalnych centrów IoT Hub zostały połączone, należy wybierać grupy rejestracji i kliknij przycisk **Zapisz** na utworzenie regionalnych grupy Centrum IoT rejestracji.
+4. On **Add Enrollment Group**, click **Link a new IoT hub** to link both of your regional hubs.
 
-    ![Utwórz grupę regionalnym centrum dla rejestracji](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
+    **Subscription**: If you have multiple subscriptions, choose the subscription where you created the regional IoT hubs.
+
+    **IoT hub**: Select one of the regional hubs you created.
+
+    **Access Policy**: Choose **iothubowner**.
+
+    ![Link the regional IoT hubs with the provisioning service](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
 
-6. Po zapisaniu rejestrację, otwórz go ponownie i zanotuj **klucz podstawowy**. Musisz zapisać rejestracji, aby najpierw mają klucze generowane. Ten klucz będzie używany do generowania kluczy unikatowych urządzeń dla obu symulowanych urządzeń później.
+5. Once both regional IoT hubs have been linked, you must select them for the enrollment group and click **Save** to create the regional IoT hub group for the enrollment.
+
+    ![Create the regional hub group for the enrollment](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-## <a name="create-regional-linux-vms"></a>Tworzenie maszyn wirtualnych systemu Linux regionalne
+6. After saving the enrollment, reopen it and make a note of the **Primary Key**. You must save the enrollment first to have the keys generated. This key will be used to generate unique device keys for both simulated devices later.
 
-W tej sekcji utworzysz dwie regionalne maszyny wirtualne systemu Linux (VM). Te maszyny wirtualne uruchomią przykładu symulacji urządzenia z każdego regionu, aby zademonstrować, inicjowanie obsługi administracyjnej urządzeń dla urządzeń z dzierżawy z obu regionów.
 
-Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do tej samej grupie zasobów, która zawiera centra IoT, które zostały utworzone, *contoso-us-resource-group*. Jednak maszyn wirtualnych jest uruchamiana w oddzielnych regionach (**zachodnie stany USA** i **wschodnie stany USA**).
+## <a name="create-regional-linux-vms"></a>Create regional Linux VMs
 
-1. W usłudze Azure Cloud Shell, wykonaj następujące polecenie, aby utworzyć **wschodnie stany USA** regionu maszyn wirtualnych po wprowadzeniu następujących zmian parametr w poleceniu:
+In this section, you will create two regional Linux virtual machines (VMs). These VMs will run a device simulation sample from each region to demonstrate device provisioning for tenant devices from both regions.
 
-    **— Nazwa**: Wprowadź unikatową nazwę dla Twojej **wschodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
+To make clean-up easier, these VMs will be added to the same resource group that contains the IoT hubs that were created, *contoso-us-resource-group*. However, the VMs will run in separate regions (**West US** and **East US**).
 
-    **--admin-username**: Korzystać z własnej nazwy użytkownika administratora.
+1. In the Azure Cloud Shell, execute the following command to create an **East US** region VM after making the following parameter changes in the command:
 
-    **hasło — administratora**: Użyj hasła administratora.
+    **--name**: Enter a unique name for your **East US** regional device VM. 
+
+    **--admin-username**: Use your own admin user name.
+
+    **--admin-password**: Use your own admin password.
 
     ```azurecli-interactive
     az vm create \
@@ -147,15 +146,15 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
     --authentication-type password
     ```
 
-    To polecenie potrwa kilka minut. Po zakończeniu polecenia Zanotuj **publicznego adresu IP** wartość dla regionu wschodnie stany USA maszyny Wirtualnej.
+    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your East US region VM.
 
-1. W usłudze Azure Cloud Shell, wykonaj polecenie, aby utworzyć **zachodnie stany USA** regionu maszyn wirtualnych po wprowadzeniu następujących zmian parametr w poleceniu:
+1. In the Azure Cloud Shell, execute the command to create a **West US** region VM after making the following parameter changes in the command:
 
-    **— Nazwa**: Wprowadź unikatową nazwę dla Twojej **zachodnie stany USA** regionalnych urządzenia maszyny Wirtualnej. 
+    **--name**: Enter a unique name for your **West US** regional device VM. 
 
-    **--admin-username**: Korzystać z własnej nazwy użytkownika administratora.
+    **--admin-username**: Use your own admin user name.
 
-    **hasło — administratora**: Użyj hasła administratora.
+    **--admin-password**: Use your own admin password.
 
     ```azurecli-interactive
     az vm create \
@@ -168,11 +167,11 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
     --authentication-type password
     ```
 
-    To polecenie potrwa kilka minut. Po zakończeniu polecenia Zanotuj **publicznego adresu IP** wartość dla regionu zachodnie stany USA maszyny Wirtualnej.
+    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your West US region VM.
 
-1. Otwórz dwóch powłoki wiersza polecenia. Połącz się z jednym regionalnych maszyn wirtualnych w każdym powłoki przy użyciu protokołu SSH. 
+1. Open two command-line shells. Connect to one of the regional VMs in each shell using SSH. 
 
-    Przekaż swoją nazwę użytkownika administratora i publiczny adres IP, zanotowaną dla maszyny Wirtualnej jako parametry do protokołu SSH. Wprowadź hasło administratora, po wyświetleniu monitu.
+    Pass your admin username, and the public IP address you noted for the VM as parameters to SSH. Enter the admin password when prompted.
 
     ```bash
     ssh contosoadmin@1.2.3.4
@@ -188,12 +187,12 @@ Zapewnienie oczyszczania było prostsze, te maszyny wirtualne zostaną dodane do
 
 
 
-## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Przygotowywanie środowiska deweloperskiego zestawu SDK C usługi Azure IoT
+## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Prepare the Azure IoT C SDK development environment
 
-W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na każdej maszynie Wirtualnej. Zestaw SDK zawiera próbki, który będzie symulowanie urządzenia dzierżawy, inicjowanie obsługi administracyjnej z każdego regionu.
+In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains a sample that will simulate a tenant's device provisioning from each region.
 
 
-1. Dla każdej maszyny Wirtualnej, należy zainstalować **Cmake**, **g ++** , **gcc**, i [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) przy użyciu następujących poleceń:
+1. For each VM, install **Cmake**, **g++** , **gcc**, and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) using the following commands:
 
     ```bash
     sudo apt-get update
@@ -201,7 +200,7 @@ W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na ka
     ```
 
 
-1. Klonuj [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c) na obu maszynach wirtualnych.
+1. Clone the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) on both VMs.
 
     ```bash
     cd ~/
@@ -210,14 +209,14 @@ W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na ka
 
     Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
-1. Dla obu maszyn wirtualnych, Utwórz nową **cmake** folderu w repozytorium i zmiany do tego folderu.
+1. For both VMs, create a new **cmake** folder inside the repository and change to that folder.
 
     ```bash
     mkdir ~/azure-iot-sdk-c/cmake
     cd ~/azure-iot-sdk-c/cmake
     ```
 
-1. Dla obu maszyn wirtualnych, uruchom następujące polecenie tworzy wersję zestawu SDK specyficzną dla platformy klienta deweloperskiego. 
+1. For both VMs, run the following command, which builds a version of the SDK specific to your development client platform. 
 
     ```bash
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -245,21 +244,21 @@ W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na ka
     ```    
 
 
-## <a name="derive-unique-device-keys"></a>Tworzenia kluczy unikatowych urządzeń
+## <a name="derive-unique-device-keys"></a>Derive unique device keys
 
-Korzystając z zaświadczenie klucza symetrycznego za pomocą rejestracji grup, nie używaj kluczy grupy rejestracji bezpośrednio. Zamiast tego można utworzyć unikatowe pochodne klucza dla każdego urządzenia i już wspomniano w [rejestracji grup przy użyciu kluczy symetrycznych](concepts-symmetric-key-attestation.md#group-enrollments).
+When using symmetric key attestation with group enrollments, you don't use the enrollment group keys directly. Instead you create a unique derived key for each device and mentioned in [Group Enrollments with symmetric keys](concepts-symmetric-key-attestation.md#group-enrollments).
 
-Aby wygenerować klucz urządzenia, należy użyć klucza głównego grupy do obliczenia [HMAC SHA256](https://wikipedia.org/wiki/HMAC) identyfikatora rejestracji dla urządzenia i przekonwertować wynik w formacie Base64.
+To generate the device key, use the group master key to compute an [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the unique registration ID for the device and convert the result into Base64 format.
 
-Nie dołączaj klucza głównego usługi grupy w kodzie urządzenia.
+Do not include your group master key in your device code.
 
-Skorzystaj z przykładu powłoki Bash do utworzenia klucza pochodnego urządzenia dla każdego urządzenia przy użyciu **openssl**.
+Use the Bash shell example to create a derived device key for each device using **openssl**.
 
-- Zastąp wartość **klucz** z **klucz podstawowy** zanotowanej wcześniej dla Twojej rejestracji.
+- Replace the value for **KEY** with the **Primary Key** you noted earlier for your enrollment.
 
-- Zastąp wartość **REG_ID** przy użyciu własnego Identyfikatora rejestracji unikatowy dla każdego urządzenia. Małe znaki alfanumeryczne i kreski ("-") znaków do definiowania obu identyfikatorów.
+- Replace the value for **REG_ID** with your own unique registration ID for each device. Use lowercase alphanumeric and dash ('-') characters to define both IDs.
 
-Przykład generowania kluczy urządzenia dla *contoso simdevice wschód*:
+Example device key generation for *contoso-simdevice-east*:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -273,7 +272,7 @@ echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | ba
 p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
 ```
 
-Przykład generowania kluczy urządzenia dla *contoso simdevice zachodni*:
+Example device key generation for *contoso-simdevice-west*:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -288,23 +287,23 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ```
 
 
-Urządzenia dzierżawy każdego użyje ich klucza pochodnego urządzenia i identyfikator rejestracji unikatowy przeprowadzić symetrycznego zaświadczenie klucza przy użyciu grup rejestracji podczas inicjowania obsługi dzierżawy IoT hubs.
+The tenant devices will each use their derived device key and unique registration ID to perform symmetric key attestation with the enrollment group during provisioning to the tenant IoT hubs.
 
 
 
 
-## <a name="simulate-the-devices-from-each-region"></a>Symulowanie urządzenia z każdym z regionów
+## <a name="simulate-the-devices-from-each-region"></a>Simulate the devices from each region
 
 
-W tej sekcji zaktualizuje przykładu aprowizacji w języku C zestawu SDK usługi Azure IoT dla obu regionalnych maszyn wirtualnych. 
+In this section, you will update a provisioning sample in the Azure IoT C SDK for both of the regional VMs. 
 
-Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysłanie żądania aprowizacji wystąpienia usługi Device Provisioning Service. Sekwencji rozruchu spowoduje, że urządzenie zostało rozpoznane i przypisane do Centrum IoT, które znajdujący się najbliżej zależy od opóźnienia.
+The sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the device to be recognized and assigned to the IoT hub that is closest based on latency.
 
 1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Otwórz **~/azure-iot-sdk-c/provisioning\_klienta/samples/prov\_dev\_klienta\_przykładowe/prov\_dev\_klienta\_sample.c**do edycji na obu maszynach wirtualnych.
+1. Open **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** for editing on both VMs.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -316,9 +315,9 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Znajdź definicję funkcji `main()` w tym samym pliku. Upewnij się, że `hsm_type` zmienna jest ustawiona na `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` jak pokazano poniżej, aby dopasować metody zaświadczania grupy rejestracji. 
+1. Znajdź definicję funkcji `main()` w tym samym pliku. Make sure the `hsm_type` variable is set to `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` as shown below to match the enrollment group attestation method. 
 
-    Zapisz zmiany w plikach na obu maszynach wirtualnych.
+    Save your changes to the files on both VMs.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -327,44 +326,44 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. Na obu maszynach wirtualnych, Znajdź wywołanie `prov_dev_set_symmetric_key_info()` w **prov\_dev\_klienta\_sample.c** który jest ujęty w komentarz.
+1. On both VMs, find the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** which is commented out.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Usuń znaczniki komentarza wywołania funkcji i Zastąp wartości symboli zastępczych (włącznie z nawiasami) rejestracji unikatowe identyfikatory i klucze urządzeń pochodnych dla każdego urządzenia. Klucze poniżej są na przykład tylko do celów. Użyj klawiszy wygenerowania wcześniej.
+    Uncomment the function calls, and replace the placeholder values (including the angle brackets) with the unique registration IDs and derived device keys for each device. The keys shown below are for example purposes only. Use the keys you generated earlier.
 
-    Wschodnie stany USA:
+    East US:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
 
-    Zachodnie stany USA:
+    West US:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
     ```
 
-    Zapisz pliki.
+    Save the files.
 
-1. Na obu maszynach wirtualnych przejdź do folderu przykładu poniżej, a następnie skompilować przykład.
+1. On both VMs, navigate to the sample folder shown below, and build the sample.
 
     ```bash
     cd ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Gdy kompilacja zakończy się powodzeniem, uruchom **prov\_dev\_klienta\_sample.exe** na obu maszynach wirtualnych, aby symulować urządzenie dzierżawcy w każdym regionie. Zwróć uwagę, każde urządzenie zaalokowano dzierżawy najbliżej regionów symulowane urządzenie usługi IoT hub.
+1. Once the build succeeds, run **prov\_dev\_client\_sample.exe** on both VMs to simulate a tenant device from each region. Notice that each device is allocated to the tenant IoT hub closest to the simulated device's regions.
 
-    Uruchamianie symulacji:
+    Run the simulation:
     ```bash
     ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
     ```
 
-    Przykład danych wyjściowych z wschodnie stany USA maszyny Wirtualnej:
+    Example output from the East US VM:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -381,7 +380,7 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
 
     ```
 
-    Przykład danych wyjściowych z zachodnie stany USA maszyny Wirtualnej:
+    Example output from the West US VM:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9
@@ -400,28 +399,28 @@ Przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysł
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz kontynuować pracę z zasobów utworzonych w tym artykule, możesz pozostawić je. Jeśli nie planujesz kontynuować korzystanie z zasobów, użyj następujące kroki, aby usunąć wszystkie zasoby utworzone w tym artykule, aby uniknąć niepotrzebnych opłat.
+If you plan to continue working with resources created in this article, you can leave them. If you do not plan to continue using the resource, use the following steps to delete all resources created by this article to avoid unnecessary charges.
 
-W tym miejscu założono w nim utworzyć wszystkie zasoby w tym artykule, zgodnie z instrukcjami w tej samej grupie zasobów o nazwie **contoso-us-resource-group**.
+The steps here assume you created all resources in this article as instructed in the same resource group named **contoso-us-resource-group**.
 
 > [!IMPORTANT]
 > Usunięcie grupy zasobów jest nieodwracalne. Grupa zasobów oraz wszystkie zawarte w niej zasoby zostaną trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub grupy zasobów. Jeśli usługa IoT Hub została utworzona wewnątrz istniejącej grupy zasobów zawierającej zasoby, które chcesz zachować, zamiast usuwać całą grupę zasobów, usuń tylko zasób usługi IoT Hub.
 >
 
-Aby usunąć grupę zasobów o nazwie:
+To delete the resource group by name:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-2. W **Filtruj według nazwy...**  polu tekstowym wpisz nazwę zasobu, grupy, zawierający zasoby, **contoso-us-resource-group**. 
+2. In the **Filter by name...** textbox, type the name of the resource group containing your resources, **contoso-us-resource-group**. 
 
 3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej Reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
-- Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
+- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
+- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
 
 
 

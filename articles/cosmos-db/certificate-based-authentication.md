@@ -1,58 +1,58 @@
 ---
-title: Azure Active Directory uwierzytelniania opartego na certyfikatach z Azure Cosmos DB
-description: Dowiedz się, jak skonfigurować tożsamość usługi Azure AD na potrzeby uwierzytelniania opartego na certyfikatach, aby uzyskać dostęp do kluczy z Azure Cosmos DB.
+title: Azure Active Directory certificate-based authentication with Azure Cosmos DB
+description: Learn how to configure an Azure AD identity for certificate-based authentication to access keys from Azure Cosmos DB.
 author: voellm
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 258250b10dc85754b253e59e6b0e764f5e56cc25
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882842"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220504"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Uwierzytelnianie oparte na certyfikatach dla tożsamości usługi Azure AD w celu uzyskiwania dostępu do kluczy z konta Azure Cosmos DB
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Certificate-based authentication for an Azure AD identity to access keys from an Azure Cosmos DB account
 
-Uwierzytelnianie oparte na certyfikatach umożliwia uwierzytelnienie aplikacji klienckiej przy użyciu usługi Azure Active Directory (Azure AD) z certyfikatem klienta. Uwierzytelnianie oparte na certyfikatach można wykonać na komputerze, na którym potrzebna jest tożsamość, taka jak maszyna lokalna lub maszyna wirtualna na platformie Azure. Aplikacja może następnie odczytać klucze Azure Cosmos DB bez podawania kluczy bezpośrednio w aplikacji. W tym artykule opisano sposób tworzenia przykładowej aplikacji usługi Azure AD, konfigurowania jej na potrzeby uwierzytelniania opartego na certyfikatach, logowania się do platformy Azure przy użyciu nowej tożsamości aplikacji, a następnie pobierania kluczy z konta usługi Azure Cosmos. W tym artykule zawarto informacje C# dotyczące konfigurowania tożsamości i uzyskiwania dostępu do kluczy z konta usługi Azure Cosmos za pomocą Azure PowerShell.  
+Certificate-based authentication enables your client application to be authenticated by using Azure Active Directory (Azure AD) with a client certificate. You can perform certificate-based authentication on a machine where you need an identity, such as an on-premises machine or virtual machine in Azure. Your application can then read Azure Cosmos DB keys without having the keys directly in the application. This article describes how to create a sample Azure AD application, configure it for certificate-based authentication, sign into Azure using the new application identity, and then it retrieves the keys from your Azure Cosmos account. This article uses Azure PowerShell to set up the identities and provides a C# sample app that authenticates and accesses keys from your Azure Cosmos account.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj [najnowszą wersję](/powershell/azure/install-az-ps) programu Azure PowerShell.
+* Install the [latest version](/powershell/azure/install-az-ps) of Azure PowerShell.
 
 * Jeśli nie masz [subskrypcji platformy Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-## <a name="register-an-app-in-azure-ad"></a>Rejestrowanie aplikacji w usłudze Azure AD
+## <a name="register-an-app-in-azure-ad"></a>Register an app in Azure AD
 
-W tym kroku zostanie zarejestrowana Przykładowa aplikacja sieci Web na koncie usługi Azure AD. Ta aplikacja jest później używana do odczytywania kluczy z konta Azure Cosmos DB. Aby zarejestrować aplikację, wykonaj następujące kroki: 
+In this step, you will register a sample web application in your Azure AD account. This application is later used to read the keys from your Azure Cosmos DB account. Use the following steps to register an application: 
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
 
-1. Otwórz okienko **Active Directory** platformy Azure, przejdź do okienka rejestracje aplikacji i wybierz pozycję **Nowa rejestracja**. 
+1. Open the Azure **Active Directory** pane, go to App registrations pane, and select **New registration**. 
 
-   ![Rejestracja nowej aplikacji w Active Directory](./media/certificate-based-authentication/new-app-registration.png)
+   ![New application registration in Active Directory](./media/certificate-based-authentication/new-app-registration.png)
 
-1. Wypełnij formularz **zarejestruj aplikację** z następującymi szczegółami:  
+1. Fill the **Register an application** form with the following details:  
 
-   * **Nazwa** — Podaj nazwę aplikacji, która może być dowolną nazwą, taką jak "sampleApp".
-   * **Obsługiwane typy kont** — wybierz **konta w tym katalogu organizacji (katalog domyślny)** , aby zezwolić na dostęp do tej aplikacji zasobom w bieżącym katalogu. 
-   * **Adres URL przekierowania** — wybierz pozycję Aplikacja typu **Web** i podaj adres URL, pod którym aplikacja jest hostowana, może być dowolnym adresem URL. Na potrzeby tego przykładu możesz podać adres URL `https://sampleApp.com` testu, który jest dobry nawet wtedy, gdy aplikacja nie istnieje.
+   * **Name** – Provide a name for your application, it can be any name such as "sampleApp".
+   * **Supported account types** – Choose **Accounts in this organizational directory only (Default Directory)** to allow resources in your current directory to access this application. 
+   * **Redirect URL** – Choose application of type **Web** and provide a URL where your application is hosted, it can be any URL. For this example, you can provide a test URL such as `https://sampleApp.com` it’s okay even if the app doesn’t exist.
 
-   ![Rejestrowanie przykładowej aplikacji sieci Web](./media/certificate-based-authentication/register-sample-web-app.png)
+   ![Registering a sample web application](./media/certificate-based-authentication/register-sample-web-app.png)
 
-1. Po wypełnieniu formularza wybierz pozycję **zarejestruj** .
+1. Select **Register** after you fill the form.
 
-1. Po zarejestrowaniu aplikacji Zanotuj **Identyfikator aplikacji (klienta)** i **Identyfikator obiektu**, które będą używane w następnych krokach. 
+1. After the app is registered, make a note of the **Application(client) ID** and **Object ID**, you will use these details in the next steps. 
 
-   ![Pobieranie identyfikatorów aplikacji i obiektów](./media/certificate-based-authentication/get-app-object-ids.png)
+   ![Get the application and object IDs](./media/certificate-based-authentication/get-app-object-ids.png)
 
-## <a name="install-the-azuread-module"></a>Instalowanie modułu AzureAD
+## <a name="install-the-azuread-module"></a>Install the AzureAD module
 
-W tym kroku zostanie zainstalowany moduł Azure AD PowerShell. Ten moduł jest wymagany do pobrania identyfikatora aplikacji zarejestrowanej w poprzednim kroku i skojarzenia certyfikatu z podpisem własnym z tą aplikacją. 
+In this step, you will install the Azure AD PowerShell module. This module is required to get the ID of the application you registered in the previous step and associate a self-signed certificate to that application. 
 
-1. Otwórz Windows PowerShell ISE z uprawnieniami administratora. Jeśli jeszcze tego nie zrobiono, zainstaluj moduł AZ PowerShell module i Połącz się z subskrypcją. Jeśli masz wiele subskrypcji, możesz ustawić kontekst bieżącej subskrypcji, jak pokazano w następujących poleceniach:
+1. Open Windows PowerShell ISE with administrator rights. If you haven’t already done, install the AZ PowerShell module and connect to your subscription. If you have multiple subscriptions, you can set the context of current subscription as shown in the following commands:
 
    ```powershell
 
@@ -64,16 +64,16 @@ W tym kroku zostanie zainstalowany moduł Azure AD PowerShell. Ten moduł jest w
    Set-AzContext $context 
    ```
 
-1. Instalowanie i importowanie modułu [AzureAD](/powershell/module/azuread/?view=azureadps-2.0)
+1. Install and import the [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) module
 
    ```powershell
    Install-Module AzureAD
    Import-Module AzureAD 
    ```
 
-## <a name="sign-into-your-azure-ad"></a>Zaloguj się do usługi Azure AD
+## <a name="sign-into-your-azure-ad"></a>Sign into your Azure AD
 
-Zaloguj się do usługi Azure AD, w której zarejestrowano aplikację. Za pomocą polecenia Connect-AzureAD Zaloguj się do swojego konta, a następnie wprowadź swoje poświadczenia konta platformy Azure w oknie podręcznym. 
+Sign into your Azure AD where you have registered the application. Use the Connect-AzureAD command to sign into your account, enter your Azure account credentials in the pop-up window. 
 
 ```powershell
 Connect-AzureAD 
@@ -81,16 +81,16 @@ Connect-AzureAD
 
 ## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 
-Otwórz kolejne wystąpienie Windows PowerShell ISE i uruchom następujące polecenia, aby utworzyć certyfikat z podpisem własnym i odczytać klucz skojarzony z certyfikatem:
+Open another instance of Windows PowerShell ISE, and run the following commands to create a self-signed certificate and read the key associated with the certificate:
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "Cert:\CurrentUser\My" -Subject "CN=sampleAppCert" -KeySpec KeyExchange
 $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData()) 
 ```
 
-## <a name="create-the-certificate-based-credential"></a>Tworzenie poświadczeń opartych na certyfikacie 
+## <a name="create-the-certificate-based-credential"></a>Create the certificate-based credential 
 
-Następnie uruchom następujące polecenia, aby uzyskać identyfikator obiektu aplikacji i utworzyć poświadczenia oparte na certyfikacie. W tym przykładzie ustawimy certyfikat na wygasający po roku, można ustawić go na dowolną wymaganą datę końcową.
+Next run the following commands to get the object ID of your application and create the certificate-based credential. In this example, we set the certificate to expire after a year, you can set it to any required end date.
 
 ```powershell
 $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
@@ -98,34 +98,34 @@ $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
 New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyIdentifier "Key1" -Type AsymmetricX509Cert -Usage Verify -Value $keyValue -EndDate "2020-01-01"
 ```
 
-Powyższe polecenie spowoduje wyniki podobne do poniższego zrzutu ekranu:
+The above command results in the output similar to the screenshot below:
 
-![Dane wyjściowe tworzenia poświadczeń oparte na certyfikatach](./media/certificate-based-authentication/certificate-based-credential-output.png)
+![Certificate-based credential creation output](./media/certificate-based-authentication/certificate-based-credential-output.png)
 
-## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Skonfiguruj konto usługi Azure Cosmos, aby używało nowej tożsamości
+## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Configure your Azure Cosmos account to use the new identity
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
 
-1. Przejdź do swojego konta usługi Azure Cosmos, Otwórz blok **Kontrola dostępu (IAM)** .
+1. Navigate to your Azure Cosmos account, open the **Access control (IAM)** blade.
 
-1. Wybierz pozycję **Dodaj** i **Dodaj przypisanie roli**. Dodaj sampleApp utworzone w poprzednim kroku z rolą **współautor** , jak pokazano na poniższym zrzucie ekranu:
+1. Select **Add** and **Add role assignment**. Add the sampleApp you created in the previous step with **Contributor** role as shown in the following screenshot:
 
-   ![Skonfiguruj konto usługi Azure Cosmos, aby używało nowej tożsamości](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
+   ![Configure Azure Cosmos account to use the new identity](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
 
-1. Wybierz pozycję **Zapisz** po wypełnieniu formularza
+1. Select **Save** after you fill out the form
 
 
-## <a name="access-the-keys-from-powershell"></a>Uzyskiwanie dostępu do kluczy z programu PowerShell
+## <a name="access-the-keys-from-powershell"></a>Access the keys from PowerShell
 
-W tym kroku nastąpi logowanie do platformy Azure przy użyciu aplikacji i utworzonego certyfikatu oraz dostęp do kluczy konta usługi Azure Cosmos. 
+In this step, you will sign into Azure by using the application and the certificate you created and access your Azure Cosmos account's keys. 
 
-1. Na początku Wyczyść poświadczenia konta platformy Azure, które zostały użyte do zalogowania się do konta. Poświadczenia można wyczyścić za pomocą następującego polecenia:
+1. Initially clear the Azure account's credentials you have used to sign into your account. You can clear credentials by using the following command:
 
    ```powershell
    Disconnect-AzAccount -Username <Your_Azure_account_email_id> 
    ```
 
-1. Następnie sprawdź, czy możesz zalogować się do Azure Portal przy użyciu poświadczeń aplikacji i uzyskaj dostęp do kluczy Azure Cosmos DB:
+1. Next validate that you can sign into Azure portal by using the application’s credentials and access the Azure Cosmos DB keys:
 
    ```powershell
    Login-AzAccount -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
@@ -133,14 +133,14 @@ W tym kroku nastąpi logowanie do platformy Azure przy użyciu aplikacji i utwor
    Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <Resource_Group_Name_of_your_Azure_Cosmos_account> -ResourceName <Your_Azure_Cosmos_Account_Name> 
    ```
 
-Poprzednie polecenie wyświetli podstawowe i pomocnicze klucze główne konta usługi Azure Cosmos. Możesz wyświetlić dziennik aktywności konta usługi Azure Cosmos, aby sprawdzić, czy żądanie Get Keys zakończyło się pomyślnie, a zdarzenie jest inicjowane przez aplikację "sampleApp". 
+The previous command will display the primary and secondary master keys of your Azure Cosmos account. You can view the Activity log of your Azure Cosmos account to validate that the get keys request succeeded and the event is initiated by the "sampleApp" application. 
  
-![Weryfikowanie wywołania Get Keys w usłudze Azure AD](./media/certificate-based-authentication/activity-log-validate-results.png)
+![Validate the get keys call in the Azure AD](./media/certificate-based-authentication/activity-log-validate-results.png)
 
 
-## <a name="access-the-keys-from-a-c-application"></a>Uzyskiwanie dostępu do kluczy C# z aplikacji 
+## <a name="access-the-keys-from-a-c-application"></a>Access the keys from a C# application 
 
-Możesz również sprawdzić poprawność tego scenariusza, uzyskując C# dostęp do kluczy z aplikacji. Następująca C# Aplikacja konsolowa, która umożliwia dostęp do Azure Cosmos DB kluczy za pomocą aplikacji zarejestrowanej w Active Directory. Przed uruchomieniem kodu Pamiętaj, aby zaktualizować tenantId, clientID, CertName, nazwę grupy zasobów, Identyfikator subskrypcji, nazwę konta Azure Cosmos. 
+You can also validate this scenario by accessing keys from a C# application. The following C# console application, that can access Azure Cosmos DB keys by using the app registered in Active Directory. Make sure to update the tenantId, clientID, certName, resource group name, subscription ID, Azure Cosmos account name details before you run the code. 
 
 ```csharp
 using System;
@@ -222,15 +222,15 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-Ten skrypt wyprowadza podstawowe i pomocnicze klucze główne, jak pokazano na poniższym zrzucie ekranu:
+This script outputs the primary and secondary master keys as shown in the following screenshot:
 
-![dane wyjściowe aplikacji CSharp](./media/certificate-based-authentication/csharp-application-output.png)
+![csharp application output](./media/certificate-based-authentication/csharp-application-output.png)
 
-Podobnie jak w poprzedniej sekcji, można wyświetlić dziennik aktywności konta usługi Azure Cosmos, aby sprawdzić, czy zdarzenie pobierania kluczy jest inicjowane przez aplikację "sampleApp". 
+Similar to the previous section, you can view the Activity log of your Azure Cosmos account to validate that the get keys request event is initiated by the "sampleApp" application. 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Zabezpieczanie kluczy usługi Azure Cosmos przy użyciu usługi Azure Key Vault](access-secrets-from-keyvault.md)
 
-* [Kontrolki zabezpieczeń dla Azure Cosmos DB](cosmos-db-security-controls.md)
+* [Security controls for Azure Cosmos DB](cosmos-db-security-controls.md)

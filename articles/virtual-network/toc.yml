@@ -69,6 +69,8 @@
       href: ddos-protection-overview.md
     - name: Rozszerzenie podsieci
       href: subnet-extension.md
+    - name: Delegowanie podsieci
+      href: subnet-delegation-overview.md
     - name: Współdziałanie łączności z zapleczem
       items:
         - name: Wstęp i konfiguracja testu

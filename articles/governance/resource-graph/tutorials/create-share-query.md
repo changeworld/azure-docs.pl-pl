@@ -1,40 +1,40 @@
 ---
-title: Tworzenie i udostępnianie zapytania w witrynie Azure Portal
-description: W tym samouczku dowiesz się, jak utworzyć zapytanie grafu zasobów i udostępnić je innym osobom w Azure Portal.
+title: 'Tutorial: Manage queries in Azure portal'
+description: In this tutorial, you create a Resource Graph Query and share the new query with others in the Azure portal.
 ms.date: 10/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.openlocfilehash: a1f3213ae1dbd3bc7127b4f4adb8648e9f9adf07
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958573"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216223"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Samouczek: Tworzenie i udostępnianie kwerendy wykresu zasobów platformy Azure w Azure Portal
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Create and share an Azure Resource Graph query in the Azure portal
 
-Eksplorator usługi Azure Resource Graph umożliwia zapisywanie zapytań grafu zasobów bezpośrednio w Azure Portal. Istnieją dwa typy zapytań: _Private_ i _Shared_. Zapytanie prywatne zostanie zapisane w ustawieniach Azure Portal. Zapytanie udostępnione jest zasobem Menedżer zasobów, którym można zarządzać za pomocą kontroli dostępu opartej na rolach (RBAC) i chronionych przy użyciu blokad zasobów.
+Azure Resource Graph Explorer lets you save your Resource Graph queries directly in the Azure portal. There are two types of queries: _Private_ and _Shared_. A Private query is saved in your Azure portal settings. Whereas a Shared query is a Resource Manager resource that can be managed with role-based access controls (RBAC) and protected with resource locks.
 
-Zapisując zapytania w Azure Portal, można zaoszczędzić czas, w którym można szukać ulubionych lub często używanych zapytań. Po udostępnieniu zapytań można ułatwić zespołowi zrealizowanie celów spójności i wydajności poprzez powtarzanie.
+By saving queries in the Azure portal, you save the time you might otherwise spend looking for your favorite or commonly used queries. When you share queries, you help your team realize goals of consistency and efficiency through repetition.
 
-W tym samouczku wykonasz następujące zadania:
+In this tutorial, you'll complete the following tasks:
 
 > [!div class="checklist"]
-> - Tworzenie i usuwanie zapytania prywatnego
-> - Utwórz zapytanie udostępnione
-> - Odnajdź udostępnione zapytania
-> - Usuń udostępnione zapytanie
+> - Create and delete a Private query
+> - Create a Shared query
+> - Discover Shared queries
+> - Delete a Shared query
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="create-and-delete-a-private-query"></a>Tworzenie i usuwanie zapytania prywatnego
+## <a name="create-and-delete-a-private-query"></a>Create and delete a Private query
 
-Zapytania prywatne są dostępne i widoczne tylko dla konta, które je tworzy. Ponieważ są one zapisywane w ustawieniach Azure Portal konta, mogą być tworzone, używane i usuwane tylko z wewnątrz Azure Portal. Zapytanie prywatne nie jest zasobem Menedżer zasobów. Aby utworzyć nowe zapytanie prywatne, wykonaj następujące kroki:
+Private queries are accessible and visible only to the account that creates them. As they're saved in an account's Azure portal settings, they can be created, used, and deleted only from inside the Azure portal. A Private query isn't a Resource Manager resource. To create a new Private query, follow these steps:
 
-1. W menu portalu wybierz pozycję **wszystkie usługi** lub użyj pola wyszukiwania Azure w górnej części wszystkich stron. Wyszukaj, a następnie wybierz pozycję **Eksplorator grafów zasobów**.
+1. From the portal menu, select **All services** or use the Azure search box at the top of all pages. Search for and then select **Resource Graph Explorer**.
 
-1. Na karcie **zapytanie 1** na stronie Eksplorator zasobów platformy Azure wprowadź następujące zapytanie:
+1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
 
    ```kusto
    Resources
@@ -42,31 +42,31 @@ Zapytania prywatne są dostępne i widoczne tylko dla konta, które je tworzy. P
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-   Wybierz pozycję **Uruchom zapytanie** , aby wyświetlić wyniki zapytania w dolnym okienku.
+   Select **Run query** to see the query results in the bottom pane.
 
-   Aby uzyskać więcej informacji na temat tego zapytania, zobacz [przykłady — liczba maszyn wirtualnych według typu systemu operacyjnego](../samples/starter.md#count-virtual-machines-by-os-type).
+   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
 
 
-1. Wybierz **pozycję Zapisz** lub **Zapisz jako**, **Wprowadź liczbę maszyn wirtualnych według systemu operacyjnego** jako nazwę, pozostaw jako **kwerendę prywatną**, a następnie wybierz pozycję **Zapisz** w dolnej części okienka **Zapisz zapytanie** . Tytuł karty zostanie zmieniony z **zapytania 1** na **liczbę maszyn wirtualnych według systemu operacyjnego**.
+1. Select **Save** or **Save as**, enter **Count VMs by OS** as the name, leave the type as **Private query**, and then select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**.
 
-1. Przejdź do Eksploratora grafów zasobów platformy Azure w Azure Portal, a następnie wróć do niego. Zwróć uwagę, że zapisane zapytanie nie jest już wyświetlane, a karta **zapytanie 1** zwróci wartość.
+1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
 
-1. Wybierz pozycję **Otwórz zapytanie**. Upewnij się, że typ jest **kwerendą prywatną**. Zapisane nazwy **maszyn wirtualnych według systemu operacyjnego** zostaną wyświetlone na liście **Nazwa zapytania** . Po wybraniu linku tytułu zapisanego zapytania zostanie ono załadowane do nowej karty zawierającej nazwę tego zapytania.
+1. Select **Open a query**. Make sure that the type is **Private query**. The saved name **Count VMs by OS** now appears in the **Query Name** list. When you select the title link of the saved query, it's loaded into a new tab with that query's name.
 
    > [!NOTE] 
-   >Gdy zapisane zapytanie jest otwarte, a na karcie zostanie wyświetlona jego nazwa, wybranie przycisku **Zapisz** aktualizuje go o wszelkie wprowadzone zmiany. Aby utworzyć nowe zapisane zapytanie z tego otwartego zapytania, wybierz pozycję **Zapisz jako** i postępuj zgodnie z tym, jeśli zapisano zupełnie nowe zapytanie.
+   >When a saved query is open and the tab shows its name, selecting the **Save** button updates it with any changes that have been made. To create a new saved query from this open query, select **Save as** and proceed as if you were saving a brand new query.
 
-1. Aby usunąć zapisane zapytanie, wybierz pozycję **Otwórz zapytanie** ponownie i sprawdź, czy pole **Typ** jest ustawione na **zapytanie prywatne**. W wierszu zapisanego zapytania `Count VMs by OS` wybierz pozycję **Usuń** (ikona kosza). W oknie dialogowym potwierdzenia wybierz pozycję **tak** , aby zakończyć usuwanie zapytania.
-   Następnie zamknij okienko **Otwórz zapytanie** .
+1. To delete the saved query, select **Open a query** again, and verify that the **Type** field is set to **Private query**. On the row of the saved `Count VMs by OS` query, select **Delete** (Recycle bin icon). In the confirmation dialog box, select **Yes** to finish deleting the query.
+   Then, close the **Open a query** pane.
 
-## <a name="create-a-shared-query"></a>Utwórz zapytanie udostępnione
+## <a name="create-a-shared-query"></a>Create a Shared query
 
-W przeciwieństwie do zapytania prywatnego, udostępnione zapytanie jest zasobem Menedżer zasobów. Oznacza to, że zapytanie jest zapisywane w grupie zasobów, może być zarządzane i kontrolowane za pomocą RBAC, a nawet może być chronione przy użyciu blokad zasobów. Jako zasób, każdy, kto ma odpowiednie uprawnienia, może go zobaczyć i używać.
-Aby utworzyć nowe zapytanie udostępnione, wykonaj następujące kroki:
+Unlike a Private query, a Shared query is a Resource Manager resource. This fact means the query gets saved to a resource group, can be managed and controlled with RBAC, and can even be protected with resource locks. As a resource, anyone who has the appropriate permissions can see and use it.
+To create a new Shared query, follow these steps:
 
-1. W menu portalu wybierz pozycję **wszystkie usługi**lub użyj pola wyszukiwania Azure w górnej części wszystkich stron, aby wyszukać i wybrać pozycję **Eksplorator grafów zasobów**.
+1. From the portal menu, select **All services**, or use the Azure search box at the top of all pages to search for and select **Resource Graph Explorer**.
 
-1. Na karcie **zapytanie 1** na stronie Eksplorator zasobów platformy Azure wprowadź następujące zapytanie:
+1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
 
    ```kusto
    Resources
@@ -74,62 +74,62 @@ Aby utworzyć nowe zapytanie udostępnione, wykonaj następujące kroki:
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
     
-   Wybierz pozycję **Uruchom zapytanie** , aby wyświetlić wyniki zapytania w dolnym okienku.
+   Select **Run query** to see the query results in the bottom pane.
 
-   Aby uzyskać więcej informacji na temat tego zapytania, zobacz [przykłady — liczba maszyn wirtualnych według typu systemu operacyjnego](../samples/starter.md#count-virtual-machines-by-os-type).
+   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
 
-1. Wybierz pozycję **Zapisz** lub **Zapisz jako**.
+1. Select **Save** or **Save as**.
 
    
-   ![Zapisz nowe zapytanie przy użyciu przycisku Zapisz](../media/create-share-query/save-shared-query-buttons.png)
+   ![Save the new query using the save button](../media/create-share-query/save-shared-query-buttons.png)
 
-1. W okienku **Zapisz zapytanie** wprowadź wartość w polu **Liczba maszyn wirtualnych według systemu operacyjnego** .
+1. In the **Save query** pane, enter **Count VMs by OS** for the name.
 
-1. Zmień typ na **zapytanie udostępnione**, Ustaw opis na **Liczba maszyn wirtualnych według typu systemu operacyjnego**i ustaw **subskrypcję** , aby określić miejsce utworzenia zasobu zapytania.
+1. Change the type to **Shared query**, set the description to **Count of virtual machines by OS type**, and set **Subscription** to specify where the query resource gets created.
 
-1. Pozostaw zaznaczone pole wyboru **Publikuj do zasobów-Graph-zapytania** , a w **pozycji Grupa zasobów** ustaw wartość **(Stany Zjednoczone) zachodnie stany USA**.
+1. Leave the **Publish to resource-graph-queries resource group** check box selected and the **Resource Group location** set to **(US) West Central US**.
 
-1. Wybierz pozycję **Zapisz** w dolnej części okienka **Zapisz zapytanie** . Tytuł karty zostanie zmieniony z **zapytania 1** na **liczbę maszyn wirtualnych według systemu operacyjnego**. Przy pierwszym użyciu grupy zasobów **zapytania z wykresem zasobów** czas zapisywania trwa dłużej niż oczekiwano, gdy grupa zasobów zostanie utworzona.
+1. Select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**. The first time the **resource-graph-queries** resource group is used, the save takes longer than expected as the resource group gets created.
    
-   ![Zapisz nowe zapytanie jako zapytanie udostępnione](../media/create-share-query/save-shared-query-window.png)
+   ![Save the new query as a Shared query](../media/create-share-query/save-shared-query-window.png)
 
    > [!NOTE] 
-   > Możesz wyczyścić pole wyboru **Publikuj do zasobów-Graph-** querys, jeśli chcesz podać nazwę istniejącej grupy zasobów, w której ma zostać zapisane zapytanie udostępnione. Użycie domyślnej nazwy grupy zasobów dla zapytań sprawia, że zapytania udostępnione są łatwiejsze do odnajdywania. Umożliwia również dokładniejsze przeznaczenie tej grupy zasobów. Można jednak wybrać istniejącą grupę zasobów ze względów bezpieczeństwa na podstawie istniejących uprawnień.
+   > You can clear the **Publish to resource-graph-queries resource group** check box if you want to provide the name of an existing resource group to save the shared query into. Using the default named resource group for queries makes Shared queries easier to discover. It also makes the purpose of that resource group more apparent. However, you might opt to select an existing resource group for security reasons based on existing permissions.
 
-1. Przejdź do Eksploratora grafów zasobów platformy Azure w Azure Portal, a następnie wróć do niego. Zwróć uwagę, że zapisane zapytanie nie jest już wyświetlane, a karta **zapytanie 1** zwróci wartość.
+1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
 
-1. Wybierz pozycję **Otwórz zapytanie**. Sprawdź, czy typ jest ustawiony na **zapytanie udostępnione** i czy kombinacja **subskrypcji** i **grupy zasobów** jest zgodna z miejscem, w którym zapisano zapytanie. Liczba zapisanych **maszyn wirtualnych według elementu systemu operacyjnego** zostanie teraz wyświetlona na liście **Nazwa zapytania** . Wybierz łącze tytuł zapisanego zapytania, aby załadować je do nowej karty zawierającej nazwę tego zapytania. Jako zapytanie udostępnione wyświetla ikonę na karcie obok tytułu, oznaczając ją jako udostępnioną.
+1. Select **Open a query**. Verify that the type is set to **Shared query** and the combination of **Subscription** and **Resource group** match where you saved the query. The saved **Count VMs by OS** item now appears in the **Query Name** list. Select the title link of the saved query to load it into a new tab with that query's name. As a Shared query, it displays an icon in the tab next to the title, denoting it as shared.
 
-   ![Pokaż udostępnione zapytanie z ikoną](../media/create-share-query/show-saved-shared-query.png)
+   ![Show the Shared Query with icon](../media/create-share-query/show-saved-shared-query.png)
 
    > [!NOTE] 
-   > Gdy zapisane zapytanie jest otwarte, a karta wyświetla jego nazwę, przycisk **Zapisz** aktualizuje go przy użyciu wszelkich wprowadzonych zmian. Aby utworzyć nowe zapisane zapytanie, wybierz pozycję **Zapisz jako** i postępuj zgodnie z tym, jeśli zapisano zupełnie nowe zapytanie.
+   > When a saved query is open and the tab shows its name, the **Save** button updates it with any changes that have been made. To create a new saved query, select **Save as** and proceed as if you were saving a brand new query.
 
-## <a name="discover-shared-queries"></a>Odnajdź udostępnione zapytania
+## <a name="discover-shared-queries"></a>Discover Shared queries
 
-Ponieważ udostępnione zapytanie jest zasobem Menedżer zasobów, można je znaleźć na kilka sposobów:
+Because a Shared query is a Resource Manager resource, there are several ways to find one:
 
-- W Eksploratorze grafu zasobów wybierz pozycję **Otwórz zapytanie** i ustaw typ **zapytania udostępnione**.
-- Na stronie portalu kwerendy grafu zasobów.
-- Z grupy zasobów, w której zapisano udostępnione zapytanie.
-- Za pomocą zapytania do grafu zasobów.
+- From Resource Graph Explorer, select **Open a query** and set the type to **Shared query**.
+- From the Resource Graph queries portal page.
+- From the resource group that the Shared query was saved in.
+- Through a query to Resource Graph.
 
-### <a name="view-resource-graph-queries"></a>Wyświetl zapytania grafu zasobów
+### <a name="view-resource-graph-queries"></a>View Resource Graph queries
 
-W Azure Portal na stronie kwerendy grafu zasobów są wyświetlane udostępnione zapytania, do których mają dostęp zalogowane konto. Ta strona umożliwia filtrowanie według nazwy, subskrypcji, grupy zasobów i innych właściwości zapytania grafu zasobów. Za pomocą tego interfejsu można także Tagi, eksportować i usuwać zapytania dotyczące wykresów zasobów.
+In the Azure portal, the Resource Graph queries page displays Shared queries that the logged-in account has access to. This page enables filtering by name, subscription, resource group, and other properties of the Resource Graph query. You can also tag, export, and delete Resource Graph queries by using this interface.
 
-Wybranie jednego z zapytań spowoduje otwarcie strony zapytania wykresu zasobów. Podobnie jak w przypadku innych zasobów Menedżer zasobów, ta strona oferuje Interaktywny przegląd wraz z dziennikiem aktywności, kontrolą dostępu i tagami. Możesz również zastosować blokadę zasobu bezpośrednio z tej strony.
+Selecting one of the queries opens the Resource Graph query page. Like other Resource Manager resources, this page offers an interactive overview along with the Activity log, access control, and tags. You can also apply a resource lock directly from this page.
 
-Uzyskaj dostęp do strony zapytania grafu zasobów z menu Portal, wybierając pozycję **wszystkie usługi** lub korzystając z pola wyszukiwania platformy Azure w górnej części wszystkich stron. Wyszukaj i wybierz pozycję **Eksplorator grafów zasobów**.
+Get to the Resource Graph queries page from the portal menu by selecting **All services** or by using the Azure search box at the top of all pages. Search for and select **Resource Graph Explorer**.
 
-### <a name="list-resource-groups-resources"></a>Wyświetlanie listy zasobów grup zasobów
+### <a name="list-resource-groups-resources"></a>List Resource groups resources
 
-Zapytanie grafu zasobów jest wyświetlane wraz z innymi zasobami, które są częścią grupy zasobów.
-Wybranie zapytania grafu zasobów spowoduje otwarcie strony dla tego zapytania. Opcje menu wielokropka i skrótu (wyzwalane przez kliknięcie prawym przyciskiem myszy) działają tak samo jak na stronie kwerendy grafu zasobów.
+The Resource Graph query is listed alongside other resources that are part of a resource group.
+Selecting the Resource Graph query opens the page for that query. The ellipsis and shortcut menu options (triggered by right-clicking) work the same as on the Resource Graph query page.
 
-### <a name="query-resource-graph"></a>Zapytanie grafu zasobów
+### <a name="query-resource-graph"></a>Query Resource Graph
 
-Zapytania dotyczące wykresów zasobów można znaleźć za pomocą zapytania do grafu zasobów. Poniższe ograniczenia zapytania wykresu zasobów według typu `Microsoft.ResourceGraph/queries`, a następnie używają `project` do wyświetlania tylko nazwy, czasu modyfikacji i samego zapytania:
+You can find Resource Graph queries through a query to Resource Graph. The following Resource Graph query limits by type `Microsoft.ResourceGraph/queries`, and then uses `project` to list only the name, time modified, and the query itself:
 
 ```kusto
 Resources
@@ -137,25 +137,25 @@ Resources
 | project name, properties.timeModified, properties.query
 ```
 
-## <a name="delete-a-shared-query"></a>Usuń udostępnione zapytanie
+## <a name="delete-a-shared-query"></a>Delete a Shared query
 
-Jeśli zapytanie udostępnione nie jest już potrzebne, usuń je. Usuwając zapytanie udostępnione, można usunąć odpowiedni zasób Menedżer zasobów. Wszystkie pulpity nawigacyjne, do których wykres wyników został przypięty, teraz wyświetlają komunikat o błędzie. Gdy zostanie wyświetlony komunikat o błędzie, użyj przycisku **Usuń z pulpitu nawigacyjnego** , aby wyczyścić pulpit nawigacyjny.
+If a Shared query is no longer needed, delete it. By deleting a Shared query, you remove the corresponding Resource Manager resource. Any dashboards that the results chart was pinned to now display an error message. When that error message is displayed, use the **Remove from dashboard** button to clean up your dashboard.
 
-Zapytanie udostępnione można usunąć za pomocą następujących interfejsów:
-- Strona zapytania grafu zasobów
-- Strona kwerendy wykresu zasobów
-- Strona **otwieranie zapytania** w Eksploratorze grafu zasobów
-- Strona grupy zasobów
+You can delete a Shared query through the following interfaces:
+- Resource Graph queries page
+- Resource Graph query page
+- The **Open a query** page in Resource Graph Explorer
+- Resource groups page
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z tym samouczkiem Usuń utworzone zapytania prywatne i udostępnione, jeśli nie będą już potrzebne.
+When you're finished with this tutorial, delete the Private and Shared queries you created if you no longer want them.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uruchom pierwsze zapytanie przy użyciu [Azure Portal](../first-query-portal.md).
-- Uzyskaj więcej informacji na temat [języka zapytań](../concepts/query-language.md).
-- Dowiedz się więcej o sposobach [eksplorowania zasobów](../concepts/explore-resources.md).
-- Zobacz przykłady [początkowych zapytań](../samples/starter.md).
-- Zobacz przykłady [zaawansowanych zapytań](../samples/advanced.md).
-- Prześlij opinię na temat usługi [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+- Run your first query by using the [Azure portal](../first-query-portal.md).
+- Get more information about the [query language](../concepts/query-language.md).
+- Learn more about how to [explore resources](../concepts/explore-resources.md).
+- See samples of [Starter queries](../samples/starter.md).
+- See samples of [Advanced queries](../samples/advanced.md).
+- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

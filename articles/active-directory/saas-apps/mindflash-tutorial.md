@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą Mindflash | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Mindflash.
+title: 'Tutorial: Azure Active Directory integration with Mindflash | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Mindflash.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a7e7498411e68b83f8c05d50f52f73f97df9f797
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 78d4f44e9fe2310fab485804e0aaf70aa0dfbdb0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160590"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233541"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Samouczek: integracja Azure Active Directory z usługą Mindflash
+# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Tutorial: Azure Active Directory integration with Mindflash
 
-W tym samouczku dowiesz się, jak zintegrować usługę Mindflash z usługą Azure Active Directory (Azure AD).
-Integracja Mindflash z usługą Azure AD zapewnia następujące korzyści:
+In this tutorial, you learn how to integrate Mindflash with Azure Active Directory (Azure AD).
+Integrating Mindflash with Azure AD provides you with the following benefits:
 
-* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi Mindflash.
-* Możesz pozwolić użytkownikom na automatyczne logowanie do Mindflash (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* You can control in Azure AD who has access to Mindflash.
+* You can enable your users to be automatically signed-in to Mindflash (Single Sign-On) with their Azure AD accounts.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,22 +36,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z usługą Mindflash, potrzebne są następujące elementy:
+To configure Azure AD integration with Mindflash, you need the following items:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja z włączonym logowaniem jednokrotnym w Mindflash
+* Mindflash single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Mindflash obsługuje logowanie jednokrotne w usłudze **SP**
+* Mindflash supports **SP** initiated SSO
 
-## <a name="adding-mindflash-from-the-gallery"></a>Dodawanie Mindflash z galerii
+## <a name="adding-mindflash-from-the-gallery"></a>Adding Mindflash from the gallery
 
-Aby skonfigurować integrację programu Mindflash z usługą Azure AD, musisz dodać Mindflash z galerii do listy zarządzanych aplikacji SaaS.
+To configure the integration of Mindflash into Azure AD, you need to add Mindflash from the gallery to your list of managed SaaS apps.
 
-**Aby dodać Mindflash z galerii, wykonaj następujące czynności:**
+**To add Mindflash from the gallery, perform the following steps:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -65,31 +65,31 @@ Aby skonfigurować integrację programu Mindflash z usługą Azure AD, musisz do
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Mindflash**, wybierz pozycję **Mindflash** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
+4. In the search box, type **Mindflash**, select **Mindflash** from result panel then click **Add** button to add the application.
 
-     ![Mindflash na liście wyników](common/search-new-app.png)
+     ![Mindflash in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą Mindflash na podstawie użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Mindflash.
+In this section, you configure and test Azure AD single sign-on with Mindflash based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Mindflash needs to be established.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Mindflash, należy wykonać następujące bloki konstrukcyjne:
+To configure and test Azure AD single sign-on with Mindflash, you need to complete the following building blocks:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Skonfiguruj logowanie](#configure-mindflash-single-sign-on)** jednokrotne w usłudze Mindflash, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Configure Mindflash Single Sign-On](#configure-mindflash-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Utwórz użytkownika testowego Mindflash](#create-mindflash-test-user)** , aby uzyskać odpowiednik Britta Simon w Mindflash, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+5. **[Create Mindflash test user](#create-mindflash-test-user)** - to have a counterpart of Britta Simon in Mindflash that is linked to the Azure AD representation of user.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Mindflash, wykonaj następujące czynności:
+To configure Azure AD single sign-on with Mindflash, perform the following steps:
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Mindflash** wybierz pozycję **Logowanie jednokrotne**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Mindflash** application integration page, select **Single sign-on**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
@@ -103,20 +103,20 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Mindflash, 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Mindflash domenę i adresy URL Logowanie jednokrotne](common/sp-identifier.png)
+    ![Mindflash Domain and URLs single sign-on information](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.mindflash.com`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<companyname>.mindflash.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta Mindflash](https://www.mindflash.com/contact/) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Contact [Mindflash Client support team](https://www.mindflash.com/contact/) to get these values. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. W sekcji **Konfigurowanie Mindflash** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+6. On the **Set up Mindflash** section, copy the appropriate URL(s) as per your requirement.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Mindflash, 
 
     d. Adres URL wylogowywania
 
-### <a name="configure-mindflash-single-sign-on"></a>Konfigurowanie logowania jednokrotnego Mindflash
+### <a name="configure-mindflash-single-sign-on"></a>Configure Mindflash Single Sign-On
 
-Aby skonfigurować Logowanie jednokrotne na stronie **Mindflash** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Mindflash](https://www.mindflash.com/contact/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+To configure single sign-on on **Mindflash** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Mindflash support team](https://www.mindflash.com/contact/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -148,7 +148,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -157,15 +157,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Mindflash.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Mindflash.
 
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Mindflash**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Mindflash**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście Aplikacje wybierz pozycję **Mindflash**.
+2. In the applications list, select **Mindflash**.
 
-    ![Link Mindflash na liście aplikacji](common/all-applications.png)
+    ![The Mindflash link in the Applications list](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -181,41 +181,41 @@ W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-mindflash-test-user"></a>Utwórz użytkownika testowego Mindflash
+### <a name="create-mindflash-test-user"></a>Create Mindflash test user
 
-Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze Mindflash, muszą one być obsługiwane w Mindflash. W przypadku Mindflash, Inicjowanie obsługi administracyjnej jest zadaniem ręcznym.
+In order to enable Azure AD users to log into Mindflash, they must be provisioned into Mindflash. In the case of Mindflash, provisioning is a manual task.
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Aby aprowizować konta użytkowników, wykonaj następujące czynności:
 
-1. Zaloguj się do swojej witryny firmowej **Mindflash** jako administrator.
+1. Log in to your **Mindflash** company site as an administrator.
 
 1. Przejdź do pozycji **Manage Users** (Zarządzaj użytkownikami).
    
-    ![Zarządzanie użytkownikami](./media/mindflash-tutorial/ic787140.png "Zarządzanie użytkownikami")
+    ![Manage Users](./media/mindflash-tutorial/ic787140.png "Manage Users")
 
-1. Kliknij pozycję **Dodaj użytkowników**, a następnie kliknij pozycję **Nowy**.
+1. Click the **Add Users**, and then click **New**.
 
-1. W sekcji **Dodawanie nowych użytkowników** wykonaj następujące czynności dotyczące prawidłowego konta usługi Azure AD, które chcesz udostępnić:
+1. In the **Add New Users** section, perform the following steps of a valid Azure AD account you want to provision:
    
-    ![Dodaj nowych użytkowników](./media/mindflash-tutorial/ic787141.png "Dodaj nowych użytkowników")
+    ![Add New Users](./media/mindflash-tutorial/ic787141.png "Add New Users")
    
-    a. W polu tekstowym **imię i nazwisko** wpisz **imię** użytkownika jako **Britta**.
+    a. In the **First name** textbox, type **First name** of the user as **Britta**.
 
-    b. W polu tekstowym **nazwisko** wpisz **nazwisko** użytkownika jako **Simon**.
+    b. In the **Last name** textbox, type **Last name** of the user as **Simon**.
     
-    d. W polu tekstowym adres **e-mail** wpisz **adres E-mail** użytkownika jako **BrittaSimon\@contoso.com**.
+    d. In the **Email** textbox, type **Email Address** of the user as **BrittaSimon\@contoso.com**.
 
     b. Kliknij pozycję **Add** (Dodaj).
 
 >[!NOTE]
->Do aprowizacji kont użytkowników usługi AAD można używać innych narzędzi do tworzenia kont użytkowników Mindflash i interfejsów API dostarczonych przez Mindflash. 
+>You can use any other Mindflash user account creation tools or APIs provided by Mindflash to provision Azure AD user accounts. 
 > 
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Mindflash w panelu dostępu należy automatycznie zalogować się do Mindflash, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+When you click the Mindflash tile in the Access Panel, you should be automatically signed in to the Mindflash for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
@@ -223,5 +223,5 @@ Po kliknięciu kafelka Mindflash w panelu dostępu należy automatycznie zalogow
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

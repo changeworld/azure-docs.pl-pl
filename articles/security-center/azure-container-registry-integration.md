@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center i Azure Container Registry
-description: Dowiedz się więcej o integracji Azure Security Center z usługą Azure Container Registry
+title: Azure Security Center and Azure Container Registry
+description: Learn about Azure Security Center's integration with Azure Container Registry
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,37 +12,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196378"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229318"
 ---
-# <a name="azure-container-registry-integration-with-security-center-preview"></a>Integracja Azure Container Registry z Security Center (wersja zapoznawcza)
+# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integration with Security Center (Preview)
 
-Azure Container Registry (ACR) to zarządzana usługa rejestru prywatnego platformy Docker, która przechowuje obrazy kontenerów dla wdrożeń platformy Azure i zarządza nimi w rejestrze centralnym. Jest ona oparta na rejestrze platformy Docker open source 2,0.
+Azure Container Registry (ACR) is a managed, private Docker registry service that stores and manages your container images for Azure deployments in a central registry. It's based on the open-source Docker Registry 2.0.
 
-Aby uzyskać dokładniejszy wgląd w luki w zabezpieczeniach rejestru i obrazów, użytkownicy warstwy Standardowa Azure Security Center mogą włączyć opcjonalny pakiet rejestrów kontenerów. Aby uzyskać więcej informacji, zobacz [cennik](security-center-pricing.md). Po włączeniu pakietu Security Center automatycznie skanuje obrazy w usłudze ACR przy każdym wypchnięciu obrazu do rejestru. Po zakończeniu skanowania (zwykle po około 10 minutach) w Security Center zalecenia są dostępne w ramach zaleceń, takich jak:
+For deeper visibility into your registry and images' vulnerabilities, users of Azure Security Center's standard tier can enable the optional Container Registries bundle. Aby uzyskać więcej informacji, zobacz [cennik](security-center-pricing.md). With the bundle enabled, Security Center automatically scans images in your registry whenever an image is pushed to the registry.
 
-[![przykład Azure Security Center zalecenia dotyczące luk w zabezpieczeniach odnalezionych w obrazie hostowanym Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+> [!NOTE]
+> Security Center's first scan of a registry will only occur after the Container Registries bundle is enabled and an image is pushed to the registry.
 
-## <a name="benefits-of-integration"></a>Zalety integracji
+When the scan completes (typically after approximately 10 minutes), findings are available in Security Center recommendations like this:
 
-Security Center identyfikuje rejestry ACR w ramach subskrypcji i bezproblemowo udostępnia:
+[![Sample Azure Security Center recommendation about vulnerabilities discovered in an Azure Container Registry (ACR) hosted image](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
-* **Skanowanie w poszukiwaniu luk w zabezpieczeniach platformy Azure** w przypadku wszystkich wypychanych obrazów systemu Linux. Security Center skanuje obraz przy użyciu skanera z wiodącej w branży skanowania dostawcy, Qualys. To rozwiązanie natywne jest w sposób ciągły zintegrowane.
+## <a name="benefits-of-integration"></a>Benefits of integration
 
-* **Zalecenia dotyczące zabezpieczeń** obrazów systemu Linux z znanymi lukami w zabezpieczeniach. Security Center zawiera szczegółowe informacje o każdej raportowanej luce w zabezpieczeniach i klasyfikacji ważności. Ponadto zawiera wskazówki dotyczące sposobu korygowania określonych luk w zabezpieczeniach w każdym obrazie wypychanym do rejestru.
+Security Center identifies ACR registries in your subscription and seamlessly provides:
 
-![Ogólne omówienie Azure Security Center i Azure Container Registry (ACR)](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+* **Azure-native vulnerability scanning** for all pushed Linux images. Security Center scans the image using a scanner from the industry-leading vulnerability scanning vendor, Qualys. This native solution is seamlessly integrated by default.
 
-## <a name="next-steps"></a>Kolejne kroki
+* **Security recommendations** for Linux images with known vulnerabilities. Security Center provides details of each reported vulnerability and a  severity classification. Additionally, it gives guidance for how to  remediate the specific vulnerabilities found on each image pushed to registry.
 
-Aby dowiedzieć się więcej o funkcjach zabezpieczeń kontenera Security Center, zobacz:
+![Azure Security Center and Azure Container Registry (ACR) high-level overview](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
-* [Zabezpieczenia Azure Security Center i kontenera](container-security.md)
+## <a name="next-steps"></a>Następne kroki
 
-* [Integracja z usługą Azure Kubernetes Service](azure-kubernetes-service-integration.md)
+To learn more about Security Center's container security features, see:
 
-* [Ochrona maszyny wirtualnej](security-center-virtual-machine-protection.md) — opis zaleceń dotyczących Security Center
+* [Azure Security Center and container security](container-security.md)
+
+* [Integration with Azure Kubernetes Service](azure-kubernetes-service-integration.md)
+
+* [Virtual Machine protection](security-center-virtual-machine-protection.md) - Describes Security Center's recommendations

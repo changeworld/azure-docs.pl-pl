@@ -1,6 +1,6 @@
 ---
-title: Używanie prywatnych punktów końcowych w usłudze Azure Storage | Microsoft Docs
-description: Przegląd prywatnych punktów końcowych w celu bezpiecznego dostępu do kont magazynu z sieci wirtualnych.
+title: Using Private Endpoints with Azure Storage | Microsoft Docs
+description: Overview of private endpoints for secure access to storage accounts from virtual networks.
 services: storage
 author: santoshc
 ms.service: storage
@@ -9,119 +9,132 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: fb1f8a1d1f8e1ebbaf3e0e9fe96e3c1bf0ba9ba6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 06b96bf548be45952e1ff21f0433a1607ab36501
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078751"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227882"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Używanie prywatnych punktów końcowych usługi Azure Storage (wersja zapoznawcza)
+# <a name="using-private-endpoints-for-azure-storage-preview"></a>Using Private Endpoints for Azure Storage (Preview)
 
-Możesz użyć [prywatnych punktów końcowych](../../private-link/private-endpoint-overview.md) dla kont usługi Azure Storage, aby umożliwić klientom w sieci wirtualnej (VNET) bezpieczne uzyskiwanie dostępu do danych za pośrednictwem [prywatnego linku](../../private-link/private-link-overview.md). Prywatny punkt końcowy używa adresu IP z przestrzeni adresowej sieci wirtualnej dla usługi konta magazynu. Ruch sieciowy między klientami w sieci wirtualnej a kontem magazynu przechodzącym przez sieć wirtualną i prywatnym łączem w usłudze Microsoft szkielet Network, eliminując ekspozycję z publicznego Internetu.
+You can use [Private Endpoints](../../private-link/private-endpoint-overview.md) for your Azure Storage accounts to allow clients on a virtual network (VNet) to securely access data over a [Private Link](../../private-link/private-link-overview.md). The private endpoint uses an IP address from the VNet address space for your storage account service. Network traffic between the clients on the VNet and the storage account traverses over the VNet and a private link on the Microsoft backbone network, eliminating exposure from the public internet.
 
-Używanie prywatnych punktów końcowych dla konta magazynu pozwala:
-- Zabezpiecz swoje konto magazynu, konfigurując zaporę magazynu do blokowania wszystkich połączeń w publicznym punkcie końcowym usługi Storage.
-- Zwiększ bezpieczeństwo sieci wirtualnej (VNet), umożliwiając zablokowanie eksfiltracji danych w wirtualnej.
-- Bezpiecznie łącz się z kontami magazynu z sieci lokalnych, które łączą się z siecią wirtualną przy użyciu [sieci VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) lub [Usługa expressroutes](../../expressroute/expressroute-locations.md) z prywatną komunikację równorzędną.
+Using private endpoints for your storage account enables you to:
+- Secure your storage account by configuring the storage firewall to block all connections on the public endpoint for the storage service.
+- Increase security for the virtual network (VNet), by enabling you to block exfiltration of data from the VNet.
+- Securely connect to storage accounts from on-premises networks that connect to the VNet using [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) or [ExpressRoutes](../../expressroute/expressroute-locations.md) with private-peering.
 
-## <a name="conceptual-overview"></a>Omówienie pojęć
-![Omówienie prywatnych punktów końcowych usługi Azure Storage](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+## <a name="conceptual-overview"></a>Conceptual Overview
+![Private Endpoints for Azure Storage Overview](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
-Prywatny punkt końcowy jest specjalnym interfejsem sieciowym dla usługi platformy Azure w [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNET). Utworzenie prywatnego punktu końcowego dla konta magazynu zapewnia bezpieczną łączność między klientami w sieci wirtualnej i magazynem. Do prywatnego punktu końcowego jest przypisany adres IP z zakresu adresów IP sieci wirtualnej. Połączenie między prywatnym punktem końcowym a usługą magazynu używa bezpiecznego linku prywatnego.
+A Private Endpoint is a special network interface for an Azure service in your [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet). When you create a private endpoint for your storage account, it provides secure connectivity between clients on your VNet and your storage. The private endpoint is assigned an IP address from the IP address range of your VNet. The connection between the private endpoint and the storage service uses a secure private link.
 
-Aplikacje w sieci wirtualnej mogą bezproblemowo łączyć się z usługą magazynu za pośrednictwem prywatnego punktu końcowego, **używając tych samych parametrów połączenia i mechanizmów autoryzacji, które mogą być używane w inny sposób**. Prywatnych punktów końcowych można używać ze wszystkimi protokołami obsługiwanymi przez konto magazynu, w tym REST i SMB.
+Applications in the VNet can connect to the storage service over the private endpoint seamlessly, **using the same connection strings and authorization mechanisms that they would use otherwise**. Private endpoints can be used with all protocols supported by the storage account, including REST and SMB.
 
-Po utworzeniu prywatnego punktu końcowego dla usługi magazynu w sieci wirtualnej do zatwierdzenia dla właściciela konta magazynu jest wysyłane żądanie zgody. Jeśli użytkownik żądający utworzenia prywatnego punktu końcowego jest również właścicielem konta magazynu, to żądanie zgody jest automatycznie zatwierdzane.
+When you create a private endpoint for a storage service in your VNet, a consent request is sent for approval to the storage account owner. If the user requesting the creation of the private endpoint is also an owner of the storage account, this consent request is automatically approved.
 
-Właściciele kont magazynu mogą zarządzać żądaniami zgody i prywatnymi punktami końcowymi za pomocą karty "*prywatne punkty końcowe*" dla konta magazynu w [Azure Portal](https://portal.azure.com).
-
-> [!TIP]
-> Jeśli chcesz ograniczyć dostęp do konta magazynu tylko za pomocą prywatnego punktu końcowego, skonfiguruj zaporę magazynu tak, aby odmówić wszystkim dostępowi za pomocą publicznego punktu końcowego.
-
-Możesz zabezpieczyć konto magazynu tak, aby akceptowało tylko połączenia z sieci wirtualnej, [konfigurując zaporę magazynu](storage-network-security.md#change-the-default-network-access-rule) tak, aby domyślnie nie zezwala na dostęp za pośrednictwem jego publicznego punktu końcowego. Nie musisz mieć reguły zapory, aby zezwalać na ruch z sieci wirtualnej, która ma prywatny punkt końcowy, ponieważ Zapora magazynu kontroluje dostęp tylko za pośrednictwem publicznego punktu końcowego. Prywatne punkty końcowe zamiast tego polegają na przepływie zgody na przyznanie podsieci dostępu do usługi magazynu.
-
-### <a name="private-endpoints-for-storage-service"></a>Prywatne punkty końcowe usługi Storage
-
-Podczas tworzenia prywatnego punktu końcowego należy określić konto magazynu i usługę magazynu, z którą nawiąże połączenie. Potrzebujesz osobnego prywatnego punktu końcowego dla każdej usługi magazynu na koncie magazynu, do której należy uzyskać dostęp, czyli [obiektów BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [plików](../files/storage-files-introduction.md), [kolejek](../queues/storage-queues-introduction.md), [tabel](../tables/table-storage-overview.md)lub [statycznych witryn sieci Web](../blobs/storage-blob-static-website.md).
+Storage account owners can manage consent requests and the private endpoints, through the '*Private Endpoints*' tab for the storage account in the [Azure portal](https://portal.azure.com).
 
 > [!TIP]
-> Utwórz oddzielny prywatny punkt końcowy dla dodatkowego wystąpienia usługi Storage, aby uzyskać lepszą wydajność odczytu na kontach RA-GRS.
+> If you want to restrict access to your storage account through the private endpoint only, configure the storage firewall to deny or control access through the public endpoint.
 
-Aby uzyskać informacje o dostępności na [koncie magazynu geograficznie nadmiarowego do odczytu](storage-redundancy-grs.md#read-access-geo-redundant-storage), musisz oddzielić prywatne punkty końcowe zarówno dla wystąpienia podstawowego, jak i pomocniczego usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do **pracy w trybie failover**. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover.
+You can secure your storage account to only accept connections from your VNet, by [configuring the storage firewall](storage-network-security.md#change-the-default-network-access-rule) to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a VNet that has a private endpoint, since the storage firewall only controls access through the public endpoint. Private endpoints instead rely on the consent flow for granting subnets access to the storage service.
+
+### <a name="private-endpoints-for-storage-service"></a>Private Endpoints for Storage Service
+
+When creating the private endpoint, you must specify the storage account and the storage service to which it connects. You need a separate private endpoint for each storage service in a storage account that you need to access, namely [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Files](../files/storage-files-introduction.md), [Queues](../queues/storage-queues-introduction.md), [Tables](../tables/table-storage-overview.md), or [Static Websites](../blobs/storage-blob-static-website.md).
+
+> [!TIP]
+> Create a separate private endpoint for the secondary instance of the storage service for better read performance on RA-GRS accounts.
+
+For read availability on a [read-access geo redundant storage account](storage-redundancy-grs.md#read-access-geo-redundant-storage), you need separate private endpoints for both the primary and secondary instances of the service. You don't need to create a private endpoint for the secondary instance for **failover**. The private endpoint will automatically connect to the new primary instance after failover.
 
 #### <a name="resources"></a>Zasoby
 
-Aby uzyskać bardziej szczegółowe informacje na temat tworzenia prywatnego punktu końcowego dla konta magazynu, zapoznaj się z następującymi artykułami:
+For more detailed information on creating a private endpoint for your storage account, refer to the following articles:
 
-- [Połącz się prywatnie z kontem magazynu z poziomu środowiska konta magazynu w Azure Portal](../../private-link/create-private-endpoint-storage-portal.md)
-- [Utwórz prywatny punkt końcowy przy użyciu prywatnego centrum linków w Azure Portal](../../private-link/create-private-endpoint-portal.md)
-- [Tworzenie prywatnego punktu końcowego przy użyciu interfejsu wiersza polecenia platformy Azure](../../private-link/create-private-endpoint-cli.md)
-- [Tworzenie prywatnego punktu końcowego przy użyciu Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+- [Connect privately to a storage account from the Storage Account experience in the Azure portal](../../private-link/create-private-endpoint-storage-portal.md)
+- [Create a private endpoint using the Private Link Center in the Azure portal](../../private-link/create-private-endpoint-portal.md)
+- [Create a private endpoint using Azure CLI](../../private-link/create-private-endpoint-cli.md)
+- [Create a private endpoint using Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
-### <a name="dns-changes-for-private-endpoints"></a>Zmiany w systemie DNS dla prywatnych punktów końcowych
+### <a name="connecting-to-private-endpoints"></a>Connecting to Private Endpoints
 
-Klienci w sieci wirtualnej powinni używać tych samych parametrów połączenia dla konta magazynu, nawet w przypadku korzystania z prywatnego punktu końcowego.
+Clients on a VNet using the private endpoint should use the same connection string for the storage account, as clients connecting to the public endpoint. We rely upon DNS resolution to automatically route the connections from the VNet to the storage account over a private link.
 
-Podczas tworzenia prywatnego punktu końcowego aktualizujemy rekord zasobu CNAME DNS dla tego punktu końcowego magazynu do aliasu w poddomenie z prefiksem "*privatelink*". Domyślnie tworzymy również [prywatną strefę DNS](../../dns/private-dns-overview.md) dołączoną do sieci wirtualnej. Ta prywatna strefa DNS odpowiada poddomeny z prefiksem "*privatelink*" i zawiera rekordy zasobów DNS a dla prywatnych punktów końcowych.
+> [!IMPORTANT]
+> Use the same connection string to connect to the storage account using private endpoints, as you'd use otherwise. Please don't connect to the storage account using its '*privatelink*' subdomain URL.
 
-Po rozwiązaniu adresu URL punktu końcowego magazynu spoza sieci wirtualnej z prywatnym punktem końcowym jest on rozpoznawany jako publiczny punkt końcowy usługi magazynu. Po rozwiązaniu problemu z siecią wirtualną, w której jest przechowywany prywatny punkt końcowy, adres URL punktu końcowego magazynu jest rozpoznawany jako adres IP prywatnego punktu końcowego.
+We create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet with the necessary updates for the private endpoints, by default. However, if you're using your own DNS server, you may need to make additional changes to your DNS configuration. The section on [DNS changes](#dns-changes-for-private-endpoints) below describes the updates required for private endpoints.
 
-W przykładzie przedstawionym powyżej, rekordy zasobów DNS dla konta magazynu "StorageAccountA", po rozwiązaniu spoza sieci wirtualnej obsługującej prywatny punkt końcowy, będą:
+## <a name="dns-changes-for-private-endpoints"></a>DNS changes for Private Endpoints
+
+The DNS CNAME resource record for a storage account with a private endpoint is updated to an alias in a subdomain with the prefix '*privatelink*'. By default, we also create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet that corresponds to the subdomain with the prefix '*privatelink*', and contains the DNS A resource records for the private endpoints.
+
+When you resolve the storage endpoint URL from outside the VNet with the private endpoint, it resolves to the public endpoint of the storage service. When resolved from the VNet hosting the private endpoint, the storage endpoint URL resolves to the private endpoint's IP address.
+
+For the illustrated example above, the DNS resource records for the storage account 'StorageAccountA', when resolved from outside the VNet hosting the private endpoint, will be:
 
 | Nazwa                                                  | Typ  | Wartość                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<publiczny punkt końcowy usługi Storage\>                   |
-| \<publiczny punkt końcowy usługi Storage\>                   | A     | \<publiczny adres IP usługi Storage\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
-Jak wspomniano wcześniej, można odmówić dostępu przez publiczny punkt końcowy przy użyciu zapory magazynu.
+As previously mentioned, you can deny or control access for clients outside the VNet through the public endpoint using the storage firewall.
 
-Rekordy zasobów DNS dla StorageAccountA, po rozwiązaniu przez klienta w sieci wirtualnej hostującym prywatnego punktu końcowego, będą:
+The DNS resource records for StorageAccountA, when resolved by a client in the VNet hosting the private endpoint, will be:
 
 | Nazwa                                                  | Typ  | Wartość                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-Takie podejście umożliwia dostęp do konta magazynu **przy użyciu tych samych parametrów połączenia** z sieci wirtualnej obsługującej prywatne punkty końcowe, a także klientów spoza sieci wirtualnej. Możesz użyć zapory magazynu, aby odmówić dostępu wszystkim klientom spoza sieci wirtualnej.
+This approach enables access to the storage account **using the same connection string** for clients on the VNet hosting the private endpoints, as well as clients outside the VNet.
 
-> [!IMPORTANT]
-> Użyj tych samych parametrów połączenia, aby nawiązać połączenie z kontem magazynu przez prywatne punkty końcowe, jak w przeciwnym razie. Nie łącz się z kontem magazynu przy użyciu adresu URL poddomeny "*privatelink*".
+If you are using a custom DNS server on your network, clients must be able to resolve the FQDN for the storage account endpoint to the private endpoint IP address. For this, you must configure your DNS server to delegate your private link subdomain to the private DNS zone for the VNet, or configure the A records for '*StorageAccountA.privatelink.blob.core.windows.net*' with the private endpoint IP address. 
 
 > [!TIP]
-> W przypadku korzystania z niestandardowego lub lokalnego serwera DNS należy skonfigurować rekordy zasobów DNS dla prywatnych punktów końcowych w strefie DNS odpowiadającej poddomenie "privatelink" usługi magazynu.
+> When using a custom or on-premises DNS server, you should configure your DNS server to resolve the storage account name in the 'privatelink' subdomain to the private endpoint IP address. You can do this by delegating the 'privatelink' subdomain to the private DNS zone of the VNet, or configuring the DNS zone on your DNS server and adding the DNS A records.
 
-Zalecane nazwy stref DNS dla prywatnych punktów końcowych usług magazynu to:
+The recommended DNS zone names for private endpoints for storage services are:
 
-| Usługa magazynu        | Nazwa strefy                            |
+| Storage service        | Zone name                            |
 | :--------------------- | :----------------------------------- |
-| Blob service           | `privatelink.blob.core.windows.net`  |
-| Usługa Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
-| Usługa plików           | `privatelink.file.core.windows.net`  |
-| usługa kolejki          | `privatelink.queue.core.windows.net` |
+| Usługa Obiekty Blob           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
+| File service           | `privatelink.file.core.windows.net`  |
+| Queue service          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
-| Statyczne witryny sieci Web        | `privatelink.web.core.windows.net`   |
+| Static Websites        | `privatelink.web.core.windows.net`   |
+
+#### <a name="resources"></a>Zasoby
+
+For additional guidance on configuring your own DNS server to support private endpoints, refer to the following articles:
+
+- [Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [DNS configuration for Private Endpoints](/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Cennik
 
-Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Azure Private link](https://azure.microsoft.com/pricing/details/private-link).
+For pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="copy-blob-support"></a>Kopiuj obsługę obiektów BLOB
+### <a name="copy-blob-support"></a>Copy Blob support
 
-W trakcie okresu zapoznawczego nie obsługujemy [kopiowania poleceń obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) dla kont magazynu, do których można uzyskać dostęp za pomocą prywatnych punktów końcowych, jeśli konto magazynu źródłowego jest chronione przez zaporę.
+During the preview, we don't support [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) commands issued to storage accounts accessed through private endpoints when the source storage account is protected by a firewall.
 
-### <a name="subnets-with-service-endpoints"></a>Podsieci z punktami końcowymi usługi
-Obecnie nie można utworzyć prywatnego punktu końcowego w podsieci, która ma punkty końcowe usługi. Jako obejście można utworzyć oddzielne podsieci w tej samej sieci wirtualnej dla punktów końcowych usługi i prywatnych punktów końcowych.
+### <a name="subnets-with-service-endpoints"></a>Subnets with Service Endpoints
+Currently, you can't create a private endpoint in a subnet that has service endpoints. As a workaround, you can create separate subnets in the same VNet for service endpoints and private endpoints.
 
-### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Ograniczenia dostępu do magazynu dla klientów w sieci wirtualnych z prywatnymi punktami końcowymi
+### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Storage access constraints for clients in VNets with Private Endpoints
 
-Klienci w programie sieci wirtualnych z istniejącymi prywatnymi punktami końcowymi ograniczeniami podczas uzyskiwania dostępu do innych kont magazynu, które mają prywatne punkty końcowe. Na przykład załóżmy, że sieć wirtualna N1 ma prywatny punkt końcowy dla konta magazynu a1 dla, powiedz, usługa BLOB Service. Jeśli konto magazynu a2 ma prywatny punkt końcowy w sieci wirtualnej N2 dla usługi BLOB, wówczas klienci w sieci wirtualnej N1 muszą również uzyskać dostęp do usługi BLOB Service dla konta a2 przy użyciu prywatnego punktu końcowego. Jeśli konto magazynu a2 nie ma żadnych prywatnych punktów końcowych dla usługi BLOB, klienci w sieci wirtualnej N1 mogą uzyskać dostęp do swojej usługi BLOB bez prywatnego punktu końcowego.
+Clients in VNets with existing private endpoints face constraints when accessing other storage accounts that have private endpoints. For instance, suppose a VNet N1 has a private endpoint for a storage account A1 for, say, the blob service. If storage account A2 has a private endpoint in a VNet N2 for the blob service, then clients in VNet N1 must also access the blob service of account A2 using a private endpoint. If storage account A2 does not have any private endpoints for the blob service, then clients in VNet N1 can access its blob service without a private endpoint.
 
-To ograniczenie jest wynikiem zmian wprowadzonych w systemie DNS, gdy konto a2 tworzy prywatny punkt końcowy.
+This constraint is a result of the DNS changes made when account A2 creates a private endpoint.
 
-### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Reguły sieciowej grupy zabezpieczeń dla podsieci z prywatnymi punktami końcowymi
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Network Security Group rules for subnets with private endpoints
 
-Obecnie nie można skonfigurować zasad [sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md) (sieciowej grupy zabezpieczeń) dla podsieci z prywatnymi punktami końcowymi. Ograniczone obejście tego problemu polega na implementacji reguł dostępu dla prywatnych punktów końcowych w podsieciach źródłowych, chociaż takie podejście może wymagać wyższego obciążenia zarządzania.
+Currently, you can't configure [Network Security Group](../../virtual-network/security-overview.md) (NSG) rules for subnets with private endpoints. A limited workaround for this issue is to implement your access rules for private endpoints on the source subnets, though this approach may require a higher management overhead.

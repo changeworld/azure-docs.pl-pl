@@ -1,300 +1,300 @@
 ---
-title: Wyświetlaj kluczowe metryki, za pomocą pulpitów nawigacyjnych Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak można wyświetlić kluczowe metryki za pomocą pulpitów nawigacyjnych w rozwiązaniu Cloudyn.
+title: View key metrics with Cloudyn dashboards in Azure | Microsoft Docs
+description: This article describes how you can view key metrics with dashboards in Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: b83368b913bf1303b49e3a56e3a15248af222cbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0651dd006585e4ed5b8b888d6e55974c5c45a1d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002049"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230085"
 ---
-# <a name="view-key-cost-metrics-with-dashboards"></a>Wyświetl klucz koszt metryki za pomocą pulpitów nawigacyjnych
+# <a name="view-key-cost-metrics-with-dashboards"></a>View key cost metrics with dashboards
 
-Pulpity nawigacyjne w rozwiązaniu Cloudyn przedstawia ogólny widok raportów. Pulpity nawigacyjne umożliwiają wyświetlanie kosztów kluczowe metryki w jednym widoku. Zapewniają także, że tendencje biznesowe zaznaczenie, aby pomóc Państwu jak najlepiej istotnych decyzji biznesowych.
+Dashboards in Cloudyn provide a high-level view of reports. Dashboards allow you to view key cost metrics in a single view. They also provide business trend highlights to help you make important business decisions.
 
-Pulpity nawigacyjne są również używane do tworzenia widoków dla osób z wadami różne obowiązki w Twojej organizacji, która może obejmować:
+Dashboards are also used to create views for people with different responsibilities in your organization, which might include:
 
-- Kontroler finansowy
-- Właściciel aplikacji lub projektu
-- Inżynier ds. metodyki DevOps
-- Kierownicy
+- Financial controller
+- Application or project owner
+- DevOps engineer
+- Executives
 
-Pulpity nawigacyjne składają się z elementów widget, a każdy element widget jest zasadniczo Miniatura raportu. Kliknij element widget, aby otworzyć raport. Podczas dostosowywania raportów Zapisz moje raporty i są one dodawane do pulpitu nawigacyjnego.
+Dashboards are made up of widgets and each widget is essentially a report thumbnail. Click a widget to open its report. When you customize reports, you save them to My Reports and they're added to the dashboard.
 
-Pulpit nawigacyjny wersji różnią się dla użytkowników, Zarządzanie (MSP), Enterprise i Cloudyn — wersja Premium. Różnice są określane przez jednostki poziomów dostępu. Aby uzyskać więcej informacji na temat poziomów dostępu, zobacz [poziomów dostępu jednostki](tutorial-user-access.md#entity-access-levels).
+Dashboard versions differ for Management (MSP), Enterprise, and Premium Cloudyn users. The differences are determined by entity access levels. For more information about access levels, see [Entity access levels](tutorial-user-access.md#entity-access-levels).
 
-Pulpit nawigacyjny dostępność zależy od rodzaju konta dostawcy usługi chmury, która jest używana podczas wyświetlania pulpitów nawigacyjnych. Typ danych dostępna i zebrane przez firmę Cloudyn ma wpływ na raporty w pulpitach nawigacyjnych. Na przykład jeśli nie masz konta usługi AWS następnie nie zobaczysz pulpit nawigacyjny śledzenia S3. Podobnie jeśli nie włączysz dostęp usługi Azure Resource Manager do rozwiązania Cloudyn nie można zobaczyć wszelkie informacje specyficzne dla platformy Azure w elementach widget pulpitu nawigacyjnego optymalizatora.
+Dashboard availability depends on the type of cloud service provider account that is used when viewing dashboards. The type of information available and collected by Cloudyn affects reports in dashboards. For example, if you don't have an AWS account then you won't see the S3 Tracker dashboard. Similarly, if you don't enable Azure Resource Manager access to Cloudyn then you won't see any Azure-specific information in Optimizer dashboard widgets.
 
-Możesz użyć dowolnej gotowej pulpitów nawigacyjnych lub można utworzyć własny pulpit nawigacyjny zawierający dostosowane raporty. Jeśli znasz raportach usługi Cloudyn, zobacz [raporty użycia Cloudyn](use-reports.md).
+You can use any of the premade dashboards or you can create your own dashboard with customized reports. If you're unfamiliar with Cloudyn reports, see [Use Cloudyn reports](use-reports.md).
 
-## <a name="create-a-custom-dashboard"></a>Tworzenie niestandardowego pulpitu nawigacyjnego
+## <a name="create-a-custom-dashboard"></a>Create a custom dashboard
 
-Aby szybko rozpocząć pracę z niestandardowego pulpitu nawigacyjnego można zduplikować istniejącą grupę, aby korzystać z jego właściwości. Następnie można zmodyfikować go do własnych potrzeb. Na pulpicie nawigacyjnym, które chcesz skopiować, kliknij **Zapisz jako**. Tylko można duplikować dostosowanych pulpitów nawigacyjnych — nie można zduplikować pulpity nawigacyjne, które są dołączone do rozwiązania Cloudyn.
+To quickly get started with a custom dashboard, you can duplicate an existing one to use its properties. Then you can modify it to suit your needs. On the dashboard you want to copy, click **Save As**. You can only duplicate customized dashboards — you can't duplicate the dashboards that are included with Cloudyn.
 
-Aby utworzyć niestandardowego pulpitu nawigacyjnego:
+To create a custom dashboard:
 
-1. Na stronie głównej kliknij **Dodaj nowe +** . Zostanie wyświetlona strona Mój pulpit nawigacyjny.  
-    ![Moje strony pulpitu nawigacyjnego, w którym dodawane są nowe raporty](./media/dashboards/my-dashboard.png)
-2. Kliknij przycisk **Dodaj nowy raport**. Zostanie wyświetlone okno dodawania raportu.
-3. Wybierz raport, który chcesz dodać do elementu widget pulpitu nawigacyjnego. Widżet zostanie dodana do pulpitu nawigacyjnego.
-4. Powtórz te czynności, aż do pulpitu nawigacyjnego.
-5. Aby zmienić nazwę pulpitu nawigacyjnego, kliknij nazwę pulpitu nawigacyjnego na stronie głównej pulpitu nawigacyjnego, a następnie wpisz nową nazwę.
+1. On the homepage, click **Add New +** . The My Dashboard page is displayed.  
+    ![My dashboard page where you add new reports](./media/dashboards/my-dashboard.png)
+2. Click **Add New Report**. The Add Report box is displayed.
+3. Select the report that you want to add to the dashboard widget. The widget is added to the dashboard.
+4. Repeat the preceding steps until the dashboard is complete.
+5. To change the name of the dashboard, click the name of the dashboard on the Dashboard home page and type the new name.
 
-## <a name="modify-a-custom-dashboard"></a>Modyfikowanie niestandardowego pulpitu nawigacyjnego
+## <a name="modify-a-custom-dashboard"></a>Modify a custom dashboard
 
-Takie jak utworzenie niestandardowego pulpitu nawigacyjnego, nie można zmodyfikować na pulpitach nawigacyjnych zawartych w rozwiązaniu cloudyn. Aby zmodyfikować raport niestandardowy pulpit nawigacyjny:
+Like creating a custom dashboard, you can't modify the dashboards included with Cloudyn. To modify a custom dashboard report:
 
-1. Na pulpicie nawigacyjnym znaleźć raport, aby zmodyfikować, a następnie kliknij przycisk **Edytuj**. Zostanie wyświetlony raport.
-2. Wprowadź wymagane zmiany w raporcie i kliknij przycisk **Zapisz**. Raport jest zaktualizowana i pojawią się wprowadzone zmiany.
+1. In the dashboard, find the report you want to modify and click **Edit**. The report is displayed.
+2. Make any changes that you want to the report and click **Save**. The report is updated and displays your changes.
 
-## <a name="share-a-custom-dashboard"></a>Udostępnianie niestandardowego pulpitu nawigacyjnego
+## <a name="share-a-custom-dashboard"></a>Share a custom dashboard
 
-Niestandardowy pulpit nawigacyjny można udostępnić innym użytkownikom _publicznych_ lub _Moje jednostki_. Po udostępnieniu na wartość publiczne, wszyscy użytkownicy mogą wyświetlać pulpit nawigacyjny. Tylko użytkownicy z dostępem do bieżącej jednostki można wyświetlić pulpit nawigacyjny po udostępnieniu do moich jednostki. Kroki, aby udostępnić niestandardowy pulpit nawigacyjny publicznego i Moje jednostki są podobne.
+You can share a custom dashboard with others to _Public_ or _My Entity_. When you share to Public, all users can view the dashboard. Only users with access to the current entity can view the dashboard when you share to My Entity. The steps to share a custom dashboard with Public and My Entity are similar.
 
-Aby udostępnić niestandardowy pulpit nawigacyjny do publicznego:
+To share a custom dashboard to Public:
 
-1. Na pulpicie nawigacyjnym kliknij **ustawienia pulpitu nawigacyjnego**. Zostanie wyświetlone okno Ustawienia pulpitu nawigacyjnego.  
-    ![ustawienia pulpitu nawigacyjnego dla niestandardowego pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
-2. W oknie Ustawienia pulpitu nawigacyjnego kliknij symbol koła strzałkę, a następnie kliknij przycisk **publicznych**. Zostanie wyświetlone okno dialogowe potwierdzenia publicznych pulpitu nawigacyjnego.
-3. Kliknij przycisk **tak**. Pulpit nawigacyjny jest teraz dostępne dla innych użytkowników.
+1. In a dashboard, click **Dashboard Settings**. The Dashboard Settings box is displayed.  
+    ![dashboard settings for a custom dashboard](./media/dashboards/dashboard-options.png)
+2. In the Dashboard Settings box, click the arrow symbol and then click **Public**. The Public Dashboard confirmation dialog box is displayed.
+3. Click  **Yes**. The dashboard is now available to others.
 
-## <a name="delete-a-custom-dashboard-report"></a>Usuwanie raportu niestandardowego pulpitu nawigacyjnego
+## <a name="delete-a-custom-dashboard-report"></a>Delete a custom dashboard report
 
-Na pulpicie nawigacyjnym, możesz usunąć składnik niestandardowy raport. Usuwanie raportu z poziomu pulpitu nawigacyjnego nie powoduje usunięcia raportu na liście raportów. Zamiast tego raportu usunięcie go z poziomu pulpitu nawigacyjnego tylko.
+You can delete a custom report component from the dashboard. Deleting the report from the dashboard doesn't delete the report from the reports list. Instead, deleting the report removes it from the dashboard only.
 
-Aby usunąć składnik pulpitu nawigacyjnego w składniku pulpitu nawigacyjnego, kliknij przycisk **Usuń**. Klikając **Usuń** natychmiast usuwa składnik pulpitu nawigacyjnego.
+To delete a dashboard component, on the dashboard component, click **Delete**. Clicking **Delete**  immediately deletes the dashboard component.
 
-## <a name="share-a-dashboard-enterprise"></a>Udostępnianie pulpitu nawigacyjnego (dla wersji Enterprise)
+## <a name="share-a-dashboard-enterprise"></a>Share a dashboard (Enterprise)
 
-Możesz udostępnić niestandardowe pulpity nawigacyjne dla wszystkich użytkowników w Twojej organizacji lub użytkownikom bieżącego obiektu. Udostępnianie pulpitu nawigacyjnego umożliwiają osobom szybki przegląd wysokiego poziomu kluczowego wskaźnika wydajności. Po udostępnieniu pulpitu nawigacyjnego, automatycznie replikuje pulpitu nawigacyjnego do wszystkich Cloudyn jednostek/klientów. Zmiany do udostępnionego pulpitu nawigacyjnego są automatycznie aktualizowane.
+You can share custom dashboards to all users in your organization or with the users of the current entity. Sharing a dashboard can give others a quick high-level view of your KPI. When you share a dashboard, it automatically replicates the dashboard to all your Cloudyn entities/customers. Changes to the shared dashboard are automatically updated.
 
-Aby udostępnić pulpit nawigacyjny wszystkich użytkowników w tym podjednostek:
+To share a dashboard with all users including subentities:
 
-1. Na stronie głównej pulpitu nawigacyjnego kliknij **Edytuj**.
-2. Kliknij przycisk **udziału** , a następnie wybierz **publicznych**.
-3. Zostanie wyświetlone okno potwierdzenia globalne publicznych pulpitu nawigacyjnego.
-4. Kliknij przycisk **tak** można ustawić pulpit nawigacyjny jako globalne publicznych pulpitu nawigacyjnego.
+1. On the dashboard home page, click **Edit**.
+2. Click **Share** and then select **Public**.
+3. The Global Public Dashboard confirmation box is displayed.
+4. Click **Yes** to set the dashboard as a global public dashboard.
 
-Aby udostępnić pulpit nawigacyjny wszystkim użytkownikom bieżąca jednostka:
+To share a dashboard with all users of a current entity:
 
-1. Ze strony głównej pulpitu nawigacyjnego, kliknij przycisk **Edytuj**.
-2. Kliknij przycisk **udziału** , a następnie wybierz **Moje jednostki**.
-3. Kliknij przycisk **tak** można ustawić pulpit nawigacyjny jako publiczny pulpitu nawigacyjnego.
+1. From the Dashboard home page, click **Edit**.
+2. Click **Share** and then select **My Entity**.
+3. Click **Yes** to set the dashboard as a public dashboard.
 
-## <a name="duplicate-a-custom-dashboard"></a>Duplikowanie niestandardowego pulpitu nawigacyjnego
+## <a name="duplicate-a-custom-dashboard"></a>Duplicate a custom dashboard
 
-Podczas tworzenia nowego pulpitu nawigacyjnego, możesz chcieć użyć podobnych właściwości z istniejącego pulpitu nawigacyjnego. Można zduplikować pulpitu nawigacyjnego, aby utworzyć nową.
+When you create a new dashboard, you might want to use similar properties from an existing dashboard. You can duplicate the dashboard to create a new one.
 
-Tylko można duplikować niestandardowych pulpitów nawigacyjnych. Nie można duplikować standardowa pulpitów nawigacyjnych.
+You can only duplicate custom dashboards. You can't duplicate standard dashboards.
 
-Duplikowanie pulpitu nawigacyjnego (Klonuj) niestandardowego:
+To duplicate (clone) a custom dashboard:
 
-1. Na pulpicie nawigacyjnym, którą chcesz zduplikować kliknij **Zapisz jako**. Nowy pulpit nawigacyjny zostanie otwarty z taką samą nazwę i numer.
-2. Zmień nazwę zduplikowanych pulpit nawigacyjny i zmodyfikuj go, jak chcesz.
-
-— Lub —
-
-1. W ustawieniach pulpitu nawigacyjnego kliknij **Zapisz jako** w wierszu, którą chcesz zduplikować pulpitu nawigacyjnego.
-2. Zduplikowane pulpit nawigacyjny zostanie otwarty.
-3. Zmienianie nazwy pulpitu nawigacyjnego i zmodyfikuj go, jak chcesz.
-
-## <a name="set-a-default-dashboard"></a>Ustaw domyślny pulpit nawigacyjny
-
-Można ustawić dowolny pulpit nawigacyjny jako domyślne. Ustawienie domyślne sprawia, że są wyświetlane jako karty skrajnie po lewej na liście karty Pulpit nawigacyjny. Wyświetla domyślny pulpit nawigacyjny, kiedy otworzyć Cloudyn portal.
-
-- Czy chcesz ustawić jako domyślne, a następnie kliknij kartę pulpitu nawigacyjnego **domyślne** po prawej stronie.
+1. On the Dashboard that you want to duplicate, click **Save As**. A new dashboard opens with the same name and a number.
+2. Rename the duplicated dashboard and modify it as you like.
 
 — Lub —
 
-1. Kliknij przycisk **ustawienia pulpitu nawigacyjnego** zapoznać się z listą dostępnych pulpitów nawigacyjnych i wybierz pulpit nawigacyjny, który chcesz ustawić jako domyślny.  
-    ![Opcje pulpitu nawigacyjnego dla domyślnego pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
-2. Kliknij przycisk **domyślne** w wierszu pulpitu nawigacyjnego. Zostanie wyświetlone okno potwierdzenia domyślny pulpit nawigacyjny.
-3. Kliknij przycisk **Yes** (Tak). Pulpit nawigacyjny jest ustawiona jako domyślna.
+1. In Dashboard Settings, click **Save As**  on the line of the dashboard that you want to duplicate.
+2. The duplicated dashboard opens.
+3. Rename the dashboard and modify it as you like.
+
+## <a name="set-a-default-dashboard"></a>Set a default dashboard
+
+You can set any dashboard as your default. Setting it to your default makes it appear as the left-most tab in the dashboard tab list. The default dashboard displays when open the Cloudyn portal.
+
+- Click the dashboard tab you would like to set as default, then click **Default** on the right.
+
+— Lub —
+
+1. Click **Dashboard Settings** to see the list of available dashboards and select the dashboard that you want to set as the default.  
+    ![dashboard options for a default dashboard](./media/dashboards/dashboard-options.png)
+2. Click **Default** in the line of the dashboard. The Default Dashboard confirmation box is displayed.
+3. Kliknij przycisk **Yes** (Tak). The dashboard is set to default.
 
 ## <a name="management-dashboard"></a>Pulpit nawigacyjny zarządzania
-Zarządzanie (lub MSP pulpitu nawigacyjnego, aby użytkownicy MSP) pulpit nawigacyjny zawiera najważniejsze typy głównego raportu.  
-![Wyświetlanie raportów pulpit nawigacyjny zarządzania](./media/dashboards/management-dash.png)
+The Management (or MSP dashboard for MSP users) dashboard includes highlights of the main report types.  
+![Management dashboard showing various reports](./media/dashboards/management-dash.png)
 
-### <a name="cost-entity-summary-enterprise-only"></a>Podsumowanie jednostki kosztu (tylko wersja Enterprise)
-Ten element widget zawiera podsumowanie jednostki kosztu zarządzanych, w tym liczbę jednostek i liczbę kont.
-- Kliknij element widget, aby otworzyć raport Enterprise — szczegóły.
+### <a name="cost-entity-summary-enterprise-only"></a>Cost Entity Summary (Enterprise only)
+This widget summarizes the managed cost entities, including the number of entities and number of accounts.
+- Click the widget to open the Enterprise Details report.
 
-### <a name="cost-over-time"></a>Koszt w funkcji czasu
-Ten element widget może pomóc wykryć trendy związane z kosztami. Zawiera opis koszt w ciągu ostatniego dnia w oparciu trendów z ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu, aby wyświetlić i filtrowania dodatkowych szczegółów.
+### <a name="cost-over-time"></a>Cost Over Time
+This widget can help you spot cost trends. It highlights the cost for the last day, based on the trend of the last 30 days.
+- Click the widget to open the Actual Cost Over Time report to view and filter additional details.
 
-### <a name="asset-controller"></a>Kontroler aktywów
-Ten element widget wyróżnia liczby uruchomionych wystąpień z poprzedniego dnia, powyżej trendu użycia z ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć pulpit nawigacyjny kontroler aktywów.
+### <a name="asset-controller"></a>Asset Controller
+This widget highlights the number of running instances from the previous day, above the usage trend over the last 30 days.
+- Click the widget to open the Asset Controller dashboard.
 
-### <a name="unused-ri-detector"></a>Czujnik nieużywanych Wystąpień RI
-Ten element widget wyróżnia liczba Amazon EC2 nieużywanych rezerwacji.
-- Kliknij element widget można otworzyć raportu obecnie nieużywane rezerwacje, w którym można zobaczyć nieużywane rezerwacje można modyfikować.
+### <a name="unused-ri-detector"></a>Unused RI Detector
+This widget highlights the number of Amazon EC2 unused reservations.
+- Click the widget to open the Currently Unused Reservations report where you can view the unused reservations you can modify.
 
-### <a name="cost-by-service"></a>Koszt według usługi
-Ten element widget wyróżnia zamortyzowany koszt przez usługę w ciągu ostatnich 30 dni. Umieść kursor nad wykresu kołowego, aby zobaczyć koszty dla danej usługi.
-- Kliknij element widget, aby otworzyć raport analiza rzeczywistego kosztu.
+### <a name="cost-by-service"></a>Cost by Service
+This widget highlights amortized costs by service for the last 30 days. Hover over the pie chart to see the costs per service.
+- Click the widget to open the Actual Cost Analysis report.
 
-### <a name="potential-savings"></a>Potencjalne oszczędności
-Ten element widget zawiera typ wystąpienia ceny zaleceniami dotyczącymi usług Amazon EC2 i Amazon RDS.
-- Kliknij przycisk Otwórz element widget raport analizy oszczędności. Wyświetla listę według typów wystąpień z potencjalne oszczędności kosztów.
+### <a name="potential-savings"></a>Potential savings
+This widget shows instance type pricing recommendations for Amazon EC2 and Amazon RDS.
+- Click the widget open the Savings Analysis report. It lists your costs by instance types with potential savings.
 
-### <a name="compute-instances---daily-trend"></a>Wystąpienia obliczeniowe — Trend dzienny
-Ten element widget Wyświetla aktywne wystąpienia według typu, w ciągu ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport wystąpień w czasie, w którym można zobaczyć podział wszystkich wystąpień w ciągu ostatnich 30 dni.
+### <a name="compute-instances---daily-trend"></a>Compute Instances - Daily Trend
+This widget displays the active instances by type, for the last 30 days.
+- Click the widget to open the Instances Over Time report, where you can view a breakdown of all instances running during the last 30 days.
 
-### <a name="storage-by-department"></a>Pamięć masowa według działu
-Ten element widget Wyświetla usługi storage używane według działów. Umieść kursor nad wykresu kołowego, aby zobaczyć zużycie miejsca w magazynie według działów.
-- Kliknij element widget, aby otworzyć pulpit nawigacyjny śledzenia S3.
+### <a name="storage-by-department"></a>Storage by department
+This widget displays the storage services used by departments. Hover over the pie chart to see your storage consumption by department.
+- Click the widget to open the S3 Tracker dashboard.
 
-## <a name="cost-controller-dashboard"></a>Koszt pulpit nawigacyjny kontrolera
-Pulpit nawigacyjny kontroler kosztów zawiera najważniejsze funkcje alokacji kosztów wstępnie ustalony.  
-![Wyświetlanie raportów kosztów pulpit nawigacyjny kontrolera](./media/dashboards/cost-controller-dashboard.png)
+## <a name="cost-controller-dashboard"></a>Cost Controller dashboard
+The Cost Controller dashboard shows pre-set cost allocation highlights.  
+![Cost Controller dashboard showing various reports](./media/dashboards/cost-controller-dashboard.png)
 
-### <a name="cost-over-time"></a>Koszt w funkcji czasu
-Ten element widget pomaga wykryć trendy związane z kosztami. Zawiera opis koszt w ciągu ostatniego dnia w oparciu trendów z ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu, aby wyświetlić i filtrowania dodatkowych szczegółów.
+### <a name="cost-over-time"></a>Cost Over Time
+This widget helps you spot cost trends. It highlights the cost for the last day, based on the trend of the last 30 days.
+- Click the widget to open the Actual Cost Over Time report to view and filter additional details.
 
-### <a name="monthly-cost-trends"></a>Miesięczny koszt trendów
-Ten element widget wyróżnia przewidywanych wydatków zamortyzowany i faktycznego wydatków od początku miesiąca.
-- Kliknij element widget, aby otworzyć raport przewidywany koszt dla bieżącego miesiąca, który zawiera podsumowanie kosztów od początku miesiąca.
+### <a name="monthly-cost-trends"></a>Monthly Cost Trends
+This widget highlights projected amortized spending and your actual spend since the beginning of the month.
+- Click the widget to open the Current Month Projected Cost report, which provides a month-to-date cost summary.
 
-Ten raport przedstawia kosztów od początku miesiąca, koszt poprzedniego miesiąca oraz bieżącego miesiąca, przewidywany koszt. Bieżący miesiąc przewidywany koszt jest obliczany przez dodanie aktualne miesięcznych kosztów i projekcji. Rzutowanie jest na podstawie jej kosztu monitorowane w ciągu ostatnich 30 dni.
+This report shows the cost from the beginning of month, the cost of previous month, and the current month projected cost. The current month projected cost is calculated by adding the up-to-date monthly cost and projection. The projection is based on the cost monitored over the last 30 days.
 
-### <a name="12-month-planner"></a>Planista 12-miesięcznego
-Ten element widget wyróżnia koszty planowane w ciągu najbliższych 12 miesięcy i potencjalne oszczędności.
-- Kliknij element widget, aby otworzyć raport przewidywany koszt roczny.
+### <a name="12-month-planner"></a>12 Month Planner
+This widget highlights the projected costs over the next 12 months and the potential savings.
+- Click the widget to open the Annual Projected Cost report.
 
-### <a name="cost-by-service"></a>Koszt według usługi
-Ten element widget wyróżnia zamortyzowany koszt przez usługę w ciągu ostatnich 30 dni.
-- Umieść kursor nad wykresu kołowego, aby zobaczyć koszty dla danej usługi.
-- Kliknij element widget, aby otworzyć raport analiza rzeczywistego kosztu.
+### <a name="cost-by-service"></a>Cost by Service
+This widget highlights amortized costs by service for the last 30 days.
+- Hover over the pie chart to see the costs per service.
+- Click the widget to open the Actual Cost Analysis report.
 
-### <a name="cost-by-account"></a>Koszt według konta
-Ten element widget wyróżnia zamortyzowany koszt konta w ciągu ostatnich 30 dni.
-- Umieść kursor nad wykresu kołowego, aby zobaczyć koszty na jednym koncie.
-- Kliknij element widget, aby otworzyć raport analiza rzeczywistego kosztu.
+### <a name="cost-by-account"></a>Cost by Account
+This widget highlights amortized costs by account for the last 30 days.
+- Hover over the pie chart to see the costs per account.
+- Click the widget to open the Actual Cost Analysis report.
 
-### <a name="cost-trend-by-day"></a>Trend kosztu wg dnia
-Ten element widget najważniejsze funkcje wydatki w ciągu ostatnich 30 dni.
-- Umieść kursor nad wykres słupkowy, aby zobaczyć koszty na dzień.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu.
+### <a name="cost-trend-by-day"></a>Cost Trend by Day
+This widget highlights spend over the last 30 days.
+- Hover over the bar graph to see costs per day.
+- Click the widget to open the Actual Cost Over Time report.
 
-### <a name="cost-trend-by-month---last-6-months"></a>Trend kosztu za miesiąc — ostatnie 6 miesięcy
+### <a name="cost-trend-by-month---last-6-months"></a>Cost Trend by Month - Last 6 months
 
-Ten element widget najważniejsze funkcje wydania w ciągu ostatnich sześciu miesięcy.
-- Umieść kursor nad wykres słupkowy, aby zobaczyć koszty miesięcznie.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu.
+This widget highlights spend over the last six months.
+- Hover over the bar graph to see costs per month.
+- Click the widget to open the Actual Cost Over Time report.
 
-## <a name="asset-controller-dashboard"></a>Pulpit nawigacyjny kontrolera zasobów
+## <a name="asset-controller-dashboard"></a>Asset Controller dashboard
 
-Ten pulpit nawigacyjny Wyświetla liczbę uruchomionych wystąpień, dostępnych i używanych dysków, dystrybucję typów wystąpień i informacje dotyczące magazynu.  
-![Wyświetlanie raportów pulpit nawigacyjny kontrolera zasobów](./media/dashboards/asset-controller-dashboard.png)
+This dashboard displays the number of running instances, available and in-use disks, distribution of instance types, and storage information.  
+![Asset Controller dashboard showing various reports](./media/dashboards/asset-controller-dashboard.png)
 
-### <a name="compute-instances"></a>Wystąpienia obliczeniowe
-Ten element widget Wyświetla liczbę uruchomionych wystąpień, w oparciu o trendu użycia z ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport wystąpień w czasie.
+### <a name="compute-instances"></a>Compute Instances
+This widget displays the number of running instances based on the usage trend over the last 30 days.
+- Click the widget to open the Instances Over Time report.
 
 ### <a name="disks"></a>Dyski
-Ten element widget wyróżnia łączną liczbą i liczby dysków, które są w użyciu i dostępne.
-- Kliknij element widget, aby otworzyć raport aktywnych dysków.
+This widget highlights the total number and volume of disks, that are in-use and available.
+- Click the widget to open the Active Disks report.
 
-### <a name="instance-type-distribution"></a>Rozkład typu wystąpienia
-Ten element widget prezentuje typy wystąpienia wykresu kołowego.
-- Kliknij element widget, aby otworzyć raport wystąpienia dystrybucji, który zawiera podział aktywnego wystąpienia według wybranej agregacji.
+### <a name="instance-type-distribution"></a>Instance Type Distribution
+This widget highlights the instance types in a pie chart.
+- Click on the widget to open the Instance Distribution report, which provides a breakdown of your active instances by the selected aggregation.
 
-### <a name="compute-instances---daily-trend"></a>Wystąpienia obliczeniowe — Trend dzienny
-Ten element widget wyróżnia wystąpień obliczeniowych (narzędzia spot, zastrzeżone i na żądanie) dziennie w ciągu ostatnich 30 dni.
-- Umieść kursor nad wykresie, aby wyświetlić liczbę wystąpień obliczeniowych, na typ dziennie.
-- Kliknij element widget, aby otworzyć raport wystąpień w czasie.
+### <a name="compute-instances---daily-trend"></a>Compute Instances - Daily Trend
+This widget highlights the compute instances (spot, reserved, and on-demand) per day for the last 30 days.
+- Hover over the graph to view the number of compute instances, per type per day.
+- Click the widget to open the Instances Over Time report.
 
-### <a name="all-buckets-s3"></a>Wszystkie przedziały (S3)
-Ten element widget wyróżnia całkowita ilość miejsca S3 i liczba przechowywanych obiektów.
-- Kliknij element widget, aby otworzyć pulpit nawigacyjny śledzenia S3. Pulpit nawigacyjny pomaga znaleźć, analizowania i wyświetlić swoje bieżące użycie magazynu oraz trendów.
+### <a name="all-buckets-s3"></a>All Buckets (S3)
+This widget highlights the total S3 storage and number of objects stored.
+- Click the widget to open the S3 Tracker Dashboard. The dashboard helps you find, analyze, and display your current storage usage and trends.
 
-### <a name="sql-db-instances-rds"></a>Wystąpienia bazy danych SQL (RDS)
-Ten element widget wyróżnia liczby uruchomionych wystąpień Amazon usług pulpitu zdalnego w oparciu trendów z ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport usług pulpitu zdalnego wystąpienia względem czasu.
+### <a name="sql-db-instances-rds"></a>SQL DB Instances (RDS)
+This widget highlights the number of running Amazon RDS instances based on the trend of the last 30 days.
+- Click the widget to open the RDS Instance Over Time report.
 
-## <a name="optimizer-dashboard"></a>Optymalizator pulpitu nawigacyjnego
-Ten pulpit nawigacyjny Wyświetla redukcję zatrudnienia zalecenia, nieużywane zasoby i potencjalne oszczędności.  
-![Pulpit nawigacyjny Optymalizator przedstawiający różne raporty](./media/dashboards/optimizer-dashboard.png)
+## <a name="optimizer-dashboard"></a>Optimizer Dashboard
+This dashboard displays downsizing recommendations, unused resources, and potential savings.  
+![Optimizer dashboard showing various reports](./media/dashboards/optimizer-dashboard.png)
 
-### <a name="ri-calculator"></a>Kalkulator wystąpień Zarezerwowanych
-Ten element widget Wyświetla liczbę zalecenia zakupu wystąpień Zarezerwowanych i wyróżnienie potencjalne oszczędności roczne.
-- Kliknij element widget, aby otworzyć Kalkulator wystąpienia zarezerwowane, gdzie można określić, kiedy należy używać na żądanie a zastrzeżone planów cenowych.
+### <a name="ri-calculator"></a>RI Calculator
+This widget displays the number of RI buying recommendations and highlights the potential annual savings.
+- Click the widget to open the Reserved Instance Calculator where you can determine when to use on-demand vs. reserved pricing plans.
 
-### <a name="sizing"></a>Zmiany rozmiaru
-Ten element widget wyróżnia zalecanych rozmiarów i potencjalne oszczędności, jeśli zaimplementowana.
-- Kliknij element widget, aby otworzyć raport usługi EC2 Cost Effective Sizing zalecenia.
+### <a name="sizing"></a>Ustalanie rozmiaru
+This widget highlights the sizing recommended and potential savings, if implemented.
+- Click the widget to open the EC2 Cost Effective Sizing Recommendations report.
 
-### <a name="unused-ri-detector"></a>Czujnik nieużywanych Wystąpień RI
-Ten element widget wyróżnia liczba Amazon EC2 nieużywanych rezerwacji.
-- Kliknij element widget, aby otworzyć raport obecnie nieużywane rezerwacje, gdzie można przejrzeć nieużywanych rezerwacji, które można modyfikować.
+### <a name="unused-ri-detector"></a>Unused RI Detector
+This widget highlights the number of Amazon EC2 unused reservations.
+- Click the widget to open the Currently Unused Reservations report where you can view the unused reservations that you can modify.
 
-###  <a name="available-disks"></a>Dostępne dyski
-Ten element widget prezentuje liczbę niedołączone dyski w danym wdrożeniu.
-- Kliknij element widget, aby otworzyć raport niedołączone dyski.
+###  <a name="available-disks"></a>Available Disks
+This widget highlights the number of unattached disks in your deployment.
+- Click the widget to open the Unattached Disks report.
 
-### <a name="rds-ri-calculator"></a>Kalkulator wystąpień Zarezerwowanych usług pulpitu zdalnego
-Ten element widget prezentuje liczbę rezerwacji zaleceń dotyczących wystąpień Amazon usług pulpitu zdalnego i potencjalne oszczędności.
-- Kliknij element widget, aby otworzyć raport zalecenia zakupu wystąpień Zarezerwowanych usług pulpitu zdalnego, którym można zobaczyć zalecenia Cloudyn, aby korzystać z wystąpień zarezerwowanych zamiast wystąpienia na żądanie.
+### <a name="rds-ri-calculator"></a>RDS RI Calculator
+This widget highlights the number of reservation recommendations for your Amazon RDS instances and the potential savings.
+- Click the widget to open the RDS RI Buying Recommendations report where you can see Cloudyn recommendations to use reserved instances instead of on-demand Instances.
 
-### <a name="rds-sizing"></a>Ustalanie rozmiaru usług pulpitu zdalnego
-Ten element widget pokazuje liczbę zalecenia wymiarowania efektywnego i potencjalne oszczędności.
-- Kliknij element widget, aby otworzyć raport zalecenia wymiarowania efektywnego usług pulpitu zdalnego, którym są wyświetlane szczegółowe Amazon rozmiaru zalecenia dotyczące usług pulpitu zdalnego.
+### <a name="rds-sizing"></a>RDS Sizing
+This widget shows the number of sizing recommendations and the potential savings.
+- Click the widget to open the RDS Sizing Recommendations report, which displays detailed Amazon RDS sizing recommendations.
 
-Zalecenia dotyczące optymalizacji są oparte na dane dotyczące użycia i wydajności, monitorowania w ciągu ostatniego miesiąca.
+The optimization recommendations are based on the usage and performance data monitored in the last month.
 
-## <a name="s3-tracker-dashboard"></a>Pulpit nawigacyjny śledzenia S3
-Pulpit nawigacyjny śledzenia S3 pomaga znaleźć, analizowania i wyświetlić swoje bieżące użycie magazynu oraz trendów.  
-![Pulpit nawigacyjny śledzenia S3 przedstawiający różne raporty](./media/dashboards/s3-tracker-dashboard.png)
+## <a name="s3-tracker-dashboard"></a>S3 Tracker dashboard
+The S3 Tracker dashboard helps you find, analyze, and display your current storage usage and trends.  
+![S3 Tracker dashboard showing various reports](./media/dashboards/s3-tracker-dashboard.png)
 
-### <a name="all-buckets"></a>Wszystkie pakiety
-Ten element widget wyróżnia łączny rozmiar wszystkich swoje zasobników w GB i całkowita liczba obiektów w swojej zasobników.
-- Kliknij przycisk widżet, aby otworzyć raport rozmiar dystrybucji S3. Raport pomaga analizować swoje S3 rozmiar zasobnika, folder najwyższego poziomu, klasę magazynu i stanu przechowywania wersji.
+### <a name="all-buckets"></a>All Buckets
+This widget highlights the total size of all your buckets, in GB, and the total number of objects in your buckets.
+- Click the widget to open the Distribution of S3 Size report. The report helps you analyze your S3 size by bucket, top-level folder, storage class, and versioning state.
 
-### <a name="bucket-properties"></a>Przedział właściwości
-Ten element widget wyróżnia całkowita liczba zasobników magazynu.
-- Kliknij element widget, aby wyświetlić raport o właściwościach przedział S3.
+### <a name="bucket-properties"></a>Bucket Properties
+This widget highlights the total number of storage buckets.
+- Click the widget to view the S3 Bucket Properties report.
 
-### <a name="scan-status"></a>Stan skanowania
-Ten element widget wyróżnia podczas ostatniego skanowania pod kątem S3 zostało to zrobione, i gdy rozpocznie się kolejny.
-- Kliknij element widget, aby otworzyć raport o stanie skanowania S3.
+### <a name="scan-status"></a>Scan Status
+This widget highlights when the last S3 scan was done and when the next one will start.
+- Click the widget to open the S3 Scan Status report.
 
-### <a name="storage-by-bucket"></a>Pamięć masowa według przedziału
-Ten element widget prezentuje procent używanej przez klasę magazynu każdego przedziału.
-- Kliknij przycisk widżet, aby otworzyć raport rozmiar dystrybucji S3. Raport pomaga analizować swoje S3 rozmiar zasobnika, folder najwyższego poziomu, klasę magazynu i stanu przechowywania wersji.
+### <a name="storage-by-bucket"></a>Storage by Bucket
+This widget highlights the percentage that each bucket storage class is using.
+- Click the widget to open the Distribution of S3 Size report. The report helps you analyze your S3 size by bucket, top-level folder, storage class, and versioning state.
 
-### <a name="number-of-objects-by-bucket"></a>Liczba obiektów według przedziału
-Ten element widget prezentuje liczbę obiektów dla przedziału w rzeczywista liczba i procent. Umieść kursor nad przedziału, aby zobaczyć, całkowita liczba obiektów.
-- Kliknij element widget, aby otworzyć raport rozmiar dystrybucji S3 (skanowanie na podstawie).
+### <a name="number-of-objects-by-bucket"></a>Number of Objects by Bucket
+This widget highlights the number of objects per bucket in actual number and percentage. Hover over the bucket to see the total objects.
+- Click the widget to open the Distribution of S3 Size report (Scan based).
 
-## <a name="cloud-comparison-dashboard"></a>Pulpit nawigacyjny rozwiązania cloud porównania
-Pulpit nawigacyjny porównania chmurze ułatwia porównanie kosztów od różnych dostawców w chmurze na podstawie ceny, typ Procesora i pamięci RAM.  
-![Wyświetlanie raportów pulpit nawigacyjny rozwiązania cloud porównania](./media/dashboards/cloud-comparison-dashboard.png)
+## <a name="cloud-comparison-dashboard"></a>Cloud Comparison Dashboard
+The Cloud Comparison dashboard helps you compare costs from different cloud providers based on pricing, CPU type, and RAM size.  
+![Cloud Comparison dashboard showing various reports](./media/dashboards/cloud-comparison-dashboard.png)
 
-### <a name="ec2-cost-in-azure-by-instance-type"></a>Usługi EC2 Koszt na platformie Azure dzięki typu wystąpienia
-Ten element widget wyróżnia ostatnich 30 dni użytkowania kursów na żądanie. Porównuje koszty dzięki bieżącym vs koszt Amazon EC2 potencjalnych kosztów na platformie Azure.
-- Umieść kursor nad paski do porównania kosztów na typ wystąpienia.
-- Kliknij element widget otworzyć przenoszenie wdrożenia Your — raport analizy kosztów.
+### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Cost in Azure by Instance Type
+This widget highlights the last 30 days of usage in on-demand rates. It compares the cost with the current Amazon EC2 cost vs the potential cost in Azure.
+- Hover over the bars to compare costs per instance type.
+- Click the widget to open the Porting Your Deployment – Cost Analysis report.
 
-### <a name="ec2-cost-in-azure"></a>Usługi EC2 Koszt na platformie Azure
-Ten element widget Pokazuje bieżące koszty Amazon EC2 i porównuje je na platformie Azure. Porównanie zależy od ostatnich 30 dni użytkowania kursów na żądanie.
-- Kliknij element widget otworzyć przenoszenie wdrożenia Your - raport analizy kosztów.
+### <a name="ec2-cost-in-azure"></a>EC2 Cost in Azure
+This widget shows your current Amazon EC2 costs and compares them to Azure. The comparison is based on the last 30 days of usage in on-demand rates.
+- Click the widget to open the Porting Your Deployment - Cost Analysis report.
 
-### <a name="ec2azure-instance-type-mapping"></a>Mapowanie typu wystąpienia usługi EC2/platformy Azure
-Ten element widget wyróżnia najlepsze mapowania jednostek obliczeniowych elastycznej między Amazon EC2 i platformą Azure.
-- Kliknij element widget, aby otworzyć raport mapowanie typu wystąpienia.
+### <a name="ec2azure-instance-type-mapping"></a>EC2/Azure Instance Type Mapping
+This widget highlights the best mapping of elastic compute units between Amazon EC2 and Azure.
+- Click the widget to open the Instances Type Mapping report.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Odczyt [raporty użycia Cloudyn](use-reports.md) artykuł, aby dowiedzieć się więcej na temat raportów.
+## <a name="next-steps"></a>Następne kroki
+- Read the [Use Cloudyn reports](use-reports.md) article to learn more about reports.

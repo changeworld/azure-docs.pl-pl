@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą TalentLMS | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i TalentLMS.
+title: 'Tutorial: Azure Active Directory integration with TalentLMS | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and TalentLMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,45 +16,45 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089163"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233360"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą TalentLMS
+# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Tutorial: Azure Active Directory integration with TalentLMS
 
-W tym samouczku dowiesz się, jak zintegrować TalentLMS w usłudze Azure Active Directory (Azure AD).
-Integrowanie TalentLMS z usługą Azure AD zapewnia następujące korzyści:
+In this tutorial, you learn how to integrate TalentLMS with Azure Active Directory (Azure AD).
+Integrating TalentLMS with Azure AD provides you with the following benefits:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do TalentLMS.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do TalentLMS (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* You can control in Azure AD who has access to TalentLMS.
+* You can enable your users to be automatically signed-in to TalentLMS (Single Sign-On) with their Azure AD accounts.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą TalentLMS, potrzebne są następujące elementy:
+To configure Azure AD integration with TalentLMS, you need the following items:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* TalentLMS pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* TalentLMS single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje TalentLMS **SP** jednokrotne logowanie inicjowane przez
+* TalentLMS supports **SP** initiated SSO
 
-## <a name="adding-talentlms-from-the-gallery"></a>Dodawanie TalentLMS z galerii
+## <a name="adding-talentlms-from-the-gallery"></a>Adding TalentLMS from the gallery
 
-Aby skonfigurować integrację TalentLMS w usłudze Azure AD, należy dodać TalentLMS z galerii z listą zarządzanych aplikacji SaaS.
+To configure the integration of TalentLMS into Azure AD, you need to add TalentLMS from the gallery to your list of managed SaaS apps.
 
-**Aby dodać TalentLMS z galerii, wykonaj następujące czynności:**
+**To add TalentLMS from the gallery, perform the following steps:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację TalentLMS w usłudze Azure AD, należy dodać Tal
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **TalentLMS**, wybierz opcję **TalentLMS** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. In the search box, type **TalentLMS**, select **TalentLMS** from result panel then click **Add** button to add the application.
 
-    ![TalentLMS na liście wyników](common/search-new-app.png)
+    ![TalentLMS in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą TalentLMS w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w TalentLMS musi zostać ustanowione.
+In this section, you configure and test Azure AD single sign-on with TalentLMS based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in TalentLMS needs to be established.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą TalentLMS, należy wykonać poniższe bloki konstrukcyjne:
+To configure and test Azure AD single sign-on with TalentLMS, you need to complete the following building blocks:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie TalentLMS logowania jednokrotnego](#configure-talentlms-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego TalentLMS](#create-talentlms-test-user)**  — aby odpowiednikiem Britta Simon w TalentLMS połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Configure TalentLMS Single Sign-On](#configure-talentlms-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Create TalentLMS test user](#create-talentlms-test-user)** - to have a counterpart of Britta Simon in TalentLMS that is linked to the Azure AD representation of user.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z TalentLMS, wykonaj następujące czynności:
+To configure Azure AD single sign-on with TalentLMS, perform the following steps:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **TalentLMS** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. In the [Azure portal](https://portal.azure.com/), on the **TalentLMS** application integration page, select **Single sign-on**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -104,14 +104,14 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z TalentLMS, wykonaj 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![TalentLMS domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![TalentLMS Domain and URLs single sign-on information](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<tenant-name>.TalentLMSapp.com`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `http://<tenant-name>.talentlms.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta TalentLMS](https://www.talentlms.com/contact) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Contact [TalentLMS Client support team](https://www.talentlms.com/contact) to get these values. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML**.
 
@@ -121,7 +121,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z TalentLMS, wykonaj 
 
     ![Kopiowanie wartości Odcisk palca](common/copy-thumbprint.png)
 
-7. Na **Konfigurowanie TalentLMS** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. On the **Set up TalentLMS** section, copy the appropriate URL(s) as per your requirement.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -129,43 +129,43 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z TalentLMS, wykonaj 
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-talentlms-single-sign-on"></a>Konfigurowanie TalentLMS logowanie jednokrotne
+### <a name="configure-talentlms-single-sign-on"></a>Configure TalentLMS Single Sign-On
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy TalentLMS jako administrator.
+1. In a different web browser window, sign in to your TalentLMS company site as an administrator.
 
-1. W **konta u & stawienia** kliknij **użytkowników** kartę.
+1. In the **Account & Settings** section, click the **Users** tab.
 
-    ![Ustawienia & konta](./media/talentlms-tutorial/IC777296.png "& Ustawienia konta")
+    ![Account & Settings](./media/talentlms-tutorial/IC777296.png "Account & Settings")
 
-1. Kliknij przycisk **logowanie jednokrotne (SSO)** ,
+1. Click **Single Sign-On (SSO)** ,
 
 1. W sekcji Single sign-on (Logowanie jednokrotne) wykonaj następujące kroki:
 
-    ![Logowanie jednokrotne](./media/talentlms-tutorial/IC777297.png "Logowanie jednokrotne")
+    ![Single Sign-On](./media/talentlms-tutorial/IC777297.png "Single Sign-On")
 
-    a. Z **typu integracja logowania jednokrotnego** listy wybierz **SAML 2.0**.
+    a. From the **SSO integration type** list, select **SAML 2.0**.
 
-    b. W **dostawcy tożsamości (IDP)** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, które zostały skopiowane z witryny Azure portal.
+    b. In the **Identity provider (IDP)** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
 
-    c. Wklej **odcisk palca** wartości z witryny Azure portal do **odcisk palca certyfikatu** pola tekstowego.
+    d. Paste the **Thumbprint** value from Azure portal into the **Certificate fingerprint** textbox.
 
-    d.  W **zdalnego logowania adresu URL** pola tekstowego, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
+    d.  In the **Remote sign-in URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    e. W **zdalny adres URL wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
+    e. In the **Remote sign-out URL** textbox, paste the value of **Logout URL**, which you have copied from Azure portal.
 
-    f. Wypełnij następujące informacje:
+    f. Fill in the following:
 
-    * W **TargetedID** pole tekstowe, wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
+    * In the **TargetedID** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
 
-    * W **imię** pole tekstowe, wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    * In the **First name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    * W **nazwisko** pole tekstowe, wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    * In the **Last name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    * W **E-mail** pole tekstowe, wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * In the **Email** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -185,23 +185,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do TalentLMS.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to TalentLMS.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **TalentLMS**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **TalentLMS**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **TalentLMS**.
+2. In the applications list, select **TalentLMS**.
 
-    ![Link TalentLMS na liście aplikacji](common/all-applications.png)
+    ![The TalentLMS link in the Applications list](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -217,42 +217,42 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-talentlms-test-user"></a>Tworzenie użytkownika testowego TalentLMS
+### <a name="create-talentlms-test-user"></a>Create TalentLMS test user
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do TalentLMS, musi być obsługiwana w TalentLMS. W przypadku TalentLMS Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+To enable Azure AD users to sign in to TalentLMS, they must be provisioned into TalentLMS. In the case of TalentLMS, provisioning is a manual task.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do Twojej **TalentLMS** dzierżawy.
+1. Sign in to your **TalentLMS** tenant.
 
-1. Kliknij przycisk **użytkowników**, a następnie kliknij przycisk **Dodaj użytkownika**.
+1. Click **Users**, and then click **Add User**.
 
-1. Na **Dodaj użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. On the **Add user** dialog page, perform the following steps:
 
-    ![Dodawanie użytkownika](./media/talentlms-tutorial/IC777299.png "Dodawanie użytkownika")  
+    ![Add User](./media/talentlms-tutorial/IC777299.png "Dodaj użytkownika")  
 
     a. W polu tekstowym **First name (Imię)** wprowadź imię użytkownika, na przykład **Britta**.
 
     b. W polu tekstowym **Last name (Nazwisko)** wprowadź nazwisko użytkownika, na przykład **Simon**.
  
-    c. W **adres E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak `brittasimon\@contoso.com`.
+    d. In the **Email address** textbox, enter the email of user like `brittasimon\@contoso.com`.
 
-    d. Kliknij przycisk **Dodaj użytkownika**.
+    d. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych TalentLMS użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez TalentLMS do aprowizacji kont użytkowników usługi AAD.
+> You can use any other TalentLMS user account creation tools or APIs provided by TalentLMS to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka TalentLMS w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze TalentLMS, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+When you click the TalentLMS tile in the Access Panel, you should be automatically signed in to the TalentLMS for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

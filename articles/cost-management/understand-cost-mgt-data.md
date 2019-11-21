@@ -1,153 +1,153 @@
 ---
-title: Informacje o danych Azure Cost Management | Microsoft Docs
-description: Ten artykuł pomaga lepiej zrozumieć dane zawarte w Azure Cost Management oraz częstotliwość przetwarzania, zbierania, wyświetlania i zamykania.
+title: Understand Azure Cost Management data | Microsoft Docs
+description: This article helps you better understand data that's included in Azure Cost Management and how frequently it's processed, collected, shown, and closed.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: bf3c2224361cd2890a0b8b4686506eac6858d9cb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 25a20ca40b517209fca7b969e3a7399a1c7c7387
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122986"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229758"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
-Ten artykuł pomaga lepiej zrozumieć dane dotyczące kosztów i użycia platformy Azure, które znajdują się w Azure Cost Management. Wyjaśniono, jak często dane są przetwarzane, zbierane, wyświetlane i zamykane. Opłaty są naliczane miesięcznie za użycie platformy Azure. Mimo że cykle rozliczeń to okresy miesięczne, daty rozpoczęcia i zakończenia cyklu różnią się w zależności od typu subskrypcji. Częstotliwość, z jaką Cost Management odbiera dane użycia, różnią się w zależności od różnych czynników. Takie czynniki obejmują czas potrzebny na przetworzenie danych oraz częstotliwość, z jaką usługi platformy Azure emitują użycie do systemu rozliczeń.
+This article helps you better understand Azure cost and usage data that's included in Azure Cost Management. It explains how frequently data is processed, collected, shown, and closed. You're billed for Azure usage monthly. Although billing cycles are monthly periods, cycle start and end dates vary by subscription type. How often Cost Management receives usage data varies based on different factors. Such factors include how long it takes to process the data and how frequently Azure services emit usage to the billing system.
 
-Cost Management obejmuje użycie i zakupy, w tym rezerwacje i oferty innych firm dla kont Umowa Enterprise (EA). Konta umów dla klientów firmy Microsoft i poszczególnych subskrypcji z użyciem stawek płatność zgodnie z rzeczywistym użyciem obejmują wyłącznie użycie z usług Azure i Marketplace. Pomoc techniczna i inne koszty nie są uwzględniane. Koszty są szacowane do momentu wygenerowania faktury i nie są one uwzględniane w kredytach.
+Cost Management includes all usage and purchases, including reservations and third-party offerings for Enterprise Agreement (EA) accounts. Microsoft Customer Agreement accounts and individual subscriptions with pay-as-you-go rates  only include usage from Azure and Marketplace services. Support and other costs are not included. Costs are estimated until an invoice is generated and do not factor in credits.
 
-## <a name="supported-microsoft-azure-offers"></a>Obsługiwane Microsoft Azure oferty
+## <a name="supported-microsoft-azure-offers"></a>Supported Microsoft Azure offers
 
-Poniższe informacje przedstawiają obecnie obsługiwane [oferty Microsoft Azure](https://azure.microsoft.com/support/legal/offer-details/) w Azure Cost Management. Oferta platformy Azure to typ posiadanej subskrypcji platformy Azure. Dane są dostępne w Cost Management rozpoczynające się od **danych dostępnych od** daty. Jeśli subskrypcja zmieni oferty, koszty przed zmianą oferty nie będą dostępne.
+The following information shows the currently supported [Microsoft Azure offers](https://azure.microsoft.com/support/legal/offer-details/) in Azure Cost Management. An Azure offer is the type of the Azure subscription that you have. Data is available in Cost Management starting on the **Data available from** date. If a subscription changes offers, costs before the offer change date will not be available.
 
-| **Kategoria**  | **Nazwa oferty** | **Identyfikator limitu przydziału** | **Numer oferty** | **Dane dostępne z** |
+| **Kategoria**  | **Offer name** | **Quota ID** | **Offer number** | **Data available from** |
 | --- | --- | --- | --- | --- |
-| **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014 – 09 – 01 | MS-AZR-USGOV-0017P | 2014 maja<sup>1</sup> |
-| **Umowa Enterprise (EA)** | Enterprise — tworzenie i testowanie                                                        | MSDNDevTest_2014 – 09 – 01 | MS-AZR-0148P | 2014 maja<sup>1</sup> |
-| **Umowa Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014 – 09 – 01 | MS-AZR-0017P | 2014 maja<sup>1</sup> |
-| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014 – 09 – 01 | Nie dotyczy | Marzec 2019<sup>3</sup> |
-| **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure dla tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014 – 09 – 01 | Nie dotyczy | Marzec 2019<sup>3</sup> |
-| **Umowa klienta firmy Microsoft obsługiwana przez partnerów** | Plan platformy Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01 i CSPDEVTEST_2018-05-01<br><br>Identyfikator przydziału jest ponownie używany dla umowy klienta firmy Microsoft i starszych subskrypcji CSP. Obecnie obsługiwane są tylko subskrypcje umów dla klientów firmy Microsoft. | Nie dotyczy | Październik 2019 r. |
-| **Microsoft Developer Network (MSDN)** | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 października, 2018<sup>2</sup> |
-| **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014 – 09 – 01 | MS-AZR-0003P | 2 października, 2018<sup>2</sup> |
-| **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014 – 09 – 01 | MS-AZR-0023P | 2 października, 2018<sup>2</sup> |
-| **Płatność zgodnie z rzeczywistym użyciem** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | 2 października, 2018<sup>2</sup> |
-| **Płatność zgodnie z rzeczywistym użyciem** | [Bezpłatna wersja próbna](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014 – 09 – 01 | MS-AZR-0044P | 2 października, 2018<sup>2</sup> |
-| **Płatność zgodnie z rzeczywistym użyciem** | [Platforma Azure w ramach programu Open](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014 – 09 – 01 | MS-AZR-0111P | 2 października, 2018<sup>2</sup> |
-| **Płatność zgodnie z rzeczywistym użyciem** | Azure — dostęp próbny<sup>4</sup>                                                            | AzurePass_2014 – 09 – 01 | MS-AZR-0120P, MS-AZR-0122P-MS-AZR-0125P, MS-AZR-0128P-MS-AZR-0130P | 2 października, 2018<sup>2</sup> |
-| **Program Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2 października, 2018<sup>2</sup> |
-| **Program Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2 października, 2018<sup>2</sup> |
-| **Program Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014 – 09 – 01 | MS-AZR-0060P | 2 października, 2018<sup>2</sup> |
-| **Program Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2 października, 2018<sup>2</sup> |
-| **Program Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2 października, 2018<sup>2</sup> |
+| **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | May 2014<sup>1</sup> |
+| **Enterprise Agreement (EA)** | Tworzenie i testowanie (przedsiębiorstwo)                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | May 2014<sup>1</sup> |
+| **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | May 2014<sup>1</sup> |
+| **Umowa klienta firmy Microsoft** | [Microsoft Azure Plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | ND | March 2019<sup>3</sup> |
+| **Umowa klienta firmy Microsoft** | [Microsoft Azure Plan for Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | ND | March 2019<sup>3</sup> |
+| **Microsoft Customer Agreement supported by partners** | Plan platformy Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01, and CSPDEVTEST_2018-05-01<br><br>The quota ID is reused for Microsoft Customer Agreement and legacy CSP subscriptions. Currently, only Microsoft Customer Agreement subscriptions are supported. | ND | Październik 2019 r. |
+| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | October 2, 2018<sup>2</sup> |
+| **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | October 2, 2018<sup>2</sup> |
+| **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | October 2, 2018<sup>2</sup> |
+| **Płatność zgodnie z rzeczywistym użyciem** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | October 2, 2018<sup>2</sup> |
+| **Płatność zgodnie z rzeczywistym użyciem** | [Free Trial](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | October 2, 2018<sup>2</sup> |
+| **Płatność zgodnie z rzeczywistym użyciem** | [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | October 2, 2018<sup>2</sup> |
+| **Płatność zgodnie z rzeczywistym użyciem** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P - MS-AZR-0125P, MS-AZR-0128P - MS-AZR-0130P | October 2, 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | October 2, 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | October 2, 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | October 2, 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | October 2, 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | October 2, 2018<sup>2</sup> |
 
-_<sup>**1**</sup> w przypadku danych przed 2014 maja odwiedź witrynę [Azure Enterprise Portal](https://ea.azure.com)._
+_<sup>**1**</sup> For data before May 2014, visit the [Azure Enterprise portal](https://ea.azure.com)._
 
-_<sup>**2**</sup> w przypadku danych przed 2 października 2018, odwiedź [centrum konta platformy Azure](https://account.azure.com/subscriptions)._
+_<sup>**2**</sup> For data before October 2, 2018, visit the [Azure Account Center](https://account.azure.com/subscriptions)._
 
-_<sup>**3**</sup> umowy klienta firmy Microsoft rozpoczęły się w marcu 2019 i nie mają żadnych danych historycznych przed tym punktem._
+_<sup>**3**</sup> Microsoft Customer Agreements started in March 2019 and do not have any historical data before this point._
 
-_<sup>**4**</sup> dane historyczne dla subskrypcji płatnych za pośrednictwem środków i płacy mogą nie być zgodne z fakturą. Zobacz, jak [dane historyczne mogą nie być zgodne](#historical-data-might-not-match-invoice) z poniższą fakturą._
+_<sup>**4**</sup> Historical data for credit-based and pay-in-advance subscriptions might not match your invoice. See [Historical data may not match invoice](#historical-data-might-not-match-invoice) below._
 
-Następujące oferty nie są jeszcze obsługiwane:
+The following offers are not supported yet:
 
-| Kategoria  | **Nazwa oferty** | **Identyfikator limitu przydziału** | **Numer oferty** |
+| Kategoria  | **Offer name** | **Quota ID** | **Offer number** |
 | --- | --- | --- | --- |
-| **Azure (Niemcy)** | [Azure (Niemcy) — płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014 – 09 – 01 | MS-AZR-DE-0003P |
-| **Azure Government** | Płatność zgodnie z rzeczywistym użyciem — Azure Government | PayAsYouGo_2014 – 09 – 01 | MS-AZR-USGOV-0003P |
-| **Dostawca rozwiązań w chmurze (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
-| **Dostawca rozwiązań w chmurze (CSP)** | Azure Government dostawcę usług kryptograficznych                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
-| **Dostawca rozwiązań w chmurze (CSP)** | Platforma Azure (Niemcy) w programie CSP dla usługi Microsoft Cloud (Niemcy)   | CSP_2015-05-01 | MS-AZR-DE-0145P |
+| **Azure Germany** | [Azure Germany Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Government** | Płatność zgodnie z rzeczywistym użyciem — Azure Government | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
+| **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
+| **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
+| **Cloud Solution Provider (CSP)** | Platforma Azure (Niemcy) w programie CSP dla usługi Microsoft Cloud (Niemcy)   | CSP_2015-05-01 | MS-AZR-DE-0145P |
 | **Płatność zgodnie z rzeczywistym użyciem**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
-| **Płatność zgodnie z rzeczywistym użyciem** | [Azure dla studentów](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
-| **Płatność zgodnie z rzeczywistym użyciem**                 | [Dostęp sponsorowany Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
-| **Plany pomocy technicznej** | Pomoc techniczna Standard                    | Default_2014 – 09 – 01 | MS-AZR-0041P |
-| **Plany pomocy technicznej** | Pomoc techniczna Professional Direct         | Default_2014 – 09 – 01 | MS-AZR-0042P |
-| **Plany pomocy technicznej** | Wsparcie dla deweloperów                   | Default_2014 – 09 – 01 | MS-AZR-0043P |
-| **Plany pomocy technicznej** | Plan pomocy technicznej (Niemcy)                | Default_2014 – 09 – 01 | MS-AZR-DE-0043P |
-| **Plany pomocy technicznej** | Azure Government pomoc techniczna Standard   | Default_2014 – 09 – 01 | MS-AZR-USGOV-0041P |
-| **Plany pomocy technicznej** | Azure Government pomoc techniczna Pro-Direct | Default_2014 – 09 – 01 | MS-AZR-USGOV-0042P |
-| **Plany pomocy technicznej** | Azure Government pomoc techniczna Developer  | Default_2014 – 09 – 01 | MS-AZR-USGOV-0043P |
+| **Płatność zgodnie z rzeczywistym użyciem** | [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **Płatność zgodnie z rzeczywistym użyciem**                 | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
+| **Plany pomocy technicznej** | Pomoc techniczna Standard                    | Default_2014-09-01 | MS-AZR-0041P |
+| **Plany pomocy technicznej** | Professional Direct support         | Default_2014-09-01 | MS-AZR-0042P |
+| **Plany pomocy technicznej** | Developer support                   | Default_2014-09-01 | MS-AZR-0043P |
+| **Plany pomocy technicznej** | Germany support plan                | Default_2014-09-01 | MS-AZR-DE-0043P |
+| **Plany pomocy technicznej** | Azure Government Standard Support   | Default_2014-09-01 | MS-AZR-USGOV-0041P |
+| **Plany pomocy technicznej** | Azure Government Pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
+| **Plany pomocy technicznej** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>Określanie typu oferty
-Jeśli nie widzisz danych dla subskrypcji i chcesz określić, czy subskrypcja jest objęta obsługiwanymi ofertami, możesz sprawdzić, czy subskrypcja jest obsługiwana. Aby sprawdzić, czy subskrypcja platformy Azure jest obsługiwana, zaloguj się do [Azure Portal](https://portal.azure.com). Następnie w okienku menu po lewej stronie wybierz pozycję **wszystkie usługi** . Na liście usług wybierz pozycję **subskrypcje**. W menu listy subskrypcji kliknij subskrypcję, którą chcesz zweryfikować. Twoja subskrypcja zostanie wyświetlona na karcie Przegląd i zostanie wyświetlona **Oferta** i **Identyfikator oferty**. Na poniższej ilustracji przedstawiono przykładowy raport.
+## <a name="determine-your-offer-type"></a>Determine your offer type
+If you don't see data for a subscription and you want to determine if your subscription falls under the supported offers, you can validate that your subscription is supported. To validate that an Azure subscription is supported, sign-in to the [Azure portal](https://portal.azure.com). Then select **All Services** in the left menu pane. In the list of services, select **Subscriptions**. In the subscription list menu, click on the subscription that you want to verify. Your subscription is shown on the Overview tab and you can see the **Offer** and **Offer ID**. Na poniższej ilustracji przedstawiono przykładowy raport.
 
-![Przykład karty Przegląd subskrypcji z ofertą i IDENTYFIKATORem oferty](./media/understand-cost-mgt-data/offer-and-offer-id.png)
+![Example of the Subscription Overview tab showing Offer and Offer ID](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
-## <a name="costs-included-in-cost-management"></a>Koszty zawarte w Cost Management
+## <a name="costs-included-in-cost-management"></a>Costs included in Cost Management
 
-W poniższych tabelach przedstawiono dane, które są uwzględnione lub nie znajdują się w Cost Management. Wszystkie koszty są szacowane do momentu wygenerowania faktury. Pokazane koszty nie obejmują kredytów bezpłatnych i przedpłaconych.
+The following tables show data that's included or isn't in Cost Management. All costs are estimated until an invoice is generated. Costs shown do not include free and prepaid credits.
 
-**Dane dotyczące kosztów i użycia**
+**Cost and usage data**
 
-| **Uwzględnione** | **Nie uwzględniono** |
+| **Included** | **Not included** |
 | --- | --- |
-| Użycie usługi platformy Azure<sup>5</sup>        | Opłaty za pomoc techniczną — Aby uzyskać więcej informacji, zobacz [postanowienia dotyczące faktury](../billing/billing-understand-your-invoice.md). |
-| Użycie Oferty Marketplace<sup>6</sup> | Podatki — Aby uzyskać więcej informacji, zobacz [wyjaśnienia dotyczące faktur](../billing/billing-understand-your-invoice.md). |
-| Zakupy w portalu Marketplace<sup>6</sup>      | Kredyty — Aby uzyskać więcej informacji, zobacz [wyjaśnienia dotyczące faktur](../billing/billing-understand-your-invoice.md). |
-| Rezerwacja zakupów<sup>7</sup>      |  |
-| Umorzenie zakupów rezerwacji<sup>7</sup>      |  |
+| Azure service usage<sup>5</sup>        | Support charges - For more information, see [Invoice terms explained](../billing/billing-understand-your-invoice.md). |
+| Marketplace offering usage<sup>6</sup> | Taxes - For more information, see [Invoice terms explained](../billing/billing-understand-your-invoice.md). |
+| Marketplace purchases<sup>6</sup>      | Credits - For more information, see [Invoice terms explained](../billing/billing-understand-your-invoice.md). |
+| Reservation purchases<sup>7</sup>      |  |
+| Amortization of reservation purchases<sup>7</sup>      |  |
 
-_<sup>**5**</sup> użycie usługi Azure jest oparte na rezerwacji i cenach negocjowanych._
+_<sup>**5**</sup> Azure service usage is based on reservation and negotiated prices._
 
-_<sup>**6**</sup> zakupów w portalu Marketplace nie jest dostępnych do oferty płatność zgodnie z rzeczywistym użyciem, MSDN i Visual Studio._
+_<sup>**6**</sup> Marketplace purchases are not available for Pay-As-You-Go, MSDN, and Visual Studio offers at this time._
 
-_<sup>**7**</sup> zakupy rezerwacji są dostępne tylko dla kont usługi Umowa Enterprise (EA)._
+_<sup>**7**</sup> Reservation purchases are only available for Enterprise Agreement (EA) accounts at this time._
 
 **Metadata**
 
-| **Uwzględnione** | **Nie uwzględniono** |
+| **Included** | **Not included** |
 | --- | --- |
-| Tagi zasobów<sup>8</sup> | Tagi grupy zasobów |
+| Resource tags<sup>8</sup> | Resource group tags |
 
-_<sup>**8**</sup> tagów zasobów są stosowane, ponieważ użycie jest emitowane z każdej usługi i nie jest dostępne z mocą wsteczną do historycznego użycia._
+_<sup>**8**</sup> Resource tags are applied as usage is emitted from each service and aren't available retroactively to historical usage._
 
-## <a name="rated-usage-data-refresh-schedule"></a>Harmonogram odświeżania danych użycia
+## <a name="rated-usage-data-refresh-schedule"></a>Rated usage data refresh schedule
 
-Dane dotyczące kosztów i użycia są dostępne w Cost Management + rozliczanie w Azure Portal i [Obsługa interfejsów API](index.yml). Podczas przeglądania kosztów należy pamiętać o następujących kwestiach:
+Cost and usage data is available in Cost Management + Billing in the Azure portal and [supporting APIs](index.yml). Keep the following points in mind as you review costs:
 
-- Szacowane opłaty za bieżący okres rozliczeniowy są aktualizowane sześć razy dziennie.
-- Szacowane opłaty za bieżący okres rozliczeniowy mogą ulec zmianie w miarę ponoszenia większej ilości użycia.
-- Każda aktualizacja jest zbiorcza i zawiera wszystkie elementy wiersza i informacje z poprzedniej aktualizacji.
-- Platforma Azure kończy lub _zamyka_ bieżący okres rozliczeniowy do 72 godzin (trzy dni kalendarzowe) po zakończeniu okresu rozliczeniowego.
+- Estimated charges for the current billing period are updated six times per day.
+- Estimated charges for the current billing period can change as you incur more usage.
+- Each update is cumulative and includes all the line items and information from the previous update.
+- Azure finalizes or _closes_ the current billing period up to 72 hours (three calendar days) after the billing period ends.
 
-W poniższych przykładach pokazano, jak można zakończyć okresy rozliczeniowe.
+The following examples illustrate how billing periods could end.
 
-Subskrypcje Umowa Enterprise (EA) — Jeśli miesiąc rozliczeniowy upływa 31 marca, szacowane opłaty są aktualizowane do 72 godzin później. W tym przykładzie o północy (UTC) 4 kwietnia.
+Enterprise Agreement (EA) subscriptions – If the billing month ends on March 31, estimated charges are updated up to 72 hours later. In this example, by midnight (UTC) April 4.
 
-Subskrypcje z płatnością zgodnie z rzeczywistym użyciem — Jeśli miesiąc rozliczeniowy upływa 15 maja, szacowane opłaty mogą zostać zaktualizowane do 72 godzin później. W tym przykładzie o północy (UTC) 19 maja.
+Pay-as-you-go subscriptions – If the billing month ends on May 15, then the estimated charges might get updated up to 72 hours later. In this example, by midnight (UTC) May 19.
 
-### <a name="rerated-data"></a>Dane o obniżonej wartości
+### <a name="rerated-data"></a>Rerated data
 
-Niezależnie od tego, czy używasz [Cost Management interfejsów API](index.yml), Power BI czy Azure Portal do pobierania danych, należy oczekiwać, że opłaty za bieżący okres rozliczeniowy zostaną naliczone proporcjonalnie do momentu zamknięcia faktury.
+Whether you use the [Cost Management APIs](index.yml), Power BI, or the Azure portal to retrieve data, expect the current billing period's charges to get rerated, and consequently change, until the invoice is closed.
 
-## <a name="usage-data-update-frequency-varies"></a>Częstotliwość aktualizacji danych użycia jest różna
+## <a name="usage-data-update-frequency-varies"></a>Usage data update frequency varies
 
-Dostępność poniesionych danych użycia w Cost Management zależy od kilku czynników, w tym:
+The availability of your incurred usage data in Cost Management depends on a couple of factors, including:
 
-- Jak często usługi platformy Azure (takie jak Storage, COMPUTE, CDN i SQL) emitują użycie.
-- Czas potrzebny na przetworzenie danych użycia za pomocą potoku aparatu klasyfikacji i zarządzania kosztami.
+- How frequently Azure services (such as Storage, Compute, CDN, and SQL) emit usage.
+- The time taken to process the usage data through the rating engine and cost management pipelines.
 
-Niektóre usługi emitują użycie częściej niż inne. W związku z tym dane w Cost Management niektórych usług mogą być widoczne wcześniej niż w przypadku innych usług, które emitują dane rzadziej. Zazwyczaj użycie usług trwa 8-24 godzin, aby były wyświetlane w Cost Management. Należy pamiętać, że dane dla otwartego miesiąca są odświeżane, ponieważ nastąpi dalsze użycie, ponieważ aktualizacje są naliczane zbiorczo.
+Some services emit usage more frequently than others. So, you might see data in Cost Management for some services sooner than other services that emit data less frequently. Typically, usage for services takes 8-24 hours to appear in Cost Management. Keep in mind that data for an open month gets refreshed as you incur more usage because updates are cumulative.
 
-## <a name="historical-data-might-not-match-invoice"></a>Dane historyczne mogą nie być zgodne z fakturą
+## <a name="historical-data-might-not-match-invoice"></a>Historical data might not match invoice
 
-Dane historyczne dla ofert opartych na kredytach i płatnych z góry mogą nie być zgodne z fakturą. Niektóre oferty usługi Azure — płatność zgodnie z rzeczywistym użyciem, MSDN i Visual Studio mogą mieć środki na korzystanie z platformy Azure oraz zaawansowane płatności do faktury. Jednak dane historyczne podane w Cost Management opierają się wyłącznie na szacowanych kosztach zużycia. Cost Management dane historyczne nie obejmują płatności i kredytów. W związku z tym dane historyczne wyświetlane dla następujących ofert mogą nie być zgodne z fakturą.
+Historical data for credit-based and pay-in-advance offers might not match your invoice. Some Azure pay-as-you-go, MSDN, and Visual Studio offers can have Azure credits and advanced payments applied to the invoice. However, the historical data shown in Cost Management is based on your estimated consumption charges only. Cost Management historical data doesn't include payments and credits. As a result, the historical data shown for the following offers may not match exactly with your invoice.
 
 - Azure for Students (MS-AZR-0170P)
 - Azure in Open (MS-AZR-0111P)
-- Azure — dostęp próbny (MS-AZR-0120P, MS-AZR-0123P, MS-AZR-0125P, MS-AZR-0128P, MS-AZR-0129P)
-- Bezpłatna wersja próbna (MS-AZR-0044P)
+- Azure Pass (MS-AZR-0120P, MS-AZR-0123P, MS-AZR-0125P, MS-AZR-0128P, MS-AZR-0129P)
+- Free Trial (MS-AZR-0044P)
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
 ## <a name="see-also"></a>Zobacz także
 
-- Jeśli nie została już zakończona pierwszym przewodniku Szybki Start usługi Cost Management, zapoznaj się z adresem [zacząć analizować koszty](quick-acm-cost-analysis.md).
+- If you haven't already completed the first quickstart for Cost Management, read it at [Start analyzing costs](quick-acm-cost-analysis.md).

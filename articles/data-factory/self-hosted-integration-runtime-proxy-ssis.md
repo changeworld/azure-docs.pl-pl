@@ -1,96 +1,98 @@
 ---
-title: Skonfiguruj własne środowisko Integration Runtime jako serwer proxy dla usług SSIS w Azure Data Factory
-description: Dowiedz się, jak skonfigurować Integration Runtime samodzielne jako serwer proxy dla Azure-SSIS Integration Runtime.
+title: Configure self-hosted integration runtime as a proxy for SSIS
+description: Learn how to configure Self-Hosted Integration Runtime as a proxy for Azure-SSIS Integration Runtime.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/12/2019
+ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954725"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217642"
 ---
-# <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Skonfiguruj własne środowisko IR jako serwer proxy dla Azure-SSIS IR w usłudze ADF
-W tym artykule opisano sposób uruchamiania pakietów SQL Server Integration Services (SSIS) na Azure-SSIS Integration Runtime (IR) w Azure Data Factory (ADF) z własnym hostowanym systemem IR skonfigurowanym jako serwer proxy.  Ta funkcja umożliwia dostęp do danych lokalnych bez [przyłączania Azure-SSIS IR do sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  Jest to przydatne w przypadku, gdy sieć firmowa ma zbyt skomplikowane zasady konfiguracji/ograniczania, aby móc wprowadzać w niej Azure-SSIS IR.
+# <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Configure Self-Hosted IR as a proxy for Azure-SSIS IR in ADF
 
-Ta funkcja podzieli pakiet zawierający zadanie przepływu danych z lokalnym źródłem danych na dwa zadania przejściowe: pierwszy uruchomiony na samoobsługowym środowisku IR najpierw przenosi dane z lokalnego źródła danych do obszaru przejściowego na platformie Azure Blob Storage, podczas gdy Druga z nich uruchomiona w Azure-SSIS IR następnie przenosi dane z obszaru tymczasowego do planowanego miejsca docelowego danych.
+This article describes how to run SQL Server Integration Services (SSIS) packages on Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) with Self-Hosted IR configured as a proxy.  This feature allows you to access data on premises without [joining your Azure-SSIS IR to a virtual network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  This is useful when your corporate network has an overly complex configuration/restrictive policy for you to inject your Azure-SSIS IR in it.
 
-Ta funkcja udostępnia również inne zalety/możliwości, które umożliwiają udostępnienie samodzielnego środowiska IR w regionach, które nie są jeszcze obsługiwane przez Azure-SSIS IR, umożliwiają publiczny statyczny adres IP Twojego własnego środowiska IR na zaporze źródeł danych itp.
+This feature will split your package containing a Data Flow Task with on-premises data source into two staging tasks: the first one running on your Self-Hosted IR will first move data from the on-premises data source into a staging area in your Azure Blob Storage, while the second one running on your Azure-SSIS IR will then move data from the staging area into the intended data destination.
 
-## <a name="prepare-self-hosted-ir"></a>Przygotuj własne środowisko IR
-Aby móc korzystać z tej funkcji, najpierw musisz utworzyć ADF i udostępnić w niej Azure-SSIS IR, jeśli nie zostało to jeszcze zrobione, zgodnie z artykułem [jak zainicjować obsługę administracyjną Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) .
+This feature also provides other benefits/capabilities as it allows you to provision your Self-Hosted IR in regions that are not yet supported by Azure-SSIS IR, allow the public static IP address of your Self-Hosted IR on the firewall of your data sources, etc.
 
-Następnie musisz zainicjować obsługę własnego środowiska IR w tym samym PODAJNIKu, w którym Zainicjowano obsługę Azure-SSIS IR, postępując zgodnie z [tematem Tworzenie własnego artykułu IR](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime) .
+## <a name="prepare-self-hosted-ir"></a>Prepare Self-Hosted IR
+In order to use this feature, you will first need to create an ADF and provision your Azure-SSIS IR under it, if you have not done so already, by following the [How to provision an Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) article.
 
-Na koniec należy pobrać i zainstalować najnowszą wersję własnego środowiska IR, a także dodatkowe sterowniki i środowisko uruchomieniowe na maszynie lokalnej/maszynie wirtualnej platformy Azure (VM) w następujący sposób:
-- Pobierz i zainstaluj najnowszą wersję własnego środowiska IR z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=39717).
-- Jeśli używasz łączników OLEDB w pakietach, Pobierz i zainstaluj odpowiednie sterowniki OLEDB na tym samym komputerze, na którym zainstalowano samoobsługowe środowisko IR, jeśli jeszcze tego nie zrobiono.  Jeśli używasz starszej wersji sterownika OLEDB dla SQL Server (SQLNCLI), możesz pobrać wersję 64-bitową z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=50402).  Jeśli używasz najnowszej wersji sterownika OLEDB dla SQL Server (MSOLEDBSQL), możesz pobrać 64-bitową wersję z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=56730).  Jeśli używasz sterowników OLEDB dla innych systemów baz danych, takich jak PostgreSQL, MySQL, Oracle itp., możesz pobrać 64-bitową wersję z odpowiednich witryn sieci Web.
-- Pobierz i zainstaluj środowisko uruchomieniowe programu Visual C++ (VC) na tym samym komputerze, na którym zainstalowano samoobsługowy aparat IR, jeśli jeszcze tego nie zrobiono.  W [tym miejscu](https://www.microsoft.com/download/details.aspx?id=40784)możesz pobrać wersję 64-bitową.
+You will then need to provision your Self-Hosted IR under the same ADF where your Azure-SSIS IR is provisioned by following the [How to create a Self-Hosted IR](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime) article.
 
-## <a name="prepare-azure-blob-storage-linked-service-for-staging"></a>Przygotowywanie usługi połączonej Blob Storage Azure na potrzeby przemieszczania
-Utwórz połączoną usługę Azure Blob Storage w ramach tego samego PODAJNIKa systemu, w którym zainicjowano Azure-SSIS IR, jeśli jeszcze tego nie zrobiono, wykonując czynności opisane w artykule [Tworzenie połączonej usługi ADF](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) .  Upewnij się, że:
-- Wybrano **BLOB Storage platformy Azure** do **przechowywania danych**
-- Wybrano **AutoResolveIntegrationRuntime** do **połączenia za pośrednictwem środowiska Integration Runtime**
-- Dla **metody uwierzytelniania** wybrano **Identyfikator URI sygnatury dostępu współdzielonego** dla **klucza konta**//jednostki **usługi**
+Finally, you will need to download and install the latest version of Self-Hosted IR, as well as the additional drivers and runtime, on your on-premises machine/Azure Virtual Machine (VM) as follows:
+- Please download and install the latest version of Self-Hosted IR from [here](https://www.microsoft.com/download/details.aspx?id=39717).
+- If you use OLEDB connectors in your packages, please download and install the relevant OLEDB drivers on the same machine where Self-Hosted IR is installed if you have not done so already.  If you use the earlier version of OLEDB driver for SQL Server (SQLNCLI), you can download the 64-bit version from [here](https://www.microsoft.com/download/details.aspx?id=50402).  If you use the latest version of OLEDB driver for SQL Server (MSOLEDBSQL), you can download the 64-bit version from [here](https://www.microsoft.com/download/details.aspx?id=56730).  If you use OLEDB drivers for other database systems, such as PostgreSQL, MySQL, Oracle, etc., you can download the 64-bit version from their respective websites.
+- Please download and install Visual C++ (VC) runtime on the same machine where Self-Hosted IR is installed if you have not done so already.  You can download the 64-bit version from [here](https://www.microsoft.com/download/details.aspx?id=40784).
 
-![Przygotowywanie usługi połączonej Blob Storage Azure na potrzeby przemieszczania](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
+## <a name="prepare-azure-blob-storage-linked-service-for-staging"></a>Prepare Azure Blob Storage linked service for staging
+Please create an Azure Blob Storage linked service under the same ADF where your Azure-SSIS IR is provisioned, if you have not done so already, by following the [How to create an ADF linked service](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) article.  Please ensure the following:
+- **Azure Blob Storage** is selected for **Data Store**
+- **AutoResolveIntegrationRuntime** is selected for **Connect via integration runtime**
+- Either **Account key**/**SAS URI**/**Service Principal** is selected for **Authentication method**
 
-## <a name="configure-azure-ssis-ir-with-self-hosted-ir-as-a-proxy"></a>Konfigurowanie Azure-SSIS IR przy użyciu samodzielnego środowiska IR jako serwera proxy
-Po przygotowaniu samodzielnego środowiska IR i połączonej usługi Azure Blob Storage na potrzeby przemieszczania możesz teraz skonfigurować nowe/istniejące Azure-SSIS IR za pomocą samoobsługowego środowiska IR jako serwera proxy w portalu i aplikacji ADF.  Jeśli istniejąca Azure-SSIS IR jest uruchomiona, Zatrzymaj ją przed wykonaniem tej czynności, a następnie uruchom ją ponownie.
+![Prepare Azure Blob Storage linked service for staging](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
-Na stronie **Ustawienia zaawansowane** zaznacz pole wyboru Skonfiguruj samoobsługowe **Integration Runtime jako serwer proxy dla Azure-SSIS Integration Runtime** , wybierz swoją usługę powiązaną z własnym obsługą środowiska IR i platformy Azure Blob Storage do przemieszczania, a następnie określ obiekt BLOB nazwa kontenera dla **ścieżki tymczasowej** , jeśli chcesz.
+## <a name="configure-azure-ssis-ir-with-self-hosted-ir-as-a-proxy"></a>Configure Azure-SSIS IR with Self-Hosted IR as a proxy
+Having prepared your Self-Hosted IR and Azure Blob Storage linked service for staging, you can now configure your new/existing Azure-SSIS IR with Self-Hosted IR as a proxy on ADF portal/app.  If your existing Azure-SSIS IR is running, please stop it before you do this and then restart it afterwards.
 
-![Konfigurowanie Azure-SSIS IR przy użyciu samodzielnego środowiska IR jako serwera proxy](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
+On the **Advanced Settings** page, please check the **Set-up Self-Hosted Integration Runtime as a proxy for your Azure-SSIS Integration Runtime** checkbox, select your Self-Hosted IR and Azure Blob Storage linked service for staging, and specify a blob container name for **Staging Path** if you want.
 
-## <a name="enable-ssis-packages-to-connect-by-proxy"></a>Zezwól na łączenie pakietów SSIS z serwerem proxy
-Korzystając z najnowszej SSDT z rozszerzeniem projektów SSIS dla programu Visual Studio, które można pobrać z tego [miejsca](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) lub jako autonomicznego Instalatora, który można pobrać z tego [miejsca](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer), można znaleźć nową właściwość **ConnectByProxy** , która została dodana w OLEDB/ Menedżerów prostego połączenia plików.  
+![Configure Azure-SSIS IR with Self-Hosted IR as a proxy](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
 
-Podczas projektowania nowych pakietów zawierających zadania przepływu danych ze źródłami plików OLEDB/Flat do uzyskiwania dostępu do baz danych i plików lokalnie można włączyć tę właściwość, ustawiając dla niej **wartość true** w panelu Właściwości odpowiednich menedżerów połączeń.
+## <a name="enable-ssis-packages-to-connect-by-proxy"></a>Enable SSIS packages to connect by proxy
+Using the latest SSDT with SSIS Projects extension for Visual Studio that can be downloaded from [here](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) or as a standalone installer that can be downloaded from [here](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer), you can find a new **ConnectByProxy** property that has been added in OLEDB/Flat File Connection Managers.  
 
-![Włącz Właściwość ConnectByProxy](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
+When designing new packages containing Data Flow Tasks with OLEDB/Flat File Sources to access databases/files on premises, you can enable this property by setting it to **True** on the Properties panel of relevant connection managers.
 
-Możesz również włączyć tę właściwość podczas uruchamiania istniejących pakietów bez konieczności ręcznej zmiany ich po jednym.  Dostępne są dwie opcje:
-- Otwieranie, ponowna kompilacja i ponowne wdrażanie projektu zawierającego te pakiety przy użyciu najnowszych SSDT do uruchomienia na Azure-SSIS IR: Właściwość można następnie włączyć, **ustawiając dla odpowiednich** menedżerów połączeń, które są wyświetlane w ramach **połączenia Karta kierownicy** okna podręcznego wykonywania pakietu podczas uruchamiania pakietów z programu SSMS.
+![Enable ConnectByProxy property](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-  ![Włącz ConnectByProxy Property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
+You can also enable this property when running existing packages without having to manually change them one by one.  There are two options:
+- Opening, rebuilding, and redeploying the project containing those packages with the latest SSDT to run on your Azure-SSIS IR: The property can then be enabled by setting it to **True** for the relevant connection managers that appear on the **Connection Managers** tab of Execute Package pop-up window when running packages from SSMS.
 
-  Właściwość można również włączyć, ustawiając jej **wartość na true** dla odpowiednich menedżerów połączeń, które są wyświetlane na karcie **menedżerowie połączeń** w [działaniu pakiet SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) w przypadku uruchamiania pakietów w potokach ADF.
+  ![Enable ConnectByProxy property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
+
+  The property can also be enabled by setting it to **True** for the relevant connection managers that appear on the **Connection Managers** tab of [Execute SSIS Package activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) when running packages in ADF pipelines.
   
-  ![Włącz ConnectByProxy Property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
+  ![Enable ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- Ponowne wdrażanie projektu zawierającego te pakiety do uruchomienia na urządzeniu IR programu SSIS: Właściwość można następnie włączyć, podając jej ścieżkę właściwości, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`i ustawiając **wartość na true** jako przesłonięcie właściwości na karcie **Zaawansowane** w oknie podręcznym wykonaj pakiet. podczas uruchamiania pakietów z programu SSMS.
+- Redeploying the project containing those packages to run on your SSIS IR: The property can then be enabled by providing its property path, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`, and setting it to **True** as a property override on the **Advanced** tab of Execute Package pop-up window when running packages from SSMS.
 
-  ![Włącz ConnectByProxy Property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
+  ![Enable ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  Właściwość można również włączyć, podając jej ścieżkę właściwości, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`i ustawiając ją na **wartość true** w przypadku zastąpienia właściwości na karcie **przesłonięcie** [działania pakietu SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) w przypadku uruchamiania pakietów w potokach ADF.
+  The property can also be enabled by providing its property path, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`, and setting it to **True** as a property override on the **Property Overrides** tab of [Execute SSIS Package activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) when running packages in ADF pipelines.
   
-  ![Włącz ConnectByProxy Property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
+  ![Enable ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
-## <a name="debug-the-first-and-second-staging-tasks"></a>Debugowanie pierwszego i drugiego zadania przemieszczania
-Na własnym hostowanym środowisku IR możesz znaleźć dzienniki środowiska uruchomieniowego w folderze `C:\ProgramData\SSISTelemetry` i dzienniki wykonywania pierwszych zadań przemieszczania w folderze `C:\ProgramData\SSISTelemetry\ExecutionLog`.  Dzienniki wykonywania drugiego zadania przemieszczania znajdują się w SSISDB lub określonych ścieżkach rejestrowania, w zależności od tego, czy pakiety są przechowywane odpowiednio w SSISDB, czy w systemie plików/udziałach plików/Azure Files.  Unikatowe identyfikatory pierwszych zadań przemieszczania można także znaleźć w dziennikach wykonywania drugiego zadania przemieszczania, np. 
+## <a name="debug-the-first-and-second-staging-tasks"></a>Debug the first and second staging tasks
+On your Self-Hosted IR, you can find the runtime logs in `C:\ProgramData\SSISTelemetry` folder and the execution logs of first staging tasks in `C:\ProgramData\SSISTelemetry\ExecutionLog` folder.  The execution logs of second staging tasks can be found in your SSISDB or specified logging paths, depending on whether you store your packages in SSISDB or file system/file shares/Azure Files, respectively.  The unique IDs of first staging tasks can also be found in the execution logs of second staging tasks, e.g. 
 
-![Unikatowy identyfikator pierwszego zadania przemieszczania](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
+![Unique ID of the first staging task](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="billing-for-the-first-and-second-staging-tasks"></a>Rozliczenia dotyczące pierwszego i drugiego zadania przemieszczania
-Pierwsze zadania przemieszczania uruchomione na samoobsługowym środowisku IR będą rozliczane osobno w taki sam sposób, jak wszystkie działania związane z przenoszeniem danych działające w ramach własnego środowiska IR są rozliczane zgodnie z opisem w artykule [Cennik potoku danych ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) .
+## <a name="billing-for-the-first-and-second-staging-tasks"></a>Billing for the first and second staging tasks
+The first staging tasks running on your Self-Hosted IR will be billed separately in the same way as any data movement activities running on Self-Hosted IR are billed as specified in the [ADF data pipeline pricing](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) article.
 
-Pozostałe zadania przemieszczania uruchomione w Azure-SSIS IR nie będą rozliczane oddzielnie, ale w przypadku uruchamiania Azure-SSIS IR zostanie naliczona wartość określona w artykule dotyczącym [cennika Azure-SSIS IR](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
+The second staging tasks running on your Azure-SSIS IR will not be billed separately, but your running Azure-SSIS IR will be billed as specified in the [Azure-SSIS IR pricing](https://azure.microsoft.com/pricing/details/data-factory/ssis/) article.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
-- Obecnie są obsługiwane tylko zadania przepływu danych z menedżerami połączenia ODBC/OLEDB/Flated File Connection i ODBC/OLEDB/płaskimi plikami. 
-- Obecnie są obsługiwane tylko połączone usługi platformy Azure Blob Storage skonfigurowane z **kluczem konta**/**URI SAS**/uwierzytelnianie **nazwy głównej usługi** .
-- Obecnie jest obsługiwane tylko własne środowisko IR obsługiwane w ramach tego samego PODAJNIKa danych, w którym zainicjowano Azure-SSIS IR.
-- Używanie parametrów/zmiennych SSIS w ramach właściwości ODBC/OLEDB/prostych źródeł plików i menedżerów połączeń nie jest obecnie obsługiwane.
+- Only Data Flow Tasks with ODBC/OLEDB/Flat File Connection Managers and ODBC/OLEDB/Flat File Sources are currently supported. 
+- Only Azure Blob Storage linked services configured with **Account key**/**SAS URI**/**Service Principal** authentication are currently supported.
+- Only Self-Hosted IR provisioned under the same ADF where your Azure-SSIS IR is provisioned is currently supported.
+- Using SSIS parameters/variables within the properties of ODBC/OLEDB/Flat File Sources and Connection Managers is currently not supported.
 
 ## <a name="next-steps"></a>Następne kroki
-Po skonfigurowaniu własnego środowiska IR jako serwera proxy dla Azure-SSIS IR można wdrażać i uruchamiać pakiety, aby uzyskiwać dostęp do danych lokalnych jako działania wykonywania pakietów SSIS w potokach ADF, zobacz [uruchamianie pakietów SSIS jako działania pakietu SSIS w potokach ADF ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Once you configure your Self-Hosted IR as a proxy for your Azure-SSIS IR, you can deploy and run your packages to access data on premises as Execute SSIS Package activities in ADF pipelines, see [Run SSIS packages as Execute SSIS Package activities in ADF pipelines](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

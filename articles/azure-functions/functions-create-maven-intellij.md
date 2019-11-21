@@ -1,111 +1,105 @@
 ---
-title: Tworzenie funkcji platformy Azure przy użyciu języka Java i IntelliJ | Microsoft Docs
-description: Dowiedz się, jak utworzyć i opublikować prostą bezserwerową aplikację wywoływaną przez protokół HTTP na platformie Azure przy użyciu języka Java i IntelliJ.
-services: functions
-documentationcenter: na
+title: Create an Azure function with Java and IntelliJ
+description: Learn how to create and publish a simple HTTP-triggered, serverless app on Azure with Java and IntelliJ.
 author: jeffhollan
-manager: jpconnock
-keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, obliczenia, architektura bezserwerowa, Java
-ms.service: azure-functions
 ms.topic: conceptual
-ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5aa0763206289305e98960b6e03ad903eb4547ae
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70743988"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230728"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Tworzenie pierwszej funkcji platformy Azure przy użyciu języka Java i IntelliJ
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Create your first Azure function with Java and IntelliJ
 
-W tym artykule opisano:
-- Jak utworzyć projekt funkcji bez użycia [serwera](https://azure.microsoft.com/overview/serverless-computing/) z pomysłem IntelliJ i Apache Maven
-- Kroki testowania i debugowania funkcji w zintegrowanym środowisku programistycznym (IDE) na własnym komputerze
-- Instrukcje dotyczące wdrażania projektu funkcji w Azure Functions
+This article shows you:
+- How to create a [serverless](https://azure.microsoft.com/overview/serverless-computing/) function project with IntelliJ IDEA and Apache Maven
+- Steps for testing and debugging the function in the integrated development environment (IDE) on your own computer
+- Instructions for deploying the function project to Azure Functions
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
+## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska programistycznego
 
-Aby opracować funkcję przy użyciu języka Java i IntelliJ, Zainstaluj następujące oprogramowanie:
+To develop a function with Java and IntelliJ, install the following software:
 
-- [Zestaw Java developer Kit](https://www.azul.com/downloads/zulu/) (JDK), wersja 8
-- [Apache Maven](https://maven.apache.org), wersja 3,0 lub nowsza
-- [INTELLIJ pomysł](https://www.jetbrains.com/idea/download), wersja Community lub Ultimate z Maven
+- [Java Developer Kit](https://www.azul.com/downloads/zulu/) (JDK), version 8
+- [Apache Maven](https://maven.apache.org), version 3.0 or higher
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/download), Community or Ultimate versions with Maven
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT]
-> Aby wykonać kroki opisane w tym artykule, zmienna środowiskowa JAVA_HOME musi być ustawiona na lokalizację instalacji JDK.
+> The JAVA_HOME environment variable must be set to the install location of the JDK to complete the steps in this article.
 
- Zalecamy zainstalowanie [Azure Functions Core Tools w wersji 2](functions-run-local.md#v2). Zapewnia lokalne środowisko programistyczne do pisania, uruchamiania i debugowania Azure Functions.
+ We recommend that you install [Azure Functions Core Tools, version 2](functions-run-local.md#v2). It provides a local development environment for writing, running, and debugging Azure Functions.
 
-## <a name="create-a-functions-project"></a>Tworzenie projektu funkcji
+## <a name="create-a-functions-project"></a>Create a Functions project
 
-1. W IntelliJ pomysł wybierz pozycję **Utwórz nowy projekt**.  
-1. W oknie **Nowy projekt** w okienku po lewej stronie wybierz pozycję **Maven** .
-1. Zaznacz pole wyboru **Utwórz z Archetype** , a następnie wybierz pozycję **Dodaj Archetype** dla [usługi Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
-1. W oknie **Dodawanie Archetype** Wypełnij pola w następujący sposób:
-    - _GroupID_: com. Microsoft. Azure
-    - _ArtifactId_: Azure-Functions-Archetype
-    - _Wersja_: Użyj najnowszej wersji **1,22** z [repozytorium](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![centralnego Utwórz projekt Maven z Archetype w IntelliJ pomysłie](media/functions-create-first-java-intellij/functions-create-intellij.png)  
-1. Wybierz przycisk **OK**, a następnie wybierz przycisk **dalej**.
-1. Wprowadź szczegóły dla bieżącego projektu i wybierz pozycję **Zakończ**.
+1. In IntelliJ IDEA, select **Create New Project**.  
+1. In the **New Project** window, select **Maven** from the left pane.
+1. Select the **Create from archetype** check box, and then select **Add Archetype** for the [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
+1. In the **Add Archetype** window, complete the fields as follows:
+    - _GroupId_: com.microsoft.azure
+    - _ArtifactId_: azure-functions-archetype
+    - _Version_: Use the latest version **1.22** from [the central repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![Create a Maven project from archetype in IntelliJ IDEA](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+1. Select **OK**, and then select **Next**.
+1. Enter your details for current project, and select **Finish**.
 
-Maven tworzy pliki projektu w nowym folderze o tej samej nazwie, co wartość _ArtifactId_ . Wygenerowany kod projektu jest prostą funkcją [wyzwalaną przez protokół http](/azure/azure-functions/functions-bindings-http-webhook) , która umożliwia echo treści wyzwalanego żądania HTTP.
+Maven creates the project files in a new folder with the same name as the _ArtifactId_ value. The project's generated code is a simple [HTTP-triggered](/azure/azure-functions/functions-bindings-http-webhook) function that echoes the body of the triggering HTTP request.
 
-## <a name="run-functions-locally-in-the-ide"></a>Uruchamianie funkcji lokalnie w środowisku IDE
+## <a name="run-functions-locally-in-the-ide"></a>Run functions locally in the IDE
 
 > [!NOTE]
-> Aby uruchamiać i debugować funkcje lokalnie, upewnij się, że zainstalowano [Azure Functions Core Tools w wersji 2](functions-run-local.md#v2).
+> To run and debug functions locally, make sure you've installed [Azure Functions Core Tools, version 2](functions-run-local.md#v2).
 
-1. Importuj zmiany ręcznie lub Włącz [autoimport](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
-1. Otwórz pasek narzędzi **projektów Maven** .
-1. Rozwiń węzeł **cykl życia**, a następnie otwórz **pakiet**. Rozwiązanie jest skompilowane i spakowane w nowo utworzonym katalogu docelowym.
-1. Rozwiń węzeł **wtyczki** > **Azure-Functions** i Otwórz pozycję **Azure-Functions: Run** , aby uruchomić Azure Functions lokalnego środowiska uruchomieniowego.  
-  ![Maven pasek narzędzi dla Azure Functions](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
+1. Import changes manually or enable [auto import](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
+1. Open the **Maven Projects** toolbar.
+1. Expand **Lifecycle**, and then open **package**. The solution is built and packaged in a newly created target directory.
+1. Expand **Plugins** > **azure-functions** and open **azure-functions:run** to start the Azure Functions local runtime.  
+  ![Maven toolbar for Azure Functions](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
 
-1. Zamknij okno dialogowe uruchamiania po zakończeniu testowania funkcji. Tylko jeden host funkcji może być aktywny i uruchamiany lokalnie.
+1. Close the run dialog box when you're done testing your function. Only one function host can be active and running locally at a time.
 
-## <a name="debug-the-function-in-intellij"></a>Debuguj funkcję w IntelliJ
+## <a name="debug-the-function-in-intellij"></a>Debug the function in IntelliJ
 
-1. Aby uruchomić hosta funkcji w trybie debugowania, należy dodać **-DenableDebug** jako argument podczas uruchamiania funkcji. Konfigurację można zmienić w [celach Maven](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) lub uruchomić następujące polecenie w oknie terminalu:  
+1. To start the function host in debug mode, add **-DenableDebug** as the argument when you run your function. You can either change the configuration in [maven goals](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) or run the following command in a terminal window:  
 
    ```
    mvn azure-functions:run -DenableDebug
    ```
 
-   To polecenie powoduje, że host funkcji otwiera port debugowania w 5005.
+   This command causes the function host to open a debug port at 5005.
 
-1. W menu **Uruchom** wybierz polecenie **Edytuj konfiguracje**.
-1. Wybierz pozycję **(+)** , aby dodać element **zdalny**.
-1. Wypełnij pola _Nazwa_ i _Ustawienia_ , a następnie wybierz przycisk **OK** , aby zapisać konfigurację.
-1. Po zakończeniu instalacji wybierz kolejno opcje **debuguj < nazwa konfiguracji zdalnej >** lub naciśnij klawisze SHIFT + F9 na klawiaturze, aby rozpocząć debugowanie.
+1. On the **Run** menu, select **Edit Configurations**.
+1. Select **(+)** to add a **Remote**.
+1. Complete the _Name_ and _Settings_ fields, and then select **OK** to save the configuration.
+1. After setup, select **Debug < Remote Configuration Name >** or press Shift+F9 on your keyboard to start debugging.
 
-   ![Funkcje debugowania w IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
+   ![Debug functions in IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
-1. Po zakończeniu Zatrzymaj debuger i uruchomiony proces. Tylko jeden host funkcji może być aktywny i uruchamiany lokalnie.
+1. When you're finished, stop the debugger and the running process. Only one function host can be active and running locally at a time.
 
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 
-1. Aby można było wdrożyć funkcję na platformie Azure, musisz [zalogować się przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+1. Before you can deploy your function to Azure, you must [sign in by using the Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    ``` azurecli
    az login
    ```
 
-1. Wdróż swój kod w nowej funkcji przy użyciu `azure-functions:deploy` elementu docelowego Maven. Możesz również wybrać opcję **Azure-Functions: Deploy** w oknie projekty Maven.
+1. Deploy your code into a new function by using the `azure-functions:deploy` Maven target. You can also select the **azure-functions:deploy** option in the Maven Projects window.
 
    ```
    mvn azure-functions:deploy
    ```
 
-1. Znajdź adres URL funkcji w danych wyjściowych interfejsu wiersza polecenia platformy Azure po pomyślnym wdrożeniu funkcji.
+1. Find the URL for your function in the Azure CLI output after  the function has been successfully deployed.
 
    ``` output
    [INFO] Successfully deployed Function App with package.
@@ -118,4 +112,4 @@ Maven tworzy pliki projektu w nowym folderze o tej samej nazwie, co wartość _A
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z [Przewodnikiem dewelopera po funkcjach języka Java](functions-reference-java.md), aby uzyskać więcej informacji na temat tworzenia funkcji języka Java.
-- Dodaj dodatkowe funkcje z różnymi wyzwalaczami do projektu przy użyciu `azure-functions:add` elementu docelowego Maven.
+- Add additional functions with different triggers to your project by using the `azure-functions:add` Maven target.

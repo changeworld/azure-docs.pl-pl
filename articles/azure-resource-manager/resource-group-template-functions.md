@@ -1,20 +1,20 @@
 ---
 title: Funkcje szablonów
-description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pobierania wartości, pracy z ciągami i wartościami liczbowymi oraz pobierania informacji o wdrożeniu.
+description: Describes the functions to use in an Azure Resource Manager template to retrieve values, work with strings and numerics, and retrieve deployment information.
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: a9501517672d3ea80a29979ce6b1439c4cc0010e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/19/2019
+ms.openlocfilehash: cf263bff72677778433d4ef2f3cee8135fe3ab06
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150663"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224184"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Funkcje szablonu Azure Resource Manager
+# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager template functions
 
-W tym artykule opisano wszystkie funkcje, których można użyć w szablonie Azure Resource Manager. Aby uzyskać informacje o używaniu funkcji w szablonie, zobacz [składnia szablonu](template-expressions.md).
+This article describes all the functions you can use in an Azure Resource Manager template. For information about using functions in your template, see [template syntax](template-expressions.md).
 
-Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](resource-group-authoring-templates.md#functions).
+To create your own functions, see [User-defined functions](resource-group-authoring-templates.md#functions).
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,22 +35,22 @@ Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Funkcje tablicy i obiektów
-Menedżer zasobów udostępnia kilka funkcji do pracy z tablicami i obiektami.
+Resource Manager provides several functions for working with arrays and objects.
 
 * [array](resource-group-template-functions-array.md#array)
-* [łączonych](resource-group-template-functions-array.md#coalesce)
+* [coalesce](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
 * [contains](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [empty](resource-group-template-functions-array.md#empty)
 * [first](resource-group-template-functions-array.md#first)
 * [intersection](resource-group-template-functions-array.md#intersection)
-* [kodu](resource-group-template-functions-array.md#json)
+* [json](resource-group-template-functions-array.md#json)
 * [last](resource-group-template-functions-array.md#last)
-* [Długość](resource-group-template-functions-array.md#length)
+* [length](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
-* [zakresu](resource-group-template-functions-array.md#range)
+* [range](resource-group-template-functions-array.md#range)
 * [skip](resource-group-template-functions-array.md#skip)
 * [take](resource-group-template-functions-array.md#take)
 * [union](resource-group-template-functions-array.md#union)
@@ -62,22 +62,23 @@ Menedżer zasobów udostępnia kilka funkcji do pracy z tablicami i obiektami.
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Funkcje porównania
-Menedżer zasobów udostępnia kilka funkcji do dokonywania porównań w szablonach.
+Resource Manager provides several functions for making comparisons in your templates.
 
-* [ubiegł](resource-group-template-functions-comparison.md#equals)
-* [wcześniejsz](resource-group-template-functions-comparison.md#less)
+* [equals](resource-group-template-functions-comparison.md#equals)
+* [less](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
-* [mniejszą](resource-group-template-functions-comparison.md#greater)
+* [greater](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Funkcje wartości wdrożenia
-Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości z sekcji szablonu i wartości związanych ze wdrożeniem:
+## <a name="deployment-value-functions"></a>Deployment value functions
+Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
 
-* [mieszczeniu](resource-group-template-functions-deployment.md#deployment)
+* [deployment](resource-group-template-functions-deployment.md#deployment)
+* [environment](resource-group-template-functions-deployment.md#environment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 
@@ -88,13 +89,13 @@ Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości z 
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Funkcje logiczne
-Menedżer zasobów udostępnia następujące funkcje do pracy z warunkami logicznymi:
+Resource Manager provides the following functions for working with logical conditions:
 
-* [lub](resource-group-template-functions-logical.md#and)
-* [logiczna](resource-group-template-functions-logical.md#bool)
+* [and](resource-group-template-functions-logical.md#and)
+* [bool](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
 * [not](resource-group-template-functions-logical.md#not)
-* [lub](resource-group-template-functions-logical.md#or)
+* [or](resource-group-template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -108,16 +109,16 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z warunkami logicz
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Funkcje liczbowe
-Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkowitymi:
+Resource Manager provides the following functions for working with integers:
 
-* [dodana](resource-group-template-functions-numeric.md#add)
+* [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
 * [min](resource-group-template-functions-numeric.md#min)
 * [max](resource-group-template-functions-numeric.md#max)
-* [Funkcja](resource-group-template-functions-numeric.md#mod)
+* [mod](resource-group-template-functions-numeric.md#mod)
 * [mul](resource-group-template-functions-numeric.md#mul)
 * [sub](resource-group-template-functions-numeric.md#sub)
 
@@ -133,15 +134,15 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkow
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Funkcje zasobów
-Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartości zasobu:
+Resource Manager provides the following functions for getting resource values:
 
 * [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [klucze list](resource-group-template-functions-resource.md#listkeys)
+* [listKeys](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
-* [Lista *](resource-group-template-functions-resource.md#list)
-* [dostawcy](resource-group-template-functions-resource.md#providers)
-* [Odwołanie](resource-group-template-functions-resource.md#reference)
+* [list*](resource-group-template-functions-resource.md#list)
+* [providers](resource-group-template-functions-resource.md#providers)
+* [reference](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
 * [resourceId](resource-group-template-functions-resource.md#resourceid)
 * [Subskrypcja](resource-group-template-functions-resource.md#subscription)
@@ -180,7 +181,7 @@ Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartoś
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Funkcje ciągów
-Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
+Resource Manager provides the following functions for working with strings:
 
 * [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
@@ -197,14 +198,14 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 * [indexOf](resource-group-template-functions-string.md#indexof)
 * [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [Długość](resource-group-template-functions-string.md#length)
+* [length](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [replace](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [ciąg](resource-group-template-functions-string.md#string)
+* [string](resource-group-template-functions-string.md#string)
 * [substring](resource-group-template-functions-string.md#substring)
 * [take](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
@@ -218,7 +219,7 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](resource-group-authoring-templates.md) .
-* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](resource-group-linked-templates.md)
-* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md)
-* Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](resource-group-template-deploy.md)
+* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
+* To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)
+* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
+* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)

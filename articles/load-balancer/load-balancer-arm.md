@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager obsługa Load Balancer
-description: W tym artykule należy używać Azure PowerShell i szablonów z Azure Load Balancer
+title: Azure Resource Manager support for Load Balancer
+description: In this article, use Azure PowerShell and templates with Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,70 +11,70 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: b22b89334fbb55e594ac2b27b486cf5d0bd26f03
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 57a60a65dee995695224aa1b451e848ea8768ab1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196103"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215386"
 ---
-# <a name="azure-resource-manager-support-with-azure-load-balancer"></a>Obsługa Azure Resource Manager z Azure Load Balancer
+# <a name="azure-resource-manager-support-with-azure-load-balancer"></a>Azure Resource Manager support with Azure Load Balancer
 
 
 
-Azure Resource Manager jest preferowaną strukturą zarządzania dla usług platformy Azure. Azure Load Balancer można zarządzać przy użyciu opartych na Azure Resource Manager interfejsów API i narzędzi.
+Azure Resource Manager is the preferred management framework for services in Azure. Azure Load Balancer can be managed using Azure Resource Manager-based APIs and tools.
 
 ## <a name="concepts"></a>Pojęcia
 
-W przypadku Menedżer zasobów Azure Load Balancer zawiera następujące zasoby podrzędne:
+With Resource Manager, Azure Load Balancer contains the following child resources:
 
-* Konfiguracja adresu IP frontonu — moduł równoważenia obciążenia może zawierać co najmniej jeden adres IP frontonu, w przeciwnym razie nazywany wirtualnymi adresami VIP. Te adresy IP są używane podczas transferu danych przychodzących.
-* Pula adresów zaplecza — ta pula jest kolekcją adresów IP skojarzonych z kartą sieciową maszyny wirtualnej, do której jest dystrybuowane obciążenie.
-* Reguły równoważenia obciążenia — Właściwość reguły mapuje daną kombinację adresu IP frontonu i portu na zestaw adresów IP zaplecza i kombinacji portów. Jeden moduł równoważenia obciążenia może mieć wiele reguł równoważenia obciążenia. Każda reguła jest kombinacją adresu IP frontonu i portu oraz adresu IP zaplecza i portu skojarzonego z maszynami wirtualnymi.
-* Sondy — sondy umożliwiają śledzenie kondycji wystąpień maszyn wirtualnych. Jeśli sonda kondycji zakończy się niepowodzeniem, wystąpienie maszyny wirtualnej jest wyłączane automatycznie.
-* Reguły NAT dla ruchu przychodzącego — reguły NAT definiujące ruch przychodzący przepływający przez adres IP frontonu i dystrybuowany do adresu IP zaplecza.
+* Front-end IP configuration – a load balancer can include one or more frontend IP addresses, otherwise known as a virtual IPs (VIPs). Te adresy IP są używane podczas transferu danych przychodzących.
+* Back-end address pool – This pool is a collection of IP addresses associated with the virtual machine Network Interface Card (NIC) to which load is distributed.
+* Load-balancing rules – a rule property maps a given frontend IP and port combination to a set of back-end IP addresses and port combination. A single load balancer can have multiple load-balancing rules. Each rule is a combination of a frontend IP and port and back-end IP and port associated with VMs.
+* Probes – probes enable you to keep track of the health of VM instances. If a health probe fails, the VM instance is taken out of rotation automatically.
+* Inbound NAT rules – NAT rules defining the inbound traffic flowing through the frontend IP and distributed to the back-end IP.
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
 ## <a name="quickstart-templates"></a>Szablony szybkiego startu
 
-Usługa Azure Resource Manager pozwala inicjować obsługę aplikacji za pomocą deklaratywnych szablonów. Pojedynczy szablon umożliwia wdrożenie wielu usług wraz z ich zależnościami. Za pomocą tego samego szablonu możesz wdrażać aplikację na każdym etapie jej cyklu życia.
+Usługa Azure Resource Manager pozwala inicjować obsługę aplikacji za pomocą deklaratywnych szablonów. W pojedynczym szablonie możesz wdrożyć wiele usług wraz z ich zależnościami. Za pomocą tego samego szablonu wdrażasz aplikację na każdym etapie jej cyklu życia.
 
-Szablony mogą zawierać definicje dla:
+Templates may include definitions for:
 * **Maszyny wirtualne**
 * **Sieci wirtualne**
 * **Zestawy dostępności**
-* **Interfejsy sieciowe (nic)**
+* **Network interfaces (NICs)**
 * **Konta magazynu**
 * **Moduły równoważenia obciążenia**
 * **Sieciowe grupy zabezpieczeń**
-* **Publiczne adresy IP.** 
+* **Public IPs.** 
 
-Za pomocą szablonów można utworzyć wszystko, czego potrzebujesz w przypadku złożonej aplikacji. Plik szablonu można sprawdzić w systemie zarządzania zawartością na potrzeby kontroli wersji i współpracy.
+With templates, you can create everything you need for a complex application. The template file can be checked into content management system for version control and collaboration.
 
-[Dowiedz się więcej o szablonach](../azure-resource-manager/resource-manager-template-walkthrough.md)
+[Learn more about templates](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
-[Dowiedz się więcej o zasobach sieciowych](../networking/networking-overview.md)
+[Learn more about Network Resources](../networking/networking-overview.md)
 
-Szablony szybkiego startu używające Azure Load Balancer można znaleźć w [repozytorium GitHub](https://github.com/Azure/azure-quickstart-templates) , które hostuje zestaw szablonów generowanych przez społeczność.
+For Quickstart templates using Azure Load Balancer, see the [GitHub repository](https://github.com/Azure/azure-quickstart-templates) that hosts a set of community-generated templates.
 
-Przykłady szablonów:
+Examples of templates:
 
-* [2 maszyny wirtualne w Load Balancer i reguły równoważenia obciążenia](https://go.microsoft.com/fwlink/?LinkId=544799)
-* [2 maszyny wirtualne w sieci wirtualnej z wewnętrznymi regułami Load Balancer i modułu równoważenia obciążenia](https://go.microsoft.com/fwlink/?LinkId=544800)
-* [2 maszyny wirtualne w module równoważenia obciążenia i konfigurowanie reguł translatora adresów sieciowych w LB](https://go.microsoft.com/fwlink/?LinkId=544801)
+* [2 VMs in a Load Balancer and load balancing rules](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [2 VMs in a VNET with an Internal Load Balancer and load balancer rules](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [2 VMs in a load balancer and configure NAT rules on the LB](https://go.microsoft.com/fwlink/?LinkId=544801)
 
-## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Konfigurowanie Azure Load Balancer przy użyciu programu PowerShell lub interfejsu wiersza polecenia
+## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Setting up Azure Load Balancer with a PowerShell or CLI
 
-Wprowadzenie do Azure Resource Manager poleceń cmdlet, narzędzi wiersza polecenia i interfejsów API REST
+Get started with Azure Resource Manager cmdlets, command-line tools, and REST APIs
 
-* [Polecenia cmdlet sieci platformy Azure](https://docs.microsoft.com/powershell/module/az.network#networking) mogą służyć do tworzenia Load Balancer.
-* [Jak utworzyć moduł równoważenia obciążenia przy użyciu Azure Resource Manager](load-balancer-get-started-ilb-arm-ps.md)
-* [Korzystanie z interfejsu wiersza polecenia platformy Azure z usługą Azure Resource Management](../xplat-cli-azure-resource-manager.md)
-* [Interfejsy API REST Load Balancer](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+* [Azure Networking Cmdlets](https://docs.microsoft.com/powershell/module/az.network#networking) can be used to create a Load Balancer.
+* [How to create a load balancer using Azure Resource Manager](load-balancer-get-started-ilb-arm-ps.md)
+* [Using the Azure CLI with Azure Resource Management](../xplat-cli-azure-resource-manager.md)
+* [Load Balancer REST APIs](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Rozpocznij tworzenie modułu równoważenia obciążenia połączonego z Internetem](load-balancer-get-started-internet-arm-ps.md) i Konfigurowanie typu [trybu dystrybucji](load-balancer-distribution-mode.md) dla określonego zachowania ruchu sieciowego.
+[Get started creating an Internet facing load balancer](load-balancer-get-started-internet-arm-ps.md) and configure the type of [distribution mode](load-balancer-distribution-mode.md) for specific network traffic behavior.
 
-Dowiedz się, jak zarządzać [ustawieniami limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia](load-balancer-tcp-idle-timeout.md). Te ustawienia są ważne, gdy aplikacja musi zachować aktywność połączeń dla serwerów za modułem równoważenia obciążenia.
+Learn how to manage [idle TCP timeout settings for a load balancer](load-balancer-tcp-idle-timeout.md). These settings are important when your application needs to keep connections alive for servers behind a load balancer.

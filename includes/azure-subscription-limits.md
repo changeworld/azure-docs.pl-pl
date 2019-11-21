@@ -3,31 +3,31 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: billing
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5b2ab103c2384b53f384c45945b387585fdbb4b4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67183591"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224421"
 ---
-| Resource | Limit domyślny | Limit maksymalny |
+| Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| Procesorów wirtualnych vCPU na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |
-| [](../articles/billing-add-change-azure-subscription-administrator.md) Współadministratorzy na subskrypcję |200 |200 |
-| [Konta magazynu](../articles/storage/common/storage-create-storage-account.md) na subskrypcję<sup>2</sup> |100 |100 |
+| vCPUs per [subscription](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |
+| [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |200 |200 |
+| [Storage accounts](../articles/storage/common/storage-create-storage-account.md) per subscription<sup>2</sup> |100 |100 |
 | [Usługi w chmurze](../articles/cloud-services/cloud-services-choose-me.md) na subskrypcję |20 |200 |
-| [Sieci lokalne](/previous-versions/azure/reference/jj157100(v=azure.100)) na subskrypcję |10 |500 |
-| Serwery DNS na subskrypcję |9 |100 |
-| Zastrzeżone adresy IP na subskrypcję |20 |100 |
+| [Local networks](/previous-versions/azure/reference/jj157100(v=azure.100)) per subscription |10 |500 |
+| DNS servers per subscription |9 |100 |
+| Reserved IPs per subscription |20 |100 |
 | [Grupy koligacji](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na subskrypcję |256 |256 |
-| Długość nazwy subskrypcji (znaki) | 64 | 64 |
+| Subscription name length (characters) | 64 | 64 |
 
-<sup>1</sup> Liczba bardzo małych wystąpień jest traktowana jako jedna vCPU do limitu vCPU, mimo że jest używana część rdzeń procesora CPU.
+<sup>1</sup>Extra small instances count as one vCPU toward the vCPU limit despite using a partial CPU core.
 
-<sup>2</sup> Limit konta magazynu obejmuje konta magazynu w warstwie Standardowa i Premium. 
+<sup>2</sup>The storage account limit includes both Standard and Premium storage accounts. 
 

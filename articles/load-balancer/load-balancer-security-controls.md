@@ -1,66 +1,66 @@
 ---
-title: Kontrolki zabezpieczeń dla Azure Load Balancer
-description: Lista kontrolna kontroli zabezpieczeń dla oceny Load Balancer
+title: Security controls for Azure Load Balancer
+description: A checklist of security controls for evaluating Load Balancer
 services: load-balancer
-author: msmbaldwin
-manager: barbkess
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: e0be6635a0916183e1dfe776bef4c547578383dc
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.author: allensu
+ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886782"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214902"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Kontrolki zabezpieczeń dla Azure Load Balancer
+# <a name="security-controls-for-azure-load-balancer"></a>Security controls for Azure Load Balancer
 
-W tym artykule opisano kontrolki zabezpieczeń wbudowane w Azure Load Balancer.
+This article documents the security controls built into Azure Load Balancer.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Sieć
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
+| Security control | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktów końcowych usługi| ND | |
-| Obsługa iniekcji sieci wirtualnej| ND | |
-| Izolacja sieci i obsługa zapór| ND |  |
-| Obsługa tunelowania wymuszonego| ND | |
+| Service endpoint support| ND | |
+| VNet injection support| ND | |
+| Network Isolation and Firewalling support| ND |  |
+| Forced tunneling support| ND | |
 
-## <a name="monitoring--logging"></a>Monitorowanie rejestrowania &
+## <a name="monitoring--logging"></a>Monitoring & logging
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Security control | Tak/Nie | Uwagi|
 |---|---|--|
-| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zapoznaj się z [dziennikami Azure monitor dla publicznych Load Balancer podstawowych](load-balancer-monitor-log.md). |
-| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | Zapoznaj się z [dziennikami Azure monitor dla publicznych Load Balancer podstawowych](load-balancer-monitor-log.md). |
-| Rejestrowanie i inspekcja płaszczyzny danych | ND |  |
+| Azure monitoring support (Log analytics, App insights, etc.)| Tak | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
+| Control and management plane logging and audit| Tak | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
+| Data plane logging and audit | ND |  |
 
 ## <a name="identity"></a>Tożsamość
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Security control | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| ND |  |
-| Authorization| ND |  |
+| Uwierzytelnianie| ND |  |
+| Autoryzacja| ND |  |
 
 ## <a name="data-protection"></a>Ochrona danych
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
+| Security control | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | ND | |
-| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| ND | |
-| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | ND | |
-| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |
-| Wywołania interfejsu API są szyfrowane| Tak | Za pośrednictwem [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Server-side encryption at rest: Microsoft-managed keys | ND | |
+| Encryption in transit (such as ExpressRoute encryption, in VNet encryption, and VNet-VNet encryption )| ND | |
+| Server-side encryption at rest: customer-managed keys (BYOK) | ND | |
+| Column level encryption (Azure Data Services)| ND | |
+| API calls encrypted| Tak | Via the [Azure Resource Manager](../azure-resource-manager/index.yml). |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Security control | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| ND |  | 
+| Configuration management support (versioning of configuration, etc.)| ND |  | 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [wbudowanych kontrolach zabezpieczeń w ramach usług platformy Azure](../security/fundamentals/security-controls.md).
+- Learn more about the [built-in security controls across Azure services](../security/fundamentals/security-controls.md).

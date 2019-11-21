@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą usługi FreshDesk | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with FreshDesk | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją FreshDesk.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73155761"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227611"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Samouczek: integracja Azure Active Directory z usługą usługi FreshDesk
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory integration with FreshDesk
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację FreshDesk z usługą Azure Active Directory (Azure AD).
 Zintegrowanie aplikacji FreshDesk z usługą Azure AD zapewnia następujące korzyści:
@@ -202,7 +202,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -246,19 +246,19 @@ W przypadku aplikacji FreshDesk aprowizowanie jest zadaniem ręcznym.
 
 2. W menu u góry kliknij pozycję **Admin** (Administrator).
 
-    ![Administratora](./media/freshdesk-tutorial/IC776772.png "Administratora")
+    ![Admin](./media/freshdesk-tutorial/IC776772.png "Admin")
 
 3. Na karcie **General Settings** (Ustawienia ogólne) kliknij pozycję **Agents** (Agenci).
   
-    ![Pracownicy](./media/freshdesk-tutorial/IC776773.png "Agenci")
+    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agenci")
 
 4. Kliknij pozycję **New Agent** (Nowy agent).
 
-    ![Nowy Agent](./media/freshdesk-tutorial/IC776774.png "Nowy Agent")
+    ![New Agent](./media/freshdesk-tutorial/IC776774.png "New Agent")
 
 5. W oknie dialogowym Agent Information (Informacje o agencie) wykonaj następujące kroki:
 
-    ![Informacje o agencie](./media/freshdesk-tutorial/IC776775.png "Informacje o agencie")
+    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
 
     a. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail konta usługi Azure AD, które chcesz aprowizować.
 
@@ -272,7 +272,7 @@ W przypadku aplikacji FreshDesk aprowizowanie jest zadaniem ręcznym.
     >Właściciel konta usługi Azure AD otrzyma wiadomość e-mail zawierającą link do potwierdzenia konta, zanim zostanie ono aktywowane.
     >
     >[!NOTE]
-    >Aby aprowizować konta usługi AAD w aplikacji FreshDesk, możesz użyć innych interfejsów API lub narzędzi do tworzenia kont użytkowników dostarczonych przez firmę Freshdesk.
+    >You can use any other Freshdesk user account creation tools or APIs provided by Freshdesk to provision Azure AD user accounts to FreshDesk.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
@@ -286,5 +286,5 @@ Po kliknięciu kafelka FreshDesk na panelu dostępu powinno nastąpić automatyc
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

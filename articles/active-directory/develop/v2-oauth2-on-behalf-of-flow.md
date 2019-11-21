@@ -1,6 +1,6 @@
 ---
-title: Platforma tożsamości firmy Microsoft i OAuth 2.0 w imieniu z przepływem | Azure
-description: W tym artykule opisano, jak używać wiadomości HTTP do zaimplementowania uwierzytelniania usług za pomocą OAuth 2.0 w imieniu użytkownika z usługi flow.
+title: Microsoft identity platform and OAuth2.0 On-Behalf-Of flow | Azure
+description: This article describes how to use HTTP messages to implement service to service authentication using the OAuth2.0 On-Behalf-Of flow.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,72 +13,74 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 09d851572731ad9c83093b7076279df112585703
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482167"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207509"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma tożsamości firmy Microsoft i przepływ OAuth 2.0 "w imieniu"
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Przepływ OAuth 2.0 "w imieniu" (OBO) służy przypadek użycia, gdzie aplikacja wywołuje usługę/internetowego interfejsu API, które z kolei są potrzebne do wywoływania innej usługi/interfejsu API sieci web. Chodzi o to propagację delegowany użytkownik tożsamości i uprawnień w łańcuchu żądanie. Usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi transmisji musi ona secure token dostępu z platformą Microsoft identity w imieniu użytkownika.
+The OAuth 2.0 On-Behalf-Of flow (OBO) serves the use case where an application invokes a service/web API, which in turn needs to call another service/web API. The idea is to propagate the delegated user identity and permissions through the request chain. For the middle-tier service to make authenticated requests to the downstream service, it needs to secure an access token from the Microsoft identity platform, on behalf of the user.
+
+This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
 
 > [!NOTE]
 >
-> - Punkt końcowy platforma tożsamości firmy Microsoft nie obsługuje wszystkie scenariusze i funkcje. Aby ustalić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md). Ściślej mówiąc aplikacje klienckie znanych nie są obsługiwane w przypadku aplikacji z kontem Microsoft (MSA) i odbiorców usługi Azure AD. W związku z tym Wspólny wzorzec OBO zgody nie będzie działać dla klientów, które logują się zarówno osobistych i kont służbowych. Aby dowiedzieć się więcej na temat sposobu obsługi przepływu w tym kroku, zobacz [uzyskaniem zgody dla aplikacji warstwy środkowej](#gaining-consent-for-the-middle-tier-application).
-> - Od maja 2018 r. niektóre niejawny przepływ pochodne `id_token` nie można używać do przepływu OBO. Aplikacje jednej strony (źródła), powinna przekazać **dostępu** tokenu do warstwy środkowej poufne klienta do wykonania OBO przepływy zamiast tego. Aby uzyskać więcej informacji o tym, które klienci będą mogli wykonywać wywołania OBO, zobacz [ograniczenia](#client-limitations).
+> - The Microsoft identity platform endpoint doesn't support all scenarios and features. To determine whether you should use the Microsoft identity platform endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md). Specifically, known client applications aren't supported for apps with Microsoft account (MSA) and Azure AD audiences. Thus, a common consent pattern for OBO will not work for clients that sign in both personal and work or school accounts. To learn more about how to handle this step of the flow, see [Gaining consent for the middle-tier application](#gaining-consent-for-the-middle-tier-application).
+> - As of May 2018, some implicit-flow derived `id_token` can't be used for OBO flow. Single-page apps (SPAs) should pass an **access** token to a middle-tier confidential client to perform OBO flows instead. For more info about which clients can perform OBO calls, see [limitations](#client-limitations).
 
-## <a name="protocol-diagram"></a>Diagram protokołu
+## <a name="protocol-diagram"></a>Protocol diagram
 
-Przyjęto założenie, że użytkownik został uwierzytelniony w aplikacji za pomocą [kod autoryzacji OAuth 2.0 udzielić przepływ](v2-oauth2-auth-code-flow.md). W tym momencie aplikacja ma token dostępu *dla interfejsu API* (token A) przy użyciu oświadczeń użytkowników i zgody na dostęp do warstwy środkowej sieci web interfejsu API (interfejs API A). Teraz A interfejs API musi dokonać uwierzytelnionego żądania podrzędnego internetowego interfejsu API (interfejs API B).
+Assume that the user has been authenticated on an application using the [OAuth 2.0 authorization code grant flow](v2-oauth2-auth-code-flow.md). At this point, the application has an access token *for API A* (token A) with the user’s claims and consent to access the middle-tier web API (API A). Now, API A needs to make an authenticated request to the downstream web API (API B).
 
-Poniższe kroki stanowią przepływu OBO i zostały wyjaśnione przy pomocy poniższym diagramie.
+The steps that follow constitute the OBO flow and are explained with the help of the following diagram.
 
-![Pokazuje OAuth 2.0 w imieniu użytkownika z usługi flow](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Shows the OAuth2.0 On-Behalf-Of flow](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
-1. Aplikacja kliencka wysyła żądanie do interfejsu API, A za pomocą tokenu A (przy użyciu `aud` oświadczenia a interfejsu API).
-1. A interfejs API jest uwierzytelniany punktu końcowego wystawiania tokenu platforma tożsamości firmy Microsoft i żądania tokenu służącego do dostępu do interfejsu API B.
-1. Endpoint wystawiania tokenu platforma tożsamości firmy Microsoft weryfikuje poświadczenia A interfejsu API za pomocą tokenu A i wystawia token dostępu dla aplikacji interfejsu API B (token B).
-1. Token B ustawiono w nagłówku autoryzacji żądania do interfejsu API B.
-1. Dane z zabezpieczono zasób jest zwracany przez interfejs API B.
+1. The client application makes a request to API A with token A (with an `aud` claim of API A).
+1. API A authenticates to the Microsoft identity platform token issuance endpoint and requests a token to access API B.
+1. The Microsoft identity platform token issuance endpoint validates API A's credentials with token A and issues the access token for API B (token B).
+1. Token B is set in the authorization header of the request to API B.
+1. Data from the secured resource is returned by API B.
 
 > [!NOTE]
-> W tym scenariuszu usługa warstwy środkowej ma bez interakcji użytkownika w celu uzyskania zgody użytkownika dostępu do podrzędnego interfejsu API. W związku z tym opcję, aby udzielić dostępu do interfejsu API niższego rzędu są prezentowane z wyprzedzeniem, jako część zgody kroku podczas uwierzytelniania. Aby dowiedzieć się, jak ustawienie dla tych aplikacji, zobacz [uzyskaniem zgody dla aplikacji warstwy środkowej](#gaining-consent-for-the-middle-tier-application).
+> In this scenario, the middle-tier service has no user interaction to obtain the user's consent to access the downstream API. Therefore, the option to grant access to the downstream API is presented upfront as a part of the consent step during authentication. To learn how to set this up for your app, see [Gaining consent for the middle-tier application](#gaining-consent-for-the-middle-tier-application).
 
-## <a name="service-to-service-access-token-request"></a>Żądanie tokenu dostępu do usługi
+## <a name="service-to-service-access-token-request"></a>Service-to-service access token request
 
-Do żądania tokenu dostępu, metody HTTP POST do specyficznym dla dzierżawy Microsoft tożsamości platformy punktu końcowego tokenu z następującymi parametrami.
+To request an access token, make an HTTP POST to the tenant-specific Microsoft identity platform token endpoint with the following parameters.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 ```
 
-Istnieją dwa przypadki, w zależności od tego, czy aplikacja kliencka zdecyduje się na chronione przez wspólne hasło lub certyfikat.
+There are two cases depending on whether the client application chooses to be secured by a shared secret or a certificate.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: Żądanie tokenu dostępu za pomocą wspólny klucz tajny
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>First case: Access token request with a shared secret
 
-Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawiera następujące informacje:
+When using a shared secret, a service-to-service access token request contains the following parameters:
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| `grant_type` | Wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Wymagane | Identyfikator aplikacji (klienta) [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony ma przypisany do aplikacji. |
-| `client_secret` | Wymagane | Klucz tajny klienta, który został wygenerowany dla aplikacji w witrynie Azure portal — strona rejestracji aplikacji. |
-| `assertion` | Wymagane | Wartość tokenu użytego w żądaniu. |
-| `scope` | Wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md). |
-| `requested_token_use` | Wymagane | Określa, jak można przetworzyć żądania. Przepływu OBO musi być równa wartości `on_behalf_of`. |
+| `grant_type` | Wymagane | The type of  token request. For a request using a JWT, the value must be `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Wymagane | The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
+| `client_secret` | Wymagane | The client secret that you generated for your app in the Azure portal - App registrations page. |
+| `assertion` | Wymagane | The value of the token used in the request. |
+| `scope` | Wymagane | A space separated list of scopes for the token request. For more information, see [scopes](v2-permissions-and-consent.md). |
+| `requested_token_use` | Wymagane | Specifies how the request should be processed. In the OBO flow, the value must be set to `on_behalf_of`. |
 
 #### <a name="example"></a>Przykład
 
-W następującym WPISIE HTTP żądania token dostępu i token odświeżania za pomocą `user.read` zakresu dla https://graph.microsoft.com interfejs API sieci web.
+The following HTTP POST requests an access token and refresh token with `user.read` scope for the https://graph.microsoft.com web API.
 
 ```
 //line breaks for legibility only
@@ -95,25 +97,25 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: Żądanie tokenu dostępu przy użyciu certyfikatu
+### <a name="second-case-access-token-request-with-a-certificate"></a>Second case: Access token request with a certificate
 
-Żądanie tokenu dostępu do usługi, za pomocą certyfikatu zawiera następujące parametry:
+A service-to-service access token request with a certificate contains the following parameters:
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| `grant_type` | Wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Wymagane |  Identyfikator aplikacji (klienta) [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony ma przypisany do aplikacji. |
-| `client_assertion_type` | Wymagane | Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Wymagane | Potwierdzenie (JSON web token) należy utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenie, zobacz [certyfikatu poświadczeń](active-directory-certificate-credentials.md). |
-| `assertion` | Wymagane | Wartość tokenu użytego w żądaniu. |
-| `requested_token_use` | Wymagane | Określa, jak można przetworzyć żądania. Przepływu OBO musi być równa wartości `on_behalf_of`. |
-| `scope` | Wymagane | Rozdzielonej spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
+| `grant_type` | Wymagane | The type of the token request. For a request using a JWT, the value must be `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Wymagane |  The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
+| `client_assertion_type` | Wymagane | The value must be `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Wymagane | An assertion (a JSON web token) that you need to create and sign with the certificate you registered as credentials for your application. To learn how to register your certificate and the format of the assertion, see [certificate credentials](active-directory-certificate-credentials.md). |
+| `assertion` | Wymagane | The value of the token used in the request. |
+| `requested_token_use` | Wymagane | Specifies how the request should be processed. In the OBO flow, the value must be set to `on_behalf_of`. |
+| `scope` | Wymagane | A space-separated list of scopes for the token request. For more information, see [scopes](v2-permissions-and-consent.md).|
 
-Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, chyba że `client_secret` parametr zostaje zastąpiona przez dwa parametry: `client_assertion_type` i `client_assertion`.
+Notice that the parameters are almost the same as in the case of the request by shared secret except that the `client_secret` parameter is replaced by two parameters: a `client_assertion_type` and `client_assertion`.
 
 #### <a name="example"></a>Przykład
 
-W następującym WPISIE HTTP żądania tokenu dostępu za pomocą `user.read` zakresu dla https://graph.microsoft.com interfejs API sieci web przy użyciu certyfikatu.
+The following HTTP POST requests an access token with `user.read` scope for the https://graph.microsoft.com web API with a certificate.
 
 ```
 // line breaks for legibility only
@@ -131,21 +133,21 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Usługa odpowiedzi tokenu dostępu usługi
+## <a name="service-to-service-access-token-response"></a>Service to service access token response
 
-Odpowiedź sukcesu jest odpowiedź JSON OAuth 2.0, z następującymi parametrami.
+A success response is a JSON OAuth 2.0 response with the following parameters.
 
 | Parametr | Opis |
 | --- | --- |
-| `token_type` | Wskazuje typ tokenu. To jedyny typ przez firmę Microsoft, które obsługuje platforma tożsamości jest `Bearer`. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| `scope` | Zakres dostępu przyznane w tokenie. |
-| `expires_in` | Długość czasu w sekundach, token dostępu jest prawidłowy. |
-| `access_token` | Token żądanego dostępu. Wywoływania usługi można użyć tego tokenu do uwierzytelnienia w usłudze odbierania. |
-| `refresh_token` | Token odświeżania dla tokenu żądanego dostępu. Wywoływania usługi można użyć tego tokenu do żądania inny token dostępu po wygaśnięciu bieżącego tokenu dostępu. Token odświeżania jest podawana tylko wtedy, gdy `offline_access` zażądano zakresu. |
+| `token_type` | Indicates the token type value. The only type that Microsoft identity platform supports is `Bearer`. For more info about bearer tokens, see the [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `scope` | The scope of access granted in the token. |
+| `expires_in` | The length of time, in seconds, that the access token is valid. |
+| `access_token` | The requested access token. The calling service can use this token to authenticate to the receiving service. |
+| `refresh_token` | The refresh token for the requested access token. The calling service can use this token to request another access token after the current access token expires. The refresh token is only provided if the `offline_access` scope was requested. |
 
-### <a name="success-response-example"></a>Przykład odpowiedzi sukces
+### <a name="success-response-example"></a>Success response example
 
-Poniższy przykład przedstawia odpowiedź sukcesu na żądanie, aby uzyskać dostęp do tokenu do https://graph.microsoft.com interfejs API sieci web.
+The following example shows a success response to a request for an access token for the https://graph.microsoft.com web API.
 
 ```
 {
@@ -159,11 +161,11 @@ Poniższy przykład przedstawia odpowiedź sukcesu na żądanie, aby uzyskać do
 ```
 
 > [!NOTE]
-> Powyższe token dostępu jest tokenem sformatowane w wersji 1.0. Jest to spowodowane token jest zapewniany dla zasobu, którego uzyskiwany jest dostęp. Program Microsoft Graph żądań tokenów w wersji 1.0, dzięki czemu platforma tożsamości usługi Microsoft generuje tokeny dostępu w wersji 1.0, gdy klient zażąda tokenów dla programu Microsoft Graph. Tylko aplikacje, należy rozważyć tokenów dostępu. Klienci nie powinni je sprawdzić.
+> The above access token is a v1.0-formatted token. This is because the token is provided based on the resource being accessed. The Microsoft Graph requests v1.0 tokens, so Microsoft identity platform produces v1.0 access tokens when a client requests tokens for Microsoft Graph. Only applications should look at access tokens. Clients should not need to inspect them.
 
-### <a name="error-response-example"></a>Przykład odpowiedzi błędu
+### <a name="error-response-example"></a>Error response example
 
-Odpowiedź na błąd jest zwracany przez punkt końcowy tokenu, podczas próby uzyskania tokenu dostępu dla interfejsu API niższego rzędu, jeśli podrzędny interfejs API ma zasady dostępu warunkowego (takie jak uwierzytelnianie wieloskładnikowe), ustaw na nim. Usługi warstwy środkowej należy przedstawić ten błąd do aplikacji klienckiej, tak, aby aplikacja kliencka może zapewnić interakcję użytkownika, aby spełnić wymagania zasad dostępu warunkowego.
+An error response is returned by the token endpoint when trying to acquire an access token for the downstream API, if the downstream API has a Conditional Access policy (such as multi-factor authentication) set on it. The middle-tier service should surface this error to the client application so that the client application can provide the user interaction to satisfy the Conditional Access policy.
 
 ```
 {
@@ -177,9 +179,9 @@ Odpowiedź na błąd jest zwracany przez punkt końcowy tokenu, podczas próby u
 }
 ```
 
-## <a name="use-the-access-token-to-access-the-secured-resource"></a>Dostęp do zabezpieczonych zasobów przy użyciu tokenu dostępu
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>Use the access token to access the secured resource
 
-Teraz usługi warstwy środkowej używać tokenu nabyte powyżej dokonać uwierzytelnionego żądania podrzędnego internetowego interfejsu API, ustawiając token w `Authorization` nagłówka.
+Now the middle-tier service can use the token acquired above to make authenticated requests to the downstream web API, by setting the token in the `Authorization` header.
 
 ### <a name="example"></a>Przykład
 
@@ -189,42 +191,42 @@ Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
 
-## <a name="gaining-consent-for-the-middle-tier-application"></a>Uzyskanie zgody dla aplikacji warstwy środkowej
+## <a name="gaining-consent-for-the-middle-tier-application"></a>Gaining consent for the middle-tier application
 
-W zależności od odbiorców dla aplikacji można rozważyć różne strategie za zapewnienie, że przepływu OBO zakończyła się powodzeniem. We wszystkich przypadkach ostatecznym celem jest upewnij się, że podano odpowiedniej zgody. Jak ma to miejsce, jednak jest zależna od użytkowników, którzy aplikacja obsługuje.
+Depending on the audience for your application, you may consider different strategies for ensuring that the OBO flow is successful. In all cases, the ultimate goal is to ensure proper consent is given. How that occurs, however, depends on which users your application supports.
 
-### <a name="consent-for-azure-ad-only-applications"></a>Zgoda na usługi Azure AD aplikacji
+### <a name="consent-for-azure-ad-only-applications"></a>Consent for Azure AD-only applications
 
-#### <a name="default-and-combined-consent"></a>/.default i połączone zgody
+#### <a name="default-and-combined-consent"></a>/.default and combined consent
 
-W przypadku aplikacji, którzy muszą tylko zarejestrować się w pracy lub szkołą kont tradycyjne podejście "Znane aplikacje klienckie" jest wystarczająca. Aplikacja warstwy środkowej dodaje klienta do listy znanych klienta aplikacji w manifeście, a następnie klient może wyzwolić przepływu wyrażania zgody połączone sam i aplikacji warstwy środkowej. W punkcie końcowym platforma tożsamości firmy Microsoft, odbywa się przy użyciu [ `/.default` zakres](v2-permissions-and-consent.md#the-default-scope). Podczas wyzwalania ekranie wyrażania zgody, przy użyciu aplikacji klienckich znane i `/.default`, ekran wyrażania zgody Pokaż uprawnienia dla klienta do interfejsu API warstwy środkowej, a także zażądać uprawnień wymaganych przez interfejs API warstwy środkowej. Użytkownik udostępnia wyrażania zgody dla obu aplikacji, a następnie przepływu OBO działa.
+For applications that only need to sign in work or school accounts, the traditional "Known Client Applications" approach is sufficient. The middle tier application adds the client to the known client applications list in its manifest, and then the client can trigger a combined consent flow for both itself and the middle tier application. On the Microsoft identity platform endpoint, this is done using the [`/.default` scope](v2-permissions-and-consent.md#the-default-scope). When triggering a consent screen using known client applications and `/.default`, the consent screen will show permissions for both the client to the middle tier API, and also request whatever permissions are required by the middle-tier API. The user provides consent for both applications, and then the OBO flow works.
 
-W tej chwili system osobistych kont Microsoft nie obsługuje połączonych zgody, a więc takie podejście nie działa w przypadku aplikacji, które mają się w szczególności w ramach kont osobistych. Osobistych kont Microsoft, używane jako konta gościa w dzierżawie są obsługiwane w systemie usługi Azure AD i można przejść przez połączone zgody.
+At this time, the personal Microsoft account system does not support combined consent and so this approach does not work for apps that want to specifically sign in personal accounts. Personal Microsoft accounts being used as guest accounts in a tenant are handled using the Azure AD system, and can go through combined consent.
 
-#### <a name="pre-authorized-applications"></a>Wstępnie autoryzowanych aplikacjach
+#### <a name="pre-authorized-applications"></a>Pre-authorized applications
 
-Funkcja portalu aplikacji jest "wstępnie autoryzowane aplikacje". W ten sposób zasobu może wskazywać, że zawsze danej aplikacji ma uprawnienia do odbierania określonych zakresów. Jest to głównie przydatne nawiązywanie połączeń między klientem frontonu i zaplecza zasób bezproblemowa. Zasób może zadeklarować wiele wstępnie autoryzowanych aplikacjach — takich aplikacji mogą żądać tych uprawnień w OBO przepływu i odbierać je bez użytkownika zgodę.
+A feature of the application portal is "pre-authorized applications". In this way, a resource can indicate that a given application always has permission to receive certain scopes. This is primarily useful to make connections between a front-end client and a back-end resource more seamless. A resource can declare multiple pre-authorized applications - any such application can request these permissions in an OBO flow and receive them without the user providing consent.
 
 #### <a name="admin-consent"></a>zgoda administratora
 
-Administrator dzierżawy może zagwarantować, że aplikacje mają uprawnienia do wywołania ich wymaganych interfejsów API, zapewniając zgody administratora dla aplikacji warstwy środkowej. Aby to zrobić, administrator może znaleźć aplikacji warstwy środkowej w ramach ich dzierżawy, otwórz stronę wymaganych uprawnień, a następnie wybierz udzielić uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat zgody administratora, zobacz [dokumentacji uprawnienia i zgody](v2-permissions-and-consent.md).
+A tenant admin can guarantee that applications have permission to call their required APIs by providing admin consent for the middle tier application. To do this, the admin can find the middle tier application in their tenant, open the required permissions page, and choose to give permission for the app. To learn more about admin consent, see the [consent and permissions documentation](v2-permissions-and-consent.md).
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Zgoda na usługi Azure AD i aplikacji konta Microsoft
+### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Consent for Azure AD + Microsoft account applications
 
-Z powodu ograniczeń w modelu uprawnień dla osobistych kont i braku zarządzania dzierżawy wymagania wyrażania zgody dla osobistych kont różnią się nieco z usługi Azure AD. Istnieje żaden z dzierżawców zgody dla dzierżawy dla nie jest istnieje możliwość robienia połączone zgody. W związku z tym inne strategie, które są obecne samodzielnie — należy pamiętać, że działają one dla aplikacji wymagających tylko obsługują także kont usługi Azure AD.
+Because of restrictions in the permissions model for personal accounts and the lack of a governing tenant, the consent requirements for personal accounts are a bit different from Azure AD. There is no tenant to provide tenant-wide consent for, nor is there the ability to do combined consent. Thus, other strategies present themselves - note that these work for applications that only need to support Azure AD accounts as well.
 
-#### <a name="use-of-a-single-application"></a>Korzystanie z pojedynczą aplikacją
+#### <a name="use-of-a-single-application"></a>Use of a single application
 
-W niektórych scenariuszach może mieć tylko, parowanie pojedynczego klienta warstwy środkowej i frontonu. W tym scenariuszu użytkownik może ułatwić pojedynczej aplikacji, całkowicie Negacja potrzeby aplikacji warstwy środkowej. Na potrzeby uwierzytelniania między fronton i interfejs API sieci web, można użyć plików cookie, id_token lub token dostępu żądany dla samej aplikacji. Następnie zażądania zgody z tej aplikacji w taki sposób, w celu zasobów zaplecza.
+In some scenarios, you may only have a single pairing of middle-tier and front-end client. In this scenario, you may find it easier to make this a single application, negating the need for a middle-tier application altogether. To authenticate between the front-end and the web API, you can use cookies, an id_token, or an access token requested for the application itself. Then, request consent from this single application to the back-end resource.
 
-## <a name="client-limitations"></a>Ograniczenia klienta
+## <a name="client-limitations"></a>Client limitations
 
-Jeśli klient używa niejawny przepływ w celu uzyskania elementu id_token, a klient ma również symboli wieloznacznych w adresie URL odpowiedzi, id_token nie można użyć przepływu OBO.  Jednak tokenów dostępu, które zakupione w ramach przepływu przyznawanie niejawne nadal można zrealizować za poufne klienta nawet wtedy, gdy zainicjować klienta został zarejestrowany adres URL odpowiedzi symboli wieloznacznych.
+If a client uses the implicit flow to get an id_token, and that client also has wildcards in a reply URL, the id_token can't be used for an OBO flow.  However, access tokens acquired through the implicit grant flow can still be redeemed by a confidential client even if the initiating client has a wildcard reply URL registered.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat protokołu OAuth 2.0 i innym sposobem uwierzytelniania usług przy użyciu poświadczeń klienta.
+Learn more about the OAuth 2.0 protocol and another way to perform service to service auth using client credentials.
 
-* [Przyznawanie poświadczeń klienta OAuth 2.0 na platformie tożsamości firmy Microsoft](v2-oauth2-client-creds-grant-flow.md)
-* [Przepływ kodu OAuth 2.0 na platformie tożsamości firmy Microsoft](v2-oauth2-auth-code-flow.md)
-* [Za pomocą `/.default` zakresu](v2-permissions-and-consent.md#the-default-scope)
+* [OAuth 2.0 client credentials grant in Microsoft identity platform](v2-oauth2-client-creds-grant-flow.md)
+* [OAuth 2.0 code flow in Microsoft identity platform](v2-oauth2-auth-code-flow.md)
+* [Using the `/.default` scope](v2-permissions-and-consent.md#the-default-scope)

@@ -5,19 +5,19 @@ metadata:
   title: Dokumentacja zarządzania aplikacjami
   description: Dowiedz się, jak korzystać z modelu współpracy między firmami (B2B) w usłudze Azure AD (B2B), aby bezpiecznie udostępniać aplikacje i usługi firmy dla użytkowników-gości i partnerów zewnętrznych z dowolnej organizacji, zachowując kontrolę nad własnymi danymi firmowymi.
   ms.service: active-directory
-  ms.subservice: manage-apps
+  ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 08/27/2019
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: a1822b3bd6ec7950bc3c0ab9304ea2f60a7127e4
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
+  ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70125173"
+  ms.lasthandoff: 11/21/2019
+  ms.locfileid: "74272695"
 landingContent:
 - title: Współpraca B2B — Informacje
   linkLists:

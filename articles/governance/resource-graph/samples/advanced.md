@@ -1,14 +1,14 @@
 ---
 title: Przykłady zapytań zaawansowanych
-description: Użyj grafu zasobów platformy Azure do uruchamiania niektórych zaawansowanych zapytań, w tym pojemności zestawu skalowania maszyn wirtualnych, wyświetlania wszystkich używanych tagów i zgodnych maszyn wirtualnych z wyrażeniami regularnymi.
-ms.date: 10/21/2019
+description: Use Azure Resource Graph to run some advanced queries, including virtual machine scale set capacity, listing all tags used, and matching virtual machines with regular expressions.
+ms.date: 11/18/2019
 ms.topic: quickstart
-ms.openlocfilehash: e09db4630fd1ef8acc06538c7599feddbe991900
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.openlocfilehash: eba56f488974a668c6fd3738f15d5b5efee8a9fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958707"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216502"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
 
@@ -17,18 +17,18 @@ Pierwszym krokiem do zrozumienia zapytań usługi Azure Resource Graph jest pods
 Omówimy następujące zaawansowane zapytania:
 
 > [!div class="checklist"]
-> - [Pokaż wersję interfejsu API dla każdego typu zasobu](#apiversion)
-> - [Pobieranie pojemności i rozmiaru zestawu skalowania maszyny wirtualnej](#vmss-capacity)
-> - [Usuń kolumny z wyników](#remove-column)
+> - [Show API version for each resource type](#apiversion)
+> - [Get virtual machine scale set capacity and size](#vmss-capacity)
+> - [Remove columns from results](#remove-column)
 > - [Wyświetlanie listy wszystkich nazw tagów](#list-all-tags)
 > - [Wyświetlanie maszyn wirtualnych dopasowanych przez wyrażenie regularne](#vm-regex)
-> - [Wyświetlanie listy Cosmos DB z określonymi lokalizacjami zapisu](#mvexpand-cosmosdb)
-> - [Magazyn kluczy z nazwą subskrypcji](#join)
-> - [Wyświetlanie listy baz danych SQL i ich pul elastycznych](#join-sql)
-> - [Wyświetlanie listy maszyn wirtualnych z interfejsem sieciowym i publicznym adresem IP](#join-vmpip)
-> - [Znajdowanie kont magazynu z określonym tagiem w grupie zasobów](#join-findstoragetag)
-> - [Łączenie wyników z dwóch zapytań w jeden wynik](#unionresults)
-> - [Uwzględnij nazwy dzierżawców i subskrypcji z nazwami wyświetlanymi](#displaynames)
+> - [List Cosmos DB with specific write locations](#mvexpand-cosmosdb)
+> - [Key vault with subscription name](#join)
+> - [List SQL Databases and their elastic pools](#join-sql)
+> - [List virtual machines with their network interface and public IP](#join-vmpip)
+> - [Find storage accounts with a specific tag on the resource group](#join-findstoragetag)
+> - [Combine results from two queries into a single result](#unionresults)
+> - [Include the tenant and subscription names with DisplayNames](#displaynames)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
@@ -36,9 +36,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Interfejs wiersza polecenia platformy Azure (za pośrednictwem rozszerzenia) i program Azure PowerShell (za pośrednictwem modułu) obsługują usługę Azure Resource Graph. Przed uruchomieniem dowolnego z poniższych zapytań sprawdź, czy Twoje środowisko jest gotowe. Zobacz [Interfejs wiersza polecenia platformy Azure](../first-query-azurecli.md#add-the-resource-graph-extension) i [Program Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module), gdzie znajdziesz kroki instalacji i weryfikacji wybranego środowiska powłoki.
 
-## <a name="a-nameapiversion-show-resource-types-and-api-versions"></a><a name="apiversion" />Pokaż typy zasobów i wersje interfejsu API
+## <a name="a-nameapiversion-show-resource-types-and-api-versions"></a><a name="apiversion" />Show resource types and API versions
 
-Wykres zasobów korzysta głównie z najnowszej wersji interfejsu API dostawcy zasobów, która `GET` właściwości zasobów podczas aktualizacji. W niektórych przypadkach użyta wersja interfejsu API została zastąpiona, aby zapewnić bardziej aktualne lub szeroko używane właściwości w wynikach. Następujące zapytanie zawiera szczegółowe informacje o wersji interfejsu API służącej do zbierania właściwości dla każdego typu zasobu:
+Resource Graph primarily uses the most recent non-preview version of a Resource Provider's API to `GET` resource properties during an update. In some cases, the API version used has been overridden to provide more current or widely used properties in the results. The following query details the API version used for gathering properties on each resource type:
 
 ```kusto
 Resources
@@ -61,13 +61,14 @@ Search-AzGraph -Query "Resources | distinct type, apiVersion | where isnotnull(a
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20distinct%20type%2C%20apiVersion%20%7C%20where%20isnotnull(apiVersion)%20%7C%20order%20by%20type%20asc" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20distinct%20type%2C%20apiVersion%20%7C%20where%20isnotnull(apiVersion)%20%7C%20order%20by%20type%20asc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20distinct%20type%2C%20apiVersion%20%7C%20where%20isnotnull(apiVersion)%20%7C%20order%20by%20type%20asc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namevmss-capacity-get-virtual-machine-scale-set-capacity-and-size"></a><a name="vmss-capacity" />uzyskać pojemności i rozmiaru zestawu skalowania maszyn wirtualnych
+## <a name="a-namevmss-capacity-get-virtual-machine-scale-set-capacity-and-size"></a><a name="vmss-capacity" />Get virtual machine scale set capacity and size
 
 To zapytanie szuka zasobów zestawu skalowania maszyn wirtualnych i pobiera różne szczegółowe informacje, takie jak rozmiar maszyny wirtualnej i pojemność zestawu skalowania. To zapytanie używa funkcji `toint()`, aby rzutować pojemność na liczbę, co pozwala na sortowanie. Na koniec następuje zmiana nazw kolumn na właściwości o niestandardowej nazwie.
 
@@ -93,15 +94,16 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~%20'microsoft.compute%2Fvirtualmachinescalesets'%20%7C%20where%20name%20contains%20'contoso'%20%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint(sku.capacity)%2C%20Tier%20%3D%20sku.name%20%7C%20order%20by%20Capacity%20desc" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~%20'microsoft.compute%2Fvirtualmachinescalesets'%20%7C%20where%20name%20contains%20'contoso'%20%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint(sku.capacity)%2C%20Tier%20%3D%20sku.name%20%7C%20order%20by%20Capacity%20desc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~%20'microsoft.compute%2Fvirtualmachinescalesets'%20%7C%20where%20name%20contains%20'contoso'%20%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint(sku.capacity)%2C%20Tier%20%3D%20sku.name%20%7C%20order%20by%20Capacity%20desc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameremove-column-remove-columns-from-results"></a><a name="remove-column" />usunąć kolumn z wyników
+## <a name="a-nameremove-column-remove-columns-from-results"></a><a name="remove-column" />Remove columns from results
 
-Następujące zapytanie używa `summarize` do zliczania zasobów według subskrypcji `join`, aby połączyć je z informacjami o subskrypcji z tabeli _ResourceContainers_ , a następnie `project-away` usunąć niektóre kolumny.
+The following query uses `summarize` to count resources by subscription, `join` to combine it with subscription details from _ResourceContainers_ table, then `project-away` to remove some of the columns.
 
 ```kusto
 Resources
@@ -124,13 +126,14 @@ Search-AzGraph -Query "Resources | summarize resourceCount=count() by subscripti
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20resourceCount%3Dcount()%20by%20subscriptionId%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20resourceCount%3Dcount()%20by%20subscriptionId%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20resourceCount%3Dcount()%20by%20subscriptionId%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-all-tags-list-all-tag-names"></a><a name="list-all-tags" />listy wszystkich nazw tagów
+## <a name="a-namelist-all-tags-list-all-tag-names"></a><a name="list-all-tags" />List all tag names
 
 To zapytanie rozpoczyna się od tagu i tworzy obiekt JSON zawierający listę wszystkich unikatowych nazw tagów i odpowiadających im typów.
 
@@ -154,15 +157,16 @@ Search-AzGraph -Query "Resources | project tags | summarize buildschema(tags)"
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20tags%20%7C%20summarize%20buildschema(tags)" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20tags%20%7C%20summarize%20buildschema(tags)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20tags%20%7C%20summarize%20buildschema(tags)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namevm-regex-virtual-machines-matched-by-regex"></a><a name="vm-regex" />maszyny wirtualne dopasowane przez wyrażenie regularne
+## <a name="a-namevm-regex-virtual-machines-matched-by-regex"></a><a name="vm-regex" />Virtual machines matched by regex
 
-To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularnemu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (nazywanemu _regex_). **Dopasowanie wyrażenia regularnego \@** pozwala nam definiować wyrażenie regularne, które jest `^Contoso(.*)[0-9]+$`.
+To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularnemu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (nazywanemu _regex_). The **matches regex \@** allows us to define the regex to match, which is `^Contoso(.*)[0-9]+$`.
 Definicja tego wyrażenia regularnego jest wyjaśniona jako:
 
 - `^` - Dopasowanie musi zaczynać się od początku ciągu.
@@ -197,15 +201,16 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20and%20name%20matches%20regex%20%40'%5EContoso(.*)%5B0-9%5D%2B%24'%20%7C%20project%20name%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20and%20name%20matches%20regex%20%40'%5EContoso(.*)%5B0-9%5D%2B%24'%20%7C%20project%20name%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20and%20name%20matches%20regex%20%40'%5EContoso(.*)%5B0-9%5D%2B%24'%20%7C%20project%20name%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />listy Cosmos DB z określonymi lokalizacjami zapisu
+## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />List Cosmos DB with specific write locations
 
-Następujące limity zapytania do Cosmos DB zasobów, używają `mv-expand` do rozwijania zbioru właściwości dla **właściwości. writeLocations**, a następnie pól określonych dla projektu i bardziej ograniczone wyniki do **właściwości. writeLocations. LocationName** wartości pasuje do elementu "Wschodnie stany USA" lub "zachodnie stany USA".
+The following query limits to Cosmos DB resources, uses `mv-expand` to expand the property bag for **properties.writeLocations**, then project specific fields and limit the results further to **properties.writeLocations.locationName** values matching either 'East US' or 'West US'.
 
 ```kusto
 Resources
@@ -231,15 +236,16 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.documentdb%2Fdatabaseaccounts'%20%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20(properties.writeLocations)%20%7C%20mv-expand%20writeLocations%20%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring(writeLocations.locationName)%20%7C%20where%20writeLocation%20in%20('East%20US'%2C%20'West%20US')%20%7C%20summarize%20by%20id%2C%20name" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.documentdb%2Fdatabaseaccounts'%20%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20(properties.writeLocations)%20%7C%20mv-expand%20writeLocations%20%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring(writeLocations.locationName)%20%7C%20where%20writeLocation%20in%20('East%20US'%2C%20'West%20US')%20%7C%20summarize%20by%20id%2C%20name" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.documentdb%2Fdatabaseaccounts'%20%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20(properties.writeLocations)%20%7C%20mv-expand%20writeLocations%20%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring(writeLocations.locationName)%20%7C%20where%20writeLocation%20in%20('East%20US'%2C%20'West%20US')%20%7C%20summarize%20by%20id%2C%20name" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namejoin-key-vault-with-subscription-name"></a><a name="join" />Magazyn kluczy z nazwą subskrypcji
+## <a name="a-namejoin-key-vault-with-subscription-name"></a><a name="join" />Key vault with subscription name
 
-Poniższe zapytanie pokazuje złożone użycie `join`. Zapytanie ogranicza przyłączoną tabelę do zasobów subskrypcji i z `project`, aby uwzględnić tylko oryginalny identyfikator _subskrypcji_ pola i _nazwę pola Nazwa_ zmieniona na _SubName_. Zmiana nazwy pola unika `join` dodawania go jako _Name1_ , ponieważ pole już istnieje w obszarze _zasoby_. Oryginalna tabela jest filtrowana z `where`, a poniższe `project` zawierają kolumny z obu tabel. Wynikiem zapytania jest pojedynczy magazyn kluczy zawierający typ, nazwę magazynu kluczy oraz nazwę subskrypcji, w której znajduje się.
+The following query shows a complex use of `join`. The query limits the joined table to subscriptions resources and with `project` to include only the original field _subscriptionId_ and the _name_ field renamed to _SubName_. The field rename avoids `join` adding it as _name1_ since the field already exists in _resources_. The original table is filtered with `where` and the following `project` includes columns from both tables. The query result is a single key vault displaying type, the name of the key vault, and the name of the subscription it's in.
 
 ```kusto
 Resources
@@ -263,15 +269,16 @@ Search-AzGraph -Query "Resources | join (ResourceContainers | where type=='micro
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%20%7C%20where%20type%20%3D%3D%20'microsoft.keyvault%2Fvaults'%20%7C%20project%20type%2C%20name%2C%20SubName%7C%20limit%201" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%20%7C%20where%20type%20%3D%3D%20'microsoft.keyvault%2Fvaults'%20%7C%20project%20type%2C%20name%2C%20SubName%7C%20limit%201" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%20%7C%20where%20type%20%3D%3D%20'microsoft.keyvault%2Fvaults'%20%7C%20project%20type%2C%20name%2C%20SubName%7C%20limit%201" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namejoin-sql-list-sql-databases-and-their-elastic-pools"></a><a name="join-sql" />listy baz danych SQL i ich pul elastycznych
+## <a name="a-namejoin-sql-list-sql-databases-and-their-elastic-pools"></a><a name="join-sql" />List SQL Databases and their elastic pools
 
-Następujące zapytanie używa **leftouter** `join` do łączenia SQL Database zasobów i powiązanych pul elastycznych, jeśli są one dostępne.
+The following query uses **leftouter** `join` to bring together SQL Database resources and their related elastic pools, if they have any.
 
 ```kusto
 Resources
@@ -299,15 +306,16 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Fdatabases'%20%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower(tostring(properties.elasticPoolId))%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Felasticpools'%20%7C%20project%20elasticPoolId%20%3D%20tolower(id)%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state)%20on%20elasticPoolId%20%7C%20project-away%20elasticPoolId1" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Fdatabases'%20%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower(tostring(properties.elasticPoolId))%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Felasticpools'%20%7C%20project%20elasticPoolId%20%3D%20tolower(id)%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state)%20on%20elasticPoolId%20%7C%20project-away%20elasticPoolId1" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Fdatabases'%20%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower(tostring(properties.elasticPoolId))%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Felasticpools'%20%7C%20project%20elasticPoolId%20%3D%20tolower(id)%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state)%20on%20elasticPoolId%20%7C%20project-away%20elasticPoolId1" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namejoin-vmpip-list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip" />listy maszyn wirtualnych z interfejsem sieciowym i publicznym adresem IP
+## <a name="a-namejoin-vmpip-list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip" />List virtual machines with their network interface and public IP
 
-To zapytanie używa dwóch **leftouter** `join` polecenia do łączenia maszyn wirtualnych, powiązanych z nimi interfejsów sieciowych oraz wszelkich publicznych adresów IP związanych z tymi interfejsami sieciowymi.
+This query uses two **leftouter** `join` commands to bring together virtual machines, their related network interfaces, and any public IP address related to those network interfaces.
 
 ```kusto
 Resources
@@ -348,15 +356,16 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20extend%20nics%3Darray_length(properties.networkProfile.networkInterfaces)%20%7C%20mvexpand%20nic%3Dproperties.networkProfile.networkInterfaces%20%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20'true'%20or%20isempty(nic)%20%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring(properties.hardwareProfile.vmSize)%2C%20nicId%20%3D%20tostring(nic.id)%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworkinterfaces'%20%7C%20extend%20ipConfigsCount%3Darray_length(properties.ipConfigurations)%20%7C%20mvexpand%20ipconfig%3Dproperties.ipConfigurations%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20'true'%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring(ipconfig.properties.publicIPAddress.id))%20on%20nicId%20%7C%20project-away%20nicId1%20%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fpublicipaddresses'%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress)%20on%20publicIpId%20%7C%20project-away%20publicIpId1" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20extend%20nics%3Darray_length(properties.networkProfile.networkInterfaces)%20%7C%20mvexpand%20nic%3Dproperties.networkProfile.networkInterfaces%20%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20'true'%20or%20isempty(nic)%20%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring(properties.hardwareProfile.vmSize)%2C%20nicId%20%3D%20tostring(nic.id)%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworkinterfaces'%20%7C%20extend%20ipConfigsCount%3Darray_length(properties.ipConfigurations)%20%7C%20mvexpand%20ipconfig%3Dproperties.ipConfigurations%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20'true'%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring(ipconfig.properties.publicIPAddress.id))%20on%20nicId%20%7C%20project-away%20nicId1%20%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fpublicipaddresses'%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress)%20on%20publicIpId%20%7C%20project-away%20publicIpId1" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20extend%20nics%3Darray_length(properties.networkProfile.networkInterfaces)%20%7C%20mvexpand%20nic%3Dproperties.networkProfile.networkInterfaces%20%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20'true'%20or%20isempty(nic)%20%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring(properties.hardwareProfile.vmSize)%2C%20nicId%20%3D%20tostring(nic.id)%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworkinterfaces'%20%7C%20extend%20ipConfigsCount%3Darray_length(properties.ipConfigurations)%20%7C%20mvexpand%20ipconfig%3Dproperties.ipConfigurations%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20'true'%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring(ipconfig.properties.publicIPAddress.id))%20on%20nicId%20%7C%20project-away%20nicId1%20%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fpublicipaddresses'%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress)%20on%20publicIpId%20%7C%20project-away%20publicIpId1" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namejoin-findstoragetag-find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag" />Znajdowanie kont magazynu z określonym tagiem w grupie zasobów
+## <a name="a-namejoin-findstoragetag-find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag" />Find storage accounts with a specific tag on the resource group
 
-Poniższe zapytanie używa **wewnętrznego** `join` do łączenia kont magazynu z grupami zasobów, które mają określoną nazwę tagu i wartość tagu.
+The following query uses an **inner** `join` to connect storage accounts with resource groups that have a specified tag name and tag value.
 
 ```kusto
 Resources
@@ -384,15 +393,16 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccou
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'key1'%5D%20%3D%3D%20'value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'key1'%5D%20%3D%3D%20'value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'key1'%5D%20%3D%3D%20'value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameunionresults-combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults" />połączyć wyniki z dwóch zapytań w jeden wynik
+## <a name="a-nameunionresults-combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults" />Combine results from two queries into a single result
 
-Poniższe zapytanie używa `union`, aby uzyskać wyniki z tabeli _ResourceContainers_ i dodać je do wyników z tabeli _resources_ .
+The following query uses `union` to get results from the _ResourceContainers_ table and add them to results from the _Resources_ table.
 
 ```kusto
 ResourceContainers
@@ -414,15 +424,16 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Ikona Eksploratora wykresu zasobów](../media/resource-graph-small.png) Wypróbuj to zapytanie w Eksploratorze Azure Resource Graph:
+![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
 
-- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%20%7C%20union%20%20(Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205)" target="_blank">portal.azure.com</a> ![Otwórz link w nowej ikonie okna](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%20%7C%20union%20%20(Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%20%7C%20union%20%20(Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
 
 ---
 
-## <a name="a-namedisplaynames-include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames" />zawierać nazwy dzierżawców i subskrypcji z nazwami wyświetlanymi
+## <a name="a-namedisplaynames-include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames" />Include the tenant and subscription names with DisplayNames
 
-To zapytanie używa nowego parametru **include** z opcjami _DisplayName_ , aby dodać **subscriptionDisplayName** i **tenantDisplayName** do wyników. Ten parametr jest dostępny tylko dla interfejsu wiersza polecenia platformy Azure i Azure PowerShell.
+This query uses the new **Include** parameter with option _DisplayNames_ to add **subscriptionDisplayName** and **tenantDisplayName** to the results. This parameter is only available for Azure CLI and Azure PowerShell.
 
 ```azurecli-interactive
 az graph query -q "limit 1" --include displayNames
@@ -433,11 +444,11 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 ```
 
 > [!NOTE]
-> Jeśli zapytanie nie używa **programu Project** do określenia zwracanych właściwości, **subscriptionDisplayName** i **tenantDisplayName** są automatycznie dołączane do wyników.
-> Jeśli zapytanie używa **programu Project**, każde z pól _DisplayName_ musi być jawnie dołączone do **projektu** lub nie będzie zwracane w wynikach, nawet gdy zostanie użyty parametr **include** .
+> If the query doesn't use **project** to specify the returned properties, **subscriptionDisplayName** and **tenantDisplayName** are automatically included in the results.
+> If the query does use **project**, each of the _DisplayName_ fields must be explicitly included in the **project** or they won't be returned in the results, even when the **Include** parameter is used.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz przykłady [początkowych zapytań](starter.md).
-- Dowiedz się więcej o [języku zapytań](../concepts/query-language.md).
-- Dowiedz się więcej o sposobach [eksplorowania zasobów](../concepts/explore-resources.md).
+- See samples of [Starter queries](starter.md).
+- Learn more about the [query language](../concepts/query-language.md).
+- Learn more about how to [explore resources](../concepts/explore-resources.md).

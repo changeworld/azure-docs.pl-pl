@@ -4,132 +4,132 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 1a18812c6447266d34f2c8aa1ccff8984f68570a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008824"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260825"
 ---
-Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą skalę, zwykle jest pożądane jakąś formę automatyzacji. Istnieje wiele narzędzi i rozwiązań, które umożliwiają automatyzację wdrażania całej infrastruktury platformy Azure i zarządzanie cyklem życia. W tym artykule przedstawiono niektóre z narzędzi automatyzacji infrastruktury, które można użyć na platformie Azure. Te narzędzia często mieści się w jednej z następujących metod:
+To create and manage Azure virtual machines (VMs) in a consistent manner at scale, some form of automation is typically desired. There are many tools and solutions that allow you to automate the complete Azure infrastructure deployment and management lifecycle. This article introduces some of the infrastructure automation tools that you can use in Azure. These tools commonly fit in to one of the following approaches:
 
-- Automatyzuj konfigurację maszyn wirtualnych
-    - Narzędzia obejmują [Ansible](#ansible), [Chef](#chef), i [Puppet](#puppet).
-    - Narzędzia specyficzne dla dostosowywania maszyny Wirtualnej obejmują [pakietu cloud-init](#cloud-init) maszyn wirtualnych systemu Linux, [PowerShell Desired State Configuration (DSC)](#powershell-dsc)i [niestandardowe rozszerzenie skryptu platformy Azure](#azure-custom-script-extension) dla wszystkich Maszyny wirtualne platformy Azure.
+- Automate the configuration of VMs
+    - Tools include [Ansible](#ansible), [Chef](#chef), and [Puppet](#puppet).
+    - Tools specific to VM customization include [cloud-init](#cloud-init) for Linux VMs, [PowerShell Desired State Configuration (DSC)](#powershell-dsc), and the [Azure Custom Script Extension](#azure-custom-script-extension) for all Azure VMs.
  
-- Automatyzowanie zarządzania infrastrukturą
-    - Narzędzia obejmują [Packer](#packer) zautomatyzować niestandardową maszynę Wirtualną tworzy obraz, i [Terraform](#terraform) zautomatyzować proces kompilacji infrastruktury.
-    - [Usługa Azure Automation](#azure-automation) może wykonywać akcje w infrastrukturze platformy Azure i lokalnie.
+- Automate infrastructure management
+    - Tools include [Packer](#packer) to automate custom VM image builds, and [Terraform](#terraform) to automate the infrastructure build process.
+    - [Azure Automation](#azure-automation) can perform actions across your Azure and on-premises infrastructure.
 
-- Automatyzowanie wdrażania aplikacji i dostarczanie
-    - Przykłady obejmują [usługom DevOps platformy Azure](#azure-devops-services) i [Jenkins](#jenkins).
+- Automate application deployment and delivery
+    - Examples include [Azure DevOps Services](#azure-devops-services) and [Jenkins](#jenkins).
 
 ## <a name="ansible"></a>Ansible
-[Rozwiązanie Ansible](https://www.ansible.com/) to aparat automatyzacji zarządzania konfiguracją, tworzenia maszyny Wirtualnej lub wdrażania aplikacji. Rozwiązanie Ansible używają modelu bez agenta, zazwyczaj przy użyciu kluczy SSH do uwierzytelniania i zarządzania komputerami docelowymi. Zadania konfiguracji są definiowane w elementy playbook, wprowadzając szereg modułów Ansible dostępne do wykonywania określonych zadań. Aby uzyskać więcej informacji, zobacz [działa jak Ansible](https://www.ansible.com/how-ansible-works).
+[Ansible](https://www.ansible.com/) is an automation engine for configuration management, VM creation, or application deployment. Ansible uses an agent-less model, typically with SSH keys, to authenticate and manage target machines. Configuration tasks are defined in playbooks, with a number of Ansible modules available to carry out specific tasks. For more information, see [How Ansible works](https://www.ansible.com/how-ansible-works).
 
-Instrukcje:
+Omawiane kwestie:
 
-- [Instalowanie i konfigurowanie rozwiązania Ansible w systemie Linux do użycia z usługą Azure](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Utwórz maszynę wirtualną systemu Linux](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Zarządzanie maszyną wirtualną systemu Linux](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
+- [Install and configure Ansible on Linux for use with Azure](../articles/virtual-machines/linux/ansible-install-configure.md).
+- [Create a Linux virtual machine](../articles/virtual-machines/linux/ansible-create-vm.md).
+- [Manage a Linux virtual machine](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
-[Program chef](https://www.chef.io/) to platforma do automatyzacji, który ułatwia definiują sposób konfigurowania infrastruktury, wdrażane i zarządzane. Dodatkowe składniki dołączana Chef, Habitat do automatyzacji cyklu życia aplikacji, a nie na infrastrukturze i Chef InSpec ułatwiające Automatyzowanie zgodności z zabezpieczeniami i wymagania dotyczące zasad. Program chef klienci zostali zainstalowani na komputerach docelowych, z co najmniej jeden centralny Chef serwerami, które przechowywać i zarządzać nimi konfiguracji. Aby uzyskać więcej informacji, zobacz [Przegląd Chef](https://docs.chef.io/chef_overview.html).
+[Chef](https://www.chef.io/) is an automation platform that helps define how your infrastructure is configured, deployed, and managed. Additional components included Chef Habitat for application lifecycle automation rather than the infrastructure, and Chef InSpec that helps automate compliance with security and policy requirements. Chef Clients are installed on target machines, with one or more central Chef Servers that store and manage the configurations. For more information, see [An Overview of Chef](https://docs.chef.io/chef_overview.html).
 
-Instrukcje:
+Omawiane kwestie:
 
-- [Wdrażanie programu Chef automatyzacji w portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Instalowanie programu Chef na Windows i Tworzenie maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/chef-automation.md).
+- [Deploy Chef Automate from the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
+- [Install Chef on Windows and create Azure VMs](../articles/virtual-machines/windows/chef-automation.md).
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) to platforma automatyzacji z obsługą przedsiębiorstw, która obsługuje procesu dostarczania i wdrażania aplikacji. Agenci są zainstalowani na komputerach docelowych, aby zezwolić na główny Puppet, aby uruchomić manifestów, które definiują pożądaną konfigurację infrastruktury platformy Azure i maszyn wirtualnych. Puppet można zintegrować z innymi rozwiązaniami, takimi jak Jenkins i usługi GitHub dla przepływu pracy devops ulepszone. Aby uzyskać więcej informacji, zobacz [działa jak Puppet](https://puppet.com/products/how-puppet-works).
+[Puppet](https://www.puppet.com) is an enterprise-ready automation platform that handles the application delivery and deployment process. Agents are installed on target machines to allow Puppet Master to run manifests that define the desired configuration of the Azure infrastructure and VMs. Puppet can integrate with other solutions such as Jenkins and GitHub for an improved devops workflow. For more information, see [How Puppet works](https://puppet.com/products/how-puppet-works).
 
-Instrukcje:
+Omawiane kwestie:
 
-- [Wdrażanie Puppet z witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
+- [Deploy Puppet from the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnie sformatować swoje `#cloud-config` plików, zobacz [witrynie dokumentacji pakietu cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` są to pliki tekstowe zakodowane w formacie base64.
+[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration.  For more information on how to properly format your `#cloud-config` files, see the [cloud-init documentation site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` files are text files encoded in base64.
 
 Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie używa się poleceń **apt-get install** lub **yum install** do zainstalowania pakietu. Zamiast tego możesz zdefiniować listę pakietów do zainstalowania. Pakiet cloud-init automatycznie używa natywnego narzędzia do zarządzania pakietami dla wybranej dystrybucji.
 
-Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy upewnij wdrożenia pakietu cloud-init, a konfiguracje bezproblemowej współpracy z maszyn wirtualnych i zestawów skalowania maszyn wirtualnych. Dowiedz się więcej na temat pakietu cloud-init w systemie Azure:
+We are actively working with our endorsed Linux distro partners in order to have cloud-init enabled images available in the Azure marketplace. These images make your cloud-init deployments and configurations work seamlessly with VMs and virtual machine scale sets. Learn more details about cloud-init on Azure:
 
-- [Pakiet cloud-init pomocy technicznej dla maszyn wirtualnych systemu Linux na platformie Azure](../articles/virtual-machines/linux/using-cloud-init.md)
-- [Wypróbuj samouczek dotyczący automatycznych konfiguracji maszyny Wirtualnej przy użyciu pakietu cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
+- [Cloud-init support for Linux virtual machines in Azure](../articles/virtual-machines/linux/using-cloud-init.md)
+- [Try a tutorial on automated VM configuration using cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-[Program PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) to platforma zarządzania, aby zdefiniować konfigurację komputerów docelowych. Może również służyć DSC w systemie Linux za pomocą [Open Management Infrastructure (OMI) serwera](https://collaboration.opengroup.org/omi/).
+[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) is a management platform to define the configuration of target machines. DSC can also be used on Linux through the [Open Management Infrastructure (OMI) server](https://collaboration.opengroup.org/omi/).
 
-Konfiguracje DSC definiują, co należy zainstalować na komputerze oraz sposób konfigurowania hosta. Aparat lokalnego Configuration Manager (LCM) działa w każdym węźle docelowym, która przetwarza żądane akcje na podstawie konfiguracji wypychanie. Serwer ściągania jest usługą internetową, która działa na hoście centralnej do przechowywania konfiguracji DSC i skojarzonych zasobów. Serwerze ściągania komunikuje się z aparatem LCM na każdym hoście docelowym, podaj wymagane konfiguracje i sporządzić raport na temat zgodności.
+DSC configurations define what to install on a machine and how to configure the host. A Local Configuration Manager (LCM) engine runs on each target node that processes requested actions based on pushed configurations. A pull server is a web service that runs on a central host to store the DSC configurations and associated resources. The pull server communicates with the LCM engine on each target host to provide the required configurations and report on compliance.
 
-Instrukcje:
+Omawiane kwestie:
 
-- [Tworzenie podstawowej konfiguracji DSC](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart).
-- [Konfigurowanie serwera ściągania DSC](/powershell/scripting/dsc/pull-server/pullserver).
-- [Użyj DSC dla systemu Linux](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
-
-
-## <a name="azure-custom-script-extension"></a>Rozszerzenie niestandardowego skryptu platformy Azure
-Niestandardowe rozszerzenie skryptu platformy Azure dla [Linux](../articles/virtual-machines/linux/extensions-customscript.md) lub [Windows](../articles/virtual-machines/windows/extensions-customscript.md) pobiera i wykonuje skrypty na maszynach wirtualnych platformy Azure. Podczas tworzenia maszyny Wirtualnej lub dowolnym momencie po maszyny Wirtualnej jest używany, można użyć rozszerzenia. 
-
-Skrypty można pobrać z usługi Azure storage lub w dowolnej lokalizacji publicznej, takich jak repozytorium GitHub. Za pomocą rozszerzenia niestandardowego skryptu można pisać skrypty w dowolnym języku, który jest uruchamiany na źródłowej maszynie Wirtualnej. Skrypty te można zainstalować aplikacje lub konfigurację maszyny Wirtualnej zgodnie z potrzebami. Aby zabezpieczyć poświadczenia, poufne informacje, takie jak hasła mogą być przechowywane w chronionym konfiguracji. Te poświadczenia są odszyfrowane tylko wewnątrz maszyny Wirtualnej.
-
-Instrukcje:
-
-- [Tworzenie maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure i używanie rozszerzenia niestandardowego skryptu](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Tworzenie maszyny Wirtualnej z systemem Windows przy użyciu programu Azure PowerShell i korzystanie z rozszerzenia niestandardowego skryptu](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Create a basic DSC configuration](/powershell/scripting/dsc/quickstarts/website-quickstart).
+- [Configure a DSC pull server](/powershell/scripting/dsc/pull-server/pullserver).
+- [Use DSC for Linux](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
 
 
-## <a name="packer"></a>Usługi packer
-[Narzędzia packer](https://www.packer.io) automatyzuje proces kompilacji, podczas tworzenia niestandardowego obrazu maszyny Wirtualnej na platformie Azure. Narzędzia Packer umożliwia definiowanie systemu operacyjnego i uruchamiać skrypty po konfiguracji, które Dostosowywanie maszyny Wirtualnej do konkretnych potrzeb. Po skonfigurowaniu maszyny Wirtualnej są przechwytywane jako obrazu dysku zarządzanego. Narzędzia packer automatyzuje proces tworzenia maszyny Wirtualnej, sieci i zasoby magazynu źródła, uruchamiać skrypty konfiguracji, a następnie utworzyć obraz maszyny Wirtualnej.
+## <a name="azure-custom-script-extension"></a>Azure Custom Script Extension
+The Azure Custom Script Extension for [Linux](../articles/virtual-machines/linux/extensions-customscript.md) or [Windows](../articles/virtual-machines/windows/extensions-customscript.md) downloads and executes scripts on Azure VMs. You can use the extension when you create a VM, or any time after the VM is in use. 
 
-Instrukcje:
+Scripts can be downloaded from Azure storage or any public location such as a GitHub repository. With the Custom Script Extension, you can write scripts in any language that runs on the source VM. These scripts can be used to install applications or configure the VM as desired. To secure credentials, sensitive information such as passwords can be stored in a protected configuration. These credentials are only decrypted inside the VM.
 
-- [Użyj narzędzia Packer, aby utworzyć obraz maszyny Wirtualnej systemu Linux na platformie Azure](../articles/virtual-machines/linux/build-image-with-packer.md).
-- [Użyj narzędzia Packer, aby utworzyć obraz maszyny Wirtualnej Windows na platformie Azure](../articles/virtual-machines/windows/build-image-with-packer.md).
+Omawiane kwestie:
+
+- [Create a Linux VM with the Azure CLI and use the Custom Script Extension](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
+- [Create a Windows VM with Azure PowerShell and use the Custom Script Extension](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+
+
+## <a name="packer"></a>Packer
+[Packer](https://www.packer.io) automates the build process when you create a custom VM image in Azure. You use Packer to define the OS and run post-configuration scripts that customize the VM for your specific needs. Once configured, the VM is then captured as a Managed Disk image. Packer automates the process to create the source VM, network and storage resources, run configuration scripts, and then create the VM image.
+
+Omawiane kwestie:
+
+- [Use Packer to create a Linux VM image in Azure](../articles/virtual-machines/linux/build-image-with-packer.md).
+- [Use Packer to create a Windows VM image in Azure](../articles/virtual-machines/windows/build-image-with-packer.md).
 
 
 ## <a name="terraform"></a>Terraform
-[Narzędzie Terraform](https://www.terraform.io) jest narzędzie automatyzacji, która pozwala definiować i tworzyć całej infrastruktury platformy Azure za pomocą jednego szablonu języka format - języka konfiguracji HashiCorp (HCL). Za pomocą programu Terraform należy zdefiniować szablonów, które automatyzują proces tworzenia sieci, magazynu i zasoby maszyny Wirtualnej dla rozwiązania danej aplikacji. Istniejące szablony programu Terraform dla innych platform za pomocą platformy Azure służy do zapewnienia spójności i uproszczenie wdrażania infrastruktury bez konieczności przekonwertować szablon usługi Azure Resource Manager.
+[Terraform](https://www.terraform.io) is an automation tool that allows you to define and create an entire Azure infrastructure with a single template format language - the HashiCorp Configuration Language (HCL). With Terraform, you define templates that automate the process to create network, storage, and VM resources for a given application solution. You can use your existing Terraform templates for other platforms with Azure to ensure consistency and simplify the infrastructure deployment without needing to convert to an Azure Resource Manager template.
 
-Instrukcje:
+Omawiane kwestie:
 
-- [Instalowanie i konfigurowanie programu Terraform z platformą Azure](../articles/virtual-machines/linux/terraform-install-configure.md).
-- [Tworzenie infrastruktury platformy Azure przy użyciu programu Terraform](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
+- [Install and configure Terraform with Azure](../articles/virtual-machines/linux/terraform-install-configure.md).
+- [Create an Azure infrastructure with Terraform](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
 
 
 ## <a name="azure-automation"></a>Azure Automation
-[Usługa Azure Automation](https://azure.microsoft.com/services/automation/) używa elementów runbook do przetwarzania zestawu zadań na docelowych maszynach wirtualnych. Usługa Azure Automation służy do zarządzania istniejących maszyn wirtualnych, a nie do utworzenia infrastruktury. Usługa Azure Automation można uruchamiać zarówno systemu Linux i Windows maszyn wirtualnych, jak i lokalnych maszyn wirtualnych lub fizycznych przy użyciu hybrydowego procesu roboczego elementu runbook. Elementy Runbook mogą być przechowywane w repozytorium kontroli źródła, takich jak GitHub. Te elementy runbook, następnie można uruchomić ręcznie lub zgodnie ze zdefiniowanym harmonogramem.
+[Azure Automation](https://azure.microsoft.com/services/automation/) uses runbooks to process a set of tasks on the VMs you target. Azure Automation is used to manage existing VMs rather than to create an infrastructure. Azure Automation can run across both Linux and Windows VMs, as well as on-premises virtual or physical machines with a hybrid runbook worker. Runbooks can be stored in a source control repository, such as GitHub. These runbooks can then run manually or on a defined schedule.
 
-Usługa Azure Automation zapewnia również usługi Desired State Configuration (DSC), który służy do tworzenia definicji dla konfiguracji określonego zestawu maszyn wirtualnych. DSC temu następnie wymagana konfiguracja zostanie zastosowana, a maszyna wirtualna pozostaje zgodny. Usługa Azure Automation DSC jest uruchamiany na komputerach z systemami Windows i Linux.
+Azure Automation also provides a Desired State Configuration (DSC) service that allows you to create definitions for how a given set of VMs should be configured. DSC then ensures that the required configuration is applied and the VM stays consistent. Azure Automation DSC runs on both Windows and Linux machines.
 
-Instrukcje:
+Omawiane kwestie:
 
-- [Tworzenie elementu runbook programu PowerShell](../articles/automation/automation-first-runbook-textual-powershell.md).
-- [Zarządzanie zasobami w środowisku lokalnym przy użyciu hybrydowego procesu roboczego Runbook](../articles/automation/automation-hybrid-runbook-worker.md).
-- [Używanie usługi Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
+- [Create a PowerShell runbook](../articles/automation/automation-first-runbook-textual-powershell.md).
+- [Use Hybrid Runbook Worker to manage on-premises resources](../articles/automation/automation-hybrid-runbook-worker.md).
+- [Use Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
 
 
-## <a name="azure-devops-services"></a>Usługa Azure DevOps Services
-[Usługi Azure DevOps](https://www.visualstudio.com/team-services/) to zestaw narzędzi ułatwiających udziału i ścieżki kodu, użyj zautomatyzowane kompilacje i Utwórz pełną ciągłej integracji i potoku tworzenia aplikacji (CI/CD). Usługi Azure DevOps integruje się z programu Visual Studio i innych edytorów, aby uprościć użycia. Usługom DevOps platformy Azure można również utworzyć i skonfigurować maszyny wirtualne platformy Azure i następnie wdrażania kodu do nich.
+## <a name="azure-devops-services"></a>Azure DevOps Services
+[Azure DevOps Services](https://www.visualstudio.com/team-services/) is a suite of tools that help you share and track code, use automated builds, and create a complete continuous integration and development (CI/CD) pipeline. Azure DevOps Services integrates with Visual Studio and other editors to simplify usage. Azure DevOps Services can also create and configure Azure VMs and then deploy code to them.
 
 Dowiedz się więcej o usługach:
 
-- [Usługi Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins
-[Jenkins](https://www.jenkins.io) to serwer ciągłej integracji, która ułatwia wdrażanie i testowanie aplikacji oraz tworzyć zautomatyzowane potoki dostarczania kodu. Istnieją setki wtyczek rozszerzenie podstawowej platformy serwera Jenkins, a można również zintegrować z wielu innych produktów i rozwiązań za pośrednictwem elementów webhook. Możesz ręcznie zainstaluj usługę Jenkins na Maszynie wirtualnej platformy Azure, uruchamiać narzędzia Jenkins z poziomu usługi kontenera platformy Docker lub użyć wstępnie utworzonego obrazu portalu Azure Marketplace.
+[Jenkins](https://www.jenkins.io) is a continuous integration server that helps deploy and test applications, and create automated pipelines for code delivery. There are hundreds of plugins to extend the core Jenkins platform, and you can also integrate with many other products and solutions through webhooks. You can manually install Jenkins on an Azure VM, run Jenkins from within a Docker container, or use a pre-built Azure Marketplace image.
 
-Instrukcje:
+Omawiane kwestie:
 
-- [Tworzenie infrastruktury tworzenia aplikacji na Maszynę wirtualną systemu Linux na platformie Azure przy użyciu narzędzia Jenkins, GitHub i Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
+- [Create a development infrastructure on a Linux VM in Azure with Jenkins, GitHub, and Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
 
 
 ## <a name="next-steps"></a>Następne kroki
-Istnieje wiele różnych opcji na korzystanie z narzędzi automatyzacji infrastruktury na platformie Azure. Masz swobodę, aby skorzystać z rozwiązania, która najlepiej pasuje do potrzeb i środowiska. Aby rozpocząć pracę i wypróbować niektóre z narzędzi, które są wbudowane w platformę Azure, zobacz, jak zautomatyzować dostosowywania [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) lub [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) maszyny Wirtualnej.
+There are many different options to use infrastructure automation tools in Azure. You have the freedom to use the solution that best fits your needs and environment. To get started and try some of the tools built-in to Azure, see how to automate the customization of a [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) or [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) VM.

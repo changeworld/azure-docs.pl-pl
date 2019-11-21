@@ -1,42 +1,33 @@
 ---
-title: Powiązania usługi Azure Functions sygnalizującego
-description: Dowiedz się, jak używać powiązań usługi sygnałów z Azure Functions.
-services: functions
-documentationcenter: na
+title: Azure Functions SignalR Service bindings
+description: Understand how to use SignalR Service bindings with Azure Functions.
 author: craigshoemaker
-manager: gwallace
-editor: ''
-tags: ''
-keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
-ms.service: azure-functions
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 82bbd728bfd51595f0b6eacf344bc95ea5db1ea8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086159"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231022"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
-W tym artykule wyjaśniono, jak uwierzytelniać i wysyłać komunikaty w czasie rzeczywistym do klientów podłączonych do [usługi Azure Signal Service](https://azure.microsoft.com/services/signalr-service/) przy użyciu powiązań usługi sygnałów w Azure Functions. Azure Functions obsługuje powiązania wejściowe i wyjściowe dla usługi sygnalizującej.
+This article explains how to authenticate and send real-time messages to clients connected to [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) by using SignalR Service bindings in Azure Functions. Azure Functions supports input and output bindings for SignalR Service.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+## <a name="packages---functions-2x"></a>Packages - Functions 2.x
 
-Powiązania usługi sygnalizującego są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) w wersji 1. *. Kod źródłowy pakietu znajduje się w repozytorium [Azure-Functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub.
+The SignalR Service bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet package, version 1.*. Source code for the package is in the [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub repository.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
 
-### <a name="java-annotations"></a>Adnotacje języka Java
+### <a name="java-annotations"></a>Java annotations
 
-Aby użyć adnotacji usługi sygnalizującej w funkcjach języka Java, należy dodać zależność do artefaktu *platformy Azure-Functions-Java-library* (wersja 1,0 lub nowsza) do pliku pliku pom. XML.
+To use the SignalR Service annotations in Java functions, you need to add a dependency to the *azure-functions-java-library-signalr* artifact (version 1.0 or higher) to your pom.xml.
 
 ```xml
 <dependency>
@@ -47,27 +38,27 @@ Aby użyć adnotacji usługi sygnalizującej w funkcjach języka Java, należy d
 ```
 
 > [!NOTE]
-> Aby użyć powiązań usługi sygnalizującego w języku Java, upewnij się, że używasz wersji 2.4.419 lub nowszej Azure Functions Core Tools (wersja hosta 2.0.12332).
+> To use the SignalR Service bindings in Java, make sure you are using version 2.4.419 or higher of the Azure Functions Core Tools (host version 2.0.12332).
 
-## <a name="using-signalr-service-with-azure-functions"></a>Korzystanie z usługi sygnalizującej z Azure Functions
+## <a name="using-signalr-service-with-azure-functions"></a>Using SignalR Service with Azure Functions
 
-Aby uzyskać szczegółowe informacje na temat konfigurowania i używania usługi sygnalizującego oraz Azure Functions ze sobą, zobacz [Azure Functions programowanie i Konfigurowanie za pomocą usługi Azure Signal Service](../azure-signalr/signalr-concept-serverless-development-config.md).
+For details on how to configure and use SignalR Service and Azure Functions together, refer to [Azure Functions development and configuration with Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md).
 
-## <a name="signalr-connection-info-input-binding"></a>Powiązanie danych wejściowych informacji o połączeniu sygnalizującym
+## <a name="signalr-connection-info-input-binding"></a>SignalR connection info input binding
 
-Aby klient mógł nawiązać połączenie z usługą Azure Signal, musi pobrać adres URL punktu końcowego usługi i prawidłowy token dostępu. Powiązanie danych wejściowych *SignalRConnectionInfo* generuje adres URL punktu końcowego usługi sygnalizującego oraz prawidłowy token, który jest używany do nawiązywania połączenia z usługą. Ponieważ token jest ograniczony do czasu i może służyć do uwierzytelniania określonego użytkownika w połączeniu, nie należy buforować tokenu ani udostępniać go między klientami. Wyzwalacz HTTP korzystający z tego powiązania może być używany przez klientów do pobierania informacji o połączeniu.
+Before a client can connect to Azure SignalR Service, it must retrieve the service endpoint URL and a valid access token. The *SignalRConnectionInfo* input binding produces the SignalR Service endpoint URL and a valid token that are used to connect to the service. Because the token is time-limited and can be used to authenticate a specific user to a connection, you should not cache the token or share it between clients. An HTTP trigger using this binding can be used by clients to retrieve the connection information.
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [2.xC#](#2x-c-input-examples)
-* [2. x JavaScript](#2x-javascript-input-examples)
-* [2. x Java](#2x-java-input-examples)
+* [2.x C#](#2x-c-input-examples)
+* [2.x JavaScript](#2x-javascript-input-examples)
+* [2.x Java](#2x-java-input-examples)
 
-Aby uzyskać więcej informacji na temat tego powiązania do tworzenia funkcji "Negotiate", która może być używana przez zestaw SDK klienta sygnalizującego, zapoznaj się z [artykułem opracowywanie i konfigurowanie Azure Functions](../azure-signalr/signalr-concept-serverless-development-config.md) w dokumentacji dotyczącej pojęć dotyczących usługi sygnalizującej.
+For more information on how this binding is used to create a "negotiate" function that can be consumed by a SignalR client SDK, see the [Azure Functions development and configuration article](../azure-signalr/signalr-concept-serverless-development-config.md) in the SignalR Service concepts documentation.
 
-### <a name="2x-c-input-examples"></a>Przykładowe dane wejściowe C# 2. x
+### <a name="2x-c-input-examples"></a>2.x C# input examples
 
-W poniższym przykładzie pokazano [ C# funkcję](functions-dotnet-class-library.md) , która uzyskuje informacje o połączeniu sygnalizujące przy użyciu powiązania wejściowego i zwraca je za pośrednictwem protokołu HTTP.
+The following example shows a [C# function](functions-dotnet-class-library.md) that acquires SignalR connection information using the input binding and returns it over HTTP.
 
 ```cs
 [FunctionName("negotiate")]
@@ -79,11 +70,11 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Tokeny uwierzytelnione
+#### <a name="authenticated-tokens"></a>Authenticated tokens
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, można dodać do wygenerowanego tokenu identyfikator użytkownika. Uwierzytelnianie w aplikacji funkcji można łatwo dodać przy użyciu [uwierzytelniania App Service](../app-service/overview-authentication-authorization.md).
+If the function is triggered by an authenticated client, you can add a user ID claim to the generated token. You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
 
-App Service Authentication ustawia nagłówki HTTP o `x-ms-client-principal-id` nazwach i `x-ms-client-principal-name` , które zawierają odpowiednio Identyfikator podmiotu zabezpieczeń klienta uwierzytelnionego i nazwę. Można ustawić `UserId` właściwość powiązania na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub. `{headers.x-ms-client-principal-name}` 
+App Service Authentication sets HTTP headers named `x-ms-client-principal-id` and `x-ms-client-principal-name` that contain the authenticated user's client principal ID and name, respectively. You can set the `UserId` property of the binding to the value from either header using a [binding expression](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` or `{headers.x-ms-client-principal-name}`. 
 
 ```cs
 [FunctionName("negotiate")]
@@ -98,13 +89,13 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-### <a name="2x-javascript-input-examples"></a>Przykłady danych wejściowych JavaScript 2. x
+### <a name="2x-javascript-input-examples"></a>2.x JavaScript input examples
 
-Poniższy przykład przedstawia powiązanie danych wejściowych informacji o połączeniu sygnalizującego w pliku *Function. JSON* i [funkcji języka JavaScript](functions-reference-node.md) , która używa powiązania do zwrócenia informacji o połączeniu.
+The following example shows a SignalR connection info input binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding to return the connection information.
 
-Tutaj podano dane powiązań w pliku *Function. JSON* :
+Here's binding data in the *function.json* file:
 
-Przykład Function. JSON:
+Example function.json:
 
 ```json
 {
@@ -116,7 +107,7 @@ Przykład Function. JSON:
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Here's the JavaScript code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -124,13 +115,13 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-#### <a name="authenticated-tokens"></a>Tokeny uwierzytelnione
+#### <a name="authenticated-tokens"></a>Authenticated tokens
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, można dodać do wygenerowanego tokenu identyfikator użytkownika. Uwierzytelnianie w aplikacji funkcji można łatwo dodać przy użyciu [uwierzytelniania App Service](../app-service/overview-authentication-authorization.md).
+If the function is triggered by an authenticated client, you can add a user ID claim to the generated token. You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
 
-App Service Authentication ustawia nagłówki HTTP o `x-ms-client-principal-id` nazwach i `x-ms-client-principal-name` , które zawierają odpowiednio Identyfikator podmiotu zabezpieczeń klienta uwierzytelnionego i nazwę. Można ustawić `userId` właściwość powiązania na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub. `{headers.x-ms-client-principal-name}` 
+App Service Authentication sets HTTP headers named `x-ms-client-principal-id` and `x-ms-client-principal-name` that contain the authenticated user's client principal ID and name, respectively. You can set the `userId` property of the binding to the value from either header using a [binding expression](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` or `{headers.x-ms-client-principal-name}`. 
 
-Przykład Function. JSON:
+Example function.json:
 
 ```json
 {
@@ -143,7 +134,7 @@ Przykład Function. JSON:
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Here's the JavaScript code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -153,9 +144,9 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-### <a name="2x-java-input-examples"></a>2. x przykłady danych wejściowych Java
+### <a name="2x-java-input-examples"></a>2.x Java input examples
 
-Poniższy przykład pokazuje [funkcję języka Java](functions-reference-java.md) , która uzyskuje informacje o połączeniu sygnalizujące przy użyciu powiązania wejściowego i zwraca je za pośrednictwem protokołu HTTP.
+The following example shows a [Java function](functions-reference-java.md) that acquires SignalR connection information using the input binding and returns it over HTTP.
 
 ```java
 @FunctionName("negotiate")
@@ -171,11 +162,11 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Tokeny uwierzytelnione
+#### <a name="authenticated-tokens"></a>Authenticated tokens
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, można dodać do wygenerowanego tokenu identyfikator użytkownika. Uwierzytelnianie w aplikacji funkcji można łatwo dodać przy użyciu [uwierzytelniania App Service](../app-service/overview-authentication-authorization.md).
+If the function is triggered by an authenticated client, you can add a user ID claim to the generated token. You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
 
-App Service Authentication ustawia nagłówki HTTP o `x-ms-client-principal-id` nazwach i `x-ms-client-principal-name` , które zawierają odpowiednio Identyfikator podmiotu zabezpieczeń klienta uwierzytelnionego i nazwę. Można ustawić `UserId` właściwość powiązania na wartość z dowolnego nagłówka przy użyciu [wyrażenia powiązania](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub. `{headers.x-ms-client-principal-name}`
+App Service Authentication sets HTTP headers named `x-ms-client-principal-id` and `x-ms-client-principal-name` that contain the authenticated user's client principal ID and name, respectively. You can set the `UserId` property of the binding to the value from either header using a [binding expression](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` or `{headers.x-ms-client-principal-name}`.
 
 ```java
 @FunctionName("negotiate")
@@ -192,23 +183,23 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-## <a name="signalr-output-binding"></a>Powiązanie danych wyjściowych sygnalizującego
+## <a name="signalr-output-binding"></a>SignalR output binding
 
-Użyj powiązania danych wyjściowych sygnalizującego, aby wysłać co najmniej jeden komunikat przy użyciu usługi Azure Signal Service. Komunikat można emitować do wszystkich połączonych klientów lub można go emitować tylko do podłączonych klientów, którzy zostali uwierzytelnieni do danego użytkownika.
+Use the *SignalR* output binding to send one or more messages using Azure SignalR Service. You can broadcast a message to all connected clients, or you can broadcast it only to connected clients that have been authenticated to a given user.
 
-Można go również użyć do zarządzania grupami, do których należy użytkownik.
+You can also use it to manage the groups that a user belongs to.
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [2.xC#](#2x-c-send-message-output-examples)
-* [2. x JavaScript](#2x-javascript-send-message-output-examples)
-* [2. x Java](#2x-java-send-message-output-examples)
+* [2.x C#](#2x-c-send-message-output-examples)
+* [2.x JavaScript](#2x-javascript-send-message-output-examples)
+* [2.x Java](#2x-java-send-message-output-examples)
 
-### <a name="2x-c-send-message-output-examples"></a>2. x C# Wyślij przykładowe dane wyjściowe komunikatu
+### <a name="2x-c-send-message-output-examples"></a>2.x C# send message output examples
 
-#### <a name="broadcast-to-all-clients"></a>Emituj do wszystkich klientów
+#### <a name="broadcast-to-all-clients"></a>Broadcast to all clients
 
-Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która wysyła komunikat przy użyciu powiązania danych wyjściowych do wszystkich połączonych klientów. `Target` Jest nazwą metody, która ma być wywoływana na każdym kliencie. `Arguments` Właściwość jest tablicą zero lub więcej obiektów do przesłania do metody klienta.
+The following example shows a [C# function](functions-dotnet-class-library.md) that sends a message using the output binding to all connected clients. The `Target` is the name of the method to be invoked on each client. The `Arguments` property is an array of zero or more objects to be passed to the client method.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -225,9 +216,9 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Wyślij do użytkownika
+#### <a name="send-to-a-user"></a>Send to a user
 
-Komunikat można wysłać tylko do połączeń, które zostały uwierzytelnione do użytkownika, ustawiając `UserId` Właściwość komunikatu sygnalizującego.
+You can send a message only to connections that have been authenticated to a user by setting the `UserId` property of the SignalR message.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -246,9 +237,9 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Wyślij do grupy
+#### <a name="send-to-a-group"></a>Send to a group
 
-Komunikat można wysłać tylko do połączeń, które zostały dodane do grupy przez ustawienie `GroupName` właściwości komunikatu sygnalizującego.
+You can send a message only to connections that have been added to a group by setting the `GroupName` property of the SignalR message.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -267,13 +258,13 @@ public static Task SendMessage(
 }
 ```
 
-### <a name="2x-c-group-management-output-examples"></a>2. x C# przykłady danych wyjściowych zarządzania grupami
+### <a name="2x-c-group-management-output-examples"></a>2.x C# group management output examples
 
-Usługa sygnalizująca pozwala dodawać użytkowników do grup. Komunikaty można następnie wysyłać do grupy. Można użyć `SignalRGroupAction` klasy `SignalR` z powiązaniem danych wyjściowych do zarządzania członkostwem w grupie użytkownika.
+SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalRGroupAction` class with the `SignalR` output binding to manage a user's group membership.
 
-#### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+#### <a name="add-user-to-a-group"></a>Add user to a group
 
-Poniższy przykład dodaje użytkownika do grupy.
+The following example adds a user to a group.
 
 ```csharp
 [FunctionName("addToGroup")]
@@ -294,9 +285,9 @@ public static Task AddToGroup(
 }
 ```
 
-#### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+#### <a name="remove-user-from-a-group"></a>Remove user from a group
 
-Poniższy przykład usuwa użytkownika z grupy.
+The following example removes a user from a group.
 
 ```csharp
 [FunctionName("removeFromGroup")]
@@ -318,17 +309,17 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> Aby można było `ClaimsPrincipal` poprawnie uzyskać powiązane powiązania, należy skonfigurować ustawienia uwierzytelniania w Azure Functions.
+> In order to get the `ClaimsPrincipal` correctly bound, you must have configured the authentication settings in Azure Functions.
 
-### <a name="2x-javascript-send-message-output-examples"></a>Przykłady danych wyjściowych wysyłania komunikatów w języku JavaScript 2. x
+### <a name="2x-javascript-send-message-output-examples"></a>2.x JavaScript send message output examples
 
-#### <a name="broadcast-to-all-clients"></a>Emituj do wszystkich klientów
+#### <a name="broadcast-to-all-clients"></a>Broadcast to all clients
 
-W poniższym przykładzie przedstawiono powiązanie danych wyjściowych sygnalizujące w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania do wysyłania wiadomości za pomocą usługi Azure Signal Service. Ustaw powiązanie danych wyjściowych z tablicą co najmniej jednego komunikatu sygnalizującego. Komunikat sygnalizujący składa się z `target` właściwości, która określa nazwę metody do wywołania na każdym kliencie `arguments` i właściwość, która jest tablicą obiektów do przekazania do metody klienta jako argumenty.
+The following example shows a SignalR output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding to send a message with Azure SignalR Service. Set the output binding to an array of one or more SignalR messages. A SignalR message consists of a `target` property that specifies the name of the method to invoke on each client, and an `arguments` property that is an array of objects to pass to the client method as arguments.
 
-Tutaj podano dane powiązań w pliku *Function. JSON* :
+Here's binding data in the *function.json* file:
 
-Przykład Function. JSON:
+Example function.json:
 
 ```json
 {
@@ -340,7 +331,7 @@ Przykład Function. JSON:
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Here's the JavaScript code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -351,11 +342,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="send-to-a-user"></a>Wyślij do użytkownika
+#### <a name="send-to-a-user"></a>Send to a user
 
-Komunikat można wysłać tylko do połączeń, które zostały uwierzytelnione do użytkownika, ustawiając `userId` Właściwość komunikatu sygnalizującego.
+You can send a message only to connections that have been authenticated to a user by setting the `userId` property of the SignalR message.
 
-*Funkcja. JSON* pozostaje taka sama. Poniżej przedstawiono kod JavaScript:
+*function.json* stays the same. Here's the JavaScript code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -368,11 +359,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="send-to-a-group"></a>Wyślij do grupy
+#### <a name="send-to-a-group"></a>Send to a group
 
-Komunikat można wysłać tylko do połączeń, które zostały dodane do grupy przez ustawienie `groupName` właściwości komunikatu sygnalizującego.
+You can send a message only to connections that have been added to a group by setting the `groupName` property of the SignalR message.
 
-*Funkcja. JSON* pozostaje taka sama. Poniżej przedstawiono kod JavaScript:
+*function.json* stays the same. Here's the JavaScript code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -385,15 +376,15 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-javascript-group-management-output-examples"></a>2. x przykładowe dane wyjściowe zarządzania grupami JavaScript
+### <a name="2x-javascript-group-management-output-examples"></a>2.x JavaScript group management output examples
 
-Usługa sygnalizująca pozwala dodawać użytkowników do grup. Komunikaty można następnie wysyłać do grupy. Możesz użyć `SignalR` powiązania danych wyjściowych do zarządzania członkostwem w grupie użytkownika.
+SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalR` output binding to manage a user's group membership.
 
-#### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+#### <a name="add-user-to-a-group"></a>Add user to a group
 
-Poniższy przykład dodaje użytkownika do grupy.
+The following example adds a user to a group.
 
-*Function. JSON*
+*function.json*
 
 ```json
 {
@@ -424,7 +415,7 @@ Poniższy przykład dodaje użytkownika do grupy.
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -436,11 +427,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+#### <a name="remove-user-from-a-group"></a>Remove user from a group
 
-Poniższy przykład usuwa użytkownika z grupy.
+The following example removes a user from a group.
 
-*Function. JSON*
+*function.json*
 
 ```json
 {
@@ -471,7 +462,7 @@ Poniższy przykład usuwa użytkownika z grupy.
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -483,11 +474,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-java-send-message-output-examples"></a>2. x dane wyjściowe wysyłania komunikatu Java
+### <a name="2x-java-send-message-output-examples"></a>2.x Java send message output examples
 
-#### <a name="broadcast-to-all-clients"></a>Emituj do wszystkich klientów
+#### <a name="broadcast-to-all-clients"></a>Broadcast to all clients
 
-Poniższy przykład pokazuje [funkcję języka Java](functions-reference-java.md) , która wysyła komunikat przy użyciu powiązania danych wyjściowych ze wszystkimi połączonymi klientami. `target` Jest nazwą metody, która ma być wywoływana na każdym kliencie. `arguments` Właściwość jest tablicą zero lub więcej obiektów do przesłania do metody klienta.
+The following example shows a [Java function](functions-reference-java.md) that sends a message using the output binding to all connected clients. The `target` is the name of the method to be invoked on each client. The `arguments` property is an array of zero or more objects to be passed to the client method.
 
 ```java
 @FunctionName("sendMessage")
@@ -505,9 +496,9 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Wyślij do użytkownika
+#### <a name="send-to-a-user"></a>Send to a user
 
-Komunikat można wysłać tylko do połączeń, które zostały uwierzytelnione do użytkownika, ustawiając `userId` Właściwość komunikatu sygnalizującego.
+You can send a message only to connections that have been authenticated to a user by setting the `userId` property of the SignalR message.
 
 ```java
 @FunctionName("sendMessage")
@@ -526,9 +517,9 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Wyślij do grupy
+#### <a name="send-to-a-group"></a>Send to a group
 
-Komunikat można wysłać tylko do połączeń, które zostały dodane do grupy przez ustawienie `groupName` właściwości komunikatu sygnalizującego.
+You can send a message only to connections that have been added to a group by setting the `groupName` property of the SignalR message.
 
 ```java
 @FunctionName("sendMessage")
@@ -547,13 +538,13 @@ public SignalRMessage sendMessage(
 }
 ```
 
-### <a name="2x-java-group-management-output-examples"></a>2. x przykłady danych wyjściowych zarządzania grupami Java
+### <a name="2x-java-group-management-output-examples"></a>2.x Java group management output examples
 
-Usługa sygnalizująca pozwala dodawać użytkowników do grup. Komunikaty można następnie wysyłać do grupy. Można użyć `SignalRGroupAction` klasy `SignalROutput` z powiązaniem danych wyjściowych do zarządzania członkostwem w grupie użytkownika.
+SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalRGroupAction` class with the `SignalROutput` output binding to manage a user's group membership.
 
-#### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+#### <a name="add-user-to-a-group"></a>Add user to a group
 
-Poniższy przykład dodaje użytkownika do grupy.
+The following example adds a user to a group.
 
 ```java
 @FunctionName("addToGroup")
@@ -573,9 +564,9 @@ public SignalRGroupAction addToGroup(
 }
 ```
 
-#### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+#### <a name="remove-user-from-a-group"></a>Remove user from a group
 
-Poniższy przykład usuwa użytkownika z grupy.
+The following example removes a user from a group.
 
 ```java
 @FunctionName("removeFromGroup")
@@ -599,35 +590,35 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `SignalRConnectionInfo` atrybutu.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `SignalRConnectionInfo` attribute.
 
-|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**type**|| Musi być równa `signalRConnectionInfo`.|
-|**direction**|| Musi być równa `in`.|
-|**name**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
-|**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
-|**userId**|**UserId**| Opcjonalnie: Wartość żądania identyfikatora użytkownika do ustawienia w tokenie klucza dostępu. |
-|**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
+|**type**|| Must be set to `signalRConnectionInfo`.|
+|**direction**|| Must be set to `in`.|
+|**name**|| Variable name used in function code for connection info object. |
+|**hubName**|**HubName**| This value must be set to the name of the SignalR hub for which the connection information is generated.|
+|**userId**|**UserId**| Optional: The value of the user identifier claim to be set in the access key token. |
+|**connectionStringSetting**|**ConnectionStringSetting**| The name of the app setting that contains the SignalR Service connection string (defaults to "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `SignalR` atrybutu.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `SignalR` attribute.
 
-|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**type**|| Musi być równa `signalR`.|
-|**direction**|| Musi być równa `out`.|
-|**name**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
-|**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
-|**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
+|**type**|| Must be set to `signalR`.|
+|**direction**|| Must be set to `out`.|
+|**name**|| Variable name used in function code for connection info object. |
+|**hubName**|**HubName**| This value must be set to the name of the SignalR hub for which the connection information is generated.|
+|**connectionStringSetting**|**ConnectionStringSetting**| The name of the app setting that contains the SignalR Service connection string (defaults to "AzureSignalRConnectionString") |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Programowanie i konfigurowanie w usłudze Azure Functions za pomocą usługi Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)

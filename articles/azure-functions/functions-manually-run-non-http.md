@@ -1,20 +1,16 @@
 ---
 title: Ręczne uruchamianie usługi Azure Functions niewyzwalanej przez protokół HTTP
 description: Uruchamianie usługi Azure Functions niewyzwalanej przez protokół HTTP za pomocą żądania HTTP
-services: functions
-keywords: ''
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479826"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230472"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ręczne uruchamianie funkcji niewyzwalanej przez protokół HTTP
 
@@ -30,9 +26,9 @@ Aby uruchomić funkcję niewyzwalaną przez protokół HTTP, potrzebujesz sposob
 
 ![Definiowanie lokalizacji żądania: nazwa hosta + ścieżka folderu + nazwa funkcji](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Nazwa hosta:** Lokalizacja publiczna aplikacji funkcji składająca się z nazwy aplikacji funkcji i domeny *azurewebsites.net* lub Twojej domeny niestandardowej.
-- **Ścieżka folderu:** Aby za pomocą żądania HTTP uzyskać dostęp do funkcji niewyzwalanych przez protokół HTTP, musisz wysłać żądanie za pośrednictwem folderów *admin/functions*.
-- **Nazwa funkcji:** Nazwa funkcji, którą chcesz uruchomić.
+- **Host name:** The function app's public location that is made up from the function app's name plus *azurewebsites.net* or your custom domain.
+- **Folder path:** To access non HTTP-triggered functions via an HTTP request, you have to send the request through the folders *admin/functions*.
+- **Function name:** The name of the function you want to run.
 
 Ta lokalizacja żądania w narzędziu Postman wraz z kluczem głównym funkcji w żądaniu do platformy Azure służą do uruchamiania funkcji.
 
@@ -45,7 +41,7 @@ Przejdź do funkcji w witrynie Azure Portal, kliknij pozycję **Zarządzaj** i z
 
 ![Kopiowanie klucza głównego z ekranu Zarządzanie funkcjami](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Po skopiowaniu klucza głównego kliknij nazwę funkcji, aby wrócić do okna pliku kodu. Następnie kliknij kartę **Dzienniki**. Zostaną wyświetlone komunikaty z funkcji rejestrowane w tym miejscu po ręcznym uruchomieniu funkcji z narzędzia Postman.
+Po skopiowaniu klucza głównego kliknij nazwę funkcji, aby wrócić do okna pliku kodu. Next, click on the **Logs** tab. You'll see messages from the function logged here when you manually run the function from Postman.
 
 > [!CAUTION]  
 > Ze względu na podwyższony poziom uprawnień w aplikacji funkcji przyznany przez klucz główny nie należy udostępniać tego klucza osobom trzecim ani rozpowszechniać go w aplikacji.
@@ -77,7 +73,7 @@ Następnie wróć do swojej funkcji w witrynie Azure Portal. Znajdź okno *Dzien
 
 ![Wyniki dziennika funkcji z ręcznego wywołania](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Strategie testowania kodu w usłudze Azure Functions](./functions-test-a-function.md)
 - [Debugowanie lokalnego wyzwalacza siatki zdarzeń funkcji platformy Azure](./functions-debug-event-grid-trigger-local.md)

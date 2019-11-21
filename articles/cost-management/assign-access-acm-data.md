@@ -1,185 +1,185 @@
 ---
-title: Przypisywanie dostępu do danych Azure Cost Management
-description: W tym artykule omówiono przypisanie uprawnień do Azure Cost Management danych dla różnych zakresów dostępu.
+title: Assign access to Azure Cost Management data
+description: This article walks you though assigning permission to Azure Cost Management data for various access scopes.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 10/14/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e3140ee990127db6815828314103a09dff7cf26e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375124"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219846"
 ---
-# <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych Cost Management
+# <a name="assign-access-to-cost-management-data"></a>Assign access to Cost Management data
 
-W przypadku użytkowników korzystających z umów Enterprise Agreement w ramach usługi Azure Portal i portalu Enterprise (EA) można zdefiniować poziom dostępu do Azure Cost Management danych. W przypadku użytkowników z innymi typami kont platformy Azure Definiowanie poziomu dostępu do danych Cost Management jest prostsze przy użyciu kontroli dostępu opartej na rolach na platformie Azure. W tym artykule przedstawiono sposób przypisywania dostępu do danych Cost Management. Po przypisaniu uprawnień użytkownik przegląda dane w Cost Management na podstawie zakresu, do którego mają dostęp, i w zakresie wybranych w Azure Portal.
+For users with Azure Enterprise agreements, a combination of permissions granted in the Azure portal and the Enterprise (EA) portal define a user's level of access to Azure Cost Management data. For users with other Azure account types, defining a user's level of access to Cost Management data is simpler by using Azure role-based access control. This article walks you through assigning access to Cost Management data. After the combination of permissions is assigned, the user views data in Cost Management based the scope that they have access to and on the scope that they select in the Azure portal.
 
-Zakres, który wybiera użytkownik, jest używany w całym Cost Management, aby zapewnić konsolidację danych i kontrolować dostęp do informacji o kosztach. W przypadku korzystania z zakresów użytkownicy nie będą zaznaczać ich wiele. Zamiast tego wybierają większy zakres, do którego są rzutowane zakresy podrzędne, a następnie filtrują się do elementów, które mają być wyświetlane. Należy zrozumieć, że konsolidacja danych jest ważna, ponieważ niektóre osoby nie powinny mieć dostępu do zakresu nadrzędnego, do którego są rzutowane zakresy podrzędne.
+The scope that a user selects is used throughout Cost Management to provide data consolidation and to control access to cost information. When using scopes, users don't multi-select them. Instead, they select a larger scope that child scopes roll up to and then they filter-down to what they want to view. Data consolidation is important to understand because some people shouldn't have access to a parent scope that child scopes roll up to.
 
-Obejrzyj informacje o [sposobie przypisywania dostępu Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) wideo, aby dowiedzieć się więcej o przypisaniu dostępu do wyświetlania kosztów i opłat za pomocą kontroli dostępu opartej na rolach na platformie Azure.
+Watch the [How to assign access with Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) video to learn about assigning access to view costs and charges with Azure role-based access control.
 
 >[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
-## <a name="cost-management-scopes"></a>Zakresy Cost Management
+## <a name="cost-management-scopes"></a>Cost Management scopes
 
-Zarządzanie kosztami obsługuje różne typy kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Typ konta określa dostępne zakresy.
+Cost management supports a variety of Azure account types. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). The type of account determines available scopes.
 
-### <a name="azure-ea-subscription-scopes"></a>Zakresy subskrypcji platformy Azure EA
+### <a name="azure-ea-subscription-scopes"></a>Azure EA subscription scopes
 
-Aby wyświetlić dane dotyczące kosztów dla subskrypcji EA platformy Azure, użytkownik musi mieć co najmniej jeden dostęp do odczytu do co najmniej jednego z następujących zakresów.
+To view cost data for Azure EA subscriptions, a user must have at least read access to one or more of the following scopes.
 
-| **Zakres** | **Lokalizacja definicji** | **Wymagany dostęp do wyświetlania danych** | **Wstępnie wymagane ustawienie umowy EA** | **Konsolidowanie danych do** |
+| **Zakres** | **Lokalizacja definicji** | **Required access to view data** | **Wstępnie wymagane ustawienie umowy EA** | **Consolidates data to** |
 | --- | --- | --- | --- | --- |
 | Konto rozliczeniowe<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Administrator przedsiębiorstwa | Brak | Wszystkie subskrypcje z umowy Enterprise Agreement |
-| Dział | [https://ea.azure.com](https://ea.azure.com/) | Administrator działu | Włączono **opłaty za Podgląd da** | Wszystkie subskrypcje należące do konta rejestracji połączonego z działem |
-| Konto rejestracji<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Właściciel konta | Włączono **opłaty za wyświetlanie Ao** | Wszystkie subskrypcje z konta rejestracji |
-| Grupa zarządzania | [https://portal.azure.com](https://portal.azure.com/) | Czytelnik usługi Cost Management (lub Czytelnik) | Włączono **opłaty za wyświetlanie Ao** | Wszystkie subskrypcje poniżej grupy zarządzania |
-| Subskrypcja | [https://portal.azure.com](https://portal.azure.com/) | Czytelnik usługi Cost Management (lub Czytelnik) | Włączono **opłaty za wyświetlanie Ao** | Wszystkie zasoby lub grupy zasobów w subskrypcji |
-| Grupa zasobów | [https://portal.azure.com](https://portal.azure.com/) | Czytelnik usługi Cost Management (lub Czytelnik) | Włączono **opłaty za wyświetlanie Ao** | Wszystkie zasoby w grupie zasobów |
+| Dział | [https://ea.azure.com](https://ea.azure.com/) | Administrator działu | **DA view charges** enabled | Wszystkie subskrypcje należące do konta rejestracji połączonego z działem |
+| Konto rejestracji<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Właściciel konta | **AO view charges** enabled | Wszystkie subskrypcje z konta rejestracji |
+| Grupa zarządzania | [https://portal.azure.com](https://portal.azure.com/) | Czytelnik usługi Cost Management (lub Czytelnik) | **AO view charges** enabled | Wszystkie subskrypcje poniżej grupy zarządzania |
+| Subskrypcja | [https://portal.azure.com](https://portal.azure.com/) | Czytelnik usługi Cost Management (lub Czytelnik) | **AO view charges** enabled | Wszystkie zasoby lub grupy zasobów w subskrypcji |
+| Grupa zasobów | [https://portal.azure.com](https://portal.azure.com/) | Czytelnik usługi Cost Management (lub Czytelnik) | **AO view charges** enabled | Wszystkie zasoby w grupie zasobów |
 
-<sup>1</sup> konto rozliczeniowe jest również określane jako Umowa Enterprise lub Rejestracja.
+<sup>1</sup> The billing account is also referred to as the Enterprise Agreement or Enrollment.
 
-<sup>2</sup> konto rejestracji jest również określane jako właściciel konta.
+<sup>2</sup> The enrollment account is also referred to as the account owner.
 
-Na poniższym diagramie przedstawiono relację między zakresami Cost Management przy użyciu ról i ustawień portalu EA.
+The following diagram illustrates the relationship between Cost Management scopes with roles and EA portal settings.
 
-![Diagram przedstawiający relację między zakresami Cost Management przy użyciu ról i ustawień portalu EA](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+![Diagram showing the relationship between Cost Management scopes with roles and EA portal settings](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
 
-Gdy w portalu EA są wyłączone **opłaty za usługę DirectAccess** , zobaczysz komunikat z informacją *o kosztach wyłączonych dla Twojej organizacji* , gdy spróbujesz wyświetlić koszty dla działów i kont.
+When **DA view charges** are disabled in the EA portal, you’ll see a message stating *Costs disabled for your organization* when you try to view costs for departments and accounts.
 
-Podobnie, gdy w portalu EA są wyłączone **opłaty za wyświetlanie Ao** , zobaczysz komunikat informujący o *kosztach wyłączonych dla Twojej organizacji* podczas próby wyświetlenia kosztów kont rejestracji, grup zarządzania, subskrypcji i grup zasobów.
+Similarly, when **AO view charges** are disabled in the EA portal, you’ll see a message stating *Costs disabled for your organization* when you try to view costs for enrollment accounts, management groups, subscriptions, and resource groups.
 
-## <a name="other-azure-account-scopes"></a>Inne zakresy kont platformy Azure
+## <a name="other-azure-account-scopes"></a>Other Azure account scopes
 
-Aby wyświetlić dane dotyczące kosztów dla innych subskrypcji platformy Azure, użytkownik musi mieć co najmniej jeden dostęp do odczytu do jednego lub kilku z następujących zakresów:
+To view cost data for other Azure subscriptions, a user must have at least read access to one or more of the following scopes:
 
 - Konto platformy Azure
 - Grupa zarządzania
 - Grupa zasobów
 
-Różne zakresy są dostępne po dołączeniu klientów do umowy klienta firmy Microsoft przez partnerów. Klienci korzystający z programu CSP mogą następnie korzystać z funkcji Cost Management po włączeniu ich przez partnera CSP. Aby uzyskać więcej informacji, zobacz Wprowadzenie [do Azure Cost Management dla partnerów](get-started-partners.md).
+Various scopes are available after partners onboard customers to a Microsoft Customer Agreement. CSP customers can then use Cost Management features when enabled by their CSP partner. For more information, see [Get started with Azure Cost Management for partners](get-started-partners.md).
 
-## <a name="enable-access-to-costs-in-the-ea-portal"></a>Zapewnianie dostępu do kosztów w portalu EA
+## <a name="enable-access-to-costs-in-the-ea-portal"></a>Enable access to costs in the EA portal
 
-Zakres działu wymaga **włączonej** opcji " **da** " w portalu EA. Wszystkie pozostałe zakresy wymagają **włączenia** opcji **Ao Wyświetl opłaty** w portalu EA.
+The department scope requires the **DA view charges** option **Enabled** in the EA portal. All other scopes require the **AO view charges** option **Enabled** in the EA portal.
 
-Aby włączyć opcję:
+To enable an option:
 
-1. Zaloguj się do portalu EA pod adresem [https://ea.azure.com](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
-2. W lewym okienku wybierz pozycję **Zarządzaj** .
-3. W przypadku zakresów usługi Cost Management, do których chcesz zapewnić dostęp, Włącz opcję opłata, aby **wyświetlić opłaty za usługę da** i/lub **Ao**.  
-    Karta @no__t 0Enrollment z opcjami opcji DA i AO Wyświetl opłaty @ no__t-1
+1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
+2. Select **Manage** in the left pane.
+3. For the cost management scopes that you want to provide access to, enable the charge option to **DA view charges** and/or **AO view charges**.  
+    ![Enrollment tab showing DA and AO view charges options](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-Po włączeniu opcji wyświetlania opłaty większość zakresów wymaga również konfiguracji uprawnień kontroli dostępu opartej na rolach (RBAC) w Azure Portal.
+After the view charge options are enabled, most scopes also require role-based access control (RBAC) permission configuration in the Azure portal.
 
-## <a name="enterprise-administrator-role"></a>Rola administratora przedsiębiorstwa
+## <a name="enterprise-administrator-role"></a>Enterprise administrator role
 
-Domyślnie administrator przedsiębiorstwa ma dostęp do konta rozliczeniowego (Umowa Enterprise/rejestracji) i wszystkich innych zakresów, które są zakresami podrzędnymi. Administrator przedsiębiorstwa przypisuje dostęp do zakresów innym użytkownikom. Najlepszym rozwiązaniem w zakresie ciągłości biznesowej jest zawsze posiadanie dwóch użytkowników z dostępem administratora przedsiębiorstwa. Poniższe sekcje zawierają instrukcje dla administratorów przedsiębiorstwa przypisujące dostęp do zakresów innym użytkownikom.
+By default, an enterprise administrator has access to the billing account (Enterprise Agreement/enrollment) and to all other scopes, which are child scopes. The enterprise administrator assigns access to scopes for other users. As a best practice for business continuity, you should always have two users with enterprise administrator access. The following sections are walk-through examples of the enterprise administrator assigning access to scopes for other users.
 
-## <a name="assign-billing-account-scope-access"></a>Przypisywanie dostępu do zakresu konta rozliczeń
+## <a name="assign-billing-account-scope-access"></a>Assign billing account scope access
 
-Dostęp do zakresu konta rozliczeniowego wymaga uprawnień administratora przedsiębiorstwa w portalu EA. Administrator przedsiębiorstwa ma dostęp do wyświetlania kosztów całej rejestracji w ramach umowy EA lub rejestracji wielu. W Azure Portal dla zakresu konta rozliczeń nie jest wymagana żadna akcja.
+Access to the billing account scope requires enterprise administrator permission in the EA portal. The enterprise administrator has access to view costs across the entire EA enrollment or multiple enrollments. No action is required in the Azure portal for the billing account scope.
 
-1. Zaloguj się do portalu EA pod adresem [https://ea.azure.com](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
-2. W lewym okienku wybierz pozycję **Zarządzaj** .
-3. Na karcie **rejestracja** wybierz rejestrację, którą chcesz zarządzać.  
-    @no__t — 0select swoją rejestrację w witrynie EA Portal @ no__t-1
-4. Kliknij pozycję **+ Dodaj administratora**.
-5. W polu Dodaj administratora wybierz typ uwierzytelniania i wpisz adres e-mail użytkownika.
-6. Jeśli użytkownik powinien mieć dostęp tylko do odczytu do danych o kosztach i użyciu, w obszarze **tylko do odczytu**wybierz pozycję **tak**.  W przeciwnym razie wybierz pozycję **nie**.
-7. Kliknij przycisk **Dodaj** , aby utworzyć konto.  
-    ![example informacje wyświetlane w oknie Dodawanie administratora @ no__t-1
+1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
+2. Select **Manage** in the left pane.
+3. On the **Enrollment** tab, select the enrollment that you want to manage.  
+    ![select your enrollment in the EA portal](./media/assign-access-acm-data/ea-portal.png)
+4. Click **+ Add Administrator**.
+5. In the Add Administrator box, select the authentication type and type the user's email address.
+6. If the user should have read-only access to cost and usage data, under **Read-only**, select **Yes**.  Otherwise, select **No**.
+7. Click **Add** to create the account.  
+    ![example information shown in the Add administrator box](./media/assign-access-acm-data/add-admin.png)
 
-Może upłynąć do 30 minut, zanim nowy użytkownik będzie mógł uzyskać dostęp do danych w Cost Management.
+It may take up to 30 minutes before the new user can access data in Cost Management.
 
-### <a name="assign-department-scope-access"></a>Przypisywanie dostępu do zakresu działu
+### <a name="assign-department-scope-access"></a>Assign department scope access
 
-Dostęp do zakresu działu wymaga dostępu administratora działu (opłata za usługę DA Podgląd) w portalu EA. Administrator działu ma dostęp do wyświetlania kosztów i danych użycia skojarzonych z działem lub do wielu działów. Dane działu obejmują wszystkie subskrypcje należące do konta rejestracji, które są połączone z działem. W Azure Portal nie jest wymagana żadna akcja.
+Access to the department scope requires department administrator (DA view charges) access in the EA portal. The department administrator has access to view costs and usage data associated with a department or to multiple departments. Data for the department includes all subscriptions belonging to an enrollment account that are linked to the department. No action is required in the Azure portal.
 
-1. Zaloguj się do portalu EA pod adresem [https://ea.azure.com](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
-2. W lewym okienku wybierz pozycję **Zarządzaj** .
-3. Na karcie **rejestracja** wybierz rejestrację, którą chcesz zarządzać.
-4. Kliknij kartę **dział** , a następnie kliknij pozycję **Dodaj administratora**.
-5. W oknie Dodaj administratora działu wybierz typ uwierzytelniania, a następnie wpisz adres e-mail użytkownika.
-6. Jeśli użytkownik powinien mieć dostęp tylko do odczytu do danych o kosztach i użyciu, w obszarze **tylko do odczytu**wybierz pozycję **tak**.  W przeciwnym razie wybierz pozycję **nie**.
-7. Wybierz działy, do których chcesz przyznać uprawnienia administracyjne działu.
-8. Kliknij przycisk **Dodaj** , aby utworzyć konto.  
-    ![enter wymagane informacje w oknie Dodaj administratora działu @ no__t-1
+1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
+2. Select **Manage** in the left pane.
+3. On the **Enrollment** tab, select the enrollment that you want to manage.
+4. Click the **Department** tab and then click **Add Administrator**.
+5. In the Add Department Administrator box, select the authentication type and then type the user's email address.
+6. If the user should have read-only access to cost and usage data, under **Read-only**, select **Yes**.  Otherwise, select **No**.
+7. Select the departments that you want to grant department administrative permission to.
+8. Click **Add** to create the account.  
+    ![enter required information in the Add department administrator box](./media/assign-access-acm-data/add-depart-admin.png)
 
-## <a name="assign-enrollment-account-scope-access"></a>Przypisywanie dostępu do zakresu konta rejestracji
+## <a name="assign-enrollment-account-scope-access"></a>Assign enrollment account scope access
 
-Dostęp do zakresu konta rejestracji wymaga dostępu właściciela konta (AO View) w portalu EA. Właściciel konta może wyświetlać koszty i dane użycia skojarzone z subskrypcjami utworzonymi na podstawie tego konta rejestracji. W Azure Portal nie jest wymagana żadna akcja.
+Access to the enrollment account scope requires account owner (AO view charges) access in the EA portal. The account owner can view costs and usage data associated with the subscriptions created from that enrollment account. No action is required in the Azure portal.
 
-1. Zaloguj się do portalu EA pod adresem [https://ea.azure.com](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
-2. W lewym okienku wybierz pozycję **Zarządzaj** .
-3. Na karcie **rejestracja** wybierz rejestrację, którą chcesz zarządzać.
-4. Kliknij kartę **konto** , a następnie kliknij pozycję **Dodaj konto**.
-5. W polu Dodaj konto wybierz **dział** , do którego chcesz skojarzyć konto, lub pozostaw je jako nieprzypisane.
-6. Wybierz typ uwierzytelniania i wpisz nazwę konta.
-7. Wpisz adres e-mail użytkownika, a następnie opcjonalnie wpisz centrum kosztu.
-8. Kliknij pozycję **Dodaj** , aby utworzyć konto.  
-    ![enter wymagane informacje w polu Dodaj konto dla konta rejestracji @ no__t-1
+1. Sign in to the EA portal at [https://ea.azure.com](https://ea.azure.com) with an enterprise administrator account.
+2. Select **Manage** in the left pane.
+3. On the **Enrollment** tab, select the enrollment that you want to manage.
+4. Click the **Account** tab and then click **Add Account**.
+5. In the Add Account box, select the **Department** to associate the account to, or leave it as unassigned.
+6. Select the authentication type and type the account name.
+7. Type the user's email address and then optionally type the cost center.
+8. Click on **Add** to create the account.  
+    ![enter required information in the Add account box for an enrollment account](./media/assign-access-acm-data/add-account.png)
 
-Po wykonaniu powyższych czynności konto użytkownika stanie się kontem rejestracji w witrynie Enterprise Portal i może tworzyć subskrypcje. Użytkownik może uzyskać dostęp do danych o kosztach i użyciu dla utworzonych przez siebie subskrypcji.
+After completing the steps above, the user account becomes an enrollment account in the Enterprise portal and can create subscriptions. The user can access cost and usage data for subscriptions that they create.
 
-## <a name="assign-management-group-scope-access"></a>Przypisywanie dostępu do zakresu grupy zarządzania
+## <a name="assign-management-group-scope-access"></a>Assign management group scope access
 
-Dostęp do widoku zakres grupy zarządzania wymaga co najmniej uprawnienia czytelnik Cost Management (lub czytelnik). W Azure Portal można skonfigurować uprawnienia dla grupy zarządzania. Musisz mieć co najmniej uprawnienia administratora dostępu użytkownika (lub właściciela) dla grupy zarządzania, aby umożliwić dostęp innym osobom. W przypadku kont EA platformy Azure należy również włączyć ustawienie **Ao Wyświetl opłaty** w portalu EA.
+Access to view the management group scope requires at least the Cost Management Reader (or Reader) permission. You can configure permissions for a management group in the Azure portal. You must have at least the User Access Administrator (or Owner) permission for the management group to enable access for others. And for Azure EA accounts, you must also have enabled the **AO view charges** setting in the EA portal.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Na pasku bocznym wybierz pozycję **wszystkie usługi** , Wyszukaj pozycję _grupy zarządzania_, a następnie wybierz pozycję **grupy zarządzania**.
-3. Wybierz grupę zarządzania w hierarchii.
-4. Obok nazwy grupy zarządzania kliknij pozycję **szczegóły**.
-5. Wybierz pozycję **Access Control (IAM)** w okienku po lewej stronie.
+2. Select **All Services** in the sidebar, search for _management groups_, then select **management groups**.
+3. Select the management group in the hierarchy.
+4. Next to the name of your management group, click **Details**.
+5. Select **Access Control (IAM)** from the left pane.
 6. Kliknij pozycję **Add** (Dodaj).
-7. W obszarze **rola**wybierz pozycję **Cost Management Reader**.
-8. W obszarze **Przypisywanie dostępu do**wybierz pozycję **użytkownik, Grupa lub aplikacja usługi Azure AD**.
-9. Aby przypisać dostęp, Wyszukaj, a następnie wybierz użytkownika.
+7. Under **Role**, select **Cost Management Reader**.
+8. Under **Assign access to**, select **Azure AD user, group, or application**.
+9. To assign access, search for and then select the user.
 10. Kliknij przycisk **Save** (Zapisz).  
-    ![example informacje w polu Dodaj uprawnienia dla grupy zarządzania @ no__t-1
+    ![example information in the Add permissions box for a management group](./media/assign-access-acm-data/add-permissions.png)
 
-## <a name="assign-subscription-scope-access"></a>Przypisywanie dostępu do zakresu subskrypcji
+## <a name="assign-subscription-scope-access"></a>Assign subscription scope access
 
-Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika Cost Management (lub czytelnika). Uprawnienia do subskrypcji można skonfigurować w Azure Portal. Musisz mieć co najmniej uprawnienia administratora dostępu użytkownika (lub właściciela) dla subskrypcji, aby umożliwić dostęp innym osobom. W przypadku kont EA platformy Azure należy również włączyć ustawienie **Ao Wyświetl opłaty** w portalu EA.
+Access to a subscription requires at least the Cost Management Reader (or Reader) permission. You can configure permissions to a subscription in the Azure portal. You must have at least the User Access Administrator (or Owner) permission for the subscription to enable access for others. And for Azure EA accounts, you must also have enabled the **AO view charges** setting in the EA portal.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Wybierz pozycję **wszystkie usługi** na pasku bocznym, Wyszukaj pozycję _subskrypcje_, a następnie wybierz pozycję **subskrypcje**.
+2. Select **All Services** in the sidebar, search for _subscriptions_, then select **Subscriptions**.
 3. Wybierz subskrypcję.
-4. Wybierz pozycję **Access Control (IAM)** w okienku po lewej stronie.
+4. Select **Access Control (IAM)** from the left pane.
 5. Kliknij pozycję **Add** (Dodaj).
-6. W obszarze **rola**wybierz pozycję **Cost Management Reader**.
-7. W obszarze **Przypisywanie dostępu do**wybierz pozycję **użytkownik, Grupa lub aplikacja usługi Azure AD**.
-8. Aby przypisać dostęp, Wyszukaj, a następnie wybierz użytkownika.
+6. Under **Role**, select **Cost Management Reader**.
+7. Under **Assign access to**, select **Azure AD user, group, or application**.
+8. To assign access, search for and then select the user.
 9. Kliknij przycisk **Save** (Zapisz).
 
-## <a name="assign-resource-group-scope-access"></a>Przypisywanie dostępu do zakresu grupy zasobów
+## <a name="assign-resource-group-scope-access"></a>Assign resource group scope access
 
-Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika Cost Management (lub czytelnika). Można skonfigurować uprawnienia do grupy zasobów w Azure Portal. Musisz mieć co najmniej uprawnienia administratora dostępu użytkownika (lub właściciela) dla grupy zasobów, aby umożliwić dostęp innym osobom. W przypadku kont EA platformy Azure należy również włączyć ustawienie **Ao Wyświetl opłaty** w portalu EA.
+Access to a resource group requires at least the Cost Management Reader (or Reader) permission. You can configure permissions to a resource group in the Azure portal. You must have at least the User Access Administrator (or Owner) permission for the resource group to enable access for others. And for Azure EA accounts, you must also have enabled the **AO view charges** setting in the EA portal.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Na pasku bocznym wybierz pozycję **wszystkie usługi** , Wyszukaj pozycję _grupy zasobów_, a następnie wybierz pozycję **grupy zasobów**.
-3. Wybierz grupę zasobów.
-4. Wybierz pozycję **Access Control (IAM)** w okienku po lewej stronie.
+2. Select **All Services** in the sidebar, search for _resource groups_, then select **Resource groups**.
+3. Select your resource group.
+4. Select **Access Control (IAM)** from the left pane.
 5. Kliknij pozycję **Add** (Dodaj).
-6. W obszarze **rola**wybierz pozycję **Cost Management Reader**.
-7. W obszarze **Przypisywanie dostępu do**wybierz pozycję **użytkownik, Grupa lub aplikacja usługi Azure AD**.
-8. Aby przypisać dostęp, Wyszukaj, a następnie wybierz użytkownika.
+6. Under **Role**, select **Cost Management Reader**.
+7. Under **Assign access to**, select **Azure AD user, group, or application**.
+8. To assign access, search for and then select the user.
 9. Kliknij przycisk **Save** (Zapisz).
 
-## <a name="cross-tenant-authentication-issues"></a>Problemy z uwierzytelnianiem między dzierżawcami
+## <a name="cross-tenant-authentication-issues"></a>Cross-tenant authentication issues
 
-Obecnie Azure Cost Management ma ograniczoną obsługę uwierzytelniania między dzierżawcami. W niektórych sytuacjach podczas próby uwierzytelnienia w dzierżawach może zostać wyświetlony komunikat o błędzie **odmowy dostępu** w analizie kosztów. Ten problem może wystąpić, jeśli skonfigurujesz kontrolę dostępu opartą na rolach (RBAC) w ramach subskrypcji innej dzierżawy, a następnie spróbujesz wyświetlić dane dotyczące kosztów.
+Currently, Azure Cost Management has limited support for cross-tenant authentication. In some circumstances when you try to authenticate across tenants, you may receive an **Access denied** error in cost analysis. This issue might occur if you configure role-based access control (RBAC) to another tenant's subscription and then try to view cost data.
 
-*Aby obejść ten problem*: po SKONFIGUROWANiu RBAC międzydzierżawci odczekaj godzinę. Następnie spróbuj wyświetlić koszty w analizie kosztów lub przyznać Cost Management dostęp do użytkowników w obu dzierżawcach.  
+*To work around the problem*: After you configure cross-tenant RBAC, wait an hour. Then, try to view costs in cost analysis or grant Cost Management access to users in both tenants.  
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli nie zostało to jeszcze zrobione z pierwszego przewodnika Szybki Start dla Cost Management, zapoznaj się z tematem [Rozpocznij analizowanie kosztów](quick-acm-cost-analysis.md).
+- If you haven't already completed the first quickstart for Cost Management, read it at [Start analyzing costs](quick-acm-cost-analysis.md).

@@ -7,20 +7,20 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 2b701e618bdcbd50709360c55cfb9ceb68781ebc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 41abf9d0675e7ea620a15656f97fcaed4fd0ff66
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969088"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229784"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
-# <a name="tutorial-review-usage-and-costs"></a>Samouczek: Przeglądanie użycia i kosztów
+# <a name="tutorial-review-usage-and-costs"></a>Samouczek: przeglądanie użycia i kosztów
 
 Rozwiązanie Cloudyn umożliwia przeglądanie użycia i kosztów w celu śledzenia trendów, wykrywania niewydajności i tworzenia alertów. Wszystkie dane użycia i kosztów są wyświetlane na pulpitach nawigacyjnych i w raportach usługi Cloudyn. Przykłady w tym samouczku ilustrują przeglądanie użycia i kosztów za pomocą pulpitów nawigacyjnych i raportów.
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Śledzenie trendów użycia i kosztów
 > * Wykrywanie przypadków niewydajnego użycia
 > * Tworzenie alertów dotyczących nietypowych wydatków i przekraczania wydatków
-> * Eksportowanie danych
+> * Eksportuj dane
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -89,7 +89,7 @@ Wyświetl identyfikatory wystąpień maszyn wirtualnych, klikając symbol znaku 
 
 Aby obejrzeć samouczek wideo dotyczący wykrywania przypadków niewydajnego użycia, zobacz [Optimizing VM Size in Cloudyn ](https://youtu.be/1xaZBNmV704) (Optymalizowanie rozmiarów maszyn wirtualnych w rozwiązaniu Cloudyn).
 
-Usługa Azure Cost Management udostępnia także zalecenia dotyczące oszczędności dla usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Tutorial: Optimize costs from recommendations (Samouczek: Optymalizowanie kosztów na podstawie zaleceń)](tutorial-acm-opt-recommendations.md).
+Usługa Azure Cost Management udostępnia także zalecenia dotyczące oszczędności dla usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Tutorial: Optimize costs from recommendations (Samouczek: optymalizowanie kosztów na podstawie zaleceń](tutorial-acm-opt-recommendations.md).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Tworzenie alertów dotyczących nietypowych wydatków
 
@@ -101,7 +101,7 @@ W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczy
 2. Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**.
 3. W prawym górnym rogu raportu wybierz pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
 4. Aby wysyłać do siebie wiadomość e-mail dotyczącą raportu w zaplanowanych odstępach czasu, wybierz kartę **Scheduling** (Planowanie) w oknie dialogowym **Save or Schedule this report** (Zapisz lub zaplanuj ten raport). Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtry zostaną uwzględnione w raporcie wysłanym w wiadomości e-mail.
-5. Wybierz kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg).
+5. Select the **Threshold** tab and then select  **Actual Cost vs. Threshold**.
    1. W polu progu **Red alert** (Czerwony alert) wprowadź wartość 10 000.
    2. W polu progu **Yellow alert** (Żółty alert) wprowadź wartość 9000.
    3. W polu **Number of consecutive alerts** (Liczba kolejnych alertów) wprowadź liczbę alertów, które mają być wysyłane. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane.
@@ -109,7 +109,7 @@ W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczy
 
 ![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/tutorial-review-usage/schedule-alert01.png)
 
-Możesz również wybrać metrykę **Cost Percentage vs. Budget threshold** (Procent kosztów a próg budżetu), aby utworzyć alerty. Pozwala to określić progi jako wartości procentowe budżetu, a nie jako wartości pieniężne.
+You can also choose the **Cost Percentage vs. Budget** threshold metric to create alerts. Pozwala to określić progi jako wartości procentowe budżetu, a nie jako wartości pieniężne.
 
 ## <a name="export-data"></a>Eksportuj dane
 
@@ -123,7 +123,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Śledzenie trendów użycia i kosztów
 > * Wykrywanie przypadków niewydajnego użycia
 > * Tworzenie alertów dotyczących nietypowych wydatków i przekraczania wydatków
-> * Eksportowanie danych
+> * Eksportuj dane
 
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak prognozować wydatki przy użyciu danych historycznych.

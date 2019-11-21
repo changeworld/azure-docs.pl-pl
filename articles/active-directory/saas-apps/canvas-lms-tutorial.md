@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory ze kanwą | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Canvas | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Canvas.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab998b6d9aec663123f0bd2428e4c6f1767f1846
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158739"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232047"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Samouczek: integracja Azure Active Directory ze kanwą
+# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Tutorial: Azure Active Directory integration with Canvas
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Canvas z usługą Azure Active Directory (Azure AD).
 Zintegrowanie aplikacji Canvas z usługą Azure AD oferuje następujące korzyści:
@@ -137,7 +137,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Canvas, wy
 
 2. Przejdź do pozycji **Kursy \> Konta zarządzane \> Microsoft**.
 
-    ![Przestrzeń](./media/canvas-lms-tutorial/ic775990.png "Przestrzeń")
+    ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
 
 3. W okienku nawigacji po lewej stronie wybierz pozycję **Uwierzytelnianie**, a następnie kliknij pozycję **Dodaj nową konfigurację SAML**.
 
@@ -145,7 +145,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Canvas, wy
 
 4. Na stronie Bieżąca integracja wykonaj następujące kroki:
 
-    ![Bieżąca integracja](./media/canvas-lms-tutorial/ic775992.png "Bieżąca integracja")
+    ![Current Integration](./media/canvas-lms-tutorial/ic775992.png "Current Integration")
 
     a. W polu tekstowym **Identyfikator jednostki dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
 
@@ -181,7 +181,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -224,7 +224,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Canva
 
 2. Przejdź do pozycji **Kursy \> Konta zarządzane \> Microsoft**.
 
-   ![Przestrzeń](./media/canvas-lms-tutorial/ic775990.png "Przestrzeń")
+   ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
 
 3. Kliknij pozycję **Użytkownicy**.
 
@@ -236,20 +236,20 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Canva
 
 5. W oknie dialogowym Dodawanie nowego użytkownika wykonaj następujące kroki:
 
-   ![Dodaj użytkownika](./media/canvas-lms-tutorial/ic775997.png "Dodaj użytkownika")
+   ![Add User](./media/canvas-lms-tutorial/ic775997.png "Dodaj użytkownika")
 
    a. W polu tekstowym **Imię i nazwisko** wprowadź nazwę użytkownika, na przykład **BrittaSimon**.
 
-   b. W polu tekstowym **adres e-mail** wprowadź adres e-mail użytkownika, np. **brittasimon\@contoso.com**.
+   b. In the **Email** textbox, enter the email of user like **brittasimon\@contoso.com**.
 
-   d. W polu tekstowym **Login (logowanie** ) wprowadź adres E-mail użytkownika usługi Azure AD, np. **brittasimon\@contoso.com**.
+   d. In the **Login** textbox, enter the user’s Azure AD email address like **brittasimon\@contoso.com**.
 
    d. Wybierz pozycję **Poinformuj użytkownika pocztą e-mail o utworzeniu tego konta**.
 
    e. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
 > [!NOTE]
-> Aby aprowizować konta użytkowników usługi AAD, można użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika lub interfejsów API dostarczonych przez firmę Canvas.
+> You can use any other Canvas user account creation tools or APIs provided by Canvas to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -263,5 +263,5 @@ Po kliknięciu kafelka Canvas w panelu dostępu powinno nastąpić automatyczne 
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

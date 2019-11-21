@@ -1,6 +1,6 @@
 ---
-title: Zapewnianie wysokiej dostępności aplikacji w przypadku uruchamiania w oprogramowaniu VMware na platformie Azure
-description: Opisuje funkcje wysokiej dostępności CloudSimple na potrzeby rozwiązywania typowych scenariuszy błędów aplikacji dla aplikacji działających w chmurze prywatnej CloudSimple
+title: Ensure application high availability when running in VMware on Azure
+description: Describes CloudSimple high availability features to address common application failure scenarios for applications running in a CloudSimple Private Cloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,59 +8,59 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5a48a75d70234b06942f5141402070c89c543f18
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903380"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206542"
 ---
-# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Zapewnianie wysokiej dostępności aplikacji w przypadku uruchamiania w oprogramowaniu VMware na platformie Azure
+# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Ensure application high availability when running in VMware on Azure
 
-Rozwiązanie CloudSimple zapewnia wysoką dostępność dla aplikacji uruchamianych w oprogramowaniu VMware w środowisku platformy Azure. Poniższa tabela zawiera listę scenariuszy błędów i skojarzonych funkcji wysokiej dostępności.
+The CloudSimple solution provides high availability for your applications running on VMware in the Azure environment. The following table lists failure scenarios and the associated high availability features.
 
-| Scenariusz niepowodzenia | Czy aplikacja jest chroniona? | Funkcja HA platformy | Funkcja programu VMware HA | Funkcja HA systemu Azure |
+| Failure scenario | Application protected? | Platform HA feature | VMware HA feature | Azure HA feature |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| Awaria dysku | TAK | Szybka wymiana węzła, który uległ awarii | [Informacje o domyślnych zasadach magazynu sieci vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Awaria wentylatora | TAK | Nadmiarowe wentylatory, szybka wymiana węzła zakończonego niepowodzeniem |  |  |
-| Awaria karty sieciowej | TAK | Nadmiarowa karta sieciowa, szybka wymiana węzła, który uległ awarii
-| Awaria mocy hosta | TAK | Nadmiarowe zasilacze |  |  |
-| Niepowodzenie hosta ESXi | TAK | Szybka wymiana węzła, który uległ awarii | [VMware vSphere wysoka dostępność](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| Awaria maszyny wirtualnej | TAK | [Moduły równoważenia obciążenia](load-balancers.md)  | [VMware vSphere wysoka dostępność](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer dla bezstanowych maszyn wirtualnych VMware |
-| Niepowodzenie portu przełącznika liścia | TAK | Nadmiarowa karta sieciowa |  |  |
-| Niepowodzenie przełączania liścia | TAK | Nadmiarowe przełączniki liścia |  |  |
-| Awaria stojaka | TAK | Grupy umieszczania |  |  |
-| Łączność sieciowa z lokalnym kontrolerem domeny | TAK  | Nadmiarowe usługi sieciowe |  | Nadmiarowe obwody ER |
-| Łączność sieciowa z platformą Azure | TAK | |  | Nadmiarowe obwody ER |
-| Błąd centrum danych | TAK |  |  | Strefy dostępności |
-| Awaria regionalna | TAK  |  |  | Regiony platformy Azure |
+| Disk Failure | YES | Fast replacement of failed node | [About the vSAN Default Storage Policy](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| Fan Failure | YES | Redundant fans, fast replacement of failed node |  |  |
+| NIC Failure | YES | Redundant NIC, fast replacement of failed node
+| Host Power Failure | YES | Redundant power supply |  |  |
+| ESXi Host Failure | YES | fast replacement of failed node | [VMware vSphere High Availability](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM Failure | YES | [Moduły równoważenia obciążenia](load-balancers.md)  | [VMware vSphere High Availability](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer for stateless VMware VMs |
+| Leaf Switch Port Failure | YES | Redundant NIC |  |  |
+| Leaf Switch Failure | YES | Redundant leaf switches |  |  |
+| Rack Failure | YES | Grupy umieszczania |  |  |
+| Network Connectivity to on-premises DC | YES  | Redundant networking services |  | Redundant ER circuits |
+| Network Connectivity to Azure | YES | |  | Redundant ER circuits |
+| Datacenter Failure | YES |  |  | Strefy dostępności |
+| Regional Failure | YES  |  |  | Regiony systemu Azure |
 
-Rozwiązanie VMware firmy Azure według CloudSimple zapewnia następujące funkcje wysokiej dostępności.
+Azure VMware Solution by CloudSimple provides the following high availability features.
 
-## <a name="fast-replacement-of-failed-node"></a>Szybka wymiana węzła, który uległ awarii
+## <a name="fast-replacement-of-failed-node"></a>Fast replacement of failed node
 
-Oprogramowanie płaszczyzny kontrolnej CloudSimple stale monitoruje kondycję klastrów VMware i wykrywa czas awarii węzła ESXi. Następnie automatycznie dodaje nowy host ESXi do klastra programu VMware, którego dotyczy ten klaster, z puli łatwo dostępnych węzłów i przyjmuje węzeł, który uległ awarii z klastra. Ta funkcja zapewnia, że pojemność zapasowa w klastrze programu VMware jest przywracana szybko, aby umożliwić przywrócenie odporności klastra z sieci vSAN i VMware HA.
+The CloudSimple control plane software continuously monitors the health of VMware clusters and detects when an ESXi node fails. It then automatically adds a new ESXi host to the affected VMware cluster from its pool of readily available nodes and takes the failed node out of the cluster. This functionality ensures that the spare capacity in the VMware cluster is restored quickly so that the cluster’s resiliency provided by vSAN and VMware HA is restored.
 
 ## <a name="placement-groups"></a>Grupy umieszczania
 
-Użytkownik tworzący chmurę prywatną może wybrać region platformy Azure i grupę umieszczania w wybranym regionie. Grupa umieszczania jest zestawem węzłów rozmieszczonych w wielu stojakach, ale w obrębie tego samego segmentu sieci szkieletowej. Węzły w tej samej grupie umieszczania mogą się łączyć ze sobą przy użyciu maksymalnie dwóch przeskoków dodatkowych przełączników. Grupa umieszczania jest zawsze w obrębie pojedynczej strefy dostępności platformy Azure i obejmuje wiele stojaków. Płaszczyzna sterująca CloudSimple dystrybuuje węzły chmury prywatnej w wielu stojakach na podstawie najlepszego nakładu pracy. Węzły w różnych grupach umieszczania są gwarantowane, aby były umieszczane w różnych stojakach.
+A user who creates a Private Cloud can select an Azure region and a placement group within the selected region. A placement group is a set of nodes spread across multiple racks but within the same spine network segment. Nodes within the same placement group can reach each other with a maximum of two extra switch hops. A placement group is always within a single Azure availability zone and spans multiple racks. The CloudSimple control plane distributes nodes of a Private Cloud across multiple racks based on best effort. Nodes in different placement groups are guaranteed to be placed in different racks.
 
 ## <a name="availability-zones"></a>Strefy dostępności
 
-Strefy dostępności to oferta wysokiej dostępności, która chroni Twoje aplikacje i dane przed awariami centrów danych. Strefy dostępności są specjalnymi lokalizacjami fizycznymi w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. Każdy region ma jedną strefę dostępności. Aby uzyskać więcej informacji, zobacz [co to jest strefy dostępności na platformie Azure?](../availability-zones/az-overview.md)
+Availability zones are a high-availability offering that protects your applications and data from datacenter failures. Availability zones are special physical locations within an Azure region. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależne zasilanie, chłodzenie i sieć. Each region has one availability zone. For more information, see [What are Availability Zones in Azure?](../availability-zones/az-overview.md).
 
-## <a name="redundant-azure-expressroute-circuits"></a>Nadmiarowe obwody usługi Azure ExpressRoute
+## <a name="redundant-azure-expressroute-circuits"></a>Redundant Azure ExpressRoute circuits
 
-Łączność z centrum danych z siecią wirtualną platformy Azure przy użyciu usługi ExpressRoute ma nadmiarowe obwody, aby zapewnić link łączności sieciowej o wysokiej dostępności.
+Data center connectivity to Azure vNet using ExpressRoute has redundant circuits to provide highly available network connectivity link.
 
-## <a name="redundant-networking-services"></a>Nadmiarowe usługi sieciowe
+## <a name="redundant-networking-services"></a>Redundant networking services
 
-Wszystkie usługi sieciowe CloudSimple dla chmury prywatnej (w tym sieci VLAN, zapory, publicznych adresów IP, Internetu i sieci VPN) zostały zaprojektowane tak, aby były wysoce dostępne i mogły obsługiwać umowę SLA usługi.
+All the CloudSimple networking services for the Private Cloud (including VLAN, firewall, public IP addresses, Internet, and VPN) are designed to be highly available and able to support the service SLA.
 
-## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Load Balancer Azure warstwy 7 dla bezstanowych maszyn wirtualnych VMware
+## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Layer 7 Load Balancer for stateless VMware VMs
 
-Aby zapewnić wysoką dostępność warstwy sieci Web, użytkownicy mogą umieścić Load Balancer warstwy 7 przed bezstanowymi maszynami wirtualnymi działającymi w środowisku VMware.
+Users can put an Azure Layer 7 Load Balancer in front of the stateless web tier VMs running in the VMware environment to achieve high availability for the web tier.
 
-## <a name="azure-regions"></a>Regiony platformy Azure
+## <a name="azure-regions"></a>Regiony systemu Azure
 
-Region świadczenia usługi Azure to zestaw centrów danych wdrożonych w ramach określonego czasu oczekiwania i połączony za pomocą dedykowanej regionalnej sieci o małym opóźnieniu. Aby uzyskać szczegółowe informacje, zobacz [regiony platformy Azure](https://azure.microsoft.com/global-infrastructure/regions).
+An Azure region is a set of data centers deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network. For details, see [Azure Regions](https://azure.microsoft.com/global-infrastructure/regions).

@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: przewidywanie ceny za samochód przy użyciu narzędzia Projektant'
+title: 'Tutorial: Predict automobile price with the designer'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu interfejsu typu "przeciągnij i upuść". Ten samouczek jest częścią jednej z serii dwóch części na przewidywania cen samochodów, przy użyciu regresji liniowej.
+description: Learn how to train, score, and deploy a machine learning model by using a drag-and-drop interface. This tutorial is part one of a two-part series on predicting automobile prices by using linear regression.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,214 +9,214 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ffe85b6e005d2dc8fe077a5a08d8b0f11c73589
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929666"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228348"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Predict automobile price with the designer (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-W tym dwuczęściowym samouczku dowiesz się, jak za pomocą projektanta Azure Machine Learning utworzyć i wdrożyć rozwiązanie do analizy predykcyjnej, które przewiduje cenę dowolnego samochodu. 
+In this two-part tutorial, you learn how to use the Azure Machine Learning designer to develop and deploy a predictive analytics solution that predicts the price of any car. 
 
-W części pierwszej należy skonfigurować środowisko, przeciągnąć moduły na interaktywną kanwę, a następnie połączyć je ze sobą w celu utworzenia potoku Azure Machine Learning.
+In part one, you set up your environment, drag modules onto an interactive canvas, and connect them together to create an Azure Machine Learning pipeline.
 
-W pierwszej części samouczka dowiesz się, jak:
+In part one of the tutorial, you'll learn how to:
 
 > [!div class="checklist"]
-> * Utwórz nowy potok.
-> * Importuj dane.
-> * Przygotuj dane.
-> * Uczenie modelu uczenia maszynowego.
-> * Oceń model uczenia maszynowego.
+> * Create a new pipeline.
+> * Import data.
+> * Prepare data.
+> * Train a machine learning model.
+> * Evaluate a machine learning model.
 
-W [drugiej części](tutorial-designer-automobile-price-deploy.md) samouczka dowiesz się, jak wdrożyć model predykcyjny jako punkt końcowy inferencing w czasie rzeczywistym, aby przewidzieć cenę dowolnego samochodu w oparciu o specyfikacje techniczne, które wysyłasz. 
+In [part two](tutorial-designer-automobile-price-deploy.md) of the tutorial, you'll learn how to deploy your predictive model as a real-time inferencing endpoint to predict the price of any car based on technical specifications you send it. 
 
 > [!NOTE]
->Kompletna wersja tego samouczka jest dostępna jako potoku przykładowe.
+>A completed version of this tutorial is available as a sample pipeline.
 >
->Aby go znaleźć, przejdź do projektanta w obszarze roboczym. W sekcji **nowe potoku** wybierz pozycję **przykład 1-regresja: Automobile — Prognoza cenowa (podstawowa)** .
+>To find it, go to the designer in your workspace. In the **New pipeline** section, select **Sample 1 - Regression: Automobile Price Prediction(Basic)** .
 
-## <a name="create-a-new-pipeline"></a>Tworzenie nowego potoku
+## <a name="create-a-new-pipeline"></a>Create a new pipeline
 
-Potoki Azure Machine Learning organizują wiele zależnych etapów uczenia maszynowego i przetwarzania danych w ramach jednego zasobu. Potoki ułatwiają organizowanie i ponowne używanie złożonych przepływów pracy uczenia maszynowego między projektami i użytkownikami oraz zarządzanie nimi. Do utworzenia potoku Azure Machine Learning jest wymagany obszar roboczy Azure Machine Learning. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
+Azure Machine Learning pipelines organize multiple, dependent machine learning and data processing steps into a single resource. Pipelines help you organize, manage, and reuse complex machine learning workflows across projects and users. To create an Azure Machine Learning pipeline, you need an Azure Machine Learning workspace. In this section, you learn how to create both these resources.
 
-### <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
+### <a name="create-a-new-workspace"></a>Create a new workspace
 
-Jeśli masz obszar roboczy Azure Machine Learning z wersją Enterprise, [Przejdź do następnej sekcji](#create-the-pipeline).
+If you have an Azure Machine Learning workspace with an Enterprise edition, [skip to the next section](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Tworzenie potoku
 
-1. Zaloguj się do [ml.Azure.com](https://ml.azure.com)i wybierz obszar roboczy, z którym chcesz współpracować.
+1. Sign in to [ml.azure.com](https://ml.azure.com), and select the workspace you want to work with.
 
-1. Wybierz pozycję **Projektant**.
+1. Select **Designer**.
 
-    ![Zrzut ekranu przedstawiający, jak uzyskać dostęp do projektanta](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
+    ![Screenshot of the visual workspace showing how to access the designer](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
-1. Wybierz **łatwe w użyciu wstępnie skompilowane moduły**.
+1. Select **Easy-to-use prebuilt modules**.
 
-1. Wybierz domyślny potok Nazwa potoku **— utworzony** w górnej części kanwy. Zmień jej nazwę na zrozumiałą. Przykładem jest *Prognoza cen na urządzeniu przenośnym*. Nazwa nie musi być unikatowa.
+1. Select the default pipeline name **Pipeline-Created-on** at the top of the canvas. Rename it to something meaningful. An example is *Automobile price prediction*. Nazwa nie musi być unikatowa.
 
 ## <a name="import-data"></a>Importowanie danych
 
-Projektant zawiera kilka przykładowych zestawów danych, z którymi można eksperymentować. Na potrzeby tego samouczka Użyj **danych cen samochodów (RAW)** . 
+There are several sample datasets included in the designer for you to experiment with. For this tutorial, use **Automobile price data (Raw)** . 
 
-1. Na lewo od kanwy potoku jest paletą zestawów danych i modułów. Wybierz pozycję **zestawy danych**, a następnie Wyświetl sekcję **przykłady** , aby wyświetlić dostępne przykładowe zestawy danych.
+1. To the left of the pipeline canvas is a palette of datasets and modules. Select **Datasets**, and then view the **Samples** section to view the available sample datasets.
 
-1. Wybierz pozycję zestaw **danych cena samochodów (RAW)** i przeciągnij ją na kanwę.
+1. Select the dataset **Automobile price data (Raw)** , and drag it onto the canvas.
 
-   ![Przeciągnij dane do kanwy](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
+   ![Drag data to canvas](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>Wizualizacja danych
 
-Możesz wizualizować dane, aby zrozumieć zestaw danych, który będzie używany.
+You can visualize the data to understand the dataset that you'll use.
 
-1. Wybierz moduł **dane cen samochodów (RAW)** .
+1. Select the **Automobile price data (Raw)** module.
 
-1. W okienku właściwości z prawej strony kanwy wybierz pozycję dane **wyjściowe**.
+1. In the properties pane to the right of the canvas, select **Outputs**.
 
-1. Wybierz ikonę grafu, aby wizualizować dane.
+1. Select the graph icon to visualize the data.
 
-    ![Wizualizacja danych](./media/ui-tutorial-automobile-price-train-score/visualize-data.png)
+    ![Wizualizacja danych](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
-1. Wybierz różne kolumny w oknie dane, aby wyświetlić informacje o każdej z nich.
+1. Select the different columns in the data window to view information about each one.
 
-    Każdy wiersz reprezentuje samochód, a zmienne skojarzone z poszczególnymi urządzeniami przenośnymi są wyświetlane jako kolumny. Ten zestaw danych zawiera 205 wierszy i 26 kolumn.
+    Each row represents an automobile, and the variables associated with each automobile appear as columns. There are 205 rows and 26 columns in this dataset.
 
 ## <a name="prepare-data"></a>Przygotowywanie danych
 
-Zestawy danych zwykle wymagają pewnego przetworzenia przed analizą. Podczas inspekcji zestawu danych mogą znajdować się pewne brakujące wartości. Te brakujące wartości muszą zostać oczyszczone, aby model mógł prawidłowo analizować dane.
+Datasets typically require some preprocessing before analysis. You might have noticed some missing values when you inspected the dataset. These missing values must be cleaned so that the model can analyze the data correctly.
 
 ### <a name="remove-a-column"></a>Usuwanie kolumny
 
-Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W tym zestawie danych w kolumnie **znormalizowanych strat** brakuje wielu wartości, dlatego ta kolumna jest wykluczana z modelu całkowicie.
+When you train a model, you have to do something about the data that's missing. In this dataset, the **normalized-losses** column is missing many values, so you exclude that column from the model altogether.
 
-1. Wprowadź wartość **SELECT** w polu wyszukiwania w górnej części palety, aby znaleźć moduł **SELECT Columns in DataSet** .
+1. Enter **Select** in the search box at the top of the palette to find the **Select Columns in Dataset** module.
 
-1. Przeciągnij moduł **Wybierz kolumny w zestawie danych** na kanwę. Upuść moduł poniżej modułu DataSet.
+1. Drag the **Select Columns in Dataset** module onto the canvas. Drop the module below the dataset module.
 
-1. Połącz zestaw danych **cen samochodów (RAW)** z modułem **Wybieranie kolumn w zestawie danych** . Przeciągnij z portu wyjściowego zestawu danych, czyli małego okręgu w dolnej części zestawu danych na kanwie, do portu wejściowego **SELECT kolumn w zestawie danych**, czyli małego okręgu w górnej części modułu.
+1. Connect the **Automobile price data (Raw)** dataset to the **Select Columns in Dataset** module. Drag from the dataset's output port, which is the small circle at the bottom of the dataset on the canvas, to the input port of **Select Columns in Dataset**, which is the small circle at the top of the module.
 
     > [!TIP]
-    > Przepływ danych można utworzyć za pomocą potoku po podłączeniu portu wyjściowego jednego modułu do portu wejściowego innego.
+    > You create a flow of data through your pipeline when you connect the output port of one module to an input port of another.
     >
 
-    ![Połącz moduły](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+    ![Connect modules](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
-1. Wybierz pozycję **Wybierz kolumny w zestawie danych** .
+1. Select the **Select Columns in Dataset** module.
 
-1. W okienku właściwości po prawej stronie kanwy wybierz pozycję **parametry** > **Edytuj kolumnę**.
+1. In the properties pane to the right of the canvas, select **Parameters** > **Edit column**.
 
-1. Wybierz **+** , aby dodać nową regułę.
+1. Select the **+** to add a new rule.
 
-1. Z menu rozwijanego wybierz opcję **Wyklucz** i **nazwy kolumn**.
+1. From the drop-down menu, select **Exclude** and **Column names**.
     
-1. Wprowadź *znormalizowane straty* w polu tekstowym.
+1. Enter *normalized-losses* in the text box.
 
-1. W prawym dolnym rogu wybierz pozycję **Zapisz** , aby zamknąć selektor kolumny.
+1. In the lower right, select **Save** to close the column selector.
 
-    ![Wykluczanie kolumny](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Exclude a column](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
-    Okienko właściwości pokazuje, że kolumna **znormalizowana strata** jest wykluczona.
+    The properties pane shows that the **normalized-losses** column is excluded.
 
-1. Wybierz pozycję **Wybierz kolumny w zestawie danych** . 
+1. Select the **Select Columns in Dataset** module. 
 
-1. W okienku właściwości wybierz pozycję **parametry** > **komentarz** i wprowadź *wykluczanie znormalizowanych strat*.
+1. In the properties pane, select **Parameters** > **Comment** and enter *Exclude normalized losses*.
 
-### <a name="clean-missing-data"></a>Wyczyść brakujące dane
+### <a name="clean-missing-data"></a>Clean missing data
 
-Zestaw danych nadal ma brakujące wartości po usunięciu kolumny **znormalizowanych strat** . Pozostałe brakujące dane można usunąć przy użyciu modułu **czyste brakujące dane** .
+Your dataset still has missing values after you remove the **normalized-losses** column. You can remove the remaining missing data by using the **Clean Missing Data** module.
 
 > [!TIP]
-> Czyszczenie brakujących wartości z danych wejściowych jest wymaganiem wstępnym w przypadku korzystania z większości modułów w projektancie.
+> Cleaning the missing values from input data is a prerequisite for using most of the modules in the designer.
 
-1. Wprowadź **Wyczyść** w polu wyszukiwania, aby znaleźć **nieczysty moduł danych** .
+1. Enter **Clean** in the search box to find the **Clean Missing Data** module.
 
-1. Przeciągnij **nieczysty moduł danych** do kanwy potoku. Połącz go z modułem **Wybieranie kolumn w zestawie danych** . 
+1. Drag the **Clean Missing Data** module to the pipeline canvas. Connect it to the **Select Columns in Dataset** module. 
 
-1. W okienku właściwości wybierz pozycję **Usuń cały wiersz** w obszarze **Tryb czyszczenia**.
+1. In the properties pane, select **Remove entire row** under **Cleaning mode**.
 
-1. W okienku właściwości w polu **komentarz** wprowadź *Usuń brakujące wiersze wartości*. 
+1. In the properties pane **Comment** box, enter *Remove missing value rows*. 
 
-    Potok powinien teraz wyglądać następująco:
+    Your pipeline should now look something like this:
     
-    ![Zaznacz kolumnę](./media/ui-tutorial-automobile-price-train-score/pipeline-clean.png)
+    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
-## <a name="train-a-machine-learning-model"></a>Uczenie modelu uczenia maszynowego
+## <a name="train-a-machine-learning-model"></a>Train a machine learning model
 
-Teraz, gdy dane są przetwarzane, można przeprowadzić uczenie modelu predykcyjnego.
+Now that the data is processed, you can train a predictive model.
 
 ### <a name="select-an-algorithm"></a>Wybieranie algorytmu
 
-Algorytmy *klasyfikacji* i *regresji* to dwa typy nadzorowanego uczenia maszynowego. Klasyfikacja przewiduje odpowiedź ze zdefiniowanego zestawu kategorii, takich jak kolor czerwony, niebieski lub zielony. Regresja służy do prognozowania liczby.
+Algorytmy *klasyfikacji* i *regresji* to dwa typy nadzorowanego uczenia maszynowego. Classification predicts an answer from a defined set of categories, such as a color like red, blue, or green. Regresja służy do prognozowania liczby.
 
-Ponieważ chcesz przewidzieć cenę, która jest liczbą, możesz użyć algorytmu regresji. W tym przykładzie używany jest model regresji liniowej.
+Because you want to predict price, which is a number, you can use a regression algorithm. For this example, you use a linear regression model.
 
-### <a name="split-the-data"></a>Podziel dane
+### <a name="split-the-data"></a>Split the data
 
-Podziel dane na dwa osobne zestawy danych, aby przeanalizować model i przetestować go.
+Split your data into two separate datasets for training the model and testing it.
 
-1. Wprowadź **Podziel dane** w polu wyszukiwania, aby znaleźć moduł **Split Data** . Połącz go z lewym portem **czystego brakujących danych** .
+1. Enter **split data** in the search box to find the **Split Data** module. Connect it to the left port of the **Clean Missing Data** module.
 
-1. Wybierz moduł **Split Data** .
+1. Select the **Split Data** module.
 
-1. W okienku właściwości ustaw **ułamek wierszy w pierwszym zestawie danych wyjściowych** na 0,7.
+1. In the properties pane, set the **Fraction of rows in the first output dataset** to 0.7.
 
-    Ta opcja dzieli na 70 procent danych, aby szkolić model i 30 procent na potrzeby testowania.
+    This option splits 70 percent of the data to train the model and 30 percent for testing it.
 
-1. W **okienku właściwości wpisz polecenie** *Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)* .
+1. In the properties pane **Comment** box, enter *Split the dataset into training set (0.7) and test set (0.3)* .
 
-### <a name="train-the-model"></a>Uczenie modelu
+### <a name="train-the-model"></a>Trenowanie modelu
 
-Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skanuje dane i wyszukuje korelacje między funkcjami samochodu a jego ceną do konstruowania modelu.
+Train the model by giving it a set of data that includes the price. The model scans through the data and looks for correlations between a car's features and its price to construct a model.
 
-1. Aby wybrać algorytm uczenia, usuń zaznaczenie pola wyszukiwania palety modułu.
+1. To select the learning algorithm, clear your module palette search box.
 
-1. Rozwiń **algorytmy Machine Learning**.
+1. Expand **Machine Learning Algorithms**.
     
-    Ta opcja umożliwia wyświetlenie kilku kategorii modułów, których można użyć do zainicjowania algorytmów uczenia.
+    This option displays several categories of modules that you can use to initialize learning algorithms.
 
-1. Wybierz **regresję** > **regresji liniowej**i przeciągnij ją na kanwę potoku.
+1. Select **Regression** > **Linear Regression**, and drag it to the pipeline canvas.
 
-1. Znajdź i przeciągnij moduł **uczenie modelu** na kanwę potoku. 
+1. Find and drag the **Train Model** module to the pipeline canvas. 
 
-1. Połącz dane wyjściowe modułu **regresji liniowej** z lewym wejściem modułu **uczenie modelu** .
+1. Connect the output of the **Linear Regression** module to the left input of the **Train Model** module.
 
-1. Połącz Wyjście danych szkoleniowych (lewy port) modułu **Split Data (podział danych** ) z prawym wejściem modułu **uczenie modelu** .
+1. Connect the training data output (left port) of the **Split Data** module to the right input of the **Train Model** module.
 
-    ![Zrzut ekranu przedstawiający poprawną konfigurację modułu uczenie modelu. Moduł regresja liniowa łączy się z lewym portem modułu uczenia modelowego, a moduł Split Data łączy się z odpowiednim portem modelu uczenia](./media/ui-tutorial-automobile-price-train-score/pipeline-train-model.png)
+    ![Screenshot showing the correct configuration of the Train Model module. The Linear Regression module connects to left port of Train Model module and the Split Data module connects to right port of Train Model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Wybierz moduł **uczenie modelu** .
+1. Select the **Train Model** module.
 
-1. W okienku właściwości wybierz pozycję **Edytuj selektor kolumny** .
+1. In the properties pane, select **Edit column** selector.
 
-1. W oknie dialogowym **etykieta kolumny** rozwiń menu rozwijane i wybierz pozycję **nazwy kolumn**. 
+1. In the **Label column** dialog box, expand the drop-down menu and select **Column names**. 
 
-1. W polu tekstowym wprowadź *Price*. Cena to wartość, która jest przewidywana przez model.
+1. In the text box, enter *price*. Price is the value that your model is going to predict.
 
-    Potok powinien wyglądać następująco:
+    Your pipeline should look like this:
 
-    ![Zrzut ekranu przedstawiający poprawną konfigurację potoku po dodaniu modułu uczenie modelu.](./media/ui-tutorial-automobile-price-train-score/pipeline-train-graph.png)
+    ![Screenshot showing the correct configuration of the pipeline after adding the Train Model module.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Oceń model uczenia maszynowego
+## <a name="evaluate-a-machine-learning-model"></a>Evaluate a machine learning model
 
-Po nauczeniu modelu przy użyciu 70 procent danych, można użyć go do oceny pozostałych 30 procent, aby zobaczyć, jak dobrze działa model.
+After you train your model by using 70 percent of the data, you can use it to score the other 30 percent to see how well your model functions.
 
-1. Wprowadź ciąg " *model oceny* " w polu wyszukiwania, aby znaleźć moduł **modelu oceny** . Przeciągnij moduł do kanwy potoku. 
+1. Enter *score model* in the search box to find the **Score Model** module. Drag the module to the pipeline canvas. 
 
-1. Połącz dane wyjściowe modułu **uczenie modelu** z lewym portem wejściowym **modelu wynikowego**. Połącz dane wyjściowe testu (prawy port) modułu **Split Data (dane** wejściowe) z odpowiednim portem wejściowym **modelu wynikowego**.
+1. Connect the output of the **Train Model** module to the left input port of **Score Model**. Connect the test data output (right port) of the **Split Data** module to the right input port of **Score Model**.
 
-1. Wprowadź *wartość Oceń* w polu wyszukiwania, aby znaleźć moduł **Oceń model** . Przeciągnij moduł do kanwy potoku. 
+1. Enter *evaluate* in the search box to find the **Evaluate Model** module. Drag the module to the pipeline canvas. 
 
-1. Połącz dane wyjściowe modułu z **modelem wynikowym** z lewym wejściem do **oceny modelu**. 
+1. Connect the output of the **Score Model** module to the left input of **Evaluate Model**. 
 
-    Końcowy potok powinien wyglądać następująco:
+    The final pipeline should look something like this:
 
-    ![Zrzut ekranu przedstawiający poprawną konfigurację potoku.](./media/ui-tutorial-automobile-price-train-score/pipeline-final-graph.png)
+    ![Screenshot showing the correct configuration of the pipeline.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>Uruchamianie potoku
 
@@ -224,29 +224,29 @@ Po nauczeniu modelu przy użyciu 70 procent danych, można użyć go do oceny po
 
 ### <a name="view-results"></a>Wyświetlanie wyników
 
-Po zakończeniu przebiegu można wyświetlić wyniki uruchomienia potoku. 
+After the run completes, you can view the results of the pipeline run. 
 
-1. Wybierz moduł **model oceny** , aby wyświetlić jego dane wyjściowe.
+1. Select the **Score Model** module to view its output.
 
-1. W okienku właściwości wybierz pozycję **wyjściowe** > **Wizualizacja**.
+1. In the properties pane, select **Outputs** > **Visualize**.
 
-    W tym miejscu możesz zobaczyć przewidywane ceny i rzeczywiste ceny z danych testowych.
+    Here you can see the predicted prices and the actual prices from the testing data.
 
-    ![Zrzut ekranu przedstawiający wizualizację danych wyjściowych z wyróżnioną kolumną etykieta z wynikami](./media/ui-tutorial-automobile-price-train-score/score-result.png)
+    ![Screenshot of the output visualization highlighting the Scored Label column](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
-1. Wybierz moduł **Oceń model** , aby wyświetlić jego dane wyjściowe.
+1. Select the **Evaluate Model** module to view its output.
 
-1. W okienku właściwości wybierz pozycję **Output** > **wizualizator**.
+1. In the properties pane, select **Output** > **Visualize**.
 
-Następujące statystyki są wyświetlane dla modelu:
+The following statistics are shown for your model:
 
-* **Średni błąd bezwzględny (Mae)** : Średnia liczba błędów bezwzględnych. Jest to różnica między wartością przewidywaną a wartością rzeczywistą.
-* **Błąd średnika "pierwiastek" z wartości głównej (RMSE)** : pierwiastek kwadratowy średniej wartości kwadratowych błędów prognoz wykonanych na testowym zestawie danych.
+* **Mean Absolute Error (MAE)** : The average of absolute errors. An error is the difference between the predicted value and the actual value.
+* **Root Mean Squared Error (RMSE)** : The square root of the average of squared errors of predictions made on the test dataset.
 * **Względny błąd absolutny**: iloraz średniej błędów absolutnych i bezwzględnej wartości różnicy między wartościami rzeczywistymi a średnią wszystkich wartości rzeczywistych.
 * **Błąd względny średniokwadratowy**: iloraz średniej kwadratów błędów i kwadratu różnicy między wartościami rzeczywistymi a średnią wszystkich wartości rzeczywistych.
-* **Współczynnik wyznaczania**: znany również jako wartość R kwadratowa, ta Metryka statystyczna wskazuje, jak dobrze model dopasowuje dane.
+* **Coefficient of Determination**: Also known as the R squared value, this statistical metric indicates how well a model fits the data.
 
-W przypadku wszystkich powyższych statystyk mniejsze wartości oznaczają lepszą jakość modelu. Mniejsza wartość wskazuje, że przewidywania są bliżej rzeczywistych wartości. Dla współczynnika wyznaczania wartość bliższej wartości to 1 (1,0), tym lepsze przewidywania.
+W przypadku wszystkich powyższych statystyk mniejsze wartości oznaczają lepszą jakość modelu. A smaller value indicates that the predictions are closer to the actual values. For the coefficient of determination, the closer its value is to one (1.0), the better the predictions.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -254,14 +254,14 @@ W przypadku wszystkich powyższych statystyk mniejsze wartości oznaczają lepsz
 
 ## <a name="next-steps"></a>Następne kroki
 
-W pierwszej części tego samouczka zostały wykonane następujące zadania:
+In part one of this tutorial, you completed the following tasks:
 
 * Tworzenie potoku
 * Przygotowywanie danych
-* Uczenie modelu
-* Ocena i Ocena modelu
+* Trenowanie modelu
+* Score and evaluate the model
 
-W części drugiej dowiesz się, jak wdrożyć model jako punkt końcowy w czasie rzeczywistym.
+In part two, you'll learn how to deploy your model as a real-time endpoint.
 
 > [!div class="nextstepaction"]
-> [Kontynuuj Wdrażanie modeli](tutorial-designer-automobile-price-deploy.md)
+> [Continue to deploying models](tutorial-designer-automobile-price-deploy.md)

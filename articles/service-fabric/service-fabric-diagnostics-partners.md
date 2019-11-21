@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Service Fabric monitorowania partnerów | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować usługi Azure Service Fabric za pomocą monitorowanie rozwiązań partnerskich
+title: Azure Service Fabric Monitoring Partners | Microsoft Docs
+description: Learn how to monitor Azure Service Fabric with partner monitoring solutions
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c2f953c98e41291951f07556bd0cd441d2793d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946596"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232448"
 ---
-# <a name="azure-service-fabric-monitoring-partners"></a>Usługa Azure Service Fabric monitorowania partnerów
+# <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric Monitoring Partners
 
-W tym artykule pokazano, jak jeden monitorować ich aplikacji usługi Service Fabric, klastrów i infrastruktury za pomocą kliku rozwiązań partnerskich. Współpracowaliśmy z każdą z partnerów wymienionych poniżej, aby utworzyć integracji ofert dla usługi Service Fabric.
+This article illustrates how one can monitor their Service Fabric applications, clusters, and infrastructure with a handful of partner solutions. We have worked with each of the partners below to create integrated offerings for Service Fabric.
 
-## <a name="dynatrace"></a>Rozwiązania Dynatrace
+## <a name="dynatrace"></a>Dynatrace
 
-Naszej integracji za pomocą rozwiązania Dynatrace zapewnia wiele poza pole funkcje do monitorowania klastrów usługi Service Fabric. Instalowanie Dynatrace OneAgent na wystąpieniach zestawu skalowania maszyn wirtualnych zapewnia liczniki wydajności i topologii wdrożenia usługi Service Fabric do poziomu aplikacji. Dynatrace również jest doskonałym wyborem dla monitorowania lokalnego. Zapoznaj się z jedną z wymienionych w funkcji [ogłoszenie](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) i [instrukcje](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) umożliwiające Dynatrace w klastrze. 
+Our integration with Dynatrace provides many out of the box features to monitor your Service Fabric clusters. Installing the Dynatrace OneAgent on your VMSS instances gives you performance counters and a topology of your Service Fabric deployment down to the App level. Dynatrace is also a great choice for on-premises monitoring. Check out more of the features listed in the [announcement](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) and [instructions](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) to enable Dynatrace on your cluster. 
 
-## <a name="datadog"></a>Pomocą usługi Datadog
+## <a name="datadog"></a>Datadog
 
-Pomocą usługi Datadog ma rozszerzenie dla zestawu skalowania maszyn wirtualnych dla wystąpień systemów Windows i Linux. Przy użyciu pomocą usługi Datadog można zebrać dzienniki zdarzeń Windows i tym samym zbierania zdarzeń platformy usługi Service Fabric na Windows. Zapoznaj się z instrukcjami, w jaki sposób wysyłać dane diagnostyczne do pomocą usługi Datadog [tutaj](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric).
+Datadog has an extension for VMSS for both Windows and Linux instances. Using Datadog you can collect Windows event logs and thereby collect Service Fabric platform events on Windows. Check out the instructions on how to send your diagnostics data to Datadog [here](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric).
 
 ## <a name="appdynamics"></a>AppDynamics
 
-Integracja usługi Service Fabric z oprogramowaniem AppDynamics znajduje się na poziomie aplikacji. Aktualizowanie zmiennych środowiskowych i używając rozszerzeń Nuget Dynamics aplikacji, może wysyłać dane telemetryczne aplikacji do AppDynamics. Użyj tych [instrukcje](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) dotyczące sposobów integracji aplikacji .NET usługi Service Fabric z oprogramowaniem AppDynamics.
+The Service Fabric integration with AppDynamics is at the application level. By updating environment variables and using App Dynamics NuGets, you can send application telemetry to AppDynamics. Refer to these [instructions](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) for how to integrate your .NET Service Fabric applications with AppDynamics.
 
 ## <a name="new-relic"></a>New Relic
 
-New Relic to kolejne narzędzie zarządzania wydajnością aplikacji, które dobrze integruje się z aplikacji usługi Service Fabric. Można zainstalować nowe pakiety Relic i Dodaj określonych zmiennych środowiskowych w plikach manifestu wysyłać dane telemetryczne aplikacji New Relic. Zapoznaj się z tymi [instrukcje](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) włączyć telemetrię New Relic dla aplikacji .NET usługi Service Fabric.
+New Relic is another Application Performance Management tool that integrates well with Service Fabric applications. You can install the New Relic NuGet packages and add specific environment variables in your manifest files to send your application telemetry to New Relic. Check out these [instructions](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) to enable New Relic telemetry for your .NET Service Fabric applications.
 
 ## <a name="elk"></a>ELK 
 
-Stos ELK to zbiór technologie typu open source: Usługa Elasticsearch, Logstash i Kibana. Używając tych w połączeniu, można zbierać, przechowywać i analizować dane monitorowania i diagnostyki usługi Service Fabric. Mamy zapoznać się z samouczkiem jak to zrobić przy użyciu natywnych aplikacji Java usługi Service Fabric [tutaj](service-fabric-tutorial-java-elk.md). 
+The ELK stack is a collection of open source technologies: Elasticsearch, Logstash, and Kibana. By using these in combination, you can collect, store, and analyze Service Fabric monitoring and diagnostics data. We have a tutorial for how to do this with Service Fabric native Java applications [here](service-fabric-tutorial-java-elk.md). 
 
 ## <a name="humio"></a>Humio
 
-Humio jest usługa zbierania dzienników, którym można zbierać dzienniki z aplikacji i zdarzeń z usługi Service Fabric w chmurze lub lokalnie w czasie rzeczywistym. Oprócz na żywo observability Humio oferuje najnowocześniejsze analiz i wizualizacji możliwości wyświetlania i zbieranie szczegółowych informacji z diagnostyczną. Humio ma niskie koszty planów cenowych i został opracowany pod kątem skalowania, zachowując jego jest rozjaśnienie większej szybkości. Integruje się bezpośrednio za pomocą zdarzenia platformy usługi Service Fabric i telemetrii aplikacji. Więcej informacji na temat integracji Humio i Service Fabric [tutaj](https://github.com/humio/service-fabric-humio).
+Humio is a log collection service that can gather logs from your applications and events from Service Fabric in the cloud or on-premises in real time. In addition to live observability, Humio offers state of the art analysis and visualization capabilities for viewing and collecting insights from your diagnostics. Humio has cost effective pricing plans and is built to scale while retaining it's lightening fast speed. It directly integrates with Service Fabric platform events and Application telemetry. You can read more about the Humio and Service Fabric integration [here](https://github.com/humio/service-fabric-humio).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Pobierz [omówienie monitorowania i diagnostyki](service-fabric-diagnostics-overview.md) w usłudze Service Fabric
-* Dowiedz się, jak [zdiagnozować typowe scenariusze](service-fabric-diagnostics-common-scenarios.md) za pomocą naszych pierwszy narzędzi innych firm
+* Get an [overview of monitoring and diagnostics](service-fabric-diagnostics-overview.md) in Service Fabric
+* Learn how to [diagnose common scenarios](service-fabric-diagnostics-common-scenarios.md) with our first party tools

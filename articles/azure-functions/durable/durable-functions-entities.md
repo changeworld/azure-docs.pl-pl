@@ -1,66 +1,62 @@
 ---
-title: Trwałe jednostki — Azure Functions
-description: Dowiedz się, co to są trwałe jednostki i jak ich używać w rozszerzeniu Durable Functions Azure Functions.
-services: functions
+title: Durable entities - Azure Functions
+description: Learn what durable entities are and how to use them in the Durable Functions extension for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d62281b4ccb522b3a784428bcf0284730f120628
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904023"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232928"
 ---
-# <a name="entity-functions"></a>Funkcje jednostki
+# <a name="entity-functions"></a>Entity functions
 
-Funkcje Entity definiują operacje umożliwiające odczytywanie i aktualizowanie małych fragmentów stanu, znanych jako *jednostek trwałych*. Podobnie jak funkcje programu Orchestrator, funkcje jednostki są funkcjami o specjalnym typie wyzwalacza, *wyzwalaczem jednostki*. W przeciwieństwie do funkcji programu Orchestrator, funkcja Entity Functions zarządza stanem jednostki jawnie, a nie niejawnie reprezentującą stan za pośrednictwem przepływu sterowania.
-Jednostki zapewniają metodę skalowania aplikacji przez dystrybuowanie pracy między wieloma jednostkami, z których każdy ma stan o nieokreślonym rozmiarze.
+Entity functions define operations for reading and updating small pieces of state, known as *durable entities*. Like orchestrator functions, entity functions are functions with a special trigger type, the *entity trigger*. Unlike orchestrator functions, entity functions manage the state of an entity explicitly, rather than implicitly representing state via control flow.
+Entities provide a means for scaling out applications by distributing the work across many entities, each with a modestly sized state.
 
 > [!NOTE]
-> Funkcje jednostki i powiązane funkcje są dostępne tylko w Durable Functions 2,0 i nowszych.
+> Entity functions and related functionality is only available in Durable Functions 2.0 and above.
 
-## <a name="general-concepts"></a>Pojęcia ogólne
+## <a name="general-concepts"></a>General concepts
 
-Jednostki zachowują się jak małe usługi, które komunikują się za pośrednictwem komunikatów. Każda jednostka ma unikatową tożsamość i stan wewnętrzny (jeśli istnieje). Podobnie jak w przypadku usług lub obiektów, jednostki wykonują operacje po wyświetleniu monitu. Gdy operacja jest wykonywana, może ona zaktualizować stan wewnętrzny jednostki. Może również wywołać usługi zewnętrzne i poczekać na odpowiedź. Jednostki komunikują się z innymi jednostkami, aranżacjami i klientami przy użyciu komunikatów, które są niejawnie wysyłane przez niezawodne kolejki. 
+Entities behave a bit like tiny services that communicate via messages. Each entity has a unique identity and an internal state (if it exists). Like services or objects, entities perform operations when prompted to do so. When an operation executes, it might update the internal state of the entity. It might also call external services and wait for a response. Entities communicate with other entities, orchestrations, and clients by using messages that are implicitly sent via reliable queues. 
 
-Aby zapobiec konfliktom, wszystkie operacje na pojedynczej jednostce są gwarantowane do wykonania szeregowego, czyli jeden po drugim. 
+To prevent conflicts, all operations on a single entity are guaranteed to execute serially, that is, one after another. 
 
-### <a name="entity-id"></a>Identyfikator jednostki
-Do jednostek uzyskuje się dostęp za pośrednictwem unikatowego identyfikatora, *identyfikatora jednostki*. Identyfikator jednostki to po prostu para ciągów, które jednoznacznie identyfikują wystąpienie jednostki. Składa się z:
+### <a name="entity-id"></a>Entity ID
+Entities are accessed via a unique identifier, the *entity ID*. An entity ID is simply a pair of strings that uniquely identifies an entity instance. It consists of an:
 
-* **Nazwa jednostki**, która jest nazwą identyfikującą typ jednostki. Przykładem jest "licznik". Ta nazwa musi być zgodna z nazwą funkcji jednostki implementującej jednostkę. Wielkość liter nie jest uwzględniana.
-* **Klucz jednostki**, który jest ciągiem, który jednoznacznie identyfikuje jednostkę między wszystkimi innymi jednostkami o tej samej nazwie. Przykładem jest identyfikator GUID.
+* **Entity name**, which is a name that identifies the type of the entity. An example is "Counter." This name must match the name of the entity function that implements the entity. It isn't sensitive to case.
+* **Entity key**, which is a string that uniquely identifies the entity among all other entities of the same name. An example is a GUID.
 
-Na przykład funkcja jednostki `Counter` może być używana do przechowywania wyników w grze online. Każde wystąpienie gry ma unikatowy identyfikator jednostki, taki jak `@Counter@Game1` i `@Counter@Game2`. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
+For example, a `Counter` entity function might be used for keeping score in an online game. Each instance of the game has a unique entity ID, such as `@Counter@Game1` and `@Counter@Game2`. All operations that target a particular entity require specifying an entity ID as a parameter.
 
-### <a name="entity-operations"></a>Operacje jednostki ###
+### <a name="entity-operations"></a>Entity operations ###
 
-Aby wywołać operację na jednostce, określ:
+To invoke an operation on an entity, specify the:
 
-* **Identyfikator jednostki** docelowej.
-* **Nazwa operacji**, która jest ciągiem, który określa operację do wykonania. Na przykład jednostka `Counter` może obsługiwać operacje `add`, `get`lub `reset`.
-* **Wejście operacji**, który jest opcjonalnym parametrem wejściowym dla operacji. Na przykład operacja dodawania może przyjmować liczbę całkowitą jako dane wejściowe.
+* **Entity ID** of the target entity.
+* **Operation name**, which is a string that specifies the operation to perform. For example, the `Counter` entity could support `add`, `get`, or `reset` operations.
+* **Operation input**, which is an optional input parameter for the operation. For example, the add operation can take an integer amount as the input.
 
-Operacje mogą zwracać wartość wyniku lub wynik błędu, takie jak błąd JavaScript lub wyjątek programu .NET. Ten wynik lub błąd może być zauważalny przez aranżacje, które wywołały operację.
+Operations can return a result value or an error result, such as a JavaScript error or a .NET exception. This result or error can be observed by orchestrations that called the operation.
 
-Operacja jednostki może również tworzyć, odczytywać, aktualizować i usuwać stan jednostki. Stan jednostki jest zawsze trwale trwały w magazynie.
+An entity operation can also create, read, update, and delete the state of the entity. The state of the entity is always durably persisted in storage.
 
-## <a name="define-entities"></a>Definiowanie jednostek
+## <a name="define-entities"></a>Define entities
 
-Obecnie dwa różne interfejsy API służące do definiowania jednostek to:
+Currently, the two distinct APIs for defining entities are a:
 
-**Składnia oparta na funkcjach**, gdzie jednostki są reprezentowane jako funkcje i operacje są jawnie wysyłane przez aplikację. Ta składnia działa dobrze w przypadku jednostek z prostym stanem, kilkoma operacjami lub dynamicznym zestawem operacji takich jak w strukturach aplikacji. Ta składnia może być żmudnym, ponieważ nie przechwytuje błędów typu w czasie kompilacji.
+**Function-based syntax**, where entities are represented as functions and operations are explicitly dispatched by the application. This syntax works well for entities with simple state, few operations, or a dynamic set of operations like in application frameworks. This syntax can be tedious to maintain because it doesn't catch type errors at compile time.
 
-**Składnia oparta na klasie**, gdzie jednostki i operacje są reprezentowane przez klasy i metody. Ta składnia daje łatwiejszy do odczytu kod i umożliwia wywoływanie operacji w sposób bezpieczny dla typu. Składnia oparta na klasie jest cienką warstwą na podstawie składni opartej na funkcjach, dlatego można używać obu wariantów zamiennie w tej samej aplikacji.
+**Class-based syntax**, where entities and operations are represented by classes and methods. This syntax produces more easily readable code and allows operations to be invoked in a type-safe way. The class-based syntax is a thin layer on top of the function-based syntax, so both variants can be used interchangeably in the same application.
 
-### <a name="example-function-based-syntax---c"></a>Przykład: Składnia oparta na funkcjach-C#
+### <a name="example-function-based-syntax---c"></a>Example: Function-based syntax - C#
 
-Poniższy kod jest przykładem prostej jednostki `Counter` zaimplementowaną jako funkcja trwała. Ta funkcja definiuje trzy operacje, `add`, `reset`i `get`, z których każda działa na stanie liczby całkowitej.
+The following code is an example of a simple `Counter` entity implemented as a durable function. This function defines three operations, `add`, `reset`, and `get`, each of which operates on an integer state.
 
 ```csharp
 [FunctionName("Counter")]
@@ -81,11 +77,11 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Aby uzyskać więcej informacji na temat składni opartej na funkcjach i korzystania z niej, zobacz [składnia oparta na funkcjach](durable-functions-dotnet-entities.md#function-based-syntax).
+For more information on the function-based syntax and how to use it, see [Function-based syntax](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax---c"></a>Przykład: Składnia oparta na klasie —C#
+### <a name="example-class-based-syntax---c"></a>Example: Class-based syntax - C#
 
-Poniższy przykład jest równoważną implementacją jednostki `Counter` przy użyciu klas i metod.
+The following example is an equivalent implementation of the `Counter` entity using classes and methods.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -106,15 +102,15 @@ public class Counter
 }
 ```
 
-Stan tej jednostki jest obiektem typu `Counter`, który zawiera pole przechowujące bieżącą wartość licznika. Aby zachować ten obiekt w magazynie, jest on serializowany i deserializowany przez bibliotekę [JSON.NET](https://www.newtonsoft.com/json) . 
+The state of this entity is an object of type `Counter`, which contains a field that stores the current value of the counter. To persist this object in storage, it's serialized and deserialized by the [Json.NET](https://www.newtonsoft.com/json) library. 
 
-Aby uzyskać więcej informacji na temat składni opartej na klasie i korzystania z niej, zobacz [Definiowanie klas jednostek](durable-functions-dotnet-entities.md#defining-entity-classes).
+For more information on the class-based syntax and how to use it, see [Defining entity classes](durable-functions-dotnet-entities.md#defining-entity-classes).
 
-### <a name="example-javascript-entity"></a>Przykład: obiekt JavaScript
+### <a name="example-javascript-entity"></a>Example: JavaScript entity
 
-Trwałe jednostki są dostępne w języku JavaScript, począwszy od wersji **1.3.0** pakietu `durable-functions` npm. Poniższy kod jest obiektem `Counter` zaimplementowany jako funkcja trwała zapisywana w języku JavaScript.
+Durable entities are available in JavaScript starting with version **1.3.0** of the `durable-functions` npm package. The following code is the `Counter` entity implemented as a durable function written in JavaScript.
 
-**Function. JSON**
+**function.json**
 ```json
 {
   "bindings": [
@@ -128,7 +124,7 @@ Trwałe jednostki są dostępne w języku JavaScript, począwszy od wersji **1.3
 }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -149,27 +145,27 @@ module.exports = df.entity(function(context) {
 });
 ```
 
-## <a name="access-entities"></a>Jednostki dostępu
+## <a name="access-entities"></a>Access entities
 
-Dostęp do jednostek można uzyskać przy użyciu jednej lub dwukierunkowej komunikacji. Poniższe terminologia odróżnia dwie formy komunikacji: 
+Entities can be accessed using one-way or two-way communication. The following terminology distinguishes the two forms of communication: 
 
-* **Wywołanie** jednostki używa komunikacji dwukierunkowej (rundy). Wysyłasz komunikat operacji do jednostki, a następnie poczekaj na komunikat odpowiedzi przed kontynuowaniem. Komunikat odpowiedzi może podawać wartość wyniku lub wynik błędu, taki jak błąd JavaScript lub wyjątek programu .NET. Ten wynik lub błąd jest następnie zauważalny przez obiekt wywołujący.
-* **Sygnalizowanie** jednostki używa komunikacji jednokierunkowej (Fire i zapomnij). Wysyłasz komunikat operacji, ale nie czekaj na odpowiedź. Gdy komunikat jest gwarantowany w końcu, nadawca nie wie, kiedy i nie może obserwować żadnej wartości wyniku ani błędów.
+* **Calling** an entity uses two-way (round-trip) communication. You send an operation message to the entity, and then wait for the response message before you continue. The response message can provide a result value or an error result, such as a JavaScript error or a .NET exception. This result or error is then observed by the caller.
+* **Signaling** an entity uses one-way (fire and forget) communication. You send an operation message but don't wait for a response. While the message is guaranteed to be delivered eventually, the sender doesn't know when and can't observe any result value or errors.
 
-Dostęp do jednostek można uzyskać z poziomu funkcji klienta, z poziomu funkcji programu Orchestrator lub z poziomu funkcji Entity. Nie wszystkie formy komunikacji są obsługiwane przez wszystkie konteksty:
+Entities can be accessed from within client functions, from within orchestrator functions, or from within entity functions. Not all forms of communication are supported by all contexts:
 
-* Z poziomu klientów można sygnalizować jednostki i odczytać stan jednostki.
-* Z poziomu aranżacji można sygnalizować jednostki i można wywoływać jednostki.
-* Z poziomu jednostek można sygnalizować jednostki.
+* From within clients, you can signal entities and you can read the entity state.
+* From within orchestrations, you can signal entities and you can call entities.
+* From within entities, you can signal entities.
 
-W poniższych przykładach przedstawiono różne sposoby uzyskiwania dostępu do jednostek.
+The following examples illustrate these various ways of accessing entities.
 
 > [!NOTE]
-> Dla uproszczenia w poniższych przykładach przedstawiono składnię o jednoznacznie określonym typie na potrzeby uzyskiwania dostępu do jednostek. Ogólnie rzecz biorąc, zalecamy [dostęp do jednostek za za poorednictwem interfejsów](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , ponieważ zapewnia ona większą kontrolę typów.
+> For simplicity, the following examples show the loosely typed syntax for accessing entities. In general, we recommend that you [access entities through interfaces](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) because it provides more type checking.
 
-### <a name="example-client-signals-an-entity"></a>Przykład: klient sygnalizuje jednostkę
+### <a name="example-client-signals-an-entity"></a>Example: Client signals an entity
 
-Aby uzyskać dostęp do jednostek z zwykłej funkcji platformy Azure, która jest również znana jako funkcja klienta, należy użyć [powiązania danych wyjściowych klienta jednostki](durable-functions-bindings.md#entity-client). Poniższy przykład pokazuje funkcję wyzwalaną przez kolejkę przy użyciu tego powiązania.
+To access entities from an ordinary Azure Function, which is also known as a client function, use the [entity client output binding](durable-functions-bindings.md#entity-client). The following example shows a queue-triggered function signaling an entity using this binding.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -194,11 +190,11 @@ module.exports = async function (context) {
 };
 ```
 
-Termin " *sygnał* " oznacza, że wywołanie interfejsu API jednostki jest jednokierunkowe i asynchroniczne. Nie jest możliwe, aby funkcja klienta wiedziała, kiedy jednostka przetworzyła operację. Ponadto funkcja klienta nie może obserwować żadnych wartości wyników ani wyjątków. 
+The term *signal* means that the entity API invocation is one-way and asynchronous. It's not possible for a client function to know when the entity has processed the operation. Also, the client function can't observe any result values or exceptions. 
 
-### <a name="example-client-reads-an-entity-state"></a>Przykład: klient odczytuje stan jednostki
+### <a name="example-client-reads-an-entity-state"></a>Example: Client reads an entity state
 
-Funkcje klienta programu mogą również wysyłać zapytania o stan jednostki, jak pokazano w następującym przykładzie:
+Client functions can also query the state of an entity, as shown in the following example:
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -222,11 +218,11 @@ module.exports = async function (context) {
 };
 ```
 
-Zapytania o stan jednostki są wysyłane do magazynu trwałego śledzenia i zwracają ostatnio utrwalony stan jednostki. Ten stan jest zawsze "przydzielony", oznacza to, że nigdy nie jest tymczasowy stan pośredni przyjęty w trakcie wykonywania operacji. Jednak jest możliwe, że ten stan jest nieodświeżony w porównaniu do stanu w pamięci jednostki. Tylko aranżacje mogą odczytywać stan w pamięci jednostki, zgodnie z opisem w następnej sekcji.
+Entity state queries are sent to the Durable tracking store and return the entity's most recently persisted state. This state is always a "committed" state, that is, it's never a temporary intermediate state assumed in the middle of executing an operation. However, it's possible that this state is stale compared to the entity's in-memory state. Only orchestrations can read an entity's in-memory state, as described in the following section.
 
-### <a name="example-orchestration-signals-and-calls-an-entity"></a>Przykład: sygnały aranżacji i wywołania jednostki
+### <a name="example-orchestration-signals-and-calls-an-entity"></a>Example: Orchestration signals and calls an entity
 
-Funkcje programu Orchestrator mogą uzyskiwać dostęp do jednostek przy użyciu interfejsów API w ramach [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger). Poniższy przykładowy kod przedstawia funkcję programu Orchestrator wywołującą i sygnalizującą jednostkę `Counter`.
+Orchestrator functions can access entities by using APIs on the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger). The following example code shows an orchestrator function calling and signaling a `Counter` entity.
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -260,15 +256,15 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Tylko aranżacje mogą wywołać jednostki i uzyskać odpowiedź, co może być wartością zwracaną lub wyjątkiem. Funkcje klienta, które używają [powiązania klienta](durable-functions-bindings.md#entity-client) , mogą jedynie sygnalizować jednostki.
+Only orchestrations are capable of calling entities and getting a response, which could be either a return value or an exception. Client functions that use the [client binding](durable-functions-bindings.md#entity-client) can only signal entities.
 
 > [!NOTE]
-> Wywołanie jednostki z funkcji programu Orchestrator jest podobne do wywołania [funkcji działania](durable-functions-types-features-overview.md#activity-functions) z funkcji programu Orchestrator. Główną różnicą jest to, że funkcje jednostki są trwałymi obiektami o adresie, który jest IDENTYFIKATORem jednostki. Funkcja Entity Functions obsługuje określanie nazwy operacji. Funkcje działania, z drugiej strony, są bezstanowe i nie mają koncepcji operacji.
+> Calling an entity from an orchestrator function is similar to calling an [activity function](durable-functions-types-features-overview.md#activity-functions) from an orchestrator function. The main difference is that entity functions are durable objects with an address, which is the entity ID. Entity functions support specifying an operation name. Activity functions, on the other hand, are stateless and don't have the concept of operations.
 
-### <a name="example-entity-signals-an-entity"></a>Przykład: jednostka sygnalizuje jednostkę
+### <a name="example-entity-signals-an-entity"></a>Example: Entity signals an entity
 
-Funkcja Entity może wysyłać sygnały do innych jednostek, a nawet do siebie, podczas gdy wykonuje operację.
-Na przykład można zmodyfikować poprzedni przykład jednostki `Counter`, tak aby wysyłał sygnał "punkt kontrolny" do pewnej jednostki monitora, gdy licznik osiągnie wartość 100.
+An entity function can send signals to other entities, or even itself, while it executes an operation.
+For example, we can modify the previous `Counter` entity example so that it sends a "milestone-reached" signal to some monitor entity when the counter reaches the value 100.
 
 ```csharp
    case "add":
@@ -294,16 +290,16 @@ Na przykład można zmodyfikować poprzedni przykład jednostki `Counter`, tak a
         break;
 ```
 
-## <a name="entity-coordination"></a>Koordynacja jednostek
+## <a name="entity-coordination"></a>Entity coordination
 
-Mogą wystąpić sytuacje, w których trzeba skoordynować operacje w wielu jednostkach. Na przykład w aplikacji bankowej mogą istnieć jednostki reprezentujące poszczególne konta bankowe. W przypadku przenoszenia funduszy z jednego konta do innego należy upewnić się, że konto źródłowe ma wystarczające środki. Należy również upewnić się, że aktualizacje zarówno dla konta źródłowego, jak i docelowego są wykonywane w sposób spójny transakcyjnie.
+There might be times when you need to coordinate operations across multiple entities. For example, in a banking application, you might have entities that represent individual bank accounts. When you transfer funds from one account to another, you must ensure that the source account has sufficient funds. You also must ensure that updates to both the source and destination accounts are done in a transactionally consistent way.
 
-### <a name="example-transfer-funds-c"></a>Przykład: transfer funduszy (C#)
+### <a name="example-transfer-funds-c"></a>Example: Transfer funds (C#)
 
-Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami kont przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia metody `LockAsync`, aby utworzyć _sekcję krytyczną_ w aranżacji.
+The following example code transfers funds between two account entities by using an orchestrator function. Coordinating entity updates requires using the `LockAsync` method to create a _critical section_ in the orchestration.
 
 > [!NOTE]
-> Dla uproszczenia w tym przykładzie użyto wcześniej zdefiniowanej jednostki `Counter`. W rzeczywistej aplikacji lepiej jest zdefiniować bardziej szczegółową jednostkę `BankAccount`.
+> For simplicity, this example reuses the `Counter` entity defined previously. In a real application, it would be better to define a more detailed `BankAccount` entity.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -345,61 +341,61 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-W programie .NET `LockAsync` zwraca `IDisposable`, co spowoduje zakończenie sekcji krytycznej po jej usunięciu. Ten `IDisposable` wynik może być używany razem z blokiem `using`, aby uzyskać składniową reprezentację sekcji krytycznej.
+In .NET, `LockAsync` returns `IDisposable`, which ends the critical section when disposed. This `IDisposable` result can be used together with a `using` block to get a syntactic representation of the critical section.
 
-W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki źródłowej do jednostki docelowej. Metoda `LockAsync` zablokowana zarówno dla jednostki konta źródłowego, jak i docelowego. To blokowanie zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont, dopóki logika aranżacji nie zakończyła sekcji krytycznej na końcu instrukcji `using`. Takie zachowanie zapobiega możliwości przekroczenia liczby projektów z konta źródłowego.
-
-> [!NOTE] 
-> Gdy aranżacja kończy się, zwykle lub z powodu błędu, wszelkie krytyczne sekcje w toku są niejawnie zakończone i wszystkie blokady są zwalniane.
-
-### <a name="critical-section-behavior"></a>Zachowanie sekcji krytycznej
-
-Metoda `LockAsync` tworzy sekcję krytyczną w aranżacji. Te krytyczne sekcje uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. Wewnętrznie interfejs API `LockAsync` wysyła do jednostek operacje "Lock" i zwraca, gdy odbierze komunikat odpowiedzi "lockd" z każdej z tych samych jednostek. Blokady i odblokowywanie to wbudowane operacje obsługiwane przez wszystkie jednostki.
-
-Żadna operacja z innych klientów nie jest dozwolona w jednostce, gdy jest w stanie zablokowanym. Takie zachowanie zapewnia, że tylko jedno wystąpienie aranżacji może blokować jednostkę jednocześnie. Jeśli obiekt wywołujący podejmie próbę wywołania operacji na jednostce, gdy jest ona zablokowana przez aranżację, ta operacja zostanie umieszczona w kolejce oczekujących operacji. Żadne oczekujące operacje nie są przetwarzane do momentu, gdy organizacja holdingowa zwolni blokadę.
+In the preceding example, an orchestrator function transferred funds from a source entity to a destination entity. The `LockAsync` method locked both the source and destination account entities. This locking ensured that no other client could query or modify the state of either account until the orchestration logic exited the critical section at the end of the `using` statement. This behavior prevents the possibility of overdrafting from the source account.
 
 > [!NOTE] 
-> To zachowanie różni się nieco od elementów pierwotnych synchronizacji używanych w większości języków programowania, takich jak instrukcja `lock` w C#. Na przykład w C#, instrukcja `lock` musi być używana przez wszystkie wątki, aby zapewnić poprawną synchronizację w wielu wątkach. Jednostki nie wymagają jednak, aby wszyscy wywołujący jawnie blokowały jednostkę. Jeśli jakikolwiek obiekt wywołujący blokuje jednostkę, wszystkie pozostałe operacje na tej jednostce są blokowane i umieszczane w kolejce w tle.
+> When an orchestration terminates, either normally or with an error, any critical sections in progress are implicitly ended and all locks are released.
 
-Blokady jednostek są trwałe, więc zachowują się nawet wtedy, gdy proces wykonywany jest odtwarzany. Blokady są wewnętrznie utrwalane jako część trwałego stanu jednostki.
+### <a name="critical-section-behavior"></a>Critical section behavior
 
-W przeciwieństwie do transakcji sekcje krytyczne nie są automatycznie wycofywane w przypadku błędów. Zamiast tego, wszelkie obsłudze błędów, takie jak wycofywanie lub ponawianie próby, muszą być jawnie kodowane, na przykład przez przechwytywanie błędów lub wyjątków. Ten wybór projektu jest zamierzony. Automatyczne wycofywanie wszystkich efektów aranżacji jest trudne lub niemożliwe, ponieważ aranżacje mogą uruchamiać działania i wykonywać wywołania do zewnętrznych usług, których nie można cofnąć. Ponadto próby wycofania mogą zakończyć się niepowodzeniem i wymagać dalszej obsługi błędów.
+The `LockAsync` method creates a critical section in an orchestration. These critical sections prevent other orchestrations from making overlapping changes to a specified set of entities. Internally, the `LockAsync` API sends "lock" operations to the entities and returns when it receives a "lock acquired" response message from each of these same entities. Both lock and unlock are built-in operations supported by all entities.
 
-### <a name="critical-section-rules"></a>Reguły sekcji krytycznej
+No operations from other clients are allowed on an entity while it's in a locked state. This behavior ensures that only one orchestration instance can lock an entity at a time. If a caller tries to invoke an operation on an entity while it's locked by an orchestration, that operation is placed in a pending operation queue. No pending operations are processed until after the holding orchestration releases its lock.
 
-W przeciwieństwie do elementów podstawowych blokowania niskiego poziomu w większości języków programowania, sekcje krytyczne *nie są zagwarantowane*. Aby zapobiec zakleszczeniom, Wymuś następujące ograniczenia: 
+> [!NOTE] 
+> This behavior is slightly different from synchronization primitives used in most programming languages, such as the `lock` statement in C#. For example, in C#, the `lock` statement must be used by all threads to ensure proper synchronization across multiple threads. Entities, however, don't require all callers to explicitly lock an entity. If any caller locks an entity, all other operations on that entity are blocked and queued behind that lock.
 
-* Sekcje krytyczne nie mogą być zagnieżdżane.
-* Sekcje krytyczne nie mogą tworzyć podaranżacji.
-* Sekcje krytyczne mogą wywoływać tylko jednostki, które zostały zablokowane.
-* Sekcje krytyczne nie mogą wywoływać tej samej jednostki przy użyciu wielu wywołań równoległych.
-* Sekcje krytyczne mogą sygnalizować tylko jednostki, które nie zostały zablokowane.
+Locks on entities are durable, so they persist even if the executing process is recycled. Locks are internally persisted as part of an entity's durable state.
 
-Wszelkie naruszenia tych reguł powodują wystąpienie błędu czasu wykonywania, takie jak `LockingRulesViolationException` w programie .NET, w tym komunikat objaśniający, która reguła została przerwana.
+Unlike transactions, critical sections don't automatically roll back changes in the case of errors. Instead, any error handling, such as roll-back or retry, must be explicitly coded, for example by catching errors or exceptions. This design choice is intentional. Automatically rolling back all the effects of an orchestration is difficult or impossible in general, because orchestrations might run activities and make calls to external services that can't be rolled back. Also, attempts to roll back might themselves fail and require further error handling.
 
-## <a name="comparison-with-virtual-actors"></a>Porównanie z aktorami wirtualnymi
+### <a name="critical-section-rules"></a>Critical section rules
 
-Wiele funkcji jednostek trwałych jest inspirowany [modelem aktora](https://en.wikipedia.org/wiki/Actor_model). Jeśli znasz już uczestników, możesz rozpoznać wiele pojęć opisanych w tym artykule. Trwałe jednostki są szczególnie podobne do [aktorów wirtualnych](https://research.microsoft.com/projects/orleans/)lub ziaren, które są popularne przez [projekt Orleans](http://dotnet.github.io/orleans/). Na przykład:
+Unlike low-level locking primitives in most programming languages, critical sections are *guaranteed not to deadlock*. To prevent deadlocks, we enforce the following restrictions: 
 
-* Jednostki trwałe są adresowane za pośrednictwem identyfikatora jednostki.
-* Trwałe operacje jednostki wykonują szeregowo, pojedynczo, aby uniknąć sytuacji wyścigu.
-* Trwałe jednostki są tworzone niejawnie po wywołaniu lub zasygnalizowaniu.
-* W przypadku braku wykonywania operacji trwałe jednostki są dyskretnie zwalniane z pamięci.
+* Critical sections can't be nested.
+* Critical sections can't create suborchestrations.
+* Critical sections can call only entities they have locked.
+* Critical sections can't call the same entity using multiple parallel calls.
+* Critical sections can signal only entities they haven't locked.
 
-Istnieją pewne istotne różnice, które warto zwrócić uwagę:
+Any violations of these rules cause a runtime error, such as `LockingRulesViolationException` in .NET, which includes a message that explains what rule was broken.
 
-* Trwałe jednostki ustalają priorytety trwałości przed opóźnieniami i dlatego mogą nie być odpowiednie dla aplikacji z rygorystycznymi wymaganiami opóźnienia.
-* Jednostki trwałe nie mają wbudowanych limitów czasu dla komunikatów. W programie Orleans wszystkie komunikaty przekroczyły limit czasu, gdy zostanie skonfigurowany czas. Wartość domyślna to 30 sekund.
-* Komunikaty wysyłane między jednostkami są dostarczane w sposób niezawodny i w kolejności. W Orleans, niezawodne lub uporządkowane dostarczanie jest obsługiwane w przypadku zawartości wysyłanej za poorednictwem strumieni, ale nie jest gwarantowane dla wszystkich komunikatów między ziarnami.
-* Wzorce żądania-odpowiedzi w jednostkach są ograniczone do aranżacji. W obrębie jednostek dozwolony jest tylko jednokierunkowa obsługa komunikatów (nazywanych również sygnalizowaniem), jak w oryginalnym modelu aktora i w przeciwieństwie do ziaren w Orleans. 
-* Niezakleszczenie jednostek trwałych. W Orleans, zakleszczenie mogą wystąpić i nie są rozwiązywane, dopóki komunikaty przekroczą limit czasu.
-* Jednostki trwałe mogą być używane w połączeniu z trwałymi aranżacjami i obsługują mechanizmy blokowania rozproszonego. 
+## <a name="comparison-with-virtual-actors"></a>Comparison with virtual actors
+
+Many of the durable entities features are inspired by the [actor model](https://en.wikipedia.org/wiki/Actor_model). If you're already familiar with actors, you might recognize many of the concepts described in this article. Durable entities are particularly similar to [virtual actors](https://research.microsoft.com/projects/orleans/), or grains, as popularized by the [Orleans project](http://dotnet.github.io/orleans/). Na przykład:
+
+* Durable entities are addressable via an entity ID.
+* Durable entity operations execute serially, one at a time, to prevent race conditions.
+* Durable entities are created implicitly when they're called or signaled.
+* When not executing operations, durable entities are silently unloaded from memory.
+
+There are some important differences that are worth noting:
+
+* Durable entities prioritize durability over latency, and so might not be appropriate for applications with strict latency requirements.
+* Durable entities don't have built-in timeouts for messages. In Orleans, all messages time out after a configurable time. The default is 30 seconds.
+* Messages sent between entities are delivered reliably and in order. In Orleans, reliable or ordered delivery is supported for content sent through streams, but isn't guaranteed for all messages between grains.
+* Request-response patterns in entities are limited to orchestrations. From within entities, only one-way messaging (also known as signaling) is permitted, as in the original actor model, and unlike grains in Orleans. 
+* Durable entities don't deadlock. In Orleans, deadlocks can occur and don't resolve until messages time out.
+* Durable entities can be used in conjunction with durable orchestrations and support distributed locking mechanisms. 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przewodnikiem dewelopera w przypadku trwałych jednostek w programie .NET](durable-functions-dotnet-entities.md)
+> [Read the Developer's guide to durable entities in .NET](durable-functions-dotnet-entities.md)
 
 > [!div class="nextstepaction"]
-> [Informacje o centrach zadań](durable-functions-task-hubs.md)
+> [Learn about task hubs](durable-functions-task-hubs.md)

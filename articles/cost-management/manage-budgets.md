@@ -1,89 +1,89 @@
 ---
-title: Zarządzanie budżetami Cloudyn na platformie Azure
-description: Ten artykuł ułatwia szybkie tworzenie budżetów i rozpocząć zarządzanie nimi w rozwiązaniu Cloudyn.
+title: Manage Cloudyn budgets in Azure
+description: This article helps you quickly create budgets and start managing them in Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: ad0566f0b93593140d217767f8d97f410dfcbb3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9d7d0e049d3c35aab56145beb94c8e41e56c5785
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259233"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219096"
 ---
-# <a name="manage-azure-budgets-with-cloudyn"></a>Zarządzanie budżetów platformy Azure z usługą Cloudyn
+# <a name="manage-azure-budgets-with-cloudyn"></a>Manage Azure budgets with Cloudyn
 
-Ustawienie zapasowej budżetów i oparte na budżecie alerty pomocy, aby ulepszyć swoje nadzoru na chmurę i odpowiedzialności. Ten artykuł ułatwia szybkie tworzenie budżetów i rozpocząć zarządzanie nimi w rozwiązaniu Cloudyn.
+Setting up budgets and budget-based alerts help to improve your cloud governance and accountability. This article helps you quickly create budgets and start managing them in Cloudyn.
 
-Jeśli masz konto przedsiębiorstwa lub MSP, można użyć strukturę hierarchiczną koszt jednostki na potrzeby przypisywania miesięczne przydziały budżetu różne jednostki biznesowe, działów lub innych jednostek kosztów. Jeśli masz konto magazynu Premium, można użyć funkcji zarządzania budżetem, co jest następnie stosowane do Twojego wydatków całej chmurze. Wszystkich budżetów ręczne są przypisane.
+When you have an Enterprise or MSP account, you can use your hierarchical cost entity structure to assign monthly budget quotas to different business units, departments, or any other cost entity. When you have a Premium account, you can use the budget management functionality, which is then applied to your entire cloud expenditure. All budgets are manually assigned.
 
-Na podstawie przypisanej budżetów, można ustawić alerty progu na podstawie procentu budżetu, który jest używany i zdefiniuj ważność każdego progu.
+Based on assigned budgets, you can set threshold alerts based on the percentage of your budget that's consumed and define the severity of each threshold.
 
-Budżet Raporty zawierają przypisane budżetu. Użytkownicy mogą wyświetlać, po ich wydatków za pośrednictwem, w obszarze lub w wartości nominalnej z ich użycia wraz z upływem czasu. Po wybraniu **Pokaż/Ukryj pola** u góry raportu budżetu, można wyświetlić kosztów, budżet, skumulowany koszt lub Łączny budżet.
+Budget reports show the assigned budget. Users can view when their spending is over, under, or at par with their consumption over time. When you select **Show/Hide Fields** at the top of a budget report, you can view cost, budget, accumulated cost, or total budget.
 
-Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji dotyczących budżetów kosztów zarządzania, zobacz [tworzenie i zarządzanie nimi budżetów](tutorial-acm-create-budgets.md).
+Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. For more information about budgets in Cost Management, see [Create and manage budgets](tutorial-acm-create-budgets.md).
 
-## <a name="create-budgets"></a>Tworzenie budżetów
+## <a name="create-budgets"></a>Create budgets
 
-Kiedy tworzysz budżetu, ustaw ją na rok obrachunkowy i ma zastosowanie do określonej jednostki.
+When you create a budget, you set it for your fiscal year and it applies to a specific entity.
 
-Aby utworzyć budżet i przypisać ją do jednostki:
+To create a budget and assign it to an entity:
 
-1. Przejdź do **koszty** &gt; **Cost Management** &gt; **budżetu**.
-2. Na stronie zarządzania budżetem w obszarze **jednostek**, wybierz jednostkę, której chcesz utworzyć budżetu.
-3. W tym roku budżetu wybierz roku, w którym chcesz utworzyć budżetu.
-4. W każdym miesiącu ustaw wartość budżetu. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
-W tym przykładzie $135,000 ustawiono miesięczne budżetu czerwca 2018 r. Łączny budżet na rok jest 1,615,000.00 $.
-![Utwórz stronę budżetu, gdzie ustawiasz budżetu w każdym miesiącu](./media/manage-budgets/set-budget.png)
+1. Navigate to **Costs** &gt; **Cost Management** &gt; **Budget**.
+2. On the Budget Management page, under **Entities**, select the entity where you want to create the budget.
+3. In the budget year, select the year where you want to create the budget.
+4. For each month, set a budget value. When you're done, click  **Save**.
+In this example, the monthly budget for June 2018 is set to $135,000. The total budget for the year is $1,615,000.00.
+![Create a budget page where you set a budget for each month](./media/manage-budgets/set-budget.png)
 
 
-Aby zaimportować plik do rocznych budżetu:
+To import a file for the annual budget:
 
-1. W obszarze **akcje**, wybierz opcję **wyeksportować** można pobrać pusty szablon pliku CSV do użytku jako podstawa Twojego budżetu.
-2. Podaj plik CSV z wpisy budżetu i zapisać je lokalnie.
-3. W obszarze **akcje**, wybierz opcję **importu**.
-4. Wybierz zapisany plik, a następnie kliknij przycisk **OK**.
+1. Under **Actions**, select **Export** to download an empty CSV template to use as your basis for the budget.
+2. Fill in the CSV file with your budget entries and save it locally.
+3. Under **Actions**, select **Import**.
+4. Select your saved file and then click **OK**.
 
-Aby wyeksportować budżetu ukończone jako plik CSV, w obszarze **akcje**, wybierz opcję **wyeksportować** można pobrać pliku.
+To export your completed budget as a CSV file, under **Actions**, select **Export** to download the file.
 
-## <a name="view-budget-in-reports"></a>Wyświetlanie budżetu w raportach
+## <a name="view-budget-in-reports"></a>View budget in reports
 
-Po zakończeniu swój budżet jest wyświetlany w większości raportach kosztów w obszarze **koszty** &gt; **analiza kosztów** w Cost vs. Raport budżetu względem czasu. Można także zaplanować raporty na podstawie progów budżetu za pomocą **akcje**.
+When completed, your budget is shown in most Cost reports under **Costs** &gt; **Cost Analysis** and in the Cost vs. Budget Over Time report. You can also schedule reports based on budget thresholds using **Actions**.
 
-Poniżej przedstawiono przykładowy raport analizy kosztów. Przedstawia łączny budżet i koszt według typów obciążenia pracą i użycia od początku roku.
+Here's an example of the Cost Analysis report. It shows the total budget and cost by workload and usage types since the beginning of the year.
 
-![Przykładowy raport analizy kosztów z budżetem](./media/manage-budgets/cost-analysis-budget-example.png)
+![Example Cost Analysis report with budget](./media/manage-budgets/cost-analysis-budget-example.png)
 
-W tym przykładzie przyjęto założenie, bieżąca data to 22 czerwca. Koszt czerwca 2018 r. jest $71,611.28 w porównaniu do budżetu miesięczne 135,000 $. Koszt jest znacznie niższa niż miesięcznego budżetu, ponieważ nadal istnieją ośmiu dni wydatków do końca miesiąca.
+In this example, assume the current date is June 22. The cost for June 2018 is $71,611.28 compared to the monthly budget of $135,000. The cost is much lower than the monthly budget because there are still eight days of spending before the end of the month.
 
-Innym sposobem, aby wyświetlić raport jest Przyjrzyj się programu vs skumulowany koszt Twojego budżetu. Aby wyświetlić w obszarze łączne koszty **Pokaż/Ukryj pola**, wybierz opcję **skumulowany koszt** i **łączny budżet**. Oto przykład pokazujący skumulowany koszt od początku roku.
+Another way to view the report is to look at accumulated cost vs your budget. To see accumulated costs, under **Show/Hide Fields**, select **Accumulated Cost** and **Total Budget**. Here's an example showing the accumulated cost since the beginning of the year.
 
-![Przykład zgromadzonych kosztów i Łączny budżet objętego Cost vs. Raport budżetu względem czasu](./media/manage-budgets/accumulated-budget.png)
+![Example accumulated cost and total budget shown in the Cost vs. Budget Over Time report](./media/manage-budgets/accumulated-budget.png)
 
-W przyszłości chwilę skumulowany koszt może przekraczać Twojego budżetu. Możesz łatwiej zobaczyć, że w przypadku zmiany widoku wykresu do _wiersza_ typu.
+Sometime in the future your accumulated cost might exceed your budget. You can more easily see that if you change the chart view to the _line_ type.
 
-![Budżet wyświetlane na wykresie liniowym kosztów według miesięcy raportu](./media/manage-budgets/budget-line.png)
+![Budget shown in a line chart in the Cost by Months report](./media/manage-budgets/budget-line.png)
 
-## <a name="create-budget-alerts-for-a-filter"></a>Tworzenie alertów budżetu filtru
+## <a name="create-budget-alerts-for-a-filter"></a>Create budget alerts for a filter
 
-W poprzednim przykładzie widać, że skumulowany koszt skontaktowali budżetu. Można tworzyć alerty automatyczne budżetu, dzięki czemu otrzymasz powiadomienie, gdy wydatki metod lub przekracza swój budżet. Zasadniczo ten alert to zaplanowany raport o progu. Budżet próg alertu dotyczącego metryki obejmują:
+In the previous example, you can see that the accumulated cost approached the budget. You can create automatic budget alerts so that you're notified when spending approaches or exceeds your budget. Basically, the alert is a scheduled report with a threshold. Budget alert threshold metrics include:
 
-- Koszt pozostały a budżet — można określić próg wartość waluty
-- Procent kosztów a budżet — Aby określić procent wartości progowej
+- Remaining cost vs. budget – to specify a currency value threshold
+- Cost percentage vs. budget – to specify a percentage value threshold
 
-Przyjrzyjmy się przykładowi.
+Let's look at an example.
 
-W porównaniu z kosztami. Budżetu w czasie — raport, kliknij przycisk **akcje** , a następnie wybierz **zaplanować raport**. Na karcie wartości progowej wybierz metrykę, wartość progową. Na przykład **budżet vs procent kosztów**. Wybierz typ alertu, a następnie wprowadź wartość procentową budżetu. Wybrać opcję otrzymywania tylko raz, **liczbę kolejnych alertów** , a następnie wpisz _1_. Kliknij pozycję **Zapisz**.
+In the Cost vs. Budget Over Time report, click **Actions** and then select **Schedule report**. On the Threshold tab, select a threshold metric. For example, **Cost percentage vs budget**. Select an alert type and enter a percentage value of the budget. If you want to get notified only once, select **Number of consecutive alerts** and then type _1_. Kliknij przycisk **Save** (Zapisz).
 
-![Tworzenie alert dotyczący budżetu na Zapisz lub harmonogram tego pola raportu](./media/manage-budgets/budget-alert.png)
+![Creating a budget alert on the Save or Schedule this report box](./media/manage-budgets/budget-alert.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Jeśli nie została już zakończona pierwszego samouczka dotyczącego na platformie Cloudyn, zapoznaj się z adresem [przeglądanie użycia i kosztów](tutorial-review-usage.md).
-- Dowiedz się więcej o [raportów dostępnych w rozwiązaniu Cloudyn](use-reports.md).
+- If you haven't already completed the first tutorial for Cloudyn, read it at  [Review usage and costs](tutorial-review-usage.md).
+- Learn more about the [reports available in Cloudyn](use-reports.md).

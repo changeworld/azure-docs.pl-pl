@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą Lynda.com | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Lynda.com.
+title: 'Tutorial: Azure Active Directory integration with Lynda.com | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Lynda.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef24d55089938f6721eb6461f57797bca9ed82fe
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7550ba7f375cb7d8b291c0adf7f0ebded16f0990
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159482"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227515"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Samouczek: integracja Azure Active Directory z usługą Lynda.com
+# <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Tutorial: Azure Active Directory integration with Lynda.com
 
-W tym samouczku dowiesz się, jak zintegrować usługę Lynda.com z usługą Azure Active Directory (Azure AD).
-Integracja Lynda.com z usługą Azure AD zapewnia następujące korzyści:
+In this tutorial, you learn how to integrate Lynda.com with Azure Active Directory (Azure AD).
+Integrating Lynda.com with Azure AD provides you with the following benefits:
 
-* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi Lynda.com.
-* Możesz pozwolić użytkownikom na automatyczne logowanie do Lynda.com (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* You can control in Azure AD who has access to Lynda.com.
+* You can enable your users to be automatically signed-in to Lynda.com (Single Sign-On) with their Azure AD accounts.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -37,23 +37,23 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z usługą Lynda.com, potrzebne są następujące elementy:
+To configure Azure AD integration with Lynda.com, you need the following items:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja z włączonym logowaniem jednokrotnym w Lynda.com
+* Lynda.com single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Lynda.com obsługuje logowanie jednokrotne w usłudze **SP**
-* Lynda.com obsługuje Inicjowanie obsługi użytkowników **just in Time**
+* Lynda.com supports **SP** initiated SSO
+* Lynda.com supports **Just In Time** user provisioning
 
-## <a name="adding-lyndacom-from-the-gallery"></a>Dodawanie Lynda.com z galerii
+## <a name="adding-lyndacom-from-the-gallery"></a>Adding Lynda.com from the gallery
 
-Aby skonfigurować integrację programu Lynda.com z usługą Azure AD, musisz dodać Lynda.com z galerii do listy zarządzanych aplikacji SaaS.
+To configure the integration of Lynda.com into Azure AD, you need to add Lynda.com from the gallery to your list of managed SaaS apps.
 
-**Aby dodać Lynda.com z galerii, wykonaj następujące czynności:**
+**To add Lynda.com from the gallery, perform the following steps:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -67,31 +67,31 @@ Aby skonfigurować integrację programu Lynda.com z usługą Azure AD, musisz do
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Lynda.com**, wybierz pozycję **Lynda.com** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
+4. In the search box, type **Lynda.com**, select **Lynda.com** from result panel then click **Add** button to add the application.
 
-     ![Lynda.com na liście wyników](common/search-new-app.png)
+     ![Lynda.com in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą Lynda.com na podstawie użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Lynda.com.
+In this section, you configure and test Azure AD single sign-on with Lynda.com based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Lynda.com needs to be established.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Lynda.com, należy wykonać następujące bloki konstrukcyjne:
+To configure and test Azure AD single sign-on with Lynda.com, you need to complete the following building blocks:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Skonfiguruj logowanie](#configure-lyndacom-single-sign-on)** jednokrotne w usłudze Lynda.com, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Configure Lynda.com Single Sign-On](#configure-lyndacom-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Utwórz użytkownika testowego Lynda.com](#create-lyndacom-test-user)** , aby uzyskać odpowiednik Britta Simon w Lynda.com, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+5. **[Create Lynda.com test user](#create-lyndacom-test-user)** - to have a counterpart of Britta Simon in Lynda.com that is linked to the Azure AD representation of user.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Lynda.com, wykonaj następujące czynności:
+To configure Azure AD single sign-on with Lynda.com, perform the following steps:
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Lynda.com** wybierz pozycję **Logowanie jednokrotne**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Lynda.com** application integration page, select **Single sign-on**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
@@ -105,18 +105,18 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Lynda.com, 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Lynda.com domenę i adresy URL Logowanie jednokrotne](common/sp-signonurl.png)
+    ![Lynda.com Domain and URLs single sign-on information](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.lynda.com/Shibboleth.sso/InCommon?providerId=<url>&target=<url>`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem obsługi klienta Lynda.com](https://www.linkedin.com/help/lynda/ask) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Contact  [Lynda.com Client support team](https://www.linkedin.com/help/lynda/ask) to get the value. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. W sekcji **konfigurowanie Lynda.com** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+6. On the **Set up Lynda.com** section, copy the appropriate URL(s) as per your requirement.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Lynda.com, 
 
     d. Adres URL wylogowywania
 
-### <a name="configure-lyndacom-single-sign-on"></a>Konfigurowanie logowania jednokrotnego Lynda.com
+### <a name="configure-lyndacom-single-sign-on"></a>Configure Lynda.com Single Sign-On
 
-Aby skonfigurować Logowanie jednokrotne na stronie **Lynda.com** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Lynda.com](https://www.linkedin.com/help/lynda/ask). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+To configure single sign-on on **Lynda.com** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Lynda.com support team](https://www.linkedin.com/help/lynda/ask). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -148,7 +148,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -157,15 +157,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Lynda.com.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Lynda.com.
 
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Lynda.com**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Lynda.com**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście Aplikacje wybierz pozycję **Lynda.com**.
+2. In the applications list, select **Lynda.com**.
 
-    ![Link Lynda.com na liście aplikacji](common/all-applications.png)
+    ![The Lynda.com link in the Applications list](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -181,21 +181,21 @@ W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-lyndacom-test-user"></a>Utwórz użytkownika testowego Lynda.com
+### <a name="create-lyndacom-test-user"></a>Create Lynda.com test user
 
-Nie ma elementu akcji, aby skonfigurować Inicjowanie obsługi administracyjnej użytkowników do Lynda.com.  
-Gdy przypisany użytkownik próbuje zalogować się do usługi Lynda.com przy użyciu panelu dostępu, Lynda.com sprawdza, czy użytkownik istnieje.  
+There is no action item for you to configure user provisioning to Lynda.com.  
+When an assigned user tries to log in to Lynda.com using the access panel, Lynda.com checks whether the user exists.  
 
-Jeśli nie ma jeszcze dostępnego konta użytkownika, jest on automatycznie tworzony przez Lynda.com.
+If there is no user account available yet, it is automatically created by Lynda.com.
 
 > [!NOTE]
-> Do aprowizacji kont użytkowników usługi AAD można używać innych narzędzi do tworzenia kont użytkowników Lynda.com i interfejsów API dostarczonych przez Lynda.com.
+> You can use any other Lynda.com user account creation tools or APIs provided by Lynda.com to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Lynda.com w panelu dostępu należy automatycznie zalogować się do Lynda.com, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+When you click the Lynda.com tile in the Access Panel, you should be automatically signed in to the Lynda.com for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
@@ -203,5 +203,5 @@ Po kliknięciu kafelka Lynda.com w panelu dostępu należy automatycznie zalogow
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

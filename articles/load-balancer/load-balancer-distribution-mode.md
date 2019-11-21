@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia platformy Azure
-titlesuffix: Azure Load Balancer
-description: Jak Konfigurowanie trybu dystrybucji dla modułu równoważenia obciążenia platformy Azure do obsługi koligacji IP źródła.
+title: Configure Azure Load Balancer distribution mode
+titleSuffix: Azure Load Balancer
+description: In this article, get started configuring the distribution mode for Azure Load Balancer to support source IP affinity.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,63 +11,72 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 0d3ddf2e005338a19972cfcdef025579764f7f23
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114717"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225372"
 ---
-# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia Azure
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Configure the distribution mode for Azure Load Balancer
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="hash-based-distribution-mode"></a>Tryb dystrybucji skrótów
+## <a name="hash-based-distribution-mode"></a>Hash-based distribution mode
 
-Domyślny tryb dystrybucji dla modułu równoważenia obciążenia Azure jest skrótem 5-elementowej spójnej kolekcji. Spójna kolekcja znajdująca się składa się ze źródłowego adresu IP, port źródłowy, docelowy adres IP, port docelowy i typu protokołu. Wartość skrótu służy do mapowania ruchu do dostępnych serwerów i algorytm zapewnia lepkości tylko w sesji transportu. Pakiety, które znajdują się w tej samej sesji są kierowane do tego samego wystąpienia adres IP (DIP) centrum danych za punkt końcowy z równoważeniem obciążenia. Gdy klient uruchamia nową sesję z tego samego źródłowego adresu IP, port źródłowy zmiany i powoduje, że ruchu przejść do innego punktu końcowego adresu DIP.
+The default distribution mode for Azure Load Balancer is a five-tuple hash. 
 
-![Tryb dystrybucji bazujących na skrótach 5-elementowe spójne kolekcje](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
+The tuple is composed of the:
+* **Source IP**
+* **Source port**
+* **Destination IP**
+* **Destination port**
+* **Protocol type**
 
-## <a name="source-ip-affinity-mode"></a>Tryb koligacji IP źródła
+The hash is used to map traffic to the available servers. The algorithm provides stickiness only within a transport session. Packets that are in the same session are directed to the same datacenter IP behind the load-balanced endpoint. When the client starts a new session from the same source IP, the source port changes and causes the traffic to go to a different datacenter endpoint.
 
-Moduł równoważenia obciążenia można skonfigurować w taki sposób, przy użyciu trybu dystrybucji koligacji IP źródła. W tym trybie dystrybucji jest również nazywany koligacja sesji lub koligacja adresu IP klienta. Tryb używa 2-krotka (źródłowy adres IP i docelowy adres IP) lub 3-krotka (źródłowy adres IP, docelowy adres IP i protokołu typ) wyznaczania wartości skrótu być mapowany ruchu do dostępnych serwerów. Korzystając z koligacji źródłowego adresu IP, połączenia uruchamiane z tego samego komputera klienckiego są przekazywane do tego samego punktu końcowego DIP.
+![Five-tuple hash-based distribution mode](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
-Na poniższym rysunku przedstawiono konfigurację 2-elementowej spójnej kolekcji. Zwróć uwagę, jak 2-Krotka jest wykonywany przez moduł równoważenia obciążenia do maszyny wirtualnej 1 (MW1). Maszyna VM1 następnie kopia zapasowa jest tworzona maszyna VM2 i VM3.
+## <a name="source-ip-affinity-mode"></a>Source IP affinity mode
 
-![Tryb dystrybucji koligacji sesji 2-krotka](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+The load balancer can also be configured by using the source IP affinity distribution mode. This distribution mode is also known as session affinity or client IP affinity. The mode uses a two-tuple (source IP and destination IP) or three-tuple (source IP, destination IP, and protocol type) hash to map traffic to the available servers. By using source IP affinity, connections that are started from the same client computer go to the same datacenter endpoint.
 
-Tryb koligacji IP źródła rozwiązuje niezgodności między równoważenia obciążenia platformy Azure i bramy usług pulpitu zdalnego (RD Gateway). Korzystając z tego trybu, można utworzyć farmę serwerów usługi Brama usług pulpitu zdalnego w usłudze w chmurze.
+The following figure illustrates a two-tuple configuration. Notice how the two-tuple runs through the load balancer to virtual machine 1 (VM1). VM1 is then backed up by VM2 and VM3.
 
-Inny scenariusz przypadków użycia jest przekazywanie nośników. Przekazywanie danych odbywają się za pośrednictwem protokołu UDP, ale na płaszczyźnie kontroli odbywa się za pośrednictwem protokołu TCP:
+![Two-tuple session affinity distribution mode](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-* Klient uruchamia sesję TCP na adres publiczny ze zrównoważonym obciążeniem i jest kierowany do określonego DIP. Kanał pozostaje aktywna w celu monitorowania kondycji połączenia.
-* Nowa sesja protokołu UDP na tym samym komputerze klienckim jest inicjowane tego samego ze zrównoważonym obciążeniem publicznego punktu końcowego. Połączenie jest kierowany do tego samego punktu końcowego adresu DIP, ponieważ poprzednie połączenie TCP. Przekazywanie nośników mogą być wykonywane przy wysokiej przepływności, przy zachowaniu kanał kontrolny, za pośrednictwem protokołu TCP.
+Source IP affinity mode solves an incompatibility between Azure Load Balancer and Remote Desktop Gateway (RD Gateway). By using this mode, you can build an RD Gateway farm in a single cloud service.
+
+Another use case scenario is media upload. The data upload happens through UDP, but the control plane is achieved through TCP:
+
+* A client starts a TCP session to the load-balanced public address and is directed to a specific DIP. The channel is left active to monitor the connection health.
+* A new UDP session from the same client computer is started to the same load-balanced public endpoint. The connection is directed to the same DIP endpoint as the previous TCP connection. The media upload can be executed at high throughput while maintaining a control channel through TCP.
 
 > [!NOTE]
-> Zmiana zestawu z równoważeniem obciążenia przez usunięcie lub dodanie maszyny wirtualnej jest ponownie przeliczana dystrybucji żądań klientów. Użytkownik nie może zależeć od nowych połączeń z istniejących klientów do kończy się na tym samym serwerze. Ponadto za pomocą źródłowego adresu IP trybu dystrybucji koligacji może spowodować nierówne dystrybucji ruchu. Klientów z systemami za serwery proxy może być traktowany jako jeden wniosek unikatowych klientów.
+> When a load-balanced set changes by removing or adding a virtual machine, the distribution of client requests is recomputed. You can't depend on new connections from existing clients to end up at the same server. Additionally, using source IP affinity distribution mode can cause an unequal distribution of traffic. Clients that run behind proxies might be seen as one unique client application.
 
-## <a name="configure-source-ip-affinity-settings"></a>Konfigurowanie ustawień koligacji IP źródła
+## <a name="configure-source-ip-affinity-settings"></a>Configure source IP affinity settings
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Konfigurację trybu dystrybucji można zmienić, modyfikując regułę równoważenia obciążenia w portalu.
+You can change the configuration of the distribution mode by modifying the load-balancing rule in the portal.
 
-1. Zaloguj się do Azure Portal i Znajdź grupę zasobów zawierającą moduł równoważenia obciążenia, który chcesz zmienić, klikając pozycję **grupy zasobów**.
-2. W bloku przegląd modułu równoważenia obciążenia kliknij pozycję **reguły równoważenia obciążenia** w obszarze **Ustawienia**.
-3. W bloku reguły równoważenia obciążenia kliknij regułę równoważenia obciążenia, w której chcesz zmienić tryb dystrybucji.
-4. W ramach zasady tryb dystrybucji jest zmieniany, zmieniając pole listy rozwijanej **trwałość sesji** .  Dostępne są następujące opcje:
+1. Sign in to the Azure portal and locate the Resource Group containing the load balancer you wish to change by clicking on **Resource Groups**.
+2. In the load balancer overview screen, click on **Load-balancing rules** under **Settings**.
+3. In the load-balancing rules screen, click on the load-balancing rule that you wish to change the distribution mode.
+4. Under the rule, the distribution mode is changed by changing the **Session persistence** drop down box.  The following options are available:
     
-    * **Brak (oparte na skrócie)** — określa, że kolejne żądania z tego samego klienta mogą być obsługiwane przez dowolną maszynę wirtualną.
-    * **Adres IP klienta (koligacja źródłowego adresu IP 2-krotka)** — określa, że kolejne żądania z tego samego adresu IP klienta będą obsługiwane przez tę samą maszynę wirtualną.
-    * **IP i protokół klienta (koligacja źródłowego adresu IP 3-krotka)** — określa, że kolejne żądania z tego samego adresu IP klienta i kombinacji protokołów będą obsługiwane przez tę samą maszynę wirtualną.
+    * **None (hash-based)** - Specifies that successive requests from the same client may be handled by any virtual machine.
+    * **Client IP (source IP affinity 2-tuple)** - Specifies that successive requests from the same client IP address will be handled by the same virtual machine.
+    * **Client IP and protocol (source IP affinity 3-tuple)** - Specifies that successive requests from the same client IP address and protocol combination will be handled by the same virtual machine.
 
-5. Wybierz tryb dystrybucji, a następnie kliknij przycisk **Zapisz**.
+5. Choose the distribution mode and then click **Save**.
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
-W przypadku maszyn wirtualnych wdrożonych przy użyciu Menedżer zasobów należy użyć programu PowerShell, aby zmienić ustawienia dystrybucji modułu równoważenia obciążenia na istniejącą regułę równoważenia obciążenia. Następujące polecenie aktualizuje tryb dystrybucji: 
+For virtual machines deployed with Resource Manager, use PowerShell to change the load-balancer distribution settings on an existing load-balancing rule. The following command updates the distribution mode: 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -75,15 +84,15 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-Dla klasycznych maszyn wirtualnych zmieniać ustawienia dystrybucji za pomocą programu Azure PowerShell. Dodawanie punktu końcowego platformy Azure do maszyny wirtualnej i Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia:
+For classic virtual machines, use Azure PowerShell to change the distribution settings. Add an Azure endpoint to a virtual machine and configure the load balancer distribution mode:
 
 ```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Ustaw wartość `LoadBalancerDistribution` element dla wymaganej ilości równoważenia obciążenia. Określ sourceIP Równoważenie obciążenia sieciowego 2-krotka (źródłowy adres IP i docelowy adres IP). Określ sourceIPProtocol dla 3-krotka (źródłowy adres IP, docelowy adres IP i protokołu typ) załadować równoważenia. Określ przez domyślne zachowanie równoważenia obciążenia w 5-elementowej spójnej kolekcji.
+Set the value of the `LoadBalancerDistribution` element for the amount of load balancing required. Specify sourceIP for two-tuple (source IP and destination IP) load balancing. Specify sourceIPProtocol for three-tuple (source IP, destination IP, and protocol type) load balancing. Specify none for the default behavior of five-tuple load balancing.
 
-Pobierz konfigurację trybu dystrybucji modułu równoważenia punktu końcowego obciążenia za pomocą tych ustawień:
+Retrieve an endpoint load balancer distribution mode configuration by using these settings:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -105,21 +114,21 @@ Pobierz konfigurację trybu dystrybucji modułu równoważenia punktu końcowego
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-`LoadBalancerDistribution` Gdy element nie jest obecny, Azure Load Balancer używa domyślnego algorytmu 5-krotki.
+When the `LoadBalancerDistribution` element isn't present, Azure Load Balancer uses the default five-tuple algorithm.
 
-### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Konfigurowanie trybu dystrybucji na zestaw punktów końcowych z równoważeniem obciążenia
+### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Configure distribution mode on load-balanced endpoint set
 
-Punkty końcowe są częścią zestawu końcowy z równoważeniem obciążenia, tryb dystrybucji muszą zostać skonfigurowane w zestawie końcowy z równoważeniem obciążenia:
+When endpoints are part of a load-balanced endpoint set, the distribution mode must be configured on the load-balanced endpoint set:
 
 ```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Konfigurowanie trybu dystrybucji dla punktów końcowych usługi w chmurze
+### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Configure distribution mode for Cloud Services endpoints
 
-Aby zaktualizować usługę w chmurze, należy użyć zestawu Azure SDK dla platformy .NET 2.5. Ustawienia punktu końcowego usług w chmurze są dokonywane w pliku csdef. Aby zaktualizować trybu dystrybucji modułu równoważenia obciążenia dla wdrożenia usług Cloud Services, uaktualnianie wdrożenia jest wymagany.
+Use the Azure SDK for .NET 2.5 to update your cloud service. The endpoint settings for Cloud Services are made in the .csdef file. To update the load balancer distribution mode for a Cloud Services deployment, a deployment upgrade is required.
 
-Oto przykład .csdef zmiany ustawień punktu końcowego:
+Here is an example of .csdef changes for endpoint settings:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -139,15 +148,15 @@ Oto przykład .csdef zmiany ustawień punktu końcowego:
 </NetworkConfiguration>
 ```
 
-## <a name="api-example"></a>Przykład interfejsu API
+## <a name="api-example"></a>API example
 
-Poniższy przykład pokazuje, jak zmienić konfigurację trybu dystrybucji modułu równoważenia obciążenia dla określonego zestawu z równoważeniem obciążenia w danym wdrożeniu. 
+The following example shows how to reconfigure the load balancer distribution mode for a specified load-balanced set in a deployment. 
 
-### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Zmień tryb dystrybucji dla wdrożonej zrównoważonym obciążeniu
+### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Change distribution mode for deployed load-balanced set
 
-Aby zmienić istniejącą konfigurację wdrożenia przy użyciu modelu klasycznym wdrożeniu platformy Azure. Dodaj `x-ms-version` nagłówek i ustawia wartość do wersji 2014-09-01 lub nowszej.
+Use the Azure classic deployment model to change an existing deployment configuration. Add the `x-ms-version` header and set the value to version 2014-09-01 or later.
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Prośba
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
@@ -170,7 +179,7 @@ Aby zmienić istniejącą konfigurację wdrożenia przy użyciu modelu klasyczny
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Wcześniej opisany, ustaw `LoadBalancerDistribution` elementu sourceIP 2-krotka koligacji, sourceIPProtocol 3-krotka koligacji lub brak nie koligacji (5-elementowe spójne kolekcje koligacja).
+As previously described, set the `LoadBalancerDistribution` element to sourceIP for two-tuple affinity, sourceIPProtocol for three-tuple affinity, or none for no affinity (five-tuple affinity).
 
 #### <a name="response"></a>Odpowiedź
 
@@ -182,8 +191,8 @@ Wcześniej opisany, ustaw `LoadBalancerDistribution` elementu sourceIP 2-krotka 
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Omówienie wewnętrznego modułu równoważenia obciążenia na platformie Azure](load-balancer-internal-overview.md)
-* [Wprowadzenie do konfigurowania modułu równoważenia obciążenia dostępnego z Internetu](load-balancer-get-started-internet-arm-ps.md)
+* [Azure Internal Load Balancer overview](load-balancer-internal-overview.md)
+* [Get started with configuring an internet-facing load balancer](load-balancer-get-started-internet-arm-ps.md)
 * [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)

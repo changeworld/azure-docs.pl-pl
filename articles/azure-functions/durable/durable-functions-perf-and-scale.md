@@ -1,67 +1,63 @@
 ---
-title: Wydajność i skalowanie w Durable Functions na platformie Azure
+title: Performance and scale in Durable Functions - Azure
 description: Wprowadzenie do rozszerzenia Durable Functions dla usługi Azure Functions.
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5efe571e2c7ff75ace584755324964003176b5f0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614712"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231342"
 ---
-# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie w Durable Functions (Azure Functions)
+# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Performance and scale in Durable Functions (Azure Functions)
 
-Aby zoptymalizować wydajność i skalowalność, ważne jest zrozumienie unikatowych cech skalowania [Durable Functions](durable-functions-overview.md).
+To optimize performance and scalability, it's important to understand the unique scaling characteristics of [Durable Functions](durable-functions-overview.md).
 
-Aby zrozumieć zachowanie skalowania, należy poznać niektóre szczegóły podstawowego dostawcy usługi Azure Storage.
+To understand the scale behavior, you have to understand some of the details of the underlying Azure Storage provider.
 
-## <a name="history-table"></a>Tabela historii
+## <a name="history-table"></a>History table
 
-Tabela **historia** jest tabelą usługi Azure Storage, która zawiera zdarzenia historii dla wszystkich wystąpień aranżacji w centrum zadań. Nazwa tej tabeli ma postać historia *TaskHubName*. W miarę uruchamiania wystąpień nowe wiersze są dodawane do tej tabeli. Klucz partycji tej tabeli pochodzi od identyfikatora wystąpienia aranżacji. Identyfikator wystąpienia jest w większości przypadków losowych, co zapewnia optymalną dystrybucję partycji wewnętrznych w usłudze Azure Storage.
+The **History** table is an Azure Storage table that contains the history events for all orchestration instances within a task hub. The name of this table is in the form *TaskHubName*History. As instances run, new rows are added to this table. The partition key of this table is derived from the instance ID of the orchestration. An instance ID is random in most cases, which ensures optimal distribution of internal partitions in Azure Storage.
 
-Gdy wystąpienie aranżacji musi działać, odpowiednie wiersze tabeli historii są ładowane do pamięci. Te *zdarzenia historii* są następnie odtwarzane w kodzie funkcji programu Orchestrator w celu przywrócenia ich do stanu poprzedniego punktu kontrolnego. Użycie historii wykonywania w celu odbudowania stanu w ten sposób wpływa na wzorzec określania [źródła zdarzeń](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
+When an orchestration instance needs to run, the appropriate rows of the History table are loaded into memory. These *history events* are then replayed into the orchestrator function code to get it back into its previously checkpointed state. The use of execution history to rebuild state in this way is influenced by the [Event Sourcing pattern](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
-## <a name="instances-table"></a>Tabela wystąpień
+## <a name="instances-table"></a>Instances table
 
-Tabela **wystąpień** jest inną tabelą usługi Azure Storage, która zawiera Stany wszystkich wystąpień aranżacji i jednostek w ramach centrum zadań. Po utworzeniu wystąpienia nowe wiersze są dodawane do tej tabeli. Klucz partycji tej tabeli jest IDENTYFIKATORem wystąpienia aranżacji lub kluczem jednostki, a klucz wiersza to stała stała. Istnieje jeden wiersz dla aranżacji lub wystąpienia jednostki.
+The **Instances** table is another Azure Storage table that contains the statuses of all orchestration and entity instances within a task hub. As instances are created, new rows are added to this table. The partition key of this table is the orchestration instance ID or entity key and the row key is a fixed constant. There is one row per orchestration or entity instance.
 
-Ta tabela służy do zaspokajania żądań zapytań wystąpienia z interfejsów API `GetStatusAsync` (.NET) i `getStatus` (JavaScript), a także do [zapytania o stan Query API](durable-functions-http-api.md#get-instance-status). Jest on stale spójny z zawartością tabeli **historii** wymienionej wcześniej. Użycie oddzielnej tabeli usługi Azure Storage w celu wydajnej realizacji operacji zapytania o wystąpienie w ten sposób wpływa na [wzorzec Command and Query Responsibility Segregation (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+This table is used to satisfy instance query requests from the `GetStatusAsync` (.NET) and `getStatus` (JavaScript) APIs as well as the [status query HTTP API](durable-functions-http-api.md#get-instance-status). It is kept eventually consistent with the contents of the **History** table mentioned previously. The use of a separate Azure Storage table to efficiently satisfy instance query operations in this way is influenced by the [Command and Query Responsibility Segregation (CQRS) pattern](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
-## <a name="internal-queue-triggers"></a>Wyzwalacze wewnętrznej kolejki
+## <a name="internal-queue-triggers"></a>Internal queue triggers
 
-Funkcje i funkcje programu Orchestrator są wyzwalane przez kolejki wewnętrzne w centrum zadań aplikacji funkcji. Użycie kolejek w ten sposób zapewnia niezawodne gwarancje dostarczania komunikatów "co najmniej raz". W Durable Functions istnieją dwa typy kolejek: **Kolejka sterowania** i **Kolejka elementów roboczych**.
+Orchestrator functions and activity functions are both triggered by internal queues in the function app's task hub. Using queues in this way provides reliable "at-least-once" message delivery guarantees. There are two types of queues in Durable Functions: the **control queue** and the **work-item queue**.
 
-### <a name="the-work-item-queue"></a>Kolejka elementów roboczych
+### <a name="the-work-item-queue"></a>The work-item queue
 
-W Durable Functions istnieje jedna kolejka elementów pracy dla każdego centrum zadań. Jest to podstawowa Kolejka i zachowuje się podobnie do każdej innej kolejki `queueTrigger` w Azure Functions. Ta Kolejka służy do wyzwalania bezstanowych *funkcji działania* przez odtworzenie pojedynczej wiadomości w danym momencie. Każdy z tych komunikatów zawiera dane wejściowe funkcji działania i dodatkowe metadane, takie jak funkcja, która ma zostać wykonana. Gdy aplikacja Durable Functions skaluje się do wielu maszyn wirtualnych, te maszyny wirtualne współpracują w celu uzyskania pracy z kolejki elementów roboczych.
+There is one work-item queue per task hub in Durable Functions. It is a basic queue and behaves similarly to any other `queueTrigger` queue in Azure Functions. This queue is used to trigger stateless *activity functions* by dequeueing a single message at a time. Each of these messages contains activity function inputs and additional metadata, such as which function to execute. When a Durable Functions application scales out to multiple VMs, these VMs all compete to acquire work from the work-item queue.
 
-### <a name="control-queues"></a>Kolejki sterowania
+### <a name="control-queues"></a>Control queue(s)
 
-Istnieje wiele *kolejek sterowania* na centrum zadań w Durable Functions. *Kolejka sterująca* jest bardziej zaawansowana niż w przypadku prostszej kolejki elementów roboczych. Kolejki sterujące są używane do wyzwalania stanowych programów Orchestrator i Entity. Ponieważ wystąpienia usługi Orchestrator i Entity Functions są stanowymi pojedynczymi, nie jest możliwe używanie konkurującego modelu konsumenta do dystrybucji obciążenia między maszynami wirtualnymi. Zamiast tego komunikaty programu Orchestrator i jednostek są zrównoważone obciążenie w kolejkach sterowania. Więcej szczegółów dotyczących tego zachowania można znaleźć w kolejnych sekcjach.
+There are multiple *control queues* per task hub in Durable Functions. A *control queue* is more sophisticated than the simpler work-item queue. Control queues are used to trigger the stateful orchestrator and entity functions. Because the orchestrator and entity function instances are stateful singletons, it's not possible to use a competing consumer model to distribute load across VMs. Instead, orchestrator and entity messages are load-balanced across the control queues. More details on this behavior can be found in subsequent sections.
 
-Kolejki sterujące zawierają różne typy komunikatów cyklu życia aranżacji. Przykładami mogą być [komunikaty sterujące programu Orchestrator](durable-functions-instance-management.md), komunikaty *odpowiedzi* funkcji działania i komunikaty czasomierza. Tak wiele komunikatów, jak wiadomości 32 zostaną rozkolejkowane z kolejki kontroli w ramach jednej ankiety. Te komunikaty zawierają dane ładunku, a także metadane, w tym to wystąpienie aranżacji, dla którego jest przeznaczone. Jeśli wiele komunikatów z kolejki jest przeznaczonych dla tego samego wystąpienia aranżacji, zostaną one przetworzone jako Partia zadań.
+Control queues contain a variety of orchestration lifecycle message types. Examples include [orchestrator control messages](durable-functions-instance-management.md), activity function *response* messages, and timer messages. As many as 32 messages will be dequeued from a control queue in a single poll. These messages contain payload data as well as metadata including which orchestration instance it is intended for. If multiple dequeued messages are intended for the same orchestration instance, they will be processed as a batch.
 
-### <a name="queue-polling"></a>Sondowanie kolejki
+### <a name="queue-polling"></a>Queue polling
 
-Rozszerzenie zadania trwałego implementuje losowy wykładniczy algorytm wycofywania, aby zmniejszyć wpływ sondowania w kolejce na koszty transakcji magazynu. Po znalezieniu komunikatu środowisko uruchomieniowe natychmiast sprawdza inny komunikat; gdy nie zostanie znaleziony żaden komunikat, czeka przez pewien czas przed ponowieniem próby. Po kolejnych nieudanych próbach uzyskania komunikatu w kolejce czas oczekiwania będzie się zwiększać do momentu osiągnięcia maksymalnego czasu oczekiwania, którego wartość domyślna to 30 sekund.
+The durable task extension implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs. When a message is found, the runtime immediately checks for another message; when no message is found, it waits for a period of time before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to 30 seconds.
 
-Maksymalne opóźnienie sondowania można skonfigurować za pomocą właściwości `maxQueuePollingInterval` w [pliku host. JSON](../functions-host-json.md#durabletask). Ustawienie tej właściwości na wyższą wartość może skutkować większymi opóźnieniami przetwarzania komunikatów. Wyższe opóźnienia byłyby oczekiwane tylko po okresach braku aktywności. Ustawienie tej właściwości na niższą wartość może skutkować wyższym kosztem magazynowania spowodowanym zwiększonymi transakcjami magazynu.
+The maximum polling delay is configurable via the `maxQueuePollingInterval` property in the [host.json file](../functions-host-json.md#durabletask). Setting this property to a higher value could result in higher message processing latencies. Higher latencies would be expected only after periods of inactivity. Setting this property to a lower value could result in higher storage costs due to increased storage transactions.
 
 > [!NOTE]
-> Po uruchomieniu w planach użycia Azure Functions i Premium [kontroler Azure Functions skalowania](../functions-scale.md#how-the-consumption-and-premium-plans-work) będzie sondował każdą kolejkę formantów i elementów roboczych co 10 sekund. Ta dodatkowa sonda jest konieczna do określenia, kiedy należy aktywować wystąpienia aplikacji funkcji i podejmować decyzje dotyczące skalowania. W czasie pisania ten 10-sekundowy interwał jest stały i nie można go skonfigurować.
+> When running in the Azure Functions Consumption and Premium plans, the [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) will poll each control and work-item queue once every 10 seconds. This additional polling is necessary to determine when to activate function app instances and to make scale decisions. At the time of writing, this 10 second interval is constant and cannot be configured.
 
-## <a name="storage-account-selection"></a>Wybór konta magazynu
+## <a name="storage-account-selection"></a>Storage account selection
 
-Kolejki, tabele i obiekty blob używane przez Durable Functions są tworzone w skonfigurowanym koncie usługi Azure Storage. Konto, które ma być używane, można określić przy użyciu ustawienia `durableTask/storageProvider/connectionStringName` (lub `durableTask/azureStorageConnectionStringName` ustawienia w Durable Functions 1. x) w pliku **host. JSON** .
+The queues, tables, and blobs used by Durable Functions are created in a configured Azure Storage account. The account to use can be specified using the `durableTask/storageProvider/connectionStringName` setting (or `durableTask/azureStorageConnectionStringName` setting in Durable Functions 1.x) in the **host.json** file.
 
-### <a name="durable-functions-2x"></a>Durable Functions 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -75,7 +71,7 @@ Kolejki, tabele i obiekty blob używane przez Durable Functions są tworzone w s
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -87,13 +83,13 @@ Kolejki, tabele i obiekty blob używane przez Durable Functions są tworzone w s
 }
 ```
 
-Jeśli nie zostanie określony, używane jest domyślne konto magazynu `AzureWebJobsStorage`. W przypadku obciążeń z uwzględnieniem wydajności zaleca się jednak skonfigurowanie konta magazynu innego niż domyślne. Durable Functions korzysta z usługi Azure Storage silniej i użycie dedykowanego konta magazynu izoluje Durable Functions użycie magazynu z użytku wewnętrznego przez hosta Azure Functions.
+If not specified, the default `AzureWebJobsStorage` storage account is used. For performance-sensitive workloads, however, configuring a non-default storage account is recommended. Durable Functions uses Azure Storage heavily, and using a dedicated storage account isolates Durable Functions storage usage from the internal usage by the Azure Functions host.
 
-## <a name="orchestrator-scale-out"></a>Skalowanie w poziomie programu Orchestrator
+## <a name="orchestrator-scale-out"></a>Orchestrator scale-out
 
-Funkcje działania są bezstanowe i skalowane automatycznie przez dodanie maszyn wirtualnych. Funkcje i jednostki programu Orchestrator, z drugiej strony, są *podzielone na partycje* w jednej lub kilku kolejkach sterowania. Liczba kolejek sterujących jest zdefiniowana w pliku **host. JSON** . Poniższy przykład fragmentu pliku host. JSON ustawia właściwość `durableTask/storageProvider/partitionCount` (lub `durableTask/partitionCount` w Durable Functions 1. x) na `3`.
+Activity functions are stateless and scaled out automatically by adding VMs. Orchestrator functions and entities, on the other hand, are *partitioned* across one or more control queues. The number of control queues is defined in the **host.json** file. The following example host.json snippet sets the `durableTask/storageProvider/partitionCount` property (or `durableTask/partitionCount` in Durable Functions 1.x) to `3`.
 
-### <a name="durable-functions-2x"></a>Durable Functions 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -107,7 +103,7 @@ Funkcje działania są bezstanowe i skalowane automatycznie przez dodanie maszyn
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -119,44 +115,44 @@ Funkcje działania są bezstanowe i skalowane automatycznie przez dodanie maszyn
 }
 ```
 
-Centrum zadań można skonfigurować z zakresu od 1 do 16 partycji. Jeśli nie zostanie określony, domyślna liczba partycji to **4**.
+A task hub can be configured with between 1 and 16 partitions. If not specified, the default partition count is **4**.
 
-Podczas skalowania do wielu wystąpień hosta funkcji (zwykle na różnych maszynach wirtualnych) każde wystąpienie uzyskuje blokadę dla jednej z kolejek kontrolek. Te blokady są wewnętrznie implementowane jako dzierżawy magazynu obiektów blob i zapewniają, że wystąpienie lub jednostka aranżacji działa tylko na jednym wystąpieniu hosta naraz. Jeśli centrum zadań jest skonfigurowane z trzema kolejkami sterowania, wystąpienia aranżacji i jednostki można zrównoważyć obciążenie w ramach maksymalnie trzech maszyn wirtualnych. Dodatkowe maszyny wirtualne można dodać, aby zwiększyć pojemność wykonywania funkcji działania.
+When scaling out to multiple function host instances (typically on different VMs), each instance acquires a lock on one of the control queues. These locks are internally implemented as blob storage leases and ensure that an orchestration instance or entity only runs on a single host instance at a time. If a task hub is configured with three control queues, orchestration instances and entities can be load-balanced across as many as three VMs. Additional VMs can be added to increase capacity for activity function execution.
 
-Na poniższym diagramie przedstawiono sposób interakcji hosta Azure Functions z jednostkami magazynu w środowisku skalowania w poziomie.
+The following diagram illustrates how the Azure Functions host interacts with the storage entities in a scaled out environment.
 
-![Diagram skalowania](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Scale diagram](./media/durable-functions-perf-and-scale/scale-diagram.png)
 
-Jak pokazano na poprzednim diagramie, wszystkie maszyny wirtualne konkurują o komunikaty w kolejce elementów roboczych. Jednak tylko trzy maszyny wirtualne mogą pobierać komunikaty z kolejek kontroli, a każda maszyna wirtualna blokuje jedną kolejkę kontroli.
+As shown in the previous diagram, all VMs compete for messages on the work-item queue. However, only three VMs can acquire messages from control queues, and each VM locks a single control queue.
 
-Wystąpienia aranżacji i jednostki są dystrybuowane we wszystkich wystąpieniach kolejek kontroli. Dystrybucja odbywa się przez mieszanie identyfikatora wystąpienia aranżacji lub nazwy jednostki i pary kluczy. Identyfikatory wystąpień aranżacji domyślnie to losowe identyfikatory GUID, dzięki czemu wystąpienia są równomiernie dystrybuowane we wszystkich kolejkach sterowania.
+Orchestration instances and entities are distributed across all control queue instances. The distribution is done by hashing the instance ID of the orchestration or the entity name and key pair. Orchestration instance IDs by default are random GUIDs, ensuring that instances are equally distributed across all control queues.
 
-Ogólnie mówiąc, funkcje programu Orchestrator mają być lekkie i nie powinny wymagać dużej ilości mocy obliczeniowej. Dlatego nie jest konieczne tworzenie dużej liczby partycji kolejki kontroli w celu uzyskania dużej przepływności dla aranżacji. Większość dużej ilości pracy należy wykonać w funkcjach bezstanowych, które można skalować w nieskończoność.
+Generally speaking, orchestrator functions are intended to be lightweight and should not require large amounts of computing power. It is therefore not necessary to create a large number of control queue partitions to get great throughput for orchestrations. Most of the heavy work should be done in stateless activity functions, which can be scaled out infinitely.
 
 ## <a name="auto-scale"></a>Automatyczne skalowanie
 
-Podobnie jak w przypadku wszystkich Azure Functions działających w planach użycia i elastycznych warstw Premium, Durable Functions obsługuje skalowanie automatyczne za pośrednictwem [kontrolera Azure Functions skali](../functions-scale.md#runtime-scaling). Kontroler skalowania monitoruje opóźnienie wszystkich kolejek przez okresowe wydawanie poleceń _wglądu_ . Na podstawie opóźnień wiadomości z wglądem, kontroler skalowania zdecyduje się, czy dodać lub usunąć maszyny wirtualne.
+As with all Azure Functions running in the Consumption and Elastic Premium plans, Durable Functions supports auto-scale via the [Azure Functions scale controller](../functions-scale.md#runtime-scaling). The Scale Controller monitors the latency of all queues by periodically issuing _peek_ commands. Based on the latencies of the peeked messages, the Scale Controller will decide whether to add or remove VMs.
 
-Jeśli kontroler skalowania ustali, że opóźnienia komunikatów w kolejce sterującej są zbyt wysokie, to spowoduje dodanie wystąpień maszyn wirtualnych do momentu zmniejszenia opóźnienia komunikatów do akceptowalnego poziomu lub osiągnie liczbę partycji kolejki kontroli. Podobnie kontroler skalowania ciągle dodaje wystąpienia maszyn wirtualnych, jeśli opóźnienia kolejki elementu pracy są wysokie, niezależnie od liczby partycji.
+If the Scale Controller determines that control queue message latencies are too high, it will add VM instances until either the message latency decreases to an acceptable level or it reaches the control queue partition count. Similarly, the Scale Controller will continually add VM instances if work-item queue latencies are high, regardless of the partition count.
 
 > [!NOTE]
-> Począwszy od Durable Functions 2,0, aplikacje funkcji można skonfigurować tak, aby były uruchamiane w punktach końcowych usługi chronionej przez sieć wirtualną w planie elastycznej Premium. W tej konfiguracji Durable Functions wyzwalacze inicjują żądania skalowania zamiast kontrolera skalowania.
+> Starting with Durable Functions 2.0, function apps can be configured to run within VNET-protected service endpoints in the Elastic Premium plan. In this configuration, the Durable Functions triggers initiate scale requests instead of the Scale Controller.
 
-## <a name="thread-usage"></a>Użycie wątku
+## <a name="thread-usage"></a>Thread usage
 
-Funkcje programu Orchestrator są wykonywane w pojedynczym wątku, aby zapewnić, że wykonywanie może być deterministyczne dla wielu odtworzeń. Ze względu na to wykonywanie jednowątkowe należy pamiętać, że wątki funkcji programu Orchestrator nie wykonują zadań intensywnie korzystających z procesora CPU, operacji we/wy lub bloku z dowolnego powodu. Każda z zadań, które mogą wymagać wejścia/wyjścia, blokowania lub wielu wątków, powinna zostać przeniesiona do funkcji działania.
+Orchestrator functions are executed on a single thread to ensure that execution can be deterministic across many replays. Because of this single-threaded execution, it's important that orchestrator function threads do not perform CPU-intensive tasks, do I/O, or block for any reason. Any work that may require I/O, blocking, or multiple threads should be moved into activity functions.
 
-Funkcje działania mają wszystkie te same zachowania co regularne funkcje wyzwalane przez kolejki. Mogą bezpiecznie wykonywać operacje we/wy, wykonywać intensywność procesora CPU i korzystać z wielu wątków. Ponieważ wyzwalacze aktywności są bezstanowe, mogą swobodnie skalować w poziomie do nieograniczonej liczby maszyn wirtualnych.
+Activity functions have all the same behaviors as regular queue-triggered functions. They can safely do I/O, execute CPU intensive operations, and use multiple threads. Because activity triggers are stateless, they can freely scale out to an unbounded number of VMs.
 
-Funkcje jednostki są również wykonywane w jednym wątku, a operacje są przetwarzane jeden w czasie. Jednak funkcje jednostki nie mają żadnych ograniczeń dotyczących typu kodu, który może być wykonywany.
+Entity functions are also executed on a single thread and operations are processed one-at-a-time. However, entity functions do not have any restrictions on the type of code that can be executed.
 
-## <a name="concurrency-throttles"></a>Ograniczenia współbieżności
+## <a name="concurrency-throttles"></a>Concurrency throttles
 
-Azure Functions obsługuje wykonywanie wielu funkcji jednocześnie w ramach jednego wystąpienia aplikacji. Takie współbieżne wykonywanie pozwala zwiększyć równoległość i zminimalizować liczbę "zimnego startu", które będą miały w czasie typową aplikację. Jednak wysoka współbieżność może wyczerpać zasoby systemowe dla maszyn wirtualnych, takie jak połączenia sieciowe lub dostępna pamięć. W zależności od potrzeb aplikacji funkcji może być konieczne ograniczenie współbieżności poszczególnych wystąpień, aby uniknąć możliwości uruchamiania pamięci w sytuacjach wymagających dużego obciążenia.
+Azure Functions supports executing multiple functions concurrently within a single app instance. This concurrent execution helps increase parallelism and minimizes the number of "cold starts" that a typical app will experience over time. However, high concurrency can exhaust per-VM system resources such network connections or available memory. Depending on the needs of the function app, it may be necessary to throttle the per-instance concurrency to avoid the possibility of running out of memory in high-load situations.
 
-W pliku **host. JSON** można skonfigurować limity współbieżności działań, usług Orchestrator i jednostek. Odpowiednie ustawienia są `durableTask/maxConcurrentActivityFunctions` dla funkcji działania i `durableTask/maxConcurrentOrchestratorFunctions` dla programów Orchestrator i Entity.
+Activity, orchestrator, and entity function concurrency limits can be configured in the **host.json** file. The relevant settings are `durableTask/maxConcurrentActivityFunctions` for activity functions and `durableTask/maxConcurrentOrchestratorFunctions` for both orchestrator and entity functions.
 
-### <a name="functions-20"></a>Funkcje 2,0
+### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -180,18 +176,18 @@ W pliku **host. JSON** można skonfigurować limity współbieżności działań
 }
 ```
 
-W poprzednim przykładzie maksymalnie 10 funkcje programu Orchestrator lub jednostek oraz 10 funkcji działania można uruchomić na jednej maszynie wirtualnej współbieżnie. Jeśli nie zostanie określony, liczba operacji współbieżnych i wykonywanych przez program Orchestrator lub Entity Functions jest ograniczona w 10X liczbę rdzeni na maszynie wirtualnej.
+In the previous example, a maximum of 10 orchestrator or entity functions and 10 activity functions can run on a single VM concurrently. If not specified, the number of concurrent activity and orchestrator or entity function executions is capped at 10X the number of cores on the VM.
 
 > [!NOTE]
-> Te ustawienia ułatwiają zarządzanie użyciem pamięci i procesora na jednej maszynie wirtualnej. Jednak w przypadku skalowania w poziomie wielu maszyn wirtualnych każda maszyna wirtualna ma swój własny zestaw limitów. Tych ustawień nie można używać do kontrolowania współbieżności na poziomie globalnym.
+> These settings are useful to help manage memory and CPU usage on a single VM. However, when scaled out across multiple VMs, each VM has its own set of limits. These settings can't be used to control concurrency at a global level.
 
-## <a name="extended-sessions"></a>Sesje rozszerzone
+## <a name="extended-sessions"></a>Extended sessions
 
-Sesje rozszerzone to ustawienie, które zachowuje aranżacje i jednostki w pamięci nawet po zakończeniu przetwarzania komunikatów. Typowym efektem włączenia sesji rozszerzonych jest zredukowanie operacji we/wy na konto usługi Azure Storage i ogólna lepsza przepływność.
+Extended sessions is a setting that keeps orchestrations and entities in memory even after they finish processing messages. The typical effect of enabling extended sessions is reduced I/O against the Azure Storage account and overall improved throughput.
 
-Sesje rozszerzone można włączyć przez ustawienie `durableTask/extendedSessionsEnabled`, aby `true` w pliku **host. JSON** . Ustawienie `durableTask/extendedSessionIdleTimeoutInSeconds` może służyć do kontrolowania, jak długo bezczynna sesja będzie utrzymywana w pamięci:
+You can enable extended sessions by setting `durableTask/extendedSessionsEnabled` to `true` in the **host.json** file. The `durableTask/extendedSessionIdleTimeoutInSeconds` setting can be used to control how long an idle session will be held in memory:
 
-**Funkcje 2,0**
+**Functions 2.0**
 ```json
 {
   "extensions": {
@@ -203,7 +199,7 @@ Sesje rozszerzone można włączyć przez ustawienie `durableTask/extendedSessio
 }
 ```
 
-**Funkcje 1,0**
+**Functions 1.0**
 ```json
 {
   "durableTask": {
@@ -213,64 +209,64 @@ Sesje rozszerzone można włączyć przez ustawienie `durableTask/extendedSessio
 }
 ```
 
-Istnieją dwa potencjalne downsides tego ustawienia, które należy wziąć pod uwagę:
+There are two potential downsides of this setting to be aware of:
 
-1. Istnieje ogólny wzrost użycia pamięci aplikacji funkcji.
-2. W przypadku wielu współbieżnych, krótkoterminowych wykonań lub funkcji jednostek może istnieć ogólny spadek przepływności.
+1. There's an overall increase in function app memory usage.
+2. There can be an overall decrease in throughput if there are many concurrent, short-lived orchestrator or entity function executions.
 
-Jeśli na przykład `durableTask/extendedSessionIdleTimeoutInSeconds` jest ustawiona na 30 sekund, a następnie odcinek usługi Orchestrator lub Entity Functions, który jest wykonywany w mniej niż 1 sekund, nadal zajmuje pamięć przez 30 sekund. Liczy się także w odniesieniu do pozostałego wcześniej przydziału `durableTask/maxConcurrentOrchestratorFunctions`, co potencjalnie uniemożliwia uruchomienie innych funkcji programu Orchestrator lub Entity.
+As an example, if `durableTask/extendedSessionIdleTimeoutInSeconds` is set to 30 seconds, then a short-lived orchestrator or entity function episode that executes in less than 1 second still occupies memory for 30 seconds. It also counts against the `durableTask/maxConcurrentOrchestratorFunctions` quota mentioned previously, potentially preventing other orchestrator or entity functions from running.
 
-W następnych sekcjach opisano określone skutki rozszerzonych sesji w programie Orchestrator i w ramach funkcji Entity.
+The specific effects of extended sessions on orchestrator and entity functions are described in the next sections.
 
-### <a name="orchestrator-function-replay"></a>Powtarzanie funkcji programu Orchestrator
+### <a name="orchestrator-function-replay"></a>Orchestrator function replay
 
-Jak wspomniano wcześniej, funkcje programu Orchestrator są odtwarzane przy użyciu zawartości tabeli **historii** . Domyślnie kod funkcji programu Orchestrator jest odtwarzany za każdym razem, gdy partia komunikatów jest usuwana z kolejki sterującej. Po włączeniu rozszerzonych sesji wystąpienia funkcji programu Orchestrator są przechowywane w pamięci, a nowe komunikaty mogą być przetwarzane bez powtarzania pełnej historii.
+As mentioned previously, orchestrator functions are replayed using the contents of the **History** table. By default, the orchestrator function code is replayed every time a batch of messages are dequeued from a control queue. When extended sessions are enabled, orchestrator function instances are held in memory longer and new messages can be processed without a full history replay.
 
-Zwiększenie wydajności rozszerzonych sesji jest najczęściej zauważalne w następujących sytuacjach:
+The performance improvement of extended sessions is most often observed in the following situations:
 
-* W przypadku równoczesnego uruchamiania ograniczonej liczby wystąpień aranżacji.
-* Gdy aranżacje mają dużą liczbę akcji sekwencyjnych (np. setki wywołań funkcji działania), które szybko zakończyły pracę.
-* Gdy organizuje wentylator i wentylator — w dużej liczbie działań, które są wykonywane w tym samym czasie.
-* Gdy funkcje programu Orchestrator muszą przetwarzać duże komunikaty lub wykonywać przetwarzanie danych intensywnie korzystających z procesora CPU.
+* When there are a limited number of orchestration instances running concurrently.
+* When orchestrations have large number of sequential actions (e.g. hundreds of activity function calls) that complete quickly.
+* When orchestrations fan-out and fan-in a large number of actions that complete around the same time.
+* When orchestrator functions need to process large messages or do any CPU-intensive data processing.
 
-We wszystkich innych sytuacjach zwykle nie ma zauważalnej poprawy wydajności funkcji programu Orchestrator.
+In all other situations, there is typically no observable performance improvement for orchestrator functions.
 
 > [!NOTE]
-> Tych ustawień należy używać tylko po pełnym opracowaniu i przetestowaniu funkcji programu Orchestrator. Domyślne zachowanie funkcji agresywnego powtarzania może być przydatne do wykrywania naruszeń [kodu funkcji programu Orchestrator](durable-functions-code-constraints.md) w czasie projektowania i dlatego jest domyślnie wyłączona.
+> These settings should only be used after an orchestrator function has been fully developed and tested. The default aggressive replay behavior can useful for detecting [orchestrator function code constraints](durable-functions-code-constraints.md) violations at development time, and is therefore disabled by default.
 
-### <a name="entity-function-unloading"></a>Zwalnianie funkcji jednostki
+### <a name="entity-function-unloading"></a>Entity function unloading
 
-Funkcja Entity Functions przetwarza do 20 operacji w pojedynczej partii. Gdy tylko jednostka zakończy przetwarzanie partii operacji, zachowuje jej stan i zwalnia z pamięci. Można opóźnić wyładowywanie jednostek z pamięci przy użyciu ustawienia sesji rozszerzonych. Jednostki nadal utrzymują swoje zmiany stanu tak jak wcześniej, ale pozostają w pamięci przez skonfigurowany okres, aby zmniejszyć liczbę obciążeń z usługi Azure Storage. Ta redukcja obciążeń z usługi Azure Storage może zwiększyć ogólną przepływność często używanych jednostek.
+Entity functions process up to 20 operations in a single batch. As soon as an entity finishes processing a batch of operations, it persists its state and unloads from memory. You can delay the unloading of entities from memory using the extended sessions setting. Entities continue to persist their state changes as before, but remain in memory for the configured period of time to reduce the number of loads from Azure Storage. This reduction of loads from Azure Storage can improve the overall throughput of frequently accessed entities.
 
-## <a name="performance-targets"></a>Cele wydajności
+## <a name="performance-targets"></a>Performance targets
 
-Planując użycie Durable Functions dla aplikacji produkcyjnej, ważne jest, aby uwzględnić wymagania dotyczące wydajności wczesne w procesie planowania. W tej sekcji omówiono niektóre podstawowe scenariusze użycia i oczekiwane maksymalne numery przepływności.
+When planning to use Durable Functions for a production application, it is important to consider the performance requirements early in the planning process. This section covers some basic usage scenarios and the expected maximum throughput numbers.
 
-* **Wykonywanie działania sekwencyjnego**: w tym scenariuszu opisano funkcję programu Orchestrator, która uruchamia serię funkcji działania jeden po drugim. Jest to najbardziej zbliżone do przykładu [łańcucha funkcji](durable-functions-sequence.md) .
-* **Równoległe wykonywanie działań**: w tym scenariuszu opisano funkcje programu [Orchestrator, które](durable-functions-cloud-backup.md) wykonują wiele funkcji działania równolegle przy użyciu wzorca wentylatorów.
-* **Równoległe przetwarzanie odpowiedzi**: ten scenariusz to druga połowa [wentylatoru i wzorca wentylatorów](durable-functions-cloud-backup.md) . Koncentruje się na wydajności wentylatorów. Należy pamiętać, że w przeciwieństwie do wentylatorów, wentylator jest wykonywane przez pojedyncze wystąpienie funkcji programu Orchestrator i w związku z tym może działać tylko na jednej maszynie wirtualnej.
-* **Przetwarzanie zdarzeń zewnętrznych**: ten scenariusz reprezentuje pojedyncze wystąpienie funkcji programu Orchestrator, które czeka na [zdarzenia zewnętrzne](durable-functions-external-events.md), po jednym naraz.
-* **Przetwarzanie operacji jednostki**: ten scenariusz sprawdza, jak szybko _pojedynczy_ [obiekt licznika](durable-functions-entities.md) może przetwarzać stałe strumienie operacji.
+* **Sequential activity execution**: This scenario describes an orchestrator function that runs a series of activity functions one after the other. It most closely resembles the [Function Chaining](durable-functions-sequence.md) sample.
+* **Parallel activity execution**: This scenario describes an orchestrator function that executes many activity functions in parallel using the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern.
+* **Parallel response processing**: This scenario is the second half of the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern. It focuses on the performance of the fan-in. It's important to note that unlike fan-out, fan-in is done by a single orchestrator function instance, and therefore can only run on a single VM.
+* **External event processing**: This scenario represents a single orchestrator function instance that waits on [external events](durable-functions-external-events.md), one at a time.
+* **Entity operation processing**: This scenario tests how quickly a _single_ [Counter entity](durable-functions-entities.md) can process a constant stream of operations.
 
 > [!TIP]
-> W przeciwieństwie do wentylatorów, operacje wentylatorów są ograniczone do pojedynczej maszyny wirtualnej. Jeśli aplikacja korzysta z wentylatorów, wentylator-in i ma na celu wydajność wentylatorów, rozważ poddzielenie wentylatorów funkcji działania między wiele [podkategorii](durable-functions-sub-orchestrations.md).
+> Unlike fan-out, fan-in operations are limited to a single VM. If your application uses the fan-out, fan-in pattern and you are concerned about fan-in performance, consider sub-dividing the activity function fan-out across multiple [sub-orchestrations](durable-functions-sub-orchestrations.md).
 
-W poniższej tabeli przedstawiono oczekiwane *maksymalne* numery przepływności dla poprzednio opisanych scenariuszy. "Wystąpienie" odnosi się do pojedynczego wystąpienia funkcji programu Orchestrator działającej na pojedynczej niewielkiej maszynie wirtualnej ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) w Azure App Service. We wszystkich przypadkach zakłada się, że [rozszerzone sesje](#orchestrator-function-replay) są włączone. Rzeczywiste wyniki mogą się różnić w zależności od procesora lub pracy we/wy wykonanej przez kod funkcji.
+The following table shows the expected *maximum* throughput numbers for the previously described scenarios. "Instance" refers to a single instance of an orchestrator function running on a single small ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM in Azure App Service. In all cases, it is assumed that [extended sessions](#orchestrator-function-replay) are enabled. Actual results may vary depending on the CPU or I/O work performed by the function code.
 
 | Scenariusz | Maksymalna przepływność |
 |-|-|
-| Wykonywanie działania sekwencyjnego | 5 działań na sekundę, na wystąpienie |
-| Równoległe wykonywanie działań (wentylator-out) | 100 działań na sekundę, na wystąpienie |
-| Przetwarzanie reakcji równoległej (wentylator) | 150 odpowiedzi na sekundę, na wystąpienie |
-| Przetwarzanie zdarzeń zewnętrznych | 50 zdarzeń na sekundę, na wystąpienie |
-| Przetwarzanie operacji jednostki | 64 operacji na sekundę |
+| Sequential activity execution | 5 activities per second, per instance |
+| Parallel activity execution (fan-out) | 100 activities per second, per instance |
+| Parallel response processing (fan-in) | 150 responses per second, per instance |
+| External event processing | 50 events per second, per instance |
+| Entity operation processing | 64 operations per second |
 
 > [!NOTE]
-> Te numery są aktualne w Durable Functions wersji 1.4.0 rozszerzenia (GA). Liczby te mogą ulec zmianie w miarę upływu czasu, gdy funkcja zostanie zakończyła się, a w miarę dokonywania optymalizacji.
+> These numbers are current as of the v1.4.0 (GA) release of the Durable Functions extension. These numbers may change over time as the feature matures and as optimizations are made.
 
-Jeśli nie widzisz oczekiwanych numerów przepływności, a użycie procesora i pamięci jest w dobrej kondycji, sprawdź, czy przyczyna jest związana z [kondycją konta magazynu](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). Rozszerzenie Durable Functions może znacznie obciążać konto usługi Azure Storage, a wystarczające duże obciążenia mogą spowodować ograniczenie konta magazynu.
+If you are not seeing the throughput numbers you expect and your CPU and memory usage appears healthy, check to see whether the cause is related to [the health of your storage account](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). The Durable Functions extension can put significant load on an Azure Storage account and sufficiently high loads may result in storage account throttling.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Informacje o odzyskiwaniu po awarii i dystrybucji geograficznej](durable-functions-disaster-recovery-geo-distribution.md)
+> [Learn about disaster recovery and geo-distribution](durable-functions-disaster-recovery-geo-distribution.md)

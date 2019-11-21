@@ -7,17 +7,17 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ef9bb41c36e4bfa59f30e2666a26a7e200bfd17b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f0656d9454483c7ee76660050bbd067bef4c9296
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967141"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219078"
 ---
-# <a name="tutorial-forecast-future-spending"></a>Samouczek: Prognozowanie wydatków w przyszłości
+# <a name="tutorial-forecast-future-spending"></a>Samouczek: prognozowanie wydatków w przyszłości
 
 Usługa Cloudyn umożliwia prognozowanie wydatków w przyszłości na podstawie historycznych danych o użyciu usług i wydatkach. Raporty usługi Cloudyn zawierają wszystkie dane dotyczące przewidywanych kosztów. Korzystając z przykładów w tym samouczku, zapoznasz się z przewidywanymi kosztami przy użyciu tych raportów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -57,7 +57,7 @@ Na przykładzie widać, które usługi wiązały się z największymi wydatkami.
 
 Na powyższej ilustracji przewidywany roczny koszt maszyn wirtualnych platformy Azure wynosi 28 374 USD.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

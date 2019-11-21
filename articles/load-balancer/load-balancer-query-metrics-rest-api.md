@@ -1,65 +1,64 @@
 ---
-title: Pobieranie metryk przy użyciu interfejsu API REST
-titlesuffix: Azure Load Balancer
-description: Użyj interfejsów API REST platformy Azure, aby zbierać metryki dotyczące kondycji i wykorzystania dla Load Balancer dla danego zakresu czasu i dat.
+title: Retrieve metrics with the REST API
+titleSuffix: Azure Load Balancer
+description: In this article, get started using the Azure REST APIs to collect health and usage metrics for Azure Load Balancer.
 services: sql-database
 author: asudbring
-ms.reviewer: routlaw
-manager: jeconnoc
+manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 0d12dc04aff58dd6273d8d29d422bdbd9e7c886b
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274528"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225254"
 ---
-# <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Uzyskiwanie metryk użycia Load Balancer przy użyciu interfejsu API REST
+# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Get Load Balancer usage metrics using the REST API
 
-W tym przykładzie pokazano, jak zbierać liczbę bajtów przetworzonych przez [Usługa Load Balancer w warstwie Standardowa](/azure/load-balancer/load-balancer-standard-overview) przez przedział czasu przy użyciu [interfejsu API REST platformy Azure](/rest/api/azure/).
+Collect the number of bytes processed by a [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) for an interval of time using the [Azure REST API](/rest/api/azure/).
 
-Kompletna dokumentacja referencyjna i dodatkowe przykłady dla interfejsu API REST są dostępne w temacie [Azure monitor REST](/rest/api/monitor). 
+Complete reference documentation and additional samples for the REST API are available in the [Azure Monitor REST reference](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Żądanie kompilacji
+## <a name="build-the-request"></a>Tworzenie żądania
 
-Użyj następującego żądania GET, aby zebrać [metrykę byteCount](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) z usługa Load Balancer w warstwie Standardowa. 
+Use the following GET request to collect the [ByteCount metric](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) from a Standard Load Balancer. 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=ByteCount&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
 ```
 
-### <a name="request-headers"></a>Nagłówki żądań
+### <a name="request-headers"></a>Request headers
 
 Wymagane są następujące nagłówki: 
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Wymagany. Ustaw wartość `application/json`.|  
-|*Authorization:*|Wymagana. Ustaw prawidłowy `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Authorization:*|Wymagany. Ustawiony na prawidłowy [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |  
 
-### <a name="uri-parameters"></a>Parametry identyfikatora URI
+### <a name="uri-parameters"></a>URI parameters
 
-| Name (Nazwa) | Opis |
+| Nazwa | Opis |
 | :--- | :---------- |
-| subscriptionId | Identyfikator subskrypcji, który identyfikuje subskrypcję platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| resourceGroupName | Nazwa grupy zasobów zawierającej zasób. Tę wartość można uzyskać za pomocą interfejsu API Azure Resource Manager, interfejsu wiersza polecenia lub portalu. |
-| loadBalancerName | Nazwa Azure Load Balancer. |
-| metricnames | Rozdzielana przecinkami lista prawidłowych [metryk Load Balancer](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-version | Wersja interfejsu API do użycia dla żądania.<br /><br /> Ten dokument obejmuje interfejs API- `2018-01-01`Version uwzględniony w powyższym adresie URL.  |
-| TimeSpan | Przedział czasu zapytania. Jest to ciąg o następującym formacie `startDateTime_ISO/endDateTime_ISO`. Ten opcjonalny parametr ma ustawioną wartość zwracającą wartość dnia w przykładzie. |
+| subscriptionId | The subscription ID that identifies an Azure subscription. If you have multiple subscriptions, see [Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| resourceGroupName | The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API, CLI, or the portal. |
+| loadBalancerName | The name of the Azure Load Balancer. |
+| metric names | Comma-separated list of valid  [Load Balancer metrics](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| api-version | The API version to use for the request.<br /><br /> This document covers api-version `2018-01-01`, included in the above URL.  |
+| timespan | The timespan of the query. It's a string with the following format `startDateTime_ISO/endDateTime_ISO`. This optional parameter is set to return a day's worth of data in the example. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Treść żądania
 
-Żadna treść żądania nie jest wymagana dla tej operacji.
+No request body is needed for this operation.
 
 ## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
-Kod stanu 200 jest zwracany, gdy lista wartości metryk zostanie zwrócona pomyślnie. Pełną listę kodów błędów można znaleźć w [dokumentacji referencyjnej](/rest/api/monitor/metrics/list#errorresponse).
+Status code 200 is returned when the list of metric values is returned successfully. A full list of error codes is available in the [reference documentation](/rest/api/monitor/metrics/list#errorresponse).
 
 ## <a name="example-response"></a>Przykładowa odpowiedź 
 

@@ -2,36 +2,36 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: notification-hubs
-author: spelluru
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/30/2018
-ms.author: spelluru
+ms.date: 11/07/2019
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 299f92484000cb5c59291a5af87f24d89a771fee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296746"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228180"
 ---
 W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami powiadomień szablonu z aplikacji konsoli .NET.
 
 1. W programie Visual Studio utwórz nową aplikację konsoli języka Visual C#:
-    1. W menu wybierz kolejno pozycje **plik** > **Nowy** > **projekt**.
-    1. W obszarze **Utwórz nowy projekt**wybierz pozycję **aplikacja konsoli (.NET Framework)** dla C# programu na liście szablonów, a następnie wybierz pozycję **dalej**.
-    1. Wprowadź nazwę aplikacji.
-    1. W polu **rozwiązanie**wybierz opcję **Dodaj do rozwiązania**, a następnie wybierz pozycję **Utwórz** , aby utworzyć projekt.
+    1. On the menu, select **File** > **New** > **Project**.
+    1. In **Create a new project**, select **Console App (.NET Framework)** for C# in the list of templates, and select **Next**.
+    1. Enter a name for the app.
+    1. For **Solution**, choose **Add to solution**, and select **Create** to create the project.
 
-1. Wybierz pozycję **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów** , a następnie w oknie konsoli Uruchom następujące polecenie:
+1. Select **Tools** > **NuGet Package Manager** > **Package Manager Console** and then, in the console window, run the following command:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
    ```
 
-   Ta akcja dodaje odwołanie do zestawu Azure Notification Hubs SDK przy użyciu pakietu [Microsoft. Azure. NotificationHubs] .
+   This action adds a reference to the Azure Notification Hubs SDK by using the [Microsoft.Azure.NotificationHubs] package.
 
-1. Otwórz plik *program.cs* i Dodaj następującą instrukcję `using`:
+1. Open the *Program.cs* file, and add the following `using` statement:
 
    ```csharp
    using Microsoft.Azure.NotificationHubs;
@@ -45,12 +45,15 @@ W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami pow
         // Define the notification hub.
         NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
 
+        // Apple requires the apns-push-type header for all requests
+        var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
+
         // Create an array of breaking news categories.
         var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
 
         // Send the notification as a template notification. All template registrations that contain
         // "messageParam" and the proper tags will receive the notifications.
-        // This includes APNS, GCM, WNS, and MPNS template registrations.
+        // This includes APNS, GCM/FCM, WNS, and MPNS template registrations.
 
         Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
@@ -66,7 +69,7 @@ W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami pow
 
 1. W poprzednim kodzie zastąp symbole zastępcze `<hub name>` i `<connection string with full access>` wartościami: nazwą centrum powiadomień i parametrami połączenia *DefaultFullSharedAccessSignature* z pulpitu nawigacyjnego centrum powiadomień.
 
-1. W metodzie `Main()` Dodaj następujące wiersze:
+1. In the `Main()` method, add the following lines:
 
    ```csharp
     SendTemplateNotificationAsync();
@@ -83,4 +86,4 @@ W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami pow
 [Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[Microsoft. Azure. NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Microsoft.Azure.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

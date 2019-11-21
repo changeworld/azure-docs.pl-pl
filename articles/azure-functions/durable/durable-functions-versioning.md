@@ -1,34 +1,30 @@
 ---
-title: Przechowywanie wersji w Durable Functions — Azure
-description: Dowiedz się, jak zaimplementować obsługę wersji w rozszerzeniu Durable Functions Azure Functions.
-services: functions
+title: Versioning in Durable Functions - Azure
+description: Learn how to implement versioning in the Durable Functions extension for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4b4e82acbd3037c70b87731c0661605041090435
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614509"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232757"
 ---
-# <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w Durable Functions (Azure Functions)
+# <a name="versioning-in-durable-functions-azure-functions"></a>Versioning in Durable Functions (Azure Functions)
 
-Jest to nieuniknione, że funkcje zostaną dodane, usunięte i zmienione w okresie istnienia aplikacji. [Durable Functions](durable-functions-overview.md) umożliwia łączenie się z funkcjami łańcucha w sposób, który nie był wcześniej możliwy i ten łańcuch ma wpływ na sposób obsługi wersji.
+It is inevitable that functions will be added, removed, and changed over the lifetime of an application. [Durable Functions](durable-functions-overview.md) allows chaining functions together in ways that weren't previously possible, and this chaining affects how you can handle versioning.
 
-## <a name="how-to-handle-breaking-changes"></a>Jak obsłużyć istotne zmiany
+## <a name="how-to-handle-breaking-changes"></a>How to handle breaking changes
 
-Istnieje kilka przykładów istotnych zmian, o których należy wiedzieć. W tym artykule omówiono najczęstsze. Głównym motywem za wszystkie z nich jest to, że w przypadku nowych i istniejących aranżacji funkcji wpływają zmiany kodu funkcji.
+There are several examples of breaking changes to be aware of. This article discusses the most common ones. The main theme behind all of them is that both new and existing function orchestrations are impacted by changes to function code.
 
-### <a name="changing-activity-or-entity-function-signatures"></a>Zmiana sygnatury funkcji działania lub jednostki
+### <a name="changing-activity-or-entity-function-signatures"></a>Changing activity or entity function signatures
 
-Zmiana podpisu odwołuje się do zmiany w nazwie, danych wejściowych lub wyjściowych funkcji. Jeśli tego rodzaju zmiany są wprowadzane do działania lub funkcji jednostki, może to spowodować przerwanie każdej funkcji programu Orchestrator, która jest od niej zależna. Jeśli zaktualizujesz funkcję programu Orchestrator w celu uwzględnienia tej zmiany, możesz przerwać istniejące wystąpienia w locie.
+A signature change refers to a change in the name, input, or output of a function. If this kind of change is made to an activity or entity function, it could break any orchestrator function that depends on it. If you update the orchestrator function to accommodate this change, you could break existing in-flight instances.
 
-Załóżmy na przykład, że mamy następującą funkcję programu Orchestrator.
+As an example, suppose we have the following orchestrator function.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -39,7 +35,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Ta funkcja uproszczony pobiera wyniki **foo** i przekazuje je do **paska**. Załóżmy, że musimy zmienić wartość zwracaną **foo** z `bool` na `int`, aby obsługiwać szersze różne wartości wynikowe. Wynik będzie wyglądać następująco:
+This simplistic function takes the results of **Foo** and passes it to **Bar**. Let's assume we need to change the return value of **Foo** from `bool` to `int` to support a wider variety of result values. The result looks like this:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -51,17 +47,17 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Poprzednie C# przykłady Target Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableOrchestrationContext` zamiast `IDurableOrchestrationContext`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> The previous C# examples target Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-Ta zmiana działa prawidłowo dla wszystkich nowych wystąpień funkcji programu Orchestrator, ale przerywa wszystkie wystąpienia w locie. Rozważmy na przykład przypadek, w którym wystąpienie aranżacji wywołuje funkcję o nazwie `Foo`, pobiera wartość logiczną, a następnie punkty kontrolne. Jeśli w tym momencie zostanie wdrożona zmiana podpisu, wystąpienie z punktem kontrolnym zakończy się niepowodzeniem natychmiast po jego wznowieniu i ododtwarzania wywołania do `context.CallActivityAsync<int>("Foo")`. Ten błąd występuje, ponieważ wynik w tabeli historii jest `bool`, ale nowy kod próbuje zdeserializować go do `int`.
+This change works fine for all new instances of the orchestrator function but breaks any in-flight instances. For example, consider the case where an orchestration instance calls a function named `Foo`, gets back a boolean value, and then checkpoints. If the signature change is deployed at this point, the checkpointed instance will fail immediately when it resumes and replays the call to `context.CallActivityAsync<int>("Foo")`. This failure happens because the result in the history table is `bool` but the new code tries to deserialize it into `int`.
 
-Ten przykład jest tylko jednym z wielu różnych sposobów, w których zmiana podpisu może przerwać istniejące wystąpienia. Ogólnie rzecz biorąc, jeśli program Orchestrator musi zmienić sposób wywoływania funkcji, zmiana będzie prawdopodobnie powodować problemy.
+This example is just one of many different ways that a signature change can break existing instances. In general, if an orchestrator needs to change the way it calls a function, then the change is likely to be problematic.
 
-### <a name="changing-orchestrator-logic"></a>Zmiana logiki programu Orchestrator
+### <a name="changing-orchestrator-logic"></a>Changing orchestrator logic
 
-Druga klasa problemów z obsługą wersji polega na zmianie kodu funkcji programu Orchestrator w taki sposób, który odmówi logiki powtarzania dla wystąpień w locie.
+The other class of versioning problems come from changing the orchestrator function code in a way that confuses the replay logic for in-flight instances.
 
-Weź pod uwagę następujące funkcje programu Orchestrator:
+Consider the following orchestrator function:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -72,7 +68,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Teraz Załóżmy, że chcemy pozornie nieszkodliwe zmienić, aby dodać kolejne wywołanie funkcji.
+Now let's assume you want to make a seemingly innocent change to add another function call.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -89,42 +85,42 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Poprzednie C# przykłady Target Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableOrchestrationContext` zamiast `IDurableOrchestrationContext`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> The previous C# examples target Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-Ta zmiana powoduje dodanie nowego wywołania funkcji do **SendNotification** między **foo** a **paskiem**. Brak zmian sygnatur. Problem występuje, gdy istniejące wystąpienie zostanie wznowione z wywołania do **paska**. Podczas powtarzania, jeśli oryginalne wywołanie metody **foo** zwróciło `true`, to ponowne uruchomienie programu Orchestrator wywoła wywołanie do **SendNotification**, które nie znajduje się w jego historii wykonywania. W związku z tym trwała struktura zadań kończy się niepowodzeniem z `NonDeterministicOrchestrationException`, ponieważ napotkała wywołanie **SendNotification** , gdy oczekiwano na wyświetlenie wywołania do **paska**. Ten sam typ problemu może wystąpić podczas dodawania wszelkich wywołań do "trwałych" interfejsów API, w tym `CreateTimer`, `WaitForExternalEvent`itp.
+This change adds a new function call to **SendNotification** between **Foo** and **Bar**. There are no signature changes. The problem arises when an existing instance resumes from the call to **Bar**. During replay, if the original call to **Foo** returned `true`, then the orchestrator replay will call into **SendNotification**, which is not in its execution history. As a result, the Durable Task Framework fails with a `NonDeterministicOrchestrationException` because it encountered a call to **SendNotification** when it expected to see a call to **Bar**. The same type of problem can occur when adding any calls to "durable" APIs, including `CreateTimer`, `WaitForExternalEvent`, etc.
 
-## <a name="mitigation-strategies"></a>Strategie ograniczenia
+## <a name="mitigation-strategies"></a>Mitigation strategies
 
-Poniżej przedstawiono niektóre strategie postępowania z wyzwaniami dotyczącymi wersji:
+Here are some of the strategies for dealing with versioning challenges:
 
-* Nic nie rób
-* Zatrzymaj wszystkie wystąpienia w locie
-* Wdrożenia równoległe
+* Do nothing
+* Stop all in-flight instances
+* Side-by-side deployments
 
-### <a name="do-nothing"></a>Nic nie rób
+### <a name="do-nothing"></a>Do nothing
 
-Najprostszym sposobem obsługi istotnej zmiany jest umożliwienie awarii wystąpienia aranżacji w locie. Nowe wystąpienia pomyślnie uruchomiły zmieniony kod.
+The easiest way to handle a breaking change is to let in-flight orchestration instances fail. New instances successfully run the changed code.
 
-Czy ten rodzaj awarii jest problemem, zależy od ważności wystąpień w locie. Jeśli pracujesz w aktywnym programowaniu i nie Zadbaj o wystąpienia w locie, może to być wystarczające. Należy jednak zająć się wyjątkami i błędami w potoku diagnostyki. Aby uniknąć tych problemów, należy wziąć pod uwagę inne opcje przechowywania wersji.
+Whether this kind of failure is a problem depends on the importance of your in-flight instances. If you are in active development and don't care about in-flight instances, this might be good enough. However, you'll need to deal with exceptions and errors in your diagnostics pipeline. If you want to avoid those things, consider the other versioning options.
 
-### <a name="stop-all-in-flight-instances"></a>Zatrzymaj wszystkie wystąpienia w locie
+### <a name="stop-all-in-flight-instances"></a>Stop all in-flight instances
 
-Innym rozwiązaniem jest zatrzymanie wszystkich wystąpień w locie. Zatrzymanie wszystkich wystąpień może odbywać się przez wyczyszczenie zawartości kolejek wewnętrznej **kontroli** i kolejek elementów **roboczych** . Wystąpienia będą w nieskończoność zablokowane, gdzie się znajdują, ale nie będą zasłaniać dzienników i komunikatów o błędach. To podejście jest idealne do szybkiego tworzenia prototypów.
+Another option is to stop all in-flight instances. Stopping all instances can be done by clearing the contents of the internal **control-queue** and **workitem-queue** queues. The instances will be forever stuck where they are, but they will not clutter your logs with failure messages. This approach is ideal in rapid prototype development.
 
 > [!WARNING]
-> Szczegóły tych kolejek mogą ulec zmianie z upływem czasu, dlatego nie należy polegać na tej metodzie w przypadku obciążeń produkcyjnych.
+> The details of these queues may change over time, so don't rely on this technique for production workloads.
 
-### <a name="side-by-side-deployments"></a>Wdrożenia równoległe
+### <a name="side-by-side-deployments"></a>Side-by-side deployments
 
-Najbardziej nieudaną próbą zapewnienia, że krytyczne zmiany są wdrażane bezpiecznie, wdrażając je równolegle ze starszymi wersjami. Można to zrobić przy użyciu dowolnej z następujących technik:
+The most fail-proof way to ensure that breaking changes are deployed safely is by deploying them side-by-side with your older versions. This can be done using any of the following techniques:
 
-* Wdróż wszystkie aktualizacje jako całkowicie nowe funkcje, pozostawiając istniejące funkcje jako-is. Może to być trudne, ponieważ obiekty wywołujące nowe wersje funkcji muszą zostać zaktualizowane, a także zgodnie z tymi samymi wskazówkami.
-* Wdróż wszystkie aktualizacje jako nową aplikację funkcji przy użyciu innego konta magazynu.
-* Wdróż nową kopię aplikacji funkcji przy użyciu tego samego konta magazynu, ale ze zaktualizowaną nazwą `taskHub`. Zalecaną techniką są wdrożenia równoległe.
+* Deploy all the updates as entirely new functions, leaving existing functions as-is. This can be tricky because the callers of the new function versions must be updated as well following the same guidelines.
+* Deploy all the updates as a new function app with a different storage account.
+* Deploy a new copy of the function app with the same storage account but with an updated `taskHub` name. Side-by-side deployments is the recommended technique.
 
-### <a name="how-to-change-task-hub-name"></a>Jak zmienić nazwę centrum zadań
+### <a name="how-to-change-task-hub-name"></a>How to change task hub name
 
-Centrum zadań można skonfigurować w pliku *host. JSON* w następujący sposób:
+The task hub can be configured in the *host.json* file as follows:
 
 #### <a name="functions-1x"></a>Functions w wersji 1.x
 
@@ -136,7 +132,7 @@ Centrum zadań można skonfigurować w pliku *host. JSON* w następujący sposó
 }
 ```
 
-#### <a name="functions-20"></a>Funkcje 2,0
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -148,16 +144,16 @@ Centrum zadań można skonfigurować w pliku *host. JSON* w następujący sposó
 }
 ```
 
-Wartość domyślna dla Durable Functions v1. x jest `DurableFunctionsHub`. Począwszy od Durable Functions v 2.0, domyślna nazwa centrum zadań jest taka sama jak nazwa aplikacji funkcji na platformie Azure lub `TestHubName` w przypadku uruchamiania poza platformą Azure.
+The default value for Durable Functions v1.x is `DurableFunctionsHub`. Starting in Durable Functions v2.0, the default task hub name is the same as the function app name in Azure, or `TestHubName` if running outside of Azure.
 
-Wszystkie jednostki usługi Azure Storage są nazwane na podstawie `hubName` wartości konfiguracji. Nadając centrum zadań nową nazwę, upewnij się, że dla nowej wersji aplikacji zostanie utworzona osobna kolejka i tabela historii. Aplikacja funkcji, jednak zatrzyma przetwarzanie zdarzeń dla aranżacji lub jednostek utworzonych w ramach poprzedniej nazwy centrum zadań.
+All Azure Storage entities are named based on the `hubName` configuration value. By giving the task hub a new name, you ensure that separate queues and history table are created for the new version of your application. The function app, however, will stop processing events for orchestrations or entities created under the previous task hub name.
 
-Zalecamy wdrożenie nowej wersji aplikacji funkcji w nowym [miejscu wdrożenia](../functions-deployment-slots.md). Miejsca wdrożenia umożliwiają uruchamianie wielu kopii aplikacji funkcji obok siebie tylko z jednym z nich jako aktywnym miejscem *produkcyjnym* . Gdy wszystko jest gotowe do uwidocznienia nowej logiki aranżacji do istniejącej infrastruktury, może to być proste, ponieważ zamienia nową wersję na miejsce produkcyjne.
+We recommend that you deploy the new version of the function app to a new [Deployment Slot](../functions-deployment-slots.md). Deployment slots allow you to run multiple copies of your function app side-by-side with only one of them as the active *production* slot. When you are ready to expose the new orchestration logic to your existing infrastructure, it can be as simple as swapping the new version into the production slot.
 
 > [!NOTE]
-> Ta strategia działa najlepiej, gdy używane są wyzwalacze protokołu HTTP i elementu webhook dla funkcji programu Orchestrator. W przypadku wyzwalaczy innych niż HTTP, takich jak kolejki lub Event Hubs, definicja wyzwalacza powinna [pochodzić od ustawienia aplikacji](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , które jest aktualizowane w ramach operacji zamiany.
+> This strategy works best when you use HTTP and webhook triggers for orchestrator functions. For non-HTTP triggers, such as queues or Event Hubs, the trigger definition should [derive from an app setting](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) that gets updated as part of the swap operation.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak obsługiwać problemy dotyczące wydajności i skalowania](durable-functions-perf-and-scale.md)
+> [Learn how to handle performance and scale issues](durable-functions-perf-and-scale.md)

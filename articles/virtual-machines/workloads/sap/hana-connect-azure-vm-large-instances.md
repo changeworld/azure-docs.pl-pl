@@ -1,6 +1,6 @@
 ---
-title: Konfiguracja połączeń z maszyn wirtualnych do SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
-description: Konfiguracja połączenia z maszyn wirtualnych na potrzeby używania SAP HANA na platformie Azure (duże wystąpienia).
+title: Connectivity setup from virtual machines to SAP HANA on Azure (Large Instances) | Microsoft Docs
+description: Connectivity setup from virtual machines for using SAP HANA on Azure (Large Instances).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -15,137 +15,137 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 919e253b6d9ddf8d65f86897a299416e93f3e660
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099919"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224725"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Łączenie maszyn wirtualnych platformy Azure z funkcją HANA — duże wystąpienia
 
-[Co to jest SAP HANA na platformie Azure (duże wystąpienia)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) Należy zauważyć, że minimalne wdrożenie dużych wystąpień usługi HANA przy użyciu warstwy aplikacji SAP na platformie Azure wygląda następująco:
+The article [What is SAP HANA on Azure (Large Instances)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) mentions that the minimal deployment of HANA Large Instances with the SAP application layer in Azure looks like the following:
 
-![Sieć wirtualna Azure podłączona do SAP HANA na platformie Azure (duże wystąpienia) i lokalnie](./media/hana-overview-architecture/image1-architecture.png)
+![Azure VNet connected to SAP HANA on Azure (Large Instances) and on-premises](./media/hana-overview-architecture/image1-architecture.png)
 
-Bliżej sieci wirtualnej platformy Azure, istnieje potrzeba:
+Looking closer at the Azure virtual network side, there is a need for:
 
-- Definicja sieci wirtualnej platformy Azure, w której zamierzasz wdrożyć maszyny wirtualne w warstwie aplikacji SAP.
-- Definicja domyślnej podsieci w sieci wirtualnej platformy Azure, która jest rzeczywiście wdrożona na maszynach wirtualnych.
-- Utworzona sieć wirtualna platformy Azure musi mieć co najmniej jedną podsieć maszyny wirtualnej i jedną podsieć bramy sieci wirtualnej platformy Azure ExpressRoute. Do tych podsieci należy przypisać zakresy adresów IP określone i omówione w poniższych sekcjach.
+- The definition of an Azure virtual network into which you're going to deploy the VMs of the SAP application layer.
+- The definition of a default subnet in the Azure virtual network that is really the one into which the VMs are deployed.
+- The Azure virtual network that's created needs to have at least one VM subnet and one Azure ExpressRoute virtual network gateway subnet. These subnets should be assigned the IP address ranges as specified and discussed in the following sections.
 
 
-## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Tworzenie sieci wirtualnej platformy Azure dla dużych wystąpień usługi HANA
+## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Create the Azure virtual network for HANA Large Instances
 
 >[!Note]
->Duże wystąpienia usługi Azure Virtual Network for HANA muszą zostać utworzone za pomocą modelu wdrażania Azure Resource Manager. Starszy model wdrażania platformy Azure, powszechnie znany jako klasyczny model wdrażania, nie jest obsługiwany przez rozwiązanie dużej instancji HANA.
+>The Azure virtual network for HANA Large Instances must be created by using the Azure Resource Manager deployment model. The older Azure deployment model, commonly known as the classic deployment model, isn't  supported by the HANA Large Instance solution.
 
-Do utworzenia sieci wirtualnej można użyć Azure Portal, programu PowerShell, szablonu platformy Azure lub interfejsu wiersza polecenia platformy Azure. (Aby uzyskać więcej informacji, zobacz [Tworzenie sieci wirtualnej przy użyciu Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). W poniższym przykładzie pokazano sieć wirtualną, która została utworzona przy użyciu Azure Portal.
+You can use the Azure portal, PowerShell, an Azure template, or the Azure CLI to create the virtual network. (For more information, see [Create a virtual network using the Azure portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). In the following example, we look at a virtual network that's created by using the Azure portal.
 
-W przypadku odwoływania się do **przestrzeni adresowej** w tej dokumentacji do przestrzeni adresowej, która może być używana przez sieć wirtualną platformy Azure. Ta przestrzeń adresowa jest również zakresem adresów wykorzystywanym przez sieć wirtualną do propagacji tras BGP. Tę **przestrzeń adresową** można zobaczyć tutaj:
+When referring to the **address space** in this documentation, to the address space that the Azure virtual network is allowed to use. This address space is also the address range that the virtual network uses for BGP route propagation. This **address space** can be seen here:
 
-![Przestrzeń adresowa sieci wirtualnej platformy Azure wyświetlanej w Azure Portal](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
+![Address space of an Azure virtual network displayed in the Azure portal](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
 
-W poprzednim przykładzie z 10.16.0.0/16 usługa Azure Virtual Network uzyskała raczej duży i szeroki zakres adresów IP, który ma być używany. W związku z tym wszystkie zakresy adresów IP kolejnych podsieci w tej sieci wirtualnej mogą mieć swoje zakresy w tej przestrzeni adresowej. Zazwyczaj nie zaleca się używania tego dużego zakresu adresów dla pojedynczej sieci wirtualnej na platformie Azure. Przyjrzyjmy się podsieciom zdefiniowanym w sieci wirtualnej platformy Azure:
+In the previous example, with 10.16.0.0/16, the Azure virtual network was given a rather large and wide IP address range to use. Therefore, all the IP address ranges of subsequent subnets within this virtual network can have their ranges within that address space. We  don't usually  recommend such a large address range for single virtual network in Azure. But let's look into the subnets that are defined in the Azure virtual network:
 
-![Podsieci sieci wirtualnej platformy Azure i ich zakresy adresów IP](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
+![Azure virtual network subnets and their IP address ranges](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
 
-Przyjrzyjmy się sieci wirtualnej z pierwszą podsiecią maszyny wirtualnej (nazywaną "domyślną") i podsiecią o nazwie "GatewaySubnet".
+We look at a virtual network with a first VM subnet (here called "default") and a subnet called "GatewaySubnet".
 
-W obszarze dwie Poprzednia grafika **przestrzeń adresowa sieci wirtualnej** obejmuje zarówno **zakres adresów IP podsieci maszyny wirtualnej platformy Azure** , jak i bramę sieci wirtualnej.
+In the two previous graphics, the **virtual network address space** covers both **the subnet IP address range of the Azure VM** and that of the virtual network gateway.
 
-**Przestrzeń adresów sieci wirtualnej** można ograniczyć do określonych zakresów używanych przez każdą podsieć. Możesz również zdefiniować **przestrzeń adresową sieci** wirtualnej sieci wirtualnej jako wiele konkretnych zakresów, jak pokazano poniżej:
+You can restrict the **virtual network address space** to the specific ranges used by each subnet. You can also define the **virtual network address space** of a virtual network as multiple specific ranges, as shown here:
 
-![Przestrzeń adresowa sieci wirtualnej platformy Azure z dwoma spacjami](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
+![Azure virtual network address space with two spaces](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-W takim przypadku **przestrzeń adresów sieci wirtualnej** ma zdefiniowane dwie spacje. Są one takie same jak zakresy adresów IP, które są zdefiniowane dla zakresu adresów IP podsieci maszyny wirtualnej platformy Azure i bramy sieci wirtualnej. 
+In this case, the **virtual network address space** has two spaces defined. They are the same as the IP address ranges that are defined for the subnet IP address range of the Azure VM and the virtual network gateway. 
 
-Można użyć dowolnego standardu nazewnictwa dla tych podsieci dzierżawców (podsieci maszyn wirtualnych). Jednak **zawsze musi istnieć jeden i tylko jedna podsieć bramy dla każdej sieci wirtualnej** , która łączy się z SAP HANA na platformie Azure (duże wystąpienia) obwód ExpressRoute. **Ta podsieć bramy musi mieć nazwę "GatewaySubnet"** , aby upewnić się, że brama ExpressRoute jest prawidłowo umieszczona.
+You can use any naming standard you like for these tenant subnets (VM subnets). However, **there must always be one, and only one, gateway subnet for each virtual network** that connects to the SAP HANA on Azure (Large Instances) ExpressRoute circuit. **This gateway subnet has to be named "GatewaySubnet"** to make sure that the ExpressRoute gateway is properly placed.
 
 > [!WARNING] 
-> Należy pamiętać, że podsieć bramy zawsze nosi nazwę "GatewaySubnet".
+> It's critical that the gateway subnet always be named "GatewaySubnet".
 
-Można użyć wielu podsieci maszyn wirtualnych i nieciągłych zakresów adresów. Te zakresy adresów muszą być objęte przestrzenią **adresową sieci wirtualnej** sieci wirtualnej. Mogą one być w postaci zagregowanej. Mogą również znajdować się na liście dokładnych zakresów podsieci maszyn wirtualnych i podsieci bramy.
+You can use multiple VM subnets and non-contiguous address ranges. These address ranges must be covered by the **virtual network address space** of the virtual network. They can be in an aggregated form. They can also be in a list of the exact ranges of the VM subnets and the gateway subnet.
 
-Poniżej znajduje się podsumowanie ważnych faktów dotyczących sieci wirtualnej platformy Azure, które łączą się z dużymi wystąpieniami HANA:
+Following is a summary of the important facts about an Azure virtual network that connects to HANA Large Instances:
 
-- **Przestrzeń adresową sieci wirtualnej** należy przesłać do firmy Microsoft, gdy wykonywane jest początkowe wdrożenie dużych wystąpień platformy Hana. 
-- **Przestrzeń adresowa sieci wirtualnej** może być jednym z większych zakresów obejmujących zakresy dla zakresu adresów IP podsieci maszyny wirtualnej platformy Azure i bramy sieci wirtualnej.
-- Można też przesłać wiele zakresów, które obejmują różne zakresy adresów IP w zakresach adresów IP podsieci maszyn wirtualnych i zakres adresów IP bramy sieci wirtualnej.
-- Zdefiniowana **przestrzeń adresowa sieci wirtualnej** jest używana na potrzeby propagacji routingu BGP.
-- Nazwa podsieci bramy musi być: **"GatewaySubnet"** .
-- Przestrzeń adresowa jest używana jako filtr na stronie duże wystąpienie HANA, aby zezwalać na ruch do jednostek dużych wystąpień usługi HANA lub go zabronić z poziomu platformy Azure. Informacje o routingu BGP sieci wirtualnej platformy Azure i zakresów adresów IP, które są skonfigurowane do filtrowania na stronie dużego wystąpienia HANA, powinny być zgodne. W przeciwnym razie mogą wystąpić problemy z łącznością.
-- Poniżej znajdują się pewne szczegółowe informacje o podsieci bramy, które zostały omówione później, w sekcji **łączenie sieci wirtualnej z usługą Hana duże wystąpienie ExpressRoute.**
+- You must submit the **virtual network address space** to Microsoft  when you're performing an initial deployment of HANA Large Instances. 
+- The **virtual network address space** can be one larger range that covers the ranges for both the subnet IP address range of the Azure VM and the virtual network gateway.
+- Or you can submit multiple ranges that cover the different IP address ranges of VM subnet IP address range(s) and the virtual network gateway IP address range.
+- The defined **virtual network address space** is used for BGP routing propagation.
+- The name of the gateway subnet must be: **"GatewaySubnet"** .
+- The  address space is used as a filter on the HANA Large Instance side to allow or disallow traffic to the HANA Large Instance units from Azure. The BGP routing information of the Azure virtual network and the IP address ranges that are configured for filtering on the HANA Large Instance side should match. Otherwise, connectivity issues can occur.
+- There are some details about the gateway subnet that are discussed later, in the section **Connecting a virtual network to HANA Large Instance ExpressRoute.**
 
 
 
-## <a name="different-ip-address-ranges-to-be-defined"></a>Różne zakresy adresów IP, które mają być zdefiniowane 
+## <a name="different-ip-address-ranges-to-be-defined"></a>Different IP address ranges to be defined 
 
-Niektóre z zakresów adresów IP, które są niezbędne do wdrożenia dużych wystąpień usługi HANA, zostały już wprowadzone. Ale istnieją również więcej zakresów adresów IP, które są ważne. Nie wszystkie z następujących zakresów adresów IP należy przesłać do firmy Microsoft. Należy jednak zdefiniować je przed wysłaniem żądania wstępnego wdrożenia:
+Some of the IP address ranges that are necessary for deploying HANA Large Instances got introduced already. But there are more IP address ranges that are also important. Not all of the following IP address ranges need to be submitted to Microsoft. However, you do need to define them before sending a request for initial deployment:
 
-- **Przestrzeń adresowa sieci wirtualnej**: **Przestrzeń adresów sieci wirtualnej** to zakresy adresów IP, które można przypisać do parametru przestrzeń adresowa w sieciach wirtualnych platformy Azure. Te sieci nawiązują połączenie z środowiskiem SAP HANA dużym wystąpieniem. Zaleca się, aby ten parametr przestrzeni adresowej miał wartość wielowierszową. Powinien on zawierać zakres podsieci maszyny wirtualnej platformy Azure i zakres podsieci bramy platformy Azure. Ten zakres podsieci został pokazany w poprzedniej grafice. NIE może nakładać się na pulę adresów IP w sieci lokalnej lub na serwerze ani na zakresy adresu ER-P2P. Jak można uzyskać te zakresy adresów IP? Zespół sieci firmowej lub dostawca usług powinien udostępnić jeden lub wiele zakresów adresów IP, które nie są używane w sieci. Na przykład podsieć maszyny wirtualnej platformy Azure to 10.0.1.0/24, a podsieć bramy platformy Azure to 10.0.2.0/28.  Zalecamy, aby przestrzeń adresowa sieci wirtualnej platformy Azure została zdefiniowana jako: 10.0.1.0/24 i 10.0.2.0/28. Chociaż wartości przestrzeni adresowej można agregować, zalecamy ich dopasowanie do zakresów podsieci. W ten sposób można przypadkowo uniknąć używania nieużywanych zakresów adresów IP w większych przestrzeniach adresowych w sieci. **Przestrzeń adresów sieci wirtualnej jest zakresem adresów IP. Należy przesłać do firmy Microsoft, gdy zostanie poproszony o wstępne wdrożenie**.
-- **Zakres adresów IP podsieci maszyny wirtualnej platformy Azure:** Ten zakres adresów IP jest przypisany do parametru podsieci sieci wirtualnej platformy Azure. Ten parametr znajduje się w sieci wirtualnej platformy Azure i łączy się z środowiskiem SAP HANA dużym wystąpieniem. Ten zakres adresów IP służy do przypisywania adresów IP do maszyn wirtualnych platformy Azure. Adresy IP z tego zakresu mogą nawiązywać połączenia z serwerami SAP HANA dużymi wystąpieniami. W razie konieczności można użyć wielu podsieci maszyn wirtualnych platformy Azure. Zalecamy użycie bloku CIDR/24 dla każdej podsieci maszyny wirtualnej platformy Azure. Ten zakres adresów musi być częścią wartości, które są używane w przestrzeni adresowej sieci wirtualnej platformy Azure. Jak uzyskać ten zakres adresów IP? Zespół sieci firmowej lub dostawca usług powinien podać zakres adresów IP, który nie jest używany w sieci.
-- **Zakres adresów IP podsieci bramy sieci wirtualnej:** W zależności od funkcji, których planujesz użyć, zalecany rozmiar to:
-   - Brama usługi ExpressRoute o najwyższej wydajności:/26 blok adresów — wymagany dla klasy SKU typu II.
-   - Współistnienie z sieciami VPN i ExpressRoute przy użyciu bramy sieci wirtualnej ExpressRoute o wysokiej wydajności (lub mniejszej):/27 bloku adresów.
-   - Wszystkie inne sytuacje:/28 blok adresów. Ten zakres adresów musi być częścią wartości używanych w wartości "przestrzeń adresów sieci wirtualnej". Ten zakres adresów musi być częścią wartości, które są używane w wartościach przestrzeni adresowej sieci wirtualnej platformy Azure przesyłanych do firmy Microsoft. Jak uzyskać ten zakres adresów IP? Zespół sieci firmowej lub dostawca usług powinien podać zakres adresów IP, który nie jest obecnie używany w sieci. 
-- **Zakres adresów dla łączności ER-P2P:** Ten zakres jest zakresem adresów IP dla połączenia P2P ExpressRoute SAP HANA z dużym wystąpieniem (ER). Ten zakres adresów IP musi być zakresem adresów IP/29 CIDR. Ten zakres nie może nakładać się na lokalne lub inne zakresy adresów IP platformy Azure. Ten zakres adresów IP służy do konfigurowania łączności ER z bramy wirtualnej ExpressRoute na serwerach z dużymi wystąpieniami SAP HANA. Jak uzyskać ten zakres adresów IP? Zespół sieci firmowej lub dostawca usług powinien podać zakres adresów IP, który nie jest obecnie używany w sieci. **Ten zakres jest zakresem adresów IP. Należy przesłać do firmy Microsoft, gdy zostanie poproszony o wstępne wdrożenie**.  
-- **Zakres adresów puli IP serwera:** Ten zakres adresów IP służy do przypisywania indywidualnego adresu IP do serwerów z dużymi wystąpieniami platformy HANA. Zalecany rozmiar podsieci to blok CIDR/24. Jeśli jest to konieczne, może być mniejsze, z maksymalnie 64 adresami IP. Z tego zakresu pierwsze 30 adresów IP są zastrzeżone do użytku przez firmę Microsoft. Upewnij się, że w przypadku wybrania rozmiaru zakresu należy uwzględnić ten fakt. Ten zakres nie może nakładać się na lokalne lub inne adresy IP platformy Azure. Jak uzyskać ten zakres adresów IP? Zespół sieci firmowej lub dostawca usług powinien podać zakres adresów IP, który nie jest obecnie używany w sieci.  **Ten zakres jest zakresem adresów IP, który musi zostać przesłany do firmy Microsoft w przypadku pytania wstępnego wdrożenia**.
+- **Virtual network address space**: The **virtual network address space** is the IP address ranges that you assign to your address space parameter in the Azure virtual networks. These networks connect to the SAP HANA Large Instance environment. We recommend that this address space parameter is a multi-line value. It should consist of the subnet range of the Azure VM and the subnet range(s) of the Azure gateway. This subnet range was shown in the previous graphics. It must NOT overlap with your on-premises or server IP pool or ER-P2P address ranges. How do you get these IP address range(s)? Your corporate network team or service provider should provide one or multiple IP address range(s) that aren't used inside your network. For example, the subnet of your Azure VM  is 10.0.1.0/24, and the subnet of your Azure gateway subnet is 10.0.2.0/28.  We recommend that your Azure virtual network address space is defined as: 10.0.1.0/24 and 10.0.2.0/28. Although the  address space values can be aggregated, we recommend matching them to the subnet ranges. This way you can accidentally avoid reusing unused IP address ranges within larger address spaces elsewhere in your network. **The virtual network address space is an IP address range. It needs to be submitted to Microsoft when you ask for an initial deployment**.
+- **Azure VM subnet IP address range:** This IP address range is the one you assign to the Azure virtual network subnet parameter. This parameter is in your Azure virtual network and connects to the SAP HANA Large Instance environment. This IP address range is used to assign IP addresses to your Azure VMs. The IP addresses out of this range are allowed to connect to your SAP HANA Large Instance server(s). If needed, you can use multiple Azure VM subnets. We recommend a /24 CIDR block for each Azure VM subnet. This address range must be a part of the values that are used in the Azure virtual network address space. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that isn't being used inside your network.
+- **Virtual network gateway subnet IP address range:** Depending on the features that you plan to use, the recommended size is:
+   - Ultra-performance ExpressRoute gateway: /26 address block--required for Type II class of SKUs.
+   - Coexistence with VPN and ExpressRoute using a high-performance ExpressRoute virtual network gateway (or smaller): /27 address block.
+   - All other situations: /28 address block. This address range must be a part of the values used in the "VNet address space" values. This address range must be a part of the values that are used in the Azure virtual network address space values that you submit to Microsoft. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network. 
+- **Address range for ER-P2P connectivity:** This range is the IP range for your SAP HANA Large Instance ExpressRoute (ER) P2P connection. This range of IP addresses must be a /29 CIDR IP address range. This range must NOT overlap with your on-premises or other Azure IP address ranges. This IP address range is used to set up the ER connectivity from your ExpressRoute virtual gateway to the SAP HANA Large Instance servers. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network. **This range is an IP address range. It needs to be submitted to Microsoft when you ask for an initial deployment**.  
+- **Server IP pool address range:** This IP address range is used to assign the individual IP address to HANA large instance servers. The recommended subnet size is a /24 CIDR block. If needed, it can be smaller, with as few as  64 IP addresses. From this range, the first 30 IP addresses are reserved for use by Microsoft. Make sure that you account for this fact when you choose the size of the range. This range must NOT overlap with your on-premises or other Azure IP addresses. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network.  **This range is an IP address range, which needs to be submitted to Microsoft when asking for an initial deployment**.
 
-Opcjonalne zakresy adresów IP, które ostatecznie muszą zostać przesłane do firmy Microsoft:
+Optional IP address ranges that eventually need to be submitted to Microsoft:
 
-- Jeśli zdecydujesz się używać [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) w celu włączenia bezpośredniego routingu ze wszystkich jednostek wystąpienia magazynu lokalnego do Hana, musisz zarezerwować inny zakres adresów IP/29. Ten zakres nie może pokrywać się z żadnym innym zakresem adresów IP zdefiniowanym wcześniej.
-- Jeśli zdecydujesz się używać [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , aby włączyć kierowanie bezpośrednie z dzierżawy dużego wystąpienia Hana w jednym regionie platformy Azure do innej dzierżawy dużego wystąpienia Hana w innym regionie świadczenia usługi Azure, musisz zarezerwować inny zakres adresów IP. Ten zakres nie może pokrywać się z żadnym innym zakresem adresów IP zdefiniowanym wcześniej.
+- If you choose to use [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from on-premises to HANA Large Instance units, you need to reserve another /29 IP address range. This range may not overlap with any of the other IP address ranges you defined before.
+- If you choose to use [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from a HANA Large Instance tenant in one Azure region to another HANA Large Instance tenant in another Azure region, you need to reserve another /29 IP address range. This range may not overlap with any of the other IP address ranges you defined before.
 
-Aby uzyskać więcej informacji na temat ExpressRoute Global Reach i użycia wokół dużych wystąpień platformy HANA, zapoznaj się z dokumentami:
+For more information about ExpressRoute Global Reach and usage around HANA large instances, check the documents:
 
-- [Architektura sieci SAP HANA (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Łączenie sieci wirtualnej z dużymi wystąpieniami platformy HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA (Large Instances) network architecture](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
+- [Connect a virtual network to HANA large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
  
-Należy zdefiniować i zaplanować zakresy adresów IP, które zostały opisane wcześniej. Nie trzeba jednak przesyłać wszystkich z nich do firmy Microsoft. Zakresy adresów IP wymagane jako nazwa firmy Microsoft to:
+You need to define and plan the IP address ranges that were described previously. However, you don't need to transmit all of them to Microsoft. The IP address ranges that you are required to name to Microsoft are:
 
-- Przestrzenie adresów sieci wirtualnej platformy Azure
-- Zakres adresów dla łączności ER-P2P
-- Zakres adresów pul adresów IP serwera
+- Azure virtual network address space(s)
+- Address range for ER-P2P connectivity
+- Server IP pool address range
 
-W przypadku dodawania dodatkowych sieci wirtualnych, które muszą łączyć się z dużymi wystąpieniami HANA, należy przesłać nową przestrzeń adresową sieci wirtualnej platformy Azure, która jest dodawana do firmy Microsoft. 
+If you add additional virtual networks that need to connect to HANA Large Instances, you have to submit the new Azure virtual network address space that you're adding to Microsoft. 
 
-Poniżej znajduje się przykład różnych zakresów i niektórych przykładowych zakresów, które należy skonfigurować i ostatecznie udostępnić firmie Microsoft. Wartość przestrzeni adresowej sieci wirtualnej platformy Azure nie jest agregowana w pierwszym przykładzie. Jest to jednak zdefiniowane z zakresów pierwszego zakresu adresów IP podsieci maszyn wirtualnych platformy Azure i zakresu adresów IP podsieci bramy sieci wirtualnej. 
+Following is an example of the different ranges and some example ranges as you need to configure and eventually provide  to Microsoft. The value for the Azure virtual network address space isn't aggregated in the first example. However, it is defined from the ranges of the first Azure VM subnet IP address range and the virtual network gateway subnet IP address range. 
 
-Podczas konfigurowania i przesyłania dodatkowych zakresów adresów IP dodatkowych podsieci maszyn wirtualnych w ramach przestrzeni adresów sieci wirtualnej platformy Azure można użyć wielu podsieci maszyn wirtualnych w ramach sieci wirtualnej platformy Azure.
+You can use multiple VM subnets within the Azure virtual network when you configure and submit the additional IP address ranges of the additional VM subnet(s) as part of the Azure virtual network address space.
 
-![Zakresy adresów IP wymagane w SAP HANA na platformie Azure (duże wystąpienia) minimalnego wdrożenia](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
+![IP address ranges required in SAP HANA on Azure (Large Instances) minimal deployment](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
 
-Ilustracja nie pokazuje dodatkowych zakresów adresów IP, które są wymagane do zastosowania opcjonalnego ExpressRoute Global Reach.
+The graphic does not show the additional IP address range(s) that are required for the optional use of ExpressRoute Global Reach.
 
-Możesz również agregować dane przesyłane do firmy Microsoft. W takim przypadku przestrzeń adresowa sieci wirtualnej platformy Azure zawiera tylko jedno miejsce. Korzystając z zakresów adresów IP z wcześniejszego przykładu, zagregowana przestrzeń adresowa sieci wirtualnej może wyglądać jak na poniższej ilustracji:
+You can also aggregate the data that you submit to Microsoft. In that case, the address space of the Azure virtual network only includes one space. Using the IP address ranges from the earlier example, the aggregated virtual network address space could look like the following image:
 
-![Druga możliwość korzystania z zakresów adresów IP wymaganych w SAP HANA na platformie Azure (duże wystąpienia) minimalnego wdrożenia](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
+![Second possibility of IP address ranges required in SAP HANA on Azure (Large Instances) minimal deployment](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
 
-W przykładzie, zamiast dwóch mniejszych zakresów, które definiuje przestrzeń adresową sieci wirtualnej platformy Azure, mamy jeden większy zakres obejmujący 4096 adresów IP. Taka duża definicja przestrzeni adresowej pozostawia niektóre raczej nieużywane zakresy. Ponieważ wartości przestrzeni adresów sieci wirtualnej są używane do propagacji tras BGP, użycie nieużywanych zakresów lokalnie lub w innym miejscu w sieci może powodować problemy z routingiem. Ilustracja nie pokazuje dodatkowych zakresów adresów IP, które są wymagane do zastosowania opcjonalnego ExpressRoute Global Reach.
+In the example, instead of two smaller ranges that defined the address space of the Azure virtual network, we have one larger range that covers 4096 IP addresses. Such a large definition of the address space leaves some rather large ranges unused. Since the virtual network address space value(s) are used for BGP route propagation, usage of the unused ranges on-premises or elsewhere in your network can cause routing issues. The graphic does not show the additional IP address range(s) that are required for the optional use of ExpressRoute Global Reach.
 
-Zalecamy ścisłe wyrównanie przestrzeni adresowej przy użyciu rzeczywistej przestrzeni adresowej podsieci. W razie potrzeby bez ponoszenia przestojów w sieci wirtualnej zawsze możesz dodać nowe wartości przestrzeni adresowej później.
+We recommend that you keep the address space tightly aligned with the actual subnet address space that you use. If needed, without incurring downtime on the virtual network, you can always add new address space values later.
  
 > [!IMPORTANT] 
-> Każdy zakres adresów IP w aplikacji ER-P2P, Pula adresów IP serwera i przestrzeń adresów sieci wirtualnej platformy Azure **nie** mogą nakładać się na siebie ani z żadnym innym zakresem używanym w sieci. Każdy z nich musi być dyskretny. Jak pokazuje dwie poprzednie grafiki, również nie mogą być podsiecią innego zakresu. Jeśli nastąpi nakładanie się między zakresami, Sieć wirtualna platformy Azure może nie połączyć się z obwodem usługi ExpressRoute.
+> Each IP address range in ER-P2P, the server IP pool, and the Azure virtual network address space must **NOT** overlap with one another or with any other range that's used in your network. Each must be discrete. As the two previous graphics show, they also can't be a subnet of any other range. If overlaps occur between ranges, the Azure virtual network might not connect to the ExpressRoute circuit.
 
-## <a name="next-steps-after-address-ranges-have-been-defined"></a>Następne kroki po zdefiniowaniu zakresów adresów
-Po zdefiniowaniu zakresów adresów IP należy wykonać następujące czynności:
+## <a name="next-steps-after-address-ranges-have-been-defined"></a>Next steps after address ranges have been defined
+After the IP address ranges have been defined, the following things need to happen:
 
-1. Prześlij zakresy adresów IP dla przestrzeni adresowej sieci wirtualnej platformy Azure, połączenia ER-P2P i zakresu adresów IP puli, a także inne dane, które zostały wymienione na początku dokumentu. W tym momencie można również rozpocząć tworzenie sieci wirtualnej i podsieci maszyny wirtualnej. 
-2. Obwód usługi ExpressRoute jest tworzony przez firmę Microsoft między subskrypcją platformy Azure i sygnaturą dużego wystąpienia HANA.
-3. Sieć dzierżawców jest tworzona w sygnaturze dużej instancji przez firmę Microsoft.
-4. Firma Microsoft konfiguruje sieć w SAP HANA na platformie Azure (duże wystąpienia), aby akceptować adresy IP z przestrzeni adresowej sieci wirtualnej platformy Azure, która komunikuje się z dużymi wystąpieniami HANA.
-5. W SAP HANA zależności od zakupionej jednostki SKU na platformie Azure (duże wystąpienia) firma Microsoft przypisuje jednostkę obliczeniową w sieci dzierżawców. Przypisuje także i instaluje magazyn oraz zainstaluje system operacyjny (SUSE lub Red Hat Linux). Adresy IP dla tych jednostek są pobierane z zakresu adresów puli IP serwera, który został przesłany do firmy Microsoft.
+1. Submit the IP address ranges for the Azure virtual network address space, the ER-P2P connectivity, and server IP pool address range, together with other data that has been listed at the beginning of the document. At this point, you could also start to create the virtual network and the VM subnets. 
+2. An ExpressRoute circuit is created by Microsoft between your Azure subscription and the HANA Large Instance stamp.
+3. A tenant network is created on the Large Instance stamp by Microsoft.
+4. Microsoft configures networking in the SAP HANA on Azure (Large Instances) infrastructure to accept IP addresses from your Azure virtual network address space that communicates with HANA Large Instances.
+5. Depending on the specific SAP HANA on Azure (Large Instances) SKU that you bought, Microsoft assigns a compute unit in a tenant network. It also allocates and mounts storage, and installs the operating system (SUSE or Red Hat Linux). IP addresses for these units are taken out of the Server IP Pool address range that you submitted to Microsoft.
 
-Po zakończeniu procesu wdrażania firma Microsoft udostępnia następujące dane:
-- Informacje, które są konieczne do łączenia sieci wirtualnych platformy Azure z obwodem usługi ExpressRoute, który łączy sieci wirtualne platformy Azure z dużymi wystąpieniami HANA:
-     - Klucze autoryzacji
+At the end of the deployment process, Microsoft delivers the following data to you:
+- Information that's needed to connect your Azure virtual network(s) to the ExpressRoute circuit that connects Azure virtual networks to HANA Large Instances:
+     - Authorization key(s)
      - ExpressRoute PeerID
-- Dane umożliwiające dostęp do dużych wystąpień platformy HANA po ustanowieniu obwodu usługi ExpressRoute i sieci wirtualnej platformy Azure.
+- Data for accessing HANA Large Instances after you establish ExpressRoute circuit and Azure virtual network.
 
-Możesz również znaleźć sekwencję połączeń dużych wystąpień HANA w dokumencie [SAP HANA na platformie Azure (duże wystąpienia)](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Wiele z poniższych kroków przedstawiono w przykładowym wdrożeniu w tym dokumencie. 
+You can also find the sequence of connecting HANA Large Instances in the document [SAP HANA on Azure (Large Instances) Setup](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Many of the following steps are shown in an example deployment in that document. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z tematem [łączenie sieci wirtualnej z dużym wystąpieniem platformy Hana ExpressRoute](hana-connect-vnet-express-route.md).
+- Refer to [Connecting a virtual network to HANA Large Instance ExpressRoute](hana-connect-vnet-express-route.md).

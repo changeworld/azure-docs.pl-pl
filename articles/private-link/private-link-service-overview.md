@@ -1,110 +1,110 @@
 ---
-title: Co to jest usługa Azure Private Link Service?
-description: Dowiedz się więcej o usłudze Azure Private Link Service.
+title: What is Azure Private Link service?
+description: Learn about Azure Private Link service.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: cad8e3e4f32a8773fe914362b637d39765a23c21
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.author: allensu
+ms.openlocfilehash: 8ac93e7ed1638137e70086ac22fa9bb97606830e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672519"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228060"
 ---
-# <a name="what-is-azure-private-link-service"></a>Co to jest usługa Azure Private Link Service?
+# <a name="what-is-azure-private-link-service"></a>What is Azure Private Link service?
 
-Usługa link prywatny platformy Azure to odwołanie do własnej usługi, która jest obsługiwana przez link prywatny platformy Azure. Usługa, która jest uruchomiona za [Usługa Load Balancer w warstwie Standardowa platformy Azure](../load-balancer/load-balancer-standard-overview.md) , może być włączona do prywatnego dostępu do łączy, dzięki czemu konsumenci usługi mogą uzyskać do nich dostęp prywatnie z własnych sieci wirtualnych. Klienci mogą utworzyć prywatny punkt końcowy wewnątrz swojej sieci wirtualnej i zmapować ją na tę usługę. W tym artykule objaśniono koncepcje związane z dostawcą usług. 
+Azure Private Link service is the reference to your own service that is powered by Azure Private Link. Your service that is running behind [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) can be enabled for Private Link access so that consumers to your service can access it privately from their own VNets. Your customers can create a private endpoint inside their VNet and map it to this service. This article explains concepts related to the service provider side. 
 
 ## <a name="workflow"></a>Przepływ pracy
 
-![Przepływ pracy usługi link prywatny](media/private-link-service-overview/private-link-service-workflow.png)
+![Private Link service workflow](media/private-link-service-overview/private-link-service-workflow.png)
 
-### <a name="create-your-private-link-service"></a>Tworzenie usługi linku prywatnego
+### <a name="create-your-private-link-service"></a>Create your Private Link Service
 
-- Skonfiguruj aplikację do uruchamiania za pomocą usługi równoważenia obciążenia w sieci wirtualnej. Jeśli masz już aplikację skonfigurowaną za pomocą usługi równoważenia obciążenia, możesz pominąć ten krok.   
-- Utwórz usługę linku prywatnego, która odwołuje się do powyższego modułu równoważenia obciążenia. W procesie wyboru modułu równoważenia obciążenia wybierz konfigurację adresu IP frontonu, w której chcesz odebrać ruch. Wybierz podsieć dla adresów IP translatora adresów sieciowych dla usługi linku prywatnego. Zaleca się, aby w podsieci były dostępne co najmniej osiem adresów IP translatora adresów sieciowych. Cały ruch konsumencki będzie wyglądał jako pochodzący z tej puli prywatnych adresów IP do dostawcy usług. Wybierz odpowiednie właściwości/ustawienia dla usługi łącza prywatnego.    
+- Configure your application to run behind a standard load balancer in your virtual network. If you already have your application configured behind a standard load balancer, you can skip this step.   
+- Create a Private Link Service referencing the load balancer above. In the load balancer selection process, choose the frontend IP configuration where you want to receive the traffic. Choose a subnet for NAT IP addresses for the Private Link Service. It is recommended to have at least eight NAT IP addresses available in the subnet. All consumer traffic will appear to originate from this pool of private IP addresses to the service provider. Choose the appropriate properties/settings for the Private Link Service.    
 
     > [!NOTE]
-    > Usługa Azure Private link jest obsługiwana tylko w usługa Load Balancer w warstwie Standardowa. 
+    > Azure Private Link Service is only supported on Standard Load Balancer. 
     
-### <a name="share-your-service"></a>Udostępnianie usługi
+### <a name="share-your-service"></a>Share your service
 
-Po utworzeniu usługi linku prywatnego platforma Azure wygeneruje globalnie unikatową nazwę monikera o nazwie "alias" na podstawie nazwy podanej dla usługi. Można udostępnić alias lub identyfikator URI zasobu usługi swoim klientom w trybie offline. Konsumenci mogą uruchomić połączenie prywatne za pomocą aliasu lub identyfikatora URI zasobu.
+After you create a Private Link service, Azure will generate a globally unique named moniker called "alias" based on the name you provide for your service. You can share either the alias or resource URI of your service with your customers offline. Consumers can start a Private Link connection using the alias or the resource URI.
  
-### <a name="manage-your-connection-requests"></a>Zarządzanie żądaniami połączeń
+### <a name="manage-your-connection-requests"></a>Manage your connection requests
 
-Po zainicjowaniu połączenia przez odbiorcę dostawca usług może zaakceptować lub odrzucić żądanie połączenia. Wszystkie żądania połączeń będą wyświetlane w obszarze właściwości **privateendpointconnections** w usłudze link prywatny.
+After a consumer initiates a connection, the service provider can accept or reject the connection request. All connection requests will be listed under the **privateendpointconnections** property on the Private Link service.
  
-### <a name="delete-your-service"></a>Usuwanie usługi
+### <a name="delete-your-service"></a>Delete your service
 
-Jeśli usługa link prywatny nie jest już używana, możesz ją usunąć. Jednak przed usunięciem usługi upewnij się, że nie ma skojarzonych z nimi połączeń prywatnych punktów końcowych. Możesz odrzucić wszystkie połączenia i usunąć usługę.
+If the Private Link service is no longer in use, you can delete it. However, before your delete the service, ensure that there are no private endpoint connections associated with it. You can reject all connections and delete the service.
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Właściwości
 
-Usługa link prywatny określa następujące właściwości: 
+A Private Link service specifies the following properties: 
 
 |Właściwość |Wyjaśnienie  |
 |---------|---------|
-|Stan aprowizacji (provisioningState)  |Właściwość tylko do odczytu, która wyświetla bieżący stan aprowizacji dla usługi linku prywatnego. Odpowiednie Stany aprowizacji to: Usunąć Awarii Powiodło się Aktualizowanie ". Gdy stan aprowizacji to "powodzenie", pomyślnie Zainicjowano obsługę linku prywatnego.        |
-|Alias (alias)     | Alias jest globalnie unikatowym ciągiem tylko do odczytu dla usługi. Ułatwia on maskowanie danych klienta usługi i w tym samym czasie tworzy łatwą do udostępnienia nazwę usługi. Podczas tworzenia usługi linku prywatnego platforma Azure generuje alias dla usługi, który można udostępnić klientom. Klienci mogą używać tego aliasu, aby zażądać połączenia z usługą.          |
-|Widoczność (widoczność)     | Widoczność to właściwość, która kontroluje ustawienia ekspozycji usługi link prywatny. Dostawcy usług mogą zdecydować się na ograniczenie podatności usługi na subskrypcje z uprawnieniami kontroli dostępu opartej na rolach (RBAC), ograniczonym zestawem subskrypcji lub wszystkimi subskrypcjami platformy Azure.          |
-|Autozatwierdzanie (autozatwierdzanie)    |   Automatyczne zatwierdzanie kontroluje zautomatyzowany dostęp do usługi łącza prywatnego. Subskrypcje określone na liście automatycznego zatwierdzania są zatwierdzane automatycznie po zażądaniu połączenia od prywatnych punktów końcowych w tych subskrypcjach.          |
-|Konfiguracja adresu IP frontonu Load Balancer (loadBalancerFrontendIpConfigurations)    |    Usługa link prywatny jest powiązana z adresem IP frontonu usługa Load Balancer w warstwie Standardowa. Cały ruch przychodzący do usługi będzie docierał do frontonu modułu równoważenia obciążenia. Można skonfigurować reguły modułu równoważenia obciążenia, aby skierować ten ruch do odpowiednich pul zaplecza, w których są uruchomione aplikacje. Konfiguracje adresów IP frontonu modułu równoważenia obciążenia różnią się od konfiguracji protokołu IP NAT.      |
-|Konfiguracja protokołu IP translatora adresów sieciowych (Ipconfiguration)    |    Ta właściwość odnosi się do konfiguracji protokołu IP NAT (translator adresów sieciowych) dla usługi link prywatny. Adres IP NAT można wybrać z dowolnej podsieci w sieci wirtualnej dostawcy usług. Usługa link prywatny Wykonuje translację NAT po stronie docelowej na ruch związany z linkiem prywatnym. Dzięki temu nie występuje konflikt adresów IP między źródłem (po stronie klienta) a miejscem docelowym (dostawcy usług). Po stronie docelowej (po stronie dostawcy usług) adres IP translatora adresów sieciowych będzie wyświetlany jako źródłowy IP dla wszystkich pakietów odebranych przez usługę i docelowy adres IP dla wszystkich pakietów wysłanych przez usługę.       |
-|Połączenia prywatnych punktów końcowych (privateEndpointConnections)     |  Ta właściwość zawiera listę prywatnych punktów końcowych łączących się z usługą link prywatny. Wiele prywatnych punktów końcowych może połączyć się z tą samą usługą łącza prywatnego, a dostawca usług może kontrolować stan poszczególnych prywatnych punktów końcowych.        |
+|Provisioning State (provisioningState)  |A read-only property that lists the current provisioning state for Private Link service. Applicable provisioning states are: "Deleting; Failed; Succeeded; Updating". When the provisioning state is "Succeeded", you have successfully provisioned your Private Link service.        |
+|Alias (alias)     | Alias is a globally unique read-only string for your service. It helps you mask the customer data for your service and at the same time creates an easy-to-share name for your service. When you create a Private Link service, Azure generates the alias for your service that you can share with your customers. Your customers can use this alias to request a connection to your service.          |
+|Visibility (visibility)     | Visibility is the property that controls the exposure settings for your Private Link service. Service providers can choose to limit the exposure to their service to subscriptions with role-based access control (RBAC) permissions, a restricted set of subscriptions, or all Azure subscriptions.          |
+|Auto Approval (autoApproval)    |   Auto-approval controls the automated access to the Private Link service. The subscriptions specified in the auto-approval list are approved automatically when a connection is requested from private endpoints in those subscriptions.          |
+|Load Balancer Frontend IP Configuration (loadBalancerFrontendIpConfigurations)    |    Private Link service is tied to the frontend IP address of a Standard Load Balancer. All traffic destined for the service will reach the frontend of the SLB. You can configure SLB rules to direct this traffic to appropriate backend pools where your applications are running. Load balancer frontend IP configurations are different than NAT IP configurations.      |
+|NAT IP Configuration (ipConfigurations)    |    This property refers to the NAT (Network Address Translation) IP configuration for the Private Link service. The NAT IP can be chosen from any subnet in a service provider's virtual network. Private Link service performs destination side NAT-ing on the Private Link traffic. This ensures that there is no IP conflict between source (consumer side) and destination (service provider) address space. On the destination side (service provider side), the NAT IP address will show up as Source IP for all packets received by your service and destination IP for all packets sent by your service.       |
+|Private endpoint connections (privateEndpointConnections)     |  This property lists the private endpoints connecting to Private Link service. Multiple private endpoints can connect to the same Private Link service and the service provider can control the state for individual private endpoints.        |
 |||
 
 
 ### <a name="details"></a>Szczegóły
 
-- Dostęp do usługi link prywatny można uzyskać z zatwierdzonych prywatnych punktów końcowych w tym samym regionie. Prywatny punkt końcowy może być osiągalny z tej samej sieci wirtualnej, z regionalnie równorzędną sieci wirtualnych, globalnie równorzędną sieci wirtualnych i lokalnie przy użyciu prywatnych połączeń sieci VPN lub ExpressRoute. 
+- Private Link service can be accessed from approved private endpoints in the same region. The private endpoint can be reached from the same virtual network, regionally peered VNets, globally peered VNets and on premises using private VPN or ExpressRoute connections. 
  
-- Podczas tworzenia usługi linku prywatnego tworzony jest interfejs sieciowy dla cyklu życia zasobu. Ten interfejs nie jest zarządzany przez klienta.
+- When creating a Private Link Service, a network interface is created for the lifecycle of the resource. This interface is not manageable by the customer.
  
-- Usługa link prywatny musi być wdrożona w tym samym regionie, w którym znajduje się sieć wirtualna i usługa Load Balancer w warstwie Standardowa.  
+- The Private Link Service must be deployed in the same region as the virtual network and the Standard Load Balancer.  
  
-- Dostęp do pojedynczej usługi linku prywatnego można uzyskać z wielu prywatnych punktów końcowych należących do różnych sieci wirtualnych, subskrypcji i/lub Active Directory dzierżawców. Połączenie jest nawiązywane za pomocą przepływu pracy połączenia. 
+- A single Private Link Service can be accessed from multiple Private Endpoints belonging to different VNets, subscriptions and/or Active Directory tenants. The connection is established through a connection workflow. 
  
-- Na tym samym usługa Load Balancer w warstwie Standardowa można utworzyć wiele usług łączy prywatnych przy użyciu różnych konfiguracji adresu IP frontonu. Istnieją limity dotyczące liczby prywatnych usług linków, które można utworzyć na usługa Load Balancer w warstwie Standardowa i na subskrypcję. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Multiple Private Link services can be created on the same Standard Load Balancer using different front-end IP configurations. There are limits to the number of Private Link services you can create per Standard Load Balancer and per subscription. For details, see [Azure limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
  
-- Z usługą linku prywatnego może być połączona więcej niż jedna konfiguracja adresu IP NAT. Wybranie więcej niż jednej konfiguracji protokołu IP NAT może ułatwić dostawcom usług skalowanie. Obecnie dostawcy usług mogą przypisywać maksymalnie osiem adresów IP translatora adresów sieciowych na usługę łącza prywatnego. Każdy adres IP translatora adresów sieciowych umożliwia przypisanie więcej portów dla połączeń TCP, a tym samym skalowanie w poziomie. Po dodaniu wielu adresów IP translatora adresów sieciowych do usługi link prywatny nie można usunąć adresów IP translatora adresów sieciowych. Jest to wykonywane w celu upewnienia się, że podczas usuwania adresów IP NAT nie wpłynie to na aktywne połączenia.
+- Private Link service can have more than one NAT IP configurations linked to it. Choosing more than one NAT IP configurations can help service providers to scale. Today, service providers can assign up to eight NAT IP addresses per Private Link service. With each NAT IP address, you can assign more ports for your TCP connections and thus scale out. After you add multiple NAT IP addresses to a Private Link service, you can't delete the NAT IP addresses. This is done to ensure that active connections are not impacted while deleting the NAT IP addresses.
 
 
 ## <a name="alias"></a>Alias
 
-**Alias** jest globalnie unikatową nazwą usługi. Ułatwia on maskowanie danych klienta usługi i w tym samym czasie tworzy łatwą do udostępnienia nazwę usługi. Podczas tworzenia usługi linku prywatnego platforma Azure generuje alias dla usługi, który można udostępnić klientom. Klienci mogą używać tego aliasu, aby zażądać połączenia z usługą.
+**Alias** is a globally unique name for your service. It helps you mask the customer data for your service and at the same time creates an easy-to-share name for your service. When you create a Private Link service, Azure generates an alias for your service that you can share with your customers. Your customers can use this alias to request a connection to your service.
 
-Alias składa się z trzech części: *Prefiks*. *Identyfikator GUID*. *Sufiks*
+The alias is composed of three parts: *Prefix*.*GUID*.*Suffix*
 
-- Prefiks jest nazwą usługi. Możesz wybrać swój prefiks. Po utworzeniu "aliasu" nie można go zmienić, dlatego należy odpowiednio zaznaczyć swój prefiks.  
-- Identyfikator GUID zostanie dostarczony przez platformę. Dzięki temu nazwa powinna być globalnie unikatowa. 
-- Sufiks jest dołączany przez platformę Azure: *region*. Azure. privatelinkservice 
+- Prefix is the service name. You can pick you own prefix. After "Alias" is created, you can't change it, so select your prefix appropriately.  
+- GUID will be provided by platform. This helps make the name globally unique. 
+- Suffix is appended by Azure: *region*.azure.privatelinkservice 
 
-Pełny alias:  *Prefiks*. {GUID}. *region*. Azure. privatelinkservice  
+Complete alias:  *Prefix*. {GUID}.*region*.azure.privatelinkservice  
 
-## <a name="control-service-exposure"></a>Kontrola ekspozycji usługi
+## <a name="control-service-exposure"></a>Control service exposure
 
-Usługa link prywatny udostępnia opcje umożliwiające sterowanie ekspozycją usługi za pomocą ustawienia "widoczność". Usługa może być prywatna do użycia przez różne sieci wirtualnych (tylko uprawnienia RBAC), ograniczać ekspozycję do ograniczonego zestawu zaufanych subskrypcji lub udostępniać je publicznie, aby wszystkie subskrypcje platformy Azure mogły żądać połączeń na prywatnym linku usługi. Ustawienia widoczności decydują o tym, czy konsument może połączyć się z usługą. 
+Private Link service provides you options to control the exposure of your service through "Visibility" setting. You can make the service private for consumption from different VNets you own (RBAC permissions only), restrict the exposure to a limited set of subscriptions that you trust, or make it public so that all Azure subscriptions can request connections on the Private Link service. Your visibility settings decide whether a consumer can connect to your service or not. 
 
-## <a name="control-service-access"></a>Kontrola dostępu do usługi
+## <a name="control-service-access"></a>Control service access
 
-Konsumenci mający wpływ (kontrolowany przez ustawienie widoczności) do usługi linku prywatnego mogą utworzyć prywatny punkt końcowy w swoich sieci wirtualnych i zażądać połączenia z usługą linku prywatnego. Połączenie prywatnego punktu końcowego zostanie utworzone w stanie "oczekiwanie" w obiekcie usługi linku prywatnego. Dostawca usług jest odpowiedzialny za działanie w ramach żądania połączenia. Możesz zatwierdzić połączenie, odrzucić połączenie lub usunąć połączenie. Tylko zatwierdzone połączenia mogą wysyłać ruch do usługi łącza prywatnego.
+Consumers having exposure (controlled by visibility setting) to your Private Link service can create a private endpoint in their VNets and request a connection to your Private Link service. The private endpoint connection will be created in a "Pending" state on the Private Link service object. The service provider is responsible for acting on the connection request. You can either approve the connection, reject the connection, or delete the connection. Only connections that are approved can send traffic to the Private Link service.
 
-Akcję zatwierdzania połączeń można zautomatyzować za pomocą właściwości automatycznego zatwierdzania w usłudze link prywatny. Automatyczne zatwierdzanie umożliwia dostawcom usług wstępne zatwierdzenie zestawu subskrypcji w celu automatycznego dostępu do ich usługi. Klienci będą musieli udostępnić swoje subskrypcje w trybie offline dla dostawców usług, aby dodać je do listy autozatwierdzania. Autozatwierdzanie jest podzbiorem tablicy widoczności. Widoczność kontroluje ustawienia ekspozycji, podczas gdy autozatwierdzanie kontroluje ustawienia zatwierdzenia dla usługi. Jeśli klient zażąda połączenia z subskrypcji na liście automatycznego zatwierdzania, połączenie zostanie automatycznie zatwierdzone i zostanie nawiązane połączenie. Dostawcy usług nie muszą już ręcznie zatwierdzać żądania. Z drugiej strony, jeśli klient zażąda połączenia z subskrypcji w tablicy widoczność, a nie w tablicy autozatwierdzania, żądanie zostanie wysłane do dostawcy usługi, ale dostawca usług musi ręcznie zatwierdzić połączenia.
+The action of approving the connections can be automated by using the auto-approval property on the Private Link service. Auto-Approval is an ability for service providers to preapprove a set of subscriptions for automated access to their service. Customers will need to share their subscriptions offline for service providers to add to the auto-approval list. Auto-approval is a subset of the visibility array. Visibility controls the exposure settings whereas auto-approval controls the approval settings for your service. If a customer requests a connection from a subscription in the auto-approval list, the connection is automatically approved and the connection is established. Service providers don’t need to manually approve the request anymore. On the other hand, if a customer requests a connection from a subscription in the visibility array and not in the auto-approval array, the request will reach the service provider but the service provider has to manually approve the connections.
 
 ## <a name="limitations"></a>Ograniczenia
 
-Poniżej przedstawiono znane ograniczenia dotyczące korzystania z usługi link prywatny:
-- Obsługiwane tylko na usługa Load Balancer w warstwie Standardowa 
-- Obsługuje tylko ruch IPv4
-- Obsługuje tylko ruch TCP
-- Dostępne tylko z prywatnych punktów końcowych w tym samym regionie
-- Tworzenie i zarządzanie doświadczeniem z Azure Portal nie jest obsługiwane
-- Informacje o połączeniu klientów przy użyciu protokołu proxy nie są dostępne dla dostawcy usług
+The following are the known limitations when using the Private Link service:
+- Supported only on Standard Load Balancer 
+- Supports IPv4 traffic only
+- Supports TCP traffic only
+- Only reachable from private endpoints in the same region
+- Create and Manage experience from Azure portal is not supported
+- Clients connection information using proxy protocol is not available to service provider
 
 ## <a name="next-steps"></a>Następne kroki
-- [Tworzenie usługi linku prywatnego przy użyciu Azure PowerShell](create-private-link-service-powershell.md)
-- [Tworzenie prywatnej usługi linkowej przy użyciu interfejsu wiersza polecenia platformy Azure](create-private-link-service-cli.md)
+- [Create a private link service using Azure PowerShell](create-private-link-service-powershell.md)
+- [Create a private link service using Azure CLI](create-private-link-service-cli.md)

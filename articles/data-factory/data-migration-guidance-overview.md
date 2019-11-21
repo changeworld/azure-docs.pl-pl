@@ -1,6 +1,6 @@
 ---
-title: Używanie Azure Data Factory do migrowania danych z usługi Data Lake i magazynu danych na platformę Azure
-description: Użyj Azure Data Factory, aby zmigrować dane z usługi Data Lake i magazynu danych na platformę Azure.
+title: Migrate data from data lake and data warehouse to Azure
+description: Use Azure Data Factory to migrate data from your data lake and data warehouse to Azure.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -11,54 +11,55 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: 0be9cbc9c5af2e0778654ef70c5350b48f10c35d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 056e98c18dbe2dd1adaa9386145ef18e36f8aac2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675756"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217562"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Używanie Azure Data Factory do migrowania danych z usługi Data Lake lub magazynu danych na platformę Azure
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Use Azure Data Factory to migrate data from your data lake or data warehouse to Azure
 
-Jeśli chcesz przeprowadzić migrację usługi Data Lake lub magazynu danych przedsiębiorstwa (rozszerzenia) do Microsoft Azure, rozważ użycie Azure Data Factory. Azure Data Factory doskonale nadaje się do następujących scenariuszy:
+If you want to migrate your data lake or enterprise data warehouse (EDW) to Microsoft Azure, consider using Azure Data Factory. Azure Data Factory is well-suited to the following scenarios:
 
-- Migracja obciążenia danych Big Data z usługi Amazon Simple Storage Service (Amazon S3) lub lokalnego rozproszony system plików Hadoop (HDFS) do platformy Azure
-- ROZSZERZENIA migrację z rozwiązań Oracle Exadata, Netezza, Teradata lub Amazon RedShift do platformy Azure
+- Big data workload migration from Amazon Simple Storage Service (Amazon S3) or an on-premises Hadoop Distributed File System (HDFS) to Azure
+- EDW migration from Oracle Exadata, Netezza, Teradata, or Amazon Redshift to Azure
 
-Azure Data Factory może przenosić petabajtów (PB) danych na potrzeby migracji usługi Data Lake oraz dziesiątki terabajtów (TB) danych na potrzeby migracji magazynu danych.
+Azure Data Factory can move petabytes (PB) of data for data lake migration, and tens of terabytes (TB) of data for data warehouse migration.
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Dlaczego Azure Data Factory można używać do migracji danych
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Why Azure Data Factory can be used for data migration
 
-- Azure Data Factory można łatwo skalować w górę ilość mocy obliczeniowej w celu przenoszenia danych w sposób bezserwerowy z wysoką wydajnością, odpornością i skalowalnością. Płacisz tylko za to, czego używasz. Należy również zwrócić uwagę na następujące kwestie: 
-  - Azure Data Factory nie ma ograniczeń dotyczących ilości danych ani liczby plików.
-  - Azure Data Factory mogą w pełni wykorzystywać przepustowość sieci i magazynu, aby osiągnąć największą ilość przepływności przenoszenia danych w danym środowisku.
-  - Azure Data Factory używa metody płatność zgodnie z rzeczywistym użyciem, dzięki czemu płacisz tylko za czas używany do uruchamiania migracji danych na platformę Azure.  
-- Azure Data Factory mogą wykonywać zarówno jednorazowe historyczne obciążenia, jak i zaplanowane obciążenia przyrostowe.
-- Azure Data Factory używa platformy Azure Integration Runtime (IR) do przenoszenia danych między publicznie dostępnymi punktami końcowymi usługi Data Lake i magazynem. Może również używać własnego środowiska IR do przeniesienia danych dla punktów końcowych usługi Data Lake i magazynu w ramach platformy Azure Virtual Network (VNet) lub za zaporą.
-- Azure Data Factory ma zabezpieczenia klasy korporacyjnej: można użyć Instalator Windows (MSI) lub tożsamości usługi do bezpiecznej integracji usługi z usługą lub użyć Azure Key Vault do zarządzania poświadczeniami.
-- Azure Data Factory zapewnia środowisko autorskie bez kodu i bogaty, wbudowany pulpit nawigacyjny monitorowania.  
+- Azure Data Factory can easily scale up the amount of processing power to move data in a serverless manner with high performance, resilience, and scalability. And you pay only for what you use. Also note the following: 
+  - Azure Data Factory has no limitations on data volume or on the number of files.
+  - Azure Data Factory can fully use your network and storage bandwidth to achieve the highest volume of data movement throughput in your environment.
+  - Azure Data Factory uses a pay-as-you-go method, so that you pay only for the time you actually use to run the data migration to Azure.  
+- Azure Data Factory can perform both a one-time historical load and scheduled incremental loads.
+- Azure Data Factory uses Azure integration runtime (IR) to move data between publicly accessible data lake and warehouse endpoints. It can also use self-hosted IR for moving data for data lake and warehouse endpoints inside Azure Virtual Network (VNet) or behind a firewall.
+- Azure Data Factory has enterprise-grade security: You can use Windows Installer (MSI) or Service Identity for secured service-to-service integration, or use Azure Key Vault for credential management.
+- Azure Data Factory provides a code-free authoring experience and a rich, built-in monitoring dashboard.  
 
-## <a name="online-vs-offline-data-migration"></a>Migracja danych w trybie online i offline
+## <a name="online-vs-offline-data-migration"></a>Online vs. offline data migration
 
-Azure Data Factory to standardowe narzędzie do migracji danych w trybie online do transferowania danych za pośrednictwem sieci (Internet, ER lub sieci VPN). W przypadku migracji danych w trybie offline użytkownicy mogą fizycznie dostarczać urządzenia transferu danych z organizacji do centrum danych platformy Azure.  
+Azure Data Factory is a standard online data migration tool to transfer data over a network (internet, ER, or VPN). Whereas with offline data migration, users physically ship data-transfer devices from their organization to an Azure Data Center.  
 
-Istnieją trzy kluczowe zagadnienia związane z podejściem do migracji w trybie online i offline:  
+There are three key considerations when you choose between an online and offline migration approach:  
 
-- Rozmiar danych do migracji
-- Przepustowość sieci
-- Okno migracji
+- Size of data to be migrated
+- Network bandwidth
+- Migration window
 
-Załóżmy na przykład, że planujesz użyć Azure Data Factory, aby ukończyć migrację danych w ciągu dwóch tygodni ( *okna migracji*). Zwróć uwagę na różowe/niebieskie linie wycinania w poniższej tabeli. Najniższa różowa komórka dla każdej podanej kolumny pokazuje rozmiar danych/parowanie przepustowości sieci, których okno migracji jest najbliższe, ale nie mniej niż dwa tygodnie. (Każdy parowanie rozmiaru/przepustowości w niebieskiej komórce ma okno migracji online o więcej niż dwa tygodnie). 
+For example, assume you plan to use Azure Data Factory to complete your data migration within two weeks (your *migration window*). Notice the pink/blue cut line in the following table. The lowest pink cell for any given column shows the data size/network bandwidth pairing whose migration window is closest to but less than two weeks. (Any size/bandwidth pairing in a blue cell has an online migration window of more than two weeks.) 
 
-![w porównaniu do trybu offline](media/data-migration-guidance-overview/online-offline.png) ta tabela ułatwia określenie, czy można spełnić zamierzone okno migracji w trybie online (Azure Data Factory) w oparciu o rozmiar danych i dostępną przepustowość sieci. Jeśli okno migracji online ma więcej niż dwa tygodnie, należy użyć migracji w trybie offline.
+![online vs. offline](media/data-migration-guidance-overview/online-offline.png) This table helps you determine whether you can meet your intended migration window through online migration (Azure Data Factory) based on the size of your data and your available network bandwidth. If the online migration window is more than two weeks, you'll want to use offline migration.
 
 > [!NOTE]
-> Korzystając z migracji w trybie online, można osiągnąć zarówno dane historyczne ładowania, jak i przyrostowe źródła danych za pomocą jednego narzędzia.  Dzięki tej metodzie dane można synchronizować między istniejącym magazynem a nowym magazynem podczas całego okna migracji. Oznacza to, że można ponownie skompilować logikę ETL w nowym sklepie przy użyciu odświeżonych danych.
+> By using online migration, you can achieve both historical data loading and incremental feeds end-to-end through a single tool.  Through this approach, your data can be kept synchronized between the existing store and the new store during the entire migration window. This means you can rebuild your ETL logic on the new store with refreshed data.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Migrowanie danych z AWS S3 na platformę Azure](data-migration-guidance-s3-azure-storage.md)
-- [Migrowanie danych z lokalnego klastra Hadoop do platformy Azure](data-migration-guidance-hdfs-azure-storage.md)
-- [Migrowanie danych z lokalnego serwera Netezza na platformę Azure](data-migration-guidance-netezza-azure-sqldw.md)
+- [Migrate data from AWS S3 to Azure](data-migration-guidance-s3-azure-storage.md)
+- [Migrate data from on-premises hadoop cluster to Azure](data-migration-guidance-hdfs-azure-storage.md)
+- [Migrate data from on-premises Netezza server to Azure](data-migration-guidance-netezza-azure-sqldw.md)

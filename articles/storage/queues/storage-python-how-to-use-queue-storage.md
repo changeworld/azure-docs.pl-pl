@@ -1,6 +1,6 @@
 ---
-title: Jak korzystać z usługi Azure queue storage z poziomu języka Python — Azure Storage
-description: Dowiedz się, w jaki sposób używać usługa kolejki platformy Azure z poziomu języka Python do tworzenia i usuwania kolejek oraz wstawiania, pobierania i usuwania komunikatów.
+title: How to use Azure Queue storage v2.1 from Python - Azure Storage
+description: Learn how to use the Azure Queue service v2.1 from Python to create and delete queues, and insert, get, and delete messages.
 author: mhopkins-msft
 ms.service: storage
 ms.author: mhopkins
@@ -9,61 +9,61 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: 242ba7dbe4bfcc003899e95e76dc57d809dbc95a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b5382a6a1ea381d57a026e9d42190152e38f7696
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428011"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209521"
 ---
-# <a name="how-to-use-azure-queue-storage-from-python"></a>Jak korzystać z usługi Azure queue storage z poziomu języka Python
+# <a name="how-to-use-azure-queue-storage-v21-from-python"></a>How to use Azure Queue storage v2.1 from Python
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-W tym artykule przedstawiono typowe scenariusze korzystające z usługi Azure queue storage. Omówione scenariusze obejmują Wstawianie, wgląd, pobieranie i usuwanie komunikatów w kolejce oraz tworzenie i usuwanie kolejek.
+This article demonstrates common scenarios using the Azure Queue storage service. The scenarios covered include inserting, peeking, getting, and deleting queue messages, and creating and deleting queues.
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Przegląd
 
-Przykłady w tym artykule są zapisywane w języku Python i używają [Zestaw SDK Microsoft Azure Storage dla języka Python]. Aby uzyskać więcej informacji o kolejkach, zobacz sekcję [następne kroki](#next-steps) .
+The samples in this article are written in Python and use the [Microsoft Azure Storage SDK for Python]. For more information on queues, see the [Next steps](#next-steps) section.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="download-and-install-azure-storage-sdk-for-python"></a>Pobierz i Zainstaluj zestaw SDK usługi Azure Storage dla języka Python
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>Download and install Azure Storage SDK for Python
 
-[Zestaw SDK usługi Azure Storage dla języka Python](https://github.com/azure/azure-storage-python) wymaga języka Python w wersji 2,7, 3,3 lub nowszej.
+The [Azure Storage SDK for Python](https://github.com/azure/azure-storage-python) requires Python version 2.7, 3.3, or later.
  
-### <a name="install-via-pypi"></a>Zainstaluj za pomocą PyPi
+### <a name="install-via-pypi"></a>Install via PyPi
 
-Aby zainstalować program za pośrednictwem indeksu pakietów języka Python (PyPI), wpisz:
+To install via the Python Package Index (PyPI), type:
 
 ```bash
-pip install azure-storage-queue
+pip install azure-storage-blob==2.1.0
 ```
 
 > [!NOTE]
-> Jeśli uaktualniasz program z zestawu SDK usługi Azure Storage dla języka Python w wersji 0,36 lub starszej, Odinstaluj starszy zestaw SDK przy użyciu `pip uninstall azure-storage` przed zainstalowaniem najnowszego pakietu.
+> If you are upgrading from the Azure Storage SDK for Python version 0.36 or earlier, uninstall the older SDK using `pip uninstall azure-storage` before installing the latest package.
 
-Aby zapoznać się z alternatywnymi metodami instalacji, zobacz [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python/).
+For alternative installation methods, see [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/).
 
-## <a name="view-the-sample-application"></a>Wyświetlanie przykładowej aplikacji
+## <a name="view-the-sample-application"></a>View the sample application
 
-Aby wyświetlić i uruchomić przykładową aplikację, która pokazuje, jak używać języka Python z kolejkami platformy Azure, zobacz [Azure Storage: wprowadzenie z kolejkami platformy Azure w języku Python](https://github.com/Azure-Samples/storage-queue-python-getting-started). 
+To view and run a sample application that shows how to use Python with Azure Queues, see [Azure Storage: Getting Started with Azure Queues in Python](https://github.com/Azure-Samples/storage-queue-python-getting-started). 
 
-Aby uruchomić przykładową aplikację, upewnij się, że zainstalowano pakiety `azure-storage-queue` i `azure-storage-common`.
+To run the sample application, make sure you have installed both the `azure-storage-queue` and `azure-storage-common` packages.
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
 
-Obiekt [QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) umożliwia korzystanie z kolejek. Poniższy kod tworzy obiekt `QueueService`. Dodaj następujące elementy w górnej części każdego pliku języka Python, w którym chcesz programowo uzyskać dostęp do usługi Azure Storage:
+The [QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) object lets you work with queues. The following code creates a `QueueService` object. Add the following near the top of any Python file in which you wish to programmatically access Azure Storage:
 
 ```python
 from azure.storage.queue import QueueService
 ```
 
-Poniższy kod tworzy obiekt `QueueService` przy użyciu nazwy konta magazynu i klucza konta. Zastąp *konto* i *klucze* nazwą konta i kluczem.
+The following code creates a `QueueService` object using the storage account name and account key. Replace *myaccount* and *mykey* with your account name and key.
 
 ```python
 queue_service = QueueService(account_name='myaccount', account_key='mykey')
@@ -73,13 +73,13 @@ queue_service.create_queue('taskqueue')
 
 ## <a name="insert-a-message-into-a-queue"></a>Wstawianie komunikatu do kolejki
 
-Aby wstawić komunikat do kolejki, należy użyć metody [put_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) w celu utworzenia nowej wiadomości i dodania jej do kolejki.
+To insert a message into a queue, use the [put_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) method to create a new message and add it to the queue.
 
 ```python
 queue_service.put_message('taskqueue', u'Hello World')
 ```
 
-Wiadomości w kolejce platformy Azure są przechowywane jako tekst. Jeśli chcesz przechowywać dane binarne, skonfiguruj kodowanie base64 i funkcje dekodowania w obiekcie usługi kolejki przed umieszczeniem komunikatu w kolejce.
+Azure queue messages are stored as text. If you want to store binary data, setup Base64 encoding and decoding functions on the queue service object before putting a message in the queue.
 
 ```python
 # setup queue Base64 encoding and decoding functions
@@ -89,7 +89,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="peek-at-the-next-message"></a>Podgląd kolejnego komunikatu
 
-Możesz uzyskać wgląd w komunikat z przodu kolejki bez usuwania go z kolejki, wywołując metodę [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) . Domyślnie `peek_messages` wgląd w pojedynczej wiadomości.
+You can peek at the message in the front of a queue without removing it from the queue by calling the [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) method. By default, `peek_messages` peeks at a single message.
 
 ```python
 messages = queue_service.peek_messages('taskqueue')
@@ -97,9 +97,9 @@ for message in messages:
     print(message.content)
 ```
 
-## <a name="dequeue-messages"></a>Dequeueing messages
+## <a name="dequeue-messages"></a>Dequeue messages
 
-Kod usuwa komunikat z kolejki w dwóch krokach. Gdy wywołasz [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-), domyślnie otrzymujesz następny komunikat w kolejce. Komunikat zwrócony z `get_messages` stał się niewidoczny dla każdego innego kodu odczytującego komunikaty z tej kolejki. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund. Aby zakończyć usuwanie komunikatu z kolejki, należy również wywołać [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-). Ten dwuetapowy proces usuwania komunikatu gwarantuje, że gdy kod nie może przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu może uzyskać ten sam komunikat i spróbować ponownie. Kod wywołuje `delete_message` bezpośrednio po przetworzeniu komunikatu.
+Your code removes a message from a queue in two steps. When you call [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-), you get the next message in a queue by default. A message returned from `get_messages` becomes invisible to any other code reading messages from this queue. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund. To finish removing the message from the queue, you must also call [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-). This two-step process of removing a message assures that when your code fails to process a message due to hardware or software failure, another instance of your code can get the same message and try again. Your code calls `delete_message` right after the message has been processed.
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -108,7 +108,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)
 ```
 
-Istnieją dwa sposoby dostosowania pobierania komunikatów z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić dłuższy lub krótszy limit czasu niewidoczności, dzięki czemu kod będzie mieć więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu używa metody `get_messages` w celu uzyskania 16 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu pętli for. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu.
+Istnieją dwa sposoby dostosowania pobierania komunikatów z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić dłuższy lub krótszy limit czasu niewidoczności, dzięki czemu kod będzie mieć więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. The following code example uses the `get_messages` method to get 16 messages in one call. Then it processes each message using a for loop. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu.
 
 ```python
 messages = queue_service.get_messages(
@@ -120,7 +120,7 @@ for message in messages:
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Zmiana zawartości komunikatu w kolejce
 
-Możesz zmienić zawartość komunikatu w kolejce. Jeśli komunikat reprezentuje zadanie robocze, możesz użyć tej funkcji, aby zaktualizować stan zadania. Poniższy kod używa metody [update_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) w celu zaktualizowania wiadomości. Limit czasu widoczności jest ustawiony na 0, co oznacza, że komunikat natychmiast pojawia się, a zawartość jest aktualizowana.
+Możesz zmienić zawartość komunikatu w kolejce. Jeśli komunikat reprezentuje zadanie robocze, możesz użyć tej funkcji, aby zaktualizować stan zadania. The code below uses the [update_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) method to update a message. The visibility timeout is set to 0, meaning the message appears immediately and the content is updated.
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -131,7 +131,7 @@ for message in messages:
 
 ## <a name="get-the-queue-length"></a>Pobieranie długości kolejki
 
-Możesz uzyskać szacunkową liczbę komunikatów w kolejce. Metoda [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) prosi usługę kolejki o zwrócenie metadanych dotyczących kolejki oraz `approximate_message_count`. Wynik jest przybliżony, ponieważ komunikaty mogą być dodawane lub usuwane po udzieleniu odpowiedzi przez usługę kolejki na żądanie.
+Możesz uzyskać szacunkową liczbę komunikatów w kolejce. The [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) method asks the queue service to return metadata about the queue, and the `approximate_message_count`. The result is only approximate because messages can be added or removed after the queue service responds to your request.
 
 ```python
 metadata = queue_service.get_queue_metadata('taskqueue')
@@ -140,7 +140,7 @@ count = metadata.approximate_message_count
 
 ## <a name="delete-a-queue"></a>Usuwanie kolejki
 
-Aby usunąć kolejkę i wszystkie znajdujące się w niej komunikaty, wywołaj metodę [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-queue-queue-name--fail-not-exist-false--timeout-none-) .
+To delete a queue and all the messages contained in it, call the [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-queue-queue-name--fail-not-exist-false--timeout-none-) method.
 
 ```python
 queue_service.delete_queue('taskqueue')
@@ -148,11 +148,11 @@ queue_service.delete_queue('taskqueue')
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy znasz już podstawy magazynu kolejek, Skorzystaj z poniższych linków, aby dowiedzieć się więcej.
+Now that you've learned the basics of queue storage, follow these links to learn more.
 
-* [Dokumentacja interfejsu API języka Python usługi Azure Queues](/python/api/azure-storage-queue)
+* [Azure Queues Python API reference](/python/api/azure-storage-queue)
 * [Centrum deweloperów języka Python](https://azure.microsoft.com/develop/python/)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355)
 
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
-[Zestaw SDK Microsoft Azure Storage dla języka Python]: https://github.com/Azure/azure-storage-python
+[Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python

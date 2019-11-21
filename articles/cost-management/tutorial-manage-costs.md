@@ -7,23 +7,23 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: b72e03f6901fbb2b904328992107e31021c76be6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969128"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229802"
 ---
-# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: Zarządzanie kosztami przy użyciu rozwiązania Cloudyn
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: zarządzanie kosztami przy użyciu rozwiązania Cloudyn
 
 Rozwiązanie Cloudyn umożliwia zarządzanie kosztami i tworzenie raportów przewidywanych kosztów przez przydzielanie kosztów na podstawie tagów. W procesie przydzielania kosztów do wykorzystywanych zasobów w chmurze przypisywane są koszty. Koszty są w pełni przydzielone, gdy wszystkie zasoby są skategoryzowane przy użyciu tagów. Po przydzieleniu kosztów można udostępnić użytkownikom analizę przewidywanych kosztów i obciążeń zwrotnych za pomocą pulpitów nawigacyjnych i raportów. Jednak na początku korzystania z rozwiązania Cloudyn wiele zasobów może nie mieć przypisanych tagów lub przypisanie im tagów może być niemożliwe.
 
 Na przykład może być konieczne uzyskanie zwrotu kosztów inżynieryjnych. Potrzebna jest możliwość przedstawienia zespołowi inżynierów tego, że wymagane jest określona kwota — na podstawie kosztów zasobów. Można pokazać im raport dotyczący wszystkich wykorzystanych zasobów z tagiem *inżynieria*.
 
-W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tagi to pary nazwa/wartość, umożliwiające kategoryzowanie zasobów i wyświetlanie i zarządzanie nimi skonsolidowanych informacji o rozliczeniach dzięki zastosowaniu tego samego tagu do wielu zasobów i grup zasobów. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
+W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -87,9 +87,9 @@ Na liście modeli kosztów nowy model kosztów będzie wyświetlany ze stanem **
 
 Category Manager to narzędzie do czyszczenia danych, które pomaga scalić wartości wielu kategorii (tagi), aby utworzyć nowe. Jest to proste narzędzie oparte na regułach, które umożliwia wybranie kategorii i utworzenie reguł w celu scalenia istniejących wartości. Mogą na przykład istnieć kategorie **R&amp;D** oraz **dev** — obie reprezentujące grupy deweloperskie.
 
-W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Category Manager** (Menedżer kategorii). Aby utworzyć nową kategorię, wybierz znak plus (**+**). Wprowadź nazwę dla kategorii, a następnie w obszarze **Keys** (Klucze) wprowadź klucze kategorii, które mają zostać uwzględnione w nowej kategorii.
+W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Category Manager** (Menedżer kategorii). Aby utworzyć nową kategorię, wybierz znak plus ( **+** ). Wprowadź nazwę dla kategorii, a następnie w obszarze **Keys** (Klucze) wprowadź klucze kategorii, które mają zostać uwzględnione w nowej kategorii.
 
-Podczas definiowania reguły można dodać wiele wartości z warunkiem LUB. Można również wykonywać pewne podstawowe operacje na ciągach. Obie opcje wymagają kliknięcia symbolu wielokropka (**...**) z prawej strony pozycji **Rule** (Reguła).
+Podczas definiowania reguły można dodać wiele wartości z warunkiem LUB. Można również wykonywać pewne podstawowe operacje na ciągach. Obie opcje wymagają kliknięcia symbolu wielokropka ( **...** ) z prawej strony pozycji **Rule** (Reguła).
 
 Aby zdefiniować nową regułę, w obszarze **Rules** (Reguły) utwórz nową regułę. Na przykład wprowadź tekst **dev** w obszarze **Rules** (Reguły), a następnie tekst **R&amp;D** w obszarze **Actions** (Akcje). Gdy wszystko będzie gotowe, zapisz nową kategorię.
 
@@ -129,7 +129,7 @@ Aby wyświetlić wyniki przydzielania kosztów, otwórz raport analizy kosztów 
 Jeśli trzeba przekazać dane migawki innym zespołom, można wyeksportować dowolny raport w formacie PDF lub CSV.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -1,6 +1,6 @@
 ---
-title: Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy — Azure HDInsight
-description: Dowiedz się, jak uzyskać dostęp do dzienników aplikacji PRZĘDZy w klastrze usługi HDInsight opartego na systemie Linux (Apache Hadoop) przy użyciu wiersza polecenia i przeglądarki sieci Web.
+title: Access Apache Hadoop YARN application logs - Azure HDInsight
+description: Learn how to access YARN application logs on a Linux-based HDInsight (Apache Hadoop) cluster using both the command-line and a web browser.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,67 +8,71 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b6a1e63688714b0a799714c1a7448b8cbd2d05eb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494884"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216020"
 ---
-# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy w usłudze HDInsight opartej na systemie Linux
+# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Access Apache Hadoop YARN application logs on Linux-based HDInsight
 
-Dowiedz się, jak uzyskać dostęp do dzienników [Apache HADOOP przędzy](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (a jeszcze inne) aplikacje w klastrze [Apache Hadoop](https://hadoop.apache.org/) w usłudze Azure HDInsight.
+Learn how to access the logs for [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) applications on an [Apache Hadoop](https://hadoop.apache.org/) cluster in Azure HDInsight.
 
-## <a name="YARNTimelineServer"></a>Serwer osi czasu PRZĘDZy
+## <a name="what-is-apache-yarn"></a>What is Apache YARN?
 
-[Serwer osi czasu przędzy Apache Hadoop](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) dostarcza ogólnych informacji o ukończonych aplikacjach
+YARN supports multiple programming models ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)  being one of them) by decoupling resource management from application scheduling/monitoring. YARN uses a global *ResourceManager* (RM), per-worker-node *NodeManagers* (NMs), and per-application *ApplicationMasters* (AMs). The per-application AM negotiates resources (CPU, memory, disk, network) for running your application with the RM. The RM works with NMs to grant these resources, which are granted as *containers*. The AM is responsible for tracking the progress of the containers assigned to it by the RM. An application may require many containers depending on the nature of the application.
 
-Serwer osi czasu PRZĘDZy obejmuje następujący typ danych:
+Each application may consist of multiple *application attempts*. If an application fails, it may be retried as a new attempt. Each attempt runs in a container. In a sense, a container provides the context for basic unit of work performed by a YARN application. All work that is done within the context of a container is performed on the single worker node on which the container was allocated. See [Hadoop: Writing YARN Applications](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html), or [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) for further reference.
 
-* Identyfikator aplikacji, unikatowy identyfikator aplikacji
-* Użytkownik, który uruchomił aplikację
-* Informacje o próbach wykonania aplikacji
-* Kontenery używane przez daną próbkę aplikacji
+To scale your cluster to support greater processing throughput, you can use [Autoscale](hdinsight-autoscale-clusters.md) or [Scale your clusters manually using a few different languages](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters).
 
-## <a name="YARNAppsAndLogs"></a>Aplikacje i dzienniki PRZĘDZy
+## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
-PRZĘDZa obsługuje wiele modeli programistycznych ([Apache Hadoop](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) być jednym z nich) przez oddzielenie zarządzania zasobami od planowania/monitorowania aplikacji. PRZĘDZa *używa globalnego Menedżera zasobów (* RM) ( *NodeManagers* ) dla poszczególnych procesów roboczych (NMs) i *ApplicationMasters* dla aplikacji (AMs). Aplikacja negocjuje zasoby (procesor CPU, pamięć, dysk, Sieć) do uruchamiania aplikacji przy użyciu Menedżera zasobów. Menedżer zasobów współpracuje z usługą NMs, aby przyznać te zasoby, które są przyznawane jako *kontenery*. AM jest odpowiedzialny za śledzenie postępu kontenerów przypisanych do niego przez Menedżera zasobów. Aplikacja może wymagać wielu kontenerów w zależności od rodzaju aplikacji.
+The [Apache Hadoop YARN Timeline Server](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) provides generic information on completed applications
 
-Każda aplikacja może składać się z wielu *prób aplikacji*. Jeśli aplikacja się nie powiedzie, może być ponowiona nowa próba. Każda próba przebiega w kontenerze. W sensie kontener zawiera kontekst dla podstawowej jednostki pracy wykonanej przez aplikację PRZĘDZenia. Wszystkie prace, które są wykonywane w kontekście kontenera, są wykonywane w jednym węźle procesu roboczego, na którym został przydzielony kontener. Więcej informacji można znaleźć w temacie [Apache Hadoop koncepcje związane z przędzą](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) .
+YARN Timeline Server includes the following type of data:
 
-Dzienniki aplikacji (i skojarzone z nimi dzienniki kontenerów) są krytyczne w debugowaniu problemów z aplikacjami usługi Hadoop. PRZĘDZa to świetna platforma służąca do gromadzenia, agregowania i przechowywania dzienników aplikacji przy użyciu funkcji [agregacji dzienników](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) . Funkcja agregacji dzienników ułatwia uzyskiwanie dostępu do dzienników aplikacji. Agreguje dzienniki we wszystkich kontenerach w węźle procesu roboczego i zapisuje je jako jeden zagregowany plik dziennika na węzeł procesu roboczego. Dziennik jest przechowywany w domyślnym systemie plików po zakończeniu aplikacji. Twoja aplikacja może korzystać z setek lub tysięcy kontenerów, ale dzienniki dla wszystkich kontenerów uruchomionych w jednym węźle procesu roboczego są zawsze agregowane do pojedynczego pliku. W związku z tym w aplikacji jest używany tylko 1 dziennik na węzeł procesu roboczego. Agregacja dzienników jest domyślnie włączona w klastrach usługi HDInsight w wersji 3,0 i nowszych. Zagregowane dzienniki znajdują się w domyślnym magazynie klastra. Następująca ścieżka jest ścieżką systemu plików HDFS do dzienników:
+* The application ID, a unique identifier of an application
+* The user who started the application
+* Information on attempts made to complete the application
+* The containers used by any given application attempt
+
+## <a name="YARNAppsAndLogs"></a>YARN applications and logs
+
+Application logs (and the associated container logs) are critical in debugging problematic Hadoop applications. YARN provides a nice framework for collecting, aggregating, and storing application logs with the [Log Aggregation](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) feature. The Log Aggregation feature makes accessing application logs more deterministic. It aggregates logs across all containers on a worker node and stores them as one aggregated log file per worker node. The log is stored on the default file system after an application finishes. Your application may use hundreds or thousands of containers, but logs for all containers run on a single worker node are always aggregated to a single file. So there is only 1 log per worker node used by your application. Log Aggregation is enabled by default on HDInsight clusters version 3.0 and above. Aggregated logs are located in default storage for the cluster. The following path is the HDFS path to the logs:
 
     /app-logs/<user>/logs/<applicationId>
 
-W ścieżce `user` to nazwa użytkownika, który uruchomił aplikację. `applicationId` jest unikatowym identyfikatorem przypisanym do aplikacji przez przydzieloną RM.
+In the path, `user` is the name of the user who started the application. The `applicationId` is the unique identifier assigned to an application by the YARN RM.
 
-Zagregowane dzienniki nie są odczytywane bezpośrednio, ponieważ są zapisywane w [TFile][T-file] [formacie binarnym][binary-format] indeksowanym przez kontener. Użyj dzienników ResourceManager lub narzędzi interfejsu wiersza polecenia, aby wyświetlić te dzienniki jako zwykły tekst dla aplikacji lub kontenerów zainteresowania.
+The aggregated logs are not directly readable, as they are written in a [TFile][T-file], [binary format][binary-format] indexed by container. Use the YARN ResourceManager logs or CLI tools to view these logs as plain text for applications or containers of interest.
 
-## <a name="yarn-cli-tools"></a>Narzędzia interfejsu wiersza polecenia dla PRZĘDZy
+## <a name="yarn-cli-tools"></a>YARN CLI tools
 
-Aby korzystać z narzędzi interfejsu wiersza polecenia, należy najpierw połączyć się z klastrem usługi HDInsight przy użyciu protokołu SSH. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+To use the YARN CLI tools, you must first connect to the HDInsight cluster using SSH. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Możesz wyświetlić te dzienniki jako zwykły tekst, uruchamiając jedno z następujących poleceń:
+You can view these logs as plain text by running one of the following commands:
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Określ > &lt;identyfikatora aplikacji, &lt;użytkowników, którzy uruchomili > aplikacji, &lt;containerId >, i &lt;informacje o >ch roboczych-Node-Address, gdy uruchamiają te polecenia.
+Specify the &lt;applicationId>, &lt;user-who-started-the-application>, &lt;containerId>, and &lt;worker-node-address> information when running these commands.
 
-## <a name="yarn-resourcemanager-ui"></a>Interfejs użytkownika narzędzia ResourceManager
+## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
 
-Interfejs użytkownika programu ResourceManager jest uruchamiany w klastrze węzła głównego. Jest dostępny za pomocą interfejsu użytkownika sieci Web Ambari. Aby wyświetlić dzienniki PRZĘDZy, wykonaj następujące kroki:
+The YARN ResourceManager UI runs on the cluster headnode. It is accessed through the Ambari web UI. Use the following steps to view the YARN logs:
 
-1. W przeglądarce sieci Web przejdź do https://CLUSTERNAME.azurehdinsight.net. Zastąp wartość CLUSTERname nazwą klastra usługi HDInsight.
-2. Z listy usług po lewej stronie wybierz pozycję **przędza**.
+1. In your web browser, navigate to https://CLUSTERNAME.azurehdinsight.net. Replace CLUSTERNAME with the name of your HDInsight cluster.
+2. From the list of services on the left, select **YARN**.
 
-    ![Wybrano usługę Apache Ambari przędzę](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Apache Ambari Yarn service selected](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. Z listy rozwijanej **szybkie linki** wybierz jeden z węzłów głównych klastra, a następnie wybierz pozycję **Dziennik ResourceManager**.
+3. From the **Quick Links** dropdown, select one of the cluster head nodes and then select **ResourceManager Log**.
 
-    ![Szybkie linki do przędzy w usłudze Apache Ambari](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Apache Ambari Yarn quick links](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
-    Zostanie wyświetlona lista linków do dzienników PRZĘDZy.
+    You are presented with a list of links to YARN logs.
 
 [YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf

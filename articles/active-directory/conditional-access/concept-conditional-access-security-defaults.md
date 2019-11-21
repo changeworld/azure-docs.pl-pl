@@ -1,6 +1,6 @@
 ---
-title: Ustawienia domyślne zabezpieczeń Azure Active Directory
-description: Domyślne zasady zabezpieczeń, które ułatwiają ochronę organizacji przed typowymi atakami
+title: Azure Active Directory security defaults
+description: Security default policies that help protect organizations from common attacks
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,122 +11,123 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151219"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208394"
 ---
-# <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
+# <a name="what-are-security-defaults"></a>What are security defaults?
 
-Zarządzanie zabezpieczeniami może być trudne, gdy typowe ataki związane z tożsamościami stają się coraz bardziej popularne. Ataki te obejmują rozpylanie, odtwarzanie i wyłudzanie informacji.
+Managing security can be difficult when common identity-related attacks are becoming more and more popular. These attacks include password spray, replay, and phishing.
 
-Domyślne ustawienia zabezpieczeń w programie Azure Active Directory (Azure AD) ułatwiają ochronę organizacji. Wartości domyślne zabezpieczeń zawierają wstępnie skonfigurowane ustawienia zabezpieczeń dla typowych ataków. 
+Security defaults in Azure Active Directory (Azure AD) make it easier to be secure and help protect your organization. Security defaults contain preconfigured security settings for common attacks. 
 
-Firma Microsoft udostępnia wartości domyślne zabezpieczeń dla wszystkich użytkowników. Celem jest zapewnienie, że wszystkie organizacje mają podstawowy poziom zabezpieczeń włączony bez dodatkowych kosztów. Ustawienia domyślne zabezpieczeń są włączane w Azure Portal.
+Microsoft is making security defaults available to everyone. The goal is to ensure that all organizations have a basic level of security enabled at no extra cost. You turn on security defaults in the Azure portal.
 
-![Zrzut ekranu przedstawiający Azure Portal z przełącznikiem umożliwiającym włączenie ustawień domyślnych zabezpieczeń](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
+![Screenshot of the Azure portal with the toggle to enable security defaults](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
  
-Następujące konfiguracje zabezpieczeń zostaną włączone w dzierżawie. 
+The following security configurations will be turned on in your tenant. 
 
-## <a name="unified-multi-factor-authentication-registration"></a>Ujednolicona Rejestracja Multi-Factor Authentication
+## <a name="unified-multi-factor-authentication-registration"></a>Unified Multi-Factor Authentication registration
 
-Wszyscy użytkownicy w dzierżawie muszą zarejestrować się w celu korzystania z uwierzytelniania wieloskładnikowego (MFA) w formie usługi Azure Multi-Factor Authentication. Użytkownicy mają 14 dni na zarejestrowanie Multi-Factor Authentication przy użyciu aplikacji Microsoft Authenticator. Po upływie 14 dni użytkownik nie będzie mógł się zalogować do momentu zakończenia rejestracji Multi-Factor Authentication.
+All users in your tenant must register for multi-factor authentication (MFA) in the form of the Azure Multi-Factor Authentication service. Users have 14 days to register for Multi-Factor Authentication by using the Microsoft Authenticator app. After the 14 days have passed, the user won't be able to sign in until Multi-Factor Authentication registration is finished.
 
-Rozumiemy, że niektórzy użytkownicy mogą znajdować się poza biurem lub nie będą logować się w ciągu 14 dni bezpośrednio po włączeniu ustawień domyślnych zabezpieczeń. Aby zapewnić, że każdy użytkownik ma dużo czasu na zarejestrowanie się w celu Multi-Factor Authentication, okres 14 dni jest unikatowy dla każdego użytkownika. 14-dniowy okres użytkownika rozpoczyna się po pierwszym pomyślnym zalogowaniu interakcyjnym po włączeniu domyślnych ustawień zabezpieczeń.
+We understand that some users might be out of office or won't sign in during the 14 days immediately after enabling security defaults. To ensure that every user has ample time to register for Multi-Factor Authentication, the 14-day period is unique for each user. A user's 14-day period begins after their first successful interactive sign-in after you enable security defaults.
 
-## <a name="multi-factor-authentication-enforcement"></a>Wymuszanie Multi-Factor Authentication
+## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication enforcement
 
-### <a name="protecting-administrators"></a>Ochrona administratorów
+### <a name="protecting-administrators"></a>Protecting administrators
 
-Użytkownicy mający dostęp do kont uprzywilejowanych mają zwiększony dostęp do Twojego środowiska. Ze względu na moc tych kont należy traktować je z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w celu zalogowania się była silniejsza weryfikacja konta. W usłudze Azure AD możesz uzyskać silniejszą weryfikację konta, wymagając Multi-Factor Authentication.
+Users with access to privileged accounts have increased access to your environment. Due to the power these accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification for sign-in. In Azure AD, you can get a stronger account verification by requiring Multi-Factor Authentication.
 
-Po zakończeniu rejestracji w Multi-Factor Authentication zostanie zaakceptowana następująca dziewiąta rola administratora usługi Azure AD do przeprowadzenia dodatkowego uwierzytelniania przy każdym logowaniu:
+After registration with Multi-Factor Authentication is finished, the following nine Azure AD administrator roles will be required to perform additional authentication every time they sign in:
 
 - Administrator globalny
 - Administrator programu SharePoint
-- Administrator programu Exchange
-- Administrator dostępu warunkowego
+- Exchange administrator
+- Conditional Access administrator
 - Administrator zabezpieczeń
-- Administrator pomocy technicznej lub administrator haseł
+- Helpdesk administrator or password administrator
 - Administrator rozliczeń
-- Administrator użytkowników
-- Administrator uwierzytelniania
+- User administrator
+- Authentication administrator
 
-### <a name="protecting-all-users"></a>Ochrona wszystkich użytkowników
+### <a name="protecting-all-users"></a>Protecting all users
 
-Chcemy myśleć, że konta administratorów są jedynymi kontami, które wymagają dodatkowych warstw uwierzytelniania. Administratorzy mają szeroki dostęp do poufnych informacji i mogą wprowadzać zmiany w ustawieniach całej subskrypcji. Osoby atakujące mają do nich możliwość ukierunkowania na użytkowników końcowych. 
+We tend to think that administrator accounts are the only accounts that need extra layers of authentication. Administrators have broad access to sensitive information and can make changes to subscription-wide settings. But attackers tend to target end users. 
 
-Gdy Ci osoby atakujące uzyskali dostęp, mogą zażądać dostępu do informacji uprzywilejowanych w imieniu właściciela oryginalnego konta. Mogą nawet pobrać cały katalog, aby przeprowadzić atak wyłudzania informacji w całej organizacji. 
+After these attackers gain access, they can request access to privileged information on behalf of the original account holder. They can even download the entire directory to perform a phishing attack on your whole organization. 
 
-Jedną z częstych metod ulepszania ochrony dla wszystkich użytkowników jest wymaganie silniejszej formy weryfikacji konta, takiej jak Multi-Factor Authentication, dla wszystkich. Po zakończeniu Multi-Factor Authentication rejestracji użytkownicy będą monitowani o dodatkowe uwierzytelnianie w razie potrzeby.
+One common method to improve protection for all users is to require a stronger form of account verification, such as Multi-Factor Authentication, for everyone. After users finish Multi-Factor Authentication registration, they'll be prompted for additional authentication whenever necessary.
 
-### <a name="blocking-legacy-authentication"></a>Blokowanie starszego uwierzytelniania
+### <a name="blocking-legacy-authentication"></a>Blocking legacy authentication
 
-Aby zapewnić użytkownikom łatwy dostęp do aplikacji w chmurze, usługa Azure AD obsługuje różne protokoły uwierzytelniania, w tym starsze uwierzytelnianie. *Starsza wersja uwierzytelniania* to termin, który odwołuje się do żądania uwierzytelnienia wykonanego przez:
+To give your users easy access to your cloud apps, Azure AD supports a variety of authentication protocols, including legacy authentication. *Legacy authentication* is a term that refers to an authentication request made by:
 
-- Starsi klienci pakietu Office, którzy nie korzystają z nowoczesnego uwierzytelniania (na przykład klienta pakietu Office 2010).
-- Każdy klient korzystający ze starszych protokołów poczty, takich jak IMAP, SMTP lub POP3.
+- Older Office clients that don't use modern authentication (for example, an Office 2010 client).
+- Any client that uses older mail protocols such as IMAP, SMTP, or POP3.
 
-Dzisiaj większość nieżądanych prób logowania pochodzi ze starszego uwierzytelniania. Starsza wersja uwierzytelniania nie obsługuje Multi-Factor Authentication. Nawet jeśli masz zasady Multi-Factor Authentication włączone w katalogu, osoba atakująca może się uwierzytelnić przy użyciu starszego protokołu i Multi-Factor Authentication obejścia. 
+Today, the majority of compromising sign-in attempts come from legacy authentication. Legacy authentication does not support Multi-Factor Authentication. Even if you have a Multi-Factor Authentication policy enabled on your directory, an attacker can authenticate by using an older protocol and bypass Multi-Factor Authentication. 
 
-Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablokowane wszystkie żądania uwierzytelnienia podejmowane przez starszy protokół. Ustawienia domyślne zabezpieczeń nie blokują programu Exchange ActiveSync.
+After security defaults are enabled in your tenant, all authentication requests made by an older protocol will be blocked. Security defaults don't block Exchange ActiveSync.
 
-### <a name="protecting-privileged-actions"></a>Ochrona uprzywilejowanych akcji
+### <a name="protecting-privileged-actions"></a>Protecting privileged actions
 
-Organizacje korzystają z różnych usług platformy Azure zarządzanych za pomocą interfejsu API Azure Resource Manager, w tym:
+Organizations use a variety of Azure services managed through the Azure Resource Manager API, including:
 
 - Azure Portal 
 - Program Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure
 
-Używanie Azure Resource Manager do zarządzania usługami to wysoce uprzywilejowana akcja. Azure Resource Manager mogą zmieniać konfiguracje dla całej dzierżawy, takie jak ustawienia usługi i rozliczenia subskrypcji. Uwierzytelnianie wieloskładnikowe jest podatne na różne ataki, takie jak phishing i rozpylanie haseł. 
+Using Azure Resource Manager to manage your services is a highly privileged action. Azure Resource Manager can alter tenant-wide configurations, such as service settings and subscription billing. Single-factor authentication is vulnerable to a variety of attacks like phishing and password spray. 
 
-Ważne jest, aby zweryfikować tożsamość użytkowników, którzy chcą uzyskać dostęp do Azure Resource Manager i konfiguracji aktualizacji. Tożsamość należy zweryfikować, wymagając dodatkowego uwierzytelniania przed zezwoleniem na dostęp.
+It's important to verify the identity of users who want to access Azure Resource Manager and update configurations. You verify their identity by requiring additional authentication before you allow access.
 
-Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie każdy użytkownik, który uzyskuje dostęp do Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, będzie musiał wykonać dodatkowe uwierzytelnianie. Te zasady mają zastosowanie do wszystkich użytkowników, którzy uzyskują dostęp do Azure Resource Manager, niezależnie od tego, czy są oni administratorem czy użytkownikiem. 
+After you enable security defaults in your tenant, any user who's accessing the Azure portal, Azure PowerShell, or the Azure CLI will need to complete additional authentication. This policy applies to all users who are accessing Azure Resource Manager, whether they're an administrator or a user. 
 
-Jeśli użytkownik nie jest zarejestrowany do Multi-Factor Authentication, użytkownik będzie musiał zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby można było wykonać tę operację. Nie zostanie podany 14-dniowy okres rejestracji Multi-Factor Authentication.
+If the user isn't registered for Multi-Factor Authentication, the user will be required to register by using the Microsoft Authenticator app in order to proceed. No 14-day Multi-Factor Authentication registration period will be provided.
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Poniższe zagadnienia dodatkowe są związane z wdrażaniem ustawień domyślnych zabezpieczeń dla dzierżawy.
+The following additional considerations are related to deployment of security defaults for your tenant.
 
-### <a name="older-protocols"></a>Starsze protokoły
+### <a name="older-protocols"></a>Older protocols
 
-Klienci poczty używają starszych protokołów uwierzytelniania (takich jak IMAP, SMTP i POP3), aby wykonywać żądania uwierzytelniania. Te protokoły nie obsługują Multi-Factor Authentication. Większość zabezpieczeń konta, które firma Microsoft widzi przed atakami na starsze protokoły, które próbują obejść Multi-Factor Authentication. 
+Mail clients use older authentication protocols (like IMAP, SMTP, and POP3) to make authentication requests. These protocols don't support Multi-Factor Authentication. Most of the account compromises that Microsoft sees are from attacks against older protocols that are trying to bypass Multi-Factor Authentication. 
 
-Aby upewnić się, że Multi-Factor Authentication jest wymagane do logowania się do konta administracyjnego i że osoby atakujące nie mogą go obejść, domyślnie są blokowane wszystkie żądania uwierzytelnienia skierowane do kont administratorów ze starszych protokołów.
+To ensure that Multi-Factor Authentication is required for signing in to an administrative account and that attackers can't bypass it, security defaults block all authentication requests made to administrator accounts from older protocols.
 
 > [!WARNING]
-> Przed włączeniem tego ustawienia upewnij się, że administratorzy nie używają starszych protokołów uwierzytelniania. Aby uzyskać więcej informacji, zobacz [jak przenieść się z starszego uwierzytelniania](concept-conditional-access-block-legacy-authentication.md).
+> Before you enable this setting, make sure your administrators aren't using older authentication protocols. For more information, see [How to move away from legacy authentication](concept-conditional-access-block-legacy-authentication.md).
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
 
-Za pomocą dostępu warunkowego można skonfigurować zasady zapewniające takie samo zachowanie, które są włączone przez domyślne ustawienia zabezpieczeń. Jeśli używasz dostępu warunkowego i w środowisku włączono zasady dostępu warunkowego, nie będą dostępne żadne ustawienia domyślne zabezpieczeń. Jeśli masz licencję, która zapewnia dostęp warunkowy, ale nie masz włączonych zasad dostępu warunkowego w danym środowisku, możesz użyć domyślnych ustawień zabezpieczeń do momentu włączenia zasad dostępu warunkowego.
+You can use Conditional Access to configure policies that provide the same behavior enabled by security defaults. If you're using Conditional Access and have Conditional Access policies enabled in your environment, security defaults won't be available to you. If you have a license that provides Conditional Access but don't have any Conditional Access policies enabled in your environment, you are welcome to use security defaults until you enable Conditional Access policies.
 
-![Komunikat ostrzegawczy, który może mieć wartości domyślne zabezpieczeń lub dostęp warunkowy nie zarówno](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
+![Warning message that you can have security defaults or Conditional Access not both](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
 
-Poniżej przedstawiono wskazówki krok po kroku dotyczące konfigurowania równoważnych zasad przy użyciu dostępu warunkowego:
+Here are step-by-step guides on how you can use Conditional Access to configure equivalent policies:
 
-- [Wymagaj uwierzytelniania wieloskładnikowego dla administratorów](howto-conditional-access-policy-admin-mfa.md)
-- [Wymagaj uwierzytelniania wieloskładnikowego na potrzeby zarządzania na platformie Azure](howto-conditional-access-policy-azure-management.md)
-- [Blokuj starsze uwierzytelnianie](howto-conditional-access-policy-block-legacy.md)
-- [Wymagaj uwierzytelniania wieloskładnikowego dla wszystkich użytkowników](howto-conditional-access-policy-all-users-mfa.md)
+- [Require MFA for administrators](howto-conditional-access-policy-admin-mfa.md)
+- [Require MFA for Azure management](howto-conditional-access-policy-azure-management.md)
+- [Block legacy authentication](howto-conditional-access-policy-block-legacy.md)
+- [Require MFA for all users](howto-conditional-access-policy-all-users-mfa.md)
+- [Require Azure MFA registration](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Requires Azure AD Identity Protection
 
-## <a name="enabling-security-defaults"></a>Włączanie ustawień domyślnych zabezpieczeń
+## <a name="enabling-security-defaults"></a>Enabling security defaults
 
-Aby włączyć domyślne ustawienia zabezpieczeń w katalogu:
+To enable security defaults in your directory:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com)  as administratorem zabezpieczeń, administratorem dostępu warunkowego lub administratorem globalnym.
-1. Przejdź do **Azure Active Directory**   > **Właściwości**.
-1. Wybierz pozycję **Zarządzaj ustawieniami domyślnymi zabezpieczeń**.
-1. Ustaw opcję **Włącz ustawienia domyślne zabezpieczeń** na **wartość tak**.
+1. Sign in to the [Azure portal](https://portal.azure.com) as a security administrator, Conditional Access administrator, or global administrator.
+1. Browse to **Azure Active Directory** > **Properties**.
+1. Select **Manage security defaults**.
+1. Set the **Enable security defaults** toggle to **Yes**.
 1. Wybierz pozycję **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Typowe zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
+[Common Conditional Access policies](concept-conditional-access-policy-common.md)
 
-[Co to jest dostęp warunkowy?](overview.md)
+[What is Conditional Access?](overview.md)

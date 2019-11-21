@@ -1,16 +1,16 @@
 ---
-title: Tworzenie strategii przy użyciu programu PowerShell
-description: Korzystając z planów platformy Azure, można tworzyć, definiować i wdrażać artefakty przy użyciu programu PowerShell.
+title: 'Quickstart: Create a blueprint with PowerShell'
+description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the PowerShell.
 ms.date: 08/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 4cc181a7e0b07448d6dd538cfb1621d1efa43a80
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5fdda0a995388a6f0d12d1b8441a257eecc43374
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960425"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217075"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu programu PowerShell
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Quickstart: Define and Assign an Azure Blueprint with PowerShell
 
 Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
@@ -26,18 +26,18 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie jest jeszcze zainstalowana, postępuj zgodnie z instrukcjami w temacie [Dodawanie modułu AZ. plan](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) w celu zainstalowania i sprawdzenia poprawności modułu **AZ. plan** z poziomu Galeria programu PowerShell.
+If it isn't already installed, follow the instructions in [Add the Az.Blueprint module](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) to install and validate the **Az.Blueprint** module from the PowerShell Gallery.
 
 ## <a name="create-a-blueprint"></a>Tworzenie strategii
 
 Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. Utworzymy strategię o nazwie „MyBlueprint” służącą do konfigurowania przypisań ról i zasad dla subskrypcji. Następnie dodamy grupę zasobów, szablon usługi Resource Manager i przypisanie roli w grupie zasobów.
 
 > [!NOTE]
-> W przypadku _korzystania z programu PowerShell, obiekt planu_ jest tworzony jako pierwszy. Dla każdego _artefaktu_ zawierającego parametry, który ma zostać dodany, parametry _strategii_ początkowej muszą zostać zdefiniowane wcześniej.
+> When using PowerShell, the _blueprint_ object is created first. Dla każdego _artefaktu_ zawierającego parametry, który ma zostać dodany, parametry _strategii_ początkowej muszą zostać zdefiniowane wcześniej.
 
-1. Utwórz obiekt _strategii_ początkowej. Parametr **BlueprintFile** pobiera plik JSON, który zawiera właściwości strategii, wszystkie grupy zasobów do utworzenia i wszystkie parametry poziomu planu. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
+1. Utwórz obiekt _strategii_ początkowej. The **BlueprintFile** parameter takes a JSON file which includes properties about the blueprint, any resource groups to create, and all of the blueprint level parameters. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
 
-   - Plik JSON — plan. JSON
+   - JSON file - blueprint.json
 
      ```json
      {
@@ -97,7 +97,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      }
      ```
 
-   - Polecenie programu PowerShell
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Login first with Connect-AzAccount if not using Cloud Shell
@@ -107,14 +107,14 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      ```
 
      > [!NOTE]
-     > Podczas programistycznego tworzenia definicji planów Użyj pliku nazwapliku _. JSON_ .
-     > Ta nazwa pliku jest używana podczas wywoływania metody [Import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact).
+     > Use the filename _blueprint.json_ when creating your blueprint definitions programmatically.
+     > This file name is used when calling [Import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact).
 
-     Obiekt planu jest domyślnie tworzony w domyślnej subskrypcji. Aby określić grupę zarządzania, należy użyć parametru **ManagementGroupId**. Aby określić subskrypcję, użyj parametru identyfikator **subskrypcji**.
+     The blueprint object is created in the default subscription by default. To specify the management group, use parameter **ManagementGroupId**. To specify the subscription, use parameter **SubscriptionId**.
 
-1. Dodaj przypisanie roli w subskrypcji. **ArtifactFile** definiuje _rodzaj_ artefaktu, właściwości są wyrównane do identyfikatora definicji roli, a tożsamości podmiotu zabezpieczeń są przenoszone jako tablica wartości. W poniższym przykładzie tożsamości podmiotu zabezpieczeń, którym przyznano określoną rolę, są konfigurowane za pomocą parametru określonego podczas przypisywania strategii. W tym przykładzie użyto wbudowanej roli _Współautor_ o identyfikatorze GUID `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+1. Dodaj przypisanie roli w subskrypcji. The **ArtifactFile** defines the _kind_ of artifact, the properties align to the role definition identifier, and the principal identities are passed as an array of values. W poniższym przykładzie tożsamości podmiotu zabezpieczeń, którym przyznano określoną rolę, są konfigurowane za pomocą parametru określonego podczas przypisywania strategii. W tym przykładzie użyto wbudowanej roli _Współautor_ o identyfikatorze GUID `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
-   - Plik JSON — \artifacts\roleContributor.json
+   - JSON file - \artifacts\roleContributor.json
 
      ```json
      {
@@ -126,16 +126,16 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      }
      ```
 
-   - Polecenie programu PowerShell
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'roleContributor' -ArtifactFile .\artifacts\roleContributor.json
      ```
 
-1. Dodaj przypisanie zasad w subskrypcji. **ArtifactFile** definiuje _rodzaj_ artefaktu, właściwości, które są wyrównane do definicji zasad lub inicjatywy, i konfiguruje przypisanie zasad tak, aby korzystało ze zdefiniowanych parametrów strategii do konfigurowania podczas przypisywania planu. W tym przykładzie użyto wbudowanych zasad _Zastosuj tag i jego wartość domyślną do grup zasobów_ o identyfikatorze GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Dodaj przypisanie zasad w subskrypcji. The **ArtifactFile** defines the _kind_ of artifact, the properties that align to a policy or initiative definition, and configures the policy assignment to use the defined blueprint parameters to configure during blueprint assignment. W tym przykładzie użyto wbudowanych zasad _Zastosuj tag i jego wartość domyślną do grup zasobów_ o identyfikatorze GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
-   - Plik JSON — \artifacts\policyTags.json
+   - JSON file - \artifacts\policyTags.json
 
      ```json
      {
@@ -156,7 +156,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      }
      ```
 
-   - Polecenie programu PowerShell
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -165,7 +165,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj kolejne przypisanie zasad dla tagu magazynu (używając ponownie parametru _storageAccountType_) w subskrypcji. Ten dodatkowy artefakt przypisania zasad pokazuje, że parametr zdefiniowany w strategii może być używany przez więcej niż jeden artefakt. W tym przykładzie parametr **storageAccountType** służy do określania tagu w grupie zasobów. Ta wartość zawiera informacje o koncie magazynu, które zostanie tworzone w następnym kroku. W tym przykładzie użyto wbudowanych zasad _Zastosuj tag i jego wartość domyślną do grup zasobów_ o identyfikatorze GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
-   - Plik JSON — \artifacts\policyStorageTags.json
+   - JSON file - \artifacts\policyStorageTags.json
 
      ```json
      {
@@ -186,16 +186,16 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      }
      ```
 
-   - Polecenie programu PowerShell
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. Dodaj szablon w grupie zasobów. **TemplateFile** szablonu Menedżer zasobów zawiera normalny składnik JSON szablonu. Szablon używa również wielokrotnie parametrów strategii **storageAccountType**, **tagName** i **tagValue**, przekazując każdy z nich do szablonu. Parametry planu są dostępne dla szablonu za pomocą parametru **TemplateParameterFile** i wewnątrz kodu JSON szablonu, którego para klucz-wartość służy do iniekcji wartości. Nazwy planów i parametrów szablonu mogą być takie same.
+1. Dodaj szablon w grupie zasobów. The **TemplateFile** for a Resource Manager template includes the normal JSON component of the template. Szablon używa również wielokrotnie parametrów strategii **storageAccountType**, **tagName** i **tagValue**, przekazując każdy z nich do szablonu. The blueprint parameters are available to the template by using parameter **TemplateParameterFile** and inside the template JSON that key-value pair is used to inject the value. The blueprint and template parameter names could be the same.
 
-   - Plik szablonu Azure Resource Manager JSON — \artifacts\templateStorage.json
+   - JSON Azure Resource Manager template file - \artifacts\templateStorage.json
 
      ```json
      {
@@ -249,7 +249,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      }
      ```
 
-   - Plik parametru szablonu Azure Resource Manager JSON — \artifacts\templateStorageParams.json
+   - JSON Azure Resource Manager template parameter file - \artifacts\templateStorageParams.json
 
      ```json
      {
@@ -269,7 +269,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      }
      ```
 
-   - Polecenie programu PowerShell
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -278,7 +278,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj przypisanie roli w grupie zasobów. Podobnie jak w poprzednim wpisie przypisania roli, w poniższym przykładzie użyto identyfikatora definicji dla roli **Właściciel** i podano mu inny parametr ze strategii. W tym przykładzie użyto wbudowanej roli _Właściciel_ o identyfikatorze GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
 
-   - Plik JSON — \artifacts\roleOwner.json
+   - JSON file - \artifacts\roleOwner.json
 
      ```json
      {
@@ -291,7 +291,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
      }
      ```
 
-   - Polecenie programu PowerShell
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -311,11 +311,11 @@ Wartość zmiennej `{BlueprintVersion}` jest ciągiem liter, cyfr i łączników
 
 ## <a name="assign-a-blueprint"></a>Przypisywanie strategii
 
-Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji. Parametr **strategii określa plan do** przypisania. Aby podać nazwę, lokalizację, tożsamość, blokadę i parametry planu, użyj pasujących parametrów programu PowerShell w poleceniu cmdlet `New-AzBlueprintAssignment` lub podaj je w pliku JSON parametrów **AssignmentFile** .
+Once a blueprint is published using PowerShell, it's assignable to a subscription. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji. The **Blueprint** parameter specifies the blueprint to assign. To provide name, location, identity, lock, and blueprint parameters, use the matching PowerShell parameters on the `New-AzBlueprintAssignment` cmdlet or provide them in the **AssignmentFile** parameter JSON file.
 
-1. Uruchom wdrażanie strategii, przypisując ją do subskrypcji. Ponieważ parametry **współautorów** i **właścicieli** wymagają tablicy obiektów objectid, aby otrzymać przypisanie roli, użyj [Azure Active Directory interfejs API programu Graph](../../active-directory/develop/active-directory-graph-api.md) do zbierania obiektów objectid do użycia w **AssignmentFile** dla własnych użytkowników, grup lub jednostek usługi.
+1. Uruchom wdrażanie strategii, przypisując ją do subskrypcji. As the **contributors** and **owners** parameters require an array of objectIds of the principals to be granted the role assignment, use [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) for gathering the objectIds for use in the **AssignmentFile** for your own users, groups, or service principals.
 
-   - Plik JSON — blueprintAssignment. JSON
+   - JSON file - blueprintAssignment.json
 
      ```json
      {
@@ -358,7 +358,7 @@ Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do 
      }
      ```
 
-   - Polecenie programu PowerShell
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -368,7 +368,7 @@ Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do 
    - Tożsamość zarządzana przypisana przez użytkownika
 
      W przypisaniu strategii można również użyć [tożsamości zarządzanej przypisanej przez użytkownika](../../active-directory/managed-identities-azure-resources/overview.md).
-     W takim przypadku części **Identity** pliku przypisania JSON zmienia się w następujący sposób. Zastąp wartości `{tenantId}`, `{subscriptionId}`, `{yourRG}`i `{userIdentity}` z tenantId, identyfikatorem subskrypcji, nazwą grupy zasobów i nazwą tożsamości zarządzanej przypisanej przez użytkownika odpowiednio.
+     In this case, the **identity** portion of the JSON assignment file changes as follows. Replace `{tenantId}`, `{subscriptionId}`, `{yourRG}`, and `{userIdentity}` with your tenantId, subscriptionId, resource group name, and the name of your user-assigned managed identity, respectively.
 
      ```json
      "identity": {
@@ -387,7 +387,7 @@ Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do 
 
 ## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
-Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, gdy zasoby artefaktu przestają być potrzebne. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie planu, użyj `Remove-AzBlueprintAssignment` polecenia cmdlet:
+Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, gdy zasoby artefaktu przestają być potrzebne. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. To remove a blueprint assignment, use the `Remove-AzBlueprintAssignment` cmdlet:
 
 assignMyBlueprint
 

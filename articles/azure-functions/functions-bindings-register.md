@@ -1,87 +1,83 @@
 ---
-title: Rejestrowanie rozszerzeń powiązań Azure Functions
-description: Dowiedz się, jak zarejestrować rozszerzenie powiązania Azure Functions w oparciu o środowisko.
-services: functions
-documentationcenter: na
+title: Register Azure Functions binding extensions
+description: Learn to register an Azure Functions binding extension based on your environment.
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 40dca0797d75597f4728423eb9d6d071a15d81b9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129266"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231105"
 ---
-# <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązań Azure Functions
+# <a name="register-azure-functions-binding-extensions"></a>Register Azure Functions binding extensions
 
-W Azure Functions w wersji 2. x [powiązania](./functions-triggers-bindings.md) są dostępne jako oddzielne pakiety w środowisku uruchomieniowym funkcji. Chociaż usługa .NET Functions uzyskuje dostęp do powiązań za pomocą pakietów NuGet, zbiory rozszerzeń umożliwiają innym funkcjom dostęp do wszystkich powiązań za pomocą ustawienia konfiguracji.
+In Azure Functions version 2.x, [bindings](./functions-triggers-bindings.md) are available as separate packages from the functions runtime. While .NET functions access bindings through NuGet packages, extension bundles allow other functions access to all bindings through a configuration setting.
 
-Należy wziąć pod uwagę następujące elementy związane z rozszerzeniami powiązań:
+Consider the following items related to binding extensions:
 
-- Rozszerzenia powiązań nie są jawnie zarejestrowane w funkcjach 1. x z wyjątkiem [tworzenia biblioteki C# klas przy użyciu programu Visual Studio](#local-csharp).
+- Binding extensions aren't explicitly registered in Functions 1.x except when [creating a C# class library using Visual Studio](#local-csharp).
 
-- Wyzwalacze protokołu HTTP i czasomierze są domyślnie obsługiwane i nie wymagają rozszerzenia.
+- HTTP and timer triggers are supported by default and don't require an extension.
 
-Poniższa tabela zawiera informacje o tym, kiedy i w jaki sposób rejestrujesz powiązania.
+The following table indicates when and how you register bindings.
 
-| Środowisko deweloperskie |Rejestracja<br/> w funkcjach 1. x  |Rejestracja<br/> w funkcjach 2. x  |
+| Środowisko deweloperskie |Rejestracja<br/> in Functions 1.x  |Rejestracja<br/> in Functions 2.x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure Portal|Automatyczne|Automatyczne|
-|Programowanie w języku Non-.NET lub lokalne podstawowe narzędzia platformy Azure|Automatyczne|[Użyj Azure Functions Core Tools i pakietów rozszerzeń](#extension-bundles)|
-|C#Biblioteka klas przy użyciu programu Visual Studio|[Korzystanie z narzędzi NuGet](#vs)|[Korzystanie z narzędzi NuGet](#vs)|
-|C#Biblioteka klas przy użyciu Visual Studio Code|Nie dotyczy|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
+|Azure Portal|Automatyczny|Automatyczny|
+|Non-.NET languages or local Azure Core Tools development|Automatyczny|[Use Azure Functions Core Tools and extension bundles](#extension-bundles)|
+|C# class library using Visual Studio|[Use NuGet tools](#vs)|[Use NuGet tools](#vs)|
+|C# class library using Visual Studio Code|ND|[Use .NET Core CLI](#vs-code)|
 
-## <a name="extension-bundles"></a>Zestawy rozszerzeń do lokalnego tworzenia
+## <a name="extension-bundles"></a>Extension bundles for local development
 
-Pakiety rozszerzeń to technologia wdrażania, która umożliwia dodawanie zgodnego zestawu funkcji powiązań dla aplikacji funkcji. Podczas kompilowania aplikacji dodawane są wstępnie zdefiniowane rozszerzenia. Pakiety rozszerzeń zdefiniowane w pakiecie są zgodne ze sobą, co pomaga uniknąć konfliktów między pakietami. Zestawy rozszerzeń można włączyć w pliku host. JSON aplikacji.  
+Extension bundles is a deployment technology that lets you add a compatible set of Functions binding extensions to your function app. A predefined set of extensions are added when you build your app. Extension packages defined in a bundle are compatible with each other, which helps you avoid conflicts between packages. You enable extension bundles in the app's host.json file.  
 
-Można używać pakietów rozszerzeń z wersją 2. x i nowszymi wersjami środowiska uruchomieniowego Functions. Podczas programowania lokalnego upewnij się, że używasz najnowszej wersji [Azure Functions Core Tools](functions-run-local.md#v2).
+You can use extension bundles with version 2.x and later versions of the Functions runtime. When developing locally, make sure you are using the latest version of [Azure Functions Core Tools](functions-run-local.md#v2).
 
-Używaj pakietów rozszerzeń do lokalnego tworzenia przy użyciu Azure Functions Core Tools, Visual Studio Code i podczas zdalnego kompilowania.
+Use extension bundles for local development using Azure Functions Core Tools, Visual Studio Code, and when you build remotely.
 
-Jeśli nie używasz zestawów rozszerzeń, przed zainstalowaniem rozszerzeń powiązań należy zainstalować zestaw SDK programu .NET Core 2. x na komputerze lokalnym. Pakiety rozszerzeń usuwają to wymaganie na potrzeby lokalnego projektowania. 
+If you don't use extension bundles, you must install the .NET Core 2.x SDK on your local computer before you install any binding extensions. Extension bundles removes this requirement for local development. 
 
-Aby użyć pakietów rozszerzeń, zaktualizuj plik *host. JSON* w taki sposób, aby zawierał następujący wpis dla `extensionBundle`:
+To use extension bundles, update the *host.json* file to include the following entry for `extensionBundle`:
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a>Biblioteka klas C\# z programem Visual Studio
+## <a name="vs"></a> C\# class library with Visual Studio
 
-W programie **Visual Studio**można zainstalować pakiety z konsoli Menedżera pakietów za pomocą polecenia [install-package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) , jak pokazano w następującym przykładzie:
+In **Visual Studio**, you can install packages from the Package Manager Console using the [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) command, as shown in the following example:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Nazwa pakietu używana dla danego powiązania znajduje się w artykule referencyjnym dla tego powiązania. Aby zapoznać się z przykładem, zobacz [sekcję Packages artykułu dotyczącego powiązania Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
+The name of the package used for a given binding is provided in the reference article for that binding. For an example, see the [Packages section of the Service Bus binding reference article](functions-bindings-service-bus.md#packages---functions-1x).
 
-Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, np. `3.0.0-beta5`. Prawidłowe wersje są wymienione na stronach poszczególnych pakietów w witrynie [NuGet.org](https://nuget.org). Wersje główne, które odnoszą się do środowiska uruchomieniowego Functions 1. x lub 2. x, są określone w artykule referencyjnym dla powiązania.
+Replace `<TARGET_VERSION>` in the example with a specific version of the package, such as `3.0.0-beta5`. Valid versions are listed on the individual package pages at [NuGet.org](https://nuget.org). The major versions that correspond to Functions runtime 1.x or 2.x are specified in the reference article for the binding.
 
-Jeśli używasz `Install-Package` do odwoływania się do powiązania, nie musisz używać [pakietów rozszerzeń](#extension-bundles). To podejście jest specyficzne dla bibliotek klas skompilowanych w programie Visual Studio.
+If you use `Install-Package` to reference a binding, you don't need to use [extension bundles](#extension-bundles). This approach is specific for class libraries built in Visual Studio.
 
-## <a name="vs-code"></a>C# Biblioteka klas z Visual Studio Code
+## <a name="vs-code"></a> C# class library with Visual Studio Code
 
 > [!NOTE]
-> Zalecamy używanie [pakietów rozszerzeń](#extension-bundles) w celu automatycznego zainstalowania zgodnego zestawu pakietów rozszerzenia powiązania. 
+> We recommend using [extension bundles](#extension-bundles) to have Functions automatically install a compatible set of binding extension packages. 
 
-W **Visual Studio Code**Zainstaluj pakiety dla projektu biblioteki C# klas z wiersza polecenia przy użyciu polecenia [dotnet Add Package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) w interfejs wiersza polecenia platformy .NET Core. Poniższy przykład ilustruje sposób dodawania powiązania:
+In **Visual Studio Code**, install packages for a C# class library project from the command prompt using the [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) command in the .NET Core CLI. The following example demonstrates how you add a  binding:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
-Interfejs wiersza polecenia platformy .NET Core można używać tylko na potrzeby programowania Azure Functions 2. x.
+The .NET Core CLI can only be used for Azure Functions 2.x development.
 
-Zastąp `<BINDING_TYPE_NAME>` nazwą pakietu, który zawiera wymagane powiązanie. Żądany artykuł referencyjny powiązania można znaleźć na [liście obsługiwanych powiązań](./functions-triggers-bindings.md#supported-bindings).
+Replace `<BINDING_TYPE_NAME>` with the name of the package that contains the binding you need. You can find the desired binding reference article in the [list of supported bindings](./functions-triggers-bindings.md#supported-bindings).
 
-Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, np. `3.0.0-beta5`. Prawidłowe wersje są wymienione na stronach poszczególnych pakietów w witrynie [NuGet.org](https://nuget.org). Wersje główne, które odnoszą się do środowiska uruchomieniowego Functions 1. x lub 2. x, są określone w artykule referencyjnym dla powiązania.
+Replace `<TARGET_VERSION>` in the example with a specific version of the package, such as `3.0.0-beta5`. Valid versions are listed on the individual package pages at [NuGet.org](https://nuget.org). The major versions that correspond to Functions runtime 1.x or 2.x are specified in the reference article for the binding.
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Przykład wyzwalacza i powiązania funkcji platformy Azure](./functions-bindings-example.md)
+> [Azure Function trigger and binding example](./functions-bindings-example.md)

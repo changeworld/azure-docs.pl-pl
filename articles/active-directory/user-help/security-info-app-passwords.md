@@ -1,6 +1,6 @@
 ---
-title: Tworzenie haseł aplikacji w oknie Informacje zabezpieczające (wersja zapoznawcza) — Azure AD
-description: Skonfiguruj automatycznie generowane hasła (hasła aplikacji), które mają być używane z dowolną aplikacją nieobsługującą przeglądarki, lub dowolną aplikację, która nie obsługuje weryfikacji dwuskładnikowej w organizacji. To hasło aplikacji jest oddzielone od normalnego hasła i można je skonfigurować ze strony z informacjami o zabezpieczeniach.
+title: Create app passwords from Security info (preview) page - Azure AD
+description: Create auto-generated passwords (app passwords) to use with any non-browser app, or any app that doesn't support two-factor verification, in your organization. This app password is separate from a normal password and can be set up from the Security info page.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee9f6bc1986cb31b1e21a0678e59bf8269988426
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820324"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231809"
 ---
-# <a name="create-app-passwords-from-your-security-info-preview-page"></a>Tworzenie haseł aplikacji na stronie informacje zabezpieczające (wersja zapoznawcza)
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Create app passwords from the Security info (preview) page
 
-Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetapowej. Brak pomocy technicznej oznacza, że jeśli korzystasz z weryfikacji dwuetapowej w organizacji, aplikacja nie będzie działała. Aby obejść ten problem, możesz utworzyć automatycznie generowane hasło, które będzie używane z każdą aplikacją nie korzystającą z przeglądarki, niezależnie od normalnego hasła.
+Certain apps, such as Outlook 2010, don't support two-step verification. This lack of support means that if you're using two-step verification in your organization, the app won't work. To get around this problem, you can create an auto-generated password to use with each non-browser app, separate from your normal password.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->Administrator może nie zezwalać na korzystanie z haseł aplikacji. Jeśli nie widzisz **haseł aplikacji** jako opcji, nie są one dostępne w Twojej organizacji.
+>Your administrator may not allow you to use app passwords. If you don't see **App passwords** as an option, they're not available in your organization.
 
-W przypadku korzystania z haseł aplikacji ważne jest, aby pamiętać:
+When using app passwords, it's important to remember:
 
-- Hasła aplikacji są generowane automatycznie i należy je utworzyć i wprowadzić raz na aplikację.
+- App passwords are auto-generated, and should be created and entered once per app.
 
-- Dla każdego użytkownika istnieje limit 40 haseł. Jeśli spróbujesz utworzyć jeden po tym limicie, zostanie wyświetlony monit o usunięcie istniejącego hasła przed utworzeniem nowego.
+- There's a limit of 40 passwords per user. If you try to create one after that limit, you'll be prompted to delete an existing password before being allowed to create the new one.
 
     >[!Note]
-    >Klienci korzystający z pakietu Office 2013 (w tym Outlook) obsługują nowe protokoły uwierzytelniania i mogą być używani do weryfikacji dwuetapowej. Ta pomoc techniczna oznacza, że po włączeniu weryfikacji dwuetapowej nie będą już potrzebne hasła aplikacji dla klientów pakietu Office 2013. Aby uzyskać więcej informacji, zobacz artykuł [jak nowoczesne uwierzytelnianie działa dla pakietów office 2013 i office 2016 Client Apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .
+    >Office 2013 clients (including Outlook) support new authentication protocols and can be used with two-step verification. This support means that after two-step verification is turned on, you'll no longer need app passwords for Office 2013 clients. For more info, see the [How modern authentication works for Office 2013 and Office 2016 client apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) article.
 
-## <a name="create-new-app-passwords"></a>Utwórz nowe hasła aplikacji
+## <a name="create-new-app-passwords"></a>Create new app passwords
 
-Jeśli korzystasz z weryfikacji dwuetapowej przy użyciu konta służbowego, a administrator włączył informacje zabezpieczające, możesz tworzyć i usuwać hasła aplikacji przy użyciu strony **informacje zabezpieczające** .
+If you use two-step verification with your work or school account and your administrator has turned on the security info experience, you can create and delete your app passwords using the **Security info** page.
 
 >[!Note]
->Jeśli administrator nie włączył środowiska informacje zabezpieczające, należy postępować zgodnie z instrukcjami i informacjami w sekcji [Zarządzanie hasłami aplikacji na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-app-passwords.md) .
+>If your administrator hasn't turned on the security info experience, you must follow the instructions and information in the [Manage app passwords for two-step verification](multi-factor-authentication-end-user-app-passwords.md) section.
 
-### <a name="to-create-a-new-app-password"></a>Aby utworzyć nowe hasło aplikacji
+### <a name="to-create-a-new-app-password"></a>To create a new app password
 
-1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-    ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
+    ![My Profile page, showing highlighted Security info links](media/security-info/securityinfo-myprofile-page.png)
 
-2. W okienku nawigacji po lewej stronie wybierz pozycję **informacje zabezpieczające** lub link w bloku **informacje zabezpieczające** , a następnie wybierz pozycję **Dodaj metodę** ze strony **informacje zabezpieczające** .
+2. Select **Security info** from the left navigation pane or from the link in the **Security info** block, and then select **Add method** from the **Security info** page.
 
-    ![Strona z informacjami o zabezpieczeniach z wyróżnioną opcją dodawania metody](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Security info page with highlighted Add method option](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Na stronie **Dodawanie metody** wybierz z listy rozwijanej pozycję **hasło aplikacji** , a następnie wybierz pozycję **Dodaj**.
+3. On the **Add a method** page, select **App password** from the drop-down list, and then select **Add**.
 
-    ![Pole dodawania metody z wybranym hasłem aplikacji](media/security-info/securityinfo-myprofile-addpassword.png)
+    ![Add method box, with App password selected](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. Wpisz nazwę aplikacji, która wymaga hasła aplikacji, a następnie wybierz przycisk **dalej**.
+4. Type the name of the app that requires the app password, and then select **Next**.
 
-    ![Strona hasła aplikacji z nazwą aplikacji](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![App password page, with name of app](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. Skopiuj tekst z pola **hasło** , wklej je w obszarze hasło aplikacji (w tym przykładzie w programie Outlook 2010), a następnie wybierz pozycję **gotowe**.
+5. Copy the text from the **Password** box, paste the password in the password area of the app (in this example, Outlook 2010), and then select **Done**.
 
-    ![Strona hasła aplikacji z nazwą aplikacji](media/security-info/securityinfo-myprofile-password-copytext.png)
+    ![App password page, with name of app](media/security-info/securityinfo-myprofile-password-copytext.png)
 
-    Hasło jest dodawane i można pomyślnie zalogować się do aplikacji.
+    The password is added and you can successfully log in to your app going forward.
 
-## <a name="delete-your-app-passwords"></a>Usuwanie haseł aplikacji
+## <a name="delete-your-app-passwords"></a>Delete your app passwords
 
-Jeśli nie musisz już korzystać z aplikacji, która wymaga hasła aplikacji, możesz usunąć skojarzone hasło aplikacji. Usunięcie hasła aplikacji zwolni jedną z dostępnych miejsc hasła aplikacji do użycia w przyszłości.
+If you no longer need to use an app that requires an app password, you can delete the associated app password. Deleting the app password frees up one of the available app password spots for use in the future.
 
 >[!Important]
->W przypadku usunięcia hasła aplikacji przez pomyłkę nie ma możliwości jego cofnięcia. Należy utworzyć nowe hasło aplikacji i wprowadzić je ponownie w aplikacji, wykonując kroki opisane w sekcji [Tworzenie nowych haseł aplikacji](#create-new-app-passwords) w tym artykule.
+>If you delete an app password by mistake, there's no way to undo it. You'll have to create a new app password and re-enter it into the app, following the steps in the [Create new app passwords](#create-new-app-passwords) section of this article.
 
-### <a name="to-delete-an-app-password"></a>Aby usunąć hasło aplikacji
+### <a name="to-delete-an-app-password"></a>To delete an app password
 
-1. Na stronie **informacje zabezpieczające** wybierz łącze **Usuń** obok opcji **hasło aplikacji** dla określonej aplikacji.
+1. On the **Security info** page, select the **Delete** link next to the **App password** option for the specific app.
 
-    ![Link umożliwiający usunięcie metody hasła aplikacji z informacji zabezpieczających](media/security-info/securityinfo-myprofile-password-appdelete.png)
+    ![Link to delete the app password method from security info](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. Wybierz opcję **tak** w polu potwierdzenia, aby usunąć **hasło aplikacji**. Po usunięciu hasła aplikacji zostanie ono usunięte z informacji zabezpieczających i zniknie ze strony z **informacjami o zabezpieczeniach** .
+2. Select **Yes** from the confirmation box to delete the **App password**. After the app password is deleted, it's removed from your security info and it disappears from the **Security info** page.
 
 ## <a name="for-more-information"></a>Więcej informacji
 
-- Aby uzyskać więcej informacji na temat strony **informacje zabezpieczające** i sposobu jej konfiguracji, zobacz [informacje zabezpieczające — Omówienie](user-help-security-info-overview.md)
+- For more information about the **Security info** page and how to set it up, see [Security info overview](user-help-security-info-overview.md)

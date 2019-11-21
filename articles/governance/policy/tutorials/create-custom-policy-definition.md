@@ -1,16 +1,16 @@
 ---
-title: Tworzenie niestandardowej definicji zasad
-description: Utwórz niestandardową definicję zasad Azure Policy, aby wymusić niestandardowe reguły biznesowe w Twoich zasobach platformy Azure.
+title: 'Tutorial: Create a custom policy definition'
+description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 97a85eb28cd0dbb2586623fda442d87a5790db2a
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 743e3dea3c6daa7b2e713f2b1d5c1691d60785ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128786"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216702"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Samouczek: Tworzenie definicji zasad niestandardowych
+# <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
 Niestandardowa definicja zasad umożliwia klientom definiowanie własnych reguł dotyczących korzystania z platformy Azure. Te reguły często wymuszają:
 
@@ -42,31 +42,31 @@ Ważne jest, aby przed utworzeniem definicji zasad poznać przeznaczenie zasad. 
 
 Wymagania powinny wyraźnie definiować zarówno „poprawne”, jak i „zakazane” stany zasobów.
 
-Chociaż zdefiniowaliśmy oczekiwany stan zasobu, nie zdefiniowaliśmy jeszcze, co chcemy zrobić z niezgodnymi zasobami. Azure Policy obsługuje wiele [efektów](../concepts/effects.md). W tym samouczku zdefiniujemy wymaganie biznesowe, które zakazuje tworzenia zasobów, jeśli nie są one zgodne z regułami firmy. Aby osiągnąć ten cel, użyjemy efektu [Deny](../concepts/effects.md#deny) (Odmów). Chcemy również mieć możliwość wstrzymania zasad dla określonych przypisań. Dlatego użyjemy efektu [Disabled](../concepts/effects.md#disabled) (Wyłączone) i określimy go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
+Chociaż zdefiniowaliśmy oczekiwany stan zasobu, nie zdefiniowaliśmy jeszcze, co chcemy zrobić z niezgodnymi zasobami. Azure Policy supports a number of [effects](../concepts/effects.md). W tym samouczku zdefiniujemy wymaganie biznesowe, które zakazuje tworzenia zasobów, jeśli nie są one zgodne z regułami firmy. Aby osiągnąć ten cel, użyjemy efektu [Deny](../concepts/effects.md#deny) (Odmów). Chcemy również mieć możliwość wstrzymania zasad dla określonych przypisań. Dlatego użyjemy efektu [Disabled](../concepts/effects.md#disabled) (Wyłączone) i określimy go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
 
 ## <a name="determine-resource-properties"></a>Określanie właściwości zasobów
 
-Zgodnie z wymaganiami biznesowymi zasób platformy Azure do inspekcji przy użyciu Azure Policy jest kontem magazynu. Jednak nie znamy właściwości do użycia w definicji zasad. Azure Policy oblicza względem reprezentacji JSON zasobu, dlatego musimy zrozumieć właściwości dostępne dla tego zasobu.
+Based on the business requirement, the Azure resource to audit with Azure Policy is a storage account. Jednak nie znamy właściwości do użycia w definicji zasad. Azure Policy evaluates against the JSON representation of the resource, so we'll need to understand the properties available on that resource.
 
 Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
-- Szablony usługi Resource Manager
+- Szablony Menedżera zasobów
   - Eksportowanie istniejącego zasobu
   - Środowisko tworzenia
   - Szablony Szybki start (GitHub)
   - Dokumentacja szablonu
 - Eksplorator zasobów Azure
 
-### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
+### <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
 
 [Szablon usługi Resource Manager](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) zawierający szukaną właściwość w celu zarządzania nią można sprawdzić na kilka sposobów.
 
 #### <a name="existing-resource-in-the-portal"></a>Istniejący zasób w portalu
 
 Najprostszym sposobem na znalezienie właściwości jest przyjrzenie się istniejącemu zasobowi tego samego typu. Zasoby już skonfigurowane za pomocą ustawienia, które ma być wymuszane, służą także do porównywania wartości.
-Przyjrzyj się stronie **Eksportuj szablon** (w obszarze **ustawienia**) w Azure Portal dla tego konkretnego zasobu.
+Look at the **Export template** page (under **Settings**) in the Azure portal for that specific resource.
 
-![Eksportuj stronę szablonu do istniejącego zasobu](../media/create-custom-policy-definition/export-template.png)
+![Export template page on existing resource](../media/create-custom-policy-definition/export-template.png)
 
 Wykonanie tego działania dla konta magazynu spowoduje wyświetlenie szablonu podobnego do następującego przykładu:
 
@@ -157,8 +157,8 @@ Zidentyfikowaliśmy właściwość zasobu, ale musimy zamapować tę właściwo�
 Istnieje kilka sposobów określenia aliasów dla zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
 - Interfejs wiersza polecenia platformy Azure
-- Azure PowerShell
-- Azure Resource Graph
+- Program Azure PowerShell
+- Graf zasobów platformy Azure
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -173,7 +173,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 W wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu. Istnienie tego aliasu oznacza, że możemy zapisać zasady, aby wymuszać nasze wymagania biznesowe!
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania aliasów zasobu. Przefiltrujemy przestrzeń nazw **Microsoft.Storage** za pomocą uzyskanych wcześniej szczegółów dotyczących zasobu platformy Azure.
 
@@ -186,7 +186,7 @@ W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wys
 
 Podobnie jak w przypadku interfejsu wiersza polecenia platformy Azure, w wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu.
 
-### <a name="azure-resource-graph"></a>Azure Resource Graph
+### <a name="azure-resource-graph"></a>Graf zasobów platformy Azure
 
 [Azure Resource Graph](../../resource-graph/overview.md) to nowa usługa dostępna w wersji zapoznawczej. Oferuje ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
 
@@ -203,7 +203,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Wyniki są podobne do wyników uzyskanych za pomocą szablonów usługi Resource Manager i usługi Azure Resource Explorer. Jednak wyniki wykresu zasobów platformy Azure mogą również zawierać szczegóły [aliasu](../concepts/definition-structure.md#aliases) przez _projekcję_ tablicy _aliasów_ :
+Wyniki są podobne do wyników uzyskanych za pomocą szablonów usługi Resource Manager i usługi Azure Resource Explorer. However, Azure Resource Graph results can also include [alias](../concepts/definition-structure.md#aliases) details by _projecting_ the _aliases_ array:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'

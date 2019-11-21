@@ -1,41 +1,37 @@
 ---
-title: Testowanie jednostek Durable Functions platformy Azure
-description: Dowiedz się, jak jednostkowe Durable Functions testowe.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
+title: Azure Durable Functions unit testing
+description: Learn how to unit test Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.author: glenga
-ms.openlocfilehash: 95c6afcb2f7e864da4b9b43235326a17bed785fa
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614534"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231224"
 ---
-# <a name="durable-functions-unit-testing"></a>Testowanie jednostkowe Durable Functions
+# <a name="durable-functions-unit-testing"></a>Durable Functions unit testing
 
-Testowanie jednostkowe jest ważną częścią nowoczesnych rozwiązań do tworzenia oprogramowania. Testy jednostkowe weryfikują zachowanie logiki biznesowej i chronią przed wprowadzaniem niezauważalnych zmian w przyszłości. Durable Functions można łatwo zwiększyć złożoność, aby zapewnić testy jednostkowe, aby uniknąć istotnych zmian. W poniższych sekcjach wyjaśniono, jak przeprowadzić test jednostkowy trzech typów funkcji — klienta aranżacji, programu Orchestrator i funkcji działania.
+Unit testing is an important part of modern software development practices. Unit tests verify business logic behavior and protect from introducing unnoticed breaking changes in the future. Durable Functions can easily grow in complexity so introducing unit tests will help to avoid breaking changes. The following sections explain how to unit test the three function types - Orchestration client, orchestrator, and activity functions.
 
 > [!NOTE]
-> Ten artykuł zawiera wskazówki dotyczące testowania jednostkowego dla aplikacji Durable Functions przeznaczonych dla Durable Functions 1. x. Nie została jeszcze zaktualizowana w celu uwzględnienia zmian wprowadzonych w Durable Functions 2. x. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> This article provides guidance for unit testing for Durable Functions apps targeting Durable Functions 1.x. It has not yet been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przykłady w tym artykule wymagają znajomości następujących pojęć i struktur:
+The examples in this article require knowledge of the following concepts and frameworks:
 
 * Testy jednostkowe
 
 * Trwałe funkcje
 
-* [xUnit](https://xunit.github.io/) — struktura testowania
+* [xUnit](https://xunit.github.io/) - Testing framework
 
-* [MOQ](https://github.com/moq/moq4) — struktura
+* [moq](https://github.com/moq/moq4) - Mocking framework
 
-## <a name="base-classes-for-mocking"></a>Klasy bazowe do imitacji
+## <a name="base-classes-for-mocking"></a>Base classes for mocking
 
-Symulacja jest obsługiwana przez trzy klasy abstrakcyjne w Durable Functions 1. x:
+Mocking is supported via three abstract classes in Durable Functions 1.x:
 
 * `DurableOrchestrationClientBase`
 
@@ -43,29 +39,29 @@ Symulacja jest obsługiwana przez trzy klasy abstrakcyjne w Durable Functions 1.
 
 * `DurableActivityContextBase`
 
-Te klasy są klasami podstawowymi dla `DurableOrchestrationClient`, `DurableOrchestrationContext`i `DurableActivityContext`, które definiują klienta aranżacji, program Orchestrator i metody działania. Makiety spowodują ustawienie oczekiwanego zachowania dla metod klasy bazowej, aby test jednostkowy mógł zweryfikować logikę biznesową. Istnieje dwuetapowy przepływ pracy służący do testowania jednostek logiki biznesowej w kliencie aranżacji i w programie Orchestrator:
+These classes are base classes for `DurableOrchestrationClient`, `DurableOrchestrationContext`, and `DurableActivityContext` that define Orchestration Client, Orchestrator, and Activity methods. The mocks will set expected behavior for base class methods so the unit test can verify the business logic. There is a two-step workflow for unit testing the business logic in the Orchestration Client and Orchestrator:
 
-1. Użyj klas bazowych zamiast konkretnej implementacji podczas definiowania sygnatury funkcji klienta aranżacji i programu Orchestrator.
-2. W testach jednostkowych Zanotuj zachowanie klas podstawowych i sprawdź logikę biznesową.
+1. Use the base classes instead of the concrete implementation when defining orchestration client and orchestrator function signatures.
+2. In the unit tests mock the behavior of the base classes and verify the business logic.
 
-Więcej szczegółów znajduje się w poniższych sekcjach dotyczących funkcji testowych, które korzystają z powiązania klienta aranżacji i powiązania wyzwalacza programu Orchestrator.
+Find more details in the following paragraphs for testing functions that use the orchestration client binding and the orchestrator trigger binding.
 
-## <a name="unit-testing-trigger-functions"></a>Funkcje wyzwalacza testów jednostkowych
+## <a name="unit-testing-trigger-functions"></a>Unit testing trigger functions
 
-W tej sekcji test jednostkowy będzie sprawdzał logikę następującej funkcji wyzwalacza HTTP do uruchamiania nowych aranżacji.
+In this section, the unit test will validate the logic of the following HTTP trigger function for starting new orchestrations.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Zadanie testów jednostkowych będzie weryfikować wartość nagłówka `Retry-After` dostarczonego w ładunku odpowiedzi. Dlatego test jednostkowy zanotuje niektóre metody `DurableOrchestrationClientBase`, aby zapewnić przewidywalne zachowanie.
+The unit test task will be to verify the value of the `Retry-After` header provided in the response payload. So the unit test will mock some of `DurableOrchestrationClientBase` methods to ensure predictable behavior.
 
-Najpierw jest wymagana makieta klasy bazowej, `DurableOrchestrationClientBase`. Makieta może być nową klasą, która implementuje `DurableOrchestrationClientBase`. Jednak użycie struktury imitacji, takiej jak [MOQ](https://github.com/moq/moq4) upraszcza proces:
+First, a mock of the base class is required, `DurableOrchestrationClientBase`. The mock can be a new class that implements `DurableOrchestrationClientBase`. However, using a mocking framework like [moq](https://github.com/moq/moq4) simplifies the process:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Następnie `StartNewAsync` Metoda jest wbudowana w celu zwrócenia dobrze znanego identyfikatora wystąpienia.
+Then `StartNewAsync` method is mocked to return a well-known instance ID.
 
 ```csharp
     // Mock StartNewAsync method
@@ -74,7 +70,7 @@ Następnie `StartNewAsync` Metoda jest wbudowana w celu zwrócenia dobrze znaneg
         ReturnsAsync(instanceId);
 ```
 
-Kolejne `CreateCheckStatusResponse` są makietą, aby zawsze zwracała pustą odpowiedź HTTP 200.
+Next `CreateCheckStatusResponse` is mocked to always return an empty HTTP 200 response.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -91,14 +87,14 @@ Kolejne `CreateCheckStatusResponse` są makietą, aby zawsze zwracała pustą od
         });
 ```
 
-`ILogger` jest również makieta:
+`ILogger` is also mocked:
 
 ```csharp
     // Mock ILogger
     var loggerMock = new Mock<ILogger>();
 ```  
 
-Teraz Metoda `Run` jest wywoływana z testu jednostkowego:
+Now the `Run` method is called from the unit test:
 
 ```csharp
     // Call Orchestration trigger function
@@ -113,7 +109,7 @@ Teraz Metoda `Run` jest wywoływana z testu jednostkowego:
         loggerMock.Object);
  ```
 
- Ostatnim krokiem jest porównanie danych wyjściowych o oczekiwanej wartości:
+ The last step is to compare the output with the expected value:
 
 ```csharp
     // Validate that output is not null
@@ -123,25 +119,25 @@ Teraz Metoda `Run` jest wywoływana z testu jednostkowego:
     Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
-Po połączeniu wszystkich kroków test jednostkowy będzie miał następujący kod:
+After combining all steps, the unit test will have the following code:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HttpStartTests.cs)]
 
-## <a name="unit-testing-orchestrator-functions"></a>Funkcje programu Orchestrator do testowania jednostek
+## <a name="unit-testing-orchestrator-functions"></a>Unit testing orchestrator functions
 
-Funkcje programu Orchestrator są jeszcze bardziej interesujące w przypadku testów jednostkowych, ponieważ zazwyczaj mają znacznie większą logikę biznesową.
+Orchestrator functions are even more interesting for unit testing since they usually have a lot more business logic.
 
-W tej sekcji testy jednostkowe będą sprawdzać poprawność danych wyjściowych funkcji programu `E1_HelloSequence` Orchestrator:
+In this section the unit tests will validate the output of the `E1_HelloSequence` Orchestrator function:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-Kod testu jednostkowego rozpocznie się od utworzenia makiety:
+The unit test code will start with creating a mock:
 
 ```csharp
     var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
 ```
 
-Następnie wywołania metody działania zostaną zamakietne:
+Then the activity method calls will be mocked:
 
 ```csharp
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
@@ -149,13 +145,13 @@ Następnie wywołania metody działania zostaną zamakietne:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-Następny test jednostkowy wywoła metodę `HelloSequence.Run`:
+Next the unit test will call `HelloSequence.Run` method:
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
-A wreszcie dane wyjściowe zostaną zweryfikowane:
+And finally the output will be validated:
 
 ```csharp
     Assert.Equal(3, result.Count);
@@ -164,25 +160,25 @@ A wreszcie dane wyjściowe zostaną zweryfikowane:
     Assert.Equal("Hello London!", result[2]);
 ```
 
-Po połączeniu wszystkich kroków test jednostkowy będzie miał następujący kod:
+After combining all steps, the unit test will have the following code:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceOrchestratorTests.cs)]
 
-## <a name="unit-testing-activity-functions"></a>Funkcje działania testowania jednostkowego
+## <a name="unit-testing-activity-functions"></a>Unit testing activity functions
 
-Funkcje działania mogą być testowane jednostkowo w taki sam sposób jak w przypadku funkcji nietrwałych.
+Activity functions can be unit tested in the same way as non-durable functions.
 
-W tej sekcji test jednostkowy sprawdzi zachowanie funkcji działania `E1_SayHello`:
+In this section the unit test will validate the behavior of the `E1_SayHello` Activity function:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-A testy jednostkowe sprawdzają format danych wyjściowych. Testy jednostkowe mogą używać typów parametrów bezpośrednio lub do makietowania klasy `DurableActivityContextBase`:
+And the unit tests will verify the format of the output. The unit tests can use the parameter types directly or mock `DurableActivityContextBase` class:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [Learn more about xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
 > 
-> [Dowiedz się więcej o MOQ](https://github.com/Moq/moq4/wiki/Quickstart)
+> [Learn more about moq](https://github.com/Moq/moq4/wiki/Quickstart)

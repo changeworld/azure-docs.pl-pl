@@ -1,188 +1,183 @@
 ---
-title: Azure Functions skalowanie i hosting | Microsoft Docs
-description: Dowiedz się, jak wybierać między planem zużycia Azure Functions a planem Premium.
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, Functions, plan zużycia, plan Premium, przetwarzanie zdarzeń, elementy webhook, dynamiczne obliczenia, architektura bezserwerowa
+title: Azure Functions scale and hosting
+description: Learn how to choose between Azure Functions Consumption plan and Premium plan.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b9644e89591d7d8b7642b5f381434357191d1711
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576057"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226603"
 ---
-# <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
+# <a name="azure-functions-scale-and-hosting"></a>Azure Functions scale and hosting
 
-Podczas tworzenia aplikacji funkcji na platformie Azure musisz wybrać plan hostingu dla swojej aplikacji. Istnieją trzy plany hostingu dostępne dla Azure Functions: [Plan zużycia](#consumption-plan), [Plan Premium](#premium-plan)i [Plan App Service](#app-service-plan).
+When you create a function app in Azure, you must choose a hosting plan for your app. There are three hosting plans available for Azure Functions: [Consumption plan](#consumption-plan), [Premium plan](#premium-plan), and [App Service plan](#app-service-plan).
 
-Wybrany plan hostingu wymusza następujące zachowania:
+The hosting plan you choose dictates the following behaviors:
 
-* Sposób skalowania aplikacji funkcji.
-* Zasoby dostępne dla każdego wystąpienia aplikacji funkcji.
-* Obsługa zaawansowanych funkcji, takich jak łączność z siecią wirtualną.
+* How your function app is scaled.
+* The resources available to each function app instance.
+* Support for advanced features, such as VNET connectivity.
 
-Plany zużycia i Premium automatycznie dodają moc obliczeniową, gdy kod jest uruchomiony. Aplikacja jest skalowana w poziomie, gdy jest wymagana do obsłużenia obciążenia i skalowana w dół, gdy kod przestanie działać. W przypadku planu zużycia nie trzeba również uiszczać opłat za bezczynne maszyny wirtualne lub zarezerwować pojemność.  
+Both Consumption and Premium plans automatically add compute power when your code is running. Your app is scaled out when needed to handle load, and scaled down when code stops running. For the Consumption plan, you also don't have to pay for idle VMs or reserve capacity in advance.  
 
-Plan Premium oferuje dodatkowe funkcje, takie jak wystąpienia obliczeniowe w warstwie Premium, możliwość utrzymywania nieokreślonych wystąpień i łączności między sieciami wirtualnymi.
+Premium plan provides additional features, such as premium compute instances, the ability to keep instances warm indefinitely, and VNet connectivity.
 
-Plan App Service umożliwia korzystanie z dedykowanej infrastruktury zarządzanej przez użytkownika. Aplikacja funkcji nie jest skalowana na podstawie zdarzeń, co oznacza, że nigdy nie skaluje się w dół do zera. (Wymaga, aby [zawsze](#always-on) włączony).
+App Service plan allows you to take advantage of dedicated infrastructure, which you manage. Your function app doesn't scale based on events, which means is never scales down to zero. (Requires that [Always on](#always-on) is enabled.)
 
 > [!NOTE]
-> Można przełączać się między planami zużycia i Premium, zmieniając właściwość planu zasobu aplikacji funkcji.
+> You can switch between Consumption and Premium plans by changing the plan property of the function app resource.
 
-## <a name="hosting-plan-support"></a>Obsługa planu hostingu
+## <a name="hosting-plan-support"></a>Hosting plan support
 
-Obsługa funkcji znajduje się w następujących dwóch kategoriach:
+Feature support falls into the following two categories:
 
-* _Ogólnie dostępna (ga)_ : w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
-* _Wersja zapoznawcza_: nie jest jeszcze w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
+* _Generally available (GA)_ : fully supported and approved for production use.
+* _Preview_: not yet fully supported and approved for production use.
 
-Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostingu w przypadku uruchamiania w systemie Windows lub Linux:
+The following table indicates the current level of support for the three hosting plans, when running on either Windows or Linux:
 
-| | Plan Zużycie | Plan Premium | Plan dedykowany |
+| | Plan Zużycie | Plan w warstwie Premium | Dedicated plan |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 | Linux | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 
 ## <a name="consumption-plan"></a>Plan Zużycie
 
-Gdy używasz planu zużycia, wystąpienia hosta Azure Functions są dynamicznie dodawane i usuwane na podstawie liczby zdarzeń przychodzących. Ten plan bezserwerowy jest skalowany automatycznie i naliczana jest opłata za zasoby obliczeniowe tylko wtedy, gdy funkcje są uruchomione. W planie zużycia czas wykonywania funkcji jest przekroczenia przez konfigurowalny okres.
+When you're using the Consumption plan, instances of the Azure Functions host are dynamically added and removed based on the number of incoming events. This serverless plan scales automatically, and you're charged for compute resources only when your functions are running. On a Consumption plan, a function execution times out after a configurable period of time.
 
-Opłaty są naliczane na podstawie liczby wykonań, czasu wykonania i używanej pamięci. Rozliczanie jest agregowane we wszystkich funkcjach w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Billing is based on number of executions, execution time, and memory used. Billing is aggregated across all functions within a function app. For more information, see the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/).
 
-Plan zużycia jest domyślnym planem hostingu i oferuje następujące korzyści:
+The Consumption plan is the default hosting plan and offers the following benefits:
 
-* Płacisz tylko wtedy, gdy funkcje są uruchomione
-* Automatyczne skalowanie w poziomie, nawet w okresach dużego obciążenia
+* Pay only when your functions are running
+* Scale out automatically, even during periods of high load
 
-Aplikacje funkcji w tym samym regionie mogą być przypisane do tego samego planu zużycia. Nie ma Minusem ani wpływu na wiele aplikacji uruchomionych w tym samym planie zużycia. Przypisywanie wielu aplikacji do tego samego planu zużycia nie ma wpływu na odporność, skalowalność ani niezawodność każdej aplikacji.
+Function apps in the same region can be assigned to the same Consumption plan. There's no downside or impact to having multiple apps running in the same Consumption plan. Assigning multiple apps to the same consumption plan has no impact on resilience, scalability, or reliability of each app.
 
-Aby dowiedzieć się więcej na temat szacowania kosztów podczas pracy w planie zużycia, zobacz [Opis kosztów planu zużycia](functions-consumption-costs.md).
+To learn more about how to estimate costs when running in a Consumption plan, see [Understanding Consumption plan costs](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Plan Premium
+## <a name="premium-plan"></a>Premium plan
 
-W przypadku korzystania z planu Premium wystąpienia hosta Azure Functions są dodawane i usuwane na podstawie liczby zdarzeń przychodzących, podobnie jak w przypadku planu zużycia.  Plan Premium obsługuje następujące funkcje:
+When you're using the Premium plan, instances of the Azure Functions host are added and removed based on the number of incoming events just like the Consumption plan.  Premium plan supports the following features:
 
-* Bezterminowo podgrzewane wystąpienia, aby uniknąć dowolnego zimnego startu
-* Łączność z siecią wirtualną
-* Nieograniczony czas trwania wykonywania
-* Rozmiary wystąpienia Premium (jeden rdzeń, dwa rdzenie i cztery podstawowe wystąpienia)
-* Bardziej przewidywalny Cennik
-* Alokacja aplikacji o wysokiej gęstości dla planów z wieloma aplikacjami funkcji
+* Perpetually warm instances to avoid any cold start
+* VNet connectivity
+* Unlimited execution duration
+* Premium instance sizes (one core, two core, and four core instances)
+* More predictable pricing
+* High-density app allocation for plans with multiple function apps
 
-Informacje na temat sposobu konfigurowania tych opcji można znaleźć w [dokumencie Azure Functions planu Premium](functions-premium-plan.md).
+Information on how you can configure these options can be found in the [Azure Functions premium plan document](functions-premium-plan.md).
 
-Zamiast naliczania opłat za wykonanie i zużywaną pamięć rozliczenia dla planu Premium są oparte na liczbie podstawowych sekund i ilości pamięci używanej w ramach wymaganych i wstępnie rozgrzanych wystąpień. Co najmniej jedno wystąpienie musi być aktywne przez cały czas dla każdego planu. Oznacza to, że jest minimalny miesięczny koszt dla aktywnego planu, niezależnie od liczby wykonań. Należy pamiętać, że wszystkie aplikacje funkcji w planie Premium udostępniają wstępnie rozgrzane i aktywne wystąpienia.
+Instead of billing per execution and memory consumed, billing for the Premium plan is based on the number of core seconds and memory used across needed and pre-warmed instances. At least one instance must be warm at all times per plan. This means that there is a minimum monthly cost per active plan, regardless of the number of executions. Keep in mind that all function apps in a Premium plan share pre-warmed and active instances.
 
-Zapoznaj się z planem Azure Functions Premium w następujących sytuacjach:
+Consider the Azure Functions premium plan in the following situations:
 
-* Aplikacje funkcji działają w sposób ciągły lub niemal nieustannie.
-* Masz dużą liczbę niewielkich wykonań i masz rozliczenie o dużym obciążeniu, ale niski GB drugiego rachunku w planie zużycia.
-* Potrzebujesz więcej opcji dotyczących procesora CPU lub pamięci niż to, co jest dostępne w ramach planu zużycia.
-* Twój kod musi działać dłużej niż [Maksymalny dozwolony czas wykonywania](#timeout) w planie zużycia.
-* Wymagane są funkcje, które są dostępne tylko w planie Premium, np. łączność sieci wirtualnej/VPN.
+* Your function apps run continuously, or nearly continuously.
+* You have a high number of small executions and have a high execution bill but low GB second bill in the consumption plan.
+* You need more CPU or memory options than what is provided by the Consumption plan.
+* Your code needs to run longer than the [maximum execution time allowed](#timeout) on the Consumption plan.
+* You require features that are only available on a Premium plan, such as VNET/VPN connectivity.
 
-Podczas uruchamiania funkcji JavaScript w planie Premium należy wybrać wystąpienie, które ma mniej procesorów wirtualnych vCPU. Aby uzyskać więcej informacji, zapoznaj się z tematem [Wybieranie jednego podstawowego planu Premium](functions-reference-node.md#considerations-for-javascript-functions).  
+When running JavaScript functions on a Premium plan, you should choose an instance that has fewer vCPUs. For more information, see the [Choose single-core Premium plans](functions-reference-node.md#considerations-for-javascript-functions).  
 
-## <a name="app-service-plan"></a>Plan dedykowany (App Service)
+## <a name="app-service-plan"></a>Dedicated (App Service) plan
 
-Aplikacje funkcji można również uruchamiać na tych samych dedykowanych maszynach wirtualnych, co inne aplikacje App Service (wersje Basic, standard, Premium i izolowane).
+Your function apps can also run on the same dedicated VMs as other App Service apps (Basic, Standard, Premium, and Isolated SKUs).
 
-Należy wziąć pod uwagę plan App Service w następujących sytuacjach:
+Consider an App Service plan in the following situations:
 
-* Istnieją już istniejące, nieużywane maszyny wirtualne, na których uruchomiono inne wystąpienia App Service.
-* Chcesz udostępnić niestandardowy obraz, na którym będą uruchamiane funkcje.
+* You have existing, underutilized VMs that are already running other App Service instances.
+* You want to provide a custom image on which to run your functions.
 
-Płacisz za aplikacje funkcji w planie App Service, tak jak w przypadku innych zasobów App Service, takich jak aplikacje sieci Web. Aby uzyskać szczegółowe informacje na temat działania planu App Service, zobacz [szczegółowe Omówienie planów Azure App Service](../app-service/overview-hosting-plans.md).
+You pay the same for function apps in an App Service Plan as you would for other App Service resources, like web apps. For details about how the App Service plan works, see the [Azure App Service plans in-depth overview](../app-service/overview-hosting-plans.md).
 
-Plan App Service umożliwia ręczne skalowanie w poziomie przez dodanie większej liczby wystąpień maszyn wirtualnych. Możesz również włączyć automatyczne skalowanie. Aby uzyskać więcej informacji, zobacz [Ręczne lub automatyczne skalowanie liczby wystąpień](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Możesz również skalować w górę, wybierając inny plan App Service. Aby uzyskać więcej informacji, zobacz [skalowanie w górę aplikacji na platformie Azure](../app-service/manage-scale-up.md). 
+With an App Service plan, you can manually scale out by adding more VM instances. You can also enable autoscale. For more information, see [Scale instance count manually or automatically](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). You can also scale up by choosing a different App Service plan. For more information, see [Scale up an app in Azure](../app-service/manage-scale-up.md). 
 
-Podczas uruchamiania funkcji JavaScript w planie App Service należy wybrać plan, który ma mniej procesorów wirtualnych vCPU. Aby uzyskać więcej informacji, zobacz [Wybieranie planów App Service z pojedynczym rdzeniem](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
+When running JavaScript functions on an App Service plan, you should choose a plan that has fewer vCPUs. For more information, see [Choose single-core App Service plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a>Zawsze włączone
+### <a name="always-on"></a> Always On
 
-Jeśli uruchamiasz plan App Service, należy włączyć ustawienie **zawsze** włączone, aby aplikacja funkcji działała poprawnie. W planie App Service środowisko uruchomieniowe funkcji przechodzi w stan bezczynności po kilku minutach braku aktywności, więc tylko Wyzwalacze HTTP będą wznawiać działanie funkcji. Zawsze włączone jest dostępne tylko w planie App Service. Zgodnie z planem zużycia platforma automatycznie aktywuje aplikacje funkcji.
+If you run on an App Service plan, you should enable the **Always on** setting so that your function app runs correctly. On an App Service plan, the functions runtime goes idle after a few minutes of inactivity, so only HTTP triggers will "wake up" your functions. Always on is available only on an App Service plan. On a Consumption plan, the platform activates function apps automatically.
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Nawet przy włączonej opcji zawsze włączone przekroczenie limitu czasu wykonywania poszczególnych funkcji jest kontrolowane przez ustawienie `functionTimeout` w pliku projektu [host. JSON](functions-host-json.md#functiontimeout) .
+Even with Always On enabled, the execution timeout for individual functions is controlled by the `functionTimeout` setting in the [host.json](functions-host-json.md#functiontimeout) project file.
 
-## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Określanie planu hostingu istniejącej aplikacji
+## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Determine the hosting plan of an existing application
 
-Aby określić plan hostingu używany przez aplikację funkcji, zobacz **App Service plan/warstwa cenowa** na karcie **Przegląd** dla aplikacji funkcji w [Azure Portal](https://portal.azure.com). W przypadku planów App Service określono również warstwę cenową.
+To determine the hosting plan used by your function app, see **App Service plan / pricing tier** in the **Overview** tab for the function app in the [Azure portal](https://portal.azure.com). For App Service plans, the pricing tier is also indicated.
 
-![Wyświetlanie planu skalowania w portalu](./media/functions-scale/function-app-overview-portal.png)
+![View scaling plan in the portal](./media/functions-scale/function-app-overview-portal.png)
 
-Możesz również użyć interfejsu wiersza polecenia platformy Azure, aby określić plan w następujący sposób:
+You can also use the Azure CLI to determine the plan, as follows:
 
 ```azurecli-interactive
 appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-group <my_resource_group> --query appServicePlanId --output tsv)
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Gdy dane wyjściowe tego polecenia są `dynamic`, aplikacja funkcji jest w planie zużycia. Gdy dane wyjściowe tego polecenia są `ElasticPremium`, aplikacja funkcji jest w planie Premium. Wszystkie inne wartości wskazują różne warstwy planu App Service.
+When the output from this command is `dynamic`, your function app is in the Consumption plan. When the output from this command is `ElasticPremium`, your function app is in the Premium plan. All other values indicate different tiers of an App Service plan.
 
 ## <a name="storage-account-requirements"></a>Wymagania konta magazynu
 
-W każdym planie aplikacja funkcji wymaga konta usługi Azure Storage, które obsługuje obiekty blob, kolejki, pliki i tabele usługi Azure Storage. Wynika to z faktu, że funkcje programu korzystają z usługi Azure Storage w przypadku operacji takich jak zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują konta magazynu tylko dla obiektów BLOB (w tym magazyn Premium Storage) i konta magazynu ogólnego przeznaczenia z replikacją magazynową strefowo nadmiarową, są odfiltrowane z istniejących ustawień **konta magazynu** podczas tworzenia Aplikacja funkcji.
+On any plan, a function app requires a general Azure Storage account, which supports Azure Blob, Queue, Files, and Table storage. This is because Functions relies on Azure Storage for operations such as managing triggers and logging function executions, but some storage accounts do not support queues and tables. These accounts, which include blob-only storage accounts (including premium storage) and general-purpose storage accounts with zone-redundant storage replication, are filtered-out from your existing **Storage Account** selections when you create a function app.
 
-To samo konto magazynu używane przez aplikację funkcji może być również używane przez wyzwalacze i powiązania do przechowywania danych aplikacji. Jednak w przypadku operacji intensywnie korzystających z magazynu należy użyć oddzielnego konta magazynu.   
+The same storage account used by your function app can also be used by your triggers and bindings to store your application data. However, for storage-intensive operations, you should use a separate storage account.   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [wprowadzenie do usług Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
+To learn more about storage account types, see [Introducing the Azure Storage services](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Jak działają plany zużycia i Premium
+## <a name="how-the-consumption-and-premium-plans-work"></a>How the consumption and premium plans work
 
-W planach zużycia i Premium infrastruktura Azure Functions skaluje zasoby procesora i pamięci, dodając kolejne wystąpienia hosta funkcji na podstawie liczby zdarzeń wyzwalanych przez jej funkcje. Każde wystąpienie hosta funkcji w planie zużycia jest ograniczone do 1,5 GB pamięci i jednego procesora CPU.  Wystąpieniem hosta jest cała aplikacja funkcji, co oznacza, że wszystkie funkcje w ramach zasobu funkcji udział aplikacji w ramach wystąpienia i skalowania w tym samym czasie. Aplikacje funkcji, które współużytkują ten sam plan zużycia, są skalowane niezależnie.  W planie Premium rozmiar planu określi dostępną pamięć i procesor dla wszystkich aplikacji w tym wystąpieniu.  
+In the consumption and premium plans, the Azure Functions infrastructure scales CPU and memory resources by adding additional instances of the Functions host, based on the number of events that its functions are triggered on. Each instance of the Functions host in the consumption plan is limited to 1.5 GB of memory and one CPU.  An instance of the host is the entire function app, meaning all functions within a function app share resource within an instance and scale at the same time. Function apps that share the same consumption plan are scaled independently.  In the premium plan, your plan size will determine the available memory and CPU for all apps in that plan on that instance.  
 
-Pliki kodu funkcji są przechowywane w udziałach Azure Files na głównym koncie magazynu funkcji. Po usunięciu głównego konta magazynu aplikacji funkcji pliki kodu funkcji zostaną usunięte i nie będzie można go odzyskać.
+Function code files are stored on Azure Files shares on the function's main storage account. When you delete the main storage account of the function app, the function code files are deleted and cannot be recovered.
 
-### <a name="runtime-scaling"></a>Skalowanie środowiska uruchomieniowego
+### <a name="runtime-scaling"></a>Runtime scaling
 
-Azure Functions używa składnika zwanego *kontrolerem skalowania* , aby monitorować częstotliwość zdarzeń i określać, czy skalować w poziomie, czy skalować w poziomie. Kontroler skalowania używa algorytmów heurystycznych dla każdego typu wyzwalacza. Na przykład podczas korzystania z wyzwalacza usługi Azure queue storage skaluje się w zależności od długości kolejki i wieku najstarszej wiadomości w kolejce.
+Azure Functions uses a component called the *scale controller* to monitor the rate of events and determine whether to scale out or scale in. The scale controller uses heuristics for each trigger type. For example, when you're using an Azure Queue storage trigger, it scales based on the queue length and the age of the oldest queue message.
 
-Jednostką skalowania Azure Functions jest aplikacja funkcji. Gdy aplikacja funkcji jest skalowana w poziomie, dodatkowe zasoby są przydzieleni do uruchamiania wielu wystąpień hosta Azure Functions. Z drugiej strony, ponieważ zapotrzebowanie obliczeniowe jest ograniczone, kontroler skalowania usuwa wystąpienia hosta funkcji. Liczba wystąpień jest ostatecznie skalowana w dół do zera, gdy żadne funkcje nie działają w ramach aplikacji funkcji.
+The unit of scale for Azure Functions is the function app. When the function app is scaled out, additional resources are allocated to run multiple instances of the Azure Functions host. Conversely, as compute demand is reduced, the scale controller removes function host instances. The number of instances is eventually scaled down to zero when no functions are running within a function app.
 
-![Skalowanie zdarzeń monitorowania kontrolera i Tworzenie wystąpień](./media/functions-scale/central-listener.png)
+![Scale controller monitoring events and creating instances](./media/functions-scale/central-listener.png)
 
-### <a name="understanding-scaling-behaviors"></a>Zrozumienie zachowań skalowania
+### <a name="understanding-scaling-behaviors"></a>Understanding scaling behaviors
 
-Skalowanie może się różnić w zależności od liczby czynników i skalować w różny sposób w zależności od wybranego wyzwalacza i języka. Istnieje kilka złożonego zachowań do skalowania:
+Scaling can vary on a number of factors, and scale differently based on the trigger and language selected. There are a few intricacies of scaling behaviors to be aware of:
 
-* Pojedynczą aplikację funkcji można skalować w górę do maksymalnie 200 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jeden komunikat lub żądanie w tym samym czasie, więc nie ma ustawionego limitu liczby współbieżnych wykonań.
-* W przypadku wyzwalaczy HTTP nowe wystąpienia będą przyliczane tylko co 1 sekundę.
-* W przypadku wyzwalaczy innych niż HTTP nowe wystąpienia będą przyliczane tylko co 30 sekund.
+* Pojedynczą aplikację funkcji można skalować w górę do maksymalnie 200 wystąpień. A single instance may process more than one message or request at a time though, so there isn't a set limit on number of concurrent executions.
+* For HTTP triggers, new instances will only be allocated at most once every 1 second.
+* For non-HTTP triggers, new instances will only be allocated at most once every 30 seconds.
 
-Różne wyzwalacze mogą również mieć różne limity skalowania, a także opisane poniżej:
+Different triggers may also have different scaling limits as well as documented below:
 
 * [Centrum zdarzeń](functions-bindings-event-hubs.md#trigger---scaling)
 
-### <a name="best-practices-and-patterns-for-scalable-apps"></a>Najlepsze rozwiązania i wzorce dotyczące skalowalnych aplikacji
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Best practices and patterns for scalable apps
 
-Istnieje wiele aspektów aplikacji funkcji, która będzie miała wpływ na wydajność skalowania, w tym konfigurację hosta, rozmiar środowiska uruchomieniowego i efektywność zasobów.  Aby uzyskać więcej informacji, zobacz [sekcję skalowalność artykułu zagadnienia dotyczące wydajności](functions-best-practices.md#scalability-best-practices). Należy również wiedzieć, jak połączenia działają w miarę skalowania aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [jak zarządzać połączeniami w Azure Functions](manage-connections.md).
+There are many aspects of a function app that will impact how well it will scale, including host configuration, runtime footprint, and resource efficiency.  For more information, see the [scalability section of the performance considerations article](functions-best-practices.md#scalability-best-practices). You should also be aware of how connections behave as your function app scales. For more information, see [How to manage connections in Azure Functions](manage-connections.md).
 
 ### <a name="billing-model"></a>Model rozliczania
 
-Rozliczenia dla różnych planów są szczegółowo opisane na [stronie cennika Azure Functions](https://azure.microsoft.com/pricing/details/functions/). Użycie jest agregowane na poziomie aplikacji funkcji i zlicza tylko czas wykonywania kodu funkcji. Następujące jednostki dotyczą rozliczeń:
+Billing for the different plans is described in detail on the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/). Usage is aggregated at the function app level and counts only the time that function code is executed. The following are units for billing:
 
-* **Użycie zasobów w gigabajtach sekund (GB-s)** . Obliczany jako kombinacja rozmiaru pamięci i czasu wykonywania dla wszystkich funkcji w aplikacji funkcji. 
-* **Wykonania**. Zliczane za każdym razem, gdy funkcja jest wykonywana w odpowiedzi na wyzwalacz zdarzenia.
+* **Resource consumption in gigabyte-seconds (GB-s)** . Computed as a combination of memory size and execution time for all functions within a function app. 
+* **Executions**. Counted each time a function is executed in response to an event trigger.
 
-Przydatne zapytania i informacje dotyczące sposobu zrozumienia rachunku zużycia można znaleźć [na stronie często zadawanych pytań dotyczących rozliczeń](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
+Useful queries and information on how to understand your consumption bill can be found [on the billing FAQ](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
 ## <a name="service-limits"></a>Limity usługi
 
-W poniższej tabeli przedstawiono limity dotyczące aplikacji funkcji w przypadku uruchamiania w różnych planach hostingu:
+The following table indicates the limits that apply to function apps when running in the various hosting plans:
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]

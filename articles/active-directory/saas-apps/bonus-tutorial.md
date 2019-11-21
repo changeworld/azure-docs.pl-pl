@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Bonusly | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Bonusly.
+title: 'Tutorial: Azure Active Directory integration with Bonusly | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Bonusly.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,45 +16,45 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605398896c93d15b7475c05c79361fdcefcfcab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442774"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232058"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Bonusly
+# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Tutorial: Azure Active Directory integration with Bonusly
 
-W tym samouczku dowiesz się, jak zintegrować Bonusly w usłudze Azure Active Directory (Azure AD).
-Integrowanie Bonusly z usługą Azure AD zapewnia następujące korzyści:
+In this tutorial, you learn how to integrate Bonusly with Azure Active Directory (Azure AD).
+Integrating Bonusly with Azure AD provides you with the following benefits:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Bonusly.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Bonusly (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* You can control in Azure AD who has access to Bonusly.
+* You can enable your users to be automatically signed-in to Bonusly (Single Sign-On) with their Azure AD accounts.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Bonusly, potrzebne są następujące elementy:
+To configure Azure AD integration with Bonusly, you need the following items:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Bonusly logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* Bonusly single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje bonusly **tożsamości** jednokrotne logowanie inicjowane przez
+* Bonusly supports **IDP** initiated SSO
 
-## <a name="adding-bonusly-from-the-gallery"></a>Dodawanie Bonusly z galerii
+## <a name="adding-bonusly-from-the-gallery"></a>Adding Bonusly from the gallery
 
-Aby skonfigurować integrację Bonusly w usłudze Azure AD, należy dodać Bonusly z galerii z listą zarządzanych aplikacji SaaS.
+To configure the integration of Bonusly into Azure AD, you need to add Bonusly from the gallery to your list of managed SaaS apps.
 
-**Aby dodać Bonusly z galerii, wykonaj następujące czynności:**
+**To add Bonusly from the gallery, perform the following steps:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację Bonusly w usłudze Azure AD, należy dodać Bonus
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Bonusly**, wybierz opcję **Bonusly** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. In the search box, type **Bonusly**, select **Bonusly** from result panel then click **Add** button to add the application.
 
-    ![Bonusly na liście wyników](common/search-new-app.png)
+    ![Bonusly in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Bonusly w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Bonusly musi zostać ustanowione.
+In this section, you configure and test Azure AD single sign-on with Bonusly based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Bonusly needs to be established.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Bonusly, należy wykonać poniższe bloki konstrukcyjne:
+To configure and test Azure AD single sign-on with Bonusly, you need to complete the following building blocks:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Bonusly logowania jednokrotnego](#configure-bonusly-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Bonusly](#create-bonusly-test-user)**  — aby odpowiednikiem Britta Simon w Bonusly połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Configure Bonusly Single Sign-On](#configure-bonusly-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Create Bonusly test user](#create-bonusly-test-user)** - to have a counterpart of Britta Simon in Bonusly that is linked to the Azure AD representation of user.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bonusly, wykonaj następujące czynności:
+To configure Azure AD single sign-on with Bonusly, perform the following steps:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Bonusly** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Bonusly** application integration page, select **Single sign-on**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -104,12 +104,12 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bonusly, wykonaj na
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Bonusly domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/idp-reply.png)
+    ![Bonusly Domain and URLs single sign-on information](common/idp-reply.png)
 
     W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Bonusly](https://bonus.ly/contact) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Contact [Bonusly Client support team](https://bonus.ly/contact) to get the value. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML**.
 
@@ -119,7 +119,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bonusly, wykonaj na
 
     ![Kopiowanie wartości Odcisk palca](common/copy-thumbprint.png)
 
-7. Na **Konfigurowanie Bonusly** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. On the **Set up Bonusly** section, copy the appropriate URL(s) as per your requirement.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -127,30 +127,30 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bonusly, wykonaj na
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-bonusly-single-sign-on"></a>Konfigurowanie Bonusly logowania jednokrotnego
+### <a name="configure-bonusly-single-sign-on"></a>Configure Bonusly Single Sign-On
 
-1. W oknie innej przeglądarki, zaloguj się do Twojej **Bonusly** dzierżawy.
+1. In a different browser window, sign in to your **Bonusly** tenant.
 
-1. Na pasku narzędzi u góry kliknij **ustawienia** , a następnie wybierz **integracje i aplikacje**.
+1. In the toolbar on the top, click **Settings** and then select **Integrations and apps**.
 
-    ![Bonusly sekcji społecznościowych](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. W obszarze **logowania jednokrotnego**, wybierz opcję **SAML**.
+    ![Bonusly Social Section](./media/bonus-tutorial/ic773686.png "Bonusly")
+1. Under **Single Sign-On**, select **SAML**.
 
-1. Na **SAML** okna dialogowego strony, wykonaj następujące czynności:
+1. On the **SAML** dialog page, perform the following steps:
 
-    ![Bonusly strony okna dialogowego Saml](./media/bonus-tutorial/ic773687.png "Bonusly")
+    ![Bonusly Saml Dialog page](./media/bonus-tutorial/ic773687.png "Bonusly")
 
-    a. W **logowania jednokrotnego dostawcy tożsamości, docelowy adres URL** pole tekstowe, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
+    a. In the **IdP SSO target URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    b. W **adres URL logowania dostawcy tożsamości** pole tekstowe, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
+    b. In the **IdP Login URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    c. W **wystawca dostawcy tożsamości** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, które zostały skopiowane z witryny Azure portal.
+    d. In the **IdP Issuer** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
     
-    d. Wklej **odcisk palca** wartość kopiowana z witryny Azure portal do **odcisk palca certyfikatu** pola tekstowego.
+    d. Paste the **Thumbprint** value copied from Azure portal into the **Cert Fingerprint** textbox.
     
-    e. Kliknij pozycję **Zapisz**.
+    e. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -170,23 +170,23 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Bonusly.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Bonusly.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Bonusly**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Bonusly**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Bonusly**.
+2. In the applications list, select **Bonusly**.
 
-    ![Bonusly łącze na liście aplikacji](common/all-applications.png)
+    ![The Bonusly link in the Applications list](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -202,58 +202,58 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-bonusly-test-user"></a>Tworzenie użytkownika testowego Bonusly
+### <a name="create-bonusly-test-user"></a>Create Bonusly test user
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Bonusly, musi być obsługiwana w Bonusly. W przypadku Bonusly Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+In order to enable Azure AD users to sign in to Bonusly, they must be provisioned into Bonusly. In the case of Bonusly, provisioning is a manual task.
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych Bonusly użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Bonusly do aprowizacji kont użytkowników usługi AAD. 
+> You can use any other Bonusly user account creation tools or APIs provided by Bonusly to provision Azure AD user accounts. 
 
 **Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
-1. W oknie przeglądarki sieci web Zaloguj się do Bonusly dzierżawy.
+1. In a web browser window, sign in to your Bonusly tenant.
 
 1. Kliknij pozycję **Ustawienia**.
 
     ![Ustawienia](./media/bonus-tutorial/ic781041.png "Ustawienia")
 
-1. Kliknij przycisk **użytkowników i premie** kartę.
+1. Click the **Users and bonuses** tab.
 
-    ![Użytkownicy i premie](./media/bonus-tutorial/ic781042.png "użytkowników i dodatki")
+    ![Users and bonuses](./media/bonus-tutorial/ic781042.png "Users and bonuses")
 
-1. Kliknij przycisk **Zarządzanie użytkownikami**.
+1. Click **Manage Users**.
 
-    ![Zarządzanie użytkownikami](./media/bonus-tutorial/ic781043.png "Zarządzanie użytkownikami")
+    ![Manage Users](./media/bonus-tutorial/ic781043.png "Manage Users")
 
-1. Kliknij przycisk **Dodaj użytkownika**.
+1. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
-    ![Dodawanie użytkownika](./media/bonus-tutorial/ic781044.png "Dodawanie użytkownika")
+    ![Add User](./media/bonus-tutorial/ic781044.png "Dodaj użytkownika")
 
 1. W oknie dialogowym **Add User** (Dodawanie użytkownika) wykonaj następujące kroki:
 
-    ![Dodawanie użytkownika](./media/bonus-tutorial/ic781045.png "Dodawanie użytkownika")  
+    ![Add User](./media/bonus-tutorial/ic781045.png "Dodaj użytkownika")  
 
     a. W polu tekstowym **First name (Imię)** wprowadź imię użytkownika, na przykład **Britta**.
 
     b. W polu tekstowym **Last name (Nazwisko)** wprowadź nazwisko użytkownika, na przykład **Simon**.
 
-    c. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak `brittasimon\@contoso.com`.
+    d. In the **Email** textbox, enter the email of user like `brittasimon\@contoso.com`.
 
-    d. Kliknij pozycję **Zapisz**.
+    d. Kliknij przycisk **Save** (Zapisz).
 
     > [!NOTE]
-    > Właściciel konta usługi Azure AD, otrzymuje wiadomość e-mail zawierającą link do potwierdzenia konta, zanim stanie się aktywny.  
+    > The Azure AD account holder receives an email that includes a link to confirm the account before it becomes active.  
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Bonusly w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Bonusly, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+When you click the Bonusly tile in the Access Panel, you should be automatically signed in to the Bonusly for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

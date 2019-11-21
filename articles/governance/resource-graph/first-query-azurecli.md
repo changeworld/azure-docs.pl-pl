@@ -1,16 +1,16 @@
 ---
-title: Uruchamianie pierwszego zapytania przy użyciu interfejsu wiersza polecenia platformy Azure
-description: W tym artykule przedstawiono kroki umożliwiające włączenie rozszerzenia usługi Resource Graph dla interfejsu wiersza polecenia platformy Azure i uruchomienie pierwszego zapytania.
+title: 'Quickstart: Your first Azure CLI query'
+description: In this quickstart, you follow the steps to enable the Resource Graph extension for Azure CLI and run your first query.
 ms.date: 10/18/2019
 ms.topic: quickstart
-ms.openlocfilehash: b74e4314a7755bb067831f955ca02d62485abe4f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a3ef32b2c2dcaa7a043bbb3e1e859ee295f02f2f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958971"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216611"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Quickstart: Run your first Resource Graph query using Azure CLI
 
 Pierwszym krokiem do korzystania z usługi Azure Resource Graph jest zainstalowanie rozszerzenia dla [wiersza polecenia platformy Azure](/cli/azure/). Ten przewodnik Szybki start przeprowadzi Cię przez proces dodawania rozszerzenia do instalacji interfejsu wiersza polecenia platformy Azure. Rozszerzenia można używać z interfejsem wiersza polecenia platformy Azure zainstalowanym lokalnie lub za pośrednictwem [usługi Azure Cloud Shell](https://shell.azure.com).
 
@@ -31,7 +31,7 @@ Aby włączyć wykonywanie zapytań usługi Azure Resource Graph przy użyciu in
    az extension add --name resource-graph
    ```
 
-1. Sprawdź, czy rozszerzenie zostało zainstalowane i czy jest to oczekiwana wersja (co najmniej **1.0.0**):
+1. Validate that the extension has been installed and is the expected version (at least **1.0.0**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -87,10 +87,10 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md).
-- Dowiedz się więcej o sposobach [eksplorowania zasobów](./concepts/explore-resources.md).
-- Uruchom pierwsze zapytanie przy użyciu [Azure Portal](first-query-portal.md).
-- Uruchom pierwsze zapytanie przy użyciu [Azure PowerShell](first-query-powershell.md).
-- Zobacz przykłady [początkowych zapytań](./samples/starter.md).
-- Zobacz przykłady [zaawansowanych zapytań](./samples/advanced.md).
-- Prześlij opinię na temat usługi [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+- Get more information about the [query language](./concepts/query-language.md).
+- Learn more about how to [explore resources](./concepts/explore-resources.md).
+- Run your first query by using the [Azure portal](first-query-portal.md).
+- Run your first query with [Azure PowerShell](first-query-powershell.md).
+- See samples of [Starter queries](./samples/starter.md).
+- See samples of [Advanced queries](./samples/advanced.md).
+- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

@@ -1,22 +1,18 @@
 ---
 title: Tworzenie funkcji integrującej się z usługą Azure Logic Apps
 description: Utwórz funkcję integrującą się z usługą Azure Logic Apps i usługami Azure Cognitive Services, aby kategoryzować tonację w tweetach i wysyłać powiadomienia, gdy poziom nastrojów (tonacji) będzie niski.
-services: functions, logic-apps, cognitive-services
-keywords: workflow, cloud apps, cloud services, business processes, system integration, enterprise application integration, EAI
 author: craigshoemaker
-manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480027"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226610"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Tworzenie funkcji integrującej się z usługą Azure Logic Apps
 
@@ -47,7 +43,7 @@ Jeśli jeszcze tego nie zrobiono, wykonaj teraz te kroki, aby utworzyć aplikacj
 
 Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako pojedyncze zasoby. Użyj interfejsu API analizy tekstu do wykrywania tonacji monitorowanych tweetów.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
@@ -58,7 +54,7 @@ Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako 
     | Ustawienie      |  Sugerowana wartość   | Opis                                        |
     | --- | --- | --- |
     | **Nazwa** | MyCognitiveServicesAccnt | Wybierz unikatową nazwę konta. |
-    | **Location** | Zachodnie stany USA | Użyj najbliższej lokalizacji. |
+    | **Lokalizacja** | Zachodnie stany USA | Użyj najbliższej lokalizacji. |
     | **Warstwa cenowa** | F0 | Rozpocznij od najniższej warstwy. Gdy wyczerpią się wywołania, przeskaluj do wyższego poziomu.|
     | **Grupa zasobów** | myResourceGroup | Użyj tej samej grupy zasobów dla wszystkich usług w tym samouczku.|
 
@@ -125,7 +121,7 @@ Usługa Functions zapewnia doskonały sposób na odciążanie przetwarzania zada
     ```
     Ten kod funkcji zwraca kategorię koloru na podstawie wyniku tonacji otrzymanego w żądaniu. 
 
-4. Aby przetestować tę funkcję, kliknij przycisk **Testuj** przy prawej krawędzi, co spowoduje rozwinięcie karty testu. Wpisz wartość `0.2` w polu **Treść żądania**, a następnie kliknij przycisk **Uruchom**. W treści odpowiedzi jest zwracana wartość **RED** (Czerwony). 
+4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. W treści odpowiedzi jest zwracana wartość **RED** (Czerwony). 
 
     ![Testowanie funkcji w witrynie Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -145,7 +141,7 @@ Została utworzona funkcja kategoryzująca wyniki tonacji. Następnie należy ut
     | ----------------- | ------------ | ------------- |
     | **Nazwa** | TweetSentiment | Wybierz odpowiednią nazwę dla aplikacji. |
     | **Grupa zasobów** | myResourceGroup | Wybierz tę samą istniejącą grupę zasobów co wcześniej. |
-    | **Location** | Wschodnie stany USA | Wybierz bliską lokalizację. |    
+    | **Lokalizacja** | Wschodnie stany USA | Wybierz bliską lokalizację. |    
 
 4. Po wprowadzeniu odpowiednich wartości ustawień kliknij pozycję **Utwórz** w celu utworzenia aplikacji logiki. 
 
@@ -168,7 +164,7 @@ Najpierw utwórz połączenie z kontem w usłudze Twitter. Aplikacja logiki sond
     | Ustawienie      |  Sugerowana wartość   | Opis                                        |
     | ----------------- | ------------ | ------------- |
     | **Wyszukiwany tekst** | #Azure | Użyj hasztagu dostatecznie popularnego, aby wygenerować nowe tweety w wybranym interwale. Jeśli używasz warstwy bezpłatnej, a hasztag jest zbyt popularny, możesz szybko zużyć przydział transakcji w interfejsie API usług Cognitive Services. |
-    | **Interval** | 15 | Czas między żądaniami usługi Twitter w jednostkach częstotliwości. |
+    | **Interwał** | 15 | Czas między żądaniami usługi Twitter w jednostkach częstotliwości. |
     | **Częstotliwość** | Minuta | Jednostka częstotliwości używana do sondowania usługi Twitter.  |
 
 3.  Kliknij przycisk **Zapisz** w celu połączenia się z kontem usługi Twitter. 
@@ -242,7 +238,7 @@ Ostatnia część przepływu pracy polega na wyzwoleniu wiadomości e-mail, gdy 
 | **Temat** | Wykryto negatywną tonację tweetów  | Wiersz tematu powiadomienia w wiadomości e-mail.  |
 | **Treść** | Tekst tweetu, lokalizacja | Kliknij parametry **Tekst tweetu** i **Lokalizacja**. |
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 Przepływ pracy jest gotowy, można więc włączyć aplikację logiki i przyjrzeć się funkcji w działaniu.
 
@@ -285,7 +281,7 @@ Aby wyłączyć aplikację logiki, kliknij pozycję **Przegląd**, a następnie 
 
 ![Dzienniki funkcji](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

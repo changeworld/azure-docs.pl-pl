@@ -7,17 +7,17 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 4b309d54fae63f16574bb3799d77adfd89f91a57
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bd778e3731780a89560d8caa02363a4e49f77e20
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967085"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219049"
 ---
-# <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: Przypisywanie dostępu do danych rozwiązania Cloudyn
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cloudyn
 
 Prawa dostępu do danych rozwiązania Cloudyn są przyznawane za pośrednictwem funkcji zarządzania użytkownikami lub jednostkami. Konta użytkowników platformy Cloudyn określają dostęp do *jednostek* i funkcji administracyjnych. Istnieją dwa typy dostępu: administratora i użytkownika. O ile nie zmodyfikowano ich dla poszczególnych użytkowników, prawa dostępu administratora umożliwiają użytkownikowi nieograniczone korzystanie ze wszystkich funkcji w portalu Cloudyn, w tym z funkcji, takich jak: zarządzanie użytkownikami, zarządzanie listami adresatów oraz dostęp jednostki głównej do danych wszystkich jednostek. Dostęp użytkownika jest przeznaczony dla użytkowników końcowych i umożliwia im wyświetlanie raportów oraz tworzenie raportów przy użyciu dostępu do danych jednostki.
 
@@ -28,7 +28,7 @@ Zarejestrowanie konta lub umowy dotyczącej platformy Azure spowodowało utworze
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
-> * Usuń użytkownika
+> * Usuwanie użytkownika
 > * Usuwanie lub eksportowanie danych osobowych
 > * Tworzenie jednostek i zarządzanie nimi
 
@@ -60,7 +60,7 @@ Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Clou
 
 Aby obejrzeć film wideo z samouczkiem dotyczącym dodawania użytkowników, zobacz [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Dodawanie użytkowników do rozwiązania Cloudyn).
 
-## <a name="delete-a-user"></a>Usuń użytkownika
+## <a name="delete-a-user"></a>Usuwanie użytkownika
 
 Po usunięciu użytkownika wszelkie jednostki, do których użytkownik miał dostęp, pozostaną bez zmian. W przypadku usunięcia użytkownika zostaną usunięte zapisane raporty *osobiste*. Zapisane raporty *publiczne* utworzone przez użytkownika nie są usuwane.
 
@@ -110,7 +110,7 @@ Poziomy dostępu jednostki w połączeniu z dostępem użytkownika umożliwiają
 
 Aby utworzyć hierarchię jednostek kosztów, musisz mieć konto na poziomie Przedsiębiorstwo lub Przedsiębiorstwo i alokacja kosztów.
 
-W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Cloud Accounts (Konta w chmurze)**. Drzewo **Entities (Jednostki)** zostanie wyświetlone w okienku po lewej stronie. W razie potrzeby rozwiń drzewo jednostek, aby wyświetlić jednostkę, która ma zostać skojarzona z kontem.  Twoje konta dostawcy usług w chmurze są wyświetlane na kartach w okienku po prawej stronie. Wybierz kartę, kliknij i przeciągnij konto lub subskrypcję do jednostki, a następnie upuść przeciągany element. Pole **Przeniesienie** informuje, że konto zostało przeniesione pomyślnie. Kliknij przycisk **OK**.
+W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Cloud Accounts (Konta w chmurze)** . Drzewo **Entities (Jednostki)** zostanie wyświetlone w okienku po lewej stronie. W razie potrzeby rozwiń drzewo jednostek, aby wyświetlić jednostkę, która ma zostać skojarzona z kontem.  Twoje konta dostawcy usług w chmurze są wyświetlane na kartach w okienku po prawej stronie. Wybierz kartę, kliknij i przeciągnij konto lub subskrypcję do jednostki, a następnie upuść przeciągany element. Pole **Przeniesienie** informuje, że konto zostało przeniesione pomyślnie. Kliknij przycisk **OK**.
 
 Istnieje także możliwość skojarzenia wielu kont z jednostką. Wybierz konta, a następnie kliknij polecenie **Przenieś**. W polu Przenieś konta wybierz jednostkę, do której ma zostać przeniesione konto, a następnie kliknij polecenie **Zapisz**. Pole Przenieś konta żąda potwierdzenia przeniesienia kont. Kliknij pozycję **Tak**, a następnie kliknij pozycję **OK**.
 
@@ -118,14 +118,14 @@ Aby obejrzeć film wideo z samouczkiem dotyczącym tworzenia hierarchii jednoste
 
 Jeśli jesteś użytkownikiem platformy Azure z umową Enterprise Agreement, obejrzyj film z samouczkiem dotyczącym kojarzenia kont i subskrypcji z jednostkami: [Connecting to Azure Resource Manager with Cloudyn](https://youtu.be/oCIwvfBB6kk) (Łączenie z usługą Azure Resource Manager przy użyciu rozwiązania Cloudyn).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
-> * Usuń użytkownika
+> * Usuwanie użytkownika
 > * Usuwanie lub eksportowanie danych osobowych
 > * Tworzenie jednostek i zarządzanie nimi
 

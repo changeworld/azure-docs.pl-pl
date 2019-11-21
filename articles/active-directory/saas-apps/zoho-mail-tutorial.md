@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą Zoho | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Zoho | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Zoho.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8fc58b9cdec1a68dd12b7f70f7521a024f358ce
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3b5d0e52e927a44d5bce5314e724c1c753809ce0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161055"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231936"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Samouczek: integracja Azure Active Directory z usługą Zoho
+# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Tutorial: Azure Active Directory integration with Zoho
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Zoho z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Zoho z usługą Azure AD oferuje następujące korzyści:
@@ -131,15 +131,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Zoho, wyko
 
 2. Przejdź do obszaru **Control panel** (Panel sterowania).
    
-    ![Panel sterowania](./media/zoho-mail-tutorial/ic789607.png "Panel sterowania")
+    ![Control Panel](./media/zoho-mail-tutorial/ic789607.png "Control Panel")
 
 3. Kliknij kartę **SAML Authentication** (Uwierzytelnianie SAML).
    
-    ![Uwierzytelnianie SAML](./media/zoho-mail-tutorial/ic789608.png "Uwierzytelnianie SAML")
+    ![SAML Authentication](./media/zoho-mail-tutorial/ic789608.png "SAML Authentication")
 
 4. W sekcji **SAML Authentication Details** (Szczegóły uwierzytelniania SAML) wykonaj następujące kroki:
    
-    ![Szczegóły uwierzytelniania SAML](./media/zoho-mail-tutorial/ic789609.png "Szczegóły uwierzytelniania SAML")
+    ![SAML Authentication Details](./media/zoho-mail-tutorial/ic789609.png "SAML Authentication Details")
    
     a. W polu tekstowym **Login URL** (Adres URL logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
    
@@ -171,7 +171,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -209,7 +209,7 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoho Mail, należy ich aprowizować w aplikacji Zoho Mail. W przypadku aplikacji Zoho Mail aprowizację wykonuje się ręcznie.
 
 > [!NOTE]
-> Aby aprowizować konta użytkowników usługi AAD, możesz użyć dowolnych innych interfejsów API lub narzędzi do tworzenia kont użytkowników udostępnianych przez usługę Zoho Mail.
+> You can use any other Zoho Mail user account creation tools or APIs provided by Zoho Mail to provision Azure AD user accounts.
 
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Aby aprowizować konto użytkownika, wykonaj następujące czynności:
 
@@ -219,17 +219,17 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoho 
 
 1. Przejdź do pozycji **User Details \> Add User** (Szczegóły użytkownika > Dodaj użytkownika).
    
-    ![Dodaj użytkownika](./media/zoho-mail-tutorial/ic789611.png "Dodaj użytkownika")
+    ![Add User](./media/zoho-mail-tutorial/ic789611.png "Dodaj użytkownika")
 
 1. W oknie dialogowym **Add users** (Dodawanie użytkowników) wykonaj następujące kroki:
    
-    ![Dodaj użytkownika](./media/zoho-mail-tutorial/ic789612.png "Dodaj użytkownika")
+    ![Add User](./media/zoho-mail-tutorial/ic789612.png "Dodaj użytkownika")
    
     a. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, takie jak **Britta**.
 
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak **Simon**.
 
-    d. W polu tekstowym **Identyfikator wiadomości e-mail** wpisz identyfikator poczty e-mail użytkownika, np. **brittasimon\@contoso.com**.
+    d. In the **Email ID** textbox, type the email id of user like **brittasimon\@contoso.com**.
 
     d. W polu tekstowym **Password** (Hasło) wprowadź hasło użytkownika.
    
@@ -250,5 +250,5 @@ Po kliknięciu kafelka Zoho w panelu dostępu powinno nastąpić automatyczne za
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie organizacjami w portalu My Account — Azure AD
-description: Jak wyświetlać i opuszczać organizacje ze strony organizacji portalu My account.
+title: Manage your organizations from the My Account portal - Azure AD
+description: How to view and leave organizations connected to your work or school account from the Organizations page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b81ec4996ae91714b442dd2e62a0bc45c6bfd39
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820411"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231860"
 ---
-# <a name="manage-your-organizations-from-the-my-account-portal"></a>Zarządzanie organizacjami z poziomu portalu My Account
+# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Manage organizations connected to your work or school account from the Organizations page
 
-Organizacjami możesz zarządzać na stronie **organizacji** portalu **My Account** .
+You can manage your organizations from the **Organizations** page of the **My Account** portal.
 
-Na stronie **organizacje** są wyświetlane dwa typy organizacji:
+There are two types of organizations shown on the **Organizations** page:
 
-- **Organizacja główna.** Organizacja główna jest organizacją, która jest właścicielem Twojego konta służbowego. Nie możesz opuścić swojej organizacji.
+- **Home organization.** Your home organization is the organization that owns your work or school account. You can't leave your home organization.
 
-- **Inne organizacje.** Inne organizacje to wszystkie grupy, do których użytkownik zalogował się wcześniej przy użyciu konta służbowego. W każdej chwili możesz opuścić każdą z tych organizacji.
+- **Other organizations.** The other organizations are any group that you've signed in to previously using your work or school account. You can leave any of these organizations at any time.
 
     >[!NOTE]
-    > Jeśli nie masz przypisanej organizacji domowej, zobaczysz tylko jeden nagłówek z listą skojarzonych organizacji.
+    > If you don't have an assigned Home organization, you'll just see a single heading that says Organizations with the list of your associated organizations.
 
-## <a name="view-your-organizations"></a>Wyświetlanie organizacji
+## <a name="view-your-organizations"></a>View your organizations
 
-1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. W okienku nawigacji po lewej stronie wybierz pozycję **organizacje** lub wybierz łącze **Zarządzaj organizacjami** w bloku **organizacje** .
+2. Select **Organizations** from the left navigation pane or select the **Manage organizations** link from the **Organizations** block.
 
-    ![Strona Moje konto z widocznymi łączami wyróżnionych organizacji](media/my-account-portal/my-account-portal-organizations.png)
+    ![My Account page, showing highlighted Organizations links](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Przejrzyj informacje dotyczące **organizacji domowej**.
+3. Review the information for your **Home organization**.
 
-    ![Strona organizacji](media/my-account-portal/my-account-portal-organization-page.png)
+    ![Organizations page](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Zapoznaj się z innymi skojarzonymi organizacjami, aby rozpoznać wszystkie organizacje połączone z Twoim kontem.
+4. Review your other associated organizations, making sure you recognize all of the organizations connected to your account.
 
 ## <a name="leave-an-organization"></a>Opuszczanie organizacji
 
-Możesz opuścić każdą organizację, która nie jest Twoją organizacją domową.
+You can leave any organization that isn't your Home organization.
 
 >[!Important]
->Jeśli pozostawisz organizację przez pomyłkę, nie ma możliwości jej cofnięcia. Musisz poczekać, aż administrator tej organizacji zaprosił Cię ponownie.
+>If you leave an organization by mistake, there's no way to undo it. You'll have to wait for the administrator of that organization to invite you again.
 
-1. Wybierz pozycję **Opuść organizację** obok organizacji, którą chcesz opuścić, a następnie wybierz pozycję **Pozostaw** , aby potwierdzić, że chcesz opuścić.
+1. Select **Leave organization** next to the organization you want to leave, and then select **Leave** to confirm you want to leave.
 
-    ![Strona organizacje z wyróżnionym łączem Opuść organizację](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Organizations page with highlighted leave organization link](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po przejrzeniu organizacji można:
+After viewing your organizations, you can:
 
-- Wyświetl [informacje zabezpieczające](user-help-security-info-overview.md)lub zarządzaj nimi.
+- View or manage your [security info](user-help-security-info-overview.md).
 
-- Wyświetl podłączone [urządzenia](my-account-portal-devices-page.md)lub zarządzaj nimi.
+- View or manage your connected [devices](my-account-portal-devices-page.md).
 
-- Wyświetlanie [działania związanego z logowaniem](my-account-portal-sign-ins-page.md).
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Zobacz, w jaki sposób organizacja [używa danych związanych z prywatnością](my-account-portal-privacy-page.md).
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

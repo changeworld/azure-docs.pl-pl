@@ -1,207 +1,207 @@
 ---
-title: Opis Cloudyn koszt raporty zarządzania na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł ułatwia zrozumienie struktury podstawowe raporty zarządzania kosztów Cloudyn i funkcji.
+title: Understanding Cloudyn cost management reports in Azure | Microsoft Docs
+description: This article helps you understand Cloudyn cost management reports basic structure and functions.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 91dc386641c758c42f64afff387d0463d1445f1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d847b78ba9623f3543a3cb1e45b5187605deb550
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969083"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229782"
 ---
-# <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn Understanding management raportów kosztów
+# <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management reports
 
-Ten artykuł ułatwia zrozumienie struktury podstawowe raporty zarządzania kosztów Cloudyn i funkcji. Większość raportów Cloudyn są intuicyjne i jednolity wygląd i sposób działania. Po przeczytaniu tego artykułu, są gotowe do użycia wszystkich raportów rozwiązania cost management. Wiele standardowych funkcji są dostępne w całej różne raporty, umożliwiające przejście raporty z łatwością. Raporty są możliwe do dostosowania i możesz wybrać kilka opcji obliczają i wyświetlają wyniki.
+This article helps you understand Cloudyn cost management reports basic structure and functions. Most Cloudyn reports are intuitive and have a uniform look and feel. After you read this article, are ready to use all the cost management reports. Many standard features are available throughout the various reports, allowing you to navigate the reports with ease. Reports are customizable, and you can select from several options to calculate and display results.
 
-## <a name="report-fields-and-options"></a>Pola raportu i opcje
+## <a name="report-fields-and-options"></a>Report fields and options
 
-Poniżej przedstawiono przykładowy raport kosztu w czasie. Większość raportów Cloudyn mają podobny układ.
+Here's a look at an example of the Cost Over Time report. Most Cloudyn reports have a similar layout.
 
-![Przykładowy raport kosztu w czasie z obszarami numerowane odpowiadający opisów](./media/understanding-cost-reports/sample-report.png)
+![Example of the Cost Over Time report with numbered areas corresponding to descriptions](./media/understanding-cost-reports/sample-report.png)
 
-Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisane w następujących informacji:
+Each numbered area in the preceding image is described in detail in the following information:
 
-1. **Zakres dat**
+1. **Date Range**
 
-    Użyj listy zakres dat, aby zdefiniować przedział czasu raportu za pomocą wstępnie ustawionych lub niestandardowy.
-2. **Zapisany filtr**
+    Use the Date Range list to define a report time interval using a preset or custom.
+2. **Saved Filter**
 
-    Użyj listy zapisany filtr, aby zapisać bieżące grupy i filtry, które są stosowane do raportu. Zapisane filtry są dostępne przez raportów kosztów i wydajności, w tym:
+    Use the Saved Filter list to save the current groups and filters that are applied to the report. Saved filters are available across cost and performance reports, including:
 
-      - Analiza kosztów
-      - Alokacja
+      - Cost Analysis
+      - Allocation
       - Zarządzanie zasobami
       - Optymalizacja
 
-   Wpisz nazwę filtru, a następnie kliknij **Zapisz**.
+   Type a filter name and the click **Save**.
 
 3. **Tagi**
 
-    Według tagów kategorii, należy użyć obszaru tagów do grupy. Znaczniki wyświetlane w menu są działu na platformie Azure lub tagów Centrum kosztu lub są kosztu firmy Cloudyn tagi jednostki i subskrypcji. Wybierz tagi do filtrowania wyników. Możesz również wpisać nazwę tagu (słowo kluczowe), aby filtrować wyniki.
+    Use the Tags area to group by tag categories. Tags listed in the menu are Azure department or cost center tags or they are Cloudyn's cost entity and subscription tags. Select tags to filter results. You can also type a tag name (keyword) to filter results.
 
-    ![Przykład listy tagów, aby przefiltrować wyniki według](./media/understanding-cost-reports/select-options.png)
+    ![Example of a list of tags to filter results by](./media/understanding-cost-reports/select-options.png)
 
-    Kliknij przycisk **Dodaj** można dodać nowego filtru.
+    Click **Add** to add a new filter.
 
-    ![Dodaj pole filtru przedstawiający opcje i warunki, aby filtrować według](./media/understanding-cost-reports/add-filter.png)
+    ![Add filter box showing options and conditions to filter by](./media/understanding-cost-reports/add-filter.png)
 
-    Tag, grupowanie i filtrowanie nie odnosi się do zasobów platformy Azure lub tagi z grupy zasobów.
+    Tag grouping or filtering does not relate to Azure resources or resource group tags.
 
-    Alokacja kosztów tag grupowania i filtrowania są dostępne w **grup** opcji menu.
+    Cost allocation tag grouping and filtering are available in the **Groups** menu option.
 
-4. **Grupami w raportach**
+4. **Groups in reports**
 
-    Używanie grup w analizy kosztów raporty muszą pokazywać w warstwie standardowa podzielonych na kategorie z danych w raporcie rozliczeń.  Jednak grupy alokacji kosztów raporty pokazu wyświetlić kategorie na podstawie tagów. Kategorie na podstawie tagów są zdefiniowane w model przydzielania kosztów oraz standardowe kategorie dla pozycji z danych dotyczących rozliczeń.
+    Use groups in Cost Analysis reports to show standard, itemized categories from billing data in your report.  However, groups in Cost Allocation reports show view tag-based categories. Tag-based categories are defined in the cost allocation model and standard itemized categories from billing data.
 
-    ![Pierwszy przykład listę znaczników, które można pogrupować wg](./media/understanding-cost-reports/groups-tags01.png)
+    ![First example list of tags that you can group by](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Drugi przykład listę znaczników, które można pogrupować wg](./media/understanding-cost-reports/groups-tags02.png)
+    ![Second example list of tags that you can group by](./media/understanding-cost-reports/groups-tags02.png)
 
-    W raportach alokacji kosztów grup w kategorie na podstawie tagu grupy mogą być następujące:
+    In Cost Allocation Reports, groups in tag-based group categories might include:
       - Tagi
-      - Pozycja znaczniki grupy zasobów
-      - Koszt tagi jednostek Cloudyn
-      - Kategorie tag subskrypcji na potrzeby przydzielania kosztów
+      - resource group tags
+      - Cloudyn cost entity tags
+      - Subscription tag categories for cost allocation purposes
 
-   Przykładami mogą być następujące:
+   Examples might include:
    - Centrum kosztu
    - Dział
    - Aplikacja
    - Środowisko
-   - Kod kosztów
+   - Cost code
 
-     Oto lista wbudowanej grupy dostępne w raportach:
+     Here's a list of built-in groups available in reports:
 
-     - **Typ kosztu**
-     - Wybierz typ kosztu lub wiele typów kosztów, albo wybierz wszystko. Typy kosztów:
-       - Jednorazowa opłata
+     - **Cost Type**
+     - Select a cost type or multiple cost types, or select all. Cost types include:
+       - One-Time Fee
        - Pomoc techniczna
-       - Koszt użycia
-     - **Odbiorcy**
-       - Wybierz określonego odbiorcy, wielu klientów lub wszystkich klientów.
-     - **Nazwa konta**
-       - Nazwa konta lub subskrypcji. Na platformie Azure jest nazwa subskrypcji platformy Azure.
-     - **Brak konta**
-       - Wybierz konto, wiele kont lub wszystkich kont. Na platformie Azure jest identyfikator GUID subskrypcji platformy Azure.
-     - **Konta nadrzędne**
-       - Wybierz konto nadrzędne, wiele kont lub wybierz opcję.
+       - Usage Cost
+     - **Customer**
+       - Select a specific customer, multiple customers, or select all customers.
+     - **Account Name**
+       - The account or subscription name. In Azure, it is the name of the Azure subscription.
+     - **Account No**
+       - Select an account, multiple accounts, or all accounts. In Azure, it is the Azure subscription’s GUID.
+     - **Parent Account**
+       - Select the parent account, multiple accounts, or select all.
      - **Usługa**
-       - Wybierz usługę, wiele usług lub wszystkich usług.
+       - Select a service, multiple services, or select all services.
      - **Dostawca**
-       - Dostawca chmury, gdzie są skojarzone zasoby i wydatki związane z.
+       - The cloud provider where assets and expenses are associated.
      - **Region**
-       - Region, w którym znajduje się zasób.
-     - **Strefa dostępności**
-       - Usługi AWS samodzielnie lokalizacje w regionie.
+       - Region where the resource is hosted.
+     - **Availability Zone**
+       - AWS isolated locations within a region.
      - **Typ zasobu**
-       - Typ zasobu w użyciu.
+       - The type of resource in use.
      - **Sub-Type**
-       - Wybierz typ podrzędnych.
+       - Select the sub-type.
      - **Operacja**
-       - Wybierz operację lub **Pokaż wszystko**.
-     - **Model cen**
-       - Wszystkie z wyprzedzeniem
-       - Brak ponoszonych z góry kosztów
-       - Partial ponoszonych z góry kosztów
+       - Select the operation or **Show all**.
+     - **Price Model**
+       - All Upfront
+       - No Upfront
+       - Partial Upfront
        - Na żądanie
        - Rezerwacja
-       - Miejsce
-     - **Typ opłaty**
-       - Wybierz typ opłaty ujemne lub dodatni, lub obu.
+       - Spot
+     - **Charge Type**
+       - Select Negative or Positive charge type or both.
      - **Tenancy**
-       - Czy maszyna jest uruchomiona jako dedykowane maszyny.
-     - **Typ użycia**
-       - Typ użycia może być opłat jednorazowych lub opłat cyklicznych.
+       - Whether a machine is running as a dedicated machine.
+     - **Usage Type**
+       - Usage type can be one-time fees or recurring fees.
 
-5. **Filtry**
+5. **Filters**
 
-    Użyj filtrów pojedynczego lub wielokrotnego wyboru, aby ustawić zakresy adresów wybrane wartości. Aby ustawić filtr, kliknij **Dodaj** a następnie wybierz filtr kategorie i wartości.
+    Use single or multi-select filters to set ranges to selected values. To set a filter, click **Add** and then select filter categories and values.
 
-6. **Model kosztów**
+6. **Cost Model**
 
-    Użyj modelu kosztów, aby wybrać model kosztów, która została wcześniej utworzona za pomocą Cost Allocation 360. Możesz mieć wiele modeli kosztów Cloudyn, w zależności od wymagań alokacji kosztów. Niektóre zespołom w organizacji mogą kosztów alokacji wymagania, które różnią się od innych użytkowników. Każdy zespół może mieć własne modelu kosztów dedykowanych.
+    Use Cost Model to select a cost model that you previously created with Cost Allocation 360. You might have multiple Cloudyn cost models, depending on your cost allocation requirements. Some of your organizational teams might have cost allocation requirements that differ from others. Each team can have their own dedicated cost model.
 
-    Aby uzyskać informacji na temat tworzenia definicji model alokacji kosztów, zobacz [przydzielanie kosztów za pomocą tagów niestandardowych](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    For information about creating a cost allocation model definition, see [Use custom tags to allocate costs](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-7. **Amortyzacja**
+7. **Amortization**
 
-    Użyj amortyzacji w raportach alokacji kosztów, aby wyświetlić dane bez użycia na podstawie opłat za usługę lub koszty płatne jednorazowe i rozłożona równomiernie podczas ich czas na ich kosztów. Przykłady jednorazowe opłaty mogą być następujące:
-    - Opłaty roczne pomocy technicznej
-    - Opłaty roczne składniki zabezpieczeń
-    - Opłaty za zakupu wystąpień zarezerwowanych
-    - Niektóre elementy w portalu Azure Marketplace.
+    Use Amortization in Cost Allocation reports to view non-usage based service fees or one-time payable costs and spread their cost over time evenly during their lifespan. Examples of one-time fees might include:
+    - Annual support fees
+    - Annual security components fees
+    - Reserved instances purchase fees
+    - Some Azure Marketplace items.
 
-   W obszarze amortyzacji wybierz **amortyzowanego kosztu** lub **rzeczywistego kosztu**.
+   Under Amortization, select **Amortized cost** or **Actual Cost**.
 
-8. **Rozdzielczość**
+8. **Resolution**
 
-    Użyj rozwiązania, aby wybrać czas rozdzielczość w ramach wybranego zakresu dat. Rozdzielczość czasu określa, jak jednostki są wyświetlane w raporcie i można:
+    Use Resolution to select the time resolution within the selected date range. Your time resolution determines how units are displayed in the report and can be:
     - Codziennie
-    - Cotygodniowo
+    - Co tydzień
     - Miesięczne
-    - Kwartalnie
+    - Quarterly
     - Roczne
 
-9. **Zasady alokacji**
+9. **Allocation rules**
 
-    Użyj reguł alokacji zastosować lub wyłączyć obliczanie kosztu alokacji kosztów. Można włączyć lub wyłączyć Obliczanie alokacji kosztów dla danych dotyczących rozliczeń. Ponowne obliczanie mają zastosowanie do kategorii wybranych w raporcie. Umożliwia ocenę wpływu ponowne obliczenie alokacji kosztów względem nieprzetworzonych danych dotyczących rozliczeń.
+    Use Allocation Rules to apply or disable the cost allocation cost recalculation. You can enable or disable the cost allocation recalculation for billing data. The recalculation applies to the selected categories in the report. It allows you to assess the cost allocation recalculation impact against raw billing data.
 
-10. **Bez kategorii**
+10. **Uncategorized**
 
-    Użyj kategorii do dołączania lub wykluczania bez kategorii kosztów w raporcie.
+    Use Uncategorized to include or exclude uncategorized costs in the report.
 
-11. **Pokaż/Ukryj pola**
+11. **Show/hide fields**
 
-    Opcja Pokaż/Ukryj nie ma żadnego efektu w raportach.
+    The Show/hide option does not have any effect in reports.
 
-12. **Formaty wyświetlania**
+12. **Display formats**
 
-    Użyj formatów wyświetlania, aby wybrać różne widoki wykres lub tabelę.
+    Use Display formats to select various graph or table views.
 
-    ![Symbole formaty wyświetlania, które można wybierać](./media/understanding-cost-reports/display-formats.png)
+    ![Symbols of display formats that you can select](./media/understanding-cost-reports/display-formats.png)
 
-13. **Wielu kolorów**
+13. **Multi-color**
 
-    Użycie wielu kolor, aby ustawić kolor wykresów w raporcie.
+    Use Multi-color to set the color of charts in your report.
 
 14. **Akcje**
 
-    Aby zapisać, eksportowanie lub ustalania harmonogramu raportu za pomocą akcji.
+    Use Actions to save, export, or schedule the report.
 
 15. **Zasady**
 
-    Mimo że nie na zdjęciu niektóre raporty obejmują zasady przewidywany koszt obliczeń. W tych raportach **skonsolidowanych** zasad zawiera zalecenia dotyczące wszystkich kont i subskrypcji w ramach bieżącej jednostki, takich jak rejestracja w usłudze Microsoft lub usług AWS płatnika. **Autonomiczny** zasad zawiera zalecenia dotyczące jednego konta lub subskrypcji, tak, jakby nie istnieją żadne inne subskrypcje. Zasady, które możesz wybrać zmienia się od strategii optymalizacji używany przez Twoją organizację. Projekcji kosztów są oparte na ostatnich 30 dni użytkowania.
+    Although not pictured, some reports include a projected cost calculation policy. In those reports, the **Consolidated** policy shows recommendations for all accounts and subscriptions under the current entity such as Microsoft enrollment or AWS payer. The **Standalone** policy shows recommendations for one account or subscription as if no other subscriptions exist. The policy that you select varies on the optimization strategy used by your organization. Cost projections are based on the last 30 days of usage.
 
-## <a name="save-and-schedule-reports"></a>Zapisz i planowania raportów
+## <a name="save-and-schedule-reports"></a>Save and schedule reports
 
-Po utworzeniu raportu można zapisać go do użytku w przyszłości. Zapisane raporty są dostępne w **Moje narzędzia** > **Moje raporty**. Jeśli wprowadzasz zmiany do istniejącego raportu i zapisz go, raport jest zapisywany jako nową wersję. Lub zapisz go jako nowy raport.
+After you create a report, you can save it for future use. Saved reports are available in **My Tools** > **My Reports**. If you make changes to an existing report and save it, the report is saved as a new version. Or, you can save it as a new report.
 
-### <a name="save-a-report-to-the-cloudyn-portal"></a>Zapisywanie raportu w portalu Cloudyn
+### <a name="save-a-report-to-the-cloudyn-portal"></a>Save a report to the Cloudyn portal
 
-Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **Zapisz moje raporty**. Nazywanie raportu, a następnie dodaj własny adres URL lub użyj automatycznie utworzone adresu URL. Można opcjonalnie **udostępnianie** raportu publicznie innym osobom w organizacji lub udostępnić go do jednostki. Nie udostępniono raport, pozostaje osobistych raportów i można tylko wyświetlić. Zapisz raport.
+While viewing any report, click **Actions** and then select **Save to my reports**. Name the report and then either add a your own URL or use the automatically created URL. You can optionally **Share** the report publicly with others in your organization or you can share it to your entity. If you do not share the report, it remains a personal report and that only you can view. Zapisz raport.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>Zapisywanie raportu do dostawcy magazynu w chmurze
+### <a name="save-a-report-to-cloud-provider-storage"></a>Save a report to cloud provider storage
 
-Aby zapisać raport do dostawcy usług w chmurze, możesz muszą być już skonfigurowane na koncie magazynu. Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **zaplanować raport**. Nazywanie raportu, a następnie dodaj własny adres URL lub użyj automatycznie utworzone adresu URL. Wybierz **zapisywanie w magazynie** a następnie wybierz konto magazynu lub dodać nowy. Wprowadź prefiks, który pobiera dołączany do nazwy pliku raportu. Wybierz format pliku CSV lub JSON, a następnie Zapisz raport.
+In order to save a report to your cloud service provider, you must have already configured a storage account. While viewing any report, click **Actions** and then select **Schedule report**. Name the report and then either add a your own URL or use the automatically created URL. Select **Save to storage** and then select the storage account or add a new one. Enter a prefix that gets appended to the report file name. Select a CSV or JSON file format and then save the report.
 
-### <a name="schedule-a-report"></a>Harmonogram raportu
+### <a name="schedule-a-report"></a>Schedule a report
 
-Możesz uruchomić raporty w zaplanowanych odstępach czasu i wysłała je do adresatów listy lub w chmurze usługi dostawcy konta magazynu. Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **zaplanować raport**. Można wysłać raport za pośrednictwem poczty e-mail i zapisać na koncie magazynu. W obszarze **harmonogram**, wybierz interwał (codziennie, co tydzień lub co miesiąc). Co tydzień i co miesiąc wybierz dzień lub daty do dostarczania i wybierz godzinę. Zapisz zaplanowany raport. Jeśli wybierzesz format raportu programu Excel, raport jest wysyłany jako załącznik. Po wybraniu format zawartości wiadomości e-mail, raportu dotyczącego wyników, które są wyświetlane w formacie wykresu są dostarczane jako wykres.
+You can run reports at scheduled intervals and you can sent them to a recipient list or cloud service provider storage account. While viewing any report, click **Actions** and then select **Schedule report**. You can send the report by email and save to a storage account. Under **Schedule**, select the interval (daily, weekly or monthly). For weekly and monthly, select the day or dates to deliver and select the time. Zapisz zaplanowany raport. If you select the Excel report format, the report is sent as an attachment. When you select email content format, report results that are displayed in chart format are delivered as a graph.
 
-### <a name="export-a-report-as-a-csv-file"></a>Raport można wyeksportować jako plik CSV
+### <a name="export-a-report-as-a-csv-file"></a>Export a report as a CSV file
 
-Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **wyeksportować wszystkie dane raportów**. Pojawi się okno podręczne i zostanie pobrany plik CSV.
+While viewing any report, click **Actions** and then select **Export all report data**. A pop-up window appears and a CSV file is downloaded.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Więcej informacji na temat raportów, które znajdują się w rozwiązaniu Cloudyn w [raporty użycia Cloudyn](use-reports.md).
-- Dowiedz się więcej o tym, jak używać raportów do tworzenia [pulpity nawigacyjne](dashboards.md).
+- Learn about the reports that are included in Cloudyn at [Use Cloudyn reports](use-reports.md).
+- Learn about how to use reports to create [dashboards](dashboards.md).

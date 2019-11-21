@@ -1,6 +1,6 @@
 ---
-title: Informacje o wersji dla agenta Azure File Sync | Microsoft Docs
-description: Informacje o wersji dla agenta Azure File Sync.
+title: Release notes for the Azure File Sync agent | Microsoft Docs
+description: Release notes for the Azure File Sync agent.
 services: storage
 author: wmgries
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 10/8/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 01408e3592af58f05db32e4722e4a85cd2acd0ef
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 8328170d73d75e8e2eb1a84881375ce21c72a61b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747781"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227832"
 ---
-# <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji dla agenta Azure File Sync
+# <a name="release-notes-for-the-azure-file-sync-agent"></a>Release notes for the Azure File Sync agent
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
 W tym artykule udostępniono informacje o obsługiwanych wersjach agenta usługi Azure File Sync.
@@ -23,60 +23,60 @@ W tym artykule udostępniono informacje o obsługiwanych wersjach agenta usługi
 ## <a name="supported-versions"></a>Obsługiwane wersje
 Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
-| Rozwoju | Numer wersji agenta | Data wydania | Stan |
+| Milestone | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
-| V8 wydanie — [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 października 2019 | Obsługiwane |
-| 2019 lipca zbiorczych aktualizacji — [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 r. | Obsługiwane |
-| 2019 lipca zbiorczych aktualizacji — [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 lipca 2019 | Obsługiwane |
-| Wersji 7 wydanie — [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 czerwca 2019 | Obsługiwane |
-| Czerwiec 2019 — pakiet zbiorczy aktualizacji — [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27 czerwca 2019 | Obsługiwane |
-| Czerwiec 2019 — pakiet zbiorczy aktualizacji — [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 czerwca 2019 | Obsługiwane |
-| 2019 — pakiet zbiorczy aktualizacji — [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7 maja 2019 | Obsługiwane |
-| Wydanie V6 — [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 kwietnia 2019 | Obsługiwane |
-| Kwiecień 2019 — pakiet zbiorczy aktualizacji — [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 kwietnia 2019 | Obsługiwane |
-| Marzec 2019 — pakiet zbiorczy aktualizacji — [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 marca 2019 | Obsługiwane |
-| Wydanie V5 — [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 lutego 2019 | Obsługiwane |
-| Wersja v4 | 4.0.1.0 - 4.3.0.0 | Nie dotyczy | Nieobsługiwane — wersje agenta wygasły 6 listopada, 2019 |
-| Wersja V3 | 3.1.0.0 - 3.4.0.0 | Nie dotyczy | Nieobsługiwane — wersje agenta wygasły 19 sierpnia 2019 |
-| Agenci wstępnie GA | 1.1.0.0 — 3.0.13.0 | Nie dotyczy | Nieobsługiwane — wersje agenta wygasły 1 października 2018 |
+| V8 Release - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | October 8, 2019 | Obsługiwane |
+| July 2019 update rollup - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 r. | Obsługiwane |
+| July 2019 update rollup - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | July 12, 2019 | Obsługiwane |
+| V7 Release - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | June 19, 2019 | Obsługiwane |
+| June 2019 update rollup - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | June 27, 2019 | Obsługiwane |
+| June 2019 update rollup - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | June 13, 2019 | Obsługiwane |
+| May 2019 update rollup - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | May 7, 2019 | Obsługiwane |
+| V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | April 21, 2019 | Obsługiwane |
+| April 2019 update rollup - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | April 4, 2019 | Obsługiwane |
+| March 2019 update rollup - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | March 7, 2019 | Obsługiwane |
+| V5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | February 12, 2019 | Obsługiwane |
+| V4 Release | 4.0.1.0 - 4.3.0.0 | ND | Not Supported - Agent versions expired on November 6, 2019 |
+| V3 Release | 3.1.0.0 - 3.4.0.0 | ND | Not Supported - Agent versions expired on August 19, 2019 |
+| Pre-GA agents | 1.1.0.0 - 3.0.13.0 | ND | Not Supported - Agent versions expired on October 1, 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="agent-version-8000"></a>8\.0.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 8.0.0.0 agenta Azure File Sync (wydanej 8 października 2019).
+## <a name="agent-version-8000"></a>Agent version 8.0.0.0
+The following release notes are for version 8.0.0.0 of the Azure File Sync agent (released October 8, 2019).
 
-### <a name="improvements-and-issues-that-are-fixed"></a>Ulepszenia i problemy, które zostały naprawione
+### <a name="improvements-and-issues-that-are-fixed"></a>Improvements and issues that are fixed
 
-- Udoskonalenia wydajności przywracania
-    - Krótszy czas odzyskiwania dla odzyskiwania wykonywanego za Azure Backup. Przywrócone pliki zsynchronizują się z serwerami Azure File Sync znacznie szybciej. 
-- Udoskonalone środowisko portalu obsługi warstw w chmurze  
-    - Jeśli masz pliki warstwowe, które nie mogą zostać odwołane, możesz teraz wyświetlić błędy odwołań we właściwościach punktu końcowego serwera. Ponadto kondycja punktu końcowego serwera wyświetli teraz błąd i kroki zaradcze, jeśli sterownik filtru warstwy chmury nie zostanie załadowany na serwerze.
-- Uproszczona instalacja agenta
-    - Moduł Az\AzureRM PowerShell nie jest już wymagany do zarejestrowania serwera, co upraszcza i szybko.
-- Różne ulepszenia dotyczące wydajności i niezawodności
+- Restore performance Improvements
+    - Faster recovery times for recovery done through Azure Backup. Restored files will sync back down to Azure File Sync servers much faster. 
+- Improved cloud tiering portal experience  
+    - If you have tiered files that are failing to recall, you can now view the recall errors in the server endpoint properties. Also, the server endpoint health will now show an error and mitigation steps if the cloud tiering filter driver is not loaded on the server.
+- Simpler agent installation
+    - The Az\AzureRM PowerShell module is no longer required to register the server making installation simpler and fast.
+- Miscellaneous performance and reliability improvements
 
-### <a name="evaluation-tool"></a>Narzędzie do oceny
-Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu narzędzia do oceny Azure File Sync. To narzędzie jest Azure PowerShell poleceniem cmdlet, które sprawdza potencjalne problemy związane z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Instrukcje dotyczące instalacji i użycia znajdują się w sekcji [Narzędzie do oceny](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) w przewodniku planowania. 
+### <a name="evaluation-tool"></a>Evaluation Tool
+Before deploying Azure File Sync, you should evaluate whether it is compatible with your system using the Azure File Sync evaluation tool. This tool is an Azure PowerShell cmdlet that checks for potential issues with your file system and dataset, such as unsupported characters or an unsupported OS version. For installation and usage instructions, see [Evaluation Tool](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) section in the planning guide. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalacja agenta i konfiguracja serwera
-Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta Azure File Sync przy użyciu systemu Windows Server, zobacz [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md) i [sposób wdrażania Azure File Sync](storage-sync-files-deployment-guide.md).
+For more information on how to install and configure the Azure File Sync agent with Windows Server, see [Planning for an Azure File Sync deployment](storage-sync-files-planning.md) and [How to deploy Azure File Sync](storage-sync-files-deployment-guide.md).
 
-- Pakiet instalacyjny agenta musi być zainstalowany z podniesionymi uprawnieniami (administratora).
-- Agent nie jest obsługiwany w przypadku opcji wdrażania serwera nano Server.
-- Agent jest obsługiwany tylko w systemach Windows Server 2019, Windows Server 2016 i Windows Server 2012 R2.
-- Agent wymaga co najmniej 2 GiB pamięci. Jeśli serwer jest uruchomiony na maszynie wirtualnej z włączoną pamięcią dynamiczną, maszyna wirtualna powinna mieć skonfigurowaną minimalną 2048 MiB pamięci.
-- Usługa agenta synchronizacji magazynu (FileSyncSvc) nie obsługuje punktów końcowych serwera znajdujących się na woluminie, który ma skompresowany katalog informacji o woluminie systemowym (SVI). Ta konfiguracja będzie prowadzić do nieoczekiwanych wyników.
+- The agent installation package must be installed with elevated (admin) permissions.
+- The agent is not supported on Nano Server deployment option.
+- The agent is supported only on Windows Server 2019, Windows Server 2016, and Windows Server 2012 R2.
+- The agent requires at least 2 GiB of memory. If the server is running in a virtual machine with dynamic memory enabled, the VM should be configured with a minimum 2048 MiB of memory.
+- The Storage Sync Agent (FileSyncSvc) service does not support server endpoints located on a volume that has the system volume information (SVI) directory compressed. This configuration will lead to unexpected results.
 
 ### <a name="interoperability"></a>Współdziałanie
-- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów Azure File Sync](storage-sync-files-troubleshoot.md).
-- Ekrany plików Menedżer zasobów serwera plików (Menedżer zasobów plików) mogą spowodować nieograniczone błędy synchronizacji, jeśli pliki są zablokowane z powodu osłony plików.
-- Uruchomienie programu Sysprep na serwerze z zainstalowanym agentem Azure File Sync nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy zainstalować agenta Azure File Sync.
+- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. For more information, see [Troubleshoot Azure File Sync](storage-sync-files-troubleshoot.md).
+- File Server Resource Manager (FSRM) file screens can cause endless sync failures when files are blocked because of the file screen.
+- Running sysprep on a server that has the Azure File Sync agent installed is not supported and can lead to unexpected results. The Azure File Sync agent should be installed after deploying the server image and completing sysprep mini-setup.
 
 ### <a name="sync-limitations"></a>Ograniczenia synchronizacji
 Następujące elementy nie są synchronizowane, ale reszta systemu nadal normalnie działa:
-- Pliki z nieobsługiwanymi znakami. Zobacz [Przewodnik rozwiązywania problemów](storage-sync-files-troubleshoot.md#handling-unsupported-characters) , aby wyświetlić listę nieobsługiwanych znaków.
-- Pliki lub katalogi kończące się kropką.
+- Files with unsupported characters. See [Troubleshooting guide](storage-sync-files-troubleshoot.md#handling-unsupported-characters) for list of unsupported characters.
+- Files or directories that end with a period.
 - Ścieżki dłuższe niż 2048 znaków.
 - Część DACL (poufna lista kontroli dostępu) deskryptora zabezpieczeń, jeśli jest większa niż 2 KB. Ten problem występuje tylko wtedy, gdy masz więcej niż około 40 wpisów kontroli dostępu (ACE) dla jednego elementu.
 - Część SACL (systemowa lista kontroli dostępu) deskryptora zabezpieczeń, która jest używana do przeprowadzania inspekcji.
@@ -90,86 +90,86 @@ Następujące elementy nie są synchronizowane, ale reszta systemu nadal normaln
     > [!Note]  
     > Usługa Azure File Sync zawsze szyfruje dane podczas przesyłania. Dane magazynowane na platformie Azure są zawsze zaszyfrowane.
  
-### <a name="server-endpoint"></a>Punkt końcowy serwera
+### <a name="server-endpoint"></a>Server endpoint
 - Punkt końcowy serwera można tworzyć tylko na woluminie NTFS. Systemy plików ReFS, FAT, FAT32 i inne nie są obecnie obsługiwane przez usługę Azure File Sync.
-- Pliki warstwowe staną się niedostępne, jeśli nie zostaną one wywołane przed usunięciem punktu końcowego serwera. Aby przywrócić dostęp do plików, Utwórz ponownie punkt końcowy serwera. Jeśli upłynął 30 dni od momentu, gdy punkt końcowy serwera został usunięty lub punkt końcowy w chmurze został usunięty, pliki warstwowe, które nie zostały odwołane, nie będą używane. Aby dowiedzieć się więcej, zobacz [pliki warstwowe nie są dostępne na serwerze po usunięciu punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint).
-- Obsługa warstw w chmurze nie jest obsługiwana na woluminie systemowym. Aby utworzyć punkt końcowy serwera na woluminie systemowym, Wyłącz obsługę warstw w chmurze podczas tworzenia punktu końcowego serwera.
+- Tiered files will become inaccessible if the files are not recalled prior to deleting the server endpoint. To restore access to the files, recreate the server endpoint. If 30 days have passed since the server endpoint was deleted or if the cloud endpoint was deleted, tiered files that were not recalled will be unusable. To learn more, see [Tiered files are not accessible on the server after deleting a server endpoint](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint).
+- Cloud tiering is not supported on the system volume. To create a server endpoint on the system volume, disable cloud tiering when creating the server endpoint.
 - Klaster trybu failover jest obsługiwany tylko z dyskami klastrowanymi, ale nie z udostępnionymi woluminami klastra (CSV).
 - Punktu końcowego serwera nie można zagnieżdżać. Może on współistnieć na tym samym woluminie równolegle z innym punktem końcowym.
-- Nie należy przechowywać pliku stronicowania systemu operacyjnego lub aplikacji w ramach lokalizacji punktu końcowego serwera.
-- Nazwa serwera w portalu nie jest aktualizowana w przypadku zmiany nazwy serwera.
+- Do not store an OS or application paging file within a server endpoint location.
+- The server name in the portal is not updated if the server is renamed.
 
-### <a name="cloud-endpoint"></a>Punkt końcowy w chmurze
-- Azure File Sync obsługuje wprowadzanie zmian bezpośrednio w udziale plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw muszą zostać odnalezione za pomocą zadania wykrywania zmian Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze co 24 godziny. Aby natychmiast synchronizować pliki, które zostały zmienione w udziale plików platformy Azure, można ręcznie zainicjować wykrywanie zmian w udziale plików platformy Azure za pomocą polecenia cmdlet [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) programu PowerShell. Ponadto zmiany wprowadzone w udziale plików platformy Azure za pośrednictwem protokołu REST nie będą aktualizować czasu ostatniej modyfikacji SMB i nie będą widoczne jako zmiany przez synchronizację.
-- Usługę synchronizacji magazynu i/lub konto magazynu można przenieść do innej grupy zasobów lub subskrypcji w ramach istniejącej dzierżawy usługi Azure AD. Jeśli konto magazynu jest przenoszone, musisz udzielić hybrydowej usłudze File Sync dostępu do konta magazynu (Sprawdź, [czy Azure File Sync ma dostęp do konta magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+### <a name="cloud-endpoint"></a>Cloud endpoint
+- Azure File Sync supports making changes to the Azure file share directly. However, any changes made on the Azure file share first need to be discovered by an Azure File Sync change detection job. A change detection job is initiated for a cloud endpoint once every 24 hours. To immediately sync files that are changed in the Azure file share, the [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell cmdlet can be used to manually initiate the detection of changes in the Azure file share. In addition, changes made to an Azure file share over the REST protocol will not update the SMB last modified time and will not be seen as a change by sync.
+- The storage sync service and/or storage account can be moved to a different resource group or subscription within the existing Azure AD tenant. If the storage account is moved, you need to give the Hybrid File Sync Service access to the storage account (see [Ensure Azure File Sync has access to the storage account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > Azure File Sync nie obsługuje przeniesienia subskrypcji do innej dzierżawy usługi Azure AD.
+    > Azure File Sync does not support moving the subscription to a different Azure AD tenant.
 
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze
 - Jeśli plik warstwowy jest kopiowany do innej lokalizacji za pomocą rozszerzenia Robocopy, wynikowy plik nie będzie obsługiwany w warstwie. Atrybut offline może być ustawiony, ponieważ rozszerzenie Robocopy niepoprawnie dołącza ten atrybut podczas operacji kopiowania.
-- Podczas kopiowania plików przy użyciu Robocopy, użyj opcji/MIR, aby zachować sygnatury czasowe plików. Zapewni to, że starsze pliki są dostępne wcześniej niż ostatnio używane pliki.
+- When copying files using robocopy, use the /MIR option to preserve file timestamps. This will ensure older files are tiered sooner than recently accessed files.
 
-## <a name="agent-version-7200"></a>7\.2.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 7.2.0.0 agenta Azure File Sync wydanej 24 lipca 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 7.0.0.0.
+## <a name="agent-version-7200"></a>Agent version 7.2.0.0
+The following release notes are for version 7.2.0.0 of the Azure File Sync agent released July 24, 2019. These notes are in addition to the release notes listed for version 7.0.0.0.
 
-Lista problemów rozwiązanych w tej wersji:  
-- Agent synchronizacji magazynu (FileSyncSvc) ulega awarii, jeśli konfiguracja serwera proxy ma wartość null.
-- Punkt końcowy serwera zacznie BCDR (Error 0x80c80257-ECS_E_BCDR_IN_PROGRESS), jeśli wiele punktów końcowych na serwerze ma taką samą nazwę.
-- Ulepszenia niezawodności warstw w chmurze.
+List of issues fixed in this release:  
+- Storage Sync Agent (FileSyncSvc) crashes if the proxy configuration is null.
+- Server endpoint will start BCDR (error 0x80c80257 - ECS_E_BCDR_IN_PROGRESS) if multiple endpoints on the server have the same name.
+- Cloud tiering reliability improvements.
 
-## <a name="agent-version-7100"></a>7\.1.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 7.1.0.0 agenta Azure File Sync wydanej 12 lipca 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 7.0.0.0.
+## <a name="agent-version-7100"></a>Agent version 7.1.0.0
+The following release notes are for version 7.1.0.0 of the Azure File Sync agent released July 12, 2019. These notes are in addition to the release notes listed for version 7.0.0.0.
 
-Lista problemów rozwiązanych w tej wersji:  
-- Uzyskiwanie dostępu do lub przeglądanie lokalizacji punktu końcowego serwera za pośrednictwem protokołu SMB działa wolno w systemie Windows Server 2012 R2. 
-- Zwiększone wykorzystanie procesora po zainstalowaniu agenta Azure File Sync w wersji 6.
-- Udoskonalenia danych telemetrycznych dotyczących warstw w chmurze.
-- Różne ulepszenia niezawodności dotyczące warstw i synchronizacji w chmurze.
+List of issues fixed in this release:  
+- Accessing or browsing a server endpoint location over SMB is slow on Windows Server 2012 R2. 
+- Increased CPU utilization after installing the Azure File Sync v6 agent.
+- Cloud tiering telemetry improvements.
+- Miscellaneous reliability improvements for cloud tiering and sync.
 
-## <a name="agent-version-7000"></a>7\.0.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 7.0.0.0 agenta Azure File Sync (wydanie z 19 czerwca 2019).
+## <a name="agent-version-7000"></a>Agent version 7.0.0.0
+The following release notes are for version 7.0.0.0 of the Azure File Sync agent (released June 19, 2019).
 
-### <a name="improvements-and-issues-that-are-fixed"></a>Ulepszenia i problemy, które zostały naprawione
+### <a name="improvements-and-issues-that-are-fixed"></a>Improvements and issues that are fixed
 
-- Obsługa większych rozmiarów udziałów plików
-    - W wersji zapoznawczej większych udziałów plików platformy Azure zwiększamy również limity pomocy technicznej dotyczące synchronizacji plików. W pierwszym kroku Azure File Sync teraz obsługuje do 25 TB i 50 000 000 plików w pojedynczej, synchronizowanej przestrzeni nazw. Aby zastosować do wersji zapoznawczej dużego udziału plików, Wypełnij ten formularz https://aka.ms/azurefilesatscalesurvey. 
-- Obsługa ustawień zapory i sieci wirtualnej na kontach magazynu
-    - Azure File Sync teraz obsługuje ustawienia zapory i sieci wirtualnej na kontach magazynu. Aby skonfigurować wdrożenie do pracy z ustawieniami zapory i sieci wirtualnej, zobacz [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
-- Polecenie cmdlet programu PowerShell do natychmiastowej synchronizacji plików zmienionych w udziale plików platformy Azure
-    - Aby natychmiast synchronizować pliki, które zostały zmienione w udziale plików platformy Azure, można ręcznie zainicjować wykrywanie zmian w udziale plików platformy Azure za pomocą polecenia cmdlet Invoke-AzStorageSyncChangeDetection programu PowerShell. To polecenie cmdlet jest przeznaczone dla scenariuszy, w których jakiś typ zautomatyzowany proces wprowadza zmiany w udziale plików platformy Azure lub zmiany są wykonywane przez administratora (na przykład przeniesienie plików i katalogów do udziału). W przypadku zmian wprowadzonych przez użytkownika końcowego zaleca się zainstalowanie agenta Azure File Sync na maszynie wirtualnej IaaS, a użytkownicy końcowi uzyskują dostęp do udziału plików za pomocą maszyny wirtualnej IaaS. W ten sposób wszystkie zmiany zostaną szybko zsynchronizowane z innymi agentami bez konieczności korzystania z polecenia cmdlet Invoke-AzStorageSyncChangeDetection. Aby dowiedzieć się więcej, zobacz dokumentację [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) .
-- Udoskonalone środowisko portalu w przypadku wystąpienia plików, które nie są synchronizowane
-    - Jeśli masz pliki, których synchronizacja nie powiedzie się, rozróżnimy od błędów przejściowych i trwałych w portalu. Błędy przejściowe zwykle rozwiązują się samodzielnie bez konieczności działania administratora. Na przykład plik, który jest aktualnie używany, nie będzie synchronizowany do momentu zamknięcia dojścia do pliku. W przypadku błędów trwałych jest teraz wyświetlana liczba plików, na które mają wpływ poszczególne błędy. Liczba trwałych błędów jest również wyświetlana w kolumnie brak synchronizacji plików wszystkich punktów końcowych serwera w grupie synchronizacji.
-- Ulepszone Azure Backup przywracanie na poziomie plików
-    - Pojedyncze pliki przywrócone przy użyciu Azure Backup są teraz wykrywane i synchronizowane z punktem końcowym serwera.
-- Ulepszona niezawodność poleceń cmdlet odwoływania się do warstw w chmurze 
-    - Polecenie cmdlet Invoke-StorageSyncFileRecall umożliwia klientom określenie liczby ponownych prób dla plików i opóźnienie ponowienia pliku podobne do Robocopy. Wcześniej to polecenie cmdlet spowoduje odzyskanie wszystkich plików warstwowych pod daną ścieżką w kolejności losowej. W przypadku parametru New-Order to polecenie cmdlet najpierw przywróci dane okienko i przestrzega zasad obsługi warstw w chmurze (Zatrzymywanie wywołania w przypadku spełnienia zasad dotyczących daty lub spełnienia wolnego miejsca na woluminie, w zależności od tego, co się dzieje).
-- Obsługa tylko protokołu TLS 1,2 (protokół TLS 1,0 i 1,1 jest wyłączony)
-    - Azure File Sync teraz obsługuje używanie protokołu TLS 1,2 tylko na serwerach z wyłączonymi protokołami TLS 1,0 i 1,1. Przed wprowadzeniem tej poprawy Rejestracja serwera nie powiedzie się, jeśli na serwerze wyłączono protokoły TLS 1,0 i 1,1.
-- Różne ulepszenia dotyczące wydajności i niezawodności dla synchronizacji i warstw w chmurze
-    - W tej wersji istnieje kilka ulepszeń dotyczących niezawodności i wydajności. Niektóre z nich umożliwiają wydajniejszą obsługę warstw w chmurze, a Azure File Sync jako całość działają lepiej w tych sytuacjach, gdy ustawiono harmonogram ograniczania przepustowości.
+- Support for larger file share sizes
+    - With the preview of larger Azure file shares, we are increasing our support limits for file sync as well. In this first step, Azure File Sync now supports up to 25 TB and 50 million files in a single, syncing namespace. To apply for the large file share preview, fill in this form https://aka.ms/azurefilesatscalesurvey. 
+- Support for firewall and virtual network setting on storage accounts
+    - Azure File Sync now supports the firewall and virtual network setting on storage accounts. To configure your deployment to work with the firewall and virtual network setting, see [Configure firewall and virtual network settings](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
+- PowerShell cmdlet to immediately sync files changed in the Azure file share
+    - To immediately sync files that are changed in the Azure file share, the Invoke-AzStorageSyncChangeDetection PowerShell cmdlet can be used to manually initiate the detection of changes in the Azure file share. This cmdlet is intended for scenarios where some type of automated process is making changes in the Azure file share or the changes are done by an administrator (like moving files and directories into the share). For end-user changes, the recommendation is to install the Azure File Sync agent in an IaaS VM and have end users access the file share through the IaaS VM. This way all changes will quickly sync to other agents without the need to use the Invoke-AzStorageSyncChangeDetection cmdlet. To learn more, see the [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) documentation.
+- Improved portal experience if you encounter files that are not syncing
+    - If you have files that are failing to sync, we now differentiate between transient and persistent errors in the portal. Transient errors usually resolve themselves without the need for admin action. For example, a file that is currently in use will not sync until the file handle is closed. For persistent errors, we now show the number of files impacted by each error. The persistent error count is also displayed in the files not syncing column of all server endpoints in a sync group.
+- Improved Azure Backup file-level restore
+    - Individual files restored using Azure Backup are now detected and synced to the server endpoint faster.
+- Improved cloud tiering recall cmdlet reliability 
+    - The Invoke-StorageSyncFileRecall cmdlet now allows customers to specify per file retry count and per file retry delay similar to robocopy. Previously, this cmdlet would recall all tiered files under a given path in random order. With the new -Order parameter, this cmdlet will recall the hottest data first and honor the cloud tiering policy (stop recalling if the date policy is met or the volume free space is met; whichever happens first).
+- Support for TLS 1.2 only (TLS 1.0 and 1.1 is disabled)
+    - Azure File Sync now supports using TLS 1.2 only on servers that have TLS 1.0 and 1.1 disabled. Prior to this improvement, server registration would fail if TLS 1.0 and 1.1 was disabled on the server.
+- Miscellaneous performance and reliability improvements for sync and cloud tiering
+    - There are several reliability and performance improvements in this release. Some of them are targeted to make cloud tiering more efficient and Azure File Sync as a whole work better in those situations when you have a bandwidth throttling schedule set.
 
-### <a name="evaluation-tool"></a>Narzędzie do oceny
-Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu narzędzia do oceny Azure File Sync. To narzędzie jest Azure PowerShell poleceniem cmdlet, które sprawdza potencjalne problemy związane z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Instrukcje dotyczące instalacji i użycia znajdują się w sekcji [Narzędzie do oceny](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) w przewodniku planowania. 
+### <a name="evaluation-tool"></a>Evaluation Tool
+Before deploying Azure File Sync, you should evaluate whether it is compatible with your system using the Azure File Sync evaluation tool. This tool is an Azure PowerShell cmdlet that checks for potential issues with your file system and dataset, such as unsupported characters or an unsupported OS version. For installation and usage instructions, see [Evaluation Tool](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) section in the planning guide. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalacja agenta i konfiguracja serwera
-Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta Azure File Sync przy użyciu systemu Windows Server, zobacz [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md) i [sposób wdrażania Azure File Sync](storage-sync-files-deployment-guide.md).
+For more information on how to install and configure the Azure File Sync agent with Windows Server, see [Planning for an Azure File Sync deployment](storage-sync-files-planning.md) and [How to deploy Azure File Sync](storage-sync-files-deployment-guide.md).
 
-- Pakiet instalacyjny agenta musi być zainstalowany z podniesionymi uprawnieniami (administratora).
-- Agent nie jest obsługiwany w przypadku opcji wdrażania serwera nano Server.
-- Agent jest obsługiwany tylko w systemach Windows Server 2019, Windows Server 2016 i Windows Server 2012 R2.
-- Agent wymaga co najmniej 2 GiB pamięci. Jeśli serwer jest uruchomiony na maszynie wirtualnej z włączoną pamięcią dynamiczną, maszyna wirtualna powinna mieć skonfigurowaną minimalną 2048 MiB pamięci.
-- Usługa agenta synchronizacji magazynu (FileSyncSvc) nie obsługuje punktów końcowych serwera znajdujących się na woluminie, który ma skompresowany katalog informacji o woluminie systemowym (SVI). Ta konfiguracja będzie prowadzić do nieoczekiwanych wyników.
+- The agent installation package must be installed with elevated (admin) permissions.
+- The agent is not supported on Nano Server deployment option.
+- The agent is supported only on Windows Server 2019, Windows Server 2016, and Windows Server 2012 R2.
+- The agent requires at least 2 GiB of memory. If the server is running in a virtual machine with dynamic memory enabled, the VM should be configured with a minimum 2048 MiB of memory.
+- The Storage Sync Agent (FileSyncSvc) service does not support server endpoints located on a volume that has the system volume information (SVI) directory compressed. This configuration will lead to unexpected results.
 
 ### <a name="interoperability"></a>Współdziałanie
-- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów Azure File Sync](storage-sync-files-troubleshoot.md).
-- Ekrany plików Menedżer zasobów serwera plików (Menedżer zasobów plików) mogą spowodować nieograniczone błędy synchronizacji, jeśli pliki są zablokowane z powodu osłony plików.
-- Uruchomienie programu Sysprep na serwerze z zainstalowanym agentem Azure File Sync nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy zainstalować agenta Azure File Sync.
+- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. For more information, see [Troubleshoot Azure File Sync](storage-sync-files-troubleshoot.md).
+- File Server Resource Manager (FSRM) file screens can cause endless sync failures when files are blocked because of the file screen.
+- Running sysprep on a server that has the Azure File Sync agent installed is not supported and can lead to unexpected results. The Azure File Sync agent should be installed after deploying the server image and completing sysprep mini-setup.
 
 ### <a name="sync-limitations"></a>Ograniczenia synchronizacji
 Następujące elementy nie są synchronizowane, ale reszta systemu nadal normalnie działa:
-- Pliki z nieobsługiwanymi znakami. Zobacz [Przewodnik rozwiązywania problemów](storage-sync-files-troubleshoot.md#handling-unsupported-characters) , aby wyświetlić listę nieobsługiwanych znaków.
-- Pliki lub katalogi kończące się kropką.
+- Files with unsupported characters. See [Troubleshooting guide](storage-sync-files-troubleshoot.md#handling-unsupported-characters) for list of unsupported characters.
+- Files or directories that end with a period.
 - Ścieżki dłuższe niż 2048 znaków.
 - Część DACL (poufna lista kontroli dostępu) deskryptora zabezpieczeń, jeśli jest większa niż 2 KB. Ten problem występuje tylko wtedy, gdy masz więcej niż około 40 wpisów kontroli dostępu (ACE) dla jednego elementu.
 - Część SACL (systemowa lista kontroli dostępu) deskryptora zabezpieczeń, która jest używana do przeprowadzania inspekcji.
@@ -183,90 +183,90 @@ Następujące elementy nie są synchronizowane, ale reszta systemu nadal normaln
     > [!Note]  
     > Usługa Azure File Sync zawsze szyfruje dane podczas przesyłania. Dane magazynowane na platformie Azure są zawsze zaszyfrowane.
  
-### <a name="server-endpoint"></a>Punkt końcowy serwera
+### <a name="server-endpoint"></a>Server endpoint
 - Punkt końcowy serwera można tworzyć tylko na woluminie NTFS. Systemy plików ReFS, FAT, FAT32 i inne nie są obecnie obsługiwane przez usługę Azure File Sync.
-- Pliki warstwowe staną się niedostępne, jeśli nie zostaną one wywołane przed usunięciem punktu końcowego serwera. Aby przywrócić dostęp do plików, Utwórz ponownie punkt końcowy serwera. Jeśli upłynął 30 dni od momentu, gdy punkt końcowy serwera został usunięty lub punkt końcowy w chmurze został usunięty, pliki warstwowe, które nie zostały odwołane, nie będą używane.
-- Obsługa warstw w chmurze nie jest obsługiwana na woluminie systemowym. Aby utworzyć punkt końcowy serwera na woluminie systemowym, Wyłącz obsługę warstw w chmurze podczas tworzenia punktu końcowego serwera.
+- Tiered files will become inaccessible if the files are not recalled prior to deleting the server endpoint. To restore access to the files, recreate the server endpoint. If 30 days have passed since the server endpoint was deleted or if the cloud endpoint was deleted, tiered files that were not recalled will be unusable.
+- Cloud tiering is not supported on the system volume. To create a server endpoint on the system volume, disable cloud tiering when creating the server endpoint.
 - Klaster trybu failover jest obsługiwany tylko z dyskami klastrowanymi, ale nie z udostępnionymi woluminami klastra (CSV).
 - Punktu końcowego serwera nie można zagnieżdżać. Może on współistnieć na tym samym woluminie równolegle z innym punktem końcowym.
-- Nie należy przechowywać pliku stronicowania systemu operacyjnego lub aplikacji w ramach lokalizacji punktu końcowego serwera.
-- Nazwa serwera w portalu nie jest aktualizowana w przypadku zmiany nazwy serwera.
+- Do not store an OS or application paging file within a server endpoint location.
+- The server name in the portal is not updated if the server is renamed.
 
-### <a name="cloud-endpoint"></a>Punkt końcowy w chmurze
-- Azure File Sync obsługuje wprowadzanie zmian bezpośrednio w udziale plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw muszą zostać odnalezione za pomocą zadania wykrywania zmian Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze co 24 godziny. Ponadto zmiany wprowadzone w udziale plików platformy Azure za pośrednictwem protokołu REST nie będą aktualizować czasu ostatniej modyfikacji SMB i nie będą widoczne jako zmiany przez synchronizację.
-- Usługę synchronizacji magazynu i/lub konto magazynu można przenieść do innej grupy zasobów lub subskrypcji w ramach istniejącej dzierżawy usługi Azure AD. Jeśli konto magazynu jest przenoszone, musisz udzielić hybrydowej usłudze File Sync dostępu do konta magazynu (Sprawdź, [czy Azure File Sync ma dostęp do konta magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+### <a name="cloud-endpoint"></a>Cloud endpoint
+- Azure File Sync supports making changes to the Azure file share directly. However, any changes made on the Azure file share first need to be discovered by an Azure File Sync change detection job. A change detection job is initiated for a cloud endpoint once every 24 hours. In addition, changes made to an Azure file share over the REST protocol will not update the SMB last modified time and will not be seen as a change by sync.
+- The storage sync service and/or storage account can be moved to a different resource group or subscription within the existing Azure AD tenant. If the storage account is moved, you need to give the Hybrid File Sync Service access to the storage account (see [Ensure Azure File Sync has access to the storage account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > Azure File Sync nie obsługuje przeniesienia subskrypcji do innej dzierżawy usługi Azure AD.
+    > Azure File Sync does not support moving the subscription to a different Azure AD tenant.
 
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze
 - Jeśli plik warstwowy jest kopiowany do innej lokalizacji za pomocą rozszerzenia Robocopy, wynikowy plik nie będzie obsługiwany w warstwie. Atrybut offline może być ustawiony, ponieważ rozszerzenie Robocopy niepoprawnie dołącza ten atrybut podczas operacji kopiowania.
-- Podczas kopiowania plików przy użyciu Robocopy, użyj opcji/MIR, aby zachować sygnatury czasowe plików. Zapewni to, że starsze pliki są dostępne wcześniej niż ostatnio używane pliki.
+- When copying files using robocopy, use the /MIR option to preserve file timestamps. This will ensure older files are tiered sooner than recently accessed files.
 
-## <a name="agent-version-6300"></a>6\.3.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 6.3.0.0 agenta Azure File Sync wydanej 27 czerwca 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 6.0.0.0.
+## <a name="agent-version-6300"></a>Agent version 6.3.0.0
+The following release notes are for version 6.3.0.0 of the Azure File Sync agent released June 27, 2019. These notes are in addition to the release notes listed for version 6.0.0.0.
 
-Lista problemów rozwiązanych w tej wersji:  
-- Uzyskiwanie dostępu do lub przeglądanie lokalizacji punktu końcowego serwera za pośrednictwem protokołu SMB jest wolne w systemie Windows Server 2012 R2 
-- Zwiększone wykorzystanie procesora po zainstalowaniu agenta Azure File Sync w wersji 6
-- Udoskonalenia danych telemetrycznych w warstwach chmury
+List of issues fixed in this release:  
+- Accessing or browsing a server endpoint location over SMB is slow on Windows Server 2012 R2 
+- Increased CPU utilization after installing the Azure File Sync v6 agent
+- Cloud tiering telemetry improvements
 
-## <a name="agent-version-6200"></a>6\.2.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 6.2.0.0 agenta Azure File Sync wydanego od 13 czerwca 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 6.0.0.0.
+## <a name="agent-version-6200"></a>Agent version 6.2.0.0
+The following release notes are for version 6.2.0.0 of the Azure File Sync agent released June 13, 2019. These notes are in addition to the release notes listed for version 6.0.0.0.
 
-Lista problemów rozwiązanych w tej wersji:  
-- Po utworzeniu punktu końcowego serwera może wystąpić duże użycie procesora CPU, gdy funkcja odwoływania w tle pobiera pliki na serwer
-- Operacje synchronizacji i obsługi warstw w chmurze mogą zakończyć się niepowodzeniem z powodu błędu ECS_E_SERVER_CREDENTIAL_NEEDED ze względu na wygaśnięcie tokenu
-- Wywołanie pliku może się nie powieść, jeśli adres URL pobierania pliku zawiera zastrzeżone znaki 
+List of issues fixed in this release:  
+- After creating a server endpoint, High CPU usage may occur when background recall is downloading files to the server
+- Sync and cloud tiering operations may fail with error ECS_E_SERVER_CREDENTIAL_NEEDED due to token expiration
+- Recalling a file may fail if the URL to download the file contains reserved characters 
 
-## <a name="agent-version-6100"></a>6\.1.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 6.1.0.0 agenta Azure File Sync wydanej 6 maja 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 6.0.0.0.
+## <a name="agent-version-6100"></a>Agent version 6.1.0.0
+The following release notes are for version 6.1.0.0 of the Azure File Sync agent released May 6, 2019. These notes are in addition to the release notes listed for version 6.0.0.0.
 
-Lista problemów rozwiązanych w tej wersji:  
-- Centrum administracyjne systemu Windows nie może wyświetlić wersji agenta i konfiguracji punktu końcowego serwera na serwerach, na których zainstalowano agenta Azure File Sync w wersji 6,0.
+List of issues fixed in this release:  
+- Windows Admin Center fails to display the agent version and server endpoint configuration on servers which have Azure File Sync agent version 6.0 installed.
 
-## <a name="agent-version-6000"></a>6\.0.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 6.0.0.0 agenta Azure File Sync (wydanie 22 kwietnia 2019).
+## <a name="agent-version-6000"></a>Agent version 6.0.0.0
+The following release notes are for version 6.0.0.0 of the Azure File Sync agent (released April 22, 2019).
 
-### <a name="improvements-and-issues-that-are-fixed"></a>Ulepszenia i problemy, które zostały naprawione
+### <a name="improvements-and-issues-that-are-fixed"></a>Improvements and issues that are fixed
 
-- Obsługa autoaktualizacji agenta
-  - Otrzymaliśmy Twoją opinię i dodano funkcję autoaktualizowania do agenta serwera Azure File Sync. Aby uzyskać więcej informacji, zobacz [Azure File Sync zasad aktualizacji agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#azure-file-sync-agent-update-policy).
-- Obsługa list ACL udziałów plików platformy Azure
-  - Azure File Sync zawsze obsługiwał synchronizowanie list ACL między punktami końcowymi serwera, ale listy ACL nie zostały zsynchronizowane z punktem końcowym w chmurze (udziałem plików platformy Azure). W tej wersji dodano obsługę synchronizowania list kontroli dostępu między serwerem a punktami końcowymi w chmurze.
-- Równoległe przekazywanie i pobieranie sesji synchronizacji dla punktu końcowego serwera 
-  - Punkty końcowe serwera obsługują teraz przekazywanie i pobieranie plików w tym samym czasie. Nie można czekać na ukończenie pobierania, aby umożliwić przekazywanie plików do udziału plików platformy Azure. 
-- Nowe polecenia cmdlet do obsługi warstw w chmurze umożliwiające pobieranie stanu woluminu i warstwowego
-  - Dwa nowe polecenia cmdlet programu PowerShell w ramach serwera mogą być teraz używane do uzyskiwania informacji o ustawieniach i odwoływania plików w chmurze. Udostępniają one informacje rejestrowania z dwóch kanałów zdarzeń na serwerze:
-    - Get-StorageSyncFileTieringResult wyświetli listę wszystkich plików i ich ścieżek, które nie zostały warstwowe i raporty z przyczyn.
-    - Get-StorageSyncFileRecallResult raportuje wszystkie zdarzenia odwołania do pliku. Wyświetla wszystkie pliki, które zostały odwołane, oraz jego ścieżkę, a także powodzenie lub błąd dla tego odwołania.
-  - Domyślnie oba kanały zdarzeń mogą przechowywać do 1 MB każdego — można zwiększyć ilość plików raportowanych przez zwiększenie rozmiaru kanału zdarzenia.
-- Obsługa trybu FIPS
-  - Azure File Sync teraz obsługuje Włączanie trybu FIPS na serwerach z zainstalowanym agentem Azure File Sync.
-    - Przed włączeniem trybu FIPS na serwerze Zainstaluj agenta Azure File Sync i [moduł PackageManagement](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) na serwerze. Jeśli na serwerze jest już włączona funkcja FIPS, [ręcznie Pobierz](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download) [moduł PackageManagement](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) na serwer.
-- Różne ulepszenia niezawodności dotyczące warstw i synchronizacji w chmurze
+- Agent auto-update support
+  - We have heard your feedback and added an auto-update feature into the Azure File Sync server agent. For more information, see [Azure File Sync agent update policy](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#azure-file-sync-agent-update-policy).
+- Support for Azure file share ACLs
+  - Azure File Sync has always supported syncing ACLs between server endpoints but the ACLs were not synced to the cloud endpoint (Azure file share). This release adds support for syncing ACLs between server and cloud endpoints.
+- Parallel upload and download sync sessions for a server endpoint 
+  - Server endpoints now support uploading and downloading files at the same time. No more waiting for a download to complete so files can be uploaded to the Azure file share. 
+- New Cloud Tiering cmdlets to get volume and tiering status
+  - Two new, server-local PowerShell cmdlets can now be used to obtain cloud tiering and file recall information. They make logging information from two event channels on the server available:
+    - Get-StorageSyncFileTieringResult will list all files and their paths that haven't tiered and reports on the reason why.
+    - Get-StorageSyncFileRecallResult reports all file recall events. It lists every file recalled and its path as well as success or error for that recall.
+  - By default, both event channels can store up to 1 MB each – you can increase the amount of files reported by increasing the event channel size.
+- Support for FIPS mode
+  - Azure File Sync now supports enabling FIPS mode on servers which have the Azure File Sync agent installed.
+    - Prior to enabling FIPS mode on your server, install the Azure File Sync agent and [PackageManagement module](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) on your server. If FIPS is already enabled on the server, [manually download](/powershell/scripting/gallery/how-to/working-with-packages/manual-download) the [PackageManagement module](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) to your server.
+- Miscellaneous reliability improvements for cloud tiering and sync
 
-### <a name="evaluation-tool"></a>Narzędzie do oceny
-Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu narzędzia do oceny Azure File Sync. To narzędzie jest Azure PowerShell poleceniem cmdlet, które sprawdza potencjalne problemy związane z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Instrukcje dotyczące instalacji i użycia znajdują się w sekcji [Narzędzie do oceny](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) w przewodniku planowania. 
+### <a name="evaluation-tool"></a>Evaluation Tool
+Before deploying Azure File Sync, you should evaluate whether it is compatible with your system using the Azure File Sync evaluation tool. This tool is an Azure PowerShell cmdlet that checks for potential issues with your file system and dataset, such as unsupported characters or an unsupported OS version. For installation and usage instructions, see [Evaluation Tool](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) section in the planning guide. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalacja agenta i konfiguracja serwera
-Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta Azure File Sync przy użyciu systemu Windows Server, zobacz [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md) i [sposób wdrażania Azure File Sync](storage-sync-files-deployment-guide.md).
+For more information on how to install and configure the Azure File Sync agent with Windows Server, see [Planning for an Azure File Sync deployment](storage-sync-files-planning.md) and [How to deploy Azure File Sync](storage-sync-files-deployment-guide.md).
 
-- Pakiet instalacyjny agenta musi być zainstalowany z podniesionymi uprawnieniami (administratora).
-- Agent nie jest obsługiwany w przypadku opcji wdrażania serwera nano Server.
-- Agent jest obsługiwany tylko w systemach Windows Server 2019, Windows Server 2016 i Windows Server 2012 R2.
-- Agent wymaga co najmniej 2 GiB pamięci. Jeśli serwer jest uruchomiony na maszynie wirtualnej z włączoną pamięcią dynamiczną, maszyna wirtualna powinna mieć skonfigurowaną minimalną 2048 MiB pamięci.
-- Usługa agenta synchronizacji magazynu (FileSyncSvc) nie obsługuje punktów końcowych serwera znajdujących się na woluminie, który ma skompresowany katalog informacji o woluminie systemowym (SVI). Ta konfiguracja będzie prowadzić do nieoczekiwanych wyników.
+- The agent installation package must be installed with elevated (admin) permissions.
+- The agent is not supported on Nano Server deployment option.
+- The agent is supported only on Windows Server 2019, Windows Server 2016, and Windows Server 2012 R2.
+- The agent requires at least 2 GiB of memory. If the server is running in a virtual machine with dynamic memory enabled, the VM should be configured with a minimum 2048 MiB of memory.
+- The Storage Sync Agent (FileSyncSvc) service does not support server endpoints located on a volume that has the system volume information (SVI) directory compressed. This configuration will lead to unexpected results.
 
 ### <a name="interoperability"></a>Współdziałanie
-- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów Azure File Sync](storage-sync-files-troubleshoot.md).
-- Ekrany plików Menedżer zasobów serwera plików (Menedżer zasobów plików) mogą spowodować nieograniczone błędy synchronizacji, jeśli pliki są zablokowane z powodu osłony plików.
-- Uruchamianie programu Sysprep na serwerze, na którym zainstalowano agenta Azure File Sync, nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy zainstalować agenta Azure File Sync.
+- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. For more information, see [Troubleshoot Azure File Sync](storage-sync-files-troubleshoot.md).
+- File Server Resource Manager (FSRM) file screens can cause endless sync failures when files are blocked because of the file screen.
+- Running sysprep on a server which has the Azure File Sync agent installed is not supported and can lead to unexpected results. The Azure File Sync agent should be installed after deploying the server image and completing sysprep mini-setup.
 
 ### <a name="sync-limitations"></a>Ograniczenia synchronizacji
 Następujące elementy nie są synchronizowane, ale reszta systemu nadal normalnie działa:
-- Pliki z nieobsługiwanymi znakami. Zobacz [Przewodnik rozwiązywania problemów](storage-sync-files-troubleshoot.md#handling-unsupported-characters) , aby wyświetlić listę nieobsługiwanych znaków.
-- Pliki lub katalogi kończące się kropką.
+- Files with unsupported characters. See [Troubleshooting guide](storage-sync-files-troubleshoot.md#handling-unsupported-characters) for list of unsupported characters.
+- Files or directories that end with a period.
 - Ścieżki dłuższe niż 2048 znaków.
 - Część DACL (poufna lista kontroli dostępu) deskryptora zabezpieczeń, jeśli jest większa niż 2 KB. Ten problem występuje tylko wtedy, gdy masz więcej niż około 40 wpisów kontroli dostępu (ACE) dla jednego elementu.
 - Część SACL (systemowa lista kontroli dostępu) deskryptora zabezpieczeń, która jest używana do przeprowadzania inspekcji.
@@ -280,91 +280,91 @@ Następujące elementy nie są synchronizowane, ale reszta systemu nadal normaln
     > [!Note]  
     > Usługa Azure File Sync zawsze szyfruje dane podczas przesyłania. Dane magazynowane na platformie Azure są zawsze zaszyfrowane.
  
-### <a name="server-endpoint"></a>Punkt końcowy serwera
+### <a name="server-endpoint"></a>Server endpoint
 - Punkt końcowy serwera można tworzyć tylko na woluminie NTFS. Systemy plików ReFS, FAT, FAT32 i inne nie są obecnie obsługiwane przez usługę Azure File Sync.
-- Pliki warstwowe staną się niedostępne, jeśli nie zostaną one wywołane przed usunięciem punktu końcowego serwera. Aby przywrócić dostęp do plików, Utwórz ponownie punkt końcowy serwera. Jeśli upłynął 30 dni od momentu, gdy punkt końcowy serwera został usunięty lub punkt końcowy w chmurze został usunięty, pliki warstwowe, które nie zostały odwołane, nie będą używane.
-- Obsługa warstw w chmurze nie jest obsługiwana na woluminie systemowym. Aby utworzyć punkt końcowy serwera na woluminie systemowym, Wyłącz obsługę warstw w chmurze podczas tworzenia punktu końcowego serwera.
+- Tiered files will become inaccessible if the files are not recalled prior to deleting the server endpoint. To restore access to the files, recreate the server endpoint. If 30 days have passed since the server endpoint was deleted or if the cloud endpoint was deleted, tiered files that were not recalled will be unusable.
+- Cloud tiering is not supported on the system volume. To create a server endpoint on the system volume, disable cloud tiering when creating the server endpoint.
 - Klaster trybu failover jest obsługiwany tylko z dyskami klastrowanymi, ale nie z udostępnionymi woluminami klastra (CSV).
 - Punktu końcowego serwera nie można zagnieżdżać. Może on współistnieć na tym samym woluminie równolegle z innym punktem końcowym.
-- Nie należy przechowywać pliku stronicowania systemu operacyjnego lub aplikacji w ramach lokalizacji punktu końcowego serwera.
-- Nazwa serwera w portalu nie jest aktualizowana w przypadku zmiany nazwy serwera.
+- Do not store an OS or application paging file within a server endpoint location.
+- The server name in the portal is not updated if the server is renamed.
 
-### <a name="cloud-endpoint"></a>Punkt końcowy w chmurze
-- Azure File Sync obsługuje wprowadzanie zmian bezpośrednio w udziale plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw muszą zostać odnalezione za pomocą zadania wykrywania zmian Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze co 24 godziny. Ponadto zmiany wprowadzone w udziale plików platformy Azure za pośrednictwem protokołu REST nie będą aktualizować czasu ostatniej modyfikacji SMB i nie będą widoczne jako zmiany przez synchronizację.
-- Usługę synchronizacji magazynu i/lub konto magazynu można przenieść do innej grupy zasobów lub subskrypcji w ramach istniejącej dzierżawy usługi Azure AD. Jeśli konto magazynu jest przenoszone, musisz udzielić hybrydowej usłudze File Sync dostępu do konta magazynu (Sprawdź, [czy Azure File Sync ma dostęp do konta magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+### <a name="cloud-endpoint"></a>Cloud endpoint
+- Azure File Sync supports making changes to the Azure file share directly. However, any changes made on the Azure file share first need to be discovered by an Azure File Sync change detection job. A change detection job is initiated for a cloud endpoint once every 24 hours. In addition, changes made to an Azure file share over the REST protocol will not update the SMB last modified time and will not be seen as a change by sync.
+- The storage sync service and/or storage account can be moved to a different resource group or subscription within the existing Azure AD tenant. If the storage account is moved, you need to give the Hybrid File Sync Service access to the storage account (see [Ensure Azure File Sync has access to the storage account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > Azure File Sync nie obsługuje przeniesienia subskrypcji do innej dzierżawy usługi Azure AD.
+    > Azure File Sync does not support moving the subscription to a different Azure AD tenant.
 
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze
 - Jeśli plik warstwowy jest kopiowany do innej lokalizacji za pomocą rozszerzenia Robocopy, wynikowy plik nie będzie obsługiwany w warstwie. Atrybut offline może być ustawiony, ponieważ rozszerzenie Robocopy niepoprawnie dołącza ten atrybut podczas operacji kopiowania.
-- Podczas kopiowania plików przy użyciu Robocopy, użyj opcji/MIR, aby zachować sygnatury czasowe plików. Zapewni to, że starsze pliki są dostępne wcześniej niż ostatnio używane pliki.
+- When copying files using robocopy, use the /MIR option to preserve file timestamps. This will ensure older files are tiered sooner than recently accessed files.
 - Podczas przeglądania właściwości plików z klienta SMB atrybut offline może wyglądać na ustawiony niepoprawnie z powodu buforowania plików metadanych przez SMB.
 
-## <a name="agent-version-5200"></a>5\.2.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 5.2.0.0 agenta Azure File Sync wydanej 4 kwietnia 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 5.0.2.0.
+## <a name="agent-version-5200"></a>Agent version 5.2.0.0
+The following release notes are for version 5.2.0.0 of the Azure File Sync agent released April 4, 2019. These notes are in addition to the release notes listed for version 5.0.2.0.
 
-Lista problemów rozwiązanych w tej wersji:  
-- Ulepszenia niezawodności dotyczące funkcji transferu danych w trybie offline i wznawiania transferu danych
-- Udoskonalenia synchronizacji danych telemetrycznych
+List of issues fixed in this release:  
+- Reliability improvements for offline data transfer and data transfer resume features
+- Sync telemetry improvements
 
-## <a name="agent-version-5100"></a>5\.1.0.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 5.1.0.0 agenta Azure File Sync wydanego 7 marca 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 5.0.2.0.
+## <a name="agent-version-5100"></a>Agent version 5.1.0.0
+The following release notes are for version 5.1.0.0 of the Azure File Sync agent released March 7, 2019. These notes are in addition to the release notes listed for version 5.0.2.0.
 
-Lista problemów rozwiązanych w tej wersji:  
-- Synchronizacja plików może zakończyć się niepowodzeniem z błędem 0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED), jeśli Wyliczenie zmian kończy się niepowodzeniem na serwerze
-- Jeśli sesja synchronizacji lub plik otrzymuje błąd 0x80072F78 (WININET_E_INVALID_SERVER_RESPONSE), synchronizacja spowoduje teraz ponowną próbę wykonania operacji
-- Synchronizacja plików może zakończyć się niepowodzeniem z powodu błędu 0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE)
-- Duże użycie pamięci może wystąpić podczas odwoływania plików
-- Udoskonalenia danych telemetrycznych w warstwach chmury 
+List of issues fixed in this release:  
+- Files may fail to sync with error 0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED) if change enumeration is failing on the server
+- If a sync session or file receives an error 0x80072f78 (WININET_E_INVALID_SERVER_RESPONSE), sync will now retry the operation
+- Files may fail to sync with error 0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE)
+- High memory usage may occur when recalling files
+- Cloud tiering telemetry improvements 
 
-## <a name="agent-version-5020"></a>5\.0.2.0 wersja agenta
-Poniższe informacje o wersji dotyczą wersji 5.0.2.0 agenta Azure File Sync (wydane 12 lutego 2019).
+## <a name="agent-version-5020"></a>Agent version 5.0.2.0
+The following release notes are for version 5.0.2.0 of the Azure File Sync agent (released February 12, 2019).
 
-### <a name="improvements-and-issues-that-are-fixed"></a>Ulepszenia i problemy, które zostały naprawione
+### <a name="improvements-and-issues-that-are-fixed"></a>Improvements and issues that are fixed
 
-- Obsługa Azure Government w chmurze
-  - Dodaliśmy obsługę wersji zapoznawczej dla chmury Azure Government. Wymaga to białej subskrypcji i specjalnego pobrania agenta od firmy Microsoft. Aby uzyskać dostęp do wersji zapoznawczej, Wyślij wiadomość e-mail bezpośrednio na [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com).
-- Obsługa deduplikacji danych
-    - Funkcja deduplikacji danych jest teraz w pełni obsługiwana przy użyciu obsługi warstw w chmurze w systemach Windows Server 2016 i Windows Server 2019. Włączenie deduplikacji na woluminie z włączonym obsługą warstw w chmurze umożliwia przechowywanie w pamięci podręcznej większej liczby plików bez udostępniania większej ilości miejsca w magazynie.
-- Obsługa transferu danych w trybie offline (na przykład za pośrednictwem urządzenie Data Box)
-    - Z łatwością Migruj duże ilości danych do Azure File Sync za pośrednictwem dowolnych środków. Można wybrać Azure Data Box, AzCopy i nawet usług migracji innych firm. Nie ma potrzeby korzystania z dużej ilości przepustowości w celu pobierania danych na platformę Azure, w przypadku urządzenie Data Box — po prostu wyślij ją tam. Aby dowiedzieć się więcej, zobacz [Offline transfer danych docs](https://aka.ms/AFS/OfflineDataTransfer).
-- Ulepszona wydajność synchronizacji
-    - Klienci z wieloma punktami końcowymi serwera na tym samym woluminie mogą mieć powolną wydajność synchronizacji przed tą wersją. Azure File Sync tworzy tymczasową migawkę usługi VSS raz dziennie na serwerze w celu synchronizowania plików, które mają otwarte dojścia. Usługa Sync obsługuje teraz synchronizację wielu punktów końcowych serwera na woluminie, gdy sesja synchronizacji usługi VSS jest aktywna. Nie można czekać na ukończenie sesji synchronizacji usługi VSS w celu wznowienia synchronizacji w innych punktach końcowych serwera w woluminie.
-- Ulepszone monitorowanie w portalu
-    - Dodano wykresy do portalu usługi synchronizacji magazynu w celu wyświetlenia:
-        - Liczba synchronizowanych plików
-        - Rozmiar transferowanych danych
-        - Liczba niesynchronizowanych plików
-        - Rozmiar danych, które zostały odwołane
-        - Stan łączności z serwerem
-    - Aby dowiedzieć się więcej, zobacz [Monitor Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring).
-- Zwiększona skalowalność i niezawodność
-    - Maksymalna liczba obiektów systemu plików (katalogów i plików) w katalogu została zwiększona do 1 000 000. Poprzedni limit to 200 000.
-    - Funkcja synchronizacji podejmie próbę wznowienia transferu danych zamiast retransmisji w przypadku przerwania transferu dla dużych plików 
+- Support for Azure Government cloud
+  - We have added preview support for the Azure Government cloud. This requires a white-listed subscription and a special agent download from Microsoft. To get access to the preview, please email us directly at [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com).
+- Support for Data Deduplication
+    - Data Deduplication is now fully supported with cloud tiering enabled on Windows Server 2016 and Windows Server 2019. Enabling deduplication on a volume with cloud tiering enabled lets you cache more files on-premises without provisioning more storage.
+- Support for offline data transfer (e.g. via Data Box)
+    - Easily migrate large amounts of data into Azure File Sync via any means you choose. You can choose Azure Data Box, AzCopy and even third-party migration services. No need to use massive amounts of bandwidth to get your data into Azure, in the case of Data Box – simply mail it there! To learn more, see [Offline Data Transfer Docs](https://aka.ms/AFS/OfflineDataTransfer).
+- Improved sync performance
+    - Customers with multiple server endpoints on the same volume may have experienced slow sync performance prior to this release. Azure File Sync creates a temporary VSS snapshot once a day on the server to sync files that have open handles. Sync now supports multiple server endpoints syncing on a volume when a VSS sync session is active. No more waiting for a VSS sync session to complete so sync can resume on other server endpoints on the volume.
+- Improved monitoring in the portal
+    - Charts have been added in the Storage Sync Service portal to view:
+        - Number of files synced
+        - Size of data transferred
+        - Number of files not syncing
+        - Size of data recalled
+        - Server connectivity status
+    - To learn more, see [Monitor Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring).
+- Improved scalability and reliability
+    - Maximum number of file system objects (directories and files) in a directory has increased to 1,000,000. Previous limit was 200,000.
+    - Sync will try to resume data transfer rather than retransmitting when a transfer is interrupted for large files 
 
-### <a name="evaluation-tool"></a>Narzędzie do oceny
-Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu narzędzia do oceny Azure File Sync. To narzędzie jest Azure PowerShell poleceniem cmdlet, które sprawdza potencjalne problemy związane z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Instrukcje dotyczące instalacji i użycia znajdują się w sekcji [Narzędzie do oceny](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) w przewodniku planowania. 
+### <a name="evaluation-tool"></a>Evaluation Tool
+Before deploying Azure File Sync, you should evaluate whether it is compatible with your system using the Azure File Sync evaluation tool. This tool is an Azure PowerShell cmdlet that checks for potential issues with your file system and dataset, such as unsupported characters or an unsupported OS version. For installation and usage instructions, see [Evaluation Tool](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) section in the planning guide. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalacja agenta i konfiguracja serwera
-Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta Azure File Sync przy użyciu systemu Windows Server, zobacz [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md) i [sposób wdrażania Azure File Sync](storage-sync-files-deployment-guide.md).
+For more information on how to install and configure the Azure File Sync agent with Windows Server, see [Planning for an Azure File Sync deployment](storage-sync-files-planning.md) and [How to deploy Azure File Sync](storage-sync-files-deployment-guide.md).
 
-- Pakiet instalacyjny agenta musi być zainstalowany z podniesionymi uprawnieniami (administratora).
-- Agent nie jest obsługiwany w opcjach wdrażania systemu Windows Server Core lub nano Server.
-- Agent jest obsługiwany tylko w systemach Windows Server 2019, Windows Server 2016 i Windows Server 2012 R2.
-- Agent wymaga co najmniej 2 GiB pamięci. Jeśli serwer jest uruchomiony na maszynie wirtualnej z włączoną pamięcią dynamiczną, maszyna wirtualna powinna mieć skonfigurowaną minimalną 2048 MiB pamięci.
-- Usługa agenta synchronizacji magazynu (FileSyncSvc) nie obsługuje punktów końcowych serwera znajdujących się na woluminie, który ma skompresowany katalog informacji o woluminie systemowym (SVI). Ta konfiguracja będzie prowadzić do nieoczekiwanych wyników.
-- Tryb FIPS nie jest obsługiwany i musi być wyłączony. 
+- The agent installation package must be installed with elevated (admin) permissions.
+- The agent is not supported on Windows Server Core or Nano Server deployment options.
+- The agent is supported only on Windows Server 2019, Windows Server 2016, and Windows Server 2012 R2.
+- The agent requires at least 2 GiB of memory. If the server is running in a virtual machine with dynamic memory enabled, the VM should be configured with a minimum 2048 MiB of memory.
+- The Storage Sync Agent (FileSyncSvc) service does not support server endpoints located on a volume that has the system volume information (SVI) directory compressed. This configuration will lead to unexpected results.
+- FIPS mode is not supported and must be disabled. 
 
 ### <a name="interoperability"></a>Współdziałanie
-- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów Azure File Sync](storage-sync-files-troubleshoot.md).
-- Ekrany plików Menedżer zasobów serwera plików (Menedżer zasobów plików) mogą spowodować nieograniczone błędy synchronizacji, jeśli pliki są zablokowane z powodu osłony plików.
-- Uruchamianie programu Sysprep na serwerze, na którym zainstalowano agenta Azure File Sync, nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy zainstalować agenta Azure File Sync.
+- Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które uzyskują dostęp do plików warstwowych, mogą spowodować niepożądane odwołania, chyba że przestrzegają one atrybutu offline i pomijają odczytywanie zawartości tych plików. For more information, see [Troubleshoot Azure File Sync](storage-sync-files-troubleshoot.md).
+- File Server Resource Manager (FSRM) file screens can cause endless sync failures when files are blocked because of the file screen.
+- Running sysprep on a server which has the Azure File Sync agent installed is not supported and can lead to unexpected results. The Azure File Sync agent should be installed after deploying the server image and completing sysprep mini-setup.
 
 ### <a name="sync-limitations"></a>Ograniczenia synchronizacji
 Następujące elementy nie są synchronizowane, ale reszta systemu nadal normalnie działa:
-- Pliki z nieobsługiwanymi znakami. Zobacz [Przewodnik rozwiązywania problemów](storage-sync-files-troubleshoot.md#handling-unsupported-characters) , aby wyświetlić listę nieobsługiwanych znaków.
-- Pliki lub katalogi kończące się kropką.
+- Files with unsupported characters. See [Troubleshooting guide](storage-sync-files-troubleshoot.md#handling-unsupported-characters) for list of unsupported characters.
+- Files or directories that end with a period.
 - Ścieżki dłuższe niż 2048 znaków.
 - Część DACL (poufna lista kontroli dostępu) deskryptora zabezpieczeń, jeśli jest większa niż 2 KB. Ten problem występuje tylko wtedy, gdy masz więcej niż około 40 wpisów kontroli dostępu (ACE) dla jednego elementu.
 - Część SACL (systemowa lista kontroli dostępu) deskryptora zabezpieczeń, która jest używana do przeprowadzania inspekcji.
@@ -378,23 +378,23 @@ Następujące elementy nie są synchronizowane, ale reszta systemu nadal normaln
     > [!Note]  
     > Usługa Azure File Sync zawsze szyfruje dane podczas przesyłania. Dane magazynowane na platformie Azure są zawsze zaszyfrowane.
  
-### <a name="server-endpoint"></a>Punkt końcowy serwera
+### <a name="server-endpoint"></a>Server endpoint
 - Punkt końcowy serwera można tworzyć tylko na woluminie NTFS. Systemy plików ReFS, FAT, FAT32 i inne nie są obecnie obsługiwane przez usługę Azure File Sync.
-- Pliki warstwowe staną się niedostępne, jeśli nie zostaną one wywołane przed usunięciem punktu końcowego serwera. Aby przywrócić dostęp do plików, Utwórz ponownie punkt końcowy serwera. Jeśli upłynął 30 dni od momentu, gdy punkt końcowy serwera został usunięty lub punkt końcowy w chmurze został usunięty, pliki warstwowe, które nie zostały odwołane, nie będą używane.
-- Obsługa warstw w chmurze nie jest obsługiwana na woluminie systemowym. Aby utworzyć punkt końcowy serwera na woluminie systemowym, Wyłącz obsługę warstw w chmurze podczas tworzenia punktu końcowego serwera.
+- Tiered files will become inaccessible if the files are not recalled prior to deleting the server endpoint. To restore access to the files, recreate the server endpoint. If 30 days have passed since the server endpoint was deleted or if the cloud endpoint was deleted, tiered files that were not recalled will be unusable.
+- Cloud tiering is not supported on the system volume. To create a server endpoint on the system volume, disable cloud tiering when creating the server endpoint.
 - Klaster trybu failover jest obsługiwany tylko z dyskami klastrowanymi, ale nie z udostępnionymi woluminami klastra (CSV).
 - Punktu końcowego serwera nie można zagnieżdżać. Może on współistnieć na tym samym woluminie równolegle z innym punktem końcowym.
-- Nie należy przechowywać pliku stronicowania systemu operacyjnego lub aplikacji w ramach lokalizacji punktu końcowego serwera.
-- Nazwa serwera w portalu nie jest aktualizowana w przypadku zmiany nazwy serwera.
+- Do not store an OS or application paging file within a server endpoint location.
+- The server name in the portal is not updated if the server is renamed.
 
-### <a name="cloud-endpoint"></a>Punkt końcowy w chmurze
-- Azure File Sync obsługuje wprowadzanie zmian bezpośrednio w udziale plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw muszą zostać odnalezione za pomocą zadania wykrywania zmian Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze co 24 godziny. Ponadto zmiany wprowadzone w udziale plików platformy Azure za pośrednictwem protokołu REST nie będą aktualizować czasu ostatniej modyfikacji SMB i nie będą widoczne jako zmiany przez synchronizację.
-- Usługę synchronizacji magazynu i/lub konto magazynu można przenieść do innej grupy zasobów lub subskrypcji w ramach istniejącej dzierżawy usługi Azure AD. Jeśli konto magazynu jest przenoszone, musisz udzielić hybrydowej usłudze File Sync dostępu do konta magazynu (Sprawdź, [czy Azure File Sync ma dostęp do konta magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+### <a name="cloud-endpoint"></a>Cloud endpoint
+- Azure File Sync supports making changes to the Azure file share directly. However, any changes made on the Azure file share first need to be discovered by an Azure File Sync change detection job. A change detection job is initiated for a cloud endpoint once every 24 hours. In addition, changes made to an Azure file share over the REST protocol will not update the SMB last modified time and will not be seen as a change by sync.
+- The storage sync service and/or storage account can be moved to a different resource group or subscription within the existing Azure AD tenant. If the storage account is moved, you need to give the Hybrid File Sync Service access to the storage account (see [Ensure Azure File Sync has access to the storage account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > Azure File Sync nie obsługuje przeniesienia subskrypcji do innej dzierżawy usługi Azure AD.
+    > Azure File Sync does not support moving the subscription to a different Azure AD tenant.
 
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze
 - Jeśli plik warstwowy jest kopiowany do innej lokalizacji za pomocą rozszerzenia Robocopy, wynikowy plik nie będzie obsługiwany w warstwie. Atrybut offline może być ustawiony, ponieważ rozszerzenie Robocopy niepoprawnie dołącza ten atrybut podczas operacji kopiowania.
-- Podczas kopiowania plików przy użyciu Robocopy, użyj opcji/MIR, aby zachować sygnatury czasowe plików. Zapewni to, że starsze pliki są dostępne wcześniej niż ostatnio używane pliki.
+- When copying files using robocopy, use the /MIR option to preserve file timestamps. This will ensure older files are tiered sooner than recently accessed files.
 - Podczas przeglądania właściwości plików z klienta SMB atrybut offline może wyglądać na ustawiony niepoprawnie z powodu buforowania plików metadanych przez SMB.

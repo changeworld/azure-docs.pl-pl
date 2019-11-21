@@ -1,6 +1,6 @@
 ---
-title: Problem z logowaniem do aplikacji lokalnej przy użyciu serwera proxy aplikacji usługi Azure AD | Microsoft Docs
-description: Rozwiązywanie typowych problemów związanych z zalogowaniem się do aplikacji lokalnej zintegrowanej z usługą Azure AD przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
+title: Problem signing in to on-premises app using Azure AD app proxy | Microsoft Docs
+description: Troubleshooting common issues faced when you are unable to sign in to an on-premises application integrated with Azure AD using the Azure AD Application Proxy
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,16 +15,16 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4483dc75d116e75521cb348b56dac418b3e012a8
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381324"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232324"
 ---
-# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problemy z logowaniem do aplikacji lokalnej przy użyciu serwera proxy aplikacji usługi Azure AD
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problems signing in to an on-premises application using the Azure AD application proxy
 
-Jeśli masz problemy z zalogowaniem się do aplikacji lokalnej, możesz spróbować wykonać poniższe kroki, aby rozwiązać problem.
+If you are having problems signing in an on-premises application, you can try following the steps below to resolving your problem.
 
 ## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Mogę załadować moją aplikację, lecz niektóre elementy strony wyglądają na uszkodzone
 
@@ -58,5 +58,5 @@ Następujące dokumenty mogą ułatwić rozwiązanie niektórych często spotyka
   Następujące dokumenty mogą ułatwić rozwiązanie niektórych często spotykanych problemów tego typu.
   * [Mam problemy z instalacją łącznika agenta serwera proxy aplikacji](application-proxy-connector-installation-problem.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Jak zapewnić bezpieczny, zdalny dostęp do aplikacji lokalnych](application-proxy.md)

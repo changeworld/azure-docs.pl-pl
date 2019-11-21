@@ -1,117 +1,119 @@
 ---
-title: Skonfiguruj transformację ujścia w funkcji przepływu danych mapowania Azure Data Factory
-description: Dowiedz się, jak skonfigurować transformację ujścia w przepływie danych mapowania.
+title: Set up a sink transformation in the mapping data flow feature
+description: Learn how to set up a sink transformation in the mapping data flow.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082928"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217930"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
+# <a name="sink-transformation-for-a-data-flow"></a>Sink transformation for a data flow
 
-Po przekształceniu przepływu danych możesz odujścia dane do docelowego zestawu danych. W transformację ujścia Wybierz definicję zestawu danych dla docelowego danych wyjściowych. Może istnieć tyle transformacji ujścia, ile wymaga przepływ danych.
+After you transform your data flow, you can sink the data into a destination dataset. In the sink transformation, choose a dataset definition for the destination output data. You can have as many sink transformations as your data flow requires.
 
-Aby obsłużyć dryfowanie schematu i zmiany w danych przychodzących, należy ujścia danych wyjściowych do folderu bez zdefiniowanego schematu w wyjściowym zestawie danych. Możesz również uwzględnić zmiany kolumn w źródłach, wybierając opcję **Zezwalaj na dryfowanie schematu** w źródle. Następnie Automap wszystkie pola w zlewie.
+To account for schema drift and changes in incoming data, sink the output data to a folder without a defined schema in the output dataset. You can also account for column changes in your sources by selecting **Allow schema drift** in the source. Then automap all fields in the sink.
 
-![Opcje na karcie zlewka z uwzględnieniem opcji Automap](media/data-flow/sink1.png "ujścia 1")
+![Options on the Sink tab, including the Auto Map option](media/data-flow/sink1.png "sink 1")
 
-Aby wyprowadzić wszystkie pola przychodzące, Włącz funkcję **Automap**. Aby wybrać pola, które mają być ujścia do miejsca docelowego, lub zmienić nazwy pól w miejscu docelowym, wyłącz **automapowanie**. Następnie otwórz kartę **Mapowanie** , aby zamapować pola wyjściowe.
+To sink all incoming fields, turn on **Auto Map**. To choose the fields to sink to the destination, or to change the names of the fields at the destination, turn off **Auto Map**. Then open the **Mapping** tab to map output fields.
 
-![Opcje na karcie Mapowanie](media/data-flow/sink2.png "ujścia 2")
+![Options on the Mapping tab](media/data-flow/sink2.png "sink 2")
 
 ## <a name="output"></a>Dane wyjściowe 
-W przypadku usługi Azure Blob Storage lub Data Lake Storage typów ujścia dane są wyprowadzane w folderze. Platforma Spark generuje partycjonowane pliki danych wyjściowych na podstawie schematu partycjonowania używanego przez transformację ujścia. 
+For Azure Blob storage or Data Lake Storage sink types, output the transformed data into a folder. Spark generates partitioned output data files based on the partitioning scheme that the sink transformation uses. 
 
-Schemat partycjonowania można ustawić na karcie **Optymalizacja** . Jeśli chcesz, aby Data Factory scalał dane wyjściowe w jeden plik, wybierz **jedną partycję**. Jeśli chcesz zachować lub utworzyć partycjonowane foldery, Użyj partycji **klucza** i ustaw klucze, które mają być używane dla partycjonowanych struktur folderów.
+You can set the partitioning scheme from the **Optimize** tab. If you want Data Factory to merge your output into a single file, select **Single partition**. If you wish to maintain or create partitioned folders, use **Key partitioning** and set the keys you wish to use for partitioned folder structures.
 
-![Opcje na karcie Optymalizacja](media/data-flow/opt001.png "Opcje ujścia")
+![Options on the Optimize tab](media/data-flow/opt001.png "sink options")
 
-## <a name="field-mapping"></a>Mapowanie pól
-Na karcie **Mapowanie** przekształcenia ujścia można mapować kolumny przychodzące po lewej stronie do miejsc docelowych po prawej stronie. Gdy ujścia danych są przesyłane do plików, Data Factory będą zawsze zapisywać nowe pliki do folderu. Po zmapowaniu do zestawu danych bazy wiedzy wybierz opcję operacje tabeli bazy danych, która będzie wstawiana, aktualizowana, upsert lub usuwana.
+## <a name="field-mapping"></a>Field mapping
+On the **Mapping** tab of your sink transformation, you can map the incoming columns on the left to the destinations on the right. When you sink data flows to files, Data Factory will always write new files to a folder. When you map to a database dataset, you will choose database table operation options to insert, update, upsert, or delete.
 
-![Karta mapowanie](media/data-flow/sink2.png "Ujścia")
+![The Mapping tab](media/data-flow/sink2.png "Sinks")
 
-W tabeli mapowanie można wybrać wiele kolumn, odłączyć wiele kolumn lub zmapować wiele wierszy na tę samą nazwę kolumny.
+In the mapping table, you can multiselect to link multiple columns, delink multiple columns, or map multiple rows to the same column name.
 
-Aby zawsze mapować przychodzący zestaw pól na obiekt docelowy, ponieważ są one i w pełni akceptują elastyczne definicje schematu, wybierz opcję **Zezwalaj na dryfowanie schematu**.
+To always map the incoming set of fields to a target as they are and to fully accept flexible schema definitions, select **Allow schema drift**.
 
-![Karta mapowanie pokazująca pola mapowane na kolumny w zestawie danych](media/data-flow/multi1.png "wiele opcji")
+![The Mapping tab, showing fields mapped to columns in the dataset](media/data-flow/multi1.png "multiple options")
 
-Aby zresetować mapowania kolumn, wybierz pozycję **ponownie Mapuj**.
+To reset your column mappings, select **Re-map**.
 
-![Karta ujścia](media/data-flow/sink1.png "Ujścia — jeden")
+![The Sink tab](media/data-flow/sink1.png "Sink One")
 
-Wybierz pozycję **Weryfikuj schemat** , aby zakończyć niepowodzeniem ujścia w przypadku zmiany schematu.
+Select **Validate schema** to fail the sink if the schema changes.
 
-Wybierz pozycję **Wyczyść folder,** aby obciąć zawartość folderu ujścia przed zapisaniem plików docelowych w tym folderze docelowym.
+Select **Clear the folder** to truncate the contents of the sink folder before writing the destination files in that target folder.
 
-## <a name="fixed-mapping-vs-rule-based-mapping"></a>Stałe mapowanie a mapowanie oparte na regułach
-Po wyłączeniu automapowania będzie można dodać mapowanie oparte na kolumnach (stałe mapowanie) lub mapowanie oparte na regułach. Mapowanie oparte na regułach umożliwi pisanie wyrażeń z dopasowaniem do wzorca, podczas gdy stałe mapowanie spowoduje zamapowanie nazw kolumn logicznych i fizycznych.
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Fixed mapping vs. rule-based mapping
+When you turn off auto-mapping, you will have the option to add either column-based mapping (fixed mapping) or rule-based mapping. Rule-based mapping will allow you to write expressions with pattern matching while fixed mapping will map logical and physical column names.
 
-![Mapowanie oparte na regułach](media/data-flow/rules4.png "Mapowanie oparte na regułach")
+![Rule-based Mapping](media/data-flow/rules4.png "Rule-based mapping")
 
-Po wybraniu mapowania opartego na regułach, nastąpi naliczanie PODAJNIKa, aby oszacować pasujące wyrażenie zgodne z regułami przychodzącego wzorca i zdefiniować nazwy pól wychodzących. Możesz dodać dowolną kombinację mapowań pól i reguł. Nazwy pól są następnie generowane w czasie wykonywania przez moduł ADF na podstawie przychodzących metadanych ze źródła. Podczas debugowania można wyświetlać nazwy wygenerowanych pól i korzystać z okienka Podgląd danych.
+When you choose rule-based mapping, you are instructing ADF to evaluate your matching expression to match incoming pattern rules and define the outgoing field names. You may add any combination of both field and rule-based mappings. Field names are then generated at runtime by ADF based on incoming metadata from the source. You can view the names of the generated fields during debug and using the data preview pane.
 
-Szczegóły dopasowania wzorca znajdują się w [dokumentacji wzorca kolumny](concepts-data-flow-column-pattern.md).
+Details on pattern matching are at [Column Pattern documentation](concepts-data-flow-column-pattern.md).
 
-Można także wprowadzać wzorce wyrażeń regularnych w przypadku używania dopasowania opartego na regułach, rozszerzając wiersz i wprowadzając wyrażenie regularne obok "nazwa pasuje:".
+You can also enter regular expression patterns when using rule based matching by expanding the row and entering a regular expression next to "Name Matches:".
 
-![Mapowanie wyrażenia regularnego](media/data-flow/scdt1g4.png "Mapowanie wyrażenia regularnego")
+![Regex Mapping](media/data-flow/scdt1g4.png "Regex mapping")
 
-Bardzo prostym typowym przykładem dla mapowania opartego na regułach i stałego mapowania jest przypadek, w którym chcesz zmapować wszystkie pola przychodzące na taką samą nazwę w miejscu docelowym. W przypadku stałych mapowań należy wyświetlić poszczególne kolumny w tabeli. W przypadku mapowania opartego na regułach istnieje jedna reguła, która mapuje wszystkie pola przy użyciu ```true()``` do tej samej nazwy pola przychodzącego reprezentowanej przez ```$$```.
+A very basic common example for a rule-based mapping vs. fixed mapping is the case where you want to map all incoming fields to the same name in your target. In the case of fixed mappings, you would list each individual column in the table. For rule-based mapping, you would have a single rule that maps all fields using ```true()``` to the same incoming field name represented by ```$$```.
 
-### <a name="sink-association-with-dataset"></a>Skojarzenie ujścia z zestawem danych
+### <a name="sink-association-with-dataset"></a>Sink association with dataset
 
-Zestaw danych, który został wybrany dla obiektu sink, może lub nie ma zdefiniowanego schematu w definicji zestawu danych. Jeśli nie ma zdefiniowanego schematu, należy zezwolić na dryfowanie schematu. Po zdefiniowaniu stałego mapowania Mapowanie nazw logicznie do fizycznych będzie trwało w transformacji ujścia. W przypadku zmiany definicji schematu zestawu danych można przerwać mapowanie ujścia. Aby tego uniknąć, należy użyć mapowania opartego na regułach. Mapowania oparte na regułach są uogólnione, co oznacza, że zmiany schematu w zestawie danych nie spowodują przerwania mapowania.
+The dataset that you select for your sink may or may not have a schema defined in the dataset definition. If it does not have a defined schema, then you must allow schema drift. When you defined a fixed mapping, the logical-to-physical name mapping will persist in the sink transformation. If you change the schema definition of the dataset, then you will potentially break your sink mapping. To avoid this, use rule-based mapping. Rule-based mappings are generalized, meaning that schema changes on your dataset will not break the mapping.
 
-## <a name="file-name-options"></a>Opcje nazwy pliku
+## <a name="file-name-options"></a>File name options
 
-Skonfiguruj nazewnictwo plików: 
+Set up file naming: 
 
-   * **Domyślnie**: Zezwalaj platformie Spark na nazwy plików na podstawie wartości domyślnych części.
-   * **Wzorzec**: wprowadź wzorzec dla plików wyjściowych. Na przykład **pożyczki [n]** spowodują utworzenie loans1. csv, loans2. csv i tak dalej.
-   * **Na partycję**: Wprowadź jedną nazwę pliku na partycję.
-   * **Jako dane w kolumnie**: Ustaw plik wyjściowy na wartość kolumny.
-   * **Wyprowadzanie danych wyjściowych do pojedynczego pliku**: w przypadku wybrania tej opcji na stronie ADF zostaną połączone pliki wynikowe partycjonowane w jeden nazwany plik. Aby można było użyć tej opcji, zestaw danych powinien zostać rozpoznany jako nazwa folderu. Należy również pamiętać, że ta operacja scalania może się nie powieść w zależności od rozmiaru węzła.
-
-> [!NOTE]
-> Operacje na plikach są uruchamiane tylko wtedy, gdy uruchamiasz działanie wykonywania przepływu danych. Nie zaczynają się one w trybie debugowania przepływu danych.
-
-## <a name="database-options"></a>Opcje bazy danych
-
-Wybierz pozycję Ustawienia bazy danych:
-
-![Karta Ustawienia z opcjami ujścia SQL](media/data-flow/alter-row2.png "Opcje SQL")
-
-* **Metoda aktualizacji**: domyślnie zezwala na operacje wstawiania. Usuń zaznaczenie pola wyboru **Zezwalaj** , jeśli chcesz przerwać wstawianie nowych wierszy ze źródła. Aby zaktualizować, upsert lub usunąć wiersze, najpierw Dodaj transformację ALTER-Row do wierszy tagów dla tych działań. 
-* **Utwórz ponownie tabelę**: upuść lub Utwórz tabelę docelową przed zakończeniem przepływu danych.
-* **Obetnij tabelę**: Usuń wszystkie wiersze z tabeli docelowej przed ukończeniem przepływu danych.
-* **Rozmiar wsadu**: wprowadź liczbę, aby przetworzyć przedziały do fragmentów. Użyj tej opcji w przypadku dużych obciążeń danych. 
-* **Włącz przemieszczanie**: Użyj podstawy podczas ładowania usługi Azure Data Warehouse jako zestawu danych ujścia.
-* **Wstępne i gotowe skrypty SQL**: wprowadź wielowierszowe skrypty SQL, które zostaną wykonane przed (przetwarzanie wstępne) i po wykonaniu (po przetworzeniu) dane są zapisywane w bazie danych ujścia
-
-![wstępne i końcowe skrypty przetwarzania SQL](media/data-flow/prepost1.png "Skrypty przetwarzania SQL")
+   * **Default**: Allow Spark to name files based on PART defaults.
+   * **Pattern**: Enter a pattern for your output files. For example, **loans[n]** will create loans1.csv, loans2.csv, and so on.
+   * **Per partition**: Enter one file name per partition.
+   * **As data in column**: Set the output file to the value of a column.
+   * **Output to a single file**: With this option, ADF will combine the partitioned output files into a single named file. To use this option, your dataset should resolve to a folder name. Also, please be aware that this merge operation can possibly fail based upon node size.
 
 > [!NOTE]
-> W przepływie danych można skierować Data Factory, aby utworzyć nową definicję tabeli w docelowej bazie danych. Aby utworzyć definicję tabeli, należy ustawić zestaw danych w transformację ujścia, która ma nową nazwę tabeli. W zestawie danych SQL, pod nazwą tabeli, wybierz opcję **Edytuj** i wprowadź nową nazwę tabeli. Następnie w transformacji ujścia Włącz opcję **Zezwalaj na dryfowanie schematu**. Ustaw dla opcji **Importuj schemat** **wartość Brak**.
+> File operations start only when you're running the Execute Data Flow activity. They don't start in Data Flow Debug mode.
 
-![Ustawienia zestawu danych SQL, gdzie można edytować nazwę tabeli](media/data-flow/dataset2.png "Schemat SQL")
+## <a name="database-options"></a>Database options
+
+Choose database settings:
+
+![The Settings tab, showing SQL sink options](media/data-flow/alter-row2.png "SQL Options")
+
+* **Update method**: The default is to allow inserts. Clear **Allow insert** if you want to stop inserting new rows from your source. To update, upsert, or delete rows, first add an alter-row transformation to tag rows for those actions. 
+* **Recreate table**: Drop or create your target table before the data flow finishes.
+* **Truncate table**: Remove all rows from your target table before the data flow finishes.
+* **Batch size**: Enter a number to bucket writes into chunks. Use this option for large data loads. 
+* **Enable staging**: Use PolyBase when you load Azure Data Warehouse as your sink dataset.
+* **Pre and Post SQL scripts**: Enter multi-line SQL scripts that will execute before (pre-processing) and after (post-processing) data is written to your Sink database
+
+![pre and post SQL processing scripts](media/data-flow/prepost1.png "SQL processing scripts")
 
 > [!NOTE]
-> W przypadku aktualizowania lub usuwania wierszy w ujścia bazy danych należy ustawić kolumnę klucza. To ustawienie umożliwia przekształcenie zmiany wiersza w celu określenia unikatowego wiersza w bibliotece przenoszenia danych (DML).
+> In Data Flow, you can direct Data Factory to create a new table definition in your target database. To create the table definition, set a dataset in the sink transformation that has a new table name. In the SQL dataset, below the table name, select **Edit** and enter a new table name. Then, in the sink transformation, turn on **Allow schema drift**. Set **Import schema** to **None**.
 
-### <a name="cosmosdb-specific-settings"></a>Ustawienia CosmosDB
+![SQL dataset settings, showing where to edit the table name](media/data-flow/dataset2.png "SQL Schema")
 
-Podczas wypełniania danych w CosmosDB należy wziąć pod uwagę następujące dodatkowe opcje:
+> [!NOTE]
+> When you update or delete rows in your database sink, you must set the key column. This setting allows the alter-row transformation to determine the unique row in the data movement library (DML).
 
-* Klucz partycji: to pole jest wymagane. Wprowadź ciąg, który reprezentuje klucz partycji dla kolekcji. Przykład: ```/movies/title```
-* Przepływność: Ustaw opcjonalną wartość dla liczby jednostek ru, która ma zostać zastosowana do kolekcji CosmosDB dla każdego wykonywania tego przepływu danych. Wartość minimalna to 400.
+### <a name="cosmosdb-specific-settings"></a>CosmosDB specific settings
+
+When landing data in CosmosDB, you will need to consider these additional options:
+
+* Partition Key: This is a required field. Enter a string that represents the partition key for your collection. Przykład: ```/movies/title```
+* Throughput: Set an optional value for the number of RUs you'd like to apply to your CosmosDB collection for each execution of this data flow. Minimum is 400.
 
 ## <a name="next-steps"></a>Następne kroki
-Po utworzeniu przepływu danych Dodaj [działanie przepływu danych do potoku](concepts-data-flow-overview.md).
+Now that you've created your data flow, add a [Data Flow activity to your pipeline](concepts-data-flow-overview.md).

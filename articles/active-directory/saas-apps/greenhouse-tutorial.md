@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z szklarnią | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Greenhouse | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Greenhouse.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: cd5a52ea47d7166c6f197b233d1a10ff063ff7c5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1cf60e13f7b3ad13d204d67cb7c538d1d11a5dbe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159179"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227540"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Samouczek: integracja Azure Active Directory z szklarnią
+# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Tutorial: Azure Active Directory integration with Greenhouse
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Greenhouse z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Greenhouse z usługą Azure AD zapewnia następujące korzyści:
@@ -148,7 +148,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -186,7 +186,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Greenhouse, należy ich aprowizować w aplikacji Greenhouse. W przypadku aplikacji Greenhouse aprowizacja jest zadaniem ręcznym.
 
 >[!NOTE]
->Aby aprowizować konta użytkowników usługi AAD, możesz użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika aplikacji Greenhouse lub interfejsów API udostępnianych przez aplikację Greenhouse. 
+>You can use any other Greenhouse user account creation tools or APIs provided by Greenhouse to provision Azure AD user accounts. 
 
 **Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
 
@@ -198,11 +198,11 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Green
 
 3. Kliknij pozycję **New Users** (Nowi użytkownicy).
    
-    ![Nowy użytkownik](./media/greenhouse-tutorial/ic790792.png "Nowy użytkownik")
+    ![New User](./media/greenhouse-tutorial/ic790792.png "New User")
 
 4. W sekcji **Add New User (Dodaj nowego użytkownika)** wykonaj następujące kroki:
    
-    ![Dodaj nowego użytkownika](./media/greenhouse-tutorial/ic790793.png "Dodaj nowego użytkownika")
+    ![Add New User](./media/greenhouse-tutorial/ic790793.png "Add New User")
 
     a. W polu tekstowym **Enter user emails** (Wprowadź adresy e-mail użytkowników) wpisz adres e-mail prawidłowego konta usługi Azure Active Directory, które chcesz aprowizować.
 
@@ -223,5 +223,5 @@ Po kliknięciu kafelka Greenhouse w panelu dostępu powinno nastąpić automatyc
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
