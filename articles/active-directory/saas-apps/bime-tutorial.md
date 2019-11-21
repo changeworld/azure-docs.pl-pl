@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą Bime | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Bime | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Bime.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f792798e724387b6917c23d1bde0c2c68fa8a270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157689"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232069"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Samouczek: integracja Azure Active Directory z usługą Bime
+# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Tutorial: Azure Active Directory integration with Bime
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Bime z usługą Azure Active Directory (Azure AD).
 Integrowanie aplikacji Bime z usługą Azure AD zapewnia następujące korzyści:
@@ -137,11 +137,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Bime, wyk
 
 2. Na pasku narzędzi kliknij pozycję **Admin (Administrator)** , a następnie pozycję **Account (Konto)** .
   
-    ![Administratora](./media/bime-tutorial/ic775558.png "Administratora")
+    ![Admin](./media/bime-tutorial/ic775558.png "Admin")
 
 3. Na stronie konfiguracji konta wykonaj następujące kroki:
   
-    ![Konfigurowanie logowania jednokrotnego](./media/bime-tutorial/ic775559.png "Konfigurowanie logowania jednokrotnego")
+    ![Configure Single Sign-On](./media/bime-tutorial/ic775559.png "Konfigurowanie logowania jednokrotnego")
 
     a. Wybierz pozycję **Enable SAML authentication (Włącz uwierzytelnianie SAML)** .
 
@@ -169,7 +169,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -212,7 +212,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Bime,
 
 2. Na pasku narzędzi kliknij pozycję **Admin (Administrator)** , a następnie **Users (Użytkownicy)** .
 
-    ![Administratora](./media/bime-tutorial/ic775561.png "Administratora")
+    ![Admin](./media/bime-tutorial/ic775561.png "Admin")
 
 3. Na **liście użytkowników** kliknij pozycję **Add New User (Dodaj nowego użytkownika)** („+”).
 
@@ -220,18 +220,18 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Bime,
 
 4. Na stronie okna dialogowego **User Details (Szczegóły użytkownika)** wykonaj następujące kroki:
 
-    ![Szczegóły użytkownika](./media/bime-tutorial/ic775563.png "Szczegóły użytkownika")
+    ![User Details](./media/bime-tutorial/ic775563.png "User Details")
 
     a. W polu tekstowym **First name (Imię)** wprowadź imię użytkownika, na przykład **Britta**.
 
     b. W polu tekstowym **Last name (Nazwisko)** wprowadź nazwisko użytkownika, na przykład **Simon**.
 
-    d. W polu tekstowym **adres e-mail** wprowadź adres e-mail użytkownika, np. **brittasimon\@contoso.com**.
+    d. In the **Email** textbox, enter the email of user like **brittasimon\@contoso.com**.
 
     d. Kliknij przycisk **Save** (Zapisz).
 
 > [!NOTE]
-> Aby aprowizować konta użytkowników usługi AAD, możesz użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika aplikacji Bime lub interfejsów API dostarczonych przez aplikację Bime.
+> You can use any other Bime user account creation tools or APIs provided by Bime to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -245,5 +245,5 @@ Po kliknięciu kafelka Bime w panelu dostępu powinno nastąpić automatyczne za
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

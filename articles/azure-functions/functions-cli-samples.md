@@ -1,22 +1,17 @@
 ---
-title: Przykłady użycia wiersza polecenia platformy Azure — Azure Functions | Microsoft Docs
+title: Przykłady użycia wiersza polecenia platformy Azure — Azure Functions
 description: Przykłady użycia wiersza polecenia platformy Azure — Azure Functions
-services: functions
-documentationcenter: functions
 author: syntaxc4
-manager: jeconnoc
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: azure-functions
 ms.topic: sample
 ms.date: 01/09/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a5cfa6e7a054003750536fbb5c8206ebabafe966
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514439"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230912"
 ---
 # <a name="azure-cli-samples"></a>Przykłady interfejsu wiersza polecenia platformy Azure
 
@@ -37,7 +32,7 @@ Poniższa tabela zawiera linki do skryptów powłoki Bash dla usługi Azure Func
 | Ciągłe wdrażanie | Opis|
 |---|---|
 | [Wdrażanie z repozytorium GitHub](scripts/functions-cli-create-function-app-github-continuous.md) | Utwórz aplikację funkcji, która wdraża z repozytorium GitHub.  |
-| [Wdrażanie z usługi Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Tworzenie aplikacji funkcji, który jest wdrażany z repozytorium DevOps platformy Azure.  |
+| [Wdrażanie z usługi Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Create a function app that deploys from an Azure DevOps repository.  |
 
 | Konfigurowanie aplikacji | Opis |
 |---|---|

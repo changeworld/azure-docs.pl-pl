@@ -1,78 +1,75 @@
 ---
-title: Trwałe ograniczenia kodu programu Orchestrator — Azure Functions
-description: Funkcje aranżacji i ograniczenia kodu dla Durable Functions platformy Azure.
+title: Durable orchestrator code constraints - Azure Functions
+description: Orchestration function replay and code constraints for Azure Durable Functions.
 author: cgillum
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5fc4a7e4256e405ff1a91b88b2b001048cc832fc
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 5013457aca99a63808077b86f5674460e83fdc41
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614987"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232974"
 ---
-# <a name="orchestrator-function-code-constraints"></a>Ograniczenia kodu funkcji programu Orchestrator
+# <a name="orchestrator-function-code-constraints"></a>Orchestrator function code constraints
 
-Durable Functions jest rozszerzeniem [Azure Functions](../functions-overview.md) , które pozwala tworzyć aplikacje stanowe. Za pomocą funkcji programu [Orchestrator](durable-functions-orchestrations.md) można organizować wykonywanie innych trwałych funkcji w ramach aplikacji funkcji. Funkcje programu Orchestrator są stanowe, niezawodne i potencjalnie długotrwałe.
+Durable Functions is an extension of [Azure Functions](../functions-overview.md) that lets you build stateful apps. You can use an [orchestrator function](durable-functions-orchestrations.md) to orchestrate the execution of other durable functions within a function app. Orchestrator functions are stateful, reliable, and potentially long-running.
 
 ## <a name="orchestrator-code-constraints"></a>Ograniczenia kodu orkiestratora
 
-Funkcje programu Orchestrator używają określania [źródła zdarzeń](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) , aby zapewnić niezawodne wykonywanie i zachować stan zmiennej lokalnej. [Zachowanie powtarzania](durable-functions-orchestrations.md#reliability) kodu programu Orchestrator tworzy ograniczenia dotyczące typu kodu, który można napisać w funkcji programu Orchestrator. Na przykład funkcje programu Orchestrator muszą być *deterministyczne*: funkcja programu Orchestrator będzie powtarzana wielokrotnie i musi generować ten sam wynik za każdym razem.
+Orchestrator functions use [event sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) to ensure reliable execution and to maintain local variable state. The [replay behavior](durable-functions-orchestrations.md#reliability) of orchestrator code creates constraints on the type of code that you can write in an orchestrator function. For example, orchestrator functions must be *deterministic*: an orchestrator function will be replayed multiple times, and it must produce the same result each time.
 
-### <a name="using-deterministic-apis"></a>Korzystanie z deterministycznych interfejsów API
+### <a name="using-deterministic-apis"></a>Using deterministic APIs
 
-Ta sekcja zawiera pewne proste wskazówki, które ułatwiają zagwarantowanie, że kod jest deterministyczny.
+This section provides some simple guidelines that help ensure your code is deterministic.
 
-Funkcje programu Orchestrator mogą wywołać dowolny interfejs API w swoich językach docelowych. Należy jednak pamiętać, że funkcje programu Orchestrator wywołują tylko deterministyczne interfejsy API. *Deterministyczny interfejs API* jest interfejsem API, który zawsze zwraca tę samą wartość, niezależnie od tego, kiedy lub jak często jest wywoływana.
+Orchestrator functions can call any API in their target languages. However, it's important that orchestrator functions call only deterministic APIs. A *deterministic API* is an API that always returns the same value given the same input, no matter when or how often it's called.
 
-W poniższej tabeli przedstawiono przykłady interfejsów API, które należy unikać, ponieważ *nie* są one deterministyczne. Te ograniczenia mają zastosowanie tylko do funkcji programu Orchestrator. Inne typy funkcji nie mają takich ograniczeń.
+The following table shows examples of APIs that you should avoid because they are *not* deterministic. These restrictions apply only to orchestrator functions. Other function types don't have such restrictions.
 
-| Kategoria interfejsu API | Przyczyna | Obejście |
+| API category | Przyczyna | Obejście |
 | ------------ | ------ | ---------- |
-| Daty i godziny  | Interfejsy API, które zwracają bieżącą datę lub godzinę, są niejednoznaczne, ponieważ zwracana wartość jest inna dla każdego powtórzenia. | Użyj interfejsu API`CurrentUtcDateTime` w programie .NET lub interfejsu API `currentUtcDateTime` w języku JavaScript, które są bezpieczne do odtworzenia. |
-| Identyfikatory GUID i identyfikatory UUID  | Interfejsy API, które zwracają losowy identyfikator GUID lub UUID, są niejednoznaczne, ponieważ wygenerowana wartość jest inna dla każdego powtórzenia. | Użyj `NewGuid` w programie .NET lub `newGuid` w języku JavaScript, aby bezpiecznie generować losowe identyfikatory GUID. |
-| Liczby losowe | Interfejsy API, które zwracają liczby losowe, są niejednoznaczne, ponieważ wygenerowana wartość jest inna dla każdego powtórzenia. | Użyj funkcji działania, aby zwrócić liczbę losową do aranżacji. Wartości zwracane funkcji działania są zawsze bezpieczne do powtórzenia. |
-| Powiązania | Powiązania wejściowe i wyjściowe zwykle wykonują we/wy i są niejednoznaczne. Funkcja programu Orchestrator nie może bezpośrednio używać nawet powiązania klienta [aranżacji](durable-functions-bindings.md#orchestration-client) i [klienta jednostki](durable-functions-bindings.md#entity-client) . | Użyj powiązań wejściowych i wyjściowych w ramach funkcji klienta lub działania. |
-| Sieć | Wywołania sieciowe obejmują systemy zewnętrzne i nie są niejednoznaczne. | Użyj funkcji działania, aby wykonać wywołania sieciowe. Jeśli musisz wykonać wywołanie HTTP z funkcji programu Orchestrator, możesz również użyć [trwałych interfejsów API protokołu HTTP](durable-functions-http-features.md#consuming-http-apis). |
-| Blokowanie interfejsów API | Blokowanie interfejsów API, takich jak `Thread.Sleep` w środowisku .NET i podobnych interfejsów API, może spowodować problemy z wydajnością i skalowaniem dla funkcji programu Orchestrator. W planie zużycia Azure Functions mogą nawet spowodować niepotrzebne opłaty w czasie wykonywania. | Używaj alternatyw do blokowania interfejsów API, gdy są one dostępne. Na przykład użyj `CreateTimer`, aby wprowadzić opóźnienia w wykonywaniu aranżacji. [Trwałe opóźnienia czasomierza](durable-functions-timers.md) nie są wliczane do czasu wykonywania funkcji programu Orchestrator. |
-| Asynchroniczne interfejsy API | Kod programu Orchestrator nigdy nie może uruchamiać żadnej operacji asynchronicznej, z wyjątkiem interfejsu API `IDurableOrchestrationContext` lub interfejsu API obiektu `context.df`. Nie można na przykład używać `Task.Run`, `Task.Delay`i `HttpClient.SendAsync` w programie .NET ani `setTimeout` i `setInterval` w języku JavaScript. W ramach trwałej struktury zadań jest uruchamiany kod programu Orchestrator w pojedynczym wątku. Nie może ona współistnieć z innymi wątkami, które mogą być wywoływane przez inne asynchroniczne interfejsy API. | Funkcja programu Orchestrator powinna wprowadzać tylko trwałe wywołania asynchroniczne. Funkcje działania powinny wykonywać wszystkie inne asynchroniczne wywołania interfejsu API. |
-| Asynchroniczne funkcje języka JavaScript | Nie można zadeklarować funkcji programu Orchestrator języka JavaScript jako `async`, ponieważ środowisko uruchomieniowe Node. js nie gwarantuje, że funkcje asynchroniczne są deterministyczne. | Zadeklaruj funkcje programu Orchestrator w języku JavaScript jako funkcje generatora synchronicznego. |
-| Wątkowe interfejsy API | W ramach trwałej struktury zadań działa kod programu Orchestrator w pojedynczym wątku i nie może współdziałać z żadnymi innymi wątkami. Wprowadzenie nowych wątków do wykonywania aranżacji może spowodować niedeterministyczne wykonanie lub zakleszczenia. | Funkcje programu Orchestrator powinny prawie nigdy nie używać interfejsów API wątków. Jeśli takie interfejsy API są niezbędne, należy ograniczyć ich użycie tylko do funkcji działania. |
-| Zmienne statyczne | Unikaj używania niestałych zmiennych statycznych w funkcjach programu Orchestrator, ponieważ ich wartości mogą ulec zmianie z upływem czasu, co skutkuje niedeterministycznym zachowaniem środowiska uruchomieniowego. | Używaj stałych lub Ogranicz użycie zmiennych statycznych do funkcji działania. |
-| Zmienne środowiskowe | Nie używaj zmiennych środowiskowych w funkcjach programu Orchestrator. Ich wartości mogą ulec zmianie z upływem czasu, co skutkuje niedeterministycznym zachowaniem środowiska uruchomieniowego. | Zmienne środowiskowe muszą być przywoływane tylko z poziomu funkcji klienta lub funkcji działania. |
-| Nieskończone pętle | Unikaj nieskończonych pętli w funkcjach programu Orchestrator. Ponieważ trwała struktura zadań zapisuje historię wykonywania w miarę postępów funkcji aranżacji, pętla nieskończona może spowodować, że w wystąpieniu programu Orchestrator brakuje pamięci. | W przypadku scenariuszy pętli nieskończonej Użyj interfejsów API, takich jak `ContinueAsNew` w środowisku .NET lub `continueAsNew` w języku JavaScript, aby ponownie uruchomić wykonywanie funkcji i odrzucić poprzednią historię wykonywania. |
+| Dates and times  | APIs that return the current date or time are nondeterministic because the returned value is different for each replay. | Use the`CurrentUtcDateTime` API in .NET or the `currentUtcDateTime` API in JavaScript, which are safe for replay. |
+| GUIDs and UUIDs  | APIs that return a random GUID or UUID are nondeterministic because the generated value is different for each replay. | Use `NewGuid` in .NET or `newGuid` in JavaScript to safely generate random GUIDs. |
+| Random numbers | APIs that return random numbers are nondeterministic because the generated value is different for each replay. | Use an activity function to return random numbers to an orchestration. The return values of activity functions are always safe for replay. |
+| Powiązania | Input and output bindings typically do I/O and are nondeterministic. An orchestrator function must not directly use even the [orchestration client](durable-functions-bindings.md#orchestration-client) and [entity client](durable-functions-bindings.md#entity-client) bindings. | Use input and output bindings inside client or activity functions. |
+| Sieć | Network calls involve external systems and are nondeterministic. | Use activity functions to make network calls. If you need to make an HTTP call from your orchestrator function, you also can use the [durable HTTP APIs](durable-functions-http-features.md#consuming-http-apis). |
+| Blocking APIs | Blocking APIs like `Thread.Sleep` in .NET and similar APIs can cause performance and scale problems for orchestrator functions and should be avoided. In the Azure Functions Consumption plan, they can even result in unnecessary runtime charges. | Use alternatives to blocking APIs when they're available. For example, use  `CreateTimer` to introduce delays in orchestration execution. [Durable timer](durable-functions-timers.md) delays don't count towards the execution time of an orchestrator function. |
+| Async APIs | Orchestrator code must never start any async operation except by using the `IDurableOrchestrationContext` API or the `context.df` object's API. For example, you can't use `Task.Run`, `Task.Delay`, and `HttpClient.SendAsync` in .NET or `setTimeout` and `setInterval` in JavaScript. The Durable Task Framework runs orchestrator code on a single thread. It can't interact with any other threads that might be called by other async APIs. | An orchestrator function should make only durable async calls. Activity functions should make any other async API calls. |
+| Async JavaScript functions | You can't declare JavaScript orchestrator functions as `async` because the node.js runtime doesn't guarantee that asynchronous functions are deterministic. | Declare JavaScript orchestrator functions as synchronous generator functions. |
+| Threading APIs | The Durable Task Framework runs orchestrator code on a single thread and can't interact with any other threads. Introducing new threads into an orchestration's execution can result in nondeterministic execution or deadlocks. | Orchestrator functions should almost never use threading APIs. If such APIs are necessary, limit their use to only activity functions. |
+| Static variables | Avoid using nonconstant static variables in orchestrator functions because their values can change over time, resulting in nondeterministic runtime behavior. | Use constants, or limit the use of static variables to activity functions. |
+| Zmienne środowiskowe | Don't use environment variables in orchestrator functions. Their values can change over time, resulting in nondeterministic runtime behavior. | Environment variables must be referenced only from within client functions or activity functions. |
+| Infinite loops | Avoid infinite loops in orchestrator functions. Because the Durable Task Framework saves execution history as the orchestration function progresses, an infinite loop can cause an orchestrator instance to run out of memory. | For infinite loop scenarios, use APIs like `ContinueAsNew` in .NET or `continueAsNew` in JavaScript to restart the function execution and to discard previous execution history. |
 
-Chociaż stosowanie tych ograniczeń może wydawać się trudne, w przypadku, w którym są one łatwe do wykonania.
+Although applying these constraints might seem difficult at first, in practice they're easy to follow.
 
-Trwała platforma zadań próbuje wykryć naruszenia powyższych reguł. W przypadku znalezienia naruszenia, struktura zgłasza wyjątek **NonDeterministicOrchestrationException** . Jednak takie zachowanie wykrywania nie będzie przechwytywać wszystkich naruszeń i nie powinno być od niego zależne.
+The Durable Task Framework attempts to detect violations of the preceding rules. If it finds a violation, the framework throws a **NonDeterministicOrchestrationException** exception. However, this detection behavior won't catch all violations, and you shouldn't depend on it.
 
 ## <a name="versioning"></a>Obsługa wersji
 
-Niezawodna aranżacja może działać w sposób ciągły przez dni, miesiące, lata lub nawet [Eternally](durable-functions-eternal-orchestrations.md). Wszelkie aktualizacje kodu wprowadzone do Durable Functions aplikacji, które mają wpływ na nieukończone aranżacje, mogą spowodować przerwanie działania odtwarzania w ramach aranżacji. Dlatego ważne jest, aby dokładnie zaplanować wprowadzanie aktualizacji kodu. Aby uzyskać bardziej szczegółowy opis sposobu tworzenia wersji kodu, zobacz artykuł dotyczący [przechowywania wersji](durable-functions-versioning.md).
+A durable orchestration might run continuously for days, months, years, or even [eternally](durable-functions-eternal-orchestrations.md). Any code updates made to Durable Functions apps that affect unfinished orchestrations might break the orchestrations' replay behavior. That's why it's important to plan carefully when making updates to code. For a more detailed description of how to version your code, see the [versioning article](durable-functions-versioning.md).
 
-## <a name="durable-tasks"></a>Zadania trwałe
+## <a name="durable-tasks"></a>Durable tasks
 
 > [!NOTE]
-> W tej sekcji opisano wewnętrzne szczegóły implementacji dla trwałej struktury zadań. Możesz korzystać z trwałych funkcji bez znajomości tych informacji. Jest ona przeznaczona tylko do zrozumienia zachowania powtarzania.
+> This section describes internal implementation details of the Durable Task Framework. You can use durable functions without knowing this information. It is intended only to help you understand the replay behavior.
 
-Zadania, które mogą bezpiecznie oczekiwać w funkcjach programu Orchestrator, są czasami określane jako *zadania trwałe*. W ramach trwałej struktury zadań są tworzone i zarządzane te zadania. Przykłady to zadania zwracane przez **CallActivityAsync**, **WaitForExternalEvent**i **OnTime** w funkcjach programu .NET Orchestrator.
+Tasks that can safely wait in orchestrator functions are occasionally referred to as *durable tasks*. The Durable Task Framework creates and manages these tasks. Examples are the tasks returned by **CallActivityAsync**, **WaitForExternalEvent**, and **CreateTimer** in .NET orchestrator functions.
 
-Te zadania trwałe są wewnętrznie zarządzane przez listę obiektów `TaskCompletionSource` w programie .NET. Podczas odtwarzania te zadania są tworzone w ramach wykonywania kodu programu Orchestrator. Są one kończone, ponieważ Dyspozytor wylicza odpowiednie zdarzenia historii.
+These durable tasks are internally managed by a list of `TaskCompletionSource` objects in .NET. During replay, these tasks are created as part of orchestrator code execution. They're finished as the dispatcher enumerates the corresponding history events.
 
-Zadania są wykonywane synchronicznie przy użyciu jednego wątku, dopóki cała historia nie zostanie powtórzona. Zadania trwałe, które nie zostały zakończone przez zakończenie powtarzania historii, mają odpowiednie działania. Na przykład komunikat może zostać przewidziany do kolejki w celu wywołania funkcji działania.
+The tasks are executed synchronously using a single thread until all the history has been replayed. Durable tasks that aren't finished by the end of history replay have appropriate actions carried out. For example, a message might be enqueued to call an activity function.
 
-W tej sekcji opisano zachowanie środowiska uruchomieniowego, które ułatwia zrozumienie, dlaczego funkcja programu Orchestrator nie może używać `await` lub `yield` w nietrwałym zadaniu. Istnieją dwie przyczyny: wątek dyspozytora nie może czekać na zakończenie zadania, a każde wywołanie zwrotne przez to zadanie może potencjalnie uszkodzić stan śledzenia funkcji programu Orchestrator. Niektóre testy środowiska uruchomieniowego są stosowane w celu ułatwienia wykrywania tych naruszeń.
+This section's description of runtime behavior should help you understand why an orchestrator function can't use `await` or `yield` in a nondurable task. There are two reasons: the dispatcher thread can't wait for the task to finish, and any callback by that task might potentially corrupt the tracking state of the orchestrator function. Some runtime checks are in place to help detect these violations.
 
-Aby dowiedzieć się więcej o tym, jak usługa trwałej struktury zadań wykonuje funkcje programu Orchestrator, zapoznaj się z [kodem źródłowym zadania trwałego w witrynie GitHub](https://github.com/Azure/durabletask). W szczególności zobacz [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) i [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
+To learn more about how the Durable Task Framework executes orchestrator functions, consult the [Durable Task source code on GitHub](https://github.com/Azure/durabletask). In particular, see [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) and [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Informacje o sposobie wywoływania podaranżacji](durable-functions-sub-orchestrations.md)
+> [Learn how to invoke sub-orchestrations](durable-functions-sub-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak obsługiwać przechowywanie wersji](durable-functions-versioning.md)
+> [Learn how to handle versioning](durable-functions-versioning.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Syncplicity | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Syncplicity.
+title: 'Tutorial: Azure Active Directory integration with Syncplicity | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Syncplicity.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,182 +15,182 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a8a25e88d4193562c818f30efd5eb017c372fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089294"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233284"
 ---
-# <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Samouczek: Integracja Syncplicity za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Tutorial: Integrate Syncplicity with Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Syncplicity w usłudze Azure Active Directory (Azure AD). W ramach Syncplicity integracji z usługą Azure AD, możesz wykonywać następujące czynności:
+In this tutorial, you'll learn how to integrate Syncplicity with Azure Active Directory (Azure AD). When you integrate Syncplicity with Azure AD, you can:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do Syncplicity.
-* Umożliwianie użytkownikom można automatycznie zalogowany do Syncplicity za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Control in Azure AD who has access to Syncplicity.
+* Enable your users to be automatically signed-in to Syncplicity with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+To get started, you need the following items:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* Syncplicity logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. If you don't have a subscription, you can get one-month free trial [here](https://azure.microsoft.com/pricing/free-trial/).
+* Syncplicity single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje Syncplicity **SP** jednokrotne logowanie inicjowane przez.
+In this tutorial, you configure and test Azure AD SSO in a test environment. Syncplicity supports **SP** initiated SSO.
 
-## <a name="adding-syncplicity-from-the-gallery"></a>Dodawanie Syncplicity z galerii
+## <a name="adding-syncplicity-from-the-gallery"></a>Adding Syncplicity from the gallery
 
-Aby skonfigurować integrację Syncplicity w usłudze Azure AD, należy dodać Syncplicity z galerii z listą zarządzanych aplikacji SaaS.
+To configure the integration of Syncplicity into Azure AD, you need to add Syncplicity from the gallery to your list of managed SaaS apps.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **Syncplicity** w polu wyszukiwania.
-1. Wybierz **Syncplicity** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **Syncplicity** in the search box.
+1. Select **Syncplicity** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Configure and test Azure AD SSO
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą Syncplicity za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Syncplicity.
+Configure and test Azure AD SSO with Syncplicity using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Syncplicity.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą Syncplicity, wykonaj poniższe bloki konstrukcyjne:
+To configure and test Azure AD SSO with Syncplicity, complete the following building blocks:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego Syncplicity](#configure-syncplicity-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć B.Simon do użycia usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Syncplicity](#create-syncplicity-test-user)**  — aby odpowiednikiem B.Simon w Syncplicity połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+2. **[Configure Syncplicity SSO](#configure-syncplicity-sso)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
+5. **[Create Syncplicity test user](#create-syncplicity-test-user)** - to have a counterpart of B.Simon in Syncplicity that is linked to the Azure AD representation of user.
+6. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Syncplicity** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. In the [Azure portal](https://portal.azure.com/), on the **Syncplicity** application integration page, find the **Manage** section and select **Single sign-on**.
+1. On the **Select a Single sign-on method** page, select **SAML**.
+1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** strony, wprowadź wartości dla następujących pól:
+1. On the **Basic SAML Configuration** page, enter the values for the following fields:
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.syncplicity.com`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<companyname>.syncplicity.com/sp`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Syncplicity](https://www.syncplicity.com/contact-us) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Contact [Syncplicity Client support team](https://www.syncplicity.com/contact-us) to get these values. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
+1. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
 
-   ![Link pobierania certyfikatu](common/certificatebase64.png)
+   ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Na **Konfigurowanie Syncplicity** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. On the **Set up Syncplicity** section, copy the appropriate URL(s) based on your requirement.
 
    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="configure-syncplicity-sso"></a>Konfigurowanie logowania jednokrotnego Syncplicity
+### <a name="configure-syncplicity-sso"></a>Configure Syncplicity SSO
 
-1. Zaloguj się do Twojej **Syncplicity** dzierżawy.
+1. Sign in to your **Syncplicity** tenant.
 
-1. W menu u góry kliknij **administratora**, wybierz opcję **ustawienia**, a następnie kliknij przycisk **niestandardowej domeny i logowanie jednokrotne**.
+1. In the menu on the top, click **admin**, select **settings**, and then click **Custom domain and single sign-on**.
 
     ![Syncplicity](./media/syncplicity-tutorial/ic769545.png "Syncplicity")
 
-1. Na **pojedynczego logowania jednokrotnego (SSO)** okna dialogowego strony, wykonaj następujące czynności:
+1. On the **Single Sign-On (SSO)** dialog page, perform the following steps:
 
-    ![Logowanie jednokrotne \(logowania jednokrotnego\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![Single Sign-On \(SSO\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
-    a. W **domena niestandardowa** polu tekstowym wpisz nazwę domeny.
+    a. In the **Custom Domain** textbox, type the name of your domain.
   
-    b. Wybierz **włączone** jako **pojedynczego stanu logowania jednokrotnego**.
+    b. Select **Enabled** as **Single Sign-On Status**.
 
-    c. W **identyfikator jednostki** pola tekstowego, Wklej **identyfikator jednostki** wartość, która ma być używane w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    d. In the **Entity Id** textbox, Paste the **Identifier (Entity ID)** value, which you have used in the **Basic SAML Configuration** in the Azure portal.
 
-    d. W **adres URL logowania strony** pola tekstowego, Wklej **adres URL logowania** skopiowanej w witrynie Azure portal.
+    d. In the **Sign-in page URL** textbox, Paste the **Login URL** which you have copied from Azure portal.
 
-    e. W **adres URL strony wylogowania** pola tekstowego, Wklej **adres URL wylogowania** skopiowanej w witrynie Azure portal.
+    e. In the **Logout page URL** textbox, Paste the **Logout URL** which you have copied from Azure portal.
 
-    f. W **certyfikatu dostawcy tożsamości**, kliknij przycisk **Choose file**, a następnie przekaż certyfikat, który został pobrany z witryny Azure portal.
+    f. In **Identity Provider Certificate**, click **Choose file**, and then upload the certificate which you have downloaded from the Azure portal.
 
     g. Kliknij przycisk **SAVE CHANGES** (ZAPISZ ZMIANY).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. In the **User** properties, follow these steps:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. In the **User name** field, enter the username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić B.Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Syncplicity.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Syncplicity.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **Syncplicity**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **Syncplicity**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-syncplicity-test-user"></a>Tworzenie użytkownika testowego Syncplicity
+### <a name="create-syncplicity-test-user"></a>Create Syncplicity test user
 
-Dla użytkowników usługi AAD można było się zalogować musi być obsługiwana Syncplicity aplikacji. W tej sekcji opisano sposób tworzenia konta użytkownika usługi AAD w Syncplicity.
+For Azure AD users to be able to sign in, they must be provisioned to Syncplicity application. This section describes how to create Azure AD user accounts in Syncplicity.
 
-**Aby udostępnić konto Syncplicity, wykonaj następujące czynności:**
+**To provision a user account to Syncplicity, perform the following steps:**
 
-1. Zaloguj się do Twojej **Syncplicity** dzierżawy (na przykład: `https://company.Syncplicity.com`).
+1. Sign in to your **Syncplicity** tenant (for example: `https://company.Syncplicity.com`).
 
-1. Kliknij przycisk **administratora** i wybierz **kont użytkowników** a następnie kliknij przycisk **Dodaj użytkownik**.
+1. Click **admin** and select **user accounts** and then click **ADD A USER**.
 
-    ![Zarządzanie użytkownikami](./media/syncplicity-tutorial/ic769764.png "Zarządzanie użytkownikami")
+    ![Manage Users](./media/syncplicity-tutorial/ic769764.png "Manage Users")
 
-1. Typ **adresy E-mail** chcesz aprowizować konta usługi Azure AD, wybierz **użytkownika** jako **roli**, a następnie kliknij przycisk **dalej**.
+1. Type the **Email addresses** of an Azure AD account you want to provision, select **User** as **Role**, and then click **NEXT**.
 
-    ![Informacje o koncie](./media/syncplicity-tutorial/ic769765.png "informacje o koncie")
-
-    > [!NOTE]
-    > Właściciel konta usługi AAD otrzymuje wiadomość e-mail, w tym link do potwierdzenia i aktywować konto.
-
-1. Wybierz grupę w Twojej firmie, która nowy użytkownik powinien zostać członkiem, a następnie kliknij **dalej**.
-
-    ![Członkostwo w grupie](./media/syncplicity-tutorial/ic769772.png "członkostwo w grupie")
+    ![Account Information](./media/syncplicity-tutorial/ic769765.png "Account Information")
 
     > [!NOTE]
-    > Jeśli nie ma żadnych grup, na liście, kliknij przycisk **dalej**.
+    > The Azure AD account holder  gets an email including a link to confirm and activate the account.
 
-1. Wybierz foldery, o których chcesz umieścić pod kontrolą firmy Syncplicity na komputerze użytkownika, a następnie kliknij przycisk **dalej**.
+1. Select a group in your company that your new user should become a member of, and then click **NEXT**.
 
-    ![Foldery Syncplicity](./media/syncplicity-tutorial/ic769773.png "Syncplicity folderów")
+    ![Group Membership](./media/syncplicity-tutorial/ic769772.png "Group Membership")
+
+    > [!NOTE]
+    > If there are no groups listed, click **NEXT**.
+
+1. Select the folders you would like to place under Syncplicity’s control on the user’s computer, and then click **NEXT**.
+
+    ![Syncplicity Folders](./media/syncplicity-tutorial/ic769773.png "Syncplicity Folders")
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych Syncplicity użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Syncplicity do aprowizacji kont użytkowników usługi AAD.
+> You can use any other Syncplicity user account creation tools or APIs provided by Syncplicity to provision Azure AD user accounts.
 
 ### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka Syncplicity w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Syncplicity, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+When you select the Syncplicity tile in the Access Panel, you should be automatically signed in to the Syncplicity for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
