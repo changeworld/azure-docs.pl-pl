@@ -112,14 +112,6 @@
               items:
                 - name: Rozpoczynanie pracy z inspekcją bazy danych SQL Database
                   href: sql-database-auditing.md
-        - name: Bezpieczeństwo sieci
-          items:
-            - name: Punkty końcowe sieci wirtualnej
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Punkty końcowe sieci wirtualnej — PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: Link prywatny
-              href: sql-database-private-endpoint-overview.md
         - name: Zarządzanie zabezpieczeniami
           items:
             - name: Zaawansowane zabezpieczenia danych
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: Zabezpieczenia pojedynczej bazy danych
           items:
+            - name: Kontrola dostępu do sieci
+              href: sql-database-networkaccess-overview.md
+            - name: Zapora oparta na protokole IP
+              href: sql-database-firewall-configure.md
+            - name: Reguły zapory sieci wirtualnej
+              items:
+                - name: Punkty końcowe sieci wirtualnej
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: Punkty końcowe sieci wirtualnej — PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Link prywatny
+              href: sql-database-private-endpoint-overview.md
             - name: Format dziennika inspekcji
               href: sql-database-audit-log-format.md
             - name: Dostęp warunkowy
               href: sql-database-conditional-access.md
-            - name: Reguły zapory bazujące na adresach IP na poziomie serwera
-              items:
-                - name: Tworzenie i zarządzanie
-                  href: sql-database-firewall-configure.md
         - name: Zabezpieczenia wystąpienia zarządzanego
           items:
             - name: Zabezpieczanie publicznych punktów końcowych

@@ -183,6 +183,8 @@
           href: storage-sync-files-troubleshoot.md
         - name: Rozwiązywanie problemów z usuwaniem w usłudze Azure Files
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: Odzyskiwanie usuniętego konta magazynu
+          href: storage-how-to-recover-deleted-account.md
 - name: Dokumentacja
   items:
     - name: Azure PowerShell

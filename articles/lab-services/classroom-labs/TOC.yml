@@ -38,6 +38,8 @@
           href: class-type-shell-scripting-linux.md
         - name: Etyczne działania hakerskie
           href: class-type-ethical-hacking.md
+        - name: Zarządzanie bazami danych
+          href: class-type-database-management.md
     - name: Tworzenie i konfigurowanie kont laboratoriów (właściciel konta laboratorium)
       items:
         - name: Tworzenie kont laboratoriów i zarządzanie nimi

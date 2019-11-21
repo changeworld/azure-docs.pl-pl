@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: Tworzenie zaawansowanej domeny zarządzanej
       href: tutorial-create-instance-advanced.md
+    - name: Tworzenie relacji zaufania lasu (wersja zapoznawcza)
+      href: tutorial-create-forest-trust.md
 - name: Przykłady
   items:
     - name: Tworzenie domeny zarządzanej za pomocą programu Azure PowerShell
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: Typowe scenariusze wdrażania
       href: scenarios.md
+    - name: Lasy i relacje zaufania
+      items:
+        - name: Lasy zasobów
+          href: concepts-resource-forest.md
+        - name: Relacje zaufania lasów
+          href: concepts-forest-trust.md
     - name: Jak działa synchronizacja usługi Azure AD DS
       href: synchronization.md
     - name: Jak działa synchronizacja skrótów haseł
