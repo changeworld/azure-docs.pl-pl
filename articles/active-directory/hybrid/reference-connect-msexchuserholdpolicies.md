@@ -14,18 +14,18 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d371ba2a09dda933bf14208a00535b757afea85
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014336"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213074"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect-msExchUserHoldPolicies i cloudMsExchUserHoldPolicies
 W poniższym dokumencie referencyjnym opisano te atrybuty, które są używane przez program Exchange i właściwy sposób edytowania domyślnych reguł synchronizacji.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Co to są msExchUserHoldPolicies i cloudMsExchUserHoldPolicies?
-Istnieją dwa typy [blokad](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) dostępnych dla serwera programu Exchange: Wstrzymanie i przechowywanie w miejscu. Gdy wstrzymanie jest włączone, wszystkie elementy skrzynki pocztowej są umieszczane w blokadzie.  Blokada miejscowa służy do zachowywania tylko tych elementów, które spełniają kryteria zapytania wyszukiwania zdefiniowanego za pomocą narzędzia do zbierania elektronicznych materiałów dowodowych.
+Istnieją dwa typy [blokad](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) dostępnych dla serwera programu Exchange: wstrzymanie i przechowywanie w miejscu. Gdy wstrzymanie jest włączone, wszystkie elementy skrzynki pocztowej są umieszczane w blokadzie.  Blokada miejscowa służy do zachowywania tylko tych elementów, które spełniają kryteria zapytania wyszukiwania zdefiniowanego za pomocą narzędzia do zbierania elektronicznych materiałów dowodowych.
 
 Atrybuty MsExchUserHoldPolcies i cloudMsExchUserHoldPolicies umożliwiają dostęp do lokalnych usług AD i Azure AD w celu ustalenia, którzy użytkownicy znajdują się w ramach wstrzymania w zależności od tego, czy korzystają z lokalnego programu Exchange, czy programu Exchange.
 
@@ -38,13 +38,13 @@ Przychodzące z Active Directory lokalnego:
 
 |Atrybut Active Directory|Nazwa atrybutu|Typ przepływu|Atrybut Metaverse|Reguła synchronizacji|
 |-----|-----|-----|-----|-----|
-|Lokalna usługa Active Directory|msExchUserHoldPolicies|Bezpośrednie|msExchUserHoldPolices|W programie z usługi AD-User Exchange|
+|Lokalna usługa Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|W programie z usługi AD-User Exchange|
 
 Wychodzące do usługi Azure AD:
 
 |Atrybut Metaverse|Nazwa atrybutu|Typ przepływu|Atrybut usługi Azure AD|Reguła synchronizacji|
 |-----|-----|-----|-----|-----|
-|Usługa Azure Active Directory|msExchUserHoldPolicies|Bezpośrednie|msExchUserHoldPolicies|Do usługi AAD — UserExchangeOnline|
+|Usługa Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Do usługi AAD — UserExchangeOnline|
 
 ## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>przepływ synchronizacji cloudMsExchUserHoldPolicies
 Domyślnie cloudMsExchUserHoldPolicies jest synchronizowany przez Azure AD Connect bezpośrednio do atrybutu cloudMsExchUserHoldPolicies w obiekcie Metaverse. Następnie, jeśli msExchUserHoldPolices nie ma wartości null w obiekcie Metaverse, atrybut w przepływa do Active Directory.
@@ -55,7 +55,7 @@ Przychodzące z usługi Azure AD:
 
 |Atrybut Active Directory|Nazwa atrybutu|Typ przepływu|Atrybut Metaverse|Reguła synchronizacji|
 |-----|-----|-----|-----|-----|
-|Lokalna usługa Active Directory|cloudMsExchUserHoldPolicies|Bezpośrednie|cloudMsExchUserHoldPolicies|W programie z usługi AAD — użytkownik Exchange|
+|Lokalna usługa Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|W programie z usługi AAD — użytkownik Exchange|
 
 Wychodzące do Active Directory lokalnych:
 

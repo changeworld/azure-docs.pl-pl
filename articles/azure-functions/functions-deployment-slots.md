@@ -2,18 +2,15 @@
 title: Azure Functions miejsc wdrożenia
 description: Dowiedz się, jak tworzyć i używać miejsc wdrożenia przy użyciu Azure Functions
 author: craigshoemaker
-manager: gwallace
-keywords: usługa Azure Functions, funkcje
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576321"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230670"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions miejsc wdrożenia
 
@@ -135,7 +132,7 @@ Korzystając z [interfejsu wiersza polecenia platformy Azure](https://docs.micro
 - [create](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [usuwanie](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [wymiany](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [Zamień na siebie](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>Zmień plan usługi App Service

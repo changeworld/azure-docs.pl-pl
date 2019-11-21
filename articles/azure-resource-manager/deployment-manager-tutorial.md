@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a05e45c5dc60cf26b2fb4f50cb4699c0fde142a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
-ms.translationtype: MT
+ms.openlocfilehash: ded7de96e560bbd0feb1c68429bb2d8219c8bd01
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147421"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232701"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (publiczna wersja zapoznawcza)
 
@@ -53,7 +53,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 * Pewne doświadczenie w opracowywaniu [szablonów usługi Azure Resource Manager](./resource-group-overview.md).
 * Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Polecenia cmdlet usługi Deployment Manager. Aby zainstalować te polecenia cmdlet wersji wstępnej, potrzebujesz najnowszej wersji modułu PowerShellGet. Aby uzyskać najnowszą wersję, zobacz [Installing PowerShellGet (Instalowanie modułu PowerShellGet)](/powershell/gallery/installing-psget). Po zainstalowaniu modułu PowerShellGet zamknij okno programu PowerShell. Otwórz nowe okno programu PowerShell z podwyższonym poziomem uprawnień i użyj następującego polecenia:
+* Polecenia cmdlet usługi Deployment Manager. Aby zainstalować te polecenia cmdlet wersji wstępnej, potrzebujesz najnowszej wersji modułu PowerShellGet. Aby uzyskać najnowszą wersję, zobacz [Installing PowerShellGet (Instalowanie modułu PowerShellGet)](/powershell/scripting/gallery/installing-psget). Po zainstalowaniu modułu PowerShellGet zamknij okno programu PowerShell. Otwórz nowe okno programu PowerShell z podwyższonym poziomem uprawnień i użyj następującego polecenia:
 
     ```powershell
     Install-Module -Name Az.DeploymentManager

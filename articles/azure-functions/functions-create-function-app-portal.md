@@ -1,19 +1,15 @@
 ---
-title: Tworzenie aplikacji funkcji przy użyciu witryny Azure Portal | Microsoft Docs
+title: Tworzenie aplikacji funkcji w witrynie Azure Portal
 description: Utwórz nową aplikację funkcji na platformie Azure z poziomu portalu.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 93bce0404c9b3bf630416557726dca0c856528c3
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170801"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230770"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Tworzenie aplikacji funkcji przy użyciu witryny Azure Portal
 
@@ -31,7 +27,7 @@ Po utworzeniu aplikacji funkcji możesz utworzyć indywidualne funkcje w jednym 
 
 ## <a name="service-plans"></a>Plany usługi
 
-Azure Functions ma trzy różne plany usługi: Plan zużycia, plan Premium i dedykowany plan (App Service). Musisz wybrać swój plan usługi, gdy aplikacja funkcji zostanie utworzona i nie można jej później zmienić. Aby uzyskać więcej informacji, zobacz [Wybieranie planu hostingu usługi Azure Functions](functions-scale.md).
+Azure Functions ma trzy różne plany usługi: plan zużycia, plan Premium i dedykowany plan (App Service). Musisz wybrać swój plan usługi, gdy aplikacja funkcji zostanie utworzona i nie można jej później zmienić. Aby uzyskać więcej informacji, zobacz [Wybieranie planu hostingu usługi Azure Functions](functions-scale.md).
 
 Jeśli planujesz uruchamianie funkcji JavaScript w ramach dedykowanego planu (App Service), należy wybrać plan z mniejszą liczbą rdzeni. Aby uzyskać więcej informacji, zobacz [Dokumentacja języka JavaScript dla usługi Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 

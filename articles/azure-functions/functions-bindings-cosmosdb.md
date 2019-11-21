@@ -1,25 +1,21 @@
 ---
 title: Azure Cosmos DB powiązania funkcji 1.x
 description: Dowiedz się, jak używać usługi Azure Cosmos DB, wyzwalaczy i powiązań w usłudze Azure Functions.
-services: functions
 author: craigshoemaker
 ms.author: cshoe
-manager: gwallace
-keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0e6782c48543723438ee332313de268117dee3e9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: MT
+ms.openlocfilehash: 9946994f21e19bd2ac0b53054cbb2181f1558bd3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480722"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227349"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB powiązania usługi Azure Functions 1.x
 
-> [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego usługi Azure Functions, którego używasz: "]
+> [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-bindings-cosmosdb.md)
 > * [Wersja 2](functions-bindings-cosmosdb-v2.md)
 
@@ -33,7 +29,7 @@ W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](../cosmos-
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API, należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API, w tym [interfejsu API usługi Azure Cosmos DB, bazy danych mongodb](../cosmos-db/mongodb-introduction.md), [interfejsu API rozwiązania Cassandra](../cosmos-db/cassandra-introduction.md), [ Interfejs API języka gremlin](../cosmos-db/graph-introduction.md), i [interfejs API tabel](../cosmos-db/table-introduction.md).
+> Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. W przypadku wszystkich innych Azure Cosmos DB interfejsów API należy uzyskać dostęp do bazy danych z funkcji przy użyciu klienta statycznego dla interfejsu API, w tym [interfejsu api Azure Cosmos DB dla MongoDB](../cosmos-db/mongodb-introduction.md), [interfejs API Cassandra](../cosmos-db/cassandra-introduction.md), [interfejsu API Gremlin](../cosmos-db/graph-introduction.md)i [interfejs API tabel](../cosmos-db/table-introduction.md).
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
@@ -192,15 +188,15 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Opcjonalnie) Nazwa bazy danych, który zawiera kolekcję używaną do przechowywania dzierżaw. Jeśli nie ustawiona, wartość `databaseName` ustawienie jest używane. Ten parametr jest automatycznie ustawiana podczas tworzenia powiązania w portalu. |
 |**leaseCollectionName** | **LeaseCollectionName** | (Opcjonalnie) Nazwa kolekcji, używany do przechowywania dzierżaw. Kiedy nie ustawiona, wartość `leases` jest używany. |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Opcjonalnie) Po ustawieniu `true`, kolekcję dzierżaw zostało automatycznie utworzone po już nie istnieje. Wartość domyślna to `false`. |
-|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Opcjonalnie) Definiuje liczbę jednostek żądania do przypisania, po utworzeniu kolekcji dzierżaw. To ustawienie jest tylko wtedy, gdy używane `createLeaseCollectionIfNotExists` ustawiono `true`. Ten parametr jest automatycznie ustawiana, jeśli wiązanie jest tworzony przy użyciu portalu.
+|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Opcjonalnie) Definiuje liczbę jednostek żądania do przypisania, po utworzeniu kolekcji dzierżaw. To ustawienie jest tylko wtedy, gdy używane `createLeaseCollectionIfNotExists` ustawiono `true`. Ten parametr jest ustawiany automatycznie podczas tworzenia powiązania przy użyciu portalu.
 |**leaseCollectionPrefix**| **leaseCollectionPrefix**| (Opcjonalnie) Po ustawieniu dodaje prefiks do dzierżawy utworzone w kolekcję dzierżaw dla tej funkcji, co skutecznie dwie oddzielne funkcje platformy Azure na udostępnianie tej samej kolekcji dzierżawy przy użyciu różnych prefiksów.
 |**feedPollDelay**| **feedPollDelay**| (Opcjonalnie) Gdy zestaw, definiuje, w milisekundach, opóźnienie między sondowaniem partycji dla nowych zmian w źródle danych, gdy wszystkie bieżące zmiany są opróżniane. Wartością domyślną jest 5000 (5 sekund).
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał można uruchamiać zadania obliczeniowe, jeśli partycje są dystrybuowane równomiernie między wystąpieniami znanych hostów. Wartość domyślna to 13000 (w sekundach 13).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, dla której dzierżawy jest pobierany podczas dzierżawy, reprezentujący partycji. Jeśli dzierżawa nie zostanie odnowiony w tym przedziale czasu, spowoduje jego wygaśnięcia i własność partycji przejdzie do innego wystąpienia. Domyślna to 60 000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał odnawiania dla wszystkich dzierżaw dla partycji aktualnie trzymana przez wystąpienie. Wartość domyślna to 17000 (17 w sekundach).
-|**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartością domyślną jest zawsze po każdym wywołaniu funkcji.
+|**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartość domyślna to zawsze po każdym wywołaniu funkcji.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Opcjonalnie) Po ustawieniu dostosowuje maksymalna ilość elementów odebranych na wywołanie funkcji.
-|**startFromBeginning**| **startFromBeginning**| (Opcjonalnie) Po ustawieniu informuje wyzwalacz, aby rozpocząć odczyt zmiany wprowadzone od początku historii kolekcja zamiast bieżącego czasu. Działa to tylko przy pierwszym uruchomieniu wyzwalacza, tak jak w kolejnych przebiegów, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true` w przypadku dzierżaw utworzone nie ma wpływu.
+|**startFromBeginning**| **StartFromBeginning**| Obowiązkowe Po ustawieniu nakazuje wyzwalaczowi rozpoczęcie odczytywania zmian od początku historii kolekcji zamiast bieżącego czasu. Działa to tylko po pierwszym uruchomieniu wyzwalacza, tak jak w kolejnych uruchomieniach, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true`, jeśli już utworzono dzierżawy, nie ma żadnego wpływu.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1604,7 +1600,7 @@ Domyślnie podczas zapisu do parametru wyjściowego w funkcji, tworzony jest dok
 |---|---|
 | CosmosDB | [Kody błędów CosmosDB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się więcej o bazie danych bez użycia serwera, obliczeń w usłudze Cosmos DB](../cosmos-db/serverless-computing-database.md)
 * [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie informacji dotyczących prywatności w portalu My Account — Azure AD
-description: Jak wyświetlić informacje o ochronie prywatności na stronie prywatność w portalu My account.
+title: Wyświetlanie informacji związanych z prywatnością w portalu My Account — Azure AD
+description: Dowiedz się, w jaki sposób Twoja organizacja używa informacji związanych z prywatnością ze strony prywatność w portalu My account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb05bdb3aa2cf89328051b196475338eb5a3b3b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820365"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231818"
 ---
-# <a name="view-your-privacy-related-info-from-the-my-account-portal"></a>Wyświetlanie informacji dotyczących prywatności w portalu My Account
+# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Zobacz, jak Twoja organizacja używa danych związanych z prywatnością
 
 Możesz zobaczyć, jak Twoja organizacja korzysta z danych ze strony **prywatność** w portalu **My Account** .
 

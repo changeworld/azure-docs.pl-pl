@@ -1,7 +1,7 @@
 ---
 title: Tworzenie stref DNS i zestawów rekordów przy użyciu zestawu .NET SDK
 titleSuffix: Azure DNS
-description: Jak utworzyć strefy DNS i zestawy rekordów w Azure DNS przy użyciu zestawu .NET SDK.
+description: W tej ścieżce szkoleniowej Rozpocznij tworzenie stref DNS i zestawów rekordów w Azure DNS przy użyciu zestawu .NET SDK.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: allensu
-ms.openlocfilehash: b51dd4ea3b36a9d0420a60883ebc29276a7d6b8a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0dd57bb30a993baadac41552669a629aaaaff6df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076722"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210952"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie stref DNS i zestawów rekordów przy użyciu zestawu .NET SDK
 

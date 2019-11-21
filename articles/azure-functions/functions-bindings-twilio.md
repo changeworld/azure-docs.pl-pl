@@ -1,22 +1,17 @@
 ---
 title: Azure Functions powiązania Twilio
 description: Dowiedz się, jak używać powiązań Twilio z Azure Functions.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32f987caed915aff8c581b974dec7689fc90b007
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ee78234b43e94a5c537161556410ee6246e625ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114354"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230939"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio powiązanie dla Azure Functions
 
@@ -67,7 +62,7 @@ public static SMSMessage Run(
 }
 ```
 
-W tym przykładzie używa `TwilioSms` atrybutu z wartością zwracaną metody. Alternatywą jest użycie atrybutu z `out SMSMessage` parametrem `ICollector<SMSMessage>` `IAsyncCollector<SMSMessage>` lub parametrem.
+W tym przykładzie zastosowano atrybut `TwilioSms` z wartością zwracaną metody. Alternatywą jest użycie atrybutu z parametrem `out SMSMessage` lub parametrem `ICollector<SMSMessage>` lub `IAsyncCollector<SMSMessage>`.
 
 ### <a name="c-script-example"></a>C#przykład skryptu
 
@@ -243,7 +238,7 @@ namespace TwilioQueueOutput
 }
 ```
 
-W tym przykładzie używa `TwilioSms` atrybutu z wartością zwracaną metody. Alternatywą jest użycie atrybutu z `out CreateMessageOptions` parametrem `ICollector<CreateMessageOptions>` `IAsyncCollector<CreateMessageOptions>` lub parametrem.
+W tym przykładzie zastosowano atrybut `TwilioSms` z wartością zwracaną metody. Alternatywą jest użycie atrybutu z parametrem `out CreateMessageOptions` lub parametrem `ICollector<CreateMessageOptions>` lub `IAsyncCollector<CreateMessageOptions>`.
 
 ### <a name="2x-c-script-example"></a>Przykładowy skrypt 2 C# . x
 
@@ -394,20 +389,20 @@ public static CreateMessageOptions Run(
 
 Aby zapoznać się z pełnym przykładem, zobacz [ C# przykład](#c-example).
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `TwilioSms` atrybutu.
 
 | Funkcja v1. JSON — Właściwość | v2 Function. JSON — Właściwość | Właściwość atrybutu |Opis|
 |---------|---------|---------|----------------------|
-|**type**|**type**| musi być ustawiony na `twilioSms`.|
-|**direction**|**direction**| musi być ustawiony na `out`.|
+|**type**|**type**| Musi być ustawiony na `twilioSms`.|
+|**direction**|**direction**| Musi być ustawiony na `out`.|
 |**name**|**name**| Nazwa zmiennej używana w kodzie funkcji dla wiadomości tekstowej SMS Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ta wartość musi być ustawiona na nazwę ustawienia aplikacji, która zawiera identyfikator SID konta Twilio, np. TwilioAccountSid. Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ta wartość musi być ustawiona na nazwę ustawienia aplikacji, która zawiera token uwierzytelniania Twilio, np. TwilioAccountAuthToken. Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to "AzureWebJobsTwilioAuthToken". |
-|**to**| Nie dotyczy — Określ w kodzie | **To**| Ta wartość jest ustawiona na numer telefonu, na który jest wysyłany tekst SMS.|
+|**to**| Nie dotyczy — Określ w kodzie | **Do**| Ta wartość jest ustawiona na numer telefonu, na który jest wysyłany tekst SMS.|
 |**from**|**from** | **From**| Ta wartość jest ustawiona na numer telefonu, z którego jest wysyłany tekst SMS.|
-|**body**|**body** | **Body**| Ta wartość może służyć do napełnienia kodu wiadomości tekstowej SMS, jeśli nie musisz ustawiać jej dynamicznie w kodzie funkcji. |  
+|**body**|**body** | **Treść**| Ta wartość może służyć do napełnienia kodu wiadomości tekstowej SMS, jeśli nie musisz ustawiać jej dynamicznie w kodzie funkcji. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie portów wysokiej dostępności dla modułu równoważenia obciążenia platformy Azure
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Dowiedz się, jak używać portów wysokiej dostępności dla wewnętrznego ruchu na wszystkich portach równoważenia obciążenia
 services: load-balancer
 documentationcenter: na
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: allensu
-ms.openlocfilehash: c0cf1eb62c8e01988c9014478ff72816e45ea64c
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c2e787a1f81d9f3d31b981c31a0249dd362b7bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275614"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225402"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurowanie portów wysokiej dostępności dla wewnętrznego modułu równoważenia obciążenia
 
 Ten artykuł zawiera przykładowe wdrożenie portów wysokiej dostępności na wewnętrznego modułu równoważenia obciążenia. Aby uzyskać więcej informacji na temat konfiguracji specyficzne dla sieci wirtualnych urządzeń sieciowych (urządzeń WUS) zobacz odpowiedni witryn sieci Web dostawcy.
 
 >[!NOTE]
->Azure Load Balancer obsługuje dwa różne typy: Podstawowa i Standardowa. W tym artykule omówiono standardowego modułu równoważenia obciążenia. Aby uzyskać więcej informacji na temat podstawowego modułu równoważenia obciążenia, zobacz [omówienie Load Balancer](load-balancer-overview.md).
+>Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono standardowego modułu równoważenia obciążenia. Aby uzyskać więcej informacji na temat podstawowego modułu równoważenia obciążenia, zobacz [omówienie Load Balancer](load-balancer-overview.md).
 
 Na ilustracji przedstawiono następującą konfigurację przykład wdrożenia opisano w tym artykule:
 
@@ -101,6 +101,6 @@ W kroku 4 [Tworzenie zestawu modułu równoważenia obciążenia wewnętrznego](
 azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [portów wysokiej dostępności](load-balancer-ha-ports-overview.md).

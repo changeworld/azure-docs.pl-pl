@@ -1,14 +1,14 @@
 ---
-title: Tworzenie środowiska na podstawie przykładu strategii
-description: Użyj przykładu planu, aby utworzyć definicję planu, która konfiguruje dwie grupy zasobów i konfiguruje przypisanie roli dla każdego z nich.
+title: 'Samouczek: przykład strategii do nowego środowiska'
+description: W tym samouczku użyto przykładu strategii do utworzenia definicji planu, która konfiguruje dwie grupy zasobów i konfiguruje przypisanie roli dla każdego z nich.
 ms.date: 03/05/2019
 ms.topic: tutorial
-ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 31363f8756a8483533a24a8005c0ca9cb7ea7ea0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960266"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216929"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Samouczek: Tworzenie środowiska na podstawie przykładu strategii
 

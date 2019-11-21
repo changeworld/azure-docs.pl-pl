@@ -1,20 +1,15 @@
 ---
-title: Wskazówki dotyczące opracowywania Azure Functions | Microsoft Docs
+title: Wskazówki dotyczące opracowywania Azure Functions
 description: Poznaj Azure Functions koncepcje i techniki, które są potrzebne do opracowania funkcji na platformie Azure, we wszystkich językach programowania i powiązaniach.
-author: ggailey777
-manager: gwallace
-keywords: Przewodnik dla deweloperów, usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, dynamiczne obliczenia, architektura bezserwerowa
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.author: glenga
-ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982631"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226659"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów Azure Functions
 W Azure Functions określone funkcje udostępniają kilka podstawowych pojęć i składników technicznych, niezależnie od używanego języka lub powiązania. Przed przejściem do szczegółów szczegółowych informacji dotyczących danego języka lub powiązania należy zapoznać się z tym omówieniem, który ma zastosowanie do wszystkich z nich.
@@ -60,13 +55,13 @@ Aplikacja funkcji udostępnia kontekst wykonywania na platformie Azure, w który
 ## <a name="folder-structure"></a>Struktura folderów
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Powyższa wartość to domyślna (i zalecana) struktura folderów dla aplikacji funkcji. Jeśli chcesz zmienić lokalizację pliku kodu funkcji, zmodyfikuj `scriptFile` sekcję pliku _Function. JSON_ . Zalecamy również użycie [wdrożenia pakietu](deployment-zip-push.md) do wdrożenia projektu w aplikacji funkcji na platformie Azure. Możesz również korzystać z istniejących narzędzi, takich jak [ciągła integracja i wdrażanie](functions-continuous-deployment.md) oraz Azure DevOps.
+Powyższa wartość to domyślna (i zalecana) struktura folderów dla aplikacji funkcji. Jeśli chcesz zmienić lokalizację pliku kodu funkcji, Zmodyfikuj sekcję `scriptFile` pliku _Function. JSON_ . Zalecamy również użycie [wdrożenia pakietu](deployment-zip-push.md) do wdrożenia projektu w aplikacji funkcji na platformie Azure. Możesz również korzystać z istniejących narzędzi, takich jak [ciągła integracja i wdrażanie](functions-continuous-deployment.md) oraz Azure DevOps.
 
 > [!NOTE]
-> W przypadku ręcznego wdrażania pakietu Pamiętaj o wdrożeniu plików _hosta. JSON_ i folderów funkcji bezpośrednio do `wwwroot` folderu. Nie dołączaj `wwwroot` folderu we wdrożeniach. W przeciwnym razie możesz się dokończyć z `wwwroot\wwwroot` folderami.
+> W przypadku ręcznego wdrażania pakietu Pamiętaj o wdrożeniu plików _hosta. JSON_ i folderów funkcji bezpośrednio do folderu `wwwroot`. Nie dołączaj folderu `wwwroot` do wdrożeń. W przeciwnym razie można dokończyć `wwwroot\wwwroot` folderów.
 
 #### <a name="use-local-tools-and-publishing"></a>Korzystanie z lokalnych narzędzi i publikowanie
-Aplikacje funkcji można tworzyć i publikować przy użyciu różnych narzędzi, w tym [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), zaćmienie [](./functions-create-maven-eclipse.md)i [Azure Functions Core Tools](./functions-develop-local.md). Aby uzyskać więcej informacji, zobacz temat [kod i test Azure Functions lokalnie](./functions-develop-local.md).
+Aplikacje funkcji można tworzyć i publikować przy użyciu różnych narzędzi, w tym [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [zaćmienie](./functions-create-maven-eclipse.md)i [Azure Functions Core Tools](./functions-develop-local.md). Aby uzyskać więcej informacji, zobacz temat [kod i test Azure Functions lokalnie](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
@@ -78,7 +73,7 @@ Gdy wielokrotne zdarzenia wyzwalające są wykonywane szybciej niż środowisko 
 
 ## <a name="functions-runtime-versioning"></a>Przechowywanie wersji środowiska uruchomieniowego funkcji
 
-Wersję środowiska uruchomieniowego funkcji można skonfigurować przy użyciu `FUNCTIONS_EXTENSION_VERSION` ustawienia aplikacji. Na przykład wartość "~ 2" wskazuje, że aplikacja funkcji będzie używać 2. x jako wersji głównej. Aplikacje funkcji są uaktualniane do każdej nowej wersji pomocniczej po ich wydaniu. Aby uzyskać więcej informacji, w tym o sposobie wyświetlania dokładnej wersji aplikacji funkcji, zobacz [jak dowiedzieć się, jak kierować Azure Functions wersje środowiska uruchomieniowego](set-runtime-version.md).
+Wersję środowiska uruchomieniowego funkcji można skonfigurować przy użyciu ustawienia aplikacji `FUNCTIONS_EXTENSION_VERSION`. Na przykład wartość "~ 2" wskazuje, że aplikacja funkcji będzie używać 2. x jako wersji głównej. Aplikacje funkcji są uaktualniane do każdej nowej wersji pomocniczej po ich wydaniu. Aby uzyskać więcej informacji, w tym o sposobie wyświetlania dokładnej wersji aplikacji funkcji, zobacz [jak dowiedzieć się, jak kierować Azure Functions wersje środowiska uruchomieniowego](set-runtime-version.md).
 
 ## <a name="repositories"></a>Repozytoria
 Kod dla Azure Functions jest otwartym źródłem i przechowywany w repozytoriach usługi GitHub:
@@ -101,7 +96,7 @@ Masz problemy z błędami pochodzącymi z powiązań? Zapoznaj się z dokumentac
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji, zobacz następujące zasoby:
+Więcej informacji zawierają następujące zasoby:
 
 * [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md)
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](./functions-develop-local.md)

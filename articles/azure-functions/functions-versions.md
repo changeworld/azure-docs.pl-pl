@@ -1,18 +1,14 @@
 ---
 title: Przegląd wersji środowiska uruchomieniowego Azure Functions
 description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Poznaj różnice między nimi i wybierz odpowiedni dla siebie.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: glenga
-ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 53da5869b4768c95fd225fb15db60f4301e537d4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597431"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226550"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
@@ -33,9 +29,9 @@ Główne wersje środowiska uruchomieniowego Azure Functions są powiązane z we
 
 W tym artykule opisano niektóre różnice między różnymi wersjami, sposoby tworzenia poszczególnych wersji oraz zmiany wersji.
 
-## <a name="languages"></a>Języki
+## <a name="languages"></a>Languages
 
-Począwszy od wersji 2. x, środowisko uruchomieniowe używa modelu rozszerzalności języka, a wszystkie funkcje w aplikacji funkcji muszą korzystać z tego samego języka. Język funkcji w aplikacji funkcji jest wybierany podczas tworzenia aplikacji i jest przechowywany w [\_WORKER funkcje \_RUNTIME](functions-app-settings.md#functions_worker_runtime) ustawienie. 
+Począwszy od wersji 2. x, środowisko uruchomieniowe używa modelu rozszerzalności języka, a wszystkie funkcje w aplikacji funkcji muszą korzystać z tego samego języka. Język funkcji w aplikacji funkcji jest wybierany podczas tworzenia aplikacji i jest przechowywany w usłudze [functions\_ustawienia środowiska uruchomieniowego\_Worker](functions-app-settings.md#functions_worker_runtime) . 
 
 Azure Functions 1. x Języki eksperymentalne nie mogą używać nowego modelu, więc nie są obsługiwane w 2. x. Poniższa tabela wskazuje, które języki programowania są obecnie obsługiwane w poszczególnych wersjach środowiska uruchomieniowego.
 

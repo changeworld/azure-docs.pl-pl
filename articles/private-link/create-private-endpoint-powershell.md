@@ -2,17 +2,17 @@
 title: Tworzenie prywatnego punktu końcowego platformy Azure przy użyciu Azure PowerShell | Microsoft Docs
 description: Dowiedz się więcej o usłudze Azure Private link
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 91670d51328b3adb67ba8b2ed05d3b86f9bc0010
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.author: allensu
+ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053922"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229400"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure PowerShell
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. 
@@ -21,7 +21,7 @@ W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną n
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Przed utworzeniem zasobów należy utworzyć grupę zasobów, która będzie hostować Virtual Network i prywatny punkt końcowy z poleceniem [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *zachodniej* :
 
@@ -189,7 +189,7 @@ mstsc /v:<publicIpAddress>
   > [!NOTE]
   > Może być konieczne wybranie pozycji więcej opcji, > użyć innego konta, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej. 
   
-3. Kliknij przycisk **OK**. 
+3. Wybierz **OK**. 
 4. Może zostać wyświetlone ostrzeżenie o certyfikacie. W takim przypadku wybierz pozycję **Tak** lub **Kontynuuj**. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>Dostęp do serwera SQL Database prywatnie z poziomu maszyny wirtualnej

@@ -2,17 +2,17 @@
 title: Tworzenie usługi Azure Private link przy użyciu Azure PowerShell | Microsoft Docs
 description: Dowiedz się, jak utworzyć usługę prywatnego połączenia platformy Azure przy użyciu Azure PowerShell
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: d8d40ed83d7f8234092ca6354642a76aaa83bc12
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.author: allensu
+ms.openlocfilehash: c5910649127c4b2e78cfc12065a8f12a41f7309a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173072"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229389"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Tworzenie usługi linku prywatnego przy użyciu Azure PowerShell
 W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie Azure przy użyciu Azure PowerShell.
@@ -21,7 +21,7 @@ W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie 
 
 Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ten artykuł będzie wymagał najnowszej wersji modułu Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Aby można było utworzyć link prywatny, należy utworzyć grupę zasobów z poleceniem [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *WestCentralUS* :
 
@@ -115,7 +115,7 @@ Następnie pokażemy sposób mapowania tej usługi do prywatnego punktu końcowe
 
 ## <a name="create-a-private-endpoint"></a>Tworzenie prywatnego punktu końcowego
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
-Utwórz sieć wirtualną dla prywatnego punktu końcowego za pomocą elementu [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ten przykład tworzy sieć wirtualną o nazwie *vnetPE* IN Grupa zasobów o nazwie Moja *resourceName*:
+Utwórz sieć wirtualną dla prywatnego punktu końcowego za pomocą elementu [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ten przykład umożliwia utworzenie sieci wirtualnej o nazwie *vnetPE* w grupie zasobów o nazwie Moja *zasobów*:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"

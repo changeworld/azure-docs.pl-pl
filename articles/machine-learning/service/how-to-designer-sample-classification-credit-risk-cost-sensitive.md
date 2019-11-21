@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: f174ed995b043ef99d22a0a292e9b5be394029a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196086"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214279"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Kompilowanie klasyfikatora & używanie skryptów języka Python do przewidywania ryzyka kredytowego przy użyciu projektanta Azure Machine Learning
 
@@ -29,7 +29,7 @@ Ten przykład pociąga za niego klasyfikatora do przewidywania ryzyka kredytoweg
 
 Oto ukończony wykres dla tego potoku:
 
-[![Graf potoku](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graf potoku](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,7 +54,7 @@ Koszt nieznacznego klasyfikowania przykładu niskiego ryzyka jest równy 1, a ko
 
 Oto wykres potoku:
 
-[![Graf potoku](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graf potoku](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Przetwarzanie danych
 
@@ -110,7 +110,7 @@ W tym przykładzie użyto standardowego przepływu pracy analizy danych do tworz
 
 Na poniższym diagramie przedstawiono część tego potoku, w której oryginalne i zreplikowane zestawy szkoleniowe są używane do uczenia dwóch różnych modeli SVM. **Model uczenia** jest połączony z zestawem szkoleniowym, a **model oceny** jest połączony z zestawem testów.
 
-![Wykres potoku](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Wykres potoku](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
 W fazie oceny potoku jest obliczana dokładność każdego z czterech modeli. W przypadku tego potoku Użyj **oszacowania model** , aby porównać przykłady, które mają ten sam koszt niesklasyfikowany.
 
@@ -144,7 +144,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 Aby wyświetlić wyniki potoku, kliknij prawym przyciskiem myszy wizualizacje dane wyjściowe ostatnio **wybranych kolumn w module DataSet** .
 
-![Wizualizacja danych wyjściowych](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Wizualizacja danych wyjściowych](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
 W pierwszej kolumnie jest wyświetlany algorytm uczenia maszynowego używany do generowania modelu.
 
@@ -158,7 +158,7 @@ Z tych wyników można zobaczyć, że Najlepsza dokładność jest zapewniana pr
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 

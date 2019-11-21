@@ -1,7 +1,7 @@
 ---
-title: Testowanie aplikacji w portalu LUIS
+title: Testowanie aplikacji w portalu usługi LUIS
 titleSuffix: Azure Cognitive Services
-description: Użyj Language Understanding (LUIS), aby w sposób ciągły pracować w aplikacji, aby udoskonalić ją i ulepszyć jej zrozumienie.
+description: Language Understanding (LUIS) umożliwia ciągłe prace w swojej aplikacji, aby dostosować go i zwiększyć jej interpretacji języka.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: ebc86d1cf91cf79ab83b0f49d9898a91d8be8a75
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 628547e8254bb0055cf1f09af50e79b68311a759
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500279"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221786"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testowanie aplikacji LUIS w portalu LUIS
 
-[Testowanie](luis-concept-test.md) aplikacji jest procesem iteracyjnym. Po przekształceniu aplikacji LUIS przetestuj ją z przykładową wyrażenia długości, aby sprawdzić, czy zamiary i jednostki są rozpoznawane poprawnie. Jeśli tak nie jest, wprowadź ponownie aktualizacje aplikacji LUIS, uczenia i testowania. 
+[Testowanie](luis-concept-test.md) aplikacji jest procesem iteracyjnym. Po szkolenia aplikacją usługi LUIS, należy ją przetestować przy użyciu wypowiedzi próbki, aby sprawdzić, czy intencje i podmioty są rozpoznawane prawidłowo. Jeśli nie jesteś, aktualizowanie aplikacją usługi LUIS, szkolenie i test ponownie. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -30,90 +30,98 @@ ms.locfileid: "73500279"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
+## <a name="train-before-testing"></a>Uczenie przed testowaniem
+
+Aby przeprowadzić test względem najnowszej wersji aktywnej aplikacji, wybierz opcję **uczenie** z górnego menu przed przetestowaniem. 
+
 ## <a name="test-an-utterance"></a>Testowanie wypowiedź
 
-1. Uzyskaj dostęp do aplikacji, wybierając jej nazwę na stronie **Moje aplikacje** . 
+Test wypowiedź nie powinien być dokładnie taki sam, jak w przypadku każdego przykładu wyrażenia długości w aplikacji. Test wypowiedź powinien obejmować wybór wyrazów, Długość frazy oraz użycie jednostek, których oczekujesz dla użytkownika. 
 
-1. Aby uzyskać dostęp do panelu slajdu **testu** , wybierz opcję **test** w górnym panelu aplikacji.
+1. Dostęp do aplikacji, wybierając jego nazwę na **Moje aplikacje** strony. 
 
-    ![Strona uczenie & aplikacji testowej](./media/luis-how-to-interactive-test/test.png)
+1. Aby uzyskać dostęp do **testu** panelu slajdów w poziomie, wybierz opcję **testu** w Twojej aplikacji na górnym panelu.
 
-1. Wprowadź wypowiedź w polu tekstowym, a następnie wybierz klawisz ENTER. W **teście**można wpisać dowolną liczbę wyrażenia długości testowych, ale tylko jeden wypowiedź jednocześnie.
+    > [!div class="mx-imgBorder"]
+    > ![uczenie & stronie aplikacji testowej](./media/luis-how-to-interactive-test/test.png)
 
-1. Wypowiedź, jego górny cel i Ocena są dodawane do listy wyrażenia długości w polu tekstowym.
+1. Wprowadź wypowiedź w polu tekstowym i naciśnij klawisz Enter. Można wpisać jako wiele wypowiedzi testowania, jak chcesz **Test**, ale tylko jeden wypowiedź w danym momencie.
 
-    ![Testowanie interaktywne identyfikuje niewłaściwy cel](./media/luis-how-to-interactive-test/test-weather-1.png)
+1. Wypowiedź, jego przeznaczenie najważniejsze i oceny są dodawane do listy wypowiedzi poniżej pola tekstowego.
 
-## <a name="inspect-score"></a>Sprawdź ocenę
+    ![Testowanie interaktywne identyfikuje niewłaściwego intencji](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-Sprawdzasz szczegóły wyniku testu w panelu **Inspekcja** . 
+## <a name="inspect-score"></a>Sprawdź wynik
+
+Sprawdź szczegóły wyniku testu w **Sprawdź** panelu. 
  
-1. Po otwarciu panelu slajdu **testowego** zaznacz opcję **Sprawdź** , czy wypowiedź chcesz porównać. 
+1. Za pomocą **testu** Otwórz panel slajdów w poziomie, wybierz opcję **Sprawdź** dla wypowiedź, które chcesz porównać. 
 
     ![Wybierz przycisk Sprawdź, aby zobaczyć więcej szczegółów na temat wyników testu](./media/luis-how-to-interactive-test/inspect.png)
 
-1. Zostanie wyświetlony panel **Inspekcja** . Panel zawiera górne przeznaczenie oceny, a także wszystkie zidentyfikowane jednostki. Panel pokazuje wynik wybranego wypowiedźu.
+1. **Kontroli** zostanie wyświetlony panel. Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.
 
-    ![Panel zawiera górne przeznaczenie oceny, a także wszystkie zidentyfikowane jednostki. Panel pokazuje wynik wybranego wypowiedźu.](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>Popraw najważniejsze przeznaczenie oceny
+## <a name="correct-top-scoring-intent"></a>Poprawne górnej oceniania intencji
 
-1. Jeśli najważniejsze przeznaczenie oceny jest nieprawidłowe, wybierz przycisk **Edytuj** .
+1. Jeśli u góry oceniania celem jest niepoprawny, wybierz **Edytuj** przycisku.
 
-1.  Z listy rozwijanej wybierz odpowiedni cel dla wypowiedź.
+1.  Na liście rozwijanej wybierz poprawny przeznaczenie wypowiedź.
 
-    ![Wybierz odpowiedni cel](./media/luis-how-to-interactive-test/intent-select.png)
+    ![Wybierz prawidłowe intencji](./media/luis-how-to-interactive-test/intent-select.png)
 
-## <a name="view-sentiment-results"></a>Wyświetl wyniki tonacji
+## <a name="view-sentiment-results"></a>Wyświetlanie wyników tonacji
 
-Jeśli na stronie **[Publikowanie](luis-how-to-publish-app.md#enable-sentiment-analysis)** jest skonfigurowana **tonacji Analysis** , wyniki testu obejmują tonacji znaleziony w wypowiedź. 
+Jeśli **analizę tonacji** jest skonfigurowany na **[Publikuj](luis-how-to-publish-app.md#enable-sentiment-analysis)** stronie wyników testów obejmują wskaźniki nastrojów klientów w wypowiedź. 
 
-![Obraz okienka testowania z analizą tonacji](./media/luis-how-to-interactive-test/sentiment.png)
+![Obraz przedstawiający okienko testowania za pomocą analizy opinii](./media/luis-how-to-interactive-test/sentiment.png)
 
-## <a name="correct-matched-patterns-intent"></a>Popraw dopasowanie dopasowanego wzorca
+## <a name="correct-matched-patterns-intent"></a>Popraw dopasowany wzorzec intencji
 
-Jeśli używasz [wzorców](luis-concept-patterns.md) i wypowiedź dopasowane do wzorca, ale przewidywalno niewłaściwy cel, wybierz łącze **Edytuj** przez wzorzec, a następnie wybierz odpowiedni cel.
+Jeśli używasz [wzorców](luis-concept-patterns.md) wypowiedź dopasowany wzorzec, ale przewidzieć był nieprawidłowy zamiar, wybierz **Edytuj** połączyć za pomocą wzorca, a następnie wybierz poprawny intencji.
 
-## <a name="compare-with-published-version"></a>Porównaj z opublikowaną wersją
+## <a name="compare-with-published-version"></a>Porównaj z opublikowanej wersji
 
-Aktywną wersję aplikacji można przetestować przy użyciu opublikowanej wersji [punktu końcowego](luis-glossary.md#endpoint) . W panelu **Inspekcja** wybierz pozycję **Porównaj z opublikowanym**. Wszystkie testy dotyczące opublikowanego modelu są odejmowane od salda przydziału subskrypcji platformy Azure. 
+Możesz przetestować aktywnej wersji Twojej aplikacji za pomocą opublikowanego [punktu końcowego](luis-glossary.md#endpoint) wersji. W **Sprawdź** panelu wybierz **Porównaj z opublikowanych**. Wszelkie testowanie opublikowanego modelu jest odejmowany od salda limit przydziału subskrypcji platformy Azure. 
 
-![Porównaj z opublikowanym](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+![Porównaj z opublikowane](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
-## <a name="view-endpoint-json-in-test-panel"></a>Wyświetl kod JSON punktu końcowego w panelu testów
-Możesz wyświetlić kod JSON punktu końcowego zwrócony do porównania, wybierając **Widok Pokaż JSON**.
+## <a name="view-endpoint-json-in-test-panel"></a>Wyświetl punkt końcowy JSON w panelu testu
+Można wyświetlić punkt końcowy JSON zwrócony do porównywania, wybierając **JSON Pokaż widok**.
 
-![Opublikowana odpowiedź JSON](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+![Opublikowane odpowiedź w formacie JSON](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 <!--Service name is 'Bing Spell Check v7 API' in the portal-->
-## <a name="additional-settings-in-test-panel"></a>Ustawienia dodatkowe w panelu testu
+## <a name="additional-settings-in-test-panel"></a>Dodatkowe ustawienia w panelu testu
 
-### <a name="luis-endpoint"></a>Punkt końcowy LUIS
+### <a name="luis-endpoint"></a>Punkt końcowy usługi LUIS
 
-Jeśli masz kilka punktów końcowych LUIS, Użyj linku **Ustawienia dodatkowe** w okienku opublikowanym test, aby zmienić punkt końcowy używany do testowania. Jeśli nie masz pewności, który punkt końcowy jest używany, wybierz wartość domyślną **Starter_Key**. 
+Jeśli masz kilka punktów końcowych usługi LUIS, użyj **dodatkowe ustawienia** łącze na Test opublikowane w okienku można zmienić punktu końcowego używanego do testowania. Jeśli nie masz pewności, który punkt końcowy do użycia, wybierz domyślną **Starter_Key**. 
 
-![Panel testowy z wyróżnionymi dodatkowymi linkami ustawień](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+> [!div class="mx-imgBorder"]
+> ![panelu testowego z wyróżnionym linkiem dodatkowe ustawienia](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
+<!--
+###  View Bing Spell Check corrections in test panel
 
-### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Wyświetlanie poprawek sprawdzanie pisowni Bing w panelu testowania
+Requirements to view the spelling corrections: 
 
-Wymagania dotyczące wyświetlania poprawek pisowni: 
+* Published app
+* Bing Spell Check [service key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). The service key is not stored and needs to be reset for each browser session. 
 
-* Opublikowana aplikacja
-* Sprawdzanie pisowni Bing [klucz usługi](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). Klucz usługi nie jest przechowywany i należy go zresetować dla każdej sesji przeglądarki. 
+Use the following procedure to include the [Bing Spell Check v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) service  in the Test pane results. 
 
-Poniższa procedura umożliwia uwzględnienie [Sprawdzanie pisowni Bing usługi wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) w wynikach okienka testów. 
+1. In the **Test** pane, enter an utterance. When the utterance is predicted, select **[Inspect](#inspect-score)** underneath the utterance you entered. 
 
-1. W okienku **test** wprowadź wypowiedź. Gdy wypowiedź jest przewidywany, wybierz pozycję **[Sprawdź](#inspect-score)** pod wprowadzoną wypowiedź. 
+1. When the **Inspect** panel opens, select **[Compare with Published](#compare-with-published-version)**. 
 
-1. Gdy zostanie otwarty panel **Inspekcja** , wybierz pozycję **[Porównaj z opublikowanym](#compare-with-published-version)** . 
+1. When the **Published** panel opens, select **[Additional Settings](#additional-settings-in-test-panel)**.
 
-1. Po otwarciu panelu **opublikowanego** wybierz pozycję **[dodatkowe ustawienia](#additional-settings-in-test-panel)** .
+1. In the pop-up dialog, check **Enable Bing Spell Check** and enter the key, then select **Done**. 
+    ![Enter Bing Spell Check service key](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-1. W podręcznym oknie dialogowym zaznacz pole wyboru **włącz sprawdzanie pisowni Bing** i wprowadź klucz, a następnie wybierz pozycję **gotowe**. 
-    ![wprowadzić sprawdzanie pisowni Bing klucz usługi](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
-
-1. Wprowadź zapytanie z nieprawidłową pisownią, taką jak `book flite to seattle`, i wybierz klawisz ENTER. Niepoprawna pisownia wyrazu `flite` jest zastępowana w zapytaniu wysłanym do LUIS, a otrzymany kod JSON pokazuje zarówno oryginalne zapytanie, jak `query`, jak i poprawioną pisownię w zapytaniu, jako `alteredQuery`.
+1. Enter a query with an incorrect spelling such as `book flite to seattle` and select enter. The incorrect spelling of the word `flite` is replaced in the query sent to LUIS and the resulting JSON shows both the original query, as `query`, and the corrected spelling in the query, as `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>
@@ -125,13 +133,14 @@ Poniższa procedura umożliwia uwzględnienie [Sprawdzanie pisowni Bing usługi 
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+-->
 
 ## <a name="batch-testing"></a>Testowanie wsadowe
-Zobacz [koncepcje](luis-concept-batch-test.md) testowania partii i Dowiedz się, [jak](luis-how-to-batch-test.md) przetestować partię wyrażenia długości.
+Zobacz testowania partii [pojęcia](luis-concept-batch-test.md) i Dowiedz się, [jak](luis-how-to-batch-test.md) partii wypowiedzi testowania.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli testowanie wskazuje, że aplikacja LUIS nie rozpoznaje poprawnych intencji i jednostek, możesz obejść, aby poprawić dokładność aplikacji LUIS, dodając etykiety więcej wyrażenia długości lub dodając funkcje. 
+Jeśli testowanie wskazuje, że aplikacją usługi LUIS nie rozpoznaje poprawne intencje i podmioty, możesz podjąć zwiększyć dokładność aplikacją usługi LUIS etykietowania więcej wypowiedzi lub dodając funkcje. 
 
-* [Etykieta sugerowanych wyrażenia długości z LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Korzystaj z funkcji, aby zwiększyć wydajność aplikacji LUIS](luis-how-to-add-features.md) 
+* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](luis-how-to-review-endpoint-utterances.md) 
+* [Używanie funkcji w celu zwiększenia wydajności aplikacją usługi LUIS](luis-how-to-add-features.md) 

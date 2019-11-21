@@ -1,21 +1,14 @@
 ---
 title: Ręczne instalowanie lub aktualizowanie rozszerzeń powiązań Azure Functions
 description: Dowiedz się, jak zainstalować lub zaktualizować rozszerzenia Azure Functions powiązań dla wdrożonych aplikacji funkcji.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: usługa Azure Functions, funkcje, rozszerzenia powiązań, NuGet, aktualizacje
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/26/2018
-ms.author: glenga
-ms.openlocfilehash: 7686a9b2df6df6b54851e9c9957186f76be3fafd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085054"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226504"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ręczne instalowanie lub aktualizowanie Azure Functions powiązań z poziomu portalu
 
@@ -31,15 +24,15 @@ Wykonaj następujące kroki, aby ręcznie zainstalować lub zaktualizować rozsz
 
 1. Wybierz kartę **funkcje platformy** i w obszarze **Narzędzia deweloperskie** wybierz pozycję **Narzędzia zaawansowane (kudu)** . Punkt końcowy kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) jest otwarty w nowym oknie.
 
-1. W oknie kudu wybierz polecenie **Debuguj konsolę** > **cmd**.  
+1. W oknie kudu wybierz kolejno opcje **Debuguj konsolę** > **cmd**.  
 
-1. W oknie wiersza polecenia przejdź do `D:\home\site\wwwroot` i wybierz ikonę Usuń `bin` obok pozycji Usuń folder. Wybierz **przycisk OK** , aby potwierdzić usunięcie.
+1. W oknie wiersza polecenia przejdź do `D:\home\site\wwwroot` i wybierz ikonę Usuń obok pozycji `bin`, aby usunąć folder. Wybierz **przycisk OK** , aby potwierdzić usunięcie.
 
-1. Wybierz ikonę edycji obok `extensions.csproj` pliku, który definiuje rozszerzenia powiązań dla aplikacji funkcji. Plik projektu jest otwierany w edytorze online.
+1. Wybierz ikonę edycji obok pliku `extensions.csproj`, który definiuje rozszerzenia powiązań dla aplikacji funkcji. Plik projektu jest otwierany w edytorze online.
 
 1. Wprowadź wymagane Dodatki i aktualizacje elementów **PackageReference** w **elemencie Items**, a następnie wybierz pozycję **Zapisz**. Aktualną listę obsługiwanych wersji pakietu można znaleźć w temacie [jakie pakiety są potrzebne?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) artykuł wiki. Wszystkie trzy powiązania usługi Azure Storage wymagają pakietu Microsoft. Azure. WebJobs. Extensions. Storage.
 
-1. W folderze Uruchom następujące polecenie, aby ponownie skompilować przywoływane zestawy w folderze.`bin` `wwwroot`
+1. W folderze `wwwroot` Uruchom następujące polecenie, aby ponownie skompilować przywoływane zestawy w folderze `bin`.
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget

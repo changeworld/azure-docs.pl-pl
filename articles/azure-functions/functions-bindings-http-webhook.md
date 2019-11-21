@@ -1,21 +1,16 @@
 ---
 title: Azure Functions wyzwalacze i powiązania HTTP
 description: Dowiedz się, jak używać wyzwalaczy i powiązań HTTP w Azure Functions.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Functions, przetwarzanie zdarzeń, webhooks, Dynamic COMPUTE, architektura bezserwerowa, HTTP, API, REST
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 7cce1c9ee6ca5e01b91afd5284ca9abf84d0b56f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 598074a6d5093c4febd4d62266a1c852200e3f69
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158091"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231170"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions wyzwalacze i powiązania HTTP
 

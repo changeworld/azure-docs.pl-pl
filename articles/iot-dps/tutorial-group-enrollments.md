@@ -1,21 +1,20 @@
 ---
-title: 'Samouczek: Inicjowanie obsługi symulowanego urządzenia X. 509 na platformie Azure IoT Hub przy użyciu języka Java i grup rejestracji'
-description: Samouczek platformy Azure — tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK usługi i urządzenia Java oraz grup rejestracji dla usługi IoT Hub Device Provisioning
+title: Inicjowanie obsługi symulowanego urządzenia X. 509 na platformie Azure IoT Hub przy użyciu języka Java i grup rejestracji
+description: Samouczek — Tworzenie i udostępnianie symulowanego urządzenia X. 509 za pomocą zestawu SDK urządzeń i usług Java oraz grup rejestracji dla IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: b3cb506b241adab44df490e2fe7f363d35f0f747
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a903997c6548aad3638ba5785d23ee7642d403fc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112430"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228330"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Samouczek: Tworzenie i Inicjowanie symulowanego urządzenia X. 509 za pomocą zestawu SDK urządzeń i usług Java oraz rejestracji grup dla IoT Hub Device Provisioning Service
 
@@ -53,7 +52,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
         1. Wybierz nowo utworzony certyfikat:
             - Kliknij pozycję **Generuj kod weryfikacyjny**. Skopiuj wygenerowany kod.
-            - Uruchom krok weryfikacji. Wprowadź _kod weryfikacyjny_ lub kliknij prawym przyciskiem myszy, aby wkleić go w uruchomionym oknie programu PowerShell.  Naciśnij klawisz **Enter**.
+            - Uruchom krok weryfikacji. Wprowadź _kod weryfikacyjny_ lub kliknij prawym przyciskiem myszy, aby wkleić go w uruchomionym oknie programu PowerShell.  Naciśnij klawisz **wprowadź**.
             - Wybierz nowo utworzony plik **_verifyCert4.pem_** w witrynie Azure Portal. Kliknij pozycję **Zweryfikuj**.
 
               ![Sprawdzanie poprawności certyfikatu](./media/tutorial-group-enrollments/validate-certificate.png)

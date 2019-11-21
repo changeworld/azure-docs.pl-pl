@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14565c7e499b04b9c41184111d6ddcc88fffac80
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: eb415d7434130c6ea2e7c9e2e11daccc657ddbf8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883007"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207659"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen federacyjnych
 
@@ -54,7 +54,7 @@ Omawiane kwestie:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku założono, że you'e zna następujące artykuły:
+W tym samouczku założono, że znasz następujące artykuły:
 
 - [Co to jest tożsamość urządzenia?](overview.md)
 - [Jak zaplanować implementację hybrydowej funkcji dołączania do usługi Azure AD](hybrid-azuread-join-plan.md)
@@ -106,7 +106,7 @@ Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure
 
 1. Uruchom Azure AD Connect, a następnie wybierz pozycję **Konfiguruj**.
 
-   ![Powitanie](./media/hybrid-azuread-join-federated-domains/11.png)
+   ![Witaj](./media/hybrid-azuread-join-federated-domains/11.png)
 
 1. Na stronie **dodatkowe zadania** wybierz pozycję **Konfiguruj opcje urządzenia**, a następnie wybierz przycisk **dalej**.
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: fbd595c7de0bde4e8ba8b7aaa9a65aa5880c1165
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a2a1fb5f84612630d4168c8af908ed86330938c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151916"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213121"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Tworzenie kopii zapasowych i przywracanie w Azure Database for MySQL
 
@@ -62,7 +62,7 @@ Może być konieczne poczekanie na wykonanie następnej kopii zapasowej dziennik
 
 ### <a name="geo-restore"></a>Przywracanie geograficzne
 
-Serwer można przywrócić w innym regionie świadczenia usługi Azure, w którym usługa jest dostępna, jeśli skonfigurowano serwer pod kątem geograficznie nadmiarowych kopii zapasowych. W przypadku serwerów, które obsługują do 16 TB pamięci masowej, kopie zapasowe mogą być przywracane tylko w regionach, które obsługują serwery 16 TB. Przejrzyj [Azure Database for MySQL warstwy cenowe](concepts-pricing-tiers.md) , aby wyświetlić listę obsługiwanych regionów. 
+Serwer można przywrócić w innym regionie świadczenia usługi Azure, w którym usługa jest dostępna, jeśli skonfigurowano serwer pod kątem geograficznie nadmiarowych kopii zapasowych. Serwery obsługujące do 4 TB pamięci masowej można przywrócić do regionu z parą geograficzną lub do dowolnego regionu, który obsługuje maksymalnie 16 TB pamięci masowej. W przypadku serwerów, które obsługują do 16 TB pamięci masowej, można przywrócić kopie zapasowe w dowolnym regionie, w którym są również obsługiwane serwery 16 TB. Przejrzyj [Azure Database for MySQL warstwy cenowe](concepts-pricing-tiers.md) , aby wyświetlić listę obsługiwanych regionów.
 
 Przywracanie geograficzne jest domyślną opcją odzyskiwania, gdy serwer jest niedostępny z powodu zdarzenia w regionie, w którym znajduje się serwer. Jeśli zdarzenie w dużej skali w regionie powoduje niedostępność aplikacji bazy danych, można przywrócić serwer z kopii zapasowych nadmiarowych geograficznie do serwera w dowolnym innym regionie. Istnieje opóźnienie między wykonaniem kopii zapasowej a replikacją do innego regionu. To opóźnienie może wynosić do godziny, więc jeśli wystąpi awaria, może to oznaczać, że istnieje maksymalnie jedna godzina utraty danych.
 

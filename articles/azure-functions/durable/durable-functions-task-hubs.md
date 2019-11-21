@@ -1,20 +1,16 @@
 ---
 title: Centra zadań w Durable Functions — Azure
 description: Dowiedz się, co to jest centrum zadań w Durable Functions rozszerzeniu Azure Functions. Dowiedz się, jak skonfigurować centra zadań.
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b42294fdcf60add8496116bd1f83bf64f54a5f63
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 38c7da8a1de57ed5acf3248fc6a71431de0bd1e2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614698"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232787"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra zadań w Durable Functions (Azure Functions)
 

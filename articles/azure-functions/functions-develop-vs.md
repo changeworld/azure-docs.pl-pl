@@ -1,19 +1,15 @@
 ---
-title: Opracowywanie Azure Functions przy użyciu programu Visual Studio | Microsoft Docs
+title: Opracowywanie Azure Functions przy użyciu programu Visual Studio
 description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu narzędzi Azure Functions Tools for Visual Studio 2019.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: glenga
-ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773159"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230658"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Opracowywanie Azure Functions przy użyciu programu Visual Studio  
 
@@ -46,7 +42,7 @@ Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tw
 
 ### <a name="check-your-tools-version"></a>Sprawdź wersję narzędzi w programie Visual Studio 2017
 
-1. Z **narzędzia** menu, wybierz **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz **Azure Functions i narzędzia do zadań w sieci Web**.
+1. Z **narzędzia** menu, wybierz **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
 
     ![Weryfikowanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -56,7 +52,7 @@ Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tw
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Aktualizowanie narzędzi w programie Visual Studio 2017
 
-1. W oknie dialogowym **rozszerzenia i aktualizacje** rozwiń węzeł **aktualizacje** > **Visual Studio Marketplace**, wybierz pozycję **narzędzia Azure Functions i zadania sieci Web** , a następnie wybierz pozycję **Aktualizuj**.
+1. W oknie dialogowym **rozszerzenia i aktualizacje** rozwiń węzeł **aktualizacje** > **Visual Studio Marketplace**, wybierz **Azure Functions i narzędzia zadań sieci Web** , a następnie wybierz pozycję **Aktualizuj**.
 
     ![Aktualizowanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
@@ -73,11 +69,11 @@ W programie Visual Studio 2019 i nowszych rozszerzenie narzędzi Azure Functions
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-Szablon projektu tworzy C# projekt, instaluje `Microsoft.NET.Sdk.Functions` pakiet NuGet i ustawia platformę docelową. Nowy projekt zawiera następujące pliki:
+Szablon projektu tworzy C# projekt, instaluje pakiet NuGet `Microsoft.NET.Sdk.Functions` i ustawia platformę docelową. Nowy projekt zawiera następujące pliki:
 
-* **host.json**: Umożliwia skonfigurowanie hosta funkcji. Te ustawienia są stosowane zarówno w przypadku uruchamiania lokalnego, jak i na platformie Azure. Aby uzyskać więcej informacji, zobacz [Dokumentacja pliku host. JSON](functions-host-json.md).
+* plik **host. JSON**: umożliwia skonfigurowanie hosta funkcji. Te ustawienia są stosowane zarówno w przypadku uruchamiania lokalnego, jak i na platformie Azure. Aby uzyskać więcej informacji, zobacz [Dokumentacja pliku host. JSON](functions-host-json.md).
 
-* **local.settings.json**: Obsługuje ustawienia używane podczas lokalnego uruchamiania funkcji. Te ustawienia nie są używane podczas uruchamiania na platformie Azure. Aby uzyskać więcej informacji, zobacz [plik ustawień lokalnych](#local-settings-file).
+* **Local. Settings. JSON**: utrzymuje ustawienia używane lokalnie do uruchamiania funkcji. Te ustawienia nie są używane podczas uruchamiania na platformie Azure. Aby uzyskać więcej informacji, zobacz [plik ustawień lokalnych](#local-settings-file).
 
     >[!IMPORTANT]
     >Ponieważ plik Local. Settings. JSON może zawierać wpisy tajne, należy go wykluczyć z kontroli źródła projektu. Ustawienie **Kopiuj do katalogu wyjściowego** dla tego pliku powinno być zawsze **kopiowane, jeśli nowsze**. 
@@ -98,7 +94,7 @@ Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmie
 
 Aby ustawić parametry połączenia konta magazynu:
 
-1. W programie Visual Studio Otwórz **program Cloud Explorer**, rozwiń węzeł **konto** > magazynu**konta magazynu**, a następnie na karcie **Właściwości** skopiuj wartość **podstawowe parametry połączenia** .
+1. W programie Visual Studio Otwórz program **Cloud Explorer**, rozwiń węzeł **konto magazynu** > **konto magazynu**, a następnie na karcie **Właściwości** skopiuj wartość **podstawowe parametry połączenia** .
 
 2. W projekcie Otwórz plik Local. Settings. JSON i ustaw wartość klucza **AzureWebJobsStorage** na skopiowane parametry połączenia.
 
@@ -144,7 +140,7 @@ W C# funkcjach biblioteki klas powiązania używane przez funkcję są definiowa
 
 Korzystając z powyższej procedury, można dodać więcej funkcji do projektu aplikacji funkcji. Każda funkcja w projekcie może mieć inny wyzwalacz, ale funkcja musi mieć dokładnie jeden wyzwalacz. Aby uzyskać więcej informacji, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
 
-## <a name="add-bindings"></a>Dodaj powiązania
+## <a name="add-bindings"></a>Dodawanie powiązań
 
 Podobnie jak w przypadku wyzwalaczy, powiązania wejściowe i wyjściowe są dodawane do funkcji jako atrybuty powiązania. Dodaj powiązania do funkcji w następujący sposób:
 
@@ -170,7 +166,7 @@ Podobnie jak w przypadku wyzwalaczy, powiązania wejściowe i wyjściowe są dod
         }
     }
     ```
-   Połączenie z usługą queue storage jest uzyskiwane z `AzureWebJobsStorage` tego ustawienia. Aby uzyskać więcej informacji, zobacz artykuł referencyjny dla określonego powiązania. 
+   Połączenie z usługą queue storage jest uzyskiwane z ustawienia `AzureWebJobsStorage`. Aby uzyskać więcej informacji, zobacz artykuł referencyjny dla określonego powiązania. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -219,7 +215,7 @@ Spowoduje to wyświetlenie okna dialogowego **Ustawienia aplikacji** dla aplikac
 Można również zarządzać ustawieniami aplikacji w jeden z następujących sposobów:
 
 * [Przy użyciu Azure Portal](functions-how-to-use-azure-function-app-settings.md#settings).
-* [Użycie opcji PublikujwAzureFunctionsCoreTools.`--publish-local-settings` ](functions-run-local.md#publish)
+* [Użycie opcji publikowania `--publish-local-settings` w Azure Functions Core Tools](functions-run-local.md#publish).
 * [Przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ## <a name="monitoring-functions"></a>Funkcje monitorowania

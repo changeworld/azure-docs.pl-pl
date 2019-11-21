@@ -2,17 +2,17 @@
 title: Hostowanie aplikacji sieci Web platformy Azure ze zrównoważonym obciążeniem w wierzchołku strefy
 description: Użyj rekordu aliasu Azure DNS, aby hostować aplikacje sieci Web z równoważeniem obciążenia w wierzchołku strefy
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: victorh
-ms.openlocfilehash: 4f9a42f3d054becfed0b0a6acbf92cdf1e421c16
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: allensu
+ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946942"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212366"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hostowanie aplikacji sieci Web platformy Azure ze zrównoważonym obciążeniem w wierzchołku strefy
 
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje dotyczące hostowania domeny w Azure DNS, [zobacz Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz temat [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z własnej nazwy domeny.
 
@@ -43,9 +43,9 @@ Utwórz grupę zasobów, w której mają być przechowywane wszystkie zasoby uż
 Utwórz dwa plany App Service sieci Web w grupie zasobów, korzystając z poniższej tabeli w celu uzyskania informacji o konfiguracji. Aby uzyskać więcej informacji na temat tworzenia planu App Service, zobacz [Zarządzanie planem App Service na platformie Azure](../app-service/app-service-plan-manage.md).
 
 
-|Name (Nazwa)  |System operacyjny  |Location  |Warstwa cenowa  |
+|Nazwa  |System operacyjny  |Lokalizacja  |Warstwa cenowa  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|East US|Tworzenie i testowanie D1 — udostępnione|
+|ASP-01     |Windows|Wschodnie stany USA|Tworzenie i testowanie D1 — udostępnione|
 |ASP-02     |Windows|Środkowe stany USA|Tworzenie i testowanie D1 — udostępnione|
 
 ## <a name="create-app-services"></a>Utwórz App Services
@@ -58,10 +58,10 @@ Utwórz dwie aplikacje sieci Web, jeden w każdym planie App Service.
 4. Wybierz pozycję **Utwórz**.
 5. Zaakceptuj wartości domyślne i Skorzystaj z poniższej tabeli, aby skonfigurować dwie aplikacje sieci Web:
 
-   |Name (Nazwa)<br>(musi być unikatowy w obrębie. azurewebsites.net)|Grupa zasobów |Stos środowiska uruchomieniowego|Region|App Service plan/lokalizacja
+   |Nazwa<br>(musi być unikatowy w obrębie. azurewebsites.net)|Grupa zasobów |Stos środowiska uruchomieniowego|Region|App Service plan/lokalizacja
    |---------|---------|-|-|-------|
-   |Aplikacja — 01|Użyj istniejącego<br>Wybieranie grupy zasobów|.NET Core 2.2|East US|ASP — 01 (D1)|
-   |App-02|Użyj istniejącego<br>Wybieranie grupy zasobów|.NET Core 2.2|Środkowe stany USA|ASP-02 (D1)|
+   |Aplikacja — 01|Użyj istniejącej<br>Wybieranie grupy zasobów|.NET Core 2.2|Wschodnie stany USA|ASP — 01 (D1)|
+   |App-02|Użyj istniejącej<br>Wybieranie grupy zasobów|.NET Core 2.2|Środkowe stany USA|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Zbierz szczegóły
 
@@ -69,14 +69,14 @@ Teraz należy zanotować adres IP i nazwę hosta aplikacji sieci Web.
 
 1. Otwórz grupę zasobów i wybierz pierwszą aplikację sieci Web (**App-01** w tym przykładzie).
 2. W lewej kolumnie Wybierz pozycję **Właściwości**.
-3. Zwróć uwagę na adres **URL**, a w obszarze wychodzące **adresy IP** Zanotuj pierwszy adres IP na liście. Te informacje będą używane później podczas konfigurowania punktów końcowych Traffic Manager.
+3. Zwróć uwagę na adres **URL**, a w obszarze **wychodzące adresy IP** Zanotuj pierwszy adres IP na liście. Te informacje będą używane później podczas konfigurowania punktów końcowych Traffic Manager.
 4. Powtórz dla **aplikacji App-02**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
 
 Utwórz profil Traffic Manager w grupie zasobów. Użyj wartości domyślnych i wpisz unikatową nazwę w przestrzeni nazw trafficmanager.net.
 
-Aby uzyskać informacje na temat tworzenia profilu Traffic Manager, [zobacz Szybki Start: Utwórz profil Traffic Manager dla aplikacji](../traffic-manager/quickstart-create-traffic-manager-profile.md)sieci Web o wysokiej dostępności.
+Aby uzyskać informacje na temat tworzenia profilu Traffic Manager, zobacz [Szybki Start: Tworzenie profilu Traffic Manager dla aplikacji sieci Web o wysokiej](../traffic-manager/quickstart-create-traffic-manager-profile.md)dostępności.
 
 ### <a name="create-endpoints"></a>Tworzenie punktów końcowych
 
@@ -87,14 +87,14 @@ Teraz można utworzyć punkty końcowe dla dwóch aplikacji sieci Web.
 3. Wybierz pozycję **Dodaj**.
 4. Skorzystaj z poniższej tabeli, aby skonfigurować punkty końcowe:
 
-   |Type  |Name (Nazwa)  |Cel  |Location  |Ustawienia nagłówka niestandardowego|
+   |Typ  |Nazwa  |Środowisko docelowe  |Lokalizacja  |Niestandardowe ustawienia nagłówka|
    |---------|---------|---------|---------|---------|
-   |Zewnętrzny punkt końcowy     |Koniec-01|Adres IP zarejestrowany dla aplikacji App-01|East US|Host:\<adres URL zarejestrowany dla aplikacji App-01\><br>Przykład: **host: App-01.azurewebsites.NET**|
+   |Zewnętrzny punkt końcowy     |Koniec-01|Adres IP zarejestrowany dla aplikacji App-01|Wschodnie stany USA|Host:\<adres URL zarejestrowany dla aplikacji App-01\><br>Przykład: **host: App-01.azurewebsites.NET**|
    |Zewnętrzny punkt końcowy     |End-02|Adres IP zarejestrowany dla aplikacji App-02|Środkowe stany USA|Host:\<adres URL zarejestrowany dla aplikacji App-02\><br>Przykład: **host: App-02.azurewebsites.NET**
 
-## <a name="create-dns-zone"></a>Tworzenie strefy DNS
+## <a name="create-dns-zone"></a>Utwórz strefę DNS
 
-Możesz użyć istniejącej strefy DNS do testowania lub można utworzyć nową strefę. Aby utworzyć i delegować nową strefę DNS na platformie Azure, [zobacz Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Możesz użyć istniejącej strefy DNS do testowania lub można utworzyć nową strefę. Aby utworzyć i delegować nową strefę DNS na platformie Azure, zobacz [Samouczek: Hostowanie domeny w Azure DNS](dns-delegate-domain-azure-dns.md).
 
 ## <a name="add-a-txt-record-for-custom-domain-validation"></a>Dodawanie rekordu TXT na potrzeby weryfikacji domeny niestandardowej
 
@@ -104,19 +104,19 @@ Po dodaniu niestandardowej nazwy hosta do aplikacji sieci Web szuka określonego
 2. Wybierz pozycję **Zestaw rekordów**.
 3. Dodaj zestaw rekordów, korzystając z poniższej tabeli. Dla wartości Użyj rzeczywistego adresu URL aplikacji sieci Web, który został wcześniej zarejestrowany:
 
-   |Name (Nazwa)  |Typ  |Value|
+   |Nazwa  |Typ  |Wartość|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
 
-## <a name="add-a-custom-domain"></a>Dodaj domenę niestandardową
+## <a name="add-a-custom-domain"></a>Dodawanie domeny niestandardowej
 
 Dodaj domenę niestandardową dla obu aplikacji sieci Web.
 
 1. Otwórz grupę zasobów i wybierz swoją pierwszą aplikację sieci Web.
 2. W lewej kolumnie Wybierz pozycję **domeny niestandardowe**.
-3. W obszarze **domeny niestandardowe**wybierz pozycję **Dodaj domenę**niestandardową.
-4. W obszarze **domena**niestandardowa wpisz swoją niestandardową nazwę domeny. Na przykład contoso.com.
+3. W obszarze **domeny niestandardowe**wybierz pozycję **Dodaj domenę niestandardową**.
+4. W obszarze **domena niestandardowa**wpisz swoją niestandardową nazwę domeny. Na przykład contoso.com.
 5. Wybierz przycisk **Weryfikuj**.
 
    Twoja domena powinna przekazywać walidację i wyświetlać zielone znaczniki wyboru obok pozycji **Nazwa hosta** i **własność domeny**.
@@ -132,7 +132,7 @@ Teraz Dodaj rekord aliasu dla wierzchołka strefy.
 2. Wybierz pozycję **Zestaw rekordów**.
 3. Dodaj zestaw rekordów, korzystając z następującej tabeli:
 
-   |Name (Nazwa)  |Type  |Zestaw rekordów aliasu  |Typ aliasu  |Zasób platformy Azure|
+   |Nazwa  |Typ  |Zestaw rekordów aliasu  |Typ aliasu  |Zasób platformy Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Tak|Zasób platformy Azure|Traffic Manager — Twój profil|
 
@@ -157,7 +157,7 @@ Teraz możesz przeprowadzić test, aby upewnić się, że można nawiązać poł
 Aby dowiedzieć się więcej na temat rekordów aliasów, zobacz następujące artykuły:
 
 - [Samouczek: Konfigurowanie rekordu aliasu w celu odwoływania się do publicznego adresu IP platformy Azure](tutorial-alias-pip.md)
-- [Samouczek: Skonfiguruj rekord aliasu, aby obsługiwał nazwy domen wierzchołków z Traffic Manager](tutorial-alias-tm.md)
+- [Samouczek: Konfigurowanie rekordu aliasu do obsługi nazw domen wierzchołków z Traffic Manager](tutorial-alias-tm.md)
 - [Często zadawane pytania na temat systemu DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
 
 Aby dowiedzieć się, jak przeprowadzić migrację aktywnej nazwy DNS, zobacz [Migrowanie aktywnej nazwy DNS do Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).

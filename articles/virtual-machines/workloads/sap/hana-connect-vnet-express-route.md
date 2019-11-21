@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547640ab1a6dd948cf5d17279d784e1b4a37b35e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5fbcc6ace4923d8aa2d938cd9fffe7a16c4fc1ff
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101249"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206744"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Łączenie sieci wirtualnej z dużymi wystąpieniami platformy HANA
 
@@ -35,7 +35,7 @@ Jeśli Brama już istnieje, sprawdź, czy jest to brama ExpressRoute. Jeśli nie
   - Jeśli używasz Azure Portal, Dodaj nową **bramę Virtual Network**, a następnie wybierz pozycję **ExpressRoute** jako typ bramy.
   - Jeśli używasz programu PowerShell, najpierw Pobierz najnowszy [zestaw SDK Azure PowerShell](https://azure.microsoft.com/downloads/)i użyj go. 
  
-Następujące polecenia tworzą bramę ExpressRoute. Teksty poprzedzone przez zdefiniowane przez _$_ użytkownika zmienne, które powinny zostać zaktualizowane przy użyciu określonych informacji.
+Następujące polecenia tworzą bramę ExpressRoute. Teksty poprzedzone _$_ są zmiennymi definiowanymi przez użytkownika, które powinny być aktualizowane przy użyciu określonych informacji.
 
 ```powershell
 # These Values should already exist, update to match your environment
@@ -143,13 +143,13 @@ Aby uzyskać jedno lub oba scenariusze zastosowane do wdrożenia, Otwórz komuni
 
 Wymagane dane i słowa kluczowe, które są potrzebne do użycia przez firmę Microsoft, aby można było kierować i wykonywać żądanie, wygląda następująco:
 
-- Usługa: Duże wystąpienie platformy SAP HANA
-- Typ problemu: Konfiguracja i instalacja
-- Podtyp problemu: Mojego problemu nie ma na powyższej liście
+- Usługa: SAP HANA duże wystąpienie
+- Typ problemu: Konfiguracja i konfiguracja
+- Podtyp problemu: mój problem nie jest wymieniony powyżej
 - Podmiot "Modyfikuj moją sieć — Dodaj Global Reach"
-- Szczegóły: "Dodaj Global Reach do wystąpienia HANA duże wystąpienie do dzierżawy dużego wystąpienia w usłudze HANA lub" Dodaj Global Reach do lokalnego dzierżawy dużego wystąpienia platformy HANA.
-- Dodatkowe szczegóły dotyczące dużego wystąpienia usługi HANA w przypadku dzierżawy dużego wystąpienia usługi Hana: Należy zdefiniować **dwa regiony platformy Azure** , w których znajdują się dwie dzierżawy do połączenia **, i** należy przesłać **zakres adresów IP/29**
-- Dodatkowe szczegóły dotyczące przypadku dzierżawy dużych wystąpień w ramach usługi HANA: Należy zdefiniować **region platformy Azure** , w którym wdrożono dzierżawcę dużej instancji Hana, z którym chcesz nawiązać bezpośrednie połączenie. Ponadto należy podać identyfikator **GUID uwierzytelniania** i **element równorzędny obwodu** , który został odebrany podczas ustanawiania obwodu usługi ExpressRoute między lokalnym i platformą Azure. Ponadto należy nazwać numer **ASN**. Ostatni element dostarczany jest **zakresem adresów IP/29** dla ExpressRoute Global REACH.
+- Szczegóły: "Dodaj Global Reach do wystąpienia HANA duże wystąpienie do dzierżawy dużej instancji HANA lub" Dodaj Global Reach do lokalnego dzierżawy dużych wystąpień w usłudze Hana.
+- Dodatkowe szczegóły dotyczące wystąpienia usługi HANA duże wystąpienie dzierżawy dużego wystąpienia: należy zdefiniować **dwa regiony platformy Azure** , w których znajdują się dwie dzierżawcy do połączenia **, i** należy przesłać **zakres adresów IP/29**
+- Dodatkowe szczegóły dotyczące przypadku dzierżawy z dużym wystąpieniem w środowisku lokalnym i HANA: należy zdefiniować **region platformy Azure** , w którym wdrożono dzierżawcę dużej instancji Hana, z którym chcesz nawiązać bezpośrednie połączenie. Ponadto należy podać identyfikator **GUID uwierzytelniania** i **element równorzędny obwodu** , który został odebrany podczas ustanawiania obwodu usługi ExpressRoute między środowiskiem lokalnym i platformą Azure. Ponadto należy nazwać numer **ASN**. Ostatni element dostarczany jest **zakresem adresów IP/29** dla ExpressRoute Global REACH.
 
 > [!NOTE]
 > Jeśli chcesz, aby oba przypadki były obsługiwane, należy podać dwa różne/29 zakresów adresów IP, które nie nakładają się na żadne inne adresy IP używane do tej pory. 

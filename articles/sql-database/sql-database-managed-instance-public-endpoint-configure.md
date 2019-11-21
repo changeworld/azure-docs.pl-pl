@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828030"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227987"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Skonfiguruj publiczny punkt końcowy w Azure SQL Database wystąpieniu zarządzanym
 
@@ -43,7 +43,7 @@ Ze względu na czułość danych w wystąpieniu zarządzanym, konfiguracja do w�
 1. Na stronie ustawienia **zabezpieczeń** wybierz kartę **Sieć wirtualna** .
 1. Na stronie Konfiguracja sieci wirtualnej wybierz pozycję **Włącz** , a następnie ikonę **Zapisz** , aby zaktualizować konfigurację.
 
-![mi-VNET-config. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
+![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Włączanie publicznego punktu końcowego dla wystąpienia zarządzanego przy użyciu programu PowerShell
 
@@ -82,11 +82,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Jeśli strona Konfiguracja wystąpienia zarządzanego jest nadal otwarta, przejdź do karty **Przegląd** . w przeciwnym razie Wróć do zasobu **wystąpienia zarządzanego SQL** . Wybierz łącze **Sieć wirtualna/podsieć** , co spowoduje przejście do strony Konfiguracja sieci wirtualnej.
 
-    ![mi-Overview. png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
+    ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
 1. Wybierz kartę **podsieci** w okienku Konfiguracja po lewej stronie sieci wirtualnej, a następnie zanotuj **grupę zabezpieczeń** dla wystąpienia zarządzanego.
 
-    ![mi-VNET-Subnet. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
+    ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Wróć do grupy zasobów zawierającej wystąpienie zarządzane. Powinna zostać wyświetlona poprzednia nazwa **grupy zabezpieczeń sieci** . Wybierz nazwę, aby przejść do strony konfiguracji sieciowej grupy zabezpieczeń.
 
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Przejdź do strony konfiguracji wystąpienia zarządzanego SQL, która została włączona dla publicznego punktu końcowego. Wybierz kartę **Parametry połączenia** w obszarze Konfiguracja **ustawień** .
 1. Należy pamiętać, że nazwa hosta publicznego punktu końcowego jest w formacie < mi_name >. **Public**. < dns_zone >. Database. Windows. NET oraz że port używany do połączenia to 3342.
 
-    ![mi-Public-Endpoint-Conn-String. png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

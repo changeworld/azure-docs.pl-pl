@@ -1,5 +1,5 @@
 ---
-title: Użyj narzędzi dostępnych w zestawach SDK platformy Azure IoT Hub Device Provisioning Service, aby uprościć programowanie
+title: Korzystanie z narzędzi Azure IoT Hub Device Provisioning Service SDK
 description: Ten dokument zawiera przegląd narzędzi dostępnych w usłudze Azure IoT Hub Device Provisioning Service SDK na potrzeby programowania
 author: robinsh
 ms.author: robinsh
@@ -7,12 +7,12 @@ ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4fd4913776a7d21405f62a28d452bd50cd22f046
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f5bdf81dedfcf803b8c53a5b0a29cfb823989873
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883004"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229670"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak korzystać z narzędzi dostępnych w zestawach SDK, aby uprościć programowanie do obsługi administracyjnej
 IoT Hub Device Provisioning Service upraszcza proces aprowizacji bez dotknięcia, samoobsługowego [udostępniania](concepts-auto-provisioning.md) just in Time w bezpieczny i skalowalny sposób.  Zaświadczanie zabezpieczeń w postaci certyfikatu X. 509 lub moduł TPM (TPM) jest wymagane.  Firma Microsoft współpracuje również z [innymi partnerami sprzętu zabezpieczeń](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) w celu poprawy zaufania wdrożenia IoT. Zrozumienie wymagania dotyczącego zabezpieczeń sprzętu może być dla deweloperów bardzo trudne. Dostępne są zestawy SDK usługi Azure IoT Provisioning, dzięki którym deweloperzy mogą korzystać z wygodnej warstwy do pisania klientów, którzy komunikują się z usługą aprowizacji. Zestawy SDK udostępniają również przykłady dla typowych scenariuszy, a także zestaw narzędzi do uproszczenia zaświadczania o zabezpieczeniach w trakcie opracowywania.
@@ -25,7 +25,7 @@ Kroki związane z korzystaniem z symulatora modułu TPM są następujące:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
-2. Przejdź do folderu ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```symulatora modułu TPM.
+2. Przejdź do folderu symulatora modułu TPM w obszarze ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```.
 3. Uruchom symulator. exe przed uruchomieniem dowolnej aplikacji klienckiej dla urządzenia aprowizacji.
 4. Pozwól, aby symulator działał w tle przez cały proces aprowizacji, aby uzyskać identyfikator rejestracji i klucz poręczenia.  Obie wartości są prawidłowe tylko dla jednego wystąpienia przebiegu.
 
@@ -33,11 +33,11 @@ Kroki związane z korzystaniem z symulatora modułu TPM są następujące:
 [Certyfikaty X. 509](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates) mogą służyć jako mechanizm zaświadczania do skalowania produkcji i uproszczenia aprowizacji urządzeń.  Istnieje [kilka sposobów](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) uzyskania certyfikatu X. 509:
 * W środowisku produkcyjnym zalecamy zakup certyfikatu X. 509 urzędu certyfikacji z publicznego urzędu certyfikacji.
 * W środowisku testowym można wygenerować certyfikat główny X. 509 lub łańcuch certyfikatów X. 509 przy użyciu:
-    * OpenSSL: Do generowania certyfikatów można użyć skryptów:
+    * OpenSSL: można użyć skryptów do generowania certyfikatów:
         * [Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
         * [PowerShell lub bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
         
-    * Emulator aparatu kompozycji tożsamości urządzenia (kość): KOŚCI może służyć do identyfikacji urządzeń kryptograficznych i zaświadczania opartego na protokole TLS i certyfikatach klienta X. 509.  [Dowiedz się](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/) więcej o tożsamości urządzenia ze kością.
+    * Emulator aparatu kompozycji tożsamości urządzeń (kość): kość może służyć do identyfikacji urządzeń kryptograficznych i zaświadczania opartego na protokole TLS i certyfikatach klienta X. 509.  [Dowiedz się](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/) więcej o tożsamości urządzenia ze kością.
 
 ### <a name="using-x509-certificate-generator-with-dice-emulator"></a>Używanie generatora certyfikatów X. 509 z emulatorem kości
 Zestawy SDK udostępniają Generator certyfikatów X. 509 z emulatorem kości, który znajduje się w [zestawie SDK języka Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-tools/provisioning-x509-cert-generator).  Ten Generator działa na wiele platform.  Wygenerowany certyfikat może służyć do tworzenia aplikacji w innych językach.
@@ -50,9 +50,9 @@ Aby wygenerować certyfikat X. 509 przy użyciu tego generatora:
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
 2. Zmień katalog główny na Azure-IoT-SDK-Java.
-3. Uruchom ```mvn install -DskipTests=true``` , aby pobrać wszystkie wymagane pakiety i skompilować zestaw SDK
-4. Przejdź do katalogu głównego dla generatora certyfikatów X. 509 ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```w temacie.
-5. Kompiluj z```mvn clean install```
+3. Uruchom ```mvn install -DskipTests=true```, aby pobrać wszystkie wymagane pakiety i skompilować zestaw SDK
+4. Przejdź do katalogu głównego dla generatora certyfikatów X. 509 w ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```.
+5. Kompiluj z ```mvn clean install```
 6. Uruchom narzędzie przy użyciu następujących poleceń:
    ```
    cd target
@@ -65,5 +65,5 @@ Certyfikat **klienta** to element typu liść na urządzeniu.  **Certyfikat klie
 
 Certyfikatu głównego lub pośredniego można użyć do utworzenia grupy rejestracji lub rejestracji indywidualnej w programie [programowo](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) lub za pomocą [portalu](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Opracowywanie zawartości przy użyciu [zestawu Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) dla platformy Azure IoT Hub i platformy Azure IoT Hub Device Provisioning Service

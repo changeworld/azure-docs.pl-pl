@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467926"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227951"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 |-----------|--------------|
 |Portal     | Brak         |
 |PowerShell | Ten artykuł wymaga modułu PowerShell AZ. Storage w wersji **0,7** lub nowszej. Aby określić bieżącą wersję, uruchom polecenie `Get-Module -ListAvailable Az.Storage`. Jeśli po uruchomieniu tego polecenia nie zostaną wyświetlone żadne wyniki lub zostanie wyświetlona wersja niższa niż **0,7** , należy uaktualnić moduł programu PowerShell. Zobacz sekcję [Uaktualnianie modułu PowerShell](#upgrade-your-powershell-module) w tym przewodniku.
-|Interfejs wiersza polecenia        | Możesz zalogować się do platformy Azure i uruchamiać polecenia interfejsu wiersza poleceń platformy Azure na jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego polecenia lokalnie</li></ul>|
+|Interfejs wiersza polecenia        | Możesz zalogować się do platformy Azure i uruchamiać polecenia interfejsu wiersza poleceń platformy Azure na jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego komendy lokalnie</li></ul>|
 
 Podczas pracy w wierszu polecenia masz opcję uruchamiania powłoki chmury platformy Azure lub instalowania interfejsu wiersza polecenia lokalnie.
 
@@ -95,7 +95,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 ## <a name="create-an-account-using-powershell"></a>Tworzenie konta przy użyciu programu PowerShell
 
-Najpierw zainstaluj najnowszą wersję modułu [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
+Najpierw zainstaluj najnowszą wersję modułu [PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
 Następnie Uaktualnij moduł programu PowerShell, zaloguj się do subskrypcji platformy Azure, Utwórz grupę zasobów, a następnie utwórz konto magazynu.
 

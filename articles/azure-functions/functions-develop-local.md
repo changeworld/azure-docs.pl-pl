@@ -1,20 +1,14 @@
 ---
-title: Tworzenie i uruchamianie usługi Azure Functions lokalnie | Microsoft Docs
+title: Lokalne opracowywanie i uruchamianie usługi Azure Functions
 description: Dowiedz się, jak kodować i testować usługi Azure Functions na komputerze lokalnym przed uruchomieniem ich na Azure Functions.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.author: glenga
-ms.openlocfilehash: 7c2e727ecb080d1db212e8b45a2c48bac81a3949
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709326"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230646"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions kod i test lokalnie
 
@@ -24,11 +18,11 @@ Chociaż można opracowywać i testować Azure Functions w [Azure Portal], wielu
 
 Sposób tworzenia funkcji na komputerze lokalnym zależy od preferencji [języka](supported-languages.md) i narzędzi. Środowiska w poniższej tabeli obsługują programowanie lokalne:
 
-|Środowisko                              |Języki         |Opis|
+|Środowisko                              |Languages         |Opis|
 |-----------------------------------------|------------|---|
 |[Visual Studio Code](functions-develop-vs-code.md)| [](functions-create-first-function-powershell.md) [](functions-reference-python.md) [ C# ](functions-reference-csharp.md) [(Biblioteka klas), skrypt (. CSX), JavaScript C# ](functions-dotnet-class-library.md), PowerShell, Python [](functions-reference-node.md) | [Rozszerzenie Azure Functions dla vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) dodaje obsługę funkcji do vs Code. Wymaga podstawowych narzędzi. Program obsługuje programowanie w systemach Linux, MacOS i Windows w przypadku korzystania z wersji 2. x podstawowych narzędzi. Aby dowiedzieć się więcej, zobacz [Tworzenie pierwszej funkcji przy użyciu Visual Studio Code](functions-create-first-function-vs-code.md). |
 | [Wiersz polecenia lub terminal](functions-run-local.md) | [](functions-reference-powershell.md) [](functions-reference-python.md) [ C# ](functions-reference-csharp.md) [(Biblioteka klas), skrypt (. CSX), JavaScript C# ](functions-dotnet-class-library.md), PowerShell, Python [](functions-reference-node.md) | [Azure Functions Core Tools] udostępnia podstawowe środowisko uruchomieniowe i szablony służące do tworzenia funkcji, które umożliwiają programowanie lokalne. Wersja 2. x obsługuje programowanie w systemach Linux, MacOS i Windows. Wszystkie środowiska są zależne od podstawowych narzędzi do środowiska uruchomieniowego funkcji lokalnych. |
-| [Program Visual Studio 2019](functions-develop-vs.md) | [C#(Biblioteka klas)](functions-dotnet-class-library.md) | Narzędzia Azure Functions są dołączone do obciążeń **programistycznych platformy Azure** dla programu [Visual Studio 2019](https://www.visualstudio.com/vs/) i jego nowszych wersji. Umożliwia kompilowanie funkcji w bibliotece klas i publikowanie biblioteki. dll na platformie Azure. Obejmuje podstawowe narzędzia do testowania lokalnego. Aby dowiedzieć się więcej, zobacz temat [programowanie Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md). |
+| [Visual Studio 2019](functions-develop-vs.md) | [C#(Biblioteka klas)](functions-dotnet-class-library.md) | Narzędzia Azure Functions są dołączone do obciążeń **programistycznych platformy Azure** dla programu [Visual Studio 2019](https://www.visualstudio.com/vs/) i jego nowszych wersji. Umożliwia kompilowanie funkcji w bibliotece klas i publikowanie biblioteki. dll na platformie Azure. Obejmuje podstawowe narzędzia do testowania lokalnego. Aby dowiedzieć się więcej, zobacz temat [programowanie Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md). |
 | [Maven](functions-create-first-java-maven.md) (różne) | [Java](functions-reference-java.md) | Integruje się z podstawowymi narzędziami, aby umożliwić programowanie funkcji języka Java. Wersja 2. x obsługuje programowanie w systemach Linux, MacOS i Windows. Aby dowiedzieć się więcej, zobacz [Tworzenie pierwszej funkcji przy użyciu języka Java i Maven](functions-create-first-java-maven.md). Obsługuje także Programowanie przy użyciu narzędzia [zaćmienie](functions-create-maven-eclipse.md) i [IntelliJ](functions-create-maven-intellij.md) |
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]

@@ -1,23 +1,18 @@
 ---
 title: Zarządzanie połączeniami w Azure Functions
 description: Dowiedz się, jak uniknąć problemów z wydajnością w Azure Functions przy użyciu klientów połączeń statycznych.
-services: functions
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.author: glenga
-ms.openlocfilehash: 26702ae63dcb7aadb96b5bf77f96a44f7d6776f5
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114329"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226500"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Zarządzanie połączeniami w Azure Functions
 
-Działa w ramach zasobów funkcji udział aplikacji. Wśród tych udostępnionych zasobów są połączenia: Połączenia HTTP, połączenia z bazami danych i połączenia z usługami takimi jak Azure Storage. Gdy wiele funkcji jest uruchomionych współbieżnie, możliwe jest wypróbowanie dostępnych połączeń. W tym artykule wyjaśniono, jak zakodować funkcje, aby uniknąć używania większej liczby połączeń niż te, które są im potrzebne.
+Działa w ramach zasobów funkcji udział aplikacji. Wśród tych udostępnionych zasobów są połączenia: połączenia HTTP, połączenia baz danych i połączenia z usługami, takimi jak Azure Storage. Gdy wiele funkcji jest uruchomionych współbieżnie, możliwe jest wypróbowanie dostępnych połączeń. W tym artykule wyjaśniono, jak zakodować funkcje, aby uniknąć używania większej liczby połączeń niż te, które są im potrzebne.
 
 ## <a name="connection-limit"></a>Limit połączeń
 
@@ -29,13 +24,13 @@ W przypadku rozwiązywania problemów upewnij się, że włączono Application I
 
 ## <a name="static-clients"></a>Klienci statyczni
 
-Aby uniknąć utrzymywania większej liczby połączeń, należy ponownie użyć wystąpień klienta zamiast tworzyć nowe przy użyciu każdego wywołania funkcji. Zalecamy ponowne użycie połączeń klientów dla dowolnego języka, w którym można napisać funkcję. Na przykład klienci platformy .NET, takie [](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)jak HttpClient [,](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)DocumentClient i klienci usługi Azure Storage, mogą zarządzać połączeniami, jeśli używany jest pojedynczy klient statyczny.
+Aby uniknąć utrzymywania większej liczby połączeń, należy ponownie użyć wystąpień klienta zamiast tworzyć nowe przy użyciu każdego wywołania funkcji. Zalecamy ponowne użycie połączeń klientów dla dowolnego języka, w którym można napisać funkcję. Na przykład klienci platformy .NET, takie jak [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)i klienci usługi Azure Storage, mogą zarządzać połączeniami, jeśli używany jest pojedynczy klient statyczny.
 
 Poniżej przedstawiono niektóre wskazówki, które należy wykonać w przypadku korzystania z klienta specyficznego dla usługi w aplikacji Azure Functions:
 
 - *Nie należy* tworzyć nowego klienta przy każdym wywołaniu funkcji.
-- Utwórz pojedynczego, statycznego klienta, który może być używany przez każde wywołanie funkcji.
+- *Utwórz pojedynczego* , statycznego klienta, który może być używany przez każde wywołanie funkcji.
 - *Rozważ* utworzenie jednego statycznego klienta w udostępnionej klasie pomocnika, jeśli różne funkcje korzystają z tej samej usługi.
 
 ## <a name="client-code-examples"></a>Przykłady kodu klienta
@@ -57,13 +52,13 @@ public static async Task Run(string input)
 }
 ```
 
-Często zadawane pytania dotyczące [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) w programie .NET to "czy należy usunąć mój klient?" Ogólnie rzecz biorąc, można usunąć obiekty, które `IDisposable` implementują się po zakończeniu korzystania z nich. Nie można jednak usunąć klienta statycznego, ponieważ nie jest on używany podczas kończenia funkcji. Klient statyczny ma na żywo na czas trwania aplikacji.
+Często zadawane pytania dotyczące [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) w programie .NET to "czy należy usunąć mój klient?" Ogólnie rzecz biorąc, można usunąć obiekty, które implementują `IDisposable` po zakończeniu korzystania z nich. Nie można jednak usunąć klienta statycznego, ponieważ nie jest on używany podczas kończenia funkcji. Klient statyczny ma na żywo na czas trwania aplikacji.
 
 ### <a name="http-agent-examples-javascript"></a>Przykłady agenta HTTP (JavaScript)
 
-Ponieważ zapewnia lepsze opcje zarządzania połączeniami, należy użyć klasy natywnej [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) zamiast metod nienatywnych, takich `node-fetch` jak moduł. Parametry połączenia są konfigurowane za pomocą opcji w `http.agent` klasie. Aby uzyskać szczegółowe opcje dostępne dla agenta http, zobacz [Nowy Agent (\[opcje\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+Ponieważ zapewnia lepsze opcje zarządzania połączeniami, należy użyć natywnej klasy [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) zamiast metod nienatywnych, takich jak moduł `node-fetch`. Parametry połączenia są konfigurowane za pomocą opcji w klasie `http.agent`. Aby uzyskać szczegółowe opcje dostępne dla agenta HTTP, zobacz [New Agent (\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-Klasa globalna `http.globalAgent` używana przez `http.request()` ma wszystkie te wartości ustawione na ich wartości domyślne. Zalecanym sposobem skonfigurowania limitów połączeń w funkcjach jest ustawienie maksymalnej liczby globalnie. W poniższym przykładzie ustawiono maksymalną liczbę gniazd dla aplikacji funkcji:
+Globalna Klasa `http.globalAgent` używana przez `http.request()` ma wszystkie te wartości ustawione na ich wartości domyślne. Zalecanym sposobem skonfigurowania limitów połączeń w funkcjach jest ustawienie maksymalnej liczby globalnie. W poniższym przykładzie ustawiono maksymalną liczbę gniazd dla aplikacji funkcji:
 
 ```js
 http.globalAgent.maxSockets = 200;
@@ -131,11 +126,11 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>Połączenia SqlClient
 
-Kod funkcji może używać Dostawca danych .NET Framework dla SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) do nawiązywania połączeń z relacyjną bazą danych SQL. Jest to również podstawowy dostawca dla struktur danych, które opierają się na ADO.NET, na przykład [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). W przeciwieństwie do [połączeń](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) i DocumentClient, ADO.NET implementuje buforowanie połączeń domyślnie. Mimo że nadal można korzystać z połączeń, należy zoptymalizować połączenia z bazą danych. Aby uzyskać więcej informacji, zobacz SQL Servering pooling [(ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+Kod funkcji może używać Dostawca danych .NET Framework dla SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) do nawiązywania połączeń z relacyjną bazą danych SQL. Jest to również podstawowy dostawca dla struktur danych, które opierają się na ADO.NET, na przykład [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). W przeciwieństwie do połączeń [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) i [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) , ADO.NET implementuje buforowanie połączeń domyślnie. Mimo że nadal można korzystać z połączeń, należy zoptymalizować połączenia z bazą danych. Aby uzyskać więcej informacji, zobacz [SQL Servering pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Niektóre struktury danych, takie jak Entity Framework, zazwyczaj pobierają parametry połączenia z sekcji **connectionStrings** w pliku konfiguracji. W takim przypadku należy jawnie dodać parametry połączenia z bazą danych SQL do kolekcji **parametrów połączenia** ustawień aplikacji funkcji i w [pliku Local. Settings. JSON](functions-run-local.md#local-settings-file) w projekcie lokalnym. Jeśli tworzysz wystąpienie elementu SqlConnection [](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji, należy zapisać wartość parametrów połączenia w **ustawieniach aplikacji** przy użyciu innych połączeń.
+> Niektóre struktury danych, takie jak Entity Framework, zazwyczaj pobierają parametry połączenia z sekcji **connectionStrings** w pliku konfiguracji. W takim przypadku należy jawnie dodać parametry połączenia z bazą danych SQL do kolekcji **parametrów połączenia** ustawień aplikacji funkcji i w [pliku Local. Settings. JSON](functions-run-local.md#local-settings-file) w projekcie lokalnym. Jeśli tworzysz wystąpienie elementu [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji, należy zapisać wartość parametrów połączenia w **ustawieniach aplikacji** przy użyciu innych połączeń.
 
 ## <a name="next-steps"></a>Następne kroki
 

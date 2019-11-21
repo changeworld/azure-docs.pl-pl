@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Tworzenie wewnętrznego modułu równoważenia obciążenia — Azure Portal'
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: W tym samouczku przedstawiono sposób tworzenia wewnętrznego podstawowego modułu równoważenia obciążenia w witrynie Azure Portal.
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 09a73b5d97e46797dd880f64383fdf03fd591f3d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1b9d943f540a0132abc6a70eba888aa5f8f46093
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273494"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225221"
 ---
-# <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
+# <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
 Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między maszyny wirtualne. Za pomocą witryny Azure Portal można utworzyć podstawowy moduł równoważenia obciążenia i równoważyć obciążenie ruchu wewnętrznego wśród maszyn wirtualnych. W tym samouczku pokazano, jak utworzyć i skonfigurować wewnętrzny moduł równoważenia obciążenia, serwery zaplecza i zasoby sieciowe w warstwie cenowej Podstawowa.
 
@@ -42,7 +42,7 @@ Najpierw utwórz sieć wirtualną. W sieci wirtualnej utwórz dwie maszyny wirtu
    
 1. W okienku **Tworzenie sieci wirtualnej** wpisz lub wybierz następujące wartości:
    
-   - **Nazwa**: wpisz *MyVNet*.
+   - **Nazwa**: wpisz *MyVnet*.
    - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wprowadź nazwę *MyResourceGroupLB* i wybierz przycisk **OK**. 
    - **Podsieć** > **Nazwa**: wpisz *MyBackendSubnet*.
    
@@ -64,7 +64,7 @@ Najpierw utwórz sieć wirtualną. W sieci wirtualnej utwórz dwie maszyny wirtu
 1. Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**. 
    
    Upewnij się, że zostały wybrane następujące opcje:
-   - **Sieć wirtualna**: **MojaSiećWirtualna**
+   - **Sieć wirtualna**: **MyVNet**
    - **Podsieć**: **MyBackendSubnet**
    
    W obszarze **Sieciowa grupa zabezpieczeń**:
@@ -89,16 +89,16 @@ Utwórz podstawowy wewnętrzny moduł równoważenia obciążenia przy użyciu p
    
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
-    | Ustawienie                 | Value                                              |
+    | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
-    | Resource group         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
-    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
+    | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Type          | wybierz pozycję **Wewnętrzny**.                                        |
+    | Typ          | wybierz pozycję **Wewnętrzny**.                                        |
     | SKU           | Wybierz pozycję **Podstawowa**.                          |
     | Sieć wirtualna           | Wybierz wartość *MojaSiećWirtualna*.                          |    
-    | Przypisywanie adresów IP              | Wybierz wartość **Statyczny**.   |
+    | Przypisanie adresu IP              | Wybierz wartość **Statyczny**.   |
     | Prywatny adres IP|wpisz adres, który znajduje się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**. 
@@ -131,7 +131,7 @@ Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia
    >[!NOTE]
    >Nie dodawaj maszyny wirtualnej **MyTestVM** do puli. 
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie puli adresów zaplecza](./media/tutorial-load-balancer-basic-internal-portal/3-load-balancer-backend-02.png)
    
@@ -151,12 +151,12 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
    
    - **Nazwa**: wpisz *MyHealthProbe*.
    - **Protokół**: rozwiń listę i wybierz pozycję **HTTP**. 
-   - **Port**: wpisz wartość *80*. 
+   - **Port**: wpisz *80*. 
    - **Ścieżka**: zaakceptuj */* dla domyślnego identyfikatora URI. Tę wartość można zastąpić dowolnym innym identyfikatorem URI. 
-   - **Interwał**: wpisz wartość *15*. Interwał to liczba sekund między próbami sondy.
-   - **Próg złej kondycji**: wpisz wartość *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
+   - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
+   - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie sondy](./media/tutorial-load-balancer-basic-internal-portal/4-load-balancer-probes.png)
 
@@ -175,14 +175,14 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
 1. Na stronie **Dodawanie reguły równoważenia obciążenia** wpisz lub wybierz następujące wartości, jeśli jeszcze nie istnieją:
    
    - **Nazwa**: wpisz *MyLoadBalancerRule*.
-   - **Adres IP frontonu:** wpisz *LoadBalancerFrontEnd*, jeśli ta wartość nie istnieje.
+   - **Adres IP frontonu:** wpisz *LoadBalancerFrontend*, jeśli ta wartość nie istnieje.
    - **Protokół**: wybierz pozycję **TCP**.
-   - **Port**: wpisz wartość *80*.
-   - **Port zaplecza**: wpisz wartość *80*.
+   - **Port**: wpisz *80*.
+   - **Port zaplecza**: wpisz *80*.
    - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
    - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
    
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
    
    ![Dodawanie reguły modułu równoważenia obciążenia](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 

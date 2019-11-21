@@ -1,9 +1,9 @@
 ---
-title: Zarządzanie rekordami systemu DNS w usłudze Azure DNS przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Zarządzanie zestawami rekordów DNS i rekordów w usłudze Azure DNS podczas hosting domeny w usłudze Azure DNS. Wszystkie polecenia programu PowerShell dla operacji na zestawy rekordów i rekordy.
+title: Zarządzanie rekordami DNS w Azure DNS przy użyciu Azure PowerShell | Microsoft Docs
+description: Zarządzanie zestawami rekordów DNS i rekordami na Azure DNS podczas hostowania domeny na Azure DNS. Wszystkie polecenia programu PowerShell dla operacji na zestawach rekordów i rekordach.
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: victorh
-ms.openlocfilehash: fedab8cc45fff6d7830f67e7a23786b5952f83a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170213"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211686"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu programu Azure PowerShell
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Zarządzanie rekordami i zestawami nazw DNS w Azure DNS przy użyciu Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
@@ -29,9 +29,9 @@ ms.locfileid: "66170213"
 > * [Interfejs wiersza polecenia platformy Azure](dns-operations-recordsets-cli.md)
 > * [Program PowerShell](dns-operations-recordsets.md)
 
-W tym artykule pokazano, jak zarządzać rekordami DNS dla strefy DNS przy użyciu programu Azure PowerShell. Można również zarządzać rekordami systemu DNS przy użyciu dla wielu platform [wiersza polecenia platformy Azure](dns-operations-recordsets-cli.md) lub [witryny Azure portal](dns-operations-recordsets-portal.md).
+W tym artykule pokazano, jak zarządzać rekordami DNS dla strefy DNS przy użyciu Azure PowerShell. Rekordy DNS można także zarządzać za pomocą międzyplatformowego [interfejsu wiersza polecenia platformy Azure](dns-operations-recordsets-cli.md) lub [Azure Portal](dns-operations-recordsets-portal.md).
 
-W przykładach w tym artykule założono, że już [zainstalowany program Azure PowerShell, zalogowano się i utworzono strefę DNS](dns-operations-dnszones.md).
+W przykładach w tym artykule przyjęto założenie, że [zainstalowano już Azure PowerShell, zalogowano się i utworzono strefę DNS](dns-operations-dnszones.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -44,29 +44,29 @@ Przed utworzeniem rekordów DNS w usłudze Azure DNS należy najpierw zrozumieć
 Aby uzyskać więcej informacji na temat rekordów DNS w usłudze Azure DNS, zobacz [Strefy i rekordy DNS](dns-zones-records.md).
 
 
-## <a name="create-a-new-dns-record"></a>Tworzenie nowego rekordu DNS
+## <a name="create-a-new-dns-record"></a>Utwórz nowy rekord DNS
 
-Jeśli nowy rekord ma taką samą nazwę i typ co istniejący rekord, musisz [dodać go do istniejącego zestawu rekordów](#add-a-record-to-an-existing-record-set). Jeśli nowy rekord ma inną nazwę i typ do wszystkich istniejących rekordów, musisz utworzyć nowy zestaw rekordów. 
+Jeśli nowy rekord ma taką samą nazwę i typ jak istniejący rekord, należy [dodać go do istniejącego zestawu rekordów](#add-a-record-to-an-existing-record-set). Jeśli nowy rekord ma inną nazwę i typ do wszystkich istniejących rekordów, należy utworzyć nowy zestaw rekordów. 
 
-### <a name="create-a-records-in-a-new-record-set"></a>Tworzenie rekordów "" w nowy zestaw rekordów
+### <a name="create-a-records-in-a-new-record-set"></a>Utwórz rekordy "A" w nowym zestawie rekordów
 
-Zestawy rekordów są tworzone za pomocą polecenia cmdlet `New-AzDnsRecordSet`. Podczas tworzenia zestawu rekordów, należy określić zestawu rekordów nazwy, strefa, czas wygaśnięcia (TTL), typ rekordu i rekordy, które ma zostać utworzony.
+Zestawy rekordów są tworzone za pomocą polecenia cmdlet `New-AzDnsRecordSet`. Podczas tworzenia zestawu rekordów należy określić nazwę zestawu rekordów, strefę, czas wygaśnięcia (TTL), typ rekordu i rekordy, które mają zostać utworzone.
 
-Parametry używane do dodawania rekordów do zestawu rekordów różnią się w zależności od typu zestawu rekordów. Na przykład, korzystając z zestawu rekordów typu "A", należy określić adres IP za pomocą parametru `-IPv4Address`. Inne parametry są używane dla innych typów rekordów. Zobacz przykłady dodatkowy typ rekordu, aby uzyskać szczegółowe informacje.
+Parametry używane do dodawania rekordów do zestawu rekordów różnią się w zależności od typu zestawu rekordów. Na przykład podczas korzystania z zestawu rekordów typu "A" należy określić adres IP przy użyciu parametru `-IPv4Address`. Inne parametry są używane dla innych typów rekordów. Aby uzyskać szczegółowe informacje, zobacz dodatkowe przykłady typów rekordów.
 
-Poniższy przykład tworzy zestaw rekordów o nazwie względnej "www" w strefie DNS "contoso.com". W pełni kwalifikowaną nazwą zestawu rekordów jest "www.contoso.com". Typ rekordu to "A", a czas wygaśnięcia wynosi 3600 sekund. Zestaw rekordów zawiera jeden rekord z adresem IP "1.2.3.4".
+Poniższy przykład tworzy zestaw rekordów o nazwie względnej "www" w strefie DNS "contoso.com". W pełni kwalifikowana nazwa zestawu rekordów to "www.contoso.com". Typ rekordu to "A", a czas wygaśnięcia wynosi 3600 sekund. Zestaw rekordów zawiera pojedynczy rekord z adresem IP "1.2.3.4".
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Aby utworzyć rekord, który został ustawiony na "wierzchołku" strefy (w tym przypadku "contoso.com"), użyj nazwy zestawu rekordów "\@" (bez cudzysłowu):
+Aby utworzyć zestaw rekordów w "wierzchołku" strefy (w tym przypadku "contoso.com"), użyj nazwy zestawu rekordów "\@" (z wyjątkiem cudzysłowów):
 
 ```powershell
 New-AzDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Jeśli musisz utworzyć rekord, zestaw zawierający więcej niż jeden rekord, najpierw utwórz lokalnej tablicy i dodać rekordy, a następnie przekazać tablicę na `New-AzDnsRecordSet` w następujący sposób:
+Jeśli musisz utworzyć zestaw rekordów zawierający więcej niż jeden rekord, najpierw Utwórz tablicę lokalną i Dodaj rekordy, a następnie Przekaż tablicę do `New-AzDnsRecordSet` w następujący sposób:
 
 ```powershell
 $aRecords = @()
@@ -75,13 +75,13 @@ $aRecords += New-AzDnsRecordConfig -IPv4Address "2.3.4.5"
 New-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-[Metadane zestawu rekordów](dns-zones-records.md#tags-and-metadata) można skojarzyć dane specyficzne dla aplikacji z każdego zestawu rekordów jako pary klucz wartość. Poniższy przykład pokazuje, jak utworzyć zestaw z dwoma wpisami metadanych, rekordów "dział = Finanse" i "środowisko = produkcji".
+[Metadane zestawu rekordów](dns-zones-records.md#tags-and-metadata) mogą służyć do kojarzenia danych specyficznych dla aplikacji z każdym zestawem rekordów jako par klucz-wartość. Poniższy przykład pokazuje, jak utworzyć zestaw rekordów z dwoma wpisami metadanych: "Dept = finanse" i "Environment = Production".
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
-Usługa DNS platformy Azure obsługuje również "empty" zestawy rekordów, które mogą działać jako symbol zastępczy do zarezerwowania nazwy DNS przed utworzeniem rekordów DNS. Puste zestawy rekordów są widoczne na płaszczyźnie kontroli usługi Azure DNS, ale pojawiają się na serwerach nazw usługi Azure DNS. Poniższy przykład tworzy pusty zestaw rekordów:
+Azure DNS obsługuje również zestawy rekordów "Empty", które mogą działać jako symbol zastępczy w celu zarezerwowania nazwy DNS przed utworzeniem rekordów DNS. Puste zestawy rekordów są widoczne na płaszczyźnie kontroli Azure DNS, ale pojawiają się na serwerach nazw Azure DNS. Poniższy przykład tworzy pusty zestaw rekordów:
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
@@ -89,11 +89,11 @@ New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGr
 
 ## <a name="create-records-of-other-types"></a>Tworzenie rekordów innych typów
 
-Posiadanie przedstawiono szczegółowo sposób tworzenia rekordów "", następujące przykłady przedstawiają sposób tworzenia rekordów o innych typach rekordów, obsługiwane przez usługę Azure DNS.
+Po zapoznaniu się z szczegółowymi informacjami na temat tworzenia rekordów "A" w poniższych przykładach pokazano, jak utworzyć rekordy innych typów rekordów obsługiwanych przez Azure DNS.
 
-W każdym przypadku samouczków pokazano, jak utworzyć rekord, zestaw zawierający pojedynczy rekord. Wcześniejszych przykładów dla rekordów "" można dostosować, aby utworzyć zestawy rekordów innych typów zawierające wiele rekordów z metadanymi, lub pustą zestawy rekordów są tworzone.
+W każdym przypadku pokazujemy, jak utworzyć zestaw rekordów zawierający pojedynczy rekord. Wcześniejsze przykłady dla rekordów "A" można dostosować do tworzenia zestawów rekordów innych typów zawierających wiele rekordów, z metadanymi lub do tworzenia pustych zestawów rekordów.
 
-Nie udostępniamy przykład, aby utworzyć zestaw rekordów SOA, ponieważ SOAs są tworzone i usunąć z każdej strefy DNS i nie można utworzyć ani usunąć oddzielnie. Jednak [SOA można modyfikować, jak pokazano w przykładzie nowsze](#to-modify-an-soa-record).
+Nie oferujemy przykładu tworzenia zestawu rekordów SOA, ponieważ SOAs są tworzone i usuwane z każdej strefy DNS i nie można ich tworzyć ani usuwać oddzielnie. Można jednak [zmodyfikować rekord SOA, jak pokazano w późniejszym przykładzie](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Tworzenie zestawu rekordów AAAA z pojedynczym rekordem
 
@@ -101,7 +101,7 @@ Nie udostępniamy przykład, aby utworzyć zestaw rekordów SOA, ponieważ SOAs 
 New-AzDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
 ```
 
-### <a name="create-a-caa-record-set-with-a-single-record"></a>Utwórz rekord CAA, ustaw z pojedynczym rekordem
+### <a name="create-a-caa-record-set-with-a-single-record"></a>Tworzenie zestawu rekordów CAA z pojedynczym rekordem
 
 ```powershell
 New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
@@ -110,7 +110,7 @@ New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -Res
 ### <a name="create-a-cname-record-set-with-a-single-record"></a>Tworzenie zestawu rekordów CNAME z pojedynczym rekordem
 
 > [!NOTE]
-> Standardy systemu DNS nie zezwalają na rekordy CNAME w wierzchołku strefy (`-Name '@'`), ani nie zezwalają one zestawach rekordów zawierających więcej niż jeden rekord.
+> Standardy DNS nie zezwalają na rekordy CNAME na wierzchołku strefy (`-Name '@'`) ani nie zezwalają na zestawy rekordów zawierające więcej niż jeden rekord.
 > 
 > Aby uzyskać więcej informacji, zobacz [rekordy CNAME](dns-zones-records.md#cname-records).
 
@@ -121,7 +121,7 @@ New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" 
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Tworzenie zestawu rekordów MX z pojedynczym rekordem
 
-W tym przykładzie używamy nazwy zestawu rekordów "\@" Aby utworzyć rekord MX w wierzchołku strefy (w tym przypadku "contoso.com").
+W tym przykładzie używamy nazwy zestawu rekordów "\@" do utworzenia rekordu MX w wierzchołku strefy (w tym przypadku "contoso.com").
 
 
 ```powershell
@@ -136,7 +136,7 @@ New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -Resou
 
 ### <a name="create-a-ptr-record-set-with-a-single-record"></a>Tworzenie zestawu rekordów PTR z pojedynczym rekordem
 
-W tym przypadku "Moja-arpa-arpa.com" reprezentuje strefy wyszukiwania wstecznego ARPA reprezentującej zakres adresów IP. Każdy rekord PTR w tej strefie odnosi się do adresu IP w tym zakresie adresów IP. Nazwa rekordu "10" jest ostatni oktet adresu IP, w tym zakresie adresów IP, reprezentowane przez ten rekord.
+W tym przypadku "my-arpa-zone.com" reprezentuje strefę wyszukiwania wstecznego programu ARPA reprezentującą zakres adresów IP. Każdy rekord PTR w tej strefie odnosi się do adresu IP w tym zakresie adresów IP. Nazwa rekordu "10" jest ostatnim oktetem adresu IP w tym zakresie adresów IP reprezentowanego przez ten rekord.
 
 ```powershell
 New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "myservice.contoso.com") 
@@ -144,7 +144,7 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Tworzenie zestawu rekordów SRV z pojedynczym rekordem
 
-Podczas tworzenia [zestawu rekordów SRV](dns-zones-records.md#srv-records), określ  *\_usługi* i  *\_protokołu* w nazwie zestawu rekordów. Nie ma potrzeby obejmujący "\@" w nazwie zestawu rekordów, podczas tworzenia rekordu SRV zestawu w wierzchołku strefy.
+Podczas tworzenia [zestawu rekordów SRV](dns-zones-records.md#srv-records)Określ *\_usługi* i *\_protokołu* w nazwie zestawu rekordów. Podczas tworzenia zestawu rekordów SRV w wierzchołku strefy nie trzeba uwzględniać elementu "\@" w nazwie zestawu rekordów.
 
 ```powershell
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
@@ -153,7 +153,7 @@ New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -Re
 
 ### <a name="create-a-txt-record-set-with-a-single-record"></a>Tworzenie zestawu rekordów TXT z pojedynczym rekordem
 
-Poniższy przykład pokazuje, jak utworzyć rekord TXT. Aby uzyskać więcej informacji na temat maksymalną długość ciągu obsługiwane w rekordów TXT zobacz [rekordów TXT](dns-zones-records.md#txt-records).
+Poniższy przykład pokazuje, jak utworzyć rekord TXT. Aby uzyskać więcej informacji na temat maksymalnej długości ciągu obsługiwanej w rekordach TXT, zobacz [txt Records](dns-zones-records.md#txt-records).
 
 ```powershell
 New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Value "This is a TXT record") 
@@ -162,17 +162,17 @@ New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -Res
 
 ## <a name="get-a-record-set"></a>Pobierz zestaw rekordów
 
-Aby pobrać istniejącego zestawu rekordów, użyj `Get-AzDnsRecordSet`. To polecenie cmdlet zwraca obiekt lokalny reprezentujący zestaw rekordów w usłudze Azure DNS.
+Aby pobrać istniejący zestaw rekordów, użyj `Get-AzDnsRecordSet`. To polecenie cmdlet zwraca obiekt lokalny reprezentujący zestaw rekordów w Azure DNS.
 
-Podobnie jak w przypadku `New-AzDnsRecordSet`, musi być podana nazwa zestawu rekordów *względną* nazwy, co oznacza, należy wykluczyć, nazwę strefy. Należy także określić typ rekordu, a zestaw stref, zawierające rekord.
+Podobnie jak w przypadku `New-AzDnsRecordSet`, określona nazwa zestawu rekordów musi być nazwą *względną* , co oznacza, że musi wykluczać nazwę strefy. Należy również określić typ rekordu oraz strefę zawierającą zestaw rekordów.
 
-Poniższy przykład pokazuje, jak można pobrać zestawu rekordów. W tym przykładzie strefa jest określony, przy użyciu `-ZoneName` i `-ResourceGroupName` parametrów.
+Poniższy przykład pokazuje, jak pobrać zestaw rekordów. W tym przykładzie strefa jest określona przy użyciu parametrów `-ZoneName` i `-ResourceGroupName`.
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Alternatywnie można również określić strefy za pomocą obiektu strefy przekazywanych przy użyciu `-Zone` parametru.
+Alternatywnie można także określić strefę przy użyciu obiektu strefy, przekazaną za pomocą parametru `-Zone`.
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -181,116 +181,116 @@ $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 
 ## <a name="list-record-sets"></a>Lista zestawów rekordów
 
-Można również użyć `Get-AzDnsZone` do listy zestawów rekordów w strefie, pomijając `-Name` i/lub `-RecordType` parametrów.
+Można również użyć `Get-AzDnsZone`, aby wyświetlić listę zestawów rekordów w strefie, pomijając parametry `-Name` i/lub `-RecordType`.
 
-Poniższy przykład zwraca zestawy wszystkich rekordów w strefie:
+Poniższy przykład zwraca wszystkie zestawy rekordów w strefie:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-W poniższym przykładzie pokazano, jak zarejestrować wszystkie zestawy danego typu mogą być pobierane, określając typ rekordu, gdy pominięcie rekord nazwy zestawu:
+Poniższy przykład pokazuje, jak można pobrać wszystkie zestawy rekordów danego typu przez określenie typu rekordu podczas pomijania nazwy zestawu rekordów:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Aby pobrać wszystkie zestawy rekordów o podanej nazwie, różnych typów rekordów, należy pobrać wszystkich zestawów rekordów, a następnie przeprowadź filtrowanie wyników:
+Aby pobrać wszystkie zestawy rekordów o danej nazwie, w różnych typach rekordów, należy pobrać wszystkie zestawy rekordów, a następnie filtrować wyniki:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
-We wszystkich powyższych przykładach można określić strefy za pomocą `-ZoneName` i `-ResourceGroupName`parametrów (jak pokazano), albo przez wyszczególnienie obiekt strefy:
+We wszystkich powyższych przykładach strefa może być określona za pomocą parametrów `-ZoneName` i `-ResourceGroupName`(jak pokazano) lub przez określenie obiektu strefy:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $recordsets = Get-AzDnsRecordSet -Zone $zone
 ```
 
-## <a name="add-a-record-to-an-existing-record-set"></a>Dodaj rekord do istniejącego zestawu rekordów
+## <a name="add-a-record-to-an-existing-record-set"></a>Dodawanie rekordu do istniejącego zestawu rekordów
 
 Aby dodać rekord do istniejącego zestawu rekordów, wykonaj następujące trzy kroki:
 
-1. Pobieranie istniejącego zestawu rekordów
+1. Pobierz istniejący zestaw rekordów
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Dodaj nowy rekord do lokalnego zestawu rekordów. Jest to operacja offline.
+2. Dodaj nowy rekord do lokalnego zestawu rekordów. Jest to operacja poza wierszem.
 
     ```powershell
     Add-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Zatwierdź zmiany w usłudze DNS platformy Azure. 
+3. Zatwierdź zmianę z powrotem do usługi Azure DNS. 
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-Za pomocą `Set-AzDnsRecordSet` *zastępuje* istniejącego zestawu rekordów w usłudze DNS platformy Azure (i wszystkie rekordy, które zawiera) z zestawu rekordów określony. [Element etag kontroli](dns-zones-records.md#etags) są używane do zapewnienia równoległe zmiany nie zostaną zastąpione. Możesz użyć opcjonalnego `-Overwrite` przełącznik pomija tych sprawdzeń.
+Użycie `Set-AzDnsRecordSet` *zastępuje* istniejący zestaw rekordów w Azure DNS (i wszystkie rekordy, które zawiera) z określonym zestawem rekordów. [Testy ETag](dns-zones-records.md#etags) są używane do zapewnienia, że zmiany współbieżne nie są zastępowane. Aby pominąć te testy, można użyć opcjonalnego przełącznika `-Overwrite`.
 
-Ta sekwencja operacji może być również *potokiem*, co oznacza, przekazać obiekt zestawu rekordów przy użyciu potoku zamiast przekazywania go jako parametr:
+Ta sekwencja operacji może być również *potoku*, co oznacza, że obiekt zestawu rekordów jest przekazywany przy użyciu potoku zamiast przekazywania go jako parametr:
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Powyższe przykłady pokazują, jak dodać rekord "" do istniejącego zestawu rekordów typu "A". Podobne sekwencja operacji jest używana do dodawania rekordów do zestawów rekordów innych typów, zastępując `-Ipv4Address` parametru `Add-AzDnsRecordConfig` z innymi parametrami, które są specyficzne dla każdego typu rekordu. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w przykładach dodatkowy typ rekordu.
+Powyższy przykład pokazuje, jak dodać rekord "A" do istniejącego zestawu rekordów typu "A". Podobna sekwencja operacji służy do dodawania rekordów do zestawów rekordów innych typów, zastępując `-Ipv4Address` parametr `Add-AzDnsRecordConfig` z innymi parametrami specyficznymi dla każdego typu rekordu. Parametry dla każdego typu rekordu są takie same jak dla `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w dodatkowych przykładach typu rekordu powyżej.
 
-Zestawy rekordów typu "CNAME" lub "SOA" nie może zawierać więcej niż jeden rekord. To ograniczenie wynika z standardy systemu DNS. Nie jest to ograniczenie usługi Azure DNS.
+Zestawy rekordów typu "CNAME" lub "SOA" nie mogą zawierać więcej niż jednego rekordu. To ograniczenie wynika ze standardów DNS. Nie jest to ograniczenie Azure DNS.
 
-## <a name="remove-a-record-from-an-existing-record-set"></a>Usunięcie rekordu z istniejącego zestawu rekordów
+## <a name="remove-a-record-from-an-existing-record-set"></a>Usuwanie rekordu z istniejącego zestawu rekordów
 
-Usunięcie rekordu z zestawu rekordów proces jest podobny do procesu, aby dodać rekord do istniejącego zestawu rekordów:
+Proces usuwania rekordu z zestawu rekordów jest podobny do procesu umożliwiającego dodanie rekordu do istniejącego zestawu rekordów:
 
-1. Pobieranie istniejącego zestawu rekordów
+1. Pobierz istniejący zestaw rekordów
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Usuń rekord z obiektu lokalnego zestawu rekordów. Jest to operacja offline. Rekord, który jest usuwany musi być identyczny z istniejącym rekordem we wszystkich parametrów.
+2. Usuń rekord z lokalnego obiektu zestawu rekordów. Jest to operacja poza wierszem. Rekord, który jest usuwany, musi być dokładnym dopasowaniem do istniejącego rekordu we wszystkich parametrach.
 
     ```powershell
     Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Zatwierdź zmiany w usłudze DNS platformy Azure. Użyj opcjonalnego `-Overwrite` przełącznika, aby pominąć [sprawdza, czy tag Etag](dns-zones-records.md#etags) równoczesnych zmian.
+3. Zatwierdź zmianę z powrotem do usługi Azure DNS. Użyj opcjonalnego przełącznika `-Overwrite`, aby pominąć [Sprawdzanie ETag](dns-zones-records.md#etags) dla współbieżnych zmian.
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $Rs
     ```
 
-Za pomocą sekwencji powyżej, aby usunąć ostatniego rekordu z zestawu rekordów nie powoduje usunięcia zestawu rekordów, lecz pozostawia pusty zestaw rekordów. Aby usunąć zestaw całkowicie rekordów, zobacz [usuwanie zestawu rekordów](#delete-a-record-set).
+Użycie powyższej sekwencji w celu usunięcia ostatniego rekordu z zestawu rekordów nie powoduje usunięcia zestawu rekordów, a tym samym pozostawienie pustego zestawu rekordów. Aby całkowicie usunąć zestaw rekordów, zobacz [usuwanie zestawu rekordów](#delete-a-record-set).
 
-Podobnie do dodawania rekordów do zestawu rekordów, kolejność operacji można usunąć zestawu rekordów można również przekazać w potoku:
+Podobnie jak w przypadku dodawania rekordów do zestawu rekordów, sekwencja operacji usuwania zestawu rekordów może być również potokiem:
 
 ```powershell
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Różne typy rekordów są obsługiwane, przekazując odpowiednie parametry specyficzne dla typu, aby `Remove-AzDnsRecordSet`. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w przykładach dodatkowy typ rekordu.
+Różne typy rekordów są obsługiwane przez przekazanie odpowiednich parametrów specyficznych dla typu do `Remove-AzDnsRecordSet`. Parametry dla każdego typu rekordu są takie same jak dla `New-AzDnsRecordConfig` polecenia cmdlet, jak pokazano w dodatkowych przykładach typu rekordu powyżej.
 
 
-## <a name="modify-an-existing-record-set"></a>Modyfikowanie istniejącego zestawu rekordów
+## <a name="modify-an-existing-record-set"></a>Modyfikuj istniejący zestaw rekordów
 
-Procedura modyfikowania istniejącego zestawu rekordów są podobne do czynności, które należy wykonać podczas dodawania lub usuwania rekordów z zestawu rekordów:
+Procedura modyfikowania istniejącego zestawu rekordów jest podobna do kroków wykonywanych podczas dodawania lub usuwania rekordów z zestawu rekordów:
 
-1. Pobieranie istniejącego rekordu, ustawić za pomocą `Get-AzDnsRecordSet`.
-2. Zmodyfikuj obiekt lokalny zestaw rekordów przez:
-    * Dodawanie i usuwanie rekordów
-    * Zmiana parametrów istniejące rekordy
-    * Zmiana rekordu równa metadanych i czas wygaśnięcia (TTL)
-3. Zatwierdź zmiany przy użyciu `Set-AzDnsRecordSet` polecenia cmdlet. To *zastępuje* istniejącego zestawu rekordów w usłudze Azure DNS z określony zestaw rekordów.
+1. Pobierz istniejący zestaw rekordów przy użyciu `Get-AzDnsRecordSet`.
+2. Zmodyfikuj obiekt lokalnego zestawu rekordów według:
+    * Dodawanie lub usuwanie rekordów
+    * Zmiana parametrów istniejących rekordów
+    * Zmiana metadanych zestawu rekordów i czasu wygaśnięcia (TTL)
+3. Zatwierdź zmiany za pomocą polecenia cmdlet `Set-AzDnsRecordSet`. Spowoduje to *zastąpienie* istniejącego zestawu rekordów w Azure DNS z określonym zestawem rekordów.
 
-Korzystając z `Set-AzDnsRecordSet`, [sprawdza, czy tag Etag](dns-zones-records.md#etags) są używane do zapewnienia równoległe zmiany nie zostaną zastąpione. Możesz użyć opcjonalnego `-Overwrite` przełącznik pomija tych sprawdzeń.
+W przypadku korzystania z `Set-AzDnsRecordSet`[kontrole ETag](dns-zones-records.md#etags) są używane do zapewnienia, że współbieżne zmiany nie są zastępowane. Aby pominąć te testy, można użyć opcjonalnego przełącznika `-Overwrite`.
 
-### <a name="to-update-a-record-in-an-existing-record-set"></a>Aby zaktualizować rekord w istniejącego zestawu rekordów
+### <a name="to-update-a-record-in-an-existing-record-set"></a>Aby zaktualizować rekord w istniejącym zestawie rekordów
 
-W tym przykładzie możemy zmienić adres IP do istniejącego rekordu "":
+W tym przykładzie zmienimy adres IP istniejącego rekordu "A":
 
 ```powershell
 $rs = Get-AzDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -300,9 +300,9 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 ### <a name="to-modify-an-soa-record"></a>Aby zmodyfikować rekord SOA
 
-Nie można dodać lub usunąć rekordy z automatycznie utworzoną SOA zestaw rekordów w wierzchołku strefy (`-Name "@"`, w tym znaków cudzysłowu). Jednak można modyfikować parametrów w ramach rekord SOA (z wyjątkiem "Host") i czas wygaśnięcia zestawu rekordów.
+Nie można dodawać ani usuwać rekordów z automatycznie utworzonego rekordu SOA w wierzchołku strefy (`-Name "@"`, w tym znaczniki cudzysłowu). Można jednak zmodyfikować dowolny z parametrów w rekordzie SOA (z wyjątkiem "host") i zestawem rekordów TTL.
 
-Poniższy przykład pokazuje, jak zmienić *E-mail* właściwość o rekord SOA:
+Poniższy przykład pokazuje, jak zmienić właściwość *poczty e-mail* rekordu SOA:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -312,13 +312,13 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 ### <a name="to-modify-ns-records-at-the-zone-apex"></a>Aby zmodyfikować rekordy NS w wierzchołku strefy
 
-Zestaw w wierzchołku strefy rekordów NS jest tworzony automatycznie w każdej strefie DNS. Zawiera ona nazwy serwerów nazw usługi Azure DNS, które są przypisane do strefy.
+Rekord NS ustawiony w wierzchołku strefy jest automatycznie tworzony przy użyciu każdej strefy DNS. Zawiera nazwy serwerów nazw Azure DNS przypisanych do strefy.
 
-Możesz dodać dodatkowe serwery do tego rekordu NS skonfigurowane, do obsługi domeny hosting współpracujących z więcej niż jednego dostawcę DNS. Można również zmodyfikować czas wygaśnięcia i metadanych dla tego zestawu rekordów. Jednak nie można usunąć ani zmodyfikować wstępnie wypełnionych serwerów nazw usługi Azure DNS.
+Do tego zestawu rekordów NS można dodać kolejne serwery nazw, aby obsługiwać domeny współpracujące z więcej niż jednym dostawcą DNS. Możesz również zmodyfikować czas wygaśnięcia i metadane dla tego zestawu rekordów. Nie można jednak usunąć ani zmodyfikować wstępnie wypełnionych serwerów nazw Azure DNS.
 
-Należy zauważyć, że dotyczy to tylko zestaw w wierzchołku strefy rekordów NS. Inne zestawy rekordów NS w strefie (co umożliwia delegowanie strefy podrzędnej) można zmodyfikować bez ograniczeń.
+Należy zauważyć, że ma to zastosowanie tylko do zestawu rekordów NS w wierzchołku strefy. Inne zestawy rekordów NS w strefie (używane do delegowania stref podrzędnych) można modyfikować bez ograniczenia.
 
-Poniższy przykład pokazuje, jak dodać serwer nazw dodatkowe do zestawu w wierzchołku strefy rekordów NS:
+Poniższy przykład pokazuje, jak dodać dodatkowy serwer nazw do zestawu rekordów NS na stronie wierzchołka strefy:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -326,11 +326,11 @@ Add-AzDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-record-set-metadata"></a>Aby zmodyfikować metadanych zestawu rekordów
+### <a name="to-modify-record-set-metadata"></a>Aby zmodyfikować metadane zestawu rekordów
 
-[Metadane zestawu rekordów](dns-zones-records.md#tags-and-metadata) można skojarzyć dane specyficzne dla aplikacji z każdego zestawu rekordów jako pary klucz wartość.
+[Metadane zestawu rekordów](dns-zones-records.md#tags-and-metadata) mogą służyć do kojarzenia danych specyficznych dla aplikacji z każdym zestawem rekordów jako par klucz-wartość.
 
-Poniższy przykład pokazuje, jak edytować metadane istniejącego zestawu rekordów:
+Poniższy przykład pokazuje, jak zmodyfikować metadane istniejącego zestawu rekordów:
 
 ```powershell
 # Get the record set
@@ -349,34 +349,34 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 ## <a name="delete-a-record-set"></a>Usuwanie zestawu rekordów
 
-Można usunąć zestawów rekordów przy użyciu `Remove-AzDnsRecordSet` polecenia cmdlet. Trwa usuwanie zestawu rekordów spowoduje również usunięcie wszystkich rekordów w zestawie rekordów.
+Zestawy rekordów można usuwać za pomocą polecenia cmdlet `Remove-AzDnsRecordSet`. Usunięcie zestawu rekordów spowoduje również usunięcie wszystkich rekordów w zestawie rekordów.
 
 > [!NOTE]
-> Nie można usunąć SOA i zestawy rekordów NS w wierzchołku strefy (`-Name '@'`).  Usługa DNS platformy Azure są automatycznego utworzenia strefy został utworzony, a następnie usuwa je automatycznie, gdy strefa zostanie usunięty.
+> Nie można usunąć zestawów rekordów SOA i NS w wierzchołku strefy (`-Name '@'`).  Azure DNS utworzone automatycznie podczas tworzenia strefy i automatycznie usuwa je po usunięciu strefy.
 
-Poniższy przykład pokazuje, jak można usunąć zestawu rekordów. W tym przykładzie nazwy zestawu rekordów, typ zestawu rekordów, nazwę strefy i grupy zasobów są każdego określone jawnie.
+Poniższy przykład pokazuje, jak usunąć zestaw rekordów. W tym przykładzie określono jawnie nazwę zestawu rekordów, typ zestawu rekordów, nazwę strefy i grupę zasobów.
 
 ```powershell
 Remove-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Alternatywnie można określić zestaw rekordów według nazwy i typu i strefy określony za pomocą obiektu:
+Alternatywnie zestaw rekordów może być określony przez nazwę i typ oraz strefę określoną przy użyciu obiektu:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-Trzecią możliwością, sam zestaw rekordów można określić za pomocą obiektu zestaw rekordów:
+Trzecią opcją jest określenie samego zestawu rekordów przy użyciu obiektu zestawu rekordów:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -RecordSet $rs
 ```
 
-Po określeniu zestawu rekordów do usunięcia za pomocą obiektu zestawu rekordów [sprawdza, czy tag Etag](dns-zones-records.md#etags) są używane do zapewnienia równoległe zmiany nie zostaną usunięte. Możesz użyć opcjonalnego `-Overwrite` przełącznik pomija tych sprawdzeń.
+W przypadku określenia zestawu rekordów, który ma zostać usunięty przy użyciu obiektu zestawu rekordów, [testy ETag](dns-zones-records.md#etags) są używane w celu zapewnienia, że zmiany współbieżne nie są usuwane. Aby pominąć te testy, można użyć opcjonalnego przełącznika `-Overwrite`.
 
-Obiekt zestawu rekordów można również przekazać w potoku zamiast przekazywania jako parametr:
+Obiekt zestawu rekordów może również być potokiem, a nie do przekazywania jako parametr:
 
 ```powershell
 Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzDnsRecordSet
@@ -386,16 +386,16 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 Polecenia cmdlet `New-AzDnsRecordSet`, `Set-AzDnsRecordSet` i `Remove-AzDnsRecordSet` obsługują monity o potwierdzenie.
 
-Każde polecenie cmdlet monituje o potwierdzenie, jeśli `$ConfirmPreference` zmiennej preferencji programu PowerShell ma wartość `Medium` lub niższą. Ponieważ domyślną wartością dla `$ConfirmPreference` jest `High`, monity nie są podane w przypadku korzystania z domyślnych ustawień programu PowerShell.
+Każde polecenie cmdlet monituje o potwierdzenie, jeśli zmienna preferencji programu PowerShell `$ConfirmPreference` ma wartość `Medium` lub niższą. Ponieważ domyślna wartość `$ConfirmPreference` jest `High`, te monity nie są udzielane w przypadku używania domyślnych ustawień programu PowerShell.
 
 Bieżące ustawienie `$ConfirmPreference` można zastąpić przy użyciu parametru `-Confirm`. W przypadku wybrania elementów `-Confirm` lub `-Confirm:$True` polecenie cmdlet monituje o potwierdzenie przed uruchomieniem. W przypadku wybrania elementu `-Confirm:$False` polecenie cmdlet nie monituje o potwierdzenie. 
 
 Aby uzyskać więcej informacji na temat elementów `-Confirm` i `$ConfirmPreference`, zobacz [About Preference Variables (Informacje o zmiennych preferencji)](/powershell/module/microsoft.powershell.core/about/about_preference_variables).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [stref i rekordów w usłudze Azure DNS](dns-zones-records.md).
+Dowiedz się więcej o [strefach i rekordach w Azure DNS](dns-zones-records.md).
 <br>
-Dowiedz się, jak [chronić strefy i rekordy](dns-protect-zones-recordsets.md) podczas korzystania z usługi Azure DNS.
+Dowiedz się [, jak chronić strefy i rekordy](dns-protect-zones-recordsets.md) przy użyciu Azure DNS.
 <br>
-Przegląd [dokumentacja usługi Azure DNS z programu PowerShell](/powershell/module/az.dns).
+Zapoznaj się z [dokumentacją programu Azure DNS PowerShell](/powershell/module/az.dns).

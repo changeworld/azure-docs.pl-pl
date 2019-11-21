@@ -1,206 +1,206 @@
 ---
-title: Usługa DNS platformy Azure — często zadawane pytania
-description: Często zadawane pytania dotyczące usługi Azure DNS
+title: Często zadawane pytania — Azure DNS
+description: W tym artykule zapoznaj się z często zadawanymi pytaniami dotyczącymi Azure DNS
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
-ms.author: victorh
-ms.openlocfilehash: bb5c4d508344f391d610aeaa7e0be54a93c997dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080020"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212029"
 ---
-# <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
+# <a name="azure-dns-faq"></a>Azure DNS często zadawane pytania
 
-## <a name="about-azure-dns"></a>O usłudze Azure DNS
+## <a name="about-azure-dns"></a>Informacje o Azure DNS
 
 ### <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
 
-System nazw domen (DNS) tłumaczy lub usuwa nazwę witryny sieci Web lub usługi na jej adres IP. Usługa DNS platformy Azure to usługa hostingowa przeznaczona dla domen DNS. Umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
+System nazw domen (DNS) tłumaczy lub rozpoznaje nazwę witryny sieci Web lub usługi na adres IP. Azure DNS to usługa hostingu dla domen DNS. Zapewnia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
-Domen DNS w usłudze Azure DNS znajdują się w usłudze Azure globalna sieć serwerów nazw DNS. Ten system korzysta z najbliższych tak, aby każde zapytanie DNS jest odbierane przez najbliższego dostępnego serwera DNS. Usługa Azure DNS zapewnia wysoką wydajność i wysoką dostępność domeny.
+Domeny DNS w Azure DNS są hostowane w globalnej sieci Azure serwerów nazw DNS. Ten system używa sieci emisji dowolnej, aby każde zapytanie DNS zostało odebrane przez najbliższy dostępny serwer DNS. Azure DNS zapewnia szybką wydajność i wysoką dostępność dla domeny.
 
-Usługa system DNS Azure jest oparta na usłudze Resource Manager. Usługa Azure DNS korzysta z funkcji Menedżera zasobów, takich jak kontrola dostępu oparta na rolach, dzienniki inspekcji i blokowanie zasobów. Możesz zarządzać domenach i rekordach za pośrednictwem witryny Azure portal, poleceń cmdlet programu Azure PowerShell i wiersza polecenia platformy Azure dla wielu platform. Aplikacje wymagające automatycznego zarządzania usługą DNS można zintegrować z usługi za pośrednictwem interfejsu API REST i zestawów SDK.
+Azure DNS jest oparty na Azure Resource Manager. Azure DNS korzyści z funkcji Menedżer zasobów, takich jak kontrola dostępu oparta na rolach, dzienniki inspekcji i blokowanie zasobów. Można zarządzać domenami i rekordami za pomocą Azure Portal, Azure PowerShell poleceń cmdlet i międzyplatformowego interfejsu wiersza polecenia platformy Azure. Aplikacje wymagające automatycznego zarządzania systemem DNS można zintegrować z usługą za pośrednictwem interfejsu API REST i zestawów SDK.
 
-### <a name="how-much-does-azure-dns-cost"></a>Ile kosztuje usługa Azure DNS
+### <a name="how-much-does-azure-dns-cost"></a>Ile kosztuje Azure DNS?
 
-Model rozliczeń za usługę Azure DNS jest na podstawie liczby stref DNS hostowanych w usłudze Azure DNS. Opiera się również na liczby zapytań DNS, które otrzyma. Rabaty znajdują się na podstawie użycia.
+Model rozliczeń Azure DNS jest oparty na liczbie stref DNS hostowanych w Azure DNS. Jest on również oparty na liczbie otrzymywanych zapytań DNS. Rabaty są podawane na podstawie użycia.
 
-Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi system DNS Azure](https://azure.microsoft.com/pricing/details/dns/).
+Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>Jaka jest umowa SLA dla usługi Azure DNS?
 
-Platforma Azure gwarantuje, że prawidłowe zapytania DNS odpowiedzi zwracane z co najmniej jeden serwer nazw DNS platformy Azure 100% czasu.
+Platforma Azure gwarantuje, że prawidłowe żądania DNS odbierają odpowiedź od co najmniej jednego Azure DNS nazwy serwera 100% czasu.
 
-Aby uzyskać więcej informacji, zobacz [strony umowy SLA platformy Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
+Aby uzyskać więcej informacji, zobacz [stronę umów SLA Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
 
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co to jest strefa DNS? Czy to jest to samo co „domena DNS”? 
 
 Domena jest unikatową nazwą w systemie nazw domen. Przykładowa domena to contoso.com.
 
-Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Na przykład domena contoso.com może zawierać wiele rekordów DNS. Rekordy mogą obejmować mail.contoso.com dla serwera poczty oraz www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
+Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Na przykład domena contoso.com może zawierać kilka rekordów DNS. Rekordy mogą zawierać mail.contoso.com dla serwera poczty i www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
 
-Nazwa domeny jest *tylko nazwa*. Strefa DNS jest zasób danych, który zawiera rekordy DNS dla nazwy domeny. Usługa Azure DNS umożliwia hostowanie strefy DNS i zarządzanie rekordami DNS dla domeny na platformie Azure. Umożliwia także serwery DNS do odpowiadania na kwerendy DNS z Internetu.
+Nazwa domeny jest *tylko nazwą*. Strefa DNS jest zasobem danych zawierającym rekordy DNS dla nazwy domeny. Usługa Azure DNS umożliwia hostowanie strefy DNS i zarządzanie rekordami DNS dla domeny na platformie Azure. Zapewnia również serwerom nazw DNS odpowiedzi na zapytania DNS z Internetu.
 
-### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Czy muszę kupić nazwy domeny DNS, aby używać usługi Azure DNS? 
+### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Czy muszę kupić nazwę domeny DNS, aby użyć Azure DNS? 
 
 Niekoniecznie.
 
-Nie musisz kupować domeny, aby hostować strefę DNS w usłudze Azure DNS. Strefę DNS można utworzyć w dowolnej chwili bez konieczności posiadania nazwy domeny. Zapytania DNS dla tej strefy rozpoznać tylko, jeśli jest skierowany do serwerów nazw usługi Azure DNS, które są przypisane do strefy.
+Nie trzeba kupować domeny w celu hostowania strefy DNS w Azure DNS. Strefę DNS można utworzyć w dowolnej chwili bez konieczności posiadania nazwy domeny. Zapytania DNS dla tej strefy są rozwiązywane tylko wtedy, gdy są kierowane do Azure DNS serwerów nazw przypisanych do strefy.
 
-Aby połączyć strefę DNS z globalną hierarchią systemu, musisz kupić nazwy domeny. Następnie, zapytania DNS z dowolnego miejsca na świecie znajdowanie strefy DNS i odpowiedzi z rekordami systemu DNS.
+Aby połączyć strefę DNS z globalną hierarchią DNS, należy zakupić nazwę domeny. Następnie zapytania DNS z dowolnego miejsca na świecie znajdą strefę DNS i odpowiadają za pomocą rekordów DNS.
 
-## <a name="azure-dns-features"></a>Funkcje usługi Azure DNS
+## <a name="azure-dns-features"></a>Funkcje Azure DNS
 
-### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Czy istnieją jakieś ograniczenia w przypadku używania rekordów aliasów dla wierzchołku nazwy domeny usługi Traffic Manager?
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Czy istnieją ograniczenia w przypadku używania rekordów aliasów dla wierzchołka nazwy domeny z Traffic Manager?
 
-Tak. Statyczne publiczne adresy IP należy użyć z usługą Azure Traffic Manager. Konfigurowanie **zewnętrzny punkt końcowy** docelowej przy użyciu statycznego adresu IP. 
+Tak. Statyczne publiczne adresy IP należy używać z usługą Azure Traffic Manager. Skonfiguruj docelowy **zewnętrzny punkt końcowy** przy użyciu statycznego adresu IP. 
 
-### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Usługa Azure DNS obsługuje trybu failover routingu lub punktu końcowego ruchu oparte na systemie DNS?
+### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Czy Azure DNS obsługuje routing ruchu opartego na systemie DNS lub tryb failover punktu końcowego?
 
-Tryb failover routingu i punktu końcowego ruchu oparte na systemie DNS są dostarczane przez usługę Traffic Manager. Traffic Manager to osobna usługa Azure mogą być używane z usługi Azure DNS. Aby uzyskać więcej informacji, zobacz [Traffic Manager — omówienie](../traffic-manager/traffic-manager-overview.md).
+Routing ruchu oparty na systemie DNS i tryb failover punktu końcowego są udostępniane przez Traffic Manager. Traffic Manager to oddzielna usługa platformy Azure, która może być używana z Azure DNS. Aby uzyskać więcej informacji, zobacz [omówienie Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 
-Usługa DNS platformy Azure obsługuje tylko hostowania statycznych domen DNS, w którym każde zapytanie DNS dla danego rekordu DNS zawsze będzie otrzymywał tę samą odpowiedź DNS.
+Azure DNS obsługuje tylko hostowanie statycznych domen DNS, gdzie każde zapytanie DNS dla danego rekordu DNS zawsze otrzymuje tę samą odpowiedź DNS.
 
-### <a name="does-azure-dns-support-domain-name-registration"></a>Usługa DNS platformy Azure obsługuje rejestracji nazwy jej domeny?
+### <a name="does-azure-dns-support-domain-name-registration"></a>Czy Azure DNS obsługiwać rejestrację nazw domen?
 
-Nie. Usługa Azure DNS nie obsługuje obecnie możliwość zakupienia nazw domen. Aby kupić domen, należy użyć Rejestratora nazw domen innej firmy. Rejestrator zwykle opłaty za niewielką opłatą roczną. Domeny następnie mogą być hostowane w usłudze Azure DNS do zarządzania rekordami DNS. Więcej informacji można znaleźć w temacie [Delegowanie domeny do usługi DNS platformy Azure](dns-domain-delegation.md).
+Nie. Azure DNS nie obsługuje obecnie opcji kupowania nazw domen. Aby kupić domeny, należy użyć rejestratora nazw domen innej firmy. Rejestrator zazwyczaj obciąża małą roczną opłatą. Domeny mogą być hostowane w Azure DNS na potrzeby zarządzania rekordami DNS. Więcej informacji można znaleźć w temacie [Delegowanie domeny do usługi DNS platformy Azure](dns-domain-delegation.md).
 
-Funkcja zakupu nazw domen jest śledzona w zaległości platformy Azure. Użyj witrynę opinii do [zarejestrować działu pomocy technicznej dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
+Funkcja kupowania nazw domen jest śledzona w zaległości platformy Azure. Skorzystaj z witryny opinii, aby [zarejestrować obsługę tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
 
-### <a name="does-azure-dns-support-dnssec"></a>Usługa Azure DNS obsługuje rozszerzenia DNSSEC?
+### <a name="does-azure-dns-support-dnssec"></a>Czy Azure DNS obsługuje rozszerzenia DNSSEC?
 
-Nie. Usługa Azure DNS nie obsługuje obecnie Domain Name System Security Extensions (DNSSEC).
+Nie. Azure DNS nie obsługuje obecnie rozszerzeń zabezpieczeń systemu nazw domen (DNSSEC).
 
-Funkcja rozszerzenia DNSSEC jest śledzona w zaległości w usłudze Azure DNS. Użyj witrynę opinii do [zarejestrować działu pomocy technicznej dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
+Funkcja DNSSEC jest śledzona w zaległości Azure DNS. Skorzystaj z witryny opinii, aby [zarejestrować obsługę tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
 
-### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Usługa DNS platformy Azure obsługuje transfery strefy (AXFR/IXFR)?
+### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Czy Azure DNS obsługuje transfery stref (AXFR/IXFR)?
 
-Nie. Usługa Azure DNS nie obsługuje obecnie transferów stref. Strefy DNS mogą być [importowane do usługi Azure DNS przy użyciu wiersza polecenia platformy Azure](dns-import-export.md). Rekordy DNS są zarządzane za pośrednictwem [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [ Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
+Nie. Azure DNS nie obsługuje obecnie transferów stref. Strefy DNS można [zaimportować do Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure](dns-import-export.md). Rekordy DNS są zarządzane za pośrednictwem [portalu zarządzania Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/az.dns), [zestawu SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md)lub [Narzędzia interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
 
-Funkcja transfer strefy jest śledzona w zaległości w usłudze Azure DNS. Użyj witrynę opinii do [zarejestrować działu pomocy technicznej dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
+Funkcja transferu strefy jest śledzona w zaległości Azure DNS. Skorzystaj z witryny opinii, aby [zarejestrować obsługę tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
 
-### <a name="does-azure-dns-support-url-redirects"></a>Usługa Azure DNS obsługuje adres URL przekierowania?
+### <a name="does-azure-dns-support-url-redirects"></a>Czy Azure DNS obsługuje przekierowania adresów URL?
 
-Nie. Adres URL przekierowania usług nie są usługi DNS. Działają na poziomie protokołu HTTP, a nie na poziomie usługi DNS. Niektórzy dostawcy DNS pakietu usługi Przekierowywanie adresu URL jako część swojej oferty ogólne. Ta usługa nie jest obecnie obsługiwane przez usługę Azure DNS.
+Nie. Usługi przekierowywania adresów URL nie są usługą DNS. Działają one na poziomie HTTP, a nie na poziomie systemu DNS. Niektórzy dostawcy DNS tworzą usługę przekierowywania adresów URL w ramach ich ogólnej oferty. Ta usługa nie jest obecnie obsługiwana przez Azure DNS.
 
-Funkcja Przekierowywanie adresu URL jest śledzona w zaległości w usłudze Azure DNS. Użyj witrynę opinii do [zarejestrować działu pomocy technicznej dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+Funkcja przekierowywania adresów URL jest śledzona w zaległości Azure DNS. Skorzystaj z witryny opinii, aby [zarejestrować obsługę tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
 
-### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Usługa Azure DNS obsługuje rozszerzone ASCII (8-bitowa) zestawu dla zestawów rekordów TXT kodowania?
+### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Czy Azure DNS obsługuje rozszerzone kodowanie ASCII (8-bitowe) ustawione dla zestawów rekordów TXT?
 
-Tak. Usługa DNS platformy Azure obsługuje ASCII rozszerzonego zestawu dla zestawów rekordów TXT kodowania. Ale musisz użyć najnowszej wersji interfejsów API REST platformy Azure, SDK, programu PowerShell i interfejsu wiersza polecenia. Wersje starsze niż 1 października 2017 r. lub zestawu SDK 2.1 nie obsługują rozszerzonego zestawu ASCII. 
+Tak. Azure DNS obsługuje rozszerzony zestaw kodowania ASCII dla zestawów rekordów TXT. Należy jednak użyć najnowszej wersji interfejsów API REST platformy Azure, zestawów SDK, programu PowerShell i interfejsu wiersza polecenia. Wersje starsze niż 1 października 2017 lub zestaw SDK 2,1 nie obsługują rozszerzonego zestawu ASCII. 
 
-Na przykład Podaj ciąg jako wartość dla rekordu TXT, który ma rozszerzone \128 znaków ASCII. Przykładem jest "abcd\128efgh." Usługa Azure DNS korzysta z tego znaku, który jest 128, wartość bajtu w wewnętrznej reprezentacji. W czasie rozpoznawania nazw DNS ta wartość bajtu jest zwracany w odpowiedzi. Należy również zauważyć, "abc" i "\097\098\099" czy zamienne chodzi rozwiązania jest. 
+Można na przykład podać ciąg jako wartość rekordu TXT, który ma rozszerzony znak ASCII \ 128. Przykładem jest "abcd\128efgh." Azure DNS używa wartości Byte tego znaku, czyli 128 w wewnętrznej reprezentacji. W momencie rozpoznawania nazw DNS ta wartość bajtu jest zwracana w odpowiedzi. Należy również zauważyć, że "ABC" i "\ 097 \ 098 \ 099" są zamienne, o ile dotyczy to rozwiązania. 
 
-Wykonamy [ze standardem RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) strefa reguły ucieczki wzorca format pliku dla rekordów TXT. Na przykład `\` teraz faktycznie wszystko, czego zgodnie z RFC specjalne. Jeśli określisz `A\B` jako wartość rekordu TXT, jest reprezentowane i rozpoznane jako `AB`. Jeśli na pewno rekord TXT, aby `A\B` w rozdzielczości, musisz wyjść `\` ponownie. Na przykład określić `A\\B`.
+Stosujemy reguły ucieczki pliku strefy [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) dla rekordów TXT. Na przykład `\` teraz wyprowadza wszystkie elementy w dokumencie RFC. Jeśli określisz `A\B` jako wartość rekordu TXT, zostanie ona reprezentowana i rozwiązany jako tylko `AB`. Jeśli na pewno chcesz, aby rekord TXT miał `A\B` w rozdzielczości, musisz ponownie wprowadzić `\`. Na przykład określ `A\\B`.
 
-Obecnie ta funkcja jest niedostępna dla rekordy TXT, utworzone w witrynie Azure portal.
+Ta obsługa jest obecnie niedostępna dla rekordów TXT utworzonych na podstawie Azure Portal.
 
 ## <a name="alias-records"></a>Rekordy aliasu
 
-### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Co to są sytuacje, w którym rekordów aliasów są przydatne?
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Co to są scenariusze, w których rekordy aliasów są przydatne?
 
-Zobacz scenariusze w temacie [Azure alias DNS rekordów — omówienie](dns-alias.md).
+Zobacz sekcję scenariusze w [Azure DNS Omówienie rekordów aliasów](dns-alias.md).
 
-### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Jakie typy rekordów są obsługiwane dla zestawów rekordów alias?
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Jakie typy rekordów są obsługiwane w przypadku zestawów rekordów aliasów?
 
-Zestawy rekordów aliasów są obsługiwane następujące typy rekordów w strefie usługi Azure DNS:
+Zestawy rekordów aliasów są obsługiwane dla następujących typów rekordów w strefie Azure DNS:
  
 - A 
 - AAAA
 - CNAME 
 
-### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Jakie zasoby są obsługiwane jako elementy docelowe dla aliasu zestawy rekordów?
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Jakie zasoby są obsługiwane jako elementy docelowe dla zestawów rekordów aliasu?
 
-- **Wskaż publicznego zasobu adresu IP z usługi DNS A/AAAA zestawu rekordów.** Można utworzyć zestawu rekordów A/AAAA i ułatwiają zestawie aliasu rekordu, aby wskazywał publiczny zasób adresu IP.
-- **Wskaż profil usługi Traffic Manager z zestawu rekordów DNS A/AAAA/CNAME.** Możesz wskazać CNAME profilu usługi Traffic Manager, z zestawu rekordów CNAME w systemie DNS. Przykładem jest contoso.trafficmanager.net. Teraz możesz też wskazać profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe z rekordu A lub AAAA ustawiana w strefie DNS.
-- **Wskaż punktu końcowego usługi Azure Content Delivery Network (CDN)** . Jest to przydatne podczas tworzenia statycznych witryn internetowych przy użyciu usługi Azure storage i Azure CDN.
-- **Wskaż inny zestaw rekordów DNS w ramach tej samej strefie.** Alias rekordy mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład zestaw rekordów DNS CNAME może być aliasem dla innego zestawu rekordów CNAME tego samego typu. To rozwiązanie jest przydatne w przypadku niektórych zestawów rekordów aliasów się i niektórych innych aliasów.
+- **Wskaż zasób publicznego adresu IP z zestawu rekordów A/AAAA systemu DNS.** Można utworzyć zestaw rekordów A/AAAA i ustawić dla niego rekord aliasu, aby wskazywał na zasób publicznego adresu IP.
+- **Wskaż profil Traffic Manager z zestawu rekordów A/AAAA/CNAME systemu DNS.** Możesz wskazać rekord CNAME Traffic Manager profilu z zestawu rekordów CNAME systemu DNS. Przykładem jest contoso.trafficmanager.net. Teraz można również wskazać profil Traffic Manager, który ma zewnętrzne punkty końcowe z rekordu A lub AAAA zestawu rekordów w strefie DNS.
+- **Wskaż punkt końcowy usługi Azure Content Delivery Network (CDN)** . Jest to przydatne w przypadku tworzenia statycznych witryn sieci Web przy użyciu usługi Azure Storage i Azure CDN.
+- **Wskaż inny rekord DNS ustawiony w ramach tej samej strefy.** Rekordy aliasów mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład zestaw rekordów DNS CNAME może być aliasem dla innego zestawu rekordów CNAME tego samego typu. To rozwiązanie jest przydatne, jeśli chcesz, aby niektóre rekordy miały aliasy i niektóre inne niż aliasy.
 
-### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Czy mogę tworzyć i aktualizować alias rekordów w witrynie Azure portal?
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Czy można tworzyć i aktualizować rekordy aliasów z Azure Portal?
 
-Tak. Można utworzyć lub zarządzać rekordów aliasów w witrynie Azure portal, wraz z interfejsów API REST platformy Azure, programu PowerShell, interfejsu wiersza polecenia i zestawy SDK.
+Tak. Można tworzyć rekordy aliasów i zarządzać nimi w Azure Portal wraz z interfejsami API REST platformy Azure, programem PowerShell, interfejsem wiersza polecenia i zestawami SDK.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Rekordów aliasów pomoże upewnij się, że mojego zestawu rekordów DNS zostanie usunięty po usunięciu podstawowej publiczny adres IP?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Czy alias zostanie zarejestrowana w celu zapewnienia, że mój zestaw rekordów DNS jest usuwany po usunięciu źródłowego publicznego adresu IP?
 
-Tak. Ta funkcja jest jednym z podstawowych możliwości rekordów aliasów. Ułatwia on uniknięcia potencjalnych przestojów dla użytkowników aplikacji.
+Tak. Ta funkcja jest jedną z podstawowych możliwości rekordów aliasów. Pozwala to uniknąć potencjalnego przestoju dla użytkowników aplikacji.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Będzie alias rejestruje pomoc, aby upewnić się, że mojego zestawu rekordów DNS zostały zaktualizowane do prawidłowego adresu IP po zmianie podstawowy publiczny adres IP?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Czy alias rejestruje pomoc, aby upewnić się, że mój zestaw rekordów DNS został zaktualizowany do poprawnego adresu IP, gdy źródłowy publiczny adres IP ulegnie zmianie?
 
-Tak. Ta funkcja jest jednym z podstawowych możliwości rekordów aliasów. Pomaga unikać potencjalnych awarii lub zagrożenia dla bezpieczeństwa aplikacji.
+Tak. Ta funkcja jest jedną z podstawowych możliwości rekordów aliasów. Pozwala to uniknąć potencjalnych zagrożeń związanych z awarią lub zabezpieczeniami aplikacji.
 
-### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Czy istnieją jakieś ograniczenia podczas przy użyciu rekordu aliasu ustawia for A lub AAAA rejestruje, aby wskazywały do usługi Traffic Manager?
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Czy istnieją ograniczenia w przypadku używania zestawów rekordów aliasów dla rekordów A lub AAAA do wskazywania Traffic Manager?
 
-Tak. Wskaż profil usługi Traffic Manager jako alias z A lub AAAA zestawu rekordów, usługi Traffic Manager profil korzystać tylko zewnętrzne punkty końcowe. Tworząc zewnętrzne punkty końcowe w usłudze Traffic Manager, podaj rzeczywiste adresy IP punktów końcowych.
+Tak. Aby wskazać profil Traffic Manager jako alias z zestawu rekordów A lub AAAA, profil Traffic Manager musi używać tylko zewnętrznych punktów końcowych. Podczas tworzenia zewnętrznych punktów końcowych w Traffic Manager Podaj rzeczywiste adresy IP punktów końcowych.
 
-### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Czy istnieje dodatkowe opłaty za używanie rekordów aliasów?
+### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Czy istnieje dodatkowa opłata za korzystanie z rekordów aliasów?
 
-Alias rekordy są kwalifikacji na prawidłowy zestaw rekordów DNS. Nie istnieje żadne dodatkowe opłaty rekordów aliasów.
+Rekordy aliasów są kwalifikacją dla prawidłowego zestawu rekordów DNS. Nie ma dodatkowych opłat za rekordy aliasów.
 
-## <a name="use-azure-dns"></a>Używanie systemu Azure DNS
+## <a name="use-azure-dns"></a>Użyj Azure DNS
 
-### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Czy mogę współprowadzącym domeny przy użyciu usługi Azure DNS i innego dostawcy DNS?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Czy mogę współhostować domenę przy użyciu Azure DNS i innego dostawcy DNS?
 
-Tak. Usługa DNS platformy Azure obsługuje wspólnej hosting domeny z innymi usługami DNS.
+Tak. Azure DNS obsługuje domeny współhostingu z innymi usługami DNS.
 
-Aby skonfigurować wspólnej hostingu, należy zmodyfikować rekordy NS dla domeny wskazywał serwery nazw obu dostawców. The name server (NS) records control which providers receive DNS queries for the domain. Możesz zmodyfikować te rekordy NS w usłudze Azure DNS, u innego dostawcy i w strefie nadrzędnej. Strefy nadrzędnej jest zazwyczaj skonfigurowany, za pomocą rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [Delegowanie domeny DNS](dns-domain-delegation.md).
+Aby skonfigurować współhosting, należy zmodyfikować rekordy NS dla domeny w taki sposób, aby wskazywały serwery nazw obu dostawców. Rekordy serwera nazw (NS) określają, którzy dostawcy odbierają zapytania DNS dla domeny. Te rekordy NS można modyfikować w Azure DNS, w drugim dostawcy i w strefie nadrzędnej. Strefa nadrzędna jest zazwyczaj konfigurowana za pośrednictwem rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [delegowanie domeny DNS](dns-domain-delegation.md).
 
-Upewnij się również, czy rekordy DNS dla domeny są zsynchronizowane między obu dostawców usługi DNS. Usługa Azure DNS nie obsługuje obecnie transferu strefy DNS. Rekordy DNS muszą być synchronizowane za pomocą [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
+Upewnij się również, że rekordy DNS dla domeny są zsynchronizowane między obydwoma dostawcami DNS. Azure DNS nie obsługuje obecnie transferów stref DNS. Rekordy DNS należy synchronizować przy użyciu [portalu zarządzania Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/az.dns), [zestawu SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md)lub [Narzędzia interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
 
-### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Czy muszę delegować mojej domeny na wszystkich czterech serwerów nazw usługi Azure DNS?
+### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Czy muszę delegować domenę do wszystkich czterech Azure DNS serwerów nazw?
 
-Tak. Usługa system DNS Azure przypisuje czterech serwerów nazw do każdej strefy DNS. Taki układ jest izolacji błędów i zapewnić większą elastyczność. Aby zakwalifikować się do umowy SLA DNS platformy Azure, należy delegować domenę do wszystkich czterech serwerów nazw.
+Tak. Azure DNS przypisuje cztery serwery nazw do każdej strefy DNS. To rozwiązanie służy do izolacji błędów i zwiększonej odporności. Aby zakwalifikować się do umowy SLA Azure DNS, należy delegować domenę do wszystkich czterech serwerów nazw.
 
-### <a name="what-are-the-usage-limits-for-azure-dns"></a>Jakie są limity użycia dla usługi Azure DNS?
+### <a name="what-are-the-usage-limits-for-azure-dns"></a>Jakie są limity użycia Azure DNS?
 
-Następujące domyślne limity mają zastosowanie, gdy używasz usługi Azure DNS.
+W przypadku korzystania z Azure DNS są stosowane następujące domyślne limity.
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Strefy DNS platformy Azure można przenosić między grupami zasobów lub między subskrypcjami?
+### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Czy mogę przenieść strefę Azure DNS między grupami zasobów lub między subskrypcjami?
 
-Tak. Strefy DNS można przenosić między grupami zasobów lub subskrypcji.
+Tak. Strefy DNS można przenosić między grupami zasobów lub między subskrypcjami.
 
-Gdy przeniesiesz strefy DNS jest nie wpływa na zapytania DNS. Serwery nazw przypisane do strefy pozostają takie same. Zapytania DNS są przetwarzane w zwykły w całym.
+Podczas przenoszenia strefy DNS nie ma wpływu na zapytania DNS. Serwery nazw przypisane do strefy pozostają takie same. Zapytania DNS są przetwarzane w normalny sposób.
 
-Aby uzyskać więcej informacji oraz instrukcje dotyczące przenoszenia stref DNS, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
+Aby uzyskać więcej informacji i instrukcje dotyczące przenoszenia stref DNS, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
 
-### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Jak długo trwa dla zmian systemu DNS zastosować zmiany?
+### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Jak długo trwa wprowadzanie zmian DNS?
 
-Nowych stref DNS i rekordów DNS zazwyczaj znajdują się w usłudze Azure DNS serwery nazw szybko. Czas jest kilka sekund.
+Nowe strefy DNS i rekordy DNS zwykle pojawiają się na serwerach nazw Azure DNS szybko. Czas to kilka sekund.
 
-Zmiany w istniejących rekordach DNS może trwać nieco dłużej. Zwykle pojawiają się w usłudze Azure DNS serwery nazw w ciągu 60 sekund. DNS w pamięci podręcznej przez klientów DNS i DNS cyklicznego rozpoznawania nazw poza system DNS Azure również może mieć wpływ na czas. Aby kontrolować ten czas trwania pamięci podręcznej, należy użyć właściwości Time To Live (TTL) każdego zestawu rekordów.
+Zmiany w istniejących rekordach DNS mogą trwać nieco dłużej. Zazwyczaj są one wyświetlane na serwerach nazw Azure DNS w ciągu 60 sekund. Buforowanie DNS przez klientów DNS i cykliczne resolvery DNS poza Azure DNS może mieć wpływ na chronometraż. Aby kontrolować ten czas trwania pamięci podręcznej, należy użyć właściwości czasu wygaśnięcia (TTL) każdego zestawu rekordów.
 
-### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Jak chronić Moje stref DNS przed przypadkowym usunięciem?
+### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Jak chronić strefy DNS przed przypadkowym usunięciem?
 
-Usługa DNS platformy Azure odbywa się za pomocą usługi Azure Resource Manager. Usługa Azure DNS korzysta z funkcji kontroli dostępu, udostępnianych przez usługi Azure Resource Manager. Kontrola dostępu oparta na rolach określa użytkowników, którzy mają odczytu lub zapisu do strefy DNS i zestawami rekordów. Blokad zasobów uniemożliwiają przypadkowe modyfikacja lub usunięcie strefy DNS i zestawami rekordów.
+Azure DNS jest zarządzany przy użyciu Azure Resource Manager. Azure DNS korzyści z funkcji kontroli dostępu zapewnianych przez Azure Resource Manager. Kontrola dostępu oparta na rolach kontroluje, którzy użytkownicy mają dostęp do odczytu lub zapisu do stref i zestawów rekordów DNS. Blokady zasobów uniemożliwiają przypadkowe modyfikację lub usunięcie stref DNS i zestawów rekordów.
 
-Aby uzyskać więcej informacji, zobacz [strefy i rekordy DNS chronić](dns-protect-zones-recordsets.md).
+Aby uzyskać więcej informacji, zobacz [Ochrona stref i rekordów DNS](dns-protect-zones-recordsets.md).
 
-### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>Jak skonfigurować rekordy SPF w usłudze Azure DNS?
+### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>Jak mogę skonfigurować rekordy SPF w Azure DNS?
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Czy serwery nazw usługi Azure DNS można rozwiązać za pośrednictwem protokołu IPv6? 
+### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Czy Azure DNS serwery nazw rozwiązują protokół IPv6? 
 
-Tak. Serwery nazw w usłudze Azure DNS są podwójnego stosu. Podwójnego stosu oznacza, że mają one IPv4 i IPv6 adresów. Aby znaleźć adres IPv6 serwerów nazw usługi Azure DNS, które są przypisane do strefy DNS, użyj narzędzia takiego jak nslookup. Może to być na przykład `nslookup -q=aaaa <Azure DNS Nameserver>`.
+Tak. Serwery nazw Azure DNS są podwójnym stosem. Podwójny stos oznacza, że mają adresy IPv4 i IPv6. Aby znaleźć adres IPv6 Azure DNS serwerów nazw przypisanych do strefy DNS, użyj narzędzia takiego jak nslookup. Może to być na przykład `nslookup -q=aaaa <Azure DNS Nameserver>`.
 
-### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>Jak skonfigurować międzynarodową nazwą domeny w usłudze Azure DNS?
+### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>Jak mogę skonfigurować IDN w Azure DNS?
 
-Międzynarodowe nazwy domen (IDN) kodowanie nazwy DNS przy użyciu [punycode](https://en.wikipedia.org/wiki/Punycode). Zapytania DNS są wykonywane za pomocą tych nazw zakodowane w formacie punycode.
+Międzynarodowe nazwy domen (IDN) kodują każdą nazwę DNS przy użyciu [formacie Punycode](https://en.wikipedia.org/wiki/Punycode). Zapytania DNS są tworzone przy użyciu tych nazw zakodowanych formacie Punycode.
 
-Aby skonfigurować międzynarodowych nazw domen w usłudze Azure DNS, należy przekonwertować nazwy strefy lub nazwa zestawu rekordów na ciąg punycode. Usługa Azure DNS nie obsługuje obecnie wbudowanej konwersji do i z punycode.
+Aby skonfigurować IDN w Azure DNS, przekonwertuj nazwę strefy lub nazwę zestawu rekordów na formacie Punycode. Azure DNS nie obsługuje obecnie wbudowanej konwersji na lub z formacie Punycode.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się więcej o usłudze Azure DNS](dns-overview.md).
+- [Dowiedz się więcej o Azure DNS](dns-overview.md).
 
-- [Dowiedz się więcej o tym, jak używać usługi Azure DNS dla domen prywatnych](private-dns-overview.md).
+- [Dowiedz się więcej na temat używania Azure DNS w przypadku domen prywatnych](private-dns-overview.md).
 
-- [Dowiedz się więcej na temat stref DNS i rekordów](dns-zones-records.md).
+- [Dowiedz się więcej o strefach i rekordach DNS](dns-zones-records.md).
 
-- [Rozpoczynanie pracy z usługą Azure DNS](dns-getstarted-portal.md).
+- [Rozpocznij pracę z Azure DNS](dns-getstarted-portal.md).

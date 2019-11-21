@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
-ms.openlocfilehash: acba365ac5cd33b6fbba5910e5e8b469bf111aac
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.custom: subject-monitoring
+ms.openlocfilehash: b3e4970bc4f9edd69b9b811a134fbdc11c514da5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186853"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212540"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorowania
 Jeśli masz krytyczne aplikacje i procesy biznesowe polegające na zasobach platformy Azure, chcesz monitorować te zasoby pod kątem ich dostępności, wydajności i operacji. W tym artykule opisano dane monitorowania wygenerowane przez bazy danych usługi Azure Cosmos oraz sposób używania funkcji Azure Monitor do analizowania i generowania alertów dotyczących tych danych.
@@ -188,7 +189,7 @@ Zapytania, aby pobrać poszczególne metryki, użyj następującego formatu:
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać informacje o dziennikach i metrykach utworzonych przez Azure Cosmos DB, zobacz temat [Informacje o danych monitorowania Azure Cosmos DB](monitor-cosmos-db-reference.md) .
 - Aby uzyskać szczegółowe informacje na temat monitorowania zasobów platformy Azure, zobacz [monitorowanie zasobów platformy Azure za pomocą Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) .

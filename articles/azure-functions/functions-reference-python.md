@@ -1,24 +1,14 @@
 ---
 title: Dokumentacja dla deweloperów języka Python dla Azure Functions
 description: Informacje na temat tworzenia funkcji w języku Python
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: cfowler
-keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, dynamiczne obliczenia, architektura bezserwerowa, Python
-ms.service: azure-functions
-ms.devlang: python
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 04/16/2018
-ms.author: glenga
-ms.openlocfilehash: 01d8560ee2752f21eb52c00f4c337d1dca59b8fb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082695"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226645"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 

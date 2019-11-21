@@ -1,22 +1,22 @@
 ---
-title: Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
+title: Uruchamianie notesu datacegły za pomocą działania notesu datacegły
 description: Dowiedz się, jak można użyć działania notesu usługi Databricks w usłudze Azure Data Factory w celu uruchomienia notesu usługi Databricks w klastrze zadań usługi Databricks.
 services: data-factory
-documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 03/12/2018
 ms.author: abnarain
+author: nabhishek
+manager: shwang
 ms.reviewer: douglasl
-ms.openlocfilehash: b6426017b7608742866cedb08b5ac9298400d433
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.custom: seo-lt-2019
+ms.date: 03/12/2018
+ms.openlocfilehash: 7ad7c8e70d8669612baf00f19d3695dc7fab07f5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140887"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217877"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
 
@@ -70,7 +70,7 @@ Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej 
 
 1.  W obszarze **Lokalizacja** wybierz lokalizację fabryki danych.
 
-    Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
+    Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
 1.  Wybierz pozycję **Utwórz**.
 
 
@@ -90,7 +90,7 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
 1.  Wybierz pozycję **Połączenia** w dolnej części okna, a następnie wybierz pozycję **+ Nowy**.
     
-    ![Utwórz nowe połączenie](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image6.png)
+    ![Tworzenie nowego połączenia](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image6.png)
 
 1.  W oknie **Nowa połączona usługa** wybierz pozycje **Compute** \> **Azure Databricks**, a następnie pozycję **Kontynuuj**.
     
@@ -140,17 +140,17 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
     b. Wybierz usługę **AzureDatabricks\_LinkedService** (utworzoną w ramach poprzedniej procedury).
 
-    c. Przejdź do karty **Ustawienia**.
+    d. Przejdź do karty **Ustawienia**.
 
-    c. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
+    d. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
 
        1. Uruchom obszar roboczy usługi Azure Databricks.
 
        1. Utwórz **nowy folder** w miejscu pracy i nadaj mu nazwę **adftutorial**.
 
-          ![Utwórz nowy folder](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
+          ![Tworzenie nowego folderu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Tworzenie nowego notesu](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), Skontaktujmy się z **notesem** w folderze **adftutorial** , a następnie kliknij przycisk **Utwórz.**
+       1. [Utwórz nowy Notes](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), wywołaj **go w folderze** **adftutorial** , a następnie kliknij przycisk **Utwórz.**
 
           ![Tworzenie nowego notesu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -178,7 +178,7 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
        ![Dodawanie parametru](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Nazwij parametr jako **dane wejściowe** i podaj wartość jako potok wyrażeń  **\@(). Parameters. Name**.
+    b.  Nazwij parametr jako **dane wejściowe** i podaj wartość jako wyrażenie **\@potoku (). Parameters. Name**.
 
 1.  Aby zweryfikować potok, wybierz przycisk **Weryfikuj** na pasku narzędzi. Wybierz przycisk **\>\>** (strzałka w prawo), aby zamknąć okno weryfikacji.
 
@@ -200,7 +200,7 @@ W oknie dialogowym **Uruchamianie potoku** zostanie wyświetlona prośba o podan
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-1.  Przejdź do karty **Monitorowanie**. Sprawdź, czy widzisz uruchomienie potoku. Utworzenie klastra zadań usługi Databricks, w którym jest wykonywany notes, trwa około 5–8 minut.
+1.  Przejdź do karty **monitorowanie** . Upewnij się, że zobaczysz uruchomienie potoku. Utworzenie klastra zadań usługi Databricks, w którym jest wykonywany notes, trwa około 5–8 minut.
 
     ![Monitorowanie potoku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 

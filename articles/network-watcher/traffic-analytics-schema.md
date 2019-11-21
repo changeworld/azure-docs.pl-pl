@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020235"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229432"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregacja schematu i danych w Analiza ruchu
 
@@ -34,10 +34,10 @@ Analiza ruchu to rozwiązanie oparte na chmurze, które zapewnia wgląd w aktywn
 
 1. Wszystkie dzienniki przepływów w sieciowej grupy zabezpieczeń między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t" są przechwytywane w ciągu jednej minuty na koncie magazynu jako obiekty blob przed przetworzeniem przez Analiza ruchu.
 2. Domyślny interwał przetwarzania Analiza ruchu to 60 minut. Oznacza to, że co 60 minut Analiza ruchu wybiera obiekty blob z magazynu do agregacji. Jeśli wybrany interwał przetwarzania wynosi 10 minut, Analiza ruchu będą wybierać obiekty blob z konta magazynu po każdym 10 minutach.
-3. Przepływy mające taki sam źródłowy adres IP, docelowy adres IP, port docelowy, nazwa sieciowej grupy zabezpieczeń, reguła sieciowej grupy zabezpieczeń, kierunek przepływu i protokół TLS (TCP lub UDP) (Uwaga: Port źródłowy jest wykluczony do agregacji) jest uwzględniona do pojedynczego przepływu przez Analiza ruchu
+3. Przepływy mające taki sam źródłowy adres IP, docelowy adres IP, port docelowy, nazwa sieciowej grupy zabezpieczeń, reguła sieciowej grupy zabezpieczeń, kierunek przepływu i protokół TLS (Transport Layer) (Uwaga: Port źródłowy jest wykluczony do agregacji) są uwzględniona do pojedynczego przepływu przez Analiza ruchu
 4. Ten pojedynczy rekord jest dekoracyjny (szczegóły w sekcji poniżej) i pozyskany w Log Analytics przez Analiza ruchu. ten proces może potrwać maksymalnie 1 godzinę.
-5. Pole FlowStartTime_t wskazuje pierwsze wystąpienie tego zagregowanego przepływu (takie same cztery krotki) w czasie przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t".
-6. Dla każdego zasobu w tym przepływy wskazane w interfejsie użytkownika są łącznymi przepływami widocznymi przez sieciowej grupy zabezpieczeń, ale w Log Analytics użytkownik zobaczy tylko jeden rekord z ograniczeniami. Aby wyświetlić wszystkie przepływy, należy użyć pola blob_id, które może być przywoływane z magazynu. Całkowita liczba przepływów dla tego rekordu będzie zgodna z pojedynczymi przepływami widocznymi w obiekcie blob.
+5. FlowStartTime_t pole wskazuje pierwsze wystąpienie tego zagregowanego przepływu (takie same cztery krotki) w czasie przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t".
+6. Dla każdego zasobu w tym przepływy wskazane w interfejsie użytkownika są łącznymi przepływami widocznymi przez sieciowej grupy zabezpieczeń, ale w Log Analytics użytkownik zobaczy tylko jeden rekord z ograniczeniami. Aby wyświetlić wszystkie przepływy, użyj pola blob_id, do którego odwołuje się magazyn. Całkowita liczba przepływów dla tego rekordu będzie zgodna z pojedynczymi przepływami widocznymi w obiekcie blob.
 
 Poniższe zapytanie pomaga w przeszukiwaniu wszystkich dzienników przepływów lokalnych w ciągu ostatnich 30 dni.
 ```
@@ -99,13 +99,13 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | Pole | Format | Komentarze |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Tabela dla danych Analiza ruchu
-| SubType_s | FlowLog | Podtyp dla dzienników przepływów. Używaj tylko "FlowLog", inne wartości SubType_s są przeznaczone dla wewnętrznych pracy produktu |
+| SubType_s | FlowLog | Podtyp dla dzienników przepływów. Używaj tylko "FlowLog", inne wartości SubType_s są dla wewnętrznej pracy produktu |
 | FASchemaVersion_s |   2   | Wersja schematu. Nie odzwierciedla wersji dziennika przepływu sieciowej grupy zabezpieczeń |
 | TimeProcessed_t   | Data i godzina w formacie UTC  | Godzina, o której Analiza ruchu przetworzył dzienniki nieprzetworzonych przepływów z konta magazynu |
 | FlowIntervalStartTime_t | Data i godzina w formacie UTC |  Godzina rozpoczęcia interwału przetwarzania dziennika przepływu. Jest to czas, po jakim mierzony jest interwał przepływu |
 | FlowIntervalEndTime_t | Data i godzina w formacie UTC | Godzina zakończenia interwału przetwarzania dziennika przepływu |
 | FlowStartTime_t | Data i godzina w formacie UTC |  Pierwsze wystąpienie przepływu (które zostanie zagregowane) w przedziale czasu przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". Ten przepływ jest agregowany na podstawie logiki agregacji |
-| FlowEndTime_t | Data i godzina w formacie UTC | Ostatnie wystąpienie przepływu (które zostanie zagregowane) w przedziale czasu przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". W obszarze Dziennik przepływu w wersji 2, to pole zawiera czas, w którym rozpoczęto ostatni przepływ z taką samą czterema krotką (oznaczono jako "B" w rekordzie nieprzetworzonych przepływów) |
+| FlowEndTime_t | Data i godzina w formacie UTC | Ostatnie wystąpienie przepływu (które zostanie zagregowane) w interwale przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". W obszarze Dziennik przepływu w wersji 2, to pole zawiera czas, w którym rozpoczęto ostatni przepływ z taką samą czterema krotką (oznaczono jako "B" w rekordzie nieprzetworzonych przepływów) |
 | FlowType_s |  * IntraVNet <br> * Ramach <br> * S2S <br> * P2S <br> * AzurePublic <br> * ExternalPublic <br> * MaliciousFlow <br> * Nieznany prywatny <br> * Nieznane | Definicja w notatkach poniżej tabeli |
 | SrcIP_s | Źródłowy adres IP | Będzie puste w przypadku przepływów AzurePublic i ExternalPublic |
 | DestIP_s | Docelowy adres IP | Będzie puste w przypadku przepływów AzurePublic i ExternalPublic |
@@ -117,7 +117,7 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | FlowDirection_s | * I = przychodzące<br> * O = wychodzące | Kierunek przepływu do/z sieciowej grupy zabezpieczeń jako dziennik dla przepływu |
 | FlowStatus_s  | * A = dozwolone przez regułę sieciowej grupy zabezpieczeń <br> * D = odmowa przez regułę sieciowej grupy zabezpieczeń  | Stan przepływu dozwolony/nblocked przez sieciowej grupy zabezpieczeń zgodnie z dziennikiem przepływu |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) skojarzona z przepływem |
-| NSGRules_s | \<Wartość indeksu 0) >\|\<NSG_RULENAME >\|\<kierunek przepływu >\|stanprzepływu\|>\<FlowCountProcessedByRule>\< |  Reguła sieciowej grupy zabezpieczeń, która zezwala lub nie odrzuciła tego przepływu |
+| NSGRules_s | \<wartość indeksu 0) >\|\<NSG_RULENAME >\|\<kierunek przepływu >\|\<stan przepływu >\|\<FlowCount ProcessedByRule > |  Reguła sieciowej grupy zabezpieczeń, która zezwala lub nie odrzuciła tego przepływu |
 | NSGRule_s | NSG_RULENAME |  Reguła sieciowej grupy zabezpieczeń, która zezwala lub nie odrzuciła tego przepływu |
 | NSGRuleType_s | * Zdefiniowane przez użytkownika * domyślne |   Typ reguły sieciowej grupy zabezpieczeń używanej przez przepływ |
 | MACAddress_s | Adres MAC | Adres MAC karty sieciowej, na której przechwycono przepływ |
@@ -158,13 +158,13 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | OutboundBytes_d | Bajty wysłane jako przechwycone w interfejsie sieciowym, gdzie została zastosowana reguła sieciowej grupy zabezpieczeń | Jest to wypełniane tylko w wersji 2 schematu dziennika przepływu sieciowej grupy zabezpieczeń |
 | CompletedFlows_d  |  | Ta wartość jest wypełniana wartością różną od zera tylko dla schematu dziennika przepływu sieciowej grupy zabezpieczeń w wersji 2 |
 | PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Wpisy rozdzielone słupkami |
-| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS\|\<\< >\|OUTBOUND_BYTES\<>\|INBOUND_BYTES>\< | Wpisy rozdzielone słupkami |
-| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_\|\<\< PAKIETY >\|\<OUTBOUND_BYTES >\|INBOUND_BYTES\<> | Wpisy rozdzielone słupkami |
+| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Wpisy rozdzielone słupkami |
+| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Wpisy rozdzielone słupkami |
 
 ### <a name="notes"></a>Uwagi
 
-1. W przypadku przepływów AzurePublic i ExternalPublic adres IP maszyny wirtualnej platformy Azure należący do klienta jest wypełniany w polu VMIP_s, podczas gdy publiczne adresy IP są wypełniane w polu PublicIPs_s. Dla tych dwóch typów przepływów należy używać VMIP_s i PublicIPs_s zamiast pól SrcIP_s i DestIP_s. W przypadku adresów AzurePublic i ExternalPublicIP należy dalej agregować, aby liczba rekordów pozyskanych do obszaru roboczego usługi log Analytics klienta była minimalna. (To pole zostanie wkrótce wycofane i będziemy używać SrcIP_ i DestIP_s w zależności od tego, czy maszyna wirtualna platformy Azure była źródłem lub miejscem docelowym w przepływie)
-1. Szczegóły typów przepływu: W zależności od adresów IP używanych w przepływie klasyfikujemy przepływy w następujący sposób:
+1. W przypadku przepływów AzurePublic i ExternalPublic adres IP maszyny wirtualnej platformy Azure należący do klienta jest wypełniany VMIP_s polu, podczas gdy publiczne adresy IP są wypełniane w polu PublicIPs_s. Dla tych dwóch typów przepływów należy używać VMIP_s i PublicIPs_s zamiast SrcIP_s i DestIP_s pól. W przypadku adresów AzurePublic i ExternalPublicIP należy dalej agregować, aby liczba rekordów pozyskanych do obszaru roboczego usługi log Analytics klienta była minimalna. (To pole zostanie wkrótce wycofane i będziemy używać SrcIP_ i DestIP_s w zależności od tego, czy maszyna wirtualna platformy Azure była źródłem lub miejscem docelowym w przepływie)
+1. Szczegóły dotyczące typów przepływów: na podstawie adresów IP związanych z przepływem klasyfikujemy przepływy do następujących typów przepływu:
 1. IntraVNet — adresy IP znajdujące się w przepływie znajdują się w tym samym Virtual Network platformy Azure.
 1. Ramach — adresy IP w przepływie znajdują się w dwóch różnych sieciach wirtualnych platformy Azure.
 1. S2S — (lokacja z lokacją) jeden z adresów IP należy do usługi Azure Virtual Network, podczas gdy drugi adres IP należy do sieci klienta (lokacja) połączonej z usługą Azure Virtual Network za pośrednictwem bramy sieci VPN lub usługi Express Route.
@@ -174,7 +174,7 @@ Poniżej wymieniono pola w schemacie i znaczenie
 1. MaliciousFlow — jeden z adresów IP należy do usługi Azure Virtual Network, podczas gdy drugi adres IP jest publicznym adresem IP, który nie znajduje się na platformie Azure i jest raportowany jako złośliwy w źródłach ASC, które Analiza ruchu zużywać dla interwału przetwarzania między " FlowIntervalStartTime_t "i" FlowIntervalEndTime_t ".
 1. UnknownPrivate — jeden z adresów IP należy do usługi Azure Virtual Network, podczas gdy drugi adres IP należy do zakresu prywatnych adresów IP zgodnie z definicją w dokumencie RFC 1918 i nie można go zmapować Analiza ruchu do witryny należącej do klienta lub Virtual Network platformy Azure.
 1. Nieznane — nie można zamapować jednego z adresów IP w przepływie na platformę Azure, a także lokalnie (lokacja).
-1. Niektóre nazwy pól są dołączane \_do s \_lub d. Nie oznaczają one źródła i miejsca docelowego, ale wskazują odpowiednio ciąg typów danych i wartość dziesiętną.
+1. Nazwy niektórych pól są dołączane \_s lub \_d. Nie oznaczają one źródła i miejsca docelowego, ale wskazują odpowiednio ciąg typów danych i wartość dziesiętną.
 
 ### <a name="next-steps"></a>Następne kroki
 Aby uzyskać odpowiedzi na często zadawane pytania, zobacz temat [Analiza ruchu — często zadawane](traffic-analytics-faq.md) pytania, aby zobaczyć szczegóły dotyczące funkcjonalności, zobacz [Dokumentacja usługi Traffic Analytics](traffic-analytics.md)

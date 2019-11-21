@@ -7,20 +7,21 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 11/11/2019
 ms.author: bwren
+ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: 5f46c9bf53d791eaec68763edc32996847e78ebd
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.openlocfilehash: 0f61057daf994fde284e9484e41c01ed2e8ae78c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186905"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220211"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Informacje o danych monitorowania Azure Cosmos DB
 Ten artykuł zawiera informacje dotyczące danych dzienników i metryk zbieranych w celu przeanalizowania wydajności i dostępności Azure Cosmos DB. Aby uzyskać szczegółowe informacje na temat zbierania i analizowania danych monitorowania dla Azure Cosmos DB, zobacz [Cosmos DB monitorowania](monitor-cosmos-db.md) .
 
 
 ## <a name="resource-logs"></a>Dzienniki zasobów
-W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Cosmos DB, które są zbierane w Azure Monitor dziennikach lub usłudze Azure Storage. W dziennikach Azure Monitor są one zbierane w tabeli **AzureDiagnostics** z wartością **ResourceProvider** *firmy Microsoft. DOCUMENTDB*.
+W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Cosmos DB, które są zbierane w Azure Monitor dziennikach lub usłudze Azure Storage. W dziennikach Azure Monitor są one zbierane w tabeli **AzureDiagnostics** z wartością **ResourceProvider** *firmy Microsoft. DOCUMENTDB*. 
 
 | Usługa Azure Storage pola lub właściwości | Właściwość dzienników Azure Monitor | Opis |
 | --- | --- | --- |
@@ -42,8 +43,12 @@ W poniższej tabeli wymieniono właściwości dzienników zasobów Azure Cosmos 
 | **responseLength** | **responseLength_s** | Długość odpowiedzi w bajtach.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ta wartość jest pusta, gdy [tokenów zasobów](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) są używane do uwierzytelniania. Wartość wskazuje identyfikator zasobu użytkownika. |
 
+Aby zapoznać się z listą wszystkich kategorii dzienników Azure Monitor i linków do skojarzonych schematów, zobacz [Azure monitor dzienniki kategorii i schematów](../azure-monitor/platform/diagnostic-logs-schema.md). 
+
 ## <a name="metrics"></a>Metryki
 W poniższych tabelach przedstawiono metryki platformy zebrane dla usługi Azure CosmOS DB. Wszystkie metryki są przechowywane w przestrzeni nazw **Cosmos DB metrykach standardowych**.
+
+Aby uzyskać listę wszystkich Azure Monitor metryki pomocy technicznej (w tym CosmosDB), zobacz [Azure monitor obsługiwane metryki](../azure-monitor/platform/metrics-supported.md). 
 
 #### <a name="request-metrics"></a>Metryki żądania
             

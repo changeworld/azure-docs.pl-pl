@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: a6694d094d185ad70cce8c546e12f48afb69f1ae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 11/19/2019
+ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076956"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213358"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -153,8 +153,8 @@ Po włączeniu dysku testowego zostanie wyświetlony monit o skonfigurowanie śr
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>Dodatkowe zasoby zarządzania potencjalnymi klientami
-- [Często zadawane pytania dotyczące zarządzania potencjalnymi klientami](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Typowe błędy konfiguracji lidera](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Zarządzanie potencjalnymi klientami — często zadawane pytania](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [Typowe błędy konfiguracji potencjalnych klientów](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [Przegląd zarządzania potencjalnymi klientami — Omówienie jednego modułu stronicowania](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
@@ -464,7 +464,7 @@ Mimo że usługa SaaS oferuje identyfikatory dzierżawców do definiowania prywa
 
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Odbiorcy dostawcy rozwiązań w chmurze (CSP)
 
-Wybranie oferty w programie CSP pozwala dostawcom rozwiązań w chmurze sprzedawać produkt w ramach rozwiązania do swoich klientów. Aby uzyskać więcej informacji, zobacz [dostawca rozwiązań w chmurze (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers.md).
+Wybranie oferty w programie CSP pozwala dostawcom rozwiązań w chmurze sprzedawać produkt w ramach rozwiązania do swoich klientów. Aby uzyskać więcej informacji, zobacz [dostawcy rozwiązań w chmurze](https://go.microsoft.com/fwlink/?linkid=2111109).
 
 ## <a name="publish"></a>Publikowanie
 
@@ -483,4 +483,4 @@ Jeśli ta oferta jest publikowana po raz pierwszy, możesz:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Aktualizowanie istniejącej oferty w komercyjnej witrynie Marketplace](./update-existing-offer.md)
+- [Aktualizowanie istniejącej oferty w witrynie Marketplace dla zastosowań komercyjnych](./update-existing-offer.md)

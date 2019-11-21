@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą SumoLogic | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i SumoLogic.
+title: 'Samouczek: integracja Azure Active Directory z usługą SumoLogic | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i SumoLogic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07874988c97044ede59c18b8f85a425483679431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7548d7d7b808472b3f5446fadfe800584f61b1df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089529"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233352"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SumoLogic
+# <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Samouczek: integracja Azure Active Directory z usługą SumoLogic
 
-W tym samouczku dowiesz się, jak zintegrować SumoLogic w usłudze Azure Active Directory (Azure AD).
-Integrowanie SumoLogic z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę SumoLogic z usługą Azure Active Directory (Azure AD).
+Integracja SumoLogic z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do SumoLogic.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do SumoLogic (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi SumoLogic.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do SumoLogic (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,60 +36,60 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą SumoLogic, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą SumoLogic, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* SumoLogic logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z włączonym logowaniem jednokrotnym w SumoLogic
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje SumoLogic **SP** jednokrotne logowanie inicjowane przez
+* SumoLogic obsługuje logowanie jednokrotne w usłudze **SP**
 
 ## <a name="adding-sumologic-from-the-gallery"></a>Dodawanie SumoLogic z galerii
 
-Aby skonfigurować integrację SumoLogic w usłudze Azure AD, należy dodać SumoLogic z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu SumoLogic z usługą Azure AD, musisz dodać SumoLogic z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać SumoLogic z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **SumoLogic**, wybierz opcję **SumoLogic** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **SumoLogic**, wybierz pozycję **SumoLogic** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
      ![SumoLogic na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą SumoLogic w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w SumoLogic musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą SumoLogic na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w SumoLogic.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą SumoLogic, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi SumoLogic, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie SumoLogic logowania jednokrotnego](#configure-sumologic-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie](#configure-sumologic-single-sign-on)** jednokrotne w usłudze SumoLogic, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego SumoLogic](#create-sumologic-test-user)**  — aby odpowiednikiem Britta Simon w SumoLogic połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego SumoLogic](#create-sumologic-test-user)** , aby uzyskać odpowiednik Britta Simon w SumoLogic, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z SumoLogic, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą SumoLogic, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **SumoLogic** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **SumoLogic** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SumoLogic, wykonaj 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![SumoLogic domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![SumoLogic domenę i adresy URL Logowanie jednokrotne](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<tenantname>.SumoLogic.com`
 
@@ -118,13 +118,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SumoLogic, wykonaj 
     | `https://<tenantname>.au.sumologic.com` |
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta SumoLogic](https://www.sumologic.com/contact-us/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. Skontaktuj się z [zespołem obsługi klienta SumoLogic](https://www.sumologic.com/contact-us/) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **Konfigurowanie SumoLogic** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie SumoLogic** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -132,57 +132,57 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SumoLogic, wykonaj 
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-sumologic-single-sign-on"></a>Konfigurowanie SumoLogic logowanie jednokrotne
+### <a name="configure-sumologic-single-sign-on"></a>Konfigurowanie logowania jednokrotnego SumoLogic
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy SumoLogic jako administrator.
+1. W innym oknie przeglądarki sieci Web Zaloguj się do firmowej witryny SumoLogic jako administrator.
 
-1. Przejdź do **zarządzanie \> zabezpieczeń**.
+1. Przejdź do obszaru **Zarządzanie zabezpieczeniami \>** .
 
     ![Zarządzanie](./media/sumologic-tutorial/ic778556.png "Zarządzanie")
 
 1. Kliknij pozycję **SAML**.
 
-    ![Ustawienia zabezpieczeń globalnych](./media/sumologic-tutorial/ic778557.png "ustawienia zabezpieczeń globalnych")
+    ![Globalne ustawienia zabezpieczeń](./media/sumologic-tutorial/ic778557.png "Globalne ustawienia zabezpieczeń")
 
-1. Z **wybierz konfigurację, lub utworzyć nowy** , wybierz na liście **usługi Azure AD**, a następnie kliknij przycisk **Konfiguruj**.
+1. Z listy **wybierz konfigurację lub Utwórz nową** wybierz pozycję **Azure AD**, a następnie kliknij pozycję **Konfiguruj**.
 
-    ![Konfigurowanie uwierzytelniania SAML 2.0](./media/sumologic-tutorial/ic778558.png "skonfigurować SAML 2.0")
+    ![Konfigurowanie protokołu SAML 2,0](./media/sumologic-tutorial/ic778558.png "Konfigurowanie protokołu SAML 2,0")
 
-1. Na **skonfigurować SAML 2.0** okno dialogowe, należy wykonać następujące czynności:
+1. W oknie dialogowym **Konfigurowanie protokołu SAML 2,0** wykonaj następujące czynności:
 
-    ![Konfigurowanie uwierzytelniania SAML 2.0](./media/sumologic-tutorial/ic778559.png "skonfigurować SAML 2.0")
+    ![Konfigurowanie protokołu SAML 2,0](./media/sumologic-tutorial/ic778559.png "Konfigurowanie protokołu SAML 2,0")
 
-    a. W **Nazwa konfiguracji** polu tekstowym wpisz **usługi Azure AD**.
+    a. W polu tekstowym **nazwa konfiguracji** wpisz **Azure AD**.
 
     b. Wybierz **tryb debugowania**.
 
-    c. W **wystawcy** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **wystawca** wklej wartość identyfikatora usługi **Azure AD**, która została skopiowana z Azure Portal.
 
-    d. W **adresu URL żądania uwierzytelniania** pole tekstowe, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **adres URL żądania Authn** wklej wartość **adresu URL logowania**, która została skopiowana z Azure Portal.
 
-    e. Otwórz swój certyfikat zakodowany base-64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej cały certyfikat do **certyfikat X.509** pola tekstowego.
+    e. Otwórz certyfikat zakodowany w formacie Base-64 w Notatniku, skopiuj zawartość tego pliku do schowka, a następnie wklej cały certyfikat do pola tekstowego **certyfikatu X. 509** .
 
-    f. Jako **atrybut E-mail**, wybierz opcję **podmiotu SAML użyj**.  
+    f. Jako **atrybut poczty e-mail**wybierz opcję **Użyj podmiotu SAML**.  
 
-    g. Wybierz **SP zainicjowano konfigurację logowania**.
+    g. Wybierz pozycję **Konfiguracja logowania zainicjowana przez program SP**.
 
-    h. W **ścieżkę logowania** polu tekstowym wpisz **Azure** i kliknij przycisk **Zapisz**.
+    h. W polu tekstowym **ścieżka logowania** wpisz **platformę Azure** , a następnie kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
@@ -197,13 +197,13 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do SumoLogic.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi SumoLogic.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **SumoLogic**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **SumoLogic**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **SumoLogic**.
+2. Na liście Aplikacje wybierz pozycję **SumoLogic**.
 
     ![Link SumoLogic na liście aplikacji](common/all-applications.png)
 
@@ -215,19 +215,19 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
 6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-sumologic-test-user"></a>Tworzenie użytkownika testowego SumoLogic
+### <a name="create-sumologic-test-user"></a>Utwórz użytkownika testowego SumoLogic
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do SumoLogic, musi być obsługiwana na SumoLogic. W przypadku SumoLogic Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze SumoLogic, muszą one być obsługiwane do SumoLogic. W przypadku SumoLogic, Inicjowanie obsługi administracyjnej jest zadaniem ręcznym.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do Twojej **SumoLogic** dzierżawy.
+1. Zaloguj się do dzierżawy **SumoLogic** .
 
 1. Przejdź do pozycji **Manage \> Users** (Zarządzaj > Użytkownicy).
 
@@ -237,32 +237,32 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do SumoLogic, musi 
 
     ![Użytkownicy](./media/sumologic-tutorial/ic778562.png "Użytkownicy")
 
-1. Na **nowego użytkownika** okno dialogowe, należy wykonać następujące czynności:
+1. W oknie dialogowym **nowy użytkownik** wykonaj następujące czynności:
 
     ![Nowy użytkownik](./media/sumologic-tutorial/ic778563.png "Nowy użytkownik") 
 
-    a. Wpisz odpowiednie informacje konta usługi Azure AD, do aprowizowania w **imię**, **nazwisko**, i **E-mail** pól tekstowych.
+    a. Wpisz powiązane informacje o koncie usługi Azure **AD, które**chcesz udostępnić w polach tekstowych **imię**, nazwisko i **adres e-mail** .
   
     b. Wybierz rolę.
   
-    c. Jako **stan**, wybierz opcję **Active**.
+    d. Jako **stan**wybierz pozycję **aktywny**.
   
     d. Kliknij pozycję **Zapisz**.
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych SumoLogic użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez SumoLogic do aprowizacji kont użytkowników usługi AAD.
+> Do aprowizacji kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników SumoLogic i interfejsów API udostępnionych przez usługę SumoLogic.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka SumoLogic w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze SumoLogic, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka SumoLogic w panelu dostępu należy automatycznie zalogować się do SumoLogic, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

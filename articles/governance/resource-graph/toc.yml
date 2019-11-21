@@ -2,7 +2,7 @@
   href: index.yml
 - name: Omówienie
   items:
-    - name: Omówienie usługi Azure Resource Graph
+    - name: Co to jest usługa Azure Resource Graph?
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
 - name: Przewodniki Szybki start

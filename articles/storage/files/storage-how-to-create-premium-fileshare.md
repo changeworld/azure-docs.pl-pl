@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 795f18365c4b4846d18eddf3212059040bf9e319
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260211"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209550"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Jak utworzyć udział plików platformy Azure w warstwie Premium
 Udziały plików w warstwie Premium są oferowane na nośnikach magazynowania SSD i są przydatne w przypadku obciążeń intensywnie korzystających z operacji we/wy, w tym hostingu baz danych i obliczeń o wysokiej wydajności (HPC). Udziały plików w warstwie Premium są hostowane w specjalnym rodzaju koncie magazynu o nazwie konto FileStorage. Udziały plików w warstwie Premium są przeznaczone dla aplikacji o wysokiej wydajności i skalowania w przedsiębiorstwie, zapewniając spójne małe opóźnienia, duże liczby operacji we/wy i duże przepływność.
@@ -25,7 +25,7 @@ Aby uzyskać dostęp do zasobów platformy Azure, w tym udziałów plików Premi
 
 ## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Tworzenie udziału plików w warstwie Premium przy użyciu Azure Portal
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
@@ -75,7 +75,7 @@ Jeśli chcesz wyczyścić zasoby utworzone w tym artykule, możesz po prostu usu
 
 ### <a name="create-an-account-using-powershell"></a>Tworzenie konta przy użyciu programu PowerShell
 
-Najpierw zainstaluj najnowszą wersję modułu [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
+Najpierw zainstaluj najnowszą wersję modułu [PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
 Następnie Uaktualnij moduł programu PowerShell, zaloguj się do subskrypcji platformy Azure, Utwórz grupę zasobów, a następnie utwórz konto magazynu.
 

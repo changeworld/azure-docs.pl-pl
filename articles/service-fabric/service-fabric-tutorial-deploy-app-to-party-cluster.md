@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553573"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213200"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji usługi Service Fabric w klastrze na platformie Azure
 
@@ -48,7 +48,7 @@ Przed rozpoczęciem tego samouczka:
 * [Zainstaluj zestaw SDK usługi Service Fabric](service-fabric-get-started.md).
 
 > [!NOTE]
-> Bezpłatne konto może nie spełniać wymagań dotyczących tworzenia maszyny wirtualnej. Uniemożliwi to ukończenie tego samouczka.
+> Bezpłatne konto może nie spełniać wymagań dotyczących tworzenia maszyny wirtualnej. Uniemożliwi to ukończenie tego samouczka. Ponadto konto niedziałające lub nieszkolne może napotkać problemy z uprawnieniami podczas tworzenia certyfikatu w magazynie kluczy skojarzonym z klastrem. W przypadku wystąpienia błędu związanego z tworzeniem certyfikatu należy utworzyć klaster przy użyciu portalu. 
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
 

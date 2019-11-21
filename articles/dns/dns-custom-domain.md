@@ -1,18 +1,18 @@
 ---
-title: Integracja Azure DNS z zasobami platformy Azure
-description: Dowiedz się, jak korzystać z usługi Azure DNS i zapewniać serwer DNS dla zasobów platformy Azure.
+title: Integruj Azure DNS z zasobami platformy Azure — Azure DNS
+description: W tym artykule dowiesz się, jak używać usługi Azure DNS, aby zapewnić usłudze DNS dla zasobów platformy Azure.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
-ms.author: victorh
-ms.openlocfilehash: 051aabed758f80208549cf64bf5d74b1fecfbe75
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.author: allensu
+ms.openlocfilehash: b005cb9e0611d18c24e2b77abf493292d47f44b4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854158"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212417"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Użyj Azure DNS, aby podać niestandardowe ustawienia domeny dla usługi platformy Azure
 
@@ -40,8 +40,8 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Name (Nazwa)     | myfunctionapp        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
-|Type     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
+|Nazwa     | myfunctionapp        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
 |WARTOŚĆ     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
 |Alias     | adatumfunction.azurewebsites.net        | Nazwa DNS, dla której tworzysz alias, w tym przykładzie jest to nazwa adatumfunction.azurewebsites.net DNS udostępniona domyślnie dla aplikacji funkcji.        |
@@ -56,7 +56,7 @@ W bloku **Dodaj nazwę hosta** Wprowadź rekord CNAME w polu tekstowym **Nazwa h
 
 Aby skonfigurować domenę niestandardową dla usług, które korzystają z zasobu publicznego adresu IP, takiego jak Application Gateway, Load Balancer, usługa w chmurze, Menedżer zasobów VM, i klasycznych maszyn wirtualnych, jest używany rekord A.
 
-Przejdź do opcji **Sieć** > **publiczny adres IP**, wybierz zasób publiczny adres IP, a następnie kliknij pozycję **Konfiguracja**. Notated adres IP.
+Przejdź do **sieci** > **publiczny adres IP**, wybierz zasób publiczny adres IP, a następnie kliknij pozycję **Konfiguracja**. Notated adres IP.
 
 ![blok publicznego adresu IP](./media/dns-custom-domain/publicip.png)
 
@@ -65,15 +65,15 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
-|Type     | A        | Użyj rekordu A jako zasobu jest adresem IP.        |
+|Nazwa     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Typ     | A        | Użyj rekordu A jako zasobu jest adresem IP.        |
 |WARTOŚĆ     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
 |Adres IP     | `<your ip address>`       | Publiczny adres IP.|
 
 ![Tworzenie rekordu A](./media/dns-custom-domain/arecord.png)
 
-Po utworzeniu rekordu, uruchom `nslookup` polecenie, aby sprawdzić, czy rekord jest rozpoznawany.
+Po utworzeniu rekordu A Uruchom `nslookup`, aby sprawdzić, czy rekord jest rozpoznawany.
 
 ![Wyszukiwanie publicznych adresów IP w systemie DNS](./media/dns-custom-domain/publicipnslookup.png)
 
@@ -92,8 +92,8 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
-|Type     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu. Jeśli zasób użył adresu IP, będzie używany rekord A.        |
+|Nazwa     | mywebserver        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu. Jeśli zasób użył adresu IP, będzie używany rekord A.        |
 |WARTOŚĆ     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
 |Alias     | webserver.azurewebsites.net        | Nazwa DNS, dla której tworzysz alias, w tym przykładzie jest to nazwa webserver.azurewebsites.net DNS udostępniona domyślnie dla aplikacji sieci Web.        |
@@ -119,26 +119,26 @@ Jeśli musisz zakupić domenę niestandardową, odwiedź stronę [kupowanie nies
 
 Poniższe kroki przeprowadzimy przez proces konfigurowania rekordu CNAME dla konta usługi BLOB Storage przy użyciu metody asverify. Ta metoda zapewnia brak przestojów.
 
-Przejdź do**konta**magazynu **magazynu** > , wybierz konto magazynu, a następnie kliknij pozycję **domena**niestandardowa. Notate nazwę FQDN w kroku 2, ta wartość jest używana do tworzenia pierwszego rekordu CNAME
+Przejdź do **magazynu** > **konta magazynu**, wybierz konto magazynu, a następnie kliknij pozycję **domena niestandardowa**. Notate nazwę FQDN w kroku 2, ta wartość jest używana do tworzenia pierwszego rekordu CNAME
 
 ![Domena niestandardowa magazynu obiektów BLOB](./media/dns-custom-domain/blobcustomdomain.png)
 
 Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wypełnij poniższe informacje w bloku **Dodawanie zestawu rekordów** , a następnie kliknij przycisk **OK** , aby go utworzyć.
 
 
-|Właściwość  |Value  |Opis  |
+|Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Name (Nazwa)     | asverify.mystorageaccount        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
-|Type     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
+|Nazwa     | asverify.mystorageaccount        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
 |WARTOŚĆ     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Nazwa DNS, dla której tworzysz alias, w tym przykładzie jest to nazwa asverify.adatumfunctiona9ed.blob.core.windows.net DNS podana domyślnie dla konta magazynu.        |
 
-Wróć do konta magazynu,  > klikając pozycję**konta magazynu**, wybierz konto magazynu, a następnie kliknij pozycję **domena**niestandardowa. Wpisz w polu tekstowym Alias utworzony bez prefiksu asverify, zaznacz * * Użyj pośredniej walidacji rekordu CNAME, a następnie kliknij przycisk **Zapisz**. Po zakończeniu tego kroku Wróć do strefy DNS i Utwórz rekord CNAME bez prefiksu asverify.  Po tym momencie można bezpiecznie usunąć rekord CNAME z prefiksem cdnverify.
+Wróć do konta magazynu, klikając pozycję **magazyn** > **konta magazynu**, wybierz konto magazynu, a następnie kliknij pozycję **domena niestandardowa**. Wpisz w polu tekstowym Alias utworzony bez prefiksu asverify, zaznacz * * Użyj pośredniej walidacji rekordu CNAME, a następnie kliknij przycisk **Zapisz**. Po zakończeniu tego kroku Wróć do strefy DNS i Utwórz rekord CNAME bez prefiksu asverify.  Po tym momencie można bezpiecznie usunąć rekord CNAME z prefiksem cdnverify.
 
 ![Domena niestandardowa magazynu obiektów BLOB](./media/dns-custom-domain/indirectvalidate.png)
 
-Sprawdź poprawność rozpoznawania nazw DNS, uruchamiając`nslookup`
+Sprawdź poprawność rozpoznawania nazw DNS, uruchamiając `nslookup`
 
 Aby dowiedzieć się więcej o mapowaniu domeny niestandardowej do punktu końcowego usługi BLOB Storage, odwiedź stronę [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi BLOB Storage](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json) .
 
@@ -146,9 +146,9 @@ Aby dowiedzieć się więcej o mapowaniu domeny niestandardowej do punktu końco
 
 Poniższe kroki przeprowadzimy przez proces konfigurowania rekordu CNAME dla punktu końcowego usługi CDN przy użyciu metody cdnverify. Ta metoda zapewnia brak przestojów.
 
-Przejdź do opcji **sieciowe profile sieci** > **CDN**, a następnie wybierz profil usługi CDN.
+Przejdź do opcji **sieć** > profile sieci **CDN**, a następnie wybierz profil usługi CDN.
 
-Wybierz punkt końcowy, z którym pracujesz, a następnie kliknij pozycję **+ domena**niestandardowa. Sprawdź **nazwę hosta punktu końcowego** , ponieważ ta wartość jest rekordem, na który wskazuje rekord CNAME.
+Wybierz punkt końcowy, z którym pracujesz, a następnie kliknij pozycję **+ domena niestandardowa**. Sprawdź **nazwę hosta punktu końcowego** , ponieważ ta wartość jest rekordem, na który wskazuje rekord CNAME.
 
 ![Domena niestandardowa CDN](./media/dns-custom-domain/endpointcustomdomain.png)
 
@@ -156,13 +156,13 @@ Przejdź do strefy DNS, a następnie kliknij pozycję **+ zestaw rekordów**. Wy
 
 |Właściwość  |Wartość  |Opis  |
 |---------|---------|---------|
-|Name (Nazwa)     | cdnverify. mycdnendpoint        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
-|Type     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
+|Nazwa     | cdnverify. mycdnendpoint        | Ta wartość wraz z etykietą nazwy domeny jest nazwą FQDN niestandardowej nazwy domeny.        |
+|Typ     | CNAME        | Użyj rekordu CNAME przy użyciu aliasu.        |
 |WARTOŚĆ     | 1        | 1 jest używany przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiar czasu         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Nazwa DNS, dla której tworzysz alias, w tym przykładzie jest to nazwa cdnverify.adatumcdnendpoint.azureedge.net DNS podana domyślnie dla konta magazynu.        |
 
-Wróć do punktu końcowego usługi CDN, klikając kolejno pozycje **Sieć** > **CDN profile**i profil usługi CDN. Kliknij pozycję **+ domena** niestandardowa i wprowadź alias rekordu CNAME bez prefiksu cdnverify, a następnie kliknij przycisk **Dodaj**.
+Wróć do punktu końcowego usługi CDN, klikając kolejno pozycje **sieć** > **Profile sieci CDN**i profil usługi CDN. Kliknij pozycję **+ domena niestandardowa** i wprowadź alias rekordu CNAME bez prefiksu cdnverify, a następnie kliknij przycisk **Dodaj**.
 
 Po zakończeniu tego kroku Wróć do strefy DNS i Utwórz rekord CNAME bez prefiksu cdnverify.  Po tym momencie można bezpiecznie usunąć rekord CNAME z prefiksem cdnverify. Aby uzyskać więcej informacji na temat sieci CDN i jak skonfigurować domenę niestandardową bez kroku rejestracji pośredniej, odwiedź stronę [mapowanie Azure CDN zawartości do domeny niestandardowej](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 

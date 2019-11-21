@@ -1,20 +1,16 @@
 ---
 title: Pojedyncze dla Durable Functions — Azure
 description: Jak użyć pojedynczych w rozszerzeniu Durable Functions Azure Functions.
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ec7eb1eba2bc029d592560b39cde20e93e5afcd6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 8c12e0ab854bb2b5764dd326e3f1649202f6f16b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614663"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232801"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze Koordynatory w Durable Functions (Azure Functions)
 
@@ -60,7 +56,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 
 ### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
-Oto plik Function. JSON:
+Poniżej przedstawiono plik function.json:
 ```json
 {
   "bindings": [
@@ -86,7 +82,7 @@ Oto plik Function. JSON:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 ```javascript
 const df = require("durable-functions");
 
