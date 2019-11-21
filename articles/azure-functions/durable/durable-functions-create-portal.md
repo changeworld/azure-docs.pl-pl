@@ -1,52 +1,46 @@
 ---
-title: Tworzenie Durable Functions przy użyciu Azure Portal
-description: Dowiedz się, jak zainstalować rozszerzenie Durable Functions dla Azure Functions do tworzenia aplikacji w portalu.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Create Durable Functions using the Azure portal
+description: Learn how to install the Durable Functions extension for Azure Functions for portal development.
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614975"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231481"
 ---
-# <a name="create-durable-functions-using-the-azure-portal"></a>Tworzenie Durable Functions przy użyciu Azure Portal
+# <a name="create-durable-functions-using-the-azure-portal"></a>Create Durable Functions using the Azure portal
 
-Rozszerzenie [Durable Functions](durable-functions-overview.md) dla Azure Functions jest dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). To rozszerzenie musi być zainstalowane w aplikacji funkcji. W tym artykule przedstawiono sposób instalowania tego pakietu, dzięki któremu można opracowywać trwałe funkcje w Azure Portal.
+The [Durable Functions](durable-functions-overview.md) extension for Azure Functions is provided in the NuGet package [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). This extension must be installed in your function app. This article shows how to install this package so that you can develop durable functions in the Azure portal.
 
 > [!NOTE]
 > 
-> * W przypadku tworzenia trwałych funkcji w C#programie należy wziąć pod uwagę [Programowanie programu Visual Studio 2019](durable-functions-create-first-csharp.md).
-> * W przypadku tworzenia trwałych funkcji w języku JavaScript należy zamiast tego rozważyć [tworzenie Visual Studio Code](./quickstart-js-vscode.md).
+> * If you are developing durable functions in C#, you should instead consider [Visual Studio 2019 development](durable-functions-create-first-csharp.md).
+> * If you are developing durable functions in JavaScript, you should instead consider [Visual Studio Code development](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-Aby hostować wykonywanie dowolnej funkcji, musisz mieć aplikację funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie i udostępnianie zasobów. Możesz utworzyć aplikację platformy .NET lub JavaScript.
+You must have a function app to host the execution of any function. A function app lets you group your functions as a logic unit for easier management, deployment, and sharing of resources. You can create a .NET or JavaScript app.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Domyślnie utworzona aplikacja funkcji używa wersji 2. x środowiska uruchomieniowego Azure Functions. Rozszerzenie Durable Functions działa w wersjach 1. x i 2. x środowiska uruchomieniowego Azure Functions w C#systemach i w wersji 2. x w języku JavaScript. Jednak szablony są dostępne tylko w przypadku, gdy celem jest wersja 2. x środowiska uruchomieniowego, niezależnie od wybranego języka.
+By default, the function app created uses version 2.x of the Azure Functions runtime. The Durable Functions extension works on both versions 1.x and 2.x of the Azure Functions runtime in C#, and version 2.x in JavaScript. However, templates are only available when targeting version 2.x of the runtime regardless of the chosen language.
 
-## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Instalowanie pakietu npm o trwałych funkcjach (tylko kod JavaScript)
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Install the durable-functions npm package (JavaScript only)
 
-W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet`durable-functions` npm](https://www.npmjs.com/package/durable-functions).
+If you are creating JavaScript Durable Functions, you will need to install the [`durable-functions` npm package](https://www.npmjs.com/package/durable-functions).
 
-1. Wybierz nazwę aplikacji funkcji, a następnie pozycję **funkcje platformy**, a następnie **Narzędzia zaawansowane (kudu)** .
+1. Select your function app's name, followed by **Platform Features**, then **Advanced tools (Kudu)** .
 
-   ![Funkcje platformy funkcji wybierz kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   ![Functions platform features choose Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
 
-2. W konsoli kudu wybierz pozycję **konsola debugowania** , a następnie polecenie **cmd**.
+2. Inside the Kudu console, select **Debug console** then **CMD**.
 
-   ![Konsola debugowania kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu debug console](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. Struktura katalogu plików aplikacji funkcji powinna być wyświetlana. Przejdź do folderu `site/wwwroot`. W tym miejscu możesz przekazać plik `package.json`, przeciągając go i upuszczając do okna katalogu plików. `package.json` przykład poniżej:
+3. Your function app's file directory structure should display. Przejdź do folderu `site/wwwroot`. From there, you can upload a `package.json` file by dragging and dropping it into the file directory window. A sample `package.json` is below:
 
     ```json
     {
@@ -56,13 +50,13 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet
     }
     ```
 
-   ![Kudu Przekaż plik Package. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu upload package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Po przekazaniu `package.json` Uruchom polecenie `npm install` z konsoli wykonywania zdalnego kudu.
+4. Once your `package.json` is uploaded, run the `npm install` command from the Kudu Remote Execution Console.
 
-   ![Kudu Uruchom instalację npm](./media/durable-functions-create-portal/kudu-npm-install.png)
+   ![Kudu run npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
 
-## <a name="create-an-orchestrator-function"></a>Tworzenie funkcji programu Orchestrator
+## <a name="create-an-orchestrator-function"></a>Create an orchestrator function
 
 1. Rozwiń aplikację funkcji i kliknij przycisk **+** obok pozycji **Funkcje**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **W portalu**, a następnie opcję **Kontynuuj**. W przeciwnym razie przejdź do kroku trzeciego.
 
@@ -72,29 +66,29 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet
 
     ![Wybieranie pozycji Więcej szablonów w przewodniku Szybki start usługi Functions](./media/durable-functions-create-portal/add-first-function.png)
 
-1. W polu wyszukiwania wpisz `durable` a następnie wybierz szablon **DURABLE Functions http Starter** .
+1. In the search field, type `durable` and then choose the  **Durable Functions HTTP starter** template.
 
-1. Po wyświetleniu monitu wybierz pozycję **Zainstaluj** , aby zainstalować rozszerzenie Azure DurableTask wszystkie zależności w aplikacji funkcji. Wystarczy zainstalować rozszerzenie tylko raz dla aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
+1. When prompted, select **Install** to install the Azure DurableTask extension any dependencies in the function app. You only need to install the extension once for a give function app. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
 
     ![Instalowanie rozszerzeń powiązania](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. Po zakończeniu instalacji Nazwij nową funkcję `HttpStart` a następnie wybierz pozycję **Utwórz**. Utworzona funkcja jest używana do uruchomienia aranżacji.
+1. After the installation completes, name the new function `HttpStart` and choose **Create**. The function created is used to start the orchestration.
 
-1. Utwórz kolejną funkcję w aplikacji funkcji, tym razem używając szablonu **Durable Functions Orchestrator** . Nazwij nową funkcję aranżacji `HelloSequence`.
+1. Create another function in the function app, this time by using the **Durable Functions Orchestrator** template. Name your new orchestration function `HelloSequence`.
 
-1. Utwórz trzecią funkcję o nazwie `Hello` przy użyciu szablonu **działania Durable Functions** .
+1. Create a third function named `Hello` by using the **Durable Functions Activity** template.
 
-## <a name="test-the-durable-function-orchestration"></a>Testowanie aranżacji funkcji trwałych
+## <a name="test-the-durable-function-orchestration"></a>Test the durable function orchestration
 
-1. Wróć do funkcji **HttpStart** , wybierz pozycję **</> Pobierz adres URL funkcji** i **Skopiuj** adres URL. Ten adres URL jest używany do uruchamiania funkcji **HelloSequence** .
+1. Go back to the **HttpStart** function, choose **</> Get function URL** and **Copy** the URL. You use this URL to start the **HelloSequence** function.
 
-1. Użyj narzędzia HTTP, takiego jak Poster lub zwinięcie, aby wysłać żądanie POST do skopiowanego adresu URL. Poniższy przykład jest poleceniem zwinięcie, które wysyła żądanie POST do funkcji trwałej:
+1. Use an HTTP tool like Postman or cURL to send a POST request to the URL that you copied. The following example is a cURL command that sends a POST request to the durable function:
 
     ```bash
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    W tym przykładzie `{your-function-app-name}` jest domeną, która jest nazwą aplikacji funkcji. Komunikat odpowiedzi zawiera zestaw punktów końcowych identyfikatora URI, których można użyć do monitorowania wykonywania i zarządzania nim, który wygląda podobnie do następującego przykładu:
+    In this example, `{your-function-app-name}` is the domain that is the name of your function app. The response message contains a set of URI endpoints that you can use to monitor and manage the execution, which looks like the following example:
 
     ```json
     {  
@@ -106,7 +100,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet
     }
     ```
 
-1. Wywołaj identyfikator URI punktu końcowego `statusQueryGetUri` i zobaczysz bieżący stan funkcji trwałej, która może wyglądać podobnie do tego przykładu:
+1. Call the `statusQueryGetUri` endpoint URI and you see the current status of the durable function, which might look like this example:
 
     ```json
         {
@@ -118,7 +112,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet
         }
     ```
 
-1. Kontynuuj wywoływanie punktu końcowego `statusQueryGetUri`, dopóki stan zmieni się na **zakończone**, a zobaczysz odpowiedź podobną do poniższego przykładu:
+1. Continue calling the `statusQueryGetUri` endpoint until the status changes to **Completed**, and you see a response like the following example:
 
     ```json
     {
@@ -134,7 +128,7 @@ W przypadku tworzenia Durable Functions JavaScript należy zainstalować [pakiet
         }
     ```
 
-Twoja pierwsza trwała funkcja jest teraz uruchomiona na platformie Azure.
+Your first durable function is now up and running in Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,51 +1,51 @@
 ---
-title: Utwórz żądanie obsługi na platformie Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono kroki niezbędne do utworzenia żądania obsługi na platformie Cloudyn.
+title: Create a support request for Cloudyn in Azure | Microsoft Docs
+description: This article walks you through the steps needed to create a support request for Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: troubleshooting
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 2553d08b55aff45e52b9d8c5a64db141a668eb62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82c9a13c50f9d9786f405032d6339c8323d9cf68
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967118"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229900"
 ---
-# <a name="create-a-support-request-for-cloudyn"></a>Utwórz żądanie pomocy technicznej dla platformy Cloudyn
+# <a name="create-a-support-request-for-cloudyn"></a>Create a support request for Cloudyn
 
-Jeśli nie możesz znaleźć informacje, których szukasz, możesz otworzyć żądania pomocy technicznej. Lub, jeśli istnieje podejrzenie, że problem jest przerw w działaniu usługi lub błędem. Po otwarciu biletu pomocy technicznej, upewnij się, który otworzyć ją do pojedynczego problemu. Należy tak pomaga szybko kierować zgłoszonego problemu.
+You can open a support request if you can't find the information you're looking for. Or, if you suspect a problem is a service disruption or bug. When you open a support ticket, make sure that open it for a single problem. Do so helps to quickly route the reported issue.
 
-## <a name="open-a-support-ticket"></a>Otwórz bilet pomocy technicznej
+## <a name="open-a-support-ticket"></a>Otwieranie biletu pomocy technicznej
 
-1. Zaloguj się do witryny Azure portal (https://portal.azure.com).
-2. Na górnym pasku nawigacyjnym, kliknij przycisk **pomocy**.
-3. W **pomocy** menu, kliknij przycisk **Pomoc i obsługa techniczna**.
-4. W pomocy i obsługi menu w ramach pomocy technicznej, kliknij przycisk **nowe żądanie obsługi**.
-5. W obszarze podstawy w obszarze Typ problemu wybierz **rozliczeń**.
-6. W ramach subskrypcji wybierz żadnej z wymienionych subskrypcji. Subskrypcję, możesz wybrać nie jest używany do routingu problem.
-7. W ramach planu pomocy technicznej, wybierz Plan pomocy technicznej platformy Azure, a następnie kliknij przycisk **dalej**.  
-8. W obszarze Problem, wybierz **ważność** poziomu, aby określić czas odpowiedzi.
-9. W **typ problemu** wybierz **starszej wersji platformy Cloudyn**, a następnie wybierz pozycję **kategorii**.
-10. W **tytuł** wprowadź tytuł, który opisuje Twoje żądanie.
-11. W **szczegóły** polu dodatkowe informacje o typie.
-12. Aby uzyskać **kiedy problem zaczął występować?** , wybierz przybliżony datę i godzinę dla, a następnie kliknij przycisk **dalej**.  
-14. W **informacje kontaktowe** obszaru, wybierz preferowany metoda kontaktu i podaj swoje informacje kontaktowe, a następnie kliknij przycisk **Utwórz**.  
+1. Sign in to the Azure portal (https://portal.azure.com).
+2. On the top navigation bar, click **Help**.
+3. In the **Help** menu, click **Help + support**.
+4. In the Help + support menu under Support, click **New support request**.
+5. In the Basics area under Issue type, select **Billing**.
+6. Under Subscription, choose any listed subscription. The subscription that you choose isn't used for issue routing.
+7. Under Support plan, select your Azure Support Plan and then click **Next**.  
+8. In the Problem area, select a **Severity** level to help determine response time.
+9. In **Problem type** select **Cloudyn Legacy**, and then select a **Category**.
+10. In the **Title** box, enter a title that describes your request.
+11. In the **Details** box, type additional information.
+12. For **When did the problem start?** , select an approximate date and time for and then click **Next**.  
+14. In the **Contact information** area, select your preferred contact method and provide your contact information, then click **Create**.  
 
-Po utworzeniu biletu pomocy technicznej jest to dodane do kolejki pomocy technicznej. Czas odpowiedzi różni się w oparciu o Plan pomocy technicznej i ważności (wpływ na działalność) problem. Aby uzyskać więcej informacji, zobacz [zakres i szybkość reakcji pomocy technicznej](https://azure.microsoft.com/support/plans/response/).
+When the support ticket is created, it is added to the support queue. Response time varies, based on the Support Plan and Severity (business impact) of the issue. For more information, see [Support scope and responsiveness](https://azure.microsoft.com/support/plans/response/).
 
-Jeśli chcesz utworzyć bilet pomocy technicznej rozliczeń usługi Cost Management, w obszarze **typ problemu**, wybierz opcję **usługi Azure Cost Management**.
+If you want to create a billing support ticket for Cost Management, under **Problem type**, select **Azure Cost Management**.
 
-Aby sprawdzić stan zdarzenie, które zostały wprowadzone, zobacz [wszystkie żądania obsługi](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
+To check the status of an incident that you've filed, see [All support requests](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-Jeśli jesteś użytkownikiem platformy Cloudyn starszej wersji, bez konta platformy Azure, możesz otworzyć żądania pomocy technicznej w https://support.microsoft.com/oas/default.aspx?prid=16451.
+If you're a legacy Cloudyn user without an Azure account, you can open a support request at https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat platformy Cloudyn, przejdź do [przeglądanie użycia i kosztów](tutorial-review-usage.md) samouczek dotyczący platformy Cloudyn.
+- To learn more about Cloudyn, continue to the [Review usage and costs](tutorial-review-usage.md) tutorial for Cloudyn.

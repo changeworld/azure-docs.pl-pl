@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą systemu Zendesk | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Zendesk | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Zendesk.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a57258dfe112c1b2d03bc43738c92272a156f9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4887457f457ff533a0eaf10be7db1627a950f5bd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160846"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233268"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Samouczek: integracja Azure Active Directory z usługą systemu Zendesk
+# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Tutorial: Azure Active Directory integration with Zendesk
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Zendesk z usługą Azure Active Directory (Azure AD).
 Integrowanie aplikacji Zendesk z usługą Azure AD zapewnia następujące korzyści:
@@ -210,7 +210,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -258,13 +258,13 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w aplikacji 
 
 3. Wybierz kartę **Użytkownik**, a następnie kliknij przycisk **Dodaj**.
 
-    ![Dodaj użytkownika](././media/zendesk-tutorial/ic773632.png "Dodawanie użytkownika")
+    ![Add user](././media/zendesk-tutorial/ic773632.png "Dodawanie użytkownika")
 4. Wpisz **nazwę** i **adres e-mail** istniejącego konta usługi Azure AD, które chcesz aprowizować, a następnie kliknij przycisk **Zapisz**.
 
-    ![Nowy użytkownik](././media/zendesk-tutorial/ic773633.png "Nowy użytkownik")
+    ![New user](././media/zendesk-tutorial/ic773633.png "New user")
 
 > [!NOTE]
-> Aby aprowizować konta użytkowników usługi AAD, możesz użyć dowolnych innych narzędzi do tworzenia kont użytkowników aplikacji Zendesk lub interfejsów API udostępnianych przez aplikację Zendesk.
+> You can use any other Zendesk user account creation tools or APIs provided by Zendesk to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
@@ -278,6 +278,6 @@ Po kliknięciu kafelka Zendesk w panelu dostępu powinno nastąpić automatyczne
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Konfigurowanie aprowizacji użytkowników](zendesk-provisioning-tutorial.md)

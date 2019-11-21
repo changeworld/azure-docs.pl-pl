@@ -1,59 +1,54 @@
 ---
-title: Notification Hubs powiązania Azure Functions
-description: Dowiedz się, jak używać powiązań centrum powiadomień platformy Azure w Azure Functions.
-services: functions
-documentationcenter: na
+title: Notification Hubs bindings for Azure Functions
+description: Understand how to use Azure Notification Hub binding in Azure Functions.
 author: craigshoemaker
-manager: gwallace
-keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, dynamiczne obliczenia, architektura bezserwerowa
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: cde565fbafec7f1209d0c65d6f3ebc121f38e6f5
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8bc7f879a2c2e8b1e0e2d82216241704a466ad60
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991393"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231142"
 ---
-# <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs powiązanie danych wyjściowych dla Azure Functions
+# <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs output binding for Azure Functions
 
-W tym artykule wyjaśniono, jak wysyłać powiadomienia wypychane za pomocą powiązań [usługi Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) w programie Azure Functions. Azure Functions obsługuje powiązania wyjściowe dla Notification Hubs.
+This article explains how to send push notifications by using [Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) bindings in Azure Functions. Azure Functions supports output bindings for Notification Hubs.
 
-Należy skonfigurować usługę Azure Notification Hubs dla usługi powiadomień platformy (PNS), która ma być używana. Aby dowiedzieć się, jak uzyskać powiadomienia wypychane w aplikacji klienckiej z Notification Hubs, zobacz [wprowadzenie do Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) i wybierz docelową platformę klienta z listy rozwijanej w górnej części strony.
+Azure Notification Hubs must be configured for the Platform Notifications Service (PNS) you want to use. To learn how to get push notifications in your client app from Notification Hubs, see [Getting started with Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) and select your target client platform from the drop-down list near the top of the page.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!IMPORTANT]
-> Firma Google ma [przestarzałe Google Cloud Messaging (GCM) na korzyść usługi Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). To powiązanie danych wyjściowych nie obsługuje FCM. Aby wysyłać powiadomienia przy użyciu programu FCM, należy użyć [interfejsu API Firebase](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) bezpośrednio w funkcji lub użyć [powiadomień dotyczących szablonów](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+> Google has [deprecated Google Cloud Messaging (GCM) in favor of Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). This output binding doesn't support FCM. To send notifications using FCM, use the [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) directly in your function or use [template notifications](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
-## <a name="packages---functions-1x"></a>Pakiety — funkcje 1. x
+## <a name="packages---functions-1x"></a>Packages - Functions 1.x
 
-Powiązania Notification Hubs są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) w wersji 1. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) GitHub.
+The Notification Hubs bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) GitHub repository.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2. x
+## <a name="packages---functions-2x"></a>Packages - Functions 2.x
 
-To powiązanie nie jest dostępne w funkcjach 2. x.
+This binding is not available in Functions 2.x.
 
-## <a name="example---template"></a>Przykład — szablon
+## <a name="example---template"></a>Example - template
 
-Wysyłane powiadomienia mogą być natywnymi powiadomieniami lub [powiadomieniami o szablonach](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Natywne powiadomienia są przeznaczone dla konkretnej platformy klienta skonfigurowanej we właściwości `platform` powiązania danych wyjściowych. Powiadomienia szablonu mogą służyć do kierowania wielu platform.   
+The notifications you send can be native notifications or [template notifications](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Native notifications target a specific client platform as configured in the `platform` property of the output binding. A template notification can be used to target multiple platforms.   
 
-Zobacz przykład specyficzny dla języka:
+See the language-specific example:
 
-* [C#parametr out dla skryptu](#c-script-template-example---out-parameter)
-* [C#skrypt — asynchroniczny](#c-script-template-example---asynchronous)
-* [C#skrypt — JSON](#c-script-template-example---json)
-* [C#typy bibliotek skryptów](#c-script-template-example---library-types)
+* [C# script - out parameter](#c-script-template-example---out-parameter)
+* [C# script - asynchronous](#c-script-template-example---asynchronous)
+* [C# script - JSON](#c-script-template-example---json)
+* [C# script - library types](#c-script-template-example---library-types)
 * [F#](#f-template-example)
 * [JavaScript](#javascript-template-example)
 
-### <a name="c-script-template-example---out-parameter"></a>C#Przykładowy parametr szablonu skryptu
+### <a name="c-script-template-example---out-parameter"></a>C# script template example - out parameter
 
-Ten przykład wysyła powiadomienie dla [rejestracji szablonu](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , która zawiera `message` symbol zastępczy w szablonie.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains a `message` placeholder in the template.
 
 ```cs
 using System;
@@ -74,9 +69,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---asynchronous"></a>C#przykładowy szablon skryptu — asynchroniczny
+### <a name="c-script-template-example---asynchronous"></a>C# script template example - asynchronous
 
-W przypadku korzystania z kodu asynchronicznego parametry out są niedozwolone. W tym przypadku użyj `IAsyncCollector` do zwrócenia powiadomienia dotyczącego szablonu. Poniższy kod stanowi asynchroniczny przykład kodu. 
+If you are using asynchronous code, out parameters are not allowed. In this case use `IAsyncCollector` to return your template notification. The following code is an asynchronous example of the code above. 
 
 ```cs
 using System;
@@ -99,9 +94,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---json"></a>C#przykładowy szablon skryptu — JSON
+### <a name="c-script-template-example---json"></a>C# script template example - JSON
 
-Ten przykład wysyła powiadomienie dla [rejestracji szablonu](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , która zawiera `message` symbol zastępczy w szablonie przy użyciu prawidłowego ciągu JSON.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains a `message` placeholder in the template using a valid JSON string.
 
 ```cs
 using System;
@@ -113,9 +108,9 @@ public static void Run(string myQueueItem,  out string notification, TraceWriter
 }
 ```
 
-### <a name="c-script-template-example---library-types"></a>C#przykład szablonu skryptu — typy bibliotek
+### <a name="c-script-template-example---library-types"></a>C# script template example - library types
 
-Ten przykład pokazuje, jak używać typów zdefiniowanych w [bibliotece Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
+This example shows how to use types defined in the [Microsoft Azure Notification Hubs Library](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -138,18 +133,18 @@ private static TemplateNotification GetTemplateNotification(string message)
 }
 ```
 
-### <a name="f-template-example"></a>F#przykład szablonu
+### <a name="f-template-example"></a>F# template example
 
-Ten przykład wysyła powiadomienie dla [rejestracji szablonu](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , która zawiera `location` i `message`.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains `location` and `message`.
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
     notification = dict [("location", "Redmond"); ("message", "Hello from F#!")]
 ```
 
-### <a name="javascript-template-example"></a>Przykład szablonu JavaScript
+### <a name="javascript-template-example"></a>JavaScript template example
 
-Ten przykład wysyła powiadomienie dla [rejestracji szablonu](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , która zawiera `location` i `message`.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains `location` and `message`.
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -168,9 +163,9 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## <a name="example---apns-native"></a>Przykład — natywny APN
+## <a name="example---apns-native"></a>Example - APNS native
 
-Ten C# przykładowy skrypt pokazuje, jak wysłać natywne powiadomienie usługi APNs. 
+This C# script example shows how to send a native APNS notification. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -199,9 +194,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---wns-native"></a>Przykład — WNS natywny
+## <a name="example---wns-native"></a>Example - WNS native
 
-Ten C# przykładowy skrypt pokazuje, jak używać typów zdefiniowanych w [bibliotece Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) do wysyłania wyskakujących powiadomień natywnych WNS. 
+This C# script example shows how to use types defined in the [Microsoft Azure Notification Hubs Library](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) to send a native WNS toast notification. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -244,29 +239,29 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 ## <a name="attributes"></a>Atrybuty
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) .
+In [C# class libraries](functions-dotnet-class-library.md), use the [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) attribute.
 
-Parametry i właściwości konstruktora atrybutu są opisane w sekcji [konfiguracji](#configuration) .
+The attribute's constructor parameters and properties are described in the [configuration](#configuration) section.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `NotificationHub` atrybutu:
+The following table explains the binding configuration properties that you set in the *function.json* file and the `NotificationHub` attribute:
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|function.json property | Attribute property |Opis|
 |---------|---------|----------------------|
-|**type** |nd.| Musi być ustawiony na `notificationHub`. |
-|**direction** |nd.| Musi mieć ustawioną wartość `out`. | 
-|**Nazwij** |nd.| Nazwa zmiennej używana w kodzie funkcji dla komunikatu centrum powiadomień. |
-|**tagExpression** |**TagExpression** | Wyrażenia tagów umożliwiają określenie, że powiadomienia mają być dostarczane do zestawu urządzeń, które zostały zarejestrowane w celu otrzymywania powiadomień pasujących do wyrażenia tagu.  Aby uzyskać więcej informacji, zobacz [Routing i wyrażenia tagów](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
-|**hubName** | **HubName** | Nazwa zasobu centrum powiadomień w Azure Portal. |
-|**połączenia** | **ConnectionStringSetting** | Nazwa ustawienia aplikacji, która zawiera Notification Hubs parametry połączenia.  Parametry połączenia muszą być ustawione na wartość *DefaultFullSharedAccessSignature* dla centrum powiadomień. Zobacz [Konfiguracja parametrów połączenia](#connection-string-setup) w dalszej części tego artykułu.|
-|**platformach** | **Platformach** | Właściwość platform wskazuje platformę klienta, której dotyczą Twoje powiadomienia. Domyślnie, jeśli właściwość platformy zostanie pominięta z powiązania danych wyjściowych, można użyć powiadomień szablonów dla wszystkich platform skonfigurowanych w centrum powiadomień platformy Azure. Aby uzyskać więcej informacji o używaniu szablonów na ogół do wysyłania powiadomień międzyplatformowych za pomocą Centrum powiadomień platformy Azure, zobacz [Szablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Po ustawieniu **platforma** musi mieć jedną z następujących wartości: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Aby uzyskać więcej informacji na temat konfigurowania centrum powiadomień dla usługi APNS i otrzymywania powiadomień w aplikacji klienckiej, zobacz [wysyłanie powiadomień wypychanych do systemu iOS przy użyciu usługi Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Aby uzyskać więcej informacji na temat konfigurowania centrum powiadomień dla usługi ADM i otrzymywania powiadomień w aplikacji Kindle, zobacz [wprowadzenie with Notification Hubs for Kindle Apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[usługi powiadomień wypychanych systemu Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) ukierunkowane na platformy Windows. Windows Phone 8,1 i nowsze są również obsługiwane przez WNS. Aby uzyskać więcej informacji, zobacz [wprowadzenie do Notification Hubs dla aplikacji platformy uniwersalnej systemu Windows](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[usługi powiadomień wypychanych firmy Microsoft](/previous-versions/windows/apps/ff402558(v=vs.105)). Ta platforma obsługuje Windows Phone 8 i starszych Windows Phone platform. Aby uzyskać więcej informacji, zobacz [wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs w Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**type** |nd.| Must be set to `notificationHub`. |
+|**direction** |nd.| Must be set to `out`. | 
+|**name** |nd.| Variable name used in function code for the notification hub message. |
+|**tagExpression** |**TagExpression** | Tag expressions allow you to specify that notifications be delivered to a set of devices that have registered to receive notifications that match the tag expression.  For more information, see [Routing and tag expressions](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
+|**hubName** | **HubName** | Name of the notification hub resource in the Azure portal. |
+|**connection** | **ConnectionStringSetting** | The name of an app setting that contains a Notification Hubs connection string.  The connection string must be set to the *DefaultFullSharedAccessSignature* value for your notification hub. See [Connection string setup](#connection-string-setup) later in this article.|
+|**platform** | **Platform** | The platform property indicates the client platform your notification targets. By default, if the platform property is omitted from the output binding, template notifications can be used to target any platform configured on the Azure Notification Hub. For more information on using templates in general to send cross platform notifications with an Azure Notification Hub, see [Templates](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). When set, **platform** must be one of the following values: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. For more information on configuring the notification hub for APNS and receiving the notification in a client app, see [Sending push notifications to iOS with Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). For more information on configuring the notification hub for ADM and receiving the notification in a Kindle app, see [Getting Started with Notification Hubs for Kindle apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[Windows Push Notification Services](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) targeting Windows platforms. Windows Phone 8.1 and later is also supported by WNS. For more information, see [Getting started with Notification Hubs for Windows Universal Platform Apps](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](/previous-versions/windows/apps/ff402558(v=vs.105)). This platform supports Windows Phone 8 and earlier Windows Phone platforms. For more information, see [Sending push notifications with Azure Notification Hubs on Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-### <a name="functionjson-file-example"></a>przykład pliku Function. JSON
+### <a name="functionjson-file-example"></a>function.json file example
 
-Oto przykład powiązania Notification Hubs w pliku *Function. JSON* .
+Here's an example of a Notification Hubs binding in a *function.json* file.
 
 ```json
 {
@@ -285,28 +280,28 @@ Oto przykład powiązania Notification Hubs w pliku *Function. JSON* .
 }
 ```
 
-### <a name="connection-string-setup"></a>Konfiguracja parametrów połączenia
+### <a name="connection-string-setup"></a>Connection string setup
 
-Aby użyć powiązania danych wyjściowych centrum powiadomień, należy skonfigurować parametry połączenia dla centrum. Możesz wybrać istniejące centrum powiadomień lub utworzyć nowe po prawej stronie na karcie *integracja* w Azure Portal. Parametry połączenia można również skonfigurować ręcznie. 
+To use a notification hub output binding, you must configure the connection string for the hub. You can select an existing notification hub or create a new one right from the *Integrate* tab in the Azure portal. You can also configure the connection string manually. 
 
-Aby skonfigurować parametry połączenia z istniejącym centrum powiadomień:
+To configure the connection string to an existing notification hub:
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do centrum powiadomień, wybierz pozycję **zasady dostępu**i wybierz przycisk Kopiuj obok zasad **DefaultFullSharedAccessSignature** . Spowoduje to skopiowanie parametrów połączenia dla zasad *DefaultFullSharedAccessSignatureymi* do centrum powiadomień. Te parametry połączenia umożliwiają funkcji wysyłanie komunikatów powiadomień do centrum.
-    ![skopiować parametrów połączenia centrum powiadomień](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Przejdź do aplikacji funkcji w Azure Portal, wybierz pozycję **Ustawienia aplikacji**, Dodaj klucz, taki jak **MyHubConnectionString**, wklej skopiowany *DefaultFullSharedAccessSignature* dla centrum powiadomień jako wartość, a następnie kliknij przycisk  **Zapisz**.
+1. Navigate to your notification hub in the [Azure portal](https://portal.azure.com), choose **Access policies**, and select the copy button next to the **DefaultFullSharedAccessSignature** policy. This copies the connection string for the *DefaultFullSharedAccessSignature* policy to your notification hub. This connection string lets your function send notification messages to the hub.
+    ![Copy the notification hub connection string](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. Navigate to your function app in the Azure portal, choose **Application settings**, add a key such as **MyHubConnectionString**, paste the copied *DefaultFullSharedAccessSignature*  for your notification hub as the value, and then click **Save**.
 
-Nazwa tego ustawienia aplikacji ma wartość ustawienia połączenie wyjściowe powiązania w *funkcji Function. JSON* lub atrybut .NET. Zapoznaj się z [sekcją konfiguracji](#configuration) wcześniejszą w tym artykule.
+The name of this application setting is what goes in the output binding connection setting in *function.json* or the .NET attribute. See the [Configuration section](#configuration) earlier in this article.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotu
+## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
 
-| Łączenie | Informacje ogólne |
+| Binding | Informacje ogólne |
 |---|---|
-| Centrum powiadomień | [Przewodnik obsługi](https://docs.microsoft.com/rest/api/notificationhubs/) |
+| Centrum powiadomień | [Operations Guide](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
 

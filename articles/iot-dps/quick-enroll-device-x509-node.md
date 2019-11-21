@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: rejestrowanie urządzeń X. 509 w usłudze Azure Device Provisioning przy użyciu środowiska Node. js'
+title: Enroll X.509 devices to Azure Device Provisioning Service using Node.js
 description: W tym przewodniku Szybki start używane są rejestracje grupowe. W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning Service przy użyciu zestawu SDK środowiska Node.js
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 3b2c27b8fc595dae39ed7374ec3647e6b4ba6f23
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: b2995c6ba031e71cba9068b691cbedc1cf80c457
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903413"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228566"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning Service przy użyciu środowiska Node.js
 
@@ -33,7 +32,7 @@ Mimo że kroki opisane w tym artykule działają zarówno na maszynach z systeme
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Zainstaluj [środowisko Node.js w wersji 4.0 lub nowszej](https://nodejs.org).
-- Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
+- [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
 
 
 ## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych
@@ -140,7 +139,7 @@ Aby użyć tych narzędzi testowych do wygenerowania certyfikatów, wykonaj nast
 Jeśli planujesz eksplorować przykłady środowiska Node.js, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj poniższe kroki, aby usunąć wszystkie zasoby platformy Azure utworzone w ramach tego przewodnika Szybki start.
  
 1. Zamknij okno danych wyjściowych przykładu środowiska Node.js na swojej maszynie.
-2. Przejdź do usługi Device Provisioning w Azure Portal kliknij pozycję **Zarządzanie rejestracjami**, a następnie wybierz kartę **grupy rejestracji** . Wybierz *Identyfikator rejestracji* wpisu rejestracji utworzonego za pomocą tego przewodnika Szybki Start, a następnie kliknij przycisk **Usuń** w górnej części bloku.  
+2. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *Registration ID* for the enrollment entry you created using this Quickstart and click the **Delete** button at the top of the blade.  
 3. Z poziomu usługi Device Provisioning kliknij pozycję **Certyfikaty**, kliknij certyfikat przekazany w ramach tego przewodnika Szybki start, a następnie kliknij przycisk **Usuń** w górnej części okna **Szczegóły certyfikatu**.  
  
 ## <a name="next-steps"></a>Następne kroki

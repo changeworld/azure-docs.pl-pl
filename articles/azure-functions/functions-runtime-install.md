@@ -1,139 +1,135 @@
 ---
-title: Instalacja środowisko uruchomieniowe usługi Azure Functions | Microsoft Docs
-description: Jak zainstalować wersję zapoznawczą środowisko uruchomieniowe usługi Azure Functions 2
-services: functions
+title: Azure Functions Runtime Installation
+description: How to Install the Azure Functions Runtime preview 2
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 0fbc76f3cb3fea84347ef55e40e1b2bed9b98152
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085494"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226735"
 ---
-# <a name="install-the-azure-functions-runtime-preview-2"></a>Zainstaluj wersję zapoznawczą środowisko uruchomieniowe usługi Azure Functions 2
+# <a name="install-the-azure-functions-runtime-preview-2"></a>Install the Azure Functions Runtime preview 2
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Jeśli chcesz zainstalować wersję zapoznawczą środowisko uruchomieniowe usługi Azure Functions 2, wykonaj następujące kroki:
+If you would like to install the Azure Functions Runtime preview 2, follow these steps:
 
-1. Upewnij się, że komputer spełnia minimalne wymagania.
-1. Pobierz [Instalatora programu środowisko uruchomieniowe usługi Azure Functions w wersji](https://aka.ms/azafrv2)zapoznawczej.
-1. Odinstaluj wersję zapoznawczą środowisko uruchomieniowe usługi Azure Functions 1.
-1. Zainstaluj środowisko uruchomieniowe usługi Azure Functions wersji zapoznawczej 2.
-1. Ukończ konfigurację środowisko uruchomieniowe usługi Azure Functions wersji zapoznawczej 2.
-1. Tworzenie pierwszej funkcji w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions
+1. Ensure your machine passes the minimum requirements.
+1. Download the [Azure Functions Runtime Preview Installer](https://aka.ms/azafrv2).
+1. Uninstall the Azure Functions Runtime preview 1.
+1. Install the Azure Functions Runtime preview 2.
+1. Complete the configuration of the Azure Functions Runtime preview 2.
+1. Create your first function in Azure Functions Runtime Preview
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed zainstalowaniem wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions muszą być dostępne następujące zasoby:
+Before you install the Azure Functions Runtime preview, you must have the following resources available:
 
-1. Komputer z systemem Microsoft Windows Server 2016 lub Microsoft Windows 10 Creators Update (Professional lub Enterprise Edition).
-1. Wystąpienie SQL Server działające w sieci.  Minimalna wymagana wersja jest SQL Server Express.
+1. A machine running Microsoft Windows Server 2016 or Microsoft Windows 10 Creators Update (Professional or Enterprise Edition).
+1. A SQL Server instance running within your network.  Minimum edition required is SQL Server Express.
 
-## <a name="uninstall-previous-version"></a>Odinstaluj poprzednią wersję
+## <a name="uninstall-previous-version"></a>Uninstall Previous Version
 
-Jeśli wcześniej zainstalowano wersję zapoznawczą środowisko uruchomieniowe usługi Azure Functions, należy ją odinstalować przed zainstalowaniem najnowszej wersji.  Odinstaluj Podgląd środowisko uruchomieniowe usługi Azure Functions, usuwając program w aplecie Dodaj/Usuń programy w systemie Windows.
+If you have previously installed the Azure Functions Runtime preview, you must uninstall before installing the latest release.  Uninstall the Azure Functions Runtime preview by removing the program in Add/Remove Programs in Windows.
 
-## <a name="install-the-azure-functions-runtime-preview"></a>Zainstaluj wersję zapoznawczą środowisko uruchomieniowe usługi Azure Functions
+## <a name="install-the-azure-functions-runtime-preview"></a>Install the Azure Functions Runtime Preview
 
-Instalator środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej prowadzi użytkownika przez proces instalacji funkcji zarządzania i ról procesu roboczego środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej.  Można zainstalować rolę zarządzanie i proces roboczy na tym samym komputerze.  Jednak w miarę dodawania większej liczby aplikacji funkcji należy wdrożyć więcej ról procesów roboczych na dodatkowych maszynach, aby umożliwić skalowanie funkcji na wielu pracowników.
+The Azure Functions Runtime Preview Installer guides you through the installation of the Azure Functions Runtime preview Management and Worker Roles.  It is possible to install the Management and Worker role on the same machine.  However, as you add more function apps, you must deploy more worker roles on additional machines to be able to scale your functions onto multiple workers.
 
-## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Zainstaluj rolę zarządzania i procesu roboczego na tym samym komputerze
+## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Install the Management and Worker Role on the same machine
 
-1. Uruchom Instalatora programu środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej.
+1. Run the Azure Functions Runtime Preview Installer.
 
-    ![środowisko uruchomieniowe usługi Azure Functions Instalatora podglądu][1]
+    ![Azure Functions Runtime preview installer][1]
 
 1. Kliknij przycisk **Dalej**.
-1. Po przeczytaniu warunków **umowy licencyjnej** **zaznacz pole wyboru** , aby zaakceptować warunki i kliknij przycisk **dalej** .
-1. Wybierz role, które chcesz zainstalować, w tej roli **proces roboczy** **rola zarządzania** usługą i/lub funkcja, a następnie kliknij przycisk **dalej**.
+1. Once you have read the terms of the **EULA**, **check the box** to accept the terms and click **Next** to advance.
+1. Select the roles you want to install on this machine **Functions Management Role** and/or **Functions Worker Role** and click **Next**.
 
-    ![Środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej — wybór roli][3]
-
-    > [!NOTE]
-    > **Rolę procesu roboczego funkcji** można zainstalować na wielu innych maszynach. Aby to zrobić, wykonaj te instrukcje i wybierz tylko **rolę proces roboczy funkcji** w instalatorze.
-
-1. Kliknij przycisk **dalej** , aby **Kreator instalacji środowisko uruchomieniowe usługi Azure Functions** rozpoczął proces instalacji na maszynie.
-1. Po zakończeniu pracy Kreator instalacji uruchomi narzędzie konfiguracji **środowisko uruchomieniowe usługi Azure Functions** .
-
-    ![Zakończono środowisko uruchomieniowe usługi Azure Functions Instalatora podglądu][6]
+    ![Azure Functions Runtime preview installer - role selection][3]
 
     > [!NOTE]
-    > W przypadku instalowania w **systemie Windows 10** , gdy funkcja **kontenera** nie została wcześniej włączona, **Instalator środowisko uruchomieniowe usługi Azure Functions** monituje o ponowne uruchomienie komputera w celu ukończenia instalacji.
+    > You can install the **Functions Worker Role** on many other machines. To do so, follow these instructions, and only select **Functions Worker Role** in the installer.
 
-## <a name="configure-the-azure-functions-runtime"></a>Skonfiguruj środowisko uruchomieniowe usługi Azure Functions
+1. Click **Next** to have the **Azure Functions Runtime Setup Wizard** begin the installation process on your machine.
+1. Once complete, the setup wizard launches the **Azure Functions Runtime** configuration tool.
 
-Aby ukończyć instalację środowisko uruchomieniowe usługi Azure Functions, należy ukończyć konfigurację.
+    ![Azure Functions Runtime preview installer complete][6]
 
-1. Narzędzie konfiguracji **środowisko uruchomieniowe usługi Azure Functions** pokazuje, które role są zainstalowane na komputerze.
+    > [!NOTE]
+    > If you are installing on **Windows 10** and the **Container** feature has not been previously enabled, the **Azure Functions Runtime Setup** prompts you to reboot your machine to complete the install.
 
-    ![Narzędzie konfiguracji środowisko uruchomieniowe usługi Azure Functions Preview][7]
+## <a name="configure-the-azure-functions-runtime"></a>Configure the Azure Functions Runtime
 
-1. Kliknij kartę **baza danych** , wprowadź szczegóły połączenia dla wystąpienia SQL Server, w tym określenie [klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), a następnie kliknij przycisk **Zastosuj**.  Połączenie z wystąpieniem SQL Server jest wymagane, aby środowisko uruchomieniowe usługi Azure Functions utworzyć bazę danych do obsługi środowiska uruchomieniowego.
+To complete the Azure Functions Runtime installation, you must complete the configuration.
 
-    ![środowisko uruchomieniowe usługi Azure Functions konfigurację bazy danych w wersji zapoznawczej][8]
+1. The **Azure Functions Runtime** configuration tool shows which roles are installed on your machine.
 
-1. Kliknij kartę **poświadczenia** .  W tym miejscu należy utworzyć dwa nowe poświadczenia do użycia z udziałem plików do hostowania wszystkich aplikacji funkcji.  Określ kombinacje **nazw użytkowników** i **haseł** dla **właściciela udziału plików** i dla **użytkownika udział plików**, a następnie kliknij przycisk **Zastosuj**.
+    ![Azure Functions Runtime preview configuration tool][7]
 
-    ![Poświadczenia środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej][9]
+1. Click the **Database** tab, enter the connection details for your SQL Server instance, including specifying a [Database master key](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), and click **Apply**.  Connectivity to a SQL Server instance is required in order for the Azure Functions Runtime to create a database to support the Runtime.
 
-1. Kliknij kartę **udział plików** .  W tym miejscu należy określić szczegóły lokalizacji udziału plików.  Udział plików można utworzyć dla Ciebie lub użyć istniejącego udziału plików, a następnie kliknąć przycisk **Zastosuj**.  W przypadku wybrania nowej lokalizacji udziału plików należy określić katalog do użycia przez środowisko uruchomieniowe usługi Azure Functions.
+    ![Azure Functions Runtime preview database configuration][8]
 
-    ![środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej udziału plików][10]
+1. Click the **Credentials** tab.  Here, you must create two new credentials for use with a file share for hosting all your function apps.  Specify **User name** and **Password** combinations for the **file share owner** and for the **file share user**, then click **Apply**.
 
-1. Kliknij kartę **IIS** .  Na tej karcie są wyświetlane szczegółowe informacje o witrynach sieci Web w usługach IIS, które tworzy narzędzie konfiguracji środowisko uruchomieniowe usługi Azure Functions.  W tym miejscu możesz określić niestandardową nazwę DNS dla portalu środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej.  Kliknij przycisk **Zastosuj** , aby zakończyć.
+    ![Azure Functions Runtime preview credentials][9]
 
-    ![środowisko uruchomieniowe usługi Azure Functions Podgląd usług IIS][11]
+1. Click the **File Share** tab.  Here you must specify the details of the file share  location.  The file share can be created for you or you can use an existing File Share and click **Apply**.  If you select a new File Share location, you must specify a directory for use by the Azure Functions Runtime.
 
-1. Kliknij kartę **usługi** .  Ta karta przedstawia stan usług w narzędziu konfiguracji środowisko uruchomieniowe usługi Azure Functions.  Jeśli **Usługa aktywacji hosta Azure Functions** nie jest uruchomiona po początkowej konfiguracji, kliknij przycisk **Uruchom usługę**.
+    ![Azure Functions Runtime preview file share][10]
 
-    ![Zakończono środowisko uruchomieniowe usługi Azure Functions konfigurację podglądu][12]
+1. Click the **IIS** tab.  This tab shows the details of the websites in IIS that the Azure Functions Runtime configuration tool creates.  You may specify a custom DNS name here for the Azure Functions Runtime preview portal.  Click **Apply** to complete.
 
-1. Przejdź do **portalu środowisko uruchomieniowe usługi Azure Functions** jako `https://<machinename>.<domain>/`.
+    ![Azure Functions Runtime preview IIS][11]
 
-    ![Portal środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej][13]
+1. Click the **Services** tab.  This tab shows the status of the services in your Azure Functions Runtime configuration tool.  If the  **Azure Functions Host Activation Service** is not running after initial configuration, click **Start Service**.
 
-## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Tworzenie pierwszej funkcji w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions
+    ![Azure Functions Runtime preview configuration complete][12]
 
-Aby utworzyć swoją pierwszą funkcję w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions
+1. Browse to the **Azure Functions Runtime Portal** as `https://<machinename>.<domain>/`.
 
-1. Przejdź do **portalu środowisko uruchomieniowe usługi Azure Functions** , jak `https://<machinename>.<domain>` na przykład `https://mycomputer.mydomain.com`.
+    ![Azure Functions Runtime preview portal][13]
 
-1. Zostanie wyświetlony monit o **zalogowanie**się, jeśli został wdrożony w domenie, użyj nazwy użytkownika i hasła konta domeny, w przeciwnym razie użyj nazwy użytkownika i hasła konta lokalnego, aby zalogować się do portalu.
+## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Create your first function in Azure Functions Runtime preview
 
-    ![Logowanie do portalu środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej][14]
+To create your first function in Azure Functions Runtime preview
 
-1. Aby tworzyć aplikacje funkcji, należy utworzyć subskrypcję.  W lewym górnym rogu portalu kliknij **+** opcję obok subskrypcji.
+1. Browse to the **Azure Functions Runtime Portal** as `https://<machinename>.<domain>` for example `https://mycomputer.mydomain.com`.
 
-    ![Subskrypcje portalu środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej][15]
+1. You are prompted to **Log in**, if deployed in a domain use your domain account username and password, otherwise use your local account username and password to log in to the portal.
 
-1. Wybierz pozycję **DefaultPlan**, wprowadź nazwę subskrypcji, a następnie kliknij pozycję **Utwórz**.
+    ![Azure Functions Runtime preview portal login][14]
 
-    ![środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej planu subskrypcji i nazwy portalu][16]
+1. To create function apps, you must create a Subscription.  In the top left-hand corner of the portal, click the **+** option next to the subscriptions.
 
-1. Wszystkie aplikacje funkcji są wyświetlane w okienku po lewej stronie portalu.  Aby utworzyć nowy aplikacja funkcji, wybierz pozycję **aplikacje funkcji** i kliknij **+** opcję.
+    ![Azure Functions Runtime preview portal subscriptions][15]
 
-1. Wprowadź nazwę aplikacji funkcji, wybierz odpowiednią subskrypcję, wybierz wersję środowiska uruchomieniowego Azure Functions, w której chcesz programować, a następnie kliknij pozycję **Utwórz** .
+1. Choose **DefaultPlan**, enter a name for your Subscription, and click **Create**.
 
-    ![środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej portalu Nowa aplikacja funkcji][17]
+    ![Azure Functions Runtime preview portal subscription plan and name][16]
 
-1. Nowa aplikacja funkcji zostanie wyświetlona w okienku po lewej stronie portalu.  Wybierz pozycję funkcje, a następnie kliknij pozycję **Nowa funkcja** w górnej części środkowego okienka w portalu.
+1. All of your function apps are listed in the left-hand pane of the portal.  To create a new Function App, select the heading **Function Apps** and click the **+** option.
 
-    ![Szablony podglądu środowisko uruchomieniowe usługi Azure Functions][18]
+1. Enter a name for your function app, select the correct Subscription, choose which version of the Azure Functions runtime you wish to program against and click **Create**
 
-1. Wybierz funkcję wyzwalacza czasomierza, w oknie wysuwanym po prawej stronie Nazwij funkcję i Zmień harmonogram na `*/5 * * * * *` (to wyrażenie firmy CRONUS powoduje, że funkcja Timer jest uruchamiana co pięć sekund), a następnie kliknij pozycję **Utwórz** .
+    ![Azure Functions Runtime preview portal new function app][17]
 
-    ![środowisko uruchomieniowe usługi Azure Functions Podgląd nowej konfiguracji funkcji czasomierza][19]
+1. Your new function app is listed in the left-hand pane of the portal.  Select Functions and then click **New Function** at the top of the center pane in the portal.
 
-1. Twoja funkcja została teraz utworzona.  Dziennik wykonywania aplikacji funkcji można wyświetlić, rozwijając okienko **Dziennik** w dolnej części portalu.
+    ![Azure Functions Runtime preview templates][18]
 
-    ![Wykonywanie funkcji w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions][20]
+1. Select the Timer Trigger function, in the right-hand flyout name your function and change the Schedule to `*/5 * * * * *` (this cron expression causes your timer function to execute every five seconds), and click **Create**
+
+    ![Azure Functions Runtime preview new timer function configuration][19]
+
+1. Your function has now been created.  You can view the execution log of your Function app by expanding the **log** pane at the bottom of the portal.
+
+    ![Azure Functions Runtime preview function executing][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

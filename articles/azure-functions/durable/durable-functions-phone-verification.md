@@ -1,26 +1,21 @@
 ---
-title: Interakcja ludzka i przedziały czasu w Durable Functions na platformie Azure
-description: Dowiedz się, jak obsłużyć interakcję człowieka i limity czasu w rozszerzeniu Durable Functions Azure Functions.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Human interaction and timeouts in Durable Functions - Azure
+description: Learn how to handle human interaction and timeouts in the Durable Functions extension for Azure Functions.
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0c1c92dde2d698fb2c92fb3680ab05393a25573d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 9346c53ec122b3e6fac124298029c7f8e70bf622
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614734"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232823"
 ---
-# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Interakcja przez człowieka w przykładowej weryfikacji Durable Functions-telefonie
+# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Human interaction in Durable Functions - Phone verification sample
 
-Ten przykład pokazuje, jak utworzyć aranżację [Durable Functions](durable-functions-overview.md) , która obejmuje interakcję człowieka. Za każdym razem, gdy w procesie zautomatyzowanym jest używana prawdziwa osoba, proces musi być w stanie wysyłać powiadomienia do osoby i odbierać odpowiedzi asynchronicznie. Musi również zezwalać na możliwość, że osoba jest niedostępna. (Ostatnia część to miejsce, w którym limity czasu stają się ważne).
+This sample demonstrates how to build a [Durable Functions](durable-functions-overview.md) orchestration that involves human interaction. Whenever a real person is involved in an automated process, the process must be able to send notifications to the person and receive responses asynchronously. It must also allow for the possibility that the person is unavailable. (This last part is where timeouts become important.)
 
-Ten przykład implementuje system weryfikacyjny telefonu oparty na programie SMS. Te typy przepływów są często używane podczas weryfikowania numeru telefonu klienta lub uwierzytelniania wieloskładnikowego (MFA). Jest to zaawansowany przykład, ponieważ cała implementacja odbywa się przy użyciu kilku małych funkcji. Nie jest wymagany żaden zewnętrzny magazyn danych, na przykład baza danych.
+This sample implements an SMS-based phone verification system. These types of flows are often used when verifying a customer's phone number or for multi-factor authentication (MFA). It is a powerful example because the entire implementation is done using a couple small functions. No external data store, such as a database, is required.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -28,77 +23,77 @@ Ten przykład implementuje system weryfikacyjny telefonu oparty na programie SMS
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
-Weryfikacja telefoniczna służy do sprawdzania, czy użytkownicy końcowi Twojej aplikacji nie są spamerami oraz czy mówią o nich. Uwierzytelnianie wieloskładnikowe to typowy przypadek użycia służący do ochrony kont użytkowników przed hakerami. Wyzwanie przy wdrażaniu własnej weryfikacji telefonu polega na tym, że wymaga **interakcji stanowej** ze zdrowiem ludzkim. Użytkownik końcowy zazwyczaj udostępnia jakiś kod (na przykład 4-cyfrowy numer) i musi reagować **w rozsądnym czasie**.
+Phone verification is used to verify that end users of your application are not spammers and that they are who they say they are. Multi-factor authentication is a common use case for protecting user accounts from hackers. The challenge with implementing your own phone verification is that it requires a **stateful interaction** with a human being. An end user is typically provided some code (for example, a 4-digit number) and must respond **in a reasonable amount of time**.
 
-Zwykłe Azure Functions są bezstanowe (tak jak wiele innych punktów końcowych w chmurze na innych platformach), więc te typy interakcji obejmują jawnie zarządzanie stanem zewnętrznym w bazie danych lub w innym magazynie trwałym. Ponadto interakcja musi być dzielona na wiele funkcji, które mogą być skoordynowane ze sobą. Na przykład potrzebna jest co najmniej jedna funkcja do wybierania kodu, zachowywania go w miejscu i wysyłania go do telefonu użytkownika. Ponadto potrzebna jest co najmniej jedna inna funkcja, która otrzymuje odpowiedź od użytkownika, a następnie mapuje ją z powrotem do oryginalnego wywołania funkcji w celu sprawdzenia poprawności kodu. Przekroczenie limitu czasu jest również ważnym aspektem zapewniania bezpieczeństwa. Można szybko uzyskać dość skomplikowany.
+Ordinary Azure Functions are stateless (as are many other cloud endpoints on other platforms), so these types of interactions involve explicitly managing state externally in a database or some other persistent store. In addition, the interaction must be broken up into multiple functions that can be coordinated together. For example, you need at least one function for deciding on a code, persisting it somewhere, and sending it to the user's phone. Additionally, you need at least one other function to receive a response from the user and somehow map it back to the original function call in order to do the code validation. A timeout is also an important aspect to ensure security. It can get fairly complex quickly.
 
-Złożoność tego scenariusza znacznie zmniejsza się w przypadku korzystania z Durable Functions. Jak widać w tym przykładzie, funkcja programu Orchestrator będzie mogła łatwo zarządzać interakcją stanową i bez powiązana z zewnętrznymi magazynami danych. Ponieważ funkcje programu Orchestrator są *trwałe*, te interaktywne przepływy są również wysoce niezawodne.
+The complexity of this scenario is greatly reduced when you use Durable Functions. As you will see in this sample, an orchestrator function can manage the stateful interaction easily and without involving any external data stores. Because orchestrator functions are *durable*, these interactive flows are also highly reliable.
 
-## <a name="configuring-twilio-integration"></a>Konfigurowanie integracji Twilio
+## <a name="configuring-twilio-integration"></a>Configuring Twilio integration
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="the-functions"></a>Funkcje
+## <a name="the-functions"></a>The functions
 
-W tym artykule przedstawiono następujące funkcje w przykładowej aplikacji:
+This article walks through the following functions in the sample app:
 
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-W poniższych sekcjach opisano konfigurację i kod, który jest używany C# do obsługi skryptów i języka JavaScript. Kod dla projektowania programu Visual Studio znajduje się na końcu artykułu.
+The following sections explain the configuration and code that is used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Aranżacja weryfikacji SMS (Visual Studio Code i Azure Portal przykładowy kod)
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The SMS verification orchestration (Visual Studio Code and Azure portal sample code)
 
-Funkcja **E4_SmsPhoneVerification** używa standardowego pliku *Function. JSON* dla funkcji programu Orchestrator.
+The **E4_SmsPhoneVerification** function uses the standard *function.json* for orchestrator functions.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
 
-Oto kod implementujący funkcję:
+Here is the code that implements the function:
 
-### <a name="c-script"></a>C#Napisy
+### <a name="c-script"></a>C# Script
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
-Po uruchomieniu ta funkcja programu Orchestrator wykonuje następujące czynności:
+Once started, this orchestrator function does the following:
 
-1. Pobiera numer telefonu, do którego *wyśle* powiadomienie SMS.
-2. Wywołuje **E4_SendSmsChallenge** do wysłania wiadomości SMS do użytkownika i zwraca oczekiwany 4-cyfrowy kod wyzwania.
-3. Tworzy trwały czasomierz wyzwalający 90 sekund od bieżącego czasu.
-4. Równolegle z czasomierzem czeka na zdarzenie **SmsChallengeResponse** od użytkownika.
+1. Gets a phone number to which it will *send* the SMS notification.
+2. Calls **E4_SendSmsChallenge** to send an SMS message to the user and returns back the expected 4-digit challenge code.
+3. Creates a durable timer that triggers 90 seconds from the current time.
+4. In parallel with the timer, waits for an **SmsChallengeResponse** event from the user.
 
-Użytkownik otrzymuje wiadomość SMS z kodem zawierającym cztery cyfry. Mają one 90 sekund do wysłania tego samego 4-cyfrowego kodu z powrotem do wystąpienia funkcji programu Orchestrator w celu ukończenia procesu weryfikacji. Jeśli przesyłają niewłaściwy kod, uzyskują oni dodatkowe trzy próby pobrania jej w prawo (w tym samym oknie 90 sekund).
+The user receives an SMS message with a four-digit code. They have 90 seconds to send that same 4-digit code back to the orchestrator function instance to complete the verification process. If they submit the wrong code, they get an additional three tries to get it right (within the same 90-second window).
 
 > [!NOTE]
-> Może nie być oczywisty w pierwszej kolejności, ale ta funkcja programu Orchestrator jest całkowicie deterministyczna. Jest deterministyczna, ponieważ właściwości `CurrentUtcDateTime` (.NET) i `currentUtcDateTime` (JavaScript) są używane do obliczania czasu wygaśnięcia czasomierza, a te właściwości zwracają tę samą wartość przy każdym odwróceniu w tym punkcie w kodzie programu Orchestrator. Takie zachowanie jest ważne, aby upewnić się, że te same `winner` są wynikiem każdego Powtórzonego wywołania do `Task.WhenAny` (.NET) lub `context.df.Task.any` (JavaScript).
+> It may not be obvious at first, but this orchestrator function is completely deterministic. It is deterministic because the `CurrentUtcDateTime` (.NET) and `currentUtcDateTime` (JavaScript) properties are used to calculate the timer expiration time, and these properties return the same value on every replay at this point in the orchestrator code. This behavior is important to ensure that the same `winner` results from every repeated call to `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript).
 
 > [!WARNING]
-> Ważne jest, aby [anulować czasomierze](durable-functions-timers.md) , jeśli nie są już potrzebne, jak w powyższym przykładzie, gdy odpowiedź na wyzwanie zostanie zaakceptowana.
+> It's important to [cancel timers](durable-functions-timers.md) if you no longer need them to expire, as in the example above when a challenge response is accepted.
 
-## <a name="send-the-sms-message"></a>Wyślij wiadomość SMS
+## <a name="send-the-sms-message"></a>Send the SMS message
 
-Funkcja **E4_SendSmsChallenge** używa powiązania Twilio do wysyłania wiadomości SMS z 4-cyfrowym kodem do użytkownika końcowego. *Funkcja. JSON* jest definiowana w następujący sposób:
+The **E4_SendSmsChallenge** function uses the Twilio binding to send the SMS message with the 4-digit code to the end user. The *function.json* is defined as follows:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
 
-A Oto kod generujący 4-cyfrowy kod testu i wysyła komunikat SMS:
+And here is the code that generates the 4-digit challenge code and sends the SMS message:
 
-### <a name="c-script"></a>C#Napisy
+### <a name="c-script"></a>C# Script
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-Ta funkcja **E4_SendSmsChallenge** jest wywoływana tylko raz, nawet jeśli proces ulegnie awarii lub zostanie odtworzony. Jest to dobre, ponieważ użytkownik końcowy nie powinien otrzymywać wielu wiadomości SMS. Wartość zwracana `challengeCode` jest automatycznie utrwalana, więc funkcja Orchestrator zawsze wie, co jest prawidłowy kod.
+This **E4_SendSmsChallenge** function only gets called once, even if the process crashes or gets replayed. This is good because you don't want the end user getting multiple SMS messages. The `challengeCode` return value is automatically persisted, so the orchestrator function always knows what the correct code is.
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
-Korzystając z funkcji wyzwalanych przez protokół HTTP zawartych w przykładzie, można uruchomić aranżację, wysyłając następujące żądanie HTTP POST:
+Using the HTTP-triggered functions included in the sample, you can start the orchestration by sending the following HTTP POST request:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -117,9 +112,9 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-Funkcja Orchestrator odbiera dostarczony numer telefonu i natychmiast wysyła wiadomość SMS z losowo wygenerowanym 4-cyfrowym kodem weryfikacyjnym &mdash; na przykład *2168*. Funkcja następnie czeka 90 sekund na odpowiedź.
+The orchestrator function receives the supplied phone number and immediately sends it an SMS message with a randomly generated 4-digit verification code &mdash; for example, *2168*. The function then waits 90 seconds for a response.
 
-Aby odpowiedzieć na kod, można użyć [`RaiseEventAsync` (.NET) lub `raiseEvent` (JavaScript)](durable-functions-instance-management.md) wewnątrz innej funkcji lub wywołać **sendEventUrl** http post elementu webhook, do którego odwołuje się odpowiedź 202 powyżej, zastępując `{eventName}` nazwą zdarzenia, `SmsChallengeResponse`:
+To reply with the code, you can use [`RaiseEventAsync` (.NET) or `raiseEvent` (JavaScript)](durable-functions-instance-management.md) inside another function or invoke the **sendEventUrl** HTTP POST webhook referenced in the 202 response above, replacing `{eventName}` with the name of the event, `SmsChallengeResponse`:
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -129,7 +124,7 @@ Content-Type: application/json
 2168
 ```
 
-Jeśli wyślesz ten element przed wygaśnięciem czasomierza, aranżacja zostanie zakończona, a pole `output` zostanie ustawione na `true`, co wskazuje na pomyślne zweryfikowanie.
+If you send this before the timer expires, the orchestration completes and the `output` field is set to `true`, indicating a successful verification.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -143,7 +138,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-Jeśli wygaśniesz czasomierz lub wprowadzisz niewłaściwy kod cztery razy, możesz wykonać zapytanie o stan i zobaczyć dane wyjściowe funkcji aranżacji `false`, wskazując, że weryfikacja telefonu nie powiodła się.
+If you let the timer expire, or if you enter the wrong code four times, you can query for the status and see a `false` orchestration function output, indicating that phone verification failed.
 
 ```
 HTTP/1.1 200 OK
@@ -153,18 +148,18 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="visual-studio-sample-code"></a>Przykładowy kod programu Visual Studio
+## <a name="visual-studio-sample-code"></a>Visual Studio sample code
 
-Oto aranżacja jako pojedynczy C# plik w projekcie programu Visual Studio:
+Here is the orchestration as a single C# file in a Visual Studio project:
 
 > [!NOTE]
-> Musisz zainstalować pakiet NuGet `Microsoft.Azure.WebJobs.Extensions.Twilio`, aby uruchomić przykładowy kod poniżej.
+> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget package to run the sample code below.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten przykład przedstawia niektóre zaawansowane możliwości Durable Functions, szczególnie `WaitForExternalEvent` i `CreateTimer` interfejsów API. Dowiesz się, jak można je połączyć z `Task.WaitAny` w celu zaimplementowania niezawodnego limitu czasu, który jest często przydatny do współdziałania z rzeczywistymi osobami. Więcej informacji na temat korzystania z Durable Functions można uzyskać, odczytując serie artykułów, które oferują szczegółowe pokrycie określonych tematów.
+This sample has demonstrated some of the advanced capabilities of Durable Functions, notably `WaitForExternalEvent` and `CreateTimer` APIs. You've seen how these can be combined with `Task.WaitAny` to implement a reliable timeout system, which is often useful for interacting with real people. You can learn more about how to use Durable Functions by reading a series of articles that offer in-depth coverage of specific topics.
 
 > [!div class="nextstepaction"]
-> [Przejdź do pierwszego artykułu z serii](durable-functions-bindings.md)
+> [Go to the first article in the series](durable-functions-bindings.md)

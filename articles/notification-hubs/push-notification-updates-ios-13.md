@@ -1,6 +1,6 @@
 ---
-title: Aktualizacje platformy Azure Notification Hubs iOS 13 | Microsoft Docs
-description: Dowiedz się więcej o wprowadzaniu zmian w systemie iOS 13 na platformie Azure Notification Hubs
+title: Azure Notification Hubs iOS 13 updates | Microsoft Docs
+description: Learn about iOS 13 breaking changes in Azure Notification Hubs
 author: sethmanheim
 ms.author: sethm
 ms.date: 10/16/2019
@@ -8,40 +8,39 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: e493ac10858aa374362d25f1467ded237b30ca44
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177403"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228140"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Aktualizacje usługi Azure Notification Hubs dla systemu iOS 13
 
-Firma Apple wprowadziła niedawno pewne zmiany do ich publicznej usługi wypychania. zmiany są w większości wyrównane z wersjami systemu iOS 13 i Xcode. W tym artykule opisano wpływ tych zmian na platformie Azure Notification Hubs.
+Apple recently made some changes to their public push service; the changes mostly aligned with the releases of iOS 13 and Xcode. This article describes the impact of these changes on Azure Notification Hubs.
 
-## <a name="apns-push-payload-changes"></a>Zmiany ładunku wypychania APNS
+## <a name="apns-push-payload-changes"></a>APNS push payload changes
 
-### <a name="apns-push-type"></a>Typ wypychania APNS
+### <a name="apns-push-type"></a>APNS push type
 
-Firma Apple wymaga teraz, aby deweloperzy identyfikli powiadomienia jako alerty lub powiadomienia w tle za pomocą nowego nagłówka `apns-push-type` w interfejsie API usługi APNS. Zgodnie z [dokumentacją firmy Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "wartość tego nagłówka musi dokładnie odzwierciedlać zawartość ładunku powiadomienia. W razie niezgodności lub braku nagłówka w wymaganych systemach usługa APNs może zwrócić błąd, opóźnić dostarczenie powiadomienia lub w całości je odrzucić”.
+Apple now requires that developers identify notifications as an alert or background notifications through the new `apns-push-type` header in the APNS API. According to [Apple's documentation](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "The value of this header must accurately reflect the contents of your notification's payload. W razie niezgodności lub braku nagłówka w wymaganych systemach usługa APNs może zwrócić błąd, opóźnić dostarczenie powiadomienia lub w całości je odrzucić”.
 
-Deweloperzy muszą teraz ustawić ten nagłówek w aplikacjach wysyłających powiadomienia za pomocą usługi Azure Notification Hubs. Ze względu na ograniczenie techniczne klienci muszą używać uwierzytelniania opartego na tokenach dla poświadczeń usługi APNS z żądaniami, które zawierają ten atrybut. Jeśli używasz uwierzytelniania opartego na certyfikatach dla poświadczeń usługi APNS, musisz przełączyć się do korzystania z uwierzytelniania opartego na tokenach.
+Developers must now set this header in applications that send notifications through Azure Notification Hubs. Due to a technical limitation, customers must use token-based authentication for APNS credentials with requests that include this attribute. If you are using certificate-based authentication for your APNS credentials, you must switch to using token-based authentication.
 
-Poniższy przykład kodu pokazuje, jak ustawić ten atrybut nagłówka w żądaniach powiadomień wysyłanych za pomocą usługi Azure Notification Hubs.
+The following code samples show how to set this header attribute in notification requests sent through Azure Notification Hubs.
 
-#### <a name="template-notifications---net-sdk"></a>Powiadomienia dotyczące szablonów — zestaw SDK platformy .NET
+#### <a name="template-notifications---net-sdk"></a>Template notifications - .NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
-var headers = new Dictionary<string, string> {{"apns-push-type",
-"alert"}};
+var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
 var tempprop = new Dictionary<string, string> {{"message", "value"}};
 var notification = new TemplateNotification(tempprop);
 notification.Headers = headers;
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="native-notifications---net-sdk"></a>Powiadomienia natywne — zestaw SDK dla platformy .NET
+#### <a name="native-notifications---net-sdk"></a>Native notifications - .NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -50,7 +49,7 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="direct-rest-calls"></a>Bezpośrednie wywołania REST
+#### <a name="direct-rest-calls"></a>Direct REST calls
 
 ```csharp
 var request = new HttpRequestMessage(method, $"<resourceUri>?api-version=2017-04");
@@ -59,13 +58,13 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Aby pomóc w tym przejściu, gdy Notification Hubs Azure wykryje powiadomienie, które nie ma ustawionego `apns-push-type`, usługa wnioskuje typ wypychania z żądania powiadomienia i automatycznie ustawia wartość. Należy pamiętać, że usługi Azure Notification Hubs należy skonfigurować do używania uwierzytelniania opartego na tokenach w celu ustawienia wymaganego nagłówka. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie oparte na tokenach (http/2) dla usługi APNs](notification-hubs-push-notification-http2-token-authentification.md).
+To help you during this transition, when Azure Notification Hubs detects a notification that doesn't have the `apns-push-type` set, the service infers the push type from the notification request and sets the value automatically. Remember that you must configure Azure Notification Hubs to use token-based authentication to set the required header; for more information, see [Token-based (HTTP/2) Authentication for APNS](notification-hubs-push-notification-http2-token-authentification.md).
 
-## <a name="apns-priority"></a>Priorytet usługi APNS
+## <a name="apns-priority"></a>APNS priority
 
-Inna niewielka zmiana, ale taka, która wymaga zmiany w aplikacji zaplecza, która wysyła powiadomienia, jest wymagana w przypadku powiadomień w tle, a nagłówek `apns-priority` musi teraz mieć wartość 5. Wiele aplikacji ustawia nagłówek `apns-priority` na 10 (wskazujący bezpośrednią dostawę) lub nie ustawia go i pobiera wartość domyślną (co to jest również 10).
+Another minor change, but one that requires a change to the backend application that sends notifications, is the requirement that for background notifications the `apns-priority` header must now be set to 5. Many applications set the `apns-priority` header to 10 (indicating immediate delivery), or don't set it and get the default value (which is also 10).
 
-Ustawienie tej wartości na 10 nie jest już dozwolone w przypadku powiadomień w tle i należy ustawić wartość dla każdego żądania. Jeśli ta wartość nie zostanie podana, firma Apple nie będzie dostarczać powiadomień w tle. Na przykład:
+Setting this value to 10 is no longer allowed for background notifications, and you must set the value for each request. Apple will not deliver background notifications if this value is missing. Na przykład:
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -74,6 +73,6 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-## <a name="sdk-changes"></a>Zmiany zestawu SDK
+## <a name="sdk-changes"></a>SDK changes
 
-W latach, deweloperzy systemu iOS używają `description` atrybutu `deviceToken` danych wysyłanych do delegata tokenu wypychania, aby wyodrębnić token wypychania używany przez aplikację zaplecza do wysyłania powiadomień do urządzenia. Xcode 11, że atrybut `description` zmieniony na inny format. Istniejący kod, który deweloperzy użył dla tego atrybutu, został teraz przerwany. Zaktualizowaliśmy zestaw SDK platformy Azure Notification Hubs w celu uwzględnienia tej zmiany. Zaktualizuj zestaw SDK używany przez aplikacje do wersji 2.0.4 lub nowszej [zestawu SDK platformy azure Notification Hubs iOS](https://github.com/Azure/azure-notificationhubs-ios).
+For years, iOS developers used the `description` attribute of the `deviceToken` data sent to the push token delegate to extract the push token that a backend application uses to send notifications to the device. With Xcode 11, that `description` attribute changed to a different format. Existing code that developers used for this attribute is now broken. We have updated the Azure Notification Hubs SDK to accommodate this change, so please update the SDK used by your applications to version 2.0.4 or newer of the [Azure Notification Hubs iOS SDK](https://github.com/Azure/azure-notificationhubs-ios).

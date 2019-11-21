@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z usługą IdeaScale | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with IdeaScale | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją IdeaScale.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9307bbe58afc45468f222f5b510585d528de532a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158042"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227564"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Samouczek: integracja Azure Active Directory z usługą IdeaScale
+# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory integration with IdeaScale
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację IdeaScale z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji IdeaScale z usługą Azure AD zapewnia następujące korzyści:
@@ -138,19 +138,19 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
 2. Przejdź do sekcji **Community Settings** (Ustawienia społeczności).
 
-    ![Ustawienia społeczności](./media/ideascale-tutorial/ic790847.png "Ustawienia społeczności")
+    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
 
 3. Wybierz pozycję **Security \> Single Signon Settings** (Ustawienia > Ustawienia logowania jednokrotnego).
 
-    ![Pojedyncze ustawienia jednokrotnego](./media/ideascale-tutorial/ic790848.png "Pojedyncze ustawienia jednokrotnego")
+    ![Single Signon Settings](./media/ideascale-tutorial/ic790848.png "Single Signon Settings")
 
 4. W polu **Single-Signon Type** (Typ logowania jednokrotnego) wybierz opcję **SAML 2.0**.
 
-    ![Pojedynczy typ jednokrotnego](./media/ideascale-tutorial/ic790849.png "Pojedynczy typ jednokrotnego")
+    ![Single Signon Type](./media/ideascale-tutorial/ic790849.png "Single Signon Type")
 
 5. W oknie dialogowym **Single Signon Settings** (Ustawienia logowania jednokrotnego) wykonaj następujące kroki:
 
-    ![Pojedyncze ustawienia jednokrotnego](./media/ideascale-tutorial/ic790850.png "Pojedyncze ustawienia jednokrotnego")
+    ![Single Signon Settings](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
 
     a. W polu tekstowym **SAML IdP Entity ID** (Identyfikator jednostki dostawcy tożsamości SAML) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
 
@@ -178,7 +178,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -221,17 +221,17 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji IdeaSc
 
 2. Przejdź do sekcji **Community Settings** (Ustawienia społeczności).
 
-    ![Ustawienia społeczności](./media/ideascale-tutorial/ic790847.png "Ustawienia społeczności")
+    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
 
 3. Wybierz pozycję **Basic Settings \> Member Management** (Ustawienia podstawowe > Zarządzanie członkami).
 
 4. Kliknij pozycję **Add Member** (Dodaj członka).
 
-    ![Zarządzanie elementami członkowskimi](./media/ideascale-tutorial/ic790852.png "Zarządzanie elementami członkowskimi")
+    ![Member Management](./media/ideascale-tutorial/ic790852.png "Member Management")
 
 5. W sekcji Add New Member (Dodaj nowego członka) wykonaj następujące kroki:
 
-    ![Dodaj nowy element członkowski](./media/ideascale-tutorial/ic790853.png "Dodaj nowy element członkowski")
+    ![Add New Member](./media/ideascale-tutorial/ic790853.png "Add New Member")
 
     a. W polu tekstowym **Email Addresses** (Adresy e-mail) wpisz adres e-mail prawidłowego konta usługi Azure AD, które chcesz aprowizować.
 
@@ -241,7 +241,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji IdeaSc
     > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem w celu potwierdzenia konta, zanim stanie się ono aktywne.
 
 > [!NOTE]
-> Aby aprowizować konta użytkowników usługi AAD, możesz użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika aplikacji IdeaScale lub interfejsów API udostępnianych przez aplikację IdeaScale.
+> You can use any other IdeaScale user account creation tools or APIs provided by IdeaScale to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -255,5 +255,5 @@ Po kliknięciu kafelka IdeaScale w panelu dostępu powinno nastąpić automatycz
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,169 +1,170 @@
 ---
-title: Przewodnik rozwiązywania problemów dotyczących wydajności Azure Files
-description: Znane problemy z wydajnością związane z udziałami plików platformy Azure i związanymi z nimi obejściami.
+title: Azure Files performance troubleshooting guide
+description: Known performance issues with Azure file shares and associated workarounds.
 author: gunjanj
 ms.service: storage
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996598"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227826"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Rozwiązywanie problemów z wydajnością Azure Files
+# <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshoot Azure Files performance issues
 
-W tym artykule wymieniono niektóre typowe problemy związane z udziałami plików platformy Azure. Zapewnia potencjalne przyczyny i obejścia w przypadku napotkania tych problemów.
+This article lists some common problems related to Azure file shares. It provides potential causes and workarounds when these problems are encountered.
 
-## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Duże opóźnienia, niska przepływność i ogólne problemy z wydajnością
+## <a name="high-latency-low-throughput-and-general-performance-issues"></a>High latency, low throughput, and general performance issues
 
-### <a name="cause-1-share-experiencing-throttling"></a>Przyczyna 1: Udostępnianie z ograniczeniami
+### <a name="cause-1-share-experiencing-throttling"></a>Cause 1: Share experiencing throttling
 
-Domyślny limit przydziału dla udziału w warstwie Premium to 100 GiB, który 100 zapewnia liczbę operacji wejścia/wyjścia na sekundę (z możliwością przekroczenia do 300 przez godzinę). Aby uzyskać więcej informacji o aprowizacji i jej relacji z wieloma operacjami we/wy, zobacz sekcję udostępniane [udziały](storage-files-planning.md#provisioned-shares) w przewodniku planowania.
+The default quota on a premium share is 100 GiB, which provides 100 baseline IOPS (with a potential to burst up to 300 for an hour). For more information about provisioning and its relationship to IOPS, see the [Provisioned shares](storage-files-planning.md#provisioned-shares) section of the planning guide.
 
-Aby potwierdzić, że Twój udział jest ograniczany, możesz skorzystać z metryk platformy Azure w portalu.
+To confirm if your share is being throttled, you can leverage Azure Metrics in the portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. Wybierz pozycję **wszystkie usługi** , a następnie wyszukaj **metryki**.
+1. Select **All services** and then search for **Metrics**.
 
 1. Wybierz pozycję **Metryki**.
 
-1. Wybierz swoje konto magazynu jako zasób.
+1. Select your storage account as the resource.
 
-1. Wybierz pozycję **plik** jako przestrzeń nazw metryki.
+1. Select **File** as the metric namespace.
 
-1. Wybierz **transakcje** jako metrykę.
+1. Select **Transactions** as the metric.
 
-1. Dodaj filtr dla elementu **responsetype** i sprawdź, czy jakieś żądania mają kod odpowiedzi **SuccessWithThrottling** (dla protokołu SMB) lub **ClientThrottlingError** (dla REST).
+1. Add a filter for **ResponseType** and check to see if any requests have a response code of **SuccessWithThrottling** (for SMB) or **ClientThrottlingError** (for REST).
 
-![Opcje metryk dla udziałów plików Premium](media/storage-troubleshooting-premium-fileshares/metrics.png)
-
-### <a name="solution"></a>Rozwiązanie
-
-- Zwiększ pojemność udostępniania udziałów, określając wyższy limit przydziału w udziale.
-
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>Przyczyna 2: Duże obciążenie metadanych/przestrzeni nazw
-
-Jeśli większość żądań jest skoncentrowana na metadanych, (na przykład onfile/OpenFile/CloseFile/QueryInfo/querydirectory), opóźnienie będzie gorszyć w porównaniu do operacji odczytu i zapisu.
-
-Aby sprawdzić, czy większość żądań jest skoncentrowana na metadanych, można użyć tych samych kroków jak powyżej. Oprócz dodawania filtru dla elementu responsetypeDodaj filtr dla **nazwy interfejsu API**.
-
-![Filtrowanie nazw interfejsów API w metrykach](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
-
-### <a name="workaround"></a>Obejście
-
-- Sprawdź, czy aplikacja może zostać zmodyfikowana, aby zmniejszyć liczbę operacji na metadanych.
-
-### <a name="cause-3-single-threaded-application"></a>Przyczyna 3: Aplikacja jednowątkowa
-
-Jeśli aplikacja używana przez klienta jest jednowątkowa, może to znacząco obniżyć liczbę operacji we/wy na sekundę na podstawie rozmiaru udostępnionego udziału.
+![Metrics options for premium fileshares](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
 ### <a name="solution"></a>Rozwiązanie
 
-- Zwiększenie równoległości aplikacji przez zwiększenie liczby wątków.
-- Przejdź do aplikacji, w których możliwa jest równoległość. Na przykład w przypadku operacji kopiowania klienci mogą korzystać z AzCopy lub RoboCopy z klientów systemu Windows lub z polecenia **Parallel** na klientach z systemem Linux.
+- Increase share provisioned capacity by specifying a higher quota on your share.
 
-## <a name="very-high-latency-for-requests"></a>Bardzo duże opóźnienie dla żądań
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>Cause 2: Metadata/namespace heavy workload
 
-### <a name="cause"></a>Przyczyna
+If the majority of your requests are metadata centric, (such as createfile/openfile/closefile/queryinfo/querydirectory) then the latency will be worse when compared to read/write operations.
 
-Maszyna wirtualna klienta może znajdować się w innym regionie niż udział plików.
+To confirm if most of your requests are metadata centric, you can use the same steps as above. Except instead of adding a filter for **ResponseType**, add a filter for **API Name**.
+
+![Filter for API Name in your metrics](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
+
+### <a name="workaround"></a>Obejście
+
+- Check if the application can be modified to reduce the number of metadata operations.
+- Add a VHD on the file share and mount VHD over SMB from the client to perform files operations against the data. This approach works for single writer and multiple readers scenarios and allows metadata operations to be local, offering performance similar to a local direct-attached storage.
+
+### <a name="cause-3-single-threaded-application"></a>Cause 3: Single-threaded application
+
+If the application being used by the customer is single-threaded, this can result in significantly lower IOPS/throughput than the maximum possible based on your provisioned share size.
 
 ### <a name="solution"></a>Rozwiązanie
 
-- Uruchom aplikację z maszyny wirtualnej znajdującej się w tym samym regionie co udział plików.
+- Increase application parallelism by increasing the number of threads.
+- Switch to applications where parallelism is possible. For example, for copy operations, customers could use AzCopy or RoboCopy from Windows clients or the **parallel** command on Linux clients.
 
-## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klient nie może osiągnąć maksymalnej przepływności obsługiwanej przez sieć
-
-Jedną z potencjalnych przyczyn tego problemu jest brak obsługi wielu kanałów SMB. Obecnie udziały plików platformy Azure obsługują tylko jeden kanał, więc istnieje tylko jedno połączenie z maszyny wirtualnej klienta do serwera. To pojedyncze połączenie jest oznaczane pojedynczym rdzeniem na maszynie wirtualnej klienta, dzięki czemu maksymalna przepływność osiągalna z maszyny wirtualnej jest powiązana z jednym rdzeniem.
-
-### <a name="workaround"></a>Obejście
-
-- Uzyskanie maszyny wirtualnej z większym rdzeniem może pomóc w zwiększeniu przepływności.
-- Uruchomienie aplikacji klienckiej z wielu maszyn wirtualnych spowoduje zwiększenie przepływności.
-
-- Jeśli to możliwe, Użyj interfejsów API REST.
-
-## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Przepływność na klientach z systemem Linux jest znacznie mniejsza w porównaniu z klientami systemu Windows.
+## <a name="very-high-latency-for-requests"></a>Very high latency for requests
 
 ### <a name="cause"></a>Przyczyna
 
-Jest to znany problem z implementacją klienta SMB w systemie Linux.
+The client VM could be located in a different region than the file share.
+
+### <a name="solution"></a>Rozwiązanie
+
+- Run the application from a VM that is located in the same region as the file share.
+
+## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Client unable to achieve maximum throughput supported by the network
+
+One potential cause of this is a lack fo SMB multi-channel support. Currently, Azure file shares only support single channel, so there is only one connection from the client VM to the server. This single connection is pegged to a single core on the client VM, so the maximum throughput achievable from a VM is bound by a single core.
 
 ### <a name="workaround"></a>Obejście
 
-- Rozłożenie obciążenia na wiele maszyn wirtualnych.
-- Na tej samej maszynie wirtualnej Użyj wielu punktów instalacji z opcją **nosharesock** i rozłożyć obciążenie na te punkty instalacji.
-- W systemie Linux spróbuj zainstalować przy użyciu opcji **nostrictsync** , aby uniknąć wymuszania opróżniania SMB dla każdego wywołania fsync. W przypadku Azure Files ta opcja nie zakłóca działania consistentcy danych, ale może spowodować zamienienie starych metadanych plików na listę katalogów (polecenie**ls-l** ). Bezpośrednie zapytanie o metadane pliku (**stat** polecenie) zwróci najbardziej aktualne metadane pliku.
+- Obtaining a VM with a bigger core may help improve throughput.
+- Running the client application from multiple VMs will increase throughput.
 
-## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Duże opóźnienia w przypadku dużych obciążeń metadanych obejmujących liczne operacje otwierania/zamykania.
+- Use REST APIs where possible.
+
+## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Throughput on Linux clients is significantly lower when compared to Windows clients.
 
 ### <a name="cause"></a>Przyczyna
 
-Brak obsługi dzierżaw katalogów.
+This is a known issue with the implementation of SMB client on Linux.
 
 ### <a name="workaround"></a>Obejście
 
-- Jeśli to możliwe, unikaj nadmiernego dojścia otwierającego/zamykającego w tym samym katalogu w krótkim czasie.
-- W przypadku maszyn wirtualnych z systemem Linux Zwiększ limit czasu pamięci podręcznej wpisów w katalogu, określając **actimeo =\<sek >** jako opcję instalacji. Domyślnie jest to jedna sekunda, więc większa wartość, taka jak trzy lub pięć, może pomóc.
-- W przypadku maszyn wirtualnych z systemem Linux Uaktualnij jądro do wersji 4,20 lub nowszej.
+- Spread the load across multiple VMs.
+- On the same VM, use multiple mount points with **nosharesock** option, and spread the load across these mount points.
+- On Linux, try mounting with **nostrictsync** option to avoid forcing SMB flush on every fsync call. For Azure Files, this option does not interfere with data consistentcy, but may result in stale file metadata on directory listing (**ls -l** command). Directly querying metadata of file (**stat** command) will return the most up-to date file metadata.
 
-## <a name="low-iops-on-centosrhel"></a>Niska liczba operacji we/wy na sekundę w CentOS/RHEL
+## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>High latencies for metadata heavy workloads involving extensive open/close operations.
 
 ### <a name="cause"></a>Przyczyna
 
-Głębokość we/wy większa niż 1 nie jest obsługiwana w przypadku CentOS/RHEL.
+Lack of support for directory leases.
 
 ### <a name="workaround"></a>Obejście
 
-- Uaktualnij do wersji CentOS 8/RHEL 8.
-- Zmień na Ubuntu.
+- If possible, avoid excessive opening/closing handle on the same directory within a short period of time.
+- For Linux VMs, increase the directory entry cache timeout by specifying **actimeo=\<sec>** as a mount option. By default, it is one second, so a larger value like three or five might help.
+- For Linux VMs, upgrade the kernel to 4.20 or higher.
 
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Kopiowanie plików do i z Azure Files w systemie Linux
-
-Jeśli występują wolne kopiowanie plików do i z Azure Files, zapoznaj się z sekcją " [wolne kopiowanie plików do i z Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) " w przewodniku rozwiązywania problemów z systemem Linux.
-
-## <a name="jitterysaw-tooth-pattern-for-iops"></a>Wzorzec "wahania/Piła-Tooth" dla operacji we/wy na sekundę
+## <a name="low-iops-on-centosrhel"></a>Low IOPS on CentOS/RHEL
 
 ### <a name="cause"></a>Przyczyna
 
-Aplikacja kliencka stale przekracza liczbę operacji wejścia/wyjścia na sekundę. Obecnie nie ma możliwości obciążania żądania po stronie usługi, więc jeśli klient przekroczy liczbę operacji wejścia/wyjścia na sekundę, zostanie on ograniczony przez usługę. Ograniczanie wydajności może spowodować, że klient napotyka wzorzec IOPS "wahania/Piła-Tooth". W takim przypadku średnia liczba operacji we/wy osiągniętych przez klienta może być mniejsza niż liczba operacji we/wy na sekundę.
+IO depth greater than one is not supported on CentOS/RHEL.
 
 ### <a name="workaround"></a>Obejście
 
-- Zmniejsz obciążenie żądaniami z aplikacji klienckiej, aby udział nie został ograniczony.
-- Zwiększ limit przydziału udziału, aby udział nie został ograniczony.
+- Upgrade to CentOS 8 / RHEL 8.
+- Change to Ubuntu.
 
-## <a name="excessive-directoryopendirectoryclose-calls"></a>Nadmierne wywołania DirectoryOpen/DirectoryClose
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Slow file copying to and from Azure Files in Linux
+
+If you are experiencing slow file copying to and from Azure Files, take a look at the [Slow file copying to and from Azure Files in Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) section in the Linux troubleshooting guide.
+
+## <a name="jitterysaw-tooth-pattern-for-iops"></a>Jittery/saw-tooth pattern for IOPS
 
 ### <a name="cause"></a>Przyczyna
 
-Jeśli liczba wywołań DirectoryOpen/DirectoryClose jest między najpopularniejszymi wywołaniami interfejsu API i nie oczekuje się, że klient nie będzie mógł nawiązywać wielu wywołań, może to być problem z oprogramowaniem antywirusowym zainstalowanym na maszynie wirtualnej klienta platformy Azure.
+Client application consistently exceeds baseline IOPS. Currently, there is no service side smoothing of the request load, so if the client exceeds baseline IOPS, it will get throttled by the service. That throttling can result in the client experiencing a jittery/saw-tooth IOPS pattern. In this case, average IOPS achieved by the client might be lower than the baseline IOPS.
 
 ### <a name="workaround"></a>Obejście
 
-- Rozwiązanie tego problemu jest dostępne w [aktualizacji platformy w kwietniu dla systemu Windows](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform).
+- Reduce the request load from the client application, so that the share does not get throttled.
+- Increase the quota of the share so that the share does not get throttled.
 
-## <a name="file-creation-is-slower-than-expected"></a>Tworzenie pliku jest wolniejsze niż oczekiwano
+## <a name="excessive-directoryopendirectoryclose-calls"></a>Excessive DirectoryOpen/DirectoryClose calls
 
 ### <a name="cause"></a>Przyczyna
 
-Obciążenia, które opierają się na tworzeniu dużej liczby plików, nie będą widzieć znaczącej różnicy między wydajnością udziałów plików w warstwie Premium a standardowymi udziałami plików.
+If the number of DirectoryOpen/DirectoryClose calls is among the top API calls and you don't expect the client to be making that many calls, it may be an issue with the antivirus installed on the Azure client VM.
+
+### <a name="workaround"></a>Obejście
+
+- A fix for this issue is available in the [April Platform Update for Windows](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform).
+
+## <a name="file-creation-is-slower-than-expected"></a>File creation is slower than expected
+
+### <a name="cause"></a>Przyczyna
+
+Workloads that rely on creating a large number of files will not see a substantial difference between the performance of premium file shares and standard file shares.
 
 ### <a name="workaround"></a>Obejście
 
 - Brak.
 
-## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Niska wydajność z Windows 8.1 lub serwera 2012 R2
+## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Slow performance from Windows 8.1 or Server 2012 R2
 
 ### <a name="cause"></a>Przyczyna
 
-Większe niż oczekiwane opóźnienie dostępu Azure Files do obciążeń intensywnie korzystających z operacji we/wy.
+Higher than expected latency accessing Azure Files for IO intensive workloads.
 
 ### <a name="workaround"></a>Obejście
 
-- Zainstaluj dostępną [poprawkę](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
+- Install the available [hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).

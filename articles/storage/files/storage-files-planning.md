@@ -1,253 +1,253 @@
 ---
-title: Planowanie wdrożenia Azure Files | Microsoft Docs
-description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia Azure Files.
+title: Planning for an Azure Files deployment | Microsoft Docs
+description: Learn what to consider when planning for an Azure Files deployment.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066340"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227862"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
-[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
+[Azure Files](storage-files-introduction.md) offers fully managed file shares in the cloud that are accessible via the industry standard SMB protocol. Because Azure Files is fully managed, deploying it in production scenarios is much easier than deploying and managing a file server or NAS device. This article addresses the topics to consider when deploying an Azure file share for production use within your organization.
 
-## <a name="management-concepts"></a>Pojęcia związane z zarządzaniem
+## <a name="management-concepts"></a>Management concepts
 
- Na poniższym diagramie przedstawiono konstrukcje zarządzania Azure Files:
+ The following diagram illustrates the Azure Files management constructs:
 
 ![Struktura plików](./media/storage-files-introduction/files-concepts.png)
 
 * **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz [Cele dotyczące skalowalności i wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-* **Udział**: udział usługi File Storage jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do całkowitej pojemności udziału plików. Całkowita pojemność udziałów plików w warstwie Premium i Standardowa to 100 TiB.
+* **Udział**: udział usługi File Storage jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. An account can contain an unlimited number of shares and a share can store an unlimited number of files, up to the total capacity of the file share. The total capacity for premium and standard file shares is 100 TiB.
 
 * **Katalog**: opcjonalna hierarchia katalogów.
 
-* **Plik**: plik w udziale. Plik może mieć maksymalnie 1 TiB rozmiar.
+* **Plik**: plik w udziale. A file may be up to 1 TiB in size.
 
-* **Format adresu URL**: w przypadku żądań skierowanych do udziału plików platformy Azure z PROTOKOŁem REST plików pliki są adresowane przy użyciu następującego formatu adresu URL:
+* **URL format**: For requests to an Azure file share made with the File REST protocol, files are addressable using the following URL format:
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
     ```
 
-## <a name="data-access-method"></a>Metoda dostępu do danych
+## <a name="data-access-method"></a>Data access method
 
-Azure Files oferuje dwie wbudowane, wygodne metody dostępu do danych, których można używać oddzielnie lub w połączeniu ze sobą, aby uzyskać dostęp do danych:
+Azure Files offers two, built-in, convenient data access methods that you can use separately, or in combination with each other, to access your data:
 
-1. **Bezpośredni dostęp do chmury**: dowolny udział plików platformy Azure można zainstalować w [systemie Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md)i/lub [Linux](storage-how-to-use-files-linux.md) przy użyciu standardowego protokołu bloku komunikatów serwera (SMB) lub za pośrednictwem interfejsu API REST plików. W przypadku protokołu SMB operacje odczytu i zapisu do plików w udziale są wprowadzane bezpośrednio w udziale plików na platformie Azure. Aby można było zainstalować program przy użyciu maszyny wirtualnej na platformie Azure, klient SMB w systemie operacyjnym musi obsługiwać co najmniej protokół SMB 2,1. Aby zainstalować lokalnie, na przykład na stacji roboczej użytkownika, klient SMB obsługiwany przez stację roboczą musi obsługiwać co najmniej protokół SMB 3,0 (z szyfrowaniem). Oprócz protokołu SMB nowe aplikacje lub usługi mogą bezpośrednio uzyskiwać dostęp do udziału plików za pośrednictwem usługi File REST, co zapewnia łatwy i skalowalny interfejs programowania aplikacji na potrzeby tworzenia oprogramowania.
-2. **Azure File Sync**: z Azure File Sync, udziały mogą być replikowane do serwerów z systemem Windows lokalnie lub na platformie Azure. Użytkownicy będą mieli dostęp do udziału plików za pomocą systemu Windows Server, na przykład za pomocą udziału SMB lub NFS. Jest to przydatne w scenariuszach, w których dane będą dostępne i modyfikowane daleko od centrum danych platformy Azure, na przykład w scenariuszu oddziału. Dane mogą być replikowane między wieloma punktami końcowymi systemu Windows Server, takimi jak między wieloma biurami oddziałów. Na koniec dane mogą być warstwami Azure Files, w taki sposób, że wszystkie dane są nadal dostępne za pośrednictwem serwera, ale serwer nie ma pełnej kopii danych. Zamiast tego dane są bezproblemowo wywoływane po otwarciu przez użytkownika.
+1. **Direct cloud access**: Any Azure file share can be mounted by [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), and/or [Linux](storage-how-to-use-files-linux.md) with the industry standard Server Message Block (SMB) protocol or via the File REST API. With SMB, reads and writes to files on the share are made directly on the file share in Azure. To mount by a VM in Azure, the SMB client in the OS must support at least SMB 2.1. To mount on-premises, such as on a user's workstation, the SMB client supported by the workstation must support at least SMB 3.0 (with encryption). In addition to SMB, new applications or services may directly access the file share via File REST, which provides an easy and scalable application programming interface for software development.
+2. **Azure File Sync**: With Azure File Sync, shares can be replicated to Windows Servers on-premises or in Azure. Your users would access the file share through the Windows Server, such as through an SMB or NFS share. This is useful for scenarios in which data will be accessed and modified far away from an Azure datacenter, such as in a branch office scenario. Data may be replicated between multiple Windows Server endpoints, such as between multiple branch offices. Finally, data may be tiered to Azure Files, such that all data is still accessible via the Server, but the Server does not have a full copy of the data. Rather, data is seamlessly recalled when opened by your user.
 
-W poniższej tabeli przedstawiono sposób, w jaki użytkownicy i aplikacje mogą uzyskiwać dostęp do udziału plików platformy Azure:
+The following table illustrates how your users and applications can access your Azure file share:
 
-| | Bezpośredni dostęp do chmury | Azure File Sync |
+| | Direct cloud access | Usługa Azure File Sync |
 |------------------------|------------|-----------------|
-| Jakich protokołów należy używać? | Azure Files obsługuje protokół SMB 2,1, protokół SMB 3,0 i interfejs API REST plików. | Uzyskaj dostęp do udziału plików platformy Azure za pomocą dowolnego obsługiwanego protokołu w systemie Windows Server (SMB, NFS, FTPS itp.) |  
-| Gdzie działa Twoje obciążenie? | **Na platformie Azure**: Azure Files oferuje bezpośredni dostęp do danych. | **W środowisku lokalnym z powolnej sieci**: klienci z systemami Windows, Linux i macOS mogą instalować lokalny udział plików systemu Windows jako szybką pamięć podręczną udziału plików platformy Azure. |
-| Jakiego poziomu listy kontroli dostępu potrzebujesz? | Poziom udziału i pliku. | Udostępnianie, plik i poziom użytkownika. |
+| What protocols do you need to use? | Azure Files supports SMB 2.1, SMB 3.0, and File REST API. | Access your Azure file share via any supported protocol on Windows Server (SMB, NFS, FTPS, etc.) |  
+| Where are you running your workload? | **In Azure**: Azure Files offers direct access to your data. | **On-premises with slow network**: Windows, Linux, and macOS clients can mount a local on-premises Windows File share as a fast cache of your Azure file share. |
+| What level of ACLs do you need? | Share and file level. | Share, file, and user level. |
 
 ## <a name="data-security"></a>Bezpieczeństwo danych
 
-Azure Files zawiera kilka wbudowanych opcji zapewniających bezpieczeństwo danych:
+Azure Files has several built-in options for ensuring data security:
 
-* Obsługa szyfrowania w ramach protokołów over-Wire: Szyfrowanie SMB 3,0 i plik REST za pośrednictwem protokołu HTTPS. Domyślnie: 
-    * Klienci, którzy obsługują szyfrowanie SMB 3,0, wysyłają i odbierają dane za pośrednictwem zaszyfrowanego kanału.
-    * Klienci nieobsługujący protokołu SMB 3,0 z szyfrowaniem mogą komunikować się wewnątrz centrum danych za pośrednictwem protokołu SMB 2,1 lub SMB 3,0 bez szyfrowania. Klienci protokołu SMB nie mogą komunikować się między centrami danych za pośrednictwem protokołu SMB 2,1 ani protokołu SMB 3,0 bez szyfrowania.
-    * Klienci mogą komunikować się za pośrednictwem pliku HTTP lub HTTPS.
-* Szyfrowanie w spoczynku ([Azure szyfrowanie usługi Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): funkcja szyfrowanie usługi Storage (SSE) jest włączona dla wszystkich kont magazynu. Dane przechowywane w usłudze REST są szyfrowane za pomocą w pełni zarządzanych kluczy. Szyfrowanie w czasie spoczynku nie zwiększa kosztów magazynu ani nie zmniejsza wydajności. 
-* Opcjonalne wymaganie szyfrowanych danych podczas przesyłania: w przypadku wybrania Azure Files odrzuca dostęp do danych za pośrednictwem nieszyfrowanych kanałów. Dozwolone są tylko protokołu HTTPS i SMB 3,0 z połączeniami szyfrowania.
+* Support for encryption in both over-the-wire protocols: SMB 3.0 encryption and File REST over HTTPS. By default: 
+    * Clients that support SMB 3.0 encryption send and receive data over an encrypted channel.
+    * Clients that do not support SMB 3.0 with encryption can communicate intra-datacenter over SMB 2.1 or SMB 3.0 without encryption. SMB clients are not allowed to communicate inter-datacenter over SMB 2.1 or SMB 3.0 without encryption.
+    * Clients can communicate over File REST with either HTTP or HTTPS.
+* Encryption at-rest ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) is enabled for all storage accounts. Data at-rest is encrypted with fully-managed keys. Encryption at-rest does not increase storage costs or reduce performance. 
+* Optional requirement of encrypted data in-transit: when selected, Azure Files rejects access to the data over unencrypted channels. Specifically, only HTTPS and SMB 3.0 with encryption connections are allowed.
 
     > [!Important]  
-    > Wymaganie bezpiecznego transferu danych spowoduje, że starsze klientów SMB nie będą mogły komunikować się z protokołem SMB 3,0 z szyfrowaniem, aby nie powiodło się. Aby uzyskać więcej informacji, zobacz [Instalowanie systemu Windows](storage-how-to-use-files-windows.md), [Instalowanie w systemie Linux](storage-how-to-use-files-linux.md)i [Instalowanie w systemie macOS](storage-how-to-use-files-mac.md).
+    > Requiring secure transfer of data will cause older SMB clients not capable of communicating with SMB 3.0 with encryption to fail. For more information, see [Mount on Windows](storage-how-to-use-files-windows.md), [Mount on Linux](storage-how-to-use-files-linux.md), and [Mount on macOS](storage-how-to-use-files-mac.md).
 
-W celu zapewnienia maksymalnego bezpieczeństwa zdecydowanie zalecamy włączenie szyfrowania i włączenie szyfrowania danych w czasie, gdy korzystasz z nowoczesnych klientów do uzyskiwania dostępu do danych. Na przykład jeśli trzeba zainstalować udział na maszynie wirtualnej z systemem Windows Server 2008 R2, która obsługuje tylko protokół SMB 2,1, należy zezwolić na nieszyfrowany ruch do konta magazynu, ponieważ protokół SMB 2,1 nie obsługuje szyfrowania.
+For maximum security, we strongly recommend always enabling both encryption at-rest and enabling encryption of data in-transit whenever you are using modern clients to access your data. For example, if you need to mount a share on a Windows Server 2008 R2 VM, which only supports SMB 2.1, you need to allow unencrypted traffic to your storage account since SMB 2.1 does not support encryption.
 
-Jeśli używasz Azure File Sync, aby uzyskać dostęp do udziału plików platformy Azure, zawsze będziemy używać protokołów HTTPS i SMB 3,0 z szyfrowaniem w celu synchronizowania danych z serwerami z systemem Windows, bez względu na to, czy wymagane jest szyfrowanie danych.
+If you are using Azure File Sync to access your Azure file share, we will always use HTTPS and SMB 3.0 with encryption to sync your data to your Windows Servers, regardless of whether you require encryption of data at-rest.
 
-## <a name="file-share-performance-tiers"></a>Warstwy wydajności udziału plików
+## <a name="file-share-performance-tiers"></a>File share performance tiers
 
-Azure Files oferuje dwie warstwy wydajności: standardowa i Premium.
+Azure Files offers two performance tiers: standard and premium.
 
-### <a name="standard-file-shares"></a>Standardowe udziały plików
+### <a name="standard-file-shares"></a>Standard file shares
 
-Standardowe udziały plików są obsługiwane przez dyski twarde (HDD). Standardowe udziały plików zapewniają niezawodną wydajność dla obciążeń we/wy, które są mniej wrażliwe na zmienności wydajności, takie jak udziały plików ogólnego przeznaczenia i środowiska deweloperskie/testowe. Standardowe udziały plików są dostępne tylko w modelu rozliczania z płatnością zgodnie z rzeczywistym użyciem.
-
-> [!IMPORTANT]
-> Jeśli chcesz użyć udziałów plików większych niż 5 TiB, zobacz sekcję dołączanie [do większych udziałów plików (warstwa standardowa)](#onboard-to-larger-file-shares-standard-tier) , aby zapoznać się z krokami do dołączenia, a także regionalnej dostępności i ograniczeń.
-
-### <a name="premium-file-shares"></a>Udziały plików w warstwie Premium
-
-Udziały plików w warstwie Premium są obsługiwane przez dyski półprzewodnikowe (dysków SSD). Udziały plików w warstwie Premium zapewniają spójną wysoką wydajność i małe opóźnienia w obrębie jednocyfrowych milisekund dla większości operacji we/wy dla obciążeń intensywnie korzystających z operacji we/wy. Dzięki temu są one odpowiednie dla różnorodnych obciążeń, takich jak bazy danych, hosting witryn sieci Web i środowiska deweloperskie. Udziały plików w warstwie Premium są dostępne tylko w modelu rozliczania z obsługą administracyjną. Udziały plików w warstwie Premium korzystają z modelu wdrażania niezależnego od standardowych udziałów plików.
-
-Azure Backup jest dostępny dla udziałów plików w warstwie Premium, a usługa Azure Kubernetes obsługuje udziały plików w warstwie Premium w wersji 1,13 i nowszych.
-
-Jeśli chcesz dowiedzieć się, jak utworzyć udział plików w warstwie Premium, zobacz nasz artykuł w temacie: [jak utworzyć konto magazynu plików w warstwie Premium platformy Azure](storage-how-to-create-premium-fileshare.md).
-
-Obecnie nie można bezpośrednio konwertować między standardowym udziałem plików a udziałem plików w warstwie Premium. Jeśli chcesz przełączyć się do jednej z warstw, musisz utworzyć nowy udział plików w tej warstwie i ręcznie skopiować dane z oryginalnego udziału do utworzonego nowego udziału. Można to zrobić przy użyciu dowolnego Azure Files obsługiwanych narzędzi do kopiowania, takich jak Robocopy lub AzCopy.
+Standard file shares are backed by hard disk drives (HDDs). Standard file shares provide reliable performance for IO workloads that are less sensitive to performance variability such as general-purpose file shares and dev/test environments. Standard file shares are only available in a pay-as-you-go billing model.
 
 > [!IMPORTANT]
-> Udziały plików w warstwie Premium są dostępne z LRS w większości regionów, które oferują konta magazynu i ZRS w mniejszych podzestawach regionów. Aby dowiedzieć się, czy w Twoim regionie są obecnie dostępne udziały plików w warstwie Premium, zobacz stronę [dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) na platformie Azure. Aby dowiedzieć się, które regiony obsługują ZRS, zobacz [zasięg pomocy technicznej i dostępność regionalna](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+> If you want to use file shares larger than 5 TiB, see the [Onboard to larger file shares (standard tier)](#onboard-to-larger-file-shares-standard-tier) section for steps to onboard, as well as regional availability and restrictions.
+
+### <a name="premium-file-shares"></a>Premium file shares
+
+Premium file shares are backed by solid-state drives (SSDs). Premium file shares provide consistent high performance and low latency, within single-digit milliseconds for most IO operations, for IO-intensive workloads. This makes them suitable for a wide variety of workloads like databases, web site hosting, and development environments. Premium file shares are only available in a provisioned billing model. Premium file shares use a deployment model separate from standard file shares.
+
+Azure Backup is available for premium file shares and Azure Kubernetes Service supports premium file shares in version 1.13 and above.
+
+If you'd like to learn how to create a premium file share, see our article on the subject: [How to create an Azure premium file storage account](storage-how-to-create-premium-fileshare.md).
+
+Currently, you cannot directly convert between a standard file share and a premium file share. If you would like to switch to either tier, you must create a new file share in that tier and manually copy the data from your original share to the new share you created. You can do this using any of the Azure Files supported copy tools, such as Robocopy or AzCopy.
+
+> [!IMPORTANT]
+> Premium file shares are available with LRS in most regions that offer storage accounts and with ZRS in a smaller subset of regions. To find out if premium file shares are currently available in your region, see the [products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) page for Azure. To find out what regions support ZRS, see [Support coverage and regional availability](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
 >
-> Aby ułatwić nam określanie priorytetów nowych regionów i funkcji warstwy Premium, Wypełnij tę [ankietę](https://aka.ms/pfsfeedback).
+> To help us prioritize new regions and premium tier features, please fill out this [survey](https://aka.ms/pfsfeedback).
 
-#### <a name="provisioned-shares"></a>Udostępnione udziały
+#### <a name="provisioned-shares"></a>Provisioned shares
 
-Udziały plików w warstwie Premium są udostępniane na podstawie stałego współczynnika GiB/IOPS/przepływności. Dla każdego zainicjowanej GiB udział zostanie wystawiony przez wiele operacji we/wy i 0,1 MiB/s do maksymalnej liczby limitów na udział. Minimalną dozwoloną alokacją jest 100 GiB z minimalnymi operacjami IOPS/przepływności.
+Premium file shares are provisioned based on a fixed GiB/IOPS/throughput ratio. For each GiB provisioned, the share will be issued one IOPS and 0.1 MiB/s throughput up to the max limits per share. The minimum allowed provisioning is 100 GiB with min IOPS/throughput.
 
-Na podstawie najlepszego wysiłku wszystkie udziały mogą wykonać maksymalnie trzy liczby operacji we/wy na sekundę GiB magazynu, 60 w zależności od rozmiaru udziału. Nowe udziały zaczynają pełne środki na korzystanie z systemu na podstawie zainicjowanej pojemności.
+On a best effort basis, all shares can burst up to three IOPS per GiB of provisioned storage for 60 minutes or longer depending on the size of the share. New shares start with the full burst credit based on the provisioned capacity.
 
-Udziały muszą być udostępniane w 1 przyrostach GiB. Minimalny rozmiar to 100 GiB, następny rozmiar to 101 GiB i tak dalej.
+Shares must be provisioned in 1 GiB increments. Minimum size is 100 GiB, next size is 101 GiB and so on.
 
 > [!TIP]
-> Liczba operacji we/wy dla linii bazowej = 1 * zainicjowana GiB. (Maksymalnie 100 000 operacji we/wy).
+> Baseline IOPS = 1 * provisioned GiB. (Up to a max of 100,000 IOPS).
 >
-> Limit serii = 3 * Liczba operacji wejścia/wyjścia dla linii bazowej. (Maksymalnie 100 000 operacji we/wy).
+> Burst Limit = 3 * Baseline IOPS. (Up to a max of 100,000 IOPS).
 >
-> szybkość ruchu wychodzącego = 60 MiB/s + 0,06 * zainicjowana GiB
+> egress rate = 60 MiB/s + 0.06 * provisioned GiB
 >
-> transfer danych przychodzących = 40 MiB/s + 0,04 * aprowizacji GiB
+> ingress rate = 40 MiB/s + 0.04 * provisioned GiB
 
-Udostępniony rozmiar udziału jest określany przez przydział udziału. Przydział udziału można zwiększyć w dowolnym momencie, ale może zostać zmniejszony dopiero po 24 godzinach od momentu ostatniego wzrostu. Po odczekaniu przez 24 godziny bez zwiększenia limitu przydziału można zmniejszyć przydział udziału dowolną liczbę razy, aż do momentu jego zwiększenia. Zmiany skali operacji we/wy na sekundę będą obowiązywać w ciągu kilku minut od zmiany rozmiaru.
+Provisioned share size is specified by share quota. Share quota can be increased at any time but can be decreased only after 24 hours since the last increase. After waiting for 24 hours without a quota increase, you can decrease the share quota as many times as you like, until you increase it again. IOPS/Throughput scale changes will be effective within a few minutes after the size change.
 
-Istnieje możliwość zmniejszenia rozmiaru udziału przystosowanego poniżej użytych GiB. Jeśli to zrobisz, nie utracisz danych, ale nadal będą naliczane opłaty za używany rozmiar i zostanie uzyskana wydajność (liczba operacji wejścia/wyjścia na sekundę, przepływność i liczba IOPS dla operacji wejścia/wyjścia na sekundę) udziału, który nie jest używany.
+It is possible to decrease the size of your provisioned share below your used GiB. If you do this, you will not lose data but, you will still be billed for the size used and receive the performance (baseline IOPS, throughput, and burst IOPS) of the provisioned share, not the size used.
 
-W poniższej tabeli przedstawiono kilka przykładów tych wzorów dla rozmiarów udostępnianych udziałów:
+The following table illustrates a few examples of these formulae for the provisioned share sizes:
 
-|Pojemność (GiB) | Liczba operacji we/wy na sekundę punktu odniesienia | Operacje we/wy na sekundę | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
+|Capacity (GiB) | Liczba operacji we/wy na sekundę punktu odniesienia | Burst IOPS | Egress (MiB/s) | Ingress (MiB/s) |
 |---------|---------|---------|---------|---------|
-|100         | 100     | Do 300     | 66   | 44   |
-|500         | 500     | Do 1 500   | 90   | 60   |
-|1,024       | 1,024   | Do 3 072   | 122   | 81   |
-|5 120       | 5 120   | Do 15 360  | 368   | 245   |
-|10 240      | 10 240  | Do 30 720  | 675 | 450   |
-|33 792      | 33 792  | Do 100 000 | 2 088 | 1 392   |
-|51 200      | 51 200  | Do 100 000 | 3,132 | 2 088   |
-|102 400     | 100 000 | Do 100 000 | 6 204 | 4 136   |
+|100         | 100     | Up to 300     | 66   | 44   |
+|500         | 500     | Up to 1,500   | 90   | 60   |
+|1,024       | 1,024   | Up to 3,072   | 122   | 81   |
+|5,120       | 5,120   | Up to 15,360  | 368   | 245   |
+|10,240      | 10,240  | Up to 30,720  | 675 | 450   |
+|33,792      | 33,792  | Up to 100,000 | 2,088 | 1,392   |
+|51,200      | 51,200  | Up to 100,000 | 3,132 | 2,088   |
+|102,400     | 100 000 | Up to 100,000 | 6,204 | 4,136   |
 
 > [!NOTE]
-> Wydajność udziałów plików zależy od ograniczeń sieci maszynowych, dostępnej przepustowości sieci, rozmiarów we/wy, równoległości, między wieloma innymi czynnikami. Aby osiągnąć maksymalną skalę wydajności, należy rozłożyć obciążenie na wiele maszyn wirtualnych. Zapoznaj się [z przewodnikiem rozwiązywania problemów](storage-troubleshooting-files-performance.md) w przypadku niektórych typowych problemów z wydajnością i obejść.
+> File shares performance is subject to machine network limits, available network bandwidth, IO sizes, parallelism, among many other factors. For example, based on internal testing with 8 KiB read/write IO sizes, a single Windows virtual machine, *Standard F16s_v2*, connected to premium file share over SMB could achieve 20K read IOPS and 15K write IOPS. With 512 MiB read/write IO sizes, the same VM could achieve 1.1 GiB/s egress and 370 MiB/s ingress throughput. To achieve maximum performance scale, spread the load across multiple VMs. Please refer [troubleshooting guide](storage-troubleshooting-files-performance.md) for some common performance issues and workarounds.
 
-#### <a name="bursting"></a>Rozszerzanie możliwości
+#### <a name="bursting"></a>Bursting
 
-Udziały plików w warstwie Premium mogą zwiększać liczbę operacji we/wy na sekundę. Rozliczanie jest zautomatyzowane i działa na podstawie systemu kredytowego. Przeszukiwanie odbywa się na podstawie najlepszego nakładu pracy, a limit graniczny nie jest gwarancją, udziały plików mogą przekroczyć limit.
+Premium file shares can burst their IOPS up to a factor of three. Bursting is automated and operates based on a credit system. Bursting works on a best effort basis and the burst limit is not a guarantee, file shares can burst *up to* the limit.
 
-Kredyty są gromadzone w zasobniku, gdy ruch dla udziału plików jest poniżej liczby operacji wejścia/wyjścia na sekundę. Na przykład udział GiB 100 ma 100 liczby operacji wejścia/wyjścia na sekundę. Jeśli rzeczywisty ruch w udziale był 40 operacji we/wy dla określonego interwału 1 sekund, wówczas liczba nieużywanych operacji 60 we/wy na sekundę jest księgowana w zasobniku serii. Te kredyty zostaną następnie użyte później, gdy operacje przekroczą liczbę IOPs linii bazowej.
+Credits accumulate in a burst bucket whenever traffic for your file share is below baseline IOPS. For example, a 100 GiB share has 100 baseline IOPS. If actual traffic on the share was 40 IOPS for a specific 1-second interval, then the 60 unused IOPS are credited to a burst bucket. These credits will then be used later when operations would exceed the baseline IOPs.
 
 > [!TIP]
-> Rozmiar zasobnika szeregowego = liczba IOPS linii bazowej * 2 * 3600.
+> Size of the burst bucket = Baseline IOPS * 2 * 3600.
 
-Za każdym razem, gdy udział przekracza liczbę operacji we/wy na sekundę i ma kredyty w zasobniku szeregowym, spowoduje to utworzenie serii. Udziały mogą w dalszym ciągu przekroczyć czas trwania obciążeń, chociaż udziały mniejsze niż 50 TiB będą przechowywane tylko przy maksymalnej szybkości przez maksymalnie godzinę. Udziały większe niż 50 TiB mogą technicznie przekroczyć ten limit godzin, do dwóch godzin, ale jest to oparte na liczbie naliczanych kredytów na korzystanie z serii. Poszczególne operacje we/wy poza linią bazową zużywają jedno środki, a po wykorzystaniu wszystkich środków udział zwróci wartość do operacji wejścia/wyjścia na sekundę.
+Whenever a share exceeds the baseline IOPS and has credits in a burst bucket, it will burst. Shares can continue to burst as long as credits are remaining, though shares smaller than 50 TiB will only stay at the burst limit for up to an hour. Shares larger than 50 TiB can technically exceed this one hour limit, up to two hours but, this is based on the number of burst credits accrued. Each IO beyond baseline IOPS consumes one credit and once all credits are consumed the share would return to baseline IOPS.
 
-Kredyty na udostępnianie mają trzy stany:
+Share credits have three states:
 
-- Naliczanie, gdy udział plików używa mniejszej niż liczba operacji we/wy na sekundę.
-- Odrzucanie, gdy udział plików jest rozruchowy.
-- Pozostała stała, gdy nie ma żadnych kredytów lub operacji wejścia/wyjścia linii bazowej.
+- Accruing, when the file share is using less than the baseline IOPS.
+- Declining, when the file share is bursting.
+- Remaining constant, when there are either no credits or baseline IOPS are in use.
 
-Nowe udziały plików zaczynają się od pełnej liczby kredytów w swoim zasobniku. Środki na korzystanie z serii nie zostaną naliczone, jeśli liczba operacji we/wy udziałów spadnie poniżej liczby operacji wejścia/wyjścia na sekundę z powodu ograniczenia przez serwer.
+New file shares start with the full number of credits in its burst bucket. Burst credits will not be accrued if the share IOPS fall below baseline IOPS due to throttling by the server.
 
-## <a name="file-share-redundancy"></a>Nadmiarowość udziałów plików
+## <a name="file-share-redundancy"></a>File share redundancy
 
-Azure Files udziały standardowe obsługują cztery opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS), magazyn Geograficznie nadmiarowy (GRS) i magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza).
+Azure Files standard shares supports four data redundancy options: locally redundant storage (LRS), zone redundant storage (ZRS), geo-redundant storage (GRS), and geo-zone-redundant storage (GZRS) (preview).
 
-Azure Files udziały w warstwie Premium obsługują zarówno LRS, jak i ZRS, ZRS jest obecnie dostępne w mniejszych podzestawie regionów.
+Azure Files premium shares support both LRS and ZRS, ZRS is currently available in a smaller subset of regions.
 
-W poniższych sekcjach opisano różnice między różnymi opcjami nadmiarowości:
+The following sections describe the differences between the different redundancy options:
 
 ### <a name="locally-redundant-storage"></a>Magazyn lokalnie nadmiarowy
 
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
 
-### <a name="zone-redundant-storage"></a>Magazyn strefowo nadmiarowy
+### <a name="zone-redundant-storage"></a>Zone redundant storage
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="geo-redundant-storage"></a>Magazyn geograficznie nadmiarowy
 
 > [!Warning]  
-> Jeśli używasz udziału plików platformy Azure jako punktu końcowego w chmurze na koncie magazynu GRS, nie należy inicjować trybu failover dla konta magazynu. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych. W przypadku utraty regionu platformy Azure firma Microsoft będzie wyzwalać tryb failover na koncie magazynu w sposób zgodny z Azure File Sync.
+> If you are using your Azure file share as a cloud endpoint in a GRS storage account, you shouldn't initiate storage account failover. Doing so will cause sync to stop working and may also cause unexpected data loss in the case of newly tiered files. In the case of loss of an Azure region, Microsoft will trigger the storage account failover in a way that is compatible with Azure File Sync.
 
-Magazyn Geograficznie nadmiarowy (GRS) został zaprojektowany z założenia, że co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku przez replikowanie danych do regionu pomocniczego, który znajduje się w setki kilometrów od regionu podstawowego. Jeśli konto magazynu ma włączone GRS, dane są trwałe nawet w przypadku pełnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania.
+Geo-redundant storage (GRS) is designed to provide at least 99.99999999999999% (16 9's) durability of objects over a given year by replicating your data to a secondary region that is hundreds of miles away from the primary region. If your storage account has GRS enabled, then your data is durable even in the case of a complete regional outage or a disaster in which the primary region isn't recoverable.
 
-W przypadku wybrania opcji magazyn Geograficznie nadmiarowy do odczytu (RA-GRS) należy wiedzieć, że usługa Azure File nie obsługuje magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS) w dowolnym regionie. Udziały plików na koncie magazynu RA-GRS działają tak samo jak w przypadku kont GRS i są obciążane cenami GRS.
+If you opt for read-access geo-redundant storage (RA-GRS), you should know that Azure File does not support read-access geo-redundant storage (RA-GRS) in any region at this time. File shares in the RA-GRS storage account work like they would in GRS accounts and are charged GRS prices.
 
-GRS replikuje dane do innego centrum danych w regionie pomocniczym, ale dane te są dostępne tylko do odczytu, jeśli firma Microsoft zainicjuje tryb failover z regionu podstawowego do pomocniczego.
+GRS replicates your data to another data center in a secondary region, but that data is available to be read only if Microsoft initiates a failover from the primary to secondary region.
 
-W przypadku konta magazynu z włączonym GRS wszystkie dane są najpierw replikowane przy użyciu magazynu lokalnie nadmiarowego (LRS). Aktualizacja jest najpierw zatwierdzana do lokalizacji podstawowej i replikowana przy użyciu LRS. Aktualizacja jest następnie replikowana asynchronicznie do regionu pomocniczego za pomocą GRS. Gdy dane są zapisywane w lokalizacji dodatkowej, są również replikowane w tej lokalizacji przy użyciu LRS.
+For a storage account with GRS enabled, all data is first replicated with locally redundant storage (LRS). An update is first committed to the primary location and replicated using LRS. The update is then replicated asynchronously to the secondary region using GRS. When data is written to the secondary location, it's also replicated within that location using LRS.
 
-Zarówno region podstawowy, jak i pomocniczy zarządzają replikami w osobnych domenach błędów i uaktualniania domen w ramach jednostki skalowania magazynu. Jednostka skali magazynu jest podstawową jednostką replikacji w centrum danych. Replikacja na tym poziomie jest zapewniana przez LRS; Aby uzyskać więcej informacji, zobacz [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](../common/storage-redundancy-lrs.md).
+Both the primary and secondary regions manage replicas across separate fault domains and upgrade domains within a storage scale unit. The storage scale unit is the basic replication unit within the datacenter. Replication at this level is provided by LRS; for more information, see [Locally redundant storage (LRS): Low-cost data redundancy for Azure Storage](../common/storage-redundancy-lrs.md).
 
-Przed wybraniem opcji replikacji należy pamiętać o następujących kwestiach:
+Keep these points in mind when deciding which replication option to use:
 
-* Magazyn strefy Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) zapewnia wysoką dostępność wraz z maksymalną trwałością przez replikację danych synchronicznie w trzech strefach dostępności platformy Azure, a następnie replikowanie danych asynchronicznie do regionu pomocniczego. Możesz również włączyć dostęp do odczytu do regionu pomocniczego. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. Aby uzyskać więcej informacji na temat GZRS, zobacz [Geograficznie nadmiarowy magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](../common/storage-redundancy-gzrs.md).
-* Magazyn strefowo nadmiarowy (ZRS) zapewnia wysoką dostępność z replikacją synchroniczną i może być lepszym wyborem w przypadku niektórych scenariuszy niż GRS. Aby uzyskać więcej informacji na temat ZRS, zobacz [ZRS](../common/storage-redundancy-zrs.md).
-* Replikacja asynchroniczna polega na opóźnieniu od momentu zapisania danych w regionie podstawowym, gdy zostanie ono zreplikowane do regionu pomocniczego. W przypadku awarii regionalnej zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone, jeśli nie można odzyskać tych danych z regionu podstawowego.
-* W programie GRS replika nie jest dostępna do odczytu lub zapisu, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. W przypadku przejścia w tryb failover będziesz mieć dostęp do odczytu i zapisu do tych danych po zakończeniu pracy w trybie failover. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące odzyskiwania po awarii](../common/storage-disaster-recovery-guidance.md).
+* Geo-zone-redundant storage (GZRS) (preview) provides high availability together with maximum durability by replicating data synchronously across three Azure availability zones and then replicating data asynchronously to the secondary region. You can also enable read access to the secondary region. GZRS is designed to provide at least 99.99999999999999% (16 9's) durability of objects over a given year. For more information on GZRS, see [Geo-zone-redundant storage for highly availability and maximum durability (preview)](../common/storage-redundancy-gzrs.md).
+* Zone-redundant storage (ZRS) provides highly availability with synchronous replication and may be a better choice for some scenarios than GRS. For more information on ZRS, see [ZRS](../common/storage-redundancy-zrs.md).
+* Asynchronous replication involves a delay from the time that data is written to the primary region, to when it is replicated to the secondary region. In the event of a regional disaster, changes that haven't yet been replicated to the secondary region may be lost if that data can't be recovered from the primary region.
+* With GRS, the replica isn't available for read or write access unless Microsoft initiates a failover to the secondary region. In the case of a failover, you'll have read and write access to that data after the failover has completed. For more information, please see [Disaster recovery guidance](../common/storage-disaster-recovery-guidance.md).
 
-## <a name="onboard-to-larger-file-shares-standard-tier"></a>Dołączanie do większych udziałów plików (warstwa standardowa)
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboard to larger file shares (standard tier)
 
-Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie udziały plików w warstwie Premium są dostępne z wydajnością 100 TiB.
+This section only applies to the standard file shares. All premium file shares are available with 100 TiB capacity.
 
 ### <a name="restrictions"></a>Ograniczenia
 
-- Konwersja konta LRS/ZRS na GRS/GZRS nie będzie możliwa dla żadnego konta magazynu z włączonymi dużymi udziałami plików.
+- LRS/ZRS to GRS/GZRS account conversion will not be possible for any storage account with large file shares enabled.
 
 ### <a name="regional-availability"></a>Dostępność regionalna
 
-Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W niektórych regionach są one dostępne z limitem 100 TiB, te regiony są wymienione w poniższej tabeli:
+Standard file shares are available in all regions up to 5 TiB. In certain regions, they are available with a 100 TiB limit, those regions are listed in the following table:
 
-|Region |Obsługiwana nadmiarowość |
+|Region |Supported redundancy |
 |-------|---------|
 |Australia Wschodnia |LRS     |
 |Australia Południowo-Wschodnia|LRS |
 |Kanada Środkowa  |LRS     |
 |Kanada Wschodnia     |LRS     |
 |Indie Środkowe  |LRS     |
-|Środkowe stany USA *   |LRS     |
+|Central US*   |LRS     |
 |Azja Wschodnia      |LRS     |
-|Wschodnie stany USA *        |LRS     |
-|Wschodnie stany USA 2 *      |LRS     |
+|East US*        |LRS     |
+|East US 2*      |LRS     |
 |Francja Środkowa |LRS, ZRS|
 |Francja Południowa   |LRS     |
 |Europa Północna   |LRS     |
 |Indie Południowe    |LRS     |
 |Azja Południowo-Wschodnia |LRS, ZRS|
-|Środkowo-zachodnie stany USA|LRS     |
-|Europa Zachodnia *    |LRS, ZRS|
-|Zachodnie stany USA *        |LRS     |
+|Zachodnio-środkowe stany USA|LRS     |
+|West Europe*    |LRS, ZRS|
+|West US*        |LRS     |
 |Zachodnie stany USA 2      |LRS, ZRS|
 
-\* obsługiwane dla nowych kont, a nie wszystkie istniejące konta ukończyły proces uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
+\* Supported for new accounts, not all existing accounts have completed the upgrade process. You can check if your existing storage accounts have completed the upgrade process by attempting to [Enable large file shares](storage-files-how-to-create-large-file-share.md).
 
-Aby pomóc nam określić priorytety nowych regionów i funkcji, Wypełnij tę [ankietę](https://aka.ms/azurefilesatscalesurvey).
+To help us prioritize new regions and features, please fill out this [survey](https://aka.ms/azurefilesatscalesurvey).
 
-### <a name="enable-and-create-larger-file-shares"></a>Włączanie i tworzenie większych udziałów plików
+### <a name="enable-and-create-larger-file-shares"></a>Enable and create larger file shares
 
-Aby rozpocząć korzystanie z większych udziałów plików, zobacz artykuł [jak włączyć i utworzyć duże udziały plików](storage-files-how-to-create-large-file-share.md).
+To begin using larger file shares, see our article [How to enable and create large file shares](storage-files-how-to-create-large-file-share.md).
 
-## <a name="data-growth-pattern"></a>Wzorzec wzrostu danych
+## <a name="data-growth-pattern"></a>Data growth pattern
 
-Obecnie maksymalny rozmiar udziału plików platformy Azure to 100 TiB. Ze względu na bieżące ograniczenie należy wziąć pod uwagę oczekiwany wzrost ilości danych podczas wdrażania udziału plików platformy Azure.
+Today, the maximum size for an Azure file share is 100 TiB. Because of this current limitation, you must consider the expected data growth when deploying an Azure file share.
 
-Istnieje możliwość synchronizacji wielu udziałów plików platformy Azure z jednym serwerem plików systemu Windows z Azure File Sync. Pozwala to zagwarantować, że starsze, duże udziały plików, które mogą być lokalnie dostępne, mogą zostać wprowadzone do Azure File Sync. Aby uzyskać więcej informacji, zobacz [Planowanie wdrożenia Azure File Sync](storage-files-planning.md).
+It is possible to sync multiple Azure file shares to a single Windows File Server with Azure File Sync. This allows you to ensure that older, large file shares that you may have on-premises can be brought into Azure File Sync. For more information, see [Planning for an Azure File Sync Deployment](storage-files-planning.md).
 
-## <a name="data-transfer-method"></a>Metoda transferu danych
+## <a name="data-transfer-method"></a>Data transfer method
 
-Istnieje wiele łatwych opcji przesyłania zbiorczego danych z istniejącego udziału plików, takiego jak lokalny udział plików, do Azure Files. Oto kilka popularnych (niewyczerpująca lista):
+There are many easy options to bulk transfer data from an existing file share, such as an on-premises file share, into Azure Files. A few popular ones include (non-exhaustive list):
 
-* **Azure File Sync**: w ramach pierwszej synchronizacji między udziałem plików platformy Azure ("punktem końcowym w chmurze") a przestrzenią nazw katalogu systemu Windows ("punkt końcowy serwera"), Azure File Sync będzie replikowana wszystkie dane z istniejącego udziału plików do Azure Files.
-* **[Azure import/](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** Export: usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez dostarczenie dysków twardych do centrum danych platformy Azure. 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy to dobrze znane narzędzie do kopiowania, które jest dostarczane z systemami Windows i Windows Server. Robocopy może służyć do transferowania danych do Azure Files przez zainstalowanie udziału plików lokalnie, a następnie użycie zainstalowanej lokalizacji jako miejsca docelowego w poleceniu Robocopy.
-* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z Azure Files, a także do usługi Azure Blob Storage przy użyciu prostych poleceń z optymalną wydajnością.
+* **Azure File Sync**: As part of a first sync between an Azure file share (a "Cloud Endpoint") and a Windows directory namespace (a "Server Endpoint"), Azure File Sync will replicate all data from the existing file share to Azure Files.
+* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : The Azure Import/Export service allows you to securely transfer large amounts of data into an Azure file share by shipping hard disk drives to an Azure datacenter. 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy is a well known copy tool that ships with Windows and Windows Server. Robocopy may be used to transfer data into Azure Files by mounting the file share locally, and then using the mounted location as the destination in the Robocopy command.
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy is a command-line utility designed for copying data to and from Azure Files, as well as Azure Blob storage, using simple commands with optimal performance.
 
 ## <a name="next-steps"></a>Następne kroki
-* [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md)
-* [Wdrażanie Azure Files](storage-files-deployment-guide.md)
-* [Wdrażanie Azure File Sync](storage-sync-files-deployment-guide.md)
+* [Planning for an Azure File Sync Deployment](storage-sync-files-planning.md)
+* [Deploying Azure Files](storage-files-deployment-guide.md)
+* [Deploying Azure File Sync](storage-sync-files-deployment-guide.md)

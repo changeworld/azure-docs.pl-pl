@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą SmarterU | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i SmarterU.
+title: 'Tutorial: Azure Active Directory integration with SmarterU | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and SmarterU.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 07c7a15ea713bb6f73e1174a681dcccb5e79e289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61d7a2a7e4a60794710d602dab6b54e894bfc475
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090515"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232025"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SmarterU
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Tutorial: Azure Active Directory integration with SmarterU
 
-W tym samouczku dowiesz się, jak zintegrować SmarterU w usłudze Azure Active Directory (Azure AD).
-Integrowanie SmarterU z usługą Azure AD zapewnia następujące korzyści:
+In this tutorial, you learn how to integrate SmarterU with Azure Active Directory (Azure AD).
+Integrating SmarterU with Azure AD provides you with the following benefits:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do SmarterU.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do SmarterU (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* You can control in Azure AD who has access to SmarterU.
+* You can enable your users to be automatically signed-in to SmarterU (Single Sign-On) with their Azure AD accounts.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą SmarterU, potrzebne są następujące elementy:
+To configure Azure AD integration with SmarterU, you need the following items:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* SmarterU logowanie jednokrotne włączone subskrypcji
+* SmarterU single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje SmarterU **tożsamości** jednokrotne logowanie inicjowane przez
+* SmarterU supports **IDP** initiated SSO
 
-## <a name="adding-smarteru-from-the-gallery"></a>Dodawanie SmarterU z galerii
+## <a name="adding-smarteru-from-the-gallery"></a>Adding SmarterU from the gallery
 
-Aby skonfigurować integrację SmarterU w usłudze Azure AD, należy dodać SmarterU z galerii z listą zarządzanych aplikacji SaaS.
+To configure the integration of SmarterU into Azure AD, you need to add SmarterU from the gallery to your list of managed SaaS apps.
 
-**Aby dodać SmarterU z galerii, wykonaj następujące czynności:**
+**To add SmarterU from the gallery, perform the following steps:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację SmarterU w usłudze Azure AD, należy dodać Smar
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **SmarterU**, wybierz opcję **SmarterU** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. In the search box, type **SmarterU**, select **SmarterU** from result panel then click **Add** button to add the application.
 
-     ![SmarterU na liście wyników](common/search-new-app.png)
+     ![SmarterU in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą SmarterU w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w SmarterU musi zostać ustanowione.
+In this section, you configure and test Azure AD single sign-on with SmarterU based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in SmarterU needs to be established.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą SmarterU, należy wykonać poniższe bloki konstrukcyjne:
+To configure and test Azure AD single sign-on with SmarterU, you need to complete the following building blocks:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie SmarterU logowania jednokrotnego](#configure-smarteru-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego SmarterU](#create-smarteru-test-user)**  — aby odpowiednikiem Britta Simon w SmarterU połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Configure SmarterU Single Sign-On](#configure-smarteru-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Create SmarterU test user](#create-smarteru-test-user)** - to have a counterpart of Britta Simon in SmarterU that is linked to the Azure AD representation of user.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z SmarterU, wykonaj następujące czynności:
+To configure Azure AD single sign-on with SmarterU, perform the following steps:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **SmarterU** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. In the [Azure portal](https://portal.azure.com/), on the **SmarterU** application integration page, select **Single sign-on**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,15 +103,15 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SmarterU, wykonaj n
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![SmarterU domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-identifier.png)
+    ![SmarterU Domain and URLs single sign-on information](common/idp-identifier.png)
 
     W polu tekstowym **Identyfikator** wpisz adres URL: `https://www.smarteru.com/`
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Konfigurowanie SmarterU** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. On the **Set up SmarterU** section, copy the appropriate URL(s) as per your requirement.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -119,33 +119,33 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SmarterU, wykonaj n
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-smarteru-single-sign-on"></a>Konfigurowanie SmarterU logowanie jednokrotne
+### <a name="configure-smarteru-single-sign-on"></a>Configure SmarterU Single Sign-On
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy SmarterU jako administrator.
+1. In a different web browser window, sign in to your SmarterU company site as an administrator.
 
-1. Na pasku narzędzi u góry kliknij **ustawienia konta**.
+1. In the toolbar on the top, click **Account Settings**.
 
-    ![Ustawienia konta](./media/smarteru-tutorial/accountsettings.png)
+    ![Account Settings](./media/smarteru-tutorial/accountsettings.png)
 
 1. Na stronie konfiguracji konta wykonaj następujące kroki:
 
-    ![Zewnętrzne autoryzacji](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
+    ![External Authorization](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
 
-    a. Wybierz **Włącz zewnętrzne autoryzacji**.
+    a. Select **Enable External Authorization**.
   
-    b. W **kontrolka Login wzorzec** zaznacz **SmarterU** kartę.
+    b. In the **Master Login Control** section, select the **SmarterU** tab.
   
-    c. W **dane logowania użytkownika domyślne** zaznacz **SmarterU** kartę.
+    d. In the **User Default Login** section, select the **SmarterU** tab.
   
     d. Wybierz pozycję **Enable SAML** (Włącz SAML).
   
-    e. Skopiuj zawartość pliku metadanych pobrany, a następnie wklej go do **metadanych tożsamości** pola tekstowego.
+    e. Copy the content of the downloaded metadata file, and then paste it into the **IdP Metadata** textbox.
 
-    f. Wybierz **oświadczenie atrybut identyfikatora**.
+    f. Select an **Identifier Attribute/Claim**.
   
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -170,19 +170,19 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do SmarterU.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to SmarterU.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **SmarterU**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SmarterU**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **SmarterU**.
+2. In the applications list, select **SmarterU**.
 
-    ![Link SmarterU na liście aplikacji](common/all-applications.png)
+    ![The SmarterU link in the Applications list](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -198,41 +198,41 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-smarteru-test-user"></a>Tworzenie użytkownika testowego SmarterU
+### <a name="create-smarteru-test-user"></a>Create SmarterU test user
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do SmarterU, musi być obsługiwana w SmarterU. W przypadku SmarterU Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+To enable Azure AD users to sign in to SmarterU, they must be provisioned into SmarterU. In the case of SmarterU, provisioning is a manual task.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do Twojej **SmarterU** dzierżawy.
+1. sign in to your **SmarterU** tenant.
 
-1. Przejdź do **użytkowników**.
+1. Go to **Users**.
 
-1. W sekcji użytkownika wykonaj następujące czynności:
+1. In the user section, perform the following steps:
 
-    ![Nowy użytkownik](./media/smarteru-tutorial/adduser.png)  
+    ![New User](./media/smarteru-tutorial/adduser.png)  
 
-    a. Kliknij przycisk **+ użytkownik**.
+    a. Click **+User**.
 
-    b. Wpisz wartości powiązany atrybut konta użytkownika usługi Azure AD do następujących pól tekstowych: **Podstawowy adres E-mail**, **identyfikator pracownika**, **hasło**, **Weryfikuj hasło**, **imię**, **nazwisko**.
+    b. Type the related attribute values of the Azure AD user account into the following textboxes: **Primary Email**, **Employee ID**, **Password**, **Verify Password**, **Given Name**, **Surname**.
 
-    c. Kliknij przycisk **Active**.
+    d. Click **Active**.
 
-    d. Kliknij pozycję **Zapisz**.
+    d. Kliknij przycisk **Save** (Zapisz).
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych SmarterU użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez SmarterU do aprowizacji kont użytkowników usługi AAD.
+> You can use any other SmarterU user account creation tools or APIs provided by SmarterU to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka SmarterU w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze SmarterU, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+When you click the SmarterU tile in the Access Panel, you should be automatically signed in to the SmarterU for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

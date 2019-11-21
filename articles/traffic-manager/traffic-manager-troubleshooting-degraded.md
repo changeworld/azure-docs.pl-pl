@@ -1,54 +1,54 @@
 ---
-title: Rozwiązywanie problemów ze stanem obniżonej wydajności na platformie Azure Traffic Manager
-description: Jak rozwiązywać problemy z profilami Traffic Manager, gdy jest on wyświetlany jako obniżony stan.
+title: Troubleshooting degraded status on Azure Traffic Manager
+description: How to troubleshoot Traffic Manager profiles when it shows as degraded status.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
-manager: dcscontentpm
+author: asudbring
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: rohink
-ms.openlocfilehash: 8f043b11c9319d61c4413d01b008b324103ca6c3
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.author: allensu
+ms.openlocfilehash: 8b8fbdf55e408874f6a6e83d6333583238865b5c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155211"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227720"
 ---
-# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Rozwiązywanie problemów ze stanem obniżonej wydajności na platformie Azure Traffic Manager
+# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Troubleshooting degraded state on Azure Traffic Manager
 
-W tym artykule opisano sposób rozwiązywania problemów z profilem usługi Azure Traffic Manager, w którym jest wyświetlany stan obniżonej sprawności. Pierwszym krokiem w rozwiązywaniu problemów z nieobniżonym stanem Traffic Manager na platformie Azure jest włączenie rejestrowania diagnostycznego.  Aby uzyskać więcej informacji, zobacz [Włączanie dzienników diagnostycznych](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) . W tym scenariuszu należy zastanowić się, że skonfigurowano profil Traffic Manager wskazujący niektóre usługi hostowane w usłudze cloudapp.net. Jeśli kondycja Traffic Manager zostanie wyświetlony stan **obniżonej wydajności** , może to spowodować **spadek**stanu co najmniej jednego punktu końcowego:
+This article describes how to troubleshoot an Azure Traffic Manager profile that is showing a degraded status. As a first step in troubleshooting a Azure Traffic Manager degraded state is to enable diagnostic logging.  Refer to [Enable diagnostic logs](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) for more information. For this scenario, consider that you have configured a Traffic Manager profile pointing to some of your cloudapp.net hosted services. If the health of your Traffic Manager displays a **Degraded** status, then the status of one or more endpoints may be **Degraded**:
 
-![stan nieprawidłowego punktu końcowego](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+![degraded endpoint status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Jeśli kondycja Traffic Manager wyświetla stan nieaktywny , wówczas oba punkty końcowe mogą być **wyłączone**:
+If the health of your Traffic Manager displays an **Inactive** status, then both end points may be **Disabled**:
 
-![Stan nieaktywnej Traffic Manager](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![Inactive Traffic Manager status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
-## <a name="understanding-traffic-manager-probes"></a>Zrozumienie Traffic Manager sond
+## <a name="understanding-traffic-manager-probes"></a>Understanding Traffic Manager probes
 
-* Traffic Manager traktuje punkt końcowy jako w trybie ONLINE tylko wtedy, gdy sonda odbiera odpowiedź HTTP 200 z powrotem ze ścieżki sondy. Jeśli aplikacja zwróci jakikolwiek inny kod odpowiedzi HTTP, należy dodać ten kod odpowiedzi do [zakresów kodów oczekiwanego stanu](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) Traffic Manager profilu.
-* Odpowiedź przekierowania 30x jest traktowana jako błąd, chyba że określono jako prawidłowy kod odpowiedzi w zakresie [kodów stanu oczekiwanego](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) w ramach twojego profilu Traffic Manager. Traffic Manager nie sonduje elementu docelowego przekierowania.
-* W przypadku sond HTTPs Błędy certyfikatów są ignorowane.
-* Rzeczywista zawartość ścieżki sondy nie ma znaczenia, o ile jest zwracana 200. Badanie adresu URL do pewnej zawartości statycznej, takiej jak "/favicon.ico", jest typową techniką. Zawartość dynamiczna, podobnie jak strony ASP, może nie zawsze zwracać 200 nawet wtedy, gdy aplikacja jest w dobrej kondycji.
-* Najlepszym rozwiązaniem jest ustawienie dla ścieżki sondy elementu, który ma wystarczającą logikę, aby określić, że lokacja jest w górę lub w dół. W poprzednim przykładzie, ustawiając ścieżkę na "/favicon.ico", tylko test w3wp. exe odpowiada. To sondowanie może nie wskazywać, że aplikacja sieci Web jest w dobrej kondycji. Lepszym rozwiązaniem jest ustawienie ścieżki do elementu, takiego jak "/Probe.aspx", który ma logikę do określenia kondycji lokacji. Można na przykład użyć liczników wydajności do użycia procesora CPU lub zmierzyć liczbę żądań zakończonych niepowodzeniem. Możesz też próbować uzyskać dostęp do zasobów bazy danych lub stanu sesji, aby upewnić się, że aplikacja sieci Web działa.
-* Jeśli wszystkie punkty końcowe w profilu mają obniżoną wydajność, Traffic Manager traktuje wszystkie punkty końcowe jako zdrowe i kieruje ruch do wszystkich punktów końcowych. Takie zachowanie zapewnia, że problemy z mechanizmem sondowania nie powodują kompletnego przestoju usługi.
+* Traffic Manager considers an endpoint to be ONLINE only when the probe receives an HTTP 200 response back from the probe path. If you application returns any other HTTP response code you should add that response code to [Expected status code ranges](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) of your Traffic Manager profile.
+* A 30x redirect response is treated as failure unless you have specified this as a valid response code in [Expected status code ranges](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) of your Traffic Manager profile. Traffic Manager does not probe the redirection target.
+* For HTTPs probes, certificate errors are ignored.
+* The actual content of the probe path doesn't matter, as long as a 200 is returned. Probing a URL to some static content like "/favicon.ico" is a common technique. Dynamic content, like the ASP pages, may not always return 200, even when the application is healthy.
+* A best practice is to set the probe path to something that has enough logic to determine that the site is up or down. In the previous example, by setting the path to "/favicon.ico", you are only testing that w3wp.exe is responding. This probe may not indicate that your web application is healthy. A better option would be to set a path to a something such as "/Probe.aspx" that has logic to determine the health of the site. For example, you could use performance counters to CPU utilization or measure the number of failed requests. Or you could attempt to access database resources or session state to make sure that the web application is working.
+* If all endpoints in a profile are degraded, then Traffic Manager treats all endpoints as healthy and routes traffic to all endpoints. This behavior ensures that problems with the probing mechanism do not result in a complete outage of your service.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Aby rozwiązać problem z awarią sondy, potrzebne jest narzędzie, które pokazuje kod stanu HTTP Return z adresu URL sondy. Dostępnych jest wiele narzędzi, które pokazują nieprzetworzoną odpowiedź HTTP.
+To troubleshoot a probe failure, you need a tool that shows the HTTP status code return from the probe URL. There are many tools available that show you the raw HTTP response.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [odsłon](https://curl.haxx.se/)
+* [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-Ponadto możesz użyć karty sieć narzędzi debugowania F12 w programie Internet Explorer, aby wyświetlić odpowiedzi HTTP.
+Also, you can use the Network tab of the F12 Debugging Tools in Internet Explorer to view the HTTP responses.
 
-W tym przykładzie chcemy zobaczyć odpowiedź z naszego adresu URL sondy: http:\//watestsdp2008r2.cloudapp.NET:80/Probe. Poniższy przykład programu PowerShell ilustruje ten problem.
+For this example we want to see the response from our probe URL: http:\//watestsdp2008r2.cloudapp.net:80/Probe. The following PowerShell example illustrates the problem.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -60,9 +60,9 @@ Przykładowe dane wyjściowe:
     ---------- -----------------
            301 Moved Permanently
 
-Zwróć uwagę, że odebrano odpowiedź przekierowania. Jak wspomniano wcześniej, każdy kod błędu inny niż 200 jest traktowany jako błąd. Traffic Manager zmienia stan punktu końcowego na offline. Aby rozwiązać ten problem, sprawdź konfigurację witryny sieci Web, aby upewnić się, że można zwrócić prawidłowy kod StatusCode ze ścieżki sondy. Skonfiguruj ponownie sondę Traffic Manager, aby wskazywała ścieżkę zwracającą 200.
+Notice that we received a redirect response. As stated previously, any StatusCode other than 200 is considered a failure. Traffic Manager changes the endpoint status to Offline. To resolve the problem, check the website configuration to ensure that the proper StatusCode can be returned from the probe path. Reconfigure the Traffic Manager probe to point to a path that returns a 200.
 
-Jeśli sonda korzysta z protokołu HTTPS, może być konieczne wyłączenie sprawdzania certyfikatu w celu uniknięcia błędów protokołu SSL/TLS podczas testu. Następujące instrukcje programu PowerShell Wyłącz weryfikację certyfikatu dla bieżącej sesji programu PowerShell:
+If your probe is using the HTTPS protocol, you may need to disable certificate checking to avoid SSL/TLS errors during your test. The following PowerShell statements disable certificate validation for the current PowerShell session:
 
 ```powershell
 add-type @"
@@ -81,16 +81,16 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Informacje o metodach routingu ruchu Traffic Manager](traffic-manager-routing-methods.md)
+[About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md)
 
-[Co to jest Traffic Manager](traffic-manager-overview.md)
+[What is Traffic Manager](traffic-manager-overview.md)
 
 [Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
 
-[Usługa Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
+[Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
 [Operacje w usłudze Traffic Manager (dokumentacja interfejsu API REST)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Polecenia cmdlet usługi Azure Traffic Manager][1]
+[Azure Traffic Manager Cmdlets][1]
 
 [1]: https://docs.microsoft.com/powershell/module/az.trafficmanager

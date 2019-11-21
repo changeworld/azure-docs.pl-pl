@@ -1,6 +1,6 @@
 ---
-title: Tworzenie odpornej strategii zarządzania kontrolą dostępu — Azure Active Directory
-description: Ten dokument zawiera wskazówki dotyczące strategii podejmowanych przez organizację w celu zapewnienia odporności na zmniejszenie ryzyka związanego z blokadą w przypadku nieprzewidzianych przerw w działaniu
+title: Create a resilient access control management strategy - Azure AD
+description: This document provides guidance on strategies an organization should adopt to provide resilience to reduce the risk of lockout during unforeseen disruptions
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -11,262 +11,262 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 478cccb3a8235291a4c4f0566cd130b4b75dbe6b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125109"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208551"
 ---
-# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Utwórz odporną strategię zarządzania kontrolą dostępu za pomocą Azure Active Directory
+# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Create a resilient access control management strategy with Azure Active Directory
 
 >[!NOTE]
-> Informacje zawarte w tym dokumencie przedstawiają bieżący widok firmy Microsoft Corporation dotyczącej omawianych problemów w dniu publikacji. Ponieważ firma Microsoft musi reagować na zmieniające się warunki rynkowe, nie powinna być interpretowana jako zobowiązanie w ramach firmy Microsoft, a firma Microsoft nie gwarantuje dokładności informacji przedstawionych po dacie publikacji.
+> The information contained in this document represents the current view of Microsoft Corporation on the issues discussed as of the date of publication. Because Microsoft must respond to changing market conditions, it should not be interpreted to be a commitment on the part of Microsoft, and Microsoft cannot guarantee the accuracy of any information presented after the date of publication.
 
-Organizacje korzystające z pojedynczej kontroli dostępu, takie jak uwierzytelnianie wieloskładnikowe (MFA) lub pojedynczej lokalizacji sieciowej, w celu zabezpieczenia systemów IT są podatne na dostęp do błędów w aplikacjach i zasobach, jeśli ta pojedyncza kontrola dostępu będzie niedostępna lub nieprawidłowo skonfigurowane. Na przykład klęska żywiołowa może skutkować niedostępnością dużych segmentów infrastruktury telekomunikacyjnej lub sieci firmowych. Takie zakłócenia może uniemożliwić użytkownikom końcowym i administratorom możliwość zalogowania się.
+Organizations that rely on a single access control, such as multi-factor authentication (MFA) or a single network location, to secure their IT systems are susceptible to access failures to their apps and resources if that single access control becomes unavailable or misconfigured. For example, a natural disaster can result in the unavailability of large segments of telecommunications infrastructure or corporate networks. Such a disruption could prevent end users and administrators from being able to sign in.
 
-Niniejszy dokument zawiera wskazówki dotyczące strategii podejmowanych przez organizację w celu zapewnienia odporności na zmniejszenie ryzyka związanego z blokadą w przypadku nieprzewidzianych przerw w następujących scenariuszach:
+This document provides guidance on strategies an organization should adopt to provide resilience to reduce the risk of lockout during unforeseen disruptions with the following scenarios:
 
- 1. Organizacje mogą zwiększyć odporność, aby zmniejszyć ryzyko związane z blokadą **przed zakłóceniami** przez implementację strategii ograniczenia lub planów awaryjnych.
- 2. Organizacje mogą nadal uzyskiwać dostęp do aplikacji i zasobów, które wybierają **podczas przerw** w działaniu, stosując strategie zaradcze i plany awaryjne.
- 3. Organizacje powinny upewnić się, że zachowują informacje, takie jak dzienniki, **po przerwie** i przed wycofaniem wszelkich zaimplementowanych przez nie zdarzeń.
- 4. Organizacje, które nie wdrożyły strategii zapobiegania lub alternatywne plany mogą być w stanie zaimplementować **Opcje awaryjne** , aby rozwiązać problem.
+ 1. Organizations can increase their resiliency to reduce the risk of lockout **before a disruption** by implementing mitigation strategies or contingency plans.
+ 2. Organizations can continue to access apps and resources they choose **during a disruption** by having mitigation strategies and contingency plans in place.
+ 3. Organizations should make sure they preserve information, such as logs,  **after a disruption** and before they roll back any contingencies they implemented.
+ 4. Organizations that haven’t implemented prevention strategies or alternative plans may be able to implement **emergency options** to deal with the disruption.
 
-## <a name="key-guidance"></a>Najważniejsze wskazówki
+## <a name="key-guidance"></a>Key guidance
 
-W tym dokumencie znajdują się cztery kluczowe wnioski:
+There are four key takeaways in this document:
 
-* Należy unikać blokowania administratorów przy użyciu kont dostępu awaryjnego.
-* Implementowanie usługi MFA przy użyciu dostępu warunkowego (CA), a nie usługi MFA dla poszczególnych użytkowników.
-* Ograniczanie blokady użytkownika przy użyciu wielu kontrolek dostępu warunkowego (CA).
-* Ograniczanie blokady użytkownika przez inicjowanie obsługi wielu metod uwierzytelniania lub odpowiedników dla każdego użytkownika.
+* Avoid administrator lockout by using emergency access accounts.
+* Implement MFA using Conditional Access (CA) rather than per-user MFA.
+* Mitigate user lockout by using multiple Conditional Access (CA) controls.
+* Mitigate user lockout by provisioning multiple authentication methods or equivalents for each user.
 
-## <a name="before-a-disruption"></a>Przed zakłóceniami
+## <a name="before-a-disruption"></a>Before a disruption
 
-Zmniejszenie rzeczywistej przerwy w działaniu musi być podstawowym punktem działania organizacji w zakresie rozwiązywania problemów z kontrolą dostępu. Środki zaradcze obejmują planowanie rzeczywistego zdarzenia oraz implementowanie strategii, aby upewnić się, że kontrolki dostępu i operacje nie mają wpływu na przerwy.
+Mitigating an actual disruption must be an organization’s primary focus in dealing with access control issues that may arise. Mitigating includes planning for an actual event plus implementing strategies to make sure access controls and operations are unaffected during disruptions.
 
-### <a name="why-do-you-need-resilient-access-control"></a>Dlaczego potrzebujesz odpornej kontroli dostępu?
+### <a name="why-do-you-need-resilient-access-control"></a>Why do you need resilient access control?
 
- Tożsamość jest płaszczyzną kontroli użytkowników, którzy uzyskują dostęp do aplikacji i zasobów. System tożsamości decyduje, którzy użytkownicy i w jakich warunkach, takich jak kontrola dostępu lub wymagania uwierzytelniania, uzyskują dostęp do aplikacji. Jeśli co najmniej jedno wymaganie uwierzytelniania lub kontroli dostępu nie jest dostępne dla użytkowników do uwierzytelnienia z powodu nieprzewidzianych okoliczności, organizacje mogą napotkać jeden lub oba z następujących problemów:
+ Identity is the control plane of users accessing apps and resources. Your identity system controls which users and under which conditions, such as access controls or authentication requirements, users get access to the applications. When one or more authentication or access control requirements aren’t available for users to authenticate due to unforeseen circumstances, organizations can experience one or both of the following issues:
 
-* **Blokada administratora:** Administratorzy nie mogą zarządzać dzierżawcą ani usługami.
-* **Blokada użytkownika:** Użytkownicy nie mogą uzyskać dostępu do aplikacji ani zasobów.
+* **Administrator lockout:** Administrators can’t manage the tenant or services.
+* **User lockout:** Users can’t access apps or resources.
 
-### <a name="administrator-lockout-contingency"></a>Sytuacje awaryjne blokady administratora
+### <a name="administrator-lockout-contingency"></a>Administrator lockout contingency
 
-Aby odblokować dostęp administratora do dzierżawy, należy utworzyć konta dostępu awaryjnego. Te konta dostępu awaryjnego, nazywane również kontami *ze szkłami* , umożliwiają dostęp do zarządzania konfiguracją usługi Azure AD, gdy nie są dostępne normalne procedury dostępu do konta uprzywilejowanego. Po zaleceń dotyczących [konta dostępu awaryjnego]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)należy utworzyć co najmniej dwa konta dostępu awaryjnego.
+To unlock admin access to your tenant, you should create emergency access accounts. These emergency access accounts, also known as *break glass* accounts, allow access to manage Azure AD configuration when normal privileged account access procedures aren’t available. At least two emergency access accounts should be created following the [emergency access account recommendations]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access).
 
-### <a name="mitigating-user-lockout"></a>Ograniczanie blokady użytkownika
+### <a name="mitigating-user-lockout"></a>Mitigating user lockout
 
- Aby zmniejszyć ryzyko związane z blokadą użytkownika, należy użyć zasad dostępu warunkowego z wieloma kontrolkami, aby umożliwić użytkownikom wybór sposobu uzyskiwania dostępu do aplikacji i zasobów. Przez umożliwienie użytkownikowi wyboru między, na przykład zalogowanie się za pomocą usługi MFA **lub** zalogowanie się z urządzenia zarządzanego **lub** zalogowanie się z sieci firmowej, jeśli jedna z kontroli dostępu jest niedostępna, użytkownik ma inne opcje, aby kontynuować pracę.
+ To mitigate the risk of user lockout, use Conditional Access policies with multiple controls to give users a choice of how they will access apps and resources. By giving a user the choice between, for example, signing in with MFA **or** signing in from a managed device **or** signing in from the corporate network, if one of the access controls is unavailable the user has other options to continue to work.
 
-#### <a name="microsoft-recommendations"></a>Zalecenia firmy Microsoft
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
 
-Uwzględnij następujące kontrolki dostępu do istniejących zasad dostępu warunkowego dla organizacji:
+Incorporate the following access controls in your existing Conditional Access policies for organization:
 
-1. Zainicjuj obsługę wielu metod uwierzytelniania dla każdego użytkownika, który korzysta z różnych kanałów komunikacyjnych, na przykład aplikacji Microsoft Authenticator (internetowej), tokenu OATH (wygenerowanego na urządzeniu) i wiadomości SMS (telephonic).
-2. Wdróż usługę Windows Hello dla firm na urządzeniach z systemem Windows 10, aby spełnić wymagania usługi MFA bezpośrednio po zalogowaniu się do urządzenia.
-3. Używaj zaufanych urządzeń za pośrednictwem [sprzężenia hybrydowego usługi Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview) lub [Microsoft Intune zarządzanych urządzeń](https://docs.microsoft.com/intune/planning-guide). Zaufane urządzenia będą ulepszać środowisko użytkownika, ponieważ zaufane urządzenie może spełnić wymagania dotyczące silnych uwierzytelnień zasad bez wyzwania usługi MFA dla użytkownika. Uwierzytelnianie wieloskładnikowe będzie wymagane podczas rejestrowania nowego urządzenia i uzyskiwania dostępu do aplikacji lub zasobów z niezaufanych urządzeń.
-4. Użyj zasad opartych na ryzyku usługi Azure AD Identity Protection, które uniemożliwiają dostęp, gdy użytkownik lub logowanie jest zagrożone w przypadku stałych zasad usługi MFA.
+1. Provision multiple authentication methods for each user that rely on different communication channels, for example the Microsoft Authenticator app (internet-based), OATH token (generated on-device), and SMS (telephonic).
+2. Deploy Windows Hello for Business on Windows 10 devices to satisfy MFA requirements directly from device sign-in.
+3. Use trusted devices via [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/overview) or [Microsoft Intune Managed devices](https://docs.microsoft.com/intune/planning-guide). Trusted devices will improve user experience because the trusted device itself can satisfy the strong authentication requirements of policy without an MFA challenge to the user. MFA will then be required when enrolling a new device and when accessing apps or resources from untrusted devices.
+4. Use Azure AD identity protection risk-based policies that prevent access when the user or sign-in is at risk in place of fixed MFA policies.
 
 >[!NOTE]
-> Zasady oparte na ryzyku wymagają licencji na [Azure AD — wersja Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) .
+> Risk-based policies require [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
 
-W poniższym przykładzie opisano zasady, które należy utworzyć, aby zapewnić odporną kontrolę dostępu dla użytkownika w celu uzyskania dostępu do aplikacji i zasobów. W tym przykładzie musisz mieć grupę zabezpieczeń **AppUsers** z użytkownikami docelowymi, do których chcesz udzielić dostępu, grupę o nazwie **CoreAdmins** z podstawowymi administratorami oraz grupę o nazwie **EmergencyAccess** z kontami dostępu awaryjnego.
-Ten przykładowy zestaw zasad będzie przyznawać wybranym użytkownikom w **AppUsers**, dostęp do wybranych aplikacji, jeśli nawiązują połączenie z zaufanego urządzenia lub zapewniają silne uwierzytelnianie, na przykład MFA. Wyklucza to konta awaryjne i administratorów podstawowych.
+The following example describes policies you must create to provide a resilient access control for user to access their apps and resources. In this example, you will require a security group **AppUsers** with the target users you want to give access to, a group named **CoreAdmins** with the core administrators, and a group named **EmergencyAccess** with the emergency access accounts.
+This example policy set will grant selected users in **AppUsers**, access to selected apps if they are connecting from a trusted device OR provide strong authentication, for example MFA. It excludes emergency accounts and core administrators.
 
-**Zestaw zasad ograniczenia urzędu certyfikacji:**
+**CA mitigation policies set:**
 
-* Zasady 1: Blokuj dostęp do osób poza grupami docelowymi
-  * Użytkownicy i grupy: Uwzględnij wszystkich użytkowników. Wyklucz AppUsers, CoreAdmins i EmergencyAccess
-  * Aplikacje w chmurze: Uwzględnij wszystkie aplikacje
-  * Przyczyn Dawaj
-  * Udziel kontroli: Blokuj
-* Zasady 2: Udziel dostępu do AppUsers wymagającego uwierzytelniania wieloskładnikowego lub zaufanego urządzenia.
-  * Użytkownicy i grupy: Uwzględnij AppUsers. Wyklucz CoreAdmins i EmergencyAccess
-  * Aplikacje w chmurze: Uwzględnij wszystkie aplikacje
-  * Przyczyn Dawaj
-  * Udziel kontroli: Udziel dostępu, wymagaj uwierzytelniania wieloskładnikowego, wymaganie, aby urządzenie było zgodne. Dla wielu formantów: Wymagaj jednej z wybranych kontrolek.
+* Policy 1: Block access to people outside target groups
+  * Users and Groups: Include all users. Exclude AppUsers, CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Include all apps
+  * Conditions: (None)
+  * Grant Control: Block
+* Policy 2: Grant access to AppUsers requiring MFA OR trusted device.
+  * Users and Groups: Include AppUsers. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Include all apps
+  * Conditions: (None)
+  * Grant Control: Grant access, require multi-factor authentication, require device to be compliant. For multiple controls: Require one of the selected controls.
 
-### <a name="contingencies-for-user-lockout"></a>Sytuacje awaryjne dla blokady użytkownika
+### <a name="contingencies-for-user-lockout"></a>Contingencies for user lockout
 
-Alternatywnie organizacja może również tworzyć zasady awaryjne. Aby utworzyć zasady awaryjne, należy zdefiniować kryteria kompromisu między ciągłością biznesową, kosztami operacyjnymi, kosztami finansowymi i zagrożeniami bezpieczeństwa. Na przykład można aktywować zasady awaryjne tylko dla podzbioru użytkowników, dla podzestawu aplikacji, dla podzestawu klientów lub z podzestawu lokalizacji. Zasady awaryjne zapewniają administratorom i użytkownikom końcowym dostęp do aplikacji i zasobów, podczas gdy nie zaimplementowano metody zaradczej.
-Zrozumienie narażenia użytkownika podczas przerw w działaniu pomaga ograniczyć ryzyko i stanowić krytyczną część procesu planowania. W celu utworzenia planu awaryjnego należy najpierw określić następujące wymagania biznesowe organizacji:
+Alternatively, your organization can also create contingency policies. To create contingency policies, you must define tradeoff criteria between business continuity, operational cost, financial cost, and security risks. For example, you may activate a contingency policy only to a subset of users, for a subset of apps, for a subset of clients, or from a subset of locations. Contingency policies will give administrators and end users access to apps and resources, during a disruption when no mitigation method was implemented.
+Understanding your exposure during a disruption helps reduce your risk and is a critical part of your planning process. To create your contingency plan, first determine the following business requirements of your organization:
 
-1. Przed czasem Ustal swoje aplikacje o znaczeniu strategicznym: Jakie są aplikacje, do których należy udzielić dostępu, nawet z niższym ryzykiem/stan zabezpieczeń? Utwórz listę tych aplikacji i upewnij się, że inni uczestnicy projektu (Business, Security, prawny i lider) zgadzają się, że jeśli cała kontrola dostępu zostanie przesunięta, te aplikacje nadal muszą być dalej uruchamiane. Najkorzystniej będzie można zakończyć z użyciem kategorii:
-   * **Aplikacje o znaczeniu krytycznym kategorii 1** , które nie mogą być niedostępne przez więcej niż kilka minut, na przykład aplikacje, które bezpośrednio wpływają na przychód organizacji.
-   * **Kategoria 2 ważne aplikacje** , które firma musi być dostępna w ciągu kilku godzin.
-   * **Kategorie 3 aplikacje o niskim priorytecie** , które mogą wytrzymać zakłócenia przez kilka dni.
-2. W przypadku aplikacji w kategorii 1 i 2 Firma Microsoft zaleca wstępne zaplanowanie typu dostępu, który ma być dozwolony:
-   * Czy chcesz zezwolić na pełny dostęp lub sesję z ograniczeniami, np. ograniczanie pobierania?
-   * Czy chcesz zezwolić na dostęp do części aplikacji, ale nie całej aplikacji?
-   * Czy chcesz zezwolić na dostęp pracownika do informacji i zablokować dostęp administratora do momentu przywrócenia kontroli dostępu?
-3. W przypadku tych aplikacji firma Microsoft zaleca także zaplanowanie, które drogi dostępu zostaną świadomie otwarte i które zostaną zamknięte:
-   * Czy chcesz zezwolić na dostęp tylko do przeglądarki i blokować rozbudowani Klienci, którzy mogą zapisywać dane w trybie offline?
-   * Czy chcesz zezwolić na dostęp tylko użytkownikom należącym do sieci firmowej i nie blokować użytkowników poza użytkownikami?
-   * Czy chcesz zezwolić na dostęp z określonych krajów lub regionów tylko w trakcie przerw w działaniu?
-   * Czy chcesz, aby zasady dotyczące zasad awaryjnych, szczególnie w przypadku aplikacji o znaczeniu krytycznym, kończyły się niepowodzeniem lub pomyślnie, jeśli alternatywna kontrola dostępu nie jest dostępna?
+1. Determine your mission critical apps ahead of time: What are the apps that you must give access to, even with a lower risk/security posture? Build a list of these apps and make sure your other stakeholders (business, security, legal, leadership) all agree that if all access control goes away, these apps still must continue to run. You are likely going to end up with categories of:
+   * **Category 1 mission critical apps** that cannot be unavailable for more than a few minutes, for example Apps that directly affect the revenue of the organization.
+   * **Category 2 important apps** that the business needs to be accessible within a few hours.
+   * **Category 3 low-priority apps** that can withstand a disruption of a few days.
+2. For apps in category 1 and 2, Microsoft recommends you pre-plan what type of level of access you want to allow:
+   * Do you want to allow full access or restricted session, like limiting downloads?
+   * Do you want to allow access to part of the app but not the whole app?
+   * Do you want to allow information worker access and block administrator access until the access control is restored?
+3. For those apps, Microsoft also recommends you plan which avenues of access you will deliberately open and which ones you will close:
+   * Do you want to allow browser only access and block rich clients that can save offline data?
+   * Do you want to allow access only for users inside the corporate network and keep outside users blocked?
+   * Do you want to allow access from certain countries or regions only during the disruption?
+   * Do you want policies to the contingency policies, especially for mission critical apps, to fail or succeed if an alternative access control is not available?
 
-#### <a name="microsoft-recommendations"></a>Zalecenia firmy Microsoft
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
 
-Zasady awaryjnego dostępu warunkowego to **wyłączone zasady** , które pomijają mechanizmy uwierzytelniania wieloskładnikowego Azure MFA, uwierzytelnianie wieloskładnikowe innych firm, oparte na ryzyku lub oparte na urządzeniach. Następnie, gdy organizacja zdecyduje się aktywować plan awaryjny, Administratorzy mogą włączyć zasady i wyłączyć regularne zasady oparte na kontroli.
+A contingency Conditional Access policy is a **disabled policy** that omits Azure MFA, third-party MFA, risk-based or device-based controls. Then, when your organization decides to activate your contingency plan, administrators can enable the policy and disable the regular control-based policies.
 
 >[!IMPORTANT]
-> Wyłączenie zasad, które wymuszają zabezpieczenia dla użytkowników, nawet tymczasowo, zmniejszy stan bezpieczeństwa w trakcie planowania awaryjnego.
+> Disabling policies that enforce security on your users, even temporarily, will reduce your security posture while the contingency plan is in place.
 
-* Skonfiguruj zestaw zasad powrotu, jeśli zakłócenia w jednym typie poświadczeń lub jeden mechanizm kontroli dostępu ma wpływ na dostęp do aplikacji. Skonfiguruj zasady w stanie wyłączonym, które wymagają przyłączenia do domeny jako kontrolki jako kopii zapasowej aktywnej zasady, która wymaga dostawcy MFA innej firmy.
-* Ogranicz ryzyko nieprawidłowych uczestników odgadnąć hasła, gdy uwierzytelnianie wieloskładnikowe nie jest wymagane, postępując zgodnie z zasadami zawartymi w dokumencie [wytyczne dotyczące haseł](https://aka.ms/passwordguidance) .
-* Wdróż funkcję samoobsługowego [resetowania haseł (SSPR) usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) i [Ochrona hasłem w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) , aby upewnić się, że użytkownicy nie używają typowych haseł i postanowień do zaświadczenia.
-* Użyj zasad, które ograniczają dostęp w aplikacjach, jeśli nie zostanie osiągnięty określony poziom uwierzytelniania zamiast po prostu z powrotem do pełnego dostępu. Na przykład:
-  * Skonfiguruj zasady tworzenia kopii zapasowych, które wysyłają do programów Exchange i SharePoint żądania ograniczonej sesji.
-  * Jeśli Twoja organizacja używa Microsoft Cloud App Security, rozważ powracanie do zasad, które angażują MCAS, a następnie MCAS zezwala na dostęp tylko do odczytu, ale nie do przekazywania.
-* Nazwij swoje zasady, aby upewnić się, że można je łatwo znaleźć w trakcie przerw w działaniu. Uwzględnij następujące elementy w nazwie zasad:
-  * *Numer etykiety* dla zasad.
-  * Tekst do wyświetlenia. Ta zasada dotyczy tylko sytuacji awaryjnych. Przykład: **WŁĄCZ W SYTUACJACH AWARYJNYCH**
-  * *Zakłócenia* , do którego odnosi się. Na przykład: **Podczas przerw w działaniu usługi MFA**
-  * *Numer sekwencyjny* pokazujący kolejność, w której należy aktywować zasady.
-  * *Aplikacje* , do których odnosi się.
-  * *Kontrolki* , które mają zastosowanie.
-  * *Warunki* , które wymaga.
+* Configure a set of fallback policies if a disruption in one credential type or one access control mechanism impacts access to your apps. Configure a policy in disabled state that requires Domain Join as a control, as a backup for an active policy that requires a third-party MFA provider.
+* Reduce the risk of bad actors guessing passwords, when MFA is not required, by following the practices in the [password guidance](https://aka.ms/passwordguidance) white paper.
+* Deploy [Azure AD Self-Service Password Reset (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) and [Azure AD Password Protection](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) to make sure users don’t use common password and terms you choose to ban.
+* Use policies that restrict the access within the apps if a certain authentication level is not attained instead of simply falling back to full access. Na przykład:
+  * Configure a backup policy that sends the restricted session claim to Exchange and SharePoint.
+  * If your organization uses Microsoft Cloud App Security, consider falling back to a policy that engages MCAS and then MCAS Allows read-only access but not uploads.
+* Name your policies to make sure it is easy to find them during a disruption. Include the following elements in the policy name:
+  * A *label number* for the policy.
+  * Text to show, this policy is for emergencies only. For example: **ENABLE IN EMERGENCY**
+  * The *disruption* it applies to. For example: **During MFA Disruption**
+  * A *sequence number* to show the order you must activate the policies.
+  * The *apps* it applies to.
+  * The *controls* it will apply.
+  * The *conditions* it requires.
   
-Ten standard nazewnictwa dla zasad awaryjnych będzie następujący: 
+This naming standard for the contingency policies will be as follows: 
 
 ```
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Poniższy przykład: **Przykładowo zasady dotyczące zasad urzędu certyfikacji w celu przywrócenia dostępu do aplikacji do współpracy o znaczeniu krytycznym**są typowymi zagrożeniami firmowymi. W tym scenariuszu Organizacja zwykle wymaga uwierzytelniania wieloskładnikowego dla wszystkich usług Exchange Online i SharePoint Online, a w takim przypadku zakłócenia jest w tym przypadku dostawcą usługi MFA dla klienta jest przestój (czy usługa Azure MFA, lokalny dostawca MFA, czy MFA innej firmy). Te zasady ograniczają tę awarię przez umożliwienie określonym użytkownikom mającym dostęp do tych aplikacji z zaufanych urządzeń z systemem Windows tylko wtedy, gdy uzyskują oni dostęp do aplikacji z ich zaufanej sieci firmowej. Spowoduje to również Wykluczenie kont awaryjnych i administratorów podstawowych z tych ograniczeń. Użytkownicy dokierowany do usługi Exchange Online i SharePoint Online będą mogli uzyskiwać dostęp do aplikacji, a inni użytkownicy nadal nie będą mieli dostępu do nich z powodu przestoju. Ten przykład wymaga, aby nazwana lokalizacja sieciowa **CorpNetwork** i Grupa zabezpieczeń **ContingencyAccess** z użytkownikami docelowymi, Grupa o nazwie **CoreAdmins** z podstawowymi administratorami i Grupa o nazwie **EmergencyAccess** z konta dostępu awaryjnego. Sytuacje awaryjne wymagają czterech zasad, aby zapewnić żądany dostęp. 
+The following example: **Example A - Contingency CA policy to restore Access to mission-critical Collaboration Apps**, is a typical corporate contingency. In this scenario, the organization typically requires MFA for all Exchange Online and SharePoint Online access, and the disruption in this case is the MFA provider for the customer has an outage (whether Azure MFA, on-premises MFA provider, or third-party MFA). This policy mitigates this outage by allowing specific targeted users access to these apps from trusted Windows devices only when they are accessing the app from their trusted corporate network. It will also exclude emergency accounts and core administrators from these restrictions. The targeted users will then gain access to Exchange Online and SharePoint Online, while other users will still not have access to the apps due to the outage. This example will require a named network location **CorpNetwork** and a security group **ContingencyAccess** with the target users, a group named **CoreAdmins** with the core administrators, and a group named **EmergencyAccess** with the emergency access accounts. The contingency requires four policies to provide the desired access. 
 
-**Przykład: zasady urzędu certyfikacji awaryjnej umożliwiające przywrócenie dostępu do aplikacji do współpracy o kluczowym znaczeniu.**
+**Example A - Contingency CA policies to restore Access to mission-critical Collaboration Apps:**
 
-* Zasady 1: Wymagaj urządzeń przyłączonych do domeny dla programów Exchange i SharePoint
-  * Nazwa: EM001 — WŁĄCZ W SYTUACJACH AWARYJNYCH: Zakłócenia MFA [1/4] — Exchange SharePoint — Wymagaj hybrydowego sprzężenia usługi Azure AD
-  * Użytkownicy i grupy: Uwzględnij ContingencyAccess. Wyklucz CoreAdmins i EmergencyAccess
-  * Aplikacje w chmurze: Usługi Exchange Online i SharePoint Online
-  * Przyczyn Any
-  * Udziel kontroli: Wymagaj przyłączenia do domeny
-  * Stan: Wyłączone
-* Zasady 2: Blokuj platformy inne niż Windows
-  * Nazwa: EM002 — WŁĄCZ W SYTUACJACH AWARYJNYCH: Zakłócenia MFA [2/4] — Exchange SharePoint — Blokuj dostęp z wyjątkiem systemu Windows
-  * Użytkownicy i grupy: Uwzględnij wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
-  * Aplikacje w chmurze: Usługi Exchange Online i SharePoint Online
-  * Przyczyn Platforma urządzeń obejmuje wszystkie platformy, wykluczanie okien
-  * Udziel kontroli: Blokuj
-  * Stan: Wyłączone
-* Zasady 3: Blokuj sieci inne niż CorpNetwork
-  * Nazwa: EM003 — WŁĄCZ W SYTUACJACH AWARYJNYCH: Zakłócenia MFA [3/4] — Exchange SharePoint — Blokuj dostęp z wyjątkiem sieci firmowej
-  * Użytkownicy i grupy: Uwzględnij wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
-  * Aplikacje w chmurze: Usługi Exchange Online i SharePoint Online
-  * Przyczyn Lokalizacje obejmują dowolną lokalizację, wyklucza CorpNetwork
-  * Udziel kontroli: Blokuj
-  * Stan: Wyłączone
-* Zasady 4: Jawnie Blokuj EAS
-  * Nazwa: EM004 — WŁĄCZ W SYTUACJACH AWARYJNYCH: Zakłócenia MFA [4/4] — program Exchange blokuje program EAS dla wszystkich użytkowników
-  * Użytkownicy i grupy: Uwzględnij wszystkich użytkowników
-  * Aplikacje w chmurze: Dołącz do usługi Exchange Online
-  * Przyczyn Aplikacje klienckie: Exchange Active Sync
-  * Udziel kontroli: Blokuj
-  * Stan: Wyłączone
+* Policy 1: Require Domain Joined devices for Exchange and SharePoint
+  * Name: EM001 - ENABLE IN EMERGENCY: MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
+  * Users and Groups: Include ContingencyAccess. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Any
+  * Grant Control: Require Domain Joined
+  * State: Disabled
+* Policy 2: Block platforms other than Windows
+  * Name: EM002 - ENABLE IN EMERGENCY: MFA Disruption[2/4] - Exchange SharePoint - Block access except Windows
+  * Users and Groups: Include all users. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Device Platform Include All Platforms, exclude Windows
+  * Grant Control: Block
+  * State: Disabled
+* Policy 3: Block networks other than CorpNetwork
+  * Name: EM003 - ENABLE IN EMERGENCY: MFA Disruption[3/4] - Exchange SharePoint - Block access except Corporate Network
+  * Users and Groups: Include all users. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Locations Include any location, exclude CorpNetwork
+  * Grant Control: Block
+  * State: Disabled
+* Policy 4: Block EAS Explicitly
+  * Name: EM004 - ENABLE IN EMERGENCY: MFA Disruption[4/4] - Exchange - Block EAS for all users
+  * Users and Groups: Include all users
+  * Cloud Apps: Include Exchange Online
+  * Conditions: Client apps: Exchange Active Sync
+  * Grant Control: Block
+  * State: Disabled
 
-Kolejność aktywacji:
+Order of activation:
 
-1. Wyklucz ContingencyAccess, CoreAdmins i EmergencyAccess z istniejących zasad usługi MFA. Sprawdź, czy użytkownik w usłudze ContingencyAccess może uzyskać dostęp do usługi SharePoint Online i Exchange Online.
-2. Włącz zasady 1: Sprawdź, czy użytkownicy na urządzeniach przyłączonych do domeny, którzy nie znajdują się w grupach wykluczonych, mogą uzyskiwać dostęp do usługi Exchange Online i SharePoint Online. Sprawdź, czy użytkownicy w grupie wykluczeń mogą uzyskiwać dostęp do usługi SharePoint Online i programu Exchange z dowolnego urządzenia.
-3. Włącz zasady 2: Sprawdź, czy użytkownicy, którzy nie należą do grupy wykluczeń, nie mogą przejść do usługi SharePoint Online i Exchange Online z urządzeń przenośnych. Sprawdź, czy użytkownicy w grupie wykluczeń mogą uzyskiwać dostęp do programu SharePoint i programu Exchange z dowolnego urządzenia (Windows/iOS/Android).
-4. Włącz zasady 3: Sprawdź, czy użytkownicy, którzy nie znajdują się w grupach wykluczeń, nie mogą uzyskać dostępu do programu SharePoint i wymiany poza siecią firmową, nawet z przyłączoną do domeny komputerem Sprawdź, czy użytkownicy w grupie wykluczeń mogą uzyskiwać dostęp do programu SharePoint i programu Exchange z dowolnej sieci.
-5. Włącz zasady 4: Sprawdź, czy wszyscy użytkownicy nie mogą uzyskać usługi Exchange Online z natywnych aplikacji poczty na urządzeniach przenośnych.
-6. Wyłącz istniejące zasady MFA dla usługi SharePoint Online i Exchange Online.
+1. Exclude ContingencyAccess, CoreAdmins, and EmergencyAccess from the existing MFA policy. Verify a user in ContingencyAccess can access SharePoint Online and Exchange Online.
+2. Enable Policy 1: Verify users on Domain Joined devices who are not in the exclude groups are able to access Exchange Online and SharePoint Online. Verify users in the Exclude group can access SharePoint Online and Exchange from any device.
+3. Enable Policy 2: Verify users who are not in the exclude group cannot get to SharePoint Online and Exchange Online from their mobile devices. Verify users in the Exclude group can access SharePoint and Exchange from any device (Windows/iOS/Android).
+4. Enable Policy 3: Verify users who are not in the exclude groups cannot access SharePoint and Exchange off the corporate network, even with a domain joined machine. Verify users in the Exclude group can access SharePoint and Exchange from any network.
+5. Enable Policy 4: Verify all users cannot get Exchange Online from the native mail applications on mobile devices.
+6. Disable the existing MFA policy for SharePoint Online and Exchange Online.
 
-W tym następnym przykładzie **przykład B — Zasady bezawaryjnego urzędu certyfikacji, aby umożliwić dostęp mobilny do usługi Salesforce**, przywracany jest dostęp do aplikacji biznesowej. W tym scenariuszu klient zazwyczaj wymaga, aby pracownicy sprzedaży mogli uzyskiwać dostęp do usług Salesforce (skonfigurowanych do logowania jednokrotnego przy użyciu usługi Azure AD) z urządzeń przenośnych wyłącznie z poziomu zgodnych urządzeń. Zakłócenia w tym przypadku polega na tym, że występuje problem z ocenami zgodności urządzeń i przestojem, gdy zespół sprzedaży potrzebuje dostępu do usługi Salesforce, aby zamknąć oferty. Te zasady awaryjne umożliwią użytkownikom dostęp do usług Salesforce z urządzenia przenośnego, aby mogli nadal zamykać oferty i nie zakłócać działania firmy. W tym przykładzie **SalesforceContingency** zawiera wszystkich pracowników działu sprzedaży, którzy muszą zachować dostęp, a **SalesAdmins** zawiera niezbędnych administratorów usługi Salesforce.
+In this next example, **Example B - Contingency CA policies to allow mobile access to Salesforce**, a business app’s access is restored. In this scenario, the customer typically requires their sales employees access to Salesforce (configured for single-sign on with Azure AD) from mobile devices to only be allowed from compliant devices. The disruption in this case is that there is an issue with evaluating device compliance and the outage is happening at a sensitive time where the sales team needs access to Salesforce to close deals. These contingency policies will grant critical users access to Salesforce from a mobile device so that they can continue to close deals and not disrupt the business. In this example, **SalesforceContingency** contains all the Sales employees who need to retain access and **SalesAdmins** contains necessary admins of Salesforce.
 
-**Przykład B — Zasady urzędu certyfikacji awaryjnej:**
+**Example B - Contingency CA policies:**
 
-* Zasady 1: Blokuj wszystkie osoby niebędące członkami zespołu SalesContingency
-  * Nazwa: EM001 — WŁĄCZ W SYTUACJACH AWARYJNYCH: Zakłócenia zgodności urządzenia [1/2]-Salesforce — Blokuj wszystkich użytkowników z wyjątkiem SalesforceContingency
-  * Użytkownicy i grupy: Uwzględnij wszystkich użytkowników. Wyklucz SalesAdmins i SalesforceContingency
-  * Aplikacje w chmurze: Usługi.
-  * Przyczyn Brak
-  * Udziel kontroli: Blokuj
-  * Stan: Wyłączone
-* Zasady 2: Zablokuj zespół ds. sprzedaży z dowolnej platformy niż Mobile (aby zmniejszyć powierzchnię ataku)
-  * Nazwa: EM002 — WŁĄCZ W SYTUACJACH AWARYJNYCH: Zakłócenia zgodności urządzenia [2/2]-Salesforce — Blokuj wszystkie platformy z wyjątkiem systemów iOS i Android
-  * Użytkownicy i grupy: Uwzględnij SalesforceContingency. Wyklucz SalesAdmins
-  * Aplikacje w chmurze: Usługi SalesForce
-  * Przyczyn Platforma urządzeń obejmuje wszystkie platformy, a także urządzenia z systemami iOS i Android
-  * Udziel kontroli: Blokuj
-  * Stan: Wyłączone
+* Policy 1: Block everyone not in the SalesContingency team
+  * Name: EM001 - ENABLE IN EMERGENCY: Device Compliance Disruption[1/2] - Salesforce - Block All users except SalesforceContingency
+  * Users and Groups: Include all users. Exclude SalesAdmins and SalesforceContingency
+  * Cloud Apps: Salesforce.
+  * Conditions: None
+  * Grant Control: Block
+  * State: Disabled
+* Policy 2: Block the Sales team from any platform other than mobile (to reduce surface area of attack)
+  * Name: EM002 - ENABLE IN EMERGENCY: Device Compliance Disruption[2/2] - Salesforce - Block All platforms except iOS and Android
+  * Users and Groups: Include SalesforceContingency. Exclude SalesAdmins
+  * Cloud Apps: Salesforce
+  * Conditions: Device Platform Include All Platforms, exclude iOS and Android
+  * Grant Control: Block
+  * State: Disabled
 
-Kolejność aktywacji:
+Order of activation:
 
-1. Wyklucz SalesAdmins i SalesforceContingency z istniejących zasad zgodności urządzeń dla usługi Salesforce. Sprawdź, czy użytkownik w grupie SalesforceContingency może uzyskać dostęp do usługi Salesforce.
-2. Włącz zasady 1: Sprawdź, czy użytkownicy spoza usługi SalesContingency nie mogą uzyskać dostępu do usługi Salesforce. Sprawdź, czy użytkownicy w SalesAdmins i SalesforceContingency mogą uzyskiwać dostęp do usługi Salesforce.
-3. Włącz zasady 2: Sprawdź, czy użytkownicy w grupie SalesContingency nie mogą uzyskać dostępu do usługi Salesforce ze swoich laptopów z systemem Windows/Mac, ale nadal mogą uzyskać dostęp z urządzeń przenośnych. Sprawdź, czy SalesAdmin nadal może uzyskiwać dostęp do usług Salesforce z dowolnego urządzenia.
-4. Wyłącz istniejące zasady zgodności urządzeń dla usługi Salesforce.
+1. Exclude SalesAdmins and SalesforceContingency from the existing device compliance policy for Salesforce. Verify a user in the SalesforceContingency group can access Salesforce.
+2. Enable Policy 1: Verify users outside of SalesContingency cannot access Salesforce. Verify users in the SalesAdmins and SalesforceContingency can access Salesforce.
+3. Enable Policy 2: Verify users in the SalesContingency group cannot access Salesforce from their Windows/Mac laptops but can still access from their mobile devices. Verify SalesAdmin can still access Salesforce from any device.
+4. Disable the existing device compliance policy for Salesforce.
 
-### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Wdróż synchronizację skrótów haseł, nawet jeśli jesteś federacyjnym lub użyciem uwierzytelniania przekazywanego
+### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Deploy password hash sync even if you are federated or use pass-through authentication
 
-Blokada użytkownika może również wystąpić, jeśli są spełnione następujące warunki:
+User lockout can also occur if the following conditions are true:
 
-- Twoja organizacja korzysta z rozwiązania do tworzenia tożsamości hybrydowej z uwierzytelnianiem przekazywanym lub federacyjnym.
-- Lokalne systemy tożsamości (takie jak Active Directory, AD FS lub składnik zależny) są niedostępne. 
+- Your organization uses a hybrid identity solution with pass-through authentication or federation.
+- Your on-premises identity systems (such as Active Directory, AD FS, or a dependent component) are unavailable. 
  
-Aby bardziej odporne na błędy, organizacja powinna [włączyć funkcję synchronizacji skrótów haseł](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), ponieważ umożliwia [przełączenie na korzystanie z synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) , jeśli lokalne systemy tożsamości nie działają.
+To be more resilient, your organization should [enable password hash sync](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), because it enables you to [switch to using password hash sync](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) if your on-premises identity systems are down.
 
-#### <a name="microsoft-recommendations"></a>Zalecenia firmy Microsoft
- Włącz synchronizację skrótów haseł przy użyciu kreatora Azure AD Connect, niezależnie od tego, czy organizacja używa uwierzytelniania federacyjnego, czy przekazującego.
-
->[!IMPORTANT]
-> Nie jest wymagane przekonwertowanie użytkowników z federacyjnego na uwierzytelnianie zarządzane, aby można było używać synchronizacji skrótów haseł.
-
-## <a name="during-a-disruption"></a>W trakcie przerwy
-
-Jeśli zdecydujesz się na wdrożenie planu zaradczego, będzie można automatycznie przetrwać pojedyncze zakłócenia kontroli dostępu. Jednak jeśli wybrano opcję utworzenia planu awaryjnego, podczas przerw w kontroli dostępu będzie można aktywować zasady awaryjne:
-
-1. Włącz zasady awaryjne, które przydzielą użytkownikom skierowanym dostęp do określonych aplikacji, z określonych sieci.
-2. Wyłącz zasady regularnej kontroli.
-
-### <a name="microsoft-recommendations"></a>Zalecenia firmy Microsoft
-
-W zależności od tego, które środki zaradcze lub sytuacje awaryjne są używane w trakcie przerw w działaniu, organizacja może udzielić dostępu tylko za pomocą hasła. Żadne zabezpieczenia nie są istotnym zagrożeniem bezpieczeństwa, które należy starannie odważyć. Organizacje muszą:
-
-1. W ramach strategii kontroli zmian należy udokumentować każdą zmianę i poprzedni stan, aby móc wycofać wszystkie sytuacje awaryjne, które zostały wdrożone natychmiast po w pełni funkcjonalnej kontroli dostępu.
-2. Załóżmy, że złośliwe osoby będą próbować zebrać hasła przy użyciu napylania hasła lub ataków wyłudzania podczas wyłączania usługi MFA. W przypadku nieprawidłowych aktorów mogą już znajdować się hasła, które wcześniej nie miały dostępu do żadnych zasobów, które mogą być podejmowane w tym oknie. W przypadku użytkowników o znaczeniu krytycznym, takich jak kierownicy, można częściowo wyeliminować to zagrożenie przez zresetowanie haseł przed wyłączeniem uwierzytelniania MFA.
-3. Archiwizuj wszystkie działania związane z logowaniem, aby identyfikować, kto ma dostęp do tego, co w czasie została wyłączona.
-4. [Klasyfikacja wszystkie wykrycia ryzyka zgłoszone](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) w tym oknie.
-
-## <a name="after-a-disruption"></a>Po przerwie
-
-Cofnij zmiany wprowadzone w ramach aktywowanego planu awaryjnego po przywróceniu usługi, która spowodowała zakłócenie. 
-
-1. Włącz zasady regularne
-2. Wyłącz zasady awaryjne. 
-3. Wycofaj wszystkie inne zmiany wprowadzone i udokumentowane podczas przerw w działaniu.
-4. Jeśli używasz konta dostępu awaryjnego, pamiętaj, aby ponownie wygenerować poświadczenia i fizycznie zabezpieczyć szczegóły nowych poświadczeń w ramach procedur konta dostępu awaryjnego.
-5. Kontynuuj [Klasyfikacja wszystkie wykrycia ryzyka zgłoszone](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po przerwie dla podejrzanych działań.
-6. Odwołaj wszystkie tokeny odświeżania, które zostały wystawione [przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) , aby wskazać zestaw użytkowników. Odwoływanie wszystkich tokenów odświeżania jest ważne dla kont uprzywilejowanych używanych w trakcie przerw w działaniu, co spowoduje wymuszenie ponownego uwierzytelnienia i spełnienia kontroli przywróconych zasad.
-
-## <a name="emergency-options"></a>Opcje awaryjne
-
- W przypadku sytuacji awaryjnej i organizacja nie wdrożyła wcześniej planu ograniczenia lub gotowości, następnie postępuj zgodnie z zaleceniami w sekcji [sytuacje awaryjne dla blokady użytkownika](#contingencies-for-user-lockout) , jeśli już używają zasad dostępu warunkowego do wymuszania uwierzytelniania MFA.
-Jeśli Twoja organizacja korzysta ze starszych zasad usługi MFA dla użytkownika, możesz rozważyć następujące alternatywy:
-
-1. W przypadku wychodzącego adresu IP sieci firmowej można je dodać jako zaufane adresy IP, aby umożliwić uwierzytelnianie tylko w sieci firmowej.
-   1. Jeśli nie masz spisu wychodzących adresów IP lub musisz włączyć dostęp wewnątrz i na zewnątrz sieci firmowej, możesz dodać całą przestrzeń adresową IPv4 jako zaufane adresy IP, określając 0.0.0.0/1 i 128.0.0.0/1.
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
+ Enable password hash sync using the Azure AD Connect wizard, regardless whether your organization uses federation or pass-through authentication.
 
 >[!IMPORTANT]
- > W przypadku rozszerzenia zaufanych adresów IP w celu odblokowania dostępu, wykrywanie ryzyka skojarzone z adresami IP (na przykład niemożliwa podróż lub nieznane lokalizacje) nie zostaną wygenerowane.
+> It is not required to convert users from federated to managed authentication to use password hash sync.
+
+## <a name="during-a-disruption"></a>During a disruption
+
+If you opted for implementing a mitigation plan, you will be able to automatically survive a single access control disruption. However, if you opted to create a contingency plan, you will be able to activate your contingency policies during the access control disruption:
+
+1. Enable your contingency policies that grant targeted users, access to specific apps, from specific networks.
+2. Disable your regular control-based policies.
+
+### <a name="microsoft-recommendations"></a>Microsoft recommendations
+
+Depending on which mitigations or contingencies are used during a disruption, your organization could be granting access with just passwords. No safeguard is a considerable security risk that must be weighed carefully. Organizations must:
+
+1. As part of your change control strategy, document every change and the previous state to be able to roll back any contingencies you implemented as soon as the access controls are fully operational.
+2. Assume that malicious actors will attempt to harvest passwords through password spray or phishing attacks while you disabled MFA. Also, bad actors might already have passwords that previously did not grant access to any resource that can be attempted during this window. For critical users such as executives, you can partially mitigate this risk by resetting their passwords before disabling MFA for them.
+3. Archive all sign-in activity to identify who access what during the time MFA was disabled.
+4. [Triage all risk detections reported](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) during this window.
+
+## <a name="after-a-disruption"></a>After a disruption
+
+Undo the changes you made as part of the activated contingency plan once the service is restored that caused the disruption. 
+
+1. Enable the regular policies
+2. Disable your contingency policies. 
+3. Roll back any other changes you made and documented during the disruption.
+4. If you used an emergency access account, remember to regenerate credentials and physically secure the new credentials details as part of your emergency access account procedures.
+5. Continue to [triage all risk detections reported](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) after the disruption for suspicious activity.
+6. Revoke all refresh tokens that were issued [using PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) to target a set of users. Revoking all refresh tokens is important for privileged accounts used during the disruption and doing it will force them to reauthenticate and meet the control of the restored policies.
+
+## <a name="emergency-options"></a>Emergency options
+
+ In case of an emergency and your organization did not previously implement a mitigation or contingency plan, then follow the recommendations in the [Contingencies for user lockout](#contingencies-for-user-lockout) section if they already use Conditional Access policies to enforce MFA.
+If your organization is using per-user MFA legacy policies, then you can consider the following alternative:
+
+1. If you have the corporate network outbound IP address, you can add them as trusted IPs to enable authentication only to the corporate network.
+   1. If you don’t have the inventory of outbound IP addresses, or you required to enable access inside and outside the corporate network, you can add the entire IPv4 address space as trusted IPs by specifying 0.0.0.0/1 and 128.0.0.0/1.
+
+>[!IMPORTANT]
+ > If you broaden the trusted IP addresses to unblock access, risk detections associated with IP addresses (for example, impossible travel or unfamiliar locations) will not be generated.
 
 >[!NOTE]
- > Konfigurowanie [zaufanych adresów IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) dla usługi Azure MFA jest możliwe tylko przy użyciu [licencji Azure AD — wersja Premium](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
+ > Configuring [trusted IPs](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) for Azure MFA is only available with [Azure AD Premium licenses](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-* [Dokumentacja uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Zarządzanie kontami administracyjnymi z dostępem awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Skonfiguruj nazwane lokalizacje w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure AD Authentication Documentation](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Manage emergency-access administrative accounts in Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+* [Configure named locations in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Jak skonfigurować dołączone urządzenia hybrydowe Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+* [How to configure hybrid Azure Active Directory joined devices](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Przewodnik wdrażania funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
-  * [Wskazówki dotyczące haseł — Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Jakie są warunki Azure Active Directory dostępu warunkowego?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Co to są kontrole dostępu w Azure Active Directory dostęp warunkowy?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+  * [Password Guidance - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+* [What are conditions in Azure Active Directory Conditional Access?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
+* [What are access controls in Azure Active Directory Conditional Access?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

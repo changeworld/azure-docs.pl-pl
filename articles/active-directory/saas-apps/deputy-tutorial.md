@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja Azure Active Directory z zastępcą | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Deputy | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Deputy.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b52a56f51e4dcf5f27eddcd68ff17973df21c0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159224"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227602"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Samouczek: integracja Azure Active Directory z zastępcą
+# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Tutorial: Azure Active Directory integration with Deputy
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Deputy z usługą Azure Active Directory (Azure AD).
 Integrowanie aplikacji Deputy z usługą Azure AD zapewnia następujące korzyści:
@@ -212,7 +212,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -255,15 +255,15 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Deput
 
 2. W górnym okienku nawigacji kliknij pozycję **People (Osoby)** .
    
-    ![Osób](./media/deputy-tutorial/tutorial_deputy_001.png "Ludzie")
+    ![People](./media/deputy-tutorial/tutorial_deputy_001.png "Ludzie")
 
 3. Kliknij przycisk **Add People (Dodaj osoby)** , a następnie kliknij pozycję **Add a single person (Dodaj jedną osobę)** .
    
-    ![Dodawanie osób](./media/deputy-tutorial/tutorial_deputy_002.png "Dodawanie osób")
+    ![Add People](./media/deputy-tutorial/tutorial_deputy_002.png "Add People")
 
 4. Wykonaj poniższe kroki, a następnie kliknij pozycję **Save & Invite (Zapisz i zaproś)** .
    
-    ![Nowy użytkownik](./media/deputy-tutorial/tutorial_deputy_003.png "Nowy użytkownik")
+    ![New User](./media/deputy-tutorial/tutorial_deputy_003.png "New User")
 
     a. W polu tekstowym **Name (Imię i nazwisko)** wpisz imię i nazwisko użytkownika, na przykład **BrittaSimon**.
    
@@ -273,7 +273,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Deput
    
     d. Kliknij przycisk **Save & Invite (Zapisz i zaproś)** .
 
-5. Właściciel konta usługi AAD otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne. Aby aprowizować konta użytkowników usługi AAD, możesz użyć jakichkolwiek innych narzędzi tworzenia konta użytkownika aplikacji Deputy lub interfejsów API udostępnianych przez aplikację Deputy.
+5. The Azure AD account holder receives an email and follows a link to confirm their account before it becomes active. You can use any other Deputy user account creation tools or APIs provided by Deputy to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
@@ -287,5 +287,5 @@ Po kliknięciu kafelka Deputy w panelu dostępu powinno nastąpić automatyczne 
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
