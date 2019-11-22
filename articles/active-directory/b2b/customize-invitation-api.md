@@ -1,5 +1,5 @@
 ---
-title: B2B współpracy interfejsu API i dostosowywanie — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Interfejs API współpracy B2B i dostosowywanie — Azure Active Directory
 description: Współpraca B2B usługi Azure Active Directory wspiera relacje między firmami, umożliwiając partnerom biznesowym selektywne uzyskiwanie dostępu do Twoich aplikacji firmowych
 services: active-directory
 ms.service: active-directory
@@ -11,81 +11,81 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0369988bc6f6503f9940e6aabccb91ab843d63f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65811881"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272859"
 ---
-# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Dostosowywanie i współpracy usługi Azure Active Directory B2B interfejsu API
+# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory interfejs API współpracy B2B i dostosowywanie
 
-Mieliśmy wielu klientów, powiedz nam, że chce dostosować proces zaproszenie w sposób, który najlepiej sprawdza się w swoich organizacjach. Za pomocą naszego interfejsu API możesz to zrobić tylko. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Mamy wielu klientów, którzy chcą dostosować proces zaproszenia w sposób, który najlepiej sprawdza się w swoich organizacjach. Korzystając z naszego interfejsu API, możesz to zrobić. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
-## <a name="capabilities-of-the-invitation-api"></a>Możliwości zaproszenia do interfejsu API
+## <a name="capabilities-of-the-invitation-api"></a>Możliwości interfejsu API zaproszenia
 
 Interfejs API oferuje następujące możliwości:
 
-1. Zaproś użytkownika zewnętrznego za pomocą *wszelkie* adres e-mail.
+1. Zaproś użytkownika zewnętrznego o *dowolny* adres e-mail.
 
     ```
     "invitedUserDisplayName": "Sam"
     "invitedUserEmailAddress": "gsamoogle@gmail.com"
     ```
 
-2. Dostosowywanie, którego użytkownicy z zawarciem po zaakceptowaniu zaproszenia.
+2. Dostosuj miejsce, w którym użytkownicy mają być grunty po zaakceptowaniu zaproszenia.
 
     ```
     "inviteRedirectUrl": "https://myapps.microsoft.com/"
     ```
 
-3. Wybierz do wysyłania wiadomości e-mail standardowa zaproszenia przez nas
+3. Wybierz, aby wysłać do nas standardową wiadomość e-mail z zaproszeniem
 
     ```
     "sendInvitationMessage": true
     ```
 
-   komunikat do adresata, które można dostosowywać
+   z komunikatem do adresata, który można dostosować
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
     ```
 
-4. Możliwość DW: osób, które chcesz zachować w pętli o tym współpracownika zaproszenie.
+4. I wybierz pozycję DW: osoby, które chcesz zachować w pętli na temat zapraszania tego współpracownika.
 
-5. Lub całkowicie dostosować Twoje zaproszenie i przepływ pracy dołączania, wybierając pozycję nie wysłać powiadomienia za pośrednictwem usługi Azure AD.
+5. Lub całkowicie dostosuj przepływ pracy zaproszenia i dołączania, wybierając opcję nie wysyłaj powiadomień za pomocą usługi Azure AD.
 
     ```
     "sendInvitationMessage": false
     ```
 
-   W takim przypadku należy wrócić adres URL realizacji z interfejsu API, które można osadzić w szablon wiadomości e-mail, wiadomości Błyskawicznych lub innej metody dystrybucji wybranego.
+   W tym przypadku otrzymujesz adres URL umorzenia z interfejsu API, który można osadzić w szablonie wiadomości e-mail, wiadomości błyskawicznych lub innej wybranej metodzie dystrybucji.
 
-6. Ponadto jeśli jesteś administratorem, możesz zaprosić użytkownika jako członka.
+6. Na koniec, jeśli jesteś administratorem, możesz wybrać opcję zapraszania użytkownika jako członka.
 
     ```
     "invitedUserType": "Member"
     ```
 
 
-## <a name="authorization-model"></a>Modelu autoryzacji
+## <a name="authorization-model"></a>Model autoryzacji
 
-Interfejs API mogą być uruchamiane w następujących trybach autoryzacji:
+Interfejs API można uruchomić w następujących trybach autoryzacji:
 
-### <a name="app--user-mode"></a>Aplikacja i trybu użytkownika
+### <a name="app--user-mode"></a>Aplikacja i tryb użytkownika
 
-W tym trybie, kto korzysta na potrzeby interfejsu API musi mieć uprawnienia można utworzyć zaproszenia B2B.
+W tym trybie interfejs API musi mieć uprawnienia do tworzenia zaproszeń B2B.
 
-### <a name="app-only-mode"></a>Tryb tylko do aplikacji
+### <a name="app-only-mode"></a>Tryb tylko aplikacji
 
-W kontekście tylko aplikacji Aplikacja musi zakresu User.Invite.All związane z zaproszeniem została wykonana pomyślnie.
+W kontekście tylko aplikacji aplikacja wymaga elementu User. zaprasza. All, aby zaproszenie zostało zakończone pomyślnie.
 
-Aby uzyskać więcej informacji można znaleźć: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+Aby uzyskać więcej informacji, zapoznaj się z tematem: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
 
-Aby dodać, a następnie łatwo zaprosić użytkowników zewnętrznych dla organizacji, można użyć programu PowerShell. Utwórz zaproszenia przy użyciu polecenia cmdlet:
+Za pomocą programu PowerShell możesz łatwo dodawać i zapraszać użytkowników zewnętrznych do organizacji. Utwórz zaproszenie przy użyciu polecenia cmdlet:
 
 ```powershell
 New-AzureADMSInvitation
@@ -100,12 +100,12 @@ Możesz użyć następujących opcji:
 
 ### <a name="invitation-status"></a>Stan zaproszenia
 
-Po użytkownik zewnętrzny wysłać zaproszenie, można użyć **Get-AzureADUser** polecenia cmdlet, aby zobaczyć, jeśli została zaakceptowana go. Następujące właściwości Get-AzureADUser są wypełniane, gdy użytkownik zewnętrzny jest wysyłana wiadomość z zaproszeniem:
+Po wysłaniu zaproszenia użytkownika zewnętrznego możesz użyć polecenia cmdlet **Get-AzureADUser** , aby sprawdzić, czy zaakceptuje to polecenie. Następujące właściwości get-AzureADUser są wypełniane, gdy użytkownik zewnętrzny otrzymuje zaproszenie:
 
-* **UserState** wskazuje, czy to zaproszenie **PendingAcceptance** lub **zaakceptowano**.
-* **UserStateChangedOn** zawiera sygnaturę czasową, aby najnowsze zmiany **UserState** właściwości.
+* **UserState** wskazuje, czy zaproszenie jest **PendingAcceptance** lub **zaakceptowane**.
+* **UserStateChangedOn** pokazuje sygnaturę czasową dla najnowszej zmiany właściwości **userState** .
 
-Możesz użyć **filtru** opcję, aby przefiltrować wyniki według **UserState**. W poniższym przykładzie pokazano sposób filtrowania wyników do wyświetlenia tylko tych użytkowników, którzy mają oczekujące zaproszenie. W przykładzie pokazano również **Format-Lista** opcja, która umożliwia określenie właściwości do wyświetlenia. 
+Możesz użyć opcji **filtru** , aby odfiltrować wyniki według **userState**. W poniższym przykładzie pokazano, jak filtrować wyniki, aby pokazać tylko użytkowników, którzy mają Oczekujące zaproszenia. W przykładzie pokazano również opcję **listy format** , która pozwala określić właściwości do wyświetlenia. 
  
 
 ```powershell
@@ -113,15 +113,15 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 ```
 
 > [!NOTE]
-> Upewnij się, że masz najnowszą wersję modułu AzureAD PowerShell lub module AzureADPreview programu PowerShell. 
+> Upewnij się, że masz najnowszą wersję modułu AzureAD PowerShell lub moduł AzureADPreview PowerShell. 
 
 ## <a name="see-also"></a>Zobacz także
 
-Zapoznaj się z odwołanie zaproszenia interfejsu API w [ https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
+Zapoznaj się z informacjami w temacie Informacje o interfejsie API zaproszenia w [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-- [Elementy wiadomości e-mail z zaproszeniem współpracy B2B](invitation-email-elements.md)
-- [Realizacja zaproszenia współpracy B2B](redemption-experience.md)
-- [Dodają użytkowników we współpracy B2B bez zaproszenia](add-user-without-invite.md)
+- [Elementy wiadomości e-mail z zaproszeniem do współpracy B2B](invitation-email-elements.md)
+- [Realizacja zaproszenia do współpracy B2B](redemption-experience.md)
+- [Dodawanie użytkowników współpracy B2B bez zaproszenia](add-user-without-invite.md)

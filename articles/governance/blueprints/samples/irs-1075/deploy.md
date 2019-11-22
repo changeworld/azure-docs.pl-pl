@@ -1,123 +1,123 @@
 ---
-title: IRS 1075 blueprint sample - Deploy steps
-description: Deploy steps for the IRS 1075 (Rev.11-2016) blueprint sample including blueprint artifact parameter details.
+title: Przykład planu IRS 1075 — kroki wdrażania
+description: Wdróż kroki dla przykładowego planu IRS 1075 (Rev. 11-2016), w tym szczegóły parametru artefaktu.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 117f5b9e2ec33afd23b3ae348570070a45c56e63
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 033d4b38b7ccaf4d187615ec1df48c200fe5e683
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229228"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279501"
 ---
-# <a name="deploy-the-irs-1075-blueprint-sample"></a>Deploy the IRS 1075 blueprint sample
+# <a name="deploy-the-irs-1075-blueprint-sample"></a>Wdróż przykład planu IRS 1075
 
-To deploy the Azure Blueprints IRS 1075 (Rev.11-2016) blueprint sample, the following steps must be taken:
+Aby wdrożyć przykład strategii 1075 (Rev. 11-2016) platformy Azure, należy wykonać następujące czynności:
 
 > [!div class="checklist"]
-> - Create a new blueprint from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
+> - Utwórz nowy plan z przykładu
+> - Oznacz swoją kopię przykładowej publikacji jako **opublikowaną**
+> - Przypisz swoją kopię planu do istniejącej subskrypcji
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
-## <a name="create-blueprint-from-sample"></a>Create blueprint from sample
+## <a name="create-blueprint-from-sample"></a>Utwórz plan z przykładu
 
-First, implement the blueprint sample by creating a new blueprint in your environment using the sample as a starter.
-
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
-
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
-
-1. Find the **IRS 1075 (Rev.11-2016)** blueprint sample under _Other Samples_ and select **Use this sample**.
-
-1. Enter the _Basics_ of the blueprint sample:
-
-   - **Blueprint name**: Provide a name for your copy of the IRS 1075 (Rev.11-2016) blueprint sample.
-   - **Definition location**: Use the ellipsis and select the management group to save your copy of the sample to.
-
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
-
-1. Review the list of artifacts that make up the blueprint sample. Many of the artifacts have parameters that we'll define later. Select **Save Draft** when you've finished reviewing the blueprint sample.
-
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
-
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs, but that modification may move it away from alignment with NIST SP 800-53 controls.
+Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku przy użyciu przykładu jako starter.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Na stronie **pierwsze kroki** z lewej strony wybierz przycisk **Utwórz** w obszarze _Utwórz plan_.
 
-1. Select **Publish blueprint** at the top of the page. In the new page on the right, provide a **Version** for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the NIST SP 800-53 R4 blueprint sample." Then select **Publish** at the bottom of the page.
+1. Znajdź przykład planu **IRS 1075 (Rev. 11-2016)** pod _innymi próbkami_ i wybierz opcję **Użyj tego przykładu**.
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+1. Wprowadź _podstawy_ przykładu planu:
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+   - **Nazwa**planu: Podaj nazwę kopii przykładu planu IRS 1075 (Rev. 11-2016).
+   - **Lokalizacja definicji**: Użyj wielokropka i wybierz grupę zarządzania, w której ma zostać zapisana kopia przykładu.
+
+1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: artefakty** w dolnej części strony.
+
+1. Zapoznaj się z listą artefaktów, które składają się na przykład strategii. Wiele artefaktów ma parametry, które zostaną zdefiniowane w dalszej części. Wybierz pozycję **Zapisz wersję roboczą** po zakończeniu przeglądania przykładu planu.
+
+## <a name="publish-the-sample-copy"></a>Publikowanie kopii przykładowej
+
+Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być **opublikowany** , aby można go było przypisać i wdrożyć. Kopię przykładowej strategii można dostosować do środowiska i potrzeb, ale zmiana ta może nie być wyrównania z użyciem kontrolek NIST SP 800-53.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. Wybierz pozycję **Publikuj plan** w górnej części strony. Na nowej stronie z prawej strony Podaj **wersję** kopii przykładowej strategii. Ta właściwość jest przydatna w przypadku późniejszej modyfikacji. Podaj **Informacje o zmianach** , takie jak "Pierwsza wersja opublikowana z przykładu NIST SP 800-53 R4." Następnie wybierz pozycję **Publikuj** w dolnej części strony.
 
-1. Provide the parameter values for the blueprint assignment:
+## <a name="assign-the-sample-copy"></a>Przypisz przykładową kopię
+
+Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
+
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+
+1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
+
+1. Wybierz pozycję **Przypisz plan** w górnej części strony definicji planu.
+
+1. Podaj wartości parametrów dla przypisania planu:
 
    - Podstawy
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint.
-       Change as needed or leave as is.
-     - **Location**: Select a region for the managed identity to be created in. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint definition version**: Pick a **Published** version of your copy of the blueprint sample.
+     - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, do której została zapisana kopia przykładu planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdego z nich przy użyciu wprowadzonych parametrów.
+     - **Nazwa przypisania**: nazwa jest wstępnie wypełniona dla Ciebie na podstawie nazwy planu.
+       Zmień stosownie do potrzeb lub pozostaw jako is.
+     - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Wersja definicji**planu: Wybierz **opublikowaną** wersję kopii przykładowej strategii.
 
-   - Lock Assignment
+   - Przypisanie blokady
 
-     Select the blueprint lock setting for your environment. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../../concepts/resource-locking.md).
+     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../../concepts/resource-locking.md).
 
    - Tożsamość zarządzana
 
-     Leave the default _system assigned_ managed identity option.
+     Pozostaw domyślną opcję zarządzanej tożsamości _przypisanej do systemu_ .
 
-   - Artifact parameters
+   - Parametry artefaktu
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For a full list or artifact parameters and their descriptions, see [Artifact parameters table](#artifact-parameters-table).
+     Parametry zdefiniowane w tej sekcji dotyczą artefaktu, w ramach którego jest zdefiniowany. Parametry te są [parametrami dynamicznymi](../../concepts/parameters.md#dynamic-parameters) , ponieważ są one definiowane podczas przypisywania planu. Aby uzyskać pełną listę lub parametry artefaktów oraz ich opisy, zobacz [tabela parametrów artefaktów](#artifact-parameters-table).
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page. The blueprint assignment is created and artifact deployment begins. Deployment takes roughly an hour. To check on the status of deployment, open the blueprint assignment.
+1. Po wprowadzeniu wszystkich parametrów wybierz pozycję **Przypisz** w dolnej części strony. Utworzono przypisanie strategii i rozpocznie się wdrażanie artefaktów. Wdrażanie zajmuje trochę czasu. Aby sprawdzić stan wdrożenia, Otwórz przypisanie planu.
 
 > [!WARNING]
-> The Azure Blueprints service and the built-in blueprint samples are **free of cost**. Azure resources are [priced by product](https://azure.microsoft.com/pricing/). Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of running resources deployed by this blueprint sample.
+> Usługa plany platformy Azure i wbudowane przykłady planów są **bezpłatne**. Zasoby platformy Azure są [wyceniane według produktu](https://azure.microsoft.com/pricing/). Za pomocą [kalkulatora cen](https://azure.microsoft.com/pricing/calculator/) można oszacować koszt uruchamiania zasobów wdrożonych przez ten przykład strategii.
 
-## <a name="artifact-parameters-table"></a>Artifact parameters table
+## <a name="artifact-parameters-table"></a>Tabela parametrów artefaktów
 
-The following table provides a list of the blueprint artifact parameters:
+Poniższa tabela zawiera listę parametrów artefaktów strategii:
 
-|Artifact name|Artifact type|Nazwa parametru|Opis|
+|Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
-|Audit IRS 1075 (Rev.11-2016) controls and deploy specific VM Extensions to support audit requirements|Przypisywanie zasad|Log Analytics workspace ID that VMs should be configured for|This is the ID (GUID) of the Log Analytics workspace that the VMs should be configured for.|
-|Audit IRS 1075 (Rev.11-2016) controls and deploy specific VM Extensions to support audit requirements|Przypisywanie zasad|List of resource types that should have diagnostic logs enabled|List of resource types to audit if diagnostic log setting is not enabled. Acceptable values can be found at [Azure Monitor diagnostic logs schemas](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|Audit IRS 1075 (Rev.11-2016) controls and deploy specific VM Extensions to support audit requirements|Przypisywanie zasad|List of users that should be excluded from Windows VM Administrators group|A semicolon-separated list of members that should be excluded in the Administrators local group. Ex: Administrator; myUser1; myUser2|
-|Audit IRS 1075 (Rev.11-2016) controls and deploy specific VM Extensions to support audit requirements|Przypisywanie zasad|List of users that should be included in Windows VM Administrators group|A semicolon-separated list of members that should be included in the Administrators local group. Ex: Administrator; myUser1; myUser2|
-|Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)|Przypisywanie zasad|Log Analytics workspace for Linux VM Scale Sets (VMSS)|If this workspace is outside of the scope of the assignment you must manually grant 'Log Analytics Contributor' permissions (or similar) to the policy assignment's principal ID.|
-|Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)|Przypisywanie zasad|Optional: List of VM images that have supported Linux OS to add to scope|An empty array may be used to indicate no optional parameters: \[\]|
-|Deploy Log Analytics Agent for Linux VMs|Przypisywanie zasad|Log Analytics workspace for Linux VMs|If this workspace is outside of the scope of the assignment you must manually grant 'Log Analytics Contributor' permissions (or similar) to the policy assignment's principal ID.|
-|Deploy Log Analytics Agent for Linux VMs|Przypisywanie zasad|Optional: List of VM images that have supported Linux OS to add to scope|An empty array may be used to indicate no optional parameters: \[\]|
-|Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)|Przypisywanie zasad|Log Analytics workspace for Windows VM Scale Sets (VMSS)|If this workspace is outside of the scope of the assignment you must manually grant 'Log Analytics Contributor' permissions (or similar) to the policy assignment's principal ID.|
-|Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)|Przypisywanie zasad|Optional: List of VM images that have supported Windows OS to add to scope|An empty array may be used to indicate no optional parameters: \[\]|
-|Deploy Log Analytics Agent for Windows VMs|Przypisywanie zasad|Log Analytics workspace for Windows VMs|If this workspace is outside of the scope of the assignment you must manually grant 'Log Analytics Contributor' permissions (or similar) to the policy assignment's principal ID.|
-|Deploy Log Analytics Agent for Windows VMs|Przypisywanie zasad|Optional: List of VM images that have supported Windows OS to add to scope|An empty array may be used to indicate no optional parameters: \[\]|
-|Deploy Advanced Threat Protection on Storage Accounts|Przypisywanie zasad|Efekt|Information about policy effects can be found at [Understand Azure Policy Effects](../../../policy/concepts/effects.md)|
-|Deploy Auditing on SQL servers|Przypisywanie zasad|The value in days of the retention period (0 indicates unlimited retention)|Retention days (optional, 180 days if unspecified)|
-|Deploy Auditing on SQL servers|Przypisywanie zasad|Resource group name for storage account for SQL server auditing|Auditing writes database events to an audit log in your Azure Storage account (a storage account will be created in each region where a SQL Server is created that will be shared by all servers in that region). Important - for proper operation of Auditing do not delete or rename the resource group or the storage accounts.|
-|Deploy diagnostic settings for Network Security Groups|Przypisywanie zasad|Storage account prefix for network security group diagnostics|This prefix will be combined with the network security group location to form the created storage account name.|
-|Deploy diagnostic settings for Network Security Groups|Przypisywanie zasad|Resource group name for storage account for network security group diagnostics (must exist)|The resource group that the storage account will be created in. This resource group must already exist.|
+|Inspekcja urzędu skarbowego 1075 (Rev. 11-2016) — kontrolki i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji|Przypisywanie zasad|Log Analytics identyfikator obszaru roboczego, dla którego należy skonfigurować maszyny wirtualne|To jest identyfikator (GUID) obszaru roboczego Log Analytics, dla którego należy skonfigurować maszyny wirtualne.|
+|Inspekcja urzędu skarbowego 1075 (Rev. 11-2016) — kontrolki i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji|Przypisywanie zasad|Lista typów zasobów, dla których włączono obsługę dzienników diagnostycznych|Lista typów zasobów do inspekcji, jeśli nie włączono ustawienia dziennika diagnostycznego. Akceptowalne wartości można znaleźć Azure Monitor w obszarze [schematy dzienników diagnostycznych](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|Inspekcja urzędu skarbowego 1075 (Rev. 11-2016) — kontrolki i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji|Przypisywanie zasad|Lista użytkowników, którzy powinni być wykluczeni z grupy administratorów maszyn wirtualnych z systemem Windows|Rozdzielana średnikami lista elementów członkowskich, które powinny być wykluczone w grupie lokalnej Administratorzy. Przykład: administrator; Użytkownik1; Do|
+|Inspekcja urzędu skarbowego 1075 (Rev. 11-2016) — kontrolki i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji|Przypisywanie zasad|Lista użytkowników, którzy powinni zostać dołączeni do grupy administratorów maszyn wirtualnych z systemem Windows|Rozdzielana średnikami lista elementów członkowskich, które powinny być uwzględnione w lokalnej grupie Administratorzy. Przykład: administrator; Użytkownik1; Do|
+|Wdróż VM Scale Sets Log Analytics agenta dla systemu Linux (VMSS)|Przypisywanie zasad|Log Analytics obszar roboczy dla VM Scale Sets systemu Linux (VMSS)|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|Wdróż VM Scale Sets Log Analytics agenta dla systemu Linux (VMSS)|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: \[\]|
+|Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux|Przypisywanie zasad|Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Linux|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: \[\]|
+|Wdróż Log Analytics agenta dla systemu Windows VM Scale Sets (VMSS)|Przypisywanie zasad|Log Analytics obszar roboczy dla VM Scale Sets systemu Windows (VMSS)|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|Wdróż Log Analytics agenta dla systemu Windows VM Scale Sets (VMSS)|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: \[\]|
+|Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows|Przypisywanie zasad|Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Windows|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows|Przypisywanie zasad|Opcjonalnie: lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych: \[\]|
+|Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu|Przypisywanie zasad|Efekt|Informacje dotyczące efektów zasad można znaleźć w [opisie Azure Policy efektów](../../../policy/concepts/effects.md)|
+|Wdrażanie inspekcji na serwerach SQL|Przypisywanie zasad|Wartość w dniach okresu przechowywania (0 oznacza nieograniczony czas przechowywania)|Dni przechowywania (opcjonalnie, 180 dni, jeśli nie określono)|
+|Wdrażanie inspekcji na serwerach SQL|Przypisywanie zasad|Nazwa grupy zasobów dla konta magazynu na potrzeby inspekcji programu SQL Server|Inspekcja zapisuje zdarzenia bazy danych w dzienniku inspekcji na koncie usługi Azure Storage (konto magazynu zostanie utworzone w każdym regionie, w którym zostanie utworzone SQL Server, które będzie współużytkowane przez wszystkie serwery w tym regionie). Ważne — w przypadku właściwej operacji inspekcji nie należy usuwać ani zmieniać nazw grup zasobów ani kont magazynu.|
+|Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Prefiks konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń|Ten prefiks zostanie połączony z lokalizacją sieciowej grupy zabezpieczeń w celu utworzenia nazwy utworzonego konta magazynu.|
+|Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Nazwa grupy zasobów dla konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń (musi istnieć)|Grupa zasobów, w której zostanie utworzone konto magazynu. Ta grupa zasobów musi już istnieć.|
 
 ## <a name="next-steps"></a>Następne kroki
 
-Now that you've reviewed the steps to deploy the IRS 1075 (Rev.11-2016) blueprint sample, visit the following articles to learn about the blueprint and control mapping:
+Po przejrzeniu kroków w celu wdrożenia przykładu planu IRS 1075 (Rev. 11-2016) zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o mapowaniu planów i kontroli:
 
 > [!div class="nextstepaction"]
-> [IRS 1075 (Rev.11-2016) blueprint - Overview](./index.md)
-> [IRS 1075 (Rev.11-2016) blueprint - Control mapping](./control-mapping.md)
+> [Plan 1075 — omówienie](./index.md)
+> [plany IRS 1075 — mapowanie kontroli](./control-mapping.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

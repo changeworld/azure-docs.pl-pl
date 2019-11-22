@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 28ef082d6aac5557998f7b67443d4dafd3a0fb15
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012903"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285593"
 ---
 # <a name="access-and-customize-developer-portal"></a>Dostęp i dostosowywanie portalu dla deweloperów
 
@@ -35,10 +35,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Więcej szczegółowych informacji można znaleźć w portalu dla deweloperów w [portalu deweloperów API Management platformy Azure](api-management-howto-developer-portal.md).
 
 ![Portal dla deweloperów API Management — tryb administratora](media/api-management-howto-developer-portal-customize/cover.png)
-
-> [!WARNING]
-> Portal dla deweloperów jest obecnie wdrażany w usługach API Management Services.
-> Jeśli usługa jest nowo utworzona lub jest usługą warstwy dewelopera, należy mieć już najnowszą wersję. W przeciwnym razie mogą wystąpić problemy (na przykład przy użyciu funkcji publikowania). Oczekiwanie na zakończenie wdrażania funkcji w piątek, 22 listopada, 2019. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

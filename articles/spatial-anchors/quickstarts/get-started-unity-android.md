@@ -1,21 +1,21 @@
 ---
-title: Szybki Start — Tworzenie aplikacji dla systemu Android w środowisku Unity przy użyciu kotwic przestrzennych platformy Azure | Microsoft Docs
+title: 'Szybki Start: Tworzenie aplikacji dla systemu Android w środowisku Unity'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć aplikację dla systemu Android, używając aparatu Unity i usługi Spatial Anchors.
 author: craigktreasure
-manager: aliemami
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3ba50b8317e85d09aeaf32c1acc62342ee2683bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 213cf9b64f2c43274192c22efa2fa5a7dfbce5e5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847710"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277065"
 ---
-# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji dla systemu Android w środowisku Unity przy użyciu kotwic przestrzennych platformy Azure
+# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji dla systemu Android w środowisku Unity przy użyciu kotwic przestrzennych platformy Azure
 
 Ten przewodnik Szybki Start przedstawia sposób tworzenia aplikacji dla systemu Android w środowisku Unity przy użyciu [kotwic przestrzennych platformy Azure](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARCore dla systemu Android utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
 
@@ -36,7 +36,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 
 - Maszyna z systemem Windows lub macOS z programem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a> włącznie z obsługą kompilacji systemu Android i modułami Android SDK & NDK.
   - W przypadku uruchomienia w systemie Windows potrzebna jest również <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a>.
-  - W przypadku uruchamiania w systemie macOS Pobierz narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`polecenie.
+  - W przypadku uruchamiania w systemie macOS Pobierz narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`.
 - Urządzenie z systemem Android <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">pracujące w trybie dewelopera</a> i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">zgodne z platformą ARCore</a>.
   - Aby komputer mógł komunikować się z urządzeniem z systemem Android, mogą być wymagane dodatkowe sterowniki urządzeń. Aby uzyskać dodatkowe informacje i instrukcje, zobacz [tutaj](https://developer.android.com/studio/run/device.html) .
 
@@ -62,7 +62,7 @@ Zapisz scenę, wybierając pozycje **File (Plik)**  -> **Save (Zapisz)** .
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Wybierz urządzenie w obszarze **Uruchom urządzenie** i kliknij pozycję **Kompiluj i uruchom**. Zostanie wyświetlony monit o zapisanie `.apk` pliku, dla którego można wybrać dowolną nazwę.
+Wybierz urządzenie w obszarze **Uruchom urządzenie** i kliknij pozycję **Kompiluj i uruchom**. Zostanie wyświetlony monit o zapisanie pliku `.apk`, dla którego można wybrać dowolną nazwę.
 
 Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
 
@@ -75,4 +75,4 @@ Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udostępnianie kotwic przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)

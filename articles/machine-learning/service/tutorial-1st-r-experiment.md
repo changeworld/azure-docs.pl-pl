@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Twoja pierwsza ML eksperymentu z językiem R'
+title: 'Samouczek: Twój pierwszy model sieci przy użyciu języka R'
 titleSuffix: Azure Machine Learning
 description: W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w Azure Machine Learning i nauczysz model modelu regresji logistycznej przy użyciu pakietów R azuremlsdk i karetki, aby przewidzieć prawdopodobieństwo wystąpienia krytycznego w przypadku awarii.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092259"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307277"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Samouczek: uczenie i wdrażanie pierwszego modelu w języku R z Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,7 +70,7 @@ Zalecamy używanie RStudio do uruchamiania tego samouczka. W RStudio wybierz poz
 > Jeśli masz doświadczenie z RMarkdown, możesz użyć kodu z tego pliku.  Można też skopiować/wkleić fragmenty kodu z tego miejsca lub z tego artykułu do skryptu języka R lub wiersza polecenia.
 
 
-## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska programistycznego
+## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
 Konfiguracja dla pracy programistycznej w tym samouczku obejmuje następujące działania:
 
 * Instalowanie wymaganych pakietów

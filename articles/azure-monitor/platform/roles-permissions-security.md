@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do ról, uprawnień i zabezpieczeń w Azure Monitor
+title: Role, uprawnienia i zabezpieczenia w Azure Monitor
 description: Dowiedz się, jak używać wbudowanych ról i uprawnień Azure Monitor, aby ograniczyć dostęp do zasobów monitorowania.
 author: johnkemnetz
 services: azure-monitor
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260619"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305169"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Wprowadzenie do ról, uprawnień i zabezpieczeń w Azure Monitor
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, uprawnienia i zabezpieczenia w Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Wiele zespołów musi ściśle regulować dostęp do danych i ustawień monitorowania. Na przykład jeśli masz członków zespołu, którzy pracują wyłącznie w zakresie monitorowania (inżynierów pomocy technicznej, inżynierów DevOps) lub jeśli używasz dostawcy usług zarządzanych, możesz udzielić im dostępu tylko do monitorowania danych, jednocześnie ograniczając możliwość tworzenia, modyfikowania lub Usuń zasoby. W tym artykule pokazano, jak szybko zastosować wbudowaną rolę RBAC monitorowania do użytkownika na platformie Azure lub utworzyć własną rolę niestandardową dla użytkownika, który wymaga ograniczonych uprawnień monitorowania. W tym artykule omówiono zagadnienia dotyczące zabezpieczeń zasobów związanych z Azure Monitor i sposób ograniczania dostępu do zawartych w nich danych.
 
 ## <a name="built-in-monitoring-roles"></a>Wbudowane role monitorowania
-Wbudowane role Azure Monitor zaprojektowano w celu ułatwienia ograniczenia dostępu do zasobów w ramach subskrypcji, a jednocześnie włączenie tych osób odpowiedzialnych za monitorowanie infrastruktury w celu uzyskania i skonfigurowania potrzebnych danych. Azure Monitor oferuje dwie wbudowane role: Czytelnik monitorowania i współautor monitorowania.
+Wbudowane role Azure Monitor zaprojektowano w celu ułatwienia ograniczenia dostępu do zasobów w ramach subskrypcji, a jednocześnie włączenie tych osób odpowiedzialnych za monitorowanie infrastruktury w celu uzyskania i skonfigurowania potrzebnych danych. Azure Monitor udostępnia dwie wbudowane role: czytnik monitorowania i współautor monitorowania.
 
-### <a name="monitoring-reader"></a>Czytelnik monitorowania
+### <a name="monitoring-reader"></a>Czytnik monitorowania
 Osoby, którym przypisano rolę czytelnik monitorowania, mogą wyświetlać wszystkie dane monitorowania w ramach subskrypcji, ale nie mogą modyfikować żadnych zasobów ani edytować żadnych ustawień związanych z zasobami monitorowania. Ta rola jest odpowiednia dla użytkowników w organizacji, takich jak pomoc techniczna lub inżynierowie operacyjni, którzy muszą mieć możliwość:
 
 * Wyświetlanie pulpitów nawigacyjnych monitorowania w portalu i tworzenie własnych prywatnych pulpitów nawigacyjnych.
@@ -61,7 +61,7 @@ Osoby przypisane do roli współautor monitorowania mogą wyświetlać wszystkie
 * Tworzenie i usuwanie zapisanych wyszukiwań w Log Analytics obszarze roboczym.
 * Utwórz i Usuń konfigurację magazynu obszaru roboczego Log Analytics.
 
-\*Użytkownik musi również oddzielnie udzielić uprawnienia ListKeys do zasobu docelowego (konto magazynu lub przestrzeń nazw centrum zdarzeń), aby ustawić profil dziennika lub ustawienie diagnostyczne.
+Aby ustawić profil dziennika lub ustawienia diagnostyczne, \*użytkownik musi również mieć przyznane uprawnienie ListKeys dla zasobu docelowego (konto magazynu lub przestrzeń nazw centrum zdarzeń).
 
 > [!NOTE]
 > Ta rola nie daje dostępu do odczytu do danych dziennika przesyłanych strumieniowo do centrum zdarzeń lub przechowywanych na koncie magazynu. [Poniżej znajdują](#security-considerations-for-monitoring-data) się informacje dotyczące konfigurowania dostępu do tych zasobów.
@@ -182,7 +182,7 @@ Azure Monitor potrzebuje dostępu do zasobów platformy Azure w celu zapewnienia
 ### <a name="secured-storage-accounts"></a>Zabezpieczone konta magazynu 
 
 Dane monitorowania są często zapisywane na koncie magazynu. Można upewnić się, że dane skopiowane na konto magazynu nie są dostępne dla nieautoryzowanych użytkowników. Aby uzyskać dodatkowe zabezpieczenia, można zablokować dostęp do sieci, aby zezwolić na dostęp do konta magazynu tylko autoryzowanym zasobom i zaufanym usługom firmy Microsoft, ograniczając konto magazynu do używania "wybranych sieci".
-![Okno dialogowe](./media/roles-permissions-security/secured-storage-example.png) ustawień usługi Azure Storage Azure monitor jest uznawane za jedną z następujących "zaufanych usług firmy Microsoft", Jeśli zezwolisz zaufanym usługom firmy Microsoft na dostęp do bezpiecznego magazynu, usługa Azure monitor będzie mieć dostęp do bezpiecznego konta magazynu; Włączanie Zapisywanie Azure Monitor dzienników diagnostycznych, dziennika aktywności i metryk na koncie magazynu w ramach tych chronionych warunków. Spowoduje to również umożliwienie Log Analytics odczytywania dzienników z bezpiecznego magazynu.   
+![okno dialogowe ustawień usługi Azure Storage](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor jest uznawana za jeden z następujących "zaufanych usług firmy Microsoft", Jeśli zezwolisz zaufanym usługom firmy Microsoft na dostęp do bezpiecznego magazynu, usługa Azure monitor będzie mieć dostęp do bezpiecznego konta magazynu; włączenie zapisywania Azure Monitor dzienników diagnostycznych, dziennika aktywności i metryk na koncie magazynu w ramach tych chronionych warunków. Spowoduje to również umożliwienie Log Analytics odczytywania dzienników z bezpiecznego magazynu.   
 
 
 Aby uzyskać więcej informacji, zobacz [zabezpieczenia sieci i usługa Azure Storage](../../storage/common/storage-network-security.md)

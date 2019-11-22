@@ -1,28 +1,24 @@
 ---
-title: Jak utworzyć klaster usługi Kubernetes, włączone dla usługi Azure Dev spacji, za pomocą usługi Azure Cloud Shell
-titleSuffix: Azure Dev Spaces
+title: Jak utworzyć klaster Kubernetes z włączoną obsługą Azure Dev Spaces przy użyciu Azure Cloud Shell
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 10/04/2018
 ms.topic: conceptual
-description: Dowiedz się, jak szybko utworzyć klaster usługi Kubernetes, włączone dla usługi Azure Dev miejsca do magazynowania bezpośrednio z przeglądarki, bez konieczności instalowania żadnych.
-keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
-ms.openlocfilehash: cd0c8c3c26feefe3448ada1cf1575706cd17e525
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+description: Dowiedz się, jak szybko utworzyć klaster Kubernetes z włączoną funkcją Azure Dev Spaces bezpośrednio z przeglądarki bez konieczności instalowania żadnych elementów.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
+ms.openlocfilehash: dbdc9226e417b3142284386ae3586819cda802d9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808691"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280112"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Cloud Shell
 
-Możesz użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do utworzenia klastra usługi Azure Kubernetes Service za pomocą **wypróbuj** przycisku z tej strony. Jeśli użytkownik nie jest zalogowany, postępuj zgodnie z monitami, aby zalogować się przy użyciu konta platformy Azure, a następnie wpisz polecenie w wierszu usługi Azure Cloud Shell polecenia, gdy się pojawi.
+Możesz użyć [Azure Cloud Shell](/azure/cloud-shell) , aby utworzyć klaster usługi Azure Kubernetes, używając przycisku **Wypróbuj** na tej stronie. Jeśli użytkownik nie jest zalogowany, postępuj zgodnie z monitami, aby zalogować się przy użyciu konta platformy Azure, a następnie wpisz polecenia w wierszu Azure Cloud Shell, gdy zostanie wyświetlony.
 
 ## <a name="create-the-cluster"></a>Tworzenie klastra
 
-Najpierw utwórz grupę zasobów w [region, który obsługuje usługi Azure Dev miejsca do magazynowania][supported-regions].
+Najpierw utwórz grupę zasobów w [regionie, który obsługuje Azure dev Spaces][supported-regions].
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -34,14 +30,14 @@ Utwórz klaster Kubernetes za pomocą następującego polecenia:
 az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
 ```
 
-Utworzenie klastra trwa kilka minut.  Po ukończeniu dane wyjściowe jest wyświetlana w formacie JSON. Wyszukaj `provisioningState` i sprawdź, ma ona `Succeeded`.
+Utworzenie klastra trwa kilka minut.  Po ukończeniu dane wyjściowe są wyświetlane w formacie JSON. Poszukaj `provisioningState` i sprawdź, czy jest `Succeeded`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [miejsca do magazynowania Azure Dev](/azure/dev-spaces/) linki do samouczków, pełne.
+Zobacz [Azure dev Spaces](/azure/dev-spaces/) , aby uzyskać linki do pełnych samouczków.
 
 > [!IMPORTANT]
-> Wiele miejsc do magazynowania Azure Dev przewodników Szybki Start i samouczków korzystanie z wiersza polecenia platformy Azure Dev miejsca do magazynowania w celu wykonywania operacji. Nie można zainstalować interfejs wiersza polecenia Azure Dev miejsca do magazynowania w usłudze Azure Cloud Shell.
+> Wiele przewodników Szybki Start i samouczków Azure Dev Spaces korzysta z interfejsu wiersza polecenia Azure Dev Spaces do wykonywania operacji. Nie można zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell.
 
 
 [supported-regions]: ../about.md#supported-regions-and-configurations

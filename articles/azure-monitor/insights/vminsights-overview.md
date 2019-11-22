@@ -1,18 +1,18 @@
 ---
 title: Co to jest usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)? | Microsoft Docs
-description: Usługa Azure Monitor dla maszyn wirtualnych to funkcja usługi Azure monitor, który łączy kondycji i wydajności monitorowania systemu operacyjnego maszyny Wirtualnej platformy Azure, a także automatycznie odnajdywania składników aplikacji i zależności z innymi zasobami oraz mapuje komunikację między nimi. Ten artykuł zawiera omówienie.
+description: Omówienie Azure Monitor dla maszyn wirtualnych, które monitorują kondycję i wydajność maszyn wirtualnych platformy Azure, a także automatycznie odnajdują i mapują składniki aplikacji oraz ich zależności.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/14/2019
-ms.openlocfilehash: 84ebf92f795dfe1a21570d782bf24fad27f50eda
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e9a3df0172f276800a3049675f6e858db7f0370c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109069"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307283"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co to jest usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)?
 

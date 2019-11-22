@@ -1,27 +1,23 @@
 ---
 title: Debugowanie i iteracja przy użyciu Visual Studio Code i platformy .NET Core w systemie Kubernetes przy użyciu Azure Dev Spaces (Visual Studio Code)
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Szybkie tworzenie Kubernetes przy użyciu kontenerów i mikrousług na platformie Azure
+description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b65dc5ed5d6d69ecde2108fcc322e27999704123
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: 94bab8044ad9221fe9445dfa7c9e6912274bfe2b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815842"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279802"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Szybki Start: debugowanie i iteracja przy użyciu Visual Studio Code i platformy .NET Core w systemie Kubernetes przy użyciu Azure Dev Spaces (Visual Studio Code)
 
-W tym przewodniku dowiesz się, jak:
+Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
-- Skonfiguruj Azure Dev Spaces z zarządzanym klastrem Kubernetes na platformie Azure.
+- Konfigurowanie usługi Azure Dev Spaces za pomocą zarządzanego klastra Kubernetes na platformie Azure.
 - Iteracyjnie opracowuj kod w kontenerach przy użyciu Visual Studio Code.
 - Debuguj kod w obszarze deweloperskim z Visual Studio Code.
 
@@ -32,10 +28,10 @@ Azure Dev Spaces umożliwia również debugowanie i iterację przy użyciu:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli go nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
+- Subskrypcja platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
 - [Visual Studio Code zainstalowane](https://code.visualstudio.com/download).
 - [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) i [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) rozszerzenia Visual Studio Code zainstalowane.
-- [Zainstalowano interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
 
@@ -51,7 +47,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 Użyj `use-dev-spaces` polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami. Poniższe polecenie włącza miejsca deweloperskie w klastrze *MyAKS* w grupie Grupa *zasobów* i tworzy *domyślny* obszar dev.
 
 > [!NOTE]
-> Polecenie `use-dev-spaces` zainstaluje również interfejs wiersza polecenia Azure Dev Spaces, jeśli nie został jeszcze zainstalowany. Nie można zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell.
+> `use-dev-spaces` polecenie zainstaluje również interfejs wiersza polecenia Azure Dev Spaces, jeśli nie został jeszcze zainstalowany. Nie można zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -87,11 +83,11 @@ Otwórz Visual Studio Code, kliknij *plik* , a następnie *Otwórz...* , przejd�
 
 Masz teraz otwarty projekt *webfrontonu* w Visual Studio Code. Aby uruchomić aplikację w obszarze dev, wygeneruj zasoby wykresu Docker i Helm przy użyciu rozszerzenia Azure Dev Spaces w palecie poleceń.
 
-Aby otworzyć paletę poleceń w Visual Studio Code, kliknij przycisk *Widok* i *paleta poleceń*. Zacznij pisać `Azure Dev Spaces` i kliknij przycisk `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
+Aby otworzyć paletę poleceń w Visual Studio Code, kliknij przycisk *Widok* i *paleta poleceń*. Zacznij pisać `Azure Dev Spaces` a następnie kliknij pozycję `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
 ![Przygotuj pliki konfiguracyjne dla Azure Dev Spaces](./media/common/command-palette.png)
 
-Gdy Visual Studio Code również zostanie wyświetlony komunikat z prośbą o skonfigurowanie publicznego punktu końcowego, wybierz `Yes`, aby włączyć publiczny punkt końcowy.
+Gdy Visual Studio Code również zostanie wyświetlony komunikat z prośbą o skonfigurowanie publicznego punktu końcowego, wybierz pozycję `Yes`, aby włączyć publiczny punkt końcowy.
 
 ![Wybierz publiczny punkt końcowy](media/common/select-public-endpoint.png)
 
@@ -112,12 +108,12 @@ Możesz zobaczyć, że usługa jest uruchomiona, otwierając publiczny adres URL
 
 Kliknij pozycję *Debuguj* , a następnie *Zatrzymaj debugowanie* , aby zatrzymać debuger.
 
-## <a name="update-code"></a>Aktualizuj kod
+## <a name="update-code"></a>Aktualizowanie kodu
 
 Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować każdy plik w projekcie i ponownie uruchomić program *.NET Core (AZDS)* . Na przykład:
 
 1. Jeśli aplikacja jest nadal uruchomiona, kliknij pozycję *Debuguj* , a następnie *Zatrzymaj debugowanie* , aby ją zatrzymać.
-1. Aktualizacja [wiersza 22 w `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) do:
+1. Aktualizuj [wiersz 22 w `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) do:
     
     ```csharp
     ViewData["Message"] = "Your application description page in Azure.";
@@ -133,7 +129,7 @@ Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować każdy pli
 
 Uruchom usługę w trybie debugowania przy użyciu *programu .NET Core Launch (AZDS)* .
 
-Przejdź z powrotem do widoku *Eksploratora* , klikając przycisk *Wyświetl* , a następnie *Eksploratora*. Otwórz `Controllers/HomeController.cs` i kliknij w dowolnym miejscu w wierszu 22, aby umieścić w nim kursor. Aby ustawić punkt przerwania, naciśnij klawisz *F9* lub kliknij pozycję *Debuguj* , a następnie *Przełącz punkt przerwania*.
+Przejdź z powrotem do widoku *Eksploratora* , klikając przycisk *Wyświetl* , a następnie *Eksploratora*. Otwórz `Controllers/HomeController.cs` i kliknij gdziekolwiek w wierszu 22, aby umieścić w nim kursor. Aby ustawić punkt przerwania, naciśnij klawisz *F9* lub kliknij pozycję *Debuguj* , a następnie *Przełącz punkt przerwania*.
 
 Otwórz usługę w przeglądarce i zwróć uwagę, że komunikat nie jest wyświetlany. Wróć do Visual Studio Code i obserwuj wiersz 20. Ustawiony punkt przerwania został wstrzymany usługi w wierszu 20. Aby wznowić działanie usługi, naciśnij klawisz *F5* lub kliknij pozycję *Debuguj* i *Kontynuuj*. Wróć do przeglądarki i Zauważ, że komunikat jest teraz wyświetlany.
 
@@ -168,7 +164,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych aplikacji w wielu kontenerach i jak można uprościć programowanie do współpracy, pracując z różnymi wersjami lub gałęziami kodu w różnych miejscach. 
 
 > [!div class="nextstepaction"]
-> [Praca z wieloma kontenerami i programowaniem zespołu](multi-service-netcore.md)
+> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-netcore.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

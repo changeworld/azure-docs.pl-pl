@@ -1,20 +1,16 @@
 ---
-title: Utwórz środowisko programistyczne Node.js platformy Kubernetes w chmurze z programem VS Code
-titleSuffix: Azure Dev Spaces
+title: Tworzenie środowiska deweloperskiego Kubernetes Node. js w chmurze za pomocą VS Code
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
-ms.openlocfilehash: 30f912e9c1573b32247bb3c2a3f7d4026436748b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
-ms.translationtype: MT
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
+ms.openlocfilehash: 46d15ddef0f6c58902b85304827a6dd5bd635a14
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503032"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280170"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu środowiska Node.js
 
@@ -25,7 +21,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 - Efektywne tworzenie i testowanie kodu w środowisku zespołu.
 
 > [!Note]
-> **Pobierz zapoznaniu się z** w dowolnym momencie wyświetlić [Rozwiązywanie problemów](troubleshooting.md) sekcji.
+> Jeśli w dowolnym momencie **masz zablokowany dostęp** do programu, zobacz sekcję [Rozwiązywanie problemów](troubleshooting.md) .
 
 ## <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 Usługa Azure Dev Spaces wymaga minimalnej konfiguracji komputera lokalnego. Większość ustawień obszaru deweloperskiego jest przechowywana w chmurze i udostępniana innym użytkownikom. Zacznij od pobrania i uruchomienia [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -55,7 +51,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Tworzenie klastra Kubernetes obsługującego usługę Azure Dev Spaces
 
-W wierszu polecenia, należy utworzyć grupę zasobów w [region, który obsługuje usługi Azure Dev miejsca do magazynowania][supported-regions].
+W wierszu polecenia Utwórz grupę zasobów w [regionie, który obsługuje Azure dev Spaces][supported-regions].
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -110,7 +106,7 @@ Polecenie `azds prep` interfejsu wiersza polecenia platformy Azure generuje zaso
 
 Na razie nie trzeba rozumieć pełnej zawartości tych plików. Warto jednak wspomnieć, że **te same zasoby konfiguracji jako kodu platformy Kubernetes i Docker mogą być używane od etapu opracowywania po etap produkcyjny, co zapewnia większą spójność w różnych środowiskach.**
  
-Polecenie `prep` generuje również plik o nazwie `./azds.yaml`. Jest to plik konfiguracji usługi Azure Dev Spaces. Uzupełnia on artefakty platformy Docker i Kubernetes o dodatkową konfigurację zapewniającą środowisko programowania przyrostowego na platformie Azure.
+Polecenie `./azds.yaml` generuje również plik o nazwie `prep`. Jest to plik konfiguracji usługi Azure Dev Spaces. Uzupełnia on artefakty platformy Docker i Kubernetes o dodatkową konfigurację zapewniającą środowisko programowania przyrostowego na platformie Azure.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kompilowanie i uruchamianie kodu na platformie Kubernetes
 Teraz uruchomimy nasz kod! W oknie terminalu uruchom to polecenie z **głównego folderu kodu**, WebFrontEnd:
@@ -138,24 +134,24 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Identyfikowanie publiczny adres URL dla usługi w danych wyjściowych `up` polecenia. Kończy się `.azds.io`. W powyższym przykładzie jest publiczny adres URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Określ publiczny adres URL dla usługi w danych wyjściowych polecenia `up`. Zostanie ona zakończona w `.azds.io`. W powyższym przykładzie publiczny adres URL jest `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
 
-Aby wyświetlić aplikację sieci web, należy otworzyć publiczny adres URL w przeglądarce. Zauważ również, `stdout` i `stderr` danych wyjściowych jest przesyłany strumieniowo do *śledzenia azds* okno terminalu podczas interakcji z aplikacją sieci web. Widoczne będą także śledzenie informacji o żądań HTTP, ponieważ komputery przechodzą przez system. To ułatwia śledzenie złożonych z wielu usług wywołań podczas programowania. Instrumentacja dodane przez deweloperów miejsca do magazynowania zapewnia to żądanie śledzenia.
+Aby wyświetlić swoją aplikację internetową, Otwórz publiczny adres URL w przeglądarce. Zwróć również uwagę na to, `stdout` i `stderr` dane wyjściowe są przesyłane strumieniowo do okna terminalu *śledzenia azds* podczas korzystania z aplikacji sieci Web. Zobaczysz również informacje o śledzeniu żądań HTTP, które przechodzą przez system. Ułatwia to śledzenie złożonych wywołań wielousługowych podczas opracowywania. Instrumentacja dodana przez funkcję Spaces dev udostępnia śledzenie tego żądania.
 
 > [!Note]
-> Oprócz publicznego adresu URL, można użyć alternatywnej `http://localhost:<portnumber>` adresu URL, który jest wyświetlany w danych wyjściowych konsoli. Jeśli używasz adresu URL localhost, może wydawać się, jak kontener jest uruchomiony lokalnie, ale faktycznie działa w systemie Azure. Usługa Azure Dev do magazynowania korzysta z usługi Kubernetes *do przodu portu* funkcjonalność do mapowania portu localhost w kontenerze uruchomiona w usłudze AKS. To ułatwia interakcji z usługą z komputera lokalnego.
+> Oprócz publicznego adresu URL można użyć alternatywnego adresu URL `http://localhost:<portnumber>`, który jest wyświetlany w danych wyjściowych konsoli. Jeśli używasz adresu URL hosta lokalnego, może się wydawać, że kontener działa lokalnie, ale w rzeczywistości jest uruchomiony na platformie Azure. Azure Dev Spaces używa funkcji *przesyłania dalej portów* Kubernetes, aby mapować port localhost do kontenera działającego w AKS. Ułatwia to korzystanie z usługi z komputera lokalnego.
 
 ### <a name="update-a-content-file"></a>Aktualizowanie pliku zawartości
 Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Kubernetes — pozwala też szybko i wielokrotnie wyświetlać efekt zmian wprowadzonych w kodzie w środowisku Kubernetes w chmurze.
 
-1. Znajdź plik `./public/index.html` i zmień kod HTML. Na przykład zmienić kolor tła strony na odcień koloru niebieskiego [w wierszu 15](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15):
+1. Znajdź plik `./public/index.html` i zmień kod HTML. Na przykład zmień kolor tła strony na odcień niebieskiego [w wierszu 15](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15):
 
     ```html
     <body style="background-color: #95B9C7; margin-left:10px; margin-right:10px;">
     ```
 
 1. Zapisz plik. Po chwili w oknie terminalu pojawi się komunikat informujący o tym, że plik w uruchomionym kontenerze został zaktualizowany.
-1. Przejdź do przeglądarki i odśwież stronę. Powinna być widoczna zmiana koloru.
+1. Otwórz przeglądarkę i odśwież stronę. Powinna być widoczna zmiana koloru.
 
 Co się stało? Modyfikacje plików zawartości, takich jak HTML i CSS, nie wymagają ponownego uruchomienia procesu Node.js. Z tego względu aktywne polecenie `azds up` automatycznie synchronizuje wszystkie zmodyfikowane pliki zawartości bezpośrednio z uruchomionym kontenerem na platformie Azure, co umożliwia szybki podgląd zmian zawartości.
 
@@ -164,7 +160,7 @@ Otwórz aplikację internetową na urządzeniu przenośnym, używając publiczne
 
 Aby rozwiązać ten problem, dodaj metatag `viewport`:
 1. Otwórz plik `./public/index.html`
-1. Dodaj `viewport` metatag w istniejącym `head` element, który rozpoczyna się [w wierszu 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6):
+1. Dodaj `viewport` meta tag do istniejącego elementu `head`, który zaczyna się [w wierszu 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6):
 
     ```html
     <head>
@@ -197,7 +193,7 @@ Oprócz tego dostępna jest jeszcze *szybsza metoda* opracowywania kodu. Omówim
 
 ## <a name="debug-a-container-in-kubernetes"></a>Debugowanie kontenera w środowisku Kubernetes
 
-W tej sekcji użyjesz programu VS Code do bezpośredniego debugowania naszego kontenera uruchomionego na platformie Azure. Ponadto dowiesz się, jak uzyskać szybszą pętlę edycji, uruchamiania i testowania.
+W tej sekcji użyjesz programu VS Code do bezpośredniego debugowania naszego kontenera uruchomionego na platformie Azure. Ponadto dowiesz się, jak uzyskać szybszą pętlę do edycji, uruchamiania i testowania.
 
 ![](media/common/edit-refresh-see.png)
 
@@ -228,11 +224,11 @@ Po naciśnięciu klawisza **F5** możesz debugować kod w środowisku Kubernetes
 Podobnie jak w przypadku polecenia `up` po rozpoczęciu debugowania kod jest synchronizowany ze środowiskiem deweloperskim, a kontener jest kompilowany i wdrażany w środowisku Kubernetes. Tym razem debuger jest dołączany do zdalnego kontenera.
 
 > [!Tip]
-> Na pasku stanu programu VS Code zmieni się na pomarańczowy, wskazujący, że jest dołączony debuger. Możesz klikać adresu URL, który umożliwia szybkie otworzyć witrynę również zostaną wyświetlone.
+> VS Code pasek stanu zmieni kolor na pomarańczowy, co oznacza, że debuger jest dołączony. Zostanie również wyświetlony adres URL, który można kliknąć, aby szybko otworzyć lokację.
 
 ![](media/common/vscode-status-bar-url.png)
 
-Ustaw punkt przerwania w pliku kodu po stronie serwera, na przykład w ramach `app.get('/api'...` na [wiersz 13 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
+Ustaw punkt przerwania w pliku kodu po stronie serwera, na przykład w `app.get('/api'...` w [wierszu 13 `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
 
     ```javascript
     app.get('/api', function (req, res) {
@@ -240,12 +236,12 @@ Ustaw punkt przerwania w pliku kodu po stronie serwera, na przykład w ramach `a
     });
     ```
 
-Odśwież stronę przeglądarki lub naciśnij klawisz *Say ponownie* przycisk, a powinien trafiony punkt przerwania i będzie można przejść przez kod.
+Odśwież stronę przeglądarki lub naciśnij przycisk *podyktuj ponownie* , a następnie przejdź do punktu przerwania i przechodzenie przez kod.
 
 Masz pełny dostęp do informacji debugowania, takich jak stos wywołań, zmienne lokalne, informacje o wyjątkach itd., zupełnie jakby kod był wykonywany lokalnie.
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>Edytowanie kodu i odświeżanie sesji debugowania
-Za pomocą debugera aktywnego wprowadzić kod, Edytuj; na przykład zmodyfikować wiadomości powitania na [wiersz 13 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) ponownie:
+Gdy debuger jest aktywny, dokonaj edycji kodu; na przykład zmodyfikuj ponownie Komunikat powitalny w [wierszu 13 `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
 
 ```javascript
 app.get('/api', function (req, res) {
@@ -253,7 +249,7 @@ app.get('/api', function (req, res) {
 });
 ```
 
-Zapisz plik i w **okienko akcji debugowania**, kliknij przycisk **ponowne uruchomienie** przycisku. 
+Zapisz plik, a następnie w **okienku Akcje debugowania**kliknij przycisk **Uruchom ponownie** . 
 
 ![](media/common/debug-action-refresh.png)
 
@@ -278,7 +274,7 @@ W tej konfiguracji kontener uruchamia narzędzie *nodemon*. Po zmianie kodu po s
 
 **Umiesz już korzystać z metody szybkiego wprowadzania zmian w kodzie i debugowania bezpośrednio w środowisku Kubernetes.** Następnie zobaczysz, jak utworzyć i wywołać drugi kontener.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-nodejs.md)

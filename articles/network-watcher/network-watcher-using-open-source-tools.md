@@ -1,6 +1,7 @@
 ---
-title: Wizualizowanie wzorców ruchu sieciowego za pomocą usługi Azure Network Watcher i narzędzi typu open source | Dokumentacja firmy Microsoft
-description: Ta strona zawiera opis sposobu jak za pomocą usługi Network Watcher przechwytywania pakietów Capanalysis wizualizowanie wzorców ruchu do i z maszyn wirtualnych.
+title: Wizualizowanie wzorców ruchu sieciowego za pomocą narzędzi open source
+titleSuffix: Azure Network Watcher
+description: Na tej stronie opisano, jak używać funkcji przechwytywania pakietów Network Watcher z Capanalysis do wizualizacji wzorców ruchu do i z maszyn wirtualnych.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64936020"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277759"
 ---
-# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Wizualizowanie wzorców ruchu sieciowego do i z maszyn wirtualnych przy użyciu narzędzi typu open source
+# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Wizualizowanie wzorców ruchu sieciowego do i z maszyn wirtualnych za pomocą narzędzi open source
 
-Przechwytywanie pakietów zawierają dane sieciowe, które umożliwiają wykonywanie sieci, analiza śledcza i inspekcję pakietów. Istnieje wiele otwiera narzędzi źródła, które umożliwia analizowanie przechwytywania pakietów w celu uzyskania szczegółowych informacji o sieci. Jednego takiego narzędzia jest CapAnalysis, narzędzie do wizualizacji przechwytywania pakietów open source. Wizualizowanie danych przechwytywania pakietów jest to wartościowy sposób szybkiego uzyskania szczegółowych informacji dotyczących wzorców i anomalii w ramach sieci. Wizualizacje zapewniają również metody udostępniania takich wgląd w sposób łatwy w użyciu.
+Przechwytywanie pakietów zawiera dane sieci, które umożliwiają przeprowadzenie szczegółowej inspekcji sieci i dowodowych. Istnieje wiele narzędzi do otwierania źródła, których można użyć do analizowania przechwytywania pakietów w celu uzyskania szczegółowych informacji o sieci. Jednym z tych narzędzi jest CapAnalysis, narzędzie do wizualizacji przechwytywania pakietów typu open source. Wizualizowanie danych przechwytywania pakietów jest cennym sposobem na szybkie uzyskiwanie szczegółowych informacji na temat wzorców i anomalii w sieci. Wizualizacje udostępniają również metody udostępniania takich szczegółowych informacji w łatwy w użyciu sposób.
 
-Azure Network Watcher oferuje możliwość przechwytywania danych, co umożliwia testowanie przechwytywania pakietów w sieci. Ten artykuł zawiera omówienie sposobu wizualizacji i Uzyskaj wgląd w pakiet przechwytuje CapAnalysis przy użyciu usługi Network Watcher.
+Network Watcher platformy Azure umożliwia przechwytywanie danych przez umożliwienie przechwycenia pakietów w sieci. Ten artykuł zawiera omówienie sposobu wizualizacji i uzyskiwania szczegółowych informacji z przechwytywania pakietów przy użyciu CapAnalysis z Network Watcher.
 
 ## <a name="scenario"></a>Scenariusz
 
-Będziesz mieć prostą aplikację wdrożone na maszynie Wirtualnej na platformie Azure mają być wizualizowanie jego ruchu sieciowego, można szybko zidentyfikować wzorce przepływ i wszelkie anomalie możliwe za pomocą narzędzi typu open source. Przy użyciu usługi Network Watcher można uzyskać przechwytywania pakietów środowiska sieci i przechowuje je bezpośrednio na swoim koncie magazynu. CapAnalysis można pozyskiwać przechwytywania pakietów, bezpośrednio z obiektu blob magazynu i jego zawartość wizualizacji.
+Prosta aplikacja internetowa wdrożona na maszynie wirtualnej na platformie Azure chce używać narzędzi typu "open source" do wizualizacji ruchu sieciowego, aby szybko identyfikować wzorce przepływu i ewentualne anomalie. Za pomocą Network Watcher można uzyskać przechwytywanie pakietów środowiska sieciowego i bezpośrednio je zapisać na koncie magazynu. CapAnalysis może następnie pozyskać przechwycenie pakietu bezpośrednio z obiektu blob magazynu i wizualizować jego zawartość.
 
 ![scenariusz][1]
 
@@ -37,66 +38,66 @@ Będziesz mieć prostą aplikację wdrożone na maszynie Wirtualnej na platformi
 
 ### <a name="install-capanalysis"></a>Zainstaluj CapAnalysis
 
-Aby zainstalować CapAnalysis na maszynie wirtualnej, mogą odwoływać się do oficjalnego podanych tutaj instrukcji https://www.capanalysis.net/ca/how-to-install-capanalysis.
-W kolejności CapAnalysis zdalnego dostępu, należy otworzyć port 9877 na maszynie Wirtualnej przez dodanie nowej reguły zabezpieczeń dla ruchu przychodzącego. Aby uzyskać więcej informacji o tworzeniu reguł sieciowych grup zabezpieczeń, zapoznaj się [tworzenie reguł w istniejącej sieciowej grupie zabezpieczeń](../virtual-network/manage-network-security-group.md#create-a-security-rule). Gdy reguła została pomyślnie dodana, powinno być możliwe do uzyskania dostępu CapAnalysis z `http://<PublicIP>:9877`
+Aby zainstalować CapAnalysis na maszynie wirtualnej, możesz zapoznać się z oficjalnymi instrukcjami znajdującymi się tutaj https://www.capanalysis.net/ca/how-to-install-capanalysis.
+Aby zdalnie uzyskać dostęp do CapAnalysis, musisz otworzyć port 9877 na maszynie wirtualnej przez dodanie nowej reguły zabezpieczeń dla ruchu przychodzącego. Aby uzyskać więcej informacji na temat tworzenia reguł w sieciowych grupach zabezpieczeń, zapoznaj się z tematem [Tworzenie reguł w istniejącej sieciowej grupy zabezpieczeń](../virtual-network/manage-network-security-group.md#create-a-security-rule). Po pomyślnym dodaniu reguły powinno być możliwe uzyskanie dostępu do CapAnalysis z `http://<PublicIP>:9877`
 
-### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Usługa Azure Network Watcher, aby rozpocząć sesję przechwytywania pakietów
+### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Użyj usługi Azure Network Watcher, aby rozpocząć sesję przechwytywania pakietów
 
-Usługa Network Watcher umożliwia przechwytywanie pakietów, aby śledzić ruch do i z maszyny wirtualnej. Możesz skorzystać z instrukcjami w [Przechwytywanie pakietów zarządzania w usłudze Network Watcher](network-watcher-packet-capture-manage-portal.md) można uruchomić sesji przechwytywania pakietów. Przechwytywanie pakietów mogą być przechowywane w CapAnalysis dostępu do magazynu obiektów blob.
+Network Watcher umożliwia przechwytywanie pakietów do śledzenia ruchu do i z maszyny wirtualnej. Aby rozpocząć sesję przechwytywania pakietów, można zapoznać się z instrukcjami w obszarze [Zarządzanie przechwytywaniem pakietów przy użyciu Network Watcher](network-watcher-packet-capture-manage-portal.md) . Przechwytywanie pakietów może być przechowywane w magazynie obiektów blob, do którego można uzyskać dostęp za pomocą CapAnalysis.
 
-### <a name="upload-a-packet-capture-to-capanalysis"></a>Przekaż przechwytywania pakietów do CapAnalysis
-Możesz bezpośrednio przekazać przechwytywania pakietów podjęte przez usługi network watcher za pomocą karty "Importuj z adresu URL", a także łącze do obiektu blob magazynu, gdzie są przechowywane przechwytywania pakietów.
+### <a name="upload-a-packet-capture-to-capanalysis"></a>Przekazywanie przechwycenia pakietu do CapAnalysis
+Przechwycenie pakietu wykonane przez obserwatora sieci można przekazać bezpośrednio przy użyciu karty "Importuj z adresu URL" i podać link do obiektu blob magazynu, w którym jest przechowywany przechwycenie pakietu.
 
-Gdy udostępnianie linku do CapAnalysis, upewnij się, że Dołącz token sygnatury dostępu Współdzielonego do adresu URL obiektu blob magazynu.  Aby to zrobić, przejdź do sygnatury dostępu współdzielonego z konta magazynu, wyznaczyć dozwolone uprawnienia i naciśnij przycisk Generowanie sygnatury dostępu Współdzielonego, aby utworzyć token. Token sygnatury dostępu Współdzielonego można następnie dołącz do adresu URL obiektu blob magazynu przechwytywania pakietów.
+Po udostępnieniu linku do CapAnalysis upewnij się, że w adresie URL obiektu blob magazynu zostanie dołączony token sygnatury dostępu współdzielonego.  W tym celu przejdź do sygnatury dostępu współdzielonego z konta magazynu, Wyznacz dozwolone uprawnienia i naciśnij przycisk Generuj SAS, aby utworzyć token. Następnie można dołączyć token sygnatury dostępu współdzielonego do adresu URL obiektu blob magazynu przechwytywania pakietów.
 
-Wynikowy adres URL będzie wyglądać podobnie do następującego adresu URL: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Otrzymany adres URL będzie wyglądać podobnie do następującego adresu URL: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
 
 
-### <a name="analyzing-packet-captures"></a>Przechwytywanie pakietów analizowanie
+### <a name="analyzing-packet-captures"></a>Analizowanie przechwytywania pakietów
 
-CapAnalysis oferuje różne opcje usługi przechwycenie pakietu każdej dostarczanie analizy z punktu widzenia różnych wizualizacji. Za pomocą tych wizualne podsumowania można zrozumieć trendy ruchu sieciowego i szybko wykryć wszelkie nietypowe działania związane z. Niektóre z tych funkcji są wyświetlane na poniższej liście:
+CapAnalysis oferuje różne opcje wizualizacji przechwytywania pakietów, z których każda dostarcza analizę z innej perspektywy. Dzięki tym podsumowaniem wizualizacji możesz zrozumieć trendy dotyczące ruchu sieciowego i szybko wykasować wszystkie nietypowe działania. Niektóre z tych funkcji przedstawiono na poniższej liście:
 
 1. Tabele przepływu
 
-    Ta tabela zawiera listę przepływów danych pakietów, sygnaturę czasową, skojarzone z przepływami i różnych protokołów skojarzonych z przepływu, a także źródłowych i docelowych adresów IP.
+    Ta tabela zawiera listę przepływów w danych pakietu, sygnaturę czasową skojarzoną z przepływami i różnych protokołów skojarzonych z przepływem, a także źródłowy i docelowy adres IP.
 
-    ![flow — strona capanalysis][5]
+    ![Strona przepływu capanalysis][5]
 
-1. Omówienie protokołu
+1. Przegląd protokołu
 
-    W tym okienku można szybko zobaczyć rozkład ruchu sieciowego za pośrednictwem różnych protokołów i różnych lokalizacji geograficznych.
+    To okienko umożliwia szybkie wyświetlenie rozkładu ruchu sieciowego przez różne protokoły i lokalizacje geograficzne.
 
-    ![Omówienie protokołu capanalysis][6]
+    ![Przegląd protokołu capanalysis][6]
 
 1. Statystyki
 
-    W tym okienku zezwala, aby wyświetlić statystyki ruchu sieciowego — bajtów wysłanych i odebranych z źródłowe i docelowe adresy IP, przepływy dla każdego z źródłowe i docelowe adresy IP, protokół używany w przypadku różnych przepływów i czas trwania przepływów.
+    To okienko umożliwia wyświetlanie statystyk ruchu sieciowego — liczba bajtów wysłanych i odebranych z źródłowych i docelowych adresów IP, przepływy dla każdego źródłowego i docelowego adresu IP, protokół używany do różnych przepływów oraz czas trwania przepływów.
 
-    ![statystyki capanalysis][7]
+    ![Statystyka capanalysis][7]
 
-1. Mapę geograficzną
+1. geomap
 
-    W tym okienku zapewnia widoku mapy, ruchu sieciowego, kolory, skalowanie do wielkości ruchu z każdego kraju/regionu. Możesz wybrać wyróżnione krajów/regionów, aby wyświetlić przepływ dodatkowe statystyki, takie jak część danych wysyłane i odbierane z adresów IP w danym kraju/regionie.
+    To okienko zawiera widok mapy ruchu sieciowego, dzięki czemu kolory są skalowane do wielkości ruchu z każdego kraju/regionu. Można wybrać wyróżnione kraje/regiony, aby wyświetlić dodatkowe statystyki przepływu, takie jak część danych wysłanych i odebranych z adresów IP w tym kraju/regionie.
 
-    ![Mapę geograficzną][8]
+    ![geomap][8]
 
 1. Filtry
 
-    CapAnalysis zawiera zestaw filtrów szybka analiza określonych pakietów. Na przykład można filtrować dane według protokołu, aby uzyskać szczegółowe informacje na ten część ruchu.
+    CapAnalysis zawiera zestaw filtrów do szybkiej analizy określonych pakietów. Na przykład możesz wybrać filtrowanie danych według protokołu, aby uzyskać szczegółowe informacje o tym podzbiorze ruchu.
 
     ![filtry][11]
 
-    Odwiedź stronę [ https://www.capanalysis.net/ca/#about ](https://www.capanalysis.net/ca/#about) Aby dowiedzieć się więcej o możliwościach wszystkich CapAnalysis.
+    Odwiedź [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) , aby dowiedzieć się więcej o możliwościach wszystkich CapAnalysis.
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Funkcja przechwytywania pakietów usługi Network Watcher umożliwia przechwytywanie danych wymaganych do przeprowadzenia sieci, analiza śledcza i lepiej zrozumieć ruchu sieciowego. W tym scenariuszu pokazaliśmy, jak przechwytywania pakietów z usługi Network Watcher można łatwo zintegrować z narzędziami open source wizualizacji. Za pomocą narzędzi typu open source, takich jak CapAnalysis wizualizacji przechwytywania pakietów, możesz głębokiej inspekcji pakietów i szybkie Określanie trendów w ramach ruchu sieciowego.
+Funkcja przechwytywania pakietów Network Watcher umożliwia przechwytywanie danych niezbędnych do przeprowadzenia dowodowych sieci i lepszego zrozumienia ruchu sieciowego. W tym scenariuszu pokazano, jak przechwycenia pakietów z Network Watcher można łatwo zintegrować z narzędziami do wizualizacji Open Source. Za pomocą narzędzi typu "open source", takich jak CapAnalysis, aby wizualizować przechwycone pakiety, można przeprowadzać głębokie inspekcje pakietów i szybko identyfikować trendy w ramach ruchu sieciowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat dzienników przepływu sieciowych grup zabezpieczeń, odwiedź stronę [dzienników przepływów sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md)
+Aby dowiedzieć się więcej na temat dzienników przepływów sieciowej grupy zabezpieczeń, odwiedź [dzienniki przepływów sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md)
 
-Dowiedz się, jak wizualizowanie dzienników przepływów sieciowych grup zabezpieczeń z usługą Power BI, odwiedzając [wizualizacji przepływów sieciowych grup zabezpieczeń dzienników za pomocą usługi Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Dowiedz się, jak wizualizować dzienniki przepływu sieciowej grupy zabezpieczeń za pomocą Power BI, odwiedzając [wizualizacje sieciowej grupy zabezpieczeń przepływy dzienników z Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 <!--Image references-->
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png

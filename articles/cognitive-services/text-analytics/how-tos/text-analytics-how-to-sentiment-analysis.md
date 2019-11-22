@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: 292619bdf114f366f5d0aff0efdfd8d9606842b1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031457"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286553"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: wykrywanie tonacji z analiza tekstu
 
@@ -36,7 +36,7 @@ Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodręb
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Publiczna wersja zapoznawcza analiza tonacji v3
 
-[Następna wersja analiza tonacji](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczącą poprawę dokładności i szczegółowości kategoryzacji tekstu interfejsu API i oceniania.
+[Następna wersja analiza tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczącą poprawę dokładności i szczegółowości kategoryzacji tekstu interfejsu API i oceniania.
 
 > [!NOTE]
 > * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
@@ -276,7 +276,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy analizy tonacji przy u�
 + Żądanie POST jest punktem końcowym `/sentiment` przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , który jest prawidłowy dla Twojej subskrypcji.
 + Dane wyjściowe odpowiedzi, które składają się z wyniku tonacji dla każdego identyfikatora dokumentu, mogą być przesyłane strumieniowo do dowolnej aplikacji, która akceptuje kod JSON. Przykładowe aplikacje to programy Excel i Power BI, aby podać kilka nazw.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
  [Omówienie analizy tekstu](../overview.md) [Frequently asked questions (FAQ) (Często zadawane pytania (FAQ))](../text-analytics-resource-faq.md)</br>
  [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712)

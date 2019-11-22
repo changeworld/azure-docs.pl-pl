@@ -3,12 +3,12 @@ title: Omówienie zasad platformy Azure
 description: Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie definicji zasad oraz zarządzanie nimi w środowisku platformy Azure.
 ms.date: 12/06/2018
 ms.topic: overview
-ms.openlocfilehash: e6b74eb2ffe15256523e46f0c246ba9f4d399c4d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.openlocfilehash: 1e8d00039f7cb2a1dd01eb02e623c37fc1afe126
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959323"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307079"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Przegląd usługi Azure Policy
 
@@ -35,7 +35,7 @@ Usługa Azure Policy ma kilka uprawnień, znanych jako operacje, w ramach dwóch
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Wiele wbudowanych ról udziela uprawnień zasobom usługi Azure Policy. Rola **współautor zasad zasobów (wersja zapoznawcza)** obejmuje większość operacji Azure Policy. **Właściciel** ma pełne uprawnienia. Zarówno **współautor** , jak i **czytelnik** mogą używać wszystkich operacji odczytu Azure Policy, ale **współautor** może również wyzwolić korygowanie.
+Wiele wbudowanych ról udziela uprawnień zasobom usługi Azure Policy. Rola **współautor zasad zasobów** obejmuje większość operacji Azure Policy. **Właściciel** ma pełne uprawnienia. Zarówno **współautor** , jak i **czytelnik** mogą używać wszystkich operacji odczytu Azure Policy, ale **współautor** może również wyzwolić korygowanie.
 
 Jeśli żadna z wbudowanych ról nie ma wymaganych uprawnień, należy utworzyć [rolę niestandardową](../../role-based-access-control/custom-roles.md).
 

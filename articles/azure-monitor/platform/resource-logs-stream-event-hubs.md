@@ -1,6 +1,6 @@
 ---
 title: Przesyłanie strumieniowe dzienników zasobów platformy Azure do centrum zdarzeń
-description: Informacje na temat przesyłania strumieniowego dzienników zasobów platformy Azure do centrum zdarzeń.
+description: Informacje na temat przesyłania strumieniowego dzienników zasobów platformy Azure do centrum zdarzeń w celu wysyłania danych do systemów zewnętrznych, takich jak rozwiązań Siem innych firm i inne rozwiązania do analizy dzienników.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 1d7a533658b6c72caae9649d7e5a9c4fad117245
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262416"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304946"
 ---
 # <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Przesyłanie strumieniowe dzienników zasobów platformy Azure do usługi Azure Event Hubs
 [Dzienniki zasobów](resource-logs-overview.md) na platformie Azure zapewniają rozbudowane, częste dane dotyczące wewnętrznej operacji zasobu platformy Azure. W tym artykule opisano przesyłanie strumieniowe dzienników zasobów do centrów zdarzeń w celu wysyłania danych do systemów zewnętrznych, takich jak rozwiązań Siem innych firm i inne rozwiązania do analizy dzienników.
@@ -25,7 +25,7 @@ Przesyłaj strumieniowo dzienniki zasobów na platformie Azure do centrów zdarz
 * **Przesyłaj strumieniowo dzienniki do systemów rejestrowania i telemetrii innej firmy** — przesyłanie strumieniowe wszystkich dzienników zasobów do jednego centrum zdarzeń w celu przełączenia danych dziennika do narzędzia Siem lub log Analytics innej firmy.
 * **Utwórz niestandardową platformę telemetrii i rejestrowania** — wysoce skalowalny charakter publikowania/subskrybowania centrów zdarzeń pozwala na elastyczne pozyskiwanie dzienników zasobów do niestandardowej platformy teletry. Aby uzyskać szczegółowe informacje [, zobacz Projektowanie i ustalanie rozmiaru globalnej platformy telemetrii w usłudze Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
 
-* **Wyświetlanie informacji o kondycji usługi przez przesyłanie strumieniowe danych do Power BI** — używanie Event Hubs, Stream Analytics i Power BI do przekształcania danych diagnostycznych na szczegółowe informacje w czasie rzeczywistym w ramach usług platformy Azure. Zobacz [Stream Analytics i Power BI: Pulpit nawigacyjny analizy w czasie rzeczywistym na potrzeby](../../stream-analytics/stream-analytics-power-bi-dashboard.md) przesyłania strumieniowego danych w celu uzyskania szczegółowych informacji dotyczących tego rozwiązania.
+* **Wyświetlanie informacji o kondycji usługi przez przesyłanie strumieniowe danych do Power BI** — używanie Event Hubs, Stream Analytics i Power BI do przekształcania danych diagnostycznych na szczegółowe informacje w czasie rzeczywistym w ramach usług platformy Azure. Zobacz [Stream Analytics i Power BI: pulpit nawigacyjny analizy w czasie rzeczywistym na potrzeby przesyłania strumieniowego danych](../../stream-analytics/stream-analytics-power-bi-dashboard.md) w celu uzyskania szczegółowych informacji dotyczących tego rozwiązania.
 
     Poniższy kod SQL to przykładowe zapytanie Stream Analytics, za pomocą którego można analizować wszystkie dane dzienników w tabeli Power BI:
     
@@ -59,12 +59,12 @@ W przypadku korzystania z dzienników zasobów z centrów zdarzeń będzie to fo
 
 | Nazwa elementu | Opis |
 | --- | --- |
-| rekordy |Tablica wszystkich zdarzeń dziennika w tym ładunku. |
+| ewidencj |Tablica wszystkich zdarzeń dziennika w tym ładunku. |
 | time |Godzina wystąpienia zdarzenia. |
 | category |Kategoria dziennika dla tego zdarzenia. |
 | resourceId |Identyfikator zasobu zasobu, który spowodowało wygenerowanie tego zdarzenia. |
 | operationName |Nazwa operacji. |
-| level |Opcjonalny. Wskazuje poziom zdarzenia dziennika. |
+| poziom |Opcjonalny. Wskazuje poziom zdarzenia dziennika. |
 | properties |Właściwości zdarzenia. Są one różne dla każdej usługi platformy Azure, zgodnie [ ]()z opisem w temacie. |
 
 

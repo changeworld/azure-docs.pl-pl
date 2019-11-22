@@ -14,23 +14,23 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: c6da3270de94fd0d5525f28cdd31039f5bd85dbd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5330c99f4d42f591944ddc5c58ac98bea6387da5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594072"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278146"
 ---
-# <a name="tutorial-set-azure-cdn-caching-rules"></a>Samouczek: Ustawianie reguł buforowania w usłudze Azure CDN
+# <a name="tutorial-set-azure-cdn-caching-rules"></a>Samouczek — konfigurowanie reguł buforowania usługi Azure CDN
 
 > [!NOTE] 
-> Reguły buforowania usługi Azure CDN są dostępne tylko w usłudze **Azure CDN w warstwie Standardowa firmy Verizon** oraz **Azure CDN w warstwie Standardowa firmy Akamai**. W przypadku usługi **Azure CDN w warstwie Premium firmy Verizon** użyj [aparatu reguł usługi Azure CDN](cdn-rules-engine.md) w portalu **Zarządzaj**, aby uzyskać podobną funkcjonalność.
+> Reguły buforowania są dostępne tylko dla **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** profile. Aby uzyskać **Azure CDN z profilów firmy Microsoft** , należy użyć [standardowego aparatu reguł](cdn-standard-rules-engine-reference.md) dla **Azure CDN Premium w** profilach Verizon, należy użyć [aparatu reguł Verizon w warstwie Premium](cdn-rules-engine.md) w portalu **zarządzania** , aby uzyskać podobną funkcjonalność.
  
 
 W tym samouczku opisano, jak można użyć reguł buforowania usługi Azure Content Delivery Network (CDN) do ustawiania lub modyfikowania domyślnego zachowania wygaśnięcia pamięci podręcznej globalnie i w warunkach niestandardowych — np. w przypadku ścieżki adresu URL i rozszerzenia pliku. Usługa Azure CDN oferuje dwa typy reguł buforowania:
-- Globalne reguły buforowania: Możesz ustawić jedną globalne reguły buforowania dla każdego punktu końcowego w profilu, który ma wpływ na wszystkie żądania do punktu końcowego. Globalna reguła buforowania zastępuje wszelkie nagłówki dyrektywy pamięci podręcznej HTTP, jeśli zostały one ustawione.
+- Globalne reguły buforowania: można ustawić jedną globalną regułę buforowania dla każdego punktu końcowego w profilu, co wpłynie na wszystkie żądania do punktu końcowego. Globalna reguła buforowania zastępuje wszelkie nagłówki dyrektywy pamięci podręcznej HTTP, jeśli zostały one ustawione.
 
-- Niestandardowe reguły buforowania: Można ustawić co najmniej jeden niestandardowe reguły buforowania dla każdego punktu końcowego w Twoim profilu. Niestandardowe reguły buforowania pasują do określonych ścieżek i rozszerzeń plików, są przetwarzane kolejno i zastępują globalną regułę buforowania, jeśli została ustawiona. 
+- Niestandardowe reguły buforowania: można skonfigurować co najmniej jedną niestandardową regułę buforowania dla każdego punktu końcowego w profilu. Niestandardowe reguły buforowania pasują do określonych ścieżek i rozszerzeń plików, są przetwarzane kolejno i zastępują globalną regułę buforowania, jeśli została ustawiona. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -42,7 +42,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz temat [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
+Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
 
 ## <a name="open-the-azure-cdn-caching-rules-page"></a>Otwieranie strony reguł buforowania usługi Azure CDN
 
@@ -101,7 +101,7 @@ W poprzednich krokach utworzono reguły buforowania. Jeśli nie chcesz już ich 
 6. Kliknij przycisk **Zapisz** u góry strony.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

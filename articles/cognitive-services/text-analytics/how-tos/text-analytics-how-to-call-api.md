@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 5697ae4c8864e0b9c4cbfc9e1e1048e1c3d60f77
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837211"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286601"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analiza tekstu
 
@@ -25,8 +25,7 @@ Każde żądanie musi zawierać klucz dostępu i punkt końcowy HTTP. Punkt koń
 
 Odzyskanie tego analiza tekstu jest bezstanowe, aby nie było żadnych zasobów danych do zarządzania. Tekst zostanie przekazany, przeanalizowany po odebraniu, a wyniki są zwracane natychmiast do aplikacji wywołującej.
 
-> [!Tip]
-> W przypadku połączeń jednokrotnych aby zobaczyć, jak działa interfejs API, możesz wysyłać żądania POST z wbudowanej **konsoli testowania interfejsu API**dostępnego na dowolnej [stronie dokumentacji interfejsu API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Nie ma żadnej konfiguracji, a jedyne wymagania polegają na wklejeniu klucza dostępu i dokumentów JSON do żądania. 
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,8 +41,8 @@ Obecnie można przesłać te same dokumenty do wszystkich operacji analiza tekst
 
 | Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
 |---------|--------------|-----------|-------|
-|`id` |Typ danych to ciąg, ale w temacie identyfikatory dokumentów w programie mają być liczbami całkowitymi. | Wymagany | System używa identyfikatorów dostarczanych do struktury danych wyjściowych. Kody języka, kluczowe frazy i oceny tonacji są generowane dla każdego identyfikatora w żądaniu.|
-|`text` | Nieprzetworzony tekst nieprzebudowany, do 5 120 znaków. | Wymagany | W przypadku wykrywania języka tekst może być wyrażony w dowolnym języku. W przypadku analizy tonacji, wyodrębniania kluczowych fraz i identyfikacji jednostek tekst musi być w [obsługiwanym języku](../text-analytics-supported-languages.md). |
+|`id` |Typ danych to ciąg, ale w temacie identyfikatory dokumentów w programie mają być liczbami całkowitymi. | Wymagane | System używa identyfikatorów dostarczanych do struktury danych wyjściowych. Kody języka, kluczowe frazy i oceny tonacji są generowane dla każdego identyfikatora w żądaniu.|
+|`text` | Nieprzetworzony tekst nieprzebudowany, do 5 120 znaków. | Wymagane | W przypadku wykrywania języka tekst może być wyrażony w dowolnym języku. W przypadku analizy tonacji, wyodrębniania kluczowych fraz i identyfikacji jednostek tekst musi być w [obsługiwanym języku](../text-analytics-supported-languages.md). |
 |`language` | 2-znakowy kod [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) dla [obsługiwanego języka](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębniania kluczowych fraz i konsolidacji jednostek; opcjonalne do wykrywania języka. Jeśli wyłączysz go, nie ma żadnego błędu, ale analiza zostanie nieprzerwana. Kod języka powinien odpowiadać podanej `text`. |
 
 Aby uzyskać więcej informacji na temat limitów, zobacz [Analiza tekstu omówienie > limitów danych](../overview.md#data-limits). 
@@ -91,7 +90,7 @@ Usługa akceptuje żądania o rozmiarze do 1 MB. Jeśli używasz programu Poster
 
    W programie Poster odpowiedź jest wyświetlana w następnym oknie w dół, jako pojedynczy dokument JSON, z elementem dla każdego identyfikatora dokumentu podanego w żądaniu.
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
  [Przegląd analizy tekstu](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)

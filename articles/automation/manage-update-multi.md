@@ -1,20 +1,20 @@
 ---
 title: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych platformy Azure
-description: W tym artykule opisano sposób zarządzania aktualizacjami dla usługi Azure Virtual Machines.
+description: W tym artykule opisano sposób zarządzania aktualizacjami dla maszyn wirtualnych platformy Azure i innych niż platformy Azure.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374496"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278679"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -31,6 +31,8 @@ Aby korzystać z Update Management, potrzebne są:
 
 - Maszyna wirtualna lub komputer z zainstalowanym obsługiwanym systemem operacyjnym.
 
+- Dostęp do repozytorium aktualizacji dla maszyn wirtualnych z systemem Linux dołączanych do rozwiązania.
+
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
 Update Management jest obsługiwana w następujących systemach operacyjnych:
@@ -39,17 +41,13 @@ Update Management jest obsługiwana w następujących systemach operacyjnych:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko oceny aktualizacji.         |
 |Windows Server 2008 R2 z dodatkiem SP1 lub nowszym     |Wymagany jest program Windows PowerShell w wersji 4,0 lub nowszej. ([Pobierz zawmf 4,0](https://www.microsoft.com/download/details.aspx?id=40855))</br> W celu zwiększenia niezawodności zaleca się używanie programu Windows PowerShell 5,1. ([Pobierz zawmf 5,1](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
-|Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
-|Ubuntu 14,04 LTS, 16,04 LTS i 18,04 LTS (x86/x64)      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
+|CentOS 6 (x86/x64) i 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | |
+|Ubuntu 14,04 LTS, 16,04 LTS i 18,04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > Aby w przypadku systemu Ubuntu uniknąć stosowania aktualizacji poza oknem obsługi, zmień konfigurację pakietu Unattended-Upgrade tak, aby wyłączyć automatyczne aktualizacje. Aby uzyskać więcej informacji, zobacz [temat poświęcony aktualizacjom automatycznym w podręczniku systemu Ubuntu Server](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
-
-Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.
-
-To rozwiązanie nie obsługuje agenta Log Analytics dla systemu Linux, który został skonfigurowany pod kątem raportowania do wielu obszarów roboczych usługi Azure Log Analytics.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Włącz Update Management dla usługi Azure Virtual Machines
 
@@ -69,13 +67,11 @@ Po zakończeniu dołączania Update Management jest włączona dla swojej maszyn
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Włącz Update Management dla maszyn wirtualnych i komputerów spoza platformy Azure
 
-Aby dowiedzieć się, jak włączyć Update Management dla maszyn wirtualnych i komputerów z systemem innym niż Azure, zobacz [łączenie komputerów z systemem Windows z usługą Azure monitor na platformie Azure](../log-analytics/log-analytics-windows-agent.md).
-
-Aby dowiedzieć się, jak włączyć Update Management dla maszyn wirtualnych i komputerów z systemem innym niż Azure, zobacz [łączenie komputerów z systemem Linux z dziennikami Azure monitor](../log-analytics/log-analytics-agent-linux.md).
+Log Analytics agenta dla systemów Windows i Linux należy zainstalować na maszynach wirtualnych działających w sieci firmowej lub w innym środowisku chmury, aby umożliwić ich korzystanie z Update Management. Aby poznać wymagania systemowe i obsługiwane metody wdrażania agenta na maszynach hostowanych poza platformą Azure, zobacz [Omówienie agenta log Analytics](../azure-monitor/platform/log-analytics-agent.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Wyświetl komputery dołączone do konta usługi Automation
 
-Po włączeniu Update Management dla maszyn można wyświetlić informacje o maszynie, wybierając pozycję **komputery**. Można wyświetlić informacje na temat *nazwy komputera*, *stanu zgodności*, *środowiska*, *typu systemu operacyjnego*, *zainstalowanych aktualizacji krytycznych i zabezpieczeń*, *innych zainstalowanych aktualizacji*oraz *aktualizacji gotowości agenta* dla Pracując.
+Po włączeniu Update Management dla maszyn można wyświetlić informacje o maszynie, wybierając pozycję **komputery**. Można wyświetlić informacje na temat *nazwy komputera*, *stanu zgodności*, *środowiska*, *typu systemu operacyjnego*, *zainstalowanych aktualizacji krytycznych i zabezpieczeń*, *innych zainstalowanych aktualizacji*oraz *aktualizacji gotowości agenta* dla komputerów.
 
   ![Karta z wyświetlonymi komputerami](./media/manage-update-multi/update-computers-tab.png)
 
@@ -130,8 +126,13 @@ W okienku **nowe wdrożenie aktualizacji** podaj następujące informacje:
 
 - **Nazwa**: Wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **system Windows** lub **Linux**.
-- **Grupy do zaktualizowania (wersja zapoznawcza)** : zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management-groups.md)
-- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowaną grupę lub wybierz maszyny, aby wybrać maszyny, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Stan kondycji maszyny można sprawdzić przed zaplanowaniem wdrożenia aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md)
+- **Grupy do zaktualizowania**: Zdefiniuj zapytanie w oparciu o kombinację subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które mają zostać uwzględnione we wdrożeniu. W przypadku maszyn wirtualnych spoza platformy Azure zapisane wyszukiwania są używane do tworzenia grupy dynamicznej do uwzględnienia w danym wdrożeniu. Aby dowiedzieć się więcej, zobacz [grupy dynamiczne](automation-update-management-groups.md).
+- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowaną grupę lub wybierz maszyny, aby wybrać maszyny, które chcesz zaktualizować.
+
+   >[!NOTE]
+   >Wybranie zapisanej opcji wyszukiwania nie zwraca tożsamości komputera, tylko ich nazwy. Jeśli masz kilka maszyn wirtualnych o tej samej nazwie w wielu grupach zasobów, są one zwracane w wynikach. Zaleca się dołączenie unikatowych maszyn wirtualnych spełniających kryteria przy użyciu opcji **grupy do aktualizacji** .
+
+   Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Stan kondycji maszyny można sprawdzić przed zaplanowaniem wdrożenia aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
 
@@ -196,5 +197,5 @@ Aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem,
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej o Update Management, w tym o dziennikach, danych wyjściowych i błędach, zobacz [Update Management rozwiązanie na platformie Azure](../operations-management-suite/oms-solution-update-management.md).
+Aby dowiedzieć się więcej o Update Management, w tym o dziennikach, danych wyjściowych i błędach, zobacz [Update Management rozwiązanie na platformie Azure](../operations-management-suite/oms-solution-update-management.md).
 

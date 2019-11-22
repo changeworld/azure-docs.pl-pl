@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: d59646a87727409d759cc1903046fb3cdeade2e0
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 1cde28bff48bc239e22fe47a882e3218bd2d938b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847390"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278559"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Zasoby dla deweloperów Language Understanding
 
@@ -44,17 +44,17 @@ Interfejsy API tworzenia i przewidywania są dostępne w interfejsach API REST:
 |Typ|Wersja|
 |--|--|
 |Tworzenie|[V](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[wersja zapoznawcza v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
-|Przewidując|[V](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Czytanie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+|Prognozy|[V](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Czytanie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>Zestawy SDK oparte na języku
 
-|Język |Dokumentacja referencyjna|Pakiet|Przykłady|Przewodniki Szybki start|
+|Język |Dokumentacja referencyjna|Package|Przykłady|Przewodniki Szybki start|
 |--|--|--|--|--|
 |C#|[Tworzenie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Przewidywanie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[Tworzenie pakietów NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Prognoza NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Przykłady zestawu SDK dla platformy .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Tworzenie aplikacji i zarządzanie nią](sdk-csharp-quickstart-authoring-app.md)<br>[Punkt końcowy przewidywania zapytań](sdk-csharp-quickstart-query-prediction-endpoint.md)|
-|Przejdź|[Tworzenie i prognozowanie](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Przewidywanie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Tworzenie przy użyciu REST](luis-get-started-go-add-utterance.md)<br>[Prognoza przy użyciu REST](luis-get-started-go-get-intent.md)|
-|Java|[Tworzenie i prognozowanie](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Tworzenie Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Przewidywania Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Przewidywanie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Tworzenie](luis-get-started-java-add-utterance.md)<br>[Przewidywanie](luis-get-started-java-get-intent.md)
-|Node.js|[Tworzenie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Przewidywanie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[Tworzenie NPM](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[Przewidywania NPM](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Przewidywanie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Tworzenie przy użyciu REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[Prognoza przy użyciu REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
-|Python|[Tworzenie i prognozowanie](sdk-python-quickstart-authoring-app.md)|[Graczy](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Tworzenie](sdk-python-quickstart-authoring-app.md)<br>[Prognoza przy użyciu REST](luis-get-started-python-get-intent.md)
+|Z rzeczywistym użyciem|[Tworzenie i prognozowanie](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Przewidywanie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Tworzenie i prognozowanie przy użyciu REST](luis-get-started-get-intent-from-rest.md)|
+|Java|[Tworzenie i prognozowanie](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Tworzenie Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Przewidywania Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Przewidywanie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Tworzenie i prognozowanie](luis-get-started-get-intent-from-rest.md)
+|Node.js|[Tworzenie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Przewidywanie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[Tworzenie NPM](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[Przewidywania NPM](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Przewidywanie](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Tworzenie i prognozowanie przy użyciu REST](luis-get-started-get-intent-from-rest.md)|
+|Python|[Tworzenie i prognozowanie](sdk-python-quickstart-authoring-app.md)|[Graczy](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tworzenie](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Tworzenie](sdk-python-quickstart-authoring-app.md)<br>[Prognoza przy użyciu REST](luis-get-started-get-intent-from-rest.md)
 
 
 ### <a name="containers"></a>Kontenery

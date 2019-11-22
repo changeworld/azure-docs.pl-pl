@@ -1,25 +1,25 @@
 ---
-title: Korzystanie z danych usługi Azure Blockchain Workbench w programie SQL Server Management Studio
+title: Używanie danych usługi Azure łańcucha bloków Workbench z bazą danych SQL
 description: Dowiedz się, jak nawiązać połączenie z bazą danych SQL usługi Azure Blockchain Workbench z poziomu programu SQL Server Management Studio.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: db43dd04da601650b3592dc74cdd804fae394c00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 3a734c09b3a74fbe4165f4de25ce450fd3fbde1d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510909"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286723"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Korzystanie z danych usługi Azure Blockchain Workbench w programie SQL Server Management Studio
 
-Microsoft SQL Server Management Studio umożliwia szybkie pisanie i testowanie zapytań względem bazy danych SQL Azure Blockchain Workbench. Ta sekcja zawiera przewodnik krok po kroku dotyczący sposobu nawiązywania połączenia z bazą danych SQL DB usługi Azure Blockchain Workbench z poziomu programu SQL Server Management Studio.
+Microsoft SQL Server Management Studio zapewnia możliwość szybkiego zapisywania i testowania zapytań względem bazy danych SQL usługi Azure łańcucha bloków Workbench. Ta sekcja zawiera przewodnik krok po kroku dotyczący sposobu nawiązywania połączenia z SQL Databaseem usługi Azure łańcucha bloków Workbench z poziomu SQL Server Management Studio.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,13 +43,13 @@ Microsoft SQL Server Management Studio umożliwia szybkie pisanie i testowanie z
       ![Lista baz danych](./media/data-sql-management-studio/db-list.png)
 
 5. Aby wyświetlić dane skojarzone z dowolnymi widokami bazy danych, możesz automatycznie wygenerować instrukcję select, wykonując następujące kroki.
-6. Kliknij prawym przyciskiem myszy jeden z widoków bazy danych w Eksploratorze obiektów.
+6. Kliknij prawym przyciskiem myszy dowolny widok bazy danych w Eksplorator obiektów.
 7. Wybierz pozycję **Skrypt widoku jako**.
 8. Wybierz pozycję **SELECT to**.
 9. Wybierz pozycję **Nowe okno edytora zapytań**.
 10. Nowe zapytanie można utworzyć, wybierając pozycję **Nowe zapytanie**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Widoki bazy danych w usłudze Azure Blockchain Workbench](database-views.md)

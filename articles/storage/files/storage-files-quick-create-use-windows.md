@@ -7,20 +7,20 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95a5df4ca14f4be8553c83dfe8b4d09d00341102
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260396"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305823"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Szybki start: tworzenie udziału usługi Azure Files przy użyciu maszyn wirtualnych z systemem Windows i zarządzanie tym udziałem
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Szybki Start: Tworzenie udziału Azure Files i zarządzanie nim przy użyciu maszyn wirtualnych z systemem Windows
 
 W tym artykule przedstawiono podstawowe kroki tworzenia i używania udziału usługi Azure Files. W tym przewodniku Szybki start położono nacisk na szybkie konfigurowanie udziału usługi Azure Files, aby można było sprawdzić, jak działa ta usługa. Jeśli potrzebujesz bardziej szczegółowych instrukcji dotyczących tworzenia i używania udziałów plików platformy Azure we własnym środowisku, zobacz [Korzystanie z udziału plików platformy Azure w systemie Windows](storage-how-to-use-files-windows.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -54,7 +54,7 @@ Następnie utwórz udział plików.
 1. Utwórz nowy plik tekstowy o nazwie *qsTestFile* na komputerze lokalnym.
 1. Wybierz nowy udział plików, a następnie w lokalizacji udziału plików wybierz pozycję **Przekaż**.
 
-    ![Przekaż plik](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![Przekazywanie pliku](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
 1. Przejdź do lokalizacji, w której utworzono plik txt, wybierz plik *qsTestFile.txt* i wybierz pozycję **Przekaż**.
 
@@ -73,7 +73,7 @@ Na razie na platformie Azure utworzono konto magazynu i udział plików zawieraj
 1. W obszarze **Konto administratora** dodaj wartość *VMadmin* w polu **Nazwa użytkownika** i wprowadź **hasło** dla maszyny wirtualnej.
 1. W obszarze **Reguły portów wejściowych** wybierz opcję **Zezwalaj na wybrane porty**, a następnie wybierz **RDP (3389)** i **HTTP** z listy rozwijanej.
 1. Wybierz pozycję **Przegląd + utwórz**.
-1. Wybierz pozycję **Utwórz**. Tworzenie nowej maszyny wirtualnej potrwa kilka minut.
+1. Wybierz **tworzenie**. Tworzenie nowej maszyny wirtualnej potrwa kilka minut.
 
 1. Po zakończeniu wdrażania maszyny wirtualnej wybierz pozycję **Przejdź do zasobu**.
 
@@ -149,7 +149,7 @@ Teraz, gdy dysk został zamapowany, możesz utworzyć migawkę.
 1. W udziale plików wybierz pozycję **Wyświetl migawki**.
 1. W okienku **Migawki udziału plików** wybierz ostatnią migawkę na liście i kliknij przycisk **Usuń**.
 
-   ![Przycisk Usuń](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
+   ![Usuwanie przycisku](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Używanie migawki udziału w systemie Windows
 
@@ -173,7 +173,7 @@ Podobnie jak w przypadku migawek usługi VSS w środowisku lokalnym, możesz wy�
 
 1. Wybierz pozycję **Przywróć**. Ta akcja rekursywnie kopiuje zawartość całego katalogu do oryginalnej lokalizacji w momencie utworzenia migawki udziału.
 
-   ![Przycisk Przywróć w komunikacie ostrzegawczym](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+   ![przycisk Przywróć w komunikacie ostrzegawczym](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) Uwaga: Jeśli plik nie został zmieniony, nie zostanie wyświetlona Poprzednia wersja tego pliku, ponieważ ten plik jest w tej samej wersji co migawka. Jest to zgodne z tym, jak to działa na serwerze plików z systemem Windows.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

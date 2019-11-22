@@ -1,5 +1,6 @@
 ---
-title: Zarządzanie dziennikami przepływu sieciowych grup zabezpieczeń przy użyciu usługi Azure Network Watcher — PowerShell | Microsoft Docs
+title: Zarządzanie dziennikami przepływu sieciowej grupy zabezpieczeń — Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Na tej stronie wyjaśniono, jak zarządzać dziennikami przepływu sieciowych grup zabezpieczeń w usłudze Azure Network Watcher przy użyciu programu PowerShell
 services: network-watcher
 documentationcenter: na
@@ -14,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 508fe6f7dc6c5fef99e5f62a2ce75b0c81b1577f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 162e499ba44557db388484639c21877fd8b852bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676327"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277963"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurowanie dzienników przepływu sieciowych grup zabezpieczeń przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [Narzędzia](network-watcher-nsg-flow-logging-powershell.md)
+> - [Program PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-nsg-flow-logging-cli.md)
-> - [INTERFEJS API REST](network-watcher-nsg-flow-logging-rest.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 Dzienniki przepływu sieciowych grup zabezpieczeń są funkcją Network Watcher, która umożliwia wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Te dzienniki przepływów są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do, 5-informacje o spójnej kolekcji przepływu (źródłowy/docelowy adres IP, port źródłowy/docelowy, protokół) i jeśli ruch był dozwolony lub zabroniony.
 
-## <a name="register-insights-provider"></a>Zarejestruj dostawcę usługi Insights
+## <a name="register-insights-provider"></a>Rejestrowanie dostawcy usługi Insights
 
 Aby rejestrowanie przepływu działało prawidłowo, dostawca **Microsoft. Insights** musi być zarejestrowany. Jeśli nie masz pewności, czy dostawca **Microsoft. Insights** został zarejestrowany, uruchom następujący skrypt.
 

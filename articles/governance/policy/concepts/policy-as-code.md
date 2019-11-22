@@ -3,12 +3,12 @@ title: Projektowanie przepływów pracy typu zasady jako kod
 description: Dowiedz się, jak projektować przepływy pracy, aby wdrożyć definicje Azure Policy jako kod i automatycznie sprawdzać poprawność zasobów.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 935616145ee32bea8c3b514c495690ce4105cb80
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072070"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267276"
 ---
 # <a name="design-policy-as-code-workflows"></a>Projektowanie przepływów pracy typu zasady jako kod
 
@@ -128,6 +128,6 @@ W tym artykule opisano ogólny przepływ pracy dla zasad jako kod, a także miej
 - Dowiedz się więcej o [strukturze definicji zasad](./definition-structure.md).
 - Dowiedz się więcej na temat [struktury przypisywania zasad](./assignment-structure.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](../how-to/get-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

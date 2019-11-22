@@ -1,5 +1,5 @@
 ---
-title: Dostęp warunkowy dla użytkowników współpracy B2B — Azure Active Directory | Microsoft Docs
+title: Dostęp warunkowy dla użytkowników współpracy B2B — Azure AD
 description: Azure Active Directory współpracy B2B obsługuje uwierzytelnianie wieloskładnikowe (MFA) na potrzeby selektywnego dostępu do aplikacji firmowych
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357122"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272995"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Dostęp warunkowy dla użytkowników współpracy B2B
 
@@ -75,9 +75,9 @@ W bieżącej wersji uwierzytelnianie wieloskładnikowe jest zawsze w dzierżawie
 
 Jeśli firma Contoso ma włączone zasady MFA dla usługi APP1, ale nie APP2, wtedy, gdy w tokenie zostanie wyświetlona firma Contoso MFA, może zostać wyświetlony następujący problem:
 
-* Dzień 1: Użytkownik ma usługę MFA w firmie Contoso i uzyskuje dostęp do usługi APP1, a następnie w firmie Fabrikam nie jest wyświetlany dodatkowy monit usługi MFA.
+* Dzień 1: użytkownik ma usługę MFA w firmie Contoso i ma dostęp do usługi APP1, a w firmie Fabrikam nie jest wyświetlany dodatkowy monit usługi MFA.
 
-* Dzień 2: Użytkownik uzyskał dostęp do aplikacji 2 w firmie Contoso, dlatego w przypadku uzyskiwania dostępu do firmy Fabrikam musi zarejestrować się na potrzeby usługi MFA.
+* Dzień 2: użytkownik uzyskał dostęp do aplikacji 2 w firmie Contoso, więc teraz podczas uzyskiwania dostępu do firmy Fabrikam muszą oni zarejestrować się na potrzeby usługi MFA.
 
 Ten proces może być mylący i może prowadzić do porzucenia zaawansowania logowania.
 
@@ -85,7 +85,7 @@ Ponadto nawet jeśli firma Contoso ma funkcję MFA, nie zawsze jest to konieczne
 
 Na koniec uwierzytelnianie wieloskładnikowe dzierżawcy zasobów działa również w przypadku identyfikatorów kont MSA i społecznościowych oraz dla partnerów organizacje, dla których nie skonfigurowano usługi MFA.
 
-W związku z tym zalecenie dotyczące usługi MFA dla użytkowników B2B ma zawsze wymagać uwierzytelniania wieloskładnikowego w przypadku zapraszania dzierżawy. To wymaganie może prowadzić do podwójnej MFA w niektórych przypadkach, ale w przypadku uzyskiwania dostępu do dzierżawy zapraszanej środowisko użytkownika końcowego jest przewidywalne: Sally musi zarejestrować się w usłudze MFA przy użyciu zapraszanej dzierżawy.
+W związku z tym zalecenie dotyczące usługi MFA dla użytkowników B2B ma zawsze wymagać uwierzytelniania wieloskładnikowego w przypadku zapraszania dzierżawy. To wymaganie może prowadzić do podwójnej MFA w niektórych przypadkach, ale w przypadku uzyskiwania dostępu do dzierżawy zapraszanej środowisko użytkowników końcowych jest przewidywalne: Sally musi zarejestrować się w usłudze MFA przy użyciu zapraszanej dzierżawy.
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Dostęp warunkowy oparty na urządzeniach, lokalizacjach i na podstawie ryzyka dla użytkowników B2B
 

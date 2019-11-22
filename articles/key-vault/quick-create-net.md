@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b91554269ab7ddf15458545715e7a3a40cc1ceb6
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61e176314c655ef6380a196043fb3159d003cb6e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158708"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273953"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Szybki Start: Azure Key Vaulta Biblioteka kliencka dla platformy .NET (SDK v4)
 
@@ -157,7 +157,7 @@ Dodaj następujące dyrektywy na początku kodu:
 
 ### <a name="authenticate-and-create-a-client"></a>Uwierzytelnianie i tworzenie klienta
 
-Uwierzytelnianie w magazynie kluczy i tworzenie klienta magazynu kluczy zależy od zmiennych środowiskowych w powyższym kroku [Ustaw zmienne środowiskowe](#set-environmental-variables) . Nazwa magazynu kluczy jest rozszerzana na identyfikator URI magazynu kluczy w formacie "https://< nazwa magazynu kluczy >. magazyn. Azure. NET".
+Uwierzytelnianie w magazynie kluczy i tworzenie klienta magazynu kluczy zależy od zmiennych środowiskowych w powyższym kroku [Ustaw zmienne środowiskowe](#set-environmental-variables) . Nazwa magazynu kluczy zostanie rozszerzona na identyfikator URI magazynu kluczy w formacie "https://\<nazwę magazynu kluczy\>. vault.azure.net".
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 

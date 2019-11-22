@@ -1,5 +1,5 @@
 ---
-title: Dodaj firmę Google jako dostawcę tożsamości dla B2B-Azure Active Directory | Microsoft Docs
+title: Dodaj firmę Google jako dostawcę tożsamości dla B2B — Azure AD
 description: Sfederować z firmą Google, aby umożliwić użytkownikom-Gościom logowanie się do aplikacji usługi Azure AD przy użyciu własnego konta Gmail
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603595"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272877"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj firmę Google jako dostawcę tożsamości dla użytkowników gościa B2B
 
@@ -82,7 +82,7 @@ Najpierw utwórz nowy projekt w konsoli firmy Google Developers w celu uzyskania
 
    ![Zrzut ekranu przedstawiający sekcję autoryzowane identyfikatory URI przekierowania](media/google-federation/google-create-oauth-client-id.png)
 
-9. Wybierz pozycję **Utwórz**. Skopiuj identyfikator klienta i klucz tajny klienta, który będzie używany podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
+9. Wybierz **tworzenie**. Skopiuj identyfikator klienta i klucz tajny klienta, który będzie używany podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
 
    ![Zrzut ekranu przedstawiający identyfikator klienta OAuth i klucz tajny klienta](media/google-federation/google-auth-client-id-secret.png)
 

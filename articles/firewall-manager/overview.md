@@ -5,20 +5,20 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/21/2019
 ms.author: victorh
-ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580216"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267950"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Co to jest wersja zapoznawcza usługi Azure firewall Manager?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Menedżer zapory Azure w wersji zapoznawczej to usługa zarządzania zabezpieczeniami, która zapewnia centralne zasady zabezpieczeń i Zarządzanie trasami dla obwodów zabezpieczeń opartych na chmurze. Współpracuje z [Centrum sieci wirtualnej platformy Azure](../virtual-wan/virtual-wan-about.md#resources), zasobem zarządzanym przez firmę Microsoft, który umożliwia łatwe tworzenie architektur Hub i szprych. Gdy zasady zabezpieczeń i routingu są skojarzone z takim centrum, jest ono nazywane *[bezpiecznym koncentratorem wirtualnym](secured-virtual-hub.md)* . 
+Azure Firewall Manager (wersja zapoznawcza) to usługa do zarządzania zabezpieczeniami, która umożliwia centralne zarządzanie zasadami zabezpieczeń i trasami dla obwodów zabezpieczeń opartych na chmurze. Współpracuje z [Centrum sieci wirtualnej platformy Azure](../virtual-wan/virtual-wan-about.md#resources), zasobem zarządzanym przez firmę Microsoft, który umożliwia łatwe tworzenie architektur Hub i szprych. Gdy zasady zabezpieczeń i routingu są skojarzone z takim centrum, jest ono nazywane *[bezpiecznym koncentratorem wirtualnym](secured-virtual-hub.md)* . 
 
 ![Zapora — Menedżer](media/overview/firewallmanagerv3.png)
 
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji na temat zaufanych dostawców zabezpieczeń, zob
 
 Łatwo kieruj ruch do bezpiecznego centrum w celu filtrowania i rejestrowania bez konieczności ręcznego konfigurowania tras zdefiniowanych przez użytkownika (UDR) w sieciach wirtualnych szprych. Dostawców innych firm można używać do filtrowania ruchu z Internetu (B2I), obok siebie przy użyciu zapory platformy Azure dla gałęzi do sieci wirtualnej (B2V), sieci wirtualnej z siecią wirtualną (V2V) i Sieć wirtualna do Internetu (V2I). Dostawców innych firm można także używać do filtrowania ruchu V2I, o ile nie jest wymagana Zapora platformy Azure dla B2V lub V2V. 
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 W publicznej wersji zapoznawczej są obsługiwane następujące regiony:
 
@@ -75,6 +75,7 @@ Wersja zapoznawcza Menedżera zapory platformy Azure obejmuje następujące znan
 |Dzielenie ruchu nie jest obecnie obsługiwane|Dzielenie pakietów Office 365 i Public PaaS nie jest obecnie obsługiwane. W związku z tym wybranie dostawcy innej firmy dla usługi V2I lub B2I spowoduje również wysłanie wszystkich usług Azure Public PaaS i Office 365 przez usługę partnera.|Obecnie badanie podziału ruchu w centrum.
 |Jeden koncentrator na region|Nie można mieć więcej niż jednego centrum na region|Utwórz wiele wirtualnych sieci WAN w regionie.|
 |Zasady podstawowe muszą znajdować się w tym samym regionie co zasady lokalne|Utwórz wszystkie zasady lokalne w tym samym regionie co zasady podstawowe. Można nadal stosować zasady, które zostały utworzone w jednym regionie w zabezpieczonym centrum z innego regionu.|Obecnie trwa badanie.|
+|Komunikacja między centrami nie działa z bezpiecznym koncentratorem wirtualnym|Zabezpieczona wirtualna koncentrator do bezpiecznej komunikacji z koncentratorem wirtualnym nie jest jeszcze obsługiwana.|Obecnie trwa badanie.|
 
 ## <a name="next-steps"></a>Następne kroki
 

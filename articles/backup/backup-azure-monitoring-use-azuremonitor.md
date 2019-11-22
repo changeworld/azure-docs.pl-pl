@@ -4,12 +4,12 @@ description: Monitoruj Azure Backup obciążenia i twórz niestandardowe alerty 
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 65bab1a6d6d424c90b38a3bdf99b6bf5bd8ded09
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 66417071190fa45a746ce0b80a9de12968198bda
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172910"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278267"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -35,9 +35,9 @@ Azure Resource Manager zasoby, takie jak magazyn Recovery Services, rejestruje i
 
 W sekcji monitorowanie wybierz pozycję **Ustawienia diagnostyczne** i określ cel dla danych diagnostycznych magazynu Recovery Services.
 
-![Ustawienie diagnostyczne Recovery Services magazynu, określanie wartości docelowej Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
+![Ustawienie diagnostyczne Recovery Services magazynu, określanie wartości docelowej Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
 
-Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorować magazyny między subskrypcjami w jednym miejscu, wybierz ten sam obszar roboczy Log Analytics dla wielu magazynów Recovery Services. Aby obkanałować wszystkie informacje dotyczące Azure Backup do obszaru roboczego Log Analytics, wybierz **AzureBackupReport** jako dziennik.
+Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorować magazyny między subskrypcjami w jednym miejscu, wybierz ten sam obszar roboczy Log Analytics dla wielu magazynów Recovery Services. Aby obkanałować wszystkie informacje dotyczące Azure Backup do obszaru roboczego Log Analytics, wybierz pozycję **zasób specyficzny** w wyświetlonym przełączniku i wybierz następujące zdarzenia — **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Zapoznaj się z [tym artykułem](https://aka.ms/AA6jkus) , aby uzyskać więcej informacji na temat konfigurowania ustawień diagnostyki La.
 
 > [!IMPORTANT]
 > Po zakończeniu konfiguracji należy odczekać 24 godziny na zakończenie wypychania danych. Po pomyślnym wypchnięciu danych wszystkie zdarzenia są wypychane zgodnie z opisem w dalszej części tego artykułu, w [sekcji częstotliwość](#diagnostic-data-update-frequency).
@@ -112,90 +112,65 @@ Wykresy domyślne dają Kusto zapytania dotyczące podstawowych scenariuszy, w k
 - Wszystkie zadania tworzenia kopii zapasowej zakończone powodzeniem
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Completed"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     ````
 
 - Wszystkie zadania tworzenia kopii zapasowej zakończone niepowodzeniem
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Failed"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Failed"
     ````
 
 - Wszystkie pomyślne zadania tworzenia kopii zapasowej maszyny wirtualnej platformy Azure
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     | join kind=inner
     (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
+        CoreAzureBackup
         | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
     )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    on BackupItemUniqueId
     ````
 
 - Wszystkie pomyślne zadania tworzenia kopii zapasowej dziennika SQL
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | where JobStatus=="Completed"
     | join kind=inner
     (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
+        CoreAzureBackup
         | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
     )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    on BackupItemUniqueId
     ````
 
 - Wszystkie pomyślne zadania agenta Azure Backup
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     | join kind=inner
     (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
+        CoreAzureBackup
         | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
     )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    on BackupItemUniqueId
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Częstotliwość aktualizacji danych diagnostycznych

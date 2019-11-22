@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173635"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279649"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Informacje o kondycji klastra Kubernetes za pomocą Azure Monitor dla kontenerów
 
-Za pomocą Azure Monitor dla kontenerów monitoruje i raportuje stan kondycji składników infrastruktury zarządzanej oraz wszystkie węzły działające w dowolnym klastrze Kubernetes obsługiwanym przez Azure Monitor dla kontenerów. To środowisko przekracza stan kondycji klastra obliczone i zgłoszone w [widoku wielu klastrów](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), gdzie teraz można zrozumieć, czy co najmniej jeden węzeł w klastrze jest ograniczony do zasobów lub węzeł lub pod jest niedostępny, co może mieć wpływ na działającą aplikację w klastrze na podstawie nadzorowanych metryk. 
+Za pomocą Azure Monitor dla kontenerów monitoruje i raportuje stan kondycji składników infrastruktury zarządzanej oraz wszystkie węzły działające w dowolnym klastrze Kubernetes obsługiwanym przez Azure Monitor dla kontenerów. To środowisko przekracza stan kondycji klastra obliczone i zgłoszone w [widoku wielu klastrów](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), gdzie teraz można zrozumieć, czy co najmniej jeden węzeł w klastrze jest ograniczony do zasobów lub węzeł lub pod jest niedostępny, co może mieć wpływ na działającą aplikację w klastrze na podstawie nadzorowanych metryk.
+
+>[!NOTE]
+>W tej chwili funkcja kondycji jest w publicznej wersji zapoznawczej.
+>
 
 Informacje o sposobie włączania Azure Monitor dla kontenerów znajdują się w sekcji Dołączanie [Azure monitor dla kontenerów](container-insights-onboard.md).
 
@@ -33,7 +37,7 @@ Informacje o sposobie włączania Azure Monitor dla kontenerów znajdują się w
 
 ## <a name="overview"></a>Omówienie
 
-W Azure Monitor dla kontenerów funkcja kondycji udostępnia aktywne monitorowanie kondycji klastra Kubernetes, które ułatwia identyfikowanie i diagnozowanie problemów. Zapewnia możliwość wyświetlania znaczących problemów wykrytych. Monitory oceniające kondycję klastra są uruchamiane na kontenerze kontenera w klastrze, a dane dotyczące kondycji są zapisywane w tabeli **KubeHealth** w obszarze roboczym log Analytics. 
+W Azure Monitor dla kontenerów funkcja kondycja (wersja zapoznawcza) udostępnia aktywne monitorowanie kondycji klastra Kubernetes, które ułatwia identyfikowanie i diagnozowanie problemów. Zapewnia możliwość wyświetlania znaczących problemów wykrytych. Monitory oceniające kondycję klastra są uruchamiane na kontenerze kontenera w klastrze, a dane dotyczące kondycji są zapisywane w tabeli **KubeHealth** w obszarze roboczym log Analytics. 
 
 Kondycja klastra Kubernetes jest oparta na wielu scenariuszach monitorowania zorganizowanych według następujących obiektów Kubernetes i streszczeń:
 
@@ -72,7 +76,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Wyświetlanie kondycji klastra AKS lub innego niż AKS
 
-Dostęp do Azure Monitor funkcji kondycji kontenerów jest dostępny bezpośrednio w klastrze AKS, wybierając pozycję **szczegółowe** dane w okienku po lewej stronie Azure Portal. W obszarze **Insights** zaznacz **kontenery**. 
+Dostęp do Azure Monitor funkcji kondycji kontenerów (wersja zapoznawcza) jest dostępny bezpośrednio w klastrze AKS, wybierając pozycję **szczegółowe** dane w okienku po lewej stronie Azure Portal. W obszarze **Insights** zaznacz **kontenery**. 
 
 Aby wyświetlić kondycję z klastra AKS, czyli klastra aparatu AKS hostowanego lokalnie lub na Azure Stack, wybierz pozycję **Azure monitor** w lewym okienku w Azure Portal. W obszarze **Insights** zaznacz **kontenery**.  Na stronie wiele klastrów wybierz klaster spoza AKS z listy.
 

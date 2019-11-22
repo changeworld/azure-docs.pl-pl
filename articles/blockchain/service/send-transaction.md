@@ -1,21 +1,21 @@
 ---
-title: Użyj Visual Studio Code — usługa Azure łańcucha bloków
+title: Samouczek tworzenia, kompilowania, & wdrażania inteligentnych kontraktów — usługa Azure łańcucha bloków
 description: Samouczek dotyczący sposobu korzystania z rozszerzenia Azure łańcucha bloków Development Kit for Ethereum w programie Visual Studio Code do tworzenia, kompilowania i wdrażania inteligentnego kontraktu w usłudze Azure łańcucha bloków Service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 9e3b9dc7ea10e67b636194d955f3a7b50d990a23
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329242"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286685"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Samouczek: używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Samouczek: Tworzenie, kompilowanie i wdrażanie inteligentnych kontraktów w usłudze Azure łańcucha bloków Service
 
 W tym samouczku Użyj rozszerzenia Azure łańcucha bloków Development Kit for Ethereum w Visual Studio Code, aby utworzyć, skompilować i wdrożyć inteligentny kontrakt w usłudze Azure łańcucha bloków Service. Możesz również użyć Truffle do wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
 
@@ -32,6 +32,21 @@ Używasz zestawu Azure łańcucha bloków Development Kit dla Ethereum:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Kończenie [szybkiego startu: użyj Visual Studio Code, aby nawiązać połączenie z siecią Azure łańcucha bloków Service Consortium](connect-vscode.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Rozszerzenie Azure łańcucha bloków Development Kit dla rozszerzenia Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x lub nowszy](https://nodejs.org/download)
+* [Git 2.10. x lub nowszy](https://git-scm.com)
+* [2.7.15 Python](https://www.python.org/downloads/release/python-2715/) Dodaj język Python. exe do ścieżki. Wersja 2.7.15 języka Python w ścieżce jest wymagana w przypadku zestawu Azure łańcucha bloków Development Kit.
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Interfejs wiersza polecenia ganache 6.0.0](https://github.com/trufflesuite/ganache-cli)
+
+W systemie Windows zainstalowany C++ kompilator jest wymagany dla modułu Node-GYP. Możesz użyć narzędzi MSBuild:
+
+* Jeśli zainstalowano program Visual Studio 2017, należy skonfigurować npm do używania narzędzi MSBuild z poleceniem `npm config set msvs_version 2017 -g`
+* Jeśli zainstalowano program Visual Studio 2019, Ustaw ścieżkę Microsoft Build Tools for npm. Na przykład: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* W przeciwnym razie zainstaluj autonomiczne narzędzia programu VS Build przy użyciu `npm install --global windows-build-tools` w powłoce poleceń *administratora* z podwyższonym poziomem uprawnień.
+
+Aby uzyskać więcej informacji na temat węzła Node-GYP, zobacz [repozytorium Node-GYP w witrynie GitHub](https://github.com/node-gyp).
 
 ## <a name="create-a-smart-contract"></a>Tworzenie kontraktu inteligentnego
 
@@ -104,7 +119,7 @@ Funkcja **SendRequest** kontraktu **HelloBlockchain** zmienia zmienną stanu **R
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Zastąp \<blockchain Network @ no__t-1 nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
+    Zastąp \<łańcucha bloków Network\> nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
 
 Truffle wykonuje skrypt w sieci łańcucha bloków.
 
@@ -159,13 +174,13 @@ Funkcje kontraktu inteligentnego mogą zwracać bieżącą wartość zmiennych s
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Zastąp \<blockchain Network @ no__t-1 nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
+    Zastąp \<łańcucha bloków Network\> nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
 
 Skrypt wysyła zapytanie do inteligentnego kontraktu przez wywołanie funkcji GetMessage. Zwracana jest bieżąca wartość zmiennej stanu **RequestMessage** .
 
 ![Dane wyjściowe skryptu](./media/send-transaction/execute-get.png)
 
-Zwróć uwagę na to, że wartość nie jest **Hello, łańcucha bloków!** . Zamiast tego zwracana wartość jest symbolem zastępczym. Po zmianie i wdrożeniu kontraktu jest pobierany nowy adres kontraktu, a zmienne stanu są przypisywane wartości w konstruktorze kontraktu inteligentnego. Skrypt migracji Truffle Sample **2_deploy_contracts. js** wdraża inteligentny kontrakt i przekazuje wartość symbolu zastępczego jako argument. Konstruktor ustawia zmienną stanu **RequestMessage** na wartość symbolu zastępczego, co oznacza, że jest zwracana.
+Zwróć uwagę na to, że wartość nie jest **Hello, łańcucha bloków!** . Zamiast tego zwracana wartość jest symbolem zastępczym. W przypadku zmiany i wdrożenia kontraktu zmieniony kontrakt zostanie wdrożony pod nowym adresem, a zmienne stanu są przypisywane wartości w konstruktorze kontraktu inteligentnego. Skrypt migracji Truffle Sample **2_deploy_contracts. js** wdraża inteligentny kontrakt i przekazuje wartość symbolu zastępczego jako argument. Konstruktor ustawia zmienną stanu **RequestMessage** na wartość symbolu zastępczego, co oznacza, że jest zwracana.
 
 1. Aby ustawić zmienną stanu **RequestMessage** i wykonać zapytanie dotyczące wartości, ponownie uruchom skrypty **SendRequest. js** i **GetMessage. js** .
 

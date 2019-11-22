@@ -1,6 +1,6 @@
 ---
-title: Limity zasobów serwera
-description: Ten artykuł zawiera omówienie limitów zasobów serwera Azure SQL Database dla pojedynczych baz danych i pul elastycznych. Zawiera również informacje dotyczące tego, co się dzieje po osiągnięciu lub przekroczeniu limitów zasobów.
+title: Limity zasobów Azure SQL Database | Microsoft Docs
+description: Ten artykuł zawiera omówienie limitów zasobów Azure SQL Database dla pojedynczych baz danych i pul elastycznych. Zawiera również informacje dotyczące tego, co się dzieje po osiągnięciu lub przekroczeniu limitów zasobów.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 11/14/2019
-ms.openlocfilehash: 52e7a3408c231ba8a38fdc22c2fcac65ee26bb82
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.date: 11/19/2019
+ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082506"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279301"
 ---
-# <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów SQL Database dla serwera Azure SQL Database
+# <a name="sql-database-resource-limits-and-resource-governance"></a>Limity zasobów SQL Database i zarządzanie zasobami
 
-Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL Database, który zarządza pojedynczymi bazami danych i pulami elastycznymi. Zawiera również informacje dotyczące tego, co się dzieje po osiągnięciu lub przekroczeniu limitów zasobów.
+Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL Database, który zarządza pojedynczymi bazami danych i pulami elastycznymi. Zawiera informacje o tym, co się stanie w przypadku osiągnięcia lub przekroczenia limitów zasobów oraz opis mechanizmów ładu zasobów używanych do wymuszania tych limitów.
 
 > [!NOTE]
-> W przypadku limitów wystąpień zarządzanych zapoznaj się z tematem [SQL Database limitów zasobów dla wystąpień zarządzanych](sql-database-managed-instance-resource-limits.md).
+> Aby uzyskać ograniczenia wystąpienia zarządzanego, zobacz [SQL Database limitów zasobów dla wystąpień zarządzanych](sql-database-managed-instance-resource-limits.md).
 
 ## <a name="maximum-resource-limits"></a>Maksymalne limity zasobów
 
@@ -38,7 +38,8 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 |||
 
 > [!NOTE]
-> Aby uzyskać więcej wartości przydziału/eDTU jednostek DTU, przydziału rdzeń wirtualny lub większej liczby serwerów niż domyślna, można przesłać nowe żądanie obsługi w Azure Portal dla subskrypcji z typem problemu "przydział". Limity przydziału jednostek DTU/eDTU i bazy danych na serwer ograniczają liczbę pul elastycznych na serwer.
+> Aby uzyskać więcej przydziału jednostek DTU/eDTU, limitu przydziału rdzeń wirtualny lub większej liczby serwerów niż domyślna, można przesłać nowe żądanie obsługi w Azure Portal dla subskrypcji z typem problemu "przydział". Limity przydziału jednostek DTU/eDTU i bazy danych na serwer ograniczają liczbę pul elastycznych na serwer.
+
 > [!IMPORTANT]
 > Ponieważ liczba baz danych zbliża się do limitu na serwer SQL Database, mogą wystąpić następujące elementy:
 >
@@ -47,13 +48,13 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 
 ### <a name="storage-size"></a>Rozmiar magazynu
 
-- W przypadku magazynów zasobów o pojedynczej bazie danych zapoznaj się z limitami zasobów [opartymi na](sql-database-dtu-resource-limits-single-databases.md) jednostkach DTU lub limitami [zasobów opartymi na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) dla limitów rozmiaru magazynu na warstwę cenową.
+W przypadku magazynów zasobów o pojedynczej bazie danych zapoznaj się z limitami zasobów [opartymi](sql-database-dtu-resource-limits-single-databases.md) na jednostkach DTU lub limitami [zasobów opartymi na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) dla limitów rozmiaru magazynu na warstwę cenową.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co się stanie po osiągnięciu limitów zasobów bazy danych
 
 ### <a name="compute-dtus-and-edtus--vcores"></a>Obliczenia (DTU i jednostek eDTU/rdzeni wirtualnych)
 
-Gdy użycie obliczeniowe bazy danych (mierzone przez DTU i jednostek eDTU, lub rdzeni wirtualnych) stanie się wysokie, opóźnienia zapytań rosną i mogą nawet przekroczyć limit czasu. W tych warunkach zapytania mogą być umieszczane w kolejce przez usługę i są udostępniane zasoby do wykonania, ponieważ zasób staje się bezpłatny.
+Gdy użycie obliczeniowe bazy danych (mierzone przez DTU i jednostek eDTU, lub rdzeni wirtualnych) stanie się wysokie, opóźnienia zapytań rosną, a kwerendy mogą nawet przekroczyć limit czasu. W tych warunkach zapytania mogą być umieszczane w kolejce przez usługę i są udostępniane zasoby do wykonania, ponieważ zasoby stają się bezpłatne.
 W przypadku wystąpienia dużej mocy obliczeniowej opcje ograniczenia obejmują:
 
 - Zwiększenie rozmiaru obliczeniowego bazy danych lub puli elastycznej w celu zapewnienia bazy danych większej ilości zasobów obliczeniowych. Zobacz [skalowanie zasobów pojedynczych baz danych](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej](sql-database-elastic-pool-scale.md).
@@ -61,7 +62,7 @@ W przypadku wystąpienia dużej mocy obliczeniowej opcje ograniczenia obejmują:
 
 ### <a name="storage"></a>Magazyn
 
-Gdy używane miejsce na bazę danych osiągnie limit rozmiaru, wstawia i aktualizuje bazę danych, która zwiększa niepowodzenie rozmiaru danych, a klienci odbierają [komunikat o błędzie](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). WYBÓR i usunięcie bazy danych powiodło się.
+Gdy używane miejsce na bazę danych osiągnie limit rozmiaru, wstawia i aktualizuje bazę danych, która zwiększa niepowodzenie rozmiaru danych, a klienci odbierają [komunikat o błędzie](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Instrukcje SELECT i DELETE kontynuują się pomyślnie.
 
 W przypadku wystąpienia dużej ilości miejsca, opcje ograniczenia obejmują:
 
@@ -71,16 +72,38 @@ W przypadku wystąpienia dużej ilości miejsca, opcje ograniczenia obejmują:
 
 ### <a name="sessions-and-workers-requests"></a>Sesje i procesy robocze (żądania)
 
-Maksymalna liczba sesji i procesów roboczych zależy od warstwy usług i rozmiaru obliczeń (DTU i jednostek eDTU). Nowe żądania są odrzucane, gdy osiągnięto limity sesji lub procesu roboczego, a klienci otrzymają komunikat o błędzie. Liczba dostępnych połączeń może być kontrolowana przez aplikację, ale liczba współbieżnych procesów roboczych często jest trudniejsza do oszacowania i kontroli. Jest to szczególnie prawdziwe w przypadku szczytowych okresów ładowania, gdy osiągnięto limity zasobów bazy danych i procesy robocze są ustawiane z powodu dłuższych uruchomionych zapytań.
+Maksymalna liczba sesji i procesów roboczych zależy od warstwy usług i rozmiaru obliczeń (DTU/jednostek eDTU lub rdzeni wirtualnych. Nowe żądania są odrzucane, gdy osiągnięto limity sesji lub procesu roboczego, a klienci otrzymają komunikat o błędzie. Liczba dostępnych połączeń może być kontrolowana przez aplikację, ale liczba współbieżnych procesów roboczych często jest trudniejsza do oszacowania i kontroli. Jest to szczególnie ważne w przypadku szczytowych okresów ładowania, gdy osiągnięto limity zasobów bazy danych i procesy robocze są ustawiane z powodu dłuższych przebiegów zapytań, dużych łańcuchów blokowania lub nadmiernej współbieżności zapytań.
 
 W przypadku wystąpienia wysokiego poziomu sesji lub procesu wyłączania, opcje ograniczenia obejmują:
 
 - Zwiększenie warstwy usług lub rozmiaru obliczeniowego bazy danych lub puli elastycznej. Zobacz [skalowanie zasobów pojedynczych baz danych](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej](sql-database-elastic-pool-scale.md).
 - Optymalizowanie zapytań w celu ograniczenia wykorzystania zasobów dla każdego zapytania, jeśli przyczyną zwiększonego wykorzystania procesów roboczych jest rywalizacja o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [dostrajanie/podpowiedzi zapytań](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-## <a name="transaction-log-rate-governance"></a>Ocena szybkości dziennika transakcji
+## <a name="resource-governance"></a>Nadzór nad zasobami
 
-Współczynnik dziennika transakcji ładu to proces w Azure SQL Database używany do ograniczania wysokich szybkości pozyskiwania dla obciążeń takich jak wstawianie zbiorcze, wybieranie do i kompilacje indeksów. Limity te są śledzone i wymuszane na poziomie drugim do szybkości generowania rekordów dziennika, ograniczając przepływność bez względu na to, ile systemu IOs można wystawić dla plików danych.  Stawki generowania dziennika transakcji są obecnie skalowane liniowo do punktu, który jest zależny od sprzętu, a maksymalna szybkość rejestrowania może być 96 MB/s z modelem zakupów rdzeń wirtualny.
+Aby wymusić limity zasobów, Azure SQL Database używa implementacji ładu zasobów, która jest oparta na SQL Server [gubernatora zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor), modyfikowana i rozszerzona w celu uruchomienia usługi bazy danych SQL Server na platformie Azure. W każdym wystąpieniu SQL Server w usłudze istnieje wiele [pul zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool) i [grup obciążeń](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)z limitami zasobów ustawionymi na poziomie puli i grup, aby zapewnić [zrównoważoną bazę danych jako usługę](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/). Obciążenie użytkownikami i obciążenia wewnętrzne są klasyfikowane do oddzielnych pul zasobów i grup obciążeń. Obciążenie użytkownikami na głównych i czytelnych replikach pomocniczych, łącznie z replikami geograficznymi, jest klasyfikowane do puli zasobów `SloSharedPool1` i `UserPrimaryGroup.DBId[N]` grupy obciążeń, gdzie `N` oznacza wartość identyfikatora bazy danych. Ponadto istnieje wiele pul zasobów i grup obciążeń dla różnych obciążeń wewnętrznych.
+
+Oprócz korzystania z regulatora zasobów w celu zarządzania zasobami w ramach procesu SQL Server Azure SQL Database również korzysta z [obiektów zadań](https://docs.microsoft.com/windows/win32/procthread/job-objects) systemu Windows dla ładu zasobów na poziomie procesu i [Menedżer zasobów serwera plików systemu Windows (Menedżer zasobów)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) na potrzeby zarządzanie przydziałami magazynu.
+
+Azure SQL Database Zarządzanie zasobami ma charakter hierarchiczny. Od góry do dołu limity są wymuszane na poziomie systemu operacyjnego i na poziomie woluminu magazynu przy użyciu mechanizmów i zarządców zasobów systemu operacyjnego, a następnie na poziomie puli zasobów przy użyciu prezesa zasobów, a następnie na poziomie grupy obciążeń przy użyciu Zarządca zasobów. Limity zarządzania zasobami obowiązujące w przypadku bieżącej bazy danych lub puli elastycznej są wyświetlane w widoku [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) . 
+
+### <a name="data-io-governance"></a>Zarządzanie we/wy danych
+
+Zarządzanie we/wy danych to proces w Azure SQL Database używany do ograniczania fizycznych operacji we/wy odczytu i zapisu do plików danych bazy danych. Limity liczby IOPS są ustawiane dla każdego poziomu usługi, aby zminimalizować efekt "zakłócenia", aby zapewnić sprawiedliwość alokacji zasobów w usłudze z wieloma dzierżawcami i pozostać w ramach możliwości podstawowego sprzętu i magazynu.
+
+W przypadku pojedynczych baz danych limity grup obciążeń są stosowane do wszystkich operacji we/wy magazynu związanych z bazą danych, podczas gdy limity puli zasobów dotyczą wszystkich baz danych w tym samym wystąpieniu SQL Server, w tym `tempdb` Database. W przypadku pul elastycznych limity grup obciążeń dotyczą każdej bazy danych w puli, a limit puli zasobów ma zastosowanie do całej puli elastycznej, łącznie z `tempdb` bazą danych, która jest współużytkowana przez wszystkie bazy danych w puli. Ogólnie rzecz biorąc, limity puli zasobów mogą nie być osiągalne w przypadku obciążenia dla bazy danych (pojedyncza lub w puli), ponieważ limity grup obciążeń są mniejsze niż limity puli zasobów i wkrótce ograniczają liczbę operacji we/wy na sekundę. Jednak limity puli mogą być osiągane przez połączone obciążenie dla wielu baz danych w tym samym wystąpieniu SQL Server.
+
+Na przykład, jeśli zapytanie generuje 1000 IOPS bez żadnego ładu zasobów we/wy, ale limit liczby IOPS dla grupy obciążeń jest ustawiony na 900 IOPS, zapytanie nie będzie w stanie generować więcej niż 900 operacji wejścia/wyjścia. Jeśli jednak limit liczby IOPS dla puli zasobów jest ustawiony na 1500 operacji we/wy na sekundę, a łączny stan wejścia/wyjścia ze wszystkich grup obciążeń skojarzonych z pulą zasobów przekracza 1500 operacji we/wy, wówczas ta sama kwerenda może zostać zmniejszona poniżej limitu grupy roboczej dla 900 IOPS.
+
+Liczba operacji we/wy na sekundę i przepływności zwracanych przez [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) widoku pełni rolę limitów/wersalików, a nie jako gwarancje. Ponadto zarządzanie zasobami nie gwarantuje żadnych opóźnień związanych z magazynem. Najlepsze osiągalne opóźnienia, operacje we/wy i przepływność dla danego obciążenia użytkownika zależą nie tylko od limitów nadzoru zasobów we/wy, ale również w przypadku różnych użytych rozmiarów we/wykorzystaniu i na możliwościach magazynu bazowego. SQL Server używa systemu IOs, który różni się od 512 KB i 4 MB. W celu wymuszenia limitów IOPS każda operacja we/wy jest uwzględniana niezależnie od jej rozmiaru, z wyjątkiem baz danych z plikami danych w usłudze Azure Storage. W takim przypadku system IOs o rozmiarze większym niż 256 KB jest rozliczany jako wiele 256 KB systemu IOs, aby dostosować je do usługi Azure Storage we/wy.
+
+W przypadku baz danych w warstwach Podstawowa, standardowa i Ogólnego przeznaczenia, które korzystają z plików danych w usłudze Azure Storage, `primary_group_max_io` wartość może nie być osiągalna, jeśli baza danych nie ma wystarczającej ilości plików danych do skumulowanego dostarczania tej liczby operacji we/wy, lub jeśli dane nie są dystrybuowane równomiernie między plikami, lub jeśli warstwa wydajności bazowych obiektów BLOB ogranicza liczbę IOPS/przepływność poniżej limitu Podobnie w przypadku małego systemu IOs wygenerowanego przez częste zatwierdzanie transakcji wartość `primary_max_log_rate` może być nieosiągalna przez obciążenie wynikające z limitu liczby IOPS w źródłowym obiekcie blob usługi Azure Storage.
+
+Wartości wykorzystania zasobów, takie jak `avg_data_io_percent` i `avg_log_write_percent`, raportowane w widokach [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)i [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , są obliczane jako wartości procentowe maksymalnego limitu zarządzania zasobami. W związku z tym, gdy czynniki inne niż zarządzanie zasobami ograniczają liczbę operacji we/wy, można zobaczyć, że operacje we/wy na sekundę i opóźnienia zwiększają się wraz ze wzrostem obciążenia, nawet jeśli zgłoszone użycie zasobów pozostanie poniżej 100%. Aby zobaczyć operacje we/wy odczytu i zapisu w pliku bazy danych, użyj funkcji [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Ta funkcja wyświetla wszystkie operacje we/wy względem bazy danych, w tym w tle we/wy, która nie jest uwzględniona w `avg_data_io_percent`, ale używa IOPS i przepływności magazynu bazowego, a także może mieć wpływ na zaobserwowane opóźnienie magazynu.
+
+### <a name="transaction-log-rate-governance"></a>Ocena szybkości dziennika transakcji
+
+Współczynnik dziennika transakcji ładu to proces w Azure SQL Database używany do ograniczania wysokich szybkości pozyskiwania dla obciążeń takich jak wstawianie zbiorcze, wybieranie do i kompilacje indeksów. Limity te są śledzone i wymuszane na poziomie drugim do szybkości generowania rekordów dziennika, ograniczając przepływność bez względu na to, ile systemu IOs można wystawić dla plików danych.  Stawki generowania dziennika transakcji są obecnie skalowane liniowo do punktu, który jest zależny od sprzętu, a maksymalna szybkość rejestrowania może być 96 MB/s z modelem zakupów rdzeń wirtualny. 
 
 > [!NOTE]
 > Rzeczywiste fizyczne pliki dziennika transakcji w systemie IOs nie podlegają ograniczeniom ani nie są ograniczone.
@@ -103,10 +126,9 @@ Współczynnik dziennika: kształtowanie ruchu gubernatora jest przedstawiane pr
 |||
 
 W przypadku napotkania limitu szybkości rejestrowania, który hamuje pożądaną skalowalność, należy wziąć pod uwagę następujące opcje:
-
-- Skaluj w górę do większej warstwy w celu uzyskania maksymalnej liczby dzienników 96 MB/s.
-- Jeśli ładowanie danych jest przejściowe, tj. dane przejściowe w procesie ETL, można je załadować do bazy danych tempdb (co jest w minimalnym stopniu rejestrowane).
-- W przypadku scenariuszy analitycznych Załaduj do tabeli objętej usługą magazynu kolumn. Zmniejsza to wymaganą szybkość rejestrowania z powodu kompresji. Ta technika zwiększa wykorzystanie procesora CPU i ma zastosowanie tylko do zestawów danych, które korzystają z klastrowanych indeksów magazynu kolumn.
+- Skalowanie w górę do wyższego poziomu usługi w celu uzyskania maksymalnej liczby dzienników 96 MB/s. 
+- Jeśli ładowane dane są przejściowe, takie jak dane przejściowe w procesie ETL, można je załadować do bazy danych tempdb (co jest zarejestrowana w minimalnym stopniu). 
+- W przypadku scenariuszy analitycznych Załaduj do tabeli objętej usługą magazynu kolumn. Zmniejsza to wymaganą szybkość rejestrowania z powodu kompresji. Ta technika zwiększa wykorzystanie procesora CPU i ma zastosowanie tylko do zestawów danych, które korzystają z klastrowanych indeksów magazynu kolumn. 
 
 ## <a name="next-steps"></a>Następne kroki
 

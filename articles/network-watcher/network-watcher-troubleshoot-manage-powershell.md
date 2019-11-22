@@ -1,5 +1,6 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure Virtual Network Gateway i połączeniami — PowerShell | Microsoft Docs
+title: Rozwiązywanie problemów z usługą Azure VNet Gateway i połączeniami — Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Na tej stronie wyjaśniono, jak korzystać z polecenia cmdlet programu PowerShell dla usługi Azure Network Watcher
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163871"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277827"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Rozwiązywanie problemów z bramą Virtual Network i połączeniami przy użyciu programu Azure Network Watcher PowerShell
 
@@ -46,7 +47,7 @@ Rozwiązywanie problemów z zasobami zapewnia możliwość rozwiązywania proble
 
 ## <a name="retrieve-network-watcher"></a>Retrieve Network Watcher
 
-Pierwszym krokiem jest pobranie wystąpienia Network Watcher. Zmienna jest przenoszona `Start-AzNetworkWatcherResourceTroubleshooting` do polecenia cmdlet w kroku 4. `$networkWatcher`
+Pierwszym krokiem jest pobranie wystąpienia Network Watcher. Zmienna `$networkWatcher` jest przenoszona do `Start-AzNetworkWatcherResourceTroubleshooting` polecenia cmdlet w kroku 4.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -72,10 +73,10 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Uruchom Network Watcher Rozwiązywanie problemów z zasobami
 
-Rozwiązywanie problemów z zasobami `Start-AzNetworkWatcherResourceTroubleshooting` przy użyciu polecenia cmdlet. Przekazujemy polecenie cmdlet Network Watcher obiektu, identyfikatorem połączenia lub bramą Virtual Network, identyfikatorem konta magazynu oraz ścieżką do przechowywania wyników.
+Rozwiązywanie problemów z zasobami za pomocą polecenia cmdlet `Start-AzNetworkWatcherResourceTroubleshooting`. Przekazujemy polecenie cmdlet Network Watcher obiektu, identyfikatorem połączenia lub bramą Virtual Network, identyfikatorem konta magazynu oraz ścieżką do przechowywania wyników.
 
 > [!NOTE]
-> `Start-AzNetworkWatcherResourceTroubleshooting` Polecenie cmdlet jest długotrwałe i może potrwać kilka minut.
+> Polecenie cmdlet `Start-AzNetworkWatcherResourceTroubleshooting` jest długotrwałe i może potrwać kilka minut.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"

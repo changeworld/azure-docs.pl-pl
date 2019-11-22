@@ -1,32 +1,28 @@
 ---
 title: Wdróż aplikację w usłudze Kubernetes przy użyciu Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Wdrażanie mikrousługi na AKS z Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: b43cedce2660c081f51d90cd8dd587e8d0361acd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815820"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279820"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Szybki Start: Tworzenie aplikacji na Kubernetes przy użyciu Azure Dev Spaces
-W tym przewodniku dowiesz się, jak:
+Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
-- Skonfiguruj Azure Dev Spaces z zarządzanym klastrem Kubernetes na platformie Azure.
+- Konfigurowanie usługi Azure Dev Spaces za pomocą zarządzanego klastra Kubernetes na platformie Azure.
 - Opracowywanie i uruchamianie kodu w kontenerach przy użyciu wiersza polecenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
-- [Zainstalowano interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
 
@@ -42,7 +38,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 Użyj `use-dev-spaces` polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami. Poniższe polecenie włącza miejsca deweloperskie w klastrze *MyAKS* w grupie Grupa *zasobów* i tworzy *domyślny* obszar dev.
 
 > [!NOTE]
-> Polecenie `use-dev-spaces` zainstaluje również interfejs wiersza polecenia Azure Dev Spaces, jeśli nie został jeszcze zainstalowany. Nie można zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell.
+> `use-dev-spaces` polecenie zainstaluje również interfejs wiersza polecenia Azure Dev Spaces, jeśli nie został jeszcze zainstalowany. Nie można zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -83,9 +79,9 @@ Wygeneruj elementy zawartości wykresu Docker i Helm na potrzeby uruchamiania ap
 azds prep --public
 ```
 
-Aby poprawnie wygenerować zasoby wykresu Docker i Helm, należy uruchomić polecenie `prep` z katalogu *dev-Spaces/Samples/NodeJS/Data Start/webfrontonu* .
+Należy uruchomić polecenie `prep` w katalogu *dev-Spaces/Samples/NodeJS/Data-Start/webfrontonu* , aby poprawnie wygenerować zasoby wykresu Docker i Helm.
 
-## <a name="build-and-run-code-in-kubernetes"></a>Kompiluj i uruchamiaj kod w Kubernetes
+## <a name="build-and-run-code-in-kubernetes"></a>Kompilowanie i uruchamianie kodu na platformie Kubernetes
 
 Kompiluj i uruchamiaj kod w AKS za pomocą polecenia `azds up`:
 
@@ -111,26 +107,26 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Możesz zobaczyć, że usługa jest uruchomiona, otwierając publiczny adres URL, który jest wyświetlany w danych wyjściowych polecenia `azds up`. W tym przykładzie publiczny adres URL to *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+Możesz zobaczyć, że usługa jest uruchomiona, otwierając publiczny adres URL, który jest wyświetlany w danych wyjściowych polecenia `azds up`. W tym przykładzie publiczny adres URL jest *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
 > [!NOTE]
 > Po przejściu do usługi podczas działania `azds up`, ślady żądania HTTP są również wyświetlane w danych wyjściowych polecenia `azds up`. Te ślady mogą pomóc w rozwiązywaniu problemów i debugowaniu usługi. Można wyłączyć te ślady przy użyciu `--disable-http-traces` podczas uruchamiania `azds up`.
 
-Jeśli zatrzymasz polecenie `azds up` przy użyciu *kombinacji klawiszy CTRL + c*, usługa będzie nadal działać w AKS, a publiczny adres URL pozostanie dostępny.
+Jeśli zatrzymasz polecenie `azds up` za pomocą *klawiszy CTRL + c*, usługa będzie nadal działać w AKS, a publiczny adres URL pozostanie dostępny.
 
-## <a name="update-code"></a>Aktualizuj kod
+## <a name="update-code"></a>Aktualizowanie kodu
 
 Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić polecenie `azds up`. Na przykład:
 
 1. Jeśli `azds up` nadal działa, naciśnij *klawisze CTRL + c*.
-1. Zaktualizuj [wiersz 13 w `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) do:
+1. Aktualizuj [wiersz 13 w `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) do:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Zapisz zmiany.
-1. Uruchom ponownie polecenie `azds up`:
+1. Uruchom ponownie `azds up` polecenie:
 
     ```cmd
     $ azds up

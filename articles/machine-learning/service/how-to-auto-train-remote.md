@@ -11,28 +11,28 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8c50a1ba79fc07f62e319c6dceb75c32a9e8609f
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932195"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287140"
 ---
-# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Uczenie modeli przy użyciu zautomatyzowanej uczenia maszynowego w chmurze
+# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W Azure Machine Learning nauczysz model dla różnych typów zasobów obliczeniowych, którymi zarządzasz. Obiekt docelowy obliczeń może być komputerem lokalnym lub zasobem w chmurze.
+W usłudze Azure Machine Learning podstawie uczyć modele na różnego rodzaju zasobów obliczeniowych, którymi zarządzasz. Obiekt docelowy obliczeń może być komputerem lokalnym lub zasobem w chmurze.
 
 Eksperyment uczenia maszynowego można łatwo skalować w górę lub w poziomie, dodając dodatkowe cele obliczeniowe, takie jak Azure Machine Learning COMPUTE (AmlCompute). AmlCompute to zarządzana infrastruktura obliczeniowa, która umożliwia łatwe tworzenie obliczeń jednego lub wielowęzłowego.
 
 W tym artykule dowiesz się, jak skompilować model przy użyciu zautomatyzowanej ML z AmlCompute.
 
-## <a name="how-does-remote-differ-from-local"></a>W jaki sposób zdalne różni się od lokalnego?
+## <a name="how-does-remote-differ-from-local"></a>Czym różni się zdalne z lokalnego?
 
-Samouczek "[uczenie modelu klasyfikacji przy użyciu automatycznego uczenia maszynowego](tutorial-auto-train-models.md)" uczy się, w jaki sposób używać komputera lokalnego do uczenia modelu o zautomatyzowanej ml. Przepływ pracy, gdy szkolenie lokalnie dotyczy również zdalnych obiektów docelowych. Jednak ze zdalnym przetwarzaniem, zautomatyzowane iteracje eksperymentów w ML są wykonywane asynchronicznie. Ta funkcja pozwala anulować określoną iterację, obserwować stan wykonania lub kontynuować pracę nad innymi komórkami w notesie Jupyter. Aby przeprowadzić uczenie zdalne, należy najpierw utworzyć zdalne miejsce docelowe obliczeń, takie jak AmlCompute. Następnie należy skonfigurować zasób zdalny i przesłać tam swój kod.
+Samouczek "[uczenie modelu klasyfikacji przy użyciu automatycznego uczenia maszynowego](tutorial-auto-train-models.md)" uczy się, w jaki sposób używać komputera lokalnego do uczenia modelu o zautomatyzowanej ml. Przepływ pracy podczas szkolenia lokalnie ma zastosowanie również do celów zdalnego, a także. Jednak za pomocą zdalnego mocy obliczeniowej, zautomatyzowane iteracjami eksperymentów uczenia Maszynowego są wykonywane asynchronicznie. Ta funkcja umożliwia anulowanie konkretnej iteracji, obejrzyj stan wykonania lub kontynuować pracę na innych komórek w notesie Jupyter. Aby przeprowadzić uczenie zdalne, należy najpierw utworzyć zdalne miejsce docelowe obliczeń, takie jak AmlCompute. Następnie skonfiguruj zasób zdalny i przesyłać tam kod.
 
-W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt obszaru roboczego, `ws`, z samouczka jest używany w całym kodzie tutaj.
+W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt workspace `ws`, w tym samouczku jest używana w całym kodzie, w tym miejscu.
 
 ```python
 ws = Workspace.from_config()
@@ -62,19 +62,26 @@ compute_target.wait_for_completion(
     show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Teraz można użyć obiektu `compute_target` jako elementu docelowego obliczeń zdalnych.
+Teraz możesz używać `compute_target` obiektu jako zdalnego obliczeniowego elementu docelowego.
 
 Ograniczenia nazw klastrów obejmują:
-+ Musi być krótsza niż 64 znaków.
-+ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
++ Musi zawierać mniej niż 64 znaki.
++ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Dostęp do danych za pomocą funkcji TabularDataset
 
-Zdefiniowane wartości X i y jako `TabularDataset`s, które są przesyłane do zautomatyzowanej ML w AutoMLConfig. `from_delimited_files` domyślnie ustawia `infer_column_types` na wartość true, co spowoduje automatyczne wywnioskowanie typu kolumny. 
+Zdefiniowane training_data jako `TabularDataset`i etykieta, które są przesyłane do zautomatyzowanej ML w AutoMLConfig. `from_delimited_files` domyślnie ustawia `infer_column_types` na wartość true, co spowoduje automatyczne wywnioskowanie typu kolumny. 
 
 Jeśli chcesz ręcznie ustawić typy kolumn, możesz ustawić argument `set_column_types`, aby ręcznie ustawić typ każdej kolumny. W poniższym przykładzie kodu dane pochodzą z pakietu skryptu sklearn.
 
 ```python
+from sklearn import datasets
+from azureml.core.dataset import Dataset
+from scipy import sparse
+import numpy as np
+import pandas as pd
+import os
+
 # Create a project_folder if it doesn't exist
 if not os.path.isdir('data'):
     os.mkdir('data')
@@ -82,23 +89,20 @@ if not os.path.isdir('data'):
 if not os.path.exists(project_folder):
     os.makedirs(project_folder)
 
-from sklearn import datasets
-from azureml.core.dataset import Dataset
-from scipy import sparse
-import numpy as np
-import pandas as pd
+X = pd.DataFrame(data_train.data[100:,:])
+y = pd.DataFrame(data_train.target[100:])
 
-data_train = datasets.load_digits()
+# merge X and y
+label = "digit"
+X[label] = y
 
-pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
+training_data = X
 
+training_data.to_csv('data/digits.csv')
 ds = ws.get_default_datastore()
 ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 
-X = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/X_train.csv'))
-y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
-
+training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/digits.csv'))
 ```
 
 ## <a name="create-run-configuration"></a>Utwórz konfigurację uruchamiania
@@ -115,14 +119,14 @@ run_config.environment.docker.enabled = True
 run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
 
 dependencies = CondaDependencies.create(
-    pip_packages=["scikit-learn", "scipy", "numpy"])
+    pip_packages=["scikit-learn", "scipy", "numpy==1.16.2"])
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
 Zapoznaj się z tym [przykładowym notesem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) , aby uzyskać dodatkowy przykład tego wzorca projektowego.
 
 ## <a name="configure-experiment"></a>Konfigurowanie eksperymentu
-Określ ustawienia dla `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich wartości).
+Określ ustawienia `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich możliwe wartości.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -131,29 +135,27 @@ import logging
 
 automl_settings = {
     "name": "AutoML_Demo_Experiment_{0}".format(time.time()),
+    "experiment_timeout_minutes" : 20,
+    "enable_early_stopping" : True,
     "iteration_timeout_minutes": 10,
-    "iterations": 20,
     "n_cross_validations": 5,
     "primary_metric": 'AUC_weighted',
-    "preprocess": False,
     "max_concurrent_iterations": 10,
-    "verbosity": logging.INFO
 }
 
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
                              compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
+                             training_data=training_data,
+                             label_column_name=label,
                              **automl_settings,
                              )
 ```
 
-## <a name="submit-training-experiment"></a>Przesyłanie eksperymentu szkoleniowego
+## <a name="submit-training-experiment"></a>Przesyłanie eksperymentu szkolenia
 
-Teraz Prześlij konfigurację, aby automatycznie wybierać algorytm, parametry funkcji Hyper-i szkolić model.
+Teraz przesłać konfiguracji do automatycznego wybierania algorytmów, parametry hyper i trenowanie modelu.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -161,7 +163,7 @@ experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
-Zobaczysz dane wyjściowe podobne do poniższego przykładu:
+Zostaną wyświetlone dane wyjściowe podobne do poniższego przykładu:
 
     Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6
     ***********************************************************************************************
@@ -195,7 +197,7 @@ Zobaczysz dane wyjściowe podobne do poniższego przykładu:
             19      Robust Scaler kNN                     0:02:32                  0.983     0.989
 
 
-## <a name="explore-results"></a>Eksploruj wyniki
+## <a name="explore-results"></a>Zapoznaj się z wyników
 
 Możesz użyć tego samego [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , jak pokazano w [samouczku szkolenia](tutorial-auto-train-models.md#explore-the-results) , aby wyświetlić wykres i tabelę wyników.
 
@@ -204,12 +206,12 @@ from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
 
-Oto obraz statyczny widżetu.  W notesie można kliknąć dowolny wiersz w tabeli, aby wyświetlić właściwości uruchamiania i dzienniki wyjściowe dla tego przebiegu.   Możesz również użyć listy rozwijanej powyżej wykresu, aby wyświetlić Graf każdej dostępnej metryki dla każdej iteracji.
+Oto obraz statyczny widżetu.  W notesie możesz kliknąć każdego wiersza w tabeli, aby wyświetlić właściwości wykonywania i danych wyjściowych dzienników, uruchamiania.   Można również Użyj listy rozwijanej powyżej wykresu, aby wyświetlić wykres wszystkie dostępne metryki dla każdej iteracji.
 
 ![tabela widżetu](./media/how-to-auto-train-remote/table.png)
 ![wykres widżetu](./media/how-to-auto-train-remote/plot.png)
 
-Widżet wyświetla adres URL, którego można użyć do wyświetlania i eksplorowania szczegółowych informacji o uruchamianiu.  
+Widżet Wyświetla adres URL można użyć, aby zobaczyć i zapoznaj się z osobą szczegóły przebiegu.  
 
 Jeśli nie jesteś w notesie Jupyter, możesz wyświetlić adres URL od samego uruchomienia:
 
@@ -227,5 +229,5 @@ W poniższym [notesie](https://github.com/Azure/MachineLearningNotebooks/blob/ma
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się [, jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
+* Dowiedz się, [jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
 * Zapoznaj się z artykułem [jak](how-to-machine-learning-interpretability-automl.md) włączyć funkcję interpretacji modelu w zautomatyzowanych eksperymentach ml.

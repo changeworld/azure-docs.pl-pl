@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6a6f50a86dc58299a1c1b5994dd1d19cc915e6c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f577ac723558ad3772b697922baa624e0047dd21
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076877"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276828"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Użyj protokołu SSL, aby zabezpieczyć usługę sieci Web za pośrednictwem Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,8 +80,8 @@ Aby wdrożyć (lub ponownie wdrożyć) usługę z włączonym protokołem SSL, n
 
 Podczas wdrażania programu do AKS można utworzyć nowy klaster AKS lub dołączyć istniejący. Aby uzyskać więcej informacji na temat tworzenia lub dołączania klastra, zobacz [Wdrażanie modelu w klastrze usługi Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md).
   
--  W przypadku tworzenia nowego klastra należy użyć **[AksCompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** .
-- Jeśli dołączysz istniejący klaster, użyj **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Oba zwracają obiekt konfiguracji, który ma metodę **enable_ssl** .
+-  W przypadku tworzenia nowego klastra należy użyć **[AksCompute. provisionining_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none-)** .
+- Jeśli dołączysz istniejący klaster, użyj **[AksCompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)** . Oba zwracają obiekt konfiguracji, który ma metodę **enable_ssl** .
 
 Metoda **enable_ssl** może korzystać z certyfikatu dostarczonego przez firmę Microsoft lub zakupionego certyfikatu.
 
@@ -256,6 +256,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Instrukcje:
+Omawiane kwestie:
 + [Korzystanie z modelu uczenia maszynowego wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 + [Bezpieczne uruchamianie eksperymentów i wnioskowania wewnątrz sieci wirtualnej platformy Azure](how-to-enable-virtual-network.md)

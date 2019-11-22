@@ -3,12 +3,12 @@ title: Korygowanie niezgodnych zasobów
 description: Ten przewodnik przeprowadzi Cię przez korygowanie zasobów, które są niezgodne z zasadami w Azure Policy.
 ms.date: 09/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53ca21e4b8a1f3e7973706acd10601593efc3448
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959501"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267356"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
@@ -187,5 +187,5 @@ Inne polecenia cmdlet służące do korygowania i przykłady można znaleźć w 
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](get-compliance-data.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

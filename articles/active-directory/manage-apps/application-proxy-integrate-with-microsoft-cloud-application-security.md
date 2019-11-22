@@ -1,6 +1,6 @@
 ---
-title: Integracja aplikacji lokalnych z usługą Cloud App Security — usługa Azure Active Directory | Dokumentacja firmy Microsoft
-description: W usłudze Azure Active Directory do pracy z zabezpieczeń aplikacji Microsoft Cloud (MCAS), należy skonfigurować aplikację w środowisku lokalnym. Użyj MCAS kontroli dostępu warunkowego aplikacji monitorowanie i kontrolowanie sesji w czasie rzeczywistym na podstawie zasad dostępu warunkowego. Te zasady można stosować do aplikacji lokalnych, które używają serwera Proxy aplikacji w usłudze Azure Active Directory (Azure AD).
+title: Integrowanie aplikacji lokalnych z usługą Cloud App Security — Azure AD
+description: Skonfiguruj aplikację lokalną w Azure Active Directory do pracy z usługą Microsoft Cloud App Security (MCAS). Użyj Kontrola dostępu warunkowego aplikacji MCAS do monitorowania i kontrolowania sesji w czasie rzeczywistym na podstawie zasad dostępu warunkowego. Te zasady można stosować do aplikacji lokalnych, które używają serwera proxy aplikacji w Azure Active Directory (Azure AD).
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
@@ -11,61 +11,61 @@ ms.date: 12/19/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9b27a3b8329f906b1adfd48d28892a7edc4d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108448"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275494"
 ---
-# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurowanie, monitorowanie dostępu do aplikacji w czasie rzeczywistym za pomocą Microsoft Cloud App Security i Azure Active Directory
-Skonfiguruj aplikację w środowisku lokalnym w usłudze Azure Active Directory (Azure AD) do korzystania z programu Microsoft Cloud App Security (MCAS) monitorowania w czasie rzeczywistym. MCAS używa kontroli dostępu warunkowego aplikacji do monitorowania i sesje kontroli w czasie rzeczywistym na podstawie zasad dostępu warunkowego. Te zasady można stosować do aplikacji lokalnych, które używają serwera Proxy aplikacji w usłudze Azure Active Directory (Azure AD).
+# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurowanie monitorowania dostępu do aplikacji w czasie rzeczywistym przy użyciu Microsoft Cloud App Security i Azure Active Directory
+Skonfiguruj aplikację lokalną w Azure Active Directory (Azure AD), aby używać Microsoft Cloud App Security (MCAS) do monitorowania w czasie rzeczywistym. MCAS używa Kontrola dostępu warunkowego aplikacji do monitorowania i kontrolowania sesji w czasie rzeczywistym na podstawie zasad dostępu warunkowego. Te zasady można stosować do aplikacji lokalnych, które używają serwera proxy aplikacji w Azure Active Directory (Azure AD).
 
 Poniżej przedstawiono kilka przykładów typów zasad, które można utworzyć za pomocą MCAS:
 
-- Blokowanie lub Ochrona pobierania poufnych dokumentów na urządzeniach niezarządzanych.
-- Monitor, gdy użytkowników o wysokim ryzyku zalogować się do aplikacji, a następnie zaloguj się w ramach sesji swoje działania z. Dzięki tym informacjom można analizować zachowanie użytkowników, aby określić, jak zastosować zasady sesji.
-- Aby zablokować dostęp do określonych aplikacji z niezarządzanych urządzeń, należy użyć certyfikatów klienta lub zasad zgodności urządzeń.
-- Ograniczyć sesje użytkowników od sieci innych niż firmowe. Można zapewnić dostęp ograniczony do użytkowników uzyskujących dostęp do aplikacji spoza sieci firmowej. Na przykład ten ograniczony dostęp mogą Zablokuj użytkownikowi możliwość pobierania poufnych dokumentów.
+- Blokuj lub Chroń pobieranie poufnych dokumentów na urządzeniach niezarządzanych.
+- Monitoruj, gdy użytkownicy o wysokim ryzyku logują się do aplikacji, a następnie rejestrują swoje działania w ramach sesji. Korzystając z tych informacji, można analizować zachowanie użytkowników w celu określenia sposobu stosowania zasad sesji.
+- Używanie certyfikatów klienta lub zgodności urządzeń w celu blokowania dostępu do określonych aplikacji z urządzeń niezarządzanych.
+- Ogranicz sesje użytkowników z sieci innych niż firmowe. Można udzielić ograniczonego dostępu użytkownikom, którzy uzyskują dostęp do aplikacji spoza sieci firmowej. Na przykład ten ograniczony dostęp może uniemożliwić użytkownikowi pobieranie poufnych dokumentów.
 
-Aby uzyskać więcej informacji, zobacz [ochrony aplikacji w usłudze Microsoft Cloud App Security kontroli dostępu warunkowego aplikacji](/cloud-app-security/proxy-intro-aad).
+Aby uzyskać więcej informacji, zobacz [Ochrona aplikacji za pomocą Microsoft Cloud App Security kontrola dostępu warunkowego aplikacji](/cloud-app-security/proxy-intro-aad).
 
 ## <a name="requirements"></a>Wymagania
 
-Licencja:
+Licencjonowan
 
-- EMS E5 licencji, lub 
-- Usługa Azure Active Directory Premium P1 i autonomicznych MCAS.
+- Licencja EMS E5 lub 
+- Azure Active Directory — wersja Premium w wersjach P1 i MCAS.
 
 Aplikacja lokalna:
 
-- Aplikacja lokalna, należy użyć delegowanie ograniczone protokołu Kerberos (KCD)
+- Aplikacja lokalna musi korzystać z ograniczonego delegowania protokołu Kerberos (KCD)
 
-Skonfiguruj serwer Proxy aplikacji:
+Skonfiguruj serwer proxy aplikacji:
 
-- Konfigurowanie usługi Azure AD, aby użyć serwera Proxy aplikacji, w tym przygotowywanie środowiska i instalowanie łącznika serwera Proxy aplikacji. Aby zapoznać się z samouczkiem, zobacz [dodać aplikacje w środowisku lokalnym, dostępu zdalnego za pośrednictwem serwera Proxy aplikacji w usłudze Azure AD](application-proxy-add-on-premises-application.md). 
+- Skonfiguruj usługę Azure AD do korzystania z serwera proxy aplikacji, w tym przygotowując środowisko i instalując łącznik serwera proxy aplikacji. Aby zapoznać się z samouczkiem, zobacz [Dodawanie aplikacji lokalnych dla dostępu zdalnego za pomocą serwera proxy aplikacji w usłudze Azure AD](application-proxy-add-on-premises-application.md). 
 
-## <a name="add-on-premises-application-to-azure-ad"></a>Dodawanie aplikacji lokalnych do usługi Azure AD
+## <a name="add-on-premises-application-to-azure-ad"></a>Dodawanie aplikacji lokalnej do usługi Azure AD
 
-Dodawanie aplikacji lokalnych do usługi Azure AD. Aby uzyskać szybki Start, zobacz [Dodawanie aplikacji lokalnych do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Podczas dodawania aplikacji, należy ustawić następujące dwa ustawienia **Dodaj aplikację w środowisku lokalnym** bloku:
+Dodaj aplikację lokalną do usługi Azure AD. Aby zapoznać się z przewodnikiem Szybki Start, zobacz [Dodawanie aplikacji lokalnej do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Podczas dodawania aplikacji Pamiętaj, aby ustawić następujące dwa ustawienia w bloku **Dodaj aplikację lokalną** :
 
-- **Wstępne uwierzytelnianie**: Enter **Azure Active Directory**.
-- **Przekształć adresy URL w treści aplikacji**: Wybierz **tak**.
+- **Wstępne uwierzytelnianie**: wprowadź **Azure Active Directory**.
+- **Tłumaczenie adresów URL w treści aplikacji**: wybierz opcję **tak**.
 
-Te dwa ustawienia są wymagane dla aplikacji do pracy z MCAS.
+Te dwa ustawienia są wymagane, aby aplikacja działała z MCAS.
 
-## <a name="test-the-on-premises-application"></a>Testowanie aplikacji w środowisku lokalnym
+## <a name="test-the-on-premises-application"></a>Testowanie aplikacji lokalnej
 
-Po dodaniu aplikacji do usługi Azure AD, wykonaj kroki w [przetestować aplikację](application-proxy-add-on-premises-application.md#test-the-application) można dodać użytkownika do testowania i testowanie logowania jednokrotnego. 
+Po dodaniu aplikacji do usługi Azure AD wykonaj kroki opisane w sekcji [testowanie aplikacji](application-proxy-add-on-premises-application.md#test-the-application) , aby dodać użytkownika do testowania i przetestuj logowanie. 
 
-## <a name="deploy-conditional-access-app-control"></a>Wdrażanie kontroli dostępu warunkowego aplikacji
+## <a name="deploy-conditional-access-app-control"></a>Wdróż Kontrola dostępu warunkowego aplikacji
 
-Aby skonfigurować aplikację przy użyciu kontroli dostępu warunkowego w aplikacji, postępuj zgodnie z instrukcjami [wdrażanie kontroli usługi aplikacji dostępu warunkowego dla usługi Azure AD aplikacji](/cloud-app-security/proxy-deployment-aad).
+Aby skonfigurować aplikację przy użyciu kontroli dostępu warunkowego aplikacji, postępuj zgodnie z instrukcjami w temacie [Wdrażanie dostępu warunkowego aplikacji kontrola dla aplikacji usługi Azure AD](/cloud-app-security/proxy-deployment-aad).
 
 
-## <a name="test-conditional-access-app-control"></a>Kontrola testu dostępu warunkowego aplikacji
+## <a name="test-conditional-access-app-control"></a>Kontrola dostępu warunkowego aplikacji testowe
 
-Aby przetestować wdrażanie aplikacji usługi Azure AD przy użyciu kontroli dostępu warunkowego w aplikacji, postępuj zgodnie z instrukcjami [. testowanie wdrożenia dla aplikacji usługi Azure AD](/cloud-app-security/proxy-deployment-aad).
+Aby przetestować wdrażanie aplikacji usługi Azure AD przy użyciu kontroli dostępu warunkowego aplikacji, postępuj zgodnie z instrukcjami w temacie [testowanie wdrażania aplikacji usługi Azure AD](/cloud-app-security/proxy-deployment-aad).
 
 
 

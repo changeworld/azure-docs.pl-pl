@@ -11,12 +11,12 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 623400c2ee75f9ef1495e839ba9f418e48f11708
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a44ac821271cc07a790c380287391f41650ced19
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229158"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276734"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Uruchamianie prognoz wsadowych za pomocą narzędzia Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ W tym instruktażu przedstawiono następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree).
+1. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 1. Utwórz [obszar roboczy](tutorial-1st-experiment-sdk-setup.md).
 

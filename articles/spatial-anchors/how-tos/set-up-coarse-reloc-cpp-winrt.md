@@ -1,5 +1,5 @@
 ---
-title: Jak utworzyć i zlokalizować kotwice przy użyciu czujników na urządzeniach w C++/WinRT | Microsoft Docs
+title: Duże relokalizacja w C++/WinRT
 description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu czujników na urządzeniach w C++/WinRT.
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8ea4abe8dee22a50fc50e8d58f99f382a135b70b
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 8402ed5f120c9d1fc6f751587b7346b323592a6d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093202"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277370"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cwinrt"></a>Jak utworzyć i zlokalizować kotwice przy użyciu czujników na urządzeniach w C++/WinRT
 

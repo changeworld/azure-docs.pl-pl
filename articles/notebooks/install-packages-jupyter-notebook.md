@@ -1,33 +1,24 @@
 ---
 title: Instalowanie pakietów w notesie Jupyter na platformie Azure
-description: Jak zainstalować język Python, R i F# pakiety z poziomu notesu Jupyter działającego na platformie Azure.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+description: Zainstaluj język Python, R, jak i F# pakietów z w ramach notesu programu Jupyter, działające na platformie Azure.
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: e6582bb21cb6d383e298bdf68bdb2f565147c20a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969935"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277547"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z poziomu notesu
+# <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z w ramach notesu
 
-Mimo że można skonfigurować [środowisko dla notesu na poziomie projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), można zainstalować pakiety bezpośrednio w ramach danego notesu.
+Wprawdzie możliwe jest skonfigurowanie [środowisko notesu na poziomie projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), warto zainstalować pakiety bezpośrednio z poziomu pojedynczych notesu.
 
-Pakiety zainstalowane w notesie dotyczą tylko bieżącej sesji serwera. Instalacje pakietów nie są utrwalane po zamknięciu serwera.
+Zainstalowane pakiety z notesu dotyczą tylko bieżącej sesji serwera. Instalacji pakietów nie są utrwalane, gdy serwer jest zamykany.
 
 ## <a name="python"></a>Python
 
-Pakiety w języku Python można instalować przy użyciu PIP lub Conda przy użyciu poleceń w komórkach kodu:
+Pakiety języka Python można zainstalować przy użyciu narzędzia pip lub conda przy użyciu poleceń w komórkach kodu:
 
 ```bash
 !pip install <package_name>
@@ -35,7 +26,7 @@ Pakiety w języku Python można instalować przy użyciu PIP lub Conda przy uży
 !conda install <package_name> -y
 ```
 
-Jeśli dane wyjściowe polecenia wskazują, że wymaganie jest już spełnione, Azure Notebooks może zawierać pakiet domyślnie. Pakiet może być również instalowany za pomocą [kroku konfiguracji środowiska projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
+Jeśli dane wyjściowe polecenia wskazuje, że wymaganie już jest spełniony, a następnie notesów usługi Azure może obejmować pakiet domyślnie. Można także zainstalować pakiet za pośrednictwem [kroku konfiguracji środowiska projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
@@ -55,7 +46,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-Pakiety w F# programie można instalować z [NuGet.org](https://www.nuget.org) przez wywołanie Menedżera zależności Paket z poziomu komórek kodu. Najpierw załaduj program Paket Manager:
+Pakiety w F# mogą być instalowane z [nuget.org](https://www.nuget.org) przez wywołanie zależności Paket menedżera z w komórkach kodu. Najpierw załadować Menedżera Paket:
 
 ```fsharp
 #load "Paket.fsx"
@@ -82,5 +73,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Instrukcje: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Instrukcje: prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
+- [Porady: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Porady: obecne pokaz slajdów](present-jupyter-notebooks-slideshow.md)

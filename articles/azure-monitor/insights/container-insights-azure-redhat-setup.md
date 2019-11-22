@@ -7,16 +7,20 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 6fc81fa84d4d40d5318d6bf3690aa4b90c4e3c9b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26477eeb00fe7616a8d2f2be343e586042c0d130
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196815"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279662"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurowanie klastrów usługi Azure Red Hat OpenShift za pomocą Azure Monitor dla kontenerów
 
 Azure Monitor dla kontenerów zapewnia rozbudowane środowisko monitorowania dla klastrów usługi Azure Kubernetes Service (AKS) i AKS Engine. W tym artykule opisano sposób włączania monitorowania klastrów Kubernetes hostowanych na [platformie Azure Red Hat OpenShift](../../openshift/intro-openshift.md) w celu osiągnięcia podobnego środowiska monitorowania.
+
+>[!NOTE]
+>Obsługa systemu Red Hat OpenShift jest w tej chwili funkcją w publicznej wersji zapoznawczej.
+>
 
 Azure Monitor dla kontenerów można włączyć dla nowych lub jednego lub kilku istniejących wdrożeń usługi Azure Red Hat OpenShift przy użyciu następujących obsługiwanych metod:
 
@@ -29,7 +33,7 @@ Azure Monitor for Containers obsługuje monitorowanie usługi Azure Red Hat Open
 
 - Dane dynamiczne
 - OdPrometheusość metryk
-- Zbieranie metryk
+- Zbierz metryki z węzłów klastra i zasobników i zapiszą je w magazynie metryk Azure Monitor
 - Funkcja kondycji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -80,7 +84,7 @@ Aby można było włączyć monitorowanie za pomocą Azure PowerShell lub interf
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json` 
 
-2. Logowanie do platformy Azure 
+2. Zaloguj się w usłudze Azure 
 
     ```azurecli
     az login    
@@ -169,7 +173,7 @@ Aby można było włączyć monitorowanie za pomocą Azure PowerShell lub interf
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json` 
 
-2. Logowanie do platformy Azure 
+2. Zaloguj się w usłudze Azure 
 
     ```azurecli
     az login    
@@ -203,6 +207,6 @@ Aby można było włączyć monitorowanie za pomocą Azure PowerShell lub interf
     provisioningState       : Succeeded
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po włączeniu monitorowania w celu zbierania informacji o kondycji i użyciu zasobów klastra RedHat OpenShift oraz obciążeń na nich działających należy dowiedzieć się, [jak używać](container-insights-analyze.md) Azure monitor do kontenerów.

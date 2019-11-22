@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: dc1cb5cde06314e52ac886c1be1bb46b5f4bbd73
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 693e7d35a0bb4c7dfbb3e033690a5e86e2c398a8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686464"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278346"
 ---
 # <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integracja produktów zabezpieczeń platformy Azure w Azure Security Center
 
@@ -28,7 +28,7 @@ Azure Security Center zapewnia dodatkowe licencje firmy Microsoft na korzystanie
 
 Usługa Azure Application Gateway oferuje zaporę aplikacji internetowej (WAF), która zapewnia scentralizowaną ochronę aplikacji internetowych przed typowymi programami wykorzystującymi luki i lukami w zabezpieczeniach.
 
-Aplikacje sieci Web są coraz bardziej przeznaczone dla złośliwych ataków wykorzystujących często znane luki w zabezpieczeniach. Application Gateway WAF opiera się na podstawowym zestawie reguł 3,0 lub 2.2.9 w projekcie zabezpieczeń aplikacji sieci Web. WAF jest automatycznie aktualizowana w celu ochrony przed nowymi lukami w zabezpieczeniach, bez konieczności dodatkowej konfiguracji. Alerty WAF są przesyłane strumieniowo do Security Center. Aby uzyskać więcej informacji na temat alertów wygenerowanych przez WAF, zobacz [zasady i reguły reguł KSR aplikacji sieci Web](https://docs.microsoft.com/azure/application-gateway/application-gateway-crs-rulegroups-rules?tabs=owasp3#crs911).
+Aplikacje sieci Web są coraz bardziej przeznaczone dla złośliwych ataków wykorzystujących często znane luki w zabezpieczeniach. Application Gateway WAF opiera się na podstawowym zestawie reguł 3,0 lub 2.2.9 w projekcie zabezpieczeń aplikacji sieci Web. WAF jest automatycznie aktualizowana w celu ochrony przed nowymi lukami w zabezpieczeniach, bez konieczności dodatkowej konfiguracji. Alerty WAF są przesyłane strumieniowo do Security Center. Aby uzyskać więcej informacji na temat alertów wygenerowanych przez WAF, zobacz [zasady i reguły reguł KSR aplikacji sieci Web](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 
 ## Azure DDoS Protection<a name="azure-ddos"></a>
 
@@ -42,7 +42,7 @@ Standard DDoS Protection może ograniczyć ataki następujących typów:
 
 > [!div class="mx-tableFixed"]
 
-|Alerty|Opis|
+|Zgłoś alert|Opis|
 |---|---|
 |**Wykryto atak objętościowy**|Celem tego ataku jest zalanie warstwy sieci przy użyciu dużej ilości pozornie uzasadnionego ruchu. Obejmuje to zalewania protokołu UDP, zalewania wzpełnień oraz inne zalewania pakietów sfałszowanych. DDoS Protection Standard ogranicza te potencjalne ataki z obsługą wielodostępności przez przeciąganie i szybkie ich kontrolę przy użyciu globalnej skali sieci.|
 |**Wykryto atak z wykorzystaniem protokołu**|Te ataki sprawiają, że element docelowy jest niedostępny, przez wykorzystanie słabego poziomu stosów w warstwach 3 i 4. Obejmuje to ataki na zalanie, ataki na odbicie i inne ataki protokołów. DDoS Protection Standard ogranicza te ataki, różnią się od złośliwego i wiarygodnego ruchu, współpracując z klientem i blokując złośliwy ruch.|

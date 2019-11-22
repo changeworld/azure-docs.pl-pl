@@ -1,20 +1,16 @@
 ---
 title: Często zadawane pytania dotyczące Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Znajdź odpowiedzi na niektóre często zadawane pytania dotyczące Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 1f25ccd26aed832c068c04198486e769ec980380
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c7335f1656d304d231c2146c8b7496ea43f0b4c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072213"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280235"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Często zadawane pytania dotyczące Azure Dev Spaces
 
@@ -46,12 +42,24 @@ Obecnie Azure Dev Spaces ma być uruchamiany tylko w przypadku systemów Linux i
 
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Czy można używać Azure Dev Spaces w klastrach AKS z włączonymi zakresami adresów IP autoryzowanych serwerów interfejsu API?
 
-Tak, można użyć Azure Dev Spaces w klastrach AKS z włączonymi [zakresami adresów IP autoryzowanych przez serwer interfejsu API][aks-auth-range] . Podczas [tworzenia][aks-auth-range-create] klastra należy [zezwolić na dodatkowe zakresy w zależności od regionu][aks-auth-range-ranges]. Możesz również [zaktualizować][aks-auth-range-update] i istniejący klaster, aby zezwolić na te dodatkowe zakresy.
+Tak, można użyć Azure Dev Spaces w klastrach AKS z włączonymi [zakresami adresów IP autoryzowanych przez serwer interfejsu API][aks-auth-range] . Podczas [tworzenia][aks-auth-range-create] klastra należy [zezwolić na dodatkowe zakresy w zależności od regionu][aks-auth-range-ranges]. Można również [zaktualizować][aks-auth-range-update] istniejący klaster, aby zezwalał na te dodatkowe zakresy.
+
+### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Czy można używać Azure Dev Spaces w klastrach AKS z ograniczonym ruchem wychodzącym dla węzłów klastra?
+
+Tak, można użyć Azure Dev Spaces w klastrach AKS z [ograniczonym ruchem wychodzącym dla węzłów klastra][aks-restrict-egress-traffic] włączonych po dodaniu następujących nazw FQDN:
+
+| NAZWA FQDN                                    | Port      | Użycie      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS:443 | Aby ściągnąć obrazy z systemem Linux Alpine i innymi Azure Dev Spaces |
+| gcr.io | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
+| storage.googleapis.com | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
+
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
+[aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https

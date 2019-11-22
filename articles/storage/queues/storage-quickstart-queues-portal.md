@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start platformy Azure — tworzenie kolejki w usłudze Azure Storage przy użyciu witryny Azure Portal | Microsoft Docs
-description: W tym przewodniku Szybki start utworzysz kolejkę przy użyciu witryny Azure Portal. Następnie użyj Azure Portal, aby dodać komunikat, wyświetlić właściwości komunikatu i usunąć z kolejki komunikat.
+title: 'Szybki Start: Tworzenie kolejek usługi Azure Storage w portalu'
+description: Użyj Azure Portal, aby utworzyć kolejkę. Następnie użyj Azure Portal, aby dodać komunikat, wyświetlić właściwości wiadomości i usunąć z kolejki komunikat.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/06/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: d2f7b01c03b877a3dede496fc02f0d0cc9525cef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721332"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269244"
 ---
-# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Szybki start: Tworzenie kolejki i dodawanie komunikatu w witrynie Azure Portal
+# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Szybki Start: Tworzenie kolejki i Dodawanie komunikatu z Azure Portal
 
 W tym przewodniku Szybki start dowiesz się, jak używać witryny [Azure Portal](https://portal.azure.com/) do tworzenia kolejki w usłudze Azure Storage oraz do dodawania komunikatów do kolejki i usuwania ich z kolejki.
 
@@ -61,7 +61,7 @@ Usuwanie z kolejki zawsze dotyczy najstarszego komunikatu.
 
 ![Zrzut ekranu przedstawiający sposób usuwania komunikatu z kolejki z poziomu portalu](media/storage-quickstart-queues-portal/dequeue-message.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia kolejki, dodawania komunikatu, wyświetlania właściwości komunikatu i usuwania komunikatu z kolejki w witrynie Azure Portal.
 

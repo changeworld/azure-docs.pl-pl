@@ -1,5 +1,6 @@
 ---
-title: Diagnozowanie problemu z komunikacją między sieciami — samouczek — Azure Portal | Microsoft Docs
+title: 'Samouczek: diagnozowanie problemów z komunikacją między sieciami — Azure Portal'
+titleSuffix: Azure Network Watcher
 description: Dowiedz się, jak zdiagnozować problem z komunikacją występujący między siecią wirtualną platformy Azure podłączoną do lokalnej lub innej sieci wirtualnej za pomocą bramy sieci wirtualnej platformy Azure przy użyciu diagnostyki sieci VPN usługi Network Watcher.
 services: network-watcher
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e4dc66a5ca6e18b12586b5b03742fba3d6c3d6c4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f7ce37bd6454492980525f288212fbff2c06625
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704214"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276145"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Samouczek: diagnozowanie problemu z komunikacją między sieciami przy użyciu witryny Azure Portal
 
@@ -39,12 +40,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby móc używać diagnostyki sieci VPN, musisz mieć istniejącą i działającą bramę sieci VPN. Jeśli nie masz istniejącej bramy sieci VPN do diagnozowania, możesz ją wdrożyć przy użyciu [skryptu programu PowerShell](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skrypt programu PowerShell możesz uruchomić z następujących lokalizacji:
-- **Lokalna instalacja programu PowerShell**: Ten skrypt wymaga programu Azure PowerShell `Az` modułu. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+- **Lokalna instalacja programu PowerShell**: skrypt wymaga modułu `Az` Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - **Usługa Azure Cloud Shell**: usługa [Azure Cloud Shell](https://shell.azure.com/powershell) ma zainstalowaną i skonfigurowaną najnowszą wersję programu PowerShell i powoduje zalogowanie na platformie Azure.
 
 Utworzenie bramy sieci VPN za pomocą tego skryptu trwa około godziny. W pozostałych krokach przyjęto założenie, że diagnozowana brama została wdrożona przy użyciu tego skryptu. Jeśli zamiast tego diagnozujesz własną istniejącą bramę, wyniki będą się różnić.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -108,9 +109,9 @@ Jeśli bramę sieci VPN utworzono przy użyciu skryptu z sekcji [Wymagania wstę
 
 1. Wprowadź *TestRG1* w polu **Wyszukiwanie** w górnej części portalu. Po wyświetleniu nazwy **TestRG1** w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *TestRG1*, a następnie wybierz pozycję **Usuń**.
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **TestRG1**, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób diagnozowania problemu z bramą sieci wirtualnej. Warto rejestrować komunikację sieciową do i z maszyny wirtualnej. Dzięki temu można przejrzeć dziennik pod kątem ewentualnych nieprawidłowości. Aby dowiedzieć się, jak to zrobić, przejdź do następnego samouczka.
 

@@ -5,18 +5,18 @@ services: cdn
 author: SyntaxC4
 ms.service: azure-cdn
 ms.topic: include
-ms.date: 04/13/2018
-ms.author: cfowler
+ms.date: 11/15/2019
+ms.author: magattus
 ms.custom: include file
-ms.openlocfilehash: a9c929018a457449b867ee986210214b4c1690fd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5c6f79cb7ad0a31eb3461d6d8e54307537f0491e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593191"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284142"
 ---
 > [!IMPORTANT]
-> Jest to funkcja **Azure CDN Premium from Verizon** i nie jest dostępny za pomocą usługi Azure CDN standard produktów. Aby zobaczyć porównanie funkcji usługi CDN, zobacz [Funkcje produktu Azure CDN](../articles/cdn/cdn-features.md). 
+> Jest to funkcja Azure CDN tylko **Premium z Verizon** , aby skonfigurować reguły dotyczące **Azure CDN firmy Microsoft** przy użyciu [standardowego aparatu reguł](../articles/cdn/cdn-standard-rules-engine-reference.md). Reguły zaawansowane nie są dostępne dla **Azure CDN z Akamai**. Aby zapoznać się z pełnym porównaniem funkcji usługi CDN, zobacz [Azure CDN Features](../articles/cdn/cdn-features.md). 
 > 
 > 
 

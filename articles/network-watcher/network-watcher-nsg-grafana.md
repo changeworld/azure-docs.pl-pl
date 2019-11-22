@@ -1,6 +1,7 @@
 ---
-title: Zarządzanie dzienniki sieciowych grup zabezpieczeń przepływu przy użyciu usługi Network Watcher i Grafana | Dokumentacja firmy Microsoft
-description: Zarządzanie i analizować dzienniki sieciowych grup zabezpieczeń przepływu na platformie Azure przy użyciu usługi Network Watcher i Grafana.
+title: Zarządzanie dziennikami przepływu sieciowej grupy zabezpieczeń za pomocą Grafana
+titleSuffix: Azure Network Watcher
+description: Zarządzanie i analizowanie dzienników przepływu sieciowych grup zabezpieczeń na platformie Azure przy użyciu Network Watcher i Grafana.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -15,56 +16,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e92f4db575e4b318af8dc7bf3ba2eb4b69a3a2d9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116255"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277956"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Zarządzanie i analizować dzienniki przepływu sieciowych grup zabezpieczeń przy użyciu usługi Network Watcher i Grafana
+# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Zarządzanie dziennikami przepływu sieciowych grup zabezpieczeń i analizowanie ich przy użyciu Network Watcher i Grafana
 
-[Grupy zabezpieczeń (NSG) dzienników przepływu sieci](network-watcher-nsg-flow-logging-overview.md) zawierają informacje, który może służyć do zrozumienia przychodzący i wychodzący ruch IP w interfejsach sieciowych. Te dzienniki przepływu Pokaż przepływy wychodzące i przychodzące na poszczególnych reguł sieciowej grupy zabezpieczeń, karty Sieciowej przepływ ma zastosowanie do 5-elementowych informacji o przepływie (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol), a jeśli zezwolenie lub odrzucenie ruchu sieciowego.
+[Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) zawierają informacje, które mogą służyć do zrozumienia ruchu przychodzącego i wychodzącego IP w interfejsach sieciowych. Te dzienniki przepływu przedstawiają przepływy wychodzące i przychodzące dla każdej reguły sieciowej grupy zabezpieczeń, karta sieciowa przepływu odnosi się do, 5-informacje o spójnej kolekcji przepływu (źródłowy/docelowy adres IP, port źródłowy/docelowy, protokół) i jeśli ruch był dozwolony lub zabroniony.
 
 > [!Warning]  
-> Poniższe kroki pracy z dzienników przepływu w wersji 1. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md). Poniższe instrukcje nie będzie działać w wersji 2 pliki dziennika, bez żadnych modyfikacji.
+> Poniższe kroki współpracują z dziennikami przepływów w wersji 1. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do rejestrowania przepływów dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md). Poniższe instrukcje nie będą działały z wersją 2 plików dziennika bez modyfikacji.
 
-Masz liczby sieciowych grup zabezpieczeń w sieci za pomocą funkcji rejestrowania przepływu włączone. Tę kwotę rejestrowania danych sprawia, że kłopotliwe przeanalizować oraz uzyskiwanie szczegółowych informacji z dzienników. Ten artykuł zawiera rozwiązanie, aby centralnie zarządzać tych dzienników przepływu sieciowych grup zabezpieczeń przy użyciu platformy Grafana, typu open source Tworzenie wykresów narzędzia, usługi ElasticSearch, wyszukiwania rozproszonego i aparat analityczny i Logstash, który jest potok przetwarzania danych po stronie serwera "open source".  
+W sieci można mieć wiele sieciowych grup zabezpieczeń z włączonym rejestrowaniem przepływu. Ta ilość danych rejestrowania ułatwia analizowanie i uzyskiwanie szczegółowych informacji z dzienników. Ten artykuł zawiera rozwiązanie umożliwiające centralne zarządzanie tymi dziennikami przepływu sieciowej grupy zabezpieczeń za pomocą Grafana, narzędzia do tworzenia wykresów typu open source, ElasticSearch, rozproszonego aparatu wyszukiwania i analizy oraz logstash, który jest potokiem przetwarzania danych po stronie serwera typu open source.  
 
 ## <a name="scenario"></a>Scenariusz
 
-Dzienniki przepływu sieciowej grupy zabezpieczeń są włączane przy użyciu usługi Network Watcher i są przechowywane w usłudze Azure blob storage. Dodatek Logstash służy do łączenia i przetwarzania dzienników przepływu z usługi blob storage i wysyłać je do programu ElasticSearch.  Gdy dzienników przepływu są przechowywane w programie ElasticSearch, mogą być analizowane i wizualizowane w dostosowanych pulpitów nawigacyjnych w Grafana.
+Dzienniki przepływu sieciowej grupy zabezpieczeń są włączane przy użyciu Network Watcher i są przechowywane w usłudze Azure Blob Storage. Wtyczka logstash służy do łączenia i przetwarzania dzienników przepływów z usługi BLOB Storage i wysyłania ich do ElasticSearch.  Po zapisaniu dzienników przepływu w programie ElasticSearch można je analizować i wizualizować w dostosowanych pulpitach nawigacyjnych w Grafana.
 
 ![NSG Network Watcher Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
 
 ## <a name="installation-steps"></a>Kroki instalacji
 
-### <a name="enable-network-security-group-flow-logging"></a>Rejestrowanie przepływu Włącz sieciowej grupy zabezpieczeń
+### <a name="enable-network-security-group-flow-logging"></a>Włącz rejestrowanie przepływu sieciowych grup zabezpieczeń
 
-W tym scenariuszu konieczne jest posiadanie sieci zabezpieczeń grupy przepływu Rejestrowanie włączone na co najmniej jedną grupę zabezpieczeń sieci w ramach Twojego konta. Aby uzyskać instrukcje na temat włączania dzienników przepływu zabezpieczeń sieci, zapoznaj się z następującym artykułem [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
+W tym scenariuszu należy włączyć rejestrowanie przepływu sieciowej grupy zabezpieczeń dla co najmniej jednej sieciowej grupy zabezpieczeń na Twoim koncie. Instrukcje dotyczące włączania dzienników przepływu zabezpieczeń sieci znajdują się w następującym artykule [wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 
-### <a name="setup-considerations"></a>Zagadnienia dotyczące instalacji
+### <a name="setup-considerations"></a>Zagadnienia dotyczące konfiguracji
 
-W tym przykładzie Grafana, ElasticSearch i Logstash są skonfigurowane na serwerze Ubuntu 16.04 LTS wdrożonych na platformie Azure. Tej minimalnej instalacji jest używane do uruchamiania wszystkie trzy składniki — wszystkie z nich na tej samej maszyny Wirtualnej. Ta konfiguracja powinna służyć wyłącznie do testowania i innych krytycznych obciążeń. Program Logstash, Elasticsearch i Grafana mogą być wszystkie architekturę niezależne skalowanie na wiele wystąpień. Aby uzyskać więcej informacji zobacz dokumentację dla każdego z tych składników.
+W tym przykładzie Grafana, ElasticSearch i logstash są skonfigurowane na serwerze Ubuntu 16,04 LTS wdrożonym na platformie Azure. Ta minimalna konfiguracja jest używana do uruchamiania wszystkich trzech składników — wszystkie są uruchomione na tej samej maszynie wirtualnej. Tej konfiguracji należy używać tylko do testowania i obciążeń niekrytycznych. Logstash, Elasticsearch i Grafana mogą być skalowane do niezależnego skalowania w wielu wystąpieniach. Aby uzyskać więcej informacji, zapoznaj się z dokumentacją dla każdego z tych składników.
 
-### <a name="install-logstash"></a>Instalowanie programu Logstash
+### <a name="install-logstash"></a>Zainstaluj logstash
 
-Używasz Logstash spłaszczanie dzienników przepływu formatu JSON do poziomu krotki przepływu.
+Za pomocą logstash można spłaszczyć dzienniki przepływów w formacie JSON do poziomu krotki przepływu.
 
-1. Aby zainstalować program Logstash, uruchom następujące polecenia:
+1. Aby zainstalować logstash, uruchom następujące polecenia:
 
     ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
 
-2. Konfigurowanie usługi Logstash w celu analizowania dzienników przepływu i wyślij je do programu ElasticSearch. Tworzenie pliku Logstash.conf przy użyciu:
+2. Skonfiguruj logstash do analizowania dzienników przepływu i wyślij je do ElasticSearch. Utwórz plik logstash. conf przy użyciu:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-3. Dodaj następującą zawartość do pliku. Zmień klucz konta magazynu nazwy i dostęp do odzwierciedlenia szczegółów konta magazynu:
+3. Dodaj następującą zawartość do pliku. Zmień nazwę konta magazynu i klucz dostępu, aby odzwierciedlić szczegóły konta magazynu:
 
    ```bash
     input {
@@ -138,27 +139,27 @@ Używasz Logstash spłaszczanie dzienników przepływu formatu JSON do poziomu k
     }
    ```
 
-Plik konfiguracji Logstash, pod warunkiem składa się z trzech części: dane wejściowe, filtrować i danych wyjściowych.
-Wejściowy sekcji wskazuje źródło danych wejściowych dzienników, które będą przetwarzane Logstash — w tym przypadku będziemy używać "azureblob" danych wejściowych (zainstalowaną wtyczką w następnych krokach), który umożliwi nam dostęp do plików JSON dzienników przepływu sieciowej grupy zabezpieczeń przechowywanych w magazynie obiektów blob. 
+Dostarczony plik konfiguracyjny logstash składa się z trzech części: danych wejściowych, filtrów i danych wyjściowych.
+Sekcja Input określa źródło danych wejściowych dzienników, które logstash będzie przetwarzać — w tym przypadku będziemy używać wtyczki wejściowej "azureblob" (zainstalowanej w następnych krokach), która umożliwi nam dostęp do plików JSON dziennika przepływu sieciowej grupy zabezpieczeń przechowywanych w usłudze BLOB Storage. 
 
-Sekcja filtru następnie spłaszcza każdego pliku dziennika przepływu, aby każda krotka poszczególnych przepływ i jego właściwości staje się oddzielne zdarzenie Logstash.
+Następnie sekcja filtru spłaszcza każdy plik dziennika przepływu, tak aby każda spójna kolekcja przepływu i jej skojarzone właściwości stały się oddzielnym zdarzeniem logstash.
 
-Na koniec sekcji danych wyjściowych przekazuje każde zdarzenie Logstash serwerowi programu ElasticSearch. Możesz zmodyfikować plik konfiguracji Logstash w zależności od określonych potrzeb.
+Na koniec sekcja Output przekazuje każde zdarzenie logstash do serwera ElasticSearch. Zmodyfikuj plik konfiguracji logstash, aby odpowiadał Twoim konkretnym potrzebom.
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Instalowanie wtyczki wejściowych Logstash dla usługi Azure Blob storage
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Zainstaluj wtyczkę wejściową logstash dla usługi Azure Blob Storage
 
-Ten dodatek Logstash umożliwia bezpośrednio ze swojego konta magazynu obiektów blob w wyznaczonym dostęp do dzienników przepływów. Aby zainstalować tej wtyczki, z katalogu instalacyjnego programu Logstash domyślna (w tym /usr/share/logstash/bin wielkości liter) uruchom polecenie:
+Ta wtyczka logstash umożliwia bezpośredni dostęp do dzienników przepływu ze wskazanych kont usługi BLOB Storage. Aby zainstalować tę wtyczkę, z domyślnego katalogu instalacji logstash (w tym przypadku/usr/share/logstash/bin) Uruchom polecenie:
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-Aby uzyskać więcej informacji na temat tej wtyczki w zobacz [wejściowych wtyczkę Logstash dla usługi Azure Storage Blobs](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Aby uzyskać więcej informacji na temat tego dodatku, zobacz [dodatek plug-in logstash Input dla obiektów BLOB usługi Azure Storage](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
-### <a name="install-elasticsearch"></a>Instalowanie usługi ElasticSearch
+### <a name="install-elasticsearch"></a>Zainstaluj ElasticSearch
 
-Aby zainstalować usługi ElasticSearch, można użyć poniższego skryptu. Aby uzyskać informacje o instalowaniu programu ElasticSearch, zobacz [Elastic Stack](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
+Aby zainstalować ElasticSearch, można użyć następującego skryptu. Aby uzyskać informacje o instalowaniu ElasticSearch, zobacz [elastyczny stos](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
 
 ```bash
 apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen -y
@@ -171,9 +172,9 @@ systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
 ```
 
-### <a name="install-grafana"></a>Zainstaluj narzędzia Grafana
+### <a name="install-grafana"></a>Zainstaluj Grafana
 
-Aby zainstalować i uruchomić narzędzia Grafana, uruchom następujące polecenia:
+Aby zainstalować i uruchomić Grafana, uruchom następujące polecenia:
 
 ```bash
 wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.5.1_amd64.deb
@@ -182,29 +183,29 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-Dodatkowe informacje dotyczące instalacji, zobacz [instalowania w systemie Debian / Ubuntu](https://docs.grafana.org/installation/debian/).
+Dodatkowe informacje o instalacji można znaleźć [w temacie Installing in Debian/Ubuntu](https://docs.grafana.org/installation/debian/).
 
-#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Dodaj serwer programu ElasticSearch jako źródło danych
+#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Dodawanie serwera ElasticSearch jako źródła danych
 
-Następnie należy dodać indeks ElasticSearch, zawierające dzienniki przepływu jako źródła danych. Źródła danych można dodawać przez zaznaczenie **Dodaj źródło danych** i wypełniając formularz istotne informacje. Przykład tej konfiguracji znajduje się na następującym zrzucie ekranu:
+Następnie należy dodać indeks ElasticSearch zawierający dzienniki przepływu jako źródło danych. Możesz dodać źródło danych, wybierając pozycję **Dodaj źródło danych** i wypełniając formularz odpowiednimi informacjami. Przykładową konfigurację można znaleźć na poniższym zrzucie ekranu:
 
 ![Dodawanie źródła danych](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>Tworzenie pulpitu nawigacyjnego
 
-Teraz, że pomyślnie skonfigurowano Grafana odczytywanie indeks ElasticSearch, zawierający dzienników przepływu sieciowych grup zabezpieczeń, można utworzyć i spersonalizować pulpitów nawigacyjnych. Aby utworzyć nowy pulpit nawigacyjny, wybierz **Utwórz swój pierwszy pulpit nawigacyjny**. Następujące Przykładowa konfiguracja wykres przedstawia przepływów posegmentowana według reguły sieciowej grupy zabezpieczeń:
+Teraz, po pomyślnym skonfigurowaniu Grafana do odczytu z indeksu ElasticSearch zawierającego dzienniki przepływów sieciowej grupy zabezpieczeń, można tworzyć i personalizować pulpity nawigacyjne. Aby utworzyć nowy pulpit nawigacyjny, wybierz pozycję **Utwórz swój pierwszy pulpit nawigacyjny**. Poniższa przykładowa konfiguracja grafu przedstawia przepływy segmentu według reguły sieciowej grupy zabezpieczeń:
 
-![Wykres do pulpitu nawigacyjnego](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
+![Wykres pulpitu nawigacyjnego](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 
-Poniższy zrzut ekranu przedstawia wykres i wykres przedstawiający najważniejsze przepływów i częstotliwości. Przepływy są także wyświetlane przez regułę sieciowej grupy zabezpieczeń i przepływy według decyzji. Grafana jest dużym stopniu dostosowywane, dlatego zaleca się, że pulpity nawigacyjne w zależności od określonych potrzeb monitorowania są tworzone. Poniższy przykład przedstawia typowy pulpitu nawigacyjnego:
+Poniższy zrzut ekranu przedstawia wykres i wykres przedstawiający najlepsze przepływy i ich częstotliwość. Przepływy są również wyświetlane przez regułę sieciowej grupy zabezpieczeń i przepływy według decyzji. Grafana jest wysoce dostosowywalny, dlatego zaleca się tworzenie pulpitów nawigacyjnych zgodnie z określonymi potrzebami monitorowania. Poniższy przykład przedstawia typowy pulpit nawigacyjny:
 
-![Wykres do pulpitu nawigacyjnego](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Wykres pulpitu nawigacyjnego](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Dzięki integracji usługi Network Watcher z rozwiązań ElasticSearch i Grafana, masz są teraz wygodne i scentralizowany sposób wizualizowanie dzienników przepływów sieciowych grup zabezpieczeń, a także innych danych i zarządzanie nimi. Grafana ma wiele innych zaawansowanych funkcji graficznych, które może również służyć do dalszego zarządzania dzienników przepływu i lepiej zrozumieć ruchu sieciowego. Teraz, gdy masz wystąpienie Grafana, skonfiguruj połączenie platformy Azure, możesz ją także zapoznaj się z innych funkcji, która zapewnia w dalszym ciągu.
+Integrując Network Watcher z ElasticSearch i Grafana, masz teraz wygodny i scentralizowany sposób zarządzania i wizualizacji dzienników przepływów sieciowej grupy zabezpieczeń oraz innych danych. Grafana ma wiele innych zaawansowanych funkcji grafowania, które mogą również służyć do dalszej obsługi dzienników przepływów i lepszego zrozumienia ruchu sieciowego. Teraz, gdy masz już Grafana wystąpienie i połączono z platformą Azure, możesz nadal poznać inne funkcje, które oferuje.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o korzystaniu z [usługi Network Watcher](network-watcher-monitoring-overview.md).
+- Dowiedz się więcej o korzystaniu z [Network Watcher](network-watcher-monitoring-overview.md).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6268256c9be26ef3e7e1061eef7cdb3b3f7d31db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494683"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286950"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for Eclipse
 
@@ -84,7 +84,10 @@ Normalny klaster można połączyć za pomocą Ambari zarządzanej nazwy użytko
    > [!NOTE]  
    > Jeśli klaster jest zarejestrowany w ramach subskrypcji platformy Azure i połączony z klastrem, użyjemy podanego klucza magazynu, nazwy użytkownika i hasła.
    > ![konta magazynu programu Azure Explorer](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
-
+   >
+   > Tylko dla użytkownika klawiatury, gdy bieżący fokus jest w **kluczu magazynu**, należy użyć **klawiszy CTRL + TAB** , aby skoncentrować się na następnym polu w oknie dialogowym.
+   
+   
 1. Możesz zobaczyć połączony klaster w węźle usługi **HDInsight** po kliknięciu przycisku OK, jeśli dane wejściowe są prawidłowe. Teraz można przesłać aplikację do tego połączonego klastra.
 
    ![Połączony klaster programu Azure Explorer HDI](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)

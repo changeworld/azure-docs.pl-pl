@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie pomocy technicznej dla współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Co to jest środowisko pomocy technicznej do współpracy B2B usługi Azure Active Directory?
+title: Uzyskiwanie pomocy technicznej dotyczącej współpracy B2B — Azure Active Directory
+description: Co to jest środowisko pomocy technicznej dotyczące Azure Active Directory współpracy B2B?
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,31 +12,31 @@ manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9ebefb9762b663adcd17fb1fdd656cb4f2ec2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768431"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272768"
 ---
-# <a name="getting-support-for-b2b-collaboration"></a>Uzyskiwanie pomocy technicznej do współpracy B2B
+# <a name="getting-support-for-b2b-collaboration"></a>Uzyskiwanie pomocy technicznej dotyczącej współpracy B2B
 
-Zapoznaj się z dokumentacją, możesz wykonać odpowiednie czynności, ale nadal nie można pobrać elementu pracy? Otwórz bilet pomocy technicznej (wymaga planu pomocy technicznej):
+Zapoznajesz się z dokumentacją, że masz odpowiednie rzeczy, ale nadal nie możesz uzyskać czegoś do pracy? Otwórz bilet pomocy technicznej (wymaga planu pomocy technicznej):
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do bloku Pomoc i wsparcie techniczne i wybierz pozycję nowe żądanie pomocy technicznej:
-   - Typ problemu: Technical Preview
-   - Subskrypcja: Wybierz subskrypcję, których to dotyczy
-     - Usługa: Usługa Active Directory
-     - Plan pomocy technicznej: Wybierz plan pomocy technicznej odpowiednich
+1. W [Azure Portal](https://portal.azure.com)przejdź do bloku pomoc i obsługa techniczna, a następnie wybierz pozycję nowe żądanie obsługi:
+   - Typ problemu: techniczne
+   - Subskrypcja: Wybierz zaatakowaną subskrypcję
+     - Usługa: Active Directory
+     - Plan pomocy technicznej: wybierz odpowiedni plan pomocy technicznej
 
    ![Zrzut ekranu przedstawiający nowe żądanie obsługi](media/get-support/new-support-request.png)
 
-2. Opisz problem:
-   - Wybierz odpowiednie ważność, która odzwierciedla możesz musi.
-   - Wybierz typ problemu jako Zarządzanie użytkownikami i grupami
-   - Wybierz kategorię, jak dodawanie użytkowników (B2B)
-   - Obejmują wszystkie komunikaty o błędach, takie jak identyfikator korelacji, użytkowników i tak dalej.
+2. Opisz swój problem:
+   - Wybierz odpowiednią ważność, która odzwierciedla potrzeby.
+   - Wybierz typ problemu jako zarządzanie użytkownikami i grupami
+   - Wybierz kategorię jako dodanie użytkowników (B2B)
+   - Dołącz wszystkie komunikaty o błędach, takie jak identyfikator korelacji, użytkownicy, których to dotyczy, i tak dalej.
 
-   ![Zrzut ekranu przedstawiający opis problemu bilet pomocy technicznej](media/get-support/problem-description.png)
+   ![Zrzut ekranu przedstawiający opis problemu z biletem pomocy technicznej](media/get-support/problem-description.png)
 
-3. W przypadku przedstawicielem pomocy technicznej w celu skontaktowania się z Tobą dotyczące rozwiązywania problemów należy dodać swoje informacje kontaktowe.
+3. Aby skontaktować się z Tobą w celu uzyskania dalszych informacji dotyczących rozwiązywania problemów, należy dodać informacje kontaktowe.

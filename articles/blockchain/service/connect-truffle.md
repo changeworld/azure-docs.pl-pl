@@ -1,31 +1,31 @@
 ---
-title: Łączenie przy użyciu rozwiązania Truffle
+title: Nawiązywanie połączenia z usługą Azure łańcucha bloków przy użyciu programu Truffle
 description: Nawiązywanie połączenia z siecią usługi Azure łańcucha bloków za pomocą Truffle
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932594"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285363"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Szybki start: Użycie programu Truffle do nawiązania połączenia z węzłem transakcji
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Szybki Start: używanie Truffle do nawiązywania połączenia z usługą Azure łańcucha bloków
 
-Truffle to środowisko deweloperskie łańcucha bloków, którego można użyć do nawiązania połączenia z węzłem transakcji usługi Azure łańcucha bloków.
+W tym przewodniku szybki start użyjesz połączenia Truffle z węzłem transakcji usługi Azure łańcucha bloków. Następnie należy użyć konsoli interaktywnej Truffle do wywołania metod **web3** w celu interakcji z siecią łańcucha bloków.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Pełny [Przewodnik Szybki Start: Utwórz składową łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
+* Kończenie [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków usługi Azure łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
 * Zainstaluj [Truffle](https://github.com/trufflesuite/truffle). Truffle wymaga zainstalowania kilku narzędzi, w tym [Node. js](https://nodejs.org), [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Zainstaluj środowisko [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Środowisko Python jest niezbędne dla Web3.
 
@@ -58,18 +58,21 @@ Truffle to środowisko deweloperskie łańcucha bloków, którego można użyć 
 
 Aby skonfigurować projekt Truffle, potrzebne są pewne informacje o węźle transakcji z Azure Portal.
 
-### <a name="transaction-node-endpoint-addresses"></a>Adresy punktów końcowych węzła transakcji
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz pozycję **węzły transakcji** i domyślne łącze węzła transakcji.
 
-1. W Azure Portal przejdź do domyślnego węzła transakcji i wybierz pozycję **węzły transakcji > parametry połączenia**.
-1. Skopiuj i Zapisz adres URL punktu końcowego z **protokołu HTTPS (dostęp do klucza 1)** . W dalszej części tego samouczka potrzebujesz adresów punktu końcowego dla pliku konfiguracji kontraktu inteligentnego.
+    ![Wybierz domyślny węzeł transakcji](./media/connect-truffle/transaction-nodes.png)
 
-    ![Adres punktu końcowego transakcji](./media/connect-truffle/endpoint.png)
+1. Wybierz **Parametry połączenia**.
+1. Skopiuj parametry połączenia z **protokołu HTTPS (dostęp do klucza 1)** . Potrzebujesz ciągu dla następnej sekcji.
+
+    ![Parametry połączenia](./media/connect-truffle/connection-string.png)
 
 ### <a name="edit-configuration-file"></a>Edytuj plik konfiguracji
 
 Następnie należy zaktualizować plik konfiguracji Truffle za pomocą punktu końcowego węzła transakcji.
 
-1. W folderze projektu **truffledemo** Otwórz plik `truffle-config.js` konfiguracji Truffle w edytorze.
+1. W folderze projektu **truffledemo** Otwórz plik konfiguracji Truffle `truffle-config.js` w edytorze.
 1. Zastąp zawartość pliku następującymi informacjami o konfiguracji. Dodaj zmienną zawierającą adres punktu końcowego. Zamień nawias ostry na wartości zebrane z poprzedniej sekcji.
 
     ``` javascript
@@ -100,7 +103,7 @@ Użyj *Web3* , aby nawiązać połączenie z węzłem transakcji.
 
     Truffle nawiązuje połączenie z domyślnym węzłem transakcji i udostępnia konsolę interaktywną.
 
-    Można wywołać metody obiektu **web3** , aby móc korzystać z węzła transakcji.
+    Możesz wywoływać metody w obiekcie **web3** , aby móc korzystać z sieci łańcucha bloków.
 
 1. Wywołaj metodę **getBlockNumber** , aby zwrócić bieżący numer bloku.
 
@@ -122,9 +125,9 @@ Użyj *Web3* , aby nawiązać połączenie z węzłem transakcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono projekt Truffle w celu nawiązania połączenia z domyślnym węzłem transakcji usługi Azure łańcucha bloków Service.
+W tym przewodniku szybki start użyto Truffle do nawiązania połączenia z domyślnym węzłem transakcji usługi Azure łańcucha bloków i użycia konsoli interaktywnej do zwrócenia bieżącego numeru bloku łańcucha bloków.
 
-Skorzystaj z następnego samouczka, aby użyć zestawu Azure łańcucha bloków Development Kit dla Ethereum i Truffle do tworzenia, kompilowania, wdrażania i wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
+Wypróbuj następny samouczek, aby użyć usługi Azure łańcucha bloków Development Kit dla Ethereum do tworzenia, kompilowania, wdrażania i wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
 
 > [!div class="nextstepaction"]
 > [Używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych](send-transaction.md)

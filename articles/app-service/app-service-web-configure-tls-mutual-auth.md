@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a07fa597305771ed3f4da01f2819297fc9cd3d77
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811623"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271690"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurowanie wzajemnego uwierzytelniania TLS dla Azure App Service
 
@@ -41,14 +41,14 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 Po włączeniu uwierzytelniania wzajemnego dla aplikacji wszystkie ścieżki w katalogu głównym aplikacji będą wymagać certyfikatu klienta w celu uzyskania dostępu. Aby zapewnić, że pewne ścieżki pozostaną otwarte dla dostępu anonimowego, można zdefiniować ścieżki wykluczeń w ramach konfiguracji aplikacji.
 
-Ścieżki wykluczeń można skonfigurować poprzez wybranie opcji **konfiguracja** > **Ustawienia ogólne** i zdefiniowanie ścieżki wykluczania. W tym przykładzie wszystko w ścieżce `/public` dla aplikacji nie zażąda certyfikatu klienta.
+Ścieżki wykluczeń można skonfigurować przez wybranie opcji **konfiguracja** > **Ustawienia ogólne** i zdefiniowanie ścieżki wykluczania. W tym przykładzie wszystkie elementy w ścieżce `/public` dla aplikacji nie zażądają certyfikatu klienta.
 
 ![Ścieżki wykluczania certyfikatów][exclusion-paths]
 
 
 ## <a name="access-client-certificate"></a>Dostęp do certyfikatu klienta
 
-W App Service zakończenie żądania protokołu SSL w usłudze równoważenia obciążenia frontonu odbywa się. Podczas przekazywania żądania do kodu aplikacji z [włączonymi certyfikatami klienta](#enable-client-certificates)App Service wprowadza nagłówek żądania `X-ARR-ClientCert` z certyfikatem klienta. App Service nie robi niczego z certyfikatem klienta innego niż przesłanie go do aplikacji. Kod aplikacji jest odpowiedzialny za Weryfikowanie certyfikatu klienta.
+W App Service zakończenie żądania protokołu SSL w usłudze równoważenia obciążenia frontonu odbywa się. Podczas przekazywania żądania do kodu aplikacji z [włączonymi certyfikatami klienta](#enable-client-certificates)App Service wstrzyknąć nagłówek żądania `X-ARR-ClientCert` z certyfikatem klienta. App Service nie robi niczego z certyfikatem klienta innego niż przesłanie go do aplikacji. Kod aplikacji jest odpowiedzialny za Weryfikowanie certyfikatu klienta.
 
 W przypadku ASP.NET certyfikat klienta jest dostępny za pomocą właściwości **HttpRequest. ClientCertificate** .
 
@@ -64,7 +64,7 @@ W przypadku innych stosów aplikacji (Node. js, PHP itp.) certyfikat klienta jes
 
     namespace ClientCertificateUsageSample
     {
-        public partial class cert : System.Web.UI.Page
+        public partial class Cert : System.Web.UI.Page
         {
             public string certHeader = "";
             public string errorString = "";
@@ -180,7 +180,7 @@ W przypadku innych stosów aplikacji (Node. js, PHP itp.) certyfikat klienta jes
 
 ## <a name="nodejs-sample"></a>Przykład środowiska Node. js
 
-Poniższy przykładowy kod w języku Node. js pobiera nagłówek `X-ARR-ClientCert` i używa algorytmu [fałszowania](https://github.com/digitalbazaar/forge) w celu przekonwertowania ciągu PEM zakodowanego algorytmem Base64 do obiektu certyfikatu i sprawdzenia jego poprawności:
+Poniższy przykładowy kod w języku Node. js pobiera `X-ARR-ClientCert` nagłówku i używa [fałszowania węzła](https://github.com/digitalbazaar/forge) , aby przekonwertować ciąg PEM zakodowany algorytmem Base64 do obiektu certyfikatu i sprawdzić jego poprawność:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';

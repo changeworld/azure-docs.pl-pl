@@ -1,6 +1,7 @@
 ---
-title: Rozwiązywanie problemów z połączeniami w usłudze Azure Network Watcher — witryna Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z połączenia Rozwiązywanie problemów z możliwości usługi Azure Network Watcher w witrynie Azure portal.
+title: Rozwiązywanie problemów z połączeniami — Azure Portal
+titleSuffix: Azure Network Watcher
+description: Dowiedz się, jak korzystać z funkcji rozwiązywania problemów z usługą Azure Network Watcher przy użyciu Azure Portal.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702001"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275974"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Rozwiązywanie problemów z połączeniami w usłudze Azure Network Watcher w witrynie Azure portal
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Rozwiązywanie problemów z usługą Azure Network Watcher przy użyciu Azure Portal
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
@@ -28,39 +29,39 @@ ms.locfileid: "64702001"
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-connectivity-cli.md)
 > - [Interfejs API REST platformy Azure](network-watcher-connectivity-rest.md)
 
-Dowiedz się, jak używać połączenia Rozwiązywanie problemów, aby sprawdzić, czy można nawiązać bezpośrednie połączenie TCP z maszyny wirtualnej do danego punktu końcowego.
+Dowiedz się, jak używać rozwiązywania problemów z połączeniami, aby sprawdzić, czy można nawiązać bezpośrednie połączenie TCP z maszyny wirtualnej do danego punktu końcowego.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule przyjęto założenie, że masz następujące zasoby:
+W tym artykule założono, że masz następujące zasoby:
 
-* Wystąpienie usługi Network Watcher w regionie, do których użytkownik chce Rozwiązywanie problemów z połączeniem.
-* Rozwiązywanie problemów z połączeniami z maszyn wirtualnych.
+* Wystąpienie Network Watcher w regionie, w którym chcesz rozwiązać problem z połączeniem.
+* Maszyny wirtualne do rozwiązywania problemów z usługą.
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączeniami wymaga, że maszyna wirtualna, rozwiązywanie problemów z z ma `AzureNetworkWatcherExtension` zainstalowane rozszerzenie maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej Windows można znaleźć [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i maszyny Wirtualnej systemu Linux można znaleźć pod adresem [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
+> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z maszyną wirtualną, z której na`AzureNetworkWatcherExtension` stąpiło Rozwiązywanie Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź łączność z maszyną wirtualną
 
-W tym przykładzie służy do sprawdzania łączności do docelowej maszyny wirtualnej za pośrednictwem portu 80.
+Ten przykład umożliwia sprawdzenie łączności z docelową maszyną wirtualną przez port 80.
 
-Przejdź do usługi Network Watcher i kliknij **Rozwiązywanie problemów z połączeniami**. Wybierz maszynę wirtualną, aby sprawdzić łączność z. W **docelowy** wybierz sekcję **wybierz maszynę wirtualną** i wybierz odpowiednią maszynę wirtualną oraz port do testowania.
+Przejdź do Network Watcher i kliknij pozycję **Rozwiązywanie problemów z połączeniami**. Wybierz maszynę wirtualną, z której ma zostać sprawdzona łączność. W sekcji **miejsce docelowe** wybierz **pozycję Wybierz maszynę wirtualną** , a następnie wybierz odpowiednią maszynę wirtualną i port do przetestowania.
 
-Po kliknięciu **Sprawdź**, łączność między maszynami wirtualnymi na podany port jest zaznaczone. W tym przykładzie docelowej maszyny Wirtualnej jest niedostępny, przedstawiono listę przeskoków.
+Po kliknięciu przycisku **Sprawdź**, zostanie sprawdzona łączność między maszynami wirtualnymi w określonym porcie. W tym przykładzie docelowa maszyna wirtualna jest nieosiągalna. zostanie wyświetlona lista przeskoków.
 
-![Sprawdzanie łączności wyników dla maszyny wirtualnej][1]
+![Sprawdź wyniki łączności dla maszyny wirtualnej][1]
 
 ## <a name="check-remote-endpoint-connectivity"></a>Sprawdź łączność zdalnego punktu końcowego
 
-Aby sprawdzić łączność i opóźnienia w zdalnym punkcie końcowym, wybierz opcję **ręcznie określić** przycisku radiowego w **docelowy** sekcji, wprowadź adres url i numer portu i kliknij przycisk **Sprawdź**.  Służy to do zdalnego punktów końcowych, takich jak punkty końcowe usług websites i storage.
+Aby sprawdzić łączność i opóźnienie do zdalnego punktu końcowego, wybierz przycisk **Określ ręcznie** radio w sekcji **miejsce docelowe** , wprowadź adres URL i port, a następnie kliknij przycisk **Sprawdź**.  Jest on używany do zdalnych punktów końcowych, takich jak witryny sieci Web i punkty końcowe magazynu.
 
-![Sprawdzanie łączności wyników dla witryny sieci web][2]
+![Sprawdź wyniki łączności dla witryny sieci Web][2]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Informacje o automatyzowaniu przechwytywania pakietów przy użyciu alertów maszyny wirtualnej, wyświetlając [tworzenie przechwytywania pakietów wyzwolonych alertów](network-watcher-alert-triggered-packet-capture.md)
+Informacje o automatyzowaniu przechwytywania pakietów przy użyciu alertów dotyczących maszyn wirtualnych poprzez wyświetlanie [funkcji tworzenia alertu wyzwolenie pakietu](network-watcher-alert-triggered-packet-capture.md)
 
-Dowiedz się, czy niektóre jest dozwolony ruch do lub z maszyny Wirtualnej, odwiedzając [weryfikowanie przepływu protokołu IP z Sprawdź](diagnose-vm-network-traffic-filtering-problem.md)
+Sprawdź, czy określony ruch jest dozwolony w lub z maszyny wirtualnej, odwiedzając [sprawdzenie przepływu IP](diagnose-vm-network-traffic-filtering-problem.md)
 
 [1]: ./media/network-watcher-connectivity-portal/figure1.png
 [2]: ./media/network-watcher-connectivity-portal/figure2.png

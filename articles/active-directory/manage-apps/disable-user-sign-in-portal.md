@@ -1,5 +1,5 @@
 ---
-title: Wyłączanie logowania użytkownika dla aplikacji dla przedsiębiorstw w Azure Active Directory | Microsoft Docs
+title: Wyłączanie logowania użytkownika dla aplikacji dla przedsiębiorstw w usłudze Azure AD
 description: Jak wyłączyć aplikację dla przedsiębiorstw, dzięki czemu żaden użytkownik nie może zalogować się do niej w Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a08779d171367d982392ae4e987fb46e019e61f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 10553898376c4b9236ee62718fffccd45b12d70b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720282"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274087"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Wyłącz logowania użytkowników dla aplikacji dla przedsiębiorstw w Azure Active Directory
 

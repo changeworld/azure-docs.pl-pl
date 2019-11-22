@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 85d2e58d35ef233fda7c724f85152fc74bd11189
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826838"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286756"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Samouczek: dodawanie wystąpienia zarządzanego SQL Database do grupy trybu failover
 
-Dodaj wystąpienie zarządzane SQL Database do grupy trybu failover. W tym artykule dowiesz się, jak:
+Dodaj wystąpienie zarządzane SQL Database do grupy trybu failover. W tym artykule dowiesz się jak:
 
 > [!div class="checklist"]
 > - Tworzenie podstawowego wystąpienia zarządzanego
@@ -1075,7 +1075,7 @@ Wyczyść zasoby, usuwając najpierw wystąpienie zarządzane, klaster wirtualny
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Przejdź do grupy zasobów w [Azure Portal](https://portal.azure.com). 
-1. Wybierz wystąpienie zarządzane, a następnie wybierz pozycję **Usuń**. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. Ukończenie tego procesu może potrwać trochę czasu w tle i do momentu wykonania operacji "s" nie będzie można usunąć *klastra wirtualnego* ani żadnych innych zasobów zależnych. Monitoruj pozycję Usuń na karcie działanie, aby potwierdzić, że zarządzane wystąpienie zostało usunięte. 
+1. Wybierz wystąpienia zarządzane, a następnie wybierz pozycję **Usuń**. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. Ukończenie tego procesu może potrwać trochę czasu w tle i do momentu wykonania operacji "s" nie będzie można usunąć *klastra wirtualnego* ani żadnych innych zasobów zależnych. Monitoruj pozycję Usuń na karcie działanie, aby potwierdzić, że zarządzane wystąpienie zostało usunięte. 
 1. Po usunięciu wystąpienia zarządzanego Usuń *klaster wirtualny* , wybierając go w grupie zasobów, a następnie wybierając pozycję **Usuń**. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. 
 1. Usuń wszystkie pozostałe zasoby. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. 
 1. Aby usunąć grupę zasobów, wybierz pozycję **Usuń grupę zasobów**, wpisz nazwę grupy zasobów, `myResourceGroup`a następnie wybierz pozycję **Usuń**. 

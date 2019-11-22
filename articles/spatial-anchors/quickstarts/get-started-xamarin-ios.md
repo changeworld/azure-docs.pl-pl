@@ -1,21 +1,21 @@
 ---
-title: Szybki Start — Tworzenie aplikacji platformy Xamarin dla systemu iOS z zakotwiczeniami przestrzennymi Azure | Microsoft Docs
+title: 'Szybki Start: Tworzenie aplikacji platformy Xamarin dla systemu iOS'
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć aplikację dla systemu iOS za pomocą platformy Xamarin przy użyciu kotwic przestrzennych.
 author: craigktreasure
-manager: virivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ef25cf07326220be36ce8f67267428ffe1ac0728
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d2e1612804c78e3436b776cdffea7e19bc2925fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931644"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277002"
 ---
-# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji platformy Xamarin dla systemu iOS przy użyciu kotwic środowiska Azure
+# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji platformy Xamarin dla systemu iOS przy użyciu kotwic Azure przestrzennego
 
 W tym przewodniku szybki start opisano sposób tworzenia aplikacji dla systemu iOS przy użyciu funkcji [Azure przestrzenny kotwic](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Po zakończeniu będziesz mieć aplikację systemu iOS, która będzie mogła zapisywać i odwoływać kotwicę przestrzenną.
 
@@ -62,17 +62,17 @@ Ustaw projekt startowy na **SampleXamarin. iOS**, Zmień **konfigurację rozwią
 
 ![Konfiguracja programu Visual Studio](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Wybierz pozycję **Uruchom** > **Uruchom bez debugowania** , aby wdrożyć i uruchomić aplikację.
+Wybierz pozycję **uruchom** > **Uruchom bez debugowania** , aby wdrożyć i uruchomić aplikację.
 
 W aplikacji wybierz pozycję **podstawowa** , aby uruchomić demonstrację, i postępuj zgodnie z instrukcjami, aby umieścić i odwołać kotwicę.
 
-> ![Zrzut ekranu](./media/get-started-xamarin-ios/screenshot-1.jpg)
-> 1![zrzut](./media/get-started-xamarin-ios/screenshot-2.jpg)
-> ekranu2![zrzut ekranu 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
+> Zrzut ekranu ![1](./media/get-started-xamarin-ios/screenshot-1.jpg)
+> ![zrzut ekranu 2](./media/get-started-xamarin-ios/screenshot-2.jpg)
+> ![zrzut ekranu 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udostępnianie kotwic przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)

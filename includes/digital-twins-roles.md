@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 11/20/2019
 ms.custom: include file
-ms.openlocfilehash: e1512db9bea2aa3eb1a56045a97b3402ac62d84e
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53733a3fb33aeb99321d4c94a64225ffa84eb424
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949031"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307248"
 ---
 W poniższej tabeli opisano role, które są dostępne w usłudze Azure Digital bliźniaczych reprezentacji:
 

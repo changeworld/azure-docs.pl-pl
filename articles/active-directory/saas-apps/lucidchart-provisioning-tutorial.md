@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie LucidChart dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do LucidChart.
+title: 'Samouczek: Inicjowanie obsługi użytkowników dla LucidChart — Azure AD'
+description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników w usłudze LucidChart.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9540cf882af6b11f0e8624e477ad336f6d5d9ad3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3791992586edbdc5188c3078b1f1bb108ce580d7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963681"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276867"
 ---
-# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie LucidChart dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie LucidChart na potrzeby automatycznego aprowizacji użytkowników
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w LucidChart i Azure AD w celu automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do LucidChart. 
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w LucidChart i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD do LucidChart. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
-* Dzierżawy usługi Azure Active directory
-* Dzierżawcy LucidChart z [Enterprise plan](https://www.lucidchart.com/user/117598685#/subscriptionLevel) lub lepiej nie są włączone
-* Konto użytkownika LucidChart z uprawnieniami administratora
+* Dzierżawa usługi Azure Active Directory
+* Dzierżawa LucidChart z [planem Enterprise](https://www.lucidchart.com/user/117598685#/subscriptionLevel) lub lepsza
+* Konto użytkownika w LucidChart z uprawnieniami administratora
 
 ## <a name="assigning-users-to-lucidchart"></a>Przypisywanie użytkowników do LucidChart
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji LucidChart. Po decyzję, możesz przypisać użytkowników do aplikacji LucidChart, zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji LucidChart. Po ustaleniu tych użytkowników możesz przypisać je do aplikacji LucidChart, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
+[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Ważne wskazówki dotyczące przypisywania użytkowników do LucidChart
 
-* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do LucidChart do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do LucidChart w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkowników do LucidChart, należy wybrać **użytkownika** roli, lub inną prawidłową specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. **Domyślnego dostępu** roli nie działa w przypadku inicjowania obsługi administracyjnej i Ci użytkownicy są pomijane.
+* Podczas przypisywania użytkownika do LucidChart należy wybrać rolę **użytkownika** lub inną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. **Domyślna rola dostępu** nie działa w przypadku inicjowania obsługi administracyjnej, a użytkownicy są pomijani.
 
-## <a name="configuring-user-provisioning-to-lucidchart"></a>Konfigurowaniem aprowizowania użytkowników w LucidChart
+## <a name="configuring-user-provisioning-to-lucidchart"></a>Konfigurowanie aprowizacji użytkowników do LucidChart
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w LucidChart aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w LucidChart na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API aprowizacji usługi Azure AD do konta użytkownika LucidChart, a następnie Konfigurując usługę aprowizacji do tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w usłudze LucidChart na podstawie przypisywania użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla LucidChart, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla LucidChart, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Skonfiguruj automatyczne aprowizowaniem kont użytkowników do LucidChart w usłudze Azure AD
+### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Konfigurowanie automatycznego inicjowania obsługi konta użytkownika w usłudze Azure AD LucidChart
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-2. Jeśli już skonfigurowano LucidChart dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi LucidChart przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **LucidChart** w galerii aplikacji. Wybierz LucidChart z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+2. Jeśli już skonfigurowano LucidChart do logowania jednokrotnego, Wyszukaj wystąpienie elementu LucidChart przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **Lucidchart** w galerii aplikacji. Wybierz pozycję LucidChart z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-3. Wybierz wystąpienie LucidChart, a następnie wybierz **aprowizacji** kartę.
+3. Wybierz wystąpienie elementu LucidChart, a następnie wybierz kartę **Inicjowanie obsługi** .
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![LucidChart inicjowania obsługi administracyjnej.](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
+    ![Inicjowanie obsługi LucidChart](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **klucz tajny tokenu** generowane przez konto usługi LucidChart (tokenu można znaleźć w ramach konta usługi: **Zespół** > **integracji aplikacji** > **Standard SCIM**).
+5. W sekcji **poświadczenia administratora** wprowadź **klucz tajny** wygenerowany przez konto Lucidchart (możesz znaleźć token w ramach swojego konta: **Team** > **App Integration** > **Standard scim**).
 
-    ![LucidChart inicjowania obsługi administracyjnej.](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
+    ![Inicjowanie obsługi LucidChart](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
 
-6. W witrynie Azure portal kliknij pozycję **Testuj połączenie** zapewniające usługi Azure AD connect można LucidChart aplikacji. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto LucidChart ma uprawnienia administratora i spróbuj ponownie krok 5.
+6. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z aplikacją Lucidchart. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi LucidChart ma uprawnienia administratora, a następnie spróbuj ponownie wykonać krok 5.
 
-7. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi błąd."
+7. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach dotyczących aprowizacji w polu **E-mail powiadomienia** , i zaznacz pole wyboru "Wyślij powiadomienie e-mail, gdy wystąpi błąd".
 
 8. Kliknij pozycję **Zapisz**.
 
-9. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do LucidChart**.
+9. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników do Lucidchart**.
 
-10. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD LucidChart. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w LucidChart operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+10. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do Lucidchart. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie Lucidchart for Updates. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-11. Aby włączyć usługi Azure AD, usługi dla LucidChart inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
+11. Aby włączyć usługę Azure AD Provisioning dla usługi LucidChart, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
 12. Kliknij pozycję **Zapisz**.
 
-Ta operacja uruchamia wstępnej synchronizacji użytkowników i/lub grupy przypisane do LucidChart w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji.
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup przypisanych do LucidChart w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)

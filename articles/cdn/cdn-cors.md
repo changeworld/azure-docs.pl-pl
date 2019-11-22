@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure CDN przy użyciu mechanizmu CORS | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Azure Content Delivery Network (CDN) do za pomocą udostępniania zasobów między źródłami (CORS).
+title: Używanie Azure CDN z mechanizmem CORS | Microsoft Docs
+description: Dowiedz się, jak korzystać z usługi Azure Content Delivery Network (CDN) z funkcją udostępniania zasobów między źródłami (CORS).
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,86 +14,94 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 204183fa25203a094eecd8df85a8bfd5dcf271cc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593968"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278097"
 ---
-# <a name="using-azure-cdn-with-cors"></a>Usługa Azure CDN przy użyciu mechanizmu CORS
-## <a name="what-is-cors"></a>Co to jest mechanizm CORS?
-Mechanizm CORS (Cross współużytkowanie zasobów) to funkcja protokołu HTTP, który umożliwia aplikacji sieci web uruchomionej w jednej domenie dostęp do zasobów w innej domenie. Aby zmniejszyć prawdopodobieństwo ataki z użyciem skryptów między witrynami, wszystkie współczesne przeglądarki internetowe obsługują wdrażają ograniczenie bezpieczeństwa nazywane [zasadami tego samego źródła](https://www.w3.org/Security/wiki/Same_Origin_Policy).  Zapobiega to strony sieci web wywoływaniu interfejsów API w innej domenie.  Mechanizm CORS zapewnia bezpieczną metodę umożliwiania jednej pochodzenia (domenie źródłowej) wywoływania interfejsów API z innego źródła.
+# <a name="using-azure-cdn-with-cors"></a>Używanie Azure CDN z mechanizmem CORS
+## <a name="what-is-cors"></a>Co to jest CORS?
+CORS (Udostępnianie zasobów między źródłami) to funkcja protokołu HTTP, która umożliwia aplikacji sieci Web działającej w ramach jednej domeny dostęp do zasobów w innej domenie. Aby zmniejszyć prawdopodobieństwo ataków na skrypty między lokacjami, wszystkie nowoczesne przeglądarki sieci Web implementują ograniczenie zabezpieczeń znane jako [zasady tego samego źródła](https://www.w3.org/Security/wiki/Same_Origin_Policy).  Zapobiega to wywoływaniu interfejsów API w innej domenie przez stronę sieci Web.  Mechanizm CORS umożliwia bezpieczny sposób wywoływania interfejsów API w innym źródle.
 
 ## <a name="how-it-works"></a>Jak to działa
-Istnieją dwa typy żądań CORPS *prostych żądań* i *złożonych żądań.*
+Istnieją dwa typy żądań CORS, *proste żądania* i *skomplikowane żądania.*
 
 ### <a name="for-simple-requests"></a>W przypadku prostych żądań:
 
-1. Przeglądarka wysyła żądanie CORS przy użyciu dodatkowego **pochodzenia** nagłówek żądania HTTP. Wartość tego nagłówka origin, która obsłużyła stronę nadrzędną, która jest zdefiniowana jako kombinacja *protokołu* *domeny* i *portu.*  Gdy strona z protokołu https\:/ / www.contoso.com próbuje uzyskać dostęp do danych użytkownika w pochodzenia fabrikam.com, następujący nagłówek żądania będą wysyłane na fabrikam.com:
+1. Przeglądarka wysyła żądanie CORS przy użyciu dodatkowego nagłówka żądania HTTP **źródła** . Wartość tego nagłówka jest źródłem, który obsługuje stronę nadrzędną, która jest definiowana jako kombinacja *protokołu,* *domeny* i *portu.*  Gdy strona z usługi https\://www.contoso.com próbuje uzyskać dostęp do danych użytkownika w pochodzeniu fabrikam.com, do fabrikam.com zostanie wysłany następujący nagłówek żądania:
 
    `Origin: https://www.contoso.com`
 
-2. Serwer może odpowiadać z dowolnymi z następujących czynności:
+2. Serwer może odpowiedzieć z dowolnego z następujących elementów:
 
-   * **Access-Control-Allow-Origin** nagłówka w swojej odpowiedzi wskazujący witrynę pochodzenia, w której jest dozwolona. Na przykład:
+   * Nagłówek **Access-Control-Allow-Origin** w odpowiedzi wskazujący, która lokacja pochodzenia jest dozwolona. Na przykład:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * Kod błędu HTTP 403, jeśli serwer nie zezwala na żądania między źródłami po sprawdzeniu nagłówek źródła np.
+   * Kod błędu HTTP, taki jak 403, jeśli serwer nie zezwala na żądanie między źródłami po sprawdzeniu nagłówka źródła
 
-   * **Access-Control-Allow-Origin** nagłówka z symbolem wieloznacznym, który zezwala na wszystkie pochodzenia:
+   * Nagłówek **Access-Control-Allow-Origin** z symbolem wieloznacznym, który zezwala na wszystkie źródła:
 
      `Access-Control-Allow-Origin: *`
 
 ### <a name="for-complex-requests"></a>W przypadku złożonych żądań:
 
-Złożone żądanie jest żądaniem CORS, w którym przeglądarki jest wymagany do wysłania *żądania wstępnego* (czyli wstępne sondy) przed wysłaniem rzeczywiste żądanie CORS. Żądania wstępnego pyta uprawnienia serwera, jeśli oryginalny CORS żądania można kontynuować i jest `OPTIONS` żądania do tego samego adresu URL.
+Żądanie złożone to żądanie CORS, w którym przeglądarka jest wymagana do wysłania *żądania wstępnego* (czyli wstępnej sondy) przed wysłaniem rzeczywistego żądania CORS. Żądanie inspekcji wstępnej prosi o zezwolenie na serwer, jeśli będzie można wykonać oryginalne żądanie CORS i będzie `OPTIONS` żądanie do tego samego adresu URL.
 
 > [!TIP]
-> Aby uzyskać szczegółowe informacje na temat przepływów mechanizmu CORS i typowych pułapek, Wyświetl [przewodnik CORS dla interfejsów API REST](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+> Aby uzyskać więcej informacji na temat przepływów CORS i wspólnych pułapek, zobacz [Przewodnik dotyczący funkcji CORS dla interfejsów API REST](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
 >
 >
 
-## <a name="wildcard-or-single-origin-scenarios"></a>Symboli wieloznacznych lub scenariuszy pojedynczego źródła
-Mechanizm CORS w usłudze Azure CDN będą działać automatycznie bez dodatkowej konfiguracji po **Access-Control-Allow-Origin** nagłówka ustawiono symbolu wieloznacznego (*) lub pojedynczego źródła.  Sieć CDN będzie buforować odpowiedzi pierwszy i kolejnych żądań będzie używać tego samego nagłówka.
+## <a name="wildcard-or-single-origin-scenarios"></a>Scenariusze dotyczące symboli wieloznacznych lub pojedynczej lokalizacji pochodzenia
+Mechanizm CORS na Azure CDN będzie działał automatycznie bez dodatkowej konfiguracji, gdy nagłówek **Access-Control-Allow-Origin** ma wartość symbol wieloznaczny (*) lub pojedyncze źródło.  Usługa CDN będzie buforować pierwszą odpowiedź, a kolejne żądania będą używały tego samego nagłówka.
 
-Jeśli zostały już wprowadzone żądań do usługi CDN przed CORS zostanie ustawiony na źródło, konieczne będzie przeczyścić zawartość dla zawartości punktu końcowego ponowne załadowanie zawartości przy użyciu **Access-Control-Allow-Origin** nagłówka.
+Jeśli żądania zostały już wprowadzone do usługi CDN przed ustawieniem CORS w pochodzeniu, konieczne będzie przeczyszczenie zawartości z zawartości punktu końcowego w celu ponownego załadowania zawartości przy użyciu nagłówka **Access-Control-Allow-Origin** .
 
-## <a name="multiple-origin-scenarios"></a>Scenariuszy z wieloma źródłami
-Jeśli musisz zezwolić na konkretnej listy źródeł, które mają być dozwolone do obsługi mechanizmu CORS elementy Pobierz nieco bardziej skomplikowane. Ten problem występuje, gdy usługa CDN buforuje **Access-Control-Allow-Origin** nagłówek pierwszego źródła CORS.  Gdy różne źródła CORS wykonuje kolejne żądanie, sieć CDN będzie służyć buforowane **Access-Control-Allow-Origin** nagłówka, który nie będzie zgodne.  Istnieje kilka sposobów, aby rozwiązać ten problem.
+## <a name="multiple-origin-scenarios"></a>Scenariusze wielu źródeł
+Jeśli trzeba zezwolić na dostęp do konkretnej listy pochodzenia dla mechanizmu CORS, znacznie bardziej skomplikowane są pewne elementy. Ten problem występuje, gdy Usługa CDN buforuje nagłówek **Access-Control-Allow-Origin** dla pierwszego źródła CORS.  Gdy inne źródło CORS wykonuje kolejne żądanie, Usługa CDN będzie obsługiwała nagłówek cache **-Control-Allow-Origin** , który nie jest zgodny.  Istnieje kilka sposobów, aby rozwiązać ten problem.
+
+### <a name="azure-cdn-standard-profiles"></a>Profile standardowe Azure CDN
+W przypadku usługi Azure CDN Standard od firmy Microsoft można utworzyć regułę w [aparacie standardowych reguł](cdn-standard-rules-engine-reference.md) , aby sprawdzić nagłówek **źródła** żądania. Jeśli jest to prawidłowe źródło, reguła ustawi nagłówek **Access-Control-Allow-Origin** z pożądaną wartością. W takim przypadku nagłówek **Access-Control-Allow-Origin** z serwera pochodzenia pliku jest ignorowany, a aparat reguł sieci CDN całkowicie zarządza dozwolonymi źródłami CORS.
+
+![Przykład reguł z aparatem reguł standardowych](./media/cdn-cors/cdn-standard-cors.png)
+
+> [!TIP]
+> Możesz dodać dodatkowe akcje do reguły, aby zmodyfikować dodatkowe nagłówki odpowiedzi, takie jak **Access-Control-Allow-Methods**.
+> 
+
+W **Azure CDN standardowym z Akamai**, jedynym mechanizmem do zezwalania na wiele źródeł bez użycia symboli wieloznacznych jest użycie [buforowania ciągu zapytania](cdn-query-string.md). Włącz ustawienie ciągu zapytania dla punktu końcowego usługi CDN, a następnie użyj unikatowego ciągu zapytania dla żądań z każdej dozwolonej domeny. W efekcie Usługa CDN będzie buforować osobny obiekt dla każdego unikatowego ciągu zapytania. Takie podejście nie jest jednak idealne, ponieważ spowoduje to powstanie wielu kopii tego samego pliku w pamięci podręcznej w sieci CDN.  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Usługa Azure CDN w warstwie Premium firmy Verizon
-Najlepszym sposobem, aby włączyć tę opcję, jest użycie **Azure CDN Premium from Verizon**, który przedstawia niektóre funkcje zaawansowane. 
+Korzystając z aparatu reguł Verizon Premium, musisz [utworzyć regułę](cdn-rules-engine.md) , aby sprawdzić nagłówek **źródła** żądania.  Jeśli jest to prawidłowe źródło, reguła ustawi nagłówek **Access-Control-Allow-Origin** ze źródłem podanym w żądaniu.  Jeśli źródło określone w nagłówku **źródła** jest niedozwolone, reguła powinna pominąć nagłówek **Access-Control-Allow-Origin** , co spowoduje odrzucenie żądania przez przeglądarkę. 
 
-Konieczne będzie [Utwórz regułę](cdn-rules-engine.md) do sprawdzenia **pochodzenia** nagłówka w żądaniu.  Jeśli jest to prawidłowy punkt początkowy, reguła ustawi **Access-Control-Allow-Origin** nagłówek o pochodzeniu podany w żądaniu.  Jeśli źródło jest określone w **pochodzenia** nagłówka jest niedozwolona, reguły należy pominąć znak **Access-Control-Allow-Origin** nagłówka, który spowoduje, że przeglądarkę, aby odrzucić żądanie. 
+Istnieją dwa sposoby wykonania tej czynności za pomocą aparatu reguł Premium. W obu przypadkach nagłówek **Access-Control-Allow-Origin** z serwera pochodzenia pliku jest ignorowany, a aparat reguł sieci CDN całkowicie zarządza dozwolonymi źródłami CORS.
 
-Istnieją dwa sposoby, w tym aparat reguł. W obu przypadkach **Access-Control-Allow-Origin** nagłówek z serwera pochodzenia pliku jest ignorowany i aparat reguł sieci CDN w pełni zarządza dozwolone źródła CORS.
-
-#### <a name="one-regular-expression-with-all-valid-origins"></a>Jednego wyrażenia regularnego z wszystkie prawidłowe źródła
-W takim przypadku utworzysz wyrażeń regularnych, które obejmuje wszystkie źródła, które chcesz zezwolić na: 
+#### <a name="one-regular-expression-with-all-valid-origins"></a>Jedno wyrażenie regularne ze wszystkimi prawidłowymi źródłami
+W tym przypadku utworzysz wyrażenie regularne zawierające wszystkie źródła, które mają być dozwolone: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Usługa Azure CDN Premium from Verizon** używa [zgodne wyrażeń regularnych języka Perl](https://pcre.org/) jako jego aparatu wyrażeń regularnych.  Można użyć narzędzia, takiego jak [regularnych wyrażeń 101](https://regex101.com/) do sprawdzania poprawności wyrażenie regularne.  Pamiętaj, że znak "/" jest nieprawidłowe w wyrażeniach regularnych, a nie musi być poprzedzone znakiem zmiany znaczenia, jednak ten znak ucieczki jest uznawany za najlepszym rozwiązaniem i jest oczekiwane przez niektóre moduły weryfikacji wyrażenia regularnego.
+> **Azure CDN Premium from Verizon** używa [wyrażeń regularnych zgodnych](https://pcre.org/) ze standardem Perl jako aparat dla wyrażeń regularnych.  Aby zweryfikować wyrażenie regularne, można użyć narzędzia, takiego jak [wyrażenia regularne 101](https://regex101.com/) .  Należy zauważyć, że znak "/" jest prawidłowy w wyrażeniach regularnych i nie musi być zmieniony, ale ucieczki, że znak jest uznawany za najlepsze rozwiązanie i jest oczekiwany przez niektóre walidacje wyrażenia regularnego.
 > 
 > 
 
-Jeśli wyrażenie regularne dopasowuje, zastępuje reguły **Access-Control-Allow-Origin** nagłówka (jeśli istnieje), ze źródła przy użyciu źródła, który wysłał żądanie.  Możesz również dodać dodatkowych nagłówków CORS, takich jak **dostępu — kontrola-Allow-Methods**.
+Jeśli wyrażenie regularne jest zgodne, reguła zastąpi nagłówek **Access-Control-Allow-Origin** (jeśli istnieje) z lokalizacji źródłowej, która wysłała żądanie.  Można również dodać dodatkowe nagłówki CORS, takie jak **Access-Control-Allow-Methods**.
 
-![Przykład reguły z wyrażeniem regularnym](./media/cdn-cors/cdn-cors-regex.png)
+![Przykład reguł z wyrażeniem regularnym](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Reguła nagłówka żądania dla każdego źródła.
-Zamiast wyrażeń regularnych, zamiast tego można utworzyć regułę osobne dla każdego źródła mają być dozwolone, za pomocą **wieloznaczny nagłówka żądania** [dopasować stan](/previous-versions/azure/mt757336(v=azure.100)#match-conditions). Podobnie jak w przypadku metoda wyrażenia regularnego, aparat reguł samodzielnie ustawia nagłówków CORS. 
+Zamiast wyrażeń regularnych można utworzyć oddzielną regułę dla każdego pochodzenia, który ma być dozwolony przy użyciu [warunku dopasowania](/previous-versions/azure/mt757336(v=azure.100)#match-conditions) **symboli wieloznacznych nagłówka żądania** . Podobnie jak w przypadku metody wyrażenia regularnego, aparat reguł ustawia nagłówki CORS. 
 
-![Przykład reguły bez wyrażeń regularnych](./media/cdn-cors/cdn-cors-no-regex.png)
+![Przykład reguł bez wyrażenia regularnego](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> W przykładzie powyżej użytkowania symbol wieloznaczny * informuje aparat reguł, aby dopasować protokołów HTTP i HTTPS.
+> W powyższym przykładzie użycie symbolu wieloznacznego * Instruuje aparat reguł, aby pasował do protokołu HTTP i HTTPS.
 > 
 > 
 
-### <a name="azure-cdn-standard-profiles"></a>Usługa Azure profilów standardowe usługi CDN
-W profilach standardowa usługi Azure CDN (**Azure CDN w warstwie standardowa firmy Microsoft**, **Azure CDN Standard from Akamai**, i **Azure CDN Standard from Verizon**), tylko mechanizm Zezwalaj na dla wielu źródeł, bez użycia pochodzenia symboli wieloznacznych jest użycie [buforowanie ciągu zapytania](cdn-query-string.md). Włącz ustawienie ciągu zapytania dla punktu końcowego usługi CDN, a następnie użyj ciągu zapytania unikatowy dla żądań z każdej domeny dozwolone. To spowoduje oddzielny obiekt dla każdego ciągu zapytania unikatowy buforowania usługi CDN. To podejście jest idealne rozwiązanie, ponieważ spowoduje wiele kopii tego samego pliku pamięci podręcznej w usłudze CDN.  
+
 

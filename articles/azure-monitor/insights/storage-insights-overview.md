@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 08/15/2019
-ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553885"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286353"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorowanie usługi magazynu za pomocą Azure Monitor dla magazynu (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Przed wprowadzeniem do środowiska należy zrozumieć, jak prezentuje i wizualiz
 
 Połączona z nim oferuje:
 
-* **W perspektywie skalowania** przedstawia widok migawek ich dostępności na podstawie kondycji usługi magazynu lub operacji interfejsu API, wykorzystania pokazującego łączną liczbę żądań odbieranych przez usługę magazynu oraz opóźnienie pokazujące średni czas usługa magazynu lub typ operacji interfejsu API przetwarza żądania. Możesz również wyświetlić wydajność według obiektów blob, plików, tabel i kolejek.
+* **W perspektywie skalowania** przedstawia widok migawki ich dostępności na podstawie kondycji usługi magazynu lub operacji interfejsu API, wykorzystania pokazującego łączną liczbę żądań odbieranych przez usługę magazynu oraz opóźnienie pokazujące średni czas, w którym usługa magazynu lub typ operacji interfejsu API przetwarza żądania. Możesz również wyświetlić wydajność według obiektów blob, plików, tabel i kolejek.
 
 * **Przechodzenie do szczegółów** konkretnego konta magazynu w celu ułatwienia zdiagnozowania problemów lub wykonywania szczegółowej analizy według kategorii dostępności, wydajności, błędów i pojemności. Wybranie jednej z tych opcji zapewnia szczegółowy wgląd w metryki.  
 
@@ -47,7 +47,7 @@ Z poziomu Azure Monitor można wyświetlać szczegóły transakcji, opóźnień 
 
 Aby wyświetlić wykorzystanie i dostępność kont magazynu we wszystkich subskrypcjach, wykonaj następujące czynności.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wybierz pozycję **monitor** w okienku po lewej stronie w Azure Portal i w sekcji **szczegółowe informacje** wybierz pozycję **konta magazynu (wersja zapoznawcza)** .
 
@@ -65,7 +65,7 @@ W skoroszycie **Przegląd** dla wybranej subskrypcji w tabeli są wyświetlane m
 
 Kafelek licznika pod listą rozwijaną podsumowuje łączną liczbę kont magazynu w subskrypcji i odzwierciedla liczbę wybranych opcji. Istnieje warunkowe kodowanie kolorami lub map cieplnych dla kolumn w skoroszycie, które raportują metryki lub błędy transakcji. Optymalny kolor ma najwyższą wartość, a jaśniejszy kolor jest oparty na najniższych wartościach. W przypadku kolumn opartych na błędach wartość jest czerwona i dla kolumn opartych na metrykach wartość jest niebieska.
 
-Wybierz wartość w polu **dostępność**kolumn, **opóźnienie E2E**, **opóźnienie serwera**oraz **Typ błędu transakcji/błędy** kieruje do raportu dopasowanego do określonego typu metryk magazynu, które pasują do kolumny wybranej dla tego elementu. konto magazynu. Aby uzyskać więcej informacji na temat skoroszytów dla każdej kategorii, zobacz sekcję [szczegółowy skoroszyty magazynu](#detailed-storage-workbooks) poniżej. 
+Wybierz wartość w polu **dostępność**kolumn, **opóźnienie E2E**, **opóźnienie serwera**i **Typ błędu transakcji/błędy** kierujesz raport dostosowany do określonego typu metryk magazynu, które pasują do kolumny wybranej dla tego konta magazynu. Aby uzyskać więcej informacji na temat skoroszytów dla każdej kategorii, zobacz sekcję [szczegółowy skoroszyty magazynu](#detailed-storage-workbooks) poniżej. 
 
 >[!NOTE]
 >Aby uzyskać szczegółowe informacje o błędach, które mogą być wyświetlane w raporcie, zobacz [schemat typu odpowiedzi](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) i Wyszukaj typy odpowiedzi, takie jak **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. W zależności od wybranych kont magazynu, jeśli zgłoszono więcej niż trzy typy błędów, wszystkie inne błędy są reprezentowane w kategorii **innych**.
@@ -111,7 +111,7 @@ Wybranie jednego z przycisków dla **niepowodzeń**, **wydajności**, **dostępn
 
 ## <a name="detailed-storage-workbooks"></a>Szczegółowe skoroszyty magazynu
 
-Bez względu na to, czy wybrano wartość w skoroszycie " **dostępność**kolumn, **opóźnienie E2E**, **opóźnienie serwera**i **Typ błędu transakcji/błędy** " z **przeglądu** z wieloma kontami magazynu, lub wybierając jeden z przycisków dla **Awarie**, **wydajność**, **dostępność**i **wydajność** ze skoroszytu **przeglądu** z określonego konta magazynu, każdy dostarcza zestaw interaktywnych informacji powiązanych z magazynem dostosowany do tej kategorii.  
+Niezależnie od tego, czy wybrano wartość w skoroszycie " **dostępność**kolumn, **opóźnienie E2E**, **opóźnienie serwera**i **Typ błędu transakcji/błędy** " z arkusza z **wieloma kontami** magazynu, lub wybierając jeden z przycisków dla **niepowodzeń**, **wydajności**, **dostępności**i **pojemności** ze skoroszytu **przeglądu** na określonym koncie magazynu, każdy dostarcza zestaw interaktywnych informacji związanych z magazynem, które są dostosowane do tej kategorii.  
 
 * **Dostępność** powoduje otwarcie skoroszytu **dostępności** . Przedstawia bieżący stan kondycji usługi Azure Storage, tabelę przedstawiającą dostępny stan kondycji każdego obiektu skategoryzowanego według usługi danych zdefiniowanego w ramach konta magazynu z linią trendu reprezentującą wybrany zakres czasu oraz wykres trendu dostępności dla Każda usługa danych na koncie.  
 
@@ -121,7 +121,7 @@ Bez względu na to, czy wybrano wartość w skoroszycie " **dostępność**kolum
 
     ![Przykład raportu wydajności](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* Wybranie dowolnej kategorii błędów wymienionej w siatce Otwórz skoroszyt **niepowodzeń** . Raport przedstawia kafelki metryk wszystkich innych błędów po stronie klienta, z wyjątkiem opisanych i zakończonych powodzeniem żądań, błędów ograniczania liczby klientów, wykresu wydajności dla **typu odpowiedzi** transakcji dla metryki wymiaru dotyczącego atrybutu ClientOtherError, i dwie tabele — **transakcje według nazwy interfejsu API** i **transakcji według typu odpowiedzi**.
+* Wybranie dowolnej kategorii błędów wymienionej w siatce Otwórz skoroszyt **niepowodzeń** . Raport przedstawia kafelki metryk wszystkich innych błędów po stronie klienta, z wyjątkiem opisanych i zakończonych powodzeniem żądań, błędów ograniczania liczby klientów, wykresu wydajności dla **typu odpowiedzi** transakcji dla metryki wymiaru dotyczącego atrybutu ClientOtherError oraz dwóch tabel — **transakcji według nazwy interfejsu API** i **transakcji według typu odpowiedzi**.
 
    ![Przykładowy raport o błędach](./media/storage-insights-overview/storage-account-failures-01.png)
 
@@ -168,7 +168,7 @@ Można skonfigurować wiele subskrypcji i **przeglądanie** konta magazynu oraz 
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>Modyfikuj metryki i kolory w skoroszycie
 
-Wstępnie skompilowane skoroszyty zawierają dane metryk i można modyfikować lub usuwać dowolne wizualizacje i dostosowywać je do konkretnych potrzeb zespołu. 
+Wstępnie skompilowane skoroszyty zawierają dane metryk i można modyfikować lub usuwać dowolne wizualizacje i dostosowywać je do konkretnych potrzeb zespołu.
 
 W naszym przykładzie pracujemy z skoroszytem pojemności dla wielosubskrypcji i konta magazynu, aby zademonstrować, jak:
 
@@ -183,7 +183,7 @@ Te same zmiany można wykonać w odniesieniu do jednego ze wstępnie skompilowan
 
     ![Wybierz pozycję Edytuj, aby zmodyfikować skoroszyt](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. Obok sekcji metryki wybierz pozycję **Edytuj**. 
+3. Obok sekcji metryki wybierz pozycję **Edytuj**.
 
     ![Wybierz pozycję Edytuj, aby zmodyfikować metryki skoroszytu dyspozycyjności](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
@@ -191,7 +191,7 @@ Te same zmiany można wykonać w odniesieniu do jednego ze wstępnie skompilowan
 
     ![Edytowanie ustawień kolumny](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. W okienku **Edytowanie ustawień kolumny** wybierz pozycję w sekcji **kolumny** **Microsoft. Storage/Storageaccounts-pojemność-UsedCapacity oś czasu $ | Oś czasu o używanej pojemności $** , a w obszarze **renderowania kolumna** listy rozwijanej wybierz pozycję **ukryty**. 
+5. W okienku **Edytowanie ustawień kolumny** wybierz pozycję w sekcji **kolumny** **Microsoft. Storage/Storageaccounts-pojemność-UsedCapacity oś czasu $ | Oś czasu o używanej pojemności $** , a w obszarze **renderowania kolumna** listy rozwijanej wybierz pozycję **ukryty**.
 
 6. Wybierz pozycję **Zapisz i Zamknij,** aby zatwierdzić zmianę.
 
@@ -199,7 +199,7 @@ Teraz Zmień motyw kolorów dla metryk pojemności w raporcie, tak aby używał 
 
 1. Wybierz pozycję **Ustawienia kolumny** w siatce metryk.
 
-2. W okienku **Edytowanie ustawień kolumny** wybierz pozycję w sekcji **kolumny** **Microsoft. Storage/storageaccounts-pojemność-UsedCapacity $ | Microsoft. Storage/storageaccounts/blobservices-pojemność-BlobCapacity $ | Microsoft. Storage/ storageaccounts/FileServices-pojemność-FileCapacity $ | Microsoft. Storage/storageaccounts/queueservices-pojemność-QueueCapacity $ | Microsoft. Storage/storageaccounts/tableservices-pojemność-TableCapacity $** . Na **palecie kolorów**listy rozwijanej wybierz pozycję **zielony**.
+2. W okienku **Edytowanie ustawień kolumny** wybierz pozycję w sekcji **kolumny** **Microsoft. Storage/storageaccounts-pojemność-UsedCapacity $ | Microsoft. Storage/storageaccounts/blobservices-pojemność-BlobCapacity $ | Microsoft. Storage**/storageaccounts/FileServices-pojemność-FileCapacity $ | Microsoft. Storage/storageaccounts/queueservices-pojemność-QueueCapacity $ | Microsoft. Storage/Storageaccounts/tableservices-pojemność-TableCapacity $. Na **palecie kolorów**listy rozwijanej wybierz pozycję **zielony**.
 
 3. Wybierz pozycję **Zapisz i Zamknij,** aby zatwierdzić zmianę.
 
@@ -234,6 +234,86 @@ Ta sekcja pomoże Ci w diagnozowaniu i rozwiązywaniu problemów z typowymi prob
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Rozwiązywanie problemów z wydajnością, pojemnością lub dostępnością
 
 Aby ułatwić rozwiązywanie problemów związanych z magazynem, które są identyfikowane za pomocą Azure Monitor for Storage (wersja zapoznawcza), zobacz [wskazówki dotyczące rozwiązywania problemów](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)z usługą Azure Storage  
+
+### <a name="why-can-i-only-see-200-storage-accounts"></a>Dlaczego można zobaczyć tylko konta magazynu 200?
+
+Liczba wybranych kont magazynu ma limit 200, niezależnie od liczby wybranych subskrypcji.
+
+### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Co się stanie po kliknięciu ostatnio przypiętego kafelka na pulpicie nawigacyjnym?
+
+* Jeśli klikniesz w dowolnym miejscu kafelka, przejdziesz do karty, z której został przypięty kafelek. Na przykład w przypadku przypinania grafu na karcie "przegląd konta magazynu" po kliknięciu tego kafelka na pulpicie nawigacyjnym zostanie otwarty ten widok domyślny, jednak w przypadku przypinania grafu ze swojej zapisanej kopii zostanie otwarty widok zapisanej kopii.
+* Ikona filtru w lewym górnym rogu tytułu otwiera kartę "Konfigurowanie ustawień kafelków".
+* Ikona wielokropka w prawym górnym rogu będzie zawierać opcje "Dostosowywanie danych tytułu", "Dostosowywanie", "Odśwież" i "Usuwanie z pulpitu nawigacyjnego".
+
+### <a name="what-happens-when-i-save-a-workbook"></a>Co się stanie, gdy zapisuję skoroszyt?
+
+* Po zapisaniu skoroszytu można utworzyć nową kopię skoroszytu z wprowadzonymi zmianami i zmienić tytuł. Zapisywanie nie zastępuje skoroszytu, bieżący skoroszyt będzie zawsze widokiem domyślnym.
+* **Niezapisany** skoroszyt jest tylko widokiem domyślnym.
+
+
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Dlaczego nie widzę wszystkich moich subskrypcji w portalu?
+
+W portalu zostaną wyświetlone tylko dane dla wybranych subskrypcji podczas uruchamiania portalu. Aby zmienić wybrane subskrypcje, przejdź do prawego górnego rogu i kliknij Notes z ikoną filtru. Spowoduje to wyświetlenie karty katalog i subskrypcje.
+
+![Katalog i subskrypcja](./media/storage-insights-overview/fqa3.png)
+
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Jak zmienić kolorowanie i próg dostępności?
+
+Szczegółowe instrukcje dotyczące sposobu zmiany kolorowania i progów dostępności można znaleźć w sekcji [Modyfikowanie progu dostępności](storage-insights-overview.md#modify-the-availability-threshold) .
+
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Jak analizować i rozwiązywać problemy z danymi wyświetlanymi w Azure Monitor dla magazynu?
+
+ Zapoznaj się z artykułem [monitorowanie, diagnozowanie i rozwiązywanie Microsoft Azure Storage problemów](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) , aby uzyskać szczegółowe informacje na temat sposobu analizowania i rozwiązywania problemów z danymi usługi Azure Storage przedstawionymi w temacie Azure monitor for Storage.
+
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Dlaczego nie widzę wszystkich typów błędów w metrykach?
+
+Obecnie pokazywane są maksymalnie trzy różne typy błędów, a pozostałe błędy są pogrupowane w pojedynczym przedziale. Jest on kontrolowany przy użyciu splitByLimit i może być modyfikowany. Aby zmienić tę właściwość:
+
+1. Kliknij pozycję Edytuj skoroszyt.
+2. Przejdź do pozycji metryki, kliknij pozycję Edytuj, a następnie wybierz pozycję **transakcje, suma** lub wszystkie metryki, które chcesz edytować.
+
+    ![Przejdź do metryk i kliknij pozycję Edytuj w pozycji "transakcje, sumy"](./media/storage-insights-overview/fqa7.png)
+
+1. Następnie zmień liczbę podziałów.
+
+    ![Wybierz parametry metryki "](./media/storage-insights-overview/fqa7-2.png)
+
+Jeśli chcesz zobaczyć n różne typy błędów niż określa splitByLimit jako n + 1, 1 dodatkowe dla reszty błędów.
+
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Mój skoroszyt został zapisany na pewnym koncie magazynu. Dlaczego nie mogę znaleźć tego teraz?
+
+Każdy skoroszyt jest zapisywany na koncie magazynu, w którym został zapisany. Spróbuj znaleźć określone konto magazynu, w którym zapisano skoroszyt. W przeciwnym razie nie ma możliwości znalezienia określonego skoroszytu bez znajomości zasobu (konto magazynu).
+
+### <a name="what-is-time-range"></a>Co to jest zakres czasu?
+
+Zakres czasu pokazuje dane z określonego przedziału czasu. Na przykład jeśli zakres czasu wynosi 24 godziny, to pokazuje dane z ostatnich 24 godzin.
+
+### <a name="what-is-time-granularity-time-grain"></a>Co to jest stopień szczegółowości czasu (ziarno czasu)?
+
+Stopień szczegółowości czasu to różnica czasu między dwoma punktami danych. Na przykład, jeśli ziarno czasu jest ustawione na 1 sekundę, oznacza to, że metryki są zbierane w każdej sekundzie.
+
+### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Jaki jest stopień szczegółowości czasu, gdy przypinam wszystkie części skoroszytów do pulpitu nawigacyjnego?
+
+Domyślny stopień szczegółowości czasu jest ustawiony na automatyczny, obecnie nie można go zmienić.
+
+### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Jak mogę zmienić przedział czasu/godziny dla kroku skoroszytu na moim pulpicie nawigacyjnym?
+
+Domyślnie zakres TimeSpan/czasu na kafelku pulpitu nawigacyjnego jest ustawiony na 24 godziny, aby zmienić Kliknięcie wielokropka w prawym górnym rogu, wybierz pozycję **Dostosuj dane kafelka**, zaznacz pole wyboru Zastąp ustawienia czasowe pulpitu nawigacyjnego na poziomie tytułu, a następnie wybierz przedział czasu przy użyciu menu rozwijanego.  
+
+![Wybierz wielokropek w prawym górnym rogu kafelka i wybierz pozycję Dostosuj te dane](./media/storage-insights-overview/fqa-data-settings.png)
+
+![Na stronie Konfiguruj ustawienia kafelków wybierz listę rozwijaną TimeSpan, aby zmienić zakres czasu/godziny](./media/storage-insights-overview/fqa-timespan.png)
+
+### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Jak mogę zmienić tytuł skoroszytu lub krok, który został przypięty do pulpitu nawigacyjnego?
+
+Tytuł lub krok skoroszytu, który jest przypięty do pulpitu nawigacyjnego, zachowuje tę samą nazwę w skoroszycie. Aby zmienić tytuł, musisz zapisać własną kopię skoroszytu. Następnie będzie można nazwać skoroszyt przed naciśnięciem przycisku Zapisz.
+
+![Wybierz pozycję Zapisz u góry, aby zapisać kopię skoroszytu i zmienić jej nazwę](./media/storage-insights-overview/fqa-change-workbook-name.png)
+
+Aby zmienić nazwę kroku w zapisanym skoroszycie, wybierz opcję Edytuj w obszarze tego kroku, a następnie wybierz koła zębatego u dołu ustawień.
+
+![wybierz pozycję Edytuj u dołu kroku skoroszytu, aby otworzyć ustawienia](./media/storage-insights-overview/fqa-edit.png)
+![w obszarze Ustawienia wybierz koła zębatego u dołu, aby zmienić nazwę kroku](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 59fc01920a94e8ab3e7037e4bb226ea18a4314bf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c9a8ed6d55fbbfcf59c98a86ac98cb4264d31ee4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806510"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278814"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzaj IoT Central z Azure Portal
 
@@ -41,10 +41,10 @@ Następnie wybierz pozycję **Utwórz**.
 
 Wypełnij wszystkie pola w formularzu. Ten formularz jest podobny do formularza wypełnianego, aby utworzyć aplikacje w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) . Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji IoT Central](quick-deploy-iot-central.md) — Szybki Start.
 
-**Lokalizacja** jest fizyczną lokalizacją lub [geografią](https://azure.microsoft.com/global-infrastructure/geographies/) , w której chcesz utworzyć aplikację. Zazwyczaj należy wybrać lokalizację, która jest fizycznie najbliżej Twoich urządzeń, aby uzyskać optymalną wydajność. Możesz zobaczyć regiony, w których usługa Azure IoT Central jest dostępna na stronie [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) . Po wybraniu lokalizacji nie można przenieść aplikacji do innej lokalizacji później.
+**Lokalizacja jest lokalizacją** geograficzną, [w której chcesz](https://azure.microsoft.com/global-infrastructure/geographies/) utworzyć aplikację. Zazwyczaj należy wybrać lokalizację, która jest fizycznie najbliżej Twoich urządzeń, aby uzyskać optymalną wydajność. Usługa Azure IoT Central jest obecnie dostępna w **Stany Zjednoczone**, **Australii**, **Azja i Pacyfik**lub w **Europie**.  Po wybraniu lokalizacji nie można przenieść aplikacji do innej lokalizacji później.
 
 > [!NOTE]
-> Szablon **aplikacji w wersji zapoznawczej** jest obecnie dostępny tylko w regionach **Europy Północnej** i **środkowe stany USA** .
+> Szablon **aplikacji w wersji zapoznawczej** jest obecnie dostępny tylko w lokalizacjach **Europa** i **US** .
 
 ![Portal zarządzania: Tworzenie zasobu IoT Central](media/howto-manage-iot-central-from-portal/image1a.png)  
 

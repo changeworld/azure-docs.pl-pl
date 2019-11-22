@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037045"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279130"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny wirtualnej z systemem Linux przy użyciu portalu 
 W tym artykule opisano sposób dołączania nowych i istniejących dysków do maszyny wirtualnej z systemem Linux za pomocą Azure Portal. Możesz również [dołączyć dysk danych do maszyny wirtualnej z systemem Windows w Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>Alternatywna metoda korzystająca z części
+Narzędzie Fdisk wymaga interaktywnego wprowadzania danych, dlatego nie jest idealnym rozwiązaniem do użycia w skryptach automatyzacji. Jednak narzędzie z [częściową](https://www.gnu.org/software/parted/) sytuacją może być przetwarzane przy użyciu skryptów, a tym samym lepsze w scenariuszach automatyzacji. Narzędzie częściowo służy do partycjonowania i formatowania dysku danych. W poniższym przewodniku będziemy używać nowego dysku danych/dev/SDC i sformatować go przy użyciu systemu plików [XFS](https://xfs.wiki.kernel.org/) .
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+Jak wspomniano powyżej, użyjemy narzędzia [partprobe](https://linux.die.net/man/8/partprobe) , aby upewnić się, że jądro natychmiast zna nową partycję i system plików. Niepowodzenie użycia partprobe może spowodować, że polecenia blkid lub lslbk nie zwracają identyfikatora UUID dla nowego systemu plików natychmiast.
+
 ### <a name="mount-the-disk"></a>Instalowanie dysku
 Utwórz katalog służący do instalowania systemu plików przy użyciu `mkdir`. W poniższym przykładzie jest tworzony katalog o godzinie */datadrive*:
 

@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Menedżer zasobów dla maszyny wirtualnej z systemem Windows
+title: Zbieranie metryk maszyn wirtualnych z systemem Windows w Azure Monitor z szablonem
 description: Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Menedżer zasobów dla maszyny wirtualnej z systemem Windows
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844948"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286180"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Menedżer zasobów dla maszyny wirtualnej z systemem Windows
 
@@ -40,7 +40,7 @@ Jeśli jesteś nowym szablonem Menedżer zasobów, Dowiedz się więcej na temat
 Rozszerzenie Diagnostyka Azure używa funkcji o nazwie "ujścia danych" do kierowania metryk i dzienników do różnych lokalizacji. Poniższe kroki pokazują, jak za pomocą szablonu Menedżer zasobów i programu PowerShell wdrożyć maszynę wirtualną przy użyciu nowego ujścia danych "Azure Monitor".
 
 ## <a name="author-resource-manager-template"></a>Tworzenie szablonu Menedżer zasobów
-Na potrzeby tego przykładu można użyć publicznie dostępnego przykładowego szablonu. Szablony uruchamiania znajdują się https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows pod adresem.
+Na potrzeby tego przykładu można użyć publicznie dostępnego przykładowego szablonu. Szablony uruchamiania są w https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
 
 - **Azuredeploy. JSON** jest wstępnie skonfigurowanym szablonem Menedżer zasobów na potrzeby wdrożenia maszyny wirtualnej.
 
@@ -70,7 +70,7 @@ Dodaj identyfikator konta magazynu do sekcji **zmienne** szablonu po wpisie dla 
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
 ```
 
-Dodaj to rozszerzenie tożsamość usługi zarządzanej (MSI) do szablonu w górnej części sekcji Resources. Rozszerzenie gwarantuje, że Azure Monitor akceptuje metryki, które są emitowane.
+Dodaj to rozszerzenie tożsamość usługi zarządzanej (MSI) do szablonu w górnej części sekcji **resources** . Rozszerzenie gwarantuje, że Azure Monitor akceptuje metryki, które są emitowane.
 
 ```json
 //Find this code.
@@ -126,7 +126,7 @@ Dodaj konfigurację **tożsamości** do zasobu maszyny wirtualnej, aby upewnić 
     ...
 ```
 
-Dodaj następującą konfigurację, aby włączyć rozszerzenie diagnostyki na maszynie wirtualnej z systemem Windows. W przypadku prostej maszyny wirtualnej opartej na Menedżer zasobów można dodać konfigurację rozszerzenia do tablicy zasobów maszyny wirtualnej. Wiersz "ujścia&mdash; " "AzMonSink" i odpowiadający mu "SinksConfig" w dalszej części sekcji&mdash;umożliwiają rozłączenie metryk bezpośrednio do Azure monitor. W razie potrzeby możesz dodawać lub usuwać liczniki wydajności.
+Dodaj następującą konfigurację, aby włączyć rozszerzenie diagnostyki na maszynie wirtualnej z systemem Windows. W przypadku prostej maszyny wirtualnej opartej na Menedżer zasobów można dodać konfigurację rozszerzenia do tablicy zasobów maszyny wirtualnej. Wiersz "ujścia"&mdash; "AzMonSink" i odpowiadający mu "SinksConfig" w dalszej części sekcji&mdash;włączyć rozszerzenie, aby emitować metryki bezpośrednio do Azure Monitor. W razie potrzeby możesz dodawać lub usuwać liczniki wydajności.
 
 
 ```json
@@ -241,8 +241,8 @@ Zapisz i zamknij oba pliki.
 Aby wdrożyć szablon Menedżer zasobów, wykorzystujemy Azure PowerShell.
 
 1. Uruchom program PowerShell.
-1. Zaloguj się do platformy Azure `Login-AzAccount`przy użyciu.
-1. Zapoznaj się z listą subskrypcji `Get-AzSubscription`, korzystając z programu.
+1. Zaloguj się do platformy Azure przy użyciu `Login-AzAccount`.
+1. Zapoznaj się z listą subskrypcji, używając `Get-AzSubscription`.
 1. Ustaw subskrypcję używaną do tworzenia/aktualizowania maszyny wirtualnej w programie:
 
    ```powershell
@@ -285,7 +285,7 @@ Aby wdrożyć szablon Menedżer zasobów, wykorzystujemy Azure PowerShell.
 
 6. W menu rozwijanym obszary nazw wybierz pozycję **Azure. VM. Windows. Guest**
 
-7. W menu rozwijanym metryk wybierz pozycję **pamięć\%zadeklarowane bajty w użyciu**.
+7. W menu rozwijanym metryk wybierz opcję **pamięć\%zadeklarowane bajty w użyciu**.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,6 +1,6 @@
 ---
-title: Dodawanie konta służbowego do aplikacji uwierzytelniania — Azure AD
-description: Jak dodać swoje konto służbowe do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
+title: Dodawanie konta służbowego do aplikacji Microsoft Authenticator — usługa Azure AD
+description: Dodaj konto służbowe do aplikacji Microsoft Authenticator, aby zweryfikować swoją tożsamość przy użyciu weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803735"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267137"
 ---
-# <a name="add-your-work-or-school-account"></a>Dodaj konto służbowe
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Dodawanie konta służbowego do aplikacji Microsoft Authenticator
 
 Jeśli Twoja organizacja korzysta z weryfikacji dwuetapowej, możesz skonfigurować konto służbowe tak, aby korzystało z aplikacji Microsoft Authenticator jako jednej z metod weryfikacji.
 

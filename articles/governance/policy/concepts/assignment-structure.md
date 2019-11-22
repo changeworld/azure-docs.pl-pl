@@ -3,12 +3,12 @@ title: Szczegóły struktury przypisania zasad
 description: Zawiera opis definicji przypisania zasad używanej przez Azure Policy do powiązania definicji zasad i parametrów z zasobami do oceny.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960033"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279481"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura przypisań usługi Azure Policy
 
@@ -93,6 +93,6 @@ W tym przykładzie parametry wcześniej zdefiniowane w definicji zasad są `pref
 
 - Dowiedz się więcej o [strukturze definicji zasad](./definition-structure.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](../how-to/get-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

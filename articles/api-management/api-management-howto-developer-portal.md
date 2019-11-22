@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 377ed8f17cfcf67f10cbdec77199c69c606afa3e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1a8fb8140fd2f58556e4a64bca0f4a052a84c2bb
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74180686"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285600"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
@@ -26,8 +26,6 @@ Portal dla deweloperów to automatycznie generowana, w pełni dostosowywalna wit
 W tym artykule opisano różnice między samodzielnymi i zarządzanymi wersjami portalu dla deweloperów w API Management. Wyjaśniono w nim także swoją architekturę i przedstawiono odpowiedzi na często zadawane pytania.
 
 > [!WARNING]
-> Nowy portal dla deweloperów jest obecnie wdrażany w usługach API Management Services.
-> Jeśli usługa jest nowo utworzona lub jest usługą warstwy dewelopera, należy mieć już najnowszą wersję. W przeciwnym razie mogą wystąpić problemy (na przykład przy użyciu funkcji publikowania). Oczekiwanie na zakończenie wdrażania funkcji w piątek, 22 listopada, 2019.
 >
 > [Dowiedz się, jak przeprowadzić migrację z wersji zapoznawczej do ogólnie dostępnej wersji](#preview-to-ga) portalu dla deweloperów.
 
@@ -151,7 +149,7 @@ Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z prze
 >
 > Jako obejście można przekazać klucz subskrypcji w parametrze zapytania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o nowym portalu dla deweloperów:
 

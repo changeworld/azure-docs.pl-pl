@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 715752072a14a3220d17d0dbda2efd0786a83de4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123603"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271268"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą Azure Machine Learning
 
@@ -169,6 +169,6 @@ Aby dowiedzieć się więcej, przeczytaj i zbadaj następujące zasoby:
 
 + Tworzenie klientów korzystających [ze wdrożonego modelu](how-to-consume-web-service.md)
 
-+ [Uczenie maszynowe na dużą skalę](/architecture/data-guide/big-data/machine-learning-at-scale)
++ [Uczenie maszynowe na dużą skalę](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
 + [Architektury referencyjne platformy Azure AI & Best Practices Rep](https://github.com/microsoft/AI)

@@ -8,19 +8,19 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bd727e9c68a34c8e182a6726b257a6bf37178837
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023886"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306772"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zestaw SDK procesora kanału informacyjnego platformy .NET: pobieranie i informacje o wersji
 
 > [!div class="op_single_selector"]
 >
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [Źródło zmian platformy .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
@@ -34,10 +34,13 @@ ms.locfileid: "73023886"
 
 |   |   |
 |---|---|
-|**Pobieranie zestawu SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**Zestaw SDK do pobrania**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**Dokumentacja interfejsu API**|[Dokumentacja referencyjna interfejsu API biblioteki procesora zmian](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Wprowadzenie**|[Wprowadzenie do zestawu .NET SDK procesora źródła zmian](change-feed.md)|
-|**Bieżąca obsługiwana platforma**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET rdzeń](https://www.microsoft.com/net/download/core) |
+|**Bieżącej struktury obsługiwanej**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+
+> [!NOTE]
+> Jeśli używasz procesora z zestawem danych zmian, zapoznaj się z najnowszą wersją 3. x [zestawu SDK platformy .NET](change-feed-processor.md), który zawiera zestaw SDK ze źródłem zmian. 
 
 ## <a name="release-notes"></a>Informacje o wersji
 
@@ -99,7 +102,7 @@ ms.locfileid: "73023886"
 * Naprawiono sytuację wyścigu, która występuje podczas dzielenia partycji. Sytuacja wyścigu może prowadzić do uzyskania dzierżawy i natychmiastowej utraty jej podczas dzielenia partycji i powodowania rywalizacji. Problem z warunkiem wyścigu jest rozwiązywany w tej wersji.
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
-* ZESTAW SDK GA
+* ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 — wydanie wstępne
 * Rozwiązano następujące problemy:
@@ -107,10 +110,10 @@ ms.locfileid: "73023886"
   * Interfejs API GetEstimatedRemainingWork zwrócił wartość 0, gdy w kolekcji dzierżawy nie ma żadnych dzierżaw.
 
 * Następujące wyjątki są udostępniane publicznie. Rozszerzenia implementujące IPartitionProcessor mogą zgłosić te wyjątki.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. LeaseLostException. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. Partitionexception. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionNotFoundException.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionSplitException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2 — wydanie wstępne
 * Drobne zmiany interfejsu API:
@@ -164,34 +167,34 @@ ms.locfileid: "73023886"
 * Zgodne z [zestawami SDK programu SQL .NET](sql-api-sdk-dotnet.md) 1.13.2 i nowszymi wersjami.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* ZESTAW SDK GA
+* ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
 * Zgodne z wersjami [zestawu SDK programu SQL .NET](sql-api-sdk-dotnet.md) 1.14.1 i poniżej.
 
 ## <a name="release--retirement-dates"></a>Data wycofania &
 
-Firma Microsoft zapewni powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
+Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
 
 Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu SDK, dlatego zaleca się, aby zawsze uaktualnić do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
 
-Każde żądanie Cosmos DB za pomocą wycofanego zestawu SDK zostanie odrzucone przez usługę.
+Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
 <br/>
 
-| Wersja | Data wydania | Data wycofania |
+| Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [2.2.8](#2.2.8) |28 października 2019 |--- |
 | [2.2.7](#2.2.7) |14 maja 2019 |--- |
 | [2.2.6](#2.2.6) |29 stycznia 2019 |--- |
 | [2.2.5](#2.2.5) |13 grudnia 2018 |--- |
 | [2.2.4](#2.2.4) |29 listopada 2018 |--- |
-| [Regulamin](#2.2.3) |19 listopada 2018 |--- |
-| [ppkt](#2.2.2) |31 października 2018 |--- |
-| [2.2.1](#2.2.1) |24 października 2018 |--- |
+| [2.2.3](#2.2.3) |19 listopada 2018 r. |--- |
+| [2.2.2](#2.2.2) |31 października 2018 |--- |
+| [2.2.1](#2.2.1) |24 października 2018 r. |--- |
 | [1.3.3](#1.3.3) |Maja 08, 2018 |--- |
-| [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
-| [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
-| [1.2.0](#1.2.0) |31 października 2017 r. |--- |
-| [ppkt](#1.1.1) |29 sierpnia 2017 |--- |
+| [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
+| [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
+| [1.2.0](#1.2.0) |Do 31 października 2017 r. |--- |
+| [1.1.1](#1.1.1) |29 sierpnia 2017 r. |--- |
 | [1.1.0](#1.1.0) |13 sierpnia 2017 |--- |
 | [1.0.0](#1.0.0) |07 lipca 2017 |--- |
 
@@ -201,4 +204,4 @@ Każde żądanie Cosmos DB za pomocą wycofanego zestawu SDK zostanie odrzucone 
 
 ## <a name="see-also"></a>Zobacz także
 
-Aby dowiedzieć się więcej na temat Cosmos DB, zobacz stronę usługi [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
+Aby dowiedzieć się więcej na temat usługi Cosmos DB, zobacz [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stronę usługi.

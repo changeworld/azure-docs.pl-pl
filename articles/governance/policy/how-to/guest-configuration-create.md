@@ -3,12 +3,12 @@ title: Jak utworzyć zasady konfiguracji gościa
 description: Dowiedz się, jak utworzyć Azure Policy zasady konfiguracji gościa dla maszyn wirtualnych z systemem Windows lub Linux.
 ms.date: 09/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c7b214a07b89f4b66aa32724259b01129b9b7e9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2f8ad66e636f7fa37d94d24d12a2537759a3304b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959480"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279360"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
@@ -412,4 +412,4 @@ Aby uzyskać więcej informacji na temat poleceń cmdlet w tym narzędziu, użyj
 
 - Dowiedz się więcej na temat inspekcji maszyn wirtualnych z [konfiguracją gościa](../concepts/guest-configuration.md).
 - Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](get-compliance-data.md).

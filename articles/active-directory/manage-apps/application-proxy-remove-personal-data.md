@@ -1,6 +1,6 @@
 ---
-title: Usuwanie danych osobowych — serwer Proxy usługi Azure Active Directory Application | Dokumentacja firmy Microsoft
-description: Usuń dane osobowe z zainstalowanych na urządzeniach dla serwera Proxy usługi Azure Active Directory Application łączników.
+title: Usuń dane osobowe — serwer proxy aplikacji usługi Azure Active Directory
+description: Usuń dane osobowe z łączników zainstalowanych na urządzeniach dla serwer proxy aplikacji usługi Azure Active Directory.
 documentationcenter: ''
 author: msmimart
 manager: CelesteDG
@@ -15,70 +15,70 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebb2a38e520c988ee7ca9a234aadd6ae2de4f0cb
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807749"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275408"
 ---
-# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Usuwanie danych osobowych dla serwera Proxy usługi Azure Active Directory aplikacji
+# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Usuń dane osobowe serwer proxy aplikacji usługi Azure Active Directory
 
-Usługa Azure Active Directory serwera Proxy aplikacji wymaga zainstalowania łączników na urządzeniach, co oznacza, że może być dane osobowe na urządzeniach. Ten artykuł zawiera instrukcje dotyczące sposobu usunięcia tego danych osobowych w celu ochrony prywatności.
+Serwer proxy aplikacji usługi Azure Active Directory wymaga zainstalowania łączników na urządzeniach, co oznacza, że na urządzeniach mogą znajdować się dane osobowe. W tym artykule przedstawiono procedurę usuwania danych osobowych w celu poprawy prywatności.
 
-## <a name="where-is-the-personal-data"></a>Gdzie jest dane osobowe?
+## <a name="where-is-the-personal-data"></a>Gdzie są dane osobowe?
 
-Możliwe jest, serwer Proxy aplikacji do zapisania danych osobowych przez następujące typy dzienników:
+Serwer proxy aplikacji może zapisywać dane osobowe w następujących typach dzienników:
 
 - Dzienniki zdarzeń łącznika
 - Dzienniki zdarzeń systemu Windows
 
-## <a name="remove-personal-data-from-windows-event-logs"></a>Usuwanie danych osobowych z dzienników zdarzeń Windows
+## <a name="remove-personal-data-from-windows-event-logs"></a>Usuń dane osobowe z dzienników zdarzeń systemu Windows
 
-Aby uzyskać informacje na temat konfigurowania przechowywanie danych dzienników zdarzeń Windows, zobacz [ustawienia dzienników zdarzeń](https://technet.microsoft.com/library/cc952132.aspx). Aby dowiedzieć się więcej na temat dzienników zdarzeń Windows, zobacz [przy użyciu dziennika zdarzeń Windows](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
+Aby uzyskać informacje na temat konfigurowania przechowywania danych dla dzienników zdarzeń systemu Windows, zobacz [Ustawienia dzienników zdarzeń](https://technet.microsoft.com/library/cc952132.aspx). Aby dowiedzieć się więcej o dziennikach zdarzeń systemu Windows, zobacz [Korzystanie z dziennika zdarzeń systemu Windows](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="remove-personal-data-from-connector-event-logs"></a>Usuwanie danych osobowych z dzienników zdarzeń łącznika
+## <a name="remove-personal-data-from-connector-event-logs"></a>Usuń dane osobowe z dzienników zdarzeń łącznika
 
-Aby upewnić się, dzienniki serwera Proxy aplikacji nie ma danych osobistych, można:
+Aby upewnić się, że Dzienniki serwera proxy aplikacji nie zawierają danych osobowych, możesz wykonać następujące czynności:
 
-- Usuń lub wyświetlanie danych w razie potrzeby, lub
+- Usuń lub Wyświetl dane, gdy jest to potrzebne, lub
 - Wyłącz rejestrowanie
 
-Poniższe sekcje umożliwia usuwanie danych osobowych z dzienników zdarzeń łącznika. Należy wykonać proces usuwania dla wszystkich urządzeń, na których zainstalowano łącznik.
+Skorzystaj z poniższych sekcji, aby usunąć dane osobowe z dzienników zdarzeń łącznika. Należy ukończyć proces usuwania dla wszystkich urządzeń, na których zainstalowano łącznik.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-### <a name="view-or-export-specific-data"></a>Wyświetlanie lub eksportowanie danych specyficznych dla
+### <a name="view-or-export-specific-data"></a>Wyświetlanie lub eksportowanie określonych danych
 
-Aby wyświetlić lub eksportowania określonych danych, wyszukiwanie powiązane wpisy we wszystkich dziennikach zdarzeń łącznika. Dzienniki znajdują się w lokalizacji `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
+Aby wyświetlić lub wyeksportować określone dane, Wyszukaj powiązane wpisy w każdym z dzienników zdarzeń łącznika. Dzienniki znajdują się w `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
 
-Ponieważ dzienniki są plikami tekstowymi, możesz użyć [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) szukać wpisów tekstowych skojarzoną z użytkownikiem.  
+Ponieważ dzienniki są plikami tekstowymi, można użyć polecenie [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) do wyszukiwania wpisów tekstowych związanych z użytkownikiem.  
 
-Umożliwiające znalezienie danych osobowych, Wyszukaj pliki dziennika na identyfikator użytkownika.
+Aby znaleźć dane osobowe, Wyszukaj pliki dzienników dla identyfikatora użytkownika.
 
-Aby znaleźć dane osobowe rejestrowane przez aplikację, która korzysta z ograniczonego delegowania protokołu Kerberos, wyszukaj te składniki wpisz nazwę użytkownika:
+Aby znaleźć dane osobowe zarejestrowane przez aplikację, która korzysta z ograniczonego delegowania protokołu Kerberos, Wyszukaj te składniki typu nazwa użytkownika:
 
-- Główna nazwa użytkownika w środowisku lokalnym
-- Część nazwy głównej nazwy użytkownika
-- Część nazwy głównej nazwy użytkownika w środowisku lokalnym
-- Nazwa konta Menedżera (kont zabezpieczeń SAM) kont zabezpieczeń w środowisku lokalnym
+- Główna nazwa użytkownika lokalnego
+- Część username głównej nazwy użytkownika
+- Część username głównej nazwy użytkownika lokalnego
+- Nazwa konta lokalnego Menedżera kont zabezpieczeń (SAM)
 
 ### <a name="delete-specific-data"></a>Usuń określone dane
 
-Aby usunąć szczegółowe dane:
+Aby usunąć określone dane:
 
-1. Uruchom ponownie usługę łącznika serwera Proxy w aplikacji pakietu Microsoft Azure AD, aby wygenerować nowy plik dziennika. Nowy plik dziennika można usunąć ani zmodyfikować stare pliki dziennika. 
-1. Postępuj zgodnie z [widoku lub eksportowania określonych danych](#view-or-export-specific-data) proces opisany wcześniej w celu znalezienia informacji, które musi zostać usunięty. Wyszukaj wszystkie dzienniki łącznika.
-1. Usuń odpowiednich plików dziennika lub selektywnie usunąć pola, które zawierają dane osobowe. Możesz także usunąć wszystkie stare pliki dziennika, jeśli użytkownik nie są już potrzebne.
+1. Uruchom ponownie usługę łącznika serwera proxy aplikacji Microsoft Azure AD, aby wygenerować nowy plik dziennika. Nowy plik dziennika umożliwia usunięcie lub zmodyfikowanie starych plików dziennika. 
+1. Aby znaleźć informacje, które należy usunąć, postępuj zgodnie z opisanym wcześniej w temacie [Przejrzyj lub wyeksportuj określony proces danych](#view-or-export-specific-data) . Przeszukaj wszystkie dzienniki łączników.
+1. Usuń odpowiednie pliki dziennika lub selektywnie Usuń pola zawierające dane osobowe. Możesz również usunąć wszystkie stare pliki dziennika, jeśli nie są już potrzebne.
 
-### <a name="turn-off-connector-logs"></a>Wyłącz łącznik dzienników
+### <a name="turn-off-connector-logs"></a>Wyłączanie dzienników łączników
 
-Jedną opcję, aby upewnić się, dzienniki programu connector nie zawierają danych osobowych jest Wyłącz Generowanie dziennika. Aby zatrzymać generowanie dzienników łącznika, należy usunąć następujący wyróżniony wiersz z `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`.
+Jedną z opcji zapewnienia, że dzienniki łączników nie zawierają danych osobowych, jest wyłączenie generowania dziennika. Aby zatrzymać generowanie dzienników łączników, usuń następujący wyróżniony wiersz z `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`.
 
-![Pokazuje fragment kodu z wyróżniony kod do usunięcia](./media/application-proxy-remove-personal-data/01.png)
+![Pokazuje fragment kodu z wyróżnionym kodem do usunięcia](./media/application-proxy-remove-personal-data/01.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać omówienie serwera Proxy aplikacji, zobacz [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](application-proxy.md).
+Aby zapoznać się z omówieniem serwera proxy aplikacji, zobacz [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](application-proxy.md).

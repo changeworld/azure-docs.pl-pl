@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c55d0568832fcefee6e0763810c5e1220480270
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806643"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278843"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Zarządzanie usługą IoT Central z programu Azure PowerShell
 
@@ -61,17 +61,17 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-Skrypt najpierw tworzy grupę zasobów w regionie Wschodnie stany USA dla aplikacji. W poniższej tabeli opisano parametry używane z poleceniem **New-AzIotCentralApp** :
+Skrypt najpierw tworzy grupę zasobów w lokalizacji Wschodnie stany USA dla aplikacji. W poniższej tabeli opisano parametry używane z poleceniem **New-AzIotCentralApp** :
 
 |Parametr         |Opis |
 |------------------|------------|
 |ResourceGroupName |Grupa zasobów zawierająca aplikację. Ta grupa zasobów musi już istnieć w Twojej subskrypcji. |
-|Lokalizacja |Domyślnie to polecenie cmdlet używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, **zachodnie stany USA**, **Europa Północna**lub **Europa Zachodnia** lub w **Australii** lub **Azja i Pacyfik** lokalizacje geograficzne.  |
+|Lokalizacja |Domyślnie to polecenie cmdlet używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w **Stany Zjednoczone**, **Australii**, **Azja i Pacyfik**lub w lokalizacjach **Europy** .  |
 |Nazwa              |Nazwa aplikacji w Azure Portal. |
 |poddomeny         |Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji jest https://mysubdomain.azureiotcentral.com. |
-|Jednostka SKU               |Obecnie jedyną wartością jest **S1** (warstwa standardowa). Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+|SKU               |Obecnie jedyną wartością jest **S1** (warstwa standardowa). Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Szablon          | Szablon aplikacji do użycia. Aby uzyskać więcej informacji, zobacz następującą tabelę: |
-|Nazwa       |Nazwa aplikacji wyświetlana w interfejsie użytkownika. |
+|DisplayName       |Nazwa aplikacji wyświetlana w interfejsie użytkownika. |
 
 **Szablony aplikacji**
 

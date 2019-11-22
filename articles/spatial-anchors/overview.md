@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi Azure Spatial Anchors | Microsoft Docs
+title: Omówienie usługi Azure Spatial Anchors
 description: Dowiedz się, jak usługa Azure Spatial Anchors ułatwia opracowanie międzyplatformowych środowisk rzeczywistości mieszanej.
 author: craigktreasure
 manager: aliemami
@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 503004cba0d4109adcfee62f7acd108cbcb73eb6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60240484"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277157"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Omówienie usługi Azure Spatial Anchors
 
@@ -34,7 +34,7 @@ Przykładowe przypadki użycia możliwe dzięki zastosowaniu usługi Spatial Anc
 
 Usługa Azure Spatial Anchors składa się z usługi zarządzanej i zestawów SDK klienta dla obsługiwanych platform urządzeń. Poniższe sekcje zawierają informacje o rozpoczynaniu tworzenia aplikacji przy użyciu usługi Azure Spatial Anchors.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Tworzenie pierwszej aplikacji z użyciem usługi Spatial Anchors.
 

@@ -1,5 +1,5 @@
 ---
-title: Problemy z konfigurowaniem federacyjnego logowania jednokrotnego dla aplikacji w galerii usługi Azure AD | Microsoft Docs
+title: Problemy z konfigurowaniem federacyjnego logowania jednokrotnego dla aplikacji w galerii usługi Azure AD
 description: Rozwiązywanie niektórych typowych problemów, które mogą wystąpić podczas konfigurowania federacyjnego logowania jednokrotnego przy użyciu języka SAML dla aplikacji, które są wymienione w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381224"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274655"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Wystąpił problem podczas konfigurowania federacyjnego logowania jednokrotnego dla aplikacji w galerii usługi Azure AD
 
@@ -42,7 +42,7 @@ Jeśli nie możesz skonfigurować identyfikatora lub adresu URL odpowiedzi, potw
 
 Aby poznać wzorce, które zostały wstępnie skonfigurowane dla aplikacji:
 
-1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator **.** Przejdź do kroku 7. Jeśli jesteś już w bloku konfiguracja aplikacji w usłudze Azure AD.
+1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator.** Przejdź do kroku 7. Jeśli jesteś już w bloku konfiguracja aplikacji w usłudze Azure AD.
 
 2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
 
@@ -74,7 +74,7 @@ Jeśli wartości nie są zgodne ze wzorcami wstępnie skonfigurowanymi w usłudz
 
 -   Współpraca z dostawcą aplikacji w celu uzyskania wartości zgodnych ze wzorcem wstępnie skonfigurowanym w usłudze Azure AD
 
--   Możesz też skontaktować się z zespołem <aadapprequest@microsoft.com> usługi Azure AD lub pozostawić komentarz w samouczku, aby zażądać aktualizacji obsługiwanych wzorców dla aplikacji
+-   Możesz też skontaktować się z zespołem usługi Azure AD w <aadapprequest@microsoft.com> lub pozostawić komentarz w samouczku, aby zażądać aktualizacji obsługiwanych wzorców dla aplikacji
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Gdzie ustawić format EntityID (identyfikator użytkownika)
 
@@ -86,7 +86,7 @@ Usługa Azure AD wybierz format atrybutu NameID (identyfikator użytkownika) w o
 
 Aby pobrać metadane aplikacji lub certyfikat z usługi Azure AD, wykonaj następujące kroki:
 
-1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator **.**
+1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator.**
 
 2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
 

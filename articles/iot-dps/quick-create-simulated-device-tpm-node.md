@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Provision simulated TPM device to Azure IoT Hub using Node.js
-description: Quickstart - Create and provision a simulated TPM device using Node.js device SDK for Azure IoT Hub Device Provisioning Service. W tym przewodniku Szybki start używane są rejestracje indywidualne.
+title: Szybki Start — Inicjowanie obsługi symulowanego urządzenia TPM na platformie Azure IoT Hub przy użyciu środowiska Node. js
+description: Szybki Start — tworzenie i Inicjowanie obsługi symulowanego urządzenia TPM za pomocą zestawu SDK urządzenia środowiska Node. js dla platformy Azure IoT Hub Device Provisioning Service. W tym przewodniku Szybki start używane są rejestracje indywidualne.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 417afee7e8adcb8d3b87b11589385ee6f8d1048f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 89741cdc20267c1bff5185a3fc4930d52d549e97
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228667"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276398"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated TPM device using Node.js device SDK for IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Szybki Start: Tworzenie i Inicjowanie obsługi symulowanego urządzenia TPM za pomocą zestawu SDK urządzenia środowiska Node. js dla IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -46,7 +46,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
-1. Przejdź do folderu głównego usługi GitHub i uruchom symulator modułu [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Nasłuchuje on przez gniazdo na portach 2321 i 2322. Nie zamykaj tego okna polecenia — będzie ono potrzebne, aby ten symulator działał do czasu zakończenia tego przewodnika Szybki start: 
+1. Przejdź do folderu głównego usługi GitHub i uruchom symulator modułu [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Nasłuchuje on przez gniazdo na portach 2321 i 2322. Nie zamykaj tego okna polecenia; należy zachować ten symulator do momentu zakończenia tego przewodnika Szybki Start: 
 
     ```cmd/sh
     .\azure-utpm-c\tools\tpm_simulator\Simulator.exe
@@ -130,23 +130,23 @@ W tym artykule przedstawiono rejestracje indywidualne.
     node ExtractDevice.js
     ```
 
-1. W oknie danych wyjściowych zostaną wyświetlone wartości **_Klucz poręczenia_** i **_Identyfikator rejestracji_** potrzebne do zarejestrowania urządzenia. Zapisz te wartości. 
+1. W oknie danych wyjściowych zostanie wyświetlony **_Klucz poręczenia_** i **_Identyfikator rejestracji_** wymagany do rejestracji urządzeń. Zapisz te wartości. 
 
 
 ## <a name="create-a-device-entry"></a>Tworzenie wpisu urządzenia
 
-1. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę Device Provisioning.
+1. Zaloguj się do Azure Portal, wybierz przycisk **wszystkie zasoby** w menu po lewej stronie i Otwórz swoją usługę Device Provisioning.
 
-1. W bloku podsumowania usługi Device Provisioning Service wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Rejestracje indywidualne** i kliknij przycisk **Dodaj rejestrację indywidualną** u góry strony. 
+1. W menu usługi Device Provisioning wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **indywidualne rejestracje** i wybierz u góry przycisk **Dodaj rejestrację indywidualną** . 
 
-1. W obszarze **Dodawanie rejestracji** wprowadź następujące informacje:
+1. W panelu **Dodawanie rejestracji** wprowadź następujące informacje:
    - Wybierz opcję **TPM** jako *Mechanizm* poświadczania tożsamości.
-   - Wprowadź dane w polach *Identyfikator rejestracji* i *Klucz poręczenia* dla urządzenia TPM.
+   - Wprowadź *Identyfikator rejestracji* i *Klucz poręczenia* dla urządzenia TPM z wartości zanotowanych wcześniej.
+   - Wybierz centrum IoT połączone z Twoją usługą aprowizacji.
    - Opcjonalnie można podać następujące informacje:
-       - Wybierz centrum IoT połączone z Twoją usługą aprowizacji.
-       - Wprowadź unikatowy identyfikator urządzenia. Nadając nazwę urządzeniu, unikaj korzystania z danych poufnych.
+       - Wprowadź unikatowy *Identyfikator urządzenia*. Nadając nazwę urządzeniu, unikaj korzystania z danych poufnych. W przypadku wybrania opcji nie należy podać identyfikator rejestracji zostanie użyty do zidentyfikowania urządzenia.
        - Zaktualizuj pole **Początkowy stan bliźniaczej reprezentacji urządzenia** za pomocą wybranej konfiguracji początkowej dla urządzenia.
-   - Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - Po zakończeniu naciśnij przycisk **Zapisz** . 
 
      ![Wprowadzanie informacji o rejestracji urządzenia w bloku portalu](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
@@ -155,7 +155,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
 
 ## <a name="register-the-device"></a>Rejestrowanie urządzenia
 
-1. W witrynie Azure Portal wybierz blok **Przegląd** dla swojej usługi Device Provisioning i zapisz wartości **_Globalny punkt końcowy urządzenia_** oraz **_Zakres identyfikatorów_** .
+1. W Azure Portal wybierz blok **Przegląd** dla swojej usługi Device Provisioning i zanotuj wartości **_globalny punkt końcowy urządzenia_** oraz **_zakres identyfikatorów_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
@@ -234,7 +234,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     node RegisterDevice.js
     ```
 
-1. Zwróć uwagę na komunikaty symulujące uruchamianie urządzenia i łączenie z usługą Device Provisioning Service w celu pobrania informacji z Twojego centrum IoT. Po pomyślnej aprowizacji symulowanego urządzenia w centrum IoT Hub powiązanym z Twoją usługą aprowizacji identyfikator urządzenia będzie widoczny w centrum w bloku **Urządzenia IoT**. 
+1. Zwróć uwagę na komunikaty symulujące uruchamianie urządzenia i łączenie z usługą Device Provisioning Service w celu pobrania informacji z Twojego centrum IoT. Po pomyślnej aprowizacji symulowanego urządzenia w centrum IoT Hub powiązanym z Twoją usługą aprowizacji identyfikator urządzenia jest wyświetlany w bloku **urządzenia IoT** centrum. 
 
     ![Urządzenie jest rejestrowane w centrum IoT](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -243,17 +243,17 @@ W tym artykule przedstawiono rejestracje indywidualne.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz dalszą pracę z przykładem klienta urządzenia i eksplorowanie go, nie czyść zasobów utworzonych w ramach tego przewodnika Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj poniższe kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki start.
+Jeśli planujesz kontynuować pracę i eksplorowanie przykładowego klienta urządzenia, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki Start.
 
 1. Zamknij okno danych wyjściowych przykładu klienta urządzenia na swojej maszynie.
 1. Zamknij okno symulatora modułu TPM na swojej maszynie.
-1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. Open the **Manage Enrollments** blade for your service, and then click the **Individual Enrollments** tab. Select the *REGISTRATION ID* of the device you enrolled in this Quickstart, and click the **Delete** button at the top. 
-1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. Otwórz blok **Urządzenia IoT** Twojego centrum, wybierz *IDENTYFIKATOR URZĄDZENIA* zarejestrowanego w ramach tego przewodnika Szybki start, a następnie kliknij przycisk **Usuń** u góry.
+1. Z menu po lewej stronie w Azure Portal wybierz pozycję **wszystkie zasoby** , a następnie wybierz usługę Device Provisioning. Otwórz blok **Zarządzanie rejestracjami** dla usługi, a następnie wybierz kartę **indywidualne rejestracje** . Zaznacz pole wyboru obok *identyfikatora rejestracji* urządzenia zarejestrowanego w tym przewodniku Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka. 
+1. Z menu po lewej stronie w Azure Portal wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje centrum IoT Hub. Otwórz blok **urządzenia IoT** dla centrum, zaznacz pole wyboru obok *identyfikatora urządzenia* urządzenia zarejestrowanego w tym przewodniku Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start na Twojej maszynie zostało utworzone symulowane urządzenie TPM, które zostało zaaprowizowane do Twojego centrum IoT przy użyciu usługi IoT Hub Device Provisioning. Aby dowiedzieć się, jak zarejestrować urządzenie TPM programowo, przejdź do przewodnika Szybki start dotyczącego programowej rejestracji urządzenia TPM. 
+W tym przewodniku szybki start utworzono symulowane urządzenie modułu TPM na maszynie i udostępniono je Centrum IoT Hub przy użyciu IoT Hub Device Provisioning Service. Aby dowiedzieć się, jak zarejestrować urządzenie TPM programowo, przejdź do przewodnika Szybki Start dotyczącego rejestrowania programowego dla urządzenia TPM. 
 
 > [!div class="nextstepaction"]
-> [Przewodnik Szybki start platformy Azure — rejestrowanie urządzenia TPM w usłudze Azure IoT Hub Device Provisioning](quick-enroll-device-tpm-node.md)
+> [Przewodnik Szybki Start platformy Azure — rejestrowanie urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-node.md)

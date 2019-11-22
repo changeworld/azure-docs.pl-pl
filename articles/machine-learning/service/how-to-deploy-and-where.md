@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9d7dc724130286298af6e1d4b0babc551f3f2658
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123621"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276789"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -530,7 +530,7 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrożenia dla każdeg
 
 | Docelowy zasób obliczeniowy | Przykład konfiguracji wdrożenia |
 | ----- | ----- |
-| Lokalna | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Lokalny | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -578,6 +578,10 @@ Aby uzyskać więcej informacji, zobacz następujące dokumenty:
 ## <a name="deploy-to-target"></a>Wdróż do celu
 
 Wdrożenie używa konfiguracji wdrożenia konfiguracji wnioskowania do wdrożenia modeli. Proces wdrażania jest podobny niezależnie od elementu docelowego obliczeń. Wdrażanie do AKS jest nieco inne, ponieważ należy podać odwołanie do klastra AKS.
+
+### <a name="securing-deployments-with-ssl"></a>Zabezpieczanie wdrożeń przy użyciu protokołu SSL
+
+Aby uzyskać więcej informacji na temat zabezpieczania wdrożenia usługi sieci Web, zobacz [Używanie protokołu SSL w celu zabezpieczenia usługi sieci Web](how-to-secure-web-service.md#enable).
 
 ### <a id="local"></a>Wdrożenie lokalne
 

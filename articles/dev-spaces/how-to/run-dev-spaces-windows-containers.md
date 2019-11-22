@@ -1,20 +1,16 @@
 ---
 title: Używanie Azure Dev Spaces do współpracy z kontenerami systemu Windows
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/25/2019
 ms.topic: conceptual
 description: Dowiedz się, jak uruchamiać Azure Dev Spaces w istniejącym klastrze przy użyciu kontenerów systemu Windows
 keywords: Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontenery systemu Windows
-ms.openlocfilehash: 90d7c8e5fc08405178ab6596b765f289b9bd716f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: ad91d8e48a9242795d4f5d5cd165e658339ebe08
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582774"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280046"
 ---
 # <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Używanie Azure Dev Spaces do współpracy z kontenerami systemu Windows
 
@@ -24,7 +20,7 @@ Azure Dev Spaces można włączyć zarówno dla nowych, jak i istniejących prze
 
 W tym artykule przyjęto założenie, że istnieje już klaster z pulami węzłów systemu Linux i Windows. Jeśli musisz utworzyć klaster z pulami węzłów systemu Linux i Windows, możesz postępować zgodnie z instrukcjami znajdującymi się [tutaj][windows-container-cli].
 
-Nawiąż połączenie z klastrem za pomocą [polecenia kubectl][kubectl], Kubernetes klienta wiersza polecenia. Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i zastosowanie ich w konfiguracji interfejsu wiersza polecenia Kubernetes.
+Nawiąż połączenie z klastrem za pomocą [polecenia kubectl][kubectl], Kubernetes klienta wiersza polecenia. Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

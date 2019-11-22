@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować aplikację serwera Proxy aplikacji do użycia z usługą PingAccess | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą PingAccess czerpać korzyści z serwera Proxy aplikacji do aplikacji przy użyciu uwierzytelniania opartego na nagłówek
+title: Jak skonfigurować aplikację serwera proxy aplikacji do korzystania z PingAccess
+description: Dowiedz się, w jaki sposób używać PingAccess, aby zwiększyć zalety serwera proxy aplikacji w aplikacjach korzystających z uwierzytelniania opartego na nagłówkach
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,27 +16,27 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d555aaf99470588bb3ed2b328adb3e99f6c4a50e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c852c69b6f64b59845b551202bd1a25646a49eb6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783994"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275661"
 ---
-# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Jak skonfigurować aplikację serwera Proxy aplikacji do użycia z usługą PingAccess
+# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Jak skonfigurować aplikację serwera proxy aplikacji tak, aby korzystała z PingAccess
 
-Naszej współpracy z usługą PingAccess teraz umożliwia czerpać korzyści z serwera Proxy aplikacji do aplikacji przy użyciu uwierzytelniania opartego na nagłówka. Jeśli aplikacje nie korzystają z nagłówków, zobacz nasze [logowanie jednokrotne dokumentacji](application-proxy-configure-single-sign-on-with-kcd.md) Aby uzyskać szczegółowe informacje na temat innych opcji.
+Nasza współpraca z usługą PingAccess umożliwia teraz zwiększenie korzyści serwera proxy aplikacji przy użyciu uwierzytelniania opartego na nagłówkach. Jeśli aplikacje nie używają nagłówków, zapoznaj się z [dokumentacją logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md) , aby uzyskać szczegółowe informacje na temat innych opcji.
 
-## <a name="overview-of-steps-and-recommended-documents"></a>Omówienie kroków i zalecane dokumenty
+## <a name="overview-of-steps-and-recommended-documents"></a>Przegląd kroków i zalecanych dokumentów
 
-Aby skonfigurować aplikację z usługą PingAccess, istnieją cztery kroki:
+Aby skonfigurować aplikację z PingAccess, należy wykonać cztery kroki:
 
-1.  Konfigurowanie łączników serwera Proxy aplikacji
+1.  Konfigurowanie łączników serwera proxy aplikacji
 
-2.  Tworzenie aplikacji serwera Proxy aplikacji usługi Azure AD
+2.  Tworzenie aplikacji serwer proxy aplikacji usługi Azure AD platformy Azure
 
-3.  Pobieranie i skonfigurować oprogramowanie PingAccess
+3.  Pobierz & konfigurowania PingAccess
 
 4.  Konfigurowanie aplikacji w PingAccess
 
-Aby uzyskać szczegółowe informacje na każdym z tych kroków, zobacz nasze [logowanie jednokrotne z nagłówkami dokumentacją](application-proxy-configure-single-sign-on-with-ping-access.md).
+Aby uzyskać szczegółowe informacje na temat każdego z tych kroków, zobacz nasze Logowanie jednokrotne [z dokumentacją z nagłówkami](application-proxy-configure-single-sign-on-with-ping-access.md).

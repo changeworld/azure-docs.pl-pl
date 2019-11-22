@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: aahi
-ms.openlocfilehash: 693a81cfb15407541311d7ab053bb2ab6a267b29
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: a4c911fa077c2ec332974fb2f0c5abcdef21307c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73800037"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284144"
 ---
 ## <a name="general-entity-types"></a>Ogólne typy jednostek:
 
@@ -51,7 +51,7 @@ Uznawane organizacje, korporacje, agencje i inne grupy osób. Na przykład: firm
 
 ### <a name="phone-number"></a>Numer telefonu
 
-Numery telefonów. 
+Numery telefonów (tylko numery telefonów USA). 
 
 Języki:
 
@@ -60,9 +60,9 @@ Języki:
 
 | Nazwa podtypu | Opis                                  |
 |----------|----------------------------------------------|
-| Nie dotyczy         | Numery telefonów, na przykład `+1 123-123-123`. |
+| Nie dotyczy         | Numery telefonów US, na przykład `(312) 555-0176`. |
 
-### <a name="email"></a>Email
+### <a name="email"></a>Adres e-mail
 
 Adres e-mail. 
 

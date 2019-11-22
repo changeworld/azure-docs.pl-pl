@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie użytkownikami dla aplikacji dla przedsiębiorstw w Azure Active Directory | Microsoft Docs
+title: Zarządzanie użytkownikami dla aplikacji dla przedsiębiorstw w usłudze Azure AD
 description: Dowiedz się, jak zarządzać obsługą kont użytkowników w aplikacjach dla przedsiębiorstw przy użyciu Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315273"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285623"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw w Azure Portal
 
@@ -85,9 +85,4 @@ Jeśli Inicjowanie obsługi jest włączane po raz pierwszy dla aplikacji, Włą
 
 Zmień **stan aprowizacji** na **wyłączony** , aby wstrzymać usługę aprowizacji. W tym stanie platforma Azure nie tworzy, nie aktualizuje ani nie usuwa żadnych obiektów użytkowników ani grup w aplikacji. Zmień stan z powrotem na **włączony** , a usługa odbiera w miejscu, w którym została przerwana.
 
-Zaznacz pole wyboru **Wyczyść bieżący stan i ponownie uruchom synchronizację** i wybierz pozycję **Zapisz** w:
-
-* Zatrzymaj usługę aprowizacji
-* Uruchom ponownie usługi i ponownie uruchom cykl początkowy
-
-Ta opcja umożliwia administratorom ponowne uruchomienie procesu inicjowania obsługi administracyjnej.
+**Wyczyść bieżący stan i ponownie uruchom synchronizację** wyzwala cykl początkowy. Następnie usługa ponownie oceni wszystkich użytkowników w systemie źródłowym i określi, czy znajdują się one w zakresie aprowizacji. Może to być przydatne, gdy aplikacja jest obecnie w kwarantannie lub trzeba wprowadzić zmiany mapowań atrybutów. Nie należy używać tego do wyzwalania żądania usunięcia lub wyłączenia, ponieważ te zdarzenia mogą zostać porzucone podczas wyzwalania stanu czyszczenia i ponownego uruchomienia. Cykl początkowy również trwa dłużej niż typowy przyrostowy cykl ze względu na liczbę obiektów, które należy oszacować. Więcej informacji o wydajności początkowych i przyrostowych cykli można znaleźć [tutaj.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 

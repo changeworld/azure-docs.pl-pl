@@ -1,21 +1,19 @@
 ---
 title: Używanie ciągłej integracji/ciągłego wdrażania w ramach usługi Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontenery
-ms.openlocfilehash: 7058806e58dbc2d9a196062c129688e6a96c5f31
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
+ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264458"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280018"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Użyj ciągłej integracji/ciągłego wdrażania Azure Dev Spaces
 
@@ -34,10 +32,10 @@ Mimo że ten artykuł prowadzi użytkownika przez usługę Azure DevOps, te same
 * [Autoryzuj klaster AKS do ściągania z Azure Container Registry](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>Pobierz przykładowy kod
-Na przykład utworzymy rozwidlenie naszego przykładowego repozytorium GitHub. Przejdź do https://github.com/Azure/dev-spaces i wybierz **rozwidlenie**. Po zakończeniu procesu rozwidlenia ponownie **Sklonuj** swoją wersję rozwidlenia repozytorium lokalnie. Domyślnie gałąź _główna_ zostanie wyewidencjonowana, ale dodaliśmy pewne zmiany czasu w gałęzi _azds_updates_ , które powinny być również przetransferowane podczas rozwidlenia. Gałąź _azds_updates_ zawiera aktualizacje z pytaniami, które należy wykonać ręcznie w sekcjach samouczka dotyczącej miejsc deweloperskich, a także niektórych wstępnie wprowadzonych plików YAML i JSON w celu usprawnienia wdrożenia systemu ciągłej integracji/ciągłego wdrażania. Możesz użyć polecenia, takiego jak `git checkout -b azds_updates origin/azds_updates`, aby wyewidencjonować gałąź _azds_updates_ w repozytorium lokalnym.
+Na przykład utworzymy rozwidlenie naszego przykładowego repozytorium GitHub. Przejdź do obszaru https://github.com/Azure/dev-spaces i wybierz opcję **rozwidlenie**. Po zakończeniu procesu rozwidlenia ponownie **Sklonuj** swoją wersję rozwidlenia repozytorium lokalnie. Domyślnie gałąź _główna_ zostanie wyewidencjonowana, ale dodaliśmy pewne zmiany czasu w gałęzi _azds_updates_ , które powinny być również przetransferowane podczas rozwidlenia. Gałąź _azds_updates_ zawiera aktualizacje, z których prosimy o ręczne wprowadzenie w sekcjach samouczka dotyczącej miejsc deweloperskich, a także niektórych wstępnie wprowadzonych plików YAML i JSON w celu usprawnienia wdrożenia systemu ciągłej integracji/ciągłego wdrażania. Możesz użyć polecenia, takie jak `git checkout -b azds_updates origin/azds_updates`, aby wyewidencjonować gałąź _azds_updates_ w lokalnym repozytorium.
 
 ## <a name="dev-spaces-setup"></a>Konfiguracja miejsc dev
-Utwórz nowe miejsce o nazwie _dev_ przy użyciu `azds space select` polecenia. Miejsce _dev_ będzie używane przez potok ciągłej integracji/ciągłego wdrażania, aby wypchnąć zmiany kodu. Będzie również używany do tworzenia _miejsc potomnych_ opartych na _dev_.
+Utwórz nowe miejsce o nazwie _dev_ przy użyciu polecenia `azds space select`. Miejsce _dev_ będzie używane przez potok ciągłej integracji/ciągłego wdrażania, aby wypchnąć zmiany kodu. Będzie również używany do tworzenia _miejsc potomnych_ opartych na _dev_.
 
 ```cmd
 azds space select -n dev
@@ -45,7 +43,7 @@ azds space select -n dev
 
 Po wyświetleniu monitu o wybranie nadrzędnej przestrzeni deweloperskiej wybierz pozycję _\<none\>_ .
 
-Po utworzeniu obszaru deweloperskiego należy określić sufiks hosta. Użyj `azds show-context` polecenia, aby wyświetlić sufiks hosta kontrolera Azure Dev Spaces transferu danych przychodzących.
+Po utworzeniu obszaru deweloperskiego należy określić sufiks hosta. Użyj `azds show-context` polecenie, aby wyświetlić sufiks hosta kontrolera Azure Dev Spaces transferu danych przychodzących.
 
 ```cmd
 $ azds show-context
@@ -70,14 +68,14 @@ Opcja wyłączenia:
 > [!Note]
 > Funkcja wersji zapoznawczej _tworzenia potoku_ usługi Azure DEVOPS New YAML jest w tej chwili w konflikcie z tworzeniem wstępnie zdefiniowanych potoków kompilacji. Musisz ją wyłączyć teraz, aby wdrożyć wstępnie zdefiniowany potok kompilacji.
 
-W gałęzi _azds_updates_ dodaliśmy prosty [potok platformy Azure YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , który definiuje kroki kompilacji wymagane dla *mywebapi* i *webfrontonu*.
+W gałęzi _azds_updates_ dodaliśmy PROSTą [YAML potoku platformy Azure](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , która definiuje kroki kompilacji wymagane dla *mywebapi* i *webfrontonu*.
 
 W zależności od wybranego języka potok YAML został zaewidencjonowany w ścieżce podobnej do: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Aby utworzyć potok z tego pliku:
 1. Na stronie głównej projektu DevOps przejdź do potoków > kompilacje.
 1. Wybierz opcję utworzenia **nowego** potoku kompilacji.
-1. W razie potrzeby wybierz pozycję **GitHub** jako źródło, Autoryzuj z kontem usługi GitHub, a następnie wybierz gałąź _azds_updates_ z wersji rozwidlenia przykładowej aplikacji do tworzenia _miejsc deweloperskich_ .
+1. W razie potrzeby wybierz pozycję **GitHub** jako źródło, Autoryzuj z kontem usługi GitHub, a następnie wybierz gałąź _azds_updates_ z wersji z rozwidleniem repozytorium aplikacji przykładowej dla _deweloperów_ .
 1. Wybierz pozycję **Konfiguracja jako kod**lub **YAML**, jako szablon.
 1. Zostanie wyświetlona strona konfiguracji potoku kompilacji. Jak wspomniano powyżej, przejdź do ścieżki **pliku YAML** , używając przycisku.. **.** . Na przykład `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Przejdź do karty **zmienne** .
@@ -85,7 +83,7 @@ Aby utworzyć potok z tego pliku:
 1. Ręcznie Dodaj _dockerPassword_ jako zmienną, która jest hasłem [konta administratora Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). Pamiętaj, aby określić _dockerPassword_ jako wpis tajny (wybierając ikonę kłódki) ze względów bezpieczeństwa.
 1. Wybierz pozycję **zapisz & kolejkę**.
 
-Masz teraz rozwiązanie CI, które automatycznie kompiluje *mywebapi* i *webfronton* dla każdej aktualizacji wypychanej do gałęzi _Azds_updates_ w rozwidleniu usługi GitHub. Możesz sprawdzić, czy obrazy platformy Docker zostały wypchnięte, przechodząc do Azure Portal, wybierając Azure Container Registry i przeglądając kartę **repozytoria** . Kompilowanie obrazów i wyświetlanie ich w rejestrze kontenerów może potrwać kilka minut.
+Masz teraz rozwiązanie CI, które automatycznie kompiluje *mywebapi* i *webfronton* dla każdej aktualizacji wypychanej do gałęzi _azds_updates_ Twojego rozwidlenia w serwisie GitHub. Możesz sprawdzić, czy obrazy platformy Docker zostały wypchnięte, przechodząc do Azure Portal, wybierając Azure Container Registry i przeglądając kartę **repozytoria** . Kompilowanie obrazów i wyświetlanie ich w rejestrze kontenerów może potrwać kilka minut.
 
 ![Repozytoria Azure Container Registry](../media/common/ci-cd-images-verify.png)
 
@@ -102,12 +100,12 @@ Masz teraz rozwiązanie CI, które automatycznie kompiluje *mywebapi* i *webfron
 1. Pozostaw **Tagi** puste.
 1. Ustaw **alias źródłowy** na `drop`. Wartość **aliasu Source** jest używana przez wstępnie zdefiniowane zadania wydania, aby musiała zostać ustawiona.
 1. Kliknij pozycję **Add** (Dodaj).
-1. Teraz kliknij ikonę błyskawicy dla nowo utworzonego źródła artefaktu `drop`, jak pokazano poniżej:
+1. Teraz kliknij ikonę błyskawicy w nowo utworzonym źródle artefaktu `drop`, jak pokazano poniżej:
 
     ![Konfiguracja ciągłego wdrażania artefaktu wydania](../media/common/release-artifact-cd-setup.png)
 1. Włącz **wyzwalacz ciągłego wdrażania**.
 1. Umieść kursor na karcie **zadania** obok pozycji **potok** i kliknij pozycję _dev_ (Programowanie), aby edytować zadania _deweloperskie_ .
-1. Sprawdź, czy w obszarze **Typ połączenia** wybrano **Azure Resource Manager** . zobaczysz trzy kontrolki listy rozwijanej wyróżnione kolorem czerwonym: ![Release Definition Setup @ no__t-1
+1. Sprawdź, czy w obszarze **Typ połączenia** wybrano **Azure Resource Manager** . zobaczysz trzy kontrolki listy rozwijanej wyróżnione kolorem czerwonym: Konfiguracja definicji wydania ![](../media/common/release-setup-tasks.png)
 1. Wybierz subskrypcję platformy Azure, której używasz, Azure Dev Spaces. Może być również konieczne kliknięcie przycisku **Autoryzuj**.
 1. Wybierz grupę zasobów i klaster, z których korzystasz, Azure Dev Spaces.
 1. Kliknij pozycję **zadanie agenta**.
@@ -117,11 +115,11 @@ Masz teraz rozwiązanie CI, które automatycznie kompiluje *mywebapi* i *webfron
 1. Kliknij pozycję **zadanie agenta**.
 1. Wybierz pozycję **hostowane Ubuntu 1604** w obszarze **Pula agentów**.
 1. Kliknij kartę **zmienne** , aby zaktualizować zmienne dla wydania.
-1. Zaktualizuj wartość **DevSpacesHostSuffix** z **UPDATE_ME** na sufiks hosta. Sufiks hosta jest wyświetlany, gdy wcześniej uruchomiono polecenie `azds show-context`.
+1. Zaktualizuj wartość **DevSpacesHostSuffix** z **UPDATE_ME** do sufiksu hosta. Sufiks hosta jest wyświetlany, gdy wcześniej uruchomiono polecenie `azds show-context`.
 1. Kliknij przycisk **Zapisz** w prawym górnym rogu i **OK**.
 1. Kliknij pozycję **+ wersja** (obok przycisku Zapisz) i **Utwórz wydanie**.
 1. W obszarze **artefakty**Sprawdź, czy jest wybrana Najnowsza kompilacja z potoku kompilacji.
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
 Proces zautomatyzowanej wersji rozpocznie się teraz, wdrażając wykresy *mywebapi* i *webfrontonu* w klastrze Kubernetes w _obszarze najwyższego_ poziomu. Postęp wydania można monitorować w portalu sieci Web usługi Azure DevOps:
 
@@ -133,12 +131,12 @@ Proces zautomatyzowanej wersji rozpocznie się teraz, wdrażając wykresy *myweb
 Wydanie jest wykonywane po zakończeniu wszystkich zadań.
 
 > [!TIP]
-> Jeśli wydanie nie powiedzie się, komunikat o błędzie, na przykład *uaktualnienie nie powiodło się: przekroczono limit czasu podczas oczekiwania na warunek*, spróbuj przeprowadzić inspekcję w klastrze [za pomocą pulpitu nawigacyjnego Kubernetes](../../aks/kubernetes-dashboard.md). Jeśli nie można rozpocząć pracy z wystąpieniami, których nie można uruchomić z użyciem komunikatów o błędach, takich jak *nie powiodło się odtworzenie obrazu "azdsexample.azurecr.IO/mywebapi:122": błąd wywołania RPC: Code = nieznany DESC = błąd odpowiedzi z demona: pobieranie https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: nieautoryzowane: wymagane jest uwierzytelnienie.* ponieważ klaster nie uzyskał autoryzacji do ściągania z Azure Container Registry. Upewnij się, że wykonano [autoryzację klastra AKS do ściągania z poziomu](../../aks/cluster-container-registry-integration.md) wymagań wstępnych Azure Container Registry.
+> Jeśli wydanie nie powiedzie się, komunikat o błędzie, na przykład *uaktualnienie nie powiodło się: przekroczono limit czasu podczas oczekiwania na warunek*, spróbuj przeprowadzić inspekcję w klastrze [za pomocą pulpitu nawigacyjnego Kubernetes](../../aks/kubernetes-dashboard.md). Jeśli zostanie wyświetlony komunikat o błędach, których nie można uruchomić, na przykład w przypadku *niepowodzenia ściągania obrazu "azdsexample.azurecr.IO/mywebapi:122": błąd wywołania RPC: Code = nieznany DESC = błąd odpowiedzi z demona: pobieranie https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: nieautoryzowane: wymagane jest uwierzytelnianie*, ponieważ klaster nie ma autoryzacji do ściągania z Azure Container Registry. Upewnij się, że wykonano [autoryzację klastra AKS do ściągania z poziomu](../../aks/cluster-container-registry-integration.md) wymagań wstępnych Azure Container Registry.
 
 Teraz masz w pełni zautomatyzowany potok ciągłej integracji/ciągłego wdrażania dla rozwidlenia w serwisie GitHub przykładowych aplikacji. Za każdym razem, gdy zatwierdzisz i wypychasz kod, potok kompilacji utworzy i wypycha obrazy *mywebapi* i *webfrontonu* do wystąpienia niestandardowego ACR. Następnie potok wersji wdroży wykres Helm dla każdej aplikacji w obszarze _dev_ w klastrze z obsługą miejsc dev Spaces.
 
 ## <a name="accessing-your-_dev_-services"></a>Uzyskiwanie dostępu do usług _deweloperskich_
-Po wdrożeniu można uzyskać dostęp do _deweloperskiej_ wersji programu *webfrontonu* z publicznym adresem URL, takim jak: `http://dev.webfrontend.fedcba098.eus.azds.io`. Ten adres URL można znaleźć, uruchamiając polecenie `azds list-uri`: 
+Po wdrożeniu można uzyskać dostęp do _deweloperskiej_ wersji programu *webfrontonu* z publicznym adresem URL, takim jak: `http://dev.webfrontend.fedcba098.eus.azds.io`. Ten adres URL można znaleźć, uruchamiając `azds list-uri` polecenie: 
 
 ```cmd
 $ azds list-uris
@@ -155,7 +153,7 @@ Aby ręcznie podnieść szczególną wersję do _prod_ przy użyciu systemu cią
 1. Kliknij potok wydania dla przykładowej aplikacji.
 1. Kliknij nazwę najnowszej wersji.
 1. Umieść kursor nad polem **prod** w obszarze **etapy** , a następnie kliknij pozycję **Wdróż**.
-    ![Promote do produkcji @ no__t-1
+    ![Podnieś poziom do produkcji](../media/common/prod-promote.png)
 1. W obszarze **etapy** ponownie umieść wskaźnik myszy nad polem **produkcyjnym** , a następnie kliknij pozycję **dzienniki**.
 
 Wydanie jest wykonywane po zakończeniu wszystkich zadań.
@@ -172,14 +170,14 @@ Aby określić adres IP usługi webfrontonu, kliknij krok **Drukuj publiczny adr
 ```
 
 ## <a name="dev-spaces-instrumentation-in-production"></a>Instrumentacja miejsc dev w środowisku produkcyjnym
-Mimo że Instrumentacja Spaces dev została zaprojektowana tak, aby _nie_ była w normalnym działaniu aplikacji, zalecamy uruchamianie obciążeń produkcyjnych w przestrzeni nazw Kubernetes, która nie jest włączona z funkcją dev Spaces. Użycie tego typu przestrzeni nazw Kubernetes oznacza, że należy utworzyć przestrzeń nazw produkcyjną przy użyciu interfejsu wiersza polecenia `kubectl` lub zezwolić systemowi ciągłej integracji/ciągłego tworzenia go podczas pierwszego wdrożenia Helm. _Zaznaczanie_ lub Tworzenie miejsca przy użyciu narzędzi do tworzenia miejsc dev spowoduje dodanie do tej przestrzeni nazw Instrumentacji miejsca do magazynowania.
+Mimo że Instrumentacja Spaces dev została zaprojektowana tak, aby _nie_ była w normalnym działaniu aplikacji, zalecamy uruchamianie obciążeń produkcyjnych w przestrzeni nazw Kubernetes, która nie jest włączona z funkcją dev Spaces. Użycie tego typu przestrzeni nazw Kubernetes oznacza, że należy utworzyć produkcyjną przestrzeń nazw przy użyciu interfejsu wiersza polecenia `kubectl` lub zezwolić systemowi ciągłej integracji/ciągłego tworzenia go podczas pierwszego wdrożenia Helm. _Zaznaczanie_ lub Tworzenie miejsca przy użyciu narzędzi do tworzenia miejsc dev spowoduje dodanie do tej przestrzeni nazw Instrumentacji miejsca do magazynowania.
 
 Poniżej znajduje się przykładowa struktura przestrzeni nazw, która obsługuje programowanie funkcji, środowisko deweloperskie _i_ produkcyjne wszystkie w jednym klastrze Kubernetes:
 
 ![Przykładowa struktura przestrzeni nazw](../media/common/cicd-namespaces.png)
 
 > [!Tip]
-> Jeśli masz już utworzoną przestrzeń `prod` i po prostu chcesz wykluczyć ją z Instrumentacji miejsca do magazynowania (bez usuwania tego elementu), możesz to zrobić za pomocą następującego polecenia:
+> Jeśli utworzono już miejsce na `prod`, a po prostu chcesz wykluczyć je z instrumentacji do tworzenia miejsc do deweloperów (bez usuwania tego elementu), możesz to zrobić za pomocą następujących poleceń interfejsu wiersza polecenia dev Spaces:
 >
 > `azds space remove -n prod --no-delete`
 >

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie usługi GitHub dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników w usłudze GitHub.
+title: 'Samouczek: Inicjowanie obsługi użytkowników w usłudze GitHub — Azure AD'
+description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i dezaktywowania kont użytkowników w usłudze GitHub.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,92 +15,92 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356af6567cea96efc7edbe8bc4932182d35ebc07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bae60622ca8f0e660c8fafbd21189d8e368ba9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963943"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276609"
 ---
-# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi GitHub dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi GitHub na potrzeby automatycznego aprowizacji użytkowników
 
-Celem tego samouczka jest Wam czynności, które należy wykonać w witrynie GitHub i Azure AD, do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do usługi GitHub.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w witrynie GitHub i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD w serwisie GitHub.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
-* Dzierżawy usługi Azure Active directory
+* Dzierżawa usługi Azure Active Directory
 * Organizacja usługi GitHub utworzona w [chmurze usługi GitHub dla przedsiębiorstw](https://help.github.com/articles/github-s-products/#github-enterprise), która wymaga [planu rozliczeniowego usługi GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
-* Konto użytkownika w usłudze GitHub z uprawnieniami administratora w organizacji
+* Konto użytkownika w usłudze GitHub z uprawnieniami administratora do organizacji
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API usługi GitHub Standard SCIM](https://developer.github.com/v3/scim/), który jest dostępny dla [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) klientom [GitHub Enterprise, plan rozliczeniowy](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) .
+> Integracja z obsługą administracyjną usługi Azure AD opiera się na [interfejsie API Standard scim](https://developer.github.com/v3/scim/)w usłudze GitHub, który jest dostępny dla klientów w [chmurze dla przedsiębiorstw](https://help.github.com/articles/github-s-products/#github-enterprise) w serwisie GitHub. [](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 
 ## <a name="assigning-users-to-github"></a>Przypisywanie użytkowników do usługi GitHub
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD. 
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD. 
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji usługi GitHub. Po decyzję, możesz przypisać tych użytkowników z aplikacją usługi GitHub, wykonując instrukcje podane w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji w serwisie GitHub. Po ustaleniu tych użytkowników można przypisać je do aplikacji usługi GitHub, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
+[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-github"></a>Ważne wskazówki dotyczące przypisywania użytkowników do usługi GitHub
+### <a name="important-tips-for-assigning-users-to-github"></a>Ważne porady dotyczące przypisywania użytkowników do usługi GitHub
 
-* Zalecane jest, że jeden użytkownik usługi Azure AD jest przypisany do usługi GitHub do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do serwisu GitHub w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkowników do usługi GitHub, należy wybrać **użytkownika** roli, lub inną prawidłową specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. **Domyślnego dostępu** roli nie działa w przypadku inicjowania obsługi administracyjnej i Ci użytkownicy są pomijane.
+* Podczas przypisywania użytkownika do usługi GitHub należy wybrać rolę **użytkownika** lub inną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. **Domyślna rola dostępu** nie działa w przypadku inicjowania obsługi administracyjnej, a użytkownicy są pomijani.
 
-## <a name="configuring-user-provisioning-to-github"></a>Konfigurowanie aprowizowania użytkowników w usłudze GitHub
+## <a name="configuring-user-provisioning-to-github"></a>Konfigurowanie aprowizacji użytkowników w usłudze GitHub
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika usługi GitHub aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w usłudze GitHub, na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API aprowizacji usługi Azure AD do konta użytkownika usługi GitHub, a następnie Konfigurując usługę aprowizacji do tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w usłudze GitHub na podstawie przypisywania użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego usługi github, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla usługi GitHub, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Skonfiguruj automatyczne aprowizowaniem kont użytkowników do usługi GitHub w usłudze Azure AD
+### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurowanie automatycznego inicjowania obsługi konta użytkownika w usłudze GitHub w usłudze Azure AD
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-2. Jeśli już skonfigurowano usługi GitHub dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi GitHub za pomocą pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **GitHub** w galerii aplikacji. Wybierz usługi GitHub z poziomu wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+2. Jeśli masz już skonfigurowaną funkcję rejestracji jednokrotnej w usłudze GitHub, Wyszukaj swoje wystąpienie usługi GitHub przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj witrynę **GitHub** w galerii aplikacji. Wybierz pozycję GitHub z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-3. Wybierz wystąpienie usługi GitHub, a następnie wybierz **aprowizacji** kartę.
+3. Wybierz wystąpienie usługi GitHub, a następnie wybierz kartę **aprowizacji** .
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![Inicjowanie obsługi administracyjnej w usłudze GitHub](./media/github-provisioning-tutorial/GitHub1.png)
+    ![Inicjowanie obsługi usługi GitHub](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. W obszarze **poświadczeń administratora** kliknij **Autoryzuj**. Ta operacja otwiera okno dialogowe autoryzacji usługi GitHub w nowym oknie przeglądarki. 
+5. W sekcji **poświadczenia administratora** kliknij przycisk **Autoryzuj**. Ta operacja otwiera okno dialogowe autoryzacji usługi GitHub w nowym oknie przeglądarki. 
 
-6. W nowym oknie Zaloguj się do usługi GitHub za pomocą konta administratora. W oknie dialogowym autoryzacji wynikowe, wybierz zespół usługi GitHub, który chcesz włączyć udostępnianie, a następnie wybierz **Autoryzuj**. Po zakończeniu wróć do witryny Azure portal, aby zakończyć konfigurowanie inicjowania obsługi administracyjnej.
+6. W nowym oknie Zaloguj się do usługi GitHub przy użyciu konta administratora. W oknie dialogowym uzyskana autoryzacja wybierz zespół usługi GitHub, dla którego chcesz włączyć obsługę administracyjną, a następnie wybierz pozycję **Autoryzuj**. Po zakończeniu Wróć do Azure Portal, aby zakończyć konfigurację aprowizacji.
 
     ![Okno dialogowe autoryzacji](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. W witrynie Azure portal wprowadź **adres URL dzierżawy** i kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można do swojej aplikacji w usłudze GitHub. Jeśli połączenie nie powiedzie się, upewnij się, Twoje konto usługi GitHub ma uprawnienia administratora i **adres URl dzierżawy** jest wprowadzona poprawnie, a następnie spróbuj ponownie w kroku "Autoryzuj" (może stanowić **adres URL dzierżawy** przez regułę: `https://api.github.com/scim/v2/organizations/<Organization_name>` , możesz znaleźć swojej organizacji w ramach konta usługi GitHub: **Ustawienia** > **organizacje**).
+7. W Azure Portal wprowadź **adres URL dzierżawy** i kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z Twoją aplikacją w usłudze GitHub. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto w usłudze GitHub ma uprawnienia administratora i **adres URL dzierżawy** został niepoprawnie podano, a następnie spróbuj ponownie wykonać krok "Autoryzuj" ( **adres URL dzierżawy** można określić według reguły: `https://api.github.com/scim/v2/organizations/<Organization_name>`, możesz znaleźć swoje organizacje w ramach konta usługi GitHub: **Ustawienia** > **organizacji**).
 
     ![Okno dialogowe autoryzacji](./media/github-provisioning-tutorial/GitHub3.png)
 
-8. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi błąd."
+8. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach dotyczących aprowizacji w polu **E-mail powiadomienia** , i zaznacz pole wyboru "Wyślij powiadomienie e-mail, gdy wystąpi błąd".
 
 9. Kliknij pozycję **Zapisz**.
 
-10. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do usługi GitHub**.
+10. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników do serwisu GitHub**.
 
-11. W **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do usługi GitHub. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w usłudze GitHub dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+11. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do serwisu GitHub. Atrybuty wybrane jako **pasujące** właściwości są używane w celu dopasowania do kont użytkowników w usłudze GitHub dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-12. Aby włączyć usługi Azure AD, inicjowania obsługi usługi dla usługi GitHub, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
+12. Aby włączyć usługę Azure AD Provisioning dla usługi GitHub, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
 13. Kliknij pozycję **Zapisz**.
 
-Ta operacja uruchamia wstępnej synchronizacji użytkowników i/lub grupy przypisane do usługi GitHub w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji.
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup przypisanych do usługi GitHub w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)

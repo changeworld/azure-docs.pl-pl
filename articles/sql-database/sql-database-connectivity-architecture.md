@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3b735f7ee644bb017756f3d6378e625fa66d448
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826908"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280789"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -54,6 +54,10 @@ W przypadku łączenia się z poziomu platformy Azure połączenia mają domyśl
 Jeśli łączysz się z spoza systemu Azure, połączenia mają domyślnie zasady połączeń `Proxy`. Zasady `Proxy` oznacza, że sesja protokołu TCP jest ustanawiana za pośrednictwem bramy Azure SQL Database i wszystkie kolejne pakiety są przesyłane przez bramę. Na poniższym diagramie przedstawiono ten przepływ ruchu.
 
 ![Przegląd architektury](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+
+> [!IMPORTANT]
+> Dodatkowo Otwórz porty 14000-14999, aby umożliwić [nawiązywanie połączeń z DAC](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Adresy IP bramy usługi Azure SQL Database
 

@@ -1,5 +1,5 @@
 ---
-title: Wysoka dostępność i równoważenie obciążenia dla serwer proxy aplikacji usługi Azure AD platformy Azure | Microsoft Docs
+title: Wysoka dostępność i równoważenie obciążenia — serwer proxy aplikacji usługi Azure AD platformy Azure
 description: Jak dystrybucja ruchu współdziała z wdrożeniem serwera proxy aplikacji. Zawiera wskazówki dotyczące optymalizowania wydajności łącznika i korzystania z równoważenia obciążenia dla serwerów zaplecza.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169803"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275537"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Wysoka dostępność i równoważenie obciążenia łączników i aplikacji serwera proxy aplikacji
 
@@ -98,8 +98,8 @@ Zapoznaj się z dokumentacją dostawcy oprogramowania, aby poznać wymagania dot
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Włącz serwer proxy aplikacji](application-proxy-add-on-premises-application.md)
+- [Włącz serwer Proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md)
-- [Rozwiązywanie problemów z serwerem proxy aplikacji](application-proxy-troubleshoot.md)
+- [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)
 - [Dowiedz się, jak architektura usługi Azure AD obsługuje wysoką dostępność](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

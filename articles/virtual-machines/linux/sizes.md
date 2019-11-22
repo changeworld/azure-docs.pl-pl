@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 668e87050809da24a3bcedd7c388e37db2215ff0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 91bf935ef1a31af0bea6437bd98fa8da4ba11911
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034818"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280635"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure
 W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platformy Azure, za pomocą których można uruchamiać aplikacje i obciążenia systemu Linux. Zawiera również zagadnienia dotyczące wdrażania, które należy wziąć pod uwagę w przypadku planowania użycia tych zasobów. Ten artykuł jest również dostępny dla [maszyn wirtualnych z systemem Windows](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -27,9 +27,9 @@ W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platfor
 
 | Typ                     | Rozmiary           |    Opis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Zastosowania ogólne](sizes-general.md)          | B, Dsv3, Dv3, Dasv3, Dav3, DSv2, Dv2, Av2, DC  | Zrównoważona moc procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. |
+| [Zastosowania ogólne](sizes-general.md)          | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC  | Zrównoważona moc procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. |
 | [Optymalizacja pod kątem obliczeń](sizes-compute.md)        | Fsv2           | Duża moc procesora CPU w stosunku do pamięci. Dobrze sprawdzają się w przypadku serwerów sieci Web o średnim ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji.        |
-| [Optymalizacja pod kątem pamięci](sizes-memory.md)         | Esv3, EV3, Easv3, Eav3, Mv2, M, DSv2, Dv2  | Duże proporcje pamięci i procesora CPU. Świetnie sprawdzają się w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
+| [Optymalizacja pod kątem pamięci](sizes-memory.md)         | Esv3, EV3, Easv4, Eav4, Mv2, M, DSv2, Dv2  | Duże proporcje pamięci i procesora CPU. Świetnie sprawdzają się w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
 | [Optymalizacja pod kątem magazynu](sizes-storage.md)        | Lsv2                | Wysoka przepływność dysku i doskonałe operacje we/wy dla danych Big Data, baz danych SQL, NoSQL, magazynowania danych i dużych transakcyjnych baz danych.  |
 | [Procesor GPU](sizes-gpu.md)            | NC, NCv2, Seria NCV3, ND, NDv2 (wersja zapoznawcza), NV, NVv3  | Wyspecjalizowane maszyny wirtualne przeznaczone do intensywnego renderowania grafiki i edytowania wideo, a także szkolenia modelowe i inferencing (ND) z głębokie uczenie. Dostępne z pojedynczym lub wieloma procesorami GPU.       |
 | [Obliczenia o wysokiej wydajności](sizes-hpc.md) | HB, HC, H | Maszyny wirtualne z najszybszymi i najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). |

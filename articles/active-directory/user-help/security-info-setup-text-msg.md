@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie informacji o zabezpieczeniach (wersja zapoznawcza) dla wiadomości tekstowych — Azure AD
-description: Jak skonfigurować informacje zabezpieczające, aby zweryfikować Twoją tożsamość przy użyciu wiadomości SMS i urządzenia przenośnego.
+title: Konfigurowanie wiadomości SMS jako metody weryfikacji — Azure AD
+description: Jak skonfigurować informacje zabezpieczające (wersja zapoznawcza) w celu zweryfikowania tożsamości za pomocą wiadomości tekstowych jako metody weryfikacji.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803837"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278919"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby używać wiadomości tekstowych
+# <a name="set-up-text-messaging-as-your-verification-method"></a>Konfigurowanie wiadomości tekstowych jako metody weryfikacji
 
 Aby dodać weryfikację dwuskładnikową i metodę resetowania hasła, można wykonać następujące czynności. Po wybraniu tej opcji po raz pierwszy możesz wrócić do strony **informacje zabezpieczające** , aby dodać, zaktualizować lub usunąć informacje o zabezpieczeniach.
 

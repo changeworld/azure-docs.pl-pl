@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669675"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278574"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki Start: Tworzenie nowej aplikacji w portalu LUIS
 
 [!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
-W tym przewodniku szybki start utworzysz nową aplikację w [portalu Luis](https://www.luis.ai). Najpierw utworzysz podstawowe elementy aplikacji, **intencje**i **jednostki**. Następnie przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu testów interakcyjnych, aby uzyskać przewidywany cel.
+W tym przewodniku szybki start utworzysz nową aplikację w portalu LUIS. Najpierw utworzysz podstawowe elementy aplikacji, **intencje**i **jednostki**. Następnie przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu testów interakcyjnych, aby uzyskać przewidywany cel.
 
 Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gdy wszystko będzie gotowe do wdrożenia aplikacji, zapoznaj się z [przewodnikiem Szybki Start, aby wdrożyć aplikację](get-started-portal-deploy-app.md). Przedstawiono w nim sposób tworzenia zasobu usługi poznawczej platformy Azure i przypisywania go do aplikacji.
 
@@ -39,7 +39,7 @@ Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gd
    |--|--|--|
    |Nazwa|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>Wymagane|
    |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>Wymagane|
-   |Opis (opcjonalnie)|`App made with LUIS Portal`|Opis aplikacji<br>Obowiązkowe|
+   |Opis (opcjonalnie)|`App made with LUIS Portal`|Opis aplikacji<br>obowiązkowe|
    |Zasób predykcyjny (opcjonalnie) |-  |Nie wybieraj. LUIS udostępnia klucz początkowy do użycia bezpłatnie na potrzeby tworzenia i 1 000 żądań punktu końcowego przewidywania. |
 
    ![Wprowadź nowe ustawienia aplikacji](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -60,13 +60,13 @@ Dwie różne _intencje_ dotyczące aplikacji są wyrównane do następujących i
 
 Aby utworzyć intencje, wykonaj następujące czynności:
 
-1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz pozycję **Utwórz**.
+1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz **tworzenie**.
 
    [![wybierz pozycję Utwórz, aby utworzyć nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. Wprowadź nazwę zamierzenia, `FindForm`a następnie wybierz pozycję **gotowe**.
 
-## <a name="add-an-example-utterance"></a>Dodawanie przykładu wypowiedź
+## <a name="add-an-example-utterance"></a>Dodaj wypowiedź przykład
 
 Po utworzeniu zamiarów należy dodać przykład wyrażenia długości. Przykład wyrażenia długości jest tekstem, który użytkownik wprowadza w programie Chat bot lub innej aplikacji klienckiej. Umożliwiają one mapowanie zamiaru tekstu użytkownika na LUIS zamiar.
 

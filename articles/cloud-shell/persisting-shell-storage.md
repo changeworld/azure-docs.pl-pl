@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082991"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284828"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w Azure Cloud Shell
 Cloud Shell korzysta z usługi Azure File Storage, aby utrwalać pliki między sesjami. Na początku, Cloud Shell prosi o skojarzenie nowego lub istniejącego udziału plików w celu utrwalenia plików między sesjami.
@@ -38,14 +38,11 @@ W przypadku korzystania z ustawień podstawowych i wybierania tylko subskrypcji 
 
 Udział plików jest instalowany jako `clouddrive` w katalogu `$Home`. Jest to jednorazowa akcja, a udział plików jest instalowany automatycznie w kolejnych sesjach. 
 
-> [!NOTE]
-> Aby zapewnić bezpieczeństwo, każdy użytkownik powinien obsługiwać własne konto magazynu.  W przypadku kontroli dostępu opartej na rolach (RBAC) użytkownicy muszą mieć dostęp współautora lub wyższy na poziomie konta magazynu.
-
 Udział plików zawiera również obraz 5 GB, który jest tworzony dla Ciebie, który automatycznie utrzymuje dane w katalogu `$Home`. Dotyczy to zarówno bash, jak i programu PowerShell.
 
 ## <a name="use-existing-resources"></a>Korzystanie z istniejących zasobów
 
-Za pomocą opcji Zaawansowane można kojarzyć istniejące zasoby. W przypadku wybrania regionu Cloud Shell należy wybrać konto magazynu zapasowego znajdujące się w tym samym regionie. Na przykład jeśli przypisany region ma wartość zachodnie stany USA niż należy skojarzyć udział plików, który znajduje się w regionie zachodnie stany USA.
+Za pomocą opcji Zaawansowane można kojarzyć istniejące zasoby. W przypadku wybrania regionu Cloud Shell należy wybrać konto magazynu zapasowego znajdujące się w tym samym regionie. Na przykład jeśli przypisany region to zachodnie stany USA, należy skojarzyć udział plików, który znajduje się w regionie zachodnie stany USA.
 
 Po wyświetleniu monitu instalacji magazynu wybierz pozycję **Pokaż ustawienia zaawansowane** , aby wyświetlić dodatkowe opcje. Wypełnione opcje magazynu filtru dla magazynu lokalnie nadmiarowego (LRS), magazynu geograficznie nadmiarowego (GRS) i magazynu Strefowo nadmiarowego (ZRS). 
 
@@ -54,7 +51,14 @@ Po wyświetleniu monitu instalacji magazynu wybierz pozycję **Pokaż ustawienia
 
 ![Ustawienie grupy zasobów](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>Obsługiwane regiony magazynu
+## <a name="securing-storage-access"></a>Zabezpieczanie dostępu do magazynu
+Aby zapewnić bezpieczeństwo, każdy użytkownik powinien obsługiwać własne konto magazynu.  W przypadku kontroli dostępu opartej na rolach (RBAC) użytkownicy muszą mieć dostęp współautora lub wyższy na poziomie konta magazynu.
+
+Cloud Shell używa udziału plików platformy Azure na koncie magazynu w ramach określonej subskrypcji. Ze względu na uprawnienia dziedziczone użytkownicy mający wystarczające prawa dostępu do subskrypcji będą mogli uzyskiwać dostęp do wszystkich kont magazynu oraz udziałów plików zawartych w subskrypcji.
+
+Użytkownicy powinni zablokować dostęp do swoich plików, ustawiając uprawnienia na koncie magazynu lub na poziomie subskrypcji.
+
+## <a name="supported-storage-regions"></a>Obsługiwane regiony magazynu
 Skojarzone konta usługi Azure Storage muszą znajdować się w tym samym regionie co maszyna Cloud Shell, do której są one instalowane. Aby znaleźć bieżący region, możesz uruchomić `env` w bash i zlokalizować `ACC_LOCATION`zmiennej. Udziały plików otrzymują obraz 5 GB utworzony, aby zachować katalog `$Home`.
 
 Maszyny Cloud Shell istnieją w następujących regionach:
@@ -67,8 +71,6 @@ Maszyny Cloud Shell istnieją w następujących regionach:
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Ograniczanie tworzenia zasobów przy użyciu zasad zasobów platformy Azure
 Konta magazynu tworzone w Cloud Shell są oznaczone `ms-resource-usage:azure-cloud-shell`. Jeśli chcesz uniemożliwić użytkownikom tworzenie kont magazynu w Cloud Shell, Utwórz [zasady zasobów platformy Azure dla tagów](../azure-policy/json-samples.md) , które są wyzwalane przez ten konkretny tag.
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>Jak działa Cloud Shell Storage 
 Cloud Shell utrzymuje pliki przy użyciu obu następujących metod: 

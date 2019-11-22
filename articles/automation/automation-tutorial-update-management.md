@@ -1,20 +1,20 @@
 ---
 title: Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure
-description: Ten artykuł zawiera omówienie sposobu korzystania z rozwiązania Update Management w usłudze Azure Automation w celu zarządzania aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure z systemem Windows.
+description: Ten artykuł zawiera omówienie sposobu używania Update Management Azure Automation do zarządzania aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure i innych niż platformy Azure.
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469733"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278778"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure
 
@@ -51,15 +51,15 @@ Najpierw na maszynie wirtualnej używanej w tym samouczku włącz rozwiązanie U
 1. Wybierz maszynę wirtualną, dla której chcesz włączyć Update Management.
 1. Na stronie maszyny wirtualnej w obszarze **OPERACJE** wybierz pozycję **Update Management**. Zostanie wyświetlone okienko **Włączanie rozwiązania Update Management**.
 
-Jest przeprowadzana walidacja w celu ustalenia, czy rozwiązanie Update Management zostało włączone dla tej maszyny wirtualnej. Ta walidacja obejmuje kontrole obszaru roboczego usługi Azure Log Analytics i powiązanego konta usługi Automation i tego, czy rozwiązanie Update Management znajduje się w obszarze roboczym.
+Jest przeprowadzana walidacja w celu ustalenia, czy rozwiązanie Update Management zostało włączone dla tej maszyny wirtualnej. To sprawdzenie poprawności obejmuje sprawdzanie Log Analytics obszaru roboczego i połączonego konta usługi Automation oraz tego, czy rozwiązanie Update Management jest włączone w obszarze roboczym.
 
-Obszar roboczy usługi [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) służy do zbierania danych generowanych przez funkcje i usługi, takie jak rozwiązanie Update Management. Obszar roboczy zawiera pojedynczą lokalizację do przeglądania i analizowania danych z wielu źródeł.
+Obszar roboczy usługi [Log Analytics](../azure-monitor/platform/data-platform-logs.md) służy do zbierania danych generowanych przez funkcje i usługi, takie jak rozwiązanie Update Management. Obszar roboczy zawiera pojedynczą lokalizację do przeglądania i analizowania danych z wielu źródeł.
 
-Proces walidacji sprawdza również, czy maszyna wirtualna jest aprowizowana za pomocą programu Microsoft Monitoring Agent (MMA) i hybrydowego procesu roboczego elementu Runbook usługi Automation. Ten agent jest używany do komunikacji z usługą Azure Automation i uzyskiwania informacji dotyczących stanu aktualizacji. Agent wymaga otwartego portu 443 w celu komunikowania się z usługą Azure Automation oraz pobierania aktualizacji.
+Proces walidacji sprawdza również, czy maszyna wirtualna jest obsługiwana za pomocą agenta Log Analytics i hybrydowego procesu roboczego elementu Runbook usługi Automation. Ten agent jest używany do komunikacji z usługą Azure Automation i uzyskiwania informacji dotyczących stanu aktualizacji. Agent wymaga otwartego portu 443 w celu komunikowania się z usługą Azure Automation oraz pobierania aktualizacji.
 
 Jeśli którekolwiek z następujących wymagań wstępnych nie będzie występować podczas dołączania, zostanie ono automatycznie dołączone:
 
-* Obszar roboczy usługi [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)
+* Obszar roboczy usługi [Log Analytics](../azure-monitor/platform/data-platform-logs.md)
 * [Konto usługi Automation](./automation-offering-get-started.md)
 * [Hybrydowy proces roboczy elementu Runbook](./automation-hybrid-runbook-worker.md) (włączony na maszynie wirtualnej)
 
@@ -71,9 +71,9 @@ Włączanie rozwiązania może potrwać kilka minut. W tym czasie nie należy za
 
 ## <a name="view-update-assessment"></a>Wyświetlanie oceny aktualizacji
 
-Po włączeniu rozwiązania Update Management zostanie otwarte okienko **Update Management**. Jeśli brakuje jakichkolwiek aktualizacji, ich listę można znaleźć na karcie **Brakujące aktualizacje**.
+Po włączeniu rozwiązania Update Management zostanie otwarte okienko **Update Management**. Jeśli jakieś aktualizacje zostały zidentyfikowane jako brakujące, na karcie **brakujące aktualizacje** zostanie wyświetlona lista brakujących aktualizacji.
 
-W obszarze **LINK DO INFORMACJI** wybierz link do aktualizacji, aby otworzyć artykuł pomocy technicznej dotyczący aktualizacji w nowym oknie. W tym oknie możesz znaleźć ważne informacje dotyczące aktualizacji.
+W obszarze **link do informacji**wybierz łącze Aktualizuj, aby otworzyć artykuł pomocy technicznej dla aktualizacji. Możesz poznać ważne informacje o aktualizacji.
 
 ![Wyświetlanie stanu aktualizacji](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 

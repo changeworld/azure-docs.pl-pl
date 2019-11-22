@@ -1,6 +1,6 @@
 ---
-title: Inspekcja i raportowanie użytkownik współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Właściwości użytkownika gościa są konfigurowane we współpracy B2B usługi Azure Active Directory
+title: Inspekcja i raportowanie użytkownika współpracy B2B — Azure AD
+description: Właściwości użytkownika gościa można konfigurować w Azure Active Directory współpracy B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,32 +12,32 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 506721a23a5a18eaea76efaca61df49f20dc9228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812465"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273297"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Inspekcja i raportowanie użytkownika współpracy B2B
-Użytkownicy-goście masz inspekcji funkcje podobne do użytkowników. 
+Użytkownicy-Goście mają możliwość inspekcji, podobnie jak w przypadku użytkowników będących członkami. 
 
 ## <a name="access-reviews"></a>Przeglądy dostępu
-Przeglądy dostępu umożliwia okresowo sprawdzać, czy użytkownicy-goście nadal potrzebują dostępu do zasobów. **Przeglądów dostępu** funkcja jest dostępna w **usługi Azure Active Directory** w obszarze **Zarządzaj** > **relacjeworganizacji**. (Możesz również wyszukać "przeglądów dostępu" z **wszystkich usług** w witrynie Azure portal.) Aby dowiedzieć się, jak używać przeglądów dostępu, zobacz [przeglądy zarządzanie dostępem gości za pomocą usługi Azure AD access](../governance/manage-guest-access-with-access-reviews.md).
+Za pomocą przeglądów dostępu można okresowo weryfikować, czy użytkownicy-Goście nadal potrzebują dostępu do zasobów. Funkcja **przeglądy dostępu** jest dostępna w **Azure Active Directory** w obszarze **Zarządzaj** > **relacje organizacyjne**. (Możesz również wyszukać "przeglądy dostępu" ze **wszystkich usług** w Azure Portal). Aby dowiedzieć się, jak korzystać z przeglądów dostępu, zobacz [Zarządzanie dostępem gościa za pomocą przeglądów dostępu w usłudze Azure AD](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
-Inspekcja usługi Azure AD dzienniki dostarczają informacji na temat działania systemu i użytkownika, w tym działania zainicjowane przez użytkowników-gości. Uzyskiwanie dostępu do dzienników inspekcji w **usługi Azure Active Directory**w obszarze **monitorowanie**, wybierz opcję **dzienniki inspekcji**. Oto przykład zaproszenie i realizacji historii użytkownika osoby zaproszonej Sam Oogle:
+Dzienniki inspekcji usługi Azure AD zawierają rekordy działań systemowych i użytkowników, w tym działania zainicjowane przez użytkowników-Gości. Aby uzyskać dostęp do dzienników inspekcji, w **Azure Active Directory**w obszarze **monitorowanie**wybierz pozycję **dzienniki inspekcji**. Oto przykład zaproszenia i historii umorzenia zaproszonego użytkownika oogle:
 
-![Zrzut ekranu przedstawiający i przykład inspekcji dziennika danych wyjściowych](./media/auditing-and-reporting/audit-log.png)
+![Zrzut ekranu przedstawiający przykładowe dane wyjściowe dziennika inspekcji](./media/auditing-and-reporting/audit-log.png)
 
-Możesz od razu do każdego z tych zdarzeń, aby uzyskać szczegóły. Na przykład Przyjrzyjmy się szczegóły zatwierdzenia.
+Aby uzyskać szczegółowe informacje, możesz szczegółowe do każdego z tych zdarzeń. Na przykład przyjrzyjmy się szczegółom akceptacji.
 
-![Zrzut ekranu przedstawiający i przykład danych wyjściowych szczegóły działania](./media/auditing-and-reporting/activity-details.png)
+![Zrzut ekranu przedstawiający przykładowe dane wyjściowe dotyczące działania](./media/auditing-and-reporting/activity-details.png)
 
-Można również wyeksportować te dzienniki z usługi Azure AD i uzyskiwanie dostosowanych raportów za pomocą narzędzia raportowania wybranych przez użytkownika.
+Możesz również wyeksportować te dzienniki z usługi Azure AD i użyć wybranego narzędzia do raportowania, aby uzyskać raporty niestandardowe.
 
-### <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Następne kroki
 
 - [B2B collaboration user properties (Właściwości użytkowników współpracy B2B)](user-properties.md)
 

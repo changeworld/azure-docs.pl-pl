@@ -12,18 +12,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: c6df50db564dac09785b460d158d4276ea8a215e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941382"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271251"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnozowanie błędów za pomocą połączonej usługi Azure Active Directory
 
-Podczas wykrywania poprzedniego kodu uwierzytelniania serwer programu Azure Active Directory Connect wykrył niezgodny typ uwierzytelniania.
+Podczas wykrywania poprzedniego kodu uwierzytelniania usługa połączona Azure Active Directory wykryła niezgodny typ uwierzytelniania.
 
-Aby poprawnie wykryć poprzedni kod uwierzytelniania w projekcie, należy skompilować projekt.  Jeśli widzisz ten błąd i nie masz poprzedniego kodu uwierzytelniania w projekcie, Odbuduj i spróbuj ponownie.
+Aby poprawnie wykryć poprzedni kod uwierzytelniania w projekcie, należy ponownie skompilować projekt. Jeśli widzisz ten błąd i nie masz poprzedniego kodu uwierzytelniania w projekcie, Odbuduj i spróbuj ponownie.
 
 ## <a name="project-types"></a>Typy projektów
 

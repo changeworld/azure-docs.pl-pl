@@ -1,27 +1,27 @@
 ---
-title: Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwic | Dokumentacja firmy Microsoft
+title: Tworzenie & lokalizowania kotwic
 description: Szczegółowe objaśnienie tworzenia i znajdowania kotwic przy użyciu usługi Azure Spatial Anchors.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bbb2eb6cca09c496328d35e075b7d2e548898b4c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964737"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270457"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwic
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Jak utworzyć i zlokalizować kotwice przy użyciu kotwic przestrzennych platformy Azure
 
 Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami.
 
-Obsługuje ona kilka różne środowiska projektowania.
+Obsługuje kilka różnych środowisk programistycznych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej, kontynuuj, wybierając swoje środowisko deweloperskie:
 
 > [!div class="nextstepaction"]

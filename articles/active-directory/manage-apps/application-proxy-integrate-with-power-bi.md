@@ -1,5 +1,5 @@
 ---
-title: Włączanie dostępu zdalnego do Power BI za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD | Microsoft Docs
+title: Włączanie dostępu zdalnego do Power BI przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 description: Obejmuje podstawowe informacje na temat sposobu integrowania Power BI lokalnego z usługą Azure serwer proxy aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795623"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275521"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Włączanie dostępu zdalnego do Power BI Mobile przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -37,7 +37,7 @@ W tym artykule przyjęto założenie, że już wdrożono usługi raportów i [w�
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>Krok 1. Konfigurowanie ograniczonego delegowania protokołu Kerberos (KCD)
 
-W przypadku aplikacji lokalnych, które używają uwierzytelniania systemu Windows, można uzyskać Logowanie jednokrotne z użyciem protokołu uwierzytelniania Kerberos i funkcji o nazwie ograniczone delegowanie protokołu Kerberos (KCD). Po skonfigurowaniu KCD umożliwia łącznikowi serwera proxy aplikacji uzyskanie tokenu systemu Windows dla użytkownika, nawet jeśli użytkownik nie zalogował się bezpośrednio do systemu Windows. Aby dowiedzieć się więcej o KCD, zobacz [Omówienie delegowania ograniczonego protokołu Kerberos](https://technet.microsoft.com/library/jj553400.aspx) i [ograniczone delegowanie protokołu Kerberos na potrzeby logowania jednokrotnego do aplikacji przy użyciu serwera proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).
+Aplikacje lokalne, które korzystają z uwierzytelniania Windows można osiągnąć logowania jednokrotnego (SSO) przy użyciu protokołu uwierzytelniania Kerberos i funkcję ograniczonego delegowania protokołu Kerberos (KCD). Po skonfigurowaniu KCD umożliwia łącznikowi serwera proxy aplikacji uzyskanie tokenu systemu Windows dla użytkownika, nawet jeśli użytkownik nie zalogował się bezpośrednio do systemu Windows. Aby dowiedzieć się więcej o KCD, zobacz [Omówienie delegowania ograniczonego protokołu Kerberos](https://technet.microsoft.com/library/jj553400.aspx) i [ograniczone delegowanie protokołu Kerberos na potrzeby logowania jednokrotnego do aplikacji przy użyciu serwera proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).
 
 Nie ma dużo do skonfigurowania po stronie usług Reporting Services. Upewnij się, że masz prawidłową główną nazwę usługi (SPN), aby umożliwić prawidłowe uwierzytelnianie Kerberos. Upewnij się również, że serwer usług Reporting Services obsługuje uwierzytelnianie negocjowane.
 
@@ -63,14 +63,14 @@ Aby umożliwić serwerowi raportów używanie uwierzytelniania Kerberos, należy
 Aby uzyskać więcej informacji, zobacz [Modyfikowanie pliku konfiguracji usług Reporting Services](https://msdn.microsoft.com/library/bb630448.aspx) i [Konfigurowanie uwierzytelniania systemu Windows na serwerze raportów](https://msdn.microsoft.com/library/cc281253.aspx).
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Upewnij się, że łącznik jest zaufany do delegowania do nazwy SPN dodanej do konta puli aplikacji usług Reporting Services
-Skonfiguruj KCD tak, aby usługa Azure serwer proxy aplikacji usługi Azure AD mogła delegować tożsamości użytkowników do konta puli aplikacji usług Reporting Services. Skonfiguruj KCD przez włączenie łącznika serwera proxy aplikacji w celu pobrania biletów Kerberos dla użytkowników uwierzytelnionych w usłudze Azure AD. Następnie serwer przekazuje kontekst do aplikacji docelowej lub usług Reporting Services w tym przypadku.
+Skonfiguruj KCD tak, aby usługa Azure serwer proxy aplikacji usługi Azure AD mogła delegować tożsamości użytkowników do konta puli aplikacji usług Reporting Services. Konfigurowanie ograniczonego delegowania protokołu Kerberos, włączając łącznik serwera Proxy aplikacji pobrać bilety protokołu Kerberos dla użytkowników, którzy zostali uwierzytelnieni w usłudze Azure AD. Następnie serwer przekazuje kontekst do aplikacji docelowej lub usług Reporting Services w tym przypadku.
 
 Aby skonfigurować KCD, powtórz następujące kroki dla każdej maszyny łącznika:
 
 1. Zaloguj się do kontrolera domeny jako administrator domeny, a następnie otwórz **Active Directory Użytkownicy i komputery**.
-2. Znajdź komputer, na którym jest uruchomiony łącznik.  
+2. Znajdź komputera, na którym jest zasilany z łącznika.  
 3. Kliknij dwukrotnie komputer, a następnie wybierz kartę **delegowanie** .
-4. Ustaw ustawienia delegowania, aby **ufać temu komputerowi w delegowaniu tylko do określonych usług**. Następnie wybierz opcję **Użyj dowolnego protokołu uwierzytelniania**.
+4. Ustaw ustawienia delegowania, aby **ufać temu komputerowi w delegowaniu tylko do określonych usług**. Następnie wybierz **Użyj dowolnego protokołu uwierzytelniania**.
 5. Wybierz pozycję **Dodaj**, a następnie wybierz pozycję **Użytkownicy lub komputery**.
 6. Wprowadź konto usługi używane dla usług Reporting Services. Jest to konto, do którego dodano nazwę SPN w ramach konfiguracji usług Reporting Services.
 7. Kliknij przycisk **OK**. Aby zapisać zmiany, kliknij przycisk **OK** ponownie.
@@ -89,17 +89,17 @@ Teraz możesz przystąpić do konfigurowania serwer proxy aplikacji usługi Azur
 
    - **Metoda wstępnego uwierzytelniania**: Azure Active Directory
 
-2. Po opublikowaniu aplikacji Skonfiguruj ustawienia logowania jednokrotnego, wykonując następujące czynności:
+2. Po opublikowaniu aplikacji pojedynczego ustawień logowania jednokrotnego należy skonfigurować następujące czynności:
 
-   a. Na stronie aplikacji w portalu wybierz pozycję **Logowanie jednokrotne**.
+   a. Na stronie aplikacji w portalu wybierz **logowanie jednokrotne**.
 
    b. W przypadku **trybu logowania**jednokrotnego wybierz pozycję **zintegrowane uwierzytelnianie systemu Windows**.
 
    d. Ustaw **nazwę SPN aplikacji wewnętrznej** na ustawioną wcześniej wartość.  
 
-   d. Wybierz **delegowaną tożsamość logowania** dla łącznika, który ma być używany w imieniu użytkowników. Aby uzyskać więcej informacji, zobacz [Praca z różnymi tożsamościami lokalnymi i w chmurze](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Wybierz **delegowana tożsamość logowania** dla łącznika do używania w imieniu użytkowników. Aby uzyskać więcej informacji, zobacz [Praca z różnymi tożsamościami lokalnymi i w chmurze](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Kliknij przycisk **Zapisz** , aby zapisać zmiany.
+   e. Kliknij przycisk **Zapisz** Aby zapisać zmiany.
 
 Aby zakończyć konfigurowanie aplikacji, przejdź do sekcji **Użytkownicy i grupy** i przypisz użytkownikom dostęp do tej aplikacji.
 

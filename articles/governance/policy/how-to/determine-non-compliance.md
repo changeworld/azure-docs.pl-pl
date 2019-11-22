@@ -3,12 +3,12 @@ title: Ustalanie przyczyn niezgodności
 description: Jeśli zasób nie jest zgodny, istnieje wiele możliwych przyczyn. Dowiedz się, co spowodowało niezgodność.
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6f113080ab84fe7d159766e6543ff61b28f4ead2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 839e6c61c4a44ba7c7581290408bb997b53b8f96
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959611"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279415"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -123,7 +123,7 @@ Na stronie **przypisanie gościa** są wyświetlane wszystkie dostępne szczegó
 
 ![Wyświetl szczegóły zgodności](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Możesz również wyświetlić szczegóły zgodności z Azure PowerShell. Najpierw upewnij się, że moduł konfiguracji gościa jest zainstalowany.
 
@@ -216,6 +216,6 @@ Dane historii zmian są udostępniane przez [usługę Azure Resource Graph](../.
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](get-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

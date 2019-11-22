@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Azure Resource Manager dla zestawu skalowania maszyn wirtualnych z systemem Windows
+title: Zbieranie metryk zestawu skalowania systemu Windows w Azure Monitor z szablonem
 description: Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Menedżer zasobów dla zestawu skalowania maszyn wirtualnych z systemem Windows
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844972"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286133"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Azure Resource Manager dla zestawu skalowania maszyn wirtualnych z systemem Windows
 
@@ -52,7 +52,7 @@ Otwórz plik **azuredeploy. Parameters. JSON** :
 - Określ **windowsOSVersion** dla zestawu skalowania maszyn wirtualnych. Zalecamy 2016 — centrum danych. 
 - Nazwij zasób zestawu skalowania maszyn wirtualnych, który ma zostać wdrożony za pomocą właściwości **vmssName** . Przykładem jest **VMSS-funkcji wad-test**.    
 - Określ liczbę maszyn wirtualnych, które mają być uruchamiane w zestawie skalowania maszyn wirtualnych za pomocą właściwości **instanceCount** .
-- Wprowadź wartości dla **adminUsername** i **adminPassword** dla zestawu skalowania maszyn wirtualnych. Te parametry są używane na potrzeby dostępu zdalnego do maszyn wirtualnych w zestawie skalowania. Aby uniknąć przejęcia maszyny wirtualnej, nie należy używać tych elementów w tym szablonie. Botów Skanuj Internet pod kątem nazw użytkowników i haseł w publicznych repozytoriach usługi GitHub. Te wartości domyślne mogą testować maszyny wirtualne. 
+- Wprowadź wartości dla **adminUsername** i **adminPassword** dla zestawu skalowania maszyn wirtualnych. Te parametry są używane na potrzeby dostępu zdalnego do maszyn wirtualnych w zestawie skalowania. Aby uniknąć przejęcia maszyny **wirtualnej, nie należy używać** tych elementów w tym szablonie. Botów Skanuj Internet pod kątem nazw użytkowników i haseł w publicznych repozytoriach usługi GitHub. Te wartości domyślne mogą testować maszyny wirtualne. 
 
 
 ###  <a name="modify-azuredeployjson"></a>Modyfikuj plik azuredeploy. JSON
@@ -239,8 +239,8 @@ Zapisz i zamknij oba pliki.
 Aby wdrożyć szablon Menedżer zasobów, użyj Azure PowerShell:  
 
 1. Uruchom program PowerShell. 
-1. Zaloguj się do platformy Azure `Login-AzAccount`przy użyciu.
-1. Zapoznaj się z listą subskrypcji `Get-AzSubscription`, korzystając z programu.
+1. Zaloguj się do platformy Azure przy użyciu `Login-AzAccount`.
+1. Zapoznaj się z listą subskrypcji, używając `Get-AzSubscription`.
 1. Ustaw subskrypcję, którą utworzysz, lub zaktualizuj maszynę wirtualną: 
 
    ```powershell
@@ -286,7 +286,7 @@ Aby wdrożyć szablon Menedżer zasobów, użyj Azure PowerShell:
 
 1. W menu rozwijanym obszary nazw wybierz pozycję **Azure. VM. Windows. gość**. 
 
-1. Z menu rozwijanego metryk wybierz pozycję **pamięć\%zadeklarowane bajty w użyciu**.  
+1. W menu rozwijanym metryk wybierz opcję **pamięć\%zadeklarowane bajty w użyciu**.  
 
 Następnie można również użyć wymiarów tej metryki do wykresu dla określonej maszyny wirtualnej lub wykreślić każdą maszynę wirtualną w zestawie skalowania. 
 

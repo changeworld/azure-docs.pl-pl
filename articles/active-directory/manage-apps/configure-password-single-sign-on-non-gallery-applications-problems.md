@@ -1,6 +1,6 @@
 ---
-title: Problemy z konfigurowaniem hasło logowania jednokrotnego dla aplikacji spoza galerii | Dokumentacja firmy Microsoft
-description: Typowe problemy występujące podczas konfigurowania hasła logowania jednokrotnego (SSO) dotyczących niestandardowych aplikacji, które nie znajdują się w galerii aplikacji usługi Azure AD.
+title: Problemy z konfigurowaniem rejestracji jednokrotnej hasła dla aplikacji spoza galerii
+description: Typowe problemy występujące podczas konfigurowania logowania jednokrotnego (SSO) hasła dla aplikacji niestandardowych, które nie znajdują się w galerii aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -15,241 +15,241 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24330dc874173ba1c6f15abb7b4caf9f23e2e00c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440353"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274148"
 ---
-# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problemy z konfigurowaniem hasło logowania jednokrotnego dla aplikacji spoza galerii
+# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problemy z konfigurowaniem logowania jednokrotnego przy użyciu hasła dla aplikacji spoza galerii
 
-W tym artykule opisano typowe problemy, które mogą wystąpić podczas konfigurowania *hasło logowania jednokrotnego* (SSO) dla aplikacji spoza galerii.
+W tym artykule opisano typowe problemy, które mogą wystąpić podczas konfigurowania logowania jednokrotnego (SSO) *hasła* dla aplikacji spoza galerii.
 
-## <a name="capture-sign-in-fields-for-an-app"></a>Przechwyć pola logowania dla aplikacji
+## <a name="capture-sign-in-fields-for-an-app"></a>Przechwytywanie pól logowania dla aplikacji
 
-Przechwyć pola logowania jest obsługiwany tylko w przypadku komputerów z obsługą HTML strony logowania. To ma nieobsługiwany dla niestandardowej strony logowania, takich jak te używające programu Adobe Flash lub inne technologie włączone HTML.
+Przechwytywanie pola logowania jest obsługiwane tylko dla stron logowania z obsługą języka HTML. Nie jest to obsługiwane w przypadku stron logowania niestandardowych, takich jak te, które korzystają z programu Adobe Flash lub innych technologii z obsługą języka HTML.
 
-Istnieją dwa sposoby Przechwyć pola logowania w aplikacjach niestandardowych:
+Istnieją dwa sposoby przechwytywania pól logowania dla aplikacji niestandardowych:
 
-- **Automatyczne pól logowania przechwytywania** dobrze działa z większości włączone HTML strony logowania, *jeśli używają one dobrze znane identyfikatory DIV* dla pola nazwy i hasła użytkownika. HTML na stronie jest pozyskany znaleźć identyfikatorów DIV, spełniających określone kryteria. Metadane są zapisywane, aby go można odtworzyć aplikacji później.
+- **Automatyczne przechwytywanie pól logowania** działa dobrze z większością stron logowania obsługujących kod HTML, jeśli w polach Nazwa użytkownika i hasło *są używane dobrze znane identyfikatory DIV* . KOD HTML na stronie jest odpadków, aby znaleźć identyfikatory DIV, które pasują do określonych kryteriów. Metadane są zapisywane, dzięki czemu można je później odtworzyć do aplikacji.
 
-- **Ręczne pól logowania przechwytywania** jest używany, gdy dostawcy aplikacji *nie etykiety logowania pól wejściowych*. Ręczne Przechwytywanie jest też używana, jeśli dostawca *renderuje wielu pól, które nie mogą być wykrywane automatycznie*. Azure Active Directory (Azure AD) może przechowywać dane na dowolną liczbę pól istnieją na stronie logowania, jeśli użytkownik stwierdzenie, gdzie te pola znajdują się na stronie.
+- **Ręczne przechwytywanie pól logowania** jest używane, jeśli dostawca aplikacji *nie etykietuje pól danych wejściowych logowania*. Ręczne przechwytywanie jest również używane, jeśli dostawca *renderuje wiele pól, które nie mogą być wykrywane przez Autowykrywanie*. Azure Active Directory (Azure AD) mogą przechowywać dane dla tylu pól, które znajdują się na stronie logowania, Jeśli wiesz, gdzie te pola znajdują się na stronie.
 
-Ogólnie rzecz biorąc Jeśli przechwytywanie pól automatycznego logowania nie działa, spróbuj użyć opcji ręcznej.
+Ogólnie rzecz biorąc, jeśli automatyczne przechwytywanie pól logowania nie działa, wypróbuj opcję ręczną.
 
-### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Automatycznie Przechwyć pola logowania dla aplikacji
+### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Automatycznie Przechwytuj pola logowania dla aplikacji
 
-Aby skonfigurować opartego na hasłach logowania jednokrotnego przy użyciu przechwytywania pól automatycznego logowania, wykonaj następujące kroki:
+Aby skonfigurować Logowanie jednokrotne oparte na haśle przy użyciu automatycznego przechwytywania pól logowania, wykonaj następujące czynności:
 
-1. Otwórz [portal Azure](https://portal.azure.com/). Zaloguj się jako administrator globalny lub współadministratora.
+1. Otwórz [portal Azure](https://portal.azure.com/). Zaloguj się jako Administrator globalny lub współadministrator.
 
-2. W okienku nawigacji po lewej stronie wybierz **wszystkich usług** do otwierania rozszerzenia usługi Azure AD.
+2. W okienku nawigacji po lewej stronie wybierz pozycję **wszystkie usługi** , aby otworzyć rozszerzenie usługi Azure AD.
 
-3. Typ **usługi Azure Active Directory** w filtru pole wyszukiwania, a następnie wybierz **usługi Azure Active Directory**.
+3. Wpisz **Azure Active Directory** w polu wyszukiwania filtru, a następnie wybierz pozycję **Azure Active Directory**.
 
-4. Wybierz **aplikacje dla przedsiębiorstw** w okienku nawigacji usługi Azure AD.
+4. W okienku nawigacji usługi Azure AD wybierz pozycję **aplikacje dla przedsiębiorstw** .
 
-5. Wybierz **wszystkie aplikacje** Aby wyświetlić listę aplikacji.
+5. Wybierz pozycję **wszystkie aplikacje** , aby wyświetlić listę aplikacji.
 
    > [!NOTE]
-   > Jeśli nie widzisz aplikacji, które mają używać **filtru** formant w górnej części **wszystkie aplikacje** listy. Ustaw **Pokaż** opcję "Wszystkie aplikacje".
+   > Jeśli nie widzisz potrzebnej aplikacji, użyj kontrolki **filtru** w górnej części listy **wszystkie aplikacje** . Dla opcji **Pokaż** wybierz wartość "wszystkie aplikacje".
 
-6. Wybierz aplikację, którą chcesz skonfigurować na potrzeby logowania jednokrotnego.
+6. Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7. Po załadowaniu aplikacji wybierz **logowanie jednokrotne** w okienku nawigacji po lewej stronie.
+7. Po załadowaniu aplikacji wybierz pozycję **Logowanie** jednokrotne w okienku nawigacji po lewej stronie.
 
-8. Wybierz **opartego na hasłach logowania jednokrotnego** trybu.
+8. Wybierz tryb **logowania opartego na hasłach** .
 
-9. Wprowadź **adres URL logowania**, czyli adres URL strony, gdzie użytkownicy wprowadzają swoje nazwy użytkownika i hasła do logowania. *Upewnij się, że pola logowania są widoczne na stronie dla adresu URL, który możesz udostępnić*.
+9. Wprowadź **adres URL logowania**, czyli adres URL strony, na której użytkownicy wprowadzają nazwę użytkownika i hasło, aby się zalogować. *Upewnij się, że pola logowania są widoczne na stronie dla podania adresu URL*.
 
 10. Wybierz pozycję **Zapisz**.
 
-    Strona jest automatycznie pozyskany dla użytkownika nazwy i hasła pól wejściowych. Można teraz używać usługi Azure AD na bezpieczne przesyłanie haseł do tej aplikacji przy użyciu rozszerzenia przeglądarki panelu dostępu.
+    Ta strona jest automatycznie odpadków dla pól wejściowych nazwy użytkownika i hasła. Możesz teraz używać usługi Azure AD do bezpiecznego przesyłania haseł do tej aplikacji przy użyciu rozszerzenia przeglądarki panelu dostępu.
 
-### <a name="manually-capture-sign-in-fields-for-an-app"></a>Ręcznie Przechwyć pola logowania dla aplikacji
+### <a name="manually-capture-sign-in-fields-for-an-app"></a>Ręczne przechwytywanie pól logowania dla aplikacji
 
-Aby ręcznie Przechwyć pola logowania, musisz mieć zainstalowane rozszerzenie przeglądarki panelu dostępu. Ponadto przeglądarka nie może być uruchomiona *inPrivate*, *incognito*, lub *prywatnej* trybu.
+Aby ręcznie przechwycić pola logowania, musisz mieć zainstalowane rozszerzenie przeglądarki panelu dostępu. Ponadto przeglądarka nie może działać w trybie *InPrivate*, *incognito*lub *prywatnym* .
 
-Aby zainstalować rozszerzenie, zobacz [zainstalować rozszerzenie przeglądarki panelu dostępu](#install-the-access-panel-browser-extension) dalszej części tego artykułu.
+Aby zainstalować rozszerzenie, zobacz sekcję [Instalowanie rozszerzenia przeglądarki panelu dostępu](#install-the-access-panel-browser-extension) w tym artykule.
 
-Aby skonfigurować opartego na hasłach logowania jednokrotnego dla aplikacji przy użyciu przechwytywania ręczne pól logowania, wykonaj następujące kroki:
+Aby skonfigurować Logowanie jednokrotne na podstawie hasła dla aplikacji przy użyciu funkcji ręcznego rejestrowania pól logowania, wykonaj następujące czynności:
 
-1. Otwórz [portal Azure](https://portal.azure.com/). Zaloguj się jako administrator globalny lub współadministratora.
+1. Otwórz [portal Azure](https://portal.azure.com/). Zaloguj się jako Administrator globalny lub współadministrator.
 
-2. W okienku nawigacji po lewej stronie wybierz **wszystkich usług** do otwierania rozszerzenia usługi Azure AD.
+2. W okienku nawigacji po lewej stronie wybierz pozycję **wszystkie usługi** , aby otworzyć rozszerzenie usługi Azure AD.
 
-3. Typ **usługi Azure Active Directory** w filtru pole wyszukiwania, a następnie wybierz **usługi Azure Active Directory**.
+3. Wpisz **Azure Active Directory** w polu wyszukiwania filtru, a następnie wybierz pozycję **Azure Active Directory**.
 
-4. Wybierz **aplikacje dla przedsiębiorstw** w okienku nawigacji usługi Azure AD.
+4. W okienku nawigacji usługi Azure AD wybierz pozycję **aplikacje dla przedsiębiorstw** .
 
-5. Wybierz **wszystkie aplikacje** Aby wyświetlić listę aplikacji.
+5. Wybierz pozycję **wszystkie aplikacje** , aby wyświetlić listę aplikacji.
 
    > [!NOTE] 
-   > Jeśli nie widzisz aplikacji, które mają używać **filtru** formant w górnej części **wszystkie aplikacje** listy. Ustaw **Pokaż** opcję "Wszystkie aplikacje".
+   > Jeśli nie widzisz potrzebnej aplikacji, użyj kontrolki **filtru** w górnej części listy **wszystkie aplikacje** . Dla opcji **Pokaż** wybierz wartość "wszystkie aplikacje".
 
-6. Wybierz aplikację, którą chcesz skonfigurować na potrzeby logowania jednokrotnego.
+6. Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7. Po załadowaniu aplikacji wybierz **logowanie jednokrotne** w okienku nawigacji po lewej stronie.
+7. Po załadowaniu aplikacji wybierz pozycję **Logowanie** jednokrotne w okienku nawigacji po lewej stronie.
 
-8. Wybierz **opartego na hasłach logowania jednokrotnego** trybu.
+8. Wybierz tryb **logowania opartego na hasłach** .
 
-9. Wprowadź **adres URL logowania**, czyli strony, gdzie użytkownicy wprowadzają swoje nazwy użytkownika i hasła do logowania. *Upewnij się, że pola logowania są widoczne na stronie dla adresu URL, który możesz udostępnić*.
+9. Wprowadź **adres URL logowania**, który jest stroną, w której użytkownicy wprowadzają nazwę użytkownika i hasło w celu zalogowania się. *Upewnij się, że pola logowania są widoczne na stronie dla podania adresu URL*.
 
-10. Wybierz **Konfiguruj *&lt;appname&gt;* jednego hasła ustawień logowania jednokrotnego**.
+10. Wybierz pozycję **konfiguruj *&lt;nazwa_aplikacji&gt;* ustawienia logowania**jednokrotnego hasła.
 
-11. Wybierz **ręcznie Wykryj pola logowania**.
+11. Wybierz pozycję **ręcznie Wykryj pola logowania**.
 
 14. Wybierz przycisk **OK**.
 
 15. Wybierz pozycję **Zapisz**.
 
-16. Postępuj zgodnie z instrukcjami, aby za pomocą panelu dostępu.
+16. Postępuj zgodnie z instrukcjami, aby użyć panelu dostępu.
 
 ## <a name="troubleshoot-problems"></a>Rozwiązywanie problemów
 
-### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Otrzymuję błąd "Nie znaleziono żadnych pól logowania pod tym adresem URL"
+### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Otrzymuję komunikat o błędzie "nie można znaleźć pól logowania przy użyciu tego adresu URL"
 
-Otrzymujesz ten komunikat o błędzie, gdy automatyczne wykrywanie pól logowania nie powiodło się. Aby rozwiązać ten problem, spróbuj ręcznego pól logowania wykrywania. Zobacz [ręcznie Przechwyć pola logowania dla aplikacji](#manually-capture-sign-in-fields-for-an-app) dalszej części tego artykułu.
+Ten komunikat o błędzie jest wyświetlany, gdy automatyczne wykrywanie pól logowania zakończy się niepowodzeniem. Aby rozwiązać ten problem, spróbuj ręcznie wykryć pola logowania. Zobacz [Ręczne przechwytywanie pól logowania dla aplikacji w](#manually-capture-sign-in-fields-for-an-app) tym artykule.
 
-### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>Czy mogę uzyskać "Nie można zapisać konfiguracji rejestracji jednokrotnej" Błąd
+### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>Otrzymuję błąd "nie można zapisać konfiguracji logowania jednokrotnego"
 
-Rzadko Trwa aktualizowanie konfiguracji logowania jednokrotnego nie powiedzie się. Aby rozwiązać ten problem, spróbuj zapisać ponownie konfigurację.
+Sporadycznie aktualizowanie konfiguracji logowania jednokrotnego kończy się niepowodzeniem. Aby rozwiązać ten problem, spróbuj ponownie zapisać konfigurację.
 
-Jeśli nadal jest wyświetlany błąd, należy otworzyć zgłoszenie do pomocy technicznej. Zawierają informacje, które jest opisane w [szczegółowe powiadomienia portalu](#view-portal-notification-details) i [wysłać szczegóły powiadomienia z inżynierem pomocy technicznej, aby uzyskać Pomoc](#send-notification-details-to-a-support-engineer-to-get-help) sekcjach tego artykułu.
+Jeśli wystąpi błąd, Otwórz zgłoszenie do pomocy technicznej. Zapoznaj się z informacjami opisanymi w sekcji [Wyświetl szczegóły powiadomień portalu](#view-portal-notification-details) i [Wyślij szczegóły powiadomienia do inżyniera pomocy technicznej, aby uzyskać pomoc dotyczącą](#send-notification-details-to-a-support-engineer-to-get-help) części tego artykułu.
 
-### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Pola logowania nie można ręcznie Wykryj dla mojej aplikacji
+### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Nie mogę ręcznie wykryć pól logowania dla mojej aplikacji
 
-Podczas ręcznego wykrywania nie działa, może obserwować następujące zachowania:
+Podczas ręcznego wykrywania nie działa następujące zachowania:
 
-- Proces przechwytywania ręczne pojawiły się do pracy, ale przechwyconych pola nie są poprawne.
+- Proces przechwytywania ręcznego okazał się działał, ale przechwycone pola są nieprawidłowe.
 
-- Nie uzyskać wyróżnione odpowiednich pól, podczas uruchamiania procesu przechwytywania.
+- Poprawne pola nie są wyróżniane podczas uruchamiania procesu przechwytywania.
 
-- Proces przechwytywania spowoduje przejście do strony logowania w aplikacji zgodnie z oczekiwaniami, ale nic się nie dzieje.
+- Proces przechwytywania przenosi do strony logowania aplikacji zgodnie z oczekiwaniami, ale nic się nie dzieje.
 
-- Ręczne Przechwytywanie wydaje się działać, ale logowania jednokrotnego nie się zdarzyć, gdy użytkownicy przejdą do aplikacji z poziomu panelu dostępu.
+- Ręczne przechwytywanie będzie prawdopodobnie działało, ale Logowanie jednokrotne nie odbywa się, gdy użytkownicy przechodzą do aplikacji z poziomu panelu dostępu.
 
-Jeśli wystąpi dowolne z tych problemów, wykonaj następujące czynności:
+Jeśli występują jakieś problemy, wykonaj następujące czynności:
 
-- Upewnij się, że masz najnowszą wersję rozszerzenie przeglądarki panelu dostępu *zainstalowane i włączone*. Zobacz [zainstalować rozszerzenie przeglądarki panelu dostępu](#install-the-access-panel-browser-extension) dalszej części tego artykułu.
+- Upewnij się, że masz *zainstalowaną i włączoną*najnowszą wersję rozszerzenia przeglądarki panelu dostępu. Zobacz sekcję [Instalowanie rozszerzenia przeglądarki panelu dostępu](#install-the-access-panel-browser-extension) w tym artykule.
 
-- Upewnij się, że przeglądarka nie znajduje się w *incognito*, *inPrivate*, lub *prywatnej* trybu w procesie przechwytywania. Rozszerzenie panelu dostępu nie jest obsługiwane w tych trybach.
+- Upewnij się, że w trakcie procesu przechwytywania przeglądarka nie jest w trybie *incognito*, *InPrivate*lub *Private* . Rozszerzenie panelu dostępu nie jest obsługiwane w tych trybach.
 
-- Upewnij się, że użytkownicy nie są próby Zaloguj się do aplikacji za pomocą panelu dostępu podczas w *incognito*, *inPrivate*, lub *trybie prywatnym*.
+- Upewnij się, że użytkownicy nie próbują zalogować się do aplikacji z poziomu panelu dostępu w trybie *incognito*, *InPrivate*lub *Private*.
 
-- Spróbuj ponownie proces przechwytywania ręczne. Upewnij się, że czerwone znaczniki są w polach prawidłowy.
+- Spróbuj ponownie wykonać ręczną procedurę przechwytywania. Upewnij się, że czerwone znaczniki znajdują się nad poprawnymi polami.
 
-- Jeśli proces przechwytywania ręczne wydaje się, że przestanie odpowiadać lub przestaje odpowiadać strony logowania, spróbuj ponownie proces przechwytywania ręczne. Jednak tym razem po ukończeniu procesu, naciśnij klawisz F12, aby otworzyć konsolę dla deweloperów w przeglądarce. Wybierz **konsoli** kartę. Typ **window.location= " *&lt;logowania adres URL, który zostały określone podczas konfigurowania aplikacji&gt;* "** , a następnie naciśnij klawisz Enter. Wymusza przekierowanie strony, która kończy proces przechwytywania i przechowuje pola, które zostały przechwycone.
+- Jeśli proces przechwytywania ręcznego wydaje się przestać odpowiadać lub strona logowania nie odpowiada, spróbuj ponownie wykonać ręczną procedurę przechwytywania. Ale tym razem po zakończeniu procesu naciśnij klawisz F12, aby otworzyć konsolę dewelopera przeglądarki. Wybierz kartę **konsola** . Wpisz **window. location = " *&lt;adres URL logowania określony podczas konfigurowania aplikacji&gt;* "** , a następnie naciśnij klawisz ENTER. Powoduje to wymuszenie przekierowania strony kończącego proces przechwytywania i przechowywania przechwyconych pól.
 
-### <a name="contact-support"></a>Skontaktuj się z pomocą techniczną
+### <a name="contact-support"></a>Kontakt z pomocą techniczną
 
-Jeśli problemy wciąż występują, otwórz przypadek, z Microsoft Support. Opisz, co próbujesz zrobić. Zawierają szczegółowe informacje, które są opisane w [szczegółowe powiadomienia portalu](#view-portal-notification-details) i [wysłać szczegóły powiadomienia z inżynierem pomocy technicznej, aby uzyskać Pomoc](#send-notification-details-to-a-support-engineer-to-get-help) sekcjach tego artykułu (jeśli dotyczy).
+Jeśli nadal występują problemy, otwórz sprawę z pomoc techniczna firmy Microsoft. Opisz, co się stało. Dołącz szczegóły, które są opisane w [szczegółach powiadomienia portalu](#view-portal-notification-details) i [Wyślij szczegóły powiadomienia do inżyniera pomocy technicznej, aby uzyskać pomoc dotyczącą](#send-notification-details-to-a-support-engineer-to-get-help) sekcji tego artykułu (jeśli dotyczy).
 
 ## <a name="install-the-access-panel-browser-extension"></a>Zainstaluj rozszerzenie przeglądarki panelu dostępu
 
 Wykonaj następujące kroki:
 
-1. Otwórz [panelu dostępu](https://myapps.microsoft.com) w obsługiwanej przeglądarki. Zaloguj się do usługi Azure AD jako *użytkownika*.
+1. Otwórz [panel dostępu](https://myapps.microsoft.com) w obsługiwanej przeglądarce. Zaloguj się do usługi Azure AD jako *użytkownik*.
 
-2. Wybierz **logowania jednokrotnego hasła aplikacji** panelu dostępu.
+2. Wybierz pozycję **hasło — logowanie JEDNOkrotne** w panelu dostępu.
 
-3. Po wyświetleniu monitu, aby zainstalować oprogramowanie, wybierz **Zainstaluj teraz**.
+3. Po wyświetleniu monitu o zainstalowanie oprogramowania wybierz pozycję **Zainstaluj teraz**.
 
-4. Nastąpi przekierowanie do strony pobierania w przeglądarce. Możliwość **Dodaj** rozszerzenia.
+4. Nastąpi przekierowanie do strony pobierania w przeglądarce. Wybierz, aby **dodać** rozszerzenie.
 
-5. Po wyświetleniu monitu wybierz **Włącz** lub **Zezwalaj**.
+5. Jeśli zostanie wyświetlony monit, wybierz pozycję **Włącz** lub **Zezwalaj**.
 
 6. Po zakończeniu instalacji uruchom ponownie przeglądarkę.
 
-7. Zaloguj się do panelu dostępu. Zobacz, można otworzyć hasło logowania jednokrotnego z włączonym aplikacji.
+7. Zaloguj się do panelu dostępu. Sprawdź, czy możesz otworzyć aplikacje obsługujące Logowanie jednokrotne.
 
-Można również bezpośrednio pobrać rozszerzenia przeglądarki Chrome i Firefox za pomocą poniższych linków:
+Możesz również bezpośrednio pobrać rozszerzenie Browser dla przeglądarki Chrome i Firefox, korzystając z następujących linków:
 
 -   [Rozszerzenie panelu dostępu dla programu Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Rozszerzenie panelu dostępu w przeglądarce Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Rozszerzenie panelu dostępu Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="view-portal-notification-details"></a>Wyświetl szczegóły powiadomienia w portalu
+## <a name="view-portal-notification-details"></a>Wyświetl szczegóły powiadomień portalu
 
-Aby wyświetlić szczegółowe informacje o wszystkich powiadomień portalu, wykonaj następujące kroki:
+Aby wyświetlić szczegóły powiadomień portalu, wykonaj następujące kroki:
 
-1. Wybierz **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal.
+1. Wybierz ikonę **powiadomienia** (dzwonka) w prawym górnym rogu Azure Portal.
 
-2. Wybierz wszelkie powiadomienia, który pokazuje *błąd* stanu. (Mają czerwony znak "!".)
+2. Wybierz dowolne powiadomienie, które pokazuje stan *błędu* . (Mają czerwoną wartość "!").
 
    > [!NOTE]
-   > Nie można wybrać powiadomienia, które znajdują się w *pomyślnie* lub *w toku* stanu.
+   > Nie można wybrać powiadomień, które są w stanie " *powodzenie* " lub " *w toku* ".
 
-3. **Szczegóły powiadomienia** zostanie otwarte okienko. Przeczytaj informacje, aby dowiedzieć się więcej o problemie.
+3. Zostanie otwarte okienko **szczegóły powiadomienia** . Przeczytaj informacje, aby dowiedzieć się więcej o problemie.
 
-5. Jeśli nadal potrzebujesz pomocy, udostępnianie informacji za pomocą inżynier pomocy technicznej lub grupa produktów. Wybierz **kopiowania** ikony po prawej stronie **błąd kopiowania** pole, aby skopiować szczegóły powiadomienia na udostępnianie.
+5. Jeśli nadal potrzebujesz pomocy, Podziel się informacjami z inżynierem pomocy technicznej lub grupą produktów. Wybierz ikonę **kopiowania** z prawej strony pola **błąd kopiowania** , aby skopiować szczegóły powiadomień do udostępnienia.
 
-## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Wyślij szczegóły powiadomienia ze specjalistą pomocy technicznej w celu uzyskania pomocy
+## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Wyślij szczegóły powiadomienia do inżyniera pomocy technicznej, aby uzyskać pomoc
 
-Jest ważne, aby udostępniać *wszystkich* szczegółowe informacje, które są wymienione w tej sekcji z obsługą, dzięki czemu mogą one pomóc szybko. Aby zarejestrować go, możesz wykonać zrzut ekranu lub wybrać **błąd kopiowania**.
+Ważne jest, aby udostępnić *wszystkie* szczegóły wymienione w tej sekcji z obsługą, dzięki czemu mogą one szybko pomóc. Aby zarejestrować go, można wykonać zrzut ekranu lub wybrać **błąd kopiowania**.
 
-Następujące informacje wyjaśnia, co każdy element powiadomienia oznacza oraz przykłady.
+Poniższe informacje wyjaśniają, co oznacza każdy element powiadomienia i zawiera przykłady.
 
-### <a name="essential-notification-items"></a>Elementy podstawowe powiadomienie
+### <a name="essential-notification-items"></a>Podstawowe elementy powiadomień
 
-- **Tytuł**: opisowy tytuł powiadomienia.
+- **Title**: opisowy tytuł powiadomienia.
 
    Przykład: *Ustawienia serwera proxy aplikacji*
 
-- **Opis**: co nastąpiło w wyniku operacji.
+- **Opis**: co się stało z wynikiem operacji.
 
-   Przykład: *Wprowadzony wewnętrzny adres URL jest już używana przez inną aplikację.*
+   Przykład: *wprowadzony wewnętrzny adres URL jest już używany przez inną aplikację.*
 
-- **Identyfikator powiadomienia**: Unikatowy identyfikator powiadomienia.
+- **Identyfikator powiadomienia**: unikatowy identyfikator powiadomienia.
 
-    Przykład: *clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068*
+    Przykład: *clientNotification-2adbfc06-2073-4678-A69F-7eb78d96b068*
 
-- **Identyfikator żądania klienta**: zgłaszający w przeglądarce identyfikator określonego żądania.
+- **Identyfikator żądania klienta**: konkretny identyfikator żądania, który wykonał przeglądarka.
 
     Przykład: *302fd775-3329-4670-a9f3-bea37004f0bc*
 
-- **Czas UTC sygnatury**: sygnatura czasowa powiadomienia wystąpienia, w formacie UTC.
+- **Sygnatura czasowa UTC**: znacznik czasu, gdy wystąpiło powiadomienie, w formacie UTC.
 
-    Przykład: *2017-03-23T19:50:43.7583681Z*
+    Przykład: *2017-03-23T19:50:43.7583681 z*
 
-- **Wewnętrzny identyfikator transakcji**: wewnętrzny identyfikator, który służy do wyszukiwania błędów w naszych systemach.
+- **Identyfikator transakcji wewnętrznej**: wewnętrzny identyfikator używany do wyszukiwania błędu w naszych systemach.
 
     Przykład: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-- **UPN**: Użytkownik, który uruchomił operację.
+- **Nazwa UPN**: użytkownik, który uruchomił operację.
 
     Przykład: *tperkins\@f128.info*
 
-- **Identyfikator dzierżawy**: Unikatowy identyfikator dzierżawy, której członkiem jest użytkownik, który uruchomił operację.
+- **Identyfikator dzierżawy**: unikatowy identyfikator dzierżawy, do której należy użytkownik, który uruchomił operację.
 
     Przykład: *7918d4b5-0442-4a97-be2d-36f9f9962ece*
 
-- **Identyfikator obiektu użytkownika**: Unikatowy identyfikator użytkownika, który uruchomił operację.
+- **Identyfikator obiektu użytkownika**: unikatowy identyfikator użytkownika, który uruchomił operację.
 
     Przykład: *17f84be4-51f8-483a-b533-383791227a99*
 
-### <a name="detailed-notification-items"></a>Elementy szczegółowe powiadomienia
+### <a name="detailed-notification-items"></a>Szczegółowe elementy powiadomień
 
-- **Nazwa wyświetlana**: (może być pusta) Nazwa wyświetlana bardziej szczegółowy błąd.
+- **Nazwa wyświetlana**: (może być pusta) bardziej szczegółową nazwę wyświetlaną dla błędu.
 
     Przykład: *Ustawienia serwera proxy aplikacji*
 
-- **Stan**: stan określonego powiadomienia.
+- **Stan**: określony stan powiadomienia.
 
     Przykład: *Niepowodzenie*
 
-- **Obiekt o identyfikatorze**: (może być pusta) identyfikator obiektu, względem którego uruchomiono operację.
+- **Identyfikator obiektu**: (może być pusty) identyfikator obiektu, względem którego została uruchomiona operacja.
 
    Przykład: *8e08161d-f2fd-40ad-a34a-a9632d6bb599*
 
-- **Szczegóły**: szczegółowego opisu co nastąpiło w wyniku operacji.
+- **Szczegóły**: szczegółowy opis tego, co się stało w wyniku operacji.
 
-    Przykład: *Wewnętrzny adres url "<https://bing.com/>" jest nieprawidłowa, ponieważ jest już używana.*
+    Przykład: *wewnętrzny adres URL "<https://bing.com/>" jest nieprawidłowy, ponieważ jest już używany.*
 
-- **Błąd kopiowania**: Umożliwia wybranie **ikonę kopiowania** po prawej stronie **błąd kopiowania** pole tekstowe, aby skopiować szczegóły powiadomienia, aby pomóc z pomocą techniczną.
+- **Błąd kopiowania**: umożliwia wybranie **ikony kopiowania** z prawej strony pola tekstowego **błąd kopiowania** , aby skopiować szczegóły powiadomień w celu uzyskania pomocy technicznej.
 
-    Przykład:   ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    Przykład: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)

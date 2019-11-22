@@ -1,20 +1,16 @@
 ---
 title: Jak działa Visual Studio Code z Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: conceptual
 description: Jak działa Visual Studio Code z Azure Dev Spaces
 keywords: Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery
-ms.openlocfilehash: 7809f0215137b0c473e13143404a031497906ebf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 50ce5e90e091ea72761cd7513d2508c657981e60
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725810"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279886"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Jak działa Visual Studio Code z Azure Dev Spaces
 
@@ -30,22 +26,22 @@ Visual Studio Code i rozszerzenie Azure Dev Spaces generują następujące zasob
 
 * Wieloetapowe dockerfile for Java — aplikacje Maven, Node. js i aplikacje platformy .NET Core
 * Helm wykresy dla niemal dowolnego języka z pliku dockerfile
-* Plik, który jest [Azure dev Spaces plikiem konfiguracji][azds-yaml] dla projektu `azds.yaml`
-* `.vscode` Folder z konfiguracją Visual Studio Code uruchamiania projektu dla aplikacji Java korzystających z Maven, aplikacji node. js i aplikacji platformy .NET Core
+* Plik `azds.yaml`, czyli [plik konfiguracyjny Azure dev Spaces][azds-yaml] dla projektu
+* Folder `.vscode` z konfiguracją uruchamiania Visual Studio Code dla aplikacji Java korzystających z Maven, aplikacji node. js i aplikacji platformy .NET Core
 
-Pliku dockerfile, wykres Helm i `azds.yaml` pliki są tymi samymi zasobami, które są generowane podczas uruchamiania. `azds prep` Te pliki mogą być również używane poza programem Visual Studio Code do uruchamiania projektu w programie AKS, na przykład uruchomione `azds up`. Ten `.vscode` folder jest używany tylko przez program Visual Studio Code do uruchamiania projektu w programie AKS z Visual Studio Code.
+Pliku dockerfile, wykres Helm i pliki `azds.yaml` są tymi samymi zasobami, które są generowane podczas uruchamiania `azds prep`. Te pliki mogą być również używane poza programem Visual Studio Code do uruchamiania projektu w programie AKS, takich jak uruchamianie `azds up`. Folder `.vscode` jest używany tylko przez program Visual Studio Code do uruchamiania projektu w programie AKS z Visual Studio Code.
 
 ## <a name="run-your-service-in-aks"></a>Uruchamianie usługi w AKS
 
-Po wygenerowaniu zasobów dla projektu można uruchomić usługi Java, Node. js i .NET Core w istniejącym miejscu deweloperskim z Visual Studio Code. Na stronie *debugowanie* Visual Studio Code można wywołać konfigurację uruchamiania z `.vscode` katalogu, aby uruchomić projekt.
+Po wygenerowaniu zasobów dla projektu można uruchomić usługi Java, Node. js i .NET Core w istniejącym miejscu deweloperskim z Visual Studio Code. Na stronie *debugowanie* Visual Studio Code można wywołać konfigurację uruchamiania z katalogu `.vscode`, aby uruchomić projekt.
 
-Należy utworzyć klaster AKS i włączyć Azure Dev Spaces w klastrze poza Visual Studio Code. Można na przykład użyć interfejsu wiersza polecenia platformy Azure lub Azure Portal, aby wykonać tę konfigurację. Można ponownie użyć istniejących wieloetapowe dockerfile, wykresów Helm i `azds.yaml` plików utworzonych poza Visual Studio Code, takich jak zasoby wygenerowane `azds prep`przez program. W przypadku ponownego użycia zasobów wygenerowanych poza programem Visual Studio Code nadal trzeba mieć `.vscode` katalog. Ten `.vscode` katalog może być ponownie generowany przez program Visual Studio Code i rozszerzenie Azure dev Spaces i nie spowoduje zastąpienia istniejących zasobów.
+Należy utworzyć klaster AKS i włączyć Azure Dev Spaces w klastrze poza Visual Studio Code. Można na przykład użyć interfejsu wiersza polecenia platformy Azure lub Azure Portal, aby wykonać tę konfigurację. Można ponownie użyć istniejących wieloetapowe dockerfile, wykresów Helm i plików `azds.yaml` utworzonych poza Visual Studio Code, takich jak zasoby wygenerowane przez uruchomienie `azds prep`. W przypadku ponownego użycia zasobów wygenerowanych poza Visual Studio Code nadal trzeba mieć katalog `.vscode`. Ten katalog `.vscode` może zostać wygenerowany ponownie przez program Visual Studio Code i rozszerzenie Azure Dev Spaces i nie spowoduje zastąpienia istniejących zasobów.
 
 W przypadku projektów .NET Core musisz mieć zainstalowane [ C# rozszerzenie][csharp-extension] , aby uruchomić usługę .NET z Visual Studio Code. Również w przypadku projektów języka Java korzystających z programu Maven musi być zainstalowany [debuger Java dla rozszerzenia Azure dev Spaces][java-extension] , [a także Maven zainstalowany i skonfigurowany][maven] do uruchamiania usługi Java z Visual Studio Code.
 
 ## <a name="debug-your-service-in-aks"></a>Debugowanie usługi w AKS
 
-Po uruchomieniu projektu można debugować usługi Java, Node. js i .NET Core działające w obszarze dev, bezpośrednio z Visual Studio Code. Konfiguracja uruchamiania w `.vscode` katalogu zawiera dodatkowe informacje debugowania dotyczące uruchamiania usługi z włączoną funkcją debugowania w obszarze dev. Visual Studio Code również dołącza do procesu debugowania w uruchomionym kontenerze w miejscach programistycznych, co pozwala na ustawianie punktów przerwania, inspekcję zmiennych i wykonywanie innych operacji debugowania.
+Po uruchomieniu projektu można debugować usługi Java, Node. js i .NET Core działające w obszarze dev, bezpośrednio z Visual Studio Code. Konfiguracja uruchamiania w katalogu `.vscode` zawiera dodatkowe informacje dotyczące debugowania dotyczące uruchamiania usługi z włączoną funkcją debugowania w obszarze dev. Visual Studio Code również dołącza do procesu debugowania w uruchomionym kontenerze w miejscach programistycznych, co pozwala na ustawianie punktów przerwania, inspekcję zmiennych i wykonywanie innych operacji debugowania.
 
 
 ## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Użyj Visual Studio Code z Azure Dev Spaces

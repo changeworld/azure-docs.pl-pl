@@ -1,19 +1,19 @@
 ---
-title: Samouczek — udostępnianie kotwic przestrzennych platformy Azure między sesjami i urządzeniami przy użyciu zaplecza Azure Cosmos DB | Microsoft Docs
+title: 'Samouczek: udostępnianie kotwic z Azure Cosmos DB'
 description: W tym samouczku dowiesz się, jak udostępnić identyfikatory kotwic usługi Azure przestrzenny na urządzeniach z systemem Android/iOS w środowisku Unity przy użyciu usługi zaplecza i Azure Cosmos DB.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7ddbff563f79992f21aef5182177f4fb60c61dab
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882164"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276878"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Samouczek: udostępnianie kotwic przestrzennych platformy Azure między sesjami i urządzeniami przy użyciu zaplecza Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Warto zauważyć, że mimo że będziesz używać aparatu Unity i Azure Cosmos D
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
-Dodaj bazę danych usługi Azure Cosmos do utworzonej wcześniej grupy zasobów. 
+Dodaj bazę danych usługi Azure Cosmos do utworzonej wcześniej grupy zasobów.
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 

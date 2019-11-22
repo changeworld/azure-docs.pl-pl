@@ -1,85 +1,85 @@
 ---
-title: Relacje zakotwiczenia i sposób znalezienia w Azure przestrzenne kotwice | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat modelu koncepcyjnego za relacje zakotwiczenia. Dowiedz się, do łączenia z kotwice w obrębie przestrzeni i spełniają scenariusz, w sposób wyszukiwania za pomocą pobliskich interfejsu API.
+title: Relacje zakotwiczenia i sposób szukania
+description: Zapoznaj się z modelem koncepcyjnym związanym z relacjami zakotwiczenia. Dowiedz się, jak połączyć kotwice w miejscu i użyć interfejsu API w pobliżu do realizacji scenariusza szukania.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 008269a5883750dc8899d896c101c6a05bf7e814
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969287"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270603"
 ---
-# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Relacje zakotwiczenia i sposób znalezienia w kotwic przestrzenne platformy Azure
+# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Relacje zakotwiczenia i sposób znajdowania w kotwicach przestrzennych platformy Azure
 
-Korzystając z relacji zakotwiczenia można tworzyć kotwic połączonych w miejscu i następnie zadawać pytania, takie jak te:
+Przy użyciu relacji zakotwiczenia można utworzyć połączone kotwice w miejscu, a następnie zadawać pytania podobne do następujących:
 
 * Czy istnieją kotwice w pobliżu?
-* Jak daleko używają?
+* Jak daleko jest?
 
 ## <a name="examples"></a>Przykłady
 
-W takich przypadkach można użyć kotwic połączone:
+W takich przypadkach można używać połączonych kotwic, takich jak:
 
-* Proces roboczy musi zakończyć zadanie, która obejmuje, odwiedzając różnych miejscach w fabryce przemysłowych. Fabryka ma kotwic przestrzennego w każdej lokalizacji. HoloLens lub aplikacji mobilnej pomaga przewodnik proces roboczy z jednej lokalizacji do następnego. Najpierw pyta, czy pobliskich kotwic przestrzenne i następnie zawiera informacje na temat procesu roboczego do następnej lokalizacji aplikacji. Aplikacja wizualnie przedstawia ogólne kierunku i odległość do następnej lokalizacji.
+* Proces roboczy musi wykonać zadanie, które obejmuje odwiedzanie różnych lokalizacji w fabryce przemysłowej. Fabryka ma kotwice przestrzenne w każdej lokalizacji. Aplikacja HoloLens lub Mobile ułatwia proces roboczy z jednej lokalizacji do następnego. Aplikacja najpierw pyta o kotwice znajdujące się w pobliżu, a następnie prowadzi proces roboczy do następnej lokalizacji. Aplikacja wizualnie pokazuje ogólny kierunek i odległość do następnej lokalizacji.
 
-* Muzeów tworzy przestrzenne kotwic Wyświetla publicznych. Kotwice te tworzą razem godzinna Przewodnik po przykładzie muzeów essential Wyświetla publicznych. Obrazu publicznego osoby odwiedzające można otworzyć muzeów rzeczywistości mieszanej na swoim urządzeniu przenośnym. Następnie wskazują ich aparatu phone wokół miejsca, aby wyświetlić ogólne kierunku i odległość do innych publicznych wyświetla na samouczka. Użytkownik przegląda kierunku publicznego wyświetlania, aplikacja aktualizuje ogólne kierunku i odległość, aby ułatwić prowadzą użytkownika.
+* Muzeów tworzy kotwice przestrzenne na publicznych ekranach. Razem te kotwice tworzą jednogodzinną prezentację najważniejszych publicznych ekranów muzeów. Na publicznym ekranie odwiedzający mogą otworzyć aplikację rzeczywistości mieszanej muzeów na urządzeniu przenośnym. Następnie wskażą one kamerę telefoniczną wokół miejsca, aby zobaczyć ogólny kierunek i odległość do innych publicznych wyświetlaczy w przewodniku. Gdy użytkownik przegląda się w kierunku wyświetlania publicznego, aplikacja aktualizuje ogólny kierunek i odległość, aby pomóc użytkownikowi.
 
-## <a name="set-up-way-finding"></a>Skonfiguruj sposób wyszukiwania
+## <a name="set-up-way-finding"></a>Konfigurowanie sposobu wyszukiwania
 
-Używa aplikacji, która używa kierunek linii wzroku i odległość między kotwic wytyczne *sposób wyszukiwania*. Znajdowanie sposób różni się od Włącz, wyłącz nawigacji. W nawigacji Włącz, wyłącz, a użytkownicy są prowadzeni wokół ściany, za pośrednictwem drzwi oraz między podłogi. Sposób znalezienia uzyskuje wskazówek na temat ogólne kierunku docelowym użytkownik. Ale wnioskowania lub znajomości miejsce pomaga również użytkownika przejdź za pośrednictwem struktury do miejsca docelowego.
+Aplikacja, która używa kierunku i odległości między zakotwiczeniami, aby zapewnić wskazówki, w *jaki sposób można znaleźć*. Sposób znajdowania różni się od przełączania nawigacji. W obszarze Nawigacja z przełączaniem użytkownicy prowadzą do ścian, za pomocą drzwi i między piętrami. Dzięki sposobom wyszukiwania użytkownik otrzymuje wskazówki dotyczące ogólnego kierunku lokalizacji docelowej. Jednak wnioskowanie lub znajomość miejsca również ułatwia użytkownikowi przechodzenie przez strukturę do miejsca docelowego.
 
-Aby utworzyć środowisko sposób wyszukiwania, przygotuj spację środowiska i opracowywanie aplikacji, którą użytkownicy będą korzystać z. Poniżej przedstawiono ogólne kroki:
+Aby skompilować sposób znalezienia środowiska, należy najpierw przygotować miejsce na środowisko i opracować aplikację, z którą użytkownicy będą pracować. Oto podstawowe kroki:
 
-1. **Planowanie przestrzeni**: Zdecyduj, lokalizacji, w których w przestrzeni będzie częścią środowiska sposób wyszukiwania. W naszym scenariuszach nadzorca fabryki lub koordynatora samouczek muzeów zdecydować o lokalizacji, w których do uwzględnienia w środowisku sposób wyszukiwania.
-2. **Połącz kotwic**: Można znaleźć w wybranej lokalizacji, aby utworzyć przestrzenne zakotwiczenia. Można to zrobić w trybie administratora, użytkownik końcowy aplikacji lub w innej aplikacji całkowicie. Będziesz połączyć lub dotyczą każdego zakotwiczenia innym osobom. Usługa zapewnia te relacje.
-3. **Uruchom środowisko użytkownika końcowego**: Użytkownicy uruchomią aplikację można zlokalizować elementu zakotwiczenia, który może być w dowolnej z wybranej lokalizacji. Ogólny projekt, należy określić lokalizacje, w którym użytkownicy mogą wprowadzać doświadczenia.
-4. **Znajdź w pobliżu kotwic**: Po użytkownik znajdzie kotwicy, w pobliżu kotwice zażądać aplikacji. Ta procedura zwraca ułożenie wiadomości pomiędzy urządzeniem a te zakotwiczenia.
-5. **Przewodnik po użytkownik**: Aplikacja może używać ułożenia do każdego z tych kotwic, aby zapewnić wskazówki dotyczące użytkownika ogólne kierunku i odległość. Na przykład aparatu, źródła danych w aplikacji może wyświetlać ikonę i strzałkę, aby reprezentować każdej potencjalnej lokalizacji docelowej, jak przedstawiono na poniższym obrazie.
-6. **Uściślij wskazówki**: Jako użytkownik przegląda, aplikacja okresowo obliczyć nowe ułożenie wiadomości pomiędzy urządzeniem a zakotwiczenia docelowego. Aplikacja będzie nadal uściślić wskazówkami wskazówki, które pomagają użytkownikowi pojawić się w lokalizacji docelowej.
+1. **Zaplanuj miejsce**: Zdecyduj, które lokalizacje w tym miejscu będą częścią środowiska wyszukiwania. W naszych scenariuszach Nadzorca fabryki lub Koordynator samouczka muzeów może zdecydować, które lokalizacje mają być uwzględnione w środowisku wyszukiwania.
+2. **Zakotwiczenia połączeń**: Przejdź do wybranych lokalizacji, aby utworzyć kotwice przestrzenne. Można to zrobić w trybie administratora aplikacji użytkownika końcowego lub innej aplikacji. Nastąpi połączenie lub powiąże się z poszczególnymi zakotwiczeniami. Usługa zachowuje te relacje.
+3. **Uruchom środowisko użytkownika końcowego**: użytkownicy uruchamiają aplikację, aby zlokalizować kotwicę, która może znajdować się w jednej z wybranych lokalizacji. Ogólny projekt powinien określać lokalizacje, w których użytkownicy mogą wprowadzać te czynności.
+4. **Znajdź kotwice w pobliżu**: po znalezieniu kotwicy przez użytkownika aplikacja może zażądać zakotwiczenia w pobliżu. Ta procedura zwraca ułożenie między urządzeniem a tymi kotwicami.
+5. **Przewodnik użytkownika**: aplikacja może użyć ułożenia do każdej z tych kotwic, aby uzyskać wskazówki dotyczące ogólnego kierunku i drogi użytkownika. Na przykład kanał informacyjny kamery w aplikacji może zawierać ikonę i strzałkę reprezentującą każde potencjalne miejsce docelowe, jak pokazano na poniższej ilustracji.
+6. **Uściślij wskazówki**: w miarę przeprowadzania przez użytkownika aplikacja może okresowo obliczyć nowe ułożenie między urządzeniem a zakotwiczeniem docelowym. Aplikacja w dalszym ciągu udoskonala wskazówki, które pomagają użytkownikowi dotrzeć do miejsca docelowego.
 
-    ![Przykładowy sposób aplikację można wyświetlić sposób wyszukiwania wskazówki](./media/meeting-spot.png)
+    ![Przykład sposobu, w jaki aplikacja może wyświetlać wskazówki dotyczące sposobu szukania](./media/meeting-spot.png)
 
-## <a name="connect-anchors"></a>Łączenia zakotwiczeń
+## <a name="connect-anchors"></a>Połącz kotwice
 
-Aby utworzyć środowisko sposób wyszukiwania, należy najpierw umieścić kotwic w wybranej lokalizacji. W tej sekcji przyjęto założenie, że administrator aplikacji zostało już zakończone tę pracę.
+Aby skompilować środowisko szukania, należy najpierw umieścić kotwice w wybranych lokalizacjach. W tej sekcji przyjęto założenie, że administrator aplikacji zakończył już tę pracę.
 
-### <a name="connect-anchors-in-a-single-session"></a>Połącz kotwice w jednej sesji
+### <a name="connect-anchors-in-a-single-session"></a>Połącz kotwice w pojedynczej sesji
 
-Aby połączyć kotwic:
+Aby połączyć kotwice:
 
-1. Zapoznaj się do pierwszej lokalizacji, a następnie utwórz zakotwiczenia A za pomocą CloudSpatialAnchorSession.
-2. Zapoznaj się z innej lokalizacji. Podstawowej platformy MR/AR śledzi przepływu.
-3. Tworzenie B zakotwiczenia przy użyciu tego samego CloudSpatialAnchorSession. Kotwice A i B są teraz połączone. Usługa przestrzenne kotwic utrzymuje tę relację.
-4. Kontynuuj tę procedurę dla pozostałych zakotwiczenia.
+1. Zapoznaj się z pierwszą lokalizacją i Utwórz kotwicę A za pomocą CloudSpatialAnchorSession.
+2. Przechodzenie do drugiej lokalizacji. Podstawowa platforma MR/AR śledzi przemieszczenie.
+3. Utwórz kotwicę B przy użyciu tego samego CloudSpatialAnchorSession. Kotwice A i B są teraz połączone. Usługa kotwice przestrzenne utrzymuje tę relację.
+4. Kontynuuj procedurę dla pozostałych kotwic.
 
 ### <a name="connect-anchors-in-multiple-sessions"></a>Połącz kotwice w wielu sesjach
 
-Możesz połączyć przestrzenne kotwic na wiele sesji. Przy użyciu tej metody, można utworzyć i jednocześnie połączyć kilka kotwic i później utworzyć i połączyć więcej zakotwiczenia. 
+Można połączyć kotwice przestrzenne z wieloma sesjami. Korzystając z tej metody, można utworzyć i połączyć niektóre kotwice naraz, a następnie utworzyć i połączyć więcej kotwic.
 
-Połączenie kotwic wiele sesji:
+Aby połączyć kotwice dla wielu sesji:
 
-1. Aplikacja tworzy kilka kotwice w jednym CloudSpatialAnchorSession. 
-2. W innym czasie aplikacja lokalizuje jedną z tych kotwice (na przykład element zakotwiczenia) przy użyciu nowego CloudSpatialAnchorSession.
-3. Zapoznaj się do nowej lokalizacji. Podstawowej platformy rzeczywistości mieszanej lub rzeczywistości rozszerzonej śledzi przepływu.
-4. Utwórz zakotwiczenia C przy użyciu tego samego CloudSpatialAnchorSession. Kotwice A, B i C są teraz połączone. Usługa przestrzenne kotwic utrzymuje tę relację.
+1. Aplikacja tworzy niektóre kotwice w jednym CloudSpatialAnchorSession.
+2. W innym czasie aplikacja lokalizuje jedną z tych kotwic (na przykład zakotwiczenie A) przy użyciu nowego CloudSpatialAnchorSession.
+3. Przechodzenie do nowej lokalizacji. Podstawowa platforma w rzeczywistości mieszanej lub rozszerzonej rzeczywistości śledzi ruch.
+4. Utwórz kotwicę C przy użyciu tego samego CloudSpatialAnchorSession. Kotwice A, B i C są teraz połączone. Usługa kotwice przestrzenne utrzymuje tę relację.
 
-Możesz kontynuować tę procedurę dla więcej zakotwiczenia i więcej sesji, wraz z upływem czasu.
+Możesz kontynuować tę procedurę, aby uzyskać więcej kotwic i więcej sesji w czasie.
 
-### <a name="verify-anchor-connections"></a>Sprawdź połączenia zakotwiczenia
+### <a name="verify-anchor-connections"></a>Weryfikuj połączenia zakotwiczenia
 
-Aplikacja może Sprawdź, czy dwie kotwice połączenie wysyłając kwerendy do pobliskich kotwic. Jeśli wynik zapytania zawiera zakotwiczenia docelowego, zakotwiczenia zweryfikowaniu połączenia kliknij. Jeśli kotwic nie są połączone, aplikacja spróbować połączyć je ponownie. 
+Aplikacja może sprawdzić, czy dwie kotwice są połączone przez wygenerowanie zapytania dla pobliżu zakotwiczenia. Gdy wynik zapytania zawiera docelową kotwicę, połączenie zakotwiczenia zostanie zweryfikowane. Jeśli kotwice nie są połączone, aplikacja może spróbować połączyć je ponownie.
 
-Oto kilka powodów, dlaczego kotwic może zakończyć się niepowodzeniem:
+Oto kilka powodów, dla których kotwice mogą się nie powieść:
 
-* Podstawowej rzeczywistości mieszanej lub rzeczywistości rozszerzonej platformy utraty śledzenia w trakcie procesu łączenia zakotwiczeń.
-* Ze względu na błąd sieciowy podczas komunikacji z usługą kotwic przestrzennych nie utrwalone połączenia zakotwiczenia.
+* Podstawowa platforma mieszana lub większa-rzeczywistość ma utracone śledzenie podczas procesu łączenia kotwic.
+* Ze względu na błąd sieciowy podczas komunikacji z usługą kotwice przestrzenne nie można utrwalić połączenia zakotwiczonego.
 
-### <a name="find-sample-code"></a>Znajdź przykładowy kod
+### <a name="find-sample-code"></a>Znajdowanie przykładowego kodu
 
-Przykładowy kod, który pokazuje, jak połączyć kotwic oraz wykonywanie zapytań w pobliżu, możesz znaleźć [przestrzenne kotwic przykładowe aplikacje](https://github.com/Azure/azure-spatial-anchors-samples).
+Aby znaleźć przykładowy kod, który pokazuje, jak połączyć kotwice i wykonywać zapytania w pobliżu, zobacz [kotwice przestrzenne — przykładowe aplikacje](https://github.com/Azure/azure-spatial-anchors-samples).

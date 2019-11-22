@@ -1,6 +1,6 @@
 ---
-title: Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
-description: Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
+title: Wysyłanie metryk do bazy danych metryk Azure Monitor przy użyciu interfejsu API REST
+description: Wysyłanie metryk niestandardowych dla zasobu platformy Azure do magazynu metryk Azure Monitor przy użyciu interfejsu API REST
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,46 +8,46 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253874"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285946"
 ---
-# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
+# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Wysyłanie metryk niestandardowych dla zasobu platformy Azure do magazynu metryk Azure Monitor przy użyciu interfejsu API REST
 
-W tym artykule pokazano, jak wysyłać metryki niestandardowe dla zasobów platformy Azure w magazynie usługi Azure Monitor metryk za pośrednictwem interfejsu API REST. Po metryki znajdują się w usłudze Azure Monitor, można wykonać wszystkie czynności, które z nich, które możesz wykonać przy użyciu standardowych metryk. Przykłady są wykresy, alerty i routing je do innych narzędzi zewnętrznych.  
+W tym artykule pokazano, jak wysyłać niestandardowe metryki dla zasobów platformy Azure do magazynu metryk Azure Monitor za pośrednictwem interfejsu API REST. Gdy metryki znajdują się w Azure Monitor, można wykonać wszystkie czynności z nimi za pomocą standardowych metryk. Przykłady to wykresy, alerty i trasy do innych narzędzi zewnętrznych.  
 
 >[!NOTE]  
->Interfejs API REST umożliwia jedynie wysyłanie metryki niestandardowe dla zasobów platformy Azure. Aby wysłać metryki dla zasobów w różnych środowiskach lub środowisku lokalnym, możesz użyć [usługi Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
+>Interfejs API REST zezwala tylko na wysyłanie metryk niestandardowych dla zasobów platformy Azure. Aby wysyłać metryki dla zasobów w różnych środowiskach lub lokalnie, można użyć [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
 
 
-## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Tworzenie i autoryzować nazwę główną usługi, aby emitować metryki 
+## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Utwórz i Autoryzuj jednostkę usługi, aby emitować metryki 
 
-Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory, korzystając z instrukcjami przedstawionymi w temacie [utworzyć nazwę główną usługi](../../active-directory/develop/howto-create-service-principal-portal.md). 
+Utwórz nazwę główną usługi w dzierżawie Azure Active Directory przy użyciu instrukcji znajdujących się w temacie [Create a Service Principal](../../active-directory/develop/howto-create-service-principal-portal.md). 
 
-Gdy przejdziesz przez ten proces, należy pamiętać o następujących: 
+Podczas tego procesu wykonaj następujące czynności: 
 
-- Adres URL logowania, można wprowadzić dowolny adres URL.  
-- Utwórz nowy wpis tajny klienta dla tej aplikacji.  
-- Zapisz klucz i identyfikator klienta do użycia w kolejnych krokach.  
+- Możesz wprowadzić dowolny adres URL dla adresu URL logowania.  
+- Utwórz nowy klucz tajny klienta dla tej aplikacji.  
+- Zapisz klucz i identyfikator klienta do użycia w dalszych krokach.  
 
-Nadaj aplikacja utworzona w ramach kroku 1, monitorowania metryk wydawcy, uprawnienia do zasobów, które chcesz emitują metryki względem. Jeśli planujesz korzystanie z aplikacji do emitowania metryki niestandardowe w odniesieniu do wielu zasobów, można przyznać te uprawnienia na poziomie grupy lub subskrypcji zasobów. 
+Nadaj aplikacji utworzoną jako część kroku 1, monitorowanie wydawcy metryk, uprawnienia do zasobu, dla którego chcesz emitować metryki. Jeśli planujesz używać aplikacji do emitowania metryk niestandardowych względem wielu zasobów, możesz przyznać te uprawnienia na poziomie grupy zasobów lub subskrypcji. 
 
-## <a name="get-an-authorization-token"></a>Pobierz token autoryzacji
+## <a name="get-an-authorization-token"></a>Pobieranie tokenu autoryzacji
 Otwórz wiersz polecenia i uruchom następujące polecenie:
 
 ```shell
 curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
-Zapisywanie tokenu dostępu z odpowiedzi.
+Zapisz token dostępu z odpowiedzi.
 
-![token dostępu](./media/metrics-store-custom-rest-api/accesstoken.png)
+![Token dostępu](./media/metrics-store-custom-rest-api/accesstoken.png)
 
-## <a name="emit-the-metric-via-the-rest-api"></a>Emituj metryki za pomocą interfejsu API REST 
+## <a name="emit-the-metric-via-the-rest-api"></a>Emituj metrykę za pośrednictwem interfejsu API REST 
 
-1. Wklej następujący kod JSON do pliku i zapisz go jako **custommetric.json** na komputerze lokalnym. Aktualizacja parametru czasu w pliku JSON: 
+1. Wklej poniższy kod JSON do pliku i Zapisz go jako **custommetric. JSON** na komputerze lokalnym. Zaktualizuj parametr Time w pliku JSON: 
     
     ```json
     { 
@@ -77,46 +77,46 @@ Zapisywanie tokenu dostępu z odpowiedzi.
     } 
     ``` 
 
-1. W oknie wiersza polecenia po dane metryk: 
-   - **azureRegion**. Musi być zgodna regionu geograficznego, zasobów, które w przypadku emitowania metryki. 
-   - **resourceID**.  Identyfikator zasobu zasobów platformy Azure, które należy prześledzić metryki względem.  
-   - **AccessToken**. Wklej uzyskany wcześniej tokenu.
+1. W oknie wiersza polecenia Opublikuj dane metryk: 
+   - **azureRegion**. Musi być zgodna z regionem wdrożenia zasobu, dla którego są emitowane metryki. 
+   - Identyfikator **zasobu**.  Identyfikator zasobu platformy Azure, względem którego jest śledzona Metryka.  
+   - **AccessToken**. Wklej wcześniej uzyskany token.
 
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Zmiana sygnatury czasowej i wartości w pliku JSON. 
-1. Powtórz dwa poprzednie kroki kilka razy, dzięki czemu masz dane przez kilka minut.
+1. Zmień sygnaturę czasową i wartości w pliku JSON. 
+1. Powtarzaj dwa poprzednie kroki kilka razy, aby dane były dostępne przez kilka minut.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów 
-Jeśli zostanie wyświetlony komunikat o błędzie z niektórych części procesu, należy wziąć pod uwagę następujące informacje dotyczące rozwiązywania problemów:
+Jeśli zostanie wyświetlony komunikat o błędzie z częścią procesu, należy wziąć pod uwagę następujące informacje dotyczące rozwiązywania problemów:
 
-1. Metryki względem subskrypcji lub grupy zasobów nie mogą wystawiać jako swoich zasobów platformy Azure. 
-1. Nie można umieścić metrykę do magazynu, który jest ponad 20 minut. Metryki magazynu jest zoptymalizowany pod kątem alertów oraz wykresów w czasie rzeczywistym. 
-2. Liczba wymiarów nazw powinny odpowiadać wartości i na odwrót. Sprawdź wartości. 
-2. Może być emitowania metryki względem region, który nie obsługuje metryki niestandardowe. Zobacz [obsługiwane regiony](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+1. Nie można wystawić metryk dla subskrypcji lub grupy zasobów jako zasobu platformy Azure. 
+1. Nie można umieścić metryki w sklepie przekraczającym 20 minut. Magazyn metryk jest zoptymalizowany pod kątem alertów i wykresów w czasie rzeczywistym. 
+2. Liczba nazw wymiarów powinna być zgodna z wartościami i na odwrót. Sprawdź wartości. 
+2. Mogą być emitowane metryki z regionem, który nie obsługuje metryk niestandardowych. Zobacz [Obsługiwane regiony](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
-## <a name="view-your-metrics"></a>Wyświetlaj swoje metryki 
+## <a name="view-your-metrics"></a>Wyświetl metryki 
 
 1. Zaloguj się do Portalu Azure. 
 
-1. W menu po lewej stronie wybierz **Monitor**. 
+1. W menu po lewej stronie wybierz pozycję **monitorowanie**. 
 
-1. Na **Monitor** wybierz opcję **metryki**. 
+1. Na stronie **monitorowanie** wybierz pozycję **metryki**. 
 
    ![Wybierz metryki](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. Okres agregacji można zmienić **ciągu ostatnich 30 minut**.  
+1. Zmień okres agregacji na **ostatni 30 minut**.  
 
-1. W **zasobów** menu rozwijanego wybierz zasób emitowane metryki względem.  
+1. Z menu rozwijanego **zasób** wybierz zasób, względem którego wyemitowano metrykę.  
 
-1. W **przestrzenie nazw** menu rozwijanego wybierz opcję **QueueProcessing**. 
+1. W menu rozwijanym **obszary nazw** wybierz pozycję **QueueProcessing**. 
 
-1. W **metryki** menu rozwijanego wybierz opcję **QueueDepth**.  
+1. W menu rozwijanym **metryk** wybierz pozycję **QueueDepth**.  
 
  
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [metryki niestandardowe](../../azure-monitor/platform/metrics-custom-overview.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [metrykach niestandardowych](../../azure-monitor/platform/metrics-custom-overview.md).
 

@@ -1,19 +1,19 @@
 ---
-title: Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzenny w języku Java | Microsoft Docs
+title: Tworzenie & lokalizowania kotwic w języku Java
 description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu kotwic przestrzennych platformy Azure w języku Java.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7bc4a2251fa07f201d35e385806d2eb49cd8851e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e03fb8bfc221edf209fd2480eedad822983d59a9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562526"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270189"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzennego w języku Java
 
@@ -307,7 +307,7 @@ Dowiedz się więcej o metodzie [getAnchorPropertiesAsync](https://docs.microsof
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Dowiedz się więcej [](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.setexpiration) o metodzie setwygasa.
+Dowiedz się więcej o metodzie [setwygasa](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.setexpiration) .
 
 ```java
     Date now = new Date();
@@ -320,7 +320,7 @@ Dowiedz się więcej [](https://docs.microsoft.com/java/api/com.microsoft.azure.
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Dowiedz się więcej [o metodzie](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) .
+Dowiedz [się więcej o metodzie](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) .
 
 ```java
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -374,7 +374,7 @@ Dowiedz się więcej o metodzie [stop](https://docs.microsoft.com/java/api/com.m
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Dowiedz się więcej [](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) o metodzie resetowania.
+Dowiedz się więcej o metodzie [resetowania](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) .
 
 ```java
     mCloudSession.reset();

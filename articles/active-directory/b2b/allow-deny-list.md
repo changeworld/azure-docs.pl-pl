@@ -1,5 +1,5 @@
 ---
-title: Zezwalaj lub Blokuj zaproszenia do określonych organizacji — Azure Active Directory | Microsoft Docs
+title: Zezwalaj lub Blokuj zaproszenia do określonych organizacji — Azure AD
 description: Pokazuje, w jaki sposób administrator może użyć Azure Portal lub programu PowerShell do ustawienia listy dostępu lub Odmów, aby zezwalać na dostęp użytkowników B2B do określonych domen lub je blokować.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474171"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273423"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwalaj lub Blokuj zaproszenia użytkownikom B2B z określonych organizacji
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwalaj na zaproszenia lub blokowanie ich dla użytkowników B2B z określonym organizacjom
 
 Możesz użyć listy dozwolonych lub listy zablokowanych, aby zezwalać na zaproszenia użytkownikom B2B lub je blokować z określonych organizacji. Jeśli na przykład chcesz zablokować domeny osobistych adresów e-mail, możesz skonfigurować listę Odmów zawierającą domeny, takie jak Gmail.com i Outlook.com. Jeśli firma ma partnerstwo z innymi firmami, takimi jak Contoso.com, Fabrikam.com i Litware.com, i chcesz ograniczyć zaproszenia tylko do tych organizacji, możesz dodać Contoso.com, Fabrikam.com i Litware.com do listy dozwolonych.
   
@@ -49,7 +49,7 @@ Aby dodać listę Odmów:
 
    ![Wyświetla opcję Odmów z dodanymi domenami](./media/allow-deny-list/DenyListSettings.png)
  
-6. Gdy skończysz, kliknij przycisk **Zapisz**.
+6. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
 
 Po ustawieniu zasad, jeśli spróbujesz zaprosić użytkownika z zablokowanej domeny, zostanie wyświetlony komunikat z informacją, że domena użytkownika jest obecnie zablokowana przez zasady dotyczące zaproszenia.
  
@@ -70,7 +70,7 @@ Aby dodać listę dozwolonych:
 
    ![Wyświetla opcję Zezwalaj z dodanymi domenami](./media/allow-deny-list/AllowListSettings.png)
  
-6. Gdy skończysz, kliknij przycisk **Zapisz**.
+6. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
 
 Po ustawieniu zasad, jeśli spróbujesz zaprosić użytkownika z domeny, która nie znajduje się na liście dozwolonych, zostanie wyświetlony komunikat z informacją, że domena użytkownika jest obecnie zablokowana przez zasady dotyczące zaproszenia.
 

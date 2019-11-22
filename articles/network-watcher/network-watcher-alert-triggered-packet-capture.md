@@ -1,5 +1,6 @@
 ---
-title: Używanie funkcji przechwytywania pakietów do aktywnego monitorowania sieci z alertami i Azure Functions | Microsoft Docs
+title: Używanie funkcji przechwytywania pakietów do aktywnego monitorowania sieci z alertami — Azure Functions
+titleSuffix: Azure Network Watcher
 description: W tym artykule opisano sposób tworzenia alertu wyzwalającego przechwytywanie pakietów przy użyciu usługi Azure Network Watcher
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165154"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276133"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Używanie funkcji przechwytywania pakietów do aktywnego monitorowania sieci z alertami i Azure Functions
 
@@ -69,7 +70,7 @@ W tym scenariuszu są przeprowadzane następujące czynności:
 
 Pierwszym krokiem jest utworzenie funkcji platformy Azure w celu przetworzenia alertu i utworzenia przechwycenia pakietu.
 
-1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób** > **aplikacja funkcji** **obliczeniowy** > .
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób** > **obliczenia** > **aplikacja funkcji**.
 
     ![Tworzenie aplikacji funkcji][1-1]
 
@@ -80,11 +81,11 @@ Pierwszym krokiem jest utworzenie funkcji platformy Azure w celu przetworzenia a
     |**Nazwa aplikacji**|PacketCaptureExample|Nazwa aplikacji funkcji.|
     |**Subskrypcja**|[Twoja subskrypcja] Subskrypcja, dla której ma zostać utworzona aplikacja funkcji.||
     |**Grupa zasobów**|PacketCaptureRG|Grupa zasobów zawierająca aplikację funkcji.|
-    |**Plan hostingu**|Plan Zużycie| Typ planu używany przez aplikację funkcji. Opcje to użycie lub plan Azure App Service. |
-    |**Location**|Środkowe stany USA| Region, w którym ma zostać utworzona aplikacja funkcji.|
+    |**Plan hostingu**|Plan zużycia| Typ planu używany przez aplikację funkcji. Opcje to użycie lub plan Azure App Service. |
+    |**Lokalizacja**|Środkowe stany USA| Region, w którym ma zostać utworzona aplikacja funkcji.|
     |**Konto magazynu**|automatycznie generowanych| Konto magazynu, które Azure Functions potrzeby magazynowania ogólnego przeznaczenia.|
 
-3. W bloku **aplikacje funkcji PacketCaptureExample** wybierz pozycję **funkcje** > **Funkcja** > **+** niestandardowa.
+3. W bloku **aplikacje funkcji PacketCaptureExample** wybierz pozycję **funkcje** > **funkcji niestandardowej** > **+** .
 
 4. Wybierz pozycję **HttpTrigger — PowerShell**, a następnie wprowadź pozostałe informacje. Na koniec aby utworzyć funkcję, wybierz pozycję **Utwórz**.
 
@@ -121,7 +122,7 @@ Aby użyć Network Watcher poleceń cmdlet programu PowerShell, Przekaż najnows
 
      ![Foldery programu PowerShell][functions5]
 
-1. Wybierz pozycję >  **Ustawienia aplikacji funkcji** **Przejdź do Edytor usługi App Service**.
+1. Wybierz pozycję **Ustawienia aplikacji funkcji** > **Przejdź do Edytor usługi App Service**.
 
     ![Ustawienia aplikacji funkcji][functions2]
 
@@ -141,7 +142,7 @@ Aby użyć Network Watcher poleceń cmdlet programu PowerShell, Przekaż najnows
 
 6. Przejdź do modułów platformy Azure. W lokalnym folderze **AZ. Network** wybierz wszystkie pliki w folderze. Następnie wybierz przycisk **OK**. 
 
-7. Powtórz te kroki dla **AZ. Accounts** i **AZ.** Resources.
+7. Powtórz te kroki dla **AZ. Accounts** i **AZ. resources**.
 
     ![Przekazywanie plików][functions6]
 
@@ -226,7 +227,7 @@ Uzyskaj identyfikator dzierżawy, uruchamiając następujące przykładowe polec
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-Wartość zmiennej środowiskowej AzureCredPassword to wartość, którą uzyskasz od uruchomienia poniższego przykładu programu PowerShell. Ten przykład jest taki sam, jak ten, który jest wyświetlany w poprzedniej sekcji **zaszyfrowane poświadczenia** . Wymagana wartość jest wartością wyjściową `$Encryptedpassword` zmiennej.  Jest to hasło nazwy głównej usługi, które zostało zaszyfrowane za pomocą skryptu programu PowerShell.
+Wartość zmiennej środowiskowej AzureCredPassword to wartość, którą uzyskasz od uruchomienia poniższego przykładu programu PowerShell. Ten przykład jest taki sam, jak ten, który jest wyświetlany w poprzedniej sekcji **zaszyfrowane poświadczenia** . Wymagana wartość to dane wyjściowe zmiennej `$Encryptedpassword`.  Jest to hasło nazwy głównej usługi, które zostało zaszyfrowane za pomocą skryptu programu PowerShell.
 
 ```powershell
 #Variables
@@ -247,7 +248,7 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>Przechowuj zmienne środowiskowe
 
-1. Przejdź do aplikacji funkcji. Następnie wybierz kolejno pozycje **Funkcja ustawienia** > aplikacji**Skonfiguruj ustawienia aplikacji**.
+1. Przejdź do aplikacji funkcji. Następnie wybierz pozycję **Ustawienia aplikacji funkcji** > **Skonfiguruj ustawienia aplikacji**.
 
     ![Konfigurowanie ustawień aplikacji][functions11]
 

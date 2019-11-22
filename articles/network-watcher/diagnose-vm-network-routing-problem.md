@@ -1,5 +1,6 @@
 ---
-title: Diagnozowanie problemu z routingiem sieciowym na maszynie wirtualnej — samouczek — Azure Portal | Microsoft Docs
+title: 'Samouczek: diagnozowanie problemu z routingiem sieci maszyn wirtualnych — Azure Portal'
+titleSuffix: Azure Network Watcher
 description: Korzystając z tego samouczka, dowiesz się, jak diagnozować problemy z routingiem sieciowym na maszynie wirtualnej przy użyciu funkcji określania następnego przeskoku w usłudze Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684513"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276044"
 ---
-# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Samouczek: Diagnozowanie problemu routingu sieci maszyny wirtualnej przy użyciu witryny Azure portal
+# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Samouczek: diagnozowanie problemu z routingiem sieciowym na maszynie wirtualnej przy użyciu witryny Azure Portal
 
 Podczas wdrażania maszyny wirtualnej na platformie Azure jest tworzonych kilka domyślnych tras. Możesz tworzyć trasy niestandardowe zastępujące domyślne trasy platformy Azure. Czasami użycie trasy niestandardowej może spowodować niepowodzenie komunikacji między maszyną wirtualną a innymi zasobami. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -50,7 +51,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVm|
+    |Nazwa|myVm|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Subskrypcja| Wybierz subskrypcję.|
@@ -89,7 +90,7 @@ Na platformie Azure są automatycznie tworzone trasy do domyślnych miejsc docel
     | Maszyna wirtualna         | Wybierz pozycję myVm                                            |
     | Interfejs sieciowy       | myvm — nazwa interfejsu sieciowego może się różnić.   |
     | Źródłowy adres IP       | 10.0.0.4                                               |
-    | Docelowy adres IP  | 13.107.21.200 — jeden z adresów dla < www.bing.com>. |
+    | Docelowy adres IP  | 13.107.21.200 — jeden z adresów dla < www. Bing. com >. |
 
     ![Następny przeskok](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -114,9 +115,9 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z tym samouczkiem utworzono maszynę wirtualną i zdiagnozowano routing sieciowy z tej maszyny wirtualnej. Uzyskano informacje o tworzeniu tras domyślnych na platformie Azure i przetestowano routing do dwóch różnych miejsc docelowych. Uzyskaj więcej informacji na temat [routingu na platformie Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dowiedz się, jak [tworzyć trasy niestandardowe](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 

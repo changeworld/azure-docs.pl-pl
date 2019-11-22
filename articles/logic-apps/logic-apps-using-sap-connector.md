@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 6067a60ed2883ea358dbdfff523b9224175bc5c2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 90348ad05879aff75dadab85af4e905d92228a2d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113479"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287122"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z Azure Logic Apps
 
 > [!IMPORTANT]
-> Na wcześniejszym etapie serwera aplikacji SAP oraz łączników serwera komunikatów SAP zaplanowano zaniechanie 30 listopada 2019. Bieżący łącznik SAP konsoliduje te poprzednie łączniki SAP, aby nie trzeba było zmieniać typu połączenia, jest w pełni zgodny z poprzednimi łącznikami, zapewnia wiele dodatkowych możliwości i nadal korzysta z biblioteki łącznika SAP .NET ( SAP NCo).
+> Starsze łączniki serwera aplikacji SAP i serwera komunikatów SAP zaplanowano jako przestarzałe 29 lutego 2020. Bieżący łącznik SAP konsoliduje te poprzednie łączniki SAP, aby nie trzeba było zmieniać typu połączenia, jest w pełni zgodny z poprzednimi łącznikami, zapewnia wiele dodatkowych możliwości i nadal korzysta z biblioteki łącznika SAP .NET ( SAP NCo).
 >
 > W przypadku aplikacji logiki korzystających ze starszych łączników należy [przeprowadzić migrację do najnowszego łącznika](#migrate) przed datą zakończenia. W przeciwnym razie te aplikacje logiki będą powodować błędy wykonywania i nie będą mogły wysyłać komunikatów do systemu SAP.
 

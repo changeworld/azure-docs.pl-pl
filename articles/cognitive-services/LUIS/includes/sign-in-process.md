@@ -10,18 +10,19 @@ ms.subservice: luis
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 1effd07cef439a6257028549b7b7114b742eb478
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5e7feac35ddd607d36cb0ddd3bae10cf1b9bc7a7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488753"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278595"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Zaloguj się do portalu LUIS
 
 Nowy użytkownik do LUIS musi wykonać następującą procedurę:
 
-1. Zaloguj się do [portalu Luis](https://www.luis.ai), wybierz swój kraj i zaakceptuj warunki użytkowania.
+1. Zaloguj się do [portalu Luis (wersja zapoznawcza)](https://preview.luis.ai), wybierz swój kraj i zaakceptuj warunki użytkowania. Jeśli zamiast tego zobaczysz **Moje aplikacje** , zasób Luis już istnieje i należy przejść do sekcji Tworzenie aplikacji.
+
 1. Wybierz pozycję **Utwórz zasób platformy Azure** , a następnie wybierz pozycję **Utwórz zasób autorstwa, aby przeprowadzić migrację aplikacji do programu.**
 
     ![Wybierz typ zasobu Language Understanding tworzenia](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)

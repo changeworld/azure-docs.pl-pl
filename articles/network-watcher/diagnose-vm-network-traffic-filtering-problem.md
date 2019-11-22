@@ -1,5 +1,6 @@
 ---
-title: Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej — Szybki start — Azure Portal | Microsoft Docs
+title: 'Szybki Start: diagnozowanie problemu z filtrem ruchu sieciowego maszyny wirtualnej — Azure Portal'
+titleSuffix: Azure Network Watcher
 description: W tym przewodniku Szybki start zawarto informacje na temat sposobu diagnozowania problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu możliwości weryfikowania przepływu adresów IP w usłudze Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702891"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276010"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Szybki start: Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu witryny Azure Portal
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Szybki start: diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu witryny Azure Portal
 
 W tym przewodniku Szybki start wdrożysz maszynę wirtualną, a następnie sprawdzisz komunikację z adresem IP i adresem URL oraz komunikację z adresu IP. Określisz przyczynę niepowodzenia komunikacji oraz sposób rozwiązania problemu.
 
@@ -42,7 +43,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVm|
+    |Nazwa|myVm|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Subskrypcja| Wybierz subskrypcję.|
@@ -72,7 +73,7 @@ Jeśli masz już włączoną usługę Network Watcher co najmniej w jednym regio
 
 Podczas tworzenia maszyny wirtualnej platforma Azure domyślnie zezwala na i blokuje ruch sieciowy do i z maszyny wirtualnej. Domyślne ustawienia platformy Azure można później zastąpić, aby zezwalać lub nie zezwalać na dodatkowe typy ruchu.
 
-1. W portalu wybierz pozycję **Wszystkie usługi**. W polu *Filtr* w obszarze **Wszystkie usługi** wprowadź ciąg *Network Watcher*. Gdy w wynikach pojawi się nazwa **Network Watcher**, wybierz ją.
+1. W portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** w obszarze *Wszystkie usługi* wprowadź ciąg *Network Watcher*. Gdy w wynikach pojawi się nazwa **Network Watcher**, wybierz ją.
 2. W obszarze **Narzędzia do diagnostyki sieci** wybierz pozycję **Weryfikowanie przepływu adresów IP**.
 3. Wybierz subskrypcję, wpisz lub wybierz następujące wartości, a następnie wybierz pozycję **Sprawdź**, jak pokazano na poniższej ilustracji:
 
@@ -82,10 +83,10 @@ Podczas tworzenia maszyny wirtualnej platforma Azure domyślnie zezwala na i blo
     | Maszyna wirtualna   | Wybierz pozycję myVm                                                                                       |
     | Interfejs sieciowy | myvm — nazwa interfejsu sieciowego utworzonego w portalu podczas tworzenia maszyny wirtualnej jest inna. |
     | Protokół          | TCP                                                                                               |
-    | Direction         | Wychodzący                                                                                          |
+    | Kierunek         | Wychodzący                                                                                          |
     | Lokalny adres IP  | 10.0.0.4                                                                                          |
     | Port lokalny      | 60000                                                                                                |
-    | Zdalny adres IP | 13.107.21.200 — jeden z adresów dla < www.bing.com>.                                             |
+    | Zdalny adres IP | 13.107.21.200 — jeden z adresów dla < www. Bing. com >.                                             |
     | Port zdalny       | 80                                                                                                |
 
     ![Weryfikowanie przepływu adresów IP](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
@@ -120,9 +121,9 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki utworzono maszynę wirtualną i zdiagnozowano filtry przychodzącego i wychodzącego ruchu sieciowego. Wiesz już, że reguły sieciowej grupy zabezpieczeń zezwalają na lub blokują ruch do i z maszyny wirtualnej. Dowiedz się więcej o [regułach zabezpieczeń](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) oraz [tworzeniu reguł zabezpieczeń](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 

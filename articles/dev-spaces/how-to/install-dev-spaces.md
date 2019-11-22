@@ -1,20 +1,16 @@
 ---
 title: Instalowanie Azure Dev Spaces na AKS i narzędzi po stronie klienta
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/24/2019
 ms.topic: conceptual
 description: Dowiedz się, jak zainstalować Azure Dev Spaces w klastrze AKS i zainstalować narzędzia po stronie klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 642d4406840f1748c3b6cbb4441227fff0c6d721
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
-ms.translationtype: MT
+ms.openlocfilehash: c62fe38a12b5ec279bc51fe8bc0d340e2f439200
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494845"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280054"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Instalowanie Azure Dev Spaces na AKS i narzędzi po stronie klienta
 
@@ -25,9 +21,9 @@ W tym artykule przedstawiono kilka sposobów instalowania Azure Dev Spaces w kla
 Aby można było zainstalować miejsca deweloperskie za pomocą interfejsu wiersza polecenia, potrzebne są:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto][az-portal-create-account].
 * [Zainstalowano interfejs wiersza polecenia platformy Azure][install-cli].
-* [Klaster AKS][create-aks-cli] w obsługiwanym [regionie][supported-regions].
+* [Klaster AKS][create-aks-cli] w [obsługiwanym regionie][supported-regions].
 
-`use-dev-spaces` Użyj polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami.
+Użyj `use-dev-spaces` polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami.
 
 ```cmd
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
@@ -53,18 +49,18 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces` Polecenie instaluje również interfejs wiersza polecenia Azure dev Spaces.
+Polecenie `use-dev-spaces` instaluje również interfejs wiersza polecenia Azure Dev Spaces.
 
 ## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Instalowanie Azure Dev Spaces przy użyciu Azure Portal
 
 Aby można było zainstalować miejsca deweloperskie przy użyciu Azure Portal, potrzebne są:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto][az-portal-create-account].
-* [Klaster AKS][create-aks-portal] w obsługiwanym [regionie][supported-regions].
+* [Klaster AKS][create-aks-portal] w [obsługiwanym regionie][supported-regions].
 
 Aby zainstalować Azure Dev Spaces przy użyciu Azure Portal:
 1. Zaloguj się w witrynie [Azure Portal][az-portal].
 1. Przejdź do klastra AKS.
-1. Kliknij pozycję spacje dla *deweloperów*.
+1. Kliknij pozycję *spacje dla deweloperów*.
 1. Zmień *wartość opcji* *Włącz funkcję miejsca* do tworzenia i kliknij przycisk *Zapisz*.
 
 ![Włącz funkcję Spaces dev w Azure Portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)

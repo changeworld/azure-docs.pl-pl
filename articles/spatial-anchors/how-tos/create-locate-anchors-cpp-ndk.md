@@ -1,19 +1,19 @@
 ---
-title: Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzenny w C++/NDK | Microsoft Docs
+title: Tworzenie & lokalizowania kotwic w C++/NDK
 description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu kotwic przestrzennych platformy Azure w C++/NDK.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562544"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270284"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzenny w C++/NDK
 
@@ -274,7 +274,7 @@ Dowiedz się więcej o metodzie [GetAnchorPropertiesAsync](https://docs.microsof
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Dowiedz się więcej [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) o metodzie wygasania.
+Dowiedz się więcej o metodzie [wygasania](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) .
 
 ```cpp
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
@@ -285,7 +285,7 @@ Dowiedz się więcej [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/c
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Dowiedz się więcej [o metodzie](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher) .
+Dowiedz [się więcej o metodzie](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher) .
 
 ```cpp
     auto criteria = std::make_shared<AnchorLocateCriteria>();
@@ -341,7 +341,7 @@ Dowiedz się więcej o metodzie [stop](https://docs.microsoft.com/cpp/api/spatia
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Dowiedz się więcej [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) o metodzie resetowania.
+Dowiedz się więcej o metodzie [resetowania](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) .
 
 ```cpp
     cloudSession_->Reset();

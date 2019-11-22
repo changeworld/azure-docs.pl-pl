@@ -3,18 +3,18 @@ title: Programowe tworzenie zasad
 description: W tym artykule opisano proces programowego tworzenia i zarządzanie zasadami dotyczącymi usługi Azure Policy.
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bc97eac8f66a3c289bb22bfac8617177d60b4583
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959416"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267240"
 ---
 # <a name="programmatically-create-policies"></a>Programowe tworzenie zasad
 
 W tym artykule opisano za pośrednictwem programowe tworzenie zasad i zarządzanie nimi. Definicje Azure Policy wymuszają różne reguły i efekty dotyczące zasobów. Wymuszania gwarantuje, że zasoby pozostają zgodne ze standardami firmy i umów dotyczących poziomu usług.
 
-Aby uzyskać informacje o zgodności, zobacz [pobierania danych zgodności](getting-compliance-data.md).
+Aby uzyskać informacje o zgodności, zobacz [pobierania danych zgodności](get-compliance-data.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

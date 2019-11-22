@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 12e6d292779d497d907bb68eece3fc2338f072fd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602059"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286543"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks
 
@@ -102,7 +102,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
     Zaakceptuj pozostałe wartości domyślne poza następującymi:
 
    * Wprowadź nazwę klastra.
-   * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **5,2** .
+   * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **6,0** .
    * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po \_\_ min nieaktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
 
    Wybierz pozycję proces roboczy klastra i rozmiar węzła sterownika odpowiednie dla kryteriów technicznych i [budżetu](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).
@@ -178,7 +178,7 @@ W tym samouczku użyjemy [interfejsów API usługi Azure Cognitive Services anal
    - Wybierz warstwę cenową usługi. Więcej informacji na temat cen usług Cognitive Services zawiera [strona z cennikiem](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
    - Określ, czy chcesz utworzyć nową grupę zasobów, czy wybrać istniejącą grupę.
 
-     Wybierz pozycję **Utwórz**.
+     Wybierz **tworzenie**.
 
 5. Po utworzeniu konta na karcie **Przegląd** wybierz pozycję **Pokaż klucze dostępu**.
 
@@ -207,7 +207,7 @@ W tej sekcji w obszarze roboczym usługi Databricks zostaną utworzone dwa notes
 
     ![Tworzenie notesu w kostkach](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Tworzenie notesu w kostkach")
 
-    Wybierz pozycję **Utwórz**.
+    Wybierz **tworzenie**.
 
 3. Powtórz te kroki, aby utworzyć notes **AnalyzeTweetsFromEventHub**.
 

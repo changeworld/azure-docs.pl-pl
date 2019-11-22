@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669092"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304747"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w Azure App Service
 <a name="Overview"></a>
@@ -249,6 +250,10 @@ Po zapisaniu tego ustawienia określony procent klientów jest losowo kierowany 
 
 Po automatycznym przekierowaniu klienta do określonego gniazda zostanie on przypięty do tego gniazda w okresie istnienia sesji klienta. W przeglądarce klienta możesz sprawdzić, do którego gniazda sesja jest przypięta, przeglądając plik cookie `x-ms-routing-name` w nagłówkach HTTP. Żądanie kierowane do gniazda "przemieszczania" ma `x-ms-routing-name=staging`plików cookie. Żądanie przesyłane do miejsca produkcyjnego ma `x-ms-routing-name=self`plików cookie.
 
+   > [!NOTE]
+   > W witrynie Azure Portal możesz również użyć [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) polecenie w interfejsie wiersza polecenia platformy Azure, aby ustawić wartości procentowe routingu z narzędzi Ci/CD, takich jak potoki DevOps lub inne systemy automatyzacji.
+   > 
+
 ### <a name="route-production-traffic-manually"></a>Ręczne kierowanie ruchu produkcyjnego
 
 Oprócz automatycznego routingu ruchu App Service mogą kierować żądania do określonego gniazda. Jest to przydatne, jeśli chcesz, aby użytkownicy mogli wyrazić zgodę na lub zrezygnować z aplikacji w wersji beta. Aby ręcznie skierować ruch produkcyjny, należy użyć `x-ms-routing-name` parametru zapytania.
@@ -290,7 +295,7 @@ Azure PowerShell to moduł, który udostępnia polecenia cmdlet do zarządzania 
 Informacje o instalowaniu i konfigurowaniu Azure PowerShell oraz o uwierzytelnianiu Azure PowerShell z subskrypcją platformy Azure znajdują się w temacie [How to Install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
-### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```

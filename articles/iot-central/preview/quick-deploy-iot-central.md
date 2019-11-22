@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c639cb059d773042b7f45160dea18bfc2130cae9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fcaf694e7a628232ea252585d6d9a507a9850da
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893809"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287050"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Tworzenie aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -46,13 +46,13 @@ Aby utworzyć nową aplikację usługi Azure IoT Central:
 
 1. Wybierz, czy chcesz utworzyć tę aplikację przy użyciu 7-dniowej bezpłatnej wersji próbnej, czy użyć subskrypcji płatnej zgodnie z rzeczywistym użyciem.
     - **Wersje próbne** aplikacji są bezpłatne przez siedem dni i obsługują maksymalnie pięć urządzeń. W dowolnym momencie przed wygaśnięciem można przekonwertować te aplikacje na typ Płatność zgodnie z rzeczywistym użyciem. W przypadku tworzenia aplikacji w wersji próbnej należy wprowadzić informacje kontaktowe i zdecydować, czy otrzymywać informacje i porady od firmy Microsoft.
-    - W przypadku aplikacji obsługujących **płatność zgodnie z rzeczywistym** użyciem opłaty są naliczane na podstawie poszczególnych urządzeń, przy czym dwa pierwsze urządzenia są bezpłatne. Dowiedz się więcej o [cenach IoT Central](https://aka.ms/iotcentral-pricing). W przypadku tworzenia aplikacji z opcją płatność zgodnie z rzeczywistym użyciem należy wybrać *katalog*, *subskrypcję platformy Azure*i *region*:
+    - W przypadku aplikacji obsługujących **płatność zgodnie z rzeczywistym** użyciem opłaty są naliczane na podstawie poszczególnych urządzeń, przy czym dwa pierwsze urządzenia są bezpłatne. Dowiedz się więcej o [cenach IoT Central](https://aka.ms/iotcentral-pricing). W przypadku tworzenia aplikacji z opcją płatność zgodnie z rzeczywistym użyciem należy wybrać *katalog*, *subskrypcję platformy Azure*i *lokalizację*:
         - *Katalog* jest Azure Active Directory (AAD), w którym utworzysz aplikację. Usługa Azure AD zawiera tożsamości użytkowników, poświadczenia i inne informacje o organizacji. Jeśli nie masz usługi Azure AD, po utworzeniu subskrypcji platformy Azure zostanie utworzona jedna z nich.
         - *Subskrypcja platformy Azure* umożliwia tworzenie wystąpień usług platformy Azure. IoT Central udostępniają zasoby w ramach subskrypcji. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie tworzenia konta platformy Azure](https://aka.ms/createazuresubscription). Po utworzeniu subskrypcji platformy Azure przejdź z powrotem do strony **Tworzenie aplikacji** . Nowa subskrypcja zostanie wyświetlona na liście rozwijanej **subskrypcja platformy Azure** .
-        - *Region* to fizyczna lokalizacja, w której będą przechowywane dane urządzeń. Zazwyczaj należy wybrać region, który jest fizycznie najbliższy urządzenia, aby uzyskać optymalną wydajność, a także zapewnić zgodność danych. Po wybraniu regionu nie można później przenieść aplikacji do innego regionu.
+        - *Lokalizacja jest lokalizacją* geograficzną, [w której chcesz](https://azure.microsoft.com/global-infrastructure/geographies/) utworzyć aplikację. Zazwyczaj należy wybrać lokalizację, która jest fizycznie najbliżej Twoich urządzeń, aby uzyskać optymalną wydajność. Usługa Azure IoT Central w publicznej wersji zapoznawczej jest obecnie dostępna w **Stany Zjednoczone**lub w **Europie**. Po wybraniu lokalizacji nie można przenieść aplikacji do innej lokalizacji później.
 
         > [!NOTE]
-        > W publicznej wersji zapoznawczej jedyne dostępne regiony dla **aplikacji w wersji zapoznawczej** to **Europa Północna** i **środkowe stany USA**.
+        > W publicznej wersji zapoznawczej jedyne dostępne lokalizacje dla **aplikacji w wersji zapoznawczej** to **Europa** i **Stany Zjednoczone**.
 
 1. Przejrzyj warunki i postanowienia, a następnie wybierz pozycję **Utwórz** w dolnej części strony.
 

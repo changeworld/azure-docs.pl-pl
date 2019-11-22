@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b222e67d06bc9fa0fabcc0bc3c0ddd2c6855fbc3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062258"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271303"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak zarządzać lokalną grupą administratorów na urządzeniach dołączonych do usługi Azure AD
 
@@ -24,7 +24,7 @@ Aby zarządzać urządzeniem z systemem Windows, musisz być członkiem lokalnej
 
 W tym artykule wyjaśniono, jak działa aktualizacja członkostwa oraz jak można ją dostosować podczas dołączania do usługi Azure AD. Zawartość tego artykułu nie ma zastosowania do **hybrydowego** sprzężenia usługi Azure AD.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Po połączeniu urządzenia z systemem Windows z usługą Azure AD przy użyciu funkcji Azure AD Join usługa Azure AD dodaje następujące zasady zabezpieczeń do lokalnej grupy administratorów na urządzeniu:
 
@@ -48,7 +48,7 @@ Aby wyświetlić i zaktualizować członkostwo roli administratora globalnego, z
 W Azure Portal można zarządzać rolą administratora urządzenia na stronie **urządzenia** . Aby otworzyć stronę **urządzenia** :
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny lub administrator urządzeń.
-1. Na lewym pasku nawigacyjnym kliknij pozycję **Azure Active Directory**. 
+1. Wyszukaj i wybierz *Azure Active Directory*.
 1. W sekcji **Zarządzanie** kliknij pozycję **urządzenia**.
 1. Na stronie **urządzenia** kliknij pozycję **Ustawienia urządzenia**.
 

@@ -1,21 +1,21 @@
 ---
-title: Szybki Start — Tworzenie aplikacji platformy Xamarin dla systemu Android przy użyciu kotwic Azure przestrzennego | Microsoft Docs
+title: 'Szybki Start: Tworzenie aplikacji platformy Xamarin dla systemu Android'
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć aplikację dla systemu Android za pomocą platformy Xamarin przy użyciu kotwic przestrzennych.
 author: craigktreasure
-manager: virivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0958961f1e66be130dd2be816f6002dd34465dc6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2976104c72179fede3b39816663ac8196d7539ec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931658"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277011"
 ---
-# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji platformy Xamarin dla systemu Android przy użyciu kotwic Azure
+# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji dla systemu Android z zakotwiczeniami przestrzennymi platformy Azure
 
 W tym przewodniku szybki start opisano sposób tworzenia aplikacji systemu Android przy użyciu funkcji [Azure przestrzenny kotwic](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Po zakończeniu będziesz mieć aplikację systemu Android, która będzie mogła zapisywać i odwoływać kotwicę przestrzenną.
 
@@ -71,25 +71,25 @@ Ustaw projekt startowy na **SampleXamarin. Android**, Zmień **konfigurację roz
 
 ![Konfiguracja programu Visual Studio](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-Wybierz kolejno opcje **Debuguj** > **Rozpocznij debugowanie** , aby wdrożyć i uruchomić aplikację.
+Wybierz pozycję **debuguj** > **Rozpocznij debugowanie** , aby wdrożyć i uruchomić aplikację.
 
 # <a name="macostabdeploy-macos"></a>[macOS](#tab/deploy-macos)
 
 ![Konfiguracja programu Visual Studio](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Wybierz pozycję **Uruchom** > **Uruchom bez debugowania** , aby wdrożyć i uruchomić aplikację.
+Wybierz pozycję **uruchom** > **Uruchom bez debugowania** , aby wdrożyć i uruchomić aplikację.
 
 ---
 
 W aplikacji wybierz pozycję **podstawowa** , aby uruchomić demonstrację, i postępuj zgodnie z instrukcjami, aby umieścić i odwołać kotwicę.
 
-> ![Zrzut ekranu](./media/get-started-xamarin-android/screenshot-1.jpg)
-> 1![zrzut](./media/get-started-xamarin-android/screenshot-2.jpg)
-> ekranu2![zrzut ekranu 3](./media/get-started-xamarin-android/screenshot-3.jpg)
+> Zrzut ekranu ![1](./media/get-started-xamarin-android/screenshot-1.jpg)
+> ![zrzut ekranu 2](./media/get-started-xamarin-android/screenshot-2.jpg)
+> ![zrzut ekranu 3](./media/get-started-xamarin-android/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udostępnianie kotwic przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)

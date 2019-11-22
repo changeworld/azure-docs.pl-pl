@@ -1,5 +1,6 @@
 ---
-title: Analizowanie zabezpieczeń sieci za pomocą usługi Azure Network Watcher widok grupy zabezpieczeń — PowerShell | Microsoft Docs
+title: Analizowanie zabezpieczeń sieci — widok grupy zabezpieczeń-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: W tym artykule opisano, jak za pomocą programu PowerShell analizować zabezpieczenia maszyn wirtualnych za pomocą widoku grupy zabezpieczeń.
 services: network-watcher
 documentationcenter: na
@@ -14,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4c7b79460169612a046b19a4d66f222936710a8e
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3127d60263437a18e0c8d9a98ebdfad31049c58d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163897"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277914"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analizowanie zabezpieczeń maszyny wirtualnej za pomocą widoku grupy zabezpieczeń przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
-> - [PowerShell](network-watcher-security-group-view-powershell.md)
+> - [Program PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
@@ -35,7 +36,7 @@ Widok grupy zabezpieczeń umożliwia skonfigurowanie skonfigurowanych i obowiąz
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym scenariuszu należy uruchomić `Get-AzNetworkWatcherSecurityGroupView` polecenie cmdlet w celu pobrania informacji o regułach zabezpieczeń.
+W tym scenariuszu należy uruchomić polecenie cmdlet `Get-AzNetworkWatcherSecurityGroupView`, aby pobrać informacje o regule zabezpieczeń.
 
 W tym scenariuszu założono, że wykonano już kroki opisane w temacie [tworzenie Network Watcher](network-watcher-create.md) w celu utworzenia Network Watcher.
 
@@ -45,7 +46,7 @@ Scenariusz opisany w tym artykule umożliwia pobranie skonfigurowanych i obowią
 
 ## <a name="retrieve-network-watcher"></a>Retrieve Network Watcher
 
-Pierwszym krokiem jest pobranie wystąpienia Network Watcher. Ta zmienna jest przenoszona do `Get-AzNetworkWatcherSecurityGroupView` polecenia cmdlet.
+Pierwszym krokiem jest pobranie wystąpienia Network Watcher. Ta zmienna jest przenoszona do polecenia cmdlet `Get-AzNetworkWatcherSecurityGroupView`.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -53,7 +54,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Pobierz maszynę wirtualną
 
-Aby uruchomić polecenie cmdlet w programie, `Get-AzNetworkWatcherSecurityGroupView` wymagana jest maszyna wirtualna. Poniższy przykład pobiera obiekt maszyny wirtualnej.
+Aby uruchomić polecenie cmdlet `Get-AzNetworkWatcherSecurityGroupView` w programie, wymagana jest maszyna wirtualna. Poniższy przykład pobiera obiekt maszyny wirtualnej.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1

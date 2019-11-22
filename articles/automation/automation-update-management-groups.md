@@ -1,22 +1,22 @@
 ---
 title: Korzystanie z grup dynamicznych za pomocą usługi Azure Update Management
-description: Opisuje sposób działania grup dynamicznych z Update Management
+description: W tym artykule opisano sposób działania grup dynamicznych z Azure Automation Update Management.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 10/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc4384be0f1dc73f2e7e098114080d304d92ce8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 022c2061febb54666acee1cfed4ec595421660a3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377748"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278709"
 ---
-# <a name="use-dynamic-groups-with-update-management"></a>Używanie grup dynamicznych z Update Management
+# <a name="use-dynamic-groups-with-update-management"></a>Używanie grup dynamicznych z rozwiązaniem Update Management
 
 Update Management umożliwia kierowanie do dynamicznych grup platformy Azure lub maszyn wirtualnych innych niż platformy Azure na potrzeby wdrożeń aktualizacji. Te grupy są oceniane w czasie wdrażania, aby nie trzeba było edytować wdrożenia w celu dodania maszyn.
 
@@ -27,7 +27,7 @@ Te grupy są definiowane przez zapytanie, po rozpoczęciu wdrożenia aktualizacj
 * Subskrypcja
 * Grupy zasobów
 * Lokalizacje
-* Tagi
+* `Tags`
 
 ![Wybieranie grup](./media/automation-update-management/select-groups.png)
 
@@ -37,7 +37,7 @@ Aby wyświetlić podgląd wyników grupy dynamicznej, kliknij przycisk **Podglą
 
 ## <a name="non-azure-machines"></a>Maszyny spoza platformy Azure
 
-W przypadku maszyn spoza platformy Azure zapisane wyszukiwania są określane również jako grupy komputerów, które są używane do tworzenia grupy dynamicznej. Aby dowiedzieć się, jak utworzyć zapisane wyszukiwanie, zobacz [Tworzenie grupy komputerów](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po utworzeniu grupy możesz wybrać ją z listy zapisanych wyszukiwań. Kliknij pozycję **Podgląd** , aby wyświetlić w tym momencie komputery z zapisanym wyszukiwaniem.
+W przypadku maszyn spoza platformy Azure zapisane wyszukiwania są również określane jako grupy komputerów, które są używane do tworzenia grupy dynamicznej. Aby dowiedzieć się, jak utworzyć zapisane wyszukiwanie, zobacz [Tworzenie grupy komputerów](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po utworzeniu grupy możesz wybrać ją z listy zapisanych wyszukiwań. Kliknij pozycję **Podgląd** , aby wyświetlić w tym momencie komputery z zapisanym wyszukiwaniem.
 
 ![Wybieranie grup](./media/automation-update-management/select-groups-2.png)
 

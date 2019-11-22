@@ -12,42 +12,44 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 108dab4bbdec4e821270565860095187eaceb788
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: fca055558f8c2e0da4041b367ede70974872e640
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214954"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280955"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
 Za pomocą usługi Azure Load Balancer możesz skalować aplikacje i zapewniać wysoką dostępność swoich usług. Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego, udostępnia małe opóźnienia i wysoką przepływność oraz skaluje nawet miliony przepływów dla wszystkich aplikacji protokołu TCP i UDP.
 
-Load Balancer distributes new inbound flows that arrive at the Load Balancer's front end to back-end pool instances, according to specified rules and health probes.
+Load Balancer dystrybuuje Nowe przepływy przychodzące, które docierają do wystąpień puli zaplecza Load Balancer, zgodnie z określonymi regułami i sondami kondycji.
 
-A public Load Balancer can provide outbound connections for virtual machines (VMs) inside your virtual network by translating their private IP addresses to public IP addresses.
+Publiczna Load Balancer może zapewnić połączenia wychodzące maszyn wirtualnych w sieci wirtualnej przez przetłumaczenie ich prywatnych adresów IP na publiczne adresy IP.
 
-Azure Load Balancer is available in two pricing tiers or *SKUs*: Basic and Standard. Istnieją różnice w ich skalowalności, funkcjach i cenach. Any scenario that's possible with Basic Load Balancer can also be created with Standard Load Balancer, although the approaches differ slightly. As you learn about Load Balancer, familiarize yourself with the fundamentals and the SKU-specific differences.
+Azure Load Balancer jest dostępna w dwóch warstwach cenowych lub jednostkach *SKU*: podstawowa i standardowa. Istnieją różnice w ich skalowalności, funkcjach i cenach. Dowolny scenariusz, który jest możliwy w przypadku podstawowego Load Balancer można również utworzyć za pomocą usługa Load Balancer w warstwie Standardowa, chociaż podejścia różnią się nieznacznie. Korzystając z informacji o Load Balancer, zapoznaj się z podstawą i różnicami specyficznymi dla jednostki SKU.
 
 ## <a name="why-use-load-balancer"></a>Dlaczego warto używać modułu równoważenia obciążenia?
 
 Usługa Azure Load Balancer umożliwia:
 
-* Load balance incoming internet traffic to your VMs. This configuration is known as a [public Load Balancer](#publicloadbalancer).
-* Load balance traffic across VMs inside a virtual network. Możesz również uzyskać dostęp do frontonu modułu równoważenia obciążenia z sieci lokalnej w scenariuszu hybrydowym. Both of these scenarios use a configuration that is known as an [internal Load Balancer](#internalloadbalancer).
+* Równoważenie obciążenia przychodzącego ruchu internetowego do maszyn wirtualnych. Ta konfiguracja jest znana jako [publiczna Load Balancer](#publicloadbalancer).
+* Równoważenie obciążenia ruchu między maszynami wirtualnymi w sieci wirtualnej. Możesz również uzyskać dostęp do frontonu modułu równoważenia obciążenia z sieci lokalnej w scenariuszu hybrydowym. Oba te scenariusze używają konfiguracji, która jest znana jako [wewnętrzna Load Balancer](#internalloadbalancer).
 * Przekazywanie ruchu do określonego portu w ramach określonych maszyn wirtualnych za pomocą reguł translatora adresów sieciowych.
 * Zapewnianie [łączności wychodzącej](load-balancer-outbound-connections.md) dla maszyn wirtualnych w ramach Twojej sieci wirtualnej przy użyciu publicznego modułu równoważenia obciążenia.
 
 >[!NOTE]
-> Platforma Azure udostępnia zestaw w pełni zarządzanych rozwiązań do równoważenia obciążenia dla Twoich scenariuszy. If you're looking for Transport Layer Security (TLS) protocol termination ("SSL offload") or per-HTTP/HTTPS request, application-layer processing, see [What is Azure Application Gateway](../application-gateway/application-gateway-introduction.md). If you're looking for global DNS load balancing, see [What is Traffic Manager](../traffic-manager/traffic-manager-overview.md). Your end-to-end scenarios may benefit from combining these solutions.
+> Platforma Azure udostępnia zestaw w pełni zarządzanych rozwiązań do równoważenia obciążenia dla Twoich scenariuszy. Jeśli szukasz zakończenia protokołu Transport Layer Security (TLS) ("odciążanie protokołu SSL") lub żądania dla protokołu HTTP/HTTPS, przetwarzanie warstwy aplikacji, zobacz [co to jest usługa Azure Application Gateway](../application-gateway/overview.md). Jeśli szukasz globalnego równoważenia obciążenia DNS, zobacz [co to jest > Traffic Manager](../traffic-manager/traffic-manager-overview.md). Kompleksowe scenariusze mogą przynieść korzyści wynikające z łączenia tych rozwiązań.
+>
+> Aby zapoznać się z porównaniem opcji równoważenia obciążenia platformy Azure, zobacz [Omówienie opcji równoważenia obciążenia na platformie Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="what-are-load-balancer-resources"></a>Czym są zasoby modułu równoważenia obciążenia?
 
-Load Balancer resources are objects specifying how Azure should program its multi-tenant infrastructure to achieve the scenario that you want to create. There's no direct relationship between Load Balancer resources and actual infrastructure. Tworzenie modułu równoważenia obciążenia nie powoduje utworzenia wystąpienia, a pojemność jest zawsze dostępna.
+Zasoby Load Balancer to obiekty określające, w jaki sposób platforma Azure powinna programować infrastrukturę z wieloma dzierżawcami w celu osiągnięcia scenariusza, który ma zostać utworzony. Nie istnieje bezpośredni związek między zasobami Load Balancer i rzeczywistą infrastrukturą. Tworzenie modułu równoważenia obciążenia nie powoduje utworzenia wystąpienia, a pojemność jest zawsze dostępna.
 
-A Load Balancer resource can be either a public Load Balancer or an internal Load Balancer. The Load Balancer resource's functions are defined by a front end, a rule, a health probe, and a back-end pool definition. You place VMs in the back-end pool by specifying the back-end pool from the VM.
+Zasób Load Balancer może być Load Balancerem publicznym lub Load Balancer wewnętrznym. Funkcje zasobu Load Balancer są definiowane za pomocą frontonu, reguły, sondy kondycji i definicji puli zaplecza. Maszyny wirtualne są umieszczane w puli zaplecza przez określenie puli zaplecza z maszyny wirtualnej.
 
 ## <a name="fundamental-load-balancer-features"></a>Podstawowe funkcje modułu równoważenia obciążenia
 
@@ -55,11 +57,11 @@ Moduł równoważenia obciążenia zapewnia następujące podstawowe możliwośc
 
 * **Równoważenie obciążenia**
 
-  With Azure Load Balancer, you can create a load-balancing rule to distribute traffic that arrives at the front end to back-end pool instances. Load Balancer uses a hashing algorithm for distribution of inbound flows and rewrites the headers of flows to back-end pool instances. A server is available to receive new flows when a health probe indicates a healthy back-end endpoint.
+  Za pomocą Azure Load Balancer można utworzyć regułę równoważenia obciążenia w celu dystrybucji ruchu, który dociera do frontonu z wystąpieniami puli zaplecza. Load Balancer używa algorytmu wyznaczania wartości skrótu do dystrybucji przepływów przychodzących i ponownie zapisuje nagłówki przepływów w wystąpieniach puli zaplecza. Serwer jest dostępny do odbierania nowych przepływów, gdy sonda kondycji wskazuje dobry punkt końcowy zaplecza.
 
-  By default, Load Balancer uses a 5-tuple hash. The hash includes source IP address, source port, destination IP address, destination port, and IP protocol number to map flows to available servers. You can create affinity to a source IP address by using a 2- or 3-tuple hash for a given rule. Wszystkie pakiety z tego samego przepływu pakietów trafiają do tego samego wystąpienia w ramach frontonu z równoważeniem obciążenia. When the client initiates a new flow from the same source IP, the source port is changed. As a result, the 5-tuple hash might cause the traffic to go to a different back-end endpoint.
+  Domyślnie Load Balancer używa skrótu 5-spójnej kolekcji. Skrót zawiera źródłowy adres IP, port źródłowy, docelowy adres IP, port docelowy i numer protokołu IP do mapowania przepływów na dostępne serwery. Można utworzyć koligację ze źródłowym adresem IP przy użyciu algorytmu 2-lub 3-spójnej kolekcji dla danej reguły. Wszystkie pakiety z tego samego przepływu pakietów trafiają do tego samego wystąpienia w ramach frontonu z równoważeniem obciążenia. Gdy klient inicjuje nowy przepływ z tego samego źródłowego adresu IP, port źródłowy zostanie zmieniony. W związku z tym mieszanie 5-krotka może spowodować, że ruch przejdzie do innego punktu końcowego zaplecza.
 
-  For more information, see [Configure the distribution mode for Azure Load Balancer](load-balancer-distribution-mode.md). Na poniższej ilustracji przedstawiono dystrybucję opartą na skrótach:
+  Aby uzyskać więcej informacji, zobacz [Konfigurowanie trybu dystrybucji dla Azure Load Balancer](load-balancer-distribution-mode.md). Na poniższej ilustracji przedstawiono dystrybucję opartą na skrótach:
 
   ![Dystrybucja oparta na skrótach](./media/load-balancer-overview/load-balancer-distribution.png)
 
@@ -67,130 +69,130 @@ Moduł równoważenia obciążenia zapewnia następujące podstawowe możliwośc
 
 * **Przekierowywanie portów**
 
-  With Load Balancer, you can create an inbound NAT rule. This NAT rule forwards traffic from a specific port of a specific front-end IP address to a specific port of a specific back-end instance inside the virtual network. This forwarding is done by the same hash-based distribution as load balancing. Common scenarios for this capability are Remote Desktop Protocol (RDP) or Secure Shell (SSH) sessions to individual VM instances inside an Azure Virtual Network.
+  Za pomocą Load Balancer można utworzyć regułę NAT dla ruchu przychodzącego. Ta reguła NAT przekazuje ruch z określonego portu określonego adresu IP frontonu do określonego portu określonego wystąpienia zaplecza wewnątrz sieci wirtualnej. To przekazywanie odbywa się przy użyciu tego samego rozkładu opartego na wykorzystaniu skrótu co Równoważenie obciążenia. Typowe scenariusze tej możliwości są Remote Desktop Protocol (RDP) lub Secure Shell (SSH) do poszczególnych wystąpień maszyn wirtualnych w ramach Virtual Network platformy Azure.
   
-  You can map multiple internal endpoints to ports on the same front-end IP address. You can use the front-end IP addresses to remotely administer your VMs without an additional jump box.
+  Można mapować wiele wewnętrznych punktów końcowych na porty w ramach tego samego adresu IP frontonu. Korzystając z adresów IP frontonu, można zdalnie administrować maszynami wirtualnymi bez dodatkowego pola skoku.
 
-* **Application independence and transparency**
+* **Niezależność i przezroczystość aplikacji**
 
-  Load Balancer doesn't directly interact with TCP or UDP or the application layer. Any TCP or UDP application scenario can be supported. Load Balancer doesn't terminate or originate flows, interact with the payload of the flow, or provide any application layer gateway function. Protocol handshakes always occur directly between the client and the back-end pool instance. Odpowiedź na przepływ przychodzący to zawsze odpowiedź z maszyny wirtualnej. Po dostarczeniu przepływu do maszyny wirtualnej oryginalny źródłowy adres IP również jest zachowywany.
+  Load Balancer nie wiąże się bezpośrednio z protokołem TCP lub UDP ani warstwą aplikacji. Można obsługiwać dowolny scenariusz aplikacji TCP lub UDP. Load Balancer nie przerywa działania lub nie pochodzą przepływy, współdziałają z ładunkiem przepływu ani nie zapewniają żadnej funkcji bramy warstwy aplikacji. Uzgadnianie protokołu zawsze następuje bezpośrednio między klientem a wystąpieniem puli zaplecza. Odpowiedź na przepływ przychodzący to zawsze odpowiedź z maszyny wirtualnej. Po dostarczeniu przepływu do maszyny wirtualnej oryginalny źródłowy adres IP również jest zachowywany.
 
-  * Na każdy punkt końcowy odpowiada tylko maszyna wirtualna. For example, a TCP handshake always occurs between the client and the selected back-end VM. A response to a request to a front end is a response generated by a back-end VM. When you successfully validate connectivity to a front end, you're validating the end-to-end connectivity to at least one back-end virtual machine.
-  * Application payloads are transparent to Load Balancer. Any UDP or TCP application can be supported. For workloads that require per HTTP request processing or manipulation of application layer payloads, like parsing of HTTP URLs, you should use a layer 7 load balancer like [Application Gateway](https://azure.microsoft.com/services/application-gateway).
-  * Because Load Balancer doesn't interact with the TCP payload and provide TLS offload, you can build end-to-end encrypted scenarios. Using Load Balancer gains large scale-out for TLS applications by terminating the TLS connection on the VM itself. For example, your TLS session keying capacity is only limited by the type and number of VMs you add to the back-end pool. If you require SSL offloading, application layer treatment, or want to delegate certificate management to Azure, use Azure's layer 7 load balancer [Application Gateway](https://azure.microsoft.com/services/application-gateway) instead.
+  * Na każdy punkt końcowy odpowiada tylko maszyna wirtualna. Na przykład uzgadnianie protokołu TCP zawsze występuje między klientem a wybraną maszyną wirtualną zaplecza. Odpowiedź na żądanie do frontonu jest odpowiedzią wygenerowaną przez maszynę wirtualną zaplecza. Po pomyślnym zweryfikowaniu łączności z frontonem jest sprawdzana jest weryfikacja kompleksowej łączności z co najmniej jedną maszyną wirtualną zaplecza.
+  * Ładunki aplikacji są niewidoczne dla Load Balancer. Można obsługiwać dowolną aplikację UDP lub TCP. W przypadku obciążeń wymagających przetwarzania żądań HTTP lub manipulowania ładunkiem warstwy aplikacji, takich jak analizowanie adresów URL HTTP, należy użyć modułu równoważenia obciążenia warstwy 7, takiego jak [Application Gateway](https://azure.microsoft.com/services/application-gateway).
+  * Ponieważ Load Balancer nie współdziała z ładunkiem protokołu TCP i zapewnia odciążanie protokołu TLS, można utworzyć kompleksowe scenariusze z szyfrowaniem. Korzystanie z Load Balancer jest duże i skalowalne w poziomie dla aplikacji TLS przez przerwanie połączenia TLS na samej maszynie wirtualnej. Na przykład pojemność klucza sesji protokołu TLS jest ograniczona tylko przez typ i liczbę maszyn wirtualnych dodawanych do puli zaplecza. Jeśli wymagane jest odciążanie protokołu SSL, przetwarzanie warstwy aplikacji lub delegowanie zarządzania certyfikatami na platformę Azure, zamiast tego należy użyć modułu [Application Gateway](https://azure.microsoft.com/services/application-gateway) równoważenia obciążenia warstwy 7 platformy Azure.
 
 * **Rekonfiguracja automatyczna**
 
-  Moduł równoważenia obciążenia samodzielnie się rekonfiguruje po przeskalowaniu wystąpienia w górę lub w dół. Adding or removing VMs from the back-end pool reconfigures the Load Balancer without additional operations on the Load Balancer resource.
+  Moduł równoważenia obciążenia samodzielnie się rekonfiguruje po przeskalowaniu wystąpienia w górę lub w dół. Dodawanie lub usuwanie maszyn wirtualnych z puli zaplecza ponownie konfiguruje Load Balancer bez dodatkowych operacji na zasobie Load Balancer.
 
 * **Sondy kondycji**
 
-  To determine the health of instances in the back-end pool, Load Balancer uses health probes that you define. Jeśli sonda nie odpowiada, moduł równoważenia obciążenia zaprzestaje inicjowania nowych połączeń z wystąpieniami o złej kondycji. A probe failure doesn't affect existing connections. The connection continues until the application terminates the flow, an idle timeout occurs, or the VM shuts down.
+  Aby określić kondycję wystąpień w puli zaplecza, Load Balancer używa zdefiniowanych przez użytkownika sond kondycji. Jeśli sonda nie odpowiada, moduł równoważenia obciążenia zaprzestaje inicjowania nowych połączeń z wystąpieniami o złej kondycji. Awaria sondy nie ma wpływu na istniejące połączenia. Połączenie będzie kontynuowane, dopóki aplikacja nie zakończy przepływu, wystąpi limit czasu bezczynności lub maszyna wirtualna zostanie zamknięta.
 
-  Load Balancer provides different health probe types for TCP, HTTP, and HTTPS endpoints. For more information, see [Probe types](load-balancer-custom-probe-overview.md#types).
+  Load Balancer oferuje różne typy sond kondycji dla punktów końcowych TCP, HTTP i HTTPS. Aby uzyskać więcej informacji, zobacz [typy sond](load-balancer-custom-probe-overview.md#types).
 
-  When using Classic cloud services, an additional type is allowed: [Guest agent](load-balancer-custom-probe-overview.md#guestagent). A guest agent should be considered to be a health probe of last resort. Microsoft doesn't recommend them if other options are available.
+  W przypadku korzystania z klasycznych usług Cloud Services jest dozwolony dodatkowy typ: [Agent gościa](load-balancer-custom-probe-overview.md#guestagent). Agent gościa powinien być traktowany jako sonda kondycji z ostatniej firmy. Firma Microsoft nie zaleca ich, jeśli są dostępne inne opcje.
 
 * **Połączenia wychodzące (SNAT)**
 
-  All outbound flows from private IP addresses inside your virtual network to public IP addresses on the internet can be translated to a front-end IP address of the Load Balancer. When a public front end is tied to a back-end VM by way of a load-balancing rule, Azure translates outbound connections to the public front-end IP address. This configuration has the following advantages:
+  Wszystkie przepływy wychodzące z prywatnych adresów IP w sieci wirtualnej do publicznych adresów IP w Internecie można przetłumaczyć na adres IP frontonu Load Balancer. Gdy publiczny fronton jest powiązany z maszyną wirtualną zaplecza za pomocą reguły równoważenia obciążenia, platforma Azure tłumaczy połączenia wychodzące na publiczny adres IP frontonu. Ta konfiguracja ma następujące zalety:
 
-  * Easy upgrade and disaster recovery of services, because the front end can be dynamically mapped to another instance of the service.
-  * Easier access control list (ACL) management. ACLs expressed as front-end IPs don't change as services scale up or down or get redeployed. Translating outbound connections to a smaller number of IP addresses than machines reduces the burden of implementing safe recipient lists.
+  * Łatwe uaktualnienie i odzyskiwanie po awarii usług, ponieważ fronton może być dynamicznie mapowany do innego wystąpienia usługi.
+  * Łatwiejsze zarządzanie listami kontroli dostępu (ACL). Listy ACL wyrażone jako adresy IP frontonu nie zmieniają się jako usługi skalowanie w górę lub w dół lub do ponownego wdrożenia. Tłumaczenie połączeń wychodzących na mniejszą liczbę adresów IP niż maszyny zmniejsza obciążenie związane z wdrażaniem bezpiecznych list adresatów.
 
-  For more information, see [Outbound connections in Azure](load-balancer-outbound-connections.md).
+  Aby uzyskać więcej informacji, zobacz [połączenia wychodzące na platformie Azure](load-balancer-outbound-connections.md).
 
-Standard Load Balancer has additional SKU-specific capabilities beyond these fundamentals, as described below.
+Usługa Load Balancer w warstwie Standardowa ma dodatkowe możliwości specyficzne dla jednostki SKU, które wykraczają poza te podstawy, zgodnie z poniższym opisem.
 
 ## <a name="skus"></a> Porównanie jednostek SKU modułu równoważenia obciążenia
 
-Load Balancer supports both Basic and Standard SKUs. These SKUs differ in scenario scale, features, and pricing. Any scenario that's possible with Basic Load Balancer can be created with Standard Load Balancer. The APIs for both SKUs are similar and are invoked through the specification of a SKU. The API for supporting SKUs for Load Balancer and the public IP is available starting with the `2017-08-01` API. Both SKUs share the same general API and structure.
+Load Balancer obsługuje zarówno podstawowe, jak i standardowe jednostki SKU. Te jednostki SKU różnią się w zależności od skali, funkcji i cen. Dowolny scenariusz, który jest możliwy w przypadku podstawowego Load Balancer można utworzyć przy użyciu usługa Load Balancer w warstwie Standardowa. Interfejsy API dla obu jednostek SKU są podobne i są wywoływane przez specyfikację jednostki SKU. Interfejs API obsługujący jednostki SKU dla Load Balancer i publiczny adres IP jest dostępny od interfejsu API `2017-08-01`. Obie jednostki SKU korzystają z tego samego ogólnego interfejsu API i struktury.
 
-The complete scenario configuration might differ slightly depending on SKU. W dokumentacji modułu równoważenia obciążenia zaznaczone jest, gdy dany artykuł ma zastosowanie tylko do określonej jednostki SKU. Aby porównać i poznać różnice, zapoznaj się z poniższą tabelą. For more information, see [Azure Standard Load Balancer overview](load-balancer-standard-overview.md).
+Kompletna konfiguracja scenariusza może się nieco różnić w zależności od jednostki SKU. W dokumentacji modułu równoważenia obciążenia zaznaczone jest, gdy dany artykuł ma zastosowanie tylko do określonej jednostki SKU. Aby porównać i poznać różnice, zapoznaj się z poniższą tabelą. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
 >[!NOTE]
 > Nowe projekty powinny zostać dostosowane do modułu równoważenia obciążenia w warstwie Standardowa.
 
-Autonomiczne maszyny wirtualne, zestawy dostępności i zestawy skalowania maszyn wirtualnych można połączyć tylko jednej jednostki SKU — nigdy do obu. Load Balancer and the public IP address SKU must match when you use them with public IP addresses. Load Balancer and public IP SKUs aren't mutable.
+Autonomiczne maszyny wirtualne, zestawy dostępności i zestawy skalowania maszyn wirtualnych można połączyć tylko jednej jednostki SKU — nigdy do obu. Load Balancer oraz jednostka SKU publicznego adresu IP muszą być zgodne, gdy są używane z publicznymi adresami IP. Jednostki SKU Load Balancer i publicznych adresów IP nie są modyfikowalne.
 
-The best practice is to specify the SKUs explicitly. W tej chwili wymagane zmiany są ograniczane do minimum. If a SKU isn't specified, the default is the `2017-08-01` API version of the Basic SKU.
+Najlepszym rozwiązaniem jest jawne określenie jednostek SKU. W tej chwili wymagane zmiany są ograniczane do minimum. Jeśli jednostka SKU nie jest określona, wartość domyślna to `2017-08-01` wersja interfejsu API podstawowej jednostki SKU.
 
 >[!IMPORTANT]
->Standard Load Balancer is a new Load Balancer product. It is largely a superset of Basic Load Balancer, but there are important differences between the two products. Każdy kompleksowy scenariusz, który można utworzyć za pomocą modułu równoważenia obciążenia w warstwie Podstawowa można również utworzyć za pomocą modułu równoważenia obciążenia w warstwie Standardowa. If you're already used to Basic Load Balancer, compare it with Standard Load Balancer to understand the latest changes in their behavior.
+>Usługa Load Balancer w warstwie Standardowa jest nowym Load Balancer produktem. Jest to duży nadzbiór podstawowych Load Balancer, ale istnieją istotne różnice między tymi dwoma produktami. Każdy kompleksowy scenariusz, który można utworzyć za pomocą modułu równoważenia obciążenia w warstwie Podstawowa można również utworzyć za pomocą modułu równoważenia obciążenia w warstwie Standardowa. Jeśli jest już używany do podstawowej Load Balancer, porównaj ją z usługa Load Balancer w warstwie Standardowa, aby poznać najnowsze zmiany w ich zachowaniu.
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
-For more information, see [Load balancer limits](https://aka.ms/lblimits). Szczegółowe informacje dotyczące modułu równoważenia obciążenia w warstwie Standardowa zawiera [przegląd](load-balancer-standard-overview.md), [cennik](https://aka.ms/lbpricing) i [umowa dotycząca poziomu usług](https://aka.ms/lbsla).
+Aby uzyskać więcej informacji, zobacz [limity usługi równoważenia obciążenia](https://aka.ms/lblimits). Szczegółowe informacje dotyczące modułu równoważenia obciążenia w warstwie Standardowa zawiera [przegląd](load-balancer-standard-overview.md), [cennik](https://aka.ms/lbpricing) i [umowa dotycząca poziomu usług](https://aka.ms/lbsla).
 
 ## <a name="concepts"></a>Pojęcia
 
 ### <a name = "publicloadbalancer"></a>Publiczny moduł równoważenia obciążenia
 
-A public Load Balancer maps the public IP address and port of incoming traffic to the private IP address and port of the VM. Load Balancer maps traffic the other way around for the response traffic from the VM. You can distribute specific types of traffic across multiple VMs or services by applying load-balancing rules. Na przykład można rozłożyć obciążenie ruchu związanego z żądaniami internetowymi na wiele serwerów internetowych.
+Load Balancer publiczny mapuje publiczny adres IP i port ruchu przychodzącego na prywatny adres IP i port maszyny wirtualnej. Load Balancer mapuje ruch w inny sposób wokół ruchu odpowiedzi z maszyny wirtualnej. Można dystrybuować określone typy ruchu między wieloma maszynami wirtualnymi lub usługami, stosując reguły równoważenia obciążenia. Na przykład można rozłożyć obciążenie ruchu związanego z żądaniami internetowymi na wiele serwerów internetowych.
 
 >[!NOTE]
->You can implement only one public Load Balancer and one internal Load Balancer per availability set.
+>Można zaimplementować tylko jedną Load Balancer publiczną i jeden wewnętrzny Load Balancer na zestaw dostępności.
 
-The following figure shows a load-balanced endpoint for web traffic that is shared among three VMs for the public and TCP port 80. Te trzy maszyny wirtualne znajdują się w zestawie z równoważeniem obciążenia.
+Na poniższej ilustracji przedstawiono punkt końcowy ze zrównoważonym obciążeniem dla ruchu internetowego, który jest współużytkowany przez trzy maszyny wirtualne dla portu publicznego i TCP 80. Te trzy maszyny wirtualne znajdują się w zestawie z równoważeniem obciążenia.
 
 ![Przykład publicznego modułu równoważenia obciążenia](./media/load-balancer-overview/IC727496.png)
 
-*Figure: Balancing web traffic by using a public Load Balancer*
+*Ilustracja: Równoważenie ruchu internetowego przy użyciu Load Balancer publicznego*
 
-Internet clients send webpage requests to the public IP address of a web app on TCP port 80. Azure Load Balancer distributes the requests across the three VMs in the load-balanced set. For more information about Load Balancer algorithms, see [Fundamental Load Balancer features](load-balancer-overview.md##fundamental-load-balancer-features).
+Klienci internetowi wysyłają żądania strony sieci Web na publiczny adres IP aplikacji sieci Web na porcie TCP 80. Azure Load Balancer dystrybuuje żądania między trzema maszynami wirtualnymi w zestawie o zrównoważonym obciążeniu. Aby uzyskać więcej informacji na temat algorytmów Load Balancer, zobacz [podstawowe funkcje usługi Load Balancer](load-balancer-overview.md##fundamental-load-balancer-features).
 
-Azure Load Balancer distributes network traffic equally among multiple VM instances by default. Można również skonfigurować koligację sesji. For more information, see [Configure the distribution mode for Azure Load Balancer](load-balancer-distribution-mode.md).
+Azure Load Balancer domyślnie dystrybuuje ruch sieciowy między wieloma wystąpieniami maszyn wirtualnych. Można również skonfigurować koligację sesji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie trybu dystrybucji dla Azure Load Balancer](load-balancer-distribution-mode.md).
 
 ### <a name = "internalloadbalancer"></a> Wewnętrzny moduł równoważenie obciążenia
 
-An internal Load Balancer directs traffic only to resources that are inside a virtual network or that use a VPN to access Azure infrastructure, in contrast to a public Load Balancer. Azure infrastructure restricts access to the load-balanced front-end IP addresses of a virtual network. Front-end IP addresses and virtual networks are never directly exposed to an internet endpoint. Wewnętrzne aplikacje biznesowe są uruchomiane na platformie Azure i dostęp do nich jest uzyskiwany z poziomu platformy Azure lub zasobów lokalnych.
+Wewnętrzny Load Balancer kieruje ruch tylko do zasobów znajdujących się w sieci wirtualnej lub korzystających z sieci VPN w celu uzyskania dostępu do infrastruktury platformy Azure, w przeciwieństwie do Load Balancer publicznego. Infrastruktura platformy Azure ogranicza dostęp do adresów IP frontonu z równoważeniem obciążenia sieci wirtualnej. Adresy IP frontonu i sieci wirtualne nigdy nie są bezpośrednio ujawniane w internetowym punkcie końcowym. Wewnętrzne aplikacje biznesowe są uruchomiane na platformie Azure i dostęp do nich jest uzyskiwany z poziomu platformy Azure lub zasobów lokalnych.
 
 Wewnętrzny moduł równoważenia obciążenia pozwala na następujące typy równoważenia obciążenia:
 
-* **Within a virtual network**: Load balancing from VMs in the virtual network to a set of VMs that are in the same virtual network.
-* **For a cross-premises virtual network**: Load balancing from on-premises computers to a set of VMs that are in the same virtual network.
-* **For multi-tier applications**: Load balancing for internet-facing multi-tier applications where the back-end tiers aren't internet-facing. The back-end tiers require traffic load balancing from the internet-facing tier. See the next figure.
-* **Dla aplikacji biznesowych**: równoważenie obciążenia na potrzeby aplikacji biznesowych, które są hostowane na platformie Azure bez użycia dodatkowego sprzętu lub oprogramowania służącego do równoważenia obciążenia. This scenario includes on-premises servers that are in the set of computers whose traffic is load balanced.
+* **W ramach sieci wirtualnej**: Równoważenie obciążenia z maszyn wirtualnych w sieci wirtualnej do zestawu maszyn wirtualnych znajdujących się w tej samej sieci wirtualnej.
+* W **przypadku sieci wirtualnej obejmującej wiele**lokalizacji: Równoważenie obciążenia z komputerów lokalnych do zestawu maszyn wirtualnych znajdujących się w tej samej sieci wirtualnej.
+* **W przypadku aplikacji wielowarstwowych**: Równoważenie obciążenia dla aplikacji wielowarstwowych dostępnych z Internetu, w których warstwy zaplecza nie są dostępne w Internecie. Warstwy zaplecza wymagają równoważenia obciążenia sieciowego z warstwy połączonej z Internetem. Zobacz następną ilustrację.
+* **Dla aplikacji biznesowych**: równoważenie obciążenia na potrzeby aplikacji biznesowych, które są hostowane na platformie Azure bez użycia dodatkowego sprzętu lub oprogramowania służącego do równoważenia obciążenia. Ten scenariusz obejmuje serwery lokalne, które znajdują się w zestawie komputerów, których ruch jest zrównoważony.
 
 ![Przykład wewnętrznego modułu równoważenie obciążenia](./media/load-balancer-overview/IC744147.png)
 
-*Figure: Balancing multi-tier applications by using both public and internal Load Balancer*
+*Ilustracja: Równoważenie aplikacji wielowarstwowych przy użyciu Load Balancer publicznego i wewnętrznego*
 
 ## <a name="pricing"></a>Cennik
 
 Usługa Load Balancer w warstwie Standardowa jest płatna.
 
-* Number of configured load-balancing and outbound rules. Inbound NAT rules don't count in the total number of rules.
-* Amount of data processed inbound and outbound independent of rules.
+* Liczba skonfigurowanych reguł równoważenia obciążenia i ruchu wychodzącego. Reguły NAT dla ruchu przychodzącego nie są liczone w łącznej liczbie reguł.
+* Ilość danych przetworzonych w sposób przychodzący i wychodzący niezależnie od reguł.
 
-For Standard Load Balancer pricing information, see [Load Balancer pricing](https://azure.microsoft.com/pricing/details/load-balancer/).
+Aby uzyskać informacje o cenach usługa Load Balancer w warstwie Standardowa, zobacz [Cennik usługi Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 Za użycie modułu równoważenia obciążenia w warstwie Podstawowa nie są naliczane opłaty.
 
 ## <a name="sla"></a>Umowa SLA
 
-For information about the Standard Load Balancer SLA, see [SLA for Load Balancer](https://aka.ms/lbsla).
+Aby uzyskać informacje na temat umowy SLA usługa Load Balancer w warstwie Standardowa, zobacz [Umowa SLA dla Load Balancer](https://aka.ms/lbsla).
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Load Balancer provides load balancing and port forwarding for specific TCP or UDP protocols. Load-balancing rules and inbound NAT rules support TCP and UDP, but not other IP protocols including ICMP.
+* Load Balancer zapewnia Równoważenie obciążenia i przekazywanie portów dla określonych protokołów TCP lub UDP. Reguły równoważenia obciążenia i reguły NAT dla ruchu przychodzącego obsługują protokoły TCP i UDP, ale nie są to adresy IP, w tym protokół ICMP.
 
-  Load Balancer doesn't terminate, respond, or otherwise interact with the payload of a UDP or TCP flow. It's not a proxy. Successful validation of connectivity to a front end must take place in-band with the same protocol used in a load balancing or inbound NAT rule. At least one of your virtual machines must generate a response for a client to see a response from a front end.
+  Load Balancer nie przerywa działania, reaguje lub nie działa w inny sposób z ładunkiem przepływu UDP lub TCP. Nie jest to serwer proxy. Pomyślne sprawdzenie poprawności łączności z frontonem musi odbywać się w paśmie przy użyciu tego samego protokołu, który jest używany w ramach równoważenia obciążenia lub przychodzącej reguły NAT. Co najmniej jedna maszyna wirtualna musi generować odpowiedź dla klienta, aby zobaczyć odpowiedź z frontonu.
 
-  Not receiving an in-band response from the Load Balancer front end indicates no virtual machines could respond. Nothing can interact with a Load Balancer front end without a virtual machine able to respond. This principle also applies to outbound connections where port masquerade SNAT is only supported for TCP and UDP. Any other IP protocols, including ICMP, fail. Assign an instance-level public IP address to mitigate this issue. For more information, see [Understanding SNAT and PAT](load-balancer-outbound-connections.md#snat).
+  Nie odebrano odpowiedzi w paśmie z frontonu Load Balancer wskazuje, że żadne maszyny wirtualne nie mogą reagować. Nic nie może współdziałać z Load Balancer frontonu bez możliwości reagowania maszyny wirtualnej. Ta zasada ma zastosowanie również do połączeń wychodzących, w których port podszywający jest obsługiwany tylko dla protokołów TCP i UDP. Wszystkie inne protokoły IP, w tym ICMP, kończą się niepowodzeniem. Przypisz publiczny adres IP na poziomie wystąpienia, aby rozwiązać ten problem. Aby uzyskać więcej informacji, zobacz temat [Omówienie elementu reźródłowego i](load-balancer-outbound-connections.md#snat)elementu.
 
-* Internal Load Balancers don't translate outbound originated connections to the front end of an internal Load Balancer because both are in private IP address space. Public Load Balancers provide [outbound connections](load-balancer-outbound-connections.md) from private IP addresses inside the virtual network to public IP addresses. For internal Load Balancers, this approach avoids potential SNAT port exhaustion inside a unique internal IP address space, where translation isn't required.
+* Wewnętrzne moduły równoważenia obciążenia nie przekładają się na wychodzące połączenia przychodzące do frontonu wewnętrznego Load Balancer, ponieważ obie są w prywatnej przestrzeni adresów IP. Publiczne usługi równoważenia obciążenia zapewniają [połączenia wychodzące](load-balancer-outbound-connections.md) z prywatnych adresów IP w sieci wirtualnej do publicznych adresów IP. W przypadku wewnętrznych modułów równoważenia obciążenia to podejście pozwala uniknąć potencjalnego wyczerpania portów w ramach unikatowej wewnętrznej przestrzeni adresów IP, w której tłumaczenie nie jest wymagane.
 
-  A side effect is that if an outbound flow from a VM in the back-end pool attempts a flow to front end of the internal Load Balancer in its pool _and_ is mapped back to itself, the two legs of the flow don't match. Because they don't match, the flow fails. The flow succeeds if the flow didn't map back to the same VM in the back-end pool that created the flow to the front end.
+  Efekt uboczny polega na tym, że jeśli przepływ wychodzący z maszyny wirtualnej w puli zaplecza próbuje przepływ do frontonu Load Balancer wewnętrznej w swojej puli _i_ jest mapowany do samego siebie, dwa etapy przepływu nie są zgodne. Ponieważ nie są one zgodne, przepływ kończy się niepowodzeniem. Przepływ powiedzie się, jeśli przepływ nie został zmapowany na tę samą maszynę wirtualną w puli zaplecza, która utworzyła przepływ do frontonu.
 
-  When the flow maps back to itself, the outbound flow appears to originate from the VM to the front end and the corresponding inbound flow appears to originate from the VM to itself. From the guest operating system's point of view, the inbound and outbound parts of the same flow don't match inside the virtual machine. The TCP stack won't recognize these halves of the same flow as being part of the same flow. The source and destination don't match. When the flow maps to any other VM in the back-end pool, the halves of the flow do match and the VM can respond to the flow.
+  Gdy przepływ zamapuje się z powrotem do samego siebie, przepływ wychodzący wydaje się pochodzić z maszyny wirtualnej do frontonu, a odpowiedni przepływ przychodzący wydaje się pochodzić z maszyny wirtualnej do samej siebie. Z punktu widzenia systemu operacyjnego gościa elementy przychodzące i wychodzące tego samego przepływu nie pasują do maszyny wirtualnej. Stos TCP nie rozpoznaje tych połówów tego samego przepływu, co jest częścią tego samego przepływu. Źródło i miejsce docelowe nie są zgodne. Gdy przepływ jest mapowany na dowolną inną maszynę wirtualną w puli zaplecza, połowy przepływu są zgodne, a maszyna wirtualna może odpowiedzieć na przepływ.
 
-  The symptom for this scenario is intermittent connection timeouts when the flow returns to the same back end that originated the flow. Common workarounds include insertion of a proxy layer behind the internal Load Balancer and using Direct Server Return (DSR) style rules. For more information, see [Multiple Front ends for Azure Load Balancer](load-balancer-multivip-overview.md).
+  Objawem tego scenariusza jest sporadyczne przekroczenie limitu czasu połączenia, gdy przepływ powraca do tego samego zaplecza, który pochodzi z przepływu. Typowe obejścia obejmują Wstawianie warstwy proxy za wewnętrzną Load Balancer i używanie reguł stylu bezpośredniego powrotu serwera (DSR). Aby uzyskać więcej informacji, zobacz [wiele frontonów dla Azure Load Balancer](load-balancer-multivip-overview.md).
 
-  You can combine an internal Load Balancer with any third-party proxy or use internal [Application Gateway](../application-gateway/application-gateway-introduction.md) for proxy scenarios with HTTP/HTTPS. While you could use a public Load Balancer to mitigate this issue, the resulting scenario is prone to [SNAT exhaustion](load-balancer-outbound-connections.md#snat). Avoid this second approach unless carefully managed.
+  Wewnętrzny Load Balancer można połączyć z dowolnym serwerem proxy innej firmy lub użyć wewnętrznych [Application Gateway](../application-gateway/application-gateway-introduction.md) dla scenariuszy serwera proxy przy użyciu protokołu HTTP/HTTPS. Mimo że można użyć Load Balancer publicznego, aby zmniejszyć ten problem, wynikający z nich scenariusz jest podatny na [wyczerpanie adresów](load-balancer-outbound-connections.md#snat). Należy unikać tego drugiego podejścia, chyba że jest to starannie zarządzane.
 
-* In general, forwarding IP fragments isn't supported on load-balancing rules. IP fragmentation of UDP and TCP packets isn't supported on load-balancing rules. High availability ports load-balancing rules can be used to forward existing IP fragments. For more information, see [High availability ports overview](load-balancer-ha-ports-overview.md).
+* Ogólnie rzecz biorąc, fragmenty adresów IP przekazywania nie są obsługiwane w regułach równoważenia obciążenia. Fragmentacja IP pakietów UDP i TCP nie jest obsługiwana w regułach równoważenia obciążenia. Reguły równoważenia obciążenia portów o wysokiej dostępności mogą służyć do przesyłania dalej istniejących fragmentów adresów IP. Aby uzyskać więcej informacji, zobacz [Omówienie portów wysokiej dostępności](load-balancer-ha-ports-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-See [Create a Basic Load Balancer](quickstart-create-basic-load-balancer-portal.md) to get started with using a Load Balancer: create one, create VMs with a custom IIS extension installed, and load balance the web app between the VMs.
+Zobacz [Tworzenie podstawowego Load Balancer](quickstart-create-basic-load-balancer-portal.md) , aby rozpocząć korzystanie z Load Balancer: Utwórz jedną, twórz maszyny wirtualne z zainstalowanym niestandardowym rozszerzeniem usług IIS i Zrównoważ obciążenie aplikacji sieci Web między maszynami wirtualnymi.

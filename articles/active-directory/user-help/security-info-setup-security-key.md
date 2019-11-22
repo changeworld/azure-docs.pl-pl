@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie informacji o zabezpieczeniach (wersja zapoznawcza) dla klucza zabezpieczeń — Azure AD
-description: Jak skonfigurować informacje zabezpieczające, aby zweryfikować Twoją tożsamość przy użyciu klucza zabezpieczeń szybkiej tożsamości online (FIDO2).
+title: Konfigurowanie klucza zabezpieczeń jako metody weryfikacji — Azure AD
+description: Jak skonfigurować stronę informacje zabezpieczające (wersja zapoznawcza), aby zweryfikować swoją tożsamość, aby użyć klucza zabezpieczeń Fast Identity online (FIDO2) jako metody weryfikacji.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803784"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278945"
 ---
-# <a name="set-up-security-info-preview-for-a-security-key"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza) dla klucza zabezpieczeń
+# <a name="set-up-a-security-key-as-your-verification-method"></a>Skonfiguruj klucz zabezpieczeń jako metodę weryfikacji
 
-Kluczy zabezpieczeń można używać jako metody logowania bezhasło w organizacji. Klucz zabezpieczeń to urządzenie fizyczne, które jest używane z unikatowym numerem PIN do logowania się do konta służbowego. Ponieważ klucze zabezpieczeń wymagają posiadania urządzenia fizycznego i czegoś tylko ty, jest on traktowany jako silniejszy Metoda uwierzytelniania niż nazwa użytkownika i hasło.
+Kluczy zabezpieczeń można używać jako metody logowania bezhasło w organizacji. Klucz zabezpieczeń to urządzenie fizyczne, które jest używane z unikatowym numerem PIN do logowania się do konta służbowego. Ponieważ klucze zabezpieczeń wymagają posiadania urządzenia fizycznego i czegoś tylko ty, jest on traktowany jako silniejsza metoda weryfikacji niż nazwa użytkownika i hasło.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
@@ -35,7 +35,7 @@ Obecnie obsługujemy kilka projektów i dostawców kluczy zabezpieczeń przy uż
 Administrator lub Twoja organizacja dostarczy klucz zabezpieczeń, jeśli będzie potrzebny dla konta służbowego. Istnieją różne typy kluczy zabezpieczeń, których można użyć, na przykład klucz USB, który można podłączyć do urządzenia lub klawisza NFC, który został wybrany w czytniku NFC. Więcej informacji o kluczu zabezpieczeń, w tym o tym, jaki typ jest, można znaleźć w dokumentacji producenta.
 
 > [!Note]
-> Jeśli nie możesz użyć klucza zabezpieczeń FIDO2, istnieją inne metody uwierzytelniania bezhasła, których można użyć, takich jak aplikacja Microsoft Authenticator lub funkcja Windows Hello. Aby uzyskać więcej informacji na temat aplikacji Microsoft Authenticator, zobacz [co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md). Aby uzyskać więcej informacji na temat usługi Windows Hello, zobacz [Omówienie funkcji Windows Hello](https://www.microsoft.com/windows/windows-hello).
+> Jeśli nie możesz użyć klucza zabezpieczeń FIDO2, istnieją inne metody weryfikacji bezhasła, których można użyć, takich jak aplikacja Microsoft Authenticator lub funkcja Windows Hello. Aby uzyskać więcej informacji na temat aplikacji Microsoft Authenticator, zobacz [co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md). Aby uzyskać więcej informacji na temat usługi Windows Hello, zobacz [Omówienie funkcji Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -150,7 +150,7 @@ Aby zarejestrować klucz zabezpieczeń, należy mieć co najmniej jedną zarejes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat metod uwierzytelniania bezhasła, zapoznaj się z tematem " [usługa Azure AD" rozpoczyna publiczną wersję zapoznawczą kluczy zabezpieczeń FIDO2, włączając](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) w to Blog dotyczący logowania bezhasła lub zapoznaj się z [aplikacją Microsoft Authenticator?](user-help-auth-app-overview.md) [ Artykuły dotyczące omówienia systemu Windows Hello](https://www.microsoft.com/windows/windows-hello) .
+- Aby uzyskać więcej informacji na temat metod weryfikacji bezhaseł, przeczytaj artykuł [Azure AD, który rozpoczyna publiczną wersję zapoznawczą kluczy zabezpieczeń FIDO2, włączając](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) w to Blog dotyczący logowania bezhaseł lub zapoznaj się z informacjami o [tym, co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md) i [Windows Hello — Omówienie](https://www.microsoft.com/windows/windows-hello) .
 
 - Aby uzyskać bardziej szczegółowe informacje o [kluczach zabezpieczeń zgodnych z firmą Microsoft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 

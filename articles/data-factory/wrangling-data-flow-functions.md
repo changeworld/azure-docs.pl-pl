@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3274641f7b118e13b3ed727f609ce7471fd66b54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682286"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287028"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Funkcje transformacji w przepływie danych przetwarzanie
 
@@ -73,7 +73,7 @@ Użyj [tabeli Table. Group](https://docs.microsoft.com/powerquery-m/table-group)
 * Musi być używana z funkcją agregacji
 * Obsługiwane funkcje agregacji: [Table. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount), [list. sum](https://docs.microsoft.com/powerquery-m/list-sum), [list. Count](https://docs.microsoft.com/powerquery-m/list-count), [list. Average](https://docs.microsoft.com/powerquery-m/list-average), [list. min](https://docs.microsoft.com/powerquery-m/list-min), List [. Max](https://docs.microsoft.com/powerquery-m/list-max), [list. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation), list. [First](https://docs.microsoft.com/powerquery-m/list-first), [list. Last](https://docs.microsoft.com/powerquery-m/list-last)
 
-## <a name="sorting"></a>sortowan
+## <a name="sorting"></a>Sortowan
 
 Użyj [tabeli. Sort](https://docs.microsoft.com/powerquery-m/table-sort) , aby sortować wartości.
 
@@ -81,12 +81,21 @@ Użyj [tabeli. Sort](https://docs.microsoft.com/powerquery-m/table-sort) , aby s
 
 Zachowuj i usuwaj najważniejsze, zachowuj zakres (odpowiadające funkcje M, tylko obsługiwane liczby, a nie warunki: [Table. FirstN](https://docs.microsoft.com/powerquery-m/table-firstn), [Table. Skip](https://docs.microsoft.com/powerquery-m/table-skip), [Table. RemoveFirstN](https://docs.microsoft.com/powerquery-m/table-removefirstn), [Table. Range](https://docs.microsoft.com/powerquery-m/table-range), [Table. MinN](https://docs.microsoft.com/powerquery-m/table-minn), [Table. MaxN](https://docs.microsoft.com/powerquery-m/table-maxn))
 
-## <a name="known-unsupported-functionality"></a>Znane Nieobsługiwane funkcje
+## <a name="known-unsupported-functions"></a>Znane Nieobsługiwane funkcje
 
-Poniżej znajdują się funkcje, które nie są obsługiwane. Ta lista nie jest wyczerpująca i może ulec zmianie.
-* Scal kolumny (można uzyskać za pomocą addColumn)
-* Podziel kolumnę
-* Dołącz zapytania
-* "Użyj pierwszego wiersza jako nagłówków" i "Użyj nagłówków jako pierwszego wiersza"
+| Funkcja | Stan |
+| -- | -- |
+| Table. PromoteHeaders | Nieobsługiwane. Ten sam wynik można osiągnąć przez ustawienie "pierwszy wiersz jako nagłówek" w zestawie danych. |
+| Table. CombineColumns | Jest to typowy scenariusz, który nie jest bezpośrednio obsługiwany, ale można go osiągnąć przez dodanie nowej kolumny, która łączy dwie podaną kolumnę.  Na przykład: Table. addColumn (RemoveEmailColumn, "name", each [FirstName] & "" & [LastName]) |
+| Table. TransformColumnTypes | Jest to obsługiwane w większości przypadków. Następujące scenariusze nie są obsługiwane: transformowanie ciągu do typu waluty, transformowanie ciągu do typu czasu, transformowanie ciągu do typu procentowego. |
+| Table. NestedJoin | Wykonanie sprzężenia spowoduje błąd walidacji. Aby można było obejść te kolumny, muszą być rozwinięte. |
+| Table. DISTINCT | Usuwanie zduplikowanych wierszy nie jest obsługiwane. |
+| Table. RemoveLastN | Usuwanie dolnych wierszy nie jest obsługiwane. |
+| Table. RowCount | Nieobsługiwane, ale można je uzyskać za pomocą opcji Dodaj kolumnę ze wszystkimi komórkami pustymi (można użyć kolumny warunku), a następnie za pomocą polecenia Grupuj według w tej kolumnie. Tabela. Grupa jest obsługiwana. | 
+| Obsługa błędów na poziomie wiersza | Obsługa błędów na poziomie wiersza nie jest obecnie obsługiwana. Na przykład, aby odfiltrować wartości inne niż liczbowe z kolumny, jednym z metod jest przekształcenie kolumny tekstowej na liczbę. Każda komórka, której nie można przekształcić, będzie w stanie błędu i musi zostać przefiltrowana. Ten scenariusz nie jest możliwy w przepływie danych przetwarzanie. |
+| Table. TRANSPONUJ | Nieobsługiwane |
+| Table. Pivot | Nieobsługiwane |
 
 ## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się [, jak utworzyć przepływ danych przetwarzanie](wrangling-data-flow-tutorial.md).

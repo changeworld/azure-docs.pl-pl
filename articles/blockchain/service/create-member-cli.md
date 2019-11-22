@@ -1,25 +1,25 @@
 ---
-title: Tworzenie usługi Azure Blockchain, przy użyciu wiersza polecenia platformy Azure
-description: Usługa Azure Blockchain Aby utworzyć składową łańcucha bloków przy użyciu wiersza polecenia platformy Azure.
+title: Tworzenie elementu członkowskiego usługi Azure łańcucha bloków — interfejs wiersza polecenia platformy Azure
+description: Utwórz członka usługi Azure łańcucha bloków dla konsorcjum łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: seal
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: be5a8151f0de0a33db09194a7159aded6848c78a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
-ms.translationtype: MT
+ms.openlocfilehash: 894c6392c302e1be7c57b85f3f923ee1ba5467f6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416175"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286931"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Szybki start: Tworzenie usługi Azure Service łańcucha bloków łańcucha bloków składową za pomocą wiersza polecenia platformy Azure
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Szybki Start: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Usługa łańcuch bloków to platforma łańcucha bloków, służących do wykonywania logiki biznesowej w inteligentne kontraktu. Ten przewodnik Szybki Start pokazano, jak rozpocząć pracę od utworzenia składową łańcucha bloków za pomocą wiersza polecenia platformy Azure.
+W tym przewodniku szybki start wdrożono nowego członka łańcucha bloków i konsorcjum w usłudze Azure łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,49 +29,58 @@ Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz u
 
 Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
-Jeśli wolisz zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten przewodnik Szybki Start wymaga interfejsu wiersza polecenia Azure w wersji 2.0.51 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Jeśli wolisz zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.51 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create \
+                 --name myResourceGroup \
+                 --location westus2
 ```
 
 ## <a name="create-a-blockchain-member"></a>Tworzenie węzłów członkowskich łańcucha bloków
 
-W usłudze Azure Service łańcucha bloków, działający protokół księgi kworum w nowych konsorcjum, należy utworzyć element członkowski łańcucha bloków. Istnieje kilka parametrów i właściwości, które należy przekazać. Zastąp parametry przykład z własnymi wartościami.
+Utwórz element członkowski łańcucha bloków w usłudze Azure łańcucha bloków Service, która uruchamia protokół finansów kworum w nowym konsorcjum. Istnieje kilka parametrów i właściwości, które należy przekazać. Zastąp przykładowe parametry wartościami.
 
 ```azurecli-interactive
-az resource create --resource-group myResourceGroup --name myblockchainmember --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"eastus\", \"properties\": {\"password\": \"strongMemberAccountPassword@1\", \"protocol\": \"Quorum\", \"consortium\": \"myConsortiumName\", \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\" }, \"sku\": { \"name\": \"S0\" } }"
+az resource create \
+                    --resource-group myResourceGroup \
+                    --name myblockchainmember \
+                    --resource-type Microsoft.Blockchain/blockchainMembers \
+                    --is-full-object \
+                    --properties '{"location":"westus2", "properties":{"password":"strongMemberAccountPassword@1", "protocol":"Quorum", "consortium":"myConsortiumName", "consortiumManagementAccountPassword":"strongConsortiumManagementPassword@1"}, "sku":{"name":"S0"}}'
 ```
 
 | Parametr | Opis |
 |---------|-------------|
-| **resource-group** | Nazwa grupy zasobów, których są tworzone zasoby platformy Azure Blockchain usługi. Użyj grupy zasobów, który został utworzony w poprzedniej sekcji.
-| **name** | Unikatową nazwę, która identyfikuje elementu członkowskiego usługi Azure Blockchain Service łańcucha bloków. Nazwa jest używana dla adresu publicznego punktu końcowego. Na przykład `myblockchainmember.blockchain.azure.com`.
-| **location** | Region platformy Azure, w której tworzona jest łańcuch bloków elementu członkowskiego. Na przykład `eastus`. Wybierz lokalizację najbliżej użytkowników lub innych aplikacji Azure.
-| **Hasło** | Hasło dla elementu członkowskiego domyślnego transakcji węzła. Podaj hasło dla uwierzytelniania podstawowego, łącząc się z łańcucha bloków elementu członkowskiego domyślnego transakcji węzła publiczny punkt końcowy.
-| **consortium** | Nazwa konsorcjum, które chcesz dołączyć, lub utworzyć.
-| **consortiumAccountPassword** | Hasło do konta konsorcjum jest również nazywany hasło do konta członkowskiego. Element członkowski hasło do konta jest używany do szyfrowania prywatnego klucza konta Ethereum, które są tworzone dla elementów członkowskich. Do zarządzania konsorcjum używasz konta i hasło do konta członkowskiego.
-| **skuName** | Typ warstwy. Na użytek S0 Standard i B0 Basic.
+| **Grupa zasobów** | Nazwa grupy zasobów, w której są tworzone zasoby usługi Azure łańcucha bloków. Użyj grupy zasobów utworzonej w poprzedniej sekcji.
+| **name** | Unikatowa nazwa identyfikująca członka usługi Azure łańcucha bloków Service łańcucha bloków. Nazwa jest używana dla publicznego adresu punktu końcowego. Na przykład `myblockchainmember.blockchain.azure.com`.
+| **location** | Region świadczenia usługi Azure, w którym jest tworzony element członkowski łańcucha bloków. Na przykład `westus2`. Wybierz lokalizację najbliżej użytkowników lub innych aplikacji Azure.
+| **Hasło** | Hasło dla domyślnego węzła transakcji elementu członkowskiego. Użyj hasła uwierzytelniania podstawowego podczas nawiązywania połączenia z domyślnym punktem końcowym węzła transakcji elementu członkowskiego łańcucha bloków.
+| **ustanawiające** | Nazwa konsorcjum do przyłączenia lub utworzenia.
+| **consortiumAccountPassword** | Hasło konta konsorcjum jest również znane jako hasło do konta elementu członkowskiego. Hasło konta elementu członkowskiego służy do szyfrowania klucza prywatnego dla konta Ethereum utworzonego dla elementu członkowskiego. Do zarządzania konsorcjum używasz konta elementu członkowskiego i hasła konta elementu członkowskiego.
+| **skuName** | Typ warstwy. Użyj S0 dla Standard i B0 dla warstwy Podstawowa.
 
-Utworzenie elementu członkowskiego łańcucha bloków i zasoby pomocnicze trwa około 10 minut.
+Utworzenie elementu członkowskiego łańcucha bloków i obsłudze zasobów trwa około 10 minut.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Można użyć Członkowskiego łańcucha bloków, który został utworzony dla następnej szybkiego startu lub samouczku. Gdy nie jest już potrzebny, możesz usunąć zasoby, usuwając `myResourceGroup` grupę zasobów utworzoną przez usługę Azure Service łańcucha bloków.
+Możesz użyć elementu członkowskiego łańcucha bloków utworzonego dla następnego przewodnika Szybki start lub samouczka. Gdy zasoby nie będą już potrzebne, można je usunąć, usuwając grupę zasobów `myResourceGroup` utworzoną przez usługę Azure łańcucha bloków.
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów i wszystkie pokrewne zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az group delete \
+                 --name myResourceGroup \
+                 --yes
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, po utworzeniu członka łańcucha bloków, wypróbuj jedną z przewodników Szybki Start połączenia, aby uzyskać [Geth](connect-geth.md), [MetaMask](connect-metamask.md), lub [Truffle](connect-truffle.md).
+W tym przewodniku szybki start wdrożono członka usługi Azure łańcucha bloków i nowego konsorcjum. Skorzystaj z następnego przewodnika Szybki Start, aby użyć usługi Azure łańcucha bloków Development Kit dla Ethereum w celu dołączenia do konsorcjum na platformie Azure łańcucha bloków.
 
 > [!div class="nextstepaction"]
-> [Użyj Truffle, aby nawiązać połączenie z siecią Azure Blockchain Service](connect-truffle.md)
+> [Użyj Visual Studio Code, aby nawiązać połączenie z siecią Azure łańcucha bloków Service Consortium](connect-vscode.md)

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837327"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286617"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejs API tłumaczenia tekstu w usłudze Translator
 
@@ -44,7 +44,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |:-----|:-----:|:-----|:-----|
 |Afrikaans| `af`    |Tylko statystyczne|  Neuronowa|
 |Arabski|    `ar`    |Neuronowych dostępne|  Neuronowa|
-|Języku|    `bn`    |Neuronowych dostępne|  Neuronowa|
+|Bengalski|    `bn`    |Neuronowych dostępne|  Neuronowa|
 |Bośniacki (łaciński)|   `bs`    |Neuronowych dostępne|  Neuronowa|
 |Bułgarski| `bg`    |Neuronowych dostępne|  Neuronowa|
 |Kantoński (tradycyjny)|   `yue`   |Tylko statystyczne|  Statystyczn|
@@ -57,8 +57,8 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Holenderski| `nl`    |Neuronowych dostępne|  Neuronowa|
 |Polski|   `en`    |Neuronowych dostępne|  Neuronowa|
 |Estoński|  `et`    |Neuronowych dostępne|  Neuronowa|
-|Fijian|    `fj`    |Tylko statystyczne|  Statystyczn|
-|Filipiński|  `fil`   |Tylko statystyczne|  Statystyczn|
+|Fidżi|    `fj`    |Tylko statystyczne|  Statystyczn|
+|Filipino|  `fil`   |Tylko statystyczne|  Statystyczn|
 |Fiński|   `fi`    |Neuronowych dostępne|  Neuronowa|
 |Francuski|    `fr`    |Neuronowych dostępne|  Neuronowa|
 |Niemiecki|    `de`    |Neuronowych dostępne|  Neuronowa|
@@ -66,21 +66,22 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Haitański|    `ht`    |Tylko statystyczne   |Statystyczn|
 |Hebrajski |`he`   |Neuronowych dostępne   |Neuronowa|
 |Hindi| `hi`    |Neuronowych domyślne|    Neuronowa|
-|Hmong Kowalski| `mww`   |Tylko statystyczne|  Statystyczn|
+|Hmong Daw| `mww`   |Tylko statystyczne|  Statystyczn|
 |Węgierski| `hu`    |Neuronowych dostępne|  Neuronowa|
 |Islandzki| `is`    |Tylko neuronowych|   Neuronowa|
 |Indonezyjski|    `id`    |Tylko statystyczne|  Statystyczn|
 |Włoski|   `it`    |Neuronowych dostępne|  Neuronowa|
 |Japoński|  `ja`    |Neuronowych dostępne|  Neuronowa|
-|Kiswahili| `sw`    |Tylko statystyczne|  Statystyczn|
+|Suahili| `sw`    |Tylko statystyczne|  Statystyczn|
 |Klingon|   `tlh`   |Tylko statystyczne|  Statystyczn|
 |Klingon (plqaD)|   `tlh-Qaak`  |Tylko statystyczne|  Statystyczn|
 |Koreański |`ko`   |Neuronowych dostępne|  Neuronowa|
 |Łotewski|   `lv`    |Neuronowych dostępne|  Neuronowa|
 |Litewski|    `lt`    |Neuronowych dostępne|  Neuronowa|
-|Madagaskaru|  `mg`    |Tylko statystyczne|  Statystyczn|
+|Malgaski|  `mg`    |Tylko statystyczne|  Statystyczn|
 |Malajski| `ms`    |Tylko statystyczne   |Statystyczn|
 |Maltański|   `mt`    |Tylko statystyczne|  Statystyczn|
+|Maoryjski| `mi`  |Tylko neuronowych| Neuronowa|
 |Norweski| `nb`    |Neuronowych dostępne|  Neuronowa|
 |Perski|   `fa`    |Neuronowych dostępne|  Neuronowa|
 |Polski|    `pl`    |Neuronowych dostępne|  Neuronowa|
@@ -98,9 +99,9 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Tahitian|  `ty`    |Tylko statystyczne|  Statystyczn|
 |Tamilski| `ta`    |Tylko statystyczne|  Statystyczn|
 |Telugu|    `te`    |Tylko neuronowych|   Neuronowa|
-|Tajski|  `th`    |Neuronowych dostępne|  Neuronowa|
-|Tonga|    `to`    |Tylko statystyczne|  Statystyczn|
-|Turecki|   `tr`    |Neuronowych dostępne   |Neuronowa|
+|Tajlandzki|  `th`    |Neuronowych dostępne|  Neuronowa|
+|Pa'anga|    `to`    |Tylko statystyczne|  Statystyczn|
+|turecki|   `tr`    |Neuronowych dostępne   |Neuronowa|
 |Ukraiński| `uk`    |Neuronowych dostępne|  Neuronowa|
 |Urdu|  `ur`    |Tylko statystyczne|  Statystyczn|
 |Wietnamski|    `vi`    |Neuronowych dostępne|  Neuronowa|
@@ -114,7 +115,7 @@ Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wska
 | Język    | Kod języka | Skrypt | Do/z | Skrypt|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabski | `ar` | `Arab` arabski | <--> | `Latn` łaciński |
-|Języku  | `bn` | `Beng` bengalski | <--> | `Latn` łaciński |
+|Bengalski  | `bn` | `Beng` bengalski | <--> | `Latn` łaciński |
 | Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | `Latn` łaciński |
 | Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Chiński tradycyjny `Hant`|
 | Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | `Latn` łaciński |
@@ -124,7 +125,7 @@ Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wska
 | Hindi | `hi` | Devanagari `Deva` | <--> | `Latn` łaciński |
 | Japoński | `ja` | `Jpan` japoński | <--> | `Latn` łaciński |
 | Kannada | `kn` | `Knda` kannada | --> | `Latn` łaciński |
-| Malayalam | `ml` | `Mlym` malajalam | --> | `Latn` łaciński |
+| Malajalam | `ml` | `Mlym` malajalam | --> | `Latn` łaciński |
 | Marathi | `mr` | Devanagari `Deva` | --> | `Latn` łaciński |
 | Orija | `or` | `Orya` orija | <--> | `Latn` łaciński |
 | Pendżabski | `pa` | Gurmukhi `Guru`  | <--> | `Latn` łaciński  |
@@ -132,7 +133,7 @@ Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wska
 | Serbski (łaciński) | `sr-Latn` | `Latn` łaciński | --> | `Cyrl` cyrylicy|
 | Tamilski | `ta` | `Taml` tamilski | --> | `Latn` łaciński |
 | Telugu | `te` | `Telu` telugu | --> | `Latn` łaciński |
-| Tajski | `th` | `Thai` tajlandzki | <--> | `Latn` łaciński |
+| Tajlandzki | `th` | `Thai` tajlandzki | <--> | `Latn` łaciński |
 
 ## <a name="dictionary"></a>Słownik
 
@@ -142,7 +143,7 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 |:----------- |:-------------:|
 | Afrikaans      | `af`          |
 | Arabski       | `ar`          |
-| Języku      | `bn`          |
+| Bengalski      | `bn`          |
 | Bośniacki (łaciński)      | `bs`          |
 | Bułgarski      | `bg`          |
 | Kataloński      | `ca`          |
@@ -159,13 +160,13 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Haitański      | `ht`          |
 | Hebrajski      | `he`          |
 | Hindi      | `hi`          |
-| Hmong Kowalski      | `mww`          |
+| Hmong Daw      | `mww`          |
 | Węgierski      | `hu`          |
 | Islandzki    | `is`  |
 | Indonezyjski      | `id`          |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
-| Kiswahili      | `sw`          |
+| Suahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Koreański      | `ko`          |
 | Łotewski      | `lv`          |
@@ -184,14 +185,14 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Hiszpański      | `es`          |
 | Szwedzki      | `sv`          |
 | Tamilski      | `ta`          |
-| Tajski      | `th`          |
-| Turecki      | `tr`          |
+| Tajlandzki      | `th`          |
+| turecki      | `tr`          |
 | Ukraiński      | `uk`          |
 | Urdu      | `ur`          |
 | Wietnamski      | `vi`          |
 | Walijski      | `cy`          |
 
-## <a name="detect"></a>Wykrywanie
+## <a name="detect"></a>Detect
 
 Interfejs API tłumaczenia tekstu w usłudze Translator wykrywa wszystkie języki dostępne do tłumaczenia i przekształcenie.
 
@@ -209,7 +210,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Język    | Kod języka |
 |:----------- |:-------------:|
 | Arabski       | `ar`          |
-| Języku      | `bn`          |
+| Bengalski      | `bn`          |
 | Bośniacki (łaciński)      | `bs`          |
 | Bułgarski      | `bg`          |
 | Chiński uproszczony      | `zh-Hans`          |
@@ -232,11 +233,12 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Irlandzki | `ga`  |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
-|Kiswahili| `sw`    |
+|Suahili| `sw`    |
 | Koreański      | `ko`          |
 | Łotewski      | `lv`          |
 | Litewski      | `lt`          |
-|Madagaskaru|  `mg`    |
+|Malgaski|  `mg`    |
+|Maoryjski| `mi`  |
 | Norweski      | `nb`          |
 | Perski      | `fa`          |
 | Polski      | `pl`          |
@@ -249,8 +251,8 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Słoweński      | `sl`          |
 | Hiszpański      | `es`          |
 | Szwedzki      | `sv`          |
-| Tajski      | `th`          |
-| Turecki      | `tr`          |
+| Tajlandzki      | `th`          |
+| turecki      | `tr`          |
 | Ukraiński      | `uk`          |
 | Wietnamski      | `vi`          |
 | Walijski | `cy` |

@@ -1,8 +1,6 @@
 ---
-title: Programowanie zespołowe za pomocą spacji deweloperów platformy Azure przy użyciu platformy .NET Core i Visual Studio
-titleSuffix: Azure Dev Spaces
+title: Programowanie zespołowe w Azure Dev Spaces przy użyciu platformy .NET Core i programu Visual Studio
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 author: DrEsteban
@@ -10,13 +8,13 @@ ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
+ms.openlocfilehash: 256cab2e88e87807f8b15866d341762b07ddb174
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442927"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279748"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 
@@ -123,10 +121,10 @@ Poniżej przedstawiono diagram, który pomoże Ci zrozumieć, jak działają ró
 
 Ta wbudowana funkcja usługi Azure Dev Spaces umożliwia kompleksowe testowanie kodu w udostępnionym środowisku bez konieczności ponownego tworzenia pełnych stosów usług przez wszystkich deweloperów w ich miejscach. Taki routing wymaga przekazywania nagłówków propagowania w kodzie aplikacji, jak pokazano w poprzednim kroku tego przewodnika.
 
-### <a name="test-code-running-in-the-devscott-space"></a>Testowanie kodu uruchamianego w przestrzeni _dev/scott_
-Aby przetestować nową wersję aplikacji *mywebapi* w połączeniu z aplikacją *webfrontend*, otwórz w przeglądarce adres URL publicznego punktu dostępu dla aplikacji *webfrontend* (na przykład http://dev.webfrontend.123456abcdef.eus.azds.io) ) i przejdź do strony Informacje. Powinien zostać wyświetlony pierwotny komunikat „Hello from webfrontend and Hello from mywebapi”.
+### <a name="test-code-running-in-the-_devscott_-space"></a>Testowanie kodu uruchamianego w przestrzeni _dev/scott_
+Aby przetestować nową wersję aplikacji *mywebapi* w połączeniu z aplikacją *webfrontend*, otwórz w przeglądarce adres URL publicznego punktu dostępu dla aplikacji *webfrontend* (na przykład http://dev.webfrontend.123456abcdef.eus.azds.io)) i przejdź do strony Informacje. Powinien zostać wyświetlony pierwotny komunikat „Hello from webfrontend and Hello from mywebapi”.
 
-Teraz dodaj część „scott.s.” część adresu URL, więc odczytywanych jest podobny do protokołu http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io i Odśwież zawartość przeglądarki. Powinien zostać osiągnięty punkt przerwania ustawiony w projekcie *mywebapi*. Naciśnij klawisz F5, aby kontynuować. W przeglądarce powinien zostać wyświetlony nowy komunikat „Hello from webfrontend and mywebapi now says something new”. Jest to spowodowane tym, że ścieżka do zaktualizowanego kodu w aplikacji *mywebapi* jest uruchamiana w przestrzeni _dev/scott_.
+Teraz dodaj część „scott.s.” należy do adresu URL, który odczytuje takie jak http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io i Odśwież przeglądarkę. Powinien zostać osiągnięty punkt przerwania ustawiony w projekcie *mywebapi*. Naciśnij klawisz F5, aby kontynuować. W przeglądarce powinien zostać wyświetlony nowy komunikat „Hello from webfrontend and mywebapi now says something new”. Jest to spowodowane tym, że ścieżka do zaktualizowanego kodu w aplikacji *mywebapi* jest uruchamiana w przestrzeni _dev/scott_.
 
 Mamy nadzieję, że po utworzeniu przestrzeni _dev_, która zawsze zawiera najnowsze zmiany, i zakładając, że aplikacja jest zaprojektowana tak, aby wykorzystywać oparty na przestrzeniach routing usługi DevSpace, łatwo będzie zobaczyć, że usługa Dev Spaces może znacznie ułatwić testowanie nowych funkcji w kontekście większej aplikacji. Zamiast wdrażać _wszystkie_ usługi w przestrzeni prywatnej, możesz utworzyć przestrzeń prywatną, która wywodzi się z przestrzeni _dev_, i uruchamiać tylko te usługi, nad którymi tak naprawdę pracujesz. Infrastruktura routingu usługi Dev Space zajmie się resztą, wykorzystując tyle usług spoza przestrzeni prywatnej, ile uda jej się znaleźć, jednocześnie przyjmując domyślnie najnowszą wersję uruchomioną w przestrzeni _dev_. A co najlepsze, _wielu_ deweloperów może aktywnie programować różne usługi w tym samym czasie we własnych przestrzeniach, nie przeszkadzając sobie nawzajem.
 

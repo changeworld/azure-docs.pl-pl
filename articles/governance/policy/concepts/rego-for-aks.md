@@ -3,12 +3,12 @@ title: Dowiedz się Azure Policy usługi Azure Kubernetes Service
 description: Dowiedz się, w jaki sposób Azure Policy używać usługi rego i Otwórz agenta zasad do zarządzania klastrami w usłudze Azure Kubernetes.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959801"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279392"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Opis Azure Policy usługi Azure Kubernetes Service
 
@@ -257,6 +257,6 @@ Informacje zbierane przez dodatek nie są danymi osobistymi. Obecnie są zbieran
 - Przejrzyj [strukturę definicji usługi Azure Policy](definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](../how-to/get-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

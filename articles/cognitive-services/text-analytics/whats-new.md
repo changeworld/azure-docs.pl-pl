@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 15beb8d3e326f04f1ae61c26f00e9428d95f6bc4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031371"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286455"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co nowego w interfejsie API analizy tekstu?
 
@@ -29,8 +29,8 @@ Kolejna wersja usługi nazwanego rozpoznawania jednostek (NER) jest teraz dostę
     * Numer telefonu
     * Adres IP
 
-* [Nowy punkt końcowy](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) do rozpoznawania typów jednostek informacji osobistych (tylko w języku angielskim)
-* Oddziel punkty końcowe do [rozpoznawania jednostek]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) i [łączenia jednostek]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* [Nowy punkt końcowy](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) do rozpoznawania typów jednostek informacji osobistych (tylko w języku angielskim)
+* Oddziel punkty końcowe do [rozpoznawania jednostek](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) i [łączenia jednostek](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
 
 Łączenie jednostek obsługuje język angielski i hiszpański. Obsługa języka NER zależy od typu jednostki. 
 
@@ -39,7 +39,7 @@ Kolejna wersja usługi nazwanego rozpoznawania jednostek (NER) jest teraz dostę
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Analiza tonacji v3 (publiczna wersja zapoznawcza) — październik 2019
 
-[Następna wersja analiza tonacji](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) jest teraz dostępna w publicznej wersji zapoznawczej i oferuje znaczące ulepszenia w zakresie i szczegółach związanych z kategoryzacją i ocenianiem tekstu w interfejsie API. Ponadto zapewnia:
+[Następna wersja analiza tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) jest teraz dostępna w publicznej wersji zapoznawczej i oferuje znaczące ulepszenia w zakresie i szczegółach związanych z kategoryzacją i ocenianiem tekstu w interfejsie API. Ponadto zapewnia:
 
 * Automatyczne etykietowanie dla różnych mową w tekście.
 * Tonacji analizę i dane wyjściowe na poziomie dokumentu i zdania. 

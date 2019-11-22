@@ -1,21 +1,21 @@
 ---
-title: Wzorce integracji kontraktu inteligentnego w usłudze Azure łańcucha bloków Workbench
+title: Wzorce integracji z kontraktami inteligentnymi — Azure łańcucha bloków Workbench
 description: Omówienie wzorców integracji kontraktu inteligentnego w usłudze Azure łańcucha bloków Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 7176cddae6affd19df4fe418afcf420f92d624ab
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 02789b2e4414af8503a655ea954b40031df8ccb7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579788"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286671"
 ---
 # <a name="smart-contract-integration-patterns"></a>Wzorce integracji kontraktów inteligentnych
 

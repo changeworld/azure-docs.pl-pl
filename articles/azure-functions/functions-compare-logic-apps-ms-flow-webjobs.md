@@ -1,19 +1,19 @@
 ---
 title: Co to są usługi Microsoft Flow, Logic Apps, Functions i WebJobs? — Azure
-description: 'Compare Microsoft cloud services that are optimized for integration tasks: Microsoft Flow, Logic Apps, Functions, and WebJobs.'
+description: 'Porównanie usług w chmurze firmy Microsoft, które są zoptymalizowane pod kątem zadań związanych z integracją: Microsoft Flow, Logic Apps, funkcje i Zadania WebJob.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 6cf820af8a5b97de536a9d07e49ec822ffb76681
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230886"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278623"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Co to są usługi Microsoft Flow, Logic Apps, Functions i WebJobs?
 
-This article compares the following Microsoft cloud 
+W tym artykule porównano następującą chmurę firmy Microsoft 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
@@ -21,7 +21,7 @@ This article compares the following Microsoft cloud
 
 Wszystkie te usługi umożliwiają rozwiązywanie problemów z integracją i automatyzację procesów biznesowych. Mogą one definiować dane wejściowe, akcje, warunki i dane wyjściowe. Każdą z nich można uruchomić zgodnie z harmonogramem lub za pomocą wyzwalacza. Każda usługa ma unikatowe zalety, a w tym artykule opisano różnice między nimi. 
 
-If you're looking for a more general comparison between Azure Functions and other Azure compute options, see [Criteria for choosing an Azure compute service](/azure/architecture/guide/technology-choices/compute-comparison) and [Choosing an Azure compute option for microservices](/azure/architecture/microservices/design/compute-options).
+Jeśli szukasz bardziej ogólnego porównania między Azure Functions i innymi opcjami obliczeniowymi platformy Azure, zobacz [kryteria wybierania usługi obliczeniowej platformy Azure](/azure/architecture/guide/technology-choices/compute-comparison) i [wybierania opcji obliczeń Azure dla mikrousług](/azure/architecture/microservices/design/compute-options).
 
 ## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Porównanie usług Microsoft Flow i Azure Logic Apps
 
@@ -33,14 +33,14 @@ Usługa Microsoft Flow umożliwia każdemu pracownikowi biurowemu wykonywanie pr
 
 Poniższa tabela ułatwia określenie, czy dla danej integracji najlepsza jest usługa Microsoft Flow, czy Logic Apps:
 
-|  | Microsoft Flow | Aplikacje logiki |
+|  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | Użytkownicy |Pracownicy biurowi, użytkownicy biznesowi, administratorzy programu SharePoint |Profesjonalni integratorzy i programiści, informatycy |
 | Scenariusze |Samoobsługa |Zaawansowane integracje |
 | Narzędzie do projektowania |Aplikacja w przeglądarce i aplikacja mobilna, tylko interfejs użytkownika |Aplikacja w przeglądarce i program [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), dostępny [widok kodu](../logic-apps/logic-apps-author-definitions.md) |
 | Zarządzanie cyklem życia aplikacji |Projektowanie i testowanie w środowiskach nieprodukcyjnych, przenoszenie do środowiska produkcyjnego, gdy aplikacja jest gotowa |Usługa Azure DevOps: kontrola kodu źródłowego, testowanie, pomoc techniczna, automatyzacja oraz możliwości zarządzania w usłudze [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| Środowisko administratora |Manage Microsoft Flow environments and data loss prevention (DLP) policies, track licensing: [Microsoft Flow Admin Center](https://admin.flow.microsoft.com) |Manage resource groups, connections, access management, and logging: [Azure portal](https://portal.azure.com) |
-| Zabezpieczenia |Dzienniki inspekcji dotyczące zabezpieczeń i zgodności usługi Office 365, ochrona przed utratą danych, [szyfrowanie magazynowanych](https://wikipedia.org/wiki/Data_at_rest#Encryption) danych poufnych |Security assurance of Azure: [Azure security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [audit logs](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| Środowisko pracy administratora |Zarządzanie środowiskami Microsoft Flow i zasadami ochrony przed utratą danych (DLP), śledzenie licencjonowania: [Microsoft Flow centrum administracyjnego](https://admin.flow.microsoft.com) |Zarządzanie grupami zasobów, połączeniami, zarządzanie dostępem i rejestrowaniem: [Azure Portal](https://portal.azure.com) |
+| Zabezpieczenia |Dzienniki inspekcji dotyczące zabezpieczeń i zgodności usługi Office 365, ochrona przed utratą danych, [szyfrowanie magazynowanych](https://wikipedia.org/wiki/Data_at_rest#Encryption) danych poufnych |Gwarancja bezpieczeństwa platformy Azure: [zabezpieczenia platformy Azure](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [dzienniki inspekcji](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Porównanie usług Azure Functions i Azure Logic Apps
 
@@ -48,8 +48,9 @@ Usługi Functions i Logic Apps to usługi platformy Azure umożliwiające użyci
 
 W przypadku usługi Azure Functions tworzenie aranżacji odbywa się przez pisanie kodu i używanie [rozszerzenia funkcji trwałych](durable/durable-functions-overview.md). Na potrzeby usługi Logic Apps aranżacje są tworzone za pomocą graficznego interfejsu użytkownika lub przez edycję plików konfiguracyjnych.
 
-Można mieszać i dopasowywać usługi podczas tworzenia aranżacji, wywołując usługę Functions z usługi Logic Apps i na odwrót. Wybierz sposób tworzenia poszczególnych aranżacji na podstawie możliwości usług lub własnych preferencji. The following table lists some of the key differences between these  
-|  | Trwałe funkcje | Aplikacje logiki |
+Można mieszać i dopasowywać usługi podczas tworzenia aranżacji, wywołując usługę Functions z usługi Logic Apps i na odwrót. Wybierz sposób tworzenia poszczególnych aranżacji na podstawie możliwości usług lub własnych preferencji. W poniższej tabeli wymieniono niektóre kluczowe różnice między tymi elementami:
+
+|  | Trwałe funkcje | Logic Apps |
 | --- | --- | --- |
 | Tworzenie oprogramowania | Najpierw kod (imperatywne) | Najpierw projektant (deklaratywne) |
 | Łączność | [Około dwunastu wbudowanych typów powiązań](functions-triggers-bindings.md#supported-bindings), pisanie kodu dla powiązań niestandardowych | [Duża kolekcja łączników](../connectors/apis-list.md), [pakiet integracyjny dla przedsiębiorstw dla scenariuszy B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [tworzenie łączników niestandardowych](../logic-apps/custom-connector-overview.md) |
@@ -74,17 +75,17 @@ Usługa WebJobs i zestaw SDK usługi WebJobs najlepiej działają razem, ale mo�
 
 Usługa Azure Functions bazuje na zestawie SDK usługi WebJobs, dlatego współużytkuje z innymi usługami platformy Azure liczne wyzwalacze i połączenia. Poniżej przedstawiono kilka czynników, które należy wziąć pod uwagę, wybierając między usługą Azure Functions a usługą WebJobs z zestawem WebJobs SDK:
 
-|  | Functions | Usługa WebJobs z zestawem SDK usługi WebJobs |
+|  | Funkcje | Usługa WebJobs z zestawem SDK usługi WebJobs |
 | --- | --- | --- |
 |[Model aplikacji bez użycia serwera](https://azure.microsoft.com/solutions/serverless/) z [automatycznym skalowaniem](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[Programowanie i testowanie w przeglądarce](functions-create-first-azure-function.md) |✔||
 |[Płatność za użycie](functions-scale.md#consumption-plan)|✔||
 |[Integracja z usługą Logic Apps](functions-twitter-email.md)|✔||
-| Zdarzenia wyzwalacza |[Czasomierz](functions-bindings-timer.md)<br>[Kolejki i obiekty blob usługi Azure Storage](functions-bindings-storage-blob.md)<br>[Kolejki i tematy usługi Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Czasomierz](functions-bindings-timer.md)<br>[Kolejki i obiekty blob usługi Azure Storage](functions-bindings-storage-blob.md)<br>[Kolejki i tematy usługi Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[System plików](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| Zdarzenia wyzwalacza |[Timer](functions-bindings-timer.md)<br>[Kolejki i obiekty blob usługi Azure Storage](functions-bindings-storage-blob.md)<br>[Kolejki i tematy usługi Azure Service Bus](functions-bindings-service-bus.md)<br>[Usługi Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Kolejki i obiekty blob usługi Azure Storage](functions-bindings-storage-blob.md)<br>[Kolejki i tematy usługi Azure Service Bus](functions-bindings-service-bus.md)<br>[Usługi Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[System plików](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | Obsługiwane języki  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
 |Menedżer pakietów|NPM i NuGet|NuGet<sup>2</sup>|
 
-<sup>1</sup> WebJobs (without the WebJobs SDK) supports C#, Java, JavaScript, Bash, .cmd, .bat, PowerShell, PHP, TypeScript, Python, and more. To nie jest pełna lista. Zadanie WebJob może uruchomić dowolny program lub skrypt, który można uruchomić w piaskownicy usługi App Service.
+<sup>1</sup> Zadania WebJob (bez zestawu SDK WebJob) obsługują C#, Java, JavaScript, bash,. cmd,. bat, PowerShell, php, TypeScript, Python i innych. To nie jest pełna lista. Zadanie WebJob może uruchomić dowolny program lub skrypt, który można uruchomić w piaskownicy usługi App Service.
 
 <sup>2</sup> Usługa WebJobs (bez zestawu WebJobs SDK) obsługuje narzędzia NPM i NuGet.
 

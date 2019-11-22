@@ -1,5 +1,5 @@
 ---
-title: Problemy podczas konfigurowania logowania jednokrotnego dla aplikacji w galerii usługi Azure AD | Microsoft Docs
+title: Problemy z konfigurowaniem logowania jednokrotnego dla aplikacji w galerii usługi Azure AD
 description: Poznaj typowe problemy występujące podczas konfigurowania logowania jednokrotnego hasła dla aplikacji, które są już wymienione w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381128"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274192"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem podczas konfigurowania logowania jednokrotnego przy użyciu hasła dla aplikacji z galerii usługi Azure AD
 
@@ -37,17 +37,17 @@ Chociaż firma Microsoft ma technologie wykrywające przerwy w integracji, mogą
 
 Aby rozwiązać ten problem, należy najpierw wykonać następujące czynności:
 
-- Użytkownik musi najpierw próbować zalogować się **do witryny sieci Web aplikacji bezpośrednio** przy użyciu poświadczeń przechowywanych dla nich.
+- Użytkownik musi najpierw próbować **zalogować się do witryny sieci Web aplikacji bezpośrednio** przy użyciu poświadczeń przechowywanych dla nich.
 
   * Jeśli zalogujesz się, kliknij przycisk **Aktualizuj poświadczenia** na **kafelku aplikacji** w sekcji **aplikacje** w [panelu dostęp do aplikacji](https://myapps.microsoft.com/) , aby zaktualizować je do najnowszej znanej roboczej nazwy użytkownika i hasła.
 
-  * Jeśli ty lub inny administrator przypisał poświadczenia dla tego użytkownika, Znajdź przypisanie aplikacji użytkownika lub grupy, przechodząc do karty **użytkownicy & grupy** aplikacji, wybierając przypisanie i klikając **poświadczenia aktualizacji** przycisk.
+  * Jeśli ty lub inny administrator przypisał poświadczenia dla tego użytkownika, Znajdź przypisanie aplikacji użytkownika lub grupy, przechodząc do karty **użytkownicy & grupy** aplikacji, wybierając przypisanie i klikając przycisk **Aktualizuj poświadczenia** .
 
-- Jeśli użytkownik przypisał własne poświadczenia, użytkownik musi upewnić się, **że hasło nie wygasło w aplikacji** , a jeśli tak, **zaktualizuj swoje wygasłe hasło** , logując się do aplikacji bezpośrednio.
+- Jeśli użytkownik przypisał własne poświadczenia, użytkownik musi **upewnić się, że hasło nie wygasło w aplikacji** , a jeśli tak, **zaktualizuj swoje wygasłe hasło** , logując się do aplikacji bezpośrednio.
 
-  * Po zaktualizowaniu hasła w aplikacji poproś użytkownika o kliknięcie przycisku **Aktualizuj poświadczenia** na **kafelku aplikacji** w sekcji **aplikacje** w [panelu dostęp do aplikacji](https://myapps.microsoft.com/) , aby zaktualizować je do najnowszej znanej Nazwa użytkownika i hasło.
+  * Po zaktualizowaniu hasła w aplikacji, należy poprosić użytkownika o kliknięcie przycisku **Aktualizuj poświadczenia** na **kafelku aplikacji** w sekcji **aplikacje** w [panelu dostęp do aplikacji](https://myapps.microsoft.com/) , aby zaktualizować je do najnowszej znanej roboczej nazwy użytkownika i hasła.
 
-  * Jeśli ty lub inny administrator przypisał poświadczenia dla tego użytkownika, Znajdź przypisanie aplikacji użytkownika lub grupy, przechodząc do karty **użytkownicy & grupy** aplikacji, wybierając przypisanie i klikając **poświadczenia aktualizacji** przycisk.
+  * Jeśli ty lub inny administrator przypisał poświadczenia dla tego użytkownika, Znajdź przypisanie aplikacji użytkownika lub grupy, przechodząc do karty **użytkownicy & grupy** aplikacji, wybierając przypisanie i klikając przycisk **Aktualizuj poświadczenia** .
 
 - Aby użytkownik zaktualizował rozszerzenie przeglądarki panelu dostępu, wykonaj poniższe czynności w sekcji [jak zainstalować rozszerzenie przeglądarki panelu dostępu](#how-to-install-the-access-panel-browser-extension) .
 
@@ -89,7 +89,7 @@ Aby zainstalować rozszerzenie przeglądarki panelu dostępu, wykonaj następuj�
 
 1.  Otwórz [panel dostępu](https://myapps.microsoft.com) w jednej z obsługiwanych przeglądarek i zaloguj się jako **użytkownik** w usłudze Azure AD.
 
-2.  Kliknij pozycję **hasło — logowanie** jednokrotne w panelu dostępu.
+2.  Kliknij pozycję **hasło — logowanie JEDNOkrotne** w panelu dostępu.
 
 3.  W wierszu polecenia z monitem o zainstalowanie oprogramowania wybierz pozycję **Zainstaluj teraz**.
 

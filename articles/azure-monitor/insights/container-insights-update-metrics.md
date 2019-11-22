@@ -7,23 +7,27 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: b513408f551a255facc897b7ba83c68e2befe282
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8fb1c6c65ab9c38ef16cfbc20435b35d0c7a7ce5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928269"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279615"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak zaktualizować Azure Monitor dla kontenerów w celu włączenia metryk
 
 Azure Monitor dla kontenerów wprowadza obsługę zbierania metryk z węzłów klastrów usługi Azure Kubernetes Services (AKS) i ich tworzenia do magazynu metryk Azure Monitor. Ta zmiana ma na celu dostarczenie ulepszonej osi czasu podczas prezentowania obliczeń agregacji (średni, Count, Max, min, sum) na wykresach wydajności, obsługę przypinania wykresów wydajności w Azure Portal pulpitów nawigacyjnych i obsługę alertów dotyczących metryk.
+
+>[!NOTE]
+>Ta funkcja nie obsługuje obecnie klastrów OpenShift firmy Red Hat.
+>
 
 Następujące metryki są włączone w ramach tej funkcji:
 
 | Przestrzeń nazw metryki | Metryka | Opis |
 |------------------|--------|-------------|
 | Szczegółowe informacje. kontenery/węzły | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Są to metryki *węzłów* i obejmują *hosta* jako wymiar, a także zawierają<br> Nazwa węzła jako wartość dla wymiaru *hosta* . |
-| Szczegółowe informacje. kontenery/zasobniki | PodCount | Są to *metryki* poniżej i zawierają następujące elementy: Dimensions-ControllerName, Kubernetes Namespace, Name, faz. |
+| Szczegółowe informacje. kontenery/zasobniki | podCount | Są to *metryki* poniżej i zawierają następujące elementy: Dimensions-ControllerName, Kubernetes Namespace, Name, faz. |
 
 Aktualizowanie klastra w celu obsługi tych nowych funkcji można wykonać z poziomu Azure Portal, Azure PowerShell lub przy użyciu interfejsu wiersza polecenia platformy Azure. Za pomocą Azure PowerShell i interfejsu wiersza polecenia można włączyć tę opcję dla klastra lub dla wszystkich klastrów w ramach subskrypcji. Nowe wdrożenia programu AKS automatycznie uwzględniają tę zmianę konfiguracji i możliwości.
 
@@ -36,7 +40,7 @@ Przed rozpoczęciem Potwierdź następujące kwestie:
 * Metryki niestandardowe są dostępne tylko w ramach podzestawów regionów świadczenia usługi Azure. Lista obsługiwanych regionów jest udokumentowana [tutaj](../platform/metrics-custom-overview.md#supported-regions).
 * Musisz być członkiem roli **[właściciela](../../role-based-access-control/built-in-roles.md#owner)** w zasobie klastra AKS, aby włączyć kolekcję metryk wydajności niestandardowych węzła i pod. 
 
-Jeśli zdecydujesz się na korzystanie z interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Uaktualnianie klastra z Azure Portal
 
@@ -58,7 +62,7 @@ Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w ramach subsk
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Zmiana konfiguracji może potrwać kilka sekund. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+    Zmiana konfiguracji może potrwać kilka sekund. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
@@ -327,7 +331,7 @@ Wykonaj następujące kroki, aby zaktualizować wszystkie klastry w subskrypcji 
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Zmiana konfiguracji może potrwać kilka sekund. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+    Zmiana konfiguracji może potrwać kilka sekund. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
@@ -578,7 +582,7 @@ Wykonaj następujące kroki, aby zaktualizować konkretny klaster przy użyciu A
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Zmiana konfiguracji może potrwać kilka sekund. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+    Zmiana konfiguracji może potrwać kilka sekund. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>

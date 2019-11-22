@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717995"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307343"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
@@ -38,7 +38,7 @@ Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-- Instalacja programu [Visual Studio](https://www.visualstudio.com/). 
+- Zainstalować program [Visual Studio](https://www.visualstudio.com/). 
 - Aby analizować dane wyjściowe z zadania usługi Stream Analytics, potrzebne jest konto usługi Power BI. Możesz [wypróbować bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="set-up-resources"></a>Konfigurowanie zasobów
@@ -156,7 +156,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Uruchamianie aplikacji w celu wygenerowania danych zdarzenia testowego
 
-Wśród przykładów dotyczących usługi Event Hubs [w witrynie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) znajduje się [aplikacja do wykrywania anomalii](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector), która generuje dane testowe dla użytkownika. Symuluje ona korzystanie z kart kredytowych, zapisując w centrum zdarzeń transakcje kart kredytowych, w tym zapisując co pewien czas wiele transakcji dla tej samej karty kredytowej w wielu lokalizacjach, aby mogły one zostać oznaczone jako anomalie. Aby uruchomić tę aplikację, wykonaj następujące kroki: 
+Wśród przykładów dotyczących usługi Event Hubs [w witrynie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) znajduje się [aplikacja do wykrywania anomalii](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector), która generuje dane testowe dla użytkownika. Symuluje ona korzystanie z kart kredytowych, zapisując w centrum zdarzeń transakcje kart kredytowych, w tym zapisując co pewien czas wiele transakcji dla tej samej karty kredytowej w wielu lokalizacjach, aby mogły one zostać oznaczone jako anomalie. Aby uruchomić tę aplikację, wykonaj następujące kroki: 
 
 1. Pobierz [przykłady dotyczące usługi Azure Event Hubs](https://github.com/Azure/azure-event-hubs/archive/master.zip) z usługi GitHub i rozpakuj je lokalnie.
 
@@ -320,7 +320,7 @@ W ramach zadania usługi Stream Analytics kliknij pozycje **Uruchom**, następni
 
    Kliknij przycisk **Dalej**.
 
-10. Ustaw tytuł **Oszukańcze użycia** i podtytuł **Suma w ciągu kilku ostatnich minut**. Kliknij przycisk **Zastosuj**. Kafelek zostanie zapisany na pulpicie nawigacyjnym.
+10. Ustaw tytuł **Oszukańcze użycia** i podtytuł **Suma w ciągu kilku ostatnich minut**. Kliknij przycisk **zastosować**. Kafelek zostanie zapisany na pulpicie nawigacyjnym.
 
     ![Zrzut ekranu przedstawiający określanie tytułu i podtytułu dla kafelka pulpitu nawigacyjnego.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i używanie obiektów docelowych obliczeń do szkolenia modelu
+title: Użyj obiektów docelowych obliczeń do szkolenia modelu
 titleSuffix: Azure Machine Learning
 description: Skonfiguruj środowiska szkoleniowe (cele obliczeniowe) dla szkolenia modelu uczenia maszynowego. Można łatwo przełączać się między środowiskami szkoleniowymi. Zacznij szkolenie lokalnie. Jeśli konieczne jest skalowanie w poziomie, przełącz się do elementu docelowego obliczeń opartego na chmurze.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489591"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305327"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,11 +32,11 @@ W tym artykule dowiesz się, jak używać różnych obiektów docelowych oblicze
 
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK Azure Machine Learning 1.0.39.
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK Azure Machine Learning 1.0.74.
 
 ## <a name="compute-targets-for-training"></a>Cele obliczeniowe dla szkolenia
 
-Azure Machine Learning ma różne wsparcie dla różnych obiektów docelowych obliczeń. Typowy cykl projektowania modelu rozpoczyna się od tworzenia i eksperymentowania w niewielkiej ilości danych. Na tym etapie zalecamy używanie środowiska lokalnego. Na przykład na komputerze lokalnym lub maszynie wirtualnej opartej na chmurze. Podczas skalowania w górę szkolenia w przypadku większych zestawów danych lub przeprowadzenia szkolenia rozproszonego zalecamy użycie funkcji Azure Machine Learning COMPUTE do utworzenia wielowęzłowego klastra, który automatycznie skaluje się przy każdym przesyłaniu przebiegu. Możesz również dołączyć własny zasób obliczeniowy, chociaż obsługa różnych scenariuszy może się różnić w następujący sposób:
+Azure Machine Learning ma różne wsparcie dla różnych obiektów docelowych obliczeń. Cykl projektowania modelu Typowa rozpoczyna się od dev/eksperymentów na niewielkiej ilości danych. Na tym etapie firma Microsoft zaleca używanie środowiska lokalnego. Na przykład komputera lokalnego lub maszyny Wirtualnej opartej na chmurze. Skalowanie w górę szkolenia na większych zestawów danych lub czy rozproszonego szkolenia, firma Microsoft zaleca obliczeniowego usługi Azure Machine Learning Tworzenie klastra przy użyciu jednego lub wielu node tego skalowania każdej próbie przesłania przebiegu. Można również dołączyć własnych zasobów obliczeniowych, mimo że obsługi różnych scenariuszy mogą się różnić zależnie z poniższym opisem:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -76,7 +76,7 @@ Chociaż potoki ML mogą szkolić modele, mogą również przygotowywać dane pr
 Skorzystaj z poniższych sekcji, aby skonfigurować te elementy docelowe obliczeń:
 
 * [Komputer lokalny](#local)
-* [Azure Machine Learning obliczeń](#amlcompute)
+* [Usługi Azure Machine Learning obliczeń](#amlcompute)
 * [Zdalne maszyny wirtualne](#vm)
 * [Usługa Azure HDInsight](#hdinsight)
 
@@ -91,23 +91,20 @@ Skorzystaj z poniższych sekcji, aby skonfigurować te elementy docelowe oblicze
 
 Teraz, po dołączeniu obliczeń i skonfigurowaniu przebiegu, następnym krokiem jest [przesłanie tego przebiegu szkoleniowego](#submit).
 
-### <a id="amlcompute"></a>Azure Machine Learning obliczeń
+### <a id="amlcompute"></a>Usługi Azure Machine Learning obliczeń
 
 Azure Machine Learning COMPUTE to infrastruktura obliczeniowa, która umożliwia użytkownikowi łatwe tworzenie obliczeń jednego lub wielowęzłowego. Obliczenia są tworzone w regionie obszaru roboczego jako zasób, który może być współużytkowany z innymi użytkownikami w obszarze roboczym. Obliczenia są skalowane automatycznie podczas przesyłania zadania i mogą być umieszczane w Virtual Network platformy Azure. Obliczenia są wykonywane w środowisku kontenerowym i pakiety zależności modelu w [kontenerze platformy Docker](https://www.docker.com/why-docker).
 
-Za pomocą obliczeń Azure Machine Learning można dystrybuować proces uczenia w klastrze procesorów CPU lub węzłów obliczeniowych procesora GPU w chmurze. Aby uzyskać więcej informacji o rozmiarach maszyn wirtualnych, które obejmują procesory GPU, zobacz [rozmiary maszyny wirtualnej zoptymalizowanej według procesora GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+Aby rozdystrybuować procesu uczenia klastra procesora CPU lub GPU węzłów obliczeniowych w chmurze, można użyć obliczeniowego usługi Azure Machine Learning. Aby uzyskać więcej informacji o rozmiarach maszyn wirtualnych, które obejmują procesory GPU, zobacz [rozmiary maszyny wirtualnej zoptymalizowanej według procesora GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
 Azure Machine Learning COMPUTE ma limity domyślne, takie jak liczba rdzeni, które można przydzielić. Aby uzyskać więcej informacji, zobacz [Zarządzanie przydziałami zasobów platformy Azure i ich żądania](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 
 Środowisko obliczeniowe Azure Machine Learning można utworzyć na żądanie po zaplanowaniu uruchomienia lub jako zasób trwały.
 
-#### <a name="run-based-creation"></a>Tworzenie na podstawie uruchomienia
+#### <a name="run-based-creation"></a>Tworzenie opartych na przebieg
 
 Azure Machine Learning obliczeń można utworzyć jako obiekt docelowy obliczeń w czasie wykonywania. Obliczenia są tworzone automatycznie dla danego przebiegu. Obliczenia są usuwane automatycznie po zakończeniu przebiegu. 
-
-> [!NOTE]
-> Aby określić maksymalną liczbę węzłów, które mają być używane, zwykle ustawia się `node_count` na liczbę węzłów. Obecnie istnieje (04/04/2019) usterka, która uniemożliwia korzystanie z tej usługi. Aby obejść ten element, należy użyć właściwości `amlcompute._cluster_max_node_count` konfiguracji uruchomieniowej. Na przykład `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Tworzenie Azure Machine Learning obliczeń opartych na uruchomieniu jest obecnie dostępne w wersji zapoznawczej. Nie należy używać tworzenia opartego na uruchomieniach, jeśli jest używane automatyczne dostrajanie parametrów lub automatyczne Uczenie maszynowe. Aby skorzystać z dostrajania podparametru lub automatycznej uczenia maszynowego, należy zamiast tego utworzyć [trwały](#persistent) element docelowy obliczeń.
@@ -144,9 +141,9 @@ Teraz, po dołączeniu obliczeń i skonfigurowaniu przebiegu, następnym krokiem
 
 ### <a id="vm"></a>Zdalne maszyny wirtualne
 
-Azure Machine Learning obsługuje również pobieranie własnego zasobu obliczeniowego i dołączanie go do obszaru roboczego. Jeden taki typ zasobu jest dowolną zdalną maszyną wirtualną, o ile jest dostępny z Azure Machine Learning. Zasób może być maszyną wirtualną platformy Azure, serwerem zdalnym w organizacji lub lokalnym. W odniesieniu do adresów IP i poświadczeń (nazwy użytkownika i hasła lub klucza SSH) można użyć dowolnej dostępnej maszyny wirtualnej do zdalnego uruchomienia.
+Usługa Azure Machine Learning obsługuje również wprowadzenie własnych zasobów obliczeniowych i dołączania ich do obszaru roboczego. Jeden taki typ zasobu jest dowolną zdalną maszyną wirtualną, o ile jest dostępny z Azure Machine Learning. Zasób może być maszyną wirtualną platformy Azure, serwerem zdalnym w organizacji lub lokalnym. W odniesieniu do adresów IP i poświadczeń (nazwy użytkownika i hasła lub klucza SSH) można użyć dowolnej dostępnej maszyny wirtualnej do zdalnego uruchomienia.
 
-Można użyć wbudowanego w systemie środowiska Conda, już istniejącego środowiska Python lub kontenera Docker. Aby można było wykonać operację na kontenerze platformy Docker, na maszynie wirtualnej musi być uruchomiony aparat platformy Docker. Ta funkcja jest szczególnie przydatna w przypadku bardziej elastycznego, opartego na chmurze środowiska deweloperskiego/eksperymentowania niż na komputerze lokalnym.
+Można użyć środowiska conda tworzonym przez system, już istniejące środowisko Python lub kontenera Docker. Aby można było wykonać operację na kontenerze platformy Docker, na maszynie wirtualnej musi być uruchomiony aparat platformy Docker. Ta funkcja jest szczególnie przydatne w przypadku, gdy chcesz środowiska bardziej elastyczne, oparte na chmurze dev/eksperymentowanie w usłudze niż komputer lokalny.
 
 W tym scenariuszu Użyj usługi Azure Data Science Virtual Machine (DSVM) jako maszyny wirtualnej platformy Azure. Ta maszyna wirtualna jest wstępnie skonfigurowanym środowiskiem programistycznym do analizy danych i AI na platformie Azure. Maszyna wirtualna oferuje świadome wybór narzędzi i struktur na potrzeby tworzenia uczenia maszynowego w pełnym cyklu życia. Aby uzyskać więcej informacji na temat używania DSVM z Azure Machine Learning, zobacz [Konfigurowanie środowiska deweloperskiego](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
@@ -199,7 +196,7 @@ Usługa Azure HDInsight to popularna platforma do analizy danych Big Data. Platf
     
     Po utworzeniu klastra Połącz się z nim za pomocą nazwy hosta \<ClusterName >-ssh.azurehdinsight.net, gdzie \<ClusterName > jest nazwą dostarczoną dla klastra. 
 
-1. **Dołącz**: Aby dołączyć klaster usługi HDInsight jako obiekt docelowy obliczeń, należy podać nazwę hosta, nazwa użytkownika i hasło dla klastra usługi HDInsight. Poniższy przykład używa zestawu SDK do dołączania klastra do obszaru roboczego. W przykładzie Zastąp \<ClusterName > nazwą klastra. Zastąp \<username > i \<Password > nazwą użytkownika SSH i hasłem dla klastra.
+1. **Dołącz**: Aby dołączyć klaster usługi HDInsight jako obiekt docelowy obliczeń, należy podać nazwę hosta, nazwa użytkownika i hasło dla klastra usługi HDInsight. W poniższym przykładzie użyto zestawu SDK, aby dołączyć klaster z obszarem roboczym. W przykładzie Zastąp \<ClusterName > nazwą klastra. Zastąp \<username > i \<Password > nazwą użytkownika SSH i hasłem dla klastra.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -315,7 +312,7 @@ Wykonaj poprzednie kroki, aby wyświetlić listę elementów docelowych oblicze�
 
 1. Wypełnij formularz. Podaj wartości dla wymaganych właściwości, szczególnie **rodziny maszyn wirtualnych**i **maksymalną liczbę węzłów** do użycia w celu uruchomienia obliczeń.  
 
-1. Wybierz pozycję __Utwórz__.
+1. Wybierz __tworzenie__.
 
 
 1. Wyświetl stan operacji tworzenia, wybierając obiekt docelowy obliczeń z listy:
@@ -349,10 +346,10 @@ Wykonaj kroki opisane wcześniej, aby wyświetlić listę elementów docelowych 
     > [!NOTE]
     > Firma Microsoft zaleca korzystanie z kluczy SSH, które są bezpieczniejsze niż hasła. Hasła są podatne na ataki z wymuszeniem. Klucze SSH korzystają z podpisów kryptograficznych. Aby uzyskać informacje na temat sposobu tworzenia kluczy SSH do użycia z usługą Azure Virtual Machines, zobacz następujące dokumenty:
     >
-    > * [Tworzenie i Używanie kluczy SSH w systemie Linux lub macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Tworzenie i Używanie kluczy SSH w systemie Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Tworzenie i używanie kluczy SSH w systemie Linux lub macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [Tworzenie i używanie kluczy SSH w Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-1. Wybierz pozycję __Dołącz__. 
+1. Wybierz __dołączyć__. 
 1. Wyświetl stan operacji dołączania, wybierając obiekt docelowy obliczeń z listy.
 
 ## <a name="set-up-with-cli"></a>Konfigurowanie przy użyciu interfejsu wiersza polecenia
@@ -374,8 +371,8 @@ Możesz uzyskiwać dostęp do obiektów docelowych obliczeń skojarzonych z obsz
 Po utworzeniu konfiguracji przebiegu należy użyć jej do uruchomienia eksperymentu.  Wzorzec kodu do przesyłania przebiegu szkoleniowego jest taki sam dla wszystkich typów obiektów docelowych obliczeń:
 
 1. Utwórz eksperyment do uruchomienia
-1. Prześlij przebieg.
-1. Poczekaj na ukończenie przebiegu.
+1. Prześlij przebiegu.
+1. Poczekaj, aż działanie zakończyć.
 
 > [!IMPORTANT]
 > Po przesłaniu przebiegu szkoleniowego tworzona jest migawka katalogu zawierającego skrypty szkoleniowe i wysyłane do obiektu docelowego obliczeń. Jest on również przechowywany w ramach eksperymentu w obszarze roboczym. Jeśli zmienisz pliki i prześlesz ponownie uruchomienie, zostaną przekazane tylko zmienione pliki.
@@ -394,7 +391,7 @@ Najpierw utwórz eksperyment w obszarze roboczym.
 
 Prześlij eksperyment z obiektem `ScriptRunConfig`.  Ten obiekt obejmuje:
 
-* **katalog_źródłowy**: Katalog źródłowy zawierający skrypt szkoleniowy
+* **source_directory**: Katalog źródłowy zawierający skrypt szkoleniowy
 * **skrypt**: Identyfikowanie skryptu szkoleniowego
 * **run_config**: Konfiguracja uruchamiania, która z kolei definiuje, gdzie nastąpi szkolenie.
 
@@ -507,8 +504,8 @@ Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym rep
 ## <a name="notebook-examples"></a>Przykłady notesu
 
 Zobacz te notesy, aby poznać przykłady szkoleń z różnymi obiektami docelowymi obliczeń:
-* [Jak używać — Azure/szkolenia](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [Samouczki/IMG-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [jak-to-użyj-usługi Azure ml/szkolenia](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [Samouczki/img klasyfikacji — część 1 — training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

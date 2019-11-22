@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803914"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307308"
 ---
 # <a name="supported-platforms"></a>Obsługiwane platformy 
 
@@ -91,19 +91,19 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * MySQL
 * CosmosDB
 * Konto magazynu
-* Usługa App Service
+* App Service
 * Funkcja
 * Usługa w chmurze
 * VNet
-* Podsieć
+* Subnet
 * Karta sieciowa
 * Sieciowa grupa zabezpieczeń
 * Konto usługi Batch
 * Konto usługi Service Fabric
 * Konto usługi Automation
 * Moduł równoważenia obciążenia
-* Search
-* Przestrzeń nazw usługi Service Bus
+* Wyszukiwanie
+* Przestrzeń nazw magistrala usług
 * Stream Analytics
 * Przestrzeń nazw centrum zdarzeń
 * Aplikacje logiki
@@ -113,6 +113,8 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Key Vault
 
 Aby dowiedzieć się więcej na temat obsługiwanych funkcji dla powyższej listy zasobów PaaS, zobacz [obsługiwane funkcje usług PaaS Services](security-center-services.md#paas-services).
+
+Obsługiwane jest również ochrona Virtual Machines znajdujących się w Azure Stack. Aby uzyskać więcej informacji na temat integracji Security Center z Azure Stack, zobacz Dołączanie [Azure Stack maszyn wirtualnych do Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 
 ## <a name="next-steps"></a>Następne kroki
 

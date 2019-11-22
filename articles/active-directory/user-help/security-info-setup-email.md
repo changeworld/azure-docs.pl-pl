@@ -1,6 +1,6 @@
 ---
-title: Set up an email address as your authentication method - Azure AD
-description: How to set up the Security info page to verify your identity using an email address as your authentication method.
+title: Konfigurowanie adresu e-mail jako metody weryfikacji — Azure AD
+description: Jak skonfigurować informacje zabezpieczające (wersja zapoznawcza) w celu zweryfikowania tożsamości przy użyciu adresu e-mail jako metody weryfikacji.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,86 +12,86 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03b53760f27f853f34397ac9047f18a37e1bc845
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: dafa78e6f46a3d2d6b7a9c505defaeae21875946
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231778"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279020"
 ---
-# <a name="set-up-an-email-address-as-your-authentication-method-from-the-security-info-preview-page"></a>Set up an email address as your authentication method from the Security info (preview) page
+# <a name="set-up-an-email-address-as-your-verification-method"></a>Skonfiguruj adres e-mail jako metodę weryfikacji
 
-You can follow these steps to add your password reset method. After you've set this up the first time, you can return to the **Security info** page to add, update, or delete your security information.
+Poniższe kroki umożliwiają dodanie metody resetowania hasła. Po wybraniu tej opcji po raz pierwszy możesz wrócić do strony **informacje zabezpieczające** , aby dodać, zaktualizować lub usunąć informacje o zabezpieczeniach.
 
-After you set up your password reset method, you must also set up your two-factor verification method, using an [authenticator app](security-info-setup-auth-app.md), [text messaging](security-info-setup-text-msg.md), or a [phone call](security-info-setup-phone-number.md).
+Po skonfigurowaniu metody resetowania hasła należy również skonfigurować metodę weryfikacji dwuskładnikowej przy użyciu [aplikacji uwierzytelniającej](security-info-setup-auth-app.md), [wiadomości tekstowych](security-info-setup-text-msg.md)lub [połączenia telefonicznego](security-info-setup-phone-number.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="set-up-your-email-address-from-the-security-info-page"></a>Set up your email address from the Security info page
+## <a name="set-up-your-email-address-from-the-security-info-page"></a>Konfigurowanie adresu e-mail na stronie z informacjami o zabezpieczeniach
 
-Depending on your organization’s settings, you might be able to use your email address as one of your security info methods.
+W zależności od ustawień organizacji może być możliwe użycie adresu e-mail jako jednej z metod informacji zabezpieczających.
 
 >[!Note]
->We recommend using an email address that doesn't require your network password to access. If you don't see the email option, it's possible that your organization doesn't allow you to use an email for verification. If this is the case, you'll need to choose another method or contact your administrator for more help.
+>Zalecamy użycie adresu e-mail, który nie wymaga hasła do sieci, aby uzyskać dostęp do programu. Jeśli nie widzisz opcji poczty e-mail, być może Twoja organizacja nie zezwala na weryfikację za pomocą wiadomości e-mail. W takim przypadku należy wybrać inną metodę lub skontaktować się z administratorem w celu uzyskania dodatkowej pomocy.
 
-### <a name="to-set-up-your-email-address"></a>To set up your email address
+### <a name="to-set-up-your-email-address"></a>Aby skonfigurować swój adres e-mail
 
-1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
 
-    ![My Profile page, showing highlighted Security info links](media/security-info/securityinfo-myprofile-page.png)
+    ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
 
-2. Select **Security info** from the left navigation pane or from the link in the **Security info** block, and then select **Add method** from the **Security info** page.
+2. W okienku nawigacji po lewej stronie wybierz pozycję **informacje zabezpieczające** lub link w bloku **informacje zabezpieczające** , a następnie wybierz pozycję **Dodaj metodę** ze strony **informacje zabezpieczające** .
 
-    ![Security info page with highlighted Add method option](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Strona z informacjami o zabezpieczeniach z wyróżnioną opcją dodawania metody](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. On the **Add a method** page, select **Email** from the drop-down list, and then select **Add**.
+3. Na stronie **Dodawanie metody** wybierz z listy rozwijanej pozycję **poczta e-mail** , a następnie wybierz pozycję **Dodaj**.
 
-    ![Add method box, with email selected](media/security-info/securityinfo-myprofile-addemail.png)
+    ![Dodaj pole metody z wybraną pocztą e-mail](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. On the **Email** page, type your email address (for example, alain@gmail.com), and then select **Next**.
+4. Na stronie **poczta e-mail** wpisz swój adres e-mail (na przykład alain@gmail.com), a następnie wybierz przycisk **dalej**.
 
-    ![Add phone number and choose phone calls](media/security-info/securityinfo-myprofile-emailaddress.png)
+    ![Dodawanie numeru telefonu i Wybieranie połączeń telefonicznych](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
-    >This email address can't be your work or school email.
+    >Ten adres e-mail nie może być służbowym adresem e-mail.
 
-5. Type the code sent to your specified email address, and then select **Next**.
+5. Wpisz kod wysłany na określony adres e-mail, a następnie wybierz przycisk **dalej**.
 
-    ![Add phone number and choose text messages](media/security-info/securityinfo-myprofile-emailcode.png)
+    ![Dodawanie numeru telefonu i wybieranie wiadomości SMS](media/security-info/securityinfo-myprofile-emailcode.png)
 
-    Your security info is updated and you can use your email address to verify your identity when using password reset.
+    Informacje zabezpieczające zostały zaktualizowane i można użyć swojego adresu e-mail do zweryfikowania tożsamości podczas korzystania z funkcji resetowania haseł.
 
-## <a name="delete-your-email-address-from-your-security-info-methods"></a>Delete your email address from your security info methods
+## <a name="delete-your-email-address-from-your-security-info-methods"></a>Usuń swój adres e-mail z metod informacji zabezpieczających
 
-If you no longer want to use your email address as a security info method, you can remove it from the **Security info** page.
+Jeśli nie chcesz już używać adresu e-mail jako metody informacji zabezpieczających, możesz usunąć ją ze strony **informacje zabezpieczające** .
 
 >[!Important]
->If you delete your email address by mistake, there's no way to undo it. You'll have to add the method again, following the steps in the [Set up your email address](#set-up-your-email-address-from-the-security-info-page) section of this article.
+>Jeśli usuniesz adres e-mail przez pomyłkę, nie ma możliwości jego cofnięcia. Musisz ponownie dodać metodę, wykonując czynności opisane w sekcji [Konfigurowanie adresu e-mail](#set-up-your-email-address-from-the-security-info-page) w tym artykule.
 
-### <a name="to-delete-your-email-address"></a>To delete your email address
+### <a name="to-delete-your-email-address"></a>Aby usunąć swój adres e-mail
 
-1. On the **Security info** page, select the **Delete** link next to the **Email** option.
+1. Na stronie **informacje zabezpieczające** wybierz łącze **Usuń** obok opcji **wiadomości e-mail** .
 
-    ![Link to delete the phone method from security info](media/security-info/securityinfo-myprofile-emaildelete.png)
+    ![Link umożliwiający usunięcie metody telefonu z informacji zabezpieczających](media/security-info/securityinfo-myprofile-emaildelete.png)
 
-2. Select **Yes** from the confirmation box to delete the **Email** account. After the email account is deleted, it's removed from your security info and it disappears from the **Security info** page.
+2. Wybierz opcję **tak** w polu potwierdzenia, aby usunąć konto **e-mail** . Po usunięciu konta e-mail zostanie ono usunięte z informacji zabezpieczających i zniknie ze strony z **informacjami o zabezpieczeniach** .
 
-## <a name="additional-security-info-methods"></a>Additional security info methods
+## <a name="additional-security-info-methods"></a>Dodatkowe metody informacji zabezpieczających
 
-You have additional options for how your organization contacts you to verify your identity, based on what's you're trying to do. Dostępne są następujące opcje:
+Dostępne są dodatkowe opcje dotyczące sposobu, w jaki Twoja organizacja kontaktuje się z Twoją tożsamością, w oparciu o to, co you're próbę wykonania. Dostępne są następujące opcje:
 
-- **Authenticator app.** Download and use an authenticator app to get either an approval notification or a randomly generated approval code for two-step verification or password reset. For step-by-step instructions about how to set up and use the Microsoft Authenticator app, see [Set up security info to use an authenticator app](security-info-setup-auth-app.md).
+- **Aplikacja uwierzytelniania.** Pobierz aplikację Authenticator i użyj jej do uzyskania powiadomienia o zatwierdzeniu lub losowo wygenerowanego kodu zatwierdzenia na potrzeby weryfikacji dwuetapowej lub resetowania hasła. Instrukcje krok po kroku dotyczące konfigurowania i używania aplikacji Microsoft Authenticator można znaleźć w temacie [set up Security Info to use the Authenticator App](security-info-setup-auth-app.md).
 
-- **Mobile device text.** Enter your mobile device number and get a text a code you'll use for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a text message (SMS), see [Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md).
+- **Tekst urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego i uzyskaj tekst kodu, który będzie używany do weryfikacji dwuetapowej lub resetowania hasła. Aby uzyskać instrukcje krok po kroku dotyczące weryfikowania tożsamości za pomocą wiadomości tekstowych (SMS), zobacz [Konfigurowanie informacji zabezpieczających do używania wiadomości](security-info-setup-text-msg.md)SMS.
 
-- **Mobile device or work phone call.** Enter your mobile device number and get a phone call for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a phone number, see [Set up security info to use phone calls](security-info-setup-phone-number.md).
+- **Urządzenie przenośne lub połączenie telefoniczne.** Wprowadź numer urządzenia przenośnego i otrzymaj połączenie telefoniczne w celu weryfikacji dwuetapowej lub resetowania hasła. Aby uzyskać instrukcje krok po kroku dotyczące weryfikowania tożsamości przy użyciu numeru telefonu, zobacz [Konfigurowanie informacji zabezpieczających do korzystania z połączeń telefonicznych](security-info-setup-phone-number.md).
 
-- **Security key.** Register your Microsoft-compatible security key and use it along with a PIN for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a security key, see [Set up security info to use a security key](security-info-setup-security-key.md).
+- **Klucz zabezpieczeń.** Zarejestruj klucz zabezpieczeń zgodny z firmą Microsoft i użyj go wraz z numerem PIN w celu weryfikacji dwuetapowej lub resetowania hasła. Instrukcje krok po kroku dotyczące weryfikowania tożsamości przy użyciu klucza zabezpieczeń znajdują się w temacie [set up Security Info to use a Security Key](security-info-setup-security-key.md).
 
-- **Security questions.** Answer some security questions created by your administrator for your organization. This option is only available for password reset and not for two-step verification. For step-by-step instructions about how to set up your security questions, see the [Set up security info to use security questions](security-info-setup-questions.md) article.
+- **Pytania zabezpieczające.** Odpowiedz na niektóre pytania zabezpieczające utworzone przez administratora w organizacji. Ta opcja jest dostępna tylko do resetowania haseł, a nie do weryfikacji dwuetapowej. Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania pytań zabezpieczających, zobacz artykuł [Konfigurowanie informacji zabezpieczających do używania pytań zabezpieczających](security-info-setup-questions.md) .
 
     >[!Note]
-    >If some of these options are missing, it's most likely because your organization doesn't allow those methods. If this is the case, you'll need to choose an available method or contact your administrator for more help.
+    >Jeśli brakuje niektórych z tych opcji, prawdopodobnie organizacja nie zezwala na te metody. W takim przypadku należy wybrać dostępną metodę lub skontaktować się z administratorem w celu uzyskania pomocy.
 
 ## <a name="next-steps"></a>Następne kroki
 

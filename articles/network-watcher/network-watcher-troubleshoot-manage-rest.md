@@ -1,6 +1,7 @@
 ---
-title: Rozwiązywanie problemów z bramy sieci wirtualnej i połączeń przy użyciu usługi Azure Network Watcher — REST | Dokumentacja firmy Microsoft
-description: Tej stronie wyjaśniamy, jak rozwiązywać problemy z bramy sieci wirtualnej i połączeń przy użyciu usługi Azure Network Watcher przy użyciu usługi REST
+title: Rozwiązywanie problemów z bramą sieci wirtualnej i połączeniami — interfejs API REST Azure
+titleSuffix: Azure Network Watcher
+description: Na tej stronie wyjaśniono, jak rozwiązywać problemy Virtual Network bram i połączeń z usługą Azure Network Watcher przy użyciu usługi REST
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,52 +15,52 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 0f10b9b45f63485417685a0826c047725a264772
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b3898a7c4cd09b59da0fc167b758199119793eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686116"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277797"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Rozwiązywanie problemów z bramą sieci wirtualnej i połączeń przy użyciu usługi Azure Network Watcher
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Rozwiązywanie problemów z bramą Virtual Network i połączeniami przy użyciu usługi Azure Network Watcher
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [Program PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-troubleshoot-manage-cli.md)
-> - [Interfejs API REST](network-watcher-troubleshoot-manage-rest.md)
+> - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Usługa Network Watcher udostępnia wiele możliwości, w odniesieniu do zrozumienia zasobów sieciowych na platformie Azure. Jedną z tych funkcji jest zasobem rozwiązywania problemów. Rozwiązywanie problemów z zasobu może być wywoływany za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST. Po wywołaniu usługi Network Watcher sprawdza kondycję bramy sieci wirtualnej lub połączenie i zwraca jej ustaleń.
+Network Watcher udostępnia wiele funkcji, które odnoszą się do poznania zasobów sieciowych na platformie Azure. Jedną z tych możliwości jest rozwiązywanie problemów z zasobami. Rozwiązywanie problemów z zasobami można wywołać za pomocą portalu, programu PowerShell, interfejsu wiersza polecenia lub API REST. Gdy jest wywoływana, Network Watcher sprawdza kondycję Virtual Network bramy lub połączenia i zwraca swoje wyniki.
 
-Ten artykuł przeprowadzi Cię przez zadania zarządzania różnych, które są obecnie dostępne dla zasobów rozwiązywania problemów.
+W tym artykule przedstawiono różne zadania zarządzania, które są obecnie dostępne do rozwiązywania problemów z zasobami.
 
-- [**Rozwiązywanie problemów z bramą sieci wirtualnej**](#troubleshoot-a-virtual-network-gateway)
+- [**Rozwiązywanie problemów z bramą Virtual Network**](#troubleshoot-a-virtual-network-gateway)
 - [**Rozwiązywanie problemów z połączeniem**](#troubleshoot-connections)
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-ARMclient jest używane do wywołania interfejsu API REST przy użyciu programu PowerShell. ARMClient znajduje się na chocolatey na [ARMClient na narzędzia Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient jest używany do wywoływania interfejsu API REST przy użyciu programu PowerShell. ARMClient można znaleźć na czekolady w [ARMClient na czekoladie](https://chocolatey.org/packages/ARMClient)
 
-W tym scenariuszu przyjęto założenie, zostały już wykonane czynności opisane w [utworzyć usługę Network Watcher](network-watcher-create.md) utworzyć usługę Network Watcher.
+W tym scenariuszu założono, że wykonano już kroki opisane w temacie [tworzenie Network Watcher](network-watcher-create.md) w celu utworzenia Network Watcher.
 
-Aby uzyskać listę typów obsługiwanych bramy, zobacz [typy bram obsługiwane](network-watcher-troubleshoot-overview.md#supported-gateway-types).
+Aby zapoznać się z listą obsługiwanych typów bram, należy odwiedzić [obsługiwane typy bram](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Omówienie
 
-Rozwiązywanie problemów z siecią obserwatora umożliwia rozwiązywanie problemów, które wynikają z bramy sieci wirtualnej i połączenia. Po wysłaniu żądania do zasobu, rozwiązywania problemów, dzienniki jest wykonywane zapytanie i inspekcji. Po ukończeniu inspekcji wyniki są zwracane. Żądania interfejsu API rozwiązywania problemów są długie uruchomione żądania, może to potrwać kilka minut, aby zwrócony wynik. Dzienniki są przechowywane w kontenerze na koncie magazynu.
+Network Watcher Rozwiązywanie problemów zapewnia możliwość rozwiązywania problemów związanych z bramami Virtual Network i połączeniami. Gdy do rozwiązywania problemów zostanie wysłane żądanie, dzienniki są zapytania i sprawdzane. Po zakończeniu inspekcji są zwracane wyniki. Żądania interfejsu API rozwiązywania problemów są długotrwałymi żądaniami, co może potrwać kilka minut. Dzienniki są przechowywane w kontenerze na koncie magazynu.
 
-## <a name="log-in-with-armclient"></a>Zaloguj się przy użyciu ARMClient
+## <a name="log-in-with-armclient"></a>Logowanie za pomocą ARMClient
 
 ```powershell
 armclient login
 ```
 
-## <a name="troubleshoot-a-virtual-network-gateway"></a>Rozwiązywanie problemów z bramą sieci wirtualnej
+## <a name="troubleshoot-a-virtual-network-gateway"></a>Rozwiązywanie problemów z bramą Virtual Network
 
 
-### <a name="post-the-troubleshoot-request"></a>WPIS w żądaniu rozwiązywania problemów
+### <a name="post-the-troubleshoot-request"></a>Opublikuj żądanie rozwiązywania problemów
 
-Poniższy przykład zapytanie o stan bramy sieci wirtualnej.
+Poniższy przykład wysyła zapytanie do stanu bramy Virtual Network.
 
 ```powershell
 
@@ -84,12 +85,12 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/troubleshoot?api-version=2016-03-30" $requestBody -verbose
 ```
 
-Ponieważ ta operacja jest długa uruchomiona, identyfikator URI dla wysyłania zapytań do operacji i identyfikator URI dla wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższym odpowiedzi:
+Ponieważ ta operacja jest długotrwała, identyfikator URI zapytania o operację i identyfikator URI dla wyniku jest zwracany w nagłówku odpowiedzi, jak pokazano w następującej odpowiedzi:
 
 **Ważne wartości**
 
-* **Elementu Azure-AsyncOperation** — ta właściwość zawiera identyfikator URI zapytania Async Rozwiązywanie problemów z operacji
-* **Lokalizacja** — ta właściwość zawiera identyfikator URI, których wyniki są po zakończeniu operacji
+* **Azure-AsyncOperation** — ta właściwość zawiera identyfikator URI służący do wykonywania zapytań dotyczących asynchronicznej operacji rozwiązywania problemów
+* **Location** — ta właściwość zawiera identyfikator URI, do którego wyniki są po zakończeniu operacji
 
 ```
 HTTP/1.1 202 Accepted
@@ -109,15 +110,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Zapytanie operacji asynchronicznych do ukończenia
+### <a name="query-the-async-operation-for-completion"></a>Wykonywanie zapytania dotyczącego asynchronicznej operacji ukończenia
 
-Użyj operacji identyfikatora URI do wykonywania zapytań dla postępu operacji, jak pokazano w poniższym przykładzie:
+Użyj identyfikatora URI operacji, aby wykonać zapytanie o postęp operacji, jak pokazano w następującym przykładzie:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
 ```
 
-Gdy operacja jest w toku, odpowiedź wskazuje **InProgress** jak pokazano w poniższym przykładzie:
+Gdy operacja jest w toku, **odpowiedź pokazuje, jak widać w** poniższym przykładzie:
 
 ```json
 {
@@ -125,7 +126,7 @@ Gdy operacja jest w toku, odpowiedź wskazuje **InProgress** jak pokazano w poni
 }
 ```
 
-Po zakończeniu operacji stan zmieni się na **Powodzenie**.
+Po zakończeniu operacji stan zmieni się na **powodzenie**.
 
 ```json
 {
@@ -135,13 +136,13 @@ Po zakończeniu operacji stan zmieni się na **Powodzenie**.
 
 ### <a name="retrieve-the-results"></a>Pobieranie wyników
 
-Gdy zwracany stan to **Powodzenie**, wywołania metody UZYSKAĆ klasy operationResult identyfikatora URI do pobierania wyników.
+Po **pomyślnym**uzyskaniu stanu Wywołaj metodę get na identyfikatorze URI klasy OperationResult, aby pobrać wyniki.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
 ```
 
-Przykłady typowych odpowiedzi o obniżonym poziomie zwrócony podczas wykonywania zapytania o wyniki Rozwiązywanie problemów z bramą są następujące odpowiedzi. Zobacz [opis wyników](#understanding-the-results) uzyskać objaśnienia na znaczenie właściwości w odpowiedzi.
+Poniżej przedstawiono przykłady typowej reakcji o obniżonej wydajności zwracany podczas wykonywania zapytania o wyniki rozwiązywania problemów z bramą. Zobacz [Opis wyników](#understanding-the-results) , aby uzyskać wyjaśnienie, co oznacza właściwości w odpowiedzi.
 
 ```json
 {
@@ -190,7 +191,7 @@ Przykłady typowych odpowiedzi o obniżonym poziomie zwrócony podczas wykonywan
 
 ## <a name="troubleshoot-connections"></a>Rozwiązywanie problemów z połączeniami
 
-Poniższy przykład wykonuje kwerendę stanu połączenia.
+Poniższy przykład wykonuje zapytanie o stan połączenia.
 
 ```powershell
 
@@ -213,14 +214,14 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 
 > [!NOTE]
-> Nie można uruchomić operacji Rozwiązywanie problemów w sposób równoległy, połączenia i jego odpowiednich bram. Operację należy wykonać przed uruchomieniem go na poprzedni zasób.
+> Operacji rozwiązywania problemów nie można uruchomić równolegle dla połączenia i odpowiednich bram. Operacja musi zostać zakończona przed uruchomieniem jej w poprzednim zasobie.
 
-Ponieważ jest długotrwałą transakcją, w nagłówku odpowiedzi identyfikator URI dla wysyłania zapytań do operacji i identyfikator URI dla wynik jest zwracany, jak pokazano w poniższym odpowiedzi:
+Ponieważ jest to długotrwała transakcja, w nagłówku odpowiedzi zostaje zwrócony identyfikator URI służący do wykonywania zapytań dotyczących operacji oraz identyfikator URI dla wyniku, jak pokazano w następującej odpowiedzi:
 
 **Ważne wartości**
 
-* **Elementu Azure-AsyncOperation** — ta właściwość zawiera identyfikator URI zapytania Async Rozwiązywanie problemów z operacji
-* **Lokalizacja** — ta właściwość zawiera identyfikator URI, których wyniki są po zakończeniu operacji
+* **Azure-AsyncOperation** — ta właściwość zawiera identyfikator URI służący do wykonywania zapytań dotyczących asynchronicznej operacji rozwiązywania problemów
+* **Location** — ta właściwość zawiera identyfikator URI, do którego wyniki są po zakończeniu operacji
 
 ```
 HTTP/1.1 202 Accepted
@@ -240,15 +241,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Zapytanie operacji asynchronicznych do ukończenia
+### <a name="query-the-async-operation-for-completion"></a>Wykonywanie zapytania dotyczącego asynchronicznej operacji ukończenia
 
-Użyj operacji identyfikatora URI do wykonywania zapytań dla postępu operacji, jak pokazano w poniższym przykładzie:
+Użyj identyfikatora URI operacji, aby wykonać zapytanie o postęp operacji, jak pokazano w następującym przykładzie:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Gdy operacja jest w toku, odpowiedź wskazuje **InProgress** jak pokazano w poniższym przykładzie:
+Gdy operacja jest w toku, **odpowiedź pokazuje, jak widać w** poniższym przykładzie:
 
 ```json
 {
@@ -256,7 +257,7 @@ Gdy operacja jest w toku, odpowiedź wskazuje **InProgress** jak pokazano w poni
 }
 ```
 
-Po zakończeniu operacji stan zmieni się na **Powodzenie**.
+Po zakończeniu operacji stan zmieni się na **powodzenie**.
 
 ```json
 {
@@ -264,17 +265,17 @@ Po zakończeniu operacji stan zmieni się na **Powodzenie**.
 }
 ```
 
-Przykłady typowych odpowiedzi zwracany podczas wykonywania zapytania o wyniki Rozwiązywanie problemów z połączeniem są następujące odpowiedzi.
+Poniżej przedstawiono przykłady typowej odpowiedzi zwracanej podczas wykonywania zapytania o wyniki rozwiązywania problemów z połączeniem.
 
 ### <a name="retrieve-the-results"></a>Pobieranie wyników
 
-Gdy zwracany stan to **Powodzenie**, wywołania metody UZYSKAĆ klasy operationResult identyfikatora URI do pobierania wyników.
+Po **pomyślnym**uzyskaniu stanu Wywołaj metodę get na identyfikatorze URI klasy OperationResult, aby pobrać wyniki.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Przykłady typowych odpowiedzi zwracany podczas wykonywania zapytania o wyniki Rozwiązywanie problemów z połączeniem są następujące odpowiedzi.
+Poniżej przedstawiono przykłady typowej odpowiedzi zwracanej podczas wykonywania zapytania o wyniki rozwiązywania problemów z połączeniem.
 
 ```json
 {
@@ -321,12 +322,12 @@ is a transient state while the Azure platform is being updated.",
 }
 ```
 
-## <a name="understanding-the-results"></a>Opis wyników
+## <a name="understanding-the-results"></a>Zrozumienie wyników
 
-Tekst akcji zawiera ogólne wskazówki na temat sposobu rozwiązania problemu. Jeśli dla problemu można wykonać akcji, łącze jest dostarczana z dodatkowych wskazówek. W przypadku, w przypadku, gdy nie ma żadnych dodatkowych wskazówek, odpowiedź zawiera adres url, aby otworzyć zgłoszenie do pomocy technicznej.  Aby uzyskać więcej informacji na temat właściwości odpowiedzi i co jest zawarte w odwiedzić [rozwiązywania problemów z Network Watcher — omówienie](network-watcher-troubleshoot-overview.md)
+Tekst akcji zawiera ogólne wskazówki dotyczące sposobu rozwiązania problemu. Jeśli można wykonać akcję dotyczącą problemu, zostanie podane łącze z dodatkowymi wskazówkami. W przypadku braku dodatkowych wskazówek odpowiedź zawiera adres URL służący do otwierania zgłoszenia do pomocy technicznej.  Aby uzyskać więcej informacji o właściwościach odpowiedzi i uwzględnionych na niej tematach, odwiedź stronę [Network Watcher Rozwiązywanie problemów](network-watcher-troubleshoot-overview.md)
 
-Aby uzyskać instrukcje dotyczące pobierania plików z konta usługi azure storage, zapoznaj się [wprowadzenie do usługi Azure Blob storage przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Inne narzędzie, które mogą być używane jest Eksploratora usługi Storage. Więcej informacji na temat Eksploratora usługi Storage można znaleźć tutaj z łącza: [Storage Explorer](https://storageexplorer.com/)
+Aby uzyskać instrukcje dotyczące pobierania plików z kont usługi Azure Storage, zobacz Rozpoczynanie [pracy z usługą Azure Blob Storage przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Inne narzędzie, które może być używane, jest Eksplorator usługi Storage. Więcej informacji na temat Eksplorator usługi Storage można znaleźć tutaj przy użyciu następującego linku: [Eksplorator usługi Storage](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli zmieniono ustawienia tego połączenia sieci VPN stop, zobacz [Zarządzanie sieciowymi grupami zabezpieczeń](../virtual-network/manage-network-security-group.md) ułatwiają śledzenie reguły zabezpieczeń sieci grupy i zabezpieczeń, które mogą być w danym.
+Jeśli zmieniono ustawienia, które zatrzymują łączność z siecią VPN, zobacz [Manage Network Security Groups](../virtual-network/manage-network-security-group.md) to Track The Network Security Groups and Security rules.

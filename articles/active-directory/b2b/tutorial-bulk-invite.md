@@ -1,5 +1,5 @@
 ---
-title: Samouczek zbiorczy zapraszania użytkowników współpracy B2B — Azure Active Directory | Microsoft Docs
+title: Samouczek dotyczący zbiorczego zapraszania użytkowników współpracy B2B — Azure AD
 description: Z tego samouczka dowiesz się, jak wysyłać zaproszenia zbiorcze do zewnętrznych użytkowników współpracy w usłudze Azure AD B2B za pomocą programu PowerShell i pliku CSV.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128721"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272355"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Samouczek: Zbiorcze Zapraszanie użytkowników współpracy B2B usługi Azure AD (wersja zapoznawcza)
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Samouczek: zbiorcze Zapraszanie użytkowników współpracy B2B usługi Azure AD (wersja zapoznawcza)
 
 |     |
 | --- |
@@ -43,7 +43,7 @@ Potrzebujesz co najmniej dwóch testowych kont e-mail, na które będzie można 
 
 1. Zaloguj się do Azure Portal przy użyciu konta, które jest administratorem użytkownika w organizacji.
 2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
-3. W obszarze **Zarządzanie**wybierz pozycję **Użytkownicy** > **zaproszeni zbiorczy**.
+3. W obszarze **Zarządzanie**wybierz pozycję **Użytkownicy** > **Zaproś zbiorczy**.
 4. Na stronie **Zaproś użytkowników (wersja zapoznawcza)** wybierz pozycję **Pobierz** , aby pobrać prawidłowy plik CSV z właściwościami zaproszenia.
 
     ![Przycisk pobierania zaproszeń zbiorczych](media/tutorial-bulk-invite/bulk-invite-button.png)
@@ -88,7 +88,7 @@ Uruchom następujące polecenie:
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Zobaczysz użytkowników, którzy zaprosił, z główną nazwą użytkownika (UPN) w formacie *EmailAddress*#EXT #\@*Domain*. Na przykład *lstokes_fabrikam. com #\@EXT # contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacją, z której wysłano zaproszenia.
+Zobaczysz użytkowników, którzy zaprosił na liście, z główną nazwą użytkownika (UPN) w formacie *emailaddress*#EXT #\@*Domain*. Na przykład *lstokes_fabrikam. com # EXT #\@contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacją, z której wysłano zaproszenia.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

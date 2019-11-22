@@ -1,5 +1,6 @@
 ---
-title: Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej — Szybki start — interfejs wiersza polecenia platformy Azure | Microsoft Docs
+title: 'Szybki Start: diagnozowanie problemu z filtrem ruchu sieciowego maszyny wirtualnej — interfejs wiersza polecenia platformy Azure'
+titleSuffix: Azure Network Watcher
 description: W tym przewodniku Szybki start zawarto informacje na temat sposobu diagnozowania problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu możliwości weryfikowania przepływu adresów IP w usłudze Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 460513e4818cbef8fca0cd1b84d69b3021afaab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690426"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276074"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Szybki start: diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej — interfejs wiersza polecenia platformy Azure
 
@@ -248,7 +249,7 @@ Gdy grupa zasobów i wszystkie zawarte w niej zasoby nie będą już potrzebne, 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki utworzono maszynę wirtualną i zdiagnozowano filtry przychodzącego i wychodzącego ruchu sieciowego. Wiesz już, że reguły sieciowej grupy zabezpieczeń zezwalają na lub blokują ruch do i z maszyny wirtualnej. Dowiedz się więcej o [regułach zabezpieczeń](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) oraz [tworzeniu reguł zabezpieczeń](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 

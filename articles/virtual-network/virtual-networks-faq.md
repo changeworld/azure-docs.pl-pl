@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 81384bb784e3417dabfd673ef746463f55fc3063
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595061"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304724"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -35,7 +35,7 @@ Użyj sieci wirtualnych, aby:
 
 * Włącz scenariusze chmury hybrydowej. Sieci wirtualnych zapewniają elastyczność umożliwiającą obsługę szeregu scenariuszy chmury hybrydowej. Aplikacje oparte na chmurze można bezpiecznie połączyć z dowolnym typem systemu lokalnego, takim jak Komputery mainframe i systemy UNIX.
 
-### <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
+### <a name="how-do-i-get-started"></a>Jak rozpocząć?
 Przejdź do [dokumentacji sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/) , aby rozpocząć pracę. Ta zawartość zawiera przegląd i informacje dotyczące wdrażania dla wszystkich funkcji sieci wirtualnej.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Czy mogę używać sieci wirtualnych bez połączenia między różnymi lokalizacjami?
@@ -44,7 +44,7 @@ Tak. Możesz użyć sieci wirtualnej bez łączenia jej z Twoim lokalem. Można 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Czy mogę przeprowadzić optymalizację sieci WAN między sieci wirtualnychą a siecią wirtualną i lokalnym centrum danych?
 Tak. [Wirtualne urządzenie sieciowe optymalizacji sieci WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) można wdrożyć od kilku dostawców za pośrednictwem portalu Azure Marketplace.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Jakie narzędzia są używane do tworzenia sieci wirtualnej?
 Aby utworzyć lub skonfigurować sieć wirtualną, można użyć następujących narzędzi:
@@ -59,7 +59,7 @@ Dowolny zakres adresów IP zdefiniowany w [dokumencie RFC 1918](https://tools.ie
 * 224.0.0.0/4 (multiemisja)
 * 255.255.255.255/32 (emisja)
 * 127.0.0.0/8 (sprzężenie zwrotne)
-* 169.254.0.0/16 (połączenie lokalne)
+* 169.254.0.0/16 (Link-local)
 * 168.63.129.16/32 (wewnętrzna usługa DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Czy mogę mieć publiczne adresy IP w mojej sieci wirtualnych?
@@ -232,7 +232,7 @@ Tak. Dowiedz się więcej o korzystaniu z programu:
 - Program PowerShell do zarządzania usługą sieci wirtualnych wdrożoną za pomocą [Menedżer zasobów](/powershell/module/az.network) i [klasycznych](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modeli wdrażania.
 - Interfejs wiersza polecenia (CLI) platformy Azure do wdrażania sieci wirtualnych wdrożonych w ramach [Menedżer zasobów](/cli/azure/network/vnet) i [klasycznych](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modeli wdrażania oraz zarządzania nimi.  
 
-## <a name="vnet-peering"></a>Wirtualne sieci równorzędne
+## <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
 
 ### <a name="what-is-vnet-peering"></a>Co to jest Komunikacja równorzędna sieci wirtualnych?
 Wirtualne sieci równorzędne (lub Komunikacja równorzędna sieci wirtualnych) umożliwiają łączenie z siecią wirtualną. Połączenie komunikacji równorzędnej wirtualnej między sieciami wirtualnymi pozwala na kierowanie ruchu między nimi prywatnie przy użyciu adresów IPv4. Maszyny wirtualne w sieci wirtualnych równorzędnym mogą komunikować się ze sobą, tak jakby znajdowały się w tej samej sieci. Te sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach (nazywanych również globalnymi sieciami równorzędnymi). Połączenia komunikacji równorzędnej sieci wirtualnej można również tworzyć w ramach subskrypcji platformy Azure.
@@ -241,17 +241,17 @@ Wirtualne sieci równorzędne (lub Komunikacja równorzędna sieci wirtualnych) 
 Tak. Globalna komunikacja równorzędna sieci wirtualnych umożliwia sieci wirtualnych elementów równorzędnych w różnych regionach. Globalna komunikacja równorzędna sieci wirtualnych jest dostępna we wszystkich regionach publicznych platformy Azure, regionach chmury w Chinach i regionach w chmurze dla instytucji rządowych. Nie można globalnie elementów równorzędnych z publicznych regionów platformy Azure do regionów w chmurze krajowej.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jakie są ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia?
-Jeśli dwie sieci wirtualne znajdują się w różnych regionach (globalnej komunikacji równorzędnej sieci wirtualnej), nie można nawiązać połączenia z zasobami, które używają podstawowego Load Balancer. Możesz połączyć się z zasobami korzystającymi z usługa Load Balancer w warstwie Standardowa.
-W poniższych zasobach są używane podstawowe usługi równoważenia obciążenia, co oznacza, że nie można komunikować się z nimi w ramach globalnej komunikacji równorzędnej sieci wirtualnej:
+Jeśli dwie sieci wirtualne w dwóch różnych regionach są połączone za pomocą komunikacji równorzędnej globalnej sieci równorzędnej, nie można połączyć się z zasobami, które znajdują się za podstawową Load Balancer za pośrednictwem adresu IP frontonu Load Balancer. To ograniczenie nie istnieje dla usługa Load Balancer w warstwie Standardowa.
+Poniższe zasoby mogą korzystać z podstawowych modułów równoważenia obciążenia, co oznacza, że nie można uzyskać dostępu do nich za pośrednictwem adresu IP frontonu Load Balancer w ramach globalnej komunikacji równorzędnej sieci wirtualnej. Można jednak użyć globalnej komunikacji równorzędnej sieci wirtualnej, aby uzyskać dostęp do zasobów bezpośrednio za pomocą prywatnych adresów IP, jeśli jest to dozwolone. 
 - Maszyny wirtualne za podstawowymi usługami równoważenia obciążenia
 - Zestawy skalowania maszyn wirtualnych z podstawowymi usługami równoważenia obciążenia 
-- Redis Cache 
+- Pamięć podręczna Redis 
 - Jednostka SKU Application Gateway (v1)
 - Sieć szkieletowa usługi
 - SQL — MI
 - API Management
 - Usługa domena usługi Active Directory (dodaje)
-- Aplikacje logiki
+- Logic Apps
 - HDInsight
 -   Azure Batch
 - Środowisko usługi App Service
@@ -409,7 +409,7 @@ Nie ma limitu całkowitej liczby punktów końcowych usługi wirtualnej w sieci 
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
 |Azure Service Bus| 128|
-|Azure Data Lake Store v1|  100|
+|Azure Data Lake Store V1|  100|
  
 >[!NOTE]
 > Limity są uzależnione od zmiany uznania usługi platformy Azure. Szczegóły dotyczące usług można znaleźć w odpowiedniej dokumentacji usługi. 

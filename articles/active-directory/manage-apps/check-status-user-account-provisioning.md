@@ -1,5 +1,5 @@
 ---
-title: Zgłoś automatyczne Inicjowanie obsługi kont użytkowników w aplikacjach SaaS | Microsoft Docs
+title: Zgłoś automatyczne Inicjowanie obsługi kont użytkowników w aplikacjach SaaS
 description: Dowiedz się, jak sprawdzić stan automatycznych zadań aprowizacji konta użytkownika i jak rozwiązywać problemy z obsługą poszczególnych użytkowników.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e5ef4067f22d0e9e015e4d9a646f8b92309010a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033525"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275066"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowanie dotyczące automatycznego aprowizacji kont użytkowników
 
@@ -28,7 +28,7 @@ Usługa Azure Active Directory (Azure AD) obejmuje [usługę aprowizacji kont u�
 
 W tym artykule opisano sposób sprawdzania stanu zadań aprowizacji po ich skonfigurowaniu oraz rozwiązywania problemów z inicjowaniem obsługi poszczególnych użytkowników i grup.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Łączniki aprowizacji są konfigurowane i konfigurowane przy użyciu [Azure Portal](https://portal.azure.com), zgodnie z [podaną dokumentacją](../saas-apps/tutorial-list.md) dla obsługiwanej aplikacji. Po skonfigurowaniu i uruchomieniu zadań aprowizacji można zgłaszać przy użyciu jednej z dwóch metod:
 
@@ -39,12 +39,12 @@ W tym artykule opisano sposób sprawdzania stanu zadań aprowizacji po ich skonf
 
 W tym artykule opisano następujące warunki:
 
-* **System źródłowy** — repozytorium użytkowników, z których usługa Azure AD Provisioning synchronizuje. Azure Active Directory jest systemem źródłowym większości wstępnie zintegrowanych łączników aprowizacji, jednak istnieją pewne wyjątki (przykład: Synchronizacja ruchu przychodzącego z produktu Workday).
-* **System docelowy** — repozytorium użytkowników, do których jest synchronizowana usługa Azure AD Provisioning. Jest to zazwyczaj aplikacja SaaS (przykłady: Salesforce, usługi ServiceNow, G Suite, Dropbox dla firm), ale w niektórych przypadkach może to być system lokalny, taki jak Active Directory (przykład: Synchronizacja ruchu przychodzącego z programu Workday do Active Directory).
+* **System źródłowy** — repozytorium użytkowników, z których usługa Azure AD Provisioning synchronizuje. Azure Active Directory jest systemem źródłowym większości wstępnie zintegrowanych łączników aprowizacji, ale istnieją pewne wyjątki (przykład: synchronizacja ruchu w dniach Workday).
+* **System docelowy** — repozytorium użytkowników, do których jest synchronizowana usługa Azure AD Provisioning. Jest to zazwyczaj aplikacja SaaS (przykłady: Salesforce, usługi ServiceNow, G Suite, Dropbox dla firm), ale w niektórych przypadkach może to być system lokalny, taki jak Active Directory (przykład: synchronizacja ruchu w dniu Workday do Active Directory).
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Uzyskiwanie raportów aprowizacji z Azure Portal
 
-Aby uzyskać informacje o raportowaniu dla danej aplikacji, Zacznij od uruchomienia [Azure Portal](https://portal.azure.com) i **Azure Active Directory** &gt; dzienników aprowizacji **aplikacji** &gt; dla przedsiębiorstw **(wersja zapoznawcza)** w  **Sekcja działania** . Możesz również przejść do aplikacji korporacyjnej, dla której skonfigurowano obsługę administracyjną. Na przykład w przypadku aprowizacji użytkowników do podniesienia uprawnień do serwisu LinkedIn ścieżka nawigacji do szczegółów aplikacji jest:
+Aby uzyskać informacje o raportowaniu dla danej aplikacji, Zacznij od uruchomienia [Azure Portal](https://portal.azure.com) i **Azure Active Directory** &gt; **aplikacje dla przedsiębiorstw** &gt; **aprowizacji dzienników (wersja zapoznawcza)** w sekcji **działanie** . Możesz również przejść do aplikacji korporacyjnej, dla której skonfigurowano obsługę administracyjną. Na przykład w przypadku aprowizacji użytkowników do podniesienia uprawnień do serwisu LinkedIn ścieżka nawigacji do szczegółów aplikacji jest:
 
 **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje > podnoszenie uprawnień do serwisu LinkedIn**
 
@@ -61,11 +61,11 @@ W tym miejscu możesz uzyskać dostęp do paska postępu aprowizacji i dziennik�
 
 **Bieżący stan** powinien być pierwszym miejscem, w którym administratorzy muszą sprawdzić kondycję operacyjną zadania aprowizacji.
 
- ![Raport z podsumowaniem](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Raport podsumowujący](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>Dzienniki aprowizacji (wersja zapoznawcza)
 
-Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w [dziennikach aprowizacji](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)usługi Azure AD. Możesz uzyskać dostęp do dzienników aprowizacji w Azure Portal, wybierając pozycję **Azure Active Directory** &gt; dzienniki aprowizacji **aplikacji** &gt; w przedsiębiorstwie **(wersja zapoznawcza)** w sekcji **działanie** . Możesz przeszukiwać dane aprowizacji na podstawie nazwy użytkownika lub identyfikatora w systemie źródłowym lub docelowym. Aby uzyskać szczegółowe informacje, zobacz [dzienniki aprowizacji (wersja zapoznawcza)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Zarejestrowane typy zdarzeń działania obejmują:
+Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w [dziennikach aprowizacji](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)usługi Azure AD. Możesz uzyskać dostęp do dzienników aprowizacji w Azure Portal, wybierając pozycję **Azure Active Directory** &gt; **aplikacje korporacyjne** &gt; **dzienniki aprowizacji (wersja zapoznawcza)** w sekcji **działanie** . Możesz przeszukiwać dane aprowizacji na podstawie nazwy użytkownika lub identyfikatora w systemie źródłowym lub docelowym. Aby uzyskać szczegółowe informacje, zobacz [dzienniki aprowizacji (wersja zapoznawcza)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Zarejestrowane typy zdarzeń działania obejmują:
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

@@ -4,14 +4,14 @@ description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi A
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185774"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284468"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: typowe pytania
 
@@ -118,16 +118,10 @@ Ocena serwera zapewnia ocenę, aby pomóc w zagotowości do migracji oraz ocenę
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Jaka jest różnica między oceną serwera a Site Recovery Planista wdrażania?
 
-Ocena serwera to narzędzie do planowania migracji. Planista wdrażania Site Recovery jest narzędziem do planowania odzyskiwania po awarii. 
+Ocena serwera to narzędzie do planowania migracji. Planista wdrażania Site Recovery jest narzędziem do planowania odzyskiwania po awarii.
 
 - **Planowanie migracji lokalnej na platformę Azure**: Jeśli planujesz migrację serwerów lokalnych do platformy Azure, użyj oceny serwera na potrzeby planowania migracji. Ocenia obciążenia lokalne i udostępnia wskazówki i narzędzia ułatwiające Migrowanie. Po zakończeniu planowania migracji można użyć narzędzi, w tym migracji serwera Azure Migrate, aby przeprowadzić migrację maszyn na platformę Azure.
 - **Planowanie odzyskiwania po awarii na platformie Azure**: Jeśli planujesz skonfigurować odzyskiwanie po awarii na platformie Azure przy użyciu Site Recovery, użyj Site Recovery planista wdrażania. Planista wdrażania zapewnia głębokiej, Site Recoveryowej oceny środowiska lokalnego na potrzeby odzyskiwania po awarii. Zawiera zalecenia dotyczące odzyskiwania po awarii, takie jak replikacja i tryb failover.
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Czy Azure Migrate oszacować koszty programu Umowa Enterprise (EA)?
-
-Ocena serwera Azure Migrate obecnie nie obsługuje szacowania kosztów dla [programu Umowa Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support/). Aby obejść ten krok, podczas tworzenia oceny możesz określić **płatność zgodnie z rzeczywistym** użyciem jako **ofertę**i ręcznie dodać stawkę procentową rabatu (mającą zastosowanie do subskrypcji) jako **Rabat** we właściwościach oceny:
-
-  ![Właściwości oceny](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>Jaka jest różnica między rozmiarem lokalnym i opartym na wydajności?
 
@@ -214,5 +208,5 @@ Możesz [wizualizować zależności](https://docs.microsoft.com/azure/migrate/ho
 - Do migracji maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych i maszyn wirtualnych VMware opartych na agentach migracja Azure Migrate Server korzysta z aparatu replikacji Azure Site Recovery.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z [omówieniem Azure Migrate](migrate-services-overview.md).

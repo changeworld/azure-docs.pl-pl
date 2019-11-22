@@ -1,5 +1,5 @@
 ---
-title: Utwórz pierwszy zautomatyzowany eksperyment klasyfikacji ML
+title: Tworzenie pierwszego zautomatyzowanego eksperymentu ML
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak nauczyć i wdrożyć model klasyfikacji przy użyciu automatycznego uczenia maszynowego w programie Azure Machine Learning Studio.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 04035e23c0c650fb6cbf4fdca3b78ce5e814c9d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581576"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270722"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Dzięki zautomatyzowanej usłudze Machine Learning można zautomatyzować czasoc
 W tym samouczku dowiesz się, jak wykonywać następujące zadania:
 
 > [!div class="checklist"]
-> * Utwórz obszar roboczy Azure Machine Learning.
+> * Tworzenie obszaru roboczego usługi Azure Machine Learning.
 > * Uruchom zautomatyzowany eksperyment uczenia maszynowego.
 > * Wyświetl szczegóły eksperymentu.
 > * Wdróż model.
@@ -71,7 +71,7 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 
     1. Wybierz pozycję **Przeglądaj**.
     
-    1. Wybierz plik **bankmarketing_train. csv** na komputerze lokalnym. Jest to plik pobrany jako [warunek wstępny](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
+    1. Wybierz plik **csv bankmarketing_train** na komputerze lokalnym. Jest to plik pobrany jako [warunek wstępny](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
 
     1. Wybierz **Tabelaryczny** jako typ zestawu danych. 
 
@@ -87,18 +87,18 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
         ---|---|---
         Format pliku|Definiuje układ i typ danych przechowywanych w pliku.| Lista
         Ogranicznik|Co najmniej jeden znak służący do określania granicy między&nbsp; oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Pliku
-        Encoding|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
+        Kodowanie|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
         Nagłówki kolumn| Wskazuje, w jaki sposób nagłówki zestawu danych (jeśli istnieją) będą traktowane.| Wszystkie pliki mają te same nagłówki
         Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.| Brak
 
-    1. Formularz **schematu** umożliwia dalsze Konfigurowanie danych na potrzeby tego eksperymentu. Na potrzeby tego przykładu wybierz przełącznik przełącznika dla funkcji **day_of_week** , tak aby nie obejmował go dla tego eksperymentu. Wybierz opcję **Dalej**.
+    1. Formularz **schematu** umożliwia dalsze Konfigurowanie danych na potrzeby tego eksperymentu. Na potrzeby tego przykładu wybierz przełącznik przełącznika dla funkcji **day_of_week** , więc nie dodawaj go do tego eksperymentu. Wybierz opcję **Dalej**.
 
         ![Konfiguracja karty podglądu](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
     1. Na formularzu **Potwierdź szczegóły** Sprawdź, czy informacje są zgodne z informacjami o tym, co zostało wcześniej wypełnione w **podstawowych informacjach** i ustawieniach oraz w formularzach **wersji zapoznawczej** .
     1. Wybierz pozycję **Utwórz** , aby zakończyć tworzenie zestawu danych.
     1. Wybierz zestaw danych, który zostanie wyświetlony na liście.
-    1. Przejrzyj **Podgląd danych** , aby upewnić się, że nie doszło do **day_of_week** , a następnie wybierz **przycisk OK**.
+    1. Przejrzyj **Podgląd danych** , aby upewnić się, że nie doszło do **day_of_week** następnie wybierz przycisk **OK**.
 
     1. Wybierz pozycję **Dalej**.
 
@@ -138,7 +138,7 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
         Walidacja | Wybierz typ i liczbę testów.|Typ walidacji:<br>&nbsp;k — złóż&nbsp;a krzyżowego sprawdzania poprawności <br> <br> Liczba walidacji: 2
         Współbieżność| Maksymalna liczba wykonanych równoległych iteracji i użytych rdzeni na iterację| Maksymalnie&nbsp;współbieżnych&nbsp;iteracji: 5<br> Maksymalna liczba rdzeni&nbsp;&nbsp;na&nbsp;iteracja: brak
         
-        Kliknij przycisk **OK**.
+        Wybierz **OK**.
 
 1. Wybierz pozycję **Utwórz** , aby uruchomić eksperyment. Zostanie otwarty ekran **szczegóły uruchamiania** ze **stanem Uruchom** jako przygotowanie eksperymentu.
 
@@ -151,7 +151,7 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 
 ##  <a name="explore-models"></a>Eksploruj modele
 
-Przejdź do karty **modele** , aby zobaczyć przetestowane algorytmy (modele). Domyślnie modele są uporządkowane według wyniku metryk po ich zakończeniu. Na potrzeby tego samouczka model, który ocenia najwyższy poziom w oparciu o wybraną metrykę **AUC_weighted** , znajduje się na szczycie listy.
+Przejdź do karty **modele** , aby zobaczyć przetestowane algorytmy (modele). Domyślnie modele są uporządkowane według wyniku metryk po ich zakończeniu. Dla tego samouczka model, który ocenia najwyższy poziom w oparciu o wybraną **AUC_weighted** metrykę, znajduje się w górnej części listy.
 
 Podczas oczekiwania na zakończenie wszystkich modeli eksperymentów wybierz **nazwę algorytmu** kompletnego modelu, aby poznać jego szczegóły wydajności. 
 
@@ -167,7 +167,7 @@ W przypadku tego eksperymentu wdrożenie do usługi sieci Web oznacza, że insty
 
 Po zakończeniu przebiegu Wróć do strony **szczegóły uruchamiania** i wybierz kartę **modele** . Wybierz pozycję **Odśwież**. 
 
-W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model w oparciu o metrykę **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut. Proces wdrażania obejmuje kilka czynności, takich jak rejestrowanie modelu, Generowanie zasobów i konfigurowanie ich dla usługi sieci Web.
+W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model na podstawie metryki **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut. Proces wdrażania obejmuje kilka czynności, takich jak rejestrowanie modelu, Generowanie zasobów i konfigurowanie ich dla usługi sieci Web.
 
 1. Wybierz przycisk **Wdróż najlepszy model** w lewym dolnym rogu.
 

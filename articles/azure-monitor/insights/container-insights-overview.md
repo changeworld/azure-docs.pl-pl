@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 97aad6f3853de07a3c4d2fc694c1dcefbd0e82a4
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 12860d70cad2dbcfa3d06bf4df6939dd27ab3ab3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195121"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279629"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Usługa Azure Monitor, aby uzyskać przegląd kontenerów
 
@@ -48,6 +48,10 @@ Azure Monitor for Containers to kompleksowe środowisko monitorowania wykorzystu
 * Monitoruj obciążenia kontenera [wdrożone w aparacie AKS aparatów](https://github.com/microsoft/OMS-docker/tree/aks-engine) lokalnych i [AKS na Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
 * Monitoruj obciążenia kontenerów [wdrożone na platformie Azure Red Hat OpenShift](../../openshift/intro-openshift.md).
 
+    >[!NOTE]
+    >Obsługa systemu Red Hat OpenShift jest w tej chwili funkcją w publicznej wersji zapoznawczej.
+    >
+
 Zapoznaj się z poniższym filmem wideo dostarczającym poziom pośredni szczegółowe, aby uzyskać informacje na temat monitorowania klastra AKS przy użyciu Azure Monitor dla kontenerów.
 
 > [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
@@ -60,6 +64,6 @@ Można uzyskać dostęp do usługi Azure Monitor dla kontenerów dwa sposoby: z 
 
 Jeśli interesujesz się monitorowaniem i zarządzaniem hostami platformy Docker i kontenera systemu Windows działającym poza programem AKS, aby wyświetlić konfigurację, inspekcję i wykorzystanie zasobów, zobacz [rozwiązanie do monitorowania kontenerów](../../azure-monitor/insights/containers.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć monitorowanie klastra Kubernetes, zapoznaj się z [tematem jak włączyć Azure monitor dla kontenerów](container-insights-onboard.md) , aby zrozumieć wymagania i dostępne metody umożliwiające monitorowanie. 

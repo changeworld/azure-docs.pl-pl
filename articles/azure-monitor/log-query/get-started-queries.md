@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933037"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278607"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Wprowadzenie do zapytań dzienników w Azure Monitor
 
@@ -109,7 +109,7 @@ Podczas pisania warunków filtrowania można użyć następujących wyrażeń:
 |:---|:---|:---|
 | == | Sprawdź równość<br>(z uwzględnieniem wielkości liter) | `Level == 8` |
 | =~ | Sprawdź równość<br>(bez uwzględniania wielkości liter) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =, < > | Sprawdzanie nierówności<br>(oba wyrażenia są identyczne) | `Level != 4` |
+| !=, <> | Sprawdzanie nierówności<br>(oba wyrażenia są identyczne) | `Level != 4` |
 | *i* *lub* | Wymagane między warunkami| `Level == 16 or CommandLine != ""` |
 
 Aby filtrować według wielu warunków, można użyć **i**:
@@ -239,4 +239,7 @@ Aby dane wyjściowe były wyraźniejsze, wybierz opcję wyświetlania go jako wy
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat [pisania zapytań wyszukiwania](search-queries.md)
+- Dowiedz się więcej o korzystaniu z danych ciągu w zapytaniu dziennika i [pracy z ciągami w zapytaniach dziennika Azure monitor](string-operations.md).
+- Dowiedz się więcej na temat agregowania danych w zapytaniu dziennika z [zaawansowanymi agregacjami w zapytaniach dziennika Azure monitor](advanced-aggregations.md).
+- Dowiedz się, jak dołączać dane z wielu tabel przy użyciu [sprzężeń w kwerendach dzienników Azure monitor](joins.md).
+- Zapoznaj się z dokumentacją w całym języku zapytań Kusto w dokumentacji [języka KQL](/azure/kusto/query/).

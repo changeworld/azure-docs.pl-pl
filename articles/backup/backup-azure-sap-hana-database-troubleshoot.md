@@ -2,55 +2,34 @@
 title: Rozwiązywanie problemów z kopiami zapasowymi baz danych SAP HANA
 description: Opisuje sposób rozwiązywania typowych błędów, które mogą wystąpić podczas tworzenia kopii zapasowej SAP HANA baz danych przy użyciu Azure Backup.
 ms.topic: conceptual
-ms.date: 08/03/2019
-ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 11/7/2019
+ms.openlocfilehash: 9c6e4c66d96b02c2d5b4b4fe70fe6e6798c4e2c6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172743"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285930"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
-Ten artykuł zawiera informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure. W poniższej sekcji omówiono ważne dane koncepcyjne wymagane do zdiagnozowania typowego błędu w SAP HANA kopii zapasowej.
+Ten artykuł zawiera informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure. Aby uzyskać więcej informacji na SAP HANA obecnie obsługiwane scenariusze tworzenia kopii zapasowych, zobacz temat [Obsługa scenariusza](sap-hana-backup-support-matrix.md#scenario-support).
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites-and-permissions"></a>Wymagania wstępne i uprawnienia
 
-W ramach [wymagań wstępnych](backup-azure-sap-hana-database.md#prerequisites)upewnij się, że skrypt rejestracji wstępnej został uruchomiony na maszynie wirtualnej, na której zainstalowano system Hana.
+Przed skonfigurowaniem kopii zapasowych zapoznaj się z sekcjami [wymagania wstępne](tutorial-backup-sap-hana-db.md#prerequisites) i [Ustawienia uprawnień](tutorial-backup-sap-hana-db.md#setting-up-permissions) .
 
-### <a name="setting-up-permissions"></a>Konfigurowanie uprawnień
+## <a name="common-user-errors"></a>Typowe błędy użytkowników
 
-Co robi skrypt przed rejestracją:
-
-1. Tworzy AZUREWLBACKUPHANAUSER w systemie HANA i dodaje te wymagane role i uprawnienia:
-    - Administrator bazy danych: tworzenie nowych baz danych podczas przywracania.
-    - Odczyt wykazu: odczytywanie wykazu kopii zapasowych.
-    - SAP_INTERNAL_HANA_SUPPORT: Aby uzyskać dostęp do kilku tabel prywatnych.
-2. Dodaje klucz do Hdbuserstore dla wtyczki HANA w celu obsługi wszystkich operacji (zapytań bazy danych, operacji przywracania, konfigurowania i uruchamiania kopii zapasowej).
-
-   Aby potwierdzić utworzenie klucza, uruchom polecenie HDBSQL na maszynie HANA z poświadczeniami SIDADM:
-
-    ``` hdbsql
-    hdbuserstore list
-    ```
-
-    W danych wyjściowych polecenia powinien być wyświetlany klucz {SID} {dbname}, który jest wyświetlany jako AZUREWLBACKUPHANAUSER.
-
-> [!NOTE]
-> Upewnij się, że masz unikatowy zestaw plików SSFS w obszarze **/usr/SAP/{SID}/Home/.HDB/** . W tej ścieżce powinien znajdować się tylko jeden folder.
-
-### <a name="setting-up-backint-parameters"></a>Konfigurowanie parametrów BackInt
-
-Po wybraniu bazy danych do wykonania kopii zapasowej usługa Azure Backup konfiguruje parametry backInt na poziomie bazy danych:
-
-- [catalog_backup_using_backint: true]
-- [enable_accumulated_catalog_backup: false]
-- [parallel_data_backup_backint_channels:1]
-- [log_backup_timeout_s: 900)]
-- [backint_response_timeout: 7200]
-
-> [!NOTE]
-> Upewnij się, że te parametry *nie* występują na poziomie hosta. Parametry na poziomie hosta przesłonią te parametry i mogą spowodować nieoczekiwane zachowanie.
+| Błąd                                | Komunikat o błędzie                    | Możliwe przyczyny                                              | Zalecana akcja                                           |
+| ------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| UserErrorInOpeningHanaOdbcConnection | Nie można nawiązać połączenia z systemem HANA | Wystąpienie SAP HANA może nie działać. <br> Nie są ustawione uprawnienia wymagane dla usługi Azure Backup w celu współdziałania z bazą danych HANA. | Sprawdź, czy baza danych SAP HANA działa. Jeśli baza danych jest uruchomiona i działa, sprawdź, czy są ustawione wszystkie wymagane uprawnienia. Jeśli brakuje któregoś z uprawnień, uruchom [skrypt rejestracyjny](https://aka.ms/scriptforpermsonhana) , aby dodać brakujące uprawnienia. |
+| UserErrorHanaInstanceNameInvalid | Określone wystąpienie SAP HANA jest nieprawidłowe lub nie można go znaleźć | Nie można utworzyć kopii zapasowej wielu wystąpień SAP HANA na jednej maszynie wirtualnej platformy Azure. | Uruchom [skrypt rejestracji](https://aka.ms/scriptforpermsonhana) jednokrotnej w wystąpieniu SAP HANA, dla którego chcesz utworzyć kopię zapasową. Jeśli problem nadal występuje, skontaktuj się z pomocą techniczną firmy Microsoft. |
+| UserErrorHanaUnsupportedOperation | Określona operacja SAP HANA nie jest obsługiwana | Usługa Azure Backup dla SAP HANA nie obsługuje przyrostowych kopii zapasowych i akcji wykonywanych na SAP HANA natywnych klientów (Studio/Panel sterowania/DBA) | Więcej informacji można znaleźć [tutaj](sap-hana-backup-support-matrix.md#scenario-support). |
+| UserErrorHANAPODoesNotSupportBackupType | Ta SAP HANA baza danych nie obsługuje żądanego typu kopii zapasowej | Usługa Azure Backup nie obsługuje przyrostowych kopii zapasowych i kopii zapasowych przy użyciu migawek | Więcej informacji można znaleźć [tutaj](sap-hana-backup-support-matrix.md#scenario-support). |
+| UserErrorHANALSNValidationFailure | Łańcuch dzienników kopii zapasowej został przerwany | Miejsce docelowe kopii zapasowej dziennika mogło zostać zaktualizowane z BACKINT do systemu plików lub plik wykonywalny BACKINT mógł zostać zmieniony | Wyzwól pełną kopię zapasową, aby rozwiązać ten problem |
+| UserErrorIncomaptibleSrcTargetSystsemsForRestore | Systemy źródłowe i docelowe na potrzeby przywracania są niezgodne | System docelowy przywracania jest niezgodny ze źródłem | Zapoznaj się z uwagą do [1642148](https://launchpad.support.sap.com/#/notes/1642148) dla oprogramowania SAP, aby dowiedzieć się więcej na temat typów przywracania obsługiwanych dzisiaj |
+| UserErrorSDCtoMDCUpgradeDetected | Wykryto uaktualnienie SDC do MDC | Wystąpienie SAP HANA zostało uaktualnione z SDC do MDC. Kopie zapasowe zakończą się niepowodzeniem po aktualizacji. | Aby rozwiązać ten problem, wykonaj kroki opisane w [sekcji Uaktualnianie z SAP HANA 1,0 do 2,0](#upgrading-from-sap-hana-10-to-20) . |
+| UserErrorInvalidBackintConfiguration | Wykryto nieprawidłową konfigurację BACKINT | Parametry zapasowe są niepoprawnie określone dla usługi Azure Backup | Sprawdź, czy są ustawione następujące parametry (BACKINT): <br> * [catalog_backup_using_backint: true] <br>  * [enable_accumulated_catalog_backup: false] <br> * [parallel_data_backup_backint_channels: 1] <br>* [log_backup_timeout_s: 900)] <br> * [backint_response_timeout: 7200] <br> Jeśli na HOŚCIE znajdują się BACKINT parametry, usuń je. Jeśli parametry nie są dostępne na poziomie hosta, ale zostały ręcznie zmodyfikowane na poziomie bazy danych, przywróć je do odpowiednich wartości zgodnie z wcześniejszym opisem. Możesz też uruchomić polecenie [Zatrzymaj ochronę i zachować dane kopii zapasowej](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z Azure Portal, a następnie wybrać polecenie **Wznów wykonywanie kopii zapasowej**. |
 
 ## <a name="restore-checks"></a>Testy przywracania
 
@@ -65,24 +44,32 @@ Załóżmy, że utworzono kopię zapasową wystąpienia SDC HANA "H21". Na stron
 Pamiętaj o następujących kwestiach:
 
 - Domyślnie przywrócona Nazwa bazy danych zostanie uzupełniona nazwą elementu kopii zapasowej, np., H21 (SDC)
-- Wybranie elementu docelowego jako H11 nie spowoduje automatycznej zmiany przywróconej nazwy bazy danych. **Powinien być edytowany w H11 (SDC)** . W przypadku SDC nazwa przywróconej bazy danych będzie IDENTYFIKATORem wystąpienia docelowego z małymi literami i "SDC" dołączonym w nawiasach.
+- Wybranie elementu docelowego jako H11 nie spowoduje automatycznej zmiany przywróconej nazwy bazy danych. **Powinien być edytowany w H11 (SDC)** . W odniesieniu do SDC nazwa przywróconej bazy danych będzie IDENTYFIKATORem wystąpienia docelowego z małymi literami i "SDC" dołączonym w nawiasach.
 - Ponieważ SDC może mieć tylko jedną bazę danych, należy również kliknąć pole wyboru, aby umożliwić przesłonięcie istniejących danych bazy danych z użyciem danych punktu odzyskiwania.
-- W systemie Linux jest rozróżniana wielkość liter, dlatego pamiętaj, aby zachować wielkość liter.
+- W systemie Linux jest rozróżniana wielkość liter. W związku z tym należy zachować ostrożność.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Przywracanie wielu baz danych (MDC)
 
-W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfiguracja to SYSTEMDB + 1 lub więcej baz danych dzierżawców. Przywrócenie całego wystąpienia SAP HANA oznacza przywrócenie zarówno SYSTEMDB, jak i baz danych dzierżawcy. Najpierw przywraca SYSTEMDB, a następnie przechodzi do bazy danych dzierżawcy. Zasadniczo systemowa baza danych zastępuje informacje o systemie w wybranym miejscu docelowym. Zastępuje to również informacje dotyczące BackInt w wystąpieniu docelowym. W związku z tym po przywróceniu bazy danych systemu do wystąpienia docelowego należy ponownie uruchomić skrypt przed rejestracją. Kolejne Przywracanie bazy danych dzierżawy zakończy się powodzeniem.
+W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfiguracja to SYSTEMDB + 1 lub więcej baz danych dzierżawców. Przywrócenie całego wystąpienia SAP HANA oznacza przywrócenie zarówno SYSTEMDB, jak i baz danych dzierżawcy. Najpierw przywraca SYSTEMDB, a następnie przechodzi do bazy danych dzierżawcy. Zasadniczo systemowa baza danych zastępuje informacje o systemie w wybranym miejscu docelowym. To przywracanie przesłania również informacje dotyczące BackInt w wystąpieniu docelowym. W związku z tym po przywróceniu bazy danych systemu do wystąpienia docelowego należy ponownie uruchomić skrypt przed rejestracją. Kolejne Przywracanie bazy danych dzierżawy zakończy się powodzeniem.
 
-## <a name="common-user-errors"></a>Typowe błędy użytkowników
+## <a name="upgrading-from-sap-hana-10-to-20"></a>Uaktualnianie z SAP HANA 1,0 do 2,0
 
-### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
+Jeśli chronisz bazy danych SAP HANA 1,0 i chcesz uaktualnić do wersji 2,0, wykonaj czynności opisane poniżej:
 
-data| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
-|---|---|---|
-| Nie można nawiązać połączenia z systemem HANA. Sprawdź, czy system jest uruchomiony.| Usługa Azure Backup nie może połączyć się z platformą HANA, ponieważ baza danych HANA nie działa. Lub HANA jest uruchomiony, ale nie zezwala na łączenie się z usługą Azure Backup. | Sprawdź, czy baza danych lub usługa HANA nie działa. Jeśli baza danych lub usługa HANA jest uruchomiona, sprawdź, czy [zostały ustawione wszystkie uprawnienia](#setting-up-permissions). Jeśli brakuje klucza, uruchom ponownie skrypt rejestracyjny, aby utworzyć nowy klucz. |
+- [Zatrzymaj ochronę](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z zachowaniem zachowania danych dla starej bazy danych SDC.
+- Uruchom ponownie [skrypt poprzedzający rejestrację](https://aka.ms/scriptforpermsonhana) z prawidłowymi szczegółami (SID i MDC).
+- Ponownie zarejestruj rozszerzenie (szczegóły widoku > kopii zapasowej — > wybierz odpowiednią pozycję Azure VM-> reregister).
+- Kliknij przycisk ponownie odkryj baz danych dla tej samej maszyny wirtualnej. Ta akcja powinna spowodować wyświetlenie nowego baz danych w kroku 2 z prawidłowymi szczegółami (SYSTEMDB i dzierżawcą bazy danych, a nie SDC).
+- Chroń te nowe bazy danych.
 
-### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
+## <a name="upgrading-without-an-sid-change"></a>Uaktualnianie bez zmiany identyfikatora SID
 
-| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
-|---|---|---|
-| Wykryto nieprawidłową konfigurację BACKINT. Zatrzymaj ochronę i ponownie skonfiguruj bazę danych.| Parametry backInt są niepoprawnie określone dla Azure Backup. | Sprawdź [, czy parametry są ustawione](#setting-up-backint-parameters). Jeśli na HOŚCIE znajdują się backInt parametry, usuń je. Jeśli na poziomie hosta nie ma parametrów, ale zostały ręcznie zmodyfikowane na poziomie bazy danych, przywróć je do odpowiednich wartości zgodnie z wcześniejszym opisem. Możesz też uruchomić polecenie **Zatrzymaj ochronę i zachować dane kopii zapasowej** z Azure Portal, a następnie wybrać polecenie **Wznów wykonywanie kopii zapasowej**.|
+Uaktualnienia do systemu operacyjnego lub SAP HANA, które nie powodują zmiany identyfikatora SID, można obsłużyć, jak opisano poniżej:
+
+- [Zatrzymaj ochronę](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z zachowaniem zachowania danych dla bazy danych
+- Uruchom ponownie [skrypt przed rejestracją](https://aka.ms/scriptforpermsonhana)
+- Ponownie [Wznów ochronę](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) bazy danych
+
+## <a name="next-steps"></a>Następne kroki
+
+- Przejrzyj [często zadawane pytania](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) dotyczące tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure]

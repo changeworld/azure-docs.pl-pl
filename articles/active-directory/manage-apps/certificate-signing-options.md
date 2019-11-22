@@ -1,5 +1,5 @@
 ---
-title: Zaawansowane opcje podpisywania certyfikatu tokenu SAML dla wstępnie zintegrowanych aplikacji usługi Azure AD | Microsoft Docs
+title: Zaawansowane opcje podpisywania certyfikatu tokenu SAML dla aplikacji usługi Azure AD
 description: Dowiedz się, jak korzystać z zaawansowanych opcji podpisywania certyfikatów w tokenie SAML dla wstępnie zintegrowanych aplikacji w Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381268"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274758"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje podpisywania certyfikatu w tokenie SAML dla aplikacji galerii w Azure Active Directory
 
@@ -61,15 +61,15 @@ Aby zmienić opcje podpisywania certyfikatu SAML aplikacji i algorytm podpisywan
 
 Następnie zmień opcje podpisywania certyfikatu w tokenie SAML dla tej aplikacji:
 
-1. W lewym okienku strony przegląd aplikacji wybierz pozycję **Logowanie**jednokrotne.
+1. W lewym okienku strony przegląd aplikacji wybierz pozycję **Logowanie jednokrotne**.
 1. Jeśli zostanie wyświetlona strona **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** , przejdź do kroku 5.
 1. Jeśli strona **Wybierz metodę logowania** jednokrotnego nie zostanie wyświetlona, wybierz pozycję **Zmień tryby rejestracji** jednokrotnej, aby wyświetlić tę stronę.
-1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML** , jeśli jest dostępna. (Jeśli protokół **SAML** nie jest dostępny, aplikacja nie obsługuje protokołu SAML i można zignorować resztę tej procedury i artykułu).
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML** , jeśli jest dostępna. (Jeśli protokół **SAML** nie jest dostępny, aplikacja nie obsługuje protokołu SAML i można zignorować resztę tej procedury i artykułu).
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML-Preview** Znajdź nagłówek **certyfikatu podpisywania SAML** i wybierz ikonę **edycji** (ołówek). Zostanie wyświetlona strona **certyfikat podpisywania SAML** .
 
    ![Przykład: Strona certyfikatu podpisywania SAML](./media/certificate-signing-options/saml-signing-page.png)
 
-1. Z listy rozwijanej **Opcja podpisywania** wybierz pozycję Podpisz **odpowiedź SAML**, podpisz **potwierdzenie SAML**lub podpisz **odpowiedź i potwierdzenie protokołu SAML**. Opisy tych opcji pojawiają się wcześniej w tym artykule w [opcjach podpisywania certyfikatu](#certificate-signing-options).
+1. Z listy rozwijanej **Opcja podpisywania** wybierz pozycję **Podpisz odpowiedź SAML**, **Podpisz potwierdzenie SAML**lub **Podpisz odpowiedź i potwierdzenie protokołu SAML**. Opisy tych opcji pojawiają się wcześniej w tym artykule w [opcjach podpisywania certyfikatu](#certificate-signing-options).
 1. Z listy rozwijanej **algorytm podpisywania** wybierz pozycję **SHA-1** lub **SHA-256**. Opisy tych opcji pojawiają się wcześniej w tym artykule w sekcji [algorytmy podpisywania certyfikatu](#certificate-signing-algorithms) .
 1. Jeśli jesteś zadowolony z wybranych opcji, wybierz pozycję **Zapisz** , aby zastosować nowe ustawienia certyfikatu podpisywania SAML. W przeciwnym razie wybierz **znak X** , aby odrzucić zmiany.
 

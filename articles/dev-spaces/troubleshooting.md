@@ -1,20 +1,16 @@
 ---
 title: Rozwiązywanie problemów
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.openlocfilehash: 5eec9771e964cf6b47492fdad34bcba14d897d41
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072189"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279716"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -453,3 +449,13 @@ kubectl -n my-namespace delete pod --all
 ```
 
 Po ponownym uruchomieniu swoich zasobników możesz rozpocząć korzystanie z istniejącej przestrzeni nazw za pomocą Azure Dev Spaces.
+
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Włącz Azure Dev Spaces w klastrze AKS z ograniczonym ruchem wychodzącym dla węzłów klastra
+
+Aby włączyć Azure Dev Spaces w klastrze AKS, dla którego ruch wychodzący z węzłów klastra jest ograniczony, należy zezwolić na następujące nazwy FQDN:
+
+| NAZWA FQDN                                    | Port      | Użycie      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS:443 | Aby ściągnąć obrazy z systemem Linux Alpine i innymi Azure Dev Spaces |
+| gcr.io | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
+| storage.googleapis.com | HTTP: 443 | Aby ściągnąć obrazy Helm/er|

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3b7fed91be00e1bf2ac097638f14d1bbe6481f0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672088"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280317"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Szybki Start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET
 
@@ -35,11 +35,51 @@ Użyj biblioteki klienta tworzenia Language Understanding (LUIS) dla platformy .
 * Language Understanding (LUIS) — konto portalu — [Utwórz je bezpłatnie](https://www.luis.ai)
 * Bieżąca wersja [platformy .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
+
 ## <a name="setting-up"></a>Konfigurowanie
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Pobierz klucz początkowy Language Understanding (LUIS)
 
-Pobierz [klucz początkowy](luis-how-to-azure-subscription.md#starter-key)i [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `COGNITIVESERVICE_AUTHORING_KEY`.
+Pobierz swój [klucz początkowy](luis-how-to-azure-subscription.md#starter-key) , tworząc zasób Luis Authoring. Zachowaj klucz oraz region klucza dla następnego kroku.
+
+### <a name="create-an-environment-variable"></a>Utwórz zmienną środowiskową
+
+Przy użyciu klucza i regionu klucza Utwórz dwa zmienne środowiskowe do uwierzytelniania:
+
+* `COGNITIVESERVICE_AUTHORING_KEY` — klucz zasobu do uwierzytelniania żądań.
+* `COGNITIVESERVICE_REGION` — region skojarzony z kluczem. Na przykład: `westus`.
+
+Skorzystaj z instrukcji dotyczących systemu operacyjnego.
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
+setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
+```
+
+Po dodaniu zmiennej środowiskowej Uruchom ponownie okno konsoli.
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Po dodaniu zmiennej środowiskowej uruchom polecenie `source ~/.bashrc` z okna konsoli, aby zmiany zostały uwzględnione.
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+Edytuj `.bash_profile`i Dodaj zmienną środowiskową:
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Po dodaniu zmiennej środowiskowej uruchom polecenie `source .bash_profile` z okna konsoli, aby zmiany zostały uwzględnione.
+***
 
 ### <a name="create-a-new-c-application"></a>Utwórz nową C# aplikację
 
@@ -129,7 +169,7 @@ W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w ś
 
     [!code-csharp[Create LUIS client object](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateClient)]
 
-## <a name="create-a-luis-app"></a>Tworzenie aplikacji LUIS
+## <a name="create-a-luis-app"></a>Tworzenie aplikacji usługi LUIS
 
 1. Utwórz aplikację LUIS, aby zawierała model przetwarzania języka naturalnego (NLP), w którym znajdują się intencje, jednostki i przykład wyrażenia długości. 
 

@@ -1,7 +1,7 @@
 ---
 title: Funkcje — LUIS
 titleSuffix: Azure Cognitive Services
-description: Dodaj funkcje do modelu języka, aby przedstawić wskazówki dotyczące sposobu rozpoznawania danych wejściowych, które mają być oznaczone etykietami lub klasyfikacją.
+description: Dodawanie funkcji do języka modelu w celu dostarczanie wskazówek na temat rozpoznawanie dane wejściowe, które chcesz oznaczyć lub klasyfikowanie.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647414"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280914"
 ---
 # <a name="machine-learned-features"></a>Funkcje uczenia maszynowego 
 
-W uczeniu maszynowym *Funkcja* jest odróżnianą cechą lub atrybutem danych, które system obserwuje &. W Language Understanding (LUIS) funkcja opisuje i wyjaśnia, co jest istotne dla Twoich intencji i jednostek.
+W uczeniu maszynowym _Funkcja_ jest odróżnianą cechą lub atrybutem danych, które system obserwuje &. W Language Understanding (LUIS) funkcja opisuje i wyjaśnia, co jest istotne dla Twoich intencji i jednostek.
 
 W [portalu Luis w wersji zapoznawczej](https://preview.luis.ai)funkcje są _deskryptorami_ , ponieważ są używane do _opisywania_ zamiaru lub jednostki.  
 
@@ -43,7 +43,7 @@ Za pomocą listy fraz LUIS traktuje kontekst i generalizacje w celu zidentyfikow
 
 Aby można było rozpoznać nowe wystąpienia, takie jak harmonogram spotkań, który powinien rozpoznawać nazwy nowych kontaktów lub aplikację spisu, która powinna rozpoznawać nowe produkty, Zacznij od jednostki, na której nauczy się Uczenie maszynowe. Następnie utwórz listę zwrotów ułatwiającą LUIS znalezienie wyrazów o podobnym znaczeniu. W tej frazie przedstawiono wskazówki LUIS do rozpoznawania przykładów poprzez dodanie dodatkowego znaczenia do wartości tych wyrazów. 
 
-Listy fraz są podobne do słownictwa specyficznego dla domeny, który ułatwia zwiększenie jakości wiedzy o intencjach i jednostkach. 
+Wyświetla frazy są podobne słownictwa specyficznego dla domeny, które ułatwić udoskonalanie jakości zrozumieć intencje i podmioty. 
 
 ## <a name="considerations-when-using-a-phrase-list"></a>Zagadnienia dotyczące korzystania z listy fraz
 
@@ -57,7 +57,7 @@ Flaga `enabledForAllModels` kontroluje ten zakres modelu w interfejsie API.
 
 ### <a name="how-to-use-a-phrase-list"></a>Jak używać listy fraz
 
-[Utwórz listę list fraz](luis-how-to-add-features.md) , gdy zamiara lub jednostka ma słowa lub frazy, które są ważne, takie jak:
+[Utwórz listę fraz](luis-how-to-add-features.md) , gdy zamiara lub jednostka ma słowa lub frazy, które są ważne, takie jak:
 
 * warunki branżowe
 * żargonu
@@ -82,13 +82,13 @@ Na przykład, jeśli zachodzi taka potrzeba dla rezerwacji, a jednostka jest inf
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>Jednostka jako funkcja innej jednostki
 
-Jednostkę (A) należy dodać jako funkcję do innej jednostki (B), gdy wykrycie tej jednostki (A) jest znaczące dla (B).
+Jednostkę (A) należy dodać jako funkcję do innej jednostki (B), gdy wykrycie tej jednostki (A) jest istotne dla przewidywania jednostki (B).
 
 Na przykład jeśli wykryto jednostkę ulica (A), a następnie znalezienie adresu ulicy (A) powoduje dodanie wagi do prognozowania jednostki adres wysyłkowy (B). 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-Poznaj [najlepsze rozwiązania](luis-concept-best-practices.md).
+Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Dodawanie funkcji](luis-how-to-add-features.md) , aby dowiedzieć się więcej na temat dodawania funkcji do aplikacji Luis.
+Zobacz [Dodaj funkcje](luis-how-to-add-features.md) Aby dowiedzieć się więcej na temat sposobu dodawania funkcji do aplikacji usługi LUIS.

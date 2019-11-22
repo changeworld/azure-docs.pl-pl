@@ -3,12 +3,12 @@ title: Uczenie Azure Policy aparatu AKS
 description: Dowiedz się, w jaki sposób Azure Policy CustomResourceDefinitions i Otwórz agenta zasad z strażnik v3, aby zarządzać klastrami z aparatem AKS.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072064"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267247"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Opis Azure Policy aparatu AKS
 
@@ -44,7 +44,7 @@ Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji us�
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
-   - Azure PowerShell
+   - Program Azure PowerShell
    
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -282,6 +282,6 @@ Informacje zbierane przez dodatek nie są danymi osobistymi. Obecnie są zbieran
 - Przejrzyj [strukturę definicji usługi Azure Policy](definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](../how-to/get-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

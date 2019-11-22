@@ -3,12 +3,12 @@ title: Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze
 description: Dowiedz się, jak używać funkcji zabezpieczeń w programie Azure Backup, aby tworzyć kopie zapasowe bardziej bezpieczne.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172716"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278226"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -41,7 +41,7 @@ Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA, Az
    > [!NOTE]
    > Jeśli w magazynie znajdują się jakiekolwiek nietrwałe usunięte elementy kopii zapasowej, nie można w tym momencie usunąć magazynu. Spróbuj usunąć magazyn po usunięciu trwałych elementów kopii zapasowej. w magazynie nie ma żadnego elementu usuniętego nietrwałego stanu.
 
-4. Aby przywrócić maszynę wirtualną usuniętą z nietrwałego, należy najpierw ją usunąć. Aby cofnąć usunięcie, wybierz maszynę wirtualną, która została usunięta, a następnie kliknij opcję **Cofnij usunięcie**.
+4. Aby przywrócić maszynę wirtualną usuniętą z nietrwałego, należy najpierw ją usunąć. Aby cofnąć usunięcie, wybierz maszynę wirtualną, która została usunięta, a następnie wybierz opcję **Cofnij usunięcie**.
 
    ![Zrzut ekranu przedstawiający Azure Portal, cofanie usunięcia maszyny wirtualnej](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
@@ -60,7 +60,7 @@ Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA, Az
 
    ![Zrzut ekranu przedstawiający Azure Portal, Wznów opcję tworzenia kopii zapasowej](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
-Ten wykres przepływu przedstawia różne kroki i Stany elementu kopii zapasowej:
+Ten wykres przepływu przedstawia różne kroki i Stany elementu kopii zapasowej po włączeniu usuwania nietrwałego:
 
 ![Cykl życia nietrwałego usuniętego elementu kopii zapasowej](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
@@ -68,26 +68,47 @@ Aby uzyskać więcej informacji, zobacz sekcję [często zadawane pytania](backu
 
 ## <a name="disabling-soft-delete"></a>Wyłączanie usuwania nietrwałego
 
-Usuwanie nietrwałe jest domyślnie włączone w nowo utworzonych magazynach. Jeśli funkcja usuwania nietrwałego zabezpieczeń jest wyłączona, dane kopii zapasowej nie będą chronione przed przypadkowym lub złośliwym usunięciem. Bez funkcji usuwania nietrwałego wszystkie usunięcia elementów chronionych spowodują natychmiastowe usunięcie, bez możliwości przywrócenia. Ponieważ dane kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem klienta, wyłączenie tej funkcji nie jest zalecane. Jedyną okolicznością, w której należy rozważyć wyłączenie usuwania nietrwałego, jest to, że planujesz przeniesienie chronionych elementów do nowego magazynu i nie będzie można odczekać 14 dni przed usunięciem i ponownym włączeniem ochrony (na przykład w środowisku testowym).
+Usuwanie nietrwałe jest domyślnie włączone dla nowo utworzonych magazynów w celu ochrony danych kopii zapasowej przed przypadkowym lub złośliwym usunięciem.  Wyłączenie tej funkcji nie jest zalecane. Jedyną okolicznością, w której należy rozważyć wyłączenie usuwania nietrwałego, jest to, że planujesz przeniesienie chronionych elementów do nowego magazynu i nie będzie można odczekać 14 dni przed usunięciem i ponownym włączeniem ochrony (na przykład w środowisku testowym). Tę funkcję można wyłączyć tylko przez administratora kopii zapasowej. Jeśli wyłączysz tę funkcję, wszystkie usunięcia chronionych elementów spowodują natychmiastowe usunięcie, bez możliwości przywrócenia. Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej funkcji pozostaną w stanie nietrwałego usunięcia. Jeśli chcesz trwale usunąć te elementy natychmiast, musisz cofnąć ich usunięcie i usunąć je ponownie, aby trwale usunąć.
 
-### <a name="prerequisites-for-disabling-soft-delete"></a>Wymagania wstępne dotyczące wyłączania usuwania nietrwałego
-
-- Włączenie lub wyłączenie usuwania nietrwałego dla magazynów (bez elementów chronionych) może być wykonywane tylko przez Azure Portal. Dotyczy to:
-  - Nowo utworzone magazyny, które nie zawierają elementów chronionych
-  - Istniejące magazyny, których chronione elementy zostały usunięte i wygasły (poza ustalonym 14-dniowym okresem przechowywania)
-- Jeśli funkcja usuwania nietrwałego jest wyłączona dla magazynu, można ją ponownie włączyć, ale nie można jej cofnąć i wyłączyć, jeśli magazyn zawiera chronione elementy.
-- Nie można wyłączyć usuwania nietrwałego dla magazynów zawierających elementy chronione lub elementy w stanie nieusuniętym. Jeśli trzeba to zrobić, wykonaj następujące kroki:
-  - Zatrzymaj ochronę usuniętych danych dla wszystkich elementów chronionych.
-  - Poczekaj na wygaśnięcie 14 dni przechowywania w zabezpieczeniach.
-  - Wyłącz usuwanie nietrwałe.
-
-Aby wyłączyć usuwanie nietrwałe, upewnij się, że spełniono wymagania wstępne, a następnie wykonaj następujące kroki:
+Aby wyłączyć usuwanie nietrwałe, wykonaj następujące kroki:
 
 1. W Azure Portal przejdź do magazynu, a następnie przejdź do pozycji **ustawienia** -> **Właściwości**.
-2. W okienku właściwości wybierz pozycję **Ustawienia zabezpieczeń** -> **Aktualizacja**.
-3. W okienku ustawienia zabezpieczeń w obszarze usuwanie nietrwałe wybierz pozycję **Wyłącz**.
+2. W okienku właściwości wybierz pozycję **Ustawienia zabezpieczeń** -> **Aktualizacja**.  
+3. W okienku ustawienia zabezpieczeń w obszarze **usuwanie nietrwałe**wybierz pozycję **Wyłącz**.
+
 
 ![Wyłącz usuwanie nietrwałe](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>Trwałe usuwanie nietrwałych usuniętych elementów kopii zapasowej
+
+Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej funkcji pozostaną w stanie nietrwałego usunięcia. Jeśli chcesz trwale usunąć te elementy natychmiast, usuń je i Usuń ponownie, aby uzyskać trwałe usunięcie. 
+
+Wykonaj następujące kroki:
+
+1. Postępuj zgodnie z instrukcjami, aby [wyłączyć usuwanie nietrwałe](#disabling-soft-delete). 
+2. W Azure Portal przejdź do swojego magazynu, przejdź do **pozycji elementy kopii zapasowej** i wybierz nietrwałe usunięte maszyny wirtualne 
+
+![Wybierz nietrwałe usunięte maszyny wirtualne](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+
+3. Wybierz opcję **Cofnij usunięcie**.
+
+![Wybierz pozycję Cofnij usunięcie](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+
+
+4. Zostanie wyświetlone okno. Wybierz pozycję **Cofnij usunięcie**.
+
+![Wybierz pozycję Cofnij usunięcie](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+
+5. Wybierz pozycję **Usuń dane kopii zapasowej** , aby trwale usunąć dane kopii zapasowej.
+
+![Wybierz pozycję Usuń dane kopii zapasowej](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+
+6. Wpisz nazwę elementu kopii zapasowej, aby potwierdzić, że chcesz usunąć punkty odzyskiwania.
+
+![Wpisz nazwę elementu kopii zapasowej](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+
+7. Aby usunąć dane kopii zapasowej dla elementu, wybierz pozycję **Usuń**. Komunikat z powiadomieniem informuje o tym, że dane kopii zapasowej zostały usunięte.
+
 
 ## <a name="other-security-features"></a>Inne funkcje zabezpieczeń
 
@@ -139,7 +160,7 @@ Cofnięcie usunięcia po wykonaniu operacji Wznów spowoduje ponowne włączenie
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Czy mogę usunąć swój magazyn, jeśli w magazynie istnieją nietrwałe elementy usunięte?
 
-Nie można usunąć magazynu Recovery Services, jeśli w magazynie istnieją elementy kopii zapasowej w stanie nieusuniętym. Elementy usunięte nietrwałe są trwale usuwane po 14 dniach operacji usuwania. Magazyn można usunąć tylko po przeczyszczeniu wszystkich usuniętych elementów.  
+Nie można usunąć magazynu Recovery Services, jeśli w magazynie istnieją elementy kopii zapasowej w stanie nieusuniętym. Usunięte elementy nietrwałe są usuwane przez 14 dni po operacji usuwania. Jeśli nie możesz zaczekać 14 dni, [Wyłącz usuwanie nietrwałe](#disabling-soft-delete), Cofnij usunięcie nieusuniętych elementów i usuń je ponownie, aby trwale usunąć. Po upewnieniu się, że nie ma żadnych elementów chronionych i nie usunięto żadnych nietrwałych elementów, można usunąć magazyn.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Czy mogę usunąć dane przed usunięciem z okresu usuwania nietrwałego z 14 dni?
 

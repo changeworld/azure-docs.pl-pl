@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: b83ece803a72fe6132c1ba98414e95897a0fcc90
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132606"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304871"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -28,7 +28,7 @@ Kontenery mowy umożliwiają klientom tworzenie architektury aplikacji mowy, kt�
 
 | Funkcja | Funkcje | Ostatnia |
 |--|--|--|
-| Zamiana mowy na tekst | Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi. | 2.0.0 |
+| Zamiany mowy na tekst | Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi. | 2.0.0 |
 | Custom Speech do tekstu | Korzystając z modelu niestandardowego z [portalu Custom Speech](https://speech.microsoft.com/customspeech), przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub przetwarzanie wsadowe audio do tekstu z wynikami pośrednimi. | 2.0.0 |
 | Zamiana tekstu na mowę | Konwertuje tekst na mowę dźwiękową przy użyciu zwykłego tekstu lub języka SSML (Speech Syntezing Language). | 1.3.0 |
 | Niestandardowa Zamiana tekstu na mowę | Przy użyciu modelu niestandardowego z [niestandardowego portalu głosowego](https://aka.ms/custom-voice-portal)program konwertuje tekst na mowę dźwiękową przy użyciu zwykłego tekstu lub języka SSML (Speech syntezing Language). | 1.3.0 |
@@ -77,7 +77,7 @@ W poniższej tabeli opisano minimalne i zalecane alokacje zasobów dla każdego 
 
 | Kontener | Minimalne | Zalecane |
 |-----------|---------|-------------|
-| Zamiana mowy na tekst | 2 rdzeń, 2 GB pamięci | 4 rdzenie, 4 GB pamięci |
+| Zamiany mowy na tekst | 2 rdzeń, 2 GB pamięci | 4 rdzenie, 4 GB pamięci |
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
 
@@ -114,7 +114,7 @@ Obrazy kontenerów dla mowy są dostępne w następujących Container Registry.
 
 | Kontener | Repozytorium |
 |-----------|------------|
-| Zamiana mowy na tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
+| Zamiany mowy na tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
 
@@ -155,10 +155,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>Ustawienia regionalne zamiany mowy na tekst
 
-Wszystkie Tagi, z wyjątkiem `latest`, są w następującym formacie, gdzie `<culture>` wskazuje Kontener ustawień regionalnych:
+Wszystkie Tagi, z wyjątkiem `latest` są w następującym formacie i są rozróżniane wielkości liter:
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
 Następujący tag jest przykładem formatu:
@@ -197,10 +197,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 #### <a name="text-to-speech-locales"></a>Ustawienia regionalne zamiany tekstu na mowę
 
-Wszystkie Tagi, z wyjątkiem `latest`, są w następującym formacie, gdzie `<culture>` wskazuje ustawienia regionalne, a `<voice>` wskazuje głos kontenera:
+Wszystkie Tagi, z wyjątkiem `latest` są w następującym formacie i są rozróżniane wielkości liter:
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
 Następujący tag jest przykładem formatu:
@@ -373,7 +373,7 @@ To polecenie:
 
 | Kontener | Endpoint | Protokół |
 |--|--|--|
-| Zamiana mowy na tekst | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
+| Zamiany mowy na tekst | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
 | Custom Speech do tekstu | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
 | Zamiana tekstu na mowę | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
 | Niestandardowa Zamiana tekstu na mowę | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |

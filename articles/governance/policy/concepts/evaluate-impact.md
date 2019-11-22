@@ -3,12 +3,12 @@ title: Oceń wpływ nowych zasad platformy Azure
 description: Zapoznaj się z procesem, który należy wykonać w przypadku wprowadzenia nowych zasad w środowisku platformy Azure.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e39183b13d2b3cf8c7527f9372879372b2123648
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959828"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279423"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Oceń wpływ nowych zasad platformy Azure
 
@@ -71,6 +71,6 @@ Implementowanie i przypisywanie definicji zasad nie jest ostatnim krokiem. Stale
 - Dowiedz się więcej o [strukturze definicji zasad](./definition-structure.md).
 - Dowiedz się więcej na temat [struktury przypisywania zasad](./assignment-structure.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [uzyskać dane zgodności](../how-to/get-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

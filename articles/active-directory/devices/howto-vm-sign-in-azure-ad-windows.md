@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0bfd75f54e2b57e57fcadc27df2ca43d8be5cf37
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832855"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285526"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
 
@@ -34,8 +34,8 @@ Istnieje wiele zalet używania uwierzytelniania usługi Azure AD do logowania si
 - Usługa Azure RBAC umożliwia udzielenie odpowiedniego dostępu do maszyn wirtualnych na podstawie potrzeb i usunięcie go, gdy nie jest już potrzebny.
 - Przed zezwoleniem na dostęp do maszyny wirtualnej dostęp warunkowy usługi Azure AD może wymusić dodatkowe wymagania, takie jak: 
    - Uwierzytelnianie wieloskładnikowe
-   - Ryzyko związane z logowaniem
-- Automatyzacja i skalowanie funkcji Azure AD Join dla maszyn wirtualnych z systemem Windows opartych na platformie Azure.
+   - Sprawdzanie ryzyka związanego z logowaniem
+- Automatyzuj i Skaluj przyłączanie usługi Azure AD do maszyn wirtualnych z systemem Windows Azure, które są częścią wdrożeń infrastruktury VDI.
 
 ## <a name="requirements"></a>Wymagania
 
@@ -43,7 +43,7 @@ Istnieje wiele zalet używania uwierzytelniania usługi Azure AD do logowania si
 
 Następujące dystrybucje systemu Windows są obecnie obsługiwane w ramach wersji zapoznawczej tej funkcji:
 
-- System Windows Server 2019 Datacenter
+- Windows Server 2019 Datacenter
 - System Windows 10 1809 i nowsze
 
 Poniższe regiony platformy Azure są obecnie obsługiwane w ramach wersji zapoznawczej tej funkcji:
@@ -68,7 +68,7 @@ Aby korzystać z logowania za pomocą usługi Azure AD w programie dla maszyny w
 Istnieje wiele sposobów włączania logowania do usługi Azure AD dla maszyny wirtualnej z systemem Windows:
 
 - Korzystanie z Azure Portal środowiska podczas tworzenia maszyny wirtualnej z systemem Windows
-- Korzystanie z Azure Cloud Shell środowiska podczas tworzenia maszyny wirtualnej z systemem Windows lub dla istniejącej maszyny wirtualnej z systemem Windows
+- Korzystanie z Azure Cloud Shell środowiska podczas tworzenia maszyny wirtualnej z systemem Windows **lub dla istniejącej maszyny wirtualnej z systemem Windows**
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Korzystanie z Azure Portal tworzenia środowiska maszyny wirtualnej w celu włączenia logowania do usługi Azure AD
 
@@ -187,6 +187,13 @@ Aby uzyskać więcej informacji na temat używania RBAC do zarządzania dostępe
 - [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
+## <a name="using-conditional-access"></a>Korzystanie z dostępu warunkowego
+
+Można wymusić zasady dostępu warunkowego, takie jak uwierzytelnianie wieloskładnikowe lub sprawdzanie ryzyka logowania użytkownika przed autoryzacją dostępu do maszyn wirtualnych z systemem Windows na platformie Azure, które są włączone przy użyciu usługi Azure AD. Aby zastosować zasady dostępu warunkowego, należy wybrać opcję "Logowanie do maszyny wirtualnej platformy Azure" w opcji przypisywania aplikacji lub akcji w chmurze, a następnie użyć ryzyka związanego z logowaniem jako warunku i/lub wymagać uwierzytelniania wieloskładnikowego jako udzielenia kontroli dostępu. 
+
+> [!NOTE]
+> Jeśli używasz "Wymagaj uwierzytelniania wieloskładnikowego" jako udzielenia kontroli dostępu w celu żądania dostępu do aplikacji "Logowanie maszyn wirtualnych systemu Azure Windows", musisz podać rolę uwierzytelniania wieloskładnikowego w ramach klienta inicjującego sesję RDP dla docelowej maszyny wirtualnej systemu Windows w Azure. Jedynym sposobem osiągnięcia tego celu na kliencie z systemem Windows 10 jest użycie numeru PIN usługi Windows Hello dla firm lub uwierzytelniania biometrycznego podczas protokołu RDP. Obsługa uwierzytelniania biometrycznego podczas protokołu RDP została dodana w systemie Windows 10 1809. Używanie uwierzytelniania usługi Windows Hello dla firm podczas korzystania z protokołu RDP jest dostępne tylko w przypadku wdrożeń korzystających z modelu zaufania certyfikatów i aktualnie niedostępnych dla modelu zaufania kluczy.
+
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Logowanie przy użyciu poświadczeń usługi Azure AD z maszyną wirtualną z systemem Windows
 
 > [!IMPORTANT]
@@ -196,7 +203,7 @@ Aby zalogować się do maszyny wirtualnej z systemem Windows Server 2019 przy u�
 
 1. Przejdź do strony Przegląd maszyny wirtualnej, która została włączona z logowaniem do usługi Azure AD.
 1. Wybierz pozycję **Połącz** , aby otworzyć blok Połącz z maszyną wirtualną.
-1. Wybierz opcję **Pobierz plik RDP**.
+1. Wybierz **Pobierz plik RDP**.
 1. Wybierz pozycję **Otwórz** , aby uruchomić klienta Podłączanie pulpitu zdalnego.
 1. Wybierz pozycję **Połącz** , aby uruchomić okno dialogowe logowania systemu Windows.
 1. Zaloguj się przy użyciu poświadczeń usługi Azure AD.
@@ -337,7 +344,12 @@ Jeśli po zainicjowaniu połączenia pulpitu zdalnego z maszyną wirtualną zoba
 
 ![Metoda logowania, której próbujesz użyć, jest niedozwolona.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-Jeśli skonfigurowano zasady dostępu warunkowego, które wymagają wykonania MFA przed uzyskaniem dostępu do zasobu RBAC, należy się upewnić, że komputer z systemem Windows 10 inicjujący połączenie pulpitu zdalnego z maszyną wirtualną używa metody silnego uwierzytelniania, takiej jak jako funkcja Windows Hello. Jeśli nie używasz metody silnego uwierzytelniania dla połączenia pulpitu zdalnego, zostanie wyświetlony następujący błąd.
+Jeśli skonfigurowano zasady dostępu warunkowego, które wymagają wykonania MFA przed uzyskaniem dostępu do zasobu RBAC, należy się upewnić, że komputer z systemem Windows 10 inicjujący połączenie pulpitu zdalnego z maszyną wirtualną używa metody silnego uwierzytelniania, takiej jak jako funkcja Windows Hello. Jeśli nie używasz metody silnego uwierzytelniania dla połączenia pulpitu zdalnego, zostanie wyświetlony następujący błąd. 
+
+Jeśli usługa Windows Hello dla firm nie została wdrożona, a jeśli nie jest to możliwe, można exlcude wymaganie MFA przez skonfigurowanie zasad dostępu warunkowego, które nie wykluczają aplikacji "Logowanie maszyn wirtualnych systemu Azure" z listy aplikacji w chmurze, które wymagają uwierzytelniania wieloskładnikowego. Aby dowiedzieć się więcej o usłudze Windows Hello dla firm, zobacz [Windows Hello dla firm — Omówienie](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+
+> [!NOTE]
+> Uwierzytelnianie numeru PIN usługi Windows Hello dla firm w systemie Windows 10 zostało już przez pewien czas obsługiwane. Obsługa uwierzytelniania biometrycznego podczas protokołu RDP została dodana w systemie Windows 10 1809. Używanie uwierzytelniania usługi Windows Hello dla firm podczas korzystania z protokołu RDP jest dostępne tylko w przypadku wdrożeń korzystających z modelu zaufania certyfikatów i aktualnie niedostępnych dla modelu zaufania kluczy.
  
 ## <a name="preview-feedback"></a>Podgląd opinii
 

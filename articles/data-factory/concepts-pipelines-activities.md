@@ -5,20 +5,19 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2018
-ms.openlocfilehash: bed81633b27d5d0f89cb7e3d7a6e0975de4b6772
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681458"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280738"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
+
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-create-pipelines.md)
 > * [Bieżąca wersja](concepts-pipelines-activities.md)
@@ -26,17 +25,18 @@ ms.locfileid: "73681458"
 Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Azure Data Factory oraz z konstruowaniem za ich pomocą pełnych przepływów pracy dla scenariuszy przenoszenia i przetwarzania danych.
 
 ## <a name="overview"></a>Omówienie
-Fabryka danych może obejmować jeden lub wiele potoków. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Na przykład potok może zawierać zestaw działań, które pozyskują i oczyszczają dane dziennika, a następnie uruchamiają zadanie usługi Spark na klastrze HDInsight w celu przeanalizowania danych dziennika. Zaletą korzystania z potoku jest możliwość zarządzania działaniami jako zestawem, a nie indywidualnie. Na przykład zamiast zarządzać poszczególnymi działaniami można wdrożyć i zaplanować potok.
+Fabryka danych może obejmować jeden lub wiele potoków. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Na przykład potok może zawierać zestaw działań, które pozyskują i czyściją dane dziennika, a następnie uruchamiają blok danych mapowania w celu przeanalizowania danych dziennika. Potok umożliwia zarządzanie działaniami jako zestaw zamiast każdego z nich osobno. Należy wdrożyć i zaplanować potok zamiast działań niezależnie.
 
-Działania w potoku definiują akcje do wykonania na danych. Możesz na przykład użyć działania kopiowania w celu skopiowania danych z lokalnego programu SQL Server do usługi Azure Blob Storage. Następnie użyj działania usługi Hive, które uruchamia skrypt Hive w klastrze usługi Apache HDInsight w celu przetworzenia/przekształcenia danych z magazynu obiektów blob, aby utworzyć dane wyjściowe. Na koniec użyj drugiego działania kopiowania w celu skopiowania danych wyjściowych do usługi Microsoft Azure SQL Data Warehouse, na podstawie której tworzone są rozwiązania raportowania analizy biznesowej (BI).
+Działania w potoku definiują akcje do wykonania na danych. Możesz na przykład użyć działania kopiowania w celu skopiowania danych z lokalnego programu SQL Server do usługi Azure Blob Storage. Następnie można przetwarzać i przekształcać dane z magazynu obiektów BLOB do puli analiz usługi Azure Synapse w oparciu o utworzone rozwiązania do raportowania analizy biznesowej przy użyciu działania przepływu danych lub działania notesu.
 
-Usługa Data Factory obsługuje trzy typy działań: [działania przenoszenia danych](copy-activity-overview.md), [działania przekształcania danych](transform-data.md) i [działania sterowania](control-flow-web-activity.md). Dane działanie może — ale nie musi — korzystać z wejściowych [zestawów danych](concepts-datasets-linked-services.md) i generować co najmniej jeden wyjściowy [zestaw danych](concepts-datasets-linked-services.md). Na poniższym diagramie przedstawiono relację między potokiem, działaniem i zestawem danych w usłudze Data Factory:
+Data Factory ma trzy grupy działań: [działania przenoszenia danych](copy-activity-overview.md), [działania przekształcania danych](transform-data.md)i [działania sterowania](control-flow-web-activity.md). Dane działanie może — ale nie musi — korzystać z wejściowych [zestawów danych](concepts-datasets-linked-services.md) i generować co najmniej jeden wyjściowy [zestaw danych](concepts-datasets-linked-services.md). Na poniższym diagramie przedstawiono relację między potokiem, działaniem i zestawem danych w usłudze Data Factory:
 
 ![Relacja między zestawem danych, działaniem i potokiem](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
 Zestaw danych wejściowych reprezentuje dane wejściowe dla działania w potoku, a zestaw danych wyjściowych reprezentuje dane wyjściowe dla działania. Zestawy danych identyfikują dane w różnych magazynach danych, takich jak tabele, pliki, foldery i dokumenty. Po utworzeniu zestawu danych można go użyć z działaniami w potoku. Na przykład zestaw danych może być zestawem danych wejściowych/wyjściowych działania kopiowania lub działania HDInsightHive. Aby uzyskać więcej informacji na temat zestawów danych, zobacz artykuł [Datasets in Azure Data Factory](concepts-datasets-linked-services.md) (Zestawy danych w usłudze Azure Data Factory).
 
 ## <a name="data-movement-activities"></a>Działania dotyczące przenoszenia danych
+
 Działanie kopiowania w usłudze Data Factory kopiuje dane z magazynu danych źródła do magazynu danych ujścia. Usługa Data Factory obsługuje magazyny danych wymienione w tabeli w tej sekcji. Dane z dowolnego źródła można zapisać do dowolnego ujścia. Kliknij magazyn danych, aby dowiedzieć się, jak kopiować dane do i z tego magazynu.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
@@ -48,6 +48,8 @@ Usługa Azure Data Factory obsługuje następujące działania przekształcania,
 
 Działanie przekształcania danych | Środowisko obliczeniowe
 ---------------------------- | -------------------
+[Przepływ danych](control-flow-execute-data-flow-activity.md) | Azure Databricks zarządzane przez Azure Data Factory
+[Funkcja platformy Azure](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
@@ -56,26 +58,31 @@ Działanie przekształcania danych | Środowisko obliczeniowe
 [Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](transform-data-using-machine-learning.md) | Maszyna wirtualna platformy Azure
 [Procedura składowana](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse lub SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[Kod niestandardowy](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[Działanie niestandardowe](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Notes usługi Databricks](transform-data-databricks-notebook.md) | Azure Databricks
 [Aktywność jar](transform-data-databricks-jar.md) | Azure Databricks
 [Aktywność języka Python dla elementów datakostek](transform-data-databricks-python.md) | Azure Databricks
 
 Aby uzyskać więcej informacji, zobacz artykuł z [działaniami dotyczącymi przekształcania danych](transform-data.md).
 
-## <a name="control-activities"></a>Działania sterowania
+## <a name="control-flow-activities"></a>Działania przepływu sterowania
 Obsługiwane są następujące działania przepływu sterowania:
 
 Działanie sterowania | Opis
 ---------------- | -----------
-[Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md) | Działanie Execute Pipeline umożliwia potokowi usługi Data Factory wywoływanie innego potoku.
-[Działanie ForEach](control-flow-for-each-activity.md) | Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
-[Działanie WebActivity](control-flow-web-activity.md) | Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie.
-[Działanie Lookup](control-flow-lookup-activity.md) | Działanie Lookup może być używane do odczytywania lub wyszukiwania rekordu/nazwy tabeli/wartości z dowolnego źródła zewnętrznego. Do tych danych wyjściowych mogą także odwoływać się kolejne działania.
-[Działanie GetMetadata](control-flow-get-metadata-activity.md) | Działanie GetMetadata umożliwia pobieranie metadanych dowolnych danych z usługi Azure Data Factory.
-[Działanie Until](control-flow-until-activity.md) | Wprowadza pętlę Do-Until, przypominającą strukturę pętli Do-Until w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until.
+[Dołącz zmienną](control-flow-append-variable-activity.md) | Dodaj wartość do istniejącej zmiennej tablicowej.
+[Wykonaj potok](control-flow-execute-pipeline-activity.md) | Działanie Execute Pipeline umożliwia potokowi usługi Data Factory wywoływanie innego potoku.
+[Filtr](control-flow-filter-activity.md) | Zastosuj wyrażenie filtru do tablicy wejściowej
+[Dla każdego](control-flow-for-each-activity.md) | Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
+[Pobierz metadane](control-flow-get-metadata-activity.md) | Działanie GetMetadata umożliwia pobieranie metadanych dowolnych danych z usługi Azure Data Factory.
 [Działanie If Condition](control-flow-if-condition-activity.md) | Działanie If Condition umożliwia tworzenie gałęzi na podstawie warunków, które są obliczane na wartość true lub false. Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`.
+[Działanie Lookup](control-flow-lookup-activity.md) | Działanie Lookup może być używane do odczytywania lub wyszukiwania rekordu/nazwy tabeli/wartości z dowolnego źródła zewnętrznego. Do tych danych wyjściowych mogą także odwoływać się kolejne działania.
+[Ustaw zmienną](control-flow-set-variable-activity.md) | Ustaw wartość istniejącej zmiennej.
+[Działanie Until](control-flow-until-activity.md) | Wprowadza pętlę Do-Until, przypominającą strukturę pętli Do-Until w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until.
+[Działanie walidacji](control-flow-validation-activity.md) | Upewnij się, że potok kontynuuje wykonywanie tylko wtedy, gdy istnieje zestaw danych referencyjnych, spełnia określone kryteria lub osiągnięto limit czasu.
 [Działanie Wait](control-flow-wait-activity.md) | Gdy używasz działania Wait w potoku, potok czeka przez określony okres z kontynuowaniem wykonywania kolejnych działań.
+[Aktywność sieci Web](control-flow-web-activity.md) | Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie.
+[Działanie elementu webhook](control-flow-webhook-activity.md) | Za pomocą działania elementu webhook Wywołaj punkt końcowy i przekaż adres URL wywołania zwrotnego. Uruchomienie potoku oczekuje na wywołanie wywołania zwrotnego przed przejściem do następnego działania.
 
 ## <a name="pipeline-json"></a>Format JSON potoku
 Poniżej przedstawiono sposób definiowania potoku w formacie JSON:
@@ -90,17 +97,22 @@ Poniżej przedstawiono sposób definiowania potoku w formacie JSON:
         [
         ],
         "parameters": {
-         }
+        },
+        "concurrency": <your max pipeline concurrency>,
+        "annotations": [
+        ]
     }
 }
 ```
 
-Tag | Opis | Typ | Wymagany
+Tag | Opis | Typ | Wymagane
 --- | ----------- | ---- | --------
 name | Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 140</li><li>Musi zaczynać się literą, cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\”</li></ul> | Ciąg | Tak
 description | Wprowadź tekst opisujący przeznaczenie potoku. | Ciąg | Nie
 activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Sprawdź sekcję [Format JSON działania](#activity-json), aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Tablica | Tak
 parameters | Sekcja **parameters** może zawierać jeden lub kilka parametrów zdefiniowanych w potoku, co zwiększa elastyczność i możliwość ponownego zastosowania potoku. | List | Nie
+concurrency | Maksymalna liczba współbieżnych uruchomień potoku. Domyślnie nie ma żadnych wartości maksymalnej. Jeśli limit współbieżności zostanie osiągnięty, kolejne uruchomienia potoku zostaną dodane do kolejki do momentu ukończenia wcześniej | Liczba | Nie 
+Adnotacj | Lista tagów skojarzonych z potokiem | Tablica | Nie
 
 ## <a name="activity-json"></a>Format JSON działania
 W sekcji **activities** można zdefiniować jedno lub więcej działań. Istnieją dwa główne typy działań: działania wykonywania i sterowania.
@@ -128,11 +140,11 @@ Działania wykonywania obejmują [działania przenoszenia danych](#data-movement
 
 Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 
-Tag | Opis | Wymagany
+Tag | Opis | Wymagane
 --- | ----------- | ---------
 name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi zaczynać się cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Tak</li></ul>
 description | Tekst opisujący przeznaczenie działania | Tak
-type | Typ działania. Poszczególne typy działań opisano w sekcjach [Działania przenoszenia danych](#data-movement-activities), [Działania przekształcania danych](#data-transformation-activities) i [Działania sterowania](#control-activities). | Tak
+type | Typ działania. Poszczególne typy działań opisano w sekcjach [Działania przenoszenia danych](#data-movement-activities), [Działania przekształcania danych](#data-transformation-activities) i [Działania sterowania](#control-flow-activities). | Tak
 linkedServiceName | Nazwa połączonej usługi używana na potrzeby działania.<br/><br/>Działanie może wymagać określenia połączonej usługi, która stanowi łącze do wymaganego środowiska obliczeniowego. | Tak dla działań HDInsight, oceny partii Azure Machine Learning i procedury składowanej. <br/><br/>Nie dla wszystkich innych
 typeProperties | Właściwości w sekcji typeProperties zależą od typu działania. Aby wyświetlić właściwości typu dla działania, kliknij linki do działań w poprzedniej sekcji. | Nie
 policy | Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Ta właściwość zawiera zachowania związane z limitem czasu i ponownymi próbami. Jeśli nie jest określona, używane są wartości domyślne. Więcej informacji można znaleźć w sekcji [Zasady działania](#activity-policy). | Nie
@@ -169,7 +181,7 @@ Zasady wpływają na zachowanie działania w czasie wykonania, określając opcj
 }
 ```
 
-Nazwa JSON | Opis | Dozwolone wartości | Wymagany
+Nazwa JSON | Opis | Dozwolone wartości | Wymagane
 --------- | ----------- | -------------- | --------
 timeout | Określa limit czasu pracy działania. | Zakres czasu | Nie. Domyślny limit czasu wynosi 7 dni.
 retry | Maksymalna liczba ponownych prób | Liczba całkowita | Nie. Wartość domyślna to 0
@@ -193,11 +205,11 @@ Działania sterowania mają następującą strukturę najwyższego poziomu:
 }
 ```
 
-Tag | Opis | Wymagany
+Tag | Opis | Wymagane
 --- | ----------- | --------
 name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie.<br/><ul><li>Maksymalna liczba znaków: 55</li><li>Musi zaczynać się cyfrą lub podkreśleniem (\_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\” | Tak</li><ul>
 description | Tekst opisujący przeznaczenie działania | Tak
-type | Typ działania. Poszczególne typy działań opisano w sekcjach [Działania przenoszenia danych](#data-movement-activities), [Działania przekształcania danych](#data-transformation-activities) i [Działania sterowania](#control-activities). | Tak
+type | Typ działania. Poszczególne typy działań opisano w sekcjach [Działania przenoszenia danych](#data-movement-activities), [Działania przekształcania danych](#data-transformation-activities) i [Działania sterowania](#control-flow-activities). | Tak
 typeProperties | Właściwości w sekcji typeProperties zależą od typu działania. Aby wyświetlić właściwości typu dla działania, kliknij linki do działań w poprzedniej sekcji. | Nie
 dependsOn | Ta właściwość jest używana do definiowania zależności działania oraz sposobu, w jaki kolejne działania zależą od poprzednich działań. Więcej informacji można znaleźć w sekcji [Zależność działania](#activity-dependency). | Nie
 
@@ -362,7 +374,7 @@ Planowanie potoków odbywa się przy użyciu wyzwalaczy. Istnieją różne typy 
 
 Aby wyzwalacz uruchamiał potok, należy dołączyć odwołanie do konkretnego potoku do definicji wyzwalacza. Między potokami i wyzwalaczami występuje relacja typu „wiele do wielu”. Wiele wyzwalaczy może uruchamiać jeden potok, a jeden wyzwalacz może uruchamiać wiele potoków. Po zdefiniowaniu wyzwalacza należy go uruchomić, aby rozpoczął wyzwalanie potoków. Więcej informacji na temat wyzwalaczy zawiera artykuł na temat [wykonywania potoku i wyzwalaczy](concepts-pipeline-execution-triggers.md).
 
-Na przykład załóżmy, że masz wyzwalacz harmonogramu „Trigger A”, który powinien uruchamiać potok „MyCopyPipeline.” Wyzwalacz jest definiowany zgodnie z poniższym przykładem:
+Załóżmy na przykład, że masz wyzwalacz harmonogramu "wyzwalanie", aby uruchomić mój potok "MyCopyPipeline". Wyzwalacz jest definiowany zgodnie z poniższym przykładem:
 
 ### <a name="trigger-a-definition"></a>Definicja wyzwalacza Trigger A
 

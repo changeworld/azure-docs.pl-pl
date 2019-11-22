@@ -1,23 +1,14 @@
 ---
 title: Omówienie usługi Azure Notebooks
 description: Notesy Jupyter można uruchamiać w chmurze przy użyciu bezpłatnej usługi Azure Notebooks, która nie wymaga instalacji ani konfiguracji.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/05/2019
-ms.author: kraigb
-ms.openlocfilehash: ad4a1d89809ebd1b7ac933ef391965accbfd1a6c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3dfa6cec962809fad1a03f5100c55315ff6a9ad
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496733"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277679"
 ---
 # <a name="overview-of-azure-notebooks"></a>Omówienie usługi Azure Notebooks
 
@@ -96,7 +87,7 @@ Aby przekazać nam pytania dotyczące usługi Azure Notebooks, prześlij zgłosz
 
 ## <a name="next-steps"></a>Następne kroki  
 
-- [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
+- [Eksploruj przykładowe notesów](azure-notebooks-samples.md)
 
 - Przewodniki Szybki start:
 

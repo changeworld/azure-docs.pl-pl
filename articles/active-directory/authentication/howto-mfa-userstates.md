@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 316d82cbfd0c96fba2ac9714f8025d71c743d7d5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569859"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269557"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -56,7 +56,7 @@ Wszyscy użytkownicy zaczynają *wyłączać*. Po zarejestrowaniu użytkowników
 Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można wyświetlać Stany użytkowników i zarządzać nimi:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > **użytkowników i grup** > **wszystkich użytkowników**.
+2. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **Użytkownicy** , > **Wszyscy użytkownicy**.
 3. Wybierz **Multi-Factor Authentication**.
    ![wybierz Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Zostanie wyświetlona nowa strona wyświetlająca Stany użytkownika.

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185701"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286994"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -291,3 +291,19 @@ Mapowania pól wyjściowych, które odwołują się do nieistniejących/niepusty
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Ostrzeżenie: zasady wykrywania zmian danych są skonfigurowane do korzystania z kolumny klucza "X"
 [Zasady wykrywania zmian danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) mają określone wymagania dotyczące kolumn, których używają do wykrywania zmian. Jedno z tych wymagań polega na tym, że ta kolumna jest aktualizowana za każdym razem, gdy element źródłowy zostanie zmieniony. Innym wymaganiem jest to, że nowa wartość dla tej kolumny jest większa niż Poprzednia wartość. Kolumny kluczy nie spełniają tego wymagania, ponieważ nie zmieniają w każdej aktualizacji. Aby obejść ten problem, wybierz inną kolumnę dla zasad wykrywania zmian.
+
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+
+## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>Ostrzeżenie: tekst dokumentu jest zakodowany w formacie UTF-16, ale brakuje znacznika kolejności bajtów
+
+[Tryby analizowania indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) muszą wiedzieć, jak kodowanie tekstu przed jego przeanalizą. Dwa najczęstsze sposoby kodowania tekstu to UTF-16 i UTF-8. UTF-8 to kodowanie o zmiennej długości, gdzie każdy znak ma długość od 1 do 4 bajtów. UTF-16 to kodowanie o stałej długości, gdzie każdy znak ma długość 2 bajtów. UTF-16 ma dwa różne warianty, "big endian" i "little endian". Kodowanie tekstu jest określane na podstawie "znacznika kolejności bajtów", serii bajtów przed tekstem.
+
+| Kodowanie | Znacznik kolejności bajtów |
+| --- | --- |
+| Big endian UTF-16 | 0xFE 0xFF |
+| Little endian UTF-16 | 0xFF 0xFE |
+| UTF-8 | 0xEF 0xBB 0xBF |
+
+Jeśli nie ma znacznika kolejności bajtów, przyjmuje się, że tekst zostanie zakodowany jako UTF-8.
+
+Aby obejść to ostrzeżenie, należy określić, co ma być kodowanie tekstu dla tego obiektu BLOB, i dodać odpowiedni znacznik kolejności bajtów.

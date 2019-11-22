@@ -1,5 +1,5 @@
 ---
-title: Problemy z logowaniem do aplikacji federacyjnego logowania jednokrotnego z niegalerią | Microsoft Docs
+title: Problemy z logowaniem do aplikacji federacyjnego logowania jednokrotnego w galerii
 description: Wskazówki dotyczące konkretnych problemów, które mogą wystąpić podczas logowania się do aplikacji skonfigurowanej do federacyjnego logowania jednokrotnego opartego na protokole SAML za pomocą usługi Azure AD
 services: active-directory
 documentationcenter: ''
@@ -16,23 +16,23 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d26f52db394877cff13bf4b0b476a9603c1ddba8
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381381"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274849"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji spoza galerii skonfigurowanej do federacyjnego logowania jednokrotnego
 
 Aby rozwiązać problemy związane z logowaniem poniżej, zalecamy wykonanie poniższych sugestii w celu uzyskania lepszej diagnostyki i zautomatyzowania kroków rozwiązania:
 
 - Zainstaluj [rozszerzenie moje aplikacje bezpieczne przeglądarki](access-panel-extension-problem-installing.md) , aby pomóc Azure Active Directory (Azure AD) w celu zapewnienia lepszej diagnozowania i rozwiązywania problemów podczas korzystania ze środowiska testowego w Azure Portal.
-- Odtwórz błąd przy użyciu środowiska testowego na stronie Konfiguracja aplikacji w Azure Portal. Dowiedz się więcej na temat [debugowania aplikacji logowania](../develop/howto-v1-debug-saml-sso-issues.md) jednokrotnego opartego na PROTOKOLe SAML
+- Odtwórz błąd przy użyciu środowiska testowego na stronie Konfiguracja aplikacji w Azure Portal. Dowiedz się więcej na temat [debugowania aplikacji logowania jednokrotnego opartego na protokole SAML](../develop/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>Nie znaleziono aplikacji w katalogu
 
-*AADSTS70001 błędu: Aplikacja o identyfikatorze `https://contoso.com` nie została znaleziona w*katalogu.
+*Błąd AADSTS70001: w katalogu nie znaleziono aplikacji o identyfikatorze `https://contoso.com`* .
 
 **Możliwa przyczyna**
 
@@ -40,9 +40,9 @@ Atrybut wystawcy wysyłany z aplikacji do usługi Azure AD w żądaniu SAML nie 
 
 **Rozdzielczość**
 
-Upewnij się, `Issuer` że atrybut w żądaniu SAML jest zgodny z wartością identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [środowiska testowego](../develop/howto-v1-debug-saml-sso-issues.md) w Azure Portal przy użyciu rozszerzenia moje aplikacje bezpieczne przeglądarki, nie musisz wykonywać tych czynności ręcznie.
+Upewnij się, że atrybut `Issuer` w żądaniu SAML jest zgodny z wartością identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [środowiska testowego](../develop/howto-v1-debug-saml-sso-issues.md) w Azure Portal przy użyciu rozszerzenia moje aplikacje bezpieczne przeglądarki, nie musisz wykonywać tych czynności ręcznie.
 
-1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator **.**
+1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator.**
 
 2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
 
@@ -62,7 +62,7 @@ Upewnij się, `Issuer` że atrybut w żądaniu SAML jest zgodny z wartością id
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres odpowiedzi nie jest zgodny z adresami odpowiedzi skonfigurowanymi dla aplikacji. 
 
-*AADSTS50011 błędu: Adres `https://contoso.com` odpowiedzi nie jest zgodny z adresami odpowiedzi skonfigurowanymi dla aplikacji* 
+*Błąd AADSTS50011: adres odpowiedzi `https://contoso.com` nie pasuje do adresów odpowiedzi skonfigurowanych dla aplikacji* 
 
 **Możliwa przyczyna** 
 
@@ -70,9 +70,9 @@ Wartość AssertionConsumerServiceURL w żądaniu SAML nie jest zgodna z wartoś
 
 **Rozdzielczość** 
 
-Upewnij się, `Issuer` że atrybut w żądaniu SAML jest zgodny z wartością identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [środowiska testowego](../develop/howto-v1-debug-saml-sso-issues.md) w Azure Portal przy użyciu rozszerzenia moje aplikacje bezpieczne przeglądarki, nie musisz wykonywać tych czynności ręcznie.
+Upewnij się, że atrybut `Issuer` w żądaniu SAML jest zgodny z wartością identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [środowiska testowego](../develop/howto-v1-debug-saml-sso-issues.md) w Azure Portal przy użyciu rozszerzenia moje aplikacje bezpieczne przeglądarki, nie musisz wykonywać tych czynności ręcznie.
  
-1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator **.** 
+1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator.** 
 
 2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie. 
 
@@ -88,13 +88,13 @@ Upewnij się, `Issuer` że atrybut w żądaniu SAML jest zgodny z wartością id
 
 7. Po załadowaniu aplikacji kliknij pozycję **Logowanie** jednokrotne w menu nawigacji po lewej stronie aplikacji.
 
-8. Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. Sprawdź lub zaktualizuj wartość w polu tekstowym adres URL odpowiedzi, aby dopasować `AssertionConsumerServiceURL` wartość w żądaniu SAML.    
+8. Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. Sprawdź lub zaktualizuj wartość w polu tekstowym adres URL odpowiedzi, aby dopasować wartość `AssertionConsumerServiceURL` w żądaniu SAML.    
     
 Po zaktualizowaniu wartości adresu URL odpowiedzi w usłudze Azure AD, która jest zgodna z wartością wysyłaną przez aplikację w żądaniu SAML, powinno być możliwe zalogowanie się do aplikacji.
 
 ## <a name="user-not-assigned-a-role"></a>Użytkownik nie ma przypisanej roli
 
-*AADSTS50105 błędu: Zalogowany użytkownik `brian\@contoso.com` nie jest przypisany do roli dla aplikacji*
+*Błąd AADSTS50105: zalogowany użytkownik `brian\@contoso.com` nie jest przypisany do roli dla aplikacji*
 
 **Możliwa przyczyna**
 
@@ -128,7 +128,7 @@ Aby bezpośrednio przypisać co najmniej jednego użytkownika do aplikacji, wyko
 
 11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, wpisz inną **pełną nazwę** lub **adres e-mail** w polu **Wyszukaj według nazwy lub adresu e-mail** , a następnie kliknij pole wyboru, aby dodać tego użytkownika do **wybranej** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
 
 13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
@@ -140,7 +140,7 @@ Po krótkim czasie użytkowników, dla których wybrano mogli uruchamiać te apl
 
 ## <a name="not-a-valid-saml-request"></a>To nie jest prawidłowe żądanie SAML
 
-*AADSTS75005 błędu: Żądanie nie jest prawidłowym komunikatem protokołu SAML2.*
+*Błąd AADSTS75005: żądanie nie jest prawidłowym komunikatem protokołu SAML2.*
 
 **Możliwa przyczyna**
 
@@ -148,7 +148,7 @@ Usługa Azure AD nie obsługuje żądania SAML wysłanego przez aplikację na po
 
 -   Brak wymaganych pól w żądaniu SAML
 
--   Zakodowana metoda żądania SAML
+-   Metoda zakodowana w żądaniu SAML
 
 **Rozdzielczość**
 
@@ -164,17 +164,17 @@ Dostawca aplikacji powinien sprawdzić, czy obsługują one implementację proto
 
 ## <a name="misconfigured-application"></a>Błędna konfiguracja aplikacji
 
-*AADSTS650056 błędu: Błędna konfiguracja aplikacji. Może to być spowodowane jedną z następujących przyczyn: Klient nie wystawił żadnych uprawnień do "grafu usługi AAD" w żądanych uprawnieniach w rejestracji aplikacji klienta. Lub administrator nie wyraził zgody na dzierżawę. Lub Sprawdź identyfikator aplikacji w żądaniu, aby upewnić się, że pasuje do skonfigurowanego identyfikatora aplikacji klienckiej. Skontaktuj się z administratorem, aby naprawić konfigurację lub zgodę w imieniu dzierżawy.* .
+*Błąd AADSTS650056: nieprawidłowo skonfigurowana aplikacja. Może to być spowodowane jedną z następujących przyczyn: klient nie otrzymał żadnych uprawnień do "Graf Graph" w żądanych uprawnieniach w rejestracji aplikacji klienta. Lub administrator nie wyraził zgody na dzierżawę. Lub Sprawdź identyfikator aplikacji w żądaniu, aby upewnić się, że pasuje do skonfigurowanego identyfikatora aplikacji klienckiej. Skontaktuj się z administratorem, aby naprawić konfigurację lub zgodę w imieniu dzierżawy.*
 
 **Możliwa przyczyna**
 
-`Issuer` Atrybut wysłany z aplikacji do usługi Azure AD w żądaniu SAML nie jest zgodny z wartością identyfikatora skonfigurowaną dla aplikacji w usłudze Azure AD.
+Atrybut `Issuer` wysłany z aplikacji do usługi Azure AD w żądaniu SAML nie jest zgodny z wartością identyfikatora skonfigurowaną dla aplikacji w usłudze Azure AD.
 
 **Rozdzielczość**
 
-Upewnij się, `Issuer` że atrybut w żądaniu SAML jest zgodny z wartością identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [środowiska testowego](../develop/howto-v1-debug-saml-sso-issues.md) w Azure Portal z rozszerzeniem my Apps Secure Browser, nie musisz wykonać następujących czynności ręcznie:
+Upewnij się, że atrybut `Issuer` w żądaniu SAML jest zgodny z wartością identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [środowiska testowego](../develop/howto-v1-debug-saml-sso-issues.md) w Azure Portal z rozszerzeniem my Apps Secure Browser, nie musisz wykonać następujących czynności ręcznie:
 
-1.  Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator .
+1.  Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator**.
 
 1.  Otwórz **rozszerzenie Azure Active Directory** , wybierając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
 
@@ -192,7 +192,7 @@ Upewnij się, `Issuer` że atrybut w żądaniu SAML jest zgodny z wartością id
 
 ## <a name="certificate-or-key-not-configured"></a>Nie skonfigurowano certyfikatu lub klucza
 
-AADSTS50003 błędu: Nie skonfigurowano klucza podpisywania.
+Błąd AADSTS50003: nie skonfigurowano klucza podpisywania.
 
 **Możliwa przyczyna**
 
@@ -202,7 +202,7 @@ Obiekt aplikacji jest uszkodzony, a usługa Azure AD nie rozpoznaje certyfikatu 
 
 Aby usunąć i utworzyć nowy certyfikat, wykonaj następujące czynności:
 
-1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator **.**
+1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator.**
 
 2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
 
@@ -224,11 +224,11 @@ Aby usunąć i utworzyć nowy certyfikat, wykonaj następujące czynności:
 
 10. Zaznacz pole wyboru **Utwórz nowy certyfikat jako aktywny** , aby zastąpić aktywny certyfikat. Następnie kliknij przycisk **Zapisz** w górnej części okienka i zaakceptuj, aby aktywować certyfikat przerzucania.
 
-11. W sekcji **certyfikat podpisywania SAML** kliknij przycisk **Usuń** , aby usunąć nieużywany certyfikat.
+11. W sekcji **certyfikat podpisywania SAML** kliknij przycisk **Usuń** , aby usunąć **nieużywany** certyfikat.
 
 ## <a name="saml-request-not-present-in-the-request"></a>Żądanie SAML nie występuje w żądaniu
 
-*AADSTS750054 błędu: SAMLRequest lub SAMLResponse musi być obecny jako parametry ciągu zapytania w żądaniu HTTP dla powiązania SAML redirect.*
+*Błąd AADSTS750054: element SAMLRequest lub SAMLResponse musi być obecny jako parametry ciągu zapytania w żądaniu HTTP dla powiązania SAML redirect.*
 
 **Możliwa przyczyna**
 
@@ -250,7 +250,7 @@ Podczas dodawania tej aplikacji jako aplikacji spoza galerii usługa Azure Activ
 
 Usuń nieużywane adresy URL odpowiedzi skonfigurowane dla aplikacji.
 
-1.  Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator .
+1.  Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator**.
 
 2.  Otwórz **rozszerzenie Azure Active Directory** , wybierając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
 

@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134959"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279698"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Przewodnik konfigurowania monitora kondycji kontenerów Azure Monitor
 
-Monitory to podstawowy element służący do mierzenia kondycji i wykrywania błędów w Azure Monitor dla kontenerów. Ten artykuł ułatwia zrozumienie koncepcji mierzonych kondycji oraz elementów wchodzących w skład modelu kondycji do monitorowania i raportowania kondycji klastra Kubernetes za pomocą [funkcji kondycji](container-insights-health.md).
+Monitory to podstawowy element służący do mierzenia kondycji i wykrywania błędów w Azure Monitor dla kontenerów. Ten artykuł ułatwia zrozumienie koncepcji mierzonych kondycji oraz elementów wchodzących w skład modelu kondycji do monitorowania i raportowania kondycji klastra Kubernetes za pomocą funkcji [kondycji (wersja zapoznawcza)](container-insights-health.md) .
+
+>[!NOTE]
+>W tej chwili funkcja kondycji jest w publicznej wersji zapoznawczej.
+>
 
 ## <a name="monitors"></a>Monitory
 

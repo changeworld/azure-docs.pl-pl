@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie autoprzyspieszania logowania przy użyciu zasad odnajdywania obszaru głównego | Microsoft Docs
+title: Konfigurowanie autoprzyspieszania logowania przy użyciu funkcji odnajdowania obszaru macierzystego
 description: Informacje o konfigurowaniu zasad odnajdywania obszaru macierzystego na potrzeby uwierzytelniania Azure Active Directory dla użytkowników federacyjnych, w tym funkcji autodostrajania i wskazówek dotyczących domen.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f8f51fcd69a7115879aad97bbf696833e87877b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477205"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274631"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie zachowania Azure Active Directory logowania dla aplikacji przy użyciu zasad odnajdywania obszaru głównego
 
@@ -65,9 +65,9 @@ Składnia wskazówki domeny różni się w zależności od używanego protokołu
 
 **WS-Federation**: WH = contoso. com w ciągu zapytania.
 
-ELEMENT **SAML**:  Żądanie uwierzytelnienia SAML zawierające wskazówkę domeny lub ciąg zapytania WH = contoso. com.
+**SAML**: żądanie UWIERZYTELNIENIa SAML zawierające wskazówkę domeny lub ciąg zapytania WH = contoso. com.
 
-**Połącz z identyfikatorem Open**: Ciąg zapytania domain_hint = contoso. com. 
+**Otwórz identyfikator Connect**: ciąg zapytania domain_hint = contoso. com. 
 
 Jeśli w żądaniu uwierzytelniania z aplikacji zostanie uwzględniona Wskazówka dotycząca domeny, a dzierżawca jest federacyjny z tą domeną, usługa Azure AD próbuje przekierować logowanie do dostawcy tożsamości, który jest skonfigurowany dla tej domeny. 
 
@@ -177,7 +177,7 @@ W tym przykładzie utworzysz zasady, które są przypisywane do aplikacji:
 - Funkcja autodostrajania użytkowników do AD FS logowania zawiera więcej niż jedną domenę federacyjną w dzierżawie.
 - Umożliwia logowanie się nieinteraktywnej nazwy użytkownika/hasła bezpośrednio do Azure Active Directory dla użytkowników federacyjnych dla aplikacji, do których zasady są przypisane.
 
-#### <a name="step-1-create-an-hrd-policy"></a>Krok 1: Tworzenie zasad HRD
+#### <a name="step-1-create-an-hrd-policy"></a>Krok 1. Tworzenie zasad HRDymi
 
 Następujące zasady umożliwiają autoprzyspieszanie użytkowników do AD FS logowania, gdy logują się do aplikacji, gdy w dzierżawie jest pojedyncza domena.
 
@@ -206,7 +206,7 @@ Get-AzureADPolicy
 
 Aby zastosować zasady HRD po utworzeniu, można przypisać je do wielu nazw głównych usługi aplikacji.
 
-#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2: Znajdź jednostkę usługi, do której chcesz przypisać zasady  
+#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2. zlokalizuj jednostkę usługi, do której chcesz przypisać zasady  
 Potrzebujesz **identyfikatora objectid** nazwy głównej usługi, do której chcesz przypisać zasady. Istnieje kilka sposobów znajdowania **identyfikatora** obiektu nazw podmiotów usługi.    
 
 Możesz użyć portalu lub można wysyłać zapytania do [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Możesz również przejść do [narzędzia Eksplorator wykresu](https://developer.microsoft.com/graph/graph-explorer) i zalogować się do konta usługi Azure AD, aby zobaczyć wszystkie nazwy główne usługi w organizacji. 
@@ -217,7 +217,7 @@ Ponieważ używasz programu PowerShell, możesz użyć następującego polecenia
 Get-AzureADServicePrincipal
 ```
 
-#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>Krok 3: Przypisywanie zasad do nazwy głównej usługi  
+#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>Krok 3. przypisanie zasad do nazwy głównej usługi  
 Po utworzeniu **identyfikatora** obiektu nazwy głównej usługi aplikacji, dla której chcesz skonfigurować autoprzyspieszanie, uruchom następujące polecenie. To polecenie kojarzy zasady HRD utworzone w kroku 1 z jednostką usługi, która znajduje się w kroku 2.
 
 ``` powershell
@@ -228,18 +228,18 @@ Możesz powtórzyć to polecenie dla każdej jednostki usługi, do której chces
 
 W przypadku, gdy aplikacja ma już przypisane zasady HomeRealmDiscovery, nie będzie można dodać drugiej.  W takim przypadku należy zmienić definicję zasad odnajdywania obszaru macierzystego przypisanych do aplikacji w celu dodania dodatkowych parametrów.
 
-#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>Krok 4: Sprawdź, które jednostki usługi aplikacji są przypisane do zasad HRDymi
+#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>Krok 4. sprawdzenie, do których podmiotów usługi aplikacji są przypisane zasady HRD
 Aby sprawdzić, które aplikacje mają skonfigurowane zasady HRD, użyj polecenia cmdlet **Get-AzureADPolicyAppliedObject** . Przekaż go identyfikator **objectid** zasad, które chcesz sprawdzić.
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
-#### <a name="step-5-youre-done"></a>Krok 5. Wszystko gotowe!
+#### <a name="step-5-youre-done"></a>Krok 5. wszystko gotowe!
 Wypróbuj aplikację, aby sprawdzić, czy nowe zasady działają.
 
-### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Przykład: Wyświetl listę aplikacji, dla których skonfigurowano zasady HRD
+### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Przykład: Utwórz listę aplikacji, dla których skonfigurowano zasady HRDymi
 
-#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>Krok 1: Wyświetl listę wszystkich zasad, które zostały utworzone w organizacji 
+#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>Krok 1. Wyświetlanie listy wszystkich zasad, które zostały utworzone w organizacji 
 
 ``` powershell
 Get-AzureADPolicy
@@ -247,23 +247,23 @@ Get-AzureADPolicy
 
 Zanotuj identyfikator **objectid** zasad, dla których chcesz wyświetlić listę przypisań.
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 2: Wyświetlanie listy jednostek usługi, do których przypisane są zasady  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 2. Lista jednostek usługi, do których przypisane są zasady  
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Przykład: Usuwanie zasad HRD dla aplikacji
-#### <a name="step-1-get-the-objectid"></a>Krok 1: Pobieranie identyfikatora obiektu
+### <a name="example-remove-an-hrd-policy-for-an-application"></a>Przykład: usuwanie zasad HRDymi dla aplikacji
+#### <a name="step-1-get-the-objectid"></a>Krok 1. Uzyskiwanie identyfikatora ObjectID
 Użyj poprzedniego przykładu, aby uzyskać identyfikator **objectid** zasad i nazwę główną usługi aplikacji, z której chcesz ją usunąć. 
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Krok 2: Usuwanie przypisania zasad z jednostki usługi aplikacji  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Krok 2. usuwanie przypisania zasad z jednostki usługi aplikacji  
 
 ``` powershell
 Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
-#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 3: Sprawdzenie usunięcia przez wystawienie nazwy głównej usługi, do której przypisane są zasady 
+#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 3. sprawdzenie usunięcia przez wystawienie nazwy głównej usługi, do której przypisane są zasady 
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>

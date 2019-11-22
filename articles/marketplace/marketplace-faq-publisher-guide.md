@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822983"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306410"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace — często zadawane pytania
 
@@ -165,7 +165,7 @@ Klienci pośrednii programu Umowa Enterprise (EA) muszą skontaktować się z do
 
 **Czy mogę kontrolować dostęp pracowników do portalu Azure Marketplace i zakupów?**
 
-Tak, w przypadku klientów z Umowa Enterprise (EA) administrator rejestracji może wyłączyć uprawnienia do zakupu dla wszystkich kont w rejestracji, a następnie włączyć je na czas wystarczający do dokonania zakupu. Dodatkowo wszyscy klienci mogą używać Azure Policy, aby ograniczyć opcje wdrażania dla swoich subskrypcji platformy Azure, w tym zarządzania zasobami portalu Azure Marketplace.
+Tak, w przypadku klientów z Umowa Enterprise (EA) administrator rejestracji może wyłączyć uprawnienia do zakupu dla wszystkich kont w rejestracji, a następnie włączyć je na czas wystarczający do dokonania zakupu.
 
 **Jakie formy płatności są obsługiwane dla komercyjnych zakupów w portalu Marketplace?**
 
@@ -173,7 +173,7 @@ Klienci mogą kupować oferty z witryny Azure Marketplace i Microsoft AppSource 
 
 **Czy mogę stosować kredyty subskrypcyjne lub fundusze zobowiązań pieniężnych platformy Azure w ramach mojego konta w ramach ofert portalu Azure Marketplace?**
 
-Określone oferty z portalu Azure Marketplace mogą korzystać ze środków subskrypcji lub zobowiązań pieniężnych platformy Azure. Aby uzyskać pełną listę produktów uczestniczących w tym programie, zobacz [zobowiązanie pieniężne platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) . Te oferty nie obejmują opcji BYOL ani BYOS. Wszystkie inne oferty w portalu Azure Marketplace nie mogą korzystać z kredytów subskrypcji platformy Azure ani zobowiązań pieniężnych: takich jak bezpłatne miesięczne kredyty, miesięczne kredyty MSDN, kredyty z promocji platformy Azure, salda zobowiązań pieniężnych i wszelkie inne bezpłatne kredyty oferowane przez Azure.
+Określone oferty z portalu Azure Marketplace mogą korzystać ze środków subskrypcji lub zobowiązań pieniężnych platformy Azure. Zobacz [Zobowiązanie pieniężne platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/), aby uzyskać pełną listę produktów biorących udział w tym programie. Te oferty nie obejmują opcji BYOL ani BYOS. Wszystkie inne oferty w portalu Azure Marketplace nie mogą korzystać z kredytów subskrypcji platformy Azure ani zobowiązań pieniężnych: takich jak bezpłatne miesięczne kredyty, miesięczne kredyty MSDN, kredyty z promocji platformy Azure, salda zobowiązań pieniężnych i wszelkie inne bezpłatne kredyty oferowane przez Azure.
 
 **Czy rabaty za licencje zbiorcze dotyczą zakupów w portalu Azure Marketplace?**
 
@@ -348,7 +348,7 @@ Po zakończeniu oferty i skonfigurowaniu miejsca docelowego potencjalnego klient
 
 **Jakie kraje/regiony są dostępne dla wydawców w portalu Azure Marketplace?**
 
-Wydawcy w oparciu o następujące kraje/regiony mogą obecnie sprzedawać w portalu Azure Marketplace: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswany, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, Chorwacja, Kongo, Kongo (DRK), Kostaryki, wybrzeże D'Ivoire, Chorwacją, Cypr, Czechy Dania, Dominika, Republika Dominikańska, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Wyspy Fidżi, Finlandia, Francja, Gruzja, Niemcy, Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, Hongkong SAR, Węgry, Islandia, Indie, Indonezja, Irak Irlandia, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea (południowe), Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Maltę, Mauritius, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowa Zelandia, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polskę, Portugalia, Katar, Rumunia, Rosja, Rwanda, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor, Wschodni, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, Uganda, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo Stany, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambii i Zimbabwe.
+Wydawcy w oparciu o następujące kraje/regiony mogą obecnie sprzedawać w portalu Azure Marketplace: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswanie, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Chorwacja, Chile, Kolumbia, Brazylia, Kongo, Demokratyczna Republika Konga, Kostaryka, wybrzeże D'Ivoire, Chorwacją, Cypr, Czechy Dania, Dominika, Republika Dominikańska, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, McDonald, Wyspy Fidżi, Finlandia, Francja, Gruzja, Niemcy, Ghana, Grecja, Gwatemali Gwinea, Haiti, Honduras, Hongkong SAR, Węgry, Islandia, Indie, Indonezja, Irak, Irlandia, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea Południowa, Gwinea, Litwa, Liechtenstein, Łotwa, Liban, Liberia, Malezja, Czarnogóra, Luksemburg, Mongolia, Węgry Maroko, Mozambik, Nepal, Holandia, Nowa Zelandia, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Rwanda, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Wschodni, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, Uganda, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Singapur Stany, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambii i Zimbabwe.
 
 **Jak mogę usunąć listę z portalu Azure Marketplace?**
 

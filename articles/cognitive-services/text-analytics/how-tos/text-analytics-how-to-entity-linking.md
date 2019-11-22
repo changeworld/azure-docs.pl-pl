@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: d3869438f299383a0b3096babbd4874c24f08b3a
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031422"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286588"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -33,7 +33,7 @@ Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania 
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Niestandardowa wersja próbna rozpoznawania jednostek v3
 
-[Następna wersja rozpoznawania nazwanych jednostek]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) jest teraz dostępna w publicznej wersji zapoznawczej. Udostępnia ona aktualizacje zarówno do łączenia jednostek, jak i nazwanego rozpoznawania jednostek. 
+[Następna wersja rozpoznawania nazwanych jednostek](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) jest teraz dostępna w publicznej wersji zapoznawczej. Udostępnia ona aktualizacje zarówno do łączenia jednostek, jak i nazwanego rozpoznawania jednostek.
 
 :::row:::
     :::column span="":::
@@ -113,13 +113,13 @@ NER
 | Liczba      | Temperatura   | „32 degrees”    |
 | DateTime      | Nie dotyczy\*         | „6:30PM February 4, 2012”      |
 | DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
-| DateTime      | Time          | "8:00", "8:00"  |
+| DateTime      | Godzina          | "8:00", "8:00"  |
 | DateTime      | Zakres dat     | „May 2nd to May 5th”    |
 | DateTime      | Zakres czasu     | „6pm to 7pm”     |
-| DateTime      | Czas trwania      | „1 minute and 45 seconds”   |
+| DateTime      | Duration      | „1 minute and 45 seconds”   |
 | DateTime      | Set           | „every Tuesday”     |
 | Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
-| Email         | Nie dotyczy\*         | „support@contoso.com” |
+| Adres e-mail         | Nie dotyczy\*         | „support@contoso.com” |
 
 \* w zależności od danych wejściowych i wyodrębnionych, niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
 

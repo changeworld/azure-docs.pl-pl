@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Use Node.js to query data from an Azure SQL database'
+title: 'Szybki Start: Używanie środowiska Node. js do wykonywania zapytań dotyczących danych z bazy danych Azure SQL Database'
 description: Sposób użycia narzędzia Node.js do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: bf63cd1fb81dace477b7d9062831f0b563314f8b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 064baf0215a2eaf7b90b78716b87606990b8fd21
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228006"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279254"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z narzędzia Node.js do wykonywania zapytań w bazie danych Azure SQL Database
 
-This quickstart demonstrates how to use [Node.js](https://nodejs.org) to connect to an Azure SQL database. Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
+Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączeń z usługą Azure SQL Database przy użyciu środowiska [Node. js](https://nodejs.org) . Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,13 +30,13 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Tworzenie| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
   |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
@@ -55,15 +55,15 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-2. Go to the **SQL databases**  or **SQL managed instances** page.
+2. Przejdź do strony **bazy danych SQL** lub **wystąpienia zarządzane SQL** .
 
 3. Na stronie **Przegląd** znajdź w pełni kwalifikowaną nazwę serwera obok pola **Nazwa serwera** (w przypadku pojedynczej bazy danych) lub w pełni kwalifikowaną nazwę serwera obok pola **Host** (w przypadku wystąpienia zarządzanego). Aby skopiować nazwę serwera lub hosta, umieść na niej wskaźnik myszy i wybierz ikonę **Kopiuj**. 
 
-## <a name="create-the-project"></a>Tworzenie projektu
+## <a name="create-the-project"></a>Utwórz projekt
 
-Otwórz wiersz polecenia i utwórz folder o nazwie *sqltest*. Open the folder you created and run the following command:
+Otwórz wiersz polecenia i utwórz folder o nazwie *sqltest*. Otwórz utworzony folder i uruchom następujące polecenie:
 
   ```bash
   npm init -y
@@ -77,8 +77,7 @@ Otwórz wiersz polecenia i utwórz folder o nazwie *sqltest*. Open the folder yo
 1. Zastąp jego zawartość poniższym kodem. Następnie dodaj odpowiednie wartości dla swojego serwera, bazy danych, użytkownika i hasła.
 
     ```js
-    const Connection = require("tedious").Connection;
-    const Request = require("tedious").Request;
+    const { Connection, Request } = require("tedious");
 
     // Create connection to database
     const config = {

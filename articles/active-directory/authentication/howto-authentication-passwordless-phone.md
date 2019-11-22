@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3ca668036a8b4a4af261ee85b8a884c22258beb4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474354"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269501"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Włącz logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Funkcje rejestracji dla metod uwierzytelniania bezhaseł polegają na połączon
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Włącz metodę uwierzytelniania logowania jednokrotnego przy użyciu hasła
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-1. Przejdź do **usługi Azure AD Security** > **metod uwierzytelniania** > **zasady metod uwierzytelniania (wersja zapoznawcza)**
+1. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **Security** > **metody uwierzytelniania** > **zasady metod uwierzytelniania (wersja zapoznawcza)**
 1. W obszarze **Logowanie za pomocą telefonu bezhasło**wybierz następujące opcje
    1. **Włącz** — tak lub nie
    1. **Cel** — wszyscy użytkownicy lub wybrani użytkownicy

@@ -1,6 +1,6 @@
 ---
 title: Zapisane wyszukiwania w rozwiązaniach do zarządzania | Microsoft Docs
-description: Rozwiązania do zarządzania zwykle obejmują zapisane wyszukiwania w Log Analytics do analizowania danych zebranych przez rozwiązanie. Mogą także definiować alerty w celu powiadomienia użytkownika lub automatycznego podjęcia działania w odpowiedzi na problem krytyczny. W tym artykule opisano sposób definiowania Log Analytics zapisane wyszukiwania w szablonie Menedżer zasobów, aby można je było uwzględnić w rozwiązaniach do zarządzania.
+description: Rozwiązania do zarządzania zwykle obejmują zapisane zapytania dziennika do analizowania danych zbieranych przez rozwiązanie. W tym artykule opisano sposób definiowania Log Analytics zapisane wyszukiwania w szablonie Menedżer zasobów.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -8,17 +8,17 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce4f3dcbc28668f786c706e7029061e541a76ce9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553925"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304931"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie Log Analytics zapisanych wyszukiwań i alertów do rozwiązania do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Jak [ogłoszono wcześniej](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)obszary robocze usługi log Analytics utworzone po *1 czerwca 2019* — będą mogły zarządzać regułami alertów przy użyciu **tylko** [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)platformy Azure scheduledQueryRules, [szablonu Azure Resource Manager](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) i [programu PowerShell. polecenie cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Klienci mogą łatwo [przełączać swoje preferowane środki zarządzania regułami alertów](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) dla starszych obszarów roboczych, aby korzystać z Azure monitor scheduledQueryRules jako domyślne i uzyskiwać wiele [nowych korzyści](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , takich jak możliwość używania natywnych poleceń cmdlet programu PowerShell. lookback okres w regułach, tworzenie reguł w osobnej grupie zasobów lub subskrypcji i wiele innych.
+> Jak [ogłoszono wcześniej](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)obszary robocze usługi log Analytics utworzone po *1 czerwca 2019* — będą mogły zarządzać regułami alertów przy użyciu **tylko** scheduledQueryRules [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)platformy Azure, [szablonu Azure Resource Manager](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) i [polecenia cmdlet programu PowerShell](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Klienci mogą łatwo [przełączać swoje preferowane środki zarządzania regułami alertów](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) dla starszych obszarów roboczych, aby korzystać z Azure monitor scheduledQueryRules jako domyślne i uzyskiwać wiele [nowych korzyści](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , takich jak możliwość używania natywnych poleceń cmdlet programu PowerShell, zwiększonych lookback okresów czasu w regułach, tworzenie reguł w osobnej grupie zasobów lub subskrypcji i wiele innych.
 
 > [!NOTE]
 > Jest to wstępna dokumentacja dotycząca tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Każdy schemat opisany poniżej może ulec zmianie.
@@ -78,12 +78,12 @@ Każda właściwość zapisanego wyszukiwania jest opisana w poniższej tabeli.
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
-> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które mogą być interpretowane jako dane JSON. Na przykład jeśli kwerenda była **usługą Azure | OperationName: "Microsoft. COMPUTE/virtualMachines/Write"** , należy ją zapisać w pliku rozwiązania jako na **platformie Azure | OperationName:/\"Microsoft. COMPUTE/virtualMachines/Write \"** .
+> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które mogą być interpretowane jako dane JSON. Na przykład jeśli kwerenda była **usługą Azure | OperationName: "Microsoft. COMPUTE/virtualMachines/Write"** , należy ją zapisać w pliku rozwiązania jako na **platformie Azure | OperationName:/\"Microsoft. COMPUTE/virtualMachines/Write\"** .
 
 ## <a name="alerts"></a>Alerty
 [Alerty dzienników platformy Azure](../../azure-monitor/platform/alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają określone zapytania dziennika w regularnych odstępach czasu. Jeśli wyniki zapytania pasują do określonych kryteriów, tworzony jest rekord alertu, a co najmniej jedna akcja jest uruchamiana przy użyciu [grup akcji](../../azure-monitor/platform/action-groups.md).
 
-W przypadku użytkowników, którzy rozszerą alerty na platformę Azure, akcje są teraz kontrolowane w grupach akcji platformy Azure. Po przedłużoniu obszaru roboczego i jego alertów na platformę Azure można pobrać lub dodać akcje przy użyciu [szablonu Azure Resource Manager grupy akcji](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Po przedłużoniu obszaru roboczego i jego alertów na platformę Azure można pobrać lub dodać akcje przy użyciu [szablonu Azure Resource Manager grupy akcji](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 Reguły alertów w starszej wersji rozwiązania do zarządzania składają się z następujących trzech różnych zasobów.
 
 - **Zapisane wyszukiwanie.** Definiuje uruchomioną przeszukiwanie dzienników. Wiele reguł alertów może współdzielić jedno zapisane wyszukiwanie.
@@ -123,7 +123,7 @@ Zasób harmonogramu powinien zależeć od zapisanego wyszukiwania, aby został u
 > Nazwa harmonogramu musi być unikatowa w danym obszarze roboczym; dwa harmonogramy nie mogą mieć tego samego identyfikatora, nawet jeśli są skojarzone z różnymi zapisanymi wyszukiwaniami. Nazwy wszystkich zapisanych wyszukiwań, harmonogramów i akcji utworzonych za pomocą interfejsu API Log Analytics muszą być pisane małymi literami.
 
 ### <a name="actions"></a>Akcje
-Harmonogram może mieć wiele akcji. Akcja może definiować jeden lub więcej procesów do wykonania, takich jak wysyłanie wiadomości e-mail lub Uruchamianie elementu Runbook, lub Definiowanie progu, który określa, kiedy wyniki wyszukiwania pasują do niektórych kryteriów. Niektóre akcje definiują oba elementy, aby procesy były wykonywane po spełnieniu progu.
+Harmonogram może mieć wiele akcji. Akcja może zdefiniować jeden lub więcej procesów do wykonywania takich jak wysłanie wiadomości e-mail lub uruchamianie elementu runbook lub mogą definiować, próg, która określa, kiedy wyniki wyszukiwania pasują do kryteriów. Niektóre akcje definiują zarówno tak, aby procesy są wykonywane po osiągnięciu wartości progowej.
 Akcje można definiować za pomocą [grupa akcji] zasobu lub akcji.
 
 Istnieją dwa typy zasobów akcji określone przez właściwość **Type** . Harmonogram wymaga jednej akcji **alertu** , która definiuje szczegóły reguły alertu i jakie akcje są wykonywane po utworzeniu alertu. Zasoby akcji mają typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.
@@ -176,7 +176,7 @@ Ta sekcja jest wymagana. Definiuje właściwości dla progu alertu.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż <br>lt = mniejsze niż** |
+| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
 | `Value` | Tak | Wartość, aby porównać wyniki. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
@@ -184,8 +184,8 @@ Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| `TriggerCondition` | Tak | Określa, czy próg dotyczy całkowitej liczby naruszeń lub kolejnych naruszeń z następujących wartości:<br><br>**Łącznie <br>Consecutive** |
-| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż <br>lt = mniejsze niż** |
+| `TriggerCondition` | Tak | Określa, czy próg dotyczy całkowitej liczby naruszeń lub kolejnych naruszeń z następujących wartości:<br><br>**Łącznie<br>po kolei** |
+| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
 | `Value` | Tak | Liczba przypadków, gdy należy spełnić kryteria w celu wyzwolenia alertu. |
 
 
@@ -197,9 +197,9 @@ Ta sekcja jest opcjonalna. Dołącz tę sekcję, jeśli chcesz pominąć alerty 
 | DurationInMinutes | Tak, jeśli uwzględniono ograniczenie elementu | Liczba minut, przez które mają zostać pominięte alerty po utworzeniu jednej z tych samych reguł alertów. |
 
 #### <a name="azure-action-group"></a>Grupa akcji platformy Azure
-Wszystkie alerty na platformie Azure używają grupy akcji jako domyślnego mechanizmu obsługi akcji. Za pomocą grupy akcji można określić akcje raz, a następnie skojarzyć grupę akcji z wieloma alertami — na platformie Azure. Bez konieczności, aby wielokrotnie zadeklarować te same akcje w trybie failover i ponownie. Grupy akcji obsługują wiele akcji — w tym wiadomości e-mail, wiadomości SMS, rozmowy głosowej, połączenia narzędzia ITSM, elementu Runbook usługi Automation, identyfikatora URI elementu webhook i nie tylko.
+Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu do obsługi akcji. Grupy akcji możesz określić swoje działania raz i skojarz grupę akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego wielokrotnie zadeklarować te same akcje. Grupy akcji obsługują wiele akcji — w tym wiadomości e-mail, wiadomości SMS, połączenie głosowe, połączenia narzędzia ITSM, element Runbook usługi Automation, identyfikator URI elementu Webhook i innych.
 
-W przypadku użytkowników, którzy rozszerzyły swoje alerty na platformę Azure — harmonogram powinien teraz zawierać szczegóły grupy akcji, które są przesyłane wraz z progiem, aby można było utworzyć alert. Szczegóły poczty E-mail, adresy URL elementu webhook, szczegóły automatyzacji elementu Runbook i inne akcje muszą być zdefiniowane w grupie akcji najpierw przed utworzeniem alertu. jeden może utworzyć [grupę akcji z Azure monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyć [grupy akcji — szablon zasobu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Dla użytkownika, który został rozszerzony alerty na platformie Azure — harmonogram powinno zostać udostępnionych szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alert. Szczegóły poczty E-mail, adresy URL elementu webhook, szczegóły automatyzacji elementu Runbook i inne akcje muszą być zdefiniowane w grupie akcji najpierw przed utworzeniem alertu. jeden może utworzyć [grupę akcji z Azure monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyć [grupy akcji — szablon zasobu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
@@ -207,7 +207,7 @@ W przypadku użytkowników, którzy rozszerzyły swoje alerty na platformę Azur
 | CustomEmailSubject | Nie | Niestandardowy wiersz tematu wiadomości e-mail wysyłanej do wszystkich adresów określonych w skojarzonej grupie akcji. |
 | CustomWebhookPayload | Nie | Dostosowany ładunek do wysłania do wszystkich punktów końcowych elementu webhook zdefiniowanych w skojarzonej grupie akcji. Format zależy od tego, co oczekuje element webhook, i powinien być prawidłowym serializowanym kodem JSON. |
 
-## <a name="sample"></a>Przykład
+## <a name="sample"></a>Sample
 
 Poniżej znajduje się przykład rozwiązania, które obejmuje następujące zasoby:
 

@@ -1,5 +1,6 @@
 ---
-title: Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher — Azure Portal | Microsoft Docs
+title: Zarządzanie przechwytywaniem pakietów — Azure Portal
+titleSuffix: Azure Network Watcher
 description: Dowiedz się, jak zarządzać funkcją przechwytywania pakietów Network Watcher przy użyciu Azure Portal.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 00349a7e681beab447e585139e481c04755b7879
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4950ef8b763967e4e852e319429cc263a4a85f6c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102864"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277865"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Zarządzanie przechwytywaniem pakietów za pomocą usługi Azure Network Watcher przy użyciu portalu
 
@@ -41,31 +42,31 @@ Jeśli sieciowa Grupa zabezpieczeń jest skojarzona z interfejsem sieciowym lub 
 1. W przeglądarce przejdź do [Azure Portal](https://portal.azure.com) i wybierz pozycję **wszystkie usługi**, a następnie wybierz pozycję **Network Watcher** w **sekcji Sieć**.
 2. Wybierz pozycję **przechwytywanie pakietów** w obszarze **Narzędzia diagnostyczne sieci**. Wszystkie istniejące przechwycenia pakietu są wyświetlane niezależnie od ich stanu.
 3. Wybierz pozycję **Dodaj** , aby utworzyć przechwycenie pakietu. Można wybrać wartości dla następujących właściwości:
-   - **Subskrypcja**: Subskrypcja, w której ma zostać utworzona przechwycenie pakietu, znajduje się w temacie.
+   - **Subskrypcja**: subskrypcja, w której ma zostać utworzona przechwycenie pakietu, znajduje się w temacie.
    - **Grupa zasobów**: Grupa zasobów maszyny wirtualnej.
-   - **Docelowa maszyna wirtualna**: Maszyna wirtualna, dla której chcesz utworzyć przechwycenie pakietu.
-   - **Nazwa przechwycenia pakietu**: Nazwa przechwycenia pakietu.
-   - **Konto magazynu lub plik**: Wybierz pozycję **konto magazynu**, **plik**lub oba te elementy. Po wybraniu opcji **plik**przechwytywania zostanie zapisany w ścieżce na maszynie wirtualnej.
-   - **Ścieżka do pliku lokalnego**: Ścieżka lokalna na maszynie wirtualnej, w której zostanie zapisane przechwytywanie pakietów (prawidłowy tylko wtedy, gdy *plik* jest zaznaczony). Ścieżka musi być prawidłową ścieżką. W przypadku korzystania z maszyny wirtualnej z systemem Linux ścieżka musi rozpoczynać się od */var/Captures*.
-   - **Konta magazynu**: Wybierz istniejące konto magazynu, jeśli wybrano pozycję *konto magazynu*. Ta opcja jest dostępna tylko w przypadku wybrania opcji **Magazyn**.
+   - **Docelowa maszyna wirtualna**: maszyna wirtualna, dla której chcesz utworzyć przechwycenie pakietu.
+   - **Nazwa przechwytywania pakietów**: Nazwa przechwycenia pakietu.
+   - **Konto magazynu lub plik**: wybierz pozycję **konto magazynu**, **plik**lub oba. Po wybraniu opcji **plik**przechwytywania zostanie zapisany w ścieżce na maszynie wirtualnej.
+   - **Ścieżka do pliku lokalnego**: ścieżka lokalna na maszynie wirtualnej, w której zostanie zapisane przechwytywanie pakietów (prawidłowy tylko wtedy, gdy *plik* jest zaznaczony). Ścieżka musi być prawidłową ścieżką. W przypadku korzystania z maszyny wirtualnej z systemem Linux ścieżka musi rozpoczynać się od */var/Captures*.
+   - **Konta magazynu**: Wybierz istniejące konto magazynu, jeśli wybrano pozycję *konto*magazynu. Ta opcja jest dostępna tylko w przypadku wybrania opcji **Magazyn**.
    
      > [!NOTE]
      > Konta usługi Premium Storage nie są obecnie obsługiwane do przechowywania przechwytywania pakietów.
 
-   - **Maksymalna liczba bajtów na pakiet**: Liczba bajtów z każdego przechwytywanego pakietu. Jeśli pole pozostanie puste, wszystkie bajty są przechwytywane.
-   - **Maksymalna liczba bajtów na sesję**: Łączna liczba przechwytywanych bajtów. Po osiągnięciu wartości zostanie zatrzymane przechwytywanie pakietów.
-   - **Limit czasu (w sekundach)** : Limit czasu przed zatrzymaniem przechwytywania pakietów. Wartość domyślna to 18 000 sekund.
+   - **Maksymalne bajty na pakiet**: liczba bajtów z każdego przechwytywanego pakietu. Jeśli pole pozostanie puste, wszystkie bajty są przechwytywane.
+   - **Maksymalna liczba bajtów na sesję**: łączną liczbę przechwytywanych bajtów. Po osiągnięciu wartości zostanie zatrzymane przechwytywanie pakietów.
+   - **Limit czasu (w sekundach)** : limit czasu przed zatrzymaniem przechwytywania pakietów. Wartość domyślna to 18 000 sekund.
    - Filtrowanie (opcjonalne). Wybierz pozycję **+ Dodaj filtr**
-     - **Protokół**: Protokół do filtrowania przechwytywania pakietów. Dostępne wartości to TCP, UDP i any.
-     - **Lokalny adres IP**: Filtruje przechwytywanie pakietów dla pakietów, w których lokalny adres IP jest zgodny z tą wartością.
-     - **Port lokalny**: Filtruje przechwytywanie pakietów dla pakietów, w których port lokalny jest zgodny z tą wartością.
-     - **Zdalny adres IP**: Filtruje przechwytywanie pakietów dla pakietów, gdzie zdalny adres IP pasuje do tej wartości.
-     - **Port zdalny**: Filtruje przechwytywanie pakietów dla pakietów, w których Port zdalny jest zgodny z tą wartością.
+     - **Protokół**: protokół służący do filtrowania przechwytywania pakietów. Dostępne wartości to TCP, UDP i any.
+     - **Lokalny adres IP**: filtruje przechwycenie pakietu dla pakietów, w których lokalny adres IP jest zgodny z tą wartością.
+     - **Port lokalny**: filtruje przechwytywanie pakietów dla pakietów, w których port lokalny jest zgodny z tą wartością.
+     - **Zdalny adres IP**: filtruje przechwytywanie pakietów dla pakietów, w których zdalny adres IP jest zgodny z tą wartością.
+     - **Port zdalny**: filtruje przechwytywanie pakietów dla pakietów, w których Port zdalny jest zgodny z tą wartością.
     
      > [!NOTE]
      > Wartości portów i adresów IP mogą być pojedynczą wartością, zakresem wartości lub zakresem, na przykład 80-1024, dla portu. Można zdefiniować dowolną liczbę filtrów.
 
-4. Kliknij przycisk **OK**.
+4. Wybierz **OK**.
 
 Po upływie limitu czasu skonfigurowanego dla przechwycenia pakietu przechwycenie pakietu zostanie zatrzymane i będzie można je przejrzeć. Możesz również ręcznie zatrzymać sesję przechwytywania pakietów.
 
@@ -77,7 +78,7 @@ Po upływie limitu czasu skonfigurowanego dla przechwycenia pakietu przechwyceni
 ## <a name="delete-a-packet-capture"></a>Usuwanie przechwytywania pakietu
 
 1. W widoku przechwytywania pakietów wybierz pozycję **...** po prawej stronie przechwytywania pakietów lub kliknij prawym przyciskiem myszy istniejący przechwycenie pakietu, a następnie wybierz polecenie **Usuń**.
-2. Zostanie wyświetlony monit o potwierdzenie, że chcesz usunąć przechwycenie pakietu. Wybierz pozycję **tak**.
+2. Zostanie wyświetlony monit o potwierdzenie, że chcesz usunąć przechwycenie pakietu. Wybierz pozycję **Tak**.
 
 > [!NOTE]
 > Usunięcie przechwycenia pakietu nie powoduje usunięcia pliku przechwytywania na koncie magazynu ani na maszynie wirtualnej.

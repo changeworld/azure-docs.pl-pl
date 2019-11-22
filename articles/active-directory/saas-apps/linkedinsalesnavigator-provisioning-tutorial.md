@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie narzędzia LinkedIn Sales Navigator dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do narzędzia LinkedIn Sales Navigator.
+title: 'Samouczek: Inicjowanie obsługi użytkowników — Nawigator sprzedaży w serwisie LinkedIn, usługa Azure AD'
+description: Dowiedz się, jak skonfigurować Azure Active Directory, aby automatycznie udostępniać i cofać obsługę administracyjną kont użytkowników w usłudze LinkedIn Sales Navigator.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,113 +15,113 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8977e6bb8b665705af7183ff0cdcfae22a19c759
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbf8923d62b49ed5341776aef03bc1bc2dabeaa9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965949"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276804"
 ---
-# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie narzędzia LinkedIn Sales Navigator dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie nawigatora sprzedaży serwisu LinkedIn na potrzeby automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w narzędzia LinkedIn Sales Navigator i Azure AD w celu automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do narzędzia LinkedIn Sales Navigator.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w Nawigatorze sprzedaży w serwisie LinkedIn i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD w usłudze LinkedIn Sales Navigator.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
 * Dzierżawa usługi Azure Active Directory
-* Narzędzia LinkedIn Sales Navigator dzierżawy 
-* Konto administratora narzędzia LinkedIn Sales Navigator dostęp do Centrum konta LinkedIn
+* Dzierżawa w usłudze LinkedIn Sales Navigator 
+* Konto administratora w programie LinkedIn Sales Navigator z dostępem do centrum konta LinkedIn
 
 > [!NOTE]
-> Usługa Azure Active Directory integruje się z usługą za pomocą narzędzia LinkedIn Sales Navigator [Standard SCIM](http://www.simplecloud.info/) protokołu.
+> Azure Active Directory integruje się z nawigatorem sprzedaży w serwisie LinkedIn przy użyciu protokołu [Standard scim](http://www.simplecloud.info/) .
 
-## <a name="assigning-users-to-linkedin-sales-navigator"></a>Przypisywanie użytkowników do narzędzia LinkedIn Sales Navigator
+## <a name="assigning-users-to-linkedin-sales-navigator"></a>Przypisywanie użytkowników do nawigatora sprzedaży w serwisie LinkedIn
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście konta użytkownika automatycznego inicjowania obsługi administracyjnej tylko użytkownicy i grupy, które "przypisano" do aplikacji w usłudze Azure AD będą synchronizowane.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi konta użytkownika zostaną zsynchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, należy zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy muszą mieć dostęp do narzędzia LinkedIn Sales Navigator. Po decyzję, możesz przypisać tych użytkowników narzędzia LinkedIn Sales Navigator, wykonując instrukcje podane w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do nawigatora sprzedaży w serwisie LinkedIn. Po ustaleniu tych użytkowników możesz przypisać je do nawigatora sprzedaży w serwisie LinkedIn, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
+[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Ważne wskazówki dotyczące przypisywania użytkowników do narzędzia LinkedIn Sales Navigator
+### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Ważne porady dotyczące przypisywania użytkowników do nawigatora sprzedaży w serwisie LinkedIn
 
-* Zalecane jest, że jeden użytkownik usługi Azure AD można przypisać do narzędzia LinkedIn Sales Navigator do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do nawigatora sprzedaży w serwisie LinkedIn w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkownika narzędzia LinkedIn Sales Navigator, należy wybrać **użytkownika** roli w oknie dialogowym przydział. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkownika do nawigatora sprzedaży w serwisie LinkedIn należy wybrać rolę **użytkownika** w oknie dialogowym przypisania. Rola "dostęp domyślny" nie działa w przypadku aprowizacji.
 
-## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Konfigurowanie narzędzia LinkedIn Sales Navigator Inicjowanie obsługi użytkowników
+## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Konfigurowanie aprowizacji użytkowników w usłudze LinkedIn Sales Navigator
 
-W tej sekcji opisano sposób łączenia usługi Azure AD, do konta użytkownika Standard SCIM narzędzia LinkedIn Sales Navigator aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączyć przypisane do kont użytkowników w narzędzia LinkedIn Sales Navigator na podstawie użytkownika i Przypisanie do grupy w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z INTERFEJSem użytkownika usługi Azure AD z chmurą sprzedaży w serwisie LinkedIn, a następnie konfigurowania usługi aprowizacji w celu tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w Nawigatorze sprzedaży w serwisie LinkedIn na podstawie użytkownika i Przypisanie grupy w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla narzędzia LinkedIn Sales Navigator, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełniają się wzajemnie.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla nawigatora sprzedaży w serwisie LinkedIn, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje uzupełniają się wzajemnie.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Aby skonfigurować automatyczne aprowizacją konta użytkownika narzędzia LinkedIn Sales Navigator w usłudze Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi kont użytkowników w usłudze Azure AD w usłudze w serwisie LinkedIn:
 
-Pierwszym krokiem jest do pobrania tokenu dostępu usługi LinkedIn. Jeśli jesteś administratorem przedsiębiorstwa, możesz samodzielnie inicjować obsługę tokenu dostępu. W Centrum konta, przejdź do **ustawienia &gt; ustawienia globalne** , a następnie otwórz **Instalatora Standard SCIM** panelu.
+Pierwszym krokiem jest pobranie tokenu dostępu do serwisu LinkedIn. Jeśli jesteś administratorem przedsiębiorstwa, możesz automatycznie zainicjować obsługę administracyjną tokenu dostępu. W centrum konta przejdź do pozycji **ustawienia &gt; ustawienia globalne** i Otwórz panel **ustawień Standard scim** .
 
 > [!NOTE]
-> Jeśli uzyskujesz dostęp do Centrum kont, bezpośrednio, a nie za pośrednictwem łącza, można osiągnąć, go wykonując następujące kroki.
+> Jeśli uzyskujesz dostęp do centrum kont bezpośrednio, a nie za pośrednictwem linku, możesz uzyskać do niego dostęp, wykonując poniższe kroki.
 
-1. Zaloguj się do Centrum konta.
+1. Zaloguj się do centrum konta.
 
-2. Wybierz **administratora &gt; ustawienia administratora** .
+2. Wybierz pozycję **administrator &gt; ustawienia administratora** .
 
-3. Kliknij przycisk **zaawansowane integracje** na lewym pasku bocznym. Nastąpi przekierowanie do Centrum konta.
+3. Kliknij przycisk **integracji zaawansowane** na lewym pasku bocznym. Nastąpi przekierowanie do centrum konta.
 
-4. Kliknij przycisk **+ Dodaj nową konfigurację Standard SCIM** i postępuj zgodnie z procedurą, wypełniając każdego pola.
-
-    > [!NOTE]
-    > Autoassign licencji nie jest włączona, oznacza, że tylko dane użytkownika jest zsynchronizowany.
-
-    ![LinkedIn Sales Navigator inicjowania obsługi administracyjnej](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+4. Kliknij pozycję **+ Dodaj nową konfigurację Standard scim** i postępuj zgodnie z procedurą, wypełniając każde pole.
 
     > [!NOTE]
-    > Po włączeniu przydziału autolicense należy pamiętać o wystąpienia aplikacji i typu licencji. Licencje są przypisane w pierwszym wróć, najpierw obsługiwać podstawy, aż wszystkie licencje są pobierane.
+    > Gdy nie włączono licencji autoassign, oznacza to, że synchronizowane są tylko dane użytkownika.
 
-    ![LinkedIn Sales Navigator inicjowania obsługi administracyjnej](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![Inicjowanie obsługi nawigatora sprzedaży w serwisie LinkedIn](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
-5. Kliknij przycisk **Wygeneruj token**. Powinien zostać wyświetlony ekran tokenu dostępu w obszarze **token dostępu** pola.
+    > [!NOTE]
+    > Gdy jest włączone przypisanie autolicencji, należy zanotować wystąpienie aplikacji i typ licencji. Licencje są przypisywane w pierwszej kolejności, w pierwszej kolejności do momentu, aż zostaną wykonane wszystkie licencje.
 
-6. Zapisywanie tokenu dostępu do komputera lub Schowka przed opuszczeniem strony.
+    ![Inicjowanie obsługi nawigatora sprzedaży w serwisie LinkedIn](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
-7. Następnie zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+5. Kliknij przycisk **Generuj token**. Token dostępu powinien zostać wyświetlony w polu **token dostępu** .
 
-8. Jeśli już skonfigurowano narzędzia LinkedIn Sales Navigator dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi LinkedIn Sales Navigator przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **narzędzia LinkedIn Sales Navigator** w galerii aplikacji. Wybierz narzędzia LinkedIn Sales Navigator z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+6. Zapisz token dostępu do Schowka lub komputera przed opuszczeniem strony.
 
-9. Wybierz wystąpienie usługi z narzędzia LinkedIn Sales Navigator, a następnie wybierz **aprowizacji** kartę.
+7. Następnie zaloguj się do [Azure Portal](https://portal.azure.com)i przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-10. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+8. Jeśli już skonfigurowano nawigatora sprzedaży w serwisie LinkedIn na potrzeby logowania jednokrotnego, Wyszukaj wystąpienie usługi LinkedIn Sales Navigator przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **Nawigator sprzedaży w serwisie LinkedIn** w galerii aplikacji. Wybierz opcję Nawigator sprzedaży w serwisie LinkedIn z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-    ![LinkedIn Sales Navigator inicjowania obsługi administracyjnej](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+9. Wybierz wystąpienie z nawigatora sprzedaży w serwisie LinkedIn, a następnie wybierz kartę **aprowizacji** .
 
-11. Wypełnij następujące pola w obszarze **poświadczeń administratora** :
+10. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    * W **adres URL dzierżawy** wprowadź https://api.linkedin.com.
+    ![Inicjowanie obsługi nawigatora sprzedaży w serwisie LinkedIn](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
-    * W **klucz tajny tokenu** pole, wprowadź token dostępu został wygenerowany w kroku 1 i kliknij przycisk **Testuj połączenie** .
+11. Wypełnij następujące pola w obszarze **poświadczenia administratora** :
 
-    * Powiadomienie o powodzeniu powinien być widoczny po stronie upperright portalu.
+    * W polu **adres URL dzierżawy** wpisz https://api.linkedin.com.
 
-12. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz poniższe pole wyboru.
+    * W polu **token Secret** wprowadź token dostępu wygenerowany w kroku 1, a następnie kliknij pozycję **Testuj połączenie** .
+
+    * Na stronie upperright portalu powinna zostać wyświetlona powiadomienie o powodzeniu.
+
+12. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , a następnie zaznacz pole wyboru poniżej.
 
 13. Kliknij pozycję **Zapisz**.
 
-14. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników i grup, które będą synchronizowane z usługi Azure AD z narzędzia LinkedIn Sales Navigator. Należy zauważyć, że atrybuty wybrany jako **zgodne** właściwości, które będą używane do dopasowania kont użytkowników i grup w narzędzia LinkedIn Sales Navigator operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+14. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkowników i grup, które zostaną zsynchronizowane z usługi Azure AD w usłudze LinkedIn Sales Navigator. Należy zauważyć, że atrybuty wybrane jako **pasujące** właściwości będą używane w celu dopasowania do kont użytkowników i grup w Nawigatorze sprzedaży LinkedIn dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-    ![LinkedIn Sales Navigator inicjowania obsługi administracyjnej](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![Inicjowanie obsługi nawigatora sprzedaży w serwisie LinkedIn](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
-15. Aby włączyć usługi Azure AD, usługi dla narzędzia LinkedIn Sales Navigator inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
+15. Aby włączyć usługę Azure AD Provisioning dla nawigatora sprzedaży w serwisie LinkedIn, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
 16. Kliknij pozycję **Zapisz**.
 
-Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy przypisane do narzędzia LinkedIn Sales Navigator w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa może potrwać dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji narzędzia LinkedIn Sales Navigator.
+Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do nawigatora sprzedaży serwisu LinkedIn w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa zajmie więcej czasu niż kolejne synchronizacje, co będzie odbywać się około co 40 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji w Nawigatorze sprzedaży w serwisie LinkedIn.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

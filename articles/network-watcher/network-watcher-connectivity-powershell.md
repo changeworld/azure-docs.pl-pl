@@ -1,5 +1,6 @@
 ---
-title: Rozwiązywanie problemów z połączeniami za pomocą usługi Azure Network Watcher — PowerShell | Microsoft Docs
+title: Rozwiązywanie problemów z połączeniami — Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Dowiedz się, jak korzystać z funkcji rozwiązywania problemów z usługą Azure Network Watcher przy użyciu programu PowerShell.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802040"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275997"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Rozwiązywanie problemów z usługą Azure Network Watcher przy użyciu programu PowerShell
 
@@ -39,7 +40,7 @@ Dowiedz się, jak używać rozwiązywania problemów z połączeniami, aby spraw
 * Maszyny wirtualne do rozwiązywania problemów z usługą.
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z maszyną wirtualną, z której na@no__t stąpiło Rozwiązywanie Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
+> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z maszyną wirtualną, z której na`AzureNetworkWatcherExtension` stąpiło Rozwiązywanie Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź łączność z maszyną wirtualną
 
@@ -64,7 +65,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpowiedź
 
-Poniższa odpowiedź pochodzi z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **nieosiągalny**. Można zobaczyć, że wszystkie sondy zostały wysłane. Łączność z urządzeniem wirtualnym nie powiodła się ze względu na skonfigurowane przez użytkownika `NetworkSecurityRule` o nazwie **UserRule_Port80**, skonfigurowane do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniami.
+Poniższa odpowiedź pochodzi z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **nieosiągalny**. Można zobaczyć, że wszystkie sondy zostały wysłane. Łączność z urządzeniem wirtualnym nie powiodła się z powodu `NetworkSecurityRule` skonfigurowanych przez użytkownika o nazwie **UserRule_Port80**skonfigurowanych do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniami.
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +156,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższym przykładzie `ConnectionStatus` jest pokazywany jako **nieosiągalny**. W `Hops` szczegóły można zobaczyć w obszarze `Issues`, że ruch został zablokowany ze względu na `UserDefinedRoute`. 
+W poniższym przykładzie `ConnectionStatus` jest pokazywany jako **nieosiągalny**. Szczegóły `Hops` można zobaczyć w obszarze `Issues`, że ruch został zablokowany ze względu na `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -219,7 +220,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższej odpowiedzi można zobaczyć, że `ConnectionStatus` jest wyświetlana jako **osiągalna**. Po pomyślnym nawiązaniu połączenia są podawane wartości opóźnienia.
+W poniższej odpowiedzi widzisz, że `ConnectionStatus` jest wyświetlana jako **osiągalna**. Po pomyślnym nawiązaniu połączenia są podawane wartości opóźnienia.
 
 ```
 ConnectionStatus : Reachable

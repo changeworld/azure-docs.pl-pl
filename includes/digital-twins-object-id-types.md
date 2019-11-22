@@ -7,24 +7,24 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 11/20/2019
 ms.custom: include file
-ms.openlocfilehash: 12d4278171d43fdaf8613a1c91bdbffc269adc56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e46041a33c12b3fcb40e5a04de11108471e59855
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949044"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307264"
 ---
-@No__t-0 (lub **Typ identyfikatora obiektu**) odnosi się do typu tożsamości nadawanej roli. Oprócz typów `DeviceId` i `UserDefinedFunctionId` typy identyfikatorów obiektów odpowiadają właściwościom obiektów Azure Active Directory.
+`objectIdType` (lub **Typ identyfikatora obiektu**) odnosi się do typu tożsamości nadawanej roli. Oprócz typów `DeviceId` i `UserDefinedFunctionId`, typy identyfikatorów obiektów odpowiadają właściwościom obiektów Azure Active Directory.
 
 Poniższa tabela zawiera obsługiwane typy identyfikatorów obiektów w usłudze Azure Digital bliźniaczych reprezentacji:
 
 | Typ | Opis |
 | --- | --- |
-| Nazwa | Przypisuje rolę użytkownikowi. |
-| Identyfikator | Przypisuje rolę do urządzenia. |
+| UserId | Przypisuje rolę użytkownikowi. |
+| DeviceId | Przypisuje rolę do urządzenia. |
 | DomainName | Przypisuje rolę do nazwy domeny. Każdy użytkownik z określoną nazwą domeny ma prawa dostępu do odpowiedniej roli. |
-| TenantId | Przypisuje rolę do dzierżawcy. Każdy użytkownik, który należy do określonego identyfikatora dzierżawy usługi Azure AD, ma prawa dostępu do odpowiedniej roli. |
-| ServicePrincipalId | Przypisuje rolę do identyfikatora obiektu jednostki usługi. |
+| tenantId | Przypisuje rolę do dzierżawcy. Każdy użytkownik, który należy do określonego identyfikatora dzierżawy usługi Azure AD, ma prawa dostępu do odpowiedniej roli. |
+| servicePrincipalId | Przypisuje rolę do identyfikatora obiektu jednostki usługi. |
 | UserDefinedFunctionId | Przypisuje rolę do funkcji zdefiniowanej przez użytkownika (UDF). |

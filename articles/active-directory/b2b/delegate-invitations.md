@@ -1,6 +1,6 @@
 ---
-title: Włącz ustawienia zewnętrznej współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć zewnętrznej współpracy B2B usługi Active Directory i zarządzanie nimi, kto może zapraszać użytkowników-gości. Rola osoba zapraszająca gości umożliwia delegowanie zaproszeń.
+title: Włączanie zewnętrznych ustawień współpracy B2B — Azure AD
+description: Dowiedz się, jak włączyć Active Directory zewnętrznej współpracy B2B i zarządzać osobami, które mogą zapraszać użytkowników-Gości. Aby delegować zaproszenia, użyj roli zapraszania gościa.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,62 +11,62 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11dda7fc3760f468c094fb4cf4484a27895f83b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812667"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272904"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Włącz zewnętrznego współpracy B2B i Zarządzaj, kto może zapraszać gości
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Włącz zewnętrzną współpracę B2B i Zarządzaj osobami, które mogą zapraszać Gości
 
-W tym artykule opisano sposób włączania współpracy B2B usługi Azure Active Directory (Azure AD) i określić, kto może zapraszać gości. Domyślnie wszyscy użytkownicy i Goście w Twoim katalogu mogą zapraszać gości, nawet jeśli nie masz przypisaną rolę administratora. Ustawienia zewnętrznej współpracy umożliwiają włączenie zaproszenia gościa lub wyłączyć dla różnych typów użytkowników w Twojej organizacji. Możesz również delegować zaproszenia do poszczególnych użytkowników przez przypisywanie ról, które zezwalają na zaproszenie gości.
+W tym artykule opisano sposób włączania współpracy B2B Azure Active Directory (Azure AD) i określania osób, które mogą zapraszać Gości. Domyślnie wszyscy użytkownicy i Goście w katalogu mogą zapraszać Gości, nawet jeśli nie są przypisani do roli administratora. Ustawienia współpracy zewnętrznej pozwalają włączać lub wyłączać zaproszenia gościa dla różnych typów użytkowników w organizacji. Możesz również delegować zaproszenia do poszczególnych użytkowników, przypisując role zezwalające im na zapraszanie Gości.
 
-## <a name="configure-b2b-external-collaboration-settings"></a>Skonfiguruj ustawienia zewnętrznej współpracy B2B
+## <a name="configure-b2b-external-collaboration-settings"></a>Konfigurowanie ustawień współpracy zewnętrznej B2B
 
-Przy użyciu funkcji współpracy B2B usługi Azure AD administrator dzierżawy można ustawić następujące zasady zaproszenia:
+Dzięki funkcji współpracy w usłudze Azure AD B2B Administrator dzierżawy może ustawić następujące zasady dotyczące zaproszenia:
 
 - Wyłącz zaproszenia
-- Tylko administratorzy i użytkownicy o roli zapraszającego gości mogą zapraszać
-- Administratorzy, rola osoba zapraszająca gości i członkowie mogą zapraszać
-- Wszyscy użytkownicy, w tym gości, mogą zapraszać
+- Tylko Administratorzy i użytkownicy w roli zapraszania gościa mogą zapraszać
+- Administratorzy, rola zapraszania gościa i członkowie mogą zapraszać
+- Wszyscy użytkownicy, w tym Goście, mogą zapraszać
 
-Domyślnie wszyscy użytkownicy, w tym gości, można zaprosić użytkowników-gości.
+Domyślnie wszyscy użytkownicy, w tym Goście, mogą zapraszać użytkowników-Gości.
 
-### <a name="to-configure-external-collaboration-settings"></a>Aby skonfigurować ustawienia zewnętrznej współpracy:
+### <a name="to-configure-external-collaboration-settings"></a>Aby skonfigurować ustawienia współpracy zewnętrznej:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator dzierżawy.
-2. Wybierz **usługi Azure Active Directory** > **użytkowników** > **ustawienia użytkownika**.
-3. W obszarze **użytkowników zewnętrznych**, wybierz opcję **Zarządzaj ustawieniami współpracy zewnętrznej**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator dzierżawy.
+2. Wybierz pozycję **Azure Active Directory** > **Użytkownicy** > **Ustawienia użytkownika**.
+3. W obszarze **użytkownicy zewnętrzni**wybierz pozycję **Zarządzaj ustawieniami współpracy zewnętrznej**.
    > [!NOTE]
-   > **Ustawieniami współpracy zewnętrznej** są także dostępne z **relacje w organizacji** strony. W usłudze Azure Active Directory w obszarze **Zarządzaj**, przejdź do **relacje w organizacji** > **ustawienia**.
-4. Na **ustawieniami współpracy zewnętrznej** wybierz zasady, aby włączyć.
+   > **Ustawienia współpracy zewnętrznej** są również dostępne na stronie **relacje organizacyjne** . W Azure Active Directory w obszarze **Zarządzaj**przejdź do pozycji **relacje organizacyjne** > **Ustawienia**.
+4. Na stronie **Ustawienia współpracy zewnętrznej** wybierz zasady, które chcesz włączyć.
 
-   ![Ustawienia zewnętrznej współpracy](./media/delegate-invitations/control-who-to-invite.png)
+   ![Ustawienia współpracy zewnętrznej](./media/delegate-invitations/control-who-to-invite.png)
 
-  - **Uprawnienia użytkowników-gości są ograniczone**: Ta zasada określa uprawnienia dla gości w Twoim katalogu. Wybierz **tak** goście blok z określonych zadań w katalogu, takich jak wyliczanie użytkowników, grup lub innych zasobów katalogu. Wybierz **nie** zapewnienie gości takie same prawa dostępu do danych katalogu jako zwykli użytkownicy w katalogu.
-   - **Administratorzy i użytkownicy o roli zapraszającego gości mogą zapraszać**: Aby umożliwić Administratorzy i użytkownicy w roli "Osoba zapraszająca gości", aby zapraszać gości, należy ustawić te zasady na **tak**.
-   - **Członkowie mogą zapraszać**: Aby umożliwić członkom bez uprawnień administratora katalogu zapraszać gości, należy ustawić te zasady na **tak**.
-   - **Goście mogą zapraszać gości**: Aby umożliwić gości zapraszać innych gości, należy ustawić te zasady na **tak**.
-   - **Włącz kod dostępu jednorazowe poczty E-mail dla gości (wersja zapoznawcza)** : Aby uzyskać więcej informacji na temat funkcji jednorazowy kod dostępu, zobacz [uwierzytelniania jednorazowy kod dostępu poczty E-mail (wersja zapoznawcza)](one-time-passcode.md).
-   - **Ograniczenia współpracy**: Aby uzyskać więcej informacji na temat zezwalanie lub blokowanie zaproszeń do określonych domen, zobacz [dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom](allow-deny-list.md).
+  - **Uprawnienia użytkowników-Gości są ograniczone**: te zasady określają uprawnienia dla Gości w katalogu. Wybierz opcję **tak** , aby blokować Gościom pewne zadania katalogu, takie jak wyliczanie użytkowników, grup lub innych zasobów katalogu. Wybierz pozycję **nie** , aby udzielić Gościom tego samego dostępu do danych katalogu jako zwykłych użytkowników w katalogu.
+   - **Administratorzy i użytkownicy w roli zapraszania gościa mogą zapraszać**: aby umożliwić administratorom i użytkownikom w roli "zapraszanie gościa" zapraszać Gości, ustaw tę zasadę na **wartość tak**.
+   - **Członkowie mogą zapraszać**: aby zezwolić innym członkom katalogu na zapraszanie Gości, ustaw dla tych zasad wartość **tak**.
+   - **Goście mogą zapraszać**: aby umożliwić Gościom Zapraszanie innych Gości, ustaw dla tych zasad wartość **tak**.
+   - **Włącz jednorazowy kod dostępu wiadomości e-mail dla Gości (wersja zapoznawcza)** : Aby uzyskać więcej informacji na temat funkcji jednorazowego kodu dostępu, zobacz [poczta e-mail jednorazowe uwierzytelnianie kodu dostępu (wersja zapoznawcza)](one-time-passcode.md).
+   - **Ograniczenia dotyczące współpracy**: Aby uzyskać więcej informacji na temat zezwalania lub blokowania zaproszeń do określonych domen, zobacz [Zezwalanie lub blokowanie zaproszeń dla użytkowników B2B z określonych organizacji](allow-deny-list.md).
 
-## <a name="assign-the-guest-inviter-role-to-a-user"></a>Przypisywanie użytkownikowi roli osoba zapraszająca gości
+## <a name="assign-the-guest-inviter-role-to-a-user"></a>Przypisywanie roli osoby zapraszające gościa do użytkownika
 
-Rola osoba zapraszająca gościa można udostępnić użytkownikom indywidualne możliwość zapraszać gości bez przypisywania do nich administratora globalnego ani innych ról administratora. Przypisywanie roli zapraszającego gości do osób. Następnie upewnij się, możesz ustawić **Administratorzy i użytkownicy o roli zapraszającego gości mogą zapraszać** do **tak**.
+Za pomocą roli osoby zapraszające gościa można udzielić indywidualnym użytkownikom możliwości zapraszania Gości bez przypisywania im administratora globalnego lub innej roli administratora. Przypisz rolę zapraszania gościa do poszczególnych użytkowników. Upewnij się, że ustawione **Administratorzy i użytkownicy w roli zapraszania gościa mogą zapraszać** na **wartość tak**.
 
-Oto przykład, w którym pokazano, jak dodać użytkownika do roli osoby zapraszającej gości za pomocą programu PowerShell:
+Oto przykład, w którym pokazano, jak za pomocą programu PowerShell dodać użytkownika do roli zapraszania gościa:
 
 ```
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
+Zapoznaj się z następującymi artykułami dotyczącymi współpracy B2B w usłudze Azure AD:
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-- [Dodawanie użytkowników-gości współpracy B2B bez zaproszenia](add-user-without-invite.md)
+- [Dodawanie użytkowników-Gości współpracy B2B bez zaproszenia](add-user-without-invite.md)
 - [Dodawanie użytkownika współpracy B2B do roli](add-guest-to-role.md)
 
 

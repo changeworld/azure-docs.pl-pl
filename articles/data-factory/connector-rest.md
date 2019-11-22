@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 6bb597ab49050c2bb365379cfac44f4b4d176af1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c691281f1ff0cf88d1ba61af43fad8e7782924aa
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680403"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278506"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z punktu końcowego REST. Artykuł jest oparty na [działaniu kopiowania w Azure Data Factory](copy-activity-overview.md), co przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z punktu końcowego REST. Artykuł opiera się na [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md), który ma ogólne omówienie działania kopiowania.
 
 Różnica między tym łącznikiem REST, [łącznika http](connector-http.md) i [łącznikiem tabeli sieci Web](connector-web-table.md) :
 
@@ -29,9 +29,9 @@ Różnica między tym łącznikiem REST, [łącznika http](connector-http.md) i 
 - **Łącznik http** jest ogólny do pobierania danych z dowolnego punktu końcowego http, np. do pobrania pliku. Przed udostępnieniem tego łącznika REST może wystąpić potrzeba użycia łącznika HTTP do kopiowania danych z interfejsu API RESTful, który jest obsługiwany, ale mniej funkcjonalny jest porównywany z łącznikiem REST.
 - **Łącznik tabeli sieci Web** wyodrębnia zawartość tabeli z strony html.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Dane można kopiować ze źródła REST do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia, zobacz [obsługiwane magazyny i formaty danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Dane można kopiować ze źródła REST do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę danych przechowywane na tym, że działanie kopiowania obsługuje jako źródła i ujścia, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
 
 W przypadku tego ogólnego łącznika REST obsługiwane są następujące funkcje:
 
@@ -47,32 +47,32 @@ W przypadku tego ogólnego łącznika REST obsługiwane są następujące funkcj
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, których można użyć do definiowania jednostek Data Factory, które są specyficzne dla łącznika REST.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Dla połączonej usługi REST są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** musi być ustawiona na wartość **RestService**. | Tak |
 | url | Podstawowy adres URL usługi REST. | Tak |
 | enableServerCertificateValidation | Czy sprawdzać poprawność certyfikatu protokołu SSL po stronie serwera podczas nawiązywania połączenia z punktem końcowym. | Nie<br /> (wartość domyślna to **true**) |
 | authenticationType | Typ uwierzytelniania używany do nawiązywania połączenia z usługą REST. Dozwolone wartości to **Anonymous**, **Basic**, **AadServicePrincipal** i **ManagedServiceIdentity**. Zapoznaj się z odpowiednimi sekcjami poniżej, aby uzyskać więcej właściwości i przykładów. | Tak |
-| Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, ta właściwość używa Azure Integration Runtime domyślnego. |Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, ta właściwość używa Azure Integration Runtime domyślnego. |Nie |
 
 ### <a name="use-basic-authentication"></a>Użyj uwierzytelniania podstawowego
 
 Ustaw właściwość **AuthenticationType** na wartość **podstawowa**. Oprócz ogólnych właściwości, które są opisane w poprzedniej sekcji, określ następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| Uż | Nazwa użytkownika, która ma być używana w celu uzyskania dostępu do punktu końcowego REST. | Tak |
-| hasło | Hasło użytkownika (wartość **username** ). Oznacz to pole jako typ **SecureString** , aby bezpiecznie przechowywać go w Data Factory. Możesz również [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| userName | Nazwa użytkownika, która ma być używana w celu uzyskania dostępu do punktu końcowego REST. | Tak |
+| hasło | Hasło użytkownika (wartość **username** ). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 
 **Przykład**
 
@@ -102,11 +102,11 @@ Ustaw właściwość **AuthenticationType** na wartość **podstawowa**. Oprócz
 
 Ustaw właściwość **AuthenticationType** na wartość **AadServicePrincipal**. Oprócz ogólnych właściwości, które są opisane w poprzedniej sekcji, określ następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | servicePrincipalId | Określ identyfikator klienta aplikacji Azure Active Directory. | Tak |
-| servicePrincipalKey | Określ klucz aplikacji Azure Active Directory. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
-| dzierżaw | Określ informacje o dzierżawie (nazwę domeny lub identyfikator dzierżawy), w których znajduje się Twoja aplikacja. Pobierz go, aktywując wskaźnik myszy w prawym górnym rogu Azure Portal. | Tak |
+| servicePrincipalKey | Określ klucz aplikacji Azure Active Directory. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Tak |
 | aadResourceId | Określ zasób usługi AAD, którego żądasz do autoryzacji, np. `https://management.core.windows.net`.| Tak |
 
 **Przykład**
@@ -139,7 +139,7 @@ Ustaw właściwość **AuthenticationType** na wartość **AadServicePrincipal**
 
 Ustaw właściwość **AuthenticationType** na wartość **ManagedServiceIdentity**. Oprócz ogólnych właściwości, które są opisane w poprzedniej sekcji, określ następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | aadResourceId | Określ zasób usługi AAD, którego żądasz do autoryzacji, np. `https://management.core.windows.net`.| Tak |
 
@@ -167,14 +167,14 @@ Ustaw właściwość **AuthenticationType** na wartość **ManagedServiceIdentit
 
 Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych REST. 
 
-Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). 
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). 
 
 Aby skopiować dane z usługi REST, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **RestResource**. | Tak |
-| relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. | Nie |
+| relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. Łącznik protokołu HTTP kopiuje dane ze połączonego adresu URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nie |
 
 Jeśli ustawienia `requestMethod`, `additionalHeaders`, `requestBody` i `paginationRules` w zestawie danych, nadal są obsługiwane w taki sposób, że jest to możliwe, podczas gdy sugerowane jest użycie nowego modelu w źródle aktywności.
 
@@ -201,13 +201,13 @@ Jeśli ustawienia `requestMethod`, `additionalHeaders`, `requestBody` i `paginat
 
 Ta sekcja zawiera listę właściwości obsługiwanych przez źródło REST.
 
-Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). 
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). 
 
 ### <a name="rest-as-source"></a>RESZTA jako źródło
 
-W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **RestSource**. | Tak |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **Get** (default) i **post**. | Nie |
@@ -216,6 +216,9 @@ W sekcji **Źródło** działania kopiowania są obsługiwane następujące wła
 | paginationRules | Zasady dzielenia na strony w celu redagowania żądań kolejnych stron. Szczegółowe informacje znajdują się w sekcji [Obsługa podziału na strony](#pagination-support) . | Nie |
 | httpRequestTimeout | Limit czasu (wartość **TimeSpan** ) żądania HTTP w celu uzyskania odpowiedzi. Ta wartość jest przekroczeniem limitu czasu w celu uzyskania odpowiedzi, a nie limitu czasu odczytu danych odpowiedzi. Wartość domyślna to **00:01:40**.  | Nie |
 | requestInterval | Czas oczekiwania przed wysłaniem żądania na następną stronę. Wartość domyślna to **00:00:01** |  Nie |
+
+>[!NOTE]
+>Łącznik REST ignoruje wszystkie nagłówki "Accept" określone w `additionalHeaders`. Ponieważ łącznik REST obsługuje tylko odpowiedź w formacie JSON, TT automatycznie generuje nagłówek `Accept: application/json`.
 
 **Przykład 1: użycie metody get z podziałem na strony**
 
@@ -309,7 +312,7 @@ Ten ogólny łącznik REST obsługuje następujące wzorce stronicowania:
 | Klucz | Opis |
 |:--- |:--- |
 | AbsoluteUrl | Wskazuje adres URL, na który ma zostać wystawione następne żądanie. Może to być **bezwzględny adres URL lub względny adres URL**. |
-| QueryParameters. *request_query_parameter* LUB QueryParameters [' request_query_parameter '] | "request_query_parameter" jest zdefiniowany przez użytkownika, który odwołuje się do jednej nazwy parametru zapytania w następnym adresie URL żądania HTTP. |
+| QueryParameters. *request_query_parameter* LUB QueryParameters ["request_query_parameter"] | "request_query_parameter" jest zdefiniowany przez użytkownika, który odwołuje się do jednej nazwy parametru zapytania w następnym adresie URL żądania HTTP. |
 | Headers.*request_header* lub Headers['request_header'] | "request_header" jest zdefiniowany przez użytkownika, który odwołuje się do jednej nazwy nagłówka w następnym żądaniu HTTP. |
 
 **Obsługiwane wartości** w regułach dzielenia na strony:
@@ -374,10 +377,10 @@ Odpowiednia konfiguracja źródła działania kopiowania REST w szczególności 
 
 Za pomocą tego łącznika REST można wyeksportować odpowiedź JSON interfejsu API REST w taki sam sposób, jak w przypadku różnych magazynów opartych na plikach. Aby uzyskać taką kopię schematu niezależny od, Pomiń sekcję "struktura" (nazywaną również *schematem*) w temacie zestaw danych i schemat w działaniu kopiowania.
 
-## <a name="schema-mapping"></a>Mapowanie schematu
+## <a name="schema-mapping"></a>mapowanie schematu
 
 Aby skopiować dane z punktu końcowego REST do obiektu sink tabelarycznych, zapoznaj się z [mapowaniem schematu](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia w Azure Data Factory, zobacz [obsługiwane magazyny i formaty danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych, które działania kopiowania obsługuje jako źródła i sink w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).

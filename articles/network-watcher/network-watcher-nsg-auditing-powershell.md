@@ -1,5 +1,6 @@
 ---
-title: Automatyzowanie inspekcji sieciowej grupy zabezpieczeń za pomocą widoku grupy zabezpieczeń Network Watcher Azure | Microsoft Docs
+title: Automatyzacja inspekcji sieciowej grupy zabezpieczeń — widok grupy zabezpieczeń
+titleSuffix: Azure Network Watcher
 description: Ta strona zawiera instrukcje dotyczące konfigurowania inspekcji sieciowej grupy zabezpieczeń
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165142"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278055"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatyzacja inspekcji sieciowej grupy zabezpieczeń za pomocą widoku grupy zabezpieczeń Network Watcher platformy Azure
 
@@ -49,7 +50,7 @@ W tym scenariuszu będziesz:
 
 ## <a name="retrieve-rule-set"></a>Pobierz zestaw reguł
 
-Pierwszym krokiem w tym przykładzie jest współdziałanie z istniejącą linią bazową. Poniższy przykład to kod JSON wyodrębniony z istniejącej sieciowej grupy zabezpieczeń przy użyciu `Get-AzNetworkSecurityGroup` polecenia cmdlet, które jest używane jako linia bazowa tego przykładu.
+Pierwszym krokiem w tym przykładzie jest współdziałanie z istniejącą linią bazową. Poniższy przykład to kod JSON wyodrębniony z istniejącej sieciowej grupy zabezpieczeń przy użyciu polecenia cmdlet `Get-AzNetworkSecurityGroup`, które jest używane jako linia bazowa tego przykładu.
 
 ```json
 [
@@ -126,7 +127,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Retrieve Network Watcher
 
-Następnym krokiem jest pobranie Network Watcher wystąpienia. Zmienna jest przenoszona `AzNetworkWatcherSecurityGroupView` do polecenia cmdlet. `$networkWatcher`
+Następnym krokiem jest pobranie Network Watcher wystąpienia. Zmienna `$networkWatcher` jest przenoszona do `AzNetworkWatcherSecurityGroupView` polecenia cmdlet.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -134,7 +135,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Pobierz maszynę wirtualną
 
-Aby uruchomić polecenie cmdlet w programie, `Get-AzNetworkWatcherSecurityGroupView` wymagana jest maszyna wirtualna. Poniższy przykład pobiera obiekt maszyny wirtualnej.
+Aby uruchomić polecenie cmdlet `Get-AzNetworkWatcherSecurityGroupView` w programie, wymagana jest maszyna wirtualna. Poniższy przykład pobiera obiekt maszyny wirtualnej.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
@@ -152,7 +153,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 Odpowiedź jest pogrupowana według interfejsów sieciowych. Różne typy zwracanych reguł są obowiązujące i domyślne reguły zabezpieczeń. Wynik jest w dalszej postaci podzielony na sposób ich stosowania — w podsieci lub wirtualnej karcie sieciowej.
 
-Poniższy skrypt programu PowerShell porównuje wyniki widoku grupy zabezpieczeń z istniejącymi danymi wyjściowymi sieciowej grupy zabezpieczeń. Poniższy przykład to prosty przykład sposobu, w jaki wyniki można porównać z `Compare-Object` poleceniem cmdlet.
+Poniższy skrypt programu PowerShell porównuje wyniki widoku grupy zabezpieczeń z istniejącymi danymi wyjściowymi sieciowej grupy zabezpieczeń. Poniższy przykład to prosty przykład sposobu, w jaki wyniki można porównać z poleceniem cmdlet `Compare-Object`.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `

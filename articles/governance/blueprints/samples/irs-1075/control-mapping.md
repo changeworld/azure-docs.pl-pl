@@ -1,330 +1,331 @@
 ---
-title: IRS 1075 blueprint sample - Control mapping
-description: Control mapping of the IRS 1075 blueprint sample. Each control is mapped to one or more Azure Policies that assists with assessment.
+title: Mapowanie kontroli dla przykładowego planu IRS 1075
+description: Sterowanie mapowaniem przykładu planu IRS 1075. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 2083a5249c697b6406982f747ad4ced50e65955a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 13a9396e515c3c0f5c36f56bf8c1f586844e8f65
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210216"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267829"
 ---
-# <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Control mapping of the IRS 1075 blueprint sample
+# <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu IRS 1075
 
-The following article details how the Azure Blueprints IRS 1075 blueprint sample maps to the IRS 1075 controls. For more information about the controls, see [IRS 1075](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
+W poniższym artykule szczegółowo opisano sposób, w jaki usługa Azure planuje urząd skarbowy w systemie 1075, jest mapowana na kontrolki urzędu 1075 skarbowego. Aby uzyskać więcej informacji na temat kontrolek, zobacz [IRS 1075](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
 
-The following mappings are to the **IRS 1075** controls. Use the navigation on the right to jump directly to a specific control mapping. Many of the mapped controls are implemented with an [Azure Policy](../../../policy/overview.md) initiative. To review the complete initiative, open **Policy** in the Azure portal and select the **Definitions** page. Then, find and select the **\[Preview\]: Audit IRS 1075 controls and deploy specific VM Extensions to support audit requirements** built-in policy initiative.
+Następujące mapowania są do kontrolek **IRS 1075** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz\[w **wersji za\]poznawczej: Inspekcja kontrolerów IRS 1075 i wdrażanie określonych rozszerzeń maszyn wirtualnych w celu obsługi funkcji inspekcji wbudowanych wymagań** zasad.
 
 > [!IMPORTANT]
-> Each control below is associated with one or more [Azure Policy](../../../policy/overview.md) definitions. These policies may help you [assess compliance](../../../policy/how-to/get-compliance-data.md) with the control; however, there often is not a 1:1 or complete match between a control and one or more policies. As such, **Compliant** in Azure Policy refers only to the policies themselves; this doesn't ensure you're fully compliant with all requirements of a control. In addition, the compliance standard includes controls that aren't addressed by any Azure Policy definitions at this time. Therefore, compliance in Azure Policy is only a partial view of your overall compliance status. The associations between controls and Azure Policy definitions for this compliance blueprint sample may change over time. To view the change history, see the [GitHub Commit History](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/irs-1075/control-mapping.md).
+> Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu. Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/irs-1075/control-mapping.md).
 
-## <a name="9321-ac-2-account-management"></a>9.3.2.1 AC-2 Account Management
+## <a name="9321-ac-2-account-management"></a>9.3.2.1 AC-2 — Zarządzanie kontami
 
-This blueprint helps you review accounts that may not comply with your organization's account management requirements. This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions that audit external accounts with read, write and owner permissions on a subscription and deprecated accounts. By reviewing the accounts audited by these policies, you can take appropriate action to ensure account management requirements are met.
+Ten plan ułatwia przeglądanie kont, które mogą nie być zgodne z wymaganiami dotyczącymi zarządzania kontami w organizacji. Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję kont zewnętrznych z uprawnieniami odczyt, zapis i właściciel na kontach subskrypcji i przestarzałych. Przeglądając konta poddane inspekcji przez te zasady, można podjąć odpowiednie działania w celu zapewnienia spełnienia wymagań dotyczących zarządzania kontami.
 
-- Deprecated accounts should be removed from your subscription
-- Deprecated accounts with owner permissions should be removed from your subscription
-- External accounts with owner permissions should be removed from your subscription
-- External accounts with read permissions should be removed from your subscription
+- Przestarzałe konta powinny zostać usunięte z subskrypcji
+- Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
+- Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
+- Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
 
-## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) Account Management | Role-Based Schemes
+## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) Zarządzanie kontami | Schematy oparte na rolach
 
-Azure implements [role-based access control](../../../../role-based-access-control/overview.md) (RBAC) to help you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint also assigns [Azure Policy](../../../policy/overview.md) definitions to audit use of Azure Active Directory authentication for SQL Servers and Service Fabric. Using Azure Active Directory authentication enables simplified permission management and centralized identity management of database users and other Microsoft services. Additionally, this blueprint assigns an Azure Policy definition to audit the use of custom RBAC rules. Understanding where custom RBAC rules are implemented can help you verify need and proper implementation, as custom RBAC rules are error prone.
+Platforma Azure implementuje funkcję [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC), która ułatwia zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan przypisuje również definicje [Azure Policy](../../../policy/overview.md) do inspekcji użycia uwierzytelniania Azure Active Directory dla serwerów SQL i Service Fabric. Korzystanie z uwierzytelniania Azure Active Directory umożliwia uproszczone zarządzanie uprawnieniami oraz scentralizowane zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft. Ponadto ten plan przypisuje definicję Azure Policy do inspekcji użycia niestandardowych reguł RBAC. Zrozumienie, gdzie są zaimplementowane niestandardowe reguły RBAC, może pomóc w sprawdzeniu potrzeby i właściwej implementacji, ponieważ niestandardowe reguły RBAC są podatne na błędy.
 
-- An Azure Active Directory administrator should be provisioned for SQL servers
-- Audit usage of custom RBAC rules
-- Service Fabric clusters should only use Azure Active Directory for client authentication
+- Dla serwerów SQL powinien zostać zainicjowany administrator Azure Active Directory
+- Inspekcja użycia niestandardowych reguł RBAC
+- W klastrach Service Fabric należy używać tylko Azure Active Directory do uwierzytelniania klientów
 
-## <a name="9321-ac-2-12-account-management--account-monitoring--atypical-usage"></a>9.3.2.1 AC-2 (12) Account Management | Account Monitoring / Atypical Usage
+## <a name="9321-ac-2-12-account-management--account-monitoring--atypical-usage"></a>9.3.2.1 AC-2 (12) Zarządzanie kontami | Monitorowanie konta/nietypowe użycie
 
-Just-in-time (JIT) virtual machine access locks down inbound traffic to Azure virtual machines, reducing exposure to attacks while providing easy access to connect to VMs when needed. All JIT requests to access virtual machines are logged in the Activity Log allowing you to monitor for atypical usage. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines that can support just-in-time access but haven't yet been configured.
+Dostęp z maszyn wirtualnych just-in-Time (JIT) blokuje ruch przychodzący do maszyn wirtualnych platformy Azure, co zmniejsza narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Wszystkie żądania JIT dotyczące dostępu do maszyn wirtualnych są rejestrowane w dzienniku aktywności, co pozwala na monitorowanie nietypowego użycia. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga monitorować maszyny wirtualne, które mogą obsługiwać dostęp just in Time, ale jeszcze nie zostały skonfigurowane.
 
-- Just-In-Time network access control should be applied on virtual machines
+- Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych
 
-## <a name="9314-ac-4-information-flow-enforcement"></a>9.3.1.4 AC-4 Information Flow Enforcement
+## <a name="9314-ac-4-information-flow-enforcement"></a>wymuszanie przepływu informacji 9.3.1.4 AC-4
 
-Cross origin resource sharing (CORS) can allow App Services resources to be requested from an outside domain. Microsoft recommends that you allow only required domains to interact with your API, function, and web applications. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition to help you monitor CORS resources access restrictions in Azure Security Center.
-Understanding CORS implementations can help you verify that information flow controls are implemented.
+Współużytkowanie zasobów między źródłami (CORS) może zezwalać na żądania zasobów App Services z domeny zewnętrznej. Firma Microsoft zaleca, aby zezwalać na współdziałanie z interfejsami API, funkcjami i aplikacjami sieci Web tylko wymagane domeny. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która ułatwia monitorowanie ograniczeń dostępu do zasobów CORS w programie Azure Security Center.
+Zrozumienie implementacji mechanizmu CORS może pomóc w sprawdzeniu, czy są zaimplementowane kontrolki przepływu informacji.
 
-- CORS should not allow every resource to access your Web Application
+- Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacji sieci Web
 
-## <a name="9315-ac-5-separation-of-duties"></a>9.3.1.5 AC-5 Separation of Duties
+## <a name="9315-ac-5-separation-of-duties"></a>9.3.1.5 AC 5 obowiązków
 
-Having only one Azure subscription owner doesn't allow for administrative redundancy. Conversely, having too many Azure subscription owners can increase the potential for a breach via a compromised owner account. This blueprint helps you maintain an appropriate number of Azure subscription owners by assigning [Azure Policy](../../../policy/overview.md) definitions that audit the number of owners for Azure subscriptions. This blueprint also assigns Azure Policy definitions that help you control membership of the Administrators group on Windows virtual machines. Managing subscription owner and virtual machine administrator permissions can help you implement appropriate separation of duties.
+Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie pozwala na nadmiarowość administracyjną. Bez względu na to, że zbyt wielu właścicieli subskrypcji platformy Azure może zwiększyć prawdopodobieństwo naruszenia za pośrednictwem konta właściciela z naruszeniem. Ten plan pomaga zachować odpowiednią liczbę właścicieli subskrypcji platformy Azure, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję liczby właścicieli subskrypcji platformy Azure. Ten plan przypisuje również definicje Azure Policy, które ułatwiają kontrolowanie członkostwa w grupie Administratorzy na maszynach wirtualnych z systemem Windows. Zarządzanie właścicielami subskrypcji i uprawnieniami administratora maszyny wirtualnej może pomóc w zaimplementowaniu odpowiedniego rozdzielenia obowiązków.
 
-- A maximum of 3 owners should be designated for your subscription
-- Audit Windows VMs in which the Administrators group contains any of the specified members
-- Audit Windows VMs in which the Administrators group does not contain all of the specified members
-- Deploy requirements to audit Windows VMs in which the Administrators group contains any of the specified members
-- Deploy requirements to audit Windows VMs in which the Administrators group does not contain all of the specified members
-- There should be more than one owner assigned to your subscription
+- Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera którykolwiek z określonych elementów członkowskich
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera dowolnego z określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
+- Do subskrypcji powinien być przypisany więcej niż jeden właściciel
 
-## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) Least Privilege | Review of User Privileges
+## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) najniższych uprawnień | Przegląd uprawnień użytkownika
 
-Azure implements [role-based access control](../../../../role-based-access-control/overview.md) (RBAC) to help you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions to audit accounts that should be prioritized for review. Reviewing these account indicators can help you ensure least privilege controls are implemented.
+Platforma Azure implementuje funkcję [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC), która ułatwia zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) do kont inspekcji, dla których należy określić priorytety. Przejrzenie tych wskaźników konta może pomóc w zapewnieniu implementacji najniższych uprawnień.
 
-- A maximum of 3 owners should be designated for your subscription
-- Audit Windows VMs in which the Administrators group contains any of the specified members
-- Audit Windows VMs in which the Administrators group does not contain all of the specified members
-- Deploy requirements to audit Windows VMs in which the Administrators group contains any of the specified members
-- Deploy requirements to audit Windows VMs in which the Administrators group does not contain all of the specified members
-- There should be more than one owner assigned to your subscription
+- Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera którykolwiek z określonych elementów członkowskich
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera dowolnego z określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
+- Do subskrypcji powinien być przypisany więcej niż jeden właściciel
 
-## <a name="93112-ac-17-1-remote-access--automated-monitoring--control"></a>9.3.1.12 AC-17 (1) Remote Access | Automated Monitoring / Control
+## <a name="93112-ac-17-1-remote-access--automated-monitoring--control"></a>9.3.1.12 AC – 17 (1) dostęp zdalny | Zautomatyzowane monitorowanie/kontrola
 
-This blueprint helps you monitor and control remote access by assigning [Azure Policy](../../../policy/overview.md) definitions to monitor that remote debugging for Azure App Service application is turned off. The blueprint also assigns policy definitions that audit Linux virtual machines that allow remote connections from accounts without passwords. Additionally, the blueprint assigns an Azure Policy definition that helps you monitor unrestricted access to storage accounts. Monitoring these indicators can help you ensure remote access methods comply with your security policy.
+Ten plan ułatwia monitorowanie i kontrolowanie dostępu zdalnego przez przypisanie definicji [Azure Policy](../../../policy/overview.md) do monitorowania, że debugowanie zdalne dla Azure App Service aplikacji jest wyłączone. Plan przypisuje również definicje zasad, które przeprowadzają inspekcję maszyn wirtualnych systemu Linux, które zezwalają na połączenia zdalne z kont bez haseł. Ponadto plan przypisuje definicję Azure Policy, która ułatwia monitorowanie nieograniczonego dostępu do kont magazynu. Monitorowanie tych wskaźników może pomóc zapewnić zgodność metod dostępu zdalnego z zasadami zabezpieczeń.
 
-- \[Preview\]: Audit Linux VMs that allow remote connections from accounts without passwords
-- \[Preview\]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
-- Audit unrestricted network access to storage accounts
-- Remote debugging should be turned off for API App
-- Remote debugging should be turned off for Function App
-- Remote debugging should be turned off for Web Application
+- \[Podgląd\]: Inspekcja maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
+- Debugowanie zdalne powinno być wyłączone dla aplikacji interfejsu API
+- Zdalne debugowanie powinno zostać wyłączone dla aplikacja funkcji
+- Zdalne debugowanie powinno zostać wyłączone dla aplikacji sieci Web
 
-## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) Content of Audit Records | Centralized Management of Planned Audit Record Content
+## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) zawartość rekordów inspekcji | Scentralizowane zarządzanie zaplanowaną zawartością rekordu inspekcji
 
-Log data collected by Azure Monitor is stored in a Log Analytics workspace enabling centralized configuration and management. This blueprint helps you ensure events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit and enforce deployment of the Log Analytics agent on Azure virtual machines.
+Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics obszarze roboczym, co pozwala na scentralizowaną konfigurację i zarządzanie. Ten plan pomaga zapewnić, że zdarzenia są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które przeprowadzają inspekcję i egzekwowanie wdrożenia agenta log Analytics na maszynach wirtualnych platformy Azure.
 
-- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
-- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
-- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
-## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-5 Response to Audit Processing Failures
+## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 w odpowiedzi na błędy przetwarzania inspekcji
 
-This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions that monitor audit and event logging configurations. Monitoring these configurations can provide an indicator of an audit system failure or misconfiguration and help you take corrective action.
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które monitorują konfiguracje inspekcji i rejestrowania zdarzeń. Monitorowanie tych konfiguracji może zapewnić wskaźnik awarii systemu inspekcji lub błędnej konfiguracji i pomóc w podejmowaniu działań naprawczych.
 
 - Przeprowadzanie inspekcji ustawienia diagnostyki
-- Audit SQL server level Auditing settings
-- Advanced data security should be enabled on your managed instances
+- Inspekcja ustawień inspekcji poziomu serwera SQL
+- Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 
-## <a name="9336-au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>9.3.3.6 AU-6 (4) Audit Review, Analysis, and Reporting | Central Review and Analysis
+## <a name="9336-au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>9.3.3.6 AU-6 (4) przegląd, analiza i raportowanie inspekcji | Przegląd i analiza Centralna
 
-Log data collected by Azure Monitor is stored in a Log Analytics workspace enabling centralized reporting and analysis. This blueprint helps you ensure events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit and enforce deployment of the Log Analytics agent on Azure virtual machines.
+Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics obszarze roboczym, co umożliwia scentralizowane raportowanie i analizę. Ten plan pomaga zapewnić, że zdarzenia są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które przeprowadzają inspekcję i egzekwowanie wdrożenia agenta log Analytics na maszynach wirtualnych platformy Azure.
 
-- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
-- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
-- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 
-## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12 Audit Generation
+## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12 — Generowanie inspekcji
 
-This blueprint helps you ensure system events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit log settings on Azure resources. These policy definitions audit and enforce deployment of the Log Analytics agent on Azure virtual machines and configuration of audit settings for other Azure resource types. These policy definitions also audit configuration of diagnostic logs to provide insight into operations that are performed within Azure resources. Additionally, auditing and Advanced Data Security are configured on SQL servers.
+Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które Przeprowadź inspekcję ustawień dziennika w zasobach platformy Azure. Te definicje zasad przeprowadzają inspekcję i egzekwowanie wdrożenia agenta Log Analytics na maszynach wirtualnych platformy Azure oraz konfigurację ustawień inspekcji dla innych typów zasobów platformy Azure. Te definicje zasad umożliwiają również inspekcję konfiguracji dzienników diagnostycznych w celu zapewnienia wglądu w operacje wykonywane w ramach zasobów platformy Azure. Ponadto na serwerach SQL są konfigurowane inspekcje i zaawansowane zabezpieczenia danych.
 
-- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
-- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
-- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
 - Przeprowadzanie inspekcji ustawienia diagnostyki
-- Audit SQL server level Auditing settings
-- Advanced data security should be enabled on your managed instances
+- Inspekcja ustawień inspekcji poziomu serwera SQL
+- Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
-- Deploy Advanced Data Security on SQL servers
-- Deploy Auditing on SQL servers
-- Deploy Diagnostic Settings for Network Security Groups
+- Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
+- Wdrażanie inspekcji na serwerach SQL
+- Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń
 
-## <a name="9357-cm-7-2-least-functionality--prevent-program-execution"></a>9.3.5.7 CM-7 (2) Least Functionality | Prevent Program Execution
+## <a name="9357-cm-7-2-least-functionality--prevent-program-execution"></a>9.3.5.7 CM-7 (2) — najmniejsza funkcjonalność | Zapobiegaj wykonywaniu programu
 
-Adaptive application control in Azure Security Center is an intelligent, automated end-to-end application whitelisting solution that can block or prevent specific software from running on your virtual machines. Application control can run in an enforcement mode that prohibits non-approved application from running. This blueprint assigns an Azure Policy definition that helps you monitor virtual machines where an application whitelist is recommended but has not yet been configured.
+Adaptacyjna kontrola aplikacji w Azure Security Center to inteligentne, zautomatyzowane kompleksowe rozwiązanie do listy dozwolonych aplikacji, które może blokować uruchamianie określonego oprogramowania na maszynach wirtualnych lub uniemożliwiać jego działanie. Kontrolka aplikacji może działać w trybie wymuszania, który uniemożliwia uruchomienie niezatwierdzonej aplikacji. Ten plan przypisuje definicję Azure Policy, która pomaga monitorować maszyny wirtualne, w których aplikacja dozwolonych jest zalecana, ale jeszcze nie została skonfigurowana.
 
-- Adaptive Application Controls should be enabled on virtual machines
+- Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
 
-## <a name="9357-cm-7-5-least-functionality--authorized-software--whitelisting"></a>9.3.5.7 CM-7 (5) Least Functionality | Authorized Software / Whitelisting
+## <a name="9357-cm-7-5-least-functionality--authorized-software--whitelisting"></a>9.3.5.7 CM-7 (5) — najmniejsza funkcjonalność | Autoryzowane oprogramowanie/listy dozwolonych
 
-Adaptive application control in Azure Security Center is an intelligent, automated end-to-end application whitelisting solution that can block or prevent specific software from running on your virtual machines. Application control helps you create approved application lists for your virtual machines. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines where an application whitelist is recommended but has not yet been configured.
+Adaptacyjna kontrola aplikacji w Azure Security Center to inteligentne, zautomatyzowane kompleksowe rozwiązanie do listy dozwolonych aplikacji, które może blokować uruchamianie określonego oprogramowania na maszynach wirtualnych lub uniemożliwiać jego działanie. Kontrola aplikacji ułatwia tworzenie zatwierdzonych list aplikacji dla maszyn wirtualnych. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga monitorować maszyny wirtualne, w których aplikacja dozwolonych jest zalecana, ale jeszcze nie została skonfigurowana.
 
-- Adaptive Application Controls should be enabled on virtual machines
+- Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
 
-## <a name="93511-cm-11-user-installed-software"></a>9.3.5.11 CM-11 User-Installed Software
+## <a name="93511-cm-11-user-installed-software"></a>9.3.5.11 CM-11 oprogramowanie zainstalowane przez użytkownika
 
-Adaptive application control in Azure Security Center is an intelligent, automated end-to-end application whitelisting solution that can block or prevent specific software from running on your virtual machines. Application control can help you enforce and monitor compliance with software restriction policies. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines where an application whitelist is recommended but has not yet been configured.
+Adaptacyjna kontrola aplikacji w Azure Security Center to inteligentne, zautomatyzowane kompleksowe rozwiązanie do listy dozwolonych aplikacji, które może blokować uruchamianie określonego oprogramowania na maszynach wirtualnych lub uniemożliwiać jego działanie. Kontrola aplikacji może ułatwić wymuszanie i monitorowanie zgodności z zasadami ograniczeń oprogramowania. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga monitorować maszyny wirtualne, w których aplikacja dozwolonych jest zalecana, ale jeszcze nie została skonfigurowana.
 
-- Adaptive Application Controls should be enabled on virtual machines
+- Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
 
-## <a name="9366-cp-7-alternate-processing-site"></a>9.3.6.6 CP-7 Alternate Processing Site
+## <a name="9366-cp-7-alternate-processing-site"></a>Alternatywna witryna przetwarzania 9.3.6.6 CP-7
 
-Azure Site Recovery replicates workloads running on virtual machines from a primary location to a secondary location. If an outage occurs at the primary site, the workload fails over the secondary location. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that audits virtual machines without disaster recovery configured. Monitoring this indicator can help you ensure necessary contingency controls are in place.
+Azure Site Recovery replikuje obciążenia uruchomione na maszynach wirtualnych z lokalizacji głównej do lokacji dodatkowej. W przypadku wystąpienia awarii w lokacji głównej obciążenie kończy się niepowodzeniem w lokalizacji pomocniczej. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która przeprowadza inspekcję maszyn wirtualnych bez skonfigurowanego odzyskiwania po awarii. Monitorowanie tego wskaźnika może pomóc w zapewnieniu niezbędnych kontroli awaryjnych.
 
-- Audit virtual machines without disaster recovery configured
+- Inspekcja maszyn wirtualnych bez skonfigurowanego odzyskiwania po awarii
 
-## <a name="9372-ia-2-1-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>9.3.7.2 IA-2 (1) Identification and Authentication (Organizational Users) | Network Access to Privileged Accounts
+## <a name="9372-ia-2-1-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>9.3.7.2 IA-2 (1) Identyfikacja i uwierzytelnianie (Użytkownicy w organizacji) | Dostęp sieciowy do kont uprzywilejowanych
 
-This blueprint helps you restrict and control privileged access by assigning [Azure Policy](../../../policy/overview.md) definitions to audit accounts with owner and/or write permissions that don't have multi-factor authentication enabled. Multi-factor authentication helps keep accounts secure even if one piece of authentication information is compromised. By monitoring accounts without multi-factor authentication enabled, you can identify accounts that may be more likely to be compromised.
+Ten plan pomaga ograniczyć dostęp uprzywilejowany i kontrolować go, przypisując definicje [Azure Policy](../../../policy/overview.md) do inspekcji kont z uprawnieniami właściciela i/lub zapisu, dla których nie włączono usługi uwierzytelniania wieloskładnikowego. Uwierzytelnianie wieloskładnikowe pomaga zapewnić bezpieczeństwo kont nawet w przypadku naruszenia zabezpieczeń jednego z informacji o uwierzytelnianiu. Monitorowanie kont bez włączonej usługi uwierzytelnianie wieloskładnikowe umożliwia zidentyfikowanie kont, które mogą być bardziej zagrożone.
 
-- MFA should be enabled on accounts with owner permissions on your subscription
-- MFA should be enabled on accounts with write permissions on your subscription
+- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji
+- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami do zapisu w Twojej subskrypcji
 
-## <a name="9372-ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>9.3.7.2 IA-2 (2) Identification and Authentication (Organizational Users) | Network Access to Non-Privileged Accounts
+## <a name="9372-ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>9.3.7.2 IA-2 (2) Identyfikacja i uwierzytelnianie (Użytkownicy w organizacji) | Dostęp sieciowy do kont nieuprzywilejowanych
 
-This blueprint helps you restrict and control access by assigning an [Azure Policy](../../../policy/overview.md) definition to audit accounts with read permissions that don't have multi-factor authentication enabled. Multi-factor authentication helps keep accounts secure even if one piece of authentication information is compromised. By monitoring accounts without multi-factor authentication enabled, you can identify accounts that may be more likely to be compromised.
+Ten plan pomaga ograniczyć i kontrolować dostęp przez przypisanie definicji [Azure Policy](../../../policy/overview.md) do inspekcji kont z uprawnieniami do odczytu, dla których nie włączono usługi uwierzytelniania wieloskładnikowego. Uwierzytelnianie wieloskładnikowe pomaga zapewnić bezpieczeństwo kont nawet w przypadku naruszenia zabezpieczeń jednego z informacji o uwierzytelnianiu. Monitorowanie kont bez włączonej usługi uwierzytelnianie wieloskładnikowe umożliwia zidentyfikowanie kont, które mogą być bardziej zagrożone.
 
-- MFA should be enabled on accounts with read permissions on your subscription
+- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami do odczytu w ramach subskrypcji
 
-## <a name="9375-ia-5-authenticator-management"></a>9.3.7.5 IA-5 Authenticator Management
+## <a name="9375-ia-5-authenticator-management"></a>9.3.7.5 IA-5 wystawcy zarządzania
 
-This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions that audit Linux virtual machines that allow remote connections from accounts without passwords and/or have incorrect permissions set on the passwd file. This blueprint also assigns policy definitions that audit the configuration of the password encryption type for Windows virtual machines. Monitoring these indicators helps you ensure that system authenticators comply with your organization's identification and authentication policy.
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję maszyn wirtualnych systemu Linux, które zezwalają na połączenia zdalne z kont bez haseł i/lub mają ustawione nieprawidłowe uprawnienia w pliku haseł. Ten plan przypisuje również definicje zasad, które przeprowadzają inspekcję konfiguracji typu szyfrowania hasła dla maszyn wirtualnych z systemem Windows. Monitorowanie tych wskaźników pomaga upewnić się, że uwierzytelniające systemu są zgodne z zasadami identyfikacji i uwierzytelniania w organizacji.
 
-- \[Preview\]: Audit Linux VMs that do not have the passwd file permissions set to 0644
-- \[Preview\]: Audit Linux VMs that have accounts without passwords
-- \[Preview\]: Audit Windows VMs that do not store passwords using reversible encryption
-- \[Preview\]: Deploy requirements to audit Linux VMs that do not have the passwd file permissions set to 0644
-- \[Preview\]: Deploy requirements to audit Linux VMs that have accounts without passwords
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not store passwords using reversible encryption
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych systemu Linux, które nie mają uprawnień do pliku haseł ustawione na 0644
+- \[Podgląd\]: Inspekcja maszyn wirtualnych z systemem Linux, które mają konta bez hasła
+- \[Podgląd\]: Inspekcja maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które nie mają uprawnień do pliku haseł ustawione na 0644
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które mają konta bez hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
 
-## <a name="9375-ia-5-1-authenticator-management--password-based-authentication"></a>9.3.7.5 IA-5 (1) Authenticator Management | Password-Based Authentication
+## <a name="9375-ia-5-1-authenticator-management--password-based-authentication"></a>9.3.7.5 IA-5 (1) Zarządzanie wystawcy | Uwierzytelnianie oparte na hasłach
 
-This blueprint helps you enforce strong passwords by assigning [Azure Policy](../../../policy/overview.md) definitions that audit Windows virtual machines that don't enforce minimum strength and other password requirements. Awareness of virtual machines in violation of the password strength policy helps you take corrective actions to ensure passwords for all virtual machine user accounts comply with your organization's password policy.
+Ten plan pomaga wymusić silne hasła, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję maszyn wirtualnych systemu Windows, które nie wymuszają minimalnej siły i innych wymagań dotyczących haseł. Świadomość maszyn wirtualnych z naruszeniem zasad dotyczących siły haseł pomaga podejmować działania naprawcze w celu zapewnienia zgodności haseł dla wszystkich kont użytkowników maszyny wirtualnej z zasadami haseł obowiązującymi w organizacji.
 
-- \[Preview\]: Audit Windows VMs that allow re-use of the previous 24 passwords
-- \[Preview\]: Audit Windows VMs that do not have a maximum password age of 70 days
-- \[Preview\]: Audit Windows VMs that do not have a minimum password age of 1 day
-- \[Preview\]: Audit Windows VMs that do not have the password complexity setting enabled
-- \[Preview\]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- \[Preview\]: Audit Windows VMs that do not store passwords using reversible encryption
-- \[Preview\]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not store passwords using reversible encryption
+- Wersja zapoznawcza \[\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które zezwalają na ponowne korzystanie z poprzednich 24 haseł
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows bez maksymalnego wieku hasła 70 dni
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows bez minimalnego wieku hasła wynoszącego 1 dzień
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- \[Podgląd\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[Podgląd\]: Inspekcja maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
+- \[Podgląd\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają minimalnego wieku hasła wynoszącego 1 dzień
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
 
-## <a name="93143-ra-5-vulnerability-scanning"></a>9.3.14.3 RA-5 Vulnerability Scanning
+## <a name="93143-ra-5-vulnerability-scanning"></a>Skanowanie luk w zabezpieczeniach 9.3.14.3 RA-5
 
-This blueprint helps you manage information system vulnerabilities by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities in Azure Security Center. Azure Security Center provides reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources. This blueprint also assigns policy definitions that audit and enforce Advanced Data Security on SQL servers. Advanced data security included vulnerability assessment and advanced threat protection capabilities to help you understand vulnerabilities in your deployed resources.
+Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują luki w zabezpieczeniach systemu operacyjnego, luki w zabezpieczeniach SQL i luki w zabezpieczeniach maszyn wirtualnych w programie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym. Ten plan przypisuje również definicje zasad, które przeprowadzają inspekcję i wymuszanie zaawansowanych zabezpieczeń danych na serwerach SQL. Zaawansowane zabezpieczenia danych obejmują ocenę luk w zabezpieczeniach i zaawansowane funkcje ochrony przed zagrożeniami, które ułatwiają zrozumienie luk w zabezpieczeniach wdrożonych zasobów.
 
-- Advanced data security should be enabled on your managed instances
+- Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
-- Deploy Advanced Data Security on SQL servers
-- Vulnerabilities in security configuration on your virtual machine scale sets should be remediated
-- Vulnerabilities in security configuration on your virtual machines should be remediated
-- Vulnerabilities on your SQL databases should be remediated
-- Vulnerabilities should be remediated by a Vulnerability Assessment solution
+- Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
+- Luki w zabezpieczeniach konfiguracji zabezpieczeń w zestawach skalowania maszyn wirtualnych należy skorygować
+- Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach wirtualnych należy skorygować
+- Luki w zabezpieczeniach baz danych SQL należy skorygować
+- Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach
 
-## <a name="93164-sc-5-denial-of-service-protection"></a>9.3.16.4 SC-5 Denial of Service Protection
+## <a name="93164-sc-5-denial-of-service-protection"></a>9.3.16.4 SC-5 odmowa usługi
 
-Azure's distributed denial of service (DDoS) standard tier provides additional features and mitigation capabilities over the basic service tier. These additional features include Azure Monitor integration and the ability to review post-attack mitigation reports. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that audits if the DDoS standard tier is enabled. Understanding the capability difference between the service tiers can help you select the best solution to address denial of service protections for your Azure environment.
+Funkcja rozproszonej odmowy usługi (DDoS) platformy Azure oferuje dodatkowe funkcje i możliwości ograniczenia w porównaniu z podstawową warstwą usług. Te dodatkowe funkcje obejmują integrację Azure Monitor i możliwość przeglądania raportów dotyczących łagodzenia po ataku. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która przeprowadza inspekcję po włączeniu warstwy Standard DDoS. Zrozumienie różnic między warstwami usług może ułatwić wybranie najlepszego rozwiązania umożliwiającego odmowę ochrony w środowisku platformy Azure.
 
-- DDoS Protection Standard should be enabled
+- Należy włączyć Standard DDoS Protection
 
-## <a name="93165-sc-7-boundary-protection"></a>9.3.16.5 SC-7 Boundary Protection
+## <a name="93165-sc-7-boundary-protection"></a>9.3.16.5 SC-7 — ochrona granic
 
-This blueprint helps you manage and control the system boundary by assigning an [Azure Policy](../../../policy/overview.md) definition that monitors for network security group hardening recommendations in Azure Security Center. Azure Security Center analyzes traffic patterns of Internet facing virtual machines and provides network security group rule recommendations to reduce the potential attack surface.
-Additionally, this blueprint also assigns policy definitions that monitor unprotected endpoints, applications, and storage accounts. Endpoints and applications that aren't protected by a firewall, and storage accounts with unrestricted access can allow unintended access to information contained within the information system.
+Ten plan ułatwia zarządzanie granicą systemu i sterowanie nią przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , która monitoruje zalecenia dotyczące ograniczania funkcjonalności sieciowych grup zabezpieczeń w programie Azure Security Center. Azure Security Center analizuje wzorce ruchu maszyn wirtualnych mających dostęp do Internetu i zawiera zalecenia dotyczące reguły sieciowej grupy zabezpieczeń, aby zmniejszyć potencjalną powierzchnię ataku.
+Ponadto ten plan przypisuje również definicje zasad, które monitorują niechronione punkty końcowe, aplikacje i konta magazynu. Punkty końcowe i aplikacje, które nie są chronione przez zaporę, i konta magazynu z nieograniczonym dostępem mogą zezwalać na nieograniczony dostęp do informacji zawartych w systemie informacyjnym.
 
-- Network Security Group Rules for Internet facing virtual machines should be hardened
-- Access through Internet facing endpoint should be restricted
-- The NSGs rules for web applications on IaaS should be hardened
-- Audit unrestricted network access to storage accounts
+- Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone
+- Dostęp za poorednictwem punktu końcowego połączonego z Internetem powinien być ograniczony
+- Reguły sieciowych grup zabezpieczeń dla aplikacji sieci Web w usłudze IaaS powinny być zaostrzone
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 
-## <a name="93165-sc-7-3-boundary-protection--access-points"></a>9.3.16.5 SC-7 (3) Boundary Protection | Access Points
+## <a name="93165-sc-7-3-boundary-protection--access-points"></a>9.3.16.5 SC-7 (3) ograniczenie ochrony | Punkty dostępu
 
-Just-in-time (JIT) virtual machine access locks down inbound traffic to Azure virtual machines, reducing exposure to attacks while providing easy access to connect to VMs when needed. JIT virtual machine access helps you limit the number of external connections to your resources in Azure. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines that can support just-in-time access but haven't yet been configured.
+Dostęp z maszyn wirtualnych just-in-Time (JIT) blokuje ruch przychodzący do maszyn wirtualnych platformy Azure, co zmniejsza narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Dostęp do maszyny wirtualnej JIT pomaga ograniczyć liczbę połączeń zewnętrznych do zasobów na platformie Azure. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga monitorować maszyny wirtualne, które mogą obsługiwać dostęp just in Time, ale jeszcze nie zostały skonfigurowane.
 
-- Just-In-Time network access control should be applied on virtual machines
+- Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych
 
-## <a name="93165-sc-7-4-boundary-protection--external-telecommunications-services"></a>9.3.16.5 SC-7 (4) Boundary Protection | External Telecommunications Services
+## <a name="93165-sc-7-4-boundary-protection--external-telecommunications-services"></a>9.3.16.5 SC-7 (4) ochrona granic | Zewnętrzne usługi telekomunikacyjne
 
-Just-in-time (JIT) virtual machine access locks down inbound traffic to Azure virtual machines, reducing exposure to attacks while providing easy access to connect to VMs when needed. JIT virtual machine access helps you manage exceptions to your traffic flow policy by facilitating the access request and approval processes. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines that can support just-in-time access but haven't yet been configured.
+Dostęp z maszyn wirtualnych just-in-Time (JIT) blokuje ruch przychodzący do maszyn wirtualnych platformy Azure, co zmniejsza narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Dostęp do maszyny wirtualnej JIT pomaga zarządzać wyjątkami względem zasad przepływu ruchu, ułatwiając proces żądania dostępu i zatwierdzania. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga monitorować maszyny wirtualne, które mogą obsługiwać dostęp just in Time, ale jeszcze nie zostały skonfigurowane.
 
-- Just-In-Time network access control should be applied on virtual machines
+- Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych
 
-## <a name="96163-sc-8-1-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>9.6.16.3 SC-8 (1) Transmission Confidentiality and Integrity | Cryptographic or Alternate Physical Protection
+## <a name="96163-sc-8-1-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>9.6.16.3 SC-8 (1) poufność i integralność przekazywania | Kryptograficzna lub alternatywna ochrona fizyczna
 
-This blueprint helps you protect the confidential and integrity of transmitted information by assigning [Azure Policy](../../../policy/overview.md) definitions that help you monitor cryptographic mechanism implemented for communications protocols. Ensuring communications are properly encrypted can help you meet your organization's requirements or protecting information from unauthorized disclosure and modification.
+Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które ułatwiają monitorowanie mechanizmu kryptograficznego zaimplementowanego dla protokołów komunikacyjnych. Zapewnienie, że komunikacja jest prawidłowo zaszyfrowana, może pomóc spełnić wymagania organizacji lub chronić informacje przed nieautoryzowanym ujawnieniem i modyfikacją.
 
-- API App should only be accessible over HTTPS
-- Audit Windows web servers that are not using secure communication protocols
-- Deploy requirements to audit Windows web servers that are not using secure communication protocols
-- Function App should only be accessible over HTTPS
-- Only secure connections to your Redis Cache should be enabled
-- Secure transfer to storage accounts should be enabled
-- Web Application should only be accessible over HTTPS
+- Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+- Inspekcja serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
+- Wdróż wymagania w celu inspekcji serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
+- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
+- Należy włączyć tylko bezpieczne połączenia z Redis Cache
+- Należy włączyć bezpieczny transfer do kont magazynu
+- Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 
-## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) Protection of Information at Rest | Cryptographic Protection
+## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) Ochrona informacji w stanie spoczynku | Ochrona kryptograficzna
 
-This blueprint helps you enforce your policy on the use of cryptograph controls to protect information at rest by assigning [Azure Policy](../../../policy/overview.md) definitions that enforce specific cryptograph controls and audit use of weak cryptographic settings. Understanding where your Azure resources may have non-optimal cryptographic configurations can help you take corrective actions to ensure resources are configured in accordance with your information security policy. Specifically, the policy definitions assigned by this blueprint require encryption for data lake storage accounts; require transparent data encryption on SQL databases; and audit missing encryption on SQL databases, virtual machine disks, and automation account variables.
+Ten plan pomaga wymusić zasady korzystania z formantów cryptograph, aby chronić informacje przechowywane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych. Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. Definicje zasad przypisane przez ten plan wymagają szyfrowania dla kont usługi Data Lake Storage; Wymagaj przezroczystego szyfrowania danych w bazach danych SQL; i Przeprowadź inspekcję braku szyfrowania dla baz danych SQL, dysków maszyny wirtualnej i zmiennych konta usługi Automation.
 
-- Advanced data security should be enabled on your managed instances
+- Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
-- Deploy Advanced Data Security on SQL servers
-- Deploy SQL DB transparent data encryption
-- Disk encryption should be applied on virtual machines
-- Require encryption on Data Lake Store accounts
-- Transparent Data Encryption on SQL databases should be enabled
+- Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
+- Wdróż przezroczyste szyfrowanie danych SQL DB
+- Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
+- Wymagaj szyfrowania na kontach Data Lake Store
+- Należy włączyć Transparent Data Encryption baz danych SQL
 
-## <a name="93172-si-2-flaw-remediation"></a>9.3.17.2 SI-2 Flaw Remediation
+## <a name="93172-si-2-flaw-remediation"></a>9.3.17.2 — korygowanie wad SI
 
-This blueprint helps you manage information system flaws by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor missing system updates, operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities in Azure Security Center. Azure Security Center provides reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources. This blueprint also assigns a policy definition that ensures patching of the operating system for virtual machine scale sets.
+Ten plan ułatwia zarządzanie usterkami systemu informacyjnego przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują brakujące aktualizacje systemu, luki w zabezpieczeniach systemu operacyjnego, luki SQL i luki w bezpieczeństwie maszyn wirtualnych w usłudze Azure Security Gniazdo. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym. Ten plan przypisuje również definicję zasad, która zapewnia stosowanie poprawek systemu operacyjnego dla zestawów skalowania maszyn wirtualnych.
 
-- Require automatic OS image patching on Virtual Machine Scale Sets
-- System updates on virtual machine scale sets should be installed
-- System updates should be installed on your virtual machines
-- Vulnerabilities in security configuration on your virtual machine scale sets should be remediated
-- Vulnerabilities in security configuration on your virtual machines should be remediated
-- Vulnerabilities on your SQL databases should be remediated
-- Vulnerabilities should be remediated by a Vulnerability Assessment solution
+- Wymagaj automatycznej poprawki obrazu systemu operacyjnego na Virtual Machine Scale Sets
+- Należy zainstalować aktualizacje systemu dla zestawów skalowania maszyn wirtualnych
+- Aktualizacje systemu powinny być zainstalowane na maszynach wirtualnych
+- Luki w zabezpieczeniach konfiguracji zabezpieczeń w zestawach skalowania maszyn wirtualnych należy skorygować
+- Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach wirtualnych należy skorygować
+- Luki w zabezpieczeniach baz danych SQL należy skorygować
+- Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach
 
-## <a name="93173-si-3-malicious-code-protection"></a>9.3.17.3 SI-3 Malicious Code Protection
+## <a name="93173-si-3-malicious-code-protection"></a>9.3.17.3a ochrona kodu w SI 3
 
-This blueprint helps you manage endpoint protection, including malicious code protection, by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor for missing endpoint protection on virtual machines in Azure Security Center and enforce the Microsoft antimalware solution on Windows virtual machines.
+Ten plan ułatwia zarządzanie programem Endpoint Protection, w tym złośliwą ochroną kodu, przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują brak ochrony punktu końcowego na maszynach wirtualnych w Azure Security Center i wymuszanie firmy Microsoft rozwiązanie chroniące przed złośliwym oprogramowaniem na maszynach wirtualnych z systemem Windows.
 
-- Deploy default Microsoft IaaSAntimalware extension for Windows Server
-- Endpoint protection solution should be installed on virtual machine scale sets
-- Monitor missing Endpoint Protection in Azure Security Center
+- Wdróż domyślne rozszerzenie Microsoft IaaSAntimalware dla systemu Windows Server
+- Rozwiązanie Endpoint Protection powinno być zainstalowane w zestawach skalowania maszyn wirtualnych
+- Monitoruj brakujące Endpoint Protection w Azure Security Center
 
-## <a name="93173-si-3-1-malicious-code-protection--central-management"></a>9.3.17.3 SI-3 (1) Malicious Code Protection | Central Management
+## <a name="93173-si-3-1-malicious-code-protection--central-management"></a>9.3.17.3 SI-3 (1) złośliwe zabezpieczenie kodu | Zarządzanie centralne
 
-This blueprint helps you manage endpoint protection, including malicious code protection, by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor for missing endpoint protection on virtual machines in Azure Security Center. Azure Security Center provides centralized management and reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources.
+Ten plan ułatwia zarządzanie programem Endpoint Protection, w tym złośliwą ochroną kodu, przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują brak ochrony punktu końcowego na maszynach wirtualnych w programie Azure Security Center. Azure Security Center udostępnia funkcje scentralizowanego zarządzania i raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym.
 
-- Endpoint protection solution should be installed on virtual machine scale sets
-- Monitor missing Endpoint Protection in Azure Security Center
+- Rozwiązanie Endpoint Protection powinno być zainstalowane w zestawach skalowania maszyn wirtualnych
+- Monitoruj brakujące Endpoint Protection w Azure Security Center
 
-## <a name="93174-si-4-information-system-monitoring"></a>9.3.17.4 SI-4 Information System Monitoring
+## <a name="93174-si-4-information-system-monitoring"></a>Monitorowanie systemu informacji 9.3.17.4 SI-4
 
-This blueprint helps you monitor your system by auditing and enforcing logging and data security across Azure resources. Specifically, the policies assigned audit and enforce deployment of the Log Analytics agent, and enhanced security settings for SQL databases, storage accounts and network resources. These capabilities can help you detect anomalous behavior and indicators of attacks so you can take appropriate action.
+Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie rejestrowania i zabezpieczeń danych w ramach zasobów platformy Azure. W odniesieniu do zasad są przypisane inspekcje i egzekwowanie wdrożenia agenta Log Analytics oraz ulepszone ustawienia zabezpieczeń baz danych SQL, kont magazynu i zasobów sieciowych. Te możliwości mogą pomóc w wykrywaniu nietypowych zachowań i wskaźników ataków, co pozwala na podejmowanie odpowiednich działań.
 
-- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
-- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
-- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
-- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
-- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
-- Advanced data security should be enabled on your managed instances
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
+- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
+- Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
-- Deploy Advanced Data Security on SQL servers
-- Deploy Advanced Threat Protection on Storage Accounts
-- Deploy Auditing on SQL servers
-- Deploy network watcher when virtual networks are created
-- Deploy Threat Detection on SQL servers
+- Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
+- Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu
+- Wdrażanie inspekcji na serwerach SQL
+- Wdróż obserwatora sieciowego po utworzeniu sieci wirtualnych
+- Wdrażanie wykrywania zagrożeń na serwerach SQL
 
-## <a name="93174-si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>9.3.17.4 SI-4 (18) Information System Monitoring | Analyze Traffic / Covert Exfiltration
+## <a name="93174-si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>Monitorowanie systemu informacji 9.3.17.4 SI-4 (18) | Analizuj ruch/przekonwertować Eksfiltracji
 
-Advanced Threat Protection for Azure Storage detects unusual and potentially harmful attempts to access or exploit storage accounts. Protection alerts include anomalous access patterns, anomalous extracts/uploads, and suspicious storage activity. These indicators can help you detect covert exfiltration of information.
+Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do kont magazynu lub korzystania z nich. Alerty ochrony obejmują nietypowe wzorce dostępu, wyodrębniania anomalii/operacje przekazywania oraz podejrzane działania magazynu. Te wskaźniki mogą pomóc wykryć przekonwertować eksfiltracji informacji.
 
-- Deploy Advanced Threat Protection on Storage Accounts
+- Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu
 
 > [!NOTE]
-> Availability of specific Azure Policy definitions may vary in Azure Government and other national clouds. 
+> Dostępność określonych definicji Azure Policy może się różnić w zależności od Azure Government i innych chmur krajowych. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Now that you've reviewed the control mapping of the IRS 1075 blueprint, visit the following articles to learn about the blueprint and how to deploy this sample:
+Po przejrzeniu mapowania kontroli planu IRS 1075 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat planu i sposobu wdrażania tego przykładu:
 
 > [!div class="nextstepaction"]
-> [IRS 1075 blueprint - Overview](./index.md)
+> [Plan 1075 — przegląd](./index.md)
+> [plany IRS 1075 — wdrażanie kroków](./deploy.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

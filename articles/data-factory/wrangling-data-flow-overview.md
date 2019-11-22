@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e36cc044e6a4160d16f15b93d8a88d946f476c89
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665647"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287085"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co to są przepływy danych przetwarzanie?
 
@@ -37,6 +37,30 @@ Integrator danych obywatela poświęca więcej niż 60% czasu na wyszukiwanie i 
 ### <a name="data-validation"></a>Sprawdzanie poprawności danych
 
 Wizualnie Skanuj dane w sposób niezależny od kodu, aby usunąć wszelkie elementy odstające, anomalie i zachować zgodność z kształtem w celu uzyskania szybkiej analizy.
+
+## <a name="supported-sources"></a>Obsługiwane źródła
+
+| Łącznik | Format danych | Typ uwierzytelniania |
+| -- | -- | --|
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Klucz konta |
+| [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | CSV | Jednostka usługi |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Klucz konta, nazwa główna usługi |
+| [Azure SQL Database](connector-azure-sql-database.md) | - | Uwierzytelnianie SQL |
+| [Analiza usługi Azure Synapse](connector-azure-sql-data-warehouse.md) | - | Uwierzytelnianie SQL |
+
+## <a name="the-mashup-editor"></a>Edytor mashupów
+
+Podczas tworzenia przepływu danych przetwarzanie, wszystkie źródłowe zestawy DataSet stają się zapytaniami zestawu danych i są umieszczane w folderze **ADFResource** . Domyślnie UserQuery będzie wskazywała na pierwsze zapytanie zestawu danych. Wszystkie przekształcenia należy wykonać w UserQuery, ponieważ zmiany w zapytaniach zestawu danych nie są obsługiwane ani nie zostaną utrwalone. Zmiana nazwy, Dodawanie i usuwanie zapytań nie jest obecnie obsługiwane.
+
+![Przetwarzanie](media/wrangling-data-flow/editor.png)
+
+Obecnie nie wszystkie Power Query funkcje M są obsługiwane dla przetwarzanie danych, mimo że są dostępne podczas tworzenia. Podczas kompilowania przepływów danych przetwarzanie zostanie wyświetlony monit z następującym komunikatem o błędzie, jeśli funkcja nie jest obsługiwana:
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+Aby uzyskać więcej informacji na temat obsługiwanych transformacji, zobacz [Przetwarzanie Data Flow Functions](wrangling-data-flow-functions.md).
+
+Obecnie przepływ danych przetwarzanie obsługuje tylko zapisywanie do jednego ujścia.
 
 ## <a name="next-steps"></a>Następne kroki
 

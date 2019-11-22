@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e02f0de685dc1f67633e13fed1f4114c399afdea
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360303"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280530"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Aprowizowanie urządzeń za pomocą usługi Azure IoT Hub Device Provisioning Service
 Platforma Microsoft Azure zapewnia bogaty zestaw zintegrowanych usług w chmurze publicznej spełniający wszelkie potrzeby rozwiązania IoT. Usługa IoT Hub Device Provisioning Service to usługa pomocnika usługi IoT Hub, która umożliwia bezobsługową aprowizację w miarę potrzeb w odpowiednim centrum IoT, nie wymagając przy tym interwencji człowieka, co umożliwia klientom aprowizację milionów urządzeń w sposób bezpieczny i skalowalny.
@@ -78,7 +78,7 @@ Usługa Device Provisioning Service ma wiele funkcji, dzięki czemu jest idealny
 
 * Obsługa **bezpiecznego zaświadczania** dla tożsamości opartych zarówno na standardzie X.509, jak i module TPM.
 * **Lista rejestracji** zawierająca pełny rejestr urządzeń/grup urządzeń, które w pewnym momencie mogą zostać zarejestrowane. Lista rejestracji zawiera informacje dotyczące żądanej konfiguracji urządzenia po jego zarejestrowaniu i może być aktualizowana w dowolnym momencie.
-* **Wiele zasad alokacji** w celu kontroli sposobu, w jaki usługa Device Provisioning Service przypisuje urządzenia do centrów IoT w celu obsługi scenariuszy.
+* **Wiele zasad alokacji** do kontrolowania sposobu, w jaki usługa Device Provisioning przypisuje urządzenia do centrów IoT w ramach obsługi Twoich scenariuszy: najniższe opóźnienie, równomiernie ważone (domyślnie) i konfigurację statyczną za pośrednictwem listy rejestracji. Należy zauważyć, że czas oczekiwania jest określany przy użyciu tej samej metody co [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Monitorowanie i rejestrowanie diagnostyczne** w celu zapewnienia poprawnego działania.
 * **Obsługa wielu centrów** umożliwia usłudze Device Provisioning Service przypisywanie urządzeń do więcej niż jednego centrum IoT. Usługa Device Provisioning Service może komunikować się z centrami w wielu subskrypcjach platformy Azure.
 * **Obsługa wielu regionów** umożliwia usłudze Device Provisioning Service przypisywanie urządzeń do centrów IoT w innych regionach.

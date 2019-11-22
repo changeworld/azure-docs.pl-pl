@@ -1,5 +1,6 @@
 ---
-title: Zarządzanie dziennikami przepływu sieciowych grup zabezpieczeń przy użyciu usługi Azure Network Watcher — interfejs wiersza polecenia platformy Azure | Microsoft Docs
+title: Zarządzanie dziennikami przepływu sieciowej grupy zabezpieczeń — interfejs wiersza polecenia platformy Azure
+titleSuffix: Azure Network Watcher
 description: Na tej stronie wyjaśniono, jak zarządzać dziennikami przepływu sieciowych grup zabezpieczeń w usłudze Azure Network Watcher przy użyciu interfejsu wiersza polecenia platformy Azure
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5e7c09c1a06a94a2ed64f3624ee38dc42606d7bc
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 950b014d7e08eeeeed40ba7b294e53e1c200474b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563492"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278020"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurowanie dzienników przepływu sieciowych grup zabezpieczeń przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -53,7 +54,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 Określone konto magazynu nie może mieć skonfigurowanych reguł sieciowych, które ograniczają dostęp do sieci tylko do usług firmy Microsoft lub określonych sieci wirtualnych. Konto magazynu może być w tej samej lub innej subskrypcji platformy Azure niż sieciowej grupy zabezpieczeń, dla którego włączono dziennik przepływów. Jeśli używasz różnych subskrypcji, muszą one być skojarzone z tą samą dzierżawą Azure Active Directory. Konto używane dla każdej subskrypcji musi mieć [wymagane uprawnienia](required-rbac-permissions.md). 
 
-Jeśli konto magazynu znajduje się w innej grupie zasobów lub subskrypcji niż grupa zabezpieczeń sieci, podaj pełny identyfikator konta magazynu, a nie jego nazwę. Jeśli na przykład konto magazynu znajduje się w grupie zasobów o nazwie *RG-Storage*, a nie określono *storageAccountName* w poprzednim poleceniu, należy określić */subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/Providers/ Microsoft. Storage/storageAccounts/storageAccountName*.
+Jeśli konto magazynu znajduje się w innej grupie zasobów lub subskrypcji niż grupa zabezpieczeń sieci, podaj pełny identyfikator konta magazynu, a nie jego nazwę. Jeśli na przykład konto magazynu znajduje się w grupie zasobów o nazwie *RG-Storage*, a nie określono *storageAccountName* w poprzednim poleceniu, należy określić */subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/Providers/Microsoft.Storage/storageAccounts/storageAccountName*.
 
 ## <a name="disable-network-security-group-flow-logs"></a>Wyłącz dzienniki przepływu sieciowych grup zabezpieczeń
 

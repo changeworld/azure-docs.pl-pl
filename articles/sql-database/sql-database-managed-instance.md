@@ -1,5 +1,5 @@
 ---
-title: Omówienie Azure SQL Database wystąpienia zarządzanego | Microsoft Docs
+title: Omówienie wystąpienia zarządzanego SQL
 description: W tym artykule opisano Azure SQL Database wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 0d59b1cfed1de710725a5dfc91341fec0baa6cb4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: 6c5b913835b2080f30ff3dd73e6a59c1043ecf5d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331024"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823292"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
-Wystąpienie zarządzane to nowa opcja wdrażania Azure SQL Database, która zapewnia niemal 100% zgodność z najnowszym SQL Server lokalnym (Enterprise Edition) aparat bazy danych, zapewniając natywną implementację [sieci wirtualnej (VNET)](../virtual-network/virtual-networks-overview.md) , która dotyczy Typowe problemy z zabezpieczeniami i [model biznesowy](https://azure.microsoft.com/pricing/details/sql-database/) preferowany dla klientów lokalnych SQL Server. Model wdrażania wystąpienia zarządzanego umożliwia istniejącym klientom SQL Server na podniesienie i przemieszczenie aplikacji lokalnych do chmury przy minimalnych zmianach aplikacji i baz danych. W tym samym czasie opcja wdrożenia wystąpienia zarządzanego zachowuje wszystkie możliwości PaaS (automatyczne stosowanie poprawek i aktualizacji wersji, [zautomatyzowane kopie zapasowe](sql-database-automated-backups.md), [wysoka dostępność](sql-database-high-availability.md) ), które znacząco zmniejszają koszty związane z zarządzaniem i całkowitym kosztem posiadania.
+Wystąpienie zarządzane to nowa opcja wdrażania Azure SQL Database, która zapewnia niemal 100% zgodność z najnowszym SQL Server lokalnym (Enterprise Edition) aparat bazy danych, zapewniając natywną implementację [sieci wirtualnej (VNET)](../virtual-network/virtual-networks-overview.md) , która rozwiązuje typowe problemy związane z bezpieczeństwem, oraz [model biznesowy](https://azure.microsoft.com/pricing/details/sql-database/) preferowany dla klientów lokalnych SQL Server. Model wdrażania wystąpienia zarządzanego umożliwia istniejącym klientom SQL Server na podniesienie i przemieszczenie aplikacji lokalnych do chmury przy minimalnych zmianach aplikacji i baz danych. W tym samym czasie opcja wdrożenia wystąpienia zarządzanego zachowuje wszystkie możliwości PaaS (automatyczne stosowanie poprawek i aktualizacji wersji, [zautomatyzowane kopie zapasowe](sql-database-automated-backups.md), [wysoka dostępność](sql-database-high-availability.md) ), które znacząco zmniejszają koszty związane z zarządzaniem i całkowitym kosztem posiadania.
 
 > [!IMPORTANT]
 > Aby zapoznać się z listą regionów, w których opcja wdrażania wystąpienia zarządzanego jest obecnie dostępna, zobacz [Obsługiwane regiony](sql-database-managed-instance-resource-limits.md#supported-regions).
@@ -46,7 +46,7 @@ Wystąpienie zarządzane łączy najlepsze funkcje, które są dostępne zarówn
 | --- | --- |
 |Bez kupowania i zarządzania sprzętem <br>Brak obciążeń związanych z zarządzaniem podstawową infrastrukturą <br>Szybka obsługa i skalowanie usług <br>Automatyczne stosowanie poprawek i uaktualnianie wersji <br>Integracja z innymi usługami danych PaaS |Umowa SLA na 99,99% czasu  <br>Wbudowana [wysoka dostępność](sql-database-high-availability.md) <br>Dane chronione za pomocą [zautomatyzowanych kopii zapasowych](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych konfigurowalnych przez klienta <br>[Kopie zapasowe](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) inicjowane przez użytkownika <br>Możliwość [przywracania bazy danych do punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
-|Środowisko izolowane (Integracja z siecią[wirtualną](sql-database-managed-instance-connectivity-architecture.md), usługa pojedynczej dzierżawy, dedykowane zasoby obliczeniowe i magazyn) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Nazwy główne serwera usługi Azure AD</a> (w**publicznej wersji zapoznawczej**) <br>Zgodność ze standardami zgodności, takimi jak usługa Azure SQL Database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager interfejs API do automatyzowania aprowizacji i skalowania usługi <br>Azure Portal funkcje ręcznego inicjowania obsługi i skalowania usługi <br>Usługa migracji danych
+|Środowisko izolowane (Integracja z siecią[wirtualną](sql-database-managed-instance-connectivity-architecture.md), usługa pojedynczej dzierżawy, dedykowane zasoby obliczeniowe i magazyn) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Nazwy główne serwera usługi Azure AD (logowania)</a>  <br>Zgodność ze standardami zgodności, takimi jak usługa Azure SQL Database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager interfejs API do automatyzowania aprowizacji i skalowania usługi <br>Azure Portal funkcje ręcznego inicjowania obsługi i skalowania usługi <br>Usługa migracji danych
 
 > [!IMPORTANT]
 > Azure SQL Database (wszystkie opcje wdrażania) mają certyfikat dla wielu standardów zgodności. Aby uzyskać więcej informacji, zobacz [Centrum zaufania Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , w którym można znaleźć najbardziej aktualną listę SQL Database certyfikatów zgodności.
@@ -131,7 +131,7 @@ Kolejne operacje na wdrożonych wystąpieniach zarządzanych mogą również mie
 Wszystkie operacje zarządzania można klasyfikować w następujący sposób:
 
 - Wdrożenie wystąpienia (nowe wystąpienie). 
-- Aktualizacja wystąpienia (zmiana właściwości wystąpienia, takich jak rdzeni wirtualnych, zarezerwowany magazyn itp.).
+- Aktualizacja wystąpienia (zmiana właściwości wystąpienia, takich jak rdzeni wirtualnych lub zarezerwowany magazyn).
 - Usuwanie wystąpienia.
 
 Zazwyczaj operacje w klastrach wirtualnych trwają najdłużej. Czas trwania operacji na klastrach wirtualnych jest różny — poniżej znajdują się wartości, których można zwykle oczekiwać na podstawie istniejących danych telemetrycznych usługi:
@@ -150,10 +150,10 @@ W poniższej tabeli zestawiono operacje i typowe ogólne czasy trwania:
 |Kategoria  |Operacja  |Segment długotrwały  |Szacowany czas trwania  |
 |---------|---------|---------|---------|
 |**Wdrożenie** |Pierwsze wystąpienie w pustej podsieci|Tworzenie klastra wirtualnego|90% operacji zakończonych w ciągu 4 godzin|
-|Wdrażanie |Pierwsze wystąpienie innej generacji sprzętu w niepustej podsieci (na przykład pierwsze wystąpienie generacji 5 w podsieci z wystąpieniami generacji 4)|Tworzenie klastra wirtualnego *|90% operacji zakończonych w ciągu 4 godzin|
-|Wdrażanie |Pierwsze utworzenie wystąpienia 4 rdzeni wirtualnych w pustej lub niepustej podsieci|Tworzenie klastra wirtualnego * *|90% operacji zakończonych w ciągu 4 godzin|
-|Wdrażanie |Kolejne Tworzenie wystąpienia w niepustej podsieci (drugi, trzeci itp. wystąpienie)|Zmienianie rozmiarów klastra wirtualnego|90% operacji zakończonych w ciągu 2,5 godzin|
-|**Aktualizacja** |Zmiana właściwości wystąpienia (hasło administratora, logowanie w usłudze AAD, flaga Korzyść użycia hybrydowego platformy Azure)|ND|Do 1 minuty|
+|Wdrożenie |Pierwsze wystąpienie innej generacji sprzętu w niepustej podsieci (na przykład pierwsze wystąpienie generacji 5 w podsieci z wystąpieniami generacji 4)|Tworzenie klastra wirtualnego *|90% operacji zakończonych w ciągu 4 godzin|
+|Wdrożenie |Pierwsze utworzenie wystąpienia 4 rdzeni wirtualnych w pustej lub niepustej podsieci|Tworzenie klastra wirtualnego * *|90% operacji zakończonych w ciągu 4 godzin|
+|Wdrożenie |Kolejne Tworzenie wystąpienia w niepustej podsieci (drugi, trzeci itp. wystąpienie)|Zmienianie rozmiarów klastra wirtualnego|90% operacji zakończonych w ciągu 2,5 godzin|
+|**Aktualizacja** |Zmiana właściwości wystąpienia (hasło administratora, logowanie w usłudze AAD, flaga Korzyść użycia hybrydowego platformy Azure)|Nie dotyczy|Do 1 minuty|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Ogólnego przeznaczenia warstwy usług)|— Zmienianie rozmiarów klastra wirtualnego<br>— Dołączanie plików bazy danych|90% operacji zakończonych w ciągu 2,5 godzin|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Krytyczne dla działania firmy warstwy usług)|— Zmienianie rozmiarów klastra wirtualnego<br>-Zawsze włączone Określanie rozrzutu grupy dostępności|90% operacji zakończonych w ciągu 2,5 godzin + Time do wypełniania wszystkich baz danych (220 GB/godz.)|
 |Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Ogólnego przeznaczenia)|— Zmienianie rozmiarów klastra wirtualnego<br>— Dołączanie plików bazy danych|90% operacji zakończonych w ciągu 2,5 godzin|
@@ -161,14 +161,14 @@ W poniższej tabeli zestawiono operacje i typowe ogólne czasy trwania:
 |Aktualizacja |Skalowanie wystąpienia w dół do 4 rdzeni wirtualnych (Ogólnego przeznaczenia)|— Zmienianie rozmiarów klastra wirtualnego (jeśli jest wykonywane po raz pierwszy, może to wymagać utworzenia klastra wirtualnego * *)<br>— Dołączanie plików bazy danych|90% operacji zakończonych w 4 h 5 min * *|
 |Aktualizacja |Skalowanie wystąpienia w dół do 4 rdzeni wirtualnych (Ogólnego przeznaczenia)|— Zmienianie rozmiarów klastra wirtualnego (jeśli jest wykonywane po raz pierwszy, może to wymagać utworzenia klastra wirtualnego * *)<br>-Zawsze włączone Określanie rozrzutu grupy dostępności|90% operacji zakończonych w ciągu 4 godzin od czasu do wypełniania wszystkich baz danych (220 GB/godz.)|
 |Aktualizacja |Zmiana warstwy usługi wystąpienia (Ogólnego przeznaczenia do Krytyczne dla działania firmy i na odwrót)|— Zmienianie rozmiarów klastra wirtualnego<br>-Zawsze włączone Określanie rozrzutu grupy dostępności|90% operacji zakończonych w ciągu 2,5 godzin + Time do wypełniania wszystkich baz danych (220 GB/godz.)|
-|**Czeka**|Usunięcie wystąpienia|Kopia zapasowa dziennika dla wszystkich baz danych|90% operacji zakończonych w ciągu do 1 minuty.<br>Uwaga: Jeśli ostatnie wystąpienie w podsieci zostanie usunięte, ta operacja spowoduje zaplanowanie usunięcia klastra wirtualnego po upływie 12 godzin * * * *|
+|**Czeka**|Usunięcie wystąpienia|Kopia zapasowa dziennika dla wszystkich baz danych|90% operacji zakończonych w ciągu do 1 minuty.<br>Uwaga: Jeśli ostatnie wystąpienie w podsieci zostanie usunięte, ta operacja spowoduje zaplanowanie usunięcia klastra wirtualnego po upływie 12 godzin***|
 |Usunięcie|Usuwanie klastra wirtualnego (jako operacja zainicjowana przez użytkownika)|Usuwanie klastra wirtualnego|90% operacji zakończonych w maksymalnie 1,5 godzinach|
 
-klaster wirtualny \* jest zbudowany na wygenerowanie sprzętu.
+\* klaster wirtualny jest oparty na generowaniu sprzętu.
 
-\* @ no__t-1 opcja wdrożenia 4 rdzeni wirtualnych została wydana w czerwcu 2019 i wymaga nowej wersji klastra wirtualnego. Jeśli wystąpiły wystąpienia w podsieci docelowej, które zostały utworzone przed 12 czerwca, nowy klaster wirtualny zostanie automatycznie wdrożony do rdzeń wirtualny wystąpień hosta 4.
+\*\* opcja wdrożenia 4 rdzeni wirtualnych została wydana w czerwcu 2019 i wymaga nowej wersji klastra wirtualnego. Jeśli wystąpiły wystąpienia w podsieci docelowej, które zostały utworzone przed 12 czerwca, nowy klaster wirtualny zostanie automatycznie wdrożony do rdzeń wirtualny wystąpień hosta 4.
 
-\* @ no__t-1 @ no__t-2 12 godzin jest bieżącą konfiguracją, ale może ulec zmianie w przyszłości, więc nie podejmuje twardej zależności od niej. Jeśli musisz usunąć klaster wirtualny wcześniej (aby zwolnić podsieć na przykład), zobacz [usuwanie podsieci po usunięciu Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-delete-virtual-cluster.md).
+\*\*\* 12 godzin jest bieżącą konfiguracją, ale może ulec zmianie w przyszłości, dlatego nie należy na niej korzystać. Jeśli musisz usunąć klaster wirtualny wcześniej (aby zwolnić podsieć na przykład), zobacz [usuwanie podsieci po usunięciu Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-delete-virtual-cluster.md).
 
 ### <a name="instance-availability-during-management"></a>Dostępność wystąpienia podczas zarządzania
 
@@ -221,13 +221,13 @@ Migracja zaszyfrowanej bazy danych do wystąpienia zarządzanego jest obsługiwa
 
 Opcja wdrażania wystąpienia zarządzanego obsługuje tradycyjne logowania aparatu bazy danych programu SQL Server i logowania zintegrowane z usługą Azure Active Directory (AAD). Nazwy główne serwera usługi Azure AD (dane logowania) (**publiczna wersja zapoznawcza**) są lokalnymi nazwami logowania w chmurze w systemie Azure, które są używane w środowisku lokalnym. Nazwy główne serwera usługi Azure AD umożliwiają określanie użytkowników i grup z dzierżawy Azure Active Directory jako wystąpień głównych o zakresie wystąpienia, które mogą wykonywać wszystkie operacje na poziomie wystąpienia, w tym zapytania między bazami danych w ramach tego samego zarządzanego np.
 
-Wprowadzono nową składnię do tworzenia podmiotów zabezpieczeń serwera usługi Azure AD (nazwy logowania) (**publiczna wersja zapoznawcza**) **od dostawcy zewnętrznego**. Aby uzyskać więcej informacji na temat składni, zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Tworzenie nazwy logowania</a>i zapoznaj się z tematem [inicjowanie obsługi administracyjnej Azure Active Directory administratora wystąpienia zarządzanego](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) .
+Wprowadzono nową składnię do tworzenia podmiotów zabezpieczeń serwera usługi Azure AD (logowania) **od dostawcy zewnętrznego**. Aby uzyskać więcej informacji na temat składni, zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Tworzenie nazwy logowania</a>i zapoznaj się z tematem [inicjowanie obsługi administracyjnej Azure Active Directory administratora wystąpienia zarządzanego](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) .
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integracja usługi Azure Active Directory z uwierzytelnianiem wieloskładnikowym
 
 Opcja wdrożenia wystąpienia zarządzanego umożliwia centralne zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft z [integracją Azure Active Directory](sql-database-aad-authentication.md). Ta funkcja upraszcza zarządzanie uprawnieniami i zwiększa bezpieczeństwo. Usługa Azure Active Directory obsługuje [uwierzytelnianie wieloskładnikowe](sql-database-ssms-mfa-authentication-configure.md) (MFA, Multi-Factor Authentication) w celu zwiększenia bezpieczeństwa danych i aplikacji, korzystając z procesu jednokrotnego logowania.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
 Uwierzytelnianie wystąpienia zarządzanego dotyczy sposobu, w jaki użytkownicy udowadniają swoją tożsamość podczas łączenia się z bazą danych. Usługa SQL Database obsługuje dwa typy uwierzytelniania:  
 
@@ -246,7 +246,7 @@ Autoryzacja odnosi się do tego, co użytkownik może zrobić w ramach Azure SQL
 
 Opcja wdrażania wystąpienia zarządzanego kieruje scenariusze użytkownika z migracją masowej bazy danych z implementacji lokalnych lub IaaS baz danych. Wystąpienie zarządzane obsługuje kilka opcji migracji bazy danych:
 
-### <a name="back-up-and-restore"></a>Tworzenie i przywracanie kopii zapasowej  
+### <a name="back-up-and-restore"></a>Tworzenie kopii zapasowej i przywracanie  
 
 Podejście do migracji wykorzystuje kopie zapasowe SQL do usługi Azure Blob Storage. Kopie zapasowe przechowywane w usłudze Azure Storage BLOB mogą być przywracane bezpośrednio do wystąpienia zarządzanego przy użyciu [polecenia przywracania T-SQL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
 
@@ -275,7 +275,7 @@ Na poniższym diagramie przedstawiono zgodność obszaru powierzchni w wystąpie
 Opcja wdrażania wystąpienia zarządzanego oferuje zawsze aktualność w chmurze, co oznacza, że niektóre funkcje w SQL Server lokalnym mogą być przestarzałe, wycofane lub mieć alternatywy. Istnieją określone przypadki, w których narzędzia muszą rozpoznać, że określona funkcja działa w nieco inny sposób, lub usługa nie działa w środowisku, którego nie można w pełni kontrolować:
 
 - Wysoka dostępność jest wbudowana i wstępnie skonfigurowana przy użyciu technologii podobnej do [zawsze dostępnych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
-- Automatyczne kopie zapasowe i przywracanie do punktu w czasie. Klient może inicjować kopie zapasowe `copy-only`, które nie zakłócają automatycznego łańcucha kopii zapasowych.
+- Automatyczne kopie zapasowe i przywracanie do punktu w czasie. Klient może inicjować `copy-only` kopie zapasowe, które nie zakłócają automatycznego łańcucha kopii zapasowych.
 - Wystąpienie zarządzane nie pozwala na określanie pełnych ścieżek fizycznych, więc wszystkie odpowiednie scenariusze muszą być obsługiwane inaczej: instrukcja RESTORE DB nie obsługuje funkcji MOVE, tworzenie bazy danych nie zezwala na ścieżki fizyczne, BULK INSERT działa tylko z obiektami blob platformy Azure itd.
 - Wystąpienie zarządzane obsługuje [uwierzytelnianie w usłudze Azure AD](sql-database-aad-authentication.md) jako alternatywę dla uwierzytelniania systemu Windows w chmurze.
 - Wystąpienie zarządzane automatycznie zarządza grupą plików i plikami XTP dla baz danych zawierających obiekty OLTP w pamięci
@@ -295,9 +295,9 @@ W poniższej tabeli przedstawiono kilka właściwości, które są dostępne za 
 |Właściwość|Wartość|Komentarz|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) — 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ta wartość jest taka sama jak w SQL Database.|
-|`SERVERPROPERTY ('Edition')`|SQL Azure|Ta wartość jest taka sama jak w SQL Database.|
+|`SERVERPROPERTY ('Edition')`|Usługi SQL Azure|Ta wartość jest taka sama jak w SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ta wartość jednoznacznie identyfikuje wystąpienie zarządzane.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Pełna nazwa DNS wystąpienia w następującym formacie: `<instanceName>`. `<dnsPrefix>`.database.windows.net, gdzie `<instanceName>` jest nazwą dostarczoną przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie generowana częścią nazwy gwarantującej unikalność globalnej nazwy DNS ("wcus17662feb9ce98", dla przyklad|Przykład: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie wygenerowany częścią nazwy gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Następne kroki
 

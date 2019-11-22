@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486623"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280810"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Dowiedz się, co to jest dobry wyrażenia długości dla aplikacji LUIS
 
@@ -60,17 +60,17 @@ Wykonaj następujące przykładowe wyrażenia długości:
 |Chcę uzyskać komputer, jak go zrobić?|
 |Kiedy mogę mieć komputer?| 
 
-Termin podstawowy w tym miejscu, "komputer", nie jest zróżnicowany. Używaj rozwiązań alternatywnych, takich jak komputer stacjonarny, laptop, stacja robocza, lub nawet dla komputera. LUIS inteligentnej propozycjami synonimów z kontekstu, ale w przypadku tworzenia wyrażenia długości do szkolenia nadal lepiej jest je różnić.
+W tym miejscu termin "Computer" nie jest zróżnicowany. Używaj rozwiązań alternatywnych, takich jak komputer stacjonarny, laptop, stacja robocza, lub nawet dla komputera. LUIS może inteligentnie wywnioskować synonimy z kontekstu, ale w przypadku tworzenia wyrażenia długości do szkolenia są one zawsze lepsze od siebie.
 
 ## <a name="example-utterances-in-each-intent"></a>Przykład wyrażenia długości w każdym zamiarze
 
-Każdy cel musi mieć przykład wyrażenia długości, co najmniej 15. Jeśli masz intencję, która nie ma żadnego przykładu wyrażenia długości, nie będziesz mieć możliwości uczenia się LUIS. Jeśli masz zamiar z jednym lub kilkoma przykładami wyrażenia długości, LUIS nie będzie prawidłowo przewidywania zamiaru. 
+Każdy cel musi mieć przykład wyrażenia długości, co najmniej 15. Jeśli masz intencję, która nie ma żadnego przykładu wyrażenia długości, nie będziesz mieć możliwości uczenia się LUIS. Jeśli masz zamiar z jednym lub kilkoma przykładami wyrażenia długości, LUIS może nie dokładnie przewidzieć zamiar. 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Dodaj małe grupy 15 wyrażenia długości dla każdej iteracji tworzenia
 
 W każdej iteracji modelu nie należy dodawać dużej liczby wyrażenia długości. Dodaj wyrażenia długości w ilościach 15. Ponownie [nauczenie](luis-how-to-train.md), [opublikowanie](luis-how-to-publish-app.md)i [przetestowanie](luis-interactive-test.md) .  
 
-LUIS kompiluje wydajne modele z wyrażenia długości, które są starannie wybierane przez autora modelu LUIS. Dodanie zbyt wielu wyrażenia długości nie jest cenne, ponieważ wprowadza pomyłkę.  
+LUIS kompiluje wydajne modele z wyrażenia długości, które są starannie wybierane przez autora modelu LUIS. Dodanie zbyt wielu wyrażenia długości nie jest cenne, ponieważ wprowadza pomyłkę.
 
 Lepiej zacząć od kilku wyrażenia długościów, a następnie [przejrzeć punkt końcowy wyrażenia długości](luis-how-to-review-endpoint-utterances.md) w celu poprawnego przewidywania zamierzeń i wyodrębnienia jednostek.
 
@@ -108,11 +108,11 @@ Normalizacja nie oznacza, że w przykładach wyrażenia długości lub przewidyw
 
 ### <a name="punctuation-marks"></a>Znaki interpunkcyjne
 
-Interpunkcja jest osobnym tokenem w LUIS. Wypowiedź, który zawiera kropkę na końcu, a wypowiedź, który nie zawiera kropki na końcu, to dwa oddzielne wyrażenia długości i mogą uzyskać dwa różne przewidywania. 
+Znak interpunkcyjny jest tokenu oddzielnych w usługi LUIS. Wypowiedź, który zawiera kropkę na końcu, a wypowiedź, który nie zawiera kropki na końcu, to dwa oddzielne wyrażenia długości i mogą uzyskać dwa różne przewidywania. 
 
 Jeśli interpunkcja nie jest znormalizowana, LUIS nie ignoruje znaków interpunkcyjnych, domyślnie, ponieważ niektóre aplikacje klienckie mogą umieścić istotny wpływ na te znaki. Upewnij się, że przykład wyrażenia długości używać interpunkcji i bez znaków interpunkcyjnych, aby oba style zwracały te same wyniki względne. 
 
-Upewnij się, że model obsługuje interpunkcję w [przykład wyrażenia długości](luis-concept-utterance.md) (bez znaków interpunkcyjnych) lub w [wzorcach](luis-concept-patterns.md) , w których łatwiej jest zignorować interpunkcję z specjalną składnią: `I am applying for the {Job} position[.]`
+Upewnij się, że model obsługuje interpunkcję w przykład wyrażenia długości (bez znaków interpunkcyjnych) lub w [wzorcach](luis-concept-patterns.md) , w których łatwiej jest zignorować interpunkcję z specjalną składnią: `I am applying for the {Job} position[.]`
 
 Jeśli interpunkcja nie ma określonego znaczenia w aplikacji klienckiej, należy wziąć pod uwagę [Ignorowanie interpunkcji](#utterance-normalization) przez normalizowanie interpunkcji. 
 
@@ -136,18 +136,18 @@ Po przeszkoleniu, opublikowaniu i odebraniu zapytania dotyczącego [punktu końc
 
 Zapoznaj się z [najlepszymi rozwiązaniami](luis-concept-best-practices.md) i zastosuj je w ramach regularnego cyklu tworzenia.
 
-## <a name="label-for-word-meaning"></a>Etykieta wyrazu znaczenie
+## <a name="label-for-word-meaning"></a>Etykieta znaczenie słowa
 
-Jeśli wybór wyrazu lub uzgodnienie wyrazu są takie same, ale nie oznacza to tego samego znaczenia, nie należy oznaczyć go jednostką. 
+Jeśli wybór programu word lub rozmieszczeniu word jest taka sama, ale nie oznaczają to samo, nie przypisuj jej etykiety bez jednostki. 
 
-Następujący wyrażenia długości, słowo `fair` to homograph. Nazwa jest taka sama, ale ma inne znaczenie:
+Następujące wypowiedzi, wyraz `fair` jest Homogram. Została wpisana takie same, ale ma inne znaczenie:
 
 |Wypowiedź|
 |--|
-|Jakiego rodzaju targi są wykonywane w regionie Seattle w tym lato?|
-|Czy aktualna ocena jest atrakcyjna dla przeglądu w Seattle?|
+|Jakiego rodzaju targach hrabstwa występują na terenie Seattle tego lata?|
+|Jest bieżąca ocena do przeglądu Seattle uczciwe?|
 
-Jeśli chcesz, aby jednostka zdarzenia znalazła wszystkie dane zdarzeń, Oznacz słowo `fair` w pierwszej wypowiedź, ale nie w drugim.
+Jeśli chce się jednostkę zdarzeń, aby znaleźć wszystkie dane zdarzeń, etykieta wyraz `fair` w pierwszym wypowiedź, ale nie w ciągu sekundy.
 
 
 ## <a name="next-steps"></a>Następne kroki

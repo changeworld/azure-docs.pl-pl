@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: atsenthi
-ms.openlocfilehash: b0f1a081727721ea0325276cf9edd52c6d71fb6b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 96da89a00b054767553b0ed3d8debf30c344dd62
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243862"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307321"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Obsługa KeyVaultReference dla aplikacji Service Fabric (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób bezpiecz
         ...
     {
         "parameters":  [
-            "name":  "CentralSecretService"
+            "name":  "CentralSecretService",
                 {
                     "name":  "IsEnabled",
                     "value":  "true"

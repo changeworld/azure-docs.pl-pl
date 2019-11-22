@@ -10,30 +10,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: dad28da0b481467633bebf664fea2be39a50200b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e72e6c112913d646b6dc1479a9b80acc6d4ec7b1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681050"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280752"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopiowanie danych z programu DB2 przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-onprem-db2-connector.md)
 > * [Bieżąca wersja](connector-db2.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych programu DB2. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych programu DB2. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Ten łącznik bazy danych DB2 jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Dane z bazy danych programu DB2 można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Dane z bazy danych programu DB2 można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W przypadku tego łącznika bazy danych DB2 obsługiwane są następujące platformy i wersje programu IBM DB2 z użyciem rozproszonej architektury relacyjnej bazy (DRDA) (SQLAM) w wersji 9, 10 i 11:
 
@@ -64,19 +64,21 @@ Integration Runtime udostępnia wbudowany sterownik programu DB2, dlatego nie tr
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika bazy danych DB2.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Następujące właściwości są obsługiwane w przypadku usługi połączonej z bazą danych DB2:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **DB2** | Tak |
 | serwer |Nazwa serwera bazy danych DB2. Możesz określić numer portu następujący po nazwie serwera rozdzielany średnikiem, np. `server:port`. |Tak |
-| baza danych |Nazwa bazy danych DB2. |Tak |
+| database |Nazwa bazy danych DB2. |Tak |
 | authenticationType |Typ uwierzytelniania używany do łączenia się z bazą danych programu DB2.<br/>Dozwolona wartość to: **podstawowa**. |Tak |
 | nazwa użytkownika |Określ nazwę użytkownika w celu nawiązania połączenia z bazą danych programu DB2. |Tak |
-| hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. |Nie |
+| hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| pakietcollection | Określ w miejscu, w którym mają być tworzone przez funkcję automatycznego tworzenia pakietów na podstawie zapytania w bazie danych | Nie |
+| certificateCommonName | Korzystając z szyfrowania SSL (SSL) lub Transport Layer Security (TLS), należy wprowadzić wartość Nazwa pospolita certyfikatu. | Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -105,15 +107,15 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej z
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu DB2.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu DB2.
 
 Aby skopiować dane z bazy danych DB2, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Db2Table** | Tak |
-| schematy | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
-| tabele | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
 | tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -138,16 +140,16 @@ Jeśli używasz zestawu danych `RelationalTable` z określonym typem, nadal jest
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło bazy danych DB2.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło bazy danych DB2.
 
 ### <a name="db2-as-source"></a>DB2 jako źródło
 
 Aby skopiować dane z bazy danych DB2, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **Db2Source** | Tak |
-| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nie (Jeśli określono "TableName" w zestawie danych) |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -185,40 +187,40 @@ Jeśli używasz źródła z wpisaną `RelationalSource`, jest ono nadal obsługi
 
 ## <a name="data-type-mapping-for-db2"></a>Mapowanie typu danych dla programu DB2
 
-Podczas kopiowania danych z programu DB2 następujące mapowania są używane z typów danych DB2 do Azure Data Factory danych pośrednich. Zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md) , aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych do ujścia.
+Podczas kopiowania danych z programu DB2 następujące mapowania są używane z typów danych DB2 do Azure Data Factory danych pośrednich. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
 
-| Typ bazy danych DB2 | Typ danych pośrednich fabryki danych |
+| Typ bazy danych DB2 | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BigInt |Int64 |
-| Binarny |Byte [] |
-| Obiekt blob |Byte [] |
-| delikatn |Ciąg |
-| Obiektów CLOB |Ciąg |
-| Date |Datę |
+| Binary |Byte[] |
+| Obiekt blob |Byte[] |
+| Char |Ciąg |
+| Clob |Ciąg |
+| Date |Data i godzina |
 | DB2DynArray |Ciąg |
 | DbClob |Ciąg |
-| Dokładności |Dokładności |
-| DecimalFloat |Dokładności |
-| Double |Double |
-| Float |Double |
-| Zdjęć |Ciąg |
-| Liczba całkowita |Elementem |
-| LongVarBinary |Byte [] |
+| Dziesiętna |Dziesiętna |
+| DecimalFloat |Dziesiętna |
+| Podwójne |Podwójne |
+| Float |Podwójne |
+| Graphic |Ciąg |
+| Liczba całkowita |Int32 |
+| LongVarBinary |Byte[] |
 | LongVarChar |Ciąg |
 | LongVarGraphic |Ciąg |
-| przypada |Dokładności |
+| Numeric |Dziesiętna |
 | Real |Pojedyncze |
 | SmallInt |Int16 |
-| Time |Czasu |
+| Godzina |TimeSpan |
 | Znacznik czasu |DateTime |
-| Liczby |Byte [] |
+| Liczby |Byte[] |
 | VarChar |Ciąg |
 | VarGraphic |Ciąg |
-| dokument |Byte [] |
+| Xml |Byte[] |
 
 ## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
 
 Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

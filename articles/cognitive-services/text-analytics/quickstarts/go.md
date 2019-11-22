@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wywoływanie interfejsu API analizy tekstu przy użyciu języka Go'
+title: 'Szybki start: wywoływanie interfejsu API analizy tekstu przy użyciu języka Go'
 titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje i przykłady kodu, aby szybko rozpocząć korzystanie z interfejs API analizy tekstu na platformie Azure Cognitive Services.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 5c97648bd11a506d3c818584ed7d82d0a12d2e2c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: d833293d094837c164da855aef197ad927c60ad7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387487"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286517"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Go 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Go 
 <a name="HOLTop"></a>
 
 W tym artykule przedstawiono, jak [wykrywać język](#Detect), [analizować tonację](#SentimentAnalysis), [wyodrębniać kluczowe frazy](#KeyPhraseExtraction) i [identyfikować połączone jednostki](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka Go.
 
-Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,11 +33,11 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Wykryj język
+## <a name="detect-language"></a>Wykrywanie języka
 
 Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Utwórz zmienne `TEXT_ANALYTICS_SUBSCRIPTION_KEY` środowiskowe `TEXT_ANALYTICS_ENDPOINT` i klucz subskrypcji dla Twojego zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
+1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
 1. Zapisz plik z rozszerzeniem „go”.
@@ -178,7 +178,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). W poniższym przykładzie oceniane są dwa dokumenty, jeden w języku angielskim, a drugi w hiszpańskim.
 
-1. Utwórz zmienne `TEXT_ANALYTICS_SUBSCRIPTION_KEY` środowiskowe `TEXT_ANALYTICS_ENDPOINT` i klucz subskrypcji dla Twojego zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
+1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
 1. Zapisz plik z rozszerzeniem „go”.
@@ -290,11 +290,11 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Wyodrębnij frazy kluczowe
+## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
 
 Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
 
-1. Utwórz zmienne `TEXT_ANALYTICS_SUBSCRIPTION_KEY` środowiskowe `TEXT_ANALYTICS_ENDPOINT` i klucz subskrypcji dla Twojego zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
+1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
 1. Zapisz plik z rozszerzeniem „go”.
@@ -428,9 +428,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="identify-entities"></a>Identyfikowanie jednostek
 
-Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębniają wyrazy z tekstu, takie jak "Stany Zjednoczone", a następnie zawierają link do typu i/lub Wikipedia dla tych wyrazów. Typ dla "Stany Zjednoczone" to `location`, podczas gdy link do witryny Wikipedia ma `https://en.wikipedia.org/wiki/United_States`wartość.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
+Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębniają wyrazy z tekstu, takie jak "Stany Zjednoczone", a następnie zawierają link do typu i/lub Wikipedia dla tych wyrazów. Typ dla "Stany Zjednoczone" jest `location`, podczas gdy link do witryny Wikipedia jest `https://en.wikipedia.org/wiki/United_States`.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
 
-1. Utwórz zmienne `TEXT_ANALYTICS_SUBSCRIPTION_KEY` środowiskowe `TEXT_ANALYTICS_ENDPOINT` i klucz subskrypcji dla Twojego zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
+1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
 1. Zapisz plik z rozszerzeniem „go”.

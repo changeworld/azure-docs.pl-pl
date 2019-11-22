@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123957"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274075"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpieczenia kontenera w Security Center
 
@@ -32,7 +32,7 @@ W tym artykule opisano, jak można usprawnić, monitorować i obsługiwać zabez
 [Karta Zabezpieczenia kontenera Azure Security Center ![](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Zarządzanie lukami w zabezpieczeniach — skanowanie obrazów kontenerów (wersja zapoznawcza)
-Aby monitorować Azure Container Registry, połącz go z Security Center. Po wypchnięciu nowego obrazu Security Center skanuje obraz przy użyciu skanera od wiodącego w branży skanowania dostawcy, Qualys.
+Aby monitorować Azure Container Registry, upewnij się, że korzystasz z warstwy Standardowa Security Center (zobacz [Cennik](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Następnie Włącz opcjonalny pakiet rejestrów kontenerów. Po wypchnięciu nowego obrazu Security Center skanuje obraz przy użyciu skanera od wiodącego w branży skanowania dostawcy, Qualys.
 
 Po znalezieniu problemów — według Qualys lub Security Center — otrzymasz powiadomienie na pulpicie nawigacyjnym Security Center. W przypadku każdej luki w zabezpieczeniach Security Center zawiera zalecenia z możliwością wykonania akcji, a także klasyfikację ważności oraz wskazówki dotyczące sposobu korygowania problemu. Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Center, zobacz listę zaleceń dotyczących [ochrony maszyny wirtualnej](security-center-virtual-machine-protection.md##compute-and-app-recs).
 
@@ -55,7 +55,7 @@ AKS zapewnia kontrolę zabezpieczeń i wgląd w zabezpieczenia stan klastrów. S
 
 Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Center, zobacz [Ochrona maszyn wirtualnych](security-center-virtual-machine-protection.md).
 
-## <a name="run-time-protection---real-time-threat-detection"></a>Ochrona w czasie wykonywania — wykrywanie zagrożeń w czasie rzeczywistym 
+## <a name="run-time-protection---real-time-threat-detection"></a>Ochrona w czasie wykonywania — wykrywanie zagrożeń w czasie rzeczywistym
 
 Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym w środowiskach kontenerów i generuje alerty dla podejrzanych działań. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
 

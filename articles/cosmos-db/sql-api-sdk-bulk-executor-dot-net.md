@@ -8,18 +8,18 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2019
 ms.author: ramkris
-ms.openlocfilehash: 0ff281e54df0273cc4c72d1780f4a99fe9719aec
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b6685f8524dc1f3ac080abe81389d091c7cf6f1b
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900187"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306755"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka modułu wykonawczego platformy .NET: informacje o pobieraniu 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [Źródło zmian platformy .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
@@ -34,11 +34,14 @@ ms.locfileid: "72900187"
 | |  |
 |---|---|
 | **Opis**| Biblioteka modułu wykonawczego platformy .NET umożliwia aplikacjom klienckim wykonywanie operacji zbiorczych na kontach Azure Cosmos DB. Ta biblioteka zawiera przestrzenie nazw BulkImport, BulkUpdate i BulkDelete. Moduł BulkImport umożliwia zbiorcze pozyskiwanie dokumentów w sposób zoptymalizowany w taki sposób, że przepływność obsługiwana dla kolekcji jest używana w maksymalnym zakresie. Moduł BulkUpdate można zbiorczo aktualizować istniejące dane w kontenerach usługi Azure Cosmos jako poprawki. Moduł BulkDelete umożliwia zbiorcze usuwanie dokumentów w sposób zoptymalizowany w taki sposób, że przepływność obsługiwana dla kolekcji jest używana w maksymalnym zakresie.|
-|**Pobieranie zestawu SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
+|**Zestaw SDK do pobrania**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Biblioteka modułu wykonującego zbiorczo w serwisie GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Wprowadzenie**|[Wprowadzenie do zestawu .NET SDK biblioteki wykonawczej zbiorczego](bulk-executor-dot-net.md)|
-| **Bieżąca obsługiwana platforma**| Microsoft .NET Framework 4.5.2, 4.6.1 i .NET Standard 2,0 |
+| **Bieżącej struktury obsługiwanej**| Microsoft .NET Framework 4.5.2, 4.6.1 i .NET Standard 2,0 |
+
+> [!NOTE]
+> Jeśli korzystasz z modułu wykonawczego zbiorczego, zapoznaj się z najnowszą wersją 3. x [zestawu .NET SDK](tutorial-sql-api-dotnet-bulk-import.md), który zawiera zbiorczy moduł wykonawczy wbudowany w zestaw SDK. 
 
 ## <a name="release-notes"></a>Informacje o wersji
 
@@ -50,15 +53,15 @@ ms.locfileid: "72900187"
 
 * Zmieniono zależność zestawu SDK na > = 2.5.1
 
-### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0 — preview2
 
 * Dodano obsługę zbiorczego wykonawcy wykresu do akceptowania czasu wygaśnięcia dla wierzchołków i krawędzi
 
-### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0 — preview2
 
 * Rozwiązano problem, który spowodował wyjątek podczas elastycznego skalowania Azure Cosmos DB podczas uruchamiania w trybie bramy. Ta poprawka sprawia, że jest funkcjonalnie równoważna z wersją 1.4.1.
 
-### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0 — preview2
 
 * Dodano obsługę BulkDelete dla kont interfejsu API SQL w celu akceptowania klucza partycji, spójnych kolekcji identyfikatorów dokumentów do usunięcia. Ta zmiana powoduje, że jest ona funkcjonalnie równoważna z wersją 1.4.0.
 
@@ -66,7 +69,7 @@ ms.locfileid: "72900187"
 
 * W tym MongoBulkExecutor do obsługi .NET Standard 2,0. Ta funkcja sprawia, że jest ona funkcjonalnie równoważna z wersją 1.3.0, z dodaniem obsługi .NET Standard 2,0 jako platformy docelowej.
 
-### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0 — wersja zapoznawcza
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
 * Dodano .NET Standard 2,0 jako jedną z obsługiwanych platform docelowych, aby Biblioteka wykonawców zbiorczych działała z aplikacjami .NET Core.
 

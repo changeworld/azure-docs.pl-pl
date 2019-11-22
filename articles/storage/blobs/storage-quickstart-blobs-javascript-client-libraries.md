@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów za pomocą przeglądarki przy użyciu języków JavaScript i HTML
-description: Dowiedz się, jak za pomocą wystąpienia obiektu BlobService przekazywać i usuwać obiekty blob oraz wyświetlać ich listę, korzystając z języka JavaScript na stronie HTML.
+title: 'Szybki Start: usługa Azure Blob Storage dla języka JavaScript v2 w przeglądarce'
+description: Dowiedz się, jak używać wystąpienia BlobService do przekazywania, wyświetlania i usuwania obiektów BLOB za pomocą zestawu SDK języka JavaScript V2 na stronie HTML.
 keywords: magazyn, javascript, html
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,16 +8,16 @@ ms.date: 08/29/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1bf71f899a38fa4ce36f8f0ffc78de0c64f6c3f3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173083"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270035"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Szybki start: Przekazywanie, usuwanie oraz wyświetlanie listy obiektów blob przy użyciu języka JavaScript/HTML w przeglądarce
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Szybki start: przekazywanie, usuwanie oraz wyświetlanie listy obiektów blob przy użyciu języka JavaScript/HTML w przeglądarce
 
 Ten przewodnik Szybki start opisuje zarządzanie obiektami blob z poziomu kodu uruchamianego w całości w przeglądarce. Podejście użyte w tym miejscu pokazuje, jak użyć wymaganych środków zabezpieczeń do zapewnienia chronionego dostępu do konta magazynu obiektów blob. Do wykonania kroków tego przewodnika Szybki start jest potrzebna [subskrypcja platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -76,9 +76,9 @@ az storage account generate-sas
 ```
 Serie wartości występujące po każdym parametrze mogą wydawać się niezrozumiałe. Te wartości parametrów odpowiadają pierwszym literom odpowiednich uprawnień. W poniższej tabeli wyjaśniono pochodzenie tych wartości: 
 
-| Parametr        | Value   | Opis  |
+| Parametr        | Wartość   | Opis  |
 |------------------|---------|---------|
-| *uprawnienia*    | racwdl  | Ta sygnatura dostępu współdzielonego umożliwia używanie poleceń *read*, *append*, *create*, *write*, *delete* i *list*. |
+| *permissions*    | racwdl  | Ta sygnatura dostępu współdzielonego umożliwia używanie poleceń *read*, *append*, *create*, *write*, *delete* i *list*. |
 | *resource-types* | sco     | Ta sygnatura dostępu współdzielonego dotyczy następujących zasobów: *usługa*, *kontener* i *obiekt*. |
 | *services*       | b       | Ta sygnatura dostępu współdzielonego dotyczy usługi *obiektów blob*. |
 
@@ -249,7 +249,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Aby ten przykładowy kod zadziałał, musisz podać wartość ciągu dla parametru *blobName*.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Aby wyczyścić zasoby utworzone podczas pracy z tym przewodnikiem Szybki start, wróć do witryny [Azure Portal](https://portal.azure.com) i wybierz konto magazynu. Po wybraniu konta magazynu możesz je usunąć, wybierając pozycję: **Przegląd > Usuń konto magazynu**.
+Aby wyczyścić zasoby utworzone podczas pracy z tym przewodnikiem Szybki start, wróć do witryny [Azure Portal](https://portal.azure.com) i wybierz konto magazynu. Po wybraniu konta magazynu możesz je usunąć, wybierając pozycję **Przegląd > Usuń konto magazynu**.
 
 ## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z przykładami, aby dowiedzieć się, jak pobrać obiekty blob oraz wyświetlić informację o postępie przekazywania plików.

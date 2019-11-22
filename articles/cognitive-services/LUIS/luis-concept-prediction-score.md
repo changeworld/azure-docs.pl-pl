@@ -11,56 +11,56 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 5b8d97005d8f404a296ddb45e92b65e4aa811aa3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486766"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280820"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Wyniki przewidywania wskazują dokładność przewidywania dla zamiar i jednostek
 
 Wynik przewidywania wskazuje, że stopień zaufania LUIS jest przeznaczony do przewidywania wyników wypowiedź użytkownika.
 
-Wynik przewidywania jest z przedziału od zera (0) do jednego (1). Przykładem wysoce niebezpiecznego wyniku LUIS jest 0,99. Przykładem wyniku o niskiej pewności jest 0,01. 
+Wynik prognoz jest między zero (0) i jeden (1). Przykład wysoce pewność oceny usługi LUIS wynosi 0,99. Przykładem wynik niskim poziomem pewności, że jest 0,01. 
 
-|Wartość wyniku|zachowanie|
+|Wartość|Ufność|
 |--|--|
-|1|określone dopasowanie|
-|0,99|wysoki poziom pewności|
-|0,01|niski poziom pewności|
-|0|Niepowodzenie dopasowania|
+|1|określony dopasowania|
+|0,99.|o dużej pewności|
+|0.01|niski ufności|
+|0|określony błąd dopasowania|
 
-## <a name="top-scoring-intent"></a>Cel oceny górnej
+## <a name="top-scoring-intent"></a>Ocenianie górnej intencji
 
-Każde przewidywanie wypowiedź zwraca zamiar oceny górnej. To prognozowanie to liczbowe porównanie wyników przewidywania. 
+Co prognozowania wypowiedź zwraca intencji oceniania top. To prognozowanie to liczbowe porównanie wyników przewidywania. 
 
 ## <a name="proximity-of-scores-to-each-other"></a>Bliskość wyników do siebie
 
 2 pierwsze wyniki mogą mieć bardzo małą różnicę między nimi. LUIS nie wskazuje tej bliskości innej niż zwraca górny wynik.  
 
-## <a name="return-prediction-score-for-all-intents"></a>Zwróć ocenę prognoz dla wszystkich intencji
+## <a name="return-prediction-score-for-all-intents"></a>Zwraca wynik prognoz dla wszystkich intencji
 
-Wyniki testu lub punktu końcowego mogą obejmować wszystkie intencje. Ta konfiguracja jest ustawiana w punkcie końcowym przy użyciu poprawnej pary nazwa/wartość QueryString.
+Wynik testu lub punkt końcowy może obejmować wszystkie intencji. Ta konfiguracja jest ustawiana w punkcie końcowym przy użyciu poprawnej pary nazwa/wartość QueryString.
 
 |Interfejs API przewidywania|Nazwa QueryString|
 |--|--|
-|Czytanie|`show-all-intents=true`|
+|V3|`show-all-intents=true`|
 |Wersja 2|`verbose=true`|
 
-## <a name="review-intents-with-similar-scores"></a>Zapoznaj się z intencjami podobnymi do wyników
+## <a name="review-intents-with-similar-scores"></a>Przejrzyj intencji z podobne wyniki
 
 Przegląd oceny dla wszystkich intencji to dobry sposób na sprawdzenie, czy nie tylko jest to poprawna metoda określona, ale że wynik następnego zidentyfikowanego celu jest znacząco i ciągle niższy dla wyrażenia długości.
 
-Jeśli wiele intencji ma zamknięte wyniki prognozowania na podstawie kontekstu wypowiedź, LUIS może przełączać się między intencjami. Aby rozwiązać ten problem, Kontynuuj dodawanie wyrażenia długości do każdego zamiaru z większą różnorodnością różnic kontekstowych lub aplikację kliencką, taką jak rozmowa bot, wybierz programowe opcje dotyczące obsługi 2 najważniejszych założeń.
+Jeśli wiele intencji Zamknij prognozowania oceny na podstawie kontekstu wypowiedź LUIS może przełączać się między intencji. Aby rozwiązać ten problem, Kontynuuj dodawanie wyrażenia długości do każdego zamiaru z większą różnorodnością różnic kontekstowych lub aplikację kliencką, taką jak rozmowa bot, wybierz programowe opcje dotyczące obsługi 2 najważniejszych założeń.
 
-2 intencje, które są zbyt blisko oceniane, mogą odwrócić ze względu na **niedeterministyczne szkolenie**. Górny wynik może stać się drugim u góry, a drugi wynik może stać się pierwszym górnym wynikiem. Aby uniknąć tej sytuacji, należy dodać przykład wyrażenia długości do każdego z dwóch najlepszych zamiar dla tego wypowiedź z wyborem słowa i kontekstem, który odróżnia 2 intencje. Dwa intencje powinny mieć taką samą liczbę przykładowych wyrażenia długości. Reguła kciuka do oddzielenia, aby zapobiec występowaniu z poziomu szkolenia, to 15% różnica w ocenie.
+2 intencje, które są zbyt blisko oceniane, mogą odwrócić ze względu na **niedeterministyczne szkolenie**. Najważniejsze wynik może stać się druga u góry, a drugi oceny najważniejszych może stać się pierwszym oceny najważniejszych. Aby uniknąć tej sytuacji, należy dodać przykład wyrażenia długości do każdego z dwóch najlepszych zamiar dla tego wypowiedź z wyborem słowa i kontekstem, który odróżnia 2 intencje. Dwa intencji powinny mieć o takiej samej liczby wypowiedzi przykład. Zasada mówi dla separacji w celu uniemożliwienia odwrócenie ze względu na szkolenie, jest 15% różnica w wyniki.
 
 Możesz wyłączyć **niedeterministyczne szkolenie** , [przekształcenie ze wszystkimi danymi](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="differences-with-predictions-between-different-training-sessions"></a>Różnice związane z przewidywaniami między różnymi sesjami szkoleniowymi
 
-W przypadku uczenia tego samego modelu w innej aplikacji, a wyniki nie są takie same, różnica wynika z faktu, że jest to **niedeterministyczne szkolenie** (element losowości). Po drugie, każdy z zamiaru wypowiedź do więcej niż jednego celu oznacza, że najwyższy zamiar dla tego samego wypowiedź może ulec zmianie w zależności od szkoleń.
+W przypadku uczenia tego samego modelu w innej aplikacji, a wyniki nie są takie same, różnica wynika z faktu, że jest to **niedeterministyczne szkolenie** (element losowości). Po drugie wszelkie nakładania się numerów wypowiedź na intencje więcej niż jeden oznacza, że najważniejsze przeznaczenie tego samego wypowiedź można zmienić w zależności od szkolenia.
 
 Jeśli rozmowa bot wymaga określonego wyniku LUIS, aby wskazać wiarygodność, należy użyć różnicy wynikowej między dwoma najczęściej używanymi intencjami. Ta sytuacja zapewnia elastyczność w zakresie różnic w szkoleniu.
 
@@ -68,16 +68,16 @@ Możesz wyłączyć **niedeterministyczne szkolenie** , [przekształcenie ze wsz
 
 ## <a name="e-exponent-notation"></a>Notacja E (wykładnik)
 
-Wyniki przewidywania mogą korzystać z notacji wykładniczej, która znajduje *się powyżej zakresu* 0-1, takiego jak `9.910309E-07`. Ten wynik wskazuje bardzo **małą** liczbę.
+Wyniki prognozowania można używać notacji wykładnika _pojawiające się_ powyżej 0 – 1 do zakresu, takich jak `9.910309E-07`. Ten wynik jest wskazaniem bardzo **małych** numer.
 
-|Wynik w notacji E |Rzeczywisty wynik|
+|Wynik notacji E |Rzeczywisty wynik|
 |--|--|
-|9.910309 e-07|.0000009910309|
+|9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>interpunkcyjny
+## <a name="punctuation"></a>Znaki interpunkcyjne
 
 [Dowiedz się więcej](luis-concept-utterance.md#punctuation-marks) na temat używania lub ignorowania interpunkcji. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Dodawanie jednostek](luis-how-to-add-entities.md) , aby dowiedzieć się więcej na temat dodawania jednostek do aplikacji Luis.
+Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.
