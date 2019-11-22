@@ -1,21 +1,21 @@
 ---
-title: Wersje, poprawki i uaktualnienia finansów usługi Azure łańcucha bloków
+title: Wersje, poprawki, &, uaktualnienia w ramach usługi Azure łańcucha bloków
 description: Przegląd obsługiwanych wersji księgi w usłudze Azure łańcucha bloków Service, w tym zasady dotyczące poprawek systemów i uaktualnień zarządzanych przez użytkowników oraz zarządzanych przez użytkownika.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 16d0f0876e7d75dfd0266468ddc3005b86fc632f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 03eaf86ece191cce7eef6647a582a66495692db2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579795"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284927"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Obsługiwane wersje finansów usługi Azure łańcucha bloków Service
 
@@ -27,7 +27,7 @@ Obecnie usługa Azure łańcucha bloków obsługuje [kworum w wersji 2.2.3](http
 
 Przechowywanie wersji w kworum odbywa się poprzez wersje główne, pomocnicze i poprawki. Na przykład jeśli wersja kworum to 2.0.1, typ wydania zostanie skategoryzowany w następujący sposób:
 
-|Główna | Średni  | Wysłana  |
+|Główne | Pomocnicza  | Wysłana  |
 | :--- | :----- | :----- |
 | 2 | 0 | 1 | 
 

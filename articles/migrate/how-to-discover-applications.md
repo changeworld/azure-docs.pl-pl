@@ -4,14 +4,14 @@ description: Opisuje sposób odnajdywania aplikacji, ról i funkcji na serwerach
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 11/20/2019
 ms.author: snehaa
-ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158639"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278474"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Odkryj aplikacje maszynowe, role i funkcje
 
@@ -19,10 +19,10 @@ W tym artykule opisano sposób odnajdywania aplikacji, ról i funkcji na serwera
 
 Odnajdywanie spisu aplikacji, a role/funkcje działające na maszynach lokalnych, ułatwia identyfikowanie i planowanie ścieżki migracji do platformy Azure, która jest dostosowana do obciążeń.
 
-Odnajdywanie aplikacji przy użyciu Azure Migrate: Ocena serwera jest bez wykorzystania agentów. Niczego nie trzeba instalować na maszynach i maszynach wirtualnych. Funkcja oceny serwera używa urządzenia Azure Migrate do przeprowadzenia odnajdywania wraz z poświadczeniami gościa maszyny. Urządzenie zdalnie uzyskuje dostęp do maszyn przy użyciu usług WMI i wywołań SSH.
-
 > [!NOTE]
 > Funkcja odnajdywania aplikacji jest obecnie obsługiwana tylko w przypadku maszyn wirtualnych VMware i jest ograniczona tylko do odnajdowania. Nie oferujemy jeszcze oceny opartej na aplikacji.  Teraz Ocena serwera umożliwia obecnie ocenianie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V i serwerów fizycznych na poziomie komputera w celu przeprowadzenia migracji w celu przesunięcia i przejścia.
+
+Odnajdywanie aplikacji przy użyciu Azure Migrate: Ocena serwera jest bez wykorzystania agentów. Niczego nie trzeba instalować na maszynach i maszynach wirtualnych. Funkcja oceny serwera używa urządzenia Azure Migrate do przeprowadzenia odnajdywania wraz z poświadczeniami gościa maszyny. Urządzenie zdalnie uzyskuje dostęp do maszyn VMware przy użyciu interfejsów API VMware.
 
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem

@@ -1,6 +1,7 @@
 ---
-title: Monitorowania bram sieci VPN za pomocą usługi Azure Network Watcher Rozwiązywanie problemów z | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób diagnozowanie połączeń lokalnych za pomocą usługi Azure Automation i Usługa Network Watcher
+title: Rozwiązywanie problemów i monitorowanie bram sieci VPN — Azure Automation
+titleSuffix: Azure Network Watcher
+description: W tym artykule opisano sposób diagnozowania łączności lokalnej przy użyciu Azure Automation i Network Watcher
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d3a09ee83d4a1f05781c885eaa708e6e024b7f97
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64719802"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275906"
 ---
-# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorowania bram sieci VPN z rozwiązywaniem problemów usługi Network Watcher
+# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorowanie bram sieci VPN za pomocą Network Watcher rozwiązywania problemów
 
-Uzyskiwanie szczegółowych informacji o wydajności sieci ma krytyczne znaczenie, aby zapewnić klientom usług reliable services. W związku z tym jest niezwykle szybko wykryć warunki awarii sieci i podejmij działania naprawcze, aby uniknąć awarii warunku. Usługa Azure Automation pozwala na implementowanie i uruchomić zadanie w sposób programowy za pomocą elementów runbook. Za pomocą usługi Azure Automation tworzy doskonałe przepis na wykonywanie sieci ciągłe i aktywnego monitorowania i alertów.
+Uzyskanie szczegółowych informacji o wydajności sieci jest niezwykle ważne, aby zapewnić klientom niezawodne usługi. W związku z tym ważne jest, aby szybko wykrywać warunki awarii sieci i podejmować działania naprawcze w celu ograniczenia stanu przestoju. Azure Automation umożliwia zaimplementowanie i uruchamianie zadania w sposób programistyczny za pomocą elementów Runbook. Przy użyciu Azure Automation jest tworzony idealny przepis dotyczący ciągłego i aktywnego monitorowania sieci oraz tworzenia alertów.
 
 ## <a name="scenario"></a>Scenariusz
 
-Scenariusz na poniższej ilustracji włączeniu wielowarstwowych aplikacji przy użyciu połączenia nawiązane za pomocą bramy sieci VPN i tunelowania. Zapewnienie, że brama sieci VPN jest to kluczowe znaczenie dla wydajności aplikacji.
+Scenariusz na poniższej ilustracji to aplikacja wielowarstwowa z łącznością lokalną ustanowioną przy użyciu VPN Gateway i tunelu. Upewnienie się, że VPN Gateway działa, ma kluczowe znaczenie dla wydajności aplikacji.
 
-Element runbook jest tworzony za pomocą skryptu, aby sprawdzić stan połączenia tunelu VPN, aby sprawdzić stan tunel połączenia przy użyciu interfejsu API Rozwiązywanie problemów z zasobów. Jeśli nie jest w dobrej kondycji, wyzwalacz poczty e-mail są wysyłane do administratorów.
+Element Runbook jest tworzony za pomocą skryptu w celu sprawdzenia stanu połączenia tunelu sieci VPN przy użyciu interfejsu API rozwiązywania problemów z zasobami w celu sprawdzenia stanu tunelu połączenia. Jeśli stan nie jest w dobrej kondycji, do administratorów zostanie wysłany wyzwalacz e-mail.
 
 ![Przykładowy scenariusz][scenario]
 
-W tym scenariuszu wykonują następujące czynności:
+W tym scenariuszu zostaną:
 
-- Utwórz wywołanie elementu runbook `Start-AzureRmNetworkWatcherResourceTroubleshooting` polecenia cmdlet, aby rozwiązać stan połączenia
-- Powiązanie harmonogramu do elementu runbook
+- Utwórz element Runbook wywołujący polecenie cmdlet `Start-AzureRmNetworkWatcherResourceTroubleshooting`, aby rozwiązać problem z stanem połączenia
+- Łączenie harmonogramu z elementem Runbook
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Przed rozpoczęciem tego scenariusza, musisz mieć następujące wymagania wstępne:
+Przed rozpoczęciem tego scenariusza wymagane są następujące wymagania wstępne:
 
-- Konto usługi Azure automation na platformie Azure. Upewnij się, że konto usługi automation ma najnowsze moduły i ma również moduł AzureRM.Network. Moduł AzureRM.Network jest dostępna w galerię modułów, jeśli chcesz dodać go do konta usługi automation.
-- Konieczne jest posiadanie zestawu poświadczeń, skonfiguruj w usłudze Azure Automation. Dowiedz się więcej o [zabezpieczeń usługi Azure Automation](../automation/automation-security-overview.md)
-- Prawidłowy adres serwera SMTP (Office 365, Twój adres e-mail w środowisku lokalnym lub innym) i poświadczeń określonych w usłudze Azure Automation
-- Skonfigurowanej bramy sieci wirtualnej na platformie Azure.
-- Istniejące konto magazynu przy użyciu istniejący kontener do przechowywania dzienników w.
+- Konto usługi Azure Automation na platformie Azure. Upewnij się, że konto usługi Automation ma Najnowsze moduły, a także moduł AzureRM. Network. Moduł AzureRM. Network jest dostępny w galerii modułów, jeśli trzeba ją dodać do konta usługi Automation.
+- Musisz mieć zestaw poświadczeń skonfigurowany w Azure Automation. Dowiedz się więcej pod [Azure Automation zabezpieczeniami](../automation/automation-security-overview.md)
+- Prawidłowy serwer SMTP (Office 365, lokalny adres e-mail lub inny) i poświadczenia zdefiniowane w Azure Automation
+- Skonfigurowano bramę Virtual Network na platformie Azure.
+- Istniejące konto magazynu z istniejącym kontenerem do przechowywania dzienników.
 
 > [!NOTE]
-> Infrastruktura przedstawiony w powyższej ilustracji jest dla celów ilustracyjnych i nie są tworzone za pomocą kroki zawarte w tym artykule.
+> Infrastruktura przedstawiona na powyższym obrazie ma na celu ilustrację i nie została utworzona za pomocą czynności zawartych w tym artykule.
 
-### <a name="create-the-runbook"></a>Tworzenie elementu runbook
+### <a name="create-the-runbook"></a>Tworzenie elementu Runbook
 
-Pierwszym krokiem do konfigurowania w przykładzie jest utworzyć element runbook. W tym przykładzie użyto konta Uruchom jako. Aby dowiedzieć się więcej o kontach Uruchom jako, odwiedź stronę [uwierzytelniać elementy Runbook przy użyciu konta Uruchom jako platformy Azure](../automation/automation-create-runas-account.md)
+Pierwszym krokiem w celu skonfigurowania przykładu jest utworzenie elementu Runbook. W tym przykładzie używa się konta Uruchom jako. Aby dowiedzieć się więcej o kontach Uruchom jako, odwiedź stronę [uwierzytelnianie elementów Runbook przy użyciu konta Uruchom jako platformy Azure](../automation/automation-create-runas-account.md)
 
 ### <a name="step-1"></a>Krok 1
 
-Przejdź do usługi Azure Automation w [witryny Azure portal](https://portal.azure.com) i kliknij przycisk **elementów Runbook**
+Przejdź do Azure Automation w [Azure Portal](https://portal.azure.com) i kliknij pozycję **elementy Runbook** .
 
 ![Przegląd konta usługi Automation][1]
 
 ### <a name="step-2"></a>Krok 2
 
-Kliknij przycisk **Dodaj element runbook** można uruchomić procesu tworzenia elementu runbook.
+Kliknij pozycję **Dodaj element Runbook** , aby rozpocząć proces tworzenia elementu Runbook.
 
-![Blok elementów runbook][2]
+![blok elementów Runbook][2]
 
 ### <a name="step-3"></a>Krok 3
 
-W obszarze **szybkie tworzenie**, kliknij przycisk **Utwórz nowy element runbook** do tworzenia elementu runbook.
+W obszarze **szybkie tworzenie**kliknij pozycję **Utwórz nowy element Runbook** , aby utworzyć element Runbook.
 
-![Dodaj blok elementu runbook][3]
+![Dodawanie bloku elementu Runbook][3]
 
 ### <a name="step-4"></a>Krok 4
 
-W tym kroku będziemy nadaj elementowi runbook nazwę, w tym przykładzie jest wywoływana **Get VPNGatewayStatus**. Jest ważne, aby nadaj elementowi runbook nazwę opisową i zalecana, nadając mu nazwę zgodną z standardowego środowiska PowerShell standardami nazewnictwa. Typ elementu runbook w tym przykładzie to **PowerShell**, inne opcje są graficzny, w przypadku przepływu pracy programu PowerShell i PowerShell graficzny przepływ pracy.
+W tym kroku przydajemy nazwę elementu Runbook, w tym przykładzie nazywamy **Get-VPNGatewayStatus**. Ważne jest, aby nadać elementowi Runbook nazwę opisową, i zaleca się nadanie jej nazwy zgodnej ze standardowymi standardami nazewnictwa programu PowerShell. Typem elementu Runbook dla tego przykładu jest program **PowerShell**, inne opcje to grafika, przepływ pracy programu PowerShell i graficzny przepływ pracy programu PowerShell.
 
-![Blok elementu runbook][4]
+![blok elementu Runbook][4]
 
 ### <a name="step-5"></a>Krok 5
 
-W tym kroku zostanie utworzony element runbook poniższy kod zawiera cały kod, które są wymagane dla przykładu. Elementy w kodzie, które zawierają \<wartość\> należy zastąpić wartościami z Twojej subskrypcji.
+W tym kroku jest tworzony element Runbook, Poniższy przykład kodu zawiera kod, który jest wymagany do tego przykładu. Elementy w kodzie, które zawierają \<wartość\> muszą zostać zastąpione wartościami z subskrypcji.
 
-Użyj poniższego kodu, kliknij przycisk **Zapisz**
+Użyj następującego kodu jako kliknij pozycję **Zapisz**
 
 ```powershell
 # Set these variables to the proper values for your environment
@@ -146,47 +147,47 @@ else
 
 ### <a name="step-6"></a>Krok 6
 
-Po zapisaniu elementu runbook zgodnie z harmonogramem muszą być połączone do niego zautomatyzować uruchamiania elementu runbook. Aby uruchomić proces, kliknij przycisk **harmonogram**.
+Po zapisaniu elementu Runbook należy do niego połączyć harmonogram w celu zautomatyzowania uruchamiania elementu Runbook. Aby rozpocząć proces, kliknij przycisk **harmonogram**.
 
 ![Krok 6][6]
 
-## <a name="link-a-schedule-to-the-runbook"></a>Powiązanie harmonogramu do elementu runbook
+## <a name="link-a-schedule-to-the-runbook"></a>Łączenie harmonogramu z elementem Runbook
 
-Należy utworzyć nowy harmonogram. Kliknij przycisk **powiązania harmonogramu z elementem runbook**.
+Należy utworzyć nowy harmonogram. Kliknij pozycję **Połącz harmonogram z elementem Runbook**.
 
 ![Krok 7][7]
 
 ### <a name="step-1"></a>Krok 1
 
-Na **harmonogram** bloku kliknij **Utwórz nowy harmonogram**
+W bloku **harmonogram** kliknij pozycję **Utwórz nowy harmonogram**
 
 ![Krok 8][8]
 
 ### <a name="step-2"></a>Krok 2
 
-Na **nowy harmonogram** bloku Wypełnij informacje o harmonogramie. Wartości, które mogą być ustawiane są na poniższej liście:
+W bloku **Nowy harmonogram** Wypełnij informacje o harmonogramie. Wartości, które można ustawić, znajdują się na poniższej liście:
 
 - **Nazwa** — przyjazna nazwa harmonogramu.
 - **Opis** — opis harmonogramu.
-- **Uruchamia** — ta wartość jest kombinacją daty, godziny i strefy czasowej, wchodzące w skład czas wyzwalaczach harmonogramu.
-- **Cykl** — ta wartość określa powtórzenie harmonogramów.  Prawidłowe wartości to **raz** lub **cyklicznie**.
+- **Początek** — ta wartość jest kombinacją daty, godziny i strefy czasowej, które składają się na czas wyzwalacza harmonogramu.
+- **Cykl** — ta wartość określa powtarzanie harmonogramów.  Prawidłowe wartości są **jednokrotne** lub **cykliczne**.
 - **Powtarzaj co** — interwał cyklu harmonogramu w godzinach, dniach, tygodniach lub miesiącach.
-- **Ustawienia okresu ważności** — wartość określa, jeśli harmonogram czas wygaśnięcia, czy nie. Można ustawić **tak** lub **nie**. Prawidłową datę i godzinę są dostarczane, jeśli tak jest wybierany.
+- **Ustawianie wygaśnięcia** — wartość określa, czy harmonogram powinien wygasnąć. Można ustawić na wartość **tak** lub **nie**. Jeśli wybrano opcję tak, należy podać prawidłową datę i godzinę.
 
 > [!NOTE]
-> Jeśli potrzebujesz częściej niż co godzinę uruchomienia elementu runbook, należy utworzyć wiele harmonogramów w różnych interwałach (oznacza to, 15, 30, 45 minut po pełnej godzinie)
+> Jeśli konieczne jest Uruchamianie elementu Runbook częściej niż co godzinę, należy utworzyć wiele harmonogramów w różnych interwałach (czyli 15, 30, 45 minut po godzinie)
 
 ![Krok 9][9]
 
 ### <a name="step-3"></a>Krok 3
 
-Kliknij przycisk Zapisz, aby zapisać harmonogram do elementu runbook.
+Kliknij przycisk Zapisz, aby zapisać harmonogram do elementu Runbook.
 
 ![Krok 10][10]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skoro już wiedzę na temat usługi Network Watcher Rozwiązywanie problemów z usługą Azure Automation, Dowiedz się, jak wyzwalać Przechwytywanie pakietów dotyczących alertów maszyny Wirtualnej, odwiedzając [tworzenie przechwytywania pakietów wyzwolonych alertów za pomocą usługi Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md).
+Teraz, gdy wiesz już, jak zintegrować Network Watcher Rozwiązywanie problemów z Azure Automation, Dowiedz się, jak wyzwolić przechwycenia pakietów na podstawie alertów maszyny wirtualnej, odwiedzając opcję [Utwórz alert wyzwalający przechwytywanie pakietów za pomocą usługi Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md).
 
 <!-- images -->
 [scenario]: ./media/network-watcher-monitor-with-azure-automation/scenario.png

@@ -1,5 +1,6 @@
 ---
-title: Rozwiązywanie problemów z połączeniami za pomocą usługi Azure Network Watcher — interfejs API REST platformy Azure | Microsoft Docs
+title: Rozwiązywanie problemów z połączeniami — interfejs API REST platformy Azure
+titleSuffix: Azure Network Watcher
 description: Dowiedz się, jak korzystać z funkcji rozwiązywania problemów z usługą Azure Network Watcher przy użyciu interfejsu API REST platformy Azure.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 82dd77e8ea36610244b97c1701209d5aa3be2869
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 792556a63b5ca9ef53a33960e8284354972b3895
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017784"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275961"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Rozwiązywanie problemów z usługą Azure Network Watcher przy użyciu interfejsu API REST platformy Azure
 
@@ -38,7 +39,7 @@ W tym artykule założono, że masz następujące zasoby:
 * Maszyny wirtualne do rozwiązywania problemów z usługą.
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z `AzureNetworkWatcherExtension` maszyną wirtualną była zainstalowana jako rozszerzenie maszyny wirtualnej. Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
+> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z maszyną wirtualną, z której na`AzureNetworkWatcherExtension` stąpiło Rozwiązywanie Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
 
 ## <a name="log-in-with-armclient"></a>Logowanie za pomocą ARMClient
 
@@ -133,7 +134,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-Poniższa odpowiedź pochodzi z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest nieosiągalny. Można zobaczyć, że wszystkie sondy zostały wysłane. Łączność z urządzeniem wirtualnym nie powiodła się z powodu konfiguracji `NetworkSecurityRule` użytkownika o nazwie **UserRule_Port80**, skonfigurowanej do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniami.
+Poniższa odpowiedź pochodzi z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **nieosiągalny**. Można zobaczyć, że wszystkie sondy zostały wysłane. Łączność z urządzeniem wirtualnym nie powiodła się z powodu `NetworkSecurityRule` skonfigurowanych przez użytkownika o nazwie **UserRule_Port80**skonfigurowanych do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniami.
 
 ```json
 {
@@ -249,7 +250,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższym przykładzie `connectionStatus` jest wyświetlany jako nieosiągalny. W szczegółach można `issues` zobaczyć, że ruch `UserDefinedRoute`został zablokowany z powodu. `hops`
+W poniższym przykładzie `connectionStatus` jest pokazywany jako **nieosiągalny**. Szczegóły `hops` można zobaczyć w obszarze `issues`, że ruch został zablokowany ze względu na `UserDefinedRoute`.
 
 ```json
 {
@@ -345,7 +346,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższej odpowiedzi widać, że `connectionStatus` są wyświetlane jako **dostępne**. Po pomyślnym nawiązaniu połączenia są podawane wartości opóźnienia.
+W poniższej odpowiedzi widzisz, że `connectionStatus` jest wyświetlana jako **osiągalna**. Po pomyślnym nawiązaniu połączenia są podawane wartości opóźnienia.
 
 ```json
 {
@@ -432,7 +433,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-Poniższy przykład jest odpowiedzią z uruchamiania poprzedniego wywołania interfejsu API. Po pomyślnym `connectionStatus` sprawdzeniu właściwość jest wyświetlana jako **osiągalna**.  Podano szczegółowe informacje dotyczące liczby przeskoków wymaganych do uzyskania dostępu do obiektu blob magazynu i opóźnienia.
+Poniższy przykład jest odpowiedzią z uruchamiania poprzedniego wywołania interfejsu API. Po pomyślnym sprawdzeniu Właściwość `connectionStatus` jest wyświetlana jako **osiągalna**.  Podano szczegółowe informacje dotyczące liczby przeskoków wymaganych do uzyskania dostępu do obiektu blob magazynu i opóźnienia.
 
 ```json
 {
@@ -469,4 +470,4 @@ Poniższy przykład jest odpowiedzią z uruchamiania poprzedniego wywołania int
 
 Informacje o automatyzowaniu przechwytywania pakietów przy użyciu alertów dotyczących maszyn wirtualnych można znaleźć w tematach [Tworzenie alertu wyzwolenie pakietu](network-watcher-alert-triggered-packet-capture.md).
 
-Sprawdź, czy określony ruch jest dozwolony w lub z maszyny wirtualnej, odwiedzając [sprawdzenie przepływu IP](diagnose-vm-network-traffic-filtering-problem.md)Sprawdź poprawność.
+Sprawdź, czy określony ruch jest dozwolony w lub z maszyny wirtualnej, odwiedzając [sprawdzenie przepływu IP Sprawdź poprawność](diagnose-vm-network-traffic-filtering-problem.md).

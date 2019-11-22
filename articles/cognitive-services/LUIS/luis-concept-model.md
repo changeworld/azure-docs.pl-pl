@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4cbca96ed95167615f3ff2876e27e546d08d92f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507716"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280868"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Projektowanie przy użyciu modeli zamierzeń i jednostek 
 
@@ -37,7 +37,7 @@ Dekompozycja modelu ma następujące części:
 * [jednostki poznanie maszyn](#machine-learned-entities)
     * [podskładniki](#entity-subcomponents-help-extract-data) (również jednostki, które są wyuczyne maszynowo)
         * [deskryptory](#descriptors-are-features) udostępniane przez funkcje 
-        * [ograniczenia](#constraints-are-text-rules) zapewniane przez jednostki, które nie są obsługiwane przez maszynę, takie jak (wyrażenia regularne i listy)
+        * [ograniczenia](#constraints-are-text-rules) zapewniane przez jednostki, które nie są obsługiwane przez maszynę, takie jak wyrażenia regularne i listy
 
 ## <a name="v2-authoring-models"></a>Modele tworzenia w wersji 2
 
@@ -134,7 +134,7 @@ Celem jest pożądany wynik _całości_ wypowiedź, podczas gdy jednostki są cz
 
 Ta wypowiedź _musi_ mieć cel i _może_ mieć jednostki:
 
-`Buy a airline ticket from Seattle to Cairo`
+`Buy an airline ticket from Seattle to Cairo`
 
 Ten wypowiedź ma jeden zamiar:
 

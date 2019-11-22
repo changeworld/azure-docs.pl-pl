@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e522ede7da669f6e684fc9a07adcc506a69e77e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597120"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267903"
 ---
 # <a name="monitor-data-flows"></a>Monitorowanie przepływów danych
 
@@ -51,7 +51,7 @@ Gdy przepływ danych jest wykonywany w platformie Spark, Azure Data Factory okre
   * Czas uruchamiania klastra: ilość czasu na uzyskanie środowiska obliczeniowego JIT platformy Spark na potrzeby wykonywania przepływu danych
   * Liczba przekształceń: ile kroków transformacji jest wykonywanych w przepływie
   
-![Monitorowanie przepływu danych Acit](media/data-flow/monitornew.png "Monitorowanie przepływu danych nowe")  
+![Monitorowanie przepływu danych](media/data-flow/monitornew.png "Monitorowanie przepływu danych nowe")  
   
 ## <a name="monitor-icons"></a>Monitoruj ikony
 

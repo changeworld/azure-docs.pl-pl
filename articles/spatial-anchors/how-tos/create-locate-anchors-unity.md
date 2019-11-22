@@ -1,19 +1,19 @@
 ---
-title: Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzennego w środowisku Unity | Microsoft Docs
+title: Tworzenie & lokalizowania kotwic w środowisku Unity
 description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu kotwic przestrzennych platformy Azure w środowisku Unity.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ade16664ffb3af7a05975c2a8d657aad4f336b06
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 72d25582d15e745b0bdefcde5f68af94eab49293
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650257"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277285"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzennego w środowisku Unity
 
@@ -141,7 +141,7 @@ Dowiedz się więcej o metodzie [ProcessFrame](https://docs.microsoft.com/dotnet
     if (aRCameraManager.subsystem.TryGetLatestFrame(cameraParams, out xRCameraFrame))
     {
         long latestFrameTimeStamp = xRCameraFrame.timestampNs;
-        
+
         bool newFrameToProcess = latestFrameTimeStamp > lastFrameProcessedTimeStamp;
 
         if (newFrameToProcess)
@@ -257,7 +257,7 @@ Dowiedz się więcej o właściwości [wygaśnięcia](https://docs.microsoft.com
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Dowiedz się więcej [](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) o metodzie.
+Dowiedz [się więcej o metodzie](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) .
 
 ```csharp
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -313,7 +313,7 @@ Dowiedz się więcej o metodzie [stop](https://docs.microsoft.com/dotnet/api/mic
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Dowiedz się więcej [](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) o metodzie resetowania.
+Dowiedz się więcej o metodzie [resetowania](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) .
 
 ```csharp
     this.cloudSession.Reset();

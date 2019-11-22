@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage w wersji 2 dla języka JavaScript'
-description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Azure Storage dla środowiska Node. js v2, aby przekazać obiekt BLOB do usługi Azure Storage, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
+description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Użyj biblioteki klienta usługi Azure Storage dla środowiska Node. js v2, aby przekazać obiekt BLOB, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/04/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825347"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269681"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage w wersji 2 dla języka JavaScript
 

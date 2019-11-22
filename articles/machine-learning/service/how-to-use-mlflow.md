@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 946350af0c1a4e8140fbf7f926061aae250e9969
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b6efdc75c15e9686728236f82fea8794f3782bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716488"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276637"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Śledzenie metryk i wdrażanie modeli przy użyciu MLflow i Azure Machine Learning (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -238,7 +238,7 @@ Na poniższym diagramie przedstawiono, że za pomocą interfejsu API MLflow Depl
 
 ### <a name="log-your-model"></a>Rejestruj model
 
-Przed wdrożeniem programu należy się upewnić, że model jest zapisany, aby można było odwołać się do niego i lokalizacji ścieżki dla wdrożenia. W skrypcie szkoleniowym powinien istnieć kod podobny do następującego: [mlflow. skryptu sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) , który zapisuje model do określonego katalogu danych wyjściowych. 
+Przed wdrożeniem programu należy się upewnić, że model jest zapisany, aby można było odwołać się do niego i lokalizacji ścieżki dla wdrożenia. W skrypcie szkoleniowym powinien istnieć kod podobny do następującego: [mlflow. skryptu sklearn. log_model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) , który zapisuje model do określonego katalogu danych wyjściowych. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -269,7 +269,7 @@ model_save_path = 'model'
 
 Funkcja `mlflow.azureml.build_image()` kompiluje obraz platformy Docker z zapisanego modelu w sposób oparty na architekturze. Automatycznie tworzy kod otoki inferencing specyficzny dla platformy i określa zależności pakietów. Określ ścieżkę modelu, obszar roboczy, identyfikator przebiegu i inne parametry.
 
-Poniższy kod tworzy obraz platformy Docker przy użyciu *przebiegu:/< Run. id >/model* jako ścieżkę model_uri dla eksperymentu Scikit — uczenie się.
+Poniższy kod tworzy obraz platformy Docker przy użyciu *przebiegu:/< Run. id >/model* jako ścieżki model_uri dla eksperymentu Scikit.
 
 ```python
 import mlflow.azureml
@@ -290,7 +290,7 @@ Najpierw określ konfigurację wdrożenia. Usługa Azure Container Instance (ACI
 
 #### <a name="deploy-to-aci"></a>Wdrażanie w usłudze ACI
 
-Skonfiguruj konfigurację wdrożenia przy użyciu metody [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Możesz również dodać tagi i opisy, aby pomóc w śledzeniu usługi sieci Web.
+Skonfiguruj konfigurację wdrożenia za pomocą metody [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Możesz również dodać tagi i opisy, aby pomóc w śledzeniu usługi sieci Web.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Następnie wdróż obraz przy Azure Machine Learning użyciu metody [deploy_from_image () zestawu SDK ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) . 
+Następnie wdróż obraz przy użyciu metody [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) zestawu Azure Machine Learning SDK. 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -346,7 +346,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Skonfiguruj konfigurację wdrożenia przy użyciu metody [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Możesz również dodać tagi i opisy, aby pomóc w śledzeniu usługi sieci Web.
+Skonfiguruj konfigurację wdrożenia za pomocą metody [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Możesz również dodać tagi i opisy, aby pomóc w śledzeniu usługi sieci Web.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-Następnie wdróż obraz przy Azure Machine Learning użyciu metody [deploy_from_image () zestawu SDK ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) . 
+Następnie wdróż obraz przy użyciu metody [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) zestawu Azure Machine Learning SDK. 
 
 ```python
 # Webservice creation using single command
@@ -389,7 +389,7 @@ Jeśli nie planujesz używania zarejestrowanych metryk i artefaktów w obszarze 
 1. Wpisz nazwę grupy zasobów. Następnie wybierz pozycję **Usuń**.
 
 
-## <a name="example-notebooks"></a>Przykładowe notesy
+## <a name="example-notebooks"></a>Przykład notesów
 
 [MLflow z usługami Azure ml notesy](https://aka.ms/azureml-mlflow-examples) pokazują i rozszerzają w oparciu o koncepcje przedstawione w tym artykule.
 

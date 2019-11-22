@@ -2,15 +2,15 @@
 title: Używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager | Microsoft Docs
 description: Użyj szablonów usługi Resource Manager z usługą Azure Deployment Manager, aby wdrażać zasoby platformy Azure.
 author: mumian
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ded7de96e560bbd0feb1c68429bb2d8219c8bd01
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232701"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307021"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (publiczna wersja zapoznawcza)
 
@@ -186,9 +186,6 @@ W dalszej części samouczka wdrożysz wprowadzenie. Tożsamość zarządzana pr
 
 Musisz utworzyć tożsamość zarządzaną przypisaną przez użytkownika i skonfigurować kontrolę dostępu dla subskrypcji.
 
-> [!IMPORTANT]
-> Tożsamość zarządzana przypisana przez użytkownika musi znajdować się w tej samej lokalizacji, co [wprowadzanie](#create-the-rollout-template). Obecnie zasoby usługi Deployment Manager, w tym wprowadzanie, można tworzyć tylko w lokalizacji Środkowe stany USA lub Wschodnie stany USA 2. Ta reguła obowiązuje jednak tylko w przypadku zasobów programu Deployment Manager (na przykład topologii usługi, usług, jednostek usług, wdrożenia i kroków). Zasoby docelowe można wdrażać w dowolnym obsługiwanym regionie platformy Azure. Na przykład w tym samouczku zasoby programu Deployment Manager są wdrażane w regionie Środkowe stany USA, a usługi są wdrażane w regionach Wschodnie stany USA i Zachodnie stany USA. To ograniczenie zostanie zlikwidowane w przyszłości.
-
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Utwórz [tożsamość zarządzaną przypisaną przez użytkownika](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. W portalu wybierz opcję **Subskrypcje** z menu po lewej stronie, a następnie wybierz swoją subskrypcję.
@@ -211,7 +208,7 @@ Otwórz plik **\ADMTemplates\CreateADMServiceTopology.json**.
 Szablon zawiera następujące parametry:
 
 * **projectName**: Ta nazwa jest używana do tworzenia nazw dla zasobów Menedżer wdrażania. Na przykład przy użyciu "JKowalski" Nazwa topologii usługi jest **JKowalski**servicetopology.  Nazwy zasobów są definiowane w sekcji zmiennych tego szablonu.
-* **azureResourcelocation**: aby uprościć ten samouczek, wszystkie zasoby współdzielą tę lokalizację, chyba że określono inaczej. Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
+* **azureResourcelocation**: aby uprościć ten samouczek, wszystkie zasoby współdzielą tę lokalizację, chyba że określono inaczej.
 * **artifactSourceSASLocation**: identyfikator URI sygnatury dostępu współdzielonego do kontenera obiektów blob, w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
 * **templateArtifactRoot**: ścieżka przesunięcia z kontenera obiektów blob, w których przechowywane są szablony i parametry. Wartość domyślna to **templates/1.0.0.0**. Nie zmieniaj tej wartości, chyba że chcesz zmienić strukturę folderów wyjaśnioną w sekcji [Przygotowywanie artefaktów](#prepare-the-artifacts). W tym samouczku używa się ścieżek względnych.  Pełna ścieżka jest tworzona przez połączenie elementów **artifactSourceSASLocation**, **templateArtifactRoot** oraz **templateArtifactSourceRelativePath** (lub **parametersArtifactSourceRelativePath**).
 * **targetSubscriptionID**: identyfikator subskrypcji, w której zasoby usługi Deployment Manager zostaną wdrożone i będą rozliczane. Użyj identyfikatora swojej subskrypcji w tym samouczku.
@@ -266,7 +263,7 @@ Szablon zawiera następujące parametry:
 ![Samouczek dotyczący usługi Azure Deployment Manager — parametry szablonu wprowadzania](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
 * **projectName**: Ta nazwa jest używana do tworzenia nazw dla zasobów Menedżer wdrażania. Na przykład przy użyciu "JKowalski" nazwa wdrożenia to **JKowalski**wdrożenia.  Nazwy są definiowane w sekcji zmiennych szablonu.
-* **azureResourcelocation**: aby uprościć ten samouczek, wszystkie zasoby usługi Deployment Manager współdzielą tę lokalizację, chyba że określono inaczej. Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
+* **azureResourcelocation**: aby uprościć ten samouczek, wszystkie zasoby usługi Deployment Manager współdzielą tę lokalizację, chyba że określono inaczej.
 * **artifactSourceSASLocation**: identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
 * **binaryArtifactRoot**: wartość domyślna to **binaries/1.0.0.0**. Nie zmieniaj tej wartości, chyba że chcesz zmienić strukturę folderów wyjaśnioną w sekcji [Przygotowywanie artefaktów](#prepare-the-artifacts). W tym samouczku używa się ścieżek względnych.  Pełna ścieżka jest tworzona przez połączenie elementów **artifactSourceSASLocation**, **binaryArtifactRoot** oraz **deployPackageUri** określonych w pliku CreateWebApplicationParameters.json.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
 * **managedIdentityID**: tożsamość zarządzana przypisana przez użytkownika, która wykonuje operacje wdrażania. Zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](#create-the-user-assigned-managed-identity).
@@ -308,7 +305,7 @@ Możesz utworzyć plik parametrów używany z szablonem wprowadzania.
 2. Wprowadź wartości parametrów:
 
     * **projectName**: wprowadź ciąg z 4-5 znaków. Ta nazwa jest używana do tworzenia unikatowych nazw zasobów platformy Azure.
-    * **azureResourceLocation**: obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
+    * **azureResourceLocation**: Określ lokalizację platformy Azure.
     * **artifactSourceSASLocation**: wprowadź identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
     * **binaryArtifactRoot**: użyj wartości **binaries/1.0.0.0** w tym samouczku, chyba że chcesz zmienić strukturę folderu artefaktów.
     * **managedIdentityID**: wprowadź tożsamość zarządzaną przypisaną przez użytkownika. Zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](#create-the-user-assigned-managed-identity). Składnia jest następująca:

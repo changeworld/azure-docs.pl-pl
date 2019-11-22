@@ -1,21 +1,21 @@
 ---
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.date: 04/03/2019
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183816"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276942"
 ---
-## <a name="putting-everything-together"></a>Umieszczenia wszystkiego razem
+## <a name="putting-everything-together"></a>Umieszczanie wszystkich siebie
 
-Oto jak pełne `MainActivity` plik klasy powinna wyglądać, po różne elementy zostały wprowadzone ze sobą. Można użyć go jako odwołanie porównać własny plik i dodatkowych, jeśli masz żadnych różnic w lewo.
+Poniżej przedstawiono sposób, w jaki kompletny plik klasy `MainActivity` powinien wyglądać, po umieszczeniu wszystkich różnych elementów. Można go użyć jako odwołania, aby porównać się z własnym plikiem i tam, gdzie mogą występować jakiekolwiek różnice.
 
 ```java
 package com.example.myfirstapp;
@@ -242,9 +242,9 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia nowej aplikacji dla systemu Android, która łączy w sobie funkcje ARCore przy użyciu Azure przestrzenne kotwic. Aby dowiedzieć się więcej o bibliotece usługi Azure Spatial Anchors, kontynuuj pracę z naszym przewodnikiem w sekcji dotyczącej sposobu tworzenia i znajdowania kotwic.
+W tym samouczku pokazano, jak utworzyć nową aplikację systemu Android, która integruje funkcjonalność ARCore z zakotwiczeniami przestrzennymi platformy Azure. Aby dowiedzieć się więcej o bibliotece usługi Azure Spatial Anchors, kontynuuj pracę z naszym przewodnikiem w sekcji dotyczącej sposobu tworzenia i znajdowania kotwic.
 
 > [!div class="nextstepaction"]
 > [Tworzenie i znajdowanie kotwic przy użyciu usługi Azure Spatial Anchors](/azure/spatial-anchors/create-locate-anchors-overview)

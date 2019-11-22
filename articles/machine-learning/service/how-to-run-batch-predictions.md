@@ -1,5 +1,5 @@
 ---
-title: Uruchom wnioskowanie wsadowe dla dużych ilości danych
+title: Uruchamianie prognoz wsadowych dotyczących danych Big Data
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak w Azure Machine Learning uzyskiwać asynchronicznie na dużą ilość danych. Wnioskowanie wsadowe zapewnia możliwości przetwarzania równoległego poza systemem i optymalizuje je pod kątem przypadków użycia dużej ilości danych.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929560"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276726"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Uruchamiaj wnioskowanie wsadowe dla dużych ilości danych za pomocą Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ W tym instruktażu przedstawiono następujące zadania:
 
 * Aby zarządzać własnym środowiskiem i zależnościami, zobacz [Przewodnik](how-to-configure-environment.md) po konfigurowaniu własnego środowiska. Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` w swoim środowisku, aby pobrać wymagane zależności.
 
-## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów uczenia maszynowego
+## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów w machine learning
 
 Poniższe akcje umożliwiają skonfigurowanie zasobów potrzebnych do uruchomienia potoku wnioskowania partii:
 
@@ -149,7 +149,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-## <a name="prepare-the-model"></a>Przygotuj model
+## <a name="prepare-the-model"></a>Przygotowanie modelu
 
 [Pobierz model klasyfikacji wstępnie nauczonego obrazu](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz), a następnie wyodrębnij go do katalogu `models`.
 
@@ -292,7 +292,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>Tworzenie kroku potoku
+### <a name="create-the-pipeline-step"></a>Tworzenie etap potoku
 
 Utwórz krok potoku przy użyciu skryptu, konfiguracji środowiska i parametrów. Określ miejsce docelowe obliczeń, które zostało już dołączone do obszaru roboczego jako element docelowy wykonywania skryptu. Użyj `ParallelRunStep`, aby utworzyć etap potoku wnioskowania partii, który przyjmuje wszystkie następujące parametry:
 - `name`: Nazwa kroku z następującymi ograniczeniami nazewnictwa: Unique, 3-32 znaków i wyrażenie regularne ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.

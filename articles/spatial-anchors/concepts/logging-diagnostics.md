@@ -1,29 +1,29 @@
 ---
-title: Rejestrowanie i Diagnostyka Azure przestrzenne kotwic | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje dotyczące generowania i pobierania, rejestrowania i diagnostyki w kotwic przestrzenne platformy Azure.
+title: Rejestrowanie i diagnostyka
+description: Szczegółowe wyjaśnienie sposobu generowania i pobierania rejestrowania i diagnostyki w zakotwiczeniach przestrzennych platformy Azure.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b66dc7d6ec9d11fe645587fe791824009231b7c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964745"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270125"
 ---
-# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Rejestrowanie i Diagnostyka Azure przestrzenne kotwic
+# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Rejestrowanie i Diagnostyka w kotwicach przestrzennych platformy Azure
 
-Kotwice przestrzenne platformy Azure zapewnia mechanizm standardowa rejestrowania, który jest przydatne w przypadku tworzenia aplikacji. Tryb rejestrowania diagnostyki kotwic przestrzennych jest przydatne, gdy potrzebujesz dodatkowych informacji do debugowania. Rejestrowanie diagnostyczne są przechowywane obrazy środowiska.
+Kotwice przestrzenne platformy Azure udostępniają standardowy mechanizm rejestrowania przydatny do tworzenia aplikacji. Tryb rejestrowania diagnostyki zakotwiczenia przestrzennego jest przydatny, gdy potrzebne są więcej informacji na potrzeby debugowania. Rejestrowanie diagnostyczne przechowuje obrazy środowiska.
 
-## <a name="standard-logging"></a>Standardowa rejestrowania
-Przestrzenne interfejsu API kotwic mogą subskrybować mechanizmie rejestrowania, aby uzyskać przydatne dzienniki do tworzenia aplikacji i debugowania. Rejestrowanie standardowych interfejsów API obrazów środowiska nie należy przechowywać na dysku urządzenia. Zestaw SDK udostępnia te dzienniki jako zdarzenie wywołania zwrotne. To Ty możesz zintegrować te dzienniki na mechanizmie rejestrowania aplikacji.
+## <a name="standard-logging"></a>Rejestrowanie standardowe
+W interfejsie API kotwic przestrzennych można subskrybować mechanizm rejestrowania, aby uzyskać przydatne dzienniki do tworzenia i debugowania aplikacji. Standardowe interfejsy API rejestrowania nie przechowują zdjęć środowiska na dysku urządzenia. Zestaw SDK udostępnia te dzienniki jako wywołania zwrotne zdarzeń. Można zintegrować te dzienniki z mechanizmem rejestrowania aplikacji.
 
 ### <a name="configuration-of-log-messages"></a>Konfiguracja komunikatów dziennika
-Istnieją dwa wywołania zwrotne interesujące dla użytkownika. Poniższy przykład przedstawia sposób konfigurowania sesji.
+Istnieją dwa wywołania zwrotne, które są istotne dla użytkownika. Poniższy przykład pokazuje, jak skonfigurować sesję.
 
 ```csharp
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
@@ -40,25 +40,25 @@ Istnieją dwa wywołania zwrotne interesujące dla użytkownika. Poniższy przyk
 
 ### <a name="events-and-properties"></a>Zdarzenia i właściwości
 
-Te wywołania zwrotne zdarzenia są dostarczane do przetwarzania dzienników i błędy z sesji:
+Te wywołania zwrotne zdarzeń są udostępniane w celu przetworzenia dzienników i błędów z sesji:
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Określa poziom szczegółowości zdarzeń otrzymać ze środowiska wykonawczego.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): Dostępne są zdarzenia dziennika standardowego debugowania.
-- [Błąd](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Dostępne są zdarzenia dziennika, które środowisko uruchomieniowe, które uzna za błędy.
+- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): określa poziom szczegółowości zdarzeń, które mają zostać odebrane ze środowiska uruchomieniowego.
+- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): zawiera standardowe zdarzenia dziennika debugowania.
+- [Błąd](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): zawiera zdarzenia dziennika, których środowisko uruchomieniowe traktuje jako błędy.
 
 ## <a name="diagnostics-logging"></a>Rejestrowanie diagnostyczne
 
-Oprócz Tryb standardowy operacji logowania kotwice przestrzenne ma trybu diagnostycznego. Tryb diagnostyki przechwytuje obrazów środowiska i rejestruje je na dysku. Ten tryb umożliwia debugowanie niektóre rodzaje problemów, takich jak awaria przewidywalny zlokalizować elementu zakotwiczenia. Włączanie diagnostyki rejestrowanie wyłącznie do odtworzenia konkretnego problemu. Następnie należy je wyłączyć. Nie włączaj diagnostyki, po uruchomieniu aplikacji normalnie.
+Poza standardowym trybem operacji rejestrowania, kotwice przestrzenne mają również tryb diagnostyki. Tryb diagnostyczny przechwytuje obrazy środowiska i rejestruje je na dysku. Tego trybu można używać do debugowania niektórych rodzajów problemów, takich jak nieoczekiwane zlokalizowanie zakotwiczenia. Włącz rejestrowanie diagnostyczne tylko w celu odtworzenia konkretnego problemu. Następnie go wyłączyć. Nie włączaj diagnostyki, gdy aplikacje są normalnie uruchamiane.
 
-Podczas interakcji pomocy technicznej firmy Microsoft przedstawiciela firmy Microsoft może poprosić, jeśli chcesz przesłać pakiet diagnostyki w celu bliższego zbadania problemu. W takim przypadku można zdecydować, Włącz diagnostykę i odtworzyć problem, dzięki czemu możesz przesłać pakietu diagnostycznego. 
+Podczas interakcji z firmą Microsoft przedstawiciel firmy Microsoft może zadawać, czy chcemy przesłać pakiet diagnostyczny w celu dalszej analizy. W takim przypadku użytkownik może zdecydować się na włączenie diagnostyki i odtworzenie problemu, aby można było przesłać pakiet diagnostyczny.
 
-Jeśli prześlesz dzienników diagnostycznych do firmy Microsoft bez uprzedniego potwierdzenia z przedstawicielem firmy Microsoft, przesyłania zaczną bez odpowiedzi.
+Jeśli przesyłasz dziennik diagnostyczny do firmy Microsoft bez wcześniejszego potwierdzenia od przedstawiciela firmy Microsoft, przesyłanie nie zostanie odebrane.
 
-W poniższych sekcjach opisano sposób włączania trybu diagnostycznego, a także jak przesłać dzienników diagnostycznych do firmy Microsoft.
+W poniższych sekcjach pokazano, jak włączyć tryb diagnostyczny, a także przesłać dzienniki diagnostyczne do firmy Microsoft.
 
 ### <a name="enable-diagnostics-logging"></a>Włączanie rejestrowania diagnostycznego
 
-Po włączeniu sesji diagnostyki rejestrowanie wszystkich operacji w sesji mają odpowiednie diagnostyki rejestrowanie w lokalnym systemie plików. Podczas rejestrowania, obrazy środowiska są zapisywane na dysku.
+Po włączeniu sesji w celu zarejestrowania diagnostyki wszystkie operacje w sesji mają odpowiednie rejestrowanie diagnostyczne w lokalnym systemie plików. Podczas rejestrowania obrazy środowiska są zapisywane na dysku.
 
 ```csharp
 private void ConfigureSession()
@@ -86,9 +86,9 @@ private void ConfigureSession()
 }
 ```
 
-### <a name="submit-the-diagnostics-bundle"></a>Prześlij pakiet diagnostyki
+### <a name="submit-the-diagnostics-bundle"></a>Prześlij pakiet diagnostyczny
 
-Poniższy fragment kodu przedstawia sposób przesyłania pakietu diagnostyczne do firmy Microsoft. Ten pakiet zawierają obrazy środowiska przechwycone przez sesję diagnostyki jest włączona. 
+Poniższy fragment kodu pokazuje, jak przesłać pakiet diagnostyczny do firmy Microsoft. Ten pakiet będzie zawierać obrazy środowiska przechwycone przez sesję po włączeniu diagnostyki.
 
 ```csharp
 // method to handle the diagnostics bundle submission
@@ -104,9 +104,9 @@ private async Task CreateAndSubmitBundle()
 }
 ```
 
-### <a name="parts-of-a-diagnostics-bundle"></a>Części pakietu diagnostyki
-Pakiet Diagnostyka może zawierać następujące informacje:
+### <a name="parts-of-a-diagnostics-bundle"></a>Części zbioru diagnostyki
+Pakiet diagnostyczny może zawierać następujące informacje:
 
-- **Ramka kluczowa obrazów**: Obrazy środowiska przechwycone podczas sesji, gdy włączono diagnostyki.
-- **Dzienniki**: Rejestruj zdarzenia rejestrowane przez środowisko uruchomieniowe.
-- **Metadane sesji**: Metadane, który identyfikuje sesji.
+- **Obrazy klatek kluczowych**: obrazy środowiska przechwycone podczas sesji, podczas gdy Diagnostyka została włączona.
+- **Dzienniki**: zdarzenia dziennika zarejestrowane przez środowisko uruchomieniowe.
+- **Metadane sesji**: metadane identyfikujące sesję.

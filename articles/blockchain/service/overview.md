@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: łańcucha bloków
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/18/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 55c4c3f2c6a7856f3e7c0aea81ce013d3ff56f8b
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577178"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284786"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co to jest usługa Azure Blockchain Service?
 
@@ -31,11 +31,11 @@ Powyższe możliwości prawie w ogóle nie wymagają administracji i są udostę
 
 ## <a name="network-deployment-and-operations"></a>Wdrażanie i operacje w sieci
 
-Wdrażanie usługi Azure łańcucha bloków można przeprowadzić za pośrednictwem Azure Portal, interfejsu wiersza polecenia platformy Azure, a także za pośrednictwem programu Visual Studio Code przy użyciu rozszerzenia łańcucha bloków platformy Azure.  Wdrożenie jest uproszczone, łącznie z obsługą zarówno węzłów transakcji, jak i modułów sprawdzania poprawności, sieci wirtualnych platformy Azure pod kątem izolacji zabezpieczeń oraz magazynu zarządzanego przez usługę.  Ponadto podczas wdrażania nowego elementu członkowskiego łańcucha bloków użytkownicy tworzą także konsorcjum lub przyłączają się do niego.  Konsorcja umożliwiają wielu stronom w różnych subskrypcjach platformy Azure bezpieczne komunikowanie się ze sobą przy użyciu współużytkowanego łańcucha bloków.  To uproszczone wdrożenie zmniejsza liczbę dni wdrożenia sieci łańcucha bloków w ciągu kilku minut.
+Wdrażanie usługi Azure łańcucha bloków jest realizowane za pośrednictwem Azure Portal, interfejsu wiersza polecenia platformy Azure lub za pośrednictwem programu Visual Studio Code przy użyciu rozszerzenia łańcucha bloków platformy Azure. Wdrożenie jest uproszczone, łącznie z obsługą zarówno węzłów transakcji, jak i modułów sprawdzania poprawności, sieci wirtualnych platformy Azure pod kątem izolacji zabezpieczeń oraz magazynu zarządzanego przez usługę.  Ponadto podczas wdrażania nowego elementu członkowskiego łańcucha bloków użytkownicy tworzą także konsorcjum lub przyłączają się do niego.  Konsorcja umożliwiają wielu stronom w różnych subskrypcjach platformy Azure bezpieczne komunikowanie się ze sobą przy użyciu współużytkowanego łańcucha bloków.  To uproszczone wdrożenie zmniejsza liczbę dni wdrożenia sieci łańcucha bloków w ciągu kilku minut.
 
 ### <a name="performance-and-service-tiers"></a>Warstwy wydajności i usługi
 
-Usługa Azure łańcucha bloków oferuje dwie warstwy usług: *podstawowa* i *standardowa*. Każda warstwa oferuje różne wydajności i możliwości, które umożliwiają obsługę lekkich obciążeń programistycznych i testowych do wysoce skalowalnych wdrożeń łańcucha bloków produkcyjnych. Obie warstwy obejmują co najmniej jeden węzeł transakcji i jeden węzeł modułu sprawdzania poprawności (podstawowy) lub dwa węzły modułu sprawdzania poprawności (standard).
+Usługa Azure łańcucha bloków Service oferuje dwie warstwy usług: *podstawowa* i *standardowa*. Każda warstwa oferuje różne wydajności i możliwości, które umożliwiają obsługę lekkich obciążeń programistycznych i testowych do wysoce skalowalnych wdrożeń łańcucha bloków produkcyjnych. Obie warstwy obejmują co najmniej jeden węzeł transakcji i jeden węzeł modułu sprawdzania poprawności (podstawowy) lub dwa węzły modułu sprawdzania poprawności (standard).
 
 ![Warstwy cenowe](./media/overview/pricing-tiers.png)
 
@@ -43,13 +43,13 @@ Oprócz oferowania dwóch węzłów modułu sprawdzania poprawności warstwa *st
 
 ### <a name="security-and-maintenance"></a>Bezpieczeństwo i konserwacja
 
-Po zainicjowaniu obsługi pierwszego elementu członkowskiego łańcucha bloków można dodać do niego dodatkowe węzły transakcji.  Domyślnie węzły transakcji są chronione za pomocą reguł zapory i muszą zostać skonfigurowane pod kątem dostępu.  Ponadto wszystkie węzły transakcji szyfrują dane w ruchu za pośrednictwem protokołu TLS.  Istnieje wiele opcji zabezpieczania dostępu do węzła transakcji, w tym reguł zapory, uwierzytelniania podstawowego, kluczy dostępu oraz integracji Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Konfigurowanie węzłów transakcji](configure-transaction-nodes.md) i [Konfigurowanie dostępu Azure Active Directory](configure-aad.md).
+Po zainicjowaniu obsługi pierwszego elementu członkowskiego łańcucha bloków można dodać do niego dodatkowe węzły transakcji.  Domyślnie węzły transakcji są chronione za pomocą reguł zapory i wymagają konfiguracji w celu uzyskania dostępu.  Ponadto wszystkie węzły transakcji szyfrują dane w ruchu za pośrednictwem protokołu TLS.  Istnieje wiele opcji zabezpieczania dostępu do węzła transakcji, w tym reguł zapory, uwierzytelniania podstawowego, kluczy dostępu i integracji Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Konfigurowanie węzłów transakcji](configure-transaction-nodes.md) i [Konfigurowanie dostępu Azure Active Directory](configure-aad.md).
 
 Jako usługa zarządzana usługa Azure łańcucha bloków gwarantuje, że węzły składowej łańcucha bloków są poprawione przy użyciu najnowszego systemu operacyjnego hosta i aktualizacji stosu oprogramowania do finansów skonfigurowanych pod kątem wysokiej dostępności (tylko w warstwie Standardowa), eliminując większość DevOps wymagane dla tradycyjnych węzłów łańcucha bloków IaaS.  Aby uzyskać więcej informacji na temat poprawek i aktualizacji, zobacz [obsługiwane wersje finansów usługi Azure łańcucha bloków](ledger-versions.md).
 
 ### <a name="monitoring-and-logging"></a>Monitorowanie i rejestrowanie
 
-Ponadto usługa Azure łańcucha bloków oferuje bogate metryki za pomocą usługi Azure Monitor, która zapewnia wgląd w użycie procesora CPU, pamięci i magazynu, a także przydatne wgląd w działanie sieci łańcucha bloków, takie jak transakcje i bloki analizowane pod, Głębokość kolejki transakcji, a także aktywne połączenia.  Metryki można dostosować w celu udostępnienia widoków szczegółowych informacji, które są ważne dla aplikacji łańcucha bloków.  Ponadto progi można definiować za pomocą alertów umożliwiających użytkownikom wyzwalanie akcji, takich jak wysyłanie wiadomości e-mail lub SMS, uruchamianie aplikacji logiki, funkcja platformy Azure lub wysyłanie do niestandardowego elementu webhook.
+Ponadto usługa Azure łańcucha bloków zapewnia zaawansowane metryki za pomocą usługi Azure Monitor, która zapewnia wgląd w dane użycia procesora CPU, pamięci i magazynu.  Azure Monitor zapewnia również przydatny wgląd w działanie sieci łańcucha bloków, takie jak Transactions i Blocks analizowane pod, Głębokość kolejki transakcji i aktywne połączenia.  Metryki można dostosować w celu udostępnienia widoków szczegółowych informacji, które są ważne dla aplikacji łańcucha bloków.  Ponadto progi można definiować za pomocą alertów umożliwiających użytkownikom wyzwalanie akcji, takich jak wysyłanie wiadomości e-mail lub SMS, uruchamianie aplikacji logiki, funkcja platformy Azure lub wysyłanie do niestandardowego elementu webhook.
 
 ![Metryki](./media/overview/metrics.png)
 

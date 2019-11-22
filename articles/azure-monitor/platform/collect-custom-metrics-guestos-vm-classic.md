@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie metryk systemu operacyjnego gościa do magazynu danych Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
+title: Wysyłanie metryk klasycznej maszyny wirtualnej z systemem Windows do bazy danych metryk Azure Monitor
 description: Wysyłanie metryk systemu operacyjnego gościa do magazynu danych Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
 author: anirudhcavale
 services: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844927"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286147"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Wysyłanie metryk systemu operacyjnego gościa do magazynu danych Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Wysyłanie metryk systemu operacyjnego gościa do bazy danych metryk Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [Rozszerzenie diagnostyki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) Azure monitor (znane jako "funkcji wad" lub "Diagnostyka") umożliwia zbieranie metryk i dzienników z systemu operacyjnego gościa (system operacyjny gościa) działającego w ramach maszyny wirtualnej, usługi w chmurze lub klastra Service Fabric. Rozszerzenie może wysyłać dane telemetryczne do [wielu różnych lokalizacji.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-W tym artykule opisano proces wysyłania metryk wydajności systemu operacyjnego gościa dla maszyny wirtualnej z systemem Windows (klasyczny) do magazynu metryk Azure Monitor. Począwszy od wersji Diagnostics 1,11, można pisać metryki bezpośrednio do magazynu metryk Azure Monitor, w którym są już zbierane metryki platformy standardowej. 
+W tym artykule opisano proces wysyłania metryk wydajności systemu operacyjnego gościa dla maszyny wirtualnej z systemem Windows (klasyczny) do bazy danych metryk Azure Monitor. Począwszy od wersji Diagnostics 1,11, można pisać metryki bezpośrednio do magazynu metryk Azure Monitor, w którym są już zbierane metryki platformy standardowej. 
 
 Przechowywanie ich w tej lokalizacji pozwala uzyskać dostęp do tych samych akcji co w przypadku metryk platformy. Akcje obejmują alerty w czasie prawie rzeczywistym, wykresy, routing, dostęp z interfejsu API REST i inne. W przeszłości rozszerzenie diagnostyki Zapisano do usługi Azure Storage, ale nie do Azure Monitor magazynu danych. 
 
@@ -40,12 +40,12 @@ Proces przedstawiony w tym artykule działa tylko w przypadku klasycznych maszyn
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Tworzenie klasycznej maszyny wirtualnej i konta magazynu
 
 1. Utwórz klasyczną maszynę wirtualną przy użyciu Azure Portal.
-   ![Tworzenie klasycznej maszyny wirtualnej](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
+   ![utworzyć klasycznej maszyny wirtualnej](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
 
 1. Podczas tworzenia tej maszyny wirtualnej wybierz opcję utworzenia nowego konta magazynu klasycznego. To konto magazynu jest używane w dalszych krokach.
 
 1. W Azure Portal przejdź do bloku zasobów **konta magazynu** . Wybierz pozycję **klucze**i zanotuj nazwę konta magazynu i klucz konta magazynu. Te informacje są potrzebne w dalszych krokach.
-   ![Klucze dostępu do magazynu](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+   klucze dostępu do magazynu ![](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
@@ -200,7 +200,7 @@ Nadaj tej aplikacji uprawnienia do monitorowania wydawcy metryk do zasobu, dla k
 1. W menu rozwijanym obszary nazw wybierz pozycję **Azure. VM. Windows. gość**.
 
 1. W menu rozwijanym metryk wybierz pozycję **pamięć \ zadeklarowane bajty w użyciu**.
-   ![Pomiary wykresów](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
+   ![metryki wykresu](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,6 +1,6 @@
 ---
-title: Jednorazowy kod dostępu uwierzytelniania dla użytkowników-gości B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak korzystać z poczty E-mail jednorazowy kod dostępu do uwierzytelniania użytkowników-gości B2B bez konieczności korzystania z konta Microsoft.
+title: Jednokrotne uwierzytelnianie kodu dostępu dla użytkowników-Gości B2B — Azure AD
+description: Jak używać jednorazowego kodu dostępu wiadomości E-mail do uwierzytelniania użytkowników Gości B2B bez konieczności konto Microsoft.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,75 +12,75 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952849"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272321"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>Uwierzytelnianie jednorazowy kod dostępu konta e-mail (wersja zapoznawcza)
+# <a name="email-one-time-passcode-authentication-preview"></a>Wyślij wiadomość e-mail do jednorazowego uwierzytelniania kodu dostępu (wersja zapoznawcza)
 
 |     |
 | --- |
-| Jednorazowy kod dostępu poczty e-mail to funkcja publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Jednorazowy kod dostępu wiadomości e-mail jest publiczną funkcją w wersji zapoznawczej Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-W tym artykule opisano sposób włączania uwierzytelniania jednorazowy kod dostępu poczty E-mail dla użytkowników-gości B2B. Funkcję powiadomienia E-mail jednorazowy kod dostępu uwierzytelnia użytkowników-gości B2B nie może zostać uwierzytelnione za pośrednictwem innych metod, takich jak usługa Azure AD, konta Microsoft (MSA) lub federacyjnych Google. Przy użyciu uwierzytelniania jednorazowy kod dostępu nie ma potrzeby do utworzenia konta Microsoft. Gdy użytkownik-Gość umarza zaproszenia, lub uzyskuje dostęp do udostępnionego zasobu, będą one żądać tymczasowy kod, który jest wysyłany do swojego adresu e-mail. Następnie wprowadź ten kod, aby kontynuować logowanie.
+W tym artykule opisano, jak włączyć jednokrotne uwierzytelnianie kodu dostępu w wiadomości E-mail dla użytkowników-Gości B2B. Funkcja jednorazowego kodu dostępu wiadomości E-mail uwierzytelnia użytkowników gościa B2B, gdy nie mogą być uwierzytelniane za pośrednictwem innych takich metod jak Azure AD, konto Microsoft (MSA) lub Google Federation. W przypadku uwierzytelniania za pomocą jednorazowego kodu dostępu nie ma potrzeby tworzenia konto Microsoft. Gdy użytkownik-Gość zrealizuje zaproszenie lub uzyskuje dostęp do zasobu udostępnionego, może zażądać kodu tymczasowego, który jest wysyłany na adres e-mail. Następnie wprowadzają ten kod, aby kontynuować logowanie.
 
-Ta funkcja jest obecnie dostępna w wersji zapoznawczej (zobacz [zgody na korzystanie z wersji zapoznawczej](#opting-in-to-the-preview) poniżej). Po (wersja zapoznawcza) ta funkcja będzie można włączyć domyślnie dla wszystkich dzierżaw.
+Ta funkcja jest obecnie dostępna w wersji zapoznawczej (zobacz [rezygnację z wersji zapoznawczej](#opting-in-to-the-preview) poniżej). W wersji zapoznawczej ta funkcja będzie domyślnie włączona dla wszystkich dzierżawców.
 
 > [!NOTE]
-> Jednorazowy kod dostępu musi logowania za pomocą linku zawierający kontekstu dzierżawy (na przykład `https://myapps.microsoft.com/?tenantid=<tenant id>` lub `https://portal.azure.com/<tenant id>`, lub w przypadku zweryfikowanej domeny `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Bezpośrednie linki do aplikacji i zasobów również działać tak długo, jak należą do kontekstu dzierżawy. Użytkownicy-goście, są obecnie nie można zalogować się przy użyciu punktów końcowych, które mają nie kontekstu dzierżawy. Na przykład za pomocą `https://myapps.microsoft.com`, `https://portal.azure.com`, lub endpoint wspólnego zespoły spowoduje wystąpienie błędu. 
+> Jednorazowy kod dostępu użytkownicy muszą logować się przy użyciu linku zawierającego kontekst dzierżawy (na przykład `https://myapps.microsoft.com/?tenantid=<tenant id>` lub `https://portal.azure.com/<tenant id>`lub w przypadku zweryfikowanej domeny `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Bezpośrednie linki do aplikacji i zasobów działają również tak długo, jak w przypadku kontekstu dzierżawy. Użytkownicy-Goście nie mogą obecnie zalogować się za pomocą punktów końcowych, które nie mają kontekstu dzierżawy. Na przykład użycie `https://myapps.microsoft.com`, `https://portal.azure.com`lub wspólnych punktów końcowych zespołów spowoduje wystąpienie błędu. 
 
-## <a name="user-experience-for-one-time-passcode-guest-users"></a>Środowisko użytkownika dla użytkowników-gości jednorazowy kod dostępu
-Jednorazowy kod dostępu uwierzytelniania użytkownik-Gość można zrealizować zaproszenia, klikając łącze bezpośrednie lub za pomocą wiadomości e-mail z zaproszeniem. W obu przypadkach komunikat w przeglądarce wskazuje, że kod zostanie wysłany na adres e-mail użytkownika gościa. Użytkownik-Gość wybiera **Wyślij kod**:
+## <a name="user-experience-for-one-time-passcode-guest-users"></a>Środowisko użytkownika dla użytkowników-Gości jednorazowego kodu dostępu
+W przypadku uwierzytelniania za pomocą jednorazowego kodu dostępu użytkownik-Gość może skorzystać z zaproszenia przez kliknięcie linku bezpośredniego lub wysłanie wiadomości e-mail z zaproszeniem. W obu przypadkach komunikat w przeglądarce wskazuje, że kod zostanie wysłany na adres e-mail użytkownika-gościa. Użytkownik-Gość wybierze opcję **Wyślij kod**:
  
    ![Zrzut ekranu przedstawiający przycisk Wyślij kod](media/one-time-passcode/otp-send-code.png)
  
-Hasła są wysyłane na adres e-mail użytkownika. Użytkownik pobiera kod dostępu z wiadomości e-mail i wstawia go w oknie przeglądarki:
+Kod dostępu jest wysyłany na adres e-mail użytkownika. Użytkownik pobiera kod dostępu z wiadomości e-mail i wprowadza go w oknie przeglądarki:
  
-   ![Zrzut ekranu przedstawiający stronę kodową Enter](media/one-time-passcode/otp-enter-code.png)
+   ![Zrzut ekranu przedstawiający stronę wprowadzanie kodu](media/one-time-passcode/otp-enter-code.png)
  
-Użytkownik-Gość obecnie jest uwierzytelniona i ich można wyświetlić zasobu udostępnionego lub kontynuować logowanie. 
+Użytkownik-Gość jest teraz uwierzytelniany i może zobaczyć zasób udostępniony lub kontynuować logowanie. 
 
 > [!NOTE]
-> Jednorazowe kody dostępu są ważne przez 30 minut. Po 30 minutach tego określonego jednorazowy kod dostępu nie jest już prawidłowy, a użytkownik musi poprosić o nowe. Sesje użytkowników wygasają po upływie 24 godzin. Po tym czasie użytkownik-Gość otrzyma nowy kod dostępu uzyskiwaniu dostępu do zasobu. Wygaśnięcia sesji zapewnia zwiększenia poziomu bezpieczeństwa, zwłaszcza w przypadku, gdy użytkownik-Gość pozostawia firmy lub już nie musi mieć dostęp.
+> Jednorazowe kody dostępu są ważne przez 30 minut. Po 30 minutach określony jednorazowy kod dostępu nie jest już ważny, a użytkownik musi zażądać nowego. Sesje użytkowników wygasają po upływie 24 godzin. Po upływie tego czasu użytkownik-gość otrzyma nowy kod dostępu podczas uzyskiwania dostępu do zasobu. Wygaśnięcie sesji zapewnia dodatkowe zabezpieczenia, zwłaszcza gdy użytkownik-Gość opuszcza swoją firmę lub nie potrzebuje już dostępu.
 
-## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Kiedy użytkownik-Gość uzyskać jednorazowy kod dostępu?
+## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Kiedy użytkownik-Gość otrzymuje jednorazowy kod dostępu?
 
-Po użytkownik-Gość umarza zaproszenia, lub używa łącze do zasobu, który został udostępniony z nimi, jeśli zostanie wyświetlony jednorazowy kod dostępu:
-- Nie masz konta usługi Azure AD 
-- Nie masz konta Microsoft 
-- Nie określono zapraszający dzierżawca Google Federację dla @gmail.com i @googlemail.com użytkowników 
+Gdy użytkownik-Gość zrealizuje zaproszenie lub używa linku do zasobu, który został Ci udostępniony, otrzyma jednorazowy kod dostępu, jeśli:
+- Nie mają konta usługi Azure AD 
+- Nie mają konto Microsoft 
+- Zapraszanie dzierżawcy nie skonfigurował usługi Google Federation dla @gmail.com i @googlemail.com użytkowników 
 
-W momencie zaproszenia jest nie wskazuje, że użytkownik, którego jesteś zapraszanie będzie używać uwierzytelniania jednorazowy kod dostępu. Jednak po zalogowaniu Gość jednorazowy kod dostępu uwierzytelniania będzie Określ metodę planu awaryjnego, jeśli nie innych metod uwierzytelniania, może być używany. 
+W momencie zaproszenia nie ma wskazania, że użytkownik, którego zapraszasz, będzie używać uwierzytelniania jednorazowego kodu dostępu. Jednak po zalogowaniu się użytkownika-gościa uwierzytelnianie jednorazowego kodu dostępu będzie metodą rezerwową, jeśli nie można użyć innych metod uwierzytelniania. 
 
-Można wyświetlić użytkowników-gości, którzy uwierzytelniają się za pomocą haseł jednorazowych w witrynie Azure portal, przechodząc do **usługi Azure Active Directory** > **relacje w organizacji**  >   **Użytkownicy z innych organizacji**.
+Można wyświetlić użytkowników-Gości, którzy uwierzytelniają się za pomocą jednorazowych kodów dostępu w Azure Portal, przechodząc do **Azure Active Directory** > **relacje organizacyjne** > **użytkowników z innych organizacji**.
 
-![Zrzut ekranu przedstawiający jednorazowy kod dostępu użytkownika z źródła wartość OTP](media/one-time-passcode/otp-users.png)
+![Zrzut ekranu przedstawiający użytkownika jednorazowego kodu dostępu z wartością źródłową OTP](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
-> Gdy użytkownik umarza jednorazowy kod dostępu, a później uzyskuje MSA, konto usługi Azure AD lub innego federacyjnego konta, będą one nadal zostać uwierzytelniony przy użyciu jednorazowy kod dostępu. Jeśli chcesz zaktualizować swoje metody uwierzytelniania, możesz usunąć swoje konta gościa i Zaproś je ponownie.
+> Gdy użytkownik zrealizuje jednorazowy kod dostępu, a następnie uzyska konto MSA, konta usługi Azure AD lub inne konto federacyjne, będzie nadal uwierzytelniane przy użyciu jednorazowego kodu dostępu. Jeśli chcesz zaktualizować metodę uwierzytelniania, możesz usunąć konto użytkownika-gościa i je zaprosić.
 
 ### <a name="example"></a>Przykład
-Użytkownik-Gość alexdoe@gmail.com zostało zaproszone do firmy Fabrikam, która nie ma Google federacyjnej Konfigurowanie. Alex nie ma konta Microsoft. Otrzymają oni jednorazowy kod dostępu do uwierzytelniania.
+alexdoe@gmail.com użytkownika-gościa jest zapraszana do firmy Fabrikam, która nie ma skonfigurowanej usługi Google Federation. Alex nie ma konto Microsoft. Otrzymają one jednorazowy kod dostępu do uwierzytelniania.
 
-## <a name="opting-in-to-the-preview"></a>Zgody na korzystanie z wersji zapoznawczej 
-Może upłynąć kilka minut, zanim Akcja zgłoszenie zgody na uczestnictwo w zaczęły obowiązywać. Po tym tylko nowo zaproszonych użytkowników, którzy spełniają powyższe warunki użyje uwierzytelniania jednorazowy kod dostępu. Użytkowników-gości, którzy wcześniej zrealizować zaproszenia, będą w dalszym ciągu używać ich z tej samej metody uwierzytelniania.
+## <a name="opting-in-to-the-preview"></a>Rezygnacja z wersji zapoznawczej 
+Wykonanie akcji zgody może potrwać kilka minut. Po tym czasie tylko nowo zaproszeni użytkownicy, którzy spełniają powyższe warunki, będą korzystać z uwierzytelniania jednorazowego kodu dostępu. Użytkownicy-Goście, którzy wcześniej korzystali z zaproszenia, będą nadal używać tej samej metody uwierzytelniania.
 
-### <a name="to-opt-in-using-the-azure-ad-portal"></a>Aby zapoznać się za pomocą portalu usługi Azure AD
-1.  Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny usługi Azure AD.
-2.  W okienku nawigacji wybierz **usługi Azure Active Directory**.
-3.  W obszarze **Zarządzaj**, wybierz opcję **relacje w organizacji**.
+### <a name="to-opt-in-using-the-azure-ad-portal"></a>Aby zrezygnować z korzystania z portalu usługi Azure AD
+1.  Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny usługi Azure AD.
+2.  W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+3.  W obszarze **Zarządzaj**wybierz pozycję **relacje organizacyjne**.
 4.  Wybierz **ustawienia**.
-5.  W obszarze **Włącz E-mail jednorazowego kodu dostępu dla gości (wersja zapoznawcza)** , wybierz opcję **tak**.
+5.  W obszarze **Włączanie wiadomości E-mail jednorazowy kod dostępu dla Gości (wersja zapoznawcza)** wybierz pozycję **tak**.
  
-### <a name="to-opt-in-using-powershell"></a>Aby zapoznać się przy użyciu programu PowerShell
+### <a name="to-opt-in-using-powershell"></a>Aby wyrazić zgodę na korzystanie z programu PowerShell
 
-Najpierw należy zainstalować najnowszą wersję programu Azure AD PowerShell dla modułu programu Graph (AzureADPreview). Następnie należy określić czy B2B zasad już istnieją i uruchamiania odpowiednich poleceń.
+Najpierw należy zainstalować najnowszą wersję programu Azure AD PowerShell dla modułu Graph (AzureADPreview). Następnie określ, czy zasady B2B już istnieją, i uruchom odpowiednie polecenia.
 
-#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Wymagania wstępne: Zainstalowanie najnowszego modułu AzureADPreview
+#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Wymaganie wstępne: Zainstaluj najnowszy moduł AzureADPreview
 Najpierw sprawdź, które moduły zostały zainstalowane. Otwórz program PowerShell jako użytkownik z podwyższonym poziomem uprawnień (Uruchom jako administrator) i uruchom następujące polecenie:
  
 ```powershell  
@@ -109,22 +109,22 @@ Jeśli moduł AzureADPreview nie wyświetla żadnego komunikatu informującego o
 
 Może zostać wyświetlony monit z informacją, że instalujesz moduł z niezaufanego repozytorium. Dzieje się tak w sytuacji, gdy repozytorium PSGallery nie zostało ustawione wcześniej jako zaufane. Naciśnij klawisz **Y**, aby zainstalować moduł.
 
-#### <a name="check-for-existing-policies-and-opt-in"></a>Sprawdź, czy istniejące zasady i zgoda
+#### <a name="check-for-existing-policies-and-opt-in"></a>Sprawdzanie istniejących zasad i wybór
 
-Następnie sprawdź, czy istnieje obecnie B2BManagementPolicy, uruchamiając następujące:
+Następnie sprawdź, czy już istnieje B2BManagementPolicy, uruchamiając następujące polecenie:
 
 ```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
 ```
-- Jeśli wynikiem jest wartość False, zasady nie istnieje. Utwórz nowy B2BManagementPolicy i korzystania z wersji zapoznawczej, uruchamiając następujące:
+- Jeśli dane wyjściowe mają wartość false, zasady nie istnieją. Utwórz nowy B2BManagementPolicy i Zasłuchaj wersji zapoznawczej, uruchamiając następujące czynności:
 
    ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
    ```
 
-- Jeśli wynik to True, zasady B2BManagementPolicy już istnieje. Aby zaktualizować zasady i korzystania z wersji zapoznawczej, uruchom następujące polecenie:
+- Jeśli dane wyjściowe mają wartość true, zasady B2BManagementPolicy obecnie istnieją. Aby zaktualizować zasady i zalogować się do wersji zapoznawczej, uruchom następujące polecenie:
   
    ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
@@ -133,25 +133,25 @@ $currentpolicy -ne $null
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
    ```
 
-## <a name="opting-out-of-the-preview-after-opting-in"></a>Rezygnacja z wersji zapoznawczej po zgodzie na rozwiązanie
-Może upłynąć kilka minut, zanim Akcja rezygnacji z zaczęły obowiązywać. Jeśli wyłączysz korzystania z wersji zapoznawczej żadnych użytkowników-gości, którzy wprowadzono jednorazowy kod dostępu nie będzie się zalogować. Można usunąć użytkownika gościa i Zaproś ponownie użytkownika, aby umożliwić im Zaloguj się ponownie przy użyciu innej metody uwierzytelniania.
+## <a name="opting-out-of-the-preview-after-opting-in"></a>Rezygnacja z wersji zapoznawczej po rezygnacji z
+Wykonanie akcji rezygnacji może potrwać kilka minut. Jeśli wyłączysz Podgląd, wszyscy użytkownicy-Goście, którzy wykonali jednorazowy kod dostępu, nie będą mogli się zalogować. Można usunąć użytkownika-gościa i ponownie zaprosić użytkownika, aby umożliwić im ponowne zalogowanie się przy użyciu innej metody uwierzytelniania.
 
-### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Aby wyłączyć za pomocą portalu usługi Azure AD w wersji zapoznawczej
-1.  Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny usługi Azure AD.
-2.  W okienku nawigacji wybierz **usługi Azure Active Directory**.
-3.  W obszarze **Zarządzaj**, wybierz opcję **relacje w organizacji**.
+### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Aby wyłączyć podgląd przy użyciu portalu usługi Azure AD
+1.  Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny usługi Azure AD.
+2.  W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+3.  W obszarze **Zarządzaj**wybierz pozycję **relacje organizacyjne**.
 4.  Wybierz **ustawienia**.
-5.  W obszarze **Włącz E-mail jednorazowego kodu dostępu dla gości (wersja zapoznawcza)** , wybierz opcję **nie**.
+5.  W obszarze **Włączanie wiadomości E-mail jednorazowy kod dostępu dla Gości (wersja zapoznawcza)** wybierz pozycję **nie**.
 
-### <a name="to-turn-off-the-preview-using-powershell"></a>Aby wyłączyć przy użyciu programu PowerShell w wersji zapoznawczej
-Zainstaluj najnowszy moduł AzureADPreview, jeśli nie masz go jeszcze (zobacz [wymagań wstępnych: Zainstaluj najnowszy moduł AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) powyżej). Następnie sprawdź, czy istnieją obecnie zasady (wersja zapoznawcza) jednorazowy kod dostępu, uruchamiając następujące:
+### <a name="to-turn-off-the-preview-using-powershell"></a>Aby wyłączyć podgląd przy użyciu programu PowerShell
+Zainstaluj najnowszą wersję modułu AzureADPreview, jeśli nie masz jej już (patrz [warunek wstępny: Zainstaluj najnowszy moduł AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) powyżej). Następnie sprawdź, czy zasady jednorazowego podglądu kodu dostępu są obecnie dostępne, wykonując następujące czynności:
 
 ```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
 ```
 
-Jeśli wynik to True, zrezygnować z korzystania z wersji zapoznawczej, uruchamiając następujące:
+Jeśli dane wyjściowe mają wartość true, zrezygnuj z wersji zapoznawczej, uruchamiając następujące polecenie:
 
 ```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json

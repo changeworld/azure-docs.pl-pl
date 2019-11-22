@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów dotyczących konfiguracji ograniczonego delegowania protokołu Kerberos dla serwera proxy aplikacji | Microsoft Docs
+title: Rozwiązywanie problemów z ograniczonym delegowaniem protokołu Kerberos — serwer proxy aplikacji
 description: Rozwiązywanie problemów z konfiguracji ograniczonego delegowania protokołu Kerberos dla serwera Proxy aplikacji
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381526"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275694"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Rozwiązywanie problemów z konfiguracjami delegowanie ograniczone protokołu Kerberos dla serwera Proxy aplikacji
 
@@ -56,11 +56,11 @@ Najlepszym miejscem do łączników pozycji jest możliwie najbliżej ich celów
 
 Co zawiera problem ograniczonego delegowania protokołu Kerberos? Istnieje kilka typowych wskazania, że usługa rejestracji Jednokrotnej ograniczonego delegowania protokołu Kerberos, kończy się niepowodzeniem. Pierwszy objawy problemu są wyświetlane w przeglądarce.
 
-![Przykład: Błąd konfiguracji usługi niepoprawny ograniczonego delegowania protokołu Kerberos](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![Przykład: nieprawidłowy błąd konfiguracji KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![Przykład: Autoryzacja nie powiodła się ze względu na Brak uprawnień](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![Przykład: Autoryzacja nie powiodła się z powodu brakujących uprawnień](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Oba te obrazy przedstawiają ten sam objaw: Błąd logowania jednokrotnego. Odmowa dostępu użytkownika do aplikacji.
+Pokaż obie te obrazy objawem tego samego: błąd rejestracji Jednokrotnej. Odmowa dostępu użytkownika do aplikacji.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -84,7 +84,7 @@ Zewnętrzne komunikacji między klientem a Azure frontonu nie ma wpływu na ogra
 
 Jak wspomniano wcześniej, komunikaty o błędach przeglądarki zapewnia pewne dobre wskazówek dotyczących Dlaczego rzeczy kończy się niepowodzeniem. Koniecznie Zanotuj identyfikator działania i sygnatura czasowa w odpowiedzi. Te informacje pomagają korelować zachowania rzeczywiste zdarzenia w dzienniku zdarzeń serwera Proxy usługi Azure.
 
-![Przykład: Błąd konfiguracji usługi niepoprawny ograniczonego delegowania protokołu Kerberos](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![Przykład: nieprawidłowy błąd konfiguracji KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
 Odpowiednie wpisy w dzienniku zdarzeń są wyświetlane jako zdarzenia 13019 lub 12027. Znajdowanie dzienników zdarzeń łącznika w **Dzienniki aplikacji i usług** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt;  **Łącznik** &gt; **administratora**.
 
@@ -166,7 +166,7 @@ Jeśli nadal nie możesz postępu, pomocy technicznej firmy Microsoft mogą pom�
 ## <a name="other-scenarios"></a>Inne scenariusze
 
 - Serwer Proxy aplikacji usługi Azure żąda biletu protokołu Kerberos przed wysłaniem jej żądania do aplikacji. Niektóre aplikacje innych firm nie są podobne do tej metody uwierzytelniania. Te aplikacje oczekiwać bardziej konwencjonalne negocjacji została wykonana. Pierwsze żądanie jest anonimowe, co pozwala aplikacji na odpowiedź z typami uwierzytelniania, obsługuje on za pośrednictwem 401.
-- Uwierzytelniania z wieloma przeskokami są często używane w scenariuszach gdzie warstwy aplikacji, za pomocą zaplecza i frontonu, gdy oba wymagają uwierzytelniania, takiego jak SQL Server Reporting Services. Aby skonfigurować scenariusz wielodostępny, zobacz artykuł pomocy technicznej [ograniczone delegowanie protokołu Kerberos może wymagać przejścia do protokołu w scenariuszach z](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)przeskokiem.
+- Uwierzytelniania z wieloma przeskokami są często używane w scenariuszach gdzie warstwy aplikacji, za pomocą zaplecza i frontonu, gdy oba wymagają uwierzytelniania, takiego jak SQL Server Reporting Services. Aby skonfigurować scenariusz wielodostępny, zobacz artykuł pomocy technicznej [ograniczone delegowanie protokołu Kerberos może wymagać przejścia do protokołu w scenariuszach z przeskokiem](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Następne kroki
 

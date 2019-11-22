@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d134e522575f30fd1f1be8176e0e1589faa7ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587630"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279036"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Wyświetlanie i wyszukiwanie ostatnich działań związanych z logowaniem ze strony Moje logowania (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Możesz wyświetlić wszystkie ostatnie działania związane z logowaniem do kon
 
 - Jakie aplikacje próbowały uzyskać dostęp osoby atakującej.
 
-## <a name="view-your-recent-sign-in-activity"></a>Wyświetlanie ostatnich działań związanych z logowaniem
+## <a name="view-your-recent-sign-in-activity"></a>Wyświetlanie ostatniej aktywności logowania
 
 1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
 
@@ -49,7 +49,7 @@ Przed określeniem elementu jest niepoprawna, upewnij się, że nie widzisz fał
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Jeśli zobaczysz nieudane logowanie
 
-Logowanie nie powiodło się, bez aktywności sesji, oznacza, że podstawowa metoda uwierzytelniania (nazwa użytkownika/hasło) nie powiodła się. Może to oznaczać, że nazwa użytkownika lub hasło nie zostały wpisane, ale może to oznaczać, że osoba atakująca próbuje odgadnąć hasło. Jeśli uważasz, że osoba atakująca próbuje zrezygnować z odgadnięcia hasła, nie musisz zmieniać hasła, ale zdecydowanie zalecamy zarejestrowanie się w usłudze Azure Multi-Factor Authentication (MFA). Za pomocą usługi MFA, nawet jeśli haker ostatecznie odgadnąć hasło, nie wystarcza do uzyskania dostępu do Twojego konta.
+Logowanie nie powiodło się, bez działania sesji, oznacza, że podstawowa metoda weryfikacji (nazwa użytkownika/hasło) nie powiodła się. Może to oznaczać, że nazwa użytkownika lub hasło nie zostały wpisane, ale może to oznaczać, że osoba atakująca próbuje odgadnąć hasło. Jeśli uważasz, że osoba atakująca próbuje zrezygnować z odgadnięcia hasła, nie musisz zmieniać hasła, ale zdecydowanie zalecamy zarejestrowanie się w usłudze Azure Multi-Factor Authentication (MFA). Za pomocą usługi MFA, nawet jeśli haker ostatecznie odgadnąć hasło, nie wystarcza do uzyskania dostępu do Twojego konta.
 
 Jeśli zalogowanie nie powiedzie się, oznacza to, że w obszarze działania sesji mówi, że **Dodatkowa weryfikacja zakończyła się niepowodzeniem, nieprawidłowy kod**lub że podstawowe uwierzytelnienie (nazwa użytkownika/hasło) zakończyło się niepowodzeniem, ale uwierzytelnianie MFA nie powiodło się. Jeśli była to osoba atakująca, prawidłowo odgadnięcia hasła, ale nadal nie można przekazać wyzwania usługi MFA. W takim przypadku zalecamy zmianę hasła, ponieważ osoba atakująca uzyskała tę część prawa, a następnie przejdź do strony [informacje zabezpieczające](https://mysignins.microsoft.com/security-info) , aby zaktualizować ustawienia zabezpieczeń.
 

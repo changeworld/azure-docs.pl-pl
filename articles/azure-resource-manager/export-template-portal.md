@@ -2,13 +2,13 @@
 title: Eksportuj szablon w Azure Portal
 description: Użyj Azure Portal, aby wyeksportować szablon Azure Resource Manager z zasobów w ramach subskrypcji.
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 6e05a8bff27e56bc5942a7c16ab63921c489f44c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/21/2019
+ms.openlocfilehash: 9e6a4089758809cbebc6a3c0cd586cb418ca42bf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149854"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306779"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eksport jednego i kilku zasobów do szablonu w Azure Portal
 
@@ -33,7 +33,7 @@ W zależności od wybranej opcji, eksportowane szablony mają różne jakości.
 | Szablon jest migawką bieżącego stanu zasobów. Obejmuje ona wszystkie zmiany ręczne dokonane po wdrożeniu. | Szablon pokazuje tylko stan zasobów w czasie wdrażania. Wszystkie zmiany ręczne wprowadzone po wdrożeniu nie są uwzględniane. |
 | Możesz wybrać zasoby z grupy zasobów do wyeksportowania. | Uwzględniono wszystkie zasoby dla określonego wdrożenia. Nie można wybrać podzestawu tych zasobów ani dodać zasobów, które zostały dodane w innym czasie. |
 | Szablon zawiera wszystkie właściwości zasobów, w tym niektóre właściwości, które normalnie nie zostały ustawione podczas wdrażania. Przed ponownym użyciem szablonu warto usunąć lub wyczyścić te właściwości. | Szablon zawiera tylko właściwości, które są związane z wdrożeniem. Szablon jest gotowy do użycia. |
-| Szablon prawdopodobnie nie zawiera wszystkich parametrów, które są potrzebne do ponownego użycia. Większość wartości właściwości jest zakodowana w szablonie. Aby ponownie wdrożyć szablon w innych środowiskach, należy dodać parametry, które zwiększają możliwości konfiguracji zasobów. | Szablon zawiera parametry, które ułatwiają ponowne wdrażanie w różnych środowiskach. |
+| Szablon prawdopodobnie nie zawiera wszystkich parametrów, które są potrzebne do ponownego użycia. Większość wartości właściwości jest zakodowana w szablonie. Aby ponownie wdrożyć szablon w innych środowiskach, należy dodać parametry, które zwiększają możliwości konfiguracji zasobów.  Istnieje również możliwość odtworzenia wybranych **parametrów include** , aby można było utworzyć własne parametry. | Szablon zawiera parametry, które ułatwiają ponowne wdrażanie w różnych środowiskach. |
 
 Wyeksportuj szablon z grupy zasobów lub zasobu, gdy:
 
@@ -62,6 +62,8 @@ Aby wyeksportować jeden lub więcej zasobów z grupy zasobów:
 
    ![Pokaż szablon](./media/export-template-portal/show-template.png)
 
+   Domyślnie wybrane są **Parametry include** .  Po wybraniu tego szablonu zostaną uwzględnione wszystkie parametry szablonu, gdy szablon zostanie wygenerowany. Jeśli chcesz utworzyć własne parametry, przełącz to pole wyboru, aby je nie uwzględnić.
+
 ## <a name="export-template-from-a-resource"></a>Eksportuj szablon z zasobu
 
 Aby wyeksportować jeden zasób:
@@ -74,7 +76,7 @@ Aby wyeksportować jeden zasób:
 
    ![Eksportuj zasób](./media/export-template-portal/export-single-resource.png)
 
-1. Zostanie wyświetlony wyeksportowany szablon, który jest dostępny do pobrania i wdrożenia. Szablon zawiera tylko jeden zasób.
+1. Zostanie wyświetlony wyeksportowany szablon, który jest dostępny do pobrania i wdrożenia. Szablon zawiera tylko jeden zasób. Domyślnie wybrane są **Parametry include** .  Po wybraniu tego szablonu zostaną uwzględnione wszystkie parametry szablonu, gdy szablon zostanie wygenerowany. Jeśli chcesz utworzyć własne parametry, przełącz to pole wyboru, aby je nie uwzględnić.
 
 ## <a name="export-template-before-deployment"></a>Eksportuj szablon przed wdrożeniem
 

@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak utworzyć magazyny Recovery Servic
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c678452cd65d0b03d923659e380c1dcef3540ce1
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172424"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273393"
 ---
 # <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
@@ -72,6 +72,13 @@ Azure Backup automatycznie obsługuje magazyn dla magazynu. Należy określić s
 
 > [!NOTE]
 > Przed skonfigurowaniem kopii zapasowych w magazynie należy zmienić **Typ replikacji magazynu** (lokalnie nadmiarowy lub geograficznie nadmiarowy) dla magazynu usługi Recovery Services. Po skonfigurowaniu kopii zapasowej opcja Modyfikuj jest wyłączona i nie można zmienić **typu replikacji magazynu**.
+
+## <a name="modifying-default-settings"></a>Modyfikowanie ustawień domyślnych
+
+Zdecydowanie zalecamy przejrzenie ustawień domyślnych dla **typu replikacji magazynu** i **ustawień zabezpieczeń** przed skonfigurowaniem kopii zapasowych w magazynie. 
+* Domyślnie **Typ replikacji magazynu** jest ustawiony jako **Geograficznie nadmiarowy**. Po skonfigurowaniu kopii zapasowej opcja Modyfikuj jest wyłączona. Wykonaj następujące [kroki](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) , aby przejrzeć i zmodyfikować ustawienia. 
+* Funkcja **usuwania nietrwałego** jest **włączana** domyślnie dla nowo utworzonych magazynów w celu ochrony danych kopii zapasowej przed przypadkowym lub złośliwym usunięciem. Wykonaj następujące [kroki](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) , aby przejrzeć i zmodyfikować ustawienia.
+
 
 ## <a name="next-steps"></a>Następne kroki
 

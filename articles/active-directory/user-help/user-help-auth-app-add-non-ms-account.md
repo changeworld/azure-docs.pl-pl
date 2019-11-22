@@ -1,6 +1,6 @@
 ---
-title: Dodawanie niekonto Microsoft do aplikacji uwierzytelniania — Azure AD
-description: Jak dodać konta inne niż firmy Microsoft, takie jak Google, Facebook lub GitHub, do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
+title: Dodawanie kont innych niż Microsoft do aplikacji Microsoft Authenticator — Azure AD
+description: Dodaj konta inne niż Microsoft, takie jak Google lub Facebook do aplikacji Microsoft Authenticator, aby zweryfikować swoją tożsamość przy użyciu weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803664"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278879"
 ---
-# <a name="add-your-non-microsoft-accounts"></a>Dodawanie kont innych niż Microsoft
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Dodawanie kont innych niż Microsoft do aplikacji Microsoft Authenticator
 
 Dodaj konta inne niż Microsoft, takie jak Google, Facebook lub GitHub, do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej. Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
 

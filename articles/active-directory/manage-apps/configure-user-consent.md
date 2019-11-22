@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie zgody użytkownika na aplikację — Azure Active Directory | Microsoft Docs
+title: Konfigurowanie zgody użytkownika na Azure Active Directory aplikacji
 description: Dowiedz się, jak zarządzać sposobem wyrażania zgody użytkowników na uprawnienia aplikacji. Możesz uprościć środowisko użytkownika, udzielając zgody administratora. Te metody mają zastosowanie do wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709268"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273986"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurowanie sposobu, w jaki użytkownicy końcowi wyrażają zgodę na aplikację w Azure Active Directory
 Dowiedz się, jak skonfigurować sposób, w jaki użytkownicy wyrażają zgodę na uprawnienia aplikacji. Możesz uprościć środowisko użytkownika, udzielając zgody administratora. W tym artykule przedstawiono różne sposoby konfigurowania wyrażania zgody użytkownika. Metody dotyczą wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD). 
@@ -52,10 +52,10 @@ Ta opcja działa tylko wtedy, gdy aplikacja jest:
 
 Aby udzielić zgody administratora podczas rejestrowania aplikacji: 
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
 2. Przejdź do bloku **rejestracje aplikacji** .
 3. Wybierz aplikację, aby wyrazić zgodę.
-4. Wybierz pozycję **uprawnienia interfejsu API**.
+4. Wybierz **uprawnienia do interfejsu API**.
 5. Kliknij pozycję **Udziel zgody administratora**.
 
 
@@ -69,7 +69,7 @@ Aby udzielić zgody administratora przez żądanie adresu URL:
 
 ## <a name="force-user-consent-through-a-url-request"></a>Wymuś zgodę użytkownika za pomocą żądania adresu URL
 
-Aby wymagać od użytkowników końcowych zgody na aplikację przy każdym uwierzytelnianiu, należy dołączyć `&prompt=consent` do adresu URL żądania uwierzytelniania.
+Aby użytkownicy końcowi musieli wyrazić zgodę na aplikację przy każdym uwierzytelnianiu, należy dołączyć `&prompt=consent` do adresu URL żądania uwierzytelnienia.
 Ten adres URL będzie wyglądać następująco: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
 
 ## <a name="next-steps"></a>Następne kroki

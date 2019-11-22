@@ -1,7 +1,7 @@
 ---
-title: Migrate to Azure resource for authoring
+title: Migrowanie do zasobu platformy Azure w celu tworzenia
 titleSuffix: Azure Cognitive Services
-description: Migrate to an Azure authoring resource key.
+description: Przeprowadź migrację do klucza zasobu tworzenia platformy Azure.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,99 +11,99 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 7721b6c86642ad79cd646c66b1ef578acdca1505
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 44baac5eb4e8887594ba05498901ba664380005f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225508"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280770"
 ---
-# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrate to an Azure resource authoring key
+# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrowanie do klucza tworzenia zasobów platformy Azure
 
-Language Understanding (LUIS) authoring authentication changed from an email account to an Azure resource. 
+Language Understanding (LUIS) uwierzytelnianie autorstwa zostało zmienione z konta e-mail na zasób platformy Azure. Gdy obecnie nie jest to wymagane, przełączenie na zasób platformy Azure zostanie wymuszone w przyszłości.
 
 ## <a name="why-migrate"></a>Dlaczego warto przeprowadzić migrację?
 
-Using an Azure resource for authoring allows you, as the owner of the resource, to control access to authoring. You can create and name authoring resources to manage different groups of authors. 
+Przy użyciu zasobu platformy Azure do tworzenia można jako właściciel zasobu kontrolować dostęp do tworzenia. Można utworzyć i nazwać zasoby tworzenia do zarządzania różnymi grupami autorów. 
 
-For example, if you have 2 types of LUIS apps you are authoring, with different members, you can create two different authoring resources and assign contributors. The Azure authoring resource controls the authorization. 
+Jeśli na przykład masz 2 typy tworzonych aplikacji LUIS z różnymi elementami członkowskimi, możesz utworzyć dwa różne zasoby tworzenia i przypisać współautorów. Zasób tworzenia platformy Azure kontroluje autoryzację. 
 
 > [!Note]
-> Before migration, co-authors are known as _collaborators_. After migration, the Azure role of _contributor_ is used for the same functionality.
+> Przed rozpoczęciem migracji Współautorzy są znani jako _współpracownicy_. Po przeprowadzeniu migracji rola _współautora_ systemu Azure jest używana do obsługi tych samych funkcji.
 
-## <a name="what-is-migrating"></a>What is migrating?
+## <a name="what-is-migrating"></a>Co to jest migracja?
 
-Migration includes:
+Migracja obejmuje:
 
-* All users of LUIS, owners and contributors.
-* **All** apps.
-* A **one-way** migration.
+* Wszyscy użytkownicy LUIS, właściciele i współautorzy.
+* **Wszystkie** aplikacje.
+* Migracja **jednokierunkowa** .
 
-The owner can't choose a subset of apps to migrate and the process isn't reversible. 
+Właściciel nie może wybrać podzestawu aplikacji do migracji, a proces nie jest odwracalny. 
 
-The migration is not: 
+Migracja nie jest: 
 
-* A process that collects collaborators and automatically moves or adds to the Azure authoring resource. You, as the app owner, need to complete this step. This step requires permissions to the appropriate resource.
-* A process to create and assign a prediction runtime resource. If you need a prediction runtime resource, that is [a separate process](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) and is unchanged. 
+* Proces, który zbiera współpracowników i automatycznie przenosi lub dodaje do zasobu tworzenia platformy Azure. Jako właściciel aplikacji musisz wykonać ten krok. Ten krok wymaga uprawnień do odpowiedniego zasobu.
+* Proces tworzenia i przypisywania zasobu środowiska uruchomieniowego predykcyjnego. Jeśli potrzebujesz zasobu przewidywania środowiska uruchomieniowego, który jest [oddzielnym procesem](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) i nie jest zmieniany. 
 
-## <a name="how-are-the-apps-migrating"></a>How are the apps migrating?
+## <a name="how-are-the-apps-migrating"></a>Jak są migrowane aplikacje?
 
-The [LUIS portal](https://www.luis.ai) provides the migration process. 
+[Portal Luis](https://www.luis.ai) zawiera proces migracji. 
 
-You will be asked to migrate if:
+Zostanie wyświetlony monit o przeprowadzenie migracji, jeśli:
 
-* You have apps on the email authentication system for authoring.
-* And you are the app owner. 
+* Masz aplikacje w systemie uwierzytelniania poczty e-mail na potrzeby tworzenia.
+* I jesteś właścicielem aplikacji. 
 
-You can delay the migration process, by canceling out of the window. You are periodically asked to migrate until you migrate or the migration deadline is passed. You can start the migration process from the top navigation bar's lock icon.
+Można opóźnić proces migracji, anulując okno. Użytkownik jest okresowo monitowany o migrację do momentu przeprowadzenia migracji lub przekazanie ostatecznego terminu migracji. Proces migracji można rozpocząć od ikony blokady górnego paska nawigacyjnego.
 
-## <a name="migration-for-the-app-owner"></a>Migration for the app owner
+## <a name="migration-for-the-app-owner"></a>Migracja dla właściciela aplikacji
 
-### <a name="before-you-migrate"></a>Before you migrate
+### <a name="before-you-migrate"></a>Przed przeprowadzeniem migracji
 
-* **Optionally**, backup the apps from the LUIS portal's apps list by exporting each app or use the export [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Optionally**, save each app's collaborator's list. This email list is provided as part of the migration process.
-* **Required**, you need to have an [Azure subscription](https://azure.microsoft.com/free/). A part of the subscription process does require billing information. However, you can use the Free (`F0`) pricing tier when you use LUIS. 
+* **Opcjonalnie możesz**utworzyć kopię zapasową aplikacji z listy aplikacji portalu Luis, eksportując każdą aplikację lub korzystając z [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)eksportowania.
+* **Opcjonalnie**Zapisz listę collaborator's każdej aplikacji. Ta lista poczty e-mail jest świadczona jako część procesu migracji.
+* **Wymagana**jest [subskrypcja platformy Azure](https://azure.microsoft.com/free/). Część procesu subskrypcji wymaga informacji dotyczących rozliczeń. Można jednak użyć warstwy cenowej bezpłatna (`F0`) w przypadku korzystania z LUIS. 
 
-**Authoring your LUIS app is free**, indicated by the `F0` tier. Learn [more about pricing tiers](luis-boundaries.md#key-limits).
+**Tworzenie aplikacji Luis jest bezpłatne**, wskazywane przez warstwę `F0`. Dowiedz się [więcej o warstwach cenowych](luis-boundaries.md#key-limits).
 
-If you do not have an Azure subscription, [sign up](https://azure.microsoft.com/free/). 
+Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się](https://azure.microsoft.com/free/). 
 
 ### <a name="migration-steps"></a>Kroki migracji
 
-Follow [these migration steps](luis-migration-authoring-steps.md).
+Postępuj zgodnie z [tymi krokami migracji](luis-migration-authoring-steps.md).
 
 ### <a name="after-you-migrate"></a>Po migracji 
 
-After the migration process, all your LUIS apps are now assigned to a single LUIS authoring resource.
+Po zakończeniu migracji wszystkie Twoje aplikacje LUIS są teraz przypisane do pojedynczego zasobu tworzenia LUIS.
 
-You can create more authoring resources and assign from the **Manage -> Azure resources** page in the _LUIS portal_. 
+Można utworzyć więcej zasobów autorstwa i przypisać je na stronie **zarządzaj > zasobów platformy Azure** w _portalu Luis_. 
 
-You can add contributors to the authoring resource from the _Azure portal_, on the **Access Control (IAM)** page for that resource. See [add contributor access](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) for more information.
+Współautorzy można dodać do zasobu tworzenia z _Azure Portal_na stronie **Access Control (IAM)** dla tego zasobu. Aby uzyskać więcej informacji, zobacz [Dodawanie dostępu współautora](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) .
 
 |Portal|Przeznaczenie|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Create prediction and authoring resources.<br>* Assign contributors.|
-|[LUIS](https://www.luis.ai)|* Migrate to new authoring resources.<br>* Assign or unassign prediction and authoring resources to apps from **Manage -> Azure resources** page.| 
+|[Azure](https://azure.microsoft.com/free/)|* Tworzenie zasobów przewidywania i tworzenia.<br>* Przypisz współautorów.|
+|[LUIS](https://www.luis.ai)|* Przeprowadź migrację do nowych zasobów tworzenia.<br>* Przypisz lub Cofnij przypisanie zasobów prognozowania i tworzenia do aplikacji z **zarządzania > stronie zasobów platformy Azure** .| 
 
-## <a name="migration-for-the-app-contributor"></a>Migration for the app contributor
+## <a name="migration-for-the-app-contributor"></a>Migracja dla współautora aplikacji
 
-Every user of LUIS needs to migrate, including collaborators/contributors. 
+Każdy użytkownik programu LUIS musi przeprowadzić migrację, w tym współpracowników/współautorów. 
 
-### <a name="before-the-app-is-migrated"></a>Before the app is migrated
+### <a name="before-the-app-is-migrated"></a>Przed przeprowadzeniem migracji aplikacji
 
-You may choose to export an app you are a collaborator on, then import the app back into LUIS. The import process creates a new app with a new app ID, for which you are the owner.
+Możesz wyeksportować aplikację, której jesteś współpracownikiem, a następnie zaimportować aplikację z powrotem do LUIS. Proces importowania tworzy nową aplikację z nowym IDENTYFIKATORem aplikacji, dla którego jesteś właścicielem.
 
-### <a name="after-the-app-is-migrated"></a>After the app is migrated
+### <a name="after-the-app-is-migrated"></a>Po migracji aplikacji
 
-The app owner needs to [add your email to the Azure authoring resource as a collaborator](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+Właściciel aplikacji musi [dodać swój adres e-mail do zasobu tworzenia platformy Azure jako współpracownika](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
 
-After the migration process, any apps you own are available on the **My apps** page of the LUIS portal.  
+Po zakończeniu procesu migracji wszystkie posiadane aplikacje są dostępne na stronie **Moje aplikacje** w portalu Luis.  
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-LUIS authoring keys are only visible in the LUIS portal after the migration process is complete. If you create the authoring keys, such as with the LUIS CLI, the user still needs to complete the migration process. 
+Klucze tworzenia LUIS są widoczne tylko w portalu LUIS po zakończeniu procesu migracji. Jeśli utworzysz klucze tworzenia, na przykład w interfejsie wiersza polecenia LUIS, użytkownik nadal musi ukończyć proces migracji. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [How to migrate your app to an authoring resource](luis-migration-authoring-steps.md)
+* [Jak przeprowadzić migrację aplikacji do zasobu tworzenia](luis-migration-authoring-steps.md)

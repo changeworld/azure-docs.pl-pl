@@ -1,5 +1,5 @@
 ---
-title: Duże przelokalizację | Microsoft Docs
+title: Duże przelokalizowanie
 description: Bardzo duże rozlokalizacyjne Przewodnik Szybki Start.
 author: bucurb
 manager: dacoghl
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1d9e58f2d7eda818665a6253a8d0508104b17405
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093880"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270146"
 ---
-# <a name="coarse-relocalization"></a>Duże przelokalizowanie
+# <a name="coarse-relocalization"></a>Zgrubna ponowna lokalizacja
 
 Bardzo duże relokalizacja to funkcja, która zapewnia wstępną odpowiedź na pytanie: *gdzie jest teraz moje urządzenie/jakie treści należy zaobserwować?* Odpowiedź nie jest precyzyjna, ale zamiast tego jest w formie: Jesteś *blisko tych kotwic, spróbuj zlokalizować jeden z nich*.
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 76b7c9436b8d1d466a69df7e5427991df0a9c63e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 277548c859370a700973d9f60556fe38e94548b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125563"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280415"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,7 +25,7 @@ Przed rozpoczęciem upewnij się, że:
 > [!div class="checklist"]
 >
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
-> * [Tworzenie aplikacji LUIS i pobieranie klucza punktu końcowego](../../../../quickstarts/create-luis.md)
+> * [Tworzenie aplikacji Language Understanding (LUIS) i pobieranie klucza punktu końcowego](../../../../quickstarts/create-luis.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=windows)
 

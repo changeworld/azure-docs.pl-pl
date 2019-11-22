@@ -61,8 +61,6 @@
               href: quickstart-v2-netcore-daemon.md
             - name: Demon konsoli języka Python
               href: quickstart-v2-python-daemon.md
-            - name: Aplikacja internetowa demona platformy ASP.NET
-              href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
     - name: Samouczki
       items:
         - name: Aplikacje jednostronicowe
@@ -83,6 +81,10 @@
               href: tutorial-v2-windows-uwp.md
             - name: Aplikacje klasyczne Windows — .NET
               href: tutorial-v2-windows-desktop.md
+        - name: Aplikacje demona
+          items:
+            - name: Aplikacja internetowa demona platformy ASP.NET
+              href: tutorial-v2-aspnet-daemon-web-app.md
     - name: Przykłady
       href: sample-v2-code.md
     - name: Pojęcia

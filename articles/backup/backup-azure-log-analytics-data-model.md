@@ -3,12 +3,12 @@ title: Model danych dzienników Azure Monitor
 description: W tym artykule dowiesz się więcej na temat Azure Monitor Log Analytics szczegóły modelu danych Azure Backup.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 055a36fb2aa8e9048089a338f57555242e8eb754
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: eed3f66c1743bb21118a2d90343989d2b6a081de
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173026"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278493"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics model danych dla Azure Backup danych
 
@@ -16,11 +16,15 @@ Użyj Log Analytics model danych do tworzenia niestandardowych alertów z Log An
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
+> [!NOTE]
+>
+> Ten model danych znajduje się w odniesieniu do trybu Diagnostyka Azure wysyłania zdarzeń diagnostycznych do Log Analytics (LA). Aby poznać model danych dla nowego trybu specyficznego dla zasobu, można zapoznać się z następującym artykułem: [model danych dla Azure Backup zdarzeń diagnostycznych](https://aka.ms/diagnosticsdatamodel)
+
 ## <a name="using-azure-backup-data-model"></a>Korzystanie z Azure Backup model danych
 
 Możesz użyć następujących pól dostarczonych jako część modelu danych do tworzenia wizualizacji, niestandardowych zapytań i pulpitu nawigacyjnego zgodnie z wymaganiami.
 
-### <a name="alert"></a>Alert
+### <a name="alert"></a>Zgłoś alert
 
 Ta tabela zawiera szczegółowe informacje o polach związanych z alertami.
 
@@ -200,7 +204,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące pól związanych z zasadam
 | YearlyRetentionDaysOfTheMonth_s |Tekst ||Daty w miesiącu wybrane do przechowywania rocznego |
 | SynchronisationFrequencyPerDay_s |Liczba całkowita |v2|Liczba przypadków synchronizacji kopii zapasowej plików dla programu SC DPM i serwera usługi MAB |
 | DiffBackupFormat_s |Tekst |v2|Format różnicowych kopii zapasowych dla bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure |
-| DiffBackupTime_s |Time |v2|Czas różnicowych kopii zapasowych bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|
+| DiffBackupTime_s |Godzina |v2|Czas różnicowych kopii zapasowych bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|
 | DiffBackupRetentionDuration_s |Liczba dziesiętna |v2|Czas przechowywania różnicowych kopii zapasowych dla bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|
 | LogBackupFrequency_s |Liczba dziesiętna |v2|Częstotliwość tworzenia kopii zapasowych dzienników dla bazy danych SQL|
 | LogBackupRetentionDuration_s |Liczba dziesiętna |v2|Czas przechowywania kopii zapasowych dziennika dla bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|

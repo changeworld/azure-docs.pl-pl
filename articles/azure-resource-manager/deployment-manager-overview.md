@@ -2,14 +2,14 @@
 title: Bezpieczne wdrażanie między regionami — Menedżer wdrażania platformy Azure
 description: W tym artykule opisano, jak wdrożyć usługę w wielu regionach za pomocą usługi Azure Deployment Manager. Przedstawia on praktyki bezpiecznego wdrażania, aby sprawdzić stabilność wdrożenie, zanim zetknie się we wszystkich regionach.
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a0d13150086b393e10bc16c5c2cef173ab0abab
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9b0e314b3911dcd3b96dc2b5b32081bd2e9c0c0c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147195"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307037"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włączanie bezpiecznych praktyk wdrażania przy użyciu usługi Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
@@ -177,7 +177,7 @@ Szablon wdrożenia w tym artykule opisano kroki do wykonania podczas wdrażania 
 
 * Źródło artefaktu
 * Krok
-* Wprowadzaj
+* Wdrożenie
   * Grupy kroków
     * Operacje wdrażania
 
@@ -338,3 +338,5 @@ W tym artykule przedstawiono Deployment Manager. Przejdź do następnego artyku�
 
 > [!div class="nextstepaction"]
 > [Samouczek: Użyj Azure Deployment Manager przy użyciu szablonów usługi Resource Manager](./deployment-manager-tutorial.md)
+>
+> [Szybki Start: Wypróbuj usługę Azure Menedżer wdrażania w ciągu zaledwie kilku minut](https://github.com/Azure-Samples/adm-quickstart)

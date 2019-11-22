@@ -1,5 +1,5 @@
 ---
-title: Portal do samoobsługowego rejestrowania w funkcji współpracy B2B — Azure Active Directory | Microsoft Docs
+title: Portal rejestracji samoobsługowej współpracy B2B — Azure AD
 description: Współpraca B2B usługi Azure Active Directory wspiera relacje między firmami, umożliwiając partnerom biznesowym selektywne uzyskiwanie dostępu do Twoich aplikacji firmowych
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28db43a345fb29a7529136ddfb929f5a48ccb1f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785433"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272106"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Portal samoobsługowy do rejestracji do funkcji współpracy B2B w usłudze Azure AD
 
@@ -30,7 +30,7 @@ Ten projekt w serwisie GitHub pokazuje, jak organizacje mogą używać interfejs
 
 Ten kod jest udostępniany jako przykład, aby zademonstrować użycie interfejsu API zaproszenia do współpracy B2B w usłudze Azure Active Directory. Przed jego wdrożeniem w scenariuszu produkcyjnym powinien zostać dostosowany przez Twój zespół deweloperów lub partnera oraz sprawdzony.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 * [Licencjonowanie funkcji współpracy B2B w usłudze Azure AD](licensing-guidance.md)

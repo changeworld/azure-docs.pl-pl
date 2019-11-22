@@ -1,7 +1,7 @@
 ---
-title: Najlepsze praktyki — LUIS
+title: Najlepsze rozwiązania dotyczące tworzenia aplikacji LUIS
 titleSuffix: Azure Cognitive Services
-description: Zapoznaj się z najlepszymi rozwiązaniami LUIS, aby uzyskać najlepsze wyniki z modelu aplikacji LUIS.
+description: Poznaj najlepsze rozwiązania, aby uzyskać najlepsze wyniki z modelu aplikacji LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,20 +11,20 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 64d67edaf5affbc908fba7b6c261096589bc84d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487610"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280925"
 ---
-# <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące kompilowania aplikacji w języku przy użyciu Cognitive Services
+# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji do interpretacji języka (LUIS)
 Tworzenie aplikacji LUIS za pomocą procesu tworzenia aplikacji: 
 
 * Tworzenie modeli języka (intencje i jednostki)
 * Dodaj kilka przykładów szkoleniowych wyrażenia długości (15-30 na intencję)
 * Publikowanie w punkcie końcowym
-* Testuj z punktu końcowego 
+* Test z punktu końcowego 
 
 Po [opublikowaniu](luis-how-to-publish-app.md)aplikacji użyj cyklu życia programowania, aby dodać funkcje, publikować i testować z punktu końcowego. Nie rozpoczynaj następnego cyklu tworzenia przez dodanie więcej przykładowych wyrażenia długości, ponieważ to nie pozwala LUIS na naukę modelu z rzeczywistymi wyrażenia długościami użytkowników. 
 
@@ -33,30 +33,30 @@ Nie rozszerzaj wyrażenia długości do momentu, aż bieżący zestaw obu przyk�
 
 
 
-## <a name="do-and-dont"></a>Zrób i nie
-Poniższa lista zawiera najlepsze rozwiązania dotyczące aplikacji LUIS:
+## <a name="do-and-dont"></a>Wykonaj, a nie
+Poniższa lista zawiera najlepsze rozwiązania dotyczące aplikacji usługi LUIS:
 
 |Zalecenia|Zakazy|
 |--|--|
-|[Definiowanie unikatowych intencji](#do-define-distinct-intents)<br>[Dodaj deskryptory do intencji](#do-add-descriptors-to-intents) |[Dodaj wiele przykładowych wyrażenia długości do intencji](#dont-add-many-example-utterances-to-intents)<br>[Użyj kilku lub prostych jednostek](#dont-use-few-or-simple-entities) |
-|[Znajdź słodkie miejsce między ogólnym i zbyt specyficzne dla każdego zamiaru](#do-find-sweet-spot-for-intents)|[Korzystanie z LUIS jako platformy szkoleniowej](#dont-use-luis-as-a-training-platform)|
-|[Iteracyjne Kompilowanie aplikacji przy użyciu wersji](#do-build-your-app-iteratively-with-versions)<br>[Kompiluj jednostki na potrzeby dekompozycji modelu](#do-build-for-model-decomposition)|[Dodaj wiele przykładowych wyrażenia długości tego samego formatu, ignorując inne formaty](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[Dodaj wzorce w późniejszych iteracjach](#do-add-patterns-in-later-iterations)|[Mieszanie definicji intencji i jednostek](#dont-mix-the-definition-of-intents-and-entities)|
-|[Zrównoważ swój wyrażenia długości we wszystkich intencjach](#balance-your-utterances-across-all-intents) , z wyjątkiem intencji none.<br>[Dodaj przykład wyrażenia długości do opcji none](#do-add-example-utterances-to-none-intent)|[Utwórz deskryptory ze wszystkimi możliwymi wartościami](#dont-create-descriptors-with-all-the-possible-values)|
-|[Korzystanie z funkcji Sugeruj w przypadku aktywnego uczenia](#do-leverage-the-suggest-feature-for-active-learning)|[Dodaj zbyt wiele wzorców](#dont-add-many-patterns)|
-|[Monitorowanie wydajności aplikacji za pomocą testów wsadowych](#do-monitor-the-performance-of-your-app)|[Uczenie i publikowanie za pomocą każdego pojedynczego przykładu wypowiedź dodanego](#dont-train-and-publish-with-every-single-example-utterance)|
+|[Definiowanie różnych intencji](#do-define-distinct-intents)<br>[Dodaj deskryptory do intencji](#do-add-descriptors-to-intents) |[Dodawanie wielu wypowiedzi przykład do intencji](#dont-add-many-example-utterances-to-intents)<br>[Użyj kilku lub prostych jednostek](#dont-use-few-or-simple-entities) |
+|[Odnalezienia punktu sweet między zbyt ogólne i zbyt specyficzny dla każdego intencji](#do-find-sweet-spot-for-intents)|[Użyj usługi LUIS jako platforma szkoleniowa](#dont-use-luis-as-a-training-platform)|
+|[Iteracyjne Kompilowanie aplikacji przy użyciu wersji](#do-build-your-app-iteratively-with-versions)<br>[Kompiluj jednostki na potrzeby dekompozycji modelu](#do-build-for-model-decomposition)|[Dodawanie wielu wypowiedzi przykład o tym samym formacie, ignorowanie innych formatów](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[Dodaj wzorce w późniejszych iteracjach](#do-add-patterns-in-later-iterations)|[Mieszanie definicji intencje i podmioty](#dont-mix-the-definition-of-intents-and-entities)|
+|[Zrównoważ swój wyrażenia długości we wszystkich intencjach](#balance-your-utterances-across-all-intents) , z wyjątkiem intencji none.<br>[Dodawanie wypowiedzi przykładzie Brak elementu intent](#do-add-example-utterances-to-none-intent)|[Utwórz deskryptory ze wszystkimi możliwymi wartościami](#dont-create-descriptors-with-all-the-possible-values)|
+|[Korzystać z tej funkcji sugerowanej dla aktywne uczenie](#do-leverage-the-suggest-feature-for-active-learning)|[Dodaj zbyt wiele wzorców](#dont-add-many-patterns)|
+|[Monitorowanie wydajności aplikacji za pomocą testów wsadowych](#do-monitor-the-performance-of-your-app)|[Uczenie i publikowanie za pomocą każdego wypowiedź jednym przykładzie dodano](#dont-train-and-publish-with-every-single-example-utterance)|
 
-## <a name="do-define-distinct-intents"></a>Definiuj różne intencje
-Upewnij się, że słownictwo dla każdego zamiaru dotyczy tego zamiaru i nie nakłada się na inny cel. Na przykład jeśli chcesz mieć aplikację, która obsługuje układy podróży, takie jak loty lotnicze i Hotele, możesz wybierać te obszary tematyczne jako osobne intencje lub te same cele z jednostkami dla określonych danych wewnątrz wypowiedź.
+## <a name="do-define-distinct-intents"></a>Definiowanie różnych intencji
+Upewnij się, że słownika dla każdego celem jest po prostu na tym przeznaczeniem i nie nakładających się przy użyciu innego zamiaru. Na przykład jeśli chcesz mieć aplikację, która obsługuje układy podróży, takie jak loty lotnicze i Hotele, możesz wybierać te obszary tematyczne jako osobne intencje lub te same cele z jednostkami dla określonych danych wewnątrz wypowiedź.
 
-Jeśli słownictwo między dwoma intencjami jest takie samo, Połącz zamiar i użyj jednostek. 
+Jeśli słownictwa między dwiema opcjami jest taka sama, Połącz intencji i korzystanie z jednostek. 
 
-Rozważmy następujący przykład wyrażenia długości:
+Należy wziąć pod uwagę następujące wypowiedzi przykładu:
 
 |Przykładowe wypowiedzi|
 |--|
-|Książka a samolotem|
-|Książka w hotelu|
+|Zarezerwuj lot|
+|Zarezerwuj hotelu|
 
 `Book a flight` i `Book a hotel` używają tego samego słownictwa `book a `. Ten format jest taki sam, więc powinien być taki sam, jak w przypadku różnych wyrazów `flight` i `hotel` jako wyodrębnionych jednostek. 
 
@@ -64,8 +64,8 @@ Rozważmy następujący przykład wyrażenia długości:
 
 Deskryptory ułatwiają opisywanie funkcji dla zamiaru. Deskryptor może być listą fraz wyrazów, które są istotne dla tego zamiaru lub jednostki, która jest istotna dla tego celu. 
 
-## <a name="do-find-sweet-spot-for-intents"></a>Znajdź słodycze dla intencji
-Użyj danych przewidywania z LUIS, aby określić, czy twoje intencje są nakładane. Nakładające się intencje odmylić LUIS. Wynika to z tego, że największe zamiar oceniania jest zbyt blisko innego celu. Ponieważ LUIS nie używa dokładnie tej samej ścieżki za pomocą danych do szkolenia za każdym razem, nakładające się przeznaczenie ma szansę na pierwsze lub drugie szkolenie. Chcesz, aby wyniki wypowiedź dla każdego zamiaru były od siebie oddzielone, aby nie nastąpiło Przerzucanie/flop. Dobre rozróżnienie w przypadku intencji powinno spowodować, że oczekiwane jest najlepsze zamierzone za każdym razem. 
+## <a name="do-find-sweet-spot-for-intents"></a>Znaleźć miejsce sweet intencji
+Użyj danymi przewidywań, Luis, aby określić, jeśli nakładają się na Twoje intencje. Nakładające się intencje odmylić LUIS. Wynik jest zbyt Zamknij, aby się u góry oceniania intencji inną intencji. Nakładające się intencji, ponieważ usługa LUIS nie używa dokładnie takiej samej ścieżce danych szkoleniowych każdorazowo, ma prawdopodobieństwo przy pierwszej lub drugiej szkolenia. Chcesz, aby wyniki wypowiedź dla każdego zamiaru były od siebie oddzielone, aby nie nastąpiło Przerzucanie/flop. Dobre rozróżnienie na intencje powinno spowodować oczekiwanego intencji najważniejsze każdym razem, gdy. 
  
 <a name="#do-build-the-app-iteratively"></a>
 
@@ -84,7 +84,7 @@ Dekompozycja modelu ma typowy proces:
 * Dodawanie deskryptorów (funkcji) do podskładników
 * Dodaj deskryptory (funkcje) do celu 
 
-Po utworzeniu zamiaru i dodaniu przykładu wyrażenia długości w poniższym przykładzie opisano dekompozycję jednostki. 
+Po utworzeniu zamiaru i dodaniu przykładu wyrażenia długości, w poniższym przykładzie opisano dekompozycję jednostki. 
 
 Zacznij od zidentyfikowania kompletnych koncepcji dotyczących danych, które mają zostać wyodrębnione w wypowiedź. To jest jednostka, którą uczysz. Następnie rozłożyć frazę na części. Obejmuje to zidentyfikowanie podskładników (jako jednostek) wraz z deskryptorami i ograniczeniami. 
 
@@ -135,60 +135,60 @@ Aby przewidywania LUIS były dokładne, liczba przykładowych wyrażenia długo�
 
 Jeśli masz zamiar z 100 przykładem wyrażenia długości i zamiarem z 20 przykład wyrażenia długości, zamiaru 100-wypowiedź będzie miała wyższą stawkę prognozowania.  
 
-## <a name="do-add-example-utterances-to-none-intent"></a>Dodaj przykład wyrażenia długości do None
+## <a name="do-add-example-utterances-to-none-intent"></a>Dodawanie wypowiedzi przykładzie Brak elementu intent
 
-Ta metoda jest zamiarem rezerwowym, co oznacza, że wszystko poza aplikacją. Dodaj jeden przykład wypowiedź do opcji Brak dla każdego 10 przykładowych wyrażenia długości w pozostałej części aplikacji LUIS.
+Ta metoda jest zamiarem rezerwowym, co oznacza, że wszystko poza aplikacją. Dodaj jeden wypowiedź przykład intencji dla każdego wypowiedzi przykład 10 w pozostałej części aplikacją usługi LUIS None.
 
-## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Korzystanie z funkcji Sugeruj w przypadku aktywnego uczenia
+## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Korzystać z funkcji sugerowanej aktywne uczenie
 
-Regularnie korzystaj z **wyrażenia długości punktu końcowego** usługi [Active Learning](luis-how-to-review-endpoint-utterances.md), zamiast dodawać więcej przykładowych wyrażenia długości do zamiar. Ponieważ aplikacja stale otrzymuje punkt końcowy wyrażenia długości, ta lista rośnie i ulega zmianie.
+Użyj [aktywne uczenie](luis-how-to-review-endpoint-utterances.md)firmy **Przejrzyj wypowiedzi punktu końcowego** na bieżąco, zamiast opcji dodawania więcej wypowiedzi przykład do intencji. Ponieważ aplikacja otrzymuje stale wypowiedzi punktu końcowego, ta lista jest rosnący i zmianę.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Monitorowanie wydajności aplikacji
 
 Monitoruj dokładność przewidywania przy użyciu zestawu [testów wsadowych](luis-concept-batch-test.md) . 
 
-Przechowuj oddzielny zestaw wyrażenia długości, które nie są używane jako [przykład wyrażenia długości](luis-concept-utterance.md) lub Endpoint wyrażenia długości. Kontynuuj ulepszanie aplikacji dla zestawu testowego. Dostosuj zestaw testów, aby odzwierciedlał rzeczywiste wyrażenia długości użytkownika. Ten zestaw testów służy do obliczania każdej iteracji lub wersji aplikacji. 
+Przechowuj oddzielny zestaw wyrażenia długości, które nie są używane jako [przykład wyrażenia długości](luis-concept-utterance.md) lub Endpoint wyrażenia długości. Ulepszaj aplikacji zestawu testowego. Dostosuj ustawienie do odzwierciedlenia wypowiedzi rzeczywistego użytkownika testu. Ten zestaw testów służy do obliczania każdej iteracji lub wersji aplikacji. 
 
-## <a name="dont-add-many-example-utterances-to-intents"></a>Nie dodawaj wielu przykładowych wyrażenia długości do intencji
+## <a name="dont-add-many-example-utterances-to-intents"></a>Nie dodawaj wiele wypowiedzi przykład do intencji
 
-Po opublikowaniu aplikacji należy dodać tylko wyrażenia długości z aktywnego uczenia w procesie cyklu życia projektu. Jeśli wyrażenia długości są zbyt podobne, Dodaj wzorzec. 
+Po opublikowaniu aplikacji należy dodać tylko wyrażenia długości z aktywnego uczenia w procesie cyklu życia projektu. W przypadku zbyt podobne wypowiedzi Dodawanie wzorca. 
 
 ## <a name="dont-use-few-or-simple-entities"></a>Nie używaj kilku lub prostych jednostek
 
 Jednostki są kompilowane do wyodrębniania i przewidywania danych. Należy pamiętać, że każdy z zamiarów ma jednostki, które opisują dane w zamiarach. Pozwala to LUIS na przewidywalność celu, nawet jeśli aplikacja kliencka nie musi używać wyodrębnionej jednostki. 
 
-## <a name="dont-use-luis-as-a-training-platform"></a>Nie używaj LUIS jako platformy szkoleniowej
+## <a name="dont-use-luis-as-a-training-platform"></a>Nie używaj usługi LUIS jako platforma szkoleniowa
 
-LUIS jest charakterystyczny dla domeny modelu języka. Nie jest ona przeznaczona do pracy jako ogólna platforma szkoleń w języku naturalnym. 
+Usługa LUIS jest specyficzne dla domeny model języka. Nie jest ona przeznaczona do pracy jako ogólna platforma szkoleń w języku naturalnym. 
 
-## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Nie dodawaj wielu przykładowych wyrażenia długości w tym samym formacie, ignorując inne formaty
+## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Nie dodawaj wiele wypowiedzi przykład o tym samym formacie, ignorowanie innych formatów
 
-LUIS oczekuje wariacji w wyrażenia długości celu. Wyrażenia długości może się różnić w zależności od tego, co ma takie samo ogólne znaczenie. Wariacje mogą obejmować długość wypowiedź, wybór wyrazów oraz umieszczanie wyrazów. 
+Usługa LUIS oczekuje, że różnice między wypowiedzi intencji. Wypowiedzi mogą się różnić, a jednocześnie ma takie samo znaczenie ogólnej. Zmiany mogą obejmować wypowiedź długości, wybór programu word i umieszczania programu word. 
 
-|Nie używaj tego samego formatu|Użyj różnych formatów|
+|Nie używaj tego samego formatu|Użyj formatu zmiennych|
 |--|--|
-|Kup bilet w Seattle<br>Kup bilet w Paryżu<br>Kup bilet do Orlando|Kup 1 bilet do Seattle<br>Zarezerwuj dwa stanowiska na czerwonym okiem do paryskiego następnego poniedziałku<br>Chcę zasubskrybować 3 bilety do Orlando dla przerwania sprężyny|
+|Kup biletu do Seattle<br>Kup biletu do Paryża<br>Kup biletu do Orlando|Kup 1 biletu do Seattle<br>Zarezerwuje dwóch na czerwony oka do Paryża poniedziałku<br>Chcę zarezerwować 3 bilety do Orlando przerwą spring|
 
-W drugiej kolumnie są stosowane różne czasowniki (zakup, rezerwacja, książka), różne ilości (1, 2, 3) i różne rozmieszczenia słów, ale wszystkie mają takie same zamiar zakupu biletów lotniczych do podróży. 
+Drugiej kolumny używa różne czasowniki (zakup, rezerwy, książki), różnych ilości (1, 3 dwa), a różne rozmieszczenia wyrazów, ale wszystkie mają ten sam zamiar zakupów biletów linii lotniczych dla podróży. 
 
-## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Nie mieszaj definicji intencji i jednostek
+## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Nie można mieszać definicji intencje i podmioty
 
-Utwórz zamiar dla każdej akcji, którą zajmie bot. Użyj jednostek jako parametrów, które umożliwiają wykonanie tej akcji. 
+Utwórz opcję dla każdej akcji, że zajmie bota. Jako parametry, które umożliwiają tę akcję, należy użyć jednostki. 
 
-W przypadku botów, które będą księgować loty lotnicze, należy utworzyć intencję **BookFlight** . Nie należy tworzyć zamierzeń dla każdego linii lotniczej lub każdego miejsca docelowego. Użyj tych elementów danych jako [jednostek](luis-concept-entity-types.md) i oznacz je w przykładowym wyrażenia długości. 
+W przypadku botów, które będą księgować loty lotnicze, należy utworzyć intencję **BookFlight** . Nie należy tworzyć intencji dla każdej linii lotniczych lub każdego miejsca docelowego. Użyj tych elementów danych jako [jednostek](luis-concept-entity-types.md) i oznacz je w wypowiedzi przykładu. 
 
 ## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Nie twórz deskryptorów ze wszystkimi możliwymi wartościami
 
-Podaj kilka przykładów w [frazach](luis-concept-feature.md) deskryptorów, ale nie każdy wyraz. LUIS generalize i bierze pod uwagę kontekst. 
+Podaj kilka przykładów w [frazach](luis-concept-feature.md) deskryptorów, ale nie każdy wyraz. Usługa LUIS stanowi uogólnienie i uwzględnia kontekstu. 
 
-## <a name="dont-add-many-patterns"></a>Nie dodawaj wielu wzorców
+## <a name="dont-add-many-patterns"></a>Nie należy dodawać wielu wzorców
 
-Nie dodawaj zbyt wielu [wzorców](luis-concept-patterns.md). LUIS jest przeznaczona do szybkiego uczenia się z mniejszą liczbą przykładów. Nie należy przeciążać systemu niepotrzebnie.
+Nie dodawaj zbyt wiele [wzorców](luis-concept-patterns.md). Usługa LUIS jest przeznaczona do Dowiedz się szybko, wraz z przykładami mniejszej liczby. Nie doprowadzić do przeciążenia systemu niepotrzebnie.
 
-## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Nie szkol ani nie Publikuj za pomocą każdego pojedynczego przykładu wypowiedź
+## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Nie uczenie i publikowanie przy użyciu każdego pojedynczego przykład wypowiedź
 
-Dodaj 10 lub 15 wyrażenia długości przed rozpoczęciem szkolenia i publikowania. Pozwala to zobaczyć wpływ na dokładność przewidywania. Dodanie pojedynczego wypowiedź może nie mieć widocznego wpływu na wynik. 
+Dodawanie wypowiedzi 10 lub 15 przed szkolenia i publikowania. Pozwala wyświetlić wpływ na dokładność prognozowania. Dodawanie pojedynczego wypowiedź nie może mieć widoczne wpływ na wynik. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [zaplanować aplikację](luis-how-plan-your-app.md) w aplikacji Luis.
+* Dowiedz się, jak [Planowanie aplikacji](luis-how-plan-your-app.md) w aplikacją usługi LUIS.

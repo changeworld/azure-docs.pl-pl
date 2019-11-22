@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927151"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271512"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgoda w punkcie końcowym platformy tożsamości firmy Microsoft
 
@@ -41,6 +41,7 @@ Platforma tożsamości firmy Microsoft implementuje protokół autoryzacji [OAut
 * Microsoft Graph: `https://graph.microsoft.com`
 * Interfejs API poczty pakietu Office 365: `https://outlook.office.com`
 * Wykres usługi Azure AD: `https://graph.windows.net`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
 > Zdecydowanie zalecamy używanie Microsoft Graph zamiast programu Azure AD Graph, interfejsu API poczty pakietu Office 365 itd.
@@ -89,7 +90,7 @@ Jeśli aplikacja wykonuje Logowanie przy użyciu programu [OpenID Connect Connec
 
 Zakres `email` może być używany z zakresem `openid` i innymi. Daje ona aplikacji dostęp do podstawowego adresu e-mail użytkownika w formie `email`go. `email` oświadczenia jest dołączany do tokenu tylko wtedy, gdy adres e-mail jest skojarzony z kontem użytkownika, które nie zawsze jest przypadkiem. Jeśli używa zakresu `email`, aplikacja powinna zostać przygotowana do obsługi przypadku, w którym `email` nie istnieje w tokenie.
 
-### <a name="profile"></a>profilu
+### <a name="profile"></a>profile
 
 Zakres `profile` może być używany z zakresem `openid` i innymi. Zapewnia ona aplikacji dostęp do znacznej ilości informacji o użytkowniku. Informacje, do których może uzyskać dostęp, obejmują, ale nie są ograniczone do, podanej nazwy, imienia, preferowanej nazwy użytkownika i identyfikatora obiektu. Aby uzyskać pełną listę oświadczeń profilu dostępnych w parametrze id_tokens określonego użytkownika, zobacz [informacje dotyczące`id_tokens`](id-tokens.md).
 

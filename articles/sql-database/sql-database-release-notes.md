@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166258"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279229"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji SQL Database
 
@@ -80,6 +80,7 @@ W modelu wdrażania wystąpienia zarządzanego w H1 2019 są włączone następu
 
 - **Sie 2019** — zawarte bazy danych są w pełni obsługiwane w wystąpieniu zarządzanym.
 - **Oct 2019** -wbudowane przywracanie bazy danych w punkcie w czasie z warstwy krytyczne dla działania firmy do warstwy ogólnego przeznaczenia nie powiedzie się, jeśli źródłowa baza danych zawiera obiekty OLTP w pamięci.
+- **Oct 2019** — można użyć funkcji **poczta bazy danych** z zewnętrznymi serwerami poczty (poza platformą Azure) przy użyciu bezpiecznego połączenia.
 - **Lis 2019** — spójność bazy danych jest weryfikowana przy użyciu `DBCC CHECKDB` po przywróceniu bazy danych z usługi Azure Blob Storage.
 
 ## <a name="updates"></a>Aktualizacje

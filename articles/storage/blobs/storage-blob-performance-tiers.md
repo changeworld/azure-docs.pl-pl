@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932267"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270223"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Warstwy wydajności dla magazynu blokowych obiektów BLOB
 
@@ -54,6 +54,12 @@ Magazyn wydajności w warstwie Premium jest idealnym rozwiązaniem w przypadku o
 ## <a name="standard-performance"></a>Wydajność standardowa
 
 Standardowa wydajność obsługuje różne [warstwy dostępu](storage-blob-storage-tiers.md) do przechowywania danych w najbardziej opłacalny sposób. Jest ona zoptymalizowana pod kątem wysokiej wydajności i wysokiej przepływności w przypadku dużych zestawów danych.
+
+- **Kopie zapasowe i zestawy danych odzyskiwania po awarii**. Standardowa wydajność magazynu oferuje oszczędne warstwy, dzięki czemu jest idealnym przypadkiem użycia zarówno dla krótkoterminowych, jak i długoterminowych zestawów danych odzyskiwania, kopii zapasowych i archiwizowania danych zgodności.
+
+- **Zawartość multimedialna**. Obrazy i filmy wideo często są najczęściej używane podczas pierwszego tworzenia i przechowywania, ale ten typ zawartości jest używany rzadziej, jak w przypadku starszej wersji. Standardowa wydajność magazynu oferuje odpowiednie warstwy dla potrzeb zawartości multimedialnej. 
+
+- **Przetwarzanie zbiorcze danych**. Te rodzaje obciążeń są odpowiednie dla magazynu w warstwie Standardowa, ponieważ wymagają one ekonomicznego magazynu o wysokiej przepływności, a nie z niewielkim opóźnieniem. Duże, surowe zestawy danych są przygotowywane do przetwarzania i ostatecznie migrowane do warstw chłodnicy.
 
 ## <a name="migrate-from-standard-to-premium"></a>Migrowanie z wersji Standard do Premium
 
