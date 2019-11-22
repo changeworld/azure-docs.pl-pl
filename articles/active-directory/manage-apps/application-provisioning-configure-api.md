@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3e6f84051aec97691d2bedda6665d3c9c0ceb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125076"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275716"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurowanie aprowizacji przy użyciu Microsoft Graph interfejsów API
 
-Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacji pojedynczo. Ale jeśli tworzysz kilka, a nawet setki — wystąpienia aplikacji, można łatwiej zautomatyzować tworzenie i konfigurację aplikacji przy użyciu interfejsów API Microsoft Graph. W tym artykule opisano sposób automatyzacji konfigurowania aprowizacji za poorednictwem interfejsów API. Ta metoda jest często używana dla aplikacji, takich jak [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on).
+Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacji pojedynczo. Ale jeśli tworzysz kilka, a nawet setki — wystąpienia aplikacji, można łatwiej zautomatyzować tworzenie i konfigurację aplikacji przy użyciu interfejsów API Microsoft Graph. W tym artykule opisano sposób automatyzacji konfigurowania aprowizacji za poorednictwem interfejsów API. Ta metoda jest często używana dla aplikacji, takich jak [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
 
 **Przegląd kroków dotyczących używania Microsoft Graph interfejsów API do automatyzowania konfigurowania aprowizacji**
 

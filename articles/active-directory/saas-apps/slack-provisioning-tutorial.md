@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie zapasu czasu dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+title: 'Samouczek: Inicjowanie obsługi administracyjnej użytkowników dla zapasu czasu — Azure AD'
 description: Dowiedz się, jak skonfigurować Azure Active Directory, aby automatycznie inicjować udostępnianie kont użytkowników i cofać ich obsługę zapasu czasu.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932489"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278167"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie zapasu czasu dla automatycznej aprowizacji użytkowników
 
@@ -34,7 +34,7 @@ Scenariusz opisany w tym samouczku założono, że masz już następujące eleme
 * Dzierżawa zapasowa z [planem Plus](https://aadsyncfabric.slack.com/pricing) lub lepsza
 * Konto użytkownika w zapasie czasu z uprawnieniami administratora zespołu
 
-Uwaga: Integracja z obsługą administracyjną usługi Azure AD opiera się na [interfejsie API Standard scim zapasu](https://api.slack.com/scim), który jest dostępny dla zespołów zapasowych w planie Plus lub lepszy.
+Uwaga: integracja z obsługą administracyjną usługi Azure AD opiera się na [interfejsie API Standard scim zapasu](https://api.slack.com/scim), który jest dostępny dla zespołów zapasowych w planie Plus lub lepszy.
 
 ## <a name="assigning-users-to-slack"></a>Przypisywanie użytkowników do zapasu czasu
 
@@ -60,7 +60,7 @@ Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API inicj
 
 1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-2. Jeśli już skonfigurowano funkcję zapasową dla logowania jednokrotnego, Wyszukaj wystąpienie zapasu czasu przy użyciu pola wyszukiwania. W przeciwnym razie wybierz opcję **Dodaj** i Wyszukaj pozycję zapasowy w galerii aplikacji. Wybierz pozycję zapasowy z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
+2. Jeśli już skonfigurowano funkcję zapasową dla logowania jednokrotnego, Wyszukaj wystąpienie zapasu czasu przy użyciu pola wyszukiwania. W przeciwnym razie wybierz opcję **Dodaj** i Wyszukaj pozycję **zapasowy** w galerii aplikacji. Wybierz pozycję zapasowy z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
 3. Wybierz wystąpienie zapasu czasu, a następnie wybierz kartę **Inicjowanie obsługi** .
 
@@ -78,15 +78,15 @@ Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API inicj
 
 8. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , a następnie zaznacz pole wyboru poniżej.
 
-9. Kliknij polecenie **Zapisz**.
+9. Kliknij pozycję **Zapisz**.
 
 10. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkownicy do zapasu czasu**.
 
-11. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które zostaną zsynchronizowane z usługi Azure AD do zapasu czasu. Należy zauważyć, że atrybuty wybrane jako pasujące właściwości będą używane w celu dopasowania do kont użytkowników w zapasach czasu dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+11. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które zostaną zsynchronizowane z usługi Azure AD do zapasu czasu. Należy zauważyć, że atrybuty wybrane jako **pasujące** właściwości będą używane w celu dopasowania do kont użytkowników w zapasach czasu dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
 12. Aby włączyć usługę Azure AD Provisioning dla zapasu czasu, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-13. Kliknij polecenie **Zapisz**.
+13. Kliknij pozycję **Zapisz**.
 
 Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do zapasu czasu w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa zajmie więcej czasu niż kolejne synchronizacje, co wystąpi około 10 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do raportów dotyczących działań związanych z obsługą administracyjną, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji zapasowej.
 
@@ -100,9 +100,9 @@ Opcjonalnie można włączyć obsługę administracyjną obiektów grup z usług
 
 2. W bloku mapowanie atrybutu ustaw wartość tak.
 
-3. W sekcji **mapowania atrybutów** Przejrzyj atrybuty grupy, które będą synchronizowane z usługi Azure AD do zapasu czasu. Należy zauważyć, że atrybuty wybrane jako pasujące właściwości będą używane do dopasowania do grup w zapasach czasu dla operacji aktualizacji. 
+3. W sekcji **mapowania atrybutów** Przejrzyj atrybuty grupy, które będą synchronizowane z usługi Azure AD do zapasu czasu. Należy zauważyć, że atrybuty wybrane jako **pasujące** właściwości będą używane do dopasowania do grup w zapasach czasu dla operacji aktualizacji. 
 
-4. Kliknij polecenie **Zapisz**.
+4. Kliknij pozycję **Zapisz**.
 
 Spowoduje to, że wszystkie obiekty grupy przypisane do zapasu czasu w sekcji **Użytkownicy i grupy** są w pełni synchronizowane z usługą Azure AD do zapasu czasu. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji zapasowej.
 

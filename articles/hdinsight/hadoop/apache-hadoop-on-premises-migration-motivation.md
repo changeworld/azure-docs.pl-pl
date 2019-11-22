@@ -2,18 +2,18 @@
 title: 'Zalety: Migrowanie Apache Hadoop lokalnych do usługi Azure HDInsight'
 description: Poznaj motywację i zalety migracji lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494942"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267327"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — motywacji i korzyści
 
@@ -45,7 +45,7 @@ Usługa Azure HDInsight to dystrybucja w chmurze składników usługi Hadoop. Us
 
 - **Bezpieczne i zgodne** usługi HDInsight umożliwiają ochronę zasobów danych przedsiębiorstwa przy użyciu [usługi Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md), [szyfrowania](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)i integracji z [Azure Active Directory](../domain-joined/hdinsight-security-overview.md). Usługa HDInsight spełnia również najpopularniejsze branżowe i rządowe [standardy zgodności](https://azure.microsoft.com/overview/trusted-cloud).
 
-- **Uproszczone zarządzanie wersjami** — usługa Azure HDInsight zarządza wersjami składników systemu Hadoop i zachowuje ich aktualność. Aktualizacje oprogramowania są zwykle złożonymi procesami wdrożeń lokalnych.
+- **Uproszczone zarządzanie wersjami** — usługa Azure HDInsight zarządza wersjami składników systemu Hadoop i zachowuje je na bieżąco. Aktualizacje oprogramowania są zwykle złożonymi procesami wdrożeń lokalnych.
 
 - **Mniejsze klastry zoptymalizowane pod kątem określonych obciążeń o mniejszej liczbie zależności między składnikami** — typowa lokalna konfiguracja usługi Hadoop korzysta z jednego klastra, który obsługuje wiele celów. Usługa Azure HDInsight umożliwia tworzenie klastrów specyficznych dla obciążenia. Tworzenie klastrów dla określonych obciążeń eliminuje złożoność utrzymywania pojedynczego klastra o rosnącej złożoności.
 
@@ -90,7 +90,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 | **Zainteresowany** | **Przykład** | **Udzielić** |
 |---|---|---|
 |**Temat**: **środowisko**|||
-|Wersja dystrybucji klastra|HDP 2.6.5, PROGRAMU CDH 5,7|
+|Wersja dystrybucji klastra|HDP 2.6.5, CDH 5.7|
 |Duże ilości danych — składniki systemu|HDFS, przędza, Hive, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, dozorcy, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Typy klastrów|Hadoop, Spark, Kafka, burza, Solr|
 |Liczba klastrów|4|
@@ -103,7 +103,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Konfiguracja węzłów brzegowych|m/y, procesor, dysk itd.|
 |Szyfrowanie HDFS?|Tak|
 |Wysoka dostępność|HDFS HA, magazyn metadanych o wysokiej dostępności|
-|Odzyskiwanie po awarii/tworzenie kopii zapasowej|Utworzyć kopię zapasową klastra?|  
+|Odzyskiwanie po awarii/kopia zapasowa|Utworzyć kopię zapasową klastra?|  
 |Systemy, które są zależne od klastra|SQL Server, Teradata, Power BI, MongoDB|
 |Integracje innych firm|Tableau, GridGain, Qubole, Informatica, Splunk|
 |**Temat**: **zabezpieczenia**|||
@@ -112,8 +112,8 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Access Control HDFS|  Użytkownicy z ręcznym protokołem SSH|
 |Uwierzytelnianie w usłudze Hive & autoryzacja|Sentry, LDAP, AD z Kerberos, Ranger|
 |Inspekcja|Ambari, Nawigator Cloudera, Ranger|
-|Monitorowanie|Grafit, zebrany, z telegraf, InfluxDB|
-|Generowanie alertów|Kapacitor, Prometheus, usługi Datadog|
+|Monitorowanie|Graphite, collectd, statsd, Telegraf, InfluxDB|
+|Alerty|Kapacitor, Prometheus, usługi Datadog|
 |Czas przechowywania danych| 3 lata, 5 lat|
 |Administratorzy klastrów|Pojedynczy administrator, wielu administratorów|
 
@@ -131,8 +131,8 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Języki programowania|Python, Scala, Java||
 |Skrypty|Shell, Python||
 |**Temat**: **dane**|||
-|Źródła danych|Pliki płaskie, JSON, Kafka, RDBMS||
-|Aranżacja danych|Przepływy pracy Oozie, przepływ powietrza||
+|Źródła danych|Flat files, Json, Kafka, RDBMS||
+|Organizowanie danych|Przepływy pracy Oozie, przepływ powietrza||
 |Wyszukiwania w pamięci|Apache zapłon, Redis||
 |Miejsca docelowe danych|HDFS, RDBMS, Kafka, MPP ||
 |**Temat**: **meta data**|||

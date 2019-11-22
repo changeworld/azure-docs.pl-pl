@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Pingboard dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do Pingboard.
+title: 'Samouczek: Inicjowanie obsługi użytkowników dla Pingboard — Azure AD'
+description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników w usłudze Pingboard.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,91 +15,91 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7e2fabc86374f7fe055303d056ae8e00f33389
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964368"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278259"
 ---
-# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Pingboard dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Pingboard na potrzeby automatycznego aprowizacji użytkowników
 
-Ten samouczek ma na celu dowiesz się, kroki, które należy wykonać, aby włączyć automatyczne aprowizację i cofanie aprowizacji kont użytkowników z usługi Azure Active Directory (Azure AD) do Pingboard.
+W tym samouczku przedstawiono kroki, które należy wykonać, aby włączyć automatyczne Inicjowanie obsługi i cofanie aprowizacji kont użytkowników z Azure Active Directory (Azure AD) do Pingboard.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
 * Dzierżawa usługi Azure AD
-* Dzierżawy Pingboard [konto Pro](https://pingboard.com/pricing)
-* Konto użytkownika Pingboard z uprawnieniami administratora
+* [Konto Pro](https://pingboard.com/pricing) dzierżawy Pingboard
+* Konto użytkownika w Pingboard z uprawnieniami administratora
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji z usługi Azure AD opiera się na [Pingboard API](https://pingboard.docs.apiary.io/#), który jest dostępny dla Twojego konta.
+> Integracja z obsługą administracyjną usługi Azure AD opiera się na [interfejsie API Pingboard](https://pingboard.docs.apiary.io/#), który jest dostępny dla Twojego konta.
 
 ## <a name="assign-users-to-pingboard"></a>Przypisywanie użytkowników do Pingboard
 
-Usługa Azure AD używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranej aplikacji. W kontekście aprowizacja kont użytkowników tylko do użytkowników, które są przypisane do aplikacji w usłudze Azure AD są synchronizowane. 
+Usługa Azure AD używa koncepcji zwanej "przypisaniami" w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi konta użytkownika są synchronizowane tylko użytkownicy przypisani do aplikacji w usłudze Azure AD. 
 
-Przed skonfigurowaniem i włączyć usługę aprowizacji, należy zdecydować, użytkowników, którzy w usłudze Azure AD muszą mieć dostęp do aplikacji Pingboard. Następnie można przypisać tych użytkowników do aplikacji Pingboard zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy usługi Azure AD potrzebują dostępu do aplikacji Pingboard. Następnie możesz przypisać tych użytkowników do aplikacji Pingboard, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisz użytkownika do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
+[Przypisywanie użytkownika do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-pingboard"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Pingboard
 
-Firma Microsoft zaleca, aby przypisać jeden Pingboard do testowania konfiguracji aprowizacji użytkownika usługi Azure AD. Później można przypisać dodatkowych użytkowników.
+Zalecamy przypisanie jednego użytkownika usługi Azure AD do Pingboard w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników można przypisywać później.
 
-## <a name="configure-user-provisioning-to-pingboard"></a>Konfigurowanie aprowizacji użytkownika Pingboard 
+## <a name="configure-user-provisioning-to-pingboard"></a>Konfigurowanie aprowizacji użytkowników do Pingboard 
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika Pingboard aprowizujący interfejs API. Możesz również skonfigurować usługę aprowizacji, aby tworzyć, aktualizować i wyłączanie kont użytkowników przypisane w Pingboard, które są oparte na przypisania użytkownika w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia usługi Azure AD z interfejsem API aprowizacji konta użytkownika Pingboard. Należy również skonfigurować usługę aprowizacji, aby tworzyć, aktualizować i wyłączać przypisane konta użytkowników w usłudze Pingboard, które są oparte na przypisaniach użytkowników w usłudze Azure AD.
 
 > [!TIP]
-> Aby włączyć opartej na SAML logowania jednokrotnego dla Pingboard, postępuj zgodnie z instrukcjami podanymi w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, mimo że te dwie funkcje uzupełniają się wzajemnie.
+> Aby włączyć rejestrację jednokrotną opartą na protokole SAML dla Pingboard, postępuj zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje uzupełniają się wzajemnie.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Aby skonfigurować automatyczne aprowizowaniem kont użytkowników do Pingboard w usłudze Azure AD
+### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi konta użytkownika w usłudze Azure AD Pingboard
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** > aplikacje dla **przedsiębiorstw** > **wszystkie aplikacje** .
 
-1. Jeśli już skonfigurowano Pingboard dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi Pingboard przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **Pingboard** w galerii aplikacji. Wybierz **Pingboard** z wyników wyszukiwania i dodaj go do listy aplikacji.
+1. Jeśli już skonfigurowano Pingboard do logowania jednokrotnego, Wyszukaj wystąpienie elementu Pingboard przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **Pingboard** w galerii aplikacji. Wybierz pozycję **Pingboard** z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-1. Wybierz wystąpienie Pingboard, a następnie wybierz **aprowizacji** kartę.
+1. Wybierz wystąpienie elementu Pingboard, a następnie wybierz kartę **Inicjowanie obsługi** .
 
-1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+1. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![Pingboard inicjowania obsługi administracyjnej.](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
+    ![Inicjowanie obsługi Pingboard](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
 
-1. W obszarze **poświadczeń administratora** sekcji, wykonaj następujące czynności:
+1. W sekcji **poświadczenia administratora** wykonaj następujące czynności:
 
-    a. W **adres URL dzierżawy**, wprowadź `https://your_domain.pingboard.com/scim/v2`i zastąp "format domena_użytkownika" rzeczywistych domeny.
+    a. W polu **adres URL dzierżawy**wprowadź `https://your_domain.pingboard.com/scim/v2`i Zastąp ciąg "your_domain" rzeczywistą domeną.
 
-    b. Zaloguj się do [Pingboard](https://pingboard.com/) przy użyciu konta administratora.
+    b. Zaloguj się do usługi [Pingboard](https://pingboard.com/) przy użyciu konta administratora.
 
-    c. Wybierz **dodatki** > **integracje** > **usługi Azure Active Directory**.
+    d. Wybierz pozycję **dodatki** > **integracje** > **Azure Active Directory**.
 
-    d. Przejdź do **Konfiguruj** , a następnie wybierz pozycję **Włącz aprowizacji użytkowników z usługi Azure**.
+    d. Przejdź na kartę **Konfiguracja** i wybierz pozycję **Włącz Inicjowanie obsługi użytkowników na platformie Azure**.
 
-    e. Skopiuj token w **tokenu elementu nośnego OAuth**, a następnie wprowadź go w **klucz tajny tokenu**.
+    e. Skopiuj token w **tokenie okaziciela OAuth**i wprowadź go w **tokenie tajnym**.
 
-1. W witrynie Azure portal wybierz **Testuj połączenie** aby testowanie usługi Azure AD można połączyć się z aplikacją Pingboard. Jeśli połączenie nie powiedzie się, testowanie, że Twoje konto Pingboard ma uprawnienia administratora i spróbuj **Testuj połączenie** krok ponownie.
+1. W Azure Portal wybierz pozycję **Testuj połączenie** , aby sprawdzić, czy usługa Azure AD może nawiązać połączenie z aplikacją Pingboard. Jeśli połączenie nie powiedzie się, sprawdź, czy konto usługi Pingboard ma uprawnienia administratora, a następnie spróbuj ponownie wykonać krok **połączenia testowego** .
 
-1. Wprowadź adres e-mail osoby lub grupy, które chcesz otrzymywać inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem**. Zaznacz pole wyboru poniżej.
+1. Wprowadź adres e-mail osoby lub grupy, dla której chcesz otrzymywać powiadomienia o błędach aprowizacji w **wiadomości e-mail z powiadomieniem**. Zaznacz pole wyboru poniżej.
 
 1. Wybierz pozycję **Zapisz**.
 
-1. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Pingboard**.
+1. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do Pingboard**.
 
-1. W **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które mają być synchronizowane z usługi Azure AD do Pingboard. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Pingboard operacji aktualizacji. Wybierz **Zapisz** aby zatwierdzić zmiany. Aby uzyskać więcej informacji, zobacz [aprowizacji mapowania atrybutów użytkowników Dostosuj](../manage-apps/customize-application-attributes.md).
+1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które mają być synchronizowane z usługi Azure AD do Pingboard. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie Pingboard for Updates. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany. Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów aprowizacji użytkowników](../manage-apps/customize-application-attributes.md).
 
-1. Aby włączyć usługi Azure AD, usługi dla Pingboard, inicjowania obsługi administracyjnej w **ustawienia** sekcji, zmień **stanie aprowizacji** do **na**.
+1. Aby włączyć usługę Azure AD Provisioning for Pingboard, w sekcji **Ustawienia** Zmień **stan aprowizacji** na **włączone**.
 
-1. Wybierz **Zapisz** można rozpocząć synchronizacji początkowej z użytkowników przypisanych do Pingboard.
+1. Wybierz pozycję **Zapisz** , aby rozpocząć początkową synchronizację użytkowników przypisanych do Pingboard.
 
-Początkowa synchronizacja trwa dłużej niż następujące synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Użyj **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności. Dzienniki opisano wszystkie akcje podejmowane przez usługę aprowizacji w aplikacji Pingboard.
+Synchronizacja początkowa trwa dłużej niż następujące synchronizacje, które wystąpiły co około 40 minut, o ile usługa jest uruchomiona. Sekcja **szczegóły synchronizacji** służy do monitorowania postępu i wykonywania linków do dzienników aktywności aprowizacji. W dziennikach opisano wszystkie akcje podejmowane przez usługę aprowizacji w aplikacji Pingboard.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [sporządzić raport na temat Inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [raport dotyczący automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie logowania jednokrotnego](pingboard-tutorial.md)
+* [Skonfiguruj logowanie jednokrotne](pingboard-tutorial.md)

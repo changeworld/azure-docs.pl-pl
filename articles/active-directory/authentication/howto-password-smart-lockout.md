@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d4cb2d424d242fd9ea078d981a85516a00c8115f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125019"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268663"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentnego blokowania
 
@@ -29,7 +29,7 @@ Inteligentna blokada śledzi ostatnie trzy niewłaściwe skróty haseł, aby uni
  > [!NOTE]
  > Funkcja śledzenia skrótów nie jest dostępna dla klientów z włączonym uwierzytelnianiem przekazującym, ponieważ uwierzytelnianie odbywa się lokalnie, a nie w chmurze.
 
-Wdrożenia federacyjne wykorzystujące AD FS 2016 i AF FS 2019 mogą zapewnić podobne korzyści [AD FS przy użyciu blokady ekstranetu i](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)blokady inteligentnej w ekstranecie.
+Wdrożenia federacyjne wykorzystujące AD FS 2016 i AF FS 2019 mogą zapewnić podobne korzyści [AD FS przy użyciu blokady ekstranetu i blokady inteligentnej w ekstranecie](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
 
 Inteligentna blokada jest zawsze włączona dla wszystkich klientów usługi Azure AD z tymi domyślnymi ustawieniami, które oferują odpowiednie połączenie zabezpieczeń i użyteczności. Dostosowanie ustawień blokady inteligentnej przy użyciu wartości specyficznych dla Twojej organizacji wymaga płatnych licencji usługi Azure AD dla użytkowników.
 
@@ -56,7 +56,7 @@ Aby sprawdzić lokalne zasady blokady konta Active Directory, należy wykonać n
 
 1. Otwórz narzędzie do zarządzania zasady grupy.
 2. Edytuj zasady grupy zawierające zasady blokady konta w organizacji, na przykład **domyślne zasady domeny**.
-3. Przejdź do ustawień **Konfiguracja** > komputera > zasadyustawienia > **systemu Windows**ustawienia**zabezpieczeń**kontazasady > blokadykonta >  **Zasady**.
+3. Przejdź do **konfiguracji komputera** > **zasady** > **Ustawienia systemu Windows** > **Ustawienia zabezpieczeń** > zasady **kont** > **Zasady blokady konta**.
 4. Sprawdź **próg blokady konta** i **Zresetuj licznik blokady konta po** wartościach.
 
 ![Modyfikowanie zasad blokady lokalnych kont Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -67,7 +67,8 @@ W zależności od wymagań organizacyjnych może być konieczne dostosowanie war
 
 Aby sprawdzić lub zmodyfikować wartości blokady inteligentnej dla organizacji, wykonaj następujące czynności:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do **Azure Active Directory** > **metodami** > uwierzytelniania**Ochrona hasłem**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **metody uwierzytelniania** > **Ochrona hasłem**.
 1. Ustaw **próg blokady**w zależności od liczby nieudanych logowań dozwolonych na koncie przed pierwszym zablokowaniem. Wartość domyślna to 10.
 1. Ustaw **czas trwania blokady (w sekundach**) na długość w sekundach każdej blokady. Wartość domyślna to 60 sekund (jedna minuta).
 

@@ -2,7 +2,7 @@
   href: index.yml
 - name: Omówienie
   items:
-    - name: Omówienie usługi Azure Blueprints
+    - name: Czym jest usługa Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
 - name: Przewodniki Szybki start

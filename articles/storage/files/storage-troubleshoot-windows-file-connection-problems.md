@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f36d3bcb16876f080f780658bc59afd794e3431e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699181"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269356"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z Azure Files w systemie Windows
 
-W tym artykule wymieniono typowe problemy związane z Microsoft Azure plikami w przypadku łączenia się z klientami systemu Windows. Zapewnia również możliwe przyczyny i rozwiązania tych problemów. Oprócz kroków opisanych w tym artykule można także użyć programu [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , aby upewnić się, że środowisko klienta systemu Windows ma odpowiednie wymagania wstępne. AzFileDiagnostics automatyzuje wykrywanie większości objawów wymienionych w tym artykule i ułatwia skonfigurowanie środowiska w celu uzyskania optymalnej wydajności. Te informacje można również znaleźć w obszarze [Rozwiązywanie problemów z udziałami Azure Files](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , które udostępniają kroki ułatwiające rozwiązywanie problemów z połączeniem/mapowaniem/instalowaniem udziałów Azure Files.
+W tym artykule wymieniono typowe problemy związane z Microsoft Azure plikami w przypadku łączenia się z klientami systemu Windows. Zapewnia również możliwe przyczyny i rozwiązania tych problemów. Oprócz kroków opisanych w tym artykule, można również użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , aby upewnić się, że środowisko klienta systemu Windows ma odpowiednie wymagania wstępne. AzFileDiagnostics automatyzuje wykrywanie większości objawów wymienionych w tym artykule i ułatwia skonfigurowanie środowiska w celu uzyskania optymalnej wydajności. Te informacje można również znaleźć w obszarze [Rozwiązywanie problemów z udziałami Azure Files](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , które udostępniają kroki ułatwiające rozwiązywanie problemów z połączeniem/mapowaniem/instalowaniem udziałów Azure Files.
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -28,7 +28,7 @@ Podczas próby zainstalowania udziału plików może zostać wyświetlony nastę
 
 - Wystąpił błąd systemowy 5. Odmowa dostępu.
 
-### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyna 1: Nieszyfrowany kanał komunikacyjny
+### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyna 1: nieszyfrowany kanał komunikacyjny
 
 Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli kanał komunikacyjny nie jest szyfrowany i jeśli próba połączenia nie pochodzi z tego samego centrum danych, w którym znajdują się udziały plików platformy Azure. Nieszyfrowane połączenia w tym samym centrum danych też mogą być blokowane, jeśli ustawienie [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest włączone na koncie magazynu. Szyfrowany kanał komunikacyjny jest udostępniany tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
 
@@ -39,7 +39,7 @@ Systemy Windows 8, Windows Server 2012 i nowsze wersje negocjują żądania obej
 1. Nawiąż połączenie z klientem obsługującym szyfrowanie SMB (system Windows 8, Windows Server 2012 lub nowszy) lub Połącz się z maszyną wirtualną w tym samym centrum danych co konto usługi Azure Storage, które jest używane w udziale plików platformy Azure.
 2. Upewnij się, że ustawienie [wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest wyłączone na koncie magazynu, jeśli klient nie obsługuje szyfrowania SMB.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyna 2: Zasady sieci wirtualnej lub zapory są włączone na koncie magazynu 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyna 2: na koncie magazynu są włączone reguły sieci wirtualnej lub zapory 
 
 Jeśli reguły sieci wirtualnej i zapory są skonfigurowane na koncie magazynu, dla ruchu sieciowego będzie następować odmowa dostępu, chyba że dostęp będzie dozwolony dla adresu IP klienta lub sieci wirtualnej.
 
@@ -60,9 +60,9 @@ Podczas próby zainstalowania udziału plików z lokalnego lub innego centrum da
 
 Błąd systemu 53 lub błąd systemu 67 może wystąpić, jeśli port 445 wychodzący ruch do Azure Files centrum danych jest zablokowany. Aby zobaczyć podsumowanie usługodawców internetowych, którzy nie zezwalają na dostęp z portu 445, przejdź do witryny [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Aby sprawdzić, czy zapora lub usługodawca internetowy blokuje port 445, użyj narzędzia [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) lub `Test-NetConnection` polecenia cmdlet. 
+Aby sprawdzić, czy zapora lub usługodawca internetowy blokuje port 445, użyj narzędzia [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) lub polecenia cmdlet `Test-NetConnection`. 
 
-Aby użyć `Test-NetConnection` polecenia cmdlet, należy zainstalować moduł Azure PowerShell, aby uzyskać więcej informacji, zobacz [Install Azure PowerShell module](/powershell/azure/install-Az-ps) . Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
+Aby użyć polecenia cmdlet `Test-NetConnection`, należy zainstalować moduł Azure PowerShell, aby uzyskać więcej informacji, zobacz [Install Azure PowerShell module](/powershell/azure/install-Az-ps) . Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
 
    
     $resourceGroupName = "<your-resource-group-name>"
@@ -94,11 +94,11 @@ Jeśli połączenie zostało pomyślnie nawiązane, powinny pojawić się nastę
 ### <a name="solution-for-cause-1"></a>Rozwiązanie dla przyczyny 1
 
 #### <a name="solution-1---use-azure-file-sync"></a>Rozwiązanie 1 — Używanie Azure File Sync
-Azure File Sync może przekształcać lokalny serwer systemu Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Azure File Sync działa przez port 443 i może służyć jako obejście w celu uzyskania dostępu Azure Files z klientów, którzy mają zablokowany port 445. [Dowiedz się, jak skonfigurować Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure File Sync można przekształcić lokalny serwer systemu Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Azure File Sync działa przez port 443 i może służyć jako obejście w celu uzyskania dostępu Azure Files z klientów, którzy mają zablokowany port 445. [Dowiedz się, jak skonfigurować Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>Rozwiązanie 2 — Korzystanie z sieci VPN
-Skonfigurowanie sieci VPN do określonego konta magazynu spowoduje, że ruch przejdzie przez bezpieczny tunel, a nie przez Internet. Postępuj [zgodnie z instrukcjami,](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) aby skonfigurować sieć VPN, aby uzyskać dostęp do Azure Files z systemu Windows.
+Skonfigurowanie sieci VPN do określonego konta magazynu spowoduje, że ruch przejdzie przez bezpieczny tunel, a nie przez Internet. Postępuj zgodnie z [instrukcjami, aby skonfigurować sieć VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
+) , aby uzyskać dostęp do Azure Files z systemu Windows.
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Rozwiązanie 3 — odblokowywanie portu 445 przy pomocy usługodawcy internetowego/administratora IT
 Skontaktuj się z działem IT lub usługodawcą internetowym, aby otworzyć port 445 wychodzące do [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
@@ -154,7 +154,7 @@ Nie masz dostępu
 
 Przejdź do konta magazynu, na którym znajduje się udział plików platformy Azure, kliknij pozycję **Kontrola dostępu (IAM)** i sprawdź, czy konto użytkownika ma dostęp do konta magazynu. Aby dowiedzieć się więcej, zobacz [jak zabezpieczyć konto magazynu za pomocą Access Control opartego na rolach (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyna 2: Zasady sieci wirtualnej lub zapory są włączone na koncie magazynu
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyna 2: na koncie magazynu są włączone reguły sieci wirtualnej lub zapory
 
 ### <a name="solution-for-cause-2"></a>Rozwiązanie dla przyczyny 2
 
@@ -245,7 +245,7 @@ Dyski są instalowane na użytkownika. Jeśli aplikacja lub usługa jest uruchom
 
 ### <a name="solution"></a>Rozwiązanie
 
-Zastosuj jedno z następujących rozwiązań:
+Użyj jednego z następujących rozwiązań:
 
 -   Zainstaluj dysk z tego samego konta użytkownika, które zawiera aplikację. Możesz użyć narzędzia, takiego jak PsExec.
 - Przekaż nazwę i klucz konta magazynu w parametrach nazwa użytkownika i hasło polecenia net use.
@@ -256,12 +256,12 @@ Zastosuj jedno z następujących rozwiązań:
 
   `net use * \\storage-account-name.file.core.windows.net\share`
 
-Po wykonaniu tych instrukcji może zostać wyświetlony następujący komunikat o błędzie podczas uruchamiania programu net use dla konta usługi sieciowej/systemu: Wystąpił błąd systemowy 1312. Określona sesja logowania nie istnieje. Być może zostało już zakończone. " W takim przypadku upewnij się, że nazwa użytkownika, która jest przenoszona do usługi net use, zawiera informacje o domenie (na przykład: "[nazwa konta magazynu]. plik. Core. Windows. NET").
+Po wykonaniu tych instrukcji może zostać wyświetlony następujący komunikat o błędzie podczas uruchamiania polecenia net use dla konta usługi sieciowej/systemu: "błąd systemu 1312. Określona sesja logowania nie istnieje. Być może zostało już zakończone. " W takim przypadku upewnij się, że nazwa użytkownika, która jest przenoszona do usługi net use, zawiera informacje o domenie (na przykład: "[nazwa konta magazynu]. plik. Core. Windows. NET").
 
 <a id="doesnotsupportencryption"></a>
 ## <a name="error-you-are-copying-a-file-to-a-destination-that-does-not-support-encryption"></a>Błąd "Kopiowanie pliku do lokalizacji docelowej, która nie obsługuje szyfrowania"
 
-Gdy plik jest kopiowany za pośrednictwem sieci, plik jest odszyfrowywany na komputerze źródłowym, przesyłany w postaci zwykłego tekstu i ponownie szyfrowany w miejscu docelowym. Jednak podczas próby skopiowania zaszyfrowanego pliku może zostać wyświetlony następujący błąd: "Kopiuje plik do lokalizacji docelowej, która nie obsługuje szyfrowania".
+Gdy plik jest kopiowany za pośrednictwem sieci, plik jest odszyfrowywany na komputerze źródłowym, przesyłany w postaci zwykłego tekstu i ponownie szyfrowany w miejscu docelowym. Jednak podczas próby skopiowania zaszyfrowanego pliku może zostać wyświetlony następujący błąd: "kopiujesz plik do lokalizacji docelowej, która nie obsługuje szyfrowania".
 
 ### <a name="cause"></a>Przyczyna
 Ten problem może wystąpić, jeśli używasz system szyfrowania plików (EFS). Pliki szyfrowane przez funkcję BitLocker można kopiować do Azure Files. Jednak Azure Files nie obsługuje systemu plików NTFS.

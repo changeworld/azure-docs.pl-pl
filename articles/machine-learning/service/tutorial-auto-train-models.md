@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek modelu regresji: automatyczna ML'
+title: 'Samouczek regresji: automatyczna ML'
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak wygenerować model uczenia maszynowego przy użyciu zautomatyzowanego uczenia maszynowego. Korzystając z usługi Azure Machine Learning, można w sposób zautomatyzowany wykonywać wstępne przetwarzanie danych, wybierać algorytmy i hiperparametry. Następnie końcowy model jest wdrażany z Azure Machine Learning.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5e7d897b3a845580d7830e2cf816417f2282dd27
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582453"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271863"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Samouczek: Używanie automatycznego uczenia maszynowego do przewidywania opłat za taksówkę
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -123,14 +123,14 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>2</td>
       <td>15,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>16,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1129817</th>
@@ -138,7 +138,7 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
-      <td>0,69</td>
+      <td>0.69</td>
       <td>Brak</td>
       <td>Brak</td>
       <td>-73,96</td>
@@ -146,15 +146,15 @@ green_taxi_df.head(10)
       <td>-73,96</td>
       <td>Przyciski ...</td>
       <td>2</td>
-      <td>4,50</td>
-      <td>1,00</td>
-      <td>0,50</td>
+      <td>4.50</td>
+      <td>1.00</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1278620</th>
@@ -171,14 +171,14 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>2</td>
       <td>4,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
+      <td>0.00</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>4,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>348430</th>
@@ -186,7 +186,7 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>Brak</td>
       <td>Brak</td>
       <td>-73,81</td>
@@ -195,14 +195,14 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>2</td>
       <td>12,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1269627</th>
@@ -210,7 +210,7 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
-      <td>0,50</td>
+      <td>0.50</td>
       <td>Brak</td>
       <td>Brak</td>
       <td>-73,92</td>
@@ -219,14 +219,14 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>2</td>
       <td>4,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
-      <td>5,00</td>
-      <td>1,00</td>
+      <td>5.00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>811755</th>
@@ -243,14 +243,14 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>2</td>
       <td>6,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>7,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>737281</th>
@@ -266,15 +266,15 @@ green_taxi_df.head(10)
       <td>-73,87</td>
       <td>Przyciski ...</td>
       <td>2</td>
-      <td>6,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
+      <td>6.00</td>
+      <td>0.00</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>6,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>113951</th>
@@ -291,14 +291,14 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>2</td>
       <td>12,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>150436</th>
@@ -315,14 +315,14 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>1</td>
       <td>7,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
+      <td>0.00</td>
+      <td>0.50</td>
       <td>0,3</td>
       <td>1,75</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>9,55</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>432136</th>
@@ -338,15 +338,15 @@ green_taxi_df.head(10)
       <td>-73,94</td>
       <td>Przyciski ...</td>
       <td>2</td>
-      <td>5,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>5.00</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
   </tbody>
 </table>
@@ -423,11 +423,11 @@ green_taxi_df.head(10)
       <td>-73,94</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>16,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>11</td>
       <td>6</td>
@@ -439,7 +439,7 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
-      <td>0,69</td>
+      <td>0.69</td>
       <td>Brak</td>
       <td>Brak</td>
       <td>-73,96</td>
@@ -447,11 +447,11 @@ green_taxi_df.head(10)
       <td>-73,96</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>20</td>
       <td>1</td>
@@ -471,11 +471,11 @@ green_taxi_df.head(10)
       <td>-73,91</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>4,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>1</td>
       <td>3</td>
@@ -487,7 +487,7 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>Brak</td>
       <td>Brak</td>
       <td>-73,81</td>
@@ -495,11 +495,11 @@ green_taxi_df.head(10)
       <td>-73,82</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>17</td>
       <td>5</td>
@@ -511,7 +511,7 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
-      <td>0,50</td>
+      <td>0.50</td>
       <td>Brak</td>
       <td>Brak</td>
       <td>-73,92</td>
@@ -519,11 +519,11 @@ green_taxi_df.head(10)
       <td>-73,92</td>
       <td>Przyciski ...</td>
       <td>0</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
-      <td>5,00</td>
-      <td>1,00</td>
+      <td>5.00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>1</td>
       <td>3</td>
@@ -543,11 +543,11 @@ green_taxi_df.head(10)
       <td>-73,95</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>7,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>4</td>
       <td>6</td>
@@ -567,11 +567,11 @@ green_taxi_df.head(10)
       <td>-73,87</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>6,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>3</td>
       <td>5</td>
@@ -591,11 +591,11 @@ green_taxi_df.head(10)
       <td>-73,91</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>9</td>
       <td>4</td>
@@ -616,10 +616,10 @@ green_taxi_df.head(10)
       <td>Przyciski ...</td>
       <td>0,3</td>
       <td>1,75</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>9,55</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>11</td>
       <td>6</td>
@@ -639,11 +639,11 @@ green_taxi_df.head(10)
       <td>-73,94</td>
       <td>Przyciski ...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>NaN</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>22</td>
       <td>3</td>
@@ -721,7 +721,7 @@ green_taxi_df.describe()
       <td>48000,00</td>
     </tr>
     <tr>
-      <th>zależność</th>
+      <th>Średnia</th>
       <td>1,78</td>
       <td>1,37</td>
       <td>2,87</td>
@@ -737,53 +737,53 @@ green_taxi_df.describe()
     </tr>
     <tr>
       <th>wartość</th>
-      <td>0,41</td>
+      <td>0.41</td>
       <td>1,04</td>
       <td>2,93</td>
       <td>2,76</td>
       <td>1,52</td>
-      <td>2,61</td>
+      <td>2.61</td>
       <td>1,44</td>
       <td>12,08</td>
-      <td>3,45</td>
+      <td>3.45</td>
       <td>8,45</td>
       <td>1,95</td>
       <td>6,83</td>
     </tr>
     <tr>
       <th>min.</th>
-      <td>1,00</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>-74,66</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>-74,66</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>-300,00</td>
-      <td>1,00</td>
-      <td>1,00</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>2,00</td>
-      <td>1,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
       <td>1,06</td>
       <td>-73,96</td>
       <td>40,70</td>
       <td>-73,97</td>
       <td>40,70</td>
       <td>7,80</td>
-      <td>3,75</td>
+      <td>3.75</td>
       <td>8,00</td>
-      <td>2,00</td>
+      <td>2.00</td>
       <td>9,00</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2,00</td>
-      <td>1,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
       <td>1,90</td>
       <td>-73,94</td>
       <td>40,75</td>
@@ -792,13 +792,13 @@ green_taxi_df.describe()
       <td>11,30</td>
       <td>6,50</td>
       <td>15,00</td>
-      <td>3,00</td>
+      <td>3.00</td>
       <td>15,00</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>2,00</td>
-      <td>1,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
       <td>3,60</td>
       <td>-73,92</td>
       <td>40,80</td>
@@ -807,22 +807,22 @@ green_taxi_df.describe()
       <td>17,80</td>
       <td>9,25</td>
       <td>22,00</td>
-      <td>5,00</td>
+      <td>5.00</td>
       <td>19,00</td>
     </tr>
     <tr>
       <th>Maksymalny</th>
-      <td>2,00</td>
+      <td>2.00</td>
       <td>9,00</td>
       <td>97,57</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>41,93</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>41,94</td>
       <td>450,00</td>
       <td>12,00</td>
       <td>30,00</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>23,00</td>
     </tr>
   </tbody>
@@ -898,7 +898,7 @@ Zdefiniuj parametr eksperymentu i ustawienia modelu dla szkolenia. Wyświetl pe�
 |----|----|---|
 |**iteration_timeout_minutes**|2|Limit czasu w minutach dla każdej iteracji. Zmniejszenie tej wartości powoduje skrócenie całkowitego czasu wykonywania.|
 |**experiment_timeout_minutes**|20|Maksymalny czas (w minutach), przez jaki połączone wszystkie iteracje mogą upłynąć przed zakończeniem eksperymentu.|
-|**enable_early_stopping**|True|Oflaguj, aby enble wczesne zakończenie, jeśli wynik nie zostanie ulepszony w krótkim czasie.|
+|**enable_early_stopping**|Prawda|Oflaguj, aby enble wczesne zakończenie, jeśli wynik nie zostanie ulepszony w krótkim czasie.|
 |**primary_metric**| spearman_correlation | Metryka, który ma być optymalizowana. Na podstawie tej metryki zostanie wybrany model o najlepszym dopasowaniu.|
 |**cechowania**| Automatycznie | Przy użyciu **opcji**autoeksperymenty mogą wstępnie przetwarzać dane wejściowe (obsługujące brakujące dane, konwertowanie tekstu na liczbowe itd.)|
 |**verbosity**| logging.INFO | Steruje poziomem rejestrowania.|
@@ -1056,7 +1056,7 @@ print(1 - mean_abs_percent_error)
 
 Na podstawie dwóch metryk dokładności przewidywania zobaczysz, że model jest dość dobry przy przewidywaniu opłat za taksówkę z funkcji zestawu danych, zazwyczaj w zakresie od +-$4,00 i około 15% błędu.
 
-Tradycyjny proces opracowywania modelu uczenia maszynowego intensywnie korzysta z zasobów. Wymaga dużej wiedzy o danej dziedzinie oraz czasu, który trzeba poświęcić na uruchamianie kilkudziesięciu modeli i porównywanie ich wyników. Użycie automatycznego uczenia maszynowego jest doskonałym sposobem na szybkie przetestowanie wielu różnych modeli w danym scenariuszu.
+Tradycyjne maszyny, uczenia modelu procesu opracowywania jest bardzo dużej ilości zasobów i wymaga znaczących domeny wiedzę i czas redukuje inwestycje wymagane do uruchomienia i porównać wyniki z wielu modeli. Użycie automatycznego uczenia maszynowego jest doskonałym sposobem na szybkie przetestowanie wielu różnych modeli w danym scenariuszu.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

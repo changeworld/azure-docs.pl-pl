@@ -1,5 +1,5 @@
 ---
-title: Dowiedz się, kiedy określony użytkownik będzie mógł uzyskać dostęp do aplikacji | Microsoft Docs
+title: Dowiedz się, kiedy określony użytkownik będzie mógł uzyskać dostęp do aplikacji
 description: Jak dowiedzieć się, kiedy krytycznie ważny jest dostęp do aplikacji skonfigurowanej do aprowizacji użytkowników w usłudze Azure AD
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3b334df8cd24a1d8ca88c8ac2e3117bdd24d8b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057765"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275737"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Sprawdź stan aprowizacji użytkowników
 
@@ -40,7 +40,7 @@ Podczas pierwszej konfiguracji automatycznej aprowizacji, **Bieżąca sekcja sta
 
 Po zakończeniu cyklu aprowizacji sekcja **statystyki do daty** pokazuje skumulowaną liczbę użytkowników i grup, których zainicjowano na dzień, wraz z datą ukończenia i czasem trwania ostatniego cyklu. **Identyfikator działania** jednoznacznie identyfikuje najnowszy cykl aprowizacji. **Identyfikator zadania** jest unikatowym identyfikatorem zadania aprowizacji i jest specyficzny dla aplikacji w dzierżawie.
 
-Postęp aprowizacji można wyświetlić w Azure Portal z poziomu karty  **&gt; \] &gt; &gt; aplikacje \[Azure Active Directory Enterprise aplikacji** .
+Postęp aprowizacji można wyświetlić w Azure Portal, w **Azure Active Directory &gt; aplikacje dla przedsiębiorstw &gt; \[nazwa aplikacji\] &gt; kartę aprowizacji** .
 
 ![Pasek postępu strony aprowizacji](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -48,7 +48,7 @@ Postęp aprowizacji można wyświetlić w Azure Portal z poziomu karty  **&gt; \
 
 Aby sprawdzić stan aprowizacji wybranego użytkownika, zapoznaj się z [dziennikami aprowizacji (wersja zapoznawcza)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) w usłudze Azure AD. Wszystkie operacje wykonywane przez usługę aprowizacji użytkowników są rejestrowane w dziennikach aprowizacji usługi Azure AD. Obejmuje to wszystkie operacje odczytu i zapisu dokonane w systemach źródłowych i docelowych oraz dane użytkownika, które zostały odczytane lub zapisane podczas każdej operacji.
 
-Możesz uzyskać dostęp do dzienników aprowizacji w Azure Portal, wybierając pozycję **Azure Active Directory** &gt; dzienniki aprowizacji **aplikacji** &gt; w przedsiębiorstwie **(wersja zapoznawcza)** w sekcji **działanie** . Możesz przeszukiwać dane aprowizacji na podstawie nazwy użytkownika lub identyfikatora w systemie źródłowym lub docelowym. Aby uzyskać szczegółowe informacje, zobacz [dzienniki aprowizacji (wersja zapoznawcza)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+Możesz uzyskać dostęp do dzienników aprowizacji w Azure Portal, wybierając pozycję **Azure Active Directory** &gt; **aplikacje korporacyjne** &gt; **dzienniki aprowizacji (wersja zapoznawcza)** w sekcji **działanie** . Możesz przeszukiwać dane aprowizacji na podstawie nazwy użytkownika lub identyfikatora w systemie źródłowym lub docelowym. Aby uzyskać szczegółowe informacje, zobacz [dzienniki aprowizacji (wersja zapoznawcza)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 Dzienniki aprowizacji rejestrują wszystkie operacje wykonywane przez usługę aprowizacji, w tym:
 
@@ -66,7 +66,7 @@ Czas, w którym dany użytkownik ma zostać zainicjowany, zależy głównie od t
 
 - W przypadku **cyklu początkowego**czas zadania zależy od wielu czynników, takich jak liczba użytkowników i grup w zakresie dla aprowizacji oraz łączna liczba użytkowników i grup w systemie źródłowym. Pierwsza synchronizacja między usługą Azure AD a aplikacją może zająć od 20 minut do kilku godzin, w zależności od rozmiaru katalogu usługi Azure AD i liczby użytkowników w zakresie aprowizacji. Kompleksowa lista czynników wpływających na wydajność cyklu początkowego znajduje się w dalszej części tej sekcji.
 
-- W przypadku **cykli przyrostowych** po cyklu początkowym czasy zadań mają być szybsze (np. w ciągu 10 minut), ponieważ usługa aprowizacji przechowuje znaki wodne, które reprezentują stan obu systemów po cyklu początkowym, co zwiększa wydajność kolejnych synchronizuje. Czas zadania zależy od liczby zmian wykrytych w tym cyklu aprowizacji. Jeśli istnieje mniej niż 5 000 zmian członkostwa użytkowników lub grup, zadanie może zakończyć się w ramach pojedynczego przyrostowego cyklu udostępniania. 
+- W przypadku **cykli przyrostowych** po cyklu początkowym czasy zadań mają być szybsze (np. w ciągu 10 minut), ponieważ usługa aprowizacji przechowuje znaki wodne, które reprezentują stan obu systemów po cyklu początkowym, co poprawia wydajność kolejnych synchronizacji. Czas zadania zależy od liczby zmian wykrytych w tym cyklu aprowizacji. Jeśli istnieje mniej niż 5 000 zmian członkostwa użytkowników lub grup, zadanie może zakończyć się w ramach pojedynczego przyrostowego cyklu udostępniania. 
 
 Poniższa tabela zawiera podsumowanie czasów synchronizacji typowych scenariuszy aprowizacji. W tych scenariuszach system źródłowy jest usługą Azure AD, a system docelowy to aplikacja SaaS. Czasy synchronizacji są uzyskiwane z analizy statystycznej zadań synchronizacji dla aplikacji SaaS usługi ServiceNow, miejsc pracy, usług Salesforce i G Suite.
 

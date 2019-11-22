@@ -1,6 +1,6 @@
 ---
-title: Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard SCIM usługi aprowizacji użytkownika usługi Azure AD | Dokumentacja firmy Microsoft
-description: Rozwiązywanie typowych problemów ze zgodnością protokołu zmierzyła się z zespołem podczas dodawania aplikacji spoza galerii, która obsługuje do usługi Azure AD w wersji 2.0 Standard SCIM
+title: Znane problemy z zgodnością protokołu Standard scim 2,0 — Azure AD
+description: Jak rozwiązać typowe problemy ze zgodnością protokołu podczas dodawania aplikacji spoza galerii, która obsługuje standard scim 2,0 do usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,102 +16,102 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963177"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275811"
 ---
-# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard SCIM usługi aprowizacji użytkownika usługi Azure AD
+# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania z standard scim 2,0 zgodności protokołów aprowizacji użytkowników usługi Azure AD
 
-Azure Active Directory (Azure AD), mogą automatycznie obsługiwać użytkowników i grup do dowolnej aplikacji lub systemu, który jest fronted przez usługę sieci web za pomocą interfejsu określonego w [System protokołu Standard międzydomenowe Identity Management (SCIM) w wersji 2.0 Specyfikacja](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
+Azure Active Directory (Azure AD) mogą automatycznie inicjować obsługę użytkowników i grup w dowolnej aplikacji lub systemie, który jest przedsunięty przez usługę sieci Web, przy użyciu interfejsu zdefiniowanego w systemie w ramach [specyfikacji protokołu zarządzania tożsamościami (standard scim 2,0) dla wielu domen](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
 
-Obsługa usługi Azure AD protokołu 2.0 Standard SCIM jest opisana w [przy użyciu systemu dla międzydomenowe Identity Management (Standard SCIM) aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji](use-scim-to-provision-users-and-groups.md), które zawiera listę określonych części protokołu, który implementuje, aby automatycznie aprowizować użytkowników i grup z usługi Azure AD do aplikacji obsługujących standard SCIM w wersji 2.0.
+Obsługa protokołu Standard scim 2,0 w usłudze Azure AD jest opisana w temacie [Używanie systemu do zarządzania tożsamościami między domenami (standard scim) w celu automatycznego aprowizacji użytkowników i grup z Azure Active Directoryymi do aplikacji](use-scim-to-provision-users-and-groups.md), które zawierają listę konkretnych części protokołu, które implementuje w celu automatycznego aprowizacji użytkowników i grup z usługi Azure AD do aplikacji obsługujących standard scim 2,0.
 
-W tym artykule opisano bieżącej i wcześniejszych problemów z użytkownikiem usługi Azure AD, inicjowania obsługi usługi gotowość do protokołu Standard SCIM 2.0 oraz sposób obejścia tych problemów.
+W tym artykule opisano bieżące i wcześniejsze problemy związane z przystąpieniem usługi Azure AD User Provisioning do protokołu Standard scim 2,0 i obejście tego problemu.
 
 > [!IMPORTANT]
-> Najnowsza aktualizacja usługi Azure AD użytkownik aprowizacji usługi Standard SCIM klienta została wprowadzona od 18 grudnia 2018 r. Ta aktualizacja skierowana znanymi problemami, wymienione w poniższej tabeli. Zobacz często zadawane pytania poniżej, aby uzyskać więcej informacji na temat tej aktualizacji.
+> Najnowsza aktualizacja usługi Azure AD User Provisioning Standard scim Client została wprowadzona 18 grudnia 2018. Ta aktualizacja dotyczyła znanych problemów ze zgodnością wymienionych w poniższej tabeli. Aby uzyskać więcej informacji na temat tej aktualizacji, zobacz często zadawane pytania poniżej.
 
-## <a name="scim-20-compliance-issues-and-status"></a>Problemy ze zgodnością w wersji Standard SCIM 2.0 i stan
+## <a name="scim-20-compliance-issues-and-status"></a>Problemy ze zgodnością i stanem Standard scim 2,0
 
-| **Problem ze zgodnością w wersji 2.0 Standard SCIM** |  **Naprawiono?** | **Napraw daty**  |  
+| **Problem ze zgodnością w programie Standard scim 2,0** |  **FIXED?** | **Popraw datę**  |  
 |---|---|---|
-| Usługa Azure AD wymaga "/ Standard scim" w katalogu głównym aplikacji przez adres URL punktu końcowego Standard SCIM  | Yes  |  18 grudnia 2018 r. | 
-| Atrybuty rozszerzenia używać znaku kropki "."notacji przed nazwami atrybutów zamiast średnikami":" notacji |  Tak  | 18 grudnia 2018 r.  | 
-|  Atrybuty wielowartościowe w żądaniach Patch zawiera nieprawidłową ścieżkę składnia filtru | Tak  |  18 grudnia 2018 r.  | 
-|  Żądania tworzenia grupy zawierają nieprawidłowy schemat identyfikatora URI | Yes  |  18 grudnia 2018 r.  |  
+| Usługa Azure AD wymaga "/scim", aby znajdować się w katalogu głównym adresu URL punktu końcowego Standard scim aplikacji  | Tak  |  18 grudnia, 2018 | 
+| Atrybuty rozszerzenia używają notacji kropki "." przed nazwami atrybutów zamiast dwukropka ":" notacji |  Tak  | 18 grudnia, 2018  | 
+|  Żądania poprawek dla atrybutów wielowartościowych zawierają nieprawidłową składnię filtru ścieżki | Tak  |  18 grudnia, 2018  | 
+|  Żądania utworzenia grupy zawierają nieprawidłowy identyfikator URI schematu | Tak  |  18 grudnia, 2018  |  
 
-## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Zostały poprawki usługi opisane, automatycznie stosowane do mojej istniejących aplikacji Standard SCIM?
+## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Czy poprawki dotyczące usług zostały automatycznie zastosowane do mojej istniejącej aplikacji Standard scim?
 
-Nie. Zgodnie z jej będzie stanowiła istotną zmianę dla aplikacji Standard SCIM, które zostały zakodowane do pracy z starsze zachowanie, zmiany nie zostały automatycznie stosowane do istniejących aplikacji.
+Nie. Ponieważ spowodowałoby to nieprzerwaną zmianę Standard scim aplikacji, które zostały zakodowane w celu współdziałania ze starszym zachowaniem, zmiany nie zostały automatycznie zastosowane do istniejących aplikacji.
 
-Zmiany zostaną zastosowane do wszystkich nowych [aplikacji Standard SCIM spoza galerii](configure-single-sign-on-non-gallery-applications.md) skonfigurowane w witrynie Azure portal po dacie poprawki.
+Zmiany są stosowane do wszystkich nowych [aplikacji Standard scim, które nie](configure-single-sign-on-non-gallery-applications.md) są w galerii skonfigurowane w Azure Portal, po dacie poprawki.
 
-Aby uzyskać informacje dotyczące migracji istniejącego użytkownika zadania inicjowania obsługi administracyjnej do uwzględnienia najnowszych poprawek zobacz następną sekcję.
+Aby uzyskać informacje na temat migrowania istniejącego zadania aprowizacji użytkownika w celu uwzględnienia najnowszych poprawek, zobacz następną sekcję.
 
-## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Czy można migrować istniejące Standard SCIM użytkownika oparty na zadania inicjowania obsługi administracyjnej do uwzględnienia najnowszych poprawek usługi?
+## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Czy można przeprowadzić migrację istniejącego zadania inicjowania obsługi użytkowników opartego na Standard scim w celu uwzględnienia najnowszych poprawek usługi?
 
-Tak. Jeśli korzystasz już z tego wystąpienia aplikacji dla logowania jednokrotnego, a chcesz zmigrować istniejące zadanie inicjowania obsługi administracyjnej w celu uwzględnienia najnowszych poprawek, wykonaj poniższą procedurę. Ta procedura opisuje sposób użycia interfejsu API programu Microsoft Graph i Eksploratora interfejsu API Microsoft Graph, aby usunąć stare zadania inicjowania obsługi administracyjnej z istniejącej aplikacji Standard SCIM i utworzyć nową wykazuje nowe zachowanie.
+Tak. Jeśli to wystąpienie aplikacji jest już używane do logowania jednokrotnego i należy przeprowadzić migrację istniejącego zadania aprowizacji w celu uwzględnienia najnowszych poprawek, wykonaj poniższą procedurę. W tej procedurze opisano, jak za pomocą interfejsu API Microsoft Graph i Eksploratora interfejsu API Microsoft Graph usunąć stare zadanie aprowizacji z istniejącej aplikacji Standard scim i utworzyć nową, która zawiera nowe zachowanie.
 
 > [!NOTE]
-> Jeśli aplikacja jest nadal w fazie projektowania i jeszcze nie został wdrożony dla logowania jednokrotnego lub inicjowanie obsługi użytkowników, najprostszym rozwiązaniem jest usunięcie wpisu aplikacji w **usługi Azure Active Directory > aplikacje dla przedsiębiorstw**części witryny Azure portal i po prostu Dodaj nowy wpis dla aplikacji przy użyciu **tworzenie aplikacji > spoza galerii** opcji. Jest to alternatywa do uruchomionego w poniższej procedurze.
+> Jeśli aplikacja jest nadal w trakcie tworzenia i nie została jeszcze wdrożona w przypadku logowania jednokrotnego lub aprowizacji użytkowników, najłatwiej jest usunąć wpis aplikacji w sekcji **Azure Active Directory > Enterprise aplikacji** Azure Portal i po prostu dodać nowy wpis dla aplikacji przy użyciu opcji **tworzenia aplikacji > spoza galerii** . Jest to alternatywa dla uruchamiania poniższej procedury.
  
-1. Zaloguj się do witryny Azure portal pod https://portal.azure.com.
-2. W **usługi Azure Active Directory > aplikacje dla przedsiębiorstw** sekcji w witrynie Azure Portal zlokalizuj i wybierz istniejącą aplikację Standard SCIM.
-3. W **właściwości** sekcji Twoją istniejącą aplikację Standard SCIM kopiowania **obiektu o identyfikatorze**.
-4. W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
-5. W Eksploratorze programu Graph uruchom poniższe polecenie, aby zlokalizować identyfikator zadania inicjowania obsługi administracyjnej. Zastąp "[identyfikator obiektu]" w usłudze identyfikator podmiotu zabezpieczeń (identyfikator obiektu:) skopiowane z trzeciego stopnia.
+1. Zaloguj się do Azure Portal w https://portal.azure.com.
+2. W sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw** Azure Portal Znajdź i wybierz istniejącą aplikację Standard scim.
+3. W sekcji **Właściwości** istniejącej aplikacji Standard scim Skopiuj **Identyfikator obiektu**.
+4. W nowym oknie przeglądarki sieci Web przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako Administrator dzierżawy usługi Azure AD, w której aplikacja została dodana.
+5. W Eksploratorze grafu uruchom poniższe polecenie, aby zlokalizować identyfikator zadania aprowizacji. Zastąp ciąg "[Object-ID]" IDENTYFIKATORem jednostki usługi (IDENTYFIKATORem obiektu) skopiowanym z trzeciego kroku.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Pobierz zadania](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "wykonywania zadań") 
+   ![Pobierz zadania](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Pobierz zadania") 
 
 
-6. W wynikach skopiować pełny ciąg "ID", który rozpoczyna się od "customappsso" lub "Standard scim".
-7. Uruchom poniższe polecenie, aby pobrać konfiguracji Mapowanie atrybutów, dzięki czemu można wykonać kopię zapasową. Użyj tego samego [— identyfikator obiektu] jako przed i Zastąp [identyfikator zadania] z Identyfikatorem zadania inicjowania obsługi administracyjnej, kopiowane w ostatnim kroku.
+6. W wynikach Skopiuj pełny ciąg "ID" zaczynający się od "customappsso" lub "Standard scim".
+7. Uruchom poniższe polecenie, aby pobrać konfigurację mapowania atrybutów, aby można było utworzyć kopię zapasową. Użyj tego samego [Object-ID] jak poprzednio i Zastąp wartość [ID zadania] IDENTYFIKATORem zadania aprowizacji skopiowanego z ostatniego kroku.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Pobieranie schematu](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Pobieranie schematu") 
+   ![Pobierz schemat](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Pobierz schemat") 
 
-8. Skopiuj dane wyjściowe JSON w ostatnim kroku i zapisz go w pliku tekstowym. Zawiera wszystkie niestandardowe-mapowania atrybutów dodane do Twojej aplikacji stary i powinna być około kilku tysięcy wierszy JSON.
-9. Uruchom poniższe polecenie, aby usunąć zadanie inicjowania obsługi administracyjnej:
+8. Skopiuj dane wyjściowe JSON z ostatniego kroku i Zapisz je w pliku tekstowym. Zawiera wszystkie niestandardowe mapowania atrybutów, które zostały dodane do starej aplikacji i powinny być w przybliżeniu kilka tysięcy wierszy JSON.
+9. Uruchom poniższe polecenie, aby usunąć zadanie aprowizacji:
  
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
-10. Uruchom poniższe polecenie, aby utworzyć nowe zadanie inicjowania obsługi administracyjnej, który ma najnowsze poprawki usługi.
+10. Uruchom poniższe polecenie, aby utworzyć nowe zadanie aprowizacji z najnowszymi poprawkami usługi.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   templateId: "scim"   }`
    
-11. W wynikach ostatnim kroku należy skopiować pełny ciąg "ID", który rozpoczyna się od "Standard scim". Opcjonalnie Zastosuj ponownie swoje stare mapowania atrybutów, uruchamiając poniższe polecenie, zastępując [identyfikator nowego zadania] identyfikator zadania został skopiowany, a następnie wprowadzenie który za pomocą pliku JSON dane wyjściowe z kroku 7 # jako treści żądania.
+11. W wynikach ostatniego kroku Skopiuj pełny ciąg "ID" zaczynający się od "Standard scim". Opcjonalnie należy ponownie zastosować stare mapowania atrybutów, uruchamiając poniższe polecenie, zastępując wartość [New-Job-ID] nowym IDENTYFIKATORem zadania, który właśnie został skopiowany, i wprowadzając dane wyjściowe JSON z kroku #7 jako treść żądania.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
  `{   <your-schema-json-here>   }`
 
-12. Wróć do okna przeglądarki usługi pierwszy sieci web i wybierz **aprowizacji** kartę dla swojej aplikacji.
-13. Sprawdź konfigurację, a następnie uruchom zadanie inicjowania obsługi administracyjnej. 
+12. Wróć do pierwszego okna przeglądarki sieci Web i wybierz kartę **Inicjowanie obsługi** dla swojej aplikacji.
+13. Sprawdź konfigurację, a następnie uruchom zadanie aprowizacji. 
 
-## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Czy można dodać nowej aplikacji spoza galerii, która ma stare aprowizacji zachowania użytkowników?
+## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Czy mogę dodać nową aplikację inną niż Galeria, która ma stare zachowanie aprowizacji użytkowników?
 
-Tak. Jeśli było kodowane stare zachowanie, które istniały przed poprawki i muszą wdrażać nowe wystąpienie aplikacji, wykonaj poniższą procedurę. Tę procedurę w tym artykule opisano sposób używania interfejsu API programu Microsoft Graph i interfejsu API Microsoft Graph explorer Standard SCIM zadanie inicjowania obsługi administracyjnej, która wykazuje stare zachowanie.
+Tak. Jeśli aplikacja została zakodowana w starym zachowaniu, która istniała przed poprawkami, i musi wdrożyć nowe wystąpienie, wykonaj poniższą procedurę. W tej procedurze opisano, jak używać interfejsu API Microsoft Graph i Eksploratora interfejsu API Microsoft Graph do tworzenia zadania inicjowania obsługi Standard scim, które wykazuje stare zachowanie.
  
-1. Zaloguj się do witryny Azure portal pod https://portal.azure.com.
-2. w **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > Tworzenie aplikacji** sekcji w witrynie Azure Portal utworzyć nową **spoza galerii** aplikacji.
-3. W **właściwości** części Twojej nowej aplikacji niestandardowej kopiowania **obiektu o identyfikatorze**.
-4. W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
-5. W Eksploratorze programu Graph uruchom poniższe polecenie, aby zainicjować konfiguracji aprowizacji dla aplikacji.
-   Zastąp "[identyfikator obiektu]" w usłudze identyfikator podmiotu zabezpieczeń (identyfikator obiektu:) skopiowane z trzeciego stopnia.
+1. Zaloguj się do Azure Portal w https://portal.azure.com.
+2. w sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Tworzenie aplikacji** dla Azure Portal, Utwórz nową aplikację w wersji **innej niż Galeria** .
+3. W sekcji **Właściwości** nowej aplikacji NIESTANDARDOWEJ Skopiuj **Identyfikator obiektu**.
+4. W nowym oknie przeglądarki sieci Web przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako Administrator dzierżawy usługi Azure AD, w której aplikacja została dodana.
+5. W Eksploratorze grafów uruchom poniższe polecenie, aby zainicjować konfigurację aprowizacji dla aplikacji.
+   Zastąp ciąg "[Object-ID]" IDENTYFIKATORem jednostki usługi (IDENTYFIKATORem obiektu) skopiowanym z trzeciego kroku.
 
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
  
-6. Wróć do okna przeglądarki usługi pierwszy sieci web i wybierz **aprowizacji** kartę dla swojej aplikacji.
-7. Ukończ użytkownika konfigurację aprowizacji, tak jak zwykle.
+6. Wróć do pierwszego okna przeglądarki sieci Web i wybierz kartę **Inicjowanie obsługi** dla swojej aplikacji.
+7. Ukończ konfigurację aprowizacji użytkowników, jak zwykle.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-[Dowiedz się więcej o aprowizację i anulowanie obsługi do aplikacji SaaS](user-provisioning.md)
+## <a name="next-steps"></a>Następne kroki
+[Dowiedz się więcej o aprowizacji i dezaktywowaniu aplikacji SaaS](user-provisioning.md)
 

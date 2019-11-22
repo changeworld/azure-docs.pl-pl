@@ -1,110 +1,73 @@
 ---
-title: Wizualne monitorowanie fabryk danych platformy Azure
+title: Wizualnie Monitoruj Azure Data Factory
 description: Dowiedz się, jak wizualnie monitorować fabryki danych platformy Azure
 services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2018
+ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684642"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278369"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>Wizualne monitorowanie fabryk danych platformy Azure
-Azure Data Factory to oparta na chmurze usługa integracji danych. Za jego pomocą można tworzyć oparte na danych przepływy pracy w chmurze służące do organizowania i automatyzowania przenoszenia i przekształcania danych. Za pomocą Azure Data Factory można:
+# <a name="visually-monitor-azure-data-factory"></a>Wizualnie Monitoruj Azure Data Factory
 
-- Tworzyć oparte na danych przepływy pracy (nazywane potokami) pozyskujące dane z różnych magazynów danych i ustalać ich harmonogram.
-- Przetwarzaj/Przekształcaj dane przy użyciu usług obliczeniowych, takich jak Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics i Azure Machine Learning.
-- Publikować dane wyjściowe w magazynach danych, na przykład Azure SQL Data Warehouse, w celu użycia przez aplikacje analizy biznesowej.
+Po utworzeniu i opublikowaniu potoku w Azure Data Factory można skojarzyć go z wyzwalaczem lub ręcznie uruchomić przebieg ad hoc. Wszystkie uruchomienia potoków można monitorować natywnie w środowisku użytkownika Azure Data Factory. Aby otworzyć środowisko monitorowania, wybierz pozycję **monitoruj & Zarządzaj** kafelkiem w bloku fabryka danych [Azure Portal](https://portal.azure.com/). Jeśli jesteś już w środowisku APD ADF, kliknij ikonę **monitora** na lewym pasku bocznym.
 
-W tym przewodniku szybki start dowiesz się, jak wizualnie monitorować potoki Data Factory bez pisania pojedynczego wiersza kodu.
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-
-## <a name="monitor-data-factory-pipelines"></a>Monitorowanie potoków Data Factory
-
-Monitoruj przebiegi potokowe i działania przy użyciu prostego interfejsu widoku listy. Wszystkie uruchomienia są wyświetlane w lokalnej strefie czasowej przeglądarki. Jeśli zmienisz strefę czasową, wszystkie pola daty i godziny są przyciągane do wybranego.  
-
-1. Uruchom przeglądarkę Microsoft Edge lub Google Chrome. Obecnie interfejs użytkownika Data Factory jest obsługiwany tylko w tych dwóch przeglądarkach sieci Web.
-2. Zaloguj się do [Azure Portal](https://portal.azure.com/).
-3. Przejdź do bloku utworzonej fabryki danych w Azure Portal. Wybierz pozycję **monitoruj & Zarządzaj** kafelkiem, aby rozpocząć Data Factory środowisko monitorowania wizualnego.
+Wszystkie uruchomienia fabryki danych są wyświetlane w lokalnej strefie czasowej w przeglądarce. Jeśli zmienisz strefę czasową, wszystkie pola daty i godziny są przyciągane do wybranego.
 
 ## <a name="monitor-pipeline-runs"></a>Monitorowanie uruchomień potoku
-Widok listy pokazuje Każde uruchomienie potoku dla potoków Data Factory. Zawiera następujące kolumny:
+
+Domyślny widok monitorowania to lista uruchomień potoku w wybranym okresie. Wyświetlane są następujące kolumny:
 
 | **Nazwa kolumny** | **Opis** |
 | --- | --- |
 | Nazwa potoku | Nazwa potoku |
-| Akcje | Pojedyncza Akcja dostępna do wyświetlania uruchomień działań |
+| Akcje | Ikony pozwalające wyświetlać szczegóły działania, anulować lub ponownie uruchomić potok |
 | Uruchom uruchomienie | Data i godzina rozpoczęcia dla uruchomienia potoku (MM/DD/RRRR, gg: MM: SS AM/PM) |
-| Czas trwania | Czas trwania uruchomienia (HH: MM: SS) |
-| Wyzwolone przez | Wyzwalacz ręczny lub zaplanowany wyzwalacz |
-| Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**lub **w toku** |
+| Duration | Czas trwania uruchomienia (HH: MM: SS) |
+| Wyzwolone przez | Nazwa wyzwalacza, który uruchomił potok |
+| Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**, **w toku**, **anulowane**lub **umieszczone w kolejce** |
+| Adnotacj | Tagi z możliwością filtrowania skojarzone z potokiem  |
 | Parametry | Parametry uruchomienia potoku (pary nazwa/wartość) |
-| Błąd | Błąd uruchomienia potoku (jeśli istnieje) |
+| Błąd | Jeśli potok nie powiódł się, błąd przebiegu |
 | Identyfikator przebiegu | Identyfikator uruchomienia potoku |
 
 ![Widok listy na potrzeby monitorowania przebiegów potoku](media/monitor-visually/pipeline-runs.png)
 
+Należy ręcznie wybrać przycisk **Odśwież** , aby odświeżyć listę uruchomień potoków i działań. Autoodświeżanie nie jest obecnie obsługiwane.
+
+![Przycisk Odśwież](media/monitor-visually/refresh.png)
+
 ## <a name="monitor-activity-runs"></a>Monitorowanie uruchomień działania
-Widok listy pokazuje uruchomienia działania odpowiadające poszczególnym uruchomieniem potoku. Aby wyświetlić uruchomienia działań dla każdego uruchomienia potoku, wybierz ikonę **uruchomienia działania** w kolumnie **Akcje** . Widok listy zawiera następujące kolumny:
+
+Aby wyświetlić uruchomienia działań dla każdego uruchomienia potoku, wybierz ikonę **Wyświetl uruchomienia działania** w kolumnie **Akcje** . Widok listy pokazuje uruchomienia działania odpowiadające poszczególnym uruchomieniem potoku.
 
 | **Nazwa kolumny** | **Opis** |
 | --- | --- |
 | Nazwa działania | Nazwa działania w potoku |
-| Typ działania | Typ działania, na przykład **copy**, **HDInsightSpark**lub **HDInsightHive** |
+| Typ działania | Typ działania, na przykład **copy**, **ExecuteDataFlow**lub **AzureMLExecutePipeline** |
+| Akcje | Ikony, które umożliwiają wyświetlanie informacji wejściowych JSON, informacji wyjściowych JSON lub szczegółowych środowisk monitorowania właściwych dla działania | 
 | Uruchom uruchomienie | Data i godzina rozpoczęcia uruchomienia działania (MM/DD/RRRR, HH: MM: SS AM/PM) |
-| Czas trwania | Czas trwania uruchomienia (HH: MM: SS) |
-| Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**lub **w toku** |
-| Dane wejściowe | Tablica JSON opisująca dane wejściowe działania |
-| Dane wyjściowe | Tablica JSON opisująca dane wyjściowe działania |
-| Błąd | Błąd uruchamiania działania (jeśli istnieje) |
+| Duration | Czas trwania uruchomienia (HH: MM: SS) |
+| Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**, **w toku**lub **anulowane** |
+| Integration Runtime | Integration Runtime działanie zostało uruchomione |
+| Właściwości użytkownika | Właściwości działania zdefiniowane przez użytkownika |
+| Błąd | Jeśli działanie nie powiodło się, błąd przebiegu |
+| Identyfikator przebiegu | Identyfikator uruchomienia działania |
 
 ![Widok listy dla uruchomionych działań monitorowania](media/monitor-visually/activity-runs.png)
 
-> [!IMPORTANT]
-> Musisz wybrać przycisk **Odśwież** u góry, aby odświeżyć listę uruchomień potoków i działań. Automatyczne odświeżanie nie jest obecnie obsługiwane.
+### <a name="promote-user-properties-to-monitor"></a>Podnieś poziom właściwości użytkownika do monitorowania
 
-![Przycisk Odśwież](media/monitor-visually/refresh.png)
-
-## <a name="select-a-data-factory-to-monitor"></a>Wybierz fabrykę danych do monitorowania
-Umieść kursor nad ikoną **Data Factory** w lewym górnym rogu. Wybierz ikonę strzałki, aby wyświetlić listę subskrypcji platformy Azure i fabryk danych, które można monitorować.
-
-![Wybieranie fabryki danych](media/monitor-visually/select-datafactory.png)
-
-## <a name="configure-the-list-view"></a>Skonfiguruj widok listy
-
-### <a name="apply-rich-ordering-and-filtering"></a>Zastosuj rozbudowane porządkowanie i filtrowanie
-
-Kolejność przebiegów potoku w OPISie/ASC według czasu rozpoczęcia przebiegu. Filtry przebiegów potoku przy użyciu następujących kolumn:
-
-| **Nazwa kolumny** | **Opis** |
-| --- | --- |
-| Nazwa potoku | Nazwa potoku. Opcje obejmują szybkie filtry dla **ostatnich 24 godzin**, **ubiegłych tygodni**i **ostatnich 30 dni**. Lub wybierz niestandardową datę i godzinę. |
-| Uruchom uruchomienie | Data i godzina rozpoczęcia uruchomienia potoku. |
-| Stan uruchomienia | Filtry przebiega według stanu: **zakończone powodzeniem**, **zakończone niepowodzeniem**lub **w toku**. |
-
-![Opcje filtrowania](media/monitor-visually/filter.png)
-
-### <a name="add-or-remove-columns"></a>Dodawanie lub usuwanie kolumn
-Kliknij prawym przyciskiem myszy nagłówek widoku listy i wybierz kolumny, które mają być wyświetlane w widoku listy.
-
-![Opcje kolumn](media/monitor-visually/columns.png)
-
-### <a name="adjust-column-widths"></a>Dopasuj szerokości kolumn
-Zwiększ i zmniejsz szerokości kolumn w widoku listy, umieszczając kursor na nagłówku kolumny.
-
-## <a name="promote-user-properties-to-monitor"></a>Podnieś poziom właściwości użytkownika do monitorowania
-
-Każdą właściwość działania potoku można podwyższyć jako właściwość użytkownika, aby stała się ona jednostką, którą można monitorować. Na przykład można podwyższyć poziom właściwości **źródłowej** i **docelowej** działania kopiowania w potoku jako właściwości użytkownika. Możesz również wybrać pozycję **Generuj automatycznie** , aby wygenerować właściwości **źródłowe** i **docelowe** dla działania kopiowania.
+Podnieś każdą właściwość działania potoku jako właściwość użytkownika, aby stała się ona jednostką monitorowaną. Na przykład można podwyższyć poziom właściwości **źródłowej** i **docelowej** działania kopiowania w potoku jako właściwości użytkownika. Wybierz pozycję **automatycznie Generuj** , aby wygenerować **źródłową** i **docelową** Właściwość użytkownika dla działania kopiowania.
 
 ![Tworzenie właściwości użytkownika](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -119,9 +82,33 @@ Po utworzeniu właściwości użytkownika można je monitorować w widokach list
 
 ![Lista uruchomień działania z kolumnami dla właściwości użytkownika](media/monitor-visually/monitor-user-properties-image4.png)
 
+## <a name="configure-the-list-view"></a>Skonfiguruj widok listy
+
+### <a name="order-and-filter"></a>Kolejność i filtrowanie
+
+Przełączenie przebiegów w kolejności malejącej lub rosnącej według czasu rozpoczęcia przebiegu. Filtry przebiegów potoku przy użyciu następujących kolumn:
+
+| **Nazwa kolumny** | **Opis** |
+| --- | --- |
+| Nazwa potoku | Filtruj według nazwy potoku. |
+| Uruchom uruchomienie |  Określ zakres czasu wyświetlanych uruchomień potoku. Opcje obejmują szybkie filtry dla **ostatnich 24 godzin**, **ubiegłego tygodnia**i **ostatnich 30 dni** lub do wybierania niestandardowej daty i godziny. |
+| Stan uruchomienia | Filtry przebiega według stanu: **zakończone powodzeniem**, **zakończone niepowodzeniem**, do **kolejki**, **anulowane**lub **w toku**. |
+| Adnotacj | Filtruj według tagów zastosowanych do każdego potoku |
+| Uruchomienia | Filtruj, czy chcesz zobaczyć potoki reran |
+
+![Opcje filtrowania](media/monitor-visually/filter.png)
+
+### <a name="add-or-remove-columns"></a>Dodawanie lub usuwanie kolumn
+Kliknij prawym przyciskiem myszy nagłówek widoku listy i wybierz kolumny, które mają być wyświetlane w widoku listy.
+
+![Opcje kolumn](media/monitor-visually/columns.png)
+
+### <a name="adjust-column-widths"></a>Dopasuj szerokości kolumn
+Zwiększ i zmniejsz szerokości kolumn w widoku listy, umieszczając kursor na nagłówku kolumny.
+
 ## <a name="rerun-activities-inside-a-pipeline"></a>Uruchom ponownie działania wewnątrz potoku
 
-Można teraz ponownie uruchamiać działania wewnątrz potoku. Wybierz pozycję **Wyświetl uruchomienia działania**, a następnie wybierz działanie w potoku, z którego chcesz ponownie uruchomić potok.
+Możesz ponownie uruchomić działania wewnątrz potoku. Wybierz pozycję **Wyświetl uruchomienia działania**, a następnie wybierz działanie w potoku, z którego chcesz ponownie uruchomić potok.
 
 ![Wyświetlanie uruchomień działania](media/monitor-visually/rerun-activities-image1.png)
 
@@ -139,9 +126,11 @@ Możesz również wyświetlić historię ponownego uruchamiania dla określonego
 
 ## <a name="gantt-views"></a>Widoki wykresu Gantta
 
-Użyj widoków wykresu Gantta, aby szybko wizualizować potoki i uruchomienia działania. Widok wykresu Gantta można przeglądać na potok lub grupować według adnotacji/tagów utworzonych w potokach.
+Użyj widoków wykresu Gantta, aby szybko wizualizować potoki i uruchomienia działania.
 
 ![Przykład wykresu Gantta](media/monitor-visually/gantt1.png)
+
+Widok wykresu Gantta można przeglądać na potok lub grupować według adnotacji/tagów utworzonych w potokach.
 
 ![Adnotacje wykresu Gantta](media/monitor-visually/gantt2.png)
 
@@ -153,11 +142,6 @@ Długość paska informuje o czasie trwania potoku. Możesz również wybrać pa
 Wybierz ikonę **informacji** w lewym dolnym rogu. Następnie wybierz przewodniki **instruktażowe** , aby uzyskać instrukcje krok po kroku dotyczące monitorowania uruchomienia potoku i działania.
 
 ![Przewodniki](media/monitor-visually/guided-tours.png)
-
-## <a name="feedback"></a>Opinia
-Wybierz ikonę **opinii** , aby przekazać nam swoją opinię na temat różnych funkcji lub wszelkich problemów, które mogą się pojawić.
-
-![Opinia](media/monitor-visually/feedback.png)
 
 ## <a name="alerts"></a>Alerty
 

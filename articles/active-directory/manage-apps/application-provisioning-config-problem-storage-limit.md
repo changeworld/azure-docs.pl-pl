@@ -1,5 +1,5 @@
 ---
-title: Wystąpił problem podczas zapisywania poświadczeń administratora Konfigurowanie aplikacji w galerii usługi Azure AD | Microsoft Docs
+title: Wystąpił problem podczas zapisywania poświadczeń administratora Konfigurowanie aplikacji w galerii usługi Azure AD
 description: Jak rozwiązywać typowe problemy związane z konfigurowaniem aprowizacji użytkowników w aplikacji już wymienionej w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 02/21/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152b704ca597fb473a820124ee6147d6d9bc7845
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 77e48b8921a1ebe3affd981c068da7fa55fdf30f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381465"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275782"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Wystąpił problem podczas zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników w aplikacji Galerii Azure Active Directory 
 
@@ -41,9 +41,9 @@ Wszelkie tajne tokeny, identyfikatory URI, adresy e-mail powiadomień, nazwy uż
 
 Istnieją dwa możliwe sposoby obejścia tego problemu Dzisiaj:
 
-1. **Użyj dwóch wystąpień aplikacji z galerii, jednej do logowania jednokrotnego i jednego do aprowizacji użytkowników** — przejmowanie aplikacji galerii na [](../saas-apps/linkedinelevate-tutorial.md) przykład w celu podniesienia uprawnień do serwisu LinkedIn z galerii i skonfigurowania jej do logowania jednokrotnego. W celu aprowizacji Dodaj kolejne wystąpienie podniesienia uprawnień z galerii aplikacji usługi Azure AD, a następnie nadaj mu nazwę "podnoszenie uprawnień do serwisu LinkedIn (Inicjowanie obsługi administracyjnej)". W przypadku tego drugiego wystąpienia Skonfiguruj [Inicjowanie obsługi administracyjnej](../saas-apps/linkedinelevate-provisioning-tutorial.md), ale nie Logowanie jednokrotne. W przypadku korzystania z tego rozwiązania te same Użytkownicy i grupy muszą być [przypisane](assign-user-or-group-access-portal.md) do obu aplikacji. 
+1. **Użyj dwóch wystąpień aplikacji z galerii, jednej do logowania jednokrotnego i jednego do aprowizacji użytkowników** — przejmowanie aplikacji galerii na przykład w celu [podniesienia](../saas-apps/linkedinelevate-tutorial.md) uprawnień do serwisu LinkedIn z galerii i skonfigurowania jej do logowania jednokrotnego. W celu aprowizacji Dodaj kolejne wystąpienie podniesienia uprawnień z galerii aplikacji usługi Azure AD, a następnie nadaj mu nazwę "podnoszenie uprawnień do serwisu LinkedIn (Inicjowanie obsługi administracyjnej)". W przypadku tego drugiego wystąpienia Skonfiguruj [Inicjowanie obsługi administracyjnej](../saas-apps/linkedinelevate-provisioning-tutorial.md), ale nie Logowanie jednokrotne. W przypadku korzystania z tego rozwiązania te same Użytkownicy i grupy muszą być [przypisane](assign-user-or-group-access-portal.md) do obu aplikacji. 
 
-2. **Zmniejsz ilość przechowywanych danych konfiguracyjnych** — wszystkie dane wprowadzone w sekcji [poświadczenia administratora](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) na karcie aprowizacji są przechowywane w tym samym miejscu co certyfikat SAML. Chociaż może nie być możliwe zmniejszenie długości wszystkich tych danych, niektóre opcjonalne pola konfiguracji, takie jak **wiadomości e-mail** z powiadomieniem, mogą zostać usunięte.
+2. **Zmniejsz ilość przechowywanych danych konfiguracyjnych** — wszystkie dane wprowadzone w sekcji [poświadczenia administratora](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) na karcie aprowizacji są przechowywane w tym samym miejscu co certyfikat SAML. Chociaż może nie być możliwe zmniejszenie długości wszystkich tych danych, niektóre opcjonalne pola konfiguracji, takie jak **wiadomości e-mail z powiadomieniem** , mogą zostać usunięte.
 
 ## <a name="next-steps"></a>Następne kroki
 [Konfigurowanie aprowizacji użytkowników i cofanie aprowizacji w aplikacjach SaaS](user-provisioning.md)
