@@ -114,6 +114,8 @@
           href: serial-console-grub-single-user-mode.md
         - name: Konsola szeregowa — NMI/SysRq
           href: serial-console-nmi-sysrq.md
+        - name: Proaktywna konfiguracja trybu GRUB konsoli szeregowej
+          href: serial-console-grub-proactive-configuration.md
     - name: Konsola szeregowa dla systemu Windows
       href: serial-console-windows.md
       items:
@@ -125,8 +127,6 @@
       href: serial-console-power-options.md
     - name: Typowe błędy konsoli szeregowej
       href: serial-console-errors.md
-    - name: Proaktywna konfiguracja trybu GRUB konsoli szeregowej
-      href: serial-console-grub-proactive-configuration.md
 - name: Błędy podczas usuwania zasobów magazynu
   href: storage-resource-deletion-errors.md
 - name: Błędy podczas usuwania klasycznych zasobów magazynu
