@@ -2,7 +2,7 @@
 title: Dokumentacja aplikacji Azure Blockchain Workbench w wersji zapoznawczej
 summary: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench oraz tworzenia aplikacji łańcucha bloków na platformie Azure i zarządzania nimi.
 metadata:
-  title: Dokumentacja usługi Azure Blockchain Workbench w wersji zapoznawczej — samouczki i dokumentacja interfejsu API
+  title: Dokumentacja aplikacji Azure Blockchain Workbench w wersji zapoznawczej
   description: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench oraz tworzenia aplikacji łańcucha bloków na platformie Azure i zarządzania nimi.
   services: azure-blockchain
   ms.service: azure-blockchain
@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 09/05/2019
-  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
-  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.openlocfilehash: 2dda68b1f8fff25759ff250646747f1faf63beb4
+  ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/10/2019
-  ms.locfileid: "70845023"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74324639"
 landingContent:
 - title: Informacje o aplikacji Azure Blockchain Workbench
   linkLists:

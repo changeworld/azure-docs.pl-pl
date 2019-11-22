@@ -177,15 +177,35 @@
           displayName: DevOps
     - name: Eksportowanie szablonu
       href: export-template-portal.md
-    - name: Move
+    - name: Przenoszenie — regiony
       items:
-        - name: Przenoszenie zasobów
+        - name: Przechodzenie między regionami
+          href: resource-group-move-region.md
+        - name: Obsługiwane usługi
+          href: region-move-support.md
+        - name: Usługi
+          items:
+            - name: Maszyny wirtualne platformy Azure
+              href: ../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Sieć wirtualna
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Sieciowa grupa zabezpieczeń
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Publiczne adresy IP
+              href: ../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Przenoszenie — grupy zasobów/subskrypcje
+      items:
+        - name: Przenoszenie między grupami zasobów/subskrypcjami
           href: resource-group-move-resources.md
-        - name: Pomoc techniczna dla zasobów
+        - name: Obsługiwane usługi
           href: move-support-resources.md
         - name: Rozwiązywanie problemów z przenoszeniem
           href: troubleshoot-move.md
-        - name: Wskazówki dotyczące przenoszenia dla usług
+        - name: Usługi
           items:
             - name: App Service
               href: ./move-limitations/app-service-move-limitations.md

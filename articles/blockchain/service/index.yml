@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentacja usługi Azure Blockchain
+title: Dokumentacja usługi Azure Blockchain Service
 summary: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz zarządzać nimi na platformie Azure.
 metadata:
-  title: Dokumentacja usługi Azure Blockchain — samouczki i dokumentacja interfejsu API
+  title: Dokumentacja usługi Azure Blockchain Service
   description: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz zarządzać nimi na platformie Azure.
   services: azure-blockchain
   ms.service: azure-blockchain
@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 11/04/2019
-  ms.openlocfilehash: 9e4def49e2d0e1fc91259bbdf744ec7e40a34547
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 5af8999a32682df18d1e4f1be192c2d4be628860
+  ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73577341"
+  ms.lasthandoff: 11/21/2019
+  ms.locfileid: "74285076"
 landingContent:
 - title: Informacje o usłudze Azure Blockchain
   linkLists:

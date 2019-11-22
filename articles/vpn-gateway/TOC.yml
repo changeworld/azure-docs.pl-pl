@@ -156,7 +156,7 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Anonsowanie tras niestandardowych klientom P2S
           href: vpn-gateway-p2s-advertise-custom-routes.md
-    - name: Tworzenie strefowo nadmiarowej bramy sieci wirtualnej w strefach dostępności platformy Azure
+    - name: Tworzenie strefowo nadmiarowej bramy
       href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurowanie zasad IPsec/IKE dla połączeń
       href: vpn-gateway-ipsecikepolicy-rm-powershell.md

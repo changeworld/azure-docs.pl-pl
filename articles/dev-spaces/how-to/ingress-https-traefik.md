@@ -1,20 +1,16 @@
 ---
 title: Korzystanie z niestandardowego kontrolera traefik Ingres i Konfigurowanie protokołu HTTPS
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 08/13/2019
 ms.topic: conceptual
 description: Dowiedz się, jak skonfigurować Azure Dev Spaces, aby użyć niestandardowego kontrolera traefikal i skonfigurować protokół HTTPS za pomocą tego kontrolera
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a7f8684c8236e69c16bedf0186ed7ed17bbc8462
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582323"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280071"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Korzystanie z niestandardowego kontrolera traefik Ingres i Konfigurowanie protokołu HTTPS
 
@@ -31,7 +27,7 @@ W tym artykule opisano sposób konfigurowania Azure Dev Spaces do używania nies
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Konfigurowanie niestandardowego kontrolera traefik Ingres
 
-Nawiąż połączenie z klastrem za pomocą [polecenia kubectl][kubectl], Kubernetes klienta wiersza polecenia. Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i zastosowanie ich w konfiguracji interfejsu wiersza polecenia Kubernetes.
+Nawiąż połączenie z klastrem za pomocą [polecenia kubectl][kubectl], Kubernetes klienta wiersza polecenia. Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -78,7 +74,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-Powyższy przykład dodaje rekord *A* do strefy DNS *MY_CUSTOM_DOMAIN* .
+Powyższy przykład dodaje rekord *A* do *MY_CUSTOM_DOMAIN* strefy DNS.
 
 W tym artykule użyto [przykładowej aplikacji do udostępniania Azure dev Spaces roweru](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) do zademonstrowania przy użyciu Azure dev Spaces. Klonowanie aplikacji z usługi GitHub i przechodzenie do jej katalogu:
 
@@ -87,7 +83,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Otwórz [wartość. YAML][values-yaml] i Zastąp wszystkie wystąpienia *< REPLACE_ME_WITH_HOST_SUFFIX >* z *traefik. MY_CUSTOM_DOMAIN* przy użyciu domeny do *MY_CUSTOM_DOMAIN*. Zastąp także *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-swoisty* dla *Kubernetes.IO/Ingress.Class: traefik # Custom*. Poniżej znajduje się przykładowy zaktualizowany plik `values.yaml`:
+Otwórz [wartość. YAML][values-yaml] i Zastąp wszystkie wystąpienia *< REPLACE_ME_WITH_HOST_SUFFIX >* z *traefik. MY_CUSTOM_DOMAIN* przy użyciu domeny *MY_CUSTOM_DOMAIN*. Zastąp także *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-swoisty* dla *Kubernetes.IO/Ingress.Class: traefik # Custom*. Poniżej znajduje się przykładowy zaktualizowany plik `values.yaml`:
 
 ```yaml
 # This is a YAML-formatted file.

@@ -362,6 +362,8 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
+        - name: Rozgrzewanie
+          href: functions-bindings-warmup.md
     - name: Dokumentacja pliku host.json 2.x
       href: functions-host-json.md
     - name: Dokumentacja pliku host.json 1.x

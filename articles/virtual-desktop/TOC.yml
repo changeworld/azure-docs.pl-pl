@@ -62,6 +62,8 @@
       href: customize-rdp-properties.md
     - name: Wdrażanie narzędzia diagnostycznego
       href: deploy-diagnostics.md
+    - name: Konfigurowanie dołączania aplikacji MSIX
+      href: app-attach.md
 - name: Pojęcia
   items:
     - name: Środowisko usługi Windows Virtual Desktop
